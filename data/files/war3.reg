@@ -1,0 +1,24 @@
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Blizzard Entertainment\Warcraft III]
+"Gfx OpenGL"=dword:00000001
+
+[HKEY_CURRENT_USER\Software\Wine\Direct3D]
+"DirectDrawRenderer"="opengl"
+"OffscreenRenderingMode"="fbo"
+"PixelShaderMode"="disabled"
+"RenderTargetLockMode"="readtex"
+"UseGLSL"="enabled"
+"VideoMemorySize"="128"
+
+[HKEY_CURRENT_USER\Software\Wine\X11 Driver]
+"ClientSideAntiAliasWithCore"="N"
+"ClientSideAntiAliasWithRender"="N"
+"ClientSideWithRender"="N"
+"DXGrab"="Y"
+"ScreenDepth"="24"
+"UseXRandR"="N"
+"UseXVidMode"="Y"
+
+[HKEY_CURRENT_USER\Software\Wine\OpenGL]
+"DisabledExtensions"="GL_ARB_vertex_buffer_object"

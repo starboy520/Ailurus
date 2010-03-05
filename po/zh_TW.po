@@ -1,0 +1,5998 @@
+#
+# Copyright (C) 2009, Trusted Digital Technology Lab., Shanghai Jiao Tong Univ., China.
+# This file is distributed under the BSD license.
+# Homer Xing <homer.xing@gmail.com>, 2009.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Ailurus 9.12\n"
+"Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
+"POT-Creation-Date: 2010-03-02 19:01+0800\n"
+"PO-Revision-Date: 2010-01-23 09:46+0000\n"
+"Last-Translator: Wayne Su <Unknown>\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Launchpad-Export-Date: 2010-02-28 08:20+0000\n"
+"X-Generator: Launchpad (build Unknown)\n"
+
+#: src/applib.py:86 src/applib.py:144
+msgid "Change GConf values:"
+msgstr "變更 GConf 鍵值:"
+
+#: src/applib.py:89 src/applib.py:100 src/applib.py:147 src/applib.py:157
+msgid "Key:"
+msgstr "鍵名："
+
+#: src/applib.py:90 src/applib.py:148
+msgid "New value:"
+msgstr "新鍵值："
+
+#: src/applib.py:101
+msgid "Appended items:"
+msgstr "已附加項目："
+
+#: src/applib.py:128
+#, python-format
+msgid "The value of \"%(key)s\" is not \"%(value)s\"."
+msgstr "%(key)s 的值不是 %(value)s。"
+
+#: src/applib.py:138
+#, python-format
+msgid "\"%(value)s\" is not in \"%(key)s\"."
+msgstr "%(key)s 不包含值 %(value)s。"
+
+#: src/applib.py:158
+msgid "Removed items:"
+msgstr "已移除項目："
+
+#: src/applib.py:198 src/fedora/apps.py:59
+#, python-format
+msgid "The packages \"%s\" are not installed."
+msgstr "未安裝 %s 套件。"
+
+#: src/applib.py:237 src/applib.py:295 src/ubuntu/app1.py:494
+#, python-format
+msgid "\"%s\" does not exist."
+msgstr "%s 不存在。"
+
+#: src/applib.py:258
+msgid "<span color='red'>This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox.</span>"
+msgstr "<span color='red'>這個擴充套件無法用 Ailurus 移除，請利用 Firefox 的'「工具 > 附加元件」選單來移除。</span>"
+
+#: src/applib.py:259
+#, python-format
+msgid "It can be used in Firefox version %s"
+msgstr "可以在 Firefox %s 版使用。"
+
+#: src/applib.py:260
+msgid "It can be obtained from "
+msgstr "可以從這下載 "
+
+#: src/lib.py:335 src/lib.py:386 src/lib.py:585 src/lib.py:947
+#: src/z_terminal.py:61
+msgid "Run command:"
+msgstr "執行指令："
+
+#: src/lib.py:720
+msgid "Installing packages:"
+msgstr "正在安裝套件："
+
+#: src/lib.py:730
+#, python-format
+msgid "Cannot install packages \"%s\"."
+msgstr "無法安裝 %s 套件。"
+
+#: src/lib.py:756
+msgid "Removing packages:"
+msgstr "正在刪移除套件："
+
+#: src/lib.py:766
+#, python-format
+msgid "Cannot remove packages \"%s\"."
+msgstr "無法移除 %s 套件。"
+
+#: src/lib.py:771 src/ubuntu/quick_setup.py:226
+#: src/ubuntu/u_fastest_mirror.py:325
+msgid "Run \"apt-get update\". Please wait for few minutes."
+msgstr "執行「apt-get update」，請稍待幾分鐘。"
+
+#: src/lib.py:902
+#, python-format
+msgid "%.1f GB"
+msgstr "%.1f GB"
+
+#: src/lib.py:904
+#, python-format
+msgid "%.1f MB"
+msgstr "%.1f MB"
+
+#: src/lib.py:906
+#, python-format
+msgid "%.1f KB"
+msgstr "%.1f KB"
+
+#: src/lib.py:907
+msgid "less than 1 KB"
+msgstr "小於 1KB"
+
+#: src/lib.py:915
+#, python-format
+msgid "%.1f hours"
+msgstr "%.1f 小時"
+
+#: src/lib.py:917
+#, python-format
+msgid "%.1f minutes"
+msgstr "%.1f 分鐘"
+
+#: src/lib.py:918
+msgid "less than 1 minute"
+msgstr "小於 1 分鐘"
+
+#: src/lib.py:1115 src/lib.py:1120
+msgid "Opening web page"
+msgstr "正在開啟網頁"
+
+#: src/lib.py:1260
+#, python-format
+msgid "Response time of server %(name)s is %(time).1f ms."
+msgstr "伺服器 %(name)s 的回應時間是 %(time).1f 毫秒。"
+
+#: src/lib.py:1262
+#, python-format
+msgid "Server %s does not respond."
+msgstr "伺服器 %s 無回應。"
+
+#: src/lib.py:1339
+msgid "Checking file integrity ..."
+msgstr "正在檢查檔案完整性 ..."
+
+#: src/lib.py:1343
+msgid "Good."
+msgstr "很好。"
+
+#: src/lib.py:1361
+#, python-format
+msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
+msgstr "使用第 %(i)s 個鏡像，共有 %(total)s 個鏡像。"
+
+#: src/lib.py:1506
+#, fuzzy
+#| msgid "Unpacking ... Please wait for a few minutes."
+msgid "Inspecting safely deletable packages. Please wait for a few minutes."
+msgstr "正在解壓縮 ... 請您等待幾分鐘。"
+
+#: src/loader.py:94 src/loader.py:131
+#, python-format
+msgid "Cannot load class %s"
+msgstr "無法載入 %s 類別"
+
+#: src/loader.py:95 src/loader.py:132 src/ui.py:410 src/ubuntu/setting.py:274
+msgid "Traceback:"
+msgstr "錯誤追蹤記錄："
+
+#: src/settinglib.py:45 src/settinglib.py:61 src/settinglib.py:163
+#: src/settinglib.py:195
+msgid "GConf key: "
+msgstr "GConf 鍵： "
+
+#: src/settinglib.py:46 src/settinglib.py:62 src/settinglib.py:126
+#: src/gnome/setting.py:145 src/gnome/setting.py:147 src/gnome/setting.py:149
+msgid ""
+"\n"
+"GConf key: "
+msgstr ""
+"\n"
+"GConf 鍵： "
+
+#: src/settinglib.py:84
+#, python-format
+msgid "Choose a file for \"%s\" "
+msgstr "為 %s 選擇檔案 "
+
+#: src/settinglib.py:100
+msgid "Image file"
+msgstr "圖片檔"
+
+#: src/settinglib.py:122
+msgid ""
+"\n"
+"File: "
+msgstr ""
+"\n"
+"檔案： "
+
+#: src/settinglib.py:140 src/u_offline_install.py:217
+msgid "Change"
+msgstr "變更"
+
+#: src/settinglib.py:164
+#, python-format
+msgid ""
+"\n"
+"Minimum value: %(min)s. Maximum value: %(max)s."
+msgstr ""
+"\n"
+"最小值： %(min)s，最大值： %(max)s。"
+
+#: src/settinglib.py:182 src/common/setting.py:71 src/ubuntu/setting.py:200
+#: src/ubuntu/u_apt_recovery.py:301
+msgid "Apply"
+msgstr "套用"
+
+#: src/tip_after_logging_in.py:50 src/common/menu.py:305
+msgid "Tip of the day"
+msgstr "每日小秘訣"
+
+#: src/u_app.py:36 src/ui.py:84 src/common/menu.py:275
+msgid "Install/Remove"
+msgstr "安裝/移除"
+
+#: src/u_app.py:117
+msgid "To be installed:\n"
+msgstr "即將安裝：\n"
+
+#: src/u_app.py:124
+msgid "To be removed:\n"
+msgstr "即將移除：\n"
+
+#: src/u_app.py:132
+#, python-format
+msgid "%s disk space will be occupied."
+msgstr "會佔用 %s 的磁碟空間。"
+
+#: src/u_app.py:133
+#, python-format
+msgid "%s disk space will be freed."
+msgstr "會釋放 %s 的磁碟空間。"
+
+#: src/u_app.py:137
+msgid "Are you sure to change your system as follows?"
+msgstr "您確定要這樣變更您的系統嗎？"
+
+#: src/u_app.py:138
+msgid "Confirmation"
+msgstr "確認"
+
+#: src/u_app.py:145
+msgid ""
+"Summary: \n"
+"\n"
+msgstr ""
+"摘要： \n"
+"\n"
+
+#: src/u_app.py:147
+msgid "Successfully installed:\n"
+msgstr "已成功安裝：\n"
+
+#: src/u_app.py:151
+msgid "Successfully removed:\n"
+msgstr "已成功移除：\n"
+
+#: src/u_app.py:155
+msgid "Failed to install:\n"
+msgstr "安裝失敗:\n"
+
+#: src/u_app.py:158 src/u_app.py:163
+msgid ""
+"The tracebacks are in the terminal window.\n"
+"\n"
+msgstr ""
+"錯誤追蹤記錄已輸出到終端機視窗中。\n"
+"\n"
+
+#: src/u_app.py:160
+msgid "Failed to remove:\n"
+msgstr "移除失敗：\n"
+
+#: src/u_app.py:167
+msgid "All works finished."
+msgstr "所有工作都已完成。"
+
+#: src/u_app.py:204
+msgid "Installing:"
+msgstr "正在安裝："
+
+#: src/u_app.py:215
+msgid "Removing:"
+msgstr "正在移除："
+
+#: src/u_app.py:236
+msgid "Summary:"
+msgstr "摘要："
+
+#: src/u_app.py:238
+msgid "Successfully installed:"
+msgstr "已成功安裝："
+
+#: src/u_app.py:240
+msgid "Successfully removed:"
+msgstr "已成功移除："
+
+#: src/u_app.py:243
+msgid "Failed to install:"
+msgstr "安裝失敗："
+
+#: src/u_app.py:248
+msgid "Failed to remove:"
+msgstr "移除失敗："
+
+#: src/u_app.py:259
+msgid ""
+"Some operations failed.\n"
+"Would you please report bugs to Ailurus developer?\n"
+"Please press \"PrtSc\" key to make a screenshot, and attach the screenshot in bug report. "
+msgstr ""
+
+#: src/u_app.py:264
+msgid "All works finished. "
+msgstr "所有工作都已完成。 "
+
+#: src/u_app.py:395
+msgid "Not installed."
+msgstr "未安裝。"
+
+#: src/u_app.py:397
+msgid "Not installed, because:"
+msgstr "未安裝, 因為："
+
+#: src/u_app.py:401
+msgid "Will be installed."
+msgstr "即將安裝。"
+
+#: src/u_app.py:405
+msgid "Installed size is"
+msgstr "安裝後的大小是"
+
+#: src/u_app.py:408
+msgid "Installed."
+msgstr "已安裝。"
+
+#: src/u_app.py:410
+msgid "Will be removed."
+msgstr "即將移除。"
+
+#: src/u_app.py:414
+#, python-format
+msgid "Will free %s disk space."
+msgstr "將釋放 %s 的磁碟空間。"
+
+#: src/u_app.py:517
+msgid "Select _All"
+msgstr "全部選取(_A)"
+
+#: src/u_app.py:519
+msgid "_Deselect All"
+msgstr "全部不選(_D)"
+
+#: src/u_app.py:521
+msgid "_Reset All"
+msgstr "全部重設(_R)"
+
+#: src/u_app.py:558
+msgid "_Apply"
+msgstr "套用(_A)"
+
+#: src/u_app.py:567
+msgid "Details:"
+msgstr "詳細："
+
+#: src/u_app.py:618
+msgid "Report bugs"
+msgstr ""
+
+#: src/u_app.py:620
+msgid "Close this terminal"
+msgstr "關閉這個終端機"
+
+#: src/u_app.py:649
+#, fuzzy
+#| msgid "Command: "
+msgid "Common"
+msgstr "指令： "
+
+#: src/u_app.py:650
+msgid "For students"
+msgstr ""
+
+#: src/u_app.py:651
+msgid "For developers"
+msgstr ""
+
+#: src/u_app.py:652
+msgid "Advanced"
+msgstr ""
+
+#: src/u_app.py:655
+msgid "Office"
+msgstr "辦公"
+
+#: src/u_app.py:656
+msgid "Education"
+msgstr "教育"
+
+#: src/u_app.py:657
+msgid "Internet"
+msgstr "網際網路"
+
+#: src/u_app.py:658 src/u_app.py:677
+msgid "Firefox extensions"
+msgstr "Firefox 擴充套件"
+
+#: src/u_app.py:659
+msgid "Multimedia"
+msgstr "多媒體"
+
+#: src/u_app.py:660
+msgid "Appearance"
+msgstr "外觀"
+
+#: src/u_app.py:661
+msgid "Enhancements"
+msgstr "增強"
+
+#: src/u_app.py:662
+msgid "Game"
+msgstr "遊戲"
+
+#: src/u_app.py:664
+msgid "Third party repositories"
+msgstr "第三方套件庫"
+
+#: src/u_app.py:665
+msgid "Virtual machine"
+msgstr "虛擬機器"
+
+#: src/u_app.py:666
+msgid "Establish a server"
+msgstr "建立一台伺服器"
+
+#: src/u_app.py:668
+msgid "Mathematics"
+msgstr "數學"
+
+#: src/u_app.py:669
+msgid "Statistics"
+msgstr "統計學"
+
+#: src/u_app.py:670
+msgid "Biology"
+msgstr "生物學"
+
+#: src/u_app.py:671
+msgid "Electronics & Mechanics"
+msgstr "電子學和機械學"
+
+#: src/u_app.py:672
+msgid "Geography"
+msgstr "地理學"
+
+#: src/u_app.py:673
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: src/u_app.py:675
+msgid "Development"
+msgstr "開發"
+
+#: src/u_app.py:676
+msgid "Eclipse"
+msgstr "Eclipse"
+
+#: src/u_info.py:107
+msgid "Hardware Information"
+msgstr "硬體資訊"
+
+#: src/u_info.py:116
+msgid "Linux Information"
+msgstr "Linux 資訊"
+
+#: src/u_offline_install.py:36 src/ui.py:85 src/ui.py:196
+#: src/common/menu.py:277
+msgid "Cache installation files"
+msgstr "建立安裝檔案快取"
+
+#: src/u_offline_install.py:45
+msgid "N/A ( Directory does not exist. It will be automatically created before beginning cache files. )"
+msgstr "N/A ( 目錄不存在，在開始快取檔案前目錄會先自動建立。)"
+
+#: src/u_offline_install.py:51
+msgid "Select a folder"
+msgstr "選取資料夾"
+
+#: src/u_offline_install.py:79
+#, python-format
+msgid "%(uncached)s uncached files, %(cached)s cached files"
+msgstr "%(uncached)s 個未快取的檔案， %(cached)s 個已快取檔案"
+
+#: src/u_offline_install.py:116
+#, python-format
+msgid "Tried to download %s files."
+msgstr "嘗試下載 %s 個檔案。"
+
+#: src/u_offline_install.py:117
+#, python-format
+msgid "%s files are downloaded successfully."
+msgstr "已成功下載 %s 個檔案。"
+
+#: src/u_offline_install.py:118
+#, python-format
+msgid "%s files cannot be downloaded."
+msgstr "%s 個檔案無法下載。"
+
+#: src/u_offline_install.py:197
+msgid "You can install applications without Internet if software installation files are cached into your computer. Moreover, the download time is saved by caching."
+msgstr "如果您將軟體安裝檔快取存在電腦裏，則未連網路時也能安裝軟體；將檔案做快取也能減少下載的時間。"
+
+#: src/u_offline_install.py:200
+msgid ""
+"\n"
+"Ailurus cannot cache \"*.deb\" packages which are in /var/cache/apt . You can cache them by \"aptoncd\", which is installed by \"sudo apt-get install aptoncd\". "
+msgstr ""
+"\n"
+"Ailurus 無法快取 /var/cache/apt 目錄裏的 *.deb 檔案。您可以使用 aptoncd 來快取那些檔案；可用「sudo apt-get install aptoncd」指令來安裝 aptoncd。 "
+
+#: src/u_offline_install.py:209
+msgid "Do not automatically delete cached APT packages."
+msgstr "不要自動刪除已快取的 APT 套件。"
+
+#: src/u_offline_install.py:214
+msgid "Cache files in this directory:"
+msgstr "快取在這個目錄裏的檔案:"
+
+#: src/u_offline_install.py:219
+msgid "Open"
+msgstr "開啟"
+
+#: src/u_offline_install.py:234
+msgid "Free disk space:"
+msgstr "剩餘磁碟空間："
+
+#: src/u_offline_install.py:238
+msgid "Uncached files:"
+msgstr "未快取的檔案："
+
+#: src/u_offline_install.py:239
+msgid "Show URL"
+msgstr "顯示網址"
+
+#: src/u_offline_install.py:241
+msgid "Download"
+msgstr "下載"
+
+#: src/u_offline_install.py:275
+msgid "File name"
+msgstr "檔案名稱"
+
+#: src/u_offline_install.py:287
+msgid "Size"
+msgstr "大小"
+
+#: src/u_offline_install.py:293
+msgid "Unknown"
+msgstr "未知"
+
+#: src/u_offline_install.py:310
+msgid "(States of files are not detected yet.)"
+msgstr "(尚未檢測檔案的狀態)"
+
+#: src/u_setting.py:37 src/ui.py:83 src/common/menu.py:270
+msgid "System settings"
+msgstr "系統設定"
+
+#: src/u_setting.py:53
+msgid "Desktop"
+msgstr "桌面"
+
+#: src/u_setting.py:54
+msgid "Window effect"
+msgstr "視窗效果"
+
+#: src/u_setting.py:55
+msgid "Menu"
+msgstr "選單"
+
+#: src/u_setting.py:56
+msgid "Icon"
+msgstr "圖示"
+
+#: src/u_setting.py:57
+msgid "Font"
+msgstr "字型"
+
+#: src/u_setting.py:58
+msgid "GNOME Session"
+msgstr "GNOME 作業階段"
+
+#: src/u_setting.py:59
+msgid "Memory"
+msgstr "記憶體"
+
+#: src/u_setting.py:60
+msgid "Terminal"
+msgstr "終端機"
+
+#: src/u_setting.py:61
+msgid "Sound"
+msgstr "音效"
+
+#: src/u_setting.py:62
+msgid "Power management"
+msgstr "電源管理"
+
+#: src/u_setting.py:63
+msgid "Network"
+msgstr "網路"
+
+#: src/u_setting.py:64
+msgid "Update"
+msgstr "更新"
+
+#: src/u_setting.py:65
+msgid "Restriction"
+msgstr "限制"
+
+#: src/u_setting.py:105
+msgid "If you hover mouse pointer above any item, you can read Linux setting skills :)"
+msgstr "將滑鼠游標指在設定項目上，您就可以讀到許多 Linux 設定訣竅 :)"
+
+#: src/ui.py:46
+msgid "Name of current panel"
+msgstr "目前的面板名稱"
+
+#: src/ui.py:51
+msgid "Go back one panel"
+msgstr "向後退到上一個面板"
+
+#: src/ui.py:52
+msgid "Go forward one panel"
+msgstr "向前進一個面板"
+
+#: src/ui.py:59
+msgid "Enable current pane"
+msgstr "啓用目前的面板"
+
+#: src/ui.py:60
+msgid "Disable current pane"
+msgstr "停用目前的面板"
+
+#: src/ui.py:61
+msgid "Display \"Tip of the day\""
+msgstr "顯示「每日小秘訣」"
+
+#: src/ui.py:62 src/common/menu.py:420
+msgid "Propose suggestion and report bugs"
+msgstr "提出建議、回報問題"
+
+#: src/ui.py:63 src/common/menu.py:258
+msgid "Quit"
+msgstr "結束"
+
+#: src/ui.py:81 src/common/menu.py:263
+msgid "Hardware information"
+msgstr "硬體資訊"
+
+#: src/ui.py:82 src/common/menu.py:265
+msgid "Linux information"
+msgstr "Linux 資訊"
+
+#: src/ui.py:86 src/ubuntu/menu.py:37
+msgid "Find fast repository mirror"
+msgstr "尋找快速的套件庫鏡像站"
+
+#: src/ui.py:87 src/ubuntu/menu.py:42 src/ubuntu/u_apt_recovery.py:37
+msgid "APT recovery"
+msgstr "恢複 APT"
+
+#: src/ui.py:270
+msgid "Warning!"
+msgstr "警告！"
+
+#: src/ui.py:271
+msgid "Another instance of Ailurus is running. It is not recommended to run multiple instance concurrently."
+msgstr "有另一個 Ailurus 正在執行中，不建議同時執行多個 Ailurus。"
+
+#: src/ui.py:291
+msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
+msgstr "<span color=\"yellow\">檢查桌面環境 ... </span>\n"
+
+#: src/ui.py:299
+msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
+msgstr "<span color=\"yellow\">檢查發行版本 ... </span>\n"
+
+#: src/ui.py:322
+msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
+msgstr "<span color=\"yellow\">取得 Firefox 設定 ... </span>\n"
+
+#: src/ui.py:324
+msgid "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
+msgstr "<span color=\"yellow\">等待 Firefox 建立設定檔 ... </span>\n"
+
+#: src/ui.py:332 src/ui.py:335
+msgid "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
+msgstr "<span color=\"yellow\">正在產生已安裝套件的清單 ... </span>\n"
+
+#: src/ui.py:340
+msgid "<span color=\"yellow\">Loading tips ... </span>\n"
+msgstr "<span color=\"yellow\">載入每日小秘訣 ... </span>\n"
+
+#: src/ui.py:346
+msgid "<span color=\"yellow\">Loading main window ... </span>\n"
+msgstr "<span color=\"yellow\">載入主視窗 ... </span>\n"
+
+#: src/ui.py:349
+msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
+msgstr "<span color=\"yellow\">載入資訊面板 ... </span>\n"
+
+#: src/ui.py:362
+msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
+msgstr "<span color=\"yellow\">載入系統設定面板 ... </span>\n"
+
+#: src/ui.py:369
+msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
+msgstr "<span color=\"yellow\">載入應用程式面板 ... </span>\n"
+
+#: src/ui.py:380
+msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
+msgstr "<span color=\"yellow\">載入離線面板 ... </span>\n"
+
+#: src/ui.py:387
+msgid "<span color=\"yellow\">Loading menu ... </span>\n"
+msgstr "<span color=\"yellow\">載入選單 ... </span>\n"
+
+#: src/ui.py:420
+msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
+msgstr "出現 bug 了，請您回報給 Ailurus 開發者，謝謝您！"
+
+#: src/ui.py:433
+msgid "Click here to report bug via web-page"
+msgstr "點擊這裏用網頁回報 bug"
+
+#: src/ui.py:435
+#, fuzzy
+#| msgid "Chile"
+msgid "Close"
+msgstr "智利"
+
+#: src/ui.py:441
+msgid "Bug appears!"
+msgstr "出現 bug！"
+
+#: src/z_disabledpane.py:35
+msgid "This pane is disabled."
+msgstr "這個面板被禁停用了。"
+
+#: src/z_searchbox.py:39
+msgid "Search items:"
+msgstr "搜尋項目："
+
+#: src/z_searchbox.py:48
+msgid "In names only."
+msgstr "只在名稱中搜尋。"
+
+#: src/z_searchbox.py:49
+msgid "In names & details."
+msgstr "在名稱和細節中搜尋。"
+
+#: src/z_splashwindow.py:51
+msgid ""
+"<span color=\"yellow\">Help you install some nice applications.\n"
+"Help you do tedious settings.\n"
+"Tell you some Linux skills.</span>"
+msgstr ""
+"<span color=\"yellow\">協助您安裝好用的軟體，\n"
+"協助您進行繁瑣的設定，\n"
+"告訴您 Linux 的各種訣竅。</span>"
+
+#: src/z_terminal.py:76
+msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
+msgstr "您可以按 Ctrl-C 終止 Ailurus 安裝程序。"
+
+#: src/z_tipoftheday.py:63
+msgid "Tip of the Day"
+msgstr "每日小秘訣"
+
+#: src/z_tipoftheday.py:69
+msgid "<span size=\"x-large\"><b>Did you know ?</b></span>"
+msgstr "<span size=\"x-large\"><b>您知道嗎？</b></span>"
+
+#: src/z_tipoftheday.py:92
+msgid "_Next tip"
+msgstr "下一個(_N)"
+
+#: src/z_tipoftheday.py:97
+msgid "_Previous tip"
+msgstr "上一個(_P)"
+
+#: src/common/apps_eclipse.py:43
+msgid "Installing Eclipse extension"
+msgstr "正在安裝 Eclipse 擴充套件"
+
+#: src/common/apps_eclipse.py:106
+msgid "Eclipse (basic development environment)"
+msgstr "Eclipse (基本開發環境)"
+
+#: src/common/apps_eclipse.py:108
+msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
+msgstr "Eclipse 來自 http://www.eclipse.org/downloads/ \n"
+
+#: src/common/apps_eclipse.py:109
+msgid ""
+"You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n"
+"You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, and extract \".zip\" file to directory \"/opt/eclipse\" ."
+msgstr ""
+"您可以根據 http://www.eclipse.org/babel/downloads.php 網頁網頁裏的指示來安裝語言包。\n"
+"您可以在 http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php 網頁下載語言包，再將 .zip 檔案解壓縮到 /opt/eclipse 目錄。"
+
+#: src/common/apps_eclipse.py:112 src/common/apps.py:156
+#: src/common/apps.py:224 src/common/apps.py:336
+#: src/ubuntu/app_not_opensource.py:40
+msgid " This application depends on Java."
+msgstr " 這個程式必須有 Java 才能執行。"
+
+#: src/common/apps_eclipse.py:349
+msgid "Eclipse (basic development environment + J2EE)"
+msgstr "Eclipse (基本開發環境 + J2EE)"
+
+#: src/common/apps_eclipse.py:570
+msgid "CDT: C/C++ development"
+msgstr "CDT：C/C++ 開發環境"
+
+#: src/common/apps_eclipse.py:571
+msgid "CDT is from http://www.eclipse.org/cdt/"
+msgstr "CDT 來自 http://www.eclipse.org/cdt/"
+
+#: src/common/apps_eclipse.py:589
+msgid "Pydev: Python development"
+msgstr "Pydev：Python 開發環境"
+
+#: src/common/apps_eclipse.py:590
+msgid "Pydev is from http://pydev.org/download.html"
+msgstr "Pydev 來自 http://pydev.org/download.html"
+
+#: src/common/apps_eclipse.py:608
+msgid "Aptana: Web application development"
+msgstr "Aptana：Web 應用程式開發環境"
+
+#: src/common/apps_eclipse.py:609
+msgid ""
+"Aptana is from http://www.aptana.org/studio/plugin\n"
+"Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n"
+"Due to limitation of the authors' programming ability, Aptana cannot be removed by Ailurus. In order to remove Aptana, you have to re-install Eclipse."
+msgstr ""
+"Aptana 來自 http://www.aptana.org/studio/plugin\n"
+"Aptana 是從 http://download.aptana.org/tools/studio/plugin/install/studio 安裝的\n"
+"礙於作者的程式功力限制，無法用 Ailurus 移除 Aptana。請重安裝 Eclipse 再移除 Aptana。"
+
+#: src/common/apps_eclipse.py:623 src/common/apps_eclipse.py:645
+#: src/common/apps_eclipse.py:680 src/common/apps_eclipse.py:705
+#: src/common/apps_eclipse.py:726
+msgid "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+msgstr "請啓動 Eclipse, 點擊「Help > Install New Software」。"
+
+#: src/common/apps_eclipse.py:625 src/common/apps_eclipse.py:647
+#: src/common/apps_eclipse.py:682 src/common/apps_eclipse.py:707
+#: src/common/apps_eclipse.py:728
+#, python-format
+msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
+msgstr "點擊 Add 按鈕，然後在 Location 內輸入 <b>%s</b>。"
+
+#: src/common/apps_eclipse.py:627 src/common/apps_eclipse.py:649
+#: src/common/apps_eclipse.py:684 src/common/apps_eclipse.py:709
+#: src/common/apps_eclipse.py:730
+msgid "Then click the \"Next\" button and agree the license."
+msgstr "然後點擊 Next 按鈕並同意授權許可。"
+
+#: src/common/apps_eclipse.py:628
+msgid "Installing Aptana"
+msgstr "正在安裝 Aptana"
+
+#: src/common/apps_eclipse.py:633
+msgid "RadRails: Ruby development"
+msgstr "RadRails：Ruby 開發環境"
+
+#: src/common/apps_eclipse.py:634
+msgid "Over the past RadRails was called \"RDT\". RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
+msgstr "以前的 RadRails 叫做 RDT。RadRails 是從 http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle 安裝"
+
+#: src/common/apps_eclipse.py:650
+msgid "Installing RadRails\n"
+msgstr "正在安裝 RadRails\n"
+
+#: src/common/apps_eclipse.py:656
+msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
+msgstr "Mylyn 來自 http://www.eclipse.org/mylyn/downloads/"
+
+#: src/common/apps_eclipse.py:669
+msgid "Dynamic languages toolkit"
+msgstr "動態語言工具集"
+
+#: src/common/apps_eclipse.py:670
+msgid "It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/"
+msgstr "是從 http://download.eclipse.org/technology/dltk/updates-dev/2.0/ 安裝的"
+
+#: src/common/apps_eclipse.py:685
+msgid "Installing Dynamic languages toolkit\n"
+msgstr "正在安裝 動態語言工具集\n"
+
+#: src/common/apps_eclipse.py:694
+msgid "PDT: PHP development"
+msgstr "PDT：PHP 開發環境"
+
+#: src/common/apps_eclipse.py:695
+msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
+msgstr "PDT 來自 http://www.eclipse.org/pdt/downloads/"
+
+#: src/common/apps_eclipse.py:710
+msgid "Installing PDT\n"
+msgstr "正在安裝 PDT\n"
+
+#: src/common/apps_eclipse.py:715
+msgid "Subversive: Use SVN in Eclipse"
+msgstr "Subversive：在 Eclipse 中使用 SVN"
+
+#: src/common/apps_eclipse.py:716
+msgid "It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/"
+msgstr "是從 http://download.eclipse.org/technology/subversive/0.7/update-site/ 安裝它。"
+
+#: src/common/apps_eclipse.py:731
+msgid "Installing Subversive\n"
+msgstr "正在安裝 Subversive\n"
+
+#: src/common/apps_eclipse.py:736
+msgid "MTJ: J2ME development"
+msgstr "MTJ: J2ME 開發環境"
+
+#: src/common/apps_eclipse.py:737
+msgid "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/"
+msgstr "是從 http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/ 下載的"
+
+#: src/common/apps.py:37
+msgid "Bioclipse: an awesome Chemical and Biological Informatics application"
+msgstr "Bioclipse：很棒的化學、生物資訊學軟體"
+
+#: src/common/apps.py:38
+msgid "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
+msgstr "來自 http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
+
+#: src/common/apps.py:80
+msgid "BRL-CAD: Military solid modeling software"
+msgstr "BRL-CAD：軍用實體模型軟體"
+
+#: src/common/apps.py:82
+msgid "Official site: <span color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>. "
+msgstr "官方網站： <span color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>。 "
+
+#: src/common/apps.py:83
+msgid "Developed by Ballistic Research Laboratory. "
+msgstr "由 Ballistic 研究實驗室開發。 "
+
+#: src/common/apps.py:84
+msgid "A lot of commands are installed in /usr/brlcad/bin/"
+msgstr "/usr/brlcad/bin/ 下安裝了很多指令。"
+
+#: src/common/apps.py:122
+msgid "Create a directory \"Desktop\" in your home folder"
+msgstr "在您的家目錄裏建立 Desktop 目錄"
+
+#: src/common/apps.py:123
+msgid "Create a directory \"Desktop\" which is linked to the desktop. After that, you can chdir to the desktop folder by command \"cd ~/Desktop\"."
+msgstr "建立連結桌面的 Desktop 目錄；您可以用「cd ~/Desktop」變更目錄指令進桌面資料夾。"
+
+#: src/common/apps.py:154
+msgid "Electric: A software for IC design which supports VHDL and Verilog"
+msgstr "Electric：支援 VHDL 和 Verilog 的 IC 設計軟體"
+
+#: src/common/apps.py:155
+msgid "Official site: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
+msgstr "官方網站： <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
+
+#: src/common/apps.py:183
+msgid "Speed up Firefox"
+msgstr "Firefox 加速"
+
+#: src/common/apps.py:184
+msgid "Firefox is faster when Pango rendering is disabled. The trick is to launch Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus will create a new icon \"Firefox without Pango (faster)\" in the menu \"Applications\"-->\"Internet\"."
+msgstr "停用 Pango Render 可以加快 Firefox 執行速度。訣竅是用這個指令啓動 Firefox：「export MOZ_DISABLE_PANGO=1; firefox」。Ailurus 將在「應用程式 > Internet」選單中建立「Firefox (停用 Pango, 速度較快)」捷徑。"
+
+#: src/common/apps.py:208
+msgid "Firefox without Pango (faster)"
+msgstr "Firefox (停用 Pango, 速度較快)"
+
+#: src/common/apps.py:219
+msgid "Netbeans® 6.8"
+msgstr "Netbeans® 6.8"
+
+#: src/common/apps.py:221
+msgid "It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: http://netbeans.org/downloads/ ."
+msgstr "這是一個開放原始碼的整合開發程式，支援多種語言 (C、C++、Java、Ruby 等) 和多種框架 (J2SE、J2ME 等)。官方網站: http://netbeans.org/downloads/"
+
+#: src/common/apps.py:241
+msgid "Please select the folder where Netbeans is installed"
+msgstr "請選擇安裝 Netbeans 的資料夾"
+
+#: src/common/apps.py:333
+msgid "OpenJUMP: A geographic information system"
+msgstr "OpenJUMP：一個地理資訊系統軟體"
+
+#: src/common/apps.py:335
+msgid "Official site: <span color=\"blue\"><u>http://openjump.org/wiki/show/HomePage</u></span> ."
+msgstr "官方網站： <span color=\"blue\"><u>http://openjump.org/wiki/show/HomePage</u></span> 。"
+
+#: src/common/apps.py:371
+msgid "Query you before delete more than three files"
+msgstr "一次移除超過三個檔案前先詢問"
+
+#: src/common/apps.py:372
+msgid ""
+"If you try to delete more than three files by \"rm *\", BASH will ask you a question \"remove all argument?\" to make sure if you really want to delete files. This is useful if you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
+"The trick behind is to add this line into \"$HOME/.bashrc\".\n"
+"alias rm=\"rm -I\""
+msgstr ""
+"如果您想用「rm *」指令刪除超過三個檔案時，BASH 將會問「全部刪除嗎？」，以確認您真的是想這麼做。這在您把誤將「rm subdir/*」打成「rm subdir/ *」時會很有用。\n"
+"訣竅是在 \"$HOME/.bashrc\" 裏加入一行:\n"
+"alias rm=\"rm -I\""
+
+#: src/common/apps.py:481
+msgid "TeXLive 2009"
+msgstr "TeXLive 2009"
+
+#: src/common/apps.py:482
+msgid "TeXLive is obtained from http://www.tug.org/texlive/"
+msgstr "TeXLive 是從 http://www.tug.org/texlive/ 下載的"
+
+#: src/common/apps.py:511
+msgid "Unpacking ... Please wait for a few minutes."
+msgstr "正在解壓縮 ... 請您等待幾分鐘。"
+
+#: src/common/apps.py:542
+msgid "TeXLive is installed."
+msgstr "已安裝 TeXLive。"
+
+#: src/common/apps.py:542
+msgid "TeXLive will not work until you restart the computer."
+msgstr "在您重新啓動電腦後才能使用 TeXLive。"
+
+#: src/common/apps.py:560
+msgid "LaTeX Thesis Templates by Tsing Hua University, China"
+msgstr "LaTeX 論文模板 (由中國清華大學開發)"
+
+#: src/common/apps.py:562
+#, python-format
+msgid ""
+"These templates include undergraduate dissertation template, master thesis template and PhD thesis template. They are developed by Tsing Hua University, China. Official website is http://thuthesis.sourceforge.net/\n"
+"After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
+msgstr ""
+"這些模板包括大學畢業論文、碩士論文、博士論文模板。由中國清華大學開發，官方網站是 http://thuthesis.sourceforge.net/\n"
+"安裝後，%s 目錄中會出現 thuthesis.tgz 檔案。"
+
+#: src/common/apps.py:579
+msgid "Adblock+: Block 99% advertisement"
+msgstr "Adblock+：攔阻 99% 的廣告"
+
+#: src/common/apps.py:583
+msgid "It is able to block 99% ads and banners."
+msgstr "它能攔阻 99% 的廣告視窗、廣告圖片和廣告橫條。"
+
+#: src/common/apps.py:598
+msgid "Proxy management depending on a third party list."
+msgstr "按第三方發布的清單來管理代理伺服器。"
+
+#: src/common/apps.py:608
+msgid "Chrome Theme for Firefox 3.0.*"
+msgstr "Firefox 3.0.* 的 Chrome 佈景主題"
+
+#: src/common/apps.py:612
+msgid "A coat of Chrome for Firefox 3.0.*"
+msgstr "Firefox 3.0.* 的 Chrome 佈景主題"
+
+#: src/common/apps.py:622
+msgid "Chrome Theme for Firefox 3.5.*"
+msgstr "Firefox 3.5.* 的 Chrome 佈景主題"
+
+#: src/common/apps.py:626
+msgid "A coat of Chrome for Firefox 3.5.*"
+msgstr "Firefox 3.5.* 的 Chrome 外觀"
+
+#: src/common/apps.py:636
+msgid "CleanHide: Delete hidden text in web page"
+msgstr "CleanHide：刪除網頁內的隱藏文字"
+
+#: src/common/apps.py:640
+msgid "If you find that some web page use hidden text and you cannot copy text easily, try this!"
+msgstr "如果您發現某些網頁有隱藏文字而無法輕鬆複製時，試試這個！"
+
+#: src/common/apps.py:654
+msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
+msgstr "用微型狀態列追蹤進行中的下載和完成下載的檔案。"
+
+#: src/common/apps.py:664
+msgid "DownThemAll: A reliable multithread downloader"
+msgstr "DownThemAll：可靠的多線下載程式"
+
+#: src/common/apps.py:668
+msgid "It is able to download all images on web-pages."
+msgstr "它能下載網頁內的所有圖片。"
+
+#: src/common/apps.py:678
+msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
+msgstr "EasyDragToGo：拖曳文字、連結和圖片即可開啟新分頁"
+
+#: src/common/apps.py:692
+msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
+msgstr "FireBug：即時編輯與調試網頁的 CSS/HTML/JavaScript"
+
+#: src/common/apps.py:696
+msgid "This is a powerful web development tool."
+msgstr "強大的網頁開發工具。"
+
+#: src/common/apps.py:705
+msgid "FireGesture: Execute commands and user scripts by mouse gestures"
+msgstr "FireGesture：用滑鼠手勢執行命令和腳本"
+
+#: src/common/apps.py:709
+msgid "It supports five kinds of mouse gestures."
+msgstr "支援五種滑鼠手勢。"
+
+#: src/common/apps.py:719
+msgid "Flashgot: A lightweight and reliable download managers"
+msgstr "Flashgot：一個輕量、可靠的下載管理程式"
+
+#: src/common/apps.py:723
+msgid "It is able to download all the links, movies and audio clips of a page with a single click."
+msgstr "可以一鍵下載網頁上的所有連結、影片、音效檔。"
+
+#: src/common/apps.py:732
+msgid "FoxyProxy: One-click switching proxy"
+msgstr "FoxyProxy：單鍵切換代理伺服器"
+
+#: src/common/apps.py:749
+msgid "GreaseMonkey: Make change to web pages"
+msgstr "GreaseMonkey：變更網頁內容"
+
+#: src/common/apps.py:753
+msgid "This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.You can download hundreds of scripts from http://userscripts.org, or check out http://wiki.greasespot.net/ to get started to write your own scripts. The book \"Dive into Greasemonkey\" is worth reading. It can be downloaded freely from http://diveintogreasemonkey.org/ ."
+msgstr "這個擴充套件可以讓您利用腳本來變更網頁內容，比如加入 HTML 簽名、避開圖片驗證等。您可以從 http://userscripts.org 下載上百個腳本，也可以按照 http://wiki.greasespot.net/ 的指示撰寫自己的腳本。「Dive into Greasemonkey」這本書值得一讀，可以從 http://diveintogreasemonkey.org/ 免費下載。"
+
+#: src/common/apps.py:766
+msgid "Live HTTP Headers: View HTTP headers in real-time"
+msgstr "Live HTTP Headers：即時觀察 HTTP 伺服器的回應"
+
+#: src/common/apps.py:779
+msgid "NoScript: Allow active content to run only from sites you trust"
+msgstr "NoScript：只執行信任的網站上的內容"
+
+#: src/common/apps.py:784
+msgid "Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks."
+msgstr "只有信任的網站上的腳本才執行。使您免受跨站腳本攻擊。"
+
+#: src/common/apps.py:793
+msgid "SHA-DA network radio: Listen to and watch radio and TV programs in China"
+msgstr "沙大網路收音機：收聽收看全中國的廣播和電視節目"
+
+#: src/common/apps.py:808
+msgid "SeoQuake: Help you view search engine parameters of your web site"
+msgstr "SeoQuake：協助您查看網站搜索引擎的參數"
+
+#: src/common/apps.py:812
+msgid "It helps you promote your web sites."
+msgstr "協助您提升網站的人氣。"
+
+#: src/common/apps.py:821
+msgid "Tab Mix Lite CE: Re-open closed tabs"
+msgstr "Tab Mix Lite CE：重新開啟已關閉的分頁"
+
+#: src/common/apps.py:825
+msgid "Close tabs by double click tabs title. Re-open closed tabs."
+msgstr "雙擊分頁標題以關閉分頁。重新開啟已關閉的分頁。"
+
+#: src/common/apps.py:835
+msgid "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
+msgstr "Tamper Data：觀看、修改 HTTP/HTTPS 的 header，和發送需要的參數"
+
+#: src/common/apps.py:848
+msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
+msgstr "User Agent Switcher：將 Firefox 僞裝成其它瀏覽器。"
+
+#: src/common/apps.py:852
+msgid "It tells the remote websites that you are an IE user."
+msgstr "向連線網站虛報使用的是 IE 瀏覽器。"
+
+#: src/common/apps.py:861
+msgid "View Source Chart: Show pretty color-coded HTML source code"
+msgstr "View Source Char：顯示漂亮的彩色 HTML 原始碼"
+
+#: src/common/apps.py:865
+msgid "This extension helps you quickly scan and recognize a document's tags."
+msgstr "這個擴充套件可協助您快速檢視並辨認出文件中的標籤。"
+
+#: src/common/apps.py:874
+msgid "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
+msgstr "Weave Sync：無論您走到哪，都能同步書籤、瀏覽歷史和分頁。"
+
+#: src/common/apps.py:887
+msgid "Web Developer: Web page analysis tools"
+msgstr "Web Developer：網頁分析工具"
+
+#: src/common/apps.py:891
+msgid "Many developers installed it."
+msgstr "很多開發者都有安裝這個。"
+
+#: src/common/apps.py:900
+msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
+msgstr "Yet Another Smooth Scrolling：自訂頁面捲動效果"
+
+#: src/common/apps.py:914
+msgid "YSlow: web page performance tuning"
+msgstr "YSlow：網頁效能微調"
+
+#: src/common/apps.py:918
+msgid "It helps you improve web page performance. It tells you why web page is slow."
+msgstr "告訴您為何網頁速度很慢，用以協助您提高網頁效能。"
+
+#: src/common/hardwareinfo.py:47
+msgid "BIOS vendor:"
+msgstr "BIOS 製造者："
+
+#: src/common/hardwareinfo.py:54
+msgid "BIOS version:"
+msgstr "BIOS 版本："
+
+#: src/common/hardwareinfo.py:61
+msgid "BIOS release date:"
+msgstr "BIOS 釋出日期："
+
+#: src/common/hardwareinfo.py:73
+msgid "Motherboard name:"
+msgstr "主機板名稱："
+
+#: src/common/hardwareinfo.py:81
+msgid "Motherboard vendor:"
+msgstr "主機板製造者："
+
+#: src/common/hardwareinfo.py:108
+#, python-format
+msgid "CPU %s name:"
+msgstr "CPU %s 名稱："
+
+#: src/common/hardwareinfo.py:109
+msgid "CPU name:"
+msgstr "CPU 名稱："
+
+#: src/common/hardwareinfo.py:112
+#, python-format
+msgid "CPU %s Mips:"
+msgstr "CPU %s MIPS："
+
+#: src/common/hardwareinfo.py:113
+msgid "CPU Mips:"
+msgstr "CPU MIPS："
+
+#: src/common/hardwareinfo.py:115
+msgid "It is a measure for the computation speed. \"Mips\" is short for Millions of Instructions Per Second."
+msgstr "MIPS 是計算電腦速度的單位，為「每秒鐘百萬條指令」的縮寫。"
+
+#: src/common/hardwareinfo.py:117
+msgid "No"
+msgstr "否"
+
+#: src/common/hardwareinfo.py:124
+msgid "Yes!"
+msgstr "是！"
+
+#: src/common/hardwareinfo.py:125
+msgid "64 bit CPU?"
+msgstr "64 位元 CPU 嗎？"
+
+#: src/common/hardwareinfo.py:146
+msgid "CPU temperature"
+msgstr "CPU 溫度"
+
+#: src/common/hardwareinfo.py:157
+msgid "Total memory:"
+msgstr "總記憶體："
+
+#: src/common/hardwareinfo.py:170
+msgid "Display card:"
+msgstr "顯示卡："
+
+#: src/common/hardwareinfo.py:172
+msgid "Ethernet card:"
+msgstr "網路卡："
+
+#: src/common/hardwareinfo.py:174
+msgid "Audio card:"
+msgstr "音效卡："
+
+#: src/common/hardwareinfo.py:187
+msgid "charged"
+msgstr "充電完畢"
+
+#: src/common/hardwareinfo.py:188
+msgid "charging"
+msgstr "正在充電"
+
+#: src/common/hardwareinfo.py:189
+msgid "discharging"
+msgstr "未接電源"
+
+#: src/common/hardwareinfo.py:191
+msgid "Battery charging state:"
+msgstr "電池充電狀態："
+
+#: src/common/hardwareinfo.py:193
+msgid "Battery remaining capacity:"
+msgstr "電池剩餘電量："
+
+#: src/common/hardwareinfo.py:199
+msgid "Battery full capacity:"
+msgstr "電池最大容量："
+
+#: src/common/hardwareinfo.py:212
+#, fuzzy
+#| msgid "Audio card:"
+msgid "Sound card:"
+msgstr "音效卡："
+
+#: src/common/menu.py:43 src/common/menu.py:413
+msgid "Ailurus blog"
+msgstr "Ailurus 部落格"
+
+#: src/common/menu.py:65
+msgid "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong Univ., China."
+msgstr "版權所有 © 2007-2010，可信任數字技術實驗室，中國上海交通大學。"
+
+#: src/common/menu.py:126
+msgid "Welcome to leave response in blog~"
+msgstr "歡迎到部落格留言迴響～"
+
+#: src/common/menu.py:128
+msgid "Download daily-build version from"
+msgstr "要下載「開發中的版本」，可到"
+
+#: src/common/menu.py:135
+#, python-format
+msgid ""
+"\n"
+"This version is compiled at %s."
+msgstr ""
+"\n"
+"這個版本是在 %s 編譯。"
+
+#: src/common/menu.py:144
+msgid "We wish to express thankfulness to these projects:"
+msgstr "我們衷心感謝這些專案："
+
+#: src/common/menu.py:148
+msgid "We sincerely thank these people:"
+msgstr "我們衷心感謝這些人："
+
+#: src/common/menu.py:150
+msgid "The people who provide inspiration:"
+msgstr "提供靈感的人："
+
+#: src/common/menu.py:156
+msgid "The people who designs the logo:"
+msgstr "設計 logo 的人："
+
+#: src/common/menu.py:159
+msgid "The people who maintain PPA repository:"
+msgstr "維護 PPA 套件庫的人："
+
+#: src/common/menu.py:162
+msgid "The people who provide a lot of Linux skills:"
+msgstr "提供很多 Linux 訣竅的人："
+
+#: src/common/menu.py:165
+msgid "The people who provide a lot of Debian packages:"
+msgstr "提供很多 Debian 套件的人："
+
+#: src/common/menu.py:168
+msgid "The people who provide a lot of translation:"
+msgstr "提供很多翻譯的人："
+
+#: src/common/menu.py:169 src/common/menu.py:173 src/common/menu.py:180
+msgid "and many other people."
+msgstr "和其他許多人。"
+
+#: src/common/menu.py:171
+msgid "The people who report bugs:"
+msgstr "回報 bug 的人："
+
+#: src/common/menu.py:175
+msgid "The people who eliminate bugs:"
+msgstr "消滅 bug 的人："
+
+#: src/common/menu.py:178
+msgid "The people who publicize this software:"
+msgstr "宣傳這個軟體的人："
+
+#: src/common/menu.py:182
+msgid "and the people not mensioned here."
+msgstr "以及我們沒有在此提到的人。"
+
+#: src/common/menu.py:192
+msgid "Thanks"
+msgstr "鳴謝"
+
+#: src/common/menu.py:225
+msgid "Updates for Ailurus"
+msgstr "Ailurus 的更新"
+
+#: src/common/menu.py:230
+#, python-format
+msgid "A new version is released at %(date)s."
+msgstr "在 %(date)s 釋出新版本。"
+
+#: src/common/menu.py:236
+msgid "You have already installed the latest Ailurus version. :)"
+msgstr "您已經安裝最新版本的 Ailurus 了 :)"
+
+#: src/common/menu.py:252
+msgid "Back to previous pane"
+msgstr "向後回到上一個面板"
+
+#: src/common/menu.py:255
+msgid "Go forward one pane"
+msgstr "向前進一個面板"
+
+#: src/common/menu.py:286
+msgid "How to compile a LaTeX file into pdf file ?"
+msgstr "如何將 LaTeX 檔案編譯成 PDF 檔案？"
+
+#: src/common/menu.py:319
+msgid "How long after the server does not respond, give up downloading? (in seconds)"
+msgstr "要在伺服器停止回應多久後，讓 Ailurus 放棄下載？ (單位是秒)"
+
+#: src/common/menu.py:325
+msgid "How many times does Ailurus try to download the same resource?"
+msgstr "對於同一個資源，讓 Ailurus 最多重試下載多少次？"
+
+#: src/common/menu.py:328
+msgid "Set Ailurus download parameter"
+msgstr "設定 Ailurus 下載選項"
+
+#: src/common/menu.py:350
+msgid "Don't show \"tip of the day\" on start up"
+msgstr "啓動後不顯示「每日小秘訣」"
+
+#: src/common/menu.py:353 src/common/menu.py:361 src/common/menu.py:367
+#: src/common/menu.py:373 src/ubuntu/menu.py:94
+msgid "Preferences changed"
+msgstr "已變更偏好設定"
+
+#: src/common/menu.py:353 src/common/menu.py:367 src/common/menu.py:373
+#: src/common/menu.py:405 src/ubuntu/menu.py:94
+msgid "Your changes will take effect at the next time when the program starts up."
+msgstr "您做的變更將在下次程式啓動時生效。"
+
+#: src/common/menu.py:356
+msgid "Show a random Linux skill after you log in to GNOME"
+msgstr ""
+
+#: src/common/menu.py:361
+#, fuzzy
+#| msgid "Your changes will take effect at the next time when the program starts up."
+msgid "Your changes will take effect at the next time when you log in to GNOME."
+msgstr "您做的變更將在下次程式啓動時生效。"
+
+#: src/common/menu.py:364
+msgid "Show Chinese applications and Chinese web pages"
+msgstr "顯示只提供中文語言的軟體和網頁"
+
+#: src/common/menu.py:370
+msgid "Show Polish application and Polish web pages "
+msgstr "顯示只提供波蘭語言的軟體和網頁 "
+
+#: src/common/menu.py:376
+msgid "Set download parameters"
+msgstr "設定下載選項"
+
+#: src/common/menu.py:382
+msgid "English"
+msgstr "English"
+
+#: src/common/menu.py:383
+msgid "Bulgarian"
+msgstr "保加利亞語"
+
+#: src/common/menu.py:384
+msgid "Danish"
+msgstr "丹麥語"
+
+#: src/common/menu.py:385
+msgid "German"
+msgstr "德語"
+
+#: src/common/menu.py:386
+msgid "Spanish"
+msgstr "西班牙語"
+
+#: src/common/menu.py:387
+msgid "French"
+msgstr "法語"
+
+#: src/common/menu.py:388
+msgid "Italian"
+msgstr "意大利語"
+
+#: src/common/menu.py:389
+msgid "Polish"
+msgstr "波蘭語"
+
+#: src/common/menu.py:390
+msgid "Brazilian Portuguese"
+msgstr "巴西葡萄牙語"
+
+#: src/common/menu.py:391
+msgid "Russian"
+msgstr "俄語"
+
+#: src/common/menu.py:392
+msgid "Simplified Chinese / Mainland (zh_CN)"
+msgstr "簡體中文 / 中國大陸 (zh_CN)"
+
+#: src/common/menu.py:393
+msgid "Traditional Chinese / Hong Kong (zh_HK)"
+msgstr "正體中文 / 香港 (zh_HK)"
+
+#: src/common/menu.py:394
+msgid "Traditional Chinese / Taiwan (zh_TW)"
+msgstr "正體中文 / 台灣 (zh_TW)"
+
+#: src/common/menu.py:405
+msgid "Language changed"
+msgstr "已變更語言"
+
+#: src/common/menu.py:407
+msgid "GUI Language"
+msgstr "圖形界面語言"
+
+#: src/common/menu.py:417
+msgid "Check for updates"
+msgstr "檢查更新"
+
+#: src/common/menu.py:424
+msgid "Translate this application"
+msgstr "翻譯此應用程式"
+
+#: src/common/menu.py:428
+msgid "Get daily-build version (more features but more bugs)"
+msgstr "取得開發中的版本 (有更多功能，但是有更多 bug)"
+
+#: src/common/menu.py:432
+msgid "Special thanks"
+msgstr "衷心感謝"
+
+#: src/common/menu.py:435
+msgid "About"
+msgstr "關於"
+
+#: src/common/menu.py:449 src/common/setting.py:95 src/gnome/setting.py:61
+msgid "Information"
+msgstr "資訊"
+
+#: src/common/menu.py:450
+msgid "Adjustments"
+msgstr "調整"
+
+#: src/common/menu.py:451
+msgid "Applications"
+msgstr "應用程式"
+
+#: src/common/menu.py:452 src/ubuntu/menu.py:136
+msgid "Learning"
+msgstr "學習"
+
+#: src/common/menu.py:453 src/ubuntu/menu.py:137
+msgid "Preferences"
+msgstr "偏好設定"
+
+#: src/common/menu.py:454
+msgid "Help"
+msgstr "幫助"
+
+#: src/common/osinfo.py:39
+msgid "Host name:"
+msgstr "主機名稱："
+
+#: src/common/osinfo.py:45
+msgid "Kernel version:"
+msgstr "核心版本："
+
+#: src/common/osinfo.py:48
+msgid "Kernel arch:"
+msgstr "核心架構："
+
+#: src/common/osinfo.py:57
+msgid "X server version:"
+msgstr "X 伺服器版本："
+
+#: src/common/osinfo.py:64
+msgid "GCC version:"
+msgstr "GCC 版本："
+
+#: src/common/osinfo.py:71
+msgid "Java version:"
+msgstr "Java 版本："
+
+#: src/common/osinfo.py:77
+msgid "Python version:"
+msgstr "Python 版本："
+
+#: src/common/osinfo.py:95
+msgid "day"
+msgid_plural "days"
+msgstr[0] "天"
+
+#: src/common/osinfo.py:97
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "小時"
+
+#: src/common/osinfo.py:99
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "分鐘"
+
+#: src/common/osinfo.py:100
+msgid "Uptime:"
+msgstr "持續執行時間："
+
+#: src/common/osinfo.py:108
+msgid "Current user:"
+msgstr "目前使用者："
+
+#: src/common/osinfo.py:124
+msgid "Direct OpenGL:"
+msgstr "Direct OpenGL："
+
+#: src/common/osinfo.py:125
+msgid "OpenGL direct rendering"
+msgstr "OpenGL 直接渲染"
+
+#: src/common/osinfo.py:127
+msgid "OpenGL vendor:"
+msgstr "OpenGL 製造者："
+
+#: src/common/osinfo.py:128
+msgid "OpenGL vendor"
+msgstr "OpenGL 製造者"
+
+#: src/common/osinfo.py:130
+msgid "OpenGL renderer:"
+msgstr "OpenGL 渲染器："
+
+#: src/common/osinfo.py:131
+msgid "OpenGL renderer"
+msgstr "OpenGL 渲染器"
+
+#: src/common/osinfo.py:137
+msgid "Firefox version:"
+msgstr "Firefox 版本："
+
+#: src/common/setting.py:40
+msgid "0 = Swap little mem to disk"
+msgstr "0 = 置換少量記憶體到磁碟"
+
+#: src/common/setting.py:42
+msgid "100 = Swap a lot of mem to disk"
+msgstr "100 = 置換大量記憶體到磁碟"
+
+#: src/common/setting.py:82
+msgid "Change the tendency of swapping memory to disk"
+msgstr "變更置換記憶體到磁碟的傾向"
+
+#: src/common/setting.py:93
+msgid "Run command: "
+msgstr "執行指令： "
+
+#: src/common/setting.py:95
+msgid "Network restarted successfully."
+msgstr "重新啓動網路連線成功。"
+
+#: src/common/setting.py:97 src/common/setting.py:112
+msgid "Restart network"
+msgstr "重新啓動網路連線"
+
+#: src/common/setting.py:99
+msgid ""
+"These commands will be executed:\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call /org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call /org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+"sudo /etc/init.d/networking restart"
+msgstr ""
+"將執行以下指令：\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call /org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call /org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+"sudo /etc/init.d/networking restart"
+
+#: src/common/setting.py:124
+#, python-format
+msgid "No more than %s KB of memory can be reclaimed."
+msgstr "最多能回收 %s KB 的記憶體。"
+
+#: src/common/setting.py:154
+#, python-format
+msgid "%s KB memory was reclaimed."
+msgstr "回收了 %s KB 的記憶體。"
+
+#: src/common/setting.py:160 src/common/setting.py:174
+msgid "Reclaim memory"
+msgstr "回收記憶體"
+
+#: src/common/setting.py:162
+msgid ""
+"Reclaim memory which stores pagecache, dentries and inodes.\n"
+"This operation is done by \"echo 3 >/proc/sys/vm/drop_caches\""
+msgstr ""
+"回收記憶體中的分頁快取、目錄快取和 inode 快取。\n"
+"這個操作使用此指令完成：「echo 3 >/proc/sys/vm/drop_caches」"
+
+#: src/common/tips.py:35
+msgid ""
+"motto of Ailurus\n"
+"Give a man a fish and he can eat for a day; but if you teach him how to fish, he'll eat for a lifetime."
+msgstr ""
+"Ailurus 的座右銘\n"
+"授人以魚，不如授人以漁。"
+
+#: src/common/tips.py:38
+msgid ""
+"Clear Bash history\n"
+"history -c\n"
+"\n"
+"(Provided by Federico)"
+msgstr ""
+"清空 Bash 指令記錄\n"
+"history -c\n"
+"\n"
+"(Federico 提供)"
+
+#: src/common/tips.py:43
+msgid ""
+"If you want to use colorful \"ls\", that is, use colors to distinguish types of files, you can add these lines in ~/.bashrc:\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi\n"
+"\n"
+"(Provided by Romeo-Adrian Cioaba)"
+msgstr ""
+"如果要使用彩色的 ls, 以不同顔色來區分不同類型的檔案, 則您可以在 .bashrc 檔案加入以下幾行：\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi\n"
+"\n"
+"(Romeo-Adrian Cioaba 提供)"
+
+#: src/common/tips.py:52
+msgid ""
+"Display Linux distributor's ID\n"
+"lsb_release -is\n"
+"\n"
+"Display Linux release number\n"
+"lsb_release -rs\n"
+"\n"
+"Display Linux code name\n"
+"lsb_release -cs"
+msgstr ""
+"顯示本機 Linux 發行版的代號\n"
+"lsb_release -is\n"
+"\n"
+"顯示 Linux 發行版的版本\n"
+"lsb_release -rs\n"
+"\n"
+"顯示 Linux 的產品代號\n"
+"lsb_release -cs"
+
+#: src/common/tips.py:62
+msgid ""
+"Display machine hardware name\n"
+"uname -m"
+msgstr ""
+"顯示電腦硬體名稱\n"
+"uname -m"
+
+#: src/common/tips.py:65
+msgid ""
+"List all PCI devices, such as display card and ethernet card.\n"
+"lspci\n"
+msgstr ""
+"列出所有 PCI 裝置, 像是顯示卡和網路卡。\n"
+"lspci\n"
+
+#: src/common/tips.py:69
+msgid ""
+"Reclaim memory which stores pagecache, dentries and inodes\n"
+"echo 3 > /proc/sys/vm/drop_caches\n"
+msgstr ""
+"回收記憶體中儲存的的分頁快取、目錄快取和 inode 快取\n"
+"echo 3 > /proc/sys/vm/drop_caches\n"
+
+#: src/common/tips.py:73
+msgid ""
+"Display a list of modules in the Linux Kernel\n"
+"lsmod\n"
+msgstr ""
+"列出 Linux 核心載入的模組\n"
+"lsmod\n"
+
+#: src/common/tips.py:77
+msgid ""
+"List USB devices\n"
+"lsusb -v\n"
+msgstr ""
+"列出 USB 裝置\n"
+"lsusb -v\n"
+
+#: src/common/tips.py:81
+msgid ""
+"Display the status of ethernet card\n"
+"sudo ethtool eth0\n"
+msgstr ""
+"顯示網路卡的狀態\n"
+"sudo ethtool eth0\n"
+
+#: src/common/tips.py:85
+msgid ""
+"List hardware\n"
+"sudo lshw\n"
+msgstr ""
+"列出硬體資訊\n"
+"sudo lshw\n"
+
+#: src/common/tips.py:89
+msgid ""
+"List harddisk partitions\n"
+"sudo fdisk -l\n"
+msgstr ""
+"列出硬碟分割區\n"
+"sudo fdisk -l\n"
+
+#: src/common/tips.py:93
+msgid ""
+"Display SATA harddisk parameters\n"
+"sudo hdparm -I /dev/sda\n"
+msgstr ""
+"顯示 SATA 硬碟的參數\n"
+"sudo hdparm -I /dev/sda\n"
+
+#: src/common/tips.py:97
+msgid ""
+"Display disk space usage\n"
+"df -h\n"
+msgstr ""
+"顯示硬碟空間的使用情況\n"
+"df -h\n"
+
+#: src/common/tips.py:101
+msgid ""
+"Display file/folder space usage\n"
+"du -bsh FOLDER_NAME\n"
+msgstr ""
+"顯示檔案/資料夾所占的磁碟空間\n"
+"du -bsh FOLDER_NAME\n"
+
+#: src/common/tips.py:105
+msgid ""
+"Display amount of free and used memory\n"
+"free\n"
+msgstr ""
+"顯示記憶體可用量、已使用量\n"
+"free\n"
+
+#: src/common/tips.py:109
+msgid ""
+"Display processes\n"
+"ps -e\n"
+"Display a tree of processes\n"
+"pstree\n"
+"Display processes dynamically\n"
+"top\n"
+msgstr ""
+"列出執行中的程序\n"
+"ps -e\n"
+"顯示程序樹狀圖\n"
+"pstree\n"
+"動態顯示執行中程序\n"
+"top\n"
+
+#: src/common/tips.py:117
+msgid ""
+"Terminate a process with a given process id\n"
+"sudo kill -9 PROCESS_ID\n"
+msgstr ""
+"終止指定的 ID 的程序\n"
+"sudo kill -9 PROCESS_ID\n"
+
+#: src/common/tips.py:121
+msgid ""
+"Terminate all processes with a given name\n"
+"sudo killall PROCESS_NAME\n"
+msgstr ""
+"終止指定名稱的所有程序\n"
+"sudo killall PROCESS_NAME\n"
+
+#: src/common/tips.py:125
+msgid ""
+"List files which are opened by a given process\n"
+"lsof -p PROCESS_ID\n"
+"lsof -c PROCESS_NAME\n"
+msgstr ""
+"列出指定的程序開啟的所有檔案\n"
+"lsof -p PROCESS_ID\n"
+"lsof -c PROCESS_NAME\n"
+
+#: src/common/tips.py:130
+msgid ""
+"List processes which opened a given file\n"
+"lsof FILE_NAME\n"
+msgstr ""
+"列出指定的檔案是由哪些程序開啟\n"
+"lsof FILE_NAME\n"
+
+#: src/common/tips.py:134
+msgid ""
+"List processes which are using port 80\n"
+"lsof -i :80\n"
+msgstr ""
+"列出正在使用 80 埠的程序\n"
+"lsof -i :80\n"
+
+#: src/common/tips.py:138
+msgid ""
+"Configure an ADSL connection\n"
+"sudo pppoeconf\n"
+msgstr ""
+"設定 ADSL 連線\n"
+"sudo pppoeconf\n"
+
+#: src/common/tips.py:142
+msgid ""
+"Starts up ADSL connections\n"
+"sudo pon\n"
+"Shuts down ADSL connections\n"
+"sudo poff\n"
+msgstr ""
+"啓動 ADSL 連線\n"
+"sudo pon\n"
+"關閉 ADSL 連線\n"
+"sudo poff\n"
+
+#: src/common/tips.py:148
+msgid ""
+"Display MAC of a given IP address\n"
+"arping IP_ADDRESS\n"
+msgstr ""
+"從指定的 IP 位址查詢 MAC 位址\n"
+"arping IP_ADDRESS\n"
+
+#: src/common/tips.py:152
+msgid ""
+"Display NetBIOS name of a given IP address\n"
+"nmblookup -A IP_ADDRESS\n"
+msgstr ""
+"從指定的 IP 位址查詢 NetBIOS 名稱\n"
+"nmblookup -A IP_ADDRESS\n"
+
+#: src/common/tips.py:156
+msgid ""
+"Display IP address and MAC\n"
+"ifconfig -a\n"
+msgstr ""
+"顯示 IP 位址和 MAC 位址\n"
+"ifconfig -a\n"
+
+#: src/common/tips.py:160
+msgid ""
+"Display route\n"
+"netstat -rn\n"
+msgstr ""
+"顯示路由\n"
+"netstat -rn\n"
+
+#: src/common/tips.py:164
+msgid ""
+"Set MAC of ethernet interface\n"
+"sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
+msgstr ""
+"設定網路卡的 MAC 位址\n"
+"sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
+
+#: src/common/tips.py:168
+msgid ""
+"Display information of a domain name\n"
+"whois example.com\n"
+msgstr ""
+"顯示網域名稱的註冊資訊\n"
+"whois example.com\n"
+
+#: src/common/tips.py:172
+msgid ""
+"Display the network path to a given host\n"
+"tracepath example.com\n"
+msgstr ""
+"顯示連線到指定的主機的網路路徑\n"
+"tracepath example.com\n"
+
+#: src/common/tips.py:176
+msgid ""
+"Request an IP address from DHCP server\n"
+"sudo dhclient\n"
+msgstr ""
+"從 DHCP 伺服器取得 IP 位址\n"
+"sudo dhclient\n"
+
+#: src/common/tips.py:180
+msgid ""
+"Temporarily restart an init script\n"
+"sudo /etc/init.d/SCRIPT_NAME restart\n"
+"Temporarily stop an init script\n"
+"sudo /etc/init.d/SCRIPT_NAME stop\n"
+msgstr ""
+"臨時重啓動一個起始腳本\n"
+"sudo /etc/init.d/SCRIPT_NAME restart\n"
+"臨時停止一個起始腳本\n"
+"sudo /etc/init.d/SCRIPT_NAME stop\n"
+
+#: src/common/tips.py:186
+msgid ""
+"Add a user\n"
+"sudo adduser USER_NANE\n"
+"Delete a user\n"
+"sudo deluser USER_NAME\n"
+msgstr ""
+"增加一個使用者\n"
+"sudo adduser USER_NANE\n"
+"刪除一個使用者\n"
+"sudo deluser USER_NAME\n"
+
+#: src/common/tips.py:192
+msgid ""
+"Change user password\n"
+"sudo passwd USER_NAME\n"
+msgstr ""
+"變更使用者的密碼\n"
+"sudo passwd USER_NAME\n"
+
+#: src/common/tips.py:196
+msgid ""
+"Changes user fullname, office number, office extension, and home phone number information.\n"
+"sudo chfn USER_NAME\n"
+"Display user information\n"
+"finger USER_NAME\n"
+msgstr ""
+"變更使用者的姓名、辦公室地址、住宅電話等資訊。\n"
+"sudo chfn USER_NAME\n"
+"顯示使用者資訊\n"
+"finger USER_NAME\n"
+
+#: src/common/tips.py:202
+msgid ""
+"Temporarily prevent a user from logging in\n"
+"sudo usermod -L USER_NAME\n"
+"Revoke the operation above\n"
+"sudo usermod -U USER_NAME\n"
+msgstr ""
+"臨時禁止一個使用者登入\n"
+"sudo usermod -L USER_NAME\n"
+"取消上面的操作\n"
+"sudo usermod -U USER_NAME\n"
+
+#: src/common/tips.py:208
+msgid ""
+"Add a user to admin group\n"
+"sudo usermod -G admin -a USER_NAME\n"
+msgstr ""
+"將使用者加入管理員群組\n"
+"sudo usermod -G admin -a USER_NAME\n"
+
+#: src/common/tips.py:212
+msgid ""
+"Set the HTTP proxy\n"
+"export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
+msgstr ""
+"設定 HTTP 代理伺服器\n"
+"export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
+
+#: src/common/tips.py:216
+msgid ""
+"Modify the information displayed after logging in\n"
+"sudo vim /etc/motd.tail\n"
+msgstr ""
+"修改使用者登入系統後顯示的資訊\n"
+"sudo vim /etc/motd.tail\n"
+
+#: src/common/tips.py:220
+msgid ""
+"Choose the input method for X Window\n"
+"im-switch -c\n"
+msgstr ""
+"選擇 X Window 的輸入法\n"
+"im-switch -c\n"
+
+#: src/common/tips.py:224
+msgid ""
+"Convert the file name from GBK to UTF8\n"
+"convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
+msgstr ""
+"將檔案名稱從 GBK 編碼轉換為 UTF8 編碼\n"
+"convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
+
+#: src/common/tips.py:228
+msgid ""
+"Convert the file content from GBK to UTF8\n"
+"iconv -f gbk -t utf8 FILE_NAME\n"
+msgstr ""
+"將檔案內容從 GBK 編碼轉換為 UTF8 編碼\n"
+"iconv -f gbk -t utf8 FILE_NAME\n"
+
+#: src/common/tips.py:232
+msgid ""
+"Convert tags in '*.mp3' from GBK to UTF8\n"
+"find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
+msgstr ""
+"將 '*.mp3' 檔案中的標籤內容從 GBK 編碼轉換為 UTF8 編碼\n"
+"find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
+
+#: src/common/tips.py:236
+msgid ""
+"Read a long file\n"
+"less FILE_NAME\n"
+msgstr ""
+"讀一個長檔案\n"
+"less FILE_NAME\n"
+
+#: src/common/tips.py:240
+msgid ""
+"Print lines matching a pattern\n"
+"grep REG_EXP FILE_NAME\n"
+msgstr ""
+"以行為單位列出檔案中符合指定條件的部份\n"
+"grep REG_EXP FILE_NAME\n"
+
+#: src/common/tips.py:244
+msgid ""
+"Display a list of file name. The files contain a given string.\n"
+"grep -lr REG_EXP PATHNAME\n"
+msgstr ""
+"列出名稱符合指定字串的檔案。\n"
+"grep -lr REG_EXP PATHNAME\n"
+
+#: src/common/tips.py:248
+msgid ""
+"Display all '.txt' file\n"
+"find . -name '*.txt'\n"
+msgstr ""
+"列出所有 .txt 檔案\n"
+"find . -name '*.txt'\n"
+
+#: src/common/tips.py:252
+msgid ""
+"Create two empty files\n"
+"touch file_name_1 file_name_2\n"
+msgstr ""
+"建立兩個空白檔案\n"
+"touch file_name_1 file_name_2\n"
+
+#: src/common/tips.py:256
+msgid ""
+"Create directory. Create parent directories as needed.\n"
+"mkdir -p /tmp/a/b/c/d/e\n"
+msgstr ""
+"建立新目錄。如果不存在上層目錄，則會一起建立。\n"
+"mkdir -p /tmp/a/b/c/d/e\n"
+
+#: src/common/tips.py:260
+msgid ""
+"Change working directory to the home folder\n"
+"cd\n"
+"Change working directory to the previous working directory\n"
+"cd -\n"
+msgstr ""
+"將目前工作目錄變更為家目錄\n"
+"cd\n"
+"將目前工作目錄變更為上一個工作目錄\n"
+"cd -\n"
+
+#: src/common/tips.py:266
+msgid ""
+"Display hidden files\n"
+"ls -a\n"
+msgstr ""
+"列出隱藏檔案\n"
+"ls -a\n"
+
+#: src/common/tips.py:270
+msgid ""
+"Copy directory. Preserve links, file mode, ownership, timestamps. \n"
+"cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
+msgstr ""
+"複製目錄：保留連結、檔案權限、所有者、變更時間。\n"
+"cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
+
+#: src/common/tips.py:274
+msgid ""
+"Determine file type\n"
+"file FILE_NAME\n"
+msgstr ""
+"確認檔案類型\n"
+"file FILE_NAME\n"
+
+#: src/common/tips.py:278
+msgid ""
+"Output the last 6 lines\n"
+"tail -n 6 FILE_NAME\n"
+msgstr ""
+"顯示檔案的最後 6 行\n"
+"tail -n 6 FILE_NAME\n"
+
+#: src/common/tips.py:282
+msgid ""
+"Copy files via SSH\n"
+"scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
+msgstr ""
+"以 SSH 協定複製檔案\n"
+"scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
+
+#: src/common/tips.py:286
+msgid ""
+"Rename '*.rm' files to '*.rmvb' files\n"
+"rename 's/.rm$/.rmvb/' *\n"
+msgstr ""
+"將 '*.rm' 檔案重新命名為 '*.rmvb'\n"
+"rename 's/.rm$/.rmvb/' *\n"
+
+#: src/common/tips.py:290
+msgid ""
+"Change the file name to lowercase\n"
+"rename 'tr/A-Z/a-z/' *\n"
+msgstr ""
+"將檔案名稱改為小寫\n"
+"rename 'tr/A-Z/a-z/' *\n"
+
+#: src/common/tips.py:294
+msgid ""
+"Display subdirectories in current directory\n"
+"ls -d */.\n"
+msgstr ""
+"列出目前目錄下的子目錄\n"
+"ls -d */.\n"
+
+#: src/common/tips.py:298
+msgid ""
+"Display file number in current directory\n"
+"ls . | wc -w\n"
+msgstr ""
+"顯示目前目錄下的檔案數量\n"
+"ls . | wc -w\n"
+
+#: src/common/tips.py:302
+msgid ""
+"Extract \"*.gz\" file\n"
+"gunzip FILE_NAME.gz\n"
+"Extract \"*.tar.gz\" file\n"
+"tar zxf FILE_NAME.tar.gz\n"
+"Extract \"*.tar.bz2\" file\n"
+"tar jxf FILE_NAME.tar.bz2\n"
+msgstr ""
+"解壓縮 *.gz 檔案\n"
+"gunzip FILE_NAME.gz\n"
+"解壓縮 *.tar.gz 檔案\n"
+"tar zxf FILE_NAME.tar.gz\n"
+"解壓縮 *.tar.bz2 檔案\n"
+"tar jxf FILE_NAME.tar.bz2\n"
+
+#: src/common/tips.py:310
+msgid ""
+"Do compression\n"
+"tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
+"tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
+msgstr ""
+"壓縮檔\n"
+"tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
+"tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
+
+#: src/common/tips.py:315
+msgid ""
+"Displays a calendar\n"
+"cal\n"
+"cal MONTH YEAR\n"
+msgstr ""
+"顯示月曆\n"
+"cal\n"
+"cal MONTH YEAR\n"
+
+#: src/common/tips.py:320
+msgid ""
+"Set the date and time via NTP\n"
+"sudo ntpdate ntp.ubuntu.com\n"
+msgstr ""
+"用 NTP 服務設定系統日期和時間\n"
+"sudo ntpdate ntp.ubuntu.com\n"
+
+#: src/common/tips.py:324
+msgid ""
+"Poweroff your computer\n"
+"sudo halt\n"
+"sudo shutdown -h now\n"
+"Poweroff your computer in 23:00\n"
+"sudo shutdown -h 23:00\n"
+"Poweroff your computer after 60 minutes\n"
+"sudo shutdown -h +60\n"
+msgstr ""
+"關機\n"
+"sudo halt\n"
+"sudo shutdown -h now\n"
+"在晚上 23:00 關機\n"
+"sudo shutdown -h 23:00\n"
+"在 60 分鐘以後關機\n"
+"sudo shutdown -h +60\n"
+
+#: src/common/tips.py:333
+msgid ""
+"Reboot your computer\n"
+"sudo reboot\n"
+"sudo shutdown -r now\n"
+msgstr ""
+"重開機\n"
+"sudo reboot\n"
+"sudo shutdown -r now\n"
+
+#: src/common/tips.py:338
+msgid "If you want some program to start up automatically, please put '.desktop' files into '~/.config/autostart'\n"
+msgstr "如果您想讓某些程式自動執行，請將 '.desktop' 檔案放入 '~/.config/autostart' 目錄\n"
+
+#: src/common/tips.py:341
+msgid "You can configure \"preferred applications\" by this file \"~/.local/share/applications/mimeapps.list\"\n"
+msgstr "您可以在「~/.local/share/applications/mimeapps.list」設定用來開啟某些類型檔案的「首選應用程式」。\n"
+
+#: src/common/tips.py:344
+msgid ""
+"Continuously monitor the memory usage\n"
+"watch -d free\n"
+msgstr ""
+"連續監視記憶體使用情況\n"
+"watch -d free\n"
+
+#: src/common/tips.py:348
+msgid ""
+"Display HTTP HEAD response\n"
+"w3m -dump_head http://example.com\n"
+msgstr ""
+"顯示 HTTP 伺服器的 HEAD 回應\n"
+"w3m -dump_head http://example.com\n"
+
+#: src/common/tips.py:352
+msgid ""
+"Display file content with line number\n"
+"nl FILE_NAME\n"
+msgstr ""
+"附行號顯示檔案內容\n"
+"nl FILE_NAME\n"
+
+#: src/common/tips.py:356
+msgid ""
+"Eliminate Rootkit\n"
+"sudo rkhunter --checkall\n"
+msgstr ""
+"消滅木馬程式\n"
+"sudo rkhunter --checkall\n"
+
+#: src/common/tips.py:360
+msgid ""
+"Change hostname\n"
+"sudo hostname new_name\n"
+msgstr ""
+"變更主機名稱\n"
+"sudo hostname new_name\n"
+
+#: src/common/tips.py:364
+msgid ""
+"\"Tasksel\" group software packages into \"task\"s. You can select a \"task\" and then install all necessary software packages. It is easy to set up LAMP servers or cloud computing servers.\n"
+"Show all tasks\n"
+"tasksel --list\n"
+"Display the extended description of a task\n"
+"tasksel --task-desc lamp-server\n"
+"List the packages which are parts of a task\n"
+"tasksel --task-packages lamp-server\n"
+"Install/remove a task\n"
+"gksudo tasksel\n"
+msgstr ""
+"Tasksel 將軟體套件以「任務」分組。您可以選擇某個「任務」，並安裝所有必需的軟體包。使用 Tasksel 可以很容易架設 LAMP 伺服器或雲端計算伺服器。\n"
+"列出所有任務\n"
+"tasksel --list\n"
+"顯示任務詳細說明\n"
+"tasksel --task-desc lamp-server\n"
+"顯示任務包括哪些套件\n"
+"tasksel --task-packages lamp-server\n"
+"安裝/移除任務\n"
+"gksudo tasksel\n"
+
+#: src/fedora/apps.py:62 src/ubuntu/app0.py:109
+#: src/ubuntu/third_party_repos.py:212
+msgid "WINE"
+msgstr "WINE"
+
+#: src/fedora/apps.py:63
+msgid ""
+"This is an indispensable application for running Windows applications on Linux.\n"
+"Command: yum install wine"
+msgstr ""
+"這是要在 Linux 上執行 Windows 應用程式的必備軟體。\n"
+"指令： yum install wine wine-gecko"
+
+#: src/fedora/apps.py:71 src/ubuntu/app1.py:36
+msgid "Make GEdit more suitable for programmers"
+msgstr "讓 GEdit 更適用於撰寫程式"
+
+#: src/fedora/apps.py:72
+msgid ""
+"Change GEdit settings as follows. Automatically indent current line. Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T and Shift+Ctrl+T. Add spell check function in \"Tools\" menu. Do not automatically create a hidden copy of current file. Automatically save files once in each minute. Show line numbers. \n"
+"The trick behind is to change GConf values.\n"
+"/apps/gedit-2/preferences/editor/save/auto_save = true\n"
+"/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n"
+"/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n"
+"/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n"
+"/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n"
+"/apps/gedit-2/plugins/active-plugins += [\"indent\",\"codecomment\",\"spell\"]\n"
+"Then run this command: yum install gedit-plugins"
+msgstr ""
+"變更以下 GEdit 設定：自動縮排目前所在行、用 Ctrl-M 和 Shift-Ctrl-M 註解/反註解程式碼、用 Ctrl-T 和 Shift-Ctrl-T 縮排/反縮排程式碼、在「工具」選單加入拼字檢查功能、不自動為正在編輯的檔案建立隱藏備份檔、每分鐘自動儲存檔案、顯示行號。\n"
+"訣竅是變更 GConf 的以下幾個鍵值：\n"
+"/apps/gedit-2/preferences/editor/save/auto_save = true\n"
+"/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n"
+"/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n"
+"/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n"
+"/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n"
+"/apps/gedit-2/plugins/active-plugins += [\"indent\",\"codecomment\",\"spell\"]\n"
+"然後執行這個指令： yum install gedit-plugins"
+
+#: src/fedora/apps.py:112
+msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
+msgstr "壓縮/解壓縮 *.7z、*.cab 檔案"
+
+#: src/fedora/apps.py:113
+msgid "Command: yum install p7zip cabextract"
+msgstr "指令： yum install p7zip cabextract"
+
+#: src/fedora/apps.py:119 src/ubuntu/app1.py:156
+msgid "Make Evince be able to reveal Chinese pdf"
+msgstr "讓 Evince 能正常顯示中文 pdf"
+
+#: src/fedora/apps.py:120
+msgid "Command: yum install poppler-data"
+msgstr "指令： yum install poppler-data"
+
+#: src/fedora/apps.py:128 src/ubuntu/app1.py:202
+msgid "ChmSee: A CHM file viewer"
+msgstr "ChmSee：一個 CHM 檔閱讀程式"
+
+#: src/fedora/apps.py:129
+msgid "Command: yum install chmsee"
+msgstr "指令： yum install chmsee"
+
+#: src/fedora/apps.py:137
+msgid ""
+"The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n"
+"Command: yum install workrave"
+msgstr ""
+"這個程式定時提醒您離開電腦，稍微放鬆、休息一下，並且限制您每天使用電腦的總時間。\n"
+"指令： yum install workrave"
+
+#: src/fedora/apps.py:169 src/ubuntu/app1.py:247
+#, python-format
+msgid "\"%s\" is not installed."
+msgstr "未安裝 %s 。"
+
+#: src/fedora/apps.py:171 src/ubuntu/app1.py:249
+#, python-format
+msgid "The file \"%s\" does not exist."
+msgstr "檔案 %s 不存在。"
+
+#: src/fedora/apps.py:179 src/ubuntu/app1.py:257
+msgid "VIM"
+msgstr "VIM"
+
+#: src/fedora/apps.py:180
+msgid ""
+"Install VIM and make it more suitable for programming. The installation process is as follows. \"yum install vim-enhanced\" command is executed. Then these lines are appended into \"$HOME/.vimrc\" file: \n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
+msgstr ""
+"安裝 VIM 並設定使它更適合撰寫程式。安裝步驟：執行「yum install vim-enhanced」指令，然後在「$HOME/.vimrc」檔案中加入這幾行：\n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
+
+#: src/fedora/apps.py:206 src/ubuntu/app1.py:286
+msgid "Use colorful Bash prompt symbols"
+msgstr "將 Bash 提示符號改為彩色"
+
+#: src/fedora/apps.py:207
+msgid ""
+"Change Bash prompt symbols from \"[username@hostname ~]$ \" to \"<span color=\"#3dba34\">username@hostname</span> <span color=\"#729fcf\">~</span>$ \".\n"
+"The trick behind is to add this line into \"$HOME/.bashrc\".\n"
+"PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\] \\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\\\$ '"
+msgstr ""
+"將 Bash 提示符號，從「 [使用者名稱@主機名稱 ~]$ 」改為「 <span color=\"#3dba34\">使用者名稱@主機名稱</span> <span color=\"#729fcf\">~</span>$ 」。\n"
+"訣竅是在 \"$HOME/.bashrc\" 檔案中加入一行：\n"
+"PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\] \\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\\\$ '"
+
+#: src/fedora/apps.py:221 src/ubuntu/app1.py:300
+msgid "The color of bash prompt symbols is changed."
+msgstr "Bash 提示符號的顔色已變更。"
+
+#: src/fedora/apps.py:221 src/ubuntu/app1.py:300
+msgid "It will take effect at the next time you log in."
+msgstr "在您下次登入時會生效。"
+
+#: src/fedora/apps.py:228
+msgid "Enable \"Print to pdf\" capability."
+msgstr "啟用「列印成 pdf 檔案」功能"
+
+#: src/fedora/apps.py:229
+msgid "Command: yum install cups-pdf"
+msgstr "指令： yum install cups-pdf"
+
+#: src/fedora/apps.py:236
+msgid "Stardict"
+msgstr "星際譯王"
+
+#: src/fedora/apps.py:238
+msgid ""
+"Command: yum install stardict\n"
+"Moreover, you can install these dictionaries by yum.\n"
+"stardict-dic-cs_CZ: Czech dictionaries\n"
+"stardict-dic-en: English dictionaries\n"
+"stardict-dic-hi: Hindi dictionary\n"
+"stardict-dic-ja: Japanese dictionaries\n"
+"stardict-dic-ru: Russian dictionaries\n"
+"stardict-dic-zh_CN: Simplified Chinese dictionaries\n"
+"stardict-dic-zh_TW: Traditional Chinese dictionaries"
+msgstr ""
+"指令： yum install stardict\n"
+"您可以用 yum 安裝這些辭典。\n"
+"stardict-dic-cs_CZ: 捷克語詞典\n"
+"stardict-dic-en: 英語詞典\n"
+"stardict-dic-hi: 印度語詞典\n"
+"stardict-dic-ja: 日語詞典\n"
+"stardict-dic-ru: 俄語詞典\n"
+"stardict-dic-zh_CN: 簡體字的漢語詞典\n"
+"stardict-dic-zh_TW: 繁體字的漢語詞典"
+
+#: src/fedora/apps.py:252 src/ubuntu/app1.py:497
+msgid "Liferea: a RSS feed reader"
+msgstr "Liferea： RSS Feed 閱讀程式"
+
+#: src/fedora/apps.py:253
+msgid ""
+"This is a simple and easy used RSS feed reader.\n"
+"Command: yum install liferea"
+msgstr ""
+"這是一個簡單易用的 RSS feed 閱讀程式。\n"
+"指令： yum install liferea"
+
+#: src/fedora/apps.py:261 src/ubuntu/app2.py:272
+msgid "Useful applications for programming"
+msgstr "一些有用的程式撰寫工具"
+
+#: src/fedora/apps.py:262
+msgid ""
+"The tools are:\n"
+"<i>gcc: GNU C compiler.\n"
+"gcc-c++: GNU C++ compiler.\n"
+"ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n"
+"gmp-devel: GNU multiprecision arithmetic library.\n"
+"ncurses-devel: a library controlling writing to the console screen.\n"
+"qt3-devel: Trolltech Qt library, version 3.\n"
+"subversion: a version control system.\n"
+"git: a distributed version control system.\n"
+"</i>Command: yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel subversion git"
+msgstr ""
+"這些工具是:\n"
+"<i>gcc： GNU C 編譯器。\n"
+"gcc-c++： GNU C++ 編譯器。\n"
+"ctags： 在 vi 和 emacs 使用的原始碼分析程式，可以快速跳到指定符號的定義處。\n"
+"gmp-devel： GNU 多精度數學程式庫。\n"
+"ncurses-devel： 控制終端機畫面輸出的程式庫。\n"
+"qt3-devel： Trolltech 的 Qt 程式庫第三版。\n"
+"subversion： 版本控制系統。\n"
+"git： 發布版本控制系統。\n"
+"</i>指令： yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel subversion git"
+
+#: src/fedora/apps.py:285 src/ubuntu/app2.py:432
+msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
+msgstr "QtiPlot：Linux 下的 Origin 繪圖軟體"
+
+#: src/fedora/apps.py:286
+msgid ""
+"It is the indispensable plotting application for writing Physics experiments reports.\n"
+"Command: yum install qtiplot"
+msgstr ""
+"這是寫物理實驗報告時必備的繪圖程式。\n"
+"指令： yum install qtiplot"
+
+#: src/fedora/apps.py:295 src/ubuntu/app3.py:140
+msgid "A CAD software which supports DXF-format. "
+msgstr "一個支援 DXF 格式的 CAD 軟體。 "
+
+#: src/fedora/apps.py:302 src/ubuntu/app3.py:187
+msgid "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
+msgstr "停用 Getty ( Ctrl-Alt-F2 ... F6 )，Ctrl-Alt-F1 仍然可以使用"
+
+#: src/fedora/apps.py:303 src/ubuntu/app3.py:188
+msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
+msgstr "加速 Linux 啓動過程，釋放 2.5 MB 的記憶體 "
+
+#: src/fedora/apps.py:348
+msgid ""
+"A Matlab® compatible numerical computation appliation.\n"
+"Command: yum install qtoctave"
+msgstr ""
+"一個和 Matlab® 相容的數值計算程式。\n"
+"指令： yum install qtoctave"
+
+#: src/fedora/apps.py:356 src/ubuntu/app3.py:323
+msgid "Generic Genome Browser"
+msgstr "通用基因組瀏覽器"
+
+#: src/fedora/apps.py:357 src/ubuntu/app3.py:324
+msgid ""
+"Generic Genome Browser is a combination of database and interactive web page for manipulating and displaying annotations on genomes.\n"
+"<span color=\"red\">Due to the limitation of the authors' programming ability, \"Generic Genome Browser\" cannot be detected or removed by Ailurus.</span>"
+msgstr ""
+"通用基因組瀏覽器是資料庫庫和互動式網頁的結合，可以操作顯示基因組的註解。\n"
+"<span color=\"red\">礙於於作者的程式功力限制，Ailurus 無法偵測「通用基因組瀏覽器」的安裝狀態，也無法移除。</span>"
+
+#: src/fedora/apps.py:378
+msgid ""
+"This is a drawing program for young children three years and up.\n"
+"Command: yum install tuxpaint"
+msgstr ""
+"為三歲以上兒童設計的畫圖程式。\n"
+"指令： yum install tuxpaint"
+
+#: src/fedora/apps.py:387
+msgid ""
+"This is a suite of educational games for young children.\n"
+"Command: yum install childsplay"
+msgstr ""
+"為兒童設計的教育遊戲。\n"
+"指令： yum install childsplay"
+
+#: src/fedora/apps.py:396
+msgid ""
+"GCompris provides educational games for children aged 2 to 10.\n"
+"Command: yum install gcompris"
+msgstr ""
+"GCompris 是提供給 2 至 10 歲兒童的教育遊戲。\n"
+"指令： yum install gcompris"
+
+#: src/fedora/apps.py:405
+msgid ""
+"This is an IDE for Qt.\n"
+"Command: yum install qt-creator"
+msgstr ""
+"Qt 的整合開發環境。\n"
+"指令： yum install qt-creator"
+
+#: src/fedora/apps.py:414
+msgid ""
+"Kadu is an instant messenger, which is very popular in Poland.\n"
+"Command : yum install kadu"
+msgstr ""
+"Kadu 是在波蘭很流行的即時通訊程式。\n"
+"指令： yum install kadu"
+
+#: src/fedora/apps.py:423 src/ubuntu/app3.py:532
+msgid "Parcellite: clipboard manager"
+msgstr "Parcellite：剪貼簿管理程式"
+
+#: src/fedora/apps.py:424 src/ubuntu/app3.py:533
+msgid "This is a powerful clipboard manager. It can preserve 25 strings concurrently."
+msgstr "一個強力的剪貼簿管理程式，可以同時保存 25 組字符。"
+
+#: src/fedora/apps.py:431
+msgid "Enable \"sudo\""
+msgstr "啓用 sudo"
+
+#: src/fedora/apps.py:432
+msgid "If you enabled \"sudo\" and you want to execute commands as root, you can type command \"sudo COMMAND\" instead of complicated command \"su -c 'COMMAND'\". <span color=\"red\">Due to restriction on filesystem permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
+msgstr "啓用 sudo 後，您可以輸入「sudo 指令」以 root 身份執行指令，而不必再用複雜的「su -c '指令'」指令。<span color=\"red\">受檔案系統權限限制，Ailurus 無法檢測出 sudo 是否已啓用。</span> "
+
+#: src/fedora/apps.py:444
+msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
+msgstr "禁用 sudo；禁止您自己使用 sudo。"
+
+#: src/fedora/apps.py:453
+msgid "Put Selinux in permissive mode, instead of enforcing mode."
+msgstr "將 Selinux 從「禁止」模式變更為「允許」模式"
+
+#: src/fedora/apps.py:485 src/ubuntu/app3.py:596
+msgid "WallpaperTray: Randomly change GNOME desktop background"
+msgstr "WallpaperTray：隨機變更 GNOME 桌面背景"
+
+#: src/fedora/apps.py:487
+msgid ""
+"Command: yum install wp_tray\n"
+"After installation, please restart your computer. Then right-click GNOME panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
+msgstr ""
+"指令： yum install wp_tray\n"
+"安裝完成後，請重新啓動您的電腦。然後右鍵點擊 GNOME 面板，選擇「加入面板 > Wallpaper Tray」。"
+
+#: src/fedora/disabled_apps.py:36 src/ubuntu/app1.py:307
+#: src/ubuntu/quick_setup.py:265
+msgid "Multi-media codec"
+msgstr "多媒體解碼器"
+
+#: src/fedora/disabled_apps.py:38
+msgid "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
+msgstr "指令： yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
+
+#: src/fedora/disabled_apps.py:55 src/ubuntu/app1.py:350
+#: src/ubuntu/quick_setup.py:273
+msgid "Adobe® Flash plugin for web browser"
+msgstr "網頁瀏覽器的 Flash 插件"
+
+#: src/fedora/disabled_apps.py:56
+msgid "Command: yum install flash-plugin"
+msgstr "指令： yum install flash-plugin"
+
+#: src/fedora/disabled_apps.py:67 src/ubuntu/app1.py:390
+msgid "Adobe® PDF Reader"
+msgstr "Adobe® PDF Reader"
+
+#: src/fedora/disabled_apps.py:68 src/ubuntu/app1.py:391
+msgid "Official site: http://get.adobe.com/cn/reader/"
+msgstr "官方網站： http://get.adobe.com/tw/reader/"
+
+#: src/fedora/disabled_apps.py:102 src/ubuntu/app3.py:120
+msgid "A light weight pdf reader."
+msgstr "一個輕量型的 pdf 閱讀程式。"
+
+#: src/fedora/disabled_apps.py:103 src/ubuntu/app3.py:121
+msgid "Official site: <span color=\"blue\"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>"
+msgstr "官方網站： <span color=\"blue\"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>"
+
+#: src/fedora/disabled_apps.py:118
+msgid ""
+"If you cannot play RMVB video, try this application!\n"
+"Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+"You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
+msgstr ""
+"如果您無法播放 RMVB 影片，試試這個！\n"
+"官方網站： <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+"用 /opt/real/RealPlayer/realplay 指令來啓動 RealPlayer。"
+
+#: src/fedora/disabled_apps.py:134 src/ubuntu/app3.py:391
+msgid "Google Chrome browser"
+msgstr "Google Chrome 瀏覽器"
+
+#: src/fedora/disabled_apps.py:136 src/ubuntu/app3.py:393
+msgid ""
+"This is the web browser from Google. \n"
+"You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
+msgstr ""
+"這是 Google 提供的網路瀏覽器。\n"
+"您可以用 Google Chrome 開啟 https://tools.google.com/chrome/intl/pt/themes/index.html 網頁來變更佈景主題。"
+
+#: src/fedora/disabled_apps.py:151 src/ubuntu/app3.py:409
+msgid "\"google-chrome-beta\" is not installed. However, you have installed \"google-chrome-unstable\"."
+msgstr "沒有安裝 google-chrome-beta，但是您安裝了 google-chrome-unstable。"
+
+#: src/fedora/disabled_apps.py:156 src/ubuntu/app2.py:303
+msgid "It is the only professional virtual machine which is freely available under the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
+msgstr "這是唯一一個以 GPL 發布的專業虛擬機器軟體，官方網站： http://www.virtualbox.org/wiki/Downloads"
+
+#: src/fedora/disabled_apps.py:194 src/ubuntu/third_party_repos.py:254
+msgid "With Skype you can make free calls over the Internet to other people. "
+msgstr "使用 Skype，您可以利用網際網路免費講電話。 "
+
+#: src/fedora/disabled_apps.py:207 src/ubuntu/app3.py:575
+msgid "Adobe native 64bit Flash plugin for Firefox"
+msgstr "Firefox 使用的 Adobe 原生 64 位 Flash 插件"
+
+#: src/fedora/disabled_third_party_repos.py:70
+msgid "This repository provides flash-plugin and Adobe Reader."
+msgstr "這個套件庫提供 Flash 插件和 Adobe Reader。"
+
+#: src/fedora/disabled_third_party_repos.py:116
+msgid "It contains packages not available from the standard repositories."
+msgstr "有官方套件庫不提供的套件。"
+
+#: src/fedora/disabled_third_party_repos.py:133
+msgid "RPM Fusion (Free)"
+msgstr "RPM Fusion (自由軟體)"
+
+#: src/fedora/disabled_third_party_repos.py:135
+#: src/fedora/disabled_third_party_repos.py:164
+msgid ""
+"RPM Fusion provides software that not in the standard repositories.\n"
+"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" repository."
+msgstr ""
+"RPM Fusion 提供了不在官方套件庫內的軟體。\n"
+"「ATrpms」套件庫可能會與「RPM Fusion」套件庫相衝突。"
+
+#: src/fedora/disabled_third_party_repos.py:162
+msgid "RPM Fusion (Non-Free)"
+msgstr "RPM Fusion (非自由軟體)"
+
+#: src/fedora/disabled_third_party_repos.py:193
+msgid ""
+"ATrpms is another third party repository.\n"
+"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" repository."
+msgstr ""
+"ATrpms 是另一個第三方套件庫。\n"
+"「ATrpms」套件庫可能會與「RPM Fusion」套件庫相衝突。"
+
+#: src/fedora/disabled_third_party_repos.py:216
+msgid "This repository provides Picasa and Google Desktop."
+msgstr "這個套件庫提供 Picasa 和 Google 桌面。"
+
+#: src/fedora/disabled_third_party_repos.py:245
+msgid "This repository provides Google Chrome."
+msgstr "這個套件庫提供 Google Chrome。"
+
+#: src/fedora/disabled_third_party_repos.py:274
+msgid ""
+"This repository provides VirtualBox.\n"
+"Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
+msgstr ""
+"這個套件庫提供 VirtualBox。\n"
+"網頁： http://www.virtualbox.org/wiki/Linux_Downloads"
+
+#: src/fedora/osinfo.py:43
+msgid "Fedora version:"
+msgstr "Fedora 版本："
+
+#: src/gnome/apps.py:35
+msgid "Change background color of GNOME terminal to black."
+msgstr "將 GNOME 終端機的背景顏色改為黑色"
+
+#: src/gnome/apps.py:36
+msgid ""
+"Set background color to black. Set foreground color to white.\n"
+"The trick is to change GConf values:\n"
+"/apps/gnome-terminal/profiles/Default/use_theme_colors = False\n"
+"/apps/gnome-terminal/profiles/Default/background_color = #000000000000\n"
+"/apps/gnome-terminal/profiles/Default/foreground_color = #FFFFFFFFFFFF"
+msgstr ""
+"將背景顔色改為黑色，將前景顔色改為白色。\n"
+"訣竅是變更 GConf 的鍵值：\n"
+"/apps/gnome-terminal/profiles/Default/use_theme_colors = False\n"
+"/apps/gnome-terminal/profiles/Default/background_color = #000000000000\n"
+"/apps/gnome-terminal/profiles/Default/foreground_color = #FFFFFFFFFFFF"
+
+#: src/gnome/apps.py:51
+msgid "Add GB2312 detection ability to GEdit"
+msgstr "讓 GEdit 可偵測 GB2312 編碼"
+
+#: src/gnome/apps.py:52
+msgid ""
+"The trick behind is to change GConf values:\n"
+"/apps/gedit-2/preferences/encodings/auto_detected += [\"GB2312\", \"GBK\", \"GB18030\"]\n"
+"/apps/gedit-2/preferences/encodings/shown_in_menu += [\"GB2312\"]"
+msgstr ""
+"訣竅是變更 GConf 的鍵值：\n"
+"/apps/gedit-2/preferences/encodings/auto_detected += [\"GB2312\", \"GBK\", \"GB18030\"]\n"
+"/apps/gedit-2/preferences/encodings/shown_in_menu += [\"GB2312\"]"
+
+#: src/gnome/apps.py:67
+msgid "Speed up Nautilus"
+msgstr "Nautilus 加速"
+
+#: src/gnome/apps.py:68
+msgid ""
+"Change Nautilus settings: Do not count directory items. Do not preview sound. Do not show texts in icon. Use tighter layout. \n"
+"The trick behind is to change GConf settings as follows.\n"
+"/apps/nautilus/preferences/show_directory_item_counts = never\n"
+"/apps/nautilus/preferences/preview_sound = never\n"
+"/apps/nautilus/preferences/show_icon_text = never\n"
+"/apps/nautilus/icon_view/default_use_tighter_layout = true"
+msgstr ""
+"變更 Nautilus 設定：不統計目錄裏的檔案數量、不預覽音效檔、不在圖示中顯示文字、圖示間距拉近。\n"
+"訣竅是變更 GConf 的以下幾個鍵值。\n"
+"/apps/nautilus/preferences/show_directory_item_counts = never\n"
+"/apps/nautilus/preferences/preview_sound = never\n"
+"/apps/nautilus/preferences/show_icon_text = never\n"
+"/apps/nautilus/icon_view/default_use_tighter_layout = true"
+
+#: src/gnome/osinfo.py:53
+msgid "GNOME version:"
+msgstr "GNOME 版本："
+
+#: src/gnome/osinfo.py:57
+msgid "GNOME locale:"
+msgstr "GNOME 語言："
+
+#: src/gnome/setting.py:43
+msgid "Wallpaper:"
+msgstr "桌布："
+
+#: src/gnome/setting.py:43
+msgid "Choose the desktop wallpaper."
+msgstr "選擇桌布。"
+
+#: src/gnome/setting.py:45
+msgid "wallpaper"
+msgstr "平鋪"
+
+#: src/gnome/setting.py:45
+msgid "zoom"
+msgstr "放大"
+
+#: src/gnome/setting.py:45
+msgid "centered"
+msgstr "置中"
+
+#: src/gnome/setting.py:45
+msgid "scaled"
+msgstr "縮小"
+
+#: src/gnome/setting.py:45
+msgid "stretched"
+msgstr "配合螢幕"
+
+#: src/gnome/setting.py:49
+msgid "Style: "
+msgstr "樣式： "
+
+#: src/gnome/setting.py:51
+msgid "Desktop wallpaper"
+msgstr "桌布"
+
+#: src/gnome/setting.py:56
+msgid "Show desktop content"
+msgstr "顯示桌面內容"
+
+#: src/gnome/setting.py:57
+msgid ""
+"Show/hide icons on desktop.\n"
+"<span color=\"red\">The change will take effect at the next time GNOME starts up.</span>"
+msgstr ""
+"顯示/隱藏桌面上的所有圖示。\n"
+"<span color=\"red\">所有變更會在下次 GNOME 啓動時生效。</span>"
+
+#: src/gnome/setting.py:61
+msgid "Desktop content will be displayed at the next time GNOME starts up."
+msgstr "桌面內容會在下次 GNOME 啓動時顯示。"
+
+#: src/gnome/setting.py:64
+msgid "Display \"Mounted volumn\" icon"
+msgstr "顯示「已掛載儲存裝置」圖示"
+
+#: src/gnome/setting.py:65
+msgid "Put icons linking to mounted volumes on the desktop."
+msgstr "在桌面上顯示已掛載的儲存裝置的圖示。"
+
+#: src/gnome/setting.py:67
+msgid "Display \"Computer\" icon"
+msgstr "顯示「電腦」圖示"
+
+#: src/gnome/setting.py:68
+msgid "Put an icon linking to the computer location on the desktop."
+msgstr "在桌面上顯示連結到「電腦」的圖示。"
+
+#: src/gnome/setting.py:70
+msgid "Display \"Home folder\" icon"
+msgstr "顯示「家目錄」圖示"
+
+#: src/gnome/setting.py:71
+msgid "Put an icon linking to the home folder on the desktop."
+msgstr "在桌面上顯示連結到「家目錄」的圖示。"
+
+#: src/gnome/setting.py:73
+msgid "Display \"Network server\" icon"
+msgstr "顯示「網路伺服器」圖示"
+
+#: src/gnome/setting.py:74
+msgid "Put an icon linking to the Network Servers view on the desktop."
+msgstr "在桌面上顯示連結到「網路伺服器」的圖示。"
+
+#: src/gnome/setting.py:76
+msgid "Display \"Trash\" icon"
+msgstr "顯示「垃圾桶」圖示"
+
+#: src/gnome/setting.py:77
+msgid "Put an icon linking to the trash on the desktop."
+msgstr "在桌面上顯示連結到「垃圾桶」的圖示。"
+
+#: src/gnome/setting.py:79
+msgid "Desktop icons"
+msgstr "桌面圖示"
+
+#: src/gnome/setting.py:83
+msgid "Show icons of menu entries"
+msgstr "顯示選單項目的圖示"
+
+#: src/gnome/setting.py:85
+msgid "Whether menus may display an icon next to a menu entry."
+msgstr "是否在選單項目旁邊顯示圖示。"
+
+#: src/gnome/setting.py:87 src/gnome/setting.py:95
+msgid "Menu entry icons setting"
+msgstr "選單項目圖示設定"
+
+#: src/gnome/setting.py:91
+msgid "Show icon in buttons"
+msgstr "在按鈕中顯示圖示"
+
+#: src/gnome/setting.py:93
+msgid "Whether buttons may display an icon next to text."
+msgstr "是否在按鈕文字旁顯示圖示。"
+
+#: src/gnome/setting.py:99
+msgid "Disable terminal bell"
+msgstr "停用終端機聲響"
+
+#: src/gnome/setting.py:101
+msgid "If it is set to true, gnome terminal will not generate beep sound when error happens."
+msgstr "如果設定為 true，則 GNOME 終端機在出錯時不會發出聲響。"
+
+#: src/gnome/setting.py:103
+msgid "Terminal beep sound setting"
+msgstr "設定終端機聲響"
+
+#: src/gnome/setting.py:107 src/gnome/setting.py:111
+msgid "Automatically mount CD and flash disks"
+msgstr "自動掛載 CD 和隨身碟"
+
+#: src/gnome/setting.py:109
+msgid "If set to true, then Nautilus will automatically mount media such as CD and flash disks."
+msgstr "如果設定為 true，則 Nautilus 會自動掛載 CD 和 隨身碟等儲存裝置。"
+
+#: src/gnome/setting.py:133
+msgid "Larger font"
+msgstr "放大字體"
+
+#: src/gnome/setting.py:135
+msgid "Smaller font"
+msgstr "縮小字體"
+
+#: src/gnome/setting.py:141
+msgid "One-click changing font size"
+msgstr "單鍵變更字體大小"
+
+#: src/gnome/setting.py:144
+msgid "double-clicked by mouse left button:"
+msgstr "滑鼠左鍵雙擊："
+
+#: src/gnome/setting.py:145 src/gnome/setting.py:158
+msgid "The effects of double-clicking on the title bar."
+msgstr "雙擊視窗標題列時的效果。"
+
+#: src/gnome/setting.py:146
+msgid "clicked by mouse right button:"
+msgstr "滑鼠右鍵單擊："
+
+#: src/gnome/setting.py:147 src/gnome/setting.py:167
+msgid "The effects of right-clicking on the title bar."
+msgstr "右鍵單擊視窗標題列時的效果。"
+
+#: src/gnome/setting.py:148
+msgid "clicked by mouse wheel:"
+msgstr "滑鼠滾輪單擊："
+
+#: src/gnome/setting.py:149 src/gnome/setting.py:176
+msgid "The effects of clicking on the title bar by mouse wheel."
+msgstr "滑鼠滾輪單擊標題列時的效果。"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "maximize"
+msgstr "最大化"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "minimize"
+msgstr "最小化"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "roll up"
+msgstr "捲起視窗"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "put behind others"
+msgstr "放到其它視窗後面"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "maximize horizontally"
+msgstr "水平方向最大化"
+
+#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "maximize vertically"
+msgstr "垂直方向最大化"
+
+#: src/gnome/setting.py:165 src/gnome/setting.py:174
+msgid "show menu"
+msgstr "顯示選單"
+
+#: src/gnome/setting.py:179
+msgid "Window effect after that window title bar is ..."
+msgstr "點擊視窗標題列的效果 ..."
+
+#: src/gnome/setting.py:184
+msgid "Show \"Input method\" entry"
+msgstr "顯示「輸入法」項目"
+
+#: src/gnome/setting.py:185 src/gnome/setting.py:188
+msgid "This option affects GEdit and all GTK text-boxes."
+msgstr "這個選項會影響 GEdit 以及所有 GTK 文字方塊。"
+
+#: src/gnome/setting.py:187
+msgid "Show \"Insert Unicode control character\" entry"
+msgstr "顯示「插入 Unicode 控制碼」項目"
+
+#: src/gnome/setting.py:190
+msgid "Text-boxes context menu"
+msgstr "文字方塊的右鍵選單"
+
+#: src/gnome/setting.py:194
+msgid "Show login splash image: "
+msgstr "登入後顯示彈出圖片： "
+
+#: src/gnome/setting.py:196
+msgid "If its value is true, a splash image is displayed after you log in to GNOME."
+msgstr "如果設定值為 true，則在您登入 GNOME 後會顯示彈出圖片。"
+
+#: src/gnome/setting.py:198
+msgid "Splash image:"
+msgstr "彈出圖片："
+
+#: src/gnome/setting.py:200
+msgid "The file which is used as the GNOME splash image."
+msgstr "作為 GNOME 彈出圖片的檔案。"
+
+#: src/gnome/setting.py:202
+msgid "GNOME splash image"
+msgstr "GNOME 彈出圖片"
+
+#: src/gnome/setting.py:208
+msgid "These settings restrict current user only. They do not affect other users."
+msgstr "這些設定只限制目前使用者，不影響其他使用者。"
+
+#: src/gnome/setting.py:210
+msgid "Disable Alt+F2 (Launch application)"
+msgstr "停用 Alt-F2 (啓動應用程式)"
+
+#: src/gnome/setting.py:212
+msgid "Prevent current user from pressing Alt+F2 to launch applications."
+msgstr "禁止目前使用者按 Alt-F2 來啓動應用程式。"
+
+#: src/gnome/setting.py:214
+msgid "Disable Ctrl+Alt+L (Lock screen)"
+msgstr "停用 Ctrl-Alt-L (鎖定螢幕)"
+
+#: src/gnome/setting.py:216
+msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
+msgstr "禁止目前使用者按 Ctrl-Alt-L 鎖定螢幕。"
+
+#: src/gnome/setting.py:218
+msgid "Disable \"print\" entry in all menus."
+msgstr "在所有選單中停用「列印」項目。"
+
+#: src/gnome/setting.py:220
+msgid "Prevent current user from printing any documents."
+msgstr "禁止目前使用者列印任何文件。"
+
+#: src/gnome/setting.py:222
+msgid "Disable \"print setup\" entry in all menus."
+msgstr "在所有選單中停用「列印設定」項目。"
+
+#: src/gnome/setting.py:224
+msgid "Prevent current user from modifying print settings."
+msgstr "禁止目前使用者修改列印設定。"
+
+#: src/gnome/setting.py:226
+msgid "Disable \"save as\" entry in all menus."
+msgstr "在所有選單中停用「另存為...」項目。"
+
+#: src/gnome/setting.py:228
+msgid "Prevent current user from saving files by \"Save as ...\" dialog"
+msgstr "禁止目前使用者以「另存為 ...」對話方塊儲存檔案。"
+
+#: src/gnome/setting.py:230
+msgid "Forbid running multiple GNOME session."
+msgstr "禁止同時執行多個 GNOME 作業階段。"
+
+#: src/gnome/setting.py:232
+msgid "Prevent current user from switching to another account, unless she has logged out from GNOME before switching."
+msgstr "禁止目前使用者切換到另一個帳號，除非先登出 GNOME 後再切換帳號。"
+
+#: src/gnome/setting.py:234
+msgid "Restriction on current user"
+msgstr "限制目前使用者"
+
+#: src/gnome/setting.py:241
+#, python-format
+msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
+msgstr "縮圖快取的目錄是 %s/.thumbnails 。"
+
+#: src/gnome/setting.py:244
+msgid "Maximum size of thumbnail cache (in MBytes):"
+msgstr "縮圖快取的最大容量 (單位是 MB)："
+
+#: src/gnome/setting.py:246 src/gnome/setting.py:254 src/gnome/setting.py:262
+#, python-format
+msgid "GConf key: %s"
+msgstr "GConf 鍵： %s"
+
+#: src/gnome/setting.py:252
+msgid "Maximum time each thumbnail remains in cache (in days):"
+msgstr "縮圖快取保存多久 (單位是天):"
+
+#: src/gnome/setting.py:260
+msgid "Size of each thumbnail (in pixels):"
+msgstr "每個略圖的大小 (單位是像素)："
+
+#: src/gnome/setting.py:268
+msgid "Nautilus thumbnail settings"
+msgstr "Nautilus 縮圖設定"
+
+#: src/gnome/setting.py:274
+msgid "Remember running applications when you log out."
+msgstr "登出時記住正在執行的應用程式。"
+
+#: src/gnome/setting.py:276
+msgid "If its value is true, GNOME will remember the running applications when you log out, and re-launch these applications at the next time you log in to GNOME."
+msgstr "如果設定值為 true，則 GNOME 將記住您登出時正在執行的程式，當您下次登入時重新啓動這些程式。"
+
+#: src/gnome/setting.py:280
+msgid "Configure autostart applications"
+msgstr "設定自動啓動程式"
+
+#: src/gnome/setting.py:281
+msgid "Run command: gnome-session-properties"
+msgstr "執行指令: gnome-session-properties"
+
+#: src/gnome/setting.py:285
+msgid "Prompt you before you log out from GNOME."
+msgstr "在登出 GNOME 之前先詢問。"
+
+#: src/gnome/setting.py:287
+msgid "If its value is false, GNOME session will terminate immediately if you click the menu \"System\"->\"Log out\"."
+msgstr "如果設定值為 false，則當您點擊選單「系統 > 登出」後，GNOME 將立即結束。"
+
+#: src/gnome/setting.py:289
+msgid "Allow connection from remote hosts."
+msgstr "允許遠端主機連線。"
+
+#: src/gnome/setting.py:292
+msgid "GNOME session"
+msgstr "GNOME 作業階段"
+
+#: src/gnome/setting.py:299
+msgid "LCD brightness when on AC power:"
+msgstr "使用 AC 電源時的 LCD 螢幕亮度："
+
+#: src/gnome/setting.py:301 src/gnome/setting.py:307
+msgid "GConf Key: "
+msgstr "GConf 鍵： "
+
+#: src/gnome/setting.py:305
+msgid "LCD dimming amount when on battery:"
+msgstr "電池供電時，降低顯示器亮度的程度："
+
+#: src/gnome/setting.py:311
+msgid "Backlight"
+msgstr "背光"
+
+#: src/gnome/tips.py:35
+msgid ""
+"~/.thumbnails/ directory is a cache dir GNOME makes when you browse through your folders in nautilus. \n"
+"It contains thumbnail pictures of picture files you've previously looked at.\n"
+"\n"
+"You can get its total size by \n"
+"du -bs ~/.thumbnails/\n"
+"\n"
+"You can delete the files in the .thumbnails directory that haven't been accessed for seven days, to free disk space.\n"
+"find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
+msgstr ""
+"~/.thumbnails/ 是在您用 Nautilus® 瀏覽檔案目錄時，由 GNOME 自動建立的快取目錄。\n"
+"裏面有您之前瀏覽過的圖片的縮圖檔案。\n"
+"\n"
+"可以用這個指令得知該目錄用總容量 \n"
+"du -bs ~/.thumbnails/\n"
+"\n"
+"您可以刪除該目錄下超過 7 天未被存取的檔案以釋放磁碟空間。\n"
+"find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
+
+#: src/gnome/tips.py:45
+msgid ""
+"Capture screen after 10 seconds\n"
+"gnome-screenshot -d 10\n"
+"Capture current window after 10 seconds\n"
+"gnome-screenshot -wd 10\n"
+msgstr ""
+"10 秒後從螢幕截圖\n"
+"gnome-screenshot -d 10\n"
+"10 秒後從目前視窗截圖\n"
+"gnome-screenshot -wd 10\n"
+
+#: src/gnome/tips.py:51
+msgid ""
+"Start GConf editor:\n"
+"Press Alt+F2, type 'gconf-editor'."
+msgstr ""
+"啓動 GConf 編輯程式：\n"
+"按 Alt-F2 鍵，並輸入「gconf-editor」。"
+
+#: src/gnome/tips.py:54
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/interface/menus_have_icons\n"
+"If this is set to false, all icons in menu entries will be invisible.\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/interface/menus_have_icons\n"
+"如果設為 false，則不會顯示選單項目的圖示。\n"
+
+#: src/gnome/tips.py:59
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/preferences/show_desktop\n"
+"If this is set to true, then icons on the desktop will be displayed. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/preferences/show_desktop\n"
+"如果設為 true，則會顯示桌面上的圖示。 \n"
+
+#: src/gnome/tips.py:64
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/desktop/computer_icon_visible\n"
+"If this is set to true, an icon linking to the computer location will be put on the desktop. \n"
+"\n"
+"/apps/nautilus/desktop/computer_icon_name\n"
+"The custom name for the computer icon on the desktop. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/desktop/computer_icon_visible\n"
+"如果設為 true，則桌面上會顯示連結到「電腦」的圖示。\n"
+"\n"
+"/apps/nautilus/desktop/computer_icon_name\n"
+"在此自訂桌面上「電腦」圖示的名稱。 \n"
+
+#: src/gnome/tips.py:72
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/desktop/home_icon_visible\n"
+"If this is set to true, an icon linking to the home folder will be put on the desktop. \n"
+"\n"
+"/apps/nautilus/desktop/home_icon_name\n"
+"The custom name for the home icon on the desktop. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/desktop/home_icon_visible\n"
+"如果設為 true，則桌面上會顯示連結到您「家目錄」的圖示。\n"
+"\n"
+"/apps/nautilus/desktop/home_icon_name\n"
+"在此自訂桌面上「家目錄」圖示的名稱。 \n"
+
+#: src/gnome/tips.py:80
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/desktop/network_icon_visible\n"
+"If this is set to true, an icon linking to the Network Servers view will be put on the desktop. \n"
+"\n"
+"/apps/nautilus/desktop/network_icon_name\n"
+"Thes custom name for the network servers icon on the desktop. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/desktop/network_icon_visible\n"
+"如果設為 true，則桌面上將會顯示連結到「網路伺服器」的圖示。\n"
+"\n"
+"/apps/nautilus/desktop/network_icon_name\n"
+"在此自訂桌面上「網路伺服器」圖示的名稱。 \n"
+
+#: src/gnome/tips.py:88
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/desktop/trash_icon_visible\n"
+"If this is set to true, an icon linking to the trash will be put on the desktop. \n"
+"\n"
+"/apps/nautilus/desktop/trash_icon_name\n"
+"The custom name for the trash icon on the desktop. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/desktop/trash_icon_visible\n"
+"如果設為 true，則桌面上將會顯示連結到「垃圾桶」的圖示。\n"
+"\n"
+"/apps/nautilus/desktop/trash_icon_name\n"
+"在此自訂桌面上「垃圾桶」圖示的名稱。 \n"
+
+#: src/gnome/tips.py:96
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/desktop/volumes_visible\n"
+"If this is set to true, icons linking to mounted volumes will be put on the desktop. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/desktop/volumes_visible\n"
+"如果設為 true，則桌面上將會顯示「已掛載儲存裝置」的圖示。 \n"
+
+#: src/gnome/tips.py:101
+msgid ""
+"GConf key:\n"
+"/apps/metacity/general/button_layout\n"
+"Arrangement of buttons on the titlebar. \n"
+"The value should be a string, such as \"menu:minimize,maximize,spacer,close\". \n"
+"The visibility and position of titlebar buttons can be changed by this key.\n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/metacity/general/button_layout\n"
+"標題列按鈕的排列順序。\n"
+"該鍵的值應該是字串，像是「menu:minimize,maximize,spacer,close」。\n"
+"標題列按鈕是否顯示及位置均可以修改此鍵值來變更。\n"
+
+#: src/gnome/tips.py:108
+msgid ""
+"GConf key:\n"
+"/apps/metacity/general/action_double_click_titlebar\n"
+"This option determines the effects of double-clicking on the title bar,\n"
+"such as shade/unshade the window, maximize/unmaximize the window,\n"
+"maximize/unmaximize the window in horizontal direction only.\n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/metacity/general/action_double_click_titlebar\n"
+"這個選項用來定義雙擊標題列的效果，\n"
+"像是 捲起視窗/展開視窗、視窗最大化/還原最大化視窗、水平最大化/還原視窗 等等。\n"
+
+#: src/gnome/tips.py:115
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/preferences/show_advanced_permissions\n"
+"If set to true, then Nautilus lets you edit and display file permissions in a more unix-like way, \n"
+"accessing some more esoteric options. \n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/preferences/show_advanced_permissions\n"
+"如果設為 true，則 Nautilus 會讓您以更類似 Unix 系統的方式顯示和編輯檔案權限，\n"
+"也可以設定更多進階選項。 \n"
+
+#: src/gnome/tips.py:121
+msgid ""
+"GConf key:\n"
+"/apps/metacity/global_keybindings/\n"
+"/apps/metacity/keybinding_commands/\n"
+"Custom GNOME short-cut keys.\n"
+"\n"
+"For example, to start 'gconf-editor' by pressing 'F12', you can set:\n"
+"/apps/metacity/global_keybindings/run_command_1 = F12\n"
+"/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
+msgstr ""
+"GConf 鍵：\n"
+"/apps/metacity/global_keybindings/\n"
+"/apps/metacity/keybinding_commands/\n"
+"自訂 GNOME 快速鍵。\n"
+"\n"
+"例如，若想要按 F12 開啟 gconf-editor，可以這樣設定：\n"
+"/apps/metacity/global_keybindings/run_command_1 = F12\n"
+"/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
+
+#: src/gnome/tips.py:132
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/background/picture_filename\n"
+"File to use for the background image.\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/background/picture_filename\n"
+"用來當桌面背景的圖片檔。\n"
+
+#: src/gnome/tips.py:137
+msgid ""
+"GConf key:\n"
+"/apps/gedit-2/preferences/editor/undo/max_undo_actions\n"
+"Maximum number of actions that gedit will be able to undo or redo. Use \"-1\" for unlimited number of actions."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/gedit-2/preferences/editor/undo/max_undo_actions\n"
+"設定 gedit 可以復原/重作的最大次數，用 -1 表示不限制次數。"
+
+#: src/gnome/tips.py:141
+msgid ""
+"GConf key:\n"
+"/apps/gedit-2/preferences/ui/recents/max_recents\n"
+"Specifies the maximum number of recently opened files that will be displayed in the \"Recent Files\" submenu."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/gedit-2/preferences/ui/recents/max_recents\n"
+"設定在 GEdit 的「最近開啟檔案」內最大顯示多少項目。"
+
+#: src/gnome/tips.py:145
+msgid ""
+"GConf key:\n"
+"/apps/file-roller/general/compression_level\n"
+"Compression level used when adding files to an archive."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/file-roller/general/compression_level\n"
+"設定壓縮檔案的壓縮率。"
+
+#: src/gnome/tips.py:149
+msgid ""
+"GConf key:\n"
+"/apps/gnome-session/options/auto_save_session\n"
+"If its value is true, GNOME will remember the running applications when you log out, and re-launch these applications at the next time you log in to GNOME."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/gnome-session/options/auto_save_session\n"
+"如果設定為 true，則 GNOME 將記住您登出時正在執行的程式，當您下次登入時重新啓動這些程式。"
+
+#: src/gnome/tips.py:155
+msgid ""
+"GConf key:\n"
+"/apps/gnome-session/options/show_splash_screen\n"
+"If its value is true, a splash image is displayed after you log in to GNOME.\n"
+"\n"
+"/apps/gnome-session/options/splash_image\n"
+"The file which is used as the splash image."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/gnome-session/options/show_splash_screen\n"
+"如果設定值為 true，則在您登入 GNOME 後會顯示彈出圖片。\n"
+"\n"
+"/apps/gnome-session/options/splash_image\n"
+"用來當彈出圖片的圖片檔。。"
+
+#: src/gnome/tips.py:163
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/interface/show_input_method_menu\n"
+"If its value is true, a \"Change input method\" entry is added in the context menu of all GTK text-boxes, including GEdit."
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/interface/show_input_method_menu\n"
+"如果設定值為 true，則在 GTK 文字方塊內開啟右鍵選單時會出現「變更輸入法」項目。這個選項也會影響 GEdit。"
+
+#: src/gnome/tips.py:168
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/interface/show_unicode_menu\n"
+"If its value is true, an \"Insert Unicode control characters\" entry is added in the context menu of all GTK text-boxes, including GEdit."
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/interface/show_unicode_menu\n"
+"如果設定值為 true，則在 GTK 的文字方塊內開啟右鍵選單時會出現「插入 Unicode 控制碼」項目。這個選項也會影響 GEdit。"
+
+#: src/gnome/tips.py:172
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/preferences/show_advanced_permissions\n"
+"If its value is true, Nautilus lets you edit and display file permissions in a more unix-like way, accessing owner permissions, group premissions and other permissions."
+msgstr ""
+"GConf 鍵設定：\n"
+"/apps/nautilus/preferences/show_advanced_permissions\n"
+"如果設為 true，則 Nautilus 會讓您以更類似 Unix 系統的方式顯示和編輯檔案權限，可以設定擁有者權限、群組權限、其他人權限。"
+
+#: src/gnome/tips.py:176
+msgid ""
+"GConf key:\n"
+"/apps/nautilus/icon_view/thumbnail_size\n"
+"The default size of an icon for a thumbnail in the Nautilus icon view."
+msgstr ""
+"GConf 鍵：\n"
+"/apps/nautilus/icon_view/thumbnail_size\n"
+"若 Nautilus 用縮圖代替檔案圖示時，預設的縮圖大小 (單位是像素)。"
+
+#: src/gnome/tips.py:180
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/thumbnail_cache/maximum_size\n"
+"Maximum size of the Nautilus thumbnail cache, in megabytes. -1 means unlimited size."
+msgstr ""
+"GConf 鍵:\n"
+"/desktop/gnome/thumbnail_cache/maximum_size\n"
+"Nautilus 縮略圖緩存區的最大大小，單位是兆字節。設置為 -1 表示允許緩存區無限增長。"
+
+#: src/gnome/tips.py:184
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/thumbnail_cache/maximum_age\n"
+"Maximum age for files in the Nautilus thumbnail cache, in days. -1 means unlimited age."
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/thumbnail_cache/maximum_age\n"
+"Nautilus 縮圖快取最多保存多久，單位是天。-1 表示永久保存。"
+
+#: src/gnome/tips.py:188
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_command_line\n"
+"Prevent yourself from pressing Alt+F2 to launch applications -_-\n"
+msgstr ""
+"GConf key：\n"
+"/desktop/gnome/lockdown/disable_command_line\n"
+"禁止自己按 Alt-F2 來啓動應用程式 -_-\n"
+
+#: src/gnome/tips.py:190 src/gnome/tips.py:194 src/gnome/tips.py:198
+#: src/gnome/tips.py:202 src/gnome/tips.py:206 src/gnome/tips.py:210
+msgid "This configuration does not affect other users."
+msgstr "這個設定不會影響其它使用者。"
+
+#: src/gnome/tips.py:192
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_lock_screen\n"
+"Prevent yourself from pressing Ctrl+Alt+L to lock screen -_-\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/lockdown/disable_lock_screen\n"
+"禁止自己按 Ctrl-Alt-L 鎖定螢幕 -_-\n"
+
+#: src/gnome/tips.py:196
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_printing\n"
+"Prevent yourself from printing any documents -_-\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/lockdown/disable_printing\n"
+"禁止自己列印任何文件 -_-\n"
+
+#: src/gnome/tips.py:200
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_print_setup\n"
+"Prevent yourself from modifying print settings -_-\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/lockdown/disable_print_setup\n"
+"禁止自己修改列印設定 -_-\n"
+
+#: src/gnome/tips.py:204
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_save_to_disk\n"
+"Prevent yourself from using \"Save as ...\" dialog -_-\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/lockdown/disable_save_to_disk\n"
+"禁止自己使用「另存為 ...」對話方塊 -_-\n"
+
+#: src/gnome/tips.py:208
+msgid ""
+"GConf key:\n"
+"/desktop/gnome/lockdown/disable_user_switching\n"
+"Prevent yourself from switching to another account, unless you log out from GNOME first. -_-\n"
+msgstr ""
+"GConf 鍵：\n"
+"/desktop/gnome/lockdown/disable_user_switching\n"
+"禁止自己切換到另一個帳號，除非先登出 GNOME。 -_-\n"
+
+#: src/ubuntu/app_not_opensource.py:36
+msgid "Alice: A new way to learn programming"
+msgstr "Alice：學習撰寫程式的新方式"
+
+#: src/ubuntu/app_not_opensource.py:38
+msgid "A storytelling application, especially appropriate for middle school students."
+msgstr "一個講故事的軟體，特別適合中學生。"
+
+#: src/ubuntu/app_not_opensource.py:39
+msgid "Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
+msgstr "官方網站： <span color=\"blue\"><u>http://www.alice.org/</u></span> 。"
+
+#: src/ubuntu/app_not_opensource.py:80 src/ubuntu/quick_setup.py:270
+msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
+msgstr "Alipay (支付寶) 的 Firefox 插件"
+
+#: src/ubuntu/app_not_opensource.py:81
+msgid "Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>"
+msgstr "官方網站： <span color='blue'><u>http://blog.alipay.com/301.html</u></span>"
+
+#: src/ubuntu/app_not_opensource.py:123
+msgid "Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons. This is a full 3d style space shooter game. It supports mouse, keyboard and joystick control. Official site: http://www.viewizard.com/"
+msgstr "駕駛太空船和侵略者戰鬥！在戰鬥中去得金錢，升級飛船的護盾和武器；這是 3D 的太空射擊遊戲，可以用滑鼠、鍵碟、搖桿操控。官方網站: http://www.viewizard.com/"
+
+#: src/ubuntu/app_not_opensource.py:160
+msgid "Evermore Integrated Office 2009 free version"
+msgstr "永中 EIOffice 2009 (免費版)"
+
+#: src/ubuntu/app_not_opensource.py:161
+msgid "It is able to edit text, spreadsheets, and slides. Official site: <span color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>"
+msgstr "能做文書編輯、試算表、簡報投影片。官方網站： <span color=\"blue\"><u>http://tw.evermoresw.com/webtr/download/download_eioffice_trial.jsp</u></span>"
+
+#: src/ubuntu/app_not_opensource.py:178
+msgid "Clipboard arts are to be installed."
+msgstr "即將安裝剪貼簿畫作。"
+
+#: src/ubuntu/app_not_opensource.py:179
+msgid "Help files are to be installed."
+msgstr "即將安裝說明檔。"
+
+#: src/ubuntu/app_not_opensource.py:180
+msgid "Science editor images are to be installed."
+msgstr "即將安裝 Science 編輯圖片。"
+
+#: src/ubuntu/app_not_opensource.py:181
+msgid "Templates are to be installed."
+msgstr "即將安裝模板"
+
+#: src/ubuntu/app_not_opensource.py:190
+msgid "Installing EIOffice"
+msgstr "正在安裝 永中 Office"
+
+#: src/ubuntu/app_not_opensource.py:204
+msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
+msgstr "LaTeX 論文模板 (由中國科學院開發)"
+
+#: src/ubuntu/app_not_opensource.py:206
+#, python-format
+msgid "After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
+msgstr "安裝後，%s 資料夾內會出現 CASthesis.zip 檔案。"
+
+#: src/ubuntu/app_not_opensource.py:221
+msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
+msgstr "LaTeX 論文模板 (由中國西安交通大學開發)"
+
+#: src/ubuntu/app_not_opensource.py:223
+#, python-format
+msgid "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
+msgstr "安裝後，%s 資料夾內會出現 XJTUthesis.rar 檔案。"
+
+#: src/ubuntu/app_not_opensource.py:238
+msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
+msgstr "LaTeX 論文模板 (由中國哈爾濱工業大學開發)"
+
+#: src/ubuntu/app_not_opensource.py:240
+#, python-format
+msgid "After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
+msgstr "安裝後，%s 資料夾內會出現 HITthesis.rar 檔案。"
+
+#: src/ubuntu/app_not_opensource.py:264
+msgid "Download via bittorrent + Search videos + Play videos"
+msgstr "用 bittorrent 下載 + 搜尋影片 + 播放影片"
+
+#: src/ubuntu/app_not_opensource.py:296
+msgid "JavaScript Debugger: a powerful JavaScript debugger"
+msgstr "JavaScript Debugger：強大的 JavaScript 除錯工具"
+
+#: src/ubuntu/app_not_opensource.py:309
+msgid "Mac OS X Theme"
+msgstr "Mac OS X 佈景主題"
+
+#: src/ubuntu/app_not_opensource.py:323
+msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
+msgstr "NetVideoHunter：從影片共享網站下載影片"
+
+#: src/ubuntu/app_not_opensource.py:337
+msgid "Personas: One-click changing Firefox skin"
+msgstr "Personas：單鍵變更 Firefox 外觀"
+
+#: src/ubuntu/app_not_opensource.py:341
+msgid "Theme your browser according to your mood, hobby or season."
+msgstr "根據您的心情、喜好、天氣來變更瀏覽器的佈景主題。"
+
+#: src/ubuntu/app0.py:36
+msgid "SUN Java® 6."
+msgstr "SUN Java® 6。"
+
+#: src/ubuntu/app0.py:37
+msgid ""
+"<span color=\"red\">You should manually agree a license during the installation.</span>\n"
+"In the installation process, these commands will be executed: \"sudo apt-get install sun-java6-jdk\" and \"update-java-alternatives -s java-6-sun\". Then these environment variables is added into file \"/etc/environment\", which are JAVA_HOME, JAVA_BIN and CLASSPATH."
+msgstr ""
+"<span color=\"red\">在安裝過程中，您必須手動同意授權條款。</span>\n"
+"安裝步驟：首先會執行「sudo apt-get install sun-java6-jdk」和「update-java-alternatives -s java-6-sun」指令，然後在 /etc/environment 檔案中加入 JAVA_HOME、JAVA_BIN 和 CLASSPATH 環境變數。"
+
+#: src/ubuntu/app0.py:76
+msgid "Eliminate Chinese font bug in SUN Java® 6"
+msgstr "去除 SUN Java® 6 的中文字型錯誤"
+
+#: src/ubuntu/app0.py:77
+msgid ""
+"Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/\n"
+"cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf"
+msgstr ""
+"指令： cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/\n"
+"cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf"
+
+#: src/ubuntu/app0.py:110
+msgid ""
+"This is an indispensable application for running Windows applications on Linux.\n"
+"Command: sudo apt-get install wine wine-gecko"
+msgstr ""
+"這是要在 Linux 上執行 Windows 應用程式的必備軟體。\n"
+"指令： sudo apt-get install wine wine-gecko"
+
+#: src/ubuntu/app0.py:133
+msgid "WINE &amp; Wen-Quan-Yi Chinese font"
+msgstr "WINE &amp; 文泉驛正黑中文字型"
+
+#: src/ubuntu/app0.py:134
+msgid ""
+"WINE is an indispensable application for running Windows applications on Linux.\n"
+"During the installation process, firstly \"sudo apt-get install wine wine-gecko ttf-wqy-zenhei\" command is executed, then Wen-Quan-Yi font is used as default Chinese font."
+msgstr ""
+"WINE 是要在 Linux 上執行 Windows 應用程式的必備軟體。\n"
+"安裝步驟：首先執行「sudo apt-get install wine wine-gecko ttf-wqy-zenhei」指令，然後將文泉驛正黑設為預設的中文字型。"
+
+#: src/ubuntu/app0.py:169
+msgid "SUN_JDK6 is required. It is to be installed."
+msgstr "需要 SUN JDK6，即將安裝。"
+
+#: src/ubuntu/app0.py:179
+msgid "WINE is required. It is to be installed."
+msgstr "需要 WINE，即將安裝。"
+
+#: src/ubuntu/app1.py:37
+msgid ""
+"Change GEdit settings as follows. Automatically indent current line. Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T and Shift+Ctrl+T. Add spell check function in \"Tools\" menu. Do not automatically create a hidden copy of current file. Automatically save files once in each minute. Show line numbers. \n"
+"The trick behind is to change GConf values.\n"
+"/apps/gedit-2/preferences/editor/save/auto_save = true\n"
+"/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n"
+"/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n"
+"/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n"
+"/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n"
+"/apps/gedit-2/plugins/active-plugins += [\"indent\",\"codecomment\",\"spell\"]\n"
+"Then run this command: sudo apt-get install gedit-plugins"
+msgstr ""
+"變更以下 GEdit 設定：自動縮排目前所在行、用 Ctrl-M 和 Shift-Ctrl-M 註解/反註解程式碼、用 Ctrl-T 和 Shift-Ctrl-T 縮排/反縮排程式碼、在「工具」選單加入拼字檢查功能、不自動為正在編輯的檔案建立隱藏備份、每分鐘自動保存檔案、顯示行號。\n"
+"秘密是設定 GConf。\n"
+"/apps/gedit-2/preferences/editor/save/auto_save = true\n"
+"/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n"
+"/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n"
+"/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n"
+"/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n"
+"/apps/gedit-2/plugins/active-plugins += [\"indent\",\"codecomment\",\"spell\"]\n"
+"然後執行這個指令: sudo apt-get install gedit-plugins"
+
+#: src/ubuntu/app1.py:102 src/ubuntu/quick_setup.py:264
+msgid "Full language support and input method"
+msgstr "完整的語言支援和輸入法"
+
+#: src/ubuntu/app1.py:103
+msgid "Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n"
+msgstr "由於 Live CD 容量限制，Ubuntu 光碟上的語言支援並不完整。\n"
+
+#: src/ubuntu/app1.py:130
+msgid "Command: "
+msgstr "指令： "
+
+#: src/ubuntu/app1.py:145 src/ubuntu/quick_setup.py:266
+msgid "Decompression software: 7z, rar, cab, ace"
+msgstr "解壓縮軟體：7z、rar、cab、ace"
+
+#: src/ubuntu/app1.py:146
+msgid "Command: sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full cabextract unace"
+msgstr "指令： sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full cabextract unace"
+
+#: src/ubuntu/app1.py:157
+msgid "Command: sudo apt-get install poppler-data"
+msgstr "指令： sudo apt-get install poppler-data"
+
+#: src/ubuntu/app1.py:203
+msgid "Command: sudo apt-get install chmsee"
+msgstr "指令： sudo apt-get install chmsee"
+
+#: src/ubuntu/app1.py:213
+msgid ""
+"The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n"
+"Command: sudo apt-get install workrave"
+msgstr ""
+"這個程式定時提醒您離開電腦，稍微放鬆、休息一下，並且限制您每天使用電腦的總時間。\n"
+"指令： sudo apt-get install workrave"
+
+#: src/ubuntu/app1.py:258
+msgid ""
+"Install VIM and make it more suitable for programming. The installation process is as follows. \"sudo apt-get install vim\" command is executed. Then these lines are appended into \"$HOME/.vimrc\" file: \n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
+msgstr ""
+"安裝 VIM 並設定使它更適合撰寫程式。安裝步驟：執行「sudo apt-get install vim」指令，然後在「$HOME/.vimrc」檔案中加入這幾行：\n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
+
+#: src/ubuntu/app1.py:287
+msgid ""
+"Change Bash prompt symbols from \"username@hostname:~$ \" to \"<span color=\"#3dba34\">username@hostname</span>:<span color=\"#729fcf\">~</span>$ \".\n"
+"The trick behind is to add this line into \"$HOME/.bashrc\".\n"
+"PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
+msgstr ""
+"將 Bash 提示符號，從「使用者名稱@主機名稱:~$ 」改為「 <span color=\"#3dba34\">使用者名稱@主機名稱</span>:<span color=\"#729fcf\">~</span>$ 」。\n"
+"訣竅是在 $HOME/.bashrc 檔案裏加入一行：\n"
+"PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
+
+#: src/ubuntu/app1.py:309
+msgid "Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
+msgstr "指令： sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
+
+#: src/ubuntu/app1.py:322
+msgid "Enable \"Print to pdf\" capability and eliminate \"Cannot print\" bug"
+msgstr "啟用「列印成 pdf 檔案」功能，並去除 cups 無法列印的問題"
+
+#: src/ubuntu/app1.py:323
+msgid "The installation process is as follows. Firstly, the command \"sudo apt-get install cups-pdf\" is launched. Then a bug in \"/etc/apparmor.d/usr.sbin.cupsd\" file is eliminated."
+msgstr "安裝步驟：首先執行「sudo apt-get install cups-pdf」指令，然後除去 /etc/apparmor.d/usr.sbin.cupsd 檔案中的一個問題。"
+
+#: src/ubuntu/app1.py:351
+msgid "Command: sudo apt-get install flashplugin-installer"
+msgstr "指令： sudo apt-get install flashplugin-installer"
+
+#: src/ubuntu/app1.py:359 src/ubuntu/quick_setup.py:274
+msgid "Fix font bug in Flash plugin"
+msgstr "修正 Flash 插件的字型問題"
+
+#: src/ubuntu/app1.py:360
+msgid ""
+"Fix bug: characters are displayed as blank square in Flash.\n"
+"The trick behind is to modify \"/etc/fonts/conf.d/49-sansserif.conf\" file."
+msgstr ""
+"去除 Flash 影片文字顯示成空心方塊的 bug。\n"
+"訣竅是修改 /etc/fonts/conf.d/49-sansserif.conf 檔案。"
+
+#: src/ubuntu/app1.py:387
+#, python-format
+msgid "The file \"%s\" exists."
+msgstr "檔案 %s 已存在。"
+
+#: src/ubuntu/app1.py:410 src/ubuntu/quick_setup.py:271
+msgid "Stardict and four dictionaries"
+msgstr "星際譯王和四套辭典"
+
+#: src/ubuntu/app1.py:412
+msgid ""
+"Install Stardict. Install Concise Chinese-English Dictionary, LangDao Chinese-English Dictionary, LangDao English-Chinese Dictionary and Oxford Modern English-Chinese Dictionary. Stardict official site is http://stardict.sourceforge.net/. Dictionaries are obtained from http://stardict.sourceforge.net/Dictionaries_zh_CN.php\n"
+"Command: sudo apt-get install stardict sdcv"
+msgstr ""
+"安裝星際譯王；安裝簡明漢英辭典、朗道漢英辭典、朗道英漢辭典和牛津現代英漢辭典。星際譯王的官方網站是 http://stardict.sourceforge.net/ 。辭典來自 <span color='blue'><u>http://stardict.sourceforge.net/Dictionaries_zh_TW.php</u></span>\n"
+"指令： sudo apt-get install stardict sdcv"
+
+#: src/ubuntu/app1.py:498
+msgid ""
+"This is a simple and easy used RSS feed reader.\n"
+"Command: sudo apt-get install liferea"
+msgstr ""
+"一個簡單好用的 RSS 閱讀程式。\n"
+"指令： sudo apt-get install liferea"
+
+#: src/ubuntu/app1.py:508
+msgid "Firestarter"
+msgstr "Firestarter"
+
+#: src/ubuntu/app1.py:509
+msgid ""
+"Linux system comes up with a firewall \"iptables\". Firestarter is the graphical frontend of \"iptables\".\n"
+"Command: sudo apt-get install firestarter"
+msgstr ""
+"Linux 系統內建防火牆「iptables」，Firestarter 是它的圖形界面。\n"
+"指令： sudo apt-get install firestarter"
+
+#: src/ubuntu/app1.py:520
+msgid "Fresh Linux Kernel"
+msgstr "全新的 Linux 核心"
+
+#: src/ubuntu/app1.py:521
+msgid "This is Linux kernel version 2.6.31. It contains GEM (Graphics Execution Manager), which is the new video driver architecture of Intel®. It is downloaded from http://kernel.ubuntu.com/~kernel-ppa/mainline/"
+msgstr "這是 2.6.31 版的 Linux 核心。它含有 GEM (圖形執行管理)，是 Intel® 新的顯示驅動程式架構。這是從 http://kernel.ubuntu.com/~kernel-ppa/mainline/ 下載。"
+
+#: src/ubuntu/app1.py:533
+msgid "Current linux kernel version is "
+msgstr "目前 Linux 核心的版本是 "
+
+#: src/ubuntu/app2.py:48
+msgid "Mplayer with \"vod\" protocol support"
+msgstr "支援 vod 協定的 Mplayer"
+
+#: src/ubuntu/app2.py:49
+msgid "Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" protocol is used in some online video sites such as SJTU comic."
+msgstr "安裝 mplayer 和 comicview，Mplayer 支援 vod 協定。vod 協議用在一些線上影片網站，像是上海交通大學的 comic 網站。"
+
+#: src/ubuntu/app2.py:233
+msgid "PBC (Pairing-Based Cryptography) library"
+msgstr "PBC (橢圓曲線編碼) 程式庫"
+
+#: src/ubuntu/app2.py:234
+msgid "Install Pairing-Based Cryptography library, powered by Stanford University.\n"
+msgstr "安裝橢圓曲線編碼程式庫 (史丹佛大學研發)。\n"
+
+#: src/ubuntu/app2.py:235
+msgid "Official site: <span color=\"blue\"><u>http://crypto.stanford.edu/pbc/</u></span> ."
+msgstr "官方網站： <span color=\"blue\"><u>http://crypto.stanford.edu/pbc/</u></span> 。"
+
+#: src/ubuntu/app2.py:273
+msgid ""
+"The tools are:\n"
+"<i>g++: GNU C++ compiler.\n"
+"manpages-dev: manual pages about Linux system calls and library calls.\n"
+"manpages-posix: manual pages about using POSIX.\n"
+"manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n"
+"exuberant-ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n"
+"libgmp3: GNU multiprecision arithmetic library.\n"
+"libncurses5: a library controlling writing to the console screen.\n"
+"libqt3-mt: Trolltech Qt library, version 3.\n"
+"subversion: a version control system.\n"
+"git-core: a distributed version control system.\n"
+"</i>Command: sudo apt-get install build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core"
+msgstr ""
+"這些工具是:\n"
+"<i>g++： GNU C++ 編譯器。\n"
+"manpages-dev： Linux 系統函數和程式庫函數的 man 手冊。\n"
+"manpages-posix： POSIX 用法的 man 手冊。\n"
+"manpages-posix-dev： POSIX 檔頭和程式庫函數的 man 手冊。\n"
+"exuberant-ctags: 在 vi 和 emacs 使用的原始碼分析程式，可以快速跳到指定符號的定義處。\n"
+"libgmp3： GNU 多精度數學程式庫。\n"
+"libncurses5： 控制終端機畫面輸出的程式庫。\n"
+"libqt3-mt： Trolltech 的 Qt 程式庫第三版。\n"
+"subversion： 版本控制系統。\n"
+"git-core： 發布版本控制系統。\n"
+"</i>指令： sudo apt-get install build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core"
+
+#: src/ubuntu/app2.py:313
+msgid " \"build-essential\" is required. It is to be installed."
+msgstr " 需要 build-essential 套件，即將安裝。"
+
+#: src/ubuntu/app2.py:376
+msgid "GNOMEArtNG"
+msgstr "GNOMEArtNG"
+
+#: src/ubuntu/app2.py:377
+msgid "It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. More than 100 themes can be installed, which are downloaded from http://art.gnome.org . The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
+msgstr "可以自訂背景、程式外觀、視窗邊框、圖示、GNOME 登入圖片、登入視窗，還可以安裝一百多種佈景主題，佈景主題是從 http://art.gnome.org 下載。GNOMEArtNG 的官方網站是 http://developer.berlios.de/projects/gnomeartng/"
+
+#: src/ubuntu/app2.py:433
+msgid ""
+"It is the indispensable plotting application for writing Physics experiments reports.\n"
+"Command: sudo apt-get install qtiplot"
+msgstr ""
+"這是寫物理實驗報告時必備的繪圖程式。\n"
+"指令： sudo apt-get install qtiplot"
+
+#: src/ubuntu/app3.py:36
+msgid "Varkon: A concise CAD software"
+msgstr "Varkon： 一個簡潔的 CAD 軟體"
+
+#: src/ubuntu/app3.py:37
+msgid "Be good at geometric modeling. Please study the documentation <span color=\"blue\"><u>http://varkon.sourceforge.net/man.htm</u></span> before using it. "
+msgstr "專門用於建立幾何模型。使用前請先閱讀說明檔 <span color=\"blue\"><u>http://varkon.sourceforge.net/man.htm</u></span> 。 "
+
+#: src/ubuntu/app3.py:40
+msgid "Developed by Örebro university, Sweden."
+msgstr "由瑞典 Örebro 大學開發。"
+
+#: src/ubuntu/app3.py:66
+msgid "FreeCAD: A CAD software based on OpenCasCade"
+msgstr "FreeCAD：基於 OpenCasCade 的 CAD 軟體"
+
+#: src/ubuntu/app3.py:67
+msgid "Be good at three-dimensional solid design. Official site: <span color=\"blue\"><u>http://sourceforge.net/projects/free-cad/</u></span>"
+msgstr "專門用於 3D 物體設計。官方網站： <span color=\"blue\"><u>http://sourceforge.net/projects/free-cad/</u></span>"
+
+#: src/ubuntu/app3.py:148
+msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
+msgstr "Moonlight：開放原始碼的 Microsoft® Silverlight"
+
+#: src/ubuntu/app3.py:149
+msgid ""
+"Moonlight provides Windows® media codecs. By this application, you can enjoy Windows® video/audio in webpages.\n"
+"Command: sudo apt-get install moonlight-plugin-mozilla"
+msgstr ""
+"Moonlight 提供 Windows® 多媒體解碼器。使用這個程式，您就可以欣賞網頁上 Windows® 格式的影片/音效。\n"
+"指令： sudo apt-get install moonlight-plugin-mozilla"
+
+#: src/ubuntu/app3.py:310
+msgid ""
+"A Matlab® compatible numerical computation appliation.\n"
+"Command: sudo apt-get install qtoctave"
+msgstr ""
+"和 Matlab® 相容的數值計算程式。\n"
+"指令： sudo apt-get install qtoctave"
+
+#: src/ubuntu/app3.py:341
+msgid ""
+"If you cannot play RMVB video, try this application!\n"
+"Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
+msgstr ""
+"如果您無法播放 RMVB 影片，試試這個！\n"
+"官方網站： <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
+
+#: src/ubuntu/app3.py:358
+msgid "Screenlets"
+msgstr "Screenlets"
+
+#: src/ubuntu/app3.py:359
+msgid ""
+"Screenlets is able to add eye candy gadgets on desktop, such as sticky notes, clocks, weather forecasts, calendars and so on, in order to decorate the desktop.\n"
+"Command: sudo apt-get install screenlets"
+msgstr ""
+"Screenlets 可以在桌面上加入一些有趣的小程式，像是筆記本、時鐘、天氣預報、日曆等。\n"
+"指令： sudo apt-get install screenlets"
+
+#: src/ubuntu/app3.py:370
+msgid "Compiz settings manager"
+msgstr "Compiz 設定管理程式"
+
+#: src/ubuntu/app3.py:371
+msgid ""
+"Compiz Fusion is the unification of the Beryl project and the community around the Compiz Window Manager. Compiz settings manager is the configuration application for Compiz Fusion. It can configurate effects such as \"Desktop cube\" and \"3D windows\".\n"
+"Command: sudo apt-get install compizconfig-settings-manager"
+msgstr ""
+"Compiz Fusion 是 Beryl 專案和 Compiz 視窗管理程式社群的結合。Compiz 設定管理程式用來設定 Compiz Fusion 各項功能，可以開啟「桌面立方體」「3D 視窗」之類的效果。\n"
+"指令： sudo apt-get install compizconfig-settings-manager"
+
+#: src/ubuntu/app3.py:382
+msgid "A simple Compiz settings manager"
+msgstr "一個簡單的 Compiz 設定程式"
+
+#: src/ubuntu/app3.py:383
+msgid "Command: sudo apt-get install simple-ccsm"
+msgstr "指令： sudo apt-get install simple-ccsm"
+
+#: src/ubuntu/app3.py:413
+msgid "Micro-biology software"
+msgstr "微生物學軟體"
+
+#: src/ubuntu/app3.py:414
+msgid ""
+"This software is for molecular biology, structural biology and bioinformatics.\n"
+"Command: sudo apt-get install med-bio med-bio-dev"
+msgstr ""
+"這個軟體用於分子生物學，結構生物學和生物資訊學。\n"
+"指令： sudo apt-get install med-bio med-bio-dev"
+
+#: src/ubuntu/app3.py:425
+msgid "Tux Paint"
+msgstr "Tux Paint"
+
+#: src/ubuntu/app3.py:426
+msgid ""
+"This is a drawing program for young children three years and up.\n"
+"Command: sudo apt-get install tuxpaint"
+msgstr ""
+"為三歲以上兒童設計的畫圖程式。\n"
+"指令： sudo apt-get install tuxpaint"
+
+#: src/ubuntu/app3.py:434
+msgid "Code::Blocks - C/C++ IDE"
+msgstr "Code::Blocks - C/C++ 整合開發環境"
+
+#: src/ubuntu/app3.py:442
+msgid ""
+"This is a suite of educational games for young children.\n"
+"Command: sudo apt-get install childsplay"
+msgstr ""
+"為兒童設計的教育遊戲。\n"
+"指令： sudo apt-get install childsplay"
+
+#: src/ubuntu/app3.py:463
+msgid ""
+"GCompris provides educational games for children aged 2 to 10.\n"
+"Command: sudo apt-get install gcompris"
+msgstr ""
+"GCompris 是提供給 2 至 10 歲兒童的教育遊戲。\n"
+"指令： sudo apt-get install gcompris"
+
+#: src/ubuntu/app3.py:480
+msgid ""
+"This is an IDE for Qt.\n"
+"Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig"
+msgstr ""
+"Qt 的整合開發環境。\n"
+"指令： sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig"
+
+#: src/ubuntu/app3.py:489
+msgid ""
+"Kadu is an instant messenger, which is very popular in Poland.\n"
+"Command : sudo apt-get install kadu"
+msgstr ""
+"Kadu 是在波蘭很流行的即時通訊程式。\n"
+"指令： sudo apt-get install kadu"
+
+#: src/ubuntu/app3.py:499
+msgid ""
+"QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.\n"
+"Command: sudo apt-get install qnapi"
+msgstr ""
+"QNapi 是 NAPI-PROJEKT 的非官方複製品，可以尋找、下載影片的字幕。目前只支援波蘭字幕。\n"
+"指令： sudo apt-get install qnapi"
+
+#: src/ubuntu/app3.py:542
+msgid "R language (basic development environment)"
+msgstr "R 語言 (基本開發環境)"
+
+#: src/ubuntu/app3.py:543
+msgid ""
+"A powerful statistical computation language and a graphics system.\n"
+"If you want to use the latest version of R language, please read http://cran.r-project.org/\n"
+"Command: sudo apt-get install r-base r-base-dev"
+msgstr ""
+"強力的統計計算語言和圖形系統。\n"
+"如果您想使用最新版的 R 語言，請參考 http://cran.r-project.org/\n"
+"指令： sudo apt-get install r-base r-base-dev"
+
+#: src/ubuntu/app3.py:552
+msgid "R language (full development environment and all plugins)"
+msgstr "R 語言 (完整開發環境, 附所有插件)"
+
+#: src/ubuntu/app3.py:553
+msgid ""
+"A powerful statistical computation language and a graphics system.\n"
+"If you want to use the latest version of R language, please read http://cran.r-project.org/\n"
+"Command: sudo apt-get install r-base r-base-dev r-cran-*"
+msgstr ""
+"強力的統計計算語言和圖形系統。\n"
+"如果您想使用最新版的 R 語言，請參考 http://cran.r-project.org/\n"
+"指令： sudo apt-get install r-base r-base-dev r-cran-*"
+
+#: src/ubuntu/app3.py:567
+msgid "Bluefish: Edit HTML web-pages"
+msgstr "Bluefish：編輯 HTML 網頁"
+
+#: src/ubuntu/app3.py:568
+msgid "Command: sudo apt-get install bluefish"
+msgstr "指令： sudo apt-get install bluefish"
+
+#: src/ubuntu/app3.py:598
+msgid ""
+"Command: sudo apt-get install wallpaper-tray\n"
+"After installation, please restart your computer. Then right-click GNOME panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
+msgstr ""
+"指令： sudo apt-get install wallpaper-tray\n"
+"安裝完成後，請重新啓動您的電腦。然後右鍵點擊 GNOME 面板，選擇「加入面板 > Wallpaper Tray」"
+
+#: src/ubuntu/app3.py:618
+msgid "LAMP: Install Apache2 + MySQL + PHP"
+msgstr "LAMP：安裝 Apache2 + MySQL + PHP"
+
+#: src/ubuntu/app3.py:619
+msgid "Command: sudo tasksel install lamp-server"
+msgstr "指令： sudo tasksel install lamp-server"
+
+#: src/ubuntu/app3.py:624
+msgid "DNS server"
+msgstr "DNS 伺服器"
+
+#: src/ubuntu/app3.py:625
+msgid "Command: sudo tasksel install dns-server"
+msgstr "指令：sudo tasksel install dns-server"
+
+#: src/ubuntu/app3.py:630
+msgid "Mail server"
+msgstr "郵件伺服器"
+
+#: src/ubuntu/app3.py:631
+msgid "Command: sudo tasksel install mail-server"
+msgstr "指令： sudo tasksel install mail-server"
+
+#: src/ubuntu/app3.py:636
+msgid "OpenSSH server"
+msgstr "OpenSSH 伺服器"
+
+#: src/ubuntu/app3.py:637
+msgid "Command: sudo tasksel install openssh-server"
+msgstr "指令： sudo tasksel install openssh-server"
+
+#: src/ubuntu/app3.py:642
+msgid "PostgreSQL server"
+msgstr "PostgreSQL 伺服器"
+
+#: src/ubuntu/app3.py:643
+msgid "Command: sudo tasksel install postgresql-server"
+msgstr "指令： sudo tasksel install postgresql-server"
+
+#: src/ubuntu/app3.py:648
+msgid "Printer server"
+msgstr "列印伺服器"
+
+#: src/ubuntu/app3.py:649
+msgid "Command: sudo tasksel install print-server"
+msgstr "指令： sudo tasksel install print-server"
+
+#: src/ubuntu/app3.py:654
+msgid "Samba file sharing server"
+msgstr "Samba 檔案共享伺服器"
+
+#: src/ubuntu/app3.py:655
+msgid "Command: sudo tasksel install samba-server"
+msgstr "指令： sudo tasksel install samba-server"
+
+#: src/ubuntu/app3.py:660
+msgid "Tomcat Java server"
+msgstr "Tomcat Java 伺服器"
+
+#: src/ubuntu/app3.py:661
+msgid "Command: sudo tasksel install tomcat-server"
+msgstr "指令： sudo tasksel install tomcat-server"
+
+#: src/ubuntu/app3.py:666
+msgid "Ubuntustudio-graphics: 2D/3D creation and editing"
+msgstr "Ubuntustudio-graphics：2D/3D 影像創作與編輯"
+
+#: src/ubuntu/app3.py:667
+msgid "Command: sudo tasksel install ubuntustudio-graphics"
+msgstr "指令： sudo tasksel install ubuntustudio-graphics"
+
+#: src/ubuntu/app3.py:672
+msgid "Ubuntustudio-audio: Audio creation and editing"
+msgstr "Ubuntustudio-audio：音效、音樂創作與編輯"
+
+#: src/ubuntu/app3.py:673
+msgid "Command: sudo tasksel install ubuntustudio-audio"
+msgstr "指令： sudo tasksel install ubuntustudio-audio"
+
+#: src/ubuntu/app3.py:678
+msgid "Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing"
+msgstr "Ubuntustudio-audio-plugins：LADSPA 和 DSSI 音效、音樂創作與編輯"
+
+#: src/ubuntu/app3.py:679
+msgid "Command: sudo tasksel install ubuntustudio-audio-plugins"
+msgstr "指令： sudo tasksel install ubuntustudio-audio-plugins"
+
+#: src/ubuntu/app3.py:684
+msgid "Ubuntu MID"
+msgstr "Ubuntu MID"
+
+#: src/ubuntu/app3.py:685
+msgid "Command: sudo tasksel install mobile-mid"
+msgstr "指令： sudo tasksel install mobile-mid"
+
+#: src/ubuntu/app3.py:690
+msgid "Ubuntu Netbook"
+msgstr "Ubuntu Netbook"
+
+#: src/ubuntu/app3.py:691
+msgid "Command: sudo tasksel install mobile-netbook-remix"
+msgstr "指令： sudo tasksel install mobile-netbook-remix"
+
+#: src/ubuntu/app3.py:696
+msgid "Ubuntustudio-video: Video creation and editing"
+msgstr "Ubuntustudio-video：影片製作與編輯"
+
+#: src/ubuntu/app3.py:697
+msgid "Command: sudo tasksel install ubuntustudio-video"
+msgstr "指令： sudo tasksel install ubuntustudio-video"
+
+#: src/ubuntu/app3.py:702
+msgid "Ubuntu MID Live"
+msgstr "Ubuntu MID Live"
+
+#: src/ubuntu/app3.py:703
+msgid "Command: sudo tasksel install mobile-live"
+msgstr "指令： sudo tasksel install mobile-live"
+
+#: src/ubuntu/app3.py:708
+msgid "Eucalyptus cloud computing cluster"
+msgstr "Eucalyptus 雲端計算叢集"
+
+#: src/ubuntu/app3.py:709
+msgid "Command: sudo tasksel install eucalyptus-simple-cluster"
+msgstr "指令： sudo tasksel install eucalyptus-simple-cluster"
+
+#: src/ubuntu/app3.py:714
+msgid "Eucalyptus cloud computing node"
+msgstr "Eucalyptus 雲計端算節點"
+
+#: src/ubuntu/app3.py:715
+msgid "Command: sudo tasksel install eucalyptus-node"
+msgstr "指令： sudo tasksel install eucalyptus-node"
+
+#: src/ubuntu/app3.py:720
+msgid "Ubuntu Enterprise Cloud server"
+msgstr "Ubuntu 企業版雲端伺服器"
+
+#: src/ubuntu/app3.py:721
+msgid "Command: sudo tasksel install uec"
+msgstr "指令： sudo tasksel install uec"
+
+#: src/ubuntu/app3.py:726
+msgid "Ubuntustudio-font-meta: A lot of font"
+msgstr "Ubuntustudio-font-meta：大量字型"
+
+#: src/ubuntu/app3.py:727
+msgid "Command: sudo tasksel install ubuntustudio-font-meta"
+msgstr "指令： sudo tasksel install ubuntustudio-font-meta"
+
+#: src/ubuntu/app3.py:732
+msgid "* Launch tasksel"
+msgstr "* 啓動 tasksel"
+
+#: src/ubuntu/app3.py:733
+msgid "This is a helper item. It just launches command: \"sudo tasksel\". Then you are free to customize your computer via \"tasksel\"."
+msgstr "這是個輔助項目，會執行「sudo tasksel」指令；然後您就可以用 tasksel 來自由設定電腦了。"
+
+#: src/ubuntu/app3.py:747
+msgid ""
+"This is a popular Chinese input method.\n"
+"It is from http://fcitx.googlecode.com/"
+msgstr ""
+"很受歡迎的中文輸入法。\n"
+"是從 http://fcitx.googlecode.com/ 下載的。"
+
+#: src/ubuntu/app3.py:818
+#, fuzzy
+#| msgid "Download via bittorrent + Search videos + Play videos"
+msgid ""
+"Download via bittorrent + Search videos + Play videos\n"
+"Command: sudo apt-get install vuze"
+msgstr "用 bittorrent 下載 + 搜尋影片 + 播放影片"
+
+#: src/ubuntu/menu.py:50
+msgid "Ubuntu/Kubuntu configuration guide"
+msgstr "Ubuntu/Kubuntu 設定指南"
+
+#: src/ubuntu/menu.py:52
+msgid "Ubuntu skills"
+msgstr "Ubuntu 技巧"
+
+#: src/ubuntu/menu.py:54
+msgid "Obtain \"Full Circle\" magazine"
+msgstr "下載「Full Circle」雜誌"
+
+#: src/ubuntu/menu.py:56
+msgid "Obtain \"Ubuntu pocket guide\" book"
+msgstr "下載「Ubuntu 口袋指南」書籍"
+
+#: src/ubuntu/menu.py:58
+msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
+msgstr "在 http://repogen.simplylinux.ch/ 尋找更多第三方套件庫"
+
+#: src/ubuntu/menu.py:60
+msgid "How to install themes of Fedora® or OpenSolaris® on Ubuntu ?"
+msgstr "如何在 Ubuntu 上安裝 Fedora® 和 OpenSolaris® 的佈景主題？"
+
+#: src/ubuntu/menu.py:62
+msgid "How to install Warcraft III and DotA on Ubuntu ?"
+msgstr "如何在 Ubuntu 上安裝 Warcraft III 和 DotA？"
+
+#: src/ubuntu/menu.py:64
+msgid "How to install Matlab on Ubuntu ?"
+msgstr "如何在 Ubuntu 上安裝 Matlab？"
+
+#: src/ubuntu/menu.py:66
+msgid "Ubuntu forum in China"
+msgstr "中國 Ubuntu 論壇"
+
+#: src/ubuntu/menu.py:70
+msgid "Enjoy online music in Ubuntu (in Chinese)"
+msgstr "用 Ubuntu 欣賞線上音樂 (中文)"
+
+#: src/ubuntu/menu.py:91
+msgid "Don't automatically clean /var/cache/apt/"
+msgstr "不要自動清除 /var/cache/apt/ 裏的檔案"
+
+#: src/ubuntu/menu.py:125 src/ubuntu/menu.py:133 src/ubuntu/quick_setup.py:38
+#: src/ubuntu/quick_setup.py:332
+msgid "Quick setup"
+msgstr "快速設定"
+
+#: src/ubuntu/menu.py:134
+msgid "Repositories"
+msgstr "套件庫"
+
+#: src/ubuntu/menu.py:135
+msgid "Recovery"
+msgstr "恢複"
+
+#: src/ubuntu/osinfo.py:46
+msgid "Ubuntu version:"
+msgstr "Ubuntu 版本："
+
+#: src/ubuntu/quick_setup.py:43
+msgid ""
+"Ailurus will help you\n"
+"* Choose the fastest repository\n"
+"* Install :\n"
+"   - full language support\n"
+"   - input method\n"
+"   - multi-media codec\n"
+"   - Adobe Flash support\n"
+"   - decompression software"
+msgstr ""
+"Ailurus 將協助您\n"
+"* 選擇最快速的套件庫\n"
+"* 安裝 :\n"
+"   - 完整的語言支援\n"
+"   - 輸入法\n"
+"   - 多媒體解碼器\n"
+"   - Adobe Flash 支援\n"
+"   - 解壓縮軟體"
+
+#: src/ubuntu/quick_setup.py:67
+msgid "Checking whether your computer is connected to Internet ..."
+msgstr "正在檢查電腦是否有連上網際網路 ..."
+
+#: src/ubuntu/quick_setup.py:81
+msgid "Scanning installed packages."
+msgstr "掃描已安裝的套件。"
+
+#: src/ubuntu/quick_setup.py:81
+msgid "Please wait a few seconds."
+msgstr "請您等待幾秒鐘。"
+
+#: src/ubuntu/quick_setup.py:102
+msgid "Computer is not connected to Internet"
+msgstr "電腦沒有連上網際網路"
+
+#: src/ubuntu/quick_setup.py:105
+msgid ""
+"Your computer is not connected to Internet.\n"
+"Please configure network connections."
+msgstr ""
+"您的電腦沒有連上網際網路。\n"
+"請設定網路連線。"
+
+#: src/ubuntu/quick_setup.py:108
+msgid "Configure network connections"
+msgstr "設定網路連線"
+
+#: src/ubuntu/quick_setup.py:125
+msgid "Searching the fastest repository"
+msgstr "正在搜尋最快速的套件庫"
+
+#: src/ubuntu/quick_setup.py:155
+#, fuzzy, python-format
+#| msgid "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
+msgid "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
+msgstr "<span color='black'>%(server)s 的反應時間是 %(value).2f 毫秒。</span>"
+
+#: src/ubuntu/quick_setup.py:157 src/ubuntu/u_fastest_mirror.py:289
+#, python-format
+msgid "<span color='black'>Server %s is unreachable.</span>"
+msgstr "<span color='black'>伺服器 %s 無回應。</span>"
+
+#: src/ubuntu/quick_setup.py:193
+msgid "In order to use the fastest repository, Ailurus will change /etc/apt/sources.list"
+msgstr "為了使用最快速的套件庫，Ailurus 將會修改 /etc/apt/sources.list 檔案"
+
+#: src/ubuntu/quick_setup.py:194
+#, python-format
+msgid "The fastest repository is %s."
+msgstr "最快速的套件庫是 %s。"
+
+#: src/ubuntu/quick_setup.py:222
+msgid "Apply the fastest repository:"
+msgstr "套用最快速的套件庫："
+
+#: src/ubuntu/quick_setup.py:225
+msgid "Run command: \"sudo apt-get update\""
+msgstr "執行指令: sudo apt-get update"
+
+#: src/ubuntu/quick_setup.py:262
+msgid "Search fastest repository"
+msgstr "搜尋最快速的套件庫"
+
+#: src/ubuntu/quick_setup.py:263
+msgid "Install hardware drivers"
+msgstr "安裝硬體驅動程式"
+
+#: src/ubuntu/quick_setup.py:296
+msgid "Ongoing:"
+msgstr "正在進行："
+
+#: src/ubuntu/quick_setup.py:301
+msgid "Successful"
+msgstr "成功"
+
+#: src/ubuntu/quick_setup.py:304
+msgid "Failed"
+msgstr "失敗"
+
+#: src/ubuntu/quick_setup.py:418
+msgid "All works are done."
+msgstr "所有工作都已完成。"
+
+#: src/ubuntu/serverlib.py:36
+msgid "Argentina"
+msgstr "阿根廷"
+
+#: src/ubuntu/serverlib.py:37 src/ubuntu/serverlib.py:38
+#: src/ubuntu/serverlib.py:39 src/ubuntu/serverlib.py:40
+#: src/ubuntu/serverlib.py:41 src/ubuntu/serverlib.py:42
+#: src/ubuntu/serverlib.py:43 src/ubuntu/serverlib.py:44
+msgid "Australia"
+msgstr "澳大利亞"
+
+#: src/ubuntu/serverlib.py:45 src/ubuntu/serverlib.py:46
+#: src/ubuntu/serverlib.py:47 src/ubuntu/serverlib.py:48
+msgid "Austria"
+msgstr "奧地利"
+
+#: src/ubuntu/serverlib.py:49 src/ubuntu/serverlib.py:50
+#: src/ubuntu/serverlib.py:51
+msgid "Belarus"
+msgstr "白俄羅斯"
+
+#: src/ubuntu/serverlib.py:52 src/ubuntu/serverlib.py:53
+#: src/ubuntu/serverlib.py:54
+msgid "Belgium"
+msgstr "比利時"
+
+#: src/ubuntu/serverlib.py:55
+msgid "Bosnia and Herzegovina"
+msgstr "波斯尼亞和黑塞哥維那"
+
+#: src/ubuntu/serverlib.py:56 src/ubuntu/serverlib.py:57
+#: src/ubuntu/serverlib.py:58 src/ubuntu/serverlib.py:59
+#: src/ubuntu/serverlib.py:60 src/ubuntu/serverlib.py:61
+#: src/ubuntu/serverlib.py:62
+msgid "Brazil"
+msgstr "巴西"
+
+#: src/ubuntu/serverlib.py:63 src/ubuntu/serverlib.py:64
+#: src/ubuntu/serverlib.py:65 src/ubuntu/serverlib.py:66
+msgid "Bulgaria"
+msgstr "保加利亞"
+
+#: src/ubuntu/serverlib.py:67 src/ubuntu/serverlib.py:68
+#: src/ubuntu/serverlib.py:69 src/ubuntu/serverlib.py:70
+#: src/ubuntu/serverlib.py:71 src/ubuntu/serverlib.py:72
+#: src/ubuntu/serverlib.py:73
+msgid "Canada"
+msgstr "加拿大"
+
+#: src/ubuntu/serverlib.py:74 src/ubuntu/serverlib.py:75
+#: src/ubuntu/serverlib.py:76
+msgid "Chile"
+msgstr "智利"
+
+#: src/ubuntu/serverlib.py:77 src/ubuntu/serverlib.py:78
+#: src/ubuntu/serverlib.py:79 src/ubuntu/serverlib.py:80
+#: src/ubuntu/serverlib.py:81 src/ubuntu/serverlib.py:82
+#: src/ubuntu/serverlib.py:83 src/ubuntu/serverlib.py:375
+#: src/ubuntu/serverlib.py:376 src/ubuntu/serverlib.py:377
+#: src/ubuntu/serverlib.py:378 src/ubuntu/serverlib.py:379
+#: src/ubuntu/serverlib.py:380 src/ubuntu/serverlib.py:381
+#: src/ubuntu/serverlib.py:382 src/ubuntu/serverlib.py:383
+#: src/ubuntu/serverlib.py:384 src/ubuntu/serverlib.py:386
+msgid "China"
+msgstr "中國"
+
+#: src/ubuntu/serverlib.py:84
+msgid "Colombia"
+msgstr "哥倫比亞"
+
+#: src/ubuntu/serverlib.py:85
+msgid "Costa Rica"
+msgstr "哥斯大黎加"
+
+#: src/ubuntu/serverlib.py:86
+msgid "Croatia"
+msgstr "克羅埃西亞"
+
+#: src/ubuntu/serverlib.py:87
+msgid "Cyprus"
+msgstr "塞浦路斯"
+
+#: src/ubuntu/serverlib.py:88 src/ubuntu/serverlib.py:89
+#: src/ubuntu/serverlib.py:90 src/ubuntu/serverlib.py:91
+#: src/ubuntu/serverlib.py:92 src/ubuntu/serverlib.py:93
+#: src/ubuntu/serverlib.py:94
+msgid "Czech Republic"
+msgstr "捷克"
+
+#: src/ubuntu/serverlib.py:95 src/ubuntu/serverlib.py:96
+#: src/ubuntu/serverlib.py:97
+msgid "Denmark"
+msgstr "丹麥"
+
+#: src/ubuntu/serverlib.py:98
+msgid "Estonia"
+msgstr "愛沙尼亞"
+
+#: src/ubuntu/serverlib.py:99 src/ubuntu/serverlib.py:100
+msgid "Finland"
+msgstr "芬蘭"
+
+#: src/ubuntu/serverlib.py:101 src/ubuntu/serverlib.py:102
+#: src/ubuntu/serverlib.py:103 src/ubuntu/serverlib.py:104
+#: src/ubuntu/serverlib.py:105 src/ubuntu/serverlib.py:106
+#: src/ubuntu/serverlib.py:107 src/ubuntu/serverlib.py:108
+#: src/ubuntu/serverlib.py:109 src/ubuntu/serverlib.py:110
+#: src/ubuntu/serverlib.py:111 src/ubuntu/serverlib.py:112
+msgid "France"
+msgstr "法國"
+
+#: src/ubuntu/serverlib.py:113
+msgid "French Polynesia"
+msgstr "法屬波里尼西亞"
+
+#: src/ubuntu/serverlib.py:114
+msgid "Georgia"
+msgstr "喬治亞"
+
+#: src/ubuntu/serverlib.py:115 src/ubuntu/serverlib.py:116
+#: src/ubuntu/serverlib.py:117 src/ubuntu/serverlib.py:118
+#: src/ubuntu/serverlib.py:119 src/ubuntu/serverlib.py:120
+#: src/ubuntu/serverlib.py:121 src/ubuntu/serverlib.py:122
+#: src/ubuntu/serverlib.py:123 src/ubuntu/serverlib.py:124
+#: src/ubuntu/serverlib.py:125 src/ubuntu/serverlib.py:126
+#: src/ubuntu/serverlib.py:127 src/ubuntu/serverlib.py:128
+#: src/ubuntu/serverlib.py:129 src/ubuntu/serverlib.py:130
+#: src/ubuntu/serverlib.py:131 src/ubuntu/serverlib.py:132
+#: src/ubuntu/serverlib.py:133 src/ubuntu/serverlib.py:134
+#: src/ubuntu/serverlib.py:135 src/ubuntu/serverlib.py:136
+#: src/ubuntu/serverlib.py:137 src/ubuntu/serverlib.py:138
+#: src/ubuntu/serverlib.py:139
+msgid "Germany"
+msgstr "德國"
+
+#: src/ubuntu/serverlib.py:140 src/ubuntu/serverlib.py:141
+#: src/ubuntu/serverlib.py:142 src/ubuntu/serverlib.py:143
+#: src/ubuntu/serverlib.py:144
+msgid "Greece"
+msgstr "希臘"
+
+#: src/ubuntu/serverlib.py:145
+msgid "Greenland"
+msgstr "格陵蘭"
+
+#: src/ubuntu/serverlib.py:146
+msgid "Hong Kong"
+msgstr "香港"
+
+#: src/ubuntu/serverlib.py:147 src/ubuntu/serverlib.py:148
+#: src/ubuntu/serverlib.py:149 src/ubuntu/serverlib.py:150
+msgid "Hungary"
+msgstr "匈牙利"
+
+#: src/ubuntu/serverlib.py:151
+msgid "Iceland"
+msgstr "冰島"
+
+#: src/ubuntu/serverlib.py:152 src/ubuntu/serverlib.py:153
+#: src/ubuntu/serverlib.py:154 src/ubuntu/serverlib.py:155
+msgid "India"
+msgstr "印度"
+
+#: src/ubuntu/serverlib.py:156 src/ubuntu/serverlib.py:157
+#: src/ubuntu/serverlib.py:158 src/ubuntu/serverlib.py:159
+#: src/ubuntu/serverlib.py:160 src/ubuntu/serverlib.py:161
+#: src/ubuntu/serverlib.py:162
+msgid "Indonesia"
+msgstr "印尼"
+
+#: src/ubuntu/serverlib.py:163 src/ubuntu/serverlib.py:164
+msgid "Ireland"
+msgstr "愛爾蘭"
+
+#: src/ubuntu/serverlib.py:165
+msgid "Israel"
+msgstr "以色列"
+
+#: src/ubuntu/serverlib.py:166 src/ubuntu/serverlib.py:167
+#: src/ubuntu/serverlib.py:168 src/ubuntu/serverlib.py:169
+#: src/ubuntu/serverlib.py:170
+msgid "Italy"
+msgstr "意大利"
+
+#: src/ubuntu/serverlib.py:171 src/ubuntu/serverlib.py:172
+#: src/ubuntu/serverlib.py:173 src/ubuntu/serverlib.py:174
+#: src/ubuntu/serverlib.py:175 src/ubuntu/serverlib.py:176
+#: src/ubuntu/serverlib.py:177
+msgid "Japan"
+msgstr "日本"
+
+#: src/ubuntu/serverlib.py:178 src/ubuntu/serverlib.py:179
+msgid "Kazakhstan"
+msgstr "哈薩克"
+
+#: src/ubuntu/serverlib.py:180 src/ubuntu/serverlib.py:181
+#: src/ubuntu/serverlib.py:182
+msgid "Republic of Korea"
+msgstr "韓國"
+
+#: src/ubuntu/serverlib.py:183
+msgid "Kuwait"
+msgstr "科威特"
+
+#: src/ubuntu/serverlib.py:184
+msgid "Kyrgyzstan"
+msgstr "吉爾吉斯"
+
+#: src/ubuntu/serverlib.py:185
+msgid "Latvia"
+msgstr "拉托維亞"
+
+#: src/ubuntu/serverlib.py:186 src/ubuntu/serverlib.py:187
+msgid "Lithuania"
+msgstr "立陶宛"
+
+#: src/ubuntu/serverlib.py:188 src/ubuntu/serverlib.py:189
+#: src/ubuntu/serverlib.py:190 src/ubuntu/serverlib.py:191
+#: src/ubuntu/serverlib.py:192 src/ubuntu/serverlib.py:193
+msgid "Malaysia"
+msgstr "馬來西亞"
+
+#: src/ubuntu/serverlib.py:194
+msgid "Malta"
+msgstr "馬爾他"
+
+#: src/ubuntu/serverlib.py:195 src/ubuntu/serverlib.py:196
+msgid "Mexico"
+msgstr "墨西哥"
+
+#: src/ubuntu/serverlib.py:197
+msgid "Republic of Moldova"
+msgstr "摩爾多瓦"
+
+#: src/ubuntu/serverlib.py:198
+msgid "Mongolia"
+msgstr "蒙古"
+
+#: src/ubuntu/serverlib.py:199
+msgid "Namibia"
+msgstr "納米比亞"
+
+#: src/ubuntu/serverlib.py:200
+msgid "Nepal"
+msgstr "尼泊爾"
+
+#: src/ubuntu/serverlib.py:201 src/ubuntu/serverlib.py:202
+#: src/ubuntu/serverlib.py:203 src/ubuntu/serverlib.py:204
+#: src/ubuntu/serverlib.py:205 src/ubuntu/serverlib.py:206
+#: src/ubuntu/serverlib.py:207 src/ubuntu/serverlib.py:208
+#: src/ubuntu/serverlib.py:209 src/ubuntu/serverlib.py:210
+#: src/ubuntu/serverlib.py:211 src/ubuntu/serverlib.py:212
+msgid "Netherlands"
+msgstr "荷蘭"
+
+#: src/ubuntu/serverlib.py:213
+msgid "New Caledonia"
+msgstr "新喀里多尼亞"
+
+#: src/ubuntu/serverlib.py:214 src/ubuntu/serverlib.py:215
+#: src/ubuntu/serverlib.py:216
+msgid "New Zealand"
+msgstr "紐西蘭"
+
+#: src/ubuntu/serverlib.py:217 src/ubuntu/serverlib.py:218
+#: src/ubuntu/serverlib.py:219
+msgid "Norway"
+msgstr "挪威"
+
+#: src/ubuntu/serverlib.py:220
+msgid "Philippines"
+msgstr "菲律賓"
+
+#: src/ubuntu/serverlib.py:221 src/ubuntu/serverlib.py:222
+#: src/ubuntu/serverlib.py:223 src/ubuntu/serverlib.py:224
+#: src/ubuntu/serverlib.py:225
+msgid "Poland"
+msgstr "波蘭"
+
+#: src/ubuntu/serverlib.py:226 src/ubuntu/serverlib.py:227
+#: src/ubuntu/serverlib.py:228 src/ubuntu/serverlib.py:229
+#: src/ubuntu/serverlib.py:230 src/ubuntu/serverlib.py:231
+#: src/ubuntu/serverlib.py:232 src/ubuntu/serverlib.py:233
+#: src/ubuntu/serverlib.py:234
+msgid "Portugal"
+msgstr "葡萄牙"
+
+#: src/ubuntu/serverlib.py:235
+msgid "Qatar"
+msgstr "卡達"
+
+#: src/ubuntu/serverlib.py:236 src/ubuntu/serverlib.py:237
+#: src/ubuntu/serverlib.py:238 src/ubuntu/serverlib.py:239
+#: src/ubuntu/serverlib.py:240 src/ubuntu/serverlib.py:241
+msgid "Romania"
+msgstr "羅馬尼亞"
+
+#: src/ubuntu/serverlib.py:242 src/ubuntu/serverlib.py:243
+#: src/ubuntu/serverlib.py:244 src/ubuntu/serverlib.py:245
+#: src/ubuntu/serverlib.py:246 src/ubuntu/serverlib.py:247
+#: src/ubuntu/serverlib.py:248 src/ubuntu/serverlib.py:249
+#: src/ubuntu/serverlib.py:250
+msgid "Russian Federation"
+msgstr "俄羅斯"
+
+#: src/ubuntu/serverlib.py:251
+msgid "Saudi Arabia"
+msgstr "沙烏地阿拉伯"
+
+#: src/ubuntu/serverlib.py:252 src/ubuntu/serverlib.py:253
+msgid "Serbia"
+msgstr "塞爾維亞"
+
+#: src/ubuntu/serverlib.py:254 src/ubuntu/serverlib.py:255
+#: src/ubuntu/serverlib.py:256
+msgid "Singapore"
+msgstr "新加坡"
+
+#: src/ubuntu/serverlib.py:257 src/ubuntu/serverlib.py:258
+#: src/ubuntu/serverlib.py:259
+msgid "Slovakia"
+msgstr "斯洛伐克"
+
+#: src/ubuntu/serverlib.py:260 src/ubuntu/serverlib.py:261
+msgid "Slovenia"
+msgstr "斯洛維尼亞"
+
+#: src/ubuntu/serverlib.py:262 src/ubuntu/serverlib.py:263
+#: src/ubuntu/serverlib.py:264
+msgid "South Africa"
+msgstr "南非"
+
+#: src/ubuntu/serverlib.py:265 src/ubuntu/serverlib.py:266
+#: src/ubuntu/serverlib.py:267 src/ubuntu/serverlib.py:268
+#: src/ubuntu/serverlib.py:269 src/ubuntu/serverlib.py:270
+#: src/ubuntu/serverlib.py:271 src/ubuntu/serverlib.py:272
+#: src/ubuntu/serverlib.py:273 src/ubuntu/serverlib.py:274
+#: src/ubuntu/serverlib.py:275 src/ubuntu/serverlib.py:276
+msgid "Spain"
+msgstr "西班牙"
+
+#: src/ubuntu/serverlib.py:277
+msgid "Sri Lanka"
+msgstr "斯里蘭卡"
+
+#: src/ubuntu/serverlib.py:278 src/ubuntu/serverlib.py:279
+#: src/ubuntu/serverlib.py:280 src/ubuntu/serverlib.py:281
+#: src/ubuntu/serverlib.py:282 src/ubuntu/serverlib.py:283
+#: src/ubuntu/serverlib.py:284
+msgid "Sweden"
+msgstr "瑞典"
+
+#: src/ubuntu/serverlib.py:285
+msgid "Switzerland"
+msgstr "瑞士"
+
+#: src/ubuntu/serverlib.py:286 src/ubuntu/serverlib.py:287
+#: src/ubuntu/serverlib.py:288 src/ubuntu/serverlib.py:289
+#: src/ubuntu/serverlib.py:290 src/ubuntu/serverlib.py:291
+#: src/ubuntu/serverlib.py:292 src/ubuntu/serverlib.py:293
+#: src/ubuntu/serverlib.py:294 src/ubuntu/serverlib.py:295
+#: src/ubuntu/serverlib.py:296 src/ubuntu/serverlib.py:297
+#: src/ubuntu/serverlib.py:298 src/ubuntu/serverlib.py:299
+#: src/ubuntu/serverlib.py:300 src/ubuntu/serverlib.py:385
+msgid "Taiwan"
+msgstr "台灣"
+
+#: src/ubuntu/serverlib.py:301 src/ubuntu/serverlib.py:302
+#: src/ubuntu/serverlib.py:303
+msgid "Thailand"
+msgstr "泰國"
+
+#: src/ubuntu/serverlib.py:304 src/ubuntu/serverlib.py:305
+#: src/ubuntu/serverlib.py:306 src/ubuntu/serverlib.py:307
+#: src/ubuntu/serverlib.py:308
+msgid "Turkey"
+msgstr "土耳其"
+
+#: src/ubuntu/serverlib.py:309 src/ubuntu/serverlib.py:310
+#: src/ubuntu/serverlib.py:311
+msgid "Ukraine"
+msgstr "烏克蘭"
+
+#: src/ubuntu/serverlib.py:312 src/ubuntu/serverlib.py:313
+#: src/ubuntu/serverlib.py:314 src/ubuntu/serverlib.py:315
+#: src/ubuntu/serverlib.py:316 src/ubuntu/serverlib.py:317
+#: src/ubuntu/serverlib.py:318 src/ubuntu/serverlib.py:319
+#: src/ubuntu/serverlib.py:320 src/ubuntu/serverlib.py:321
+#: src/ubuntu/serverlib.py:322
+msgid "United Kingdom"
+msgstr "英國"
+
+#: src/ubuntu/serverlib.py:323 src/ubuntu/serverlib.py:324
+#: src/ubuntu/serverlib.py:325 src/ubuntu/serverlib.py:326
+#: src/ubuntu/serverlib.py:327 src/ubuntu/serverlib.py:328
+#: src/ubuntu/serverlib.py:329 src/ubuntu/serverlib.py:330
+#: src/ubuntu/serverlib.py:331 src/ubuntu/serverlib.py:332
+#: src/ubuntu/serverlib.py:333 src/ubuntu/serverlib.py:334
+#: src/ubuntu/serverlib.py:335 src/ubuntu/serverlib.py:336
+#: src/ubuntu/serverlib.py:337 src/ubuntu/serverlib.py:338
+#: src/ubuntu/serverlib.py:339 src/ubuntu/serverlib.py:340
+#: src/ubuntu/serverlib.py:341 src/ubuntu/serverlib.py:342
+#: src/ubuntu/serverlib.py:343 src/ubuntu/serverlib.py:344
+#: src/ubuntu/serverlib.py:345 src/ubuntu/serverlib.py:346
+#: src/ubuntu/serverlib.py:347 src/ubuntu/serverlib.py:348
+#: src/ubuntu/serverlib.py:349 src/ubuntu/serverlib.py:350
+#: src/ubuntu/serverlib.py:351 src/ubuntu/serverlib.py:352
+#: src/ubuntu/serverlib.py:353 src/ubuntu/serverlib.py:354
+#: src/ubuntu/serverlib.py:355 src/ubuntu/serverlib.py:356
+#: src/ubuntu/serverlib.py:357 src/ubuntu/serverlib.py:358
+#: src/ubuntu/serverlib.py:359 src/ubuntu/serverlib.py:360
+#: src/ubuntu/serverlib.py:361 src/ubuntu/serverlib.py:362
+#: src/ubuntu/serverlib.py:363 src/ubuntu/serverlib.py:364
+#: src/ubuntu/serverlib.py:365 src/ubuntu/serverlib.py:366
+#: src/ubuntu/serverlib.py:367 src/ubuntu/serverlib.py:368
+msgid "United States"
+msgstr "美國"
+
+#: src/ubuntu/serverlib.py:369
+msgid "Uzbekistan"
+msgstr "烏茲別克"
+
+#: src/ubuntu/serverlib.py:370
+msgid "Viet Nam"
+msgstr "越南"
+
+#: src/ubuntu/serverlib.py:387
+msgid "Peru"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:388
+#, fuzzy
+#| msgid "China"
+msgid "Ghana"
+msgstr "中國"
+
+#: src/ubuntu/setting.py:111
+#, python-format
+msgid "Command: sudo apt-get install/remove %s"
+msgstr "指令： sudo apt-get install/remove %s"
+
+#: src/ubuntu/setting.py:115
+msgid "Context menu screenshot:"
+msgstr "右鍵選單截圖："
+
+#: src/ubuntu/setting.py:123
+msgid "Window screenshot:"
+msgstr "視窗截圖："
+
+#: src/ubuntu/setting.py:146
+msgid "\"Write to Disc...\" entry"
+msgstr "「寫入光碟...」項目"
+
+#: src/ubuntu/setting.py:147
+msgid ""
+"When CD/DVD image file is clicked by mouse right button, \n"
+"show a \"Write to Disc...\" menu item.\n"
+"<span color=\"red\">This item conflicts with \"brasero\".</span>"
+msgstr ""
+"當滑鼠右鍵點擊 CD/DVD 映像檔時, \n"
+"顯示「寫入光碟...」選單項目。\n"
+"<span color=\"red\">這個項目與「Brasero 燒錄軟體」衝突。</span>"
+
+#: src/ubuntu/setting.py:152
+msgid "\"Actions Configuration\" entry"
+msgstr "「Actions Configuration」項目"
+
+#: src/ubuntu/setting.py:153
+msgid ""
+"It allows the configuration of programs to be launched \n"
+"on files selected.\n"
+"<span color=\"red\">This entry is not in context menu. It is in \"System\"->\"Preferences\" menu.</span>"
+msgstr ""
+"可以設定用什麼程式開啟所選的檔案。\n"
+"<span color=\"red\">這項目不在右鍵選單中，而是在「系統 > 偏好設定」選單裏。</span>"
+
+#: src/ubuntu/setting.py:158
+msgid "\"Repair filename\" entry"
+msgstr "「修複檔案名稱」項目"
+
+#: src/ubuntu/setting.py:159
+msgid "When any file with wrong encoding filename is right clicked,\n"
+msgstr "當右鍵點擊名稱是亂碼的檔案時,\n"
+
+#: src/ubuntu/setting.py:159
+msgid "show a \"Repair filename\" menu item."
+msgstr "顯示「修複檔案名稱」選單項目。"
+
+#: src/ubuntu/setting.py:162
+msgid "\"Open as administrator\" entry"
+msgstr "「以管理員身份開啟」項目"
+
+#: src/ubuntu/setting.py:163
+msgid "Launch selected files with administration privileges using the context menu.\n"
+msgstr "利用右鍵選單，以管理員身份開啓選取的檔案。\n"
+
+#: src/ubuntu/setting.py:163
+msgid "Open selected folder with administration privileges."
+msgstr "以管理員身份開啟選取的資料夾。"
+
+#: src/ubuntu/setting.py:166
+msgid "\"Resize/Rotate images\" entries"
+msgstr "「縮放/旋轉 圖片」項目"
+
+#: src/ubuntu/setting.py:167
+msgid "Resize or rotate selected images."
+msgstr "縮放或旋轉選取的圖片。"
+
+#: src/ubuntu/setting.py:170
+msgid "\"Open in terminal\" entry"
+msgstr "「在終端機中開啟」項目"
+
+#: src/ubuntu/setting.py:171
+msgid "Open a terminal in current folder."
+msgstr "在終端機開啟目前的資料夾。"
+
+#: src/ubuntu/setting.py:174
+msgid "\"Convert audio files\" entry"
+msgstr "「轉換音效檔案」項目"
+
+#: src/ubuntu/setting.py:175
+msgid ""
+"Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
+"These packages will also be installed: \n"
+"<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
+msgstr ""
+"在 WAV、OGG、MP3、MPC、FLAC、APE 和 AAC 等格式之間轉換。\n"
+"會安裝這些套件：\n"
+"<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
+
+#: src/ubuntu/setting.py:182
+msgid "\"Subversion commands\" entries"
+msgstr "「Subversion 指令」項目"
+
+#: src/ubuntu/setting.py:188
+msgid "\"Share\" entry for folders"
+msgstr "資料夾的「共享選項」項目"
+
+#: src/ubuntu/setting.py:189
+msgid "Share folders by Samba."
+msgstr "用 Samba 共享資料夾。"
+
+#: src/ubuntu/setting.py:192
+msgid "\"Set as wallpaper\" entry"
+msgstr "「設為桌布」項目"
+
+#: src/ubuntu/setting.py:275
+msgid "Some operation failed."
+msgstr "有些操作失敗了。"
+
+#: src/ubuntu/setting.py:280
+msgid "All operations succeeded."
+msgstr "所有操作都已成功完成。"
+
+#: src/ubuntu/setting.py:280
+msgid "The changes will take effect at the next time when GNOME starts up."
+msgstr "所有的變更將在下次 GNOME 啓動時生效。"
+
+#: src/ubuntu/setting.py:290
+msgid "Nautilus context menu"
+msgstr "Nautilus 右鍵選單"
+
+#: src/ubuntu/setting.py:294
+msgid "Automatically check for update"
+msgstr "自動檢查更新"
+
+#: src/ubuntu/setting.py:296
+msgid "Interval (in days) when to check for update:"
+msgstr "自動檢查 Ubuntu 更新的間隔時間 (單位是天):"
+
+#: src/ubuntu/setting.py:302
+msgid "Ubuntu update manager setting"
+msgstr "Ubuntu 更新管理程式設定"
+
+#: src/ubuntu/third_party_repos.py:35
+msgid "* Find more repositories on http://repogen.simplylinux.ch"
+msgstr "* 到 http://repogen.simplylinux.ch 尋找更多第三方套件庫"
+
+#: src/ubuntu/third_party_repos.py:36
+msgid ""
+"This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n"
+"http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories."
+msgstr ""
+"這是輔助項目，不會安裝任何東西。它將開啟 http://repogen.simplylinux.ch/ 網頁\n"
+"http://repogen.simplylinux.ch/ 收集了很多有用的第三方套件庫。"
+
+#: src/ubuntu/third_party_repos.py:130
+msgid "<i>Install packages by:</i>"
+msgstr "<i>這樣安裝套件：</i>"
+
+#: src/ubuntu/third_party_repos.py:131
+msgid "<i>Web page:</i>"
+msgstr "<i>網頁：</i>"
+
+#: src/ubuntu/third_party_repos.py:132
+msgid "<i>Source setting:</i>"
+msgstr "<i>來源設定：</i>"
+
+#: src/ubuntu/third_party_repos.py:172
+msgid "Google Chrome, Picasa 2 and Google Desktop"
+msgstr "Google Chrome、Picasa 2 和 Google 桌面"
+
+#: src/ubuntu/third_party_repos.py:174
+msgid "This repository contains Google Chrome, Picasa and Google Desktop. Google Chrome is a web browser. Picasa is an image management application. Google Desktop is an application for personalizing and organizing information in computer."
+msgstr "這個套件庫有 Google Chrome、Picasa 和 Google 桌面。Google Chrome 是網路瀏覽器，Picasa 是圖片管理程式，Google 桌面 是處理個人資訊的應用程式。"
+
+#: src/ubuntu/third_party_repos.py:187
+msgid "Google Picasa 3"
+msgstr "Google Picasa 3"
+
+#: src/ubuntu/third_party_repos.py:189
+msgid "This repository contains Picasa 3."
+msgstr "這個套件庫有 Picasa 3。"
+
+#: src/ubuntu/third_party_repos.py:199
+msgid "PlayOnLinux"
+msgstr "PlayOnLinux"
+
+#: src/ubuntu/third_party_repos.py:201
+msgid "PlayOnLinux is a front-end for wine. It helps to install Windows Games and softwares on Linux. "
+msgstr "PlayOnLinux 是 WINE 的圖形界面，它能協助您在 Linux 安裝 Windows 的遊戲和軟體。 "
+
+#: src/ubuntu/third_party_repos.py:215
+msgid "This repository contains the latest version of Wine. Wine is for running Windows applications on Linux. "
+msgstr "這個套件庫有最新版的 Wine。Wine 能讓您在 Linux 執行 Windows 的應用程式。 "
+
+#: src/ubuntu/third_party_repos.py:226
+msgid "Dropbox"
+msgstr "Dropbox"
+
+#: src/ubuntu/third_party_repos.py:229
+msgid "Dropbox is an application to store, sync, and share files among computers."
+msgstr "Dropbox 可以在多台電腦之間儲存、同步、共享檔案。"
+
+#: src/ubuntu/third_party_repos.py:239
+msgid "Ailurus"
+msgstr "Ailurus"
+
+#: src/ubuntu/third_party_repos.py:242
+msgid "This is the repository of Ailurus."
+msgstr "這是 Ailurus 的套件庫。"
+
+#: src/ubuntu/third_party_repos.py:252
+msgid "Skype"
+msgstr "Skype"
+
+#: src/ubuntu/third_party_repos.py:266
+msgid "GetDeb.net"
+msgstr "GetDeb.net"
+
+#: src/ubuntu/third_party_repos.py:268
+msgid "GetDeb.net is an unofficial project which provides a lot of open source applications."
+msgstr "GetDeb.net 是非官方專案，提供很多開放原始碼的應用程式。"
+
+#: src/ubuntu/third_party_repos.py:280
+msgid "AWN (Development version)"
+msgstr "AWN (開發版本)"
+
+#: src/ubuntu/third_party_repos.py:282
+msgid "AWN is a MacOS X like panel for GNOME. This repository provides the latest version of AWN. "
+msgstr "AWN 是 GNOME 的仿 MacOS X 風格面板。這個套件庫有最新版的 AWN。 "
+
+#: src/ubuntu/third_party_repos.py:293
+msgid "Blueman"
+msgstr "Blueman"
+
+#: src/ubuntu/third_party_repos.py:295
+msgid "Blueman is a graphical blue-tooth manager."
+msgstr "Blueman 是圖形界面的藍牙管理程式。"
+
+#: src/ubuntu/third_party_repos.py:305
+msgid "Christine"
+msgstr "Christine"
+
+#: src/ubuntu/third_party_repos.py:307
+msgid "Christine is a small media player."
+msgstr "Christine 是一個小型媒體播放程式。"
+
+#: src/ubuntu/third_party_repos.py:317
+msgid "Chromium"
+msgstr "Chromium"
+
+#: src/ubuntu/third_party_repos.py:319
+msgid "Chromium is the open source version of Google Chrome."
+msgstr "Chromium 是開放原始碼版的 Google Chrome。"
+
+#: src/ubuntu/third_party_repos.py:329
+msgid "Getting things GNOME"
+msgstr "Getting things GNOME"
+
+#: src/ubuntu/third_party_repos.py:331
+msgid "\"Getting things GNOME\" is a simple, powerful and flexible organization tool."
+msgstr "Getting things GNOME 是一個簡單、強力、靈活的行程安排工具。"
+
+#: src/ubuntu/third_party_repos.py:341
+msgid "GNOME colors"
+msgstr "GNOME colors"
+
+#: src/ubuntu/third_party_repos.py:343
+msgid "This repository contains some themes."
+msgstr "這個套件庫有一些佈景主題。"
+
+#: src/ubuntu/third_party_repos.py:353
+msgid "GNOME Global Menu"
+msgstr "GNOME 全域選單"
+
+#: src/ubuntu/third_party_repos.py:355
+msgid "GNOME Global Menu is the globally-shared menu bar of all applications."
+msgstr "「GNOME 全域選單」是所有應用程式共用的選單列。"
+
+#: src/ubuntu/third_party_repos.py:365
+msgid "Medibuntu"
+msgstr "Medibuntu"
+
+#: src/ubuntu/third_party_repos.py:367
+msgid "This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. There are many packages in this repository. The list of packages is in http://packages.medibuntu.org/"
+msgstr "這個套件庫提供受法律限制而無法放入 Ubuntu 發行版的套件，套件清單在 http://packages.medibuntu.org/"
+
+#: src/ubuntu/third_party_repos.py:378
+msgid "Moovida"
+msgstr "Moovida"
+
+#: src/ubuntu/third_party_repos.py:380
+msgid "Moovida is a cross platform media player."
+msgstr "Moovida 是跨平台的媒體播放程式。"
+
+#: src/ubuntu/third_party_repos.py:390
+msgid "Opera"
+msgstr "Opera"
+
+#: src/ubuntu/third_party_repos.py:393
+msgid "Opera is a famous web browser."
+msgstr "Opera 是著名的網路瀏覽器。"
+
+#: src/ubuntu/third_party_repos.py:403
+msgid "Shutter"
+msgstr "Shutter"
+
+#: src/ubuntu/third_party_repos.py:405
+msgid "Shutter is a powerful screenshot program."
+msgstr "Shutter 是強力的螢幕截圖軟體。"
+
+#: src/ubuntu/third_party_repos.py:415
+msgid "Synapse"
+msgstr "Synapse"
+
+#: src/ubuntu/third_party_repos.py:417
+msgid "Synapse is an instant messager."
+msgstr "Synapse 是一個即時通訊程式。"
+
+#: src/ubuntu/third_party_repos.py:427
+msgid "X server updates"
+msgstr "X 伺服器更新"
+
+#: src/ubuntu/third_party_repos.py:429
+msgid "This repository provides latest versions of X.org drivers, libraries."
+msgstr "這個套件庫提供最新版的 X.org 驅動程式、程式庫。"
+
+#: src/ubuntu/third_party_repos.py:440
+msgid "VirtualBox"
+msgstr "VirtualBox"
+
+#: src/ubuntu/third_party_repos.py:453
+msgid "WebkitGTK"
+msgstr "WebkitGTK"
+
+#: src/ubuntu/third_party_repos.py:455
+msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
+msgstr "WebkitGTK 是 Webkit 移植到 GTK+ 平台的版本。"
+
+#: src/ubuntu/third_party_repos.py:465
+msgid "XBMC"
+msgstr "XBMC"
+
+#: src/ubuntu/third_party_repos.py:467
+msgid "XBMC is an open source software media player and entertainment hub for digital media."
+msgstr "XBMC 是開放原始碼的數位媒體播放程式、娛樂中心。"
+
+#: src/ubuntu/third_party_repos.py:477
+msgid "Oracle"
+msgstr "甲骨文"
+
+#: src/ubuntu/third_party_repos.py:479
+msgid ""
+"This repository provides Oracle Database Express Edition.\n"
+"After installation, please add yourself to the \"dba\" group, then run \"sudo /etc/init.d/oracle-xe configure\". (Thanks Federico.)"
+msgstr ""
+"這個套件庫有 Oracle 資料庫簡易版。\n"
+"安裝後，請將您的帳號加入「dba」群組，然後執行「sudo /etc/init.d/oracle-xe configure」指令。(謝謝 Federico)"
+
+#: src/ubuntu/third_party_repos.py:493
+msgid "Next generation input method"
+msgstr "下一代輸入法"
+
+#: src/ubuntu/third_party_repos.py:505
+msgid "Partners of Canonical"
+msgstr "Canonical 的合作夥伴"
+
+#: src/ubuntu/third_party_repos.py:508
+msgid "This repository provides many packages from partners of Canonical."
+msgstr "這個套件庫提供來自 Canonical 的合作夥伴的套件。"
+
+#: src/ubuntu/third_party_repos.py:520
+msgid "RSSOwl is an RSS reader."
+msgstr "RSSOwl 是一個 RSS 閱讀程式。"
+
+#: src/ubuntu/third_party_repos.py:533
+msgid "This is a Chinese chess game."
+msgstr "一個中國象棋遊戲。"
+
+#: src/ubuntu/third_party_repos.py:543
+msgid "Exaile (Latest version)"
+msgstr "Exaile (最新版)"
+
+#: src/ubuntu/third_party_repos.py:555
+msgid "Audacious (Latest version)"
+msgstr "Audacious (最新版)"
+
+#: src/ubuntu/third_party_repos.py:581
+msgid "This is a desktop diary application."
+msgstr "這是一個桌面日記程式。"
+
+#: src/ubuntu/third_party_repos.py:591
+msgid "Pidgin (Latest version)"
+msgstr "Pidgin (最新版)"
+
+#: src/ubuntu/third_party_repos.py:603
+msgid "Songbird (Latest version)"
+msgstr "Songbird (最新版)"
+
+#: src/ubuntu/tips.py:35
+msgid ""
+"Some skills. For example, \"change Ubuntu logo on panel\"\n"
+"https://help.ubuntu.com/community/QuickTips"
+msgstr ""
+"一些小訣竅，例如「如何變更開始選單中的 Ubuntu logo」\n"
+"https://help.ubuntu.com/community/QuickTips"
+
+#: src/ubuntu/tips.py:39
+msgid ""
+"Set apt source\n"
+"sudo software-properties-gtk\n"
+"sudo software-properties-kde"
+msgstr ""
+"設定 apt 軟體來源\n"
+"sudo software-properties-gtk\n"
+"sudo software-properties-kde"
+
+#: src/ubuntu/tips.py:43
+msgid ""
+"Display the packages which are not installed but have remained residual config\n"
+"dpkg -l | awk '/^rc/ {print $2}'\n"
+msgstr ""
+"顯示已經移除，但仍留有設定檔的套件\n"
+"dpkg -l | awk '/^rc/ {print $2}'\n"
+
+#: src/ubuntu/tips.py:47
+msgid ""
+"Add a PPA repository:\n"
+"sudo add-apt-repository ppa:PPA-REPOSITORY-NAME\n"
+msgstr ""
+"增加 PPA 套件庫：\n"
+"sudo add-apt-repository ppa:PPA套件庫的名稱\n"
+
+#: src/ubuntu/tips.py:51
+msgid ""
+"Display a list of files. The files are installed from a given package.\n"
+"dpkg -L PACKAGE_NAME\n"
+msgstr ""
+"列出指定的套件所安裝的檔案。\n"
+"dpkg -L PACKAGE_NAME\n"
+
+#: src/ubuntu/tips.py:55
+msgid ""
+"Display a list of packages. The packages installed a given file.\n"
+"dpkg -S FILE_NAME\n"
+msgstr ""
+"列出安裝了指定的檔案的套件。\n"
+"dpkg -S FILE_NAME\n"
+
+#: src/ubuntu/tips.py:59
+msgid ""
+"Display a list of packages. The name of packages matches given regex pattern.\n"
+"apt-cache search REG_EXPRESSION\n"
+msgstr ""
+"列出名稱符合指定的正規表示式的套件。\n"
+"apt-cache search REG_EXPRESSION\n"
+
+#: src/ubuntu/tips.py:63
+msgid ""
+"Display a list of packages. The packages provide a given file.\n"
+"apt-file search FILE_NAME\n"
+msgstr ""
+"列出提供指定的檔案的套件。\n"
+"apt-file search FILE_NAME\n"
+
+#: src/ubuntu/tips.py:67
+msgid ""
+"Display a list of packages. The given package depends on the list of packages.\n"
+"apt-cache depends PACKAGE_NAME\n"
+msgstr ""
+"列出指定的套件相依的套件。\n"
+"apt-cache depends PACKAGE_NAME\n"
+
+#: src/ubuntu/tips.py:71
+msgid ""
+"Display a list of packages. These packages depend on the given package.\n"
+"apt-cache rdepends PACKAGE_NAME\n"
+msgstr ""
+"列出與指定的套件相依的其他套件\n"
+"apt-cache rdepends PACKAGE_NAME\n"
+
+#: src/ubuntu/tips.py:75
+msgid ""
+"Prompt for a disk to be inserted and then add the disc to the source list.\n"
+"sudo apt-cdrom add\n"
+msgstr ""
+"提示放入一片光碟，然後將這片光碟加入軟體來源清單。\n"
+"sudo apt-cdrom add\n"
+
+#: src/ubuntu/tips.py:79
+msgid ""
+"Install the newest versions of all packages currently installed on the system.\n"
+"sudo apt-get upgrade\n"
+msgstr ""
+"將系統中安裝的套件全部更新到最新版本。\n"
+"sudo apt-get upgrade\n"
+
+#: src/ubuntu/tips.py:83
+msgid ""
+"Delete residual package configuration files.\n"
+"dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P\n"
+msgstr ""
+"刪除殘留的套件設定檔。\n"
+"dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P\n"
+
+#: src/ubuntu/tips.py:87
+msgid ""
+"Automatically install necessary files for './configure ; make ; make install'\n"
+"sudo auto-apt run ./configure\n"
+msgstr ""
+"自動安裝 './configure ; make ; make install' 編譯時必需的檔案\n"
+"sudo auto-apt run ./configure\n"
+
+#: src/ubuntu/tips.py:91
+msgid ""
+"Save the list of packages currently installed on your system.\n"
+"dpkg --get-selections | grep -v deinstall > SOME_FILE\n"
+"Then use the file to restore packages. \n"
+"dpkg --set-selections < SOME_FILE ; sudo dselect\n"
+msgstr ""
+"儲存目前系統中安裝的套件清單\n"
+"dpkg --get-selections | grep -v deinstall > SOME_FILE\n"
+"之後可以用來還原套件\n"
+"dpkg --set-selections < SOME_FILE ; sudo dselect\n"
+
+#: src/ubuntu/tips.py:97
+msgid ""
+"After running \"sudo apt-get install\", \"*.deb\" files are stored in \"/var/cache/apt/archives\"\n"
+"You can clean this directory by:\n"
+"sudo apt-get clean\n"
+msgstr ""
+"執行 sudo apt-get install 後，*.deb 檔案會被保存在 /var/cache/apt/archives 目錄下\n"
+"您可以用這個指令清除該目錄：\n"
+"sudo apt-get clean\n"
+
+#: src/ubuntu/tips.py:102
+msgid ""
+"Display URL for a given package\n"
+"apt-get -qq --print-uris install PACKAGE_NAME\n"
+msgstr ""
+"顯示指定的套件的網址\n"
+"apt-get -qq --print-uris install PACKAGE_NAME\n"
+
+#: src/ubuntu/tips.py:106
+msgid ""
+"Display some statistics about the apt cache\n"
+"apt-cache stats\n"
+msgstr ""
+"顯示 apt 快取區的統計資料\n"
+"apt-cache stats\n"
+
+#: src/ubuntu/tips.py:110
+msgid ""
+"Display all package name\n"
+"apt-cache pkgnames\n"
+msgstr ""
+"列出所有套件名稱\n"
+"apt-cache pkgnames\n"
+
+#: src/ubuntu/tips.py:114
+msgid ""
+"Display some information of a given package\n"
+"apt-cache show PACKAGE_NAME\n"
+"\n"
+msgstr ""
+"顯示指定的套件的資訊\n"
+"apt-cache show PACKAGE_NAME\n"
+"\n"
+
+#: src/ubuntu/u_apt_recovery.py:65
+msgid "Write comments"
+msgstr "寫註解"
+
+#: src/ubuntu/u_apt_recovery.py:75
+msgid "Would you like to write some comments for this snapshot?"
+msgstr "您想要為這個快照寫些註解嗎？"
+
+#: src/ubuntu/u_apt_recovery.py:136
+#, python-format
+msgid "Snapshots made in %(year)04d-%(month)02d:"
+msgstr "在 %(year)04d-%(month)02d 的快照："
+
+#: src/ubuntu/u_apt_recovery.py:150
+#, python-format
+msgid "There is no snapshot in %(year)04d-%(month)02d."
+msgstr "沒有 %(year)04d-%(month)02d 的快照。"
+
+#: src/ubuntu/u_apt_recovery.py:161
+#, python-format
+msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
+msgstr "沒有 %(year)04d-%(month)02d-%(day)02d 的快照。"
+
+#: src/ubuntu/u_apt_recovery.py:171
+#, python-format
+msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
+msgstr "從 %(year)04d-%(month)02d-%(day)02d 以後，沒有任何變更。"
+
+#: src/ubuntu/u_apt_recovery.py:195
+msgid "Create today's snapshot"
+msgstr "建立今天的快照"
+
+#: src/ubuntu/u_apt_recovery.py:209
+msgid "Show changes since selected day"
+msgstr "顯示選取的日期之後，的套件變更"
+
+#: src/ubuntu/u_apt_recovery.py:214
+msgid "packages"
+msgstr "套件"
+
+#: src/ubuntu/u_apt_recovery.py:220
+msgid "changes"
+msgstr "變更"
+
+#: src/ubuntu/u_apt_recovery.py:226
+msgid "It was installed."
+msgstr "已安裝。"
+
+#: src/ubuntu/u_apt_recovery.py:227
+msgid "It was removed."
+msgstr "已移除。"
+
+#: src/ubuntu/u_apt_recovery.py:246
+msgid "package"
+msgstr "套件"
+
+#: src/ubuntu/u_apt_recovery.py:251
+msgid "action"
+msgstr "動作"
+
+#: src/ubuntu/u_apt_recovery.py:256
+msgid "will be removed"
+msgstr "將被移除"
+
+#: src/ubuntu/u_apt_recovery.py:257
+msgid "will be installed"
+msgstr "將被安裝"
+
+#: src/ubuntu/u_apt_recovery.py:294
+msgid "To do:"
+msgstr "要做的工作："
+
+#: src/ubuntu/u_apt_recovery.py:298
+msgid "In order to revoke packages, you can drag items from the left box to the right box, then click the button. "
+msgstr "請從左邊欄位將要撤銷的套件拉到右邊欄位，然後點擊按鈕。 "
+
+#: src/ubuntu/u_apt_recovery.py:306
+msgid "Changes:"
+msgstr "變更："
+
+#: src/ubuntu/u_apt_recovery.py:311
+msgid "Ailurus helps you keep track of what software you have installed/removed. If you often try to use new software, you do not have to worry about messing up your system now."
+msgstr "Ailurus 可協助您追蹤安裝/移除過那些軟體。就算經常試用新軟體，也不用擔心弄亂您的系統。"
+
+#: src/ubuntu/u_apt_recovery.py:314
+msgid "Existing snapshots are displayed in bold font."
+msgstr "現有快照用粗體字顯示。"
+
+#: src/ubuntu/u_fastest_mirror.py:41
+#, fuzzy
+#| msgid "Search items:"
+msgid "Search"
+msgstr "搜尋項目："
+
+#: src/ubuntu/u_fastest_mirror.py:67
+#, python-format
+msgid "change %(old)s to %(new)s"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:74
+msgid "Find fastest repository mirror"
+msgstr "尋找最快速的套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:86
+#, fuzzy, python-format
+#| msgid "The fastest repository is %s."
+msgid "The fastest repository is %s;"
+msgstr "最快速的套件庫是 %s。"
+
+#: src/ubuntu/u_fastest_mirror.py:86
+#, python-format
+msgid "Its response time is %s millisecond."
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:88
+#, fuzzy
+#| msgid "<span size=\"large\">Would you like to use the fastest repository?</span>"
+msgid "<span color=\"red\"><big>We have not searched out the fastest repository.</big></span>"
+msgstr "<span size=\"large\">您想要使用最快速的套件庫嗎？</span>"
+
+#: src/ubuntu/u_fastest_mirror.py:92
+#, fuzzy
+#| msgid "The fastest repository is %s."
+msgid "<span color=\"blue\">The fastest repository is being used.</span>"
+msgstr "最快速的套件庫是 %s。"
+
+#: src/ubuntu/u_fastest_mirror.py:94
+#, fuzzy
+#| msgid "<span color=\"red\">This extension does not work well in Firefox 3.0 :(</span>"
+msgid "<span color=\"red\"><big>The fastest repository is not being used.</big></span>"
+msgstr "<span color=\"red\">這個擴充套件在 Firefox 3.0 中無法順利工作 :(</span>"
+
+#: src/ubuntu/u_fastest_mirror.py:98
+msgid "Currently you are using these repositories:"
+msgstr "目前使用的套件庫："
+
+#: src/ubuntu/u_fastest_mirror.py:101
+msgid "(Official repository)"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:102
+#, fuzzy
+#| msgid "Third party repositories"
+msgid "(Third-party repository)"
+msgstr "第三方套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:111
+msgid "There is one configuration file in /etc/apt/sources.list.d/"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:112
+#, python-format
+msgid "There are %s configuration files in /etc/apt/sources.list.d/"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:115
+msgid "They are:"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:128
+msgid "<small>(Click mouse right button to display the context menu.)</small>"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:147
+#, fuzzy
+#| msgid ""
+#| "<b>Back up the configuration of repositories:</b>\n"
+#| "cd /etc/apt/\n"
+#| "tar cxf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+#| "\n"
+#| "<b>Restore the configuration of repositories:</b>\n"
+#| "cd /etc/apt/\n"
+#| "sudo tar zxf ~/sources.backup.tar.gz"
+msgid ""
+"<b>Backup the configuration of repositories:</b>\n"
+"cd /etc/apt/\n"
+"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"\n"
+"<b>Restore the configuration of repositories:</b>\n"
+"cd /etc/apt/\n"
+"sudo tar xzf ~/sources.backup.tar.gz"
+msgstr ""
+"<b>備份套件庫設定：</b>\n"
+"cd /etc/apt/\n"
+"tar cxf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"\n"
+"<b>還原套件庫設定：</b>\n"
+"cd /etc/apt/\n"
+"sudo tar zxf ~/sources.backup.tar.gz"
+
+#: src/ubuntu/u_fastest_mirror.py:167
+#, fuzzy
+#| msgid "How to back up and restore the configuration of repositories?"
+msgid "Backup and restore the configuration of repositories"
+msgstr "如何備份、還原套件庫設定？"
+
+#: src/ubuntu/u_fastest_mirror.py:181
+msgid "Refresh"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:183 src/ubuntu/u_fastest_mirror.py:422
+msgid "Detect response time of all repositories"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:185
+#, fuzzy
+#| msgid "Find the fastest repository"
+msgid "Use the fastest repository"
+msgstr "尋找最快速的套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:187
+#, fuzzy
+#| msgid "Edit repositories by text editor"
+msgid "Edit repository configuration by text editor"
+msgstr "用文字編輯程式編輯"
+
+#: src/ubuntu/u_fastest_mirror.py:189
+#, fuzzy
+#| msgid "Edit repositories by Synaptic"
+msgid "Edit repository configuration by Synaptic"
+msgstr "用 Synaptic 編輯"
+
+#: src/ubuntu/u_fastest_mirror.py:191
+#, fuzzy
+#| msgid "How to back up and restore the configuration of repositories?"
+msgid "How to backup and restore the configuration of repositories?"
+msgstr "如何備份、還原套件庫設定？"
+
+#: src/ubuntu/u_fastest_mirror.py:218 src/ubuntu/u_fastest_mirror.py:495
+msgid "Click mouse right button to display the context menu."
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:233
+msgid "No response"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:287
+#, python-format
+msgid "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
+msgstr "<span color='black'>%(server)s 的反應時間是 %(value).2f 毫秒。</span>"
+
+#: src/ubuntu/u_fastest_mirror.py:301
+#, fuzzy, python-format
+#| msgid "Currently you are using these repositories:"
+msgid "Currently you are using %s."
+msgstr "目前使用的套件庫："
+
+#: src/ubuntu/u_fastest_mirror.py:308
+#, fuzzy
+#| msgid "Search fastest repository"
+msgid "Change repository"
+msgstr "搜尋最快速的套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:335
+msgid "Please select one repository only"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:418
+msgid "Detect response time of selected repositories"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:426
+#, fuzzy
+#| msgid "All repositories"
+msgid "Use selected repositories"
+msgstr "所有套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:429
+#, fuzzy
+#| msgid "Select _All"
+msgid "Select all"
+msgstr "全部選取(_A)"
+
+#: src/ubuntu/u_fastest_mirror.py:432
+msgid "Select all repositories in these countries"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:435
+#, fuzzy
+#| msgid "_Deselect All"
+msgid "Unselect all"
+msgstr "全部不選(_D)"
+
+#: src/ubuntu/u_fastest_mirror.py:439
+msgid "If some repositories are not listed above, please click here to tell Ailurus developers."
+msgstr "如果有套件庫未被列出，請點擊這裏通知 Ailurus 開發者。"
+
+#: src/ubuntu/u_fastest_mirror.py:458
+msgid "Country"
+msgstr "國家"
+
+#: src/ubuntu/u_fastest_mirror.py:465
+msgid "Organization"
+msgstr "組織"
+
+#: src/ubuntu/u_fastest_mirror.py:483
+#, fuzzy
+#| msgid "Repositories"
+msgid "Response time"
+msgstr "套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:545
+#, fuzzy
+#| msgid "All repositories"
+msgid "All repositories:"
+msgstr "所有套件庫"
+
+#: src/ubuntu/u_fastest_mirror.py:592
+msgid ""
+"# Do not edit this file. This is just an example.\n"
+"# The following content can be copy-pasted into /etc/apt/sources.list\n"
+"\n"
+msgstr ""
+"# 不要編輯這個檔案，這只是一個例子。\n"
+"# 以下內容可以直接複製、貼到 /etc/apt/sources.list\n"
+"\n"
+
+#: src/ubuntu/z_multidragview.py:79
+#, python-format
+msgid "and %d more..."
+msgstr "還有 %d 項..."
+
+#~ msgid "unknown"
+#~ msgstr "未知"
+
+#~ msgid "Uninstall feature is not implemented."
+#~ msgstr "反安裝功能還未完成。"
+
+#~ msgid "Report problems to Ailurus developers"
+#~ msgstr "向 Ailurus 開發者回報問題"
+
+#~ msgid "Firefox extensions for developers"
+#~ msgstr "Firefox 擴充套件 (開發者用)"
+
+#~ msgid "TeXLive 2008"
+#~ msgstr "TeXLive 2008"
+
+#~ msgid "Install TeXLive 2008 and enable Chinese support. You can create a LaTeX file which contains Chinese characters. Then use \"texpdf filename.tex\" command to build PDF files. TeXLive is obtained from http://www.tug.org/texlive/"
+#~ msgstr "安裝 TeXLive 2008 並加入中文支援。您可以編寫中文的 LaTeX 檔案，再用「texpdf filename.tex」指令編譯出 PDF 檔案。TeXLive 是從 http://www.tug.org/texlive/ 下載的。"
+
+#~ msgid "Google Notebook: Notetaking while browsing"
+#~ msgstr "Google Notebook：在瀏覽網頁時做筆記"
+
+#~ msgid ""
+#~ "\n"
+#~ "Ailurus is free software; you can redistribute it and/or modify\n"
+#~ "it under the terms of the GNU General Public License as published by\n"
+#~ "the Free Software Foundation; either version 2 of the License, or\n"
+#~ "(at your option) any later version.\n"
+#~ "\n"
+#~ "Ailurus is distributed in the hope that it will be useful,\n"
+#~ "but WITHOUT ANY WARRANTY; without even the implied warranty of\n"
+#~ "MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the\n"
+#~ "GNU General Public License for more details.\n"
+#~ "\n"
+#~ "You should have received a copy of the GNU General Public License\n"
+#~ "along with Ailurus; if not, write to the Free Software Foundation, Inc.,\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+#~ "\n"
+#~ "All rights of images in directory \"data/suyun_icons\" are preserved by SU Yun.\n"
+#~ "These images can be used in Ailurus only. \n"
+#~ "\n"
+#~ "All rights of images in directory \"data/umut_icons\" and \"data/appicons\" are preserved by M. Umut Pulat.\n"
+#~ "They are released under the GNU Lesser General Public License.\n"
+#~ "\n"
+#~ "All rights of images in directory \"data/paul_icons\" are preserved by Paul Davey.\n"
+#~ "They are released under the CC Attribution-Noncommercial-Share Alike 3.0 License.\n"
+#~ "\n"
+#~ "All rights of other images which are not mensioned above are preserves by their authors.\n"
+#~ "\n"
+#~ "All rights of the applications installed by Ailurus are preserved by their authors."
+#~ msgstr ""
+#~ "\n"
+#~ "Ailurus 是自由軟體; 您可以在 GNU 公共許可證第二版 (或更高版本)\n"
+#~ " (由自由軟體基金會發布) 的條款下，修改、重發布它。\n"
+#~ "\n"
+#~ "發布 Ailurus 的目的，是為您提供協助。 Ailurus 不負任何擔保。\n"
+#~ "請閱讀  GNU 公共許可證 以了解更詳細內容。\n"
+#~ "\n"
+#~ "您收到 Ailurus 時，應該也會收到一份 GNU 公共許可證。如果沒有，可以\n"
+#~ "寫信給自由軟體基金會，地址為：\n"
+#~ "51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.\n"
+#~ "\n"
+#~ "在 data/suyun_icons 目錄中的圖片，其所有權利由 SU Yun 保留。\n"
+#~ "這些圖片只能用在 Ailurus 中。\n"
+#~ "\n"
+#~ "在 data/umut_icons 和 data/appicons 目錄中的圖片，其所有權利由 M. Umut Pulat 保留。\n"
+#~ "這些圖片以 GNU Lesser General Public License 協議發布。\n"
+#~ "\n"
+#~ "在 data/paul_icons 目錄中的圖片，其所有權利由 Paul Davey 保留。\n"
+#~ "這些圖片以 CC Attribution-Noncommercial-Share Alike 3.0 協議發布。\n"
+#~ "\n"
+#~ "上面沒提到的其它的圖片的所有權利，由各圖片的作者保留。\n"
+#~ "\n"
+#~ "Ailurus 所安裝的應用程式的全部相關權利由它們各自的作者保留。"
+
+#~ msgid "%.2f millisecond"
+#~ msgstr "%.2f 毫秒"
+
+#~ msgid "Apply the fastest repository"
+#~ msgstr "選用最快速的套件庫"
+
+#~ msgid "The fastest repository is %(mirror)s. Its response time is %(time)s."
+#~ msgstr "最快速的套件庫是 %(mirror)s，反應時間是 %(time)s。"
+
+#~ msgid "Ailurus will change repository:"
+#~ msgstr "Ailurus 將變更套件庫："
+
+#~ msgid "Change <span color='red'>%(old)s</span> to <span color='red'>%(new)s</span>"
+#~ msgstr "把 <span color='red'>%(old)s</span> 改為 <span color='red'>%(new)s</span>"

@@ -1,0 +1,8 @@
+#These are settings for play movies on http://comic.sjtu.edu.cn
+#monitoraspect=1280:800 #屏幕分辨率  请调整
+#cache = 4096 #此选项指定用多少内存(以 kBytes 为单位)作为播放文件或 URL 的预缓冲。 请调整
+zoom=yes #是否允许视频缩放
+prefer-ipv4 = yes #avoid AF_INET6 error
+subcp = cp936 #character encoding GB2312
+subfont-autoscale = 1 #auto load
+subfont-text-scale = 7 #font size

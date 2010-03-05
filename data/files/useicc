@@ -1,0 +1,6 @@
+#!/bin/bash
+#在使用Intel编译器之前，先运行本文件。
+#这个文件没有合并到 /etc/environment 的原因是，为 LD_LIBRARY_PATH 赋值会降低程序执行的效率。
+PATH="/opt/intel/Compiler/11.0/069/bin/ia32:${PATH}"; export PATH
+LD_LIBRARY_PATH="/opt/intel/Compiler/11.0/069/lib/ia32:${LD_LIBRARY_PATH}"; export LD_LIBRARY_PATH
+INTEL_LICENSE_FILE="/opt/intel/licenses"; export INTEL_LICENSE_FILE
