@@ -741,11 +741,11 @@ class Fctix:
     Chinese = True
     def install(self):
         if get_arch() == 32:
-            f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100118-r297_i386.deb'],
-                      7327662,'7f5cfa244a12e08984f1ea7204a66c728c2671be').download()
+            f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_i386.deb'],
+                7377508,'bb5deee1dc997ce72c8be22b4d90c6fef1210b46').download()
         else:
-            f=R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100118-r297_amd64.deb'],
-                7362822,'30ff1b499a0eb5dc25e890a3f22274252d69270c').download()
+            f=R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_amd64.deb'],
+                7408298,'00e9508a6602f71495e21222c204d14289ff0f13').download()
         run('gdebi-gtk ' + f)
     def installed(self):
         return APT.installed('fcitx-svn')
