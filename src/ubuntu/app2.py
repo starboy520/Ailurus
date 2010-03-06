@@ -431,3 +431,7 @@ class QtiPlot(_apt_install) :
     logo = 'qtiplot.png'
     def __init__(self):
         self.pkgs = 'qtiplot'
+        
+class Test:
+	pass
+
