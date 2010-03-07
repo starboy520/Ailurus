@@ -1,3 +1,7 @@
+2009-03-07 CHEN Yangyang <skabyy@gmail.com>
+
+    * Automatically save/load repository response time.
+
 2009-03-04 Homer Xing <homer.xing@gmail.com>
 
     * Fixed a locale fetching bug.

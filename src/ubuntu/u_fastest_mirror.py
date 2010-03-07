@@ -357,6 +357,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.__write_config_according_to_candidate_store()
         self.__callback__refresh_state_box()
         self.__delete_all_widgets_in_progress_box()
+        self.__save_last_response_time()
         self.main_view.unlock()
         self.set_sensitive(True)
 
@@ -381,16 +382,17 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.__detect_servers_speed(servers)
         
     def __update_candidate_store_with_ping_result(self, result):
-        D = {}
         for i in result:
             server = i[0]
-            if isinstance(i[1], float): time = int(i[1])
-            else: time = self.NO_PING_RESPONSE
-            D[server] = time
+            if isinstance(i[1], float):
+                time = int(i[1])
+                self.__response_times[server] = time
+            else:
+                time = self.NO_PING_RESPONSE
         for row in self.candidate_store:
-            if row[3] in D:
+            if row[3] in self.__response_times:
                 server = row[3]
-                row[4] = D[server]
+                row[4] = self.__response_times[server]
         
     def __write_config_according_to_candidate_store(self):
         min_time = self.NO_PING_RESPONSE
@@ -545,15 +547,50 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         box.pack_start(treeview)
         return box
 
+    def __save_last_response_time(self):
+        try:
+            Dir = os.path.expanduser('~/.ailurus/')
+            if not os.path.exists(Dir): run('mkdir '+Dir)
+            
+            path = os.path.expanduser('~/.ailurus/response_time')
+            with open(path, 'w') as f:
+                for url in self.__response_times:
+                    line = [url, str(self.__response_times[url])]
+                    f.write(':'.join(line))
+                    f.write('\n')
+        except:
+            import traceback
+            traceback.print_exc()
+
+    def __init_last_response_time(self):
+        self.__response_times = {}
+        try:
+            path = os.path.expanduser('~/.ailurus/response_time')
+            if not os.path.exists(path): return
+            with open(path) as f:
+                lines = f.readlines()
+            for line in lines:
+                r = line.rsplit(':', 1)
+                self.__response_times[r[0]] = float(r[1])
+        except IOError:
+            import traceback
+            traceback.print_exc()
+
     def __fill_candidate_store(self):
         for e in serverlib.get_candidate_repositories():
-            e.append(self.NO_PING_RESPONSE)
+            try:
+                res_time = self.__response_times[e[3]]
+            except KeyError:
+                res_time = self.NO_PING_RESPONSE
+            e.append(res_time)
             self.candidate_store.append(e)
 
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
         assert hasattr(main_view, 'unlock')
         self.main_view = main_view
+        
+        self.__init_last_response_time()
         
         gtk.VBox.__init__(self, False, 5)
         # organization, country, URL, server, response time(in millisecond)
