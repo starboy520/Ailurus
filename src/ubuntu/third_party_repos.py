@@ -169,6 +169,19 @@ class Repo_GoogleStable(_repo):
         self.key_id = '7FAC5991'
         _repo.__init__(self)
 
+class Repo_Firefox(_repo):
+    __doc__ = _('Firefox 3.6')
+    logo = 'firefox.png'
+    def __init__(self):
+	self.desc = _('This repository contains the stable version of Firefox 3.6')
+        self.apt_content = 'firefox'
+        self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
+        self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'
+        self.apt_conf = ['deb http://ppa.launchpad.net/mozillateam/firefox-stable/ubuntu $version main']
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x9BDB3D89CE49EC21'
+        self.key_id = 'CE49EC21'
+        _repo.__init__(self)
+
 class Repo_GoogleUnstable(_repo):
     __doc__ = _('Google Picasa 3')
     def __init__(self):
@@ -207,6 +220,7 @@ class Repo_WINE(_repo):
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A9A06AEF9CB8DB0'
         self.key_id = 'F9CB8DB0'
         _repo.__init__(self)
+
 
 class Repo_Dropbox(_repo):
     __doc__ = _('Dropbox')

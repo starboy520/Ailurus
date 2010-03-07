@@ -144,6 +144,17 @@ class Decompression_Capability(_apt_install) :
     def get_reason(self, f):
         self._get_reason(f)
 
+class Typespeed(_apt_install) :
+    __doc__ = _('Typespeed')
+    detail= _('Typespeed is a tool and game for testing your typing speed and pratise your typing\n'
+	'It only can run it in the Terminal')
+    size = 42 * 1000
+    time = 4 # i don't know what the TIME is 
+    category = 'education'
+    logo = 'extract.png'
+    def __init__(self):
+        self.pkgs = "typespeed"
+
 class Evince_Read_Chinese_PDF(_apt_install) :
     __doc__ = _('Make Evince be able to reveal Chinese pdf')
     detail = _('Command: sudo apt-get install poppler-data')
