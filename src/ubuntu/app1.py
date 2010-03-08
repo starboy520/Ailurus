@@ -96,7 +96,11 @@ class Full_Language_Pack(_apt_install):
     logo = 'language.png'
     def __init__(self):
         import locale
-        lang = locale.getdefaultlocale()[0].split('_')[0]
+        lang = locale.getdefaultlocale()
+        try:
+            lang = lang[0].split('_')[0]
+        except AttributeError: # lang == null
+            lang = 'en'
 
         List = [
                     'language-pack-' + lang,
