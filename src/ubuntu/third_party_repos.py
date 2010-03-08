@@ -169,11 +169,11 @@ class Repo_GoogleStable(_repo):
         self.key_id = '7FAC5991'
         _repo.__init__(self)
 
-class Repo_Firefox(_repo):
-    __doc__ = _('Firefox 3.6')
+class Repo_Firefox_3_6(_repo):
+    __doc__ = _('Firefox 3.6 (stable)')
     logo = 'firefox.png'
     def __init__(self):
-	self.desc = _('This repository contains the stable version of Firefox 3.6')
+	self.desc = _('This repository contains Firefox stable version 3.6.')
         self.apt_content = 'firefox'
         self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
         self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'

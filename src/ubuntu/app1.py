@@ -145,13 +145,11 @@ class Decompression_Capability(_apt_install) :
         self._get_reason(f)
 
 class Typespeed(_apt_install) :
-    __doc__ = _('Typespeed')
-    detail= _('Typespeed is a tool and game for testing your typing speed and pratise your typing\n'
-	'It only can run it in the Terminal')
-    size = 42 * 1000
-    time = 4 # i don't know what the TIME is 
-    category = 'education'
-    logo = 'extract.png'
+    'Typespeed'
+    detail= _('Typespeed is a typing practise. It only runs in terminal.')
+    size = 356 * 1000
+    category = 'game'
+    logo = 'typespeed.png'
     def __init__(self):
         self.pkgs = "typespeed"
 
