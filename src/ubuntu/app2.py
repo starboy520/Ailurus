@@ -433,9 +433,10 @@ class QtiPlot(_apt_install) :
         self.pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
-    'extcal'
-    detail = _('Extcalc is an excellent calculator with advanced calculation method .\n'
+    'Extcalc'
+    detail = _('This is a multifunctional graphic calculator.\n'
         'Command: sudo apt-get install extcalc')
     category = 'math'
+    logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
