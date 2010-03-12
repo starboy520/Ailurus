@@ -6,9 +6,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Ailurus 10.04.4\n"
+"Project-Id-Version: Ailurus 10.03\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-02 19:01+0800\n"
+"POT-Creation-Date: 2010-03-12 19:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,300 +17,300 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: src/applib.py:86 src/applib.py:144
+#: src/applib.py:78 src/applib.py:136
 msgid "Change GConf values:"
 msgstr ""
 
-#: src/applib.py:89 src/applib.py:100 src/applib.py:147 src/applib.py:157
+#: src/applib.py:81 src/applib.py:92 src/applib.py:139 src/applib.py:149
 msgid "Key:"
 msgstr ""
 
-#: src/applib.py:90 src/applib.py:148
+#: src/applib.py:82 src/applib.py:140
 msgid "New value:"
 msgstr ""
 
-#: src/applib.py:101
+#: src/applib.py:93
 msgid "Appended items:"
 msgstr ""
 
-#: src/applib.py:128
+#: src/applib.py:120
 #, python-format
 msgid "The value of \"%(key)s\" is not \"%(value)s\"."
 msgstr ""
 
-#: src/applib.py:138
+#: src/applib.py:130
 #, python-format
 msgid "\"%(value)s\" is not in \"%(key)s\"."
 msgstr ""
 
-#: src/applib.py:158
+#: src/applib.py:150
 msgid "Removed items:"
 msgstr ""
 
-#: src/applib.py:198 src/fedora/apps.py:59
+#: src/applib.py:190 src/fedora/apps.py:51
 #, python-format
 msgid "The packages \"%s\" are not installed."
 msgstr ""
 
-#: src/applib.py:237 src/applib.py:295 src/ubuntu/app1.py:494
+#: src/applib.py:229 src/applib.py:287 src/ubuntu/app1.py:499
 #, python-format
 msgid "\"%s\" does not exist."
 msgstr ""
 
-#: src/applib.py:258
+#: src/applib.py:250
 msgid ""
 "<span color='red'>This extension cannot be removed by Ailurus. It can be "
 "removed in 'Tools'->'Add-ons' menu of firefox.</span>"
 msgstr ""
 
-#: src/applib.py:259
+#: src/applib.py:251
 #, python-format
 msgid "It can be used in Firefox version %s"
 msgstr ""
 
-#: src/applib.py:260
+#: src/applib.py:252
 msgid "It can be obtained from "
 msgstr ""
 
-#: src/lib.py:335 src/lib.py:386 src/lib.py:585 src/lib.py:947
-#: src/z_terminal.py:61
+#: src/lib.py:340 src/lib.py:391 src/lib.py:590 src/lib.py:966
+#: src/z_terminal.py:53
 msgid "Run command:"
 msgstr ""
 
-#: src/lib.py:720
+#: src/lib.py:725
 msgid "Installing packages:"
 msgstr ""
 
-#: src/lib.py:730
+#: src/lib.py:735
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr ""
 
-#: src/lib.py:756
+#: src/lib.py:761
 msgid "Removing packages:"
 msgstr ""
 
-#: src/lib.py:766
+#: src/lib.py:771
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr ""
 
-#: src/lib.py:771 src/ubuntu/quick_setup.py:226
-#: src/ubuntu/u_fastest_mirror.py:325
+#: src/lib.py:776 src/ubuntu/quick_setup.py:228
+#: src/ubuntu/u_fastest_mirror.py:320
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
-#: src/lib.py:902
+#: src/lib.py:921
 #, python-format
 msgid "%.1f GB"
 msgstr ""
 
-#: src/lib.py:904
+#: src/lib.py:923
 #, python-format
 msgid "%.1f MB"
 msgstr ""
 
-#: src/lib.py:906
+#: src/lib.py:925
 #, python-format
 msgid "%.1f KB"
 msgstr ""
 
-#: src/lib.py:907
+#: src/lib.py:926
 msgid "less than 1 KB"
 msgstr ""
 
-#: src/lib.py:915
+#: src/lib.py:934
 #, python-format
 msgid "%.1f hours"
 msgstr ""
 
-#: src/lib.py:917
+#: src/lib.py:936
 #, python-format
 msgid "%.1f minutes"
 msgstr ""
 
-#: src/lib.py:918
+#: src/lib.py:937
 msgid "less than 1 minute"
 msgstr ""
 
-#: src/lib.py:1115 src/lib.py:1120
+#: src/lib.py:1134 src/lib.py:1139
 msgid "Opening web page"
 msgstr ""
 
-#: src/lib.py:1260
+#: src/lib.py:1279
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: src/lib.py:1262
+#: src/lib.py:1281
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: src/lib.py:1339
+#: src/lib.py:1358
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: src/lib.py:1343
+#: src/lib.py:1362
 msgid "Good."
 msgstr ""
 
-#: src/lib.py:1361
+#: src/lib.py:1380
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: src/lib.py:1506
+#: src/lib.py:1525
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
-#: src/loader.py:94 src/loader.py:131
+#: src/loader.py:86 src/loader.py:123
 #, python-format
 msgid "Cannot load class %s"
 msgstr ""
 
-#: src/loader.py:95 src/loader.py:132 src/ui.py:410 src/ubuntu/setting.py:274
+#: src/loader.py:87 src/loader.py:124 src/ui.py:402 src/ubuntu/setting.py:266
 msgid "Traceback:"
 msgstr ""
 
-#: src/settinglib.py:45 src/settinglib.py:61 src/settinglib.py:163
-#: src/settinglib.py:195
+#: src/settinglib.py:37 src/settinglib.py:53 src/settinglib.py:155
+#: src/settinglib.py:187
 msgid "GConf key: "
 msgstr ""
 
-#: src/settinglib.py:46 src/settinglib.py:62 src/settinglib.py:126
-#: src/gnome/setting.py:145 src/gnome/setting.py:147 src/gnome/setting.py:149
+#: src/settinglib.py:38 src/settinglib.py:54 src/settinglib.py:118
+#: src/gnome/setting.py:132 src/gnome/setting.py:134 src/gnome/setting.py:136
 msgid ""
 "\n"
 "GConf key: "
 msgstr ""
 
-#: src/settinglib.py:84
+#: src/settinglib.py:76
 #, python-format
 msgid "Choose a file for \"%s\" "
 msgstr ""
 
-#: src/settinglib.py:100
+#: src/settinglib.py:92
 msgid "Image file"
 msgstr ""
 
-#: src/settinglib.py:122
+#: src/settinglib.py:114
 msgid ""
 "\n"
 "File: "
 msgstr ""
 
-#: src/settinglib.py:140 src/u_offline_install.py:217
+#: src/settinglib.py:132 src/u_offline_install.py:209
 msgid "Change"
 msgstr ""
 
-#: src/settinglib.py:164
+#: src/settinglib.py:156
 #, python-format
 msgid ""
 "\n"
 "Minimum value: %(min)s. Maximum value: %(max)s."
 msgstr ""
 
-#: src/settinglib.py:182 src/common/setting.py:71 src/ubuntu/setting.py:200
-#: src/ubuntu/u_apt_recovery.py:301
+#: src/settinglib.py:174 src/common/setting.py:63 src/ubuntu/setting.py:190
+#: src/ubuntu/u_apt_recovery.py:291
 msgid "Apply"
 msgstr ""
 
-#: src/tip_after_logging_in.py:50 src/common/menu.py:305
+#: src/tip_after_logging_in.py:42 src/common/menu.py:298
 msgid "Tip of the day"
 msgstr ""
 
-#: src/u_app.py:36 src/ui.py:84 src/common/menu.py:275
+#: src/u_app.py:28 src/ui.py:76 src/common/menu.py:268
 msgid "Install/Remove"
 msgstr ""
 
-#: src/u_app.py:117
+#: src/u_app.py:109
 msgid "To be installed:\n"
 msgstr ""
 
-#: src/u_app.py:124
+#: src/u_app.py:116
 msgid "To be removed:\n"
 msgstr ""
 
-#: src/u_app.py:132
+#: src/u_app.py:124
 #, python-format
 msgid "%s disk space will be occupied."
 msgstr ""
 
-#: src/u_app.py:133
+#: src/u_app.py:125
 #, python-format
 msgid "%s disk space will be freed."
 msgstr ""
 
-#: src/u_app.py:137
+#: src/u_app.py:129
 msgid "Are you sure to change your system as follows?"
 msgstr ""
 
-#: src/u_app.py:138
+#: src/u_app.py:130
 msgid "Confirmation"
 msgstr ""
 
-#: src/u_app.py:145
+#: src/u_app.py:137
 msgid ""
 "Summary: \n"
 "\n"
 msgstr ""
 
-#: src/u_app.py:147
+#: src/u_app.py:139
 msgid "Successfully installed:\n"
 msgstr ""
 
-#: src/u_app.py:151
+#: src/u_app.py:143
 msgid "Successfully removed:\n"
 msgstr ""
 
-#: src/u_app.py:155
+#: src/u_app.py:147
 msgid "Failed to install:\n"
 msgstr ""
 
-#: src/u_app.py:158 src/u_app.py:163
+#: src/u_app.py:150 src/u_app.py:155
 msgid ""
 "The tracebacks are in the terminal window.\n"
 "\n"
 msgstr ""
 
-#: src/u_app.py:160
+#: src/u_app.py:152
 msgid "Failed to remove:\n"
 msgstr ""
 
-#: src/u_app.py:167
+#: src/u_app.py:159
 msgid "All works finished."
 msgstr ""
 
-#: src/u_app.py:204
+#: src/u_app.py:196
 msgid "Installing:"
 msgstr ""
 
-#: src/u_app.py:215
+#: src/u_app.py:207
 msgid "Removing:"
 msgstr ""
 
-#: src/u_app.py:236
+#: src/u_app.py:228
 msgid "Summary:"
 msgstr ""
 
-#: src/u_app.py:238
+#: src/u_app.py:230
 msgid "Successfully installed:"
 msgstr ""
 
-#: src/u_app.py:240
+#: src/u_app.py:232
 msgid "Successfully removed:"
 msgstr ""
 
-#: src/u_app.py:243
+#: src/u_app.py:235
 msgid "Failed to install:"
 msgstr ""
 
-#: src/u_app.py:248
+#: src/u_app.py:240
 msgid "Failed to remove:"
 msgstr ""
 
-#: src/u_app.py:259
+#: src/u_app.py:251
 msgid ""
 "Some operations failed.\n"
 "Would you please report bugs to Ailurus developer?\n"
@@ -318,210 +318,210 @@ msgid ""
 "in bug report. "
 msgstr ""
 
-#: src/u_app.py:264
+#: src/u_app.py:256
 msgid "All works finished. "
 msgstr ""
 
-#: src/u_app.py:395
+#: src/u_app.py:387
 msgid "Not installed."
 msgstr ""
 
-#: src/u_app.py:397
+#: src/u_app.py:389
 msgid "Not installed, because:"
 msgstr ""
 
-#: src/u_app.py:401
+#: src/u_app.py:393
 msgid "Will be installed."
 msgstr ""
 
-#: src/u_app.py:405
+#: src/u_app.py:397
 msgid "Installed size is"
 msgstr ""
 
-#: src/u_app.py:408
+#: src/u_app.py:400
 msgid "Installed."
 msgstr ""
 
-#: src/u_app.py:410
+#: src/u_app.py:402
 msgid "Will be removed."
 msgstr ""
 
-#: src/u_app.py:414
+#: src/u_app.py:406
 #, python-format
 msgid "Will free %s disk space."
 msgstr ""
 
-#: src/u_app.py:517
+#: src/u_app.py:509
 msgid "Select _All"
 msgstr ""
 
-#: src/u_app.py:519
+#: src/u_app.py:511
 msgid "_Deselect All"
 msgstr ""
 
-#: src/u_app.py:521
+#: src/u_app.py:513
 msgid "_Reset All"
 msgstr ""
 
-#: src/u_app.py:558
+#: src/u_app.py:550
 msgid "_Apply"
 msgstr ""
 
-#: src/u_app.py:567
+#: src/u_app.py:559
 msgid "Details:"
 msgstr ""
 
-#: src/u_app.py:618
+#: src/u_app.py:610
 msgid "Report bugs"
 msgstr ""
 
-#: src/u_app.py:620
+#: src/u_app.py:612
 msgid "Close this terminal"
 msgstr ""
 
-#: src/u_app.py:649
+#: src/u_app.py:641
 msgid "Common"
 msgstr ""
 
-#: src/u_app.py:650
+#: src/u_app.py:642
 msgid "For students"
 msgstr ""
 
-#: src/u_app.py:651
+#: src/u_app.py:643
 msgid "For developers"
 msgstr ""
 
-#: src/u_app.py:652
+#: src/u_app.py:644
 msgid "Advanced"
 msgstr ""
 
-#: src/u_app.py:655
+#: src/u_app.py:647
 msgid "Office"
 msgstr ""
 
-#: src/u_app.py:656
+#: src/u_app.py:648
 msgid "Education"
 msgstr ""
 
-#: src/u_app.py:657
+#: src/u_app.py:649
 msgid "Internet"
 msgstr ""
 
-#: src/u_app.py:658 src/u_app.py:677
+#: src/u_app.py:650 src/u_app.py:669
 msgid "Firefox extensions"
 msgstr ""
 
-#: src/u_app.py:659
+#: src/u_app.py:651
 msgid "Multimedia"
 msgstr ""
 
-#: src/u_app.py:660
+#: src/u_app.py:652
 msgid "Appearance"
 msgstr ""
 
-#: src/u_app.py:661
+#: src/u_app.py:653
 msgid "Enhancements"
 msgstr ""
 
-#: src/u_app.py:662
+#: src/u_app.py:654
 msgid "Game"
 msgstr ""
 
-#: src/u_app.py:664
+#: src/u_app.py:656
 msgid "Third party repositories"
 msgstr ""
 
-#: src/u_app.py:665
+#: src/u_app.py:657
 msgid "Virtual machine"
 msgstr ""
 
-#: src/u_app.py:666
+#: src/u_app.py:658
 msgid "Establish a server"
 msgstr ""
 
-#: src/u_app.py:668
+#: src/u_app.py:660
 msgid "Mathematics"
 msgstr ""
 
-#: src/u_app.py:669
+#: src/u_app.py:661
 msgid "Statistics"
 msgstr ""
 
-#: src/u_app.py:670
+#: src/u_app.py:662
 msgid "Biology"
 msgstr ""
 
-#: src/u_app.py:671
+#: src/u_app.py:663
 msgid "Electronics & Mechanics"
 msgstr ""
 
-#: src/u_app.py:672
+#: src/u_app.py:664
 msgid "Geography"
 msgstr ""
 
-#: src/u_app.py:673
+#: src/u_app.py:665
 msgid "LaTeX"
 msgstr ""
 
-#: src/u_app.py:675
+#: src/u_app.py:667
 msgid "Development"
 msgstr ""
 
-#: src/u_app.py:676
+#: src/u_app.py:668
 msgid "Eclipse"
 msgstr ""
 
-#: src/u_info.py:107
+#: src/u_info.py:99
 msgid "Hardware Information"
 msgstr ""
 
-#: src/u_info.py:116
+#: src/u_info.py:108
 msgid "Linux Information"
 msgstr ""
 
-#: src/u_offline_install.py:36 src/ui.py:85 src/ui.py:196
-#: src/common/menu.py:277
+#: src/u_offline_install.py:28 src/ui.py:77 src/ui.py:188
+#: src/common/menu.py:270
 msgid "Cache installation files"
 msgstr ""
 
-#: src/u_offline_install.py:45
+#: src/u_offline_install.py:37
 msgid ""
 "N/A ( Directory does not exist. It will be automatically created before "
 "beginning cache files. )"
 msgstr ""
 
-#: src/u_offline_install.py:51
+#: src/u_offline_install.py:43
 msgid "Select a folder"
 msgstr ""
 
-#: src/u_offline_install.py:79
+#: src/u_offline_install.py:71
 #, python-format
 msgid "%(uncached)s uncached files, %(cached)s cached files"
 msgstr ""
 
-#: src/u_offline_install.py:116
+#: src/u_offline_install.py:108
 #, python-format
 msgid "Tried to download %s files."
 msgstr ""
 
-#: src/u_offline_install.py:117
+#: src/u_offline_install.py:109
 #, python-format
 msgid "%s files are downloaded successfully."
 msgstr ""
 
-#: src/u_offline_install.py:118
+#: src/u_offline_install.py:110
 #, python-format
 msgid "%s files cannot be downloaded."
 msgstr ""
 
-#: src/u_offline_install.py:197
+#: src/u_offline_install.py:189
 msgid ""
 "You can install applications without Internet if software installation files "
 "are cached into your computer. Moreover, the download time is saved by "
 "caching."
 msgstr ""
 
-#: src/u_offline_install.py:200
+#: src/u_offline_install.py:192
 msgid ""
 "\n"
 "Ailurus cannot cache \"*.deb\" packages which are in /var/cache/apt . You "
@@ -529,291 +529,291 @@ msgid ""
 "aptoncd\". "
 msgstr ""
 
-#: src/u_offline_install.py:209
+#: src/u_offline_install.py:201
 msgid "Do not automatically delete cached APT packages."
 msgstr ""
 
-#: src/u_offline_install.py:214
+#: src/u_offline_install.py:206
 msgid "Cache files in this directory:"
 msgstr ""
 
-#: src/u_offline_install.py:219
+#: src/u_offline_install.py:211
 msgid "Open"
 msgstr ""
 
-#: src/u_offline_install.py:234
+#: src/u_offline_install.py:226
 msgid "Free disk space:"
 msgstr ""
 
-#: src/u_offline_install.py:238
+#: src/u_offline_install.py:230
 msgid "Uncached files:"
 msgstr ""
 
-#: src/u_offline_install.py:239
+#: src/u_offline_install.py:231
 msgid "Show URL"
 msgstr ""
 
-#: src/u_offline_install.py:241
+#: src/u_offline_install.py:233
 msgid "Download"
 msgstr ""
 
-#: src/u_offline_install.py:275
+#: src/u_offline_install.py:267
 msgid "File name"
 msgstr ""
 
-#: src/u_offline_install.py:287
+#: src/u_offline_install.py:279
 msgid "Size"
 msgstr ""
 
-#: src/u_offline_install.py:293
+#: src/u_offline_install.py:285
 msgid "Unknown"
 msgstr ""
 
-#: src/u_offline_install.py:310
+#: src/u_offline_install.py:302
 msgid "(States of files are not detected yet.)"
 msgstr ""
 
-#: src/u_setting.py:37 src/ui.py:83 src/common/menu.py:270
+#: src/u_setting.py:29 src/ui.py:75 src/common/menu.py:263
 msgid "System settings"
 msgstr ""
 
-#: src/u_setting.py:53
+#: src/u_setting.py:45
 msgid "Desktop"
 msgstr ""
 
-#: src/u_setting.py:54
+#: src/u_setting.py:46
 msgid "Window effect"
 msgstr ""
 
-#: src/u_setting.py:55
+#: src/u_setting.py:47
 msgid "Menu"
 msgstr ""
 
-#: src/u_setting.py:56
+#: src/u_setting.py:48
 msgid "Icon"
 msgstr ""
 
-#: src/u_setting.py:57
+#: src/u_setting.py:49
 msgid "Font"
 msgstr ""
 
-#: src/u_setting.py:58
+#: src/u_setting.py:50
 msgid "GNOME Session"
 msgstr ""
 
-#: src/u_setting.py:59
+#: src/u_setting.py:51
 msgid "Memory"
 msgstr ""
 
-#: src/u_setting.py:60
+#: src/u_setting.py:52
 msgid "Terminal"
 msgstr ""
 
-#: src/u_setting.py:61
+#: src/u_setting.py:53
 msgid "Sound"
 msgstr ""
 
-#: src/u_setting.py:62
+#: src/u_setting.py:54
 msgid "Power management"
 msgstr ""
 
-#: src/u_setting.py:63
+#: src/u_setting.py:55
 msgid "Network"
 msgstr ""
 
-#: src/u_setting.py:64
+#: src/u_setting.py:56
 msgid "Update"
 msgstr ""
 
-#: src/u_setting.py:65
+#: src/u_setting.py:57
 msgid "Restriction"
 msgstr ""
 
-#: src/u_setting.py:105
+#: src/u_setting.py:97
 msgid ""
 "If you hover mouse pointer above any item, you can read Linux setting "
 "skills :)"
 msgstr ""
 
-#: src/ui.py:46
+#: src/ui.py:38
 msgid "Name of current panel"
 msgstr ""
 
-#: src/ui.py:51
+#: src/ui.py:43
 msgid "Go back one panel"
 msgstr ""
 
-#: src/ui.py:52
+#: src/ui.py:44
 msgid "Go forward one panel"
 msgstr ""
 
-#: src/ui.py:59
+#: src/ui.py:51
 msgid "Enable current pane"
 msgstr ""
 
-#: src/ui.py:60
+#: src/ui.py:52
 msgid "Disable current pane"
 msgstr ""
 
-#: src/ui.py:61
+#: src/ui.py:53
 msgid "Display \"Tip of the day\""
 msgstr ""
 
-#: src/ui.py:62 src/common/menu.py:420
+#: src/ui.py:54 src/common/menu.py:413
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: src/ui.py:63 src/common/menu.py:258
+#: src/ui.py:55 src/common/menu.py:251
 msgid "Quit"
 msgstr ""
 
-#: src/ui.py:81 src/common/menu.py:263
+#: src/ui.py:73 src/common/menu.py:256
 msgid "Hardware information"
 msgstr ""
 
-#: src/ui.py:82 src/common/menu.py:265
+#: src/ui.py:74 src/common/menu.py:258
 msgid "Linux information"
 msgstr ""
 
-#: src/ui.py:86 src/ubuntu/menu.py:37
+#: src/ui.py:78 src/ubuntu/menu.py:29
 msgid "Find fast repository mirror"
 msgstr ""
 
-#: src/ui.py:87 src/ubuntu/menu.py:42 src/ubuntu/u_apt_recovery.py:37
+#: src/ui.py:79 src/ubuntu/menu.py:34 src/ubuntu/u_apt_recovery.py:29
 msgid "APT recovery"
 msgstr ""
 
-#: src/ui.py:270
+#: src/ui.py:262
 msgid "Warning!"
 msgstr ""
 
-#: src/ui.py:271
+#: src/ui.py:263
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr ""
 
-#: src/ui.py:291
+#: src/ui.py:283
 msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
 msgstr ""
 
-#: src/ui.py:299
+#: src/ui.py:291
 msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
 msgstr ""
 
-#: src/ui.py:322
+#: src/ui.py:314
 msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
 
-#: src/ui.py:324
+#: src/ui.py:316
 msgid ""
 "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 
-#: src/ui.py:332 src/ui.py:335
+#: src/ui.py:324 src/ui.py:327
 msgid "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 
-#: src/ui.py:340
+#: src/ui.py:332
 msgid "<span color=\"yellow\">Loading tips ... </span>\n"
 msgstr ""
 
-#: src/ui.py:346
+#: src/ui.py:338
 msgid "<span color=\"yellow\">Loading main window ... </span>\n"
 msgstr ""
 
-#: src/ui.py:349
+#: src/ui.py:341
 msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: src/ui.py:362
+#: src/ui.py:354
 msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: src/ui.py:369
+#: src/ui.py:361
 msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
 msgstr ""
 
-#: src/ui.py:380
+#: src/ui.py:372
 msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
 msgstr ""
 
-#: src/ui.py:387
+#: src/ui.py:379
 msgid "<span color=\"yellow\">Loading menu ... </span>\n"
 msgstr ""
 
-#: src/ui.py:420
+#: src/ui.py:412
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 
-#: src/ui.py:433
+#: src/ui.py:425
 msgid "Click here to report bug via web-page"
 msgstr ""
 
-#: src/ui.py:435
+#: src/ui.py:427
 msgid "Close"
 msgstr ""
 
-#: src/ui.py:441
+#: src/ui.py:433
 msgid "Bug appears!"
 msgstr ""
 
-#: src/z_disabledpane.py:35
+#: src/z_disabledpane.py:27
 msgid "This pane is disabled."
 msgstr ""
 
-#: src/z_searchbox.py:39
+#: src/z_searchbox.py:31
 msgid "Search items:"
 msgstr ""
 
-#: src/z_searchbox.py:48
+#: src/z_searchbox.py:40
 msgid "In names only."
 msgstr ""
 
-#: src/z_searchbox.py:49
+#: src/z_searchbox.py:41
 msgid "In names & details."
 msgstr ""
 
-#: src/z_splashwindow.py:51
+#: src/z_splashwindow.py:43
 msgid ""
 "<span color=\"yellow\">Help you install some nice applications.\n"
 "Help you do tedious settings.\n"
 "Tell you some Linux skills.</span>"
 msgstr ""
 
-#: src/z_terminal.py:76
+#: src/z_terminal.py:68
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr ""
 
-#: src/z_tipoftheday.py:63
+#: src/z_tipoftheday.py:55
 msgid "Tip of the Day"
 msgstr ""
 
-#: src/z_tipoftheday.py:69
+#: src/z_tipoftheday.py:61
 msgid "<span size=\"x-large\"><b>Did you know ?</b></span>"
 msgstr ""
 
-#: src/z_tipoftheday.py:92
+#: src/z_tipoftheday.py:84
 msgid "_Next tip"
 msgstr ""
 
-#: src/z_tipoftheday.py:97
+#: src/z_tipoftheday.py:89
 msgid "_Previous tip"
 msgstr ""
 
-#: src/common/apps_eclipse.py:43
+#: src/common/apps_eclipse.py:35
 msgid "Installing Eclipse extension"
 msgstr ""
 
-#: src/common/apps_eclipse.py:106
+#: src/common/apps_eclipse.py:98
 msgid "Eclipse (basic development environment)"
 msgstr ""
 
-#: src/common/apps_eclipse.py:108
+#: src/common/apps_eclipse.py:100
 msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
 msgstr ""
 
-#: src/common/apps_eclipse.py:109
+#: src/common/apps_eclipse.py:101
 msgid ""
 "You can install Language pack according to the instructions on the page "
 "http://www.eclipse.org/babel/downloads.php\n"
@@ -822,37 +822,37 @@ msgid ""
 "directory \"/opt/eclipse\" ."
 msgstr ""
 
-#: src/common/apps_eclipse.py:112 src/common/apps.py:156
-#: src/common/apps.py:224 src/common/apps.py:336
-#: src/ubuntu/app_not_opensource.py:40
+#: src/common/apps_eclipse.py:104 src/common/apps.py:148
+#: src/common/apps.py:216 src/common/apps.py:328
+#: src/ubuntu/app_not_opensource.py:32
 msgid " This application depends on Java."
 msgstr ""
 
-#: src/common/apps_eclipse.py:349
+#: src/common/apps_eclipse.py:341
 msgid "Eclipse (basic development environment + J2EE)"
 msgstr ""
 
-#: src/common/apps_eclipse.py:570
+#: src/common/apps_eclipse.py:562
 msgid "CDT: C/C++ development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:571
+#: src/common/apps_eclipse.py:563
 msgid "CDT is from http://www.eclipse.org/cdt/"
 msgstr ""
 
-#: src/common/apps_eclipse.py:589
+#: src/common/apps_eclipse.py:581
 msgid "Pydev: Python development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:590
+#: src/common/apps_eclipse.py:582
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr ""
 
-#: src/common/apps_eclipse.py:608
+#: src/common/apps_eclipse.py:600
 msgid "Aptana: Web application development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:609
+#: src/common/apps_eclipse.py:601
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by http://download.aptana.org/tools/studio/plugin/"
@@ -862,148 +862,148 @@ msgid ""
 "Eclipse."
 msgstr ""
 
-#: src/common/apps_eclipse.py:623 src/common/apps_eclipse.py:645
-#: src/common/apps_eclipse.py:680 src/common/apps_eclipse.py:705
-#: src/common/apps_eclipse.py:726
+#: src/common/apps_eclipse.py:615 src/common/apps_eclipse.py:637
+#: src/common/apps_eclipse.py:672 src/common/apps_eclipse.py:697
+#: src/common/apps_eclipse.py:718
 msgid "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
 msgstr ""
 
-#: src/common/apps_eclipse.py:625 src/common/apps_eclipse.py:647
-#: src/common/apps_eclipse.py:682 src/common/apps_eclipse.py:707
-#: src/common/apps_eclipse.py:728
+#: src/common/apps_eclipse.py:617 src/common/apps_eclipse.py:639
+#: src/common/apps_eclipse.py:674 src/common/apps_eclipse.py:699
+#: src/common/apps_eclipse.py:720
 #, python-format
 msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
 
-#: src/common/apps_eclipse.py:627 src/common/apps_eclipse.py:649
-#: src/common/apps_eclipse.py:684 src/common/apps_eclipse.py:709
-#: src/common/apps_eclipse.py:730
+#: src/common/apps_eclipse.py:619 src/common/apps_eclipse.py:641
+#: src/common/apps_eclipse.py:676 src/common/apps_eclipse.py:701
+#: src/common/apps_eclipse.py:722
 msgid "Then click the \"Next\" button and agree the license."
 msgstr ""
 
-#: src/common/apps_eclipse.py:628
+#: src/common/apps_eclipse.py:620
 msgid "Installing Aptana"
 msgstr ""
 
-#: src/common/apps_eclipse.py:633
+#: src/common/apps_eclipse.py:625
 msgid "RadRails: Ruby development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:634
+#: src/common/apps_eclipse.py:626
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by http://"
 "download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 msgstr ""
 
-#: src/common/apps_eclipse.py:650
+#: src/common/apps_eclipse.py:642
 msgid "Installing RadRails\n"
 msgstr ""
 
-#: src/common/apps_eclipse.py:656
+#: src/common/apps_eclipse.py:648
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr ""
 
-#: src/common/apps_eclipse.py:669
+#: src/common/apps_eclipse.py:661
 msgid "Dynamic languages toolkit"
 msgstr ""
 
-#: src/common/apps_eclipse.py:670
+#: src/common/apps_eclipse.py:662
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
 
-#: src/common/apps_eclipse.py:685
+#: src/common/apps_eclipse.py:677
 msgid "Installing Dynamic languages toolkit\n"
 msgstr ""
 
-#: src/common/apps_eclipse.py:694
+#: src/common/apps_eclipse.py:686
 msgid "PDT: PHP development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:695
+#: src/common/apps_eclipse.py:687
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr ""
 
-#: src/common/apps_eclipse.py:710
+#: src/common/apps_eclipse.py:702
 msgid "Installing PDT\n"
 msgstr ""
 
-#: src/common/apps_eclipse.py:715
+#: src/common/apps_eclipse.py:707
 msgid "Subversive: Use SVN in Eclipse"
 msgstr ""
 
-#: src/common/apps_eclipse.py:716
+#: src/common/apps_eclipse.py:708
 msgid ""
 "It is installed by http://download.eclipse.org/technology/subversive/0.7/"
 "update-site/"
 msgstr ""
 
-#: src/common/apps_eclipse.py:731
+#: src/common/apps_eclipse.py:723
 msgid "Installing Subversive\n"
 msgstr ""
 
-#: src/common/apps_eclipse.py:736
+#: src/common/apps_eclipse.py:728
 msgid "MTJ: J2ME development"
 msgstr ""
 
-#: src/common/apps_eclipse.py:737
+#: src/common/apps_eclipse.py:729
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
 msgstr ""
 
-#: src/common/apps.py:37
+#: src/common/apps.py:29
 msgid "Bioclipse: an awesome Chemical and Biological Informatics application"
 msgstr ""
 
-#: src/common/apps.py:38
+#: src/common/apps.py:30
 msgid "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 msgstr ""
 
-#: src/common/apps.py:80
+#: src/common/apps.py:72
 msgid "BRL-CAD: Military solid modeling software"
 msgstr ""
 
-#: src/common/apps.py:82
+#: src/common/apps.py:74
 msgid ""
 "Official site: <span color=\"blue\"><u>http://sourceforge.net/projects/"
 "brlcad/</u></span>. "
 msgstr ""
 
-#: src/common/apps.py:83
+#: src/common/apps.py:75
 msgid "Developed by Ballistic Research Laboratory. "
 msgstr ""
 
-#: src/common/apps.py:84
+#: src/common/apps.py:76
 msgid "A lot of commands are installed in /usr/brlcad/bin/"
 msgstr ""
 
-#: src/common/apps.py:122
+#: src/common/apps.py:114
 msgid "Create a directory \"Desktop\" in your home folder"
 msgstr ""
 
-#: src/common/apps.py:123
+#: src/common/apps.py:115
 msgid ""
 "Create a directory \"Desktop\" which is linked to the desktop. After that, "
 "you can chdir to the desktop folder by command \"cd ~/Desktop\"."
 msgstr ""
 
-#: src/common/apps.py:154
+#: src/common/apps.py:146
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr ""
 
-#: src/common/apps.py:155
+#: src/common/apps.py:147
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></"
 "span>"
 msgstr ""
 
-#: src/common/apps.py:183
+#: src/common/apps.py:175
 msgid "Speed up Firefox"
 msgstr ""
 
-#: src/common/apps.py:184
+#: src/common/apps.py:176
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -1011,40 +1011,40 @@ msgid ""
 "\"Applications\"-->\"Internet\"."
 msgstr ""
 
-#: src/common/apps.py:208
+#: src/common/apps.py:200
 msgid "Firefox without Pango (faster)"
 msgstr ""
 
-#: src/common/apps.py:219
+#: src/common/apps.py:211
 msgid "Netbeans® 6.8"
 msgstr ""
 
-#: src/common/apps.py:221
+#: src/common/apps.py:213
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: http://"
 "netbeans.org/downloads/ ."
 msgstr ""
 
-#: src/common/apps.py:241
+#: src/common/apps.py:233
 msgid "Please select the folder where Netbeans is installed"
 msgstr ""
 
-#: src/common/apps.py:333
+#: src/common/apps.py:325
 msgid "OpenJUMP: A geographic information system"
 msgstr ""
 
-#: src/common/apps.py:335
+#: src/common/apps.py:327
 msgid ""
 "Official site: <span color=\"blue\"><u>http://openjump.org/wiki/show/"
 "HomePage</u></span> ."
 msgstr ""
 
-#: src/common/apps.py:371
+#: src/common/apps.py:363
 msgid "Query you before delete more than three files"
 msgstr ""
 
-#: src/common/apps.py:372
+#: src/common/apps.py:364
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -1053,31 +1053,31 @@ msgid ""
 "alias rm=\"rm -I\""
 msgstr ""
 
-#: src/common/apps.py:481
+#: src/common/apps.py:473
 msgid "TeXLive 2009"
 msgstr ""
 
-#: src/common/apps.py:482
+#: src/common/apps.py:474
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr ""
 
-#: src/common/apps.py:511
+#: src/common/apps.py:503
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr ""
 
-#: src/common/apps.py:542
+#: src/common/apps.py:534
 msgid "TeXLive is installed."
 msgstr ""
 
-#: src/common/apps.py:542
+#: src/common/apps.py:534
 msgid "TeXLive will not work until you restart the computer."
 msgstr ""
 
-#: src/common/apps.py:560
+#: src/common/apps.py:552
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr ""
 
-#: src/common/apps.py:562
+#: src/common/apps.py:554
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -1086,95 +1086,95 @@ msgid ""
 "After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
 msgstr ""
 
-#: src/common/apps.py:579
+#: src/common/apps.py:571
 msgid "Adblock+: Block 99% advertisement"
 msgstr ""
 
-#: src/common/apps.py:583
+#: src/common/apps.py:575
 msgid "It is able to block 99% ads and banners."
 msgstr ""
 
-#: src/common/apps.py:598
+#: src/common/apps.py:590
 msgid "Proxy management depending on a third party list."
 msgstr ""
 
-#: src/common/apps.py:608
+#: src/common/apps.py:600
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr ""
 
-#: src/common/apps.py:612
+#: src/common/apps.py:604
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr ""
 
-#: src/common/apps.py:622
+#: src/common/apps.py:614
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr ""
 
-#: src/common/apps.py:626
+#: src/common/apps.py:618
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr ""
 
-#: src/common/apps.py:636
+#: src/common/apps.py:628
 msgid "CleanHide: Delete hidden text in web page"
 msgstr ""
 
-#: src/common/apps.py:640
+#: src/common/apps.py:632
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
 msgstr ""
 
-#: src/common/apps.py:654
+#: src/common/apps.py:646
 msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
 msgstr ""
 
-#: src/common/apps.py:664
+#: src/common/apps.py:656
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr ""
 
-#: src/common/apps.py:668
+#: src/common/apps.py:660
 msgid "It is able to download all images on web-pages."
 msgstr ""
 
-#: src/common/apps.py:678
+#: src/common/apps.py:670
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 
-#: src/common/apps.py:692
+#: src/common/apps.py:684
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 
-#: src/common/apps.py:696
+#: src/common/apps.py:688
 msgid "This is a powerful web development tool."
 msgstr ""
 
-#: src/common/apps.py:705
+#: src/common/apps.py:697
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 
-#: src/common/apps.py:709
+#: src/common/apps.py:701
 msgid "It supports five kinds of mouse gestures."
 msgstr ""
 
-#: src/common/apps.py:719
+#: src/common/apps.py:711
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr ""
 
-#: src/common/apps.py:723
+#: src/common/apps.py:715
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
 msgstr ""
 
-#: src/common/apps.py:732
+#: src/common/apps.py:724
 msgid "FoxyProxy: One-click switching proxy"
 msgstr ""
 
-#: src/common/apps.py:749
+#: src/common/apps.py:741
 msgid "GreaseMonkey: Make change to web pages"
 msgstr ""
 
-#: src/common/apps.py:753
+#: src/common/apps.py:745
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image verification."
@@ -1184,558 +1184,558 @@ msgid ""
 "freely from http://diveintogreasemonkey.org/ ."
 msgstr ""
 
-#: src/common/apps.py:766
+#: src/common/apps.py:758
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr ""
 
-#: src/common/apps.py:779
+#: src/common/apps.py:771
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 
-#: src/common/apps.py:784
+#: src/common/apps.py:776
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
 msgstr ""
 
-#: src/common/apps.py:793
+#: src/common/apps.py:785
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 
-#: src/common/apps.py:808
+#: src/common/apps.py:800
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 
-#: src/common/apps.py:812
+#: src/common/apps.py:804
 msgid "It helps you promote your web sites."
 msgstr ""
 
-#: src/common/apps.py:821
+#: src/common/apps.py:813
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr ""
 
-#: src/common/apps.py:825
+#: src/common/apps.py:817
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 
-#: src/common/apps.py:835
+#: src/common/apps.py:827
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 
-#: src/common/apps.py:848
+#: src/common/apps.py:840
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
 
-#: src/common/apps.py:852
+#: src/common/apps.py:844
 msgid "It tells the remote websites that you are an IE user."
 msgstr ""
 
-#: src/common/apps.py:861
+#: src/common/apps.py:853
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr ""
 
-#: src/common/apps.py:865
+#: src/common/apps.py:857
 msgid "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 
-#: src/common/apps.py:874
+#: src/common/apps.py:866
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 
-#: src/common/apps.py:887
+#: src/common/apps.py:879
 msgid "Web Developer: Web page analysis tools"
 msgstr ""
 
-#: src/common/apps.py:891
+#: src/common/apps.py:883
 msgid "Many developers installed it."
 msgstr ""
 
-#: src/common/apps.py:900
+#: src/common/apps.py:892
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 
-#: src/common/apps.py:914
+#: src/common/apps.py:906
 msgid "YSlow: web page performance tuning"
 msgstr ""
 
-#: src/common/apps.py:918
+#: src/common/apps.py:910
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 
-#: src/common/hardwareinfo.py:47
+#: src/common/hardwareinfo.py:39
 msgid "BIOS vendor:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:54
+#: src/common/hardwareinfo.py:46
 msgid "BIOS version:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:61
+#: src/common/hardwareinfo.py:53
 msgid "BIOS release date:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:73
+#: src/common/hardwareinfo.py:64
 msgid "Motherboard name:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:81
+#: src/common/hardwareinfo.py:72
 msgid "Motherboard vendor:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:108
+#: src/common/hardwareinfo.py:99
 #, python-format
 msgid "CPU %s name:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:109
+#: src/common/hardwareinfo.py:100
 msgid "CPU name:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:112
+#: src/common/hardwareinfo.py:103
 #, python-format
 msgid "CPU %s Mips:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:113
+#: src/common/hardwareinfo.py:104
 msgid "CPU Mips:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:115
+#: src/common/hardwareinfo.py:106
 msgid ""
 "It is a measure for the computation speed. \"Mips\" is short for Millions of "
 "Instructions Per Second."
 msgstr ""
 
-#: src/common/hardwareinfo.py:117
+#: src/common/hardwareinfo.py:108
 msgid "No"
 msgstr ""
 
-#: src/common/hardwareinfo.py:124
+#: src/common/hardwareinfo.py:115
 msgid "Yes!"
 msgstr ""
 
-#: src/common/hardwareinfo.py:125
+#: src/common/hardwareinfo.py:116
 msgid "64 bit CPU?"
 msgstr ""
 
-#: src/common/hardwareinfo.py:146
+#: src/common/hardwareinfo.py:137
 msgid "CPU temperature"
 msgstr ""
 
-#: src/common/hardwareinfo.py:157
+#: src/common/hardwareinfo.py:148
 msgid "Total memory:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:170
+#: src/common/hardwareinfo.py:161
 msgid "Display card:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:172
+#: src/common/hardwareinfo.py:163
 msgid "Ethernet card:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:174
+#: src/common/hardwareinfo.py:165
 msgid "Audio card:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:187
+#: src/common/hardwareinfo.py:178
 msgid "charged"
 msgstr ""
 
-#: src/common/hardwareinfo.py:188
+#: src/common/hardwareinfo.py:179
 msgid "charging"
 msgstr ""
 
-#: src/common/hardwareinfo.py:189
+#: src/common/hardwareinfo.py:180
 msgid "discharging"
 msgstr ""
 
-#: src/common/hardwareinfo.py:191
+#: src/common/hardwareinfo.py:182
 msgid "Battery charging state:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:193
+#: src/common/hardwareinfo.py:184
 msgid "Battery remaining capacity:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:199
+#: src/common/hardwareinfo.py:190
 msgid "Battery full capacity:"
 msgstr ""
 
-#: src/common/hardwareinfo.py:212
+#: src/common/hardwareinfo.py:203
 msgid "Sound card:"
 msgstr ""
 
-#: src/common/menu.py:43 src/common/menu.py:413
+#: src/common/menu.py:35 src/common/menu.py:406
 msgid "Ailurus blog"
 msgstr ""
 
-#: src/common/menu.py:65
+#: src/common/menu.py:57
 msgid ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
 msgstr ""
 
-#: src/common/menu.py:126
+#: src/common/menu.py:119
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#: src/common/menu.py:128
+#: src/common/menu.py:121
 msgid "Download daily-build version from"
 msgstr ""
 
-#: src/common/menu.py:135
+#: src/common/menu.py:128
 #, python-format
 msgid ""
 "\n"
 "This version is compiled at %s."
 msgstr ""
 
-#: src/common/menu.py:144
+#: src/common/menu.py:137
 msgid "We wish to express thankfulness to these projects:"
 msgstr ""
 
-#: src/common/menu.py:148
+#: src/common/menu.py:141
 msgid "We sincerely thank these people:"
 msgstr ""
 
-#: src/common/menu.py:150
+#: src/common/menu.py:143
 msgid "The people who provide inspiration:"
 msgstr ""
 
-#: src/common/menu.py:156
+#: src/common/menu.py:149
 msgid "The people who designs the logo:"
 msgstr ""
 
-#: src/common/menu.py:159
+#: src/common/menu.py:152
 msgid "The people who maintain PPA repository:"
 msgstr ""
 
-#: src/common/menu.py:162
+#: src/common/menu.py:155
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 
-#: src/common/menu.py:165
+#: src/common/menu.py:158
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 
-#: src/common/menu.py:168
+#: src/common/menu.py:161
 msgid "The people who provide a lot of translation:"
 msgstr ""
 
-#: src/common/menu.py:169 src/common/menu.py:173 src/common/menu.py:180
+#: src/common/menu.py:162 src/common/menu.py:166 src/common/menu.py:173
 msgid "and many other people."
 msgstr ""
 
-#: src/common/menu.py:171
+#: src/common/menu.py:164
 msgid "The people who report bugs:"
 msgstr ""
 
-#: src/common/menu.py:175
+#: src/common/menu.py:168
 msgid "The people who eliminate bugs:"
 msgstr ""
 
-#: src/common/menu.py:178
+#: src/common/menu.py:171
 msgid "The people who publicize this software:"
 msgstr ""
 
-#: src/common/menu.py:182
+#: src/common/menu.py:175
 msgid "and the people not mensioned here."
 msgstr ""
 
-#: src/common/menu.py:192
+#: src/common/menu.py:185
 msgid "Thanks"
 msgstr ""
 
-#: src/common/menu.py:225
+#: src/common/menu.py:218
 msgid "Updates for Ailurus"
 msgstr ""
 
-#: src/common/menu.py:230
+#: src/common/menu.py:223
 #, python-format
 msgid "A new version is released at %(date)s."
 msgstr ""
 
-#: src/common/menu.py:236
+#: src/common/menu.py:229
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr ""
 
-#: src/common/menu.py:252
+#: src/common/menu.py:245
 msgid "Back to previous pane"
 msgstr ""
 
-#: src/common/menu.py:255
+#: src/common/menu.py:248
 msgid "Go forward one pane"
 msgstr ""
 
-#: src/common/menu.py:286
+#: src/common/menu.py:279
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
-#: src/common/menu.py:319
+#: src/common/menu.py:312
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 
-#: src/common/menu.py:325
+#: src/common/menu.py:318
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr ""
 
-#: src/common/menu.py:328
+#: src/common/menu.py:321
 msgid "Set Ailurus download parameter"
 msgstr ""
 
-#: src/common/menu.py:350
+#: src/common/menu.py:343
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: src/common/menu.py:353 src/common/menu.py:361 src/common/menu.py:367
-#: src/common/menu.py:373 src/ubuntu/menu.py:94
+#: src/common/menu.py:346 src/common/menu.py:354 src/common/menu.py:360
+#: src/common/menu.py:366 src/ubuntu/menu.py:86
 msgid "Preferences changed"
 msgstr ""
 
-#: src/common/menu.py:353 src/common/menu.py:367 src/common/menu.py:373
-#: src/common/menu.py:405 src/ubuntu/menu.py:94
+#: src/common/menu.py:346 src/common/menu.py:360 src/common/menu.py:366
+#: src/common/menu.py:398 src/ubuntu/menu.py:86
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: src/common/menu.py:356
+#: src/common/menu.py:349
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: src/common/menu.py:361
+#: src/common/menu.py:354
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: src/common/menu.py:364
+#: src/common/menu.py:357
 msgid "Show Chinese applications and Chinese web pages"
 msgstr ""
 
-#: src/common/menu.py:370
+#: src/common/menu.py:363
 msgid "Show Polish application and Polish web pages "
 msgstr ""
 
-#: src/common/menu.py:376
+#: src/common/menu.py:369
 msgid "Set download parameters"
 msgstr ""
 
-#: src/common/menu.py:382
+#: src/common/menu.py:375
 msgid "English"
 msgstr ""
 
-#: src/common/menu.py:383
+#: src/common/menu.py:376
 msgid "Bulgarian"
 msgstr ""
 
-#: src/common/menu.py:384
+#: src/common/menu.py:377
 msgid "Danish"
 msgstr ""
 
-#: src/common/menu.py:385
+#: src/common/menu.py:378
 msgid "German"
 msgstr ""
 
-#: src/common/menu.py:386
+#: src/common/menu.py:379
 msgid "Spanish"
 msgstr ""
 
-#: src/common/menu.py:387
+#: src/common/menu.py:380
 msgid "French"
 msgstr ""
 
-#: src/common/menu.py:388
+#: src/common/menu.py:381
 msgid "Italian"
 msgstr ""
 
-#: src/common/menu.py:389
+#: src/common/menu.py:382
 msgid "Polish"
 msgstr ""
 
-#: src/common/menu.py:390
+#: src/common/menu.py:383
 msgid "Brazilian Portuguese"
 msgstr ""
 
-#: src/common/menu.py:391
+#: src/common/menu.py:384
 msgid "Russian"
 msgstr ""
 
-#: src/common/menu.py:392
+#: src/common/menu.py:385
 msgid "Simplified Chinese / Mainland (zh_CN)"
 msgstr ""
 
-#: src/common/menu.py:393
+#: src/common/menu.py:386
 msgid "Traditional Chinese / Hong Kong (zh_HK)"
 msgstr ""
 
-#: src/common/menu.py:394
+#: src/common/menu.py:387
 msgid "Traditional Chinese / Taiwan (zh_TW)"
 msgstr ""
 
-#: src/common/menu.py:405
+#: src/common/menu.py:398
 msgid "Language changed"
 msgstr ""
 
-#: src/common/menu.py:407
+#: src/common/menu.py:400
 msgid "GUI Language"
 msgstr ""
 
-#: src/common/menu.py:417
+#: src/common/menu.py:410
 msgid "Check for updates"
 msgstr ""
 
-#: src/common/menu.py:424
+#: src/common/menu.py:417
 msgid "Translate this application"
 msgstr ""
 
-#: src/common/menu.py:428
+#: src/common/menu.py:421
 msgid "Get daily-build version (more features but more bugs)"
 msgstr ""
 
-#: src/common/menu.py:432
+#: src/common/menu.py:425
 msgid "Special thanks"
 msgstr ""
 
-#: src/common/menu.py:435
+#: src/common/menu.py:428
 msgid "About"
 msgstr ""
 
-#: src/common/menu.py:449 src/common/setting.py:95 src/gnome/setting.py:61
+#: src/common/menu.py:442 src/common/setting.py:87 src/gnome/setting.py:48
 msgid "Information"
 msgstr ""
 
-#: src/common/menu.py:450
+#: src/common/menu.py:443
 msgid "Adjustments"
 msgstr ""
 
-#: src/common/menu.py:451
+#: src/common/menu.py:444
 msgid "Applications"
 msgstr ""
 
-#: src/common/menu.py:452 src/ubuntu/menu.py:136
+#: src/common/menu.py:445 src/ubuntu/menu.py:128
 msgid "Learning"
 msgstr ""
 
-#: src/common/menu.py:453 src/ubuntu/menu.py:137
+#: src/common/menu.py:446 src/ubuntu/menu.py:129
 msgid "Preferences"
 msgstr ""
 
-#: src/common/menu.py:454
+#: src/common/menu.py:447
 msgid "Help"
 msgstr ""
 
-#: src/common/osinfo.py:39
+#: src/common/osinfo.py:31
 msgid "Host name:"
 msgstr ""
 
-#: src/common/osinfo.py:45
+#: src/common/osinfo.py:37
 msgid "Kernel version:"
 msgstr ""
 
-#: src/common/osinfo.py:48
+#: src/common/osinfo.py:40
 msgid "Kernel arch:"
 msgstr ""
 
-#: src/common/osinfo.py:57
+#: src/common/osinfo.py:48
 msgid "X server version:"
 msgstr ""
 
-#: src/common/osinfo.py:64
+#: src/common/osinfo.py:54
 msgid "GCC version:"
 msgstr ""
 
-#: src/common/osinfo.py:71
+#: src/common/osinfo.py:61
 msgid "Java version:"
 msgstr ""
 
-#: src/common/osinfo.py:77
+#: src/common/osinfo.py:67
 msgid "Python version:"
 msgstr ""
 
-#: src/common/osinfo.py:95
+#: src/common/osinfo.py:84
 msgid "day"
 msgid_plural "days"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/common/osinfo.py:97
+#: src/common/osinfo.py:86
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/common/osinfo.py:99
+#: src/common/osinfo.py:88
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] ""
 msgstr[1] ""
 
-#: src/common/osinfo.py:100
+#: src/common/osinfo.py:89
 msgid "Uptime:"
 msgstr ""
 
-#: src/common/osinfo.py:108
+#: src/common/osinfo.py:97
 msgid "Current user:"
 msgstr ""
 
-#: src/common/osinfo.py:124
+#: src/common/osinfo.py:113
 msgid "Direct OpenGL:"
 msgstr ""
 
-#: src/common/osinfo.py:125
+#: src/common/osinfo.py:114
 msgid "OpenGL direct rendering"
 msgstr ""
 
-#: src/common/osinfo.py:127
+#: src/common/osinfo.py:116
 msgid "OpenGL vendor:"
 msgstr ""
 
-#: src/common/osinfo.py:128
+#: src/common/osinfo.py:117
 msgid "OpenGL vendor"
 msgstr ""
 
-#: src/common/osinfo.py:130
+#: src/common/osinfo.py:119
 msgid "OpenGL renderer:"
 msgstr ""
 
-#: src/common/osinfo.py:131
+#: src/common/osinfo.py:120
 msgid "OpenGL renderer"
 msgstr ""
 
-#: src/common/osinfo.py:137
+#: src/common/osinfo.py:126
 msgid "Firefox version:"
 msgstr ""
 
-#: src/common/setting.py:40
+#: src/common/setting.py:32
 msgid "0 = Swap little mem to disk"
 msgstr ""
 
-#: src/common/setting.py:42
+#: src/common/setting.py:34
 msgid "100 = Swap a lot of mem to disk"
 msgstr ""
 
-#: src/common/setting.py:82
+#: src/common/setting.py:74
 msgid "Change the tendency of swapping memory to disk"
 msgstr ""
 
-#: src/common/setting.py:93
+#: src/common/setting.py:85
 msgid "Run command: "
 msgstr ""
 
-#: src/common/setting.py:95
+#: src/common/setting.py:87
 msgid "Network restarted successfully."
 msgstr ""
 
-#: src/common/setting.py:97 src/common/setting.py:112
+#: src/common/setting.py:89 src/common/setting.py:104
 msgid "Restart network"
 msgstr ""
 
-#: src/common/setting.py:99
+#: src/common/setting.py:91
 msgid ""
 "These commands will be executed:\n"
 "dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call /"
@@ -1745,42 +1745,40 @@ msgid ""
 "sudo /etc/init.d/networking restart"
 msgstr ""
 
-#: src/common/setting.py:124
+#: src/common/setting.py:116
 #, python-format
 msgid "No more than %s KB of memory can be reclaimed."
 msgstr ""
 
-#: src/common/setting.py:154
+#: src/common/setting.py:146
 #, python-format
 msgid "%s KB memory was reclaimed."
 msgstr ""
 
-#: src/common/setting.py:160 src/common/setting.py:174
+#: src/common/setting.py:152 src/common/setting.py:166
 msgid "Reclaim memory"
 msgstr ""
 
-#: src/common/setting.py:162
+#: src/common/setting.py:154
 msgid ""
 "Reclaim memory which stores pagecache, dentries and inodes.\n"
 "This operation is done by \"echo 3 >/proc/sys/vm/drop_caches\""
 msgstr ""
 
-#: src/common/tips.py:35
+#: src/common/tips.py:27
 msgid ""
 "motto of Ailurus\n"
 "Give a man a fish and he can eat for a day; but if you teach him how to "
 "fish, he'll eat for a lifetime."
 msgstr ""
 
-#: src/common/tips.py:38
+#: src/common/tips.py:30
 msgid ""
 "Clear Bash history\n"
-"history -c\n"
-"\n"
-"(Provided by Federico)"
+"history -c"
 msgstr ""
 
-#: src/common/tips.py:43
+#: src/common/tips.py:33
 msgid ""
 "If you want to use colorful \"ls\", that is, use colors to distinguish types "
 "of files, you can add these lines in ~/.bashrc:\n"
@@ -1788,12 +1786,10 @@ msgid ""
 "if [ \"$TERM\" != \"dumb\" ]; then\n"
 "    eval \"`dircolors -b`\"\n"
 "    alias ls='ls --color=auto'\n"
-"fi\n"
-"\n"
-"(Provided by Romeo-Adrian Cioaba)"
+"fi"
 msgstr ""
 
-#: src/common/tips.py:52
+#: src/common/tips.py:40
 msgid ""
 "Display Linux distributor's ID\n"
 "lsb_release -is\n"
@@ -1805,79 +1801,79 @@ msgid ""
 "lsb_release -cs"
 msgstr ""
 
-#: src/common/tips.py:62
+#: src/common/tips.py:50
 msgid ""
 "Display machine hardware name\n"
 "uname -m"
 msgstr ""
 
-#: src/common/tips.py:65
+#: src/common/tips.py:53
 msgid ""
 "List all PCI devices, such as display card and ethernet card.\n"
 "lspci\n"
 msgstr ""
 
-#: src/common/tips.py:69
+#: src/common/tips.py:57
 msgid ""
 "Reclaim memory which stores pagecache, dentries and inodes\n"
 "echo 3 > /proc/sys/vm/drop_caches\n"
 msgstr ""
 
-#: src/common/tips.py:73
+#: src/common/tips.py:61
 msgid ""
 "Display a list of modules in the Linux Kernel\n"
 "lsmod\n"
 msgstr ""
 
-#: src/common/tips.py:77
+#: src/common/tips.py:65
 msgid ""
 "List USB devices\n"
 "lsusb -v\n"
 msgstr ""
 
-#: src/common/tips.py:81
+#: src/common/tips.py:69
 msgid ""
 "Display the status of ethernet card\n"
 "sudo ethtool eth0\n"
 msgstr ""
 
-#: src/common/tips.py:85
+#: src/common/tips.py:73
 msgid ""
 "List hardware\n"
 "sudo lshw\n"
 msgstr ""
 
-#: src/common/tips.py:89
+#: src/common/tips.py:77
 msgid ""
 "List harddisk partitions\n"
 "sudo fdisk -l\n"
 msgstr ""
 
-#: src/common/tips.py:93
+#: src/common/tips.py:81
 msgid ""
 "Display SATA harddisk parameters\n"
 "sudo hdparm -I /dev/sda\n"
 msgstr ""
 
-#: src/common/tips.py:97
+#: src/common/tips.py:85
 msgid ""
 "Display disk space usage\n"
 "df -h\n"
 msgstr ""
 
-#: src/common/tips.py:101
+#: src/common/tips.py:89
 msgid ""
 "Display file/folder space usage\n"
 "du -bsh FOLDER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:105
+#: src/common/tips.py:93
 msgid ""
 "Display amount of free and used memory\n"
 "free\n"
 msgstr ""
 
-#: src/common/tips.py:109
+#: src/common/tips.py:97
 msgid ""
 "Display processes\n"
 "ps -e\n"
@@ -1887,44 +1883,44 @@ msgid ""
 "top\n"
 msgstr ""
 
-#: src/common/tips.py:117
+#: src/common/tips.py:105
 msgid ""
 "Terminate a process with a given process id\n"
 "sudo kill -9 PROCESS_ID\n"
 msgstr ""
 
-#: src/common/tips.py:121
+#: src/common/tips.py:109
 msgid ""
 "Terminate all processes with a given name\n"
 "sudo killall PROCESS_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:125
+#: src/common/tips.py:113
 msgid ""
 "List files which are opened by a given process\n"
 "lsof -p PROCESS_ID\n"
 "lsof -c PROCESS_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:130
+#: src/common/tips.py:118
 msgid ""
 "List processes which opened a given file\n"
 "lsof FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:134
+#: src/common/tips.py:122
 msgid ""
 "List processes which are using port 80\n"
 "lsof -i :80\n"
 msgstr ""
 
-#: src/common/tips.py:138
+#: src/common/tips.py:126
 msgid ""
 "Configure an ADSL connection\n"
 "sudo pppoeconf\n"
 msgstr ""
 
-#: src/common/tips.py:142
+#: src/common/tips.py:130
 msgid ""
 "Starts up ADSL connections\n"
 "sudo pon\n"
@@ -1932,55 +1928,55 @@ msgid ""
 "sudo poff\n"
 msgstr ""
 
-#: src/common/tips.py:148
+#: src/common/tips.py:136
 msgid ""
 "Display MAC of a given IP address\n"
 "arping IP_ADDRESS\n"
 msgstr ""
 
-#: src/common/tips.py:152
+#: src/common/tips.py:140
 msgid ""
 "Display NetBIOS name of a given IP address\n"
 "nmblookup -A IP_ADDRESS\n"
 msgstr ""
 
-#: src/common/tips.py:156
+#: src/common/tips.py:144
 msgid ""
 "Display IP address and MAC\n"
 "ifconfig -a\n"
 msgstr ""
 
-#: src/common/tips.py:160
+#: src/common/tips.py:148
 msgid ""
 "Display route\n"
 "netstat -rn\n"
 msgstr ""
 
-#: src/common/tips.py:164
+#: src/common/tips.py:152
 msgid ""
 "Set MAC of ethernet interface\n"
 "sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
 msgstr ""
 
-#: src/common/tips.py:168
+#: src/common/tips.py:156
 msgid ""
 "Display information of a domain name\n"
 "whois example.com\n"
 msgstr ""
 
-#: src/common/tips.py:172
+#: src/common/tips.py:160
 msgid ""
 "Display the network path to a given host\n"
 "tracepath example.com\n"
 msgstr ""
 
-#: src/common/tips.py:176
+#: src/common/tips.py:164
 msgid ""
 "Request an IP address from DHCP server\n"
 "sudo dhclient\n"
 msgstr ""
 
-#: src/common/tips.py:180
+#: src/common/tips.py:168
 msgid ""
 "Temporarily restart an init script\n"
 "sudo /etc/init.d/SCRIPT_NAME restart\n"
@@ -1988,7 +1984,7 @@ msgid ""
 "sudo /etc/init.d/SCRIPT_NAME stop\n"
 msgstr ""
 
-#: src/common/tips.py:186
+#: src/common/tips.py:174
 msgid ""
 "Add a user\n"
 "sudo adduser USER_NANE\n"
@@ -1996,13 +1992,13 @@ msgid ""
 "sudo deluser USER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:192
+#: src/common/tips.py:180
 msgid ""
 "Change user password\n"
 "sudo passwd USER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:196
+#: src/common/tips.py:184
 msgid ""
 "Changes user fullname, office number, office extension, and home phone "
 "number information.\n"
@@ -2011,7 +2007,7 @@ msgid ""
 "finger USER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:202
+#: src/common/tips.py:190
 msgid ""
 "Temporarily prevent a user from logging in\n"
 "sudo usermod -L USER_NAME\n"
@@ -2019,85 +2015,85 @@ msgid ""
 "sudo usermod -U USER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:208
+#: src/common/tips.py:196
 msgid ""
 "Add a user to admin group\n"
 "sudo usermod -G admin -a USER_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:212
+#: src/common/tips.py:200
 msgid ""
 "Set the HTTP proxy\n"
 "export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
 msgstr ""
 
-#: src/common/tips.py:216
+#: src/common/tips.py:204
 msgid ""
 "Modify the information displayed after logging in\n"
 "sudo vim /etc/motd.tail\n"
 msgstr ""
 
-#: src/common/tips.py:220
+#: src/common/tips.py:208
 msgid ""
 "Choose the input method for X Window\n"
 "im-switch -c\n"
 msgstr ""
 
-#: src/common/tips.py:224
+#: src/common/tips.py:212
 msgid ""
 "Convert the file name from GBK to UTF8\n"
 "convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:228
+#: src/common/tips.py:216
 msgid ""
 "Convert the file content from GBK to UTF8\n"
 "iconv -f gbk -t utf8 FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:232
+#: src/common/tips.py:220
 msgid ""
 "Convert tags in '*.mp3' from GBK to UTF8\n"
 "find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
 msgstr ""
 
-#: src/common/tips.py:236
+#: src/common/tips.py:224
 msgid ""
 "Read a long file\n"
 "less FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:240
+#: src/common/tips.py:228
 msgid ""
 "Print lines matching a pattern\n"
 "grep REG_EXP FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:244
+#: src/common/tips.py:232
 msgid ""
 "Display a list of file name. The files contain a given string.\n"
 "grep -lr REG_EXP PATHNAME\n"
 msgstr ""
 
-#: src/common/tips.py:248
+#: src/common/tips.py:236
 msgid ""
 "Display all '.txt' file\n"
 "find . -name '*.txt'\n"
 msgstr ""
 
-#: src/common/tips.py:252
+#: src/common/tips.py:240
 msgid ""
 "Create two empty files\n"
 "touch file_name_1 file_name_2\n"
 msgstr ""
 
-#: src/common/tips.py:256
+#: src/common/tips.py:244
 msgid ""
 "Create directory. Create parent directories as needed.\n"
 "mkdir -p /tmp/a/b/c/d/e\n"
 msgstr ""
 
-#: src/common/tips.py:260
+#: src/common/tips.py:248
 msgid ""
 "Change working directory to the home folder\n"
 "cd\n"
@@ -2105,61 +2101,61 @@ msgid ""
 "cd -\n"
 msgstr ""
 
-#: src/common/tips.py:266
+#: src/common/tips.py:254
 msgid ""
 "Display hidden files\n"
 "ls -a\n"
 msgstr ""
 
-#: src/common/tips.py:270
+#: src/common/tips.py:258
 msgid ""
 "Copy directory. Preserve links, file mode, ownership, timestamps. \n"
 "cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
 msgstr ""
 
-#: src/common/tips.py:274
+#: src/common/tips.py:262
 msgid ""
 "Determine file type\n"
 "file FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:278
+#: src/common/tips.py:266
 msgid ""
 "Output the last 6 lines\n"
 "tail -n 6 FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:282
+#: src/common/tips.py:270
 msgid ""
 "Copy files via SSH\n"
 "scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
 msgstr ""
 
-#: src/common/tips.py:286
+#: src/common/tips.py:274
 msgid ""
 "Rename '*.rm' files to '*.rmvb' files\n"
 "rename 's/.rm$/.rmvb/' *\n"
 msgstr ""
 
-#: src/common/tips.py:290
+#: src/common/tips.py:278
 msgid ""
 "Change the file name to lowercase\n"
 "rename 'tr/A-Z/a-z/' *\n"
 msgstr ""
 
-#: src/common/tips.py:294
+#: src/common/tips.py:282
 msgid ""
 "Display subdirectories in current directory\n"
 "ls -d */.\n"
 msgstr ""
 
-#: src/common/tips.py:298
+#: src/common/tips.py:286
 msgid ""
 "Display file number in current directory\n"
 "ls . | wc -w\n"
 msgstr ""
 
-#: src/common/tips.py:302
+#: src/common/tips.py:290
 msgid ""
 "Extract \"*.gz\" file\n"
 "gunzip FILE_NAME.gz\n"
@@ -2169,27 +2165,27 @@ msgid ""
 "tar jxf FILE_NAME.tar.bz2\n"
 msgstr ""
 
-#: src/common/tips.py:310
+#: src/common/tips.py:298
 msgid ""
 "Do compression\n"
 "tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
 "tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
 msgstr ""
 
-#: src/common/tips.py:315
+#: src/common/tips.py:303
 msgid ""
 "Displays a calendar\n"
 "cal\n"
 "cal MONTH YEAR\n"
 msgstr ""
 
-#: src/common/tips.py:320
+#: src/common/tips.py:308
 msgid ""
 "Set the date and time via NTP\n"
 "sudo ntpdate ntp.ubuntu.com\n"
 msgstr ""
 
-#: src/common/tips.py:324
+#: src/common/tips.py:312
 msgid ""
 "Poweroff your computer\n"
 "sudo halt\n"
@@ -2200,56 +2196,56 @@ msgid ""
 "sudo shutdown -h +60\n"
 msgstr ""
 
-#: src/common/tips.py:333
+#: src/common/tips.py:321
 msgid ""
 "Reboot your computer\n"
 "sudo reboot\n"
 "sudo shutdown -r now\n"
 msgstr ""
 
-#: src/common/tips.py:338
+#: src/common/tips.py:326
 msgid ""
 "If you want some program to start up automatically, please put '.desktop' "
 "files into '~/.config/autostart'\n"
 msgstr ""
 
-#: src/common/tips.py:341
+#: src/common/tips.py:329
 msgid ""
 "You can configure \"preferred applications\" by this file \"~/.local/share/"
 "applications/mimeapps.list\"\n"
 msgstr ""
 
-#: src/common/tips.py:344
+#: src/common/tips.py:332
 msgid ""
 "Continuously monitor the memory usage\n"
 "watch -d free\n"
 msgstr ""
 
-#: src/common/tips.py:348
+#: src/common/tips.py:336
 msgid ""
 "Display HTTP HEAD response\n"
 "w3m -dump_head http://example.com\n"
 msgstr ""
 
-#: src/common/tips.py:352
+#: src/common/tips.py:340
 msgid ""
 "Display file content with line number\n"
 "nl FILE_NAME\n"
 msgstr ""
 
-#: src/common/tips.py:356
+#: src/common/tips.py:344
 msgid ""
 "Eliminate Rootkit\n"
 "sudo rkhunter --checkall\n"
 msgstr ""
 
-#: src/common/tips.py:360
+#: src/common/tips.py:348
 msgid ""
 "Change hostname\n"
 "sudo hostname new_name\n"
 msgstr ""
 
-#: src/common/tips.py:364
+#: src/common/tips.py:352
 msgid ""
 "\"Tasksel\" group software packages into \"task\"s. You can select a \"task"
 "\" and then install all necessary software packages. It is easy to set up "
@@ -2264,23 +2260,23 @@ msgid ""
 "gksudo tasksel\n"
 msgstr ""
 
-#: src/fedora/apps.py:62 src/ubuntu/app0.py:109
-#: src/ubuntu/third_party_repos.py:212
+#: src/fedora/apps.py:54 src/ubuntu/app0.py:101
+#: src/ubuntu/third_party_repos.py:211
 msgid "WINE"
 msgstr ""
 
-#: src/fedora/apps.py:63
+#: src/fedora/apps.py:55
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux.\n"
 "Command: yum install wine"
 msgstr ""
 
-#: src/fedora/apps.py:71 src/ubuntu/app1.py:36
+#: src/fedora/apps.py:63 src/ubuntu/app1.py:28
 msgid "Make GEdit more suitable for programmers"
 msgstr ""
 
-#: src/fedora/apps.py:72
+#: src/fedora/apps.py:64
 msgid ""
 "Change GEdit settings as follows. Automatically indent current line. Comment/"
 "uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T "
@@ -2298,52 +2294,52 @@ msgid ""
 "Then run this command: yum install gedit-plugins"
 msgstr ""
 
-#: src/fedora/apps.py:112
+#: src/fedora/apps.py:104
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
 msgstr ""
 
-#: src/fedora/apps.py:113
+#: src/fedora/apps.py:105
 msgid "Command: yum install p7zip cabextract"
 msgstr ""
 
-#: src/fedora/apps.py:119 src/ubuntu/app1.py:156
+#: src/fedora/apps.py:111 src/ubuntu/app1.py:161
 msgid "Make Evince be able to reveal Chinese pdf"
 msgstr ""
 
-#: src/fedora/apps.py:120
+#: src/fedora/apps.py:112
 msgid "Command: yum install poppler-data"
 msgstr ""
 
-#: src/fedora/apps.py:128 src/ubuntu/app1.py:202
+#: src/fedora/apps.py:120 src/ubuntu/app1.py:207
 msgid "ChmSee: A CHM file viewer"
 msgstr ""
 
-#: src/fedora/apps.py:129
+#: src/fedora/apps.py:121
 msgid "Command: yum install chmsee"
 msgstr ""
 
-#: src/fedora/apps.py:137
+#: src/fedora/apps.py:129
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers.\n"
 "Command: yum install workrave"
 msgstr ""
 
-#: src/fedora/apps.py:169 src/ubuntu/app1.py:247
+#: src/fedora/apps.py:161 src/ubuntu/app1.py:252
 #, python-format
 msgid "\"%s\" is not installed."
 msgstr ""
 
-#: src/fedora/apps.py:171 src/ubuntu/app1.py:249
+#: src/fedora/apps.py:163 src/ubuntu/app1.py:254
 #, python-format
 msgid "The file \"%s\" does not exist."
 msgstr ""
 
-#: src/fedora/apps.py:179 src/ubuntu/app1.py:257
+#: src/fedora/apps.py:171 src/ubuntu/app1.py:262
 msgid "VIM"
 msgstr ""
 
-#: src/fedora/apps.py:180
+#: src/fedora/apps.py:172
 msgid ""
 "Install VIM and make it more suitable for programming. The installation "
 "process is as follows. \"yum install vim-enhanced\" command is executed. "
@@ -2354,11 +2350,11 @@ msgid ""
 "    set mouse=a"
 msgstr ""
 
-#: src/fedora/apps.py:206 src/ubuntu/app1.py:286
+#: src/fedora/apps.py:198 src/ubuntu/app1.py:291
 msgid "Use colorful Bash prompt symbols"
 msgstr ""
 
-#: src/fedora/apps.py:207
+#: src/fedora/apps.py:199
 msgid ""
 "Change Bash prompt symbols from \"[username@hostname ~]$ \" to \"<span color="
 "\"#3dba34\">username@hostname</span> <span color=\"#729fcf\">~</span>$ \".\n"
@@ -2367,27 +2363,27 @@ msgid ""
 "[00m\\]\\\\$ '"
 msgstr ""
 
-#: src/fedora/apps.py:221 src/ubuntu/app1.py:300
+#: src/fedora/apps.py:213 src/ubuntu/app1.py:305
 msgid "The color of bash prompt symbols is changed."
 msgstr ""
 
-#: src/fedora/apps.py:221 src/ubuntu/app1.py:300
+#: src/fedora/apps.py:213 src/ubuntu/app1.py:305
 msgid "It will take effect at the next time you log in."
 msgstr ""
 
-#: src/fedora/apps.py:228
+#: src/fedora/apps.py:220
 msgid "Enable \"Print to pdf\" capability."
 msgstr ""
 
-#: src/fedora/apps.py:229
+#: src/fedora/apps.py:221
 msgid "Command: yum install cups-pdf"
 msgstr ""
 
-#: src/fedora/apps.py:236
+#: src/fedora/apps.py:228
 msgid "Stardict"
 msgstr ""
 
-#: src/fedora/apps.py:238
+#: src/fedora/apps.py:230
 msgid ""
 "Command: yum install stardict\n"
 "Moreover, you can install these dictionaries by yum.\n"
@@ -2400,21 +2396,21 @@ msgid ""
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
 
-#: src/fedora/apps.py:252 src/ubuntu/app1.py:497
+#: src/fedora/apps.py:244 src/ubuntu/app1.py:502
 msgid "Liferea: a RSS feed reader"
 msgstr ""
 
-#: src/fedora/apps.py:253
+#: src/fedora/apps.py:245
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: yum install liferea"
 msgstr ""
 
-#: src/fedora/apps.py:261 src/ubuntu/app2.py:272
+#: src/fedora/apps.py:253 src/ubuntu/app2.py:266
 msgid "Useful applications for programming"
 msgstr ""
 
-#: src/fedora/apps.py:262
+#: src/fedora/apps.py:254
 msgid ""
 "The tools are:\n"
 "<i>gcc: GNU C compiler.\n"
@@ -2430,40 +2426,40 @@ msgid ""
 "subversion git"
 msgstr ""
 
-#: src/fedora/apps.py:285 src/ubuntu/app2.py:432
+#: src/fedora/apps.py:277 src/ubuntu/app2.py:426
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr ""
 
-#: src/fedora/apps.py:286
+#: src/fedora/apps.py:278
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: yum install qtiplot"
 msgstr ""
 
-#: src/fedora/apps.py:295 src/ubuntu/app3.py:140
+#: src/fedora/apps.py:287 src/ubuntu/app3.py:132
 msgid "A CAD software which supports DXF-format. "
 msgstr ""
 
-#: src/fedora/apps.py:302 src/ubuntu/app3.py:187
+#: src/fedora/apps.py:294 src/ubuntu/app3.py:179
 msgid "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
 
-#: src/fedora/apps.py:303 src/ubuntu/app3.py:188
+#: src/fedora/apps.py:295 src/ubuntu/app3.py:180
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr ""
 
-#: src/fedora/apps.py:348
+#: src/fedora/apps.py:340
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
 
-#: src/fedora/apps.py:356 src/ubuntu/app3.py:323
+#: src/fedora/apps.py:348 src/ubuntu/app3.py:315
 msgid "Generic Genome Browser"
 msgstr ""
 
-#: src/fedora/apps.py:357 src/ubuntu/app3.py:324
+#: src/fedora/apps.py:349 src/ubuntu/app3.py:316
 msgid ""
 "Generic Genome Browser is a combination of database and interactive web page "
 "for manipulating and displaying annotations on genomes.\n"
@@ -2472,51 +2468,51 @@ msgid ""
 "</span>"
 msgstr ""
 
-#: src/fedora/apps.py:378
+#: src/fedora/apps.py:370
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: yum install tuxpaint"
 msgstr ""
 
-#: src/fedora/apps.py:387
+#: src/fedora/apps.py:379
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: yum install childsplay"
 msgstr ""
 
-#: src/fedora/apps.py:396
+#: src/fedora/apps.py:388
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
 msgstr ""
 
-#: src/fedora/apps.py:405
+#: src/fedora/apps.py:397
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
 
-#: src/fedora/apps.py:414
+#: src/fedora/apps.py:406
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
 
-#: src/fedora/apps.py:423 src/ubuntu/app3.py:532
+#: src/fedora/apps.py:415 src/ubuntu/app3.py:524
 msgid "Parcellite: clipboard manager"
 msgstr ""
 
-#: src/fedora/apps.py:424 src/ubuntu/app3.py:533
+#: src/fedora/apps.py:416 src/ubuntu/app3.py:525
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr ""
 
-#: src/fedora/apps.py:431
+#: src/fedora/apps.py:423
 msgid "Enable \"sudo\""
 msgstr ""
 
-#: src/fedora/apps.py:432
+#: src/fedora/apps.py:424
 msgid ""
 "If you enabled \"sudo\" and you want to execute commands as root, you can "
 "type command \"sudo COMMAND\" instead of complicated command \"su -c "
@@ -2524,155 +2520,155 @@ msgid ""
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
 
-#: src/fedora/apps.py:444
+#: src/fedora/apps.py:436
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
 msgstr ""
 
-#: src/fedora/apps.py:453
+#: src/fedora/apps.py:445
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
 msgstr ""
 
-#: src/fedora/apps.py:485 src/ubuntu/app3.py:596
+#: src/fedora/apps.py:477 src/ubuntu/app3.py:588
 msgid "WallpaperTray: Randomly change GNOME desktop background"
 msgstr ""
 
-#: src/fedora/apps.py:487
+#: src/fedora/apps.py:479
 msgid ""
 "Command: yum install wp_tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: src/fedora/disabled_apps.py:36 src/ubuntu/app1.py:307
-#: src/ubuntu/quick_setup.py:265
+#: src/fedora/disabled_apps.py:28 src/ubuntu/app1.py:312
+#: src/ubuntu/quick_setup.py:267
 msgid "Multi-media codec"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:38
+#: src/fedora/disabled_apps.py:30
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
 "extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:55 src/ubuntu/app1.py:350
-#: src/ubuntu/quick_setup.py:273
+#: src/fedora/disabled_apps.py:47 src/ubuntu/app1.py:355
+#: src/ubuntu/quick_setup.py:275
 msgid "Adobe® Flash plugin for web browser"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:56
+#: src/fedora/disabled_apps.py:48
 msgid "Command: yum install flash-plugin"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:67 src/ubuntu/app1.py:390
+#: src/fedora/disabled_apps.py:59 src/ubuntu/app1.py:395
 msgid "Adobe® PDF Reader"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:68 src/ubuntu/app1.py:391
+#: src/fedora/disabled_apps.py:60 src/ubuntu/app1.py:396
 msgid "Official site: http://get.adobe.com/cn/reader/"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:102 src/ubuntu/app3.py:120
+#: src/fedora/disabled_apps.py:94 src/ubuntu/app3.py:112
 msgid "A light weight pdf reader."
 msgstr ""
 
-#: src/fedora/disabled_apps.py:103 src/ubuntu/app3.py:121
+#: src/fedora/disabled_apps.py:95 src/ubuntu/app3.py:113
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.foxitsoftware.com/pdf/"
 "desklinux/</u></span>"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:118
+#: src/fedora/disabled_apps.py:110
 msgid ""
 "If you cannot play RMVB video, try this application!\n"
 "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
 "You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
 msgstr ""
 
-#: src/fedora/disabled_apps.py:134 src/ubuntu/app3.py:391
+#: src/fedora/disabled_apps.py:126 src/ubuntu/app3.py:383
 msgid "Google Chrome browser"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:136 src/ubuntu/app3.py:393
+#: src/fedora/disabled_apps.py:128 src/ubuntu/app3.py:385
 msgid ""
 "This is the web browser from Google. \n"
 "You can change themes by opening web-page https://tools.google.com/chrome/"
 "intl/pt/themes/index.html in Google Chrome."
 msgstr ""
 
-#: src/fedora/disabled_apps.py:151 src/ubuntu/app3.py:409
+#: src/fedora/disabled_apps.py:143 src/ubuntu/app3.py:401
 msgid ""
 "\"google-chrome-beta\" is not installed. However, you have installed "
 "\"google-chrome-unstable\"."
 msgstr ""
 
-#: src/fedora/disabled_apps.py:156 src/ubuntu/app2.py:303
+#: src/fedora/disabled_apps.py:148 src/ubuntu/app2.py:297
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
 
-#: src/fedora/disabled_apps.py:194 src/ubuntu/third_party_repos.py:254
+#: src/fedora/disabled_apps.py:186 src/ubuntu/third_party_repos.py:254
 msgid "With Skype you can make free calls over the Internet to other people. "
 msgstr ""
 
-#: src/fedora/disabled_apps.py:207 src/ubuntu/app3.py:575
+#: src/fedora/disabled_apps.py:199 src/ubuntu/app3.py:567
 msgid "Adobe native 64bit Flash plugin for Firefox"
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:70
+#: src/fedora/disabled_third_party_repos.py:62
 msgid "This repository provides flash-plugin and Adobe Reader."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:116
+#: src/fedora/disabled_third_party_repos.py:108
 msgid "It contains packages not available from the standard repositories."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:133
+#: src/fedora/disabled_third_party_repos.py:125
 msgid "RPM Fusion (Free)"
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:135
-#: src/fedora/disabled_third_party_repos.py:164
+#: src/fedora/disabled_third_party_repos.py:127
+#: src/fedora/disabled_third_party_repos.py:156
 msgid ""
 "RPM Fusion provides software that not in the standard repositories.\n"
 "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
 "repository."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:162
+#: src/fedora/disabled_third_party_repos.py:154
 msgid "RPM Fusion (Non-Free)"
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:193
+#: src/fedora/disabled_third_party_repos.py:185
 msgid ""
 "ATrpms is another third party repository.\n"
 "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
 "repository."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:216
+#: src/fedora/disabled_third_party_repos.py:208
 msgid "This repository provides Picasa and Google Desktop."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:245
+#: src/fedora/disabled_third_party_repos.py:237
 msgid "This repository provides Google Chrome."
 msgstr ""
 
-#: src/fedora/disabled_third_party_repos.py:274
+#: src/fedora/disabled_third_party_repos.py:266
 msgid ""
 "This repository provides VirtualBox.\n"
 "Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
 msgstr ""
 
-#: src/fedora/osinfo.py:43
+#: src/fedora/osinfo.py:35
 msgid "Fedora version:"
 msgstr ""
 
-#: src/gnome/apps.py:35
+#: src/gnome/apps.py:27
 msgid "Change background color of GNOME terminal to black."
 msgstr ""
 
-#: src/gnome/apps.py:36
+#: src/gnome/apps.py:28
 msgid ""
 "Set background color to black. Set foreground color to white.\n"
 "The trick is to change GConf values:\n"
@@ -2681,11 +2677,11 @@ msgid ""
 "/apps/gnome-terminal/profiles/Default/foreground_color = #FFFFFFFFFFFF"
 msgstr ""
 
-#: src/gnome/apps.py:51
+#: src/gnome/apps.py:43
 msgid "Add GB2312 detection ability to GEdit"
 msgstr ""
 
-#: src/gnome/apps.py:52
+#: src/gnome/apps.py:44
 msgid ""
 "The trick behind is to change GConf values:\n"
 "/apps/gedit-2/preferences/encodings/auto_detected += [\"GB2312\", \"GBK\", "
@@ -2693,11 +2689,11 @@ msgid ""
 "/apps/gedit-2/preferences/encodings/shown_in_menu += [\"GB2312\"]"
 msgstr ""
 
-#: src/gnome/apps.py:67
+#: src/gnome/apps.py:59
 msgid "Speed up Nautilus"
 msgstr ""
 
-#: src/gnome/apps.py:68
+#: src/gnome/apps.py:60
 msgid ""
 "Change Nautilus settings: Do not count directory items. Do not preview "
 "sound. Do not show texts in icon. Use tighter layout. \n"
@@ -2708,397 +2704,397 @@ msgid ""
 "/apps/nautilus/icon_view/default_use_tighter_layout = true"
 msgstr ""
 
-#: src/gnome/osinfo.py:53
+#: src/gnome/osinfo.py:45
 msgid "GNOME version:"
 msgstr ""
 
-#: src/gnome/osinfo.py:57
+#: src/gnome/osinfo.py:49
 msgid "GNOME locale:"
 msgstr ""
 
-#: src/gnome/setting.py:43
+#: src/gnome/setting.py:30
 msgid "Wallpaper:"
 msgstr ""
 
-#: src/gnome/setting.py:43
+#: src/gnome/setting.py:30
 msgid "Choose the desktop wallpaper."
 msgstr ""
 
-#: src/gnome/setting.py:45
+#: src/gnome/setting.py:32
 msgid "wallpaper"
 msgstr ""
 
-#: src/gnome/setting.py:45
+#: src/gnome/setting.py:32
 msgid "zoom"
 msgstr ""
 
-#: src/gnome/setting.py:45
+#: src/gnome/setting.py:32
 msgid "centered"
 msgstr ""
 
-#: src/gnome/setting.py:45
+#: src/gnome/setting.py:32
 msgid "scaled"
 msgstr ""
 
-#: src/gnome/setting.py:45
+#: src/gnome/setting.py:32
 msgid "stretched"
 msgstr ""
 
-#: src/gnome/setting.py:49
+#: src/gnome/setting.py:36
 msgid "Style: "
 msgstr ""
 
-#: src/gnome/setting.py:51
+#: src/gnome/setting.py:38
 msgid "Desktop wallpaper"
 msgstr ""
 
-#: src/gnome/setting.py:56
+#: src/gnome/setting.py:43
 msgid "Show desktop content"
 msgstr ""
 
-#: src/gnome/setting.py:57
+#: src/gnome/setting.py:44
 msgid ""
 "Show/hide icons on desktop.\n"
 "<span color=\"red\">The change will take effect at the next time GNOME "
 "starts up.</span>"
 msgstr ""
 
-#: src/gnome/setting.py:61
+#: src/gnome/setting.py:48
 msgid "Desktop content will be displayed at the next time GNOME starts up."
 msgstr ""
 
-#: src/gnome/setting.py:64
+#: src/gnome/setting.py:51
 msgid "Display \"Mounted volumn\" icon"
 msgstr ""
 
-#: src/gnome/setting.py:65
+#: src/gnome/setting.py:52
 msgid "Put icons linking to mounted volumes on the desktop."
 msgstr ""
 
-#: src/gnome/setting.py:67
+#: src/gnome/setting.py:54
 msgid "Display \"Computer\" icon"
 msgstr ""
 
-#: src/gnome/setting.py:68
+#: src/gnome/setting.py:55
 msgid "Put an icon linking to the computer location on the desktop."
 msgstr ""
 
-#: src/gnome/setting.py:70
+#: src/gnome/setting.py:57
 msgid "Display \"Home folder\" icon"
 msgstr ""
 
-#: src/gnome/setting.py:71
+#: src/gnome/setting.py:58
 msgid "Put an icon linking to the home folder on the desktop."
 msgstr ""
 
-#: src/gnome/setting.py:73
+#: src/gnome/setting.py:60
 msgid "Display \"Network server\" icon"
 msgstr ""
 
-#: src/gnome/setting.py:74
+#: src/gnome/setting.py:61
 msgid "Put an icon linking to the Network Servers view on the desktop."
 msgstr ""
 
-#: src/gnome/setting.py:76
+#: src/gnome/setting.py:63
 msgid "Display \"Trash\" icon"
 msgstr ""
 
-#: src/gnome/setting.py:77
+#: src/gnome/setting.py:64
 msgid "Put an icon linking to the trash on the desktop."
 msgstr ""
 
-#: src/gnome/setting.py:79
+#: src/gnome/setting.py:66
 msgid "Desktop icons"
 msgstr ""
 
-#: src/gnome/setting.py:83
+#: src/gnome/setting.py:70
 msgid "Show icons of menu entries"
 msgstr ""
 
-#: src/gnome/setting.py:85
+#: src/gnome/setting.py:72
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr ""
 
-#: src/gnome/setting.py:87 src/gnome/setting.py:95
+#: src/gnome/setting.py:74 src/gnome/setting.py:82
 msgid "Menu entry icons setting"
 msgstr ""
 
-#: src/gnome/setting.py:91
+#: src/gnome/setting.py:78
 msgid "Show icon in buttons"
 msgstr ""
 
-#: src/gnome/setting.py:93
+#: src/gnome/setting.py:80
 msgid "Whether buttons may display an icon next to text."
 msgstr ""
 
-#: src/gnome/setting.py:99
+#: src/gnome/setting.py:86
 msgid "Disable terminal bell"
 msgstr ""
 
-#: src/gnome/setting.py:101
+#: src/gnome/setting.py:88
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr ""
 
-#: src/gnome/setting.py:103
+#: src/gnome/setting.py:90
 msgid "Terminal beep sound setting"
 msgstr ""
 
-#: src/gnome/setting.py:107 src/gnome/setting.py:111
+#: src/gnome/setting.py:94 src/gnome/setting.py:98
 msgid "Automatically mount CD and flash disks"
 msgstr ""
 
-#: src/gnome/setting.py:109
+#: src/gnome/setting.py:96
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr ""
 
-#: src/gnome/setting.py:133
+#: src/gnome/setting.py:120
 msgid "Larger font"
 msgstr ""
 
-#: src/gnome/setting.py:135
+#: src/gnome/setting.py:122
 msgid "Smaller font"
 msgstr ""
 
-#: src/gnome/setting.py:141
+#: src/gnome/setting.py:128
 msgid "One-click changing font size"
 msgstr ""
 
-#: src/gnome/setting.py:144
+#: src/gnome/setting.py:131
 msgid "double-clicked by mouse left button:"
 msgstr ""
 
-#: src/gnome/setting.py:145 src/gnome/setting.py:158
+#: src/gnome/setting.py:132 src/gnome/setting.py:145
 msgid "The effects of double-clicking on the title bar."
 msgstr ""
 
-#: src/gnome/setting.py:146
+#: src/gnome/setting.py:133
 msgid "clicked by mouse right button:"
 msgstr ""
 
-#: src/gnome/setting.py:147 src/gnome/setting.py:167
+#: src/gnome/setting.py:134 src/gnome/setting.py:154
 msgid "The effects of right-clicking on the title bar."
 msgstr ""
 
-#: src/gnome/setting.py:148
+#: src/gnome/setting.py:135
 msgid "clicked by mouse wheel:"
 msgstr ""
 
-#: src/gnome/setting.py:149 src/gnome/setting.py:176
+#: src/gnome/setting.py:136 src/gnome/setting.py:163
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "maximize"
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "minimize"
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "roll up"
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "put behind others"
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "maximize horizontally"
 msgstr ""
 
-#: src/gnome/setting.py:156 src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:143 src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "maximize vertically"
 msgstr ""
 
-#: src/gnome/setting.py:165 src/gnome/setting.py:174
+#: src/gnome/setting.py:152 src/gnome/setting.py:161
 msgid "show menu"
 msgstr ""
 
-#: src/gnome/setting.py:179
+#: src/gnome/setting.py:166
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 
-#: src/gnome/setting.py:184
+#: src/gnome/setting.py:171
 msgid "Show \"Input method\" entry"
 msgstr ""
 
-#: src/gnome/setting.py:185 src/gnome/setting.py:188
+#: src/gnome/setting.py:172 src/gnome/setting.py:175
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr ""
 
-#: src/gnome/setting.py:187
+#: src/gnome/setting.py:174
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr ""
 
-#: src/gnome/setting.py:190
+#: src/gnome/setting.py:177
 msgid "Text-boxes context menu"
 msgstr ""
 
-#: src/gnome/setting.py:194
+#: src/gnome/setting.py:181
 msgid "Show login splash image: "
 msgstr ""
 
-#: src/gnome/setting.py:196
+#: src/gnome/setting.py:183
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 
-#: src/gnome/setting.py:198
+#: src/gnome/setting.py:185
 msgid "Splash image:"
 msgstr ""
 
-#: src/gnome/setting.py:200
+#: src/gnome/setting.py:187
 msgid "The file which is used as the GNOME splash image."
 msgstr ""
 
-#: src/gnome/setting.py:202
+#: src/gnome/setting.py:189
 msgid "GNOME splash image"
 msgstr ""
 
-#: src/gnome/setting.py:208
+#: src/gnome/setting.py:195
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 
-#: src/gnome/setting.py:210
+#: src/gnome/setting.py:197
 msgid "Disable Alt+F2 (Launch application)"
 msgstr ""
 
-#: src/gnome/setting.py:212
+#: src/gnome/setting.py:199
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 
-#: src/gnome/setting.py:214
+#: src/gnome/setting.py:201
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr ""
 
-#: src/gnome/setting.py:216
+#: src/gnome/setting.py:203
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 
-#: src/gnome/setting.py:218
+#: src/gnome/setting.py:205
 msgid "Disable \"print\" entry in all menus."
 msgstr ""
 
-#: src/gnome/setting.py:220
+#: src/gnome/setting.py:207
 msgid "Prevent current user from printing any documents."
 msgstr ""
 
-#: src/gnome/setting.py:222
+#: src/gnome/setting.py:209
 msgid "Disable \"print setup\" entry in all menus."
 msgstr ""
 
-#: src/gnome/setting.py:224
+#: src/gnome/setting.py:211
 msgid "Prevent current user from modifying print settings."
 msgstr ""
 
-#: src/gnome/setting.py:226
+#: src/gnome/setting.py:213
 msgid "Disable \"save as\" entry in all menus."
 msgstr ""
 
-#: src/gnome/setting.py:228
+#: src/gnome/setting.py:215
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 
-#: src/gnome/setting.py:230
+#: src/gnome/setting.py:217
 msgid "Forbid running multiple GNOME session."
 msgstr ""
 
-#: src/gnome/setting.py:232
+#: src/gnome/setting.py:219
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr ""
 
-#: src/gnome/setting.py:234
+#: src/gnome/setting.py:221
 msgid "Restriction on current user"
 msgstr ""
 
-#: src/gnome/setting.py:241
+#: src/gnome/setting.py:228
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr ""
 
-#: src/gnome/setting.py:244
+#: src/gnome/setting.py:231
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr ""
 
-#: src/gnome/setting.py:246 src/gnome/setting.py:254 src/gnome/setting.py:262
+#: src/gnome/setting.py:233 src/gnome/setting.py:241 src/gnome/setting.py:249
 #, python-format
 msgid "GConf key: %s"
 msgstr ""
 
-#: src/gnome/setting.py:252
+#: src/gnome/setting.py:239
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr ""
 
-#: src/gnome/setting.py:260
+#: src/gnome/setting.py:247
 msgid "Size of each thumbnail (in pixels):"
 msgstr ""
 
-#: src/gnome/setting.py:268
+#: src/gnome/setting.py:255
 msgid "Nautilus thumbnail settings"
 msgstr ""
 
-#: src/gnome/setting.py:274
+#: src/gnome/setting.py:260
 msgid "Remember running applications when you log out."
 msgstr ""
 
-#: src/gnome/setting.py:276
+#: src/gnome/setting.py:262
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
 "GNOME."
 msgstr ""
 
-#: src/gnome/setting.py:280
+#: src/gnome/setting.py:265
 msgid "Configure autostart applications"
 msgstr ""
 
-#: src/gnome/setting.py:281
+#: src/gnome/setting.py:266
 msgid "Run command: gnome-session-properties"
 msgstr ""
 
-#: src/gnome/setting.py:285
+#: src/gnome/setting.py:269
 msgid "Prompt you before you log out from GNOME."
 msgstr ""
 
-#: src/gnome/setting.py:287
+#: src/gnome/setting.py:271
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
 
-#: src/gnome/setting.py:289
+#: src/gnome/setting.py:273
 msgid "Allow connection from remote hosts."
 msgstr ""
 
-#: src/gnome/setting.py:292
+#: src/gnome/setting.py:276
 msgid "GNOME session"
 msgstr ""
 
-#: src/gnome/setting.py:299
+#: src/gnome/setting.py:282
 msgid "LCD brightness when on AC power:"
 msgstr ""
 
-#: src/gnome/setting.py:301 src/gnome/setting.py:307
+#: src/gnome/setting.py:284 src/gnome/setting.py:290
 msgid "GConf Key: "
 msgstr ""
 
-#: src/gnome/setting.py:305
+#: src/gnome/setting.py:288
 msgid "LCD dimming amount when on battery:"
 msgstr ""
 
-#: src/gnome/setting.py:311
+#: src/gnome/setting.py:294
 msgid "Backlight"
 msgstr ""
 
-#: src/gnome/tips.py:35
+#: src/gnome/tips.py:27
 msgid ""
 "~/.thumbnails/ directory is a cache dir GNOME makes when you browse through "
 "your folders in nautilus. \n"
@@ -3113,7 +3109,7 @@ msgid ""
 "find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
 msgstr ""
 
-#: src/gnome/tips.py:45
+#: src/gnome/tips.py:37
 msgid ""
 "Capture screen after 10 seconds\n"
 "gnome-screenshot -d 10\n"
@@ -3121,27 +3117,27 @@ msgid ""
 "gnome-screenshot -wd 10\n"
 msgstr ""
 
-#: src/gnome/tips.py:51
+#: src/gnome/tips.py:43
 msgid ""
 "Start GConf editor:\n"
 "Press Alt+F2, type 'gconf-editor'."
 msgstr ""
 
-#: src/gnome/tips.py:54
+#: src/gnome/tips.py:46
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/interface/menus_have_icons\n"
 "If this is set to false, all icons in menu entries will be invisible.\n"
 msgstr ""
 
-#: src/gnome/tips.py:59
+#: src/gnome/tips.py:51
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/preferences/show_desktop\n"
 "If this is set to true, then icons on the desktop will be displayed. \n"
 msgstr ""
 
-#: src/gnome/tips.py:64
+#: src/gnome/tips.py:56
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/desktop/computer_icon_visible\n"
@@ -3152,7 +3148,7 @@ msgid ""
 "The custom name for the computer icon on the desktop. \n"
 msgstr ""
 
-#: src/gnome/tips.py:72
+#: src/gnome/tips.py:64
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/desktop/home_icon_visible\n"
@@ -3163,7 +3159,7 @@ msgid ""
 "The custom name for the home icon on the desktop. \n"
 msgstr ""
 
-#: src/gnome/tips.py:80
+#: src/gnome/tips.py:72
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/desktop/network_icon_visible\n"
@@ -3174,7 +3170,7 @@ msgid ""
 "Thes custom name for the network servers icon on the desktop. \n"
 msgstr ""
 
-#: src/gnome/tips.py:88
+#: src/gnome/tips.py:80
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/desktop/trash_icon_visible\n"
@@ -3185,7 +3181,7 @@ msgid ""
 "The custom name for the trash icon on the desktop. \n"
 msgstr ""
 
-#: src/gnome/tips.py:96
+#: src/gnome/tips.py:88
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/desktop/volumes_visible\n"
@@ -3193,7 +3189,7 @@ msgid ""
 "desktop. \n"
 msgstr ""
 
-#: src/gnome/tips.py:101
+#: src/gnome/tips.py:93
 msgid ""
 "GConf key:\n"
 "/apps/metacity/general/button_layout\n"
@@ -3203,7 +3199,7 @@ msgid ""
 "The visibility and position of titlebar buttons can be changed by this key.\n"
 msgstr ""
 
-#: src/gnome/tips.py:108
+#: src/gnome/tips.py:100
 msgid ""
 "GConf key:\n"
 "/apps/metacity/general/action_double_click_titlebar\n"
@@ -3212,7 +3208,7 @@ msgid ""
 "maximize/unmaximize the window in horizontal direction only.\n"
 msgstr ""
 
-#: src/gnome/tips.py:115
+#: src/gnome/tips.py:107
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/preferences/show_advanced_permissions\n"
@@ -3221,7 +3217,7 @@ msgid ""
 "accessing some more esoteric options. \n"
 msgstr ""
 
-#: src/gnome/tips.py:121
+#: src/gnome/tips.py:113
 msgid ""
 "GConf key:\n"
 "/apps/metacity/global_keybindings/\n"
@@ -3233,14 +3229,14 @@ msgid ""
 "/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
 msgstr ""
 
-#: src/gnome/tips.py:132
+#: src/gnome/tips.py:124
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/background/picture_filename\n"
 "File to use for the background image.\n"
 msgstr ""
 
-#: src/gnome/tips.py:137
+#: src/gnome/tips.py:129
 msgid ""
 "GConf key:\n"
 "/apps/gedit-2/preferences/editor/undo/max_undo_actions\n"
@@ -3248,7 +3244,7 @@ msgid ""
 "\" for unlimited number of actions."
 msgstr ""
 
-#: src/gnome/tips.py:141
+#: src/gnome/tips.py:133
 msgid ""
 "GConf key:\n"
 "/apps/gedit-2/preferences/ui/recents/max_recents\n"
@@ -3256,14 +3252,14 @@ msgid ""
 "in the \"Recent Files\" submenu."
 msgstr ""
 
-#: src/gnome/tips.py:145
+#: src/gnome/tips.py:137
 msgid ""
 "GConf key:\n"
 "/apps/file-roller/general/compression_level\n"
 "Compression level used when adding files to an archive."
 msgstr ""
 
-#: src/gnome/tips.py:149
+#: src/gnome/tips.py:141
 msgid ""
 "GConf key:\n"
 "/apps/gnome-session/options/auto_save_session\n"
@@ -3272,7 +3268,7 @@ msgid ""
 "GNOME."
 msgstr ""
 
-#: src/gnome/tips.py:155
+#: src/gnome/tips.py:147
 msgid ""
 "GConf key:\n"
 "/apps/gnome-session/options/show_splash_screen\n"
@@ -3283,7 +3279,7 @@ msgid ""
 "The file which is used as the splash image."
 msgstr ""
 
-#: src/gnome/tips.py:163
+#: src/gnome/tips.py:155
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/interface/show_input_method_menu\n"
@@ -3291,7 +3287,7 @@ msgid ""
 "context menu of all GTK text-boxes, including GEdit."
 msgstr ""
 
-#: src/gnome/tips.py:168
+#: src/gnome/tips.py:160
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/interface/show_unicode_menu\n"
@@ -3299,7 +3295,7 @@ msgid ""
 "added in the context menu of all GTK text-boxes, including GEdit."
 msgstr ""
 
-#: src/gnome/tips.py:172
+#: src/gnome/tips.py:164
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/preferences/show_advanced_permissions\n"
@@ -3308,14 +3304,14 @@ msgid ""
 "other permissions."
 msgstr ""
 
-#: src/gnome/tips.py:176
+#: src/gnome/tips.py:168
 msgid ""
 "GConf key:\n"
 "/apps/nautilus/icon_view/thumbnail_size\n"
 "The default size of an icon for a thumbnail in the Nautilus icon view."
 msgstr ""
 
-#: src/gnome/tips.py:180
+#: src/gnome/tips.py:172
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/thumbnail_cache/maximum_size\n"
@@ -3323,7 +3319,7 @@ msgid ""
 "unlimited size."
 msgstr ""
 
-#: src/gnome/tips.py:184
+#: src/gnome/tips.py:176
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/thumbnail_cache/maximum_age\n"
@@ -3331,47 +3327,47 @@ msgid ""
 "unlimited age."
 msgstr ""
 
-#: src/gnome/tips.py:188
+#: src/gnome/tips.py:180
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_command_line\n"
 "Prevent yourself from pressing Alt+F2 to launch applications -_-\n"
 msgstr ""
 
-#: src/gnome/tips.py:190 src/gnome/tips.py:194 src/gnome/tips.py:198
-#: src/gnome/tips.py:202 src/gnome/tips.py:206 src/gnome/tips.py:210
+#: src/gnome/tips.py:182 src/gnome/tips.py:186 src/gnome/tips.py:190
+#: src/gnome/tips.py:194 src/gnome/tips.py:198 src/gnome/tips.py:202
 msgid "This configuration does not affect other users."
 msgstr ""
 
-#: src/gnome/tips.py:192
+#: src/gnome/tips.py:184
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_lock_screen\n"
 "Prevent yourself from pressing Ctrl+Alt+L to lock screen -_-\n"
 msgstr ""
 
-#: src/gnome/tips.py:196
+#: src/gnome/tips.py:188
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_printing\n"
 "Prevent yourself from printing any documents -_-\n"
 msgstr ""
 
-#: src/gnome/tips.py:200
+#: src/gnome/tips.py:192
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_print_setup\n"
 "Prevent yourself from modifying print settings -_-\n"
 msgstr ""
 
-#: src/gnome/tips.py:204
+#: src/gnome/tips.py:196
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_save_to_disk\n"
 "Prevent yourself from using \"Save as ...\" dialog -_-\n"
 msgstr ""
 
-#: src/gnome/tips.py:208
+#: src/gnome/tips.py:200
 msgid ""
 "GConf key:\n"
 "/desktop/gnome/lockdown/disable_user_switching\n"
@@ -3379,32 +3375,32 @@ msgid ""
 "GNOME first. -_-\n"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:36
+#: src/ubuntu/app_not_opensource.py:28
 msgid "Alice: A new way to learn programming"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:38
+#: src/ubuntu/app_not_opensource.py:30
 msgid ""
 "A storytelling application, especially appropriate for middle school "
 "students."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:39
+#: src/ubuntu/app_not_opensource.py:31
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:80 src/ubuntu/quick_setup.py:270
+#: src/ubuntu/app_not_opensource.py:72 src/ubuntu/quick_setup.py:272
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:81
+#: src/ubuntu/app_not_opensource.py:73
 msgid ""
 "Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></"
 "span>"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:123
+#: src/ubuntu/app_not_opensource.py:115
 msgid ""
 "Drive a spaceship and battle against invaders! Collect money during the "
 "combat. Upgrade armaments and weapons. This is a full 3d style space shooter "
@@ -3412,96 +3408,96 @@ msgid ""
 "http://www.viewizard.com/"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:160
+#: src/ubuntu/app_not_opensource.py:152
 msgid "Evermore Integrated Office 2009 free version"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:161
+#: src/ubuntu/app_not_opensource.py:153
 msgid ""
 "It is able to edit text, spreadsheets, and slides. Official site: <span "
 "color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/"
 "downEIOPersonal.jsp</u></span>"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:178
+#: src/ubuntu/app_not_opensource.py:170
 msgid "Clipboard arts are to be installed."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:179
+#: src/ubuntu/app_not_opensource.py:171
 msgid "Help files are to be installed."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:180
+#: src/ubuntu/app_not_opensource.py:172
 msgid "Science editor images are to be installed."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:181
+#: src/ubuntu/app_not_opensource.py:173
 msgid "Templates are to be installed."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:190
+#: src/ubuntu/app_not_opensource.py:182
 msgid "Installing EIOffice"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:204
+#: src/ubuntu/app_not_opensource.py:196
 msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:206
+#: src/ubuntu/app_not_opensource.py:198
 #, python-format
 msgid ""
 "After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:221
+#: src/ubuntu/app_not_opensource.py:213
 msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:223
+#: src/ubuntu/app_not_opensource.py:215
 #, python-format
 msgid ""
 "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:238
+#: src/ubuntu/app_not_opensource.py:230
 msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:240
+#: src/ubuntu/app_not_opensource.py:232
 #, python-format
 msgid ""
 "After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:264
+#: src/ubuntu/app_not_opensource.py:256
 msgid "Download via bittorrent + Search videos + Play videos"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:296
+#: src/ubuntu/app_not_opensource.py:288
 msgid "JavaScript Debugger: a powerful JavaScript debugger"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:309
+#: src/ubuntu/app_not_opensource.py:301
 msgid "Mac OS X Theme"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:323
+#: src/ubuntu/app_not_opensource.py:315
 msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:337
+#: src/ubuntu/app_not_opensource.py:329
 msgid "Personas: One-click changing Firefox skin"
 msgstr ""
 
-#: src/ubuntu/app_not_opensource.py:341
+#: src/ubuntu/app_not_opensource.py:333
 msgid "Theme your browser according to your mood, hobby or season."
 msgstr ""
 
-#: src/ubuntu/app0.py:36
+#: src/ubuntu/app0.py:28
 msgid "SUN Java® 6."
 msgstr ""
 
-#: src/ubuntu/app0.py:37
+#: src/ubuntu/app0.py:29
 msgid ""
 "<span color=\"red\">You should manually agree a license during the "
 "installation.</span>\n"
@@ -3511,11 +3507,11 @@ msgid ""
 "are JAVA_HOME, JAVA_BIN and CLASSPATH."
 msgstr ""
 
-#: src/ubuntu/app0.py:76
+#: src/ubuntu/app0.py:68
 msgid "Eliminate Chinese font bug in SUN Java® 6"
 msgstr ""
 
-#: src/ubuntu/app0.py:77
+#: src/ubuntu/app0.py:69
 msgid ""
 "Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-"
 "sun/jre/lib/fonts/fallback/\n"
@@ -3523,18 +3519,18 @@ msgid ""
 "arphic/uming.ttf"
 msgstr ""
 
-#: src/ubuntu/app0.py:110
+#: src/ubuntu/app0.py:102
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux.\n"
 "Command: sudo apt-get install wine wine-gecko"
 msgstr ""
 
-#: src/ubuntu/app0.py:133
+#: src/ubuntu/app0.py:125
 msgid "WINE &amp; Wen-Quan-Yi Chinese font"
 msgstr ""
 
-#: src/ubuntu/app0.py:134
+#: src/ubuntu/app0.py:126
 msgid ""
 "WINE is an indispensable application for running Windows applications on "
 "Linux.\n"
@@ -3543,15 +3539,15 @@ msgid ""
 "default Chinese font."
 msgstr ""
 
-#: src/ubuntu/app0.py:169
+#: src/ubuntu/app0.py:161
 msgid "SUN_JDK6 is required. It is to be installed."
 msgstr ""
 
-#: src/ubuntu/app0.py:179
+#: src/ubuntu/app0.py:171
 msgid "WINE is required. It is to be installed."
 msgstr ""
 
-#: src/ubuntu/app1.py:37
+#: src/ubuntu/app1.py:29
 msgid ""
 "Change GEdit settings as follows. Automatically indent current line. Comment/"
 "uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T "
@@ -3569,46 +3565,50 @@ msgid ""
 "Then run this command: sudo apt-get install gedit-plugins"
 msgstr ""
 
-#: src/ubuntu/app1.py:102 src/ubuntu/quick_setup.py:264
+#: src/ubuntu/app1.py:94 src/ubuntu/quick_setup.py:266
 msgid "Full language support and input method"
 msgstr ""
 
-#: src/ubuntu/app1.py:103
+#: src/ubuntu/app1.py:95
 msgid ""
 "Because of live CD capacity limitation, the Ubuntu system does not have full "
 "language support.\n"
 msgstr ""
 
-#: src/ubuntu/app1.py:130
+#: src/ubuntu/app1.py:126
 msgid "Command: "
 msgstr ""
 
-#: src/ubuntu/app1.py:145 src/ubuntu/quick_setup.py:266
+#: src/ubuntu/app1.py:141 src/ubuntu/quick_setup.py:268
 msgid "Decompression software: 7z, rar, cab, ace"
 msgstr ""
 
-#: src/ubuntu/app1.py:146
+#: src/ubuntu/app1.py:142
 msgid ""
 "Command: sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full "
 "cabextract unace"
 msgstr ""
 
-#: src/ubuntu/app1.py:157
+#: src/ubuntu/app1.py:153
+msgid "Typespeed is a typing practise. It only runs in terminal."
+msgstr ""
+
+#: src/ubuntu/app1.py:162
 msgid "Command: sudo apt-get install poppler-data"
 msgstr ""
 
-#: src/ubuntu/app1.py:203
+#: src/ubuntu/app1.py:208
 msgid "Command: sudo apt-get install chmsee"
 msgstr ""
 
-#: src/ubuntu/app1.py:213
+#: src/ubuntu/app1.py:218
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers.\n"
 "Command: sudo apt-get install workrave"
 msgstr ""
 
-#: src/ubuntu/app1.py:258
+#: src/ubuntu/app1.py:263
 msgid ""
 "Install VIM and make it more suitable for programming. The installation "
 "process is as follows. \"sudo apt-get install vim\" command is executed. "
@@ -3619,7 +3619,7 @@ msgid ""
 "    set mouse=a"
 msgstr ""
 
-#: src/ubuntu/app1.py:287
+#: src/ubuntu/app1.py:292
 msgid ""
 "Change Bash prompt symbols from \"username@hostname:~$ \" to \"<span color="
 "\"#3dba34\">username@hostname</span>:<span color=\"#729fcf\">~</span>$ \".\n"
@@ -3628,48 +3628,48 @@ msgid ""
 "\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
 msgstr ""
 
-#: src/ubuntu/app1.py:309
+#: src/ubuntu/app1.py:314
 msgid ""
 "Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg "
 "gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
 "plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
 msgstr ""
 
-#: src/ubuntu/app1.py:322
+#: src/ubuntu/app1.py:327
 msgid "Enable \"Print to pdf\" capability and eliminate \"Cannot print\" bug"
 msgstr ""
 
-#: src/ubuntu/app1.py:323
+#: src/ubuntu/app1.py:328
 msgid ""
 "The installation process is as follows. Firstly, the command \"sudo apt-get "
 "install cups-pdf\" is launched. Then a bug in \"/etc/apparmor.d/usr.sbin."
 "cupsd\" file is eliminated."
 msgstr ""
 
-#: src/ubuntu/app1.py:351
+#: src/ubuntu/app1.py:356
 msgid "Command: sudo apt-get install flashplugin-installer"
 msgstr ""
 
-#: src/ubuntu/app1.py:359 src/ubuntu/quick_setup.py:274
+#: src/ubuntu/app1.py:364 src/ubuntu/quick_setup.py:276
 msgid "Fix font bug in Flash plugin"
 msgstr ""
 
-#: src/ubuntu/app1.py:360
+#: src/ubuntu/app1.py:365
 msgid ""
 "Fix bug: characters are displayed as blank square in Flash.\n"
 "The trick behind is to modify \"/etc/fonts/conf.d/49-sansserif.conf\" file."
 msgstr ""
 
-#: src/ubuntu/app1.py:387
+#: src/ubuntu/app1.py:392
 #, python-format
 msgid "The file \"%s\" exists."
 msgstr ""
 
-#: src/ubuntu/app1.py:410 src/ubuntu/quick_setup.py:271
+#: src/ubuntu/app1.py:415 src/ubuntu/quick_setup.py:273
 msgid "Stardict and four dictionaries"
 msgstr ""
 
-#: src/ubuntu/app1.py:412
+#: src/ubuntu/app1.py:417
 msgid ""
 "Install Stardict. Install Concise Chinese-English Dictionary, LangDao "
 "Chinese-English Dictionary, LangDao English-Chinese Dictionary and Oxford "
@@ -3679,64 +3679,64 @@ msgid ""
 "Command: sudo apt-get install stardict sdcv"
 msgstr ""
 
-#: src/ubuntu/app1.py:498
+#: src/ubuntu/app1.py:503
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: sudo apt-get install liferea"
 msgstr ""
 
-#: src/ubuntu/app1.py:508
+#: src/ubuntu/app1.py:513
 msgid "Firestarter"
 msgstr ""
 
-#: src/ubuntu/app1.py:509
+#: src/ubuntu/app1.py:514
 msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\".\n"
 "Command: sudo apt-get install firestarter"
 msgstr ""
 
-#: src/ubuntu/app1.py:520
+#: src/ubuntu/app1.py:525
 msgid "Fresh Linux Kernel"
 msgstr ""
 
-#: src/ubuntu/app1.py:521
+#: src/ubuntu/app1.py:526
 msgid ""
 "This is Linux kernel version 2.6.31. It contains GEM (Graphics Execution "
 "Manager), which is the new video driver architecture of Intel®. It is "
 "downloaded from http://kernel.ubuntu.com/~kernel-ppa/mainline/"
 msgstr ""
 
-#: src/ubuntu/app1.py:533
+#: src/ubuntu/app1.py:538
 msgid "Current linux kernel version is "
 msgstr ""
 
-#: src/ubuntu/app2.py:48
+#: src/ubuntu/app2.py:40
 msgid "Mplayer with \"vod\" protocol support"
 msgstr ""
 
-#: src/ubuntu/app2.py:49
+#: src/ubuntu/app2.py:41
 msgid ""
 "Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" "
 "protocol is used in some online video sites such as SJTU comic."
 msgstr ""
 
-#: src/ubuntu/app2.py:233
+#: src/ubuntu/app2.py:227
 msgid "PBC (Pairing-Based Cryptography) library"
 msgstr ""
 
-#: src/ubuntu/app2.py:234
+#: src/ubuntu/app2.py:228
 msgid ""
 "Install Pairing-Based Cryptography library, powered by Stanford University.\n"
 msgstr ""
 
-#: src/ubuntu/app2.py:235
+#: src/ubuntu/app2.py:229
 msgid ""
 "Official site: <span color=\"blue\"><u>http://crypto.stanford.edu/pbc/</u></"
 "span> ."
 msgstr ""
 
-#: src/ubuntu/app2.py:273
+#: src/ubuntu/app2.py:267
 msgid ""
 "The tools are:\n"
 "<i>g++: GNU C++ compiler.\n"
@@ -3756,15 +3756,15 @@ msgid ""
 "mt-dev subversion git-core"
 msgstr ""
 
-#: src/ubuntu/app2.py:313
+#: src/ubuntu/app2.py:307
 msgid " \"build-essential\" is required. It is to be installed."
 msgstr ""
 
-#: src/ubuntu/app2.py:376
+#: src/ubuntu/app2.py:370
 msgid "GNOMEArtNG"
 msgstr ""
 
-#: src/ubuntu/app2.py:377
+#: src/ubuntu/app2.py:371
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -3772,66 +3772,72 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
-#: src/ubuntu/app2.py:433
+#: src/ubuntu/app2.py:427
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: sudo apt-get install qtiplot"
 msgstr ""
 
-#: src/ubuntu/app3.py:36
+#: src/ubuntu/app2.py:437
+msgid ""
+"This is a multifunctional graphic calculator.\n"
+"Command: sudo apt-get install extcalc"
+msgstr ""
+
+#: src/ubuntu/app3.py:28
 msgid "Varkon: A concise CAD software"
 msgstr ""
 
-#: src/ubuntu/app3.py:37
+#: src/ubuntu/app3.py:29
 msgid ""
 "Be good at geometric modeling. Please study the documentation <span color="
 "\"blue\"><u>http://varkon.sourceforge.net/man.htm</u></span> before using "
 "it. "
 msgstr ""
 
-#: src/ubuntu/app3.py:40
+#: src/ubuntu/app3.py:32
 msgid "Developed by Örebro university, Sweden."
 msgstr ""
 
-#: src/ubuntu/app3.py:66
+#: src/ubuntu/app3.py:58
 msgid "FreeCAD: A CAD software based on OpenCasCade"
 msgstr ""
 
-#: src/ubuntu/app3.py:67
+#: src/ubuntu/app3.py:59
 msgid ""
 "Be good at three-dimensional solid design. Official site: <span color=\"blue"
 "\"><u>http://sourceforge.net/projects/free-cad/</u></span>"
 msgstr ""
 
-#: src/ubuntu/app3.py:148
+#: src/ubuntu/app3.py:140
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
 msgstr ""
 
-#: src/ubuntu/app3.py:149
+#: src/ubuntu/app3.py:141
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages.\n"
 "Command: sudo apt-get install moonlight-plugin-mozilla"
 msgstr ""
 
-#: src/ubuntu/app3.py:310
+#: src/ubuntu/app3.py:302
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: sudo apt-get install qtoctave"
 msgstr ""
 
-#: src/ubuntu/app3.py:341
+#: src/ubuntu/app3.py:333
 msgid ""
 "If you cannot play RMVB video, try this application!\n"
 "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
 msgstr ""
 
-#: src/ubuntu/app3.py:358
+#: src/ubuntu/app3.py:350
 msgid "Screenlets"
 msgstr ""
 
-#: src/ubuntu/app3.py:359
+#: src/ubuntu/app3.py:351
 msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
@@ -3839,11 +3845,11 @@ msgid ""
 "Command: sudo apt-get install screenlets"
 msgstr ""
 
-#: src/ubuntu/app3.py:370
+#: src/ubuntu/app3.py:362
 msgid "Compiz settings manager"
 msgstr ""
 
-#: src/ubuntu/app3.py:371
+#: src/ubuntu/app3.py:363
 msgid ""
 "Compiz Fusion is the unification of the Beryl project and the community "
 "around the Compiz Window Manager. Compiz settings manager is the "
@@ -3852,64 +3858,64 @@ msgid ""
 "Command: sudo apt-get install compizconfig-settings-manager"
 msgstr ""
 
-#: src/ubuntu/app3.py:382
+#: src/ubuntu/app3.py:374
 msgid "A simple Compiz settings manager"
 msgstr ""
 
-#: src/ubuntu/app3.py:383
+#: src/ubuntu/app3.py:375
 msgid "Command: sudo apt-get install simple-ccsm"
 msgstr ""
 
-#: src/ubuntu/app3.py:413
+#: src/ubuntu/app3.py:405
 msgid "Micro-biology software"
 msgstr ""
 
-#: src/ubuntu/app3.py:414
+#: src/ubuntu/app3.py:406
 msgid ""
 "This software is for molecular biology, structural biology and "
 "bioinformatics.\n"
 "Command: sudo apt-get install med-bio med-bio-dev"
 msgstr ""
 
-#: src/ubuntu/app3.py:425
+#: src/ubuntu/app3.py:417
 msgid "Tux Paint"
 msgstr ""
 
-#: src/ubuntu/app3.py:426
+#: src/ubuntu/app3.py:418
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: sudo apt-get install tuxpaint"
 msgstr ""
 
-#: src/ubuntu/app3.py:434
+#: src/ubuntu/app3.py:426
 msgid "Code::Blocks - C/C++ IDE"
 msgstr ""
 
-#: src/ubuntu/app3.py:442
+#: src/ubuntu/app3.py:434
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: sudo apt-get install childsplay"
 msgstr ""
 
-#: src/ubuntu/app3.py:463
+#: src/ubuntu/app3.py:455
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: sudo apt-get install gcompris"
 msgstr ""
 
-#: src/ubuntu/app3.py:480
+#: src/ubuntu/app3.py:472
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig"
 msgstr ""
 
-#: src/ubuntu/app3.py:489
+#: src/ubuntu/app3.py:481
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : sudo apt-get install kadu"
 msgstr ""
 
-#: src/ubuntu/app3.py:499
+#: src/ubuntu/app3.py:491
 msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
@@ -3917,11 +3923,11 @@ msgid ""
 "Command: sudo apt-get install qnapi"
 msgstr ""
 
-#: src/ubuntu/app3.py:542
+#: src/ubuntu/app3.py:534
 msgid "R language (basic development environment)"
 msgstr ""
 
-#: src/ubuntu/app3.py:543
+#: src/ubuntu/app3.py:535
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read http://cran."
@@ -3929,11 +3935,11 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev"
 msgstr ""
 
-#: src/ubuntu/app3.py:552
+#: src/ubuntu/app3.py:544
 msgid "R language (full development environment and all plugins)"
 msgstr ""
 
-#: src/ubuntu/app3.py:553
+#: src/ubuntu/app3.py:545
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read http://cran."
@@ -3941,257 +3947,237 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev r-cran-*"
 msgstr ""
 
-#: src/ubuntu/app3.py:567
+#: src/ubuntu/app3.py:559
 msgid "Bluefish: Edit HTML web-pages"
 msgstr ""
 
-#: src/ubuntu/app3.py:568
+#: src/ubuntu/app3.py:560
 msgid "Command: sudo apt-get install bluefish"
 msgstr ""
 
-#: src/ubuntu/app3.py:598
+#: src/ubuntu/app3.py:590
 msgid ""
 "Command: sudo apt-get install wallpaper-tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: src/ubuntu/app3.py:618
+#: src/ubuntu/app3.py:610
 msgid "LAMP: Install Apache2 + MySQL + PHP"
 msgstr ""
 
-#: src/ubuntu/app3.py:619
+#: src/ubuntu/app3.py:611
 msgid "Command: sudo tasksel install lamp-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:624
+#: src/ubuntu/app3.py:616
 msgid "DNS server"
 msgstr ""
 
-#: src/ubuntu/app3.py:625
+#: src/ubuntu/app3.py:617
 msgid "Command: sudo tasksel install dns-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:630
+#: src/ubuntu/app3.py:622
 msgid "Mail server"
 msgstr ""
 
-#: src/ubuntu/app3.py:631
+#: src/ubuntu/app3.py:623
 msgid "Command: sudo tasksel install mail-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:636
+#: src/ubuntu/app3.py:628
 msgid "OpenSSH server"
 msgstr ""
 
-#: src/ubuntu/app3.py:637
+#: src/ubuntu/app3.py:629
 msgid "Command: sudo tasksel install openssh-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:642
+#: src/ubuntu/app3.py:634
 msgid "PostgreSQL server"
 msgstr ""
 
-#: src/ubuntu/app3.py:643
+#: src/ubuntu/app3.py:635
 msgid "Command: sudo tasksel install postgresql-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:648
+#: src/ubuntu/app3.py:640
 msgid "Printer server"
 msgstr ""
 
-#: src/ubuntu/app3.py:649
+#: src/ubuntu/app3.py:641
 msgid "Command: sudo tasksel install print-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:654
+#: src/ubuntu/app3.py:646
 msgid "Samba file sharing server"
 msgstr ""
 
-#: src/ubuntu/app3.py:655
+#: src/ubuntu/app3.py:647
 msgid "Command: sudo tasksel install samba-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:660
+#: src/ubuntu/app3.py:652
 msgid "Tomcat Java server"
 msgstr ""
 
-#: src/ubuntu/app3.py:661
+#: src/ubuntu/app3.py:653
 msgid "Command: sudo tasksel install tomcat-server"
 msgstr ""
 
-#: src/ubuntu/app3.py:666
+#: src/ubuntu/app3.py:658
 msgid "Ubuntustudio-graphics: 2D/3D creation and editing"
 msgstr ""
 
-#: src/ubuntu/app3.py:667
+#: src/ubuntu/app3.py:659
 msgid "Command: sudo tasksel install ubuntustudio-graphics"
 msgstr ""
 
-#: src/ubuntu/app3.py:672
+#: src/ubuntu/app3.py:664
 msgid "Ubuntustudio-audio: Audio creation and editing"
 msgstr ""
 
-#: src/ubuntu/app3.py:673
+#: src/ubuntu/app3.py:665
 msgid "Command: sudo tasksel install ubuntustudio-audio"
 msgstr ""
 
-#: src/ubuntu/app3.py:678
+#: src/ubuntu/app3.py:670
 msgid "Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing"
 msgstr ""
 
-#: src/ubuntu/app3.py:679
+#: src/ubuntu/app3.py:671
 msgid "Command: sudo tasksel install ubuntustudio-audio-plugins"
 msgstr ""
 
-#: src/ubuntu/app3.py:684
+#: src/ubuntu/app3.py:676
 msgid "Ubuntu MID"
 msgstr ""
 
-#: src/ubuntu/app3.py:685
+#: src/ubuntu/app3.py:677
 msgid "Command: sudo tasksel install mobile-mid"
 msgstr ""
 
-#: src/ubuntu/app3.py:690
+#: src/ubuntu/app3.py:682
 msgid "Ubuntu Netbook"
 msgstr ""
 
-#: src/ubuntu/app3.py:691
+#: src/ubuntu/app3.py:683
 msgid "Command: sudo tasksel install mobile-netbook-remix"
 msgstr ""
 
-#: src/ubuntu/app3.py:696
+#: src/ubuntu/app3.py:688
 msgid "Ubuntustudio-video: Video creation and editing"
 msgstr ""
 
-#: src/ubuntu/app3.py:697
+#: src/ubuntu/app3.py:689
 msgid "Command: sudo tasksel install ubuntustudio-video"
 msgstr ""
 
-#: src/ubuntu/app3.py:702
+#: src/ubuntu/app3.py:694
 msgid "Ubuntu MID Live"
 msgstr ""
 
-#: src/ubuntu/app3.py:703
+#: src/ubuntu/app3.py:695
 msgid "Command: sudo tasksel install mobile-live"
 msgstr ""
 
-#: src/ubuntu/app3.py:708
+#: src/ubuntu/app3.py:700
 msgid "Eucalyptus cloud computing cluster"
 msgstr ""
 
-#: src/ubuntu/app3.py:709
+#: src/ubuntu/app3.py:701
 msgid "Command: sudo tasksel install eucalyptus-simple-cluster"
 msgstr ""
 
-#: src/ubuntu/app3.py:714
+#: src/ubuntu/app3.py:706
 msgid "Eucalyptus cloud computing node"
 msgstr ""
 
-#: src/ubuntu/app3.py:715
+#: src/ubuntu/app3.py:707
 msgid "Command: sudo tasksel install eucalyptus-node"
 msgstr ""
 
-#: src/ubuntu/app3.py:720
+#: src/ubuntu/app3.py:712
 msgid "Ubuntu Enterprise Cloud server"
 msgstr ""
 
-#: src/ubuntu/app3.py:721
+#: src/ubuntu/app3.py:713
 msgid "Command: sudo tasksel install uec"
 msgstr ""
 
-#: src/ubuntu/app3.py:726
+#: src/ubuntu/app3.py:718
 msgid "Ubuntustudio-font-meta: A lot of font"
 msgstr ""
 
-#: src/ubuntu/app3.py:727
+#: src/ubuntu/app3.py:719
 msgid "Command: sudo tasksel install ubuntustudio-font-meta"
 msgstr ""
 
-#: src/ubuntu/app3.py:732
+#: src/ubuntu/app3.py:724
 msgid "* Launch tasksel"
 msgstr ""
 
-#: src/ubuntu/app3.py:733
+#: src/ubuntu/app3.py:725
 msgid ""
 "This is a helper item. It just launches command: \"sudo tasksel\". Then you "
 "are free to customize your computer via \"tasksel\"."
 msgstr ""
 
-#: src/ubuntu/app3.py:747
+#: src/ubuntu/app3.py:739
 msgid ""
 "This is a popular Chinese input method.\n"
 "It is from http://fcitx.googlecode.com/"
 msgstr ""
 
-#: src/ubuntu/app3.py:818
+#: src/ubuntu/app3.py:810
 msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
 msgstr ""
 
-#: src/ubuntu/menu.py:50
+#: src/ubuntu/menu.py:42
 msgid "Ubuntu/Kubuntu configuration guide"
 msgstr ""
 
-#: src/ubuntu/menu.py:52
+#: src/ubuntu/menu.py:44
 msgid "Ubuntu skills"
 msgstr ""
 
-#: src/ubuntu/menu.py:54
+#: src/ubuntu/menu.py:46
 msgid "Obtain \"Full Circle\" magazine"
 msgstr ""
 
-#: src/ubuntu/menu.py:56
+#: src/ubuntu/menu.py:48
 msgid "Obtain \"Ubuntu pocket guide\" book"
 msgstr ""
 
-#: src/ubuntu/menu.py:58
+#: src/ubuntu/menu.py:50
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
 msgstr ""
 
-#: src/ubuntu/menu.py:60
-msgid "How to install themes of Fedora® or OpenSolaris® on Ubuntu ?"
-msgstr ""
-
-#: src/ubuntu/menu.py:62
-msgid "How to install Warcraft III and DotA on Ubuntu ?"
-msgstr ""
-
-#: src/ubuntu/menu.py:64
-msgid "How to install Matlab on Ubuntu ?"
-msgstr ""
-
-#: src/ubuntu/menu.py:66
-msgid "Ubuntu forum in China"
-msgstr ""
-
-#: src/ubuntu/menu.py:70
-msgid "Enjoy online music in Ubuntu (in Chinese)"
-msgstr ""
-
-#: src/ubuntu/menu.py:91
+#: src/ubuntu/menu.py:83
 msgid "Don't automatically clean /var/cache/apt/"
 msgstr ""
 
-#: src/ubuntu/menu.py:125 src/ubuntu/menu.py:133 src/ubuntu/quick_setup.py:38
-#: src/ubuntu/quick_setup.py:332
+#: src/ubuntu/menu.py:117 src/ubuntu/menu.py:125 src/ubuntu/quick_setup.py:30
+#: src/ubuntu/quick_setup.py:334
 msgid "Quick setup"
 msgstr ""
 
-#: src/ubuntu/menu.py:134
+#: src/ubuntu/menu.py:126
 msgid "Repositories"
 msgstr ""
 
-#: src/ubuntu/menu.py:135
+#: src/ubuntu/menu.py:127
 msgid "Recovery"
 msgstr ""
 
-#: src/ubuntu/osinfo.py:46
+#: src/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:43
+#: src/ubuntu/quick_setup.py:35
 msgid ""
 "Ailurus will help you\n"
 "* Choose the fastest repository\n"
@@ -4203,209 +4189,217 @@ msgid ""
 "   - decompression software"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:67
+#: src/ubuntu/quick_setup.py:59
 msgid "Checking whether your computer is connected to Internet ..."
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:81
+#: src/ubuntu/quick_setup.py:73
 msgid "Scanning installed packages."
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:81
+#: src/ubuntu/quick_setup.py:73
 msgid "Please wait a few seconds."
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:102
+#: src/ubuntu/quick_setup.py:99
 msgid "Computer is not connected to Internet"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:105
+#: src/ubuntu/quick_setup.py:102
 msgid ""
 "Your computer is not connected to Internet.\n"
 "Please configure network connections."
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:108
+#: src/ubuntu/quick_setup.py:105
 msgid "Configure network connections"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:125
+#: src/ubuntu/quick_setup.py:109
+msgid "Skip this step"
+msgstr ""
+
+#: src/ubuntu/quick_setup.py:126
 msgid "Searching the fastest repository"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:155
+#: src/ubuntu/quick_setup.py:156
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:157 src/ubuntu/u_fastest_mirror.py:289
+#: src/ubuntu/quick_setup.py:158 src/ubuntu/u_fastest_mirror.py:284
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:193
+#: src/ubuntu/quick_setup.py:195
 msgid ""
 "In order to use the fastest repository, Ailurus will change /etc/apt/sources."
 "list"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:194
+#: src/ubuntu/quick_setup.py:196
 #, python-format
 msgid "The fastest repository is %s."
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:222
+#: src/ubuntu/quick_setup.py:224
 msgid "Apply the fastest repository:"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:225
+#: src/ubuntu/quick_setup.py:227
 msgid "Run command: \"sudo apt-get update\""
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:262
+#: src/ubuntu/quick_setup.py:264
 msgid "Search fastest repository"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:263
+#: src/ubuntu/quick_setup.py:265
 msgid "Install hardware drivers"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:296
+#: src/ubuntu/quick_setup.py:298
 msgid "Ongoing:"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:301
+#: src/ubuntu/quick_setup.py:303
 msgid "Successful"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:304
+#: src/ubuntu/quick_setup.py:306
 msgid "Failed"
 msgstr ""
 
-#: src/ubuntu/quick_setup.py:418
+#: src/ubuntu/quick_setup.py:420
 msgid "All works are done."
 msgstr ""
 
-#: src/ubuntu/serverlib.py:36
+#: src/ubuntu/serverlib.py:28
 msgid "Argentina"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:29 src/ubuntu/serverlib.py:30
+#: src/ubuntu/serverlib.py:31 src/ubuntu/serverlib.py:32
+#: src/ubuntu/serverlib.py:33 src/ubuntu/serverlib.py:34
+#: src/ubuntu/serverlib.py:35 src/ubuntu/serverlib.py:36
+msgid "Australia"
 msgstr ""
 
 #: src/ubuntu/serverlib.py:37 src/ubuntu/serverlib.py:38
 #: src/ubuntu/serverlib.py:39 src/ubuntu/serverlib.py:40
-#: src/ubuntu/serverlib.py:41 src/ubuntu/serverlib.py:42
-#: src/ubuntu/serverlib.py:43 src/ubuntu/serverlib.py:44
-msgid "Australia"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:45 src/ubuntu/serverlib.py:46
-#: src/ubuntu/serverlib.py:47 src/ubuntu/serverlib.py:48
 msgid "Austria"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:49 src/ubuntu/serverlib.py:50
-#: src/ubuntu/serverlib.py:51
+#: src/ubuntu/serverlib.py:41 src/ubuntu/serverlib.py:42
+#: src/ubuntu/serverlib.py:43
 msgid "Belarus"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:52 src/ubuntu/serverlib.py:53
-#: src/ubuntu/serverlib.py:54
+#: src/ubuntu/serverlib.py:44 src/ubuntu/serverlib.py:45
+#: src/ubuntu/serverlib.py:46
 msgid "Belgium"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:55
+#: src/ubuntu/serverlib.py:47
 msgid "Bosnia and Herzegovina"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:56 src/ubuntu/serverlib.py:57
-#: src/ubuntu/serverlib.py:58 src/ubuntu/serverlib.py:59
-#: src/ubuntu/serverlib.py:60 src/ubuntu/serverlib.py:61
-#: src/ubuntu/serverlib.py:62
+#: src/ubuntu/serverlib.py:48 src/ubuntu/serverlib.py:49
+#: src/ubuntu/serverlib.py:50 src/ubuntu/serverlib.py:51
+#: src/ubuntu/serverlib.py:52 src/ubuntu/serverlib.py:53
+#: src/ubuntu/serverlib.py:54
 msgid "Brazil"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:63 src/ubuntu/serverlib.py:64
-#: src/ubuntu/serverlib.py:65 src/ubuntu/serverlib.py:66
+#: src/ubuntu/serverlib.py:55 src/ubuntu/serverlib.py:56
+#: src/ubuntu/serverlib.py:57 src/ubuntu/serverlib.py:58
 msgid "Bulgaria"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:67 src/ubuntu/serverlib.py:68
-#: src/ubuntu/serverlib.py:69 src/ubuntu/serverlib.py:70
-#: src/ubuntu/serverlib.py:71 src/ubuntu/serverlib.py:72
-#: src/ubuntu/serverlib.py:73
+#: src/ubuntu/serverlib.py:59 src/ubuntu/serverlib.py:60
+#: src/ubuntu/serverlib.py:61 src/ubuntu/serverlib.py:62
+#: src/ubuntu/serverlib.py:63 src/ubuntu/serverlib.py:64
+#: src/ubuntu/serverlib.py:65
 msgid "Canada"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:74 src/ubuntu/serverlib.py:75
-#: src/ubuntu/serverlib.py:76
+#: src/ubuntu/serverlib.py:66 src/ubuntu/serverlib.py:67
+#: src/ubuntu/serverlib.py:68
 msgid "Chile"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:77 src/ubuntu/serverlib.py:78
-#: src/ubuntu/serverlib.py:79 src/ubuntu/serverlib.py:80
-#: src/ubuntu/serverlib.py:81 src/ubuntu/serverlib.py:82
-#: src/ubuntu/serverlib.py:83 src/ubuntu/serverlib.py:375
-#: src/ubuntu/serverlib.py:376 src/ubuntu/serverlib.py:377
-#: src/ubuntu/serverlib.py:378 src/ubuntu/serverlib.py:379
-#: src/ubuntu/serverlib.py:380 src/ubuntu/serverlib.py:381
-#: src/ubuntu/serverlib.py:382 src/ubuntu/serverlib.py:383
-#: src/ubuntu/serverlib.py:384 src/ubuntu/serverlib.py:386
+#: src/ubuntu/serverlib.py:69 src/ubuntu/serverlib.py:70
+#: src/ubuntu/serverlib.py:71 src/ubuntu/serverlib.py:72
+#: src/ubuntu/serverlib.py:73 src/ubuntu/serverlib.py:74
+#: src/ubuntu/serverlib.py:75 src/ubuntu/serverlib.py:367
+#: src/ubuntu/serverlib.py:368 src/ubuntu/serverlib.py:369
+#: src/ubuntu/serverlib.py:370 src/ubuntu/serverlib.py:371
+#: src/ubuntu/serverlib.py:372 src/ubuntu/serverlib.py:373
+#: src/ubuntu/serverlib.py:374 src/ubuntu/serverlib.py:375
+#: src/ubuntu/serverlib.py:376 src/ubuntu/serverlib.py:378
 msgid "China"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:84
+#: src/ubuntu/serverlib.py:76
 msgid "Colombia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:85
+#: src/ubuntu/serverlib.py:77
 msgid "Costa Rica"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:86
+#: src/ubuntu/serverlib.py:78
 msgid "Croatia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:87
+#: src/ubuntu/serverlib.py:79
 msgid "Cyprus"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:88 src/ubuntu/serverlib.py:89
-#: src/ubuntu/serverlib.py:90 src/ubuntu/serverlib.py:91
-#: src/ubuntu/serverlib.py:92 src/ubuntu/serverlib.py:93
-#: src/ubuntu/serverlib.py:94
+#: src/ubuntu/serverlib.py:80 src/ubuntu/serverlib.py:81
+#: src/ubuntu/serverlib.py:82 src/ubuntu/serverlib.py:83
+#: src/ubuntu/serverlib.py:84 src/ubuntu/serverlib.py:85
+#: src/ubuntu/serverlib.py:86
 msgid "Czech Republic"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:95 src/ubuntu/serverlib.py:96
-#: src/ubuntu/serverlib.py:97
+#: src/ubuntu/serverlib.py:87 src/ubuntu/serverlib.py:88
+#: src/ubuntu/serverlib.py:89
 msgid "Denmark"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:98
+#: src/ubuntu/serverlib.py:90
 msgid "Estonia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:99 src/ubuntu/serverlib.py:100
+#: src/ubuntu/serverlib.py:91 src/ubuntu/serverlib.py:92
 msgid "Finland"
 msgstr ""
 
+#: src/ubuntu/serverlib.py:93 src/ubuntu/serverlib.py:94
+#: src/ubuntu/serverlib.py:95 src/ubuntu/serverlib.py:96
+#: src/ubuntu/serverlib.py:97 src/ubuntu/serverlib.py:98
+#: src/ubuntu/serverlib.py:99 src/ubuntu/serverlib.py:100
 #: src/ubuntu/serverlib.py:101 src/ubuntu/serverlib.py:102
 #: src/ubuntu/serverlib.py:103 src/ubuntu/serverlib.py:104
-#: src/ubuntu/serverlib.py:105 src/ubuntu/serverlib.py:106
-#: src/ubuntu/serverlib.py:107 src/ubuntu/serverlib.py:108
-#: src/ubuntu/serverlib.py:109 src/ubuntu/serverlib.py:110
-#: src/ubuntu/serverlib.py:111 src/ubuntu/serverlib.py:112
 msgid "France"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:113
+#: src/ubuntu/serverlib.py:105
 msgid "French Polynesia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:114
+#: src/ubuntu/serverlib.py:106
 msgid "Georgia"
 msgstr ""
 
+#: src/ubuntu/serverlib.py:107 src/ubuntu/serverlib.py:108
+#: src/ubuntu/serverlib.py:109 src/ubuntu/serverlib.py:110
+#: src/ubuntu/serverlib.py:111 src/ubuntu/serverlib.py:112
+#: src/ubuntu/serverlib.py:113 src/ubuntu/serverlib.py:114
 #: src/ubuntu/serverlib.py:115 src/ubuntu/serverlib.py:116
 #: src/ubuntu/serverlib.py:117 src/ubuntu/serverlib.py:118
 #: src/ubuntu/serverlib.py:119 src/ubuntu/serverlib.py:120
@@ -4414,271 +4408,271 @@ msgstr ""
 #: src/ubuntu/serverlib.py:125 src/ubuntu/serverlib.py:126
 #: src/ubuntu/serverlib.py:127 src/ubuntu/serverlib.py:128
 #: src/ubuntu/serverlib.py:129 src/ubuntu/serverlib.py:130
-#: src/ubuntu/serverlib.py:131 src/ubuntu/serverlib.py:132
-#: src/ubuntu/serverlib.py:133 src/ubuntu/serverlib.py:134
-#: src/ubuntu/serverlib.py:135 src/ubuntu/serverlib.py:136
-#: src/ubuntu/serverlib.py:137 src/ubuntu/serverlib.py:138
-#: src/ubuntu/serverlib.py:139
+#: src/ubuntu/serverlib.py:131
 msgid "Germany"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:140 src/ubuntu/serverlib.py:141
-#: src/ubuntu/serverlib.py:142 src/ubuntu/serverlib.py:143
-#: src/ubuntu/serverlib.py:144
+#: src/ubuntu/serverlib.py:132 src/ubuntu/serverlib.py:133
+#: src/ubuntu/serverlib.py:134 src/ubuntu/serverlib.py:135
+#: src/ubuntu/serverlib.py:136
 msgid "Greece"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:145
+#: src/ubuntu/serverlib.py:137
 msgid "Greenland"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:146
+#: src/ubuntu/serverlib.py:138
 msgid "Hong Kong"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:147 src/ubuntu/serverlib.py:148
-#: src/ubuntu/serverlib.py:149 src/ubuntu/serverlib.py:150
+#: src/ubuntu/serverlib.py:139 src/ubuntu/serverlib.py:140
+#: src/ubuntu/serverlib.py:141 src/ubuntu/serverlib.py:142
 msgid "Hungary"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:151
+#: src/ubuntu/serverlib.py:143
 msgid "Iceland"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:152 src/ubuntu/serverlib.py:153
-#: src/ubuntu/serverlib.py:154 src/ubuntu/serverlib.py:155
+#: src/ubuntu/serverlib.py:144 src/ubuntu/serverlib.py:145
+#: src/ubuntu/serverlib.py:146 src/ubuntu/serverlib.py:147
 msgid "India"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:156 src/ubuntu/serverlib.py:157
-#: src/ubuntu/serverlib.py:158 src/ubuntu/serverlib.py:159
-#: src/ubuntu/serverlib.py:160 src/ubuntu/serverlib.py:161
-#: src/ubuntu/serverlib.py:162
+#: src/ubuntu/serverlib.py:148 src/ubuntu/serverlib.py:149
+#: src/ubuntu/serverlib.py:150 src/ubuntu/serverlib.py:151
+#: src/ubuntu/serverlib.py:152 src/ubuntu/serverlib.py:153
+#: src/ubuntu/serverlib.py:154
 msgid "Indonesia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:163 src/ubuntu/serverlib.py:164
+#: src/ubuntu/serverlib.py:155 src/ubuntu/serverlib.py:156
 msgid "Ireland"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:165
+#: src/ubuntu/serverlib.py:157
 msgid "Israel"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:166 src/ubuntu/serverlib.py:167
-#: src/ubuntu/serverlib.py:168 src/ubuntu/serverlib.py:169
-#: src/ubuntu/serverlib.py:170
+#: src/ubuntu/serverlib.py:158 src/ubuntu/serverlib.py:159
+#: src/ubuntu/serverlib.py:160 src/ubuntu/serverlib.py:161
+#: src/ubuntu/serverlib.py:162
 msgid "Italy"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:171 src/ubuntu/serverlib.py:172
-#: src/ubuntu/serverlib.py:173 src/ubuntu/serverlib.py:174
-#: src/ubuntu/serverlib.py:175 src/ubuntu/serverlib.py:176
-#: src/ubuntu/serverlib.py:177
+#: src/ubuntu/serverlib.py:163 src/ubuntu/serverlib.py:164
+#: src/ubuntu/serverlib.py:165 src/ubuntu/serverlib.py:166
+#: src/ubuntu/serverlib.py:167 src/ubuntu/serverlib.py:168
+#: src/ubuntu/serverlib.py:169
 msgid "Japan"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:178 src/ubuntu/serverlib.py:179
+#: src/ubuntu/serverlib.py:170 src/ubuntu/serverlib.py:171
 msgid "Kazakhstan"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:180 src/ubuntu/serverlib.py:181
-#: src/ubuntu/serverlib.py:182
+#: src/ubuntu/serverlib.py:172 src/ubuntu/serverlib.py:173
+#: src/ubuntu/serverlib.py:174
 msgid "Republic of Korea"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:183
+#: src/ubuntu/serverlib.py:175
 msgid "Kuwait"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:184
+#: src/ubuntu/serverlib.py:176
 msgid "Kyrgyzstan"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:185
+#: src/ubuntu/serverlib.py:177
 msgid "Latvia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:186 src/ubuntu/serverlib.py:187
+#: src/ubuntu/serverlib.py:178 src/ubuntu/serverlib.py:179
 msgid "Lithuania"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:188 src/ubuntu/serverlib.py:189
-#: src/ubuntu/serverlib.py:190 src/ubuntu/serverlib.py:191
-#: src/ubuntu/serverlib.py:192 src/ubuntu/serverlib.py:193
+#: src/ubuntu/serverlib.py:180 src/ubuntu/serverlib.py:181
+#: src/ubuntu/serverlib.py:182 src/ubuntu/serverlib.py:183
+#: src/ubuntu/serverlib.py:184 src/ubuntu/serverlib.py:185
 msgid "Malaysia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:194
+#: src/ubuntu/serverlib.py:186
 msgid "Malta"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:195 src/ubuntu/serverlib.py:196
+#: src/ubuntu/serverlib.py:187 src/ubuntu/serverlib.py:188
 msgid "Mexico"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:197
+#: src/ubuntu/serverlib.py:189
 msgid "Republic of Moldova"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:198
+#: src/ubuntu/serverlib.py:190
 msgid "Mongolia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:199
+#: src/ubuntu/serverlib.py:191
 msgid "Namibia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:200
+#: src/ubuntu/serverlib.py:192
 msgid "Nepal"
 msgstr ""
 
+#: src/ubuntu/serverlib.py:193 src/ubuntu/serverlib.py:194
+#: src/ubuntu/serverlib.py:195 src/ubuntu/serverlib.py:196
+#: src/ubuntu/serverlib.py:197 src/ubuntu/serverlib.py:198
+#: src/ubuntu/serverlib.py:199 src/ubuntu/serverlib.py:200
 #: src/ubuntu/serverlib.py:201 src/ubuntu/serverlib.py:202
 #: src/ubuntu/serverlib.py:203 src/ubuntu/serverlib.py:204
-#: src/ubuntu/serverlib.py:205 src/ubuntu/serverlib.py:206
-#: src/ubuntu/serverlib.py:207 src/ubuntu/serverlib.py:208
-#: src/ubuntu/serverlib.py:209 src/ubuntu/serverlib.py:210
-#: src/ubuntu/serverlib.py:211 src/ubuntu/serverlib.py:212
 msgid "Netherlands"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:213
+#: src/ubuntu/serverlib.py:205
 msgid "New Caledonia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:214 src/ubuntu/serverlib.py:215
-#: src/ubuntu/serverlib.py:216
+#: src/ubuntu/serverlib.py:206 src/ubuntu/serverlib.py:207
+#: src/ubuntu/serverlib.py:208
 msgid "New Zealand"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:217 src/ubuntu/serverlib.py:218
-#: src/ubuntu/serverlib.py:219
+#: src/ubuntu/serverlib.py:209 src/ubuntu/serverlib.py:210
+#: src/ubuntu/serverlib.py:211
 msgid "Norway"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:220
+#: src/ubuntu/serverlib.py:212
 msgid "Philippines"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:221 src/ubuntu/serverlib.py:222
-#: src/ubuntu/serverlib.py:223 src/ubuntu/serverlib.py:224
-#: src/ubuntu/serverlib.py:225
+#: src/ubuntu/serverlib.py:213 src/ubuntu/serverlib.py:214
+#: src/ubuntu/serverlib.py:215 src/ubuntu/serverlib.py:216
+#: src/ubuntu/serverlib.py:217
 msgid "Poland"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:226 src/ubuntu/serverlib.py:227
-#: src/ubuntu/serverlib.py:228 src/ubuntu/serverlib.py:229
-#: src/ubuntu/serverlib.py:230 src/ubuntu/serverlib.py:231
-#: src/ubuntu/serverlib.py:232 src/ubuntu/serverlib.py:233
-#: src/ubuntu/serverlib.py:234
+#: src/ubuntu/serverlib.py:218 src/ubuntu/serverlib.py:219
+#: src/ubuntu/serverlib.py:220 src/ubuntu/serverlib.py:221
+#: src/ubuntu/serverlib.py:222 src/ubuntu/serverlib.py:223
+#: src/ubuntu/serverlib.py:224 src/ubuntu/serverlib.py:225
+#: src/ubuntu/serverlib.py:226
 msgid "Portugal"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:235
+#: src/ubuntu/serverlib.py:227
 msgid "Qatar"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:236 src/ubuntu/serverlib.py:237
-#: src/ubuntu/serverlib.py:238 src/ubuntu/serverlib.py:239
-#: src/ubuntu/serverlib.py:240 src/ubuntu/serverlib.py:241
+#: src/ubuntu/serverlib.py:228 src/ubuntu/serverlib.py:229
+#: src/ubuntu/serverlib.py:230 src/ubuntu/serverlib.py:231
+#: src/ubuntu/serverlib.py:232 src/ubuntu/serverlib.py:233
 msgid "Romania"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:242 src/ubuntu/serverlib.py:243
-#: src/ubuntu/serverlib.py:244 src/ubuntu/serverlib.py:245
-#: src/ubuntu/serverlib.py:246 src/ubuntu/serverlib.py:247
-#: src/ubuntu/serverlib.py:248 src/ubuntu/serverlib.py:249
-#: src/ubuntu/serverlib.py:250
+#: src/ubuntu/serverlib.py:234 src/ubuntu/serverlib.py:235
+#: src/ubuntu/serverlib.py:236 src/ubuntu/serverlib.py:237
+#: src/ubuntu/serverlib.py:238 src/ubuntu/serverlib.py:239
+#: src/ubuntu/serverlib.py:240 src/ubuntu/serverlib.py:241
+#: src/ubuntu/serverlib.py:242
 msgid "Russian Federation"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:251
+#: src/ubuntu/serverlib.py:243
 msgid "Saudi Arabia"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:252 src/ubuntu/serverlib.py:253
+#: src/ubuntu/serverlib.py:244 src/ubuntu/serverlib.py:245
 msgid "Serbia"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:246 src/ubuntu/serverlib.py:247
+#: src/ubuntu/serverlib.py:248
+msgid "Singapore"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:249 src/ubuntu/serverlib.py:250
+#: src/ubuntu/serverlib.py:251
+msgid "Slovakia"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:252 src/ubuntu/serverlib.py:253
+msgid "Slovenia"
 msgstr ""
 
 #: src/ubuntu/serverlib.py:254 src/ubuntu/serverlib.py:255
 #: src/ubuntu/serverlib.py:256
-msgid "Singapore"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:257 src/ubuntu/serverlib.py:258
-#: src/ubuntu/serverlib.py:259
-msgid "Slovakia"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:260 src/ubuntu/serverlib.py:261
-msgid "Slovenia"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:262 src/ubuntu/serverlib.py:263
-#: src/ubuntu/serverlib.py:264
 msgid "South Africa"
 msgstr ""
 
+#: src/ubuntu/serverlib.py:257 src/ubuntu/serverlib.py:258
+#: src/ubuntu/serverlib.py:259 src/ubuntu/serverlib.py:260
+#: src/ubuntu/serverlib.py:261 src/ubuntu/serverlib.py:262
+#: src/ubuntu/serverlib.py:263 src/ubuntu/serverlib.py:264
 #: src/ubuntu/serverlib.py:265 src/ubuntu/serverlib.py:266
 #: src/ubuntu/serverlib.py:267 src/ubuntu/serverlib.py:268
-#: src/ubuntu/serverlib.py:269 src/ubuntu/serverlib.py:270
-#: src/ubuntu/serverlib.py:271 src/ubuntu/serverlib.py:272
-#: src/ubuntu/serverlib.py:273 src/ubuntu/serverlib.py:274
-#: src/ubuntu/serverlib.py:275 src/ubuntu/serverlib.py:276
 msgid "Spain"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:277
+#: src/ubuntu/serverlib.py:269
 msgid "Sri Lanka"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:270 src/ubuntu/serverlib.py:271
+#: src/ubuntu/serverlib.py:272 src/ubuntu/serverlib.py:273
+#: src/ubuntu/serverlib.py:274 src/ubuntu/serverlib.py:275
+#: src/ubuntu/serverlib.py:276
+msgid "Sweden"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:277
+msgid "Switzerland"
 msgstr ""
 
 #: src/ubuntu/serverlib.py:278 src/ubuntu/serverlib.py:279
 #: src/ubuntu/serverlib.py:280 src/ubuntu/serverlib.py:281
 #: src/ubuntu/serverlib.py:282 src/ubuntu/serverlib.py:283
-#: src/ubuntu/serverlib.py:284
-msgid "Sweden"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:285
-msgid "Switzerland"
-msgstr ""
-
+#: src/ubuntu/serverlib.py:284 src/ubuntu/serverlib.py:285
 #: src/ubuntu/serverlib.py:286 src/ubuntu/serverlib.py:287
 #: src/ubuntu/serverlib.py:288 src/ubuntu/serverlib.py:289
 #: src/ubuntu/serverlib.py:290 src/ubuntu/serverlib.py:291
-#: src/ubuntu/serverlib.py:292 src/ubuntu/serverlib.py:293
-#: src/ubuntu/serverlib.py:294 src/ubuntu/serverlib.py:295
+#: src/ubuntu/serverlib.py:292 src/ubuntu/serverlib.py:377
+msgid "Taiwan"
+msgstr ""
+
+#: src/ubuntu/serverlib.py:293 src/ubuntu/serverlib.py:294
+#: src/ubuntu/serverlib.py:295
+msgid "Thailand"
+msgstr ""
+
 #: src/ubuntu/serverlib.py:296 src/ubuntu/serverlib.py:297
 #: src/ubuntu/serverlib.py:298 src/ubuntu/serverlib.py:299
-#: src/ubuntu/serverlib.py:300 src/ubuntu/serverlib.py:385
-msgid "Taiwan"
+#: src/ubuntu/serverlib.py:300
+msgid "Turkey"
 msgstr ""
 
 #: src/ubuntu/serverlib.py:301 src/ubuntu/serverlib.py:302
 #: src/ubuntu/serverlib.py:303
-msgid "Thailand"
+msgid "Ukraine"
 msgstr ""
 
 #: src/ubuntu/serverlib.py:304 src/ubuntu/serverlib.py:305
 #: src/ubuntu/serverlib.py:306 src/ubuntu/serverlib.py:307
-#: src/ubuntu/serverlib.py:308
-msgid "Turkey"
-msgstr ""
-
-#: src/ubuntu/serverlib.py:309 src/ubuntu/serverlib.py:310
-#: src/ubuntu/serverlib.py:311
-msgid "Ukraine"
-msgstr ""
-
+#: src/ubuntu/serverlib.py:308 src/ubuntu/serverlib.py:309
+#: src/ubuntu/serverlib.py:310 src/ubuntu/serverlib.py:311
 #: src/ubuntu/serverlib.py:312 src/ubuntu/serverlib.py:313
-#: src/ubuntu/serverlib.py:314 src/ubuntu/serverlib.py:315
-#: src/ubuntu/serverlib.py:316 src/ubuntu/serverlib.py:317
-#: src/ubuntu/serverlib.py:318 src/ubuntu/serverlib.py:319
-#: src/ubuntu/serverlib.py:320 src/ubuntu/serverlib.py:321
-#: src/ubuntu/serverlib.py:322
+#: src/ubuntu/serverlib.py:314
 msgid "United Kingdom"
 msgstr ""
 
+#: src/ubuntu/serverlib.py:315 src/ubuntu/serverlib.py:316
+#: src/ubuntu/serverlib.py:317 src/ubuntu/serverlib.py:318
+#: src/ubuntu/serverlib.py:319 src/ubuntu/serverlib.py:320
+#: src/ubuntu/serverlib.py:321 src/ubuntu/serverlib.py:322
 #: src/ubuntu/serverlib.py:323 src/ubuntu/serverlib.py:324
 #: src/ubuntu/serverlib.py:325 src/ubuntu/serverlib.py:326
 #: src/ubuntu/serverlib.py:327 src/ubuntu/serverlib.py:328
@@ -4698,58 +4692,54 @@ msgstr ""
 #: src/ubuntu/serverlib.py:355 src/ubuntu/serverlib.py:356
 #: src/ubuntu/serverlib.py:357 src/ubuntu/serverlib.py:358
 #: src/ubuntu/serverlib.py:359 src/ubuntu/serverlib.py:360
-#: src/ubuntu/serverlib.py:361 src/ubuntu/serverlib.py:362
-#: src/ubuntu/serverlib.py:363 src/ubuntu/serverlib.py:364
-#: src/ubuntu/serverlib.py:365 src/ubuntu/serverlib.py:366
-#: src/ubuntu/serverlib.py:367 src/ubuntu/serverlib.py:368
 msgid "United States"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:369
+#: src/ubuntu/serverlib.py:361
 msgid "Uzbekistan"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:370
+#: src/ubuntu/serverlib.py:362
 msgid "Viet Nam"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:387
+#: src/ubuntu/serverlib.py:379
 msgid "Peru"
 msgstr ""
 
-#: src/ubuntu/serverlib.py:388
+#: src/ubuntu/serverlib.py:380
 msgid "Ghana"
 msgstr ""
 
-#: src/ubuntu/setting.py:111
+#: src/ubuntu/setting.py:103
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
 msgstr ""
 
-#: src/ubuntu/setting.py:115
+#: src/ubuntu/setting.py:107
 msgid "Context menu screenshot:"
 msgstr ""
 
-#: src/ubuntu/setting.py:123
+#: src/ubuntu/setting.py:115
 msgid "Window screenshot:"
 msgstr ""
 
-#: src/ubuntu/setting.py:146
+#: src/ubuntu/setting.py:138
 msgid "\"Write to Disc...\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:147
+#: src/ubuntu/setting.py:139
 msgid ""
 "When CD/DVD image file is clicked by mouse right button, \n"
 "show a \"Write to Disc...\" menu item.\n"
 "<span color=\"red\">This item conflicts with \"brasero\".</span>"
 msgstr ""
 
-#: src/ubuntu/setting.py:152
+#: src/ubuntu/setting.py:144
 msgid "\"Actions Configuration\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:153
+#: src/ubuntu/setting.py:145
 msgid ""
 "It allows the configuration of programs to be launched \n"
 "on files selected.\n"
@@ -4757,132 +4747,120 @@ msgid ""
 "\"Preferences\" menu.</span>"
 msgstr ""
 
-#: src/ubuntu/setting.py:158
+#: src/ubuntu/setting.py:150
 msgid "\"Repair filename\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:159
+#: src/ubuntu/setting.py:151
 msgid "When any file with wrong encoding filename is right clicked,\n"
 msgstr ""
 
-#: src/ubuntu/setting.py:159
+#: src/ubuntu/setting.py:151
 msgid "show a \"Repair filename\" menu item."
 msgstr ""
 
-#: src/ubuntu/setting.py:162
+#: src/ubuntu/setting.py:154
 msgid "\"Open as administrator\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:163
+#: src/ubuntu/setting.py:155
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 msgstr ""
 
-#: src/ubuntu/setting.py:163
+#: src/ubuntu/setting.py:155
 msgid "Open selected folder with administration privileges."
 msgstr ""
 
-#: src/ubuntu/setting.py:166
+#: src/ubuntu/setting.py:158
 msgid "\"Resize/Rotate images\" entries"
 msgstr ""
 
-#: src/ubuntu/setting.py:167
+#: src/ubuntu/setting.py:159
 msgid "Resize or rotate selected images."
 msgstr ""
 
-#: src/ubuntu/setting.py:170
+#: src/ubuntu/setting.py:162
 msgid "\"Open in terminal\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:171
+#: src/ubuntu/setting.py:163
 msgid "Open a terminal in current folder."
 msgstr ""
 
-#: src/ubuntu/setting.py:174
+#: src/ubuntu/setting.py:166
 msgid "\"Convert audio files\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:175
+#: src/ubuntu/setting.py:167
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
 "<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 msgstr ""
 
-#: src/ubuntu/setting.py:182
+#: src/ubuntu/setting.py:174
 msgid "\"Subversion commands\" entries"
 msgstr ""
 
-#: src/ubuntu/setting.py:188
+#: src/ubuntu/setting.py:180
 msgid "\"Share\" entry for folders"
 msgstr ""
 
-#: src/ubuntu/setting.py:189
+#: src/ubuntu/setting.py:181
 msgid "Share folders by Samba."
 msgstr ""
 
-#: src/ubuntu/setting.py:192
+#: src/ubuntu/setting.py:184
 msgid "\"Set as wallpaper\" entry"
 msgstr ""
 
-#: src/ubuntu/setting.py:275
+#: src/ubuntu/setting.py:267
 msgid "Some operation failed."
 msgstr ""
 
-#: src/ubuntu/setting.py:280
+#: src/ubuntu/setting.py:272
 msgid "All operations succeeded."
 msgstr ""
 
-#: src/ubuntu/setting.py:280
+#: src/ubuntu/setting.py:272
 msgid "The changes will take effect at the next time when GNOME starts up."
 msgstr ""
 
-#: src/ubuntu/setting.py:290
+#: src/ubuntu/setting.py:282
 msgid "Nautilus context menu"
 msgstr ""
 
-#: src/ubuntu/setting.py:294
+#: src/ubuntu/setting.py:286
 msgid "Automatically check for update"
 msgstr ""
 
-#: src/ubuntu/setting.py:296
+#: src/ubuntu/setting.py:288
 msgid "Interval (in days) when to check for update:"
 msgstr ""
 
-#: src/ubuntu/setting.py:302
+#: src/ubuntu/setting.py:294
 msgid "Ubuntu update manager setting"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:35
-msgid "* Find more repositories on http://repogen.simplylinux.ch"
-msgstr ""
-
-#: src/ubuntu/third_party_repos.py:36
-msgid ""
-"This item is an auxiliary item. It will not install anything. It will open "
-"web-page http://repogen.simplylinux.ch/\n"
-"http://repogen.simplylinux.ch/ has collected a lot of useful third party "
-"repositories."
-msgstr ""
-
-#: src/ubuntu/third_party_repos.py:130
+#: src/ubuntu/third_party_repos.py:116
 msgid "<i>Install packages by:</i>"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:131
+#: src/ubuntu/third_party_repos.py:117
 msgid "<i>Web page:</i>"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:132
+#: src/ubuntu/third_party_repos.py:118
 msgid "<i>Source setting:</i>"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:172
+#: src/ubuntu/third_party_repos.py:158
 msgid "Google Chrome, Picasa 2 and Google Desktop"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:174
+#: src/ubuntu/third_party_repos.py:160
 msgid ""
 "This repository contains Google Chrome, Picasa and Google Desktop. Google "
 "Chrome is a web browser. Picasa is an image management application. Google "
@@ -4890,25 +4868,33 @@ msgid ""
 "computer."
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:187
+#: src/ubuntu/third_party_repos.py:173
+msgid "Firefox 3.6 (stable)"
+msgstr ""
+
+#: src/ubuntu/third_party_repos.py:176
+msgid "This repository contains Firefox stable version 3.6."
+msgstr ""
+
+#: src/ubuntu/third_party_repos.py:186
 msgid "Google Picasa 3"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:189
+#: src/ubuntu/third_party_repos.py:188
 msgid "This repository contains Picasa 3."
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:199
+#: src/ubuntu/third_party_repos.py:198
 msgid "PlayOnLinux"
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:201
+#: src/ubuntu/third_party_repos.py:200
 msgid ""
 "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
 "softwares on Linux. "
 msgstr ""
 
-#: src/ubuntu/third_party_repos.py:215
+#: src/ubuntu/third_party_repos.py:214
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux. "
@@ -5086,7 +5072,7 @@ msgstr ""
 msgid ""
 "This repository provides Oracle Database Express Edition.\n"
 "After installation, please add yourself to the \"dba\" group, then run "
-"\"sudo /etc/init.d/oracle-xe configure\". (Thanks Federico.)"
+"\"sudo /etc/init.d/oracle-xe configure\"."
 msgstr ""
 
 #: src/ubuntu/third_party_repos.py:493
@@ -5129,97 +5115,97 @@ msgstr ""
 msgid "Songbird (Latest version)"
 msgstr ""
 
-#: src/ubuntu/tips.py:35
+#: src/ubuntu/tips.py:27
 msgid ""
 "Some skills. For example, \"change Ubuntu logo on panel\"\n"
 "https://help.ubuntu.com/community/QuickTips"
 msgstr ""
 
-#: src/ubuntu/tips.py:39
+#: src/ubuntu/tips.py:31
 msgid ""
 "Set apt source\n"
 "sudo software-properties-gtk\n"
 "sudo software-properties-kde"
 msgstr ""
 
-#: src/ubuntu/tips.py:43
+#: src/ubuntu/tips.py:35
 msgid ""
 "Display the packages which are not installed but have remained residual "
 "config\n"
 "dpkg -l | awk '/^rc/ {print $2}'\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:47
+#: src/ubuntu/tips.py:39
 msgid ""
 "Add a PPA repository:\n"
 "sudo add-apt-repository ppa:PPA-REPOSITORY-NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:51
+#: src/ubuntu/tips.py:43
 msgid ""
 "Display a list of files. The files are installed from a given package.\n"
 "dpkg -L PACKAGE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:55
+#: src/ubuntu/tips.py:47
 msgid ""
 "Display a list of packages. The packages installed a given file.\n"
 "dpkg -S FILE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:59
+#: src/ubuntu/tips.py:51
 msgid ""
 "Display a list of packages. The name of packages matches given regex "
 "pattern.\n"
 "apt-cache search REG_EXPRESSION\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:63
+#: src/ubuntu/tips.py:55
 msgid ""
 "Display a list of packages. The packages provide a given file.\n"
 "apt-file search FILE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:67
+#: src/ubuntu/tips.py:59
 msgid ""
 "Display a list of packages. The given package depends on the list of "
 "packages.\n"
 "apt-cache depends PACKAGE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:71
+#: src/ubuntu/tips.py:63
 msgid ""
 "Display a list of packages. These packages depend on the given package.\n"
 "apt-cache rdepends PACKAGE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:75
+#: src/ubuntu/tips.py:67
 msgid ""
 "Prompt for a disk to be inserted and then add the disc to the source list.\n"
 "sudo apt-cdrom add\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:79
+#: src/ubuntu/tips.py:71
 msgid ""
 "Install the newest versions of all packages currently installed on the "
 "system.\n"
 "sudo apt-get upgrade\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:83
+#: src/ubuntu/tips.py:75
 msgid ""
 "Delete residual package configuration files.\n"
 "dpkg -l | grep ^rc | awk '{print $2}' | sudo xargs dpkg -P\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:87
+#: src/ubuntu/tips.py:79
 msgid ""
 "Automatically install necessary files for './configure ; make ; make "
 "install'\n"
 "sudo auto-apt run ./configure\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:91
+#: src/ubuntu/tips.py:83
 msgid ""
 "Save the list of packages currently installed on your system.\n"
 "dpkg --get-selections | grep -v deinstall > SOME_FILE\n"
@@ -5227,7 +5213,7 @@ msgid ""
 "dpkg --set-selections < SOME_FILE ; sudo dselect\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:97
+#: src/ubuntu/tips.py:89
 msgid ""
 "After running \"sudo apt-get install\", \"*.deb\" files are stored in \"/var/"
 "cache/apt/archives\"\n"
@@ -5235,193 +5221,193 @@ msgid ""
 "sudo apt-get clean\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:102
+#: src/ubuntu/tips.py:94
 msgid ""
 "Display URL for a given package\n"
 "apt-get -qq --print-uris install PACKAGE_NAME\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:106
+#: src/ubuntu/tips.py:98
 msgid ""
 "Display some statistics about the apt cache\n"
 "apt-cache stats\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:110
+#: src/ubuntu/tips.py:102
 msgid ""
 "Display all package name\n"
 "apt-cache pkgnames\n"
 msgstr ""
 
-#: src/ubuntu/tips.py:114
+#: src/ubuntu/tips.py:106
 msgid ""
 "Display some information of a given package\n"
 "apt-cache show PACKAGE_NAME\n"
 "\n"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:65
+#: src/ubuntu/u_apt_recovery.py:55
 msgid "Write comments"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:75
+#: src/ubuntu/u_apt_recovery.py:65
 msgid "Would you like to write some comments for this snapshot?"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:136
+#: src/ubuntu/u_apt_recovery.py:126
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:150
+#: src/ubuntu/u_apt_recovery.py:140
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:161
+#: src/ubuntu/u_apt_recovery.py:151
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:171
+#: src/ubuntu/u_apt_recovery.py:161
 #, python-format
 msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:195
+#: src/ubuntu/u_apt_recovery.py:185
 msgid "Create today's snapshot"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:209
+#: src/ubuntu/u_apt_recovery.py:199
 msgid "Show changes since selected day"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:214
+#: src/ubuntu/u_apt_recovery.py:204
 msgid "packages"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:220
+#: src/ubuntu/u_apt_recovery.py:210
 msgid "changes"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:226
+#: src/ubuntu/u_apt_recovery.py:216
 msgid "It was installed."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:227
+#: src/ubuntu/u_apt_recovery.py:217
 msgid "It was removed."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:246
+#: src/ubuntu/u_apt_recovery.py:236
 msgid "package"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:251
+#: src/ubuntu/u_apt_recovery.py:241
 msgid "action"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:256
+#: src/ubuntu/u_apt_recovery.py:246
 msgid "will be removed"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:257
+#: src/ubuntu/u_apt_recovery.py:247
 msgid "will be installed"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:294
+#: src/ubuntu/u_apt_recovery.py:284
 msgid "To do:"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:298
+#: src/ubuntu/u_apt_recovery.py:288
 msgid ""
 "In order to revoke packages, you can drag items from the left box to the "
 "right box, then click the button. "
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:306
+#: src/ubuntu/u_apt_recovery.py:296
 msgid "Changes:"
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:311
+#: src/ubuntu/u_apt_recovery.py:301
 msgid ""
 "Ailurus helps you keep track of what software you have installed/removed. If "
 "you often try to use new software, you do not have to worry about messing up "
 "your system now."
 msgstr ""
 
-#: src/ubuntu/u_apt_recovery.py:314
+#: src/ubuntu/u_apt_recovery.py:304
 msgid "Existing snapshots are displayed in bold font."
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:41
+#: src/ubuntu/u_fastest_mirror.py:33
 msgid "Search"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:67
+#: src/ubuntu/u_fastest_mirror.py:59
 #, python-format
 msgid "change %(old)s to %(new)s"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:74
+#: src/ubuntu/u_fastest_mirror.py:66
 msgid "Find fastest repository mirror"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:86
+#: src/ubuntu/u_fastest_mirror.py:78
 #, python-format
 msgid "The fastest repository is %s;"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:86
+#: src/ubuntu/u_fastest_mirror.py:78
 #, python-format
 msgid "Its response time is %s millisecond."
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:88
+#: src/ubuntu/u_fastest_mirror.py:80
 msgid ""
 "<span color=\"red\"><big>We have not searched out the fastest repository.</"
 "big></span>"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:92
+#: src/ubuntu/u_fastest_mirror.py:84
 msgid "<span color=\"blue\">The fastest repository is being used.</span>"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:94
+#: src/ubuntu/u_fastest_mirror.py:86
 msgid ""
 "<span color=\"red\"><big>The fastest repository is not being used.</big></"
 "span>"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:98
+#: src/ubuntu/u_fastest_mirror.py:90
 msgid "Currently you are using these repositories:"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:101
+#: src/ubuntu/u_fastest_mirror.py:93
 msgid "(Official repository)"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:102
+#: src/ubuntu/u_fastest_mirror.py:94
 msgid "(Third-party repository)"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:111
+#: src/ubuntu/u_fastest_mirror.py:103
 msgid "There is one configuration file in /etc/apt/sources.list.d/"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:112
+#: src/ubuntu/u_fastest_mirror.py:104
 #, python-format
 msgid "There are %s configuration files in /etc/apt/sources.list.d/"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:115
+#: src/ubuntu/u_fastest_mirror.py:107
 msgid "They are:"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:128
+#: src/ubuntu/u_fastest_mirror.py:120
 msgid "<small>(Click mouse right button to display the context menu.)</small>"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:147
+#: src/ubuntu/u_fastest_mirror.py:139
 msgid ""
 "<b>Backup the configuration of repositories:</b>\n"
 "cd /etc/apt/\n"
@@ -5432,108 +5418,116 @@ msgid ""
 "sudo tar xzf ~/sources.backup.tar.gz"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:167
+#: src/ubuntu/u_fastest_mirror.py:159
 msgid "Backup and restore the configuration of repositories"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:181
+#: src/ubuntu/u_fastest_mirror.py:173
 msgid "Refresh"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:183 src/ubuntu/u_fastest_mirror.py:422
+#: src/ubuntu/u_fastest_mirror.py:175 src/ubuntu/u_fastest_mirror.py:427
 msgid "Detect response time of all repositories"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:185
+#: src/ubuntu/u_fastest_mirror.py:177
 msgid "Use the fastest repository"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:187
+#: src/ubuntu/u_fastest_mirror.py:179
 msgid "Edit repository configuration by text editor"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:189
+#: src/ubuntu/u_fastest_mirror.py:181
 msgid "Edit repository configuration by Synaptic"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:191
+#: src/ubuntu/u_fastest_mirror.py:183
+msgid "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:185
 msgid "How to backup and restore the configuration of repositories?"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:218 src/ubuntu/u_fastest_mirror.py:495
+#: src/ubuntu/u_fastest_mirror.py:213 src/ubuntu/u_fastest_mirror.py:500
 msgid "Click mouse right button to display the context menu."
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:233
+#: src/ubuntu/u_fastest_mirror.py:228
 msgid "No response"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:287
+#: src/ubuntu/u_fastest_mirror.py:282
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:301
+#: src/ubuntu/u_fastest_mirror.py:296
 #, python-format
 msgid "Currently you are using %s."
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:308
+#: src/ubuntu/u_fastest_mirror.py:303
 msgid "Change repository"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:335
+#: src/ubuntu/u_fastest_mirror.py:330
 msgid "Please select one repository only"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:418
+#: src/ubuntu/u_fastest_mirror.py:423
 msgid "Detect response time of selected repositories"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:426
+#: src/ubuntu/u_fastest_mirror.py:431
 msgid "Use selected repositories"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:429
+#: src/ubuntu/u_fastest_mirror.py:434
 msgid "Select all"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:432
+#: src/ubuntu/u_fastest_mirror.py:437
 msgid "Select all repositories in these countries"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:435
+#: src/ubuntu/u_fastest_mirror.py:440
 msgid "Unselect all"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:439
+#: src/ubuntu/u_fastest_mirror.py:444
 msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:458
+#: src/ubuntu/u_fastest_mirror.py:463
 msgid "Country"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:465
+#: src/ubuntu/u_fastest_mirror.py:470
 msgid "Organization"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:483
+#: src/ubuntu/u_fastest_mirror.py:488
 msgid "Response time"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:545
+#: src/ubuntu/u_fastest_mirror.py:550
 msgid "All repositories:"
 msgstr ""
 
-#: src/ubuntu/u_fastest_mirror.py:592
+#: src/ubuntu/u_fastest_mirror.py:631
 msgid ""
 "# Do not edit this file. This is just an example.\n"
 "# The following content can be copy-pasted into /etc/apt/sources.list\n"
 "\n"
+msgstr ""
+
+#: src/ubuntu/u_fastest_mirror.py:688
+msgid "Merge complete"
 msgstr ""
 
 #: src/ubuntu/z_multidragview.py:79
