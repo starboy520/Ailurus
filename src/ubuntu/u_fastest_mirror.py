@@ -549,10 +549,9 @@ class UbuntuFastestMirrorPane(gtk.VBox):
 
     def __save_last_response_time(self):
         try:
-            Dir = os.path.expanduser('~/.ailurus/')
-            if not os.path.exists(Dir): run('mkdir '+Dir)
+            Config.make_config_dir()
             
-            path = os.path.expanduser('~/.ailurus/response_time')
+            path = Config.get_config_dir() + 'response_time'
             with open(path, 'w') as f:
                 for url in self.__response_times:
                     line = [url, str(self.__response_times[url])]
@@ -565,7 +564,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __init_last_response_time(self):
         self.__response_times = {}
         try:
-            path = os.path.expanduser('~/.ailurus/response_time')
+            path = Config.get_config_dir() + 'response_time'
             if not os.path.exists(path): return
             with open(path) as f:
                 lines = f.readlines()

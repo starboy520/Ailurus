@@ -46,10 +46,8 @@ class UbuntuAPTComparePane(gtk.VBox):
         return set1
 
     def __make_dir(self):
-        import os
-        Dir = os.path.expanduser('~/.ailurus/')
-        if not os.path.exists(Dir): run('mkdir '+Dir)
-        return Dir
+        Config.make_config_dir()
+        return Config.get_config_dir()
 
     def __make_snapshot(self, *w):
         #get comment

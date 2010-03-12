@@ -26,6 +26,21 @@ warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
 class Config:
     @classmethod
+    def make_config_dir(cls):
+        import os
+        dir = os.path.expanduser('~/.config/ailurus/')
+        if not os.path.exists(dir): # make directory
+            try:    os.makedirs(dir)
+            except: pass # directory exists
+        if os.stat(dir).st_uid != os.getuid(): # change owner
+            gksudo('chown $USER:$USER "%s"'%dir)
+        if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
+            os.chmod(dir, 0755)
+    @classmethod
+    def get_config_dir(cls):
+        import os
+        return os.path.expanduser('~/.config/ailurus/')
+    @classmethod
     def init(cls):
         assert not hasattr(cls, 'inited')
         cls.inited = True
@@ -33,7 +48,8 @@ class Config:
         import ConfigParser, os
         cls.parser = ConfigParser.RawConfigParser()
         # read configuration file if it exists
-        path = os.path.expanduser('~/.ailurus/conf')
+        cls.make_config_dir()
+        path = cls.get_config_dir() + 'conf'
         if os.path.exists(path):
             cls.parser.read(path)
         # run cls.save when the program terminates
@@ -41,15 +57,9 @@ class Config:
         atexit.register(cls.save)
     @classmethod
     def save(cls):
-        # create configure file directory if it does not exist
-        import os
-        dir = os.path.expanduser('~/.ailurus/') 
-        if not os.path.exists(dir): os.mkdir(dir)
-        # write configure file
-        path = os.path.expanduser('~/.ailurus/conf') 
-        f = open(path, 'w')
-        cls.parser.write(f)
-        f.close()
+        cls.make_config_dir()
+        with open(cls.get_config_dir() + 'conf' , 'w') as f:
+            cls.parser.write(f)
     @classmethod
     def set_string(cls, key, value):
         assert isinstance(key, str) and key
@@ -1509,4 +1519,3 @@ class Tasksel:
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
-        
