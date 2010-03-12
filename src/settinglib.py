@@ -71,6 +71,44 @@ class GConfComboBox(gtk.HBox):
         g = gconf.client_get_default()
         g.set_string(self.key, value)
 
+class GConfEntry(gtk.HBox):
+    def __value_changed(self,*w): #changed
+        self.button.set_sensitive(True)
+        
+    def __button_clicked(self, *w): #clicked
+        self.entry.get_text()
+        value = self.entry.get_text()
+        import gconf
+        g = gconf.client_get_default()
+        g.set_string(self.key, value)
+        self.button.set_sensitive(False)
+        
+    def __init__(self, text, key ,tooltip=''):
+        self.key = key 
+        self.entry = gtk.Entry()
+        self.lable = gtk.Label('%s '%text)
+        
+        if not tooltip:
+            tooltip = _('Gconf key: ') + key
+        else:
+            tooltip += _('\nGconf key: ') + key
+            
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_string(key)
+        if value:
+            self.entry.set_text(value) 
+        
+        self.button = gtk.Button( _('Apply'))
+        self.button.set_sensitive(False)
+        self.entry.connect('changed',self.__value_changed)
+        self.button.connect('clicked',self.__button_clicked)
+        
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(self.lable)
+        self.pack_start(self.entry)
+        self.pack_start(self.button, False)
+
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
         title = _('Choose a file for "%s" ')%self.text
