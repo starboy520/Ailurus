@@ -135,9 +135,9 @@ class AilurusFulgens(dbus.service.Object):
             Dict[k] = v
         return Dict
 
-if __name__ == '__main__':
+def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     AilurusFulgens()
 
     mainloop = gobject.MainLoop()
-    mainloop.run()
+    mainloop.run()    
