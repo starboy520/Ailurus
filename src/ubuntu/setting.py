@@ -42,8 +42,7 @@ def collection_svn_post():
 
 class InstallPackageCheckButton(gtk.CheckButton):
     import gobject
-    __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
-                                ()  ) }
+    __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, () ) }
     def __toggled(self, w):
         if self.installed==False and self.get_active():
             self.label.set_markup("<big>%s</big>"%self.plain_text)
@@ -198,9 +197,9 @@ _('"Set as wallpaper" entry'),],
 
         for msg in self.__get_package_msgs():
             if APT.exist(msg[0]):
-                ipcButton = InstallPackageCheckButton(*msg)
-                ipcButton.connect('changed', self.set_apply_button_state)
-                self.checkbuttons.append( ipcButton )
+                button = InstallPackageCheckButton(*msg)
+                button.connect('changed', self.set_apply_button_state)
+                self.checkbuttons.append( button )
         
         btable = gtk.Table()
         btable.set_col_spacings(10)
@@ -298,6 +297,4 @@ def get():
     try:
         return [__nautilus_menu_setting(), __update_manager_setting() ]
     except:
-        import traceback
-        traceback.print_exc()
         return []

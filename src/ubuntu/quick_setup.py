@@ -81,13 +81,13 @@ class WaitNetworkDialog(gtk.Dialog):
         while not self.skip_checking:
             try:
                 ping('example.com')
-                break;
+                break
             except:
                 import time
                 time.sleep(3)
         self.destroy()
         return
-    
+
     def __skip(self):
         self.skip_checking = True
 
@@ -107,7 +107,7 @@ class WaitNetworkDialog(gtk.Dialog):
         edit_network_connection.connect('clicked', 
                                                                lambda w: KillWhenExit.add('/usr/bin/nm-connection-editor') )
         
-        skip_network_checking = image_stock_button(gtk.STOCK_CONNECT, _('Skip'))
+        skip_network_checking = image_stock_button( gtk.STOCK_CANCEL, _('Skip this step'))
         skip_network_checking.connect('clicked', lambda w: self.__skip())
         
         self.set_border_width(5)

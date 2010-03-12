@@ -180,7 +180,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         mi_edit_by_texteditor.connect('activate', self.__callback__edit_repository_by_text_editor)
         mi_edit_by_synaptic = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by Synaptic'))
         mi_edit_by_synaptic.connect('activate', self.__callback__edit_apt_sources_by_synaptic)
-        mi_merge_sourceslist = image_stock_menuitem(gtk.STOCK_EDIT, _('Merge the files in sources.list.d into sources.list'))
+        mi_merge_sourceslist = gtk.MenuItem(_('Merge the files in sources.list.d into sources.list'))
         mi_merge_sourceslist.connect('activate', self.__callback__merge_sourceslist)
         how_to_backup = image_stock_menuitem(gtk.STOCK_HELP, _('How to backup and restore the configuration of repositories?'))
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
@@ -674,9 +674,8 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
                     contents[-1] += '\n'
                 contents += f.readlines()
         with TempOwn('/etc/apt/sources.list') as o:
-            f = open('/etc/apt/sources.list', 'w')
-            f.writelines(contents)
-            f.close()
+            with open('/etc/apt/sources.list', 'w') as f:
+                f.writelines(contents)
         su('rm /etc/apt/sources.list.d/*')
         notify(_('Merge complete'), ' ')
             

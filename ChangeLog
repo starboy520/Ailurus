@@ -1,3 +1,10 @@
+2009-03-12 CHEN Yangyang <skabyy@gmail.com>
+
+    * Add a feature to merge the files in /etc/apt/sources.list.d/ to /etc/apt/sources.list in the "Find fastest repository mirror" pane.
+    * Add a frame border to the scroll area in the "Find fastest repository mirror" pane.
+    * Add a button to skip the network checking in quick setup dialog.
+    * Change the implementation of nautilus setting using signal.
+
 2009-03-08 Starboy Qi <starboy.qi@gmail.com>
 
     * Add extcalc, a awesome calculator.

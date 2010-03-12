@@ -22,9 +22,6 @@
 import gtk
 import gobject
 
-def _(s):
-    return s
-
 class SearchBox(gtk.HBox):
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
                                 (gobject.TYPE_STRING, gobject.TYPE_STRING)  ) }
