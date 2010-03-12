@@ -78,18 +78,24 @@ def show_scan_installed_package_splash():
 
 class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
-        while True:
+        while not self.skip_checking:
             try:
                 ping('example.com')
-                self.destroy()
-                return
+                break;
             except:
                 import time
                 time.sleep(3)
+        self.destroy()
+        return
+    
+    def __skip(self):
+        self.skip_checking = True
 
     def __init__(self):
         import thread
         thread.start_new_thread(self.__continuously_ping, () )
+        
+        self.skip_checking = False
         
         gtk.Dialog.__init__(self,  _('Computer is not connected to Internet'), None, gtk.DIALOG_NO_SEPARATOR,
                                       (gtk.STOCK_QUIT, gtk.RESPONSE_DELETE_EVENT) )
@@ -101,10 +107,14 @@ class WaitNetworkDialog(gtk.Dialog):
         edit_network_connection.connect('clicked', 
                                                                lambda w: KillWhenExit.add('/usr/bin/nm-connection-editor') )
         
+        skip_network_checking = image_stock_button(gtk.STOCK_CONNECT, _('Skip'))
+        skip_network_checking.connect('clicked', lambda w: self.__skip())
+        
         self.set_border_width(5)
         self.vbox.pack_start(label, False, False, 10)
         self.vbox.show_all()
         self.action_area.pack_end(edit_network_connection, False)
+        self.action_area.pack_end(skip_network_checking, False)
         self.action_area.show_all()
 
 class FastestRepositoryDialog(gtk.Dialog):

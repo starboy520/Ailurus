@@ -22,6 +22,9 @@
 import gtk
 import gobject
 
+def _(s):
+    return s
+
 class SearchBox(gtk.HBox):
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
                                 (gobject.TYPE_STRING, gobject.TYPE_STRING)  ) }
@@ -59,3 +62,17 @@ class SearchBox(gtk.HBox):
         return False
     def __clear_entry(self, widget):
         self.__entry.set_text('')
+
+if __name__ == '__main__':
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+    vbox = gtk.VBox(False, 0)
+    button = SearchBox()
+    vbox.pack_start(button)
+    window.add(vbox)
+    window.show_all()
+    gtk.gdk.threads_init()
+    gtk.gdk.threads_enter()
+    gtk.main()
+    gtk.gdk.threads_leave()
+    sys.exit()
+    

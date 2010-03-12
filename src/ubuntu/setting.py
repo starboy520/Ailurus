@@ -41,20 +41,21 @@ def collection_svn_post():
     run('nautilus-script-manager enable Subversion')
 
 class InstallPackageCheckButton(gtk.CheckButton):
+    import gobject
+    __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
+                                ()  ) }
     def __toggled(self, w):
         if self.installed==False and self.get_active():
             self.label.set_markup("<big>%s</big>"%self.plain_text)
         elif self.installed and not self.get_active():
             self.label.set_markup("<s>%s</s>"%self.plain_text)
         else:
-            self.label.set_markup(self.plain_text) 
-        self.__container.set_apply_button_state()
+            self.label.set_markup(self.plain_text)
+        self.emit('changed')
 
-    def __init__(self, container, apt_package_name, 
+    def __init__(self, apt_package_name, 
              plain_text, tooltip=None, pre_install = None, post_install = None):
         gtk.CheckButton.__init__(self)
-        assert isinstance(container, gtk.Container)
-        self.__container = container
         assert isinstance(apt_package_name, str)
         self.apt_package_name = apt_package_name
         assert isinstance(plain_text, (str,unicode))
@@ -187,8 +188,6 @@ _('"Set as wallpaper" entry'),],
     def __init__(self):
         gtk.VBox.__init__(self, False, 5)
         
-        self.changed = 0
-
         self.button_apply = button_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
         button_apply.connect('clicked', self.__apply_change)
         button_apply.set_sensitive(False)
@@ -199,7 +198,9 @@ _('"Set as wallpaper" entry'),],
 
         for msg in self.__get_package_msgs():
             if APT.exist(msg[0]):
-                self.checkbuttons.append( InstallPackageCheckButton(self, *msg) )
+                ipcButton = InstallPackageCheckButton(*msg)
+                ipcButton.connect('changed', self.set_apply_button_state)
+                self.checkbuttons.append( ipcButton )
         
         btable = gtk.Table()
         btable.set_col_spacings(10)
@@ -212,7 +213,7 @@ _('"Set as wallpaper" entry'),],
 
         self.pack_start(btable, False)
 
-    def set_apply_button_state(self):
+    def set_apply_button_state(self, *w):
         self.button_apply.set_sensitive(False)
         for button in self.checkbuttons:
             if button.installed != button.get_active():
@@ -297,4 +298,6 @@ def get():
     try:
         return [__nautilus_menu_setting(), __update_manager_setting() ]
     except:
+        import traceback
+        traceback.print_exc()
         return []
