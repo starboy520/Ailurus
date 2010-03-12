@@ -1,3 +1,9 @@
+2009-03-12 Homer Xing <homer.xing@gmail.com>
+
+    * Use socket instead of ping for detecting server speed.
+    * Improve efficiency of server speed detection.
+    * Use ~/.config/.ailurus instead of ~/.ailurus .
+
 2009-03-12 CHEN Yangyang <skabyy@gmail.com>
 
     * Add a feature to merge the files in /etc/apt/sources.list.d/ to /etc/apt/sources.list in the "Find fastest repository mirror" pane.

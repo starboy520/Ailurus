@@ -897,6 +897,20 @@ def ping ( host ):
     else :
         raise RuntimeError('Return status=%s'%status, output)
 
+def get_response_time(url):
+    is_string_not_empty(url)
+
+    import urllib2
+    import time
+    import sys
+    begin = time.time()
+    if sys.version_info>(2,5): # for python 2.6+
+        urllib2.urlopen(url, timeout=3)
+    else: # for python 2.5
+        urllib2.urlopen(url) # FIXME: no timeout!
+    end = time.time()
+    return (end - begin) * 1000 # in milliseconds
+
 def derive_size(size):
     if not ( isinstance(size, int) or isinstance(size, long) ): raise TypeError
     if not size>=0: raise ValueError
@@ -1099,21 +1113,21 @@ def parse_maintainer(string):
 
 import threading
 class PingThread(threading.Thread):
-    def __init__(self, server, result, lock=None):
+    def __init__(self, url, server, result):
+        is_string_not_empty(url)
+        is_string_not_empty(server)
+        assert isinstance(result, list)
+        
         threading.Thread.__init__(self)
+        self.url = url
         self.server = server
         self.result = result
     def run(self):
         try:
-            time = ping(self.server)
+            time = get_response_time(self.url)
             self.result.append([self.server, time])
-        except (TypeError, ValueError, CommandFailError, RuntimeError):
-            self.result.append([self.server, 'cannot ping'])
-            #traceback.print_exc(file=sys.stderr)
-        except HostUnreachable:
-            self.result.append([self.server, 'unreachable'])
         except:
-            traceback.print_exc(file=sys.stderr)
+            self.result.append([self.server, 'unreachable'])
 
 def open_web_page(page):
     is_string_not_empty(page)
@@ -1261,7 +1275,7 @@ class R:
             if server in cls.pingtime_cache:
                 Time = cls.pingtime_cache[server]
             else:
-                Time = ping(server)
+                Time = get_response_time(url)
                 print _('Response time of server %(name)s is %(time).1f ms.') % {'name':server, 'time':Time}
         except (TypeError, ValueError, CommandFailError, RuntimeError, HostUnreachable):
             print _('Server %s does not respond.')%server

@@ -334,7 +334,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             URL = model.get_value(iter, 2)
             self.__use_repository(URL)
     
-    def __detect_servers_speed(self, servers):
+    def __detect_servers_speed(self, urls, servers):
+        assert len(urls) == len(servers)
+        assert isinstance(urls, list)
+        assert isinstance(servers, list)
+        
         import threading
         result = []
         total = len(servers)
@@ -344,11 +348,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.set_sensitive(False)
         progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
 
-        for server in servers:
-            while len([t for t in threads if t.isAlive()])>3:
+        for url,server in zip(urls,servers):
+            while len([t for t in threads if t.isAlive()])>10:
                 import time
                 time.sleep(0.1)
-            thread = PingThread(server, result)
+            thread = PingThread(url, server, result)
             threads.append( thread )
             thread.start()
             self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
@@ -366,10 +370,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
 
     def __callback__detect_all_repos_speed(self, w):
         servers = []
+        urls = []
         for row in self.candidate_store:
-            server = row[3]
-            servers.append(server)
-        self.__detect_servers_speed(servers)
+            urls.append(row[2]) 
+            servers.append(row[3])
+        self.__detect_servers_speed(urls, servers)
 
     def __callback__detect_selected_repos_speed(self, w, treeview):
         selection = treeview.get_selection()
@@ -378,11 +383,14 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             return
         
         servers = []
+        urls = []
         for path in pathlist:
             iter = model.get_iter(path)
             server = model.get_value(iter, 3)
+            url = model.get_value(iter, 2)
             servers.append(server)
-        self.__detect_servers_speed(servers)
+            urls.append(url)
+        self.__detect_servers_speed(urls, servers)
         
     def __update_candidate_store_with_ping_result(self, result):
         for i in result:

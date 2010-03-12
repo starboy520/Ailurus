@@ -80,13 +80,12 @@ class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
         while not self.skip_checking:
             try:
-                ping('example.com')
+                get_response_time('http://example.com')
                 break
             except:
                 import time
                 time.sleep(3)
         self.destroy()
-        return
 
     def __skip(self):
         self.skip_checking = True
@@ -167,13 +166,14 @@ class FastestRepositoryDialog(gtk.Dialog):
         threads = []
         candidate_repos = get_candidate_repositories()
         servers = [ e[3] for e in candidate_repos ]
+        urls = [ e[2] for e in candidate_repos ]
         #PING servers
-        for server in servers:
-            while len([t for t in threads if t.isAlive()])>4: 
+        for url,server in zip(urls,servers):
+            while len([t for t in threads if t.isAlive()])>10: 
                 import time
                 time.sleep(0.1)
                 show_result()
-            thread = PingThread(server, result, lock)
+            thread = PingThread(url, server, result)
             threads.append( thread )
             thread.start()
         for thread in threads:
@@ -396,7 +396,7 @@ def quick_setup():
     #check network connections
     window = show_check_network_splash()
     try:
-        try:     ping('example.com')
+        try:     get_response_time('http://example.com')
         finally: window.destroy()
     except:
         dialog = WaitNetworkDialog()
