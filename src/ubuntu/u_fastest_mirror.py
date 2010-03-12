@@ -180,6 +180,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         mi_edit_by_texteditor.connect('activate', self.__callback__edit_repository_by_text_editor)
         mi_edit_by_synaptic = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by Synaptic'))
         mi_edit_by_synaptic.connect('activate', self.__callback__edit_apt_sources_by_synaptic)
+        mi_merge_sourceslist = image_stock_menuitem(gtk.STOCK_EDIT, _('Merge the files in sources.list.d into sources.list'))
+        mi_merge_sourceslist.connect('activate', self.__callback__merge_sourceslist)
         how_to_backup = image_stock_menuitem(gtk.STOCK_HELP, _('How to backup and restore the configuration of repositories?'))
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
@@ -193,6 +195,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         import os
         if os.path.exists('/usr/bin/software-properties-gtk') or os.path.exists('/usr/bin/software-properties-kde'):
             menu.append(mi_edit_by_synaptic)
+        menu.append(mi_merge_sourceslist)
         menu.append(gtk.SeparatorMenuItem())
         menu.append(how_to_backup)
         menu.show_all()
@@ -206,7 +209,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_border_width(5)
         scroll.add_with_viewport(label_state)
-        scroll.get_child().set_shadow_type(gtk.SHADOW_NONE)
+        scroll.get_child().set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_tooltip_text(_('Click mouse right button to display the context menu.'))
         popupmenu = self.__get_popupmenu_for_state_box()
         def button_press_event(w, event):
@@ -662,6 +665,21 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
             raise Exception
         
         su_spawn(launcher)
+    
+    def __callback__merge_sourceslist(self, *w):
+        contents = []
+        for filename in APTSource.apt_source_files_list():
+            with open(filename) as f:
+                if len(contents) and not contents[-1].endswith('\n'):
+                    contents[-1] += '\n'
+                contents += f.readlines()
+        with TempOwn('/etc/apt/sources.list') as o:
+            f = open('/etc/apt/sources.list', 'w')
+            f.writelines(contents)
+            f.close()
+        su('rm /etc/apt/sources.list.d/*')
+        notify(_('Merge complete'), ' ')
+            
         
 if __name__ == '__main__':
     class Dummy:

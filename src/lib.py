@@ -397,6 +397,10 @@ def gksudo(cmd, ignore_error=False):
     else:
         run(cmd, ignore_error)
 
+def is_string_not_empty(string):
+    if type(string)!=str and type(string)!=unicode: raise TypeError(string)
+    if string=='': raise ValueError
+
 def get_output(cmd, ignore_error=False):
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
@@ -414,10 +418,6 @@ def get_output(cmd, ignore_error=False):
 #        time.sleep(60)
 #        if os.system('sudo -v'):
 #            raise CommandFailError, 'sudo -v'
-
-def is_string_not_empty(string):
-    if type(string)!=str and type(string)!=unicode: raise TypeError(string)
-    if string=='': raise ValueError
 
 class TempOwn:
     def __init__(self,path):
