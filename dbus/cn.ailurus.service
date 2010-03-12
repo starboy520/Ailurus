@@ -1,4 +1,4 @@
 [D-BUS Service]
 Name=cn.ailurus
-Exec=/usr/bin/python /usr/share/ailurus/ailurus.dbus.py
+Exec=/usr/bin/ailurus-daemon
 User=root

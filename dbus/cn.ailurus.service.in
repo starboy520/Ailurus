@@ -1,4 +1,0 @@
-[D-BUS Service]
-Name=cn.ailurus
-Exec=/usr/bin/python @DATADIR@/@PACKAGE@/ailurus.dbus.py
-User=root
