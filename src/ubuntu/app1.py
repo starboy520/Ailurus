@@ -352,7 +352,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
         else:
             return True
 class CPUS(_apt_install):
-    __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
+    __doc__ = _('Enable "Print to pdf" capability')
     detail = _('Command:sudo apt-get install cpus-pdf')
     size = 256 * 1000
     time = 4
