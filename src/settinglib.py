@@ -70,7 +70,7 @@ class GConfComboBox(gtk.HBox):
         import gconf
         g = gconf.client_get_default()
         g.set_string(self.key, value)
-
+        
 class GConfEntry(gtk.HBox):
     def __value_changed(self,*w): 
         self.button.set_sensitive(True)
@@ -78,8 +78,8 @@ class GConfEntry(gtk.HBox):
     def __button_clicked(self, *w):
         self.entry.get_text()
         value = self.entry.get_text()
-#        if not value:
-#            value = self.default
+        if not value:
+            value = self.default
         import gconf
         g = gconf.client_get_default()
         g.set_string(self.key, value)

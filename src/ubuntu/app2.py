@@ -303,68 +303,29 @@ class VirtualBox:
     manual = True
     logo = 'virtualbox.png'
     def install(self):
-        if not APT.installed('build-essential'):
-            print _(' "build-essential" is required. It is to be installed.')
-            APT.install('build-essential')
-
-        if Config.get_Ubuntu_version()=='hardy':
-            if get_arch()==32:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_hardy_i386.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_hardy_i386.deb'],
-57410500, '1282703ec6bcdd0b12c3eb277bb538b0da0ece04').download()
-
-            else:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_hardy_amd64.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_hardy_amd64.deb'],
-55999400, 'be76c44208b0ea98f2bd552d78ee2ef99e01cf85').download()
-        
-        elif Config.get_Ubuntu_version()=='intrepid':
-            if get_arch()==32:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_intrepid_i386.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_intrepid_i386.deb'],
-44069530, '6fefafb7df8bd2d81d7f631484fc9676cb8a411e').download()
-
-            else:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_intrepid_amd64.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_intrepid_amd64.deb'],
-44565230, 'ce6a68cb6a0fe0cbe95eb86020a816cae7f55dd0').download()
-
-        elif Config.get_Ubuntu_version()=='jaunty':
-            if get_arch()==32:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_jaunty_i386.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_jaunty_i386.deb'],
-44074176, '5022b94456e24b6e099b366addd8e56bcfc6a261').download()
-
-            else:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_jaunty_amd64.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_jaunty_amd64.deb'],
-44562882, '4be3170ad1a29445d4f57071e08c14a5aeaa3c8e').download()
-
-        elif Config.get_Ubuntu_version()=='karmic':
-            if get_arch()==32:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_karmic_i386.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_karmic_i386.deb'],
-43774454, '5a965a387806edacdbedd20347b9cf7b85ea62b4').download()
-
-            else:
-                f=R(
-['http://tdt.sjtu.edu.cn/S/Virtualbox/virtualbox-3.0_3.0.12-54655_Ubuntu_karmic_amd64.deb',
-'http://download.virtualbox.org/virtualbox/3.0.12/virtualbox-3.0_3.0.12-54655_Ubuntu_karmic_amd64.deb'],
-43893164, '02b133a37c906b57ebe8c8176a3388c6ff272929').download()
-
-        gksudo('gdebi-gtk %s'%f)        # do not use gdebi !
-        APT.cache_changed()
+        from third_party_repos import Repo_VirtualBox
+        vbox_obj = Repo_VirtualBox()
+        if not vbox_obj.installed():
+            vbox_obj.install()
+        APT.apt_get_update()
+        APT.install('virtualbox-3.1')
     def installed(self):
-        return APT.installed('virtualbox-3.0')
+        if APT.installed('virtualbox-3.1'):
+            return True
+        elif APT.installed('virtualbox-3.0'):
+            return True
+        elif APT.installed('virtualbox-2.2'):
+            return True
+        elif APT.installed('virtualbox-2.0'):
+            return True
+        elif APT.installed('virtualbox'):
+            return True
+        else:
+            return False
     def remove(self):
-        APT.remove('virtualbox-3.0')
+        for e in ['virtualbox-3.1','virtualbox-3.0','virtualbox-2.2','virtualbox-2.0','virtualbox']:
+            if APT.installed(e):
+                APT.remove(e)
 
 class GNOMEArtNextGen:
     __doc__ = _('GNOMEArtNG')

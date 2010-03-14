@@ -88,7 +88,15 @@ class TipOfTheDay(gtk.Dialog):
         previous_tip = gtk.Button( stock = gtk.STOCK_GO_BACK )
         previous_tip.get_child().get_child().get_children()[1].set_text_with_mnemonic( _('_Previous tip') )
         previous_tip.connect ( 'clicked', self.__previous_tip, content )
-
+        
+        submit_skills = gtk.Button( _('Submit Linux Skills'))
+        
+        def go_to_web(w):
+            report_bug()
+        submit_skills.connect('clicked',go_to_web)
+        sbox = gtk.HBox(False,10)
+        sbox.pack_start(submit_skills,True,False)
+        
         hbox = gtk.HBox(False, 10)
         hbox.pack_end(close_button, False, False)
         hbox.pack_end(next_tip, False, False)
@@ -98,6 +106,7 @@ class TipOfTheDay(gtk.Dialog):
         box.pack_start ( titlebox, False )
         box.pack_start ( scroll_content, False )
         box.pack_start ( hbox, False )
+        box.pack_start ( sbox, False)
         box.show_all()
 
         self.vbox.pack_start(box)
