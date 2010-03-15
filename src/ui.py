@@ -40,19 +40,19 @@ class MainView:
         item_pane_name = gtk.ToolItem()
         item_pane_name.add(panel_name)
 
-        self.toolbar_item_back = item_b_back = image_toolitem('../data/other_icons/toolbar_back.png', self.back_one_pane, tooltip=_('Go back one panel') )
-        self.toolbar_item_forward = item_b_forward = image_toolitem('../data/other_icons/toolbar_forward.png', self.forward_one_pane, tooltip=_('Go forward one panel') )
+        self.toolbar_item_back = item_b_back = image_toolitem(D+'other_icons/toolbar_back.png', self.back_one_pane, tooltip=_('Go back one panel') )
+        self.toolbar_item_forward = item_b_forward = image_toolitem(D+'other_icons/toolbar_forward.png', self.forward_one_pane, tooltip=_('Go forward one panel') )
         def enable_cb(w):
             self.disable_current_pane(False)
             self.__reset_enable_disable_buttons_state()
         def disable_cb(w):
             self.disable_current_pane(True)
             self.__reset_enable_disable_buttons_state()
-        self.toolbar_item_enable = item_enable_current = image_toolitem('../data/other_icons/toolbar_enable.png', enable_cb, tooltip=_('Enable current pane') ) 
-        self.toolbar_item_disable = item_disable_current = image_toolitem('../data/other_icons/toolbar_disable.png', disable_cb, tooltip=_('Disable current pane') )
-        item_show_day_tip = image_toolitem('../data/other_icons/toolbar_study.png', self.show_day_tip, tooltip=_('Display "Tip of the day"') )
-        item_propose_suggestion = image_toolitem('../data/umut_icons/m_propose_suggestion.png', lambda *w: report_bug(), tooltip=_('Propose suggestion and report bugs') )
-        item_quit = image_toolitem('../data/other_icons/toolbar_quit.png', self.terminate_program, tooltip=_("Quit") )
+        self.toolbar_item_enable = item_enable_current = image_toolitem(D+'other_icons/toolbar_enable.png', enable_cb, tooltip=_('Enable current pane') ) 
+        self.toolbar_item_disable = item_disable_current = image_toolitem(D+'other_icons/toolbar_disable.png', disable_cb, tooltip=_('Disable current pane') )
+        item_show_day_tip = image_toolitem(D+'other_icons/toolbar_study.png', self.show_day_tip, tooltip=_('Display "Tip of the day"') )
+        item_propose_suggestion = image_toolitem(D+'umut_icons/m_propose_suggestion.png', lambda *w: report_bug(), tooltip=_('Propose suggestion and report bugs') )
+        item_quit = image_toolitem(D+'other_icons/toolbar_quit.png', self.terminate_program, tooltip=_("Quit") )
 
         toolbar = gtk.Toolbar()
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
@@ -70,13 +70,13 @@ class MainView:
 
     def add_more_buttons_in_toolbar(self):
         List = [
-            ('HardwareInfoPane', '../data/umut_icons/m_hardware.png', _('Hardware information'), ),
-            ('LinuxInfoPane', '../data/umut_icons/m_linux.png', _('Linux information'), ),
-            ('SystemSettingPane', '../data/umut_icons/m_linux_setting.png', _('System settings'), ),
-            ('InstallRemovePane', '../data/umut_icons/m_install_remove.png', _('Install/Remove'), ),
-            ('OfflineInstallPane', '../data/umut_icons/m_cache_files.png', _('Cache installation files'), ),
-            ('UbuntuFastestMirrorPane', '../data/umut_icons/m_fastest_repos.png', _('Find fast repository mirror'), ),
-            ('UbuntuAPTComparePane', '../data/umut_icons/m_apt_recovery.png', _('APT recovery'), ),
+            ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware information'), ),
+            ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux information'), ),
+            ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System settings'), ),
+            ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install/Remove'), ),
+            ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache installation files'), ),
+            ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Find fast repository mirror'), ),
+            ('UbuntuAPTComparePane', D+'umut_icons/m_apt_recovery.png', _('APT recovery'), ),
                      ]
         List.reverse()
         for name, icon, tooltip in List:
@@ -267,7 +267,7 @@ def change_task_name():
     libc = ctypes.CDLL('libc.so.6')
     libc.prctl(15, 'ailurus', 0, 0, 0)
 def set_default_window_icon():
-    gtk.window_set_default_icon_from_file('../data/suyun_icons/default.png')
+    gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
 
 detect_running_instances()
 change_task_name()
@@ -405,9 +405,9 @@ def exception_happened(etype, value, tb):
 
     title_box = gtk.HBox(False, 5)
     import os
-    if os.path.exists('../data/umut_icons/bug.png'):
+    if os.path.exists(D+'umut_icons/bug.png'):
         image = gtk.Image()
-        image.set_from_file('../data/umut_icons/bug.png')
+        image.set_from_file(D+'umut_icons/bug.png')
         title_box.pack_start(image, False)
     title = label_left_align( _('A bug appears. Would you please tell Ailurus developers? Thank you!') )
     title_box.pack_start(title, False)

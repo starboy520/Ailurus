@@ -28,7 +28,7 @@ from ulib import *
 def show_about_dialog(*w): # called by __help
     gtk.about_dialog_set_url_hook( lambda dialog, link: 1 )
     about = gtk.AboutDialog()
-    about.set_logo(gtk.gdk.pixbuf_new_from_file('../data/suyun_icons/logo.png'))
+    about.set_logo(gtk.gdk.pixbuf_new_from_file(D+'suyun_icons/logo.png'))
     about.set_name('Ailurus')
     from z_locale import VERSION
     about.set_version(VERSION)
@@ -229,7 +229,7 @@ def check_update(*w):
             label = gtk.Label( _('You have already installed the latest Ailurus version. :)') )
             vbox.pack_start(label)
         image = gtk.Image()
-        image.set_from_file('../data/suyun_icons/update.png')
+        image.set_from_file(D+'suyun_icons/update.png')
         hbox = gtk.HBox(False, 5)
         hbox.pack_start(image, False)
         hbox.pack_start(vbox, False)
@@ -253,21 +253,21 @@ def __navigate(main_view):
     return [ back, forward, quit ]
 
 def __info(main_view):
-    hardware = image_file_menuitem(_('Hardware information'), '../data/umut_icons/m_hardware.png', 16, 3)
+    hardware = image_file_menuitem(_('Hardware information'), D+'umut_icons/m_hardware.png', 16, 3)
     hardware.connect_object('activate', main_view.activate_pane, 'HardwareInfoPane')
-    linux = image_file_menuitem(_('Linux information'), '../data/umut_icons/m_linux.png', 16, 3)
+    linux = image_file_menuitem(_('Linux information'), D+'umut_icons/m_linux.png', 16, 3)
     linux.connect_object('activate', main_view.activate_pane, 'LinuxInfoPane')
     return [ hardware, linux ]
 
 def __setting(main_view):
-    system_settings = image_file_menuitem(_('System settings'), '../data/umut_icons/m_linux_setting.png', 16, 3)
+    system_settings = image_file_menuitem(_('System settings'), D+'umut_icons/m_linux_setting.png', 16, 3)
     system_settings.connect_object('activate', main_view.activate_pane, 'SystemSettingPane')
     return [ system_settings ]
 
 def __apps(main_view):
-    install_remove = image_file_menuitem(_('Install/Remove'), '../data/umut_icons/m_install_remove.png', 16, 3)
+    install_remove = image_file_menuitem(_('Install/Remove'), D+'umut_icons/m_install_remove.png', 16, 3)
     install_remove.connect_object('activate', main_view.activate_pane, 'InstallRemovePane')
-    offline = image_file_menuitem(_('Cache installation files'), '../data/umut_icons/m_cache_files.png', 16, 3)
+    offline = image_file_menuitem(_('Cache installation files'), D+'umut_icons/m_cache_files.png', 16, 3)
     offline.connect_object('activate', main_view.activate_pane, 'OfflineInstallPane')
     return [ install_remove, offline ]
 
@@ -295,7 +295,7 @@ def __learning(main_view):
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), '../data/umut_icons/m_tip_of_the_day.png', 16, 3) 
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3) 
     study_show_tip.connect('activate', main_view.show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
@@ -407,10 +407,10 @@ def __help(main_view):
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
     
-    help_update = image_file_menuitem(_('Check for updates'), '../data/suyun_icons/m_check_update.png', 16, 3) 
+    help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16, 3) 
     help_update.connect('activate', check_update)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), '../data/umut_icons/m_propose_suggestion.png', 16, 3) 
+    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16, 3) 
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
@@ -418,7 +418,7 @@ def __help(main_view):
     help_translate.connect('activate', 
         lambda w: open_web_page('https://translations.launchpad.net/ailurus/trunk' ) )
     
-    help_get_new = image_file_menuitem(_('Get daily-build version (more features but more bugs)'), '../data/umut_icons/m_get_daily_build_version.png', 16, 3) 
+    help_get_new = image_file_menuitem(_('Get daily-build version (more features but more bugs)'), D+'umut_icons/m_get_daily_build_version.png', 16, 3) 
     help_get_new.connect('activate',
         lambda w: open_web_page('http://code.google.com/p/ailurus/downloads/list' ) )
     

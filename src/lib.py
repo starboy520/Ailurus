@@ -21,6 +21,8 @@
 
 from __future__ import with_statement
 
+D = '/usr/share/ailurus/data/'
+
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
@@ -446,7 +448,7 @@ def notify(title, content):
     try:
         import pynotify, os
         from z_locale import DATADIR
-        icon = DATADIR+'/ailurus/data/suyun_icons/notify-icon.png'
+        icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
         n.show()
     except:

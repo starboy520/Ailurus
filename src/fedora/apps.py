@@ -428,7 +428,7 @@ class Enable_Sudo:
     def installed(self):
         return False
     def install(self):
-        su('python ../data/files/enable_sudo.py')
+        su(D+'files/enable_sudo.py')
     def remove(self):
         pass
 
@@ -437,7 +437,7 @@ class Disable_Sudo:
     def installed(self):
         return False
     def install(self):
-        su('python ../data/files/disable_sudo.py')
+        su(D+'files/disable_sudo.py')
     def remove(self):
         pass
 

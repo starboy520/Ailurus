@@ -26,12 +26,12 @@ from lib import *
 from ulib import *
 
 def __repository(main_view):
-    fastest_mirror = image_file_menuitem(_('Find fast repository mirror'), '../data/umut_icons/m_fastest_repos.png', 16, 3)
+    fastest_mirror = image_file_menuitem(_('Find fast repository mirror'), D+'umut_icons/m_fastest_repos.png', 16, 3)
     fastest_mirror.connect_object('activate', main_view.activate_pane, 'UbuntuFastestMirrorPane')
     return [ fastest_mirror ]
 
 def __recovery(main_view):
-    apt_recovery = image_file_menuitem( _('APT recovery'), '../data/umut_icons/m_apt_recovery.png', 16, 3)
+    apt_recovery = image_file_menuitem( _('APT recovery'), D+'umut_icons/m_apt_recovery.png', 16, 3)
     apt_recovery.connect_object('activate', main_view.activate_pane, 'UbuntuAPTComparePane')
     return [ apt_recovery ]
 

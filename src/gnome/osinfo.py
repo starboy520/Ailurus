@@ -24,7 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 def get():
@@ -42,11 +42,11 @@ def get():
                     micro = re.search('<micro>(.+)</micro>', line).group(1)
                     break
         string = "%s.%s.%s" % (platform, minor, micro)
-        ret.append( row(_('GNOME version:'), string, '../data/umut_icons/i_gnome.png' ) )
+        ret.append( row(_('GNOME version:'), string, D+'umut_icons/i_gnome.png' ) )
     except:
         traceback.print_exc(file=sys.stderr)
         
-    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], '../data/umut_icons/i_locale.png' ) )
+    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], D+'umut_icons/i_locale.png' ) )
     except: traceback.print_exc(file=sys.stderr)
 
     return ret

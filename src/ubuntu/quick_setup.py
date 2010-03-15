@@ -31,7 +31,7 @@ class WelcomeDialog(gtk.Dialog):
                                        (gtk.STOCK_CANCEL, gtk.RESPONSE_DELETE_EVENT, 
                                         gtk.STOCK_OK, gtk.RESPONSE_OK) )
         image = gtk.Image()
-        image.set_from_file('../data/suyun_icons/default.png')
+        image.set_from_file(D+'suyun_icons/default.png')
         label = gtk.Label( _('Ailurus will help you\n' 
                              '* Choose the fastest repository\n'
                              '* Install :\n'
@@ -348,10 +348,10 @@ class DoStuffDialog(gtk.Dialog):
                 import traceback
                 traceback.print_exc()
 
-        self.pixbuf_fail = gtk.gdk.pixbuf_new_from_file_at_size('../data/other_icons/fail.png', 16, 16)
-        self.pixbuf_blank = gtk.gdk.pixbuf_new_from_file_at_size('../data/other_icons/blank.png', 16, 16)
-        self.pixbuf_started = gtk.gdk.pixbuf_new_from_file_at_size('../data/other_icons/started.png', 16, 16)
-        self.pixbuf_done = gtk.gdk.pixbuf_new_from_file_at_size('../data/other_icons/done.png', 16, 16)
+        self.pixbuf_fail = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/fail.png', 16, 16)
+        self.pixbuf_blank = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/blank.png', 16, 16)
+        self.pixbuf_started = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/started.png', 16, 16)
+        self.pixbuf_done = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/done.png', 16, 16)
 
         render_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
@@ -422,7 +422,7 @@ def quick_setup():
     dialog.run()
 
 if __name__ == '__main__':
-    gtk.window_set_default_icon_from_file('../data/suyun_icons/default.png')
+    gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
     import os
     gtk.gdk.threads_init()
     sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)

@@ -24,7 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 def __read(path):
@@ -38,21 +38,21 @@ def __bios():
     try:
         ret.append( row(_('BIOS vendor:'), 
              __read('/sys/devices/virtual/dmi/id/bios_vendor'), 
-             '../data/umut_icons/i_bios.png') )
+             D+'umut_icons/i_bios.png') )
     except:
         print >>sys.stderr, 'No such file: bios_vendor'
 
     try:
         ret.append( row(_('BIOS version:'), 
              __read('/sys/devices/virtual/dmi/id/bios_version'), 
-             '../data/umut_icons/i_bios.png') )
+             D+'umut_icons/i_bios.png') )
     except:
         print >>sys.stderr, 'No such file: bios_version'
         
     try:
         ret.append( row(_('BIOS release date:'), 
              __read('/sys/devices/virtual/dmi/id/bios_date'), 
-             '../data/umut_icons/i_bios.png') )
+             D+'umut_icons/i_bios.png') )
     except:
         print >>sys.stderr, 'No such file: bios_date'
     
@@ -63,7 +63,7 @@ def __motherboard():
     try:
         ret.append( row(_('Motherboard name:'), 
              __read('/sys/devices/virtual/dmi/id/board_name'), 
-             '../data/umut_icons/i_motherboard.png') )
+             D+'umut_icons/i_motherboard.png') )
     except IOError: pass
     except:
         traceback.print_exc(file=sys.stderr)
@@ -71,7 +71,7 @@ def __motherboard():
     try:
         ret.append( row(_('Motherboard vendor:'), 
              __read('/sys/devices/virtual/dmi/id/board_vendor'), 
-             '../data/umut_icons/i_motherboard.png') )
+             D+'umut_icons/i_motherboard.png') )
     except IOError: pass
     except:
         traceback.print_exc(file=sys.stderr)
@@ -98,11 +98,11 @@ def __cpu():
                     core += 1
                     if multicore: string = _('CPU %s name:')%core
                     else: string = _('CPU name:')
-                    ret.append( row(string, v[1].strip().replace('  ',' '), '../data/umut_icons/i_cpu.png' ) )
+                    ret.append( row(string, v[1].strip().replace('  ',' '), D+'umut_icons/i_cpu.png' ) )
                 elif v[0]=='bogomips':
                     if multicore: string = _('CPU %s Mips:')%core
                     else: string = _('CPU Mips:')
-                    ret.append( row(string, '%s'%v[1].strip(), '../data/umut_icons/i_cpu.png', 
+                    ret.append( row(string, '%s'%v[1].strip(), D+'umut_icons/i_cpu.png', 
                          _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.' ) ) )
             
             _64bit = _('No')
@@ -113,7 +113,7 @@ def __cpu():
                 if v[0]=='flags':
                     if ' lm ' in v[1]:
                         _64bit = _('Yes!')
-            ret.append( row(_('64 bit CPU?'), _64bit, '../data/umut_icons/i_cpu.png') )
+            ret.append( row(_('64 bit CPU?'), _64bit, D+'umut_icons/i_cpu.png') )
     except:
         traceback.print_exc(file=sys.stderr)
 
@@ -134,7 +134,7 @@ def __cpu_temp():
         with open(tempfile) as f:
             for line in f:
                 v = line.split(':')
-            return [row(_('CPU temperature'), v[-1].strip(), '../data/umut_icons/i_cpu.png')]
+            return [row(_('CPU temperature'), v[-1].strip(), D+'umut_icons/i_cpu.png')]
     except:
         traceback.print_exc(file=sys.stderr)
         return []
@@ -145,7 +145,7 @@ def __mem():
             for line in f:
                 v = line.split(':')
                 if v[0]=='MemTotal':
-                    return [row(_('Total memory:'), v[1].strip(), '../data/umut_icons/i_memory.png' )]
+                    return [row(_('Total memory:'), v[1].strip(), D+'umut_icons/i_memory.png' )]
     except:
         traceback.print_exc(file=sys.stderr)
         return []
@@ -158,11 +158,11 @@ def __pci():
             v = line.split(' ', 1)[1]
             v = v.split(':', 1)
             if v[0]=='Display controller':
-                ret.append( row(_('Display card:'), v[1].strip(), '../data/umut_icons/i_display.png' ) )
+                ret.append( row(_('Display card:'), v[1].strip(), D+'umut_icons/i_display.png' ) )
             elif v[0]=='Ethernet controller':
-                ret.append( row(_('Ethernet card:'), v[1].strip(), '../data/umut_icons/i_ethernet.png' ) )
+                ret.append( row(_('Ethernet card:'), v[1].strip(), D+'umut_icons/i_ethernet.png' ) )
             elif v[0]=='Multimedia audio controller':
-                ret.append( row(_('Audio card:'), v[1].strip(), '../data/umut_icons/i_audiocard.png' ) )
+                ret.append( row(_('Audio card:'), v[1].strip(), D+'umut_icons/i_audiocard.png' ) )
     except:
         traceback.print_exc(file=sys.stderr)
     return ret
@@ -179,15 +179,15 @@ def __battery():
                     elif v=='charging': v=_('charging')
                     elif v=='discharging': v=_('discharging')
                     else: raise RuntimeError(v)
-                    ret.append( row(_('Battery charging state:'), v, '../data/umut_icons/i_battery.png') )
+                    ret.append( row(_('Battery charging state:'), v, D+'umut_icons/i_battery.png') )
                 elif v[0] == 'remaining capacity':
-                    ret.append( row(_('Battery remaining capacity:'), v[1].strip(), '../data/umut_icons/i_battery.png') )
+                    ret.append( row(_('Battery remaining capacity:'), v[1].strip(), D+'umut_icons/i_battery.png') )
         
         with open('/proc/acpi/battery/BAT0/info') as f:
             for line in f:
                 v = line.split(':')
                 if v[0] == 'last full capacity':
-                    ret.append( row(_('Battery full capacity:'), v[1].strip(), '../data/umut_icons/i_battery.png') )
+                    ret.append( row(_('Battery full capacity:'), v[1].strip(), D+'umut_icons/i_battery.png') )
     except IOError: pass
     except:
         traceback.print_exc(file=sys.stderr)
@@ -200,7 +200,7 @@ def __sound_card():
         lines = f.readlines()
         for i, line in enumerate(lines):
             if line.startswith('Card config:'):
-                ret.append( row(_('Sound card:'), lines[i+1].strip(), '../data/umut_icons/i_audiocard.png') )
+                ret.append( row(_('Sound card:'), lines[i+1].strip(), D+'umut_icons/i_audiocard.png') )
         f.close()
     except:
             traceback.print_exc()

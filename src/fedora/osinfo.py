@@ -24,7 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 def get():
@@ -32,7 +32,7 @@ def get():
     try: 
         with open('/etc/fedora-release') as f:
             value = f.read().strip()
-        return [row(_('Fedora version:'), value, '../data/other_icons/fedora.png')]
+        return [row(_('Fedora version:'), value, D+'other_icons/fedora.png')]
     except: 
         traceback.print_exc(file=sys.stderr)
         return []

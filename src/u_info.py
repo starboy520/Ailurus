@@ -38,7 +38,7 @@ class InfoPane(gtk.VBox):
         hbox_scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         hbox_scroll.add_with_viewport(hbox)
         self.pack_start(hbox_scroll)
-    def add_row(self, text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+    def add_row(self, text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
         assert isinstance(text, (str,unicode) )
         assert isinstance(value, (str,unicode) )
         assert isinstance(icon, str)
@@ -70,7 +70,7 @@ class InfoPane2(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.add_with_viewport(table)
         self.pack_start(scroll)
-    def add_row(self, text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+    def add_row(self, text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
         assert isinstance(text, (str,unicode) )
         assert isinstance(value, (str,unicode) )
         assert isinstance(icon, str)

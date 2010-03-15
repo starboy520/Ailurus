@@ -81,14 +81,14 @@ class InstallPackageCheckButton(gtk.CheckButton):
             self.set_tooltip_window(self.__create_tooltip_window())
             
     def __create_tooltip_window(self):
-        dir_name = '%s/%s'%('../data/nautilus_screenshot', Config.get_locale())
+        dir_name = '%s/%s'%(D+'nautilus_screenshot', Config.get_locale())
         pkg_window_image_path = "%s/%s.png"%(dir_name, self.apt_package_name)
         pkg_menu_image_path = '%s/%s.menu.png'%(dir_name, self.apt_package_name)
         import os
         if not os.path.exists(pkg_window_image_path):
-            pkg_window_image_path = "%s/%s.png"%('../data/nautilus_screenshot', self.apt_package_name)
+            pkg_window_image_path = "%s/%s.png"%(D+'nautilus_screenshot', self.apt_package_name)
         if not os.path.exists(pkg_menu_image_path):
-            pkg_menu_image_path = '%s/%s.menu.png'%('../data/nautilus_screenshot', self.apt_package_name)
+            pkg_menu_image_path = '%s/%s.menu.png'%(D+'nautilus_screenshot', self.apt_package_name)
         
         tooltip_vbox = gtk.VBox(False, 5)
         n = 0

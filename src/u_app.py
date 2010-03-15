@@ -432,8 +432,8 @@ class InstallRemovePane(gtk.VBox):
         logo = 'default.png'
         if hasattr(class0, 'logo'): logo = class0.logo
         import os
-        if os.path.exists('../data/appicons/'+logo): path = '../data/appicons/'+logo
-        elif os.path.exists('../data/other_icons/'+logo): path = '../data/other_icons/'+logo
+        if os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
+        elif os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
         else: return
         # set icon pixbuf
         if not hasattr(class0, 'logo_pixbuf'):
@@ -644,29 +644,29 @@ class InstallRemovePane(gtk.VBox):
         i_advanced = treestore.append(None, [_('Advanced'), None, '*advanced'])
         
         items =  (
-            [ i_common, _('Office'), '../data/umut_icons/p_office.png', 'office' ] ,
-            [ i_common, _('Education'), '../data/umut_icons/p_education.png', 'education' ] ,
-            [ i_common, _('Internet'), '../data/umut_icons/p_internet.png', 'internet' ] ,
-            [ i_common, _('Firefox extensions'), '../data/umut_icons/p_firefox.png', 'firefox' ] ,
-            [ i_common, _('Multimedia'), '../data/umut_icons/p_multimedia.png', 'media' ] ,
-            [ i_common, _('Appearance'), '../data/umut_icons/p_appearance.png', 'appearance' ] ,
-            [ i_common, _('Enhancements'), '../data/umut_icons/p_widgets.png', 'tweak' ] ,
-            [ i_common, _('Game'), '../data/umut_icons/p_game.png', 'game' ] ,
+            [ i_common, _('Office'), D+'umut_icons/p_office.png', 'office' ] ,
+            [ i_common, _('Education'), D+'umut_icons/p_education.png', 'education' ] ,
+            [ i_common, _('Internet'), D+'umut_icons/p_internet.png', 'internet' ] ,
+            [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
+            [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
+            [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
+            [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
+            [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
 
-            [ i_advanced, _('Third party repositories'), '../data/umut_icons/p_repository.png', 'repository'],
-            [ i_advanced, _('Virtual machine'), '../data/umut_icons/p_virtualmachine.png', 'vm' ] ,
-            [ i_advanced, _('Establish a server'), '../data/umut_icons/p_server.png', 'server'],
+            [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
+            [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
+            [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
 
-            [ i_students, _('Mathematics'), '../data/umut_icons/p_math.png', 'math' ] ,
-            [ i_students, _('Statistics'), '../data/umut_icons/p_statistics.png', 'statistics' ],
-            [ i_students, _('Biology'), '../data/umut_icons/p_biology.png', 'biology' ],
-            [ i_students, _('Electronics & Mechanics'), '../data/umut_icons/p_em.png', 'em' ] ,
-            [ i_students, _('Geography'), '../data/umut_icons/p_geography.png', 'geography' ] ,
-            [ i_students, _('LaTeX'), '../data/umut_icons/p_latex.png', 'latex' ] ,
+            [ i_students, _('Mathematics'), D+'umut_icons/p_math.png', 'math' ] ,
+            [ i_students, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics' ],
+            [ i_students, _('Biology'), D+'umut_icons/p_biology.png', 'biology' ],
+            [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
+            [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
+            [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
 
-            [ i_developers, _('Development'), '../data/umut_icons/p_develop.png', 'dev' ] ,
-            [ i_developers, _('Eclipse'), '../data/umut_icons/eclipse.png', 'eclipse' ] ,
-            [ i_developers, _('Firefox extensions'), '../data/umut_icons/p_firefox.png', 'firefoxdev' ] ,
+            [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
+            [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,
+            [ i_developers, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefoxdev' ] ,
                 )
 
         for item in items:

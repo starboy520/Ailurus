@@ -31,7 +31,7 @@ class SplashWindow(gtk.Window):
         self.modify_bg(gtk.STATE_NORMAL, color)
         
         logo = gtk.Image()
-        logo.set_from_file('../data/suyun_icons/splash.png')
+        logo.set_from_file(D+'suyun_icons/splash.png')
         
         from z_locale import VERSION
         title = gtk.Label()

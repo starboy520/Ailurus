@@ -575,7 +575,7 @@ class Native_64bit_Flash(_path_lists):
             ]
     def install(self):
         import os
-        file = os.path.abspath('../data/files/ubuntu-native-64bit-flash-installer.sh')
+        file = D+'files/ubuntu-native-64bit-flash-installer.sh'
         FileServer.chdir('/tmp')
         try:
             run_in_new_terminal(file)

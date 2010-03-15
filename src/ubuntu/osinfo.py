@@ -24,7 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 def get():
@@ -35,5 +35,5 @@ def get():
         for line in lines:
             if line.startswith('DISTRIB_RELEASE='):
                 value = line.split('=')[1].strip()
-        return [row(_('Ubuntu version:'), value, '../data/other_icons/ubuntu.png' )]
+        return [row(_('Ubuntu version:'), value, D+'other_icons/ubuntu.png' )]
     except: traceback.print_exc(file=sys.stderr)

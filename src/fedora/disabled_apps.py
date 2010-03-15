@@ -206,9 +206,7 @@ class Native_64bit_Flash(_path_lists):
             '/usr/lib/xulrunner-addons/plugins/libflashplayer.so',
             ]
     def install(self):
-        import os
-        file = os.path.abspath('../data/files/fedora-native-64bit-flash-installer.sh')
-        su('bash '+file)
+        su('bash '+D+'files/fedora-native-64bit-flash-installer.sh')
     def support(self):
         return get_arch() == 64
 

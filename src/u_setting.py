@@ -41,20 +41,20 @@ class SystemSettingPane(gtk.VBox):
         self.left_store = left_store = gtk.ListStore(gtk.gdk.Pixbuf, str, str) #pixbuf, text, category
         
         for iconpath, text, category in [
-              ('../data/other_icons/s_nautilus.png', 'Nautilus', 'nautilus', ), 
-              ('../data/other_icons/s_desktop.png', _('Desktop'), 'desktop', ), 
-              ('../data/umut_icons/s_window.png', _('Window effect'), 'window', ), 
-              ('../data/umut_icons/s_menu.png', _('Menu'), 'menu', ), 
-              ('../data/umut_icons/s_icon.png', _('Icon'), 'icon', ), 
-              ('../data/umut_icons/s_font.png', _('Font'), 'font', ), 
-              ('../data/umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
-              ('../data/umut_icons/s_memory.png', _('Memory'), 'memory', ), 
-              ('../data/umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
-              ('../data/umut_icons/s_sound.png', _('Sound'), 'sound', ), 
-              ('../data/umut_icons/s_power.png', _('Power management'), 'power', ),
-              ('../data/umut_icons/s_network.png', _('Network'), 'network', ),
-              ('../data/umut_icons/s_update.png', _('Update'), 'update', ),
-              ('../data/umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
+              (D+'other_icons/s_nautilus.png', 'Nautilus', 'nautilus', ), 
+              (D+'other_icons/s_desktop.png', _('Desktop'), 'desktop', ), 
+              (D+'umut_icons/s_window.png', _('Window effect'), 'window', ), 
+              (D+'umut_icons/s_menu.png', _('Menu'), 'menu', ), 
+              (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ), 
+              (D+'umut_icons/s_font.png', _('Font'), 'font', ), 
+              (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
+              (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
+              (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
+              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 
+              (D+'umut_icons/s_power.png', _('Power management'), 'power', ),
+              (D+'umut_icons/s_network.png', _('Network'), 'network', ),
+              (D+'umut_icons/s_update.png', _('Update'), 'update', ),
+              (D+'umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
                 ]:
             assert category in Setting.categories
             if category in existing_categories:

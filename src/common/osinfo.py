@@ -24,20 +24,20 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon='../data/umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 def __host_name():
-    try: return [row(_('Host name:'), get_output('hostname'), '../data/umut_icons/i_host.png' )]
+    try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
 def __kernel():
     ret = []
-    try: ret.append( row(_('Kernel version:'), get_output('uname -r'), '../data/other_icons/tux.png' ) )
+    try: ret.append( row(_('Kernel version:'), get_output('uname -r'), D+'other_icons/tux.png' ) )
     except: traceback.print_exc(file=sys.stderr)
     
-    try: ret.append( row(_('Kernel arch:'), get_output('uname -m'), '../data/other_icons/tux.png' ) )
+    try: ret.append( row(_('Kernel arch:'), get_output('uname -m'), D+'other_icons/tux.png' ) )
     except: traceback.print_exc(file=sys.stderr)
     return ret
 
@@ -45,26 +45,26 @@ def __xorg():
     try:
         for line in get_output('Xorg -version').split('\n'):
             if line.startswith('X.Org X Server'):
-                return [row(_('X server version:'), line.strip(), '../data/umut_icons/i_X.png')]
+                return [row(_('X server version:'), line.strip(), D+'umut_icons/i_X.png')]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
 def __gcc():
     try:
-        return [row(_('GCC version:'), get_output('gcc -dumpversion').strip(), '../data/umut_icons/i_gcc.png')]
+        return [row(_('GCC version:'), get_output('gcc -dumpversion').strip(), D+'umut_icons/i_gcc.png')]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
 def __java():
     try:
         string = get_output('java -version').split('\n')[0]
-        return [row(_('Java version:'), string, '../data/umut_icons/i_java.png')]
+        return [row(_('Java version:'), string, D+'umut_icons/i_java.png')]
     except CommandFailError: pass
     except: traceback.print_exc(file=sys.stderr)
     return []
 
 def __python():
-     try: return [row(_('Python version:'), get_output('python -V'), '../data/other_icons/python.png' )]
+     try: return [row(_('Python version:'), get_output('python -V'), D+'other_icons/python.png' )]
      except: traceback.print_exc(file=sys.stderr)
      return []
 
@@ -86,7 +86,7 @@ def __uptime():
             print >>text, hours, ngettext('hour', 'hours', hours),
         if minutes:
             print >>text, minutes, ngettext('minute', 'minutes', minutes),
-        return [row(_('Uptime:'), text.getvalue(), '../data/umut_icons/i_uptime.png' )]
+        return [row(_('Uptime:'), text.getvalue(), D+'umut_icons/i_uptime.png' )]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
@@ -94,7 +94,7 @@ def __user():
     try: 
         import os
         string = '%s (UID: %s, GID: %s)'%(os.environ['USER'], os.getuid(), os.getgid() )
-        return [row(_('Current user:'), string, '../data/umut_icons/i_userinfo.png')]
+        return [row(_('Current user:'), string, D+'umut_icons/i_userinfo.png')]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
@@ -111,20 +111,20 @@ def __opengl():
             if v[0]=='OpenGL renderer string': renderer = v[1].strip()
         if direct_render:
             ret.append( row(_('Direct OpenGL:'), direct_render, 
-                 '../data/umut_icons/i_opengl.png', _('OpenGL direct rendering') ) )
+                 D+'umut_icons/i_opengl.png', _('OpenGL direct rendering') ) )
         if vendor and vendor_version:
             ret.append( row(_('OpenGL vendor:'), '%s (%s)'%(vendor, vendor_version), 
-                 '../data/umut_icons/i_opengl.png', _('OpenGL vendor') ) )
+                 D+'umut_icons/i_opengl.png', _('OpenGL vendor') ) )
         if renderer:
             ret.append( row(_('OpenGL renderer:'), renderer, 
-                 '../data/umut_icons/i_opengl.png', _('OpenGL renderer') ) )
+                 D+'umut_icons/i_opengl.png', _('OpenGL renderer') ) )
     except: print >>sys.stderr, 'Command failed: glxinfo'
     return ret
 
 def __firefox():
     try:
         return [row(_('Firefox version:'), 
-          get_output('firefox -version').split(',')[0], '../data/umut_icons/i_firefox.png' )]
+          get_output('firefox -version').split(',')[0], D+'umut_icons/i_firefox.png' )]
     except: traceback.print_exc(file=sys.stderr)
     return []
 
