@@ -127,7 +127,6 @@ def __media_automount():
     vbox.pack_start(o, False)
     return Setting(vbox, _('Automatically mount CD and flash disks'), ['nautilus'])
 
-
 def __font_size_setting():
     def change_font(w, isincrease):
         import gconf
@@ -304,22 +303,24 @@ def __gnome_session_setting():
     o = GConfCheckButton(_('Allow connection from remote hosts.'),
             '/apps/gnome-session/options/allow_tcp_connections')
     table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Enable different users session switch'),
-                         '/apps/gnome-screensaver/user_switch_enable',
-                         _('if set True, Gnome will offer an option in the unlock dialog to switch to a different user account. ') )
+    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
+            '/apps/gnome-screensaver/user_switch_enable',
+            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Enable/Disable suppress logout, restart, shutdown fuction'),
-                           '/apps/indicator-session/suppress_logout_restart_shutdown', _('If set False, Gnome will not show the confirmation \
-                           dialogs for logout, restart and shutdown when you using the Indicator Session Tool') )
+    o = GConfCheckButton(_('Show confirmation dialogs when you using indicator session tool to logout/restart/shutdown'),
+            '/apps/indicator-session/suppress_logout_restart_shutdown', 
+            _('If its value is false, Gnome will not show confirmation '
+              'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
     table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
     
-    import gconf
-    g = gconf.client_get_default()
-    if g.get_bool('/apps/gnome-power-manager/lock/use_screensaver_settings')  == False:
-        o = GConfCheckButton(_('Lock screen when blanked'),
-                           '/apps/gnome-power-manager/lock/blank_screen', _('if enable,the screen is locked when the screen is turned off.') )
-        table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
-                
+    o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
+            '/apps/gnome-screensaver/idle_activation_enabled')
+    table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
+    
+    o = GConfCheckButton(_('Lock screen when screen saver is activated'),
+            '/apps/gnome-screensaver/lock_enabled')
+    table.attach(o, 0, 1, 6, 7, gtk.FILL, gtk.FILL)
+    
     return Setting(table, _('GNOME session'), ['session'])
 
 def __backlight():
@@ -340,31 +341,29 @@ def __backlight():
     table.attach(o, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Backlight'), ['power'])
 
-def __set_suspend_hibernate():
+def __suspend_and_hibernate():
     vbox = gtk.VBox()
-    o = GConfCheckButton(_('Enable the suspend function'),
-                '/apps/gnome-power-manager/lock/suspend',
-                _('If set to false, then Gnome will disable the suspend') )
-    e = GConfCheckButton(_('Enable the hibernate funcion'),
-                '/apps/gnome-power-manager/lock/suspend',
-                _('If set to false, then Gnome will disable the hibernate') )
+    i = GConfCheckButton(_('Enable suspending function'),
+                '/apps/gnome-power-manager/lock/suspend')
+    j = GConfCheckButton(_('Enable hibernating function'),
+                '/apps/gnome-power-manager/lock/suspend')
+    vbox.pack_start(i, False)
+    vbox.pack_start(j, False)
+    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
+
+def __use_home_folder_as_desktop():
+    vbox = gtk.VBox()
+    o = GConfCheckButton(_('Use your home folder as the desktop'),
+                '/apps/nautilus/preferences/desktop_is_home_dir')
     vbox.pack_start(o, False)
-    vbox.pack_end(e, False)
-    return Setting(vbox, _('Enable/Disable the suspend funtion'), ['power'])
+    return Setting(vbox, _('Use your home folder as the desktop'), ['nautilus', 'desktop'])
 
-def __other_desktop_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)
-    o = GConfCheckButton(_('Use the home folder as the Desktop'),
-                         '/apps/nautilus/preferences/desktop_is_home_dir',
-                         _('If set to ture, then Gnome will use the home foloder as the Desktop') )
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Show advance permissions setting'),
-                         '/apps/nautilus/preferences/show_advanced_permissions',
-                         _('To show advance permissions setting in the file property dialog') )
-    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Other Setting'), ['desktop'])
-
+def __more_file_permissions_setting():
+    vbox = gtk.VBox()
+    o = GConfCheckButton(_('Show more permissions setting in file property dialog'),
+                '/apps/nautilus/preferences/show_advanced_permissions')
+    vbox.pack_start(o, False)
+    return Setting(vbox, _('More permissions setting in file property dialog'), ['nautilus'])
 
 def get():
     try:
@@ -383,9 +382,12 @@ def get():
             __disable_terminal_beep(),
             __media_automount(),
             __backlight(),
-            __other_desktop_setting(),
-            __set_suspend_hibernate(),
+            __use_home_folder_as_desktop(),
+            __more_file_permissions_setting(),
+            __suspend_and_hibernate(),
             __restriction_on_current_user(),
             ]
     except:
+        import traceback
+        traceback.print_exc()
         return []
