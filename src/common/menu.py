@@ -102,6 +102,7 @@ fedora.png is copied from Fedora project. It is released under the GPL v3.0 lice
 firestarter.png is copied from Firestarter project. It is released under the GPL license. Its copyright is holded by Tomas Junnonen.
 gcompris.png is copied from GCompris project. It is released under the GPL license. Its copyright is holded by Bruno Coudoin.
 liferea.png is copied from Liferea project. It is released under the GPL license. Its copyright is holded by Liferea Team.
+stardict.png is copied from Stardict project. It is released under GPL v3 license. Its copyright is holded by Stardict Team.
 netbeans.png is copied from Netbeans project. It is released under the GPL v2 license. Its copyright is holded by Sun Microsystems Ltd.
 python.png is copied from Python project. It is released under the Python license. Its copyright is holded by Python Software Foundation.
 qtcreator.png is copied from Qt project. It is released under the LGPL license. Its copyright is holded by Nokia Corporation.

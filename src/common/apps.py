@@ -36,14 +36,16 @@ class Bioclipse(_path_lists):
         self.paths = [ self.shortcut, self.path ]
     def install(self):
         if get_arch() == 32:
-            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download', 
-                 '/tmp/bioclipse.zip')
+            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download']).download()
+#            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download', 
+#                 '/tmp/bioclipse.zip')
         else:
-            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download', 
-                 '/tmp/bioclipse.zip')
+            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download']).download()
+#            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download', 
+#                 '/tmp/bioclipse.zip')
         FileServer.chdir('/tmp')
         try:
-            run('unzip -qo bioclipse.zip')
+            run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): gksudo('mkdir /opt')
             gksudo('rm /opt/bioclipse -rf')

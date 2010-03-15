@@ -297,4 +297,6 @@ def get():
     try:
         return [__nautilus_menu_setting(), __update_manager_setting() ]
     except:
+        import traceback
+        traceback.print_exc()
         return []

@@ -103,6 +103,13 @@ def image_icon_button(icon_name, label):
     button.add(box)
     return button
 
+def stock_image_only_button(stock):
+    import gtk
+    image = gtk.image_new_from_stock(stock, gtk.ICON_SIZE_BUTTON)
+    button = gtk.Button()
+    button.add(image)
+    return button
+
 def image_stock_menuitem(image_stock, label):
     import gtk
     item = gtk.ImageMenuItem(stock_id=image_stock)

@@ -320,9 +320,10 @@ class Generic_Genome_Browser:
     category='biology'
     logo = 'generic_genome_browser.png'
     def install(self):
-        wget('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl',
-                 '/tmp/gbrowse_netinstall.pl')
-        run('sudo perl /tmp/gbrowse_netinstall.pl')
+        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
+#        wget('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl',
+#                 '/tmp/gbrowse_netinstall.pl')
+        run('sudo perl %s' %f)
     def installed(self):
         return False
     def remove(self):
@@ -387,10 +388,13 @@ class GoogleChrome:
     category = 'internet'
     def install(self):
         if get_arch() == 32:
-            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb', '/tmp/chrome.deb')
+            f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb').download()
+#            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb', '/tmp/chrome.deb')
         else:
-            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb', '/tmp/chrome.deb')
-        gksudo('gdebi-gtk /tmp/chrome.deb')
+            f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb').download()
+#            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb', '/tmp/chrome.deb')
+        
+        gksudo('gdebi-gtk %s' %f)
         APT.cache_changed()
     def installed(self):
         return APT.installed('google-chrome-beta')

@@ -59,11 +59,12 @@ class TipOfTheDay(gtk.Dialog):
         
         title = gtk.Label ()
         title.set_markup ( _('<span size="x-large"><b>Did you know ?</b></span>') )
-        titlebox = gtk.HBox ( False, 10 )
-        titlebox.pack_start ( gtk.image_new_from_stock ( gtk.STOCK_DIALOG_INFO, 
-                                                         gtk.ICON_SIZE_DIALOG ),
-                              False, False, 0 )
-        titlebox.pack_start ( title, False, False, 0 )
+        title.set_alignment(0.5, 0.5)
+        titlebox = gtk.HBox (False, 10)
+        titlebox.pack_start (gtk.image_new_from_stock ( gtk.STOCK_DIALOG_INFO, 
+                                                        gtk.ICON_SIZE_DIALOG ),
+                             False, False, 0)
+        titlebox.pack_start (title)
 
         content = ReleaseNotesViewer()
         gray_bg(content)
@@ -75,24 +76,28 @@ class TipOfTheDay(gtk.Dialog):
         scroll_content.add(content)
         scroll_content.set_size_request(-1, 200)
 
-        close_button = gtk.Button( stock=gtk.STOCK_CLOSE )
+        close_button =  stock_image_only_button(gtk.STOCK_CLOSE )
         def close_me(w):
             self.destroy()
         close_button.connect( 'clicked', close_me )
 
-        next_tip = gtk.Button( stock = gtk.STOCK_GO_FORWARD )
-        next_tip.get_child().get_child().get_children()[1].set_text_with_mnemonic( _('_Next tip') )
+        next_tip = stock_image_only_button(gtk.STOCK_GO_FORWARD)
         next_tip.connect ( 'clicked', self.__next_tip, content )
         next_tip.grab_focus()
         
-        previous_tip = gtk.Button( stock = gtk.STOCK_GO_BACK )
-        previous_tip.get_child().get_child().get_children()[1].set_text_with_mnemonic( _('_Previous tip') )
+        previous_tip = stock_image_only_button(gtk.STOCK_GO_BACK)
         previous_tip.connect ( 'clicked', self.__previous_tip, content )
-
+        
+        submit_skills = image_stock_button(gtk.STOCK_GO_UP, _('Submit Linux Skills'))
+        
+        def go_to_web(w):
+            report_bug()
+        submit_skills.connect('clicked',go_to_web)   
         hbox = gtk.HBox(False, 10)
         hbox.pack_end(close_button, False, False)
         hbox.pack_end(next_tip, False, False)
         hbox.pack_end(previous_tip, False, False)
+        hbox.pack_end(submit_skills, False, False)
 
         box = gtk.VBox ( False, 0 )
         box.pack_start ( titlebox, False )

@@ -350,7 +350,26 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
                     f.write(c)
     def installed(self):
         return _apt_install.installed(self) and file_contain(self.__file, self.__line)
-
+    def support(self):
+        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty', 'gutsy', 'dapper', 'lenny', 'etch', 'sarge', 'xandros4.0-xn']:
+            return False
+        else:
+            return True
+class CPUS(_apt_install):
+    __doc__ = _('Enable "Print to pdf" capability')
+    detail = _('Command:sudo apt-get install cpus-pdf')
+    size = 256 * 1000
+    time = 4
+    category = 'office'
+    logo = 'cups.png'
+    def __init__(self):
+        self.pkgs = 'cups-pdf'
+    def support(self):
+        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty', 'gutsy', 'dapper', 'lenny', 'etch', 'sarge', 'xandros4.0-xn']:
+            return True
+        else:
+            return False
+        
 class Flash_Player(_apt_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
     detail = _('Command: sudo apt-get install flashplugin-installer')

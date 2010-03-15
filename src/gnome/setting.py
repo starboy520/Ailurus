@@ -50,19 +50,43 @@ def __desktop_icon_setting():
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     o = GConfCheckButton(_('Display "Mounted volumn" icon'), '/apps/nautilus/desktop/volumes_visible',
              _('Put icons linking to mounted volumes on the desktop.'))
-    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    
     o = GConfCheckButton(_('Display "Computer" icon'), '/apps/nautilus/desktop/computer_icon_visible',
              _('Put an icon linking to the computer location on the desktop.'))
-    table.attach(o, 2, 3, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    l = GConfLabel(_('Set "Computer" name:'), '/apps/nautilus/desktop/computer_icon_name',
+            _('Set the icon name of "My Computer"to Whatever you like') )
+    table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    en = GConfEntry( '/apps/nautilus/desktop/computer_icon_name' )
+    table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
+    
     o = GConfCheckButton(_('Display "Home folder" icon'), '/apps/nautilus/desktop/home_icon_visible',
              _('Put an icon linking to the home folder on the desktop.'))
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    l = GConfLabel(_('Set "Home folder" name:'),'/apps/nautilus/desktop/home_icon_name',
+            _('Set the icon name of "My Folder" to Whatever you like'))
+    table.attach(l, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    en = GConfEntry('/apps/nautilus/desktop/home_icon_name')
+    table.attach(en, 2, 3, 3, 4, gtk.FILL, gtk.FILL)
+        
     o = GConfCheckButton(_('Display "Network server" icon'), '/apps/nautilus/desktop/network_icon_visible',
              _('Put an icon linking to the Network Servers view on the desktop.'))
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Display "Trash" icon'), '/apps/nautilus/desktop/trash_icon_visible',
+    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    l = GConfLabel(_('Set "Network server" name:'), '/apps/nautilus/desktop/network_icon_name',
+            _('Set the icon name of "Network server" to Whatever you like'))
+    table.attach(l, 1, 2, 4, 5,gtk.FILL, gtk.FILL)
+    en = GConfEntry('/apps/nautilus/desktop/network_icon_name')
+    table.attach(en, 2, 3, 4, 5, gtk.FILL, gtk.FILL)
+    
+    o = GConfCheckButton(_('Display "Trash" icon'),'/apps/nautilus/desktop/trash_icon_visible',
              _('Put an icon linking to the trash on the desktop.'))
-    table.attach(o, 2, 3, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
+    l = GConfLabel(_('Set "Trash" name:'), '/apps/nautilus/desktop/trash_icon_name',
+            _('Set the icon name of "Trash" to Whatever you like'))
+    table.attach(l, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
+    en = GConfEntry('/apps/nautilus/desktop/trash_icon_name')
+    table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
 def __menu_icon_setting():
@@ -293,6 +317,10 @@ def __backlight():
     table.attach(o, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Backlight'), ['power'])
 
+    
+    
+    
+
 def get():
     try:
         import gconf
@@ -313,4 +341,6 @@ def get():
             __restriction_on_current_user(),
             ]
     except:
+        import traceback
+        traceback.print_exc()
         return []
