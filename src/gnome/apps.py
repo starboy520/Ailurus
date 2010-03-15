@@ -39,6 +39,40 @@ class ChangeTerminalColor(_set_gconf):
                   )
         self.add=()
 
+class Some_usefull_Script():
+    __doc__ = _('Add some useful Nautilus Scripts')
+    detail = _('copy the script file into ~/.gnome2/nautilus-scripts\ninclude Copy File to, Install Theme, open File in Geditor as root ,etc\nscripts from http://www.nanolx.org')
+#    category = 'tweak'
+    size = 5 * 1000
+    time = 30
+    logo = 'gedit.png'
+    def install(self):
+        f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
+#        os.system('tar -C directory=/home/velly/.gnome2/nautilus-scripts/nscripts -jxvf ' + f )
+        os.system('tar -jxf'+f)
+        os.system('cp -r nscripts/* ~/.gnome2/nautilus-scripts')
+        os.system('rm ~/.gnome2/nautilus-scripts/ChangeLog')
+        os.system('rm ~/.gnome2/nautilus-scripts/TODO')
+        os.system('touch ~/.gnome2/nautilus-scripts/.Ailurus')
+        os.system('echo "This is a file for recognize if it install the usefull_script or not" > ~/.gnome2/nautilus-scripts/.Ailurus')
+        
+    def installed(self):
+        d = os.path.join(os.path.expanduser("~"), ".gnome2/nautilus-scripts/.Ailurus")
+        return os.path.isfile(d)
+    def remove(self):
+        List = [ '/Admin/Apt*', '/Admin/WhichPKG*', '/Files/Chkmd5', '/Files/CopyTo', '/Files/Mkmd5', '/Files/MkPatch',
+                '/Files/MoveTo','/Files/Shredder', '/Root/Rootilus', '/Root/RootOpenInGEdit', '/Root/RootTermInCurdir',
+                '/Utils/InstallTheme', '/Utils/OpenInGEdit', '/Utils/SendShortcutTo', '/Utils/SendToMenu','/Utils/SetAsSplash',
+                '/Utils/SetAsWallpaper', '/Utils/TermInCurdir']
+        for m in List:
+            os.system('rm -r ~/.gnome2/nautilus-scripts%s' % m)
+        dirList = ['/Admin', '/Files', '/Root', '/Utils']
+        for n in dirList:
+                os.system('rmdir ~/.gnome2/nautilus-scripts%s' % n)
+        os.system('rm ~/.gnome2/nautilus-scripts/.Ailurus')
+    def __init(self):
+        pass
+
 class Gedit_GB2312(_set_gconf) :
     __doc__ = _('Add GB2312 detection ability to GEdit')
     detail = _('The trick behind is to change GConf values:\n'
