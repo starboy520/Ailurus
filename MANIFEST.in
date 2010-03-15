@@ -1,0 +1,2 @@
+include MANIFEST.in MANIFEST setup.cfg setup.py
+include ChangeLog version
