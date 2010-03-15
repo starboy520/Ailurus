@@ -157,6 +157,20 @@ def __font_size_setting():
     hbox.show_all()
     return Setting(hbox, _('One-click changing font size'), ['font'])
 
+def __titlebar_layout():
+    label_layout = gtk.Label(_('title bar button layout:'))
+    label_layout.set_tooltip_text(_('The layout of titlebar button layout.')+_('\nGConf key: ')+'/app/metacity/general/button_layout')
+    table = gtk.Table()
+    table.set_col_spacings(5)
+    table.attach(label_layout, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(
+            GConfComboBox(
+                 '/apps/metacity/general/button_layout', [_('normal Layout'), _('Mac OS Layout')],
+                 [':maximize,minimize,close', 'close,minimize,maximize:'], _('The layout of title bar') 
+                 ),
+                 1, 2, 0, 1, gtk.FILL, gtk.FILL )
+    return Setting(table, _('titlebar button layout style'), ['window'])
+
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
     label_double.set_tooltip_text(_('The effects of double-clicking on the title bar.')+_('\nGConf key: ')+'/apps/metacity/general/action_double_click_titlebar')
@@ -386,6 +400,7 @@ def get():
             __more_file_permissions_setting(),
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
+            __titlebar_layout(),
             ]
     except:
         import traceback
