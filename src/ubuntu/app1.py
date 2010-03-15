@@ -347,7 +347,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     def installed(self):
         return _apt_install.installed(self) and file_contain(self.__file, self.__line)
     def support(self):
-        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']:
+        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty', 'gutsy', 'dapper', 'lenny', 'etch', 'sarge', 'xandros4.0-xn']:
             return False
         else:
             return True
@@ -361,7 +361,7 @@ class CPUS(_apt_install):
     def __init__(self):
         self.pkgs = 'cups-pdf'
     def support(self):
-        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']:
+        if Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty', 'gutsy', 'dapper', 'lenny', 'etch', 'sarge', 'xandros4.0-xn']:
             return True
         else:
             return False
