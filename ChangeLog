@@ -1,3 +1,11 @@
+2010-03-15 Starboy Qi <starboy.qi@gmail.com>
+
+    * Change stardict icon
+    * Optimize virtualbox installation
+    * Add a button in "Tip of the day" window for submitting Linux skills
+    * Make several download URL cacheable
+    * Add capability for changing name of My computer icon, Home folder icon, Network server icon and Trash icon
+
 2010-03-12 Homer Xing <homer.xing@gmail.com>
 
     * Use socket instead of ping for detecting server speed.
