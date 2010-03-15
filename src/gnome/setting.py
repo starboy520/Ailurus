@@ -60,7 +60,7 @@ def __desktop_icon_setting():
     l = gtk.Label(_('Change icon name to:'))
     table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
     
-    en = GConfTextEntry( '/apps/nautilus/desktop/computer_icon_name' )
+    en = GConfTextEntry('/apps/nautilus/desktop/computer_icon_name')
     table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
     
     o = GConfCheckButton(_('Display "Home folder" icon'), '/apps/nautilus/desktop/home_icon_visible',
