@@ -1,3 +1,13 @@
+2010-03-15 MA Yue <velly.empire@gmail.com>
+
+    * Add functionality for changing /apps/gnome-power-manager/lock/hibernate
+                                     /apps/gnome-power-manager/lock/suspend
+                                     /apps/nautilus/preferences/desktop_is_home_dir
+                                     /apps/gnome-screensaver/user_switch_enabled
+                                     /apps/indicator-session/suppress_logout_restart_shutdown
+                                     /apps/nautilus/preferences/show_advanced_permissions
+                                     /apps/gnome-power-manager/lock/blank_screen
+
 2010-03-15 Starboy Qi <starboy.qi@gmail.com>
 
     * Change stardict icon
