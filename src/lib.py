@@ -1134,7 +1134,7 @@ def open_web_page(page):
     notify( _('Opening web page'), page)
     KillWhenExit.add('xdg-open %s'%page)
 
-def report_bug():
+def report_bug(*w):
     page = 'http://code.google.com/p/ailurus/issues/entry'
     notify( _('Opening web page'), page)
     KillWhenExit.add('xdg-open %s'%page)

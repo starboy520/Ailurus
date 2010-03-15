@@ -321,8 +321,6 @@ class Generic_Genome_Browser:
     logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-#        wget('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl',
-#                 '/tmp/gbrowse_netinstall.pl')
         run('sudo perl %s' %f)
     def installed(self):
         return False
@@ -389,11 +387,8 @@ class GoogleChrome:
     def install(self):
         if get_arch() == 32:
             f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb').download()
-#            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb', '/tmp/chrome.deb')
         else:
             f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb').download()
-#            wget('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb', '/tmp/chrome.deb')
-        
         gksudo('gdebi-gtk %s' %f)
         APT.cache_changed()
     def installed(self):

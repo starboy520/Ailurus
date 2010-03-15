@@ -69,10 +69,9 @@ class Repo_Adobe:
         if _repo.exist(self.path):
             _repo.enable(self.path)
         else:
-            f = R('http://linuxdownload.adobe.com/linux/i386/adobe-release-i386-1.0-1.noarch.rpm').download()
-#            file = '/tmp/adobe-release-i386-1.0-1.noarch.rpm'
-#            wget('http://linuxdownload.adobe.com/linux/i386/adobe-release-i386-1.0-1.noarch.rpm', file) 
-            RPM.install_local('%s' %f)
+            file = '/tmp/adobe-release-i386-1.0-1.noarch.rpm'
+            wget('http://linuxdownload.adobe.com/linux/i386/adobe-release-i386-1.0-1.noarch.rpm', file)
+            RPM.install_local(file)
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
@@ -115,10 +114,9 @@ class Repo_Livna:
         if _repo.exist(self.path):
             _repo.enable(self.path, only_enable_first_appearance = True)
         else:
-            f = R('http://rpm.livna.org/livna-release.rpm').download()
-#            file = '/tmp/livna-release.rpm'
-#            wget('http://rpm.livna.org/livna-release.rpm', file) 
-            RPM.install_local(f)
+            file = '/tmp/livna-release.rpm'
+            wget('http://rpm.livna.org/livna-release.rpm', file)
+            RPM.install_local(file)
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
@@ -145,10 +143,9 @@ class Repo_RPMFusion_Free:
             for path in self.paths:
                 _repo.enable(path, only_enable_first_appearance = True)
         else:
-            f = R('http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm').download()
-#            file = '/tmp/rpmfusion-free-release-stable.noarch.rpm'
-#            wget('http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm', file)
-            RPM.install_local(f)
+            file = '/tmp/rpmfusion-free-release-stable.noarch.rpm'
+            wget('http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm', file)
+            RPM.install_local(file)
     def remove(self):
         for path in self.paths:
             if _repo.exist(path): _repo.disable(path)
@@ -175,10 +172,9 @@ class Repo_RPMFusion_NonFree:
             for path in self.paths:
                 _repo.enable(path, only_enable_first_appearance = True)
         else:
-            f = R('http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm').download()
-#            file = '/tmp/rpmfusion-nonfree-release-stable.noarch.rpm'
-#            wget('http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm', file)
-            RPM.install_local(f)
+            file = '/tmp/rpmfusion-nonfree-release-stable.noarch.rpm'
+            wget('http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm', file)
+            RPM.install_local(file)
     def remove(self):
         for path in self.paths:
             if _repo.exist(path): _repo.disable(path)

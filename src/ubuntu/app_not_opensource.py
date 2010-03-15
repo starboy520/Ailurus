@@ -162,8 +162,7 @@ class EIOffice:
         FileServer.chdir_local()
         try:
             f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
-#            wget('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz', '/tmp/eio.tar.gz')
-            run("tar zxf %s" %f)
+            run('tar xf %s' % f)
             run('chmod a+x EIOffice_Personal_Lin/setup')
             gksudo("EIOffice_Personal_Lin/setup")
             
@@ -259,13 +258,12 @@ class Vuze(_path_lists):
         self.paths = ['/opt/vuze', '/usr/share/applications/azureus.desktop']
     def install(self):
         f = R('http://hwcdn01.vuze.com/files/Vuze_Installer.tar.bz2').download()
-#        wget('http://hwcdn01.vuze.com/files/Vuze_Installer.tar.bz2', '/tmp/vuze.tar.bz2')
         import os
         if not os.path.exists('/opt'): gksudo('mkdir /opt')
         gksudo('chown $USER:$USER /opt -R')
         FileServer.chdir('/opt')
         try:
-            run('tar xf %s' %f)
+            run('tar xf %s' % f)
             create_file('/usr/share/applications/azureus.desktop',
 '''[Desktop Entry]
 Encoding=UTF-8
@@ -279,8 +277,7 @@ Name=Vuze
 Type=Application''')
             if get_arch() == 64:
                 f = R('http://eclipse.ialto.org/eclipse/downloads/drops/R-3.4-200806172000/swt-3.4-gtk-linux-x86_64.zip').download()
-#                wget('http://eclipse.ialto.org/eclipse/downloads/drops/R-3.4-200806172000/swt-3.4-gtk-linux-x86_64.zip', '/tmp/swt.zip')
-                run('unzip %s -qo -d /tmp' %f)
+                run('unzip %s -qo -d /tmp' % f)
                 run('mv /tmp/swt.jar /opt/vuze/')
         finally:
             FileServer.chdir_back()

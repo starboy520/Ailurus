@@ -131,10 +131,8 @@ class GoogleChrome:
     def install(self):
         if get_arch() == 32:
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm').download()
-#            wget('http://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm', '/tmp/chrome.rpm')
         else:
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm').download()
-#            wget('http://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm', '/tmp/chrome.rpm')
         RPM.install_local(f)
     def installed(self):
         return RPM.installed('google-chrome-beta')

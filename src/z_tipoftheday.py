@@ -89,10 +89,8 @@ class TipOfTheDay(gtk.Dialog):
         previous_tip.connect ( 'clicked', self.__previous_tip, content )
         
         submit_skills = image_stock_button(gtk.STOCK_GO_UP, _('Submit Linux Skills'))
+        submit_skills.connect('clicked', report_bug)
         
-        def go_to_web(w):
-            report_bug()
-        submit_skills.connect('clicked',go_to_web)   
         hbox = gtk.HBox(False, 10)
         hbox.pack_end(close_button, False, False)
         hbox.pack_end(next_tip, False, False)

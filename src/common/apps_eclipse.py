@@ -654,7 +654,7 @@ class Mylyn(_path_lists): # Eclipse Public License
         Eclipse_basic.make_sure_installed()
         f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.1-e3.4.zip').download()
         gksudo('mkdir -p '+self.path)
-        gksudo("unzip -qo %s -d %s"%(f,self.path))
+        gksudo("unzip -qo %s -d %s" % (f, self.path) )
         gksudo("chown $USER:$USER /opt/eclipse -R")
 
 class DLTK: # Eclipse Public License

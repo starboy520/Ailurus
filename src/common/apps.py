@@ -37,12 +37,8 @@ class Bioclipse(_path_lists):
     def install(self):
         if get_arch() == 32:
             f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download']).download()
-#            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download', 
-#                 '/tmp/bioclipse.zip')
         else:
             f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download']).download()
-#            wget('http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download', 
-#                 '/tmp/bioclipse.zip')
         FileServer.chdir('/tmp')
         try:
             run('unzip -qo %s' %f)

@@ -357,9 +357,8 @@ class Generic_Genome_Browser:
             if not RPM.installed(package):
                 RPM.install(package)
         
-        wget('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl',
-                 '/tmp/gbrowse_netinstall.pl')
-        su('perl /tmp/gbrowse_netinstall.pl')
+        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
+        su('perl ' + f)
     def installed(self):
         return False
     def remove(self):

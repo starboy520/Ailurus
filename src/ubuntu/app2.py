@@ -298,34 +298,21 @@ class VirtualBox:
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     category = 'vm'
-    time = 63
-    size = 89372 * 1000
     manual = True
     logo = 'virtualbox.png'
     def install(self):
         from third_party_repos import Repo_VirtualBox
         vbox_obj = Repo_VirtualBox()
-        if not vbox_obj.installed():
-            vbox_obj.install()
+        if not vbox_obj.installed(): vbox_obj.install()
         APT.apt_get_update()
         APT.install('virtualbox-3.1')
     def installed(self):
-        if APT.installed('virtualbox-3.1'):
-            return True
-        elif APT.installed('virtualbox-3.0'):
-            return True
-        elif APT.installed('virtualbox-2.2'):
-            return True
-        elif APT.installed('virtualbox-2.0'):
-            return True
-        elif APT.installed('virtualbox'):
-            return True
-        else:
-            return False
+        for p in ['virtualbox-3.1', 'virtualbox-3.0', 'virtualbox-2.2', 'virtualbox-2.1', 'virtualbox-2.0', 'virtualbox']:
+            if APT.installed(p): return True
+        return False
     def remove(self):
-        for e in ['virtualbox-3.1','virtualbox-3.0','virtualbox-2.2','virtualbox-2.0','virtualbox']:
-            if APT.installed(e):
-                APT.remove(e)
+        for p in ['virtualbox-3.1', 'virtualbox-3.0', 'virtualbox-2.2', 'virtualbox-2.1', 'virtualbox-2.0', 'virtualbox']:
+            if APT.installed(p): APT.remove(p)
 
 class GNOMEArtNextGen:
     __doc__ = _('GNOMEArtNG')
