@@ -1,20 +1,30 @@
-2009-03-07 CHEN Yangyang <skabyy@gmail.com>
+2010-03-15 Velly <velly.empire@gmail.com>
+
+    * Add [/apps/gnome-power-manager/lock/hibernate]
+    *     [/apps/gnome-power-manager/lock/suspend]
+    *     [/apps/nautilus/preferences/desktop_is_home_dir]
+    *     [/apps/gnome-screensaver/user_switch_enabled]
+    *     [/apps/indicator-session/suppress_logout_restart_shutdown]
+    *     [/apps/nautilus/preferences/show_advanced_permissions]
+    *     [/apps/gnome-power-manager/lock/blank_screen]
+
+2010-03-07 CHEN Yangyang <skabyy@gmail.com>
 
     * Automatically save/load repository response time.
 
-2009-03-04 Homer Xing <homer.xing@gmail.com>
+2010-03-04 Homer Xing <homer.xing@gmail.com>
 
     * Fixed a locale fetching bug.
 
-2009-03-02 Homer Xing <homer.xing@gmail.com>
+2010-03-02 Homer Xing <homer.xing@gmail.com>
 
     * Improve mplayer-vod.
 
-2009-03-02 Starboy Qi <starboy.qi@gmail.com>
+2010-03-02 Starboy Qi <starboy.qi@gmail.com>
 
     * Display sound card information in hardware-info pane.
 
-2009-02-28 Homer Xing <homer.xing@gmail.com>
+2010-02-28 Homer Xing <homer.xing@gmail.com>
 
     * Merged translation from Launchpad
     * Added repository in Ghana & Peru
@@ -36,7 +46,7 @@
     * Adopted tree-view in left pane
     * Randomly display a tip after logging in GNOME
 
-2009-01-10 Homer Xing <homer.xing@gmail.com>
+2010-01-10 Homer Xing <homer.xing@gmail.com>
 
     Many things have happened. 
     I forgot to write them down in ChangeLog. Please forgive me.
