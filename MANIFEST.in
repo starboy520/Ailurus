@@ -1,2 +1,14 @@
-include MANIFEST.in MANIFEST setup.cfg setup.py
+include AUTHORS COPYING INSTALL README
+include MANIFEST.in MANIFEST
 include ChangeLog version
+include data/*
+include data/appicons/*
+include data/dbus/*
+include data/files/*
+include data/nautilus_screenshot/*
+include data/other_icons/*
+include data/policykit0/*
+include data/policykit1/*
+include data/suyun_icons/*
+include data/umut_icons/*
+include ailurus.1 ailurus.desktop

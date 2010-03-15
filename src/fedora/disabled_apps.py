@@ -207,7 +207,7 @@ class Native_64bit_Flash(_path_lists):
             ]
     def install(self):
         import os
-        file = os.path.abspath('../data/files/ubuntu-native-64bit-flash-installer.sh')
+        file = os.path.abspath('../data/files/fedora-native-64bit-flash-installer.sh')
         su('bash '+file)
     def support(self):
         return get_arch() == 64
