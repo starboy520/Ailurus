@@ -37,7 +37,8 @@ def show_about_dialog(*w): # called by __help
     about.set_authors( [
           'Homer Xing <homer.xing@gmail.com>', 
           'CHEN Yangyang <skabyy@gmail.com>',
-          'Starboy Qi <starboy.qi@gmail.com>', ] )
+          'Starboy Qi <starboy.qi@gmail.com>',
+          'MA Yue <velly.empire@gmail.com>' ] )
     about.set_translator_credits( '''ZHANG Jin long <zhangjinlong0717@gmail.com>
 CHEN Yangyang <skabyy@gmail.com>
 GUO Jiu liang <saturnman2008@gmail.com>
