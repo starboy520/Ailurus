@@ -349,10 +349,10 @@ def __preferences(main_view):
                               or Config.set_disable_tip(w.get_active()) )
     
     menu_tip_after_logging_in = gtk.CheckMenuItem( _('Show a random Linux skill after you log in to GNOME') )
-    menu_tip_after_logging_in.set_active(ShowTipAfterLoggingIn.installed())
+    menu_tip_after_logging_in.set_active(ShowALinuxSkill.installed())
     def toggled(w):
-        if w.get_active(): ShowTipAfterLoggingIn.install()
-        else: ShowTipAfterLoggingIn.remove()
+        if w.get_active(): ShowALinuxSkill.install()
+        else: ShowALinuxSkill.remove()
         notify(_('Preferences changed'), _('Your changes will take effect at the next time when you log in to GNOME.') )
     menu_tip_after_logging_in.connect('toggled', toggled)
     

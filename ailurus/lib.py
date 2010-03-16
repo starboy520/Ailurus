@@ -270,18 +270,18 @@ class Config:
 
 Config.init()
 
-class ShowTipAfterLoggingIn:
+class ShowALinuxSkill:
     @classmethod
     def installed(cls):
         import os
-        path = os.path.expanduser('~/.config/autostart/tip_after_logging_in.desktop')
+        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
         return os.path.exists(path)
     @classmethod
     def install(cls):
         import os
         dir = os.path.expanduser('~/.config/autostart/')
         if not os.path.exists(dir): os.system('mkdir %s -p' % dir)
-        file = dir + 'tip_after_logging_in.desktop'
+        file = dir + 'show-a-linux-skill-bubble.desktop'
         with open(file, 'w') as f:
             f.write('[Desktop Entry]\n'
                     'Name=Show a random Linux skill after logging in.\n'
@@ -295,15 +295,15 @@ class ShowTipAfterLoggingIn:
     @classmethod
     def remove(cls):
         import os
-        path = os.path.expanduser('~/.config/autostart/tip_after_logging_in.desktop')
+        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
         os.system('rm %s -f'%path)
 
 try:
-    Config.get_bool('show_tip_after_logging_in_installed')
+    Config.get_bool('show-a-linux-skill-bubble')
 except:
     try:
-        Config.set_bool('show_tip_after_logging_in_installed', True)
-        ShowTipAfterLoggingIn.install()
+        Config.set_bool('show-a-linux-skill-bubble', True)
+        ShowALinuxSkill.install()
     except:
         import traceback
         traceback.print_exc()
