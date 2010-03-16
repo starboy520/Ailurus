@@ -7,5 +7,5 @@ if os.geteuid() == 0:
 import os, sys, ailurus 
 path = os.path.dirname(os.path.abspath(ailurus.__file__))
 sys.path.insert(0, path)
-
-from ailurus import main
+os.chdir(path)
+import main
