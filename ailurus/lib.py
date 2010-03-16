@@ -1273,7 +1273,7 @@ class R:
             else:
                 Time = get_response_time(url)
                 print _('Response time of server %(name)s is %(time).1f ms.') % {'name':server, 'time':Time}
-        except (TypeError, ValueError, CommandFailError, RuntimeError, HostUnreachable):
+        except:
             print _('Server %s does not respond.')%server
             Time = 10000.0
         finally:
