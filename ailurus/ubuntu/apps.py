@@ -23,5 +23,5 @@ from app0 import *
 from app1 import *
 from app2 import *
 from app3 import *
-from app_not_opensource import *
+from controversial_apps import *
 from third_party_repos import *
