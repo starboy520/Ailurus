@@ -316,12 +316,11 @@ def install_locale(force_reload=False):
     else: return
 
     import gettext
-    from z_locale import LOCALEDIR
     try:
         lang = Config.get_string('locale')
-        gettext.translation('ailurus', LOCALEDIR, languages=[lang], fallback=True).install(names=['ngettext'])
+        gettext.translation('ailurus', '/usr/share/locale', languages=[lang], fallback=True).install(names=['ngettext'])
     except:
-        gettext.install('ailurus', localedir=LOCALEDIR, unicode=True, names=['ngettext'] )
+        gettext.install('ailurus', localedir='/usr/share/locale', unicode=True, names=['ngettext'] )
 
 install_locale()
 
