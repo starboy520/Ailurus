@@ -29,10 +29,7 @@ class UbuntuAPTComparePane(gtk.VBox):
     name = _('APT recovery')
     
     def __get_installed_packages_set(self):
-        import os
-        if os.path.exists('z_dumpaptcache2.py'): path='z_dumpaptcache2.py'
-        elif os.path.exists('../z_dumpaptcache2.py'): path='../z_dumpaptcache2.py'
-        else: raise Exception
+        path = os.path.dirname(os.path.abspath(__file__))+'../support/dumpaptcache2.py'
         
         set1 = set()
         

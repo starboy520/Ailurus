@@ -616,9 +616,7 @@ class RPM:
         del cls.__set1
         cls.__set1 = set()
         import subprocess, os
-        from z_locale import DATADIR
-        path = 'z_dumprpmcache.py'
-        if not os.path.exists(path): path = DATADIR+'/ailurus/src/z_dumprpmcache.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumprpmcache.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
@@ -668,9 +666,7 @@ class APT:
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
-        from z_locale import DATADIR
-        path = 'z_dumpaptcache.py'
-        if not os.path.exists(path): path = DATADIR+'/ailurus/src/z_dumpaptcache.py'
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dumpaptcache.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
@@ -1525,7 +1521,9 @@ class Tasksel:
     @classmethod
     def remove(cls, name):
         print '\x1b[1;36m', _('Inspecting safely deletable packages. Please wait for a few minutes.') ,'\x1b[m'
-        command = ['python', 'z_output_safely_deletable_pkgs.py']
+        import os
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/safely_deletable_pkgs.py'
+        command = ['python', path]
         command.extend(cls.get_packages(name))
         import subprocess
         task = subprocess.Popen(command, stdout=subprocess.PIPE)
