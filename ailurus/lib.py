@@ -447,7 +447,6 @@ def notify(title, content):
 
     try:
         import pynotify, os
-        from z_locale import DATADIR
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
         n.show()

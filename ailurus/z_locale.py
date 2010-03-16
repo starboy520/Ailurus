@@ -22,6 +22,5 @@
 '不要更改这个文件，改 z_locale.py.in !'
 
 VERSION = '10.04.4'
-DATADIR = '/usr/share/'
 LOCALEDIR = '/usr/share/locale'
 RELEASE_DATE = '2010-01-04'
