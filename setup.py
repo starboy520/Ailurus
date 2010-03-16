@@ -14,7 +14,6 @@ setup(name = 'ailurus',
       url = 'http://ailurus.googlecode.com/',
       license = 'GNU General Public License (GPL)',
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu'],
-      package_dir={'ailurus': 'src'},
       data_files = [
         ('share/applications', ['ailurus.desktop']),
         
