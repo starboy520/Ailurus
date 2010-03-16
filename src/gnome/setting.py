@@ -365,12 +365,29 @@ def __suspend_and_hibernate():
     vbox.pack_start(j, False)
     return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
 
-def __use_home_folder_as_desktop():
-    vbox = gtk.VBox()
+def __advance_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    a = gtk.Label(_('Change the default filemanager: '))
+    a.set_alignment(0, 0.5)
+    table.attach(a, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    f = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
+    table.attach(f, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    b = gtk.Label(_('Change the default panel: ') )
+    b.set_alignment(0, 0.5)
+    table.attach(b, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    p = GConfTextEntry('/desktop/gnome/session/required_components/panel')
+    table.attach(p, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    c = gtk.Label(_('Change the default windowsmanager: ') )
+    c.set_alignment(0, 0.5)
+    table.attach(c, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    w = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(w, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
-    vbox.pack_start(o, False)
-    return Setting(vbox, _('Use your home folder as the desktop'), ['nautilus', 'desktop'])
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('Advance Settings'), ['desktop'])
 
 def __more_file_permissions_setting():
     vbox = gtk.VBox()
@@ -396,7 +413,7 @@ def get():
             __disable_terminal_beep(),
             __media_automount(),
             __backlight(),
-            __use_home_folder_as_desktop(),
+            __advance_setting(),
             __more_file_permissions_setting(),
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
