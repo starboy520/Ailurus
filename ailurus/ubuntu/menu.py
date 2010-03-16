@@ -32,7 +32,7 @@ def __repository(main_view):
 
 def __recovery(main_view):
     apt_recovery = image_file_menuitem( _('APT recovery'), D+'umut_icons/m_apt_recovery.png', 16, 3)
-    apt_recovery.connect_object('activate', main_view.activate_pane, 'UbuntuAPTComparePane')
+    apt_recovery.connect_object('activate', main_view.activate_pane, 'UbuntuAPTRecoveryPane')
     return [ apt_recovery ]
 
 def __study(main_view):

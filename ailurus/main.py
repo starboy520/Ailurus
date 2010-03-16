@@ -76,7 +76,7 @@ class MainView:
             ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install/Remove'), ),
             ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache installation files'), ),
             ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Find fast repository mirror'), ),
-            ('UbuntuAPTComparePane', D+'umut_icons/m_apt_recovery.png', _('APT recovery'), ),
+            ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('APT recovery'), ),
                      ]
         List.reverse()
         for name, icon, tooltip in List:
@@ -343,20 +343,20 @@ main_view = MainView()
 splash.add_text(_('<span color="yellow">Loading information pane ... </span>\n'))
 from loader import load_hardwareinfo
 hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-from u_info import HardwareInfoPane
+from info_pane import HardwareInfoPane
 pane = HardwareInfoPane(main_view, hwinfo)
 main_view.register(pane)
 
 from loader import load_linuxinfo
 linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
-from u_info import LinuxInfoPane
+from info_pane import LinuxInfoPane
 pane = LinuxInfoPane(main_view, linuxinfo)
 main_view.register(pane)
 
 splash.add_text(_('<span color="yellow">Loading system settings pane ... </span>\n'))
 from loader import load_setting
 items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
-from u_setting import SystemSettingPane
+from system_setting_pane import SystemSettingPane
 pane = SystemSettingPane(items)
 main_view.register(pane)
 
@@ -366,7 +366,7 @@ app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
 main_view.app_classes = app_classes
 from loader import load_custom_app_classes
 custom_app_classes = load_custom_app_classes()
-from u_app import InstallRemovePane
+from install_remove_pane import InstallRemovePane
 pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
 main_view.register(pane)
 main_view.install_remove_pane = pane
@@ -374,7 +374,7 @@ main_view.install_remove_pane = pane
 splash.add_text(_('<span color="yellow">Loading off-line pane ... </span>\n'))
 from loader import load_R_objs
 r_objs = load_R_objs(COMMON, DESKTOP, DISTRIBUTION)
-from u_offline_install import OfflineInstallPane
+from offline_install_pane import OfflineInstallPane
 pane = OfflineInstallPane(main_view, r_objs)
 main_view.register(pane)
 

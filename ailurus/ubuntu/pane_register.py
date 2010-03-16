@@ -19,11 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-from u_fastest_mirror import UbuntuFastestMirrorPane
-from u_apt_recovery import UbuntuAPTComparePane
+from fastest_mirror_pane import UbuntuFastestMirrorPane
+from apt_recovery_pane import UbuntuAPTRecoveryPane
 
 def register(main_view):
     pane = UbuntuFastestMirrorPane(main_view)
     main_view.register(pane)
-    pane = UbuntuAPTComparePane(main_view)
+    pane = UbuntuAPTRecoveryPane(main_view)
     main_view.register(pane)

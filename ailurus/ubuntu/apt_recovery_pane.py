@@ -25,7 +25,7 @@ import sys, os
 from lib import *
 from libu import *
 
-class UbuntuAPTComparePane(gtk.VBox):
+class UbuntuAPTRecoveryPane(gtk.VBox):
     name = _('APT recovery')
     
     def __get_installed_packages_set(self):
@@ -360,7 +360,7 @@ class UbuntuAPTComparePane(gtk.VBox):
 if __name__ == '__main__':
     import os
     os.chdir('..')
-    pane = UbuntuAPTComparePane(None)
+    pane = UbuntuAPTRecoveryPane(None)
     win = gtk.Window()
     win.set_border_width(10)
     win.connect('delete-event', gtk.main_quit)
