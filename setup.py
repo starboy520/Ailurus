@@ -13,7 +13,7 @@ setup(name = 'ailurus',
       maintainer_email = 'homer.xing@gmail.com',
       url = 'http://ailurus.googlecode.com/',
       license = 'GNU General Public License (GPL)',
-      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu'],
+      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/applications', ['ailurus.desktop']),
         
