@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 import sys, os
-from applib import *
+from libapp import *
 from lib import *
 
 class ChangeTerminalColor(_set_gconf):

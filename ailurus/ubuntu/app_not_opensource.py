@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from applib import *
+from libapp import *
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')

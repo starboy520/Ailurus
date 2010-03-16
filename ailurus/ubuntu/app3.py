@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from applib import *
+from libapp import *
 
 class Varkon(_apt_install, _path_lists):
     __doc__ = _('Varkon: A concise CAD software')

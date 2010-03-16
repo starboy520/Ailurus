@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from applib import *
+from libapp import *
 
 class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
     __doc__ = _('Make GEdit more suitable for programmers')

@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from applib import *
+from libapp import *
 from third_party_repos import _repo
 
 class _repo_mplayer_vod(_repo):

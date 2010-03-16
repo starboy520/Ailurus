@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from applib import *
+from libapp import *
 
 class SUN_JDK6(_apt_install):
     __doc__ = _(u'SUN Java® 6.')
