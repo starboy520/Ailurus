@@ -23,7 +23,7 @@ from __future__ import with_statement
 import gtk
 import sys, os
 from lib import *
-from ulib import *
+from libu import *
 
 class UbuntuAPTComparePane(gtk.VBox):
     name = _('APT recovery')

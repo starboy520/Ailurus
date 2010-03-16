@@ -23,7 +23,7 @@ from __future__ import with_statement
 import gtk
 import sys, os
 from lib import *
-from ulib import *
+from libu import *
 from libsetting import *
 
 def __change_kernel_swappiness():

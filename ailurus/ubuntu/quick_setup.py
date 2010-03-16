@@ -21,7 +21,7 @@
 
 import sys, os
 from lib import *
-from ulib import *
+from libu import *
 from serverlib import *
 import gtk
 

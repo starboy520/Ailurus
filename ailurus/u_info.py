@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import gtk, traceback, sys, os
 from lib import *
-from ulib import *
+from libu import *
 
 class InfoPane(gtk.VBox):
     def __init__(self):

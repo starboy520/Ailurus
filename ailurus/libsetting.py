@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import gtk
 from lib import *
-from ulib import *
+from libu import *
 
 class GConfCheckButton(gtk.CheckButton):
     def __toggled(self, w):

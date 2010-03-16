@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import gtk, os, sys
 from lib import *
-from ulib import *
+from libu import *
 
 class MainView:
     def __reset_enable_disable_buttons_state(self):

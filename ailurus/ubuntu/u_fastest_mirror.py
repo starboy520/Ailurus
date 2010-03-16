@@ -23,7 +23,7 @@ from __future__ import with_statement
 import gtk, pango
 import sys, os
 from lib import *
-from ulib import *
+from libu import *
 import serverlib
 
 class SearchBox(gtk.HBox):

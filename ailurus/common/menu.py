@@ -23,7 +23,7 @@ from __future__ import with_statement
 import sys, os
 import gtk
 from lib import *
-from ulib import *
+from libu import *
 
 def show_about_dialog(*w): # called by __help
     gtk.about_dialog_set_url_hook( lambda dialog, link: 1 )
@@ -202,7 +202,7 @@ def check_update(*w):
         # hide the clicked menu item
         while gtk.events_pending(): gtk.main_iteration()
         
-        from ulib import url_button
+        from libu import url_button
         from z_locale import RELEASE_DATE as OLD_RELEASE_DATE
     
         import urllib2

@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from lib import *
-from ulib import *
+from libu import *
 
 tips = None
 

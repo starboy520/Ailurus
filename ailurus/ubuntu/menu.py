@@ -23,7 +23,7 @@ from __future__ import with_statement
 import gtk
 import sys, os
 from lib import *
-from ulib import *
+from libu import *
 
 def __repository(main_view):
     fastest_mirror = image_file_menuitem(_('Find fast repository mirror'), D+'umut_icons/m_fastest_repos.png', 16, 3)
