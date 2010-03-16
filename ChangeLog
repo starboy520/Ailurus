@@ -1,8 +1,16 @@
+<<<<<<< HEAD:ChangeLog
 2010-03-16 MA Yue <velly.empire@gmail.com>
+    * Add the function of turn off the SIZE columns in nautilus
     * Add the function of Changing the default windowmanager filemanager panel 
 
-2010-03-16 MA Yue <velly.empire@gmail.com>
     * Add some Nautilus Script
+=======
+
+2010-03-16 Homer Xing <homer.xing@gmail.com>
+
+    * Adopt distutils. 
+      We can use "python setup.py install" to install ailurus now.
+>>>>>>> homerxing/master:ChangeLog
 
 2010-03-15 MA Yue <velly.empire@gmail.com>
 
