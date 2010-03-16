@@ -39,6 +39,38 @@ class ChangeTerminalColor(_set_gconf):
                   )
         self.add=()
 
+class NScripts():
+    __doc__ = _('NScripts: a set of useful Nautilus scripts')
+    detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus. '
+               'Its web site is http://freshmeat.net/projects/nscripts . '
+               'NScripts is installed in ~/.gnome2/nautilus-scripts.')
+    logo = 'nautilus.png'
+
+    def install(self):
+        f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
+        import os
+        dir = os.path.expanduser('~/.gnome2/nautilus-scripts/')
+        if not os.path.exists(dir): os.mkdir(dir)
+        FileServer.chdir('/tmp')
+        try:
+            os.system('tar xf ' + f)
+            os.system('cp -r nscripts/* ' + dir)
+            os.remove(dir + 'ChangeLog')
+            os.remove(dir + 'TODO')
+            os.system('touch ' + dir +'.nscripts_is_installed')
+        finally:
+            FileServer.chdir_back()
+
+    def installed(self):
+        import os
+        d = os.path.expanduser('~/.gnome2/nautilus-scripts/.nscripts_is_installed')
+        return os.path.exists(d)
+
+    def remove(self):
+        for dir in ['Admin', 'Files', 'Root', 'Utils']:
+            os.system('rm -rf ~/.gnome2/nautilus-scripts/' + dir)
+        os.system('rm ~/.gnome2/nautilus-scripts/.nscripts_is_installed')
+
 class Gedit_GB2312(_set_gconf) :
     __doc__ = _('Add GB2312 detection ability to GEdit')
     detail = _('The trick behind is to change GConf values:\n'

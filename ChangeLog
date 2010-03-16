@@ -1,3 +1,9 @@
+2010-03-16 MA Yue <velly.empire@gmail.com>
+
+    * Add functionality for changing default window manager, file manager and panel program 
+    * Add functionality for changing menubar.
+    * Add NScript: some useful Nautilus scripts
+
 2010-03-16 Homer Xing <homer.xing@gmail.com>
 
     * Adopt distutils. 

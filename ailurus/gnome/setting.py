@@ -157,6 +157,17 @@ def __font_size_setting():
     hbox.show_all()
     return Setting(hbox, _('One-click changing font size'), ['font'])
 
+def __layout_of_window_titlebar_buttons():
+    label = gtk.Label(_('The layout of window title-bar buttons'))
+    label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout')
+    o = GConfComboBox('/apps/metacity/general/button_layout', 
+                      [_('GNOME classic'), _('MAC OS X')],
+                      ['menu:minimize,maximize,close', 'close,minimize,maximize,menu:'],) 
+    hbox = gtk.HBox(False, 10)
+    hbox.pack_start(label, False)
+    hbox.pack_start(o, False)
+    return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
+
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
     label_double.set_tooltip_text(_('The effects of double-clicking on the title bar.')+_('\nGConf key: ')+'/apps/metacity/general/action_double_click_titlebar')
@@ -351,12 +362,34 @@ def __suspend_and_hibernate():
     vbox.pack_start(j, False)
     return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
 
-def __use_home_folder_as_desktop():
-    vbox = gtk.VBox()
+def __advance_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    
+    o = label_left_align(_('Change default file manager to:'))
+    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+
+    o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    
+    o = label_left_align(_('Change default panel program to:') )
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
-    vbox.pack_start(o, False)
-    return Setting(vbox, _('Use your home folder as the desktop'), ['nautilus', 'desktop'])
+    
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    
+    return Setting(table, _('Advance settings'), ['desktop'])
 
 def __more_file_permissions_setting():
     vbox = gtk.VBox()
@@ -382,10 +415,11 @@ def get():
             __disable_terminal_beep(),
             __media_automount(),
             __backlight(),
-            __use_home_folder_as_desktop(),
+            __advance_setting(),
             __more_file_permissions_setting(),
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
+            __layout_of_window_titlebar_buttons(),
             ]
     except:
         import traceback
