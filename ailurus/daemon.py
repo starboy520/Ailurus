@@ -141,3 +141,6 @@ def main():
 
     mainloop = gobject.MainLoop()
     mainloop.run()    
+
+if __name__ == '__main__':
+    main()

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: homer.xing@gmail.com\n"
-"POT-Creation-Date: 2010-03-16 16:58+0800\n"
+"POT-Creation-Date: 2010-03-16 17:02+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4712,7 +4712,7 @@ msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
 #: .././ailurus/common/menu.py:298
-#: .././ailurus/show_a_linux_skill_bubble.py:50
+#: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr ""
 
