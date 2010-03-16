@@ -21,22 +21,26 @@
 
 from lib import *
 
-import common as COMMON
+def main():
+    import common as COMMON
+    
+    DESKTOP = None
+    
+    if Config.is_Mint() or Config.is_Ubuntu():
+        import ubuntu as DISTRIBUTION
+    elif Config.is_Fedora():
+        import fedora as DISTRIBUTION
+    else:
+        DISTRIBUTION = None
+    
+    from loader import load_tips
+    tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
+    
+    import random
+    index = random.randint(0, len(tips)-1)
+    tip = tips[index]
+    
+    notify( _('Tip of the day'), tip )
 
-DESKTOP = None
-
-if Config.is_Mint() or Config.is_Ubuntu():
-    import ubuntu as DISTRIBUTION
-elif Config.is_Fedora():
-    import fedora as DISTRIBUTION
-else:
-    DISTRIBUTION = None
-
-from loader import load_tips
-tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
-
-import random
-index = random.randint(0, len(tips)-1)
-tip = tips[index]
-
-notify( _('Tip of the day'), tip )
+if __name__ == '__main__':
+    main()
