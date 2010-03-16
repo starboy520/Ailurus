@@ -23,7 +23,7 @@ from __future__ import with_statement
 import gtk
 from lib import *
 from ulib import *
-from settinglib import Setting
+from libsetting import Setting
 
 class SystemSettingPane(gtk.VBox):
     name = _('System settings')

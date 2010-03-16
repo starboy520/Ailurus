@@ -24,7 +24,7 @@ import gtk
 import sys, os
 from lib import *
 from ulib import *
-from settinglib import *
+from libsetting import *
 
 def audio_convert_pre():
     to_install = []

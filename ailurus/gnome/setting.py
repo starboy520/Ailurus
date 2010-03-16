@@ -24,7 +24,7 @@ import gtk
 import sys, os
 from lib import *
 from ulib import *
-from settinglib import *
+from libsetting import *
 
 def __desktop_wallpaper():
     e = GConfFileEntry(_('Wallpaper:'), '/desktop/gnome/background/picture_filename', _('Choose the desktop wallpaper.') )

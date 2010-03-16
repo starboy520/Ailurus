@@ -24,7 +24,7 @@ import gtk
 import sys, os
 from lib import *
 from ulib import *
-from settinglib import *
+from libsetting import *
 
 def __change_kernel_swappiness():
     vbox = gtk.VBox()
