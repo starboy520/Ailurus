@@ -178,7 +178,7 @@ class UbuntuAPTComparePane(gtk.VBox):
         return textview
 
     def __init__(self, main_view):
-        from z_multidragview import MultiDragTreeView
+        from support.multidragview import MultiDragTreeView
         
         gtk.VBox.__init__(self, False, 10)
         
