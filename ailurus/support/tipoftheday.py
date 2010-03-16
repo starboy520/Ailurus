@@ -51,7 +51,7 @@ class TipOfTheDay(gtk.Dialog):
 
     def __init__(self):
         import gtk
-        from z_releasenotesviewer import ReleaseNotesViewer
+        from support.releasenotesviewer import ReleaseNotesViewer
         gtk.Dialog.__init__(self, _('Tip of the Day'), None, 
             gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, None )
         

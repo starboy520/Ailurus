@@ -20,12 +20,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-from z_pangobuffer import PangoBuffer
-from z_releasenotesviewer import ReleaseNotesViewer
-from z_searchbox import SearchBox
-from z_terminal import Terminal
-from z_undobuffer import UndoableBuffer
-from z_windowpos import WindowPos
 
 def gray_bg(w):
     import gtk

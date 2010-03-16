@@ -371,7 +371,7 @@ class DoStuffDialog(gtk.Dialog):
         task_scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         task_scroll.add(task_treeview)
         
-        from z_terminal_single_thread import Terminal
+        from support.terminal_single_thread import Terminal
         self.terminal = terminal = Terminal()
         
         paned = gtk.HPaned()

@@ -529,12 +529,15 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
+        from support.searchbox import SearchBox
         sbox = SearchBox()
         sbox.connect('changed', self.__search_content_changed)
         box1 = gtk.VBox(False, 10)
         box1.pack_start(sbox, False, False)
         box1.pack_start(scroll)
         
+        from support.pangobuffer import PangoBuffer
+        from support.releasenotesviewer import ReleaseNotesViewer
         detail = ReleaseNotesViewer( PangoBuffer() )
         detail.set_wrap_mode(gtk.WRAP_WORD)
         detail.set_editable(False)
@@ -600,6 +603,7 @@ class InstallRemovePane(gtk.VBox):
         assert hasattr(parentwindow, 'offline_mode_button')
         self.parentwindow = parentwindow
         self.offline_button_func = parentwindow.offline_mode_button
+        from support.terminal import Terminal
         self.terminal = Terminal()
         
         self.final_box = gtk.VBox(False, 5)

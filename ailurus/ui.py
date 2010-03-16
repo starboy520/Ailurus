@@ -169,6 +169,7 @@ class MainView:
         if self.stop_delete_event:
             return True
         
+        from support.windowpos import WindowPos
         WindowPos.save(self.window,'main')
         
         for pane in self.contents.values():
@@ -179,7 +180,7 @@ class MainView:
         sys.exit()
 
     def show_day_tip(self, *w):
-        from z_tipoftheday import TipOfTheDay
+        from support.tipoftheday import TipOfTheDay
         w=TipOfTheDay()
         w.run()
         w.destroy()
@@ -231,7 +232,7 @@ class MainView:
         self.stop_delete_event = False
         self.__navigate_1 = [] #backward and forward
         self.__navigate_2 = [] #backward and forward
-        from z_disabledpane import DisabledPane
+        from support.disabledpane import DisabledPane
         self.disabledpane = DisabledPane()
         
         self.contents = {}
@@ -254,6 +255,7 @@ class MainView:
         window.connect("delete_event", self.terminate_program)
         window.add(vbox)
 
+        from support.windowpos import WindowPos
         WindowPos.load(window,'main')
 
 def detect_running_instances():
@@ -273,7 +275,7 @@ detect_running_instances()
 change_task_name()
 set_default_window_icon()
 # show splash window
-from z_splashwindow import SplashWindow
+from support.splashwindow import SplashWindow
 splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
@@ -332,8 +334,8 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 splash.add_text(_('<span color="yellow">Loading tips ... </span>\n'))
 from loader import load_tips
 tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
-import z_tipoftheday
-z_tipoftheday.tips = tips
+import support.tipoftheday
+support.tipoftheday.tips = tips
 
 splash.add_text(_('<span color="yellow">Loading main window ... </span>\n'))
 main_view = MainView()

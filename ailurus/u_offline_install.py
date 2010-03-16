@@ -180,6 +180,7 @@ class OfflineInstallPane(gtk.VBox):
         assert isinstance(R_objs, list)
         for obj in R_objs: assert isinstance(obj, R)
         self.R_objs = R_objs
+        from support.terminal import Terminal
         self.terminal = Terminal()
         import os, sys
         self.backup_stdout = os.dup(sys.stdout.fileno())
