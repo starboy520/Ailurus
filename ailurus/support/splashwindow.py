@@ -33,10 +33,10 @@ class SplashWindow(gtk.Window):
         logo = gtk.Image()
         logo.set_from_file(D+'suyun_icons/splash.png')
         
-        from z_locale import VERSION
+        from lib import AILURUS_VERSION
         title = gtk.Label()
         title.set_markup('<span color="green" size="xx-large">Ailurus</span> '
-                         '<span color="green" size="x-large">%s</span>'%VERSION)
+                         '<span color="green" size="x-large">%s</span>' % AILURUS_VERSION)
         
         comment = gtk.Label()
         comment.set_markup(

@@ -30,8 +30,8 @@ def show_about_dialog(*w): # called by __help
     about = gtk.AboutDialog()
     about.set_logo(gtk.gdk.pixbuf_new_from_file(D+'suyun_icons/logo.png'))
     about.set_name('Ailurus')
-    from z_locale import VERSION
-    about.set_version(VERSION)
+    from lib import AILURUS_VERSION
+    about.set_version(AILURUS_VERSION)
     about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
     about.set_website('http://ailurus.cn/')
     about.set_authors( [
@@ -124,8 +124,8 @@ All rights of the applications installed by Ailurus are preserved by their autho
     #addr2.set_selectable(True)
     about.vbox.pack_start( addr2, False, False )
     #show last build time
-    from z_locale import RELEASE_DATE
-    about.vbox.pack_start( gtk.Label( _('\nThis version is compiled at %s.')%RELEASE_DATE), False)
+    from lib import AILURUS_RELEASE_DATE
+    about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     
     about.vbox.show_all()
     about.run()
@@ -203,7 +203,7 @@ def check_update(*w):
         while gtk.events_pending(): gtk.main_iteration()
         
         from libu import url_button
-        from z_locale import RELEASE_DATE as OLD_RELEASE_DATE
+        from lib import AILURUS_RELEASE_DATE as OLD_RELEASE_DATE
     
         import urllib2
         f = urllib2.urlopen('http://ailurus.googlecode.com/files/latest')
