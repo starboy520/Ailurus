@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk, gconf
+import gtk
 import sys, os
 from lib import *
 from libu import *
@@ -126,11 +126,13 @@ def __more_nautilus_settings():
              '/apps/nautilus/preferences/media_automount', 
              _('If set to true, then Nautilus will automatically mount media such as CD and flash disks.'))
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    
     m = GConfCheckButton(_('Show more permissions setting in file property dialog'),
                 '/apps/nautilus/preferences/show_advanced_permissions' )
     table.attach(m, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     
     def size_column_visible():
+        import gconf
         g = gconf.client_get_default()
         value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
         return 'size' in value
@@ -138,6 +140,7 @@ def __more_nautilus_settings():
     def set_size_column_visible(checkbutton):
         assert isinstance(checkbutton, gtk.CheckButton)
         visible = not checkbutton.get_active()
+        import gconf
         g = gconf.client_get_default()
         value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
         if visible and 'size' not in value:
@@ -151,7 +154,7 @@ def __more_nautilus_settings():
     n.connect('toggled', set_size_column_visible)
     n.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
     table.attach(n, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    return Setting(table, _('More Nautilus Settings'), ['nautilus'])
+    return Setting(table, _('More Nautilus settings'), ['nautilus'])
 
 def __font_size_setting():
     def change_font(w, isincrease):
@@ -187,7 +190,7 @@ def __layout_of_window_titlebar_buttons():
     label = gtk.Label(_('The layout of window title-bar buttons'))
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout')
     o = GConfComboBox('/apps/metacity/general/button_layout', 
-                      [_('GNOME classic'), _('MAC OS X'), _('Lucid')],
+                      [_('GNOME classic'), _('MAC OS X'), _('Ubuntu Lucid')],
                       ['menu:minimize,maximize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'],) 
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(label, False)

@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: homer.xing@gmail.com\n"
-<<<<<<< HEAD:po/ailurus.pot
 "POT-Creation-Date: 2010-03-16 20:26+0800\n"
-=======
-"POT-Creation-Date: 2010-03-16 20:49+0800\n"
->>>>>>> homerxing/master:po/ailurus.pot
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3053,16 +3049,11 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/gnome/apps.py:43
-<<<<<<< HEAD:po/ailurus.pot
-msgid "Add some useful Nautilus Scripts"
-=======
 msgid "NScripts: a set of useful Nautilus scripts"
->>>>>>> homerxing/master:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/gnome/apps.py:44
 msgid ""
-<<<<<<< HEAD:po/ailurus.pot
 "copy the script file into ~/.gnome2/nautilus-scripts\n"
 "include Copy File to, Install Theme, open File in Geditor as root ,etc\n"
 "scripts from http://www.nanolx.org"
@@ -3073,18 +3064,6 @@ msgid "Add GB2312 detection ability to GEdit"
 msgstr ""
 
 #: .././ailurus/gnome/apps.py:78
-=======
-"NScripts help you change the background, create/check MD5 checksums, create "
-"a diff, create shortcuts via Nautilus. Its web site is http://freshmeat.net/"
-"projects/nscripts . NScripts is installed in ~/.gnome2/nautilus-scripts."
-msgstr ""
-
-#: .././ailurus/gnome/apps.py:74
-msgid "Add GB2312 detection ability to GEdit"
-msgstr ""
-
-#: .././ailurus/gnome/apps.py:75
->>>>>>> homerxing/master:po/ailurus.pot
 msgid ""
 "The trick behind is to change GConf values:\n"
 "/apps/gedit-2/preferences/encodings/auto_detected += [\"GB2312\", \"GBK\", "
@@ -3092,19 +3071,11 @@ msgid ""
 "/apps/gedit-2/preferences/encodings/shown_in_menu += [\"GB2312\"]"
 msgstr ""
 
-<<<<<<< HEAD:po/ailurus.pot
-#: .././ailurus/gnome/apps.py:93
-msgid "Speed up Nautilus"
-msgstr ""
-
-#: .././ailurus/gnome/apps.py:94
-=======
 #: .././ailurus/gnome/apps.py:90
 msgid "Speed up Nautilus"
 msgstr ""
 
 #: .././ailurus/gnome/apps.py:91
->>>>>>> homerxing/master:po/ailurus.pot
 msgid ""
 "Change Nautilus settings: Do not count directory items. Do not preview "
 "sound. Do not show texts in icon. Use tighter layout. \n"
