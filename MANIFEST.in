@@ -1,14 +1,7 @@
 include AUTHORS COPYING INSTALL README
 include MANIFEST.in MANIFEST
 include ChangeLog version
-include data/*
-include data/appicons/*
-include data/nautilus_screenshot/*
-include data/other_icons/*
-include data/suyun_icons/*
-include data/umut_icons/*
-include support/*
-include support/dbus/*
-include support/policykit0/*
-include support/policykit1/*
+recursive-include data *
+recursive-include support *
+recursive-include po *
 include ailurus.1 ailurus.desktop ailurus.desktop.in
