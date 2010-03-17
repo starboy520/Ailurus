@@ -1,3 +1,13 @@
+2010-03-17 MA Yue <velly.empire@gmail.com>
+    *Add the Lucid layout style
+    *merge the automount , show more permissions setting , hide size column in one table
+
+2010-03-16 MA Yue <velly.empire@gmail.com>
+    * Add the function of turn off the SIZE columns in nautilus
+    * Add the function of Changing the default windowmanager filemanager panel 
+
+    * Add some Nautilus Script
+
 2010-03-16 MA Yue <velly.empire@gmail.com>
 
     * Add functionality for hiding the SIZE columns in Nautilus list view.

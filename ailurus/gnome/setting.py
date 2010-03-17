@@ -20,11 +20,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, gconf
 import sys, os
 from lib import *
 from libu import *
 from libsetting import *
+
 
 def __desktop_wallpaper():
     e = GConfFileEntry(_('Wallpaper:'), '/desktop/gnome/background/picture_filename', _('Choose the desktop wallpaper.') )
@@ -119,13 +120,38 @@ def __disable_terminal_beep():
     vbox.pack_start(o, False)
     return Setting(vbox, _('Terminal beep sound setting'), ['sound'])
 
-def __media_automount():
-    vbox = gtk.VBox()
+def __more_nautilus_settings():
+    table = gtk.Table()
     o = GConfCheckButton(_('Automatically mount CD and flash disks'), 
              '/apps/nautilus/preferences/media_automount', 
              _('If set to true, then Nautilus will automatically mount media such as CD and flash disks.'))
-    vbox.pack_start(o, False)
-    return Setting(vbox, _('Automatically mount CD and flash disks'), ['nautilus'])
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    m = GConfCheckButton(_('Show more permissions setting in file property dialog'),
+                '/apps/nautilus/preferences/show_advanced_permissions' )
+    table.attach(m, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    
+    def size_column_visible():
+        g = gconf.client_get_default()
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        return 'size' in value
+    
+    def set_size_column_visible(checkbutton):
+        assert isinstance(checkbutton, gtk.CheckButton)
+        visible = not checkbutton.get_active()
+        g = gconf.client_get_default()
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        if visible and 'size' not in value:
+            value.insert(1, 'size')
+        if not visible and 'size' in value:
+            value.remove('size')
+        g.set_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING, value)
+    
+    n = gtk.CheckButton(_('Hide "size" column in Nautilus list view to speed up Nautilus'))
+    n.set_active(not size_column_visible())
+    n.connect('toggled', set_size_column_visible)
+    n.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
+    table.attach(n, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    return Setting(table, _('More Nautilus Settings'), ['nautilus'])
 
 def __font_size_setting():
     def change_font(w, isincrease):
@@ -161,12 +187,13 @@ def __layout_of_window_titlebar_buttons():
     label = gtk.Label(_('The layout of window title-bar buttons'))
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout')
     o = GConfComboBox('/apps/metacity/general/button_layout', 
-                      [_('GNOME classic'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'close,minimize,maximize,menu:'],) 
+                      [_('GNOME classic'), _('MAC OS X'), _('Lucid')],
+                      ['menu:minimize,maximize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'],) 
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)
     return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
+
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
@@ -391,41 +418,6 @@ def __advance_setting():
     
     return Setting(table, _('Advance settings'), ['desktop'])
 
-def __more_file_permissions_setting():
-    vbox = gtk.VBox()
-    o = GConfCheckButton(_('Show more permissions setting in file property dialog'),
-                '/apps/nautilus/preferences/show_advanced_permissions')
-    vbox.pack_start(o, False)
-    return Setting(vbox, _('More permissions setting in file property dialog'), ['nautilus'])
-
-def __hide_nautilus_size_column():
-    def size_column_visible():
-        import gconf
-        g = gconf.client_get_default()
-        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
-        return 'size' in value
-    
-    def set_size_column_visible(checkbutton):
-        assert isinstance(checkbutton, gtk.CheckButton)
-        visible = not checkbutton.get_active()
-        
-        import gconf
-        g = gconf.client_get_default()
-        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
-        if visible and 'size' not in value:
-            value.insert(1, 'size')
-        if not visible and 'size' in value:
-            value.remove('size')
-        g.set_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING, value)
-    
-    checkbutton = gtk.CheckButton(_('Hide "size" column in Nautilus list view to speed up Nautilus'))
-    checkbutton.set_active(not size_column_visible())
-    checkbutton.connect('toggled', set_size_column_visible)
-    checkbutton.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
-    box = gtk.VBox(False, 10)
-    box.pack_start(checkbutton, False)
-    return Setting(box, _('Speed up Nautilus'), ['nautilus'])
-
 def get():
     try:
         import gconf
@@ -441,14 +433,12 @@ def get():
             __gnome_session_setting(),
             __textbox_context_menu_setting(),
             __disable_terminal_beep(),
-            __media_automount(),
             __backlight(),
             __advance_setting(),
-            __more_file_permissions_setting(),
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
             __layout_of_window_titlebar_buttons(),
-            __hide_nautilus_size_column(),
+            __more_nautilus_settings(),
             ]
     except:
         import traceback
