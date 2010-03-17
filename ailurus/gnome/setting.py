@@ -398,6 +398,34 @@ def __more_file_permissions_setting():
     vbox.pack_start(o, False)
     return Setting(vbox, _('More permissions setting in file property dialog'), ['nautilus'])
 
+def __hide_nautilus_size_column():
+    def size_column_visible():
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        return 'size' in value
+    
+    def set_size_column_visible(checkbutton):
+        assert isinstance(checkbutton, gtk.CheckButton)
+        visible = not checkbutton.get_active()
+        
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        if visible and 'size' not in value:
+            value.insert(1, 'size')
+        if not visible and 'size' in value:
+            value.remove('size')
+        g.set_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING, value)
+    
+    checkbutton = gtk.CheckButton(_('Hide "size" column in Nautilus list view to speed up Nautilus'))
+    checkbutton.set_active(not size_column_visible())
+    checkbutton.connect('toggled', set_size_column_visible)
+    checkbutton.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
+    box = gtk.VBox(False, 10)
+    box.pack_start(checkbutton, False)
+    return Setting(box, _('Speed up Nautilus'), ['nautilus'])
+
 def get():
     try:
         import gconf
@@ -420,6 +448,7 @@ def get():
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
             __layout_of_window_titlebar_buttons(),
+            __hide_nautilus_size_column(),
             ]
     except:
         import traceback
