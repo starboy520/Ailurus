@@ -140,7 +140,7 @@ class WINE_Chinese(_apt_install):
         if not os.path.exists( os.path.expanduser('~/.wine') ):
             run("wineprefixcreate") #Do not use 'winecfg' !
         run("cp %s ~/.wine/drive_c/windows/Fonts/"%self.wqy)
-        run(r"wine regedit "+D+"files/wine_wqy_font.reg")
+        run(r"wine regedit "+D+"../support/wine_wqy_font.reg")
     def installed(self):
         if not _apt_install.installed(self):
             return False

@@ -286,7 +286,7 @@ class ShowALinuxSkill:
             f.write('[Desktop Entry]\n'
                     'Name=Show a random Linux skill after logging in.\n'
                     'Comment=Show a random Linux skill after you log in to GNOME. Help you study Linux.\n'
-                    'Exec=/usr/bin/show-a-linux-skill-bubble\n'
+                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
                     'Terminal=false\n'
                     'Type=Application\n'
                     'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
