@@ -158,19 +158,17 @@ def __font_size_setting():
     hbox.show_all()
     return Setting(hbox, _('One-click changing font size'), ['font'])
 
-def __titlebar_layout():
-    label_layout = gtk.Label(_('title bar button layout:'))
-    label_layout.set_tooltip_text(_('The layout of titlebar button layout.')+_('\nGConf key: ')+'/app/metacity/general/button_layout')
-    table = gtk.Table()
-    table.set_col_spacings(5)
-    table.attach(label_layout, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    table.attach(
-            GConfComboBox(
-                 '/apps/metacity/general/button_layout', [_('normal Layout'), _('Mac OS Layout'), _('Lucid Layout')],
-                 [':maximize,minimize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'], _('The layout of title bar'),
-                 ),
-                 1, 2, 0, 1, gtk.FILL, gtk.FILL )
-    return Setting(table, _('titlebar button layout style'), ['window'])
+def __layout_of_window_titlebar_buttons():
+    label = gtk.Label(_('The layout of window title-bar buttons'))
+    label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout')
+    o = GConfComboBox('/apps/metacity/general/button_layout', 
+                      [_('GNOME classic'), _('MAC OS X'), _('Lucid')],
+                      ['menu:minimize,maximize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'],) 
+    hbox = gtk.HBox(False, 10)
+    hbox.pack_start(label, False)
+    hbox.pack_start(o, False)
+    return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
+
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
@@ -369,26 +367,31 @@ def __suspend_and_hibernate():
 def __advance_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
-    a = gtk.Label(_('Change the default filemanager: '))
-    a.set_alignment(0, 0.5)
-    table.attach(a, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-    f = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
-    table.attach(f, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
-    b = gtk.Label(_('Change the default panel: ') )
-    b.set_alignment(0, 0.5)
-    table.attach(b, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    p = GConfTextEntry('/desktop/gnome/session/required_components/panel')
-    table.attach(p, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    c = gtk.Label(_('Change the default windowsmanager: ') )
-    c.set_alignment(0, 0.5)
-    table.attach(c, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    w = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
-    table.attach(w, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    
+    o = label_left_align(_('Change default file manager to:'))
+    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+
+    o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    
+    o = label_left_align(_('Change default panel program to:') )
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
 
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
+    
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Advance Settings'), ['desktop'])
+    
+    return Setting(table, _('Advance settings'), ['desktop'])
 
 def __more_file_permissions_setting():
     vbox = gtk.VBox()
@@ -397,38 +400,33 @@ def __more_file_permissions_setting():
     vbox.pack_start(o, False)
     return Setting(vbox, _('More permissions setting in file property dialog'), ['nautilus'])
 
-def __turn_off_SIZE():
-    def turn_off_SIZE_column(w):
-        
-        value_list = ['name', 'type', 'date_modified']
-        value_icon = ['none', 'date_modified']
-        key_list = '/apps/nautilus/list_view/default_visible_columns'
-        key_icon = '/apps/nautilus/icon_view/captions'
+def __hide_nautilus_size_column():
+    def size_column_visible():
+        import gconf
         g = gconf.client_get_default()
-        g.set_list(key_list, gconf.VALUE_STRING, value_list)
-        g.set_list(key_icon, gconf.VALUE_STRING, value_icon)
-        
-    def reset_column_view(w):
-        value_list = ['name', 'size','type', 'date_modified']
-        value_icon = ['none', 'size', 'date_modified']
-        key_list = '/apps/nautilus/list_view/default_visible_columns'
-        key_icon = '/apps/nautilus/icon_view/captions'
-        g = gconf.client_get_default()
-        g.set_list(key_list, gconf.VALUE_STRING, value_list)
-        g.set_list(key_icon, gconf.VALUE_STRING, value_icon)
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        return 'size' in value
     
-    table = gtk.Table
-    button_turn_off_SIZE_column = gtk.Button(_('Speed up Nautilus').center(30))
-    button_turn_off_SIZE_column.set_tooltip_text(_('Turn off SIZE columns in the list view and the icons view can speed up nautilus ,'
-                                                'click Reset can turn on Size columns again'))
-    button_turn_off_SIZE_column.connect('clicked', turn_off_SIZE_column)
-    button_reset_column_view = gtk.Button(_('Reset').center(30))
-    button_reset_column_view.connect('clicked', reset_column_view)
-    hbox = gtk.HBox(False, 10)
-    hbox.pack_start(button_turn_off_SIZE_column, False, False)
-    hbox.pack_start(button_reset_column_view, False, False)
-    hbox.show_all()
-    return Setting(hbox, _('Speed up Nautilus'), ['nautilus'])
+    def set_size_column_visible(checkbutton):
+        assert isinstance(checkbutton, gtk.CheckButton)
+        visible = not checkbutton.get_active()
+        
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
+        if visible and 'size' not in value:
+            value.insert(1, 'size')
+        if not visible and 'size' in value:
+            value.remove('size')
+        g.set_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING, value)
+    
+    checkbutton = gtk.CheckButton(_('Hide "size" column in Nautilus list view to speed up Nautilus'))
+    checkbutton.set_active(not size_column_visible())
+    checkbutton.connect('toggled', set_size_column_visible)
+    checkbutton.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
+    box = gtk.VBox(False, 10)
+    box.pack_start(checkbutton, False)
+    return Setting(box, _('Speed up Nautilus'), ['nautilus'])
 
 def get():
     try:
@@ -451,8 +449,8 @@ def get():
             __more_file_permissions_setting(),
             __suspend_and_hibernate(),
             __restriction_on_current_user(),
-            __titlebar_layout(),
-            __turn_off_SIZE(),
+            __layout_of_window_titlebar_buttons(),
+            __hide_nautilus_size_column(),
             ]
     except:
         import traceback

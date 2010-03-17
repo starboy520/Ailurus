@@ -39,39 +39,37 @@ class ChangeTerminalColor(_set_gconf):
                   )
         self.add=()
 
-class Some_usefull_Script():
-    __doc__ = _('Add some useful Nautilus Scripts')
-    detail = _('copy the script file into ~/.gnome2/nautilus-scripts\ninclude Copy File to, Install Theme, open File in Geditor as root ,etc\nscripts from http://www.nanolx.org')
-#    category = 'tweak'
-    size = 5 * 1000
-    time = 30
-    logo = 'gedit.png'
+class NScripts():
+    __doc__ = _('NScripts: a set of useful Nautilus scripts')
+    detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus. '
+               'Its web site is http://freshmeat.net/projects/nscripts . '
+               'NScripts is installed in ~/.gnome2/nautilus-scripts.')
+    logo = 'nautilus.png'
+
     def install(self):
         f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
-#        os.system('tar -C directory=/home/velly/.gnome2/nautilus-scripts/nscripts -jxvf ' + f )
-        os.system('tar -jxf'+f)
-        os.system('cp -r nscripts/* ~/.gnome2/nautilus-scripts')
-        os.system('rm ~/.gnome2/nautilus-scripts/ChangeLog')
-        os.system('rm ~/.gnome2/nautilus-scripts/TODO')
-        os.system('touch ~/.gnome2/nautilus-scripts/.Ailurus')
-        os.system('echo "This is a file for recognize if it install the usefull_script or not" > ~/.gnome2/nautilus-scripts/.Ailurus')
-        
+        import os
+        dir = os.path.expanduser('~/.gnome2/nautilus-scripts/')
+        if not os.path.exists(dir): os.mkdir(dir)
+        FileServer.chdir('/tmp')
+        try:
+            os.system('tar xf ' + f)
+            os.system('cp -r nscripts/* ' + dir)
+            os.remove(dir + 'ChangeLog')
+            os.remove(dir + 'TODO')
+            os.system('touch ' + dir +'.nscripts_is_installed')
+        finally:
+            FileServer.chdir_back()
+
     def installed(self):
-        d = os.path.join(os.path.expanduser("~"), ".gnome2/nautilus-scripts/.Ailurus")
-        return os.path.isfile(d)
+        import os
+        d = os.path.expanduser('~/.gnome2/nautilus-scripts/.nscripts_is_installed')
+        return os.path.exists(d)
+
     def remove(self):
-        List = [ '/Admin/Apt*', '/Admin/WhichPKG*', '/Files/Chkmd5', '/Files/CopyTo', '/Files/Mkmd5', '/Files/MkPatch',
-                '/Files/MoveTo','/Files/Shredder', '/Root/Rootilus', '/Root/RootOpenInGEdit', '/Root/RootTermInCurdir',
-                '/Utils/InstallTheme', '/Utils/OpenInGEdit', '/Utils/SendShortcutTo', '/Utils/SendToMenu','/Utils/SetAsSplash',
-                '/Utils/SetAsWallpaper', '/Utils/TermInCurdir']
-        for m in List:
-            os.system('rm -r ~/.gnome2/nautilus-scripts%s' % m)
-        dirList = ['/Admin', '/Files', '/Root', '/Utils']
-        for n in dirList:
-                os.system('rmdir ~/.gnome2/nautilus-scripts%s' % n)
-        os.system('rm ~/.gnome2/nautilus-scripts/.Ailurus')
-    def __init(self):
-        pass
+        for dir in ['Admin', 'Files', 'Root', 'Utils']:
+            os.system('rm -rf ~/.gnome2/nautilus-scripts/' + dir)
+        os.system('rm ~/.gnome2/nautilus-scripts/.nscripts_is_installed')
 
 class Gedit_GB2312(_set_gconf) :
     __doc__ = _('Add GB2312 detection ability to GEdit')
