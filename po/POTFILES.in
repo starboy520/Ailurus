@@ -1,3 +1,6 @@
+ailurus.desktop.in
+support/policykit0/cn.ailurus.policy.in
+support/policykit1/cn.ailurus.policy.in
 ./ailurus/fedora/osinfo.py
 ./ailurus/fedora/apps.py
 ./ailurus/fedora/controversial_repository.py

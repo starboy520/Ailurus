@@ -11,4 +11,4 @@ include support/*
 include support/dbus/*
 include support/policykit0/*
 include support/policykit1/*
-include ailurus.1 ailurus.desktop
+include ailurus.1 ailurus.desktop ailurus.desktop.in
