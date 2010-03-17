@@ -166,8 +166,8 @@ def __titlebar_layout():
     table.attach(label_layout, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     table.attach(
             GConfComboBox(
-                 '/apps/metacity/general/button_layout', [_('normal Layout'), _('Mac OS Layout')],
-                 [':maximize,minimize,close', 'close,minimize,maximize:'], _('The layout of title bar') 
+                 '/apps/metacity/general/button_layout', [_('normal Layout'), _('Mac OS Layout'), _('Lucid Layout')],
+                 [':maximize,minimize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'], _('The layout of title bar'),
                  ),
                  1, 2, 0, 1, gtk.FILL, gtk.FILL )
     return Setting(table, _('titlebar button layout style'), ['window'])
