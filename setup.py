@@ -2,6 +2,7 @@
 from distutils.core import setup
 from DistUtilsExtra.command import *
 from glob import glob
+import os
 
 f = open('version')
 version = f.read().strip()
@@ -29,7 +30,7 @@ setup(name = 'ailurus',
         ('/etc/dbus-1/system.d', ['support/dbus/cn.ailurus.conf']),
         ('share/PolicyKit/policy/', ['support/policykit0/cn.ailurus.policy']),
         ('share/polkit-1/actions/', ['support/policykit1/cn.ailurus.policy']),
-        ('share/ailurus/support/', glob('support/*') )
+        ('share/ailurus/support/', [ e for e in glob('support/*') if os.path.isfile(e)] )
       ],
       scripts = ['bin/ailurus'],
       cmdclass = { 'build' :  build_extra.build_extra,
