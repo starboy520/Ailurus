@@ -109,7 +109,7 @@ def __button_icon_setting():
              '/desktop/gnome/interface/buttons_have_icons',
              _('Whether buttons may display an icon next to text.'))
     vbox.pack_start(o, False)
-    return Setting(vbox, _('Menu entry icons setting'), ['icon'])
+    return Setting(vbox, _('Button icons setting'), ['icon'])
 
 def __disable_terminal_beep():
     vbox = gtk.VBox()
