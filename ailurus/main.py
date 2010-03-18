@@ -48,9 +48,9 @@ class MainView:
         return item
     
     def __create_toolbar(self):
-        item_show_day_tip = self.__create_toolitem(D+'other_icons/toolbar_study.png', _('Study\nLinux'), self.show_day_tip)
+        item_show_day_tip = self.__create_toolitem(D+'umut_icons/m_tip_of_the_day.png', _('Study\nLinux'), self.show_day_tip)
         item_propose_suggestion = self.__create_toolitem(D+'umut_icons/m_propose_suggestion.png', _('Propose\nSuggestion'), lambda *w: report_bug())
-        item_quit = self.__create_toolitem(D+'other_icons/toolbar_quit.png', _('Quit'), self.terminate_program)
+        item_quit = self.__create_toolitem(D+'umut_icons/m_quit.png', _('Quit'), self.terminate_program)
 
         toolbar = gtk.Toolbar()
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
