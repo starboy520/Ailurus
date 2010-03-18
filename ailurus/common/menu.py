@@ -39,18 +39,7 @@ def show_about_dialog(*w): # called by __help
           'CHEN Yangyang <skabyy@gmail.com>',
           'Starboy Qi <starboy.qi@gmail.com>',
           'MA Yue <velly.empire@gmail.com>' ] )
-    about.set_translator_credits( '''ZHANG Jin long <zhangjinlong0717@gmail.com>
-CHEN Yangyang <skabyy@gmail.com>
-GUO Jiu liang <saturnman2008@gmail.com>
-XIE Sai ning <xiesaining@gmail.com>
-Federico Vera
-Sergey Sedov
-Royto
-Vladimir Kolev
-Matthias Metzger
-Maksim Lagoshin
-Rafael Santos
-Marco Silva''' )
+    about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
           'SU Yun',
           'M. Umut Pulat    http://12m3.deviantart.com/', 
