@@ -108,11 +108,10 @@ class Config:
         except: return True
     @classmethod
     def get_locale(cls):
-        try:
-            import locale
-            return locale.getdefaultlocale()[0]
-        except: # language code and encoding may be None if their values cannot be determined.
-            return 'en_US'
+        import locale
+        value = locale.getdefaultlocale()[0]
+        if value: return value # language code and encoding may be None if their values cannot be determined.
+        else: return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
         return cls.get_locale().startswith('zh')
