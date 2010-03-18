@@ -132,10 +132,11 @@ All rights of the applications installed by Ailurus are preserved by their autho
         buff = gtk.TextBuffer()
         import os
         if not os.path.exists('/usr/share/ailurus/ChangeLog'):
-            buff.set_text(None)
-        with open('/usr/share/ailurus/ChangeLog') as f:
-            t = f.read()
-        buff.set_text(t)        
+            buff.set_text('no ChangeLog')
+        else:
+            with open('/usr/share/ailurus/ChangeLog') as f:
+                t = f.read()
+            buff.set_text(t)        
         content.set_buffer(buff)
         content.set_editable(False)
         content.set_cursor_visible(False)
@@ -145,8 +146,8 @@ All rights of the applications installed by Ailurus are preserved by their autho
         scroll.set_shadow_type(gtk.SHADOW_NONE)
         scroll.set_size_request(-1, 500)
         dialog = gtk.Dialog( _('ChangeLog'), None, 
-            gtk.DIALOG_MODAL | 
-            gtk.DIALOG_NO_SEPARATOR, buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
+                        gtk.DIALOG_MODAL | 
+                        gtk.DIALOG_NO_SEPARATOR, buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
 
         dialog.set_border_width(10)
         dialog.vbox.pack_start(scroll, False, False)
