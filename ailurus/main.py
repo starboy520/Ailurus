@@ -32,8 +32,6 @@ class MainView:
         item_pane_name = gtk.ToolItem()
         item_pane_name.add(panel_name)
 
-        self.toolbar_item_back = item_b_back = image_toolitem(D+'other_icons/toolbar_back.png', self.back_one_pane, tooltip=_('Go back one panel') )
-        self.toolbar_item_forward = item_b_forward = image_toolitem(D+'other_icons/toolbar_forward.png', self.forward_one_pane, tooltip=_('Go forward one panel') )
         item_show_day_tip = image_toolitem(D+'other_icons/toolbar_study.png', self.show_day_tip, tooltip=_('Display "Tip of the day"') )
         item_propose_suggestion = image_toolitem(D+'umut_icons/m_propose_suggestion.png', lambda *w: report_bug(), tooltip=_('Propose suggestion and report bugs') )
         item_quit = image_toolitem(D+'other_icons/toolbar_quit.png', self.terminate_program, tooltip=_("Quit") )
@@ -44,9 +42,7 @@ class MainView:
         toolbar.insert(item_pane_name, 0)
         toolbar.insert(item_show_day_tip, 1)
         toolbar.insert(item_propose_suggestion, 2)
-        toolbar.insert(item_b_back, 3)
-        toolbar.insert(item_b_forward, 4)
-        toolbar.insert(item_quit, 5)
+        toolbar.insert(item_quit, 3)
 
         return toolbar
 
@@ -73,37 +69,10 @@ class MainView:
             item.add(button)
             self.toolbar.insert(item, 1)
 
-    def __update_item_buttons_state(self):
-        self.toolbar_item_back.set_sensitive(len(self.__navigate_1)>1)
-        self.toolbar_item_forward.set_sensitive(len(self.__navigate_2))
-        import common.menu
-        common.menu.set_back_forward_sensitive(len(self.__navigate_1)>1, len(self.__navigate_2))
-
-    def back_one_pane(self, w):
-        if len(self.__navigate_1)>1:
-            name = self.__navigate_1.pop()
-            assert isinstance(name, str)
-            self.__navigate_2.insert(0, name)
-            name = self.__navigate_1[-1]
-            self.change_content_basic(name)
-            self.__update_item_buttons_state()
-        
-    def forward_one_pane(self, w):
-        if len(self.__navigate_2):
-            name = self.__navigate_2.pop(0)
-            assert isinstance(name, str)
-            self.__navigate_1.append(name)
-            self.change_content_basic(name)
-            self.__update_item_buttons_state()
-
     def activate_pane(self, name):
         assert isinstance(name, str)
         assert name in self.contents, [name, self.contents.keys()]
-        if self.__navigate_1==[] or self.__navigate_1[-1]!=name:
-            self.__navigate_1.append(name)
-        self.__navigate_2 = []
         self.change_content_basic(name)
-        self.__update_item_buttons_state()
 
     def change_content_basic(self, name):
         assert isinstance(name, str)
@@ -190,11 +159,6 @@ class MainView:
         self.app_classes = None
         self.window = None # MainView window
         self.stop_delete_event = False
-        self.__navigate_1 = [] #backward and forward
-        self.__navigate_2 = [] #backward and forward
-        from support.disabledpane import DisabledPane
-        self.disabledpane = DisabledPane()
-        
         self.contents = {}
         
         self.toggle_area = gtk.VBox()

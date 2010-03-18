@@ -119,6 +119,7 @@ All rights of the applications installed by Ailurus are preserved by their autho
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     
     about.vbox.show_all()
+    
     about.run()
     about.destroy()
 
@@ -233,15 +234,9 @@ def check_update(*w):
         traceback.print_exc()
     
 def __navigate(main_view):
-    back = image_stock_menuitem(gtk.STOCK_GO_BACK, _('Back to previous pane'))
-    back.connect('activate', main_view.back_one_pane)
-    set_back_forward_sensitive.back = back
-    forward = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Go forward one pane'))
-    forward.connect('activate', main_view.forward_one_pane)
-    set_back_forward_sensitive.forward = forward
     quit = image_stock_menuitem(gtk.STOCK_QUIT, _('Quit'))
     quit.connect('activate', main_view.terminate_program)
-    return [ back, forward, quit ]
+    return [ quit ]
 
 def __info(main_view):
     hardware = image_file_menuitem(_('Hardware information'), D+'umut_icons/m_hardware.png', 16, 3)
@@ -379,10 +374,7 @@ def __help(main_view):
     return [ help_blog, help_update, help_report_bug, help_get_new, help_translate, special_thank, about ] 
 
 def get(main_view):
-    assert hasattr(main_view, 'back_one_pane')
-    assert hasattr(main_view, 'forward_one_pane')
     assert hasattr(main_view, 'terminate_program')
-    assert hasattr(main_view, 'activate_pane')
     assert hasattr(main_view, 'show_day_tip')
 
     return [
@@ -394,8 +386,3 @@ def get(main_view):
         [_('Preferences'), __preferences(main_view), 22],
         [_('Help'),             __help(main_view),           23],
         ]
-
-def set_back_forward_sensitive(back, forward):
-    if hasattr(set_back_forward_sensitive, 'back') and hasattr(set_back_forward_sensitive, 'forward'):
-        set_back_forward_sensitive.back.set_sensitive(back)
-        set_back_forward_sensitive.forward.set_sensitive(forward)
