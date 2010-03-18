@@ -233,30 +233,6 @@ def check_update(*w):
         import traceback
         traceback.print_exc()
     
-def __navigate(main_view):
-    quit = image_stock_menuitem(gtk.STOCK_QUIT, _('Quit'))
-    quit.connect('activate', main_view.terminate_program)
-    return [ quit ]
-
-def __info(main_view):
-    hardware = image_file_menuitem(_('Hardware information'), D+'umut_icons/m_hardware.png', 16, 3)
-    hardware.connect('activate', main_view.activate_pane, 'HardwareInfoPane')
-    linux = image_file_menuitem(_('Linux information'), D+'umut_icons/m_linux.png', 16, 3)
-    linux.connect('activate', main_view.activate_pane, 'LinuxInfoPane')
-    return [ hardware, linux ]
-
-def __setting(main_view):
-    system_settings = image_file_menuitem(_('System settings'), D+'umut_icons/m_linux_setting.png', 16, 3)
-    system_settings.connect('activate', main_view.activate_pane, 'SystemSettingPane')
-    return [ system_settings ]
-
-def __apps(main_view):
-    install_remove = image_file_menuitem(_('Install/Remove'), D+'umut_icons/m_install_remove.png', 16, 3)
-    install_remove.connect('activate', main_view.activate_pane, 'InstallRemovePane')
-    offline = image_file_menuitem(_('Cache installation files'), D+'umut_icons/m_cache_files.png', 16, 3)
-    offline.connect('activate', main_view.activate_pane, 'OfflineInstallPane')
-    return [ install_remove, offline ]
-
 def __learning(main_view):
     study_url_items = [ 
         # (use stock?, stock name or icon path, text, web page url, Chinese only?
@@ -378,10 +354,6 @@ def get(main_view):
     assert hasattr(main_view, 'show_day_tip')
 
     return [
-#        [_('Navigation'),   __navigate(main_view),   0], 
-        [_('Information'),  __info(main_view),          11],
-        [_('Adjustments'), __setting(main_view),      12],
-        [_('Applications'), __apps(main_view),         13],
         [_('Learning'),      __learning(main_view),     21],
         [_('Preferences'), __preferences(main_view), 22],
         [_('Help'),             __help(main_view),           23],
