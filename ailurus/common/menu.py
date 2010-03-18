@@ -240,21 +240,21 @@ def __navigate(main_view):
 
 def __info(main_view):
     hardware = image_file_menuitem(_('Hardware information'), D+'umut_icons/m_hardware.png', 16, 3)
-    hardware.connect_object('activate', main_view.activate_pane, 'HardwareInfoPane')
+    hardware.connect('activate', main_view.activate_pane, 'HardwareInfoPane')
     linux = image_file_menuitem(_('Linux information'), D+'umut_icons/m_linux.png', 16, 3)
-    linux.connect_object('activate', main_view.activate_pane, 'LinuxInfoPane')
+    linux.connect('activate', main_view.activate_pane, 'LinuxInfoPane')
     return [ hardware, linux ]
 
 def __setting(main_view):
     system_settings = image_file_menuitem(_('System settings'), D+'umut_icons/m_linux_setting.png', 16, 3)
-    system_settings.connect_object('activate', main_view.activate_pane, 'SystemSettingPane')
+    system_settings.connect('activate', main_view.activate_pane, 'SystemSettingPane')
     return [ system_settings ]
 
 def __apps(main_view):
     install_remove = image_file_menuitem(_('Install/Remove'), D+'umut_icons/m_install_remove.png', 16, 3)
-    install_remove.connect_object('activate', main_view.activate_pane, 'InstallRemovePane')
+    install_remove.connect('activate', main_view.activate_pane, 'InstallRemovePane')
     offline = image_file_menuitem(_('Cache installation files'), D+'umut_icons/m_cache_files.png', 16, 3)
-    offline.connect_object('activate', main_view.activate_pane, 'OfflineInstallPane')
+    offline.connect('activate', main_view.activate_pane, 'OfflineInstallPane')
     return [ install_remove, offline ]
 
 def __learning(main_view):

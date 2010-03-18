@@ -25,51 +25,59 @@ from lib import *
 from libu import *
 
 class MainView:
-    def __toolbar(self):
-        self.panel_name  = panel_name = gtk.Label()
-        panel_name.set_tooltip_text(_('Name of current panel') )
-        panel_name.set_size_request(300, -1)
-        item_pane_name = gtk.ToolItem()
-        item_pane_name.add(panel_name)
-
-        item_show_day_tip = image_toolitem(D+'other_icons/toolbar_study.png', self.show_day_tip, tooltip=_('Display "Tip of the day"') )
-        item_propose_suggestion = image_toolitem(D+'umut_icons/m_propose_suggestion.png', lambda *w: report_bug(), tooltip=_('Propose suggestion and report bugs') )
-        item_quit = image_toolitem(D+'other_icons/toolbar_quit.png', self.terminate_program, tooltip=_("Quit") )
+    def __create_toolitem(self, icon, text, callback, *callback_args):
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 48, 48)
+        image = gtk.image_new_from_pixbuf(pixbuf)
+        align_image = gtk.Alignment(0.5, 0.5)
+        align_image.add(image)
+        align_image.set_size_request(65, -1)
+        text = gtk.Label(text)
+        import pango
+        text.modify_font(pango.FontDescription('Sans 9'))
+        text.set_alignment(0.5, 0.5)
+        text.set_justify(gtk.JUSTIFY_CENTER)
+        vbox = gtk.VBox(False, 5)
+        vbox.pack_start(align_image)
+        vbox.pack_start(text)
+        button = gtk.Button()
+        button.add(vbox)
+        button.set_relief(gtk.RELIEF_NONE)
+        button.connect('clicked', callback, *callback_args)
+        item = gtk.ToolItem()
+        item.add(button)
+        return item
+    
+    def __create_toolbar(self):
+        item_show_day_tip = self.__create_toolitem(D+'other_icons/toolbar_study.png', _('Study\nLinux'), self.show_day_tip)
+        item_propose_suggestion = self.__create_toolitem(D+'umut_icons/m_propose_suggestion.png', _('Propose\nSuggestion'), lambda *w: report_bug())
+        item_quit = self.__create_toolitem(D+'other_icons/toolbar_quit.png', _('Quit'), self.terminate_program)
 
         toolbar = gtk.Toolbar()
         toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
-        toolbar.set_style(gtk.TOOLBAR_ICONS)
-        toolbar.insert(item_pane_name, 0)
-        toolbar.insert(item_show_day_tip, 1)
-        toolbar.insert(item_propose_suggestion, 2)
-        toolbar.insert(item_quit, 3)
+        toolbar.set_style(gtk.TOOLBAR_BOTH)
+        toolbar.insert(item_show_day_tip, 0)
+        toolbar.insert(item_propose_suggestion, 1)
+        toolbar.insert(item_quit, 2)
 
         return toolbar
 
     def add_more_buttons_in_toolbar(self):
         List = [
-            ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware information'), ),
-            ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux information'), ),
-            ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System settings'), ),
-            ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install/Remove'), ),
-            ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache installation files'), ),
-            ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Find fast repository mirror'), ),
-            ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('APT recovery'), ),
+            ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware\nInformation'), ),
+            ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux\nInformation'), ),
+            ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System\nSettings'), ),
+            ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install\nSoftware'), ),
+            ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache\nFiles'), ),
+            ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
+            ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
                      ]
         List.reverse()
-        for name, icon, tooltip in List:
+        for name, icon, text in List:
             if not name in self.contents: continue
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 24, 24)
-            button = gtk.Button()
-            button.add( gtk.image_new_from_pixbuf(pixbuf) )
-            button.set_relief(gtk.RELIEF_NONE)
-            button.set_tooltip_text(tooltip)
-            button.connect_object('clicked', self.activate_pane, name)
-            item = gtk.ToolItem()
-            item.add(button)
-            self.toolbar.insert(item, 1)
+            item = self.__create_toolitem(icon, text, self.activate_pane, name)
+            self.toolbar.insert(item, 0)
 
-    def activate_pane(self, name):
+    def activate_pane(self, widget, name):
         assert isinstance(name, str)
         assert name in self.contents, [name, self.contents.keys()]
         self.change_content_basic(name)
@@ -82,7 +90,6 @@ class MainView:
         content = self.contents[name]
         self.toggle_area.add(content)
         self.toggle_area.show_all()
-        self.panel_name.set_markup('<b>%s</b>'%self.contents[name].name)
 
     def lock(self):
         self.stop_delete_event = True
@@ -116,7 +123,7 @@ class MainView:
 
     def offline_mode_button(self):
         button = image_stock_button(gtk.STOCK_HARDDISK, _('Cache installation files') )
-        button.connect('clicked', lambda w: self.activate_pane('OfflineInstallPane'))
+        button.connect('clicked', lambda w: self.activate_pane(None, 'OfflineInstallPane'))
         return button
 
     def register(self, pane):
@@ -169,7 +176,7 @@ class MainView:
         self.menubar = gtk.MenuBar()
         vbox.pack_start(self.menubar, False, False)
         
-        self.toolbar = self.__toolbar()
+        self.toolbar = self.__create_toolbar()
         vbox.pack_start(self.toolbar, False)
         
         vbox.pack_start(self.toggle_area, True, True)
@@ -313,7 +320,7 @@ for module in [ COMMON, DESKTOP, DISTRIBUTION ]:
 
 main_view.add_more_buttons_in_toolbar()
 
-main_view.activate_pane('InstallRemovePane')
+main_view.activate_pane(None, 'InstallRemovePane')
 main_view.window.show_all()
 splash.destroy()
 # show tip of the day

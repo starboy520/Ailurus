@@ -27,12 +27,12 @@ from libu import *
 
 def __repository(main_view):
     fastest_mirror = image_file_menuitem(_('Find fast repository mirror'), D+'umut_icons/m_fastest_repos.png', 16, 3)
-    fastest_mirror.connect_object('activate', main_view.activate_pane, 'UbuntuFastestMirrorPane')
+    fastest_mirror.connect('activate', main_view.activate_pane, 'UbuntuFastestMirrorPane')
     return [ fastest_mirror ]
 
 def __recovery(main_view):
     apt_recovery = image_file_menuitem( _('APT recovery'), D+'umut_icons/m_apt_recovery.png', 16, 3)
-    apt_recovery.connect_object('activate', main_view.activate_pane, 'UbuntuAPTRecoveryPane')
+    apt_recovery.connect('activate', main_view.activate_pane, 'UbuntuAPTRecoveryPane')
     return [ apt_recovery ]
 
 def __study(main_view):
