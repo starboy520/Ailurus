@@ -126,6 +126,38 @@ All rights of the applications installed by Ailurus are preserved by their autho
     #addr2.set_selectable(True)
     about.vbox.pack_start( addr2, False, False )
     #show last build time
+    changelog = gtk.Button(_('ChangeLog'))
+    def callback(*w):
+        content = gtk.TextView()
+        buff = gtk.TextBuffer()
+        import os
+        if not os.path.exists('/usr/share/ailurus/ChangeLog'):
+            buff.set_text(None)
+        with open('/usr/share/ailurus/ChangeLog') as f:
+            t = f.read()
+        buff.set_text(t)        
+        content.set_buffer(buff)
+        content.set_editable(False)
+        content.set_cursor_visible(False)
+        scroll = gtk.ScrolledWindow()
+        scroll.add_with_viewport(content)
+        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_NONE)
+        scroll.set_size_request(-1, 500)
+        dialog = gtk.Dialog( _('ChangeLog'), None, 
+            gtk.DIALOG_MODAL | 
+            gtk.DIALOG_NO_SEPARATOR, buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
+
+        dialog.set_border_width(10)
+        dialog.vbox.pack_start(scroll, False, False)
+        dialog.vbox.set_size_request(500, -1)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
+            
+    changelog.connect('clicked',callback)
+    about.action_area.pack_start(changelog, False, False )
+    about.action_area.reorder_child(changelog, 0)
     from lib import AILURUS_RELEASE_DATE
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     
