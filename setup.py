@@ -18,6 +18,8 @@ setup(name = 'ailurus',
       data_files = [
         ('share/applications', ['ailurus.desktop']),
         
+        ('share/ailurus/', ['ChangeLog']),
+        
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
         ('share/ailurus/data/nautilus_screenshot/', glob('data/nautilus_screenshot/*.png') ),
         ('share/ailurus/data/nautilus_screenshot/es/', glob('data/nautilus_screenshot/es/*.png') ),
