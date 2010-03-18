@@ -73,9 +73,9 @@ def load_app_classes(common, desktop, distribution):
                 if hasattr(obj, 'support'):
                     if obj().support()==False: continue
                 if hasattr(obj, 'international'): 
-                    if Config.get_show_Chinese_applications(): continue
+                    if Config.is_Chinese_locale(): continue
                 if hasattr(obj, 'Chinese'): 
-                    if Config.get_show_Chinese_applications()==False: continue
+                    if Config.is_Chinese_locale()==False: continue
                 obj.cache_installed = obj().installed()
                 if not isinstance(obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
@@ -110,9 +110,9 @@ def _load_app_classes_from_module(module):
             if hasattr(obj, 'support'):
                 if obj().support()==False: continue
             if hasattr(obj, 'international'): 
-                if Config.get_show_Chinese_applications(): continue
+                if Config.is_Chinese_locale(): continue
             if hasattr(obj, 'Chinese'): 
-                if Config.get_show_Chinese_applications()==False: continue
+                if Config.is_Chinese_locale()==False: continue
             obj.cache_installed = obj().installed()
             if not isinstance(obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'

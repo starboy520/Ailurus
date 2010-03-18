@@ -69,7 +69,7 @@ def __study(main_view):
             if item == None: 
                 ret.append( gtk.SeparatorMenuItem() )
                 continue 
-            if item[4]==False or (item[4] and Config.get_show_Chinese_applications()):
+            if item[4]==False or (item[4] and Config.is_Chinese_locale()):
                 if item[0]: menu_item = image_stock_menuitem(item[1], item[2])
                 else: menu_item = image_file_menuitem(item[2], item[1], 16, 3)
                 menu_item.url = item[3]

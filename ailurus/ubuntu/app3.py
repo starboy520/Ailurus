@@ -437,7 +437,7 @@ class ChildsPlay(_apt_install):
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
-        lang = Config.get_locale()
+        lang = Config.get_locale().split('_')[0]
         voice = 'childsplay-alphabet-sounds-'+lang
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
@@ -458,7 +458,7 @@ class GCompris(_apt_install):
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
-        lang = Config.get_locale()
+        lang = Config.get_locale().split('_')[0]
         voice = 'gcompris-sound-'+lang
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
@@ -483,7 +483,7 @@ class Kadu(_apt_install):
     def __init__(self):
         self.pkgs = 'kadu'
     def support(self):
-        return Config.get_show_Polish_applications()
+        return Config.is_Poland_locale()
 
 class Qnapi(_apt_install):
     __doc__ = 'Qnapi'
@@ -494,7 +494,7 @@ class Qnapi(_apt_install):
     def __init__(self):
         self.pkgs = 'qnapi'
     def support(self):
-        return Config.get_show_Polish_applications()
+        return Config.is_Poland_locale()
 
 #class Audacious(_apt_install):
 #    __doc__ = 'Audacious'

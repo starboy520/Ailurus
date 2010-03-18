@@ -1,3 +1,9 @@
+2010-03-18 Homer Xing <homer.xing@gmail.com>
+
+    * Simplify source code.
+      Take out "change language" functionality. Use native locale information instead.
+      Delete "show Chinese apps" and "show Poland apps" functionality.
+
 2010-03-17 MA Yue <velly.empire@gmail.com>
 
     * Add "Lucid layout" for window titlebar buttons

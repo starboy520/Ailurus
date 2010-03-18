@@ -107,46 +107,18 @@ class Config:
         try: return cls.get_bool('disable-clean-apt-cache')
         except: return True
     @classmethod
-    def supported_locale(cls):
-        return ['en_US', 'bg', 'da', 'de', 'es', 'fr', 'it', 'pl', 'pt_BR', 'ru', 'zh_CN', 'zh_TW', 'zh_HK', ]
-    @classmethod
-    def set_locale(cls, value):
-        if not value in cls.supported_locale(): raise ValueError
-        cls.set_string('locale', value)
-    @classmethod
     def get_locale(cls):
         try:
-            value = cls.get_string('locale')
-        except:
             import locale
-            value = locale.getdefaultlocale()[0] # language code and encoding may be None if their values cannot be determined.
-        
-        if value is None: return 'en_US'
-        
-        if not value in cls.supported_locale():
-            value = value.split('_')[0]
-        if value in cls.supported_locale(): return value
-        return 'en_US'  
+            return locale.getdefaultlocale()[0]
+        except: # language code and encoding may be None if their values cannot be determined.
+            return 'en_US'
     @classmethod
-    def set_show_Chinese_applications(cls, value):
-        cls.set_bool('show-Chinese-applications', value)
+    def is_Chinese_locale(cls):
+        return cls.get_locale().startswith('zh')
     @classmethod
-    def get_show_Chinese_applications(cls):
-        try:
-            value = cls.get_bool('show-Chinese-applications')
-            return value
-        except:
-            return cls.get_locale() in ['zh_CN', 'zh_TW', 'zh_HK']
-    @classmethod
-    def set_show_Polish_applications(cls, value):
-        cls.set_bool('show_Polish_applications', value)
-    @classmethod
-    def get_show_Polish_applications(cls):
-        try:
-            value = cls.get_bool('show_Polish_applications')
-            return value
-        except:
-            return cls.get_locale() in ['pl']
+    def is_Poland_locale(cls):
+        return cls.get_locale().startswith('pl')
     @classmethod
     def supported_Ubuntu_version(cls, version):
         assert isinstance(version, str) and version
@@ -316,11 +288,7 @@ def install_locale(force_reload=False):
     else: return
 
     import gettext
-    try:
-        lang = Config.get_string('locale')
-        gettext.translation('ailurus', '/usr/share/locale', languages=[lang], fallback=True).install(names=['ngettext'])
-    except:
-        gettext.install('ailurus', localedir='/usr/share/locale', unicode=True, names=['ngettext'] )
+    gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
 
 install_locale()
 

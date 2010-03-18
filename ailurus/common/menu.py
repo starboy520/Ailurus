@@ -277,7 +277,7 @@ def __learning(main_view):
             if item == None: 
                 ret.append( gtk.SeparatorMenuItem() )
                 continue 
-            if item[4]==False or (item[4] and Config.get_show_Chinese_applications()):
+            if item[4]==False or (item[4] and Config.is_Chinese_locale()):
                 if item[0]: menu_item = image_stock_menuitem(item[1], item[2])
                 else: menu_item = image_file_menuitem(item[2], item[1], 16, 3)
                 menu_item.url = item[3]
@@ -345,53 +345,10 @@ def __preferences(main_view):
         notify(_('Preferences changed'), _('Your changes will take effect at the next time when you log in to GNOME.') )
     menu_tip_after_logging_in.connect('toggled', toggled)
     
-    menu_show_Chinese_apps =  gtk.CheckMenuItem( _("""Show Chinese applications and Chinese web pages""") )
-    menu_show_Chinese_apps.set_active( Config.get_show_Chinese_applications() )
-    menu_show_Chinese_apps.connect('toggled', 
-           lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
-                              or Config.set_show_Chinese_applications(w.get_active()) )
-    
-    menu_show_Polish_apps = gtk.CheckMenuItem( _("""Show Polish application and Polish web pages """))
-    menu_show_Polish_apps.set_active(Config.get_show_Polish_applications())
-    menu_show_Polish_apps.connect('toggled',
-           lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
-                             or Config.set_show_Polish_applications(w.get_active()) )
-
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    langs = gtk.Menu()
-    group = None
-    current_locale = Config.get_locale()
-    for text, loc in [ ( _('English'), 'en_US'), 
-            ( _('Bulgarian'), 'bg'),
-            ( _('Danish'), 'da'),
-            ( _('German'), 'de'),
-            ( _('Spanish'), 'es'),
-            ( _('French'), 'fr'), 
-            ( _('Italian'), 'it'),
-            ( _('Polish'), 'pl'),
-            ( _('Brazilian Portuguese'), 'pt_BR'),
-            ( _('Russian'), 'ru'),
-            ( _('Simplified Chinese / Mainland (zh_CN)'), 'zh_CN'), 
-            ( _('Traditional Chinese / Hong Kong (zh_HK)'), 'zh_HK'),
-            ( _('Traditional Chinese / Taiwan (zh_TW)'), 'zh_TW'), 
-            ]:
-        item = gtk.RadioMenuItem(None, text, False)
-        item.locale = loc
-        item.set_group(group)
-        if not group: group = item
-        item.set_active(current_locale==loc)
-        langs.append(item)
-        def activate(w):
-            if w.get_active():  
-                Config.set_locale(w.locale)
-                notify( _('Language changed'), _('Your changes will take effect at the next time when the program starts up.') )
-        item.connect('activate', activate)
-    menu_lang = gtk.MenuItem( _("GUI Language") )
-    menu_lang.set_submenu(langs)
-    
-    return [ menu_tooltip, menu_tip_after_logging_in, menu_show_Chinese_apps, menu_show_Polish_apps, menu_set_wget_option, menu_lang ]
+    return [ menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
 def __help(main_view):
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))

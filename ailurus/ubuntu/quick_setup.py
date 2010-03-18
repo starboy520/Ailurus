@@ -268,7 +268,7 @@ class DoStuffDialog(gtk.Dialog):
             ( _('Decompression software: 7z, rar, cab, ace'), 
               'Decompression_Capability' ),
             ]
-        if Config.get_show_Chinese_applications():
+        if Config.is_Chinese_locale():
             ret.append( ( _('Alipay ( Zhi Fu Bao ) security plugin for Firefox'), 'AliPayFirefoxPlugin', ) )
             ret.append( ( _('Stardict and four dictionaries'), 'StardictAndDictionaries', ) )
         ret += [

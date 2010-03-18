@@ -152,7 +152,7 @@ class WINE_Chinese(_apt_install):
         return True
 
 def make_sure_JDK_installed():
-    if Config.get_show_Chinese_applications():
+    if Config.is_Chinese_locale():
         obj =  SUN_JDK6()
     else:
         obj = SUN_JDK6_Chinese()
@@ -162,7 +162,7 @@ def make_sure_JDK_installed():
         obj.install()
 
 def make_sure_WINE_installed():
-    if Config.get_show_Chinese_applications():
+    if Config.is_Chinese_locale():
         obj =  WINE_Chinese()
     else:
         obj = WINE()

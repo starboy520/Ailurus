@@ -408,7 +408,7 @@ class Kadu(_rpm_install):
     def __init__(self):
         self.pkgs = 'kadu'
     def support(self):
-        return Config.get_show_Polish_applications()
+        return Config.is_Poland_locale()
 
 class Parcellite(_rpm_install):
     __doc__ = _('Parcellite: clipboard manager')
