@@ -25,14 +25,6 @@ from lib import *
 from libu import *
 
 class MainView:
-    def __reset_enable_disable_buttons_state(self):
-        if self.is_current_pane_disabled():
-            self.toolbar_item_enable.set_sensitive(True)
-            self.toolbar_item_disable.set_sensitive(False)
-        else:
-            self.toolbar_item_enable.set_sensitive(False)
-            self.toolbar_item_disable.set_sensitive(True)
-            
     def __toolbar(self):
         self.panel_name  = panel_name = gtk.Label()
         panel_name.set_tooltip_text(_('Name of current panel') )
@@ -42,14 +34,6 @@ class MainView:
 
         self.toolbar_item_back = item_b_back = image_toolitem(D+'other_icons/toolbar_back.png', self.back_one_pane, tooltip=_('Go back one panel') )
         self.toolbar_item_forward = item_b_forward = image_toolitem(D+'other_icons/toolbar_forward.png', self.forward_one_pane, tooltip=_('Go forward one panel') )
-        def enable_cb(w):
-            self.disable_current_pane(False)
-            self.__reset_enable_disable_buttons_state()
-        def disable_cb(w):
-            self.disable_current_pane(True)
-            self.__reset_enable_disable_buttons_state()
-        self.toolbar_item_enable = item_enable_current = image_toolitem(D+'other_icons/toolbar_enable.png', enable_cb, tooltip=_('Enable current pane') ) 
-        self.toolbar_item_disable = item_disable_current = image_toolitem(D+'other_icons/toolbar_disable.png', disable_cb, tooltip=_('Disable current pane') )
         item_show_day_tip = image_toolitem(D+'other_icons/toolbar_study.png', self.show_day_tip, tooltip=_('Display "Tip of the day"') )
         item_propose_suggestion = image_toolitem(D+'umut_icons/m_propose_suggestion.png', lambda *w: report_bug(), tooltip=_('Propose suggestion and report bugs') )
         item_quit = image_toolitem(D+'other_icons/toolbar_quit.png', self.terminate_program, tooltip=_("Quit") )
@@ -62,9 +46,7 @@ class MainView:
         toolbar.insert(item_propose_suggestion, 2)
         toolbar.insert(item_b_back, 3)
         toolbar.insert(item_b_forward, 4)
-        toolbar.insert(item_enable_current, 5)
-        toolbar.insert(item_disable_current, 6)
-        toolbar.insert(item_quit, 7)
+        toolbar.insert(item_quit, 5)
 
         return toolbar
 
@@ -128,32 +110,10 @@ class MainView:
         self.current_pane = name
         for child in self.toggle_area.get_children():
             self.toggle_area.remove(child)
-        if Config.is_pane_disabled(name): 
-            content = self.disabledpane
-        else:
-            content = self.contents[name]
+        content = self.contents[name]
         self.toggle_area.add(content)
         self.toggle_area.show_all()
         self.panel_name.set_markup('<b>%s</b>'%self.contents[name].name)
-        self.__reset_enable_disable_buttons_state()
-
-    def is_current_pane_disabled(self):
-        name = self.current_pane
-        assert isinstance(name, str)
-        return Config.is_pane_disabled(name)
-
-    def disable_current_pane(self, value):
-        name = self.current_pane
-        assert isinstance(name, str)
-        
-        Config.set_pane_disabled(name, value)
-        
-        if value: content = self.disabledpane
-        else: content = self.contents[name]
-        for child in self.toggle_area.get_children():
-            self.toggle_area.remove(child)
-        self.toggle_area.add(content)
-        self.toggle_area.show_all()
 
     def lock(self):
         self.stop_delete_event = True

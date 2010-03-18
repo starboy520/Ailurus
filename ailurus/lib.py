@@ -199,16 +199,6 @@ class Config:
         assert value[0]=='/'
         cls.set_string('cache_dir', value)
     @classmethod
-    def is_pane_disabled(cls, name):
-        assert isinstance(name, str) and name
-        try:       value = cls.get_bool('pane_%s_disabled'%name)
-        except: value = False
-        return value
-    @classmethod
-    def set_pane_disabled(cls, name, value):
-        assert isinstance(name, str) and name
-        cls.set_bool('pane_%s_disabled'%name, value)
-    @classmethod
     def wget_set_timeout(cls, timeout):
         assert isinstance(timeout, int) and timeout>0, timeout
         cls.set_int('wget_timeout', timeout)
