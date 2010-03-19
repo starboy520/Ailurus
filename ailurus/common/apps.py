@@ -36,9 +36,11 @@ class Bioclipse(_path_lists):
         self.paths = [ self.shortcut, self.path ]
     def install(self):
         if get_arch() == 32:
-            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download']).download()
+            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download'],
+                  filename = 'bioclipse2.0.linux.gtk.x86.zip').download()
         else:
-            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download']).download()
+            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download'],
+                  filename = 'bioclipse2.0.linux.gtk.x86_64.zip').download()
         FileServer.chdir('/tmp')
         try:
             run('unzip -qo %s' %f)
