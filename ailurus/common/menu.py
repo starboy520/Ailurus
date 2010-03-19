@@ -337,17 +337,13 @@ def __help(main_view):
     help_translate.connect('activate', 
         lambda w: open_web_page('https://translations.launchpad.net/ailurus/trunk' ) )
     
-    help_get_new = image_file_menuitem(_('Get daily-build version (more features but more bugs)'), D+'umut_icons/m_get_daily_build_version.png', 16, 3) 
-    help_get_new.connect('activate',
-        lambda w: open_web_page('http://code.google.com/p/ailurus/downloads/list' ) )
-    
     special_thank = gtk.MenuItem( _('Special thanks') )
     special_thank.connect('activate', show_special_thank_dialog)
     
     about = gtk.MenuItem( _('About') )
     about.connect('activate', show_about_dialog)
     
-    return [ help_blog, help_update, help_report_bug, help_get_new, help_translate, special_thank, about ] 
+    return [ help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
 def get(main_view):
     assert hasattr(main_view, 'terminate_program')
