@@ -108,18 +108,37 @@ All rights of other images which are not mensioned above are preserves by their 
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
     about.vbox.pack_start( gtk.Label( _('Welcome to leave response in blog~') ) , False, False )
-    #show group URL
-    about.vbox.pack_start( gtk.Label( _('Download daily-build version from') ) , False, False )
-    addr2 = gtk.LinkButton('http://code.google.com/p/ailurus/downloads/list',
-                           'http://code.google.com/p/ailurus/downloads/list')
-    #addr2.set_selectable(True)
-    about.vbox.pack_start( addr2, False, False )
-    #show last build time
+    def read_changelog_callback(*w):
+        buffer = gtk.TextBuffer()
+        with open('/usr/share/ailurus/ChangeLog') as f:
+            buffer.set_text(f.read())
+        textview = gtk.TextView()
+        textview.set_buffer(buffer)
+        textview.set_editable(False)
+        textview.set_cursor_visible(False)
+        textview.set_wrap_mode(gtk.WRAP_WORD)
+        scroll = gtk.ScrolledWindow()
+        scroll.add(textview)
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        dialog = gtk.Dialog( _('Ailurus changelog'), None, 
+                             gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+                             buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+        dialog.set_border_width(10)
+        dialog.vbox.pack_start(scroll)
+        dialog.vbox.set_size_request(700, 500)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
+
     from lib import AILURUS_RELEASE_DATE
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
-    
     about.vbox.show_all()
-    
+    read_changelog = gtk.Button(_('Read changelog'))
+    read_changelog.connect('clicked', read_changelog_callback)
+    about.action_area.pack_start(read_changelog, False, False )
+    about.action_area.reorder_child(read_changelog, 0)
+    about.action_area.show_all()
     about.run()
     about.destroy()
 

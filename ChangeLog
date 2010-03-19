@@ -5,6 +5,10 @@
       Enlarge toolbar icon to 64 x 64.
       Show text under icon. 
 
+2010-03-18 Starboy Qi <starboy.qi@gmail.com>
+
+    * We can read change log in "About" dialog now.
+
 2010-03-18 Homer Xing <homer.xing@gmail.com>
 
     * Simplify source code.
