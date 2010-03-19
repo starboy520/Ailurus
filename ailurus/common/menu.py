@@ -233,7 +233,7 @@ def check_update(*w):
         import traceback
         traceback.print_exc()
     
-def __learning(main_view):
+def __study_linux(main_view):
     study_url_items = [ 
         # (use stock?, stock name or icon path, text, web page url, Chinese only?
 #        (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'), 
@@ -257,8 +257,13 @@ def __learning(main_view):
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3) 
-    study_show_tip.connect('activate', main_view.show_day_tip)
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3)
+    def show_day_tip(*w):
+        from support.tipoftheday import TipOfTheDay
+        w=TipOfTheDay()
+        w.run()
+        w.destroy()
+    study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
     return ret
@@ -321,7 +326,7 @@ def __preferences(main_view):
     
     return [ menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
-def __about(main_view):
+def __others(main_view):
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
@@ -345,12 +350,11 @@ def __about(main_view):
     
     return [ help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
-def get(main_view):
-    assert hasattr(main_view, 'terminate_program')
-    assert hasattr(main_view, 'show_day_tip')
+def get_study_linux_menu(main_view):
+    return __study_linux(main_view)
 
-    return [
-        [_('Learning'),      __learning(main_view),     21],
-        [_('Preferences'), __preferences(main_view), 22],
-        [_('Help'),             __about(main_view),           23],
-        ]
+def get_preferences_menu(main_view):
+    return __preferences(main_view)
+
+def get_others_menu(main_view):
+    return __others(main_view)

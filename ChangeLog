@@ -1,3 +1,10 @@
+2010-03-19 Homer Xing <homer.xing@gmail.com>
+
+    * Merge menubar and toolbar. 
+      "Study linux", "Preferences" and "Others" menu are moved into toolbar.
+      Enlarge toolbar icon to 64 x 64.
+      Show text under icon. 
+
 2010-03-18 Homer Xing <homer.xing@gmail.com>
 
     * Simplify source code.

@@ -25,7 +25,12 @@ from lib import *
 from libu import *
 
 class MainView:
-    def __create_toolitem(self, icon, text, callback, *callback_args):
+    def __create_toolitem(self, icon, text, signal_name, callback, *callback_args):
+        is_string_not_empty(icon)
+        is_string_not_empty(text)
+        is_string_not_empty(signal_name)
+        assert callable(callback)
+        
         pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 48, 48)
         image = gtk.image_new_from_pixbuf(pixbuf)
         align_image = gtk.Alignment(0.5, 0.5)
@@ -42,40 +47,46 @@ class MainView:
         button = gtk.Button()
         button.add(vbox)
         button.set_relief(gtk.RELIEF_NONE)
-        button.connect('clicked', callback, *callback_args)
+        button.connect(signal_name, callback, *callback_args)
         item = gtk.ToolItem()
         item.add(button)
         return item
     
-    def __create_toolbar(self):
-        item_show_day_tip = self.__create_toolitem(D+'umut_icons/m_tip_of_the_day.png', _('Study\nLinux'), self.show_day_tip)
-        item_propose_suggestion = self.__create_toolitem(D+'umut_icons/m_propose_suggestion.png', _('Propose\nSuggestion'), lambda *w: report_bug())
-        item_quit = self.__create_toolitem(D+'umut_icons/m_quit.png', _('Quit'), self.terminate_program)
+    def add_buttons_in_toolbar(self):
+        item_quit = self.__create_toolitem(D+'umut_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
+        self.toolbar.insert(item_quit, 0)
 
-        toolbar = gtk.Toolbar()
-        toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
-        toolbar.set_style(gtk.TOOLBAR_BOTH)
-        toolbar.insert(item_show_day_tip, 0)
-        toolbar.insert(item_propose_suggestion, 1)
-        toolbar.insert(item_quit, 2)
+        from loader import load_study_linux_menu, load_preferences_menu, load_others_menu
+        menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        item = self.__create_toolitem(D+'suyun_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        self.toolbar.insert(item, 0)
+        menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        item = self.__create_toolitem(D+'umut_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        self.toolbar.insert(item, 0)
+        menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        item = self.__create_toolitem(D+'umut_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        self.toolbar.insert(item, 0)
 
-        return toolbar
-
-    def add_more_buttons_in_toolbar(self):
         List = [
-            ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware\nInformation'), ),
-            ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux\nInformation'), ),
-            ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System\nSettings'), ),
-            ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install\nSoftware'), ),
-            ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache\nFiles'), ),
-            ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-            ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
-                     ]
+                ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware\nInformation'), ),
+                ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux\nInformation'), ),
+                ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System\nSettings'), ),
+                ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install\nSoftware'), ),
+                ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache\nFiles'), ),
+                ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
+                ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
+                ]
         List.reverse()
         for name, icon, text in List:
             if not name in self.contents: continue
-            item = self.__create_toolitem(icon, text, self.activate_pane, name)
+            item = self.__create_toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
+
+    def __show_popupmenu_on_toolbaritem(self, widget, event, menu):
+        if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:
+            menu.popup(None, None, None, event.button, event.time)
+            return True
+        return False
 
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
@@ -93,12 +104,10 @@ class MainView:
 
     def lock(self):
         self.stop_delete_event = True
-        self.menubar.set_sensitive(False)
         self.toolbar.set_sensitive(False)
     
     def unlock(self):
         self.stop_delete_event = False
-        self.menubar.set_sensitive(True)
         self.toolbar.set_sensitive(True)
 
     def terminate_program(self, *w):
@@ -136,32 +145,6 @@ class MainView:
             import traceback
             traceback.print_exc()
 
-    def add_menu(self, menustruct):
-        assert isinstance(menustruct, list)
-        assert self.menubar
-        
-        map_menu = {}
-        for i in menustruct:
-            text, items = i[0], i[1]
-            assert isinstance(text, (str,unicode) )
-            assert isinstance(items, list)
-            
-            if not text in map_menu: 
-                menu = gtk.Menu()
-                title = gtk.MenuItem(text)
-                title.set_submenu(menu)
-                self.menubar.append(title)
-                map_menu[text] = (title, menu)
-
-        for i in menustruct:
-            text, items = i[0], i[1]
-            menu = map_menu[text][1]
-            for j in items:
-                assert isinstance(j, (gtk.MenuItem, gtk.SeparatorMenuItem) )
-                menu.append(j)
-        
-        self.menubar.show_all()
-
     def __init__(self):
         self.app_classes = None
         self.window = None # MainView window
@@ -173,16 +156,15 @@ class MainView:
         
         vbox = gtk.VBox(False, 0)
         
-        self.menubar = gtk.MenuBar()
-        vbox.pack_start(self.menubar, False, False)
-        
-        self.toolbar = self.__create_toolbar()
+        self.toolbar = gtk.Toolbar()
+        self.toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
+        self.toolbar.set_style(gtk.TOOLBAR_BOTH)
         vbox.pack_start(self.toolbar, False)
         
         vbox.pack_start(self.toggle_area, True, True)
         
         self.window = window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        window.set_title('Ailurus')
+        window.set_title('Ailurus ' + AILURUS_VERSION)
         window.connect("delete_event", self.terminate_program)
         window.add(vbox)
 
@@ -309,16 +291,11 @@ from offline_install_pane import OfflineInstallPane
 pane = OfflineInstallPane(main_view, r_objs)
 main_view.register(pane)
 
-splash.add_text(_('<span color="yellow">Loading menu ... </span>\n'))
-from loader import load_menu
-menustruct = load_menu(COMMON, DESKTOP, DISTRIBUTION, main_view)
-main_view.add_menu(menustruct)
-
 for module in [ COMMON, DESKTOP, DISTRIBUTION ]:
     if hasattr(module, 'pane_register'):
         module.pane_register.register(main_view)
 
-main_view.add_more_buttons_in_toolbar()
+main_view.add_buttons_in_toolbar()
 
 main_view.activate_pane(None, 'InstallRemovePane')
 main_view.window.show_all()

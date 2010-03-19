@@ -25,7 +25,7 @@ import sys, os
 from lib import *
 from libu import *
 
-def __study(main_view):
+def __study_linux(main_view):
     study_url_items = [ 
         # (use stock?, stock name or icon path, text, web page url, Chinese only?
         None, # Separator
@@ -79,14 +79,14 @@ def __preferences(main_view):
     return [ menu_not_clean_apt_cache ]
 
 def __quick_setup(main_view):
-    import os
-    assert os.path.exists('ubuntu/quick_setup.py')
-
     assert hasattr(main_view, 'lock')
     assert hasattr(main_view, 'unlock')
     assert main_view.install_remove_pane
     assert hasattr(main_view.install_remove_pane, 'app_class_installed_state_changed_by_external')
-    
+
+    import os
+    assert os.path.exists('ubuntu/quick_setup.py')
+
     from quick_setup import quick_setup
     def run_quick_setup_thread():
         try:
@@ -108,11 +108,11 @@ def __quick_setup(main_view):
     menu.connect('activate', callback)
     return [ menu ]
 
-def get(main_view):
-    assert hasattr(main_view, 'activate_pane')
+def get_study_linux_menu(main_view):
+    return __study_linux(main_view)
 
-    return [
-        [_('Quick setup'), __quick_setup(main_view), 10],
-        [_('Learning'),      __study(main_view),     21],
-        [_('Preferences'), __preferences(main_view), 22],
-        ]
+def get_preferences_menu(main_view):
+    return __preferences(main_view)
+
+def get_others_menu(main_view):
+    return __quick_setup(main_view)
