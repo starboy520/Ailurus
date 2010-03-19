@@ -147,7 +147,7 @@ def show_special_thank_dialog(widget): # called by __help
     text = StringIO.StringIO()
     print >>text, _('We wish to express thankfulness to these projects:')
     print >>text, '<b><big>Lazybuntu, UbuntuAssistant'
-    print >>text, 'GTweakUI, Easy Life, Ubuntutweak, CPU-G</big></b>'
+    print >>text, 'GTweakUI, Easy Life, Ubuntu-tweak, CPU-G</big></b>'
     print >>text
     print >>text, _('We sincerely thank these people:')
     print >>text
