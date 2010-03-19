@@ -31,30 +31,29 @@ class SplashWindow(gtk.Window):
         self.modify_bg(gtk.STATE_NORMAL, color)
         
         logo = gtk.Image()
-        logo.set_from_file(D+'suyun_icons/splash.png')
+        logo.set_from_file(D+'suyun_icons/logo_with_reflection.png')
         
         from lib import AILURUS_VERSION
-#        title = gtk.Label()
-#        title.set_markup('<span color="green" size="xx-large"">Ailurus</span> '
-#                         '<span color="green" size="15">%s</span>' % AILURUS_VERSION)
+        title = gtk.Image()
+        title.set_from_file(D+'suyun_icons/ailurus_for_splash.png')
         
-#        comment = gtk.Label()
-#        comment.set_markup(
-#            _('<span color="yellow">'
-#              'Help you install some nice applications.\n'
-#              'Help you do tedious settings.\n'
-#              'Tell you some Linux skills.'
-#              '</span>') )
-#        import pango
-#        comment.modify_font(pango.FontDescription('Sans 9'))
-        
-#        titlevbox = gtk.VBox(False, 0)
-#        titlevbox.pack_start(title, False)
-#        titlevbox.pack_start(comment, False)
+        comment = gtk.Label()
+        comment.set_markup(
+            _('<span color="grey">'
+              '<span color="#00A0E9">Help</span> <span color="grey">you install some nice applications.\n</span>'
+              '<span color="#00A0E9">Help</span> you do tedious settings.\n'
+              '<span color="#00A0E9">Tell</span> you some Linux skills.'
+              '</span>') )
+        import pango
+        comment.modify_font(pango.FontDescription('Waree 10'))
+       
+        titlevbox = gtk.VBox(False, 0)
+        titlevbox.pack_start(title, False)
+        titlevbox.pack_start(comment, False)
 
         header_box = gtk.HBox()
-        header_box.pack_start(logo, False)
-#        header_box.pack_start(titlevbox, True)
+        header_box.pack_start(titlevbox, False)
+        header_box.pack_start(logo, True)
         
         loading = self.loading = gtk.Label()
         import StringIO

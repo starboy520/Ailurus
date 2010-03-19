@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 14:36+0800\n"
+"POT-Creation-Date: 2010-03-19 16:45+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2686,6 +2686,14 @@ msgstr ""
 #: .././ailurus/support/terminal.py:68
 #: .././ailurus/support/terminal_single_thread.py:62
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
+msgstr ""
+
+#: .././ailurus/support/splashwindow.py:42
+msgid ""
+"<span color=\"grey\"><span color=\"#00A0E9\">Help</span> <span color=\"grey"
+"\">you install some nice applications.\n"
+"</span><span color=\"#00A0E9\">Help</span> you do tedious settings.\n"
+"<span color=\"#00A0E9\">Tell</span> you some Linux skills.</span>"
 msgstr ""
 
 #: .././ailurus/support/tipoftheday.py:55
