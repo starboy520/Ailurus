@@ -119,6 +119,7 @@ All rights of the applications installed by Ailurus are preserved by their autho
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     
     about.vbox.show_all()
+    
     about.run()
     about.destroy()
 
@@ -232,37 +233,7 @@ def check_update(*w):
         import traceback
         traceback.print_exc()
     
-def __navigate(main_view):
-    back = image_stock_menuitem(gtk.STOCK_GO_BACK, _('Back to previous pane'))
-    back.connect('activate', main_view.back_one_pane)
-    set_back_forward_sensitive.back = back
-    forward = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Go forward one pane'))
-    forward.connect('activate', main_view.forward_one_pane)
-    set_back_forward_sensitive.forward = forward
-    quit = image_stock_menuitem(gtk.STOCK_QUIT, _('Quit'))
-    quit.connect('activate', main_view.terminate_program)
-    return [ back, forward, quit ]
-
-def __info(main_view):
-    hardware = image_file_menuitem(_('Hardware information'), D+'umut_icons/m_hardware.png', 16, 3)
-    hardware.connect_object('activate', main_view.activate_pane, 'HardwareInfoPane')
-    linux = image_file_menuitem(_('Linux information'), D+'umut_icons/m_linux.png', 16, 3)
-    linux.connect_object('activate', main_view.activate_pane, 'LinuxInfoPane')
-    return [ hardware, linux ]
-
-def __setting(main_view):
-    system_settings = image_file_menuitem(_('System settings'), D+'umut_icons/m_linux_setting.png', 16, 3)
-    system_settings.connect_object('activate', main_view.activate_pane, 'SystemSettingPane')
-    return [ system_settings ]
-
-def __apps(main_view):
-    install_remove = image_file_menuitem(_('Install/Remove'), D+'umut_icons/m_install_remove.png', 16, 3)
-    install_remove.connect_object('activate', main_view.activate_pane, 'InstallRemovePane')
-    offline = image_file_menuitem(_('Cache installation files'), D+'umut_icons/m_cache_files.png', 16, 3)
-    offline.connect_object('activate', main_view.activate_pane, 'OfflineInstallPane')
-    return [ install_remove, offline ]
-
-def __learning(main_view):
+def __study_linux(main_view):
     study_url_items = [ 
         # (use stock?, stock name or icon path, text, web page url, Chinese only?
 #        (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'), 
@@ -286,8 +257,13 @@ def __learning(main_view):
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3) 
-    study_show_tip.connect('activate', main_view.show_day_tip)
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3)
+    def show_day_tip(*w):
+        from support.tipoftheday import TipOfTheDay
+        w=TipOfTheDay()
+        w.run()
+        w.destroy()
+    study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
     return ret
@@ -350,7 +326,7 @@ def __preferences(main_view):
     
     return [ menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
-def __help(main_view):
+def __others(main_view):
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
@@ -366,36 +342,19 @@ def __help(main_view):
     help_translate.connect('activate', 
         lambda w: open_web_page('https://translations.launchpad.net/ailurus/trunk' ) )
     
-    help_get_new = image_file_menuitem(_('Get daily-build version (more features but more bugs)'), D+'umut_icons/m_get_daily_build_version.png', 16, 3) 
-    help_get_new.connect('activate',
-        lambda w: open_web_page('http://code.google.com/p/ailurus/downloads/list' ) )
-    
     special_thank = gtk.MenuItem( _('Special thanks') )
     special_thank.connect('activate', show_special_thank_dialog)
     
     about = gtk.MenuItem( _('About') )
     about.connect('activate', show_about_dialog)
     
-    return [ help_blog, help_update, help_report_bug, help_get_new, help_translate, special_thank, about ] 
+    return [ help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
-def get(main_view):
-    assert hasattr(main_view, 'back_one_pane')
-    assert hasattr(main_view, 'forward_one_pane')
-    assert hasattr(main_view, 'terminate_program')
-    assert hasattr(main_view, 'activate_pane')
-    assert hasattr(main_view, 'show_day_tip')
+def get_study_linux_menu(main_view):
+    return __study_linux(main_view)
 
-    return [
-#        [_('Navigation'),   __navigate(main_view),   0], 
-        [_('Information'),  __info(main_view),          11],
-        [_('Adjustments'), __setting(main_view),      12],
-        [_('Applications'), __apps(main_view),         13],
-        [_('Learning'),      __learning(main_view),     21],
-        [_('Preferences'), __preferences(main_view), 22],
-        [_('Help'),             __help(main_view),           23],
-        ]
+def get_preferences_menu(main_view):
+    return __preferences(main_view)
 
-def set_back_forward_sensitive(back, forward):
-    if hasattr(set_back_forward_sensitive, 'back') and hasattr(set_back_forward_sensitive, 'forward'):
-        set_back_forward_sensitive.back.set_sensitive(back)
-        set_back_forward_sensitive.forward.set_sensitive(forward)
+def get_others_menu(main_view):
+    return __others(main_view)
