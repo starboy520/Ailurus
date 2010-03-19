@@ -321,7 +321,7 @@ def __preferences(main_view):
     
     return [ menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
-def __help(main_view):
+def __about(main_view):
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
@@ -352,5 +352,5 @@ def get(main_view):
     return [
         [_('Learning'),      __learning(main_view),     21],
         [_('Preferences'), __preferences(main_view), 22],
-        [_('Help'),             __help(main_view),           23],
+        [_('Help'),             __about(main_view),           23],
         ]
