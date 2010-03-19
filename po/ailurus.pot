@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 11:28+0800\n"
+"POT-Creation-Date: 2010-03-19 14:36+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2688,13 +2688,6 @@ msgstr ""
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr ""
 
-#: .././ailurus/support/splashwindow.py:43
-msgid ""
-"<span color=\"yellow\">Help you install some nice applications.\n"
-"Help you do tedious settings.\n"
-"Tell you some Linux skills.</span>"
-msgstr ""
-
 #: .././ailurus/support/tipoftheday.py:55
 msgid "Tip of the Day"
 msgstr ""
@@ -3929,49 +3922,49 @@ msgstr ""
 
 #. check desktop environment
 #: .././ailurus/main.py:198
-msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
+msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
 msgstr ""
 
 #. check distribution
 #: .././ailurus/main.py:206
-msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
+msgid "<span color=\"grey\">Checking distribution ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:229
-msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
+msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:231
 msgid ""
-"<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
+"<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:239 .././ailurus/main.py:242
-msgid "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
+msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:247
-msgid "<span color=\"yellow\">Loading tips ... </span>\n"
+msgid "<span color=\"grey\">Loading tips ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:253
-msgid "<span color=\"yellow\">Loading main window ... </span>\n"
+msgid "<span color=\"grey\">Loading main window ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:256
-msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
+msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:269
-msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
+msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:276
-msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
+msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:287
-msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
+msgid "<span color=\"grey\">Loading off-line pane ... </span>\n"
 msgstr ""
 
 #: .././ailurus/main.py:322
@@ -4592,7 +4585,6 @@ msgstr ""
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#. scroll.set_size_request(500, -1)
 #: .././ailurus/common/menu.py:124
 msgid "Ailurus changelog"
 msgstr ""

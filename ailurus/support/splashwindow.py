@@ -25,7 +25,7 @@ class SplashWindow(gtk.Window):
     def __init__(self):
         gtk.Window.__init__(self, gtk.WINDOW_POPUP)
         self.set_position(gtk.WIN_POS_CENTER)
-        self.set_default_size(400, -1)
+        self.set_default_size(450, -1)
         self.set_border_width(15)
         color = gtk.gdk.color_parse('#202020')
         self.modify_bg(gtk.STATE_NORMAL, color)
@@ -34,27 +34,27 @@ class SplashWindow(gtk.Window):
         logo.set_from_file(D+'suyun_icons/splash.png')
         
         from lib import AILURUS_VERSION
-        title = gtk.Label()
-        title.set_markup('<span color="green" size="xx-large">Ailurus</span> '
-                         '<span color="green" size="x-large">%s</span>' % AILURUS_VERSION)
+#        title = gtk.Label()
+#        title.set_markup('<span color="green" size="xx-large"">Ailurus</span> '
+#                         '<span color="green" size="15">%s</span>' % AILURUS_VERSION)
         
-        comment = gtk.Label()
-        comment.set_markup(
-            _('<span color="yellow">'
-              'Help you install some nice applications.\n'
-              'Help you do tedious settings.\n'
-              'Tell you some Linux skills.'
-              '</span>') )
-        import pango
-        comment.modify_font(pango.FontDescription('Sans 14'))
+#        comment = gtk.Label()
+#        comment.set_markup(
+#            _('<span color="yellow">'
+#              'Help you install some nice applications.\n'
+#              'Help you do tedious settings.\n'
+#              'Tell you some Linux skills.'
+#              '</span>') )
+#        import pango
+#        comment.modify_font(pango.FontDescription('Sans 9'))
         
-        titlevbox = gtk.VBox(False, 0)
-        titlevbox.pack_start(title, False)
-        titlevbox.pack_start(comment, False)
+#        titlevbox = gtk.VBox(False, 0)
+#        titlevbox.pack_start(title, False)
+#        titlevbox.pack_start(comment, False)
 
-        header_box = gtk.HBox(False, 20)
+        header_box = gtk.HBox()
         header_box.pack_start(logo, False)
-        header_box.pack_start(titlevbox, True)
+#        header_box.pack_start(titlevbox, True)
         
         loading = self.loading = gtk.Label()
         import StringIO
@@ -67,7 +67,7 @@ class SplashWindow(gtk.Window):
         progressbar.set_pulse_step(0.1)
         
         box = gtk.VBox(False, 5)
-        box.pack_start(header_box, True, True, 0)
+        box.pack_start(header_box, False)
         box.pack_start(align, False)
         box.pack_start(progressbar, False)
         
@@ -92,8 +92,8 @@ if __name__ == '__main__':
     win = SplashWindow()
     win.show_all()
     import time
-    win.add_text('<span color="yellow">Hello1</span>\n')
+    win.add_text('<span color="grey">Hello1</span>\n')
     time.sleep(2)
-    win.add_text('<span color="yellow">Hello2</span>\n')
+    win.add_text('<span color="grey">Hello2</span>\n')
     time.sleep(2)
     gtk.main()
