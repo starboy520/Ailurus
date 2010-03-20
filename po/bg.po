@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-17 19:43+0800\n"
-"PO-Revision-Date: 2010-03-15 10:33+0000\n"
-"Last-Translator: Vladimir Kolev <admin@vladimirkolev.com>\n"
+"POT-Creation-Date: 2010-03-19 11:28+0800\n"
+"PO-Revision-Date: 2010-03-19 09:18+0000\n"
+"Last-Translator: Launchpad Translations Administrators "
+"<rosetta@launchpad.net>\n"
 "Language-Team: Vladimir Kolev <admin@vladimirkolev.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-03-18 04:45+0000\n"
+"X-Launchpad-Export-Date: 2010-03-20 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BULGARIA\n"
 "X-Poedit-Language: Bulgarian\n"
@@ -50,7 +51,7 @@ msgid ""
 "Linux.\n"
 "Command: yum install wine"
 msgstr ""
-"Това е необходимо приложения за стартиране на Windows приложения под Linux.\n"
+"Това е необходимо приложение за стартиране на Windows приложения под Linux.\n"
 "Команда: yum install wine"
 
 #: .././ailurus/fedora/apps.py:63 .././ailurus/ubuntu/app1.py:28
@@ -729,7 +730,7 @@ msgstr "Промени хранилище"
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:772
+#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:729
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "Стартиране на \"apt-get update\". Моля, изчакайте няколко минути."
 
@@ -1526,95 +1527,66 @@ msgstr "Pidgin (Последна версия)"
 msgid "Songbird (Latest version)"
 msgstr "Songbird (Последна версия)"
 
-#: .././ailurus/ubuntu/menu.py:29 .././ailurus/main.py:78
-msgid "Find fast repository mirror"
-msgstr "Открий бързо огледало на хранилище."
-
-#: .././ailurus/ubuntu/menu.py:34 .././ailurus/ubuntu/apt_recovery_pane.py:29
-#: .././ailurus/main.py:79
-msgid "APT recovery"
-msgstr "APT възстановяване"
-
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. Separator
-#: .././ailurus/ubuntu/menu.py:42
+#: .././ailurus/ubuntu/menu.py:32
 msgid "Ubuntu/Kubuntu configuration guide"
 msgstr "Ръководство за настройка на Ubuntu/Kubuntu"
 
-#: .././ailurus/ubuntu/menu.py:44
+#: .././ailurus/ubuntu/menu.py:34
 msgid "Ubuntu skills"
 msgstr "Ubuntu умения"
 
-#: .././ailurus/ubuntu/menu.py:46
+#: .././ailurus/ubuntu/menu.py:36
 msgid "Obtain \"Full Circle\" magazine"
 msgstr "Изтегли \"Full Circle\" списание"
 
-#: .././ailurus/ubuntu/menu.py:48
+#: .././ailurus/ubuntu/menu.py:38
 msgid "Obtain \"Ubuntu pocket guide\" book"
 msgstr "Изтегли \"Ubuntu pocket guide\" книга"
 
-#: .././ailurus/ubuntu/menu.py:50
+#: .././ailurus/ubuntu/menu.py:40
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
 msgstr "Открий други трети хранилища на http://repogen.simplylinux.ch/"
 
-#: .././ailurus/ubuntu/menu.py:83
+#: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
 msgstr "Не изчиствай автоматично /var/cache/apt/"
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:356 .././ailurus/common/menu.py:362
-#: .././ailurus/common/menu.py:368
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
+#: .././ailurus/common/menu.py:340
 msgid "Preferences changed"
 msgstr "Настройките променени"
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:362 .././ailurus/common/menu.py:368
-#: .././ailurus/common/menu.py:400
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 "Вашите промени ще бъдат активни при следващото стартиране на програмата."
 
-#: .././ailurus/ubuntu/menu.py:117 .././ailurus/ubuntu/menu.py:125
-#: .././ailurus/ubuntu/quick_setup.py:30
+#: .././ailurus/ubuntu/menu.py:107 .././ailurus/ubuntu/quick_setup.py:30
 #: .././ailurus/ubuntu/quick_setup.py:334
 msgid "Quick setup"
 msgstr "Бърза настройка"
 
-#: .././ailurus/ubuntu/menu.py:126
-msgid "Repositories"
-msgstr "Хранилища"
-
-#: .././ailurus/ubuntu/menu.py:127
-msgid "Recovery"
-msgstr "Възстановяване"
-
-#: .././ailurus/ubuntu/menu.py:128 .././ailurus/common/menu.py:447
-msgid "Learning"
-msgstr "Обучение"
-
-#: .././ailurus/ubuntu/menu.py:129 .././ailurus/common/menu.py:448
-msgid "Preferences"
-msgstr "Настройки"
-
-#: .././ailurus/ubuntu/setting.py:103
+#: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
 msgstr "Команда: sudo apt-get install/remove %s"
 
-#: .././ailurus/ubuntu/setting.py:107
+#: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
 msgstr "Снимка на менюто"
 
-#: .././ailurus/ubuntu/setting.py:115
+#: .././ailurus/ubuntu/setting.py:117
 msgid "Window screenshot:"
 msgstr "Снимка на прозореца:"
 
-#: .././ailurus/ubuntu/setting.py:138
+#: .././ailurus/ubuntu/setting.py:140
 msgid "\"Write to Disc...\" entry"
 msgstr "\"Write to Disc...\" запис"
 
-#: .././ailurus/ubuntu/setting.py:139
+#: .././ailurus/ubuntu/setting.py:141
 msgid ""
 "When CD/DVD image file is clicked by mouse right button, \n"
 "show a \"Write to Disc...\" menu item.\n"
@@ -1624,11 +1596,11 @@ msgstr ""
 "се показва меню \"Write to Disc...\".\n"
 "<span color=\"red\">Този запис влиза в конфликт с \"brasero\".</span>"
 
-#: .././ailurus/ubuntu/setting.py:144
+#: .././ailurus/ubuntu/setting.py:146
 msgid "\"Actions Configuration\" entry"
 msgstr "\"Actions Configuration\" запис"
 
-#: .././ailurus/ubuntu/setting.py:145
+#: .././ailurus/ubuntu/setting.py:147
 msgid ""
 "It allows the configuration of programs to be launched \n"
 "on files selected.\n"
@@ -1640,25 +1612,25 @@ msgstr ""
 "<span color=\"red\">Този сапис не е в контекстно меню. Намира се в менюто "
 "\"System\"->\"Preferences\".</span>"
 
-#: .././ailurus/ubuntu/setting.py:150
+#: .././ailurus/ubuntu/setting.py:152
 msgid "\"Repair filename\" entry"
 msgstr "\"Repair filename\" запис"
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "When any file with wrong encoding filename is right clicked,\n"
 msgstr ""
 "Когато се избере с десен бутон всеки файл, който има грешна кодировка на "
 "името.\n"
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "show a \"Repair filename\" menu item."
 msgstr "показва меню \"Repair filename\"."
 
-#: .././ailurus/ubuntu/setting.py:154
+#: .././ailurus/ubuntu/setting.py:156
 msgid "\"Open as administrator\" entry"
 msgstr "\"Open as administrator\" запис"
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
@@ -1666,31 +1638,31 @@ msgstr ""
 "Стартира избраните файлове с администраторски привилегии, използвайки "
 "контекстното меню.\n"
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid "Open selected folder with administration privileges."
 msgstr "Отваря избраната директория с администраторски правомощия."
 
-#: .././ailurus/ubuntu/setting.py:158
+#: .././ailurus/ubuntu/setting.py:160
 msgid "\"Resize/Rotate images\" entries"
 msgstr "\"Resize/Rotate images\" запис"
 
-#: .././ailurus/ubuntu/setting.py:159
+#: .././ailurus/ubuntu/setting.py:161
 msgid "Resize or rotate selected images."
 msgstr "Оразмеряване или завъртане на избраните изображения"
 
-#: .././ailurus/ubuntu/setting.py:162
+#: .././ailurus/ubuntu/setting.py:164
 msgid "\"Open in terminal\" entry"
 msgstr "\"Open in terminal\" запис"
 
-#: .././ailurus/ubuntu/setting.py:163
+#: .././ailurus/ubuntu/setting.py:165
 msgid "Open a terminal in current folder."
 msgstr "Отваря терминал в настоящата директория"
 
-#: .././ailurus/ubuntu/setting.py:166
+#: .././ailurus/ubuntu/setting.py:168
 msgid "\"Convert audio files\" entry"
 msgstr "\"Convert audio files\" запис"
 
-#: .././ailurus/ubuntu/setting.py:167
+#: .././ailurus/ubuntu/setting.py:169
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -1700,58 +1672,58 @@ msgstr ""
 "Следните пакети също ще бъдат инсталирани: \n"
 "<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: .././ailurus/ubuntu/setting.py:174
+#: .././ailurus/ubuntu/setting.py:176
 msgid "\"Subversion commands\" entries"
 msgstr "\"Subversion commands\" записи"
 
-#: .././ailurus/ubuntu/setting.py:180
+#: .././ailurus/ubuntu/setting.py:182
 msgid "\"Share\" entry for folders"
 msgstr "\"Share\" запис за директории"
 
-#: .././ailurus/ubuntu/setting.py:181
+#: .././ailurus/ubuntu/setting.py:183
 msgid "Share folders by Samba."
 msgstr "Споделяне на директории чрез Samba."
 
-#: .././ailurus/ubuntu/setting.py:184
+#: .././ailurus/ubuntu/setting.py:186
 msgid "\"Set as wallpaper\" entry"
 msgstr "\"Set as wallpaper\" запис"
 
-#: .././ailurus/ubuntu/setting.py:190
+#: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:206
 msgid "Apply"
 msgstr "Приложи"
 
-#: .././ailurus/ubuntu/setting.py:266 .././ailurus/loader.py:87
-#: .././ailurus/loader.py:124 .././ailurus/main.py:404
+#: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
+#: .././ailurus/loader.py:124 .././ailurus/main.py:312
 msgid "Traceback:"
 msgstr "Проследяване:"
 
-#: .././ailurus/ubuntu/setting.py:267
+#: .././ailurus/ubuntu/setting.py:269
 msgid "Some operation failed."
 msgstr "Някои операции се провалиха."
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "All operations succeeded."
 msgstr "Всички операции бяха успешни."
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "The changes will take effect at the next time when GNOME starts up."
 msgstr "Тази промяна ще бъде ефективна при следващто стартиране на GNOME."
 
-#: .././ailurus/ubuntu/setting.py:282
+#: .././ailurus/ubuntu/setting.py:284
 msgid "Nautilus context menu"
 msgstr "Контекстно меню на Nautilus"
 
-#: .././ailurus/ubuntu/setting.py:286
+#: .././ailurus/ubuntu/setting.py:288
 msgid "Automatically check for update"
 msgstr "Автоматична проверка за обновления"
 
-#: .././ailurus/ubuntu/setting.py:288
+#: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
 msgstr "Интервал (в дни) за проверка за обновления"
 
-#: .././ailurus/ubuntu/setting.py:294
+#: .././ailurus/ubuntu/setting.py:296
 msgid "Ubuntu update manager setting"
 msgstr "Настройки за мениджъра с обновления в Ubuntu"
 
@@ -3016,6 +2988,10 @@ msgstr ""
 "Изтегляне чрез bittorrent + Търсене на видео + Възпроизвеждае на видео\n"
 "Команда: sudo apt-get install vuze"
 
+#: .././ailurus/ubuntu/apt_recovery_pane.py:29
+msgid "APT recovery"
+msgstr "APT възстановяване"
+
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Write comments"
 msgstr "Запишете коментари"
@@ -3136,8 +3112,8 @@ msgid "This pane is disabled."
 msgstr "Този плот е забранен."
 
 #: .././ailurus/support/terminal.py:53
-#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:341
-#: .././ailurus/lib.py:392 .././ailurus/lib.py:590 .././ailurus/lib.py:962
+#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:298
+#: .././ailurus/lib.py:349 .././ailurus/lib.py:547 .././ailurus/lib.py:919
 msgid "Run command:"
 msgstr "Изпълнение на команда:"
 
@@ -3183,8 +3159,7 @@ msgstr "Хардуерна информация"
 msgid "Linux Information"
 msgstr "Linux информация"
 
-#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:77
-#: .././ailurus/main.py:189 .././ailurus/common/menu.py:272
+#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:134
 msgid "Cache installation files"
 msgstr "Инсталационни файлове в кеш паметта."
 
@@ -3291,86 +3266,86 @@ msgid "(States of files are not detected yet.)"
 msgstr "(Състоянието на файловете не е открито още.)"
 
 #. print message
-#: .././ailurus/lib.py:721
+#: .././ailurus/lib.py:678
 msgid "Installing packages:"
 msgstr "Инсталиране на пакети:"
 
-#: .././ailurus/lib.py:731
+#: .././ailurus/lib.py:688
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr "Не могат да бъдат инсталирани пакети \"%s\"."
 
 #. print message
-#: .././ailurus/lib.py:757
+#: .././ailurus/lib.py:714
 msgid "Removing packages:"
 msgstr "Премахване на пакети:"
 
-#: .././ailurus/lib.py:767
+#: .././ailurus/lib.py:724
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr "Не могат да бъдат премахнати пакети \"%s\"."
 
-#: .././ailurus/lib.py:917
+#: .././ailurus/lib.py:874
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f GB"
 
-#: .././ailurus/lib.py:919
+#: .././ailurus/lib.py:876
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f MB"
 
-#: .././ailurus/lib.py:921
+#: .././ailurus/lib.py:878
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: .././ailurus/lib.py:922
+#: .././ailurus/lib.py:879
 msgid "less than 1 KB"
 msgstr "по-малко от 1 KB"
 
-#: .././ailurus/lib.py:930
+#: .././ailurus/lib.py:887
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f часа"
 
-#: .././ailurus/lib.py:932
+#: .././ailurus/lib.py:889
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f минути"
 
-#: .././ailurus/lib.py:933
+#: .././ailurus/lib.py:890
 msgid "less than 1 minute"
 msgstr "по-малко от 1 минута"
 
-#: .././ailurus/lib.py:1130 .././ailurus/lib.py:1135
+#: .././ailurus/lib.py:1087 .././ailurus/lib.py:1092
 msgid "Opening web page"
 msgstr "Отваряне на уеб страница"
 
-#: .././ailurus/lib.py:1275
+#: .././ailurus/lib.py:1232
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "Времето за отговор на сървър %(name)s е %(time).1f ms."
 
-#: .././ailurus/lib.py:1277
+#: .././ailurus/lib.py:1234
 #, python-format
 msgid "Server %s does not respond."
 msgstr "Сървър %s не отговори."
 
-#: .././ailurus/lib.py:1354
+#: .././ailurus/lib.py:1311
 msgid "Checking file integrity ..."
 msgstr "Проверка цялостта на файла..."
 
-#: .././ailurus/lib.py:1358
+#: .././ailurus/lib.py:1315
 msgid "Good."
 msgstr "Добре."
 
-#: .././ailurus/lib.py:1376
+#: .././ailurus/lib.py:1333
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr "Използване на огледало %(i)s. Има общо %(total)s огледала."
 
-#: .././ailurus/lib.py:1521
+#: .././ailurus/lib.py:1478
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 "Преглеждане на сигурно изтриваеми пакети. Моля изчакайте няколко минути."
@@ -3423,8 +3398,7 @@ msgstr "Може да бъде използвано с версия %s на Fire
 msgid "It can be obtained from "
 msgstr "Може да бъде изтеглен от "
 
-#: .././ailurus/system_setting_pane.py:29 .././ailurus/main.py:75
-#: .././ailurus/common/menu.py:265
+#: .././ailurus/system_setting_pane.py:29
 msgid "System settings"
 msgstr "Системни настройки"
 
@@ -3615,9 +3589,7 @@ msgstr ""
 "<span color=\"red\">Промените ще станат активни при следващото стартиране на "
 "GNOME.</span>"
 
-#. [_('Navigation'),   __navigate(main_view),   0],
-#: .././ailurus/gnome/setting.py:50 .././ailurus/common/menu.py:444
-#: .././ailurus/common/setting.py:87
+#: .././ailurus/gnome/setting.py:50 .././ailurus/common/setting.py:87
 msgid "Information"
 msgstr "Информация"
 
@@ -4537,56 +4509,71 @@ msgstr ""
 "Забранява ви да превключвате към друг акаунт, освен ако не сте излезли от "
 "GNOME първо. -_-\n"
 
-#: .././ailurus/main.py:38
-msgid "Name of current panel"
-msgstr "Име на настоящия панел"
-
-#: .././ailurus/main.py:43
-msgid "Go back one panel"
-msgstr "Назад с един панел"
-
-#: .././ailurus/main.py:44
-msgid "Go forward one panel"
-msgstr "Напред с един панел"
-
-#: .././ailurus/main.py:51
-msgid "Enable current pane"
-msgstr "Разреши настоящия плот"
-
-#: .././ailurus/main.py:52
-msgid "Disable current pane"
-msgstr "Забрани настоящия плот"
-
-#: .././ailurus/main.py:53
-msgid "Display \"Tip of the day\""
-msgstr "Покажи \"Съвет на деня\""
-
-#: .././ailurus/main.py:54 .././ailurus/common/menu.py:415
-msgid "Propose suggestion and report bugs"
-msgstr "Дайте предложение и съобщете за грешки"
-
-#: .././ailurus/main.py:55 .././ailurus/common/menu.py:253
+#: .././ailurus/main.py:56
 msgid "Quit"
 msgstr "Изход"
 
-#: .././ailurus/main.py:73 .././ailurus/common/menu.py:258
-msgid "Hardware information"
-msgstr "Хардуерна информация"
+#: .././ailurus/main.py:61
+msgid "Others"
+msgstr ""
 
-#: .././ailurus/main.py:74 .././ailurus/common/menu.py:260
-msgid "Linux information"
-msgstr "Linux информация"
+#: .././ailurus/main.py:64
+msgid "Preferences"
+msgstr "Настройки"
 
-#: .././ailurus/main.py:76 .././ailurus/common/menu.py:270
-#: .././ailurus/install_remove_pane.py:28
-msgid "Install/Remove"
-msgstr "Инсталиране/Премахване"
+#: .././ailurus/main.py:67
+msgid ""
+"Study\n"
+"Linux"
+msgstr ""
 
-#: .././ailurus/main.py:264
+#: .././ailurus/main.py:71
+msgid ""
+"Hardware\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:72
+msgid ""
+"Linux\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:73
+msgid ""
+"System\n"
+"Settings"
+msgstr ""
+
+#: .././ailurus/main.py:74
+msgid ""
+"Install\n"
+"Software"
+msgstr ""
+
+#: .././ailurus/main.py:75
+msgid ""
+"Cache\n"
+"Files"
+msgstr ""
+
+#: .././ailurus/main.py:76
+msgid ""
+"Fastest\n"
+"Repository"
+msgstr ""
+
+#: .././ailurus/main.py:77
+msgid ""
+"Recover\n"
+"APT"
+msgstr ""
+
+#: .././ailurus/main.py:177
 msgid "Warning!"
 msgstr "Внимание!"
 
-#: .././ailurus/main.py:265
+#: .././ailurus/main.py:178
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
@@ -4595,76 +4582,72 @@ msgstr ""
 "няколко инстанции едновременно."
 
 #. check desktop environment
-#: .././ailurus/main.py:285
+#: .././ailurus/main.py:198
 msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
 msgstr "<span color=\"yellow\">Проверка на десктоп средата... </span>\n"
 
 #. check distribution
-#: .././ailurus/main.py:293
+#: .././ailurus/main.py:206
 msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
 msgstr "<span color=\"yellow\">Проверка на дистрибуцята ... </span>\n"
 
-#: .././ailurus/main.py:316
+#: .././ailurus/main.py:229
 msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
 msgstr "<span color=\"yellow\">Откриване на Firefox профил ... </span>\n"
 
-#: .././ailurus/main.py:318
+#: .././ailurus/main.py:231
 msgid ""
 "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Изчакване Firefox да създаде профил ... </span>\n"
 
-#: .././ailurus/main.py:326 .././ailurus/main.py:329
+#: .././ailurus/main.py:239 .././ailurus/main.py:242
 msgid ""
 "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Извличане на списък с инсталираните пакети ... "
 "</span>\n"
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:247
 msgid "<span color=\"yellow\">Loading tips ... </span>\n"
 msgstr "<span color=\"yellow\">Зареждане на съвети ... </span>\n"
 
-#: .././ailurus/main.py:340
+#: .././ailurus/main.py:253
 msgid "<span color=\"yellow\">Loading main window ... </span>\n"
 msgstr "<span color=\"yellow\">Зареждане на главния прозорец ... </span>\n"
 
-#: .././ailurus/main.py:343
+#: .././ailurus/main.py:256
 msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
 msgstr "<span color=\"yellow\">Зареждане на информационен плот ... </span>\n"
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:269
 msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Зареждане на плот със системни настройки ... </span>\n"
 
-#: .././ailurus/main.py:363
+#: .././ailurus/main.py:276
 msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
 msgstr "<span color=\"yellow\">Зареждане на плот с приложения ... </span>\n"
 
-#: .././ailurus/main.py:374
+#: .././ailurus/main.py:287
 msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Зареждане на плот \"извън линия\" ... </span>\n"
 
-#: .././ailurus/main.py:381
-msgid "<span color=\"yellow\">Loading menu ... </span>\n"
-msgstr "<span color=\"yellow\">Зареждане на меню ... </span>\n"
-
-#: .././ailurus/main.py:414
+#: .././ailurus/main.py:322
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 "Появи се bug. Искате ли да уведомите разработчиците на Ailurus? Благорим ви!"
 
-#: .././ailurus/main.py:427
+#: .././ailurus/main.py:335
 msgid "Click here to report bug via web-page"
 msgstr "Натисни тук, за да докладваш за bug през уебстраница."
 
-#: .././ailurus/main.py:429
+#: .././ailurus/main.py:337
 msgid "Close"
 msgstr "Затвори"
 
-#: .././ailurus/main.py:435
+#: .././ailurus/main.py:343
 msgid "Bug appears!"
 msgstr "Появи се Bug!"
 
@@ -5337,11 +5320,17 @@ msgstr ""
 "Помага ви да подобрите производителността на уеб страницата. Казва ви защо "
 "уеб страницата е бавна."
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:408
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:349
 msgid "Ailurus blog"
 msgstr "Ailurus блог"
 
-#: .././ailurus/common/menu.py:58
+#: .././ailurus/common/menu.py:42
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Vladimir Kolev https://launchpad.net/~vladimir.kolev"
+
+#: .././ailurus/common/menu.py:47
 msgid ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
@@ -5349,243 +5338,159 @@ msgstr ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
 
-#: .././ailurus/common/menu.py:121
+#: .././ailurus/common/menu.py:110
 msgid "Welcome to leave response in blog~"
 msgstr "Добре дошли да оставите отговор в блога~"
 
-#. show group URL
-#: .././ailurus/common/menu.py:123
-msgid "Download daily-build version from"
-msgstr "Изтегляне на daily-build версия от"
+#. scroll.set_size_request(500, -1)
+#: .././ailurus/common/menu.py:124
+msgid "Ailurus changelog"
+msgstr ""
 
-#: .././ailurus/common/menu.py:130
+#: .././ailurus/common/menu.py:135
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:139
+#: .././ailurus/common/menu.py:137
+msgid "Read changelog"
+msgstr ""
+
+#: .././ailurus/common/menu.py:148
 msgid "We wish to express thankfulness to these projects:"
 msgstr "Искаме да изразим нашите благодарности на следните проекти:"
 
-#: .././ailurus/common/menu.py:143
+#: .././ailurus/common/menu.py:152
 msgid "We sincerely thank these people:"
 msgstr "Искрено благодарим на следните хора:"
 
-#: .././ailurus/common/menu.py:145
+#: .././ailurus/common/menu.py:154
 msgid "The people who provide inspiration:"
 msgstr "Хората дали вдъхновение:"
 
-#: .././ailurus/common/menu.py:151
+#: .././ailurus/common/menu.py:160
 msgid "The people who designs the logo:"
 msgstr "Хората направили дизайна на логото:"
 
-#: .././ailurus/common/menu.py:154
+#: .././ailurus/common/menu.py:163
 msgid "The people who maintain PPA repository:"
 msgstr "Хората, които поддържат PPA хранилището:"
 
-#: .././ailurus/common/menu.py:157
+#: .././ailurus/common/menu.py:166
 msgid "The people who provide a lot of Linux skills:"
 msgstr "Хората, които предоставиха много Linux умения:"
 
-#: .././ailurus/common/menu.py:160
+#: .././ailurus/common/menu.py:169
 msgid "The people who provide a lot of Debian packages:"
 msgstr "Хората, които предоставят много Debian пакети:"
 
-#: .././ailurus/common/menu.py:163
+#: .././ailurus/common/menu.py:172
 msgid "The people who provide a lot of translation:"
 msgstr "Хората, които предоставят много преводи:"
 
-#: .././ailurus/common/menu.py:164 .././ailurus/common/menu.py:168
-#: .././ailurus/common/menu.py:175
+#: .././ailurus/common/menu.py:173 .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:184
 msgid "and many other people."
 msgstr "и още много други"
 
-#: .././ailurus/common/menu.py:166
+#: .././ailurus/common/menu.py:175
 msgid "The people who report bugs:"
 msgstr "Хората, които съобщават за грешки:"
 
-#: .././ailurus/common/menu.py:170
+#: .././ailurus/common/menu.py:179
 msgid "The people who eliminate bugs:"
 msgstr "Хората, които отстраняват грешки:"
 
-#: .././ailurus/common/menu.py:173
+#: .././ailurus/common/menu.py:182
 msgid "The people who publicize this software:"
 msgstr "Хората, които публикуват този софтуер:"
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:186
 msgid "and the people not mensioned here."
 msgstr "и хората, които не са споменати тук."
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:196
 msgid "Thanks"
 msgstr "Благодарности"
 
-#: .././ailurus/common/menu.py:220
+#: .././ailurus/common/menu.py:229
 msgid "Updates for Ailurus"
 msgstr "Обновления за Ailurus"
 
-#: .././ailurus/common/menu.py:225
+#: .././ailurus/common/menu.py:234
 #, python-format
 msgid "A new version is released at %(date)s."
 msgstr "Нова версия е излязла на %(date)s"
 
-#: .././ailurus/common/menu.py:231
+#: .././ailurus/common/menu.py:240
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "Вече сте инсталирани последната версия на Ailurus. :)"
-
-#: .././ailurus/common/menu.py:247
-msgid "Back to previous pane"
-msgstr "Обратно към предишния плот"
-
-#: .././ailurus/common/menu.py:250
-msgid "Go forward one pane"
-msgstr "Напред с един плот"
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:281
+#: .././ailurus/common/menu.py:260
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr "Как да компилирате LaTeX файл в pdf файл ?"
 
-#: .././ailurus/common/menu.py:300
+#: .././ailurus/common/menu.py:279
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr "Съвет а деня"
 
-#: .././ailurus/common/menu.py:314
+#: .././ailurus/common/menu.py:298
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 "След колко време след като сървърна на отговаря да се прекъсне изтеглянето? "
 "(в секунди)"
 
-#: .././ailurus/common/menu.py:320
+#: .././ailurus/common/menu.py:304
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr "Колко пъти Ailurus да опитва да изтегли един и същи ресутс?"
 
-#: .././ailurus/common/menu.py:323
+#: .././ailurus/common/menu.py:307
 msgid "Set Ailurus download parameter"
 msgstr "Задайте параметри при изтегляне за Ailurus"
 
-#: .././ailurus/common/menu.py:345
+#: .././ailurus/common/menu.py:329
 msgid "Don't show \"tip of the day\" on start up"
 msgstr "Не показвай \"съвет на деня\" при стартиране"
 
-#: .././ailurus/common/menu.py:351
+#: .././ailurus/common/menu.py:335
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr "Показване на произволно Linux умение, след като влезете в GNOME"
 
-#: .././ailurus/common/menu.py:356
+#: .././ailurus/common/menu.py:340
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr "Вашите промени ще влязат в действие при следващото влизано в GNOME."
 
-#: .././ailurus/common/menu.py:359
-msgid "Show Chinese applications and Chinese web pages"
-msgstr "Показвай китайски приложения и китайски уебстраници"
-
-#: .././ailurus/common/menu.py:365
-msgid "Show Polish application and Polish web pages "
-msgstr "Показвай полски приложения и полски уебстраници "
-
-#: .././ailurus/common/menu.py:371
+#: .././ailurus/common/menu.py:343
 msgid "Set download parameters"
 msgstr "Задай параметри за изтегляне"
 
-#: .././ailurus/common/menu.py:377
-msgid "English"
-msgstr "Английски"
-
-#: .././ailurus/common/menu.py:378
-msgid "Bulgarian"
-msgstr "Български"
-
-#: .././ailurus/common/menu.py:379
-msgid "Danish"
-msgstr "Датски"
-
-#: .././ailurus/common/menu.py:380
-msgid "German"
-msgstr "Немски"
-
-#: .././ailurus/common/menu.py:381
-msgid "Spanish"
-msgstr "Испански"
-
-#: .././ailurus/common/menu.py:382
-msgid "French"
-msgstr "Френски"
-
-#: .././ailurus/common/menu.py:383
-msgid "Italian"
-msgstr "Италиански"
-
-#: .././ailurus/common/menu.py:384
-msgid "Polish"
-msgstr "Полски"
-
-#: .././ailurus/common/menu.py:385
-msgid "Brazilian Portuguese"
-msgstr "Португалски"
-
-#: .././ailurus/common/menu.py:386
-msgid "Russian"
-msgstr "Руски"
-
-#: .././ailurus/common/menu.py:387
-msgid "Simplified Chinese / Mainland (zh_CN)"
-msgstr "Опростен китайски / Mainland (zh_CN)"
-
-#: .././ailurus/common/menu.py:388
-msgid "Traditional Chinese / Hong Kong (zh_HK)"
-msgstr "Традиционен китайски / Hong Kong (zh_HK)"
-
-#: .././ailurus/common/menu.py:389
-msgid "Traditional Chinese / Taiwan (zh_TW)"
-msgstr "Традиционен китайски / Taiwan (zh_TW)"
-
-#: .././ailurus/common/menu.py:400
-msgid "Language changed"
-msgstr "Езикът променен"
-
-#: .././ailurus/common/menu.py:402
-msgid "GUI Language"
-msgstr "ГПИ Език"
-
-#: .././ailurus/common/menu.py:412
+#: .././ailurus/common/menu.py:353
 msgid "Check for updates"
 msgstr "Проверка за обновления"
 
-#: .././ailurus/common/menu.py:419
+#: .././ailurus/common/menu.py:356
+msgid "Propose suggestion and report bugs"
+msgstr "Дайте предложение и съобщете за грешки"
+
+#: .././ailurus/common/menu.py:360
 msgid "Translate this application"
 msgstr "Преведете това приложения"
 
-#: .././ailurus/common/menu.py:423
-msgid "Get daily-build version (more features but more bugs)"
-msgstr "Вземи daily-build версия (повече функции, но повече bug-ове)"
-
-#: .././ailurus/common/menu.py:427
+#: .././ailurus/common/menu.py:364
 msgid "Special thanks"
 msgstr "Специални благодарности"
 
-#: .././ailurus/common/menu.py:430
+#: .././ailurus/common/menu.py:367
 msgid "About"
 msgstr "Относно"
-
-#: .././ailurus/common/menu.py:445
-msgid "Adjustments"
-msgstr "Настройки"
-
-#: .././ailurus/common/menu.py:446
-msgid "Applications"
-msgstr "Приложения"
-
-#: .././ailurus/common/menu.py:449
-msgid "Help"
-msgstr "Помощ"
 
 #: .././ailurus/common/setting.py:32
 msgid "0 = Swap little mem to disk"
@@ -6453,6 +6358,10 @@ msgstr ""
 "Инсталиране/Премахване на задача\n"
 "gksudo tasksel\n"
 
+#: .././ailurus/install_remove_pane.py:28
+msgid "Install/Remove"
+msgstr "Инсталиране/Премахване"
+
 #: .././ailurus/install_remove_pane.py:109
 msgid "To be installed:\n"
 msgstr "Да бъдат инсталирани:\n"
@@ -6737,11 +6646,26 @@ msgstr ""
 "\n"
 "Минимална стойност: %(min)s. Максимална стойност: %(max)s."
 
+#~ msgid "Go back one panel"
+#~ msgstr "Назад с един панел"
+
+#~ msgid "Go forward one panel"
+#~ msgstr "Напред с един панел"
+
+#~ msgid "Name of current panel"
+#~ msgstr "Име на настоящия панел"
+
 #~ msgid "_Next tip"
 #~ msgstr "Следващ съвет"
 
 #~ msgid "_Previous tip"
 #~ msgstr "Предишен съвет"
+
+#~ msgid "Enable current pane"
+#~ msgstr "Разреши настоящия плот"
+
+#~ msgid "Disable current pane"
+#~ msgstr "Забрани настоящия плот"
 
 #~ msgid "TeXLive 2008"
 #~ msgstr "TeXLive 2008"
@@ -6763,6 +6687,36 @@ msgstr ""
 #~ "\n"
 #~ "Тази версия е компилирана на %s."
 
+#~ msgid "Hardware information"
+#~ msgstr "Хардуерна информация"
+
+#~ msgid "Linux information"
+#~ msgstr "Linux информация"
+
+#~ msgid "English"
+#~ msgstr "Английски"
+
+#~ msgid "Spanish"
+#~ msgstr "Испански"
+
+#~ msgid "Russian"
+#~ msgstr "Руски"
+
+#~ msgid "French"
+#~ msgstr "Френски"
+
+#~ msgid "Language changed"
+#~ msgstr "Езикът променен"
+
+#~ msgid "GUI Language"
+#~ msgstr "ГПИ Език"
+
+#~ msgid "Applications"
+#~ msgstr "Приложения"
+
+#~ msgid "Help"
+#~ msgstr "Помощ"
+
 #~ msgid "How to install themes of Fedora® or OpenSolaris® on Ubuntu ?"
 #~ msgstr "Как да инсталирате теми от Fedora® или OpenSolaris® в Ubuntu ?"
 
@@ -6775,6 +6729,9 @@ msgstr ""
 #~ msgid "Ubuntu forum in China"
 #~ msgstr "Ubuntu форум в Китай"
 
+#~ msgid "Repositories"
+#~ msgstr "Хранилища"
+
 #~ msgid "unknown"
 #~ msgstr "непознат"
 
@@ -6786,6 +6743,15 @@ msgstr ""
 
 #~ msgid "Firefox extensions for developers"
 #~ msgstr "Firefox разширения за разработчици"
+
+#~ msgid "Display \"Tip of the day\""
+#~ msgstr "Покажи \"Съвет на деня\""
+
+#~ msgid "Find fast repository mirror"
+#~ msgstr "Открий бързо огледало на хранилище."
+
+#~ msgid "<span color=\"yellow\">Loading menu ... </span>\n"
+#~ msgstr "<span color=\"yellow\">Зареждане на меню ... </span>\n"
 
 #~ msgid ""
 #~ "Install TeXLive 2008 and enable Chinese support. You can create a LaTeX file "
@@ -6866,6 +6832,57 @@ msgstr ""
 #~ "All rights of the applications installed by Ailurus are preserved by their "
 #~ "authors."
 
+#~ msgid "Download daily-build version from"
+#~ msgstr "Изтегляне на daily-build версия от"
+
+#~ msgid "Back to previous pane"
+#~ msgstr "Обратно към предишния плот"
+
+#~ msgid "Go forward one pane"
+#~ msgstr "Напред с един плот"
+
+#~ msgid "Show Chinese applications and Chinese web pages"
+#~ msgstr "Показвай китайски приложения и китайски уебстраници"
+
+#~ msgid "Show Polish application and Polish web pages "
+#~ msgstr "Показвай полски приложения и полски уебстраници "
+
+#~ msgid "Bulgarian"
+#~ msgstr "Български"
+
+#~ msgid "Danish"
+#~ msgstr "Датски"
+
+#~ msgid "German"
+#~ msgstr "Немски"
+
+#~ msgid "Italian"
+#~ msgstr "Италиански"
+
+#~ msgid "Polish"
+#~ msgstr "Полски"
+
+#~ msgid "Brazilian Portuguese"
+#~ msgstr "Португалски"
+
+#~ msgid "Simplified Chinese / Mainland (zh_CN)"
+#~ msgstr "Опростен китайски / Mainland (zh_CN)"
+
+#~ msgid "Traditional Chinese / Hong Kong (zh_HK)"
+#~ msgstr "Традиционен китайски / Hong Kong (zh_HK)"
+
+#~ msgid "Traditional Chinese / Taiwan (zh_TW)"
+#~ msgstr "Традиционен китайски / Taiwan (zh_TW)"
+
+#~ msgid "Get daily-build version (more features but more bugs)"
+#~ msgstr "Вземи daily-build версия (повече функции, но повече bug-ове)"
+
+#~ msgid "Adjustments"
+#~ msgstr "Настройки"
+
+#~ msgid "Learning"
+#~ msgstr "Обучение"
+
 #~ msgid ""
 #~ "Clear Bash history\n"
 #~ "history -c\n"
@@ -6903,6 +6920,9 @@ msgstr ""
 
 #~ msgid "Enjoy online music in Ubuntu (in Chinese)"
 #~ msgstr "Насладете се на онлайн музика в Ubuntu (на китайски)"
+
+#~ msgid "Recovery"
+#~ msgstr "Възстановяване"
 
 #, python-format
 #~ msgid "%.2f millisecond"

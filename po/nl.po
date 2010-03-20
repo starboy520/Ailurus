@@ -7,15 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-17 19:43+0800\n"
-"PO-Revision-Date: 2010-01-26 02:41+0000\n"
-"Last-Translator: Heureka <Unknown>\n"
+"POT-Creation-Date: 2010-03-19 11:28+0800\n"
+"PO-Revision-Date: 2010-03-19 09:18+0000\n"
+"Last-Translator: Launchpad Translations Administrators "
+"<rosetta@launchpad.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-03-18 04:45+0000\n"
+"X-Launchpad-Export-Date: 2010-03-20 04:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -601,7 +602,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:772
+#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:729
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "Voer \"apt-get update\" uit. Een paar minuten geduld alstublieft."
 
@@ -1368,105 +1369,76 @@ msgstr ""
 msgid "Songbird (Latest version)"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:29 .././ailurus/main.py:78
-msgid "Find fast repository mirror"
-msgstr "Snelle spiegelserver voor softwarebron zoeken"
-
-#: .././ailurus/ubuntu/menu.py:34 .././ailurus/ubuntu/apt_recovery_pane.py:29
-#: .././ailurus/main.py:79
-msgid "APT recovery"
-msgstr "APT-herstel"
-
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. Separator
-#: .././ailurus/ubuntu/menu.py:42
+#: .././ailurus/ubuntu/menu.py:32
 msgid "Ubuntu/Kubuntu configuration guide"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:44
+#: .././ailurus/ubuntu/menu.py:34
 msgid "Ubuntu skills"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:46
+#: .././ailurus/ubuntu/menu.py:36
 msgid "Obtain \"Full Circle\" magazine"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:48
+#: .././ailurus/ubuntu/menu.py:38
 msgid "Obtain \"Ubuntu pocket guide\" book"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:50
+#: .././ailurus/ubuntu/menu.py:40
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:83
+#: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:356 .././ailurus/common/menu.py:362
-#: .././ailurus/common/menu.py:368
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
+#: .././ailurus/common/menu.py:340
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:362 .././ailurus/common/menu.py:368
-#: .././ailurus/common/menu.py:400
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:117 .././ailurus/ubuntu/menu.py:125
-#: .././ailurus/ubuntu/quick_setup.py:30
+#: .././ailurus/ubuntu/menu.py:107 .././ailurus/ubuntu/quick_setup.py:30
 #: .././ailurus/ubuntu/quick_setup.py:334
 msgid "Quick setup"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:126
-msgid "Repositories"
-msgstr ""
-
-#: .././ailurus/ubuntu/menu.py:127
-msgid "Recovery"
-msgstr ""
-
-#: .././ailurus/ubuntu/menu.py:128 .././ailurus/common/menu.py:447
-msgid "Learning"
-msgstr ""
-
-#: .././ailurus/ubuntu/menu.py:129 .././ailurus/common/menu.py:448
-msgid "Preferences"
-msgstr ""
-
-#: .././ailurus/ubuntu/setting.py:103
+#: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:107
+#: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:115
+#: .././ailurus/ubuntu/setting.py:117
 msgid "Window screenshot:"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:138
+#: .././ailurus/ubuntu/setting.py:140
 msgid "\"Write to Disc...\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:139
+#: .././ailurus/ubuntu/setting.py:141
 msgid ""
 "When CD/DVD image file is clicked by mouse right button, \n"
 "show a \"Write to Disc...\" menu item.\n"
 "<span color=\"red\">This item conflicts with \"brasero\".</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:144
+#: .././ailurus/ubuntu/setting.py:146
 msgid "\"Actions Configuration\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:145
+#: .././ailurus/ubuntu/setting.py:147
 msgid ""
 "It allows the configuration of programs to be launched \n"
 "on files selected.\n"
@@ -1474,111 +1446,111 @@ msgid ""
 ">\"Preferences\" menu.</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:150
+#: .././ailurus/ubuntu/setting.py:152
 msgid "\"Repair filename\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "When any file with wrong encoding filename is right clicked,\n"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "show a \"Repair filename\" menu item."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:154
+#: .././ailurus/ubuntu/setting.py:156
 msgid "\"Open as administrator\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid "Open selected folder with administration privileges."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:158
+#: .././ailurus/ubuntu/setting.py:160
 msgid "\"Resize/Rotate images\" entries"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:159
+#: .././ailurus/ubuntu/setting.py:161
 msgid "Resize or rotate selected images."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:162
+#: .././ailurus/ubuntu/setting.py:164
 msgid "\"Open in terminal\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:163
+#: .././ailurus/ubuntu/setting.py:165
 msgid "Open a terminal in current folder."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:166
+#: .././ailurus/ubuntu/setting.py:168
 msgid "\"Convert audio files\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:167
+#: .././ailurus/ubuntu/setting.py:169
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
 "<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:174
+#: .././ailurus/ubuntu/setting.py:176
 msgid "\"Subversion commands\" entries"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:180
+#: .././ailurus/ubuntu/setting.py:182
 msgid "\"Share\" entry for folders"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:181
+#: .././ailurus/ubuntu/setting.py:183
 msgid "Share folders by Samba."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:184
+#: .././ailurus/ubuntu/setting.py:186
 msgid "\"Set as wallpaper\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:190
+#: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:206
 msgid "Apply"
 msgstr "Toepassen"
 
-#: .././ailurus/ubuntu/setting.py:266 .././ailurus/loader.py:87
-#: .././ailurus/loader.py:124 .././ailurus/main.py:404
+#: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
+#: .././ailurus/loader.py:124 .././ailurus/main.py:312
 msgid "Traceback:"
 msgstr "Traceback:"
 
-#: .././ailurus/ubuntu/setting.py:267
+#: .././ailurus/ubuntu/setting.py:269
 msgid "Some operation failed."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "All operations succeeded."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "The changes will take effect at the next time when GNOME starts up."
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:282
+#: .././ailurus/ubuntu/setting.py:284
 msgid "Nautilus context menu"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:286
+#: .././ailurus/ubuntu/setting.py:288
 msgid "Automatically check for update"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:288
+#: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
 msgstr ""
 
-#: .././ailurus/ubuntu/setting.py:294
+#: .././ailurus/ubuntu/setting.py:296
 msgid "Ubuntu update manager setting"
 msgstr ""
 
@@ -2620,6 +2592,10 @@ msgid ""
 "Command: sudo apt-get install vuze"
 msgstr ""
 
+#: .././ailurus/ubuntu/apt_recovery_pane.py:29
+msgid "APT recovery"
+msgstr "APT-herstel"
+
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Write comments"
 msgstr ""
@@ -2735,8 +2711,8 @@ msgid "This pane is disabled."
 msgstr "Dit paneel is uitgeschakeld."
 
 #: .././ailurus/support/terminal.py:53
-#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:341
-#: .././ailurus/lib.py:392 .././ailurus/lib.py:590 .././ailurus/lib.py:962
+#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:298
+#: .././ailurus/lib.py:349 .././ailurus/lib.py:547 .././ailurus/lib.py:919
 msgid "Run command:"
 msgstr "Commando uitvoeren:"
 
@@ -2781,8 +2757,7 @@ msgstr "Hardware-informatie"
 msgid "Linux Information"
 msgstr "Linux-informatie"
 
-#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:77
-#: .././ailurus/main.py:189 .././ailurus/common/menu.py:272
+#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:134
 msgid "Cache installation files"
 msgstr "Installatiebestanden in de cache plaatsen"
 
@@ -2889,86 +2864,86 @@ msgid "(States of files are not detected yet.)"
 msgstr "(Status van bestanden nog niet gedetecteerd.)"
 
 #. print message
-#: .././ailurus/lib.py:721
+#: .././ailurus/lib.py:678
 msgid "Installing packages:"
 msgstr "Pakketten installeren:"
 
-#: .././ailurus/lib.py:731
+#: .././ailurus/lib.py:688
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr "Kan pakketten \"%s\" niet installeren."
 
 #. print message
-#: .././ailurus/lib.py:757
+#: .././ailurus/lib.py:714
 msgid "Removing packages:"
 msgstr "Pakketten verwijderen:"
 
-#: .././ailurus/lib.py:767
+#: .././ailurus/lib.py:724
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr "Kan pakketten \"%s\" niet verwijderen."
 
-#: .././ailurus/lib.py:917
+#: .././ailurus/lib.py:874
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f GB"
 
-#: .././ailurus/lib.py:919
+#: .././ailurus/lib.py:876
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f MB"
 
-#: .././ailurus/lib.py:921
+#: .././ailurus/lib.py:878
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: .././ailurus/lib.py:922
+#: .././ailurus/lib.py:879
 msgid "less than 1 KB"
 msgstr "minder dan 1 KB"
 
-#: .././ailurus/lib.py:930
+#: .././ailurus/lib.py:887
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f uur"
 
-#: .././ailurus/lib.py:932
+#: .././ailurus/lib.py:889
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f minuten"
 
-#: .././ailurus/lib.py:933
+#: .././ailurus/lib.py:890
 msgid "less than 1 minute"
 msgstr "minder dan een minuut"
 
-#: .././ailurus/lib.py:1130 .././ailurus/lib.py:1135
+#: .././ailurus/lib.py:1087 .././ailurus/lib.py:1092
 msgid "Opening web page"
 msgstr "Webpagina openen"
 
-#: .././ailurus/lib.py:1275
+#: .././ailurus/lib.py:1232
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1277
+#: .././ailurus/lib.py:1234
 #, python-format
 msgid "Server %s does not respond."
 msgstr "Server %s reageert niet."
 
-#: .././ailurus/lib.py:1354
+#: .././ailurus/lib.py:1311
 msgid "Checking file integrity ..."
 msgstr "Bestandsintegriteit controleren ..."
 
-#: .././ailurus/lib.py:1358
+#: .././ailurus/lib.py:1315
 msgid "Good."
 msgstr "Goed."
 
-#: .././ailurus/lib.py:1376
+#: .././ailurus/lib.py:1333
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1521
+#: .././ailurus/lib.py:1478
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
@@ -3021,8 +2996,7 @@ msgstr "Het kan gebruikt worden in Firefox versie %s"
 msgid "It can be obtained from "
 msgstr "Het kan verkregen worden bij "
 
-#: .././ailurus/system_setting_pane.py:29 .././ailurus/main.py:75
-#: .././ailurus/common/menu.py:265
+#: .././ailurus/system_setting_pane.py:29
 msgid "System settings"
 msgstr "Systeeminstellingen"
 
@@ -3193,9 +3167,7 @@ msgid ""
 "starts up.</span>"
 msgstr ""
 
-#. [_('Navigation'),   __navigate(main_view),   0],
-#: .././ailurus/gnome/setting.py:50 .././ailurus/common/menu.py:444
-#: .././ailurus/common/setting.py:87
+#: .././ailurus/gnome/setting.py:50 .././ailurus/common/setting.py:87
 msgid "Information"
 msgstr ""
 
@@ -3941,56 +3913,71 @@ msgid ""
 "GNOME first. -_-\n"
 msgstr ""
 
-#: .././ailurus/main.py:38
-msgid "Name of current panel"
-msgstr "Naam van huidige paneel"
-
-#: .././ailurus/main.py:43
-msgid "Go back one panel"
-msgstr "Een paneel terug gaan"
-
-#: .././ailurus/main.py:44
-msgid "Go forward one panel"
-msgstr "Een paneel verder gaan"
-
-#: .././ailurus/main.py:51
-msgid "Enable current pane"
-msgstr "Huidig paneel inschakelen"
-
-#: .././ailurus/main.py:52
-msgid "Disable current pane"
-msgstr "Huidig paneel uitschakelen"
-
-#: .././ailurus/main.py:53
-msgid "Display \"Tip of the day\""
-msgstr "\"Tip van de dag\" uitschakelen"
-
-#: .././ailurus/main.py:54 .././ailurus/common/menu.py:415
-msgid "Propose suggestion and report bugs"
-msgstr ""
-
-#: .././ailurus/main.py:55 .././ailurus/common/menu.py:253
+#: .././ailurus/main.py:56
 msgid "Quit"
 msgstr "Afsluiten"
 
-#: .././ailurus/main.py:73 .././ailurus/common/menu.py:258
-msgid "Hardware information"
-msgstr "Hardware-informatie"
+#: .././ailurus/main.py:61
+msgid "Others"
+msgstr ""
 
-#: .././ailurus/main.py:74 .././ailurus/common/menu.py:260
-msgid "Linux information"
-msgstr "Linux-informatie"
+#: .././ailurus/main.py:64
+msgid "Preferences"
+msgstr ""
 
-#: .././ailurus/main.py:76 .././ailurus/common/menu.py:270
-#: .././ailurus/install_remove_pane.py:28
-msgid "Install/Remove"
-msgstr "Installeren/verwijderen"
+#: .././ailurus/main.py:67
+msgid ""
+"Study\n"
+"Linux"
+msgstr ""
 
-#: .././ailurus/main.py:264
+#: .././ailurus/main.py:71
+msgid ""
+"Hardware\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:72
+msgid ""
+"Linux\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:73
+msgid ""
+"System\n"
+"Settings"
+msgstr ""
+
+#: .././ailurus/main.py:74
+msgid ""
+"Install\n"
+"Software"
+msgstr ""
+
+#: .././ailurus/main.py:75
+msgid ""
+"Cache\n"
+"Files"
+msgstr ""
+
+#: .././ailurus/main.py:76
+msgid ""
+"Fastest\n"
+"Repository"
+msgstr ""
+
+#: .././ailurus/main.py:77
+msgid ""
+"Recover\n"
+"APT"
+msgstr ""
+
+#: .././ailurus/main.py:177
 msgid "Warning!"
 msgstr "Waarschuwing!"
 
-#: .././ailurus/main.py:265
+#: .././ailurus/main.py:178
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
@@ -3999,77 +3986,73 @@ msgstr ""
 "vensters tegelijk open te hebben."
 
 #. check desktop environment
-#: .././ailurus/main.py:285
+#: .././ailurus/main.py:198
 msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
 msgstr "<span color=\"yellow\">Bureaubladomgeving controleren ... </span>\n"
 
 #. check distribution
-#: .././ailurus/main.py:293
+#: .././ailurus/main.py:206
 msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
 msgstr "<span color=\"yellow\">Distributie controleren ... </span>\n"
 
-#: .././ailurus/main.py:316
+#: .././ailurus/main.py:229
 msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
 msgstr "<span color=\"yellow\">Firefox-profiel verkrijgen ... </span>\n"
 
-#: .././ailurus/main.py:318
+#: .././ailurus/main.py:231
 msgid ""
 "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Wachten totdat Firefox een profiel heeft aangemaakt "
 "... </span>\n"
 
-#: .././ailurus/main.py:326 .././ailurus/main.py:329
+#: .././ailurus/main.py:239 .././ailurus/main.py:242
 msgid ""
 "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Lijst van geïnstalleerde pakketten verkrijgen ... "
 "</span>\n"
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:247
 msgid "<span color=\"yellow\">Loading tips ... </span>\n"
 msgstr "<span color=\"yellow\">Tips laden ... </span>\n"
 
-#: .././ailurus/main.py:340
+#: .././ailurus/main.py:253
 msgid "<span color=\"yellow\">Loading main window ... </span>\n"
 msgstr "<span color=\"yellow\">Hoofdvenster laden ... </span>\n"
 
-#: .././ailurus/main.py:343
+#: .././ailurus/main.py:256
 msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
 msgstr "<span color=\"yellow\">Informatiepaneel laden... </span>\n"
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:269
 msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
 msgstr ""
 "<span color=\"yellow\">Paneel voor systeeminstellingen laden ... </span>\n"
 
-#: .././ailurus/main.py:363
+#: .././ailurus/main.py:276
 msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
 msgstr "<span color=\"yellow\">Paneel voor toepassingen laden ... </span>\n"
 
-#: .././ailurus/main.py:374
+#: .././ailurus/main.py:287
 msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
 msgstr "<span color=\"yellow\">Offline paneel laden ... </span>\n"
 
-#: .././ailurus/main.py:381
-msgid "<span color=\"yellow\">Loading menu ... </span>\n"
-msgstr "<span color=\"yellow\">Menu laden ... </span>\n"
-
-#: .././ailurus/main.py:414
+#: .././ailurus/main.py:322
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 "Er is een fout opgetreden. Zou u hem willen melden aan de Ailurus-makers? "
 "Alvast bedankt!"
 
-#: .././ailurus/main.py:427
+#: .././ailurus/main.py:335
 msgid "Click here to report bug via web-page"
 msgstr "Klik hier om fouten te melden via een webpagina"
 
-#: .././ailurus/main.py:429
+#: .././ailurus/main.py:337
 msgid "Close"
 msgstr ""
 
-#: .././ailurus/main.py:435
+#: .././ailurus/main.py:343
 msgid "Bug appears!"
 msgstr "Fout opgetreden!"
 
@@ -4737,250 +4720,176 @@ msgstr ""
 "Het helpt webpaginaprestaties te verbeteren. Het vertelt u waarom uw "
 "webpagina traag is."
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:408
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:349
 msgid "Ailurus blog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:58
+#: .././ailurus/common/menu.py:42
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Heureka https://launchpad.net/~jan-de-ridder\n"
+"  Vistaus https://launchpad.net/~djmusic121\n"
+"  Yentl https://launchpad.net/~yentlvt\n"
+"  cumulus007 https://launchpad.net/~cumulus-007\n"
+"  fjs https://launchpad.net/~info-steging"
+
+#: .././ailurus/common/menu.py:47
 msgid ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
 msgstr ""
 
-#: .././ailurus/common/menu.py:121
+#: .././ailurus/common/menu.py:110
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#. show group URL
-#: .././ailurus/common/menu.py:123
-msgid "Download daily-build version from"
+#. scroll.set_size_request(500, -1)
+#: .././ailurus/common/menu.py:124
+msgid "Ailurus changelog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:130
+#: .././ailurus/common/menu.py:135
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:139
+#: .././ailurus/common/menu.py:137
+msgid "Read changelog"
+msgstr ""
+
+#: .././ailurus/common/menu.py:148
 msgid "We wish to express thankfulness to these projects:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:143
+#: .././ailurus/common/menu.py:152
 msgid "We sincerely thank these people:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:145
+#: .././ailurus/common/menu.py:154
 msgid "The people who provide inspiration:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:151
+#: .././ailurus/common/menu.py:160
 msgid "The people who designs the logo:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:154
+#: .././ailurus/common/menu.py:163
 msgid "The people who maintain PPA repository:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:157
+#: .././ailurus/common/menu.py:166
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:160
+#: .././ailurus/common/menu.py:169
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:163
+#: .././ailurus/common/menu.py:172
 msgid "The people who provide a lot of translation:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:164 .././ailurus/common/menu.py:168
-#: .././ailurus/common/menu.py:175
+#: .././ailurus/common/menu.py:173 .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:184
 msgid "and many other people."
 msgstr ""
 
-#: .././ailurus/common/menu.py:166
+#: .././ailurus/common/menu.py:175
 msgid "The people who report bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:170
+#: .././ailurus/common/menu.py:179
 msgid "The people who eliminate bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:173
+#: .././ailurus/common/menu.py:182
 msgid "The people who publicize this software:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:186
 msgid "and the people not mensioned here."
 msgstr ""
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:196
 msgid "Thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:220
+#: .././ailurus/common/menu.py:229
 msgid "Updates for Ailurus"
 msgstr ""
 
-#: .././ailurus/common/menu.py:225
+#: .././ailurus/common/menu.py:234
 #, python-format
 msgid "A new version is released at %(date)s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:231
+#: .././ailurus/common/menu.py:240
 msgid "You have already installed the latest Ailurus version. :)"
-msgstr ""
-
-#: .././ailurus/common/menu.py:247
-msgid "Back to previous pane"
-msgstr ""
-
-#: .././ailurus/common/menu.py:250
-msgid "Go forward one pane"
 msgstr ""
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:281
+#: .././ailurus/common/menu.py:260
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:300
+#: .././ailurus/common/menu.py:279
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr ""
 
-#: .././ailurus/common/menu.py:314
+#: .././ailurus/common/menu.py:298
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 
-#: .././ailurus/common/menu.py:320
+#: .././ailurus/common/menu.py:304
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:323
+#: .././ailurus/common/menu.py:307
 msgid "Set Ailurus download parameter"
 msgstr ""
 
-#: .././ailurus/common/menu.py:345
+#: .././ailurus/common/menu.py:329
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: .././ailurus/common/menu.py:351
+#: .././ailurus/common/menu.py:335
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:356
+#: .././ailurus/common/menu.py:340
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:359
-msgid "Show Chinese applications and Chinese web pages"
-msgstr ""
-
-#: .././ailurus/common/menu.py:365
-msgid "Show Polish application and Polish web pages "
-msgstr ""
-
-#: .././ailurus/common/menu.py:371
+#: .././ailurus/common/menu.py:343
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:377
-msgid "English"
-msgstr ""
-
-#: .././ailurus/common/menu.py:378
-msgid "Bulgarian"
-msgstr ""
-
-#: .././ailurus/common/menu.py:379
-msgid "Danish"
-msgstr ""
-
-#: .././ailurus/common/menu.py:380
-msgid "German"
-msgstr ""
-
-#: .././ailurus/common/menu.py:381
-msgid "Spanish"
-msgstr ""
-
-#: .././ailurus/common/menu.py:382
-msgid "French"
-msgstr ""
-
-#: .././ailurus/common/menu.py:383
-msgid "Italian"
-msgstr ""
-
-#: .././ailurus/common/menu.py:384
-msgid "Polish"
-msgstr ""
-
-#: .././ailurus/common/menu.py:385
-msgid "Brazilian Portuguese"
-msgstr ""
-
-#: .././ailurus/common/menu.py:386
-msgid "Russian"
-msgstr ""
-
-#: .././ailurus/common/menu.py:387
-msgid "Simplified Chinese / Mainland (zh_CN)"
-msgstr ""
-
-#: .././ailurus/common/menu.py:388
-msgid "Traditional Chinese / Hong Kong (zh_HK)"
-msgstr ""
-
-#: .././ailurus/common/menu.py:389
-msgid "Traditional Chinese / Taiwan (zh_TW)"
-msgstr ""
-
-#: .././ailurus/common/menu.py:400
-msgid "Language changed"
-msgstr ""
-
-#: .././ailurus/common/menu.py:402
-msgid "GUI Language"
-msgstr ""
-
-#: .././ailurus/common/menu.py:412
+#: .././ailurus/common/menu.py:353
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:419
+#: .././ailurus/common/menu.py:356
+msgid "Propose suggestion and report bugs"
+msgstr ""
+
+#: .././ailurus/common/menu.py:360
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:423
-msgid "Get daily-build version (more features but more bugs)"
-msgstr ""
-
-#: .././ailurus/common/menu.py:427
+#: .././ailurus/common/menu.py:364
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:430
+#: .././ailurus/common/menu.py:367
 msgid "About"
-msgstr ""
-
-#: .././ailurus/common/menu.py:445
-msgid "Adjustments"
-msgstr ""
-
-#: .././ailurus/common/menu.py:446
-msgid "Applications"
-msgstr ""
-
-#: .././ailurus/common/menu.py:449
-msgid "Help"
 msgstr ""
 
 #: .././ailurus/common/setting.py:32
@@ -5652,6 +5561,10 @@ msgid ""
 "Install/remove a task\n"
 "gksudo tasksel\n"
 msgstr ""
+
+#: .././ailurus/install_remove_pane.py:28
+msgid "Install/Remove"
+msgstr "Installeren/verwijderen"
 
 #: .././ailurus/install_remove_pane.py:109
 msgid "To be installed:\n"

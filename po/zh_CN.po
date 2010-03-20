@@ -7,25 +7,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-17 19:43+0800\n"
-"PO-Revision-Date: 2010-03-02 13:31+0000\n"
-"Last-Translator: Homer Xing <Unknown>\n"
+"POT-Creation-Date: 2010-03-19 11:28+0800\n"
+"PO-Revision-Date: 2010-03-19 09:18+0000\n"
+"Last-Translator: Launchpad Translations Administrators "
+"<rosetta@launchpad.net>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2010-03-18 04:49+0000\n"
+"X-Launchpad-Export-Date: 2010-03-20 04:57+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid " \"Install software\" + \"Configure Linux\" + \"Study Linux skills\""
-msgstr ""
+msgstr " 安装软件 + 配置Linux + 学习Linux技巧"
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
-msgstr ""
+msgstr "系统策略阻止Ailurus以root身份启动程序"
 
 #: .././ailurus/fedora/osinfo.py:35
 msgid "Fedora version:"
@@ -657,7 +658,7 @@ msgstr "用新立得编辑源"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:183
 msgid ""
 "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
-msgstr ""
+msgstr "将 /etc/apt/sources.list.d/ 中的所有文件并入 /etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:185
 msgid "How to backup and restore the configuration of repositories?"
@@ -695,7 +696,7 @@ msgstr "更改源"
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:772
+#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:729
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "运行 \"apt-get update\"。请您等待几分钟。"
 
@@ -757,7 +758,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:688
 msgid "Merge complete"
-msgstr ""
+msgstr "合并完成"
 
 #: .././ailurus/ubuntu/serverlib.py:28
 msgid "Argentina"
@@ -1223,11 +1224,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:173
 msgid "Firefox 3.6 (stable)"
-msgstr ""
+msgstr "Firefox 3.6 (稳定版)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:176
 msgid "This repository contains Firefox stable version 3.6."
-msgstr ""
+msgstr "这个源包含 Firefox 稳定版本 3.6"
 
 #: .././ailurus/ubuntu/third_party_repos.py:186
 msgid "Google Picasa 3"
@@ -1436,6 +1437,8 @@ msgid ""
 "After installation, please add yourself to the \"dba\" group, then run "
 "\"sudo /etc/init.d/oracle-xe configure\"."
 msgstr ""
+"这个源提供 Oracle 数据库的简装版。\n"
+"在安装后，请将您自己加入 \"dba\" 组，然后运行 \"sudo /etc/init.d/oracle-xe configure\"."
 
 #: .././ailurus/ubuntu/third_party_repos.py:493
 msgid "Next generation input method"
@@ -1478,94 +1481,65 @@ msgstr "Pidgin (最新版)"
 msgid "Songbird (Latest version)"
 msgstr "Songbird (最新版)"
 
-#: .././ailurus/ubuntu/menu.py:29 .././ailurus/main.py:78
-msgid "Find fast repository mirror"
-msgstr "搜索最快的源"
-
-#: .././ailurus/ubuntu/menu.py:34 .././ailurus/ubuntu/apt_recovery_pane.py:29
-#: .././ailurus/main.py:79
-msgid "APT recovery"
-msgstr "恢复 APT"
-
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. Separator
-#: .././ailurus/ubuntu/menu.py:42
+#: .././ailurus/ubuntu/menu.py:32
 msgid "Ubuntu/Kubuntu configuration guide"
 msgstr "Ubuntu/Kubuntu 配置指南"
 
-#: .././ailurus/ubuntu/menu.py:44
+#: .././ailurus/ubuntu/menu.py:34
 msgid "Ubuntu skills"
 msgstr "Ubuntu 技巧"
 
-#: .././ailurus/ubuntu/menu.py:46
+#: .././ailurus/ubuntu/menu.py:36
 msgid "Obtain \"Full Circle\" magazine"
 msgstr "下载 \"Full Circle\" 杂志"
 
-#: .././ailurus/ubuntu/menu.py:48
+#: .././ailurus/ubuntu/menu.py:38
 msgid "Obtain \"Ubuntu pocket guide\" book"
 msgstr "下载 \"Ubuntu 口袋指南\" 书"
 
-#: .././ailurus/ubuntu/menu.py:50
+#: .././ailurus/ubuntu/menu.py:40
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
 msgstr "到 http://repogen.simplylinux.ch/ 上寻找更多的第三方源"
 
-#: .././ailurus/ubuntu/menu.py:83
+#: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
 msgstr "不要自动删除 /var/cache/apt/ 里的文件"
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:356 .././ailurus/common/menu.py:362
-#: .././ailurus/common/menu.py:368
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
+#: .././ailurus/common/menu.py:340
 msgid "Preferences changed"
 msgstr "首选项已经更改"
 
-#: .././ailurus/ubuntu/menu.py:86 .././ailurus/common/menu.py:348
-#: .././ailurus/common/menu.py:362 .././ailurus/common/menu.py:368
-#: .././ailurus/common/menu.py:400
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:332
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr "您进行的改动将在下次程序启动时生效。"
 
-#: .././ailurus/ubuntu/menu.py:117 .././ailurus/ubuntu/menu.py:125
-#: .././ailurus/ubuntu/quick_setup.py:30
+#: .././ailurus/ubuntu/menu.py:107 .././ailurus/ubuntu/quick_setup.py:30
 #: .././ailurus/ubuntu/quick_setup.py:334
 msgid "Quick setup"
 msgstr "速配"
 
-#: .././ailurus/ubuntu/menu.py:126
-msgid "Repositories"
-msgstr "软件源"
-
-#: .././ailurus/ubuntu/menu.py:127
-msgid "Recovery"
-msgstr "恢复"
-
-#: .././ailurus/ubuntu/menu.py:128 .././ailurus/common/menu.py:447
-msgid "Learning"
-msgstr "学习"
-
-#: .././ailurus/ubuntu/menu.py:129 .././ailurus/common/menu.py:448
-msgid "Preferences"
-msgstr "首选项"
-
-#: .././ailurus/ubuntu/setting.py:103
+#: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
 msgstr "命令: sudo apt-get install/remove %s"
 
-#: .././ailurus/ubuntu/setting.py:107
+#: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
 msgstr "右键菜单截图:"
 
-#: .././ailurus/ubuntu/setting.py:115
+#: .././ailurus/ubuntu/setting.py:117
 msgid "Window screenshot:"
 msgstr "窗口截图:"
 
-#: .././ailurus/ubuntu/setting.py:138
+#: .././ailurus/ubuntu/setting.py:140
 msgid "\"Write to Disc...\" entry"
 msgstr "\"写入光盘...\"项"
 
-#: .././ailurus/ubuntu/setting.py:139
+#: .././ailurus/ubuntu/setting.py:141
 msgid ""
 "When CD/DVD image file is clicked by mouse right button, \n"
 "show a \"Write to Disc...\" menu item.\n"
@@ -1575,11 +1549,11 @@ msgstr ""
 "显示 \"写入光盘...\" 菜单项。\n"
 "<span color=\"red\">安装这个菜单项的话，会删除 \"brasero\" 软件。</span>"
 
-#: .././ailurus/ubuntu/setting.py:144
+#: .././ailurus/ubuntu/setting.py:146
 msgid "\"Actions Configuration\" entry"
 msgstr "\"Actions Configuration\"项"
 
-#: .././ailurus/ubuntu/setting.py:145
+#: .././ailurus/ubuntu/setting.py:147
 msgid ""
 "It allows the configuration of programs to be launched \n"
 "on files selected.\n"
@@ -1589,53 +1563,53 @@ msgstr ""
 "可以配置用哪个程序打开所选的文件。\n"
 "<span color=\"red\">这一项不在右键菜单中。它在\"系统\"->\"首选项\"菜单里。</span>"
 
-#: .././ailurus/ubuntu/setting.py:150
+#: .././ailurus/ubuntu/setting.py:152
 msgid "\"Repair filename\" entry"
 msgstr "\"修复文件名\" 项"
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "When any file with wrong encoding filename is right clicked,\n"
 msgstr "当右键点击一个文件名是乱码的文件的时候,\n"
 
-#: .././ailurus/ubuntu/setting.py:151
+#: .././ailurus/ubuntu/setting.py:153
 msgid "show a \"Repair filename\" menu item."
 msgstr "显示 \"修复文件名\" 菜单项。"
 
-#: .././ailurus/ubuntu/setting.py:154
+#: .././ailurus/ubuntu/setting.py:156
 msgid "\"Open as administrator\" entry"
 msgstr "\"以管理员身份打开\" 项"
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 msgstr "以管理员身份启动所选文件。\n"
 
-#: .././ailurus/ubuntu/setting.py:155
+#: .././ailurus/ubuntu/setting.py:157
 msgid "Open selected folder with administration privileges."
 msgstr "以系统管理员身份打开文件夹。"
 
-#: .././ailurus/ubuntu/setting.py:158
+#: .././ailurus/ubuntu/setting.py:160
 msgid "\"Resize/Rotate images\" entries"
 msgstr "\"缩放/旋转 图像\"项"
 
-#: .././ailurus/ubuntu/setting.py:159
+#: .././ailurus/ubuntu/setting.py:161
 msgid "Resize or rotate selected images."
 msgstr "缩放/旋转图像。"
 
-#: .././ailurus/ubuntu/setting.py:162
+#: .././ailurus/ubuntu/setting.py:164
 msgid "\"Open in terminal\" entry"
 msgstr "\"在终端中打开\" 项"
 
-#: .././ailurus/ubuntu/setting.py:163
+#: .././ailurus/ubuntu/setting.py:165
 msgid "Open a terminal in current folder."
 msgstr "在当前文件夹内打开终端。"
 
-#: .././ailurus/ubuntu/setting.py:166
+#: .././ailurus/ubuntu/setting.py:168
 msgid "\"Convert audio files\" entry"
 msgstr "\"转换音频文件\" 项"
 
-#: .././ailurus/ubuntu/setting.py:167
+#: .././ailurus/ubuntu/setting.py:169
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -1645,58 +1619,58 @@ msgstr ""
 "这些软件包也会安装: \n"
 "<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: .././ailurus/ubuntu/setting.py:174
+#: .././ailurus/ubuntu/setting.py:176
 msgid "\"Subversion commands\" entries"
 msgstr "\"Subversion 命令\" 项"
 
-#: .././ailurus/ubuntu/setting.py:180
+#: .././ailurus/ubuntu/setting.py:182
 msgid "\"Share\" entry for folders"
 msgstr "\"共享这个文件夹\"项"
 
-#: .././ailurus/ubuntu/setting.py:181
+#: .././ailurus/ubuntu/setting.py:183
 msgid "Share folders by Samba."
 msgstr "用 Samba 共享文件夹。"
 
-#: .././ailurus/ubuntu/setting.py:184
+#: .././ailurus/ubuntu/setting.py:186
 msgid "\"Set as wallpaper\" entry"
 msgstr "\"设置为壁纸\"项"
 
-#: .././ailurus/ubuntu/setting.py:190
+#: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:206
 msgid "Apply"
 msgstr "应用"
 
-#: .././ailurus/ubuntu/setting.py:266 .././ailurus/loader.py:87
-#: .././ailurus/loader.py:124 .././ailurus/main.py:404
+#: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
+#: .././ailurus/loader.py:124 .././ailurus/main.py:312
 msgid "Traceback:"
 msgstr "错误跟踪记录:"
 
-#: .././ailurus/ubuntu/setting.py:267
+#: .././ailurus/ubuntu/setting.py:269
 msgid "Some operation failed."
 msgstr "有些操作失败了。"
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "All operations succeeded."
 msgstr "所有操作都成功完成了。"
 
-#: .././ailurus/ubuntu/setting.py:272
+#: .././ailurus/ubuntu/setting.py:274
 msgid "The changes will take effect at the next time when GNOME starts up."
 msgstr "您进行的改动将在下次 GNOME 启动时生效。"
 
-#: .././ailurus/ubuntu/setting.py:282
+#: .././ailurus/ubuntu/setting.py:284
 msgid "Nautilus context menu"
 msgstr "Nautilus 右键菜单"
 
-#: .././ailurus/ubuntu/setting.py:286
+#: .././ailurus/ubuntu/setting.py:288
 msgid "Automatically check for update"
 msgstr "自动检查更新"
 
-#: .././ailurus/ubuntu/setting.py:288
+#: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
 msgstr "自动检查 Ubuntu 更新的间隔(单位是天):"
 
-#: .././ailurus/ubuntu/setting.py:294
+#: .././ailurus/ubuntu/setting.py:296
 msgid "Ubuntu update manager setting"
 msgstr "Ubuntu 更新管理器设置"
 
@@ -1760,7 +1734,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:153
 msgid "Typespeed is a typing practise. It only runs in terminal."
-msgstr ""
+msgstr "Typespeed 是一个打字练习程序。它只能在终端中运行。"
 
 #: .././ailurus/ubuntu/app1.py:162
 msgid "Command: sudo apt-get install poppler-data"
@@ -1836,11 +1810,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:357
 msgid "Enable \"Print to pdf\" capability"
-msgstr ""
+msgstr "开启 “打印文件成 pdf” 支持"
 
 #: .././ailurus/ubuntu/app1.py:358
 msgid "Command: sudo apt-get install cpus-pdf"
-msgstr ""
+msgstr "命令: sudo apt-get install cpus-pdf"
 
 #: .././ailurus/ubuntu/app1.py:368
 msgid "Command: sudo apt-get install flashplugin-installer"
@@ -2019,6 +1993,8 @@ msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
+"这是一个多功能图形计算器。\n"
+"命令: sudo apt-get install extcalc"
 
 #: .././ailurus/ubuntu/app0.py:28
 msgid "SUN Java® 6."
@@ -2280,7 +2256,7 @@ msgstr "配置网络连接"
 
 #: .././ailurus/ubuntu/quick_setup.py:109
 msgid "Skip this step"
-msgstr ""
+msgstr "跳过"
 
 #: .././ailurus/ubuntu/quick_setup.py:126
 #| msgid "Find the fastest repository"
@@ -2919,6 +2895,10 @@ msgstr ""
 "通过 bittorrent 下载 + 搜索视频 + 播放视频\n"
 "命令: sudo apt-get install vuze"
 
+#: .././ailurus/ubuntu/apt_recovery_pane.py:29
+msgid "APT recovery"
+msgstr "恢复 APT"
+
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Write comments"
 msgstr "写注释"
@@ -3034,8 +3014,8 @@ msgid "This pane is disabled."
 msgstr "这个面板被禁用了。"
 
 #: .././ailurus/support/terminal.py:53
-#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:341
-#: .././ailurus/lib.py:392 .././ailurus/lib.py:590 .././ailurus/lib.py:962
+#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:298
+#: .././ailurus/lib.py:349 .././ailurus/lib.py:547 .././ailurus/lib.py:919
 msgid "Run command:"
 msgstr "运行命令:"
 
@@ -3065,7 +3045,7 @@ msgstr "<span size=\"x-large\"><b>你知道吗？</b></span>"
 
 #: .././ailurus/support/tipoftheday.py:91
 msgid "Submit Linux Skills"
-msgstr ""
+msgstr "提交 Linux 技巧"
 
 #: .././ailurus/support/multidragview.py:79
 #, python-format
@@ -3080,8 +3060,7 @@ msgstr "硬件信息"
 msgid "Linux Information"
 msgstr "Linux 信息"
 
-#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:77
-#: .././ailurus/main.py:189 .././ailurus/common/menu.py:272
+#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:134
 msgid "Cache installation files"
 msgstr "缓存安装文件"
 
@@ -3183,88 +3162,88 @@ msgid "(States of files are not detected yet.)"
 msgstr "(尚未检测文件的状态)"
 
 #. print message
-#: .././ailurus/lib.py:721
+#: .././ailurus/lib.py:678
 msgid "Installing packages:"
 msgstr "正在安装软件包："
 
-#: .././ailurus/lib.py:731
+#: .././ailurus/lib.py:688
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr "不能安装软件包 \"%s\"。"
 
 #. print message
-#: .././ailurus/lib.py:757
+#: .././ailurus/lib.py:714
 msgid "Removing packages:"
 msgstr "正在删除软件包："
 
-#: .././ailurus/lib.py:767
+#: .././ailurus/lib.py:724
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr "不能删除软件包 \"%s\"。"
 
-#: .././ailurus/lib.py:917
+#: .././ailurus/lib.py:874
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f G字节"
 
-#: .././ailurus/lib.py:919
+#: .././ailurus/lib.py:876
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f M字节"
 
-#: .././ailurus/lib.py:921
+#: .././ailurus/lib.py:878
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f K字节"
 
-#: .././ailurus/lib.py:922
+#: .././ailurus/lib.py:879
 msgid "less than 1 KB"
 msgstr "小于 1K字节"
 
-#: .././ailurus/lib.py:930
+#: .././ailurus/lib.py:887
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f 小时"
 
-#: .././ailurus/lib.py:932
+#: .././ailurus/lib.py:889
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f 分钟"
 
-#: .././ailurus/lib.py:933
+#: .././ailurus/lib.py:890
 msgid "less than 1 minute"
 msgstr "小于 1分钟"
 
-#: .././ailurus/lib.py:1130 .././ailurus/lib.py:1135
+#: .././ailurus/lib.py:1087 .././ailurus/lib.py:1092
 msgid "Opening web page"
 msgstr "正在打开网页"
 
-#: .././ailurus/lib.py:1275
+#: .././ailurus/lib.py:1232
 #, python-format
 #| msgid "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "服务器 %(name)s 的响应时间是 %(time).1f 毫秒。"
 
-#: .././ailurus/lib.py:1277
+#: .././ailurus/lib.py:1234
 #, python-format
 #| msgid "The file \"%s\" does not exist."
 msgid "Server %s does not respond."
 msgstr "服务器 %s 不响应。"
 
-#: .././ailurus/lib.py:1354
+#: .././ailurus/lib.py:1311
 msgid "Checking file integrity ..."
 msgstr "正在检查文件完整性 ..."
 
-#: .././ailurus/lib.py:1358
+#: .././ailurus/lib.py:1315
 msgid "Good."
 msgstr "好。"
 
-#: .././ailurus/lib.py:1376
+#: .././ailurus/lib.py:1333
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr "使用第 %(i)s 个镜像。共有 %(total)s 个镜像。"
 
-#: .././ailurus/lib.py:1521
+#: .././ailurus/lib.py:1478
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr "正在查找可以安全删除的软件包。请您等待几分钟。"
 
@@ -3315,8 +3294,7 @@ msgstr "可以在 %s 版本的 Firefox 中使用。"
 msgid "It can be obtained from "
 msgstr "可以从这下载 "
 
-#: .././ailurus/system_setting_pane.py:29 .././ailurus/main.py:75
-#: .././ailurus/common/menu.py:265
+#: .././ailurus/system_setting_pane.py:29
 msgid "System settings"
 msgstr "系统设置"
 
@@ -3406,7 +3384,7 @@ msgstr ""
 
 #: .././ailurus/gnome/apps.py:43
 msgid "NScripts: a set of useful Nautilus scripts"
-msgstr ""
+msgstr "NScripts: 一些好用的 Nautilus 脚本"
 
 #: .././ailurus/gnome/apps.py:44
 msgid ""
@@ -3415,6 +3393,9 @@ msgid ""
 "http://freshmeat.net/projects/nscripts . NScripts is installed in "
 "~/.gnome2/nautilus-scripts."
 msgstr ""
+"NScripts 帮助您通过 Nautilus 改变桌面背景，创建/检查 MD5 校验和，创建 diff 文件，创建快捷方式。它的网站是 "
+"http://freshmeat.net/projects/nscripts 。NScripts 安装在 ~/.gnome2/nautilus-"
+"scripts。"
 
 #: .././ailurus/gnome/apps.py:75
 msgid "Add GB2312 detection ability to GEdit"
@@ -3502,9 +3483,7 @@ msgstr ""
 "显示/隐藏桌面上的所有图标。\n"
 "<span color=\"red\">您进行的改动将在下次 GNOME 启动时生效。</span>"
 
-#. [_('Navigation'),   __navigate(main_view),   0],
-#: .././ailurus/gnome/setting.py:50 .././ailurus/common/menu.py:444
-#: .././ailurus/common/setting.py:87
+#: .././ailurus/gnome/setting.py:50 .././ailurus/common/setting.py:87
 msgid "Information"
 msgstr "信息"
 
@@ -3531,7 +3510,7 @@ msgstr "在桌面上放置一个\"我的计算机\"图标。"
 #: .././ailurus/gnome/setting.py:61 .././ailurus/gnome/setting.py:71
 #: .././ailurus/gnome/setting.py:81 .././ailurus/gnome/setting.py:91
 msgid "Change icon name to:"
-msgstr ""
+msgstr "将图标名称改变为:"
 
 #: .././ailurus/gnome/setting.py:67
 msgid "Display \"Home folder\" icon"
@@ -3583,7 +3562,7 @@ msgstr "是否在按钮中显示图标。"
 
 #: .././ailurus/gnome/setting.py:113
 msgid "Button icons setting"
-msgstr ""
+msgstr "按钮图标设置"
 
 #: .././ailurus/gnome/setting.py:117
 msgid "Disable terminal bell"
@@ -3611,11 +3590,11 @@ msgstr "如果设置为真，那么 Nautilus 将自动挂载 CD 和 U盘等移�
 
 #: .././ailurus/gnome/setting.py:130
 msgid "Show more permissions setting in file property dialog"
-msgstr ""
+msgstr "在文件属性对话框中显示更多权限设置"
 
 #: .././ailurus/gnome/setting.py:152
 msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
-msgstr ""
+msgstr "在 Nautilus 列表视图中隐藏 “大小” 列，以便加速 Nautilus"
 
 #: .././ailurus/gnome/setting.py:155 .././ailurus/gnome/setting.py:191
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
@@ -3626,7 +3605,7 @@ msgstr "GConf 键: "
 
 #: .././ailurus/gnome/setting.py:157
 msgid "More Nautilus settings"
-msgstr ""
+msgstr "更多 Nautilus 设置"
 
 #: .././ailurus/gnome/setting.py:179
 msgid "Larger font"
@@ -3642,19 +3621,19 @@ msgstr "一键更改字体大小"
 
 #: .././ailurus/gnome/setting.py:190 .././ailurus/gnome/setting.py:198
 msgid "The layout of window title-bar buttons"
-msgstr ""
+msgstr "窗口标题栏的按钮的布局"
 
 #: .././ailurus/gnome/setting.py:193
 msgid "GNOME classic"
-msgstr ""
+msgstr "GNOME 经典"
 
 #: .././ailurus/gnome/setting.py:193
 msgid "MAC OS X"
-msgstr ""
+msgstr "MAC OS X"
 
 #: .././ailurus/gnome/setting.py:193
 msgid "Ubuntu Lucid"
-msgstr ""
+msgstr "Ubuntu Lucid"
 
 #: .././ailurus/gnome/setting.py:202
 msgid "double-clicked by mouse left button:"
@@ -3886,33 +3865,33 @@ msgstr "允许远程主机连接到这台电脑。"
 
 #: .././ailurus/gnome/setting.py:347
 msgid "Enable switch to different user from the \"Unlock\" dialog"
-msgstr ""
+msgstr "在“解锁计算机”对话框中开启切换到不同用户的功能"
 
 #: .././ailurus/gnome/setting.py:349
 msgid ""
 "If its value is true, you will be able to switch to a different user account "
 "from the \"Unlock\" dialog."
-msgstr ""
+msgstr "如果它的值是真，您将能够通过“解锁计算机”对话框切换到一个不同的用户账户。"
 
 #: .././ailurus/gnome/setting.py:351
 msgid ""
 "Show confirmation dialogs when you using indicator session tool to "
 "logout/restart/shutdown"
-msgstr ""
+msgstr "当您使用会话指示器工具 登出/重启动/关机 时显示确认对话框"
 
 #: .././ailurus/gnome/setting.py:353
 msgid ""
 "If its value is false, Gnome will not show confirmation dialogs when you "
 "using the Indicator Session Tool to logout/restart/shutdown computer."
-msgstr ""
+msgstr "如果它的值是假，那么当您使用会话指示工具来 登出/重启/关闭 电脑时，GNOME 不会显示确认对话框。"
 
 #: .././ailurus/gnome/setting.py:357
 msgid "Activate screen saver when computer is idle for long time"
-msgstr ""
+msgstr "当计算机空闲一定时间时激活屏幕保护程序"
 
 #: .././ailurus/gnome/setting.py:361
 msgid "Lock screen when screen saver is activated"
-msgstr ""
+msgstr "当屏幕保护程序激活时锁定屏幕"
 
 #: .././ailurus/gnome/setting.py:365
 msgid "GNOME session"
@@ -3936,35 +3915,35 @@ msgstr "背光"
 
 #: .././ailurus/gnome/setting.py:387
 msgid "Enable suspending function"
-msgstr ""
+msgstr "启用挂起功能"
 
 #: .././ailurus/gnome/setting.py:389
 msgid "Enable hibernating function"
-msgstr ""
+msgstr "启用休眠功能"
 
 #: .././ailurus/gnome/setting.py:393
 msgid "Suspending/hibernating funtion"
-msgstr ""
+msgstr "挂起/休眠功能"
 
 #: .././ailurus/gnome/setting.py:399
 msgid "Change default file manager to:"
-msgstr ""
+msgstr "将默认的文件管理器改为:"
 
 #: .././ailurus/gnome/setting.py:405
 msgid "Change default panel program to:"
-msgstr ""
+msgstr "将默认的面板程序改为:"
 
 #: .././ailurus/gnome/setting.py:411
 msgid "Change default window manager to:"
-msgstr ""
+msgstr "将默认的窗口管理器改为:"
 
 #: .././ailurus/gnome/setting.py:417
 msgid "Use your home folder as the desktop"
-msgstr ""
+msgstr "将您的主目录当作桌面"
 
 #: .././ailurus/gnome/setting.py:422
 msgid "Advance settings"
-msgstr ""
+msgstr "高级设置"
 
 #: .././ailurus/gnome/tips.py:27
 msgid ""
@@ -4373,128 +4352,139 @@ msgstr ""
 "/desktop/gnome/lockdown/disable_user_switching\n"
 "限制您自己。禁止您切换到其它用户，除非您先从当前 GNOME 会话中退出。-_-\n"
 
-#: .././ailurus/main.py:38
-msgid "Name of current panel"
-msgstr "当前面板的名字"
-
-#: .././ailurus/main.py:43
-msgid "Go back one panel"
-msgstr "后退到上次使用的面板"
-
-#: .././ailurus/main.py:44
-msgid "Go forward one panel"
-msgstr "前进一个面板"
-
-#: .././ailurus/main.py:51
-msgid "Enable current pane"
-msgstr "启用当前面板"
-
-#: .././ailurus/main.py:52
-msgid "Disable current pane"
-msgstr "禁用当前面板"
-
-#: .././ailurus/main.py:53
-msgid "Display \"Tip of the day\""
-msgstr "显示 \"日积月累\""
-
-#: .././ailurus/main.py:54 .././ailurus/common/menu.py:415
-msgid "Propose suggestion and report bugs"
-msgstr "提建议, 报告问题"
-
-#: .././ailurus/main.py:55 .././ailurus/common/menu.py:253
+#: .././ailurus/main.py:56
 msgid "Quit"
 msgstr "退出"
 
-#: .././ailurus/main.py:73 .././ailurus/common/menu.py:258
-msgid "Hardware information"
-msgstr "硬件信息"
+#: .././ailurus/main.py:61
+msgid "Others"
+msgstr ""
 
-#: .././ailurus/main.py:74 .././ailurus/common/menu.py:260
-msgid "Linux information"
-msgstr "Linux 信息"
+#: .././ailurus/main.py:64
+msgid "Preferences"
+msgstr "首选项"
 
-#: .././ailurus/main.py:76 .././ailurus/common/menu.py:270
-#: .././ailurus/install_remove_pane.py:28
-msgid "Install/Remove"
-msgstr "安装/删除"
+#: .././ailurus/main.py:67
+msgid ""
+"Study\n"
+"Linux"
+msgstr ""
 
-#: .././ailurus/main.py:264
+#: .././ailurus/main.py:71
+msgid ""
+"Hardware\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:72
+msgid ""
+"Linux\n"
+"Information"
+msgstr ""
+
+#: .././ailurus/main.py:73
+msgid ""
+"System\n"
+"Settings"
+msgstr ""
+
+#: .././ailurus/main.py:74
+msgid ""
+"Install\n"
+"Software"
+msgstr ""
+
+#: .././ailurus/main.py:75
+msgid ""
+"Cache\n"
+"Files"
+msgstr ""
+
+#: .././ailurus/main.py:76
+msgid ""
+"Fastest\n"
+"Repository"
+msgstr ""
+
+#: .././ailurus/main.py:77
+msgid ""
+"Recover\n"
+"APT"
+msgstr ""
+
+#: .././ailurus/main.py:177
 #| msgid "Parsing"
 msgid "Warning!"
 msgstr "警告!"
 
-#: .././ailurus/main.py:265
+#: .././ailurus/main.py:178
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr "另一个 Ailurus 实例正在运行。不推荐同时运行多个 Ailurus。"
 
 #. check desktop environment
-#: .././ailurus/main.py:285
+#: .././ailurus/main.py:198
 msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
 msgstr "<span color=\"yellow\">检查桌面环境 ... </span>\n"
 
 #. check distribution
-#: .././ailurus/main.py:293
+#: .././ailurus/main.py:206
 msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
 msgstr "<span color=\"yellow\">检查发行版本 ... </span>\n"
 
-#: .././ailurus/main.py:316
+#: .././ailurus/main.py:229
 msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
 msgstr "<span color=\"yellow\">获取 Firefox 配置 ... </span>\n"
 
-#: .././ailurus/main.py:318
+#: .././ailurus/main.py:231
 msgid ""
 "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
 msgstr "<span color=\"yellow\">等待 Firefox 生成配置文件 ... </span>\n"
 
-#: .././ailurus/main.py:326 .././ailurus/main.py:329
+#: .././ailurus/main.py:239 .././ailurus/main.py:242
 msgid ""
 "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
 msgstr "<span color=\"yellow\">正在生成已经安装的软件的目录 … </span>\n"
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:247
 msgid "<span color=\"yellow\">Loading tips ... </span>\n"
 msgstr "<span color=\"yellow\">加载日积月累 … </span>\n"
 
-#: .././ailurus/main.py:340
+#: .././ailurus/main.py:253
 msgid "<span color=\"yellow\">Loading main window ... </span>\n"
 msgstr "<span color=\"yellow\">加载主窗口 … </span>\n"
 
-#: .././ailurus/main.py:343
+#: .././ailurus/main.py:256
 msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
 msgstr "<span color=\"yellow\">加载信息面板 ... </span>\n"
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:269
 msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
 msgstr "<span color=\"yellow\">加载系统设置面板 ... </span>\n"
 
-#: .././ailurus/main.py:363
+#: .././ailurus/main.py:276
 msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
 msgstr "<span color=\"yellow\">加载应用程序面板 … </span>\n"
 
-#: .././ailurus/main.py:374
+#: .././ailurus/main.py:287
 msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
 msgstr "<span color=\"yellow\">加载离线面板 ... </span>\n"
 
-#: .././ailurus/main.py:381
-msgid "<span color=\"yellow\">Loading menu ... </span>\n"
-msgstr "<span color=\"yellow\">加载菜单 … </span>\n"
-
-#: .././ailurus/main.py:414
+#: .././ailurus/main.py:322
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr "出现 bug。麻烦您告诉 Ailurus 开发者好吗? 谢谢您!"
 
-#: .././ailurus/main.py:427
+#: .././ailurus/main.py:335
 msgid "Click here to report bug via web-page"
 msgstr "点击这里打开网页，报告 bug"
 
-#: .././ailurus/main.py:429
+#: .././ailurus/main.py:337
 #| msgid "Chile"
 msgid "Close"
 msgstr "关闭"
 
-#: .././ailurus/main.py:435
+#: .././ailurus/main.py:343
 msgid "Bug appears!"
 msgstr "出现 bug!"
 
@@ -5132,252 +5122,176 @@ msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr "帮助你优化网页性能。它告诉你为何网页加载很慢。"
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:408
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:349
 msgid "Ailurus blog"
 msgstr "Ailurus 博客"
 
-#: .././ailurus/common/menu.py:58
+#: .././ailurus/common/menu.py:42
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ailurus Developers https://launchpad.net/~ailurus\n"
+"  Homer Xing https://launchpad.net/~homer-xing"
+
+#: .././ailurus/common/menu.py:47
 msgid ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
 msgstr "版权所有 © 2007-2010，可信任数字技术实验室，中国上海交通大学。"
 
-#: .././ailurus/common/menu.py:121
+#: .././ailurus/common/menu.py:110
 msgid "Welcome to leave response in blog~"
 msgstr "欢迎到博客留言～"
 
-#. show group URL
-#: .././ailurus/common/menu.py:123
-msgid "Download daily-build version from"
-msgstr "从这里下载“每日编译”版"
+#. scroll.set_size_request(500, -1)
+#: .././ailurus/common/menu.py:124
+msgid "Ailurus changelog"
+msgstr ""
 
-#: .././ailurus/common/menu.py:130
+#: .././ailurus/common/menu.py:135
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
+"\n"
+"这个版本是在 %s 发布的。"
 
-#: .././ailurus/common/menu.py:139
+#: .././ailurus/common/menu.py:137
+msgid "Read changelog"
+msgstr ""
+
+#: .././ailurus/common/menu.py:148
 msgid "We wish to express thankfulness to these projects:"
 msgstr "我们衷心感谢这些项目:"
 
-#: .././ailurus/common/menu.py:143
+#: .././ailurus/common/menu.py:152
 msgid "We sincerely thank these people:"
 msgstr "我们衷心感谢这些人:"
 
-#: .././ailurus/common/menu.py:145
+#: .././ailurus/common/menu.py:154
 msgid "The people who provide inspiration:"
 msgstr "提供灵感的人:"
 
-#: .././ailurus/common/menu.py:151
+#: .././ailurus/common/menu.py:160
 msgid "The people who designs the logo:"
 msgstr "设计 Logo 的人:"
 
-#: .././ailurus/common/menu.py:154
+#: .././ailurus/common/menu.py:163
 msgid "The people who maintain PPA repository:"
 msgstr "维护 PPA 软件源的人:"
 
-#: .././ailurus/common/menu.py:157
+#: .././ailurus/common/menu.py:166
 msgid "The people who provide a lot of Linux skills:"
 msgstr "提供很多 Linux 技巧的人:"
 
-#: .././ailurus/common/menu.py:160
+#: .././ailurus/common/menu.py:169
 msgid "The people who provide a lot of Debian packages:"
 msgstr "提供很多 Debian 包的人:"
 
-#: .././ailurus/common/menu.py:163
+#: .././ailurus/common/menu.py:172
 msgid "The people who provide a lot of translation:"
 msgstr "提供很多翻译的人:"
 
-#: .././ailurus/common/menu.py:164 .././ailurus/common/menu.py:168
-#: .././ailurus/common/menu.py:175
+#: .././ailurus/common/menu.py:173 .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:184
 msgid "and many other people."
 msgstr "和其他许多人。"
 
-#: .././ailurus/common/menu.py:166
+#: .././ailurus/common/menu.py:175
 msgid "The people who report bugs:"
 msgstr "报告 bug 的人:"
 
-#: .././ailurus/common/menu.py:170
+#: .././ailurus/common/menu.py:179
 msgid "The people who eliminate bugs:"
 msgstr "消灭 bug 的人:"
 
-#: .././ailurus/common/menu.py:173
+#: .././ailurus/common/menu.py:182
 msgid "The people who publicize this software:"
 msgstr "宣传这个软件的人:"
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:186
 msgid "and the people not mensioned here."
 msgstr "以及在此我们没有提到的人。"
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:196
 msgid "Thanks"
 msgstr "鸣谢"
 
-#: .././ailurus/common/menu.py:220
+#: .././ailurus/common/menu.py:229
 msgid "Updates for Ailurus"
 msgstr "Ailurus 的更新"
 
-#: .././ailurus/common/menu.py:225
+#: .././ailurus/common/menu.py:234
 #, python-format
 msgid "A new version is released at %(date)s."
 msgstr "在 %(date)s 发布了新版本。"
 
-#: .././ailurus/common/menu.py:231
+#: .././ailurus/common/menu.py:240
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "您已经安装了最新版本的 Ailurus 啦 :)"
-
-#: .././ailurus/common/menu.py:247
-msgid "Back to previous pane"
-msgstr "回到上一个面板"
-
-#: .././ailurus/common/menu.py:250
-msgid "Go forward one pane"
-msgstr "前进一个面板"
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:281
+#: .././ailurus/common/menu.py:260
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr "如何将 LaTeX 文件编译成 pdf 文件？"
 
-#: .././ailurus/common/menu.py:300
+#: .././ailurus/common/menu.py:279
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr "日积月累"
 
-#: .././ailurus/common/menu.py:314
+#: .././ailurus/common/menu.py:298
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr "在服务器停止响应多久后，Ailurus 放弃下载? (单位是秒)"
 
-#: .././ailurus/common/menu.py:320
+#: .././ailurus/common/menu.py:304
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr "对于同一个资源，Ailurus 最多尝试下载多少次？"
 
-#: .././ailurus/common/menu.py:323
+#: .././ailurus/common/menu.py:307
 msgid "Set Ailurus download parameter"
 msgstr "设定 Ailurus 下载选项"
 
-#: .././ailurus/common/menu.py:345
+#: .././ailurus/common/menu.py:329
 msgid "Don't show \"tip of the day\" on start up"
 msgstr "启动后不显示“日积月累”"
 
-#: .././ailurus/common/menu.py:351
+#: .././ailurus/common/menu.py:335
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr "在您登录 GNOME 后，随机显示一项 Linux 技巧"
 
-#: .././ailurus/common/menu.py:356
+#: .././ailurus/common/menu.py:340
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr "您进行的改动将在下次您登录到 GNOME 时生效。"
 
-#: .././ailurus/common/menu.py:359
-msgid "Show Chinese applications and Chinese web pages"
-msgstr "显示只提供中文语言的软件和网页"
-
-#: .././ailurus/common/menu.py:365
-msgid "Show Polish application and Polish web pages "
-msgstr "显示只提供波兰语言的软件和网页 "
-
-#: .././ailurus/common/menu.py:371
+#: .././ailurus/common/menu.py:343
 msgid "Set download parameters"
 msgstr "设定下载选项"
 
-#: .././ailurus/common/menu.py:377
-msgid "English"
-msgstr "English"
-
-#: .././ailurus/common/menu.py:378
-msgid "Bulgarian"
-msgstr "保加利亚语"
-
-#: .././ailurus/common/menu.py:379
-#| msgid "Spanish"
-msgid "Danish"
-msgstr "丹麦语"
-
-#: .././ailurus/common/menu.py:380
-msgid "German"
-msgstr "德语"
-
-#: .././ailurus/common/menu.py:381
-msgid "Spanish"
-msgstr "西班牙语"
-
-#: .././ailurus/common/menu.py:382
-msgid "French"
-msgstr "法语"
-
-#: .././ailurus/common/menu.py:383
-msgid "Italian"
-msgstr "意大利语"
-
-#: .././ailurus/common/menu.py:384
-msgid "Polish"
-msgstr "波兰语"
-
-#: .././ailurus/common/menu.py:385
-msgid "Brazilian Portuguese"
-msgstr "巴西葡萄牙语"
-
-#: .././ailurus/common/menu.py:386
-msgid "Russian"
-msgstr "俄语"
-
-#: .././ailurus/common/menu.py:387
-msgid "Simplified Chinese / Mainland (zh_CN)"
-msgstr "简体中文 / 大陆 (zh_CN)"
-
-#: .././ailurus/common/menu.py:388
-msgid "Traditional Chinese / Hong Kong (zh_HK)"
-msgstr "繁体中文 / 香港 (zh_HK)"
-
-#: .././ailurus/common/menu.py:389
-msgid "Traditional Chinese / Taiwan (zh_TW)"
-msgstr "繁体中文 / 台湾 (zh_TW)"
-
-#: .././ailurus/common/menu.py:400
-msgid "Language changed"
-msgstr "语言已经改变"
-
-#: .././ailurus/common/menu.py:402
-msgid "GUI Language"
-msgstr "图形界面语言"
-
-#: .././ailurus/common/menu.py:412
+#: .././ailurus/common/menu.py:353
 msgid "Check for updates"
 msgstr "检查更新"
 
-#: .././ailurus/common/menu.py:419
+#: .././ailurus/common/menu.py:356
+msgid "Propose suggestion and report bugs"
+msgstr "提建议, 报告问题"
+
+#: .././ailurus/common/menu.py:360
 msgid "Translate this application"
 msgstr "翻译此程序"
 
-#: .././ailurus/common/menu.py:423
-msgid "Get daily-build version (more features but more bugs)"
-msgstr "获取开发中的版本 (有更多特性, 但是有更多bug)"
-
-#: .././ailurus/common/menu.py:427
+#: .././ailurus/common/menu.py:364
 msgid "Special thanks"
 msgstr "衷心感谢"
 
-#: .././ailurus/common/menu.py:430
+#: .././ailurus/common/menu.py:367
 msgid "About"
 msgstr "关于"
-
-#: .././ailurus/common/menu.py:445
-msgid "Adjustments"
-msgstr "调整"
-
-#: .././ailurus/common/menu.py:446
-msgid "Applications"
-msgstr "应用程序"
-
-#: .././ailurus/common/menu.py:449
-msgid "Help"
-msgstr "帮助"
 
 #: .././ailurus/common/setting.py:32
 msgid "0 = Swap little mem to disk"
@@ -5559,6 +5473,8 @@ msgid ""
 "Clear Bash history\n"
 "history -c"
 msgstr ""
+"清空 Bash 历史记录\n"
+"history -c"
 
 #: .././ailurus/common/tips.py:33
 msgid ""
@@ -5570,6 +5486,12 @@ msgid ""
 "    alias ls='ls --color=auto'\n"
 "fi"
 msgstr ""
+"如果您要使用彩色的 \"ls\", 就是说, 用颜色来区分不同类型的文件, 那么您可以在 ~/.bashrc 末尾加上这些行:\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi"
 
 #: .././ailurus/common/tips.py:40
 msgid ""
@@ -6224,6 +6146,10 @@ msgstr ""
 "安装/删除一个任务\n"
 "gksudo tasksel\n"
 
+#: .././ailurus/install_remove_pane.py:28
+msgid "Install/Remove"
+msgstr "安装/删除"
+
 #: .././ailurus/install_remove_pane.py:109
 msgid "To be installed:\n"
 msgstr "将安装:\n"
@@ -6513,6 +6439,9 @@ msgstr ""
 #~ msgid "_Previous tip"
 #~ msgstr "上一条(_P)"
 
+#~ msgid "Download daily-build version from"
+#~ msgstr "从这里下载“每日编译”版"
+
 #, python-format
 #~ msgid ""
 #~ "\n"
@@ -6521,8 +6450,65 @@ msgstr ""
 #~ "\n"
 #~ "这个版本是在 %s 编译的。"
 
+#~ msgid "Back to previous pane"
+#~ msgstr "回到上一个面板"
+
+#~ msgid "Go forward one pane"
+#~ msgstr "前进一个面板"
+
+#~ msgid "Hardware information"
+#~ msgstr "硬件信息"
+
 #~ msgid "How to install themes of Fedora® or OpenSolaris® on Ubuntu ?"
 #~ msgstr "如何在 Ubuntu 上安装 Fedora® 和 OpenSolaris® 的主题？"
+
+#~ msgid "Get daily-build version (more features but more bugs)"
+#~ msgstr "获取开发中的版本 (有更多特性, 但是有更多bug)"
+
+#~ msgid "Show Chinese applications and Chinese web pages"
+#~ msgstr "显示只提供中文语言的软件和网页"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Simplified Chinese / Mainland (zh_CN)"
+#~ msgstr "简体中文 / 大陆 (zh_CN)"
+
+#~ msgid "Traditional Chinese / Taiwan (zh_TW)"
+#~ msgstr "繁体中文 / 台湾 (zh_TW)"
+
+#~ msgid "Traditional Chinese / Hong Kong (zh_HK)"
+#~ msgstr "繁体中文 / 香港 (zh_HK)"
+
+#~ msgid "Spanish"
+#~ msgstr "西班牙语"
+
+#~ msgid "Russian"
+#~ msgstr "俄语"
+
+#~ msgid "Language changed"
+#~ msgstr "语言已经改变"
+
+#~ msgid "GUI Language"
+#~ msgstr "图形界面语言"
+
+#~ msgid "Name of current panel"
+#~ msgstr "当前面板的名字"
+
+#~ msgid "Go back one panel"
+#~ msgstr "后退到上次使用的面板"
+
+#~ msgid "Go forward one panel"
+#~ msgstr "前进一个面板"
+
+#~ msgid "Enable current pane"
+#~ msgstr "启用当前面板"
+
+#~ msgid "Disable current pane"
+#~ msgstr "禁用当前面板"
+
+#~ msgid "Display \"Tip of the day\""
+#~ msgstr "显示 \"日积月累\""
 
 #~ msgid " \"build-essential\" is required. It is to be installed."
 #~ msgstr " 这个软件需要“build-essential”包。“build-essential”即将安装。"
@@ -6546,17 +6532,53 @@ msgstr ""
 #~ ":(</span>"
 #~ msgstr "<span color=\"red\">这个扩展在 Firefox 3.0 中不能很好地工作 :(</span>"
 
+#~ msgid "Applications"
+#~ msgstr "应用程序"
+
+#~ msgid "Find fast repository mirror"
+#~ msgstr "搜索最快的源"
+
+#~ msgid "Repositories"
+#~ msgstr "软件源"
+
+#~ msgid "Adjustments"
+#~ msgstr "调整"
+
 #~ msgid "How to install Warcraft III and DotA on Ubuntu ?"
 #~ msgstr "如何在 Ubuntu 上安装 Warcraft III 和 DotA？"
 
 #~ msgid "How to install Matlab on Ubuntu ?"
 #~ msgstr "如何在 Ubuntu 上安装 Matlab？"
 
+#~ msgid "Learning"
+#~ msgstr "学习"
+
+#~ msgid "Help"
+#~ msgstr "帮助"
+
+#~ msgid "French"
+#~ msgstr "法语"
+
+#~ msgid "Linux information"
+#~ msgstr "Linux 信息"
+
 #~ msgid "Ubuntu forum in China"
 #~ msgstr "Ubuntu 中文论坛"
 
 #~ msgid "Enjoy online music in Ubuntu (in Chinese)"
 #~ msgstr "用 Ubuntu 欣赏在线音乐 (中文)"
+
+#~ msgid "Recovery"
+#~ msgstr "恢复"
+
+#~ msgid "Show Polish application and Polish web pages "
+#~ msgstr "显示只提供波兰语言的软件和网页 "
+
+#~ msgid "Bulgarian"
+#~ msgstr "保加利亚语"
+
+#~ msgid "German"
+#~ msgstr "德语"
 
 #~ msgid ""
 #~ "Clear Bash history\n"
@@ -6577,6 +6599,15 @@ msgstr ""
 #~ "这个源内含 Oracle 数据库简装版。\n"
 #~ "在安装后，请将您的帐户加入 \"dba\" 组，然后运行 \"sudo /etc/init.d/oracle-xe configure\". (谢谢 "
 #~ "Federico.)"
+
+#~ msgid "<span color=\"yellow\">Loading menu ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载菜单 … </span>\n"
+
+#~ msgid "Italian"
+#~ msgstr "意大利语"
+
+#~ msgid "Polish"
+#~ msgstr "波兰语"
 
 #~ msgid "unknown"
 #~ msgstr "未知"
@@ -6600,6 +6631,13 @@ msgstr ""
 #~ "Change <span color='red'>%(old)s</span> to <span color='red'>%(new)s</span>"
 #~ msgstr ""
 #~ "把 <span color='red'>%(old)s</span> 改为 <span color='red'>%(new)s</span>"
+
+#~| msgid "Spanish"
+#~ msgid "Danish"
+#~ msgstr "丹麦语"
+
+#~ msgid "Brazilian Portuguese"
+#~ msgstr "巴西葡萄牙语"
 
 #~ msgid ""
 #~ "If you want to use colorful \"ls\", that is, use colors to distinguish types "
