@@ -164,7 +164,6 @@ class FastestRepositoryDialog(gtk.Dialog):
             self.refresh_GUI()
 
         import threading
-        lock = threading.Lock()
         result = []
         threads = []
         candidate_repos = get_candidate_repositories()
