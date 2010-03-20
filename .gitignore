@@ -2,6 +2,8 @@ MANIFEST
 
 .project
 .pydevproject
+.metadata
+build/
 
 *.pyc
 *~
