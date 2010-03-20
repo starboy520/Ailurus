@@ -84,16 +84,18 @@ def __quick_setup(main_view):
     assert main_view.install_remove_pane
     assert hasattr(main_view.install_remove_pane, 'app_class_installed_state_changed_by_external')
 
-    import os
-    assert os.path.exists('ubuntu/quick_setup.py')
-
     from quick_setup import quick_setup
     def run_quick_setup_thread():
         try:
-            import subprocess
-            task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
-            task.wait()
+            import os
+            me_path = os.path.abspath(__file__)
+            FileServer.chdir(me_path)
+#            assert os.path.exists('quick_setup.py')
+#            import subprocess
+#            task = subprocess.Popen(['python', 'quick_setup.py'])
+#            task.wait()
         finally:
+            FileServer.chdir_back()
             gtk.gdk.threads_enter()
             main_view.install_remove_pane.app_class_installed_state_changed_by_external()
             main_view.unlock()
@@ -114,5 +116,5 @@ def get_study_linux_menu(main_view):
 def get_preferences_menu(main_view):
     return __preferences(main_view)
 
-def get_others_menu(main_view):
-    return __quick_setup(main_view)
+#def get_others_menu(main_view):
+#    return __quick_setup(main_view)
