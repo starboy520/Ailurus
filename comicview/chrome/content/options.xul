@@ -11,4 +11,8 @@
         <label value="Location of mplayer"/>
         <textbox id="mplayer_path"/>
       </hbox>
+      <hbox>
+        <label value="Web page coding is UTF-8, not GB18030?"/>
+        <checkbox id="web_page_coding_is_utf8"/>
+      </hbox>
 </dialog>

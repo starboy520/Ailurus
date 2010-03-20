@@ -23,10 +23,26 @@ function set_mplayer_path(value) {
     config.setCharPref('comicview.mplayer_path', value);
 }
 
+function get_web_page_coding_is_utf8() {
+    config = get_config();
+    try {
+        return config.getBoolPref('comicview.web_page_coding_is_utf8');
+    } catch(error) {
+        return true; // default value
+    }
+}
+
+function set_web_page_coding_is_utf8(value) {
+    config = get_config();
+    config.setBoolPref('comicview.web_page_coding_is_utf8',value);
+}
+
 function init_option_dialog() {
     try {
         var mplayer_path = document.getElementById('mplayer_path');
         mplayer_path.value = get_mplayer_path();
+        var web_page_coding_is_utf8 = document.getElementById('web_page_coding_is_utf8');
+        web_page_coding_is_utf8.checked = get_web_page_coding_is_utf8();
     } catch(err) {
         alert(err);
     }
@@ -37,6 +53,9 @@ function option_dialog_save() {
         var mplayer_path = document.getElementById('mplayer_path');
         var value = mplayer_path.value;
         set_mplayer_path(value);
+        var web_page_coding_is_utf8 = document.getElementById('web_page_coding_is_utf8');
+        var value = web_page_coding_is_utf8.checked;
+        set_web_page_coding_is_utf8(value);
     } catch(err) {
         alert(err);
     }
@@ -149,9 +168,10 @@ function play() {
     try {
         var cm = gContextMenu;
         var url = parse_link(cm);
-        //alert(url); //debug
-        url = from_unicode(url, 'GB18030');
-        //alert(url); //debug
+        if (get_web_page_coding_is_utf8()) 
+            url = from_unicode(url, 'UTF-8');
+        else
+            url = from_unicode(url, 'GB18030');
         mplayer_path = get_mplayer_path();
         if( ! file_exists(mplayer_path) ) {
             alert( mplayer_path + 'does not exist.' );
