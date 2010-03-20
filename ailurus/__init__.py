@@ -5,5 +5,4 @@ import libapp
 import libsetting
 import libu
 import loader
-import main
 import system_setting_pane
