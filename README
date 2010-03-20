@@ -1,0 +1,32 @@
+===== What is Ailurus? ====
+Ailurus is an application which makes Linux easier to use.
+
+==== Ailurus supports ====
+Latest version of Ailurus always supports:
+         Fedora              10 ~ 12
+ Ubuntu,KUbuntu,XUbuntu    8.04 ~ 9.10
+          Mint                5 ~ 8
+
+==== Report bugs & Propose suggestion ====
+http://code.google.com/p/ailurus/issues/entry
+
+==== Test latest Ailurus ====
+The developers frequently publish the latest version in "Ailurus 
+  Experimental Release" repository.
+  
+You can enable this repository by:
+  sudo add-apt-repository ppa:ailurus/ailurus-experiment
+  
+Or read the “Adding this PPA to your system” section on 
+  https://launchpad.net/~ailurus/+archive/ailurus-experiment
+
+==== Join Ailurus development ====
+Here is a guide: 
+  http://wiki.github.com/homerxing/ailurus/join-ailurus-development
+
+==== Help to translate Ailurus ====
+https://translations.launchpad.net/ailurus
+
+==== What's New? ====
+The newest development progress is published in http://ailurus.cn/
+  and the Twitter account http://twitter.com/AilurusFans

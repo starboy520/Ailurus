@@ -1,0 +1,28 @@
+Installing Ailurus
+==================
+
+  Requirements
+  ------------
+
+    * python
+    * python-gtk2
+    * python-notify
+    * python-vte
+    * python-apt
+    * python-gobject
+    * python-dbus
+    * procps
+    * unzip
+    * policykit-gnome | policykit-kde | policykit-1-gnome
+
+  Installation
+  ------------
+
+    To install Gwibber, perform the following command as root:
+    
+      $ python setup.py install
+      
+  Run Ailurus
+  -----------
+
+	You can launch the program by typing "ailurus" at the command line.

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ailurus
+Comment=Ailurus = "Install software" + "Configure Linux" + "Study Linux skills"
+Exec=/usr/bin/ailurus
+Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+Categories=System;
