@@ -43,7 +43,8 @@ def show_about_dialog(*w): # called by __help
     about.set_artists( [
           'SU Yun',
           'M. Umut Pulat    http://12m3.deviantart.com/', 
-          'Paul Davey    http://mattahan.deviantart.com/'] )
+          'Andrea Soragna   http://sora-meliae.deviantart.com/',
+          'Paul Davey       http://mattahan.deviantart.com/',] )
     about.set_copyright( _(u"Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong Univ., China.") )
     about.set_wrap_license(False)
     about.set_license(
@@ -77,11 +78,15 @@ http://www.ubuntu.com/ubuntu/TrademarkPolicy
 All images in directory "data/suyun_icons" are released under the GPL License, 
 version 2 or higher version. Their copyright are holded by SU Yun.
 
+All images in directory "data/sona_icons" are released under the GPL License. 
+Their copyright are holded by Andrea Soragna.
+
 All images in directory "data/umut_icons" and "data/appicons" are are released
 under the GNU Lesser General Public License. Their copyright are holded by M. Umut Pulat.
 
 In directory "data/other_icons":
 ailurus.png is released under the GPL license. Its copyright is holded by SU Yun.
+ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
 blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
 bluefish.png is copied from Bluefish project. It is released under the GPL license. Its copyright is holded by Olivier Sessink.
 childsplay.png is copied from Childsplay project. It is released under the GPL license. Its copyright is holded by Stas Zytkiewicz.
@@ -276,7 +281,7 @@ def __study_linux(main_view):
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'umut_icons/m_tip_of_the_day.png', 16, 3)
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16, 3)
     def show_day_tip(*w):
         from support.tipoftheday import TipOfTheDay
         w=TipOfTheDay()
@@ -353,7 +358,7 @@ def __others(main_view):
     help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16, 3) 
     help_update.connect('activate', check_update)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16, 3) 
+    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'sora_icons/m_propose_suggestion.png', 16, 3) 
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     

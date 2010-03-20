@@ -31,7 +31,7 @@ class MainView:
         is_string_not_empty(signal_name)
         assert callable(callback)
         
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 48, 48)
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 40, 40)
         image = gtk.image_new_from_pixbuf(pixbuf)
         align_image = gtk.Alignment(0.5, 0.5)
         align_image.add(image)
@@ -53,28 +53,28 @@ class MainView:
         return item
     
     def add_buttons_in_toolbar(self):
-        item_quit = self.__create_toolitem(D+'umut_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
+        item_quit = self.__create_toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
         from loader import load_study_linux_menu, load_preferences_menu, load_others_menu
         menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'suyun_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'umut_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'umut_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
         List = [
-                ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware\nInformation'), ),
-                ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux\nInformation'), ),
-                ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System\nSettings'), ),
-                ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install\nSoftware'), ),
-                ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache\nFiles'), ),
-                ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
+                ('HardwareInfoPane', D+'sora_icons/m_hardware.png', _('Hardware\nInformation'), ),
+                ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
+                ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
+                ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
+                ('OfflineInstallPane', D+'sora_icons/m_cache_files.png', _('Cache\nFiles'), ),
+                ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
+                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
                 ]
         List.reverse()
         for name, icon, text in List:
@@ -195,7 +195,7 @@ while gtk.events_pending(): gtk.main_iteration()
 # import common
 import common as COMMON
 # check desktop environment
-splash.add_text(_('<span color="yellow">Checking desktop environment ... </span>\n'))
+splash.add_text(_('<span color="grey">Checking desktop environment ... </span>\n'))
 if Config.is_XFCE():
     DESKTOP = None
 elif Config.is_GNOME():
@@ -203,7 +203,7 @@ elif Config.is_GNOME():
 else:
     DESKTOP = None
 # check distribution
-splash.add_text(_('<span color="yellow">Checking distribution ... </span>\n'))
+splash.add_text(_('<span color="grey">Checking distribution ... </span>\n'))
 if Config.is_Mint():
     try:
         versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
@@ -226,9 +226,9 @@ else:
 import os
 if os.path.exists('/usr/bin/firefox'):
     propath = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
-    splash.add_text(_('<span color="yellow">Acquiring Firefox profile ... </span>\n'))
+    splash.add_text(_('<span color="grey">Acquiring Firefox profile ... </span>\n'))
     if not os.path.exists(propath):
-        splash.add_text(_('<span color="yellow">Waiting for firefox to create profile ... </span>\n'))
+        splash.add_text(_('<span color="grey">Waiting for firefox to create profile ... </span>\n'))
         KillWhenExit.add('firefox -no-remote')
         import time
         start = time.time()
@@ -236,24 +236,24 @@ if os.path.exists('/usr/bin/firefox'):
             time.sleep(0.1)
 # acquire installed package
 if DISTRIBUTION and DISTRIBUTION.__name__ == 'ubuntu':
-    splash.add_text(_('<span color="yellow">Acquire list of installed packages ... </span>\n'))
+    splash.add_text(_('<span color="grey">Acquire list of installed packages ... </span>\n'))
     APT.refresh_cache()
 elif DISTRIBUTION and DISTRIBUTION.__name__ == 'fedora':
-    splash.add_text(_('<span color="yellow">Acquire list of installed packages ... </span>\n'))
+    splash.add_text(_('<span color="grey">Acquire list of installed packages ... </span>\n'))
     RPM.refresh_cache()
 # other initialization
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
-splash.add_text(_('<span color="yellow">Loading tips ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading tips ... </span>\n'))
 from loader import load_tips
 tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
 import support.tipoftheday
 support.tipoftheday.tips = tips
 
-splash.add_text(_('<span color="yellow">Loading main window ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading main window ... </span>\n'))
 main_view = MainView()
 
-splash.add_text(_('<span color="yellow">Loading information pane ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
 from loader import load_hardwareinfo
 hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
 from info_pane import HardwareInfoPane
@@ -266,14 +266,14 @@ from info_pane import LinuxInfoPane
 pane = LinuxInfoPane(main_view, linuxinfo)
 main_view.register(pane)
 
-splash.add_text(_('<span color="yellow">Loading system settings pane ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
 from loader import load_setting
 items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
 from system_setting_pane import SystemSettingPane
 pane = SystemSettingPane(items)
 main_view.register(pane)
 
-splash.add_text(_('<span color="yellow">Loading applications pane ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
 from loader import load_app_classes
 app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
 main_view.app_classes = app_classes
@@ -284,7 +284,7 @@ pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
 main_view.register(pane)
 main_view.install_remove_pane = pane
 
-splash.add_text(_('<span color="yellow">Loading off-line pane ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading off-line pane ... </span>\n'))
 from loader import load_R_objs
 r_objs = load_R_objs(COMMON, DESKTOP, DISTRIBUTION)
 from offline_install_pane import OfflineInstallPane

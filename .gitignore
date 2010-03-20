@@ -2,10 +2,11 @@ MANIFEST
 
 .project
 .pydevproject
+.metadata
+build/
+dist/
 
 *.pyc
 *~
 
 exported-translation
-build/
-dist/
