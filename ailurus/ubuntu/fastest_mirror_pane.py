@@ -24,7 +24,7 @@ import gtk, pango
 import sys, os
 from lib import *
 from libu import *
-import serverlib
+import libserver
 
 class SearchBox(gtk.HBox):
     def __init__(self, func):
@@ -113,8 +113,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __callback__refresh_state_box(self, *w):
         import StringIO
         msg = StringIO.StringIO()
-        current_all = serverlib.get_all_current_repositories()
-        current_official = serverlib.get_current_official_repositories()
+        current_all = libserver.get_all_current_repositories()
+        current_official = libserver.get_current_official_repositories()
 
         # print tip
         print >>msg, _('<small>(Click mouse right button to display the context menu.)</small>')
@@ -291,7 +291,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         assert isinstance(new_repo, str)
         assert ':' in new_repo
         
-        old_repos = [ r for r in serverlib.get_current_official_repositories() if r != new_repo ]
+        old_repos = [ r for r in libserver.get_current_official_repositories() if r != new_repo ]
         if old_repos == []: 
             notify(_('Currently you are using %s.')%new_repo, ' ')
             return
@@ -315,7 +315,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             if c.get_active():
                 changes[c.old_repo] = c.new_repo
         if changes == {}: return
-        serverlib.change_repositories_in_source_files(changes)
+        libserver.change_repositories_in_source_files(changes)
         self.__callback__refresh_state_box()
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
         APT.apt_get_update()
@@ -587,7 +587,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             traceback.print_exc()
 
     def __fill_candidate_store(self):
-        for e in serverlib.get_candidate_repositories():
+        for e in libserver.get_candidate_repositories():
             try:
                 res_time = self.__response_times[e[3]]
             except KeyError:

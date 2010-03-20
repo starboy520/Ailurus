@@ -25,7 +25,7 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(ailurus.__file__)))
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
-from serverlib import *
+from libserver import *
 import gtk
 
 class WelcomeDialog(gtk.Dialog):
