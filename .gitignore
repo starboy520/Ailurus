@@ -7,3 +7,5 @@ MANIFEST
 *~
 
 exported-translation
+build/
+dist/
