@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 13:53+0800\n"
+"POT-Creation-Date: 2010-03-20 14:47+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1397,7 +1397,7 @@ msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:107 .././ailurus/ubuntu/quick_setup.py:30
+#: .././ailurus/ubuntu/menu.py:109 .././ailurus/ubuntu/quick_setup.py:30
 #: .././ailurus/ubuntu/quick_setup.py:334
 msgid "Quick setup"
 msgstr ""
@@ -1514,7 +1514,7 @@ msgid "Apply"
 msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
-#: .././ailurus/loader.py:124 .././ailurus/main.py:312
+#: .././ailurus/loader.py:124 .././ailurus/main.py:299
 msgid "Traceback:"
 msgstr ""
 
@@ -2690,7 +2690,7 @@ msgstr ""
 msgid "Linux Information"
 msgstr ""
 
-#: .././ailurus/offline_install_pane.py:28 .././ailurus/main.py:134
+#: .././ailurus/offline_install_pane.py:28
 msgid "Cache installation files"
 msgstr ""
 
@@ -3871,92 +3871,82 @@ msgstr ""
 
 #: .././ailurus/main.py:75
 msgid ""
-"Cache\n"
-"Files"
-msgstr ""
-
-#: .././ailurus/main.py:76
-msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
 
-#: .././ailurus/main.py:77
+#: .././ailurus/main.py:76
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
 
-#: .././ailurus/main.py:177
+#: .././ailurus/main.py:171
 msgid "Warning!"
 msgstr ""
 
-#: .././ailurus/main.py:178
+#: .././ailurus/main.py:172
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr ""
 
 #. check desktop environment
-#: .././ailurus/main.py:198
+#: .././ailurus/main.py:192
 msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
 msgstr ""
 
 #. check distribution
-#: .././ailurus/main.py:206
+#: .././ailurus/main.py:200
 msgid "<span color=\"grey\">Checking distribution ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:229
+#: .././ailurus/main.py:223
 msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:231
+#: .././ailurus/main.py:225
 msgid ""
 "<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:239 .././ailurus/main.py:242
+#: .././ailurus/main.py:233 .././ailurus/main.py:236
 msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:247
+#: .././ailurus/main.py:241
 msgid "<span color=\"grey\">Loading tips ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:253
+#: .././ailurus/main.py:247
 msgid "<span color=\"grey\">Loading main window ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:256
+#: .././ailurus/main.py:250
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:269
+#: .././ailurus/main.py:263
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:276
+#: .././ailurus/main.py:270
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:287
-msgid "<span color=\"grey\">Loading off-line pane ... </span>\n"
-msgstr ""
-
-#: .././ailurus/main.py:322
+#: .././ailurus/main.py:309
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 
-#: .././ailurus/main.py:335
+#: .././ailurus/main.py:322
 msgid "Click here to report bug via web-page"
 msgstr ""
 
-#: .././ailurus/main.py:337
+#: .././ailurus/main.py:324
 msgid "Close"
 msgstr ""
 
-#: .././ailurus/main.py:343
+#: .././ailurus/main.py:330
 msgid "Bug appears!"
 msgstr ""
 
@@ -5511,108 +5501,108 @@ msgstr ""
 msgid "_Apply"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:562
+#: .././ailurus/install_remove_pane.py:560
 msgid "Details:"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:614
+#: .././ailurus/install_remove_pane.py:610
 msgid "Report bugs"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:616
+#: .././ailurus/install_remove_pane.py:612
 msgid "Close this terminal"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:645
+#: .././ailurus/install_remove_pane.py:641
 msgid "Common"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:646
+#: .././ailurus/install_remove_pane.py:642
 msgid "For students"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:647
+#: .././ailurus/install_remove_pane.py:643
 msgid "For developers"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:648
+#: .././ailurus/install_remove_pane.py:644
 msgid "Advanced"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:651
+#: .././ailurus/install_remove_pane.py:647
 msgid "Office"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:652
+#: .././ailurus/install_remove_pane.py:648
 msgid "Education"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:653
+#: .././ailurus/install_remove_pane.py:649
 msgid "Internet"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:654
-#: .././ailurus/install_remove_pane.py:673
+#: .././ailurus/install_remove_pane.py:650
+#: .././ailurus/install_remove_pane.py:669
 msgid "Firefox extensions"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:655
+#: .././ailurus/install_remove_pane.py:651
 msgid "Multimedia"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:656
+#: .././ailurus/install_remove_pane.py:652
 msgid "Appearance"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:657
+#: .././ailurus/install_remove_pane.py:653
 msgid "Enhancements"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:658
+#: .././ailurus/install_remove_pane.py:654
 msgid "Game"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:660
+#: .././ailurus/install_remove_pane.py:656
 msgid "Third party repositories"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:661
+#: .././ailurus/install_remove_pane.py:657
 msgid "Virtual machine"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:662
+#: .././ailurus/install_remove_pane.py:658
 msgid "Establish a server"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:664
+#: .././ailurus/install_remove_pane.py:660
 msgid "Mathematics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:665
+#: .././ailurus/install_remove_pane.py:661
 msgid "Statistics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:666
+#: .././ailurus/install_remove_pane.py:662
 msgid "Biology"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:667
+#: .././ailurus/install_remove_pane.py:663
 msgid "Electronics & Mechanics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:668
+#: .././ailurus/install_remove_pane.py:664
 msgid "Geography"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:669
+#: .././ailurus/install_remove_pane.py:665
 msgid "LaTeX"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:671
+#: .././ailurus/install_remove_pane.py:667
 msgid "Development"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:672
+#: .././ailurus/install_remove_pane.py:668
 msgid "Eclipse"
 msgstr ""
 

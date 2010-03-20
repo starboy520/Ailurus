@@ -20,6 +20,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 import sys, os
+import ailurus
+sys.path.insert(0, os.path.dirname(os.path.abspath(ailurus.__file__)))
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
 from serverlib import *
