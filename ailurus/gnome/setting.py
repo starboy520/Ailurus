@@ -328,39 +328,40 @@ def __nautilus_thumbnail_setting():
 def __gnome_session_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
+    pos = 0
     o = GConfCheckButton(_('Remember running applications when you log out.'),
              '/apps/gnome-session/options/auto_save_session',
              _('If its value is true, GNOME will remember the running applications when you log out, '
                'and re-launch these applications at the next time you log in to GNOME.') )
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL)
     button = gtk.Button(_('Configure autostart applications'))
     button.set_tooltip_text(_('Run command: gnome-session-properties'))
     button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
-    table.attach(button, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(button, 1, 2, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     o = GConfCheckButton(_('Prompt you before you log out from GNOME.'),
             '/apps/gnome-session/options/logout_prompt',
             _('If its value is false, GNOME session will terminate immediately if you click the menu "System"->"Log out".') )
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     o = GConfCheckButton(_('Allow connection from remote hosts.'),
             '/apps/gnome-session/options/allow_tcp_connections')
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
-            '/apps/gnome-screensaver/user_switch_enable',
-            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
-    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    o = GConfCheckButton(_('Show confirmation dialogs when you using indicator session tool to logout/restart/shutdown'),
-            '/apps/indicator-session/suppress_logout_restart_shutdown', 
-            _('If its value is false, Gnome will not show confirmation '
-              'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
-    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+#    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
+#            '/apps/gnome-screensaver/user_switch_enable',
+#            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
+#    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+#    o = GConfCheckButton(_('Show confirmation dialogs when you using indicator session tool to logout/restart/shutdown'),
+#            '/apps/indicator-session/suppress_logout_restart_shutdown', 
+#            _('If its value is false, Gnome will not show confirmation '
+#              'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
+#    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     
     o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
             '/apps/gnome-screensaver/idle_activation_enabled')
-    table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     
     o = GConfCheckButton(_('Lock screen when screen saver is activated'),
             '/apps/gnome-screensaver/lock_enabled')
-    table.attach(o, 0, 1, 6, 7, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     
     return Setting(table, _('GNOME session'), ['session'])
 
@@ -382,15 +383,15 @@ def __backlight():
     table.attach(o, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Backlight'), ['power'])
 
-def __suspend_and_hibernate():
-    vbox = gtk.VBox()
-    i = GConfCheckButton(_('Enable suspending function'),
-                '/apps/gnome-power-manager/lock/suspend')
-    j = GConfCheckButton(_('Enable hibernating function'),
-                '/apps/gnome-power-manager/lock/suspend')
-    vbox.pack_start(i, False)
-    vbox.pack_start(j, False)
-    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
+#def __suspend_and_hibernate():
+#    vbox = gtk.VBox()
+#    i = GConfCheckButton(_('Enable suspending function'),
+#                '/apps/gnome-power-manager/lock/suspend')
+#    j = GConfCheckButton(_('Enable hibernating function'),
+#                '/apps/gnome-power-manager/lock/suspend')
+#    vbox.pack_start(i, False)
+#    vbox.pack_start(j, False)
+#    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
 
 def __advance_setting():
     table = gtk.Table()
@@ -438,7 +439,7 @@ def get():
             __disable_terminal_beep(),
             __backlight(),
             __advance_setting(),
-            __suspend_and_hibernate(),
+#            __suspend_and_hibernate(),
             __restriction_on_current_user(),
             __layout_of_window_titlebar_buttons(),
             __more_nautilus_settings(),
