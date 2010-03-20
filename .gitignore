@@ -1,13 +1,11 @@
 MANIFEST
+build/
+dist/
+exported-translation/
+comicview/note
 
 .project
 .pydevproject
 .metadata
-build/
-dist/
-
 *.pyc
 *~
-
-exported-translation
-comicview/note
