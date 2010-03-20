@@ -72,7 +72,6 @@ class MainView:
                 ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
-                ('OfflineInstallPane', D+'sora_icons/m_cache_files.png', _('Cache\nFiles'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
                 ('UbuntuAPTRecoveryPane', D+'sora_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
                 ]
@@ -129,11 +128,6 @@ class MainView:
         w=TipOfTheDay()
         w.run()
         w.destroy()
-
-    def offline_mode_button(self):
-        button = image_stock_button(gtk.STOCK_HARDDISK, _('Cache installation files') )
-        button.connect('clicked', lambda w: self.activate_pane(None, 'OfflineInstallPane'))
-        return button
 
     def register(self, pane):
         key = pane.__class__.__name__
@@ -283,13 +277,6 @@ from install_remove_pane import InstallRemovePane
 pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
 main_view.register(pane)
 main_view.install_remove_pane = pane
-
-splash.add_text(_('<span color="grey">Loading off-line pane ... </span>\n'))
-from loader import load_R_objs
-r_objs = load_R_objs(COMMON, DESKTOP, DISTRIBUTION)
-from offline_install_pane import OfflineInstallPane
-pane = OfflineInstallPane(main_view, r_objs)
-main_view.register(pane)
 
 for module in [ COMMON, DESKTOP, DISTRIBUTION ]:
     if hasattr(module, 'pane_register'):

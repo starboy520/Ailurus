@@ -82,7 +82,7 @@ class SplashWindow(gtk.Window):
         if list[-1]=='': del list[-1]
         self.loading.set_markup(list[-1])
         #change progressbar
-        self.progressbar.set_fraction( min(1, 0.1*len(list) ) )
+        self.progressbar.set_fraction( min(1, 0.112*len(list) ) )
         #refresh
         while gtk.events_pending(): gtk.main_iteration()
 

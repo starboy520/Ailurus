@@ -554,8 +554,6 @@ class InstallRemovePane(gtk.VBox):
         button_apply.connect('clicked', self.__apply_button_clicked)
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_apply, False, False)
-        if self.offline_button_func:
-            bottom_box.pack_start(self.offline_button_func(), False, False)
 
         box2 = gtk.VBox(False, 0)
         align = gtk.Alignment(0)
@@ -600,9 +598,7 @@ class InstallRemovePane(gtk.VBox):
         self.vpaned = None
         assert hasattr(parentwindow, 'lock')
         assert hasattr(parentwindow, 'unlock')
-        assert hasattr(parentwindow, 'offline_mode_button')
         self.parentwindow = parentwindow
-        self.offline_button_func = parentwindow.offline_mode_button
         from support.terminal import Terminal
         self.terminal = Terminal()
         
