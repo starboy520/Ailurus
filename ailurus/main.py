@@ -31,7 +31,7 @@ class MainView:
         is_string_not_empty(signal_name)
         assert callable(callback)
         
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 48, 48)
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 40, 40)
         image = gtk.image_new_from_pixbuf(pixbuf)
         align_image = gtk.Alignment(0.5, 0.5)
         align_image.add(image)
@@ -53,28 +53,28 @@ class MainView:
         return item
     
     def add_buttons_in_toolbar(self):
-        item_quit = self.__create_toolitem(D+'umut_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
+        item_quit = self.__create_toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
         from loader import load_study_linux_menu, load_preferences_menu, load_others_menu
         menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'umut_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'umut_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'umut_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = self.__create_toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
         List = [
-                ('HardwareInfoPane', D+'umut_icons/m_hardware.png', _('Hardware\nInformation'), ),
-                ('LinuxInfoPane', D+'umut_icons/m_linux.png', _('Linux\nInformation'), ),
-                ('SystemSettingPane', D+'umut_icons/m_linux_setting.png', _('System\nSettings'), ),
-                ('InstallRemovePane', D+'umut_icons/m_install_remove.png', _('Install\nSoftware'), ),
-                ('OfflineInstallPane', D+'umut_icons/m_cache_files.png', _('Cache\nFiles'), ),
-                ('UbuntuFastestMirrorPane', D+'umut_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'umut_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
+                ('HardwareInfoPane', D+'sora_icons/m_hardware.png', _('Hardware\nInformation'), ),
+                ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
+                ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
+                ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
+                ('OfflineInstallPane', D+'sora_icons/m_cache_files.png', _('Cache\nFiles'), ),
+                ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
+                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
                 ]
         List.reverse()
         for name, icon, text in List:

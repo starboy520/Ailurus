@@ -1,6 +1,0 @@
-#!/usr/bin/python
-import os, sys, ailurus 
-path = os.path.dirname(os.path.abspath(ailurus.__file__))
-sys.path.insert(0, path)
-from ailurus import show_a_linux_skill_bubble
-show_a_linux_skill_bubble.main()

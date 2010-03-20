@@ -45,7 +45,7 @@ class SplashWindow(gtk.Window):
               '<span color="#00A0E9">Tell</span> you some Linux skills.'
               '</span>') )
         import pango
-        comment.modify_font(pango.FontDescription('Waree 10'))
+        comment.modify_font(pango.FontDescription('Purisa 10'))
        
         titlevbox = gtk.VBox(False, 0)
         titlevbox.pack_start(title, False)
