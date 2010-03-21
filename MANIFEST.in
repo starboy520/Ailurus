@@ -3,6 +3,5 @@ include MANIFEST.in MANIFEST
 include ChangeLog version
 include ailurus.1 ailurus.desktop ailurus.desktop.in
 recursive-include data *
-recursive-include debian *
 recursive-include po *
 recursive-include support *
