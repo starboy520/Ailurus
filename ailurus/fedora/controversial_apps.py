@@ -66,19 +66,18 @@ class AdobeReader(_rpm_install):
                    'zh_TW':'AdobeReader_cht',
                    'zh_CN':'AdobeReader_chs',
                    'de':'AdobeReader_deu',
-                   'en_US':'AdobeReader_enu',
+                   'en':'AdobeReader_enu',
                    'es':'AdobeReader_esp',
                    'it':'AdobeReader_ita',
                    'nl':'AdobeReader_nld',
                    'pt':'AdobeReader_ptb',
                    }
-        import locale
-        value = locale.getdefaultlocale()[0]
-        if not value in Config.supported_locale():
-            value = value.split('_')[0]
-        if not value in package_dict:
-            value = 'en_US'
-        self.pkgs = package_dict[value]
+        value = Config.get_locale()
+        if not value.startswith('zh'): value = value.split('_')[0]
+        try:
+            self.pkgs = package_dict[value]
+        except KeyError:
+            self.pkgs = package_dict['en']
     def install(self):
         #
         obj = Repo_Adobe()
