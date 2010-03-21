@@ -88,22 +88,6 @@ class AdobeReader(_rpm_install):
     def support(self):
         return get_arch() == 32
 
-class FoxitReader:
-    'FoxitReader'
-    detail = ( _('A light weight pdf reader.') + '\n' +
-               _('Official site: <span color="blue"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>') )
-    category = 'office'
-    logo = 'foxitreader.png'
-    def install(self):
-        f = R(
-['http://mirrors.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.0/enu/FoxitReader-1.0-1.i386.rpm'],
-3409078, 'ad7793cdf20be9beb0297c8339943f5a168b3997').download()
-        RPM.install_local(f)
-    def installed(self):
-        return RPM.installed('FoxitReader')
-    def remove(self):
-        RPM.remove('FoxitReader')
-
 class Realplayer32:
     'RealPlayer® 11'
     detail = _('If you cannot play RMVB video, try this application!\n'

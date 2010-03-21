@@ -107,26 +107,6 @@ class FreeCAD(_apt_install):
         if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
         return False
 
-class FoxitReader:
-    'FoxitReader'
-    detail = ( _('A light weight pdf reader.') + '\n' + 
-               _('Official site: <span color="blue"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>') )
-    category = 'office'
-    size = 6178000
-    time = 1
-    logo = 'foxitreader.png'
-    def install(self):
-        f = R(
-['http://tdt.sjtu.edu.cn/S/FoxitReader_1.1.0_i386.deb',
-'http://mirrors.foxitsoftware.com/pub/foxit/reader/desktop/linux/1.x/1.1/enu/FoxitReader_1.1.0_i386.deb'],
-3787232, 'da18e1504e37a38d822132d127bd2922ed3c3aed').download()
-
-        DPKG.install_deb(f)
-    def installed(self):
-        return DPKG.installed('foxitreader')
-    def remove(self):
-        gksudo("dpkg --purge foxitreader")
-
 class QCad(_apt_install):
     'QCad'
     detail = _('A CAD software which supports DXF-format. ')
