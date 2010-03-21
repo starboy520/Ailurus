@@ -583,9 +583,9 @@ class RPM:
         cls.refresh_cache()
         return package_name in cls.__set1
     @classmethod
-    def install(cls, package):
-        assert isinstance(package, str)
-        su('yum install %s -y' % package)
+    def install(cls, *package):
+        #assert isinstance(package, str)
+        su('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def install_local(cls, path):
@@ -596,9 +596,9 @@ class RPM:
         su('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
     @classmethod
-    def remove(cls, package):
-        assert isinstance(package, str)
-        su('yum remove %s -y' % package)
+    def remove(cls, *package):
+        #assert isinstance(package, str)
+        su('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def import_key(cls, path):
@@ -887,7 +887,8 @@ def derive_time(time):
         return _('%.1f hours') % ( time/_1h )
     if time>=_1m:
         return _('%.1f minutes') % ( time/_1m )
-    return _('less than 1 minute')
+    return _('%d seconds') % time
+    #return _('less than 1 minute')
 
 #def print_progress(command, total_line_number):
 #    def color_print(progress):
