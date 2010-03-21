@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD:po/ailurus.pot
 "POT-Creation-Date: 2010-03-20 22:46+0800\n"
+=======
+"POT-Creation-Date: 2010-03-21 09:16+0800\n"
+>>>>>>> cb3aa27cccc43e968082a350eaa33379c06d5e7e:po/ailurus.pot
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"

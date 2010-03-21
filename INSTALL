@@ -18,7 +18,7 @@ Installing Ailurus
   Installation
   ------------
 
-    To install Gwibber, perform the following command as root:
+    To install Ailurus, perform the following command as root:
     
       $ python setup.py install
       
