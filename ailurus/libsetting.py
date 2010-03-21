@@ -103,6 +103,61 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
+        
+class ShortCutSetting(gtk.HBox):
+
+    def init_keygrabber(self, *w):
+        import support.keygrabber
+        window = support.keygrabber.GrabberWindow ()
+        window.main ()
+        self.shortcut_entry.set_text(window.shortcut)
+
+    def __value_changed(self, *w): 
+        self.apply_button.set_sensitive(True)
+
+    def gtk_process_events(self, *w):
+        while gtk.events_pending ():
+            gtk.main_iteration ()
+            
+    def shortcut_reset(self, *w):        
+        self.command_entry.set_text('')
+        self.shortcut_entry.set_text('disabled')
+        
+    def __button_clicked(self, *w):
+        command = self.command_entry.get_text()
+        shortcut = self.shortcut_entry.get_text()
+        import gconf
+        g = gconf.client_get_default()
+        g.set_string('/apps/metacity/keybinding_commands/'+self.key, command)
+        g.set_string('/apps/metacity/global_keybindings/run_'+self.key, shortcut)
+        self.apply_button.set_sensitive(False)     
+
+    def __init__(self, key):
+        self.key = key
+        self.command_entry = gtk.Entry()
+        self.command_entry.set_tooltip_text(_('Enter the command you want to run'))
+        self.shortcut_entry = gtk.Entry()
+        self.shortcut_entry.set_tooltip_text(_('Setup the hotkey you like'))
+        import gconf
+        g = gconf.client_get_default()
+        command = g.get_string('/apps/metacity/keybinding_commands/'+key)
+        shortcut = g.get_string('/apps/metacity/global_keybindings/run_'+key)
+        if command: self.command_entry.set_text(command)
+        if shortcut: self.shortcut_entry.set_text(shortcut)
+        self.apply_button = gtk.Button(stock=gtk.STOCK_APPLY)
+        self.reset_shortcut = gtk.Button(_('Reset'))
+        self.apply_button.set_sensitive(False)
+        self.shortcut_entry.connect('grab-focus', self.init_keygrabber)
+        self.shortcut_entry.connect('changed', self.__value_changed)
+        self.command_entry.connect('changed', self.__value_changed)
+        self.apply_button.connect('clicked', self.__button_clicked)
+        self.reset_shortcut.connect('clicked', self.shortcut_reset)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(self.command_entry, False)
+        self.pack_start(self.shortcut_entry, False)
+        self.pack_start(self.apply_button, False)
+        self.pack_start(self.reset_shortcut, False)
+
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
         title = _('Choose a file for "%s" ')%self.text
@@ -244,7 +299,7 @@ class Setting(gtk.VBox):
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 
-                  'update', 'power', ]
+                  'update', 'power', 'shortcut', ]
     
     def __title(self, text):
         label = gtk.Label()

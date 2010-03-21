@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-20 14:47+0800\n"
+"POT-Creation-Date: 2010-03-21 20:16+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -361,7 +361,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/fedora/controversial_apps.py:28
-#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:267
+#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:270
 msgid "Multi-media codec"
 msgstr ""
 
@@ -372,7 +372,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/fedora/controversial_apps.py:47
-#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:275
+#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:278
 msgid "Adobe® Flash plugin for web browser"
 msgstr ""
 
@@ -579,7 +579,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
-#: .././ailurus/ubuntu/quick_setup.py:158
+#: .././ailurus/ubuntu/quick_setup.py:161
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
 msgstr ""
@@ -595,7 +595,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:228 .././ailurus/lib.py:729
+#: .././ailurus/ubuntu/quick_setup.py:231 .././ailurus/lib.py:729
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
@@ -1397,11 +1397,6 @@ msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:109 .././ailurus/ubuntu/quick_setup.py:30
-#: .././ailurus/ubuntu/quick_setup.py:334
-msgid "Quick setup"
-msgstr ""
-
 #: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
@@ -1509,7 +1504,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
-#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:206
+#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:261
 msgid "Apply"
 msgstr ""
 
@@ -1564,7 +1559,7 @@ msgid ""
 "Then run this command: sudo apt-get install gedit-plugins"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:94 .././ailurus/ubuntu/quick_setup.py:266
+#: .././ailurus/ubuntu/app1.py:94 .././ailurus/ubuntu/quick_setup.py:269
 msgid "Full language support and input method"
 msgstr ""
 
@@ -1578,7 +1573,7 @@ msgstr ""
 msgid "Command: "
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:268
+#: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:271
 msgid "Decompression software: 7z, rar, cab, ace"
 msgstr ""
 
@@ -1657,7 +1652,7 @@ msgstr ""
 msgid "Command: sudo apt-get install flashplugin-installer"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:376 .././ailurus/ubuntu/quick_setup.py:276
+#: .././ailurus/ubuntu/app1.py:376 .././ailurus/ubuntu/quick_setup.py:279
 msgid "Fix font bug in Flash plugin"
 msgstr ""
 
@@ -1672,7 +1667,7 @@ msgstr ""
 msgid "The file \"%s\" exists."
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:273
+#: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:276
 msgid "Stardict and four dictionaries"
 msgstr ""
 
@@ -1870,7 +1865,7 @@ msgid " This application depends on Java."
 msgstr ""
 
 #: .././ailurus/ubuntu/controversial_apps.py:72
-#: .././ailurus/ubuntu/quick_setup.py:272
+#: .././ailurus/ubuntu/quick_setup.py:275
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
 msgstr ""
 
@@ -1949,7 +1944,13 @@ msgstr ""
 msgid "Theme your browser according to your mood, hobby or season."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:35
+#: .././ailurus/ubuntu/quick_setup.py:33
+#: .././ailurus/ubuntu/quick_setup.py:337
+#: .././ailurus/install_remove_pane.py:577
+msgid "Quick setup"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:38
 msgid ""
 "Ailurus will help you\n"
 "* Choose the fastest repository\n"
@@ -1961,88 +1962,88 @@ msgid ""
 "   - decompression software"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:59
+#: .././ailurus/ubuntu/quick_setup.py:62
 msgid "Checking whether your computer is connected to Internet ..."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:73
+#: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Scanning installed packages."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:73
+#: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Please wait a few seconds."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:99
+#: .././ailurus/ubuntu/quick_setup.py:102
 msgid "Computer is not connected to Internet"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:102
+#: .././ailurus/ubuntu/quick_setup.py:105
 msgid ""
 "Your computer is not connected to Internet.\n"
 "Please configure network connections."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:105
+#: .././ailurus/ubuntu/quick_setup.py:108
 msgid "Configure network connections"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:109
+#: .././ailurus/ubuntu/quick_setup.py:112
 msgid "Skip this step"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:126
+#: .././ailurus/ubuntu/quick_setup.py:129
 msgid "Searching the fastest repository"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:156
+#: .././ailurus/ubuntu/quick_setup.py:159
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:195
+#: .././ailurus/ubuntu/quick_setup.py:198
 msgid ""
 "In order to use the fastest repository, Ailurus will change /etc/apt/sources."
 "list"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:196
+#: .././ailurus/ubuntu/quick_setup.py:199
 #, python-format
 msgid "The fastest repository is %s."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:224
+#: .././ailurus/ubuntu/quick_setup.py:227
 msgid "Apply the fastest repository:"
 msgstr ""
 
 #. apt-get update
-#: .././ailurus/ubuntu/quick_setup.py:227
+#: .././ailurus/ubuntu/quick_setup.py:230
 msgid "Run command: \"sudo apt-get update\""
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:264
+#: .././ailurus/ubuntu/quick_setup.py:267
 msgid "Search fastest repository"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:265
+#: .././ailurus/ubuntu/quick_setup.py:268
 msgid "Install hardware drivers"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:298
+#: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Ongoing:"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:303
+#: .././ailurus/ubuntu/quick_setup.py:306
 msgid "Successful"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:306
+#: .././ailurus/ubuntu/quick_setup.py:309
 msgid "Failed"
 msgstr ""
 
 #. 4
-#: .././ailurus/ubuntu/quick_setup.py:420
+#: .././ailurus/ubuntu/quick_setup.py:423
 msgid "All works are done."
 msgstr ""
 
@@ -2747,7 +2748,7 @@ msgstr ""
 msgid "Cache files in this directory:"
 msgstr ""
 
-#: .././ailurus/offline_install_pane.py:210 .././ailurus/libsetting.py:164
+#: .././ailurus/offline_install_pane.py:210 .././ailurus/libsetting.py:219
 msgid "Change"
 msgstr ""
 
@@ -2973,7 +2974,11 @@ msgstr ""
 msgid "Restriction"
 msgstr ""
 
-#: .././ailurus/system_setting_pane.py:97
+#: .././ailurus/system_setting_pane.py:58
+msgid "Shortcut"
+msgstr ""
+
+#: .././ailurus/system_setting_pane.py:98
 msgid ""
 "If you hover mouse pointer above any item, you can read Linux setting "
 "skills :)"
@@ -3200,8 +3205,8 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:155 .././ailurus/gnome/setting.py:191
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
-#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:187
-#: .././ailurus/libsetting.py:219
+#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:242
+#: .././ailurus/libsetting.py:274
 msgid "GConf key: "
 msgstr ""
 
@@ -3247,7 +3252,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:203 .././ailurus/gnome/setting.py:205
 #: .././ailurus/gnome/setting.py:207 .././ailurus/libsetting.py:38
-#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:150
+#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:205
 msgid ""
 "\n"
 "GConf key: "
@@ -3543,6 +3548,27 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:422
 msgid "Advance settings"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:427
+msgid "Command ID"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:429
+msgid "Command Name"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:431
+msgid "Shortcut Setting"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:434
+#, python-format
+msgid "Command %d"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:438
+msgid "ShortCut Setting"
 msgstr ""
 
 #: .././ailurus/gnome/tips.py:27
@@ -5485,143 +5511,155 @@ msgstr ""
 msgid "Will free %s disk space."
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:509
+#: .././ailurus/install_remove_pane.py:531
 msgid "Select _All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:511
+#: .././ailurus/install_remove_pane.py:533
 msgid "_Deselect All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:513
+#: .././ailurus/install_remove_pane.py:535
 msgid "_Reset All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:553
+#: .././ailurus/install_remove_pane.py:575
 msgid "_Apply"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:560
+#: .././ailurus/install_remove_pane.py:586
 msgid "Details:"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:610
+#: .././ailurus/install_remove_pane.py:636
 msgid "Report bugs"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:612
+#: .././ailurus/install_remove_pane.py:638
 msgid "Close this terminal"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:641
+#: .././ailurus/install_remove_pane.py:667
 msgid "Common"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:642
+#: .././ailurus/install_remove_pane.py:668
 msgid "For students"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:643
+#: .././ailurus/install_remove_pane.py:669
 msgid "For developers"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:644
+#: .././ailurus/install_remove_pane.py:670
 msgid "Advanced"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:647
+#: .././ailurus/install_remove_pane.py:673
 msgid "Office"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:648
+#: .././ailurus/install_remove_pane.py:674
 msgid "Education"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:649
+#: .././ailurus/install_remove_pane.py:675
 msgid "Internet"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:650
-#: .././ailurus/install_remove_pane.py:669
+#: .././ailurus/install_remove_pane.py:676
+#: .././ailurus/install_remove_pane.py:695
 msgid "Firefox extensions"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:651
+#: .././ailurus/install_remove_pane.py:677
 msgid "Multimedia"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:652
+#: .././ailurus/install_remove_pane.py:678
 msgid "Appearance"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:653
+#: .././ailurus/install_remove_pane.py:679
 msgid "Enhancements"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:654
+#: .././ailurus/install_remove_pane.py:680
 msgid "Game"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:656
+#: .././ailurus/install_remove_pane.py:682
 msgid "Third party repositories"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:657
+#: .././ailurus/install_remove_pane.py:683
 msgid "Virtual machine"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:658
+#: .././ailurus/install_remove_pane.py:684
 msgid "Establish a server"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:660
+#: .././ailurus/install_remove_pane.py:686
 msgid "Mathematics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:661
+#: .././ailurus/install_remove_pane.py:687
 msgid "Statistics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:662
+#: .././ailurus/install_remove_pane.py:688
 msgid "Biology"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:663
+#: .././ailurus/install_remove_pane.py:689
 msgid "Electronics & Mechanics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:664
+#: .././ailurus/install_remove_pane.py:690
 msgid "Geography"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:665
+#: .././ailurus/install_remove_pane.py:691
 msgid "LaTeX"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:667
+#: .././ailurus/install_remove_pane.py:693
 msgid "Development"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:668
+#: .././ailurus/install_remove_pane.py:694
 msgid "Eclipse"
 msgstr ""
 
-#: .././ailurus/libsetting.py:108
+#: .././ailurus/libsetting.py:138
+msgid "Enter the command you want to run"
+msgstr ""
+
+#: .././ailurus/libsetting.py:140
+msgid "Setup the hotkey you like"
+msgstr ""
+
+#: .././ailurus/libsetting.py:148
+msgid "Reset"
+msgstr ""
+
+#: .././ailurus/libsetting.py:163
 #, python-format
 msgid "Choose a file for \"%s\" "
 msgstr ""
 
-#: .././ailurus/libsetting.py:124
+#: .././ailurus/libsetting.py:179
 msgid "Image file"
 msgstr ""
 
-#: .././ailurus/libsetting.py:146
+#: .././ailurus/libsetting.py:201
 msgid ""
 "\n"
 "File: "
 msgstr ""
 
-#: .././ailurus/libsetting.py:188
+#: .././ailurus/libsetting.py:243
 #, python-format
 msgid ""
 "\n"
