@@ -9,11 +9,27 @@ version = f.read().strip()
 f.close()
 
 setup(name = 'ailurus',
+      description = 'makes Linux easier to use',
+      long_description = 
+'''Ailurus is an application which makes Linux easier to use.
+
+Features:
+* Help users study some Linux skills
+* Install/remove some nice applications
+* Enable/disable some third party repositories
+* Display information about BIOS, motherboard, CPU and battery
+* Show/Hide Computer, Home folder, Trash icon and Network icon on desktop
+* Configure Nautilus thumbnail cache
+* Configure Nautilus context menu
+* Configure Window behavior
+* Configure GNOME auto-start applications
+* Show/Hide GNOME splash screen
+''',
       version = version,
       maintainer = 'Homer Xing',
       maintainer_email = 'homer.xing@gmail.com',
       url = 'http://ailurus.googlecode.com/',
-      license = 'GNU General Public License (GPL)',
+      license = 'GPLv2',
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/applications', ['ailurus.desktop']),
