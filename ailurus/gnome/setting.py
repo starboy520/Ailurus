@@ -422,6 +422,22 @@ def __advance_setting():
     
     return Setting(table, _('Advance settings'), ['desktop'])
 
+def __shortcut_setting():
+    table = gtk.Table()
+    table.set_col_spacings(15)
+    o = gtk.Label(_('Command ID'))
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    o = gtk.Label(_('Command Name'))
+    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    o = label_left_align(_('Shortcut Setting'))
+    table.attach(o, 2, 3, 0, 1, gtk.FILL, gtk.FILL)   
+    for i in range(1, 13):
+        o = label_left_align(_('Command %d' % i))
+        table.attach(o, 0, 1, i, i+1, gtk.FILL, gtk.FILL)
+        o = ShortCutSetting('command_%d' % i)
+        table.attach(o, 1, 4, i, i+1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('ShortCut Setting'), ['shortcut'])
+
 def get():
     try:
         import gconf
@@ -443,6 +459,7 @@ def get():
             __restriction_on_current_user(),
             __layout_of_window_titlebar_buttons(),
             __more_nautilus_settings(),
+            __shortcut_setting(),
             ]
     except:
         import traceback

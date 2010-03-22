@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD:po/ailurus.pot
 "POT-Creation-Date: 2010-03-22 09:44+0800\n"
+=======
+"POT-Creation-Date: 2010-03-21 20:16+0800\n"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -345,10 +349,16 @@ msgstr ""
 msgid "Philippines"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/libserver.py:213 .././ailurus/ubuntu/libserver.py:214
 #: .././ailurus/ubuntu/libserver.py:215 .././ailurus/ubuntu/libserver.py:216
 #: .././ailurus/ubuntu/libserver.py:217
 msgid "Poland"
+=======
+#: .././ailurus/fedora/controversial_apps.py:28
+#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:270
+msgid "Multi-media codec"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/libserver.py:218 .././ailurus/ubuntu/libserver.py:219
@@ -359,8 +369,14 @@ msgstr ""
 msgid "Portugal"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/libserver.py:227
 msgid "Qatar"
+=======
+#: .././ailurus/fedora/controversial_apps.py:47
+#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:278
+msgid "Adobe® Flash plugin for web browser"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/libserver.py:228 .././ailurus/ubuntu/libserver.py:229
@@ -608,6 +624,7 @@ msgstr ""
 msgid "Use colorful Bash prompt symbols"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app1.py:292
 msgid ""
 "Change Bash prompt symbols from \"username@hostname:~$ \" to \"<span color="
@@ -615,6 +632,12 @@ msgid ""
 "The trick behind is to add this line into \"$HOME/.bashrc\".\n"
 "PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m"
 "\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
+=======
+#: .././ailurus/ubuntu/fastest_mirror_pane.py:284
+#: .././ailurus/ubuntu/quick_setup.py:161
+#, python-format
+msgid "<span color='black'>Server %s is unreachable.</span>"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:305 .././ailurus/fedora/apps.py:189
@@ -625,9 +648,16 @@ msgstr ""
 msgid "It will take effect at the next time you log in."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:285
 #: .././ailurus/fedora/controversial_apps.py:28
 msgid "Multi-media codec"
+=======
+#. (c) 2005-2007 Canonical, GPL
+#: .././ailurus/ubuntu/fastest_mirror_pane.py:320
+#: .././ailurus/ubuntu/quick_setup.py:231 .././ailurus/lib.py:729
+msgid "Run \"apt-get update\". Please wait for few minutes."
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:314
@@ -1397,6 +1427,7 @@ msgstr ""
 msgid "Currently you are using %s."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:303
 msgid "Change repository"
 msgstr ""
@@ -1405,6 +1436,11 @@ msgstr ""
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
 #: .././ailurus/ubuntu/quick_setup.py:246 .././ailurus/lib.py:719
 msgid "Run \"apt-get update\". Please wait for few minutes."
+=======
+#: .././ailurus/ubuntu/setting.py:105
+#, python-format
+msgid "Command: sudo apt-get install/remove %s"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:330
@@ -1532,8 +1568,15 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app2.py:211 .././ailurus/fedora/apps.py:253
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
+=======
+#: .././ailurus/ubuntu/setting.py:192
+#: .././ailurus/ubuntu/apt_recovery_pane.py:288
+#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:261
+msgid "Apply"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:212
@@ -1585,17 +1628,142 @@ msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:105
 msgid ""
+<<<<<<< HEAD:po/ailurus.pot
 "Your computer is not connected to Internet.\n"
 "Please configure network connections."
+=======
+"Change GEdit settings as follows. Automatically indent current line. Comment/"
+"uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T "
+"and Shift+Ctrl+T. Add spell check function in \"Tools\" menu. Do not "
+"automatically create a hidden copy of current file. Automatically save files "
+"once in each minute. Show line numbers. \n"
+"The trick behind is to change GConf values.\n"
+"/apps/gedit-2/preferences/editor/save/auto_save = true\n"
+"/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n"
+"/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n"
+"/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n"
+"/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n"
+"/apps/gedit-2/plugins/active-plugins += [\"indent\",\"codecomment\",\"spell"
+"\"]\n"
+"Then run this command: sudo apt-get install gedit-plugins"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:94 .././ailurus/ubuntu/quick_setup.py:269
+msgid "Full language support and input method"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:95
+msgid ""
+"Because of live CD capacity limitation, the Ubuntu system does not have full "
+"language support.\n"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:126
+msgid "Command: "
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:271
+msgid "Decompression software: 7z, rar, cab, ace"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:142
+msgid ""
+"Command: sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full "
+"cabextract unace"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:153
+msgid "Typespeed is a typing practise. It only runs in terminal."
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:162
+msgid "Command: sudo apt-get install poppler-data"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:208
+msgid "Command: sudo apt-get install chmsee"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:218
+msgid ""
+"The program frequently alerts you to leave computers, take micro-pauses, "
+"rest breaks and restricts you to your daily limit of using computers.\n"
+"Command: sudo apt-get install workrave"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:263
+msgid ""
+"Install VIM and make it more suitable for programming. The installation "
+"process is as follows. \"sudo apt-get install vim\" command is executed. "
+"Then these lines are appended into \"$HOME/.vimrc\" file: \n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:292
+msgid ""
+"Change Bash prompt symbols from \"username@hostname:~$ \" to \"<span color="
+"\"#3dba34\">username@hostname</span>:<span color=\"#729fcf\">~</span>$ \".\n"
+"The trick behind is to add this line into \"$HOME/.bashrc\".\n"
+"PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m"
+"\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:314
+msgid ""
+"Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg "
+"gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
+"plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:327
+msgid "Enable \"Print to pdf\" capability and eliminate \"Cannot print\" bug"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:328
+msgid ""
+"The installation process is as follows. Firstly, the command \"sudo apt-get "
+"install cups-pdf\" is launched. Then a bug in \"/etc/apparmor.d/usr.sbin."
+"cupsd\" file is eliminated."
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:357
+msgid "Enable \"Print to pdf\" capability"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:358
+msgid "Command: sudo apt-get install cpus-pdf"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:368
+msgid "Command: sudo apt-get install flashplugin-installer"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:376 .././ailurus/ubuntu/quick_setup.py:279
+msgid "Fix font bug in Flash plugin"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:377
+msgid ""
+"Fix bug: characters are displayed as blank square in Flash.\n"
+"The trick behind is to modify \"/etc/fonts/conf.d/49-sansserif.conf\" file."
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:108
 msgid "Configure network connections"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/quick_setup.py:112
 #: .././ailurus/ubuntu/quick_setup.py:141
 msgid "Skip this step"
+=======
+#: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:276
+msgid "Stardict and four dictionaries"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:133
@@ -1730,6 +1898,211 @@ msgid ""
 "sudo software-properties-kde"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
+=======
+#: .././ailurus/ubuntu/controversial_apps.py:32
+#: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:148
+#: .././ailurus/common/apps.py:216 .././ailurus/common/apps.py:328
+msgid " This application depends on Java."
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:72
+#: .././ailurus/ubuntu/quick_setup.py:275
+msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:73
+msgid ""
+"Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></"
+"span>"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:115
+msgid ""
+"Drive a spaceship and battle against invaders! Collect money during the "
+"combat. Upgrade armaments and weapons. This is a full 3d style space shooter "
+"game. It supports mouse, keyboard and joystick control. Official site: "
+"http://www.viewizard.com/"
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:196
+msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:198
+#, python-format
+msgid ""
+"After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:213
+msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:215
+#, python-format
+msgid ""
+"After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:230
+msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:232
+#, python-format
+msgid ""
+"After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:256
+msgid "Download via bittorrent + Search videos + Play videos"
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:288
+msgid "JavaScript Debugger: a powerful JavaScript debugger"
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:301
+msgid "Mac OS X Theme"
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:315
+msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
+msgstr ""
+
+#. cannot find out which license it is released under
+#: .././ailurus/ubuntu/controversial_apps.py:329
+msgid "Personas: One-click changing Firefox skin"
+msgstr ""
+
+#: .././ailurus/ubuntu/controversial_apps.py:333
+msgid "Theme your browser according to your mood, hobby or season."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:33
+#: .././ailurus/ubuntu/quick_setup.py:337
+#: .././ailurus/install_remove_pane.py:577
+msgid "Quick setup"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:38
+msgid ""
+"Ailurus will help you\n"
+"* Choose the fastest repository\n"
+"* Install :\n"
+"   - full language support\n"
+"   - input method\n"
+"   - multi-media codec\n"
+"   - Adobe Flash support\n"
+"   - decompression software"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:62
+msgid "Checking whether your computer is connected to Internet ..."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:76
+msgid "Scanning installed packages."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:76
+msgid "Please wait a few seconds."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:102
+msgid "Computer is not connected to Internet"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:105
+msgid ""
+"Your computer is not connected to Internet.\n"
+"Please configure network connections."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:108
+msgid "Configure network connections"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:112
+msgid "Skip this step"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:129
+msgid "Searching the fastest repository"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:159
+#, python-format
+msgid ""
+"<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:198
+msgid ""
+"In order to use the fastest repository, Ailurus will change /etc/apt/sources."
+"list"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:199
+#, python-format
+msgid "The fastest repository is %s."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:227
+msgid "Apply the fastest repository:"
+msgstr ""
+
+#. apt-get update
+#: .././ailurus/ubuntu/quick_setup.py:230
+msgid "Run command: \"sudo apt-get update\""
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:267
+msgid "Search fastest repository"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:268
+msgid "Install hardware drivers"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:301
+msgid "Ongoing:"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:306
+msgid "Successful"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:309
+msgid "Failed"
+msgstr ""
+
+#. 4
+#: .././ailurus/ubuntu/quick_setup.py:423
+msgid "All works are done."
+msgstr ""
+
+#: .././ailurus/ubuntu/tips.py:27
+msgid ""
+"Some skills. For example, \"change Ubuntu logo on panel\"\n"
+"https://help.ubuntu.com/community/QuickTips"
+msgstr ""
+
+#: .././ailurus/ubuntu/tips.py:31
+msgid ""
+"Set apt source\n"
+"sudo software-properties-gtk\n"
+"sudo software-properties-kde"
+msgstr ""
+
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/tips.py:35
 msgid ""
 "Display the packages which are not installed but have remained residual "
@@ -2355,9 +2728,14 @@ msgid ""
 "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #. cannot find out which license it is released under
 #: .././ailurus/ubuntu/controversial_apps.py:230
 msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
+=======
+#: .././ailurus/offline_install_pane.py:210 .././ailurus/libsetting.py:219
+msgid "Change"
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/controversial_apps.py:232
@@ -2608,7 +2986,15 @@ msgstr ""
 msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/main.py:225
+=======
+#: .././ailurus/system_setting_pane.py:58
+msgid "Shortcut"
+msgstr ""
+
+#: .././ailurus/system_setting_pane.py:98
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgid ""
 "<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
@@ -2863,10 +3249,18 @@ msgid ""
 "Command: yum install childsplay"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/fedora/apps.py:363
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
+=======
+#: .././ailurus/gnome/setting.py:155 .././ailurus/gnome/setting.py:191
+#: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
+#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:242
+#: .././ailurus/libsetting.py:274
+msgid "GConf key: "
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:372
@@ -2920,8 +3314,14 @@ msgstr ""
 msgid "RPM Fusion (Free)"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/fedora/controversial_repository.py:127
 #: .././ailurus/fedora/controversial_repository.py:156
+=======
+#: .././ailurus/gnome/setting.py:203 .././ailurus/gnome/setting.py:205
+#: .././ailurus/gnome/setting.py:207 .././ailurus/libsetting.py:38
+#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:205
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgid ""
 "RPM Fusion provides software that not in the standard repositories.\n"
 "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
@@ -3028,6 +3428,27 @@ msgid ""
 "/apps/nautilus/preferences/preview_sound = never\n"
 "/apps/nautilus/preferences/show_icon_text = never\n"
 "/apps/nautilus/icon_view/default_use_tighter_layout = true"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:427
+msgid "Command ID"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:429
+msgid "Command Name"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:431
+msgid "Shortcut Setting"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:434
+#, python-format
+msgid "Command %d"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:438
+msgid "ShortCut Setting"
 msgstr ""
 
 #: .././ailurus/gnome/tips.py:27
@@ -5311,6 +5732,7 @@ msgstr ""
 msgid "100 = Swap a lot of mem to disk"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/setting.py:74
 msgid "Change the tendency of swapping memory to disk"
 msgstr ""
@@ -5462,10 +5884,147 @@ msgid "The value of \"%(key)s\" is not \"%(value)s\"."
 msgstr ""
 
 #: .././ailurus/libapp.py:130
+=======
+#: .././ailurus/install_remove_pane.py:531
+msgid "Select _All"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:533
+msgid "_Deselect All"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:535
+msgid "_Reset All"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:575
+msgid "_Apply"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:586
+msgid "Details:"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:636
+msgid "Report bugs"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:638
+msgid "Close this terminal"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:667
+msgid "Common"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:668
+msgid "For students"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:669
+msgid "For developers"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:670
+msgid "Advanced"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:673
+msgid "Office"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:674
+msgid "Education"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:675
+msgid "Internet"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:676
+#: .././ailurus/install_remove_pane.py:695
+msgid "Firefox extensions"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:677
+msgid "Multimedia"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:678
+msgid "Appearance"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:679
+msgid "Enhancements"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:680
+msgid "Game"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:682
+msgid "Third party repositories"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:683
+msgid "Virtual machine"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:684
+msgid "Establish a server"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:686
+msgid "Mathematics"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:687
+msgid "Statistics"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:688
+msgid "Biology"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:689
+msgid "Electronics & Mechanics"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:690
+msgid "Geography"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:691
+msgid "LaTeX"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:693
+msgid "Development"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:694
+msgid "Eclipse"
+msgstr ""
+
+#: .././ailurus/libsetting.py:138
+msgid "Enter the command you want to run"
+msgstr ""
+
+#: .././ailurus/libsetting.py:140
+msgid "Setup the hotkey you like"
+msgstr ""
+
+#: .././ailurus/libsetting.py:148
+msgid "Reset"
+msgstr ""
+
+#: .././ailurus/libsetting.py:163
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 #, python-format
 msgid "\"%(value)s\" is not in \"%(key)s\"."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/libapp.py:150
 msgid "Removed items:"
 msgstr ""
@@ -5477,12 +6036,23 @@ msgid "The packages \"%s\" are not installed."
 msgstr ""
 
 #: .././ailurus/libapp.py:250
+=======
+#: .././ailurus/libsetting.py:179
+msgid "Image file"
+msgstr ""
+
+#: .././ailurus/libsetting.py:201
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 msgid ""
 "<span color='red'>This extension cannot be removed by Ailurus. It can be "
 "removed in 'Tools'->'Add-ons' menu of firefox.</span>"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/libapp.py:251
+=======
+#: .././ailurus/libsetting.py:243
+>>>>>>> FETCH_HEAD:po/ailurus.pot
 #, python-format
 msgid "It can be used in Firefox version %s"
 msgstr ""
