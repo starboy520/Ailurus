@@ -49,3 +49,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f INSTALLED_FILES
 %defattr(-,root,root)
+
+%changelog
+* Mon Mar 22 2010 Homer Xing <homer.xing@gmail.com> 10.03.2-1
+- Initial package
+
