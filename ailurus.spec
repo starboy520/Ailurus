@@ -43,6 +43,8 @@ python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 python setup.py install -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+sed -e 's/\.[0-9]$/&\*/' < INSTALLED_FILES > INSTALLED_FILES2 # fix manpage bug
+mv INSTALLED_FILES2 INSTALLED_FILES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
