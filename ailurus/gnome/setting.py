@@ -424,19 +424,21 @@ def __advance_setting():
 
 def __shortcut_setting():
     table = gtk.Table()
-    table.set_col_spacings(15)
-    o = gtk.Label(_('Command ID'))
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    o = gtk.Label(_('Command Name'))
-    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
-    o = label_left_align(_('Shortcut Setting'))
-    table.attach(o, 2, 3, 0, 1, gtk.FILL, gtk.FILL)   
-    for i in range(1, 13):
-        o = label_left_align(_('Command %d' % i))
-        table.attach(o, 0, 1, i, i+1, gtk.FILL, gtk.FILL)
-        o = ShortCutSetting('command_%d' % i)
-        table.attach(o, 1, 4, i, i+1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('ShortCut Setting'), ['shortcut'])
+    table.set_col_spacings(5)
+    o = gtk.Label(_('Command line'))
+    o.set_alignment(0.5, 0.5)
+    table.attach(o, 1, 2, 0, 1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+    o = gtk.Label(_('Shortcut key'))
+    o.set_alignment(0.5, 0.5)
+    table.attach(o, 2, 4, 0, 1, gtk.FILL, gtk.FILL)   
+    for number in range(1, 13):
+        o = label_left_align(_('%2d:' % number))
+        table.attach(o, 0, 1, number, number+1, gtk.FILL, gtk.FILL)
+        o = GConfShortcutKeyEntry('command_%d' % number)
+        table.attach(o.command_entry, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        table.attach(o.shortcut_entry, 2, 3, number, number+1, gtk.FILL, gtk.FILL)
+        table.attach(o.clear_entry_content_button, 3, 4, number, number+1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('Shortcut key'), ['shortcut'])
 
 def get():
     try:

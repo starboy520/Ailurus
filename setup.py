@@ -30,6 +30,7 @@ Features:
       maintainer_email = 'homer.xing@gmail.com',
       url = 'http://ailurus.googlecode.com/',
       license = 'GPLv2+',
+      platforms = ['linux'],
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),

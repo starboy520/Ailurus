@@ -22,15 +22,9 @@
 #          Christopher Williams (christopherw@verizon.net)
 # Copyright (C) 2007 Quinn Storm
 
-import sys
-import pygtk
-import gtk
-import gtk.gdk
-import gobject
-pygtk.require('2.0')
-import gtk
-import time
-import gettext
+import sys, time
+import gtk, gobject
+from lib import *
 
 KeyModifier = ["Shift", "Control", "Mod1", "Mod2", "Mod3", "Mod4",
                "Mod5", "Alt", "Meta", "Super", "Hyper", "ModeSwitch"]
@@ -51,16 +45,16 @@ class GrabberWindow:
         self.window.connect("destroy", self.destroy)
 
         self.window.set_border_width(10)
-	self.window.set_title("KeyGrabber")
-	self.window.set_position(gtk.WIN_POS_MOUSE)
+        self.window.set_title("Press any key ...")
+        self.window.set_position(gtk.WIN_POS_MOUSE)
     
-        self.button = KeyGrabber(label = _("Grab key combination"))
+        self.button = KeyGrabber(label = _("Press any key..."))
 
         self.button.hide()
         self.button.set_no_show_all(True)
         self.button.connect('changed', self.GotKey)
 
-	self.shortcut = ""
+        self.shortcut = ""
 
         # This packs the button into the window (a GTK container).
         self.window.add(self.button)
@@ -200,10 +194,6 @@ def gtk_process_events ():
         gtk.main_iteration ()
 
 if __name__ == "__main__":
-    if len (sys.argv) == 2:
-	gettext.install ('beagle', sys.argv [1])
-    else:
-	gettext.install ('beagle')
     window = GrabberWindow ()
     window.main ()
 
