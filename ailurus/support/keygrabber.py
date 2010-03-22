@@ -45,7 +45,7 @@ class GrabberWindow:
         self.window.connect("destroy", self.destroy)
 
         self.window.set_border_width(10)
-        self.window.set_title("Press any key ...")
+        self.window.set_title(_("Press any key ..."))
         self.window.set_position(gtk.WIN_POS_MOUSE)
     
         self.button = KeyGrabber(label = _("Press any key..."))

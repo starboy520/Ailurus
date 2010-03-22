@@ -1,3 +1,4 @@
+import keygrabber
 import multidragview
 import pangobuffer
 import releasenotesviewer
