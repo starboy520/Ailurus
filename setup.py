@@ -29,7 +29,7 @@ Features:
       maintainer = 'Homer Xing',
       maintainer_email = 'homer.xing@gmail.com',
       url = 'http://ailurus.googlecode.com/',
-      license = 'GPLv2',
+      license = 'GPLv2+',
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/applications', ['ailurus.desktop']),
