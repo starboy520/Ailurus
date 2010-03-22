@@ -33,7 +33,7 @@ Features:
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
-        ('share/applications', ['ailurus.desktop']),
+        ('share/applications/', ['ailurus.desktop']),
         
         ('share/ailurus/', ['ChangeLog']),
         
@@ -45,8 +45,8 @@ Features:
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),
         ('share/ailurus/data/umut_icons/', glob('data/umut_icons/*.png') ),
         ('share/ailurus/data/sora_icons/', glob('data/sora_icons/*.png') ),       
-        ('share/dbus-1/system-services', ['support/dbus/cn.ailurus.service']),
-        ('/etc/dbus-1/system.d', ['support/dbus/cn.ailurus.conf']),
+        ('share/dbus-1/system-services/', ['support/dbus/cn.ailurus.service']),
+        ('/etc/dbus-1/system.d/', ['support/dbus/cn.ailurus.conf']),
         ('share/PolicyKit/policy/', ['support/policykit0/cn.ailurus.policy']),
         ('share/polkit-1/actions/', ['support/policykit1/cn.ailurus.policy']),
         ('share/ailurus/support/', [ e for e in glob('support/*') if os.path.isfile(e)] )
