@@ -16,7 +16,7 @@ BuildArch: noarch
 Vendor: Homer Xing <homer.xing@gmail.com>
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm
 Url: http://ailurus.googlecode.com/
-BuildRequires: python python-devel python-distutils-extra intltool
+BuildRequires: python python-devel python-distutils-extra intltool sed
 
 %description
 Ailurus is an application which makes Linux easier to use.
@@ -43,6 +43,8 @@ python setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 python setup.py install -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+sed -e 's/\.[0-9]$/&\*/' < INSTALLED_FILES > INSTALLED_FILES2 # fix manpage bug
+mv INSTALLED_FILES2 INSTALLED_FILES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
