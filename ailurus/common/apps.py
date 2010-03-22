@@ -140,6 +140,7 @@ class CreateDesktopFolder:
         if os.path.islink(self.desktop):
             run('rm -f '+self.desktop)
 
+
 class Electric(_path_lists):
     __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +

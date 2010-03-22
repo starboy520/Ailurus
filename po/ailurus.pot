@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-19 11:28+0800\n"
+"POT-Creation-Date: 2010-03-19 11:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4592,7 +4592,6 @@ msgstr ""
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#. scroll.set_size_request(500, -1)
 #: .././ailurus/common/menu.py:124
 msgid "Ailurus changelog"
 msgstr ""

@@ -93,8 +93,15 @@ def __desktop_icon_setting():
 
     en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
     table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
-    
+
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
+
+def __apps_icon_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    i = GConfImageEntry( _('Image address :'), '/desktop/gnome/interface/icon_theme')
+    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('Application icons settings'), ['desktop', 'icon'])
 
 def __menu_icon_setting():
     vbox = gtk.VBox()
@@ -428,6 +435,7 @@ def get():
             __desktop_icon_setting(),
             __desktop_wallpaper(),
             __menu_icon_setting(),
+            __apps_icon_setting(),
             __button_icon_setting(),
             __font_size_setting(),
             __window_behaviour_setting(),

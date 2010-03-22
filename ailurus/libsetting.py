@@ -103,6 +103,72 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
+class GConfImageEntry(gtk.HBox):
+    def __choose_file(self,w):
+        title = _('Choose a file for "%s" ')%self.text
+        chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
+                (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
+                 gtk.STOCK_OPEN, gtk.RESPONSE_OK)
+                )
+        path = self.entry.get_text()
+        import os
+        if path: chooser.set_current_folder( os.path.dirname(path) )
+        else:     chooser.set_current_folder( os.environ['HOME'] )
+        
+        chooser.set_select_multiple(False)
+
+        filter = gtk.FileFilter()
+        filter.set_name( _("Image file") )
+        filter.add_mime_type("image/png")
+        filter.add_mime_type("image/jpeg")
+        filter.add_mime_type("image/gif")
+        filter.add_mime_type("image/x-xpixmap")
+        filter.add_pattern("*.png")
+        filter.add_pattern("*.jpg")
+        filter.add_pattern("*.gif")
+        filter.add_pattern("*.xpm")
+        
+        chooser.add_filter(filter)
+
+        response = chooser.run()
+        if response == gtk.RESPONSE_OK:
+            self.image = chooser.get_filename()
+            pixbuf = gtk.gdk.pixbuf_new_from_file(self.image)
+            pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
+            pixbuf.save(self.image, 'png')
+            self.__change_entry_content(self.image)
+        chooser.destroy()
+    def __apply(self,w):
+        import os
+        self.path = os.path.expanduser('~/.icons/%s/24x24/places/' % self.icon_theme)
+        run('mkdir -p ' + self.path)
+        run('cp %s %s/start-here.png' % (self.image, self.path))
+        notify( _('Changed'), _('Application will work next time you restart your computer'))
+        self.button2.set_sensitive(False)
+    def __change_entry_content(self,path):
+        self.entry.set_text('%s' %path)
+        
+    def __init__(self, text, key, path =''):
+        gtk.HBox.__init__(self, False, 3)
+        import gconf
+        g = gconf.client_get_default()
+        self.icon_theme = g.get_string(key)
+        self.label = gtk.Label(text)
+        self.text = text
+        self.entry = gtk.Entry()
+        self.entry.set_size_request(400,30)
+        self.entry.set_editable(False)
+        self.__change_entry_content(self.path)
+        button1 = gtk.Button( _('Change'))
+        button2 = self.button2 = gtk.Button( _('Apply'))
+        button1.connect('clicked',self.__choose_file)
+        button2.connect('clicked',self. __apply)
+
+        self.pack_start(self.label,False)
+        self.pack_start(self.entry,False)
+        self.pack_start(button1,False)
+        self.pack_start(button2,False)     
+        
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
         title = _('Choose a file for "%s" ')%self.text
@@ -267,4 +333,8 @@ class Setting(gtk.VBox):
         box.set_border_width(5)
         
         self.category = category
-        
+
+if __name__ == '__main__':
+    pixbuf = gtk.gdk.pixbuf_new_from_file('')
+    pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
+    
