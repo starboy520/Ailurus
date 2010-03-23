@@ -103,71 +103,6 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
-class GConfImageEntry(gtk.HBox):
-    import gobject
-    __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
-    
-    def __choose_file(self,w):
-        title = _('Choose a file')
-        chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
-                (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
-                 gtk.STOCK_OPEN, gtk.RESPONSE_OK)
-                )
-        import os
-#        if self.image: chooser.set_current_folder( os.path.dirname(self.image) )
-
-#        else:     chooser.set_current_folder( os.environ['HOME'] )
-        chooser.set_current_folder('/usr/share/pixmaps/')
-        chooser.set_select_multiple(False)
-
-        filter = gtk.FileFilter()
-        filter.set_name( _("Image file") )
-        filter.add_mime_type("image/png")
-        filter.add_mime_type("image/jpeg")
-        filter.add_mime_type("image/gif")
-        filter.add_mime_type("image/x-xpixmap")
-        filter.add_pattern("*.png")
-        filter.add_pattern("*.jpg")
-        filter.add_pattern("*.gif")
-        filter.add_pattern("*.xpm")
-        
-        chooser.add_filter(filter)
-
-        response = chooser.run()
-        if response == gtk.RESPONSE_OK:
-            self.image = chooser.get_filename()
-            tempath = '/tmp/start-here'
-            os.system('cp %s %s' %(self.image,tempath))
-            pixbuf = gtk.gdk.pixbuf_new_from_file(tempath)
-            pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
-            pixbuf.save(tempath, 'png')
-            self.emit('changed', tempath)
-            self.__show_image(tempath, self.image_size)
-        chooser.destroy()
-             
-    def __show_image(self, image, image_size):
-        c = self.button.get_child()
-        if c: self.button.remove(c)
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
-        image = gtk.image_new_from_pixbuf(pixbuf)
-        self.button.add(image)
-        self.button.show_all()
-    
-    def __init__(self, tooltip, image ='', image_size=24):
-        gtk.HBox.__init__(self, False, 1)
-        import gconf
-        g = gconf.client_get_default()
-        self.image = image
-        self.image_size = image_size
-        self.button = gtk.Button()
-        self.button.set_tooltip_text(tooltip)
-        self.button.connect('clicked', self.__choose_file)
-        self.__show_image(self.image, image_size)
-        if image:
-            self.__show_image(image, image_size)
- 
-        self.pack_start(self.button)
-        
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
         title = _('Choose a file for "%s" ')%self.text
@@ -332,5 +267,4 @@ class Setting(gtk.VBox):
         box.set_border_width(5)
         
         self.category = category
-
-    
+        
