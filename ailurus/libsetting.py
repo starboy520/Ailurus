@@ -105,6 +105,7 @@ class GConfTextEntry(gtk.HBox):
 
 class GConfImageEntry(gtk.HBox):
     def __choose_file(self,w):
+        self.button2.set_sensitive(True)
         title = _('Choose a file for "%s" ')%self.text
         chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -156,6 +157,7 @@ class GConfImageEntry(gtk.HBox):
         self.label = gtk.Label(text)
         self.text = text
         self.entry = gtk.Entry()
+        self.path = path
         self.entry.set_size_request(400,30)
         self.entry.set_editable(False)
         self.__change_entry_content(self.path)

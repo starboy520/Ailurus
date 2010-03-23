@@ -99,7 +99,11 @@ def __desktop_icon_setting():
 def __apps_icon_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
-    i = GConfImageEntry( _('Image address :'), '/desktop/gnome/interface/icon_theme')
+    import gconf, os
+    g = gconf.client_get_default()
+    value = g.get_string('/desktop/gnome/interface/icon_theme')
+    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' %value)
+    i = GConfImageEntry( _('Image address :'), '/desktop/gnome/interface/icon_theme', path)
     table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Application icons settings'), ['desktop', 'icon'])
 
