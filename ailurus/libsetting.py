@@ -104,17 +104,20 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.button, False)
 
 class GConfImageEntry(gtk.HBox):
+    import gobject
+    __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
+    
     def __choose_file(self,w):
-        title = _('Choose a file for "%s" ')%self.text
+        title = _('Choose a file')
         chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                  gtk.STOCK_OPEN, gtk.RESPONSE_OK)
                 )
-        path = self.entry.get_text()
         import os
-        if path: chooser.set_current_folder( os.path.dirname(path) )
-        else:     chooser.set_current_folder( os.environ['HOME'] )
-        
+#        if self.image: chooser.set_current_folder( os.path.dirname(self.image) )
+
+#        else:     chooser.set_current_folder( os.environ['HOME'] )
+        chooser.set_current_folder('/usr/share/pixmaps/')
         chooser.set_select_multiple(False)
 
         filter = gtk.FileFilter()
@@ -133,41 +136,37 @@ class GConfImageEntry(gtk.HBox):
         response = chooser.run()
         if response == gtk.RESPONSE_OK:
             self.image = chooser.get_filename()
-            pixbuf = gtk.gdk.pixbuf_new_from_file(self.image)
+            tempath = '/tmp/start-here'
+            os.system('cp %s %s' %(self.image,tempath))
+            pixbuf = gtk.gdk.pixbuf_new_from_file(tempath)
             pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
-            pixbuf.save(self.image, 'png')
-            self.__change_entry_content(self.image)
+            pixbuf.save(tempath, 'png')
+            self.emit('changed', self.image)
+            self.__show_image(tempath, self.image_size)
         chooser.destroy()
-    def __apply(self,w):
-        import os
-        self.path = os.path.expanduser('~/.icons/%s/24x24/places/' % self.icon_theme)
-        run('mkdir -p ' + self.path)
-        run('cp %s %s/start-here.png' % (self.image, self.path))
-        notify( _('Changed'), _('Application will work next time you restart your computer'))
-        self.button2.set_sensitive(False)
-    def __change_entry_content(self,path):
-        self.entry.set_text('%s' %path)
-        
-    def __init__(self, text, key, path =''):
-        gtk.HBox.__init__(self, False, 3)
+             
+    def __show_image(self, image, image_size):
+        c = self.button.get_child()
+        if c: self.button.remove(c)
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
+        image = gtk.image_new_from_pixbuf(pixbuf)
+        self.button.add(image)
+        self.button.show_all()
+    
+    def __init__(self, tooltip, image ='', image_size=24):
+        gtk.HBox.__init__(self, False, 1)
         import gconf
         g = gconf.client_get_default()
-        self.icon_theme = g.get_string(key)
-        self.label = gtk.Label(text)
-        self.text = text
-        self.entry = gtk.Entry()
-        self.entry.set_size_request(400,30)
-        self.entry.set_editable(False)
-        self.__change_entry_content(self.path)
-        button1 = gtk.Button( _('Change'))
-        button2 = self.button2 = gtk.Button( _('Apply'))
-        button1.connect('clicked',self.__choose_file)
-        button2.connect('clicked',self. __apply)
-
-        self.pack_start(self.label,False)
-        self.pack_start(self.entry,False)
-        self.pack_start(button1,False)
-        self.pack_start(button2,False)     
+        self.image = image
+        self.image_size = image_size
+        self.button = gtk.Button()
+        self.button.set_tooltip_text(tooltip)
+        self.button.connect('clicked', self.__choose_file)
+        self.__show_image(self.image, image_size)
+        if image:
+            self.__show_image(image, image_size)
+ 
+        self.pack_start(self.button)
         
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
@@ -334,7 +333,4 @@ class Setting(gtk.VBox):
         
         self.category = category
 
-if __name__ == '__main__':
-    pixbuf = gtk.gdk.pixbuf_new_from_file('')
-    pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
     

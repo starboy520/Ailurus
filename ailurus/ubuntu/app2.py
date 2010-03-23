@@ -98,36 +98,146 @@ class PBC:
     
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
-
-class CommonUsedProgrammingPackages(_apt_install):
-    __doc__ = _('Useful applications for programming')
-    detail = _('The tools are:\n'
-       '<i>'
-       'g++: GNU C++ compiler.\n'
-       'manpages-dev: manual pages about Linux system calls and library calls.\n'
-       'manpages-posix: manual pages about using POSIX.\n'
-       'manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n'
-       'exuberant-ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
-       'libgmp3: GNU multiprecision arithmetic library.\n'
-       'libncurses5: a library controlling writing to the console screen.\n'
-       'libqt3-mt: Trolltech Qt library, version 3.\n'
-       'subversion: a version control system.\n'
-       'git-core: a distributed version control system.\n'
-       '</i>'
-       'Command: sudo apt-get install '
-       'build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags '
-       'libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core')
+   
+class Build_Essential(_apt_install):
+    'Build-Essential'
+    detail = _('Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc and so on.\n'
+            'Command: sudo apt-get install build-essential')
     category = 'dev'
-    time = 55
-    size = 30988 * 1000
     logo = 'program-tools.png'
     def __init__(self):
-        # Do not put 'libgmp3c2' in self.pkgs, or a lot of packages will be removed!
-        # Besides, libgmp3-dev depends on 'libgmp3c2'. 'libgmp3c2' is not needed.   
-        self.pkgs = ( "build-essential manpages-dev manpages-posix-dev manpages-posix exuberant-ctags" +
-                      " libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core" )
-    def get_reason(self, f):
-        self._get_reason(f)
+        self.pkgs = 'build-essential'
+
+class ManPages(_apt_install):
+    'ManPages'
+    detail = _('manpages-dev: manual pages about Linux system calls and library calls.\n'
+               'manpages-posix: manual pages about using POSIX.\n'
+               'manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n'
+              'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
+
+class ExuBerant(_apt_install):
+    'Exuberant-ctags'
+    detail = _('source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
+               'Command: sudo apt-get install exuberant-ctags')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'exuberant-ctags'
+
+class LibgMp3Dev(_apt_install):
+    'Libgmp3-dev'
+    detail = _('GNU multiprecision arithmetic library.\n'
+        'Command: sudo apt-get install libgmp3-dev')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libmp3-dev'
+
+class LibCurseQt(_apt_install):
+    'libncurses5-dev And libqt3-mt-dev'
+    detail = _('libncurses5: a library controlling writing to the console screen.\n'
+       'libqt3-mt: Trolltech Qt library, version 3.\n' 
+        'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libncurses5-dev libqt3-mt-dev'
+        
+class SvnGit(_apt_install):
+    'Subversion and  git-core'
+    detail = _('subversion: a version control system.\n'
+       'git-core: a distributed version control system.\n'
+       'Command: sudo apt-get install subversion git-core.')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'subversion git-core'
+        
+class AutoTools(_apt_install):
+    __doc__ = _('Tools for AutoMake')
+    detail = _('autoconf: an package that produce shell scripts to automatically configure software source code packages.\n'
+               'automake: a tool for automatically generating Makefile.\n'
+               'Command: sudo apt-get install autoconf automake autotool')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'autotool autoconf automake'
+        
+class FreegLut3(_apt_install):
+    __doc__ = _('FreeLut3: OpenGL Utility Toolkit')  
+    detail = _('GLUT is a window system independent toolkit for writing OpenGL programs.\n'
+                'Command: sudo apt-get install freeglut3-dev') 
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'freeglut3-dev'
+        
+class LibBoost(_apt_install):
+    'LibBoost'
+    detail = _('Boost C++ Libraries development files.\n'
+        'Command: sudo apt-get install libboost-dev')
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libboost-dev'
+
+class LibSDL(_apt_install):
+    __doc__ = _('Simple DirectMedia Layer')
+    detail = _('cross-platform multimedia library designed to provide low level access to audio'
+               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
+               'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
+    def __init__(self):
+        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+    category = 'dev'
+    logo = 'program-tools.png'
+    
+class PipeViewer(_apt_install):
+    'Pipe Viewer'
+    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
+        'Command: sudo apt-get install pv')
+    def __init__(self):
+        self.pkgs = 'pv'
+          
+class AutoApt(_apt_install):
+    'Auto-Apt'
+    detail = _('Usage: "auto-apt run ./configure" can help you to find  the package is not installed.\n'
+        'Command: sudo apt-get install auto-apt')
+    def __init__(self):
+        self.pkgs = 'auto-apt'
+
+class CheckInstall(_apt_install):
+    'CheckInstall'
+    detail = _('Can replace the "make install" to achieve the source code installed as a deb, to achieve package management.\n'
+         'Command: sudo apt-get install checkinstall')
+    def __init__(self):
+        self.pkgs = 'checkinstall'
+        
+class Umbrello(_apt_install):
+    __doc__ = _('Umbrello: An UML Modeller')
+    detail = _('Umbrello: allows you to create diagrams of software and other systems in a standard format.\n'
+            'Command: sudo apt-get install umbrello')
+    def __init__(self):
+        self.pkgs = 'umbrello'
+    category = 'dev'
+    logo = 'program-tools.png'
+
+class Ubuntu_Theme(_apt_install):
+    'Ubuntu Studio Theme'
+    detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
+    def __init__(self):
+        self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
+    
+class MiniCom_Ckermit(_apt_install):
+    'MiniCom And Ckermit'
+    detail = _('minicom: a clone of the MS-DOS "Telix" communication program.\n'
+                'ckermit: combined serial and network communication software package.\n'
+                'Command: sudo apt-get install minicom ckermit')
+    def __init__(self):
+        self.pkgs = 'minicom ckermit'
 
 class VirtualBox:
     'SUN® VirtualBox 3'
@@ -225,3 +335,40 @@ class Extcalc(_apt_install):
     logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
+        
+class MacChanger(_apt_install):
+    'Macchanger'
+    detail = ('Macchanger is a GNU/Linux utility for viewing/manipulating the MAC address of network interfaces.\n'
+        'Command: sudo apt-get install macchanger')
+    def __init__(self):
+        self.pkgs = 'macchanger'
+        
+class BlueTooth_Phone(_apt_install):
+    'BlueTooth and Telephones'
+    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
+    def __init__(self):
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+        
+class StartupManager(_apt_install):
+    __doc__ = _('SatartupManager: Change settings and manage themes for Grub and Usplash.')   
+    detail = _('Start Method: sudo startupmanager.\n'
+      'Command: sudo apt-get install startupmanager')  
+    def __init__(self):
+        self.pkgs = 'startupmanager'
+        
+class Zhcon(_apt_install):
+    __doc__ = _('Zhcon: a tool that enable you to input Chinese in your terminal')
+    detail = _('Start Method: zhcon --utf8.\n'
+         'Command: sudo apt-get install zhcon')
+    def __init__(self):
+        self.pkgs = 'zhcon'
+        
+class PowerTop(_apt_install):
+    'PowerTop'
+    detail = _('Powertop is a linux tool to find out what is using power on your laptop.\n'
+        'Command: sudo apt-get install powertop')
+    def __init__(self):
+        self.pkgs = 'powertop'
+
+
+

@@ -1,3 +1,11 @@
+2010-03-22 Starboy Qi <starboy.qi@gmail.com>
+    * Add the setting application icons
+      Add a button for change the login icon
+      Add a button for clean the recently documents
+      Split CommonUsedProgrammingPackages class to several classes
+      Add AutoTools OpenGL BOOST SDL library,and pipe viewer auto-apt checkinstall and so on
+      Modify SUN_JDK6 SUN_JDK6_Chinese classes
+      
 2010-03-19 Homer Xing <homer.xing@gmail.com>
 
     * Merge menubar and toolbar. 
