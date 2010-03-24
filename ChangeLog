@@ -1,3 +1,17 @@
+2010-03-24 Homer Xing <homer.xing@gmail.com>
+
+    * Remove Livna repository.
+    * Remove ATrpms repository.
+    * Remove Adobe Flash plugin. Add Gnash.
+    * Remove Adobe Reader.
+    * Remove Adobe Reader repository.
+    * Remove Realplayer.
+    * Remove Skype.
+    * Remove Google repository.
+    * Remove Chrome. Add Chromium.
+    * Remove VirtualBox.
+    * Remove Native 64bit Flash plugin. 
+
 2010-03-23 MA Yue <velly.empire@gmail.com>
 
     * Add the CompizConfig setting, including:
