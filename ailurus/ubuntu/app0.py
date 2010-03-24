@@ -53,6 +53,11 @@ class SUN_JDK6(_apt_install):
         with TempOwn(self.jvm_file) as o:
             with open(self.jvm_file, "w") as f:
                 f.write(self.in_jvm)
+        with open('/usr/lib/jvm/java-6-sun/jre/lib/fontconfig.properties') as f:
+            for line in f.readline():
+                if line.endswith('uming.ttf'):
+                    line.replace('uming.ttf', 'uming.ttc')
+            
     def installed(self):
         if not APT.installed('sun-java6-jdk'): return False
         return True
@@ -64,38 +69,38 @@ class SUN_JDK6(_apt_install):
         env.remove('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
         env.save()
 
-class SUN_JDK6_Chinese(_apt_install):
-    __doc__ = _(u'Eliminate Chinese font bug in SUN Java® 6')
-    detail = _('Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/\n'
-        'cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf')
-    category = 'dev'
-    manual = True
-    Chinese = True
-    logo = 'java.png'
-    def __init__(self):
-        self.pkgs = 'ttf-wqy-zenhei'
-        self.fallback_dir = '/usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/' 
-    def install(self):
-        _apt_install.install(self)
-        gksudo("mkdir -p "+self.fallback_dir, ignore_error=True)
-        import glob
-        for f in glob.glob('/usr/share/fonts/truetype/wqy/wqy-zenhei.*'):
-            gksudo("cp %s %s"%(f, self.fallback_dir))
-        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
-        gksudo("cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf")
-    def installed(self):
-        if not _apt_install.installed(self): return False
-        import os
-        if (
-            ( not os.path.exists(self.fallback_dir+'wqy-zenhei.ttc') and not os.path.exists(self.fallback_dir+'wqy-zenhei.ttf') )
-              or
-            not os.path.exists('/usr/share/fonts/truetype/arphic/uming.ttf') 
-           ):
-                return False
-        return True
-    def remove(self):
-        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
-        gksudo('rm -f %s/*'%self.fallback_dir)
+#class SUN_JDK6_Chinese(_apt_install):
+#    __doc__ = _(u'Eliminate Chinese font bug in SUN Java® 6')
+#    detail = _('Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/\n'
+#        'cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf')
+#    category = 'dev'
+#    manual = True
+#    Chinese = True
+#    logo = 'java.png'
+#    def __init__(self):
+#        self.pkgs = 'ttf-wqy-zenhei'
+#        self.fallback_dir = '/usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/' 
+#    def install(self):
+#        _apt_install.install(self)
+#        gksudo("mkdir -p "+self.fallback_dir, ignore_error=True)
+#        import glob
+#        for f in glob.glob('/usr/share/fonts/truetype/wqy/wqy-zenhei.*'):
+#            gksudo("cp %s %s"%(f, self.fallback_dir))
+#        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
+#        gksudo("cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf")
+#    def installed(self):
+#        if not _apt_install.installed(self): return False
+#        import os
+#        if (
+#            ( not os.path.exists(self.fallback_dir+'wqy-zenhei.ttc') and not os.path.exists(self.fallback_dir+'wqy-zenhei.ttf') )
+#              or
+#            not os.path.exists('/usr/share/fonts/truetype/arphic/uming.ttf') 
+#           ):
+#                return False
+#        return True
+#    def remove(self):
+#        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
+#        gksudo('rm -f %s/*'%self.fallback_dir)
 
 class WINE(_apt_install):
     __doc__ = _('WINE')

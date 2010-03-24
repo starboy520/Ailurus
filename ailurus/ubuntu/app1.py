@@ -307,7 +307,7 @@ class ColorfulBashPromptSymbols :
         return file_contain ( self.bashrc, self.line )
     def remove(self):
         file_remove ( self.bashrc, self.line )
-
+        
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
     detail = _(
@@ -604,3 +604,17 @@ class InstallFreshLinuxKernel:
                       'linux-headers-%s-generic'%self.version,
                       'linux-image-%s-generic'%self.version )
         APT.cache_changed()
+        
+class MacChangger(_apt_install):
+    __doc__ = _('MacChangger: a tool for change the MAC address')
+    detail = _('macchanger is a A GNU/Linux utility for viewing/manipulating the MAC address of network interfaces.\n'
+        'Command: sudo apt-get install macchanger')
+    def __init__(self):
+        self.pkgs = 'macchanger'
+
+class BlueTooth(_apt_install):
+    __doc__ = _('BlueTooth and Phone')
+    detail = _('')
+    def __init__(self):
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils libbluetooth2 python-bluez gnome-bluetooth gnome-phone-manager'
+    

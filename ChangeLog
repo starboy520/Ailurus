@@ -1,10 +1,20 @@
-2010-03-21 MA Yue <velly.empire@gmail.com>
-    
-    * Add customizing keyboard shortcut key functionality.
+2010-03-22 Starboy Qi <starboy.qi@gmail.com>
 
+    * Add functionality for setting application icons.
+    * Add functionality for change the login icon.
+    * Add functionality for clean the recently documents.
+    * Split "common used programming packages" items to several items.
+    * Add some useful software:
+      autotools, OpenGL-dev, boost, SDL-dev, pipe viewer, auto-apt, checkinstall, etc.
+    * Improve SUN JDK 6 installation.
+      
 2010-03-22 Homer Xing <homer.xing@gmail.com>
 
     * Disable FoxitReader.
+
+2010-03-21 MA Yue <velly.empire@gmail.com>
+    
+    * Add customizing keyboard shortcut key functionality.
 
 2010-03-20 Homer Xing <homer.xing@gmail.com>
 

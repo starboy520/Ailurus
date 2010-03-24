@@ -93,9 +93,49 @@ def __desktop_icon_setting():
 
     en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
     table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
-    
+
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
+def __apps_icon_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    import os , gconf
+    g = gconf.client_get_default()
+    value = g.get_string('/desktop/gnome/interface/icon_theme')
+    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' %value)
+    def __apply(w, image):
+        import glob, os
+        for dir in glob.glob('/usr/share/icons/*'):
+            if not os.path.isdir(dir): continue
+            if dir[-1] == '/': dir = dir[:-1]
+            theme_name = os.path.split(dir)[1]
+            path = os.path.expanduser('~/.icons/%s/24x24/places/' % theme_name)
+            if not os.path.exists(path):
+                os.system('mkdir -p ' + path)
+            os.system('cp %s %s/start-here.png' % (image, path))
+        notify( _('Changed'), _('Application will work next time you restart your computer'))
+        
+    i = GConfImageEntry('The application icon was lied in %s'% path, path, 24)
+    i.connect('changed', __apply)
+    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('Application icons settings'), ['icon'])
+
+def __login_icon_setting():
+    table = gtk.Table();
+    table.set_col_spacings(10)
+    import os 
+    def __apply(w, image):
+        import os
+        path = os.path.expanduser('~/.face')
+        os.system('cp %s %s' %(image, path))
+        notify( _('Notify'), _('The login icon will change next time you restart your computer'))
+        
+    path = os.path.expanduser('~/.face')
+    i = GConfImageEntry('The log in icons was lie in %s' % path , path, 24)
+    i.connect('changed',__apply)
+    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('Login icon setting'), ['icon'])
+    
 def __menu_icon_setting():
     vbox = gtk.VBox()
     o = GConfCheckButton(_('Show icons of menu entries'), 
@@ -103,6 +143,7 @@ def __menu_icon_setting():
              _('Whether menus may display an icon next to a menu entry.'))
     vbox.pack_start(o, False)
     return Setting(vbox, _('Menu entry icons setting'), ['menu', 'icon'])
+
 
 def __button_icon_setting():
     vbox = gtk.VBox()
@@ -397,28 +438,36 @@ def __advance_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
     
+    def clear(w):
+        import os
+        os.system("echo ''> ~/.recently-used.xbel")
+        notify( _('Succeed'), _('Rencently used documents has been cleared'))
+    button = gtk.Button( _('Clear Recent Documents'))
+    button.connect('clicked', clear)
+    table.attach(button, 0, 1, 0, 1, gtk.FILL, gtk.FILL)  
+      
     o = label_left_align(_('Change default file manager to:'))
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
 
     o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
     
     o = label_left_align(_('Change default panel program to:') )
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = label_left_align(_('Change default window manager to:') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
 
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
     
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     
     return Setting(table, _('Advance settings'), ['desktop'])
 
@@ -447,6 +496,8 @@ def get():
             __desktop_icon_setting(),
             __desktop_wallpaper(),
             __menu_icon_setting(),
+            __apps_icon_setting(),
+            __login_icon_setting(),
             __button_icon_setting(),
             __font_size_setting(),
             __window_behaviour_setting(),
