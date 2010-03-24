@@ -21,7 +21,7 @@
 
 from __future__ import with_statement
 AILURUS_VERSION = '10.03.2'
-AILURUS_RELEASE_DATE = '2010-03-22'
+AILURUS_RELEASE_DATE = '2010-03-23'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
