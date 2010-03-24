@@ -189,7 +189,7 @@ def __font_size_setting():
 def __layout_of_window_titlebar_buttons():
     label = gtk.Label(_('The layout of window title-bar buttons'))
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
-                           'It\'s Just can use in Metacity.')
+                           + _("It only can use in Metacity.") )
     o = GConfComboBox('/apps/metacity/general/button_layout', 
                       [_('GNOME classic'), _('MAC OS X'), _('Ubuntu Lucid')],
                       ['menu:minimize,maximize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'],) 
@@ -442,11 +442,11 @@ def __compiz_setting():
     table = gtk.Table()
     table.set_col_spacings(5)
     table.set_row_spacings(10)
-## Window Decorator    
+    # Window Decorator    
     label = gtk.Label(_('Set Window Decorator:'))
     label.set_alignment(0, 0.5)
-    label.set_tooltip_text(_('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command\n'
-                           'It\'s can be effect after next startup')
+    label.set_tooltip_markup(_('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command\n'
+                           + _('<span color="red"> It\'s can be effect after next startup </span>') )
     hbox = gtk.HBox()
     o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 
                       [_('Metacity'), _('Emerald')],
@@ -454,9 +454,8 @@ def __compiz_setting():
     hbox.pack_start(label, False)
     hbox.pack_start(o, False, True, 20)
     table.attach(hbox, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-## Compiz Effect    
+    # Compiz Effect    
     def disable_minimize_effects(button):
-        assert isinstance(button, gtk.Button)
         import gconf
         g = gconf.client_get_default()
         value = []
@@ -479,14 +478,14 @@ def __compiz_setting():
     hbox.pack_start(m, False)
     hbox.pack_start(n, False, True, 20)
     table.attach(hbox, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-## number of desktop    
-    label = gtk.Label(_('Screen size multiplier in horizontal '))
+    # number of desktop    
+    label = gtk.Label(_('Screen size horizontal coefficient '))
     label.set_alignment(0, 0.5)
     label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/hsize' )
     o = GConfHScale( '/apps/compiz/general/screen0/options/hsize', 1, 32 )
     table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     table.attach(o, 1, 2, 2, 3, gtk.FILL|gtk.EXPAND, gtk.FILL)
-    label = gtk.Label(_('Screen size multiplier in vertical '))
+    label = gtk.Label(_('Screen size vertical coefficient '))
     label.set_alignment(0, 0.5)
     label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/vsize' )
     o = GConfHScale( '/apps/compiz/general/screen0/options/vsize', 1, 32 )
