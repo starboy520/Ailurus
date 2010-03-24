@@ -100,9 +100,9 @@ class PBC:
         APT.remove('libpbc0', 'libpbc-dev')
    
 class Build_Essential(_apt_install):
-    'Build-Essential'
-    detail = _('Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc and so on.\n'
-            'Command: sudo apt-get install build-essential')
+    'Build-essential'
+    detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
+               'Command: sudo apt-get install build-essential')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
@@ -110,132 +110,126 @@ class Build_Essential(_apt_install):
 
 class ManPages(_apt_install):
     'ManPages'
-    detail = _('manpages-dev: manual pages about Linux system calls and library calls.\n'
-               'manpages-posix: manual pages about using POSIX.\n'
-               'manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n'
+    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
               'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
-class ExuBerant(_apt_install):
+class Ctags(_apt_install):
     'Exuberant-ctags'
-    detail = _('source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
+    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
                'Command: sudo apt-get install exuberant-ctags')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'exuberant-ctags'
 
-class LibgMp3Dev(_apt_install):
-    'Libgmp3-dev'
-    detail = _('GNU multiprecision arithmetic library.\n'
-        'Command: sudo apt-get install libgmp3-dev')
+class GMP(_apt_install):
+    __doc__ = _('GNU multiprecision arithmetic library')
+    detail = _('Command: sudo apt-get install libgmp3-dev')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'libmp3-dev'
+        self.pkgs = 'libgmp3-dev'
 
-class LibCurseQt(_apt_install):
-    'libncurses5-dev And libqt3-mt-dev'
-    detail = _('libncurses5: a library controlling writing to the console screen.\n'
-       'libqt3-mt: Trolltech Qt library, version 3.\n' 
-        'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
+class Ncurses_and_qt3mt(_apt_install):
+    __doc__ = _('Ncurses5 and QT3')
+    detail = _('libncurses5 is a library controlling writing to the console screen.\n'
+               'libqt3-mt is Trolltech Qt library, version 3.\n' 
+               'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'libncurses5-dev libqt3-mt-dev'
         
-class SvnGit(_apt_install):
-    'Subversion and  git-core'
-    detail = _('subversion: a version control system.\n'
-       'git-core: a distributed version control system.\n'
-       'Command: sudo apt-get install subversion git-core.')
+class Svn_Git_bzr(_apt_install):
+    __doc__ = _('Subversion, git, and bzr')
+    detail = _('subversion, git and bzr are popular version control systems.\n'
+               'Command: sudo apt-get install subversion git-core bzr')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'subversion git-core'
+        self.pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Tools for AutoMake')
-    detail = _('autoconf: an package that produce shell scripts to automatically configure software source code packages.\n'
-               'automake: a tool for automatically generating Makefile.\n'
+    __doc__ = _('Autotools')
+    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
+               'automake is a tool for automatically generating Makefile.\n'
                'Command: sudo apt-get install autoconf automake autotool')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'autotool autoconf automake'
         
-class FreegLut3(_apt_install):
-    __doc__ = _('FreeLut3: OpenGL Utility Toolkit')  
-    detail = _('GLUT is a window system independent toolkit for writing OpenGL programs.\n'
+class FreeGLut3(_apt_install):
+    __doc__ = _('OpenGL library')  
+    detail = _('This is a library for writing OpenGL programs.\n'
                 'Command: sudo apt-get install freeglut3-dev') 
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'freeglut3-dev'
         
-class LibBoost(_apt_install):
-    'LibBoost'
-    detail = _('Boost C++ Libraries development files.\n'
-        'Command: sudo apt-get install libboost-dev')
+class Boost(_apt_install):
+    __doc__ = _('Boost library')
+    detail = _('Command: sudo apt-get install libboost-dev')
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
         self.pkgs = 'libboost-dev'
 
-class LibSDL(_apt_install):
-    __doc__ = _('Simple DirectMedia Layer')
-    detail = _('cross-platform multimedia library designed to provide low level access to audio'
+class SDL(_apt_install):
+    __doc__ = _('SDL library')
+    detail = _('This is a library for writing SDL programs.\n'
+               'SDL is a cross-platform multimedia library designed to provide low level access to audio'
                ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
                'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
-    def __init__(self):
-        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     category = 'dev'
     logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
 class PipeViewer(_apt_install):
-    'Pipe Viewer'
+    __doc__ = _('pv: a pipe viewer')
     detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-        'Command: sudo apt-get install pv')
+               'Command: sudo apt-get install pv')
     def __init__(self):
         self.pkgs = 'pv'
           
 class AutoApt(_apt_install):
-    'Auto-Apt'
-    detail = _('Usage: "auto-apt run ./configure" can help you to find  the package is not installed.\n'
-        'Command: sudo apt-get install auto-apt')
+    'Auto-apt'
+    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.\n'
+               'Command: sudo apt-get install auto-apt')
     def __init__(self):
         self.pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
-    detail = _('Can replace the "make install" to achieve the source code installed as a deb, to achieve package management.\n'
-         'Command: sudo apt-get install checkinstall')
+    detail = _('Checkinstall help you build deb package. '
+               'Command: sudo apt-get install checkinstall')
     def __init__(self):
         self.pkgs = 'checkinstall'
         
 class Umbrello(_apt_install):
-    __doc__ = _('Umbrello: An UML Modeller')
-    detail = _('Umbrello: allows you to create diagrams of software and other systems in a standard format.\n'
-            'Command: sudo apt-get install umbrello')
-    def __init__(self):
-        self.pkgs = 'umbrello'
+    __doc__ = _('Umbrello: UML modelling')
+    detail = _('Umbrello help you do UML modelling.\n'
+               'Command: sudo apt-get install umbrello')
     category = 'dev'
     logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'umbrello'
 
-class Ubuntu_Theme(_apt_install):
-    'Ubuntu Studio Theme'
+class Ubuntu_Studio_Theme(_apt_install):
+    __doc__ = _('Ubuntu Studio Theme')
     detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
     def __init__(self):
         self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
-    'MiniCom And Ckermit'
-    detail = _('minicom: a clone of the MS-DOS "Telix" communication program.\n'
-                'ckermit: combined serial and network communication software package.\n'
-                'Command: sudo apt-get install minicom ckermit')
+    __doc__ = _('Minicom and ckermit')
+    detail = _('Command: sudo apt-get install minicom ckermit')
     def __init__(self):
         self.pkgs = 'minicom ckermit'
 
@@ -336,39 +330,24 @@ class Extcalc(_apt_install):
     def __init__(self):
         self.pkgs = 'extcalc'
         
-class MacChanger(_apt_install):
-    'Macchanger'
-    detail = ('Macchanger is a GNU/Linux utility for viewing/manipulating the MAC address of network interfaces.\n'
-        'Command: sudo apt-get install macchanger')
-    def __init__(self):
-        self.pkgs = 'macchanger'
-        
-class BlueTooth_Phone(_apt_install):
-    'BlueTooth and Telephones'
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
-    def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
-        
 class StartupManager(_apt_install):
-    __doc__ = _('SatartupManager: Change settings and manage themes for Grub and Usplash.')   
-    detail = _('Start Method: sudo startupmanager.\n'
-      'Command: sudo apt-get install startupmanager')  
+    __doc__ = _('Satartup Manager')   
+    detail = _('Satartup manager helps you change GRUB settings and themes.\n'
+               'Command: sudo apt-get install startupmanager')  
     def __init__(self):
         self.pkgs = 'startupmanager'
         
 class Zhcon(_apt_install):
-    __doc__ = _('Zhcon: a tool that enable you to input Chinese in your terminal')
-    detail = _('Start Method: zhcon --utf8.\n'
-         'Command: sudo apt-get install zhcon')
+    __doc__ = _('Zhcon')
+    detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
+               'You can launch it by "zhcon --utf8".\n'
+               'Command: sudo apt-get install zhcon')
     def __init__(self):
         self.pkgs = 'zhcon'
         
 class PowerTop(_apt_install):
     'PowerTop'
-    detail = _('Powertop is a linux tool to find out what is using power on your laptop.\n'
-        'Command: sudo apt-get install powertop')
+    detail = _('Powertop helps you save power for your laptop.\n'
+               'Command: sudo apt-get install powertop')
     def __init__(self):
         self.pkgs = 'powertop'
-
-
-

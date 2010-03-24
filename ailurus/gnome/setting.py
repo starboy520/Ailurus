@@ -96,14 +96,8 @@ def __desktop_icon_setting():
 
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
-def __apps_icon_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)
-    import os , gconf
-    g = gconf.client_get_default()
-    value = g.get_string('/desktop/gnome/interface/icon_theme')
-    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' %value)
-    def __apply(w, image):
+def __start_here_icon_setting():
+    def __apply(w, image_path):
         import glob, os
         for dir in glob.glob('/usr/share/icons/*'):
             if not os.path.isdir(dir): continue
@@ -112,29 +106,33 @@ def __apps_icon_setting():
             path = os.path.expanduser('~/.icons/%s/24x24/places/' % theme_name)
             if not os.path.exists(path):
                 os.system('mkdir -p ' + path)
-            os.system('cp %s %s/start-here.png' % (image, path))
-        notify( _('Changed'), _('Application will work next time you restart your computer'))
-        
-    i = GConfImageEntry('The application icon was lied in %s'% path, path, 24)
+            os.system('cp %s %s/start-here.png' % (image_path, path))
+        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
+    
+    import gconf
+    g = gconf.client_get_default()
+    theme_name = g.get_string('/desktop/gnome/interface/icon_theme')
+    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' % theme_name)
+    i = GConfImageEntry(_('If you want to change "start-here" icon, you can put new icons in %s') % path, path, 24)
     i.connect('changed', __apply)
-    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Application icons settings'), ['icon'])
+    box = gtk.VBox(False, 0)
+    box.pack_start(i)
+    return Setting(box, _('Change "start-here" icon'), ['icon'])
 
 def __login_icon_setting():
-    table = gtk.Table();
-    table.set_col_spacings(10)
-    import os 
     def __apply(w, image):
         import os
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' %(image, path))
-        notify( _('Notify'), _('The login icon will change next time you restart your computer'))
+        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
         
+    import os
     path = os.path.expanduser('~/.face')
-    i = GConfImageEntry('The log in icons was lie in %s' % path , path, 24)
-    i.connect('changed',__apply)
-    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Login icon setting'), ['icon'])
+    i = GConfImageEntry('The log in icons was lie in %s' % path, path, 24)
+    i.connect('changed', __apply)
+    box = gtk.VBox(False, 0)
+    box.pack_start(i)
+    return Setting(box, _('Change login icon'), ['icon'])
     
 def __menu_icon_setting():
     vbox = gtk.VBox()
@@ -440,9 +438,13 @@ def __advance_setting():
     
     def clear(w):
         import os
-        os.system("echo ''> ~/.recently-used.xbel")
-        notify( _('Succeed'), _('Rencently used documents has been cleared'))
-    button = gtk.Button( _('Clear Recent Documents'))
+        path = os.path.expanduser('~/.recently-used.xbel')
+        if os.path.isfile(path):
+            os.system("echo '' > ~/.recently-used.xbel")
+        else: # is dir
+            os.system("rm ~/.recently-used.xbel/* -rf")
+    
+    button = gtk.Button(_('Clear "recent documents" list'))
     button.connect('clicked', clear)
     table.attach(button, 0, 1, 0, 1, gtk.FILL, gtk.FILL)  
       
@@ -496,7 +498,7 @@ def get():
             __desktop_icon_setting(),
             __desktop_wallpaper(),
             __menu_icon_setting(),
-            __apps_icon_setting(),
+            __start_here_icon_setting(),
             __login_icon_setting(),
             __button_icon_setting(),
             __font_size_setting(),

@@ -31,8 +31,6 @@ class SUN_JDK6(_apt_install):
        '"sudo apt-get install sun-java6-jdk" and "update-java-alternatives -s java-6-sun". '
        'Then these environment variables is added into file "/etc/environment", which are JAVA_HOME, JAVA_BIN and CLASSPATH.')
     category = 'dev'
-    time = 42
-    size = 161780*1000
     manual = True
     logo = 'java.png'
     def __init__(self):
@@ -54,13 +52,16 @@ class SUN_JDK6(_apt_install):
             with open(self.jvm_file, "w") as f:
                 f.write(self.in_jvm)
         with open('/usr/lib/jvm/java-6-sun/jre/lib/fontconfig.properties') as f:
-            for line in f.readline():
-                if line.endswith('uming.ttf'):
-                    line.replace('uming.ttf', 'uming.ttc')
-            
+            contents = f.readlines()
+            for i, line in enumerate(contents):
+                if line.endswith('uming.ttf\n'):
+                    contents[i] = line.replace('uming.ttf\n', 'uming.ttc\n')
+        with open('/usr/lib/jvm/java-6-sun/jre/lib/fontconfig.properties', 'w') as f:
+            f.writelines(contents)
+
     def installed(self):
-        if not APT.installed('sun-java6-jdk'): return False
-        return True
+        return APT.installed('sun-java6-jdk')
+    
     def remove(self):
         APT.remove('sun-java6-jdk', 'sun-java6-jre', 'sun-java6-bin')
         env = ETCEnvironment()
@@ -68,39 +69,6 @@ class SUN_JDK6(_apt_install):
         env.remove('JAVA_BIN', '/usr/lib/jvm/java-6-sun/bin')
         env.remove('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
         env.save()
-
-#class SUN_JDK6_Chinese(_apt_install):
-#    __doc__ = _(u'Eliminate Chinese font bug in SUN Java® 6')
-#    detail = _('Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/\n'
-#        'cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf')
-#    category = 'dev'
-#    manual = True
-#    Chinese = True
-#    logo = 'java.png'
-#    def __init__(self):
-#        self.pkgs = 'ttf-wqy-zenhei'
-#        self.fallback_dir = '/usr/lib/jvm/java-6-sun/jre/lib/fonts/fallback/' 
-#    def install(self):
-#        _apt_install.install(self)
-#        gksudo("mkdir -p "+self.fallback_dir, ignore_error=True)
-#        import glob
-#        for f in glob.glob('/usr/share/fonts/truetype/wqy/wqy-zenhei.*'):
-#            gksudo("cp %s %s"%(f, self.fallback_dir))
-#        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
-#        gksudo("cp /usr/share/fonts/truetype/arphic/uming.ttc /usr/share/fonts/truetype/arphic/uming.ttf")
-#    def installed(self):
-#        if not _apt_install.installed(self): return False
-#        import os
-#        if (
-#            ( not os.path.exists(self.fallback_dir+'wqy-zenhei.ttc') and not os.path.exists(self.fallback_dir+'wqy-zenhei.ttf') )
-#              or
-#            not os.path.exists('/usr/share/fonts/truetype/arphic/uming.ttf') 
-#           ):
-#                return False
-#        return True
-#    def remove(self):
-#        gksudo('rm -f /usr/share/fonts/truetype/arphic/uming.ttf')
-#        gksudo('rm -f %s/*'%self.fallback_dir)
 
 class WINE(_apt_install):
     __doc__ = _('WINE')
@@ -157,10 +125,7 @@ class WINE_Chinese(_apt_install):
         return True
 
 def make_sure_JDK_installed():
-    if Config.is_Chinese_locale():
-        obj =  SUN_JDK6()
-    else:
-        obj = SUN_JDK6_Chinese()
+    obj =  SUN_JDK6()
 
     if not obj.installed():
         print _('SUN_JDK6 is required. It is to be installed.')

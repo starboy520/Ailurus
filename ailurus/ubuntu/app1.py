@@ -605,16 +605,15 @@ class InstallFreshLinuxKernel:
                       'linux-image-%s-generic'%self.version )
         APT.cache_changed()
         
-class MacChangger(_apt_install):
-    __doc__ = _('MacChangger: a tool for change the MAC address')
-    detail = _('macchanger is a A GNU/Linux utility for viewing/manipulating the MAC address of network interfaces.\n'
-        'Command: sudo apt-get install macchanger')
+class MACChanger(_apt_install):
+    __doc__ = _('MACChanger: change MAC address')
+    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
+               'Command: sudo apt-get install macchanger')
     def __init__(self):
         self.pkgs = 'macchanger'
 
-class BlueTooth(_apt_install):
-    __doc__ = _('BlueTooth and Phone')
-    detail = _('')
+class Bluetooth(_apt_install):
+    __doc__ = _('Bluetooth support')
+    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils libbluetooth2 python-bluez gnome-bluetooth gnome-phone-manager'
-    
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
