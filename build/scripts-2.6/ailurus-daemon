@@ -1,3 +1,0 @@
-#!/usr/bin/python
-from ailurus import daemon
-daemon.main()
