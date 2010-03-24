@@ -7,53 +7,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-20 15:40+0800\n"
-"PO-Revision-Date: 2010-03-20 11:27+0000\n"
-"Last-Translator: nanker <Unknown>\n"
+"POT-Creation-Date: 2010-03-24 10:47+0800\n"
+"PO-Revision-Date: 2010-03-23 18:44+0000\n"
+"Last-Translator: Daniel Nylander <yeager@ubuntu.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-03-21 04:49+0000\n"
+"X-Launchpad-Export-Date: 2010-03-24 05:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid " \"Install software\" + \"Configure Linux\" + \"Study Linux skills\""
-msgstr ""
+msgstr " \"Installera program\" + \"Konfigurera Linux\" + \"Studera Linux\""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr ""
+"Systemets policy förhindrar Ailurus från att starta program som \"root\""
 
 #: .././ailurus/fedora/osinfo.py:35
 msgid "Fedora version:"
 msgstr ""
 
-#. output
-#: .././ailurus/fedora/apps.py:51 .././ailurus/libapp.py:190
-#, python-format
-msgid "The packages \"%s\" are not installed."
-msgstr ""
-
-#: .././ailurus/fedora/apps.py:54 .././ailurus/ubuntu/third_party_repos.py:211
-#: .././ailurus/ubuntu/app0.py:101
+#: .././ailurus/fedora/apps.py:30 .././ailurus/ubuntu/third_party_repos.py:211
+#: .././ailurus/ubuntu/app0.py:106
 msgid "WINE"
-msgstr ""
+msgstr "WINE"
 
-#: .././ailurus/fedora/apps.py:55
+#: .././ailurus/fedora/apps.py:31
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux.\n"
 "Command: yum install wine"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:63 .././ailurus/ubuntu/app1.py:28
+#: .././ailurus/fedora/apps.py:39 .././ailurus/ubuntu/app1.py:28
 msgid "Make GEdit more suitable for programmers"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:64
+#: .././ailurus/fedora/apps.py:40
 msgid ""
 "Change GEdit settings as follows. Automatically indent current line. "
 "Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by "
@@ -71,52 +66,52 @@ msgid ""
 "Then run this command: yum install gedit-plugins"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:104
+#: .././ailurus/fedora/apps.py:80
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:105
+#: .././ailurus/fedora/apps.py:81
 msgid "Command: yum install p7zip cabextract"
-msgstr ""
+msgstr "Kommando: yum install p7zip cabextract"
 
-#: .././ailurus/fedora/apps.py:111 .././ailurus/ubuntu/app1.py:161
+#: .././ailurus/fedora/apps.py:87 .././ailurus/ubuntu/app1.py:161
 msgid "Make Evince be able to reveal Chinese pdf"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:112
+#: .././ailurus/fedora/apps.py:88
 msgid "Command: yum install poppler-data"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:120 .././ailurus/ubuntu/app1.py:207
+#: .././ailurus/fedora/apps.py:96 .././ailurus/ubuntu/app1.py:207
 msgid "ChmSee: A CHM file viewer"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:121
+#: .././ailurus/fedora/apps.py:97
 msgid "Command: yum install chmsee"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:129
+#: .././ailurus/fedora/apps.py:105
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers.\n"
 "Command: yum install workrave"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:161 .././ailurus/ubuntu/app1.py:252
+#: .././ailurus/fedora/apps.py:137 .././ailurus/ubuntu/app1.py:252
 #, python-format
 msgid "\"%s\" is not installed."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:163 .././ailurus/ubuntu/app1.py:254
+#: .././ailurus/fedora/apps.py:139 .././ailurus/ubuntu/app1.py:254
 #, python-format
 msgid "The file \"%s\" does not exist."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:171 .././ailurus/ubuntu/app1.py:262
+#: .././ailurus/fedora/apps.py:147 .././ailurus/ubuntu/app1.py:262
 msgid "VIM"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:172
+#: .././ailurus/fedora/apps.py:148
 msgid ""
 "Install VIM and make it more suitable for programming. The installation "
 "process is as follows. \"yum install vim-enhanced\" command is executed. "
@@ -127,11 +122,11 @@ msgid ""
 "    set mouse=a"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:198 .././ailurus/ubuntu/app1.py:291
+#: .././ailurus/fedora/apps.py:174 .././ailurus/ubuntu/app1.py:291
 msgid "Use colorful Bash prompt symbols"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:199
+#: .././ailurus/fedora/apps.py:175
 msgid ""
 "Change Bash prompt symbols from \"[username@hostname ~]$ \" to \"<span "
 "color=\"#3dba34\">username@hostname</span> <span color=\"#729fcf\">~</span>$ "
@@ -141,27 +136,27 @@ msgid ""
 "033[00m\\]\\\\$ '"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:213 .././ailurus/ubuntu/app1.py:305
+#: .././ailurus/fedora/apps.py:189 .././ailurus/ubuntu/app1.py:305
 msgid "The color of bash prompt symbols is changed."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:213 .././ailurus/ubuntu/app1.py:305
+#: .././ailurus/fedora/apps.py:189 .././ailurus/ubuntu/app1.py:305
 msgid "It will take effect at the next time you log in."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:220
+#: .././ailurus/fedora/apps.py:196
 msgid "Enable \"Print to pdf\" capability."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:221
+#: .././ailurus/fedora/apps.py:197
 msgid "Command: yum install cups-pdf"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:228
+#: .././ailurus/fedora/apps.py:204
 msgid "Stardict"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:230
+#: .././ailurus/fedora/apps.py:206
 msgid ""
 "Command: yum install stardict\n"
 "Moreover, you can install these dictionaries by yum.\n"
@@ -174,21 +169,21 @@ msgid ""
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:244 .././ailurus/ubuntu/app1.py:514
+#: .././ailurus/fedora/apps.py:220 .././ailurus/ubuntu/app1.py:514
 msgid "Liferea: a RSS feed reader"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:245
+#: .././ailurus/fedora/apps.py:221
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: yum install liferea"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:253 .././ailurus/ubuntu/app2.py:103
+#: .././ailurus/fedora/apps.py:229
 msgid "Useful applications for programming"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:254
+#: .././ailurus/fedora/apps.py:230
 msgid ""
 "The tools are:\n"
 "<i>gcc: GNU C compiler.\n"
@@ -204,41 +199,41 @@ msgid ""
 "subversion git"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:277 .././ailurus/ubuntu/app2.py:211
+#: .././ailurus/fedora/apps.py:253 .././ailurus/ubuntu/app2.py:321
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:278
+#: .././ailurus/fedora/apps.py:254
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: yum install qtiplot"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:287 .././ailurus/ubuntu/app3.py:132
+#: .././ailurus/fedora/apps.py:263 .././ailurus/ubuntu/app3.py:112
 msgid "A CAD software which supports DXF-format. "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:294 .././ailurus/ubuntu/app3.py:179
+#: .././ailurus/fedora/apps.py:270 .././ailurus/ubuntu/app3.py:159
 msgid ""
 "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:295 .././ailurus/ubuntu/app3.py:180
+#: .././ailurus/fedora/apps.py:271 .././ailurus/ubuntu/app3.py:160
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:340
+#: .././ailurus/fedora/apps.py:316
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:348 .././ailurus/ubuntu/app3.py:315
+#: .././ailurus/fedora/apps.py:324 .././ailurus/ubuntu/app3.py:295
 msgid "Generic Genome Browser"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:349 .././ailurus/ubuntu/app3.py:316
+#: .././ailurus/fedora/apps.py:325 .././ailurus/ubuntu/app3.py:296
 msgid ""
 "Generic Genome Browser is a combination of database and interactive web page "
 "for manipulating and displaying annotations on genomes.\n"
@@ -247,51 +242,51 @@ msgid ""
 "Ailurus.</span>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:369
+#: .././ailurus/fedora/apps.py:345
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: yum install tuxpaint"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:378
+#: .././ailurus/fedora/apps.py:354
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: yum install childsplay"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:387
+#: .././ailurus/fedora/apps.py:363
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:396
+#: .././ailurus/fedora/apps.py:372
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:405
+#: .././ailurus/fedora/apps.py:381
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:414 .././ailurus/ubuntu/app3.py:523
+#: .././ailurus/fedora/apps.py:390 .././ailurus/ubuntu/app3.py:503
 msgid "Parcellite: clipboard manager"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:415 .././ailurus/ubuntu/app3.py:524
+#: .././ailurus/fedora/apps.py:391 .././ailurus/ubuntu/app3.py:504
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:422
+#: .././ailurus/fedora/apps.py:398
 msgid "Enable \"sudo\""
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:423
+#: .././ailurus/fedora/apps.py:399
 msgid ""
 "If you enabled \"sudo\" and you want to execute commands as root, you can "
 "type command \"sudo COMMAND\" instead of complicated command \"su -c "
@@ -299,19 +294,19 @@ msgid ""
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:435
+#: .././ailurus/fedora/apps.py:411
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:444
+#: .././ailurus/fedora/apps.py:420
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:476 .././ailurus/ubuntu/app3.py:587
+#: .././ailurus/fedora/apps.py:452 .././ailurus/ubuntu/app3.py:567
 msgid "WallpaperTray: Randomly change GNOME desktop background"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:478
+#: .././ailurus/fedora/apps.py:454
 msgid ""
 "Command: yum install wp_tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
@@ -364,7 +359,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/fedora/controversial_apps.py:28
-#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:270
+#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:285
 msgid "Multi-media codec"
 msgstr ""
 
@@ -375,7 +370,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/fedora/controversial_apps.py:47
-#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:278
+#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:293
 msgid "Adobe® Flash plugin for web browser"
 msgstr ""
 
@@ -393,60 +388,48 @@ msgstr ""
 msgid "Official site: http://get.adobe.com/cn/reader/"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:94
-#: .././ailurus/ubuntu/app3.py:112
-msgid "A light weight pdf reader."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:95
-#: .././ailurus/ubuntu/app3.py:113
-msgid ""
-"Official site: <span "
-"color=\"blue\"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:110
+#: .././ailurus/fedora/controversial_apps.py:93
 msgid ""
 "If you cannot play RMVB video, try this application!\n"
 "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
 "You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:126
-#: .././ailurus/ubuntu/app3.py:382
+#: .././ailurus/fedora/controversial_apps.py:109
+#: .././ailurus/ubuntu/app3.py:362
 msgid "Google Chrome browser"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:128
-#: .././ailurus/ubuntu/app3.py:384
+#: .././ailurus/fedora/controversial_apps.py:111
+#: .././ailurus/ubuntu/app3.py:364
 msgid ""
 "This is the web browser from Google. \n"
 "You can change themes by opening web-page "
 "https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:143
-#: .././ailurus/ubuntu/app3.py:400
+#: .././ailurus/fedora/controversial_apps.py:126
+#: .././ailurus/ubuntu/app3.py:380
 msgid ""
 "\"google-chrome-beta\" is not installed. However, you have installed "
 "\"google-chrome-unstable\"."
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:148
-#: .././ailurus/ubuntu/app2.py:134
+#: .././ailurus/fedora/controversial_apps.py:131
+#: .././ailurus/ubuntu/app2.py:244
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:186
+#: .././ailurus/fedora/controversial_apps.py:169
 #: .././ailurus/ubuntu/third_party_repos.py:254
 msgid ""
 "With Skype you can make free calls over the Internet to other people. "
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:199
-#: .././ailurus/ubuntu/app3.py:566
+#: .././ailurus/fedora/controversial_apps.py:182
+#: .././ailurus/ubuntu/app3.py:546
 msgid "Adobe native 64bit Flash plugin for Firefox"
 msgstr ""
 
@@ -585,7 +568,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
-#: .././ailurus/ubuntu/quick_setup.py:161
+#: .././ailurus/ubuntu/quick_setup.py:169
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
 msgstr ""
@@ -601,7 +584,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:231 .././ailurus/lib.py:729
+#: .././ailurus/ubuntu/quick_setup.py:246 .././ailurus/lib.py:719
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
@@ -660,440 +643,6 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:688
 msgid "Merge complete"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:28
-msgid "Argentina"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:29 .././ailurus/ubuntu/serverlib.py:30
-#: .././ailurus/ubuntu/serverlib.py:31 .././ailurus/ubuntu/serverlib.py:32
-#: .././ailurus/ubuntu/serverlib.py:33 .././ailurus/ubuntu/serverlib.py:34
-#: .././ailurus/ubuntu/serverlib.py:35 .././ailurus/ubuntu/serverlib.py:36
-msgid "Australia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:37 .././ailurus/ubuntu/serverlib.py:38
-#: .././ailurus/ubuntu/serverlib.py:39 .././ailurus/ubuntu/serverlib.py:40
-msgid "Austria"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:41 .././ailurus/ubuntu/serverlib.py:42
-#: .././ailurus/ubuntu/serverlib.py:43
-msgid "Belarus"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:44 .././ailurus/ubuntu/serverlib.py:45
-#: .././ailurus/ubuntu/serverlib.py:46
-msgid "Belgium"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:47
-msgid "Bosnia and Herzegovina"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:48 .././ailurus/ubuntu/serverlib.py:49
-#: .././ailurus/ubuntu/serverlib.py:50 .././ailurus/ubuntu/serverlib.py:51
-#: .././ailurus/ubuntu/serverlib.py:52 .././ailurus/ubuntu/serverlib.py:53
-#: .././ailurus/ubuntu/serverlib.py:54
-msgid "Brazil"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:55 .././ailurus/ubuntu/serverlib.py:56
-#: .././ailurus/ubuntu/serverlib.py:57 .././ailurus/ubuntu/serverlib.py:58
-msgid "Bulgaria"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:59 .././ailurus/ubuntu/serverlib.py:60
-#: .././ailurus/ubuntu/serverlib.py:61 .././ailurus/ubuntu/serverlib.py:62
-#: .././ailurus/ubuntu/serverlib.py:63 .././ailurus/ubuntu/serverlib.py:64
-#: .././ailurus/ubuntu/serverlib.py:65
-msgid "Canada"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:66 .././ailurus/ubuntu/serverlib.py:67
-#: .././ailurus/ubuntu/serverlib.py:68
-msgid "Chile"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:69 .././ailurus/ubuntu/serverlib.py:70
-#: .././ailurus/ubuntu/serverlib.py:71 .././ailurus/ubuntu/serverlib.py:72
-#: .././ailurus/ubuntu/serverlib.py:73 .././ailurus/ubuntu/serverlib.py:74
-#: .././ailurus/ubuntu/serverlib.py:75 .././ailurus/ubuntu/serverlib.py:367
-#: .././ailurus/ubuntu/serverlib.py:368 .././ailurus/ubuntu/serverlib.py:369
-#: .././ailurus/ubuntu/serverlib.py:370 .././ailurus/ubuntu/serverlib.py:371
-#: .././ailurus/ubuntu/serverlib.py:372 .././ailurus/ubuntu/serverlib.py:373
-#: .././ailurus/ubuntu/serverlib.py:374 .././ailurus/ubuntu/serverlib.py:375
-#: .././ailurus/ubuntu/serverlib.py:376 .././ailurus/ubuntu/serverlib.py:378
-msgid "China"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:76
-msgid "Colombia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:77
-msgid "Costa Rica"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:78
-msgid "Croatia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:79
-msgid "Cyprus"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:80 .././ailurus/ubuntu/serverlib.py:81
-#: .././ailurus/ubuntu/serverlib.py:82 .././ailurus/ubuntu/serverlib.py:83
-#: .././ailurus/ubuntu/serverlib.py:84 .././ailurus/ubuntu/serverlib.py:85
-#: .././ailurus/ubuntu/serverlib.py:86
-msgid "Czech Republic"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:87 .././ailurus/ubuntu/serverlib.py:88
-#: .././ailurus/ubuntu/serverlib.py:89
-msgid "Denmark"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:90
-msgid "Estonia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:91 .././ailurus/ubuntu/serverlib.py:92
-msgid "Finland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:93 .././ailurus/ubuntu/serverlib.py:94
-#: .././ailurus/ubuntu/serverlib.py:95 .././ailurus/ubuntu/serverlib.py:96
-#: .././ailurus/ubuntu/serverlib.py:97 .././ailurus/ubuntu/serverlib.py:98
-#: .././ailurus/ubuntu/serverlib.py:99 .././ailurus/ubuntu/serverlib.py:100
-#: .././ailurus/ubuntu/serverlib.py:101 .././ailurus/ubuntu/serverlib.py:102
-#: .././ailurus/ubuntu/serverlib.py:103 .././ailurus/ubuntu/serverlib.py:104
-msgid "France"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:105
-msgid "French Polynesia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:106
-msgid "Georgia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:107 .././ailurus/ubuntu/serverlib.py:108
-#: .././ailurus/ubuntu/serverlib.py:109 .././ailurus/ubuntu/serverlib.py:110
-#: .././ailurus/ubuntu/serverlib.py:111 .././ailurus/ubuntu/serverlib.py:112
-#: .././ailurus/ubuntu/serverlib.py:113 .././ailurus/ubuntu/serverlib.py:114
-#: .././ailurus/ubuntu/serverlib.py:115 .././ailurus/ubuntu/serverlib.py:116
-#: .././ailurus/ubuntu/serverlib.py:117 .././ailurus/ubuntu/serverlib.py:118
-#: .././ailurus/ubuntu/serverlib.py:119 .././ailurus/ubuntu/serverlib.py:120
-#: .././ailurus/ubuntu/serverlib.py:121 .././ailurus/ubuntu/serverlib.py:122
-#: .././ailurus/ubuntu/serverlib.py:123 .././ailurus/ubuntu/serverlib.py:124
-#: .././ailurus/ubuntu/serverlib.py:125 .././ailurus/ubuntu/serverlib.py:126
-#: .././ailurus/ubuntu/serverlib.py:127 .././ailurus/ubuntu/serverlib.py:128
-#: .././ailurus/ubuntu/serverlib.py:129 .././ailurus/ubuntu/serverlib.py:130
-#: .././ailurus/ubuntu/serverlib.py:131
-msgid "Germany"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:132 .././ailurus/ubuntu/serverlib.py:133
-#: .././ailurus/ubuntu/serverlib.py:134 .././ailurus/ubuntu/serverlib.py:135
-#: .././ailurus/ubuntu/serverlib.py:136
-msgid "Greece"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:137
-msgid "Greenland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:138
-msgid "Hong Kong"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:139 .././ailurus/ubuntu/serverlib.py:140
-#: .././ailurus/ubuntu/serverlib.py:141 .././ailurus/ubuntu/serverlib.py:142
-msgid "Hungary"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:143
-msgid "Iceland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:144 .././ailurus/ubuntu/serverlib.py:145
-#: .././ailurus/ubuntu/serverlib.py:146 .././ailurus/ubuntu/serverlib.py:147
-msgid "India"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:148 .././ailurus/ubuntu/serverlib.py:149
-#: .././ailurus/ubuntu/serverlib.py:150 .././ailurus/ubuntu/serverlib.py:151
-#: .././ailurus/ubuntu/serverlib.py:152 .././ailurus/ubuntu/serverlib.py:153
-#: .././ailurus/ubuntu/serverlib.py:154
-msgid "Indonesia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:155 .././ailurus/ubuntu/serverlib.py:156
-msgid "Ireland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:157
-msgid "Israel"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:158 .././ailurus/ubuntu/serverlib.py:159
-#: .././ailurus/ubuntu/serverlib.py:160 .././ailurus/ubuntu/serverlib.py:161
-#: .././ailurus/ubuntu/serverlib.py:162
-msgid "Italy"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:163 .././ailurus/ubuntu/serverlib.py:164
-#: .././ailurus/ubuntu/serverlib.py:165 .././ailurus/ubuntu/serverlib.py:166
-#: .././ailurus/ubuntu/serverlib.py:167 .././ailurus/ubuntu/serverlib.py:168
-#: .././ailurus/ubuntu/serverlib.py:169
-msgid "Japan"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:170 .././ailurus/ubuntu/serverlib.py:171
-msgid "Kazakhstan"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:172 .././ailurus/ubuntu/serverlib.py:173
-#: .././ailurus/ubuntu/serverlib.py:174
-msgid "Republic of Korea"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:175
-msgid "Kuwait"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:176
-msgid "Kyrgyzstan"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:177
-msgid "Latvia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:178 .././ailurus/ubuntu/serverlib.py:179
-msgid "Lithuania"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:180 .././ailurus/ubuntu/serverlib.py:181
-#: .././ailurus/ubuntu/serverlib.py:182 .././ailurus/ubuntu/serverlib.py:183
-#: .././ailurus/ubuntu/serverlib.py:184 .././ailurus/ubuntu/serverlib.py:185
-msgid "Malaysia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:186
-msgid "Malta"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:187 .././ailurus/ubuntu/serverlib.py:188
-msgid "Mexico"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:189
-msgid "Republic of Moldova"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:190
-msgid "Mongolia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:191
-msgid "Namibia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:192
-msgid "Nepal"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:193 .././ailurus/ubuntu/serverlib.py:194
-#: .././ailurus/ubuntu/serverlib.py:195 .././ailurus/ubuntu/serverlib.py:196
-#: .././ailurus/ubuntu/serverlib.py:197 .././ailurus/ubuntu/serverlib.py:198
-#: .././ailurus/ubuntu/serverlib.py:199 .././ailurus/ubuntu/serverlib.py:200
-#: .././ailurus/ubuntu/serverlib.py:201 .././ailurus/ubuntu/serverlib.py:202
-#: .././ailurus/ubuntu/serverlib.py:203 .././ailurus/ubuntu/serverlib.py:204
-msgid "Netherlands"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:205
-msgid "New Caledonia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:206 .././ailurus/ubuntu/serverlib.py:207
-#: .././ailurus/ubuntu/serverlib.py:208
-msgid "New Zealand"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:209 .././ailurus/ubuntu/serverlib.py:210
-#: .././ailurus/ubuntu/serverlib.py:211
-msgid "Norway"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:212
-msgid "Philippines"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:213 .././ailurus/ubuntu/serverlib.py:214
-#: .././ailurus/ubuntu/serverlib.py:215 .././ailurus/ubuntu/serverlib.py:216
-#: .././ailurus/ubuntu/serverlib.py:217
-msgid "Poland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:218 .././ailurus/ubuntu/serverlib.py:219
-#: .././ailurus/ubuntu/serverlib.py:220 .././ailurus/ubuntu/serverlib.py:221
-#: .././ailurus/ubuntu/serverlib.py:222 .././ailurus/ubuntu/serverlib.py:223
-#: .././ailurus/ubuntu/serverlib.py:224 .././ailurus/ubuntu/serverlib.py:225
-#: .././ailurus/ubuntu/serverlib.py:226
-msgid "Portugal"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:227
-msgid "Qatar"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:228 .././ailurus/ubuntu/serverlib.py:229
-#: .././ailurus/ubuntu/serverlib.py:230 .././ailurus/ubuntu/serverlib.py:231
-#: .././ailurus/ubuntu/serverlib.py:232 .././ailurus/ubuntu/serverlib.py:233
-msgid "Romania"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:234 .././ailurus/ubuntu/serverlib.py:235
-#: .././ailurus/ubuntu/serverlib.py:236 .././ailurus/ubuntu/serverlib.py:237
-#: .././ailurus/ubuntu/serverlib.py:238 .././ailurus/ubuntu/serverlib.py:239
-#: .././ailurus/ubuntu/serverlib.py:240 .././ailurus/ubuntu/serverlib.py:241
-#: .././ailurus/ubuntu/serverlib.py:242
-msgid "Russian Federation"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:243
-msgid "Saudi Arabia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:244 .././ailurus/ubuntu/serverlib.py:245
-msgid "Serbia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:246 .././ailurus/ubuntu/serverlib.py:247
-#: .././ailurus/ubuntu/serverlib.py:248
-msgid "Singapore"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:249 .././ailurus/ubuntu/serverlib.py:250
-#: .././ailurus/ubuntu/serverlib.py:251
-msgid "Slovakia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:252 .././ailurus/ubuntu/serverlib.py:253
-msgid "Slovenia"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:254 .././ailurus/ubuntu/serverlib.py:255
-#: .././ailurus/ubuntu/serverlib.py:256
-msgid "South Africa"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:257 .././ailurus/ubuntu/serverlib.py:258
-#: .././ailurus/ubuntu/serverlib.py:259 .././ailurus/ubuntu/serverlib.py:260
-#: .././ailurus/ubuntu/serverlib.py:261 .././ailurus/ubuntu/serverlib.py:262
-#: .././ailurus/ubuntu/serverlib.py:263 .././ailurus/ubuntu/serverlib.py:264
-#: .././ailurus/ubuntu/serverlib.py:265 .././ailurus/ubuntu/serverlib.py:266
-#: .././ailurus/ubuntu/serverlib.py:267 .././ailurus/ubuntu/serverlib.py:268
-msgid "Spain"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:269
-msgid "Sri Lanka"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:270 .././ailurus/ubuntu/serverlib.py:271
-#: .././ailurus/ubuntu/serverlib.py:272 .././ailurus/ubuntu/serverlib.py:273
-#: .././ailurus/ubuntu/serverlib.py:274 .././ailurus/ubuntu/serverlib.py:275
-#: .././ailurus/ubuntu/serverlib.py:276
-msgid "Sweden"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:277
-msgid "Switzerland"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:278 .././ailurus/ubuntu/serverlib.py:279
-#: .././ailurus/ubuntu/serverlib.py:280 .././ailurus/ubuntu/serverlib.py:281
-#: .././ailurus/ubuntu/serverlib.py:282 .././ailurus/ubuntu/serverlib.py:283
-#: .././ailurus/ubuntu/serverlib.py:284 .././ailurus/ubuntu/serverlib.py:285
-#: .././ailurus/ubuntu/serverlib.py:286 .././ailurus/ubuntu/serverlib.py:287
-#: .././ailurus/ubuntu/serverlib.py:288 .././ailurus/ubuntu/serverlib.py:289
-#: .././ailurus/ubuntu/serverlib.py:290 .././ailurus/ubuntu/serverlib.py:291
-#: .././ailurus/ubuntu/serverlib.py:292 .././ailurus/ubuntu/serverlib.py:377
-msgid "Taiwan"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:293 .././ailurus/ubuntu/serverlib.py:294
-#: .././ailurus/ubuntu/serverlib.py:295
-msgid "Thailand"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:296 .././ailurus/ubuntu/serverlib.py:297
-#: .././ailurus/ubuntu/serverlib.py:298 .././ailurus/ubuntu/serverlib.py:299
-#: .././ailurus/ubuntu/serverlib.py:300
-msgid "Turkey"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:301 .././ailurus/ubuntu/serverlib.py:302
-#: .././ailurus/ubuntu/serverlib.py:303
-msgid "Ukraine"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:304 .././ailurus/ubuntu/serverlib.py:305
-#: .././ailurus/ubuntu/serverlib.py:306 .././ailurus/ubuntu/serverlib.py:307
-#: .././ailurus/ubuntu/serverlib.py:308 .././ailurus/ubuntu/serverlib.py:309
-#: .././ailurus/ubuntu/serverlib.py:310 .././ailurus/ubuntu/serverlib.py:311
-#: .././ailurus/ubuntu/serverlib.py:312 .././ailurus/ubuntu/serverlib.py:313
-#: .././ailurus/ubuntu/serverlib.py:314
-msgid "United Kingdom"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:315 .././ailurus/ubuntu/serverlib.py:316
-#: .././ailurus/ubuntu/serverlib.py:317 .././ailurus/ubuntu/serverlib.py:318
-#: .././ailurus/ubuntu/serverlib.py:319 .././ailurus/ubuntu/serverlib.py:320
-#: .././ailurus/ubuntu/serverlib.py:321 .././ailurus/ubuntu/serverlib.py:322
-#: .././ailurus/ubuntu/serverlib.py:323 .././ailurus/ubuntu/serverlib.py:324
-#: .././ailurus/ubuntu/serverlib.py:325 .././ailurus/ubuntu/serverlib.py:326
-#: .././ailurus/ubuntu/serverlib.py:327 .././ailurus/ubuntu/serverlib.py:328
-#: .././ailurus/ubuntu/serverlib.py:329 .././ailurus/ubuntu/serverlib.py:330
-#: .././ailurus/ubuntu/serverlib.py:331 .././ailurus/ubuntu/serverlib.py:332
-#: .././ailurus/ubuntu/serverlib.py:333 .././ailurus/ubuntu/serverlib.py:334
-#: .././ailurus/ubuntu/serverlib.py:335 .././ailurus/ubuntu/serverlib.py:336
-#: .././ailurus/ubuntu/serverlib.py:337 .././ailurus/ubuntu/serverlib.py:338
-#: .././ailurus/ubuntu/serverlib.py:339 .././ailurus/ubuntu/serverlib.py:340
-#: .././ailurus/ubuntu/serverlib.py:341 .././ailurus/ubuntu/serverlib.py:342
-#: .././ailurus/ubuntu/serverlib.py:343 .././ailurus/ubuntu/serverlib.py:344
-#: .././ailurus/ubuntu/serverlib.py:345 .././ailurus/ubuntu/serverlib.py:346
-#: .././ailurus/ubuntu/serverlib.py:347 .././ailurus/ubuntu/serverlib.py:348
-#: .././ailurus/ubuntu/serverlib.py:349 .././ailurus/ubuntu/serverlib.py:350
-#: .././ailurus/ubuntu/serverlib.py:351 .././ailurus/ubuntu/serverlib.py:352
-#: .././ailurus/ubuntu/serverlib.py:353 .././ailurus/ubuntu/serverlib.py:354
-#: .././ailurus/ubuntu/serverlib.py:355 .././ailurus/ubuntu/serverlib.py:356
-#: .././ailurus/ubuntu/serverlib.py:357 .././ailurus/ubuntu/serverlib.py:358
-#: .././ailurus/ubuntu/serverlib.py:359 .././ailurus/ubuntu/serverlib.py:360
-msgid "United States"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:361
-msgid "Uzbekistan"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:362
-msgid "Viet Nam"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:379
-msgid "Peru"
-msgstr ""
-
-#: .././ailurus/ubuntu/serverlib.py:380
-msgid "Ghana"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:116
@@ -1394,12 +943,12 @@ msgstr ""
 msgid "Don't automatically clean /var/cache/apt/"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:337
-#: .././ailurus/common/menu.py:345
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:336
+#: .././ailurus/common/menu.py:344
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:337
+#: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:336
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
@@ -1511,7 +1060,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
-#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:206
+#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:308
 msgid "Apply"
 msgstr "Verkställ"
 
@@ -1566,7 +1115,7 @@ msgid ""
 "Then run this command: sudo apt-get install gedit-plugins"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:94 .././ailurus/ubuntu/quick_setup.py:269
+#: .././ailurus/ubuntu/app1.py:94 .././ailurus/ubuntu/quick_setup.py:284
 msgid "Full language support and input method"
 msgstr ""
 
@@ -1580,7 +1129,7 @@ msgstr ""
 msgid "Command: "
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:271
+#: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:286
 msgid "Decompression software: 7z, rar, cab, ace"
 msgstr ""
 
@@ -1660,7 +1209,7 @@ msgstr ""
 msgid "Command: sudo apt-get install flashplugin-installer"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:376 .././ailurus/ubuntu/quick_setup.py:279
+#: .././ailurus/ubuntu/app1.py:376 .././ailurus/ubuntu/quick_setup.py:294
 msgid "Fix font bug in Flash plugin"
 msgstr ""
 
@@ -1675,7 +1224,7 @@ msgstr ""
 msgid "The file \"%s\" exists."
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:276
+#: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:291
 msgid "Stardict and four dictionaries"
 msgstr ""
 
@@ -1693,7 +1242,7 @@ msgstr ""
 #: .././ailurus/libapp.py:287
 #, python-format
 msgid "\"%s\" does not exist."
-msgstr "\"%s\" Existerar inte."
+msgstr "\"%s\" finns inte."
 
 #: .././ailurus/ubuntu/app1.py:515
 msgid ""
@@ -1727,6 +1276,21 @@ msgstr ""
 msgid "Current linux kernel version is "
 msgstr ""
 
+#: .././ailurus/ubuntu/app1.py:609
+msgid "MacChangger: a tool for change the MAC address"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:610
+msgid ""
+"macchanger is a A GNU/Linux utility for viewing/manipulating the MAC address "
+"of network interfaces.\n"
+"Command: sudo apt-get install macchanger"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:616
+msgid "BlueTooth and Phone"
+msgstr ""
+
 #: .././ailurus/ubuntu/app2.py:40
 msgid "Mplayer with \"vod\" protocol support"
 msgstr ""
@@ -1754,29 +1318,138 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:104
 msgid ""
-"The tools are:\n"
-"<i>g++: GNU C++ compiler.\n"
+"Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc "
+"and so on.\n"
+"Command: sudo apt-get install build-essential"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:113
+msgid ""
 "manpages-dev: manual pages about Linux system calls and library calls.\n"
 "manpages-posix: manual pages about using POSIX.\n"
 "manpages-posix-dev: manual pages about POSIX header files and POSIX library "
 "files.\n"
-"exuberant-ctags: source code parser used in vi and emacs, which allow moving "
-"to the definition of a symbol.\n"
-"libgmp3: GNU multiprecision arithmetic library.\n"
-"libncurses5: a library controlling writing to the console screen.\n"
-"libqt3-mt: Trolltech Qt library, version 3.\n"
-"subversion: a version control system.\n"
-"git-core: a distributed version control system.\n"
-"</i>Command: sudo apt-get install build-essential manpages-dev manpages-"
-"posix manpages-posix-dev exuberant-ctags libgmp3-dev libncurses5-dev libqt3-"
-"mt-dev subversion git-core"
+"Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:155
+#: .././ailurus/ubuntu/app2.py:124
+msgid ""
+"source code parser used in vi and emacs, which allow moving to the "
+"definition of a symbol.\n"
+"Command: sudo apt-get install exuberant-ctags"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:133
+msgid ""
+"GNU multiprecision arithmetic library.\n"
+"Command: sudo apt-get install libgmp3-dev"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:142
+msgid ""
+"libncurses5: a library controlling writing to the console screen.\n"
+"libqt3-mt: Trolltech Qt library, version 3.\n"
+"Command: sudo apt-get install libncurses5-dev libqt3-mt-dev"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:152
+msgid ""
+"subversion: a version control system.\n"
+"git-core: a distributed version control system.\n"
+"Command: sudo apt-get install subversion git-core."
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:161
+msgid "Tools for AutoMake"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:162
+msgid ""
+"autoconf: an package that produce shell scripts to automatically configure "
+"software source code packages.\n"
+"automake: a tool for automatically generating Makefile.\n"
+"Command: sudo apt-get install autoconf automake autotool"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:171
+msgid "FreeLut3: OpenGL Utility Toolkit"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:172
+msgid ""
+"GLUT is a window system independent toolkit for writing OpenGL programs.\n"
+"Command: sudo apt-get install freeglut3-dev"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:181
+msgid ""
+"Boost C++ Libraries development files.\n"
+"Command: sudo apt-get install libboost-dev"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:189
+msgid "Simple DirectMedia Layer"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:190
+msgid ""
+"cross-platform multimedia library designed to provide low level access to "
+"audio keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video "
+"framebuffer.\n"
+"Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
+"mixer1.2-dev libsdl-ttf2.0-dev"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:200
+msgid ""
+"A terminal-based tool for monitoring the progress of data through a "
+"pipeline.\n"
+"Command: sudo apt-get install pv"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:207
+msgid ""
+"Usage: \"auto-apt run ./configure\" can help you to find  the package is not "
+"installed.\n"
+"Command: sudo apt-get install auto-apt"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:214
+msgid ""
+"Can replace the \"make install\" to achieve the source code installed as a "
+"deb, to achieve package management.\n"
+"Command: sudo apt-get install checkinstall"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:220
+msgid "Umbrello: An UML Modeller"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:221
+msgid ""
+"Umbrello: allows you to create diagrams of software and other systems in a "
+"standard format.\n"
+"Command: sudo apt-get install umbrello"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:230
+msgid ""
+"Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
+"ubuntustudio-wallpapers ubuntustudio-gdm-theme"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:236
+msgid ""
+"minicom: a clone of the MS-DOS \"Telix\" communication program.\n"
+"ckermit: combined serial and network communication software package.\n"
+"Command: sudo apt-get install minicom ckermit"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:265
 msgid "GNOMEArtNG"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:156
+#: .././ailurus/ubuntu/app2.py:266
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -1784,17 +1457,50 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:212
+#: .././ailurus/ubuntu/app2.py:322
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: sudo apt-get install qtiplot"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:222
+#: .././ailurus/ubuntu/app2.py:332
 msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:348
+msgid ""
+"Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
+"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:353
+msgid ""
+"SatartupManager: Change settings and manage themes for Grub and Usplash."
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:354
+msgid ""
+"Start Method: sudo startupmanager.\n"
+"Command: sudo apt-get install startupmanager"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:360
+msgid "Zhcon: a tool that enable you to input Chinese in your terminal"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:361
+msgid ""
+"Start Method: zhcon --utf8.\n"
+"Command: sudo apt-get install zhcon"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:368
+msgid ""
+"Powertop is a linux tool to find out what is using power on your laptop.\n"
+"Command: sudo apt-get install powertop"
 msgstr ""
 
 #: .././ailurus/ubuntu/app0.py:28
@@ -1811,30 +1517,18 @@ msgid ""
 "are JAVA_HOME, JAVA_BIN and CLASSPATH."
 msgstr ""
 
-#: .././ailurus/ubuntu/app0.py:68
-msgid "Eliminate Chinese font bug in SUN Java® 6"
-msgstr ""
-
-#: .././ailurus/ubuntu/app0.py:69
-msgid ""
-"Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-"
-"sun/jre/lib/fonts/fallback/\n"
-"cp /usr/share/fonts/truetype/arphic/uming.ttc "
-"/usr/share/fonts/truetype/arphic/uming.ttf"
-msgstr ""
-
-#: .././ailurus/ubuntu/app0.py:102
+#: .././ailurus/ubuntu/app0.py:107
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux.\n"
 "Command: sudo apt-get install wine wine-gecko"
 msgstr ""
 
-#: .././ailurus/ubuntu/app0.py:125
+#: .././ailurus/ubuntu/app0.py:130
 msgid "WINE &amp; Wen-Quan-Yi Chinese font"
 msgstr ""
 
-#: .././ailurus/ubuntu/app0.py:126
+#: .././ailurus/ubuntu/app0.py:131
 msgid ""
 "WINE is an indispensable application for running Windows applications on "
 "Linux.\n"
@@ -1843,12 +1537,446 @@ msgid ""
 "default Chinese font."
 msgstr ""
 
-#: .././ailurus/ubuntu/app0.py:161
+#: .././ailurus/ubuntu/app0.py:166
 msgid "SUN_JDK6 is required. It is to be installed."
 msgstr ""
 
-#: .././ailurus/ubuntu/app0.py:171
+#: .././ailurus/ubuntu/app0.py:176
 msgid "WINE is required. It is to be installed."
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:28
+msgid "Argentina"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:29 .././ailurus/ubuntu/libserver.py:30
+#: .././ailurus/ubuntu/libserver.py:31 .././ailurus/ubuntu/libserver.py:32
+#: .././ailurus/ubuntu/libserver.py:33 .././ailurus/ubuntu/libserver.py:34
+#: .././ailurus/ubuntu/libserver.py:35 .././ailurus/ubuntu/libserver.py:36
+msgid "Australia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:37 .././ailurus/ubuntu/libserver.py:38
+#: .././ailurus/ubuntu/libserver.py:39 .././ailurus/ubuntu/libserver.py:40
+msgid "Austria"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:41 .././ailurus/ubuntu/libserver.py:42
+#: .././ailurus/ubuntu/libserver.py:43
+msgid "Belarus"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:44 .././ailurus/ubuntu/libserver.py:45
+#: .././ailurus/ubuntu/libserver.py:46
+msgid "Belgium"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:47
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:48 .././ailurus/ubuntu/libserver.py:49
+#: .././ailurus/ubuntu/libserver.py:50 .././ailurus/ubuntu/libserver.py:51
+#: .././ailurus/ubuntu/libserver.py:52 .././ailurus/ubuntu/libserver.py:53
+#: .././ailurus/ubuntu/libserver.py:54
+msgid "Brazil"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:55 .././ailurus/ubuntu/libserver.py:56
+#: .././ailurus/ubuntu/libserver.py:57 .././ailurus/ubuntu/libserver.py:58
+msgid "Bulgaria"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:59 .././ailurus/ubuntu/libserver.py:60
+#: .././ailurus/ubuntu/libserver.py:61 .././ailurus/ubuntu/libserver.py:62
+#: .././ailurus/ubuntu/libserver.py:63 .././ailurus/ubuntu/libserver.py:64
+#: .././ailurus/ubuntu/libserver.py:65
+msgid "Canada"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:66 .././ailurus/ubuntu/libserver.py:67
+#: .././ailurus/ubuntu/libserver.py:68
+msgid "Chile"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:69 .././ailurus/ubuntu/libserver.py:70
+#: .././ailurus/ubuntu/libserver.py:71 .././ailurus/ubuntu/libserver.py:72
+#: .././ailurus/ubuntu/libserver.py:73 .././ailurus/ubuntu/libserver.py:74
+#: .././ailurus/ubuntu/libserver.py:75 .././ailurus/ubuntu/libserver.py:367
+#: .././ailurus/ubuntu/libserver.py:368 .././ailurus/ubuntu/libserver.py:369
+#: .././ailurus/ubuntu/libserver.py:370 .././ailurus/ubuntu/libserver.py:371
+#: .././ailurus/ubuntu/libserver.py:372 .././ailurus/ubuntu/libserver.py:373
+#: .././ailurus/ubuntu/libserver.py:374 .././ailurus/ubuntu/libserver.py:375
+#: .././ailurus/ubuntu/libserver.py:376 .././ailurus/ubuntu/libserver.py:378
+msgid "China"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:76
+msgid "Colombia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:77
+msgid "Costa Rica"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:78
+msgid "Croatia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:79
+msgid "Cyprus"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:80 .././ailurus/ubuntu/libserver.py:81
+#: .././ailurus/ubuntu/libserver.py:82 .././ailurus/ubuntu/libserver.py:83
+#: .././ailurus/ubuntu/libserver.py:84 .././ailurus/ubuntu/libserver.py:85
+#: .././ailurus/ubuntu/libserver.py:86
+msgid "Czech Republic"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:87 .././ailurus/ubuntu/libserver.py:88
+#: .././ailurus/ubuntu/libserver.py:89
+msgid "Denmark"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:90
+msgid "Estonia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:91 .././ailurus/ubuntu/libserver.py:92
+msgid "Finland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:93 .././ailurus/ubuntu/libserver.py:94
+#: .././ailurus/ubuntu/libserver.py:95 .././ailurus/ubuntu/libserver.py:96
+#: .././ailurus/ubuntu/libserver.py:97 .././ailurus/ubuntu/libserver.py:98
+#: .././ailurus/ubuntu/libserver.py:99 .././ailurus/ubuntu/libserver.py:100
+#: .././ailurus/ubuntu/libserver.py:101 .././ailurus/ubuntu/libserver.py:102
+#: .././ailurus/ubuntu/libserver.py:103 .././ailurus/ubuntu/libserver.py:104
+msgid "France"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:105
+msgid "French Polynesia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:106
+msgid "Georgia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:107 .././ailurus/ubuntu/libserver.py:108
+#: .././ailurus/ubuntu/libserver.py:109 .././ailurus/ubuntu/libserver.py:110
+#: .././ailurus/ubuntu/libserver.py:111 .././ailurus/ubuntu/libserver.py:112
+#: .././ailurus/ubuntu/libserver.py:113 .././ailurus/ubuntu/libserver.py:114
+#: .././ailurus/ubuntu/libserver.py:115 .././ailurus/ubuntu/libserver.py:116
+#: .././ailurus/ubuntu/libserver.py:117 .././ailurus/ubuntu/libserver.py:118
+#: .././ailurus/ubuntu/libserver.py:119 .././ailurus/ubuntu/libserver.py:120
+#: .././ailurus/ubuntu/libserver.py:121 .././ailurus/ubuntu/libserver.py:122
+#: .././ailurus/ubuntu/libserver.py:123 .././ailurus/ubuntu/libserver.py:124
+#: .././ailurus/ubuntu/libserver.py:125 .././ailurus/ubuntu/libserver.py:126
+#: .././ailurus/ubuntu/libserver.py:127 .././ailurus/ubuntu/libserver.py:128
+#: .././ailurus/ubuntu/libserver.py:129 .././ailurus/ubuntu/libserver.py:130
+#: .././ailurus/ubuntu/libserver.py:131
+msgid "Germany"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:132 .././ailurus/ubuntu/libserver.py:133
+#: .././ailurus/ubuntu/libserver.py:134 .././ailurus/ubuntu/libserver.py:135
+#: .././ailurus/ubuntu/libserver.py:136
+msgid "Greece"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:137
+msgid "Greenland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:138
+msgid "Hong Kong"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:139 .././ailurus/ubuntu/libserver.py:140
+#: .././ailurus/ubuntu/libserver.py:141 .././ailurus/ubuntu/libserver.py:142
+msgid "Hungary"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:143
+msgid "Iceland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:144 .././ailurus/ubuntu/libserver.py:145
+#: .././ailurus/ubuntu/libserver.py:146 .././ailurus/ubuntu/libserver.py:147
+msgid "India"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:148 .././ailurus/ubuntu/libserver.py:149
+#: .././ailurus/ubuntu/libserver.py:150 .././ailurus/ubuntu/libserver.py:151
+#: .././ailurus/ubuntu/libserver.py:152 .././ailurus/ubuntu/libserver.py:153
+#: .././ailurus/ubuntu/libserver.py:154
+msgid "Indonesia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:155 .././ailurus/ubuntu/libserver.py:156
+msgid "Ireland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:157
+msgid "Israel"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:158 .././ailurus/ubuntu/libserver.py:159
+#: .././ailurus/ubuntu/libserver.py:160 .././ailurus/ubuntu/libserver.py:161
+#: .././ailurus/ubuntu/libserver.py:162
+msgid "Italy"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:163 .././ailurus/ubuntu/libserver.py:164
+#: .././ailurus/ubuntu/libserver.py:165 .././ailurus/ubuntu/libserver.py:166
+#: .././ailurus/ubuntu/libserver.py:167 .././ailurus/ubuntu/libserver.py:168
+#: .././ailurus/ubuntu/libserver.py:169
+msgid "Japan"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:170 .././ailurus/ubuntu/libserver.py:171
+msgid "Kazakhstan"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:172 .././ailurus/ubuntu/libserver.py:173
+#: .././ailurus/ubuntu/libserver.py:174
+msgid "Republic of Korea"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:175
+msgid "Kuwait"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:176
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:177
+msgid "Latvia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:178 .././ailurus/ubuntu/libserver.py:179
+msgid "Lithuania"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:180 .././ailurus/ubuntu/libserver.py:181
+#: .././ailurus/ubuntu/libserver.py:182 .././ailurus/ubuntu/libserver.py:183
+#: .././ailurus/ubuntu/libserver.py:184 .././ailurus/ubuntu/libserver.py:185
+msgid "Malaysia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:186
+msgid "Malta"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:187 .././ailurus/ubuntu/libserver.py:188
+msgid "Mexico"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:189
+msgid "Republic of Moldova"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:190
+msgid "Mongolia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:191
+msgid "Namibia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:192
+msgid "Nepal"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:193 .././ailurus/ubuntu/libserver.py:194
+#: .././ailurus/ubuntu/libserver.py:195 .././ailurus/ubuntu/libserver.py:196
+#: .././ailurus/ubuntu/libserver.py:197 .././ailurus/ubuntu/libserver.py:198
+#: .././ailurus/ubuntu/libserver.py:199 .././ailurus/ubuntu/libserver.py:200
+#: .././ailurus/ubuntu/libserver.py:201 .././ailurus/ubuntu/libserver.py:202
+#: .././ailurus/ubuntu/libserver.py:203 .././ailurus/ubuntu/libserver.py:204
+msgid "Netherlands"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:205
+msgid "New Caledonia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:206 .././ailurus/ubuntu/libserver.py:207
+#: .././ailurus/ubuntu/libserver.py:208
+msgid "New Zealand"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:209 .././ailurus/ubuntu/libserver.py:210
+#: .././ailurus/ubuntu/libserver.py:211
+msgid "Norway"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:212
+msgid "Philippines"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:213 .././ailurus/ubuntu/libserver.py:214
+#: .././ailurus/ubuntu/libserver.py:215 .././ailurus/ubuntu/libserver.py:216
+#: .././ailurus/ubuntu/libserver.py:217
+msgid "Poland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:218 .././ailurus/ubuntu/libserver.py:219
+#: .././ailurus/ubuntu/libserver.py:220 .././ailurus/ubuntu/libserver.py:221
+#: .././ailurus/ubuntu/libserver.py:222 .././ailurus/ubuntu/libserver.py:223
+#: .././ailurus/ubuntu/libserver.py:224 .././ailurus/ubuntu/libserver.py:225
+#: .././ailurus/ubuntu/libserver.py:226
+msgid "Portugal"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:227
+msgid "Qatar"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:228 .././ailurus/ubuntu/libserver.py:229
+#: .././ailurus/ubuntu/libserver.py:230 .././ailurus/ubuntu/libserver.py:231
+#: .././ailurus/ubuntu/libserver.py:232 .././ailurus/ubuntu/libserver.py:233
+msgid "Romania"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:234 .././ailurus/ubuntu/libserver.py:235
+#: .././ailurus/ubuntu/libserver.py:236 .././ailurus/ubuntu/libserver.py:237
+#: .././ailurus/ubuntu/libserver.py:238 .././ailurus/ubuntu/libserver.py:239
+#: .././ailurus/ubuntu/libserver.py:240 .././ailurus/ubuntu/libserver.py:241
+#: .././ailurus/ubuntu/libserver.py:242
+msgid "Russian Federation"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:243
+msgid "Saudi Arabia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:244 .././ailurus/ubuntu/libserver.py:245
+msgid "Serbia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:246 .././ailurus/ubuntu/libserver.py:247
+#: .././ailurus/ubuntu/libserver.py:248
+msgid "Singapore"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:249 .././ailurus/ubuntu/libserver.py:250
+#: .././ailurus/ubuntu/libserver.py:251
+msgid "Slovakia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:252 .././ailurus/ubuntu/libserver.py:253
+msgid "Slovenia"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:254 .././ailurus/ubuntu/libserver.py:255
+#: .././ailurus/ubuntu/libserver.py:256
+msgid "South Africa"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:257 .././ailurus/ubuntu/libserver.py:258
+#: .././ailurus/ubuntu/libserver.py:259 .././ailurus/ubuntu/libserver.py:260
+#: .././ailurus/ubuntu/libserver.py:261 .././ailurus/ubuntu/libserver.py:262
+#: .././ailurus/ubuntu/libserver.py:263 .././ailurus/ubuntu/libserver.py:264
+#: .././ailurus/ubuntu/libserver.py:265 .././ailurus/ubuntu/libserver.py:266
+#: .././ailurus/ubuntu/libserver.py:267 .././ailurus/ubuntu/libserver.py:268
+msgid "Spain"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:269
+msgid "Sri Lanka"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:270 .././ailurus/ubuntu/libserver.py:271
+#: .././ailurus/ubuntu/libserver.py:272 .././ailurus/ubuntu/libserver.py:273
+#: .././ailurus/ubuntu/libserver.py:274 .././ailurus/ubuntu/libserver.py:275
+#: .././ailurus/ubuntu/libserver.py:276
+msgid "Sweden"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:277
+msgid "Switzerland"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:278 .././ailurus/ubuntu/libserver.py:279
+#: .././ailurus/ubuntu/libserver.py:280 .././ailurus/ubuntu/libserver.py:281
+#: .././ailurus/ubuntu/libserver.py:282 .././ailurus/ubuntu/libserver.py:283
+#: .././ailurus/ubuntu/libserver.py:284 .././ailurus/ubuntu/libserver.py:285
+#: .././ailurus/ubuntu/libserver.py:286 .././ailurus/ubuntu/libserver.py:287
+#: .././ailurus/ubuntu/libserver.py:288 .././ailurus/ubuntu/libserver.py:289
+#: .././ailurus/ubuntu/libserver.py:290 .././ailurus/ubuntu/libserver.py:291
+#: .././ailurus/ubuntu/libserver.py:292 .././ailurus/ubuntu/libserver.py:377
+msgid "Taiwan"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:293 .././ailurus/ubuntu/libserver.py:294
+#: .././ailurus/ubuntu/libserver.py:295
+msgid "Thailand"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:296 .././ailurus/ubuntu/libserver.py:297
+#: .././ailurus/ubuntu/libserver.py:298 .././ailurus/ubuntu/libserver.py:299
+#: .././ailurus/ubuntu/libserver.py:300
+msgid "Turkey"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:301 .././ailurus/ubuntu/libserver.py:302
+#: .././ailurus/ubuntu/libserver.py:303
+msgid "Ukraine"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:304 .././ailurus/ubuntu/libserver.py:305
+#: .././ailurus/ubuntu/libserver.py:306 .././ailurus/ubuntu/libserver.py:307
+#: .././ailurus/ubuntu/libserver.py:308 .././ailurus/ubuntu/libserver.py:309
+#: .././ailurus/ubuntu/libserver.py:310 .././ailurus/ubuntu/libserver.py:311
+#: .././ailurus/ubuntu/libserver.py:312 .././ailurus/ubuntu/libserver.py:313
+#: .././ailurus/ubuntu/libserver.py:314
+msgid "United Kingdom"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:315 .././ailurus/ubuntu/libserver.py:316
+#: .././ailurus/ubuntu/libserver.py:317 .././ailurus/ubuntu/libserver.py:318
+#: .././ailurus/ubuntu/libserver.py:319 .././ailurus/ubuntu/libserver.py:320
+#: .././ailurus/ubuntu/libserver.py:321 .././ailurus/ubuntu/libserver.py:322
+#: .././ailurus/ubuntu/libserver.py:323 .././ailurus/ubuntu/libserver.py:324
+#: .././ailurus/ubuntu/libserver.py:325 .././ailurus/ubuntu/libserver.py:326
+#: .././ailurus/ubuntu/libserver.py:327 .././ailurus/ubuntu/libserver.py:328
+#: .././ailurus/ubuntu/libserver.py:329 .././ailurus/ubuntu/libserver.py:330
+#: .././ailurus/ubuntu/libserver.py:331 .././ailurus/ubuntu/libserver.py:332
+#: .././ailurus/ubuntu/libserver.py:333 .././ailurus/ubuntu/libserver.py:334
+#: .././ailurus/ubuntu/libserver.py:335 .././ailurus/ubuntu/libserver.py:336
+#: .././ailurus/ubuntu/libserver.py:337 .././ailurus/ubuntu/libserver.py:338
+#: .././ailurus/ubuntu/libserver.py:339 .././ailurus/ubuntu/libserver.py:340
+#: .././ailurus/ubuntu/libserver.py:341 .././ailurus/ubuntu/libserver.py:342
+#: .././ailurus/ubuntu/libserver.py:343 .././ailurus/ubuntu/libserver.py:344
+#: .././ailurus/ubuntu/libserver.py:345 .././ailurus/ubuntu/libserver.py:346
+#: .././ailurus/ubuntu/libserver.py:347 .././ailurus/ubuntu/libserver.py:348
+#: .././ailurus/ubuntu/libserver.py:349 .././ailurus/ubuntu/libserver.py:350
+#: .././ailurus/ubuntu/libserver.py:351 .././ailurus/ubuntu/libserver.py:352
+#: .././ailurus/ubuntu/libserver.py:353 .././ailurus/ubuntu/libserver.py:354
+#: .././ailurus/ubuntu/libserver.py:355 .././ailurus/ubuntu/libserver.py:356
+#: .././ailurus/ubuntu/libserver.py:357 .././ailurus/ubuntu/libserver.py:358
+#: .././ailurus/ubuntu/libserver.py:359 .././ailurus/ubuntu/libserver.py:360
+msgid "United States"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:361
+msgid "Uzbekistan"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:362
+msgid "Viet Nam"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:379
+msgid "Peru"
+msgstr ""
+
+#: .././ailurus/ubuntu/libserver.py:380
+msgid "Ghana"
 msgstr ""
 
 #: .././ailurus/ubuntu/controversial_apps.py:28
@@ -1871,10 +1999,10 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:148
 #: .././ailurus/common/apps.py:216 .././ailurus/common/apps.py:328
 msgid " This application depends on Java."
-msgstr " Den här applikationen är beroende av Java."
+msgstr " Det här programmet är beroende av Java."
 
 #: .././ailurus/ubuntu/controversial_apps.py:72
-#: .././ailurus/ubuntu/quick_setup.py:275
+#: .././ailurus/ubuntu/quick_setup.py:290
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
 msgstr ""
 
@@ -1954,7 +2082,7 @@ msgid "Theme your browser according to your mood, hobby or season."
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:33
-#: .././ailurus/ubuntu/quick_setup.py:337
+#: .././ailurus/ubuntu/quick_setup.py:352
 #: .././ailurus/install_remove_pane.py:577
 msgid "Quick setup"
 msgstr ""
@@ -1998,61 +2126,62 @@ msgid "Configure network connections"
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:112
+#: .././ailurus/ubuntu/quick_setup.py:141
 msgid "Skip this step"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:129
+#: .././ailurus/ubuntu/quick_setup.py:133
 msgid "Searching the fastest repository"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:159
+#: .././ailurus/ubuntu/quick_setup.py:167
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:198
+#: .././ailurus/ubuntu/quick_setup.py:213
 msgid ""
 "In order to use the fastest repository, Ailurus will change "
 "/etc/apt/sources.list"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:199
+#: .././ailurus/ubuntu/quick_setup.py:214
 #, python-format
 msgid "The fastest repository is %s."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:227
+#: .././ailurus/ubuntu/quick_setup.py:242
 msgid "Apply the fastest repository:"
 msgstr ""
 
 #. apt-get update
-#: .././ailurus/ubuntu/quick_setup.py:230
+#: .././ailurus/ubuntu/quick_setup.py:245
 msgid "Run command: \"sudo apt-get update\""
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:267
+#: .././ailurus/ubuntu/quick_setup.py:282
 msgid "Search fastest repository"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:268
+#: .././ailurus/ubuntu/quick_setup.py:283
 msgid "Install hardware drivers"
-msgstr ""
+msgstr "Installera hårdvarudrivrutiner"
 
-#: .././ailurus/ubuntu/quick_setup.py:301
+#: .././ailurus/ubuntu/quick_setup.py:316
 msgid "Ongoing:"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:306
+#: .././ailurus/ubuntu/quick_setup.py:321
 msgid "Successful"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:309
+#: .././ailurus/ubuntu/quick_setup.py:324
 msgid "Failed"
 msgstr ""
 
 #. 4
-#: .././ailurus/ubuntu/quick_setup.py:423
+#: .././ailurus/ubuntu/quick_setup.py:438
 msgid "All works are done."
 msgstr ""
 
@@ -2212,34 +2341,34 @@ msgid ""
 "color=\"blue\"><u>http://sourceforge.net/projects/free-cad/</u></span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:140
+#: .././ailurus/ubuntu/app3.py:120
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:141
+#: .././ailurus/ubuntu/app3.py:121
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages.\n"
 "Command: sudo apt-get install moonlight-plugin-mozilla"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:302
+#: .././ailurus/ubuntu/app3.py:282
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: sudo apt-get install qtoctave"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:332
+#: .././ailurus/ubuntu/app3.py:312
 msgid ""
 "If you cannot play RMVB video, try this application!\n"
 "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:349
+#: .././ailurus/ubuntu/app3.py:329
 msgid "Screenlets"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:350
+#: .././ailurus/ubuntu/app3.py:330
 msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
@@ -2247,11 +2376,11 @@ msgid ""
 "Command: sudo apt-get install screenlets"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:361
+#: .././ailurus/ubuntu/app3.py:341
 msgid "Compiz settings manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:362
+#: .././ailurus/ubuntu/app3.py:342
 msgid ""
 "Compiz Fusion is the unification of the Beryl project and the community "
 "around the Compiz Window Manager. Compiz settings manager is the "
@@ -2260,64 +2389,64 @@ msgid ""
 "Command: sudo apt-get install compizconfig-settings-manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:373
+#: .././ailurus/ubuntu/app3.py:353
 msgid "A simple Compiz settings manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:374
+#: .././ailurus/ubuntu/app3.py:354
 msgid "Command: sudo apt-get install simple-ccsm"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:404
+#: .././ailurus/ubuntu/app3.py:384
 msgid "Micro-biology software"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:405
+#: .././ailurus/ubuntu/app3.py:385
 msgid ""
 "This software is for molecular biology, structural biology and "
 "bioinformatics.\n"
 "Command: sudo apt-get install med-bio med-bio-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:416
+#: .././ailurus/ubuntu/app3.py:396
 msgid "Tux Paint"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:417
+#: .././ailurus/ubuntu/app3.py:397
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: sudo apt-get install tuxpaint"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:425
+#: .././ailurus/ubuntu/app3.py:405
 msgid "Code::Blocks - C/C++ IDE"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:433
+#: .././ailurus/ubuntu/app3.py:413
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: sudo apt-get install childsplay"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:454
+#: .././ailurus/ubuntu/app3.py:434
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: sudo apt-get install gcompris"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:471
+#: .././ailurus/ubuntu/app3.py:451
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:480
+#: .././ailurus/ubuntu/app3.py:460
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : sudo apt-get install kadu"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:490
+#: .././ailurus/ubuntu/app3.py:470
 msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
@@ -2325,11 +2454,11 @@ msgid ""
 "Command: sudo apt-get install qnapi"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:533
+#: .././ailurus/ubuntu/app3.py:513
 msgid "R language (basic development environment)"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:534
+#: .././ailurus/ubuntu/app3.py:514
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read "
@@ -2337,11 +2466,11 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:543
+#: .././ailurus/ubuntu/app3.py:523
 msgid "R language (full development environment and all plugins)"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:544
+#: .././ailurus/ubuntu/app3.py:524
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read "
@@ -2349,191 +2478,191 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev r-cran-*"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:558
+#: .././ailurus/ubuntu/app3.py:538
 msgid "Bluefish: Edit HTML web-pages"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:559
+#: .././ailurus/ubuntu/app3.py:539
 msgid "Command: sudo apt-get install bluefish"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:589
+#: .././ailurus/ubuntu/app3.py:569
 msgid ""
 "Command: sudo apt-get install wallpaper-tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:609
+#: .././ailurus/ubuntu/app3.py:589
 msgid "LAMP: Install Apache2 + MySQL + PHP"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:610
+#: .././ailurus/ubuntu/app3.py:590
 msgid "Command: sudo tasksel install lamp-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:615
+#: .././ailurus/ubuntu/app3.py:595
 msgid "DNS server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:616
+#: .././ailurus/ubuntu/app3.py:596
 msgid "Command: sudo tasksel install dns-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:621
+#: .././ailurus/ubuntu/app3.py:601
 msgid "Mail server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:622
+#: .././ailurus/ubuntu/app3.py:602
 msgid "Command: sudo tasksel install mail-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:627
+#: .././ailurus/ubuntu/app3.py:607
 msgid "OpenSSH server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:628
+#: .././ailurus/ubuntu/app3.py:608
 msgid "Command: sudo tasksel install openssh-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:633
+#: .././ailurus/ubuntu/app3.py:613
 msgid "PostgreSQL server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:634
+#: .././ailurus/ubuntu/app3.py:614
 msgid "Command: sudo tasksel install postgresql-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:639
+#: .././ailurus/ubuntu/app3.py:619
 msgid "Printer server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:640
+#: .././ailurus/ubuntu/app3.py:620
 msgid "Command: sudo tasksel install print-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:645
+#: .././ailurus/ubuntu/app3.py:625
 msgid "Samba file sharing server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:646
+#: .././ailurus/ubuntu/app3.py:626
 msgid "Command: sudo tasksel install samba-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:651
+#: .././ailurus/ubuntu/app3.py:631
 msgid "Tomcat Java server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:652
+#: .././ailurus/ubuntu/app3.py:632
 msgid "Command: sudo tasksel install tomcat-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:657
+#: .././ailurus/ubuntu/app3.py:637
 msgid "Ubuntustudio-graphics: 2D/3D creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:658
+#: .././ailurus/ubuntu/app3.py:638
 msgid "Command: sudo tasksel install ubuntustudio-graphics"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:663
+#: .././ailurus/ubuntu/app3.py:643
 msgid "Ubuntustudio-audio: Audio creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:664
+#: .././ailurus/ubuntu/app3.py:644
 msgid "Command: sudo tasksel install ubuntustudio-audio"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:669
+#: .././ailurus/ubuntu/app3.py:649
 msgid ""
 "Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:670
+#: .././ailurus/ubuntu/app3.py:650
 msgid "Command: sudo tasksel install ubuntustudio-audio-plugins"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:675
+#: .././ailurus/ubuntu/app3.py:655
 msgid "Ubuntu MID"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:676
+#: .././ailurus/ubuntu/app3.py:656
 msgid "Command: sudo tasksel install mobile-mid"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:681
+#: .././ailurus/ubuntu/app3.py:661
 msgid "Ubuntu Netbook"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:682
+#: .././ailurus/ubuntu/app3.py:662
 msgid "Command: sudo tasksel install mobile-netbook-remix"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:687
+#: .././ailurus/ubuntu/app3.py:667
 msgid "Ubuntustudio-video: Video creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:688
+#: .././ailurus/ubuntu/app3.py:668
 msgid "Command: sudo tasksel install ubuntustudio-video"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:693
+#: .././ailurus/ubuntu/app3.py:673
 msgid "Ubuntu MID Live"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:694
+#: .././ailurus/ubuntu/app3.py:674
 msgid "Command: sudo tasksel install mobile-live"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:699
+#: .././ailurus/ubuntu/app3.py:679
 msgid "Eucalyptus cloud computing cluster"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:700
+#: .././ailurus/ubuntu/app3.py:680
 msgid "Command: sudo tasksel install eucalyptus-simple-cluster"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:705
+#: .././ailurus/ubuntu/app3.py:685
 msgid "Eucalyptus cloud computing node"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:706
+#: .././ailurus/ubuntu/app3.py:686
 msgid "Command: sudo tasksel install eucalyptus-node"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:711
+#: .././ailurus/ubuntu/app3.py:691
 msgid "Ubuntu Enterprise Cloud server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:712
+#: .././ailurus/ubuntu/app3.py:692
 msgid "Command: sudo tasksel install uec"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:717
+#: .././ailurus/ubuntu/app3.py:697
 msgid "Ubuntustudio-font-meta: A lot of font"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:718
+#: .././ailurus/ubuntu/app3.py:698
 msgid "Command: sudo tasksel install ubuntustudio-font-meta"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:723
+#: .././ailurus/ubuntu/app3.py:703
 msgid "* Launch tasksel"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:724
+#: .././ailurus/ubuntu/app3.py:704
 msgid ""
 "This is a helper item. It just launches command: \"sudo tasksel\". Then you "
 "are free to customize your computer via \"tasksel\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:738
+#: .././ailurus/ubuntu/app3.py:718
 msgid ""
 "This is a popular Chinese input method.\n"
 "It is from http://fcitx.googlecode.com/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:809
+#: .././ailurus/ubuntu/app3.py:789
 msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
@@ -2653,13 +2782,9 @@ msgstr ""
 msgid "In names & details."
 msgstr ""
 
-#: .././ailurus/support/disabledpane.py:27
-msgid "This pane is disabled."
-msgstr ""
-
 #: .././ailurus/support/terminal.py:53
-#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:298
-#: .././ailurus/lib.py:349 .././ailurus/lib.py:547 .././ailurus/lib.py:919
+#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:288
+#: .././ailurus/lib.py:339 .././ailurus/lib.py:537 .././ailurus/lib.py:909
 msgid "Run command:"
 msgstr ""
 
@@ -2668,6 +2793,22 @@ msgstr ""
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr ""
 "Du kan trycka \"Ctrl+C\" för att avsluta Ailurus installationsprocess."
+
+#: .././ailurus/support/keygrabber.py:48
+msgid "Press any key ..."
+msgstr ""
+
+#: .././ailurus/support/keygrabber.py:51
+msgid "Press any key..."
+msgstr ""
+
+#: .././ailurus/support/keygrabber.py:138
+msgid "Please press the new key combination"
+msgstr ""
+
+#: .././ailurus/support/keygrabber.py:189
+msgid "Disabled"
+msgstr ""
 
 #: .././ailurus/support/splashwindow.py:42
 msgid ""
@@ -2702,184 +2843,87 @@ msgstr "Hårdvaruinformation"
 msgid "Linux Information"
 msgstr ""
 
-#: .././ailurus/offline_install_pane.py:28
-msgid "Cache installation files"
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:37
-msgid ""
-"N/A ( Directory does not exist. It will be automatically created before "
-"beginning cache files. )"
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:43
-msgid "Select a folder"
-msgstr "Välj en mapp"
-
-#: .././ailurus/offline_install_pane.py:71
-#, python-format
-msgid "%(uncached)s uncached files, %(cached)s cached files"
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:108
-#, python-format
-msgid "Tried to download %s files."
-msgstr "Försökte hämta %s filer."
-
-#: .././ailurus/offline_install_pane.py:109
-#, python-format
-msgid "%s files are downloaded successfully."
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:110
-#, python-format
-msgid "%s files cannot be downloaded."
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:190
-msgid ""
-"You can install applications without Internet if software installation files "
-"are cached into your computer. Moreover, the download time is saved by "
-"caching."
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:193
-msgid ""
-"\n"
-"Ailurus cannot cache \"*.deb\" packages which are in /var/cache/apt . You "
-"can cache them by \"aptoncd\", which is installed by \"sudo apt-get install "
-"aptoncd\". "
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:202
-msgid "Do not automatically delete cached APT packages."
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:207
-msgid "Cache files in this directory:"
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:210 .././ailurus/libsetting.py:164
-msgid "Change"
-msgstr "Ändra"
-
-#: .././ailurus/offline_install_pane.py:212
-msgid "Open"
-msgstr "Öppna"
-
-#: .././ailurus/offline_install_pane.py:227
-msgid "Free disk space:"
-msgstr "Ledigt diskutrymme:"
-
-#: .././ailurus/offline_install_pane.py:231
-msgid "Uncached files:"
-msgstr ""
-
-#: .././ailurus/offline_install_pane.py:232
-msgid "Show URL"
-msgstr "Visa webbadress"
-
-#: .././ailurus/offline_install_pane.py:234
-msgid "Download"
-msgstr "Hämta"
-
-#: .././ailurus/offline_install_pane.py:268
-msgid "File name"
-msgstr "Filnamn"
-
-#: .././ailurus/offline_install_pane.py:280
-msgid "Size"
-msgstr "Storlek"
-
-#: .././ailurus/offline_install_pane.py:286
-msgid "Unknown"
-msgstr "Okänt"
-
-#: .././ailurus/offline_install_pane.py:303
-msgid "(States of files are not detected yet.)"
-msgstr ""
-
 #. print message
-#: .././ailurus/lib.py:678
+#: .././ailurus/lib.py:668
 msgid "Installing packages:"
 msgstr ""
 
-#: .././ailurus/lib.py:688
+#: .././ailurus/lib.py:678
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:714
+#: .././ailurus/lib.py:704
 msgid "Removing packages:"
 msgstr ""
 
-#: .././ailurus/lib.py:724
+#: .././ailurus/lib.py:714
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr ""
 
-#: .././ailurus/lib.py:874
+#: .././ailurus/lib.py:864
 #, python-format
 msgid "%.1f GB"
 msgstr ""
 
-#: .././ailurus/lib.py:876
+#: .././ailurus/lib.py:866
 #, python-format
 msgid "%.1f MB"
 msgstr ""
 
-#: .././ailurus/lib.py:878
+#: .././ailurus/lib.py:868
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: .././ailurus/lib.py:879
+#: .././ailurus/lib.py:869
 msgid "less than 1 KB"
 msgstr "Mindre än 1 KB"
 
-#: .././ailurus/lib.py:887
+#: .././ailurus/lib.py:877
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f timmar"
 
-#: .././ailurus/lib.py:889
+#: .././ailurus/lib.py:879
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f minuter"
 
-#: .././ailurus/lib.py:890
+#: .././ailurus/lib.py:880
 msgid "less than 1 minute"
 msgstr "Mindre än 1 minut"
 
-#: .././ailurus/lib.py:1087 .././ailurus/lib.py:1092
+#: .././ailurus/lib.py:1077 .././ailurus/lib.py:1082
 msgid "Opening web page"
 msgstr ""
 
-#: .././ailurus/lib.py:1232
+#: .././ailurus/lib.py:1222
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1234
+#: .././ailurus/lib.py:1224
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: .././ailurus/lib.py:1311
+#: .././ailurus/lib.py:1301
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: .././ailurus/lib.py:1315
+#: .././ailurus/lib.py:1305
 msgid "Good."
 msgstr ""
 
-#: .././ailurus/lib.py:1333
+#: .././ailurus/lib.py:1312
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1478
+#: .././ailurus/lib.py:1457
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
@@ -2912,6 +2956,12 @@ msgstr ""
 
 #: .././ailurus/libapp.py:150
 msgid "Removed items:"
+msgstr ""
+
+#. output
+#: .././ailurus/libapp.py:190 .././ailurus/libapp.py:313
+#, python-format
+msgid "The packages \"%s\" are not installed."
 msgstr ""
 
 #: .././ailurus/libapp.py:250
@@ -2985,7 +3035,12 @@ msgstr "Uppdatera"
 msgid "Restriction"
 msgstr "Begränsning"
 
-#: .././ailurus/system_setting_pane.py:97
+#: .././ailurus/system_setting_pane.py:58 .././ailurus/gnome/setting.py:480
+#: .././ailurus/gnome/setting.py:490
+msgid "Shortcut key"
+msgstr ""
+
+#: .././ailurus/system_setting_pane.py:98
 msgid ""
 "If you hover mouse pointer above any item, you can read Linux setting skills "
 ":)"
@@ -3155,407 +3210,428 @@ msgstr ""
 msgid "Desktop icons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:101
+#: .././ailurus/gnome/setting.py:116
+msgid "Changed"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:116
+msgid "Application will work next time you restart your computer"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:121
+msgid "Application icons settings"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:131
+msgid "Notify"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:131
+msgid "The login icon will change next time you restart your computer"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:137
+msgid "Login icon setting"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:141
 msgid "Show icons of menu entries"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:103
+#: .././ailurus/gnome/setting.py:143
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:105
+#: .././ailurus/gnome/setting.py:145
 msgid "Menu entry icons setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:109
+#: .././ailurus/gnome/setting.py:150
 msgid "Show icon in buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:111
+#: .././ailurus/gnome/setting.py:152
 msgid "Whether buttons may display an icon next to text."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:113
+#: .././ailurus/gnome/setting.py:154
 msgid "Button icons setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:117
+#: .././ailurus/gnome/setting.py:158
 msgid "Disable terminal bell"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:119
+#: .././ailurus/gnome/setting.py:160
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:121
+#: .././ailurus/gnome/setting.py:162
 msgid "Terminal beep sound setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:125
+#: .././ailurus/gnome/setting.py:166
 msgid "Automatically mount CD and flash disks"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:127
+#: .././ailurus/gnome/setting.py:168
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:130
+#: .././ailurus/gnome/setting.py:171
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:152
+#: .././ailurus/gnome/setting.py:193
 msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:155 .././ailurus/gnome/setting.py:191
+#: .././ailurus/gnome/setting.py:196 .././ailurus/gnome/setting.py:232
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
-#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:187
-#: .././ailurus/libsetting.py:219
+#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:289
+#: .././ailurus/libsetting.py:321
 msgid "GConf key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:157
+#: .././ailurus/gnome/setting.py:198
 msgid "More Nautilus settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:179
+#: .././ailurus/gnome/setting.py:220
 msgid "Larger font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:181
+#: .././ailurus/gnome/setting.py:222
 msgid "Smaller font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:187
+#: .././ailurus/gnome/setting.py:228
 msgid "One-click changing font size"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:190 .././ailurus/gnome/setting.py:198
+#: .././ailurus/gnome/setting.py:231 .././ailurus/gnome/setting.py:239
 msgid "The layout of window title-bar buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:193
+#: .././ailurus/gnome/setting.py:234
 msgid "GNOME classic"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:193
+#: .././ailurus/gnome/setting.py:234
 msgid "MAC OS X"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:193
+#: .././ailurus/gnome/setting.py:234
 msgid "Ubuntu Lucid"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:202
+#: .././ailurus/gnome/setting.py:243
 msgid "double-clicked by mouse left button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:203 .././ailurus/gnome/setting.py:216
+#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:257
 msgid "The effects of double-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:203 .././ailurus/gnome/setting.py:205
-#: .././ailurus/gnome/setting.py:207 .././ailurus/libsetting.py:38
-#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:150
+#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:246
+#: .././ailurus/gnome/setting.py:248 .././ailurus/libsetting.py:38
+#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:130
+#: .././ailurus/libsetting.py:137 .././ailurus/libsetting.py:252
 msgid ""
 "\n"
 "GConf key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:204
+#: .././ailurus/gnome/setting.py:245
 msgid "clicked by mouse right button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:205 .././ailurus/gnome/setting.py:225
+#: .././ailurus/gnome/setting.py:246 .././ailurus/gnome/setting.py:266
 msgid "The effects of right-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:206
+#: .././ailurus/gnome/setting.py:247
 msgid "clicked by mouse wheel:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:207 .././ailurus/gnome/setting.py:234
+#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:275
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "maximize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "minimize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "roll up"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "put behind others"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "maximize horizontally"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:214 .././ailurus/gnome/setting.py:223
-#: .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
+#: .././ailurus/gnome/setting.py:273
 msgid "maximize vertically"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:223 .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:264 .././ailurus/gnome/setting.py:273
 msgid "show menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237
+#: .././ailurus/gnome/setting.py:278
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:242
+#: .././ailurus/gnome/setting.py:283
 msgid "Show \"Input method\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:243 .././ailurus/gnome/setting.py:246
+#: .././ailurus/gnome/setting.py:284 .././ailurus/gnome/setting.py:287
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:245
+#: .././ailurus/gnome/setting.py:286
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248
+#: .././ailurus/gnome/setting.py:289
 msgid "Text-boxes context menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:252
+#: .././ailurus/gnome/setting.py:293
 msgid "Show login splash image: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:254
+#: .././ailurus/gnome/setting.py:295
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:256
+#: .././ailurus/gnome/setting.py:297
 msgid "Splash image:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:258
+#: .././ailurus/gnome/setting.py:299
 msgid "The file which is used as the GNOME splash image."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:260
+#: .././ailurus/gnome/setting.py:301
 msgid "GNOME splash image"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:307
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:268
+#: .././ailurus/gnome/setting.py:309
 msgid "Disable Alt+F2 (Launch application)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:270
+#: .././ailurus/gnome/setting.py:311
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:272
+#: .././ailurus/gnome/setting.py:313
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:274
+#: .././ailurus/gnome/setting.py:315
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:276
+#: .././ailurus/gnome/setting.py:317
 msgid "Disable \"print\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:278
+#: .././ailurus/gnome/setting.py:319
 msgid "Prevent current user from printing any documents."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:280
+#: .././ailurus/gnome/setting.py:321
 msgid "Disable \"print setup\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:282
+#: .././ailurus/gnome/setting.py:323
 msgid "Prevent current user from modifying print settings."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:284
+#: .././ailurus/gnome/setting.py:325
 msgid "Disable \"save as\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:286
+#: .././ailurus/gnome/setting.py:327
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:288
+#: .././ailurus/gnome/setting.py:329
 msgid "Forbid running multiple GNOME session."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:290
+#: .././ailurus/gnome/setting.py:331
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:292
+#: .././ailurus/gnome/setting.py:333
 msgid "Restriction on current user"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:299
+#: .././ailurus/gnome/setting.py:340
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:302
+#: .././ailurus/gnome/setting.py:343
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:304 .././ailurus/gnome/setting.py:312
-#: .././ailurus/gnome/setting.py:320
+#: .././ailurus/gnome/setting.py:345 .././ailurus/gnome/setting.py:353
+#: .././ailurus/gnome/setting.py:361
 #, python-format
 msgid "GConf key: %s"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:310
+#: .././ailurus/gnome/setting.py:351
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:318
+#: .././ailurus/gnome/setting.py:359
 msgid "Size of each thumbnail (in pixels):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:326
+#: .././ailurus/gnome/setting.py:367
 msgid "Nautilus thumbnail settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:331
+#: .././ailurus/gnome/setting.py:373
 msgid "Remember running applications when you log out."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:333
+#: .././ailurus/gnome/setting.py:375
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
 "GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:336
+#: .././ailurus/gnome/setting.py:378
 msgid "Configure autostart applications"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:337
+#: .././ailurus/gnome/setting.py:379
 msgid "Run command: gnome-session-properties"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:340
+#: .././ailurus/gnome/setting.py:382
 msgid "Prompt you before you log out from GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:342
+#: .././ailurus/gnome/setting.py:384
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:344
+#: .././ailurus/gnome/setting.py:386
 msgid "Allow connection from remote hosts."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:347
-msgid "Enable switch to different user from the \"Unlock\" dialog"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:349
-msgid ""
-"If its value is true, you will be able to switch to a different user account "
-"from the \"Unlock\" dialog."
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:351
-msgid ""
-"Show confirmation dialogs when you using indicator session tool to "
-"logout/restart/shutdown"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:353
-msgid ""
-"If its value is false, Gnome will not show confirmation dialogs when you "
-"using the Indicator Session Tool to logout/restart/shutdown computer."
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:357
+#. o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
+#. '/apps/gnome-screensaver/user_switch_enable',
+#. _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
+#. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+#. o = GConfCheckButton(_('Show confirmation dialogs when you using indicator session tool to logout/restart/shutdown'),
+#. '/apps/indicator-session/suppress_logout_restart_shutdown',
+#. _('If its value is false, Gnome will not show confirmation '
+#. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
+#. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+#: .././ailurus/gnome/setting.py:399
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:361
+#: .././ailurus/gnome/setting.py:403
 msgid "Lock screen when screen saver is activated"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:365
+#: .././ailurus/gnome/setting.py:407
 msgid "GNOME session"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:371
+#: .././ailurus/gnome/setting.py:413
 msgid "LCD brightness when on AC power:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:373 .././ailurus/gnome/setting.py:379
+#: .././ailurus/gnome/setting.py:415 .././ailurus/gnome/setting.py:421
 msgid "GConf Key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:377
+#: .././ailurus/gnome/setting.py:419
 msgid "LCD dimming amount when on battery:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:383
+#: .././ailurus/gnome/setting.py:425
 msgid "Backlight"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:387
-msgid "Enable suspending function"
+#: .././ailurus/gnome/setting.py:444
+msgid "Succeed"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:389
-msgid "Enable hibernating function"
+#: .././ailurus/gnome/setting.py:444
+msgid "Rencently used documents has been cleared"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:393
-msgid "Suspending/hibernating funtion"
+#: .././ailurus/gnome/setting.py:445
+msgid "Clear Recent Documents"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:399
+#: .././ailurus/gnome/setting.py:449
 msgid "Change default file manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:405
+#: .././ailurus/gnome/setting.py:455
 msgid "Change default panel program to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:411
+#: .././ailurus/gnome/setting.py:461
 msgid "Change default window manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:417
+#: .././ailurus/gnome/setting.py:467
 msgid "Use your home folder as the desktop"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:422
+#: .././ailurus/gnome/setting.py:472
 msgid "Advance settings"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:477
+msgid "Command line"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:484
+#, python-format
+msgid "%2d:"
 msgstr ""
 
 #: .././ailurus/gnome/tips.py:27
@@ -3863,6 +3939,8 @@ msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
+"Hårdvaru-\n"
+"information"
 
 #: .././ailurus/main.py:72
 msgid ""
@@ -4557,7 +4635,7 @@ msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:354
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:353
 msgid "Ailurus blog"
 msgstr ""
 
@@ -4565,6 +4643,7 @@ msgstr ""
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Daniel Nylander https://launchpad.net/~yeager\n"
 "  Treecko https://launchpad.net/~treeckosour\n"
 "  nanker https://launchpad.net/~nanker"
 
@@ -4574,154 +4653,154 @@ msgid ""
 "Univ., China."
 msgstr ""
 
-#: .././ailurus/common/menu.py:115
+#: .././ailurus/common/menu.py:114
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#: .././ailurus/common/menu.py:129
+#: .././ailurus/common/menu.py:128
 msgid "Ailurus changelog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:140
+#: .././ailurus/common/menu.py:139
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:142
+#: .././ailurus/common/menu.py:141
 msgid "Read changelog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:153
+#: .././ailurus/common/menu.py:152
 msgid "We wish to express thankfulness to these projects:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:157
+#: .././ailurus/common/menu.py:156
 msgid "We sincerely thank these people:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:159
+#: .././ailurus/common/menu.py:158
 msgid "The people who provide inspiration:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:165
+#: .././ailurus/common/menu.py:164
 msgid "The people who designs the logo:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:168
+#: .././ailurus/common/menu.py:167
 msgid "The people who maintain PPA repository:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:171
+#: .././ailurus/common/menu.py:170
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:174
+#: .././ailurus/common/menu.py:173
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:176
 msgid "The people who provide a lot of translation:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:178 .././ailurus/common/menu.py:182
-#: .././ailurus/common/menu.py:189
+#: .././ailurus/common/menu.py:177 .././ailurus/common/menu.py:181
+#: .././ailurus/common/menu.py:188
 msgid "and many other people."
 msgstr ""
 
-#: .././ailurus/common/menu.py:180
+#: .././ailurus/common/menu.py:179
 msgid "The people who report bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:184
+#: .././ailurus/common/menu.py:183
 msgid "The people who eliminate bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:186
 msgid "The people who publicize this software:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:191
+#: .././ailurus/common/menu.py:190
 msgid "and the people not mensioned here."
 msgstr ""
 
-#: .././ailurus/common/menu.py:201
+#: .././ailurus/common/menu.py:200
 msgid "Thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:234
+#: .././ailurus/common/menu.py:233
 msgid "Updates for Ailurus"
 msgstr ""
 
-#: .././ailurus/common/menu.py:239
+#: .././ailurus/common/menu.py:238
 #, python-format
 msgid "A new version is released at %(date)s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:245
+#: .././ailurus/common/menu.py:244
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr ""
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:265
+#: .././ailurus/common/menu.py:264
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:284
+#: .././ailurus/common/menu.py:283
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr ""
 
-#: .././ailurus/common/menu.py:303
+#: .././ailurus/common/menu.py:302
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 
-#: .././ailurus/common/menu.py:309
+#: .././ailurus/common/menu.py:308
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:312
+#: .././ailurus/common/menu.py:311
 msgid "Set Ailurus download parameter"
 msgstr ""
 
-#: .././ailurus/common/menu.py:334
+#: .././ailurus/common/menu.py:333
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: .././ailurus/common/menu.py:340
+#: .././ailurus/common/menu.py:339
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:345
+#: .././ailurus/common/menu.py:344
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:348
+#: .././ailurus/common/menu.py:347
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:358
+#: .././ailurus/common/menu.py:357
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:361
+#: .././ailurus/common/menu.py:360
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: .././ailurus/common/menu.py:365
+#: .././ailurus/common/menu.py:364
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:369
+#: .././ailurus/common/menu.py:368
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:372
+#: .././ailurus/common/menu.py:371
 msgid "About"
 msgstr ""
 
@@ -4879,10 +4958,6 @@ msgstr ""
 msgid "Battery full capacity:"
 msgstr ""
 
-#: .././ailurus/common/hardwareinfo.py:203
-msgid "Sound card:"
-msgstr ""
-
 #: .././ailurus/common/tips.py:27
 msgid ""
 "motto of Ailurus\n"
@@ -4924,6 +4999,8 @@ msgid ""
 "Display machine hardware name\n"
 "uname -m"
 msgstr ""
+"Visa maskinens hårdvarunamn\n"
+"uname -m"
 
 #: .././ailurus/common/tips.py:53
 msgid ""
@@ -4960,6 +5037,8 @@ msgid ""
 "List hardware\n"
 "sudo lshw\n"
 msgstr ""
+"Lista hårdvara\n"
+"sudo lshw\n"
 
 #: .././ailurus/common/tips.py:77
 msgid ""
@@ -5632,16 +5711,28 @@ msgstr "Utveckling"
 msgid "Eclipse"
 msgstr "Eclipse"
 
-#: .././ailurus/libsetting.py:108
+#: .././ailurus/libsetting.py:130
+msgid "The command which will be run."
+msgstr ""
+
+#: .././ailurus/libsetting.py:137
+msgid "The shortcut key."
+msgstr ""
+
+#: .././ailurus/libsetting.py:151
+msgid "Choose a file"
+msgstr ""
+
+#: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:226
+msgid "Image file"
+msgstr "Bildfil"
+
+#: .././ailurus/libsetting.py:210
 #, python-format
 msgid "Choose a file for \"%s\" "
 msgstr ""
 
-#: .././ailurus/libsetting.py:124
-msgid "Image file"
-msgstr "Bildfil"
-
-#: .././ailurus/libsetting.py:146
+#: .././ailurus/libsetting.py:248
 msgid ""
 "\n"
 "File: "
@@ -5649,7 +5740,11 @@ msgstr ""
 "\n"
 "Fil: "
 
-#: .././ailurus/libsetting.py:188
+#: .././ailurus/libsetting.py:266
+msgid "Change"
+msgstr "Ändra"
+
+#: .././ailurus/libsetting.py:290
 #, python-format
 msgid ""
 "\n"

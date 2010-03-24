@@ -1,6 +1,6 @@
 2010-03-23 MA Yue <velly.empire@gmail.com>
 
-    * Add the CompizConfig setting, include:
+    * Add the CompizConfig setting, including:
       Change window decorator
       Random all effects
       Disable minimize effect
