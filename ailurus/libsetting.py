@@ -114,9 +114,6 @@ class GConfImageEntry(gtk.HBox):
                  gtk.STOCK_OPEN, gtk.RESPONSE_OK)
                 )
         import os
-#        if self.image: chooser.set_current_folder( os.path.dirname(self.image) )
-
-#        else:     chooser.set_current_folder( os.environ['HOME'] )
         chooser.set_current_folder('/usr/share/pixmaps/')
         chooser.set_select_multiple(False)
 
@@ -153,7 +150,7 @@ class GConfImageEntry(gtk.HBox):
         self.button.add(image)
         self.button.show_all()
     
-    def __init__(self, tooltip, image ='', image_size=24):
+    def __init__(self, tooltip, image, image_size=24):
         gtk.HBox.__init__(self, False, 1)
         import gconf
         g = gconf.client_get_default()
