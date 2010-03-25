@@ -228,7 +228,7 @@ def __font_size_setting():
 def __layout_of_window_titlebar_buttons():
     label = gtk.Label(_('The layout of window title-bar buttons'))
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
-                           + _("It only can use in Metacity.") )
+                           + _("It can be used in Metacity only.") )
     o = GConfComboBox('/apps/metacity/general/button_layout', 
                       [_('GNOME classic'), _('MAC OS X'), _('Ubuntu Lucid')],
                       ['menu:minimize,maximize,close', 'close,minimize,maximize:menu', 'maximize,minimize,close:'],) 
@@ -499,8 +499,8 @@ def __compiz_setting():
     # Window Decorator    
     label = gtk.Label(_('Set Window Decorator:'))
     label.set_alignment(0, 0.5)
-    label.set_tooltip_markup(_('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command\n'
-                           + _('<span color="red"> It\'s can be effect after next startup </span>') )
+    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup.</span>\n")
+                           + _('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command')
     hbox = gtk.HBox()
     o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 
                       [_('Metacity'), _('Emerald')],
@@ -533,13 +533,13 @@ def __compiz_setting():
     hbox.pack_start(n, False, True, 20)
     table.attach(hbox, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     # number of desktop    
-    label = gtk.Label(_('Screen size horizontal coefficient '))
+    label = gtk.Label(_('Screen horizontal size coefficient'))
     label.set_alignment(0, 0.5)
     label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/hsize' )
     o = GConfHScale( '/apps/compiz/general/screen0/options/hsize', 1, 32 )
     table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     table.attach(o, 1, 2, 2, 3, gtk.FILL|gtk.EXPAND, gtk.FILL)
-    label = gtk.Label(_('Screen size vertical coefficient '))
+    label = gtk.Label(_('Screen vertical size coefficient'))
     label.set_alignment(0, 0.5)
     label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/vsize' )
     o = GConfHScale( '/apps/compiz/general/screen0/options/vsize', 1, 32 )
