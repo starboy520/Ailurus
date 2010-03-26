@@ -646,3 +646,17 @@ class Repo_Songbird(_repo):
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x31E0163DFE442D34A17B17BDD725E4885719E347'
         self.key_id = '5719E347'
         _repo.__init__(self)
+
+class Repo_Mplayer_VOD(_repo):
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.desc = 'mplayer_vod'
+        self.apt_content = 'mplayer'
+        self.web_page = 'https://launchpad.net/~homer-xing/+archive/mplayer-vod'
+        self.apt_file = '/etc/apt/sources.list.d/mplayer-vod.list'
+        self.apt_conf = [ 'deb http://ppa.launchpad.net/homer-xing/mplayer-vod/ubuntu $version main' ]
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xFDC8AE7E17C96D481FEA0410D10C093AFFA63A31'
+        self.key_id = 'FFA63A31'
+        _repo.__init__(self)
+    def support(self):
+        return False
