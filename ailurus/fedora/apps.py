@@ -31,6 +31,8 @@ class WINE(_rpm_install):
     detail = _('This is an indispensable application for running Windows applications on Linux.\n'
        'Command: yum install wine')
     logo = 'wine.png'
+    license = ('GNU Lesser General Public License, '
+               'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     def __init__(self):
         self.pkgs = 'wine'
@@ -97,6 +99,8 @@ class CHMSee_Read_CHM_Documents(_rpm_install) :
     detail = _('Command: yum install chmsee')
     category = 'office'
     logo = 'chmsee.png'
+    license = ('GNU General Public License (GPL), '
+               'see http://code.google.com/p/chmsee/')
     def __init__(self):
         self.pkgs = 'chmsee'
 
@@ -105,6 +109,8 @@ class Workrave_And_Auto_Start_It(_rpm_install) :
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
        'Command: yum install workrave')
     logo = 'workrave.png'
+    license = ('GNU General Public License (GPL), '
+               'see http://sourceforge.net/projects/workrave/')
     def __init__(self):
         self.pkgs = 'workrave'
         import os
@@ -150,6 +156,7 @@ class VIM_and_VIMRC(_rpm_install) :
        '"yum install vim-enhanced" command is executed. '
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
+    license = ('GNU General Public License (GPL)')
     category = 'dev'
     logo = 'vim.png'
     def __vimrc_installed(self):
@@ -212,6 +219,7 @@ class Stardict_without_Dictionaries(_rpm_install):
                'stardict-dic-ru: Russian dictionaries\n'
                'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
                'stardict-dic-zh_TW: Traditional Chinese dictionaries')
+    license = _('GNU General Public License (GPL)')
     logo = 'stardict.png'
     def __init__(self):
         self.pkgs = 'stardict'
@@ -220,6 +228,7 @@ class Liferea(_rpm_install):
     __doc__ = _('Liferea: a RSS feed reader')
     detail = _('This is a simple and easy used RSS feed reader.\n'
        'Command: yum install liferea')
+    license = ('GNU General Public License (GPL)')
     category = 'internet'
     logo = 'liferea.png'
     def __init__(self):
@@ -243,6 +252,7 @@ class CommonUsedProgrammingPackages(_rpm_install):
        'qt3-devel subversion git')
     category = 'dev'
     logo = 'program-tools.png'
+    license = _('GNU General Public License (GPL)')
     def __init__(self):
         self.pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
                      'qt3-devel subversion git')
@@ -254,6 +264,7 @@ class QtiPlot(_rpm_install) :
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.\n'
        'Command: yum install qtiplot')
     category = 'math'
+    license = ('GNU General Public License (GPL)')
     logo = 'qtiplot.png'
     def __init__(self):
         self.pkgs = 'qtiplot'
@@ -261,6 +272,7 @@ class QtiPlot(_rpm_install) :
 class QCad (_rpm_install):
     'QCad'
     detail = _('A CAD software which supports DXF-format. ')
+    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     category = 'em'
     logo = 'qcad.png'
     def __init__(self):
@@ -315,6 +327,8 @@ class Octave(_rpm_install):
     __doc__ = 'Octave'
     detail = _(u'A Matlab® compatible numerical computation appliation.\n'
        'Command: yum install qtoctave')
+    license = ('GNU General Public License (GPL), '
+               'see http://www.gnu.org/software/octave/license.html')
     logo = 'octave.png'
     category = 'math'
     def __init__(self):
@@ -325,7 +339,9 @@ class Generic_Genome_Browser:
     detail = _('Generic Genome Browser is a combination of database and interactive web page '
                'for manipulating and displaying annotations on genomes.\n'
                '<span color="red">Due to the limitation of the authors\' programming ability, '
-               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
+               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
+    license = ('Creative Commons Licence, '
+               'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
     category='biology'
     logo = 'generic_genome_browser.png'
     def install(self):
@@ -345,6 +361,7 @@ class TuxPaint(_rpm_install):
     detail = _('This is a drawing program for young children three years and up.\n' 
                     'Command: yum install tuxpaint')
     category = 'education'
+    license = ('GNU General Public License (GPL)')
     logo = 'tuxpaint.png'
     def __init__(self):
         self.pkgs='tuxpaint'
@@ -354,6 +371,7 @@ class ChildsPlay(_rpm_install):
     detail = _('This is a suite of educational games for young children.\n'
                     'Command: yum install childsplay')
     category = 'education'
+    license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
     def __init__(self):
         self.pkgs ='childsplay'
@@ -363,6 +381,7 @@ class GCompris(_rpm_install):
     detail = _('GCompris provides educational games for children aged 2 to 10.\n'
                     'Command: yum install gcompris')
     category = 'education'
+    license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'
     def __init__(self):
         self.pkgs = 'gcompris'
@@ -372,6 +391,7 @@ class QT_Creator(_rpm_install):
     detail = _('This is an IDE for Qt.\n'
                'Command: yum install qt-creator')
     category = 'dev'
+    license = 'GNU General Public License (GPL)'
     logo = 'qtcreator.png'
     def __init__(self):
         self.pkgs = 'qt-creator'
@@ -381,6 +401,7 @@ class Kadu(_rpm_install):
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : yum install kadu')
     category = 'internet'
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.pkgs = 'kadu'
     def support(self):
@@ -390,6 +411,7 @@ class Parcellite(_rpm_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
+    license = 'GNU General Public License (GPL)'
     logo = 'parcellite.png'
     def __init__(self):
         self.pkgs = 'parcellite'
@@ -454,6 +476,7 @@ class Wallpaper_Tray(_rpm_install):
     detail = _('Command: yum install wp_tray\n'
                'After installation, please restart your computer. '
                'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
+    license = 'GNU General Public License (GPL)'
     logo = 'wallpaper-tray.png'
     def __init__(self):
         self.pkgs = 'wp_tray'
@@ -462,6 +485,7 @@ class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
     detail = _('Command: yum install gnash')
     category = 'media'
+    license = 'GNU General Public License (GPL)'
     logo = 'flash.png'
     def __init__(self):
         self.pkgs = 'gnash'
@@ -473,6 +497,7 @@ class Multimedia_Codecs (_rpm_install) :
        'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
                      'gstreamer-plugins-good gstreamer-plugins-ugly')
     category = 'media'
+    license = 'GNU Lesser General Public License'
     logo = 'codec.png'
     def __init__(self):
         self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'

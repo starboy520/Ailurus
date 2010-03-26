@@ -44,6 +44,7 @@ class NScripts():
     detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus. '
                'Its web site is http://freshmeat.net/projects/nscripts . '
                'NScripts is installed in ~/.gnome2/nautilus-scripts.')
+    license = 'GNU General Public License v3'
     logo = 'nautilus.png'
 
     def install(self):
