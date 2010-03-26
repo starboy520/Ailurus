@@ -2,9 +2,8 @@ ailurus.desktop.in
 support/policykit0/cn.ailurus.policy.in
 support/policykit1/cn.ailurus.policy.in
 ./ailurus/fedora/osinfo.py
+./ailurus/fedora/repos.py
 ./ailurus/fedora/apps.py
-./ailurus/fedora/controversial_repository.py
-./ailurus/fedora/controversial_apps.py
 ./ailurus/fedora/__init__.py
 ./ailurus/ubuntu/osinfo.py
 ./ailurus/ubuntu/fastest_mirror_pane.py

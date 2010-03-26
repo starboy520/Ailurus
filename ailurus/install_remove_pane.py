@@ -327,7 +327,7 @@ class InstallRemovePane(gtk.VBox):
         obj.showed_in_toggle = not obj.showed_in_toggle
         treestore.row_changed(path,  treestore.get_iter(path) )
         self.__show_detail(obj)
-    
+
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value ( iter, 0 )
         import types
@@ -375,11 +375,16 @@ class InstallRemovePane(gtk.VBox):
             
             import StringIO
             text = StringIO.StringIO()
-            #write detail
+
             detail = getattr(obj, 'detail' ,'')
             if detail:
                 text.write(detail)
                 if detail[-1]!='\n': text.write('\n')
+            
+            license = getattr(obj, 'license' ,'')
+            if license:
+                print >>text, _('License:'), license   
+            
             if obj.cache_installed==False: # can install
                 # will be installed?
                 if not obj.showed_in_toggle: 
@@ -395,6 +400,7 @@ class InstallRemovePane(gtk.VBox):
                 if obj.size: 
                     size = derive_size(obj.size)
                     print >>text, begin_color()+_('Installed size is'), size, end_color(),
+
             else: # already installed
                 if obj.showed_in_toggle:
                     print >>text, color(_('Installed.')), 
@@ -404,6 +410,7 @@ class InstallRemovePane(gtk.VBox):
                     if obj.size: 
                         size = derive_size(obj.size)
                         print >>text, begin_color()+_('Will free %s disk space.')%size, end_color(),
+                        
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()
 
@@ -610,7 +617,6 @@ class InstallRemovePane(gtk.VBox):
 
     def __init__(self, parentwindow, classobjs):
         gtk.VBox.__init__(self, False, 0)
-
         self.detail = None # A gtk.Label which shows widget detail.
         self.treeview = None # A gtk.TreeView in right pane.
         self.treestore = None # A gtk.TreeStore behind self.treeview

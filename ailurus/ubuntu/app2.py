@@ -26,6 +26,7 @@ from libapp import *
 from third_party_repos import _repo
 
 class _repo_mplayer_vod(_repo):
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = 'mplayer_vod'
         self.apt_content = 'mplayer'
@@ -65,6 +66,7 @@ class PBC:
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
+    license = 'GNU General Public License (GPL)'
     time = 30
     size = ( 300 + 808 ) * 1000
     logo = 'pbc.png'
@@ -99,6 +101,97 @@ class PBC:
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
 
+class Build_Essential(_apt_install):
+    'Build-essential'
+    detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
+               'Command: sudo apt-get install build-essential')
+    category = 'dev'
+    license = 'GNU General Public License (GPL)'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'build-essential'
+
+class ManPages(_apt_install):
+    'ManPages'
+    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
+              'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
+    category = 'dev'
+    license = 'GNU General Public License (GPL)'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
+
+class Ctags(_apt_install):
+    'Exuberant-ctags'
+    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
+               'Command: sudo apt-get install exuberant-ctags')
+    category = 'dev'
+    license = 'GNU General Public License (GPL)'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'exuberant-ctags'
+
+class GMP(_apt_install):
+    __doc__ = _('GNU multiprecision arithmetic library')
+    detail = _('Command: sudo apt-get install libgmp3-dev')
+    category = 'dev'
+    license = 'GNU General Public License (GPL)'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libgmp3-dev'
+
+class Ncurses_and_qt3mt(_apt_install):
+    __doc__ = _('Ncurses5 and QT3')
+    detail = _('libncurses5 is a library controlling writing to the console screen.\n'
+               'libqt3-mt is Trolltech Qt library, version 3.\n' 
+               'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libncurses5-dev libqt3-mt-dev'
+        
+class Svn_Git_bzr(_apt_install):
+    __doc__ = _('Subversion, git, and bzr')
+    detail = _('subversion, git and bzr are popular version control systems.\n'
+               'Command: sudo apt-get install subversion git-core bzr')
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'subversion git-core bzr'
+        
+class AutoTools(_apt_install):
+    __doc__ = _('Autotools')
+    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
+               'automake is a tool for automatically generating Makefile.\n'
+               'Command: sudo apt-get install autoconf automake autotool')
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'autotool autoconf automake'
+        
+class FreeGLut3(_apt_install):
+    __doc__ = _('OpenGL library')  
+    detail = _('This is a library for writing OpenGL programs.\n'
+                'Command: sudo apt-get install freeglut3-dev') 
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'freeglut3-dev'
+        
+class Boost(_apt_install):
+    __doc__ = _('Boost library')
+    detail = _('Command: sudo apt-get install libboost-dev')
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libboost-dev'
+
+
 class CommonUsedProgrammingPackages(_apt_install):
     __doc__ = _('Useful applications for programming')
     detail = _('The tools are:\n'
@@ -118,6 +211,7 @@ class CommonUsedProgrammingPackages(_apt_install):
        'build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags '
        'libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core')
     category = 'dev'
+
     time = 55
     size = 30988 * 1000
     logo = 'program-tools.png'
@@ -128,12 +222,66 @@ class CommonUsedProgrammingPackages(_apt_install):
                       " libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core" )
     def get_reason(self, f):
         self._get_reason(f)
+    license ='GNU Lesser General Public License'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+    
+class PipeViewer(_apt_install):
+    __doc__ = _('pv: a pipe viewer')
+    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
+               'Command: sudo apt-get install pv')
+    license = ('ARTISTIC 2.0 license, '
+               'see http://www.ivarch.com/programs/quickref/pv.shtml')
+    def __init__(self):
+        self.pkgs = 'pv'
+          
+class AutoApt(_apt_install):
+    'Auto-apt'
+    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.\n'
+               'Command: sudo apt-get install auto-apt')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'auto-apt'
+
+class CheckInstall(_apt_install):
+    'CheckInstall'
+    detail = _('Checkinstall help you build deb package. '
+               'Command: sudo apt-get install checkinstall')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'checkinstall'
+        
+class Umbrello(_apt_install):
+    __doc__ = _('Umbrello: UML modelling')
+    detail = _('Umbrello help you do UML modelling.\n'
+               'Command: sudo apt-get install umbrello')
+    license = 'GNU General Public License (GPL)'
+    category = 'dev'
+    logo = 'program-tools.png'
+    def __init__(self):
+        self.pkgs = 'umbrello'
+
+class Ubuntu_Studio_Theme(_apt_install):
+    __doc__ = _('Ubuntu Studio Theme')
+    detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
+    
+class MiniCom_Ckermit(_apt_install):
+    __doc__ = _('Minicom and ckermit')
+    detail = _('Command: sudo apt-get install minicom ckermit')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'minicom ckermit'
 
 class VirtualBox:
     'SUN® VirtualBox 3'
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
+    license = 'GNU General Public License (GPL)'
     category = 'vm'
     manual = True
     logo = 'virtualbox.png'
@@ -157,6 +305,7 @@ class GNOMEArtNextGen:
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
+    license = 'GNU General Public License (GPL)'
     size = 225 * 1000
     logo = 'gnomeartng.png'
     def install(self):
@@ -213,6 +362,7 @@ class QtiPlot(_apt_install) :
        'Command: sudo apt-get install qtiplot')
     category = 'math'
     size = 6064 * 1000
+    license = 'GNU General Public License (GPL)'
     logo = 'qtiplot.png'
     def __init__(self):
         self.pkgs = 'qtiplot'
@@ -222,6 +372,32 @@ class Extcalc(_apt_install):
     detail = _('This is a multifunctional graphic calculator.\n'
         'Command: sudo apt-get install extcalc')
     category = 'math'
+    license = 'GNU General Public License (GPL)'
     logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
+     
+class StartupManager(_apt_install):
+    __doc__ = _('Satartup Manager')   
+    detail = _('Satartup manager helps you change GRUB settings and themes.\n'
+               'Command: sudo apt-get install startupmanager')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'startupmanager'
+        
+class Zhcon(_apt_install):
+    __doc__ = _('Zhcon')
+    detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
+               'You can launch it by "zhcon --utf8".\n'
+               'Command: sudo apt-get install zhcon')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'zhcon'
+        
+class PowerTop(_apt_install):
+    'PowerTop'
+    detail = _('Powertop helps you save power for your laptop.\n'
+               'Command: sudo apt-get install powertop')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'powertop'

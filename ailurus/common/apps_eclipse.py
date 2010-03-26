@@ -94,7 +94,7 @@ Type=Application
 Categories=Development
 Icon=/opt/eclipse/icon.xpm''')
 
-class Eclipse_basic(_path_lists): # Eclipse Public License
+class Eclipse_basic(_path_lists):
     __doc__ = _('Eclipse (basic development environment)')
     detail = ( 
             _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
@@ -105,6 +105,8 @@ class Eclipse_basic(_path_lists): # Eclipse Public License
             )
     category = 'eclipse'
     logo = 'eclipse.png'
+    license = ('Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/org/documents/epl-v10.php')
     def install(self):
         if get_arch() == 32:
             r = R([
@@ -337,10 +339,12 @@ class Eclipse_basic(_path_lists): # Eclipse Public License
         obj = cls()
         if not obj.installed(): obj.install()
 
-class Eclipse_J2EE(_path_lists): # Eclipse Public License
+class Eclipse_J2EE(_path_lists):
     __doc__ = _('Eclipse (basic development environment + J2EE)')
     category = 'eclipse'
     logo = 'eclipse.png'
+    license = ('Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/org/documents/epl-v10.php')
     def install(self):
         if get_arch() == 32:
             r = R([
@@ -558,10 +562,12 @@ class Eclipse_J2EE(_path_lists): # Eclipse Public License
         if bool(List) == False: return False
         return _path_lists.installed(self)
 
-class CDT(_path_lists): # Eclipse Public License
+class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
     detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse'
+    license = ('Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/legal/')
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
@@ -577,10 +583,12 @@ class CDT(_path_lists): # Eclipse Public License
         gksudo("unzip -qo %s -d %s"%(f, self.path))
         gksudo("chown $USER:$USER /opt/eclipse -R")
 
-class Pydev(_path_lists): # Eclipse Public License
+class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
     detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse'
+    license = ('Eclipse Public License (EPL), '
+               'see http://pydev.org/about.html')
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
@@ -596,7 +604,7 @@ class Pydev(_path_lists): # Eclipse Public License
         gksudo("unzip -qo %s -d %s"%(f, self.path))
         gksudo("chown $USER:$USER /opt/eclipse -R")
 
-class Aptana: # It is dual-licensed under the terms of Aptana Public License and GPL
+class Aptana:
     __doc__ = _('Aptana: Web application development')
     detail = _('Aptana is from http://www.aptana.org/studio/plugin\n'
                'Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n'
@@ -604,6 +612,7 @@ class Aptana: # It is dual-licensed under the terms of Aptana Public License and
                'Aptana cannot be removed by Ailurus. '
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
+    license = ' # It is dual-licensed under the terms of Aptana Public License and GPL.'
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/com.aptana.ide.*')
@@ -621,11 +630,12 @@ class Aptana: # It is dual-licensed under the terms of Aptana Public License and
     def remove(self):
         raise NotImplementedError
 
-class RadRails: # released under GPL v3 or Aptana Public License
+class RadRails:
     __doc__ = _('RadRails: Ruby development')
     detail = _('Over the past RadRails was called "RDT". '
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
     category = 'eclipse'
+    license = 'It is released under GPL v3 and Aptana Public License.'
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/com.aptana.radrails.*')
@@ -643,10 +653,13 @@ class RadRails: # released under GPL v3 or Aptana Public License
     def remove(self):
         raise NotImplementedError
 
-class Mylyn(_path_lists): # Eclipse Public License
+class Mylyn(_path_lists):
     'Mylyn'
     detail = _('Mylyn is from http://www.eclipse.org/mylyn/downloads/')
     category = 'eclipse'
+    license = ('Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/legal/')
+    
     def __init__(self):
         self.path = '/opt/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
@@ -657,10 +670,12 @@ class Mylyn(_path_lists): # Eclipse Public License
         gksudo("unzip -qo %s -d %s" % (f, self.path) )
         gksudo("chown $USER:$USER /opt/eclipse -R")
 
-class DLTK: # Eclipse Public License
+class DLTK:
     __doc__ = _('Dynamic languages toolkit')
     detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
     category = 'eclipse'
+    License = ('Eclipse Distribution License (EDL), Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/legal/')
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/org.eclipse.dltk.*')
@@ -682,10 +697,12 @@ class DLTK: # Eclipse Public License
         obj = cls()
         if not obj.installed(): obj.install()
 
-class PDT: # Eclipse Public License
+class PDT:
     __doc__ = _('PDT: PHP development')
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
+    license = ('Eclipse Public License (EPL), '
+               'see http://www.eclipse.org/legal/')
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/org.eclipse.php.*')
@@ -703,10 +720,11 @@ class PDT: # Eclipse Public License
     def remove(self):
         raise NotImplementedError
 
-class Subversive: # Eclipse Public License
+class Subversive:
     __doc__ = _('Subversive: Use SVN in Eclipse')
     detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
     category = 'eclipse'
+    license = 'Eclipse Public License (EPL)'
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/org.eclipse.team.svn.*')
@@ -724,10 +742,11 @@ class Subversive: # Eclipse Public License
     def remove(self):
         raise NotImplementedError
 
-class MTJ(_path_lists): # Eclipse Public License
+class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
     detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
     category = 'eclipse'
+    license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
     def __init__(self):
         self.path = '/opt/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]

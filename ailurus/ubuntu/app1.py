@@ -154,6 +154,7 @@ class Typespeed(_apt_install) :
     size = 356 * 1000
     category = 'game'
     logo = 'typespeed.png'
+    license = 'GNU Lesser General Public License (LGPL)'
     def __init__(self):
         self.pkgs = "typespeed"
 
@@ -206,6 +207,8 @@ class Evince_Read_Chinese_PDF(_apt_install) :
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
     detail = _('Command: sudo apt-get install chmsee')
+    license = ('GNU General Public License (GPL), '
+               'see http://code.google.com/p/chmsee/')
     category = 'office'
     size = 590 * 1000
     time = 6
@@ -217,6 +220,8 @@ class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
        'Command: sudo apt-get install workrave')
+    license = ('GNU General Public License (GPL)'
+                'see http://sourceforge.net/projects/workrave/')
     size = 1012 * 1000
     time = 5
     logo = 'workrave.png'
@@ -266,6 +271,7 @@ class VIM_and_VIMRC(_apt_install) :
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
     category = 'dev'
+    license = 'GNU General Public License (GPL)'
     size = 1892 * 1000
     time = 4
     logo = 'vim.png'
@@ -314,6 +320,7 @@ class Multimedia_Codecs (_apt_install) :
        'Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad '
        'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse')
     category = 'media'
+    license = 'GNU Lesser General Public License'
     size = 6868 * 1000
     time = 28
     logo = 'codec.png'
@@ -332,6 +339,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     size = 256 * 1000
     time = 4
     category = 'office'
+    license = 'GNU Lesser General Public License'
     logo = 'cups.png'
     def __init__(self):
         self.pkgs = 'cups-pdf'
@@ -356,6 +364,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
     detail = _('Command: sudo apt-get install cpus-pdf')
+    license = 'GNU Lesser General Public License'
     category = 'office'
     logo = 'cups.png'
     def __init__(self):
@@ -368,6 +377,7 @@ class Flash_Player(_apt_install):
     detail = _('Command: sudo apt-get install flashplugin-installer')
     time = 271
     category = 'media'
+    license = 'Proprietary, freeware EULA'
     logo = 'flash.png'
     def __init__(self):
         self.pkgs = 'flashplugin-installer'
@@ -407,6 +417,7 @@ class AdobeReader:
     __doc__ = _(u'Adobe® PDF Reader')
     detail = _('Official site: http://get.adobe.com/cn/reader/')
     category = 'office'
+    license = 'Adobe EULA'
     logo = 'adobereader.png'
     def __init__(self):
         pass
@@ -432,6 +443,7 @@ class StardictAndDictionaries(_apt_install):
        'Stardict official site is http://stardict.sourceforge.net/. '
        'Dictionaries are obtained from http://stardict.sourceforge.net/Dictionaries_zh_CN.php\n'
        'Command: sudo apt-get install stardict sdcv')
+    license = 'GNU General Public License (GPL)'
     time = 18
     size = 2424 * 1000 + 36796 * 1000 # deb installed size and four dictionary directories.
     Chinese = True
@@ -515,6 +527,7 @@ class Liferea(_apt_install):
     detail = _('This is a simple and easy used RSS feed reader.\n'
        'Command: sudo apt-get install liferea')
     category = 'internet'
+    license = 'GNU General Public License (GPL)'
     time = 7
     size = 3792 * 1000
     logo = 'liferea.png'
@@ -526,6 +539,7 @@ class FireWall(_apt_install):
     detail = _('Linux system comes up with a firewall "iptables". '
        'Firestarter is the graphical frontend of "iptables".\n'
        'Command: sudo apt-get install firestarter')
+    license = 'GNU General Public License (GPL)'
     category = 'internet'
     time = 9
     size = 1980 * 1000
@@ -538,6 +552,7 @@ class InstallFreshLinuxKernel:
     detail = _(u'This is Linux kernel version 2.6.31. '
        u'It contains GEM (Graphics Execution Manager), which is the new video driver architecture of Intel®. '
        'It is downloaded from http://kernel.ubuntu.com/~kernel-ppa/mainline/')
+    license = 'Various including GNU General Public License, BSD License, Apache License, MIT License, and others'
     time = 46
     size = 163996*1000
     manual = True
@@ -604,3 +619,19 @@ class InstallFreshLinuxKernel:
                       'linux-headers-%s-generic'%self.version,
                       'linux-image-%s-generic'%self.version )
         APT.cache_changed()
+
+class MACChanger(_apt_install):
+    __doc__ = _('MACChanger: change MAC address')
+    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
+               'Command: sudo apt-get install macchanger')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'macchanger'
+
+class Bluetooth(_apt_install):
+    __doc__ = _('Bluetooth support')
+    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+
