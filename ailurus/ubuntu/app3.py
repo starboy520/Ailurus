@@ -31,6 +31,7 @@ class Varkon(_apt_install, _path_lists):
                  '<span color="blue"><u>http://varkon.sourceforge.net/man.htm</u></span> before using it. ') +
                _(u'Developed by Örebro university, Sweden.') )
     category = 'em'
+    license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
     time = 10
     logo = 'varkon.png'
@@ -58,6 +59,7 @@ class FreeCAD(_apt_install):
     __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
     detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
     category = 'em'
+    license = 'GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL)'
     size = 15724000
     time = 51
     logo = 'freecad.png'
@@ -111,6 +113,7 @@ class QCad(_apt_install):
     'QCad'
     detail = _('A CAD software which supports DXF-format. ')
     category = 'em'
+    license = 'Non-free with limited-time free trial (professional edition) or GPL (community edition)'
     size = 18056000
     logo = 'qcad.png'
     def __init__(self):
@@ -121,6 +124,8 @@ class Moonlight(_apt_install):
     detail = _(u'Moonlight provides Windows® media codecs. '
        u'By this application, you can enjoy Windows® video/audio in webpages.\n'
        'Command: sudo apt-get install moonlight-plugin-mozilla')
+    license = ('GNU GNU Library or Lesser General Public License (LGPL) and the MIT X11 licenses'
+                'see http://www.mono-project.com/Moonlight')
     category = 'media'
     logo = 'moonlight.png'
     def __init__(self):
@@ -282,6 +287,7 @@ class Octave(_apt_install):
     detail = _(u'A Matlab® compatible numerical computation appliation.\n'
        'Command: sudo apt-get install qtoctave')
     logo = 'octave.png'
+    license = 'GNU General Public License (GPL)'
     category = 'math'
     time = 16
     size = 1736000
@@ -298,6 +304,8 @@ class Generic_Genome_Browser:
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
+    license = ('Creative Commons Licence'
+                'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
     logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
@@ -313,6 +321,7 @@ class Realplayer32:
        'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>')
     size = 19911000
     category = 'media'
+    license = 'Proprietary'
     logo = 'realplayer.png'
     def install(self):
         f = R(
@@ -332,6 +341,7 @@ class Screenlets(_apt_install):
        'in order to decorate the desktop.\n'
        'Command: sudo apt-get install screenlets')
     category = 'appearance'
+    license = 'GNU General Public License (GPL)'
     logo = 'screenlets.png'
     size = 9089000
     def __init__(self):
@@ -344,6 +354,7 @@ class CompizSettingManager(_apt_install):
        'It can configurate effects such as "Desktop cube" and "3D windows".\n'
        'Command: sudo apt-get install compizconfig-settings-manager')
     category = 'appearance'
+    license = 'GNU General Public License (GPL)'
     logo = 'compizconfig.png'
     size = 4166000 #estimated
     def __init__(self):
@@ -354,6 +365,7 @@ class CompizSettingManagerSimple(_apt_install):
     detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
     logo = 'compizconfig.png'
+    license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
     def __init__(self):
         self.pkgs = 'simple-ccsm'
@@ -363,6 +375,7 @@ class GoogleChrome:
     detail = _(
         'This is the web browser from Google. \n'
         'You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome.')
+    license = 'Google Chrome Terms of Service'
     category = 'internet'
     def install(self):
         if get_arch() == 32:
@@ -385,6 +398,7 @@ class ScienceBiology(_apt_install):
     detail = _('This software is for molecular biology, structural biology and bioinformatics.\n' 
                'Command: sudo apt-get install med-bio med-bio-dev')
     category='biology'
+    license = 'Eclipse Public License, GNU General Public License (GPL)'
     logo = 'med-bio.png'
     def __init__(self):
         self.pkgs='med-bio med-bio-dev'
@@ -397,12 +411,14 @@ class TuxPaint(_apt_install):
     detail = _('This is a drawing program for young children three years and up.\n' 
                     'Command: sudo apt-get install tuxpaint')
     category = 'education'
+    license = _('the GNU General Public License (GPL)')
     logo = 'tuxpaint.png'
     def __init__(self):
         self.pkgs='tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
+    license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'codeblocks.png'
     def __init__(self):
@@ -413,6 +429,7 @@ class ChildsPlay(_apt_install):
     detail = _('This is a suite of educational games for young children.\n'
                     'Command: sudo apt-get install childsplay')
     category = 'education'
+    license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
@@ -434,6 +451,7 @@ class GCompris(_apt_install):
     detail = _('GCompris provides educational games for children aged 2 to 10.\n'
                     'Command: sudo apt-get install gcompris')
     category = 'education'
+    license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
@@ -451,6 +469,7 @@ class QT_Creator(_apt_install):
     detail = _('This is an IDE for Qt.\n'
                'Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig')
     category = 'dev'
+    license = 'GNU General Public License (GPL)'
     logo = 'qtcreator.png'
     def __init__(self):
         self.pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
@@ -470,6 +489,7 @@ class Qnapi(_apt_install):
     detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
                 'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.\n'
                 'Command: sudo apt-get install qnapi')
+    license = 'GNU General Public License (GPL)'
     category = 'media'
     def __init__(self):
         self.pkgs = 'qnapi'
@@ -503,6 +523,7 @@ class Parcellite(_apt_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
+    license = 'GNU General Public License'
     logo = 'parcellite.png'
     def __init__(self):
         self.pkgs = 'parcellite'
@@ -515,6 +536,7 @@ class R_Language_Basic(_apt_install):
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
                'Command: sudo apt-get install r-base r-base-dev')
     category = 'statistics'
+    license = 'GNU General Public License' 
     logo = 'R_language.png'
     def __init__(self):
         self.pkgs = 'r-base r-base-dev'
@@ -526,6 +548,7 @@ class R_Language_Full(_apt_install):
                'Command: sudo apt-get install r-base r-base-dev r-cran-*')
     category = 'statistics'
     logo = 'R_language.png'
+    license = 'GNU General Public License' 
     def __init__(self):
         import StringIO
         value = StringIO.StringIO()
@@ -537,6 +560,7 @@ class R_Language_Full(_apt_install):
 class Bluefish(_apt_install):
     __doc__ = _('Bluefish: Edit HTML web-pages')
     detail = _('Command: sudo apt-get install bluefish')
+    license = 'GNU General Public License' 
     category = 'dev'
     logo = 'bluefish.png'
     def __init__(self):
@@ -546,6 +570,7 @@ class Native_64bit_Flash(_path_lists):
     __doc__ = _('Adobe native 64bit Flash plugin for Firefox')
     category = 'media'
     logo = 'flash.png'
+    license = 'Proprietary freeware,EULA'
     def __init__(self):
         self.paths = [
             '/usr/lib/mozilla/plugins/libflashplayer.so',
@@ -570,6 +595,7 @@ class Wallpaper_Tray(_apt_install):
                'After installation, please restart your computer. '
                'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
     logo = 'wallpaper-tray.png'
+    license = 'GNU General Public License'
     def __init__(self):
         self.pkgs = 'wallpaper-tray'
 
@@ -718,6 +744,7 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
+    license = 'the GNU General Public License (GPL)'
     def install(self):
         if get_arch() == 32:
             f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_i386.deb'],
@@ -734,6 +761,7 @@ class Fctix:
 class XBMC(_apt_install):
     'XBMC'
     category = 'media'
+    license = 'the GNU General Public License (GPL)'
     def install(self):
         from third_party_repos import Repo_XBMC
         xbmc_obj=Repo_XBMC()
@@ -746,6 +774,7 @@ class XBMC(_apt_install):
 class Songbird(_apt_install):
     'Songbird'
     category = 'media'
+    license = 'the GNU General Public License (GPL)'
     def install(self):
         from third_party_repos import Repo_Songbird
         song_obj = Repo_Songbird()
@@ -758,6 +787,7 @@ class Songbird(_apt_install):
 class DropBox(_apt_install):
     'Dropbox'
     category = 'internet'
+    license = 'free for Linux'
     def install(self):
         from third_party_repos import Repo_Dropbox
         drop_obj = Repo_Dropbox()
@@ -770,6 +800,7 @@ class DropBox(_apt_install):
 class Skype(_apt_install):
     'Skype'
     category = 'internet'
+    license = 'proprietary'
     def install(self):
         from third_party_repos import Repo_Skype
         sky_obj = Repo_Skype()
@@ -786,6 +817,7 @@ class Vuze_Karmic(_apt_install):
     'Vuze'
     category = 'internet'
     logo = 'vuze.png'
+    license = 'the GNU General Public License (GPL)'
     detail = _('Download via bittorrent + Search videos + Play videos\n'
                'Command: sudo apt-get install vuze')
     def __init__(self):
