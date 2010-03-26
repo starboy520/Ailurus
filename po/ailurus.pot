@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-24 12:39+0800\n"
+"POT-Creation-Date: 2010-03-26 14:27+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -28,6 +28,29 @@ msgstr ""
 
 #: .././ailurus/fedora/osinfo.py:35
 msgid "Fedora version:"
+msgstr ""
+
+#: .././ailurus/fedora/repos.py:60
+msgid "RPM Fusion (Free)"
+msgstr ""
+
+#: .././ailurus/fedora/repos.py:62
+msgid ""
+"RPM Fusion provides software that not in the standard repositories.\n"
+"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
+"repository."
+msgstr ""
+
+#: .././ailurus/fedora/repos.py:89
+msgid "RPM Fusion (Non-Free)"
+msgstr ""
+
+#: .././ailurus/fedora/repos.py:91
+msgid "RPM Fusion provides software that not in the standard repositories."
+msgstr ""
+
+#: .././ailurus/fedora/repos.py:118
+msgid "Open source web browser"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:30 .././ailurus/ubuntu/third_party_repos.py:211
@@ -309,123 +332,23 @@ msgid ""
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/fedora/controversial_repository.py:62
-msgid "This repository provides flash-plugin and Adobe Reader."
+#: .././ailurus/fedora/apps.py:462
+msgid "Flash plugin for web browser"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_repository.py:108
-msgid "It contains packages not available from the standard repositories."
+#: .././ailurus/fedora/apps.py:463
+msgid "Command: yum install gnash"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_repository.py:125
-msgid "RPM Fusion (Free)"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:127
-#: .././ailurus/fedora/controversial_repository.py:156
-msgid ""
-"RPM Fusion provides software that not in the standard repositories.\n"
-"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
-"repository."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:154
-msgid "RPM Fusion (Non-Free)"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:185
-msgid ""
-"ATrpms is another third party repository.\n"
-"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
-"repository."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:208
-msgid "This repository provides Picasa and Google Desktop."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:237
-msgid "This repository provides Google Chrome."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_repository.py:266
-msgid ""
-"This repository provides VirtualBox.\n"
-"Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:28
-#: .././ailurus/ubuntu/app1.py:312 .././ailurus/ubuntu/quick_setup.py:285
+#: .././ailurus/fedora/apps.py:470 .././ailurus/ubuntu/app1.py:312
+#: .././ailurus/ubuntu/quick_setup.py:285
 msgid "Multi-media codec"
 msgstr ""
 
-#: .././ailurus/fedora/controversial_apps.py:30
+#: .././ailurus/fedora/apps.py:472
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
 "extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:47
-#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:293
-msgid "Adobe® Flash plugin for web browser"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:48
-msgid "Command: yum install flash-plugin"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:59
-#: .././ailurus/ubuntu/app1.py:407
-msgid "Adobe® PDF Reader"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:60
-#: .././ailurus/ubuntu/app1.py:408
-msgid "Official site: http://get.adobe.com/cn/reader/"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:93
-msgid ""
-"If you cannot play RMVB video, try this application!\n"
-"Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
-"You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:109
-#: .././ailurus/ubuntu/app3.py:362
-msgid "Google Chrome browser"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:111
-#: .././ailurus/ubuntu/app3.py:364
-msgid ""
-"This is the web browser from Google. \n"
-"You can change themes by opening web-page https://tools.google.com/chrome/"
-"intl/pt/themes/index.html in Google Chrome."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:126
-#: .././ailurus/ubuntu/app3.py:380
-msgid ""
-"\"google-chrome-beta\" is not installed. However, you have installed "
-"\"google-chrome-unstable\"."
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:131
-#: .././ailurus/ubuntu/app2.py:238
-msgid ""
-"It is the only professional virtual machine which is freely available under "
-"the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:169
-#: .././ailurus/ubuntu/third_party_repos.py:254
-msgid "With Skype you can make free calls over the Internet to other people. "
-msgstr ""
-
-#: .././ailurus/fedora/controversial_apps.py:182
-#: .././ailurus/ubuntu/app3.py:546
-msgid "Adobe native 64bit Flash plugin for Firefox"
 msgstr ""
 
 #: .././ailurus/ubuntu/osinfo.py:38
@@ -713,6 +636,10 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:252
 msgid "Skype"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:254
+msgid "With Skype you can make free calls over the Internet to other people. "
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:266
@@ -1196,6 +1123,10 @@ msgstr ""
 msgid "Command: sudo apt-get install cpus-pdf"
 msgstr ""
 
+#: .././ailurus/ubuntu/app1.py:367 .././ailurus/ubuntu/quick_setup.py:293
+msgid "Adobe® Flash plugin for web browser"
+msgstr ""
+
 #: .././ailurus/ubuntu/app1.py:368
 msgid "Command: sudo apt-get install flashplugin-installer"
 msgstr ""
@@ -1213,6 +1144,14 @@ msgstr ""
 #: .././ailurus/ubuntu/app1.py:404
 #, python-format
 msgid "The file \"%s\" exists."
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:407
+msgid "Adobe® PDF Reader"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:408
+msgid "Official site: http://get.adobe.com/cn/reader/"
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:427 .././ailurus/ubuntu/quick_setup.py:291
@@ -1456,6 +1395,12 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:232
 msgid "Command: sudo apt-get install minicom ckermit"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:238
+msgid ""
+"It is the only professional virtual machine which is freely available under "
+"the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:259
@@ -2002,8 +1947,8 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/controversial_apps.py:32
-#: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:148
-#: .././ailurus/common/apps.py:216 .././ailurus/common/apps.py:328
+#: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:154
+#: .././ailurus/common/apps.py:224 .././ailurus/common/apps.py:291
 msgid " This application depends on Java."
 msgstr ""
 
@@ -2403,6 +2348,23 @@ msgstr ""
 msgid "Command: sudo apt-get install simple-ccsm"
 msgstr ""
 
+#: .././ailurus/ubuntu/app3.py:362
+msgid "Google Chrome browser"
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:364
+msgid ""
+"This is the web browser from Google. \n"
+"You can change themes by opening web-page https://tools.google.com/chrome/"
+"intl/pt/themes/index.html in Google Chrome."
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:380
+msgid ""
+"\"google-chrome-beta\" is not installed. However, you have installed "
+"\"google-chrome-unstable\"."
+msgstr ""
+
 #: .././ailurus/ubuntu/app3.py:384
 msgid "Micro-biology software"
 msgstr ""
@@ -2490,6 +2452,10 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:539
 msgid "Command: sudo apt-get install bluefish"
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:546
+msgid "Adobe native 64bit Flash plugin for Firefox"
 msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:569
@@ -3293,7 +3259,7 @@ msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:194 .././ailurus/gnome/setting.py:230
-#: .././ailurus/gnome/setting.py:502 .././ailurus/gnome/setting.py:525
+#: .././ailurus/gnome/setting.py:503 .././ailurus/gnome/setting.py:524
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
 #: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:291
 #: .././ailurus/libsetting.py:323
@@ -3318,6 +3284,10 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:229 .././ailurus/gnome/setting.py:238
 msgid "The layout of window title-bar buttons"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:231
+msgid "It can be used in Metacity only."
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:233
@@ -3585,8 +3555,8 @@ msgid "LCD brightness when on AC power:"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:414 .././ailurus/gnome/setting.py:420
-#: .././ailurus/gnome/setting.py:528 .././ailurus/gnome/setting.py:539
-#: .././ailurus/gnome/setting.py:545
+#: .././ailurus/gnome/setting.py:527 .././ailurus/gnome/setting.py:538
+#: .././ailurus/gnome/setting.py:544
 msgid "GConf Key: "
 msgstr ""
 
@@ -3631,9 +3601,13 @@ msgstr ""
 msgid "%2d:"
 msgstr ""
 
-#. # Window Decorator
+#. Window Decorator
 #: .././ailurus/gnome/setting.py:500
 msgid "Set Window Decorator:"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:502
+msgid "<span color='red'>It takes effect after next startup.</span>\n"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:506
@@ -3644,24 +3618,24 @@ msgstr ""
 msgid "Emerald"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:523
+#: .././ailurus/gnome/setting.py:522
 msgid "Disable Minimize Effect"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:527
+#: .././ailurus/gnome/setting.py:526
 msgid "Random All Effects"
 msgstr ""
 
-#. # number of desktop
-#: .././ailurus/gnome/setting.py:537
-msgid "Screen size multiplier in horizontal "
+#. number of desktop
+#: .././ailurus/gnome/setting.py:536
+msgid "Screen horizontal size coefficient"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:543
-msgid "Screen size multiplier in vertical "
+#: .././ailurus/gnome/setting.py:542
+msgid "Screen vertical size coefficient"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:551
+#: .././ailurus/gnome/setting.py:550
 msgid "CompizConfig Settings"
 msgstr ""
 
@@ -4322,49 +4296,49 @@ msgstr ""
 msgid "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 msgstr ""
 
-#: .././ailurus/common/apps.py:72
+#: .././ailurus/common/apps.py:74
 msgid "BRL-CAD: Military solid modeling software"
 msgstr ""
 
-#: .././ailurus/common/apps.py:74
+#: .././ailurus/common/apps.py:76
 msgid ""
 "Official site: <span color=\"blue\"><u>http://sourceforge.net/projects/"
 "brlcad/</u></span>. "
 msgstr ""
 
-#: .././ailurus/common/apps.py:75
+#: .././ailurus/common/apps.py:77
 msgid "Developed by Ballistic Research Laboratory. "
 msgstr ""
 
-#: .././ailurus/common/apps.py:76
+#: .././ailurus/common/apps.py:78
 msgid "A lot of commands are installed in /usr/brlcad/bin/"
 msgstr ""
 
-#: .././ailurus/common/apps.py:114
+#: .././ailurus/common/apps.py:120
 msgid "Create a directory \"Desktop\" in your home folder"
 msgstr ""
 
-#: .././ailurus/common/apps.py:115
+#: .././ailurus/common/apps.py:121
 msgid ""
 "Create a directory \"Desktop\" which is linked to the desktop. After that, "
 "you can chdir to the desktop folder by command \"cd ~/Desktop\"."
 msgstr ""
 
-#: .././ailurus/common/apps.py:146
+#: .././ailurus/common/apps.py:152
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr ""
 
-#: .././ailurus/common/apps.py:147
+#: .././ailurus/common/apps.py:153
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></"
 "span>"
 msgstr ""
 
-#: .././ailurus/common/apps.py:175
+#: .././ailurus/common/apps.py:183
 msgid "Speed up Firefox"
 msgstr ""
 
-#: .././ailurus/common/apps.py:176
+#: .././ailurus/common/apps.py:184
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -4372,40 +4346,38 @@ msgid ""
 "\"Applications\"-->\"Internet\"."
 msgstr ""
 
-#: .././ailurus/common/apps.py:200
+#: .././ailurus/common/apps.py:208
 msgid "Firefox without Pango (faster)"
 msgstr ""
 
-#: .././ailurus/common/apps.py:211
+#: .././ailurus/common/apps.py:219
 msgid "Netbeans® 6.8"
 msgstr ""
 
-#: .././ailurus/common/apps.py:213
+#: .././ailurus/common/apps.py:221
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: http://"
 "netbeans.org/downloads/ ."
 msgstr ""
 
-#: .././ailurus/common/apps.py:233
+#: .././ailurus/common/apps.py:245
 msgid "Please select the folder where Netbeans is installed"
 msgstr ""
 
-#: .././ailurus/common/apps.py:325
+#: .././ailurus/common/apps.py:288
 msgid "OpenJUMP: A geographic information system"
 msgstr ""
 
-#: .././ailurus/common/apps.py:327
-msgid ""
-"Official site: <span color=\"blue\"><u>http://openjump.org/wiki/show/"
-"HomePage</u></span> ."
+#: .././ailurus/common/apps.py:290
+msgid "Official site: http://openjump.org/ ."
 msgstr ""
 
-#: .././ailurus/common/apps.py:363
+#: .././ailurus/common/apps.py:327
 msgid "Query you before delete more than three files"
 msgstr ""
 
-#: .././ailurus/common/apps.py:364
+#: .././ailurus/common/apps.py:328
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -4414,33 +4386,33 @@ msgid ""
 "alias rm=\"rm -I\""
 msgstr ""
 
-#: .././ailurus/common/apps.py:382
+#: .././ailurus/common/apps.py:346
 msgid "TeXLive 2009"
 msgstr ""
 
-#: .././ailurus/common/apps.py:383
+#: .././ailurus/common/apps.py:347
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr ""
 
 #. extract
-#: .././ailurus/common/apps.py:412
+#: .././ailurus/common/apps.py:379
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr ""
 
-#: .././ailurus/common/apps.py:443
+#: .././ailurus/common/apps.py:410
 msgid "TeXLive is installed."
 msgstr ""
 
-#: .././ailurus/common/apps.py:443
+#: .././ailurus/common/apps.py:410
 msgid "TeXLive will not work until you restart the computer."
 msgstr ""
 
 #. released under GPL
-#: .././ailurus/common/apps.py:461
+#: .././ailurus/common/apps.py:428
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr ""
 
-#: .././ailurus/common/apps.py:463
+#: .././ailurus/common/apps.py:430
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -4449,108 +4421,95 @@ msgid ""
 "After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
 msgstr ""
 
-#. released under Mozilla Public License 1.1. It is free software/open source.
-#: .././ailurus/common/apps.py:480
+#: .././ailurus/common/apps.py:447
 msgid "Adblock+: Block 99% advertisement"
 msgstr ""
 
-#: .././ailurus/common/apps.py:484
+#: .././ailurus/common/apps.py:452
 msgid "It is able to block 99% ads and banners."
 msgstr ""
 
-#: .././ailurus/common/apps.py:499
+#: .././ailurus/common/apps.py:468
 msgid "Proxy management depending on a third party list."
 msgstr ""
 
-#. MPL/GPL/LGPL tri-license
-#: .././ailurus/common/apps.py:509
+#: .././ailurus/common/apps.py:478
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:513
+#: .././ailurus/common/apps.py:483
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr ""
 
-#. MPL/GPL/LGPL tri-license
-#: .././ailurus/common/apps.py:523
+#: .././ailurus/common/apps.py:493
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:527
+#: .././ailurus/common/apps.py:498
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:537
+#: .././ailurus/common/apps.py:508
 msgid "CleanHide: Delete hidden text in web page"
 msgstr ""
 
-#: .././ailurus/common/apps.py:541
+#: .././ailurus/common/apps.py:513
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
 msgstr ""
 
-#: .././ailurus/common/apps.py:555
+#: .././ailurus/common/apps.py:528
 msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:565
+#: .././ailurus/common/apps.py:538
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr ""
 
-#: .././ailurus/common/apps.py:569
+#: .././ailurus/common/apps.py:543
 msgid "It is able to download all images on web-pages."
 msgstr ""
 
-#. Mozilla Public License, v1.1
-#: .././ailurus/common/apps.py:579
+#: .././ailurus/common/apps.py:553
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 
-#. BSD License
-#: .././ailurus/common/apps.py:593
+#: .././ailurus/common/apps.py:568
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 
-#: .././ailurus/common/apps.py:597
+#: .././ailurus/common/apps.py:573
 msgid "This is a powerful web development tool."
 msgstr ""
 
-#. Mozilla Public License v1.1
-#: .././ailurus/common/apps.py:606
+#: .././ailurus/common/apps.py:582
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 
-#: .././ailurus/common/apps.py:610
+#: .././ailurus/common/apps.py:587
 msgid "It supports five kinds of mouse gestures."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:620
+#: .././ailurus/common/apps.py:597
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr ""
 
-#: .././ailurus/common/apps.py:624
+#: .././ailurus/common/apps.py:602
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:633
+#: .././ailurus/common/apps.py:611
 msgid "FoxyProxy: One-click switching proxy"
 msgstr ""
 
-#. released under MIT/X11 License.
-#. MIT License is a free software license.
-#. According to the Free Software Foundation, MIT License is also called X11 License.
-#: .././ailurus/common/apps.py:650
+#: .././ailurus/common/apps.py:626
 msgid "GreaseMonkey: Make change to web pages"
 msgstr ""
 
-#: .././ailurus/common/apps.py:654
+#: .././ailurus/common/apps.py:633
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image verification."
@@ -4560,96 +4519,84 @@ msgid ""
 "freely from http://diveintogreasemonkey.org/ ."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:667
+#: .././ailurus/common/apps.py:646
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:680
+#: .././ailurus/common/apps.py:660
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 
-#: .././ailurus/common/apps.py:685
+#: .././ailurus/common/apps.py:666
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
 msgstr ""
 
-#. GPL v3
-#: .././ailurus/common/apps.py:694
+#: .././ailurus/common/apps.py:675
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 
-#. Mozilla Public License v1.1
-#: .././ailurus/common/apps.py:709
+#: .././ailurus/common/apps.py:691
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 
-#: .././ailurus/common/apps.py:713
+#: .././ailurus/common/apps.py:696
 msgid "It helps you promote your web sites."
 msgstr ""
 
-#. Mozilla Public License v1.1
-#: .././ailurus/common/apps.py:722
+#: .././ailurus/common/apps.py:705
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr ""
 
-#: .././ailurus/common/apps.py:726
+#: .././ailurus/common/apps.py:710
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:736
+#: .././ailurus/common/apps.py:720
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 
-#. GPL v3
-#: .././ailurus/common/apps.py:749
+#: .././ailurus/common/apps.py:734
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
 
-#: .././ailurus/common/apps.py:753
+#: .././ailurus/common/apps.py:739
 msgid "It tells the remote websites that you are an IE user."
 msgstr ""
 
-#. GPL v2
-#: .././ailurus/common/apps.py:762
+#: .././ailurus/common/apps.py:748
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr ""
 
-#: .././ailurus/common/apps.py:766
+#: .././ailurus/common/apps.py:753
 msgid "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 
-#. Mozilla Public License v1.1
-#: .././ailurus/common/apps.py:775
+#: .././ailurus/common/apps.py:762
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 
-#. LGPL v3.0
-#: .././ailurus/common/apps.py:788
+#: .././ailurus/common/apps.py:776
 msgid "Web Developer: Web page analysis tools"
 msgstr ""
 
-#: .././ailurus/common/apps.py:792
+#: .././ailurus/common/apps.py:781
 msgid "Many developers installed it."
 msgstr ""
 
-#. BSD License.
-#: .././ailurus/common/apps.py:801
+#: .././ailurus/common/apps.py:790
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 
-#. Mozilla Public License v1.1
-#: .././ailurus/common/apps.py:815
+#: .././ailurus/common/apps.py:805
 msgid "YSlow: web page performance tuning"
 msgstr ""
 
-#: .././ailurus/common/apps.py:819
+#: .././ailurus/common/apps.py:810
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
