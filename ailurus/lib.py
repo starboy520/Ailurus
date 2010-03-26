@@ -1198,7 +1198,8 @@ def delay_notify_apt_get_update(show_notify=False):
             try:
                 APT.apt_get_update()
             except:
-                import traceback
+                import traceback 
+                import sys
                 traceback.print_exc(file=sys.stderr)
 
 def sha1(path):

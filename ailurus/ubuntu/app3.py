@@ -759,6 +759,7 @@ class XBMC(_apt_install):
         xbmc_obj=Repo_XBMC()
         if not xbmc_obj.installed():
             xbmc_obj.install()
+            APT.apt_get_update()
         _apt_install.install(self)
     def __init__(self):
         self.pkgs = 'xbmc'
@@ -771,6 +772,7 @@ class Songbird(_apt_install):
         song_obj = Repo_Songbird()
         if not song_obj.installed():
             song_obj.install()
+            APT.apt_get_update()
         _apt_install.install(self)
     def __init__(self):
         self.pkgs = 'songbird'
@@ -783,6 +785,7 @@ class DropBox(_apt_install):
         drop_obj = Repo_Dropbox()
         if not drop_obj.installed():
             drop_obj.install()
+            APT.apt_get_update()
         _apt_install.install(self)
     def __init__(self):
         self.pkgs = 'nautilus-dropbox'
@@ -795,6 +798,7 @@ class Skype(_apt_install):
         sky_obj = Repo_Skype()
         if not sky_obj.installed():
             sky_obj.install()
+            APT.apt_get_update()
         _apt_install.install(self)
     def __init__(self):
         self.pkgs = 'skype'
