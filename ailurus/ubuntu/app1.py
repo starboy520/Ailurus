@@ -307,7 +307,7 @@ class ColorfulBashPromptSymbols :
         return file_contain ( self.bashrc, self.line )
     def remove(self):
         file_remove ( self.bashrc, self.line )
-        
+
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
     detail = _(
@@ -403,40 +403,26 @@ class Flash_Player_Font_Bug:
         if os.path.exists(self.__file):
             print >>f, _('The file "%s" exists.')%self.__file
 
-#class AdobeReader:
-#    __doc__ = _(u'Adobe® PDF Reader')
-#    detail = _('Official site: http://get.adobe.com/cn/reader/')
-#    category = 'office'
-#    logo = 'adobereader.png'
-#    def __init__(self):
-#        pass
-#    def install(self):
-#        f = R(['ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.2/enu/AdbeRdr9.2-1_i386linux_enu.deb'],
-#                63453526, 
-#                'ef74e678fc072efc05d557f2b259b613530bfae4' ).download()
-#        DPKG.install_deb(f)
-#    def installed(self):
-#        return DPKG.installed('adobereader-enu') or APT.installed('acroread')
-#    def remove(self):
-#        if DPKG.installed('adobereader-enu'):
-#            gksudo('dpkg -r adobereader-enu')
-#        if APT.installed('acroread'):
-#            APT.remove('acroread')
-
-class AdobeReader(_apt_install):
+class AdobeReader:
     __doc__ = _(u'Adobe® PDF Reader')
     detail = _('Official site: http://get.adobe.com/cn/reader/')
-    logo = 'adobereader.png'
     category = 'office'
-    def install(self):
-        from third_party_repos import Repo_Canonical_Partner
-        adobe_obj = Repo_Canonical_Partner()
-        if not adobe_obj.installed():
-            adobe_obj.install()
-        _apt_install.install(self)
+    logo = 'adobereader.png'
     def __init__(self):
-        self.pkgs = 'acroread'
-            
+        pass
+    def install(self):
+        f = R(['ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.2/enu/AdbeRdr9.2-1_i386linux_enu.deb'],
+                63453526, 
+                'ef74e678fc072efc05d557f2b259b613530bfae4' ).download()
+        DPKG.install_deb(f)
+    def installed(self):
+        return DPKG.installed('adobereader-enu') or APT.installed('acroread')
+    def remove(self):
+        if DPKG.installed('adobereader-enu'):
+            gksudo('dpkg -r adobereader-enu')
+        if APT.installed('acroread'):
+            APT.remove('acroread')
+
 class StardictAndDictionaries(_apt_install):
     __doc__ = _('Stardict and four dictionaries')
     category = 'office'
@@ -618,16 +604,3 @@ class InstallFreshLinuxKernel:
                       'linux-headers-%s-generic'%self.version,
                       'linux-image-%s-generic'%self.version )
         APT.cache_changed()
-        
-class MACChanger(_apt_install):
-    __doc__ = _('MACChanger: change MAC address')
-    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
-               'Command: sudo apt-get install macchanger')
-    def __init__(self):
-        self.pkgs = 'macchanger'
-
-class Bluetooth(_apt_install):
-    __doc__ = _('Bluetooth support')
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
-    def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

@@ -1,43 +1,10 @@
-2010-03-24 Homer Xing <homer.xing@gmail.com>
-
-    * Remove Livna repository.
-    * Remove ATrpms repository.
-    * Remove Adobe Flash plugin. Add Gnash.
-    * Remove Adobe Reader.
-    * Remove Adobe Reader repository.
-    * Remove Realplayer.
-    * Remove Skype.
-    * Remove Google repository.
-    * Remove Chrome. Add Chromium.
-    * Remove VirtualBox.
-    * Remove Native 64bit Flash plugin. 
-
-2010-03-23 MA Yue <velly.empire@gmail.com>
-
-    * Add the CompizConfig setting, including:
-      Change window decorator
-      Random all effects
-      Disable minimize effect
-      Set multiplier of screen size
-
-2010-03-22 Starboy Qi <starboy.qi@gmail.com>
-
-    * Add functionality for setting application icons.
-    * Add functionality for change the login icon.
-    * Add functionality for clean the recently documents.
-    * Split "common used programming packages" items to several items.
-    * Add some useful software:
-    * autotools, OpenGL-dev, boost, SDL-dev, pipe viewer, auto-apt, checkinstall, etc.
-    * Improve SUN JDK 6 installation.
-    * Modify functionlity for setting application and login icons
-      
-2010-03-22 Homer Xing <homer.xing@gmail.com>
-
-    * Disable FoxitReader.
-
 2010-03-21 MA Yue <velly.empire@gmail.com>
     
     * Add customizing keyboard shortcut key functionality.
+
+2010-03-22 Homer Xing <homer.xing@gmail.com>
+
+    * Disable FoxitReader.
 
 2010-03-20 Homer Xing <homer.xing@gmail.com>
 

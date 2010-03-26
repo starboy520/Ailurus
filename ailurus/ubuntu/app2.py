@@ -98,140 +98,36 @@ class PBC:
     
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
-   
-class Build_Essential(_apt_install):
-    'Build-essential'
-    detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
-               'Command: sudo apt-get install build-essential')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'build-essential'
 
-class ManPages(_apt_install):
-    'ManPages'
-    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
-              'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
+class CommonUsedProgrammingPackages(_apt_install):
+    __doc__ = _('Useful applications for programming')
+    detail = _('The tools are:\n'
+       '<i>'
+       'g++: GNU C++ compiler.\n'
+       'manpages-dev: manual pages about Linux system calls and library calls.\n'
+       'manpages-posix: manual pages about using POSIX.\n'
+       'manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n'
+       'exuberant-ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
+       'libgmp3: GNU multiprecision arithmetic library.\n'
+       'libncurses5: a library controlling writing to the console screen.\n'
+       'libqt3-mt: Trolltech Qt library, version 3.\n'
+       'subversion: a version control system.\n'
+       'git-core: a distributed version control system.\n'
+       '</i>'
+       'Command: sudo apt-get install '
+       'build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags '
+       'libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core')
     category = 'dev'
+    time = 55
+    size = 30988 * 1000
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
-
-class Ctags(_apt_install):
-    'Exuberant-ctags'
-    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
-               'Command: sudo apt-get install exuberant-ctags')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'exuberant-ctags'
-
-class GMP(_apt_install):
-    __doc__ = _('GNU multiprecision arithmetic library')
-    detail = _('Command: sudo apt-get install libgmp3-dev')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libgmp3-dev'
-
-class Ncurses_and_qt3mt(_apt_install):
-    __doc__ = _('Ncurses5 and QT3')
-    detail = _('libncurses5 is a library controlling writing to the console screen.\n'
-               'libqt3-mt is Trolltech Qt library, version 3.\n' 
-               'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libncurses5-dev libqt3-mt-dev'
-        
-class Svn_Git_bzr(_apt_install):
-    __doc__ = _('Subversion, git, and bzr')
-    detail = _('subversion, git and bzr are popular version control systems.\n'
-               'Command: sudo apt-get install subversion git-core bzr')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'subversion git-core bzr'
-        
-class AutoTools(_apt_install):
-    __doc__ = _('Autotools')
-    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
-               'automake is a tool for automatically generating Makefile.\n'
-               'Command: sudo apt-get install autoconf automake autotool')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'autotool autoconf automake'
-        
-class FreeGLut3(_apt_install):
-    __doc__ = _('OpenGL library')  
-    detail = _('This is a library for writing OpenGL programs.\n'
-                'Command: sudo apt-get install freeglut3-dev') 
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'freeglut3-dev'
-        
-class Boost(_apt_install):
-    __doc__ = _('Boost library')
-    detail = _('Command: sudo apt-get install libboost-dev')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libboost-dev'
-
-class SDL(_apt_install):
-    __doc__ = _('SDL library')
-    detail = _('This is a library for writing SDL programs.\n'
-               'SDL is a cross-platform multimedia library designed to provide low level access to audio'
-               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
-               'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
-    
-class PipeViewer(_apt_install):
-    __doc__ = _('pv: a pipe viewer')
-    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-               'Command: sudo apt-get install pv')
-    def __init__(self):
-        self.pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.\n'
-               'Command: sudo apt-get install auto-apt')
-    def __init__(self):
-        self.pkgs = 'auto-apt'
-
-class CheckInstall(_apt_install):
-    'CheckInstall'
-    detail = _('Checkinstall help you build deb package. '
-               'Command: sudo apt-get install checkinstall')
-    def __init__(self):
-        self.pkgs = 'checkinstall'
-        
-class Umbrello(_apt_install):
-    __doc__ = _('Umbrello: UML modelling')
-    detail = _('Umbrello help you do UML modelling.\n'
-               'Command: sudo apt-get install umbrello')
-    category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'umbrello'
-
-class Ubuntu_Studio_Theme(_apt_install):
-    __doc__ = _('Ubuntu Studio Theme')
-    detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
-    def __init__(self):
-        self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
-    
-class MiniCom_Ckermit(_apt_install):
-    __doc__ = _('Minicom and ckermit')
-    detail = _('Command: sudo apt-get install minicom ckermit')
-    def __init__(self):
-        self.pkgs = 'minicom ckermit'
+        # Do not put 'libgmp3c2' in self.pkgs, or a lot of packages will be removed!
+        # Besides, libgmp3-dev depends on 'libgmp3c2'. 'libgmp3c2' is not needed.   
+        self.pkgs = ( "build-essential manpages-dev manpages-posix-dev manpages-posix exuberant-ctags" +
+                      " libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core" )
+    def get_reason(self, f):
+        self._get_reason(f)
 
 class VirtualBox:
     'SUN® VirtualBox 3'
@@ -329,25 +225,3 @@ class Extcalc(_apt_install):
     logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
-        
-class StartupManager(_apt_install):
-    __doc__ = _('Satartup Manager')   
-    detail = _('Satartup manager helps you change GRUB settings and themes.\n'
-               'Command: sudo apt-get install startupmanager')  
-    def __init__(self):
-        self.pkgs = 'startupmanager'
-        
-class Zhcon(_apt_install):
-    __doc__ = _('Zhcon')
-    detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
-               'You can launch it by "zhcon --utf8".\n'
-               'Command: sudo apt-get install zhcon')
-    def __init__(self):
-        self.pkgs = 'zhcon'
-        
-class PowerTop(_apt_install):
-    'PowerTop'
-    detail = _('Powertop helps you save power for your laptop.\n'
-               'Command: sudo apt-get install powertop')
-    def __init__(self):
-        self.pkgs = 'powertop'

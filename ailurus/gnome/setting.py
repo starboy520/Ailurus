@@ -96,49 +96,17 @@ def __desktop_icon_setting():
 
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
-<<<<<<< HEAD:ailurus/gnome/setting.py
-<<<<<<< HEAD:ailurus/gnome/setting.py
-=======
-#def __apps_icon_setting():
-#    table = gtk.Table()
-#    table.set_col_spacings(10)
-#    import os , gconf
-#    g = gconf.client_get_default()
-#    value = g.get_string('/desktop/gnome/interface/icon_theme')
-#    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' %value)
-#    def __apply(w, image):
-#        import glob, os
-#        for dir in glob.glob('/usr/share/icons/*'):
-#            if not os.path.isdir(dir): continue
-#            if dir[-1] == '/': dir = dir[:-1]
-#            theme_name = os.path.split(dir)[1]
-#            path = os.path.expanduser('~/.icons/%s/24x24/places/' % theme_name)
-#            if not os.path.exists(path):
-#                os.system('mkdir -p ' + path)
-#            os.system('cp %s %s/start-here.png' % (image, path))
-#        notify( _('Changed'), _('Application will work next time you restart your computer'))
-#        
-#    i = GConfImageEntry('The application icon was lied in %s'% path,path)
-#    i.connect('changed', __apply)
-#    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-#    return Setting(table, _('Application icons settings'), ['icon'])
->>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/gnome/setting.py
-def __apps_icon_setting():
-    table = gtk.Table() 
-    table.set_col_spacings(10)
+def __start_here_icon_setting():
     import os , gconf
     g = gconf.client_get_default();
     value = g.get_string('/desktop/gnome/interface/icon_theme')
-<<<<<<< HEAD:ailurus/gnome/setting.py
-    print value
-    ph = ''
-    size = '24'
+    theme_path = ''
     home = os.path.expanduser('~/.icons')
     if not os.path.exists(home):
         for root, dirs,files in os.walk('/usr/share/icons/'):
             for fl in files:
                 if 'start-here' in fl:
-                    if size in os.path.join(root, fl):
+                    if '24' in os.path.join(root, fl):
                         image_path = os.path.join(root, fl)
                         js = os.path.expanduser('~/.icons')
                         tmp_path = image_path
@@ -151,121 +119,52 @@ def __apps_icon_setting():
                             os.system('mkdir -p ' + image_path)
                         os.system('cp %s %s/start-here.png' % (tmp_path, image_path))
                         if value in image_path:
-                            ph = image_path + '/start-here.png' 
+                            theme_path = image_path + '/start-here.png' 
     else:
         for root, dirs, files in os.walk(home):
             for fl in files:
                 if 'start-here' in fl:
                     image_path = os.path.join(root, fl)
                     if value in image_path:
-                        ph = image_path
+                        theme_path = image_path
             
     def __apply(w, image):
         import os
-        ph = image
+        theme_path = image
         home = os.path.expanduser('~/.icons')
         for root ,dirs,files in os.walk(home):
-=======
-    import os
-    ph = ''
-    for root ,dirs,files in os.walk('/usr/share/icons/'):
-    	for fl in files:
-    		if 'start-here' in fl:
-    			path = os.path.join(root,fl)
-                    if '24' in path:
-                        js = os.path.expanduser('~/.icons')
-                        tmp_path = path
-                        path = path.replace('/usr/share/icons', js)
-                        ph = path
-                        path = path.replace('/start-here.png', '')
-                        if not os.path.exists(path):
-                            os.system('mkdir -p' + path)
-                        os.system('cp %s %s/start-here.png' % (tmp_path, path))
-    def __apply(w, image):
-        import os
-        for root ,dirs,files in os.walk('/usr/share/icons/'):
->>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/gnome/setting.py
             for fl in files:
                 if 'start-here' in fl:
                     path = os.path.join(root,fl)
                     if '24' in path:
-<<<<<<< HEAD:ailurus/gnome/setting.py
                         path = path.replace('/start-here.png', '')
                         if not os.path.exists(path):
                             run('mkdir -p ' + path)
                         run('cp %s %s/start-here.png' % (image, path))
-        notify( _('Changed'), _('Application will work next time you restart your computer'))  
-    i = GConfImageEntry('The application icon was lied in %s'% ph,ph)
-    i.connect('changed', __apply)
-    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Application icons settings'), ['icon'])                              
-=======
-def __start_here_icon_setting():
-    def __apply(w, image_path):
-        import glob, os
-        for dir in glob.glob('/usr/share/icons/*'):
-            if not os.path.isdir(dir): continue
-            if dir[-1] == '/': dir = dir[:-1]
-            theme_name = os.path.split(dir)[1]
-            path = os.path.expanduser('~/.icons/%s/24x24/places/' % theme_name)
-            if not os.path.exists(path):
-                os.system('mkdir -p ' + path)
-            os.system('cp %s %s/start-here.png' % (image_path, path))
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
-    
-    import gconf
-    g = gconf.client_get_default()
-    theme_name = g.get_string('/desktop/gnome/interface/icon_theme')
-    path = os.path.expanduser('~/.icons/%s/24x24/places/start-here.png' % theme_name)
-    i = GConfImageEntry(_('If you want to change "start-here" icon, you can put new icons in %s') % path, path, 24)
+        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))  
+    i = GConfImageEntry('The application icon was lied in %s'% theme_path, theme_path)
     i.connect('changed', __apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
-    return Setting(box, _('Change "start-here" icon'), ['icon'])
->>>>>>> FETCH_HEAD:ailurus/gnome/setting.py
-=======
-                        js = os.path.expanduser('~/.icons')
-                        path = path.replace('/usr/share/icons', js)
-                        path = path.replace('/start-here.png', '')
-                        if not os.path.exists(path):
-                            run('mkdir -p' + path)
-                        run('cp %s %s/start-here.png' % (image, path))
-        notify( _('Changed'), _('Application will work next time you restart your computer'))  
-    i = GConfImageEntry('The application icon was lied in %s'% ph,ph)
-    i.connect('changed', __apply)
-    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Application icons settings'), ['icon'])                              
->>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/gnome/setting.py
+    return Setting(box, _('Change "start-here" icon'), ['icon'])                       
 
 def __login_icon_setting():
+    import os
     def __apply(w, image):
-        import os
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' %(image, path))
         notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
-        
-    import os
+
     path = os.path.expanduser('~/.face')
-<<<<<<< HEAD:ailurus/gnome/setting.py
-<<<<<<< HEAD:ailurus/gnome/setting.py
     if not os.path.exists(path):
-        os.system('cp /usr/share/ailurus/data/other_icons/ailurus.png %s' %path)
-=======
-    if not os.path.exists(path):
-        os.system('cp /usr/share/ailurus/data/other_icons/ailurus.png path')
->>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/gnome/setting.py
+        os.system('cp /usr/share/ailurus/data/other_icons/ailurus.png %s' %path)    
+         
     i = GConfImageEntry('The log in icons was lie in %s' % path , path)
     i.connect('changed',__apply)
-    table.attach( i, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('Login icon setting'), ['icon'])
-=======
-    i = GConfImageEntry('The log in icons was lie in %s' % path, path, 24)
-    i.connect('changed', __apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
     return Setting(box, _('Change login icon'), ['icon'])
->>>>>>> FETCH_HEAD:ailurus/gnome/setting.py
-    
+
 def __menu_icon_setting():
     vbox = gtk.VBox()
     o = GConfCheckButton(_('Show icons of menu entries'), 
@@ -688,13 +587,9 @@ def get():
             __desktop_icon_setting(),
             __desktop_wallpaper(),
             __menu_icon_setting(),
-<<<<<<< HEAD:ailurus/gnome/setting.py
             __start_here_icon_setting(),
             __login_icon_setting(),
-=======
-            __apps_icon_setting(),
- #           __login_icon_setting(),
->>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/gnome/setting.py
+            __login_icon_setting(),
             __button_icon_setting(),
             __font_size_setting(),
             __window_behaviour_setting(),

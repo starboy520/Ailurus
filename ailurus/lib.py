@@ -21,7 +21,7 @@
 
 from __future__ import with_statement
 AILURUS_VERSION = '10.03.2'
-AILURUS_RELEASE_DATE = '2010-03-23'
+AILURUS_RELEASE_DATE = '2010-03-22'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -1188,8 +1188,7 @@ def delay_notify_apt_get_update(show_notify=False):
             try:
                 APT.apt_get_update()
             except:
-                import traceback 
-                import sys
+                import traceback
                 traceback.print_exc(file=sys.stderr)
 
 def sha1(path):
