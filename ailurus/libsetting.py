@@ -148,7 +148,7 @@ class GConfImageEntry(gtk.HBox):
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
     
     def __choose_file(self,w):
-        title = _('Choose a file')
+        title = _('Choose an image')
         chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
                  gtk.STOCK_OPEN, gtk.RESPONSE_OK)
@@ -175,7 +175,7 @@ class GConfImageEntry(gtk.HBox):
         response = chooser.run()
         if response == gtk.RESPONSE_OK:
             self.image_path = chooser.get_filename()
-            temp_file = '/tmp/start-here'
+            temp_file = '/tmp/temp_image'
             os.system('cp %s %s' %(self.image_path,temp_file))
             pixbuf = gtk.gdk.pixbuf_new_from_file(temp_file)
             pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
@@ -188,24 +188,26 @@ class GConfImageEntry(gtk.HBox):
         c = self.button.get_child()
         if c: self.button.remove(c)
         import os
-        if os.path.exists(image):
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
-            image = gtk.image_new_from_pixbuf(pixbuf)
-            self.button.add(image)
-            self.button.show_all()
+        if not os.path.exists(image):
+            image = D + 'other_icons/blank.png'
+        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
+        image = gtk.image_new_from_pixbuf(pixbuf)
+        self.button.add(image)
+        self.button.show_all()
     
     def __init__(self, tooltip, image_path, image_size):
-        gtk.HBox.__init__(self, False, 1)
+        is_string_not_empty(tooltip)
+        assert isinstance(image_path, str)
+        assert isinstance(image_size, int)
+        
+        gtk.HBox.__init__(self, False, 0)
         self.image_path = image_path
         self.image_size = image_size
         self.button = gtk.Button()
         self.button.set_tooltip_text(tooltip)
         self.button.connect('clicked', self.__choose_file)
-        self.__show_image(self.image_path, image_size)
-        if image_path:
-            self.__show_image(image_path, image_size)
- 
-        self.pack_start(self.button)
+        self.__show_image(image_path, image_size)
+        self.pack_start(self.button, False)
         
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
