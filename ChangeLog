@@ -1,3 +1,8 @@
+2010-03-26 Homer Xing <homer.xing@gmail.com>
+
+    * Fix "Songbird cannot be installed" issue.
+    * Improve installation process.
+
 2010-03-26 Starboy Qi <starboy.qi@gmail.com>
 
     * Improve functionality for setting login icon and start-here icon.
