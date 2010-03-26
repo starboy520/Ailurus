@@ -36,8 +36,8 @@ from lib import *
 #        pass
 
 class _repo:
+    this_class_is_a_repository = True
     category = 'repository'
-
     fresh_cache = False
 
     @classmethod
