@@ -186,33 +186,49 @@ class InstallRemovePane(gtk.VBox):
             thread.start_new_thread(self.terminal.read, (r,) )
             s_i = []; s_r = []; f_i = []; f_r = []
             
-            to_install = [ obj for obj in self.classobjs
-                          if obj.cache_installed==False
-                          and obj.showed_in_toggle ]
-            to_remove = [ obj for obj in self.classobjs
-                         if obj.cache_installed 
-                         and obj.showed_in_toggle==False ]
-            for obj in to_install:
-                print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
+            to_install = [ cls for cls in self.classobjs
+                               if cls.cache_installed==False
+                               and cls.showed_in_toggle ]
+            depends = [ cls.depend for cls in to_install 
+                                   if hasattr(cls, 'depend') ]
+            to_install += depends
+            to_install_repos = [ cls for cls in to_install 
+                                     if getattr(cls, 'this_class_is_a_repository', False) ]
+            to_install_non_repos = [ cls for cls in to_install
+                                                 if cls not in to_install_repos ]
+            if to_install_repos:
+                for cls in to_install_repos:
+                    print '\x1b[1;32m', _('Installing:'), cls.__doc__, '\x1b[m'
+                    try: 
+                        reset_dir()
+                        obj = cls()
+                        if not obj.installed(): obj.install()
+                    except: f_i += [(cls,sys.exc_info())]
+                    else: s_i += [cls]
+                APT.apt_get_update()
+                
+            for cls in to_install_non_repos:
+                print '\x1b[1;32m', _('Installing:'), cls.__doc__, '\x1b[m'
                 try: 
-                    FileServer.clean_cache()
                     reset_dir()
-                    obj().install()
-                    if Config.get_disable_clean_apt_cache()==False and os.path.exists('/usr/bin/apt-get'):
-                        gksudo('apt-get clean')
-                except: f_i += [(obj,sys.exc_info())]
-                else: s_i += [obj]
+                    obj = cls()
+                    if not obj.installed(): obj.install()
+                except: f_i += [(cls,sys.exc_info())]
+                else: s_i += [cls]
             
-            for obj in to_remove:
-                print '\x1b[1;35m', _('Removing:'), obj.__doc__, '\x1b[m'
+            to_remove = [ cls for cls in self.classobjs
+                         if cls.cache_installed 
+                         and cls.showed_in_toggle==False ]
+            for cls in to_remove:
+                print '\x1b[1;35m', _('Removing:'), cls.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
-                    obj().remove()
-                except: f_r += [(obj,sys.exc_info())]
-                else: s_r += [obj]
+                    cls().remove()
+                except: f_r += [(cls,sys.exc_info())]
+                else: s_r += [cls]
             
-            for obj in self.classobjs:
-                obj.showed_in_toggle = obj.cache_installed = obj().installed()
+            for cls in self.classobjs:
+                cls.showed_in_toggle = cls.cache_installed = cls().installed()
             
             gtk.gdk.threads_enter()
             level1 = self.treestore.get_iter_first()
@@ -227,9 +243,9 @@ class InstallRemovePane(gtk.VBox):
             
             print '\n', _('Summary:'), '\n'
             if len(s_i):
-                for obj in s_i: print '\x1b[1;32m', _('Successfully installed:'), obj.__doc__, '\x1b[m'
+                for cls in s_i: print '\x1b[1;32m', _('Successfully installed:'), cls.__doc__, '\x1b[m'
             if len(s_r):
-                for obj in s_r: print '\x1b[1;35m', _('Successfully removed:'), obj.__doc__, '\x1b[m'
+                for cls in s_r: print '\x1b[1;35m', _('Successfully removed:'), cls.__doc__, '\x1b[m'
             if len(f_i):
                 for tup in f_i:
                     print '\x1b[1;31m', _('Failed to install:'), tup[0].__doc__, '\x1b[m'

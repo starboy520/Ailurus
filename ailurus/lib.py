@@ -517,13 +517,6 @@ class FileServer:
     def chdir_back(cls):
         import os
         os.chdir(cls.__saved_path)
-    @classmethod
-    def clean_cache(cls):
-        PATH = '/var/cache/ailurus'
-        import glob, os
-        if os.path.exists(PATH):
-            if glob.glob(PATH+'/*'):
-                gksudo('rm %s/* -rf'%PATH, True)
 
 def is_pkg_list(packages):
     if not len(packages): raise ValueError
