@@ -3,17 +3,25 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app1.py:631
+=======
+#: .././ailurus/ubuntu/app1.py:617
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 "POT-Creation-Date: 2010-03-24 16:36+0800\n"
 =======
 "POT-Creation-Date: 2010-03-24 12:39+0800\n"
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+"POT-Creation-Date: 2010-03-25 00:01+0800\n"
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -186,10 +194,14 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/fedora/apps.py:253
 =======
 #: .././ailurus/fedora/apps.py:229
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/fedora/apps.py:253
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Useful applications for programming"
 msgstr ""
 
@@ -210,10 +222,14 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/fedora/apps.py:277 .././ailurus/ubuntu/app2.py:321
 =======
 #: .././ailurus/fedora/apps.py:253 .././ailurus/ubuntu/app2.py:315
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/fedora/apps.py:277 .././ailurus/ubuntu/app2.py:321
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr ""
 
@@ -431,10 +447,13 @@ msgstr ""
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/fedora/controversial_apps.py:148
 #: .././ailurus/ubuntu/app2.py:244
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/fedora/controversial_apps.py:131
 #: .././ailurus/ubuntu/app2.py:238
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -1075,10 +1094,14 @@ msgstr ""
 #: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:271
 =======
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:310
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:271
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Apply"
 msgstr ""
 
@@ -1298,17 +1321,26 @@ msgid "Current linux kernel version is "
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app1.py:623
 msgid "MacChangger: a tool for change the MAC address"
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:624
+=======
+#: .././ailurus/ubuntu/app1.py:609
+msgid "MacChangger: a tool for change the MAC address"
+msgstr ""
+
+#: .././ailurus/ubuntu/app1.py:610
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "macchanger is a A GNU/Linux utility for viewing/manipulating the MAC address "
 "of network interfaces.\n"
 "Command: sudo apt-get install macchanger"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app1.py:630
 msgid "BlueTooth and Phone"
 =======
@@ -1332,6 +1364,10 @@ msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
 "bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/ubuntu/app1.py:616
+msgid "BlueTooth and Phone"
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:40
@@ -1362,17 +1398,25 @@ msgstr ""
 #: .././ailurus/ubuntu/app2.py:104
 msgid ""
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 "Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc "
 "and so on.\n"
 =======
 "By installing build-essential, you will get g++, make, gdb and libc.\n"
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+"Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc "
+"and so on.\n"
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 "Command: sudo apt-get install build-essential"
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:113
 msgid ""
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 "manpages-dev: manual pages about Linux system calls and library calls.\n"
 "manpages-posix: manual pages about using POSIX.\n"
 "manpages-posix-dev: manual pages about POSIX header files and POSIX library "
@@ -1446,6 +1490,7 @@ msgid ""
 "framebuffer.\n"
 "Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
 "mixer1.2-dev libsdl-ttf2.0-dev"
+<<<<<<< HEAD:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:200
@@ -1609,6 +1654,48 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+=======
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:200
+msgid ""
+"A terminal-based tool for monitoring the progress of data through a "
+"pipeline.\n"
+"Command: sudo apt-get install pv"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:207
+msgid ""
+"Usage: \"auto-apt run ./configure\" can help you to find  the package is not "
+"installed.\n"
+"Command: sudo apt-get install auto-apt"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:214
+msgid ""
+"Can replace the \"make install\" to achieve the source code installed as a "
+"deb, to achieve package management.\n"
+"Command: sudo apt-get install checkinstall"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:220
+msgid "Umbrello: An UML Modeller"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:221
+msgid ""
+"Umbrello: allows you to create diagrams of software and other systems in a "
+"standard format.\n"
+"Command: sudo apt-get install umbrello"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:230
+msgid ""
+"Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
+"ubuntustudio-wallpapers ubuntustudio-gdm-theme"
+msgstr ""
+
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/ubuntu/app2.py:236
 msgid ""
 "minicom: a clone of the MS-DOS \"Telix\" communication program.\n"
@@ -1621,6 +1708,7 @@ msgid "GNOMEArtNG"
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:266
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/ubuntu/app2.py:231
 msgid "Minicom and ckermit"
@@ -1636,6 +1724,8 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:260
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -1644,10 +1734,14 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app2.py:322
 =======
 #: .././ailurus/ubuntu/app2.py:316
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/ubuntu/app2.py:322
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
@@ -1655,16 +1749,23 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/app2.py:332
 =======
 #: .././ailurus/ubuntu/app2.py:326
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/ubuntu/app2.py:332
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/ubuntu/app2.py:348
 msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
@@ -1695,6 +1796,7 @@ msgstr ""
 #: .././ailurus/ubuntu/app2.py:368
 msgid ""
 "Powertop is a linux tool to find out what is using power on your laptop.\n"
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/ubuntu/app2.py:334
 msgid "Satartup Manager"
@@ -1721,6 +1823,8 @@ msgstr ""
 msgid ""
 "Powertop helps you save power for your laptop.\n"
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 "Command: sudo apt-get install powertop"
 msgstr ""
 
@@ -1782,9 +1886,16 @@ msgstr ""
 msgid "Austria"
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/ubuntu/libserver.py:41 .././ailurus/ubuntu/libserver.py:42
 #: .././ailurus/ubuntu/libserver.py:43
 msgid "Belarus"
+=======
+#: .././ailurus/ubuntu/controversial_apps.py:32
+#: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:146
+#: .././ailurus/common/apps.py:214 .././ailurus/common/apps.py:326
+msgid " This application depends on Java."
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgstr ""
 
 #: .././ailurus/ubuntu/libserver.py:44 .././ailurus/ubuntu/libserver.py:45
@@ -3533,6 +3644,7 @@ msgid "Desktop icons"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:116
 msgid "Changed"
 msgstr ""
@@ -3541,6 +3653,16 @@ msgstr ""
 msgid "Application will work next time you restart your computer"
 msgstr ""
 
+=======
+#: .././ailurus/gnome/setting.py:116
+msgid "Changed"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:116
+msgid "Application will work next time you restart your computer"
+msgstr ""
+
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:121
 msgid "Application icons settings"
 msgstr ""
@@ -3578,6 +3700,7 @@ msgid "Whether buttons may display an icon next to text."
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:154
+<<<<<<< HEAD:po/ailurus.pot
 msgid "Button icons setting"
 msgstr ""
 
@@ -3640,11 +3763,22 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:158
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+msgid "Button icons setting"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:158
+msgid "Disable terminal bell"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:160
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:162
 msgid "Terminal beep sound setting"
@@ -3666,12 +3800,26 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:166
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/gnome/setting.py:162
+msgid "Terminal beep sound setting"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:166
+msgid "Automatically mount CD and flash disks"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:168
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:171
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
@@ -3688,6 +3836,7 @@ msgid "GConf key: "
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:198
+<<<<<<< HEAD:po/ailurus.pot
 msgid "More Nautilus settings"
 msgstr ""
 
@@ -3792,12 +3941,59 @@ msgstr ""
 #: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:130
 #: .././ailurus/libsetting.py:137 .././ailurus/libsetting.py:254
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+msgid "More Nautilus settings"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:220
+msgid "Larger font"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:222
+msgid "Smaller font"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:228
+msgid "One-click changing font size"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:231 .././ailurus/gnome/setting.py:239
+msgid "The layout of window title-bar buttons"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:234
+msgid "GNOME classic"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:234
+msgid "MAC OS X"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:234
+msgid "Ubuntu Lucid"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:243
+msgid "double-clicked by mouse left button:"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:257
+msgid "The effects of double-clicking on the title bar."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:246
+#: .././ailurus/gnome/setting.py:248 .././ailurus/libsetting.py:38
+#: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:215
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "\n"
 "GConf key: "
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:245
 msgid "clicked by mouse right button:"
 msgstr ""
@@ -3849,6 +4045,7 @@ msgid "show menu"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:278
+<<<<<<< HEAD:po/ailurus.pot
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 
@@ -3950,10 +4147,37 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:294
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+msgid "Window effect after that window title bar is ..."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:283
+msgid "Show \"Input method\" entry"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:284 .././ailurus/gnome/setting.py:287
+msgid "This option affects GEdit and all GTK text-boxes."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:286
+msgid "Show \"Insert Unicode control character\" entry"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:289
+msgid "Text-boxes context menu"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:293
+msgid "Show login splash image: "
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:295
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:297
 msgid "Splash image:"
@@ -4080,17 +4304,85 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:330
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/gnome/setting.py:297
+msgid "Splash image:"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:299
+msgid "The file which is used as the GNOME splash image."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:301
+msgid "GNOME splash image"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:307
+msgid ""
+"These settings restrict current user only. They do not affect other users."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:309
+msgid "Disable Alt+F2 (Launch application)"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:311
+msgid "Prevent current user from pressing Alt+F2 to launch applications."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:313
+msgid "Disable Ctrl+Alt+L (Lock screen)"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:315
+msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:317
+msgid "Disable \"print\" entry in all menus."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:319
+msgid "Prevent current user from printing any documents."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:321
+msgid "Disable \"print setup\" entry in all menus."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:323
+msgid "Prevent current user from modifying print settings."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:325
+msgid "Disable \"save as\" entry in all menus."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:327
+msgid "Prevent current user from saving files by \"Save as ...\" dialog"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:329
+msgid "Forbid running multiple GNOME session."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:331
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:333
 msgid "Restriction on current user"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:340
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/gnome/setting.py:332
 msgid "Restriction on current user"
@@ -4098,17 +4390,23 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:339
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:343
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:345 .././ailurus/gnome/setting.py:353
 #: .././ailurus/gnome/setting.py:361
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/gnome/setting.py:342
 msgid "Maximum size of thumbnail cache (in MBytes):"
@@ -4117,11 +4415,16 @@ msgstr ""
 #: .././ailurus/gnome/setting.py:344 .././ailurus/gnome/setting.py:352
 #: .././ailurus/gnome/setting.py:360
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #, python-format
 msgid "GConf key: %s"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:351
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr ""
@@ -4131,6 +4434,7 @@ msgid "Size of each thumbnail (in pixels):"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:367
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/gnome/setting.py:350
 msgid "Maximum time each thumbnail remains in cache (in days):"
@@ -4142,6 +4446,8 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:366
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Nautilus thumbnail settings"
 msgstr ""
 
@@ -4179,6 +4485,9 @@ msgid "Allow connection from remote hosts."
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:388
 msgid "Enable switch to different user from the \"Unlock\" dialog"
 msgstr ""
@@ -4201,6 +4510,7 @@ msgid ""
 "using the Indicator Session Tool to logout/restart/shutdown computer."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #. o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
 #. '/apps/gnome-screensaver/user_switch_enable',
@@ -4212,6 +4522,8 @@ msgstr ""
 #. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
 #. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:398
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
@@ -4230,10 +4542,13 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:414 .././ailurus/gnome/setting.py:420
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/gnome/setting.py:528 .././ailurus/gnome/setting.py:539
 #: .././ailurus/gnome/setting.py:545
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "GConf Key: "
 msgstr ""
 
@@ -4246,6 +4561,9 @@ msgid "Backlight"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/gnome/setting.py:428
 msgid "Enable suspending function"
 msgstr ""
@@ -4287,6 +4605,7 @@ msgid "Use your home folder as the desktop"
 msgstr ""
 
 #: .././ailurus/gnome/setting.py:471
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/gnome/setting.py:448
 msgid "Clear \"recent documents\" list"
@@ -4310,6 +4629,8 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:475
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Advance settings"
 msgstr ""
 
@@ -5042,11 +5363,15 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:144
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr ""
 
 #: .././ailurus/common/apps.py:145
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:146
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
@@ -5054,17 +5379,23 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:147
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></"
 "span>"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:173
 msgid "Speed up Firefox"
 msgstr ""
 
 #: .././ailurus/common/apps.py:174
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:175
 msgid "Speed up Firefox"
@@ -5072,6 +5403,8 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:176
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -5079,6 +5412,7 @@ msgid ""
 "\"Applications\"-->\"Internet\"."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:198
 msgid "Firefox without Pango (faster)"
@@ -5100,12 +5434,24 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:213
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:198
+msgid "Firefox without Pango (faster)"
+msgstr ""
+
+#: .././ailurus/common/apps.py:209
+msgid "Netbeans® 6.8"
+msgstr ""
+
+#: .././ailurus/common/apps.py:211
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: http://"
 "netbeans.org/downloads/ ."
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:231
 msgid "Please select the folder where Netbeans is installed"
@@ -5127,17 +5473,32 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:327
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:231
+msgid "Please select the folder where Netbeans is installed"
+msgstr ""
+
+#: .././ailurus/common/apps.py:323
+msgid "OpenJUMP: A geographic information system"
+msgstr ""
+
+#: .././ailurus/common/apps.py:325
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Official site: <span color=\"blue\"><u>http://openjump.org/wiki/show/"
 "HomePage</u></span> ."
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:361
 msgid "Query you before delete more than three files"
 msgstr ""
 
 #: .././ailurus/common/apps.py:362
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:363
 msgid "Query you before delete more than three files"
@@ -5145,6 +5506,8 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:364
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -5154,11 +5517,15 @@ msgid ""
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:380
 msgid "TeXLive 2009"
 msgstr ""
 
 #: .././ailurus/common/apps.py:381
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:382
 msgid "TeXLive 2009"
@@ -5166,10 +5533,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:383
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr ""
 
 #. extract
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:410
 msgid "Unpacking ... Please wait for a few minutes."
@@ -5191,16 +5561,31 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:443
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:410
+msgid "Unpacking ... Please wait for a few minutes."
+msgstr ""
+
+#: .././ailurus/common/apps.py:441
+msgid "TeXLive is installed."
+msgstr ""
+
+#: .././ailurus/common/apps.py:441
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "TeXLive will not work until you restart the computer."
 msgstr ""
 
 #. released under GPL
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:459
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr ""
 
 #: .././ailurus/common/apps.py:461
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:461
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
@@ -5208,6 +5593,8 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:463
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -5217,6 +5604,7 @@ msgid ""
 msgstr ""
 
 #. released under Mozilla Public License 1.1. It is free software/open source.
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:478
 msgid "Adblock+: Block 99% advertisement"
@@ -5238,10 +5626,22 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:499
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:478
+msgid "Adblock+: Block 99% advertisement"
+msgstr ""
+
+#: .././ailurus/common/apps.py:482
+msgid "It is able to block 99% ads and banners."
+msgstr ""
+
+#: .././ailurus/common/apps.py:497
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Proxy management depending on a third party list."
 msgstr ""
 
 #. MPL/GPL/LGPL tri-license
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:507
 msgid "Chrome Theme for Firefox 3.0.*"
@@ -5255,16 +5655,27 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:513
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:507
+msgid "Chrome Theme for Firefox 3.0.*"
+msgstr ""
+
+#: .././ailurus/common/apps.py:511
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr ""
 
 #. MPL/GPL/LGPL tri-license
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:521
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr ""
 
 #: .././ailurus/common/apps.py:525
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:523
 msgid "Chrome Theme for Firefox 3.5.*"
@@ -5272,10 +5683,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:527
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr ""
 
 #. GPL v2
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:535
 msgid "CleanHide: Delete hidden text in web page"
@@ -5289,20 +5703,32 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:541
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:535
+msgid "CleanHide: Delete hidden text in web page"
+msgstr ""
+
+#: .././ailurus/common/apps.py:539
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:553
 =======
 #: .././ailurus/common/apps.py:555
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:553
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
 msgstr ""
 
 #. GPL v2
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:563
 msgid "DownThemAll: A reliable multithread downloader"
@@ -5316,19 +5742,31 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:569
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:563
+msgid "DownThemAll: A reliable multithread downloader"
+msgstr ""
+
+#: .././ailurus/common/apps.py:567
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "It is able to download all images on web-pages."
 msgstr ""
 
 #. Mozilla Public License, v1.1
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:577
 =======
 #: .././ailurus/common/apps.py:579
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:577
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 
 #. BSD License
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:591
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
@@ -5342,16 +5780,27 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:597
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:591
+msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
+msgstr ""
+
+#: .././ailurus/common/apps.py:595
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "This is a powerful web development tool."
 msgstr ""
 
 #. Mozilla Public License v1.1
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:604
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 
 #: .././ailurus/common/apps.py:608
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:606
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
@@ -5359,10 +5808,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:610
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "It supports five kinds of mouse gestures."
 msgstr ""
 
 #. GPL v2
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:618
 msgid "Flashgot: A lightweight and reliable download managers"
@@ -5376,6 +5828,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:624
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:618
+msgid "Flashgot: A lightweight and reliable download managers"
+msgstr ""
+
+#: .././ailurus/common/apps.py:622
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
@@ -5383,16 +5842,21 @@ msgstr ""
 
 #. GPL v2
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:631
 =======
 #: .././ailurus/common/apps.py:633
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:631
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "FoxyProxy: One-click switching proxy"
 msgstr ""
 
 #. released under MIT/X11 License.
 #. MIT License is a free software license.
 #. According to the Free Software Foundation, MIT License is also called X11 License.
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:648
 msgid "GreaseMonkey: Make change to web pages"
@@ -5406,6 +5870,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:654
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:648
+msgid "GreaseMonkey: Make change to web pages"
+msgstr ""
+
+#: .././ailurus/common/apps.py:652
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image verification."
@@ -5417,14 +5888,19 @@ msgstr ""
 
 #. GPL v2
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:665
 =======
 #: .././ailurus/common/apps.py:667
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:665
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr ""
 
 #. GPL v2
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:678
 msgid "NoScript: Allow active content to run only from sites you trust"
@@ -5438,6 +5914,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:685
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:678
+msgid "NoScript: Allow active content to run only from sites you trust"
+msgstr ""
+
+#: .././ailurus/common/apps.py:683
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
@@ -5445,21 +5928,29 @@ msgstr ""
 
 #. GPL v3
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:692
 =======
 #: .././ailurus/common/apps.py:694
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:692
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 
 #. Mozilla Public License v1.1
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:707
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 
 #: .././ailurus/common/apps.py:711
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:709
 msgid "SeoQuake: Help you view search engine parameters of your web site"
@@ -5467,10 +5958,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:713
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "It helps you promote your web sites."
 msgstr ""
 
 #. Mozilla Public License v1.1
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:720
 msgid "Tab Mix Lite CE: Re-open closed tabs"
@@ -5484,20 +5978,32 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:726
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:720
+msgid "Tab Mix Lite CE: Re-open closed tabs"
+msgstr ""
+
+#: .././ailurus/common/apps.py:724
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 
 #. GPL v2
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:734
 =======
 #: .././ailurus/common/apps.py:736
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:734
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 
 #. GPL v3
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:747
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
@@ -5511,10 +6017,18 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:753
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:747
+msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
+msgstr ""
+
+#: .././ailurus/common/apps.py:751
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "It tells the remote websites that you are an IE user."
 msgstr ""
 
 #. GPL v2
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:760
 msgid "View Source Chart: Show pretty color-coded HTML source code"
@@ -5528,26 +6042,41 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:766
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:760
+msgid "View Source Chart: Show pretty color-coded HTML source code"
+msgstr ""
+
+#: .././ailurus/common/apps.py:764
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 
 #. Mozilla Public License v1.1
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:773
 =======
 #: .././ailurus/common/apps.py:775
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:773
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 
 #. LGPL v3.0
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #: .././ailurus/common/apps.py:786
 msgid "Web Developer: Web page analysis tools"
 msgstr ""
 
 #: .././ailurus/common/apps.py:790
+<<<<<<< HEAD:po/ailurus.pot
 =======
 #: .././ailurus/common/apps.py:788
 msgid "Web Developer: Web page analysis tools"
@@ -5555,19 +6084,26 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:792
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Many developers installed it."
 msgstr ""
 
 #. BSD License.
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:799
 =======
 #: .././ailurus/common/apps.py:801
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:799
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 
 #. Mozilla Public License v1.1
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/common/apps.py:813
 msgid "YSlow: web page performance tuning"
@@ -5581,6 +6117,13 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:819
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/common/apps.py:813
+msgid "YSlow: web page performance tuning"
+msgstr ""
+
+#: .././ailurus/common/apps.py:817
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
@@ -6649,6 +7192,7 @@ msgid "Eclipse"
 msgstr ""
 
 <<<<<<< HEAD:po/ailurus.pot
+<<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/libsetting.py:111
 msgid "Choose a file"
 msgstr ""
@@ -6687,11 +7231,28 @@ msgstr ""
 
 #: .././ailurus/libsetting.py:250
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/libsetting.py:111
+msgid "Choose a file"
+msgstr ""
+
+#: .././ailurus/libsetting.py:124 .././ailurus/libsetting.py:189
+msgid "Image file"
+msgstr ""
+
+#: .././ailurus/libsetting.py:173
+#, python-format
+msgid "Choose a file for \"%s\" "
+msgstr ""
+
+#: .././ailurus/libsetting.py:211
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 msgid ""
 "\n"
 "File: "
 msgstr ""
 
+<<<<<<< HEAD:po/ailurus.pot
 <<<<<<< HEAD:po/ailurus.pot
 #: .././ailurus/libsetting.py:253
 =======
@@ -6701,6 +7262,9 @@ msgstr ""
 
 #: .././ailurus/libsetting.py:292
 >>>>>>> FETCH_HEAD:po/ailurus.pot
+=======
+#: .././ailurus/libsetting.py:253
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:po/ailurus.pot
 #, python-format
 msgid ""
 "\n"

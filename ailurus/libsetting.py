@@ -194,7 +194,11 @@ class GConfImageEntry(gtk.HBox):
             self.button.add(image)
             self.button.show_all()
     
+<<<<<<< HEAD:ailurus/libsetting.py
     def __init__(self, tooltip, image_path, image_size):
+=======
+    def __init__(self, tooltip, image, image_size=24):
+>>>>>>> 917fab0fd83de563365680595fa8f52ad3ddc677:ailurus/libsetting.py
         gtk.HBox.__init__(self, False, 1)
         self.image_path = image_path
         self.image_size = image_size
