@@ -1171,19 +1171,6 @@ def delay_notify_firefox_restart(show_notify=False):
                 traceback.print_exc(file=sys.stderr)
                 notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
 
-def delay_notify_apt_get_update(show_notify=False):
-    assert isinstance(show_notify, bool)
-    if not show_notify:
-        delay_notify_apt_get_update.should_show = True
-    else:
-        if getattr(delay_notify_apt_get_update, 'should_show', False):
-            delay_notify_apt_get_update.should_show = False
-            try:
-                APT.apt_get_update()
-            except:
-                import traceback, sys
-                traceback.print_exc(file=sys.stderr)
-
 def sha1(path):
     is_string_not_empty(path)
     import os

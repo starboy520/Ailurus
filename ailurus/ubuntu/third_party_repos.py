@@ -139,8 +139,6 @@ class _repo:
                 gksudo('apt-key add /tmp/key.gpg')
         else:
             raise NotImplementedError
-        # run "apt-get update" after while
-        delay_notify_apt_get_update(False)
     def remove(self):
         # change source
         _repo.refresh_cache()
@@ -151,8 +149,6 @@ class _repo:
         # remove key
         if self.key_id:
             gksudo('apt-key del '+self.key_id, ignore_error=True)
-        # run "apt-get update" after while
-        delay_notify_apt_get_update(False)
 
 class Repo_GoogleStable(_repo):
     __doc__ = _('Google Chrome, Picasa 2 and Google Desktop')

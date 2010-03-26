@@ -273,7 +273,6 @@ class InstallRemovePane(gtk.VBox):
             gtk.gdk.threads_leave()
             
             delay_notify_firefox_restart(True)
-            delay_notify_apt_get_update(True)
             
             gtk.gdk.threads_enter()
             self.__show_detail('')
