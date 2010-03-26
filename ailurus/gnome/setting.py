@@ -154,7 +154,6 @@ def __login_icon_setting():
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' %(image, path))
         notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
-
     path = os.path.expanduser('~/.face')
     if not os.path.exists(path):
         os.system('cp /usr/share/ailurus/data/other_icons/ailurus.png %s' %path)    
