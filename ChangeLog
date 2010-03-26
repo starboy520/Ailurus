@@ -27,8 +27,9 @@
     * Add functionality for clean the recently documents.
     * Split "common used programming packages" items to several items.
     * Add some useful software:
-      autotools, OpenGL-dev, boost, SDL-dev, pipe viewer, auto-apt, checkinstall, etc.
+    * autotools, OpenGL-dev, boost, SDL-dev, pipe viewer, auto-apt, checkinstall, etc.
     * Improve SUN JDK 6 installation.
+    * Modify functionlity for setting application and login icons
       
 2010-03-22 Homer Xing <homer.xing@gmail.com>
 
