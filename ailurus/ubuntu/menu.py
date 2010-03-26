@@ -78,41 +78,8 @@ def __preferences(main_view):
     
     return [ menu_not_clean_apt_cache ]
 
-def __quick_setup(main_view):
-    assert hasattr(main_view, 'lock')
-    assert hasattr(main_view, 'unlock')
-    assert main_view.install_remove_pane
-    assert hasattr(main_view.install_remove_pane, 'app_class_installed_state_changed_by_external')
-
-    import os
-    assert os.path.exists('ubuntu/quick_setup.py')
-
-    from quick_setup import quick_setup
-    def run_quick_setup_thread():
-        try:
-            import subprocess
-            task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
-            task.wait()
-        finally:
-            gtk.gdk.threads_enter()
-            main_view.install_remove_pane.app_class_installed_state_changed_by_external()
-            main_view.unlock()
-            main_view.install_remove_pane.set_sensitive(True)
-            gtk.gdk.threads_leave()
-    def callback(*w):
-        import thread
-        main_view.lock()
-        main_view.install_remove_pane.set_sensitive(False)
-        thread.start_new_thread(run_quick_setup_thread, ())
-    menu = gtk.MenuItem( _('Quick setup') )
-    menu.connect('activate', callback)
-    return [ menu ]
-
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
 
 def get_preferences_menu(main_view):
     return __preferences(main_view)
-
-def get_others_menu(main_view):
-    return __quick_setup(main_view)

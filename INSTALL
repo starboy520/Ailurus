@@ -18,10 +18,14 @@ Installing Ailurus
   Installation
   ------------
 
-    To install Gwibber, perform the following command as root:
+    To install Ailurus on Fedora, perform the following command as root:
     
       $ python setup.py install
       
+    To install Ailurus on Ubuntu (or Mint), perform the following command as root:
+    
+      $ python setup.py install --install-layout=deb
+
   Run Ailurus
   -----------
 

@@ -23,32 +23,8 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-
-class _rpm_install:
-    def __init__(self):
-        raise Exception
-    def _check(self):
-        assert isinstance(self.pkgs, str)
-    def install(self):
-        self._check()
-        RPM.install(self.pkgs)
-    def installed(self):
-        self._check()
-        for p in self.pkgs.split():
-            if not RPM.installed(p): return False
-        return True
-    def remove(self):
-        self._check()
-        RPM.remove(self.pkgs)
-    def _get_reason(self, f):
-        self._check()
-        #evaluate
-        not_in = []
-        for pkg in self.pkgs.split():
-            if not RPM.installed ( pkg ):
-                not_in.append(pkg)
-        #output
-        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+from repos import *
+from controversial_apps import *
 
 class WINE(_rpm_install):
     __doc__ = _('WINE')
@@ -481,3 +457,30 @@ class Wallpaper_Tray(_rpm_install):
     logo = 'wallpaper-tray.png'
     def __init__(self):
         self.pkgs = 'wp_tray'
+
+class Gnash(_rpm_install):
+    __doc__ = _('Flash plugin for web browser')
+    detail = _('Command: yum install gnash')
+    category = 'media'
+    logo = 'flash.png'
+    def __init__(self):
+        self.pkgs = 'gnash'
+
+class Multimedia_Codecs (_rpm_install) :
+    __doc__ = _('Multi-media codec')
+    detail = _(
+       'Command: yum install '
+       'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
+                     'gstreamer-plugins-good gstreamer-plugins-ugly')
+    category = 'media'
+    logo = 'codec.png'
+    def __init__(self):
+        self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
+                     'gstreamer-plugins-good gstreamer-plugins-ugly')
+    def install(self):
+        obj = Repo_RPMFusion_Free()
+        if not obj.installed(): obj.install()
+        
+        _rpm_install.install(self)
+    def get_reason(self, f):
+        self._get_reason(f)

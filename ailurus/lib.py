@@ -20,8 +20,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.03.1.5'
-AILURUS_RELEASE_DATE = '2010-03-18'
+AILURUS_VERSION = '10.03.2'
+AILURUS_RELEASE_DATE = '2010-03-23'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -187,16 +187,6 @@ class Config:
             return True
         except: 
             return False
-    @classmethod
-    def get_cache_dir(cls):
-        try:       value = cls.get_string('cache_dir')
-        except: value = '/opt/ailurus-cache'
-        return value
-    @classmethod
-    def set_cache_dir(cls, value):
-        assert isinstance(value, str) and value
-        assert value[0]=='/'
-        cls.set_string('cache_dir', value)
     @classmethod
     def wget_set_timeout(cls, timeout):
         assert isinstance(timeout, int) and timeout>0, timeout
@@ -1317,18 +1307,7 @@ class R:
     def download(self):
         self.sort()
         dest = '/var/cache/ailurus/'+self.filename
-        
-        #check local cache
         import os, sys, traceback
-        try:
-            file_in_cache = Config.get_cache_dir()+'/'+self.filename
-            if os.path.exists(file_in_cache):
-                self.check(file_in_cache)
-                return file_in_cache
-        except:
-            traceback.print_exc(file=sys.stderr)
-        
-        #otherwise, download it.
         assert isinstance(self.sorted_url, list)
         for i, url in enumerate(self.sorted_url):
             print '\x1b[1;36m', _('Using mirror %(i)s. There are a total of %(total)s mirrors.') % {'i' : i+1, 'total' : len(self.sorted_url)}, '\x1b[m'

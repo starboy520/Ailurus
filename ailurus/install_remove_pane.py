@@ -440,6 +440,28 @@ class InstallRemovePane(gtk.VBox):
             class0.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
+    def __launch_quick_setup(self, *w):
+        self.parentwindow.lock()
+        self.set_sensitive(False)
+        def launch():
+            try:
+                import os
+                me_path = os.path.dirname(os.path.abspath(__file__))
+                FileServer.chdir(me_path)
+                import subprocess
+                task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
+                task.wait()
+            finally:
+                FileServer.chdir_back()
+                gtk.gdk.threads_enter()
+                self.app_class_installed_state_changed_by_external()
+                self.parentwindow.unlock()
+                self.set_sensitive(True)
+                gtk.gdk.threads_leave()
+
+        import thread
+        thread.start_new_thread(launch, ())
+
     def __right_pane(self):
         import gobject
         self.treestore = treestore = gtk.TreeStore ( gobject.TYPE_PYOBJECT )
@@ -552,10 +574,12 @@ class InstallRemovePane(gtk.VBox):
 
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
+        button_quick_setup = gtk.Button(_('Quick setup'))
+        button_quick_setup.connect('clicked', self.__launch_quick_setup)
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_apply, False, False)
-        if self.offline_button_func:
-            bottom_box.pack_start(self.offline_button_func(), False, False)
+        if Config.is_Ubuntu() or Config.is_Mint():
+            bottom_box.pack_end(button_quick_setup, False, False)
 
         box2 = gtk.VBox(False, 0)
         align = gtk.Alignment(0)
@@ -600,9 +624,7 @@ class InstallRemovePane(gtk.VBox):
         self.vpaned = None
         assert hasattr(parentwindow, 'lock')
         assert hasattr(parentwindow, 'unlock')
-        assert hasattr(parentwindow, 'offline_mode_button')
         self.parentwindow = parentwindow
-        self.offline_button_func = parentwindow.offline_mode_button
         from support.terminal import Terminal
         self.terminal = Terminal()
         

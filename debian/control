@@ -1,0 +1,29 @@
+Source: ailurus
+Section: utils
+Priority: optional
+Maintainer: Aron Xu <happyaron.xu@gmail.com>
+Build-Depends: cdbs, debhelper (>= 5), python (>= 2.5), python-support, python-distutils-extra
+Build-Depends-Indep: autotools-dev, gettext
+Standards-Version: 3.8.4
+Homepage: http://ailurus.cn/
+
+Package: ailurus
+Architecture: all
+Depends: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-gnome | policykit-kde | policykit-1-gnome
+Description: make Linux easier to use
+ Ailurus is an application which aims at making Linux easier to use.
+ .
+ Features:
+  * Help users study some Linux skills
+  * Install/remove some applications which are not provided in the 
+    official repository
+  * Search the fastest apt repositories
+  * Enable/disable some third party repositories
+  * Keep track of what packages you have installed/removed
+  * Display information about BIOS, motherboard, CPU and battery
+  * Show/Hide Computer, Home folder, Trash and Network icon on desktop
+  * Configure Nautilus thumbnail cache
+  * Configure Nautilus context menu
+  * Configure Window behavior
+  * Configure GNOME auto-start applications
+  * Show/Hide GNOME splash screen

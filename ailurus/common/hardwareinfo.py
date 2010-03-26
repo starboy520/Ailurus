@@ -193,19 +193,19 @@ def __battery():
         traceback.print_exc(file=sys.stderr)
     return ret
 
-def __sound_card():
-    ret = []
-    try:
-        f = open('/proc/asound/oss/sndstat')
-        lines = f.readlines()
-        for i, line in enumerate(lines):
-            if line.startswith('Card config:'):
-                ret.append( row(_('Sound card:'), lines[i+1].strip(), D+'umut_icons/i_audiocard.png') )
-        f.close()
-    except:
-            traceback.print_exc()
-    return ret
+#def __sound_card():
+#    ret = []
+#    try:
+#        f = open('/proc/asound/oss/sndstat')
+#        lines = f.readlines()
+#        for i, line in enumerate(lines):
+#            if line.startswith('Card config:'):
+#                ret.append( row(_('Sound card:'), lines[i+1].strip(), D+'umut_icons/i_audiocard.png') )
+#        f.close()
+#    except:
+#            traceback.print_exc()
+#    return ret
 
 def get():
     return ( __motherboard() + __bios() + __cpu() + __cpu_temp() +
-             __mem() + __pci() + __sound_card() + __battery() )
+             __mem() + __pci() + __battery() )

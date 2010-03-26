@@ -57,8 +57,9 @@ def __gcc():
 
 def __java():
     try:
-        string = get_output('java -version').split('\n')[0]
-        return [row(_('Java version:'), string, D+'umut_icons/i_java.png')]
+        import re 
+        c=re.split('"', get_output('java -version'))[1]
+        return [row(_('Java version:'), c, D+'umut_icons/i_java.png' )]
     except CommandFailError: pass
     except: traceback.print_exc(file=sys.stderr)
     return []

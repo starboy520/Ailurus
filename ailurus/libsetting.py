@@ -103,6 +103,46 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
+class GConfShortcutKeyEntry:
+    def grab_key(self, *w):
+        import support.keygrabber
+        window = support.keygrabber.GrabberWindow ()
+        window.main ()
+        self.shortcut_entry.set_text(window.shortcut)
+
+    def __entry_value_changed(self, *w):
+        import gconf
+        g = gconf.client_get_default()
+        g.set_string('/apps/metacity/keybinding_commands/' + self.number, self.command_entry.get_text())
+        g.set_string('/apps/metacity/global_keybindings/run_' + self.number, self.shortcut_entry.get_text())
+
+    def __clear_entry_content(self, *w):        
+        self.command_entry.set_text('')
+        self.shortcut_entry.set_text('')
+        
+    def __init__(self, number):
+        import gconf
+        g = gconf.client_get_default()
+
+        self.number = number
+        self.command_entry = gtk.Entry()
+        self.command_entry.set_tooltip_text(
+            _('The command which will be run.') + _('\nGConf key: ') + '/apps/metacity/keybinding_commands/' + self.number)
+        self.command_entry.connect('changed', self.__entry_value_changed)
+        value = g.get_string('/apps/metacity/keybinding_commands/'+number)
+        if value: self.command_entry.set_text(value)
+
+        self.shortcut_entry = gtk.Entry()
+        self.shortcut_entry.set_tooltip_text(
+            _('The shortcut key.') + _('\nGConf key: ') + '/apps/metacity/global_keybindings/run_' + self.number)
+        self.shortcut_entry.connect('grab-focus', self.grab_key)
+        self.shortcut_entry.connect('changed', self.__entry_value_changed)
+        value = g.get_string('/apps/metacity/global_keybindings/run_'+number)
+        if value: self.shortcut_entry.set_text(value)
+        
+        self.clear_entry_content_button = gtk.Button(stock = gtk.STOCK_CLEAR)
+        self.clear_entry_content_button.connect('clicked', self.__clear_entry_content)
+
 class GConfImageEntry(gtk.HBox):
     import gobject
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
@@ -114,57 +154,56 @@ class GConfImageEntry(gtk.HBox):
                  gtk.STOCK_OPEN, gtk.RESPONSE_OK)
                 )
         import os
-#        if self.image: chooser.set_current_folder( os.path.dirname(self.image) )
-
-#        else:     chooser.set_current_folder( os.environ['HOME'] )
         chooser.set_current_folder('/usr/share/pixmaps/')
         chooser.set_select_multiple(False)
 
         filter = gtk.FileFilter()
-        filter.set_name( _("Image file") )
+        filter.set_name(_("Image file"))
         filter.add_mime_type("image/png")
         filter.add_mime_type("image/jpeg")
         filter.add_mime_type("image/gif")
         filter.add_mime_type("image/x-xpixmap")
+        filter.add_mime_type("image/x-svg")
         filter.add_pattern("*.png")
         filter.add_pattern("*.jpg")
         filter.add_pattern("*.gif")
         filter.add_pattern("*.xpm")
+        filter.add_pattern("*.svg")
         
         chooser.add_filter(filter)
 
         response = chooser.run()
         if response == gtk.RESPONSE_OK:
-            self.image = chooser.get_filename()
-            tempath = '/tmp/start-here'
-            os.system('cp %s %s' %(self.image,tempath))
-            pixbuf = gtk.gdk.pixbuf_new_from_file(tempath)
+            self.image_path = chooser.get_filename()
+            temp_file = '/tmp/start-here'
+            os.system('cp %s %s' %(self.image_path,temp_file))
+            pixbuf = gtk.gdk.pixbuf_new_from_file(temp_file)
             pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
-            pixbuf.save(tempath, 'png')
-            self.emit('changed', tempath)
-            self.__show_image(tempath, self.image_size)
+            pixbuf.save(temp_file, 'png')
+            self.emit('changed', temp_file)
+            self.__show_image(temp_file, self.image_size)
         chooser.destroy()
              
     def __show_image(self, image, image_size):
         c = self.button.get_child()
         if c: self.button.remove(c)
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
-        image = gtk.image_new_from_pixbuf(pixbuf)
-        self.button.add(image)
-        self.button.show_all()
+        import os
+        if os.path.exists(image):
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
+            image = gtk.image_new_from_pixbuf(pixbuf)
+            self.button.add(image)
+            self.button.show_all()
     
-    def __init__(self, tooltip, image ='', image_size=24):
+    def __init__(self, tooltip, image_path, image_size):
         gtk.HBox.__init__(self, False, 1)
-        import gconf
-        g = gconf.client_get_default()
-        self.image = image
+        self.image_path = image_path
         self.image_size = image_size
         self.button = gtk.Button()
         self.button.set_tooltip_text(tooltip)
         self.button.connect('clicked', self.__choose_file)
-        self.__show_image(self.image, image_size)
-        if image:
-            self.__show_image(image, image_size)
+        self.__show_image(self.image_path, image_size)
+        if image_path:
+            self.__show_image(image_path, image_size)
  
         self.pack_start(self.button)
         
@@ -309,7 +348,7 @@ class Setting(gtk.VBox):
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 
-                  'update', 'power', ]
+                  'update', 'power', 'shortcut', ]
     
     def __title(self, text):
         label = gtk.Label()

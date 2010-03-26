@@ -1,11 +1,60 @@
+2010-03-24 Homer Xing <homer.xing@gmail.com>
+
+    * Remove Livna repository.
+    * Remove ATrpms repository.
+    * Remove Adobe Flash plugin. Add Gnash.
+    * Remove Adobe Reader.
+    * Remove Adobe Reader repository.
+    * Remove Realplayer.
+    * Remove Skype.
+    * Remove Google repository.
+    * Remove Chrome. Add Chromium.
+    * Remove VirtualBox.
+    * Remove Native 64bit Flash plugin. 
+
+2010-03-23 MA Yue <velly.empire@gmail.com>
+
+    * Add the CompizConfig setting, including:
+      Change window decorator
+      Random all effects
+      Disable minimize effect
+      Set multiplier of screen size
+
 2010-03-22 Starboy Qi <starboy.qi@gmail.com>
-    * Add the setting application icons
-      Add a button for change the login icon
-      Add a button for clean the recently documents
-      Split CommonUsedProgrammingPackages class to several classes
-      Add AutoTools OpenGL BOOST SDL library,and pipe viewer auto-apt checkinstall and so on
-      Modify SUN_JDK6 SUN_JDK6_Chinese classes
+
+    * Add functionality for setting application icons.
+    * Add functionality for change the login icon.
+    * Add functionality for clean the recently documents.
+    * Split "common used programming packages" items to several items.
+    * Add some useful software:
+      autotools, OpenGL-dev, boost, SDL-dev, pipe viewer, auto-apt, checkinstall, etc.
+    * Improve SUN JDK 6 installation.
       
+2010-03-22 Homer Xing <homer.xing@gmail.com>
+
+    * Disable FoxitReader.
+
+2010-03-21 MA Yue <velly.empire@gmail.com>
+    
+    * Add customizing keyboard shortcut key functionality.
+
+2010-03-20 Homer Xing <homer.xing@gmail.com>
+
+    * Remove "Offline installation" functionality.
+    * Fix "Quick setup is not launchable" issue.
+    * We can skip repository detection in "Quick setup" now.
+
+2010-03-20 MA Yue <velly.empire@gmail.com>
+
+    * Improve Java version display.
+    * Add copyright certify for new icons.
+    * Improve text font on splash window.
+
+2010-03-19 MA Yue <velly.empire@gmail.com>
+
+    * Ailurus has new toolbar icon and splash now!
+    * Change toolbar icon size to 40.
+
 2010-03-19 Homer Xing <homer.xing@gmail.com>
 
     * Merge menubar and toolbar. 
@@ -96,6 +145,8 @@
 2010-03-02 Starboy Qi <starboy.qi@gmail.com>
 
     * Display sound card information in hardware-info pane.
+    * Add XBMC and Songbird.
+    * Add Dropbox, Skype and Fcitx.
 
 2010-02-28 Homer Xing <homer.xing@gmail.com>
 
@@ -119,15 +170,201 @@
     * Adopted tree-view in left pane
     * Randomly display a tip after logging in GNOME
 
-2010-01-10 Homer Xing <homer.xing@gmail.com>
+2010-01-17 Homer Xing <homer.xing@gmail.com>
 
-    Many things have happened. 
-    I forgot to write them down in ChangeLog. Please forgive me.
-    But I have written some ChangeLog in http://ailurus.cn/
+    * Ailurus can install some Eclipse extensions, such as Aptana, Mylyn, PDT, RadRails and Subversive.
+    * Add 61 Eclipse mirrors.
+    * Prompt information of “Reclaim memory” is clearer.
+    * Ailurus can install native Linux 64-bit Flash plugin now.
+    * If runtime exceptions when Ailurus is running, a dialog will appear.
+    * Ailurus can install LAMP and Ubuntu Enterprise Cloud cluster now.
+    * Installation script for mplayer-vod is improved.
+    * Detection of Adobe Reader is improved.
+    * Add some nice software.
+    * Add some third-party repositories.
 
-2009-10-01 Homer Xing <homer.xing@gmail.com>
+2010-01-17 CHEN Yangyang <stabyy@gmail.com>
 
-	* New version released.
+    * Implemented “Quick setup” feature with Homer Xing.
+    
+2010-01-04 Homer Xing <homer.xing@gmail.com>
+
+    * “Find fastest repository” functionality is improved.
+      340 repositories were available. GUI was re-designed.
+    * Ailurus can load custom scripts now.
+    * More Linux skills are provided.
+    * Splash window is improved.
+    * Bugs in TexLive 2009 installation, MPlayer installation and AliPay installation are fixed.
+
+2010-01-17 CHEN Yangyang <stabyy@gmail.com>
+
+    * Implemented “APT recovery” functionality with Homer Xing.
+
+2010-01-17 Starboy Qi <starboy.qi@gmail.com>
+
+    * More Firefox extensions can be installed by Ailurus, such as Firebug, YSlow, FireShot, MeasureIt, Web developer.
+    * Three educational application are added. They are Tux Paint, ChildsPlay and GCompris.
+    * Two Linux skills are added.
+
+2010-01-01 Homer Xing <homer.xing@gmail.com>
+
+    * Add 83 Linux skills. They are provided by Mr. Oneleaf and Ubuntu Chinese forum.
+
+2009-12-27 Starboy Qi <starboy.qi@gmail.com>
+
+    * Installation for “med-bio”, “med-bio-dev” and “science-biology”
+    * Installation for “Generic Genome Browser”
+    * Installation for “Kadu” and “Qnapi”
+    * Add a new feature to speed up Firefox. (Inspiration is from Mr. Federico)
+    * Add a trick tip in “Tip of the day” window.
+    * Installation for “Qt creater”
+    * Installation for Firefox extensions “Noscript” and “Flashgot”
+    * Installation for Tencent QQ is removed, since WebQQ is better.
+    * Update installation for Adobe Reader. Adobe Reader 9.2.10 can be installed from now on.
+    * “Show Polish program and web-pages” is added in “Preferences” menu.
+
+2009-12-27 Homer Xing <homer.xing@gmail.com>
+
+    * If software is not installed, then the reason is displayed in the “detail” window.
+    * If the installation failed, then the user can scroll the terminal to view the whole traceback.
+    * Some third party repositories is added into Ailurus.
+    * Ailurus will not automatically delete “.deb” files in /var/cache/apt .
+    * Users can run “sudo ./setup.py” to install Ailurus. It is faster than “./configure; make; make install”
+    * Ailurus works well in KUbuntu & XUbuntu now.
+    * Add a new menu-item “Help”->”Check for updates”.
+
+2009-12-22 Starboy Qi <starboy.qi@gmail.com>
+
+    * A new function “Create ~/Desktop” is added in “Install/Remove pane. By this function, you can create a shortcut in your home folder, which is linked to the Desktop. Then you can chdir to Desktop by this command “cd ~/Desktop”.
+    * The message “synchronizing software packages list” is re-written.
+    * “sudo apt-get update” is automatically launched after that the source configuration has been changed.
+    * Ailurus does not automatically delete files in ‘/var/cache/apt’ from now on.
+    * “Google chrome” installation function is realized.
+    * Three servers are added in the “Fastest apt mirror” pane.
+    * Python and C++ support is added to Eclipse 3.5
+    * Search box in “Install/Remove” pane is improved.
+
+2009-12-22 Homer Xing <homer.xing@gmail.com>
+
+    * POSIX manpages installation function is realized.
+    * Alipay (Zhi Fu Bao) plugin is re-added.
+    * SUN Java installation function is re-written. Original function created multiple “JAVA_HOME” items in /etc/environment. This bug is eliminated now.
+    * Automatically hide a category if there is no items in this category.
+    * The logo is changed.
+
+2009-12-11 Homer Xing <homer.xing@gmail.com>
+
+    * French translation is merged into Ailurus.
+    * From now on, users can press “Ctrl+C” to terminate any task which is running in “Ailurus terminal”.
+    * LaTeX compiler is changed from CJK to XeLaTeX.
+    * TeXLive 2009 can be installed.
+    * File integrity is checked after it is downloaded.
+    * Enabled “install full Chinese language support” functionality for Ubuntu 8.04~9.10
+    * Fixed a few typos.
+    * GnomeArtNG installation process is improved. Gnome theme thumbnails will also be installed.
+    * In the “Third party repository” pane, the “PING response time” label is refreshed automatically.
+
+2009-12-11 CHEN Yangyang <skabyy@gmail.com>
+
+    * We can configure download options in the “Preference” menu. The options include retries number, timeout, and whether to continue broken transfer.
+    * The initialization progress is displayed in the splash window.
+    * “Change memory swap tendency” is moved into “Ubuntu setting” pane.
+    * To wait for Firefox to create index folder.
+    * Firefox extension “Weave sync” can be installed.
+    * Display CPU temperature.
+    * Create local cache folder if the folder does not exists.
+    * Add “Disable automatically mount CD and flash disks” into “Ubuntu setting” pane.
+
+2009-12-10 Ailurus developers
+
+    * Ubun-student is renamed to “Ailurus”
+
+2009-11-28 CHEN Yangyang <skabyy@gmail.com>
+
+    * A new “study” menu is created. There are some web page URLs in this menu.
+    * Two buttons “Decrease font size” and “Increase font size” are ready. They are able to make system fonts a little larger or a little smaller.
+    * A button “Expand all categories” is ready in “Ubuntu setting” pane.
+    * Add a new button “Go forward one pane” in “Navigate” menu.
+    * Python version is displayed in “Ubuntu Information” pane.
+    * A button “Restart network connections” is ready in “Ubuntu setting” pane.
+    * A notification will appear when “Display desktop content” button is toggled.
+    * Add a trick about enabling PPA repository in “Tip of the day”.
+    * Battery full capacity, charging state, current capacity are ready in “System information” pane.
+    * A splash window appears when any pane is re-enabled.
+    * A button “Disable terminal beep sound” is ready in “Ubuntu setting” pane.
+
+2009-11-28 Homer Xing <homer.xing@gmail.com>
+
+    * Any pane can be disabled/enabled.
+    * The 10.04.3 version will occupy 40M memory even if all panes are enabled. However, the 10.04.2 version occupies 80M memory.
+    * About 20+ software presentation is re-written to be more clear.
+    * A “cat” picture is attached to the splash window.
+    * Installation time is reduced. From now on, we can use “sudo ./install.sh” command to install Ubun-student, instead of “./configure; make; sudo make install”.
+    * If Ubun-student is installed in Mint, then corresponding Ubuntu version is automatically detected.
+    * Install media codec for “nautilus-audio-convert”.
+    * Russian support is enabled.
+    * Some useful Firefox extensions are added in “Firefox extensions” category.
+    * “screenlets” and “compizconfig-setting-manager” can be installed/removed in “Appearance” category.
+    * Some entries are added into “Hardware Information” pane:
+      CPU architecture (32bit or 64bit)
+      BIOS verdor, BIOS version and BIOS release time.
+      Motherboard name and vendor.
+    * Some entries are added into “Ubuntu Information” pane.
+      OpenGL vendor and render
+      Firefox version
+      X Server version
+      GCC version
+      Java version
+    * Improve “Ubuntu setting” pane.
+      Add an entry to change the desktop wallpaper.
+      Add two entry to configure the context menu of GTK text-boxes.
+      Add entries to adjust Nautilus thumbnail cache.
+      Use a fresh style.
+    * Fourteen tricks are appended into “Tips of the day” dialog.
+    * If /var/cache/ubun-student/ is owned by user, Ubun-student will not launch “chown” again.
+    * Improve Firefox extension installation process.
+    * Third party Ubuntu-cn repositories is removed. They will be replaced by Aron Xu’s source codes.
+    * The following bugs are eliminated:
+      Buttons in Eclipse do not work well in Ubuntu Karmic.
+
+2009-11-26 CHEN Yangyang <skabyy@gmail.com>
+
+    * Realize a tooltip images feature.
+
+2009-11-19 Homer Xing <homer.xing@gmail.com>
+
+    The following bugs have been eliminated:
+    * A bug in OpenJUMP installation
+    * A bug in QQ installation.
+      (Original dependency is wrong. The installation failed on Karmic.)
+    * A bug in TeXLive installation.
+      (The path of “fmtutils” is wrong.)
+    * A bug in MultimediaCodec installation.
+      (There is no “libstdc++5″ package in Karmic. Therefore, “w32codec” installation failed on Karmic.)
+    * A bug in FreeCAD detection.
+    * A bug in KScope detection.
+      (In version 10.04.1, KScope is shown as “Not installed” even if it is installed successfully. )
+    * A bug in GnomeArtNG installation.
+      (We can install GnomeArtNG on Karmic by Ubun-student from now on.)
+    * A bug in comicview-0.2.7.xpi & a bug in mplayer installation.
+      (These bugs prevent mplayer installation on Karmic.)
+    * Some bugs in “Kernel 2.6.31″ installation.
+      (Now we can install/remove kernel 2.6.31 without error.)
+
+    Moreover, the following features have been enabled.
+    * The detection of DownThemAll and SHADA-Radio is complete.
+    * The statement of “Workrave” is re-written.
+    * Update VirtualBox: 3.0.4 -> 3.0.12
+    * Update Linux Kernel: 2.6.31-rc3 -> 2.6.31.6
+    * Eliminate URL bug in “ttf-mscorefonts-installer”
+      (See first screenshot below)
+    * Hide desktop content.
+      (See second screenshot 2 below)
+    * Customize Nautilus context menu
+
+2009-10-01 Ubun-student developers
+
+	* "Ubuntu Easy Setuper" is renamed to "Ubun-student"!
 
 2009-09-17 Homer Xing <homer.xing@gmail.com>
 
@@ -510,3 +747,7 @@
 	Upgrade DotA to 6.54.
 
 	change log before 2008-08-26 are lost ...
+	
+2007-07-01 Homer Xing <homer.xing@gmail.com>
+
+    * Begin developing "Ubuntu Easy Setuper".

@@ -20,9 +20,12 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 import sys, os
+import ailurus
+sys.path.insert(0, os.path.dirname(os.path.abspath(ailurus.__file__)))
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
-from serverlib import *
+from libserver import *
 import gtk
 
 class WelcomeDialog(gtk.Dialog):
@@ -121,8 +124,12 @@ class FastestRepositoryDialog(gtk.Dialog):
         if self.can_exit == False:
             return True
         return False
+    def user_want_to_skip(self, *w):
+        self.can_skip = True
+        self.can_exit = True
     def __init__(self):
         self.can_exit = False
+        self.can_skip = False
         gtk.Dialog.__init__(self, _('Searching the fastest repository'), None, 
                                        gtk.DIALOG_NO_SEPARATOR, None )
         self.set_position(gtk.WIN_POS_CENTER)
@@ -131,10 +138,14 @@ class FastestRepositoryDialog(gtk.Dialog):
         self.progress_bar = gtk.ProgressBar()
         self.button_start = gtk.Button('Start')
         self.button_start.connect('clicked', self.start)
+        self.button_skip = gtk.Button(_('Skip this step'))
+        self.button_skip.connect('clicked', self.user_want_to_skip)
         self.vbox.set_spacing(10)
         self.set_border_width(10)
         self.vbox.pack_start(self.progress_label, False)
         self.vbox.pack_start(self.progress_bar, False)
+        self.vbox.set_size_request(500, -1)
+        self.action_area.pack_start(self.button_skip, False)
         self.show_all()
     def refresh_GUI(self):
         pass
@@ -161,7 +172,6 @@ class FastestRepositoryDialog(gtk.Dialog):
             self.refresh_GUI()
 
         import threading
-        lock = threading.Lock()
         result = []
         threads = []
         candidate_repos = get_candidate_repositories()
@@ -173,6 +183,10 @@ class FastestRepositoryDialog(gtk.Dialog):
                 import time
                 time.sleep(0.1)
                 show_result()
+                if self.can_skip:
+                    self.destroy()
+                    while gtk.events_pending(): gtk.main_iteration()
+                    return
             thread = PingThread(url, server, result)
             threads.append( thread )
             thread.start()
@@ -180,6 +194,10 @@ class FastestRepositoryDialog(gtk.Dialog):
             if not thread.isAlive(): continue
             thread.join()
             show_result()
+            if self.can_skip:
+                self.destroy()
+                while gtk.events_pending(): gtk.main_iteration()
+                return
 
         #decide fastest server
         min_time = 1e8

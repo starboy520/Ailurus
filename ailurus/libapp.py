@@ -22,7 +22,7 @@
 from __future__ import with_statement
 from lib import *
 
-__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file']
+__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install']
 
 class _set_gconf :
     'Must subclass me and set "self.set" and "self.add"'
@@ -285,3 +285,29 @@ class _download_one_file:
         import os
         if not os.path.exists(self.file):
             print >>f, _('"%s" does not exist.')%self.file,
+
+class _rpm_install:
+    def __init__(self):
+        raise Exception
+    def _check(self):
+        assert isinstance(self.pkgs, str)
+    def install(self):
+        self._check()
+        RPM.install(self.pkgs)
+    def installed(self):
+        self._check()
+        for p in self.pkgs.split():
+            if not RPM.installed(p): return False
+        return True
+    def remove(self):
+        self._check()
+        RPM.remove(self.pkgs)
+    def _get_reason(self, f):
+        self._check()
+        #evaluate
+        not_in = []
+        for pkg in self.pkgs.split():
+            if not RPM.installed ( pkg ):
+                not_in.append(pkg)
+        #output
+        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
