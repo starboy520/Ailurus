@@ -1,3 +1,7 @@
+2010-03-27 Homer Xing <homer.xing@gmail.com>
+
+    * Fix "Launch helper exited with error" issue.
+
 2010-03-26 Homer Xing <homer.xing@gmail.com>
 
     * Fix "Songbird cannot be installed" issue.
