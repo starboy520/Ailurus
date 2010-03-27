@@ -24,7 +24,6 @@ import sys, os
 from lib import *
 from libapp import *
 from repos import *
-from controversial_apps import *
 
 class WINE(_rpm_install):
     __doc__ = _('WINE')
