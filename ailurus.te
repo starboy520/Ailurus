@@ -1,0 +1,11 @@
+
+module ailurus 1.0;
+
+require {
+	type usr_t;
+	type system_dbusd_t;
+	class file execute;
+}
+
+#============= system_dbusd_t ==============
+allow system_dbusd_t usr_t:file execute;
