@@ -14,7 +14,7 @@ Description: make Linux easier to use
  Ailurus is an application which aims at making Linux easier to use.
  .
  Features:
-  * Help users study some Linux skills
+  * Help users learn some Linux skills
   * Install/remove some applications which are not provided in the 
     official repository
   * Search the fastest apt repositories
