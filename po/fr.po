@@ -7,32 +7,36 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-03-24 10:47+0800\n"
-"PO-Revision-Date: 2010-03-23 19:50+0000\n"
-"Last-Translator: royto <royto@free.fr>\n"
+"POT-Creation-Date: 2010-03-24 12:39+0800\n"
+"PO-Revision-Date: 2010-03-24 18:12+0000\n"
+"Last-Translator: AstroMb <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2010-03-24 05:00+0000\n"
+"X-Launchpad-Export-Date: 2010-03-25 05:05+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid " \"Install software\" + \"Configure Linux\" + \"Study Linux skills\""
 msgstr ""
+" \"Installation de logiciel\" + \"Configuration de Linux\" + \"Étude des "
+"compétences Linux\""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr ""
+"La politique système empêche Ailurus de lancer des programmes en tant que "
+"\"root\""
 
 #: .././ailurus/fedora/osinfo.py:35
 msgid "Fedora version:"
 msgstr "Version Fedora:"
 
 #: .././ailurus/fedora/apps.py:30 .././ailurus/ubuntu/third_party_repos.py:211
-#: .././ailurus/ubuntu/app0.py:106
+#: .././ailurus/ubuntu/app0.py:74
 msgid "WINE"
 msgstr "WINE"
 
@@ -42,9 +46,9 @@ msgid ""
 "Linux.\n"
 "Command: yum install wine"
 msgstr ""
-"C'est une application indispensable pour exécuter des applications windows "
+"Voici une application indispensable pour exécuter des applications windows "
 "sous Gnu/Linux.\n"
-"Command: yum install wine"
+"Commande d'installation : yum install wine"
 
 #: .././ailurus/fedora/apps.py:39 .././ailurus/ubuntu/app1.py:28
 msgid "Make GEdit more suitable for programmers"
@@ -241,9 +245,9 @@ msgid ""
 "subversion git"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:253 .././ailurus/ubuntu/app2.py:321
+#: .././ailurus/fedora/apps.py:253 .././ailurus/ubuntu/app2.py:315
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
-msgstr ""
+msgstr "QtiPlot: un équivalent à \"Origin\" pour réaliser des graphiques"
 
 #: .././ailurus/fedora/apps.py:254
 msgid ""
@@ -500,7 +504,7 @@ msgstr ""
 "\"google-chrome-unstable\"."
 
 #: .././ailurus/fedora/controversial_apps.py:131
-#: .././ailurus/ubuntu/app2.py:244
+#: .././ailurus/ubuntu/app2.py:238
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -591,7 +595,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:107
 msgid "They are:"
-msgstr ""
+msgstr "Il sont:"
 
 #. print tip
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:120
@@ -611,6 +615,13 @@ msgid ""
 "cd /etc/apt/\n"
 "sudo tar xzf ~/sources.backup.tar.gz"
 msgstr ""
+"<b>Sauvegarder la configuration des dépôts:</b>\n"
+"cd /etc/apt/\n"
+"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"\n"
+"<b>Restaurer la configuration des dépôts:</b>\n"
+"cd /etc/apt/\n"
+"sudo tar xzf ~/sources.backup.tar.gz"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:159
 msgid "Backup and restore the configuration of repositories"
@@ -641,10 +652,12 @@ msgstr "Editer la configuration des dépôts avec Synaptic"
 msgid ""
 "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
 msgstr ""
+"Fusionner tous les fichiers se trouvant dans /etc/apt/sources.list.d/ dans "
+"/etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:185
 msgid "How to backup and restore the configuration of repositories?"
-msgstr ""
+msgstr "Comment sauvegarder et restaurer la configuration des dépots ?"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:213
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:500
@@ -673,7 +686,7 @@ msgstr "<span color='black'>Le serveur %s est inaccessible.</span>"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:296
 #, python-format
 msgid "Currently you are using %s."
-msgstr ""
+msgstr "Actuellement vous utiliser %s."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:303
 msgid "Change repository"
@@ -703,7 +716,7 @@ msgstr "Tout sélectionner"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:437
 msgid "Select all repositories in these countries"
-msgstr ""
+msgstr "Sélectionner tous les dépôts de ces pays"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:440
 msgid "Unselect all"
@@ -745,11 +758,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:688
 msgid "Merge complete"
-msgstr ""
+msgstr "Fusion terminée"
 
 #: .././ailurus/ubuntu/third_party_repos.py:116
 msgid "<i>Install packages by:</i>"
-msgstr ""
+msgstr "<i>Installation des paquets par :</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:117
 msgid "<i>Web page:</i>"
@@ -757,7 +770,7 @@ msgstr "<i>Page Web :</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:118
 msgid "<i>Source setting:</i>"
-msgstr ""
+msgstr "<i>Paramètres de source:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
 msgid "Google Chrome, Picasa 2 and Google Desktop"
@@ -1029,7 +1042,7 @@ msgstr "Audacious (dernière version)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:581
 msgid "This is a desktop diary application."
-msgstr ""
+msgstr "C'est un application d'agenda de bureau"
 
 #: .././ailurus/ubuntu/third_party_repos.py:591
 msgid "Pidgin (Latest version)"
@@ -1091,7 +1104,7 @@ msgstr "Capture d'écran de la fenêtre"
 
 #: .././ailurus/ubuntu/setting.py:140
 msgid "\"Write to Disc...\" entry"
-msgstr ""
+msgstr "\"Graver sur Disque...\" entrée"
 
 #: .././ailurus/ubuntu/setting.py:141
 msgid ""
@@ -1117,7 +1130,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:152
 msgid "\"Repair filename\" entry"
-msgstr ""
+msgstr "\"Correction du nom de fichier\" entrée"
 
 #: .././ailurus/ubuntu/setting.py:153
 msgid "When any file with wrong encoding filename is right clicked,\n"
@@ -1125,7 +1138,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:153
 msgid "show a \"Repair filename\" menu item."
-msgstr ""
+msgstr "affiche le menu \"Réparer un nom de fichier\""
 
 #: .././ailurus/ubuntu/setting.py:156
 msgid "\"Open as administrator\" entry"
@@ -1191,7 +1204,7 @@ msgstr "Entrée \"Choisir comme fond d'écran\""
 
 #: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
-#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:308
+#: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:310
 msgid "Apply"
 msgstr "Appliquer"
 
@@ -1354,7 +1367,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:357
 msgid "Enable \"Print to pdf\" capability"
-msgstr ""
+msgstr "Activer la fonction \"Imprimer en pdf\""
 
 #: .././ailurus/ubuntu/app1.py:358
 msgid "Command: sudo apt-get install cpus-pdf"
@@ -1437,19 +1450,27 @@ msgid "Current linux kernel version is "
 msgstr "La version courante du noyau linux est "
 
 #: .././ailurus/ubuntu/app1.py:609
-msgid "MacChangger: a tool for change the MAC address"
-msgstr ""
+msgid "MACChanger: change MAC address"
+msgstr "MACChanger : change la MAC addresse"
 
 #: .././ailurus/ubuntu/app1.py:610
 msgid ""
-"macchanger is a A GNU/Linux utility for viewing/manipulating the MAC address "
-"of network interfaces.\n"
+"MACChanger is a utility for viewing/manipulating the MAC address of network "
+"interfaces.\n"
 "Command: sudo apt-get install macchanger"
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:616
-msgid "BlueTooth and Phone"
+msgid "Bluetooth support"
+msgstr "Prise en charge Bluetooth"
+
+#: .././ailurus/ubuntu/app1.py:617
+msgid ""
+"Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
+"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 msgstr ""
+"Commande : sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
+"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 
 #: .././ailurus/ubuntu/app2.py:40
 msgid "Mplayer with \"vod\" protocol support"
@@ -1483,138 +1504,162 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:104
 msgid ""
-"Build-Essential is a c/c++ develop package. It contains gcc,make,gdb,libc "
-"and so on.\n"
+"By installing build-essential, you will get g++, make, gdb and libc.\n"
 "Command: sudo apt-get install build-essential"
 msgstr ""
+"En installant build-essential, vous aurez g++, make, gdb and libc.\n"
+"Commande : sudo apt-get install build-essential"
 
 #: .././ailurus/ubuntu/app2.py:113
 msgid ""
-"manpages-dev: manual pages about Linux system calls and library calls.\n"
-"manpages-posix: manual pages about using POSIX.\n"
-"manpages-posix-dev: manual pages about POSIX header files and POSIX library "
-"files.\n"
+"Install manual pages about Linux system calls, library calls, using POSIX, "
+"and POSIX library files.\n"
 "Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:124
+#: .././ailurus/ubuntu/app2.py:122
 msgid ""
-"source code parser used in vi and emacs, which allow moving to the "
-"definition of a symbol.\n"
+"This is a source code parser. It allows moving to the definition of a "
+"symbol. It is used in vi and emacs.\n"
 "Command: sudo apt-get install exuberant-ctags"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:133
-msgid ""
-"GNU multiprecision arithmetic library.\n"
-"Command: sudo apt-get install libgmp3-dev"
+#: .././ailurus/ubuntu/app2.py:130
+msgid "GNU multiprecision arithmetic library"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:142
+#: .././ailurus/ubuntu/app2.py:131
+msgid "Command: sudo apt-get install libgmp3-dev"
+msgstr "Commande : sudo apt-get install libgmp3-dev"
+
+#: .././ailurus/ubuntu/app2.py:138
+msgid "Ncurses5 and QT3"
+msgstr "Ncurses5 et QT3"
+
+#: .././ailurus/ubuntu/app2.py:139
 msgid ""
-"libncurses5: a library controlling writing to the console screen.\n"
-"libqt3-mt: Trolltech Qt library, version 3.\n"
+"libncurses5 is a library controlling writing to the console screen.\n"
+"libqt3-mt is Trolltech Qt library, version 3.\n"
 "Command: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:152
+#: .././ailurus/ubuntu/app2.py:148
+msgid "Subversion, git, and bzr"
+msgstr "Subversion, git, et bzr"
+
+#: .././ailurus/ubuntu/app2.py:149
 msgid ""
-"subversion: a version control system.\n"
-"git-core: a distributed version control system.\n"
-"Command: sudo apt-get install subversion git-core."
+"subversion, git and bzr are popular version control systems.\n"
+"Command: sudo apt-get install subversion git-core bzr"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:161
-msgid "Tools for AutoMake"
-msgstr ""
+#: .././ailurus/ubuntu/app2.py:157
+msgid "Autotools"
+msgstr "Autotools"
 
-#: .././ailurus/ubuntu/app2.py:162
+#: .././ailurus/ubuntu/app2.py:158
 msgid ""
-"autoconf: an package that produce shell scripts to automatically configure "
-"software source code packages.\n"
-"automake: a tool for automatically generating Makefile.\n"
+"autoconf can produce shell scripts to automatically configure software "
+"source code packages.\n"
+"automake is a tool for automatically generating Makefile.\n"
 "Command: sudo apt-get install autoconf automake autotool"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:171
-msgid "FreeLut3: OpenGL Utility Toolkit"
-msgstr ""
+#: .././ailurus/ubuntu/app2.py:167
+msgid "OpenGL library"
+msgstr "Librairie OpenGL"
 
-#: .././ailurus/ubuntu/app2.py:172
+#: .././ailurus/ubuntu/app2.py:168
 msgid ""
-"GLUT is a window system independent toolkit for writing OpenGL programs.\n"
+"This is a library for writing OpenGL programs.\n"
 "Command: sudo apt-get install freeglut3-dev"
 msgstr ""
+"C'est la librairie pour écrire les programmes OpenGL\n"
+"Commande: sudo apt-get install freeglut3-dev"
 
-#: .././ailurus/ubuntu/app2.py:181
-msgid ""
-"Boost C++ Libraries development files.\n"
-"Command: sudo apt-get install libboost-dev"
+#: .././ailurus/ubuntu/app2.py:176
+msgid "Boost library"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:189
-msgid "Simple DirectMedia Layer"
-msgstr ""
+#: .././ailurus/ubuntu/app2.py:177
+msgid "Command: sudo apt-get install libboost-dev"
+msgstr "Commande: sudo apt-get install libboost-dev"
 
-#: .././ailurus/ubuntu/app2.py:190
+#: .././ailurus/ubuntu/app2.py:184
+msgid "SDL library"
+msgstr "Librairie SDL"
+
+#: .././ailurus/ubuntu/app2.py:185
 msgid ""
-"cross-platform multimedia library designed to provide low level access to "
-"audio keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video "
-"framebuffer.\n"
+"This is a library for writing SDL programs.\n"
+"SDL is a cross-platform multimedia library designed to provide low level "
+"access to audio keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D "
+"video framebuffer.\n"
 "Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
 "mixer1.2-dev libsdl-ttf2.0-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:200
+#: .././ailurus/ubuntu/app2.py:195
+msgid "pv: a pipe viewer"
+msgstr ""
+
+#: .././ailurus/ubuntu/app2.py:196
 msgid ""
 "A terminal-based tool for monitoring the progress of data through a "
 "pipeline.\n"
 "Command: sudo apt-get install pv"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:207
+#: .././ailurus/ubuntu/app2.py:203
 msgid ""
-"Usage: \"auto-apt run ./configure\" can help you to find  the package is not "
+"\"auto-apt run ./configure\" can help you install the packages which are not "
 "installed.\n"
 "Command: sudo apt-get install auto-apt"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:214
+#: .././ailurus/ubuntu/app2.py:210
 msgid ""
-"Can replace the \"make install\" to achieve the source code installed as a "
-"deb, to achieve package management.\n"
-"Command: sudo apt-get install checkinstall"
+"Checkinstall help you build deb package. Command: sudo apt-get install "
+"checkinstall"
+msgstr ""
+"Checkinstall vous aide à compiler les paquets deb . Commande: sudo apt-get "
+"install checkinstall"
+
+#: .././ailurus/ubuntu/app2.py:216
+msgid "Umbrello: UML modelling"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:220
-msgid "Umbrello: An UML Modeller"
-msgstr ""
-
-#: .././ailurus/ubuntu/app2.py:221
+#: .././ailurus/ubuntu/app2.py:217
 msgid ""
-"Umbrello: allows you to create diagrams of software and other systems in a "
-"standard format.\n"
+"Umbrello help you do UML modelling.\n"
 "Command: sudo apt-get install umbrello"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:230
+#: .././ailurus/ubuntu/app2.py:225
+msgid "Ubuntu Studio Theme"
+msgstr "Thème Ubuntu Studio"
+
+#: .././ailurus/ubuntu/app2.py:226
 msgid ""
 "Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
 "ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 msgstr ""
+"Commande: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
+"ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 
-#: .././ailurus/ubuntu/app2.py:236
-msgid ""
-"minicom: a clone of the MS-DOS \"Telix\" communication program.\n"
-"ckermit: combined serial and network communication software package.\n"
-"Command: sudo apt-get install minicom ckermit"
-msgstr ""
+#: .././ailurus/ubuntu/app2.py:231
+msgid "Minicom and ckermit"
+msgstr "Minicom et ckermit"
 
-#: .././ailurus/ubuntu/app2.py:265
+#: .././ailurus/ubuntu/app2.py:232
+msgid "Command: sudo apt-get install minicom ckermit"
+msgstr "Commande: sudo apt-get install minicom ckermit"
+
+#: .././ailurus/ubuntu/app2.py:259
 msgid "GNOMEArtNG"
 msgstr "GNOMEArtNG"
 
-#: .././ailurus/ubuntu/app2.py:266
+#: .././ailurus/ubuntu/app2.py:260
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -1622,49 +1667,45 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:322
+#: .././ailurus/ubuntu/app2.py:316
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: sudo apt-get install qtiplot"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:332
+#: .././ailurus/ubuntu/app2.py:326
 msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
+"C'est une calculatrice graphique multifonction.\n"
+"Commande: sudo apt-get install extcalc"
 
-#: .././ailurus/ubuntu/app2.py:348
-msgid ""
-"Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
-"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
+#: .././ailurus/ubuntu/app2.py:334
+msgid "Satartup Manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:353
+#: .././ailurus/ubuntu/app2.py:335
 msgid ""
-"SatartupManager: Change settings and manage themes for Grub and Usplash."
-msgstr ""
-
-#: .././ailurus/ubuntu/app2.py:354
-msgid ""
-"Start Method: sudo startupmanager.\n"
+"Satartup manager helps you change GRUB settings and themes.\n"
 "Command: sudo apt-get install startupmanager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:360
-msgid "Zhcon: a tool that enable you to input Chinese in your terminal"
-msgstr ""
+#: .././ailurus/ubuntu/app2.py:341
+msgid "Zhcon"
+msgstr "Zhcon"
 
-#: .././ailurus/ubuntu/app2.py:361
+#: .././ailurus/ubuntu/app2.py:342
 msgid ""
-"Start Method: zhcon --utf8.\n"
+"Zhcon helps you display Chinese characters in TTY terminal.\n"
+"You can launch it by \"zhcon --utf8\".\n"
 "Command: sudo apt-get install zhcon"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:368
+#: .././ailurus/ubuntu/app2.py:350
 msgid ""
-"Powertop is a linux tool to find out what is using power on your laptop.\n"
+"Powertop helps you save power for your laptop.\n"
 "Command: sudo apt-get install powertop"
 msgstr ""
 
@@ -1689,7 +1730,7 @@ msgstr ""
 "du fichier \"/etc/environment\", lesquels sont JAVA_HOME, JAVA_BIN et "
 "CLASSPATH."
 
-#: .././ailurus/ubuntu/app0.py:107
+#: .././ailurus/ubuntu/app0.py:75
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux.\n"
@@ -1699,11 +1740,11 @@ msgstr ""
 "Windows sous Linux.\n"
 "Commande : sudo apt-get install wine wine-gecko"
 
-#: .././ailurus/ubuntu/app0.py:130
+#: .././ailurus/ubuntu/app0.py:98
 msgid "WINE &amp; Wen-Quan-Yi Chinese font"
 msgstr "WINE &amp; Wen-Quan-Yi Chinese font"
 
-#: .././ailurus/ubuntu/app0.py:131
+#: .././ailurus/ubuntu/app0.py:99
 msgid ""
 "WINE is an indispensable application for running Windows applications on "
 "Linux.\n"
@@ -1717,11 +1758,11 @@ msgstr ""
 "install wine wine-gecko ttf-wqy-zenhei\" est exécutée, ensuite la police Wen-"
 "Quan-Yi est utilisée comme police chinoise par défaut."
 
-#: .././ailurus/ubuntu/app0.py:166
+#: .././ailurus/ubuntu/app0.py:131
 msgid "SUN_JDK6 is required. It is to be installed."
 msgstr "SUN_JDK6 est requis. Il va être installé."
 
-#: .././ailurus/ubuntu/app0.py:176
+#: .././ailurus/ubuntu/app0.py:141
 msgid "WINE is required. It is to be installed."
 msgstr "WINE est requis. Il va être installé."
 
@@ -2347,6 +2388,8 @@ msgstr "Recherche les dépôts les plus rapides"
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
+"<span color='black'>Temps de réponse de %(server)s est de %(value).0f "
+"ms.</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:213
 msgid ""
@@ -2379,7 +2422,7 @@ msgstr "Installe les pilotes matériels"
 
 #: .././ailurus/ubuntu/quick_setup.py:316
 msgid "Ongoing:"
-msgstr ""
+msgstr "En cours:"
 
 #: .././ailurus/ubuntu/quick_setup.py:321
 msgid "Successful"
@@ -2496,6 +2539,9 @@ msgid ""
 "install'\n"
 "sudo auto-apt run ./configure\n"
 msgstr ""
+"Installer automatiquement des dépendance pour './configure ; make ; make "
+"install'\n"
+"sudo auto-apt run ./configure\n"
 
 #: .././ailurus/ubuntu/tips.py:83
 msgid ""
@@ -2939,6 +2985,8 @@ msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
 msgstr ""
+"Télécharger par bittorent + Rechercher des vidéos + Lire des vidéos\n"
+"Commande: sudo apt-get install vuze"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
 msgid "APT recovery"
@@ -2950,27 +2998,27 @@ msgstr "Écrire des commentaires"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:62
 msgid "Would you like to write some comments for this snapshot?"
-msgstr ""
+msgstr "Voulez vous écrire des commentaires pour cet instantané ?"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:123
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
-msgstr ""
+msgstr "Instantané fait en %(year)04d-%(month)02d:"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:137
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
-msgstr ""
+msgstr "Il n'y a pas d'instantané pour %(year)04d-%(month)02d."
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:148
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
-msgstr ""
+msgstr "Il n'y a pas d'instantané pour %(year)04d-%(month)02d-%(day)02d."
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:158
 #, python-format
 msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
-msgstr ""
+msgstr "Aucun changement depuis %(year)04d-%(month)02d-%(day)02d."
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:182
 msgid "Create today's snapshot"
@@ -3314,8 +3362,8 @@ msgstr "Actualiser"
 msgid "Restriction"
 msgstr "Restriction"
 
-#: .././ailurus/system_setting_pane.py:58 .././ailurus/gnome/setting.py:480
-#: .././ailurus/gnome/setting.py:490
+#: .././ailurus/system_setting_pane.py:58 .././ailurus/gnome/setting.py:483
+#: .././ailurus/gnome/setting.py:493
 msgid "Shortcut key"
 msgstr "Raccourcis clavier"
 
@@ -3512,75 +3560,76 @@ msgstr "Place un raccourcis pour la poubelle sur le bureau."
 msgid "Desktop icons"
 msgstr "Icônes du bureau"
 
-#: .././ailurus/gnome/setting.py:116
-msgid "Changed"
+#: .././ailurus/gnome/setting.py:110 .././ailurus/gnome/setting.py:127
+msgid "Icon changed"
+msgstr "Icônes modifiée"
+
+#: .././ailurus/gnome/setting.py:110 .././ailurus/gnome/setting.py:127
+#: .././ailurus/common/menu.py:344
+msgid ""
+"Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
+"Vos changements prendront effet lors de votre prochaine connexion à GNOME."
 
 #: .././ailurus/gnome/setting.py:116
-msgid "Application will work next time you restart your computer"
+#, python-format
+msgid ""
+"If you want to change \"start-here\" icon, you can put new icons in %s"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:121
-msgid "Application icons settings"
+#: .././ailurus/gnome/setting.py:120
+msgid "Change \"start-here\" icon"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:131
-msgid "Notify"
-msgstr ""
+#: .././ailurus/gnome/setting.py:135
+msgid "Change login icon"
+msgstr "Modifier l'icône de connexion"
 
-#: .././ailurus/gnome/setting.py:131
-msgid "The login icon will change next time you restart your computer"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:137
-msgid "Login icon setting"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:141
+#: .././ailurus/gnome/setting.py:139
 msgid "Show icons of menu entries"
 msgstr "Affiche les icônes des entrées dans le menu."
 
-#: .././ailurus/gnome/setting.py:143
+#: .././ailurus/gnome/setting.py:141
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr ""
 "Indique si les menus doivent afficher une icône à côté du texte du menu."
 
-#: .././ailurus/gnome/setting.py:145
+#: .././ailurus/gnome/setting.py:143
 msgid "Menu entry icons setting"
 msgstr "Paramètres des icônes du menu"
 
-#: .././ailurus/gnome/setting.py:150
+#: .././ailurus/gnome/setting.py:148
 msgid "Show icon in buttons"
 msgstr "Affiche les icônes des bouttons"
 
-#: .././ailurus/gnome/setting.py:152
+#: .././ailurus/gnome/setting.py:150
 msgid "Whether buttons may display an icon next to text."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:154
+#: .././ailurus/gnome/setting.py:152
 msgid "Button icons setting"
 msgstr "Configuration des icônes des boutons"
 
-#: .././ailurus/gnome/setting.py:158
+#: .././ailurus/gnome/setting.py:156
 msgid "Disable terminal bell"
 msgstr "Désactiver le bip du terminal"
 
-#: .././ailurus/gnome/setting.py:160
+#: .././ailurus/gnome/setting.py:158
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr ""
 "Si coché, le terminal gnome n'émettra plus de bip quand une erreur survient."
 
-#: .././ailurus/gnome/setting.py:162
+#: .././ailurus/gnome/setting.py:160
 msgid "Terminal beep sound setting"
 msgstr "Réglage du bip du terminal"
 
-#: .././ailurus/gnome/setting.py:166
+#: .././ailurus/gnome/setting.py:164
 msgid "Automatically mount CD and flash disks"
 msgstr "Monter automatiquement les CD et clés USB"
 
-#: .././ailurus/gnome/setting.py:168
+#: .././ailurus/gnome/setting.py:166
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
@@ -3588,65 +3637,66 @@ msgstr ""
 "Si réglé sur vrai, Nautilus montera automatiquement les médias comme les CD "
 "ou les disques flash."
 
-#: .././ailurus/gnome/setting.py:171
+#: .././ailurus/gnome/setting.py:169
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:193
+#: .././ailurus/gnome/setting.py:191
 msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:196 .././ailurus/gnome/setting.py:232
+#: .././ailurus/gnome/setting.py:194 .././ailurus/gnome/setting.py:230
+#: .././ailurus/gnome/setting.py:502 .././ailurus/gnome/setting.py:525
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
-#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:289
-#: .././ailurus/libsetting.py:321
+#: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:291
+#: .././ailurus/libsetting.py:323
 msgid "GConf key: "
 msgstr "clé GConf : "
 
-#: .././ailurus/gnome/setting.py:198
+#: .././ailurus/gnome/setting.py:196
 msgid "More Nautilus settings"
-msgstr ""
+msgstr "Plus de paramètres pour Nautilus"
 
-#: .././ailurus/gnome/setting.py:220
+#: .././ailurus/gnome/setting.py:218
 msgid "Larger font"
 msgstr "Police plus grande"
 
-#: .././ailurus/gnome/setting.py:222
+#: .././ailurus/gnome/setting.py:220
 msgid "Smaller font"
 msgstr "Police plus petite"
 
-#: .././ailurus/gnome/setting.py:228
+#: .././ailurus/gnome/setting.py:226
 msgid "One-click changing font size"
 msgstr "Changement de Taille par click"
 
-#: .././ailurus/gnome/setting.py:231 .././ailurus/gnome/setting.py:239
+#: .././ailurus/gnome/setting.py:229 .././ailurus/gnome/setting.py:238
 msgid "The layout of window title-bar buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:234
+#: .././ailurus/gnome/setting.py:233
 msgid "GNOME classic"
 msgstr "GNOME Classique"
 
-#: .././ailurus/gnome/setting.py:234
+#: .././ailurus/gnome/setting.py:233
 msgid "MAC OS X"
 msgstr "MAC OS X"
 
-#: .././ailurus/gnome/setting.py:234
+#: .././ailurus/gnome/setting.py:233
 msgid "Ubuntu Lucid"
 msgstr "Ubuntu Lucid"
 
-#: .././ailurus/gnome/setting.py:243
+#: .././ailurus/gnome/setting.py:242
 msgid "double-clicked by mouse left button:"
 msgstr "double click via le bouton gauche de la souris:"
 
-#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:257
+#: .././ailurus/gnome/setting.py:243 .././ailurus/gnome/setting.py:256
 msgid "The effects of double-clicking on the title bar."
 msgstr "L'effet d'un double-clic sur la barre de titre."
 
-#: .././ailurus/gnome/setting.py:244 .././ailurus/gnome/setting.py:246
-#: .././ailurus/gnome/setting.py:248 .././ailurus/libsetting.py:38
+#: .././ailurus/gnome/setting.py:243 .././ailurus/gnome/setting.py:245
+#: .././ailurus/gnome/setting.py:247 .././ailurus/libsetting.py:38
 #: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:130
-#: .././ailurus/libsetting.py:137 .././ailurus/libsetting.py:252
+#: .././ailurus/libsetting.py:137 .././ailurus/libsetting.py:254
 msgid ""
 "\n"
 "GConf key: "
@@ -3654,158 +3704,158 @@ msgstr ""
 "\n"
 "clé GConf : "
 
-#: .././ailurus/gnome/setting.py:245
+#: .././ailurus/gnome/setting.py:244
 msgid "clicked by mouse right button:"
 msgstr "clic droit :"
 
-#: .././ailurus/gnome/setting.py:246 .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:245 .././ailurus/gnome/setting.py:265
 msgid "The effects of right-clicking on the title bar."
 msgstr "L'effet d'un clic droit sur la barre de titre."
 
-#: .././ailurus/gnome/setting.py:247
+#: .././ailurus/gnome/setting.py:246
 msgid "clicked by mouse wheel:"
 msgstr "clic milieu :"
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:247 .././ailurus/gnome/setting.py:274
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr "L'effet de la roulette de la souris sur la barre de titres."
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "maximize"
 msgstr "maximiser"
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "minimize"
 msgstr "réduire"
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "roll up"
-msgstr ""
+msgstr "enrouler"
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "put behind others"
 msgstr "place derrière les autres"
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "maximize horizontally"
 msgstr "maximiser horizontalement"
 
-#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:264
-#: .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:254 .././ailurus/gnome/setting.py:263
+#: .././ailurus/gnome/setting.py:272
 msgid "maximize vertically"
 msgstr "maximiser verticalement"
 
-#: .././ailurus/gnome/setting.py:264 .././ailurus/gnome/setting.py:273
+#: .././ailurus/gnome/setting.py:263 .././ailurus/gnome/setting.py:272
 msgid "show menu"
 msgstr "afficher le menu"
 
-#: .././ailurus/gnome/setting.py:278
+#: .././ailurus/gnome/setting.py:277
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 "Effet de la fenêtre après que la barre de titre de la fenêtre aie été..."
 
-#: .././ailurus/gnome/setting.py:283
+#: .././ailurus/gnome/setting.py:282
 msgid "Show \"Input method\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:284 .././ailurus/gnome/setting.py:287
+#: .././ailurus/gnome/setting.py:283 .././ailurus/gnome/setting.py:286
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr "Cette option affecte GEdit et toutes les boîtes de dialogues GTK."
 
-#: .././ailurus/gnome/setting.py:286
+#: .././ailurus/gnome/setting.py:285
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:289
+#: .././ailurus/gnome/setting.py:288
 msgid "Text-boxes context menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:293
+#: .././ailurus/gnome/setting.py:292
 msgid "Show login splash image: "
 msgstr "Affiche l'image du login splash: "
 
-#: .././ailurus/gnome/setting.py:295
+#: .././ailurus/gnome/setting.py:294
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 "Si la valeur est vraie, un ecran splash sera affichée après votre login dans "
 "GNOME."
 
-#: .././ailurus/gnome/setting.py:297
+#: .././ailurus/gnome/setting.py:296
 msgid "Splash image:"
 msgstr "Ecran splash:"
 
-#: .././ailurus/gnome/setting.py:299
+#: .././ailurus/gnome/setting.py:298
 msgid "The file which is used as the GNOME splash image."
 msgstr "The fichier qui est utilisé comme écran splash par GNOME."
 
-#: .././ailurus/gnome/setting.py:301
+#: .././ailurus/gnome/setting.py:300
 msgid "GNOME splash image"
 msgstr "Ecran splash GNOME"
 
-#: .././ailurus/gnome/setting.py:307
+#: .././ailurus/gnome/setting.py:306
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 "Ces paramètres ne concernent que l'utilisateur courant. Ils n'affectent pas "
 "les autres utilisateurs."
 
-#: .././ailurus/gnome/setting.py:309
+#: .././ailurus/gnome/setting.py:308
 msgid "Disable Alt+F2 (Launch application)"
 msgstr "Désactiver Alt+F2 (Lancer une application)"
 
-#: .././ailurus/gnome/setting.py:311
+#: .././ailurus/gnome/setting.py:310
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 "Empêcher l'utilisateur courant de presser « Alt+F2 » pour lancer des "
 "applications."
 
-#: .././ailurus/gnome/setting.py:313
+#: .././ailurus/gnome/setting.py:312
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr "Désactiver Ctrl+Alt+L (Verrouillage de l'écran)"
 
-#: .././ailurus/gnome/setting.py:315
+#: .././ailurus/gnome/setting.py:314
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 "Empêhe l'utilisateur courrant de presser Ctrl+Alt+L pour bloquer l'écran."
 
-#: .././ailurus/gnome/setting.py:317
+#: .././ailurus/gnome/setting.py:316
 msgid "Disable \"print\" entry in all menus."
 msgstr "Désactiver l'entrée \"imprimer\" dans tous les menus"
 
-#: .././ailurus/gnome/setting.py:319
+#: .././ailurus/gnome/setting.py:318
 msgid "Prevent current user from printing any documents."
 msgstr "Empêche l'utilisateur courant d'imprimer un document."
 
-#: .././ailurus/gnome/setting.py:321
+#: .././ailurus/gnome/setting.py:320
 msgid "Disable \"print setup\" entry in all menus."
 msgstr "Désactiver l'entrée \"Mise en page...\" dans tous les menus"
 
-#: .././ailurus/gnome/setting.py:323
+#: .././ailurus/gnome/setting.py:322
 msgid "Prevent current user from modifying print settings."
 msgstr ""
 "Empêche l'utilisateur courant de modifier la configuration des impressions."
 
-#: .././ailurus/gnome/setting.py:325
+#: .././ailurus/gnome/setting.py:324
 msgid "Disable \"save as\" entry in all menus."
 msgstr "Désactive l'éntrée \"Enregistrer sous\" dans tous les menus."
 
-#: .././ailurus/gnome/setting.py:327
+#: .././ailurus/gnome/setting.py:326
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 "Empêche l'utilisateur courant de sauver des fichiers en utilisant "
 "\"Enregistrer sous ...\""
 
-#: .././ailurus/gnome/setting.py:329
+#: .././ailurus/gnome/setting.py:328
 msgid "Forbid running multiple GNOME session."
 msgstr "Interdit l'utilisation de sessions multiples sous GNOME."
 
-#: .././ailurus/gnome/setting.py:331
+#: .././ailurus/gnome/setting.py:330
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
@@ -3813,42 +3863,42 @@ msgstr ""
 "Prévient le passage d'un compte utilisateur à l'autre sans se déloguer de "
 "GNOME préalablement."
 
-#: .././ailurus/gnome/setting.py:333
+#: .././ailurus/gnome/setting.py:332
 msgid "Restriction on current user"
 msgstr "Restriction sur l'utilisateur courant"
 
-#: .././ailurus/gnome/setting.py:340
+#: .././ailurus/gnome/setting.py:339
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr "Le répertoire cache des miniatures est \"%s/.thumbnails\"."
 
-#: .././ailurus/gnome/setting.py:343
+#: .././ailurus/gnome/setting.py:342
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr "Taille maximum du répertoire cache des miniatures (en Mio):"
 
-#: .././ailurus/gnome/setting.py:345 .././ailurus/gnome/setting.py:353
-#: .././ailurus/gnome/setting.py:361
+#: .././ailurus/gnome/setting.py:344 .././ailurus/gnome/setting.py:352
+#: .././ailurus/gnome/setting.py:360
 #, python-format
 msgid "GConf key: %s"
 msgstr "Clé GConf: %s"
 
-#: .././ailurus/gnome/setting.py:351
+#: .././ailurus/gnome/setting.py:350
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr "Temps maximum de conservation d'un lien dans le cache (en jours):"
 
-#: .././ailurus/gnome/setting.py:359
+#: .././ailurus/gnome/setting.py:358
 msgid "Size of each thumbnail (in pixels):"
 msgstr "Taille de chaque miniature (en pixels):"
 
-#: .././ailurus/gnome/setting.py:367
+#: .././ailurus/gnome/setting.py:366
 msgid "Nautilus thumbnail settings"
 msgstr "Paramètres des miniatures Nautilus"
 
-#: .././ailurus/gnome/setting.py:373
+#: .././ailurus/gnome/setting.py:372
 msgid "Remember running applications when you log out."
 msgstr "Se souvenir des applications lancées lors de la déconnexion."
 
-#: .././ailurus/gnome/setting.py:375
+#: .././ailurus/gnome/setting.py:374
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
@@ -3858,19 +3908,19 @@ msgstr ""
 "la déconnexion, et relancera ces applications lors de la prochaine connexion "
 "à GNOME."
 
-#: .././ailurus/gnome/setting.py:378
+#: .././ailurus/gnome/setting.py:377
 msgid "Configure autostart applications"
 msgstr "Configure les applications au démarrage"
 
-#: .././ailurus/gnome/setting.py:379
+#: .././ailurus/gnome/setting.py:378
 msgid "Run command: gnome-session-properties"
 msgstr "Lance la commande: gnome-session-properties"
 
-#: .././ailurus/gnome/setting.py:382
+#: .././ailurus/gnome/setting.py:381
 msgid "Prompt you before you log out from GNOME."
 msgstr "Vous averti avant tout déloguage de GNOME."
 
-#: .././ailurus/gnome/setting.py:384
+#: .././ailurus/gnome/setting.py:383
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
@@ -3878,7 +3928,7 @@ msgstr ""
 "Il cette valeur est fausse, la session GNOME se terminera immédiatement si "
 "vous cliquer sur le menu \"Système\"->\"déconnexion\"."
 
-#: .././ailurus/gnome/setting.py:386
+#: .././ailurus/gnome/setting.py:385
 msgid "Allow connection from remote hosts."
 msgstr "Permet les connections pour les hôtes à distance."
 
@@ -3891,74 +3941,102 @@ msgstr "Permet les connections pour les hôtes à distance."
 #. _('If its value is false, Gnome will not show confirmation '
 #. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
 #. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-#: .././ailurus/gnome/setting.py:399
+#: .././ailurus/gnome/setting.py:398
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:403
+#: .././ailurus/gnome/setting.py:402
 msgid "Lock screen when screen saver is activated"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:407
+#: .././ailurus/gnome/setting.py:406
 msgid "GNOME session"
 msgstr "Session GNOME"
 
-#: .././ailurus/gnome/setting.py:413
+#: .././ailurus/gnome/setting.py:412
 msgid "LCD brightness when on AC power:"
 msgstr "Luminosité du LCD quand le courrant est branché:"
 
-#: .././ailurus/gnome/setting.py:415 .././ailurus/gnome/setting.py:421
+#: .././ailurus/gnome/setting.py:414 .././ailurus/gnome/setting.py:420
+#: .././ailurus/gnome/setting.py:528 .././ailurus/gnome/setting.py:539
+#: .././ailurus/gnome/setting.py:545
 msgid "GConf Key: "
 msgstr "Clé GConf: "
 
-#: .././ailurus/gnome/setting.py:419
+#: .././ailurus/gnome/setting.py:418
 msgid "LCD dimming amount when on battery:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:425
+#: .././ailurus/gnome/setting.py:424
 msgid "Backlight"
 msgstr "Retro éclairage"
 
-#: .././ailurus/gnome/setting.py:444
-msgid "Succeed"
+#: .././ailurus/gnome/setting.py:448
+msgid "Clear \"recent documents\" list"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:444
-msgid "Rencently used documents has been cleared"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:445
-msgid "Clear Recent Documents"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:449
+#: .././ailurus/gnome/setting.py:452
 msgid "Change default file manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:455
+#: .././ailurus/gnome/setting.py:458
 msgid "Change default panel program to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:461
+#: .././ailurus/gnome/setting.py:464
 msgid "Change default window manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:467
+#: .././ailurus/gnome/setting.py:470
 msgid "Use your home folder as the desktop"
 msgstr "Utiliser votre dossier personnel en tant que bureau"
 
-#: .././ailurus/gnome/setting.py:472
+#: .././ailurus/gnome/setting.py:475
 msgid "Advance settings"
 msgstr "Paramètres avancés"
 
-#: .././ailurus/gnome/setting.py:477
+#: .././ailurus/gnome/setting.py:480
 msgid "Command line"
 msgstr "Ligne de commande"
 
-#: .././ailurus/gnome/setting.py:484
+#: .././ailurus/gnome/setting.py:487
 #, python-format
 msgid "%2d:"
 msgstr "%2d:"
+
+#. # Window Decorator
+#: .././ailurus/gnome/setting.py:500
+msgid "Set Window Decorator:"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:506
+msgid "Metacity"
+msgstr "Metacity"
+
+#: .././ailurus/gnome/setting.py:506
+msgid "Emerald"
+msgstr "Emerald"
+
+#: .././ailurus/gnome/setting.py:523
+msgid "Disable Minimize Effect"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:527
+msgid "Random All Effects"
+msgstr ""
+
+#. # number of desktop
+#: .././ailurus/gnome/setting.py:537
+msgid "Screen size multiplier in horizontal "
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:543
+msgid "Screen size multiplier in vertical "
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:551
+msgid "CompizConfig Settings"
+msgstr ""
 
 #: .././ailurus/gnome/tips.py:27
 msgid ""
@@ -4382,6 +4460,8 @@ msgid ""
 "Linux\n"
 "Information"
 msgstr ""
+"Informations sur\n"
+"Linux"
 
 #: .././ailurus/main.py:73
 msgid ""
@@ -4396,12 +4476,16 @@ msgid ""
 "Install\n"
 "Software"
 msgstr ""
+"Installation de\n"
+"Logiciel"
 
 #: .././ailurus/main.py:75
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
+"Dépôts\n"
+"rapides"
 
 #: .././ailurus/main.py:76
 msgid ""
@@ -5169,12 +5253,14 @@ msgstr "Blog d'Ailurus"
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  AstroMb https://launchpad.net/~matthieu-bachschmidt\n"
 "  Loic Treyvaud https://launchpad.net/~loictreyvaud\n"
 "  MCMic https://launchpad.net/~come-bernigaud\n"
 "  Maxime Gentils https://launchpad.net/~maxime.gentils\n"
 "  Nicolas Delvaux https://launchpad.net/~malaria\n"
 "  Pierre Slamich https://launchpad.net/~pierre-slamich\n"
 "  Tarik Belaam https://launchpad.net/~crowd\n"
+"  enadji https://launchpad.net/~argosecrivaillon\n"
 "  royto https://launchpad.net/~royto\n"
 "  ubuntosaure https://launchpad.net/~ubuntosaure"
 
@@ -5311,12 +5397,6 @@ msgstr "Ne pas afficher \"Astuce du jour\" au démarrage"
 #: .././ailurus/common/menu.py:339
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr "Afficher une astuce aléatoire après la connexion à GNOME"
-
-#: .././ailurus/common/menu.py:344
-msgid ""
-"Your changes will take effect at the next time when you log in to GNOME."
-msgstr ""
-"Vos changements prendront effet lors de votre prochaine connexion à GNOME."
 
 #: .././ailurus/common/menu.py:347
 msgid "Set download parameters"
@@ -5519,6 +5599,8 @@ msgid ""
 "Clear Bash history\n"
 "history -c"
 msgstr ""
+"Vider l'historique du Bash\n"
+"history -c"
 
 #: .././ailurus/common/tips.py:33
 msgid ""
@@ -6330,7 +6412,7 @@ msgstr "Détails :"
 
 #: .././ailurus/install_remove_pane.py:636
 msgid "Report bugs"
-msgstr ""
+msgstr "Rapporter des anomalies"
 
 #: .././ailurus/install_remove_pane.py:638
 msgid "Close this terminal"
@@ -6338,7 +6420,7 @@ msgstr "Fermer ce terminal"
 
 #: .././ailurus/install_remove_pane.py:667
 msgid "Common"
-msgstr ""
+msgstr "Commun"
 
 #: .././ailurus/install_remove_pane.py:668
 msgid "For students"
@@ -6350,7 +6432,7 @@ msgstr "Pour développeurs"
 
 #: .././ailurus/install_remove_pane.py:670
 msgid "Advanced"
-msgstr ""
+msgstr "Options avancées"
 
 #: .././ailurus/install_remove_pane.py:673
 msgid "Office"
@@ -6439,18 +6521,18 @@ msgstr "Le raccourci clavier"
 
 #: .././ailurus/libsetting.py:151
 msgid "Choose a file"
-msgstr ""
+msgstr "Sélectionnez un fichier"
 
-#: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:226
+#: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:228
 msgid "Image file"
 msgstr "Fichier image"
 
-#: .././ailurus/libsetting.py:210
+#: .././ailurus/libsetting.py:212
 #, python-format
 msgid "Choose a file for \"%s\" "
 msgstr "Choississez un fichier pour \"%s\" "
 
-#: .././ailurus/libsetting.py:248
+#: .././ailurus/libsetting.py:250
 msgid ""
 "\n"
 "File: "
@@ -6458,11 +6540,11 @@ msgstr ""
 "\n"
 "Fichier : "
 
-#: .././ailurus/libsetting.py:266
+#: .././ailurus/libsetting.py:268
 msgid "Change"
 msgstr "Modifier"
 
-#: .././ailurus/libsetting.py:290
+#: .././ailurus/libsetting.py:292
 #, python-format
 msgid ""
 "\n"

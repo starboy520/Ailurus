@@ -24,7 +24,6 @@ import sys, os
 from lib import *
 from libapp import *
 from repos import *
-from controversial_apps import *
 
 class WINE(_rpm_install):
     __doc__ = _('WINE')
@@ -499,13 +498,11 @@ class Multimedia_Codecs (_rpm_install) :
     category = 'media'
     license = 'GNU Lesser General Public License'
     logo = 'codec.png'
+    depend = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
                      'gstreamer-plugins-good gstreamer-plugins-ugly')
     def install(self):
-        obj = Repo_RPMFusion_Free()
-        if not obj.installed(): obj.install()
-        
         _rpm_install.install(self)
     def get_reason(self, f):
         self._get_reason(f)
