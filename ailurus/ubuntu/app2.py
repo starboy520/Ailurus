@@ -66,7 +66,7 @@ class PBC:
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
-    license = 'GNU General Public License (GPL)'   
+    license = 'GNU General Public License (GPL)'
     time = 30
     size = ( 300 + 808 ) * 1000
     logo = 'pbc.png'
@@ -207,8 +207,8 @@ class PipeViewer(_apt_install):
     __doc__ = _('pv: a pipe viewer')
     detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
                'Command: sudo apt-get install pv')
-    license = ('ARTISTIC 2.0 license'
-                'see http://www.ivarch.com/programs/quickref/pv.shtml')
+    license = ('ARTISTIC 2.0 license, '
+               'see http://www.ivarch.com/programs/quickref/pv.shtml')
     def __init__(self):
         self.pkgs = 'pv'
           
@@ -348,7 +348,7 @@ class Extcalc(_apt_install):
     detail = _('This is a multifunctional graphic calculator.\n'
         'Command: sudo apt-get install extcalc')
     category = 'math'
-    license = 'GNU General Public License(GPL)'
+    license = 'GNU General Public License (GPL)'
     logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
@@ -356,8 +356,8 @@ class Extcalc(_apt_install):
 class StartupManager(_apt_install):
     __doc__ = _('Satartup Manager')   
     detail = _('Satartup manager helps you change GRUB settings and themes.\n'
-               'Command: sudo apt-get install startupmanager') 
-    license = 'GNU General Public License(GPL)'
+               'Command: sudo apt-get install startupmanager')
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.pkgs = 'startupmanager'
         
@@ -366,7 +366,7 @@ class Zhcon(_apt_install):
     detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
                'You can launch it by "zhcon --utf8".\n'
                'Command: sudo apt-get install zhcon')
-    license = 'GNU General Public License(GPL)'
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.pkgs = 'zhcon'
         
@@ -374,6 +374,6 @@ class PowerTop(_apt_install):
     'PowerTop'
     detail = _('Powertop helps you save power for your laptop.\n'
                'Command: sudo apt-get install powertop')
-    license = 'GNU General Public License(GPL)'
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.pkgs = 'powertop'

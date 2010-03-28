@@ -75,8 +75,8 @@ class WINE(_apt_install):
     __doc__ = _('WINE')
     detail = _('This is an indispensable application for running Windows applications on Linux.\n'
        'Command: sudo apt-get install wine wine-gecko')
-    license = ('GNU Lesser General Public License(GPL)'
-            'see http://wiki.winehq.org/Licensing')
+    license = ('GNU Lesser General Public License, '
+               'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     time = 37
     size = 72280 * 1000
@@ -102,8 +102,8 @@ class WINE_Chinese(_apt_install):
     detail = _('WINE is an indispensable application for running Windows applications on Linux.\n'
        'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
        'then Wen-Quan-Yi font is used as default Chinese font.')
-    license = ('GNU Lesser General Public License(GPL)'
-                'see http://wiki.winehq.org/Licensing')
+    license = ('GNU Lesser General Public License, '
+               'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     time = 37
     size = 72280 * 1000

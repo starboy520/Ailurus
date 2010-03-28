@@ -154,7 +154,7 @@ class Typespeed(_apt_install) :
     size = 356 * 1000
     category = 'game'
     logo = 'typespeed.png'
-    license = 'GNU Lesser General Public License(GPL)'
+    license = 'GNU Lesser General Public License (LGPL)'
     def __init__(self):
         self.pkgs = "typespeed"
 
@@ -207,8 +207,8 @@ class Evince_Read_Chinese_PDF(_apt_install) :
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
     detail = _('Command: sudo apt-get install chmsee')
-    license = ('GNU General Public License(GPL)'
-            'see http://code.google.com/p/chmsee/')
+    license = ('GNU General Public License (GPL), '
+               'see http://code.google.com/p/chmsee/')
     category = 'office'
     size = 590 * 1000
     time = 6
@@ -377,7 +377,7 @@ class Flash_Player(_apt_install):
     detail = _('Command: sudo apt-get install flashplugin-installer')
     time = 271
     category = 'media'
-    license = 'Proprietary, freeware  EULA'
+    license = 'Proprietary, freeware EULA'
     logo = 'flash.png'
     def __init__(self):
         self.pkgs = 'flashplugin-installer'

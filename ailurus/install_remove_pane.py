@@ -328,7 +328,6 @@ class InstallRemovePane(gtk.VBox):
         treestore.row_changed(path,  treestore.get_iter(path) )
         self.__show_detail(obj)
 
-    
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value ( iter, 0 )
         import types
@@ -376,16 +375,15 @@ class InstallRemovePane(gtk.VBox):
             
             import StringIO
             text = StringIO.StringIO()
-            #write detail
+
             detail = getattr(obj, 'detail' ,'')
-            license = getattr(obj, 'license' ,'')
-#            text.write(license)
             if detail:
                 text.write(detail)
                 if detail[-1]!='\n': text.write('\n')
-                                    
+            
+            license = getattr(obj, 'license' ,'')
             if license:
-                print >>text, _('License:'), license, '\n'   
+                print >>text, _('License:'), license   
             
             if obj.cache_installed==False: # can install
                 # will be installed?
@@ -412,7 +410,6 @@ class InstallRemovePane(gtk.VBox):
                     if obj.size: 
                         size = derive_size(obj.size)
                         print >>text, begin_color()+_('Will free %s disk space.')%size, end_color(),
-
                         
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()

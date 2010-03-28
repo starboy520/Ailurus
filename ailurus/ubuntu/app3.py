@@ -59,7 +59,8 @@ class FreeCAD(_apt_install):
     __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
     detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
     category = 'em'
-    license = 'GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL)'
+    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
+               'See http://sourceforge.net/projects/free-cad/')
     size = 15724000
     time = 51
     logo = 'freecad.png'
@@ -124,8 +125,9 @@ class Moonlight(_apt_install):
     detail = _(u'Moonlight provides Windows® media codecs. '
        u'By this application, you can enjoy Windows® video/audio in webpages.\n'
        'Command: sudo apt-get install moonlight-plugin-mozilla')
-    license = ('GNU GNU Library or Lesser General Public License (LGPL) and the MIT X11 licenses'
-                'see http://www.mono-project.com/Moonlight')
+    license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
+               'Moonlight 1.0 is licensed under LGPL. '
+               'See http://www.mono-project.com/Moonlight')
     category = 'media'
     logo = 'moonlight.png'
     def __init__(self):
@@ -305,7 +307,7 @@ class Generic_Genome_Browser:
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = ('Creative Commons Licence'
-                'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
+               'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
     logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
@@ -411,7 +413,7 @@ class TuxPaint(_apt_install):
     detail = _('This is a drawing program for young children three years and up.\n' 
                     'Command: sudo apt-get install tuxpaint')
     category = 'education'
-    license = _('the GNU General Public License (GPL)')
+    license = 'GNU General Public License (GPL)'
     logo = 'tuxpaint.png'
     def __init__(self):
         self.pkgs='tuxpaint'
@@ -744,7 +746,7 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
-    license = 'the GNU General Public License (GPL)'
+    license = 'GNU General Public License (GPL)'
     def install(self):
         if get_arch() == 32:
             f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_i386.deb'],
@@ -761,7 +763,7 @@ class Fctix:
 class XBMC(_apt_install):
     'XBMC'
     category = 'media'
-    license = 'the GNU General Public License (GPL)'
+    license = 'GNU General Public License (GPL)'
     def install(self):
         from third_party_repos import Repo_XBMC
         xbmc_obj=Repo_XBMC()
@@ -774,7 +776,7 @@ class XBMC(_apt_install):
 class Songbird(_apt_install):
     'Songbird'
     category = 'media'
-    license = 'the GNU General Public License (GPL)'
+    license = 'GNU General Public License (GPL)'
     def install(self):
         from third_party_repos import Repo_Songbird
         song_obj = Repo_Songbird()
@@ -817,7 +819,7 @@ class Vuze_Karmic(_apt_install):
     'Vuze'
     category = 'internet'
     logo = 'vuze.png'
-    license = 'the GNU General Public License (GPL)'
+    license = 'GNU General Public License (GPL)'
     detail = _('Download via bittorrent + Search videos + Play videos\n'
                'Command: sudo apt-get install vuze')
     def __init__(self):
