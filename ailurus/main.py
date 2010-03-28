@@ -197,10 +197,11 @@ def check_dbus_configuration():
     if same_content and dbus_ok: return
     import StringIO
     message = StringIO.StringIO()
+    print >>message, _('Error happened. You cannot install any software by Ailurus. :(')
+    print >>message, ''
     if not same_content:
         print >>message, _('System configuration file should be updated.')
         print >>message, _('Please run these commands using <b>su</b> or <b>sudo</b>:')
-        print >>message, _('Otherwise you cannot install any software by Ailurus.')
         print >>message, ''
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
