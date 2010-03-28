@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-27 17:19+0800\n"
+"POT-Creation-Date: 2010-03-28 12:46+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -3113,7 +3113,7 @@ msgid "Cannot load class %s"
 msgstr ""
 
 #: .././ailurus/loader.py:87 .././ailurus/loader.py:124
-#: .././ailurus/main.py:299 .././ailurus/ubuntu/setting.py:268
+#: .././ailurus/main.py:339 .././ailurus/ubuntu/setting.py:268
 msgid "Traceback:"
 msgstr ""
 
@@ -3181,62 +3181,83 @@ msgid ""
 "multiple instance concurrently."
 msgstr ""
 
+#: .././ailurus/main.py:201
+msgid "System configuration file should be updated."
+msgstr ""
+
+#: .././ailurus/main.py:202
+msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
+msgstr ""
+
+#: .././ailurus/main.py:203
+msgid "Otherwise you cannot install any software by Ailurus."
+msgstr ""
+
+#: .././ailurus/main.py:209
+msgid "Ailurus' D-Bus daemon exited with error."
+msgstr ""
+
+#: .././ailurus/main.py:210
+msgid ""
+"Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
+msgstr ""
+
 #. check desktop environment
-#: .././ailurus/main.py:192
+#: .././ailurus/main.py:232
 msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
 msgstr ""
 
 #. check distribution
-#: .././ailurus/main.py:200
+#: .././ailurus/main.py:240
 msgid "<span color=\"grey\">Checking distribution ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:223
+#: .././ailurus/main.py:263
 msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:225
+#: .././ailurus/main.py:265
 msgid ""
 "<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:233 .././ailurus/main.py:236
+#: .././ailurus/main.py:273 .././ailurus/main.py:276
 msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:241
+#: .././ailurus/main.py:281
 msgid "<span color=\"grey\">Loading tips ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:247
+#: .././ailurus/main.py:287
 msgid "<span color=\"grey\">Loading main window ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:250
+#: .././ailurus/main.py:290
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:263
+#: .././ailurus/main.py:303
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:270
+#: .././ailurus/main.py:310
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:309
+#: .././ailurus/main.py:349
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 
-#: .././ailurus/main.py:322
+#: .././ailurus/main.py:362
 msgid "Click here to report bug via web-page"
 msgstr ""
 
-#: .././ailurus/main.py:324
+#: .././ailurus/main.py:364
 msgid "Close"
 msgstr ""
 
-#: .././ailurus/main.py:330
+#: .././ailurus/main.py:370
 msgid "Bug appears!"
 msgstr ""
 
