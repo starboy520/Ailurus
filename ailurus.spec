@@ -1,13 +1,13 @@
 %define name ailurus
-%define version 10.03.2
-%define unmangled_version 10.03.2
+%define version 10.03.3
+%define unmangled_version 10.03.3
 %define release 1
 
 Summary: makes Linux easier to use
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: http://ailurus.googlecode.com/files/%{name}-%{unmangled_version}.tar.gz
+Source: http://homerxing.fedorapeople.org/%{name}-%{unmangled_version}.tar.gz
 License: GPLv2+
 Group: Applications/System
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
@@ -53,6 +53,6 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %changelog
-* Mon Mar 22 2010 Homer Xing <homer.xing@gmail.com> 10.03.2-1
+* Mon Mar 22 2010 Homer Xing <homer.xing@gmail.com> 10.03.3-1
 - Initial package
 
