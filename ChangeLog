@@ -1,3 +1,10 @@
+2010-03-29 Chen Yangyang <skabyy@gmail.com>
+    * Add "clean up" pane:
+        * Add a feature to clean the apt cache;
+        * Add a feature to clean the Ailurus cache(/var/cache/ailurus);
+        * Add a feature to remove unused kernel.
+
+
 2010-03-28 Homer Xing <homer.xing@gmail.com>
 
     * Check DBus status when program start up.
