@@ -235,8 +235,6 @@ class MiniCom_Ckermit(_apt_install):
     def __init__(self):
         self.pkgs = 'minicom ckermit'
 
-from third_party_repos import Repo_VirtualBox
-
 class VirtualBox(_apt_install):
     __doc__ = _('VirtualBox open source edition')
     detail = _('It is the only professional virtual machine which is freely available '
