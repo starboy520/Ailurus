@@ -591,18 +591,18 @@ class Repo_Audacious(_repo):
         self.key_id = '83874559'
         _repo.__init__(self)
         
-class Repo_Tor(_repo):
-    license = 'BSD License'
-    'Tor'
-    def __init__(self):
-        self.desc = ''
-        self.apt_content = 'tor privoxy vidalia'
-        self.web_page = 'http://deb.torproject.org/'
-        self.apt_file = '/etc/apt/sources.list.d/tor.list'
-        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
-        self.key_url = ''
-        self.key_id = '886DDD89'
-        _repo.__init__(self)
+#class Repo_Tor(_repo):
+#    license = 'BSD License'
+#    'Tor'
+#    def __init__(self):
+#        self.desc = ''
+#        self.apt_content = 'tor privoxy vidalia'
+#        self.web_page = 'http://deb.torproject.org/'
+#        self.apt_file = '/etc/apt/sources.list.d/tor.list'
+#        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
+#        self.key_url = ''
+#        self.key_id = '886DDD89'
+#        _repo.__init__(self)
 
 class Repo_RedNoteBook(_repo):
     'RedNoteBook'
