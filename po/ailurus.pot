@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 13:09+0800\n"
+"POT-Creation-Date: 2010-03-29 13:14+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -2976,7 +2976,7 @@ msgid "It can be obtained from "
 msgstr ""
 
 #: .././ailurus/lib.py:288 .././ailurus/lib.py:339 .././ailurus/lib.py:530
-#: .././ailurus/lib.py:902 .././ailurus/support/terminal.py:53
+#: .././ailurus/lib.py:903 .././ailurus/support/terminal.py:53
 #: .././ailurus/support/terminal_single_thread.py:50
 msgid "Run command:"
 msgstr ""
@@ -3037,37 +3037,38 @@ msgid "%.1f minutes"
 msgstr ""
 
 #: .././ailurus/lib.py:873
-msgid "less than 1 minute"
+#, python-format
+msgid "%d seconds"
 msgstr ""
 
-#: .././ailurus/lib.py:1070 .././ailurus/lib.py:1075
+#: .././ailurus/lib.py:1071 .././ailurus/lib.py:1076
 msgid "Opening web page"
 msgstr ""
 
-#: .././ailurus/lib.py:1202
+#: .././ailurus/lib.py:1203
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1204
+#: .././ailurus/lib.py:1205
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: .././ailurus/lib.py:1281
+#: .././ailurus/lib.py:1282
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: .././ailurus/lib.py:1285
+#: .././ailurus/lib.py:1286
 msgid "Good."
 msgstr ""
 
-#: .././ailurus/lib.py:1292
+#: .././ailurus/lib.py:1293
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1437
+#: .././ailurus/lib.py:1438
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 

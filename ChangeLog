@@ -59,6 +59,12 @@
     
     * Add customizing keyboard shortcut key functionality.
 
+2010-03-21 CHEN Yangyang <skabyy@gmail.com>
+
+    * Show the time left while detecting server in "quick setup".
+    * Improve the "check for update" functionality.
+      Make this functionality available in Fedora, Ubuntu and Mint.
+
 2010-03-20 Homer Xing <homer.xing@gmail.com>
 
     * Remove "Offline installation" functionality.
