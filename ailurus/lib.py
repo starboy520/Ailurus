@@ -20,8 +20,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.03.2'
-AILURUS_RELEASE_DATE = '2010-03-23'
+AILURUS_VERSION = '10.03.3'
+AILURUS_RELEASE_DATE = '2010-03-29'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -236,7 +236,7 @@ class ShowALinuxSkill:
         with open(file, 'w') as f:
             f.write('[Desktop Entry]\n'
                     'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you study Linux.\n'
+                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
                     'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
                     'Terminal=false\n'
                     'Type=Application\n'

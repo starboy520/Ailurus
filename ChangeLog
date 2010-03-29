@@ -1,3 +1,7 @@
+2010-03-28 Homer Xing <homer.xing@gmail.com>
+
+    * Check DBus status when program start up.
+
 2010-03-27 Homer Xing <homer.xing@gmail.com>
 
     * Fix "Launch helper exited with error" issue.
