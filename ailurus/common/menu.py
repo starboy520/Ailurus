@@ -240,14 +240,14 @@ def check_update(*w):
                     lastest_filename = filename
         f.close()
         import gtk
-        dlg = gtk.Dialog(_('Updates for Ailurus'),
+        dlg = gtk.Dialog(_('A new version is available'),
                          None, gtk.DIALOG_NO_SEPARATOR,
                          (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
         vbox = gtk.VBox(False, 5)
         if lastest_filename:
-            label = gtk.Label( _('A new version of Ailurus is released: version %s.\n'
-                                 'You can download this version from this direct link:')
-                           %lastest_version)
+            label = gtk.Label( _('Version %s is released.\n'
+                                 'You can download it from:')
+                                 % lastest_version)
             button = url_button('http://ailurus.googlecode.com/files/'+lastest_filename)
             vbox.pack_start(label)
             vbox.pack_start(button, False)
@@ -266,51 +266,6 @@ def check_update(*w):
     except:
         import traceback
         traceback.print_exc()
-#        
-#def check_update(*w):
-#    try:
-#        import gtk
-#        # hide the clicked menu item
-#        while gtk.events_pending(): gtk.main_iteration()
-#        
-#        from libu import url_button
-#        from lib import AILURUS_RELEASE_DATE as OLD_RELEASE_DATE
-#    
-#        import urllib2
-#        f = urllib2.urlopen('http://ailurus.googlecode.com/files/latest')
-#        release_date_string = f.readline().strip()
-#        deb_file_name = f.readline().strip()
-#        f.close()
-#        
-#        new_release_date = to_date(release_date_string)
-#        old_release_date = to_date(OLD_RELEASE_DATE)
-#        
-#        import gtk
-#        dlg = gtk.Dialog(_('Updates for Ailurus'),
-#                         None, gtk.DIALOG_NO_SEPARATOR,
-#                         (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
-#        vbox = gtk.VBox(False, 5)
-#        if new_release_date > old_release_date:
-#            label = gtk.Label( _('A new version is released at %(date)s.')
-#                           %{'date':release_date_string})
-#            button = url_button('http://ailurus.googlecode.com/files/'+deb_file_name)
-#            vbox.pack_start(label)
-#            vbox.pack_start(button, False)
-#        else:
-#            label = gtk.Label( _('You have already installed the latest Ailurus version. :)') )
-#            vbox.pack_start(label)
-#        image = gtk.Image()
-#        image.set_from_file(D+'suyun_icons/update.png')
-#        hbox = gtk.HBox(False, 5)
-#        hbox.pack_start(image, False)
-#        hbox.pack_start(vbox, False)
-#        dlg.vbox.pack_start(hbox, False)
-#        dlg.vbox.show_all()
-#        dlg.run()
-#        dlg.destroy()
-#    except:
-#        import traceback
-#        traceback.print_exc()
     
 def __study_linux(main_view):
     study_url_items = [ 

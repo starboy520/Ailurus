@@ -567,7 +567,6 @@ class RPM:
         return package_name in cls.__set1
     @classmethod
     def install(cls, *package):
-        #assert isinstance(package, str)
         su('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
@@ -580,7 +579,6 @@ class RPM:
         cls.cache_changed()
     @classmethod
     def remove(cls, *package):
-        #assert isinstance(package, str)
         su('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
@@ -866,12 +864,11 @@ def derive_time(time):
     if not time>=0: raise ValueError
     _1h = 3600.
     _1m = 60.
-    if time>=_1h:
+    if time >= _1h:
         return _('%.1f hours') % ( time/_1h )
-    if time>=_1m:
+    if time >= _1m:
         return _('%.1f minutes') % ( time/_1m )
     return _('%d seconds') % time
-    #return _('less than 1 minute')
 
 #def print_progress(command, total_line_number):
 #    def color_print(progress):

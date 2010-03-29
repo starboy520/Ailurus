@@ -145,9 +145,11 @@ class FastestRepositoryDialog(gtk.Dialog):
         self.set_border_width(10)
         self.vbox.pack_start(self.progress_label, False)
         self.vbox.pack_start(self.progress_bar, False)
-        self.vbox.pack_start(self.timeleft_label, False)
         self.vbox.set_size_request(500, -1)
-        self.action_area.pack_start(self.button_skip, False)
+        bottom_box = gtk.HBox(False, 0)
+        bottom_box.pack_start(self.timeleft_label, False)
+        bottom_box.pack_end(self.button_skip, False)
+        self.vbox.pack_start(bottom_box, False)
         self.show_all()
     def refresh_GUI(self):
         pass
@@ -159,7 +161,6 @@ class FastestRepositoryDialog(gtk.Dialog):
             currenttime = time.time()
             len_result = len(result)
             if len_result: server, value = result[-1]
-
             if len_result ==0: return
             
             #display progress
@@ -174,12 +175,9 @@ class FastestRepositoryDialog(gtk.Dialog):
                 text = _("<span color='black'>Server %s is unreachable.</span>") % server
             self.progress_label.set_markup(text)
             #display time left
-            if len_result >= 40:
+            if len_result >= 40 and len_result % 5 == 0 :
                 timeleft = float(total-len_result) * (currenttime-begintime) / (len_result)
                 text = _("<span color='black'>Time left: %s</span>") % derive_time(int(timeleft))
-            else:
-                text = _("<span color='black'>Time left: %s</span>") % _("unknown")
-            if len_result % 5 == 0:
                 self.timeleft_label.set_markup(text)
             
             self.refresh_GUI()
