@@ -14,7 +14,7 @@ setup(name = 'ailurus',
 '''Ailurus is an application which makes Linux easier to use.
 
 Features:
-* Help users study some Linux skills
+* Help users learn some Linux skills
 * Install/remove some nice applications
 * Enable/disable some third party repositories
 * Display information about BIOS, motherboard, CPU and battery

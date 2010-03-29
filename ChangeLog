@@ -1,3 +1,12 @@
+2010-03-29 Homer Xing <homer.xing@gmail.com>
+
+    * Do not terminate program when authentication fails.
+    * Do not raise exception when GNOMEArtNG thumbnails cannot be downloaded.
+    * Change SUN_JDK to OpenJDK.
+    * Change VirtualBox to VirtualBox-ose.
+    * Remove Dropbox.
+    * Remove repositories which provides non-open-source software only.
+
 2010-03-28 Homer Xing <homer.xing@gmail.com>
 
     * Check DBus status when program start up.
@@ -58,6 +67,12 @@
 2010-03-21 MA Yue <velly.empire@gmail.com>
     
     * Add customizing keyboard shortcut key functionality.
+
+2010-03-21 CHEN Yangyang <skabyy@gmail.com>
+
+    * Show the time left while detecting server in "quick setup".
+    * Improve the "check for update" functionality.
+      Make this functionality available in Fedora, Ubuntu and Mint.
 
 2010-03-20 Homer Xing <homer.xing@gmail.com>
 

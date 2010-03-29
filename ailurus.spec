@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.03.3
-%define unmangled_version 10.03.3
+%define version 10.03.4
+%define unmangled_version 10.03.4
 %define release 1
 
 Summary: makes Linux easier to use
@@ -33,7 +33,6 @@ Features:
 * Configure GNOME auto-start applications
 * Show/Hide GNOME splash screen
 
-
 %prep
 %setup -q -n %{name}-%{unmangled_version}
 
@@ -55,4 +54,3 @@ rm -rf $RPM_BUILD_ROOT
 %changelog
 * Mon Mar 22 2010 Homer Xing <homer.xing@gmail.com> 10.03.3-1
 - Initial package
-

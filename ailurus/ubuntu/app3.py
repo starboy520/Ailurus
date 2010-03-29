@@ -115,7 +115,7 @@ class QCad(_apt_install):
     'QCad'
     detail = _('A CAD software which supports DXF-format. ')
     category = 'em'
-    license = 'Non-free with limited-time free trial (professional edition) or GPL (community edition)'
+    license = 'GPL'
     size = 18056000
     logo = 'qcad.png'
     def __init__(self):
@@ -133,35 +133,6 @@ class Moonlight(_apt_install):
     logo = 'moonlight.png'
     def __init__(self):
         self.pkgs = 'moonlight-plugin-mozilla'
-
-#class Moonlight_Chinese_Font_Bug:
-#    __doc__ = _('Eliminate Moonlight Chinese font bug')
-#    detail = _('Eliminate the bug that Chinese characters are displayed as blank square.')
-#    category = 'media'
-#    Chinese = True
-#    logo = 'moonlight.png'
-#    def install(self):
-#        try:
-#            FileServer.chdir('/usr/share/fonts/truetype/')
-#            if not os.path.exists('msyh'):
-#                gksudo('mkdir msyh')
-#            os.chdir('msyh')
-#            
-#            f = R(
-#['http://tdt.sjtu.edu.cn/S/msyh.tar.bz2',],
-#16587122, 'b5b34bd523802510ddf4949358cd445b0693c5bc').download()
-#
-#            gksudo('tar xf %s'%f)
-#            gksudo('mkfontscale')
-#            gksudo('mkfontdir')
-#            gksudo('fc-cache')
-#            gksudo('chmod a+rX . -R')
-#        finally:
-#            FileServer.chdir_back()
-#    def installed(self):
-#        return os.path.exists('/usr/share/fonts/truetype/msyh')
-#    def remove(self):
-#        gksudo('rm -rf /usr/share/fonts/truetype/msyh')
 
 class DisableGetty:
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
@@ -307,8 +278,7 @@ class Generic_Genome_Browser:
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
-    license = ('Creative Commons Licence'
-               'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
+    license = 'Perl Artistic License v2'
     logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
@@ -317,25 +287,6 @@ class Generic_Genome_Browser:
         return False
     def remove(self):
         raise NotImplementedError
-
-class Realplayer32:
-    'RealPlayer® 11'
-    detail = _('If you cannot play RMVB video, try this application!\n'
-       'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>')
-    size = 19911000
-    category = 'media'
-    license = 'Proprietary'
-    logo = 'realplayer.png'
-    def install(self):
-        f = R(
-['http://tdt.sjtu.edu.cn/S/RealPlayer11GOLD.deb',
-'http://software-dl.real.com/13e4dfe0c5f6c7d54105/unix/RealPlayer11GOLD.deb'],
-8632310, '85aefc200314b3d0b11f5820e1139a9d0338154b').download()
-        gksudo('dpkg -i --force-all %s'%f)
-    def installed(self):
-        return DPKG.installed('realplay')
-    def remove(self):
-        gksudo('dpkg --purge realplay')
 
 class Screenlets(_apt_install):
     __doc__ = _('Screenlets')
@@ -372,29 +323,6 @@ class CompizSettingManagerSimple(_apt_install):
     size = 635000 #estimated
     def __init__(self):
         self.pkgs = 'simple-ccsm'
-
-class GoogleChrome:
-    __doc__ = _('Google Chrome browser')
-    detail = _(
-        'This is the web browser from Google. \n'
-        'You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome.')
-    license = 'Google Chrome Terms of Service'
-    category = 'internet'
-    def install(self):
-        if get_arch() == 32:
-            f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb').download()
-        else:
-            f = R('http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb').download()
-        gksudo('gdebi-gtk %s' %f)
-        APT.cache_changed()
-    def installed(self):
-        return APT.installed('google-chrome-beta')
-    def remove(self):
-        return APT.remove('google-chrome-beta')
-    def get_reason(self, f):
-        if APT.installed('google-chrome-unstable'):
-            print >>f, _('"google-chrome-beta" is not installed. '
-                         'However, you have installed "google-chrome-unstable".'),
 
 class ScienceBiology(_apt_install):
     __doc__= _('Micro-biology software')
@@ -568,28 +496,6 @@ class Bluefish(_apt_install):
     logo = 'bluefish.png'
     def __init__(self):
         self.pkgs = 'bluefish'
-
-class Native_64bit_Flash(_path_lists):
-    __doc__ = _('Adobe native 64bit Flash plugin for Firefox')
-    category = 'media'
-    logo = 'flash.png'
-    license = 'Proprietary freeware,EULA'
-    def __init__(self):
-        self.paths = [
-            '/usr/lib/mozilla/plugins/libflashplayer.so',
-            '/usr/lib/firefox-addons/plugins/libflashplayer.so',
-            '/usr/lib/xulrunner-addons/plugins/libflashplayer.so',
-            ]
-    def install(self):
-        import os
-        file = D+'../support/ubuntu-native-64bit-flash-installer.sh'
-        FileServer.chdir('/tmp')
-        try:
-            run_in_new_terminal(file)
-        finally:
-            FileServer.chdir_back()
-    def support(self):
-        return get_arch() == 64
 
 class Wallpaper_Tray(_apt_install):
     __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
@@ -777,24 +683,6 @@ class Songbird(_apt_install):
     def __init__(self):
         self.pkgs = 'songbird'
         
-class DropBox(_apt_install):
-    'Dropbox'
-    category = 'internet'
-    license = 'free for Linux'
-    depend = Repo_Dropbox
-    def __init__(self):
-        self.pkgs = 'nautilus-dropbox'
-
-class Skype(_apt_install):
-    'Skype'
-    category = 'internet'
-    license = 'proprietary'
-    depend = Repo_Skype
-    def __init__(self):
-        self.pkgs = 'skype'
-    def support(self):
-        return get_arch() == 32
-
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     'Vuze'

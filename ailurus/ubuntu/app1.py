@@ -67,29 +67,6 @@ class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
         _set_gconf.remove(self)
         _apt_install.remove(self)
 
-#class Full_Chinese_Language_Pack(_apt_install):
-#    __doc__ = _('Install full Chinese language support')
-#    detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full Simplified Chinese language support.\n')
-#    Chinese = True
-#    size = 42156 * 1000
-#    time = 38
-#    logo = 'language.png'
-#    def __init__(self):
-#        if Config.get_Ubuntu_version()=='hardy':
-#            self.pkgs='language-pack-gnome-zh-base language-pack-gnome-zh language-pack-zh-base language-pack-zh openoffice.org-l10n-zh-tw openoffice.org-help-zh-tw ttf-arphic-ukai ttf-wqy-zenhei xfonts-wqy language-support-fonts-zh libchewing3-data libchewing3 scim-chewing scim-pinyin scim-modules-table scim-tables-zh language-support-input-zh language-support-zh thunderbird-locale-zh-cn thunderbird-locale-zh-tw language-support-translations-zh openoffice.org-l10n-zh-cn openoffice.org-help-zh-cn'
-#        elif Config.get_Ubuntu_version()=='intrepid':
-#            self.pkgs='language-pack-gnome-zh-base language-pack-gnome-zh language-pack-zh-base language-pack-zh openoffice.org-l10n-common openoffice.org-l10n-zh-cn thunderbird-locale-zh-cn openoffice.org-l10n-zh-tw openoffice.org-help-zh-tw thunderbird-locale-zh-tw language-support-translations-zh openoffice.org-help-zh-cn ttf-arphic-ukai ttf-wqy-zenhei language-support-extra-zh xfonts-wqy language-support-fonts-zh libchewing3-data libchewing3 scim-chewing scim-pinyin scim-modules-table scim-tables-zh language-support-input-zh ttf-arphic-bsmi00lp ttf-arphic-gbsn00lp'
-#        elif Config.get_Ubuntu_version()=='jaunty':
-#            self.pkgs='language-pack-zh language-pack-gnome-zh language-support-input-zh language-support-fonts-zh language-support-translations-zh language-support-extra-zh'
-#        elif Config.get_Ubuntu_version()=='karmic':
-#            self.pkgs='language-pack-zh-hans language-pack-gnome-zh-hans openoffice.org-help-zh-cn gnome-user-guide-zh openoffice.org-l10n-zh-cn language-support-input-zh-hans language-support-fonts-zh-hans language-pack-zh-hans'
-#        
-#        if not getattr(self.__class__, 'appended', False) and hasattr(self, 'pkgs'):
-#            self.__class__.appended = True
-#            self.__class__.detail += _('Command: ')+'sudo apt-get install '+self.pkgs
-#    def get_reason(self, f):
-#        self._get_reason(f)
-
 class Full_Language_Pack(_apt_install):
     __doc__ = _('Full language support and input method')
     detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
@@ -103,13 +80,13 @@ class Full_Language_Pack(_apt_install):
             lang = 'en'
 
         List = [
-                    'language-pack-' + lang,
-                    'language-support-fonts-' + lang,
-                    'language-support-input-' + lang,
-                    'language-support-translations-' + lang,
-                    'language-support-' + lang,
-                    'language-support-writing-' + lang,
-                    ]
+                'language-pack-' + lang,
+                'language-support-fonts-' + lang,
+                'language-support-input-' + lang,
+                'language-support-translations-' + lang,
+                'language-support-' + lang,
+                'language-support-writing-' + lang,
+                ]
         try:
             get_output('pgrep -u $USER gnome-panel')
             List.append('language-pack-gnome-' + lang)
@@ -139,12 +116,11 @@ class Full_Language_Pack(_apt_install):
 
 class Decompression_Capability(_apt_install) :
     __doc__ = _('Decompression software: 7z, rar, cab, ace')
-    detail = _('Command: sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full cabextract unace')
-    size = 5824 * 1000
-    time = 23
+    detail = _('Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace')
     logo = 'extract.png'
+    license = 'GPL'
     def __init__(self):
-        self.pkgs = "rar unrar p7zip p7zip-rar p7zip-full cabextract unace"
+        self.pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
     def get_reason(self, f):
         self._get_reason(f)
 
@@ -168,41 +144,6 @@ class Evince_Read_Chinese_PDF(_apt_install) :
     logo = 'evince.png'
     def __init__(self):
         self.pkgs = 'poppler-data'
-
-#class IA32_Libs(_apt_install) :
-#    __doc__ = _('ia32 shared libraries for x86-64 systems')
-#    detail = _('This is the ia32/i386 architecture runtime libraries for x86-64 Linux system.\n'
-#       'Command: sudo apt-get install ia32-libs')
-#    size = 125044 * 1000
-#    time = 8
-#    inconsistent = True
-#    logo = 'ia32-libs.png'
-#    def support(self):
-#        return get_arch()==64
-#    def __init__(self):
-#        self.pkgs = 'ia32-libs'
-#    def install(self):
-#        if get_arch()!=32:
-#            _apt_install.install(self)
-#    def installed(self):
-#        if get_arch()==32:
-#            return True
-#        return _apt_install.installed(self)
-#    def remove(self):
-#        if get_arch()!=32:
-#            _apt_install.remove(self)
-
-#class NTFS3G(_apt_install) :
-#    __doc__ = 'NTFS-3g'
-#    detail = _('This is the NTFS driver for Linux. '
-#       'It supports operations on Windows XP/2000/2003/Vista/7 NTFS file system. '
-#       'It supports most POSIX operations.\n'
-#       'Command: sudo apt-get install ntfs-3g')
-#    size = 152 * 1000
-#    time = 16
-#    logo = 'ntfs-3g.png'
-#    def __init__(self):
-#        self.pkgs = 'ntfs-3g'
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
@@ -373,14 +314,13 @@ class CUPS(_apt_install):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
         
 class Flash_Player(_apt_install):
-    __doc__ = _(u'Adobe® Flash plugin for web browser')
-    detail = _('Command: sudo apt-get install flashplugin-installer')
-    time = 271
+    __doc__ = _(u'GNU Flash plugin for web browser')
+    detail = _('Command: sudo apt-get install gnash mozilla-plugin-gnash')
     category = 'media'
-    license = 'Proprietary, freeware EULA'
+    license = 'GPL'
     logo = 'flash.png'
     def __init__(self):
-        self.pkgs = 'flashplugin-installer'
+        self.pkgs = 'gnash mozilla-plugin-gnash'
     
 class Flash_Player_Font_Bug:
     __doc__ = _('Fix font bug in Flash plugin')
@@ -412,27 +352,6 @@ class Flash_Player_Font_Bug:
         import os
         if os.path.exists(self.__file):
             print >>f, _('The file "%s" exists.')%self.__file
-
-class AdobeReader:
-    __doc__ = _(u'Adobe® PDF Reader')
-    detail = _('Official site: http://get.adobe.com/cn/reader/')
-    category = 'office'
-    license = 'Adobe EULA'
-    logo = 'adobereader.png'
-    def __init__(self):
-        pass
-    def install(self):
-        f = R(['ftp://ftp.adobe.com/pub/adobe/reader/unix/9.x/9.2/enu/AdbeRdr9.2-1_i386linux_enu.deb'],
-                63453526, 
-                'ef74e678fc072efc05d557f2b259b613530bfae4' ).download()
-        DPKG.install_deb(f)
-    def installed(self):
-        return DPKG.installed('adobereader-enu') or APT.installed('acroread')
-    def remove(self):
-        if DPKG.installed('adobereader-enu'):
-            gksudo('dpkg -r adobereader-enu')
-        if APT.installed('acroread'):
-            APT.remove('acroread')
 
 class StardictAndDictionaries(_apt_install):
     __doc__ = _('Stardict and four dictionaries')
@@ -547,79 +466,6 @@ class FireWall(_apt_install):
     def __init__(self):
         self.pkgs = 'firestarter'
 
-class InstallFreshLinuxKernel:
-    __doc__ = _('Fresh Linux Kernel')
-    detail = _(u'This is Linux kernel version 2.6.31. '
-       u'It contains GEM (Graphics Execution Manager), which is the new video driver architecture of Intel®. '
-       'It is downloaded from http://kernel.ubuntu.com/~kernel-ppa/mainline/')
-    license = 'Various including GNU General Public License, BSD License, Apache License, MIT License, and others'
-    time = 46
-    size = 163996*1000
-    manual = True
-    logo = 'linux-kernel.png'
-    def __init__(self):
-        if not hasattr(InstallFreshLinuxKernel, 'showed_current_version'):
-            InstallFreshLinuxKernel.showed_current_version = True
-            try:
-                msg = get_output('uname -r')
-                InstallFreshLinuxKernel.detail += '\n' + _('Current linux kernel version is ') + msg
-            except: pass
-        
-        self.version = '2.6.31-02063106'
-    def support(self):
-        try:
-            return Config.get_Ubuntu_version() in ['intrepid', 'jaunty' ]
-        except:
-            return False
-    def install(self):
-        file0 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106_2.6.31-02063106_all.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106_2.6.31-02063106_all.deb'],
-9546764, 'a12429d7de28ed6cac3c25bd0d03cbc403385333').download()
-
-        if get_arch()==32:
-            file1 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_i386.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_i386.deb'],
-638112, '4a7510c068e1ad094560771eb7f0b167d6e7897f').download()
-
-            file2 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-image-2.6.31-02063106-generic_2.6.31-02063106_i386.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-image-2.6.31-02063106-generic_2.6.31-02063106_i386.deb'],
-26293814, '1722fe0dcf951bcaa5e1d69fb7a18538083809a2').download()
-
-        else:
-            file1 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb'],
-655102, '0b2435d40209f235d51ced231ccb9ed93488cdf9').download()
-
-            file2 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-image-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-image-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb'],
-25885638, '9dc9f2d740a5272450608886e9a474c01a67f98e').download()
-        
-        depends = []
-        for file in [file0, file1, file2]:
-            depends += DPKG.get_deb_depends(file)
-        depends = [e for e in depends if not 'linux-headers' in e]
-        APT.install(*depends)
-        
-        for file in [file0, file1, file2]:
-            gksudo('gdebi-gtk %s'%file)
-        APT.cache_changed()
-
-    def installed(self):
-        return ( APT.installed('linux-headers-%s'%self.version) and 
-                 APT.installed('linux-headers-%s-generic'%self.version) and 
-                 APT.installed('linux-image-%s-generic'%self.version) )
-    
-    def remove(self):
-        APT.remove( 'linux-headers-%s'%self.version, 
-                      'linux-headers-%s-generic'%self.version,
-                      'linux-image-%s-generic'%self.version )
-        APT.cache_changed()
-        
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
