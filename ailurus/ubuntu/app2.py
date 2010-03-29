@@ -299,8 +299,11 @@ class GNOMEArtNextGen:
 
         DPKG.install_deb(file)
         
-        thumb = R(['http://download.berlios.de/gnomeartng/thumbs.tar.gz'],
-           15575567, '7b7dcc3709d23383c1433f90abea5bea583202f9').download()
+        try: # Do not raise error, when this file cannot be downloaded.
+            thumb = R(['http://download.berlios.de/gnomeartng/thumbs.tar.gz'],
+               15575567, '7b7dcc3709d23383c1433f90abea5bea583202f9').download()
+        except:
+            return
         import os
         path = os.path.expanduser('~/.gnome2/gnome-art-ng/')
         if not os.path.exists(path): run('mkdir '+path)
