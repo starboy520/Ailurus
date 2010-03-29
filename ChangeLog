@@ -2,6 +2,10 @@
 
     * Do not terminate program when authentication fails.
     * Do not raise exception when GNOMEArtNG thumbnails cannot be downloaded.
+    * Change SUN_JDK to OpenJDK.
+    * Change VirtualBox to VirtualBox-ose.
+    * Remove Dropbox.
+    * Remove repositories which provides non-open-source software only.
 
 2010-03-28 Homer Xing <homer.xing@gmail.com>
 

@@ -31,6 +31,7 @@ class ComicVODPlayer_new :
     category = 'media'
     Chinese = True
     logo = 'comic.png'
+    license = 'GPL'
     depend = Repo_Mplayer_VOD
     def install(self):
         extension_path = FirefoxExtensions.get_extensions_path()
@@ -189,7 +190,7 @@ class PipeViewer(_apt_install):
     __doc__ = _('pv: a pipe viewer')
     detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
                'Command: sudo apt-get install pv')
-    license = ('ARTISTIC 2.0 license, '
+    license = ('Free software, ARTISTIC 2.0 license, '
                'see http://www.ivarch.com/programs/quickref/pv.shtml')
     def __init__(self):
         self.pkgs = 'pv'
@@ -236,8 +237,8 @@ class MiniCom_Ckermit(_apt_install):
 
 from third_party_repos import Repo_VirtualBox
 
-class VirtualBox:
-    'SUN® VirtualBox 3'
+class VirtualBox(_apt_install):
+    __doc__ = _('VirtualBox open source edition')
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
@@ -245,16 +246,8 @@ class VirtualBox:
     category = 'vm'
     manual = True
     logo = 'virtualbox.png'
-    depend = Repo_VirtualBox
-    def install(self):
-        APT.install('virtualbox-3.1')
-    def installed(self):
-        for p in ['virtualbox-3.1', 'virtualbox-3.0', 'virtualbox-2.2', 'virtualbox-2.1', 'virtualbox-2.0', 'virtualbox']:
-            if APT.installed(p): return True
-        return False
-    def remove(self):
-        for p in ['virtualbox-3.1', 'virtualbox-3.0', 'virtualbox-2.2', 'virtualbox-2.1', 'virtualbox-2.0', 'virtualbox']:
-            if APT.installed(p): APT.remove(p)
+    def __init__(self):
+        self.pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen:
     __doc__ = _('GNOMEArtNG')

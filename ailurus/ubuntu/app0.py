@@ -24,47 +24,34 @@ import sys, os
 from lib import *
 from libapp import *
 
-class SUN_JDK6(_apt_install):
-    __doc__ = _(u'SUN Java® 6.')
-    detail = _('<span color="red">You should manually agree a license during the installation.</span>\n'
-       'In the installation process, these commands will be executed: '
-       '"sudo apt-get install sun-java6-jdk" and "update-java-alternatives -s java-6-sun". '
-       'Then these environment variables is added into file "/etc/environment", which are JAVA_HOME, JAVA_BIN and CLASSPATH.')
+class OpenJDK6:
+    'OpenJDK 6'
+    detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
-    manual = True
     license = 'Sun License'
     logo = 'java.png'
-    def __init__(self):
-        self.in_jvm = "/usr/lib/jvm/java-6-sun\n"
-        self.jvm_file = '/etc/jvm'
-    def __install_sun_jdk(self):
-        APT.install('sun-java6-jdk')
     def install(self):
-        self.__install_sun_jdk()
+        APT.install('openjdk-6-jdk')
+        
         env = ETCEnvironment()
-        env.add('JAVA_HOME', '/usr/lib/jvm/java-6-sun')
-        env.add('JAVA_BIN', '/usr/lib/jvm/java-6-sun/bin')
-        env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
+        env.remove('JAVA_HOME')
+        env.remove('JAVA_BIN')
+        env.remove('CLASSPATH')
+        env.add('JAVA_HOME', '/usr/lib/jvm/java-6-openjdk')
+        env.add('JAVA_BIN', '/usr/lib/jvm/java-6-openjdk/bin')
+        env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-openjdk/lib/dt.jar', '/usr/lib/jvm/java-6-openjdk/lib/tools.jar')
         env.save()
-        # this command will return 1 although java-6-sun is set as default. 
-        # Therefore we use ignore_error==True
-        gksudo('update-java-alternatives -s java-6-sun', ignore_error=True) 
-        with TempOwn(self.jvm_file) as o:
-            with open(self.jvm_file, "w") as f:
-                f.write(self.in_jvm)
-        with open('/usr/lib/jvm/java-6-sun/jre/lib/fontconfig.properties') as f:
-            contents = f.readlines()
-            for i, line in enumerate(contents):
-                if line.endswith('uming.ttf\n'):
-                    contents[i] = line.replace('uming.ttf\n', 'uming.ttc\n')
-        with open('/usr/lib/jvm/java-6-sun/jre/lib/fontconfig.properties', 'w') as f:
-            f.writelines(contents)
-
+        
+        gksudo('update-java-alternatives -s java-6-openjdk', ignore_error=True)
+        
+        with TempOwn('/etc/jvm') as o:
+            with open('/etc/jvm', "w") as f:
+                f.write('/usr/lib/jvm/java-6-openjdk\n')
     def installed(self):
-        return APT.installed('sun-java6-jdk')
-    
+        return APT.installed('openjdk-6-jdk')
     def remove(self):
-        APT.remove('sun-java6-jdk', 'sun-java6-jre', 'sun-java6-bin')
+        APT.remove('openjdk-6-jre-lib')
+
         env = ETCEnvironment()
         env.remove('JAVA_HOME', '/usr/lib/jvm/java-6-sun')
         env.remove('JAVA_BIN', '/usr/lib/jvm/java-6-sun/bin')
@@ -102,8 +89,6 @@ class WINE_Chinese(_apt_install):
     detail = _('WINE is an indispensable application for running Windows applications on Linux.\n'
        'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
        'then Wen-Quan-Yi font is used as default Chinese font.')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     time = 37
     size = 72280 * 1000
@@ -128,20 +113,3 @@ class WINE_Chinese(_apt_install):
         if not os.path.exists( os.path.expanduser('~/.wine/drive_c/windows/Fonts/wqy-zenhei.ttc') ):
             return False
         return True
-
-def make_sure_JDK_installed():
-    obj =  SUN_JDK6()
-
-    if not obj.installed():
-        print _('SUN_JDK6 is required. It is to be installed.')
-        obj.install()
-
-def make_sure_WINE_installed():
-    if Config.is_Chinese_locale():
-        obj =  WINE_Chinese()
-    else:
-        obj = WINE()
-
-    if not obj.installed():
-        print _('WINE is required. It is to be installed.')
-        obj.install()

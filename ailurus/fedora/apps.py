@@ -251,7 +251,6 @@ class CommonUsedProgrammingPackages(_rpm_install):
        'qt3-devel subversion git')
     category = 'dev'
     logo = 'program-tools.png'
-    license = _('GNU General Public License (GPL)')
     def __init__(self):
         self.pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
                      'qt3-devel subversion git')
@@ -339,8 +338,7 @@ class Generic_Genome_Browser:
                'for manipulating and displaying annotations on genomes.\n'
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
-    license = ('Creative Commons Licence, '
-               'see http://gbrowse.org/wiki/index.php/GBrowse:Copyrights') 
+    license = 'Perl Artistic License v2'
     category='biology'
     logo = 'generic_genome_browser.png'
     def install(self):

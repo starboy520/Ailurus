@@ -150,22 +150,6 @@ class _repo:
         if self.key_id:
             gksudo('apt-key del '+self.key_id, ignore_error=True)
 
-class Repo_GoogleStable(_repo):
-    __doc__ = _('Google Chrome, Picasa 2 and Google Desktop')
-    license = 'Google Chrome Terms of Service'
-    def __init__(self):
-        self.desc = _('This repository contains Google Chrome, Picasa and Google Desktop. '
-            'Google Chrome is a web browser. '
-            'Picasa is an image management application. '
-            'Google Desktop is an application for personalizing and organizing information in computer.')
-        self.apt_content = 'google-chrome-beta google-desktop-linux picasa'
-        self.web_page = 'http://www.google.com/linuxrepositories/'
-        self.apt_file = '/etc/apt/sources.list.d/google-stable.list'
-        self.apt_conf = [ 'deb http://dl.google.com/linux/deb/ stable non-free main' ]
-        self.key_url = 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-        self.key_id = '7FAC5991'
-        _repo.__init__(self)
-
 class Repo_Firefox_3_6(_repo):
     __doc__ = _('Firefox 3.6 (stable)')
     license = 'MPL, GNU GPL, GNU LGPL'
@@ -178,19 +162,6 @@ class Repo_Firefox_3_6(_repo):
         self.apt_conf = ['deb http://ppa.launchpad.net/mozillateam/firefox-stable/ubuntu $version main']
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x9BDB3D89CE49EC21'
         self.key_id = 'CE49EC21'
-        _repo.__init__(self)
-
-class Repo_GoogleUnstable(_repo):
-    __doc__ = _('Google Picasa 3')
-    license = 'Google Chrome Terms of Service'
-    def __init__(self):
-        self.desc = _('This repository contains Picasa 3.')
-        self.apt_content = 'picasa'
-        self.web_page = 'http://www.google.com/linuxrepositories/testrepo.html'
-        self.apt_file = '/etc/apt/sources.list.d/google-unstable.list'
-        self.apt_conf = [ 'deb http://dl.google.com/linux/deb/ testing non-free' ]
-        self.key_url = 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
-        self.key_id = '7FAC5991'
         _repo.__init__(self)
 
 class Repo_PlayOnLinux(_repo):
@@ -223,25 +194,10 @@ class Repo_WINE(_repo):
         self.key_id = 'F9CB8DB0'
         _repo.__init__(self)
 
-
-class Repo_Dropbox(_repo):
-    __doc__ = _('Dropbox')
-    logo = 'dropbox.png'
-    def __init__(self):
-        self.desc = _('Dropbox is an application to store, sync, and share files among computers.')
-        self.apt_content = 'nautilus-dropbox'
-        self.web_page = 'https://www.dropbox.com/downloading?os=lnx'
-        self.apt_file = '/etc/apt/sources.list.d/dropbox.list'
-        self.apt_conf = [ 'deb http://linux.dropbox.com/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x3565780E'
-        self.key_id = '3565780E'
-        _repo.__init__(self)
-
 class Repo_Ailurus(_repo):
     __doc__ = _('Ailurus')
     logo = 'ailurus.png'
-    license = 'GNU Lesser General Public License (LGPL)'
-
+    license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('This is the repository of Ailurus.')
         self.apt_content = 'ailurus'
@@ -251,36 +207,6 @@ class Repo_Ailurus(_repo):
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A16033A9A6FE242'
         self.key_id = '9A6FE242'
         _repo.__init__(self)
-
-class Repo_Skype(_repo):
-    __doc__ = _('Skype')
-    license = 'proprietary'
-    def __init__(self):
-        self.desc = _('With Skype you can make free calls over the Internet to other people. ')
-        self.apt_content = 'skype'
-        self.web_page = 'http://www.skype.com/intl/en/download/skype/linux/choose/'
-        self.apt_file = '/etc/apt/sources.list.d/skype.list'
-        self.apt_conf = [ 'deb http://download.skype.com/linux/repos/debian stable non-free' ]
-        self.key_url = ''
-        self.key_id = ''
-        _repo.__init__(self)
-    def support(self):
-        return get_arch() == 32
-
-class Repo_GetDeb_net(_repo):
-    __doc__ = _('GetDeb.net')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('GetDeb.net is an unofficial project which provides a lot of open source applications.')
-        self.apt_content = ''
-        self.web_page = 'http://www.getdeb.net/updates/Ubuntu/all#how_to_install'
-        self.apt_file = '/etc/apt/sources.list.d/getdeb.net.list'
-        self.apt_conf = [ 'deb http://archive.getdeb.net/ubuntu $version-getdeb apps' ]
-        self.key_url = 'http://archive.getdeb.net/getdeb-archive.key'
-        self.key_id = '46D7E7CF'
-        _repo.__init__(self)
-    def support(self):
-        return Config.get_Ubuntu_version() == 'karmic'
 
 class Repo_AWN_Development(_repo):
     __doc__ = _('AWN (Development version)')
@@ -401,20 +327,6 @@ class Repo_Moovida(_repo):
         self.key_id = '26C2E075'
         _repo.__init__(self)
 
-class Repo_Opera(_repo):
-    __doc__ = _('Opera')
-    license = 'Freeware'
-    logo = 'opera.png'
-    def __init__(self):
-        self.desc = _('Opera is a famous web browser.')
-        self.apt_content = 'opera'
-        self.web_page = 'http://deb.opera.com/opera/'
-        self.apt_file = '/etc/apt/sources.list.d/opera.list'
-        self.apt_conf = [ 'deb http://deb.opera.com/opera/ stable non-free' ]
-        self.key_url = 'https://pgp.webtru.st/pks/lookup?op=get&search=0xF9A2F76A9D1A0061'
-        self.key_id = '9D1A0061'
-        _repo.__init__(self)
-
 class Repo_Shutter(_repo):
     license = 'GNU General Public License (GPL)'
     __doc__ = _('Shutter')
@@ -455,20 +367,6 @@ class Repo_X_Server_Updates(_repo):
         self.key_id = 'AF1CDFA9'
         _repo.__init__(self)
         
-class Repo_VirtualBox(_repo):
-    __doc__ = _('VirtualBox')
-    license = 'Proprietary'
-    logo = 'virtualbox.png'
-    def __init__(self):
-        self.desc = ''
-        self.apt_content = 'virtualbox'
-        self.web_page = 'http://download.virtualbox.org/virtualbox/debian/'
-        self.apt_file = '/etc/apt/sources.list.d/virtualbox.list'
-        self.apt_conf = [ 'deb http://download.virtualbox.org/virtualbox/debian $version non-free' ]
-        self.key_url = 'http://download.virtualbox.org/virtualbox/debian/sun_vbox.asc'
-        self.key_id = '6DFBCBAE'
-        _repo.__init__(self)
-
 class Repo_WebkitGTK(_repo):
     __doc__ = _('WebkitGTK')
     license = 'GNU Lesser General Public License (LGPL)'
@@ -493,20 +391,6 @@ class Repo_XBMC(_repo):
         self.apt_conf = [ 'deb http://ppa.launchpad.net/team-xbmc/ppa/ubuntu $version main' ]
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x189701DA570C56B9488EF60A6D975C4791E7EE5E'
         self.key_id = '91E7EE5E'
-        _repo.__init__(self)
-
-class Repo_Oracle(_repo):
-    __doc__ = _('Oracle')
-    license = 'Proprietary'
-    def __init__(self):
-        self.desc = _('This repository provides Oracle Database Express Edition.\n'
-            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
-        self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
-        self.web_page = 'http://oss.oracle.com/'
-        self.apt_file = '/etc/apt/sources.list.d/oracle.list'
-        self.apt_conf = [ 'deb http://oss.oracle.com/debian unstable main non-free' ]
-        self.key_url = 'http://oss.oracle.com/el4/RPM-GPG-KEY-oracle'
-        self.key_id = 'B38A8516'
         _repo.__init__(self)
 
 class Repo_IBus(_repo):
@@ -591,18 +475,18 @@ class Repo_Audacious(_repo):
         self.key_id = '83874559'
         _repo.__init__(self)
         
-#class Repo_Tor(_repo):
-#    license = 'BSD License'
-#    'Tor'
-#    def __init__(self):
-#        self.desc = ''
-#        self.apt_content = 'tor privoxy vidalia'
-#        self.web_page = 'http://deb.torproject.org/'
-#        self.apt_file = '/etc/apt/sources.list.d/tor.list'
-#        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
-#        self.key_url = ''
-#        self.key_id = '886DDD89'
-#        _repo.__init__(self)
+class Repo_Tor(_repo):
+    license = 'BSD License'
+    'Tor'
+    def __init__(self):
+        self.desc = ''
+        self.apt_content = 'tor privoxy vidalia'
+        self.web_page = 'http://deb.torproject.org/'
+        self.apt_file = '/etc/apt/sources.list.d/tor.list'
+        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
+        self.key_url = ''
+        self.key_id = '886DDD89'
+        _repo.__init__(self)
 
 class Repo_RedNoteBook(_repo):
     'RedNoteBook'
