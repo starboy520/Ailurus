@@ -1,5 +1,6 @@
 2010-03-29 Homer Xing <homer.xing@gmail.com>
 
+    * Do not terminate program when authentication fails.
     * Do not raise exception when GNOMEArtNG thumbnails cannot be downloaded.
 
 2010-03-28 Homer Xing <homer.xing@gmail.com>

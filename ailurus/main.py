@@ -381,7 +381,6 @@ def exception_happened(etype, value, tb):
     
     dialog.run()
     dialog.destroy()
-    sys.exit()
 
 import sys
 sys.excepthook = exception_happened
