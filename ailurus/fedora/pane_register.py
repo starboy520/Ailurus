@@ -19,14 +19,8 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-from fastest_mirror_pane import UbuntuFastestMirrorPane
-from apt_recovery_pane import UbuntuAPTRecoveryPane
-from clean_up_pane import CleanUpPane
+from rpm_recovery_pane import FedoraRPMRecoveryPane
 
 def register(main_view):
-    pane = UbuntuFastestMirrorPane(main_view)
-    main_view.register(pane)
-    pane = UbuntuAPTRecoveryPane(main_view)
-    main_view.register(pane)
-    pane = CleanUpPane(main_view)
+    pane = FedoraRPMRecoveryPane(main_view)
     main_view.register(pane)
