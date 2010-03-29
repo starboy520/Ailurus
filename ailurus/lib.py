@@ -236,7 +236,7 @@ class ShowALinuxSkill:
         with open(file, 'w') as f:
             f.write('[Desktop Entry]\n'
                     'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you study Linux.\n'
+                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
                     'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
                     'Terminal=false\n'
                     'Type=Application\n'
@@ -517,13 +517,6 @@ class FileServer:
     def chdir_back(cls):
         import os
         os.chdir(cls.__saved_path)
-    @classmethod
-    def clean_cache(cls):
-        PATH = '/var/cache/ailurus'
-        import glob, os
-        if os.path.exists(PATH):
-            if glob.glob(PATH+'/*'):
-                gksudo('rm %s/* -rf'%PATH, True)
 
 def is_pkg_list(packages):
     if not len(packages): raise ValueError
@@ -1177,19 +1170,6 @@ def delay_notify_firefox_restart(show_notify=False):
                 import traceback
                 traceback.print_exc(file=sys.stderr)
                 notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
-
-def delay_notify_apt_get_update(show_notify=False):
-    assert isinstance(show_notify, bool)
-    if not show_notify:
-        delay_notify_apt_get_update.should_show = True
-    else:
-        if getattr(delay_notify_apt_get_update, 'should_show', False):
-            delay_notify_apt_get_update.should_show = False
-            try:
-                APT.apt_get_update()
-            except:
-                import traceback, sys
-                traceback.print_exc(file=sys.stderr)
 
 def sha1(path):
     is_string_not_empty(path)

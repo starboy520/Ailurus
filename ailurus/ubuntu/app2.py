@@ -23,19 +23,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-from third_party_repos import _repo
-
-class _repo_mplayer_vod(_repo):
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = 'mplayer_vod'
-        self.apt_content = 'mplayer'
-        self.web_page = 'https://launchpad.net/~homer-xing/+archive/mplayer-vod'
-        self.apt_file = '/etc/apt/sources.list.d/mplayer-vod.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/homer-xing/mplayer-vod/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xFDC8AE7E17C96D481FEA0410D10C093AFFA63A31'
-        self.key_id = 'FFA63A31'
-        _repo.__init__(self)
+from third_party_repos import *
 
 class ComicVODPlayer_new :
     __doc__ = _('Mplayer with "vod" protocol support')
@@ -43,18 +31,12 @@ class ComicVODPlayer_new :
     category = 'media'
     Chinese = True
     logo = 'comic.png'
+    depend = Repo_Mplayer_VOD
     def install(self):
-        # install comicview
         extension_path = FirefoxExtensions.get_extensions_path()
         comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
         run('cp %s %s'%(comicview, extension_path) )
         delay_notify_firefox_restart()
-        
-        # install mplayer-vod
-        repo = _repo_mplayer_vod()
-        if not repo.installed():
-            repo.install()
-        APT.apt_get_update()
         run('sudo apt-get install mplayer')
     def installed(self):
         return False
@@ -276,6 +258,8 @@ class MiniCom_Ckermit(_apt_install):
     def __init__(self):
         self.pkgs = 'minicom ckermit'
 
+from third_party_repos import Repo_VirtualBox
+
 class VirtualBox:
     'SUN® VirtualBox 3'
     detail = _('It is the only professional virtual machine which is freely available '
@@ -285,11 +269,8 @@ class VirtualBox:
     category = 'vm'
     manual = True
     logo = 'virtualbox.png'
+    depend = Repo_VirtualBox
     def install(self):
-        from third_party_repos import Repo_VirtualBox
-        vbox_obj = Repo_VirtualBox()
-        if not vbox_obj.installed(): vbox_obj.install()
-        APT.apt_get_update()
         APT.install('virtualbox-3.1')
     def installed(self):
         for p in ['virtualbox-3.1', 'virtualbox-3.0', 'virtualbox-2.2', 'virtualbox-2.1', 'virtualbox-2.0', 'virtualbox']:

@@ -36,8 +36,8 @@ from lib import *
 #        pass
 
 class _repo:
+    this_class_is_a_repository = True
     category = 'repository'
-
     fresh_cache = False
 
     @classmethod
@@ -139,8 +139,6 @@ class _repo:
                 gksudo('apt-key add /tmp/key.gpg')
         else:
             raise NotImplementedError
-        # run "apt-get update" after while
-        delay_notify_apt_get_update(False)
     def remove(self):
         # change source
         _repo.refresh_cache()
@@ -151,8 +149,6 @@ class _repo:
         # remove key
         if self.key_id:
             gksudo('apt-key del '+self.key_id, ignore_error=True)
-        # run "apt-get update" after while
-        delay_notify_apt_get_update(False)
 
 class Repo_GoogleStable(_repo):
     __doc__ = _('Google Chrome, Picasa 2 and Google Desktop')
@@ -646,3 +642,17 @@ class Repo_Songbird(_repo):
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x31E0163DFE442D34A17B17BDD725E4885719E347'
         self.key_id = '5719E347'
         _repo.__init__(self)
+
+class Repo_Mplayer_VOD(_repo):
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.desc = 'mplayer_vod'
+        self.apt_content = 'mplayer'
+        self.web_page = 'https://launchpad.net/~homer-xing/+archive/mplayer-vod'
+        self.apt_file = '/etc/apt/sources.list.d/mplayer-vod.list'
+        self.apt_conf = [ 'deb http://ppa.launchpad.net/homer-xing/mplayer-vod/ubuntu $version main' ]
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xFDC8AE7E17C96D481FEA0410D10C093AFFA63A31'
+        self.key_id = 'FFA63A31'
+        _repo.__init__(self)
+    def support(self):
+        return False

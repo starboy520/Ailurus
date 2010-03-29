@@ -23,6 +23,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from third_party_repos import *
 
 class Varkon(_apt_install, _path_lists):
     __doc__ = _('Varkon: A concise CAD software')
@@ -764,12 +765,7 @@ class XBMC(_apt_install):
     'XBMC'
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    def install(self):
-        from third_party_repos import Repo_XBMC
-        xbmc_obj=Repo_XBMC()
-        if not xbmc_obj.installed():
-            xbmc_obj.install()
-        _apt_install.install(self)
+    depend = Repo_XBMC
     def __init__(self):
         self.pkgs = 'xbmc'
 
@@ -777,12 +773,7 @@ class Songbird(_apt_install):
     'Songbird'
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    def install(self):
-        from third_party_repos import Repo_Songbird
-        song_obj = Repo_Songbird()
-        if not song_obj.installed():
-            song_obj.install()
-        _apt_install.install(self)
+    depend = Repo_Songbird
     def __init__(self):
         self.pkgs = 'songbird'
         
@@ -790,12 +781,7 @@ class DropBox(_apt_install):
     'Dropbox'
     category = 'internet'
     license = 'free for Linux'
-    def install(self):
-        from third_party_repos import Repo_Dropbox
-        drop_obj = Repo_Dropbox()
-        if not drop_obj.installed():
-            drop_obj.install()
-        _apt_install.install(self)
+    depend = Repo_Dropbox
     def __init__(self):
         self.pkgs = 'nautilus-dropbox'
 
@@ -803,12 +789,7 @@ class Skype(_apt_install):
     'Skype'
     category = 'internet'
     license = 'proprietary'
-    def install(self):
-        from third_party_repos import Repo_Skype
-        sky_obj = Repo_Skype()
-        if not sky_obj.installed():
-            sky_obj.install()
-        _apt_install.install(self)
+    depend = Repo_Skype
     def __init__(self):
         self.pkgs = 'skype'
     def support(self):

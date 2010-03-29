@@ -97,68 +97,51 @@ def __desktop_icon_setting():
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
 def __start_here_icon_setting():
-    import os , gconf
-    g = gconf.client_get_default();
-    value = g.get_string('/desktop/gnome/interface/icon_theme')
-    theme_path = ''
-    home = os.path.expanduser('~/.icons')
-    if not os.path.exists(home):
-        for root, dirs,files in os.walk('/usr/share/icons/'):
-            for fl in files:
-                if 'start-here' in fl:
-                    if '24' in os.path.join(root, fl):
-                        image_path = os.path.join(root, fl)
-                        js = os.path.expanduser('~/.icons')
-                        tmp_path = image_path
-                        image_path = image_path.replace('/usr/share/icons', js)
-                        if image_path.endswith('/start-here.png'):
-                            image_path = image_path.replace('/start-here.png', '')
-                        if image_path.endswith('/start-here.svg'):
-                            image_path = image_path.replace('/start-here.svg', '')
-                        if not os.path.exists(image_path):
-                            os.system('mkdir -p ' + image_path)
-                        os.system('cp %s %s/start-here.png' % (tmp_path, image_path))
-                        if value in image_path:
-                            theme_path = image_path + '/start-here.png' 
-    else:
-        for root, dirs, files in os.walk(home):
-            for fl in files:
-                if 'start-here' in fl:
-                    image_path = os.path.join(root, fl)
-                    if value in image_path:
-                        theme_path = image_path
-            
-    def __apply(w, image):
+    def apply(w, new_image):
         import os
-        theme_path = image
-        home = os.path.expanduser('~/.icons')
-        for root ,dirs,files in os.walk(home):
-            for fl in files:
-                if 'start-here' in fl:
-                    path = os.path.join(root,fl)
-                    if '24' in path:
-                        path = path.replace('/start-here.png', '')
-                        if not os.path.exists(path):
-                            run('mkdir -p ' + path)
-                        run('cp %s %s/start-here.png' % (image, path))
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))  
-    i = GConfImageEntry('The application icon was lied in %s'% theme_path, theme_path)
-    i.connect('changed', __apply)
+        local_icons_dir = os.path.expanduser('~/.icons')
+        for root, dirs, files in os.walk('/usr/share/icons/'):
+            for file_name in files:
+                if 'start-here' in file_name and '24' in root:
+                    usr_path = os.path.join(root, file_name)
+                    local_path = usr_path.replace('/usr/share/icons', local_icons_dir)
+                    local_dir = os.path.dirname(local_path)
+                    if not os.path.exists(local_dir): run('mkdir -p ' + local_dir)
+                    run('cp %s %s' % (new_image, local_path) )
+        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
+
+    def get_start_here_icon_path():
+        import os , gconf
+        g = gconf.client_get_default();
+        local_dir = os.path.expanduser('~/.icons')
+        theme_name = g.get_string('/desktop/gnome/interface/icon_theme')
+        for root, dirs, files in os.walk('/usr/share/icons/' + theme_name):
+            for file_name in files:
+                if 'start-here' in file_name and '24' in root:
+                    usr_path = os.path.join(root, file_name)
+                    local_path = usr_path.replace('/usr/share/icons', local_dir)
+                    if os.path.exists(local_path): return local_path
+                    elif os.path.exists(usr_path): return usr_path
+        return ''
+
+    path = get_start_here_icon_path()
+    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24)
+    i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
     return Setting(box, _('Change "start-here" icon'), ['icon'])                       
 
 def __login_icon_setting():
-    import os
     def __apply(w, image):
         path = os.path.expanduser('~/.face')
-        os.system('cp %s %s' %(image, path))
+        os.system('cp %s %s' % (image, path))
         notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
-    path = os.path.expanduser('~/.face')
-    if not os.path.exists(path):
-        os.system('cp /usr/share/ailurus/data/other_icons/ailurus.png %s' %path)    
-         
-    i = GConfImageEntry('The log in icons was lie in %s' % path , path)
+
+    import os
+    path = ''
+    path1 = os.path.expanduser('~/.face')
+    if os.path.exists(path1): path = path1
+    i = GConfImageEntry(_('The login icon is ~/.face'), path, 32)
     i.connect('changed',__apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)

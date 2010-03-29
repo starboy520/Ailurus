@@ -25,6 +25,8 @@ from lib import *
 from libapp import *
 
 class _repo:
+    this_class_is_a_repository = True
+    category = 'repository'
     @classmethod
     def exist(cls, path):
         import os
@@ -56,9 +58,8 @@ class _repo:
             with open(path, 'w') as f:
                 f.writelines(lines)
 
-class Repo_RPMFusion_Free:
+class Repo_RPMFusion_Free(_repo):
     __doc__ = _('RPM Fusion (Free)')
-    category = 'repository'
     detail = _('RPM Fusion provides software that not in the standard repositories.\n'
                'It is possible that "ATrpms" repository conflicts with "RPM Fusion" repository.')
     def __init__(self):
@@ -85,9 +86,8 @@ class Repo_RPMFusion_Free:
         for path in self.paths:
             if _repo.exist(path): _repo.disable(path)
 
-class Repo_RPMFusion_NonFree:
+class Repo_RPMFusion_NonFree(_repo):
     __doc__ = _('RPM Fusion (Non-Free)')
-    category = 'repository'
     detail = _('RPM Fusion provides software that not in the standard repositories.')
     def __init__(self):
         self.paths = ['/etc/yum.repos.d/rpmfusion-nonfree.repo', '/etc/yum.repos.d/rpmfusion-nonfree-updates.repo']
@@ -116,7 +116,6 @@ class Repo_RPMFusion_NonFree:
 class Repo_Chromium(_repo):
     'Chromium'
     detail = _('Open source web browser')
-    category = 'repository'
     def __init__(self):
         self.path = '/etc/yum.repos.d/chromium.repo'
     def installed(self):
