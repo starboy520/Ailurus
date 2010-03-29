@@ -21,9 +21,12 @@
 
 from fastest_mirror_pane import UbuntuFastestMirrorPane
 from apt_recovery_pane import UbuntuAPTRecoveryPane
+from clean_up_pane import CleanUpPane
 
 def register(main_view):
     pane = UbuntuFastestMirrorPane(main_view)
     main_view.register(pane)
     pane = UbuntuAPTRecoveryPane(main_view)
+    main_view.register(pane)
+    pane = CleanUpPane(main_view)
     main_view.register(pane)
