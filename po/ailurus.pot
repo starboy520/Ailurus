@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 12:18+0800\n"
+"POT-Creation-Date: 2010-03-30 14:53+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -629,7 +629,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:257 .././ailurus/lib.py:710
+#: .././ailurus/ubuntu/quick_setup.py:257 .././ailurus/lib.py:724
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
@@ -2602,8 +2602,8 @@ msgid "In names & details."
 msgstr ""
 
 #: .././ailurus/support/terminal.py:53
-#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:288
-#: .././ailurus/lib.py:339 .././ailurus/lib.py:530 .././ailurus/lib.py:900
+#: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:302
+#: .././ailurus/lib.py:353 .././ailurus/lib.py:544 .././ailurus/lib.py:914
 msgid "Run command:"
 msgstr ""
 
@@ -2662,87 +2662,88 @@ msgid "Linux Information"
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:659
+#: .././ailurus/lib.py:673
 msgid "Installing packages:"
 msgstr ""
 
-#: .././ailurus/lib.py:669
+#: .././ailurus/lib.py:683
 #, python-format
 msgid "Cannot install packages \"%s\"."
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:695
+#: .././ailurus/lib.py:709
 msgid "Removing packages:"
 msgstr ""
 
-#: .././ailurus/lib.py:705
+#: .././ailurus/lib.py:719
 #, python-format
 msgid "Cannot remove packages \"%s\"."
 msgstr ""
 
-#: .././ailurus/lib.py:855
+#: .././ailurus/lib.py:869
 #, python-format
 msgid "%.1f GB"
 msgstr ""
 
-#: .././ailurus/lib.py:857
+#: .././ailurus/lib.py:871
 #, python-format
 msgid "%.1f MB"
 msgstr ""
 
-#: .././ailurus/lib.py:859
+#: .././ailurus/lib.py:873
 #, python-format
 msgid "%.1f KB"
 msgstr ""
 
-#: .././ailurus/lib.py:860
-msgid "less than 1 KB"
+#: .././ailurus/lib.py:874
+#, python-format
+msgid "%s bytes"
 msgstr ""
 
-#: .././ailurus/lib.py:868
+#: .././ailurus/lib.py:882
 #, python-format
 msgid "%.1f hours"
 msgstr ""
 
-#: .././ailurus/lib.py:870
+#: .././ailurus/lib.py:884
 #, python-format
 msgid "%.1f minutes"
 msgstr ""
 
-#: .././ailurus/lib.py:871
+#: .././ailurus/lib.py:885
 #, python-format
 msgid "%d seconds"
 msgstr ""
 
-#: .././ailurus/lib.py:1068 .././ailurus/lib.py:1073
+#: .././ailurus/lib.py:1082 .././ailurus/lib.py:1087
 msgid "Opening web page"
 msgstr ""
 
-#: .././ailurus/lib.py:1200
+#: .././ailurus/lib.py:1214
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1202
+#: .././ailurus/lib.py:1216
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: .././ailurus/lib.py:1279
+#: .././ailurus/lib.py:1293
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: .././ailurus/lib.py:1283
+#: .././ailurus/lib.py:1297
 msgid "Good."
 msgstr ""
 
-#: .././ailurus/lib.py:1290
+#: .././ailurus/lib.py:1304
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1435
+#: .././ailurus/lib.py:1449
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
