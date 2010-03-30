@@ -23,6 +23,7 @@ from __future__ import with_statement
 import gtk, os, sys
 from lib import *
 from libu import *
+from loader import *
 
 def detect_running_instances():
     string = get_output('ps -a -u $USER | grep ailurus', True)
@@ -203,7 +204,6 @@ class MainView:
         item_quit = self.__create_toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
-        from loader import load_study_linux_menu, load_preferences_menu, load_others_menu
         menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
         item = self.__create_toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
@@ -330,7 +330,6 @@ splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
 splash.add_text(_('<span color="grey">Loading Linux skills ... </span>\n'))
-from loader import load_tips
 tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
 import support.tipoftheday
 support.tipoftheday.tips = tips
@@ -339,20 +338,17 @@ splash.add_text(_('<span color="grey">Loading main window ... </span>\n'))
 main_view = MainView()
 
 splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-from loader import load_hardwareinfo
 hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
 from info_pane import HardwareInfoPane
 pane = HardwareInfoPane(main_view, hwinfo)
 main_view.register(pane)
 
-from loader import load_linuxinfo
 linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
 from info_pane import LinuxInfoPane
 pane = LinuxInfoPane(main_view, linuxinfo)
 main_view.register(pane)
 
 splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-from loader import load_setting
 items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
 from system_setting_pane import SystemSettingPane
 pane = SystemSettingPane(items)
@@ -367,10 +363,8 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
 elif getattr(DISTRIBUTION, '__name__') == 'fedora':
     RPM.refresh_cache()
 
-from loader import load_app_classes
 app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
 main_view.app_classes = app_classes
-from loader import load_custom_app_classes
 custom_app_classes = load_custom_app_classes()
 from install_remove_pane import InstallRemovePane
 pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
