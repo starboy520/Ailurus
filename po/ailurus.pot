@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 22:41+0800\n"
+"POT-Creation-Date: 2010-03-30 11:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../ailurus.desktop.in.h:1
-msgid " \"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
+msgid "\"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
 msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
@@ -1950,17 +1950,41 @@ msgstr ""
 msgid "Clean up"
 msgstr ""
 
-#: .././ailurus/ubuntu/clean_up_pane.py:43
+#: .././ailurus/ubuntu/clean_up_pane.py:45
 #, python-format
-msgid "size of %s: %s"
+msgid "Clean %(folder_name)s. Free %(size)s disk space."
 msgstr ""
 
-#: .././ailurus/ubuntu/clean_up_pane.py:44
-msgid "Clean"
+#: .././ailurus/ubuntu/clean_up_pane.py:49
+#, python-format
+msgid "Clean %s."
 msgstr ""
 
-#: .././ailurus/ubuntu/clean_up_pane.py:69
-msgid "Clean unused kernel"
+#: .././ailurus/ubuntu/clean_up_pane.py:53
+#: .././ailurus/ubuntu/clean_up_pane.py:58
+msgid "APT cache"
+msgstr ""
+
+#: .././ailurus/ubuntu/clean_up_pane.py:63
+#: .././ailurus/ubuntu/clean_up_pane.py:68
+msgid "Ailurus cache"
+msgstr ""
+
+#. map version to package names
+#. regenerate self.version_to_packages
+#. put all check buttons in this box
+#. all check buttons
+#: .././ailurus/ubuntu/clean_up_pane.py:80
+msgid "Remove Linux kernels"
+msgstr ""
+
+#: .././ailurus/ubuntu/clean_up_pane.py:84
+#, python-format
+msgid "Current Linux kernel version is %s"
+msgstr ""
+
+#: .././ailurus/ubuntu/clean_up_pane.py:86
+msgid "All installed Linux kernels are:"
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:33
