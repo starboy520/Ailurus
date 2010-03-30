@@ -80,6 +80,46 @@ def check_dbus_configuration():
     dialog.run()
     dialog.destroy()
 
+def get_desktop_environment():
+    if Config.is_GNOME():
+        import gnome
+        return gnome
+    else:
+        return None
+
+def get_distribution():
+    if Config.is_Mint():
+        try:
+            versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
+            rs = Config.get_Mint_version()
+            if rs in ['5', '6', '7', '8', '9']:
+                version = versions[int(rs)-5]
+            Config.set_Ubuntu_version( version )
+            import ubuntu
+            return ubuntu
+        except:
+            import traceback
+            traceback.print_exc()
+            return None
+    elif Config.is_Ubuntu(): 
+        import ubuntu
+        return ubuntu
+    elif Config.is_Fedora():
+        import fedora
+        return fedora
+    else:
+        return None
+
+def wait_firefox_to_create_profile():
+    if os.path.exists('/usr/bin/firefox'):
+        propath = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        if not os.path.exists(propath):
+            KillWhenExit.add('firefox -no-remote')
+            import time
+            start = time.time()
+            while not os.path.exists(propath) and time.time() - start < 6:
+                time.sleep(0.1)
+
 def exception_happened(etype, value, tb):
     if etype == KeyboardInterrupt: return
     
@@ -281,48 +321,13 @@ from support.splashwindow import SplashWindow
 splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
-# import common
+
 import common as COMMON
-# check desktop environment
-splash.add_text(_('<span color="grey">Checking desktop environment ... </span>\n'))
-if Config.is_XFCE():
-    DESKTOP = None
-elif Config.is_GNOME():
-    import gnome as DESKTOP
-else:
-    DESKTOP = None
-# check distribution
-splash.add_text(_('<span color="grey">Checking distribution ... </span>\n'))
-if Config.is_Mint():
-    try:
-        versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-        rs = Config.get_Mint_version()
-        if rs in ['5', '6', '7', '8', '9']:
-            version = versions[int(rs)-5]
-        Config.set_Ubuntu_version( version )
-        import ubuntu as DISTRIBUTION
-    except:
-        DISTRIBUTION = None
-        import traceback
-        traceback.print_exc()
-elif Config.is_Ubuntu(): 
-    import ubuntu as DISTRIBUTION
-elif Config.is_Fedora():
-    import fedora as DISTRIBUTION
-else:
-    DISTRIBUTION = None
-# acquire Firefox profile "~/.mozilla/firefox/profiles.ini"
-import os
-if os.path.exists('/usr/bin/firefox'):
-    propath = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
-    splash.add_text(_('<span color="grey">Acquiring Firefox profile ... </span>\n'))
-    if not os.path.exists(propath):
-        splash.add_text(_('<span color="grey">Waiting for firefox to create profile ... </span>\n'))
-        KillWhenExit.add('firefox -no-remote')
-        import time
-        start = time.time()
-        while not os.path.exists(propath) and time.time() - start < 6:
-            time.sleep(0.1)
+DESKTOP = get_desktop_environment()
+DISTRIBUTION = get_distribution()
+
+#            splash.add_text(_('<span color="grey">Waiting for firefox to create profile ... </span>\n'))
+wait_firefox_to_create_profile()
 # acquire installed package
 if DISTRIBUTION and DISTRIBUTION.__name__ == 'ubuntu':
     splash.add_text(_('<span color="grey">Acquire list of installed packages ... </span>\n'))
