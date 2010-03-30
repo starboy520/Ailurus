@@ -24,52 +24,48 @@ import sys
 import os
 from lib import *
 
-class CleanUpPane(gtk.HBox):
+class CleanUpPane(gtk.VBox):
     name = _('Clean up')
     
     def __init__(self, main_view):
-        gtk.HBox.__init__(self, False, 5)
-        vbox = self.rightpane = gtk.VBox()
-        clean_cache_box = gtk.VBox()
-        clean_cache_box.pack_start(self.clean_apt_cache_button(), False, False)
-        clean_cache_box.pack_start(self.clean_ailurus_cache_button(), False, False)
+        gtk.VBox.__init__(self, False, 10)
+        self.pack_start(self.clean_apt_cache_button(), False)
+        self.pack_start(self.clean_ailurus_cache_button(), False)
         clean_kernel_box = CleanKernel()
-        vbox.pack_start(clean_cache_box)
-        vbox.pack_start(clean_kernel_box)
-        self.pack_start(vbox)
+        self.pack_start(clean_kernel_box)
 
-    def get_folder_size(self, folder_name):
-        is_string_not_empty(folder_name)
-        size = get_output('du -bs ' + folder_name)
+    def get_folder_size(self, folder_path):
+        is_string_not_empty(folder_path)
+        size = get_output('du -bs ' + folder_path)
         size = int(size.split('\t', 1)[0])
         return derive_size(size)        
 
-    def get_button_text(self, folder_name):
+    def get_button_text(self, folder_name, folder_path):
         try:
-            text = _('Clean folder %(folder_name)s. Free %(size)s disk space.') % {
+            text = _('Clean %(folder_name)s. Free %(size)s disk space.') % {
                                    'folder_name' : folder_name,
-                                   'size' : self.get_folder_size('/var/cache/apt/archives') }
+                                   'size' : self.get_folder_size(folder_path) }
         except:
-            text = _('Clean folder %s. Cannot get folder size.' % folder_name)
+            text = _('Clean %s.' % folder_name)
         return text
 
     def clean_apt_cache_button(self):
-        label = gtk.Label(self.get_button_text('/var/cache/apt/archives'))
+        label = gtk.Label(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
             gksudo('apt-get clean')
-            label.set_text(self.get_button_text('/var/cache/apt/archives'))
+            label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
         return button
     
     def clean_ailurus_cache_button(self):
-        label = gtk.Label(self.get_button_text('/var/cache/ailurus'))
+        label = gtk.Label(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
             gksudo('rm /var/cache/ailurus/* -rf')
-            label.set_text(self.get_button_text('/var/cache/ailurus'))
+            label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
         return button
 
