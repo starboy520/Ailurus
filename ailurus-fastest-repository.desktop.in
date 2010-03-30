@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Ailurus - System setting
-Comment=makes Linux easier to use
-Exec=/usr/bin/ailurus --fast --system-setting
+_Name=Ailurus - Fastest repository
+_Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --fastest-repository
 Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
 Terminal=false
 X-MultipleArgs=false

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Ailurus - Install software
-Comment=makes Linux easier to use
-Exec=/usr/bin/ailurus --fast --install-software
+_Name=Ailurus - System setting
+_Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --system-setting
 Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
 Terminal=false
 X-MultipleArgs=false

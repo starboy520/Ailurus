@@ -3,6 +3,7 @@ build/
 dist/
 exported-translation/
 comicview/note
+ailurus*.desktop
 
 .project
 .pydevproject

@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Ailurus - Fastest repository
-Comment=makes Linux easier to use
-Exec=/usr/bin/ailurus --fast --fastest-repository
+_Name=Ailurus - Clean up
+_Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --clean-up
 Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
 Terminal=false
 X-MultipleArgs=false
