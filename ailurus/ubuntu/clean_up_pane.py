@@ -76,13 +76,11 @@ class CleanKernel(gtk.VBox):
         self.version_to_packages = {} # map version to package names
         self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
-        scrolled_window = gtk.ScrolledWindow()
-        scrolled_window.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_NEVER)
-        box = self.box = gtk.VBox(False, 10)
-        check_button_list = self.check_button_list = []
+        check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5)
+        check_buttons_list = self.check_buttons_list = []
         button_apply = self.button_apply = gtk.Button(_('Apply'))
         button_apply.set_sensitive(False)
-        def apply(button_apply, check_button_list):
+        def apply(button_apply, check_buttons_list):
             remove_list = []
             for b in check_button_list:
                 if b.get_active():
@@ -93,10 +91,9 @@ class CleanKernel(gtk.VBox):
                 self.__regenerate_version_to_packages()
                 self.__refresh_gui()
             button_apply.set_sensitive(False)
-        button_apply.connect('clicked', apply, check_button_list)
+        button_apply.connect('clicked', apply, check_buttons_list)
         self.__refresh_gui()
-        scrolled_window.add_with_viewport(box)
-        self.pack_start(scrolled_window)
+        self.pack_start(check_buttons_box)
         hbox = gtk.HBox()
         hbox.pack_end(button_apply, False)
         self.pack_start(hbox, False)
@@ -119,7 +116,7 @@ class CleanKernel(gtk.VBox):
                 self.version_to_packages[version] = [p]
     
     def __refresh_gui(self):
-        for b in self.check_button_list: b.destroy()
+        for b in self.check_buttons_list: b.destroy()
         def state_changed(check_button, button_apply):
             button_apply.set_sensitive(True)
         version_list = self.version_to_packages.keys()
@@ -127,8 +124,8 @@ class CleanKernel(gtk.VBox):
         for version in version_list:
             check_button = gtk.CheckButton(version)
             check_button.kernel_version = version
-            self.box.pack_start(check_button, False)
-            self.check_button_list.append(check_button)
+            self.check_buttons_box.pack_start(check_button, False)
+            self.check_buttons_list.append(check_button)
             check_button.connect('toggled', state_changed, self.button_apply)
     
     def get_current_kernel_version(self):
