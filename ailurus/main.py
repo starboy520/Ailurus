@@ -228,6 +228,8 @@ class MainView:
             if not name in self.contents: continue
             item = self.__create_toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
+            last_name = name
+        self.activate_pane(None, last_name) # automatically activate the left-most pane
 
     def __show_popupmenu_on_toolbaritem(self, widget, event, menu):
         if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:
@@ -320,7 +322,7 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 from optparse import OptionParser
 parser = OptionParser(usage=_('usage: %prog [options]'))
-parser.add_option('--partial', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
+parser.add_option('-f', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
 parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
 parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
@@ -350,6 +352,35 @@ support.tipoftheday.tips = tips
 
 # load main window
 main_view = MainView()
+
+if options.system_setting or options.all:
+    splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
+    items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
+    from system_setting_pane import SystemSettingPane
+    pane = SystemSettingPane(items)
+    main_view.register(pane)
+
+if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+    if options.fastest_repository or options.all:
+        from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+        pane = UbuntuFastestMirrorPane(main_view)
+        main_view.register(pane)
+
+    if options.apt_recovery or options.all:
+        from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+        pane = UbuntuAPTRecoveryPane(main_view)
+        main_view.register(pane)
+
+    if options.clean_up or options.all:
+        from ubuntu.clean_up_pane import CleanUpPane
+        pane = CleanUpPane(main_view)
+        main_view.register(pane)
+
+if getattr(DISTRIBUTION, '__name__') == 'fedora':
+    if options.rpm_recovery or options.all:
+        from rpm_recovery_pane import FedoraRPMRecoveryPane
+        pane = FedoraRPMRecoveryPane(main_view)
+        main_view.register(pane)
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
@@ -381,38 +412,7 @@ if options.install_software or options.all:
     main_view.register(pane)
     main_view.install_remove_pane = pane
 
-if options.system_setting or options.all:
-    splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-    items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
-    from system_setting_pane import SystemSettingPane
-    pane = SystemSettingPane(items)
-    main_view.register(pane)
-
-if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
-    if options.fastest_repository or options.all:
-        from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-        pane = UbuntuFastestMirrorPane(main_view)
-        main_view.register(pane)
-
-    if options.apt_recovery or options.all:
-        from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane(main_view)
-        main_view.register(pane)
-
-    if options.clean_up or options.all:
-        from ubuntu.clean_up_pane import CleanUpPane
-        pane = CleanUpPane(main_view)
-        main_view.register(pane)
-
-if getattr(DISTRIBUTION, '__name__') == 'fedora':
-    if options.rpm_recovery or options.all:
-        from rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane(main_view)
-        main_view.register(pane)
-
 main_view.add_buttons_in_toolbar()
-
-main_view.activate_pane(None, 'InstallRemovePane')
 main_view.window.show_all()
 splash.destroy()
 # do not show tip of the day
