@@ -77,17 +77,20 @@ class CleanKernel(gtk.VBox):
         
         check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5) # put all check buttons in this box
         check_buttons_list = self.check_buttons_list = [] # all check buttons
-        button_apply = self.button_apply = gtk.Button(_('Apply'))
+        button_apply = self.button_apply = gtk.Button(_('Remove Linux kernels'))
         button_apply.set_sensitive(False)
         button_apply.connect('clicked', self.remove_kernel, check_buttons_list)
         current_kernel_version = self.get_current_kernel_version()
-        label = gtk.Label(_('Current kernel version is %s') % current_kernel_version)
+        label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
+        label2 = gtk.Label(_('All installed Linux kernels are:'))
+        label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
+        self.pack_start(label2, False)
         self.__regenerate_check_buttons()
         self.pack_start(check_buttons_box, False)
         hbox = gtk.HBox()
-        hbox.pack_end(button_apply, False)
+        hbox.pack_start(button_apply, False)
         self.pack_start(hbox, False)
         
     def remove_kernel(self, button_apply, check_buttons_list):
