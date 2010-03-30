@@ -169,6 +169,8 @@ def exception_happened(etype, value, tb):
     dialog.run()
     dialog.destroy()
 
+sys.excepthook = exception_happened
+
 class MainView:
     def __create_toolitem(self, icon, text, signal_name, callback, *callback_args):
         is_string_not_empty(icon)
@@ -360,9 +362,9 @@ splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
 
 wait_firefox_to_create_profile()
 
-if DISTRIBUTION and DISTRIBUTION.__name__ == 'ubuntu':
+if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
     APT.refresh_cache()
-elif DISTRIBUTION and DISTRIBUTION.__name__ == 'fedora':
+elif getattr(DISTRIBUTION, '__name__') == 'fedora':
     RPM.refresh_cache()
 
 from loader import load_app_classes
@@ -388,8 +390,6 @@ splash.destroy()
 # if not Config.get_disable_tip():
 #    main_view.show_day_tip()
 
-import sys
-sys.excepthook = exception_happened
 # all right
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
