@@ -857,7 +857,7 @@ def derive_size(size):
         return _('%.1f MB') % ( size/_1M )
     if size>=_1K:
         return _('%.1f KB') % ( size/_1K )
-    return _('less than 1 KB')
+    return _('%s bytes') % int(size)
 
 def derive_time(time):
     if not isinstance(time, int): raise TypeError
