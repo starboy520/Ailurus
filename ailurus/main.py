@@ -235,8 +235,8 @@ class MainView:
 
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
-        assert name in self.contents, [name, self.contents.keys()]
-        self.change_content_basic(name)
+        if name in self.contents:
+            self.change_content_basic(name)
 
     def change_content_basic(self, name):
         assert isinstance(name, str)
@@ -384,10 +384,9 @@ main_view.add_buttons_in_toolbar()
 main_view.activate_pane(None, 'InstallRemovePane')
 main_view.window.show_all()
 splash.destroy()
-# show tip of the day
-if not Config.get_disable_tip():
-    main_view.show_day_tip()
-#
+# do not show tip of the day
+# if not Config.get_disable_tip():
+#    main_view.show_day_tip()
 
 import sys
 sys.excepthook = exception_happened
