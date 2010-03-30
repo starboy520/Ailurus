@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.03.4
-%define unmangled_version 10.03.4
+%define version 10.03.5
+%define unmangled_version 10.03.5
 %define release 1
 
 Summary: makes Linux easier to use
