@@ -1,3 +1,15 @@
+2010-03-30 Homer Xing <homer.xing@gmail.com>
+
+    * Makes text shorter in "clean up" pane.
+    * Fix folder size bug in "clean up" pane.
+
+2010-03-29 Chen Yangyang <skabyy@gmail.com>
+
+    * Add "clean up" pane:
+      Add a feature to clean APT cache;
+      Add a feature to clean Ailurus cache(/var/cache/ailurus);
+      Add a feature to remove unused kernel.
+
 2010-03-29 Homer Xing <homer.xing@gmail.com>
 
     * Do not terminate program when authentication fails.
