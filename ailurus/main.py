@@ -199,11 +199,12 @@ class MainView:
         item = gtk.ToolItem()
         item.add(button)
         return item
-    
-    def add_buttons_in_toolbar(self):
+
+    def add_quit_button(self):
         item_quit = self.__create_toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
+    def add_study_button_preference_button_other_button(self):
         menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
         item = self.__create_toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
@@ -214,6 +215,7 @@ class MainView:
         item = self.__create_toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
+    def add_pane_buttons_in_toolbar(self):
         List = [
                 ('HardwareInfoPane', D+'sora_icons/m_hardware.png', _('Hardware\nInformation'), ),
                 ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
@@ -412,7 +414,10 @@ if options.install_software or options.all:
     main_view.register(pane)
     main_view.install_remove_pane = pane
 
-main_view.add_buttons_in_toolbar()
+main_view.add_quit_button()
+if options.all:
+    main_view.add_study_button_preference_button_other_button()
+main_view.add_pane_buttons_in_toolbar()
 main_view.window.show_all()
 splash.destroy()
 # do not show tip of the day

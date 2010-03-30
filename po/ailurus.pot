@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 18:01+0800\n"
+"POT-Creation-Date: 2010-03-30 18:50+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../ailurus.desktop.in.h:1
-msgid "\"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
+msgid "makes Linux easier to use"
 msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
@@ -1946,7 +1946,7 @@ msgstr ""
 msgid "Ghana"
 msgstr ""
 
-#: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:224
+#: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:226
 msgid "Clean up"
 msgstr ""
 
@@ -3821,101 +3821,101 @@ msgstr ""
 msgid "Quit"
 msgstr ""
 
-#: .././ailurus/main.py:208
+#: .././ailurus/main.py:209
 msgid "Others"
 msgstr ""
 
-#: .././ailurus/main.py:211
+#: .././ailurus/main.py:212
 msgid "Preferences"
 msgstr ""
 
-#: .././ailurus/main.py:214
+#: .././ailurus/main.py:215
 msgid ""
 "Study\n"
 "Linux"
 msgstr ""
 
-#: .././ailurus/main.py:218
+#: .././ailurus/main.py:220
 msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:219
+#: .././ailurus/main.py:221
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:220
+#: .././ailurus/main.py:222
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
 
-#: .././ailurus/main.py:221
+#: .././ailurus/main.py:223
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
 
-#: .././ailurus/main.py:222
+#: .././ailurus/main.py:224
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
 
-#: .././ailurus/main.py:223
+#: .././ailurus/main.py:225
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
 
-#: .././ailurus/main.py:324
+#: .././ailurus/main.py:326
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:325
+#: .././ailurus/main.py:327
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:326
+#: .././ailurus/main.py:328
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:327
+#: .././ailurus/main.py:329
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:328
+#: .././ailurus/main.py:330
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:330
+#: .././ailurus/main.py:332
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:331
+#: .././ailurus/main.py:333
 msgid "load \"apt recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:332
+#: .././ailurus/main.py:334
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:336
 msgid "load \"rpm recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:357
+#: .././ailurus/main.py:359
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:386
+#: .././ailurus/main.py:388
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:398
+#: .././ailurus/main.py:400
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
