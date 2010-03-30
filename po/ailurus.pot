@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-29 18:54+0800\n"
+"POT-Creation-Date: 2010-03-29 19:56+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #: ../ailurus.desktop.in.h:1
-msgid " \"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
+msgid "\"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
 msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
@@ -348,7 +348,7 @@ msgid ""
 "subversion git"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:261 .././ailurus/ubuntu/app2.py:313
+#: .././ailurus/fedora/apps.py:261 .././ailurus/ubuntu/app2.py:311
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr ""
 
@@ -1426,21 +1426,21 @@ msgstr ""
 msgid "Command: sudo apt-get install minicom ckermit"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:241
+#: .././ailurus/ubuntu/app2.py:239
 msgid "VirtualBox open source edition"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:242
+#: .././ailurus/ubuntu/app2.py:240
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:253
+#: .././ailurus/ubuntu/app2.py:251
 msgid "GNOMEArtNG"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:254
+#: .././ailurus/ubuntu/app2.py:252
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -1448,41 +1448,41 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:314
+#: .././ailurus/ubuntu/app2.py:312
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: sudo apt-get install qtiplot"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:325
+#: .././ailurus/ubuntu/app2.py:323
 msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:334
+#: .././ailurus/ubuntu/app2.py:332
 msgid "Satartup Manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:335
+#: .././ailurus/ubuntu/app2.py:333
 msgid ""
 "Satartup manager helps you change GRUB settings and themes.\n"
 "Command: sudo apt-get install startupmanager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:342
+#: .././ailurus/ubuntu/app2.py:340
 msgid "Zhcon"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:343
+#: .././ailurus/ubuntu/app2.py:341
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\".\n"
 "Command: sudo apt-get install zhcon"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:352
+#: .././ailurus/ubuntu/app2.py:350
 msgid ""
 "Powertop helps you save power for your laptop.\n"
 "Command: sudo apt-get install powertop"

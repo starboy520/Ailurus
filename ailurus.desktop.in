@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ailurus
-_Comment=Ailurus = "Install software" + "Configure Linux" + "Learn Linux skills"
+_Comment="Install software" + "Configure Linux" + "Learn Linux skills"
 Exec=/usr/bin/ailurus
 Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
 Terminal=false
