@@ -329,12 +329,12 @@ splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
-splash.add_text(_('<span color="grey">Loading Linux skills ... </span>\n'))
+# load Linux skills
 tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
 import support.tipoftheday
 support.tipoftheday.tips = tips
 
-splash.add_text(_('<span color="grey">Loading main window ... </span>\n'))
+# load main window
 main_view = MainView()
 
 splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
