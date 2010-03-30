@@ -95,18 +95,19 @@ Categories=Development
 Icon=/opt/eclipse/icon.xpm''')
 
 class Eclipse_basic(_path_lists):
+        
     __doc__ = _('Eclipse (basic development environment)')
     detail = ( 
             _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
             _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
               'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
               'and extract ".zip" file to directory "/opt/eclipse" .') + 
-            _(' This application depends on Java.')
-            )
+            _(' This application depends on Java.') )
     category = 'eclipse'
     logo = 'eclipse.png'
     license = ('Eclipse Public License (EPL), '
                'see http://www.eclipse.org/org/documents/epl-v10.php')
+        
     def install(self):
         if get_arch() == 32:
             r = R([
@@ -338,7 +339,24 @@ class Eclipse_basic(_path_lists):
     def make_sure_installed(cls):
         obj = cls()
         if not obj.installed(): obj.install()
+        
+    def remove(self):
+        import lib
+        import os
+        if os.path.isdir('/opt/eclipse/'): 
+            gksudo('rm /opt/eclipse/ -rf')
+        elif APT.installed('eclipse'):
+            APT.remove('eclipse-platform')
 
+    def installed(self):
+        import lib
+        import os
+        if os.path.isdir('/opt/eclipse/') or APT.installed('eclipse'):
+            return True
+        else:
+            return False
+        
+        
 class Eclipse_J2EE(_path_lists):
     __doc__ = _('Eclipse (basic development environment + J2EE)')
     category = 'eclipse'
@@ -574,14 +592,22 @@ class CDT(_path_lists):
 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
 45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
         import os
-        self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        import lib
+        if APT.installed('eclipse'):
+            self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        else:
+            self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
+        import os
         Eclipse_basic.make_sure_installed()
         f = self.r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        if APT.installed('eclipse'):
+            gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        else:
+            gksudo("chown $USER:$USER /opt/eclipse -R")
 
 class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
@@ -595,14 +621,22 @@ class Pydev(_path_lists):
 'http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
 4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
         import os
-        self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        import lib
+        if APT.installed('eclipse'):
+            self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        else:
+            self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
+        import lib
         Eclipse_basic.make_sure_installed()
         f = self.r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        if APT.installed('eclipse'):
+            gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        else:
+            gksudo("chown $USER:$USER /opt/eclipse -R")
 
 class Aptana:
     __doc__ = _('Aptana: Web application development')
@@ -615,7 +649,11 @@ class Aptana:
     license = 'dual-licensed under the terms of Aptana Public License and GPL'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/com.aptana.ide.*')
+        import lib
+        if APT.installed('eclipse'):
+            List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
+        else:
+            List = glob.glob('/opt/eclipse/plugins/com.aptana.ide.*') 
         return bool(List)
     def install(self):
         Eclipse_basic.make_sure_installed()
@@ -638,7 +676,11 @@ class RadRails:
     license = 'It is released under GPL v3 and Aptana Public License.'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/com.aptana.radrails.*')
+        import lib
+        if APT.installed('eclipse'):
+            List = glob.glob('/usr/share/eclipse/plugins/com.aptana.radrails.*')
+        else:
+            List = glob.glob('/opt/eclipse/plugins/com.aptana.radrails.*')
         return bool(List)
     def install(self):
         Eclipse_basic.make_sure_installed()
@@ -661,14 +703,22 @@ class Mylyn(_path_lists):
                'see http://www.eclipse.org/legal/')
     
     def __init__(self):
-        self.path = '/opt/eclipse/dropins/mylyn'
+        import lib
+        if APT.installed('eclipse'):
+            self.path = '/usr/share/eclipse/dropins/mylyn'
+        else:
+            self.path = '/opt/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
     def install(self):
+        import lib
         Eclipse_basic.make_sure_installed()
         f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.1-e3.4.zip').download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s" % (f, self.path) )
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        if APT.installed('eclipse'):
+            gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        else:
+            gksudo("chown $USER:$USER /opt/eclipse -R")
 
 class DLTK:
     __doc__ = _('Dynamic languages toolkit')
@@ -705,7 +755,11 @@ class PDT:
                'see http://www.eclipse.org/legal/')
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.php.*')
+        import lib
+        if APT.installed('eclipse'):
+            List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
+        else:
+            List = glob.glob('/opt/eclipse/plugins/org.eclipse.php.*')
         return bool(List)
     def install(self):
         DLTK.make_sure_installed()
@@ -727,7 +781,11 @@ class Subversive:
     license = 'Eclipse Public License (EPL)'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.team.svn.*')
+        import lib
+        if APT.installed('eclipse'):
+            List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
+        else:
+            List = glob.glob('/opt/eclipse/plugins/org.eclipse.team.svn.*')            
         return bool(List)
     def install(self):
         Eclipse_basic.make_sure_installed()
@@ -748,7 +806,11 @@ class MTJ(_path_lists):
     category = 'eclipse'
     license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
     def __init__(self):
-        self.path = '/opt/eclipse/dropins/MTJ/'
+        import lib
+        if APT.installed('eclipse'):
+            self.path = '/opt/eclipse/dropins/MTJ/'
+        else:
+            self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]
     def install(self):
         Eclipse_basic.make_sure_installed()
@@ -843,4 +905,7 @@ class MTJ(_path_lists):
         f = r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        if APT.installed('eclipse'):
+            gksudo("chown $USER:$USER /usr/share/eclipse -R")
+        else:
+            gksudo("chown $USER:$USER /opt/eclipse -R")
