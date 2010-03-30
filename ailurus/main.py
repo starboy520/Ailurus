@@ -326,15 +326,6 @@ import common as COMMON
 DESKTOP = get_desktop_environment()
 DISTRIBUTION = get_distribution()
 
-#            splash.add_text(_('<span color="grey">Waiting for firefox to create profile ... </span>\n'))
-wait_firefox_to_create_profile()
-# acquire installed package
-if DISTRIBUTION and DISTRIBUTION.__name__ == 'ubuntu':
-    splash.add_text(_('<span color="grey">Acquire list of installed packages ... </span>\n'))
-    APT.refresh_cache()
-elif DISTRIBUTION and DISTRIBUTION.__name__ == 'fedora':
-    splash.add_text(_('<span color="grey">Acquire list of installed packages ... </span>\n'))
-    RPM.refresh_cache()
 # other initialization
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
@@ -368,6 +359,14 @@ pane = SystemSettingPane(items)
 main_view.register(pane)
 
 splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
+
+wait_firefox_to_create_profile()
+
+if DISTRIBUTION and DISTRIBUTION.__name__ == 'ubuntu':
+    APT.refresh_cache()
+elif DISTRIBUTION and DISTRIBUTION.__name__ == 'fedora':
+    RPM.refresh_cache()
+
 from loader import load_app_classes
 app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
 main_view.app_classes = app_classes
