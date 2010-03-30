@@ -380,7 +380,7 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
 
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
     if options.rpm_recovery or options.all:
-        from rpm_recovery_pane import FedoraRPMRecoveryPane
+        from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)
 
