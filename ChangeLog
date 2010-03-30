@@ -1,3 +1,24 @@
+2010-03-30 Homer Xing <homer.xing@gmail.com>
+
+    * Makes text shorter in "clean up" pane.
+    * Fix folder size bug in "clean up" pane.
+
+2010-03-29 Chen Yangyang <skabyy@gmail.com>
+
+    * Add "clean up" pane:
+      Add a feature to clean APT cache;
+      Add a feature to clean Ailurus cache(/var/cache/ailurus);
+      Add a feature to remove unused kernel.
+
+2010-03-29 Homer Xing <homer.xing@gmail.com>
+
+    * Do not terminate program when authentication fails.
+    * Do not raise exception when GNOMEArtNG thumbnails cannot be downloaded.
+    * Change SUN_JDK to OpenJDK.
+    * Change VirtualBox to VirtualBox-ose.
+    * Remove Dropbox.
+    * Remove repositories which provides non-open-source software only.
+
 2010-03-28 Homer Xing <homer.xing@gmail.com>
 
     * Check DBus status when program start up.
@@ -55,14 +76,16 @@
 
     * Disable FoxitReader.
 
->>>>>>> xing/master:ChangeLog
 2010-03-21 MA Yue <velly.empire@gmail.com>
     
     * Add customizing keyboard shortcut key functionality.
 
-2010-03-22 Homer Xing <homer.xing@gmail.com>
 
-    * Disable FoxitReader.
+2010-03-21 CHEN Yangyang <skabyy@gmail.com>
+
+    * Show the time left while detecting server in "quick setup".
+    * Improve the "check for update" functionality.
+      Make this functionality available in Fedora, Ubuntu and Mint.
 
 2010-03-20 Homer Xing <homer.xing@gmail.com>
 

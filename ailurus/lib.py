@@ -20,8 +20,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
+<<<<<<< HEAD
 AILURUS_VERSION = '10.03.2'
 AILURUS_RELEASE_DATE = '2010-03-22'
+=======
+AILURUS_VERSION = '10.03.4'
+AILURUS_RELEASE_DATE = '2010-03-29'
+>>>>>>> FETCH_HEAD
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -566,9 +571,8 @@ class RPM:
         cls.refresh_cache()
         return package_name in cls.__set1
     @classmethod
-    def install(cls, package):
-        assert isinstance(package, str)
-        su('yum install %s -y' % package)
+    def install(cls, *package):
+        su('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def install_local(cls, path):
@@ -579,9 +583,8 @@ class RPM:
         su('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
     @classmethod
-    def remove(cls, package):
-        assert isinstance(package, str)
-        su('yum remove %s -y' % package)
+    def remove(cls, *package):
+        su('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def import_key(cls, path):
@@ -866,11 +869,11 @@ def derive_time(time):
     if not time>=0: raise ValueError
     _1h = 3600.
     _1m = 60.
-    if time>=_1h:
+    if time >= _1h:
         return _('%.1f hours') % ( time/_1h )
-    if time>=_1m:
+    if time >= _1m:
         return _('%.1f minutes') % ( time/_1m )
-    return _('less than 1 minute')
+    return _('%d seconds') % time
 
 #def print_progress(command, total_line_number):
 #    def color_print(progress):

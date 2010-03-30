@@ -216,6 +216,10 @@ class Netbeans:
               _(' This application depends on Java.') )
     category = 'dev'
     logo = 'netbeans.png'
+    license = ('The majority of the NetBeans IDE 6.8 code is available under '
+               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
+               'and the GNU General Public License (GPL) v2. '
+               'See http://netbeans.org/about/legal/license.html')
     def install(self):
         # Download Netbeans and install it.
         file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
@@ -458,7 +462,7 @@ class TeXLive2009:
         env.remove('INFOPATH', '/usr/local/texlive/2009/texmf/doc/info')
         env.save()
         
-class TsingHuaTeXTemplate(_download_one_file) : # released under GPL
+class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')
     import os
     detail = _('These templates include undergraduate dissertation template, master thesis template and PhD thesis template. '
@@ -469,6 +473,7 @@ class TsingHuaTeXTemplate(_download_one_file) : # released under GPL
     category = 'latex'
     Chinese = True
     logo = 'texlive-templates.png'
+    license = 'GPL'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/thuthesis-4.5.1.tgz',
@@ -481,6 +486,7 @@ class FFAdblock(_ff_extension): # released under Mozilla Public License 1.1. It 
     __doc__ = _('Adblock+: Block 99% advertisement')
     logo = 'ff_adblock.png'
     size = 1336773
+    license = 'Mozilla Public License 1.1.'
     def __init__(self):
         self.desc = _('It is able to block 99% ads and banners.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
@@ -651,6 +657,8 @@ class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
     logo = 'ff_greasemonkey.png'
     size = 480077
+
+    license = 'MIT/X11 License'
     def __init__(self):
         self.desc = _('This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.'
               'You can download hundreds of scripts from http://userscripts.org, or '

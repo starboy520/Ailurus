@@ -19,8 +19,8 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-from app0 import *
-from app1 import *
-from app2 import *
-from app3 import *
-from third_party_repos import *
+from rpm_recovery_pane import FedoraRPMRecoveryPane
+
+def register(main_view):
+    pane = FedoraRPMRecoveryPane(main_view)
+    main_view.register(pane)

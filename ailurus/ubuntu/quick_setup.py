@@ -136,6 +136,7 @@ class FastestRepositoryDialog(gtk.Dialog):
         self.connect('delete-event', self._before_delete_event)
         self.progress_label = gtk.Label()
         self.progress_bar = gtk.ProgressBar()
+        self.timeleft_label = gtk.Label()
         self.button_start = gtk.Button('Start')
         self.button_start.connect('clicked', self.start)
         self.button_skip = gtk.Button(_('Skip this step'))
@@ -145,16 +146,21 @@ class FastestRepositoryDialog(gtk.Dialog):
         self.vbox.pack_start(self.progress_label, False)
         self.vbox.pack_start(self.progress_bar, False)
         self.vbox.set_size_request(500, -1)
-        self.action_area.pack_start(self.button_skip, False)
+        bottom_box = gtk.HBox(False, 0)
+        bottom_box.pack_start(self.timeleft_label, False)
+        bottom_box.pack_end(self.button_skip, False)
+        self.vbox.pack_start(bottom_box, False)
         self.show_all()
     def refresh_GUI(self):
         pass
+    
     def start(self, *w):
-
+        import time
+        begintime = time.time()
         def show_result():
+            currenttime = time.time()
             len_result = len(result)
             if len_result: server, value = result[-1]
-
             if len_result ==0: return
             
             #display progress
@@ -168,6 +174,11 @@ class FastestRepositoryDialog(gtk.Dialog):
             elif value == 'cannot ping' or value == 'unreachable':
                 text = _("<span color='black'>Server %s is unreachable.</span>") % server
             self.progress_label.set_markup(text)
+            #display time left
+            if len_result >= 40 and len_result % 5 == 0 :
+                timeleft = float(total-len_result) * (currenttime-begintime) / (len_result)
+                text = _("<span color='black'>Time left: %s</span>") % derive_time(int(timeleft))
+                self.timeleft_label.set_markup(text)
             
             self.refresh_GUI()
 
@@ -233,7 +244,7 @@ class FastestRepositoryDialog(gtk.Dialog):
             #destroy dialog
             self.can_exit = True
             self.destroy()
-
+            
     def change_server(self, fastest_url):
         #apply the fastest repository
         changes = {}

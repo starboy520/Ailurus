@@ -612,7 +612,7 @@ class Aptana:
                'Aptana cannot be removed by Ailurus. '
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
-    license = ' # It is dual-licensed under the terms of Aptana Public License and GPL.'
+    license = 'dual-licensed under the terms of Aptana Public License and GPL'
     def installed(self):
         import glob
         List = glob.glob('/opt/eclipse/plugins/com.aptana.ide.*')
