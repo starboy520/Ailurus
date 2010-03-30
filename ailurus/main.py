@@ -371,9 +371,23 @@ from system_setting_pane import SystemSettingPane
 pane = SystemSettingPane(items)
 main_view.register(pane)
 
-for module in [ COMMON, DESKTOP, DISTRIBUTION ]:
-    if hasattr(module, 'pane_register'):
-        module.pane_register.register(main_view)
+if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+    from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+    pane = UbuntuFastestMirrorPane(main_view)
+    main_view.register(pane)
+
+    from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+    pane = UbuntuAPTRecoveryPane(main_view)
+    main_view.register(pane)
+
+    from ubuntu.clean_up_pane import CleanUpPane
+    pane = CleanUpPane(main_view)
+    main_view.register(pane)
+
+if getattr(DISTRIBUTION, '__name__') == 'fedora':
+    from rpm_recovery_pane import FedoraRPMRecoveryPane
+    pane = FedoraRPMRecoveryPane(main_view)
+    main_view.register(pane)
 
 main_view.add_buttons_in_toolbar()
 

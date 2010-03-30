@@ -6,7 +6,6 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/fedora/rpm_recovery_pane.py
 ./ailurus/fedora/apps.py
 ./ailurus/fedora/__init__.py
-./ailurus/fedora/pane_register.py
 ./ailurus/ubuntu/osinfo.py
 ./ailurus/ubuntu/fastest_mirror_pane.py
 ./ailurus/ubuntu/third_party_repos.py
@@ -20,7 +19,6 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/ubuntu/clean_up_pane.py
 ./ailurus/ubuntu/quick_setup.py
 ./ailurus/ubuntu/__init__.py
-./ailurus/ubuntu/pane_register.py
 ./ailurus/ubuntu/tips.py
 ./ailurus/ubuntu/app3.py
 ./ailurus/ubuntu/apt_recovery_pane.py
