@@ -1,6 +1,7 @@
 2010-03-30 Homer Xing <homer.xing@gmail.com>
 
     * Add more information in CommandFailError
+    * We can launch partial functionality now. Our time is saved.
 
 2010-03-30 MA Yue <velly.empire@gmail.com>
 
