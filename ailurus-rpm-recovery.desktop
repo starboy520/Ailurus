@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ailurus - RPM recovery
+Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --rpm-recovery
+Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+Categories=System;

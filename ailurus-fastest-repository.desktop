@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ailurus - Fastest repository
+Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --fastest-repository
+Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+Categories=System;

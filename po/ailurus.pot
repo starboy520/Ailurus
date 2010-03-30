@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 19:21+0800\n"
+"POT-Creation-Date: 2010-03-31 04:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../ailurus.desktop.in.h:1
+#: ../ailurus.desktop.in.h:1 .././ailurus/ubuntu/third_party_repos.py:198
+msgid "Ailurus"
+msgstr ""
+
+#: ../ailurus.desktop.in.h:2
 msgid "makes Linux easier to use"
 msgstr ""
 
@@ -5280,10 +5284,6 @@ msgstr ""
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux. "
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:198
-msgid "Ailurus"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:202
