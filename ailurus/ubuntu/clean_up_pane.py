@@ -32,7 +32,7 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_apt_cache_button(), False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
         clean_kernel_box = CleanKernel()
-        self.pack_start(clean_kernel_box)
+        self.pack_start(clean_kernel_box, False)
 
     def get_folder_size(self, folder_path):
         is_string_not_empty(folder_path)
@@ -71,12 +71,13 @@ class CleanUpPane(gtk.VBox):
 
 class CleanKernel(gtk.VBox):
     def __init__(self):
-        gtk.VBox.__init__(self)
+        gtk.VBox.__init__(self, False, 10)
         self.current_kernel_version = self.get_current_kernel_version()
-        self.kmap = {}
-        self.__refresh_kernel_pkgs()
+        self.version_to_packages = {} # map version to package names
+        self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
         scrolled_window = gtk.ScrolledWindow()
+        scrolled_window.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_NEVER)
         box = self.box = gtk.VBox(False, 10)
         check_button_list = self.check_button_list = []
         button_apply = self.button_apply = gtk.Button(_('Apply'))
@@ -85,11 +86,11 @@ class CleanKernel(gtk.VBox):
             remove_list = []
             for b in check_button_list:
                 if b.get_active():
-                    remove_list.extend(self.kmap[b.kernel_version])
+                    remove_list.extend(self.version_to_packages[b.kernel_version])
                     #b.destroy()
             if remove_list:
                 APT.remove(*remove_list)
-                self.__refresh_kernel_pkgs()
+                self.__regenerate_version_to_packages()
                 self.__refresh_gui()
             button_apply.set_sensitive(False)
         button_apply.connect('clicked', apply, check_button_list)
@@ -100,10 +101,10 @@ class CleanKernel(gtk.VBox):
         hbox.pack_end(button_apply, False)
         self.pack_start(hbox, False)
         
-    def __refresh_kernel_pkgs(self):
+    def __regenerate_version_to_packages(self):
         import re
         
-        self.kmap.clear()
+        self.version_to_packages.clear()
         pkgs = APT.get_installed_pkgs_set()
         kpkgs = [p for p in pkgs if p.startswith('linux-headers-') or p.startswith('linux-image-')]
         pattern = r'linux-(headers|image)-([0-9.-]+)'
@@ -112,16 +113,16 @@ class CleanKernel(gtk.VBox):
             if not match: continue
             version = match.group(2)
             if version.endswith('-'): version = version[:-1]
-            if self.kmap.has_key(version):
-                self.kmap[version].append(p)
+            if self.version_to_packages.has_key(version):
+                self.version_to_packages[version].append(p)
             else:
-                self.kmap[version] = [p]
+                self.version_to_packages[version] = [p]
     
     def __refresh_gui(self):
         for b in self.check_button_list: b.destroy()
         def state_changed(check_button, button_apply):
             button_apply.set_sensitive(True)
-        version_list = self.kmap.keys()
+        version_list = self.version_to_packages.keys()
         version_list.sort()
         for version in version_list:
             check_button = gtk.CheckButton(version)

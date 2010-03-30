@@ -1,3 +1,8 @@
+2010-03-30 Homer Xing <homer.xing@gmail.com>
+
+    * Makes text shorter in "clean up" pane.
+    * Fix folder size bug in "clean up" pane.
+
 2010-03-29 Chen Yangyang <skabyy@gmail.com>
 
     * Add "clean up" pane:
