@@ -241,11 +241,12 @@ def check_update(*w):
                     lastest_filename = filename
         f.close()
         import gtk
-        dlg = gtk.Dialog(_('A new version is available'),
+        dlg = gtk.Dialog('',
                          None, gtk.DIALOG_NO_SEPARATOR,
                          (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
         vbox = gtk.VBox(False, 5)
         if lastest_filename:
+            dlg.set_title(_('A new version is available'))
             label = gtk.Label( _('Version %s is released.\n'
                                  'You can download it from:')
                                  % lastest_version)
@@ -253,6 +254,7 @@ def check_update(*w):
             vbox.pack_start(label)
             vbox.pack_start(button, False)
         else:
+            dlg.set_title(_('Check update'))
             label = gtk.Label( _('You have already installed the latest Ailurus version. :)') )
             vbox.pack_start(label)
         image = gtk.Image()
