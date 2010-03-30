@@ -7,4 +7,4 @@ if os.geteuid() == 0:
 import os, sys, ailurus 
 path = os.path.dirname(os.path.abspath(ailurus.__file__))
 os.chdir(path)
-os.execv('/usr/bin/env', ['/usr/bin/env', 'python', 'main.py'])
+os.execv('/usr/bin/env', ['/usr/bin/env', 'python', 'main.py'] + sys.argv[1:])

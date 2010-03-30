@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-30 16:40+0800\n"
+"POT-Creation-Date: 2010-03-30 18:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1037,7 +1037,7 @@ msgid "\"Set as wallpaper\" entry"
 msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
-#: .././ailurus/loader.py:124 .././ailurus/main.py:345
+#: .././ailurus/loader.py:124 .././ailurus/main.py:129
 msgid "Traceback:"
 msgstr ""
 
@@ -1946,7 +1946,7 @@ msgstr ""
 msgid "Ghana"
 msgstr ""
 
-#: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:133
+#: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:224
 msgid "Clean up"
 msgstr ""
 
@@ -3770,148 +3770,153 @@ msgid ""
 "GNOME first. -_-\n"
 msgstr ""
 
-#: .././ailurus/main.py:30
+#: .././ailurus/main.py:31
 msgid "Warning!"
 msgstr ""
 
-#: .././ailurus/main.py:31
+#: .././ailurus/main.py:32
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr ""
 
-#: .././ailurus/main.py:63
+#: .././ailurus/main.py:64
 msgid "Error happened. You cannot install any software by Ailurus. :("
 msgstr ""
 
-#: .././ailurus/main.py:66
+#: .././ailurus/main.py:67
 msgid "System configuration file should be updated."
 msgstr ""
 
-#: .././ailurus/main.py:67
+#: .././ailurus/main.py:68
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 
-#: .././ailurus/main.py:73
+#: .././ailurus/main.py:74
 msgid "Ailurus' D-Bus daemon exited with error."
 msgstr ""
 
-#: .././ailurus/main.py:74
+#: .././ailurus/main.py:75
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 
-#: .././ailurus/main.py:112
+#: .././ailurus/main.py:139
+msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
+msgstr ""
+
+#: .././ailurus/main.py:152
+msgid "Click here to report bug via web-page"
+msgstr ""
+
+#: .././ailurus/main.py:154
+msgid "Close"
+msgstr ""
+
+#: .././ailurus/main.py:160
+msgid "Bug appears!"
+msgstr ""
+
+#: .././ailurus/main.py:204
 msgid "Quit"
 msgstr ""
 
-#: .././ailurus/main.py:117
+#: .././ailurus/main.py:208
 msgid "Others"
 msgstr ""
 
-#: .././ailurus/main.py:120
+#: .././ailurus/main.py:211
 msgid "Preferences"
 msgstr ""
 
-#: .././ailurus/main.py:123
+#: .././ailurus/main.py:214
 msgid ""
 "Study\n"
 "Linux"
 msgstr ""
 
-#: .././ailurus/main.py:127
+#: .././ailurus/main.py:218
 msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:128
+#: .././ailurus/main.py:219
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:129
+#: .././ailurus/main.py:220
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
 
-#: .././ailurus/main.py:130
+#: .././ailurus/main.py:221
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
 
-#: .././ailurus/main.py:131
+#: .././ailurus/main.py:222
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
 
-#: .././ailurus/main.py:132
+#: .././ailurus/main.py:223
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
 
-#. check desktop environment
-#: .././ailurus/main.py:238
-msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
+#: .././ailurus/main.py:324
+msgid "usage: ailurus [options]"
 msgstr ""
 
-#. check distribution
-#: .././ailurus/main.py:246
-msgid "<span color=\"grey\">Checking distribution ... </span>\n"
+#: .././ailurus/main.py:325
+msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:269
-msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
+#: .././ailurus/main.py:326
+msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:271
-msgid ""
-"<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
+#: .././ailurus/main.py:327
+msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:279 .././ailurus/main.py:282
-msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
+#: .././ailurus/main.py:328
+msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:287
-msgid "<span color=\"grey\">Loading tips ... </span>\n"
+#: .././ailurus/main.py:330
+msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:293
-msgid "<span color=\"grey\">Loading main window ... </span>\n"
+#: .././ailurus/main.py:331
+msgid "load \"apt recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:296
-msgid "<span color=\"grey\">Loading information pane ... </span>\n"
+#: .././ailurus/main.py:332
+msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:309
+#: .././ailurus/main.py:334
+msgid "load \"rpm recovery\" functionality"
+msgstr ""
+
+#: .././ailurus/main.py:357
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:316
+#: .././ailurus/main.py:386
+msgid "<span color=\"grey\">Loading information pane ... </span>\n"
+msgstr ""
+
+#: .././ailurus/main.py:398
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
-msgstr ""
-
-#: .././ailurus/main.py:355
-msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
-msgstr ""
-
-#: .././ailurus/main.py:368
-msgid "Click here to report bug via web-page"
-msgstr ""
-
-#: .././ailurus/main.py:370
-msgid "Close"
-msgstr ""
-
-#: .././ailurus/main.py:376
-msgid "Bug appears!"
 msgstr ""
 
 #: .././ailurus/common/osinfo.py:31
