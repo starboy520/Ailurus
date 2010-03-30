@@ -348,12 +348,6 @@ from info_pane import LinuxInfoPane
 pane = LinuxInfoPane(main_view, linuxinfo)
 main_view.register(pane)
 
-splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
-from system_setting_pane import SystemSettingPane
-pane = SystemSettingPane(items)
-main_view.register(pane)
-
 splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
 
 wait_firefox_to_create_profile()
@@ -370,6 +364,12 @@ from install_remove_pane import InstallRemovePane
 pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
 main_view.register(pane)
 main_view.install_remove_pane = pane
+
+splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
+items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
+from system_setting_pane import SystemSettingPane
+pane = SystemSettingPane(items)
+main_view.register(pane)
 
 for module in [ COMMON, DESKTOP, DISTRIBUTION ]:
     if hasattr(module, 'pane_register'):
