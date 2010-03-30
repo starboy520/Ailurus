@@ -80,6 +80,55 @@ def check_dbus_configuration():
     dialog.run()
     dialog.destroy()
 
+def exception_happened(etype, value, tb):
+    if etype == KeyboardInterrupt: return
+    
+    import traceback, StringIO
+    msg = StringIO.StringIO()
+    print >>msg, _('Traceback:')
+    traceback.print_tb(tb, file=msg)
+    print >>msg, etype, ':', value
+
+    title_box = gtk.HBox(False, 5)
+    import os
+    if os.path.exists(D+'umut_icons/bug.png'):
+        image = gtk.Image()
+        image.set_from_file(D+'umut_icons/bug.png')
+        title_box.pack_start(image, False)
+    title = label_left_align( _('A bug appears. Would you please tell Ailurus developers? Thank you!') )
+    title_box.pack_start(title, False)
+    
+    textview_traceback = gtk.TextView()
+    gray_bg(textview_traceback)
+    textview_traceback.set_wrap_mode(gtk.WRAP_WORD)
+    textview_traceback.get_buffer().set_text(msg.getvalue())
+    textview_traceback.set_cursor_visible(False)
+    scroll_traceback = gtk.ScrolledWindow()
+    scroll_traceback.set_shadow_type(gtk.SHADOW_IN)
+    scroll_traceback.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+    scroll_traceback.add(textview_traceback)
+    scroll_traceback.set_size_request(-1, 300)
+    button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
+    button_report_bug.connect('clicked', lambda w: report_bug() )
+    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    button_close.connect('clicked', lambda w: dialog.destroy())
+    bottom_box = gtk.HBox(False, 10)
+    bottom_box.pack_start(button_report_bug, False)
+    bottom_box.pack_start(button_close, False)
+    
+    dialog = gtk.Dialog(_('Bug appears!'), None, gtk.DIALOG_NO_SEPARATOR)
+    dialog.set_border_width(10)
+    dialog.vbox.set_spacing(5)
+    dialog.vbox.pack_start(title_box, False)
+    dialog.vbox.pack_start(scroll_traceback)
+    dialog.vbox.show_all()
+    
+    dialog.action_area.pack_start(bottom_box, False)
+    dialog.action_area.show_all()
+    
+    dialog.run()
+    dialog.destroy()
+
 class MainView:
     def __create_toolitem(self, icon, text, signal_name, callback, *callback_args):
         is_string_not_empty(icon)
@@ -337,54 +386,6 @@ splash.destroy()
 if not Config.get_disable_tip():
     main_view.show_day_tip()
 #
-def exception_happened(etype, value, tb):
-    if etype == KeyboardInterrupt: return
-    
-    import traceback, StringIO
-    msg = StringIO.StringIO()
-    print >>msg, _('Traceback:')
-    traceback.print_tb(tb, file=msg)
-    print >>msg, etype, ':', value
-
-    title_box = gtk.HBox(False, 5)
-    import os
-    if os.path.exists(D+'umut_icons/bug.png'):
-        image = gtk.Image()
-        image.set_from_file(D+'umut_icons/bug.png')
-        title_box.pack_start(image, False)
-    title = label_left_align( _('A bug appears. Would you please tell Ailurus developers? Thank you!') )
-    title_box.pack_start(title, False)
-    
-    textview_traceback = gtk.TextView()
-    gray_bg(textview_traceback)
-    textview_traceback.set_wrap_mode(gtk.WRAP_WORD)
-    textview_traceback.get_buffer().set_text(msg.getvalue())
-    textview_traceback.set_cursor_visible(False)
-    scroll_traceback = gtk.ScrolledWindow()
-    scroll_traceback.set_shadow_type(gtk.SHADOW_IN)
-    scroll_traceback.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-    scroll_traceback.add(textview_traceback)
-    scroll_traceback.set_size_request(-1, 300)
-    button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
-    button_report_bug.connect('clicked', lambda w: report_bug() )
-    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
-    button_close.connect('clicked', lambda w: dialog.destroy())
-    bottom_box = gtk.HBox(False, 10)
-    bottom_box.pack_start(button_report_bug, False)
-    bottom_box.pack_start(button_close, False)
-    
-    dialog = gtk.Dialog(_('Bug appears!'), None, gtk.DIALOG_NO_SEPARATOR)
-    dialog.set_border_width(10)
-    dialog.vbox.set_spacing(5)
-    dialog.vbox.pack_start(title_box, False)
-    dialog.vbox.pack_start(scroll_traceback)
-    dialog.vbox.show_all()
-    
-    dialog.action_area.pack_start(bottom_box, False)
-    dialog.action_area.show_all()
-    
-    dialog.run()
-    dialog.destroy()
 
 import sys
 sys.excepthook = exception_happened
