@@ -1,6 +1,19 @@
 [Desktop Entry]
 Name=Ailurus
-Comment="Install software" + "Configure Linux" + "Learn Linux skills"
+Name[bg]=Ailurus
+Name[da]=Ailurus
+Name[de]=Ailurus
+Name[en_GB]=Ailurus
+Name[es]=Ailurus
+Name[fr]=Ailurus
+Name[it]=Ailurus
+Name[ko]=Ailurus
+Name[pt]=Ailurus
+Name[pt_BR]=Ailurus
+Name[ru]=Ailurus
+Name[zh_CN]=Ailurus
+Name[zh_TW]=Ailurus
+Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus
 Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
 Terminal=false

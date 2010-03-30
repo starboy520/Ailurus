@@ -8,6 +8,22 @@ f = open('version')
 version = f.read().strip()
 f.close()
 
+try:
+    import apt
+    desktop_files = ['ailurus-apt-recovery.desktop', 'ailurus-information.desktop',
+                                'ailurus-clean-up.desktop', 'ailurus-install-software.desktop',
+                                'ailurus.desktop', 'ailurus-fastest-repository.desktop', 'ailurus-system-setting.desktop'
+                                ]
+except: pass
+try:
+    import rpm
+    desktop_files = ['ailurus-rpm-recovery.desktop', 'ailurus-information.desktop',
+                                'ailurus-install-software.desktop',
+                                'ailurus.desktop', 'ailurus-system-setting.desktop'
+                                ]
+except: pass
+desktop_files
+
 setup(name = 'ailurus',
       description = 'makes Linux easier to use',
       long_description = 
@@ -34,7 +50,7 @@ Features:
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
-        ('share/applications/', ['ailurus.desktop']),
+        ('share/applications/', desktop_files),
         
         ('share/ailurus/', ['ChangeLog']),
         

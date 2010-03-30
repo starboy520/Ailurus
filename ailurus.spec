@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.03.4
-%define unmangled_version 10.03.4
+%define version 10.03.5
+%define unmangled_version 10.03.5
 %define release 1
 
 Summary: makes Linux easier to use
@@ -16,7 +16,7 @@ BuildArch: noarch
 Vendor: Homer Xing <homer.xing@gmail.com>
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm
 Url: http://ailurus.googlecode.com/
-BuildRequires: python python-devel python-distutils-extra intltool sed
+BuildRequires: python python-devel python-distutils-extra rpm-python intltool sed
 
 %description
 Ailurus is an application which makes Linux easier to use.
