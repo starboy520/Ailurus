@@ -144,6 +144,7 @@ class CleanKernel(gtk.VBox):
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
             self.check_buttons_box.pack_start(check_button, False)
+        self.check_buttons_box.show_all()
     
     def get_current_kernel_version(self):
         import re
