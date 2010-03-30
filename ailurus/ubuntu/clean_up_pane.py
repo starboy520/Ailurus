@@ -95,7 +95,7 @@ class CleanKernel(gtk.VBox):
         
     def remove_kernel(self, button_apply, check_buttons_list):
         remove_list = []
-        for button in check_button_list:
+        for button in self.check_button_list:
             if button.get_active() == False:
                 remove_list.extend(self.version_to_packages[button.kernel_version])
         if remove_list:
@@ -121,6 +121,10 @@ class CleanKernel(gtk.VBox):
                 self.version_to_packages[version] = [p]
 
     def check_button_toggled(self, check_button, button_apply):
+        if check_button.get_active():
+            check_button.label.set_markup("%s" % check_button.kernel_version)
+        else:
+            check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
         button_apply.set_sensitive(True)
     
     def __regenerate_check_buttons(self):
@@ -130,8 +134,11 @@ class CleanKernel(gtk.VBox):
         version_list = self.version_to_packages.keys()
         version_list.sort()
         for version in version_list:
-            check_button = gtk.CheckButton(version)
+            label = gtk.Label(version)
+            check_button = gtk.CheckButton()
             check_button.kernel_version = version
+            check_button.label = label
+            check_button.add(label)
             check_button.set_active(True)
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
