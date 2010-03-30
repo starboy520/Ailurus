@@ -24,6 +24,62 @@ import gtk, os, sys
 from lib import *
 from libu import *
 
+def detect_running_instances():
+    string = get_output('ps -a -u $USER | grep ailurus', True)
+    if string!='':
+        notify(_('Warning!'), 
+           _('Another instance of Ailurus is running. '
+              'It is not recommended to run multiple instance concurrently.') )
+
+def change_task_name():
+    import ctypes
+    libc = ctypes.CDLL('libc.so.6')
+    libc.prctl(15, 'ailurus', 0, 0, 0)
+
+def set_default_window_icon():
+    gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
+
+def with_same_content(file1, file2):
+    with open(file1) as f:
+        content1 = f.read()
+    with open(file2) as f:
+        content2 = f.read()
+    return content1 == content2
+
+def check_dbus_configuration():
+    same_content = True
+    if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
+        same_content = False
+    if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
+        same_content = False
+    dbus_ok = True
+    try:
+        get_authentication_method()
+    except:
+        dbus_ok = False
+    if same_content and dbus_ok: return
+    import StringIO
+    message = StringIO.StringIO()
+    print >>message, _('Error happened. You cannot install any software by Ailurus. :(')
+    print >>message, ''
+    if not same_content:
+        print >>message, _('System configuration file should be updated.')
+        print >>message, _('Please run these commands using <b>su</b> or <b>sudo</b>:')
+        print >>message, ''
+        print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
+        print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
+        print >>message, ''
+    if not dbus_ok:
+        print >>message, _("Ailurus' D-Bus daemon exited with error.")
+        print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
+        print >>message, ''
+        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon &amp;', '</span>'
+    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    dialog.set_title('Ailurus ' + AILURUS_VERSION)
+    dialog.set_markup(message.getvalue())
+    dialog.run()
+    dialog.destroy()
+
 class MainView:
     def __create_toolitem(self, icon, text, signal_name, callback, *callback_args):
         is_string_not_empty(icon)
@@ -165,58 +221,6 @@ class MainView:
 
         from support.windowpos import WindowPos
         WindowPos.load(window,'main')
-
-def detect_running_instances():
-    string = get_output('ps -a -u $USER | grep ailurus', True)
-    if string!='':
-        notify(_('Warning!'), 
-           _('Another instance of Ailurus is running. '
-              'It is not recommended to run multiple instance concurrently.') )
-def change_task_name():
-    import ctypes
-    libc = ctypes.CDLL('libc.so.6')
-    libc.prctl(15, 'ailurus', 0, 0, 0)
-def set_default_window_icon():
-    gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
-def with_same_content(file1, file2):
-    with open(file1) as f:
-        content1 = f.read()
-    with open(file2) as f:
-        content2 = f.read()
-    return content1 == content2
-def check_dbus_configuration():
-    same_content = True
-    if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
-        same_content = False
-    if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
-        same_content = False
-    dbus_ok = True
-    try:
-        get_authentication_method()
-    except:
-        dbus_ok = False
-    if same_content and dbus_ok: return
-    import StringIO
-    message = StringIO.StringIO()
-    print >>message, _('Error happened. You cannot install any software by Ailurus. :(')
-    print >>message, ''
-    if not same_content:
-        print >>message, _('System configuration file should be updated.')
-        print >>message, _('Please run these commands using <b>su</b> or <b>sudo</b>:')
-        print >>message, ''
-        print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
-        print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
-        print >>message, ''
-    if not dbus_ok:
-        print >>message, _("Ailurus' D-Bus daemon exited with error.")
-        print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
-        print >>message, ''
-        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon &amp;', '</span>'
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
-    dialog.set_title('Ailurus ' + AILURUS_VERSION)
-    dialog.set_markup(message.getvalue())
-    dialog.run()
-    dialog.destroy()
 
 detect_running_instances()
 change_task_name()

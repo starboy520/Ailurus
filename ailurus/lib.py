@@ -1435,3 +1435,4 @@ class Tasksel:
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
+            
