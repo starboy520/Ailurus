@@ -2,7 +2,7 @@ Source: ailurus
 Section: utils
 Priority: optional
 Maintainer: Aron Xu <happyaron.xu@gmail.com>
-Build-Depends: cdbs, debhelper (>= 5), python (>= 2.5), python-support, python-distutils-extra
+Build-Depends: cdbs, debhelper (>= 5), python (>= 2.5), python-support, python-distutils-extra, python-apt
 Build-Depends-Indep: autotools-dev, gettext
 Standards-Version: 3.8.4
 Homepage: http://ailurus.cn/
