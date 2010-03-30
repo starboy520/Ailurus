@@ -324,7 +324,7 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 from optparse import OptionParser
 parser = OptionParser(usage=_('usage: ailurus [options]'))
-parser.add_option('-f', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
+parser.add_option('--fast', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
 parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
 parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))

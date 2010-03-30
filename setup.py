@@ -34,7 +34,7 @@ Features:
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
-        ('share/applications/', ['ailurus.desktop']),
+        ('share/applications/', glob('ailurus*.desktop') ),
         
         ('share/ailurus/', ['ChangeLog']),
         

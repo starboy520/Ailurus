@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Ailurus - Clean up
+Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --clean-up
+Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Terminal=false
+X-MultipleArgs=false
+Type=Application
+StartupNotify=true
+Categories=System;
