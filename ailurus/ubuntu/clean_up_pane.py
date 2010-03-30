@@ -76,28 +76,28 @@ class CleanKernel(gtk.VBox):
         self.version_to_packages = {} # map version to package names
         self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
-        check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5)
-        check_buttons_list = self.check_buttons_list = []
+        check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5) # put all check buttons in this box
+        check_buttons_list = self.check_buttons_list = [] # all check buttons
         button_apply = self.button_apply = gtk.Button(_('Apply'))
         button_apply.set_sensitive(False)
-        def apply(button_apply, check_buttons_list):
-            remove_list = []
-            for b in check_button_list:
-                if b.get_active():
-                    remove_list.extend(self.version_to_packages[b.kernel_version])
-                    #b.destroy()
-            if remove_list:
-                APT.remove(*remove_list)
-                self.__regenerate_version_to_packages()
-                self.__refresh_gui()
-            button_apply.set_sensitive(False)
-        button_apply.connect('clicked', apply, check_buttons_list)
+        button_apply.connect('clicked', self.remove_kernel, check_buttons_list)
         self.__refresh_gui()
         self.pack_start(check_buttons_box)
         hbox = gtk.HBox()
         hbox.pack_end(button_apply, False)
         self.pack_start(hbox, False)
         
+    def remove_kernel(self, button_apply, check_buttons_list):
+        remove_list = []
+        for b in check_button_list:
+            if b.get_active() == False:
+                remove_list.extend(self.version_to_packages[b.kernel_version])
+        if remove_list:
+            APT.remove(*remove_list)
+            self.__regenerate_version_to_packages()
+            self.__refresh_gui()
+        button_apply.set_sensitive(False)
+
     def __regenerate_version_to_packages(self):
         import re
         
