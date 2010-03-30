@@ -316,20 +316,18 @@ change_task_name()
 set_default_window_icon()
 check_dbus_configuration()
 
+import common as COMMON
+DESKTOP = get_desktop_environment()
+DISTRIBUTION = get_distribution()
+sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
 # show splash window
 from support.splashwindow import SplashWindow
 splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
-import common as COMMON
-DESKTOP = get_desktop_environment()
-DISTRIBUTION = get_distribution()
-
-# other initialization
-sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
-
-splash.add_text(_('<span color="grey">Loading tips ... </span>\n'))
+splash.add_text(_('<span color="grey">Loading Linux skills ... </span>\n'))
 from loader import load_tips
 tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
 import support.tipoftheday
