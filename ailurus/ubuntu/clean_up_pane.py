@@ -72,7 +72,6 @@ class CleanUpPane(gtk.VBox):
 class CleanKernel(gtk.VBox):
     def __init__(self):
         gtk.VBox.__init__(self, False, 10)
-        self.current_kernel_version = self.get_current_kernel_version()
         self.version_to_packages = {} # map version to package names
         self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
@@ -81,31 +80,34 @@ class CleanKernel(gtk.VBox):
         button_apply = self.button_apply = gtk.Button(_('Apply'))
         button_apply.set_sensitive(False)
         button_apply.connect('clicked', self.remove_kernel, check_buttons_list)
-        self.__refresh_gui()
-        self.pack_start(check_buttons_box)
+        current_kernel_version = self.get_current_kernel_version()
+        label = gtk.Label(_('Current kernel version is %s') % current_kernel_version)
+        label.set_alignment(0, 0.5)
+        self.pack_start(label, False)
+        self.__regenerate_check_buttons()
+        self.pack_start(check_buttons_box, False)
         hbox = gtk.HBox()
         hbox.pack_end(button_apply, False)
         self.pack_start(hbox, False)
         
     def remove_kernel(self, button_apply, check_buttons_list):
         remove_list = []
-        for b in check_button_list:
-            if b.get_active() == False:
-                remove_list.extend(self.version_to_packages[b.kernel_version])
+        for button in check_button_list:
+            if button.get_active() == False:
+                remove_list.extend(self.version_to_packages[button.kernel_version])
         if remove_list:
             APT.remove(*remove_list)
             self.__regenerate_version_to_packages()
-            self.__refresh_gui()
+            self.__regenerate_check_buttons()
         button_apply.set_sensitive(False)
 
     def __regenerate_version_to_packages(self):
         import re
-        
         self.version_to_packages.clear()
-        pkgs = APT.get_installed_pkgs_set()
-        kpkgs = [p for p in pkgs if p.startswith('linux-headers-') or p.startswith('linux-image-')]
+        all_pkgs = APT.get_installed_pkgs_set()
+        kernel_pkgs = [p for p in all_pkgs if p.startswith('linux-headers-') or p.startswith('linux-image-')]
         pattern = r'linux-(headers|image)-([0-9.-]+)'
-        for p in kpkgs:
+        for p in kernel_pkgs:
             match = re.search(pattern, p)
             if not match: continue
             version = match.group(2)
@@ -114,27 +116,32 @@ class CleanKernel(gtk.VBox):
                 self.version_to_packages[version].append(p)
             else:
                 self.version_to_packages[version] = [p]
+
+    def check_button_toggled(self, check_button, button_apply):
+        button_apply.set_sensitive(True)
     
-    def __refresh_gui(self):
-        for b in self.check_buttons_list: b.destroy()
-        def state_changed(check_button, button_apply):
-            button_apply.set_sensitive(True)
+    def __regenerate_check_buttons(self):
+        for button in self.check_buttons_box.get_children():
+            self.check_buttons_box.remove(button)
+        self.check_buttons_list = []
         version_list = self.version_to_packages.keys()
         version_list.sort()
         for version in version_list:
             check_button = gtk.CheckButton(version)
             check_button.kernel_version = version
-            self.check_buttons_box.pack_start(check_button, False)
+            check_button.set_active(True)
+            check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
-            check_button.connect('toggled', state_changed, self.button_apply)
+            self.check_buttons_box.pack_start(check_button, False)
     
     def get_current_kernel_version(self):
         import re
-        
         version = os.uname()[2]
         pattern = r'[0-9.-]+'
         match = re.search(pattern, version)
-        if match: version = match.group(0)
-        if version.endswith('-'): version = version[:-1]
-        return version
-        
+        if match: 
+            version = match.group(0)
+            if version.endswith('-'): version = version[:-1]
+            return version
+        else: 
+            raise Exception, os.uname()[2]
