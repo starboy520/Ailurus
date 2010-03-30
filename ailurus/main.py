@@ -313,15 +313,29 @@ class MainView:
         from support.windowpos import WindowPos
         WindowPos.load(window,'main')
 
-detect_running_instances()
-change_task_name()
-set_default_window_icon()
-check_dbus_configuration()
-
 import common as COMMON
 DESKTOP = get_desktop_environment()
 DISTRIBUTION = get_distribution()
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+
+from optparse import OptionParser
+parser = OptionParser(usage=_('usage: %prog [options]'))
+parser.add_option('--partial', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
+parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
+parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
+parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
+if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+    parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
+    parser.add_option('--apt-recovery', action='store_true', dest='apt_recovery', default=False, help=_('load "apt recovery" functionality'))
+    parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
+if getattr(DISTRIBUTION, '__name__') == 'fedora':
+    parser.add_option('--rpm-recovery', action='store_true', dest='rpm_recovery', default=False, help=_('load "rpm recovery" functionality'))
+options, args = parser.parse_args()
+
+detect_running_instances()
+change_task_name()
+set_default_window_icon()
+check_dbus_configuration()
 
 # show splash window
 from support.splashwindow import SplashWindow
@@ -337,57 +351,64 @@ support.tipoftheday.tips = tips
 # load main window
 main_view = MainView()
 
-splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-from info_pane import HardwareInfoPane
-pane = HardwareInfoPane(main_view, hwinfo)
-main_view.register(pane)
+if options.information or options.all:
+    splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
+    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
+    from info_pane import HardwareInfoPane
+    pane = HardwareInfoPane(main_view, hwinfo)
+    main_view.register(pane)
 
-linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
-from info_pane import LinuxInfoPane
-pane = LinuxInfoPane(main_view, linuxinfo)
-main_view.register(pane)
+    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
+    from info_pane import LinuxInfoPane
+    pane = LinuxInfoPane(main_view, linuxinfo)
+    main_view.register(pane)
 
-splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
+if options.install_software or options.all:
+    splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
+    
+    wait_firefox_to_create_profile()
+    
+    if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+        APT.refresh_cache()
+    elif getattr(DISTRIBUTION, '__name__') == 'fedora':
+        RPM.refresh_cache()
+    
+    app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
+    main_view.app_classes = app_classes
+    custom_app_classes = load_custom_app_classes()
+    from install_remove_pane import InstallRemovePane
+    pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
+    main_view.register(pane)
+    main_view.install_remove_pane = pane
 
-wait_firefox_to_create_profile()
+if options.system_setting or options.all:
+    splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
+    items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
+    from system_setting_pane import SystemSettingPane
+    pane = SystemSettingPane(items)
+    main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
-    APT.refresh_cache()
-elif getattr(DISTRIBUTION, '__name__') == 'fedora':
-    RPM.refresh_cache()
+    if options.fastest_repository or options.all:
+        from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+        pane = UbuntuFastestMirrorPane(main_view)
+        main_view.register(pane)
 
-app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
-main_view.app_classes = app_classes
-custom_app_classes = load_custom_app_classes()
-from install_remove_pane import InstallRemovePane
-pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
-main_view.register(pane)
-main_view.install_remove_pane = pane
+    if options.apt_recovery or options.all:
+        from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+        pane = UbuntuAPTRecoveryPane(main_view)
+        main_view.register(pane)
 
-splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
-from system_setting_pane import SystemSettingPane
-pane = SystemSettingPane(items)
-main_view.register(pane)
-
-if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
-    from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-    pane = UbuntuFastestMirrorPane(main_view)
-    main_view.register(pane)
-
-    from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-    pane = UbuntuAPTRecoveryPane(main_view)
-    main_view.register(pane)
-
-    from ubuntu.clean_up_pane import CleanUpPane
-    pane = CleanUpPane(main_view)
-    main_view.register(pane)
+    if options.clean_up or options.all:
+        from ubuntu.clean_up_pane import CleanUpPane
+        pane = CleanUpPane(main_view)
+        main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
-    from rpm_recovery_pane import FedoraRPMRecoveryPane
-    pane = FedoraRPMRecoveryPane(main_view)
-    main_view.register(pane)
+    if options.rpm_recovery or options.all:
+        from rpm_recovery_pane import FedoraRPMRecoveryPane
+        pane = FedoraRPMRecoveryPane(main_view)
+        main_view.register(pane)
 
 main_view.add_buttons_in_toolbar()
 
