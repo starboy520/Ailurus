@@ -23,7 +23,9 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-from apps_eclipse import *
+
+if Config.is_Ubuntu() or Config.is_Fedora():
+    from apps_eclipse import *
 
 class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
