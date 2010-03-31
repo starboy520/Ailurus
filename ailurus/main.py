@@ -231,8 +231,9 @@ class MainView:
             if not name in self.contents: continue
             item = self.__create_toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
-            last_name = name
-        self.activate_pane(None, last_name) # automatically activate the left-most pane
+            left_most_pane_name = name
+        assert left_most_pane_name != None
+        self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
     def __show_popupmenu_on_toolbaritem(self, widget, event, menu):
         if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:
@@ -336,7 +337,17 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
     parser.add_option('--rpm-recovery', action='store_true', dest='rpm_recovery', default=False, help=_('load "rpm recovery" functionality'))
 options, args = parser.parse_args()
-
+if ( options.all == False 
+     and not getattr(options, 'apt_recovery', False) 
+     and not getattr(options, 'clean_up', False) 
+     and not getattr(options, 'fastest_repository', False)
+     and not options.information
+     and not options.install_software
+     and not getattr(options, 'rpm_recovery', False)
+     and not options.system_setting ):
+    print _('You did not specify any functionality. :)')
+    print _('For example: ailurus --fast --information')
+    sys.exit()
 detect_running_instances()
 change_task_name()
 set_default_window_icon()
