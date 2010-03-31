@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 08:09+0800\n"
+"POT-Creation-Date: 2010-03-31 13:10+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -599,7 +599,7 @@ msgstr ""
 msgid "Battery full capacity:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:367
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:370
 msgid "Ailurus blog"
 msgstr ""
 
@@ -613,171 +613,171 @@ msgid ""
 "Univ., China."
 msgstr ""
 
-#: .././ailurus/common/menu.py:115
+#: .././ailurus/common/menu.py:118
 msgid "Welcome to leave response in blog~"
 msgstr ""
 
-#: .././ailurus/common/menu.py:129
+#: .././ailurus/common/menu.py:132
 msgid "Ailurus changelog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:140
+#: .././ailurus/common/menu.py:143
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: .././ailurus/common/menu.py:142
+#: .././ailurus/common/menu.py:145
 msgid "Read changelog"
 msgstr ""
 
-#: .././ailurus/common/menu.py:153
+#: .././ailurus/common/menu.py:156
 msgid "We wish to express thankfulness to these projects:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:157
+#: .././ailurus/common/menu.py:160
 msgid "We sincerely thank these people:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:159
+#: .././ailurus/common/menu.py:162
 msgid "The people who provide inspiration:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:165
+#: .././ailurus/common/menu.py:168
 msgid "The people who designs the logo:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:168
+#: .././ailurus/common/menu.py:171
 msgid "The people who maintain PPA repository:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:171
+#: .././ailurus/common/menu.py:174
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:174
+#: .././ailurus/common/menu.py:177
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:180
 msgid "The people who provide a lot of translation:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:178 .././ailurus/common/menu.py:182
-#: .././ailurus/common/menu.py:189
+#: .././ailurus/common/menu.py:181 .././ailurus/common/menu.py:185
+#: .././ailurus/common/menu.py:192
 msgid "and many other people."
 msgstr ""
 
-#: .././ailurus/common/menu.py:180
+#: .././ailurus/common/menu.py:183
 msgid "The people who report bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:184
+#: .././ailurus/common/menu.py:187
 msgid "The people who eliminate bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:190
 msgid "The people who publicize this software:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:191
+#: .././ailurus/common/menu.py:194
 msgid "and the people not mensioned here."
 msgstr ""
 
-#: .././ailurus/common/menu.py:201
+#: .././ailurus/common/menu.py:204
 msgid "Thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:249
+#: .././ailurus/common/menu.py:252
 msgid "A new version is available"
 msgstr ""
 
-#: .././ailurus/common/menu.py:250
+#: .././ailurus/common/menu.py:253
 #, python-format
 msgid ""
 "Version %s is released.\n"
 "You can download it from:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:257
+#: .././ailurus/common/menu.py:260
 msgid "Check update"
 msgstr ""
 
-#: .././ailurus/common/menu.py:258
+#: .././ailurus/common/menu.py:261
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr ""
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:278
+#: .././ailurus/common/menu.py:281
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:297
+#: .././ailurus/common/menu.py:300
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr ""
 
-#: .././ailurus/common/menu.py:316
+#: .././ailurus/common/menu.py:319
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 
-#: .././ailurus/common/menu.py:322
+#: .././ailurus/common/menu.py:325
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:325
+#: .././ailurus/common/menu.py:328
 msgid "Set Ailurus download parameter"
 msgstr ""
 
-#: .././ailurus/common/menu.py:347
+#: .././ailurus/common/menu.py:350
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: .././ailurus/common/menu.py:350 .././ailurus/common/menu.py:358
+#: .././ailurus/common/menu.py:353 .././ailurus/common/menu.py:361
 #: .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/common/menu.py:350 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:353 .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/common/menu.py:353
+#: .././ailurus/common/menu.py:356
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:358 .././ailurus/gnome/setting.py:111
+#: .././ailurus/common/menu.py:361 .././ailurus/gnome/setting.py:111
 #: .././ailurus/gnome/setting.py:138
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:361
+#: .././ailurus/common/menu.py:364
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:371
+#: .././ailurus/common/menu.py:374
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:374
+#: .././ailurus/common/menu.py:377
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: .././ailurus/common/menu.py:378
+#: .././ailurus/common/menu.py:381
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:382
+#: .././ailurus/common/menu.py:385
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:385
+#: .././ailurus/common/menu.py:388
 msgid "About"
 msgstr ""
 
@@ -872,7 +872,7 @@ msgid "100 = Swap a lot of mem to disk"
 msgstr ""
 
 #: .././ailurus/common/setting.py:63
-#: .././ailurus/fedora/rpm_recovery_pane.py:288 .././ailurus/libsetting.py:312
+#: .././ailurus/fedora/rpm_recovery_pane.py:284 .././ailurus/libsetting.py:312
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/ubuntu/setting.py:192
 msgid "Apply"
@@ -1756,108 +1756,108 @@ msgstr ""
 msgid "RPM recovery"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:52
+#: .././ailurus/fedora/rpm_recovery_pane.py:48
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Write comments"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:62
+#: .././ailurus/fedora/rpm_recovery_pane.py:58
 #: .././ailurus/ubuntu/apt_recovery_pane.py:62
 msgid "Would you like to write some comments for this snapshot?"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:123
+#: .././ailurus/fedora/rpm_recovery_pane.py:119
 #: .././ailurus/ubuntu/apt_recovery_pane.py:123
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:137
+#: .././ailurus/fedora/rpm_recovery_pane.py:133
 #: .././ailurus/ubuntu/apt_recovery_pane.py:137
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:148
+#: .././ailurus/fedora/rpm_recovery_pane.py:144
 #: .././ailurus/ubuntu/apt_recovery_pane.py:148
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:158
+#: .././ailurus/fedora/rpm_recovery_pane.py:154
 #: .././ailurus/ubuntu/apt_recovery_pane.py:158
 #, python-format
 msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:182
+#: .././ailurus/fedora/rpm_recovery_pane.py:178
 #: .././ailurus/ubuntu/apt_recovery_pane.py:182
 msgid "Create today's snapshot"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:196
+#: .././ailurus/fedora/rpm_recovery_pane.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:196
 msgid "Show changes since selected day"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:201
+#: .././ailurus/fedora/rpm_recovery_pane.py:197
 #: .././ailurus/ubuntu/apt_recovery_pane.py:201
 msgid "packages"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:207
+#: .././ailurus/fedora/rpm_recovery_pane.py:203
 #: .././ailurus/ubuntu/apt_recovery_pane.py:207
 msgid "changes"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:213
+#: .././ailurus/fedora/rpm_recovery_pane.py:209
 #: .././ailurus/ubuntu/apt_recovery_pane.py:213
 msgid "It was installed."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:214
+#: .././ailurus/fedora/rpm_recovery_pane.py:210
 #: .././ailurus/ubuntu/apt_recovery_pane.py:214
 msgid "It was removed."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:233
+#: .././ailurus/fedora/rpm_recovery_pane.py:229
 #: .././ailurus/ubuntu/apt_recovery_pane.py:233
 msgid "package"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:238
+#: .././ailurus/fedora/rpm_recovery_pane.py:234
 #: .././ailurus/ubuntu/apt_recovery_pane.py:238
 msgid "action"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:243
+#: .././ailurus/fedora/rpm_recovery_pane.py:239
 #: .././ailurus/ubuntu/apt_recovery_pane.py:243
 msgid "will be removed"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:244
+#: .././ailurus/fedora/rpm_recovery_pane.py:240
 #: .././ailurus/ubuntu/apt_recovery_pane.py:244
 msgid "will be installed"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:281
+#: .././ailurus/fedora/rpm_recovery_pane.py:277
 #: .././ailurus/ubuntu/apt_recovery_pane.py:281
 msgid "To do:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:285
+#: .././ailurus/fedora/rpm_recovery_pane.py:281
 #: .././ailurus/ubuntu/apt_recovery_pane.py:285
 msgid ""
 "In order to revoke packages, you can drag items from the left box to the "
 "right box, then click the button. "
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:293
+#: .././ailurus/fedora/rpm_recovery_pane.py:289
 #: .././ailurus/ubuntu/apt_recovery_pane.py:293
 msgid "Changes:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:298
+#: .././ailurus/fedora/rpm_recovery_pane.py:294
 #: .././ailurus/ubuntu/apt_recovery_pane.py:298
 msgid ""
 "Ailurus helps you keep track of what software you have installed/removed. If "
@@ -1865,7 +1865,7 @@ msgid ""
 "your system now."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:301
+#: .././ailurus/fedora/rpm_recovery_pane.py:297
 #: .././ailurus/ubuntu/apt_recovery_pane.py:301
 msgid "Existing snapshots are displayed in bold font."
 msgstr ""

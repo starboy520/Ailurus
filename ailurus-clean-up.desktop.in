@@ -2,7 +2,7 @@
 _Name=Ailurus - Clean up
 _Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --clean-up
-Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Icon=/usr/share/ailurus/data/velly_icons/m_clean_up.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application

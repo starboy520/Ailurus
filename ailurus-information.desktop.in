@@ -2,7 +2,7 @@
 _Name=Ailurus - Information
 _Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --information
-Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Icon=/usr/share/ailurus/data/velly_icons/m_hardware_info.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application
