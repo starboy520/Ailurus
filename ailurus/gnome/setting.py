@@ -125,7 +125,7 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24)
+    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24, True)
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -141,7 +141,7 @@ def __login_icon_setting():
     path = ''
     path1 = os.path.expanduser('~/.face')
     if os.path.exists(path1): path = path1
-    i = GConfImageEntry(_('The login icon is ~/.face'), path, 32)
+    i = GConfImageEntry(_('The login icon is ~/.face'), path, 96)
     i.connect('changed',__apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -249,7 +249,6 @@ def __layout_of_window_titlebar_buttons():
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)
     return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
-
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))

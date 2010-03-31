@@ -147,7 +147,7 @@ class GConfImageEntry(gtk.HBox):
     import gobject
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
     
-    def __choose_file(self,w):
+    def __choose_file(self, w, scale, image_size):
         title = _('Choose an image')
         chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -178,7 +178,8 @@ class GConfImageEntry(gtk.HBox):
             temp_file = '/tmp/temp_image'
             os.system('cp %s %s' %(self.image_path,temp_file))
             pixbuf = gtk.gdk.pixbuf_new_from_file(temp_file)
-            pixbuf = pixbuf.scale_simple(24, 24, gtk.gdk.INTERP_HYPER)
+            if scale:
+                pixbuf = pixbuf.scale_simple(image_size, image_size, gtk.gdk.INTERP_HYPER)
             pixbuf.save(temp_file, 'png')
             self.emit('changed', temp_file)
             self.__show_image(temp_file, self.image_size)
@@ -195,17 +196,19 @@ class GConfImageEntry(gtk.HBox):
         self.button.add(image)
         self.button.show_all()
     
-    def __init__(self, tooltip, image_path, image_size):
+    
+    def __init__(self, tooltip, image_path, image_size, scale = False ):
         is_string_not_empty(tooltip)
         assert isinstance(image_path, str)
         assert isinstance(image_size, int)
         
         gtk.HBox.__init__(self, False, 0)
+        self.scale = scale
         self.image_path = image_path
         self.image_size = image_size
         self.button = gtk.Button()
         self.button.set_tooltip_text(tooltip)
-        self.button.connect('clicked', self.__choose_file)
+        self.button.connect('clicked', self.__choose_file, scale, image_size )
         self.__show_image(image_path, image_size)
         self.pack_start(self.button, False)
         
