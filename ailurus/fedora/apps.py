@@ -485,7 +485,7 @@ class Gnash(_rpm_install):
     license = 'GNU General Public License (GPL)'
     logo = 'flash.png'
     def __init__(self):
-        self.pkgs = 'gnash'
+        self.pkgs = 'gnash gnash-plugin'
 
 class Multimedia_Codecs (_rpm_install) :
     __doc__ = _('Multi-media codec')
