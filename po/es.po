@@ -8897,4 +8897,3 @@ msgstr ""
 #~ "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
 #~ msgstr ""
 #~ "Sitio oficial: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
-

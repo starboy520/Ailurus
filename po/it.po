@@ -6659,4 +6659,3 @@ msgstr ""
 #~ "motto di Ubun-student\n"
 #~ "Se dai un pesce ad un uomo potrà mangiare per un giorno, ma se gli insegni a "
 #~ "pescare potrà mangiare per tutta la vita."
-

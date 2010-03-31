@@ -5746,4 +5746,3 @@ msgid ""
 "\n"
 "Minimum value: %(min)s. Maximum value: %(max)s."
 msgstr ""
-

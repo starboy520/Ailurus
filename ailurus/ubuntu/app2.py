@@ -83,7 +83,7 @@ class PBC:
     
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
-
+   
 class Build_Essential(_apt_install):
     'Build-essential'
     detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
@@ -174,37 +174,13 @@ class Boost(_apt_install):
     def __init__(self):
         self.pkgs = 'libboost-dev'
 
-
-class CommonUsedProgrammingPackages(_apt_install):
-    __doc__ = _('Useful applications for programming')
-    detail = _('The tools are:\n'
-       '<i>'
-       'g++: GNU C++ compiler.\n'
-       'manpages-dev: manual pages about Linux system calls and library calls.\n'
-       'manpages-posix: manual pages about using POSIX.\n'
-       'manpages-posix-dev: manual pages about POSIX header files and POSIX library files.\n'
-       'exuberant-ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
-       'libgmp3: GNU multiprecision arithmetic library.\n'
-       'libncurses5: a library controlling writing to the console screen.\n'
-       'libqt3-mt: Trolltech Qt library, version 3.\n'
-       'subversion: a version control system.\n'
-       'git-core: a distributed version control system.\n'
-       '</i>'
-       'Command: sudo apt-get install '
-       'build-essential manpages-dev manpages-posix manpages-posix-dev exuberant-ctags '
-       'libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core')
+class SDL(_apt_install):
+    __doc__ = _('SDL library')
+    detail = _('This is a library for writing SDL programs.\n'
+               'SDL is a cross-platform multimedia library designed to provide low level access to audio'
+               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
+               'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
     category = 'dev'
-
-    time = 55
-    size = 30988 * 1000
-    logo = 'program-tools.png'
-    def __init__(self):
-        # Do not put 'libgmp3c2' in self.pkgs, or a lot of packages will be removed!
-        # Besides, libgmp3-dev depends on 'libgmp3c2'. 'libgmp3c2' is not needed.   
-        self.pkgs = ( "build-essential manpages-dev manpages-posix-dev manpages-posix exuberant-ctags" +
-                      " libgmp3-dev libncurses5-dev libqt3-mt-dev subversion git-core" )
-    def get_reason(self, f):
-        self._get_reason(f)
     license ='GNU Lesser General Public License'
     logo = 'program-tools.png'
     def __init__(self):
@@ -351,7 +327,7 @@ class Extcalc(_apt_install):
     logo = 'extcalc.png'
     def __init__(self):
         self.pkgs = 'extcalc'
-     
+        
 class StartupManager(_apt_install):
     __doc__ = _('Satartup Manager')   
     detail = _('Satartup manager helps you change GRUB settings and themes.\n'

@@ -4476,4 +4476,2461 @@ msgid ""
 msgstr "<span color=\"grey\">等待 Firefox 创建配置 ... </span>\n"
 
 #: .././ailurus/main.py:233 .././ailurus/main.py:236
-msgid "<span color=\"grey\">Acquir
+msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
+msgstr "<span color=\"grey\">获取已装的软件的列表 ... </span>\n"
+
+#: .././ailurus/main.py:241
+msgid "<span color=\"grey\">Loading tips ... </span>\n"
+msgstr "<span color=\"grey\">加载日积月累 ... </span>\n"
+
+#: .././ailurus/main.py:247
+msgid "<span color=\"grey\">Loading main window ... </span>\n"
+msgstr "<span color=\"grey\">装载主窗体 ... </span>\n"
+
+#: .././ailurus/main.py:250
+msgid "<span color=\"grey\">Loading information pane ... </span>\n"
+msgstr "<span color=\"grey\">装载信息面板 ... </span>\n"
+
+#: .././ailurus/main.py:263
+msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
+msgstr "<span color=\"grey\">装载系统设置面板 ... </span>\n"
+
+#: .././ailurus/main.py:270
+msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
+msgstr "<span color=\"grey\">装载应用程序面板 ... </span>\n"
+
+#: .././ailurus/main.py:309
+msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
+msgstr "出现 bug。麻烦您告诉 Ailurus 开发者好吗? 谢谢您!"
+
+#: .././ailurus/main.py:322
+msgid "Click here to report bug via web-page"
+msgstr "点击这里打开网页，报告 bug"
+
+#: .././ailurus/main.py:324
+#| msgid "Chile"
+msgid "Close"
+msgstr "关闭"
+
+#: .././ailurus/main.py:330
+msgid "Bug appears!"
+msgstr "出现 bug!"
+
+#: .././ailurus/common/osinfo.py:31
+msgid "Host name:"
+msgstr "主机名称:"
+
+#: .././ailurus/common/osinfo.py:37
+msgid "Kernel version:"
+msgstr "内核版本:"
+
+#: .././ailurus/common/osinfo.py:40
+msgid "Kernel arch:"
+msgstr "内核架构:"
+
+#: .././ailurus/common/osinfo.py:48
+msgid "X server version:"
+msgstr "X 服务器版本:"
+
+#: .././ailurus/common/osinfo.py:54
+msgid "GCC version:"
+msgstr "GCC 版本:"
+
+#: .././ailurus/common/osinfo.py:62
+msgid "Java version:"
+msgstr "Java 版本:"
+
+#: .././ailurus/common/osinfo.py:68
+msgid "Python version:"
+msgstr "Python 版本:"
+
+#: .././ailurus/common/osinfo.py:85
+msgid "day"
+msgid_plural "days"
+msgstr[0] "天"
+
+#: .././ailurus/common/osinfo.py:87
+msgid "hour"
+msgid_plural "hours"
+msgstr[0] "小时"
+
+#: .././ailurus/common/osinfo.py:89
+msgid "minute"
+msgid_plural "minutes"
+msgstr[0] "分钟"
+
+#: .././ailurus/common/osinfo.py:90
+msgid "Uptime:"
+msgstr "持续运行时间:"
+
+#: .././ailurus/common/osinfo.py:98
+msgid "Current user:"
+msgstr "当前用户:"
+
+#: .././ailurus/common/osinfo.py:114
+msgid "Direct OpenGL:"
+msgstr "Direct OpenGL:"
+
+#: .././ailurus/common/osinfo.py:115
+msgid "OpenGL direct rendering"
+msgstr "是否由显卡直接渲染 OpenGL"
+
+#: .././ailurus/common/osinfo.py:117
+msgid "OpenGL vendor:"
+msgstr "OpenGL 提供商:"
+
+#: .././ailurus/common/osinfo.py:118
+msgid "OpenGL vendor"
+msgstr "OpenGL 提供商"
+
+#: .././ailurus/common/osinfo.py:120
+msgid "OpenGL renderer:"
+msgstr "OpenGL 渲染器:"
+
+#: .././ailurus/common/osinfo.py:121
+msgid "OpenGL renderer"
+msgstr "OpenGL 渲染器"
+
+#: .././ailurus/common/osinfo.py:127
+msgid "Firefox version:"
+msgstr "Firefox 版本:"
+
+#: .././ailurus/common/apps_eclipse.py:35
+msgid "Installing Eclipse extension"
+msgstr "正在安装 Eclipse 扩展"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:98
+msgid "Eclipse (basic development environment)"
+msgstr "Eclipse (基本开发环境)"
+
+#: .././ailurus/common/apps_eclipse.py:100
+msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
+msgstr "Eclipse 来自 http://www.eclipse.org/downloads/ \n"
+
+#: .././ailurus/common/apps_eclipse.py:101
+msgid ""
+"You can install Language pack according to the instructions on the page "
+"http://www.eclipse.org/babel/downloads.php\n"
+"You can download Language pack from "
+"http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.ph"
+"p, and extract \".zip\" file to directory \"/opt/eclipse\" ."
+msgstr ""
+"您可以根据网页 http://www.eclipse.org/babel/downloads.php 来安装中文翻译。\n"
+"您可以从 "
+"http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.ph"
+"p 网页上下载中文语言包，再将 \".zip\" 文件解压缩到 \"/opt/eclipse\" 目录。"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:343
+#| msgid "Eclipse (basic development environment)"
+msgid "Eclipse (basic development environment + J2EE)"
+msgstr "Eclipse (基本开发环境 + J2EE)"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:566
+msgid "CDT: C/C++ development"
+msgstr "CDT: C/C++ 开发环境"
+
+#: .././ailurus/common/apps_eclipse.py:567
+msgid "CDT is from http://www.eclipse.org/cdt/"
+msgstr "CDT 来自 http://www.eclipse.org/cdt/"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:587
+msgid "Pydev: Python development"
+msgstr "Pydev: Python 开发"
+
+#: .././ailurus/common/apps_eclipse.py:588
+msgid "Pydev is from http://pydev.org/download.html"
+msgstr "Pydev 来自 http://pydev.org/download.html"
+
+#. It is dual-licensed under the terms of Aptana Public License and GPL
+#: .././ailurus/common/apps_eclipse.py:608
+msgid "Aptana: Web application development"
+msgstr "Aptana: 开发 Web 应用程序"
+
+#: .././ailurus/common/apps_eclipse.py:609
+#| msgid ""
+#| "Aptana is from http://www.aptana.org/studio/plugin\n"
+#| "Due to limitation of the authors' programming ability, Aptana cannot be removed by Ailurus. In order to remove Aptana, you have to re-install Eclipse."
+msgid ""
+"Aptana is from http://www.aptana.org/studio/plugin\n"
+"Aptana is installed by "
+"http://download.aptana.org/tools/studio/plugin/install/studio\n"
+"Due to limitation of the authors' programming ability, Aptana cannot be "
+"removed by Ailurus. In order to remove Aptana, you have to re-install "
+"Eclipse."
+msgstr ""
+"Aptana 来自 http://www.aptana.org/studio/plugin\n"
+"Aptana 是通过 http://download.aptana.org/tools/studio/plugin/install/studio "
+"安装的\n"
+"受作者编程水平的限制，Ailurus 不能删除 Aptana。通过重装 Eclipse，可以删除 Aptana。"
+
+#: .././ailurus/common/apps_eclipse.py:625
+#: .././ailurus/common/apps_eclipse.py:648
+#: .././ailurus/common/apps_eclipse.py:688
+#: .././ailurus/common/apps_eclipse.py:715
+#: .././ailurus/common/apps_eclipse.py:737
+msgid ""
+"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+msgstr "请启动 Eclipse, 点击 \"Help\" -> \"Install New Software\"。"
+
+#: .././ailurus/common/apps_eclipse.py:627
+#: .././ailurus/common/apps_eclipse.py:650
+#: .././ailurus/common/apps_eclipse.py:690
+#: .././ailurus/common/apps_eclipse.py:717
+#: .././ailurus/common/apps_eclipse.py:739
+#, python-format
+msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
+msgstr "点击 \"Add\" 按钮，然后在 \"Location\" 内敲入 <b>%s</b>"
+
+#: .././ailurus/common/apps_eclipse.py:629
+#: .././ailurus/common/apps_eclipse.py:652
+#: .././ailurus/common/apps_eclipse.py:692
+#: .././ailurus/common/apps_eclipse.py:719
+#: .././ailurus/common/apps_eclipse.py:741
+#| msgid "Then agree the license."
+msgid "Then click the \"Next\" button and agree the license."
+msgstr "然后点击 \"Next\" 按钮并同意许可证。"
+
+#: .././ailurus/common/apps_eclipse.py:630
+#| msgid "Installing packages:"
+msgid "Installing Aptana"
+msgstr "正在安装 Aptana"
+
+#. released under GPL v3 or Aptana Public License
+#: .././ailurus/common/apps_eclipse.py:635
+#| msgid "Pydev: Python development"
+msgid "RadRails: Ruby development"
+msgstr "RadRails: Ruby 开发环境"
+
+#: .././ailurus/common/apps_eclipse.py:636
+#| msgid "Over the past RadRails was called \"RDT\".RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
+msgid ""
+"Over the past RadRails was called \"RDT\". RadRails is installed by "
+"http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
+msgstr ""
+"过去 RadRails 叫做 \"RDT\"。RadRails 通过 "
+"http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle 来安装"
+
+#: .././ailurus/common/apps_eclipse.py:653
+#| msgid "Installing packages:"
+msgid "Installing RadRails\n"
+msgstr "正在安装 RadRails\n"
+
+#: .././ailurus/common/apps_eclipse.py:659
+msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
+msgstr "Eclipse 来自 http://www.eclipse.org/mylyn/downloads/"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:675
+msgid "Dynamic languages toolkit"
+msgstr "动态语言工具集"
+
+#: .././ailurus/common/apps_eclipse.py:676
+msgid ""
+"It is installed by http://download.eclipse.org/technology/dltk/updates-"
+"dev/2.0/"
+msgstr ""
+"这个扩展是通过 http://download.eclipse.org/technology/dltk/updates-dev/2.0/ 安装的"
+
+#: .././ailurus/common/apps_eclipse.py:693
+msgid "Installing Dynamic languages toolkit\n"
+msgstr "正在安装 动态语言工具集\n"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:702
+#| msgid "CDT: C/C++ development"
+msgid "PDT: PHP development"
+msgstr "PDT: PHP 开发环境"
+
+#: .././ailurus/common/apps_eclipse.py:703
+#| msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
+msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
+msgstr "PDT 来自 http://www.eclipse.org/pdt/downloads/"
+
+#: .././ailurus/common/apps_eclipse.py:720
+#| msgid "Installing:"
+msgid "Installing PDT\n"
+msgstr "正在安装 PDT\n"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:725
+msgid "Subversive: Use SVN in Eclipse"
+msgstr "Subversive: 在 Eclipse 中使用 SVN"
+
+#: .././ailurus/common/apps_eclipse.py:726
+msgid ""
+"It is installed by "
+"http://download.eclipse.org/technology/subversive/0.7/update-site/"
+msgstr ""
+"通过 http://download.eclipse.org/technology/subversive/0.7/update-site/ 安装它。"
+
+#: .././ailurus/common/apps_eclipse.py:742
+#| msgid "Installing EIOffice"
+msgid "Installing Subversive\n"
+msgstr "正在安装 Subversive\n"
+
+#. Eclipse Public License
+#: .././ailurus/common/apps_eclipse.py:747
+#| msgid "CDT: C/C++ development"
+msgid "MTJ: J2ME development"
+msgstr "MTJ: J2ME 开发环境"
+
+#: .././ailurus/common/apps_eclipse.py:748
+msgid ""
+"It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
+"1.0.1-200909181641/"
+msgstr ""
+"这是从 http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-"
+"200909181641/ 下载的"
+
+#: .././ailurus/common/apps.py:29
+msgid "Bioclipse: an awesome Chemical and Biological Informatics application"
+msgstr "Bioclipse: 很棒的化学、生物信息学软件"
+
+#: .././ailurus/common/apps.py:30
+msgid ""
+"It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
+msgstr "来自 http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
+
+#: .././ailurus/common/apps.py:74
+msgid "BRL-CAD: Military solid modeling software"
+msgstr "BRL-CAD: 军用物体建模软件"
+
+#: .././ailurus/common/apps.py:76
+msgid ""
+"Official site: <span "
+"color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>. "
+msgstr ""
+"官方网站: <span "
+"color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>。 "
+
+#: .././ailurus/common/apps.py:77
+msgid "Developed by Ballistic Research Laboratory. "
+msgstr "由 Ballistic 研究实验室开发。 "
+
+#: .././ailurus/common/apps.py:78
+msgid "A lot of commands are installed in /usr/brlcad/bin/"
+msgstr "在 /usr/brlcad/bin/ 中安装了很多命令。"
+
+#: .././ailurus/common/apps.py:120
+msgid "Create a directory \"Desktop\" in your home folder"
+msgstr "在您的家目录里创建 \"Desktop\" 目录"
+
+#: .././ailurus/common/apps.py:121
+msgid ""
+"Create a directory \"Desktop\" which is linked to the desktop. After that, "
+"you can chdir to the desktop folder by command \"cd ~/Desktop\"."
+msgstr "创建一个链接到桌面的 \"Desktop\" 目录。之后，您可以用命令 \"cd ~/Desktop\" 来进入桌面。"
+
+#: .././ailurus/common/apps.py:152
+msgid "Electric: A software for IC design which supports VHDL and Verilog"
+msgstr "Electric: 支持 VHDL 和 Verilog 的 IC 设计软件"
+
+#: .././ailurus/common/apps.py:153
+msgid ""
+"Official site: <span "
+"color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
+msgstr ""
+"官方网站: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
+
+#: .././ailurus/common/apps.py:183
+#| msgid "Speed up Nautilus"
+msgid "Speed up Firefox"
+msgstr "加速 Firefox"
+
+#: .././ailurus/common/apps.py:184
+msgid ""
+"Firefox is faster when Pango rendering is disabled. The trick is to launch "
+"Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
+"will create a new icon \"Firefox without Pango (faster)\" in the menu "
+"\"Applications\"-->\"Internet\"."
+msgstr ""
+"在禁用 Pango 渲染器的时候，Firefox运行得更快。技巧是用这个命令启动 Firefox: \"export "
+"MOZ_DISABLE_PANGO=1; firefox\"。Ailurus 将在 \"应用程序\"-->\"Internet\" 菜单中创建快捷方式 "
+"\"Firefox without Pango (faster)\"。"
+
+#: .././ailurus/common/apps.py:208
+msgid "Firefox without Pango (faster)"
+msgstr "禁用 Pango 的 Firefox (速度更快)"
+
+#: .././ailurus/common/apps.py:219
+msgid "Netbeans® 6.8"
+msgstr "Netbeans® 6.8"
+
+#: .././ailurus/common/apps.py:221
+msgid ""
+"It is an open source IDE which supports several languages (C, C++, Java, "
+"Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
+"http://netbeans.org/downloads/ ."
+msgstr ""
+"这是一个开源的集成开发程序，支持多语言(C, C++, Java, Ruby 等)和多种框架(J2SE, J2ME 等)。官方网站: "
+"http://netbeans.org/downloads/"
+
+#: .././ailurus/common/apps.py:245
+msgid "Please select the folder where Netbeans is installed"
+msgstr "请选择 Netbeans 安装在哪个文件夹中"
+
+#: .././ailurus/common/apps.py:288
+msgid "OpenJUMP: A geographic information system"
+msgstr "OpenJUMP: 一个地理信息系统软件"
+
+#: .././ailurus/common/apps.py:290
+msgid "Official site: http://openjump.org/ ."
+msgstr ""
+
+#: .././ailurus/common/apps.py:328
+msgid "Query you before delete more than three files"
+msgstr "在您一次删除三个以上的文件之前询问您"
+
+#: .././ailurus/common/apps.py:329
+msgid ""
+"If you try to delete more than three files by \"rm *\", BASH will ask you a "
+"question \"remove all argument?\" to make sure if you really want to delete "
+"files. This is useful if you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
+"The trick behind is to add this line into \"$HOME/.bashrc\".\n"
+"alias rm=\"rm -I\""
+msgstr ""
+"如果您想用 \"rm *\" 删除三个以上的文件，BASH 将问您 \"删除全部参数吗?\" 来确认您真的想这样做。当您把 \"rm "
+"subdir/*\" 错敲成 \"rm subdir/ *\" 的时候，这很有用。\n"
+"秘密是向 \"$HOME/.bashrc\" 里增加一行:\n"
+"alias rm=\"rm -I\""
+
+#: .././ailurus/common/apps.py:347
+msgid "TeXLive 2009"
+msgstr "TeXLive 2009"
+
+#: .././ailurus/common/apps.py:348
+msgid "TeXLive is obtained from http://www.tug.org/texlive/"
+msgstr "TeXLive 是从 http://www.tug.org/texlive/ 下载的"
+
+#. extract
+#: .././ailurus/common/apps.py:380
+msgid "Unpacking ... Please wait for a few minutes."
+msgstr "正在解压缩 ... 请您等待几分钟。"
+
+#: .././ailurus/common/apps.py:411
+msgid "TeXLive is installed."
+msgstr "安装了 TeXLive。"
+
+#: .././ailurus/common/apps.py:411
+msgid "TeXLive will not work until you restart the computer."
+msgstr "在您重启动电脑后，才能使用 TeXLive。"
+
+#. released under GPL
+#: .././ailurus/common/apps.py:429
+msgid "LaTeX Thesis Templates by Tsing Hua University, China"
+msgstr "LaTeX 论文模板 (由清华大学开发)"
+
+#: .././ailurus/common/apps.py:431
+#, python-format
+msgid ""
+"These templates include undergraduate dissertation template, master thesis "
+"template and PhD thesis template. They are developed by Tsing Hua "
+"University, China. Official website is http://thuthesis.sourceforge.net/\n"
+"After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
+msgstr ""
+"这些模板包括本科生、硕士、博士论文模板。由清华大学开发。官方网站是 http://thuthesis.sourceforge.net/\n"
+"安装后，\"%s\" 目录中会出现 \"thuthesis.tgz\" 文件。"
+
+#: .././ailurus/common/apps.py:448
+msgid "Adblock+: Block 99% advertisement"
+msgstr "Adblock+: 屏蔽 99% 的广告"
+
+#: .././ailurus/common/apps.py:453
+msgid "It is able to block 99% ads and banners."
+msgstr "它能屏蔽 99% 的广告窗口、广告图像和广告条。"
+
+#: .././ailurus/common/apps.py:469
+msgid "Proxy management depending on a third party list."
+msgstr "基于第三方发布的列表来选择代理。"
+
+#: .././ailurus/common/apps.py:479
+msgid "Chrome Theme for Firefox 3.0.*"
+msgstr "Firefox 版本 3.0.* 的 Chrome 主题"
+
+#: .././ailurus/common/apps.py:484
+msgid "A coat of Chrome for Firefox 3.0.*"
+msgstr "Firefox 3.0.* 的 Chrome 主题"
+
+#: .././ailurus/common/apps.py:494
+msgid "Chrome Theme for Firefox 3.5.*"
+msgstr "Firefox 3.5.* 的 Chrome 主题"
+
+#: .././ailurus/common/apps.py:499
+msgid "A coat of Chrome for Firefox 3.5.*"
+msgstr "Firefox 3.5.* 的 Chrome 主题"
+
+#: .././ailurus/common/apps.py:509
+msgid "CleanHide: Delete hidden text in web page"
+msgstr "CleanHide: 删除网页上的隐藏文字"
+
+#: .././ailurus/common/apps.py:514
+msgid ""
+"If you find that some web page use hidden text and you cannot copy text "
+"easily, try this!"
+msgstr "如果您发现有的网页上有隐藏文字，您复制文字不方便，那么试试这个!"
+
+#: .././ailurus/common/apps.py:529
+msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
+msgstr "用微型状态栏跟踪进行中的下载和下载完的文件。"
+
+#: .././ailurus/common/apps.py:539
+msgid "DownThemAll: A reliable multithread downloader"
+msgstr "DownThemAll: 可靠的多线程下载程序"
+
+#: .././ailurus/common/apps.py:544
+msgid "It is able to download all images on web-pages."
+msgstr "它能下载网页上的所有图片。"
+
+#: .././ailurus/common/apps.py:554
+msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
+msgstr "EasyDragToGo: 拖曳文字、连接和图片来打开新的标签页"
+
+#: .././ailurus/common/apps.py:569
+msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
+msgstr "FireBug: 实时编辑调试网页中的 CSS/HTML/JavaScript"
+
+#: .././ailurus/common/apps.py:574
+msgid "This is a powerful web development tool."
+msgstr "一个强力的网络开发工具。"
+
+#: .././ailurus/common/apps.py:583
+msgid "FireGesture: Execute commands and user scripts by mouse gestures"
+msgstr "FireGesture: 用鼠标手势执行命令和脚本"
+
+#: .././ailurus/common/apps.py:588
+msgid "It supports five kinds of mouse gestures."
+msgstr "它支持五种鼠标手势。"
+
+#: .././ailurus/common/apps.py:598
+msgid "Flashgot: A lightweight and reliable download managers"
+msgstr "Flashgot: 一个轻量的、可靠的下载管理器"
+
+#: .././ailurus/common/apps.py:603
+msgid ""
+"It is able to download all the links, movies and audio clips of a page with "
+"a single click."
+msgstr "它能一键式下载网页上的所有链接、视频。"
+
+#: .././ailurus/common/apps.py:612
+msgid "FoxyProxy: One-click switching proxy"
+msgstr "FoxyProxy: 一键式切换代理服务器"
+
+#: .././ailurus/common/apps.py:627
+msgid "GreaseMonkey: Make change to web pages"
+msgstr "GreaseMonkey: 改变网页外观"
+
+#: .././ailurus/common/apps.py:634
+msgid ""
+"This is an extension that allow you to install scripts to make changes to "
+"web page, such as adding an HTML signature and bypassing image "
+"verification.You can download hundreds of scripts from "
+"http://userscripts.org, or check out http://wiki.greasespot.net/ to get "
+"started to write your own scripts. The book \"Dive into Greasemonkey\" is "
+"worth reading. It can be downloaded freely from "
+"http://diveintogreasemonkey.org/ ."
+msgstr ""
+"使用这个扩展，您可以用脚本来改变网页，比如加一个 HTML 签名，绕过图像验证等。您可以从 http://userscripts.org "
+"下载上百个脚本，也可以按照 http://wiki.greasespot.net/ 的描述来写自己的脚本。\"Dive into "
+"Greasemonkey\" 这本书值得一读。可以从 http://diveintogreasemonkey.org/ 免费下载。"
+
+#: .././ailurus/common/apps.py:647
+msgid "Live HTTP Headers: View HTTP headers in real-time"
+msgstr "Live HTTP Headers: 实时查看服务器的 HTTP 响应"
+
+#: .././ailurus/common/apps.py:661
+msgid "NoScript: Allow active content to run only from sites you trust"
+msgstr "NoScript: 只运行信任的网站上的脚本"
+
+#: .././ailurus/common/apps.py:667
+#| msgid "The best security you can get in a web browser! Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks."
+msgid ""
+"Allow active content to run only from sites you trust, and protect yourself "
+"against XSS and Clickjacking attacks."
+msgstr "只有信任的网站上的脚本才执行。使您免受跨站脚本攻击。"
+
+#: .././ailurus/common/apps.py:676
+msgid ""
+"SHA-DA network radio: Listen to and watch radio and TV programs in China"
+msgstr "沙大网络收音机: 收听收看全中国的广播和电视"
+
+#: .././ailurus/common/apps.py:692
+msgid "SeoQuake: Help you view search engine parameters of your web site"
+msgstr "SeoQuake: 帮你查看你的网站的搜索引擎参数"
+
+#: .././ailurus/common/apps.py:697
+msgid "It helps you promote your web sites."
+msgstr "帮助你提升你的网站的名气。"
+
+#: .././ailurus/common/apps.py:706
+msgid "Tab Mix Lite CE: Re-open closed tabs"
+msgstr "Tab Mix Lite CE: 重新打开关闭了的标签页"
+
+#: .././ailurus/common/apps.py:711
+msgid "Close tabs by double click tabs title. Re-open closed tabs."
+msgstr "双击标签页的标题来关闭标签页。重新打开已经关闭的标签页。"
+
+#: .././ailurus/common/apps.py:721
+msgid ""
+"Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
+msgstr "Tamper Data: 查看和修改 HTTP/HTTPS 的 headers 和 post 参数"
+
+#: .././ailurus/common/apps.py:735
+msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
+msgstr "User Agent Switcher: 将 Firefox 伪装成其它浏览器。"
+
+#: .././ailurus/common/apps.py:740
+msgid "It tells the remote websites that you are an IE user."
+msgstr "这个扩展向网站声称你正在使用 IE 浏览器。"
+
+#: .././ailurus/common/apps.py:749
+msgid "View Source Chart: Show pretty color-coded HTML source code"
+msgstr "View Source Chart: 显示漂亮的彩色的 HTML 源代码"
+
+#: .././ailurus/common/apps.py:754
+msgid ""
+"This extension helps you quickly scan and recognize a document's tags."
+msgstr "这个扩展帮助你快速扫描和识别文档中的标记。"
+
+#: .././ailurus/common/apps.py:763
+msgid ""
+"Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
+msgstr "Weave Sync: 无论您走到哪，都能同步书签、历史和标签。"
+
+#: .././ailurus/common/apps.py:777
+msgid "Web Developer: Web page analysis tools"
+msgstr "Web Developer: 网页分析工具"
+
+#: .././ailurus/common/apps.py:782
+msgid "Many developers installed it."
+msgstr "很多开发者安装了这个扩展。"
+
+#: .././ailurus/common/apps.py:791
+msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
+msgstr "Yet Another Smooth Scrolling: 自定制页面滚动参数"
+
+#: .././ailurus/common/apps.py:806
+msgid "YSlow: web page performance tuning"
+msgstr "YSlow: 网页性能优化"
+
+#: .././ailurus/common/apps.py:811
+msgid ""
+"It helps you improve web page performance. It tells you why web page is slow."
+msgstr "帮助你优化网页性能。它告诉你为何网页加载很慢。"
+
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:353
+msgid "Ailurus blog"
+msgstr "Ailurus 博客"
+
+#: .././ailurus/common/menu.py:42
+msgid "translator-credits"
+msgstr ""
+"Launchpad Contributions:\n"
+"  Ailurus Developers https://launchpad.net/~ailurus\n"
+"  Homer Xing https://launchpad.net/~homer-xing\n"
+"  Velly https://launchpad.net/~velly-empire"
+
+#: .././ailurus/common/menu.py:48
+msgid ""
+"Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
+"Univ., China."
+msgstr "版权所有 © 2007-2010，可信任数字技术实验室，中国上海交通大学。"
+
+#: .././ailurus/common/menu.py:114
+msgid "Welcome to leave response in blog~"
+msgstr "欢迎到博客留言～"
+
+#: .././ailurus/common/menu.py:128
+msgid "Ailurus changelog"
+msgstr "Ailurus 更新日志"
+
+#: .././ailurus/common/menu.py:139
+#, python-format
+msgid ""
+"\n"
+"This version is released at %s."
+msgstr ""
+"\n"
+"这个版本是在 %s 发布的。"
+
+#: .././ailurus/common/menu.py:141
+msgid "Read changelog"
+msgstr "阅读更新日志"
+
+#: .././ailurus/common/menu.py:152
+msgid "We wish to express thankfulness to these projects:"
+msgstr "我们衷心感谢这些项目:"
+
+#: .././ailurus/common/menu.py:156
+msgid "We sincerely thank these people:"
+msgstr "我们衷心感谢这些人:"
+
+#: .././ailurus/common/menu.py:158
+msgid "The people who provide inspiration:"
+msgstr "提供灵感的人:"
+
+#: .././ailurus/common/menu.py:164
+msgid "The people who designs the logo:"
+msgstr "设计 Logo 的人:"
+
+#: .././ailurus/common/menu.py:167
+msgid "The people who maintain PPA repository:"
+msgstr "维护 PPA 软件源的人:"
+
+#: .././ailurus/common/menu.py:170
+msgid "The people who provide a lot of Linux skills:"
+msgstr "提供很多 Linux 技巧的人:"
+
+#: .././ailurus/common/menu.py:173
+msgid "The people who provide a lot of Debian packages:"
+msgstr "提供很多 Debian 包的人:"
+
+#: .././ailurus/common/menu.py:176
+msgid "The people who provide a lot of translation:"
+msgstr "提供很多翻译的人:"
+
+#: .././ailurus/common/menu.py:177 .././ailurus/common/menu.py:181
+#: .././ailurus/common/menu.py:188
+msgid "and many other people."
+msgstr "和其他许多人。"
+
+#: .././ailurus/common/menu.py:179
+msgid "The people who report bugs:"
+msgstr "报告 bug 的人:"
+
+#: .././ailurus/common/menu.py:183
+msgid "The people who eliminate bugs:"
+msgstr "消灭 bug 的人:"
+
+#: .././ailurus/common/menu.py:186
+msgid "The people who publicize this software:"
+msgstr "宣传这个软件的人:"
+
+#: .././ailurus/common/menu.py:190
+msgid "and the people not mensioned here."
+msgstr "以及在此我们没有提到的人。"
+
+#: .././ailurus/common/menu.py:200
+msgid "Thanks"
+msgstr "鸣谢"
+
+#: .././ailurus/common/menu.py:233
+msgid "Updates for Ailurus"
+msgstr "Ailurus 的更新"
+
+#: .././ailurus/common/menu.py:238
+#, python-format
+msgid "A new version is released at %(date)s."
+msgstr "在 %(date)s 发布了新版本。"
+
+#: .././ailurus/common/menu.py:244
+msgid "You have already installed the latest Ailurus version. :)"
+msgstr "您已经安装了最新版本的 Ailurus 啦 :)"
+
+#. (use stock?, stock name or icon path, text, web page url, Chinese only?
+#. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
+#. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
+#: .././ailurus/common/menu.py:264
+msgid "How to compile a LaTeX file into pdf file ?"
+msgstr "如何将 LaTeX 文件编译成 pdf 文件？"
+
+#: .././ailurus/common/menu.py:283
+#: .././ailurus/show_a_linux_skill_bubble.py:43
+msgid "Tip of the day"
+msgstr "日积月累"
+
+#: .././ailurus/common/menu.py:302
+msgid ""
+"How long after the server does not respond, give up downloading? (in seconds)"
+msgstr "在服务器停止响应多久后，Ailurus 放弃下载? (单位是秒)"
+
+#: .././ailurus/common/menu.py:308
+msgid "How many times does Ailurus try to download the same resource?"
+msgstr "对于同一个资源，Ailurus 最多尝试下载多少次？"
+
+#: .././ailurus/common/menu.py:311
+msgid "Set Ailurus download parameter"
+msgstr "设定 Ailurus 下载选项"
+
+#: .././ailurus/common/menu.py:333
+msgid "Don't show \"tip of the day\" on start up"
+msgstr "启动后不显示“日积月累”"
+
+#: .././ailurus/common/menu.py:339
+msgid "Show a random Linux skill after you log in to GNOME"
+msgstr "在您登录 GNOME 后，随机显示一项 Linux 技巧"
+
+#: .././ailurus/common/menu.py:347
+msgid "Set download parameters"
+msgstr "设定下载选项"
+
+#: .././ailurus/common/menu.py:357
+msgid "Check for updates"
+msgstr "检查更新"
+
+#: .././ailurus/common/menu.py:360
+msgid "Propose suggestion and report bugs"
+msgstr "提建议, 报告问题"
+
+#: .././ailurus/common/menu.py:364
+msgid "Translate this application"
+msgstr "翻译此程序"
+
+#: .././ailurus/common/menu.py:368
+msgid "Special thanks"
+msgstr "衷心感谢"
+
+#: .././ailurus/common/menu.py:371
+msgid "About"
+msgstr "关于"
+
+#: .././ailurus/common/setting.py:32
+msgid "0 = Swap little mem to disk"
+msgstr "0 = 少量内存换到磁盘上"
+
+#: .././ailurus/common/setting.py:34
+msgid "100 = Swap a lot of mem to disk"
+msgstr "100 = 大量内存换到磁盘上"
+
+#: .././ailurus/common/setting.py:74
+msgid "Change the tendency of swapping memory to disk"
+msgstr "改变将内存交换到磁盘上的倾向"
+
+#: .././ailurus/common/setting.py:85
+msgid "Run command: "
+msgstr "运行命令: "
+
+#: .././ailurus/common/setting.py:87
+msgid "Network restarted successfully."
+msgstr "成功重启动网络连接。"
+
+#: .././ailurus/common/setting.py:89 .././ailurus/common/setting.py:104
+msgid "Restart network"
+msgstr "重启动网络连接"
+
+#: .././ailurus/common/setting.py:91
+msgid ""
+"These commands will be executed:\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+"sudo /etc/init.d/networking restart"
+msgstr ""
+"将执行以下命令:\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+"sudo /etc/init.d/networking restart"
+
+#: .././ailurus/common/setting.py:116
+#, python-format
+msgid "No more than %s KB of memory can be reclaimed."
+msgstr "最多能回收 %s KB 内存。"
+
+#: .././ailurus/common/setting.py:146
+#, python-format
+msgid "%s KB memory was reclaimed."
+msgstr "回收了 %s KB 的内存。"
+
+#: .././ailurus/common/setting.py:152 .././ailurus/common/setting.py:166
+msgid "Reclaim memory"
+msgstr "回收内存"
+
+#: .././ailurus/common/setting.py:154
+msgid ""
+"Reclaim memory which stores pagecache, dentries and inodes.\n"
+"This operation is done by \"echo 3 >/proc/sys/vm/drop_caches\""
+msgstr ""
+"回收内存中的页缓存、目录缓存和 i-节点缓存。\n"
+"这个操作由此命令 \"echo 3 >/proc/sys/vm/drop_caches\" 完成"
+
+#: .././ailurus/common/hardwareinfo.py:39
+msgid "BIOS vendor:"
+msgstr "BIOS 提供商:"
+
+#: .././ailurus/common/hardwareinfo.py:46
+msgid "BIOS version:"
+msgstr "BIOS 版本:"
+
+#: .././ailurus/common/hardwareinfo.py:53
+msgid "BIOS release date:"
+msgstr "BIOS 出厂日期:"
+
+#: .././ailurus/common/hardwareinfo.py:64
+msgid "Motherboard name:"
+msgstr "主板名称:"
+
+#: .././ailurus/common/hardwareinfo.py:72
+msgid "Motherboard vendor:"
+msgstr "主板制造商:"
+
+#: .././ailurus/common/hardwareinfo.py:99
+#, python-format
+msgid "CPU %s name:"
+msgstr "CPU %s 名称:"
+
+#: .././ailurus/common/hardwareinfo.py:100
+msgid "CPU name:"
+msgstr "CPU 名称:"
+
+#: .././ailurus/common/hardwareinfo.py:103
+#, python-format
+msgid "CPU %s Mips:"
+msgstr "CPU %s Mips:"
+
+#: .././ailurus/common/hardwareinfo.py:104
+msgid "CPU Mips:"
+msgstr "CPU Mips:"
+
+#: .././ailurus/common/hardwareinfo.py:106
+msgid ""
+"It is a measure for the computation speed. \"Mips\" is short for Millions of "
+"Instructions Per Second."
+msgstr "这是计算速度的一种度量方法。\"Mips\" 是每秒钟一百万条指令的缩写。"
+
+#: .././ailurus/common/hardwareinfo.py:108
+msgid "No"
+msgstr "否"
+
+#: .././ailurus/common/hardwareinfo.py:115
+msgid "Yes!"
+msgstr "是!"
+
+#: .././ailurus/common/hardwareinfo.py:116
+msgid "64 bit CPU?"
+msgstr "是 64 位吗？"
+
+#: .././ailurus/common/hardwareinfo.py:137
+msgid "CPU temperature"
+msgstr "CPU 温度"
+
+#: .././ailurus/common/hardwareinfo.py:148
+msgid "Total memory:"
+msgstr "内存总量:"
+
+#: .././ailurus/common/hardwareinfo.py:161
+msgid "Display card:"
+msgstr "显卡:"
+
+#: .././ailurus/common/hardwareinfo.py:163
+msgid "Ethernet card:"
+msgstr "网卡:"
+
+#: .././ailurus/common/hardwareinfo.py:165
+msgid "Audio card:"
+msgstr "声卡:"
+
+#: .././ailurus/common/hardwareinfo.py:178
+msgid "charged"
+msgstr "充电完毕"
+
+#: .././ailurus/common/hardwareinfo.py:179
+msgid "charging"
+msgstr "正在充电"
+
+#: .././ailurus/common/hardwareinfo.py:180
+msgid "discharging"
+msgstr "没接电源"
+
+#: .././ailurus/common/hardwareinfo.py:182
+msgid "Battery charging state:"
+msgstr "电池充电状态:"
+
+#: .././ailurus/common/hardwareinfo.py:184
+msgid "Battery remaining capacity:"
+msgstr "电池剩余电量:"
+
+#: .././ailurus/common/hardwareinfo.py:190
+msgid "Battery full capacity:"
+msgstr "电池最大容量:"
+
+#: .././ailurus/common/tips.py:27
+msgid ""
+"motto of Ailurus\n"
+"Give a man a fish and he can eat for a day; but if you teach him how to "
+"fish, he'll eat for a lifetime."
+msgstr ""
+"Ailurus 之座右铭\n"
+"授人以鱼，不如授人以渔。"
+
+#: .././ailurus/common/tips.py:30
+msgid ""
+"Clear Bash history\n"
+"history -c"
+msgstr ""
+"清空 Bash 历史记录\n"
+"history -c"
+
+#: .././ailurus/common/tips.py:33
+msgid ""
+"If you want to use colorful \"ls\", that is, use colors to distinguish types "
+"of files, you can add these lines in ~/.bashrc:\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi"
+msgstr ""
+"如果您要使用彩色的 \"ls\", 就是说, 用颜色来区分不同类型的文件, 那么您可以在 ~/.bashrc 末尾加上这些行:\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi"
+
+#: .././ailurus/common/tips.py:40
+msgid ""
+"Display Linux distributor's ID\n"
+"lsb_release -is\n"
+"\n"
+"Display Linux release number\n"
+"lsb_release -rs\n"
+"\n"
+"Display Linux code name\n"
+"lsb_release -cs"
+msgstr ""
+"显示本机 Linux 发行版代号\n"
+"lsb_release -is\n"
+"\n"
+"显示 Linux 发行版版本号\n"
+"lsb_release -rs\n"
+"\n"
+"显示 Linux 的产品代号\n"
+"lsb_release -cs"
+
+#: .././ailurus/common/tips.py:50
+msgid ""
+"Display machine hardware name\n"
+"uname -m"
+msgstr ""
+"显示计算机硬件名称\n"
+"uname -m"
+
+#: .././ailurus/common/tips.py:53
+msgid ""
+"List all PCI devices, such as display card and ethernet card.\n"
+"lspci\n"
+msgstr ""
+"列出所有 PCI 设备, 比如显卡和网卡。\n"
+"lspci\n"
+
+#: .././ailurus/common/tips.py:57
+msgid ""
+"Reclaim memory which stores pagecache, dentries and inodes\n"
+"echo 3 > /proc/sys/vm/drop_caches\n"
+msgstr ""
+"回收内存中的页面、目录项和 i-节点\n"
+"echo 3 > /proc/sys/vm/drop_caches\n"
+
+#: .././ailurus/common/tips.py:61
+msgid ""
+"Display a list of modules in the Linux Kernel\n"
+"lsmod\n"
+msgstr ""
+"列出 Linux 内核加载的模块\n"
+"lsmod\n"
+
+#: .././ailurus/common/tips.py:65
+msgid ""
+"List USB devices\n"
+"lsusb -v\n"
+msgstr ""
+"列出 USB 设备\n"
+"lsusb -v\n"
+
+#: .././ailurus/common/tips.py:69
+msgid ""
+"Display the status of ethernet card\n"
+"sudo ethtool eth0\n"
+msgstr ""
+"显示网卡的状态\n"
+"sudo ethtool eth0\n"
+
+#: .././ailurus/common/tips.py:73
+msgid ""
+"List hardware\n"
+"sudo lshw\n"
+msgstr ""
+"列出硬件信息\n"
+"sudo lshw\n"
+
+#: .././ailurus/common/tips.py:77
+msgid ""
+"List harddisk partitions\n"
+"sudo fdisk -l\n"
+msgstr ""
+"列出硬盘分区\n"
+"sudo fdisk -l\n"
+
+#: .././ailurus/common/tips.py:81
+msgid ""
+"Display SATA harddisk parameters\n"
+"sudo hdparm -I /dev/sda\n"
+msgstr ""
+"显示 SATA 硬盘的参数\n"
+"sudo hdparm -I /dev/sda\n"
+
+#: .././ailurus/common/tips.py:85
+msgid ""
+"Display disk space usage\n"
+"df -h\n"
+msgstr ""
+"显示硬盘空间的使用情况\n"
+"df -h\n"
+
+#: .././ailurus/common/tips.py:89
+msgid ""
+"Display file/folder space usage\n"
+"du -bsh FOLDER_NAME\n"
+msgstr ""
+"显示文件/文件夹所占的磁盘空间\n"
+"du -bsh FOLDER_NAME\n"
+
+#: .././ailurus/common/tips.py:93
+msgid ""
+"Display amount of free and used memory\n"
+"free\n"
+msgstr ""
+"显示空闲内存量、正在使用的内存量\n"
+"free\n"
+
+#: .././ailurus/common/tips.py:97
+msgid ""
+"Display processes\n"
+"ps -e\n"
+"Display a tree of processes\n"
+"pstree\n"
+"Display processes dynamically\n"
+"top\n"
+msgstr ""
+"列出进程\n"
+"ps -e\n"
+"列出进程树\n"
+"pstree\n"
+"动态地列出进程\n"
+"top\n"
+
+#: .././ailurus/common/tips.py:105
+msgid ""
+"Terminate a process with a given process id\n"
+"sudo kill -9 PROCESS_ID\n"
+msgstr ""
+"给定进程ID，终止进程\n"
+"sudo kill -9 PROCESS_ID\n"
+
+#: .././ailurus/common/tips.py:109
+msgid ""
+"Terminate all processes with a given name\n"
+"sudo killall PROCESS_NAME\n"
+msgstr ""
+"给定进程名称，终止所有具有这个名称的进程\n"
+"sudo killall PROCESS_NAME\n"
+
+#: .././ailurus/common/tips.py:113
+msgid ""
+"List files which are opened by a given process\n"
+"lsof -p PROCESS_ID\n"
+"lsof -c PROCESS_NAME\n"
+msgstr ""
+"列出指定的进程正在使用的所有文件\n"
+"lsof -p PROCESS_ID\n"
+"lsof -c PROCESS_NAME\n"
+
+#: .././ailurus/common/tips.py:118
+msgid ""
+"List processes which opened a given file\n"
+"lsof FILE_NAME\n"
+msgstr ""
+"列出正在使用指定文件的全部进程\n"
+"lsof FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:122
+msgid ""
+"List processes which are using port 80\n"
+"lsof -i :80\n"
+msgstr ""
+"列出正在使用 80 端口的全部进程\n"
+"lsof -i :80\n"
+
+#: .././ailurus/common/tips.py:126
+msgid ""
+"Configure an ADSL connection\n"
+"sudo pppoeconf\n"
+msgstr ""
+"配置一个 ADSL 连接\n"
+"sudo pppoeconf\n"
+
+#: .././ailurus/common/tips.py:130
+msgid ""
+"Starts up ADSL connections\n"
+"sudo pon\n"
+"Shuts down ADSL connections\n"
+"sudo poff\n"
+msgstr ""
+"启动 ADSL 连接\n"
+"sudo pon\n"
+"关闭 ADSL 连接\n"
+"sudo poff\n"
+
+#: .././ailurus/common/tips.py:136
+msgid ""
+"Display MAC of a given IP address\n"
+"arping IP_ADDRESS\n"
+msgstr ""
+"给定 IP 地址，查询 MAC\n"
+"arping IP_ADDRESS\n"
+
+#: .././ailurus/common/tips.py:140
+msgid ""
+"Display NetBIOS name of a given IP address\n"
+"nmblookup -A IP_ADDRESS\n"
+msgstr ""
+"给定 IP 地址，查 NetBIOS 名称\n"
+"nmblookup -A IP_ADDRESS\n"
+
+#: .././ailurus/common/tips.py:144
+msgid ""
+"Display IP address and MAC\n"
+"ifconfig -a\n"
+msgstr ""
+"显示 IP 地址和 MAC\n"
+"ifconfig -a\n"
+
+#: .././ailurus/common/tips.py:148
+msgid ""
+"Display route\n"
+"netstat -rn\n"
+msgstr ""
+"显示路由\n"
+"netstat -rn\n"
+
+#: .././ailurus/common/tips.py:152
+msgid ""
+"Set MAC of ethernet interface\n"
+"sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
+msgstr ""
+"设置网卡的 MAC\n"
+"sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
+
+#: .././ailurus/common/tips.py:156
+msgid ""
+"Display information of a domain name\n"
+"whois example.com\n"
+msgstr ""
+"显示域名的注册信息\n"
+"whois example.com\n"
+
+#: .././ailurus/common/tips.py:160
+msgid ""
+"Display the network path to a given host\n"
+"tracepath example.com\n"
+msgstr ""
+"给定一个主机，显示到这个主机的网路路径\n"
+"tracepath example.com\n"
+
+#: .././ailurus/common/tips.py:164
+msgid ""
+"Request an IP address from DHCP server\n"
+"sudo dhclient\n"
+msgstr ""
+"从 DHCP 服务器获取 IP 地址\n"
+"sudo dhclient\n"
+
+#: .././ailurus/common/tips.py:168
+msgid ""
+"Temporarily restart an init script\n"
+"sudo /etc/init.d/SCRIPT_NAME restart\n"
+"Temporarily stop an init script\n"
+"sudo /etc/init.d/SCRIPT_NAME stop\n"
+msgstr ""
+"临时重启动一个 init 脚本\n"
+"sudo /etc/init.d/SCRIPT_NAME restart\n"
+"临时停止一个 init 脚本\n"
+"sudo /etc/init.d/SCRIPT_NAME stop\n"
+
+#: .././ailurus/common/tips.py:174
+msgid ""
+"Add a user\n"
+"sudo adduser USER_NANE\n"
+"Delete a user\n"
+"sudo deluser USER_NAME\n"
+msgstr ""
+"增加一个用户\n"
+"sudo adduser USER_NANE\n"
+"减少一个用户\n"
+"sudo deluser USER_NAME\n"
+
+#: .././ailurus/common/tips.py:180
+msgid ""
+"Change user password\n"
+"sudo passwd USER_NAME\n"
+msgstr ""
+"改变用户的密码\n"
+"sudo passwd USER_NAME\n"
+
+#: .././ailurus/common/tips.py:184
+msgid ""
+"Changes user fullname, office number, office extension, and home phone "
+"number information.\n"
+"sudo chfn USER_NAME\n"
+"Display user information\n"
+"finger USER_NAME\n"
+msgstr ""
+"设置当前用户的姓名，办公室地址，家庭电话等信息。\n"
+"sudo chfn USER_NAME\n"
+"显示用户信息\n"
+"finger USER_NAME\n"
+
+#: .././ailurus/common/tips.py:190
+msgid ""
+"Temporarily prevent a user from logging in\n"
+"sudo usermod -L USER_NAME\n"
+"Revoke the operation above\n"
+"sudo usermod -U USER_NAME\n"
+msgstr ""
+"临时禁止一个用户登录\n"
+"sudo usermod -L USER_NAME\n"
+"再次允许一个用户登录\n"
+"sudo usermod -U USER_NAME\n"
+
+#: .././ailurus/common/tips.py:196
+msgid ""
+"Add a user to admin group\n"
+"sudo usermod -G admin -a USER_NAME\n"
+msgstr ""
+"将用户加入管理员组\n"
+"sudo usermod -G admin -a USER_NAME\n"
+
+#: .././ailurus/common/tips.py:200
+msgid ""
+"Set the HTTP proxy\n"
+"export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
+msgstr ""
+"设置 HTTP 代理\n"
+"export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
+
+#: .././ailurus/common/tips.py:204
+msgid ""
+"Modify the information displayed after logging in\n"
+"sudo vim /etc/motd.tail\n"
+msgstr ""
+"修改用户登录到系统以后显示的信息\n"
+"sudo vim /etc/motd.tail\n"
+
+#: .././ailurus/common/tips.py:208
+msgid ""
+"Choose the input method for X Window\n"
+"im-switch -c\n"
+msgstr ""
+"选择 X 窗口的输入法\n"
+"im-switch -c\n"
+
+#: .././ailurus/common/tips.py:212
+msgid ""
+"Convert the file name from GBK to UTF8\n"
+"convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
+msgstr ""
+"将文件名从 GBK 编码转换为 UTF8 编码\n"
+"convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:216
+msgid ""
+"Convert the file content from GBK to UTF8\n"
+"iconv -f gbk -t utf8 FILE_NAME\n"
+msgstr ""
+"将文件内容从 GBK 编码转换为 UTF8 编码\n"
+"iconv -f gbk -t utf8 FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:220
+msgid ""
+"Convert tags in '*.mp3' from GBK to UTF8\n"
+"find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
+msgstr ""
+"将 '*.mp3' 文件中的标签内容从 GBK 编码转为 UTF8 编码\n"
+"find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
+
+#: .././ailurus/common/tips.py:224
+msgid ""
+"Read a long file\n"
+"less FILE_NAME\n"
+msgstr ""
+"读一个长文件\n"
+"less FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:228
+msgid ""
+"Print lines matching a pattern\n"
+"grep REG_EXP FILE_NAME\n"
+msgstr ""
+"打印一个文件中，匹配给定模式的行\n"
+"grep REG_EXP FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:232
+msgid ""
+"Display a list of file name. The files contain a given string.\n"
+"grep -lr REG_EXP PATHNAME\n"
+msgstr ""
+"列出文件名。这些文件包含了给定的字符串。\n"
+"grep -lr REG_EXP PATHNAME\n"
+
+#: .././ailurus/common/tips.py:236
+msgid ""
+"Display all '.txt' file\n"
+"find . -name '*.txt'\n"
+msgstr ""
+"列出所有 '.txt' 文件\n"
+"find . -name '*.txt'\n"
+
+#: .././ailurus/common/tips.py:240
+msgid ""
+"Create two empty files\n"
+"touch file_name_1 file_name_2\n"
+msgstr ""
+"创建两个空文件\n"
+"touch file_name_1 file_name_2\n"
+
+#: .././ailurus/common/tips.py:244
+msgid ""
+"Create directory. Create parent directories as needed.\n"
+"mkdir -p /tmp/a/b/c/d/e\n"
+msgstr ""
+"创建目录。如果父目录不存在，则也创建父目录。\n"
+"mkdir -p /tmp/a/b/c/d/e\n"
+
+#: .././ailurus/common/tips.py:248
+msgid ""
+"Change working directory to the home folder\n"
+"cd\n"
+"Change working directory to the previous working directory\n"
+"cd -\n"
+msgstr ""
+"将当前工作目录改为家目录\n"
+"cd\n"
+"将当前工作目录改变为上一个工作目录\n"
+"cd -\n"
+
+#: .././ailurus/common/tips.py:254
+msgid ""
+"Display hidden files\n"
+"ls -a\n"
+msgstr ""
+"列出隐藏文件\n"
+"ls -a\n"
+
+#: .././ailurus/common/tips.py:258
+msgid ""
+"Copy directory. Preserve links, file mode, ownership, timestamps. \n"
+"cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
+msgstr ""
+"复制目录。保留链接、文件权限、所有者、访问时间。\n"
+"cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
+
+#: .././ailurus/common/tips.py:262
+msgid ""
+"Determine file type\n"
+"file FILE_NAME\n"
+msgstr ""
+"确定文件类型\n"
+"file FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:266
+msgid ""
+"Output the last 6 lines\n"
+"tail -n 6 FILE_NAME\n"
+msgstr ""
+"输出文件的最后 6 行\n"
+"tail -n 6 FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:270
+msgid ""
+"Copy files via SSH\n"
+"scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
+msgstr ""
+"通过 SSH 协议复制文件\n"
+"scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
+
+#: .././ailurus/common/tips.py:274
+msgid ""
+"Rename '*.rm' files to '*.rmvb' files\n"
+"rename 's/.rm$/.rmvb/' *\n"
+msgstr ""
+"将 '*.rm' 文件改名为 '*.rmvb'\n"
+"rename 's/.rm$/.rmvb/' *\n"
+
+#: .././ailurus/common/tips.py:278
+msgid ""
+"Change the file name to lowercase\n"
+"rename 'tr/A-Z/a-z/' *\n"
+msgstr ""
+"将文件名改为小写\n"
+"rename 'tr/A-Z/a-z/' *\n"
+
+#: .././ailurus/common/tips.py:282
+msgid ""
+"Display subdirectories in current directory\n"
+"ls -d */.\n"
+msgstr ""
+"列出当前目录中的子目录\n"
+"ls -d */.\n"
+
+#: .././ailurus/common/tips.py:286
+msgid ""
+"Display file number in current directory\n"
+"ls . | wc -w\n"
+msgstr ""
+"显示当前目录中的文件数量\n"
+"ls . | wc -w\n"
+
+#: .././ailurus/common/tips.py:290
+msgid ""
+"Extract \"*.gz\" file\n"
+"gunzip FILE_NAME.gz\n"
+"Extract \"*.tar.gz\" file\n"
+"tar zxf FILE_NAME.tar.gz\n"
+"Extract \"*.tar.bz2\" file\n"
+"tar jxf FILE_NAME.tar.bz2\n"
+msgstr ""
+"解压缩 \"*.gz\" 文件\n"
+"gunzip FILE_NAME.gz\n"
+"解压缩 \"*.tar.gz\" 文件\n"
+"tar zxf FILE_NAME.tar.gz\n"
+"解压缩 \"*.tar.bz2\" 文件\n"
+"tar jxf FILE_NAME.tar.bz2\n"
+
+#: .././ailurus/common/tips.py:298
+msgid ""
+"Do compression\n"
+"tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
+"tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
+msgstr ""
+"压缩文件\n"
+"tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
+"tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
+
+#: .././ailurus/common/tips.py:303
+msgid ""
+"Displays a calendar\n"
+"cal\n"
+"cal MONTH YEAR\n"
+msgstr ""
+"显示月历\n"
+"cal\n"
+"cal MONTH YEAR\n"
+
+#: .././ailurus/common/tips.py:308
+msgid ""
+"Set the date and time via NTP\n"
+"sudo ntpdate ntp.ubuntu.com\n"
+msgstr ""
+"用 NTP 服务设置系统日期和时间\n"
+"sudo ntpdate ntp.ubuntu.com\n"
+
+#: .././ailurus/common/tips.py:312
+msgid ""
+"Poweroff your computer\n"
+"sudo halt\n"
+"sudo shutdown -h now\n"
+"Poweroff your computer in 23:00\n"
+"sudo shutdown -h 23:00\n"
+"Poweroff your computer after 60 minutes\n"
+"sudo shutdown -h +60\n"
+msgstr ""
+"关机\n"
+"sudo halt\n"
+"sudo shutdown -h now\n"
+"在晚上 23:00 关机\n"
+"sudo shutdown -h 23:00\n"
+"在 60 分钟以后关机\n"
+"sudo shutdown -h +60\n"
+
+#: .././ailurus/common/tips.py:321
+msgid ""
+"Reboot your computer\n"
+"sudo reboot\n"
+"sudo shutdown -r now\n"
+msgstr ""
+"重启动电脑\n"
+"sudo reboot\n"
+"sudo shutdown -r now\n"
+
+#: .././ailurus/common/tips.py:326
+msgid ""
+"If you want some program to start up automatically, please put '.desktop' "
+"files into '~/.config/autostart'\n"
+msgstr "如果您想让某些程序自动启动，您可将 '.desktop' 文件放入目录 '~/.config/autostart'\n"
+
+#: .././ailurus/common/tips.py:329
+msgid ""
+"You can configure \"preferred applications\" by this file "
+"\"~/.local/share/applications/mimeapps.list\"\n"
+msgstr ""
+"您可以用文件 \"~/.local/share/applications/mimeapps.list\" 来配置打开某种类型的文件的“首选应用程序”。\n"
+
+#: .././ailurus/common/tips.py:332
+msgid ""
+"Continuously monitor the memory usage\n"
+"watch -d free\n"
+msgstr ""
+"连续监视内存使用情况\n"
+"watch -d free\n"
+
+#: .././ailurus/common/tips.py:336
+msgid ""
+"Display HTTP HEAD response\n"
+"w3m -dump_head http://example.com\n"
+msgstr ""
+"显示服务器的 HTTP HEAD 响应\n"
+"w3m -dump_head http://example.com\n"
+
+#: .././ailurus/common/tips.py:340
+msgid ""
+"Display file content with line number\n"
+"nl FILE_NAME\n"
+msgstr ""
+"带行号输出文件内容\n"
+"nl FILE_NAME\n"
+
+#: .././ailurus/common/tips.py:344
+msgid ""
+"Eliminate Rootkit\n"
+"sudo rkhunter --checkall\n"
+msgstr ""
+"消灭 Rootkit\n"
+"sudo rkhunter --checkall\n"
+
+#: .././ailurus/common/tips.py:348
+msgid ""
+"Change hostname\n"
+"sudo hostname new_name\n"
+msgstr ""
+"设置主机名\n"
+"sudo hostname new_name\n"
+
+#: .././ailurus/common/tips.py:352
+msgid ""
+"\"Tasksel\" group software packages into \"task\"s. You can select a "
+"\"task\" and then install all necessary software packages. It is easy to set "
+"up LAMP servers or cloud computing servers.\n"
+"Show all tasks\n"
+"tasksel --list\n"
+"Display the extended description of a task\n"
+"tasksel --task-desc lamp-server\n"
+"List the packages which are parts of a task\n"
+"tasksel --task-packages lamp-server\n"
+"Install/remove a task\n"
+"gksudo tasksel\n"
+msgstr ""
+"\"Tasksel\" 将软件包分组为 \"任务\"。你可以选择某个\"任务\"，并安装所有必需的软件包。使用\"Tasksel\"，很容易架设 "
+"LAMP 服务器或者云计算服务器。\n"
+"列出全部任务\n"
+"tasksel --list\n"
+"显示任务详情\n"
+"tasksel --task-desc lamp-server\n"
+"显示任务包括了哪些软件包\n"
+"tasksel --task-packages lamp-server\n"
+"安装/删除一个任务\n"
+"gksudo tasksel\n"
+
+#: .././ailurus/install_remove_pane.py:28
+msgid "Install/Remove"
+msgstr "安装/删除"
+
+#: .././ailurus/install_remove_pane.py:109
+msgid "To be installed:\n"
+msgstr "将安装:\n"
+
+#: .././ailurus/install_remove_pane.py:116
+msgid "To be removed:\n"
+msgstr "将删除:\n"
+
+#: .././ailurus/install_remove_pane.py:124
+#, python-format
+msgid "%s disk space will be occupied."
+msgstr "%s 的磁盘空间将被占用。"
+
+#: .././ailurus/install_remove_pane.py:125
+#, python-format
+msgid "%s disk space will be freed."
+msgstr "%s 的磁盘空间将被释放。"
+
+#: .././ailurus/install_remove_pane.py:129
+msgid "Are you sure to change your system as follows?"
+msgstr "您确定要这样更改您的系统吗？"
+
+#: .././ailurus/install_remove_pane.py:130
+msgid "Confirmation"
+msgstr "确认"
+
+#: .././ailurus/install_remove_pane.py:137
+msgid ""
+"Summary: \n"
+"\n"
+msgstr ""
+"摘要: \n"
+"\n"
+
+#: .././ailurus/install_remove_pane.py:139
+msgid "Successfully installed:\n"
+msgstr "成功安装了:\n"
+
+#: .././ailurus/install_remove_pane.py:143
+msgid "Successfully removed:\n"
+msgstr "成功删除了:\n"
+
+#: .././ailurus/install_remove_pane.py:147
+msgid "Failed to install:\n"
+msgstr "安装失败:\n"
+
+#: .././ailurus/install_remove_pane.py:150
+#: .././ailurus/install_remove_pane.py:155
+msgid ""
+"The tracebacks are in the terminal window.\n"
+"\n"
+msgstr ""
+"错误跟踪记录已经输出到终端窗口中。\n"
+"\n"
+
+#: .././ailurus/install_remove_pane.py:152
+msgid "Failed to remove:\n"
+msgstr "删除失败：\n"
+
+#: .././ailurus/install_remove_pane.py:159
+msgid "All works finished."
+msgstr "所有改变都进行完毕。"
+
+#: .././ailurus/install_remove_pane.py:196
+msgid "Installing:"
+msgstr "正在安装："
+
+#: .././ailurus/install_remove_pane.py:207
+msgid "Removing:"
+msgstr "正在删除："
+
+#: .././ailurus/install_remove_pane.py:228
+msgid "Summary:"
+msgstr "摘要："
+
+#: .././ailurus/install_remove_pane.py:230
+msgid "Successfully installed:"
+msgstr "成功安装了："
+
+#: .././ailurus/install_remove_pane.py:232
+msgid "Successfully removed:"
+msgstr "成功删除了："
+
+#: .././ailurus/install_remove_pane.py:235
+msgid "Failed to install:"
+msgstr "没能安装："
+
+#: .././ailurus/install_remove_pane.py:240
+msgid "Failed to remove:"
+msgstr "没能删除："
+
+#: .././ailurus/install_remove_pane.py:251
+msgid ""
+"Some operations failed.\n"
+"Would you please report bugs to Ailurus developer?\n"
+"Please press \"PrtSc\" key to make a screenshot, and attach the screenshot "
+"in bug report. "
+msgstr ""
+"安装进程出错。\n"
+"麻烦您向 Ailurus 开发者报告问题好吗?\n"
+"请按下 \"PrtSc\" 键来做屏幕截图。在报告问题时，将截图作为附件一起发送。 "
+
+#: .././ailurus/install_remove_pane.py:256
+msgid "All works finished. "
+msgstr "所有改变都进行完毕。 "
+
+#: .././ailurus/install_remove_pane.py:388
+msgid "License:"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:394
+msgid "Not installed."
+msgstr "未安装。"
+
+#: .././ailurus/install_remove_pane.py:396
+msgid "Not installed, because:"
+msgstr "未安装, 因为:"
+
+#: .././ailurus/install_remove_pane.py:400
+msgid "Will be installed."
+msgstr "将被安装。"
+
+#: .././ailurus/install_remove_pane.py:404
+msgid "Installed size is"
+msgstr "安装后的大小是"
+
+#: .././ailurus/install_remove_pane.py:408
+msgid "Installed."
+msgstr "已经安装。"
+
+#. will be removed?
+#: .././ailurus/install_remove_pane.py:410
+msgid "Will be removed."
+msgstr "将被删除。"
+
+#: .././ailurus/install_remove_pane.py:414
+#, python-format
+msgid "Will free %s disk space."
+msgstr "将释放 %s 的磁盘空间。"
+
+#: .././ailurus/install_remove_pane.py:541
+msgid "Select _All"
+msgstr "全选(_A)"
+
+#: .././ailurus/install_remove_pane.py:543
+msgid "_Deselect All"
+msgstr "全不选(_D)"
+
+#: .././ailurus/install_remove_pane.py:545
+msgid "_Reset All"
+msgstr "全重置(_R)"
+
+#: .././ailurus/install_remove_pane.py:585
+msgid "_Apply"
+msgstr "应用(_A)"
+
+#: .././ailurus/install_remove_pane.py:596
+msgid "Details:"
+msgstr "详情:"
+
+#: .././ailurus/install_remove_pane.py:645
+msgid "Report bugs"
+msgstr "报告问题"
+
+#: .././ailurus/install_remove_pane.py:647
+msgid "Close this terminal"
+msgstr "关闭这个终端"
+
+#: .././ailurus/install_remove_pane.py:676
+msgid "Common"
+msgstr "常用"
+
+#: .././ailurus/install_remove_pane.py:677
+msgid "For students"
+msgstr "学生"
+
+#: .././ailurus/install_remove_pane.py:678
+msgid "For developers"
+msgstr "开发者"
+
+#: .././ailurus/install_remove_pane.py:679
+msgid "Advanced"
+msgstr "高级"
+
+#: .././ailurus/install_remove_pane.py:682
+msgid "Office"
+msgstr "办公"
+
+#: .././ailurus/install_remove_pane.py:683
+msgid "Education"
+msgstr "教育"
+
+#: .././ailurus/install_remove_pane.py:684
+msgid "Internet"
+msgstr "互联网"
+
+#: .././ailurus/install_remove_pane.py:685
+#: .././ailurus/install_remove_pane.py:704
+msgid "Firefox extensions"
+msgstr "Firefox 扩展"
+
+#: .././ailurus/install_remove_pane.py:686
+msgid "Multimedia"
+msgstr "多媒体"
+
+#: .././ailurus/install_remove_pane.py:687
+msgid "Appearance"
+msgstr "外观"
+
+#: .././ailurus/install_remove_pane.py:688
+msgid "Enhancements"
+msgstr "增强"
+
+#: .././ailurus/install_remove_pane.py:689
+msgid "Game"
+msgstr "游戏"
+
+#: .././ailurus/install_remove_pane.py:691
+msgid "Third party repositories"
+msgstr "第三方源"
+
+#: .././ailurus/install_remove_pane.py:692
+msgid "Virtual machine"
+msgstr "虚拟机"
+
+#: .././ailurus/install_remove_pane.py:693
+msgid "Establish a server"
+msgstr "搭建一台服务器"
+
+#: .././ailurus/install_remove_pane.py:695
+msgid "Mathematics"
+msgstr "数学"
+
+#: .././ailurus/install_remove_pane.py:696
+msgid "Statistics"
+msgstr "统计学"
+
+#: .././ailurus/install_remove_pane.py:697
+msgid "Biology"
+msgstr "生物学"
+
+#: .././ailurus/install_remove_pane.py:698
+msgid "Electronics & Mechanics"
+msgstr "电子学和机械学"
+
+#: .././ailurus/install_remove_pane.py:699
+msgid "Geography"
+msgstr "地理学"
+
+#: .././ailurus/install_remove_pane.py:700
+msgid "LaTeX"
+msgstr "LaTeX"
+
+#: .././ailurus/install_remove_pane.py:702
+msgid "Development"
+msgstr "开发"
+
+#: .././ailurus/install_remove_pane.py:703
+msgid "Eclipse"
+msgstr "Eclipse"
+
+#: .././ailurus/libsetting.py:130
+msgid "The command which will be run."
+msgstr "运行的命令"
+
+#: .././ailurus/libsetting.py:137
+msgid "The shortcut key."
+msgstr "快捷键"
+
+#: .././ailurus/libsetting.py:151
+msgid "Choose a file"
+msgstr ""
+
+#: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:228
+msgid "Image file"
+msgstr "图像文件"
+
+#: .././ailurus/libsetting.py:212
+#, python-format
+msgid "Choose a file for \"%s\" "
+msgstr "为 \"%s\" 选择一个文件 "
+
+#: .././ailurus/libsetting.py:250
+msgid ""
+"\n"
+"File: "
+msgstr ""
+"\n"
+"文件: "
+
+#: .././ailurus/libsetting.py:268
+msgid "Change"
+msgstr "更改"
+
+#: .././ailurus/libsetting.py:292
+#, python-format
+msgid ""
+"\n"
+"Minimum value: %(min)s. Maximum value: %(max)s."
+msgstr ""
+"\n"
+"最小值: %(min)s。最大值: %(max)s。"
+
+#~ msgid "_Next tip"
+#~ msgstr "下一条(_N)"
+
+#~ msgid "_Previous tip"
+#~ msgstr "上一条(_P)"
+
+#~ msgid "Download daily-build version from"
+#~ msgstr "从这里下载“每日编译”版"
+
+#, python-format
+#~ msgid ""
+#~ "\n"
+#~ "This version is compiled at %s."
+#~ msgstr ""
+#~ "\n"
+#~ "这个版本是在 %s 编译的。"
+
+#~ msgid "Back to previous pane"
+#~ msgstr "回到上一个面板"
+
+#~ msgid "Go forward one pane"
+#~ msgstr "前进一个面板"
+
+#~ msgid "Hardware information"
+#~ msgstr "硬件信息"
+
+#~ msgid "How to install themes of Fedora® or OpenSolaris® on Ubuntu ?"
+#~ msgstr "如何在 Ubuntu 上安装 Fedora® 和 OpenSolaris® 的主题？"
+
+#~ msgid "Get daily-build version (more features but more bugs)"
+#~ msgstr "获取开发中的版本 (有更多特性, 但是有更多bug)"
+
+#~ msgid "Show Chinese applications and Chinese web pages"
+#~ msgstr "显示只提供中文语言的软件和网页"
+
+#~ msgid "English"
+#~ msgstr "English"
+
+#~ msgid "Simplified Chinese / Mainland (zh_CN)"
+#~ msgstr "简体中文 / 大陆 (zh_CN)"
+
+#~ msgid "Traditional Chinese / Taiwan (zh_TW)"
+#~ msgstr "繁体中文 / 台湾 (zh_TW)"
+
+#~ msgid "Traditional Chinese / Hong Kong (zh_HK)"
+#~ msgstr "繁体中文 / 香港 (zh_HK)"
+
+#~ msgid "Spanish"
+#~ msgstr "西班牙语"
+
+#~ msgid "Russian"
+#~ msgstr "俄语"
+
+#~ msgid "Language changed"
+#~ msgstr "语言已经改变"
+
+#~ msgid "GUI Language"
+#~ msgstr "图形界面语言"
+
+#~ msgid "This pane is disabled."
+#~ msgstr "这个面板被禁用了。"
+
+#~ msgid ""
+#~ "N/A ( Directory does not exist. It will be automatically created before "
+#~ "beginning cache files. )"
+#~ msgstr "N/A ( 目录不存在。在缓存文件之前目录会被自动创建。)"
+
+#~ msgid "Select a folder"
+#~ msgstr "选择一个文件夹"
+
+#, python-format
+#~ msgid "%(uncached)s uncached files, %(cached)s cached files"
+#~ msgstr "%(uncached)s 个文件未缓存, %(cached)s 个文件已经缓存"
+
+#~ msgid "Do not automatically delete cached APT packages."
+#~ msgstr "不要自动删除已经缓存的 APT 包。"
+
+#~ msgid "Cache files in this directory:"
+#~ msgstr "在这个目录里缓存文件:"
+
+#~ msgid "Free disk space:"
+#~ msgstr "剩余磁盘空间为:"
+
+#~ msgid "Uncached files:"
+#~ msgstr "未缓存的文件:"
+
+#~ msgid "File name"
+#~ msgstr "文件名"
+
+#~ msgid "Size"
+#~ msgstr "大小"
+
+#~ msgid "(States of files are not detected yet.)"
+#~ msgstr "(尚未检测文件的状态)"
+
+#~ msgid "Name of current panel"
+#~ msgstr "当前面板的名字"
+
+#~ msgid "Go back one panel"
+#~ msgstr "后退到上次使用的面板"
+
+#~ msgid "Go forward one panel"
+#~ msgstr "前进一个面板"
+
+#~ msgid "Enable current pane"
+#~ msgstr "启用当前面板"
+
+#~ msgid "Disable current pane"
+#~ msgstr "禁用当前面板"
+
+#~ msgid "Display \"Tip of the day\""
+#~ msgstr "显示 \"日积月累\""
+
+#~ msgid "Evermore Integrated Office 2009 free version"
+#~ msgstr "永中集成办公系统 2009 (免费版)"
+
+#~ msgid ""
+#~ "It is able to edit text, spreadsheets, and slides. Official site: <span "
+#~ "color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal"
+#~ ".jsp</u></span>"
+#~ msgstr ""
+#~ "它能编辑文档，电子表格和幻灯片。官方网站: <span "
+#~ "color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal"
+#~ ".jsp</u></span>"
+
+#~ msgid "Clipboard arts are to be installed."
+#~ msgstr "即将安装剪贴画。"
+
+#~ msgid "Help files are to be installed."
+#~ msgstr "即将安装帮助文件。"
+
+#~ msgid "Science editor images are to be installed."
+#~ msgstr "即将安装科学公式编辑器。"
+
+#~ msgid "Templates are to be installed."
+#~ msgstr "即将安装模版"
+
+#~ msgid "Installing EIOffice"
+#~ msgstr "正在安装 永中 Office"
+
+#~ msgid " \"build-essential\" is required. It is to be installed."
+#~ msgstr " 这个软件需要“build-essential”包。“build-essential”即将安装。"
+
+#~ msgid "TeXLive 2008"
+#~ msgstr "TeXLive 2008"
+
+#~ msgid ""
+#~ "Install TeXLive 2008 and enable Chinese support. You can create a LaTeX file "
+#~ "which contains Chinese characters. Then use \"texpdf filename.tex\" command "
+#~ "to build PDF files. TeXLive is obtained from http://www.tug.org/texlive/"
+#~ msgstr ""
+#~ "安装 TeXLive 2008 并增加中文支持。您可以编写一个包含中文的 LaTeX 文件，再用 \"texpdf filename.tex\" "
+#~ "命令编译出 PDF 文件。TeXLive 是从 http://www.tug.org/texlive/ 下载的。"
+
+#~ msgid ""
+#~ "Official site: <span "
+#~ "color=\"blue\"><u>http://openjump.org/wiki/show/HomePage</u></span> ."
+#~ msgstr ""
+#~ "官方网站: <span "
+#~ "color=\"blue\"><u>http://openjump.org/wiki/show/HomePage</u></span> 。"
+
+#~ msgid "A light weight pdf reader."
+#~ msgstr "一个体积很小的 pdf 阅读器。"
+
+#~ msgid ""
+#~ "Official site: <span "
+#~ "color=\"blue\"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>"
+#~ msgstr ""
+#~ "官方网站: <span "
+#~ "color=\"blue\"><u>http://www.foxitsoftware.com/pdf/desklinux/</u></span>"
+
+#~ msgid "Google Notebook: Notetaking while browsing"
+#~ msgstr "Google 笔记本: 在浏览网页的同时记笔记"
+
+#~ msgid ""
+#~ "<span color=\"red\">This extension does not work well in Firefox 3.0 "
+#~ ":(</span>"
+#~ msgstr "<span color=\"red\">这个扩展在 Firefox 3.0 中不能很好地工作 :(</span>"
+
+#~ msgid "Applications"
+#~ msgstr "应用程序"
+
+#~ msgid "Find fast repository mirror"
+#~ msgstr "搜索最快的源"
+
+#~ msgid "Repositories"
+#~ msgstr "软件源"
+
+#~ msgid "Adjustments"
+#~ msgstr "调整"
+
+#~ msgid "How to install Warcraft III and DotA on Ubuntu ?"
+#~ msgstr "如何在 Ubuntu 上安装 Warcraft III 和 DotA？"
+
+#~ msgid "How to install Matlab on Ubuntu ?"
+#~ msgstr "如何在 Ubuntu 上安装 Matlab？"
+
+#~ msgid "Learning"
+#~ msgstr "学习"
+
+#~ msgid "Help"
+#~ msgstr "帮助"
+
+#~ msgid "French"
+#~ msgstr "法语"
+
+#, python-format
+#~ msgid "Tried to download %s files."
+#~ msgstr "试着下载 %s 个文件。"
+
+#, python-format
+#~ msgid "%s files are downloaded successfully."
+#~ msgstr "成功下载了 %s 个文件。"
+
+#, python-format
+#~ msgid "%s files cannot be downloaded."
+#~ msgstr "有 %s 个文件不能下载。"
+
+#~ msgid "Open"
+#~ msgstr "打开"
+
+#~ msgid "Show URL"
+#~ msgstr "显示 URL"
+
+#~ msgid "Download"
+#~ msgstr "下载"
+
+#~ msgid "Linux information"
+#~ msgstr "Linux 信息"
+
+#~ msgid "Eliminate Chinese font bug in SUN Java® 6"
+#~ msgstr "去除 SUN Java® 6 中的中文字体错误"
+
+#~ msgid ""
+#~ "Command: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-"
+#~ "sun/jre/lib/fonts/fallback/\n"
+#~ "cp /usr/share/fonts/truetype/arphic/uming.ttc "
+#~ "/usr/share/fonts/truetype/arphic/uming.ttf"
+#~ msgstr ""
+#~ "命令: cp /usr/share/fonts/truetype/wqy/wqy-zenhei.* /usr/lib/jvm/java-6-"
+#~ "sun/jre/lib/fonts/fallback/\n"
+#~ "cp /usr/share/fonts/truetype/arphic/uming.ttc "
+#~ "/usr/share/fonts/truetype/arphic/uming.ttf"
+
+#~ msgid ""
+#~ "The tools are:\n"
+#~ "<i>g++: GNU C++ compiler.\n"
+#~ "manpages-dev: manual pages about Linux system calls and library calls.\n"
+#~ "manpages-posix: manual pages about using POSIX.\n"
+#~ "manpages-posix-dev: manual pages about POSIX header files and POSIX library "
+#~ "files.\n"
+#~ "exuberant-ctags: source code parser used in vi and emacs, which allow moving "
+#~ "to the definition of a symbol.\n"
+#~ "libgmp3: GNU multiprecision arithmetic library.\n"
+#~ "libncurses5: a library controlling writing to the console screen.\n"
+#~ "libqt3-mt: Trolltech Qt library, version 3.\n"
+#~ "subversion: a version control system.\n"
+#~ "git-core: a distributed version control system.\n"
+#~ "</i>Command: sudo apt-get install build-essential manpages-dev manpages-"
+#~ "posix manpages-posix-dev exuberant-ctags libgmp3-dev libncurses5-dev libqt3-"
+#~ "mt-dev subversion git-core"
+#~ msgstr ""
+#~ "这些工具是:\n"
+#~ "<i>g++: GNU C++ 编译器。\n"
+#~ "manpages-dev: 关于 Linux 系统调用和库函数的 man 手册页。\n"
+#~ "manpages-posix: 关于 POSIX 用法的手册页。\n"
+#~ "manpages-posix-dev: 关于 POSIX 头文件和库函数的 man 手册页。\n"
+#~ "exuberant-ctags: vi 和 emacs 中使用的源代码分析程序，可以跳转到指定符号的定义处。\n"
+#~ "libgmp3: GNU 多精度数学库。\n"
+#~ "libncurses5: 控制终端输出的库。\n"
+#~ "libqt3-mt: 奇趣第三版 Qt 库。\n"
+#~ "subversion: 版本控制系统。\n"
+#~ "git-core: 分布式版本控制系统。\n"
+#~ "</i>命令: sudo apt-get install build-essential manpages-dev manpages-posix "
+#~ "manpages-posix-dev exuberant-ctags libgmp3-dev libncurses5-dev libqt3-mt-dev "
+#~ "subversion git-core"
+
+#~ msgid "Ubuntu forum in China"
+#~ msgstr "Ubuntu 中文论坛"
+
+#~ msgid "Enjoy online music in Ubuntu (in Chinese)"
+#~ msgstr "用 Ubuntu 欣赏在线音乐 (中文)"
+
+#~ msgid "Recovery"
+#~ msgstr "恢复"
+
+#~ msgid "Cache installation files"
+#~ msgstr "缓存安装文件"
+
+#~ msgid "Show Polish application and Polish web pages "
+#~ msgstr "显示只提供波兰语言的软件和网页 "
+
+#~ msgid "Bulgarian"
+#~ msgstr "保加利亚语"
+
+#~ msgid "German"
+#~ msgstr "德语"
+
+#~ msgid ""
+#~ "Clear Bash history\n"
+#~ "history -c\n"
+#~ "\n"
+#~ "(Provided by Federico)"
+#~ msgstr ""
+#~ "清空 Bash 命令记录\n"
+#~ "history -c\n"
+#~ "\n"
+#~ "(Federico 提供)"
+
+#~ msgid ""
+#~ "This repository provides Oracle Database Express Edition.\n"
+#~ "After installation, please add yourself to the \"dba\" group, then run "
+#~ "\"sudo /etc/init.d/oracle-xe configure\". (Thanks Federico.)"
+#~ msgstr ""
+#~ "这个源内含 Oracle 数据库简装版。\n"
+#~ "在安装后，请将您的帐户加入 \"dba\" 组，然后运行 \"sudo /etc/init.d/oracle-xe configure\". (谢谢 "
+#~ "Federico.)"
+
+#~ msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
+#~ msgstr "<span color=\"yellow\">检查桌面环境 ... </span>\n"
+
+#~ msgid "<span color=\"yellow\">Checking distribution ... </span>\n"
+#~ msgstr "<span color=\"yellow\">检查发行版本 ... </span>\n"
+
+#~ msgid "<span color=\"yellow\">Acquiring Firefox profile ... </span>\n"
+#~ msgstr "<span color=\"yellow\">获取 Firefox 配置 ... </span>\n"
+
+#~ msgid ""
+#~ "<span color=\"yellow\">Waiting for firefox to create profile ... </span>\n"
+#~ msgstr "<span color=\"yellow\">等待 Firefox 生成配置文件 ... </span>\n"
+
+#~ msgid ""
+#~ "<span color=\"yellow\">Acquire list of installed packages ... </span>\n"
+#~ msgstr "<span color=\"yellow\">正在生成已经安装的软件的目录 … </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading tips ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载日积月累 … </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading main window ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载主窗口 … </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading information pane ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载信息面板 ... </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading system settings pane ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载系统设置面板 ... </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading applications pane ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载应用程序面板 … </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading off-line pane ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载离线面板 ... </span>\n"
+
+#~ msgid "<span color=\"yellow\">Loading menu ... </span>\n"
+#~ msgstr "<span color=\"yellow\">加载菜单 … </span>\n"
+
+#~ msgid ""
+#~ "<span color=\"yellow\">Help you install some nice applications.\n"
+#~ "Help you do tedious settings.\n"
+#~ "Tell you some Linux skills.</span>"
+#~ msgstr ""
+#~ "<span color=\"yellow\">帮助您安装好用的软件;\n"
+#~ "帮助您进行繁琐的设置;\n"
+#~ "告诉您Linux技巧。</span>"
+
+#~ msgid "Italian"
+#~ msgstr "意大利语"
+
+#~ msgid "Polish"
+#~ msgstr "波兰语"
+
+#~ msgid "unknown"
+#~ msgstr "未知"
+
+#~ msgid "Apply the fastest repository"
+#~ msgstr "应用最快的源"
+
+#, python-format
+#~ msgid "The fastest repository is %(mirror)s. Its response time is %(time)s."
+#~ msgstr "最快的源是 %(mirror)s。它的响应时间是 %(time)s。"
+
+#, python-format
+#~ msgid "%.2f millisecond"
+#~ msgstr "%.2f 毫秒"
+
+#~ msgid "Ailurus will change repository:"
+#~ msgstr "Ailurus 将更改源:"
+
+#, python-format
+#~ msgid ""
+#~ "Change <span color='red'>%(old)s</span> to <span color='red'>%(new)s</span>"
+#~ msgstr ""
+#~ "把 <span color='red'>%(old)s</span> 改为 <span color='red'>%(new)s</span>"
+
+#~ msgid ""
+#~ "You can install applications without Internet if software installation files "
+#~ "are cached into your computer. Moreover, the download time is saved by "
+#~ "caching."
+#~ msgstr "如果您将软件安装程序缓存在电脑上，那么不联网时也能安装软件了。将文件缓存，能减小下载的时间。"
+
+#~ msgid ""
+#~ "\n"
+#~ "Ailurus cannot cache \"*.deb\" packages which are in /var/cache/apt . You "
+#~ "can cache them by \"aptoncd\", which is installed by \"sudo apt-get install "
+#~ "aptoncd\". "
+#~ msgstr ""
+#~ "\n"
+#~ "Ailurus 不能缓存 /var/cache/apt 目录里的 \"*.deb\" 文件。您可以用 \"aptoncd\" 缓存它们。用 \"sudo "
+#~ "apt-get install aptoncd\" 来安装 aptoncd。 "
+
+#~ msgid "Command: yum install flash-plugin"
+#~ msgstr "命令: yum install flash-plugin"
+
+#~ msgid ""
+#~ "If you cannot play RMVB video, try this application!\n"
+#~ "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+#~ "You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
+#~ msgstr ""
+#~ "如果您不能播放 RMVB 视频，试试这个!\n"
+#~ "官方网站: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+#~ "用命令 \"/opt/real/RealPlayer/realplay\" 来启动 RealPlayer。"
+
+#~ msgid "This repository provides flash-plugin and Adobe Reader."
+#~ msgstr "这个源提供 Flash 插件和 Adobe Reader。"
+
+#~ msgid "It contains packages not available from the standard repositories."
+#~ msgstr "这个源包含了官方源里不提供的软件包。"
+
+#~ msgid "This repository provides Picasa and Google Desktop."
+#~ msgstr "这个源内含 Picasa 和 Google 桌面。"
+
+#~ msgid "This repository provides Google Chrome."
+#~ msgstr "这个源内含 Google Chrome。"
+
+#~| msgid "Spanish"
+#~ msgid "Danish"
+#~ msgstr "丹麦语"
+
+#~ msgid "Brazilian Portuguese"
+#~ msgstr "巴西葡萄牙语"
+
+#~ msgid ""
+#~ "If you want to use colorful \"ls\", that is, use colors to distinguish types "
+#~ "of files, you can add these lines in ~/.bashrc:\n"
+#~ "\n"
+#~ "if [ \"$TERM\" != \"dumb\" ]; then\n"
+#~ "    eval \"`dircolors -b`\"\n"
+#~ "    alias ls='ls --color=auto'\n"
+#~ "fi\n"
+#~ "\n"
+#~ "(Provided by Romeo-Adrian Cioaba)"
+#~ msgstr ""
+#~ "如果要使用彩色的 \"ls\", 就是说, 用不同颜色来区分不同类型的文件, 那么您可以向 ~/.bashrc 增加以下内容:\n"
+#~ "\n"
+#~ "if [ \"$TERM\" != \"dumb\" ]; then\n"
+#~ "    eval \"`dircolors -b`\"\n"
+#~ "    alias ls='ls --color=auto'\n"
+#~ "fi\n"
+#~ "\n"
+#~ "(Romeo-Adrian Cioaba 提供)"
+
+#~| msgid "unknown"
+#~ msgid "Unknown"
+#~ msgstr "未知"
+
+#~ msgid ""
+#~ "ATrpms is another third party repository.\n"
+#~ "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
+#~ "repository."
+#~ msgstr ""
+#~ "ATrpms 是另一个第三方源。\n"
+#~ "\"ATrpms\" 源可能与 \"RPM Fusion\" 源相冲突。"
+
+#~ msgid ""
+#~ "This repository provides VirtualBox.\n"
+#~ "Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
+#~ msgstr ""
+#~ "这个源提供 VirtualBox。\n"
+#~ "网页: http://www.virtualbox.org/wiki/Linux_Downloads"
+
+#~ msgid "* Find more repositories on http://repogen.simplylinux.ch"
+#~ msgstr "* 到 http://repogen.simplylinux.ch 寻找更多的第三方源"
+
+#~ msgid ""
+#~ "This item is an auxiliary item. It will not install anything. It will open "
+#~ "web-page http://repogen.simplylinux.ch/\n"
+#~ "http://repogen.simplylinux.ch/ has collected a lot of useful third party "
+#~ "repositories."
+#~ msgstr ""
+#~ "这个项目是辅助项目。它什么也不安装。它将打开网页 http://repogen.simplylinux.ch/\n"
+#~ "http://repogen.simplylinux.ch/ 上收集了许多有用的第三方源。"

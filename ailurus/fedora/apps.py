@@ -478,7 +478,6 @@ class Wallpaper_Tray(_rpm_install):
     def __init__(self):
         self.pkgs = 'wp_tray'
 
-
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
     detail = _('Command: yum install gnash')
@@ -505,4 +504,3 @@ class Multimedia_Codecs (_rpm_install) :
         _rpm_install.install(self)
     def get_reason(self, f):
         self._get_reason(f)
-

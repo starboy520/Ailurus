@@ -129,7 +129,7 @@ def __start_here_icon_setting():
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
-    return Setting(box, _('Change "start-here" icon'), ['icon'])                       
+    return Setting(box, _('Change "start-here" icon'), ['icon'])
 
 def __login_icon_setting():
     def __apply(w, image):
@@ -146,7 +146,7 @@ def __login_icon_setting():
     box = gtk.VBox(False, 0)
     box.pack_start(i)
     return Setting(box, _('Change login icon'), ['icon'])
-
+    
 def __menu_icon_setting():
     vbox = gtk.VBox()
     o = GConfCheckButton(_('Show icons of menu entries'), 
@@ -570,7 +570,6 @@ def get():
             __desktop_wallpaper(),
             __menu_icon_setting(),
             __start_here_icon_setting(),
-            __login_icon_setting(),
             __login_icon_setting(),
             __button_icon_setting(),
             __font_size_setting(),

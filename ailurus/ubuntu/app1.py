@@ -254,7 +254,7 @@ class ColorfulBashPromptSymbols :
         return file_contain ( self.bashrc, self.line )
     def remove(self):
         file_remove ( self.bashrc, self.line )
-
+        
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
     detail = _(
@@ -466,79 +466,6 @@ class FireWall(_apt_install):
     def __init__(self):
         self.pkgs = 'firestarter'
 
-class InstallFreshLinuxKernel:
-    __doc__ = _('Fresh Linux Kernel')
-    detail = _(u'This is Linux kernel version 2.6.31. '
-       u'It contains GEM (Graphics Execution Manager), which is the new video driver architecture of Intel®. '
-       'It is downloaded from http://kernel.ubuntu.com/~kernel-ppa/mainline/')
-    license = 'Various including GNU General Public License, BSD License, Apache License, MIT License, and others'
-    time = 46
-    size = 163996*1000
-    manual = True
-    logo = 'linux-kernel.png'
-    def __init__(self):
-        if not hasattr(InstallFreshLinuxKernel, 'showed_current_version'):
-            InstallFreshLinuxKernel.showed_current_version = True
-            try:
-                msg = get_output('uname -r')
-                InstallFreshLinuxKernel.detail += '\n' + _('Current linux kernel version is ') + msg
-            except: pass
-        
-        self.version = '2.6.31-02063106'
-    def support(self):
-        try:
-            return Config.get_Ubuntu_version() in ['intrepid', 'jaunty' ]
-        except:
-            return False
-    def install(self):
-        file0 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106_2.6.31-02063106_all.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106_2.6.31-02063106_all.deb'],
-9546764, 'a12429d7de28ed6cac3c25bd0d03cbc403385333').download()
-
-        if get_arch()==32:
-            file1 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_i386.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_i386.deb'],
-638112, '4a7510c068e1ad094560771eb7f0b167d6e7897f').download()
-
-            file2 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-image-2.6.31-02063106-generic_2.6.31-02063106_i386.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-image-2.6.31-02063106-generic_2.6.31-02063106_i386.deb'],
-26293814, '1722fe0dcf951bcaa5e1d69fb7a18538083809a2').download()
-
-        else:
-            file1 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-headers-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb'],
-655102, '0b2435d40209f235d51ced231ccb9ed93488cdf9').download()
-
-            file2 = R(
-['http://tdt.sjtu.edu.cn/S/Kernel/linux-image-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb',
-'http://kernel.ubuntu.com/~kernel-ppa/mainline/v2.6.31.6/linux-image-2.6.31-02063106-generic_2.6.31-02063106_amd64.deb'],
-25885638, '9dc9f2d740a5272450608886e9a474c01a67f98e').download()
-        
-        depends = []
-        for file in [file0, file1, file2]:
-            depends += DPKG.get_deb_depends(file)
-        depends = [e for e in depends if not 'linux-headers' in e]
-        APT.install(*depends)
-        
-        for file in [file0, file1, file2]:
-            gksudo('gdebi-gtk %s'%file)
-        APT.cache_changed()
-
-    def installed(self):
-        return ( APT.installed('linux-headers-%s'%self.version) and 
-                 APT.installed('linux-headers-%s-generic'%self.version) and 
-                 APT.installed('linux-image-%s-generic'%self.version) )
-    
-    def remove(self):
-        APT.remove( 'linux-headers-%s'%self.version, 
-                      'linux-headers-%s-generic'%self.version,
-                      'linux-image-%s-generic'%self.version )
-        APT.cache_changed()
-
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
@@ -553,4 +480,3 @@ class Bluetooth(_apt_install):
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
-

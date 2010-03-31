@@ -103,7 +103,6 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
-        
 class GConfShortcutKeyEntry:
     def grab_key(self, *w):
         import support.keygrabber
@@ -374,4 +373,5 @@ class Setting(gtk.VBox):
         box.set_border_width(5)
         
         self.category = category
-        
+
+    

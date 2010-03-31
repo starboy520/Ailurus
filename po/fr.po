@@ -687,7 +687,7 @@ msgstr "<i>Installation des paquets par :</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:117
 msgid "<i>Web page:</i>"
-msgstr "<i>Page Web :</i>"
+msgstr "<i>Page Web :</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:118
 msgid "<i>Source setting:</i>"
@@ -695,7 +695,7 @@ msgstr "<i>Paramètres de source:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
 msgid "Google Chrome, Picasa 2 and Google Desktop"
-msgstr "Google Chrome, Picasa 2 et Google Desktop"
+msgstr "Google Chrome, Picasa 2 et Google Desktop"
 
 #: .././ailurus/ubuntu/third_party_repos.py:161
 msgid ""
@@ -719,11 +719,11 @@ msgstr "Ce dépôt contient la version stable de Firefox 3.6."
 
 #: .././ailurus/ubuntu/third_party_repos.py:188
 msgid "Google Picasa 3"
-msgstr "Google Picasa 3"
+msgstr "Google Picasa 3"
 
 #: .././ailurus/ubuntu/third_party_repos.py:191
 msgid "This repository contains Picasa 3."
-msgstr "Ce dépôt contient Picasa 3."
+msgstr "Ce dépôt contient Picasa 3."
 
 #: .././ailurus/ubuntu/third_party_repos.py:201
 msgid "PlayOnLinux"
@@ -1141,7 +1141,7 @@ msgstr "Appliquer"
 #: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
 #: .././ailurus/loader.py:124 .././ailurus/main.py:299
 msgid "Traceback:"
-msgstr "Traçage :"
+msgstr "Traçage :"
 
 #: .././ailurus/ubuntu/setting.py:269
 msgid "Some operation failed."
@@ -1204,7 +1204,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:126
 msgid "Command: "
-msgstr "Commande : "
+msgstr "Commande : "
 
 #: .././ailurus/ubuntu/app1.py:141 .././ailurus/ubuntu/quick_setup.py:286
 msgid "Decompression software: 7z, rar, cab, ace"
@@ -1605,7 +1605,7 @@ msgid ""
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
 "C'est la seule machine virtuelle professionnelle qui est librement "
-"disponible sous les termes de la GPL. Site officiel : "
+"disponible sous les termes de la GPL. Site officiel : "
 "http://www.virtualbox.org/wiki/Downloads"
 
 #: .././ailurus/ubuntu/app2.py:279
@@ -1677,7 +1677,7 @@ msgid ""
 msgstr ""
 "<span color=\"red\">Vous devrez agréer manuellement à une licence durant "
 "l'installation.</span>\n"
-"Pendant le processus d'installation, ces commandes seront exécutées : \"sudo "
+"Pendant le processus d'installation, ces commandes seront exécutées : \"sudo "
 "apt-get install sun-java6-jdk\" et \"update-java-alternatives -s java-6-"
 "sun\". Ensuite, ces variables d'environnement seront ajoutées à l'intérieur "
 "du fichier \"/etc/environment\", lesquels sont JAVA_HOME, JAVA_BIN et "
@@ -2567,7 +2567,7 @@ msgstr "Développé par l'université d'Örebro, Suéde."
 
 #: .././ailurus/ubuntu/app3.py:59
 msgid "FreeCAD: A CAD software based on OpenCasCade"
-msgstr "FreeCAD : Un logiciel de CAO basé sur OpenCasCade"
+msgstr "FreeCAD : Un logiciel de CAO basé sur OpenCasCade"
 
 #: .././ailurus/ubuntu/app3.py:60
 msgid ""
@@ -2577,7 +2577,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:123
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
-msgstr "Moonlight : une implémentation open source de Microsoft® Silverlight"
+msgstr "Moonlight : une implémentation open source de Microsoft® Silverlight"
 
 #: .././ailurus/ubuntu/app3.py:124
 msgid ""
@@ -2587,7 +2587,7 @@ msgid ""
 msgstr ""
 "Moonlight fournit les codecs Windows® media. Par cette application, vous "
 "pouvez profiter de l'audio/vidéo Windows® dans les pages Web.\n"
-"Commande : sudo apt-get install moonlight-plugin-mozilla"
+"Commande : sudo apt-get install moonlight-plugin-mozilla"
 
 #: .././ailurus/ubuntu/app3.py:287
 msgid ""
@@ -3078,7 +3078,7 @@ msgstr "Impossible de charger la classe %s"
 
 #: .././ailurus/support/searchbox.py:31
 msgid "Search items:"
-msgstr "Éléments recherchés :"
+msgstr "Éléments recherchés :"
 
 #: .././ailurus/support/searchbox.py:40
 msgid "In names only."
@@ -3092,7 +3092,7 @@ msgstr "Dans les noms et les détails"
 #: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:288
 #: .././ailurus/lib.py:339 .././ailurus/lib.py:537 .././ailurus/lib.py:909
 msgid "Run command:"
-msgstr "Lancer une commande :"
+msgstr "Lancer une commande :"
 
 #: .././ailurus/support/terminal.py:68
 #: .././ailurus/support/terminal_single_thread.py:62
@@ -3153,7 +3153,7 @@ msgstr "Information Linux"
 #. print message
 #: .././ailurus/lib.py:668
 msgid "Installing packages:"
-msgstr "Installation des paquets :"
+msgstr "Installation des paquets :"
 
 #: .././ailurus/lib.py:678
 #, python-format
@@ -3163,7 +3163,7 @@ msgstr "Impossible d'installer le(s) paquet(s) \"%s\"."
 #. print message
 #: .././ailurus/lib.py:704
 msgid "Removing packages:"
-msgstr "Suppression des paquets :"
+msgstr "Suppression des paquets :"
 
 #: .././ailurus/lib.py:714
 #, python-format
@@ -3173,17 +3173,17 @@ msgstr "Impossible de supprimer les paquets \"%s\"."
 #: .././ailurus/lib.py:864
 #, python-format
 msgid "%.1f GB"
-msgstr "%.1f Gio"
+msgstr "%.1f Gio"
 
 #: .././ailurus/lib.py:866
 #, python-format
 msgid "%.1f MB"
-msgstr "%.1f Mio"
+msgstr "%.1f Mio"
 
 #: .././ailurus/lib.py:868
 #, python-format
 msgid "%.1f KB"
-msgstr "%.1f Kio"
+msgstr "%.1f Kio"
 
 #: .././ailurus/lib.py:869
 msgid "less than 1 KB"
@@ -3236,20 +3236,20 @@ msgstr ""
 
 #: .././ailurus/libapp.py:78 .././ailurus/libapp.py:136
 msgid "Change GConf values:"
-msgstr "Changer les valeurs de GConf :"
+msgstr "Changer les valeurs de GConf :"
 
 #: .././ailurus/libapp.py:81 .././ailurus/libapp.py:92
 #: .././ailurus/libapp.py:139 .././ailurus/libapp.py:149
 msgid "Key:"
-msgstr "Clé :"
+msgstr "Clé :"
 
 #: .././ailurus/libapp.py:82 .././ailurus/libapp.py:140
 msgid "New value:"
-msgstr "Nouvelle valeur :"
+msgstr "Nouvelle valeur :"
 
 #: .././ailurus/libapp.py:93
 msgid "Appended items:"
-msgstr "Articles joints :"
+msgstr "Articles joints :"
 
 #: .././ailurus/libapp.py:120
 #, python-format
@@ -3263,7 +3263,7 @@ msgstr "\"%(value)s\" n'est pas \"%(key)s\"."
 
 #: .././ailurus/libapp.py:150
 msgid "Removed items:"
-msgstr "Eléments supprimés :"
+msgstr "Eléments supprimés :"
 
 #. output
 #: .././ailurus/libapp.py:190 .././ailurus/libapp.py:313
@@ -3438,7 +3438,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:31
 msgid "Wallpaper:"
-msgstr "Fond d'écran :"
+msgstr "Fond d'écran :"
 
 #: .././ailurus/gnome/setting.py:31
 msgid "Choose the desktop wallpaper."
@@ -3508,7 +3508,7 @@ msgstr "Afficher un icône \"Ordinateur\""
 
 #: .././ailurus/gnome/setting.py:58
 msgid "Put an icon linking to the computer location on the desktop."
-msgstr "Mettre une icône menant au « Poste de travail » sur le bureau"
+msgstr "Mettre une icône menant au « Poste de travail » sur le bureau"
 
 #: .././ailurus/gnome/setting.py:61 .././ailurus/gnome/setting.py:71
 #: .././ailurus/gnome/setting.py:81 .././ailurus/gnome/setting.py:91
@@ -3636,7 +3636,7 @@ msgstr ""
 #: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:291
 #: .././ailurus/libsetting.py:323
 msgid "GConf key: "
-msgstr "clé GConf : "
+msgstr "clé GConf : "
 
 #: .././ailurus/gnome/setting.py:196
 msgid "More Nautilus settings"
@@ -3691,11 +3691,11 @@ msgid ""
 "GConf key: "
 msgstr ""
 "\n"
-"clé GConf : "
+"clé GConf : "
 
 #: .././ailurus/gnome/setting.py:244
 msgid "clicked by mouse right button:"
-msgstr "clic droit :"
+msgstr "clic droit :"
 
 #: .././ailurus/gnome/setting.py:245 .././ailurus/gnome/setting.py:265
 msgid "The effects of right-clicking on the title bar."
@@ -3703,7 +3703,7 @@ msgstr "L'effet d'un clic droit sur la barre de titre."
 
 #: .././ailurus/gnome/setting.py:246
 msgid "clicked by mouse wheel:"
-msgstr "clic milieu :"
+msgstr "clic milieu :"
 
 #: .././ailurus/gnome/setting.py:247 .././ailurus/gnome/setting.py:274
 msgid "The effects of clicking on the title bar by mouse wheel."
@@ -3801,7 +3801,7 @@ msgstr "Désactiver Alt+F2 (Lancer une application)"
 #: .././ailurus/gnome/setting.py:310
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
-"Empêcher l'utilisateur courant de presser « Alt+F2 » pour lancer des "
+"Empêcher l'utilisateur courant de presser « Alt+F2 » pour lancer des "
 "applications."
 
 #: .././ailurus/gnome/setting.py:312
@@ -4098,11 +4098,11 @@ msgid ""
 msgstr ""
 "Clé GConf:\n"
 "/apps/nautilus/desktop/computer_icon_visible\n"
-"Si cette valeur est vraie, l'icône du « Poste de travail » sera affichée sur "
+"Si cette valeur est vraie, l'icône du « Poste de travail » sera affichée sur "
 "le bureau.\n"
 "\n"
 "/apps/nautilus/desktop/computer_icon_name\n"
-"Le nom personnalisé pour l'icône « Poste de travail » du bureau. \n"
+"Le nom personnalisé pour l'icône « Poste de travail » du bureau. \n"
 
 #: .././ailurus/gnome/tips.py:64
 msgid ""
@@ -4227,8 +4227,8 @@ msgstr ""
 "/apps/metacity/keybinding_commands/\n"
 "Clés des raccourcis personnalisés de GNOME.\n"
 "\n"
-"Par exemple, pour démarrer « gconf-editor » en pressant sur« F12 », vous "
-"pouvez définir :\n"
+"Par exemple, pour démarrer « gconf-editor » en pressant sur« F12 », vous "
+"pouvez définir :\n"
 "/apps/metacity/global_keybindings/run_command_1 = F12\n"
 "/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
 
@@ -4567,7 +4567,7 @@ msgstr "Bug apparu!"
 
 #: .././ailurus/common/osinfo.py:31
 msgid "Host name:"
-msgstr "Nom de la machine :"
+msgstr "Nom de la machine :"
 
 #: .././ailurus/common/osinfo.py:37
 msgid "Kernel version:"
@@ -5466,7 +5466,7 @@ msgstr "Nom de la carte mère :"
 
 #: .././ailurus/common/hardwareinfo.py:72
 msgid "Motherboard vendor:"
-msgstr "Constructeur de la carte mère :"
+msgstr "Constructeur de la carte mère :"
 
 #: .././ailurus/common/hardwareinfo.py:99
 #, python-format
@@ -5500,11 +5500,11 @@ msgstr "Non"
 
 #: .././ailurus/common/hardwareinfo.py:115
 msgid "Yes!"
-msgstr "Oui !"
+msgstr "Oui !"
 
 #: .././ailurus/common/hardwareinfo.py:116
 msgid "64 bit CPU?"
-msgstr "CPU 64 bit ?"
+msgstr "CPU 64 bit ?"
 
 #: .././ailurus/common/hardwareinfo.py:137
 msgid "CPU temperature"
@@ -5548,7 +5548,7 @@ msgstr "Capacité restante de la batterie:"
 
 #: .././ailurus/common/hardwareinfo.py:190
 msgid "Battery full capacity:"
-msgstr "Capacité totale de la batterie :"
+msgstr "Capacité totale de la batterie :"
 
 #: .././ailurus/common/tips.py:27
 msgid ""
@@ -6225,11 +6225,11 @@ msgstr "Installer/Supprimer"
 
 #: .././ailurus/install_remove_pane.py:109
 msgid "To be installed:\n"
-msgstr "Doit être installé :\n"
+msgstr "Doit être installé :\n"
 
 #: .././ailurus/install_remove_pane.py:116
 msgid "To be removed:\n"
-msgstr "Doit être désinstallé :\n"
+msgstr "Doit être désinstallé :\n"
 
 #: .././ailurus/install_remove_pane.py:124
 #, python-format
@@ -6243,7 +6243,7 @@ msgstr "%s d'espace disque vont être libérés."
 
 #: .././ailurus/install_remove_pane.py:129
 msgid "Are you sure to change your system as follows?"
-msgstr "Etes-vous sûr de changer votre système comme suit ?"
+msgstr "Etes-vous sûr de changer votre système comme suit ?"
 
 #: .././ailurus/install_remove_pane.py:130
 msgid "Confirmation"
@@ -6254,20 +6254,20 @@ msgid ""
 "Summary: \n"
 "\n"
 msgstr ""
-"Résumé : \n"
+"Résumé : \n"
 "\n"
 
 #: .././ailurus/install_remove_pane.py:139
 msgid "Successfully installed:\n"
-msgstr "Installé avec succès :\n"
+msgstr "Installé avec succès :\n"
 
 #: .././ailurus/install_remove_pane.py:143
 msgid "Successfully removed:\n"
-msgstr "Supprimé avec succès :\n"
+msgstr "Supprimé avec succès :\n"
 
 #: .././ailurus/install_remove_pane.py:147
 msgid "Failed to install:\n"
-msgstr "Échec de l'installation :\n"
+msgstr "Échec de l'installation :\n"
 
 #: .././ailurus/install_remove_pane.py:150
 #: .././ailurus/install_remove_pane.py:155
@@ -6280,7 +6280,7 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:152
 msgid "Failed to remove:\n"
-msgstr "Échec de la suppression :\n"
+msgstr "Échec de la suppression :\n"
 
 #: .././ailurus/install_remove_pane.py:159
 msgid "All works finished."
@@ -6288,31 +6288,31 @@ msgstr "Tous les travaux sont terminés."
 
 #: .././ailurus/install_remove_pane.py:196
 msgid "Installing:"
-msgstr "Installation :"
+msgstr "Installation :"
 
 #: .././ailurus/install_remove_pane.py:207
 msgid "Removing:"
-msgstr "Suppression :"
+msgstr "Suppression :"
 
 #: .././ailurus/install_remove_pane.py:228
 msgid "Summary:"
-msgstr "Résumé :"
+msgstr "Résumé :"
 
 #: .././ailurus/install_remove_pane.py:230
 msgid "Successfully installed:"
-msgstr "Installé avec succès :"
+msgstr "Installé avec succès :"
 
 #: .././ailurus/install_remove_pane.py:232
 msgid "Successfully removed:"
-msgstr "Supprimé avec succès :"
+msgstr "Supprimé avec succès :"
 
 #: .././ailurus/install_remove_pane.py:235
 msgid "Failed to install:"
-msgstr "Échec de l'installation :"
+msgstr "Échec de l'installation :"
 
 #: .././ailurus/install_remove_pane.py:240
 msgid "Failed to remove:"
-msgstr "Échec de la suppression :"
+msgstr "Échec de la suppression :"
 
 #: .././ailurus/install_remove_pane.py:251
 msgid ""
@@ -6336,7 +6336,7 @@ msgstr "Non installé."
 
 #: .././ailurus/install_remove_pane.py:396
 msgid "Not installed, because:"
-msgstr "N'est pas installé, parce que :"
+msgstr "N'est pas installé, parce que :"
 
 #: .././ailurus/install_remove_pane.py:400
 msgid "Will be installed."
@@ -6378,7 +6378,7 @@ msgstr "_Appliquer"
 
 #: .././ailurus/install_remove_pane.py:596
 msgid "Details:"
-msgstr "Détails :"
+msgstr "Détails :"
 
 #: .././ailurus/install_remove_pane.py:645
 msgid "Report bugs"
@@ -6508,7 +6508,7 @@ msgid ""
 "File: "
 msgstr ""
 "\n"
-"Fichier : "
+"Fichier : "
 
 #: .././ailurus/libsetting.py:268
 msgid "Change"
@@ -6521,7 +6521,7 @@ msgid ""
 "Minimum value: %(min)s. Maximum value: %(max)s."
 msgstr ""
 "\n"
-"Valeur minimum : %(min)s. Valeur maximum : %(max)s."
+"Valeur minimum : %(min)s. Valeur maximum : %(max)s."
 
 #~ msgid ""
 #~ "motto of Ubun-student\n"
@@ -6650,7 +6650,7 @@ msgstr ""
 #~ msgstr "_Ouvrir ..."
 
 #~ msgid "Free disk space:"
-#~ msgstr "Espace disque libre :"
+#~ msgstr "Espace disque libre :"
 
 #~ msgid "_Detect ..."
 #~ msgstr "_Détecter ..."
