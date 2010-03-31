@@ -67,7 +67,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         Dir = self.__make_dir()
         import datetime
         today = datetime.date.today().__str__()
-        filename = '%s/apt-snapshot-%s'%(Dir, today)
+        filename = '%s/rpm-snapshot-%s'%(Dir, today)
         with open(filename, 'w') as f:
             for p in self.__get_installed_packages_set():
                 print >>f, p
@@ -82,7 +82,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         self.__refresh_calendar()
 
     def __get_day_from_filename(self, filename):
-        return int ( filename.replace('apt-snapshot-', '').split('-')[2] )
+        return int ( filename.replace('rpm-snapshot-', '').split('-')[2] )
 
     def __get_selected_date(self):
         year, month, day = self.calendar.get_date()
@@ -92,12 +92,12 @@ class FedoraRPMRecoveryPane(gtk.VBox):
     def __get_shapshots_in_month(self, year, month):
         import glob
         Dir = self.__make_dir()
-        return glob.glob( Dir + 'apt-snapshot-%04d-%02d-*' % (year, month) )
+        return glob.glob( Dir + 'rpm-snapshot-%04d-%02d-*' % (year, month) )
 
     def __get_shapshot_in_day(self, year, month, day):
         import glob, os
         Dir = self.__make_dir()
-        path = Dir + 'apt-snapshot-%04d-%02d-%02d' % (year, month, day)
+        path = Dir + 'rpm-snapshot-%04d-%02d-%02d' % (year, month, day)
         if os.path.exists(path): return path
         else: return None
 
