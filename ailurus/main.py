@@ -222,7 +222,8 @@ class MainView:
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
+                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
+                ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
                 ]
         List.reverse()

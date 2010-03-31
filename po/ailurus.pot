@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 07:45+0800\n"
+"POT-Creation-Date: 2010-03-31 08:09+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1753,7 +1753,7 @@ msgid "Open source web browser"
 msgstr ""
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:29
-msgid "RMP recovery"
+msgid "RPM recovery"
 msgstr ""
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:52
@@ -3347,55 +3347,61 @@ msgid ""
 "APT"
 msgstr ""
 
-#: .././ailurus/main.py:226 .././ailurus/ubuntu/clean_up_pane.py:28
+#: .././ailurus/main.py:226
+msgid ""
+"Recover\n"
+"RPM"
+msgstr ""
+
+#: .././ailurus/main.py:227 .././ailurus/ubuntu/clean_up_pane.py:28
 msgid "Clean up"
 msgstr ""
 
-#: .././ailurus/main.py:326
+#: .././ailurus/main.py:327
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:327
+#: .././ailurus/main.py:328
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:328
+#: .././ailurus/main.py:329
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:329
+#: .././ailurus/main.py:330
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:330
+#: .././ailurus/main.py:331
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:332
+#: .././ailurus/main.py:333
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:333
+#: .././ailurus/main.py:334
 msgid "load \"apt recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:335
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:336
+#: .././ailurus/main.py:337
 msgid "load \"rpm recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:359
+#: .././ailurus/main.py:360
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:388
+#: .././ailurus/main.py:389
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:400
+#: .././ailurus/main.py:401
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 

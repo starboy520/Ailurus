@@ -26,20 +26,16 @@ from lib import *
 from libu import *
 
 class FedoraRPMRecoveryPane(gtk.VBox):
-    name = _('RMP recovery')
+    name = _('RPM recovery')
     
     def __get_installed_packages_set(self):
-        path = os.path.dirname(os.path.abspath(__file__))+'../support/dumpaptcache2.py'
+        path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumprpmcache.py'
         
         set1 = set()
-        
         import subprocess
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE)
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         for line in task.stdout:
-            name = line[2:-1]
-            if line[0]=='i': set1.add(name)
-            
+            set1.add(line.strip())
         return set1
 
     def __make_dir(self):

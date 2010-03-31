@@ -29,7 +29,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
     name = _('APT recovery')
     
     def __get_installed_packages_set(self):
-        path = os.path.dirname(os.path.abspath(__file__))+'../support/dumpaptcache2.py'
+        path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumpaptcache2.py'
         
         set1 = set()
         
