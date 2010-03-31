@@ -563,32 +563,34 @@ def __compiz_setting():
     return Setting(table, _('CompizConfig Settings'), ['window'])
 
 def get():
-    try:
-        import gconf
-        return [
-            __desktop_icon_setting(),
-            __desktop_wallpaper(),
-            __menu_icon_setting(),
-            __start_here_icon_setting(),
-            __login_icon_setting(),
-            __button_icon_setting(),
-            __font_size_setting(),
-            __window_behaviour_setting(),
-            __nautilus_thumbnail_setting(),
-            __gnome_splash_setting(),
-            __gnome_session_setting(),
-            __textbox_context_menu_setting(),
-            __disable_terminal_beep(),
-            __backlight(),
-            __advance_setting(),
-#            __suspend_and_hibernate(),
-            __restriction_on_current_user(),
-            __layout_of_window_titlebar_buttons(),
-            __more_nautilus_settings(),
-            __shortcut_setting(),
-            __compiz_setting(),
-            ]
-    except:
-        import traceback
-        traceback.print_exc()
-        return []
+    ret = []
+    for f in [
+            __desktop_icon_setting,
+            __desktop_wallpaper,
+            __menu_icon_setting,
+            __start_here_icon_setting,
+            __login_icon_setting,
+            __button_icon_setting,
+            __font_size_setting,
+            __window_behaviour_setting,
+            __nautilus_thumbnail_setting,
+            __gnome_splash_setting,
+            __gnome_session_setting,
+            __textbox_context_menu_setting,
+            __disable_terminal_beep,
+            __backlight,
+            __advance_setting,
+#            __suspend_and_hibernate,
+            __restriction_on_current_user,
+            __layout_of_window_titlebar_buttons,
+            __more_nautilus_settings,
+            __shortcut_setting,
+            __compiz_setting,
+            ]:
+        try:
+            import gconf
+            ret.append(f())
+        except:
+            import traceback
+            traceback.print_exc()
+    return ret

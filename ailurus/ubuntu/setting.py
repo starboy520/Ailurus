@@ -296,7 +296,11 @@ def __update_manager_setting():
     return Setting(vbox, _('Ubuntu update manager setting'), ['update'])
 
 def get():
-    try:
-        return [__nautilus_menu_setting(), __update_manager_setting() ]
-    except:
-        return []
+    ret = []
+    for f in [ __nautilus_menu_setting, __update_manager_setting ]:
+        try:
+            ret.append(f())
+        except:
+            import traceback
+            traceback.print_exc()
+    return ret
