@@ -2,7 +2,7 @@
 _Name=Ailurus - Install software
 _Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --install-software
-Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Icon=/usr/share/ailurus/data/velly_icons/m_install_software.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application

@@ -24,6 +24,30 @@ import sys, os
 from lib import *
 from libapp import * 
 
+def create_eclipse_icon():
+        memarg = ''
+        try:
+            f = open('/proc/meminfo')
+            for line in f:
+                if 'MemTotal' in line:
+                    amount = int(line.split()[1]) ; break
+            if amount >= 1024 * 1024 * 1.5:
+                memarg = '-Xms512M -Xmx1024M'
+        except:
+            pass
+        icon = '/usr/share/applications/eclipse.desktop'
+        with TempOwn(icon) as o:
+            with open(icon, 'w') as f:
+                f.write('''[Desktop Entry]
+Name=Eclipse
+Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development
+Icon=/usr/lib/eclipse/icon.xpm''')
+
 def message(title, content):
     import StringIO
     assert isinstance(title, (str, unicode)) and title
@@ -38,6 +62,37 @@ def message(title, content):
     dialog.run()
     dialog.destroy()
     gtk.gdk.threads_leave()
+
+if Config.is_Fedora():
+    class Eclipse(_rpm_install):
+        __doc__ = _('Eclipse (basic development environment)')
+        detail = ( 
+                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
+                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
+                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
+                _(' This application depends on Java.') )
+        category = 'eclipse'
+        logo = 'eclipse.png'
+        license = ('Eclipse Public License (EPL), '
+                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        def __init__(self):
+            self.pkgs = 'eclipse-platform'
+elif Config.is_Ubuntu():
+    class Eclipse(_apt_install):
+        __doc__ = _('Eclipse (basic development environment)')
+        detail = ( 
+                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
+                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
+                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
+                _(' This application depends on Java.') )
+        category = 'eclipse'
+        logo = 'eclipse.png'
+        license = ('Eclipse Public License (EPL), '
+                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        def __init__(self):
+            self.pkgs = 'eclipse-platform'
 
 def make_sure_installed():
     if Config.is_Ubuntu():
@@ -56,11 +111,9 @@ class CDT(_path_lists):
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
 45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
-        import os
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
-        import os
         make_sure_installed()
         f = self.r.download()
         gksudo('mkdir -p '+self.path)
@@ -78,7 +131,6 @@ class Pydev(_path_lists):
 ['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
 'http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
 4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
-        import os
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
@@ -148,9 +200,8 @@ class Mylyn(_path_lists):
         self.path = '/usr/lib/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
     def install(self):
-        import lib
         make_sure_installed()
-        f = R('http://d2u376ub0heus3.cloudfront.net/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
+        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s" % (f, self.path) )
         gksudo("chown $USER:$USER /usr/lib/eclipse -R")
@@ -212,7 +263,6 @@ class Subversive:
     license = 'Eclipse Public License (EPL)'
     def installed(self):
         import glob
-        import lib
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
         return bool(List)
     def install(self):
@@ -234,7 +284,6 @@ class MTJ(_path_lists):
     category = 'eclipse'
     license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
     def __init__(self):
-        import lib
         self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]
     def install(self):

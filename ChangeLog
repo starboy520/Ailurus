@@ -1,5 +1,8 @@
 2010-03-31 MA Yue <velly.empire@gmail.com>
-    * improve the Eclipse Install functional
+
+    * Add icons for application menu shortcuts.
+    * Improve the Eclipse installation function.
+      Install Eclipse from repository.
 
 2010-03-30 Homer Xing <homer.xing@gmail.com>
 

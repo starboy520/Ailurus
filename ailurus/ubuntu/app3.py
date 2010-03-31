@@ -121,22 +121,6 @@ class QCad(_apt_install):
     def __init__(self):
         self.pkgs = 'qcad'
         
-class Eclipse(_apt_install):
-    __doc__ = _('Eclipse (basic development environment)')
-    detail = ( 
-            _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-            _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-              'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-              'and extract ".zip" file to directory "/opt/eclipse" .') + 
-            _(' This application depends on Java.') )
-    category = 'eclipse'
-    logo = 'eclipse.png'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/org/documents/epl-v10.php')
-    def __init__(self):
-        self.pkgs = 'eclipse-platform' 
-
-
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
     detail = _(u'Moonlight provides Windows® media codecs. '

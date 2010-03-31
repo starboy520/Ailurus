@@ -81,6 +81,9 @@ version 2 or higher version. Their copyright are holded by SU Yun.
 All images in directory "data/sona_icons" are released under the GPL License. 
 Their copyright are holded by Andrea Soragna.
 
+All images in directory "data/velly_icons" are released under the GPL License. 
+Their copyright are holded by MA Yue.
+
 All images in directory "data/umut_icons" and "data/appicons" are are released
 under the GNU Lesser General Public License. Their copyright are holded by M. Umut Pulat.
 

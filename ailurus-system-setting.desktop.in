@@ -2,7 +2,7 @@
 _Name=Ailurus - System setting
 _Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --system-setting
-Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Icon=/usr/share/ailurus/data/velly_icons/m_setting.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application

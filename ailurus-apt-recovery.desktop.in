@@ -2,7 +2,7 @@
 _Name=Ailurus - APT recovery
 _Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --apt-recovery
-Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png
+Icon=/usr/share/ailurus/data/velly_icons/m_recovery.png
 Terminal=false
 X-MultipleArgs=false
 Type=Application
