@@ -353,93 +353,14 @@ class Flash_Player_Font_Bug:
         if os.path.exists(self.__file):
             print >>f, _('The file "%s" exists.')%self.__file
 
-class StardictAndDictionaries(_apt_install):
-    __doc__ = _('Stardict and four dictionaries')
+class Stardict(_apt_install):
+    __doc__ = _('Stardict')
     category = 'office'
-    detail = _('Install Stardict. '
-       'Install Concise Chinese-English Dictionary, LangDao Chinese-English Dictionary, '
-       'LangDao English-Chinese Dictionary and Oxford Modern English-Chinese Dictionary. '
-       'Stardict official site is http://stardict.sourceforge.net/. '
-       'Dictionaries are obtained from http://stardict.sourceforge.net/Dictionaries_zh_CN.php\n'
-       'Command: sudo apt-get install stardict sdcv')
+    detail = 'Command: sudo apt-get install stardict'
     license = 'GNU General Public License (GPL)'
-    time = 18
-    size = 2424 * 1000 + 36796 * 1000 # deb installed size and four dictionary directories.
-    Chinese = True
     logo = 'stardict.png'
     def __init__(self):
-        self.pkgs = 'stardict sdcv'
-        import os
-        self.conf_file = os.path.expanduser('~/.stardict/stardict.cfg')
-    def install(self):
-        _apt_install.install(self)
-        FileServer.chdir_local()
-        try:
-            for file in [
-                R(
-                  ['http://tdt.sjtu.edu.cn/S/Stardict/stardict-cedict-gb-2.4.2.tar.bz2',
-                   'http://ncu.dl.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-cedict-gb-2.4.2.tar.bz2'],
-                  726947, 
-                  '7d05cd72087db22264d9c5f62f73e5e048effab0'
-                  ).download(),
-                R(
-                  ['http://tdt.sjtu.edu.cn/S/Stardict/stardict-langdao-ce-gb-2.4.2.tar.bz2',
-                   'http://ncu.dl.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-langdao-ce-gb-2.4.2.tar.bz2'],
-                  7345014, 
-                  '5a63069f17d8f1d4089cdf0662ab139089c05e61'
-                  ).download(),
-                R(
-                  ['http://tdt.sjtu.edu.cn/S/Stardict/stardict-langdao-ec-gb-2.4.2.tar.bz2',
-                   'http://ncu.dl.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-langdao-ec-gb-2.4.2.tar.bz2'],
-                  8743872, 
-                  '9c70805b8a67bbbcce0ef877f65bbc5dfcb68f68'
-                  ).download(),
-                R(
-                  ['http://tdt.sjtu.edu.cn/S/Stardict/stardict-oxford-gb-2.4.2.tar.bz2',
-                   'http://ncu.dl.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-oxford-gb-2.4.2.tar.bz2'],
-                  7702157, 
-                  '57746f37d706cc40bbd02ccdeca8e38759afd613'
-                  ).download(),
-                  ]:
-                run("bunzip2 -f %s"%file)
-                run("tar xf %s"%file[:-4])
-            gksudo('rm /usr/share/stardict/dic/stardict-* -rf')
-            for path in [ 'stardict-cedict-gb-2.4.2', 'stardict-langdao-ec-gb-2.4.2',
-    'stardict-langdao-ce-gb-2.4.2', 'stardict-oxford-gb-2.4.2' ] :
-                import os
-                if not os.path.exists('/usr/share/stardict/dic/'+path):
-                    gksudo("mv %s /usr/share/stardict/dic/"%path)
-        finally:
-            FileServer.chdir_back()
-
-        import os
-        dir_name = os.path.dirname(self.conf_file)
-        if not os.path.exists(dir_name):
-            run('mkdir %s'%dir_name)
-        with open(self.conf_file ,'a') as f:
-            f.write(r'''[/apps/stardict/preferences/dictionary]
-use_custom_font=true
-custom_font=FreeSerif 13''')
-    def installed(self):
-        if not _apt_install.installed(self):
-            return False
-        for path in [ 'stardict-cedict-gb-2.4.2', 'stardict-langdao-ec-gb-2.4.2',
-'stardict-langdao-ce-gb-2.4.2', 'stardict-oxford-gb-2.4.2' ] :
-            import os
-            if not os.path.exists('/usr/share/stardict/dic/'+path): return False
-        return True
-    def get_reason(self, f):
-        self._get_reason(f)
-        #evaluate
-        not_in = []
-        import os
-        for path in [ 'stardict-cedict-gb-2.4.2', 'stardict-langdao-ec-gb-2.4.2',
-'stardict-langdao-ce-gb-2.4.2', 'stardict-oxford-gb-2.4.2' ] :
-            path = '/usr/share/stardict/dic/'+path
-            if not os.path.exists(path): not_in.append(path)
-        #output
-        if not_in:
-            print >>f, _('"%s" does not exist.')%' '.join(not_in),
+        self.pkgs = 'stardict'
         
 class Liferea(_apt_install):
     __doc__ = _('Liferea: a RSS feed reader')
