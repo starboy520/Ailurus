@@ -120,7 +120,7 @@ class QCad(_apt_install):
     logo = 'qcad.png'
     def __init__(self):
         self.pkgs = 'qcad'
-
+        
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
     detail = _(u'Moonlight provides Windows® media codecs. '

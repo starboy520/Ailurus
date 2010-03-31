@@ -22,53 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from libapp import *
-
-def message(title, content):
-    import StringIO
-    assert isinstance(title, (str, unicode)) and title
-    assert isinstance(content, (str, unicode, StringIO.StringIO) )
-    if isinstance(content, StringIO.StringIO): content = content.getvalue()
-    
-    import gtk
-    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
-    dialog.set_title( _('Installing Eclipse extension') )
-    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
-    dialog.show_all()
-    gtk.gdk.threads_enter()
-    dialog.run()
-    dialog.destroy()
-    gtk.gdk.threads_leave()
-
-class _parser:
-    def __init__(self):
-        self.attension = False
-        self.url = None
-    def cope_a(self, line):
-        if self.attension == False: return
-        if self.url: return
-        
-        import re
-        match = re.search('<a href="([^"]+)"', line)
-        assert match
-        self.url = match.group(1)
-        assert self.url.startswith('download.php?'), self.url
-    def cope_download(self, line):
-        self.attension = True
-    def cope(self, line):
-        if '<b>Download</b>' in line:
-            self.cope_download(line)
-        elif '<a href=' in line:
-            self.cope_a(line)
-    def parse(self, URL):
-        import urllib2
-        f = urllib2.urlopen(URL)
-        lines = f.readlines()
-        f.close()
-        for line in lines:
-            self.cope(line)
-        assert self.url
-        return self.url
+from libapp import * 
 
 def create_eclipse_icon():
         memarg = ''
@@ -86,481 +40,65 @@ def create_eclipse_icon():
             with open(icon, 'w') as f:
                 f.write('''[Desktop Entry]
 Name=Eclipse
-Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /opt/eclipse/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
+Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
 Encoding=UTF-8
 StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Development
-Icon=/opt/eclipse/icon.xpm''')
+Icon=/usr/lib/eclipse/icon.xpm''')
 
-class Eclipse_basic(_path_lists):
-    __doc__ = _('Eclipse (basic development environment)')
-    detail = ( 
-            _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-            _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-              'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-              'and extract ".zip" file to directory "/opt/eclipse" .') + 
-            _(' This application depends on Java.')
-            )
-    category = 'eclipse'
-    logo = 'eclipse.png'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/org/documents/epl-v10.php')
-    def install(self):
-        if get_arch() == 32:
-            r = R([
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.cdpa.nsysu.edu.tw/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.yz.yamagata-u.ac.jp/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.in.th/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.korea.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirrors.nsa.co.il/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://kambing.ui.ac.id/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.kaist.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.cs.pu.edu.tw/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.daum.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.cs.pu.edu.tw/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.daum.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.in.th/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.kaist.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirrors.nsa.co.il/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.stu.edu.tw/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.unixheads.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.ussg.iu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.csclub.uwaterloo.ca/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.cs.rit.edu/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://www.gtlib.gatech.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.cse.buffalo.edu/pub/Eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirrors.med.harvard.edu/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.cc.columbia.edu/pub/software/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.ussg.iu.edu/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.unixheads.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.cc.vt.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirrors.xmission.com/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.cc.vt.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.csclub.uwaterloo.ca/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirrors.ibiblio.org/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://carroll.aset.psu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.cc.columbia.edu/pub/software/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://carroll.aset.psu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirrors.xmission.com/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.mirrors.tds.net/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirrors.ibiblio.org/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.selfnet.de/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.a3-system.be/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.man.szczecin.pl/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.roedu.net/mirrors/eclipse.org//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.netcologne.de/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.cc.uoc.gr/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.rnl.ist.utl.pt/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.roedu.net/pub/mirrors/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.switch.ch/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.roedu.net/pub/mirrors/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://www.rcp-vision.com/pub/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.ing.umu.se/mirror/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.ialto.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.rnl.ist.utl.pt/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.dcc.fc.up.pt/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/eclipse/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.saplabs.bg/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirror.selfnet.de/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.roedu.net/mirrors/eclipse.org//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.mirror.kangaroot.net/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://rm.mirror.garr.it/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.cc.uoc.gr/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://mirrors.linux-bg.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.netcologne.de/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.ulak.net.tr/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.ialto.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.saplabs.bg//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://sunsite.informatik.rwth-aachen.de/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://rm.mirror.garr.it/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.heanet.ie/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirror.kreksi.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.sh.cvut.cz/MIRRORS/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipsemirror.yoxos.com/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.heanet.ie/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.mirror.kangaroot.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://www.eclipse.ps.pl/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.i-logic.hu//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://mirrors.linux-bg.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://filemirror.hu/pub/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.ulak.net.tr/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.man.poznan.pl/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://www.rcp-vision.com/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.sh.cvut.cz/MIRRORS/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.ing.umu.se/mirror/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.man.poznan.pl/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://ftp.saix.net/Eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://eclipse.c3sl.ufpr.br/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://eclipse.c3sl.ufpr.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'ftp://ftp.pucpr.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-'http://linorg.usp.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk.tar.gz',
-                   ])
-        else:
-            r = R([
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.daum.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.in.th/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://kambing.ui.ac.id/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.yz.yamagata-u.ac.jp/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.nsa.co.il/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.kaist.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.cdpa.nsysu.edu.tw/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.cs.pu.edu.tw/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.korea.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://www.ring.gr.jp/pub/misc/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.stu.edu.tw/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.daum.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.jaist.ac.jp/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.nsa.co.il/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.stu.edu.tw/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.in.th/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.kaist.ac.kr/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.cse.buffalo.edu/pub/Eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.ibiblio.org/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.cc.vt.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cs.rit.edu/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cc.columbia.edu/pub/software/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.osuosl.org/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cc.vt.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.xmission.com/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.csclub.uwaterloo.ca/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://carroll.aset.psu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.unixheads.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.csclub.uwaterloo.ca/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ussg.iu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.med.harvard.edu/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.unixheads.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.cc.columbia.edu/pub/software/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.ussg.iu.edu/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.xmission.com/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.ibiblio.org/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.mirrors.tds.net/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://www.gtlib.gatech.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://carroll.aset.psu.edu/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.ulak.net.tr/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.ialto.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.switch.ch/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipsemirror.yoxos.com/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://sunsite.informatik.rwth-aachen.de/pub/mirror/eclipse/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.saplabs.bg/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.man.szczecin.pl/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.sh.cvut.cz/MIRRORS/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.ialto.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.roedu.net/mirrors/eclipse.org//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.heanet.ie/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.linux-bg.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.heanet.ie/pub/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://www.rcp-vision.com/pub/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.man.poznan.pl/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.netcologne.de/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.roedu.net/pub/mirrors/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.mirror.kangaroot.net/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.a3-system.be/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.kreksi.net/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.dcc.fc.up.pt/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://sunsite.informatik.rwth-aachen.de/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://www.eclipse.ps.pl/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ulak.net.tr/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.man.poznan.pl/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://www.rcp-vision.com/eclipse/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ing.umu.se/mirror/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.i-logic.hu//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.ing.umu.se/mirror/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://rm.mirror.garr.it/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.netcologne.de/eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.linux-bg.org/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.cc.uoc.gr/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.rnl.ist.utl.pt/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.rnl.ist.utl.pt/pub/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://rm.mirror.garr.it/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://mirror.selfnet.de/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.roedu.net/mirrors/eclipse.org//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://filemirror.hu/pub/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.selfnet.de/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.cc.uoc.gr/mirrors/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.sh.cvut.cz/MIRRORS/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.saplabs.bg//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.roedu.net/pub/mirrors/eclipse.org/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.mirror.kangaroot.net/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://ftp.saix.net/Eclipse//eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.c3sl.ufpr.br/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'http://linorg.usp.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.pucpr.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.c3sl.ufpr.br/eclipse/eclipse/downloads/drops/R-3.5.1-200909170800/eclipse-SDK-3.5.1-linux-gtk-x86_64.tar.gz',
-                   ])
-        f = r.download()
-        import os
-        if not os.path.exists('/opt'): gksudo('mkdir /opt')
-        FileServer.chdir('/opt')
-        try:
-            gksudo("rm eclipse -rf")
-            gksudo("tar xzf %s"%f)
-            gksudo("chown $USER:$USER eclipse -R")
-        finally:
-            FileServer.chdir_back()
-        
-        create_eclipse_icon()
-    def __init__(self):
-        self.paths = [ '/opt/eclipse', '/usr/share/applications/eclipse.desktop' ]
-    @classmethod
-    def make_sure_installed(cls):
-        obj = cls()
-        if not obj.installed(): obj.install()
+def message(title, content):
+    import StringIO
+    assert isinstance(title, (str, unicode)) and title
+    assert isinstance(content, (str, unicode, StringIO.StringIO) )
+    if isinstance(content, StringIO.StringIO): content = content.getvalue()
+    import gtk
+    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
+    dialog.set_title( _('Installing Eclipse extension') )
+    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
+    dialog.show_all()
+    gtk.gdk.threads_enter()
+    dialog.run()
+    dialog.destroy()
+    gtk.gdk.threads_leave()
 
-class Eclipse_J2EE(_path_lists):
-    __doc__ = _('Eclipse (basic development environment + J2EE)')
-    category = 'eclipse'
-    logo = 'eclipse.png'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/org/documents/epl-v10.php')
-    def install(self):
-        if get_arch() == 32:
-            r = R([
-'http://download.actuatechina.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.stu.edu.tw/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.daum.net/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirrors.nsa.co.il/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.stu.edu.tw/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.cs.pu.edu.tw/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.yz.yamagata-u.ac.jp/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirrors.nsa.co.il/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://kambing.ui.ac.id/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.in.th/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.daum.net/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.stu.edu.tw/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirrors.ibiblio.org/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.cc.columbia.edu/pub/software/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://carroll.aset.psu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.unixheads.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirrors.ibiblio.org/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirrors.med.harvard.edu/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.ussg.iu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://carroll.aset.psu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.cs.rit.edu/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://www.gtlib.gatech.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.cc.columbia.edu/pub/software/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.unixheads.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirrors.xmission.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.cse.buffalo.edu/pub/Eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirrors.xmission.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://www.rcp-vision.com/pub/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.man.poznan.pl/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.netcologne.de/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.ntua.gr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.roedu.net/mirrors/eclipse.org//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.i-logic.hu//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.switch.ch/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.roedu.net/mirrors/eclipse.org//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.man.szczecin.pl/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://rm.mirror.garr.it/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://rm.mirror.garr.it/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.ing.umu.se/mirror/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.ing.umu.se/mirror/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.mirror.kangaroot.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.roedu.net/pub/mirrors/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://www.rcp-vision.com/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.heanet.ie/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.netcologne.de/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.cc.uoc.gr/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.man.poznan.pl/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.ulak.net.tr/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.a3-system.be/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirrors.linux-bg.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.roedu.net/pub/mirrors/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.ialto.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.switch.ch/mirror/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.ulak.net.tr/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.saplabs.bg/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.ialto.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.ntua.gr/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirrors.linux-bg.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.saplabs.bg//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://mirror.selfnet.de/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.heanet.ie/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipsemirror.yoxos.com/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.mirror.kangaroot.net/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.sh.cvut.cz/MIRRORS/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.cc.uoc.gr/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://mirror.selfnet.de/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.inescn.pt/pub/util/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://ftp.sh.cvut.cz/MIRRORS/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://linorg.usp.br/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'ftp://eclipse.c3sl.ufpr.br/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-'http://espelhos.edugraf.ufsc.br/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk.tar.gz',
-                   ])
-        else:
-            r = R([
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://download.actuatechina.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.cs.pu.edu.tw/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.stu.edu.tw/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.daum.net/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.stu.edu.tw/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.nsa.co.il/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.yz.yamagata-u.ac.jp/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.jaist.ac.jp/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.kaist.ac.kr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.in.th/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.daum.net/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.stu.edu.tw/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.nsa.co.il/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://kambing.ui.ac.id/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://carroll.aset.psu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.ibiblio.org/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.ibiblio.org/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://www.gtlib.gatech.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.unixheads.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.xmission.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.xmission.com/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.osuosl.org/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cc.columbia.edu/pub/software/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.cse.buffalo.edu/pub/Eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ussg.iu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cc.vt.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.med.harvard.edu/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.cc.columbia.edu/pub/software/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.cs.rit.edu/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://carroll.aset.psu.edu/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.ussg.iu.edu/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.csclub.uwaterloo.ca/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.unixheads.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.man.poznan.pl/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.sh.cvut.cz/MIRRORS/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirrors.linux-bg.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.man.poznan.pl/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.ing.umu.se/mirror/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.heanet.ie/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.man.szczecin.pl/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.cc.uoc.gr/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.ialto.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://www.rcp-vision.com/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.roedu.net/pub/mirrors/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.ntua.gr/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.ialto.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipsemirror.yoxos.com/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.a3-system.be/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.i-logic.hu//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://rm.mirror.garr.it/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ing.umu.se/mirror/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.saplabs.bg/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.switch.ch/mirror/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.wh2.tu-dresden.de/pub/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.roedu.net/mirrors/eclipse.org//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp.roedu.net/pub/mirrors/eclipse.org/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.sh.cvut.cz/MIRRORS/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.cc.uoc.gr/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.heanet.ie/pub/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.netcologne.de/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ulak.net.tr/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://rm.mirror.garr.it/mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.selfnet.de/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://d2u376ub0heus3.cloudfront.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.roedu.net/mirrors/eclipse.org//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.mirror.kangaroot.net/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.saplabs.bg//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.mirror.kangaroot.net/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.ulak.net.tr/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.netcologne.de/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirror.switch.ch/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://mirrors.linux-bg.org/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://mirror.selfnet.de/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.inescn.pt/pub/util/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://www.rcp-vision.com/pub/eclipse/eclipseMirror/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://ftp.ntua.gr/pub/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'ftp://eclipse.c3sl.ufpr.br/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://linorg.usp.br/eclipse/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://espelhos.edugraf.ufsc.br/eclipse//technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-'http://eclipse.c3sl.ufpr.br/technology/epp/downloads/release/galileo/SR1/eclipse-jee-galileo-SR1-linux-gtk-x86_64.tar.gz',
-                   ])
-        f = r.download()
-        import os
-        if not os.path.exists('/opt'): gksudo('mkdir /opt')
-        FileServer.chdir('/opt')
-        try:
-            gksudo("rm eclipse -rf")
-            gksudo("tar xzf %s"%f)
-            gksudo("chown $USER:$USER eclipse -R")
-        finally:
-            FileServer.chdir_back()
-        
-        create_eclipse_icon()
-    def __init__(self):
-        self.paths = [ '/opt/eclipse', '/usr/share/applications/eclipse.desktop' ]
-    def installed(self):
-        import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.epp.*')
-        if bool(List) == False: return False
-        return _path_lists.installed(self)
+if Config.is_Fedora():
+    class Eclipse(_rpm_install):
+        __doc__ = _('Eclipse (basic development environment)')
+        detail = ( 
+                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
+                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
+                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
+                _(' This application depends on Java.') )
+        category = 'eclipse'
+        logo = 'eclipse.png'
+        license = ('Eclipse Public License (EPL), '
+                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        def __init__(self):
+            self.pkgs = 'eclipse-platform'
+elif Config.is_Ubuntu():
+    class Eclipse(_apt_install):
+        __doc__ = _('Eclipse (basic development environment)')
+        detail = ( 
+                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
+                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
+                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
+                _(' This application depends on Java.') )
+        category = 'eclipse'
+        logo = 'eclipse.png'
+        license = ('Eclipse Public License (EPL), '
+                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        def __init__(self):
+            self.pkgs = 'eclipse-platform'
+
+def make_sure_installed():
+    if Config.is_Ubuntu():
+        if not APT.installed('eclipse-plateform'): APT.install('eclipse-platform')
+    else:
+        if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
 
 class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
@@ -573,15 +111,14 @@ class CDT(_path_lists):
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
 45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
-        import os
-        self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         f = self.r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
 
 class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
@@ -594,15 +131,14 @@ class Pydev(_path_lists):
 ['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
 'http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
 4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
-        import os
-        self.path = '/opt/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
+        self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         f = self.r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
 
 class Aptana:
     __doc__ = _('Aptana: Web application development')
@@ -615,10 +151,10 @@ class Aptana:
     license = 'dual-licensed under the terms of Aptana Public License and GPL'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/com.aptana.ide.*')
+        List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
         return bool(List)
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -638,10 +174,10 @@ class RadRails:
     license = 'It is released under GPL v3 and Aptana Public License.'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/com.aptana.radrails.*')
+        List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.radrails.*')
         return bool(List)
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -661,14 +197,14 @@ class Mylyn(_path_lists):
                'see http://www.eclipse.org/legal/')
     
     def __init__(self):
-        self.path = '/opt/eclipse/dropins/mylyn'
+        self.path = '/usr/lib/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
     def install(self):
-        Eclipse_basic.make_sure_installed()
-        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.1-e3.4.zip').download()
+        make_sure_installed()
+        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s" % (f, self.path) )
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
 
 class DLTK:
     __doc__ = _('Dynamic languages toolkit')
@@ -678,10 +214,10 @@ class DLTK:
                'see http://www.eclipse.org/legal/')
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.dltk.*')
+        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.dltk.*')
         return bool(List)
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -693,7 +229,7 @@ class DLTK:
     def remove(self):
         raise NotImplementedError
     @classmethod
-    def make_sure_installed(cls):
+    def make_sure_DLTK_installed(cls):
         obj = cls()
         if not obj.installed(): obj.install()
 
@@ -705,10 +241,10 @@ class PDT:
                'see http://www.eclipse.org/legal/')
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.php.*')
+        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
         return bool(List)
     def install(self):
-        DLTK.make_sure_installed()
+        DLTK.make_sure_DLTK_installed()
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -727,10 +263,10 @@ class Subversive:
     license = 'Eclipse Public License (EPL)'
     def installed(self):
         import glob
-        List = glob.glob('/opt/eclipse/plugins/org.eclipse.team.svn.*')
+        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
         return bool(List)
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -748,10 +284,10 @@ class MTJ(_path_lists):
     category = 'eclipse'
     license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
     def __init__(self):
-        self.path = '/opt/eclipse/dropins/MTJ/'
+        self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]
     def install(self):
-        Eclipse_basic.make_sure_installed()
+        make_sure_installed()
         r = R([
 'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
 'http://mirrors.nsa.co.il/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
@@ -843,4 +379,4 @@ class MTJ(_path_lists):
         f = r.download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /opt/eclipse -R")
+        gksudo("chown $USER:$USER /usr/lib/eclipse -R")

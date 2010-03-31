@@ -35,7 +35,7 @@ class WINE(_rpm_install):
     category = 'vm'
     def __init__(self):
         self.pkgs = 'wine'
-
+        
 class GEdit_Suitable_For_Programmer(_set_gconf, _rpm_install) :
     __doc__ = _('Make GEdit more suitable for programmers')
     detail = _('Change GEdit settings as follows. '
