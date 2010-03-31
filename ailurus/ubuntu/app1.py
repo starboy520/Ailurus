@@ -466,7 +466,6 @@ class FireWall(_apt_install):
     def __init__(self):
         self.pkgs = 'firestarter'
 
-<<<<<<< HEAD
 class InstallFreshLinuxKernel:
     __doc__ = _('Fresh Linux Kernel')
     detail = _(u'This is Linux kernel version 2.6.31. '
@@ -540,8 +539,6 @@ class InstallFreshLinuxKernel:
                       'linux-image-%s-generic'%self.version )
         APT.cache_changed()
 
-=======
->>>>>>> FETCH_HEAD
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
