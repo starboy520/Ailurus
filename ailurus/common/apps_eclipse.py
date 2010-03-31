@@ -150,7 +150,7 @@ class Mylyn(_path_lists):
     def install(self):
         import lib
         make_sure_installed()
-        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.1-e3.4.zip').download()
+        f = R('http://d2u376ub0heus3.cloudfront.net/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
         gksudo('mkdir -p '+self.path)
         gksudo("unzip -qo %s -d %s" % (f, self.path) )
         gksudo("chown $USER:$USER /usr/lib/eclipse -R")
