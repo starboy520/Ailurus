@@ -1,5 +1,15 @@
 2010-03-30 Homer Xing <homer.xing@gmail.com>
 
+    * Add more information in CommandFailError
+    * We can launch partial functionality now. Our time is saved.
+    * Fix bugs in "RPM recovery" pane.
+
+2010-03-30 MA Yue <velly.empire@gmail.com>
+
+    * Add an icon for "clean up" pane.
+
+2010-03-30 Homer Xing <homer.xing@gmail.com>
+
     * Makes text shorter in "clean up" pane.
     * Fix folder size bug in "clean up" pane.
 
@@ -9,6 +19,7 @@
       Add a feature to clean APT cache;
       Add a feature to clean Ailurus cache(/var/cache/ailurus);
       Add a feature to remove unused kernel.
+    * Add "RPM recovery" pane.
 
 2010-03-29 Homer Xing <homer.xing@gmail.com>
 

@@ -1,7 +1,7 @@
 include AUTHORS COPYING INSTALL README
 include MANIFEST.in MANIFEST
 include ChangeLog version
-include ailurus.1 ailurus.desktop ailurus.desktop.in
+include ailurus.1 ailurus*.desktop.in ailurus*.desktop
 recursive-include data *
 recursive-include po *
 recursive-include support *

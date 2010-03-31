@@ -20,8 +20,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.03.4'
-AILURUS_RELEASE_DATE = '2010-03-29'
+AILURUS_VERSION = '10.03.5'
+AILURUS_RELEASE_DATE = '2010-03-30'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -273,6 +273,20 @@ install_locale()
 
 class CommandFailError(Exception):
     'Fail to execute a command'
+    def __init__(self, *args):
+        new_args = list(args)
+        import os
+        arch = os.uname()[-1]
+        new_args.append(arch)
+        try:
+            with open('/etc/lsb-release') as f:
+                new_args.append(f.read().strip())
+        except: pass
+        try:
+            with open('/etc/fedora-release') as f:
+                new_args.append(f.read().strip())
+        except: pass
+        Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):
     is_string_not_empty(cmd)
@@ -491,12 +505,6 @@ def own_by_user(*paths):
         import os
         if os.stat(path).st_uid != os.getuid():
             gksudo('chown $USER:$USER "%s"'%path)
-
-class NoSizeError(Exception):
-    'HTTP server does not respond file size.'
-
-class NoEnoughDiskSpaceError(Exception):
-    'There is no enough disk space to save the downloaded file'
 
 class FileServer:
     @classmethod
@@ -813,24 +821,6 @@ class DPKG:
         gksudo('dpkg -r %s'%package_name)
         APT.cache_changed()
 
-class HostUnreachable(Exception):
-    pass
-
-def ping ( host ):
-    if type ( host ) != str: raise TypeError
-    if len ( host ) == 0:    raise ValueError
-    import re
-    if re.match ( r'[a-zA-Z0-9\.]+', host ) == None: raise ValueError
-    import commands
-    status, output = commands.getstatusoutput ( 'ping -c 1 -W 2 %s' % host ) # timeout = 5 seconds
-    if status == 0 :
-        match = re.search ( r'\btime=([0-9\.]+)\b', output )
-        return float ( match.group ( 1 ) )
-    elif status == 512 :
-        raise HostUnreachable
-    else :
-        raise RuntimeError('Return status=%s'%status, output)
-
 def get_response_time(url):
     is_string_not_empty(url)
 
@@ -857,7 +847,7 @@ def derive_size(size):
         return _('%.1f MB') % ( size/_1M )
     if size>=_1K:
         return _('%.1f KB') % ( size/_1K )
-    return _('less than 1 KB')
+    return _('%s bytes') % int(size)
 
 def derive_time(time):
     if not isinstance(time, int): raise TypeError
@@ -1445,3 +1435,4 @@ class Tasksel:
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
+            

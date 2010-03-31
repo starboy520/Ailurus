@@ -22,6 +22,5 @@
 import apps
 import menu
 import osinfo
-import pane_register
 import setting
 import tips

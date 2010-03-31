@@ -29,7 +29,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
     name = _('APT recovery')
     
     def __get_installed_packages_set(self):
-        path = os.path.dirname(os.path.abspath(__file__))+'../support/dumpaptcache2.py'
+        path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumpaptcache2.py'
         
         set1 = set()
         
@@ -356,16 +356,3 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
                     if name == r[0]:
                         value = r[1] ; break
                 model.append([name, value])
-
-if __name__ == '__main__':
-    import os
-    os.chdir('..')
-    pane = UbuntuAPTRecoveryPane(None)
-    win = gtk.Window()
-    win.set_border_width(10)
-    win.connect('delete-event', gtk.main_quit)
-    win.add(pane)
-    win.show_all()
-    gtk.gdk.threads_enter()
-    gtk.main()
-    gtk.gdk.threads_leave()

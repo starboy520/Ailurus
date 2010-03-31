@@ -8,6 +8,17 @@
   <action id="cn.ailurus">
     <description>Ailurus</description>
     <message>System policy prevents Ailurus from launching program as "root"</message>
+    <message xml:lang="es">La política del sistema previene a Ailurus ejecutarse como «administrador»</message>
+    <message xml:lang="fr">La politique système empêche Ailurus de lancer des programmes en tant que "root"</message>
+    <message xml:lang="he">מדיניות המערכת מונעת מ־Ailurus להריץ תוכנה כמשתמש־על</message>
+    <message xml:lang="it">La politica di sistema impedisce ad Ailurus di eseguire un programma come "root"</message>
+    <message xml:lang="nl">Systeem beleid voorkomt dat Ailurus zal starten als "root"</message>
+    <message xml:lang="pt">Política de sistema previne Ailurus de correr programas como "root"</message>
+    <message xml:lang="pt_BR">Política de sistema previne Ailurus de rodar programas como "root"</message>
+    <message xml:lang="ru">Системная политика запрещает запуск Ailurus с правами "root"</message>
+    <message xml:lang="sv">Systemets policy förhindrar Ailurus från att starta program som "root"</message>
+    <message xml:lang="zh_CN">系统策略阻止Ailurus以root身份启动程序</message>
+    <message xml:lang="zh_TW">系統原則禁止 Ailurus 以 root 權限開啟程式</message>
     <defaults>
       <allow_inactive>no</allow_inactive>
       <allow_active>auth_admin</allow_active>
