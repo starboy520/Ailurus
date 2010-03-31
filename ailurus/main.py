@@ -222,7 +222,8 @@ class MainView:
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_apt_recovery.png', _('Recover\nAPT'), ),
+                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
+                ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
                 ]
         List.reverse()
@@ -380,7 +381,7 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
 
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
     if options.rpm_recovery or options.all:
-        from rpm_recovery_pane import FedoraRPMRecoveryPane
+        from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)
 

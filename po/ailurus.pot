@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 09:21+0800\n"
+"POT-Creation-Date: 2010-03-31 10:25+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,27 +34,27 @@ msgstr ""
 msgid "Installing Eclipse extension"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:50
+#: .././ailurus/common/apps_eclipse.py:49
 msgid "CDT: C/C++ development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:51
+#: .././ailurus/common/apps_eclipse.py:50
 msgid "CDT is from http://www.eclipse.org/cdt/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:72
+#: .././ailurus/common/apps_eclipse.py:71
 msgid "Pydev: Python development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:73
+#: .././ailurus/common/apps_eclipse.py:72
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:93
+#: .././ailurus/common/apps_eclipse.py:92
 msgid "Aptana: Web application development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:94
+#: .././ailurus/common/apps_eclipse.py:93
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by http://download.aptana.org/tools/studio/plugin/"
@@ -64,98 +64,98 @@ msgid ""
 "Eclipse."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:109
-#: .././ailurus/common/apps_eclipse.py:132
-#: .././ailurus/common/apps_eclipse.py:173
-#: .././ailurus/common/apps_eclipse.py:200
-#: .././ailurus/common/apps_eclipse.py:223
+#: .././ailurus/common/apps_eclipse.py:108
+#: .././ailurus/common/apps_eclipse.py:131
+#: .././ailurus/common/apps_eclipse.py:172
+#: .././ailurus/common/apps_eclipse.py:199
+#: .././ailurus/common/apps_eclipse.py:222
 msgid "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:111
-#: .././ailurus/common/apps_eclipse.py:134
-#: .././ailurus/common/apps_eclipse.py:175
-#: .././ailurus/common/apps_eclipse.py:202
-#: .././ailurus/common/apps_eclipse.py:225
+#: .././ailurus/common/apps_eclipse.py:110
+#: .././ailurus/common/apps_eclipse.py:133
+#: .././ailurus/common/apps_eclipse.py:174
+#: .././ailurus/common/apps_eclipse.py:201
+#: .././ailurus/common/apps_eclipse.py:224
 #, python-format
 msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:113
-#: .././ailurus/common/apps_eclipse.py:136
-#: .././ailurus/common/apps_eclipse.py:177
-#: .././ailurus/common/apps_eclipse.py:204
-#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:112
+#: .././ailurus/common/apps_eclipse.py:135
+#: .././ailurus/common/apps_eclipse.py:176
+#: .././ailurus/common/apps_eclipse.py:203
+#: .././ailurus/common/apps_eclipse.py:226
 msgid "Then click the \"Next\" button and agree the license."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:114
+#: .././ailurus/common/apps_eclipse.py:113
 msgid "Installing Aptana"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:119
+#: .././ailurus/common/apps_eclipse.py:118
 msgid "RadRails: Ruby development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:120
+#: .././ailurus/common/apps_eclipse.py:119
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by http://"
 "download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:137
+#: .././ailurus/common/apps_eclipse.py:136
 msgid "Installing RadRails\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:143
+#: .././ailurus/common/apps_eclipse.py:142
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:160
+#: .././ailurus/common/apps_eclipse.py:159
 msgid "Dynamic languages toolkit"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:161
+#: .././ailurus/common/apps_eclipse.py:160
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:178
+#: .././ailurus/common/apps_eclipse.py:177
 msgid "Installing Dynamic languages toolkit\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:187
+#: .././ailurus/common/apps_eclipse.py:186
 msgid "PDT: PHP development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:188
+#: .././ailurus/common/apps_eclipse.py:187
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:205
+#: .././ailurus/common/apps_eclipse.py:204
 msgid "Installing PDT\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:210
+#: .././ailurus/common/apps_eclipse.py:209
 msgid "Subversive: Use SVN in Eclipse"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:211
+#: .././ailurus/common/apps_eclipse.py:210
 msgid ""
 "It is installed by http://download.eclipse.org/technology/subversive/0.7/"
 "update-site/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:228
+#: .././ailurus/common/apps_eclipse.py:227
 msgid "Installing Subversive\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:233
+#: .././ailurus/common/apps_eclipse.py:232
 msgid "MTJ: J2ME development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:234
+#: .././ailurus/common/apps_eclipse.py:233
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
@@ -852,7 +852,7 @@ msgid "100 = Swap a lot of mem to disk"
 msgstr ""
 
 #: .././ailurus/common/setting.py:63
-#: .././ailurus/fedora/rpm_recovery_pane.py:288 .././ailurus/libsetting.py:312
+#: .././ailurus/fedora/rpm_recovery_pane.py:284 .././ailurus/libsetting.py:312
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/ubuntu/setting.py:192
 msgid "Apply"
@@ -1753,111 +1753,111 @@ msgid "Open source web browser"
 msgstr ""
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:29
-msgid "RMP recovery"
+msgid "RPM recovery"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:52
+#: .././ailurus/fedora/rpm_recovery_pane.py:48
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Write comments"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:62
+#: .././ailurus/fedora/rpm_recovery_pane.py:58
 #: .././ailurus/ubuntu/apt_recovery_pane.py:62
 msgid "Would you like to write some comments for this snapshot?"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:123
+#: .././ailurus/fedora/rpm_recovery_pane.py:119
 #: .././ailurus/ubuntu/apt_recovery_pane.py:123
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:137
+#: .././ailurus/fedora/rpm_recovery_pane.py:133
 #: .././ailurus/ubuntu/apt_recovery_pane.py:137
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:148
+#: .././ailurus/fedora/rpm_recovery_pane.py:144
 #: .././ailurus/ubuntu/apt_recovery_pane.py:148
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:158
+#: .././ailurus/fedora/rpm_recovery_pane.py:154
 #: .././ailurus/ubuntu/apt_recovery_pane.py:158
 #, python-format
 msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:182
+#: .././ailurus/fedora/rpm_recovery_pane.py:178
 #: .././ailurus/ubuntu/apt_recovery_pane.py:182
 msgid "Create today's snapshot"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:196
+#: .././ailurus/fedora/rpm_recovery_pane.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:196
 msgid "Show changes since selected day"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:201
+#: .././ailurus/fedora/rpm_recovery_pane.py:197
 #: .././ailurus/ubuntu/apt_recovery_pane.py:201
 msgid "packages"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:207
+#: .././ailurus/fedora/rpm_recovery_pane.py:203
 #: .././ailurus/ubuntu/apt_recovery_pane.py:207
 msgid "changes"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:213
+#: .././ailurus/fedora/rpm_recovery_pane.py:209
 #: .././ailurus/ubuntu/apt_recovery_pane.py:213
 msgid "It was installed."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:214
+#: .././ailurus/fedora/rpm_recovery_pane.py:210
 #: .././ailurus/ubuntu/apt_recovery_pane.py:214
 msgid "It was removed."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:233
+#: .././ailurus/fedora/rpm_recovery_pane.py:229
 #: .././ailurus/ubuntu/apt_recovery_pane.py:233
 msgid "package"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:238
+#: .././ailurus/fedora/rpm_recovery_pane.py:234
 #: .././ailurus/ubuntu/apt_recovery_pane.py:238
 msgid "action"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:243
+#: .././ailurus/fedora/rpm_recovery_pane.py:239
 #: .././ailurus/ubuntu/apt_recovery_pane.py:243
 msgid "will be removed"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:244
+#: .././ailurus/fedora/rpm_recovery_pane.py:240
 #: .././ailurus/ubuntu/apt_recovery_pane.py:244
 msgid "will be installed"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:281
+#: .././ailurus/fedora/rpm_recovery_pane.py:277
 #: .././ailurus/ubuntu/apt_recovery_pane.py:281
 msgid "To do:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:285
+#: .././ailurus/fedora/rpm_recovery_pane.py:281
 #: .././ailurus/ubuntu/apt_recovery_pane.py:285
 msgid ""
 "In order to revoke packages, you can drag items from the left box to the "
 "right box, then click the button. "
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:293
+#: .././ailurus/fedora/rpm_recovery_pane.py:289
 #: .././ailurus/ubuntu/apt_recovery_pane.py:293
 msgid "Changes:"
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:298
+#: .././ailurus/fedora/rpm_recovery_pane.py:294
 #: .././ailurus/ubuntu/apt_recovery_pane.py:298
 msgid ""
 "Ailurus helps you keep track of what software you have installed/removed. If "
@@ -1865,7 +1865,7 @@ msgid ""
 "your system now."
 msgstr ""
 
-#: .././ailurus/fedora/rpm_recovery_pane.py:301
+#: .././ailurus/fedora/rpm_recovery_pane.py:297
 #: .././ailurus/ubuntu/apt_recovery_pane.py:301
 msgid "Existing snapshots are displayed in bold font."
 msgstr ""
@@ -3347,55 +3347,61 @@ msgid ""
 "APT"
 msgstr ""
 
-#: .././ailurus/main.py:226 .././ailurus/ubuntu/clean_up_pane.py:28
+#: .././ailurus/main.py:226
+msgid ""
+"Recover\n"
+"RPM"
+msgstr ""
+
+#: .././ailurus/main.py:227 .././ailurus/ubuntu/clean_up_pane.py:28
 msgid "Clean up"
 msgstr ""
 
-#: .././ailurus/main.py:326
+#: .././ailurus/main.py:327
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:327
+#: .././ailurus/main.py:328
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:328
+#: .././ailurus/main.py:329
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:329
+#: .././ailurus/main.py:330
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:330
+#: .././ailurus/main.py:331
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:332
+#: .././ailurus/main.py:333
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:333
+#: .././ailurus/main.py:334
 msgid "load \"apt recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:335
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:336
+#: .././ailurus/main.py:337
 msgid "load \"rpm recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:359
+#: .././ailurus/main.py:360
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:388
+#: .././ailurus/main.py:389
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:400
+#: .././ailurus/main.py:401
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
