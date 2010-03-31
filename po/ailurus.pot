@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-03-31 13:10+0800\n"
+"POT-Creation-Date: 2010-03-31 13:44+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -30,31 +30,57 @@ msgstr ""
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:34
+#: .././ailurus/common/apps_eclipse.py:58
 msgid "Installing Eclipse extension"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:49
-msgid "CDT: C/C++ development"
+#: .././ailurus/common/apps_eclipse.py:68
+#: .././ailurus/common/apps_eclipse.py:83
+msgid "Eclipse (basic development environment)"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:50
-msgid "CDT is from http://www.eclipse.org/cdt/"
+#: .././ailurus/common/apps_eclipse.py:70
+#: .././ailurus/common/apps_eclipse.py:85
+msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
 msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:71
+#: .././ailurus/common/apps_eclipse.py:86
+msgid ""
+"You can install Language pack according to the instructions on the page "
+"http://www.eclipse.org/babel/downloads.php\n"
+"You can download Language pack from http://download.eclipse.org/technology/"
+"babel/babel_language_packs/ganymede.php, and extract \".zip\" file to "
+"directory \"/opt/eclipse\" ."
+msgstr ""
+
+#: .././ailurus/common/apps_eclipse.py:74
+#: .././ailurus/common/apps_eclipse.py:89 .././ailurus/common/apps.py:156
+#: .././ailurus/common/apps.py:226 .././ailurus/common/apps.py:293
+msgid " This application depends on Java."
+msgstr ""
+
+#: .././ailurus/common/apps_eclipse.py:104
+msgid "CDT: C/C++ development"
+msgstr ""
+
+#: .././ailurus/common/apps_eclipse.py:105
+msgid "CDT is from http://www.eclipse.org/cdt/"
+msgstr ""
+
+#: .././ailurus/common/apps_eclipse.py:124
 msgid "Pydev: Python development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:72
+#: .././ailurus/common/apps_eclipse.py:125
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:92
+#: .././ailurus/common/apps_eclipse.py:144
 msgid "Aptana: Web application development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:93
+#: .././ailurus/common/apps_eclipse.py:145
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by http://download.aptana.org/tools/studio/plugin/"
@@ -64,98 +90,98 @@ msgid ""
 "Eclipse."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:108
-#: .././ailurus/common/apps_eclipse.py:131
-#: .././ailurus/common/apps_eclipse.py:172
-#: .././ailurus/common/apps_eclipse.py:199
-#: .././ailurus/common/apps_eclipse.py:222
+#: .././ailurus/common/apps_eclipse.py:160
+#: .././ailurus/common/apps_eclipse.py:183
+#: .././ailurus/common/apps_eclipse.py:223
+#: .././ailurus/common/apps_eclipse.py:250
+#: .././ailurus/common/apps_eclipse.py:272
 msgid "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:110
-#: .././ailurus/common/apps_eclipse.py:133
-#: .././ailurus/common/apps_eclipse.py:174
-#: .././ailurus/common/apps_eclipse.py:201
-#: .././ailurus/common/apps_eclipse.py:224
+#: .././ailurus/common/apps_eclipse.py:162
+#: .././ailurus/common/apps_eclipse.py:185
+#: .././ailurus/common/apps_eclipse.py:225
+#: .././ailurus/common/apps_eclipse.py:252
+#: .././ailurus/common/apps_eclipse.py:274
 #, python-format
 msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:112
-#: .././ailurus/common/apps_eclipse.py:135
-#: .././ailurus/common/apps_eclipse.py:176
-#: .././ailurus/common/apps_eclipse.py:203
-#: .././ailurus/common/apps_eclipse.py:226
+#: .././ailurus/common/apps_eclipse.py:164
+#: .././ailurus/common/apps_eclipse.py:187
+#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:254
+#: .././ailurus/common/apps_eclipse.py:276
 msgid "Then click the \"Next\" button and agree the license."
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:113
+#: .././ailurus/common/apps_eclipse.py:165
 msgid "Installing Aptana"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:118
+#: .././ailurus/common/apps_eclipse.py:170
 msgid "RadRails: Ruby development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:119
+#: .././ailurus/common/apps_eclipse.py:171
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by http://"
 "download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:136
+#: .././ailurus/common/apps_eclipse.py:188
 msgid "Installing RadRails\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:142
+#: .././ailurus/common/apps_eclipse.py:194
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:159
+#: .././ailurus/common/apps_eclipse.py:210
 msgid "Dynamic languages toolkit"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:160
+#: .././ailurus/common/apps_eclipse.py:211
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:177
+#: .././ailurus/common/apps_eclipse.py:228
 msgid "Installing Dynamic languages toolkit\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:186
+#: .././ailurus/common/apps_eclipse.py:237
 msgid "PDT: PHP development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:187
+#: .././ailurus/common/apps_eclipse.py:238
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:204
+#: .././ailurus/common/apps_eclipse.py:255
 msgid "Installing PDT\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:209
+#: .././ailurus/common/apps_eclipse.py:260
 msgid "Subversive: Use SVN in Eclipse"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:210
+#: .././ailurus/common/apps_eclipse.py:261
 msgid ""
 "It is installed by http://download.eclipse.org/technology/subversive/0.7/"
 "update-site/"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:277
 msgid "Installing Subversive\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:232
+#: .././ailurus/common/apps_eclipse.py:282
 msgid "MTJ: J2ME development"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:233
+#: .././ailurus/common/apps_eclipse.py:283
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
@@ -205,12 +231,6 @@ msgstr ""
 msgid ""
 "Official site: <span color=\"blue\"><u>http://www.staticfreesoft.com/</u></"
 "span>"
-msgstr ""
-
-#: .././ailurus/common/apps.py:156 .././ailurus/common/apps.py:226
-#: .././ailurus/common/apps.py:293 .././ailurus/fedora/apps.py:46
-#: .././ailurus/ubuntu/app0.py:123 .././ailurus/ubuntu/app3.py:131
-msgid " This application depends on Java."
 msgstr ""
 
 #: .././ailurus/common/apps.py:185
@@ -1415,31 +1435,11 @@ msgid ""
 "Command: yum install wine"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:40 .././ailurus/ubuntu/app0.py:117
-#: .././ailurus/ubuntu/app3.py:125
-msgid "Eclipse (basic development environment)"
-msgstr ""
-
-#: .././ailurus/fedora/apps.py:42 .././ailurus/ubuntu/app0.py:119
-#: .././ailurus/ubuntu/app3.py:127
-msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
-msgstr ""
-
-#: .././ailurus/fedora/apps.py:43 .././ailurus/ubuntu/app0.py:120
-#: .././ailurus/ubuntu/app3.py:128
-msgid ""
-"You can install Language pack according to the instructions on the page "
-"http://www.eclipse.org/babel/downloads.php\n"
-"You can download Language pack from http://download.eclipse.org/technology/"
-"babel/babel_language_packs/ganymede.php, and extract \".zip\" file to "
-"directory \"/opt/eclipse\" ."
-msgstr ""
-
-#: .././ailurus/fedora/apps.py:56 .././ailurus/ubuntu/app1.py:28
+#: .././ailurus/fedora/apps.py:40 .././ailurus/ubuntu/app1.py:28
 msgid "Make GEdit more suitable for programmers"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:57
+#: .././ailurus/fedora/apps.py:41
 msgid ""
 "Change GEdit settings as follows. Automatically indent current line. Comment/"
 "uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by Ctrl+T "
@@ -1457,52 +1457,52 @@ msgid ""
 "Then run this command: yum install gedit-plugins"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:97
+#: .././ailurus/fedora/apps.py:81
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:98
+#: .././ailurus/fedora/apps.py:82
 msgid "Command: yum install p7zip cabextract"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:104 .././ailurus/ubuntu/app1.py:138
+#: .././ailurus/fedora/apps.py:88 .././ailurus/ubuntu/app1.py:138
 msgid "Make Evince be able to reveal Chinese pdf"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:105
+#: .././ailurus/fedora/apps.py:89
 msgid "Command: yum install poppler-data"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:113 .././ailurus/ubuntu/app1.py:149
+#: .././ailurus/fedora/apps.py:97 .././ailurus/ubuntu/app1.py:149
 msgid "ChmSee: A CHM file viewer"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:114
+#: .././ailurus/fedora/apps.py:98
 msgid "Command: yum install chmsee"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:124
+#: .././ailurus/fedora/apps.py:108
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers.\n"
 "Command: yum install workrave"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:158 .././ailurus/ubuntu/app1.py:198
+#: .././ailurus/fedora/apps.py:142 .././ailurus/ubuntu/app1.py:198
 #, python-format
 msgid "\"%s\" is not installed."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:160 .././ailurus/ubuntu/app1.py:200
+#: .././ailurus/fedora/apps.py:144 .././ailurus/ubuntu/app1.py:200
 #, python-format
 msgid "The file \"%s\" does not exist."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:168 .././ailurus/ubuntu/app1.py:208
+#: .././ailurus/fedora/apps.py:152 .././ailurus/ubuntu/app1.py:208
 msgid "VIM"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:169
+#: .././ailurus/fedora/apps.py:153
 msgid ""
 "Install VIM and make it more suitable for programming. The installation "
 "process is as follows. \"yum install vim-enhanced\" command is executed. "
@@ -1513,11 +1513,11 @@ msgid ""
 "    set mouse=a"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:196 .././ailurus/ubuntu/app1.py:238
+#: .././ailurus/fedora/apps.py:180 .././ailurus/ubuntu/app1.py:238
 msgid "Use colorful Bash prompt symbols"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:197
+#: .././ailurus/fedora/apps.py:181
 msgid ""
 "Change Bash prompt symbols from \"[username@hostname ~]$ \" to \"<span color="
 "\"#3dba34\">username@hostname</span> <span color=\"#729fcf\">~</span>$ \".\n"
@@ -1526,27 +1526,27 @@ msgid ""
 "[00m\\]\\\\$ '"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:211 .././ailurus/ubuntu/app1.py:252
+#: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "The color of bash prompt symbols is changed."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:211 .././ailurus/ubuntu/app1.py:252
+#: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "It will take effect at the next time you log in."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:218
+#: .././ailurus/fedora/apps.py:202
 msgid "Enable \"Print to pdf\" capability."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:219
+#: .././ailurus/fedora/apps.py:203
 msgid "Command: yum install cups-pdf"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:226
+#: .././ailurus/fedora/apps.py:210
 msgid "Stardict"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:228
+#: .././ailurus/fedora/apps.py:212
 msgid ""
 "Command: yum install stardict\n"
 "Moreover, you can install these dictionaries by yum.\n"
@@ -1559,25 +1559,25 @@ msgid ""
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:237
+#: .././ailurus/fedora/apps.py:221
 msgid "GNU General Public License (GPL)"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:243 .././ailurus/ubuntu/app1.py:445
+#: .././ailurus/fedora/apps.py:227 .././ailurus/ubuntu/app1.py:445
 msgid "Liferea: a RSS feed reader"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:244
+#: .././ailurus/fedora/apps.py:228
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: yum install liferea"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:253
+#: .././ailurus/fedora/apps.py:237
 msgid "Useful applications for programming"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:254
+#: .././ailurus/fedora/apps.py:238
 msgid ""
 "The tools are:\n"
 "<i>gcc: GNU C compiler.\n"
@@ -1593,40 +1593,40 @@ msgid ""
 "subversion git"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:277 .././ailurus/ubuntu/app2.py:311
+#: .././ailurus/fedora/apps.py:261 .././ailurus/ubuntu/app2.py:311
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:278
+#: .././ailurus/fedora/apps.py:262
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports.\n"
 "Command: yum install qtiplot"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:288 .././ailurus/ubuntu/app3.py:116
+#: .././ailurus/fedora/apps.py:272 .././ailurus/ubuntu/app3.py:116
 msgid "A CAD software which supports DXF-format. "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:296 .././ailurus/ubuntu/app3.py:154
+#: .././ailurus/fedora/apps.py:280 .././ailurus/ubuntu/app3.py:138
 msgid "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:297 .././ailurus/ubuntu/app3.py:155
+#: .././ailurus/fedora/apps.py:281 .././ailurus/ubuntu/app3.py:139
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:342
+#: .././ailurus/fedora/apps.py:326
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:352 .././ailurus/ubuntu/app3.py:291
+#: .././ailurus/fedora/apps.py:336 .././ailurus/ubuntu/app3.py:275
 msgid "Generic Genome Browser"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app3.py:292
+#: .././ailurus/fedora/apps.py:337 .././ailurus/ubuntu/app3.py:276
 msgid ""
 "Generic Genome Browser is a combination of database and interactive web page "
 "for manipulating and displaying annotations on genomes.\n"
@@ -1635,51 +1635,51 @@ msgid ""
 "</span>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:374
+#: .././ailurus/fedora/apps.py:358
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: yum install tuxpaint"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:384
+#: .././ailurus/fedora/apps.py:368
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: yum install childsplay"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:394
+#: .././ailurus/fedora/apps.py:378
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:404
+#: .././ailurus/fedora/apps.py:388
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:414
+#: .././ailurus/fedora/apps.py:398
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:424 .././ailurus/ubuntu/app3.py:470
+#: .././ailurus/fedora/apps.py:408 .././ailurus/ubuntu/app3.py:454
 msgid "Parcellite: clipboard manager"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:425 .././ailurus/ubuntu/app3.py:471
+#: .././ailurus/fedora/apps.py:409 .././ailurus/ubuntu/app3.py:455
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:433
+#: .././ailurus/fedora/apps.py:417
 msgid "Enable \"sudo\""
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:434
+#: .././ailurus/fedora/apps.py:418
 msgid ""
 "If you enabled \"sudo\" and you want to execute commands as root, you can "
 "type command \"sudo COMMAND\" instead of complicated command \"su -c "
@@ -1687,39 +1687,39 @@ msgid ""
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:446
+#: .././ailurus/fedora/apps.py:430
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:455
+#: .././ailurus/fedora/apps.py:439
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:487 .././ailurus/ubuntu/app3.py:517
+#: .././ailurus/fedora/apps.py:471 .././ailurus/ubuntu/app3.py:501
 msgid "WallpaperTray: Randomly change GNOME desktop background"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:489
+#: .././ailurus/fedora/apps.py:473
 msgid ""
 "Command: yum install wp_tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:498
+#: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:499
+#: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:507 .././ailurus/ubuntu/app1.py:259
+#: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
 #: .././ailurus/ubuntu/quick_setup.py:296
 msgid "Multi-media codec"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:509
+#: .././ailurus/fedora/apps.py:493
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
 "extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
@@ -3987,28 +3987,28 @@ msgid ""
 "\"><u>http://sourceforge.net/projects/free-cad/</u></span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:141
+#: .././ailurus/ubuntu/app3.py:125
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:142
+#: .././ailurus/ubuntu/app3.py:126
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages.\n"
 "Command: sudo apt-get install moonlight-plugin-mozilla"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:277
+#: .././ailurus/ubuntu/app3.py:261
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: sudo apt-get install qtoctave"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:308
+#: .././ailurus/ubuntu/app3.py:292
 msgid "Screenlets"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:309
+#: .././ailurus/ubuntu/app3.py:293
 msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
@@ -4016,11 +4016,11 @@ msgid ""
 "Command: sudo apt-get install screenlets"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:321
+#: .././ailurus/ubuntu/app3.py:305
 msgid "Compiz settings manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:322
+#: .././ailurus/ubuntu/app3.py:306
 msgid ""
 "Compiz Fusion is the unification of the Beryl project and the community "
 "around the Compiz Window Manager. Compiz settings manager is the "
@@ -4029,64 +4029,64 @@ msgid ""
 "Command: sudo apt-get install compizconfig-settings-manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:334
+#: .././ailurus/ubuntu/app3.py:318
 msgid "A simple Compiz settings manager"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:335
+#: .././ailurus/ubuntu/app3.py:319
 msgid "Command: sudo apt-get install simple-ccsm"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:344
+#: .././ailurus/ubuntu/app3.py:328
 msgid "Micro-biology software"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:345
+#: .././ailurus/ubuntu/app3.py:329
 msgid ""
 "This software is for molecular biology, structural biology and "
 "bioinformatics.\n"
 "Command: sudo apt-get install med-bio med-bio-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:357
+#: .././ailurus/ubuntu/app3.py:341
 msgid "Tux Paint"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:358
+#: .././ailurus/ubuntu/app3.py:342
 msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: sudo apt-get install tuxpaint"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:367
+#: .././ailurus/ubuntu/app3.py:351
 msgid "Code::Blocks - C/C++ IDE"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:376
+#: .././ailurus/ubuntu/app3.py:360
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: sudo apt-get install childsplay"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:398
+#: .././ailurus/ubuntu/app3.py:382
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: sudo apt-get install gcompris"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:416
+#: .././ailurus/ubuntu/app3.py:400
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:426
+#: .././ailurus/ubuntu/app3.py:410
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : sudo apt-get install kadu"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:436
+#: .././ailurus/ubuntu/app3.py:420
 msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
@@ -4094,11 +4094,11 @@ msgid ""
 "Command: sudo apt-get install qnapi"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:481
+#: .././ailurus/ubuntu/app3.py:465
 msgid "R language (basic development environment)"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:482
+#: .././ailurus/ubuntu/app3.py:466
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read http://cran."
@@ -4106,11 +4106,11 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:492
+#: .././ailurus/ubuntu/app3.py:476
 msgid "R language (full development environment and all plugins)"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:493
+#: .././ailurus/ubuntu/app3.py:477
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read http://cran."
@@ -4118,190 +4118,190 @@ msgid ""
 "Command: sudo apt-get install r-base r-base-dev r-cran-*"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:508
+#: .././ailurus/ubuntu/app3.py:492
 msgid "Bluefish: Edit HTML web-pages"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:509
+#: .././ailurus/ubuntu/app3.py:493
 msgid "Command: sudo apt-get install bluefish"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:519
+#: .././ailurus/ubuntu/app3.py:503
 msgid ""
 "Command: sudo apt-get install wallpaper-tray\n"
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:540
+#: .././ailurus/ubuntu/app3.py:524
 msgid "LAMP: Install Apache2 + MySQL + PHP"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:541
+#: .././ailurus/ubuntu/app3.py:525
 msgid "Command: sudo tasksel install lamp-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:546
+#: .././ailurus/ubuntu/app3.py:530
 msgid "DNS server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:547
+#: .././ailurus/ubuntu/app3.py:531
 msgid "Command: sudo tasksel install dns-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:552
+#: .././ailurus/ubuntu/app3.py:536
 msgid "Mail server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:553
+#: .././ailurus/ubuntu/app3.py:537
 msgid "Command: sudo tasksel install mail-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:558
+#: .././ailurus/ubuntu/app3.py:542
 msgid "OpenSSH server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:559
+#: .././ailurus/ubuntu/app3.py:543
 msgid "Command: sudo tasksel install openssh-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:564
+#: .././ailurus/ubuntu/app3.py:548
 msgid "PostgreSQL server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:565
+#: .././ailurus/ubuntu/app3.py:549
 msgid "Command: sudo tasksel install postgresql-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:570
+#: .././ailurus/ubuntu/app3.py:554
 msgid "Printer server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:571
+#: .././ailurus/ubuntu/app3.py:555
 msgid "Command: sudo tasksel install print-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:576
+#: .././ailurus/ubuntu/app3.py:560
 msgid "Samba file sharing server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:577
+#: .././ailurus/ubuntu/app3.py:561
 msgid "Command: sudo tasksel install samba-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:582
+#: .././ailurus/ubuntu/app3.py:566
 msgid "Tomcat Java server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:583
+#: .././ailurus/ubuntu/app3.py:567
 msgid "Command: sudo tasksel install tomcat-server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:588
+#: .././ailurus/ubuntu/app3.py:572
 msgid "Ubuntustudio-graphics: 2D/3D creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:589
+#: .././ailurus/ubuntu/app3.py:573
 msgid "Command: sudo tasksel install ubuntustudio-graphics"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:594
+#: .././ailurus/ubuntu/app3.py:578
 msgid "Ubuntustudio-audio: Audio creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:595
+#: .././ailurus/ubuntu/app3.py:579
 msgid "Command: sudo tasksel install ubuntustudio-audio"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:600
+#: .././ailurus/ubuntu/app3.py:584
 msgid "Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:601
+#: .././ailurus/ubuntu/app3.py:585
 msgid "Command: sudo tasksel install ubuntustudio-audio-plugins"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:606
+#: .././ailurus/ubuntu/app3.py:590
 msgid "Ubuntu MID"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:607
+#: .././ailurus/ubuntu/app3.py:591
 msgid "Command: sudo tasksel install mobile-mid"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:612
+#: .././ailurus/ubuntu/app3.py:596
 msgid "Ubuntu Netbook"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:613
+#: .././ailurus/ubuntu/app3.py:597
 msgid "Command: sudo tasksel install mobile-netbook-remix"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:618
+#: .././ailurus/ubuntu/app3.py:602
 msgid "Ubuntustudio-video: Video creation and editing"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:619
+#: .././ailurus/ubuntu/app3.py:603
 msgid "Command: sudo tasksel install ubuntustudio-video"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:624
+#: .././ailurus/ubuntu/app3.py:608
 msgid "Ubuntu MID Live"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:625
+#: .././ailurus/ubuntu/app3.py:609
 msgid "Command: sudo tasksel install mobile-live"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:630
+#: .././ailurus/ubuntu/app3.py:614
 msgid "Eucalyptus cloud computing cluster"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:631
+#: .././ailurus/ubuntu/app3.py:615
 msgid "Command: sudo tasksel install eucalyptus-simple-cluster"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:636
+#: .././ailurus/ubuntu/app3.py:620
 msgid "Eucalyptus cloud computing node"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:637
+#: .././ailurus/ubuntu/app3.py:621
 msgid "Command: sudo tasksel install eucalyptus-node"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:642
+#: .././ailurus/ubuntu/app3.py:626
 msgid "Ubuntu Enterprise Cloud server"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:643
+#: .././ailurus/ubuntu/app3.py:627
 msgid "Command: sudo tasksel install uec"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:648
+#: .././ailurus/ubuntu/app3.py:632
 msgid "Ubuntustudio-font-meta: A lot of font"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:649
+#: .././ailurus/ubuntu/app3.py:633
 msgid "Command: sudo tasksel install ubuntustudio-font-meta"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:654
+#: .././ailurus/ubuntu/app3.py:638
 msgid "* Launch tasksel"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:655
+#: .././ailurus/ubuntu/app3.py:639
 msgid ""
 "This is a helper item. It just launches command: \"sudo tasksel\". Then you "
 "are free to customize your computer via \"tasksel\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:669
+#: .././ailurus/ubuntu/app3.py:653
 msgid ""
 "This is a popular Chinese input method.\n"
 "It is from http://fcitx.googlecode.com/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:708
+#: .././ailurus/ubuntu/app3.py:692
 msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
