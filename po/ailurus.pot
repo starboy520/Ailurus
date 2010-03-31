@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD:po/ailurus.pot
-"POT-Creation-Date: 2010-03-31 14:28+0800\n"
-=======
-"POT-Creation-Date: 2010-03-31 13:44+0800\n"
->>>>>>> FETCH_HEAD:po/ailurus.pot
+"POT-Creation-Date: 2010-03-31 15:00+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1546,7 +1542,7 @@ msgstr ""
 msgid "Command: yum install cups-pdf"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:210
+#: .././ailurus/fedora/apps.py:210 .././ailurus/ubuntu/app1.py:357
 msgid "Stardict"
 msgstr ""
 
@@ -1567,7 +1563,7 @@ msgstr ""
 msgid "GNU General Public License (GPL)"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:227 .././ailurus/ubuntu/app1.py:445
+#: .././ailurus/fedora/apps.py:227 .././ailurus/ubuntu/app1.py:366
 msgid "Liferea: a RSS feed reader"
 msgstr ""
 
@@ -3084,7 +3080,6 @@ msgid "The packages \"%s\" are not installed."
 msgstr ""
 
 #: .././ailurus/libapp.py:229 .././ailurus/libapp.py:287
-#: .././ailurus/ubuntu/app1.py:442
 #, python-format
 msgid "\"%s\" does not exist."
 msgstr ""
@@ -3682,53 +3677,39 @@ msgstr ""
 msgid "The file \"%s\" exists."
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:357 .././ailurus/ubuntu/quick_setup.py:302
-msgid "Stardict and four dictionaries"
-msgstr ""
-
-#: .././ailurus/ubuntu/app1.py:359
-msgid ""
-"Install Stardict. Install Concise Chinese-English Dictionary, LangDao "
-"Chinese-English Dictionary, LangDao English-Chinese Dictionary and Oxford "
-"Modern English-Chinese Dictionary. Stardict official site is http://stardict."
-"sourceforge.net/. Dictionaries are obtained from http://stardict.sourceforge."
-"net/Dictionaries_zh_CN.php\n"
-"Command: sudo apt-get install stardict sdcv"
-msgstr ""
-
-#: .././ailurus/ubuntu/app1.py:446
+#: .././ailurus/ubuntu/app1.py:367
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: sudo apt-get install liferea"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:457
+#: .././ailurus/ubuntu/app1.py:378
 msgid "Firestarter"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:458
+#: .././ailurus/ubuntu/app1.py:379
 msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\".\n"
 "Command: sudo apt-get install firestarter"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:470
+#: .././ailurus/ubuntu/app1.py:391
 msgid "MACChanger: change MAC address"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:471
+#: .././ailurus/ubuntu/app1.py:392
 msgid ""
 "MACChanger is a utility for viewing/manipulating the MAC address of network "
 "interfaces.\n"
 "Command: sudo apt-get install macchanger"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:478
+#: .././ailurus/ubuntu/app1.py:399
 msgid "Bluetooth support"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:479
+#: .././ailurus/ubuntu/app1.py:400
 msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
 "bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
@@ -5104,6 +5085,10 @@ msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:302
+msgid "Stardict and four dictionaries"
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:304
