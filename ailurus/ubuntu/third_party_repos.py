@@ -155,7 +155,7 @@ class Repo_Firefox_3_6(_repo):
     license = 'MPL, GNU GPL, GNU LGPL'
     logo = 'firefox.png'
     def __init__(self):
-	self.desc = _('This repository contains Firefox stable version 3.6.')
+        self.desc = _('This repository contains Firefox stable version 3.6.')
         self.apt_content = 'firefox'
         self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
         self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'
@@ -165,11 +165,11 @@ class Repo_Firefox_3_6(_repo):
         _repo.__init__(self)
 
 class Repo_PlayOnLinux(_repo):
-    __doc__ = _('PlayOnLinux')
+    __doc__ = _('PlayOnLinux (stable)')
     license = 'GNU Lesser General Public License (LGPL)'
     def __init__(self):
         self.desc = _('PlayOnLinux is a front-end for wine. '
-            'It helps to install Windows Games and softwares on Linux. ')
+            'It helps to install Windows Games and softwares on Linux.')
         self.apt_content = 'playonlinux'
         self.web_page = 'http://www.playonlinux.com/en/download.html'
         self.apt_file = '/etc/apt/sources.list.d/playonlinux.list'
@@ -179,13 +179,13 @@ class Repo_PlayOnLinux(_repo):
         _repo.__init__(self)
 
 class Repo_WINE(_repo):
-    __doc__ = _('WINE')
+    __doc__ = _('WINE (beta version)')
     license = ('GNU Lesser General Public License (LGPL)'
                'see http://wiki.winehq.org/Licensing')
     logo = 'wine.png'
     def __init__(self):
         self.desc = _('This repository contains the latest version of Wine. '
-            'Wine is for running Windows applications on Linux. ')
+            'Wine is for running Windows applications on Linux.')
         self.apt_content = 'wine wine-gecko'
         self.web_page = 'https://launchpad.net/~ubuntu-wine/+archive/ppa'
         self.apt_file = '/etc/apt/sources.list.d/winehq.list'
@@ -195,7 +195,7 @@ class Repo_WINE(_repo):
         _repo.__init__(self)
 
 class Repo_Ailurus(_repo):
-    __doc__ = _('Ailurus')
+    __doc__ = _('Ailurus (stable)')
     logo = 'ailurus.png'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
@@ -209,11 +209,11 @@ class Repo_Ailurus(_repo):
         _repo.__init__(self)
 
 class Repo_AWN_Development(_repo):
-    __doc__ = _('AWN (Development version)')
+    __doc__ = _('AWN (beta version)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('AWN is a MacOS X like panel for GNOME. '
-            'This repository provides the latest version of AWN. ')
+            'This repository provides the latest version of AWN.')
         self.apt_content = 'avant-window-navigator-trunk'
         self.web_page = 'https://launchpad.net/~awn-testing/+archive/ppa'
         self.apt_file = '/etc/apt/sources.list.d/awn_development.list'
@@ -223,7 +223,7 @@ class Repo_AWN_Development(_repo):
         _repo.__init__(self)
 
 class Repo_Blueman(_repo):
-    __doc__ = _('Blueman')
+    __doc__ = _('Blueman (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('Blueman is a graphical blue-tooth manager.')
@@ -236,7 +236,7 @@ class Repo_Blueman(_repo):
         _repo.__init__(self)
 
 class Repo_Christine(_repo):
-    __doc__ = _('Christine')
+    __doc__ = _('Christine (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('Christine is a small media player.')
@@ -249,7 +249,7 @@ class Repo_Christine(_repo):
         _repo.__init__(self)
 
 class Repo_Chromium_Daily(_repo):
-    __doc__ = _('Chromium')
+    __doc__ = _('Chromium (beta version)')
     license = 'BSD license, MIT License, LGPL, Ms-PL, MPL/GPL/LGPL tri-license'
     def __init__(self):
         self.desc = _('Chromium is the open source version of Google Chrome.')
@@ -262,7 +262,7 @@ class Repo_Chromium_Daily(_repo):
         _repo.__init__(self)
 
 class Repo_GTG(_repo):
-    __doc__ = _('Getting things GNOME')
+    __doc__ = _('Getting things GNOME (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
@@ -275,7 +275,7 @@ class Repo_GTG(_repo):
         _repo.__init__(self)
 
 class Repo_GNOMEColors(_repo):
-    __doc__ = _('GNOME colors')
+    __doc__ = _('GNOME colors (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('This repository contains some themes.')
@@ -288,7 +288,7 @@ class Repo_GNOMEColors(_repo):
         _repo.__init__(self)
 
 class Repo_GlobalMenu(_repo):
-    __doc__ = _('GNOME Global Menu')
+    __doc__ = _('GNOME Global Menu (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
@@ -301,7 +301,7 @@ class Repo_GlobalMenu(_repo):
         _repo.__init__(self)
 
 class Repo_Medibuntu(_repo):
-    __doc__ = _('Medibuntu')
+    __doc__ = _('Medibuntu (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
@@ -315,7 +315,7 @@ class Repo_Medibuntu(_repo):
         _repo.__init__(self)
 
 class Repo_Moovida(_repo):
-    __doc__ = _('Moovida')
+    __doc__ = _('Moovida (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('Moovida is a cross platform media player.')
@@ -328,8 +328,8 @@ class Repo_Moovida(_repo):
         _repo.__init__(self)
 
 class Repo_Shutter(_repo):
+    __doc__ = _('Shutter (stable)')
     license = 'GNU General Public License (GPL)'
-    __doc__ = _('Shutter')
     def __init__(self):
         self.desc = _('Shutter is a powerful screenshot program.')
         self.apt_content = 'shutter'
@@ -341,7 +341,7 @@ class Repo_Shutter(_repo):
         _repo.__init__(self)
 
 class Repo_Synapse(_repo):
-    __doc__ = _('Synapse')
+    __doc__ = _('Synapse (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('Synapse is an instant messager.')
@@ -354,7 +354,7 @@ class Repo_Synapse(_repo):
         _repo.__init__(self)
 
 class Repo_X_Server_Updates(_repo):
-    __doc__ = _('X server updates')
+    __doc__ = _('X server updates (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('This repository provides latest versions of X.org drivers, libraries.')
@@ -368,7 +368,7 @@ class Repo_X_Server_Updates(_repo):
         _repo.__init__(self)
         
 class Repo_WebkitGTK(_repo):
-    __doc__ = _('WebkitGTK')
+    __doc__ = _('WebkitGTK (stable)')
     license = 'GNU Lesser General Public License (LGPL)'
     def __init__(self):
         self.desc = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
@@ -381,7 +381,7 @@ class Repo_WebkitGTK(_repo):
         _repo.__init__(self)
 
 class Repo_XBMC(_repo):
-    __doc__ = _('XBMC')
+    __doc__ = _('XBMC (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
@@ -394,8 +394,8 @@ class Repo_XBMC(_repo):
         _repo.__init__(self)
 
 class Repo_IBus(_repo):
+    __doc__ = _('IBus (stable)')
     license = 'GNU General Public License (GPL)'
-    'IBus'
     def __init__(self):
         version = Config.get_Ubuntu_version()
         self.desc = _('Next generation input method')
@@ -423,7 +423,7 @@ class Repo_Canonical_Partner(_repo):
         _repo.__init__(self)
 
 class Repo_RSSOwl(_repo):
-    'RSSOwl'
+    __doc__ = _('RSSOwl (stable)')
     license = 'Eclipse Public License'
     def __init__(self):
         self.desc = _('RSSOwl is an RSS reader.')
@@ -436,7 +436,7 @@ class Repo_RSSOwl(_repo):
         _repo.__init__(self)
 
 class Repo_Gmchess(_repo):
-    'Gmchess'
+    __doc__ = _('Gmchess (stable)')
     license = 'GNU General Public License (GPL)'
     Chinese = True
     def __init__(self):
@@ -450,10 +450,10 @@ class Repo_Gmchess(_repo):
         _repo.__init__(self)
 
 class Repo_Exaile(_repo):
-    __doc__ = _('Exaile (Latest version)')
+    __doc__ = _('Exaile (beta version)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = ''
+        self.desc = _('A music manager and player for GTK+ written in Python.')
         self.apt_content = 'exaile'
         self.web_page = 'https://launchpad.net/~exaile-devel/+archive/ppa'
         self.apt_file = '/etc/apt/sources.list.d/exaile-devel.list'
@@ -463,10 +463,10 @@ class Repo_Exaile(_repo):
         _repo.__init__(self)
 
 class Repo_Audacious(_repo):
-    __doc__ = _('Audacious (Latest version)')
+    __doc__ = _('Audacious (beta version)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = ''
+        self.desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
         self.apt_content = 'audacious audacious-plugins'
         self.web_page = 'https://launchpad.net/~dupondje/+archive/ppa'
         self.apt_file = '/etc/apt/sources.list.d/audacious.list'
@@ -476,10 +476,11 @@ class Repo_Audacious(_repo):
         _repo.__init__(self)
         
 class Repo_Tor(_repo):
+    __doc__ = _('Tor (stable)')
     license = 'BSD License'
-    'Tor'
     def __init__(self):
-        self.desc = ''
+        self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
+        'confidential business activities and relationships, and state security known as traffic analysis.')
         self.apt_content = 'tor privoxy vidalia'
         self.web_page = 'http://deb.torproject.org/'
         self.apt_file = '/etc/apt/sources.list.d/tor.list'
@@ -489,7 +490,7 @@ class Repo_Tor(_repo):
         _repo.__init__(self)
 
 class Repo_RedNoteBook(_repo):
-    'RedNoteBook'
+    __doc__ = _('RedNoteBook (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.desc = _('This is a desktop diary application.')
@@ -502,10 +503,10 @@ class Repo_RedNoteBook(_repo):
         _repo.__init__(self)
 
 class Repo_Pidgin_Develop(_repo):
-    __doc__ = _('Pidgin (Latest version)')
+    __doc__ = _('Pidgin (beta version)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = ''
+        self.desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
         self.apt_content = 'pidgin'
         self.web_page = 'https://launchpad.net/~pidgin-developers/+archive/ppa' 
         self.apt_file = '/etc/apt/sources.list.d/pidgin.list'
@@ -515,10 +516,10 @@ class Repo_Pidgin_Develop(_repo):
         _repo.__init__(self)
 
 class Repo_Songbird(_repo):
-    __doc__ = _('Songbird (Latest version)')
+    __doc__ = _('Songbird (beta version)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = ''
+        self.desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
         self.apt_content = 'songbird'
         self.web_page = 'https://launchpad.net/~songbird-daily/+archive/ppa'
         self.apt_file = '/etc/apt/sources.list.d/songbird.list'
@@ -528,9 +529,10 @@ class Repo_Songbird(_repo):
         _repo.__init__(self)
 
 class Repo_Mplayer_VOD(_repo):
+    __doc__ = _('Mplayer-VOD (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = 'mplayer_vod'
+        self.desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
         self.apt_content = 'mplayer'
         self.web_page = 'https://launchpad.net/~homer-xing/+archive/mplayer-vod'
         self.apt_file = '/etc/apt/sources.list.d/mplayer-vod.list'

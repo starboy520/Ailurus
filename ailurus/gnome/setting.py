@@ -25,20 +25,6 @@ import sys, os
 from lib import *
 from libu import *
 from libsetting import *
-
-
-def __desktop_wallpaper():
-    e = GConfFileEntry(_('Wallpaper:'), '/desktop/gnome/background/picture_filename', _('Choose the desktop wallpaper.') )
-    c = GConfComboBox('/desktop/gnome/background/picture_options', 
-      [_('wallpaper'), _('zoom'), _('centered'), _('scaled'), _('stretched'), ],
-      ['wallpaper', 'zoom', 'centered', 'scaled', 'stretched', ])
-    box = gtk.HBox(False)
-    box.pack_start(e)
-    box.pack_start(gtk.Label('    '+_('Style: ')), False)
-    box.pack_start(c, False)
-    return Setting(box, _('Desktop wallpaper'), ['desktop'])
-
-
 def __desktop_icon_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
@@ -125,7 +111,7 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24)
+    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24, scale=True)
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -141,7 +127,7 @@ def __login_icon_setting():
     path = ''
     path1 = os.path.expanduser('~/.face')
     if os.path.exists(path1): path = path1
-    i = GConfImageEntry(_('The login icon is ~/.face'), path, 32)
+    i = GConfImageEntry(_('The login icon is ~/.face'), path, 96, scale=False)
     i.connect('changed',__apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -230,8 +216,22 @@ def __font_size_setting():
 
     button_increase = image_stock_button(gtk.STOCK_ZOOM_IN, _('Larger font') )
     button_increase.connect('clicked', change_font, True)
+    button_increase.set_tooltip_text(
+                          _('Change these GConf keys:\n') +
+                          '/apps/nautilus/preferences/desktop_font\n'
+                          '/desktop/gnome/interface/document_font_name\n'
+                          '/desktop/gnome/interface/font_name\n'
+                          '/desktop/gnome/interface/monospace_font_name\n'
+                          '/apps/metacity/general/titlebar_font')
     button_decrease = image_stock_button(gtk.STOCK_ZOOM_OUT, _('Smaller font') )
     button_decrease.connect('clicked', change_font, False)
+    button_decrease.set_tooltip_text(
+                          _('Change these GConf keys:\n') +
+                          '/apps/nautilus/preferences/desktop_font\n'
+                          '/desktop/gnome/interface/document_font_name\n'
+                          '/desktop/gnome/interface/font_name\n'
+                          '/desktop/gnome/interface/monospace_font_name\n'
+                          '/apps/metacity/general/titlebar_font')
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(button_increase, False, False)
     hbox.pack_start(button_decrease, False, False)
@@ -249,7 +249,6 @@ def __layout_of_window_titlebar_buttons():
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)
     return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
-
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
@@ -566,11 +565,10 @@ def get():
     ret = []
     for f in [
             __desktop_icon_setting,
-            __desktop_wallpaper,
             __menu_icon_setting,
+            __button_icon_setting,
             __start_here_icon_setting,
             __login_icon_setting,
-            __button_icon_setting,
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
