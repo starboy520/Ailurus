@@ -596,7 +596,7 @@ class InstallRemovePane(gtk.VBox):
 
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
-        button_quick_setup = gtk.Button(_('Quick setup'))
+        button_quick_setup = gtk.Button(_('Start quick setup'))
         button_quick_setup.connect('clicked', self.__launch_quick_setup)
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_apply, False, False)
