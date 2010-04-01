@@ -81,34 +81,6 @@ class SelectWorksDialog(gtk.Dialog):
 def acquire_root_privilege():
     gksudo('date')
 
-def show_check_network_splash():
-    window = gtk.Window(gtk.WINDOW_POPUP)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.set_border_width(15)
-    color = gtk.gdk.color_parse('#202020')
-    window.modify_bg(gtk.STATE_NORMAL, color)
-    text = gtk.Label()
-    text.set_markup('<span color="yellow">%s</span>' % 
-                               _('Checking whether your computer is connected to Internet ...') )
-    window.add(text)
-    window.show_all()
-    while gtk.events_pending(): gtk.main_iteration()
-    return window
-
-def show_scan_installed_package_splash():
-    window = gtk.Window(gtk.WINDOW_POPUP)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.set_border_width(15)
-    color = gtk.gdk.color_parse('#202020')
-    window.modify_bg(gtk.STATE_NORMAL, color)
-    text = gtk.Label()
-    text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
-                               ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
-    window.add(text)
-    window.show_all()
-    while gtk.events_pending(): gtk.main_iteration()
-    return window
-
 class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
         while not self.skip_checking:
@@ -148,6 +120,47 @@ class WaitNetworkDialog(gtk.Dialog):
         self.action_area.pack_end(edit_network_connection, False)
         self.action_area.pack_end(skip_network_checking, False)
         self.action_area.show_all()
+    
+    @classmethod
+    def show_check_network_splash(cls):
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_border_width(15)
+        color = gtk.gdk.color_parse('#202020')
+        window.modify_bg(gtk.STATE_NORMAL, color)
+        text = gtk.Label()
+        text.set_markup('<span color="yellow">%s</span>' % 
+                                   _('Checking whether your computer is connected to Internet ...') )
+        window.add(text)
+        window.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return window
+    
+    @classmethod
+    def show_dialog(cls):
+        window = WaitNetworkDialog.show_check_network_splash()
+        try:
+            try:     get_response_time('http://example.com')
+            finally: window.destroy()
+        except:
+            dialog = WaitNetworkDialog()
+            ret = dialog.run()
+            dialog.destroy()
+            if ret == gtk.RESPONSE_DELETE_EVENT: sys.exit()
+
+def show_scan_installed_package_splash():
+    window = gtk.Window(gtk.WINDOW_POPUP)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.set_border_width(15)
+    color = gtk.gdk.color_parse('#202020')
+    window.modify_bg(gtk.STATE_NORMAL, color)
+    text = gtk.Label()
+    text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
+                               ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
+    window.add(text)
+    window.show_all()
+    while gtk.events_pending(): gtk.main_iteration()
+    return window
 
 class FastestRepositoryDialog(gtk.Dialog):
     def _before_delete_event(self, *w):
@@ -432,16 +445,7 @@ class DoStuffDialog(gtk.Dialog):
 def quick_setup():
     SelectWorksDialog.show_dialog()
     acquire_root_privilege()
-    #check network connections
-    window = show_check_network_splash()
-    try:
-        try:     get_response_time('http://example.com')
-        finally: window.destroy()
-    except:
-        dialog = WaitNetworkDialog()
-        ret = dialog.run()
-        dialog.destroy()
-        assert ret != gtk.RESPONSE_DELETE_EVENT
+    WaitNetworkDialog.show_dialog()
     #load app_classes
     window = show_scan_installed_package_splash()
     import common as COMMON
