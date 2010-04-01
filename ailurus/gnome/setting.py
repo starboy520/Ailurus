@@ -25,20 +25,6 @@ import sys, os
 from lib import *
 from libu import *
 from libsetting import *
-
-
-def __desktop_wallpaper():
-    e = GConfFileEntry(_('Wallpaper:'), '/desktop/gnome/background/picture_filename', _('Choose the desktop wallpaper.') )
-    c = GConfComboBox('/desktop/gnome/background/picture_options', 
-      [_('wallpaper'), _('zoom'), _('centered'), _('scaled'), _('stretched'), ],
-      ['wallpaper', 'zoom', 'centered', 'scaled', 'stretched', ])
-    box = gtk.HBox(False)
-    box.pack_start(e)
-    box.pack_start(gtk.Label('    '+_('Style: ')), False)
-    box.pack_start(c, False)
-    return Setting(box, _('Desktop wallpaper'), ['desktop'])
-
-
 def __desktop_icon_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
@@ -233,6 +219,11 @@ def __font_size_setting():
     button_decrease = image_stock_button(gtk.STOCK_ZOOM_OUT, _('Smaller font') )
     button_decrease.connect('clicked', change_font, False)
     hbox = gtk.HBox(False, 10)
+    hbox.set_tooltip_text(_('One Click make font increase/decrease in one size\n')+_('Gconf Key:')+'/apps/nautilus/preferences/desktop_font\n'
+          '/desktop/gnome/interface/document_font_name\n'
+          '/desktop/gnome/interface/font_name\n'
+          '/desktop/gnome/interface/monospace_font_name\n'
+          '/apps/metacity/general/titlebar_font\n' )
     hbox.pack_start(button_increase, False, False)
     hbox.pack_start(button_decrease, False, False)
     hbox.show_all()
@@ -566,7 +557,6 @@ def get():
         import gconf
         return [
             __desktop_icon_setting(),
-            __desktop_wallpaper(),
             __menu_icon_setting(),
             __start_here_icon_setting(),
             __login_icon_setting(),
