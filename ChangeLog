@@ -1,3 +1,11 @@
+2010-04-01 MA Yue <velly.empire@gmail.com>
+
+    * Improve the 'start here' icon setting. 
+    * Improve the login icon setting. 
+      Improve icon sharpness.
+    * Remove desktop background setting
+    * Add 'stable version' or 'beta version' in third party repositories.
+
 2010-03-31 Homer Xing <homer.xing@gmail.com>
 
     * Fix error: Ailurus cannot be started if /sbin/sysctl failed.
