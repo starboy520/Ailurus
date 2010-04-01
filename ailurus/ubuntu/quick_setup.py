@@ -69,6 +69,17 @@ class SelectWorksDialog(gtk.Dialog):
         self.set_border_width(5)
         self.vbox.pack_start(box)
         self.vbox.show_all()
+    
+    @classmethod
+    def show_dialog(cls):
+        dialog = SelectWorksDialog()
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_DELETE_EVENT:
+            sys.exit()
+
+def acquire_root_privilege():
+    gksudo('date')
 
 def show_check_network_splash():
     window = gtk.Window(gtk.WINDOW_POPUP)
@@ -419,11 +430,8 @@ class DoStuffDialog(gtk.Dialog):
         self.action_area.pack_start(self.button_close) 
 
 def quick_setup():
-    #show welcome dialog
-    dialog = SelectWorksDialog()
-    ret = dialog.run()
-    dialog.destroy()
-    assert ret != gtk.RESPONSE_DELETE_EVENT
+    SelectWorksDialog.show_dialog()
+    acquire_root_privilege()
     #check network connections
     window = show_check_network_splash()
     try:
