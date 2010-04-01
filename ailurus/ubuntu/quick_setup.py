@@ -289,7 +289,8 @@ class FastestRepositoryDialog(gtk.Dialog):
             self.destroy()
             
     def change_server(self, fastest_url):
-        #apply the fastest repository
+        'apply the fastest repository'
+        gksudo('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
         for repos in get_current_official_repositories():
             changes[repos] = fastest_url
