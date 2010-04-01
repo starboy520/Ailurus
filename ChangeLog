@@ -5,6 +5,7 @@
       Users can select which software they would like to quick setup.
       Backup /etc/apt/sources.list before change it.
       Require root privilege first. Do not ask for privilege afterwhile.
+      Do not block process when search hardware driver.
 
 2010-04-01 Starboy Qi <starboy.qi@gmail.com>
 
