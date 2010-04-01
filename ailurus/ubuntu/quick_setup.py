@@ -294,15 +294,9 @@ class DoStuffDialog(gtk.Dialog):
             ( _('Install hardware drivers'), 'Install_Hardware_Driver' ),
             ( _('Full language support and input method'), 'Full_Language_Pack' ),
             ( _('Multi-media codec'), 'Multimedia_Codecs' ),
-            ( _('Decompression software: 7z, rar, cab, ace'), 
-              'Decompression_Capability' ),
-            ]
-        if Config.is_Chinese_locale():
-            ret.append( ( _('Alipay ( Zhi Fu Bao ) security plugin for Firefox'), 'AliPayFirefoxPlugin', ) )
-            ret.append( ( _('Stardict and four dictionaries'), 'StardictAndDictionaries', ) )
-        ret += [
-            ( _(u'Adobe® Flash plugin for web browser'), 'Flash_Player' ),
-            ( _('Fix font bug in Flash plugin'), 'Flash_Player_Font_Bug' ), 
+            ( _('Decompression software'), 'Decompression_Capability' ),
+            ( _('Stardict'), 'Stardict' ),
+            ( _('Gnash Flash plugin for web browser'), 'Flash_Player' ),
             ]
         return ret
     def func_pixbuf(self, column, cell, model, iter):
