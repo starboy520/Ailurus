@@ -355,7 +355,7 @@ def gksudo(cmd, ignore_error=False):
         import dbus
         bus = dbus.SystemBus()
         obj = bus.get_object('cn.ailurus', '/')
-        obj.run(cmd, packed_env_string(), ignore_error, timeout=3600, dbus_interface='cn.ailurus.Interface')
+        obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
     else:
         run(cmd, ignore_error)
 
@@ -547,7 +547,7 @@ def su(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), False, timeout=3600, dbus_interface='cn.ailurus.Interface')
+    obj.run(string, packed_env_string(), False, timeout=36000, dbus_interface='cn.ailurus.Interface')
 
 class RPM:
     fresh_cache = False

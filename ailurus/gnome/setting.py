@@ -111,7 +111,7 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24, True)
+    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24, scale=True)
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -127,7 +127,7 @@ def __login_icon_setting():
     path = ''
     path1 = os.path.expanduser('~/.face')
     if os.path.exists(path1): path = path1
-    i = GConfImageEntry(_('The login icon is ~/.face'), path, 96)
+    i = GConfImageEntry(_('The login icon is ~/.face'), path, 96, scale=False)
     i.connect('changed',__apply)
     box = gtk.VBox(False, 0)
     box.pack_start(i)
@@ -216,14 +216,23 @@ def __font_size_setting():
 
     button_increase = image_stock_button(gtk.STOCK_ZOOM_IN, _('Larger font') )
     button_increase.connect('clicked', change_font, True)
+    button_increase.set_tooltip_text(
+                          _('Change these GConf keys:\n') +
+                          '/apps/nautilus/preferences/desktop_font\n'
+                          '/desktop/gnome/interface/document_font_name\n'
+                          '/desktop/gnome/interface/font_name\n'
+                          '/desktop/gnome/interface/monospace_font_name\n'
+                          '/apps/metacity/general/titlebar_font')
     button_decrease = image_stock_button(gtk.STOCK_ZOOM_OUT, _('Smaller font') )
     button_decrease.connect('clicked', change_font, False)
+    button_decrease.set_tooltip_text(
+                          _('Change these GConf keys:\n') +
+                          '/apps/nautilus/preferences/desktop_font\n'
+                          '/desktop/gnome/interface/document_font_name\n'
+                          '/desktop/gnome/interface/font_name\n'
+                          '/desktop/gnome/interface/monospace_font_name\n'
+                          '/apps/metacity/general/titlebar_font')
     hbox = gtk.HBox(False, 10)
-    hbox.set_tooltip_text(_('One Click make font increase/decrease in one size\n')+_('Gconf Key:')+'/apps/nautilus/preferences/desktop_font\n'
-          '/desktop/gnome/interface/document_font_name\n'
-          '/desktop/gnome/interface/font_name\n'
-          '/desktop/gnome/interface/monospace_font_name\n'
-          '/apps/metacity/general/titlebar_font\n' )
     hbox.pack_start(button_increase, False, False)
     hbox.pack_start(button_decrease, False, False)
     hbox.show_all()
@@ -553,31 +562,33 @@ def __compiz_setting():
     return Setting(table, _('CompizConfig Settings'), ['window'])
 
 def get():
-    try:
-        import gconf
-        return [
-            __desktop_icon_setting(),
-            __menu_icon_setting(),
-            __start_here_icon_setting(),
-            __login_icon_setting(),
-            __button_icon_setting(),
-            __font_size_setting(),
-            __window_behaviour_setting(),
-            __nautilus_thumbnail_setting(),
-            __gnome_splash_setting(),
-            __gnome_session_setting(),
-            __textbox_context_menu_setting(),
-            __disable_terminal_beep(),
-            __backlight(),
-            __advance_setting(),
-#            __suspend_and_hibernate(),
-            __restriction_on_current_user(),
-            __layout_of_window_titlebar_buttons(),
-            __more_nautilus_settings(),
-            __shortcut_setting(),
-            __compiz_setting(),
-            ]
-    except:
-        import traceback
-        traceback.print_exc()
-        return []
+    ret = []
+    for f in [
+            __desktop_icon_setting,
+            __menu_icon_setting,
+            __button_icon_setting,
+            __start_here_icon_setting,
+            __login_icon_setting,
+            __font_size_setting,
+            __window_behaviour_setting,
+            __nautilus_thumbnail_setting,
+            __gnome_splash_setting,
+            __gnome_session_setting,
+            __textbox_context_menu_setting,
+            __disable_terminal_beep,
+            __backlight,
+            __advance_setting,
+#            __suspend_and_hibernate,
+            __restriction_on_current_user,
+            __layout_of_window_titlebar_buttons,
+            __more_nautilus_settings,
+            __shortcut_setting,
+            __compiz_setting,
+            ]:
+        try:
+            import gconf
+            ret.append(f())
+        except:
+            import traceback
+            traceback.print_exc()
+    return ret

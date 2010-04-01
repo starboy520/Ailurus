@@ -166,7 +166,14 @@ def __reclaim_memory():
     return Setting(vbox, _('Reclaim memory'), ['memory'])
 
 def get():
-    return [
-        __change_kernel_swappiness(),
-        __reclaim_memory(),
-        __restart_network() ]
+    ret = []
+    for f in [
+            __change_kernel_swappiness,
+            __reclaim_memory,
+            __restart_network ]:
+        try:
+            ret.append(f())
+        except:
+            import traceback
+            traceback.print_exc()
+    return ret

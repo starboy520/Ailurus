@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-01 08:24+0800\n"
+"POT-Creation-Date: 2010-04-01 09:34+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
-#: ../ailurus.desktop.in.h:1 .././ailurus/ubuntu/third_party_repos.py:201
+#: ../ailurus.desktop.in.h:1
 msgid "Ailurus"
 msgstr ""
 
@@ -1424,7 +1424,6 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:29 .././ailurus/ubuntu/app0.py:62
-#: .././ailurus/ubuntu/third_party_repos.py:184
 msgid "WINE"
 msgstr ""
 
@@ -2065,8 +2064,8 @@ msgstr ""
 msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:193 .././ailurus/gnome/setting.py:234
-#: .././ailurus/gnome/setting.py:506 .././ailurus/gnome/setting.py:527
+#: .././ailurus/gnome/setting.py:193 .././ailurus/gnome/setting.py:243
+#: .././ailurus/gnome/setting.py:515 .././ailurus/gnome/setting.py:536
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
 #: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:296
 #: .././ailurus/libsetting.py:328
@@ -2081,52 +2080,48 @@ msgstr ""
 msgid "Larger font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:219
+#: .././ailurus/gnome/setting.py:220 .././ailurus/gnome/setting.py:229
+msgid "Change these GConf keys:\n"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:226
 msgid "Smaller font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:222
-msgid "One Click make font increase/decrease in one size\n"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:222
-msgid "Gconf Key:"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:230
+#: .././ailurus/gnome/setting.py:239
 msgid "One-click changing font size"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:233 .././ailurus/gnome/setting.py:242
+#: .././ailurus/gnome/setting.py:242 .././ailurus/gnome/setting.py:251
 msgid "The layout of window title-bar buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:235
+#: .././ailurus/gnome/setting.py:244
 msgid "It can be used in Metacity only."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237
+#: .././ailurus/gnome/setting.py:246
 msgid "GNOME classic"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237
+#: .././ailurus/gnome/setting.py:246
 msgid "MAC OS X"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237
+#: .././ailurus/gnome/setting.py:246
 msgid "Ubuntu Lucid"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:245
+#: .././ailurus/gnome/setting.py:254
 msgid "double-clicked by mouse left button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:246 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:268
 msgid "The effects of double-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:246 .././ailurus/gnome/setting.py:248
-#: .././ailurus/gnome/setting.py:250 .././ailurus/libsetting.py:38
+#: .././ailurus/gnome/setting.py:255 .././ailurus/gnome/setting.py:257
+#: .././ailurus/gnome/setting.py:259 .././ailurus/libsetting.py:38
 #: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:130
 #: .././ailurus/libsetting.py:137 .././ailurus/libsetting.py:259
 msgid ""
@@ -2134,213 +2129,213 @@ msgid ""
 "GConf key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:247
+#: .././ailurus/gnome/setting.py:256
 msgid "clicked by mouse right button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:268
+#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:277
 msgid "The effects of right-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:249
+#: .././ailurus/gnome/setting.py:258
 msgid "clicked by mouse wheel:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:277
+#: .././ailurus/gnome/setting.py:259 .././ailurus/gnome/setting.py:286
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "maximize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "minimize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "roll up"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "put behind others"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "maximize horizontally"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
-#: .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:284
 msgid "maximize vertically"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:266 .././ailurus/gnome/setting.py:275
+#: .././ailurus/gnome/setting.py:275 .././ailurus/gnome/setting.py:284
 msgid "show menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:280
+#: .././ailurus/gnome/setting.py:289
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:285
+#: .././ailurus/gnome/setting.py:294
 msgid "Show \"Input method\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:286 .././ailurus/gnome/setting.py:289
+#: .././ailurus/gnome/setting.py:295 .././ailurus/gnome/setting.py:298
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:288
+#: .././ailurus/gnome/setting.py:297
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:291
+#: .././ailurus/gnome/setting.py:300
 msgid "Text-boxes context menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:295
+#: .././ailurus/gnome/setting.py:304
 msgid "Show login splash image: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:297
+#: .././ailurus/gnome/setting.py:306
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:299
+#: .././ailurus/gnome/setting.py:308
 msgid "Splash image:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:301
+#: .././ailurus/gnome/setting.py:310
 msgid "The file which is used as the GNOME splash image."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:303
+#: .././ailurus/gnome/setting.py:312
 msgid "GNOME splash image"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:309
+#: .././ailurus/gnome/setting.py:318
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:311
+#: .././ailurus/gnome/setting.py:320
 msgid "Disable Alt+F2 (Launch application)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:313
+#: .././ailurus/gnome/setting.py:322
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:315
+#: .././ailurus/gnome/setting.py:324
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:317
+#: .././ailurus/gnome/setting.py:326
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:319
+#: .././ailurus/gnome/setting.py:328
 msgid "Disable \"print\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:321
+#: .././ailurus/gnome/setting.py:330
 msgid "Prevent current user from printing any documents."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:323
+#: .././ailurus/gnome/setting.py:332
 msgid "Disable \"print setup\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:325
+#: .././ailurus/gnome/setting.py:334
 msgid "Prevent current user from modifying print settings."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:327
+#: .././ailurus/gnome/setting.py:336
 msgid "Disable \"save as\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:329
+#: .././ailurus/gnome/setting.py:338
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:331
+#: .././ailurus/gnome/setting.py:340
 msgid "Forbid running multiple GNOME session."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:333
+#: .././ailurus/gnome/setting.py:342
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:335
+#: .././ailurus/gnome/setting.py:344
 msgid "Restriction on current user"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:342
+#: .././ailurus/gnome/setting.py:351
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:345
+#: .././ailurus/gnome/setting.py:354
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:347 .././ailurus/gnome/setting.py:355
-#: .././ailurus/gnome/setting.py:363
+#: .././ailurus/gnome/setting.py:356 .././ailurus/gnome/setting.py:364
+#: .././ailurus/gnome/setting.py:372
 #, python-format
 msgid "GConf key: %s"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:353
+#: .././ailurus/gnome/setting.py:362
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:361
+#: .././ailurus/gnome/setting.py:370
 msgid "Size of each thumbnail (in pixels):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:369
+#: .././ailurus/gnome/setting.py:378
 msgid "Nautilus thumbnail settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:375
+#: .././ailurus/gnome/setting.py:384
 msgid "Remember running applications when you log out."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:377
+#: .././ailurus/gnome/setting.py:386
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
 "GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:380
+#: .././ailurus/gnome/setting.py:389
 msgid "Configure autostart applications"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:381
+#: .././ailurus/gnome/setting.py:390
 msgid "Run command: gnome-session-properties"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:384
+#: .././ailurus/gnome/setting.py:393
 msgid "Prompt you before you log out from GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:386
+#: .././ailurus/gnome/setting.py:395
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:388
+#: .././ailurus/gnome/setting.py:397
 msgid "Allow connection from remote hosts."
 msgstr ""
 
@@ -2353,109 +2348,109 @@ msgstr ""
 #. _('If its value is false, Gnome will not show confirmation '
 #. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
 #. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-#: .././ailurus/gnome/setting.py:401
+#: .././ailurus/gnome/setting.py:410
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:405
+#: .././ailurus/gnome/setting.py:414
 msgid "Lock screen when screen saver is activated"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:409
+#: .././ailurus/gnome/setting.py:418
 msgid "GNOME session"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:415
+#: .././ailurus/gnome/setting.py:424
 msgid "LCD brightness when on AC power:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:417 .././ailurus/gnome/setting.py:423
-#: .././ailurus/gnome/setting.py:530 .././ailurus/gnome/setting.py:541
-#: .././ailurus/gnome/setting.py:547
+#: .././ailurus/gnome/setting.py:426 .././ailurus/gnome/setting.py:432
+#: .././ailurus/gnome/setting.py:539 .././ailurus/gnome/setting.py:550
+#: .././ailurus/gnome/setting.py:556
 msgid "GConf Key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:421
+#: .././ailurus/gnome/setting.py:430
 msgid "LCD dimming amount when on battery:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:427
+#: .././ailurus/gnome/setting.py:436
 msgid "Backlight"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:451
+#: .././ailurus/gnome/setting.py:460
 msgid "Clear \"recent documents\" list"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:455
+#: .././ailurus/gnome/setting.py:464
 msgid "Change default file manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:461
+#: .././ailurus/gnome/setting.py:470
 msgid "Change default panel program to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:467
+#: .././ailurus/gnome/setting.py:476
 msgid "Change default window manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:473
+#: .././ailurus/gnome/setting.py:482
 msgid "Use your home folder as the desktop"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:478
+#: .././ailurus/gnome/setting.py:487
 msgid "Advance settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:483
+#: .././ailurus/gnome/setting.py:492
 msgid "Command line"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:486 .././ailurus/gnome/setting.py:496
+#: .././ailurus/gnome/setting.py:495 .././ailurus/gnome/setting.py:505
 #: .././ailurus/system_setting_pane.py:58
 msgid "Shortcut key"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:490
+#: .././ailurus/gnome/setting.py:499
 #, python-format
 msgid "%2d:"
 msgstr ""
 
 #. Window Decorator
-#: .././ailurus/gnome/setting.py:503
+#: .././ailurus/gnome/setting.py:512
 msgid "Set Window Decorator:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:505
+#: .././ailurus/gnome/setting.py:514
 msgid "<span color='red'>It takes effect after next startup.</span>\n"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:509
+#: .././ailurus/gnome/setting.py:518
 msgid "Metacity"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:509
+#: .././ailurus/gnome/setting.py:518
 msgid "Emerald"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:525
+#: .././ailurus/gnome/setting.py:534
 msgid "Disable Minimize Effect"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:529
+#: .././ailurus/gnome/setting.py:538
 msgid "Random All Effects"
 msgstr ""
 
 #. number of desktop
-#: .././ailurus/gnome/setting.py:539
+#: .././ailurus/gnome/setting.py:548
 msgid "Screen horizontal size coefficient"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:545
+#: .././ailurus/gnome/setting.py:554
 msgid "Screen vertical size coefficient"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:553
+#: .././ailurus/gnome/setting.py:562
 msgid "CompizConfig Settings"
 msgstr ""
 
@@ -3328,51 +3323,59 @@ msgstr ""
 msgid "Clean up"
 msgstr ""
 
-#: .././ailurus/main.py:327
+#: .././ailurus/main.py:328
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:328
+#: .././ailurus/main.py:329
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:329
+#: .././ailurus/main.py:330
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:330
+#: .././ailurus/main.py:331
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:331
+#: .././ailurus/main.py:332
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:333
+#: .././ailurus/main.py:334
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:335
 msgid "load \"apt recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:335
+#: .././ailurus/main.py:336
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:337
+#: .././ailurus/main.py:338
 msgid "load \"rpm recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:360
+#: .././ailurus/main.py:348
+msgid "You did not specify any functionality. :)"
+msgstr ""
+
+#: .././ailurus/main.py:349
+msgid "For example: ailurus --fast --information"
+msgstr ""
+
+#: .././ailurus/main.py:371
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:389
+#: .././ailurus/main.py:400
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:401
+#: .././ailurus/main.py:412
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
@@ -5230,275 +5233,259 @@ msgid "<i>Source setting:</i>"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:154
-msgid "Firefox 3.6"
+msgid "Firefox 3.6 (stable)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
-msgid ""
-"This repository contains Firefox stable version 3.6.\n"
-"version : stable"
+msgid "This repository contains Firefox stable version 3.6."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:169
-msgid "PlayOnLinux"
+#: .././ailurus/ubuntu/third_party_repos.py:168
+msgid "PlayOnLinux (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:172
+#: .././ailurus/ubuntu/third_party_repos.py:171
 msgid ""
 "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
-"softwares on Linux. \n"
-"version : stable"
+"softwares on Linux."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:189
+#: .././ailurus/ubuntu/third_party_repos.py:182
+msgid "WINE (beta version)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:187
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
-"Windows applications on Linux. \n"
-"version : beta"
+"Windows applications on Linux."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:205
-msgid ""
-"This is the repository of Ailurus.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:198
+msgid "Ailurus (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:216
-msgid "AWN (Development version)"
+#: .././ailurus/ubuntu/third_party_repos.py:202
+msgid "This is the repository of Ailurus."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:219
+#: .././ailurus/ubuntu/third_party_repos.py:212
+msgid "AWN (beta version)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:215
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
-"version of AWN. \n"
-"version : unstable"
+"version of AWN."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:231
-msgid "Blueman"
+#: .././ailurus/ubuntu/third_party_repos.py:226
+msgid "Blueman (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:234
-msgid ""
-"Blueman is a graphical blue-tooth manager.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:229
+msgid "Blueman is a graphical blue-tooth manager."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:245
-msgid "Christine"
+#: .././ailurus/ubuntu/third_party_repos.py:239
+msgid "Christine (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:248
-msgid ""
-"Christine is a small media player.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:242
+msgid "Christine is a small media player."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:259
-msgid "Chromium"
+#: .././ailurus/ubuntu/third_party_repos.py:252
+msgid "Chromium (beta version)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:262
-msgid ""
-"Chromium is the open source version of Google Chrome.\n"
-"version : unstable"
+#: .././ailurus/ubuntu/third_party_repos.py:255
+msgid "Chromium is the open source version of Google Chrome."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:273
-msgid "Getting things GNOME"
+#: .././ailurus/ubuntu/third_party_repos.py:265
+msgid "Getting things GNOME (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:276
+#: .././ailurus/ubuntu/third_party_repos.py:268
 msgid ""
 "\"Getting things GNOME\" is a simple, powerful and flexible organization "
-"tool.\n"
-"version : stable"
+"tool."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:287
-msgid "GNOME colors"
+#: .././ailurus/ubuntu/third_party_repos.py:278
+msgid "GNOME colors (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:290
-msgid ""
-"This repository contains some themes.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:281
+msgid "This repository contains some themes."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:301
-msgid "GNOME Global Menu"
+#: .././ailurus/ubuntu/third_party_repos.py:291
+msgid "GNOME Global Menu (stable)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:294
+msgid "GNOME Global Menu is the globally-shared menu bar of all applications."
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:304
-msgid ""
-"GNOME Global Menu is the globally-shared menu bar of all applications.\n"
-"version : stable"
+msgid "Medibuntu (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:315
-msgid "Medibuntu"
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:318
+#: .././ailurus/ubuntu/third_party_repos.py:307
 msgid ""
 "This is a repository providing packages which cannot be included into the "
 "Ubuntu distribution for legal reasons. There are many packages in this "
-"repository. The list of packages is in http://packages.medibuntu.org/\n"
-"version : stable"
+"repository. The list of packages is in http://packages.medibuntu.org/"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:330
-msgid "Moovida"
+#: .././ailurus/ubuntu/third_party_repos.py:318
+msgid "Moovida (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:333
-msgid ""
-"Moovida is a cross platform media player.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:321
+msgid "Moovida is a cross platform media player."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:345
-msgid "Shutter"
+#: .././ailurus/ubuntu/third_party_repos.py:331
+msgid "Shutter (stable)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:334
+msgid "Shutter is a powerful screenshot program."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:344
+msgid "Synapse (stable)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:347
-msgid ""
-"Shutter is a powerful screenshot program.\n"
-"version : stable"
+msgid "Synapse is an instant messager."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:358
-msgid "Synapse"
+#: .././ailurus/ubuntu/third_party_repos.py:357
+msgid "X server updates (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:361
-msgid ""
-"Synapse is an instant messager.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:360
+msgid "This repository provides latest versions of X.org drivers, libraries."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:372
-msgid "X server updates"
+#: .././ailurus/ubuntu/third_party_repos.py:371
+msgid "WebkitGTK (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:375
-msgid ""
-"This repository provides latest versions of X.org drivers, libraries.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:374
+msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:384
+msgid "XBMC (stable)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:387
-msgid "WebkitGTK"
+msgid ""
+"XBMC is an open source software media player and entertainment hub for "
+"digital media."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:390
-msgid ""
-"WebkitGTK is the port of Webkit to the GTK+ platform.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:397
+msgid "IBus (stable)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:401
-msgid "XBMC"
+msgid "Next generation input method"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:404
-msgid ""
-"XBMC is an open source software media player and entertainment hub for "
-"digital media.\n"
-"version : stable"
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:419
-msgid ""
-"Next generation input method\n"
-"version : stable"
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:432
+#: .././ailurus/ubuntu/third_party_repos.py:413
 msgid "Partners of Canonical"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:435
+#: .././ailurus/ubuntu/third_party_repos.py:416
 msgid "This repository provides many packages from partners of Canonical."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:448
-msgid ""
-"RSSOwl is an RSS reader.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:426
+msgid "RSSOwl (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:463
-msgid ""
-"This is a Chinese chess game.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:429
+msgid "RSSOwl is an RSS reader."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:474
-msgid "Exaile (Latest version)"
+#: .././ailurus/ubuntu/third_party_repos.py:439
+msgid "Gmchess (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:477
-msgid ""
-"A music manager and player for GTK+ written in Python.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:443
+msgid "This is a Chinese chess game."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:488
-msgid "Audacious (Latest version)"
+#: .././ailurus/ubuntu/third_party_repos.py:453
+msgid "Exaile (beta version)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:491
+#: .././ailurus/ubuntu/third_party_repos.py:456
+msgid "A music manager and player for GTK+ written in Python."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:466
+msgid "Audacious (beta version)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:469
 msgid ""
 "An advanced audio player.It focused on audio quality and supporting a wide "
-"range of audio codecs.\n"
-"version : stable"
+"range of audio codecs."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:505
+#: .././ailurus/ubuntu/third_party_repos.py:479
+msgid "Tor (stable)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:482
 msgid ""
 "An open network that helps you defend against a form of network surveillance "
 "that threatens personal freedom and privacy, confidential business "
-"activities and relationships, and state security known as traffic analysis.\n"
-"version : stable"
+"activities and relationships, and state security known as traffic analysis."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:520
-msgid ""
-"This is a desktop diary application.\n"
-"version : stable"
+#: .././ailurus/ubuntu/third_party_repos.py:493
+msgid "RedNoteBook (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:531
-msgid "Pidgin (Latest version)"
+#: .././ailurus/ubuntu/third_party_repos.py:496
+msgid "This is a desktop diary application."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:534
+#: .././ailurus/ubuntu/third_party_repos.py:506
+msgid "Pidgin (beta version)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:509
 msgid ""
 "A free chat client used by millions. Connect easily to MSN, Google Talk, "
-"Yahoo, AIM and other chat networks all at once.version : stable"
+"Yahoo, AIM and other chat networks all at once."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:545
-msgid "Songbird (Latest version)"
+#: .././ailurus/ubuntu/third_party_repos.py:519
+msgid "Songbird (beta version)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:548
+#: .././ailurus/ubuntu/third_party_repos.py:522
 msgid ""
 "Music player which integrates with online content via plugins. Site contains "
-"project news, download, add-ons directory, help, and how to contribute.\n"
-"version : stable"
+"project news, download, add-ons directory, help, and how to contribute."
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:560
-msgid "Mplayer"
+#: .././ailurus/ubuntu/third_party_repos.py:532
+msgid "Mplayer-VOD (stable)"
 msgstr ""
 
-#: .././ailurus/ubuntu/third_party_repos.py:562
+#: .././ailurus/ubuntu/third_party_repos.py:535
 msgid ""
 "A movie player for Linux. Supports reading from network, dvd, vcd, file, "
-"pipes, and v4l.\n"
-"version = stable"
+"pipes, and v4l."
 msgstr ""
 
 #: .././ailurus/ubuntu/tips.py:27

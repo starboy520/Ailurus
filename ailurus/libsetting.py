@@ -197,7 +197,7 @@ class GConfImageEntry(gtk.HBox):
         self.button.show_all()
     
     
-    def __init__(self, tooltip, image_path, image_size, scale = False ):
+    def __init__(self, tooltip, image_path, image_size, scale=False):
         is_string_not_empty(tooltip)
         assert isinstance(image_path, str)
         assert isinstance(image_size, int)
