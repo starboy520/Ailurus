@@ -34,8 +34,8 @@ WORKS = [
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
             [_('Decompression software'), 'Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
-            [_('Gnash Flash plugin for web browser'), 'Flash_Player', True],
-#            [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
+            [_('Flash plugin for web browser'), 'Flash_Player', True],
+            [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
 class SelectWorksDialog(gtk.Dialog):
@@ -395,7 +395,8 @@ class DoStuffDialog(gtk.Dialog):
         import gobject
         # status (0=fail, 1=blank, 2=started, 3=done), text, app_class
         self.task_store = task_store = gtk.ListStore(int, str, gobject.TYPE_PYOBJECT) 
-        for text, name in WORKS:
+        for text, name, will_do in WORKS:
+            if will_do == False: continue
             try:
                 c = get_class_by_name(name, app_classes)
                 task_store.append([1, text, c])
