@@ -8,7 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
+<<<<<<< HEAD
 "POT-Creation-Date: 2010-04-01 22:50+0800\n"
+=======
+"POT-Creation-Date: 2010-04-01 20:52+0800\n"
+>>>>>>> FETCH_HEAD
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1542,6 +1546,7 @@ msgid "Command: yum install cups-pdf"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:210 .././ailurus/ubuntu/app1.py:357
+#: .././ailurus/ubuntu/quick_setup.py:36
 msgid "Stardict"
 msgstr ""
 
@@ -1705,7 +1710,7 @@ msgid ""
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:482
+#: .././ailurus/fedora/apps.py:482 .././ailurus/ubuntu/quick_setup.py:37
 msgid "Flash plugin for web browser"
 msgstr ""
 
@@ -1714,14 +1719,23 @@ msgid "Command: yum install gnash"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
-#: .././ailurus/ubuntu/quick_setup.py:296
+#: .././ailurus/ubuntu/quick_setup.py:34
 msgid "Multi-media codec"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:493
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
-"extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
+"free-extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-"
+"ugly"
+msgstr ""
+
+#: .././ailurus/fedora/apps.py:508 .././ailurus/ubuntu/app2.py:239
+msgid "VirtualBox open source edition"
+msgstr ""
+
+#: .././ailurus/fedora/apps.py:509
+msgid "Command: yum install VirtualBox-OSE"
 msgstr ""
 
 #: .././ailurus/fedora/osinfo.py:35
@@ -2899,9 +2913,7 @@ msgid "_Apply"
 msgstr ""
 
 #: .././ailurus/install_remove_pane.py:599
-#: .././ailurus/ubuntu/quick_setup.py:33
-#: .././ailurus/ubuntu/quick_setup.py:363
-msgid "Quick setup"
+msgid "Start quick setup"
 msgstr ""
 
 #: .././ailurus/install_remove_pane.py:608
@@ -3094,7 +3106,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/lib.py:718 .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:257
+#: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
@@ -3541,7 +3553,7 @@ msgid ""
 "Then run this command: sudo apt-get install gedit-plugins"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:71 .././ailurus/ubuntu/quick_setup.py:295
+#: .././ailurus/ubuntu/app1.py:71 .././ailurus/ubuntu/quick_setup.py:33
 msgid "Full language support and input method"
 msgstr ""
 
@@ -3555,7 +3567,7 @@ msgstr ""
 msgid "Command: "
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:118 .././ailurus/ubuntu/quick_setup.py:297
+#: .././ailurus/ubuntu/app1.py:118
 msgid "Decompression software: 7z, rar, cab, ace"
 msgstr ""
 
@@ -3635,21 +3647,6 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:318
 msgid "Command: sudo apt-get install gnash mozilla-plugin-gnash"
-msgstr ""
-
-#: .././ailurus/ubuntu/app1.py:326 .././ailurus/ubuntu/quick_setup.py:305
-msgid "Fix font bug in Flash plugin"
-msgstr ""
-
-#: .././ailurus/ubuntu/app1.py:327
-msgid ""
-"Fix bug: characters are displayed as blank square in Flash.\n"
-"The trick behind is to modify \"/etc/fonts/conf.d/49-sansserif.conf\" file."
-msgstr ""
-
-#: .././ailurus/ubuntu/app1.py:354
-#, python-format
-msgid "The file \"%s\" exists."
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:367
@@ -3858,10 +3855,6 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:233
 msgid "Command: sudo apt-get install minicom ckermit"
-msgstr ""
-
-#: .././ailurus/ubuntu/app2.py:239
-msgid "VirtualBox open source edition"
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:240
@@ -4437,7 +4430,7 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
-#: .././ailurus/ubuntu/quick_setup.py:175
+#: .././ailurus/ubuntu/quick_setup.py:218
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
 msgstr ""
@@ -4972,118 +4965,109 @@ msgstr ""
 msgid "Ubuntu version:"
 msgstr ""
 
+#: .././ailurus/ubuntu/quick_setup.py:32
+msgid "Search fastest repository"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:35
+msgid "Decompression software"
+msgstr ""
+
 #: .././ailurus/ubuntu/quick_setup.py:38
+msgid "Install hardware drivers"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:46
+#: .././ailurus/ubuntu/quick_setup.py:390
+msgid "Quick setup"
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:51
 msgid ""
-"Ailurus will help you\n"
-"* Choose the fastest repository\n"
-"* Install :\n"
-"   - full language support\n"
-"   - input method\n"
-"   - multi-media codec\n"
-"   - Adobe Flash support\n"
-"   - decompression software"
+"Ailurus helps you quickly install popular software.\n"
+"Select the software which you would like to install."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:62
-msgid "Checking whether your computer is connected to Internet ..."
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:76
-msgid "Scanning installed packages."
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:76
-msgid "Please wait a few seconds."
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:102
+#: .././ailurus/ubuntu/quick_setup.py:104
 msgid "Computer is not connected to Internet"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:105
+#: .././ailurus/ubuntu/quick_setup.py:107
 msgid ""
 "Your computer is not connected to Internet.\n"
 "Please configure network connections."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:108
+#: .././ailurus/ubuntu/quick_setup.py:110
 msgid "Configure network connections"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:112
-#: .././ailurus/ubuntu/quick_setup.py:142
+#: .././ailurus/ubuntu/quick_setup.py:114
+#: .././ailurus/ubuntu/quick_setup.py:185
 msgid "Skip this step"
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:133
+msgid "Checking whether your computer is connected to Internet ..."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:159
+msgid "Scanning installed packages."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:159
+msgid "Please wait a few seconds."
+msgstr ""
+
+#: .././ailurus/ubuntu/quick_setup.py:176
 msgid "Searching the fastest repository"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:173
+#: .././ailurus/ubuntu/quick_setup.py:216
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:180
+#: .././ailurus/ubuntu/quick_setup.py:223
 #, python-format
 msgid "<span color='black'>Time left: %s</span>"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:224
+#: .././ailurus/ubuntu/quick_setup.py:267
 msgid ""
 "In order to use the fastest repository, Ailurus will change /etc/apt/sources."
 "list"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:225
+#: .././ailurus/ubuntu/quick_setup.py:268
 #, python-format
 msgid "The fastest repository is %s."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:253
+#: .././ailurus/ubuntu/quick_setup.py:297
 msgid "Apply the fastest repository:"
 msgstr ""
 
 #. apt-get update
-#: .././ailurus/ubuntu/quick_setup.py:256
+#: .././ailurus/ubuntu/quick_setup.py:300
 msgid "Run command: \"sudo apt-get update\""
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:293
-msgid "Search fastest repository"
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:294
-msgid "Install hardware drivers"
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:301
-msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:302
-msgid "Stardict and four dictionaries"
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:304
-msgid "Adobe® Flash plugin for web browser"
-msgstr ""
-
-#: .././ailurus/ubuntu/quick_setup.py:327
+#: .././ailurus/ubuntu/quick_setup.py:354
 msgid "Ongoing:"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:332
+#: .././ailurus/ubuntu/quick_setup.py:359
 msgid "Successful"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:335
+#: .././ailurus/ubuntu/quick_setup.py:362
 msgid "Failed"
 msgstr ""
 
 #. 4
-#: .././ailurus/ubuntu/quick_setup.py:449
+#: .././ailurus/ubuntu/quick_setup.py:465
 msgid "All works are done."
 msgstr ""
 
@@ -5262,6 +5246,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:198
 msgid "Ailurus (stable)"
+<<<<<<< HEAD
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:202
@@ -5272,6 +5257,18 @@ msgstr ""
 msgid "AWN (beta version)"
 msgstr ""
 
+=======
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:202
+msgid "This is the repository of Ailurus."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:212
+msgid "AWN (beta version)"
+msgstr ""
+
+>>>>>>> FETCH_HEAD
 #: .././ailurus/ubuntu/third_party_repos.py:215
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
@@ -5391,12 +5388,21 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:397
 msgid "IBus (stable)"
+<<<<<<< HEAD
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:401
 msgid "Next generation input method"
 msgstr ""
 
+=======
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:401
+msgid "Next generation input method"
+msgstr ""
+
+>>>>>>> FETCH_HEAD
 #: .././ailurus/ubuntu/third_party_repos.py:413
 msgid "Partners of Canonical"
 msgstr ""

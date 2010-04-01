@@ -163,7 +163,8 @@ def show_special_thank_dialog(widget): # called by __help
     print >>text, '<b><big>PCMan, Careone, novia, '
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
-    print >>text, 'Romeo-Adrian Cioaba, David Morre</big></b>'
+    print >>text, 'Romeo-Adrian Cioaba, David Morre, '
+    print >>text, 'Chen Lei</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'

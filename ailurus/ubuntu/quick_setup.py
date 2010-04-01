@@ -28,56 +28,58 @@ from libu import *
 from libserver import *
 import gtk
 
-class WelcomeDialog(gtk.Dialog):
+WORKS = [
+            [_('Search fastest repository'), 'Search_Fastest_Repository', True],
+            [_('Full language support and input method'), 'Full_Language_Pack', True],
+            [_('Multi-media codec'), 'Multimedia_Codecs', True],
+            [_('Decompression software'), 'Decompression_Capability', True],
+            [_('Stardict'), 'Stardict', True],
+            [_('Flash plugin for web browser'), 'Flash_Player', True],
+            [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
+        ]
+
+class SelectWorksDialog(gtk.Dialog):
+    def toggled(self, check_button, item):
+        item[2] = check_button.get_active()
+        
     def __init__(self):
         gtk.Dialog.__init__(self, _('Quick setup'), None, gtk.DIALOG_NO_SEPARATOR, 
-                                       (gtk.STOCK_CANCEL, gtk.RESPONSE_DELETE_EVENT, 
-                                        gtk.STOCK_OK, gtk.RESPONSE_OK) )
+                            (gtk.STOCK_CANCEL, gtk.RESPONSE_DELETE_EVENT, 
+                             gtk.STOCK_OK, gtk.RESPONSE_OK) )
         image = gtk.Image()
         image.set_from_file(D+'suyun_icons/default.png')
-        label = gtk.Label( _('Ailurus will help you\n' 
-                             '* Choose the fastest repository\n'
-                             '* Install :\n'
-                             '   - full language support\n'
-                             '   - input method\n'
-                             '   - multi-media codec\n'
-                             '   - Adobe Flash support\n'
-                             '   - decompression software') )
-        box = gtk.HBox(False, 15)
-        box.pack_start(image, False)
-        box.pack_start(label, False)
+        label = gtk.Label(_('Ailurus helps you quickly install popular software.\n'
+                            'Select the software which you would like to install.'))
+        title_box = gtk.HBox(False, 15)
+        title_box.pack_start(label, False)
+        title_box.pack_start(image, False)
         
+        check_button_list = []
+        for item in WORKS:
+            name = item[0]
+            check_button = gtk.CheckButton(name)
+            check_button.set_active(True)
+            check_button.connect('toggled', self.toggled, item)
+            check_button_list.append(check_button)
+        box = gtk.VBox(False, 5)
+        box.pack_start(title_box, False)
+        for button in check_button_list:
+            box.pack_start(button, False)
+
         self.set_border_width(5)
         self.vbox.pack_start(box)
         self.vbox.show_all()
+    
+    @classmethod
+    def show_dialog(cls):
+        dialog = SelectWorksDialog()
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_DELETE_EVENT:
+            sys.exit()
 
-def show_check_network_splash():
-    window = gtk.Window(gtk.WINDOW_POPUP)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.set_border_width(15)
-    color = gtk.gdk.color_parse('#202020')
-    window.modify_bg(gtk.STATE_NORMAL, color)
-    text = gtk.Label()
-    text.set_markup('<span color="yellow">%s</span>' % 
-                               _('Checking whether your computer is connected to Internet ...') )
-    window.add(text)
-    window.show_all()
-    while gtk.events_pending(): gtk.main_iteration()
-    return window
-
-def show_scan_installed_package_splash():
-    window = gtk.Window(gtk.WINDOW_POPUP)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.set_border_width(15)
-    color = gtk.gdk.color_parse('#202020')
-    window.modify_bg(gtk.STATE_NORMAL, color)
-    text = gtk.Label()
-    text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
-                               ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
-    window.add(text)
-    window.show_all()
-    while gtk.events_pending(): gtk.main_iteration()
-    return window
+def acquire_root_privilege():
+    gksudo('date')
 
 class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
@@ -118,6 +120,47 @@ class WaitNetworkDialog(gtk.Dialog):
         self.action_area.pack_end(edit_network_connection, False)
         self.action_area.pack_end(skip_network_checking, False)
         self.action_area.show_all()
+    
+    @classmethod
+    def show_check_network_splash(cls):
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_border_width(15)
+        color = gtk.gdk.color_parse('#202020')
+        window.modify_bg(gtk.STATE_NORMAL, color)
+        text = gtk.Label()
+        text.set_markup('<span color="yellow">%s</span>' % 
+                                   _('Checking whether your computer is connected to Internet ...') )
+        window.add(text)
+        window.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return window
+    
+    @classmethod
+    def show_dialog(cls):
+        window = WaitNetworkDialog.show_check_network_splash()
+        try:
+            try:     get_response_time('http://example.com')
+            finally: window.destroy()
+        except:
+            dialog = WaitNetworkDialog()
+            ret = dialog.run()
+            dialog.destroy()
+            if ret == gtk.RESPONSE_DELETE_EVENT: sys.exit()
+
+def show_scan_installed_package_splash():
+    window = gtk.Window(gtk.WINDOW_POPUP)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.set_border_width(15)
+    color = gtk.gdk.color_parse('#202020')
+    window.modify_bg(gtk.STATE_NORMAL, color)
+    text = gtk.Label()
+    text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
+                               ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
+    window.add(text)
+    window.show_all()
+    while gtk.events_pending(): gtk.main_iteration()
+    return window
 
 class FastestRepositoryDialog(gtk.Dialog):
     def _before_delete_event(self, *w):
@@ -246,7 +289,8 @@ class FastestRepositoryDialog(gtk.Dialog):
             self.destroy()
             
     def change_server(self, fastest_url):
-        #apply the fastest repository
+        'apply the fastest repository'
+        gksudo('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
         for repos in get_current_official_repositories():
             changes[repos] = fastest_url
@@ -268,7 +312,7 @@ class Install_Hardware_Driver:
     def installed(self):
         return False
     def install(self):
-        gksudo('/usr/bin/jockey-gtk')
+        su_spawn('/usr/bin/jockey-gtk')
 
 def get_class_by_name(name, app_classes):
     assert isinstance(name, str)
@@ -288,23 +332,6 @@ def get_class_by_name(name, app_classes):
     raise Exception(name)
 
 class DoStuffDialog(gtk.Dialog):
-    def get_stuff(self):
-        ret =  [
-            ( _('Search fastest repository'), 'Search_Fastest_Repository' ),
-            ( _('Install hardware drivers'), 'Install_Hardware_Driver' ),
-            ( _('Full language support and input method'), 'Full_Language_Pack' ),
-            ( _('Multi-media codec'), 'Multimedia_Codecs' ),
-            ( _('Decompression software: 7z, rar, cab, ace'), 
-              'Decompression_Capability' ),
-            ]
-        if Config.is_Chinese_locale():
-            ret.append( ( _('Alipay ( Zhi Fu Bao ) security plugin for Firefox'), 'AliPayFirefoxPlugin', ) )
-            ret.append( ( _('Stardict and four dictionaries'), 'StardictAndDictionaries', ) )
-        ret += [
-            ( _(u'Adobe® Flash plugin for web browser'), 'Flash_Player' ),
-            ( _('Fix font bug in Flash plugin'), 'Flash_Player_Font_Bug' ), 
-            ]
-        return ret
     def func_pixbuf(self, column, cell, model, iter):
         value = model.get_value(iter, 0)
         assert 0 <= value <= 3
@@ -369,7 +396,8 @@ class DoStuffDialog(gtk.Dialog):
         import gobject
         # status (0=fail, 1=blank, 2=started, 3=done), text, app_class
         self.task_store = task_store = gtk.ListStore(int, str, gobject.TYPE_PYOBJECT) 
-        for text, name in self.get_stuff():
+        for text, name, will_do in WORKS:
+            if will_do == False: continue
             try:
                 c = get_class_by_name(name, app_classes)
                 task_store.append([1, text, c])
@@ -417,21 +445,9 @@ class DoStuffDialog(gtk.Dialog):
         self.action_area.pack_start(self.button_close) 
 
 def quick_setup():
-    #show welcome dialog
-    dialog = WelcomeDialog()
-    ret = dialog.run()
-    dialog.destroy()
-    assert ret != gtk.RESPONSE_DELETE_EVENT
-    #check network connections
-    window = show_check_network_splash()
-    try:
-        try:     get_response_time('http://example.com')
-        finally: window.destroy()
-    except:
-        dialog = WaitNetworkDialog()
-        ret = dialog.run()
-        dialog.destroy()
-        assert ret != gtk.RESPONSE_DELETE_EVENT
+    SelectWorksDialog.show_dialog()
+    acquire_root_privilege()
+    WaitNetworkDialog.show_dialog()
     #load app_classes
     window = show_scan_installed_package_splash()
     import common as COMMON
