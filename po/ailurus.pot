@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-01 20:40+0800\n"
+"POT-Creation-Date: 2010-04-01 20:52+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1706,7 +1706,7 @@ msgid ""
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:482
+#: .././ailurus/fedora/apps.py:482 .././ailurus/ubuntu/quick_setup.py:37
 msgid "Flash plugin for web browser"
 msgstr ""
 
@@ -3102,7 +3102,7 @@ msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/lib.py:718 .././ailurus/ubuntu/fastest_mirror_pane.py:320
-#: .././ailurus/ubuntu/quick_setup.py:300
+#: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
@@ -4969,12 +4969,12 @@ msgstr ""
 msgid "Decompression software"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:37
-msgid "Gnash Flash plugin for web browser"
+#: .././ailurus/ubuntu/quick_setup.py:38
+msgid "Install hardware drivers"
 msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:46
-#: .././ailurus/ubuntu/quick_setup.py:389
+#: .././ailurus/ubuntu/quick_setup.py:390
 msgid "Quick setup"
 msgstr ""
 
@@ -5041,29 +5041,29 @@ msgstr ""
 msgid "The fastest repository is %s."
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:296
+#: .././ailurus/ubuntu/quick_setup.py:297
 msgid "Apply the fastest repository:"
 msgstr ""
 
 #. apt-get update
-#: .././ailurus/ubuntu/quick_setup.py:299
+#: .././ailurus/ubuntu/quick_setup.py:300
 msgid "Run command: \"sudo apt-get update\""
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:353
+#: .././ailurus/ubuntu/quick_setup.py:354
 msgid "Ongoing:"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:358
+#: .././ailurus/ubuntu/quick_setup.py:359
 msgid "Successful"
 msgstr ""
 
-#: .././ailurus/ubuntu/quick_setup.py:361
+#: .././ailurus/ubuntu/quick_setup.py:362
 msgid "Failed"
 msgstr ""
 
 #. 4
-#: .././ailurus/ubuntu/quick_setup.py:464
+#: .././ailurus/ubuntu/quick_setup.py:465
 msgid "All works are done."
 msgstr ""
 
