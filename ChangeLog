@@ -1,3 +1,11 @@
+2010-04-01 Homer Xing <homer.xing@gmail.com>
+
+    * Improve "quick setup" functionality.
+      Change button text to "Start quick setup".
+      Users can select which software they would like to quick setup.
+      Backup /etc/apt/sources.list before change it.
+      Require root privilege first. Do not ask for privilege afterwhile.
+
 2010-04-01 Starboy Qi <starboy.qi@gmail.com>
 
     * Fix multimedia package error in Fedora.
