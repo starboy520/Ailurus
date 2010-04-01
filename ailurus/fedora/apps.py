@@ -491,16 +491,30 @@ class Multimedia_Codecs (_rpm_install) :
     __doc__ = _('Multi-media codec')
     detail = _(
        'Command: yum install '
-       'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
+       'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-free-extras gstreamer-plugins-base'
                      'gstreamer-plugins-good gstreamer-plugins-ugly')
     category = 'media'
     license = 'GNU Lesser General Public License'
     logo = 'codec.png'
     depend = Repo_RPMFusion_Free
     def __init__(self):
-        self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
-                     'gstreamer-plugins-good gstreamer-plugins-ugly')
+        self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-free-extras gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly')
     def install(self):
         _rpm_install.install(self)
     def get_reason(self, f):
         self._get_reason(f)
+
+class VirtualBox_OSE(_rpm_install):
+    __doc__ = _('VirtualBox-OSE')
+    detail = _('Command: yum install VirtualBox-OSE')
+    category = 'vm'
+    license = 'GNU General Public License(GPL)'
+    logo = 'virtualbox.png'
+    depend = Repo_RPMFusion_Free
+    def __init__(self):
+        self.pkgs = 'VirtualBox-OSE'
+    def install(self):
+        _rpm_install.install(self)
+    def get_reason(self, f):
+        self._get_reason(f)    
+    
