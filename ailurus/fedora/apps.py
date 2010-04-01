@@ -505,16 +505,12 @@ class Multimedia_Codecs (_rpm_install) :
         self._get_reason(f)
 
 class VirtualBox_OSE(_rpm_install):
-    __doc__ = _('VirtualBox-OSE')
+    __doc__ = _('VirtualBox open source edition')
     detail = _('Command: yum install VirtualBox-OSE')
     category = 'vm'
-    license = 'GNU General Public License(GPL)'
+    license = 'GNU General Public License (GPL)'
     logo = 'virtualbox.png'
     depend = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = 'VirtualBox-OSE'
-    def install(self):
-        _rpm_install.install(self)
-    def get_reason(self, f):
-        self._get_reason(f)    
     
