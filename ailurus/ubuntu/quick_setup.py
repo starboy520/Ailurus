@@ -28,6 +28,16 @@ from libu import *
 from libserver import *
 import gtk
 
+WORKS = [
+            ( _('Search fastest repository'), 'Search_Fastest_Repository' ),
+            ( _('Full language support and input method'), 'Full_Language_Pack' ),
+            ( _('Multi-media codec'), 'Multimedia_Codecs' ),
+            ( _('Decompression software'), 'Decompression_Capability' ),
+            ( _('Stardict'), 'Stardict' ),
+            ( _('Gnash Flash plugin for web browser'), 'Flash_Player' ),
+            ( _('Install hardware drivers'), 'Install_Hardware_Driver' ),
+        ]
+
 class WelcomeDialog(gtk.Dialog):
     def __init__(self):
         gtk.Dialog.__init__(self, _('Quick setup'), None, gtk.DIALOG_NO_SEPARATOR, 
@@ -288,17 +298,6 @@ def get_class_by_name(name, app_classes):
     raise Exception(name)
 
 class DoStuffDialog(gtk.Dialog):
-    def get_stuff(self):
-        ret =  [
-            ( _('Search fastest repository'), 'Search_Fastest_Repository' ),
-            ( _('Install hardware drivers'), 'Install_Hardware_Driver' ),
-            ( _('Full language support and input method'), 'Full_Language_Pack' ),
-            ( _('Multi-media codec'), 'Multimedia_Codecs' ),
-            ( _('Decompression software'), 'Decompression_Capability' ),
-            ( _('Stardict'), 'Stardict' ),
-            ( _('Gnash Flash plugin for web browser'), 'Flash_Player' ),
-            ]
-        return ret
     def func_pixbuf(self, column, cell, model, iter):
         value = model.get_value(iter, 0)
         assert 0 <= value <= 3
@@ -363,7 +362,7 @@ class DoStuffDialog(gtk.Dialog):
         import gobject
         # status (0=fail, 1=blank, 2=started, 3=done), text, app_class
         self.task_store = task_store = gtk.ListStore(int, str, gobject.TYPE_PYOBJECT) 
-        for text, name in self.get_stuff():
+        for text, name in WORKS:
             try:
                 c = get_class_by_name(name, app_classes)
                 task_store.append([1, text, c])
