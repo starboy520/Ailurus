@@ -29,34 +29,43 @@ from libserver import *
 import gtk
 
 WORKS = [
-            ( _('Search fastest repository'), 'Search_Fastest_Repository' ),
-            ( _('Full language support and input method'), 'Full_Language_Pack' ),
-            ( _('Multi-media codec'), 'Multimedia_Codecs' ),
-            ( _('Decompression software'), 'Decompression_Capability' ),
-            ( _('Stardict'), 'Stardict' ),
-            ( _('Gnash Flash plugin for web browser'), 'Flash_Player' ),
-            ( _('Install hardware drivers'), 'Install_Hardware_Driver' ),
+            [_('Search fastest repository'), 'Search_Fastest_Repository', True],
+            [_('Full language support and input method'), 'Full_Language_Pack', True],
+            [_('Multi-media codec'), 'Multimedia_Codecs', True],
+            [_('Decompression software'), 'Decompression_Capability', True],
+            [_('Stardict'), 'Stardict', True],
+            [_('Gnash Flash plugin for web browser'), 'Flash_Player', True],
+#            [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
-class WelcomeDialog(gtk.Dialog):
+class SelectWorksDialog(gtk.Dialog):
+    def toggled(self, check_button, item):
+        item[2] = check_button.get_active()
+        
     def __init__(self):
         gtk.Dialog.__init__(self, _('Quick setup'), None, gtk.DIALOG_NO_SEPARATOR, 
-                                       (gtk.STOCK_CANCEL, gtk.RESPONSE_DELETE_EVENT, 
-                                        gtk.STOCK_OK, gtk.RESPONSE_OK) )
+                            (gtk.STOCK_CANCEL, gtk.RESPONSE_DELETE_EVENT, 
+                             gtk.STOCK_OK, gtk.RESPONSE_OK) )
         image = gtk.Image()
         image.set_from_file(D+'suyun_icons/default.png')
-        label = gtk.Label( _('Ailurus will help you\n' 
-                             '* Choose the fastest repository\n'
-                             '* Install :\n'
-                             '   - full language support\n'
-                             '   - input method\n'
-                             '   - multi-media codec\n'
-                             '   - Adobe Flash support\n'
-                             '   - decompression software') )
-        box = gtk.HBox(False, 15)
-        box.pack_start(image, False)
-        box.pack_start(label, False)
+        label = gtk.Label(_('Ailurus helps you quickly install popular software.\n'
+                            'Select the software which you would like to install.'))
+        title_box = gtk.HBox(False, 15)
+        title_box.pack_start(label, False)
+        title_box.pack_start(image, False)
         
+        check_button_list = []
+        for item in WORKS:
+            name = item[0]
+            check_button = gtk.CheckButton(name)
+            check_button.set_active(True)
+            check_button.connect('toggled', self.toggled, item)
+            check_button_list.append(check_button)
+        box = gtk.VBox(False, 5)
+        box.pack_start(title_box, False)
+        for button in check_button_list:
+            box.pack_start(button, False)
+
         self.set_border_width(5)
         self.vbox.pack_start(box)
         self.vbox.show_all()
@@ -411,7 +420,7 @@ class DoStuffDialog(gtk.Dialog):
 
 def quick_setup():
     #show welcome dialog
-    dialog = WelcomeDialog()
+    dialog = SelectWorksDialog()
     ret = dialog.run()
     dialog.destroy()
     assert ret != gtk.RESPONSE_DELETE_EVENT
