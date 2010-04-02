@@ -1,6 +1,7 @@
 2010-04-02 Homer Xing <homer.xing@gmail.com>
 
     * Merge apt-recovery.desktop and rpm-recovery.desktop
+    * Do not crash when "/sbin/sysctl -p" fails.
 
 2010-04-01 Homer Xing <homer.xing@gmail.com>
 

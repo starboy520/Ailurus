@@ -58,7 +58,9 @@ def __change_kernel_swappiness():
                 contents.append(new_line)
             with open('/etc/sysctl.conf', 'w') as f:
                 f.writelines(contents)
-        gksudo('/sbin/sysctl -p')
+        gksudo('/sbin/sysctl -p', ignore_error = True)
+        current_value = int( get_output('/sbin/sysctl -n vm.swappiness').strip() )
+        if current_value != new_value: raise CommandFailError
     
     apply_button = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
     apply_button.connect('clicked', apply, adjustment)
