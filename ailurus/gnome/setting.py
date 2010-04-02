@@ -447,42 +447,31 @@ def __backlight():
 
 def __advance_setting():
     table = gtk.Table()
-    table.set_col_spacings(10)
+    table.set_col_spacings(10)    
     
-    def clear(w):
-        import os
-        path = os.path.expanduser('~/.recently-used.xbel')
-        if os.path.isfile(path):
-            os.system("echo '' > ~/.recently-used.xbel")
-        else: # is dir
-            os.system("rm ~/.recently-used.xbel/* -rf")
-    
-    button = gtk.Button(_('Clear "recent documents" list'))
-    button.connect('clicked', clear)
-    table.attach(button, 0, 1, 0, 1, gtk.FILL, gtk.FILL)  
-      
-    o = label_left_align(_('Change default file manager to:'))
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-
-    o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
-    
-    o = label_left_align(_('Change default panel program to:') )
-    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    
-    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
-    table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
-    
-    o = label_left_align(_('Change default window manager to:') )
-    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
-    
-    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
-    table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
-
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     
+    o = label_left_align(_('Change default file manager to:'))
     table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+
+    o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    
+    o = label_left_align(_('Change default panel program to:') )
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+
+
     
     return Setting(table, _('Advance settings'), ['desktop'])
 
