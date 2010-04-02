@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2010-04-01 22:50+0800\n"
-=======
-"POT-Creation-Date: 2010-04-01 20:52+0800\n"
->>>>>>> FETCH_HEAD
+"POT-Creation-Date: 2010-04-02 13:14+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -603,7 +599,7 @@ msgstr ""
 msgid "Battery full capacity:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:370
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:371
 msgid "Ailurus blog"
 msgstr ""
 
@@ -648,140 +644,140 @@ msgstr ""
 msgid "The people who provide inspiration:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:168
+#: .././ailurus/common/menu.py:169
 msgid "The people who designs the logo:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:171
+#: .././ailurus/common/menu.py:172
 msgid "The people who maintain PPA repository:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:174
+#: .././ailurus/common/menu.py:175
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:177
+#: .././ailurus/common/menu.py:178
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:180
+#: .././ailurus/common/menu.py:181
 msgid "The people who provide a lot of translation:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:181 .././ailurus/common/menu.py:185
-#: .././ailurus/common/menu.py:192
+#: .././ailurus/common/menu.py:182 .././ailurus/common/menu.py:186
+#: .././ailurus/common/menu.py:193
 msgid "and many other people."
 msgstr ""
 
-#: .././ailurus/common/menu.py:183
+#: .././ailurus/common/menu.py:184
 msgid "The people who report bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:187
+#: .././ailurus/common/menu.py:188
 msgid "The people who eliminate bugs:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:190
+#: .././ailurus/common/menu.py:191
 msgid "The people who publicize this software:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:194
+#: .././ailurus/common/menu.py:195
 msgid "and the people not mensioned here."
 msgstr ""
 
-#: .././ailurus/common/menu.py:204
+#: .././ailurus/common/menu.py:205
 msgid "Thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:252
+#: .././ailurus/common/menu.py:253
 msgid "A new version is available"
 msgstr ""
 
-#: .././ailurus/common/menu.py:253
+#: .././ailurus/common/menu.py:254
 #, python-format
 msgid ""
 "Version %s is released.\n"
 "You can download it from:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:260
+#: .././ailurus/common/menu.py:261
 msgid "Check update"
 msgstr ""
 
-#: .././ailurus/common/menu.py:261
+#: .././ailurus/common/menu.py:262
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr ""
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
-#: .././ailurus/common/menu.py:281
+#: .././ailurus/common/menu.py:282
 msgid "How to compile a LaTeX file into pdf file ?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:300
+#: .././ailurus/common/menu.py:301
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
 msgstr ""
 
-#: .././ailurus/common/menu.py:319
+#: .././ailurus/common/menu.py:320
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 
-#: .././ailurus/common/menu.py:325
+#: .././ailurus/common/menu.py:326
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr ""
 
-#: .././ailurus/common/menu.py:328
+#: .././ailurus/common/menu.py:329
 msgid "Set Ailurus download parameter"
 msgstr ""
 
-#: .././ailurus/common/menu.py:350
+#: .././ailurus/common/menu.py:351
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: .././ailurus/common/menu.py:353 .././ailurus/common/menu.py:361
+#: .././ailurus/common/menu.py:354 .././ailurus/common/menu.py:362
 #: .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/common/menu.py:353 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:354 .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/common/menu.py:356
+#: .././ailurus/common/menu.py:357
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:361 .././ailurus/gnome/setting.py:97
+#: .././ailurus/common/menu.py:362 .././ailurus/gnome/setting.py:97
 #: .././ailurus/gnome/setting.py:124
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:364
+#: .././ailurus/common/menu.py:365
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:374
+#: .././ailurus/common/menu.py:375
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:377
+#: .././ailurus/common/menu.py:378
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: .././ailurus/common/menu.py:381
+#: .././ailurus/common/menu.py:382
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:385
+#: .././ailurus/common/menu.py:386
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:388
+#: .././ailurus/common/menu.py:389
 msgid "About"
 msgstr ""
 
@@ -5246,7 +5242,6 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:198
 msgid "Ailurus (stable)"
-<<<<<<< HEAD
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:202
@@ -5257,18 +5252,6 @@ msgstr ""
 msgid "AWN (beta version)"
 msgstr ""
 
-=======
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:202
-msgid "This is the repository of Ailurus."
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:212
-msgid "AWN (beta version)"
-msgstr ""
-
->>>>>>> FETCH_HEAD
 #: .././ailurus/ubuntu/third_party_repos.py:215
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
@@ -5388,21 +5371,12 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:397
 msgid "IBus (stable)"
-<<<<<<< HEAD
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:401
 msgid "Next generation input method"
 msgstr ""
 
-=======
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:401
-msgid "Next generation input method"
-msgstr ""
-
->>>>>>> FETCH_HEAD
 #: .././ailurus/ubuntu/third_party_repos.py:413
 msgid "Partners of Canonical"
 msgstr ""
