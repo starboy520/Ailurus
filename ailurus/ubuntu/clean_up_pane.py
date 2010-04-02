@@ -29,11 +29,10 @@ class CleanUpPane(gtk.VBox):
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False, 10)
+        self.pack_start(self.clean_recently_used_document_button(),False)
+        self.pack_start(Reclaim_memory(),False)
         self.pack_start(self.clean_apt_cache_button(), False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
-        self.pack_start(self.clean_recently_used_document_button(),False)
-        reclaim_memory = Reclaim_memory()
-        self.pack_start(reclaim_memory,False)
         clean_kernel_box = CleanKernel()
         self.pack_start(clean_kernel_box, False)
 
@@ -87,20 +86,17 @@ class CleanUpPane(gtk.VBox):
 class  Reclaim_memory(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False, 10)
-#        self.set_border_width(10)
-        box = gtk.HBox(False, 10)
         button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
         button_free_memory.set_tooltip_text(
                                             _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
         button_free_memory.connect('clicked', self.free_memory)
     
-        label_info = gtk.Label()
+        label_info = gtk.Label( _('No more than %s KB of memory can be reclaimed.') % 0 )
         import gobject
         gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
     
-        box.pack_start(button_free_memory, False)
-        box.pack_start(label_info, False)
-        self.pack_start(box, False, False)
+        self.pack_start(button_free_memory)
+        self.pack_start(label_info, False)
         
     def show_cached_memory_amount(self,label):
         try:
@@ -118,11 +114,10 @@ class  Reclaim_memory(gtk.HBox):
         return True
         
     def get_free_memory(self):
-        with open('/proc/meninfo') as f:
+        with open('/proc/meminfo') as f:
             for line in f:
                 if not line.startswith('MemFree:'): continue
-                List = line.split()
-            return int(List[1])
+                return int(line.split()[1])
         
     def free_memory(self,*w):
         dest = '/proc/sys/vm/drop_caches'

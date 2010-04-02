@@ -388,10 +388,10 @@ def __others(main_view):
     about = gtk.MenuItem( _('About') )
     about.connect('activate', show_about_dialog)
     
-    read_changelog = gtk.MenuItem( _('Ailurus ChangeLog') )
+    read_changelog = gtk.MenuItem( _('Read changelog') )
     read_changelog.connect('activate', read_changelog_callback)
     
-    return [ help_blog, help_update, help_report_bug, help_translate, special_thank, about, read_changelog ] 
+    return [ read_changelog, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
