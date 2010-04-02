@@ -330,20 +330,17 @@ parser.add_option('--fast', action='store_false', dest='all', default=True, help
 parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
 parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
+parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
 if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
     parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
-    parser.add_option('--apt-recovery', action='store_true', dest='apt_recovery', default=False, help=_('load "apt recovery" functionality'))
     parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
-if getattr(DISTRIBUTION, '__name__') == 'fedora':
-    parser.add_option('--rpm-recovery', action='store_true', dest='rpm_recovery', default=False, help=_('load "rpm recovery" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
-     and not getattr(options, 'apt_recovery', False) 
+     and not getattr(options, 'recovery', False) 
      and not getattr(options, 'clean_up', False) 
      and not getattr(options, 'fastest_repository', False)
      and not options.information
      and not options.install_software
-     and not getattr(options, 'rpm_recovery', False)
      and not options.system_setting ):
     print _('You did not specify any functionality. :)')
     print _('For example: ailurus --fast --information')
@@ -380,7 +377,7 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         pane = UbuntuFastestMirrorPane(main_view)
         main_view.register(pane)
 
-    if options.apt_recovery or options.all:
+    if options.recovery or options.all:
         from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
         pane = UbuntuAPTRecoveryPane(main_view)
         main_view.register(pane)
@@ -391,7 +388,7 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
-    if options.rpm_recovery or options.all:
+    if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)

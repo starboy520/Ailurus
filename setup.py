@@ -34,7 +34,7 @@ Features:
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
-        ('share/applications/', ['ailurus-apt-recovery.desktop', 'ailurus-rpm-recovery.desktop', 'ailurus-information.desktop',
+        ('share/applications/', ['ailurus-recovery.desktop', 'ailurus-information.desktop',
                                  'ailurus-clean-up.desktop', 'ailurus-install-software.desktop',
                                  'ailurus.desktop', 'ailurus-fastest-repository.desktop', 'ailurus-system-setting.desktop'
                                  ]),
