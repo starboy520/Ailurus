@@ -104,74 +104,11 @@ def __restart_network():
      vbox.set_border_width(10)
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
-
-def show_cached_memory_amount(label):
-    try:
-        f = open('/proc/meminfo')
-        for line in f:
-            if not line.startswith('Cached:'): continue
-            List = line.split()
-            f.close()
-            value = int(List[1])
-            break
-        
-        label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
-    except:
-        import traceback
-        traceback.print_exc()
-    
-    return True
-
-def get_free_memory():
-    f = open('/proc/meminfo')
-    for line in f:
-        if not line.startswith('MemFree:'): continue
-        List = line.split()
-        f.close()
-        return int(List[1])
-
-def free_memory(*w):
-    dest = '/proc/sys/vm/drop_caches'
-    import os, tempfile
-    if os.path.exists(dest):
-        before = get_free_memory()
-        
-        src = tempfile.NamedTemporaryFile('w')
-        src.write('3\n')
-        src.flush()
-        gksudo('cp %s %s'%(src.name, dest) )
-
-        after = get_free_memory()
-        
-        amount = max(0, after - before)
-        
-        notify( _('%s KB memory was reclaimed.')%amount, ' ')
-
-def __reclaim_memory():
-    vbox = gtk.VBox(False, 0)
-    vbox.set_border_width(10)
-
-    button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
-    button_free_memory.set_tooltip_text(
-        _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
-    button_free_memory.connect('clicked', free_memory)
-    
-    label_info = gtk.Label()
-    import gobject
-    gobject.timeout_add(5000, show_cached_memory_amount, label_info)
-    
-    box = gtk.HBox(False, 10)
-    box.pack_start(button_free_memory, False)
-    box.pack_start(label_info, False)
-    
-    vbox.pack_start(box, False, False)
-    return Setting(vbox, _('Reclaim memory'), ['memory'])
-
+ 
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
-            __reclaim_memory,
             __restart_network ]:
         try:
             ret.append(f())
