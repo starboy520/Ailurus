@@ -1,5 +1,5 @@
 [Desktop Entry]
-Name=Ailurus - recovery
+Name=Ailurus - Recovery
 Comment=makes Linux easier to use
 Exec=/usr/bin/ailurus --fast --recovery
 Icon=/usr/share/ailurus/data/velly_icons/m_recovery.png
