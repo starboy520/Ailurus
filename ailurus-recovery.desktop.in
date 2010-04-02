@@ -1,7 +1,7 @@
 [Desktop Entry]
-Name=Ailurus - RPM recovery
-Comment=makes Linux easier to use
-Exec=/usr/bin/ailurus --fast --rpm-recovery
+_Name=Ailurus - Recovery
+_Comment=makes Linux easier to use
+Exec=/usr/bin/ailurus --fast --recovery
 Icon=/usr/share/ailurus/data/velly_icons/m_recovery.png
 Terminal=false
 X-MultipleArgs=false

@@ -3351,39 +3351,35 @@ msgstr ""
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
-msgid "load \"fastest repository\" functionality"
+#: .././ailurus/main.py:333
+msgid "load \"recovery\" functionality"
 msgstr ""
 
 #: .././ailurus/main.py:335
-msgid "load \"apt recovery\" functionality"
+msgid "load \"fastest repository\" functionality"
 msgstr ""
 
 #: .././ailurus/main.py:336
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:338
-msgid "load \"rpm recovery\" functionality"
-msgstr ""
-
-#: .././ailurus/main.py:348
+#: .././ailurus/main.py:345
 msgid "You did not specify any functionality. :)"
 msgstr ""
 
-#: .././ailurus/main.py:349
+#: .././ailurus/main.py:346
 msgid "For example: ailurus --fast --information"
 msgstr ""
 
-#: .././ailurus/main.py:371
+#: .././ailurus/main.py:368
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:400
+#: .././ailurus/main.py:397
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:412
+#: .././ailurus/main.py:409
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
