@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-31 05:13+0000\n"
+"PO-Revision-Date: 2010-04-02 04:38+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-01 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -2711,6 +2711,7 @@ msgstr ""
 #: .././ailurus/ubuntu/app3.py:476
 msgid "R language (full development environment and all plugins)"
 msgstr ""
+"Linguagem R (ambiente de desenvolvimento completo e todos os plugins)"
 
 #: .././ailurus/ubuntu/app3.py:477
 msgid ""
@@ -3362,6 +3363,7 @@ msgstr "Apresentar ícone \"Computador\""
 #: .././ailurus/gnome/setting.py:58
 msgid "Put an icon linking to the computer location on the desktop."
 msgstr ""
+"Colocar um ícone com ligação ao local do computador no ambiente de trabalho."
 
 #: .././ailurus/gnome/setting.py:61 .././ailurus/gnome/setting.py:71
 #: .././ailurus/gnome/setting.py:81 .././ailurus/gnome/setting.py:91
@@ -3375,6 +3377,7 @@ msgstr "Apresentar ícone \"Pasta pessoal\""
 #: .././ailurus/gnome/setting.py:68
 msgid "Put an icon linking to the home folder on the desktop."
 msgstr ""
+"Colocar um ícone com ligação à pasta pessoal no ambiente de trabalho."
 
 #: .././ailurus/gnome/setting.py:77
 msgid "Display \"Network server\" icon"
@@ -3383,6 +3386,7 @@ msgstr "Apresentar ícone \"Servidor de rede\""
 #: .././ailurus/gnome/setting.py:78
 msgid "Put an icon linking to the Network Servers view on the desktop."
 msgstr ""
+"Colocar um ícone com ligação aos Servidores de Rede no ambiente de trabalho."
 
 #: .././ailurus/gnome/setting.py:87
 msgid "Display \"Trash\" icon"
@@ -3390,7 +3394,7 @@ msgstr "Apresentar ícone \"Lixo\""
 
 #: .././ailurus/gnome/setting.py:88
 msgid "Put an icon linking to the trash on the desktop."
-msgstr ""
+msgstr "Colocar um ícone com ligação ao llixo no ambiente de trabalho."
 
 #: .././ailurus/gnome/setting.py:97
 msgid "Desktop icons"
@@ -3431,7 +3435,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:156
 msgid "Menu entry icons setting"
-msgstr ""
+msgstr "Definição dos ícones do menu"
 
 #: .././ailurus/gnome/setting.py:161
 msgid "Show icon in buttons"
@@ -3443,7 +3447,7 @@ msgstr "Se os botões podem ou não apresentar um ícone junto ao texto."
 
 #: .././ailurus/gnome/setting.py:165
 msgid "Button icons setting"
-msgstr ""
+msgstr "Definição dos ícones dos botões"
 
 #: .././ailurus/gnome/setting.py:169
 msgid "Disable terminal bell"
@@ -3459,7 +3463,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:173
 msgid "Terminal beep sound setting"
-msgstr ""
+msgstr "Definição so som de alerta do terminal"
 
 #: .././ailurus/gnome/setting.py:177
 msgid "Automatically mount CD and flash disks"
@@ -3552,15 +3556,15 @@ msgstr "clique com o botão direito do rato:"
 
 #: .././ailurus/gnome/setting.py:258 .././ailurus/gnome/setting.py:278
 msgid "The effects of right-clicking on the title bar."
-msgstr ""
+msgstr "Os efeitos ao clicar com tecla direita do rato na barra de título."
 
 #: .././ailurus/gnome/setting.py:259
 msgid "clicked by mouse wheel:"
-msgstr ""
+msgstr "clicado com a tecla do rato:"
 
 #: .././ailurus/gnome/setting.py:260 .././ailurus/gnome/setting.py:287
 msgid "The effects of clicking on the title bar by mouse wheel."
-msgstr ""
+msgstr "Os efeitos ao clicar com a roda do rato na barra de título."
 
 #: .././ailurus/gnome/setting.py:267 .././ailurus/gnome/setting.py:276
 #: .././ailurus/gnome/setting.py:285
@@ -3602,7 +3606,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:295
 msgid "Show \"Input method\" entry"
-msgstr ""
+msgstr "Mostrar \"Método de entrada\""
 
 #: .././ailurus/gnome/setting.py:296 .././ailurus/gnome/setting.py:299
 msgid "This option affects GEdit and all GTK text-boxes."
@@ -3610,11 +3614,11 @@ msgstr "Esta opção afecta o GEdit e as caixas de texto GTK."
 
 #: .././ailurus/gnome/setting.py:298
 msgid "Show \"Insert Unicode control character\" entry"
-msgstr ""
+msgstr "Mostar entrada \"Inserir caractere de controlo Unicode\""
 
 #: .././ailurus/gnome/setting.py:301
 msgid "Text-boxes context menu"
-msgstr ""
+msgstr "Menu de contexo das caixas de texto"
 
 #: .././ailurus/gnome/setting.py:305
 msgid "Show login splash image: "
@@ -3743,6 +3747,8 @@ msgid ""
 "log out, and re-launch these applications at the next time you log in to "
 "GNOME."
 msgstr ""
+"Se o valor for true, o GNOME irá lembrar-se-á das aplicações em execução ao "
+"terminar a sessão e irá reinicia-las da próxima vez que iniciar sessão."
 
 #: .././ailurus/gnome/setting.py:390
 msgid "Configure autostart applications"
@@ -3761,6 +3767,8 @@ msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
+"Se o valor for false, a sesão GNOME irá terminar imediatamente após "
+"seleccionar \"Sistema\" -> \"Terminar sessão\"."
 
 #: .././ailurus/gnome/setting.py:398
 msgid "Allow connection from remote hosts."
@@ -3778,6 +3786,8 @@ msgstr "Permitir ligação de anfitriões remotos."
 #: .././ailurus/gnome/setting.py:411
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
+"Activar protecção de ecrã se o computador estiver inactivo por um longo "
+"período"
 
 #: .././ailurus/gnome/setting.py:415
 msgid "Lock screen when screen saver is activated"
@@ -3799,7 +3809,7 @@ msgstr "Chave GConf: "
 
 #: .././ailurus/gnome/setting.py:431
 msgid "LCD dimming amount when on battery:"
-msgstr ""
+msgstr "Quantidade de escurecimento LCD se em bateria:"
 
 #: .././ailurus/gnome/setting.py:437
 msgid "Backlight"
@@ -3867,11 +3877,11 @@ msgstr "Todos os Efeitos Aleatoriamente"
 #. number of desktop
 #: .././ailurus/gnome/setting.py:549
 msgid "Screen horizontal size coefficient"
-msgstr ""
+msgstr "Coeeficiente horizontal do tamanho de ecrã"
 
 #: .././ailurus/gnome/setting.py:555
 msgid "Screen vertical size coefficient"
-msgstr ""
+msgstr "Coeeficiente vertical do tamanho de ecrã"
 
 #: .././ailurus/gnome/setting.py:563
 msgid "CompizConfig Settings"
@@ -3891,6 +3901,15 @@ msgid ""
 "accessed for seven days, to free disk space.\n"
 "find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
 msgstr ""
+"O directório ~/.thumbnails/ é o directório cache que o GNOME cria ao "
+"percorrer as suas pastas com o Nautilus. \n"
+"Contém as miniaturas das imagens que viu anteriormente em.\n"
+"\n"
+"Pode obter o seu tamanho se fizer \n"
+"du -bs ~/.thumbnails/\n"
+"\n"
+"Pode apagar os ficheiros presentes no directório .thumbnails que não tenham "
+"sido acedidos  nos últimos 7 dias, para ganhar espaço em disco.\n"
 
 #: .././ailurus/gnome/tips.py:37
 msgid ""
@@ -3944,6 +3963,13 @@ msgid ""
 "/apps/nautilus/desktop/computer_icon_name\n"
 "The custom name for the computer icon on the desktop. \n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/nautilus/desktop/computer_icon_visible\n"
+"Se definida como true, irá colocar no ambiente de trabalho um ícone com "
+"ligação ao local do computador. \n"
+"\n"
+"/apps/nautilus/desktop/computer_icon_name\n"
+"O nome personalizado para o ícone no ambiente de trabalho. \n"
 
 #: .././ailurus/gnome/tips.py:64
 msgid ""
@@ -3955,6 +3981,13 @@ msgid ""
 "/apps/nautilus/desktop/home_icon_name\n"
 "The custom name for the home icon on the desktop. \n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/nautilus/desktop/home_icon_visible\n"
+"Se definida como true, irá colocar no ambiente de trabalho um ícone com "
+"ligação à sua pasta pessoal. \n"
+"\n"
+"/apps/nautilus/desktop/home_icon_name\n"
+"O nome personalizado para o ícone no ambiente de trabalho. \n"
 
 #: .././ailurus/gnome/tips.py:72
 msgid ""
@@ -3966,6 +3999,13 @@ msgid ""
 "/apps/nautilus/desktop/network_icon_name\n"
 "Thes custom name for the network servers icon on the desktop. \n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/nautilus/desktop/network_icon_visible\n"
+"Se definida como true, irá colocar no ambiente de trabalho um ícone com "
+"ligação aos Servidores de Rede. \n"
+"\n"
+"/apps/nautilus/desktop/network_icon_name\n"
+"O nome personalizado para o ícone no ambiente de trabalho. \n"
 
 #: .././ailurus/gnome/tips.py:80
 msgid ""
@@ -3977,6 +4017,13 @@ msgid ""
 "/apps/nautilus/desktop/trash_icon_name\n"
 "The custom name for the trash icon on the desktop. \n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/nautilus/desktop/trash_icon_visible\n"
+"Se definida como true, irá colocar no ambiente de trabalho um ícone com "
+"ligação ao lixo. \n"
+" \n"
+"/apps/nautilus/desktop/trash_icon_name\n"
+"O nome personalizado para o ícone no ambiente de trabalho. \n"
 
 #: .././ailurus/gnome/tips.py:88
 msgid ""
@@ -3985,6 +4032,10 @@ msgid ""
 "If this is set to true, icons linking to mounted volumes will be put on the "
 "desktop. \n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/nautilus/desktop/volumes_visible\n"
+"De definida como true, irá colocar no ambiente de trabalho um ícone com "
+"ligação aos volumes montados. \n"
 
 #: .././ailurus/gnome/tips.py:93
 msgid ""
@@ -3995,6 +4046,12 @@ msgid ""
 "\"menu:minimize,maximize,spacer,close\". \n"
 "The visibility and position of titlebar buttons can be changed by this key.\n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/metacity/general/button_layout\n"
+"O arranjo dos botões na barra de título. \n"
+"O valor deve ser uma linha tal como \"menu:minimize,maximize,spacer,close\". "
+"\n"
+"A visibilidade e a posição da barra pode ser alterada com esta chave.\n"
 
 #: .././ailurus/gnome/tips.py:100
 msgid ""
@@ -4004,6 +4061,11 @@ msgid ""
 "such as shade/unshade the window, maximize/unmaximize the window,\n"
 "maximize/unmaximize the window in horizontal direction only.\n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/metacity/general/action_double_click_titlebar\n"
+"Esta opção determina os efeitos ao fazer duplo clique na barra de título,\n"
+"tais como sombrear ou não a janela, maximizar ou minimiza-la.\n"
+"A maximização e minimização apenas funciona na horizontal.\n"
 
 #: .././ailurus/gnome/tips.py:107
 msgid ""
@@ -4025,6 +4087,14 @@ msgid ""
 "/apps/metacity/global_keybindings/run_command_1 = F12\n"
 "/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
 msgstr ""
+"Chave GConf:\n"
+"/apps/metacity/global_keybindings/\n"
+"/apps/metacity/keybinding_commands/\n"
+"Teclas de atalho GNOME personalizadas.\n"
+"\n"
+"Por exemplo, para iniciar 'gconf-editor' com a tecla F12 deve definir:\n"
+"/apps/metacity/global_keybindings/run_command_1 = F12\n"
+"/apps/metacity/keybinding_commands/command_1 = gconf-editor\n"
 
 #: .././ailurus/gnome/tips.py:124
 msgid ""
@@ -4032,6 +4102,9 @@ msgid ""
 "/desktop/gnome/background/picture_filename\n"
 "File to use for the background image.\n"
 msgstr ""
+"Chave GConf:\n"
+"/desktop/gnome/background/picture_filename\n"
+"Ficheiro a utilizar para a imagem de fundo.\n"
 
 #: .././ailurus/gnome/tips.py:129
 msgid ""
@@ -4135,7 +4208,7 @@ msgstr ""
 #: .././ailurus/gnome/tips.py:190 .././ailurus/gnome/tips.py:194
 #: .././ailurus/gnome/tips.py:198 .././ailurus/gnome/tips.py:202
 msgid "This configuration does not affect other users."
-msgstr ""
+msgstr "Esta configuração não afecta os outros utilizadores."
 
 #: .././ailurus/gnome/tips.py:184
 msgid ""
@@ -4175,193 +4248,215 @@ msgstr ""
 
 #: .././ailurus/main.py:56
 msgid "Quit"
-msgstr ""
+msgstr "Fechar"
 
 #: .././ailurus/main.py:61
 msgid "Others"
-msgstr ""
+msgstr "Outros"
 
 #: .././ailurus/main.py:64
 msgid "Preferences"
-msgstr ""
+msgstr "Preferências"
 
 #: .././ailurus/main.py:67
 msgid ""
 "Study\n"
 "Linux"
 msgstr ""
+"Estudar\n"
+"Linux"
 
 #: .././ailurus/main.py:71
 msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
+"Informação do\n"
+"Equipamento"
 
 #: .././ailurus/main.py:72
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
+"Informação\n"
+"do Linux"
 
 #: .././ailurus/main.py:73
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
+"Definições \n"
+"do Sistema"
 
 #: .././ailurus/main.py:74
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
+"Instalar\n"
+"Programas"
 
 #: .././ailurus/main.py:75
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
+"Repositório\n"
+"Mais Rápido"
 
 #: .././ailurus/main.py:76
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
+"Recuperar\n"
+"APT"
 
 #: .././ailurus/main.py:172
 msgid "Warning!"
-msgstr ""
+msgstr "Atenção!"
 
 #: .././ailurus/main.py:173
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr ""
+"Já existe uma instância do Ailurus em execução. Não se recomenda a execução "
+"de múltiplas instâncias em simultâneo."
 
 #: .././ailurus/main.py:201
 msgid "Error happened. You cannot install any software by Ailurus. :("
-msgstr ""
+msgstr "Ocorreu um erro. Não pode instalar nenhum programa com o Ailurus. :("
 
 #: .././ailurus/main.py:204
 msgid "System configuration file should be updated."
-msgstr ""
+msgstr "A configuração do sistema deve ser actualizada."
 
 #: .././ailurus/main.py:205
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
-msgstr ""
+msgstr "Execute estes comandos utilizando <b>su</b> ou <b>sudo</b>:"
 
 #: .././ailurus/main.py:211
 msgid "Ailurus' D-Bus daemon exited with error."
-msgstr ""
+msgstr "Daemon Ailurus' D-Bus terminou com um erro."
 
 #: .././ailurus/main.py:212
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
+"Por favor, reinicie o computador ou inicie o daemon utilizando <b>su</b> ou "
+"<b>sudo</b>:"
 
 #. check desktop environment
 #: .././ailurus/main.py:234
 msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Verificando ambiente de trabalho ... </span>\n"
 
 #. check distribution
 #: .././ailurus/main.py:242
 msgid "<span color=\"grey\">Checking distribution ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Verificando a distribuição ... </span>\n"
 
 #: .././ailurus/main.py:265
 msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Adquirindo o perfil Firefox ... </span>\n"
 
 #: .././ailurus/main.py:267
 msgid ""
 "<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
+"<span color=\"grey\">À espera que o firefox crie o perfil ... </span>\n"
 
 #: .././ailurus/main.py:275 .././ailurus/main.py:278
 msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Obter lista de pacotes ... </span>\n"
 
 #: .././ailurus/main.py:283
 msgid "<span color=\"grey\">Loading tips ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Carregando dicas ... </span>\n"
 
 #: .././ailurus/main.py:289
 msgid "<span color=\"grey\">Loading main window ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Carregando janela principal ... </span>\n"
 
 #: .././ailurus/main.py:292
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Carregando painel de informações ... </span>\n"
 
 #: .././ailurus/main.py:305
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
+"<span color=\"grey\">Carregando painel das definições do sistema ... "
+"</span>\n"
 
 #: .././ailurus/main.py:312
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Carregando painel de aplicações ... </span>\n"
 
 #: .././ailurus/main.py:351
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
+"Ocorreu um erro. Pode reporta-lo aos programadores Ailurus? Obrigado!"
 
 #: .././ailurus/main.py:364
 msgid "Click here to report bug via web-page"
-msgstr ""
+msgstr "Clique aqui para enviar o erro através da página web"
 
 #: .././ailurus/main.py:366
 msgid "Close"
-msgstr ""
+msgstr "Fechar"
 
 #: .././ailurus/main.py:372
 msgid "Bug appears!"
-msgstr ""
+msgstr "Ocorreu um erro!"
 
 #: .././ailurus/common/osinfo.py:31
 msgid "Host name:"
-msgstr ""
+msgstr "Nome de anfitrão:"
 
 #: .././ailurus/common/osinfo.py:37
 msgid "Kernel version:"
-msgstr ""
+msgstr "Versão do kernel:"
 
 #: .././ailurus/common/osinfo.py:40
 msgid "Kernel arch:"
-msgstr ""
+msgstr "Arquitectura do kernel:"
 
 #: .././ailurus/common/osinfo.py:48
 msgid "X server version:"
-msgstr ""
+msgstr "Versão X server:"
 
 #: .././ailurus/common/osinfo.py:54
 msgid "GCC version:"
-msgstr ""
+msgstr "Versão GCC:"
 
 #: .././ailurus/common/osinfo.py:62
 msgid "Java version:"
-msgstr ""
+msgstr "Versão java:"
 
 #: .././ailurus/common/osinfo.py:68
 msgid "Python version:"
-msgstr ""
+msgstr "Versão Python:"
 
 #: .././ailurus/common/osinfo.py:85
 msgid "day"
 msgid_plural "days"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "dia"
+msgstr[1] "dias"
 
 #: .././ailurus/common/osinfo.py:87
 msgid "hour"
 msgid_plural "hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hora"
+msgstr[1] "horas"
 
 #: .././ailurus/common/osinfo.py:89
 msgid "minute"
 msgid_plural "minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "minuto"
+msgstr[1] "minutos"
 
 #: .././ailurus/common/osinfo.py:90
 msgid "Uptime:"
@@ -4369,47 +4464,47 @@ msgstr ""
 
 #: .././ailurus/common/osinfo.py:98
 msgid "Current user:"
-msgstr ""
+msgstr "Utilizador actual:"
 
 #: .././ailurus/common/osinfo.py:114
 msgid "Direct OpenGL:"
-msgstr ""
+msgstr "OpenGL Directo:"
 
 #: .././ailurus/common/osinfo.py:115
 msgid "OpenGL direct rendering"
-msgstr ""
+msgstr "Renderização OpenGL"
 
 #: .././ailurus/common/osinfo.py:117
 msgid "OpenGL vendor:"
-msgstr ""
+msgstr "Fabricante OpenGL:"
 
 #: .././ailurus/common/osinfo.py:118
 msgid "OpenGL vendor"
-msgstr ""
+msgstr "Fabricante OpenGL"
 
 #: .././ailurus/common/osinfo.py:120
 msgid "OpenGL renderer:"
-msgstr ""
+msgstr "Renderizador OpenGL:"
 
 #: .././ailurus/common/osinfo.py:121
 msgid "OpenGL renderer"
-msgstr ""
+msgstr "Renderizador OpenGL"
 
 #: .././ailurus/common/osinfo.py:127
 msgid "Firefox version:"
-msgstr ""
+msgstr "Versão Firefox:"
 
 #: .././ailurus/common/apps_eclipse.py:35
 msgid "Installing Eclipse extension"
-msgstr ""
+msgstr "Instalando extensão Eclipse"
 
 #: .././ailurus/common/apps_eclipse.py:98
 msgid "Eclipse (basic development environment)"
-msgstr ""
+msgstr "Eclipse (ambiente básico de desenvolvimento)"
 
 #: .././ailurus/common/apps_eclipse.py:100
 msgid "Eclipse is from http://www.eclipse.org/downloads/ \n"
-msgstr ""
+msgstr "Eclipse vem de http://www.eclipse.org/downloads/ \n"
 
 #: .././ailurus/common/apps_eclipse.py:101
 msgid ""
@@ -4419,6 +4514,11 @@ msgid ""
 "http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.ph"
 "p, and extract \".zip\" file to directory \"/opt/eclipse\" ."
 msgstr ""
+"Pode instalar o pacote de idioma de acordo com as instruções da página "
+"http://www.eclipse.org/babel/downloads.php\n"
+"Pode transferir o pacote de idioma em "
+"http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.ph"
+"p e extrair o arquivo \".zip\" para o directório \"/opt/eclipse\" ."
 
 #: .././ailurus/common/apps_eclipse.py:104 .././ailurus/common/apps.py:154
 #: .././ailurus/common/apps.py:224 .././ailurus/common/apps.py:291
@@ -4427,27 +4527,27 @@ msgstr " Esta aplicação é dependente do Java."
 
 #: .././ailurus/common/apps_eclipse.py:343
 msgid "Eclipse (basic development environment + J2EE)"
-msgstr ""
+msgstr "Eclipse (ambiente básico de desenvolvimento + J2EE)"
 
 #: .././ailurus/common/apps_eclipse.py:566
 msgid "CDT: C/C++ development"
-msgstr ""
+msgstr "CDT: desenvolvimento C/C++"
 
 #: .././ailurus/common/apps_eclipse.py:567
 msgid "CDT is from http://www.eclipse.org/cdt/"
-msgstr ""
+msgstr "CDT vem de http://www.eclipse.org/cdt/"
 
 #: .././ailurus/common/apps_eclipse.py:587
 msgid "Pydev: Python development"
-msgstr ""
+msgstr "Pydev: Desenvolvimento Python"
 
 #: .././ailurus/common/apps_eclipse.py:588
 msgid "Pydev is from http://pydev.org/download.html"
-msgstr ""
+msgstr "Pydev vem de http://pydev.org/download.html"
 
 #: .././ailurus/common/apps_eclipse.py:608
 msgid "Aptana: Web application development"
-msgstr ""
+msgstr "Aptana:  Desenvolvimento de aplicações web"
 
 #: .././ailurus/common/apps_eclipse.py:609
 msgid ""
@@ -4458,6 +4558,11 @@ msgid ""
 "removed by Ailurus. In order to remove Aptana, you have to re-install "
 "Eclipse."
 msgstr ""
+"Aptana vem de http://www.aptana.org/studio/plugin\n"
+"Aptana é instalado por "
+"http://download.aptana.org/tools/studio/plugin/install/studio\n"
+"Devido a limitações pro parte dos autores o Aptana não pode ser removido com "
+"o Ailurus. Para que possa remover Aptana, deve reinstalar Eclipse."
 
 #: .././ailurus/common/apps_eclipse.py:624
 #: .././ailurus/common/apps_eclipse.py:647
@@ -4467,6 +4572,7 @@ msgstr ""
 msgid ""
 "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
 msgstr ""
+"Por favor, inicie o Eclipse e vá a \"Ajuda\" -> \"Instalar Novo Programa\"."
 
 #: .././ailurus/common/apps_eclipse.py:626
 #: .././ailurus/common/apps_eclipse.py:649
@@ -4475,7 +4581,7 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:738
 #, python-format
 msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
-msgstr ""
+msgstr "Clique no botão \"Adicionar\". Depois digite <b>%s</b> em Local\""
 
 #: .././ailurus/common/apps_eclipse.py:628
 #: .././ailurus/common/apps_eclipse.py:651
@@ -4483,88 +4589,95 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:718
 #: .././ailurus/common/apps_eclipse.py:740
 msgid "Then click the \"Next\" button and agree the license."
-msgstr ""
+msgstr "Prima o botão \"Seguinte\" e concorde com a licença."
 
 #: .././ailurus/common/apps_eclipse.py:629
 msgid "Installing Aptana"
-msgstr ""
+msgstr "Instalando Aptana"
 
 #: .././ailurus/common/apps_eclipse.py:634
 msgid "RadRails: Ruby development"
-msgstr ""
+msgstr "RadRails: Desenvolvimento Ruby"
 
 #: .././ailurus/common/apps_eclipse.py:635
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 msgstr ""
+"No passado RadRails camava-se \"RDT\". RadRails é instalado por "
+"http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 
 #: .././ailurus/common/apps_eclipse.py:652
 msgid "Installing RadRails\n"
-msgstr ""
+msgstr "Instalando RadRails\n"
 
 #: .././ailurus/common/apps_eclipse.py:658
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
-msgstr ""
+msgstr "Mylyn vem de http://www.eclipse.org/mylyn/downloads/"
 
 #: .././ailurus/common/apps_eclipse.py:674
 msgid "Dynamic languages toolkit"
-msgstr ""
+msgstr "Dynamic languages toolkit"
 
 #: .././ailurus/common/apps_eclipse.py:675
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
+"É instalado por http://download.eclipse.org/technology/dltk/updates-dev/2.0/"
 
 #: .././ailurus/common/apps_eclipse.py:692
 msgid "Installing Dynamic languages toolkit\n"
-msgstr ""
+msgstr "Instalando Dynamic languages toolkit\n"
 
 #: .././ailurus/common/apps_eclipse.py:701
 msgid "PDT: PHP development"
-msgstr ""
+msgstr "PDT: Desenvolvimento PHP"
 
 #: .././ailurus/common/apps_eclipse.py:702
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
-msgstr ""
+msgstr "PDT vem de http://www.eclipse.org/pdt/downloads/"
 
 #: .././ailurus/common/apps_eclipse.py:719
 msgid "Installing PDT\n"
-msgstr ""
+msgstr "Instalando PDT\n"
 
 #: .././ailurus/common/apps_eclipse.py:724
 msgid "Subversive: Use SVN in Eclipse"
-msgstr ""
+msgstr "Subversive: SVN em Eclipse"
 
 #: .././ailurus/common/apps_eclipse.py:725
 msgid ""
 "It is installed by "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
 msgstr ""
+"É instalado por http://download.eclipse.org/technology/subversive/0.7/update-"
+"site/"
 
 #: .././ailurus/common/apps_eclipse.py:741
 msgid "Installing Subversive\n"
-msgstr ""
+msgstr "Instalando Subversive\n"
 
 #: .././ailurus/common/apps_eclipse.py:746
 msgid "MTJ: J2ME development"
-msgstr ""
+msgstr "MTJ: Desenvolvimento J2ME"
 
 #: .././ailurus/common/apps_eclipse.py:747
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
 msgstr ""
+"É transferido de http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
+"1.0.1-200909181641/"
 
 #: .././ailurus/common/apps.py:29
 msgid "Bioclipse: an awesome Chemical and Biological Informatics application"
-msgstr ""
+msgstr "Bioclipse: uma aplicação informática para Química e Biologia"
 
 #: .././ailurus/common/apps.py:30
 msgid ""
 "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
-msgstr ""
+msgstr "Vem de http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 
 #: .././ailurus/common/apps.py:74
 msgid "BRL-CAD: Military solid modeling software"
@@ -4575,14 +4688,16 @@ msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>. "
 msgstr ""
+"Sítio oficial: <span "
+"color=\"blue\"><u>http://sourceforge.net/projects/brlcad/</u></span>. "
 
 #: .././ailurus/common/apps.py:77
 msgid "Developed by Ballistic Research Laboratory. "
-msgstr ""
+msgstr "Desenvolvido pelo laboratório Ballistic Research. "
 
 #: .././ailurus/common/apps.py:78
 msgid "A lot of commands are installed in /usr/brlcad/bin/"
-msgstr ""
+msgstr "Um conjunto de comandos são instalados em /usr/brlcad/bin/"
 
 #: .././ailurus/common/apps.py:120
 msgid "Create a directory \"Desktop\" in your home folder"
@@ -4603,10 +4718,12 @@ msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
 msgstr ""
+"Sítio oficial: <span "
+"color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
 
 #: .././ailurus/common/apps.py:183
 msgid "Speed up Firefox"
-msgstr ""
+msgstr "Acelerar Firefox"
 
 #: .././ailurus/common/apps.py:184
 msgid ""
@@ -4618,11 +4735,11 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:208
 msgid "Firefox without Pango (faster)"
-msgstr ""
+msgstr "Firefox sem Pango (mais rápido)"
 
 #: .././ailurus/common/apps.py:219
 msgid "Netbeans® 6.8"
-msgstr ""
+msgstr "Netbeans® 6.8"
 
 #: .././ailurus/common/apps.py:221
 msgid ""
@@ -4633,7 +4750,7 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:245
 msgid "Please select the folder where Netbeans is installed"
-msgstr ""
+msgstr "Por favor, seleccione a pasta para instalar o Netbeans"
 
 #: .././ailurus/common/apps.py:288
 msgid "OpenJUMP: A geographic information system"
@@ -4641,11 +4758,11 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:290
 msgid "Official site: http://openjump.org/ ."
-msgstr ""
+msgstr "Sítio oficial: http://openjump.org/ ."
 
 #: .././ailurus/common/apps.py:328
 msgid "Query you before delete more than three files"
-msgstr ""
+msgstr "Consulta-lo antes de apagar mais que três ficheiros"
 
 #: .././ailurus/common/apps.py:329
 msgid ""
@@ -4658,28 +4775,28 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:347
 msgid "TeXLive 2009"
-msgstr ""
+msgstr "TeXLive 2009"
 
 #: .././ailurus/common/apps.py:348
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
-msgstr ""
+msgstr "TeXLive 2009 é obtido em http://www.tug.org/texlive/"
 
 #. extract
 #: .././ailurus/common/apps.py:380
 msgid "Unpacking ... Please wait for a few minutes."
-msgstr ""
+msgstr "Extraíndo... Por favor, aguarde alguns minutos."
 
 #: .././ailurus/common/apps.py:411
 msgid "TeXLive is installed."
-msgstr ""
+msgstr "TeXLive está instalado."
 
 #: .././ailurus/common/apps.py:411
 msgid "TeXLive will not work until you restart the computer."
-msgstr ""
+msgstr "TeXLive não irá funcionar até que reinicie o computador."
 
 #: .././ailurus/common/apps.py:429
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
-msgstr ""
+msgstr "Modelos LaTeX Thesis pela Universidade Tsing Hua, China"
 
 #: .././ailurus/common/apps.py:431
 #, python-format
@@ -4692,11 +4809,11 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:449
 msgid "Adblock+: Block 99% advertisement"
-msgstr ""
+msgstr "Adblock+: Bloquear 99% da publicidade"
 
 #: .././ailurus/common/apps.py:454
 msgid "It is able to block 99% ads and banners."
-msgstr ""
+msgstr "É capaz de bloquear 99 % dos anúncios."
 
 #: .././ailurus/common/apps.py:470
 msgid "Proxy management depending on a third party list."
@@ -4704,23 +4821,23 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:480
 msgid "Chrome Theme for Firefox 3.0.*"
-msgstr ""
+msgstr "Tema Chrome para Firefox 3.0.*"
 
 #: .././ailurus/common/apps.py:485
 msgid "A coat of Chrome for Firefox 3.0.*"
-msgstr ""
+msgstr "Um pouco do Chrome no Firefox 3.0.*"
 
 #: .././ailurus/common/apps.py:495
 msgid "Chrome Theme for Firefox 3.5.*"
-msgstr ""
+msgstr "Tema Chrome para Firefox 3.5.*"
 
 #: .././ailurus/common/apps.py:500
 msgid "A coat of Chrome for Firefox 3.5.*"
-msgstr ""
+msgstr "Um pouco do Chrome no Firefox 3.5.*"
 
 #: .././ailurus/common/apps.py:510
 msgid "CleanHide: Delete hidden text in web page"
-msgstr ""
+msgstr "CleanHide: Apagar texto oculto nas páginas web"
 
 #: .././ailurus/common/apps.py:515
 msgid ""
@@ -4734,15 +4851,16 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:540
 msgid "DownThemAll: A reliable multithread downloader"
-msgstr ""
+msgstr "DownThemAll: Um gestor de transferências fiável"
 
 #: .././ailurus/common/apps.py:545
 msgid "It is able to download all images on web-pages."
-msgstr ""
+msgstr "Permite-lhe transferir todas as imagens das páginas web."
 
 #: .././ailurus/common/apps.py:555
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
+"EasyDragToGo: Abrir novos separadores ao arrastar texto, ligações e imagens"
 
 #: .././ailurus/common/apps.py:570
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
@@ -4758,7 +4876,7 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:589
 msgid "It supports five kinds of mouse gestures."
-msgstr ""
+msgstr "Duporta cinco tipos de gestos com o rato."
 
 #: .././ailurus/common/apps.py:599
 msgid "Flashgot: A lightweight and reliable download managers"
@@ -4814,11 +4932,11 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:696
 msgid "It helps you promote your web sites."
-msgstr ""
+msgstr "Ajuda-o a promover os seus sítios web."
 
 #: .././ailurus/common/apps.py:705
 msgid "Tab Mix Lite CE: Re-open closed tabs"
-msgstr ""
+msgstr "Tab Mix Lite CE: Reabrir separadores fechados"
 
 #: .././ailurus/common/apps.py:710
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
@@ -4857,7 +4975,7 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:781
 msgid "Many developers installed it."
-msgstr ""
+msgstr "Instalado por muitos programaores."
 
 #: .././ailurus/common/apps.py:790
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
@@ -4874,7 +4992,7 @@ msgstr ""
 
 #: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:364
 msgid "Ailurus blog"
-msgstr ""
+msgstr "Blog Ailurus"
 
 #: .././ailurus/common/menu.py:42
 msgid "translator-credits"
@@ -4891,6 +5009,8 @@ msgid ""
 "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
 "Univ., China."
 msgstr ""
+"Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
+"Univ., China."
 
 #: .././ailurus/common/menu.py:114
 msgid "Welcome to leave response in blog~"
@@ -4898,7 +5018,7 @@ msgstr ""
 
 #: .././ailurus/common/menu.py:128
 msgid "Ailurus changelog"
-msgstr ""
+msgstr "Registo de alterações"
 
 #: .././ailurus/common/menu.py:139
 #, python-format
@@ -4906,71 +5026,73 @@ msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
+"\n"
+"Esta versão foi lançada em %s."
 
 #: .././ailurus/common/menu.py:141
 msgid "Read changelog"
-msgstr ""
+msgstr "Ler registo de alterações"
 
 #: .././ailurus/common/menu.py:152
 msgid "We wish to express thankfulness to these projects:"
-msgstr ""
+msgstr "Gostariamos de agradecer aos seguintes projectos:"
 
 #: .././ailurus/common/menu.py:156
 msgid "We sincerely thank these people:"
-msgstr ""
+msgstr "Gostariamos de agradecer a estas pessoas:"
 
 #: .././ailurus/common/menu.py:158
 msgid "The people who provide inspiration:"
-msgstr ""
+msgstr "Pessoas que nos inspiraram:"
 
 #: .././ailurus/common/menu.py:164
 msgid "The people who designs the logo:"
-msgstr ""
+msgstr "Pessoas que desenharam o logotipo:"
 
 #: .././ailurus/common/menu.py:167
 msgid "The people who maintain PPA repository:"
-msgstr ""
+msgstr "Pessoas que mantêm o repositório PPA:"
 
 #: .././ailurus/common/menu.py:170
 msgid "The people who provide a lot of Linux skills:"
-msgstr ""
+msgstr "Pessoas que nos indicaram as técnicas Linux:"
 
 #: .././ailurus/common/menu.py:173
 msgid "The people who provide a lot of Debian packages:"
-msgstr ""
+msgstr "Pessoas que nos disponibilizaram os pacotes Debian:"
 
 #: .././ailurus/common/menu.py:176
 msgid "The people who provide a lot of translation:"
-msgstr ""
+msgstr "Pessoas que participaram nas traduções:"
 
 #: .././ailurus/common/menu.py:177 .././ailurus/common/menu.py:181
 #: .././ailurus/common/menu.py:188
 msgid "and many other people."
-msgstr ""
+msgstr "e muitos mais."
 
 #: .././ailurus/common/menu.py:179
 msgid "The people who report bugs:"
-msgstr ""
+msgstr "Pessoas que relataram erros:"
 
 #: .././ailurus/common/menu.py:183
 msgid "The people who eliminate bugs:"
-msgstr ""
+msgstr "Pessoas que eliminaram erros:"
 
 #: .././ailurus/common/menu.py:186
 msgid "The people who publicize this software:"
-msgstr ""
+msgstr "Pessoas que publicitaram esta aplicação:"
 
 #: .././ailurus/common/menu.py:190
 msgid "and the people not mensioned here."
-msgstr ""
+msgstr "e todas aquelas não mencionadas aqui."
 
 #: .././ailurus/common/menu.py:200
 msgid "Thanks"
-msgstr ""
+msgstr "Obrigado"
 
 #: .././ailurus/common/menu.py:243
 msgid "A new version is available"
-msgstr ""
+msgstr "Está disponível uma nova versão"
 
 #: .././ailurus/common/menu.py:248
 #, python-format
@@ -4978,75 +5100,78 @@ msgid ""
 "Version %s is released.\n"
 "You can download it from:"
 msgstr ""
+"Versão %s lançada.\n"
+"Pode transferi-la em:"
 
 #: .././ailurus/common/menu.py:255
 msgid "You have already installed the latest Ailurus version. :)"
-msgstr ""
+msgstr "Você já tem instalada a versão mais recente do Ailurus. :)"
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'),
 #. 'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
 #: .././ailurus/common/menu.py:275
 msgid "How to compile a LaTeX file into pdf file ?"
-msgstr ""
+msgstr "Como compilar um ficheiro LaTeX para pdf?"
 
 #: .././ailurus/common/menu.py:294
 #: .././ailurus/show_a_linux_skill_bubble.py:43
 msgid "Tip of the day"
-msgstr ""
+msgstr "Dica do dia"
 
 #: .././ailurus/common/menu.py:313
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
+"Desistir da transferência se o servidor não responder em ? (segundos)"
 
 #: .././ailurus/common/menu.py:319
 msgid "How many times does Ailurus try to download the same resource?"
-msgstr ""
+msgstr "Quantas vezes deve o Ailurus tentar transferir o mesmo recurso?"
 
 #: .././ailurus/common/menu.py:322
 msgid "Set Ailurus download parameter"
-msgstr ""
+msgstr "Definir os parâmetros de transferências Ailurus"
 
 #: .././ailurus/common/menu.py:344
 msgid "Don't show \"tip of the day\" on start up"
-msgstr ""
+msgstr "Não mostrar \"Dica do dia\" ao inicar"
 
 #: .././ailurus/common/menu.py:350
 msgid "Show a random Linux skill after you log in to GNOME"
-msgstr ""
+msgstr "Mostrar uma \"Técnica Linux\" aleatória ao iniciar sessão GNOME"
 
 #: .././ailurus/common/menu.py:358
 msgid "Set download parameters"
-msgstr ""
+msgstr "Definir os parâmetros de transferências"
 
 #: .././ailurus/common/menu.py:368
 msgid "Check for updates"
-msgstr ""
+msgstr "Verificar actualizações"
 
 #: .././ailurus/common/menu.py:371
 msgid "Propose suggestion and report bugs"
-msgstr ""
+msgstr "Propor sugestão e reportar erros"
 
 #: .././ailurus/common/menu.py:375
 msgid "Translate this application"
-msgstr ""
+msgstr "Traduzir esta aplicaçao"
 
 #: .././ailurus/common/menu.py:379
 msgid "Special thanks"
-msgstr ""
+msgstr "Um especial obrigado"
 
 #: .././ailurus/common/menu.py:382
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: .././ailurus/common/setting.py:32
 msgid "0 = Swap little mem to disk"
-msgstr ""
+msgstr "0 = Pouca memória para o disco"
 
 #: .././ailurus/common/setting.py:34
 msgid "100 = Swap a lot of mem to disk"
-msgstr ""
+msgstr "100 = Muita memória para o disco"
 
 #: .././ailurus/common/setting.py:74
 msgid "Change the tendency of swapping memory to disk"
@@ -5054,15 +5179,15 @@ msgstr ""
 
 #: .././ailurus/common/setting.py:85
 msgid "Run command: "
-msgstr ""
+msgstr "Executar o comando: "
 
 #: .././ailurus/common/setting.py:87
 msgid "Network restarted successfully."
-msgstr ""
+msgstr "Rede reiniciada com sucesso."
 
 #: .././ailurus/common/setting.py:89 .././ailurus/common/setting.py:104
 msgid "Restart network"
-msgstr ""
+msgstr "Reinicar rede"
 
 #: .././ailurus/common/setting.py:91
 msgid ""
@@ -5073,20 +5198,26 @@ msgid ""
 "/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
 "sudo /etc/init.d/networking restart"
 msgstr ""
+"Serão executados os seguintes comandos:\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+"sudo /etc/init.d/networking restart"
 
 #: .././ailurus/common/setting.py:116
 #, python-format
 msgid "No more than %s KB of memory can be reclaimed."
-msgstr ""
+msgstr "Não pode ser reivindicado mais de %s KB de memória."
 
 #: .././ailurus/common/setting.py:146
 #, python-format
 msgid "%s KB memory was reclaimed."
-msgstr ""
+msgstr "%s KB de memória reivindicados"
 
 #: .././ailurus/common/setting.py:152 .././ailurus/common/setting.py:166
 msgid "Reclaim memory"
-msgstr ""
+msgstr "Reivindicar memória"
 
 #: .././ailurus/common/setting.py:154
 msgid ""
@@ -5096,32 +5227,32 @@ msgstr ""
 
 #: .././ailurus/common/hardwareinfo.py:39
 msgid "BIOS vendor:"
-msgstr ""
+msgstr "Fornecedor de BIOS:"
 
 #: .././ailurus/common/hardwareinfo.py:46
 msgid "BIOS version:"
-msgstr ""
+msgstr "Versão de BIOS"
 
 #: .././ailurus/common/hardwareinfo.py:53
 msgid "BIOS release date:"
-msgstr ""
+msgstr "Data de lançamento da BIOS:"
 
 #: .././ailurus/common/hardwareinfo.py:64
 msgid "Motherboard name:"
-msgstr ""
+msgstr "Nome da placa central:"
 
 #: .././ailurus/common/hardwareinfo.py:72
 msgid "Motherboard vendor:"
-msgstr ""
+msgstr "Fornecedor da placa central"
 
 #: .././ailurus/common/hardwareinfo.py:99
 #, python-format
 msgid "CPU %s name:"
-msgstr ""
+msgstr "Nome de CPU %s:"
 
 #: .././ailurus/common/hardwareinfo.py:100
 msgid "CPU name:"
-msgstr ""
+msgstr "Nome do CPU:"
 
 #: .././ailurus/common/hardwareinfo.py:103
 #, python-format
@@ -5140,47 +5271,47 @@ msgstr ""
 
 #: .././ailurus/common/hardwareinfo.py:108
 msgid "No"
-msgstr ""
+msgstr "Não"
 
 #: .././ailurus/common/hardwareinfo.py:115
 msgid "Yes!"
-msgstr ""
+msgstr "Sim!"
 
 #: .././ailurus/common/hardwareinfo.py:116
 msgid "64 bit CPU?"
-msgstr ""
+msgstr "CPU de 64 bits?"
 
 #: .././ailurus/common/hardwareinfo.py:137
 msgid "CPU temperature"
-msgstr ""
+msgstr "Temperatura do CPU"
 
 #: .././ailurus/common/hardwareinfo.py:148
 msgid "Total memory:"
-msgstr ""
+msgstr "Memória total:"
 
 #: .././ailurus/common/hardwareinfo.py:161
 msgid "Display card:"
-msgstr ""
+msgstr "Placa gráfica:"
 
 #: .././ailurus/common/hardwareinfo.py:163
 msgid "Ethernet card:"
-msgstr ""
+msgstr "Placa Ethernet:"
 
 #: .././ailurus/common/hardwareinfo.py:165
 msgid "Audio card:"
-msgstr ""
+msgstr "Placa de som:"
 
 #: .././ailurus/common/hardwareinfo.py:178
 msgid "charged"
-msgstr ""
+msgstr "carregada"
 
 #: .././ailurus/common/hardwareinfo.py:179
 msgid "charging"
-msgstr ""
+msgstr "carregando"
 
 #: .././ailurus/common/hardwareinfo.py:180
 msgid "discharging"
-msgstr ""
+msgstr "descarregando"
 
 #: .././ailurus/common/hardwareinfo.py:182
 msgid "Battery charging state:"
@@ -5259,6 +5390,8 @@ msgid ""
 "List USB devices\n"
 "lsusb -v\n"
 msgstr ""
+"Listar discos USB\n"
+"lsusb -v\n"
 
 #: .././ailurus/common/tips.py:69
 msgid ""
@@ -5271,12 +5404,16 @@ msgid ""
 "List hardware\n"
 "sudo lshw\n"
 msgstr ""
+"Listar equipamento\n"
+"sudo lshw\n"
 
 #: .././ailurus/common/tips.py:77
 msgid ""
 "List harddisk partitions\n"
 "sudo fdisk -l\n"
 msgstr ""
+"Listar partições de disco\n"
+"sudo fdisk -l\n"
 
 #: .././ailurus/common/tips.py:81
 msgid ""
@@ -6089,7 +6226,7 @@ msgstr "A tecla de atalho."
 
 #: .././ailurus/libsetting.py:151
 msgid "Choose an image"
-msgstr ""
+msgstr "Escolha uma imagem"
 
 #: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:230
 msgid "Image file"

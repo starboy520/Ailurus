@@ -7,15 +7,15 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-31 05:44+0000\n"
-"Last-Translator: draonbu <andreykido@mail.ru>\n"
+"PO-Revision-Date: 2010-04-02 04:37+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: gnome-cyr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
 "n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-01 03:48+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "Language: ru\n"
 
@@ -36,7 +36,7 @@ msgstr "Версия Fedora:"
 
 #: .././ailurus/fedora/repos.py:62
 msgid "RPM Fusion (Free)"
-msgstr ""
+msgstr "RPM Fusion (Свободное)"
 
 #: .././ailurus/fedora/repos.py:63
 msgid ""
@@ -49,7 +49,7 @@ msgstr ""
 
 #: .././ailurus/fedora/repos.py:90
 msgid "RPM Fusion (Non-Free)"
-msgstr ""
+msgstr "RPM Fusion (Не свободное)"
 
 #: .././ailurus/fedora/repos.py:91
 msgid "RPM Fusion provides software that not in the standard repositories."
@@ -789,7 +789,7 @@ msgstr "Объединение завершено"
 
 #: .././ailurus/ubuntu/third_party_repos.py:116
 msgid "<i>Install packages by:</i>"
-msgstr ""
+msgstr "<i>Установить пакеты от:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:117
 msgid "<i>Web page:</i>"
@@ -898,6 +898,8 @@ msgstr "GNOME Global Menu"
 msgid ""
 "GNOME Global Menu is the globally-shared menu bar of all applications."
 msgstr ""
+"GNOME Global Menu - это глобально-размещаемая панель меню для всех "
+"приложений."
 
 #: .././ailurus/ubuntu/third_party_repos.py:304
 msgid "Medibuntu"
@@ -1052,7 +1054,7 @@ msgstr "Команда: sudo apt-get install/remove %s"
 
 #: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
-msgstr ""
+msgstr "Скриншот меню:"
 
 #: .././ailurus/ubuntu/setting.py:117
 msgid "Window screenshot:"
@@ -1102,6 +1104,7 @@ msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 msgstr ""
+"Запустить выбранные файлы с привелегиями администратора, используя меню.\n"
 
 #: .././ailurus/ubuntu/setting.py:157
 msgid "Open selected folder with administration privileges."
@@ -1109,7 +1112,7 @@ msgstr "Открыть выбранную папку с администрати
 
 #: .././ailurus/ubuntu/setting.py:160
 msgid "\"Resize/Rotate images\" entries"
-msgstr ""
+msgstr "пункты \"Размер/Поворот изображения\""
 
 #: .././ailurus/ubuntu/setting.py:161
 msgid "Resize or rotate selected images."
@@ -1177,11 +1180,11 @@ msgstr "Автоматическая проверка обновлений"
 
 #: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
-msgstr ""
+msgstr "Интервал (в днях) между проверками обновлений:"
 
 #: .././ailurus/ubuntu/setting.py:296
 msgid "Ubuntu update manager setting"
-msgstr ""
+msgstr "Настройка менеджера обновлений Ubuntu"
 
 #: .././ailurus/ubuntu/app1.py:29
 msgid ""
@@ -1426,17 +1429,20 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:29
 msgid "Mplayer with \"vod\" protocol support"
-msgstr ""
+msgstr "Mplayer с поддержкой протокола \"vod\""
 
 #: .././ailurus/ubuntu/app2.py:30
 msgid ""
 "Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" "
 "protocol is used in some online video sites such as SJTU comic."
 msgstr ""
+"Установить mplayer и comicview. Mplayer поддерживает протокол \"vod\". "
+"Протокол \"vod\" используется на некоторых онлайн видео сайтах, например "
+"SJTU comic."
 
 #: .././ailurus/ubuntu/app2.py:48
 msgid "PBC (Pairing-Based Cryptography) library"
-msgstr ""
+msgstr "Библиотека PBC (Pairing-Based Cryptography)"
 
 #: .././ailurus/ubuntu/app2.py:49
 msgid ""
@@ -1620,6 +1626,10 @@ msgid ""
 "which are downloaded from http://art.gnome.org . The official site of "
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
+"Позволяет настроить фон рабочего стола, внешний вид приложений, формы окон, "
+"иконки, эффекты GNOME и окна GDM. Может быть установлено более 100 тем, "
+"которые загружены с http://art.gnome.org . Официальный сайт GNOMEArtNG - "
+"http://developer.berlios.de/projects/gnomeartng/"
 
 #: .././ailurus/ubuntu/app2.py:314
 msgid ""
@@ -1633,6 +1643,8 @@ msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
+"Это многофункциональный графический калькулятор.\n"
+"Команда: sudo apt-get install extcalc"
 
 #: .././ailurus/ubuntu/app2.py:334
 msgid "Satartup Manager"
@@ -2160,11 +2172,11 @@ msgstr "Проверяя погоду Ваш компьютер подключа
 
 #: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Scanning installed packages."
-msgstr ""
+msgstr "Сканирование установленных пакетов."
 
 #: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Please wait a few seconds."
-msgstr ""
+msgstr "Пожалуйста подождите несколько секунд."
 
 #: .././ailurus/ubuntu/quick_setup.py:102
 msgid "Computer is not connected to Internet"
@@ -2178,7 +2190,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:108
 msgid "Configure network connections"
-msgstr ""
+msgstr "Настройка сетевых подключений."
 
 #: .././ailurus/ubuntu/quick_setup.py:112
 #: .././ailurus/ubuntu/quick_setup.py:142
@@ -2187,7 +2199,7 @@ msgstr "Пропустить этот шаг"
 
 #: .././ailurus/ubuntu/quick_setup.py:133
 msgid "Searching the fastest repository"
-msgstr ""
+msgstr "Поиск быстрейшего репозитория"
 
 #: .././ailurus/ubuntu/quick_setup.py:173
 #, python-format
