@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-29 04:43+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"PO-Revision-Date: 2010-04-02 08:47+0000\n"
+"Last-Translator: Homer Xing <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2010-03-30 04:24+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid " \"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
-msgstr ""
+msgstr " \"安装软件\" + \"配置Linux\" + \"学习Linux技巧\""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -54,11 +54,11 @@ msgstr "RPM Fusion 提供了不在官方源内的软件包。"
 
 #: .././ailurus/fedora/repos.py:118
 msgid "Open source web browser"
-msgstr ""
+msgstr "开源网络浏览器"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:29
 msgid "RMP recovery"
-msgstr ""
+msgstr "RPM 恢复"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:52
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
@@ -356,7 +356,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:221
 msgid "GNU General Public License (GPL)"
-msgstr ""
+msgstr "GNU 通用公开许可证 (GPL)"
 
 #: .././ailurus/fedora/apps.py:227 .././ailurus/ubuntu/app1.py:445
 msgid "Liferea: a RSS feed reader"
@@ -539,11 +539,11 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "浏览器的 Flash 插件"
 
 #: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
-msgstr ""
+msgstr "命令: yum install gnash"
 
 #: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
 #: .././ailurus/ubuntu/quick_setup.py:296
@@ -1230,7 +1230,7 @@ msgstr "解压缩软件: 7z, rar, cab, ace"
 #: .././ailurus/ubuntu/app1.py:119
 msgid ""
 "Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
-msgstr ""
+msgstr "命令: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
 
 #: .././ailurus/ubuntu/app1.py:129
 msgid "Typespeed is a typing practise. It only runs in terminal."
@@ -1318,11 +1318,11 @@ msgstr "命令: sudo apt-get install cpus-pdf"
 
 #: .././ailurus/ubuntu/app1.py:317
 msgid "GNU Flash plugin for web browser"
-msgstr ""
+msgstr "浏览器的 GNU Flash 插件"
 
 #: .././ailurus/ubuntu/app1.py:318
 msgid "Command: sudo apt-get install gnash mozilla-plugin-gnash"
-msgstr ""
+msgstr "命令: sudo apt-get install gnash mozilla-plugin-gnash"
 
 #: .././ailurus/ubuntu/app1.py:326 .././ailurus/ubuntu/quick_setup.py:305
 msgid "Fix font bug in Flash plugin"
@@ -1392,7 +1392,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:470
 msgid "MACChanger: change MAC address"
-msgstr ""
+msgstr "MACChanger: 改变 MAC 地址"
 
 #: .././ailurus/ubuntu/app1.py:471
 msgid ""
@@ -1400,16 +1400,20 @@ msgid ""
 "interfaces.\n"
 "Command: sudo apt-get install macchanger"
 msgstr ""
+"MACChanger 是一个查看/修改网卡的 MAC 地址的小工具。\n"
+"命令: sudo apt-get install macchanger"
 
 #: .././ailurus/ubuntu/app1.py:478
 msgid "Bluetooth support"
-msgstr ""
+msgstr "蓝牙支持"
 
 #: .././ailurus/ubuntu/app1.py:479
 msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
 "bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 msgstr ""
+"命令: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-"
+"utils python-bluez gnome-bluetooth gnome-phone-manager"
 
 #: .././ailurus/ubuntu/app2.py:29
 msgid "Mplayer with \"vod\" protocol support"
@@ -1444,6 +1448,8 @@ msgid ""
 "By installing build-essential, you will get g++, make, gdb and libc.\n"
 "Command: sudo apt-get install build-essential"
 msgstr ""
+"您安装了 build-essential 后，就能使用 g++, make, gdb 和 libc。\n"
+"命令: sudo apt-get install build-essential"
 
 #: .././ailurus/ubuntu/app2.py:99
 msgid ""
@@ -1451,6 +1457,8 @@ msgid ""
 "and POSIX library files.\n"
 "Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 msgstr ""
+"安装 Linux 系统调用，库调用，使用 POSIX 库的 man 手册。\n"
+"命令: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 
 #: .././ailurus/ubuntu/app2.py:109
 msgid ""
@@ -1458,18 +1466,20 @@ msgid ""
 "symbol. It is used in vi and emacs.\n"
 "Command: sudo apt-get install exuberant-ctags"
 msgstr ""
+"这是一个源代码分析工具。您可以用它来跳转到一个符号的定义处。它在 vi 和 emacs 中使用。\n"
+"命令: sudo apt-get install exuberant-ctags"
 
 #: .././ailurus/ubuntu/app2.py:118
 msgid "GNU multiprecision arithmetic library"
-msgstr ""
+msgstr "GNU 多精度算术库"
 
 #: .././ailurus/ubuntu/app2.py:119
 msgid "Command: sudo apt-get install libgmp3-dev"
-msgstr ""
+msgstr "命令: sudo apt-get install libgmp3-dev"
 
 #: .././ailurus/ubuntu/app2.py:127
 msgid "Ncurses5 and QT3"
-msgstr ""
+msgstr "Ncurses5 和 QT3"
 
 #: .././ailurus/ubuntu/app2.py:128
 msgid ""
@@ -1477,20 +1487,25 @@ msgid ""
 "libqt3-mt is Trolltech Qt library, version 3.\n"
 "Command: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 msgstr ""
+"libncurses5 是控制台输入输出的库。\n"
+"libqt3-mt 是第三版 Qt 库。\n"
+"命令: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 
 #: .././ailurus/ubuntu/app2.py:138
 msgid "Subversion, git, and bzr"
-msgstr ""
+msgstr "Subversion, git 和 bzr"
 
 #: .././ailurus/ubuntu/app2.py:139
 msgid ""
 "subversion, git and bzr are popular version control systems.\n"
 "Command: sudo apt-get install subversion git-core bzr"
 msgstr ""
+"subversion, git 和 bzr 是常用的版本控制系统。\n"
+"命令: sudo apt-get install subversion git-core bzr"
 
 #: .././ailurus/ubuntu/app2.py:148
 msgid "Autotools"
-msgstr ""
+msgstr "Autotools"
 
 #: .././ailurus/ubuntu/app2.py:149
 msgid ""
@@ -1499,28 +1514,33 @@ msgid ""
 "automake is a tool for automatically generating Makefile.\n"
 "Command: sudo apt-get install autoconf automake autotool"
 msgstr ""
+"autoconf 能生成一些 shell 脚本，来自动化地配置软件源代码。\n"
+"automake 能自动生成 Makefile。\n"
+"命令: sudo apt-get install autoconf automake autotool"
 
 #: .././ailurus/ubuntu/app2.py:159
 msgid "OpenGL library"
-msgstr ""
+msgstr "OpenGL 库"
 
 #: .././ailurus/ubuntu/app2.py:160
 msgid ""
 "This is a library for writing OpenGL programs.\n"
 "Command: sudo apt-get install freeglut3-dev"
 msgstr ""
+"这是写 OpenGL 程序用的库。\n"
+"命令: sudo apt-get install freeglut3-dev"
 
 #: .././ailurus/ubuntu/app2.py:169
 msgid "Boost library"
-msgstr ""
+msgstr "Boost 库"
 
 #: .././ailurus/ubuntu/app2.py:170
 msgid "Command: sudo apt-get install libboost-dev"
-msgstr ""
+msgstr "命令: sudo apt-get install libboost-dev"
 
 #: .././ailurus/ubuntu/app2.py:178
 msgid "SDL library"
-msgstr ""
+msgstr "SDL 库"
 
 #: .././ailurus/ubuntu/app2.py:179
 msgid ""
@@ -1531,10 +1551,14 @@ msgid ""
 "Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
 "mixer1.2-dev libsdl-ttf2.0-dev"
 msgstr ""
+"这是一个写 SDL 程序的库。\n"
+"SDL 是一个跨平台的多媒体库，可以访问声卡，键盘，鼠标等等。\n"
+"命令: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-"
+"dev libsdl-ttf2.0-dev"
 
 #: .././ailurus/ubuntu/app2.py:190
 msgid "pv: a pipe viewer"
-msgstr ""
+msgstr "pv: pipe 查看器"
 
 #: .././ailurus/ubuntu/app2.py:191
 msgid ""
@@ -1542,6 +1566,8 @@ msgid ""
 "pipeline.\n"
 "Command: sudo apt-get install pv"
 msgstr ""
+"这是个在终端中使用的工具，能监控 pipe 中的数据处理进度。\n"
+"命令: sudo apt-get install pv"
 
 #: .././ailurus/ubuntu/app2.py:200
 msgid ""
@@ -1549,44 +1575,50 @@ msgid ""
 "installed.\n"
 "Command: sudo apt-get install auto-apt"
 msgstr ""
+"\"auto-apt run ./configure\" 能帮助您安装编译所需的软件。\n"
+"命令: sudo apt-get install auto-apt"
 
 #: .././ailurus/ubuntu/app2.py:208
 msgid ""
 "Checkinstall help you build deb package. Command: sudo apt-get install "
 "checkinstall"
-msgstr ""
+msgstr "Checkinstall 可以帮助您制作 deb 包。命令: sudo apt-get install checkinstall"
 
 #: .././ailurus/ubuntu/app2.py:215
 msgid "Umbrello: UML modelling"
-msgstr ""
+msgstr "Umbrello: UML 建模"
 
 #: .././ailurus/ubuntu/app2.py:216
 msgid ""
 "Umbrello help you do UML modelling.\n"
 "Command: sudo apt-get install umbrello"
 msgstr ""
+"Umbrello 帮助您进行 UML 建模。\n"
+"命令: sudo apt-get install umbrello"
 
 #: .././ailurus/ubuntu/app2.py:225
 msgid "Ubuntu Studio Theme"
-msgstr ""
+msgstr "Ubuntu Studio 主题"
 
 #: .././ailurus/ubuntu/app2.py:226
 msgid ""
 "Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
 "ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 msgstr ""
+"命令: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
+"ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 
 #: .././ailurus/ubuntu/app2.py:232
 msgid "Minicom and ckermit"
-msgstr ""
+msgstr "Minicom 和 ckermit"
 
 #: .././ailurus/ubuntu/app2.py:233
 msgid "Command: sudo apt-get install minicom ckermit"
-msgstr ""
+msgstr "命令: sudo apt-get install minicom ckermit"
 
 #: .././ailurus/ubuntu/app2.py:241
 msgid "VirtualBox open source edition"
-msgstr ""
+msgstr "VirtualBox 开源版本"
 
 #: .././ailurus/ubuntu/app2.py:242
 msgid ""
@@ -1627,17 +1659,19 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:334
 msgid "Satartup Manager"
-msgstr ""
+msgstr "启动管理器"
 
 #: .././ailurus/ubuntu/app2.py:335
 msgid ""
 "Satartup manager helps you change GRUB settings and themes.\n"
 "Command: sudo apt-get install startupmanager"
 msgstr ""
+"这个软件帮助您改变 GRUB 设置和主题。\n"
+"命令: sudo apt-get install startupmanager"
 
 #: .././ailurus/ubuntu/app2.py:342
 msgid "Zhcon"
-msgstr ""
+msgstr "Zhcon"
 
 #: .././ailurus/ubuntu/app2.py:343
 msgid ""
@@ -1645,16 +1679,21 @@ msgid ""
 "You can launch it by \"zhcon --utf8\".\n"
 "Command: sudo apt-get install zhcon"
 msgstr ""
+"Zhcon 帮助您在 TTY 终端内显示汉字。\n"
+"您可以用 \"zhcon --utf8\" 来启动它。\n"
+"命令: sudo apt-get install zhcon"
 
 #: .././ailurus/ubuntu/app2.py:352
 msgid ""
 "Powertop helps you save power for your laptop.\n"
 "Command: sudo apt-get install powertop"
 msgstr ""
+"Powertop 帮助您节省笔记本的能耗。\n"
+"命令: sudo apt-get install powertop"
 
 #: .././ailurus/ubuntu/app0.py:29
 msgid "Command: sudo apt-get install openjdk-6-jdk"
-msgstr ""
+msgstr "命令: sudo apt-get install openjdk-6-jdk"
 
 #: .././ailurus/ubuntu/app0.py:63
 msgid ""
@@ -2118,20 +2157,20 @@ msgstr "加纳"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:77
 msgid "Clean up"
-msgstr ""
+msgstr "清理"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:43
 #, python-format
 msgid "size of %s: %s"
-msgstr ""
+msgstr "%s 的大小是: %s"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:44
 msgid "Clean"
-msgstr ""
+msgstr "清理"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:69
 msgid "Clean unused kernel"
-msgstr ""
+msgstr "清理不用的内核"
 
 #: .././ailurus/ubuntu/quick_setup.py:33
 #: .././ailurus/ubuntu/quick_setup.py:363
@@ -2212,7 +2251,7 @@ msgstr "<span color='black'>%(server)s 的响应时间是 %(value).0f 毫秒。<
 #: .././ailurus/ubuntu/quick_setup.py:180
 #, python-format
 msgid "<span color='black'>Time left: %s</span>"
-msgstr ""
+msgstr "<span color='black'>剩余时间: %s</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:224
 msgid ""
@@ -2977,7 +3016,7 @@ msgstr "%.1f 分钟"
 #: .././ailurus/lib.py:871
 #, python-format
 msgid "%d seconds"
-msgstr ""
+msgstr "%d 秒"
 
 #: .././ailurus/lib.py:1068 .././ailurus/lib.py:1073
 msgid "Opening web page"
@@ -3318,7 +3357,7 @@ msgstr "桌面图标"
 
 #: .././ailurus/gnome/setting.py:111 .././ailurus/gnome/setting.py:138
 msgid "Icon changed"
-msgstr ""
+msgstr "图标已经改变"
 
 #: .././ailurus/gnome/setting.py:111 .././ailurus/gnome/setting.py:138
 #: .././ailurus/common/menu.py:355
@@ -3328,15 +3367,15 @@ msgstr "您进行的改动将在下次您登录到 GNOME 时生效。"
 
 #: .././ailurus/gnome/setting.py:132
 msgid "Change \"start-here\" icon"
-msgstr ""
+msgstr "改变 \"start-here\" 图标"
 
 #: .././ailurus/gnome/setting.py:144
 msgid "The login icon is ~/.face"
-msgstr ""
+msgstr "登录窗口的图标是 ~/.face"
 
 #: .././ailurus/gnome/setting.py:148
 msgid "Change login icon"
-msgstr ""
+msgstr "改变登录窗口的图标"
 
 #: .././ailurus/gnome/setting.py:152
 msgid "Show icons of menu entries"
@@ -3424,7 +3463,7 @@ msgstr "窗口标题栏的按钮的布局"
 
 #: .././ailurus/gnome/setting.py:244
 msgid "It can be used in Metacity only."
-msgstr ""
+msgstr "这个选项只对 Metacity 有效。"
 
 #: .././ailurus/gnome/setting.py:246
 msgid "GNOME classic"
@@ -3708,7 +3747,7 @@ msgstr "背光"
 
 #: .././ailurus/gnome/setting.py:461
 msgid "Clear \"recent documents\" list"
-msgstr ""
+msgstr "清空“最近的文档”列表"
 
 #: .././ailurus/gnome/setting.py:465
 msgid "Change default file manager to:"
@@ -3742,40 +3781,40 @@ msgstr "%2d"
 #. Window Decorator
 #: .././ailurus/gnome/setting.py:513
 msgid "Set Window Decorator:"
-msgstr ""
+msgstr "选择窗口装饰程序:"
 
 #: .././ailurus/gnome/setting.py:515
 msgid "<span color='red'>It takes effect after next startup.</span>\n"
-msgstr ""
+msgstr "<span color='red'>这个设置会在下次启动计算机时生效。</span>\n"
 
 #: .././ailurus/gnome/setting.py:519
 msgid "Metacity"
-msgstr ""
+msgstr "Metacity"
 
 #: .././ailurus/gnome/setting.py:519
 msgid "Emerald"
-msgstr ""
+msgstr "Emerald"
 
 #: .././ailurus/gnome/setting.py:535
 msgid "Disable Minimize Effect"
-msgstr ""
+msgstr "禁用最小化效果"
 
 #: .././ailurus/gnome/setting.py:539
 msgid "Random All Effects"
-msgstr ""
+msgstr "全部随机效果"
 
 #. number of desktop
 #: .././ailurus/gnome/setting.py:549
 msgid "Screen horizontal size coefficient"
-msgstr ""
+msgstr "屏幕宽度的系数"
 
 #: .././ailurus/gnome/setting.py:555
 msgid "Screen vertical size coefficient"
-msgstr ""
+msgstr "屏幕高度的系数"
 
 #: .././ailurus/gnome/setting.py:563
 msgid "CompizConfig Settings"
-msgstr ""
+msgstr "CompizConfig 设置"
 
 #: .././ailurus/gnome/tips.py:27
 msgid ""
@@ -4251,24 +4290,24 @@ msgstr "另一个 Ailurus 实例正在运行。不推荐同时运行多个 Ailur
 
 #: .././ailurus/main.py:201
 msgid "Error happened. You cannot install any software by Ailurus. :("
-msgstr ""
+msgstr "发生错误。您不能用 Ailurus 安装任何软件了。 :("
 
 #: .././ailurus/main.py:204
 msgid "System configuration file should be updated."
-msgstr ""
+msgstr "系统配置文件应当更新。"
 
 #: .././ailurus/main.py:205
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
-msgstr ""
+msgstr "请用 <b>su</b> 或者 <b>sudo</b> 运行以下命令:"
 
 #: .././ailurus/main.py:211
 msgid "Ailurus' D-Bus daemon exited with error."
-msgstr ""
+msgstr "Ailurus 的 D-Bus 后台进程错误退出。"
 
 #: .././ailurus/main.py:212
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
-msgstr ""
+msgstr "请重启您的电脑，或者用 <b>su</b> 或者 <b>sudo</b> 来启动后台进程:"
 
 #. check desktop environment
 #: .././ailurus/main.py:234
@@ -4688,7 +4727,7 @@ msgstr "OpenJUMP: 一个地理信息系统软件"
 
 #: .././ailurus/common/apps.py:290
 msgid "Official site: http://openjump.org/ ."
-msgstr ""
+msgstr "官方网站: http://openjump.org/ ."
 
 #: .././ailurus/common/apps.py:328
 msgid "Query you before delete more than three files"
@@ -5027,7 +5066,7 @@ msgstr "鸣谢"
 
 #: .././ailurus/common/menu.py:243
 msgid "A new version is available"
-msgstr ""
+msgstr "有新版本"
 
 #: .././ailurus/common/menu.py:248
 #, python-format
@@ -5035,6 +5074,8 @@ msgid ""
 "Version %s is released.\n"
 "You can download it from:"
 msgstr ""
+"%s 版已经发布了。\n"
+"您可以从这里下载:"
 
 #: .././ailurus/common/menu.py:255
 msgid "You have already installed the latest Ailurus version. :)"
@@ -6059,7 +6100,7 @@ msgstr "所有改变都进行完毕。 "
 
 #: .././ailurus/install_remove_pane.py:401
 msgid "License:"
-msgstr ""
+msgstr "许可协议："
 
 #: .././ailurus/install_remove_pane.py:407
 msgid "Not installed."
@@ -6222,7 +6263,7 @@ msgstr "快捷键"
 
 #: .././ailurus/libsetting.py:151
 msgid "Choose an image"
-msgstr ""
+msgstr "选择一个图像"
 
 #: .././ailurus/libsetting.py:161 .././ailurus/libsetting.py:230
 msgid "Image file"

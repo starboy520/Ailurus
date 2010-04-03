@@ -8,15 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-31 06:11+0000\n"
-"Last-Translator: Launchpad Translations Administrators "
-"<rosetta@launchpad.net>\n"
+"PO-Revision-Date: 2010-04-02 19:23+0000\n"
+"Last-Translator: olonei <zszsandras@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-01 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -53,7 +52,7 @@ msgstr ""
 
 #: .././ailurus/fedora/repos.py:118
 msgid "Open source web browser"
-msgstr ""
+msgstr "Nyilt forráskódú webböngésző"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:29
 msgid "RMP recovery"
@@ -106,7 +105,7 @@ msgstr ""
 #: .././ailurus/fedora/rpm_recovery_pane.py:201
 #: .././ailurus/ubuntu/apt_recovery_pane.py:201
 msgid "packages"
-msgstr ""
+msgstr "csomagok"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:207
 #: .././ailurus/ubuntu/apt_recovery_pane.py:207
@@ -126,22 +125,22 @@ msgstr ""
 #: .././ailurus/fedora/rpm_recovery_pane.py:233
 #: .././ailurus/ubuntu/apt_recovery_pane.py:233
 msgid "package"
-msgstr ""
+msgstr "Csomag"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:238
 #: .././ailurus/ubuntu/apt_recovery_pane.py:238
 msgid "action"
-msgstr ""
+msgstr "művelet"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:243
 #: .././ailurus/ubuntu/apt_recovery_pane.py:243
 msgid "will be removed"
-msgstr ""
+msgstr "El lesz távolítva"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:244
 #: .././ailurus/ubuntu/apt_recovery_pane.py:244
 msgid "will be installed"
-msgstr ""
+msgstr "Telepítve lesz"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:281
 #: .././ailurus/ubuntu/apt_recovery_pane.py:281
@@ -438,7 +437,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:417
 msgid "Enable \"sudo\""
-msgstr ""
+msgstr "Bekapcsol \"sudo\""
 
 #: .././ailurus/fedora/apps.py:418
 msgid ""
@@ -469,7 +468,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "Flash plugin a böngészőhöz"
 
 #: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
@@ -488,11 +487,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
-msgstr ""
+msgstr "Ubuntu verzió:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:33
 msgid "Search"
-msgstr ""
+msgstr "Keresés"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:59
 #, python-format
@@ -501,7 +500,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:66
 msgid "Find fastest repository mirror"
-msgstr ""
+msgstr "Gyorsabban elérhető  tároló keresése"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
@@ -535,11 +534,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:93
 msgid "(Official repository)"
-msgstr ""
+msgstr "Hivatalos tároló"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:94
 msgid "(Third-party repository)"
-msgstr ""
+msgstr "Harmadik fél tárolója"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:103
 msgid "There is one configuration file in /etc/apt/sources.list.d/"
@@ -577,16 +576,16 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:173
 msgid "Refresh"
-msgstr ""
+msgstr "Frissítés"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:175
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:427
 msgid "Detect response time of all repositories"
-msgstr ""
+msgstr "Az összes tároló válaszidejének detektálása"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:177
 msgid "Use the fastest repository"
-msgstr ""
+msgstr "A leggyorsabb tároló használata"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:179
 msgid "Edit repository configuration by text editor"
@@ -612,7 +611,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:228
 msgid "No response"
-msgstr ""
+msgstr "Nincs válasz"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:282
 #, python-format
@@ -647,11 +646,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:423
 msgid "Detect response time of selected repositories"
-msgstr ""
+msgstr "A kiválasztott tárolók válaszideje"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:431
 msgid "Use selected repositories"
-msgstr ""
+msgstr "Kiválsztott tárolók használata"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:434
 msgid "Select all"
@@ -681,7 +680,7 @@ msgstr "Szervezet"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:488
 msgid "Response time"
-msgstr ""
+msgstr "Válaszidő"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:550
 msgid "All repositories:"
@@ -712,15 +711,15 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:154
 msgid "Firefox 3.6 (stable)"
-msgstr ""
+msgstr "3.6 Firefox (stabil)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
 msgid "This repository contains Firefox stable version 3.6."
-msgstr ""
+msgstr "Firefox 3.6 stabil változatának tárolója"
 
 #: .././ailurus/ubuntu/third_party_repos.py:168
 msgid "PlayOnLinux"
-msgstr ""
+msgstr "PlayOnLinux"
 
 #: .././ailurus/ubuntu/third_party_repos.py:171
 msgid ""
@@ -758,7 +757,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:229
 msgid "Blueman is a graphical blue-tooth manager."
-msgstr ""
+msgstr "Blueman grafikus bluetooth menedzser"
 
 #: .././ailurus/ubuntu/third_party_repos.py:239
 msgid "Christine"
@@ -766,7 +765,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:242
 msgid "Christine is a small media player."
-msgstr ""
+msgstr "Christine egy pehelysúlyú médialejátszó"
 
 #: .././ailurus/ubuntu/third_party_repos.py:252
 msgid "Chromium"
@@ -774,7 +773,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:255
 msgid "Chromium is the open source version of Google Chrome."
-msgstr ""
+msgstr "Chromium a Google Chrome nyílt forráskódú változata"
 
 #: .././ailurus/ubuntu/third_party_repos.py:265
 msgid "Getting things GNOME"
@@ -820,7 +819,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:321
 msgid "Moovida is a cross platform media player."
-msgstr ""
+msgstr "Moovida egy platformfüggetlen Média Center"
 
 #: .././ailurus/ubuntu/third_party_repos.py:332
 msgid "Shutter"
@@ -862,7 +861,7 @@ msgstr ""
 msgid ""
 "XBMC is an open source software media player and entertainment hub for "
 "digital media."
-msgstr ""
+msgstr "XBMC egy nyílt forráskódú szórakoztató digitális médiaközpont"
 
 #: .././ailurus/ubuntu/third_party_repos.py:401
 msgid "Next generation input method"
@@ -886,11 +885,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:453
 msgid "Exaile (Latest version)"
-msgstr ""
+msgstr "Exaile (legutolsó verzió)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:466
 msgid "Audacious (Latest version)"
-msgstr ""
+msgstr "Audacius (legutolsó verzió)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:495
 msgid "This is a desktop diary application."
@@ -898,11 +897,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:505
 msgid "Pidgin (Latest version)"
-msgstr ""
+msgstr "Pidgin (legutolsó verzió)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:518
 msgid "Songbird (Latest version)"
-msgstr ""
+msgstr "Songbird (legutolsó verzió)"
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. Separator
@@ -928,7 +927,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
-msgstr ""
+msgstr "Ne törölje autómatikusan a /var/cache/apt/"
 
 #: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:347
 #: .././ailurus/common/menu.py:355
@@ -943,7 +942,7 @@ msgstr ""
 #: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
-msgstr ""
+msgstr "Parancs: sudo apt-get install/remove %s"
 
 #: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
@@ -1068,7 +1067,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:288
 msgid "Automatically check for update"
-msgstr ""
+msgstr "Autómatikus frissités ellenőrzés"
 
 #: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
@@ -1112,12 +1111,13 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:118 .././ailurus/ubuntu/quick_setup.py:297
 msgid "Decompression software: 7z, rar, cab, ace"
-msgstr ""
+msgstr "Kitömörítő program: 7z, rar, cab, ace"
 
 #: .././ailurus/ubuntu/app1.py:119
 msgid ""
 "Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
 msgstr ""
+"Parancs: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
 
 #: .././ailurus/ubuntu/app1.py:129
 msgid "Typespeed is a typing practise. It only runs in terminal."
@@ -1125,11 +1125,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:139
 msgid "Command: sudo apt-get install poppler-data"
-msgstr ""
+msgstr "Parancs: sudo apt-get install poppler-data"
 
 #: .././ailurus/ubuntu/app1.py:150
 msgid "Command: sudo apt-get install chmsee"
-msgstr ""
+msgstr "Parancs: sudo apt-get install chmsee"
 
 #: .././ailurus/ubuntu/app1.py:162
 msgid ""
@@ -1165,6 +1165,9 @@ msgid ""
 "gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
 "plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
 msgstr ""
+"Parancs: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg "
+"gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
+"plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
 
 #: .././ailurus/ubuntu/app1.py:275
 msgid "Enable \"Print to pdf\" capability and eliminate \"Cannot print\" bug"
@@ -1183,7 +1186,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:307
 msgid "Command: sudo apt-get install cpus-pdf"
-msgstr ""
+msgstr "Parancs:  sudo apt-get install cpus-pdf"
 
 #: .././ailurus/ubuntu/app1.py:317
 msgid "GNU Flash plugin for web browser"
@@ -1191,7 +1194,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:318
 msgid "Command: sudo apt-get install gnash mozilla-plugin-gnash"
-msgstr ""
+msgstr "Parancs: sudo apt-get install gnash mozilla-plugin-gnash"
 
 #: .././ailurus/ubuntu/app1.py:326 .././ailurus/ubuntu/quick_setup.py:305
 msgid "Fix font bug in Flash plugin"

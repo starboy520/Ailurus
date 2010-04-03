@@ -21,6 +21,16 @@
 
 from __future__ import with_statement
 
+def get_pixbuf(file, x, y):
+    from lib import D
+    import gtk
+    try:
+        return gtk.gdk.pixbuf_new_from_file_at_size(file, x, y)
+    except:
+        import traceback
+        traceback.print_exc()
+        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)
+    
 def gray_bg(w):
     import gtk
     if not isinstance(w, gtk.Entry) and not isinstance(w, gtk.TextView): raise TypeError
