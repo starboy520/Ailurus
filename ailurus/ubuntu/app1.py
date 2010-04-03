@@ -395,7 +395,7 @@ class MACChanger(_apt_install):
                'Command: sudo apt-get install macchanger')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.pkgs = 'macchanger'
+        self.pkgs = 'device'
 
 class Bluetooth(_apt_install):
     category = 'device'

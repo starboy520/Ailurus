@@ -515,7 +515,6 @@ class VirtualBox_OSE(_rpm_install):
     depend = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = 'VirtualBox-OSE'
-<<<<<<< HEAD:ailurus/fedora/apps.py
     
 class nautilus_actions(_rpm_install):
     __doc__ = _('"Actions Configuration" entry')
