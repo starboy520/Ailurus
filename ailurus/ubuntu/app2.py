@@ -145,15 +145,15 @@ class Svn_Git_bzr(_apt_install):
         self.pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Autotools')
+    __doc__ = _('Autoconf and automake')
     detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
                'automake is a tool for automatically generating Makefile.\n'
-               'Command: sudo apt-get install autoconf automake autotool')
+               'Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'autotool autoconf automake'
+        self.pkgs = 'autoconf automake'
         
 class FreeGLut3(_apt_install):
     __doc__ = _('OpenGL library')  
