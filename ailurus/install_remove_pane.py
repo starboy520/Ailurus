@@ -699,17 +699,21 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
+            [ i_common, _('Device Support'), D+'sora_icons/p_device.png', 'device' ],
+            [ i_common, _('Language Support'), D+'sora_icons/p_language_support.png', 'language'],
+            [ i_common, _('Nautilus Enhancements'),  D+'other_icons/nautilus.png', 'nautilus'],
 
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
             [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
-
+            
             [ i_students, _('Mathematics'), D+'umut_icons/p_math.png', 'math' ] ,
             [ i_students, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics' ],
             [ i_students, _('Biology'), D+'umut_icons/p_biology.png', 'biology' ],
             [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
             [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
             [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
+            [ i_students, _('Embeded System'),  D+'sora_icons/p_embeded_system.png', 'embeded' ],
 
             [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
             [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,

@@ -46,6 +46,7 @@ class NScripts():
                'NScripts is installed in ~/.gnome2/nautilus-scripts.')
     license = 'GNU General Public License v3'
     logo = 'nautilus.png'
+    category = 'nautilus'
 
     def install(self):
         f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
@@ -88,7 +89,7 @@ class Gedit_GB2312(_set_gconf) :
     def get_reason(self, f):
         self._get_reason(f)
 
-class Speedup_Nautilus(_set_gconf):
+class Speedup_Nautilus():
     __doc__ = _('Speed up Nautilus')
     detail = _('Change Nautilus settings: '
        'Do not count directory items. Do not preview sound. '
@@ -99,28 +100,48 @@ class Speedup_Nautilus(_set_gconf):
        '/apps/nautilus/preferences/show_icon_text = never\n'
        '/apps/nautilus/icon_view/default_use_tighter_layout = true')
     logo = 'nautilus.png'
+    category = 'nautilus'
+    set_gconf = ['/apps/nautilus/preferences/show_icon_text',
+                     '/apps/nautilus/preferences/show_directory_item_counts',
+                     '/apps/nautilus/preferences/preview_sound',
+                     '/apps/nautilus/list_view/default_visible_columns', 
+                     '/apps/nautilus/icon_view/default_use_tighter_layout', ]
     def __init__(self):
-        self.set=(
-('/apps/nautilus/preferences/show_directory_item_counts','never','local_only'),
-('/apps/nautilus/preferences/preview_sound','never','local_only'),
-('/apps/nautilus/preferences/show_icon_text','never','local_only'),
-('/apps/nautilus/icon_view/default_use_tighter_layout',True,False),
-                  )
-        self.add=()
-    def get_reason(self, f):
-        self._get_reason(f)
-
-#class Gedit_Assembly_Highlight(_path_lists):
-#    __doc__ = _('Assembly language syntax highlighting for GEdit')
-#    detail = _('The trick behind is to put an XML file in ~/.gnome2/gedit/plugins/ \n'
-#               'Welcome to improve syntax highlighting on https://bugzilla.gnome.org/show_bug.cgi?id=152267')
-#    logo = 'gedit.png'
-#    category = 'dev'
-#    def __init__(self):
-#        import os
-#        self.file = '/usr/share/gtksourceview-2.0/language-specs/asm.lang'
-#        self.paths = [ self.file ]
-#    def install(self):
-#        wget('http://bugzilla.gnome.org/attachment.cgi?id=45158&action=view', #'http://bugzilla-attachments.gnome.org/attachment.cgi?id=53422',
-#             '/tmp/asm.lang')
-#        gksudo("mv /tmp/asm.lang %s" % self.file)
+        pass
+        
+    def install(self):
+        import gconf
+        g = gconf.client_get_default()
+        for string in self.set_gconf[0:3]:
+            g.set_string(string, 'never')
+        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
+        if 'size' in value:
+            value.remove('size')
+        g.set_list(self.set_gconf[3], gconf.VALUE_STRING, value)
+        g.set_bool(self.set_gconf[4], True)
+    def remove(self):
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
+        if 'size' not in value:
+            value.insert(1,'size')
+        g.set_list(self.set_gconf[3], gconf.VALUE_STRING, value)
+        g.set_bool(self.set_gconf[4], False)
+        for string in self.set_gconf[0:3]:
+            g.set_string(string,  'local_only')
+    def installed(self):
+        import gconf
+        g = gconf.client_get_default()
+        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
+        if(
+        'size' in value and
+        g.get_bool(self.set_gconf[4]) == False and
+        g.get_string(self.set_gconf[0]) == 'local_only' and
+        g.get_string(self.set_gconf[1]) == 'local_only' and
+        g.get_string(self.set_gconf[2]) == 'local_only'
+        ):
+            return False
+        else:
+            return True
+    def _get_reason(self, f):
+        pass

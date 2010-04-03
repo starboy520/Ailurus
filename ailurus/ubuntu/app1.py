@@ -57,6 +57,7 @@ class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
         self.add = (
 ('/apps/gedit-2/plugins/active-plugins', ['indent','codecomment','spell'] ),
                     )
+        self.delete = ()
         self.pkgs = 'gedit-plugins'
     def install(self):
         _set_gconf.install(self)
@@ -71,6 +72,7 @@ class Full_Language_Pack(_apt_install):
     __doc__ = _('Full language support and input method')
     detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
     logo = 'language.png'
+    category = 'language'
     def __init__(self):
         import locale
         lang = locale.getdefaultlocale()
@@ -396,8 +398,10 @@ class MACChanger(_apt_install):
         self.pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
+    category = 'device'
     __doc__ = _('Bluetooth support')
     detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     license = 'GNU General Public License (GPL)'
+    logo = 'bluetooth.png'
     def __init__(self):
         self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

@@ -21,4 +21,3 @@
 
 import apps
 import osinfo
-import setting

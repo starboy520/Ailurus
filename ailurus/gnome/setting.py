@@ -164,34 +164,9 @@ def __more_nautilus_settings():
              '/apps/nautilus/preferences/media_automount', 
              _('If set to true, then Nautilus will automatically mount media such as CD and flash disks.'))
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    
     m = GConfCheckButton(_('Show more permissions setting in file property dialog'),
                 '/apps/nautilus/preferences/show_advanced_permissions' )
     table.attach(m, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-    
-    def size_column_visible():
-        import gconf
-        g = gconf.client_get_default()
-        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
-        return 'size' in value
-    
-    def set_size_column_visible(checkbutton):
-        assert isinstance(checkbutton, gtk.CheckButton)
-        visible = not checkbutton.get_active()
-        import gconf
-        g = gconf.client_get_default()
-        value = g.get_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING)
-        if visible and 'size' not in value:
-            value.insert(1, 'size')
-        if not visible and 'size' in value:
-            value.remove('size')
-        g.set_list('/apps/nautilus/list_view/default_visible_columns', gconf.VALUE_STRING, value)
-    
-    n = gtk.CheckButton(_('Hide "size" column in Nautilus list view to speed up Nautilus'))
-    n.set_active(not size_column_visible())
-    n.connect('toggled', set_size_column_visible)
-    n.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns')
-    table.attach(n, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     return Setting(table, _('More Nautilus settings'), ['nautilus'])
 
 def __font_size_setting():
@@ -511,7 +486,7 @@ def __compiz_setting():
     # Window Decorator    
     label = gtk.Label(_('Set Window Decorator:'))
     label.set_alignment(0, 0.5)
-    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup.</span>\n")
+    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. Fedora needs Fusion icons</span>\n")
                            + _('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command')
     hbox = gtk.HBox()
     o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 

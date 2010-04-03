@@ -650,6 +650,7 @@ class Launch_Tasksel:
 
 class Fctix:
     'Fcitx'
+    category = 'language'
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
