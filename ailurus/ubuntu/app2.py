@@ -329,8 +329,8 @@ class Extcalc(_apt_install):
         self.pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
-    __doc__ = _('Satartup Manager')   
-    detail = _('Satartup manager helps you change GRUB settings and themes.\n'
+    __doc__ = _('Startup Manager')   
+    detail = _('Startup manager helps you change GRUB settings and themes.\n'
                'Command: sudo apt-get install startupmanager')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
