@@ -522,5 +522,6 @@ class ImageMagick(_rpm_install):
                'You can start it by /usr/bin/display\n'
                'Command: yum install ImageMagick')
     category = 'media'
+    logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'ImageMagick'

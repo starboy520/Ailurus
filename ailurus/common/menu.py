@@ -92,6 +92,7 @@ ailurus.png is released under the GPL license. Its copyright is holded by SU Yun
 ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
 blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
 bluefish.png is copied from Bluefish project. It is released under the GPL license. Its copyright is holded by Olivier Sessink.
+bluetooth.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
 childsplay.png is copied from Childsplay project. It is released under the GPL license. Its copyright is holded by Stas Zytkiewicz.
 codeblocks.png is copied from Code::Blocks project. It is released under the GPL v3.0 license. Its copyright is holded by Code::Blocks Team.
 done.png, fail.png, parcellite.png, s_desktop.png, started.png, toolbar_back.png, toolbar_disable.png, toolbar_enable.png, toolbar_forward.png, toolbar_quit.png are copied from GNOME project. They are released under the GPL license. There copyright are holded by GNOME community.
@@ -106,12 +107,14 @@ netbeans.png is copied from Netbeans project. It is released under the GPL v2 li
 python.png is copied from Python project. It is released under the Python license. Its copyright is holded by Python Software Foundation.
 qtcreator.png is copied from Qt project. It is released under the LGPL license. Its copyright is holded by Nokia Corporation.
 s_nautilus.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
+songbird.png is copied from Songbird project. It is released under the GPL v2. Its copyright is holded by Songbird Team.
 toolbar_study.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tux.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tuxpaint.png is copied from Tux Paint project. It is released under the GPL license. Its copyright is holded by Tux Paint Team.
 ubuntu.png is copied from Ubuntu project. Its copyright is holded by Canonical Ltd. Some rights reserved: The rights in the trademarks, logos, service marks of Canonical Ltd, as well as the look and feel of Ubuntu, are subject to the Canonical Trademark Policy at http://www.ubuntu.com/ubuntu/TrademarkPolicy 
 vuze.png is copied from Vuze project. It is released under the GPL license. Its copyright is holded by Vuze Team.
 wallpaper-tray.png is copied from Wallpaper Tray project. It is released under the GPL license. Its copyright is holded by Wallpaper Tray Team.
+xbmc.png is copied from XBMC project. It is released under the GPL license. Its copyright is holded by XBMC Team.
 All rights of other images which are not mensioned above are preserves by their authors.
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
