@@ -394,8 +394,9 @@ class MACChanger(_apt_install):
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
                'Command: sudo apt-get install macchanger')
     license = 'GNU General Public License (GPL)'
+    category = 'device'
     def __init__(self):
-        self.pkgs = 'device'
+        self.pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
     category = 'device'

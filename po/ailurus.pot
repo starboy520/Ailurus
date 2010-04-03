@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-03 21:25+0800\n"
+"POT-Creation-Date: 2010-04-03 22:18+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1714,11 +1714,11 @@ msgstr ""
 msgid "Command: yum install VirtualBox-OSE"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:521 .././ailurus/ubuntu/app2.py:361
+#: .././ailurus/fedora/apps.py:520 .././ailurus/ubuntu/app2.py:361
 msgid "\"Actions Configuration\" entry"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:522 .././ailurus/ubuntu/app2.py:362
+#: .././ailurus/fedora/apps.py:521 .././ailurus/ubuntu/app2.py:362
 msgid ""
 "It allows the configuration of programs to be launched \n"
 "on files selected.\n"
@@ -1726,35 +1726,35 @@ msgid ""
 "\"Preferences\" menu.</span>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:532 .././ailurus/ubuntu/app2.py:419
+#: .././ailurus/fedora/apps.py:531 .././ailurus/ubuntu/app2.py:419
 msgid "\"Resize/Rotate images\" entries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:533 .././ailurus/ubuntu/app2.py:420
+#: .././ailurus/fedora/apps.py:532 .././ailurus/ubuntu/app2.py:420
 msgid "Resize or rotate selected images."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:541 .././ailurus/ubuntu/app2.py:453
+#: .././ailurus/fedora/apps.py:540 .././ailurus/ubuntu/app2.py:453
 msgid "\"Open in terminal\" entry"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:542 .././ailurus/ubuntu/app2.py:454
+#: .././ailurus/fedora/apps.py:541 .././ailurus/ubuntu/app2.py:454
 msgid "Open a terminal in current folder."
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:550
+#: .././ailurus/fedora/apps.py:549
 msgid "\"Search For Files\" entries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:551
+#: .././ailurus/fedora/apps.py:550
 msgid "A Nautilus extension that makes searching for files easier"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:559 .././ailurus/ubuntu/app3.py:701
+#: .././ailurus/fedora/apps.py:558 .././ailurus/ubuntu/app3.py:701
 msgid "ImageMagick"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:560
+#: .././ailurus/fedora/apps.py:559
 msgid ""
 "It helps you edit images.\n"
 "You can start it by /usr/bin/display\n"
@@ -3711,11 +3711,11 @@ msgid ""
 "Command: sudo apt-get install macchanger"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:402
+#: .././ailurus/ubuntu/app1.py:403
 msgid "Bluetooth support"
 msgstr ""
 
-#: .././ailurus/ubuntu/app1.py:403
+#: .././ailurus/ubuntu/app1.py:404
 msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
 "bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
