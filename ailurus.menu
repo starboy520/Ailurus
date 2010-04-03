@@ -5,8 +5,8 @@
   <Menu>
     <Name>System</Name>
     <Menu>
-      <Name>ailurus-dir</Name>
-      <Directory>ailurus.directory</Directory>
+      <Name>ailurus_quick_start_directory</Name>
+      <Directory>ailurus_quick_start.directory</Directory>
       <Include>
         <Category>Ailurus</Category>
       </Include>
