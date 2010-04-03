@@ -1,5 +1,7 @@
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 
+    * Fix problem: Program crashes when change shortcut keys.
+    * Add Alfred State College repository.
     * Fix a bug that "autotool" cannot be installed.
     * Fix a bug that program blocks when try to install mplayer-vod.
 
