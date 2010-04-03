@@ -275,16 +275,12 @@ def __textbox_context_menu_setting():
     return Setting(table, _('Text-boxes context menu'), ['menu'])
 
 def __gnome_splash_setting():
-    table = gtk.Table()
-    o = GConfCheckButton(_('Show login splash image: '),
-         '/apps/gnome-session/options/show_splash_screen',
-         _('If its value is true, a splash image is displayed after you log in to GNOME.'))
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    hbox = gtk.HBox(False)
     o = GConfFileEntry(_('Splash image:'),
            '/apps/gnome-session/options/splash_image',
            _('The file which is used as the GNOME splash image.'), False)
-    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
-    return Setting(table, _('GNOME splash image'), ['session'])
+    hbox.pack_start(o)
+    return Setting(hbox, _('GNOME splash image'), ['session'])
 
 def __restriction_on_current_user():
     table = gtk.Table()
