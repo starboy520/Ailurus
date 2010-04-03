@@ -179,7 +179,7 @@ class MainView:
         is_string_not_empty(signal_name)
         assert callable(callback)
         
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 40, 40)
+        pixbuf = get_pixbuf(icon, 40, 40)
         image = gtk.image_new_from_pixbuf(pixbuf)
         align_image = gtk.Alignment(0.5, 0.5)
         align_image.add(image)

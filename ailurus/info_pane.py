@@ -44,7 +44,7 @@ class InfoPane(gtk.VBox):
         assert isinstance(icon, str)
         assert tooltip==None or isinstance(tooltip, (str,unicode) )
 
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 24, 24)
+        pixbuf = get_pixbuf(icon, 24, 24)
         image = gtk.Image()
         image.set_from_pixbuf(pixbuf)
         if tooltip: image.set_tooltip_text(tooltip)
@@ -77,7 +77,7 @@ class InfoPane2(gtk.VBox):
         assert tooltip==None or isinstance(tooltip, (str,unicode) )
         
         pos = self.table_pos
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon, 32, 32)
+        pixbuf = get_pixbuf(icon, 32, 32)
         image = gtk.Image()
         image.set_from_pixbuf(pixbuf)
         if tooltip: image.set_tooltip_text(tooltip)

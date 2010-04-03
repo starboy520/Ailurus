@@ -405,10 +405,10 @@ class DoStuffDialog(gtk.Dialog):
                 import traceback
                 traceback.print_exc()
 
-        self.pixbuf_fail = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/fail.png', 16, 16)
-        self.pixbuf_blank = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/blank.png', 16, 16)
-        self.pixbuf_started = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/started.png', 16, 16)
-        self.pixbuf_done = gtk.gdk.pixbuf_new_from_file_at_size(D+'other_icons/done.png', 16, 16)
+        self.pixbuf_fail = get_pixbuf(D+'other_icons/fail.png', 16, 16)
+        self.pixbuf_blank = get_pixbuf(D+'other_icons/blank.png', 16, 16)
+        self.pixbuf_started = get_pixbuf(D+'other_icons/started.png', 16, 16)
+        self.pixbuf_done = get_pixbuf(D+'other_icons/done.png', 16, 16)
 
         render_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()

@@ -1,3 +1,10 @@
+2010-04-03 Chen Yangyang <skabyy@gmail.com>
+
+    * Fix a bug that Ailurus will abort when Ailurus can not find the icons.
+    * Move the subfunctions of Ailurus in "Applications - System Tool" to 
+      "Applications - System Tool - AilurusFunctions"
+
+
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 
     * Fix problem: Program crashes when change shortcut keys.

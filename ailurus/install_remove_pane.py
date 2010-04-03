@@ -459,7 +459,7 @@ class InstallRemovePane(gtk.VBox):
         else: return
         # set icon pixbuf
         if not hasattr(class0, 'logo_pixbuf'):
-            class0.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
+            class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
     def __launch_quick_setup(self, *w):
@@ -681,7 +681,7 @@ class InstallRemovePane(gtk.VBox):
             all_categories.add(obj.category)
 
         def icon(path):
-            return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
+            return get_pixbuf(path, 32, 32)
         
         treestore = self.left_treestore
 

@@ -21,6 +21,16 @@
 
 from __future__ import with_statement
 
+def get_pixbuf(file, x, y):
+    import gtk
+    from lib import D
+    try:
+        return gtk.gdk.pixbuf_new_from_file_at_size(file, x, y)
+    except:
+        import traceback
+        traceback.print_exc()
+        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)
+
 def gray_bg(w):
     import gtk
     if not isinstance(w, gtk.Entry) and not isinstance(w, gtk.TextView): raise TypeError
@@ -112,7 +122,7 @@ def image_stock_menuitem(image_stock, label):
 
 def image_file_menuitem(label, image_file_name, size, space=10):
     import gtk
-    pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image_file_name, size, size)
+    pixbuf = get_pixbuf(image_file_name, size, size)
     image = gtk.Image()
     image.set_from_pixbuf(pixbuf)
     item = gtk.ImageMenuItem(stock_id=gtk.STOCK_ABOUT)
