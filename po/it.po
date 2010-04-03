@@ -8,20 +8,21 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-31 05:59+0000\n"
-"Last-Translator: The Wise Dj <hackerbellerofonte@hotmail.it>\n"
+"PO-Revision-Date: 2010-04-02 20:53+0000\n"
+"Last-Translator: Carla Sella <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-01 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid " \"Install software\" + \"Configure Linux\" + \"Learn Linux skills\""
 msgstr ""
-" \"Installa programmi\" + \"Configura Linux\" + \"Impara trucchi di Linux\""
+" Installare software\" + \"Configurare Linux\" + \"Esaminare le funzionalità "
+"di Linux\""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -75,19 +76,19 @@ msgstr "Scrivere commenti"
 #: .././ailurus/fedora/rpm_recovery_pane.py:62
 #: .././ailurus/ubuntu/apt_recovery_pane.py:62
 msgid "Would you like to write some comments for this snapshot?"
-msgstr "Vorresti scrivere alcuni commenti per questo snapshot/"
+msgstr "Vorresti scrivere alcuni commenti per questo snapshot?"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:123
 #: .././ailurus/ubuntu/apt_recovery_pane.py:123
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
-msgstr "Snapshot eseguito il %(year)04d-%(month)02d:"
+msgstr "Snapshot effettuati il %(year)04d-%(month)02d:"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:137
 #: .././ailurus/ubuntu/apt_recovery_pane.py:137
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
-msgstr "Non ci sono snapshot in %(year)04d-%(month)02d."
+msgstr ""
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:148
 #: .././ailurus/ubuntu/apt_recovery_pane.py:148
@@ -104,12 +105,12 @@ msgstr "Non ci sono cambiamenti da %(year)04d-%(month)02d-%(day)02d."
 #: .././ailurus/fedora/rpm_recovery_pane.py:182
 #: .././ailurus/ubuntu/apt_recovery_pane.py:182
 msgid "Create today's snapshot"
-msgstr "Crea uno snapshot di oggi"
+msgstr "Creare snapshot in data odierna"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:196
 #: .././ailurus/ubuntu/apt_recovery_pane.py:196
 msgid "Show changes since selected day"
-msgstr "Mostra i cambiamente fino ad un giorno selezionato"
+msgstr "Visualizzare cambiamenti fino al giorno selezionato"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:201
 #: .././ailurus/ubuntu/apt_recovery_pane.py:201
@@ -119,17 +120,17 @@ msgstr "pacchetti"
 #: .././ailurus/fedora/rpm_recovery_pane.py:207
 #: .././ailurus/ubuntu/apt_recovery_pane.py:207
 msgid "changes"
-msgstr "cambiamenti"
+msgstr "modifiche"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:213
 #: .././ailurus/ubuntu/apt_recovery_pane.py:213
 msgid "It was installed."
-msgstr "E' stato installato."
+msgstr "Installazione eseguita"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:214
 #: .././ailurus/ubuntu/apt_recovery_pane.py:214
 msgid "It was removed."
-msgstr "E' stato rimosso."
+msgstr "Rimozione effettuata"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:233
 #: .././ailurus/ubuntu/apt_recovery_pane.py:233
@@ -144,12 +145,12 @@ msgstr "azione"
 #: .././ailurus/fedora/rpm_recovery_pane.py:243
 #: .././ailurus/ubuntu/apt_recovery_pane.py:243
 msgid "will be removed"
-msgstr "sarà rimosso"
+msgstr "verrà rimosso"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:244
 #: .././ailurus/ubuntu/apt_recovery_pane.py:244
 msgid "will be installed"
-msgstr "sarà installato"
+msgstr "verrà installato"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:281
 #: .././ailurus/ubuntu/apt_recovery_pane.py:281
@@ -162,20 +163,20 @@ msgid ""
 "In order to revoke packages, you can drag items from the left box to the "
 "right box, then click the button. "
 msgstr ""
-"Per annullare dei pacchetti, è possibile trascinare gli elementi dalla "
-"casella di sinistra a quella di destra, quindi cliccare sul pulsante. "
+"Per la disinstallazione di pacchetti è possibile trascinare le voci dalla "
+"casella di sinistra a quella di destra, poi cliccare sul pulsante. "
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:288
 #: .././ailurus/ubuntu/setting.py:192
 #: .././ailurus/ubuntu/apt_recovery_pane.py:288
 #: .././ailurus/common/setting.py:63 .././ailurus/libsetting.py:312
 msgid "Apply"
-msgstr "Applica"
+msgstr "Conferma"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:293
 #: .././ailurus/ubuntu/apt_recovery_pane.py:293
 msgid "Changes:"
-msgstr "Cambiamenti"
+msgstr "Modifiche"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:298
 #: .././ailurus/ubuntu/apt_recovery_pane.py:298
@@ -191,7 +192,7 @@ msgstr ""
 #: .././ailurus/fedora/rpm_recovery_pane.py:301
 #: .././ailurus/ubuntu/apt_recovery_pane.py:301
 msgid "Existing snapshots are displayed in bold font."
-msgstr "Gli snapshots esistenti sono mostrati in grassetto."
+msgstr "Gli snapshot esistenti sono evidenziati in grassetto."
 
 #: .././ailurus/fedora/apps.py:29 .././ailurus/ubuntu/third_party_repos.py:182
 #: .././ailurus/ubuntu/app0.py:62
@@ -305,8 +306,8 @@ msgid ""
 "    set mouse=a"
 msgstr ""
 "Installare VIM e renderlo più adeguato alla progammazione. Il processo di "
-"installazione è il seguente. Il commando \"yum install vim-enhanced\"  viene "
-"eseguito. Poi queste linee sono accodate al file \"$HOME/.vimrc\": \n"
+"installazione è il seguente. Il comando \"yum install vim-enhanced\"  viene "
+"eseguito. Poi queste righe sono accodate al file \"$HOME/.vimrc\": \n"
 "    syntax on\n"
 "    set autoindent\n"
 "    set number\n"
@@ -1538,6 +1539,9 @@ msgid ""
 "and POSIX library files.\n"
 "Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 msgstr ""
+"Installare pagine del manuale su chiamate di sistema Linux, chiamate alle "
+"librerie, uso di POSIX e file di libreria POSIX.\n"
+"Comando: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 
 #: .././ailurus/ubuntu/app2.py:109
 msgid ""
@@ -1545,6 +1549,9 @@ msgid ""
 "symbol. It is used in vi and emacs.\n"
 "Command: sudo apt-get install exuberant-ctags"
 msgstr ""
+"Questo è un analizzatore di codice sorgente. Permette di spostarsi alla "
+"definizione di un simbolo. È usato in vi e emacs.\n"
+"Comando: udo apt-get install exuberant-ctags"
 
 #: .././ailurus/ubuntu/app2.py:118
 msgid "GNU multiprecision arithmetic library"
@@ -1564,6 +1571,10 @@ msgid ""
 "libqt3-mt is Trolltech Qt library, version 3.\n"
 "Command: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 msgstr ""
+"libncurses5 è una libreria che controlla la scrittura sullo schermo della "
+"console.\n"
+"libqt3-mt è una libreria di Trolltech Qt, versione 3.\n"
+"Comando: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 
 #: .././ailurus/ubuntu/app2.py:138
 msgid "Subversion, git, and bzr"
@@ -1574,6 +1585,8 @@ msgid ""
 "subversion, git and bzr are popular version control systems.\n"
 "Command: sudo apt-get install subversion git-core bzr"
 msgstr ""
+"subversion, git e bzr sono sistemi di controllo di versione molto popolari.\n"
+"Comando: sudo apt-get install subversion git-core bzr"
 
 #: .././ailurus/ubuntu/app2.py:148
 msgid "Autotools"
@@ -1586,6 +1599,10 @@ msgid ""
 "automake is a tool for automatically generating Makefile.\n"
 "Command: sudo apt-get install autoconf automake autotool"
 msgstr ""
+"autoconf può produrre script della shell per configurare automaticamente il "
+"codice sorgente di pacchetti software.\n"
+"automake è uno strumento per generare automaticamnet Makefile.\n"
+"Comando: sudo apt-get install autoconf automake autotool"
 
 #: .././ailurus/ubuntu/app2.py:159
 msgid "OpenGL library"
@@ -1596,6 +1613,8 @@ msgid ""
 "This is a library for writing OpenGL programs.\n"
 "Command: sudo apt-get install freeglut3-dev"
 msgstr ""
+"Questa è una libreria per scrivere programmi OpenGL.\n"
+"Comando: sudo apt-get install freeglut3-dev"
 
 #: .././ailurus/ubuntu/app2.py:169
 msgid "Boost library"
@@ -1618,6 +1637,12 @@ msgid ""
 "Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
 "mixer1.2-dev libsdl-ttf2.0-dev"
 msgstr ""
+"Questa è una libreria per scrivere programmi SDL.\n"
+"SDL è una libreria multimediale multipiattaforma progettata per fornire "
+"accesso a basso livello a suoni, tastiera, mouse, joystick, hardware 3D "
+"tramite OpenGL e 2D video framebuffer.\n"
+"Comando: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-"
+"mixer1.2-dev libsdl-ttf2.0-dev"
 
 #: .././ailurus/ubuntu/app2.py:190
 msgid "pv: a pipe viewer"
@@ -1629,6 +1654,9 @@ msgid ""
 "pipeline.\n"
 "Command: sudo apt-get install pv"
 msgstr ""
+"Uno strumento da usare a terminale per monitorare la progressione dei dati "
+"tramite una pipeline.\n"
+"Comando: sudo apt-get install pv"
 
 #: .././ailurus/ubuntu/app2.py:200
 msgid ""
@@ -1636,12 +1664,17 @@ msgid ""
 "installed.\n"
 "Command: sudo apt-get install auto-apt"
 msgstr ""
+"\"auto-apt run ./configure\" può aiutare ad installare i pacchetti che non "
+"sono installati.\n"
+"Comando: sudo apt-get install auto-apt"
 
 #: .././ailurus/ubuntu/app2.py:208
 msgid ""
 "Checkinstall help you build deb package. Command: sudo apt-get install "
 "checkinstall"
 msgstr ""
+"Checkinstall aiuta a creare un pacchetto deb. Comando: sudo apt-get install "
+"checkinstall"
 
 #: .././ailurus/ubuntu/app2.py:215
 msgid "Umbrello: UML modelling"
@@ -1717,6 +1750,8 @@ msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
+"Questo è un calcolatore grafico multifunzionale.\n"
+"Comando: sudo apt-get install extcalc"
 
 #: .././ailurus/ubuntu/app2.py:334
 msgid "Satartup Manager"
@@ -1727,6 +1762,8 @@ msgid ""
 "Satartup manager helps you change GRUB settings and themes.\n"
 "Command: sudo apt-get install startupmanager"
 msgstr ""
+"Satartup manager aiuta a cambiare la configurazione e i temi di GRUB.\n"
+"Comando: sudo apt-get install startupmanager"
 
 #: .././ailurus/ubuntu/app2.py:342
 msgid "Zhcon"
@@ -1738,12 +1775,17 @@ msgid ""
 "You can launch it by \"zhcon --utf8\".\n"
 "Command: sudo apt-get install zhcon"
 msgstr ""
+"Zhcon aiuta a visualizzare i caratteri Cinesi in terminali TTY.\n"
+"Si può eseguire con \"zhcon --utf8\".\n"
+"Comando: sudo apt-get install zhcon"
 
 #: .././ailurus/ubuntu/app2.py:352
 msgid ""
 "Powertop helps you save power for your laptop.\n"
 "Command: sudo apt-get install powertop"
 msgstr ""
+"Powertop aiuta a risparmiare energia per il tuo laptop.\n"
+"Comando: sudo apt-get install powertop"
 
 #: .././ailurus/ubuntu/app0.py:29
 msgid "Command: sudo apt-get install openjdk-6-jdk"
@@ -2295,6 +2337,8 @@ msgstr "Ricerca del repository più veloce"
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
 msgstr ""
+"<span color='black'>Il tempo di risposta di %(server)s è %(value).0f "
+"ms.</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:180
 #, python-format
@@ -2942,6 +2986,8 @@ msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
 msgstr ""
+"Scaricare tramite bittorrent + ricerca video + visualizzazione di video\n"
+"Comando: sudo apt-get install vuze"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
 msgid "APT recovery"
@@ -3264,7 +3310,7 @@ msgstr ""
 
 #: .././ailurus/gnome/apps.py:43
 msgid "NScripts: a set of useful Nautilus scripts"
-msgstr ""
+msgstr "NScripts: una raccolta di script utili per Nautilus"
 
 #: .././ailurus/gnome/apps.py:44
 msgid ""
@@ -3273,6 +3319,10 @@ msgid ""
 "http://freshmeat.net/projects/nscripts . NScripts is installed in "
 "~/.gnome2/nautilus-scripts."
 msgstr ""
+"NScripts aiuta a cambiare lo sfondo, creare/controllare MD5 checksums, "
+"vedere le differenze tra due file, creare scorciatoie tramite Nautilus. Il "
+"suo sito è http://freshmeat.net/projects/nscripts, NScripts è installato in "
+"~/.gnome2/nautilus-scripts."
 
 #: .././ailurus/gnome/apps.py:76
 msgid "Add GB2312 detection ability to GEdit"
@@ -3422,25 +3472,25 @@ msgstr "Icone del desktop"
 
 #: .././ailurus/gnome/setting.py:111 .././ailurus/gnome/setting.py:138
 msgid "Icon changed"
-msgstr ""
+msgstr "Icona cambiata"
 
 #: .././ailurus/gnome/setting.py:111 .././ailurus/gnome/setting.py:138
 #: .././ailurus/common/menu.py:355
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
-msgstr ""
+msgstr "Le modifiche avranno effetto al prossimo accesso a GNOME."
 
 #: .././ailurus/gnome/setting.py:132
 msgid "Change \"start-here\" icon"
-msgstr ""
+msgstr "Cambiare l'icona \"start-here\""
 
 #: .././ailurus/gnome/setting.py:144
 msgid "The login icon is ~/.face"
-msgstr ""
+msgstr "L'icona di accesso è ~/.face"
 
 #: .././ailurus/gnome/setting.py:148
 msgid "Change login icon"
-msgstr ""
+msgstr "Cambiare icona di accesso"
 
 #: .././ailurus/gnome/setting.py:152
 msgid "Show icons of menu entries"
@@ -3497,10 +3547,14 @@ msgstr ""
 #: .././ailurus/gnome/setting.py:182
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
+"Visualizzare impostazioni aggiuntive relative ai permessi nella finestra "
+"proprietà dei file"
 
 #: .././ailurus/gnome/setting.py:204
 msgid "Hide \"size\" column in Nautilus list view to speed up Nautilus"
 msgstr ""
+"Nascondere la colonna \"dimensione\" nella vista dettagliata di Nautilus per "
+"velocizzare Nautilus"
 
 #: .././ailurus/gnome/setting.py:207 .././ailurus/gnome/setting.py:243
 #: .././ailurus/gnome/setting.py:516 .././ailurus/gnome/setting.py:537
@@ -3512,7 +3566,7 @@ msgstr "GConf key: "
 
 #: .././ailurus/gnome/setting.py:209
 msgid "More Nautilus settings"
-msgstr ""
+msgstr "Altre impostazioni di Nautilus"
 
 #: .././ailurus/gnome/setting.py:231
 msgid "Larger font"
@@ -3528,23 +3582,23 @@ msgstr "Cambia la dimensione dei Font con un solo click"
 
 #: .././ailurus/gnome/setting.py:242 .././ailurus/gnome/setting.py:251
 msgid "The layout of window title-bar buttons"
-msgstr ""
+msgstr "La disposizione dei bottoni della barra del titolo della finestra"
 
 #: .././ailurus/gnome/setting.py:244
 msgid "It can be used in Metacity only."
-msgstr ""
+msgstr "Può essere usato solo in Metacity."
 
 #: .././ailurus/gnome/setting.py:246
 msgid "GNOME classic"
-msgstr ""
+msgstr "GNOME classico"
 
 #: .././ailurus/gnome/setting.py:246
 msgid "MAC OS X"
-msgstr ""
+msgstr "MAC OS X"
 
 #: .././ailurus/gnome/setting.py:246
 msgid "Ubuntu Lucid"
-msgstr ""
+msgstr "Ubuntu Lucid"
 
 #: .././ailurus/gnome/setting.py:255
 msgid "double-clicked by mouse left button:"
@@ -3808,7 +3862,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:415
 msgid "Lock screen when screen saver is activated"
-msgstr ""
+msgstr "Bloccare lo schermo quando il salvaschermo viene attivato"
 
 #: .././ailurus/gnome/setting.py:419
 msgid "GNOME session"
@@ -3834,11 +3888,11 @@ msgstr "Retroilluminazione"
 
 #: .././ailurus/gnome/setting.py:461
 msgid "Clear \"recent documents\" list"
-msgstr ""
+msgstr "Cancellare la lista  \"documenti recenti\""
 
 #: .././ailurus/gnome/setting.py:465
 msgid "Change default file manager to:"
-msgstr ""
+msgstr "Cambiare il file manager predefinito in:"
 
 #: .././ailurus/gnome/setting.py:471
 msgid "Change default panel program to:"
@@ -3846,19 +3900,19 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:477
 msgid "Change default window manager to:"
-msgstr ""
+msgstr "Cambiare il window manager predefinito in:"
 
 #: .././ailurus/gnome/setting.py:483
 msgid "Use your home folder as the desktop"
-msgstr ""
+msgstr "Usare la tua cartella home come desktop"
 
 #: .././ailurus/gnome/setting.py:488
 msgid "Advance settings"
-msgstr ""
+msgstr "Impostazioni avanzate"
 
 #: .././ailurus/gnome/setting.py:493
 msgid "Command line"
-msgstr ""
+msgstr "Linea di comando"
 
 #: .././ailurus/gnome/setting.py:500
 #, python-format
@@ -3868,19 +3922,20 @@ msgstr ""
 #. Window Decorator
 #: .././ailurus/gnome/setting.py:513
 msgid "Set Window Decorator:"
-msgstr ""
+msgstr "Impostare decoratore di finestre"
 
 #: .././ailurus/gnome/setting.py:515
 msgid "<span color='red'>It takes effect after next startup.</span>\n"
 msgstr ""
+"<span color='red'>La modifica avrà effetto al prossimo avvio.</span>\n"
 
 #: .././ailurus/gnome/setting.py:519
 msgid "Metacity"
-msgstr ""
+msgstr "Metacity"
 
 #: .././ailurus/gnome/setting.py:519
 msgid "Emerald"
-msgstr ""
+msgstr "Smeraldo"
 
 #: .././ailurus/gnome/setting.py:535
 msgid "Disable Minimize Effect"
@@ -3888,7 +3943,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:539
 msgid "Random All Effects"
-msgstr ""
+msgstr "Tutti gli effetti in modalità casuale"
 
 #. number of desktop
 #: .././ailurus/gnome/setting.py:549
@@ -3901,7 +3956,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:563
 msgid "CompizConfig Settings"
-msgstr ""
+msgstr "Impostazioni di CompizConfig"
 
 #: .././ailurus/gnome/tips.py:27
 msgid ""
@@ -4340,7 +4395,7 @@ msgstr "Esci"
 
 #: .././ailurus/main.py:61
 msgid "Others"
-msgstr ""
+msgstr "Altri"
 
 #: .././ailurus/main.py:64
 msgid "Preferences"
@@ -4357,36 +4412,48 @@ msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
+"Informazioni\n"
+"hardware"
 
 #: .././ailurus/main.py:72
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
+"Informazioni\n"
+"Linux"
 
 #: .././ailurus/main.py:73
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
+"Impostazioni\n"
+"systema"
 
 #: .././ailurus/main.py:74
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
+"Installare\n"
+"Software"
 
 #: .././ailurus/main.py:75
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
+"Repository\n"
+"più veloce"
 
 #: .././ailurus/main.py:76
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
+"Ripristina\n"
+"APT"
 
 #: .././ailurus/main.py:172
 msgid "Warning!"
@@ -4405,63 +4472,71 @@ msgstr ""
 
 #: .././ailurus/main.py:204
 msgid "System configuration file should be updated."
-msgstr ""
+msgstr "Il file di configurazione di sistema dovrebbe essere aggiornato"
 
 #: .././ailurus/main.py:205
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
-msgstr ""
+msgstr "Perfavore eseguire questi comandi usando <b>su</b> o <b>sudo</b>:"
 
 #: .././ailurus/main.py:211
 msgid "Ailurus' D-Bus daemon exited with error."
-msgstr ""
+msgstr "Il servizio D-bus di Ailurus è terminato con un errore."
 
 #: .././ailurus/main.py:212
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
+"Riavviare il computer o avviare il servizio usando <b>su</b> o <b>sudo</b>:"
 
 #. check desktop environment
 #: .././ailurus/main.py:234
 msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
 msgstr ""
+"<span color=\"grey\">Controllo dell'ambiente desktop in corso ... </span>\n"
 
 #. check distribution
 #: .././ailurus/main.py:242
 msgid "<span color=\"grey\">Checking distribution ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">controllo distribuzione in corso ... </span>\n"
 
 #: .././ailurus/main.py:265
 msgid "<span color=\"grey\">Acquiring Firefox profile ... </span>\n"
 msgstr ""
+"<span color=\"grey\">Acquisizione del profilo di Firefox ... </span>\n"
 
 #: .././ailurus/main.py:267
 msgid ""
 "<span color=\"grey\">Waiting for firefox to create profile ... </span>\n"
 msgstr ""
+"<span color=\"grey\">In attesa della creazione del profilo da firefox ... "
+"</span>\n"
 
 #: .././ailurus/main.py:275 .././ailurus/main.py:278
 msgid "<span color=\"grey\">Acquire list of installed packages ... </span>\n"
 msgstr ""
+"<span color=\"grey\">Acquisizione lista di pacchetti insallati ... </span>\n"
 
 #: .././ailurus/main.py:283
 msgid "<span color=\"grey\">Loading tips ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Caricamento suggerimenti ... </span>\n"
 
 #: .././ailurus/main.py:289
 msgid "<span color=\"grey\">Loading main window ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Caricamento finestra principale ... </span>\n"
 
 #: .././ailurus/main.py:292
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Caricamento pannello informazioni ... </span>\n"
 
 #: .././ailurus/main.py:305
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
+"<span color=\"grey\">Caricamento pannello impostazioni di sistema ... "
+"</span>\n"
 
 #: .././ailurus/main.py:312
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
-msgstr ""
+msgstr "<span color=\"grey\">Caricamento pannello applicazioni ... </span>\n"
 
 #: .././ailurus/main.py:351
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
@@ -5226,6 +5301,8 @@ msgid ""
 "Version %s is released.\n"
 "You can download it from:"
 msgstr ""
+"Versione %s rilasciata.\n"
+"La puoi scaricare da:"
 
 #: .././ailurus/common/menu.py:255
 msgid "You have already installed the latest Ailurus version. :)"
@@ -5482,6 +5559,12 @@ msgid ""
 "    alias ls='ls --color=auto'\n"
 "fi"
 msgstr ""
+"Se si vuole usare \"ls\" colorato, vale a dire, usare i colori per "
+"distinguere i tipi di file, si può aggiungere queste righe in ~/.bashrc:\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi"
 
 #: .././ailurus/common/tips.py:40
 msgid ""

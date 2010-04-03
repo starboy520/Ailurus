@@ -378,6 +378,7 @@ def _g2():
 ['Beijing Jiao Tong University', _('China'), 'http://mirror.bjtu.edu.cn/ubuntu/', 'mirror.bjtu.edu.cn', ],
 ['Ubuntu Repository @ Peru', _('Peru'), 'http://pe.archive.ubuntu.com/ubuntu/', 'pe.archive.ubuntu.com', ],
 ['Ubuntu Repository @ Ghana', _('Ghana'), 'http://gh.archive.ubuntu.com/ubuntu/', 'gh.archive.ubuntu.com', ],
+['Alfred State College', _('United States'), 'http://mirror.alfredstate.edu/ubuntu/', 'mirror.alfredstate.edu', ],
 ]
 
 def get_candidate_repositories():

@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-03-31 19:15+0000\n"
+"PO-Revision-Date: 2010-04-02 20:47+0000\n"
 "Last-Translator: luisah <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-01 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -135,12 +135,12 @@ msgstr "akce"
 #: .././ailurus/fedora/rpm_recovery_pane.py:243
 #: .././ailurus/ubuntu/apt_recovery_pane.py:243
 msgid "will be removed"
-msgstr ""
+msgstr "bude odstraněno"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:244
 #: .././ailurus/ubuntu/apt_recovery_pane.py:244
 msgid "will be installed"
-msgstr "bude instalováno"
+msgstr "bude nainstalováno"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:281
 #: .././ailurus/ubuntu/apt_recovery_pane.py:281
@@ -217,7 +217,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:81
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
-msgstr ""
+msgstr "Kompresní/dekompresní podpora pro \"*.7z\" and \"*.cab\" files"
 
 #: .././ailurus/fedora/apps.py:82
 msgid "Command: yum install p7zip cabextract"
@@ -291,7 +291,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "It will take effect at the next time you log in."
-msgstr ""
+msgstr "Změny se projeví při následujícím přihlášení."
 
 #: .././ailurus/fedora/apps.py:202
 msgid "Enable \"Print to pdf\" capability."
@@ -469,7 +469,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "Flash plugin pro webový prohlížeč"
 
 #: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
@@ -478,7 +478,7 @@ msgstr "Příkaz: yum install gnash"
 #: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
 #: .././ailurus/ubuntu/quick_setup.py:296
 msgid "Multi-media codec"
-msgstr ""
+msgstr "Multimediální kodeky"
 
 #: .././ailurus/fedora/apps.py:493
 msgid ""
@@ -513,7 +513,7 @@ msgstr "Nejrychlejší zdroj je %s;"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
 msgid "Its response time is %s millisecond."
-msgstr ""
+msgstr "Jeho doba odezvy je %s milisekund."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:80
 msgid ""
@@ -587,7 +587,7 @@ msgstr "Obnovit"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:175
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:427
 msgid "Detect response time of all repositories"
-msgstr "Rozpoznat dobu odezvy všech úložišť"
+msgstr "Rozpoznat dobu odezvy všech zdrojů"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:177
 msgid "Use the fastest repository"
@@ -618,13 +618,13 @@ msgstr "Klikněte pravým tlačítkem myši k zobrazení kontextové nabídky."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:228
 msgid "No response"
-msgstr ""
+msgstr "Žádná odpověď"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:282
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
-msgstr ""
+msgstr "<span color='black'>Doba odezvy %(server)s je %(value).2f ms.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
 #: .././ailurus/ubuntu/quick_setup.py:175
@@ -645,11 +645,11 @@ msgstr "Změnit zdroj"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
 #: .././ailurus/ubuntu/quick_setup.py:257 .././ailurus/lib.py:710
 msgid "Run \"apt-get update\". Please wait for few minutes."
-msgstr ""
+msgstr "Probíhá \"apt-get update\". Prosím, vyčkejte několik minut."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:330
 msgid "Please select one repository only"
-msgstr ""
+msgstr "Prosím, vyberte pouze jeden zdroj"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:423
 msgid "Detect response time of selected repositories"
@@ -657,25 +657,27 @@ msgstr "Rozpoznat dobu odezvy vybraných zdrojů"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:431
 msgid "Use selected repositories"
-msgstr ""
+msgstr "Použít vybraný zdroj"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:434
 msgid "Select all"
-msgstr ""
+msgstr "Označit všechny"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:437
 msgid "Select all repositories in these countries"
-msgstr "Vybrat všechny zdroje v této zemi"
+msgstr "Vybrat všechny zdroje této země"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:440
 msgid "Unselect all"
-msgstr ""
+msgstr "Odznačit všechny"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:444
 msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
 msgstr ""
+"Jestliže nejsou některé zdroje uvedeny výše, klikněte prosím zde a sdělte to "
+"vývojářům Ailuru."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:463
 msgid "Country"
@@ -718,7 +720,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:154
 msgid "Firefox 3.6 (stable)"
-msgstr ""
+msgstr "Firefox 3.6 (stabilní)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
 msgid "This repository contains Firefox stable version 3.6."
@@ -752,7 +754,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:212
 msgid "AWN (Development version)"
-msgstr ""
+msgstr "AWN (Vývojová verze)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:215
 msgid ""
@@ -916,7 +918,7 @@ msgstr "Songbird (poslední verze)"
 #. Separator
 #: .././ailurus/ubuntu/menu.py:32
 msgid "Ubuntu/Kubuntu configuration guide"
-msgstr ""
+msgstr "Konfigurační průvodce Ubuntu/Kubuntu"
 
 #: .././ailurus/ubuntu/menu.py:34
 msgid "Ubuntu skills"
@@ -924,15 +926,15 @@ msgstr ""
 
 #: .././ailurus/ubuntu/menu.py:36
 msgid "Obtain \"Full Circle\" magazine"
-msgstr ""
+msgstr "Získat \"Full Circle\" magazín"
 
 #: .././ailurus/ubuntu/menu.py:38
 msgid "Obtain \"Ubuntu pocket guide\" book"
-msgstr ""
+msgstr "Získat knihu \"Ubuntu pocket guide\""
 
 #: .././ailurus/ubuntu/menu.py:40
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
-msgstr ""
+msgstr "Najít více zdrojů třetích stran na http://repogen.simplylinux.ch/"
 
 #: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
@@ -1068,7 +1070,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/setting.py:274
 msgid "The changes will take effect at the next time when GNOME starts up."
-msgstr ""
+msgstr "Změny se projeví při následujícím spuštění GNOME."
 
 #: .././ailurus/ubuntu/setting.py:284
 msgid "Nautilus context menu"
@@ -1106,7 +1108,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:71 .././ailurus/ubuntu/quick_setup.py:295
 msgid "Full language support and input method"
-msgstr ""
+msgstr "Plná jazyková podpora a vstupní metody"
 
 #: .././ailurus/ubuntu/app1.py:72
 msgid ""
@@ -1120,7 +1122,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:118 .././ailurus/ubuntu/quick_setup.py:297
 msgid "Decompression software: 7z, rar, cab, ace"
-msgstr ""
+msgstr "Dekompresní software: 7z, rar, cab, ace"
 
 #: .././ailurus/ubuntu/app1.py:119
 msgid ""
@@ -1199,7 +1201,7 @@ msgstr "Příkaz: sudo apt-get install cpus-pdf"
 
 #: .././ailurus/ubuntu/app1.py:317
 msgid "GNU Flash plugin for web browser"
-msgstr ""
+msgstr "GNU Flash plugin pro webový prohlížeč"
 
 #: .././ailurus/ubuntu/app1.py:318
 msgid "Command: sudo apt-get install gnash mozilla-plugin-gnash"
@@ -1207,7 +1209,7 @@ msgstr "Příkaz: sudo apt-get install gnash mozilla-plugin-gnash"
 
 #: .././ailurus/ubuntu/app1.py:326 .././ailurus/ubuntu/quick_setup.py:305
 msgid "Fix font bug in Flash plugin"
-msgstr ""
+msgstr "Oprava chyby písma ve Flash pluginu"
 
 #: .././ailurus/ubuntu/app1.py:327
 msgid ""
@@ -1456,13 +1458,15 @@ msgstr "Příkaz: sudo apt-get install minicom ckermit"
 
 #: .././ailurus/ubuntu/app2.py:241
 msgid "VirtualBox open source edition"
-msgstr ""
+msgstr "VirtualBox open source edice"
 
 #: .././ailurus/ubuntu/app2.py:242
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
+"Jedná se o jediný profesionální virtuální stroj, který je volně dostupný za "
+"podmínek GPL. Oficiální stránky: http://www.virtualbox.org/wiki/Downloads"
 
 #: .././ailurus/ubuntu/app2.py:253
 msgid "GNOMEArtNG"
@@ -1985,7 +1989,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/clean_up_pane.py:44
 msgid "Clean"
-msgstr "Vyčistit"
+msgstr "Čistit"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:69
 msgid "Clean unused kernel"
@@ -1995,7 +1999,7 @@ msgstr ""
 #: .././ailurus/ubuntu/quick_setup.py:363
 #: .././ailurus/install_remove_pane.py:599
 msgid "Quick setup"
-msgstr ""
+msgstr "Rychlé nastavení"
 
 #: .././ailurus/ubuntu/quick_setup.py:38
 msgid ""
@@ -2008,6 +2012,14 @@ msgid ""
 "   - Adobe Flash support\n"
 "   - decompression software"
 msgstr ""
+"Ailurus pomůže s\n"
+"* Výběrem nejrychlejších zdrojů\n"
+"* Instalací :\n"
+"   - plné jazykové podpory\n"
+"   - vstupních metod\n"
+"   - multimediálních kodeků\n"
+"   - podpory pro Adobe Flash\n"
+"   - dekompresního softwaru"
 
 #: .././ailurus/ubuntu/quick_setup.py:62
 msgid "Checking whether your computer is connected to Internet ..."
@@ -2019,11 +2031,11 @@ msgstr "Skenování nainstalovaných balíků."
 
 #: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Please wait a few seconds."
-msgstr ""
+msgstr "Prosím, vyčkejte několik sekund."
 
 #: .././ailurus/ubuntu/quick_setup.py:102
 msgid "Computer is not connected to Internet"
-msgstr ""
+msgstr "Počítač není připojen k internetu"
 
 #: .././ailurus/ubuntu/quick_setup.py:105
 msgid ""
@@ -2038,7 +2050,7 @@ msgstr ""
 #: .././ailurus/ubuntu/quick_setup.py:112
 #: .././ailurus/ubuntu/quick_setup.py:142
 msgid "Skip this step"
-msgstr ""
+msgstr "Přeskočit tento krok"
 
 #: .././ailurus/ubuntu/quick_setup.py:133
 msgid "Searching the fastest repository"
@@ -2048,18 +2060,19 @@ msgstr "Hledá se nejrychlejší zdroj"
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
-msgstr ""
+msgstr "<span color='black'>Doba odezvy %(server)s je %(value).0f ms.</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:180
 #, python-format
 msgid "<span color='black'>Time left: %s</span>"
-msgstr ""
+msgstr "<span color='black'>Zbývající čas: %s</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:224
 msgid ""
 "In order to use the fastest repository, Ailurus will change "
 "/etc/apt/sources.list"
 msgstr ""
+"Aby bylo možné použít nejrychlejší zdroj, Ailurus změní /etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/quick_setup.py:225
 #, python-format
@@ -2073,15 +2086,15 @@ msgstr "Použít nejrychlejší zdroj"
 #. apt-get update
 #: .././ailurus/ubuntu/quick_setup.py:256
 msgid "Run command: \"sudo apt-get update\""
-msgstr ""
+msgstr "Spustit příkaz: \"sudo apt-get update\""
 
 #: .././ailurus/ubuntu/quick_setup.py:293
 msgid "Search fastest repository"
-msgstr "Hledat nejrychlejší zdroj"
+msgstr "Vyhledat nejrychlejší zdroj"
 
 #: .././ailurus/ubuntu/quick_setup.py:294
 msgid "Install hardware drivers"
-msgstr ""
+msgstr "Instalovat ovladače hardwaru"
 
 #: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
@@ -2089,24 +2102,24 @@ msgstr ""
 
 #: .././ailurus/ubuntu/quick_setup.py:304
 msgid "Adobe® Flash plugin for web browser"
-msgstr ""
+msgstr "Adobe® Flash plugin pro webový prohlížeč"
 
 #: .././ailurus/ubuntu/quick_setup.py:327
 msgid "Ongoing:"
-msgstr ""
+msgstr "Probíhá:"
 
 #: .././ailurus/ubuntu/quick_setup.py:332
 msgid "Successful"
-msgstr ""
+msgstr "Úspěch"
 
 #: .././ailurus/ubuntu/quick_setup.py:335
 msgid "Failed"
-msgstr ""
+msgstr "Selhání"
 
 #. 4
 #: .././ailurus/ubuntu/quick_setup.py:449
 msgid "All works are done."
-msgstr ""
+msgstr "Jsou hotové všechny činnosti."
 
 #: .././ailurus/ubuntu/tips.py:27
 msgid ""
@@ -2133,6 +2146,8 @@ msgid ""
 "Add a PPA repository:\n"
 "sudo add-apt-repository ppa:PPA-REPOSITORY-NAME\n"
 msgstr ""
+"Přidá PPA zdroj:\n"
+"sudo add-apt-repository ppa:PPA-NÁZEV-ZDROJE\n"
 
 #: .././ailurus/ubuntu/tips.py:43
 msgid ""
@@ -2200,7 +2215,7 @@ msgid ""
 "install'\n"
 "sudo auto-apt run ./configure\n"
 msgstr ""
-"Automaticky nainstalovat nezbytné soubory pro './configure ; make ; make "
+"Automaticky nainstaluje nezbytné soubory pro './configure ; make ; make "
 "install'\n"
 "sudo auto-apt run ./configure\n"
 
@@ -2609,34 +2624,34 @@ msgstr ""
 
 #: .././ailurus/support/searchbox.py:31
 msgid "Search items:"
-msgstr ""
+msgstr "Hledat položky:"
 
 #: .././ailurus/support/searchbox.py:40
 msgid "In names only."
-msgstr ""
+msgstr "Pouze v názvech."
 
 #: .././ailurus/support/searchbox.py:41
 msgid "In names & details."
-msgstr ""
+msgstr "V názvech a podrobnostech."
 
 #: .././ailurus/support/terminal.py:53
 #: .././ailurus/support/terminal_single_thread.py:50 .././ailurus/lib.py:288
 #: .././ailurus/lib.py:339 .././ailurus/lib.py:530 .././ailurus/lib.py:900
 msgid "Run command:"
-msgstr ""
+msgstr "Spustit příkaz:"
 
 #: .././ailurus/support/terminal.py:68
 #: .././ailurus/support/terminal_single_thread.py:62
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
-msgstr ""
+msgstr "Stiskněte \"Ctrl+C\" k ukončení instalačního procesu Ailuru."
 
 #: .././ailurus/support/keygrabber.py:48
 msgid "Press any key ..."
-msgstr ""
+msgstr "Stiskněte libovolnou klávesu ..."
 
 #: .././ailurus/support/keygrabber.py:51
 msgid "Press any key..."
-msgstr ""
+msgstr "Stiskněte libovolnou klávesu..."
 
 #: .././ailurus/support/keygrabber.py:138
 msgid "Please press the new key combination"
@@ -2664,11 +2679,11 @@ msgstr "Tip dne"
 
 #: .././ailurus/support/tipoftheday.py:61
 msgid "<span size=\"x-large\"><b>Did you know ?</b></span>"
-msgstr ""
+msgstr "<span size=\"x-large\"><b>Věděli jste ?</b></span>"
 
 #: .././ailurus/support/tipoftheday.py:91
 msgid "Submit Linux Skills"
-msgstr ""
+msgstr "Odeslat linuxové znalosti"
 
 #: .././ailurus/support/multidragview.py:79
 #, python-format
@@ -2725,17 +2740,17 @@ msgstr ""
 #: .././ailurus/lib.py:868
 #, python-format
 msgid "%.1f hours"
-msgstr ""
+msgstr "%.1f hodin"
 
 #: .././ailurus/lib.py:870
 #, python-format
 msgid "%.1f minutes"
-msgstr ""
+msgstr "%.1f minut"
 
 #: .././ailurus/lib.py:871
 #, python-format
 msgid "%d seconds"
-msgstr ""
+msgstr "%d sekund"
 
 #: .././ailurus/lib.py:1068 .././ailurus/lib.py:1073
 msgid "Opening web page"
@@ -2744,7 +2759,7 @@ msgstr "Otevírá se webová stránka"
 #: .././ailurus/lib.py:1200
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
-msgstr ""
+msgstr "Doba odezvy serveru %(name)s je %(time).1f ms."
 
 #: .././ailurus/lib.py:1202
 #, python-format
@@ -2895,7 +2910,7 @@ msgstr "Verze GNOME:"
 
 #: .././ailurus/gnome/osinfo.py:49
 msgid "GNOME locale:"
-msgstr ""
+msgstr "Lokalizace GNOME:"
 
 #: .././ailurus/gnome/apps.py:27
 msgid "Change background color of GNOME terminal to black."
@@ -2959,27 +2974,27 @@ msgstr "Zvolit jako tapetu pracovní plochy."
 
 #: .././ailurus/gnome/setting.py:33
 msgid "wallpaper"
-msgstr "tapeta"
+msgstr "dlaždice"
 
 #: .././ailurus/gnome/setting.py:33
 msgid "zoom"
-msgstr ""
+msgstr "zvětšení"
 
 #: .././ailurus/gnome/setting.py:33
 msgid "centered"
-msgstr ""
+msgstr "na střed"
 
 #: .././ailurus/gnome/setting.py:33
 msgid "scaled"
-msgstr ""
+msgstr "přizpůsobené"
 
 #: .././ailurus/gnome/setting.py:33
 msgid "stretched"
-msgstr ""
+msgstr "vyplnit obrazovku"
 
 #: .././ailurus/gnome/setting.py:37
 msgid "Style: "
-msgstr ""
+msgstr "Styl: "
 
 #: .././ailurus/gnome/setting.py:39
 msgid "Desktop wallpaper"
@@ -2995,6 +3010,8 @@ msgid ""
 "<span color=\"red\">The change will take effect at the next time GNOME "
 "starts up.</span>"
 msgstr ""
+"Zobrazit/skrýt ikony na ploše.\n"
+"<span color=\"red\">Změna se projeví při následujícím spuštění GNOME.</span>"
 
 #: .././ailurus/gnome/setting.py:50 .././ailurus/common/setting.py:87
 msgid "Information"
@@ -3061,7 +3078,7 @@ msgstr "Ikona změněna"
 #: .././ailurus/common/menu.py:355
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
-msgstr ""
+msgstr "Změny se projeví při následujícím přihlášení do GNOME."
 
 #: .././ailurus/gnome/setting.py:132
 msgid "Change \"start-here\" icon"
@@ -3073,7 +3090,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:148
 msgid "Change login icon"
-msgstr ""
+msgstr "Změnit ikonu přihlášení"
 
 #: .././ailurus/gnome/setting.py:152
 msgid "Show icons of menu entries"
@@ -3111,7 +3128,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:173
 msgid "Terminal beep sound setting"
-msgstr ""
+msgstr "Nastavení pípnutí terminálu"
 
 #: .././ailurus/gnome/setting.py:177
 msgid "Automatically mount CD and flash disks"
@@ -3385,11 +3402,11 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:390
 msgid "Configure autostart applications"
-msgstr ""
+msgstr "Konfigurovat automatický start aplikací"
 
 #: .././ailurus/gnome/setting.py:391
 msgid "Run command: gnome-session-properties"
-msgstr ""
+msgstr "Spustit příkaz: gnome-session-properties"
 
 #: .././ailurus/gnome/setting.py:394
 msgid "Prompt you before you log out from GNOME."
@@ -3403,7 +3420,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:398
 msgid "Allow connection from remote hosts."
-msgstr ""
+msgstr "Povolit připojení ze vzdáleného počítače."
 
 #. o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
 #. '/apps/gnome-screensaver/user_switch_enable',
@@ -3428,7 +3445,7 @@ msgstr "GNOME sezení"
 
 #: .././ailurus/gnome/setting.py:425
 msgid "LCD brightness when on AC power:"
-msgstr ""
+msgstr "Jas LCD displeje při napájení ze sítě:"
 
 #: .././ailurus/gnome/setting.py:427 .././ailurus/gnome/setting.py:433
 #: .././ailurus/gnome/setting.py:540 .././ailurus/gnome/setting.py:551
@@ -3438,11 +3455,11 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:431
 msgid "LCD dimming amount when on battery:"
-msgstr ""
+msgstr "Jas LCD displeje při napájení z baterie:"
 
 #: .././ailurus/gnome/setting.py:437
 msgid "Backlight"
-msgstr ""
+msgstr "Podsvícení"
 
 #: .././ailurus/gnome/setting.py:461
 msgid "Clear \"recent documents\" list"
@@ -3827,7 +3844,7 @@ msgid ""
 "Information"
 msgstr ""
 "Informace\n"
-"o hardwaru"
+"o Hardwaru"
 
 #: .././ailurus/main.py:72
 msgid ""
@@ -3949,18 +3966,19 @@ msgstr "<span color=\"grey\">Nahrává se podokno aplikace ... </span>\n"
 #: .././ailurus/main.py:351
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
+"Objevena chyba. Mohli byste ji prosím sdělit vývojářům Ailuru? Děkuji!"
 
 #: .././ailurus/main.py:364
 msgid "Click here to report bug via web-page"
-msgstr ""
+msgstr "Klikněte zde pro nahlášení chyby přes webové stránky"
 
 #: .././ailurus/main.py:366
 msgid "Close"
-msgstr ""
+msgstr "Zavřít"
 
 #: .././ailurus/main.py:372
 msgid "Bug appears!"
-msgstr ""
+msgstr "Objevena chyba!"
 
 #: .././ailurus/common/osinfo.py:31
 msgid "Host name:"
@@ -3999,18 +4017,20 @@ msgstr[1] ""
 #: .././ailurus/common/osinfo.py:87
 msgid "hour"
 msgid_plural "hours"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "hodina"
+msgstr[1] "hodiny"
+msgstr[2] "hodin"
 
 #: .././ailurus/common/osinfo.py:89
 msgid "minute"
 msgid_plural "minutes"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "minuta"
+msgstr[1] "minuty"
+msgstr[2] "minut"
 
 #: .././ailurus/common/osinfo.py:90
 msgid "Uptime:"
-msgstr ""
+msgstr "Doba běhu:"
 
 #: .././ailurus/common/osinfo.py:98
 msgid "Current user:"
@@ -4251,7 +4271,7 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:183
 msgid "Speed up Firefox"
-msgstr ""
+msgstr "Zrychlit Firefox"
 
 #: .././ailurus/common/apps.py:184
 msgid ""
@@ -4541,7 +4561,7 @@ msgstr ""
 
 #: .././ailurus/common/menu.py:128
 msgid "Ailurus changelog"
-msgstr ""
+msgstr "Ailurus protokol změn"
 
 #: .././ailurus/common/menu.py:139
 #, python-format
@@ -4549,10 +4569,12 @@ msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
+"\n"
+"Tato verze byla vydána %s."
 
 #: .././ailurus/common/menu.py:141
 msgid "Read changelog"
-msgstr ""
+msgstr "Číst seznam změn"
 
 #: .././ailurus/common/menu.py:152
 msgid "We wish to express thankfulness to these projects:"
@@ -4609,7 +4631,7 @@ msgstr ""
 
 #: .././ailurus/common/menu.py:200
 msgid "Thanks"
-msgstr ""
+msgstr "Poděkování"
 
 #: .././ailurus/common/menu.py:243
 msgid "A new version is available"
@@ -4651,7 +4673,7 @@ msgstr "Kolikrát se má Ailurus pokusit stáhnout stejný zdroj?"
 
 #: .././ailurus/common/menu.py:322
 msgid "Set Ailurus download parameter"
-msgstr ""
+msgstr "Stanovit parametry stahování pro Ailurus"
 
 #: .././ailurus/common/menu.py:344
 msgid "Don't show \"tip of the day\" on start up"
@@ -4659,7 +4681,7 @@ msgstr "Nezobrazovat \"tip dne\" při spuštění"
 
 #: .././ailurus/common/menu.py:350
 msgid "Show a random Linux skill after you log in to GNOME"
-msgstr ""
+msgstr "Zobrazit náhodnou linuxovou dovednost po přihlášení do GNOME"
 
 #: .././ailurus/common/menu.py:358
 msgid "Set download parameters"
@@ -4671,7 +4693,7 @@ msgstr "Zkontrolovat aktualizace"
 
 #: .././ailurus/common/menu.py:371
 msgid "Propose suggestion and report bugs"
-msgstr "Navrhnout doporučení a hlásit chyby"
+msgstr "Navrhnout doporučení a oznámit chyby"
 
 #: .././ailurus/common/menu.py:375
 msgid "Translate this application"
@@ -4687,19 +4709,19 @@ msgstr "O aplikaci"
 
 #: .././ailurus/common/setting.py:32
 msgid "0 = Swap little mem to disk"
-msgstr ""
+msgstr "0 = Málo paměti na disk"
 
 #: .././ailurus/common/setting.py:34
 msgid "100 = Swap a lot of mem to disk"
-msgstr ""
+msgstr "100 = Značná část paměti na disk"
 
 #: .././ailurus/common/setting.py:74
 msgid "Change the tendency of swapping memory to disk"
-msgstr ""
+msgstr "Změnit tendenci swapování paměti na disk"
 
 #: .././ailurus/common/setting.py:85
 msgid "Run command: "
-msgstr ""
+msgstr "Spustit příkaz: "
 
 #: .././ailurus/common/setting.py:87
 msgid "Network restarted successfully."
@@ -4722,16 +4744,16 @@ msgstr ""
 #: .././ailurus/common/setting.py:116
 #, python-format
 msgid "No more than %s KB of memory can be reclaimed."
-msgstr ""
+msgstr "Nemůže být více než %s KB z operační paměti uvolněno."
 
 #: .././ailurus/common/setting.py:146
 #, python-format
 msgid "%s KB memory was reclaimed."
-msgstr ""
+msgstr "%s KB paměti bylo uvolněno."
 
 #: .././ailurus/common/setting.py:152 .././ailurus/common/setting.py:166
 msgid "Reclaim memory"
-msgstr ""
+msgstr "Uvolnit paměť"
 
 #: .././ailurus/common/setting.py:154
 msgid ""
@@ -4757,12 +4779,12 @@ msgstr "Název základní desky:"
 
 #: .././ailurus/common/hardwareinfo.py:72
 msgid "Motherboard vendor:"
-msgstr ""
+msgstr "Vendor základní desky:"
 
 #: .././ailurus/common/hardwareinfo.py:99
 #, python-format
 msgid "CPU %s name:"
-msgstr ""
+msgstr "Název CPU %s:"
 
 #: .././ailurus/common/hardwareinfo.py:100
 msgid "CPU name:"
@@ -4793,11 +4815,11 @@ msgstr "Ano!"
 
 #: .././ailurus/common/hardwareinfo.py:116
 msgid "64 bit CPU?"
-msgstr ""
+msgstr "64 bit CPU?"
 
 #: .././ailurus/common/hardwareinfo.py:137
 msgid "CPU temperature"
-msgstr ""
+msgstr "Teplota CPU"
 
 #: .././ailurus/common/hardwareinfo.py:148
 msgid "Total memory:"
@@ -4910,7 +4932,7 @@ msgid ""
 "Display the status of ethernet card\n"
 "sudo ethtool eth0\n"
 msgstr ""
-"Zobrazit stav síťové karty\n"
+"Zobrazí stav síťové karty\n"
 "sudo ethtool eth0\n"
 
 #: .././ailurus/common/tips.py:73
@@ -5073,6 +5095,8 @@ msgid ""
 "Change user password\n"
 "sudo passwd USER_NAME\n"
 msgstr ""
+"Změní uživatelské heslo\n"
+"sudo passwd UŽIVATELSKÉ_JMÉNO\n"
 
 #: .././ailurus/common/tips.py:184
 msgid ""
@@ -5342,11 +5366,11 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:109
 msgid "To be installed:\n"
-msgstr ""
+msgstr "Bude nainstalováno:\n"
 
 #: .././ailurus/install_remove_pane.py:116
 msgid "To be removed:\n"
-msgstr ""
+msgstr "Bude odstraněno:\n"
 
 #: .././ailurus/install_remove_pane.py:124
 #, python-format
@@ -5360,11 +5384,11 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:129
 msgid "Are you sure to change your system as follows?"
-msgstr ""
+msgstr "Opravdu chcete provést změny v systému takto?"
 
 #: .././ailurus/install_remove_pane.py:130
 msgid "Confirmation"
-msgstr ""
+msgstr "Potvrzení"
 
 #: .././ailurus/install_remove_pane.py:137
 msgid ""
@@ -5374,11 +5398,11 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:139
 msgid "Successfully installed:\n"
-msgstr ""
+msgstr "Úspěšně nainstalováno:\n"
 
 #: .././ailurus/install_remove_pane.py:143
 msgid "Successfully removed:\n"
-msgstr ""
+msgstr "Úspěšně odebráno:\n"
 
 #: .././ailurus/install_remove_pane.py:147
 msgid "Failed to install:\n"
@@ -5397,7 +5421,7 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:159
 msgid "All works finished."
-msgstr ""
+msgstr "Dokončeny všechny činnosti."
 
 #: .././ailurus/install_remove_pane.py:201
 #: .././ailurus/install_remove_pane.py:211
@@ -5410,15 +5434,15 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:244
 msgid "Summary:"
-msgstr ""
+msgstr "Shrnutí:"
 
 #: .././ailurus/install_remove_pane.py:246
 msgid "Successfully installed:"
-msgstr ""
+msgstr "Úspěšně nainstalováno:"
 
 #: .././ailurus/install_remove_pane.py:248
 msgid "Successfully removed:"
-msgstr ""
+msgstr "Úspěšně odebráno:"
 
 #: .././ailurus/install_remove_pane.py:251
 msgid "Failed to install:"
@@ -5438,45 +5462,45 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:272
 msgid "All works finished. "
-msgstr ""
+msgstr "Dokončeny všechny činnosti. "
 
 #: .././ailurus/install_remove_pane.py:401
 msgid "License:"
-msgstr ""
+msgstr "Licence:"
 
 #: .././ailurus/install_remove_pane.py:407
 msgid "Not installed."
-msgstr ""
+msgstr "Nenainstalováno."
 
 #: .././ailurus/install_remove_pane.py:409
 msgid "Not installed, because:"
-msgstr ""
+msgstr "Nenainstalováno, protože:"
 
 #: .././ailurus/install_remove_pane.py:413
 msgid "Will be installed."
-msgstr ""
+msgstr "Bude nainstalováno."
 
 #: .././ailurus/install_remove_pane.py:417
 msgid "Installed size is"
-msgstr ""
+msgstr "Velikost instalace je"
 
 #: .././ailurus/install_remove_pane.py:421
 msgid "Installed."
-msgstr ""
+msgstr "Nainstalováno"
 
 #. will be removed?
 #: .././ailurus/install_remove_pane.py:423
 msgid "Will be removed."
-msgstr ""
+msgstr "Bude odstraněno."
 
 #: .././ailurus/install_remove_pane.py:427
 #, python-format
 msgid "Will free %s disk space."
-msgstr ""
+msgstr "Bude uvolněno %s místa na disku."
 
 #: .././ailurus/install_remove_pane.py:553
 msgid "Select _All"
-msgstr ""
+msgstr "Vybrat _vše"
 
 #: .././ailurus/install_remove_pane.py:555
 msgid "_Deselect All"
@@ -5492,7 +5516,7 @@ msgstr "_Použít"
 
 #: .././ailurus/install_remove_pane.py:608
 msgid "Details:"
-msgstr ""
+msgstr "Podrobnosti:"
 
 #: .././ailurus/install_remove_pane.py:657
 msgid "Report bugs"
@@ -5500,7 +5524,7 @@ msgstr ""
 
 #: .././ailurus/install_remove_pane.py:659
 msgid "Close this terminal"
-msgstr ""
+msgstr "Zavřít tento terminál"
 
 #: .././ailurus/install_remove_pane.py:688
 msgid "Common"
@@ -5520,80 +5544,80 @@ msgstr "Pokročilé"
 
 #: .././ailurus/install_remove_pane.py:694
 msgid "Office"
-msgstr ""
+msgstr "Kancelář"
 
 #: .././ailurus/install_remove_pane.py:695
 msgid "Education"
-msgstr ""
+msgstr "Vzdělávání"
 
 #: .././ailurus/install_remove_pane.py:696
 msgid "Internet"
-msgstr ""
+msgstr "Internet"
 
 #: .././ailurus/install_remove_pane.py:697
 #: .././ailurus/install_remove_pane.py:716
 msgid "Firefox extensions"
-msgstr ""
+msgstr "Firefox rozšíření"
 
 #: .././ailurus/install_remove_pane.py:698
 msgid "Multimedia"
-msgstr ""
+msgstr "Multimédia"
 
 #: .././ailurus/install_remove_pane.py:699
 msgid "Appearance"
-msgstr ""
+msgstr "Vzhled"
 
 #: .././ailurus/install_remove_pane.py:700
 msgid "Enhancements"
-msgstr ""
+msgstr "Vylepšení"
 
 #: .././ailurus/install_remove_pane.py:701
 msgid "Game"
-msgstr ""
+msgstr "Hry"
 
 #: .././ailurus/install_remove_pane.py:703
 msgid "Third party repositories"
-msgstr ""
+msgstr "Zdroje třetích stran"
 
 #: .././ailurus/install_remove_pane.py:704
 msgid "Virtual machine"
-msgstr ""
+msgstr "Virtuální stroje"
 
 #: .././ailurus/install_remove_pane.py:705
 msgid "Establish a server"
-msgstr ""
+msgstr "Zřídit server"
 
 #: .././ailurus/install_remove_pane.py:707
 msgid "Mathematics"
-msgstr ""
+msgstr "Matematika"
 
 #: .././ailurus/install_remove_pane.py:708
 msgid "Statistics"
-msgstr ""
+msgstr "Statistika"
 
 #: .././ailurus/install_remove_pane.py:709
 msgid "Biology"
-msgstr ""
+msgstr "Biologie"
 
 #: .././ailurus/install_remove_pane.py:710
 msgid "Electronics & Mechanics"
-msgstr ""
+msgstr "Elektronika a Mechanika"
 
 #: .././ailurus/install_remove_pane.py:711
 msgid "Geography"
-msgstr ""
+msgstr "Zeměpis"
 
 #: .././ailurus/install_remove_pane.py:712
 msgid "LaTeX"
-msgstr ""
+msgstr "LaTeX"
 
 #: .././ailurus/install_remove_pane.py:714
 msgid "Development"
-msgstr ""
+msgstr "Vývoj"
 
 #: .././ailurus/install_remove_pane.py:715
 msgid "Eclipse"
-msgstr ""
+msgstr "Eclipse"
 
 #: .././ailurus/libsetting.py:130
 msgid "The command which will be run."
@@ -5621,10 +5645,12 @@ msgid ""
 "\n"
 "File: "
 msgstr ""
+"\n"
+"Soubor: "
 
 #: .././ailurus/libsetting.py:270
 msgid "Change"
-msgstr ""
+msgstr "Změnit"
 
 #: .././ailurus/libsetting.py:294
 #, python-format

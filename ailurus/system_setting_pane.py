@@ -30,7 +30,7 @@ class SystemSettingPane(gtk.VBox):
 
     def __left_pane(self):
         def icon(path):
-            return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
+            return get_pixbuf(path, 24, 24)
         
         existing_categories = []
         for i in self.setting_items:

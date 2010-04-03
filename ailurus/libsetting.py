@@ -103,7 +103,7 @@ class GConfTextEntry(gtk.HBox):
         self.pack_start(self.entry, False)
         self.pack_start(self.button, False)
 
-class GConfShortcutKeyEntry:
+class GConfShortcutKeyEntry(gtk.HBox):
     def grab_key(self, *w):
         import support.keygrabber
         window = support.keygrabber.GrabberWindow ()
@@ -121,6 +121,9 @@ class GConfShortcutKeyEntry:
         self.shortcut_entry.set_text('')
         
     def __init__(self, number):
+        is_string_not_empty(number)
+        gtk.HBox.__init__(self, False)
+        
         import gconf
         g = gconf.client_get_default()
 
@@ -128,20 +131,24 @@ class GConfShortcutKeyEntry:
         self.command_entry = gtk.Entry()
         self.command_entry.set_tooltip_text(
             _('The command which will be run.') + _('\nGConf key: ') + '/apps/metacity/keybinding_commands/' + self.number)
-        self.command_entry.connect('changed', self.__entry_value_changed)
         value = g.get_string('/apps/metacity/keybinding_commands/'+number)
         if value: self.command_entry.set_text(value)
+        self.command_entry.connect('changed', self.__entry_value_changed)
 
         self.shortcut_entry = gtk.Entry()
         self.shortcut_entry.set_tooltip_text(
             _('The shortcut key.') + _('\nGConf key: ') + '/apps/metacity/global_keybindings/run_' + self.number)
         self.shortcut_entry.connect('grab-focus', self.grab_key)
-        self.shortcut_entry.connect('changed', self.__entry_value_changed)
         value = g.get_string('/apps/metacity/global_keybindings/run_'+number)
         if value: self.shortcut_entry.set_text(value)
+        self.shortcut_entry.connect('changed', self.__entry_value_changed)
         
         self.clear_entry_content_button = gtk.Button(stock = gtk.STOCK_CLEAR)
         self.clear_entry_content_button.connect('clicked', self.__clear_entry_content)
+
+        self.pack_start(self.command_entry, True)
+        self.pack_start(self.shortcut_entry, False)
+        self.pack_start(self.clear_entry_content_button, False)
 
 class GConfImageEntry(gtk.HBox):
     import gobject
@@ -191,7 +198,7 @@ class GConfImageEntry(gtk.HBox):
         import os
         if not os.path.exists(image):
             image = D + 'other_icons/blank.png'
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
+        pixbuf = get_pixbuf(image, image_size, image_size)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.button.add(image)
         self.button.show_all()

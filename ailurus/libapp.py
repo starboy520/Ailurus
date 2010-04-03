@@ -269,6 +269,7 @@ class _ff_extension:
     def installed(self):
         return FirefoxExtensions.installed(self.name) or self.__exists_in_ext_path()
     def remove(self):
+        print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
         raise NotImplementedError
 
 class _download_one_file:

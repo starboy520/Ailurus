@@ -4,9 +4,35 @@
 2010-04-02 MA Yue <velly.empire@gmail.com>
     * Add some settings for Fedora
 
+2010-04-03 Starboy Qi <starboy.qi@gmail.com>
+
+	* Add ImageMagick for Fedora
+	* Add error message when remove Firefox extensions
+	* Fix a bug that more packages will be remove when try to remove gstreamer
+
+2010-04-03 Chen Yangyang <skabyy@gmail.com>
+
+    * Fix a bug that Ailurus will abort when Ailurus can not find the icons.
+    * Move the subfunctions of Ailurus from "Applications - System Tool" to 
+      "Applications - System Tool - Ailurus Quick Start"
+
+2010-04-03 Homer Xing <homer.xing@gmail.com>
+
+    * Fix problem: Program crashes when change shortcut keys.
+    * Add Alfred State College repository.
+    * Fix a bug that "autotool" cannot be installed.
+    * Fix a bug that program blocks when try to install mplayer-vod.
+
+2010-04-02 Starboy Qi <starboy.qi@gmail.com>
+
+    * Improve copyright text in "About" dialog
+    * Move "Reclaim memory" and "Clean recent documents" to "Clean up" pane.
+>>>>>>> FETCH_HEAD:ChangeLog
+
 2010-04-02 Homer Xing <homer.xing@gmail.com>
 
     * Merge apt-recovery.desktop and rpm-recovery.desktop
+    * Do not crash when "/sbin/sysctl -p" fails.
 
 2010-04-01 Homer Xing <homer.xing@gmail.com>
 
