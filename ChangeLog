@@ -1,3 +1,9 @@
+2010-04-03 ChenYangyang <skabyy@gmail.com>
+
+    * Ailurus will save configuration as soon as you change it.
+    * The update checking now will check the update from launchpad(Ubuntu)
+      and fedorapeople(Fedora) and will not use googlecode anymore.
+
 2010-04-03 Starboy Qi <starboy.qi@gmail.com>
 
 	* Add ImageMagick for Fedora

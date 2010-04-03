@@ -54,9 +54,6 @@ class Config:
         path = cls.get_config_dir() + 'conf'
         if os.path.exists(path):
             cls.parser.read(path)
-        # run cls.save when the program terminates
-        import atexit
-        atexit.register(cls.save)
     @classmethod
     def save(cls):
         cls.make_config_dir()
@@ -67,6 +64,7 @@ class Config:
         assert isinstance(key, str) and key
         assert isinstance(value, (str,unicode))  and value
         cls.parser.set('DEFAULT', key, value)
+        cls.save()
     @classmethod
     def get_string(cls, key):
         assert isinstance(key, str) and key
@@ -76,6 +74,7 @@ class Config:
         assert isinstance(key, str) and key
         assert isinstance(value, int)
         cls.parser.set('DEFAULT', key, value)
+        cls.save()
     @classmethod
     def get_int(cls, key):
         assert isinstance(key, str) and key
@@ -86,6 +85,7 @@ class Config:
         assert isinstance(key, str) and key
         assert isinstance(value, bool)
         cls.parser.set('DEFAULT', key, value)
+        cls.save()
     @classmethod
     def get_bool(cls, key):
         assert isinstance(key, str) and key
@@ -137,7 +137,7 @@ class Config:
         cls.set_string('ubuntu-version', version)
     @classmethod
     def get_Ubuntu_version(cls):
-        '''return 'hardy', 'intrepid', 'jaunty' or 'karmic'.'''
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
         if cls.is_Ubuntu():
             with open('/etc/lsb-release') as f:
                 lines = f.readlines()
