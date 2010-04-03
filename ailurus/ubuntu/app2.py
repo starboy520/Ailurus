@@ -38,7 +38,9 @@ class ComicVODPlayer_new :
         comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
         run('cp %s %s'%(comicview, extension_path) )
         delay_notify_firefox_restart()
-        run('sudo apt-get install mplayer')
+        # Remove current mplayer. Then install a newer version.
+        APT.remove('mplayer')
+        APT.install('mplayer')
     def installed(self):
         return False
     def remove(self):

@@ -1,6 +1,7 @@
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 
     * Fix a bug that "autotool" cannot be installed.
+    * Fix a bug that program blocks when try to install mplayer-vod.
 
 2010-04-02 Starboy Qi <starboy.qi@gmail.com>
 
