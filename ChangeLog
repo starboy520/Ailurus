@@ -1,9 +1,14 @@
+2010-04-03 Starboy Qi <starboy.qi@gmail.com>
+
+	* Add ImageMagick for Fedora
+	* Add error message when remove Firefox extensions
+	* Fix a bug that more packages will be remove when try to remove gstreamer
+
 2010-04-03 Chen Yangyang <skabyy@gmail.com>
 
     * Fix a bug that Ailurus will abort when Ailurus can not find the icons.
-    * Move the subfunctions of Ailurus in "Applications - System Tool" to 
-      "Applications - System Tool - AilurusFunctions"
-
+    * Move the subfunctions of Ailurus from "Applications - System Tool" to 
+      "Applications - System Tool - Ailurus Quick Start"
 
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 

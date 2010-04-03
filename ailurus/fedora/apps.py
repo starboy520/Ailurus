@@ -501,9 +501,11 @@ class Multimedia_Codecs (_rpm_install) :
         self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-free-extras gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly')
     def install(self):
         _rpm_install.install(self)
+    def remove(self):
+        su('yum remove gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-ugly -y')
     def get_reason(self, f):
         self._get_reason(f)
-
+        
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')
     detail = _('Command: yum install VirtualBox-OSE')
@@ -513,4 +515,12 @@ class VirtualBox_OSE(_rpm_install):
     depend = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = 'VirtualBox-OSE'
-    
+
+class ImageMagick(_rpm_install):
+    __doc__ = _('ImageMagick')
+    detail = _('It helps you edit images.\n'
+               'You can start it by /usr/bin/display\n'
+               'Command: yum install ImageMagick')
+    category = 'media'
+    def __init__(self):
+        self.pkgs = 'ImageMagick'

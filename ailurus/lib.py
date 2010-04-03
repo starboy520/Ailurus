@@ -1435,4 +1435,12 @@ class Tasksel:
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
-            
+
+def get_pixbuf(file, x, y):
+    import gtk
+    try:
+        return gtk.gdk.pixbuf_new_from_file_at_size(file, x, y)
+    except:
+        import traceback
+        traceback.print_exc()
+        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)

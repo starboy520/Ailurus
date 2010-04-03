@@ -695,3 +695,12 @@ class Vuze_Karmic(_apt_install):
         self.pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
+
+class imagemagick(_apt_install):
+    __doc__ = _('ImageMagick')
+    detail = _('It helps you edit images.\n'
+               'You can start it by /usr/bin/display\n'
+               'Command: sudo apt-get install imagemagick')
+    category = 'media'
+    def __init__(self):
+        self.pkgs = 'imagemagick'
