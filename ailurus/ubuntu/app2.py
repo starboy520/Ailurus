@@ -227,6 +227,7 @@ class Ubuntu_Studio_Theme(_apt_install):
     __doc__ = _('Ubuntu Studio Theme')
     detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
     license = 'GNU General Public License (GPL)'
+    logo = 'ubuntu-studio-themes.png'
     def __init__(self):
         self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
@@ -234,6 +235,7 @@ class MiniCom_Ckermit(_apt_install):
     __doc__ = _('Minicom and ckermit')
     detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
+    logo = 'minicom.png'
     def __init__(self):
         self.pkgs = 'minicom ckermit'
 
@@ -335,6 +337,7 @@ class StartupManager(_apt_install):
     detail = _('Startup manager helps you change GRUB settings and themes.\n'
                'Command: sudo apt-get install startupmanager')
     license = 'GNU General Public License (GPL)'
+    logo = 'startup_manager.png'
     def __init__(self):
         self.pkgs = 'startupmanager'
         
@@ -343,7 +346,9 @@ class Zhcon(_apt_install):
     detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
                'You can launch it by "zhcon --utf8".\n'
                'Command: sudo apt-get install zhcon')
+    Chinese = True
     license = 'GNU General Public License (GPL)'
+    logo = 'zhcon.png'
     def __init__(self):
         self.pkgs = 'zhcon'
         
@@ -352,5 +357,6 @@ class PowerTop(_apt_install):
     detail = _('Powertop helps you save power for your laptop.\n'
                'Command: sudo apt-get install powertop')
     license = 'GNU General Public License (GPL)'
+    logo = 'powertop.png'
     def __init__(self):
         self.pkgs = 'powertop'

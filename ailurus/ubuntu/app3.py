@@ -321,6 +321,7 @@ class CompizSettingManagerSimple(_apt_install):
     logo = 'compizconfig.png'
     license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
+    logo = 'simple-ccsm.png'
     def __init__(self):
         self.pkgs = 'simple-ccsm'
 
@@ -653,6 +654,7 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
+    logo = 'fcitx.png'
     license = 'GNU General Public License (GPL)'
     def install(self):
         if get_arch() == 32:
@@ -671,6 +673,7 @@ class XBMC(_apt_install):
     'XBMC'
     category = 'media'
     license = 'GNU General Public License (GPL)'
+    logo = 'xbmc.png'
     depend = Repo_XBMC
     def __init__(self):
         self.pkgs = 'xbmc'
@@ -679,6 +682,7 @@ class Songbird(_apt_install):
     'Songbird'
     category = 'media'
     license = 'GNU General Public License (GPL)'
+    logo = 'songbird.png'
     depend = Repo_Songbird
     def __init__(self):
         self.pkgs = 'songbird'
@@ -702,5 +706,6 @@ class imagemagick(_apt_install):
                'You can start it by /usr/bin/display\n'
                'Command: sudo apt-get install imagemagick')
     category = 'media'
+    logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'imagemagick'

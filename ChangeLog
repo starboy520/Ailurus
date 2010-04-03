@@ -22,6 +22,7 @@
     * Add Alfred State College repository.
     * Fix a bug that "autotool" cannot be installed.
     * Fix a bug that program blocks when try to install mplayer-vod.
+    * Add some missing icons in "Install software" pane.
 
 2010-04-02 Starboy Qi <starboy.qi@gmail.com>
 
