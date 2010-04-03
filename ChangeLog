@@ -1,3 +1,32 @@
+2010-04-03 Homer Xing <homer.xing@gmail.com>
+
+    * Fix problem: Program crashes when change shortcut keys.
+    * Add Alfred State College repository.
+
+2010-04-02 Starboy Qi <starboy.qi@gmail.com>
+
+    * Improve copyright text in "About" dialog
+    * Move "Reclaim memory" and "Clean recent documents" to "Clean up" pane.
+
+2010-04-02 Homer Xing <homer.xing@gmail.com>
+
+    * Merge apt-recovery.desktop and rpm-recovery.desktop
+    * Do not crash when "/sbin/sysctl -p" fails.
+
+2010-04-01 Homer Xing <homer.xing@gmail.com>
+
+    * Improve "quick setup" functionality.
+      Change button text to "Start quick setup".
+      Users can select which software they would like to quick setup.
+      Backup /etc/apt/sources.list before change it.
+      Require root privilege first. Do not ask for privilege afterwhile.
+      Do not block process when search hardware driver.
+
+2010-04-01 Starboy Qi <starboy.qi@gmail.com>
+
+    * Fix multimedia package error in Fedora.
+    * Add VirtualBox open source edition for Fedora.
+
 2010-04-01 MA Yue <velly.empire@gmail.com>
 
     * Improve the 'start here' icon setting. 

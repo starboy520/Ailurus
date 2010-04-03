@@ -322,36 +322,36 @@ class Flash_Player(_apt_install):
     def __init__(self):
         self.pkgs = 'gnash mozilla-plugin-gnash'
     
-class Flash_Player_Font_Bug:
-    __doc__ = _('Fix font bug in Flash plugin')
-    detail = _('Fix bug: characters are displayed as blank square in Flash.\n'
-       'The trick behind is to modify "/etc/fonts/conf.d/49-sansserif.conf" file.')
-    category = 'media'
-    logo = 'flash.png'
-    __file = '/etc/fonts/conf.d/49-sansserif.conf' 
-    def installed(self):
-        import os
-        return not os.path.exists(self.__file)
-    def install(self):
-        try:
-            FileServer.chdir('/etc/fonts/conf.d')
-            import os
-            if os.path.exists('49-sansserif.conf'):
-                gksudo('mv 49-sansserif.conf 49-sansserif.back')
-        finally:
-            FileServer.chdir_back()
-    def remove(self):
-        try:
-            FileServer.chdir('/etc/fonts/conf.d')
-            import os
-            if os.path.exists('49-sansserif.back'):
-                gksudo('mv 49-sansserif.back 49-sansserif.conf')
-        finally:
-            FileServer.chdir_back()
-    def get_reason(self, f):
-        import os
-        if os.path.exists(self.__file):
-            print >>f, _('The file "%s" exists.')%self.__file
+#class Flash_Player_Font_Bug:
+#    __doc__ = _('Fix font bug in Flash plugin')
+#    detail = _('Fix bug: characters are displayed as blank square in Flash.\n'
+#       'The trick behind is to modify "/etc/fonts/conf.d/49-sansserif.conf" file.')
+#    category = 'media'
+#    logo = 'flash.png'
+#    __file = '/etc/fonts/conf.d/49-sansserif.conf' 
+#    def installed(self):
+#        import os
+#        return not os.path.exists(self.__file)
+#    def install(self):
+#        try:
+#            FileServer.chdir('/etc/fonts/conf.d')
+#            import os
+#            if os.path.exists('49-sansserif.conf'):
+#                gksudo('mv 49-sansserif.conf 49-sansserif.back')
+#        finally:
+#            FileServer.chdir_back()
+#    def remove(self):
+#        try:
+#            FileServer.chdir('/etc/fonts/conf.d')
+#            import os
+#            if os.path.exists('49-sansserif.back'):
+#                gksudo('mv 49-sansserif.back 49-sansserif.conf')
+#        finally:
+#            FileServer.chdir_back()
+#    def get_reason(self, f):
+#        import os
+#        if os.path.exists(self.__file):
+#            print >>f, _('The file "%s" exists.')%self.__file
 
 class Stardict(_apt_install):
     __doc__ = _('Stardict')

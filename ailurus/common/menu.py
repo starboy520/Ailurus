@@ -45,7 +45,7 @@ def show_about_dialog(*w): # called by __help
           'M. Umut Pulat    http://12m3.deviantart.com/', 
           'Andrea Soragna   http://sora-meliae.deviantart.com/',
           'Paul Davey       http://mattahan.deviantart.com/',] )
-    about.set_copyright( _(u"Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong Univ., China.") )
+    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") )
     about.set_wrap_license(False)
     about.set_license(
 '''
@@ -116,37 +116,13 @@ All rights of other images which are not mensioned above are preserves by their 
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
     about.vbox.pack_start( gtk.Label( _('Welcome to leave response in blog~') ) , False, False )
-    def read_changelog_callback(*w):
-        buffer = gtk.TextBuffer()
-        with open('/usr/share/ailurus/ChangeLog') as f:
-            buffer.set_text(f.read())
-        textview = gtk.TextView()
-        textview.set_buffer(buffer)
-        textview.set_editable(False)
-        textview.set_cursor_visible(False)
-        textview.set_wrap_mode(gtk.WRAP_WORD)
-        scroll = gtk.ScrolledWindow()
-        scroll.add(textview)
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        scroll.set_shadow_type(gtk.SHADOW_IN)
-        dialog = gtk.Dialog( _('Ailurus changelog'), None, 
-                             gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-                             buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-        dialog.set_border_width(10)
-        dialog.vbox.pack_start(scroll)
-        dialog.vbox.set_size_request(700, 500)
-        dialog.vbox.show_all()
-        dialog.run()
-        dialog.destroy()
-
     from lib import AILURUS_RELEASE_DATE
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
-    read_changelog = gtk.Button(_('Read changelog'))
-    read_changelog.connect('clicked', read_changelog_callback)
-    about.action_area.pack_start(read_changelog, False, False )
-    about.action_area.reorder_child(read_changelog, 0)
-    about.action_area.show_all()
+
+#    about.action_area.pack_start(read_changelog, False, False )
+#    about.action_area.reorder_child(read_changelog, 0)
+#    about.action_area.show_all()
     about.run()
     about.destroy()
 
@@ -163,7 +139,8 @@ def show_special_thank_dialog(widget): # called by __help
     print >>text, '<b><big>PCMan, Careone, novia, '
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
-    print >>text, 'Romeo-Adrian Cioaba, David Morre</big></b>'
+    print >>text, 'Romeo-Adrian Cioaba, David Morre, '
+    print >>text, 'Liang Suilong, Lovenemesis, Chen Lei</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
@@ -345,6 +322,29 @@ def __set_wget_options(w): # called by __preferences
     if ret == gtk.RESPONSE_OK:
         Config.wget_set_timeout(new_timeout)
         Config.wget_set_triesnum(new_tries)
+        
+def read_changelog_callback(w):
+    buffer = gtk.TextBuffer()
+    with open('/usr/share/ailurus/ChangeLog') as f:
+        buffer.set_text(f.read())
+    textview = gtk.TextView()
+    textview.set_buffer(buffer)
+    textview.set_editable(False)
+    textview.set_cursor_visible(False)
+    textview.set_wrap_mode(gtk.WRAP_WORD)
+    scroll = gtk.ScrolledWindow()
+    scroll.add(textview)
+    scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+    scroll.set_shadow_type(gtk.SHADOW_IN)
+    dialog = gtk.Dialog( _('Ailurus changelog'), None, 
+                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+                buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+    dialog.set_border_width(10)
+    dialog.vbox.pack_start(scroll)
+    dialog.vbox.set_size_request(700, 500)
+    dialog.vbox.show_all()
+    dialog.run()
+    dialog.destroy()
 
 def __preferences(main_view):
     menu_tooltip = gtk.CheckMenuItem( _("""Don't show "tip of the day" on start up""") )
@@ -388,7 +388,10 @@ def __others(main_view):
     about = gtk.MenuItem( _('About') )
     about.connect('activate', show_about_dialog)
     
-    return [ help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
+    read_changelog = gtk.MenuItem( _('Read changelog') )
+    read_changelog.connect('activate', read_changelog_callback)
+    
+    return [ read_changelog, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
