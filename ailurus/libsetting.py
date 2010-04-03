@@ -198,7 +198,7 @@ class GConfImageEntry(gtk.HBox):
         import os
         if not os.path.exists(image):
             image = D + 'other_icons/blank.png'
-        pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(image, image_size, image_size)
+        pixbuf = get_pixbuf(image, image_size, image_size)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.button.add(image)
         self.button.show_all()

@@ -4,6 +4,7 @@ dist/
 exported-translation/
 comicview/note
 
+po/ailurus.pot
 .project
 .pydevproject
 .metadata
