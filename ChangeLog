@@ -1,7 +1,8 @@
 2010-04-03 Starboy Qi <starboy.qi@gmail.com>
 
 	* Add ImageMagick for Fedora
-	* Add error message when remove Firefox extensions 
+	* Add error message when remove Firefox extensions
+	* Fix a bug that more packages will be remove when try to remove gstreamer
 
 2010-04-03 Chen Yangyang <skabyy@gmail.com>
 
