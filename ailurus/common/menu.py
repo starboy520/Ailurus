@@ -119,10 +119,6 @@ All rights of the applications installed by Ailurus are preserved by their autho
     from lib import AILURUS_RELEASE_DATE
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
-
-#    about.action_area.pack_start(read_changelog, False, False )
-#    about.action_area.reorder_child(read_changelog, 0)
-#    about.action_area.show_all()
     about.run()
     about.destroy()
 
@@ -140,7 +136,8 @@ def show_special_thank_dialog(widget): # called by __help
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
-    print >>text, 'Liang Suilong, Lovenemesis, Chen Lei</big></b>'
+    print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
+    print >>text, 'DaringSoule</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
