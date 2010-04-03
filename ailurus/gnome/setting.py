@@ -280,6 +280,14 @@ def __gnome_splash_setting():
            '/apps/gnome-session/options/splash_image',
            _('The file which is used as the GNOME splash image.'), False)
     hbox.pack_start(o)
+    button = gtk.Button( _('Reset') )
+    def reset_splash(self):
+        import gconf
+        g = gconf.client_get_default()
+        g.set_string('/apps/gnome-session/options/splash_image', 'splash/ubuntu-splash.png')
+    button.set_tooltip_text(_('using splash/splash-splash.png as the splash image'))
+    button.connect('clicked', reset_splash)
+    hbox.pack_start(button, False)
     return Setting(hbox, _('GNOME splash image'), ['session'])
 
 def __restriction_on_current_user():
