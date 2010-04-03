@@ -533,7 +533,7 @@ class FFDownloadStatusBar(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
-        self.R = R([
+        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/download_statusbar-0.9.6.5-fx.xpi',
                     'http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
     455756, '4d47871f71877853c6194bf559f699db33f36ee1')
         _ff_extension.__init__(self)

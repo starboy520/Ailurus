@@ -57,21 +57,10 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         def __clean_up(button, label):
             gksudo('apt-get clean')
-            label.set_text(self.get_button_text( _('APT cache'), '/var/cache/apt/archives'))
+            label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
         return button
     
-#    def clean_rpm_cache_button(self):
-#        label = gtk.Label(self.get_button_text(_('Yum cache'), '/var/cache/yum'))
-#        button = gtk.Button()
-#        button.add(label)
-#        def _clean_up(button, label):
-#            import os
-#            os.system('yum clean all')
-#            label.set_text(self.get_button_text( _('Yum cache'), '/var/cache/yum'))
-#        button.connect('clicked', __clean_up, label)
-#        return button
-          
     def clean_ailurus_cache_button(self):
         label = gtk.Label(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button = gtk.Button()
