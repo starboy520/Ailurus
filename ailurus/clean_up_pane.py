@@ -35,6 +35,8 @@ class CleanUpPane(gtk.VBox):
         if Config.is_Ubuntu() or Config.is_Mint():
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
+        elif Config.is_Fedora():
+            self.pack_start(self.clean_rpm_cache_button(), False)
 
     def get_folder_size(self, folder_path):
         is_string_not_empty(folder_path)
@@ -58,6 +60,16 @@ class CleanUpPane(gtk.VBox):
         def __clean_up(button, label):
             gksudo('apt-get clean')
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
+        button.connect('clicked', __clean_up, label)
+        return button
+    
+    def clean_rpm_cache_button(self):
+        label = gtk.Label(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
+        button = gtk.Button()
+        button.add(label)
+        def __clean_up(button, label):
+            os.system('yum clean all')
+            label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
         return button
     
