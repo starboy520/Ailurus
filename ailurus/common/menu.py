@@ -204,13 +204,17 @@ def check_update(*w):
         import urllib2
         import re
         if Config.is_Fedora():
-            filename_pattern = r'ailurus_.+\.rpm'
+            filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
+            version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
+            code_url = 'http://homerxing.fedorapeople.org/'
         else:
-            filename_pattern = r'ailurus_.+\.deb'
-        version_pattern = r'ailurus_(.+)-.+'
+            version_string = Config.get_Ubuntu_version()
+            filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
+            version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string
+            code_url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
         lastest_version = AILURUS_VERSION
         lastest_filename = ''
-        f = urllib2.urlopen('http://code.google.com/p/ailurus/downloads/list')
+        f = urllib2.urlopen(code_url)
         for line in f.readlines():
             filenames = re.findall(filename_pattern, line)
             for filename in filenames:
@@ -230,7 +234,7 @@ def check_update(*w):
             label = gtk.Label( _('Version %s is released.\n'
                                  'You can download it from:')
                                  % lastest_version)
-            button = url_button('http://ailurus.googlecode.com/files/'+lastest_filename)
+            button = url_button(code_url+lastest_filename)
             vbox.pack_start(label)
             vbox.pack_start(button, False)
         else:
