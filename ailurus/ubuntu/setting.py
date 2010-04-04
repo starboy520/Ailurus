@@ -37,9 +37,29 @@ def __update_manager_setting():
     vbox.pack_start(hbox, False)
     return Setting(vbox, _('Ubuntu update manager setting'), ['update'])
 
+def __gnome_splash_setting():
+    hbox = gtk.HBox(False)
+    o = GConfFileEntry(_('Splash image:'),
+           '/apps/gnome-session/options/splash_image',
+           _('The file which is used as the GNOME splash image.'), False)
+    hbox.pack_start(o)
+    button = gtk.Button( _('Reset') )
+    def reset_splash(self):
+        import gconf
+        g = gconf.client_get_default()
+        g.set_string('/apps/gnome-session/options/splash_image', 'splash/ubuntu-splash.png')
+    button.set_tooltip_text(_('Using splash/splash-splash.png as GNOME splash image.'))
+    button.connect('clicked', reset_splash)
+    hbox.pack_start(button, False)
+    return Setting(hbox, _('GNOME splash image'), ['session'])
+
+
 def get():
     ret = []
-    for f in [ __update_manager_setting ,]:
+    for f in [
+            __update_manager_setting ,
+            __gnome_splash_setting,
+             ]:
         try:
             ret.append(f())
         except:

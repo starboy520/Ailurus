@@ -274,22 +274,6 @@ def __textbox_context_menu_setting():
     table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Text-boxes context menu'), ['menu'])
 
-def __gnome_splash_setting():
-    hbox = gtk.HBox(False)
-    o = GConfFileEntry(_('Splash image:'),
-           '/apps/gnome-session/options/splash_image',
-           _('The file which is used as the GNOME splash image.'), False)
-    hbox.pack_start(o)
-    button = gtk.Button( _('Reset') )
-    def reset_splash(self):
-        import gconf
-        g = gconf.client_get_default()
-        g.set_string('/apps/gnome-session/options/splash_image', 'splash/ubuntu-splash.png')
-    button.set_tooltip_text(_('Using splash/splash-splash.png as GNOME splash image.'))
-    button.connect('clicked', reset_splash)
-    hbox.pack_start(button, False)
-    return Setting(hbox, _('GNOME splash image'), ['session'])
-
 def __restriction_on_current_user():
     table = gtk.Table()
     table.set_col_spacings(10)
@@ -478,7 +462,7 @@ def __compiz_setting():
     # Window Decorator    
     label = gtk.Label(_('Set Window Decorator:'))
     label.set_alignment(0, 0.5)
-    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. Fedora needs Fusion icons</span>\n")
+    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. If you are using Fedora, please run 'yum install fusion-icon' as root to install Fusion icons. Otherwise, this option does not work.</span>\n")
                            + _('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command')
     hbox = gtk.HBox()
     o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 
@@ -539,7 +523,6 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
-            __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
             __disable_terminal_beep,
