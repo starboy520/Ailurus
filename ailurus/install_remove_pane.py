@@ -695,8 +695,8 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Hardware'), D+'sora_icons/p_hardware.png', 'hardware' ],
-            [ i_common, _('Language support'), D+'sora_icons/p_language_support.png', 'language'],
+            [ i_common, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
+            [ i_common, _('Language support'), D+'umut_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
@@ -709,7 +709,7 @@ class InstallRemovePane(gtk.VBox):
             [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
             [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
             [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
-            [ i_students, _('Embedded system'),  D+'sora_icons/p_embedded_system.png', 'embedded' ],
+            [ i_students, _('Embedded system'),  D+'umut_icons/p_embedded_system.png', 'embedded' ],
 
             [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
             [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,

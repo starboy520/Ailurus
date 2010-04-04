@@ -436,7 +436,7 @@ class nautilus_open_terminal(_apt_install):
         self.pkgs = 'nautilus-open-terminal'
         
 class nautilus_share(_apt_install):
-    __doc__ = _('nautilus-share')
+    __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
