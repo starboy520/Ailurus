@@ -7,6 +7,12 @@
     * Move the subfunctions of Ailurus from "Applications - System Tool" to 
       "Applications - System Tool - Ailurus Quick Start"
 
+2010-04-03 MA Yue <velly.empire@gmail.com>
+
+    * Improve classification in "install software" pane.
+    * Improve GNOME splash screen setting.
+      Display splash image via button.
+
 2010-04-03 Starboy Qi <starboy.qi@gmail.com>
 
 	* Add ImageMagick for Fedora
@@ -20,6 +26,10 @@
     * Fix a bug that "autotool" cannot be installed.
     * Fix a bug that program blocks when try to install mplayer-vod.
     * Add some missing icons in "Install software" pane.
+
+
+2010-04-02 MA Yue <velly.empire@gmail.com>
+    * Add some settings for Fedora
 
 2010-04-02 Starboy Qi <starboy.qi@gmail.com>
 

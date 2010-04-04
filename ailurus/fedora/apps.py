@@ -515,6 +515,44 @@ class VirtualBox_OSE(_rpm_install):
     depend = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = 'VirtualBox-OSE'
+    
+class nautilus_actions(_rpm_install):
+    __doc__ = _('"Actions Configuration" entry')
+    detail = _('It allows the configuration of programs to be launched \n'
+               'on files selected.\n'
+               '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-actions'
+        
+class nautilus_image_converter(_rpm_install):
+    __doc__ = _('"Resize/Rotate images" entries')
+    detail = _('Resize or rotate selected images.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-image-converter'
+        
+class nautilus_open_terminal(_rpm_install):
+    __doc__ = _('"Open in terminal" entry')
+    detail = _('Open a terminal in current folder.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-open-terminal'
+        
+class nautilus_search_tool(_rpm_install):
+    __doc__ = _('"Search For Files" entries')
+    detail = _('A Nautilus extension that makes searching for files easier')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-search-tool'
 
 class ImageMagick(_rpm_install):
     __doc__ = _('ImageMagick')
@@ -525,3 +563,4 @@ class ImageMagick(_rpm_install):
     logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'ImageMagick'
+

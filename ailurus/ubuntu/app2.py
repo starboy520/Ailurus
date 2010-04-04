@@ -227,6 +227,7 @@ class Ubuntu_Studio_Theme(_apt_install):
     __doc__ = _('Ubuntu Studio Theme')
     detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
     license = 'GNU General Public License (GPL)'
+    category = 'appearance'
     logo = 'ubuntu-studio-themes.png'
     def __init__(self):
         self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
@@ -235,6 +236,7 @@ class MiniCom_Ckermit(_apt_install):
     __doc__ = _('Minicom and ckermit')
     detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
+    category = 'embeded'
     logo = 'minicom.png'
     def __init__(self):
         self.pkgs = 'minicom ckermit'
@@ -360,3 +362,133 @@ class PowerTop(_apt_install):
     logo = 'powertop.png'
     def __init__(self):
         self.pkgs = 'powertop'
+        
+class nautilus_actions(_apt_install):
+    __doc__ = _('"Actions Configuration" entry')
+    detail = _('It allows the configuration of programs to be launched \n'
+               'on files selected.\n'
+               '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-actions'
+        
+class nautilus_filename_repairer(_apt_install):
+    __doc__ = _('"Repair filename" entry')
+    detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-filename-repairer'
+
+class nautilus_gksu(_apt_install):
+    __doc__ = _('"Open as administrator" entry')
+    detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-gksu'
+
+class nautilus_script_audio_convert() :
+    __doc__ = _('"Convert audio files" entry')
+    detail = _('Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n'
+               'These packages will also be installed: \n'
+               '<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-script-audio-convert lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc'
+    def install(self):
+        APT.install(*self.pkgs.split())
+        run('nautilus-script-manager enable ConvertAudioFile')
+    def installed(self):
+        for pkg in self.pkgs.split():
+            if not APT.installed ( pkg ):
+                return False
+        return True
+    def _get_reason(self, f):
+        #evaluate
+        not_in = []
+        for pkg in self.pkgs.split():
+            if not APT.installed ( pkg ):
+                not_in.append(pkg)
+        #output
+        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+    def remove(self):
+        APT.remove(*self.pkgs.split() )
+# damn! this class is not work!!!
+class nautilus_image_converter(_apt_install):
+    __doc__ = _('"Resize/Rotate images" entries')
+    detail = _('Resize or rotate selected images.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-image-converter'
+        
+class nautilus_script_collection_svn():
+    __doc__ = _('"Subversion commands" entries')
+    detail = _('"Subversion commands" entries')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'        
+    def __init__(self):
+        pass
+    def install(self):
+        APT.install('nautilus-script-collection-svn')
+        run('nautilus-script-manager enable Subversion')
+    def installed(self):
+        if not APT.installed ( 'nautilus-script-collection-svn' ):
+            return False
+        return True
+    def _get_reason(self, f):
+#        pass
+        if not APT.installed ( 'nautilus-script-collection-svn' ):
+            not_in.append('nautilus-script-collection-svn')
+        #output
+        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+    def remove(self):
+        APT.remove('nautilus-script-collection-svn')
+
+        
+class nautilus_open_terminal(_apt_install):
+    __doc__ = _('"Open in terminal" entry')
+    detail = _('Open a terminal in current folder.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-open-terminal'
+        
+class nautilus_share(_apt_install):
+    __doc__ = _('nautilus-share')
+    detail = _('Share folders by Samba.')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-share'
+        
+class nautilus_wallpaper(_apt_install):
+    __doc__ = _('"Set as wallpaper" entry')
+    detail = _('"Set as wallpaper" entry')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-wallpaper'
+        
+class nautilus_script_audio_convert(_apt_install):
+    __doc__ = _('"Write to Disc..." entry')
+    detail = _('When CD/DVD image file is clicked by mouse right button, \n'
+  'show a "Write to Disc..." menu item.\n'
+  '<span color="red">This item conflicts with "brasero".</span>')
+    license = 'GNU General Public License (GPL)'
+    category = 'nautilus'
+    logo = 'nautilus.png'
+    def __init__(self):
+        self.pkgs = 'nautilus-cd-burner'
