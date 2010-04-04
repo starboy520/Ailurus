@@ -207,11 +207,13 @@ def check_update(*w):
             filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
             version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
             code_url = 'http://homerxing.fedorapeople.org/'
-        else:
+        elif Config.is_Ubuntu():
             version_string = Config.get_Ubuntu_version()
             filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
             version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string
             code_url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
+        else:
+            return
         lastest_version = AILURUS_VERSION
         lastest_filename = ''
         f = urllib2.urlopen(code_url)
