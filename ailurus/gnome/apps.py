@@ -89,7 +89,7 @@ class Gedit_GB2312(_set_gconf) :
     def get_reason(self, f):
         self._get_reason(f)
 
-class Speedup_Nautilus():
+class Speedup_Nautilus:
     __doc__ = _('Speed up Nautilus')
     detail = _('Change Nautilus settings: '
        'Do not count directory items. Do not preview sound. '
@@ -101,47 +101,45 @@ class Speedup_Nautilus():
        '/apps/nautilus/icon_view/default_use_tighter_layout = true')
     logo = 'nautilus.png'
     category = 'nautilus'
-    set_gconf = ['/apps/nautilus/preferences/show_icon_text',
-                     '/apps/nautilus/preferences/show_directory_item_counts',
-                     '/apps/nautilus/preferences/preview_sound',
-                     '/apps/nautilus/list_view/default_visible_columns', 
-                     '/apps/nautilus/icon_view/default_use_tighter_layout', ]
+
     def __init__(self):
-        pass
+        self.keys = ['/apps/nautilus/preferences/show_icon_text',
+                     '/apps/nautilus/preferences/show_directory_item_counts',
+                     '/apps/nautilus/preferences/preview_sound']
+        self.key1 = '/apps/nautilus/icon_view/default_use_tighter_layout'
+        self.key2 = '/apps/nautilus/list_view/default_visible_columns'
         
     def install(self):
         import gconf
         g = gconf.client_get_default()
-        for string in self.set_gconf[0:3]:
-            g.set_string(string, 'never')
-        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
+        for key in self.keys:
+            g.set_string(key, 'never')
+        g.set_bool(self.key1, True)
+        value = g.get_list(self.key2, gconf.VALUE_STRING)
         if 'size' in value:
             value.remove('size')
-        g.set_list(self.set_gconf[3], gconf.VALUE_STRING, value)
-        g.set_bool(self.set_gconf[4], True)
+        g.set_list(self.key2, gconf.VALUE_STRING, value)
+
     def remove(self):
         import gconf
         g = gconf.client_get_default()
-        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
+        for key in self.keys:
+            g.set_string(key, 'local_only')
+        g.set_bool(self.key1, False)
+        value = g.get_list(self.key2, gconf.VALUE_STRING)
         if 'size' not in value:
-            value.insert(1,'size')
-        g.set_list(self.set_gconf[3], gconf.VALUE_STRING, value)
-        g.set_bool(self.set_gconf[4], False)
-        for string in self.set_gconf[0:3]:
-            g.set_string(string,  'local_only')
+            value.insert(1, 'size')
+        g.set_list(self.key2, gconf.VALUE_STRING, value)
+
     def installed(self):
         import gconf
         g = gconf.client_get_default()
-        value = g.get_list(self.set_gconf[3], gconf.VALUE_STRING)
-        if(
-        'size' in value and
-        g.get_bool(self.set_gconf[4]) == False and
-        g.get_string(self.set_gconf[0]) == 'local_only' and
-        g.get_string(self.set_gconf[1]) == 'local_only' and
-        g.get_string(self.set_gconf[2]) == 'local_only'
-        ):
+        value = g.get_list(self.key2, gconf.VALUE_STRING)
+        if ( 'size' in value or
+             g.get_bool(self.key1) == False or
+             g.get_string(self.keys[0]) != 'never' or
+             g.get_string(self.keys[1]) != 'never' or
+             g.get_string(self.keys[2]) != 'never' ):
             return False
         else:
             return True
-    def _get_reason(self, f):
-        pass

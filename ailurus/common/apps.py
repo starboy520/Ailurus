@@ -573,6 +573,7 @@ class FFFireBug(_ff_extension):
     category = 'firefoxdev'
     size = 2383665
     license = 'BSD License'
+    logo = 'firebug.png'
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
@@ -649,6 +650,7 @@ class FFLiveHTTPHeaders(_ff_extension):
     category = 'firefoxdev'
     size = 175730
     license = 'GPL v2'
+    logo = 'live_http_header.png'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
@@ -694,6 +696,7 @@ class FFSeoQuake(_ff_extension):
     category = 'firefoxdev'
     size = 801876
     license = 'Mozilla Public License v1.1'
+    logo = 'seoquake.png'
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
@@ -723,6 +726,7 @@ class FFTamperData(_ff_extension):
     category = 'firefoxdev'
     size = 112344
     license = 'GPL v2'
+    logo = 'tamper_data.png'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
@@ -751,6 +755,7 @@ class FFViewSourceChart(_ff_extension):
     category = 'firefoxdev'
     size = 89958
     license = 'GPL v2'
+    logo = 'view_source_chart.png'
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
@@ -779,6 +784,7 @@ class FFWebDeveloper(_ff_extension):
     category = 'firefoxdev'
     size = 2420362
     license = 'LGPL v3.0'
+    logo = 'web_developer.png'
     def __init__(self):
         self.desc = _('Many developers installed it.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
@@ -808,6 +814,7 @@ class FFYSlow(_ff_extension):
     category = 'firefoxdev'
     size = 797081
     license = 'Mozilla Public License v1.1'
+    logo = 'yslow.png'
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'

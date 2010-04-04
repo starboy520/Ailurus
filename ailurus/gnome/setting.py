@@ -285,7 +285,7 @@ def __gnome_splash_setting():
         import gconf
         g = gconf.client_get_default()
         g.set_string('/apps/gnome-session/options/splash_image', 'splash/ubuntu-splash.png')
-    button.set_tooltip_text(_('using splash/splash-splash.png as the splash image'))
+    button.set_tooltip_text(_('Using splash/splash-splash.png as GNOME splash image.'))
     button.connect('clicked', reset_splash)
     hbox.pack_start(button, False)
     return Setting(hbox, _('GNOME splash image'), ['session'])

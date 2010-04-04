@@ -450,15 +450,11 @@ class InstallRemovePane(gtk.VBox):
 
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
-        # determine icon path
-        logo = 'default.png'
-        if hasattr(class0, 'logo'): logo = class0.logo
-        import os
-        if os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
-        elif os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
-        else: return
-        # set icon pixbuf
         if not hasattr(class0, 'logo_pixbuf'):
+            logo = getattr(class0, 'logo', 'blank.png')
+            import os
+            if os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
+            elif os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
@@ -699,9 +695,9 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Device Support'), D+'sora_icons/p_device.png', 'device' ],
-            [ i_common, _('Language Support'), D+'sora_icons/p_language_support.png', 'language'],
-            [ i_common, _('Nautilus Enhancements'),  D+'other_icons/nautilus.png', 'nautilus'],
+            [ i_common, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
+            [ i_common, _('Language support'), D+'umut_icons/p_language_support.png', 'language'],
+            [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
@@ -713,7 +709,7 @@ class InstallRemovePane(gtk.VBox):
             [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
             [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
             [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
-            [ i_students, _('Embeded System'),  D+'sora_icons/p_embeded_system.png', 'embeded' ],
+            [ i_students, _('Embedded system'),  D+'umut_icons/p_embedded_system.png', 'embedded' ],
 
             [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
             [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,

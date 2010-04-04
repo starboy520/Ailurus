@@ -92,6 +92,7 @@ ailurus.png is released under the GPL license. Its copyright is holded by SU Yun
 ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
 blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
 bluefish.png is copied from Bluefish project. It is released under the GPL license. Its copyright is holded by Olivier Sessink.
+bluetooth.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
 childsplay.png is copied from Childsplay project. It is released under the GPL license. Its copyright is holded by Stas Zytkiewicz.
 codeblocks.png is copied from Code::Blocks project. It is released under the GPL v3.0 license. Its copyright is holded by Code::Blocks Team.
 done.png, fail.png, parcellite.png, s_desktop.png, started.png, toolbar_back.png, toolbar_disable.png, toolbar_enable.png, toolbar_forward.png, toolbar_quit.png are copied from GNOME project. They are released under the GPL license. There copyright are holded by GNOME community.
@@ -106,12 +107,14 @@ netbeans.png is copied from Netbeans project. It is released under the GPL v2 li
 python.png is copied from Python project. It is released under the Python license. Its copyright is holded by Python Software Foundation.
 qtcreator.png is copied from Qt project. It is released under the LGPL license. Its copyright is holded by Nokia Corporation.
 s_nautilus.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
+songbird.png is copied from Songbird project. It is released under the GPL v2. Its copyright is holded by Songbird Team.
 toolbar_study.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tux.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tuxpaint.png is copied from Tux Paint project. It is released under the GPL license. Its copyright is holded by Tux Paint Team.
 ubuntu.png is copied from Ubuntu project. Its copyright is holded by Canonical Ltd. Some rights reserved: The rights in the trademarks, logos, service marks of Canonical Ltd, as well as the look and feel of Ubuntu, are subject to the Canonical Trademark Policy at http://www.ubuntu.com/ubuntu/TrademarkPolicy 
 vuze.png is copied from Vuze project. It is released under the GPL license. Its copyright is holded by Vuze Team.
 wallpaper-tray.png is copied from Wallpaper Tray project. It is released under the GPL license. Its copyright is holded by Wallpaper Tray Team.
+xbmc.png is copied from XBMC project. It is released under the GPL license. Its copyright is holded by XBMC Team.
 All rights of other images which are not mensioned above are preserves by their authors.
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
@@ -201,13 +204,19 @@ def check_update(*w):
         import urllib2
         import re
         if Config.is_Fedora():
-            filename_pattern = r'ailurus_.+\.rpm'
+            filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
+            version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
+            code_url = 'http://homerxing.fedorapeople.org/'
+        elif Config.is_Ubuntu():
+            version_string = Config.get_Ubuntu_version()
+            filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
+            version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string
+            code_url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
         else:
-            filename_pattern = r'ailurus_.+\.deb'
-        version_pattern = r'ailurus_(.+)-.+'
+            return
         lastest_version = AILURUS_VERSION
         lastest_filename = ''
-        f = urllib2.urlopen('http://code.google.com/p/ailurus/downloads/list')
+        f = urllib2.urlopen(code_url)
         for line in f.readlines():
             filenames = re.findall(filename_pattern, line)
             for filename in filenames:
@@ -227,7 +236,7 @@ def check_update(*w):
             label = gtk.Label( _('Version %s is released.\n'
                                  'You can download it from:')
                                  % lastest_version)
-            button = url_button('http://ailurus.googlecode.com/files/'+lastest_filename)
+            button = url_button(code_url+lastest_filename)
             vbox.pack_start(label)
             vbox.pack_start(button, False)
         else:

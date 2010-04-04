@@ -1,6 +1,17 @@
+2010-04-03 CHEN Yangyang <skabyy@gmail.com>
+
+    * Ailurus will save configuration as soon as the users change preference.
+    * The update checking functionality check the update from launchpad (Ubuntu)
+      and fedorapeople (Fedora) now.
+    * Fix a bug that Ailurus will abort when Ailurus can not find the icons.
+    * Move the subfunctions of Ailurus from "Applications - System Tool" to 
+      "Applications - System Tool - Ailurus Quick Start"
+
 2010-04-03 MA Yue <velly.empire@gmail.com>
-    * Improve the classify of Install Software
-    * Improve the Gnome Splash Setting
+
+    * Improve classification in "install software" pane.
+    * Improve GNOME splash screen setting.
+      Display splash image via button.
 
 2010-04-03 Starboy Qi <starboy.qi@gmail.com>
 
@@ -8,21 +19,16 @@
 	* Add error message when remove Firefox extensions
 	* Fix a bug that more packages will be remove when try to remove gstreamer
 
-2010-04-03 Chen Yangyang <skabyy@gmail.com>
-
-    * Fix a bug that Ailurus will abort when Ailurus can not find the icons.
-    * Move the subfunctions of Ailurus from "Applications - System Tool" to 
-      "Applications - System Tool - Ailurus Quick Start"
-
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 
     * Fix problem: Program crashes when change shortcut keys.
     * Add Alfred State College repository.
     * Fix a bug that "autotool" cannot be installed.
     * Fix a bug that program blocks when try to install mplayer-vod.
-
+    * Add some missing icons in "Install software" pane.
 
 2010-04-02 MA Yue <velly.empire@gmail.com>
+
     * Add some settings for Fedora
 
 2010-04-02 Starboy Qi <starboy.qi@gmail.com>
