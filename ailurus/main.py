@@ -381,16 +381,16 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         pane = UbuntuAPTRecoveryPane(main_view)
         main_view.register(pane)
 
-    if options.clean_up or options.all:
-        from ubuntu.clean_up_pane import CleanUpPane
-        pane = CleanUpPane(main_view)
-        main_view.register(pane)
-
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)
+
+if options.clean_up or options.all:
+    from clean_up_pane import CleanUpPane
+    pane = CleanUpPane(main_view)
+    main_view.register(pane)
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
