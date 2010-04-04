@@ -399,6 +399,6 @@ class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
     detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     license = 'GNU General Public License (GPL)'
-    icon = 'bluetooth.png'
+    logo = 'bluetooth.png'
     def __init__(self):
         self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

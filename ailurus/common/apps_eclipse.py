@@ -106,7 +106,7 @@ class CDT(_path_lists):
     category = 'eclipse'
     license = ('Eclipse Public License (EPL), '
                'see http://www.eclipse.org/legal/')
-    icon = 'cdt.png'
+    logo = 'cdt.png'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
