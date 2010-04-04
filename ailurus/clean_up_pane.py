@@ -61,6 +61,7 @@ class CleanUpPane(gtk.VBox):
             gksudo('apt-get clean')
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: sudo apt-get clean'))
         return button
     
     def clean_rpm_cache_button(self):
@@ -71,6 +72,7 @@ class CleanUpPane(gtk.VBox):
             os.system('yum clean all')
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: yum clean all'))
         return button
     
     def clean_ailurus_cache_button(self):
@@ -81,6 +83,7 @@ class CleanUpPane(gtk.VBox):
             gksudo('rm /var/cache/ailurus/* -rf')
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
         return button
     
     def clean_recently_used_document_button(self):
@@ -93,6 +96,7 @@ class CleanUpPane(gtk.VBox):
                 os.system("rm ~/.recently-used.xbel/* -rf")
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
+        button.set_tooltip_text(_('Command: echo "" > ~/.recently-used.xbel'))
         return button
 
 class ReclaimMemoryBox(gtk.HBox):
