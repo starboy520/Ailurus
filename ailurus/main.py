@@ -345,7 +345,6 @@ if ( options.all == False
     print _('You did not specify any functionality. :)')
     print _('For example: ailurus --fast --information')
     sys.exit()
-detect_running_instances()
 change_task_name()
 set_default_window_icon()
 check_dbus_configuration()
