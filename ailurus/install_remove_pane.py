@@ -450,15 +450,11 @@ class InstallRemovePane(gtk.VBox):
 
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
-        # determine icon path
-        logo = 'default.png'
-        if hasattr(class0, 'logo'): logo = class0.logo
-        import os
-        if os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
-        elif os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
-        else: return
-        # set icon pixbuf
         if not hasattr(class0, 'logo_pixbuf'):
+            logo = getattr(class0, 'logo', 'blank.png')
+            import os
+            if os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
+            elif os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
