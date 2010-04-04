@@ -69,10 +69,10 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            os.system('yum clean all')
+            gksudo("yum --enablerepo='*' clean all")
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command: yum clean all'))
+        button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
         return button
     
     def clean_ailurus_cache_button(self):
