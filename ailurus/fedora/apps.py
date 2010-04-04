@@ -517,9 +517,8 @@ class VirtualBox_OSE(_rpm_install):
         self.pkgs = 'VirtualBox-OSE'
     
 class nautilus_actions(_rpm_install):
-    __doc__ = _('"Actions Configuration" entry')
-    detail = _('It allows the configuration of programs to be launched \n'
-               'on files selected.\n'
+    __doc__ = _('"Actions configuration" entry')
+    detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
@@ -546,8 +545,7 @@ class nautilus_open_terminal(_rpm_install):
         self.pkgs = 'nautilus-open-terminal'
         
 class nautilus_search_tool(_rpm_install):
-    __doc__ = _('"Search For Files" entries')
-    detail = _('A Nautilus extension that makes searching for files easier')
+    __doc__ = _('"Search files" entries')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
     logo = 'nautilus.png'

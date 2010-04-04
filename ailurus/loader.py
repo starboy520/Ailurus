@@ -24,7 +24,8 @@ from lib import *
 
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
-            'geography','education','media','vm','game', 'statistics', 'eclipse', 'device', 'language', 'nautilus', 'embeded',)
+            'geography','education','media','vm','game', 'statistics', 
+            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',)
 
 class BrokenClass(Exception):
     pass
