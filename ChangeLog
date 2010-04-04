@@ -1,4 +1,4 @@
-2010-04-03 ChenYangyang <skabyy@gmail.com>
+2010-04-03 CHEN Yangyang <skabyy@gmail.com>
 
     * Ailurus will save configuration as soon as the users change preference.
     * The update checking functionality check the update from launchpad (Ubuntu)
@@ -26,7 +26,6 @@
     * Fix a bug that "autotool" cannot be installed.
     * Fix a bug that program blocks when try to install mplayer-vod.
     * Add some missing icons in "Install software" pane.
-
 
 2010-04-02 MA Yue <velly.empire@gmail.com>
 
