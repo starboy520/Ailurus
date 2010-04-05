@@ -331,9 +331,9 @@ parser.add_option('--information', action='store_true', dest='information', defa
 parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
 parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
+parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
 if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
     parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
-    parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
      and not getattr(options, 'recovery', False) 
@@ -381,16 +381,16 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         pane = UbuntuAPTRecoveryPane(main_view)
         main_view.register(pane)
 
-    if options.clean_up or options.all:
-        from ubuntu.clean_up_pane import CleanUpPane
-        pane = CleanUpPane(main_view)
-        main_view.register(pane)
-
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)
+
+if options.clean_up or options.all:
+    from clean_up_pane import CleanUpPane
+    pane = CleanUpPane(main_view)
+    main_view.register(pane)
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))

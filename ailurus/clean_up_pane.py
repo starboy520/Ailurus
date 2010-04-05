@@ -30,11 +30,13 @@ class CleanUpPane(gtk.VBox):
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False, 10)
         self.pack_start(self.clean_recently_used_document_button(),False)
-        self.pack_start(Reclaim_memory(),False)
-        self.pack_start(self.clean_apt_cache_button(), False)
+        self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
-        clean_kernel_box = CleanKernel()
-        self.pack_start(clean_kernel_box, False)
+        if Config.is_Ubuntu() or Config.is_Mint():
+            self.pack_start(self.clean_apt_cache_button(), False)
+            self.pack_start(UbuntuCleanKernelBox(), False)
+        elif Config.is_Fedora():
+            self.pack_start(self.clean_rpm_cache_button(), False)
 
     def get_folder_size(self, folder_path):
         is_string_not_empty(folder_path)
@@ -59,6 +61,18 @@ class CleanUpPane(gtk.VBox):
             gksudo('apt-get clean')
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: sudo apt-get clean'))
+        return button
+    
+    def clean_rpm_cache_button(self):
+        label = gtk.Label(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
+        button = gtk.Button()
+        button.add(label)
+        def __clean_up(button, label):
+            gksudo("yum --enablerepo='*' clean all")
+            label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
+        button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
         return button
     
     def clean_ailurus_cache_button(self):
@@ -69,6 +83,7 @@ class CleanUpPane(gtk.VBox):
             gksudo('rm /var/cache/ailurus/* -rf')
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
         return button
     
     def clean_recently_used_document_button(self):
@@ -81,9 +96,10 @@ class CleanUpPane(gtk.VBox):
                 os.system("rm ~/.recently-used.xbel/* -rf")
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
+        button.set_tooltip_text(_('Command: echo "" > ~/.recently-used.xbel'))
         return button
 
-class  Reclaim_memory(gtk.HBox):
+class ReclaimMemoryBox(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False, 10)
         button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
@@ -133,7 +149,7 @@ class  Reclaim_memory(gtk.HBox):
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
             
-class CleanKernel(gtk.VBox):
+class UbuntuCleanKernelBox(gtk.VBox):
     def __init__(self):
         gtk.VBox.__init__(self, False, 10)
         self.version_to_packages = {} # map version to package names

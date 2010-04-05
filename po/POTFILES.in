@@ -1,6 +1,13 @@
+ailurus-clean-up.desktop.in
 ailurus.desktop.in
+ailurus-fastest-repository.desktop.in
+ailurus-information.desktop.in
+ailurus-install-software.desktop.in
+ailurus-recovery.desktop.in
+ailurus-system-setting.desktop.in
 support/policykit0/cn.ailurus.policy.in
 support/policykit1/cn.ailurus.policy.in
+./ailurus/clean_up_pane.py
 ./ailurus/common/apps_eclipse.py
 ./ailurus/common/apps.py
 ./ailurus/common/hardwareinfo.py
@@ -53,7 +60,6 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/ubuntu/app3.py
 ./ailurus/ubuntu/apps.py
 ./ailurus/ubuntu/apt_recovery_pane.py
-./ailurus/ubuntu/clean_up_pane.py
 ./ailurus/ubuntu/fastest_mirror_pane.py
 ./ailurus/ubuntu/__init__.py
 ./ailurus/ubuntu/libserver.py
