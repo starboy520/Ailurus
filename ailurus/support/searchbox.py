@@ -22,7 +22,7 @@
 import gtk
 import gobject
 
-class SearchBox(gtk.HBox):
+class SearchBoxForApp(gtk.HBox):
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE,
                                 (gobject.TYPE_STRING, gobject.TYPE_STRING)  ) }
     
@@ -60,16 +60,30 @@ class SearchBox(gtk.HBox):
     def __clear_entry(self, widget):
         self.__entry.set_text('')
 
-if __name__ == '__main__':
-    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    vbox = gtk.VBox(False, 0)
-    button = SearchBox()
-    vbox.pack_start(button)
-    window.add(vbox)
-    window.show_all()
-    gtk.gdk.threads_init()
-    gtk.gdk.threads_enter()
-    gtk.main()
-    gtk.gdk.threads_leave()
-    sys.exit()
-    
+class SearchBox(gtk.HBox):
+    def __init__(self, func):
+        self.func = func
+        gtk.HBox.__init__(self, False, 5)
+        label = gtk.Label( _('Search') )
+        self.__entry = entry = gtk.Entry()
+        entry.connect("changed", self.__entry_changed)
+        entry.connect("key_press_event",self.__entry_key_press)
+        stock_clear=gtk.Image()
+        stock_clear.set_from_stock(gtk.STOCK_CLEAR,gtk.ICON_LOOKUP_USE_BUILTIN)
+        button_clear=gtk.Button()
+        button_clear.set_relief(gtk.RELIEF_NONE)
+        button_clear.add(stock_clear)
+        button_clear.connect('clicked',self.__clear_entry)
+        self.pack_start(label, False, False)
+        self.pack_start(entry)
+        self.pack_start(button_clear, False, False)
+    def __text(self):
+        return self.__entry.get_text()
+    def __entry_changed(self, widget):
+        self.func(self.__text())
+    def __entry_key_press(self, widget, event):
+        if event.keyval==gtk.keysyms.Escape:
+            self.__entry.set_text('')
+        return False
+    def __clear_entry(self, widget):
+        self.__entry.set_text('')

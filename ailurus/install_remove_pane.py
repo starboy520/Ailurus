@@ -569,8 +569,8 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
-        from support.searchbox import SearchBox
-        sbox = SearchBox()
+        from support.searchbox import SearchBoxForApp
+        sbox = SearchBoxForApp()
         sbox.connect('changed', self.__search_content_changed)
         box1 = gtk.VBox(False, 10)
         box1.pack_start(sbox, False, False)

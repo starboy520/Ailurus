@@ -26,34 +26,6 @@ from lib import *
 from libu import *
 import libserver
 
-class SearchBox(gtk.HBox):
-    def __init__(self, func):
-        self.func = func
-        gtk.HBox.__init__(self, False, 5)
-        label = gtk.Label( _('Search') )
-        self.__entry = entry = gtk.Entry()
-        entry.connect("changed", self.__entry_changed)
-        entry.connect("key_press_event",self.__entry_key_press)
-        stock_clear=gtk.Image()
-        stock_clear.set_from_stock(gtk.STOCK_CLEAR,gtk.ICON_LOOKUP_USE_BUILTIN)
-        button_clear=gtk.Button()
-        button_clear.set_relief(gtk.RELIEF_NONE)
-        button_clear.add(stock_clear)
-        button_clear.connect('clicked',self.__clear_entry)
-        self.pack_start(label, False, False)
-        self.pack_start(entry)
-        self.pack_start(button_clear, False, False)
-    def __text(self):
-        return self.__entry.get_text()
-    def __entry_changed(self, widget):
-        self.func(self.__text())
-    def __entry_key_press(self, widget, event):
-        if event.keyval==gtk.keysyms.Escape:
-            self.__entry.set_text('')
-        return False
-    def __clear_entry(self, widget):
-        self.__entry.set_text('')
-
 class RepoCheckButton(gtk.CheckButton):
     def __init__(self, old_repo, new_repo):
         text = _('change %(old)s to %(new)s')%{'old':old_repo, 'new':new_repo}
@@ -549,6 +521,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __get_candidate_repositories_box(self):
         label = gtk.Label(_('All repositories:'))
         label.set_alignment(0, 0)
+        from support.searchbox import SearchBox
         searchbox = SearchBox(self.__callback__search_content_changed)
         treeview = self.__get_candidate_repositories_treeview()
         box = gtk.VBox(False, 5)
