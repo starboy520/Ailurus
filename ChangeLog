@@ -1,3 +1,7 @@
+2010-04-05 Homer Xing <homer.xing@gmail.com>
+
+    * Re-write GConfImageEntry. Make source code cleaner.
+
 2010-04-03 CHEN Yangyang <skabyy@gmail.com>
 
     * Ailurus will save configuration as soon as the users change preference.

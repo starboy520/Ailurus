@@ -150,11 +150,23 @@ class GConfShortcutKeyEntry(gtk.HBox):
         self.pack_start(self.shortcut_entry, False)
         self.pack_start(self.clear_entry_content_button, False)
 
-class GConfImageEntry(gtk.HBox):
+class ImageChooser(gtk.Button):
     import gobject
     __gsignals__ = {'changed':( gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, (gobject.TYPE_STRING,) ) }
     
-    def __choose_file(self, w, scale, image_size):
+    def get_image_filter(self):
+        filter = gtk.FileFilter()
+        filter.set_name(_("Images"))
+        for type, pattern in [('image/png', '*.png'),
+                              ('image/jpeg', '*.jpg'),
+                              ('image/gif', '*.gif'),
+                              ('image/x-xpixmap', '*.xpm'),
+                              ('image/x-svg', '*.svg'),]:
+            filter.add_mime_type(type)
+            filter.add_pattern(pattern)
+        return filter
+    
+    def choose_image(self, *args):
         title = _('Choose an image')
         chooser = gtk.FileChooserDialog(title, None, gtk.FILE_CHOOSER_ACTION_OPEN,
                 (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL,
@@ -163,62 +175,60 @@ class GConfImageEntry(gtk.HBox):
         import os
         chooser.set_current_folder('/usr/share/pixmaps/')
         chooser.set_select_multiple(False)
-
-        filter = gtk.FileFilter()
-        filter.set_name(_("Image file"))
-        filter.add_mime_type("image/png")
-        filter.add_mime_type("image/jpeg")
-        filter.add_mime_type("image/gif")
-        filter.add_mime_type("image/x-xpixmap")
-        filter.add_mime_type("image/x-svg")
-        filter.add_pattern("*.png")
-        filter.add_pattern("*.jpg")
-        filter.add_pattern("*.gif")
-        filter.add_pattern("*.xpm")
-        filter.add_pattern("*.svg")
-        
-        chooser.add_filter(filter)
-
-        response = chooser.run()
-        if response == gtk.RESPONSE_OK:
-            self.image_path = chooser.get_filename()
-            temp_file = '/tmp/temp_image'
-            os.system('cp %s %s' %(self.image_path,temp_file))
-            pixbuf = gtk.gdk.pixbuf_new_from_file(temp_file)
-            if scale:
-                pixbuf = pixbuf.scale_simple(image_size, image_size, gtk.gdk.INTERP_HYPER)
-            pixbuf.save(temp_file, 'png')
-            self.emit('changed', temp_file)
-            self.__show_image(temp_file, self.image_size)
+        chooser.add_filter(self.get_image_filter())
+        if chooser.run() == gtk.RESPONSE_OK:
+            image_path = chooser.get_filename()
+            self.emit('changed', image_path)
+            self.display_image(image_path)
         chooser.destroy()
-             
-    def __show_image(self, image, image_size):
-        c = self.button.get_child()
-        if c: self.button.remove(c)
-        import os
-        if not os.path.exists(image):
-            image = D + 'other_icons/blank.png'
-        pixbuf = get_pixbuf(image, image_size, image_size)
+    
+    def display_image(self, image_path):
+        child = self.get_child()
+        if child:
+            self.remove(child)
+        
+        pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
+        pixbuf = self.scale_pixbuf(pixbuf)
         image = gtk.image_new_from_pixbuf(pixbuf)
-        self.button.add(image)
-        self.button.show_all()
-    
-    
-    def __init__(self, tooltip, image_path, image_size, scale=False):
-        is_string_not_empty(tooltip)
-        assert isinstance(image_path, str)
-        assert isinstance(image_size, int)
+        self.add(image)
+        self.show_all()
+
+    def scale_pixbuf(self, pixbuf):
+        pixbuf_height = pixbuf.get_height()
+        pixbuf_width = pixbuf.get_width()
+        if self.image_max_height != -1 and pixbuf_height > self.image_max_height:
+            scale = float(pixbuf_height)/float(self.image_max_height)
+            new_height = self.image_max_height
+            new_width = pixbuf_width/scale
+        elif self.image_max_width != -1 and pixbuf_width > self.image_max_width:
+            scale = float(pixbuf_width)/float(self.image_max_width)
+            new_width = self.image_max_width
+            new_height = pixbuf_height/scale
+        else:
+            return pixbuf
+        return pixbuf.scale_simple(int(new_width), int(new_height), gtk.gdk.INTERP_HYPER)
+
+    def __init__(self, tooltip_text = '', image_max_width = -1, image_max_height = -1):
+        is_string_not_empty(tooltip_text)
+        assert isinstance(image_max_width, int)
+        assert isinstance(image_max_height, int)
         
-        gtk.HBox.__init__(self, False, 0)
-        self.scale = scale
-        self.image_path = image_path
-        self.image_size = image_size
-        self.button = gtk.Button()
-        self.button.set_tooltip_text(tooltip)
-        self.button.connect('clicked', self.__choose_file, scale, image_size )
-        self.__show_image(image_path, image_size)
-        self.pack_start(self.button, False)
-        
+        gtk.Button.__init__(self)
+        if tooltip_text: self.set_tooltip_text(tooltip_text)
+        self.image_max_width = image_max_width
+        self.image_max_height = image_max_height
+
+        self.connect('clicked', self.choose_image)
+
+    @classmethod
+    def scale_image(cls, old_path, new_path, new_width, new_height):
+        pixbuf = gtk.gdk.pixbuf_new_from_file(old_path)
+        if pixbuf.get_width == new_width and pixbuf.get_height == new_height:
+            pass
+        else:
+            pixbuf = pixbuf.scale_simple(new_width, new_height, gtk.gdk.INTERP_HYPER)
+        pixbuf.save(new_path, 'png')
+
 class GConfFileEntry(gtk.HBox):
     def __choose_file(self, w):
         title = _('Choose a file for "%s" ')%self.text

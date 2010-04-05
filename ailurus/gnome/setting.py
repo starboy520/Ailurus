@@ -83,7 +83,9 @@ def __desktop_icon_setting():
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
 def __start_here_icon_setting():
-    def apply(w, new_image):
+    def apply(imagechooser, old_image):
+        imagechooser.scale_image(old_image, '/tmp/start-here.png', 24, 24)
+        
         import os
         local_icons_dir = os.path.expanduser('~/.icons')
         for root, dirs, files in os.walk('/usr/share/icons/'):
@@ -93,7 +95,8 @@ def __start_here_icon_setting():
                     local_path = usr_path.replace('/usr/share/icons', local_icons_dir)
                     local_dir = os.path.dirname(local_path)
                     if not os.path.exists(local_dir): run('mkdir -p ' + local_dir)
-                    run('cp %s %s' % (new_image, local_path) )
+                    run('cp /tmp/start-here.png %s' % local_path)
+        
         notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
     def get_start_here_icon_path():
@@ -111,26 +114,30 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = GConfImageEntry('The "start-here" icon is %s'% path, path, 24, scale=True)
+    i = ImageChooser('The "start-here" icon is %s'% path, 24, 24)
+    try:
+        i.display_image(path)
+    except:
+        i.display_image(D + '/other_icons/blank.png')
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(i)
+    box.pack_start(left_align(i))
     return Setting(box, _('Change "start-here" icon'), ['icon'])
 
 def __login_icon_setting():
-    def __apply(w, image):
+    def apply(w, image):
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' % (image, path))
         notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
-    import os
-    path = ''
-    path1 = os.path.expanduser('~/.face')
-    if os.path.exists(path1): path = path1
-    i = GConfImageEntry(_('The login icon is ~/.face'), path, 96, scale=False)
-    i.connect('changed',__apply)
+    i = ImageChooser(_('The login icon is ~/.face'), 96, 96)
+    try:
+        i.display_image(os.path.expanduser('~/.face'))
+    except:
+        i.display_image(D + '/other_icons/blank.png')
+    i.connect('changed',apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(i)
+    box.pack_start(left_align(i))
     return Setting(box, _('Change login icon'), ['icon'])
     
 def __menu_icon_setting():
@@ -273,6 +280,27 @@ def __textbox_context_menu_setting():
              _('This option affects GEdit and all GTK text-boxes.'))
     table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Text-boxes context menu'), ['menu'])
+
+def __gnome_splash_setting():
+    def changed(w, new_path):
+        g.set_string('/apps/gnome-session/options/splash_image', new_path)
+
+    e = GConfCheckButton(_('Show login splash image: '),
+     '/apps/gnome-session/options/show_splash_screen',
+     _('If its value is true, a splash image is displayed after you log in to GNOME.'))
+    
+    import gconf
+    g = gconf.client_get_default()
+    image_path = g.get_string('/apps/gnome-session/options/splash_image')
+    o = ImageChooser(_('GConf key: ') + '/apps/gnome-session/options/splash_image', 96, 96)
+    try: o.display_image(image_path)
+    except: o.display_image(D + '/other_icons/blank.png')
+    o.connect('changed', changed)
+
+    hbox = gtk.HBox(False)
+    hbox.pack_start(e, False)
+    hbox.pack_start(o, False)
+    return Setting(hbox, _('GNOME splash image'), ['session'])
 
 def __restriction_on_current_user():
     table = gtk.Table()
@@ -462,7 +490,9 @@ def __compiz_setting():
     # Window Decorator    
     label = gtk.Label(_('Set Window Decorator:'))
     label.set_alignment(0, 0.5)
-    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. If you are using Fedora, please run 'yum install fusion-icon' as root to install Fusion icons. Otherwise, this option does not work.</span>\n")
+    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. "
+                               "If you are using Fedora, please run 'yum install fusion-icon' to install Fusion icons. "
+                               "Otherwise, this option does not work.</span>\n")
                            + _('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command')
     hbox = gtk.HBox()
     o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 
@@ -523,6 +553,7 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
+            __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
             __disable_terminal_beep,
