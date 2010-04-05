@@ -215,5 +215,5 @@ def set2():
 ['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux/'],
 ]
     
-def get():
+def get_candidate_repositories():
     return set1() + set2()
