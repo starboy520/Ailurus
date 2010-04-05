@@ -98,7 +98,8 @@ class Speedup_Nautilus:
        '/apps/nautilus/preferences/show_directory_item_counts = never\n'
        '/apps/nautilus/preferences/preview_sound = never\n'
        '/apps/nautilus/preferences/show_icon_text = never\n'
-       '/apps/nautilus/icon_view/default_use_tighter_layout = true')
+       '/apps/nautilus/icon_view/default_use_tighter_layout = true\n'
+       'delete "size" from /apps/nautilus/list_view/default_visible_columns')
     logo = 'nautilus.png'
     category = 'nautilus'
 
