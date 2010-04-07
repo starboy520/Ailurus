@@ -1,3 +1,8 @@
+2010-04-07 MA Yue <velly.empire@gmail.com>
+    
+    * Improve the Eclipse installation function in Ubuntu.
+    * Add the PiTiVi for video edit 
+
 2010-04-05 Homer Xing <homer.xing@gmail.com>
 
     * Re-write GConfImageEntry. Make source code cleaner.

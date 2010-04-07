@@ -562,3 +562,13 @@ class ImageMagick(_rpm_install):
     def __init__(self):
         self.pkgs = 'ImageMagick'
 
+class PiViTi(_rpm_install):
+    __doc__ = _('PiViTi')
+    detail = _("PiTiVi pronounciation is a free, intuitive and featureful movie editor for the Linux desktop.\n"
+               "Command:su -c 'yum install piviti'")
+    logo = 'pitivi.png'
+    license = ('GNU Lesser General Public License, '
+               'see http://www.pitivi.org/')
+    category = 'media'
+    def __init__(self):
+        self.pkgs = 'pitivi'

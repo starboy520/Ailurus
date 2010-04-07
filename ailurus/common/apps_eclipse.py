@@ -92,7 +92,7 @@ elif Config.is_Ubuntu():
         license = ('Eclipse Public License (EPL), '
                    'see http://www.eclipse.org/org/documents/epl-v10.php')
         def __init__(self):
-            self.pkgs = 'eclipse-platform'
+            self.pkgs = 'eclipse'
 
 def make_sure_installed():
     if Config.is_Ubuntu():
