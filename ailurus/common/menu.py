@@ -155,7 +155,8 @@ def show_special_thank_dialog(widget): # called by __help
     print >>text, '<b><big>Careone</big></b>'
     print >>text
     print >>text, _('The people who provide a lot of translation:')
-    print >>text, '<b><big>Federico Vera, Sergey Sedov</big></b>', _('and many other people.')
+    print >>text, '<b><big>Federico Vera, Sergey Sedov, Sérgio Marques</big></b>', 
+    print >>text, _('and many other people.')
     print >>text 
     print >>text, _('The people who report bugs:')
     print >>text, '<b><big>LIU Liang, YU Pengfei, q1ha0,'
