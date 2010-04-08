@@ -2,6 +2,7 @@
 
     * Fix bug: "apt-get update" run two times before install songbird.
     * Fix bug: duplicate package names are output when songbird fails to be installed.
+    * Fix bug: locale string in CommandFailError cannot be displayed.
 
 2010-04-07 MA Yue <velly.empire@gmail.com>
     

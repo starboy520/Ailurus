@@ -671,7 +671,7 @@ class APT:
         for p in all_packages:
             if not APT.installed(p): failed.append(p)
         if failed:
-            msg = _('Cannot install packages "%s".')%' '.join(failed)
+            msg = 'Cannot install "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
@@ -707,7 +707,7 @@ class APT:
         for p in packages:
             if APT.installed(p): failed.append(p)
         if failed or not_exist:
-            msg = _('Cannot remove packages "%s".')%' '.join(failed+not_exist)
+            msg = 'Cannot remove "%s".' % ' '.join(failed+not_exist)
             raise CommandFailError(msg)
     @classmethod
     def apt_get_update(cls):
