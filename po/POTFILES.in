@@ -18,9 +18,10 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/common/tips.py
 ./ailurus/daemon.py
 ./ailurus/fedora/apps.py
+./ailurus/fedora/fastest_mirror_pane.py
 ./ailurus/fedora/__init__.py
+./ailurus/fedora/libserver.py
 ./ailurus/fedora/osinfo.py
-./ailurus/fedora/repos.py
 ./ailurus/fedora/rpm_recovery_pane.py
 ./ailurus/gnome/apps.py
 ./ailurus/gnome/__init__.py
@@ -69,3 +70,5 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/ubuntu/setting.py
 ./ailurus/ubuntu/third_party_repos.py
 ./ailurus/ubuntu/tips.py
+./bamboo/fedora.py
+./bamboo/ubuntu.py
