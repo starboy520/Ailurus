@@ -135,7 +135,7 @@ class _repo:
         # add key
         if hasattr(self, 'key_url'):
             if self.key_url: #if has key
-                wget(self.key_url, '/tmp/key.gpg')
+                download(self.key_url, '/tmp/key.gpg')
                 run_as_root('apt-key add /tmp/key.gpg')
         else:
             raise NotImplementedError

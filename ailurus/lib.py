@@ -904,7 +904,7 @@ class KillWhenExit:
 import atexit
 atexit.register(KillWhenExit.kill_all)
 
-def wget(url, filename):
+def download(url, filename):
     is_string_not_empty(url)
     assert url[0]!='-'
     is_string_not_empty(filename)
@@ -1281,7 +1281,7 @@ class R:
             assert isinstance(url, str)
             try:
                 R.create_tmp_dir()
-                wget(url, dest)
+                download(url, dest)
                 self.check(dest)
                 return dest
             except:

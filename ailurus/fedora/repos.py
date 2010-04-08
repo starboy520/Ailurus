@@ -80,7 +80,7 @@ class Repo_RPMFusion_Free(_repo):
                 _repo.enable(path, only_enable_first_appearance = True)
         else:
             file = '/tmp/rpmfusion-free-release-stable.noarch.rpm'
-            wget('http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm', file)
+            download('http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm', file)
             RPM.install_local(file)
     def remove(self):
         for path in self.paths:
@@ -107,7 +107,7 @@ class Repo_RPMFusion_NonFree(_repo):
                 _repo.enable(path, only_enable_first_appearance = True)
         else:
             file = '/tmp/rpmfusion-nonfree-release-stable.noarch.rpm'
-            wget('http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm', file)
+            download('http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm', file)
             RPM.install_local(file)
     def remove(self):
         for path in self.paths:
