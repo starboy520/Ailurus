@@ -1366,12 +1366,6 @@ def create_file(path, content):
         with open(path, 'w') as f:
             f.write(content)
 
-def run_in_new_terminal(file_name):
-    import subprocess
-    task = subprocess.Popen('LANG=C xterm -T "Ailurus Terminal" -e bash %s'%file_name, shell=True )
-    if task.wait():
-        raise CommandFailError
-
 class Tasksel:
     fresh_cache = False
     set1 = set()

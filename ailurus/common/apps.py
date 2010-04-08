@@ -393,11 +393,7 @@ class TeXLive2009:
         temp.write("I\n") # Do not establish symbolic links in /usr/bin/ since TeXLive 
         temp.flush()
         
-        temp2 = tempfile.NamedTemporaryFile(mode='w')
-        temp2.write("sudo /mnt/texlive/install-tl < %s\n" %temp.name)
-        temp2.flush()
-        run_in_new_terminal(temp2.name)
-#        run_as_root("/mnt/texlive/install-tl < %s" %temp.name )
+        run_as_root_in_terminal('/mnt/texlive/install-tl < %s\n' % temp.name)
         run_as_root("umount /mnt/texlive")
         run_as_root("rmdir /mnt/texlive", ignore_error=True)
         #setup environment variables
