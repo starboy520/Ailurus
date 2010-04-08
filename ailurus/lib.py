@@ -533,7 +533,7 @@ def is_pkg_list(packages):
         if package[0]=='-': raise ValueError
         if ' ' in package: raise ValueError
 
-def su(command):
+def run_as_root_in_terminal(command):
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
@@ -575,7 +575,7 @@ class RPM:
         return package_name in cls.__set1
     @classmethod
     def install(cls, *package):
-        su('yum install %s -y' % ' '.join(package))
+        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def install_local(cls, path):
@@ -583,16 +583,16 @@ class RPM:
         import os
         assert os.path.exists(path)
         
-        su('yum localinstall --nogpgcheck -y %s' % path)
+        run_as_root_in_terminal('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
     @classmethod
     def remove(cls, *package):
-        su('yum remove %s -y' % ' '.join(package))
+        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def import_key(cls, path):
         assert isinstance(path, str)
-        su('rpm --import %s' % path)
+        run_as_root_in_terminal('rpm --import %s' % path)
 
 class APT:
     fresh_cache = False
