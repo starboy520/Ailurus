@@ -104,6 +104,7 @@ liferea.png is copied from Liferea project. It is released under the GPL license
 stardict.png is copied from Stardict project. It is released under GPL v3 license. Its copyright is holded by Stardict Team.
 m_clean_up.png is released under the GPL license. Its copyright is holded by MA Yue.
 netbeans.png is copied from Netbeans project. It is released under the GPL v2 license. Its copyright is holded by Sun Microsystems Ltd.
+pitivi.png is copied from PiTiVi project. It is released under the LGPL license. Its copyright is holded by PiTiVi Team.
 python.png is copied from Python project. It is released under the Python license. Its copyright is holded by Python Software Foundation.
 qtcreator.png is copied from Qt project. It is released under the LGPL license. Its copyright is holded by Nokia Corporation.
 s_nautilus.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
