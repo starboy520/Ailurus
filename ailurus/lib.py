@@ -640,12 +640,9 @@ class APT:
     def install(cls, *packages):
         # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        # get list of not-existed packages
-        not_exist = [ e for e in packages if not APT.exist(e) ]
-        # reduce package list
+        all_packages = packages
         packages = [ e for e in packages if not APT.installed(e) ]
         if packages:
-            # apt-get update
             if not hasattr(cls, 'updated'):
                 APT.apt_get_update()
                 cls.updated = True
@@ -671,10 +668,10 @@ class APT:
             APT.cache_changed()
         # check state
         failed = []
-        for p in packages:
+        for p in all_packages:
             if not APT.installed(p): failed.append(p)
-        if failed or not_exist:
-            msg = _('Cannot install packages "%s".')%' '.join(failed+not_exist)
+        if failed:
+            msg = _('Cannot install packages "%s".')%' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
@@ -718,6 +715,7 @@ class APT:
         print '\x1b[1;33m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
+        cls.updated = True
 
 #class DPKG:
 #    @classmethod

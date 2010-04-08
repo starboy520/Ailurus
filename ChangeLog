@@ -1,3 +1,8 @@
+2010-04-08 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: "apt-get update" run two times before install songbird.
+    * Fix bug: duplicate package names are output when songbird fails to be installed.
+
 2010-04-07 MA Yue <velly.empire@gmail.com>
     
     * Improve Eclipse installation in Ubuntu.
