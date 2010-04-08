@@ -28,6 +28,8 @@ if not Config.is_Fedora():
     raise Exception
 
 class _repo:
+    this_class_is_a_repository = True
+    category = 'repository'
     @classmethod
     def exist(cls, path):
         import os
@@ -357,3 +359,34 @@ class Skype(_rpm_install):
     def support(self):
         return get_arch() == 32
 
+class VirtualBox_OSE(_rpm_install):
+    __doc__ = _('VirtualBox open source edition')
+    detail = _('Command: yum install VirtualBox-OSE')
+    category = 'vm'
+    license = 'GNU General Public License (GPL)'
+    logo = 'virtualbox.png'
+    depend = Repo_RPMFusion_Free
+    def __init__(self):
+        self.pkgs = 'VirtualBox-OSE'
+
+class Repo_Chromium(_repo):
+    'Chromium'
+    detail = _('Open source web browser')
+    def __init__(self):
+        self.path = '/etc/yum.repos.d/chromium.repo'
+    def installed(self):
+        return _repo.exist(self.path) and _repo.enabled(self.path)
+    def install(self):
+        if _repo.exist(self.path):
+            _repo.enable(self.path)
+        else:
+            with TempOwn(self.path) as o:
+                with open(self.path, 'w') as f:
+                    f.write('[chromium]\n'
+                            'name=Chromium Test Packages\n'
+                            'baseurl=http://spot.fedorapeople.org/chromium/F$releasever/\n'
+                            'enabled=1\n'
+                            'gpgcheck=0\n')
+    def remove(self):
+        if _repo.exist(self.path):
+            _repo.disable(self.path)
