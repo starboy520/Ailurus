@@ -335,7 +335,7 @@ def authenticate():
         import os
         policykit.ObtainAuthorization('cn.ailurus', dbus.UInt32(0), dbus.UInt32(os.getpid()))
 
-def su_spawn(command):
+def spawn_as_root(command):
     is_string_not_empty(command)
     
     authenticate()

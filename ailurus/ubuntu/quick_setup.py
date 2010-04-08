@@ -312,7 +312,7 @@ class Install_Hardware_Driver:
     def installed(self):
         return False
     def install(self):
-        su_spawn('/usr/bin/jockey-gtk')
+        spawn_as_root('/usr/bin/jockey-gtk')
 
 def get_class_by_name(name, app_classes):
     assert isinstance(name, str)

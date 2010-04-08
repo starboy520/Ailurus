@@ -634,7 +634,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         
         # Then we open the files.
         for path in paths:
-            su_spawn("%s '%s'"%(editor, path))
+            spawn_as_root("%s '%s'"%(editor, path))
 
     def __callback__edit_apt_sources_by_synaptic(self, *w):
         import os
@@ -645,7 +645,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         else:
             raise Exception
         
-        su_spawn(launcher)
+        spawn_as_root(launcher)
     
     def __callback__merge_sourceslist(self, *w):
         contents = []
