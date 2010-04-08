@@ -712,9 +712,8 @@ class imagemagick(_apt_install):
         self.pkgs = 'imagemagick'
         
 class PiViTi(_apt_install):
-    __doc__ = _('PiViTi')
-    detail = _("PiTiVi pronounciation is a free, intuitive and featureful movie editor for the Linux desktop.\n"
-               "Command: sudo aptitude install piviti")
+    __doc__ = _('PiTiVi: movie editor')
+    detail = _("Command: sudo apt-get install piviti")
     logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
