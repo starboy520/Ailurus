@@ -79,7 +79,7 @@ class SelectWorksDialog(gtk.Dialog):
             sys.exit()
 
 def acquire_root_privilege():
-    gksudo('date')
+    run_as_root('date')
 
 class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
@@ -290,7 +290,7 @@ class FastestRepositoryDialog(gtk.Dialog):
             
     def change_server(self, fastest_url):
         'apply the fastest repository'
-        gksudo('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
+        run_as_root('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
         for repos in get_current_official_repositories():
             changes[repos] = fastest_url

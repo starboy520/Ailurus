@@ -117,9 +117,9 @@ class CDT(_path_lists):
     def install(self):
         make_sure_installed()
         f = self.r.download()
-        gksudo('mkdir -p '+self.path)
-        gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        run_as_root('mkdir -p '+self.path)
+        run_as_root("unzip -qo %s -d %s"%(f, self.path))
+        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
 
 class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
@@ -137,9 +137,9 @@ class Pydev(_path_lists):
     def install(self):
         make_sure_installed()
         f = self.r.download()
-        gksudo('mkdir -p '+self.path)
-        gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        run_as_root('mkdir -p '+self.path)
+        run_as_root("unzip -qo %s -d %s"%(f, self.path))
+        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
 
 class Aptana:
     __doc__ = _('Aptana: Web application development')
@@ -203,9 +203,9 @@ class Mylyn(_path_lists):
     def install(self):
         make_sure_installed()
         f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
-        gksudo('mkdir -p '+self.path)
-        gksudo("unzip -qo %s -d %s" % (f, self.path) )
-        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        run_as_root('mkdir -p '+self.path)
+        run_as_root("unzip -qo %s -d %s" % (f, self.path) )
+        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
 
 class DLTK:
     __doc__ = _('Dynamic languages toolkit')
@@ -378,6 +378,6 @@ class MTJ(_path_lists):
 'http://eclipse.c3sl.ufpr.br/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
                ])
         f = r.download()
-        gksudo('mkdir -p '+self.path)
-        gksudo("unzip -qo %s -d %s"%(f, self.path))
-        gksudo("chown $USER:$USER /usr/lib/eclipse -R")
+        run_as_root('mkdir -p '+self.path)
+        run_as_root("unzip -qo %s -d %s"%(f, self.path))
+        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")

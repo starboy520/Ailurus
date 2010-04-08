@@ -287,7 +287,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
         self.pkgs = 'cups-pdf'
     def install(self):
         _apt_install.install(self)
-        gksudo("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
+        run_as_root("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
         with TempOwn( self.__file ) as o:
             with open( self.__file , "r") as f:
                 content = f.readlines()
@@ -338,7 +338,7 @@ class Flash_Player(_apt_install):
 #            FileServer.chdir('/etc/fonts/conf.d')
 #            import os
 #            if os.path.exists('49-sansserif.conf'):
-#                gksudo('mv 49-sansserif.conf 49-sansserif.back')
+#                run_as_root('mv 49-sansserif.conf 49-sansserif.back')
 #        finally:
 #            FileServer.chdir_back()
 #    def remove(self):
@@ -346,7 +346,7 @@ class Flash_Player(_apt_install):
 #            FileServer.chdir('/etc/fonts/conf.d')
 #            import os
 #            if os.path.exists('49-sansserif.back'):
-#                gksudo('mv 49-sansserif.back 49-sansserif.conf')
+#                run_as_root('mv 49-sansserif.back 49-sansserif.conf')
 #        finally:
 #            FileServer.chdir_back()
 #    def get_reason(self, f):

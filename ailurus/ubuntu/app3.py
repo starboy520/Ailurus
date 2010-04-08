@@ -54,7 +54,7 @@ Categories=Science;Engineering;''')
         return _apt_install.installed(self)
     def remove(self):
         _apt_install.remove(self)
-        gksudo('rm -f %s'%self.shortcut)
+        run_as_root('rm -f %s'%self.shortcut)
 
 class FreeCAD(_apt_install):
     __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
@@ -102,8 +102,8 @@ class FreeCAD(_apt_install):
         depends.remove('libgl1-mesa')
         depends.append('libgl1-mesa-dev')
         for depend in depends:
-            gksudo('apt-get install -qq %s'%depend)
-        gksudo('dpkg -i %s'%f)
+            run_as_root('apt-get install -qq %s'%depend)
+        run_as_root('dpkg -i %s'%f)
         APT.cache_changed()
     def support(self):
         ver = Config.get_Ubuntu_version()
@@ -235,27 +235,6 @@ class DisableGettyKarmic(DisableGetty):
         finally:
             FileServer.chdir_back()
 
-#class TencentQQ:
-#    __doc__ = "QQ"
-#    detail = _(u'Tencent® QQ. Official site: <span color="blue"><u>http://im.qq.com/qq/linux/</u></span>')
-#    category = 'internet'
-#    size = 6264000
-#    time = 14
-#    Chinese = True
-#    logo = 'qq.png'
-#    def install(self):
-#        f = R(
-#['http://tdt.sjtu.edu.cn/S/linuxqq_v1.0.2-beta1_i386.deb',
-#'http://dl_dir.qq.com/linuxqq/linuxqq_v1.0.2-beta1_i386.deb'],
-#5028066, 'a8ef309143c86019819a01fa5f7163d81c722c43').download()
-#
-#        gksudo('dpkg --install --force-architecture %s'%f)
-#        APT.cache_changed() #do not use DPKG.install_deb(), since the dependency is wrong.
-#    def installed(self):
-#        return DPKG.installed('linuxqq')
-#    def remove(self):
-#        gksudo('dpkg --purge linuxqq')
-
 class Octave(_apt_install):
     __doc__ = 'Octave'
     detail = _(u'A Matlab® compatible numerical computation appliation.\n'
@@ -269,7 +248,7 @@ class Octave(_apt_install):
         self.pkgs = 'qtoctave'
     def remove(self):
         _apt_install.remove(self)
-        gksudo('apt-get remove octave* -qq')
+        run_as_root('apt-get remove octave* -qq')
 
 class Generic_Genome_Browser:
     __doc__ = _('Generic Genome Browser')

@@ -77,7 +77,7 @@ class _repo:
     def save_source(cls):
         for file_path, contents in _repo.source_settings.items():
             if contents == []:
-                gksudo("rm -f '%s' "%file_path)
+                run_as_root("rm -f '%s' "%file_path)
                 continue
             with TempOwn(file_path) as o:
                 f = open(file_path, 'w')
@@ -136,7 +136,7 @@ class _repo:
         if hasattr(self, 'key_url'):
             if self.key_url: #if has key
                 wget(self.key_url, '/tmp/key.gpg')
-                gksudo('apt-key add /tmp/key.gpg')
+                run_as_root('apt-key add /tmp/key.gpg')
         else:
             raise NotImplementedError
     def remove(self):
@@ -148,7 +148,7 @@ class _repo:
         _repo.fresh_cache = False
         # remove key
         if self.key_id:
-            gksudo('apt-key del '+self.key_id, ignore_error=True)
+            run_as_root('apt-key del '+self.key_id, ignore_error=True)
 
 class Repo_Firefox_3_6(_repo):
     __doc__ = _('Firefox 3.6 (stable)')
