@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-04-02 04:42+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"PO-Revision-Date: 2010-04-07 15:18+0000\n"
+"Last-Translator: milboy <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 07:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -296,7 +296,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:180 .././ailurus/ubuntu/app1.py:238
 msgid "Use colorful Bash prompt symbols"
-msgstr ""
+msgstr "Použite farebné Bash prompt symboly"
 
 #: .././ailurus/fedora/apps.py:181
 msgid ""
@@ -307,6 +307,10 @@ msgid ""
 "PS1='\\[\\033[01;32m\\]\\u@\\h\\[\\033[00m\\] \\[\\033[01;34m\\]\\W\\[\\"
 "033[00m\\]\\\\$ '"
 msgstr ""
+"Zmeniť Bash prompt symboly z \"[username@hostname ~]$ \"do \"<span "
+"color=\"#3dba34\">username@hostname</span> <span color=\"#729fcf\">~</span>$ "
+"\".\n"
+"Trikom je pridanie tohto riadku do \"$HOME/.bashrc\"."
 
 #: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "The color of bash prompt symbols is changed."
@@ -385,6 +389,18 @@ msgid ""
 "</i>Command: yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel "
 "subversion git"
 msgstr ""
+"Nástroje sú:\n"
+"<i>gcc: GNU C compiler.\n"
+"gcc-c++: GNU C++ compiler.\n"
+"ctags: Zdrojový kód parser použitý v vi a emacs, ktorý umožňuje meniacu sa "
+"definíciu symbolu.\n"
+"gmp-devel: GNU multiprecízne aritmetické knižnice.\n"
+"ncurses-devel: Knižnica pre ovládanie písania v konzole na obrazovke.\n"
+"qt3-devel: Trolltech Qt library, verzia 3.\n"
+"subversion: systém pre správu verzií.\n"
+"git: verzia distribúcie pre správu systému.\n"
+"</i>Príkaz: yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel "
+"subversion git"
 
 #: .././ailurus/fedora/apps.py:261 .././ailurus/ubuntu/app2.py:313
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
@@ -396,6 +412,9 @@ msgid ""
 "reports.\n"
 "Command: yum install qtiplot"
 msgstr ""
+"Je to kresliaca aplikácia potrebná pre písanie správ o fyzikálnych "
+"experimentoch.\n"
+"Príkaz: yum install qtiplot"
 
 #: .././ailurus/fedora/apps.py:272 .././ailurus/ubuntu/app3.py:116
 msgid "A CAD software which supports DXF-format. "
@@ -405,16 +424,19 @@ msgstr "CAD softvér, ktorý podporuje DXF-formát. "
 msgid ""
 "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
+"Deaktivovať Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 je stále aktívny"
 
 #: .././ailurus/fedora/apps.py:281 .././ailurus/ubuntu/app3.py:139
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
-msgstr ""
+msgstr "Urýchliť proces spustenia Linuxu. Uvoľní 2,5 MB pamäte. "
 
 #: .././ailurus/fedora/apps.py:326
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
+"Kompatibilná aplikácia Matlab® pre numerické výpočty.\n"
+"Príkaz: yum install qtoctave"
 
 #: .././ailurus/fedora/apps.py:336 .././ailurus/ubuntu/app3.py:275
 msgid "Generic Genome Browser"
@@ -434,44 +456,54 @@ msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: yum install tuxpaint"
 msgstr ""
+"To je kresliaci program pre malé deti od troch rokov.\n"
+"Príkaz: yum install tuxpaint"
 
 #: .././ailurus/fedora/apps.py:368
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: yum install childsplay"
 msgstr ""
+"Jedná sa o sadu vzdelávacích hier pre malé deti.\n"
+"Príkaz: yum install childsplay"
 
 #: .././ailurus/fedora/apps.py:378
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
 msgstr ""
+"GCompris poskytuje vzdelávacie hry pre deti od 2 do 10rokov.\n"
+"Príkaz: yum install gcompris"
 
 #: .././ailurus/fedora/apps.py:388
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
+"To je IDE pre Qt.\n"
+"Príkaz: yum install qt-creator"
 
 #: .././ailurus/fedora/apps.py:398
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
+"Kadu je rýchly kuriér, ktorý je veľmi populárny v Poľsku.\n"
+"Príkaz: yum install kadu"
 
 #: .././ailurus/fedora/apps.py:408 .././ailurus/ubuntu/app3.py:454
 msgid "Parcellite: clipboard manager"
-msgstr ""
+msgstr "Parcellite: manažér schránky"
 
 #: .././ailurus/fedora/apps.py:409 .././ailurus/ubuntu/app3.py:455
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
-msgstr ""
+msgstr "To je silný manažér schránky. Umožňuje zachovať 25 reťazcov súčasne."
 
 #: .././ailurus/fedora/apps.py:417
 msgid "Enable \"sudo\""
-msgstr ""
+msgstr "Povoliť \"sudo\""
 
 #: .././ailurus/fedora/apps.py:418
 msgid ""
@@ -480,18 +512,22 @@ msgid ""
 "'COMMAND'\". <span color=\"red\">Due to restriction on filesystem "
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
+"Ak ste povolili \"sudo\" a chcete spúšťať príkazy ako root, môžete zadať "
+"príkaz \"sudo COMMAND\" namiesto zložitých príkaz \"su-c 'command'.\" <span "
+"color=\"red\"> Vzhľadom na obmedzenia súborového systému povolení, nemôže "
+"Ailurus zistiť, či \"sudo\" je povolené. </ span> "
 
 #: .././ailurus/fedora/apps.py:430
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
-msgstr ""
+msgstr "Zakázať \"sudo\". Zabráni použitiu \"sudo\"."
 
 #: .././ailurus/fedora/apps.py:439
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
-msgstr ""
+msgstr "Spustite SELinux v tolerantnom režime, namiesto režimu vynucovania."
 
 #: .././ailurus/fedora/apps.py:471 .././ailurus/ubuntu/app3.py:501
 msgid "WallpaperTray: Randomly change GNOME desktop background"
-msgstr ""
+msgstr "WallpaperTray: Pravidelná zmena pozadia GNOME plochy"
 
 #: .././ailurus/fedora/apps.py:473
 msgid ""
@@ -499,99 +535,109 @@ msgid ""
 "After installation, please restart your computer. Then right-click GNOME "
 "panel, and select \"Add to panel\"->\"Wallpaper Tray\"."
 msgstr ""
+"Príkaz: yum install wp_tray\n"
+"Po inštalácii, prosím reštartujte Váš počítač. Potom pravým kliknutím na "
+"gnome panel a vyberte \"Pridať do panelu\"->\"Wallpaper Tray\"."
 
 #: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "Flash rozšírenie pre webový prehliadač"
 
 #: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
-msgstr ""
+msgstr "Príkaz: yum install gnash"
 
 #: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
 #: .././ailurus/ubuntu/quick_setup.py:296
 msgid "Multi-media codec"
-msgstr ""
+msgstr "Multimediálne kodeky"
 
 #: .././ailurus/fedora/apps.py:493
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
 "extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
 msgstr ""
+"Príkaz: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
+"extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
 
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
-msgstr ""
+msgstr "Verzia Ubuntu:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:33
 msgid "Search"
-msgstr ""
+msgstr "Hľadanie"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:59
 #, python-format
 msgid "change %(old)s to %(new)s"
-msgstr ""
+msgstr "zmeniť %(old)s na %(new)s"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:66
 msgid "Find fastest repository mirror"
-msgstr ""
+msgstr "Nájsť zrkadlo pre najrýchlejší zdroj softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
 msgid "The fastest repository is %s;"
-msgstr ""
+msgstr "Najrýchlejší zdroj softvéruje %s;"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
 msgid "Its response time is %s millisecond."
-msgstr ""
+msgstr "Jeho doba odozvy je %s milisekúnd."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:80
 msgid ""
 "<span color=\"red\"><big>We have not searched out the fastest "
 "repository.</big></span>"
 msgstr ""
+"<span color=\"red\"><big>Nie je vyhľadaný najrýchlejší zdroj "
+"softvéru.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:84
 msgid "<span color=\"blue\">The fastest repository is being used.</span>"
-msgstr ""
+msgstr "<span color=\"blue\">Najrýchlejší zdroj softvéru sa používa.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:86
 msgid ""
 "<span color=\"red\"><big>The fastest repository is not being "
 "used.</big></span>"
 msgstr ""
+"<span color=\"red\"><big>Najrýchlejší zdroj softvéru nie je "
+"použitý.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:90
 msgid "Currently you are using these repositories:"
-msgstr ""
+msgstr "V súčasnej dobe používate tieto zdroje softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:93
 msgid "(Official repository)"
-msgstr ""
+msgstr "(Oficiálny zdroj softvéru)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:94
 msgid "(Third-party repository)"
-msgstr ""
+msgstr "(zdroj softvéru tretej strany)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:103
 msgid "There is one configuration file in /etc/apt/sources.list.d/"
-msgstr ""
+msgstr "Konfiguračný súbor je v /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:104
 #, python-format
 msgid "There are %s configuration files in /etc/apt/sources.list.d/"
-msgstr ""
+msgstr "Tam sú %s konfiguračné súbory v /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:107
 msgid "They are:"
-msgstr ""
+msgstr "To sú:"
 
 #. print tip
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:120
 msgid ""
 "<small>(Click mouse right button to display the context menu.)</small>"
 msgstr ""
+"<small>(Kliknutie pravym tlačítkom myši zobrazí súvisiacu ponuku.)</small>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:139
 msgid ""
@@ -603,122 +649,132 @@ msgid ""
 "cd /etc/apt/\n"
 "sudo tar xzf ~/sources.backup.tar.gz"
 msgstr ""
+"<b>Zálohovanie konfigurácie zdrojov softvéru:</b>\n"
+"cd /etc/apt/\n"
+"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"\n"
+"<b>Obnovenie konfigurácie zdrojov softvéru:</b>\n"
+"cd /etc/apt/\n"
+"sudo tar xzf ~/sources.backup.tar.gz"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:159
 msgid "Backup and restore the configuration of repositories"
-msgstr ""
+msgstr "Zálohovanie a obnova konfigurácie zdrojov softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:173
 msgid "Refresh"
-msgstr ""
+msgstr "Aktualizovať"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:175
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:427
 msgid "Detect response time of all repositories"
-msgstr ""
+msgstr "Rozpoznať dobu odozvy všetkých zdrojov softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:177
 msgid "Use the fastest repository"
-msgstr ""
+msgstr "Použiť najrýchleší zdroj softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:179
 msgid "Edit repository configuration by text editor"
-msgstr ""
+msgstr "Upraviť konfiguráciu zdrojov softvéru v textovom editore"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:181
 msgid "Edit repository configuration by Synaptic"
-msgstr ""
+msgstr "Upraviť konfiguráciu zdrojov softvéru v Synaptiku"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:183
 msgid ""
 "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
 msgstr ""
+"Zlúčiť všetky súbory v /etc/apt/sources.list.d/ do /etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:185
 msgid "How to backup and restore the configuration of repositories?"
-msgstr ""
+msgstr "Ako zálohovať a obnoviť konfigurácie zdrojov softvéru?"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:213
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:500
 msgid "Click mouse right button to display the context menu."
-msgstr ""
+msgstr "Kliknutie pravym tlačítkom myši zobrazí súvisiacu ponuku."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:228
 msgid "No response"
-msgstr ""
+msgstr "Neodpovedá"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:282
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
-msgstr ""
+msgstr "<span color='black'>Doba odozvy %(server)s je %(value).2f ms.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
 #: .././ailurus/ubuntu/quick_setup.py:175
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
-msgstr ""
+msgstr "<span color='black'>Server %s je nedostupný.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:296
 #, python-format
 msgid "Currently you are using %s."
-msgstr ""
+msgstr "Aktuálne používate %s."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:303
 msgid "Change repository"
-msgstr ""
+msgstr "Zmeniť zdroj softvéru"
 
 #. (c) 2005-2007 Canonical, GPL
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:320
 #: .././ailurus/ubuntu/quick_setup.py:257 .././ailurus/lib.py:710
 msgid "Run \"apt-get update\". Please wait for few minutes."
-msgstr ""
+msgstr "Spustite \"apt-get update\". Počkajte niekoľko minút."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:330
 msgid "Please select one repository only"
-msgstr ""
+msgstr "Prosím vyberte jeden zdroj softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:423
 msgid "Detect response time of selected repositories"
-msgstr ""
+msgstr "Rozpoznať dobu odozvy vybraných zdrojov softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:431
 msgid "Use selected repositories"
-msgstr ""
+msgstr "Použiť vybrané zdroje softvéru"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:434
 msgid "Select all"
-msgstr ""
+msgstr "Vybrať všetko"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:437
 msgid "Select all repositories in these countries"
-msgstr ""
+msgstr "Vybrať všetky zdroje softvéru v tejto krajine"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:440
 msgid "Unselect all"
-msgstr ""
+msgstr "Odznačit všetko"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:444
 msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
 msgstr ""
+"Ak niektoré repozitára nie sú uvedené vyššie, kliknite sem a povedzte to "
+"prosím vývojárov Ailurusu."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:463
 msgid "Country"
-msgstr ""
+msgstr "Štát"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:470
 msgid "Organization"
-msgstr ""
+msgstr "Organizácia"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:488
 msgid "Response time"
-msgstr ""
+msgstr "Doba odozvy"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:550
 msgid "All repositories:"
-msgstr ""
+msgstr "Všetky zdroje softvéru:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:631
 msgid ""
@@ -726,119 +782,130 @@ msgid ""
 "# The following content can be copy-pasted into /etc/apt/sources.list\n"
 "\n"
 msgstr ""
+"# Neupravujte tento súbor. To je len príklad.\n"
+"# Nasledujúci obsah možno kopírovať-vložiť do /etc/apt/sources.list\n"
+"\n"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:688
 msgid "Merge complete"
-msgstr ""
+msgstr "Zlúčenie dokončené"
 
 #: .././ailurus/ubuntu/third_party_repos.py:116
 msgid "<i>Install packages by:</i>"
-msgstr ""
+msgstr "<i>Inštalovať balíčky podľa:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:117
 msgid "<i>Web page:</i>"
-msgstr ""
+msgstr "<i>Webová stránka:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:118
 msgid "<i>Source setting:</i>"
-msgstr ""
+msgstr "<i>Nastavenie zdroja:</i>"
 
 #: .././ailurus/ubuntu/third_party_repos.py:154
 msgid "Firefox 3.6 (stable)"
-msgstr ""
+msgstr "Firefox 3.6 (stabilná verzia)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:158
 msgid "This repository contains Firefox stable version 3.6."
-msgstr ""
+msgstr "Tento zdroj softvéru obsahuje stabilná verziu Firefox 3.6."
 
 #: .././ailurus/ubuntu/third_party_repos.py:168
 msgid "PlayOnLinux"
-msgstr ""
+msgstr "PlayOnLinux"
 
 #: .././ailurus/ubuntu/third_party_repos.py:171
 msgid ""
 "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
 "softwares on Linux. "
 msgstr ""
+"PlayOnLinux je front-end pre wine. Pomáha inštalovať hry pre Windows a "
+"softvér v Linuxe. "
 
 #: .././ailurus/ubuntu/third_party_repos.py:187
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux. "
 msgstr ""
+"Tento zdroj obsahuje poslednú verziu Wine. Wine slúži k spusteniu aplikácií "
+"Windowsu v Linuxe. "
 
 #: .././ailurus/ubuntu/third_party_repos.py:198
 msgid "Ailurus"
-msgstr ""
+msgstr "Ailurus"
 
 #: .././ailurus/ubuntu/third_party_repos.py:202
 msgid "This is the repository of Ailurus."
-msgstr ""
+msgstr "Toto je zdroj softvéru Ailurus."
 
 #: .././ailurus/ubuntu/third_party_repos.py:212
 msgid "AWN (Development version)"
-msgstr ""
+msgstr "AWN (Vývojová verzia)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:215
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
 "version of AWN. "
 msgstr ""
+"AWN je panel pre Gnome pripomínajúci ten v MacOS X. Tento zdroj poskytuje "
+"najnovšie verzie AWN. "
 
 #: .././ailurus/ubuntu/third_party_repos.py:226
 msgid "Blueman"
-msgstr ""
+msgstr "Blueman"
 
 #: .././ailurus/ubuntu/third_party_repos.py:229
 msgid "Blueman is a graphical blue-tooth manager."
-msgstr ""
+msgstr "Blueman je grafický správca pre blue-tooth."
 
 #: .././ailurus/ubuntu/third_party_repos.py:239
 msgid "Christine"
-msgstr ""
+msgstr "Christine"
 
 #: .././ailurus/ubuntu/third_party_repos.py:242
 msgid "Christine is a small media player."
-msgstr ""
+msgstr "Christine je malý prehrávač médií."
 
 #: .././ailurus/ubuntu/third_party_repos.py:252
 msgid "Chromium"
-msgstr ""
+msgstr "Chromium"
 
 #: .././ailurus/ubuntu/third_party_repos.py:255
 msgid "Chromium is the open source version of Google Chrome."
-msgstr ""
+msgstr "Chromium je verzia Google Chrome s otvoreným kódom."
 
 #: .././ailurus/ubuntu/third_party_repos.py:265
 msgid "Getting things GNOME"
-msgstr ""
+msgstr "Získanie vecí GNOME"
 
 #: .././ailurus/ubuntu/third_party_repos.py:268
 msgid ""
 "\"Getting things GNOME\" is a simple, powerful and flexible organization "
 "tool."
 msgstr ""
+"\"Získanie vecí GNOME\" je jednoduchý, výkonný a flexibilný nástroj pre "
+"usporiadanie."
 
 #: .././ailurus/ubuntu/third_party_repos.py:278
 msgid "GNOME colors"
-msgstr ""
+msgstr "GNOME farby"
 
 #: .././ailurus/ubuntu/third_party_repos.py:281
 msgid "This repository contains some themes."
-msgstr ""
+msgstr "Zdroj softvéru obsahuje nejaké témy pre vzhľad."
 
 #: .././ailurus/ubuntu/third_party_repos.py:291
 msgid "GNOME Global Menu"
-msgstr ""
+msgstr "GNOME Global Menu"
 
 #: .././ailurus/ubuntu/third_party_repos.py:294
 msgid ""
 "GNOME Global Menu is the globally-shared menu bar of all applications."
-msgstr ""
+msgstr "GNOME Global Menu je globálne-zdieľané menu všetkých aplikácií."
 
 #: .././ailurus/ubuntu/third_party_repos.py:304
 msgid "Medibuntu"
-msgstr ""
+msgstr "Medibuntu"
 
 #: .././ailurus/ubuntu/third_party_repos.py:307
 msgid ""
@@ -846,149 +913,155 @@ msgid ""
 "Ubuntu distribution for legal reasons. There are many packages in this "
 "repository. The list of packages is in http://packages.medibuntu.org/"
 msgstr ""
+"Toto je zdroj softvéru poskytujúci balíčky, ktoré nemôžu byť súčasťou "
+"distribúcie Ubuntu z právnych dôvodov. Tento zdroj obsahuje množstvo "
+"balíčkov. Zoznam balíčkov je v http://packages.medibuntu.org/"
 
 #: .././ailurus/ubuntu/third_party_repos.py:318
 msgid "Moovida"
-msgstr ""
+msgstr "Moovida"
 
 #: .././ailurus/ubuntu/third_party_repos.py:321
 msgid "Moovida is a cross platform media player."
-msgstr ""
+msgstr "Moovida je multiplatformový prehrávač multimédií."
 
 #: .././ailurus/ubuntu/third_party_repos.py:332
 msgid "Shutter"
-msgstr ""
+msgstr "Shutter"
 
 #: .././ailurus/ubuntu/third_party_repos.py:334
 msgid "Shutter is a powerful screenshot program."
-msgstr ""
+msgstr "Shutter je silný nástroj pre robenie snímok obrazovky."
 
 #: .././ailurus/ubuntu/third_party_repos.py:344
 msgid "Synapse"
-msgstr ""
+msgstr "Synapse"
 
 #: .././ailurus/ubuntu/third_party_repos.py:347
 msgid "Synapse is an instant messager."
-msgstr ""
+msgstr "Synapse je rýchly kuriér správ."
 
 #: .././ailurus/ubuntu/third_party_repos.py:357
 msgid "X server updates"
-msgstr ""
+msgstr "Aktualizácie X serveru"
 
 #: .././ailurus/ubuntu/third_party_repos.py:360
 msgid "This repository provides latest versions of X.org drivers, libraries."
-msgstr ""
+msgstr "Tento zdroj poskytuje najnovšie verzie X. org ovládačov a knižníc."
 
 #: .././ailurus/ubuntu/third_party_repos.py:371
 msgid "WebkitGTK"
-msgstr ""
+msgstr "WebkitGTK"
 
 #: .././ailurus/ubuntu/third_party_repos.py:374
 msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
-msgstr ""
+msgstr "WebkitGTK je port Webkit pre GTK+ platformu."
 
 #: .././ailurus/ubuntu/third_party_repos.py:384
 msgid "XBMC"
-msgstr ""
+msgstr "XBMC"
 
 #: .././ailurus/ubuntu/third_party_repos.py:387
 msgid ""
 "XBMC is an open source software media player and entertainment hub for "
 "digital media."
 msgstr ""
+"XBMC je softvér s otvoreným zdrojom prehrávača médií a zábavné centrum pre "
+"digitálne médiá."
 
 #: .././ailurus/ubuntu/third_party_repos.py:401
 msgid "Next generation input method"
-msgstr ""
+msgstr "Ďalšia generácia vstupnej metódy"
 
 #: .././ailurus/ubuntu/third_party_repos.py:413
 msgid "Partners of Canonical"
-msgstr ""
+msgstr "Partneri Canonicalu"
 
 #: .././ailurus/ubuntu/third_party_repos.py:416
 msgid "This repository provides many packages from partners of Canonical."
 msgstr ""
+"Tento zdroj softvéru obsahuje množstvo balíčkov od partnerov Canonicalu."
 
 #: .././ailurus/ubuntu/third_party_repos.py:429
 msgid "RSSOwl is an RSS reader."
-msgstr ""
+msgstr "RSSOwl je čítačka RSS."
 
 #: .././ailurus/ubuntu/third_party_repos.py:443
 msgid "This is a Chinese chess game."
-msgstr ""
+msgstr "Toto je čínska šachová hra."
 
 #: .././ailurus/ubuntu/third_party_repos.py:453
 msgid "Exaile (Latest version)"
-msgstr ""
+msgstr "Exaile (Najnovšia verzia)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:466
 msgid "Audacious (Latest version)"
-msgstr ""
+msgstr "Audacious (Najnovšia verzia)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:495
 msgid "This is a desktop diary application."
-msgstr ""
+msgstr "Jedná sa o aplikáciu kancelársky diár."
 
 #: .././ailurus/ubuntu/third_party_repos.py:505
 msgid "Pidgin (Latest version)"
-msgstr ""
+msgstr "Pidgin (Najnovšia verzia)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:518
 msgid "Songbird (Latest version)"
-msgstr ""
+msgstr "Songbird (Najnovšia verzia)"
 
 #. (use stock?, stock name or icon path, text, web page url, Chinese only?
 #. Separator
 #: .././ailurus/ubuntu/menu.py:32
 msgid "Ubuntu/Kubuntu configuration guide"
-msgstr ""
+msgstr "Ubuntu / Kubuntu konfiguračný sprievodca"
 
 #: .././ailurus/ubuntu/menu.py:34
 msgid "Ubuntu skills"
-msgstr ""
+msgstr "Ubuntu zručnosti"
 
 #: .././ailurus/ubuntu/menu.py:36
 msgid "Obtain \"Full Circle\" magazine"
-msgstr ""
+msgstr "Získať časopis \"Full Circle\""
 
 #: .././ailurus/ubuntu/menu.py:38
 msgid "Obtain \"Ubuntu pocket guide\" book"
-msgstr ""
+msgstr "Získať knihu \"Ubuntu pocket guide\""
 
 #: .././ailurus/ubuntu/menu.py:40
 msgid "Find more third-party repositories on http://repogen.simplylinux.ch/"
-msgstr ""
+msgstr "Nájsť viac zdrojov tretej strany na http://repogen.simplylinux.ch/"
 
 #: .././ailurus/ubuntu/menu.py:73
 msgid "Don't automatically clean /var/cache/apt/"
-msgstr ""
+msgstr "Nečistiť automaticky /var/cache/apt/"
 
 #: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:347
 #: .././ailurus/common/menu.py:355
 msgid "Preferences changed"
-msgstr ""
+msgstr "Predvoľby sa zmenili"
 
 #: .././ailurus/ubuntu/menu.py:76 .././ailurus/common/menu.py:347
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
-msgstr ""
+msgstr "Vaše zmeny sa prejavia pri daľšom spustení programu."
 
 #: .././ailurus/ubuntu/setting.py:105
 #, python-format
 msgid "Command: sudo apt-get install/remove %s"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install/remove %s"
 
 #: .././ailurus/ubuntu/setting.py:109
 msgid "Context menu screenshot:"
-msgstr ""
+msgstr "Snímka obrazovky kontextového menu"
 
 #: .././ailurus/ubuntu/setting.py:117
 msgid "Window screenshot:"
-msgstr ""
+msgstr "Snímka obrazovky okna"
 
 #: .././ailurus/ubuntu/setting.py:140
 msgid "\"Write to Disc...\" entry"
-msgstr ""
+msgstr "\"Zapísať na disk ...\" vstup"
 
 #: .././ailurus/ubuntu/setting.py:141
 msgid ""
@@ -996,10 +1069,13 @@ msgid ""
 "show a \"Write to Disc...\" menu item.\n"
 "<span color=\"red\">This item conflicts with \"brasero\".</span>"
 msgstr ""
+"Ak na CD / DVD obraz archívu kliknete pravým tlačidlom myši,\n"
+"zobrazí sa položka menu \"Zapísať na disk ...\".\n"
+"<span color=\"red\"> Táto položka je v rozpore s \"Brasero\". </span>"
 
 #: .././ailurus/ubuntu/setting.py:146
 msgid "\"Actions Configuration\" entry"
-msgstr ""
+msgstr "\"Akcia Konfigurácia\" vstup"
 
 #: .././ailurus/ubuntu/setting.py:147
 msgid ""
@@ -1008,52 +1084,58 @@ msgid ""
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
 ">\"Preferences\" menu.</span>"
 msgstr ""
+"Umožňuje konfiguráciu programov, ktoré spúšťajú \n"
+"vybrané súbory.\n"
+"<span color=\"red\"> Táto položka nie je v kontextovom menu. Je to v menu "
+"\"System\" -> \"Nastavenia\". </ Span>"
 
 #: .././ailurus/ubuntu/setting.py:152
 msgid "\"Repair filename\" entry"
-msgstr ""
+msgstr "vstup \"Opraviť názov súboru\""
 
 #: .././ailurus/ubuntu/setting.py:153
 msgid "When any file with wrong encoding filename is right clicked,\n"
 msgstr ""
+"Ak má nejaký súbor chybné kódovanie názvu súboru tak pravé kliknutie,\n"
 
 #: .././ailurus/ubuntu/setting.py:153
 msgid "show a \"Repair filename\" menu item."
-msgstr ""
+msgstr "zobrazí položky menu  \"Opraviť názov súboru\""
 
 #: .././ailurus/ubuntu/setting.py:156
 msgid "\"Open as administrator\" entry"
-msgstr ""
+msgstr "vstup \"Otvoriť ako administrátor\""
 
 #: .././ailurus/ubuntu/setting.py:157
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 msgstr ""
+"Spustiť vybrané súbory s právami administrátora použitím kontextu menu.\n"
 
 #: .././ailurus/ubuntu/setting.py:157
 msgid "Open selected folder with administration privileges."
-msgstr ""
+msgstr "Otvoriť vybrané priečinky s právami administrátora"
 
 #: .././ailurus/ubuntu/setting.py:160
 msgid "\"Resize/Rotate images\" entries"
-msgstr ""
+msgstr "vstup \"Zmeniť veľkosť/Otočiť obrázok\""
 
 #: .././ailurus/ubuntu/setting.py:161
 msgid "Resize or rotate selected images."
-msgstr ""
+msgstr "Zmeniť veľkosť alebo otočiť vybraný obrázok."
 
 #: .././ailurus/ubuntu/setting.py:164
 msgid "\"Open in terminal\" entry"
-msgstr ""
+msgstr "vstup \"Otvoriť v termináli \""
 
 #: .././ailurus/ubuntu/setting.py:165
 msgid "Open a terminal in current folder."
-msgstr ""
+msgstr "Otvoriť terminál v aktuálnom priečinku."
 
 #: .././ailurus/ubuntu/setting.py:168
 msgid "\"Convert audio files\" entry"
-msgstr ""
+msgstr "vstup \"Konvertovať zvukové súbory\""
 
 #: .././ailurus/ubuntu/setting.py:169
 msgid ""
@@ -1061,55 +1143,58 @@ msgid ""
 "These packages will also be installed: \n"
 "<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 msgstr ""
+"Konvertovať medzi WAV, OGG, MP3, MPC, FLAC, APE a AAC súbormi.\n"
+"Tieto balíčky budú tiež inštalované: \n"
+"<i>lame vobis-tools libid3-3.8.3-dev flac faac faad mppenc</i>"
 
 #: .././ailurus/ubuntu/setting.py:176
 msgid "\"Subversion commands\" entries"
-msgstr ""
+msgstr "položky \"príkazy Subverzie\""
 
 #: .././ailurus/ubuntu/setting.py:182
 msgid "\"Share\" entry for folders"
-msgstr ""
+msgstr "vstupy pre priečinky \"Zdieľané\""
 
 #: .././ailurus/ubuntu/setting.py:183
 msgid "Share folders by Samba."
-msgstr ""
+msgstr "Zdieľať priečinky prostredníctvom Samby."
 
 #: .././ailurus/ubuntu/setting.py:186
 msgid "\"Set as wallpaper\" entry"
-msgstr ""
+msgstr "vstup \"Nastaviť ako pozadie plochy\""
 
 #: .././ailurus/ubuntu/setting.py:268 .././ailurus/loader.py:87
 #: .././ailurus/loader.py:124 .././ailurus/main.py:341
 msgid "Traceback:"
-msgstr ""
+msgstr "Pochádza:"
 
 #: .././ailurus/ubuntu/setting.py:269
 msgid "Some operation failed."
-msgstr ""
+msgstr "Niektoré operácie zlyhali."
 
 #: .././ailurus/ubuntu/setting.py:274
 msgid "All operations succeeded."
-msgstr ""
+msgstr "Všetky operácie boli úspešné."
 
 #: .././ailurus/ubuntu/setting.py:274
 msgid "The changes will take effect at the next time when GNOME starts up."
-msgstr ""
+msgstr "Zmeny sa prejavia pri nasledujúcom spustení GNOME."
 
 #: .././ailurus/ubuntu/setting.py:284
 msgid "Nautilus context menu"
-msgstr ""
+msgstr "kontextové menu Nautilus"
 
 #: .././ailurus/ubuntu/setting.py:288
 msgid "Automatically check for update"
-msgstr ""
+msgstr "Automaticky nájsť aktualizácie"
 
 #: .././ailurus/ubuntu/setting.py:290
 msgid "Interval (in days) when to check for update:"
-msgstr ""
+msgstr "Interval (v dňoch) kedy sa hľadajú aktualizácie:"
 
 #: .././ailurus/ubuntu/setting.py:296
 msgid "Ubuntu update manager setting"
-msgstr ""
+msgstr "Nastavenie manažéra Ubuntu aktualizácií"
 
 #: .././ailurus/ubuntu/app1.py:29
 msgid ""
@@ -1131,38 +1216,41 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:71 .././ailurus/ubuntu/quick_setup.py:295
 msgid "Full language support and input method"
-msgstr ""
+msgstr "Plná podpora jazyka a vstupná metóda"
 
 #: .././ailurus/ubuntu/app1.py:72
 msgid ""
 "Because of live CD capacity limitation, the Ubuntu system does not have full "
 "language support.\n"
 msgstr ""
+"Kvôli obmedzeniam kapacity live CD, systém Ubuntu nemá plnú jazykovú "
+"podporu.\n"
 
 #: .././ailurus/ubuntu/app1.py:103
 msgid "Command: "
-msgstr ""
+msgstr "Príkaz: "
 
 #: .././ailurus/ubuntu/app1.py:118 .././ailurus/ubuntu/quick_setup.py:297
 msgid "Decompression software: 7z, rar, cab, ace"
-msgstr ""
+msgstr "Dekompresný softvér: 7z, rar, cab, ace"
 
 #: .././ailurus/ubuntu/app1.py:119
 msgid ""
 "Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
 msgstr ""
+"Príkaz: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace"
 
 #: .././ailurus/ubuntu/app1.py:129
 msgid "Typespeed is a typing practise. It only runs in terminal."
-msgstr ""
+msgstr "Typespeed je praktické písanie. Funguje iba v termináli."
 
 #: .././ailurus/ubuntu/app1.py:139
 msgid "Command: sudo apt-get install poppler-data"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install poppler-data"
 
 #: .././ailurus/ubuntu/app1.py:150
 msgid "Command: sudo apt-get install chmsee"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install chmsee"
 
 #: .././ailurus/ubuntu/app1.py:162
 msgid ""
@@ -1170,6 +1258,9 @@ msgid ""
 "rest breaks and restricts you to your daily limit of using computers.\n"
 "Command: sudo apt-get install workrave"
 msgstr ""
+"Program vyzýva k opusteniu počítača, urobiť si malé prestávky na odpočinok a "
+"obmedzuje váš denný limit práce s počítačom.\n"
+"Príkaz: sudo apt-get install workrave"
 
 #: .././ailurus/ubuntu/app1.py:209
 msgid ""
@@ -1181,6 +1272,13 @@ msgid ""
 "    set number\n"
 "    set mouse=a"
 msgstr ""
+"Nainštalujte VIM a urobte ho vhodnejším pre programovanie. Proces inštalácie "
+"je nasledujúci.  zadajte príkaz \"sudo apt-get install vim\". Potom budú "
+"tieto riadky pripojené do súboru \"$HOME/.Vimrc\":\n"
+"    syntax zapnutý\n"
+"    nastaviť auto zarážku\n"
+"    nastaviť počet\n"
+"    nastaviť myš=a"
 
 #: .././ailurus/ubuntu/app1.py:239
 msgid ""
@@ -1191,6 +1289,12 @@ msgid ""
 "PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\"
 "033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
 msgstr ""
+"Zmeniť Bash prompt symboly z \"username@hostname:~$ \" na \"<span "
+"color=\"#3dba34\">username@hostname</span>:<span color=\"#729fcf\">~</span>$ "
+"\".\n"
+"Trik pridáva tento riadok do \"$HOME/.bashrc\".\n"
+"PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@\\h\\[\\"
+"033[00m\\]:\\[\\033[01;34m\\]\\w\\[\\033[00m\\]\\$ '"
 
 #: .././ailurus/ubuntu/app1.py:261
 msgid ""
@@ -1198,10 +1302,14 @@ msgid ""
 "gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
 "plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
 msgstr ""
+"Príkaz: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg "
+"gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-"
+"plugins-ugly gstreamer0.10-plugins-ugly-multiverse"
 
 #: .././ailurus/ubuntu/app1.py:275
 msgid "Enable \"Print to pdf\" capability and eliminate \"Cannot print\" bug"
 msgstr ""
+"Povoliť možnosť \"tlačiť do PDF\" a odstrániť chybu \"Nemožno tlačiť\""
 
 #: .././ailurus/ubuntu/app1.py:276
 msgid ""
@@ -1209,41 +1317,46 @@ msgid ""
 "install cups-pdf\" is launched. Then a bug in "
 "\"/etc/apparmor.d/usr.sbin.cupsd\" file is eliminated."
 msgstr ""
+"Proces inštalácie je nasledujúci. Najprv spustite príkaz \"sudo apt-get "
+"install cups-pdf\". A chyba v súbore \"/etc/apparmor.d/usr.sbin.cupsd\" je "
+"odstránená"
 
 #: .././ailurus/ubuntu/app1.py:306
 msgid "Enable \"Print to pdf\" capability"
-msgstr ""
+msgstr "Povoliť možnosť \"tlačiť do PDF\""
 
 #: .././ailurus/ubuntu/app1.py:307
 msgid "Command: sudo apt-get install cpus-pdf"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install cpus-pdf"
 
 #: .././ailurus/ubuntu/app1.py:317
 msgid "GNU Flash plugin for web browser"
-msgstr ""
+msgstr "GNU Flash plugin pre webový prehliadač"
 
 #: .././ailurus/ubuntu/app1.py:318
 msgid "Command: sudo apt-get install gnash mozilla-plugin-gnash"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install gnash mozilla-plugin-gnash"
 
 #: .././ailurus/ubuntu/app1.py:326 .././ailurus/ubuntu/quick_setup.py:305
 msgid "Fix font bug in Flash plugin"
-msgstr ""
+msgstr "Oprava chyby písma v rozšírení Flash"
 
 #: .././ailurus/ubuntu/app1.py:327
 msgid ""
 "Fix bug: characters are displayed as blank square in Flash.\n"
 "The trick behind is to modify \"/etc/fonts/conf.d/49-sansserif.conf\" file."
 msgstr ""
+"Oprava chyby: znaky sa zobrazujú vo Flashi ako prázdne miesto.\n"
+"Trik je zmeniť súbor za \"/ etc/fonts/conf.d/49-sansserif.conf\"."
 
 #: .././ailurus/ubuntu/app1.py:354
 #, python-format
 msgid "The file \"%s\" exists."
-msgstr ""
+msgstr "Súbor \"%s\" existuje."
 
 #: .././ailurus/ubuntu/app1.py:357 .././ailurus/ubuntu/quick_setup.py:302
 msgid "Stardict and four dictionaries"
-msgstr ""
+msgstr "Stardict a štyri slovníky"
 
 #: .././ailurus/ubuntu/app1.py:359
 msgid ""
@@ -1254,22 +1367,30 @@ msgid ""
 "http://stardict.sourceforge.net/Dictionaries_zh_CN.php\n"
 "Command: sudo apt-get install stardict sdcv"
 msgstr ""
+"Nainštalujte Stardict. Nainštalujte Stručný čínsko-anglický slovník, LangDao "
+"Čínsko-anglický slovník, LangDao Anglicko-čínsky slovník a Oxford moderný "
+"anglicko-čínsky slovník. Stardict oficiálne stránky "
+"http://stardict.sourceforge.net/. Slovníky sú získané z "
+"http://stardict.sourceforge.net/Dictionaries_zh_CN.php\n"
+"Príkaz: sudo apt-get install stardict sdcv"
 
 #: .././ailurus/ubuntu/app1.py:442 .././ailurus/libapp.py:229
 #: .././ailurus/libapp.py:287
 #, python-format
 msgid "\"%s\" does not exist."
-msgstr ""
+msgstr "\"%s\" neexistuje."
 
 #: .././ailurus/ubuntu/app1.py:446
 msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: sudo apt-get install liferea"
 msgstr ""
+"This is a simple and easy used RSS feed reader.\n"
+"Príkaz: sudo apt-get install liferea"
 
 #: .././ailurus/ubuntu/app1.py:457
 msgid "Firestarter"
-msgstr ""
+msgstr "Firestarter"
 
 #: .././ailurus/ubuntu/app1.py:458
 msgid ""
@@ -1277,10 +1398,13 @@ msgid ""
 "graphical frontend of \"iptables\".\n"
 "Command: sudo apt-get install firestarter"
 msgstr ""
+"Systém Linux prichádza s firewallom \"iptables\". Firestarter je grafické "
+"rozhranie pre \"iptables\".\n"
+"Príkaz: sudo apt-get install firestarter"
 
 #: .././ailurus/ubuntu/app1.py:470
 msgid "MACChanger: change MAC address"
-msgstr ""
+msgstr "MACChanger: zmení MAC adresu"
 
 #: .././ailurus/ubuntu/app1.py:471
 msgid ""
@@ -1288,47 +1412,60 @@ msgid ""
 "interfaces.\n"
 "Command: sudo apt-get install macchanger"
 msgstr ""
+"MACChanger je utilita pre prehliadanie/manipuláciu s MAC adresami sieťových "
+"rozhraní.\n"
+"Príkaz: sudo apt-get install macchanger"
 
 #: .././ailurus/ubuntu/app1.py:478
 msgid "Bluetooth support"
-msgstr ""
+msgstr "Bluetooth podpora"
 
 #: .././ailurus/ubuntu/app1.py:479
 msgid ""
 "Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
 "bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 msgstr ""
+"Príkaz: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
+"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
 
 #: .././ailurus/ubuntu/app2.py:29
 msgid "Mplayer with \"vod\" protocol support"
-msgstr ""
+msgstr "Mplayer s podporou protokolu \"vod\""
 
 #: .././ailurus/ubuntu/app2.py:30
 msgid ""
 "Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" "
 "protocol is used in some online video sites such as SJTU comic."
 msgstr ""
+"Inštalovať mplayer a comicview. Mplayer s podporou protokolu \"vod\" \"vod\" "
+"protokol je použitý v niektorých online video sieťach ako SJTU comic."
 
 #: .././ailurus/ubuntu/app2.py:48
 msgid "PBC (Pairing-Based Cryptography) library"
-msgstr ""
+msgstr "knižnica PBC (Pairing-Based Cryptography)"
 
 #: .././ailurus/ubuntu/app2.py:49
 msgid ""
 "Install Pairing-Based Cryptography library, powered by Stanford University.\n"
 msgstr ""
+"Nainštalujte knižnice Pairing-Based Cryptography, udržiavané Stanford "
+"Univerzitou.\n"
 
 #: .././ailurus/ubuntu/app2.py:50
 msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://crypto.stanford.edu/pbc/</u></span> ."
 msgstr ""
+"Oficiálna stránka: <span "
+"color=\"blue\"><u>http://crypto.stanford.edu/pbc/</u></span> ."
 
 #: .././ailurus/ubuntu/app2.py:89
 msgid ""
 "By installing build-essential, you will get g++, make, gdb and libc.\n"
 "Command: sudo apt-get install build-essential"
 msgstr ""
+"Po inštalácii build-essential, získate g + +, make, gdb a libc.\n"
+"Príkaz: sudo apt-get install build-essential"
 
 #: .././ailurus/ubuntu/app2.py:99
 msgid ""
@@ -1336,6 +1473,9 @@ msgid ""
 "and POSIX library files.\n"
 "Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 msgstr ""
+"Nainštalujte manuálové stránky o Linux systémových volaniach, knižnica "
+"hovorov, pomocou POSIX, a POSIX knižníc.\n"
+"Príkaz: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev"
 
 #: .././ailurus/ubuntu/app2.py:109
 msgid ""
@@ -1343,18 +1483,21 @@ msgid ""
 "symbol. It is used in vi and emacs.\n"
 "Command: sudo apt-get install exuberant-ctags"
 msgstr ""
+"Toto je zdrojový kód parser. To umožňuje presúvanie symbolu na definíciu. To "
+"je použité vo vi a emacs.\n"
+"Príkaz: sudo apt-get install exuberant-ctags"
 
 #: .././ailurus/ubuntu/app2.py:118
 msgid "GNU multiprecision arithmetic library"
-msgstr ""
+msgstr "GNU multiprecízna aritmetická knižnica"
 
 #: .././ailurus/ubuntu/app2.py:119
 msgid "Command: sudo apt-get install libgmp3-dev"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install libgmp3-dev"
 
 #: .././ailurus/ubuntu/app2.py:127
 msgid "Ncurses5 and QT3"
-msgstr ""
+msgstr "Ncurses5 a QT3"
 
 #: .././ailurus/ubuntu/app2.py:128
 msgid ""
@@ -1362,20 +1505,25 @@ msgid ""
 "libqt3-mt is Trolltech Qt library, version 3.\n"
 "Command: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 msgstr ""
+"libncurses5 je knižnica ovládajúca zapisovanie do obrazovky konzoly.\n"
+"libqt3-mt je Trolltech Qt knižnica, verzia 3.\n"
+"Príkaz: sudo apt-get install libncurses5-dev libqt3-mt-dev"
 
 #: .././ailurus/ubuntu/app2.py:138
 msgid "Subversion, git, and bzr"
-msgstr ""
+msgstr "Čiastková verzia, git a bzr"
 
 #: .././ailurus/ubuntu/app2.py:139
 msgid ""
 "subversion, git and bzr are popular version control systems.\n"
 "Command: sudo apt-get install subversion git-core bzr"
 msgstr ""
+"čiastková verzia, git a bzr sú populárne verzie pre správu systému.\n"
+"Príkaz: sudo apt-get install subversion git-core bzr"
 
 #: .././ailurus/ubuntu/app2.py:148
 msgid "Autotools"
-msgstr ""
+msgstr "Automatické nástroje"
 
 #: .././ailurus/ubuntu/app2.py:149
 msgid ""
@@ -1387,25 +1535,27 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:159
 msgid "OpenGL library"
-msgstr ""
+msgstr "OpenGL knižnica"
 
 #: .././ailurus/ubuntu/app2.py:160
 msgid ""
 "This is a library for writing OpenGL programs.\n"
 "Command: sudo apt-get install freeglut3-dev"
 msgstr ""
+"To je knižnica pre zapisovanie OpenGL programov.\n"
+"Príkaz: sudo apt-get install freeglut3-dev"
 
 #: .././ailurus/ubuntu/app2.py:169
 msgid "Boost library"
-msgstr ""
+msgstr "Boost knižnica"
 
 #: .././ailurus/ubuntu/app2.py:170
 msgid "Command: sudo apt-get install libboost-dev"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install libboost-dev"
 
 #: .././ailurus/ubuntu/app2.py:178
 msgid "SDL library"
-msgstr ""
+msgstr "SDL knižnica"
 
 #: .././ailurus/ubuntu/app2.py:179
 msgid ""
@@ -1434,54 +1584,65 @@ msgid ""
 "installed.\n"
 "Command: sudo apt-get install auto-apt"
 msgstr ""
+"\"auto-apt run ./configure\" vám pomôže nainštalovať balíky, ktoré nie sú "
+"nainštalované.\n"
+"Príkaz: sudo apt-get install auto-apt"
 
 #: .././ailurus/ubuntu/app2.py:208
 msgid ""
 "Checkinstall help you build deb package. Command: sudo apt-get install "
 "checkinstall"
 msgstr ""
+"CheckInstall vám pomôže vyrobiť deb balíček. Príkaz: sudo apt-get install "
+"checkinstall"
 
 #: .././ailurus/ubuntu/app2.py:215
 msgid "Umbrello: UML modelling"
-msgstr ""
+msgstr "Umbrelo: modelovanie UML"
 
 #: .././ailurus/ubuntu/app2.py:216
 msgid ""
 "Umbrello help you do UML modelling.\n"
 "Command: sudo apt-get install umbrello"
 msgstr ""
+"Umbrello vám pomôže s UML modelovaním.\n"
+"Príkaz: sudo apt-get install umbrello"
 
 #: .././ailurus/ubuntu/app2.py:225
 msgid "Ubuntu Studio Theme"
-msgstr ""
+msgstr "Tém vzhľadu Ubuntu Studio"
 
 #: .././ailurus/ubuntu/app2.py:226
 msgid ""
 "Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
 "ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 msgstr ""
+"Príkaz: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme "
+"ubuntustudio-wallpapers ubuntustudio-gdm-theme"
 
 #: .././ailurus/ubuntu/app2.py:232
 msgid "Minicom and ckermit"
-msgstr ""
+msgstr "Minicom a ckermit"
 
 #: .././ailurus/ubuntu/app2.py:233
 msgid "Command: sudo apt-get install minicom ckermit"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install minicom ckermit"
 
 #: .././ailurus/ubuntu/app2.py:241
 msgid "VirtualBox open source edition"
-msgstr ""
+msgstr "VirtualBox edícia s otvoreným zdrojom"
 
 #: .././ailurus/ubuntu/app2.py:242
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
 msgstr ""
+"Ide o jediný profesionálny virtuálny stroj, ktorý je voľne dostupný za "
+"podmienok GPL. Oficiálna stránka: http://www.virtualbox.org/wiki/Downloads"
 
 #: .././ailurus/ubuntu/app2.py:253
 msgid "GNOMEArtNG"
-msgstr ""
+msgstr "GNOMEArtNG"
 
 #: .././ailurus/ubuntu/app2.py:254
 msgid ""
@@ -1490,6 +1651,10 @@ msgid ""
 "which are downloaded from http://art.gnome.org . The official site of "
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
+"Je schopný prispôsobiť pozadia, vzhľad aplikácií, ohraničenia okien, ikony, "
+"GNOME splash a GDM okno. Môžete nainštalovať viac ako 100 tém , ktoré sú k "
+"stiahnutiu z http://art.gnome.org. Oficiálna stránka GNOMEArtNG je "
+"http://developer.berlios.de/projects/gnomeartng/"
 
 #: .././ailurus/ubuntu/app2.py:314
 msgid ""
@@ -1497,26 +1662,32 @@ msgid ""
 "reports.\n"
 "Command: sudo apt-get install qtiplot"
 msgstr ""
+"Potrebná kresliaca aplikácia pre písanie správ fyzikálnych experimentov.\n"
+"Príkaz: sudo apt-get install qtiplot"
 
 #: .././ailurus/ubuntu/app2.py:325
 msgid ""
 "This is a multifunctional graphic calculator.\n"
 "Command: sudo apt-get install extcalc"
 msgstr ""
+"Toto je multifunkčná grafická kalkulačka.\n"
+"Príkaz: sudo apt-get install extcalc"
 
 #: .././ailurus/ubuntu/app2.py:334
 msgid "Satartup Manager"
-msgstr ""
+msgstr "Startup Manažér"
 
 #: .././ailurus/ubuntu/app2.py:335
 msgid ""
 "Satartup manager helps you change GRUB settings and themes.\n"
 "Command: sudo apt-get install startupmanager"
 msgstr ""
+"Startup manažér pomáha zmeniť nastavenia GRUB a témy vzhľadu.\n"
+"Príkaz: sudo apt-get install startupmanager"
 
 #: .././ailurus/ubuntu/app2.py:342
 msgid "Zhcon"
-msgstr ""
+msgstr "Zhcon"
 
 #: .././ailurus/ubuntu/app2.py:343
 msgid ""
@@ -1524,16 +1695,21 @@ msgid ""
 "You can launch it by \"zhcon --utf8\".\n"
 "Command: sudo apt-get install zhcon"
 msgstr ""
+"Zhcon pomôže zobraziť čínske písma v TTY termináli.\n"
+"Môžete ho spustiť \"zhcon --utf8\".\n"
+"Príkaz: sudo apt-get install zhcon"
 
 #: .././ailurus/ubuntu/app2.py:352
 msgid ""
 "Powertop helps you save power for your laptop.\n"
 "Command: sudo apt-get install powertop"
 msgstr ""
+"Powertop pomáha šetriť energiu pre váš laptop.\n"
+"Príkaz: sudo apt-get install powertop"
 
 #: .././ailurus/ubuntu/app0.py:29
 msgid "Command: sudo apt-get install openjdk-6-jdk"
-msgstr ""
+msgstr "Príkaz: sudo apt-get install openjdk-6-jdk"
 
 #: .././ailurus/ubuntu/app0.py:63
 msgid ""
@@ -1541,10 +1717,12 @@ msgid ""
 "Linux.\n"
 "Command: sudo apt-get install wine wine-gecko"
 msgstr ""
+"Aplikácia potrebná pre beh Windows aplikácií na Linuxe.\n"
+"Príkaz: sudo apt-get install wine wine-gecko"
 
 #: .././ailurus/ubuntu/app0.py:88
 msgid "WINE &amp; Wen-Quan-Yi Chinese font"
-msgstr ""
+msgstr "WINE &amp; Wen-Quan-Yi Čínske písmo"
 
 #: .././ailurus/ubuntu/app0.py:89
 msgid ""
@@ -1554,60 +1732,64 @@ msgid ""
 "gecko ttf-wqy-zenhei\" command is executed, then Wen-Quan-Yi font is used as "
 "default Chinese font."
 msgstr ""
+"Wine je aplikácia potrebná pre beh Windows aplikácií na Linuxe.\n"
+"Počas inštalácie, najprv spustite príkaz \"sudo apt-get install wine wine-"
+"gecko ttf-wqy-zenhei\", a potom bude Wen-Quan-Yi použité ako predvolené "
+"čínske písmo."
 
 #: .././ailurus/ubuntu/libserver.py:28
 msgid "Argentina"
-msgstr ""
+msgstr "Argentína"
 
 #: .././ailurus/ubuntu/libserver.py:29 .././ailurus/ubuntu/libserver.py:30
 #: .././ailurus/ubuntu/libserver.py:31 .././ailurus/ubuntu/libserver.py:32
 #: .././ailurus/ubuntu/libserver.py:33 .././ailurus/ubuntu/libserver.py:34
 #: .././ailurus/ubuntu/libserver.py:35 .././ailurus/ubuntu/libserver.py:36
 msgid "Australia"
-msgstr ""
+msgstr "Austrália"
 
 #: .././ailurus/ubuntu/libserver.py:37 .././ailurus/ubuntu/libserver.py:38
 #: .././ailurus/ubuntu/libserver.py:39 .././ailurus/ubuntu/libserver.py:40
 msgid "Austria"
-msgstr ""
+msgstr "Rakúsko"
 
 #: .././ailurus/ubuntu/libserver.py:41 .././ailurus/ubuntu/libserver.py:42
 #: .././ailurus/ubuntu/libserver.py:43
 msgid "Belarus"
-msgstr ""
+msgstr "Bielorusko"
 
 #: .././ailurus/ubuntu/libserver.py:44 .././ailurus/ubuntu/libserver.py:45
 #: .././ailurus/ubuntu/libserver.py:46
 msgid "Belgium"
-msgstr ""
+msgstr "Belgicko"
 
 #: .././ailurus/ubuntu/libserver.py:47
 msgid "Bosnia and Herzegovina"
-msgstr ""
+msgstr "Bosna a Hercegovina"
 
 #: .././ailurus/ubuntu/libserver.py:48 .././ailurus/ubuntu/libserver.py:49
 #: .././ailurus/ubuntu/libserver.py:50 .././ailurus/ubuntu/libserver.py:51
 #: .././ailurus/ubuntu/libserver.py:52 .././ailurus/ubuntu/libserver.py:53
 #: .././ailurus/ubuntu/libserver.py:54
 msgid "Brazil"
-msgstr ""
+msgstr "Brazília"
 
 #: .././ailurus/ubuntu/libserver.py:55 .././ailurus/ubuntu/libserver.py:56
 #: .././ailurus/ubuntu/libserver.py:57 .././ailurus/ubuntu/libserver.py:58
 msgid "Bulgaria"
-msgstr ""
+msgstr "Bulharsko"
 
 #: .././ailurus/ubuntu/libserver.py:59 .././ailurus/ubuntu/libserver.py:60
 #: .././ailurus/ubuntu/libserver.py:61 .././ailurus/ubuntu/libserver.py:62
 #: .././ailurus/ubuntu/libserver.py:63 .././ailurus/ubuntu/libserver.py:64
 #: .././ailurus/ubuntu/libserver.py:65
 msgid "Canada"
-msgstr ""
+msgstr "Kanada"
 
 #: .././ailurus/ubuntu/libserver.py:66 .././ailurus/ubuntu/libserver.py:67
 #: .././ailurus/ubuntu/libserver.py:68
 msgid "Chile"
-msgstr ""
+msgstr "Čile"
 
 #: .././ailurus/ubuntu/libserver.py:69 .././ailurus/ubuntu/libserver.py:70
 #: .././ailurus/ubuntu/libserver.py:71 .././ailurus/ubuntu/libserver.py:72
@@ -1619,43 +1801,43 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:374 .././ailurus/ubuntu/libserver.py:375
 #: .././ailurus/ubuntu/libserver.py:376 .././ailurus/ubuntu/libserver.py:378
 msgid "China"
-msgstr ""
+msgstr "Čína"
 
 #: .././ailurus/ubuntu/libserver.py:76
 msgid "Colombia"
-msgstr ""
+msgstr "Kolumbia"
 
 #: .././ailurus/ubuntu/libserver.py:77
 msgid "Costa Rica"
-msgstr ""
+msgstr "Kostarika"
 
 #: .././ailurus/ubuntu/libserver.py:78
 msgid "Croatia"
-msgstr ""
+msgstr "Chorvátsko"
 
 #: .././ailurus/ubuntu/libserver.py:79
 msgid "Cyprus"
-msgstr ""
+msgstr "Cyprus"
 
 #: .././ailurus/ubuntu/libserver.py:80 .././ailurus/ubuntu/libserver.py:81
 #: .././ailurus/ubuntu/libserver.py:82 .././ailurus/ubuntu/libserver.py:83
 #: .././ailurus/ubuntu/libserver.py:84 .././ailurus/ubuntu/libserver.py:85
 #: .././ailurus/ubuntu/libserver.py:86
 msgid "Czech Republic"
-msgstr ""
+msgstr "Česká Republika"
 
 #: .././ailurus/ubuntu/libserver.py:87 .././ailurus/ubuntu/libserver.py:88
 #: .././ailurus/ubuntu/libserver.py:89
 msgid "Denmark"
-msgstr ""
+msgstr "Dánsko"
 
 #: .././ailurus/ubuntu/libserver.py:90
 msgid "Estonia"
-msgstr ""
+msgstr "Estónsko"
 
 #: .././ailurus/ubuntu/libserver.py:91 .././ailurus/ubuntu/libserver.py:92
 msgid "Finland"
-msgstr ""
+msgstr "Fínsko"
 
 #: .././ailurus/ubuntu/libserver.py:93 .././ailurus/ubuntu/libserver.py:94
 #: .././ailurus/ubuntu/libserver.py:95 .././ailurus/ubuntu/libserver.py:96
@@ -1664,15 +1846,15 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:101 .././ailurus/ubuntu/libserver.py:102
 #: .././ailurus/ubuntu/libserver.py:103 .././ailurus/ubuntu/libserver.py:104
 msgid "France"
-msgstr ""
+msgstr "Francúzsko"
 
 #: .././ailurus/ubuntu/libserver.py:105
 msgid "French Polynesia"
-msgstr ""
+msgstr "Francúzska Polynézia"
 
 #: .././ailurus/ubuntu/libserver.py:106
 msgid "Georgia"
-msgstr ""
+msgstr "Gruzínsko"
 
 #: .././ailurus/ubuntu/libserver.py:107 .././ailurus/ubuntu/libserver.py:108
 #: .././ailurus/ubuntu/libserver.py:109 .././ailurus/ubuntu/libserver.py:110
@@ -1688,118 +1870,118 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:129 .././ailurus/ubuntu/libserver.py:130
 #: .././ailurus/ubuntu/libserver.py:131
 msgid "Germany"
-msgstr ""
+msgstr "Nemecko"
 
 #: .././ailurus/ubuntu/libserver.py:132 .././ailurus/ubuntu/libserver.py:133
 #: .././ailurus/ubuntu/libserver.py:134 .././ailurus/ubuntu/libserver.py:135
 #: .././ailurus/ubuntu/libserver.py:136
 msgid "Greece"
-msgstr ""
+msgstr "Grécko"
 
 #: .././ailurus/ubuntu/libserver.py:137
 msgid "Greenland"
-msgstr ""
+msgstr "Grónsko"
 
 #: .././ailurus/ubuntu/libserver.py:138
 msgid "Hong Kong"
-msgstr ""
+msgstr "Hong Kong"
 
 #: .././ailurus/ubuntu/libserver.py:139 .././ailurus/ubuntu/libserver.py:140
 #: .././ailurus/ubuntu/libserver.py:141 .././ailurus/ubuntu/libserver.py:142
 msgid "Hungary"
-msgstr ""
+msgstr "Maďarsko"
 
 #: .././ailurus/ubuntu/libserver.py:143
 msgid "Iceland"
-msgstr ""
+msgstr "Island"
 
 #: .././ailurus/ubuntu/libserver.py:144 .././ailurus/ubuntu/libserver.py:145
 #: .././ailurus/ubuntu/libserver.py:146 .././ailurus/ubuntu/libserver.py:147
 msgid "India"
-msgstr ""
+msgstr "India"
 
 #: .././ailurus/ubuntu/libserver.py:148 .././ailurus/ubuntu/libserver.py:149
 #: .././ailurus/ubuntu/libserver.py:150 .././ailurus/ubuntu/libserver.py:151
 #: .././ailurus/ubuntu/libserver.py:152 .././ailurus/ubuntu/libserver.py:153
 #: .././ailurus/ubuntu/libserver.py:154
 msgid "Indonesia"
-msgstr ""
+msgstr "Indonézia"
 
 #: .././ailurus/ubuntu/libserver.py:155 .././ailurus/ubuntu/libserver.py:156
 msgid "Ireland"
-msgstr ""
+msgstr "Írsko"
 
 #: .././ailurus/ubuntu/libserver.py:157
 msgid "Israel"
-msgstr ""
+msgstr "Izrael"
 
 #: .././ailurus/ubuntu/libserver.py:158 .././ailurus/ubuntu/libserver.py:159
 #: .././ailurus/ubuntu/libserver.py:160 .././ailurus/ubuntu/libserver.py:161
 #: .././ailurus/ubuntu/libserver.py:162
 msgid "Italy"
-msgstr ""
+msgstr "Taliansko"
 
 #: .././ailurus/ubuntu/libserver.py:163 .././ailurus/ubuntu/libserver.py:164
 #: .././ailurus/ubuntu/libserver.py:165 .././ailurus/ubuntu/libserver.py:166
 #: .././ailurus/ubuntu/libserver.py:167 .././ailurus/ubuntu/libserver.py:168
 #: .././ailurus/ubuntu/libserver.py:169
 msgid "Japan"
-msgstr ""
+msgstr "Japonsko"
 
 #: .././ailurus/ubuntu/libserver.py:170 .././ailurus/ubuntu/libserver.py:171
 msgid "Kazakhstan"
-msgstr ""
+msgstr "Kazachstan"
 
 #: .././ailurus/ubuntu/libserver.py:172 .././ailurus/ubuntu/libserver.py:173
 #: .././ailurus/ubuntu/libserver.py:174
 msgid "Republic of Korea"
-msgstr ""
+msgstr "Kórejská republika"
 
 #: .././ailurus/ubuntu/libserver.py:175
 msgid "Kuwait"
-msgstr ""
+msgstr "Kuvajt"
 
 #: .././ailurus/ubuntu/libserver.py:176
 msgid "Kyrgyzstan"
-msgstr ""
+msgstr "Kirgizsko"
 
 #: .././ailurus/ubuntu/libserver.py:177
 msgid "Latvia"
-msgstr ""
+msgstr "Lotyšsko"
 
 #: .././ailurus/ubuntu/libserver.py:178 .././ailurus/ubuntu/libserver.py:179
 msgid "Lithuania"
-msgstr ""
+msgstr "Litva"
 
 #: .././ailurus/ubuntu/libserver.py:180 .././ailurus/ubuntu/libserver.py:181
 #: .././ailurus/ubuntu/libserver.py:182 .././ailurus/ubuntu/libserver.py:183
 #: .././ailurus/ubuntu/libserver.py:184 .././ailurus/ubuntu/libserver.py:185
 msgid "Malaysia"
-msgstr ""
+msgstr "Malajzia"
 
 #: .././ailurus/ubuntu/libserver.py:186
 msgid "Malta"
-msgstr ""
+msgstr "Malta"
 
 #: .././ailurus/ubuntu/libserver.py:187 .././ailurus/ubuntu/libserver.py:188
 msgid "Mexico"
-msgstr ""
+msgstr "Mexiko"
 
 #: .././ailurus/ubuntu/libserver.py:189
 msgid "Republic of Moldova"
-msgstr ""
+msgstr "Moldavská republika"
 
 #: .././ailurus/ubuntu/libserver.py:190
 msgid "Mongolia"
-msgstr ""
+msgstr "Mongolsko"
 
 #: .././ailurus/ubuntu/libserver.py:191
 msgid "Namibia"
-msgstr ""
+msgstr "Namíbia"
 
 #: .././ailurus/ubuntu/libserver.py:192
 msgid "Nepal"
-msgstr ""
+msgstr "Nepál"
 
 #: .././ailurus/ubuntu/libserver.py:193 .././ailurus/ubuntu/libserver.py:194
 #: .././ailurus/ubuntu/libserver.py:195 .././ailurus/ubuntu/libserver.py:196
@@ -1808,31 +1990,31 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:201 .././ailurus/ubuntu/libserver.py:202
 #: .././ailurus/ubuntu/libserver.py:203 .././ailurus/ubuntu/libserver.py:204
 msgid "Netherlands"
-msgstr ""
+msgstr "Holandsko"
 
 #: .././ailurus/ubuntu/libserver.py:205
 msgid "New Caledonia"
-msgstr ""
+msgstr "Nová Kaledónia"
 
 #: .././ailurus/ubuntu/libserver.py:206 .././ailurus/ubuntu/libserver.py:207
 #: .././ailurus/ubuntu/libserver.py:208
 msgid "New Zealand"
-msgstr ""
+msgstr "Nový Zéland"
 
 #: .././ailurus/ubuntu/libserver.py:209 .././ailurus/ubuntu/libserver.py:210
 #: .././ailurus/ubuntu/libserver.py:211
 msgid "Norway"
-msgstr ""
+msgstr "Nórsko"
 
 #: .././ailurus/ubuntu/libserver.py:212
 msgid "Philippines"
-msgstr ""
+msgstr "Filipíny"
 
 #: .././ailurus/ubuntu/libserver.py:213 .././ailurus/ubuntu/libserver.py:214
 #: .././ailurus/ubuntu/libserver.py:215 .././ailurus/ubuntu/libserver.py:216
 #: .././ailurus/ubuntu/libserver.py:217
 msgid "Poland"
-msgstr ""
+msgstr "Poľsko"
 
 #: .././ailurus/ubuntu/libserver.py:218 .././ailurus/ubuntu/libserver.py:219
 #: .././ailurus/ubuntu/libserver.py:220 .././ailurus/ubuntu/libserver.py:221
@@ -1840,17 +2022,17 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:224 .././ailurus/ubuntu/libserver.py:225
 #: .././ailurus/ubuntu/libserver.py:226
 msgid "Portugal"
-msgstr ""
+msgstr "Portugalsko"
 
 #: .././ailurus/ubuntu/libserver.py:227
 msgid "Qatar"
-msgstr ""
+msgstr "Katar"
 
 #: .././ailurus/ubuntu/libserver.py:228 .././ailurus/ubuntu/libserver.py:229
 #: .././ailurus/ubuntu/libserver.py:230 .././ailurus/ubuntu/libserver.py:231
 #: .././ailurus/ubuntu/libserver.py:232 .././ailurus/ubuntu/libserver.py:233
 msgid "Romania"
-msgstr ""
+msgstr "Rumunsko"
 
 #: .././ailurus/ubuntu/libserver.py:234 .././ailurus/ubuntu/libserver.py:235
 #: .././ailurus/ubuntu/libserver.py:236 .././ailurus/ubuntu/libserver.py:237
@@ -1858,34 +2040,34 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:240 .././ailurus/ubuntu/libserver.py:241
 #: .././ailurus/ubuntu/libserver.py:242
 msgid "Russian Federation"
-msgstr ""
+msgstr "Ruská Federácia"
 
 #: .././ailurus/ubuntu/libserver.py:243
 msgid "Saudi Arabia"
-msgstr ""
+msgstr "Saudská Arábia"
 
 #: .././ailurus/ubuntu/libserver.py:244 .././ailurus/ubuntu/libserver.py:245
 msgid "Serbia"
-msgstr ""
+msgstr "Srbsko"
 
 #: .././ailurus/ubuntu/libserver.py:246 .././ailurus/ubuntu/libserver.py:247
 #: .././ailurus/ubuntu/libserver.py:248
 msgid "Singapore"
-msgstr ""
+msgstr "Singapúr"
 
 #: .././ailurus/ubuntu/libserver.py:249 .././ailurus/ubuntu/libserver.py:250
 #: .././ailurus/ubuntu/libserver.py:251
 msgid "Slovakia"
-msgstr ""
+msgstr "Slovensko"
 
 #: .././ailurus/ubuntu/libserver.py:252 .././ailurus/ubuntu/libserver.py:253
 msgid "Slovenia"
-msgstr ""
+msgstr "Slovinsko"
 
 #: .././ailurus/ubuntu/libserver.py:254 .././ailurus/ubuntu/libserver.py:255
 #: .././ailurus/ubuntu/libserver.py:256
 msgid "South Africa"
-msgstr ""
+msgstr "Juhoafrická Republika"
 
 #: .././ailurus/ubuntu/libserver.py:257 .././ailurus/ubuntu/libserver.py:258
 #: .././ailurus/ubuntu/libserver.py:259 .././ailurus/ubuntu/libserver.py:260
@@ -1894,22 +2076,22 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:265 .././ailurus/ubuntu/libserver.py:266
 #: .././ailurus/ubuntu/libserver.py:267 .././ailurus/ubuntu/libserver.py:268
 msgid "Spain"
-msgstr ""
+msgstr "Španielsko"
 
 #: .././ailurus/ubuntu/libserver.py:269
 msgid "Sri Lanka"
-msgstr ""
+msgstr "Srí Lanka"
 
 #: .././ailurus/ubuntu/libserver.py:270 .././ailurus/ubuntu/libserver.py:271
 #: .././ailurus/ubuntu/libserver.py:272 .././ailurus/ubuntu/libserver.py:273
 #: .././ailurus/ubuntu/libserver.py:274 .././ailurus/ubuntu/libserver.py:275
 #: .././ailurus/ubuntu/libserver.py:276
 msgid "Sweden"
-msgstr ""
+msgstr "Švédsko"
 
 #: .././ailurus/ubuntu/libserver.py:277
 msgid "Switzerland"
-msgstr ""
+msgstr "Švajčiarsko"
 
 #: .././ailurus/ubuntu/libserver.py:278 .././ailurus/ubuntu/libserver.py:279
 #: .././ailurus/ubuntu/libserver.py:280 .././ailurus/ubuntu/libserver.py:281
@@ -1920,23 +2102,23 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:290 .././ailurus/ubuntu/libserver.py:291
 #: .././ailurus/ubuntu/libserver.py:292 .././ailurus/ubuntu/libserver.py:377
 msgid "Taiwan"
-msgstr ""
+msgstr "Taiwan"
 
 #: .././ailurus/ubuntu/libserver.py:293 .././ailurus/ubuntu/libserver.py:294
 #: .././ailurus/ubuntu/libserver.py:295
 msgid "Thailand"
-msgstr ""
+msgstr "Thajsko"
 
 #: .././ailurus/ubuntu/libserver.py:296 .././ailurus/ubuntu/libserver.py:297
 #: .././ailurus/ubuntu/libserver.py:298 .././ailurus/ubuntu/libserver.py:299
 #: .././ailurus/ubuntu/libserver.py:300
 msgid "Turkey"
-msgstr ""
+msgstr "Turecko"
 
 #: .././ailurus/ubuntu/libserver.py:301 .././ailurus/ubuntu/libserver.py:302
 #: .././ailurus/ubuntu/libserver.py:303
 msgid "Ukraine"
-msgstr ""
+msgstr "Ukrajina"
 
 #: .././ailurus/ubuntu/libserver.py:304 .././ailurus/ubuntu/libserver.py:305
 #: .././ailurus/ubuntu/libserver.py:306 .././ailurus/ubuntu/libserver.py:307
@@ -1945,7 +2127,7 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:312 .././ailurus/ubuntu/libserver.py:313
 #: .././ailurus/ubuntu/libserver.py:314
 msgid "United Kingdom"
-msgstr ""
+msgstr "Spojené Kráľovstvo"
 
 #: .././ailurus/ubuntu/libserver.py:315 .././ailurus/ubuntu/libserver.py:316
 #: .././ailurus/ubuntu/libserver.py:317 .././ailurus/ubuntu/libserver.py:318
@@ -1971,46 +2153,46 @@ msgstr ""
 #: .././ailurus/ubuntu/libserver.py:357 .././ailurus/ubuntu/libserver.py:358
 #: .././ailurus/ubuntu/libserver.py:359 .././ailurus/ubuntu/libserver.py:360
 msgid "United States"
-msgstr ""
+msgstr "Spojené Štáty"
 
 #: .././ailurus/ubuntu/libserver.py:361
 msgid "Uzbekistan"
-msgstr ""
+msgstr "Uzbekistan"
 
 #: .././ailurus/ubuntu/libserver.py:362
 msgid "Viet Nam"
-msgstr ""
+msgstr "Vietnam"
 
 #: .././ailurus/ubuntu/libserver.py:379
 msgid "Peru"
-msgstr ""
+msgstr "Peru"
 
 #: .././ailurus/ubuntu/libserver.py:380
 msgid "Ghana"
-msgstr ""
+msgstr "Ghana"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:28 .././ailurus/main.py:77
 msgid "Clean up"
-msgstr ""
+msgstr "Vyčistiť"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:43
 #, python-format
 msgid "size of %s: %s"
-msgstr ""
+msgstr "veľkosť %s: %s"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:44
 msgid "Clean"
-msgstr ""
+msgstr "Vyčistiť"
 
 #: .././ailurus/ubuntu/clean_up_pane.py:69
 msgid "Clean unused kernel"
-msgstr ""
+msgstr "Vyčistiť nevyužité jadro"
 
 #: .././ailurus/ubuntu/quick_setup.py:33
 #: .././ailurus/ubuntu/quick_setup.py:363
 #: .././ailurus/install_remove_pane.py:599
 msgid "Quick setup"
-msgstr ""
+msgstr "Rýchle nastavenie"
 
 #: .././ailurus/ubuntu/quick_setup.py:38
 msgid ""
@@ -2023,111 +2205,125 @@ msgid ""
 "   - Adobe Flash support\n"
 "   - decompression software"
 msgstr ""
+"Ailurus vám môže pomôcť\n"
+"* Vybrať najrýchlejší zdroj softvéru\n"
+"* Inštalovať :\n"
+"   -plná podpora jazykov\n"
+"   -vstupná metóda\n"
+"   -kodeky pre multimédia\n"
+"   -podpora Adobe Flash\n"
+"   -softvér pre archívy"
 
 #: .././ailurus/ubuntu/quick_setup.py:62
 msgid "Checking whether your computer is connected to Internet ..."
-msgstr ""
+msgstr "Skontrolovať, či je počítač pripojený na Internet..."
 
 #: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Scanning installed packages."
-msgstr ""
+msgstr "Skenovanie nainštalovaných balíčkov."
 
 #: .././ailurus/ubuntu/quick_setup.py:76
 msgid "Please wait a few seconds."
-msgstr ""
+msgstr "Prosím, počkajte niekoľko sekúnd"
 
 #: .././ailurus/ubuntu/quick_setup.py:102
 msgid "Computer is not connected to Internet"
-msgstr ""
+msgstr "Počítač nie je pripojený na Internet"
 
 #: .././ailurus/ubuntu/quick_setup.py:105
 msgid ""
 "Your computer is not connected to Internet.\n"
 "Please configure network connections."
 msgstr ""
+"Váš počítač nie je pripojený na internet.\n"
+"Prosím nakonfigurujte sieťové pripojenia."
 
 #: .././ailurus/ubuntu/quick_setup.py:108
 msgid "Configure network connections"
-msgstr ""
+msgstr "Konfigurovať sieťové pripojenia."
 
 #: .././ailurus/ubuntu/quick_setup.py:112
 #: .././ailurus/ubuntu/quick_setup.py:142
 msgid "Skip this step"
-msgstr ""
+msgstr "Preskočiť tento krok"
 
 #: .././ailurus/ubuntu/quick_setup.py:133
 msgid "Searching the fastest repository"
-msgstr ""
+msgstr "Vyhľadať rýchlejší zdroj softvéru"
 
 #: .././ailurus/ubuntu/quick_setup.py:173
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).0f ms.</span>"
-msgstr ""
+msgstr "<span color='black'>Doba odozvy %(server)s je %(value).0f ms.</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:180
 #, python-format
 msgid "<span color='black'>Time left: %s</span>"
-msgstr ""
+msgstr "<span color='black'>Zostávajúci čas: %s</span>"
 
 #: .././ailurus/ubuntu/quick_setup.py:224
 msgid ""
 "In order to use the fastest repository, Ailurus will change "
 "/etc/apt/sources.list"
 msgstr ""
+"Aby bolo možné využiť najrýchlejší zdroj softvéru, Ailurus zmení "
+"/etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/quick_setup.py:225
 #, python-format
 msgid "The fastest repository is %s."
-msgstr ""
+msgstr "Najrýchlejší zdroj softvéru je %s."
 
 #: .././ailurus/ubuntu/quick_setup.py:253
 msgid "Apply the fastest repository:"
-msgstr ""
+msgstr "Použiť najrýchlejší zdroj softvéru:"
 
 #. apt-get update
 #: .././ailurus/ubuntu/quick_setup.py:256
 msgid "Run command: \"sudo apt-get update\""
-msgstr ""
+msgstr "Zadať príkaz: \"sudo apt-get update\""
 
 #: .././ailurus/ubuntu/quick_setup.py:293
 msgid "Search fastest repository"
-msgstr ""
+msgstr "Vyhľadať najrýchlejší zdroj softvéru"
 
 #: .././ailurus/ubuntu/quick_setup.py:294
 msgid "Install hardware drivers"
-msgstr ""
+msgstr "Nainštalovať ovládače hardvéru"
 
 #: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-msgstr ""
+msgstr "Alipay ( Zhi Fu Bao ) bezpečnostné rozšírenie pre Firefox"
 
 #: .././ailurus/ubuntu/quick_setup.py:304
 msgid "Adobe® Flash plugin for web browser"
-msgstr ""
+msgstr "Rozšírenie Adobe® Flash pre webový prehliadač"
 
 #: .././ailurus/ubuntu/quick_setup.py:327
 msgid "Ongoing:"
-msgstr ""
+msgstr "Pokračujúci:"
 
 #: .././ailurus/ubuntu/quick_setup.py:332
 msgid "Successful"
-msgstr ""
+msgstr "Úspešné"
 
 #: .././ailurus/ubuntu/quick_setup.py:335
 msgid "Failed"
-msgstr ""
+msgstr "Zlyhalo"
 
 #. 4
 #: .././ailurus/ubuntu/quick_setup.py:449
 msgid "All works are done."
-msgstr ""
+msgstr "Všetky práce sú hotové."
 
 #: .././ailurus/ubuntu/tips.py:27
 msgid ""
 "Some skills. For example, \"change Ubuntu logo on panel\"\n"
 "https://help.ubuntu.com/community/QuickTips"
 msgstr ""
+"Niektoré zručnosti. Napríklad, \"zmeniť logo Ubuntu v paneli\"\n"
+"https://help.ubuntu.com/community/QuickTips"
 
 #: .././ailurus/ubuntu/tips.py:31
 msgid ""
@@ -2135,6 +2331,9 @@ msgid ""
 "sudo software-properties-gtk\n"
 "sudo software-properties-kde"
 msgstr ""
+"Nastaviť apt zdroj\n"
+"sudo software-properties-gtk\n"
+"sudo software-properties-kde"
 
 #: .././ailurus/ubuntu/tips.py:35
 msgid ""
@@ -2142,24 +2341,32 @@ msgid ""
 "config\n"
 "dpkg -l | awk '/^rc/ {print $2}'\n"
 msgstr ""
+"Zobrazí balíčky, ktoré nie sú nainštalované, ale zostali v config\n"
+"dpkg -l | awk '/^rc/ {print $2}'\n"
 
 #: .././ailurus/ubuntu/tips.py:39
 msgid ""
 "Add a PPA repository:\n"
 "sudo add-apt-repository ppa:PPA-REPOSITORY-NAME\n"
 msgstr ""
+"Pridať PPA zdroj softvéru:\n"
+"sudo add-apt-repository ppa:PPA-REPOSITORY-NAME\n"
 
 #: .././ailurus/ubuntu/tips.py:43
 msgid ""
 "Display a list of files. The files are installed from a given package.\n"
 "dpkg -L PACKAGE_NAME\n"
 msgstr ""
+"Zobraziť zoznam súborov. Súbory sú inštalované z daného balíčka.\n"
+"dpkg -L PACKAGE_NAME\n"
 
 #: .././ailurus/ubuntu/tips.py:47
 msgid ""
 "Display a list of packages. The packages installed a given file.\n"
 "dpkg -S FILE_NAME\n"
 msgstr ""
+"Zobraziť zoznam balíčkov. Súbory sú inštalované z daného súboru.\n"
+"dpkg -S FILE_NAME\n"
 
 #: .././ailurus/ubuntu/tips.py:51
 msgid ""
@@ -2167,12 +2374,16 @@ msgid ""
 "pattern.\n"
 "apt-cache search REG_EXPRESSION\n"
 msgstr ""
+"Zobraziť zoznam balíčkov. Názov nájdených balíčkov podľa vzoru regex.\n"
+"apt-cache search REG_EXPRESSION\n"
 
 #: .././ailurus/ubuntu/tips.py:55
 msgid ""
 "Display a list of packages. The packages provide a given file.\n"
 "apt-file search FILE_NAME\n"
 msgstr ""
+"Zobraziť zoznam balíčkov. Balíčky poskytujú daný súbor.\n"
+"apt-file search FILE_NAME\n"
 
 #: .././ailurus/ubuntu/tips.py:59
 msgid ""

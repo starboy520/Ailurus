@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-04-02 20:53+0000\n"
-"Last-Translator: Carla Sella <Unknown>\n"
+"PO-Revision-Date: 2010-04-05 04:38+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
+"X-Launchpad-Export-Date: 2010-04-06 04:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -88,7 +88,7 @@ msgstr "Snapshot effettuati il %(year)04d-%(month)02d:"
 #: .././ailurus/ubuntu/apt_recovery_pane.py:137
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
-msgstr ""
+msgstr "Non ci sono snapshot in %(year)04d-%(month)02d."
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:148
 #: .././ailurus/ubuntu/apt_recovery_pane.py:148
@@ -186,8 +186,8 @@ msgid ""
 "your system now."
 msgstr ""
 "Ailurus aiuta a mantenere traccia dei software installati e disinstallati. "
-"Se si usano spesso nuovi software, non ci si deve preoccupare di rovinare il "
-"sistema."
+"Se si usano spesso nuovi software ora non ci si deve preoccupare di rovinare "
+"il sistema."
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:301
 #: .././ailurus/ubuntu/apt_recovery_pane.py:301
@@ -211,7 +211,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:40 .././ailurus/ubuntu/app1.py:28
 msgid "Make GEdit more suitable for programmers"
-msgstr "Rendere GEdit più adatto per i programmatori"
+msgstr "Rendere GEdit più adatto per programmatori"
 
 #: .././ailurus/fedora/apps.py:41
 msgid ""
@@ -256,7 +256,7 @@ msgstr "Comando: yum install p7zip cabextract"
 
 #: .././ailurus/fedora/apps.py:88 .././ailurus/ubuntu/app1.py:138
 msgid "Make Evince be able to reveal Chinese pdf"
-msgstr "Rendere Evince capace di visualizzare pdf Cinesi"
+msgstr "Permettere ad Evince capace di visualizzare pdf Cinesi"
 
 #: .././ailurus/fedora/apps.py:89
 msgid "Command: yum install poppler-data"
@@ -413,14 +413,14 @@ msgstr ""
 "Gli strumenti sono:\n"
 "<i>gcc: compilatore C GNU.\n"
 "gcc-c++: compilatore C++ GNU\n"
-"ctags: parser di codice sorgente usato in vi ed emacs, che permette di "
-"spostarsi alla definizione di un simbolo. \n"
+"ctags: deodificatore di codice sorgente usato in vi ed emacs, che permette "
+"di spostarsi alla definizione di un simbolo. \n"
 "gmp-devel: libreria aritmetica mutli precisione GNU.\n"
 "ncurses-devel: una libreria che controlla la scrittura sullo schermo della "
 "console.\n"
 "qt3-devel: Libreria Qt della Trolltech, versione 3.\n"
 "subversion: un sistema di controllo delle versioni.\n"
-"git: un sistema di controllo di verisione distribuito. \n"
+"git: un sistema di controllo di verisioni distribuito. \n"
 "</i>Comando: yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel "
 "subversion git"
 
@@ -461,7 +461,7 @@ msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
-"Un'applicazione compatibile con Matlab® di calcolo numerico Matlab®.\n"
+"Un'applicazione di calcolo numerico compatibile con Matlab®.\n"
 "Comando: yum install qtoctave"
 
 #: .././ailurus/fedora/apps.py:336 .././ailurus/ubuntu/app3.py:275
@@ -511,7 +511,7 @@ msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
-"Questa è un IDE per Qt.\n"
+"Questo è un IDE per Qt.\n"
 "Comando: yum install qt-creator"
 
 #: .././ailurus/fedora/apps.py:398
@@ -519,7 +519,7 @@ msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
-"Kadu è un programma di messaggistica istantanea, molto poplare in Polonia.\n"
+"Kadu è un programma di messaggistica istantanea molto poplare in Polonia.\n"
 "Comando: yum install kadu"
 
 #: .././ailurus/fedora/apps.py:408 .././ailurus/ubuntu/app3.py:454
@@ -545,10 +545,11 @@ msgid ""
 "'COMMAND'\". <span color=\"red\">Due to restriction on filesystem "
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
-"Se \"sudo\" è stato abilitato e si vuole eseguire comandi come root, si deve "
-"digiare l'istruzione \"sudo COMANDO\" invece della complicata istruzione "
-"\"su-c 'COMANDO'\".<span color=\"red\"> A causa di restrizioni di permessi "
-"sul filesystem, Ailurus non può rilevare quando \"sudo è abilitato.</span> "
+"Se \"sudo\" è stato abilitato e si vogliono eseguire comandi come root, si "
+"deve digiare l'istruzione \"sudo COMANDO\" invece della complicata "
+"istruzione \"su-c 'COMANDO'\".<span color=\"red\"> A causa di restrizioni di "
+"permessi sul filesystem, Ailurus non può rilevare quando \"sudo è "
+"abilitato.</span> "
 
 #: .././ailurus/fedora/apps.py:430
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
@@ -605,7 +606,7 @@ msgstr "Ricerca"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:59
 #, python-format
 msgid "change %(old)s to %(new)s"
-msgstr ""
+msgstr "modificare %(old)s in %(new)s"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:66
 msgid "Find fastest repository mirror"
@@ -626,25 +627,23 @@ msgid ""
 "<span color=\"red\"><big>We have not searched out the fastest "
 "repository.</big></span>"
 msgstr ""
-"<span color=\"red\"><big>Non abbiamo cercato l'archivio pacchetti più "
-"veloce.</big></span>"
+"<span color=\"red\"><big>Il repository più veloce non è stato "
+"cercato.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:84
 msgid "<span color=\"blue\">The fastest repository is being used.</span>"
-msgstr ""
-"<span color=\"blue\">È stato utilizzato l'archivio pacchetti più "
-"veloce.</span>"
+msgstr "<span color=\"blue\">Il repository più veloce è già in uso.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:86
 msgid ""
 "<span color=\"red\"><big>The fastest repository is not being "
 "used.</big></span>"
 msgstr ""
-"<span color=\"red\"><big>Il repository non è quello utilizzato.</big></span>"
+"<span color=\"red\"><big>Il repository più veloce non è in uso.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:90
 msgid "Currently you are using these repositories:"
-msgstr "In questo momento sono in uso i seguenti repositories:"
+msgstr "In questo momento sono in uso i seguenti repository:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:93
 msgid "(Official repository)"
@@ -652,22 +651,20 @@ msgstr "(Repository ufficiale)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:94
 msgid "(Third-party repository)"
-msgstr "Archivio pacchetti di terze parti"
+msgstr "(Repository di terze parti)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:103
 msgid "There is one configuration file in /etc/apt/sources.list.d/"
-msgstr ""
-"Non è stato trovato alcun file di configurazione in /etc/apt/sources.list.d/"
+msgstr "Cè un file di configurazione in /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:104
 #, python-format
 msgid "There are %s configuration files in /etc/apt/sources.list.d/"
-msgstr ""
-"Trovati i file di configurazione %s nella cartella /etc/apt/sources.list.d/"
+msgstr "Ci sono %s file di configurazione in /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:107
 msgid "They are:"
-msgstr "Sono:"
+msgstr "Ci sono:"
 
 #. print tip
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:120
@@ -696,7 +693,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:159
 msgid "Backup and restore the configuration of repositories"
-msgstr "Fai il backup e ripristina la configurazione dei repositories"
+msgstr "Salvataggio e ripristino della configurazione dei repository"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:173
 msgid "Refresh"
@@ -705,7 +702,7 @@ msgstr "Aggiorna"
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:175
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:427
 msgid "Detect response time of all repositories"
-msgstr "Determina tempo di risposta di tutti i repository"
+msgstr "Rileva il tempo di risposta di tutti i repository"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:177
 msgid "Use the fastest repository"
@@ -713,11 +710,11 @@ msgstr "Usa il repository più veloce"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:179
 msgid "Edit repository configuration by text editor"
-msgstr "Modifica la configurazione dei repository con un editor di testo"
+msgstr "Modificare la configurazione dei repository tramite editor di testo"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:181
 msgid "Edit repository configuration by Synaptic"
-msgstr "Modifica la configurazione dei repository tramite Synaptic"
+msgstr "Modificare la configurazione dei repository tramite Synaptic"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:183
 msgid ""
@@ -727,7 +724,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:185
 msgid "How to backup and restore the configuration of repositories?"
-msgstr "Come fare un backup e ripristinare la configurazione dei repository?"
+msgstr "Come salvare e ripristinare la configurazione dei repository?"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:213
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:500
@@ -773,31 +770,31 @@ msgstr "Prego selezionare un solo repository"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:423
 msgid "Detect response time of selected repositories"
-msgstr "Determina il tempo di risposta dei repository selezionati"
+msgstr "Rilevare il tempo di risposta dei repository selezionati"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:431
 msgid "Use selected repositories"
-msgstr "Usa i repository selezionati"
+msgstr "Usare i repository selezionati"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:434
 msgid "Select all"
-msgstr "Seleziona tutto"
+msgstr "Selezionare tutto"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:437
 msgid "Select all repositories in these countries"
-msgstr "Seleziona tutti i repository in questi paesi"
+msgstr "Selezionare tutti i repository in questi paesi"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:440
 msgid "Unselect all"
-msgstr "Deseleziona tutto"
+msgstr "Deselezionare tutto"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:444
 msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
 msgstr ""
-"Se alcuni repositories non sono elencati, prego cliccare qui per notificarlo "
-"agli sviluppatori di Ailurus."
+"Se alcuni repositories non sono elencati qui sopra, prego cliccare qui per "
+"notificarlo agli sviluppatori di Ailurus."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:463
 msgid "Country"
@@ -1685,6 +1682,8 @@ msgid ""
 "Umbrello help you do UML modelling.\n"
 "Command: sudo apt-get install umbrello"
 msgstr ""
+"Umbrello aiuta ad effettuare modellazione UML.\n"
+"Comando: sudo apt-get install umbrello"
 
 #: .././ailurus/ubuntu/app2.py:225
 msgid "Ubuntu Studio Theme"
@@ -3045,6 +3044,11 @@ msgid ""
 "</span><span color=\"#00A0E9\">Help</span> you do tedious settings.\n"
 "<span color=\"#00A0E9\">Tell</span> you some Linux skills.</span>"
 msgstr ""
+"<span color=\"grey\"><span color=\"#00A0E9\">Aiuta</span> <span "
+"color=\"grey\">installare alcune buone applicazioni.\n"
+"</span><span color=\"#00A0E9\">Aiuta</span>effettuare alcune configurazioni "
+"noiose.\n"
+"<span color=\"#00A0E9\">Comunica</span>alcune qualità di Linux.</span>"
 
 #: .././ailurus/support/tipoftheday.py:55
 msgid "Tip of the Day"
@@ -3514,7 +3518,7 @@ msgstr "Indica se i pulsanti devono mostrare un'icona accanto al testo."
 
 #: .././ailurus/gnome/setting.py:165
 msgid "Button icons setting"
-msgstr ""
+msgstr "Impostazione pulsanti icone"
 
 #: .././ailurus/gnome/setting.py:169
 msgid "Disable terminal bell"
@@ -3859,6 +3863,7 @@ msgstr "Consenti la connessione da un computer remoto"
 #: .././ailurus/gnome/setting.py:411
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
+"Attiva il salvaschermo quando il computer è in pausa per un lungo periodo"
 
 #: .././ailurus/gnome/setting.py:415
 msgid "Lock screen when screen saver is activated"
@@ -3896,7 +3901,7 @@ msgstr "Cambiare il file manager predefinito in:"
 
 #: .././ailurus/gnome/setting.py:471
 msgid "Change default panel program to:"
-msgstr ""
+msgstr "Modificare il programma del pannello predefinito in:"
 
 #: .././ailurus/gnome/setting.py:477
 msgid "Change default window manager to:"
@@ -3917,7 +3922,7 @@ msgstr "Linea di comando"
 #: .././ailurus/gnome/setting.py:500
 #, python-format
 msgid "%2d:"
-msgstr ""
+msgstr "%2d"
 
 #. Window Decorator
 #: .././ailurus/gnome/setting.py:513
@@ -3939,7 +3944,7 @@ msgstr "Smeraldo"
 
 #: .././ailurus/gnome/setting.py:535
 msgid "Disable Minimize Effect"
-msgstr ""
+msgstr "Disabilita effetto riduzione ad icona"
 
 #: .././ailurus/gnome/setting.py:539
 msgid "Random All Effects"
@@ -3948,11 +3953,11 @@ msgstr "Tutti gli effetti in modalità casuale"
 #. number of desktop
 #: .././ailurus/gnome/setting.py:549
 msgid "Screen horizontal size coefficient"
-msgstr ""
+msgstr "Coefficiente dimensione orizzontale schermo"
 
 #: .././ailurus/gnome/setting.py:555
 msgid "Screen vertical size coefficient"
-msgstr ""
+msgstr "Coefficiente dimensione verticale schermo"
 
 #: .././ailurus/gnome/setting.py:563
 msgid "CompizConfig Settings"
@@ -4406,6 +4411,8 @@ msgid ""
 "Study\n"
 "Linux"
 msgstr ""
+"Esaminare\n"
+"Linux"
 
 #: .././ailurus/main.py:71
 msgid ""
@@ -4469,6 +4476,7 @@ msgstr ""
 #: .././ailurus/main.py:201
 msgid "Error happened. You cannot install any software by Ailurus. :("
 msgstr ""
+"È occorso un errore. Non si può installare alcun software tramite Ailurus. :("
 
 #: .././ailurus/main.py:204
 msgid "System configuration file should be updated."
@@ -5341,7 +5349,7 @@ msgstr "Non mostrare il \"Tip del giorno\" all'apertura"
 
 #: .././ailurus/common/menu.py:350
 msgid "Show a random Linux skill after you log in to GNOME"
-msgstr ""
+msgstr "Visualizzare qualità di Linux in modo casuale dopo l'accesso a GNOME"
 
 #: .././ailurus/common/menu.py:358
 msgid "Set download parameters"

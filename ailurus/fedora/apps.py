@@ -267,7 +267,7 @@ class QtiPlot(_rpm_install) :
     def __init__(self):
         self.pkgs = 'qtiplot'
 
-class QCad (_rpm_install):
+class QCad(_rpm_install):
     'QCad'
     detail = _('A CAD software which supports DXF-format. ')
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
@@ -347,7 +347,7 @@ class Generic_Genome_Browser:
                 RPM.install(package)
         
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        su('perl ' + f)
+        run_as_root_in_terminal('perl ' + f)
     def installed(self):
         return False
     def remove(self):
@@ -422,7 +422,7 @@ class Enable_Sudo:
     def installed(self):
         return False
     def install(self):
-        su(D+'../support/enable_sudo.py')
+        run_as_root_in_terminal(D+'../support/enable_sudo.py')
     def remove(self):
         pass
 
@@ -431,7 +431,7 @@ class Disable_Sudo:
     def installed(self):
         return False
     def install(self):
-        su(D+'../support/disable_sudo.py')
+        run_as_root_in_terminal(D+'../support/disable_sudo.py')
     def remove(self):
         pass
 
@@ -446,7 +446,7 @@ class Disable_SELinux:
         if 'SELINUX=enforcing' in c: return False
         return True
     def install(self):
-        su('/usr/sbin/setenforce 0')
+        run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
             with TempOwn(path) as o:
                 with open(path) as f:
@@ -456,7 +456,7 @@ class Disable_SELinux:
                 with open(path, 'w') as f:
                     f.writelines(lines)
     def remove(self):
-        su('/usr/sbin/setenforce 0')
+        run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
             with TempOwn(path) as o:
                 with open(path) as f:
@@ -465,7 +465,7 @@ class Disable_SELinux:
                     if 'SELINUX=permissive' in line: lines[i] = 'SELINUX=enforcing\n'
                 with open(path, 'w') as f:
                     f.writelines(lines)
-        su('/usr/sbin/setenforce 1')
+        run_as_root_in_terminal('/usr/sbin/setenforce 1')
 
 class Wallpaper_Tray(_rpm_install):
     __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
@@ -486,36 +486,7 @@ class Gnash(_rpm_install):
     logo = 'flash.png'
     def __init__(self):
         self.pkgs = 'gnash gnash-plugin'
-
-class Multimedia_Codecs (_rpm_install) :
-    __doc__ = _('Multi-media codec')
-    detail = _(
-       'Command: yum install '
-       'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-free-extras gstreamer-plugins-base'
-                     'gstreamer-plugins-good gstreamer-plugins-ugly')
-    category = 'media'
-    license = 'GNU Lesser General Public License'
-    logo = 'codec.png'
-    depend = Repo_RPMFusion_Free
-    def __init__(self):
-        self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-free-extras gstreamer-plugins-base gstreamer-plugins-good gstreamer-plugins-ugly')
-    def install(self):
-        _rpm_install.install(self)
-    def remove(self):
-        su('yum remove gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-ugly -y')
-    def get_reason(self, f):
-        self._get_reason(f)
         
-class VirtualBox_OSE(_rpm_install):
-    __doc__ = _('VirtualBox open source edition')
-    detail = _('Command: yum install VirtualBox-OSE')
-    category = 'vm'
-    license = 'GNU General Public License (GPL)'
-    logo = 'virtualbox.png'
-    depend = Repo_RPMFusion_Free
-    def __init__(self):
-        self.pkgs = 'VirtualBox-OSE'
-    
 class nautilus_actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
@@ -562,3 +533,12 @@ class ImageMagick(_rpm_install):
     def __init__(self):
         self.pkgs = 'ImageMagick'
 
+class PiViTi(_rpm_install):
+    __doc__ = _('PiTiVi: movie editor')
+    detail = _("Command: yum install pitivi")
+    logo = 'pitivi.png'
+    license = ('GNU Lesser General Public License, '
+               'see http://www.pitivi.org/')
+    category = 'media'
+    def __init__(self):
+        self.pkgs = 'pitivi'

@@ -49,13 +49,13 @@ class Bioclipse(_path_lists):
         try:
             run('unzip -qo %s' %f)
             import os
-            if not os.path.exists('/opt'): gksudo('mkdir /opt')
-            gksudo('rm /opt/bioclipse -rf')
+            if not os.path.exists('/opt'): run_as_root('mkdir /opt')
+            run_as_root('rm /opt/bioclipse -rf')
             if get_arch() == 32:
-                gksudo('mv bioclipse2.0.linux.gtk.x86/bioclipse /opt/')
+                run_as_root('mv bioclipse2.0.linux.gtk.x86/bioclipse /opt/')
             else:
-                gksudo('mv bioclipse2.0.linux.gtk.x86_64/bioclipse /opt/')
-            gksudo('chown $USER:$USER /opt/bioclipse -R')
+                run_as_root('mv bioclipse2.0.linux.gtk.x86_64/bioclipse /opt/')
+            run_as_root('chown $USER:$USER /opt/bioclipse -R')
             
             create_file(self.shortcut,'''[Desktop Entry]
 Name=Bioclipse
@@ -105,8 +105,8 @@ class BRLCAD(_path_lists):
         FileServer.chdir_local()
         try:
             run('tar jxf %s'%f)
-            gksudo('rm /usr/brlcad/ -rf')
-            gksudo('mv usr/brlcad/ /usr/')
+            run_as_root('rm /usr/brlcad/ -rf')
+            run_as_root('mv usr/brlcad/ /usr/')
             create_file(self.shortcut, '''[Desktop Entry]
 Name=BRL-CAD
 Exec=/usr/brlcad/bin/mged
@@ -170,8 +170,8 @@ class Electric(_path_lists):
 'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
 11102701, 'c50557bc54b74948e707dc4606009bd93274ec71').download()
 
-        gksudo('mkdir /opt', ignore_error=True)
-        gksudo('cp %s %s'%(f, self.file) )
+        run_as_root('mkdir /opt', ignore_error=True)
+        run_as_root('cp %s %s'%(f, self.file) )
         create_file(self.shortcut, '''[Desktop Entry]
 Name=Electric
 Exec=java -jar %s -Xms512M -Xmx1024M -Dsun.java2d.opengl=true
@@ -215,7 +215,7 @@ class Speed_Up_Firefox:
         import os 
         return os.path.exists('/usr/share/applications/firefox.nopango.desktop')
     def remove(self):
-        gksudo('rm -f /usr/share/applications/firefox.nopango.desktop')
+        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
 class Netbeans:
     __doc__ = _(u'Netbeans® 6.8')
@@ -238,7 +238,7 @@ class Netbeans:
                   ],
                  247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
                  ).download()
-        gksudo("bash %s" %file)
+        run_as_root("bash %s" %file)
         # If there is no Netbeans shortcut, then we should create one.
         import glob
         List = glob.glob('/usr/share/applications/netbeans*')
@@ -283,8 +283,8 @@ Terminal=0
         path = os.path.dirname(path)
         path = os.path.dirname(path)
         uninstaller = path + '/uninstall.sh'
-        gksudo(uninstaller)
-        gksudo('rm %s -f'%File)
+        run_as_root(uninstaller)
+        run_as_root('rm %s -f'%File)
         
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
@@ -312,9 +312,9 @@ class OpenJUMP(_path_lists):
             run('unzip -oq %s'%f)
             import os
             if not os.path.exists('/opt'):
-                gksudo('mkdir /opt')
+                run_as_root('mkdir /opt')
             if not os.path.exists(self.dir):
-                gksudo('mv openjump-1.3 /opt/')
+                run_as_root('mv openjump-1.3 /opt/')
             create_file(self.shortcut, '''[Desktop Entry]
 Name=OpenJUMP
 Exec=bash /opt/openjump-1.3/bin/openjump.sh
@@ -385,21 +385,17 @@ class TeXLive2009:
         assert os.system('%s %s > /tmp/texlive.iso'%(xzdec, isoxz) ) == 0
         #mount
         if not os.path.exists('/mnt/texlive'):
-            gksudo("mkdir /mnt/texlive")
-        gksudo("mount -o iocharset=utf8,loop /tmp/texlive.iso /mnt/texlive")
+            run_as_root("mkdir /mnt/texlive")
+        run_as_root("mount -o iocharset=utf8,loop /tmp/texlive.iso /mnt/texlive")
         #launch install-tl
         import tempfile
         temp = tempfile.NamedTemporaryFile(mode='w')
         temp.write("I\n") # Do not establish symbolic links in /usr/bin/ since TeXLive 
         temp.flush()
         
-        temp2 = tempfile.NamedTemporaryFile(mode='w')
-        temp2.write("sudo /mnt/texlive/install-tl < %s\n" %temp.name)
-        temp2.flush()
-        run_in_new_terminal(temp2.name)
-#        gksudo("/mnt/texlive/install-tl < %s" %temp.name )
-        gksudo("umount /mnt/texlive")
-        gksudo("rmdir /mnt/texlive", ignore_error=True)
+        run_as_root_in_terminal('/mnt/texlive/install-tl < %s\n' % temp.name)
+        run_as_root("umount /mnt/texlive")
+        run_as_root("rmdir /mnt/texlive", ignore_error=True)
         #setup environment variables
         env = ETCEnvironment()
         if get_arch()==32:
@@ -415,7 +411,7 @@ class TeXLive2009:
         import os
         return os.path.exists('/usr/local/texlive/2009/')
     def remove(self):
-        gksudo('rm -rf /usr/local/texlive/2009/')
+        run_as_root('rm -rf /usr/local/texlive/2009/')
         #remove environment variables
         env = ETCEnvironment()
         if get_arch()==32:

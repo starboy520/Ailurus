@@ -42,7 +42,7 @@ class OpenJDK6:
         env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-openjdk/lib/dt.jar', '/usr/lib/jvm/java-6-openjdk/lib/tools.jar')
         env.save()
         
-        gksudo('update-java-alternatives -s java-6-openjdk', ignore_error=True)
+        run_as_root('update-java-alternatives -s java-6-openjdk', ignore_error=True)
         
         with TempOwn('/etc/jvm') as o:
             with open('/etc/jvm', "w") as f:

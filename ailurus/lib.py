@@ -35,7 +35,7 @@ class Config:
             try:    os.makedirs(dir)
             except: pass # directory exists
         if os.stat(dir).st_uid != os.getuid(): # change owner
-            gksudo('chown $USER:$USER "%s"'%dir)
+            run_as_root('chown $USER:$USER "%s"'%dir)
         if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
             os.chmod(dir, 0755)
     @classmethod
@@ -335,7 +335,7 @@ def authenticate():
         import os
         policykit.ObtainAuthorization('cn.ailurus', dbus.UInt32(0), dbus.UInt32(os.getpid()))
 
-def su_spawn(command):
+def spawn_as_root(command):
     is_string_not_empty(command)
     
     authenticate()
@@ -344,7 +344,7 @@ def su_spawn(command):
     obj = bus.get_object('cn.ailurus', '/')
     obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
-def gksudo(cmd, ignore_error=False):
+def run_as_root(cmd, ignore_error=False):
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
     
@@ -388,13 +388,13 @@ class TempOwn:
             raise ValueError
         import os
         if not os.path.exists(path):
-            gksudo('touch "%s"'%path)
-        gksudo('chown $USER:$USER %s'%path )
+            run_as_root('touch "%s"'%path)
+        run_as_root('chown $USER:$USER %s'%path )
         self.path = path
     def __enter__(self):
         return None
     def __exit__(self, type, value, traceback):
-        gksudo('chown root:root %s'%self.path)
+        run_as_root('chown root:root %s'%self.path)
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
@@ -504,7 +504,7 @@ def own_by_user(*paths):
     for path in paths:
         import os
         if os.stat(path).st_uid != os.getuid():
-            gksudo('chown $USER:$USER "%s"'%path)
+            run_as_root('chown $USER:$USER "%s"'%path)
 
 class FileServer:
     @classmethod
@@ -518,8 +518,8 @@ class FileServer:
         import os
         cls.__saved_path = os.getcwd()
         if not os.path.exists('/var/cache/ailurus/'):
-            gksudo('mkdir -p /var/cache/ailurus/')
-            gksudo('chown $USER:$USER /var/cache/ailurus/')
+            run_as_root('mkdir -p /var/cache/ailurus/')
+            run_as_root('chown $USER:$USER /var/cache/ailurus/')
         os.chdir('/var/cache/ailurus/')
     @classmethod
     def chdir_back(cls):
@@ -533,7 +533,7 @@ def is_pkg_list(packages):
         if package[0]=='-': raise ValueError
         if ' ' in package: raise ValueError
 
-def su(command):
+def run_as_root_in_terminal(command):
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
@@ -575,7 +575,7 @@ class RPM:
         return package_name in cls.__set1
     @classmethod
     def install(cls, *package):
-        su('yum install %s -y' % ' '.join(package))
+        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def install_local(cls, path):
@@ -583,16 +583,16 @@ class RPM:
         import os
         assert os.path.exists(path)
         
-        su('yum localinstall --nogpgcheck -y %s' % path)
+        run_as_root_in_terminal('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
     @classmethod
     def remove(cls, *package):
-        su('yum remove %s -y' % ' '.join(package))
+        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
     @classmethod
     def import_key(cls, path):
         assert isinstance(path, str)
-        su('rpm --import %s' % path)
+        run_as_root_in_terminal('rpm --import %s' % path)
 
 class APT:
     fresh_cache = False
@@ -640,12 +640,9 @@ class APT:
     def install(cls, *packages):
         # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        # get list of not-existed packages
-        not_exist = [ e for e in packages if not APT.exist(e) ]
-        # reduce package list
+        all_packages = packages
         packages = [ e for e in packages if not APT.installed(e) ]
         if packages:
-            # apt-get update
             if not hasattr(cls, 'updated'):
                 APT.apt_get_update()
                 cls.updated = True
@@ -666,15 +663,15 @@ class APT:
             # print message
             print '\x1b[1;33m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
             # run command
-            gksudo(' '.join(cmd))
+            run_as_root(' '.join(cmd))
             # notify change
             APT.cache_changed()
         # check state
         failed = []
-        for p in packages:
+        for p in all_packages:
             if not APT.installed(p): failed.append(p)
-        if failed or not_exist:
-            msg = _('Cannot install packages "%s".')%' '.join(failed+not_exist)
+        if failed:
+            msg = 'Cannot install "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
@@ -702,7 +699,7 @@ class APT:
             # print message
             print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
             # run command
-            gksudo(' '.join(cmd))
+            run_as_root(' '.join(cmd))
             # notify change
             APT.cache_changed()
         # check state
@@ -710,14 +707,15 @@ class APT:
         for p in packages:
             if APT.installed(p): failed.append(p)
         if failed or not_exist:
-            msg = _('Cannot remove packages "%s".')%' '.join(failed+not_exist)
+            msg = 'Cannot remove "%s".' % ' '.join(failed+not_exist)
             raise CommandFailError(msg)
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
         print '\x1b[1;33m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
-        gksudo(cmd, ignore_error=True)
+        run_as_root(cmd, ignore_error=True)
+        cls.updated = True
 
 #class DPKG:
 #    @classmethod
@@ -813,12 +811,12 @@ class DPKG:
             depends = DPKG.get_deb_depends(package)
             if len(depends):
                 APT.install(*depends)
-            gksudo('dpkg --install --force-architecture %s'%package)
+            run_as_root('dpkg --install --force-architecture %s'%package)
             APT.cache_changed()
     @classmethod
     def remove_deb(cls, package_name):
         is_string_not_empty(package_name)
-        gksudo('dpkg -r %s'%package_name)
+        run_as_root('dpkg -r %s'%package_name)
         APT.cache_changed()
 
 def get_response_time(url):
@@ -904,7 +902,7 @@ class KillWhenExit:
 import atexit
 atexit.register(KillWhenExit.kill_all)
 
-def wget(url, filename):
+def download(url, filename):
     is_string_not_empty(url)
     assert url[0]!='-'
     is_string_not_empty(filename)
@@ -1257,7 +1255,7 @@ class R:
         dir = '/var/cache/ailurus/'
         import os
         if not os.path.exists(dir):
-            gksudo('mkdir %s -p'%dir)
+            run_as_root('mkdir %s -p'%dir)
         own_by_user(dir)
     def check(self, path):
         if self.size:
@@ -1281,7 +1279,7 @@ class R:
             assert isinstance(url, str)
             try:
                 R.create_tmp_dir()
-                wget(url, dest)
+                download(url, dest)
                 self.check(dest)
                 return dest
             except:
@@ -1365,12 +1363,6 @@ def create_file(path, content):
     with TempOwn(path) as o:
         with open(path, 'w') as f:
             f.write(content)
-
-def run_in_new_terminal(file_name):
-    import subprocess
-    task = subprocess.Popen('LANG=C xterm -T "Ailurus Terminal" -e bash %s'%file_name, shell=True )
-    if task.wait():
-        raise CommandFailError
 
 class Tasksel:
     fresh_cache = False

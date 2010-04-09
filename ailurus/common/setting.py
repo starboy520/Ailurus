@@ -58,7 +58,7 @@ def __change_kernel_swappiness():
                 contents.append(new_line)
             with open('/etc/sysctl.conf', 'w') as f:
                 f.writelines(contents)
-        gksudo('/sbin/sysctl -p', ignore_error = True)
+        run_as_root('/sbin/sysctl -p', ignore_error = True)
         current_value = int( get_output('/sbin/sysctl -n vm.swappiness').strip() )
         if current_value != new_value: raise CommandFailError
     
@@ -85,7 +85,7 @@ def __restart_network():
              obj.wake(dbus_interface='org.freedesktop.NetworkManager')
              if Config.is_Ubuntu() or Config.is_Mint():
                  notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
-                 gksudo('/etc/init.d/networking restart')
+                 run_as_root('/etc/init.d/networking restart')
              notify(_('Information'), _('Network restarted successfully.'))
          except: pass
      button_restart_network = gtk.Button(_('Restart network').center(30))

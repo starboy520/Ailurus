@@ -232,8 +232,12 @@ class MainView:
             item = self.__create_toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
             left_most_pane_name = name
-        assert left_most_pane_name != None
-        self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
+        
+        if 'InstallRemovePane' in self.contents:
+            self.activate_pane(None, 'InstallRemovePane')
+        else:
+            assert left_most_pane_name != None
+            self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
     def __show_popupmenu_on_toolbaritem(self, widget, event, menu):
         if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:

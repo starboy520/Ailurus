@@ -104,6 +104,7 @@ liferea.png is copied from Liferea project. It is released under the GPL license
 stardict.png is copied from Stardict project. It is released under GPL v3 license. Its copyright is holded by Stardict Team.
 m_clean_up.png is released under the GPL license. Its copyright is holded by MA Yue.
 netbeans.png is copied from Netbeans project. It is released under the GPL v2 license. Its copyright is holded by Sun Microsystems Ltd.
+pitivi.png is copied from PiTiVi project. It is released under the LGPL license. Its copyright is holded by PiTiVi Team.
 python.png is copied from Python project. It is released under the Python license. Its copyright is holded by Python Software Foundation.
 qtcreator.png is copied from Qt project. It is released under the LGPL license. Its copyright is holded by Nokia Corporation.
 s_nautilus.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
@@ -155,7 +156,8 @@ def show_special_thank_dialog(widget): # called by __help
     print >>text, '<b><big>Careone</big></b>'
     print >>text
     print >>text, _('The people who provide a lot of translation:')
-    print >>text, '<b><big>Federico Vera, Sergey Sedov</big></b>', _('and many other people.')
+    print >>text, '<b><big>Federico Vera, Sergey Sedov, Sérgio Marques</big></b>', 
+    print >>text, _('and many other people.')
     print >>text 
     print >>text, _('The people who report bugs:')
     print >>text, '<b><big>LIU Liang, YU Pengfei, q1ha0,'

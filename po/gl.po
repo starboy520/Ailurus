@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-03-29 18:54+0800\n"
-"PO-Revision-Date: 2010-04-02 14:41+0000\n"
-"Last-Translator: NaNo <danigz3@gmail.com>\n"
+"PO-Revision-Date: 2010-04-08 03:42+0000\n"
+"Last-Translator: Holger <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-03 04:00+0000\n"
+"X-Launchpad-Export-Date: 2010-04-08 07:26+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -181,6 +181,9 @@ msgid ""
 "you often try to use new software, you do not have to worry about messing up "
 "your system now."
 msgstr ""
+"Ailurus axudache a levar a conta do software que instalaches ou eliminaches. "
+"Se tentas usar novo software a miúdo, xa non tes que te preocupar de xerar "
+"erros no teu sistema"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:301
 #: .././ailurus/ubuntu/apt_recovery_pane.py:301
@@ -297,10 +300,17 @@ msgid ""
 "    set number\n"
 "    set mouse=a"
 msgstr ""
+"Instala VIM e faino mais axeitado para programadores. O proceso de "
+"instalación e como segue. Executase o comando \"yum install vim-enhanced\". "
+"Logo estas liñas añadense en \"$HOME/.vimrc\" file: \n"
+"    syntax on\n"
+"    set autoindent\n"
+"    set number\n"
+"    set mouse=a"
 
 #: .././ailurus/fedora/apps.py:180 .././ailurus/ubuntu/app1.py:238
 msgid "Use colorful Bash prompt symbols"
-msgstr ""
+msgstr "Usa símbolos de Bash cheos de colorido"
 
 #: .././ailurus/fedora/apps.py:181
 msgid ""
@@ -320,7 +330,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "The color of bash prompt symbols is changed."
-msgstr ""
+msgstr "As cores dos simbolos de Bash cambiaronse"
 
 #: .././ailurus/fedora/apps.py:195 .././ailurus/ubuntu/app1.py:252
 msgid "It will take effect at the next time you log in."
@@ -336,7 +346,7 @@ msgstr "Comando: yum install cups-pdf"
 
 #: .././ailurus/fedora/apps.py:210
 msgid "Stardict"
-msgstr ""
+msgstr "Stardict"
 
 #: .././ailurus/fedora/apps.py:212
 msgid ""
@@ -373,10 +383,12 @@ msgid ""
 "This is a simple and easy used RSS feed reader.\n"
 "Command: yum install liferea"
 msgstr ""
+"É un lector de RSS simple e doado de usar.\n"
+"Comando: yum install liferea"
 
 #: .././ailurus/fedora/apps.py:237
 msgid "Useful applications for programming"
-msgstr ""
+msgstr "Aplicacións utíis para programar"
 
 #: .././ailurus/fedora/apps.py:238
 msgid ""
@@ -409,7 +421,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:261 .././ailurus/ubuntu/app2.py:313
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
-msgstr ""
+msgstr "QtiPlot: O equivalente da aplicacion de plotting \"Origin\" en Linux"
 
 #: .././ailurus/fedora/apps.py:262
 msgid ""
@@ -426,16 +438,20 @@ msgstr ""
 msgid ""
 "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
+"Desactivar o GEtty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 aínda atópase activo"
 
 #: .././ailurus/fedora/apps.py:281 .././ailurus/ubuntu/app3.py:139
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr ""
+"Acelera o proceso de arrancado de Linux. Libera 2.5 MBytes de memoria. "
 
 #: .././ailurus/fedora/apps.py:326
 msgid ""
 "A Matlab® compatible numerical computation appliation.\n"
 "Command: yum install qtoctave"
 msgstr ""
+"Unha aplicación de computación numérica compatible con Matlab®.\n"
+"Comando: yum install qtoctave"
 
 #: .././ailurus/fedora/apps.py:336 .././ailurus/ubuntu/app3.py:275
 msgid "Generic Genome Browser"
@@ -455,30 +471,40 @@ msgid ""
 "This is a drawing program for young children three years and up.\n"
 "Command: yum install tuxpaint"
 msgstr ""
+"Un programa de debuxo para nenos de menos de 3 anos de idade.\n"
+"Comando: yum install tuxpaint"
 
 #: .././ailurus/fedora/apps.py:368
 msgid ""
 "This is a suite of educational games for young children.\n"
 "Command: yum install childsplay"
 msgstr ""
+"Unha recopliación de xogos educativos para nenos.\n"
+"Comando: yum install childsplay"
 
 #: .././ailurus/fedora/apps.py:378
 msgid ""
 "GCompris provides educational games for children aged 2 to 10.\n"
 "Command: yum install gcompris"
 msgstr ""
+"GCompris provee xogos educativos para nenos entre 2 e 10 anos.\n"
+"Comando: yum install gcompris"
 
 #: .././ailurus/fedora/apps.py:388
 msgid ""
 "This is an IDE for Qt.\n"
 "Command: yum install qt-creator"
 msgstr ""
+"Un IDE para Qt.\n"
+"Comando: yum install qt-creator"
 
 #: .././ailurus/fedora/apps.py:398
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
 msgstr ""
+"Kadu é un aplicativo de mensaxería instantánea, moi popular na Polonia.\n"
+"Comando: yum install kadu"
 
 #: .././ailurus/fedora/apps.py:408 .././ailurus/ubuntu/app3.py:454
 msgid "Parcellite: clipboard manager"
@@ -501,18 +527,23 @@ msgid ""
 "'COMMAND'\". <span color=\"red\">Due to restriction on filesystem "
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
+"Se activaches \"sudo\" e queres executar comandos como usuario root, podes "
+"usar o comando \"sudo COMANDO\" en troques do complicado comando \"su -c "
+"COMANDO\". <span color=\"red\">Debido a restriccións nos permisos do "
+"sistema, Ailurus non pode detectar se \"sudo\" atópase activo.</span> "
 
 #: .././ailurus/fedora/apps.py:430
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
-msgstr ""
+msgstr "Desactiva \"sudo\". Evita que uses \"sudo\"."
 
 #: .././ailurus/fedora/apps.py:439
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
-msgstr ""
+msgstr "pon Selinux en modo permisivo. En troques do modo estricto."
 
 #: .././ailurus/fedora/apps.py:471 .././ailurus/ubuntu/app3.py:501
 msgid "WallpaperTray: Randomly change GNOME desktop background"
 msgstr ""
+"WallpaperTray: Cambia o fondo de escritorio de Gnome de maneira aleatoria"
 
 #: .././ailurus/fedora/apps.py:473
 msgid ""
@@ -523,30 +554,32 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:482
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "Plugin Flash para o navegador web"
 
 #: .././ailurus/fedora/apps.py:483
 msgid "Command: yum install gnash"
-msgstr ""
+msgstr "Comando: yum install gnash"
 
 #: .././ailurus/fedora/apps.py:491 .././ailurus/ubuntu/app1.py:259
 #: .././ailurus/ubuntu/quick_setup.py:296
 msgid "Multi-media codec"
-msgstr ""
+msgstr "Codec Multimedia"
 
 #: .././ailurus/fedora/apps.py:493
 msgid ""
 "Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
 "extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
 msgstr ""
+"Comando: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
+"extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
 
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
-msgstr ""
+msgstr "Versión de Ubuntu:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:33
 msgid "Search"
-msgstr ""
+msgstr "Procurar"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:59
 #, python-format
@@ -555,64 +588,70 @@ msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:66
 msgid "Find fastest repository mirror"
-msgstr ""
+msgstr "Localizar o repositorio mais rápido"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
 msgid "The fastest repository is %s;"
-msgstr ""
+msgstr "O repositorio mais rápido é %s;"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:78
 #, python-format
 msgid "Its response time is %s millisecond."
-msgstr ""
+msgstr "O tempo de resposta en milisegundos é %s."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:80
 msgid ""
 "<span color=\"red\"><big>We have not searched out the fastest "
 "repository.</big></span>"
 msgstr ""
+"<span color=\"red\"><big>Aínda non procuramos o repositorio mais "
+"rápido.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:84
 msgid "<span color=\"blue\">The fastest repository is being used.</span>"
-msgstr ""
+msgstr "<span color=\"blue\">O repositorio mais rápido estase a usar.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:86
 msgid ""
 "<span color=\"red\"><big>The fastest repository is not being "
 "used.</big></span>"
 msgstr ""
+"<span color=\"red\"><big>Non se está a usar o repositorio mais "
+"rápido.</big></span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:90
 msgid "Currently you are using these repositories:"
-msgstr ""
+msgstr "Neste intre estas a usar estes repositorios:"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:93
 msgid "(Official repository)"
-msgstr ""
+msgstr "(Repositorio oficial)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:94
 msgid "(Third-party repository)"
-msgstr ""
+msgstr "(Repositorio de terceiros)"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:103
 msgid "There is one configuration file in /etc/apt/sources.list.d/"
-msgstr ""
+msgstr "Hai un ficheiro de configuración en  /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:104
 #, python-format
 msgid "There are %s configuration files in /etc/apt/sources.list.d/"
-msgstr ""
+msgstr "Hai %s ficheiros de configuración en /etc/apt/sources.list.d/"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:107
 msgid "They are:"
-msgstr ""
+msgstr "Son:"
 
 #. print tip
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:120
 msgid ""
 "<small>(Click mouse right button to display the context menu.)</small>"
 msgstr ""
+"<small>(Clica o botón dereito do rato para mostrar o menú "
+"contextual.)</small>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:139
 msgid ""
@@ -624,61 +663,72 @@ msgid ""
 "cd /etc/apt/\n"
 "sudo tar xzf ~/sources.backup.tar.gz"
 msgstr ""
+"<b>Gardar a configuración dos repositorios:</b>\n"
+"cd /etc/apt/\n"
+"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"\n"
+"<b>Recuperar a configuración dos repositorios:</b>\n"
+"cd /etc/apt/\n"
+"sudo tar xzf ~/sources.backup.tar.gz"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:159
 msgid "Backup and restore the configuration of repositories"
-msgstr ""
+msgstr "Gardar e recuperar a configuración dos repositorios"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:173
 msgid "Refresh"
-msgstr ""
+msgstr "Refrescar"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:175
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:427
 msgid "Detect response time of all repositories"
-msgstr ""
+msgstr "Detectar o tempo de resposta de todos os repositorios"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:177
 msgid "Use the fastest repository"
-msgstr ""
+msgstr "Usar o repositorio mais rápido"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:179
 msgid "Edit repository configuration by text editor"
-msgstr ""
+msgstr "Editar a configuración dos repositorios mediante un editor de texto"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:181
 msgid "Edit repository configuration by Synaptic"
-msgstr ""
+msgstr "Editar a configuración dos repositorios mediante Synaptic"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:183
 msgid ""
 "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
 msgstr ""
+"Xuntar todos os ficheiros en /etc/apt/sources.list.d/ en "
+"/etc/apt/sources.list"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:185
 msgid "How to backup and restore the configuration of repositories?"
-msgstr ""
+msgstr "¿Como gardar e recuperar a configuración dos repositorios?"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:213
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:500
 msgid "Click mouse right button to display the context menu."
-msgstr ""
+msgstr "Clica no botón dereito do rato para amosar o menú contextual."
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:228
 msgid "No response"
-msgstr ""
+msgstr "Sen resposta"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:282
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
 msgstr ""
+"<span color='black'>O tempo de resposta de %(server)s é %(value).2f "
+"ms.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:284
 #: .././ailurus/ubuntu/quick_setup.py:175
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
-msgstr ""
+msgstr "<span color='black'>O servidor %s resulta inalcanzábel.</span>"
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:296
 #, python-format

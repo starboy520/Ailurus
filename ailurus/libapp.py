@@ -217,7 +217,7 @@ class _path_lists:
     def remove(self):
         self.__check()
         for path in self.paths:
-            gksudo('rm "%s" -rf'%path)
+            run_as_root('rm "%s" -rf'%path)
     def _get_reason(self, f):
         import os
         #evaluate

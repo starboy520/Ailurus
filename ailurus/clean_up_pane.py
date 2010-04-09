@@ -58,7 +58,7 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            gksudo('apt-get clean')
+            run_as_root('apt-get clean')
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo apt-get clean'))
@@ -69,7 +69,7 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            gksudo("yum --enablerepo='*' clean all")
+            run_as_root("yum --enablerepo='*' clean all")
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
@@ -80,7 +80,7 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            gksudo('rm /var/cache/ailurus/* -rf')
+            run_as_root('rm /var/cache/ailurus/* -rf')
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
@@ -144,7 +144,7 @@ class ReclaimMemoryBox(gtk.HBox):
             src = tempfile.NamedTemporaryFile('w')
             src.write('3\n')
             src.flush()
-            gksudo('cp %s %s'%(src.name, dest) )
+            run_as_root('cp %s %s'%(src.name, dest) )
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
