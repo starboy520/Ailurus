@@ -19,7 +19,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-def set1():
+def __set1():
     return [
 ['AR', 'i386', 'http://fedora.patan.com.ar/linux'],
 ['AT', 'Zero42', 'http://fedora.zero42.at/linux'],
@@ -210,10 +210,10 @@ def set1():
 ['US', 'Nuvio Corporation', 'http://mirror.nuvio.com/pub/fedora/linux'],
 ]
     
-def set2():
+def __set2():
     return [
 ['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux/'],
 ]
     
-def get():
-    return set1() + set2()
+def all_candidate_repositories():
+    return __set1() + __set2()
