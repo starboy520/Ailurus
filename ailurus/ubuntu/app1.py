@@ -395,3 +395,5 @@ class Bluetooth(_apt_install):
     category = 'hardware'
     def __init__(self):
         self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+    def get_reason(self, f):
+        self._get_reason(f)
