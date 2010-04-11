@@ -379,15 +379,6 @@ def get_output(cmd, ignore_error=False):
     if status and not ignore_error: raise CommandFailError(cmd)
     return output
     
-#def keep_sudo():
-#    'run "sudo -v" one time for each minute'
-#    'This function is not used.'
-#    while True:
-#        import time
-#        time.sleep(60)
-#        if os.system('sudo -v'):
-#            raise CommandFailError, 'sudo -v'
-
 class TempOwn:
     def __init__(self,path):
         is_string_not_empty(path)
@@ -421,12 +412,6 @@ def notify(title, content):
         import sys, traceback
         traceback.print_exc(file=sys.stderr)
         print >>sys.stderr, content
-
-#def is_started_by_sudo():
-#    'Return True if this program is started by "sudo"'
-#    'Return False if it is started by normal user or "su"'
-#    import os
-#    return os.getuid()==0 and os.getenv("HOME")!="/root"
 
 def get_arch():
     'Return 64 if the operating system is 64-bit. Return 32 otherwise.'
@@ -724,62 +709,6 @@ class APT:
         run_as_root(cmd, ignore_error=True)
         cls.updated = True
 
-#class DPKG:
-#    @classmethod
-#    def installed(cls, package_name):
-#        is_pkg_list([package_name])
-#        seed = 'Package: %s\n'%package_name
-#        with open('/var/lib/dpkg/status') as f:
-#            while True:
-#                line = f.readline()
-#                if len(line)==0: return False
-#                if line==seed:
-#                    status = ''
-#                    while not status.startswith('Status:'):
-#                        status = f.readline()
-#                    return status=='Status: install ok installed\n'
-#    @classmethod
-#    def exist(cls, package_name):
-#        seed = 'Package: %s\n'%package_name
-#        with open('/var/lib/dpkg/available') as f:
-#            for line in f:
-#                if line==seed:
-#                    return True
-#        return False
-
-#def package_status( package_name ):
-#    is_pkg_list([package_name])
-#    
-#    if not hasattr(package_status, 'inited'):
-#        package_status.inited=True
-#        import apt
-#        package_status.cache=apt.cache.Cache()
-#    
-#    if getattr(package_status, 'cache_changed', False):
-#        package_status.cache_changed=False
-#        package_status.cache.open(None)
-#        
-#    cache = package_status.cache
-#    if not package_name in cache:
-#        return False
-#    return cache[package_name].isInstalled
-
-#def package_exists( package_name ):
-#    is_string_not_empty(package_name)
-#    if package_name[0]=='-': raise ValueError
-#
-#    if not hasattr(package_status, 'inited'):
-#        package_status.inited=True
-#        package_status.cache=apt.cache.Cache()
-#    return package_name in package_status.cache
-
-#def installed(*packages):
-#    is_pkg_list(packages)
-#    for pkg in packages:
-#        if not package_status ( pkg ):
-#            return False
-#    return True
-
 class DPKG:
     @classmethod
     def installed(cls, package_name):
@@ -864,25 +793,6 @@ def derive_time(time):
     if time >= _1m:
         return _('%.1f minutes') % ( time/_1m )
     return _('%d seconds') % time
-
-#def print_progress(command, total_line_number):
-#    def color_print(progress):
-#        assert 0<=progress<=100
-#        print '\r\x1b[1;36m'+' %.2f%%'.ljust(8) % progress+'\x1b[m',
-#    assert isinstance(command, str)
-#    assert total_line_number > 0
-#    print '\x1b[1;33m%s\x1b[m'%command
-#    linenum = 0
-#    import subprocess
-#    task = subprocess.Popen(command, shell=True, bufsize=1, stdout=subprocess.PIPE).stdout
-#    while True:
-#        string = task.readline()
-#        linenum+=1
-#        if len(string)==0: # EOF
-#            break
-#        color_print (min(99, 100.*linenum/total_line_number))
-#    color_print (100)
-#    print # print a new-line at last
 
 class KillWhenExit:
     task_list = []
