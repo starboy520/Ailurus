@@ -19,3 +19,16 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from __future__ import with_statement
+import gtk, pango
+import sys, os
+from lib import *
+from libu import *
+import libserver
+
+class FedoraFastestMirrorPane(gtk.VBox):
+    name = _('Find fastest repository mirror')
+
+    def __init__(self):
+        gtk.VBox.__init__(self, False, 0)
+        self.pack_start(gtk.Label('This functionality has not been implemented.'))
