@@ -148,7 +148,7 @@ X-GNOME-Autostart-enabled=true
             os.remove(self.file)
 
 class VIM_and_VIMRC(_rpm_install) :
-    __doc__ = _('VIM')
+    __doc__ = _('Make VIM more suitable for programming')
     detail = _('Install VIM and make it more suitable for programming. '
        'The installation process is as follows. '
        '"yum install vim-enhanced" command is executed. '

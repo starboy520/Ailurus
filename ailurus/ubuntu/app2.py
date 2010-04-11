@@ -229,7 +229,7 @@ class Ubuntu_Studio_Theme(_apt_install):
         self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
-    __doc__ = _('Minicom and ckermit')
+    __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
     detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
     category = 'embedded'
