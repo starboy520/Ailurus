@@ -1,3 +1,11 @@
+2010-04-11 MA Yue <velly.empire@gmail.com>
+
+    * Add a new icon for "Ailurus quick start"
+
+2010-04-11 CHEN Yangyang <skabyy@gmail.com>
+
+    * Cut down start up time of "clean up pane" to less than 1 second.
+
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: "apt-get update" run two times before install songbird.

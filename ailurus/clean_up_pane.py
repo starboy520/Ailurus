@@ -175,31 +175,54 @@ class UbuntuCleanKernelBox(gtk.VBox):
         
     def remove_kernel(self, button_apply):
         remove_list = []
+        delete_list = []
         for button in self.check_buttons_list:
             if button.get_active() == False:
-                remove_list.extend(self.version_to_packages[button.kernel_version])
+                kernel_version = button.kernel_version
+                pkgs = self.version_to_packages[kernel_version]
+                if pkgs: 
+                    remove_list.extend(pkgs)
+                else:
+                    delete_list.extend([
+                            '/lib/modules/%s'%kernel_version, 
+                            '/boot/System.map-%s'%kernel_version,
+                            'config-%s'%kernel_version,
+                            'initrd.img-%s'%kernel_version
+                                        ])
         if remove_list:
             try:    APT.remove(*remove_list)
+            except: pass
+            self.__regenerate_version_to_packages()
+            self.__regenerate_check_buttons()
+        if delete_list:
+            try:    run_as_root('rm -rf %s'%' '.join(delete_list))
             except: pass
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         button_apply.set_sensitive(False)
 
     def __regenerate_version_to_packages(self):
+        import glob
         import re
         self.version_to_packages.clear()
-        all_pkgs = APT.get_installed_pkgs_set()
-        kernel_pkgs = [p for p in all_pkgs if p.startswith('linux-headers-') or p.startswith('linux-image-')]
-        pattern = r'linux-(headers|image)-([0-9.-]+)'
-        for p in kernel_pkgs:
+        kernel_list = glob.glob('/boot/vmlinuz-*');
+        pattern = r'vmlinuz-([0-9]+\.[0-9]+\.[0-9]+([-.])[0-9]+)'
+        for p in kernel_list:
             match = re.search(pattern, p)
             if not match: continue
-            version = match.group(2)
-            if version.endswith('-'): version = version[:-1]
-            if self.version_to_packages.has_key(version):
-                self.version_to_packages[version].append(p)
+            version = match.group(1)
+            if match.group(2) == '-':
+                pkgs = [
+                        'linux-headers-%s'%version, 
+                        'linux-headers-%s-generic'%version, 
+                        'linux-image-%s-generic'%version, 
+                        ]
             else:
-                self.version_to_packages[version] = [p]
+                pkgs = None
+            if self.version_to_packages.has_key(version):
+                self.version_to_packages[version].extend(pkgs)
+            else:
+                self.version_to_packages[version] = pkgs
 
     def check_button_toggled(self, check_button, button_apply):
         if check_button.get_active():
