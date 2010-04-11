@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 17:41+0800\n"
+"POT-Creation-Date: 2010-04-11 20:17+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -850,17 +850,16 @@ msgid "Query before exit"
 msgstr ""
 
 #: .././ailurus/common/menu.py:362
-msgid "Hide \"start quick setup\" button"
+msgid "Hide \"quickly install popular software\" button"
 msgstr ""
 
 #: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
-#: .././ailurus/common/menu.py:378 .././ailurus/install_remove_pane.py:730
-#: .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:378 .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
 #: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
-#: .././ailurus/install_remove_pane.py:730 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
@@ -3013,133 +3012,133 @@ msgstr ""
 msgid "_Apply"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:604
+#: .././ailurus/install_remove_pane.py:600
 msgid "Details:"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:653
+#: .././ailurus/install_remove_pane.py:649
 msgid "Report bugs"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:655
+#: .././ailurus/install_remove_pane.py:651
 msgid "Close this terminal"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:684
+#: .././ailurus/install_remove_pane.py:680
 msgid "Common"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:685
+#: .././ailurus/install_remove_pane.py:681
 msgid "For students"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:686
+#: .././ailurus/install_remove_pane.py:682
 msgid "For developers"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:687
+#: .././ailurus/install_remove_pane.py:683
 msgid "Advanced"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:690
+#: .././ailurus/install_remove_pane.py:686
 msgid "Office"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:691
+#: .././ailurus/install_remove_pane.py:687
 msgid "Education"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:692
+#: .././ailurus/install_remove_pane.py:688
 msgid "Internet"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:693
-#: .././ailurus/install_remove_pane.py:716
+#: .././ailurus/install_remove_pane.py:689
+#: .././ailurus/install_remove_pane.py:712
 msgid "Firefox extensions"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:694
+#: .././ailurus/install_remove_pane.py:690
 msgid "Multimedia"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:695
+#: .././ailurus/install_remove_pane.py:691
 msgid "Appearance"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:696
+#: .././ailurus/install_remove_pane.py:692
 msgid "Enhancements"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:697
+#: .././ailurus/install_remove_pane.py:693
 msgid "Game"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:698
+#: .././ailurus/install_remove_pane.py:694
 msgid "Hardware"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:699
+#: .././ailurus/install_remove_pane.py:695
 msgid "Language support"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:700
+#: .././ailurus/install_remove_pane.py:696
 msgid "Nautilus context menu"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:702
+#: .././ailurus/install_remove_pane.py:698
 msgid "Third party repositories"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:703
+#: .././ailurus/install_remove_pane.py:699
 msgid "Virtual machine"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:704
+#: .././ailurus/install_remove_pane.py:700
 msgid "Establish a server"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:706
+#: .././ailurus/install_remove_pane.py:702
 msgid "Mathematics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:707
+#: .././ailurus/install_remove_pane.py:703
 msgid "Statistics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:708
+#: .././ailurus/install_remove_pane.py:704
 msgid "Biology"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:709
+#: .././ailurus/install_remove_pane.py:705
 msgid "Electronics & Mechanics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:710
+#: .././ailurus/install_remove_pane.py:706
 msgid "Geography"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:711
+#: .././ailurus/install_remove_pane.py:707
 msgid "LaTeX"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:712
+#: .././ailurus/install_remove_pane.py:708
 msgid "Embedded system"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:714
+#: .././ailurus/install_remove_pane.py:710
 msgid "Development"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:715
+#: .././ailurus/install_remove_pane.py:711
 msgid "Eclipse"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:726
-msgid "Start quick setup"
+#: .././ailurus/install_remove_pane.py:723
+msgid "Quickly install popular software"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:728
-msgid "Hide this button"
+#: .././ailurus/install_remove_pane.py:725
+msgid "Hide"
 msgstr ""
 
 #: .././ailurus/libapp.py:78 .././ailurus/libapp.py:136
