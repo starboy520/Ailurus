@@ -417,10 +417,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
         popupmenu = gtk.Menu()
+        popupmenu.append(use_selected)
+        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
-        popupmenu.append(gtk.SeparatorMenuItem())
-        popupmenu.append(use_selected)
         popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(select_all)
         popupmenu.append(select_all_repos_in_this_county)
