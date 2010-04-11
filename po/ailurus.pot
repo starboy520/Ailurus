@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 12:54+0800\n"
+"POT-Creation-Date: 2010-04-11 13:57+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -172,7 +172,6 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:74
 #: .././ailurus/common/apps_eclipse.py:89 .././ailurus/common/apps.py:156
 #: .././ailurus/common/apps.py:226 .././ailurus/common/apps.py:293
-#: .././bamboo/ubuntu.py:35
 msgid " This application depends on Java."
 msgstr ""
 
@@ -715,7 +714,7 @@ msgstr ""
 msgid "Battery full capacity:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:378
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:382
 msgid "Ailurus blog"
 msgstr ""
 
@@ -847,54 +846,58 @@ msgid "Ailurus changelog"
 msgstr ""
 
 #: .././ailurus/common/menu.py:358
+msgid "Ask when quit"
+msgstr ""
+
+#: .././ailurus/common/menu.py:362
 msgid "Don't show \"tip of the day\" on start up"
 msgstr ""
 
-#: .././ailurus/common/menu.py:361 .././ailurus/common/menu.py:369
+#: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:373
 #: .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/common/menu.py:361 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:365 .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/common/menu.py:364
+#: .././ailurus/common/menu.py:368
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:369 .././ailurus/gnome/setting.py:100
+#: .././ailurus/common/menu.py:373 .././ailurus/gnome/setting.py:100
 #: .././ailurus/gnome/setting.py:131
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:372
+#: .././ailurus/common/menu.py:376
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:382
+#: .././ailurus/common/menu.py:386
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:385
+#: .././ailurus/common/menu.py:389
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: .././ailurus/common/menu.py:389
+#: .././ailurus/common/menu.py:393
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:393
+#: .././ailurus/common/menu.py:397
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:396
+#: .././ailurus/common/menu.py:400
 msgid "About"
 msgstr ""
 
-#: .././ailurus/common/menu.py:399
+#: .././ailurus/common/menu.py:403
 msgid "Read changelog"
 msgstr ""
 
@@ -3434,55 +3437,63 @@ msgid ""
 "RPM"
 msgstr ""
 
-#: .././ailurus/main.py:332
+#: .././ailurus/main.py:273
+msgid "Exit Ailurus?"
+msgstr ""
+
+#: .././ailurus/main.py:274
+msgid "Do not ask again."
+msgstr ""
+
+#: .././ailurus/main.py:353
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:333
+#: .././ailurus/main.py:354
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:334
+#: .././ailurus/main.py:355
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:335
+#: .././ailurus/main.py:356
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:336
+#: .././ailurus/main.py:357
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:337
+#: .././ailurus/main.py:358
 msgid "load \"recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:338
+#: .././ailurus/main.py:359
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:340
+#: .././ailurus/main.py:361
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:349
+#: .././ailurus/main.py:370
 msgid "You did not specify any functionality. :)"
 msgstr ""
 
-#: .././ailurus/main.py:350
+#: .././ailurus/main.py:371
 msgid "For example: ailurus --fast --information"
 msgstr ""
 
-#: .././ailurus/main.py:371
+#: .././ailurus/main.py:392
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:400
+#: .././ailurus/main.py:421
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:412
+#: .././ailurus/main.py:433
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
@@ -3715,7 +3726,6 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:260 .././ailurus/ubuntu/quick_setup.py:34
-#: .././bamboo/fedora.py:252
 msgid "Multi-media codec"
 msgstr ""
 
@@ -3961,11 +3971,11 @@ msgstr ""
 msgid "Command: sudo apt-get install minicom ckermit"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:245 .././bamboo/fedora.py:363
+#: .././ailurus/ubuntu/app2.py:245
 msgid "VirtualBox open source edition"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:246 .././bamboo/fedora.py:342
+#: .././ailurus/ubuntu/app2.py:246
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -5618,185 +5628,4 @@ msgid ""
 "Display some information of a given package\n"
 "apt-cache show PACKAGE_NAME\n"
 "\n"
-msgstr ""
-
-#: .././bamboo/fedora.py:66
-msgid "This repository provides flash-plugin and Adobe Reader."
-msgstr ""
-
-#: .././bamboo/fedora.py:110
-msgid "RPM Fusion (Free)"
-msgstr ""
-
-#: .././bamboo/fedora.py:112 .././bamboo/fedora.py:141
-msgid ""
-"RPM Fusion provides software that not in the standard repositories.\n"
-"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
-"repository."
-msgstr ""
-
-#: .././bamboo/fedora.py:139
-msgid "RPM Fusion (Non-Free)"
-msgstr ""
-
-#: .././bamboo/fedora.py:170
-msgid "This repository provides Picasa and Google Desktop."
-msgstr ""
-
-#: .././bamboo/fedora.py:199
-msgid "This repository provides Google Chrome."
-msgstr ""
-
-#: .././bamboo/fedora.py:228
-msgid ""
-"This repository provides VirtualBox.\n"
-"Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
-msgstr ""
-
-#: .././bamboo/fedora.py:254
-msgid ""
-"Command: yum install gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-"
-"extras gstreamer-plugins-basegstreamer-plugins-good gstreamer-plugins-ugly"
-msgstr ""
-
-#: .././bamboo/fedora.py:267
-msgid "Adobe® Flash plugin for web browser"
-msgstr ""
-
-#: .././bamboo/fedora.py:268
-msgid "Command: yum install flash-plugin"
-msgstr ""
-
-#: .././bamboo/fedora.py:276
-msgid "Adobe® PDF Reader"
-msgstr ""
-
-#: .././bamboo/fedora.py:277
-msgid "Official site: http://get.adobe.com/cn/reader/"
-msgstr ""
-
-#: .././bamboo/fedora.py:304
-msgid ""
-"If you cannot play RMVB video, try this application!\n"
-"Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
-"You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
-msgstr ""
-
-#: .././bamboo/fedora.py:320
-msgid "Google Chrome browser"
-msgstr ""
-
-#: .././bamboo/fedora.py:322
-msgid ""
-"This is the web browser from Google. \n"
-"You can change themes by opening web-page https://tools.google.com/chrome/"
-"intl/pt/themes/index.html in Google Chrome."
-msgstr ""
-
-#: .././bamboo/fedora.py:337
-msgid ""
-"\"google-chrome-beta\" is not installed. However, you have installed "
-"\"google-chrome-unstable\"."
-msgstr ""
-
-#: .././bamboo/fedora.py:354
-msgid "With Skype you can make free calls over the Internet to other people. "
-msgstr ""
-
-#: .././bamboo/fedora.py:364
-msgid "Command: yum install VirtualBox-OSE"
-msgstr ""
-
-#: .././bamboo/fedora.py:374
-msgid "Open source web browser"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:31
-msgid "Alice: A new way to learn programming"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:33
-msgid ""
-"A storytelling application, especially appropriate for middle school "
-"students."
-msgstr ""
-
-#: .././bamboo/ubuntu.py:34
-msgid ""
-"Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
-msgstr ""
-
-#: .././bamboo/ubuntu.py:75
-msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:76
-msgid ""
-"Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></"
-"span>"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:118
-msgid ""
-"Drive a spaceship and battle against invaders! Collect money during the "
-"combat. Upgrade armaments and weapons. This is a full 3d style space shooter "
-"game. It supports mouse, keyboard and joystick control. Official site: "
-"http://www.viewizard.com/"
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:199
-msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:201
-#, python-format
-msgid ""
-"After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:216
-msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:218
-#, python-format
-msgid ""
-"After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:233
-msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:235
-#, python-format
-msgid ""
-"After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:250
-msgid "JavaScript Debugger: a powerful JavaScript debugger"
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:263
-msgid "Mac OS X Theme"
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:277
-msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
-msgstr ""
-
-#. cannot find out which license it is released under
-#: .././bamboo/ubuntu.py:291
-msgid "Personas: One-click changing Firefox skin"
-msgstr ""
-
-#: .././bamboo/ubuntu.py:295
-msgid "Theme your browser according to your mood, hobby or season."
 msgstr ""

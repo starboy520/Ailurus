@@ -100,6 +100,13 @@ class Config:
         try:       return cls.get_bool('disable-tip-on-startup')
         except: return False
     @classmethod
+    def set_query_before_exit(cls, value):
+        cls.set_bool('query_before_exit', value)
+    @classmethod
+    def get_query_before_exit(cls):
+        try:       return cls.get_bool('query_before_exit')
+        except:    return True
+    @classmethod
     def set_disable_clean_apt_cache(cls, value):
         cls.set_bool('disable-clean-apt-cache', value)
     @classmethod
