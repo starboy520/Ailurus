@@ -186,21 +186,3 @@ def add_expander(vbox, title):
     expander.add(vbox)
     expander.set_expanded(False)
     return expander
-
-def url_button(url):
-    import gtk
-    from lib import open_web_page
-    def func(w, url): open_web_page(url)
-    def enter(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
-    def leave(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-    label = gtk.Label()
-    label.set_markup("<span color='blue'><u>%s</u></span>"%url)
-    button = gtk.Button()
-    button.connect('clicked', func, url)
-    button.connect('enter-notify-event', enter)
-    button.connect('leave-notify-event', leave)
-    button.set_relief(gtk.RELIEF_NONE)
-    button.add(label)
-    align = gtk.Alignment(0, 0.5)
-    align.add(button)
-    return align
