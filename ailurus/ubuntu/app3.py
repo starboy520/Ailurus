@@ -438,25 +438,25 @@ class R_Language_Basic(_apt_install):
     __doc__ = _('R language (basic development environment)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base r-base-dev')
+               'Command: sudo apt-get install r-base-core')
     category = 'statistics'
     license = 'GNU General Public License' 
     logo = 'R_language.png'
     def __init__(self):
-        self.pkgs = 'r-base r-base-dev'
+        self.pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base r-base-dev r-cran-*')
+               'Command: sudo apt-get install r-base-core r-cran-*')
     category = 'statistics'
     logo = 'R_language.png'
     license = 'GNU General Public License' 
     def __init__(self):
         import StringIO
         value = StringIO.StringIO()
-        print >>value, 'r-base r-base-dev',
+        print >>value, 'r-base-core',
         for p in APT.get_existing_pkgs_set():
             if p.startswith('r-cran-'): print >>value, p,
         self.pkgs = value.getvalue()
