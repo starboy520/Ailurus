@@ -1,5 +1,6 @@
-2010-04-08 CHEN Yangyang <skabyy@gmail.com>
-    * cut the start up time of "clean up pane" down to less than 1 second
+2010-04-11 CHEN Yangyang <skabyy@gmail.com>
+
+    * Cut down start up time of "clean up pane" to less than 1 second.
 
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 

@@ -224,22 +224,6 @@ class UbuntuCleanKernelBox(gtk.VBox):
             else:
                 self.version_to_packages[version] = pkgs
 
-#    def __regenerate_version_to_packages(self):
-#        import re
-#        self.version_to_packages.clear()
-#        all_pkgs = APT.get_installed_pkgs_set()
-#        kernel_pkgs = [p for p in all_pkgs if p.startswith('linux-headers-') or p.startswith('linux-image-')]
-#        pattern = r'linux-(headers|image)-([0-9.-]+)'
-#        for p in kernel_pkgs:
-#            match = re.search(pattern, p)
-#            if not match: continue
-#            version = match.group(2)
-#            if version.endswith('-'): version = version[:-1]
-#            if self.version_to_packages.has_key(version):
-#                self.version_to_packages[version].append(p)
-#            else:
-#                self.version_to_packages[version] = [p]
-
     def check_button_toggled(self, check_button, button_apply):
         if check_button.get_active():
             check_button.label.set_markup("%s" % check_button.kernel_version)
