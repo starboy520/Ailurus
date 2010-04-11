@@ -301,17 +301,14 @@ class CompizSettingManagerSimple(_apt_install):
         self.pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
-    __doc__= _('Micro-biology software')
-    detail = _('This software is for molecular biology, structural biology and bioinformatics.\n' 
-               'Command: sudo apt-get install med-bio med-bio-dev')
-    category='biology'
+    __doc__ = _('Med-bio: A lot of micro-biology software')
+    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.\n' 
+               'Command: sudo apt-get install med-bio')
+    category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
     logo = 'med-bio.png'
     def __init__(self):
-        self.pkgs='med-bio med-bio-dev'
-    def remove(self):
-        _apt_install.remove(self)
-        run('sudo apt-get autoremove')
+        self.pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
