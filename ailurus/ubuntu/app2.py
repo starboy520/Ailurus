@@ -95,9 +95,9 @@ class Build_Essential(_apt_install):
     def __init__(self):
         self.pkgs = 'build-essential'
 
-class ManPages(_apt_install):
-    'ManPages'
-    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
+class POSIX_ManPages(_apt_install):
+    __doc__ = _('POSIX library manual pages')
+    detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.\n'
               'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
     category = 'dev'
     license = 'GNU General Public License (GPL)'
@@ -136,9 +136,8 @@ class Ncurses_and_qt3mt(_apt_install):
         self.pkgs = 'libncurses5-dev libqt3-mt-dev'
         
 class Svn_Git_bzr(_apt_install):
-    __doc__ = _('Subversion, git, and bzr')
-    detail = _('subversion, git and bzr are popular version control systems.\n'
-               'Command: sudo apt-get install subversion git-core bzr')
+    __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
+    detail = _('Command: sudo apt-get install subversion git-core bzr')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'program-tools.png'
@@ -146,10 +145,8 @@ class Svn_Git_bzr(_apt_install):
         self.pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Autoconf and Automake')
-    detail = _('Autoconf can generate configure scripts. '
-               'Automake can generate Makefile.\n'
-               'Command: sudo apt-get install autoconf automake')
+    __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
+    detail = _('Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'program-tools.png'
