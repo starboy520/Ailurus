@@ -290,7 +290,7 @@ class CompizSettingManager(_apt_install):
         self.pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
-    __doc__ = _('A simple Compiz settings manager')
+    __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
     detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
     logo = 'compizconfig.png'
@@ -687,7 +687,7 @@ class ImageMagick(_apt_install):
         self.pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
-    __doc__ = _('PiTiVi: movie editor')
+    __doc__ = _('PiTiVi: Movie editor')
     detail = _("Command: sudo apt-get install pitivi")
     logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '

@@ -487,7 +487,7 @@ class ImageMagick(_rpm_install):
         self.pkgs = 'ImageMagick'
 
 class PiTiVi(_rpm_install):
-    __doc__ = _('PiTiVi: movie editor')
+    __doc__ = _('PiTiVi: Movie editor')
     detail = _("Command: yum install pitivi")
     logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
