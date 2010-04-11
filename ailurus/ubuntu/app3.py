@@ -666,6 +666,14 @@ class Songbird(_apt_install):
     depend = Repo_Songbird
     def __init__(self):
         self.pkgs = 'songbird'
+
+class OSD_Lyrics(_apt_install):
+    'OSD Lyrics'
+    category = 'media'
+    license = 'GNU General Public License (GPL)'
+    depend = Repo_OSD_Lyrics
+    def __init__(self):
+        self.pkgs = 'osdlyrics'
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
