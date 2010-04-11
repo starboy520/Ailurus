@@ -8,11 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-<<<<<<< HEAD
-"POT-Creation-Date: 2010-04-11 13:24+0800\n"
-=======
-"POT-Creation-Date: 2010-04-11 17:49+0800\n"
->>>>>>> FETCH_HEAD
+"POT-Creation-Date: 2010-04-11 21:20+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -175,7 +171,7 @@ msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:74
 #: .././ailurus/common/apps_eclipse.py:89 .././ailurus/common/apps.py:156
-#: .././ailurus/common/apps.py:226 .././ailurus/common/apps.py:293
+#: .././ailurus/common/apps.py:227 .././ailurus/common/apps.py:294
 msgid " This application depends on Java."
 msgstr ""
 
@@ -364,38 +360,38 @@ msgid ""
 "\"Applications\"-->\"Internet\"."
 msgstr ""
 
-#: .././ailurus/common/apps.py:210
+#: .././ailurus/common/apps.py:211
 msgid "Firefox without Pango (faster)"
 msgstr ""
 
-#: .././ailurus/common/apps.py:221
+#: .././ailurus/common/apps.py:222
 msgid "Netbeans® 6.8"
 msgstr ""
 
-#: .././ailurus/common/apps.py:223
+#: .././ailurus/common/apps.py:224
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: http://"
 "netbeans.org/downloads/ ."
 msgstr ""
 
-#: .././ailurus/common/apps.py:247
+#: .././ailurus/common/apps.py:248
 msgid "Please select the folder where Netbeans is installed"
 msgstr ""
 
-#: .././ailurus/common/apps.py:290
+#: .././ailurus/common/apps.py:291
 msgid "OpenJUMP: A geographic information system"
 msgstr ""
 
-#: .././ailurus/common/apps.py:292
+#: .././ailurus/common/apps.py:293
 msgid "Official site: http://openjump.org/ ."
 msgstr ""
 
-#: .././ailurus/common/apps.py:330
+#: .././ailurus/common/apps.py:331
 msgid "Query you before delete more than three files"
 msgstr ""
 
-#: .././ailurus/common/apps.py:331
+#: .././ailurus/common/apps.py:332
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -404,32 +400,32 @@ msgid ""
 "alias rm=\"rm -I\""
 msgstr ""
 
-#: .././ailurus/common/apps.py:349
+#: .././ailurus/common/apps.py:350
 msgid "TeXLive 2009"
 msgstr ""
 
-#: .././ailurus/common/apps.py:350
+#: .././ailurus/common/apps.py:351
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr ""
 
 #. extract
-#: .././ailurus/common/apps.py:382
+#: .././ailurus/common/apps.py:383
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr ""
 
-#: .././ailurus/common/apps.py:409
+#: .././ailurus/common/apps.py:410
 msgid "TeXLive is installed."
 msgstr ""
 
-#: .././ailurus/common/apps.py:409
+#: .././ailurus/common/apps.py:410
 msgid "TeXLive will not work until you restart the computer."
 msgstr ""
 
-#: .././ailurus/common/apps.py:427
+#: .././ailurus/common/apps.py:428
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr ""
 
-#: .././ailurus/common/apps.py:429
+#: .././ailurus/common/apps.py:430
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -438,95 +434,95 @@ msgid ""
 "After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
 msgstr ""
 
-#: .././ailurus/common/apps.py:447
+#: .././ailurus/common/apps.py:448
 msgid "Adblock+: Block 99% advertisement"
 msgstr ""
 
-#: .././ailurus/common/apps.py:452
+#: .././ailurus/common/apps.py:453
 msgid "It is able to block 99% ads and banners."
 msgstr ""
 
-#: .././ailurus/common/apps.py:468
+#: .././ailurus/common/apps.py:469
 msgid "Proxy management depending on a third party list."
 msgstr ""
 
-#: .././ailurus/common/apps.py:478
+#: .././ailurus/common/apps.py:479
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:483
+#: .././ailurus/common/apps.py:484
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:493
+#: .././ailurus/common/apps.py:494
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:498
+#: .././ailurus/common/apps.py:499
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr ""
 
-#: .././ailurus/common/apps.py:508
+#: .././ailurus/common/apps.py:509
 msgid "CleanHide: Delete hidden text in web page"
 msgstr ""
 
-#: .././ailurus/common/apps.py:513
+#: .././ailurus/common/apps.py:514
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
 msgstr ""
 
-#: .././ailurus/common/apps.py:528
+#: .././ailurus/common/apps.py:529
 msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
 msgstr ""
 
-#: .././ailurus/common/apps.py:538
+#: .././ailurus/common/apps.py:539
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr ""
 
-#: .././ailurus/common/apps.py:543
+#: .././ailurus/common/apps.py:544
 msgid "It is able to download all images on web-pages."
 msgstr ""
 
-#: .././ailurus/common/apps.py:553
+#: .././ailurus/common/apps.py:554
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 
-#: .././ailurus/common/apps.py:568
+#: .././ailurus/common/apps.py:569
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 
-#: .././ailurus/common/apps.py:574
+#: .././ailurus/common/apps.py:575
 msgid "This is a powerful web development tool."
 msgstr ""
 
-#: .././ailurus/common/apps.py:583
+#: .././ailurus/common/apps.py:584
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 
-#: .././ailurus/common/apps.py:588
+#: .././ailurus/common/apps.py:589
 msgid "It supports five kinds of mouse gestures."
 msgstr ""
 
-#: .././ailurus/common/apps.py:598
+#: .././ailurus/common/apps.py:599
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr ""
 
-#: .././ailurus/common/apps.py:603
+#: .././ailurus/common/apps.py:604
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
 msgstr ""
 
-#: .././ailurus/common/apps.py:612
+#: .././ailurus/common/apps.py:613
 msgid "FoxyProxy: One-click switching proxy"
 msgstr ""
 
-#: .././ailurus/common/apps.py:627
+#: .././ailurus/common/apps.py:628
 msgid "GreaseMonkey: Make change to web pages"
 msgstr ""
 
-#: .././ailurus/common/apps.py:632
+#: .././ailurus/common/apps.py:633
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image verification."
@@ -536,96 +532,97 @@ msgid ""
 "freely from http://diveintogreasemonkey.org/ ."
 msgstr ""
 
-#: .././ailurus/common/apps.py:645
+#: .././ailurus/common/apps.py:646
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr ""
 
-#: .././ailurus/common/apps.py:660
+#: .././ailurus/common/apps.py:661
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 
-#: .././ailurus/common/apps.py:666
+#: .././ailurus/common/apps.py:667
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
 msgstr ""
 
-#: .././ailurus/common/apps.py:675
+#: .././ailurus/common/apps.py:676
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 
-#: .././ailurus/common/apps.py:691
+#: .././ailurus/common/apps.py:692
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 
-#: .././ailurus/common/apps.py:697
+#: .././ailurus/common/apps.py:698
 msgid "It helps you promote your web sites."
 msgstr ""
 
-#: .././ailurus/common/apps.py:706
+#: .././ailurus/common/apps.py:707
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr ""
 
-#: .././ailurus/common/apps.py:711
+#: .././ailurus/common/apps.py:712
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 
-#: .././ailurus/common/apps.py:721
+#: .././ailurus/common/apps.py:722
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 
-#: .././ailurus/common/apps.py:736
+#: .././ailurus/common/apps.py:737
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
 
-#: .././ailurus/common/apps.py:741
+#: .././ailurus/common/apps.py:742
 msgid "It tells the remote websites that you are an IE user."
 msgstr ""
 
-#: .././ailurus/common/apps.py:750
+#: .././ailurus/common/apps.py:751
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr ""
 
-#: .././ailurus/common/apps.py:756
+#: .././ailurus/common/apps.py:757
 msgid "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 
-#: .././ailurus/common/apps.py:765
+#: .././ailurus/common/apps.py:766
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 
-#: .././ailurus/common/apps.py:779
+#: .././ailurus/common/apps.py:780
 msgid "Web Developer: Web page analysis tools"
 msgstr ""
 
-#: .././ailurus/common/apps.py:785
+#: .././ailurus/common/apps.py:786
 msgid "Many developers installed it."
 msgstr ""
 
-#: .././ailurus/common/apps.py:794
+#: .././ailurus/common/apps.py:795
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 
-#: .././ailurus/common/apps.py:809
+#: .././ailurus/common/apps.py:810
 msgid "YSlow: web page performance tuning"
 msgstr ""
 
-#: .././ailurus/common/apps.py:815
+#: .././ailurus/common/apps.py:816
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 
-#: .././ailurus/common/apps.py:824
+#: .././ailurus/common/apps.py:825
 msgid "World of Padman : Comic 3D-Shooter"
 msgstr ""
 
-#: .././ailurus/common/apps.py:825
+#: .././ailurus/common/apps.py:826
 msgid ""
 "World of Padman (WoP) is an open source first-person shooter computer game "
-"available in both English and German. "
+"available in both English and German. \n"
+"Install it with the newest patch"
 msgstr ""
 
 #: .././ailurus/common/hardwareinfo.py:39
@@ -864,17 +861,16 @@ msgid "Query before exit"
 msgstr ""
 
 #: .././ailurus/common/menu.py:362
-msgid "Hide \"start quick setup\" button"
+msgid "Hide \"quickly install popular software\" button"
 msgstr ""
 
 #: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
-#: .././ailurus/common/menu.py:378 .././ailurus/install_remove_pane.py:726
-#: .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:378 .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
 #: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
-#: .././ailurus/install_remove_pane.py:726 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
@@ -3148,11 +3144,11 @@ msgstr ""
 msgid "Eclipse"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:722
-msgid "Start quick setup"
+#: .././ailurus/install_remove_pane.py:723
+msgid "Quickly install popular software"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:724
+#: .././ailurus/install_remove_pane.py:725
 msgid "Hide"
 msgstr ""
 
@@ -3826,8 +3822,8 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app1.py:402
 msgid ""
-"Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome "
-"bluez-utils python-bluez gnome-bluetooth gnome-phone-manager"
+"Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-utils "
+"python-bluez gnome-bluetooth gnome-phone-manager"
 msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:29
@@ -4479,6 +4475,17 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:703
 msgid "Command: sudo apt-get install piviti"
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:712
+msgid "Acire: a simple tool for Python"
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:713
+msgid ""
+"Acire is a simple little tool that provides a library of Python examples "
+"called snippets that outline how to do specific taks.Command: sudo apt-get "
+"install acire"
 msgstr ""
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
@@ -5534,6 +5541,16 @@ msgstr ""
 msgid ""
 "A movie player for Linux. Supports reading from network, dvd, vcd, file, "
 "pipes, and v4l."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:561
+msgid "Acire : a simple tool for Python"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:564
+msgid ""
+"Acire is a simple little tool that provides a library of Python examples "
+"called snippets that outline how to do specific taks. "
 msgstr ""
 
 #: .././ailurus/ubuntu/tips.py:27
