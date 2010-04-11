@@ -297,7 +297,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
-    detail = _('Command: sudo apt-get install cpus-pdf')
+    detail = _('Command: sudo apt-get install cups-pdf')
     license = 'GNU Lesser General Public License'
     category = 'office'
     logo = 'cups.png'
