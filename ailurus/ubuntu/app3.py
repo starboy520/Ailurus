@@ -644,7 +644,7 @@ class Fctix:
         APT.remove('fcitx-svn')
         
 class XBMC(_apt_install):
-    'XBMC'
+    __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'xbmc.png'
@@ -653,7 +653,7 @@ class XBMC(_apt_install):
         self.pkgs = 'xbmc'
 
 class Songbird(_apt_install):
-    'Songbird'
+    __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'songbird.png'
