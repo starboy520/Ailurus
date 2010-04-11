@@ -654,7 +654,7 @@ class XBMC(_apt_install):
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'xbmc.png'
-    depend = Repo_XBMC
+    depends = Repo_XBMC
     def __init__(self):
         self.pkgs = 'xbmc'
 
@@ -663,7 +663,7 @@ class Songbird(_apt_install):
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'songbird.png'
-    depend = Repo_Songbird
+    depends = Repo_Songbird
     def __init__(self):
         self.pkgs = 'songbird'
         

@@ -189,8 +189,8 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ cls for cls in self.classobjs
                                if cls.cache_installed==False
                                and cls.showed_in_toggle ]
-            depends = [ cls.depend for cls in to_install 
-                                   if hasattr(cls, 'depend') ]
+            depends = [ cls.depends for cls in to_install 
+                                   if hasattr(cls, 'depends') ]
             to_install += depends
             to_install_repos = [ cls for cls in to_install 
                                      if getattr(cls, 'this_class_is_a_repository', False) ]
