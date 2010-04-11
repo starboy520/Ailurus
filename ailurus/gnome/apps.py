@@ -147,7 +147,7 @@ class Speedup_Nautilus:
 
 class GEdit_Suitable_For_Programmer(_set_gconf):
     __doc__ = _('Make GEdit more suitable for programmers')
-    detail = _('Change GEdit settings as follows. '
+    detail = _('Change GEdit settings as follows:\n'
        'Automatically indent current line. '
        'Do not automatically create a hidden copy of current file. '
        'Automatically save files once in each minute. '

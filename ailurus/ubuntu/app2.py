@@ -105,15 +105,14 @@ class POSIX_ManPages(_apt_install):
     def __init__(self):
         self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
-class Ctags(_apt_install):
-    'Exuberant-ctags'
-    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
-               'Command: sudo apt-get install exuberant-ctags')
+class Ctags_Cscope(_apt_install):
+    __doc__ = _('Ctags and Cscope: Popular source code parsers')
+    detail = _('Command: sudo apt-get install exuberant-ctags cscope')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'exuberant-ctags'
+        self.pkgs = 'exuberant-ctags cscope'
 
 class GMP(_apt_install):
     __doc__ = _('GNU multiprecision arithmetic library')
