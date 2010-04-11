@@ -34,7 +34,6 @@ class Varkon(_apt_install, _path_lists):
     category = 'em'
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
-    time = 10
     logo = 'varkon.png'
     def __init__(self):
         self.pkgs = 'varkon-user-manual varkon'
@@ -56,66 +55,65 @@ Categories=Science;Engineering;''')
         _apt_install.remove(self)
         run_as_root('rm -f %s'%self.shortcut)
 
-class FreeCAD(_apt_install):
-    __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
-    detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
-    category = 'em'
-    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
-               'See http://sourceforge.net/projects/free-cad/')
-    size = 15724000
-    time = 51
-    logo = 'freecad.png'
-    def __init__(self):
-        self.pkgs = 'freecad'
-    def install(self):
-        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1hardy1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1hardy1_i386.deb'],
-5481522, '366835db62f7f2ffb73908ad6e77c82be826fc35')
-
-        elif get_arch()==32 and Config.get_Ubuntu_version()=='intrepid':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1intrepid1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1intrepid1_i386.deb'],
-5138150, '58ec68193200787d3f237016f0c6ba9e36021cbf')
-            
-        elif get_arch()==32 and Config.get_Ubuntu_version()=='jaunty':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_i386.deb'],
-5174974, 'f98fb51f95a1630d754480740ee0f192e30a2acf')
-            
-        elif get_arch()==64 and Config.get_Ubuntu_version()=='jaunty':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_amd64.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_amd64.deb'],
-5267100, '681c05fd60b10a8b37661c339eb77debff881305')
-            
-        f = r.download()
-        
-        depends = DPKG.get_deb_depends(f)
-        depends.remove('libgl1-mesa')
-        depends.append('libgl1-mesa-dev')
-        for depend in depends:
-            run_as_root('apt-get install -qq %s'%depend)
-        run_as_root('dpkg -i %s'%f)
-        APT.cache_changed()
-    def support(self):
-        ver = Config.get_Ubuntu_version()
-        if ver=='jaunty': return True
-        if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
-        return False
+#class FreeCAD(_apt_install):
+#    __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
+#    detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
+#    category = 'em'
+#    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
+#               'See http://sourceforge.net/projects/free-cad/')
+#    size = 15724000
+#    logo = 'freecad.png'
+#    def __init__(self):
+#        self.pkgs = 'freecad'
+#    def install(self):
+#        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1hardy1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1hardy1_i386.deb'],
+#5481522, '366835db62f7f2ffb73908ad6e77c82be826fc35')
+#
+#        elif get_arch()==32 and Config.get_Ubuntu_version()=='intrepid':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1intrepid1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1intrepid1_i386.deb'],
+#5138150, '58ec68193200787d3f237016f0c6ba9e36021cbf')
+#            
+#        elif get_arch()==32 and Config.get_Ubuntu_version()=='jaunty':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_i386.deb'],
+#5174974, 'f98fb51f95a1630d754480740ee0f192e30a2acf')
+#            
+#        elif get_arch()==64 and Config.get_Ubuntu_version()=='jaunty':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_amd64.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_amd64.deb'],
+#5267100, '681c05fd60b10a8b37661c339eb77debff881305')
+#            
+#        f = r.download()
+#        
+#        depends = DPKG.get_deb_depends(f)
+#        depends.remove('libgl1-mesa')
+#        depends.append('libgl1-mesa-dev')
+#        for depend in depends:
+#            run_as_root('apt-get install -qq %s'%depend)
+#        run_as_root('dpkg -i %s'%f)
+#        APT.cache_changed()
+#    def support(self):
+#        ver = Config.get_Ubuntu_version()
+#        if ver=='jaunty': return True
+#        if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
+#        return False
 
 class QCad(_apt_install):
-    'QCad'
-    detail = _('A CAD software which supports DXF-format. ')
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    detail = ''
     category = 'em'
-    license = 'GPL'
+    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     size = 18056000
     logo = 'qcad.png'
     def __init__(self):
@@ -236,13 +234,11 @@ class DisableGettyKarmic(DisableGetty):
             FileServer.chdir_back()
 
 class Octave(_apt_install):
-    __doc__ = 'Octave'
-    detail = _(u'A Matlab® compatible numerical computation appliation.\n'
-       'Command: sudo apt-get install qtoctave')
+    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
+    detail = _('Command: sudo apt-get install qtoctave')
     logo = 'octave.png'
     license = 'GNU General Public License (GPL)'
     category = 'math'
-    time = 16
     size = 1736000
     def __init__(self):
         self.pkgs = 'qtoctave'
@@ -268,7 +264,7 @@ class Generic_Genome_Browser:
         raise NotImplementedError
 
 class Screenlets(_apt_install):
-    __doc__ = _('Screenlets')
+    __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
     detail = _('Screenlets is able to add eye candy gadgets on desktop, '
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
        'in order to decorate the desktop.\n'
@@ -305,22 +301,18 @@ class CompizSettingManagerSimple(_apt_install):
         self.pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
-    __doc__= _('Micro-biology software')
-    detail = _('This software is for molecular biology, structural biology and bioinformatics.\n' 
-               'Command: sudo apt-get install med-bio med-bio-dev')
-    category='biology'
+    __doc__ = _('Med-bio: A lot of micro-biology software')
+    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.\n' 
+               'Command: sudo apt-get install med-bio')
+    category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
     logo = 'med-bio.png'
     def __init__(self):
-        self.pkgs='med-bio med-bio-dev'
-    def remove(self):
-        _apt_install.remove(self)
-        run('sudo apt-get autoremove')
+        self.pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
-    __doc__ = _('Tux Paint')
-    detail = _('This is a drawing program for young children three years and up.\n' 
-                    'Command: sudo apt-get install tuxpaint')
+    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
+    detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'tuxpaint.png'
@@ -336,9 +328,8 @@ class CodeBlocks(_apt_install):
         self.pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
-    __doc__ = 'ChildsPlay'
-    detail = _('This is a suite of educational games for young children.\n'
-                    'Command: sudo apt-get install childsplay')
+    __doc__ = _('ChildsPlay: A suite of educational games for children')
+    detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
@@ -358,9 +349,8 @@ class ChildsPlay(_apt_install):
         self._get_reason(f)
         
 class GCompris(_apt_install):
-    __doc__ = 'GCompris'
-    detail = _('GCompris provides educational games for children aged 2 to 10.\n'
-                    'Command: sudo apt-get install gcompris')
+    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
+    detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'
@@ -445,25 +435,25 @@ class R_Language_Basic(_apt_install):
     __doc__ = _('R language (basic development environment)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base r-base-dev')
+               'Command: sudo apt-get install r-base-core')
     category = 'statistics'
     license = 'GNU General Public License' 
     logo = 'R_language.png'
     def __init__(self):
-        self.pkgs = 'r-base r-base-dev'
+        self.pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base r-base-dev r-cran-*')
+               'Command: sudo apt-get install r-base-core r-cran-*')
     category = 'statistics'
     logo = 'R_language.png'
     license = 'GNU General Public License' 
     def __init__(self):
         import StringIO
         value = StringIO.StringIO()
-        print >>value, 'r-base r-base-dev',
+        print >>value, 'r-base-core',
         for p in APT.get_existing_pkgs_set():
             if p.startswith('r-cran-'): print >>value, p,
         self.pkgs = value.getvalue()
@@ -477,16 +467,16 @@ class Bluefish(_apt_install):
     def __init__(self):
         self.pkgs = 'bluefish'
 
-class Wallpaper_Tray(_apt_install):
-    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-    category = 'appearance'
-    detail = _('Command: sudo apt-get install wallpaper-tray\n'
-               'After installation, please restart your computer. '
-               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-    logo = 'wallpaper-tray.png'
-    license = 'GNU General Public License'
-    def __init__(self):
-        self.pkgs = 'wallpaper-tray'
+#class Wallpaper_Tray(_apt_install):
+#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
+#    category = 'appearance'
+#    detail = _('Command: sudo apt-get install wallpaper-tray\n'
+#               'After installation, please restart your computer. '
+#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
+#    logo = 'wallpaper-tray.png'
+#    license = 'GNU General Public License'
+#    def __init__(self):
+#        self.pkgs = 'wallpaper-tray'
 
 class _tasksel:
     category = 'server'
@@ -650,7 +640,7 @@ class Fctix:
         APT.remove('fcitx-svn')
         
 class XBMC(_apt_install):
-    'XBMC'
+    __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'xbmc.png'
@@ -659,7 +649,7 @@ class XBMC(_apt_install):
         self.pkgs = 'xbmc'
 
 class Songbird(_apt_install):
-    'Songbird'
+    __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'songbird.png'
@@ -677,30 +667,28 @@ class OSD_Lyrics(_apt_install):
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
-    'Vuze'
+    __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
     logo = 'vuze.png'
     license = 'GNU General Public License (GPL)'
-    detail = _('Download via bittorrent + Search videos + Play videos\n'
-               'Command: sudo apt-get install vuze')
+    detail = _('Command: sudo apt-get install vuze')
     def __init__(self):
         self.pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
-class imagemagick(_apt_install):
-    __doc__ = _('ImageMagick')
-    detail = _('It helps you edit images.\n'
-               'You can start it by /usr/bin/display\n'
+class ImageMagick(_apt_install):
+    __doc__ = _('ImageMagick: Edit images')
+    detail = _('You can start it by /usr/bin/display\n'
                'Command: sudo apt-get install imagemagick')
     category = 'media'
     logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'imagemagick'
         
-class PiViTi(_apt_install):
+class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: movie editor')
-    detail = _("Command: sudo apt-get install piviti")
+    detail = _("Command: sudo apt-get install pitivi")
     logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')

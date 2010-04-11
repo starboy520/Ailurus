@@ -102,21 +102,18 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
     
     def __query_work(self, to_install, to_remove):
-        time = 0
         size = 0
         msg = ''
         if len(to_install):
             msg += _('To be installed:\n')
             for obj in to_install: 
                 msg += '<span color="blue">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size += obj.size
             msg += '\n'
         if len(to_remove):
             msg += _('To be removed:\n')
             for obj in to_remove: 
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size -= obj.size
             msg += '\n' 
         #display size cost
@@ -381,6 +378,15 @@ class InstallRemovePane(gtk.VBox):
         self.__show_detail(obj)
 
     def __show_detail(self, obj):
+        def begin_color():
+            return '<span color="#870090">'
+        
+        def end_color():
+            return '</span>'
+        
+        def color(string):
+            return '%s%s%s'%( begin_color(), string, end_color() )
+
         if isinstance(obj, str) or isinstance(obj, unicode):
             self.detail.get_buffer().set_text(obj)
         else:

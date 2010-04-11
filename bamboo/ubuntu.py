@@ -35,7 +35,6 @@ class Alice(_path_lists):
               _(' This application depends on Java.') )
     category = 'education'
     size = 374600000
-    time = 353
     logo = 'alice.png'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
@@ -120,7 +119,6 @@ class AstroMenace(_path_lists):
        'It supports mouse, keyboard and joystick control. '
        'Official site: http://www.viewizard.com/')
     size = 62265282
-    time = 12
     category = 'game'
     logo = 'astromenace.png'
     def __init__(self):
@@ -200,7 +198,6 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "CASthesis.zip" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    time = 60 #estimated
     size = 244000 #estimated
     Chinese = True
     logo = 'texlive-templates.png'
@@ -217,7 +214,6 @@ class XJTUTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "XJTUthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    time = 60 #estimated
     size = 3010000 #estimated
     Chinese = True
     logo = 'texlive-templates.png'
@@ -234,7 +230,6 @@ class HITTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "HITthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    time = 60 #estimated
     size = 2710000 #estimated
     Chinese = True
     logo = 'texlive-templates.png'

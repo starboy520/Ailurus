@@ -85,10 +85,9 @@ class Enhance_Decompression_Capability(_rpm_install) :
         self.pkgs = "p7zip cabextract"
 
 class Evince_Read_Chinese_PDF(_rpm_install) :
-    __doc__ = _('Make Evince be able to reveal Chinese pdf')
+    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     detail = _('Command: yum install poppler-data')
     category='office'
-    Chinese = True
     logo = 'evince.png'
     def __init__(self):
         self.pkgs = 'poppler-data'
@@ -149,7 +148,7 @@ X-GNOME-Autostart-enabled=true
             os.remove(self.file)
 
 class VIM_and_VIMRC(_rpm_install) :
-    __doc__ = _('VIM')
+    __doc__ = _('Make VIM more suitable for programming')
     detail = _('Install VIM and make it more suitable for programming. '
        'The installation process is as follows. '
        '"yum install vim-enhanced" command is executed. '
@@ -268,8 +267,8 @@ class QtiPlot(_rpm_install) :
         self.pkgs = 'qtiplot'
 
 class QCad(_rpm_install):
-    'QCad'
-    detail = _('A CAD software which supports DXF-format. ')
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    detail = ''
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     category = 'em'
     logo = 'qcad.png'
@@ -322,9 +321,8 @@ class DisableGetty:
             FileServer.chdir_back()
 
 class Octave(_rpm_install):
-    __doc__ = 'Octave'
-    detail = _(u'A Matlab® compatible numerical computation appliation.\n'
-       'Command: yum install qtoctave')
+    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
+    detail = _('Command: yum install qtoctave')
     license = ('GNU General Public License (GPL), '
                'see http://www.gnu.org/software/octave/license.html')
     logo = 'octave.png'
@@ -354,9 +352,8 @@ class Generic_Genome_Browser:
         raise NotImplementedError
 
 class TuxPaint(_rpm_install):
-    'Tux Paint'
-    detail = _('This is a drawing program for young children three years and up.\n' 
-                    'Command: yum install tuxpaint')
+    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
+    detail = _('Command: yum install tuxpaint')
     category = 'education'
     license = ('GNU General Public License (GPL)')
     logo = 'tuxpaint.png'
@@ -364,9 +361,8 @@ class TuxPaint(_rpm_install):
         self.pkgs='tuxpaint'
 
 class ChildsPlay(_rpm_install):
-    'ChildsPlay'
-    detail = _('This is a suite of educational games for young children.\n'
-                    'Command: yum install childsplay')
+    __doc__ = _('ChildsPlay: A suite of educational games for children')
+    detail = _('Command: yum install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
@@ -374,9 +370,8 @@ class ChildsPlay(_rpm_install):
         self.pkgs ='childsplay'
         
 class GCompris(_rpm_install):
-    'GCompris'
-    detail = _('GCompris provides educational games for children aged 2 to 10.\n'
-                    'Command: yum install gcompris')
+    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
+    detail = _('Command: yum install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'
@@ -467,16 +462,16 @@ class Disable_SELinux:
                     f.writelines(lines)
         run_as_root_in_terminal('/usr/sbin/setenforce 1')
 
-class Wallpaper_Tray(_rpm_install):
-    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-    category = 'appearance'
-    detail = _('Command: yum install wp_tray\n'
-               'After installation, please restart your computer. '
-               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-    license = 'GNU General Public License (GPL)'
-    logo = 'wallpaper-tray.png'
-    def __init__(self):
-        self.pkgs = 'wp_tray'
+#class Wallpaper_Tray(_rpm_install):
+#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
+#    category = 'appearance'
+#    detail = _('Command: yum install wp_tray\n'
+#               'After installation, please restart your computer. '
+#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
+#    license = 'GNU General Public License (GPL)'
+#    logo = 'wallpaper-tray.png'
+#    def __init__(self):
+#        self.pkgs = 'wp_tray'
 
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
@@ -487,7 +482,7 @@ class Gnash(_rpm_install):
     def __init__(self):
         self.pkgs = 'gnash gnash-plugin'
         
-class nautilus_actions(_rpm_install):
+class Nautilus_Actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
@@ -497,7 +492,7 @@ class nautilus_actions(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-actions'
         
-class nautilus_image_converter(_rpm_install):
+class Nautilus_Image_Converter(_rpm_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
@@ -506,7 +501,7 @@ class nautilus_image_converter(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-image-converter'
         
-class nautilus_open_terminal(_rpm_install):
+class Nautilus_Open_Terminal(_rpm_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
@@ -515,7 +510,7 @@ class nautilus_open_terminal(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-open-terminal'
         
-class nautilus_search_tool(_rpm_install):
+class Nautilus_Search_Tool(_rpm_install):
     __doc__ = _('"Search files" entries')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
@@ -524,16 +519,15 @@ class nautilus_search_tool(_rpm_install):
         self.pkgs = 'nautilus-search-tool'
 
 class ImageMagick(_rpm_install):
-    __doc__ = _('ImageMagick')
-    detail = _('It helps you edit images.\n'
-               'You can start it by /usr/bin/display\n'
+    __doc__ = _('ImageMagick: Edit images')
+    detail = _('You can start it by /usr/bin/display\n'
                'Command: yum install ImageMagick')
     category = 'media'
     logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'ImageMagick'
 
-class PiViTi(_rpm_install):
+class PiTiVi(_rpm_install):
     __doc__ = _('PiTiVi: movie editor')
     detail = _("Command: yum install pitivi")
     logo = 'pitivi.png'
