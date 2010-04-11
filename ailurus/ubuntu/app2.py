@@ -32,7 +32,7 @@ class ComicVODPlayer_new :
     Chinese = True
     logo = 'comic.png'
     license = 'GPL'
-    depend = Repo_Mplayer_VOD
+    depends = Repo_Mplayer_VOD
     def install(self):
         extension_path = FirefoxExtensions.get_extensions_path()
         comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
