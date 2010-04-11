@@ -253,7 +253,7 @@ class VirtualBox(_apt_install):
         self.pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen:
-    __doc__ = _('GNOMEArtNG')
+    __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')

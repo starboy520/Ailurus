@@ -463,16 +463,16 @@ class Disable_SELinux:
                     f.writelines(lines)
         run_as_root_in_terminal('/usr/sbin/setenforce 1')
 
-class Wallpaper_Tray(_rpm_install):
-    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-    category = 'appearance'
-    detail = _('Command: yum install wp_tray\n'
-               'After installation, please restart your computer. '
-               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-    license = 'GNU General Public License (GPL)'
-    logo = 'wallpaper-tray.png'
-    def __init__(self):
-        self.pkgs = 'wp_tray'
+#class Wallpaper_Tray(_rpm_install):
+#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
+#    category = 'appearance'
+#    detail = _('Command: yum install wp_tray\n'
+#               'After installation, please restart your computer. '
+#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
+#    license = 'GNU General Public License (GPL)'
+#    logo = 'wallpaper-tray.png'
+#    def __init__(self):
+#        self.pkgs = 'wp_tray'
 
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')

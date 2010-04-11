@@ -265,7 +265,7 @@ class Generic_Genome_Browser:
         raise NotImplementedError
 
 class Screenlets(_apt_install):
-    __doc__ = _('Screenlets')
+    __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
     detail = _('Screenlets is able to add eye candy gadgets on desktop, '
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
        'in order to decorate the desktop.\n'
@@ -471,16 +471,16 @@ class Bluefish(_apt_install):
     def __init__(self):
         self.pkgs = 'bluefish'
 
-class Wallpaper_Tray(_apt_install):
-    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-    category = 'appearance'
-    detail = _('Command: sudo apt-get install wallpaper-tray\n'
-               'After installation, please restart your computer. '
-               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-    logo = 'wallpaper-tray.png'
-    license = 'GNU General Public License'
-    def __init__(self):
-        self.pkgs = 'wallpaper-tray'
+#class Wallpaper_Tray(_apt_install):
+#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
+#    category = 'appearance'
+#    detail = _('Command: sudo apt-get install wallpaper-tray\n'
+#               'After installation, please restart your computer. '
+#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
+#    logo = 'wallpaper-tray.png'
+#    license = 'GNU General Public License'
+#    def __init__(self):
+#        self.pkgs = 'wallpaper-tray'
 
 class _tasksel:
     category = 'server'
