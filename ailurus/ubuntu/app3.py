@@ -681,19 +681,18 @@ class Vuze_Karmic(_apt_install):
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
-class imagemagick(_apt_install):
-    __doc__ = _('ImageMagick')
-    detail = _('It helps you edit images.\n'
-               'You can start it by /usr/bin/display\n'
+class ImageMagick(_apt_install):
+    __doc__ = _('ImageMagick: Edit images')
+    detail = _('You can start it by /usr/bin/display\n'
                'Command: sudo apt-get install imagemagick')
     category = 'media'
     logo = 'imagemagick.png'
     def __init__(self):
         self.pkgs = 'imagemagick'
         
-class PiViTi(_apt_install):
+class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: movie editor')
-    detail = _("Command: sudo apt-get install piviti")
+    detail = _("Command: sudo apt-get install pitivi")
     logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')

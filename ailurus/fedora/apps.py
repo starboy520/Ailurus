@@ -520,9 +520,8 @@ class Nautilus_Search_Tool(_rpm_install):
         self.pkgs = 'nautilus-search-tool'
 
 class ImageMagick(_rpm_install):
-    __doc__ = _('ImageMagick')
-    detail = _('It helps you edit images.\n'
-               'You can start it by /usr/bin/display\n'
+    __doc__ = _('ImageMagick: Edit images')
+    detail = _('You can start it by /usr/bin/display\n'
                'Command: yum install ImageMagick')
     category = 'media'
     logo = 'imagemagick.png'
