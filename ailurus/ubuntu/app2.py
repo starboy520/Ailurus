@@ -146,9 +146,9 @@ class Svn_Git_bzr(_apt_install):
         self.pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Autoconf and automake')
-    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
-               'automake is a tool for automatically generating Makefile.\n'
+    __doc__ = _('Autoconf and Automake')
+    detail = _('Autoconf can generate configure scripts. '
+               'Automake can generate Makefile.\n'
                'Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
