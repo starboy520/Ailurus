@@ -355,10 +355,10 @@ def read_changelog_callback(w):
     dialog.destroy()
 
 def __preferences(main_view):
-    menu_ask_when_quit = gtk.CheckMenuItem(_('Ask when quit'))
-    menu_ask_when_quit.set_active(Config.get_bool('ask_when_quit'))
-    menu_ask_when_quit.connect('toggled', 
-            lambda w: Config.set_bool('ask_when_quit', w.get_active()))
+    menu_query_before_exit = gtk.CheckMenuItem(_('Query before exit'))
+    menu_query_before_exit.set_active(Config.get_bool('query_before_exit'))
+    menu_query_before_exit.connect('toggled', 
+            lambda w: Config.set_bool('query_before_exit', w.get_active()))
     menu_tooltip = gtk.CheckMenuItem( _("""Don't show "tip of the day" on start up""") )
     menu_tooltip.set_active( Config.get_disable_tip() )
     menu_tooltip.connect('toggled', 
@@ -376,7 +376,7 @@ def __preferences(main_view):
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    return [ menu_ask_when_quit, menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
+    return [ menu_query_before_exit, menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
 def __others(main_view):
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))

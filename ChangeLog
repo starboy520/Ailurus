@@ -1,9 +1,8 @@
 2010-04-11 CHEN Yangyang <skabyy@gmail.com>
 
-    * Add a dialog with "Do not ask again" checkbutton to ask the user to 
-      make sure to exit Ailurus.
-    * Add a checkmenu "Ask when quit" to the Preferences.
-    * Add OSD Lyrics installation
+    * Add "Query before exit" dialog with "Do not query again" checkbutton.
+    * Add "Query before exit" menuitem in preferences menu.
+    * Add OSD-Lyrics installation.
 
 2010-04-11 MA Yue <velly.empire@gmail.com>
 

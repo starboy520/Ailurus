@@ -529,13 +529,13 @@ class Repo_Songbird(_repo):
         _repo.__init__(self)
 
 class Repo_OSD_Lyrics(_repo):
-    __doc__ = _('OSD Lyrics (stable)')
+    __doc__ = _('OSD-Lyrics (stable)')
     license = 'GNU General Public License (GPL)'
     def __init__(self):
-        self.desc = _('OSD Lyrics is inspired by lrcdis. With OSD Lyrics, you can enjoy an OSD lyrics show with various media players in Linux.')
+        self.desc = _('It displays lyrics. It supports many media players.')
         self.apt_content = 'osd-lyrics'
         self.web_page = 'https://launchpad.net/~osd-lyrics/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/osl_lyrics.list'
+        self.apt_file = '/etc/apt/sources.list.d/osd_lyrics.list'
         self.apt_conf = ['deb http://ppa.launchpad.net/osd-lyrics/ppa/ubuntu $version main']
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?get&search=0xA1CE4D88AB90650AD1C2EB2C97F6E5D34865CF4F'
         self.key_id = '4865CF4F'

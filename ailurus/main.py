@@ -267,26 +267,27 @@ class MainView:
         self.stop_delete_event = False
         self.toolbar.set_sensitive(True)
 
-    def query_quit(self):
-        queryDialog = gtk.MessageDialog(self.window, 
+    def query_whether_exit(self):
+        dialog = gtk.MessageDialog(self.window, 
                 gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_OK_CANCEL, 
-                _('Exit Ailurus?'))
-        check_button = gtk.CheckButton(_('Do not ask again.'))
-        queryDialog.vbox.pack_start(check_button)
-        queryDialog.vbox.show_all()
-        ret = queryDialog.run()
-        queryDialog.destroy()
-        if (ret == gtk.RESPONSE_OK):
-            Config.set_bool('ask_when_quit', not check_button.get_active())
+                _('Are you sure to exit?'))
+        check_button = gtk.CheckButton(_('Do not query me any more.'))
+        dialog.vbox.pack_start(check_button)
+        dialog.vbox.show_all()
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_OK:
+            Config.set_bool('query_before_exit', not check_button.get_active())
             return True
-        return False
+        else:
+            return False
 
     def terminate_program(self, *w):
         try:
-            ask_when_quit = Config.get_bool('ask_when_quit')
+            query_before_exit = Config.get_bool('query_before_exit')
         except:
-            ask_when_quit = True
-        if ask_when_quit and not self.query_quit():
+            query_before_exit = True
+        if query_before_exit and not self.query_whether_exit():
             return
         
         if self.stop_delete_event:
