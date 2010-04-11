@@ -158,17 +158,13 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
         menu.append(mi_refresh)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(detect_all_repos_speed)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(mi_use_fastest_repo)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(mi_edit_by_texteditor)
         import os
         if os.path.exists('/usr/bin/software-properties-gtk') or os.path.exists('/usr/bin/software-properties-kde'):
             menu.append(mi_edit_by_synaptic)
         menu.append(mi_merge_sourceslist)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(how_to_backup)
         menu.show_all()
         return menu
@@ -418,14 +414,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         
         popupmenu = gtk.Menu()
         popupmenu.append(use_selected)
-        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
-        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(select_all)
         popupmenu.append(select_all_repos_in_this_county)
         popupmenu.append(unselect_all)
-        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
