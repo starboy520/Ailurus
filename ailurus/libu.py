@@ -95,6 +95,20 @@ def image_stock_button(stock, label):
     button.add(box)
     return button
 
+def image_file_button(label, image_file_name, size):
+    import gtk
+    pixbuf = get_pixbuf(image_file_name, size, size)
+    image = gtk.Image()
+    image.set_from_pixbuf(pixbuf)
+    box = gtk.HBox(False, 3)
+    box.pack_start(image, False, False)
+    l = gtk.Label()
+    l.set_text_with_mnemonic(label)
+    box.pack_start(l, False, False)
+    button = gtk.Button()
+    button.add(box)
+    return button
+
 def image_icon_button(icon_name, label):
     import gtk
     box = gtk.HBox(False, 3)

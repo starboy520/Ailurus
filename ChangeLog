@@ -3,6 +3,8 @@
     * Add "Query before exit" dialog with "Do not query again" checkbutton.
     * Add "Query before exit" menuitem in preferences menu.
     * Add OSD-Lyrics installation.
+    * Move the "Start quick setup" button to the top of the "Install and Remove" pane.
+    * Add "Hide start quick setup button" menuitem in preferences menu.
 
 2010-04-11 MA Yue <velly.empire@gmail.com>
 

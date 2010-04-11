@@ -93,6 +93,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_hide_quick_setup_pane(cls, value):
+        cls.set_bool('hide_quick_setup_pane', value)
+    @classmethod
+    def get_hide_quick_setup_pane(cls):
+        try:        return cls.get_bool('hide_quick_setup_pane')
+        except:     return False
+    @classmethod
     def set_disable_tip(cls, value):
         cls.set_bool('disable-tip-on-startup', value)
     @classmethod

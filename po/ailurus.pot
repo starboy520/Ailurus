@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 13:57+0800\n"
+"POT-Creation-Date: 2010-04-11 16:53+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -846,7 +846,7 @@ msgid "Ailurus changelog"
 msgstr ""
 
 #: .././ailurus/common/menu.py:358
-msgid "Ask when quit"
+msgid "Query before exit"
 msgstr ""
 
 #: .././ailurus/common/menu.py:362
@@ -1844,7 +1844,7 @@ msgstr ""
 msgid "\"Search files\" entries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:527 .././ailurus/ubuntu/app3.py:684
+#: .././ailurus/fedora/apps.py:527 .././ailurus/ubuntu/app3.py:692
 msgid "ImageMagick"
 msgstr ""
 
@@ -1855,12 +1855,17 @@ msgid ""
 "Command: yum install ImageMagick"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:537 .././ailurus/ubuntu/app3.py:694
+#: .././ailurus/fedora/apps.py:537 .././ailurus/ubuntu/app3.py:702
 msgid "PiTiVi: movie editor"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:538
 msgid "Command: yum install pitivi"
+msgstr ""
+
+#: .././ailurus/fedora/fastest_mirror_pane.py:30
+#: .././ailurus/ubuntu/fastest_mirror_pane.py:38
+msgid "Find fastest repository mirror"
 msgstr ""
 
 #: .././ailurus/fedora/osinfo.py:35
@@ -3002,10 +3007,6 @@ msgstr ""
 msgid "_Apply"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:595
-msgid "Start quick setup"
-msgstr ""
-
 #: .././ailurus/install_remove_pane.py:604
 msgid "Details:"
 msgstr ""
@@ -3127,6 +3128,14 @@ msgstr ""
 msgid "Eclipse"
 msgstr ""
 
+#: .././ailurus/install_remove_pane.py:726
+msgid "Start quick setup"
+msgstr ""
+
+#: .././ailurus/install_remove_pane.py:728
+msgid "Hide this button"
+msgstr ""
+
 #: .././ailurus/libapp.py:78 .././ailurus/libapp.py:136
 msgid "Change GConf values:"
 msgstr ""
@@ -3190,91 +3199,91 @@ msgid ""
 ">'Add-ons' menu of firefox."
 msgstr ""
 
-#: .././ailurus/lib.py:302 .././ailurus/lib.py:353 .././ailurus/lib.py:538
-#: .././ailurus/lib.py:888 .././ailurus/support/terminal.py:53
+#: .././ailurus/lib.py:309 .././ailurus/lib.py:360 .././ailurus/lib.py:545
+#: .././ailurus/lib.py:895 .././ailurus/support/terminal.py:53
 #: .././ailurus/support/terminal_single_thread.py:50
 msgid "Run command:"
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:664
+#: .././ailurus/lib.py:671
 msgid "Installing packages:"
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:700
+#: .././ailurus/lib.py:707
 msgid "Removing packages:"
 msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
-#: .././ailurus/lib.py:715 .././ailurus/ubuntu/fastest_mirror_pane.py:292
+#: .././ailurus/lib.py:722 .././ailurus/ubuntu/fastest_mirror_pane.py:292
 #: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
-#: .././ailurus/lib.py:843
+#: .././ailurus/lib.py:850
 #, python-format
 msgid "%.1f GB"
 msgstr ""
 
-#: .././ailurus/lib.py:845
+#: .././ailurus/lib.py:852
 #, python-format
 msgid "%.1f MB"
 msgstr ""
 
-#: .././ailurus/lib.py:847
+#: .././ailurus/lib.py:854
 #, python-format
 msgid "%.1f KB"
 msgstr ""
 
-#: .././ailurus/lib.py:848
+#: .././ailurus/lib.py:855
 #, python-format
 msgid "%s bytes"
 msgstr ""
 
-#: .././ailurus/lib.py:856
+#: .././ailurus/lib.py:863
 #, python-format
 msgid "%.1f hours"
 msgstr ""
 
-#: .././ailurus/lib.py:858
+#: .././ailurus/lib.py:865
 #, python-format
 msgid "%.1f minutes"
 msgstr ""
 
-#: .././ailurus/lib.py:859
+#: .././ailurus/lib.py:866
 #, python-format
 msgid "%d seconds"
 msgstr ""
 
-#: .././ailurus/lib.py:1056 .././ailurus/lib.py:1061
+#: .././ailurus/lib.py:1063 .././ailurus/lib.py:1068
 msgid "Opening web page"
 msgstr ""
 
-#: .././ailurus/lib.py:1188
+#: .././ailurus/lib.py:1195
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1190
+#: .././ailurus/lib.py:1197
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: .././ailurus/lib.py:1267
+#: .././ailurus/lib.py:1274
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: .././ailurus/lib.py:1271
+#: .././ailurus/lib.py:1278
 msgid "Good."
 msgstr ""
 
-#: .././ailurus/lib.py:1278
+#: .././ailurus/lib.py:1285
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1417
+#: .././ailurus/lib.py:1424
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
@@ -3438,62 +3447,62 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/main.py:273
-msgid "Exit Ailurus?"
+msgid "Are you sure to exit?"
 msgstr ""
 
 #: .././ailurus/main.py:274
-msgid "Do not ask again."
+msgid "Do not query me any more."
 msgstr ""
 
-#: .././ailurus/main.py:353
+#: .././ailurus/main.py:350
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:354
+#: .././ailurus/main.py:351
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:355
+#: .././ailurus/main.py:352
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:353
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:357
+#: .././ailurus/main.py:354
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:358
+#: .././ailurus/main.py:355
 msgid "load \"recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:359
+#: .././ailurus/main.py:356
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:361
+#: .././ailurus/main.py:357
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:370
+#: .././ailurus/main.py:366
 msgid "You did not specify any functionality. :)"
 msgstr ""
 
-#: .././ailurus/main.py:371
+#: .././ailurus/main.py:367
 msgid "For example: ailurus --fast --information"
 msgstr ""
 
-#: .././ailurus/main.py:392
+#: .././ailurus/main.py:388
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:421
+#: .././ailurus/main.py:422
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:433
+#: .././ailurus/main.py:434
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
@@ -4431,20 +4440,24 @@ msgid ""
 "It is from http://fcitx.googlecode.com/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:676
+#: .././ailurus/ubuntu/app3.py:671
+msgid "OSD-Lyrics: Display lyrics. Supports many media players."
+msgstr ""
+
+#: .././ailurus/ubuntu/app3.py:684
 msgid ""
 "Download via bittorrent + Search videos + Play videos\n"
 "Command: sudo apt-get install vuze"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:685
+#: .././ailurus/ubuntu/app3.py:693
 msgid ""
 "It helps you edit images.\n"
 "You can start it by /usr/bin/display\n"
 "Command: sudo apt-get install imagemagick"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:695
+#: .././ailurus/ubuntu/app3.py:703
 msgid "Command: sudo apt-get install piviti"
 msgstr ""
 
@@ -4455,10 +4468,6 @@ msgstr ""
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:31
 #, python-format
 msgid "change %(old)s to %(new)s"
-msgstr ""
-
-#: .././ailurus/ubuntu/fastest_mirror_pane.py:38
-msgid "Find fastest repository mirror"
 msgstr ""
 
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:50
@@ -5490,10 +5499,18 @@ msgid ""
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:532
-msgid "Mplayer-VOD (stable)"
+msgid "OSD-Lyrics (stable)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:535
+msgid "It displays lyrics. It supports many media players."
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:545
+msgid "Mplayer-VOD (stable)"
+msgstr ""
+
+#: .././ailurus/ubuntu/third_party_repos.py:548
 msgid ""
 "A movie player for Linux. Supports reading from network, dvd, vcd, file, "
 "pipes, and v4l."
