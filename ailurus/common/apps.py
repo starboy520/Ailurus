@@ -72,50 +72,50 @@ Icon=/opt/bioclipse/icon.xpm
         finally:
             FileServer.chdir_back()
 
-class BRLCAD(_path_lists):
-    __doc__ = _('BRL-CAD: Military solid modeling software')
-    detail = (
-              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
-              _('Developed by Ballistic Research Laboratory. ') +
-              _('A lot of commands are installed in /usr/brlcad/bin/') )
-    category = 'em'
-    size = 328851000
-    logo = 'brlcad.png'
-    license = ('BRL-CAD is a large system with various portions under different license '
-               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
-               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
-               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
-    def __init__(self):
-        self.shortcut = '/usr/share/applications/brlcad.desktop'
-        self.file = '/usr/brlcad/'
-        self.paths = [self.shortcut, self.file]
-    def install(self):
-        if get_arch()==32:
-            f = R(
-['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
-'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
-65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
-        else:
-            f = R(
-['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
-'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
-88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
-
-        FileServer.chdir_local()
-        try:
-            run('tar jxf %s'%f)
-            run_as_root('rm /usr/brlcad/ -rf')
-            run_as_root('mv usr/brlcad/ /usr/')
-            create_file(self.shortcut, '''[Desktop Entry]
-Name=BRL-CAD
-Exec=/usr/brlcad/bin/mged
-Encoding=UTF-8
-StartupNotify=true
-Terminal=true
-Type=Application
-Categories=Science;Engineering;''')
-        finally:
-            FileServer.chdir_back()
+#class BRLCAD(_path_lists):
+#    __doc__ = _('BRL-CAD: Military solid modeling software')
+#    detail = (
+#              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
+#              _('Developed by Ballistic Research Laboratory. ') +
+#              _('A lot of commands are installed in /usr/brlcad/bin/') )
+#    category = 'em'
+#    size = 328851000
+#    logo = 'brlcad.png'
+#    license = ('BRL-CAD is a large system with various portions under different license '
+#               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
+#               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
+#               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
+#    def __init__(self):
+#        self.shortcut = '/usr/share/applications/brlcad.desktop'
+#        self.file = '/usr/brlcad/'
+#        self.paths = [self.shortcut, self.file]
+#    def install(self):
+#        if get_arch()==32:
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
+#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
+#65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
+#        else:
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
+#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
+#88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
+#
+#        FileServer.chdir_local()
+#        try:
+#            run('tar jxf %s'%f)
+#            run_as_root('rm /usr/brlcad/ -rf')
+#            run_as_root('mv usr/brlcad/ /usr/')
+#            create_file(self.shortcut, '''[Desktop Entry]
+#Name=BRL-CAD
+#Exec=/usr/brlcad/bin/mged
+#Encoding=UTF-8
+#StartupNotify=true
+#Terminal=true
+#Type=Application
+#Categories=Science;Engineering;''')
+#        finally:
+#            FileServer.chdir_back()
 
 class CreateDesktopFolder:
     __doc__ = _('Create a directory "Desktop" in your home folder')
