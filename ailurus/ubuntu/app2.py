@@ -363,7 +363,7 @@ class PowerTop(_apt_install):
     def __init__(self):
         self.pkgs = 'powertop'
         
-class nautilus_actions(_apt_install):
+class Nautilus_Actions(_apt_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
@@ -373,7 +373,7 @@ class nautilus_actions(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-actions'
         
-class nautilus_filename_repairer(_apt_install):
+class Nautilus_Filename_Repairer(_apt_install):
     __doc__ = _('"Repair filename" entry')
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
     license = 'GNU General Public License (GPL)'
@@ -382,7 +382,7 @@ class nautilus_filename_repairer(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-filename-repairer'
 
-class nautilus_gksu(_apt_install):
+class Nautilus_Gksu(_apt_install):
     __doc__ = _('"Open as administrator" entry')
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
     license = 'GNU General Public License (GPL)'
@@ -391,7 +391,7 @@ class nautilus_gksu(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-gksu'
 
-class nautilus_script_audio_convert(_apt_install):
+class Nautilus_Audio_Convert(_apt_install):
     __doc__ = _('"Convert audio files" entry')
     detail = _('Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n'
                'These packages will also be installed: \n'
@@ -405,7 +405,7 @@ class nautilus_script_audio_convert(_apt_install):
         _apt_install.install(self)
         run('nautilus-script-manager enable ConvertAudioFile')
 
-class nautilus_image_converter(_apt_install):
+class Nautilus_Image_Converter(_apt_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
@@ -414,7 +414,7 @@ class nautilus_image_converter(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-image-converter'
         
-class nautilus_script_collection_svn(_apt_install):
+class Nautilus_Script_Collection_Svn(_apt_install):
     __doc__ = _('"Subversion commands" entries')
     detail = _('"Subversion commands" entries')
     license = 'GNU General Public License (GPL)'
@@ -426,7 +426,7 @@ class nautilus_script_collection_svn(_apt_install):
         _apt_install.install(self)
         run('nautilus-script-manager enable Subversion')
         
-class nautilus_open_terminal(_apt_install):
+class Nautilus_Open_Terminal(_apt_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
@@ -435,7 +435,7 @@ class nautilus_open_terminal(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-open-terminal'
         
-class nautilus_share(_apt_install):
+class Nautilus_Share(_apt_install):
     __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
     license = 'GNU General Public License (GPL)'
@@ -444,7 +444,7 @@ class nautilus_share(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-share'
         
-class nautilus_wallpaper(_apt_install):
+class Nautilus_Wallpaper(_apt_install):
     __doc__ = _('"Set as wallpaper" entry')
     detail = _('"Set as wallpaper" entry')
     license = 'GNU General Public License (GPL)'
@@ -452,14 +452,3 @@ class nautilus_wallpaper(_apt_install):
     logo = 'nautilus.png'
     def __init__(self):
         self.pkgs = 'nautilus-wallpaper'
-        
-class nautilus_script_audio_convert(_apt_install):
-    __doc__ = _('"Write to Disc..." entry')
-    detail = _('When CD/DVD image file is clicked by mouse right button, \n'
-               'show a "Write to Disc..." menu item.\n'
-               '<span color="red">This item conflicts with "brasero".</span>')
-    license = 'GNU General Public License (GPL)'
-    category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-cd-burner'

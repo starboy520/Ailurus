@@ -487,7 +487,7 @@ class Gnash(_rpm_install):
     def __init__(self):
         self.pkgs = 'gnash gnash-plugin'
         
-class nautilus_actions(_rpm_install):
+class Nautilus_Actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
@@ -497,7 +497,7 @@ class nautilus_actions(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-actions'
         
-class nautilus_image_converter(_rpm_install):
+class Nautilus_Image_Converter(_rpm_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
@@ -506,7 +506,7 @@ class nautilus_image_converter(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-image-converter'
         
-class nautilus_open_terminal(_rpm_install):
+class Nautilus_Open_Terminal(_rpm_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
@@ -515,7 +515,7 @@ class nautilus_open_terminal(_rpm_install):
     def __init__(self):
         self.pkgs = 'nautilus-open-terminal'
         
-class nautilus_search_tool(_rpm_install):
+class Nautilus_Search_Tool(_rpm_install):
     __doc__ = _('"Search files" entries')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
