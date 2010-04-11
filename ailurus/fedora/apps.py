@@ -533,7 +533,7 @@ class ImageMagick(_rpm_install):
     def __init__(self):
         self.pkgs = 'ImageMagick'
 
-class PiViTi(_rpm_install):
+class PiTiVi(_rpm_install):
     __doc__ = _('PiTiVi: movie editor')
     detail = _("Command: yum install pitivi")
     logo = 'pitivi.png'
