@@ -187,14 +187,14 @@ class SDL(_apt_install):
     def __init__(self):
         self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
-class PipeViewer(_apt_install):
-    __doc__ = _('pv: a pipe viewer')
-    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-               'Command: sudo apt-get install pv')
-    license = ('Free software, ARTISTIC 2.0 license, '
-               'see http://www.ivarch.com/programs/quickref/pv.shtml')
-    def __init__(self):
-        self.pkgs = 'pv'
+#class PipeViewer(_apt_install):
+#    __doc__ = _('pv: a pipe viewer')
+#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
+#               'Command: sudo apt-get install pv')
+#    license = ('Free software, ARTISTIC 2.0 license, '
+#               'see http://www.ivarch.com/programs/quickref/pv.shtml')
+#    def __init__(self):
+#        self.pkgs = 'pv'
           
 class AutoApt(_apt_install):
     'Auto-apt'
@@ -334,11 +334,12 @@ class Extcalc(_apt_install):
         self.pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
-    __doc__ = _('Startup Manager')   
+    __doc__ = _('Startup Manager: Change GRUB settings and themes')   
     detail = _('Startup manager helps you change GRUB settings and themes.\n'
                'Command: sudo apt-get install startupmanager')
     license = 'GNU General Public License (GPL)'
     logo = 'startup_manager.png'
+    category = 'appearance'
     def __init__(self):
         self.pkgs = 'startupmanager'
         
