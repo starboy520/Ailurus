@@ -234,9 +234,8 @@ class DisableGettyKarmic(DisableGetty):
             FileServer.chdir_back()
 
 class Octave(_apt_install):
-    __doc__ = 'Octave'
-    detail = _(u'A Matlab® compatible numerical computation appliation.\n'
-       'Command: sudo apt-get install qtoctave')
+    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
+    detail = _('Command: sudo apt-get install qtoctave')
     logo = 'octave.png'
     license = 'GNU General Public License (GPL)'
     category = 'math'

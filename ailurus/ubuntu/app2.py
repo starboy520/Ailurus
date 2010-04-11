@@ -324,9 +324,8 @@ class QtiPlot(_apt_install) :
         self.pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
-    'Extcalc'
-    detail = _('This is a multifunctional graphic calculator.\n'
-        'Command: sudo apt-get install extcalc')
+    __doc__ = _('Extcalc: A multifunctional graphic calculator')
+    detail = _('Command: sudo apt-get install extcalc')
     category = 'math'
     license = 'GNU General Public License (GPL)'
     logo = 'extcalc.png'

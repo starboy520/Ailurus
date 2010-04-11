@@ -321,9 +321,8 @@ class DisableGetty:
             FileServer.chdir_back()
 
 class Octave(_rpm_install):
-    __doc__ = 'Octave'
-    detail = _(u'A Matlab® compatible numerical computation appliation.\n'
-       'Command: yum install qtoctave')
+    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
+    detail = _('Command: yum install qtoctave')
     license = ('GNU General Public License (GPL), '
                'see http://www.gnu.org/software/octave/license.html')
     logo = 'octave.png'
