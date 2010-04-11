@@ -315,9 +315,8 @@ class ScienceBiology(_apt_install):
         run('sudo apt-get autoremove')
 
 class TuxPaint(_apt_install):
-    __doc__ = _('Tux Paint')
-    detail = _('This is a drawing program for young children three years and up.\n' 
-                    'Command: sudo apt-get install tuxpaint')
+    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
+    detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'tuxpaint.png'
@@ -333,9 +332,8 @@ class CodeBlocks(_apt_install):
         self.pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
-    __doc__ = 'ChildsPlay'
-    detail = _('This is a suite of educational games for young children.\n'
-                    'Command: sudo apt-get install childsplay')
+    __doc__ = _('ChildsPlay: A suite of educational games for children')
+    detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
@@ -355,9 +353,8 @@ class ChildsPlay(_apt_install):
         self._get_reason(f)
         
 class GCompris(_apt_install):
-    __doc__ = 'GCompris'
-    detail = _('GCompris provides educational games for children aged 2 to 10.\n'
-                    'Command: sudo apt-get install gcompris')
+    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
+    detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'

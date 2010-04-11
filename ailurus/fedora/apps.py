@@ -353,9 +353,8 @@ class Generic_Genome_Browser:
         raise NotImplementedError
 
 class TuxPaint(_rpm_install):
-    'Tux Paint'
-    detail = _('This is a drawing program for young children three years and up.\n' 
-                    'Command: yum install tuxpaint')
+    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
+    detail = _('Command: yum install tuxpaint')
     category = 'education'
     license = ('GNU General Public License (GPL)')
     logo = 'tuxpaint.png'
@@ -363,9 +362,8 @@ class TuxPaint(_rpm_install):
         self.pkgs='tuxpaint'
 
 class ChildsPlay(_rpm_install):
-    'ChildsPlay'
-    detail = _('This is a suite of educational games for young children.\n'
-                    'Command: yum install childsplay')
+    __doc__ = _('ChildsPlay: A suite of educational games for children')
+    detail = _('Command: yum install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'childsplay.png'
@@ -373,9 +371,8 @@ class ChildsPlay(_rpm_install):
         self.pkgs ='childsplay'
         
 class GCompris(_rpm_install):
-    'GCompris'
-    detail = _('GCompris provides educational games for children aged 2 to 10.\n'
-                    'Command: yum install gcompris')
+    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
+    detail = _('Command: yum install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'gcompris.png'

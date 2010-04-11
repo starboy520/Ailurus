@@ -367,7 +367,7 @@ class Liferea(_apt_install):
         self.pkgs = 'liferea'
 
 class FireWall(_apt_install):
-    __doc__ = _('Firestarter')
+    __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
        'Firestarter is the graphical frontend of "iptables".\n'
        'Command: sudo apt-get install firestarter')
