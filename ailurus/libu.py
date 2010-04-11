@@ -172,15 +172,6 @@ def image_left_align(path):
     image.set_from_file(path)
     return image
 
-def begin_color():
-    return '<span color="#870090">'
-
-def end_color():
-    return '</span>'
-
-def color(string):
-    return '%s%s%s'%( begin_color(), string, end_color() )
-
 def add_expander(vbox, title):
     def __title(text):
         label = gtk.Label()

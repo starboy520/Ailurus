@@ -381,6 +381,15 @@ class InstallRemovePane(gtk.VBox):
         self.__show_detail(obj)
 
     def __show_detail(self, obj):
+        def begin_color():
+            return '<span color="#870090">'
+        
+        def end_color():
+            return '</span>'
+        
+        def color(string):
+            return '%s%s%s'%( begin_color(), string, end_color() )
+
         if isinstance(obj, str) or isinstance(obj, unicode):
             self.detail.get_buffer().set_text(obj)
         else:
