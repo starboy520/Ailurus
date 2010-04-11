@@ -107,13 +107,6 @@ class Config:
         try:       return cls.get_bool('query_before_exit')
         except:    return True
     @classmethod
-    def set_disable_clean_apt_cache(cls, value):
-        cls.set_bool('disable-clean-apt-cache', value)
-    @classmethod
-    def get_disable_clean_apt_cache(cls):
-        try: return cls.get_bool('disable-clean-apt-cache')
-        except: return True
-    @classmethod
     def get_locale(cls):
         import locale
         value = locale.getdefaultlocale()[0]
