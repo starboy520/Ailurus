@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 16:53+0800\n"
+"POT-Creation-Date: 2010-04-11 17:41+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -714,7 +714,7 @@ msgstr ""
 msgid "Battery full capacity:"
 msgstr ""
 
-#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:382
+#: .././ailurus/common/menu.py:35 .././ailurus/common/menu.py:387
 msgid "Ailurus blog"
 msgstr ""
 
@@ -850,54 +850,60 @@ msgid "Query before exit"
 msgstr ""
 
 #: .././ailurus/common/menu.py:362
-msgid "Don't show \"tip of the day\" on start up"
+msgid "Hide \"start quick setup\" button"
 msgstr ""
 
-#: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:373
+#: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
+#: .././ailurus/common/menu.py:378 .././ailurus/install_remove_pane.py:730
 #: .././ailurus/ubuntu/menu.py:76
 msgid "Preferences changed"
 msgstr ""
 
-#: .././ailurus/common/menu.py:365 .././ailurus/ubuntu/menu.py:76
+#: .././ailurus/common/menu.py:365 .././ailurus/common/menu.py:370
+#: .././ailurus/install_remove_pane.py:730 .././ailurus/ubuntu/menu.py:76
 msgid ""
 "Your changes will take effect at the next time when the program starts up."
 msgstr ""
 
-#: .././ailurus/common/menu.py:368
+#: .././ailurus/common/menu.py:367
+msgid "Don't show \"tip of the day\" on start up"
+msgstr ""
+
+#: .././ailurus/common/menu.py:373
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:373 .././ailurus/gnome/setting.py:100
+#: .././ailurus/common/menu.py:378 .././ailurus/gnome/setting.py:100
 #: .././ailurus/gnome/setting.py:131
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/common/menu.py:376
+#: .././ailurus/common/menu.py:381
 msgid "Set download parameters"
 msgstr ""
 
-#: .././ailurus/common/menu.py:386
+#: .././ailurus/common/menu.py:391
 msgid "Check for updates"
 msgstr ""
 
-#: .././ailurus/common/menu.py:389
+#: .././ailurus/common/menu.py:394
 msgid "Propose suggestion and report bugs"
 msgstr ""
 
-#: .././ailurus/common/menu.py:393
+#: .././ailurus/common/menu.py:398
 msgid "Translate this application"
 msgstr ""
 
-#: .././ailurus/common/menu.py:397
+#: .././ailurus/common/menu.py:402
 msgid "Special thanks"
 msgstr ""
 
-#: .././ailurus/common/menu.py:400
+#: .././ailurus/common/menu.py:405
 msgid "About"
 msgstr ""
 
-#: .././ailurus/common/menu.py:403
+#: .././ailurus/common/menu.py:408
 msgid "Read changelog"
 msgstr ""
 
@@ -3199,91 +3205,91 @@ msgid ""
 ">'Add-ons' menu of firefox."
 msgstr ""
 
-#: .././ailurus/lib.py:309 .././ailurus/lib.py:360 .././ailurus/lib.py:545
-#: .././ailurus/lib.py:895 .././ailurus/support/terminal.py:53
+#: .././ailurus/lib.py:316 .././ailurus/lib.py:367 .././ailurus/lib.py:552
+#: .././ailurus/lib.py:902 .././ailurus/support/terminal.py:53
 #: .././ailurus/support/terminal_single_thread.py:50
 msgid "Run command:"
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:671
+#: .././ailurus/lib.py:678
 msgid "Installing packages:"
 msgstr ""
 
 #. print message
-#: .././ailurus/lib.py:707
+#: .././ailurus/lib.py:714
 msgid "Removing packages:"
 msgstr ""
 
 #. (c) 2005-2007 Canonical, GPL
-#: .././ailurus/lib.py:722 .././ailurus/ubuntu/fastest_mirror_pane.py:292
+#: .././ailurus/lib.py:729 .././ailurus/ubuntu/fastest_mirror_pane.py:292
 #: .././ailurus/ubuntu/quick_setup.py:301
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr ""
 
-#: .././ailurus/lib.py:850
+#: .././ailurus/lib.py:857
 #, python-format
 msgid "%.1f GB"
 msgstr ""
 
-#: .././ailurus/lib.py:852
+#: .././ailurus/lib.py:859
 #, python-format
 msgid "%.1f MB"
 msgstr ""
 
-#: .././ailurus/lib.py:854
+#: .././ailurus/lib.py:861
 #, python-format
 msgid "%.1f KB"
 msgstr ""
 
-#: .././ailurus/lib.py:855
+#: .././ailurus/lib.py:862
 #, python-format
 msgid "%s bytes"
 msgstr ""
 
-#: .././ailurus/lib.py:863
+#: .././ailurus/lib.py:870
 #, python-format
 msgid "%.1f hours"
 msgstr ""
 
-#: .././ailurus/lib.py:865
+#: .././ailurus/lib.py:872
 #, python-format
 msgid "%.1f minutes"
 msgstr ""
 
-#: .././ailurus/lib.py:866
+#: .././ailurus/lib.py:873
 #, python-format
 msgid "%d seconds"
 msgstr ""
 
-#: .././ailurus/lib.py:1063 .././ailurus/lib.py:1068
+#: .././ailurus/lib.py:1070 .././ailurus/lib.py:1075
 msgid "Opening web page"
 msgstr ""
 
-#: .././ailurus/lib.py:1195
+#: .././ailurus/lib.py:1202
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr ""
 
-#: .././ailurus/lib.py:1197
+#: .././ailurus/lib.py:1204
 #, python-format
 msgid "Server %s does not respond."
 msgstr ""
 
-#: .././ailurus/lib.py:1274
+#: .././ailurus/lib.py:1281
 msgid "Checking file integrity ..."
 msgstr ""
 
-#: .././ailurus/lib.py:1278
+#: .././ailurus/lib.py:1285
 msgid "Good."
 msgstr ""
 
-#: .././ailurus/lib.py:1285
+#: .././ailurus/lib.py:1292
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 
-#: .././ailurus/lib.py:1424
+#: .././ailurus/lib.py:1431
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
