@@ -455,13 +455,13 @@ class FFAdblock(_ff_extension):
         _ff_extension.__init__(self)
 
 class FFAutoProxy(_ff_extension):
-    'AutoProxy'
+    __doc__ = _('AutoProxy: Proxy management via a third party list')
     logo = 'ff_autoproxy.png'
     Chinese = True
     size = 500862
     license = 'Mozilla Public License 1.1'
     def __init__(self):
-        self.desc = _('Proxy management depending on a third party list.')
+        self.desc = ''
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
@@ -516,12 +516,12 @@ class FFCleanHide(_ff_extension):
         _ff_extension.__init__(self)
 
 class FFDownloadStatusBar(_ff_extension): 
-    'DownloadStatusBar'
+    __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
     logo = 'ff_dlstatusbar.png'
     size = 1443763
     license = 'Mozilla Public License, v1.1'
     def __init__(self):
-        self.desc = _('Keep track of ongoing and completed downloads in a tiny statusbar.')
+        self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
