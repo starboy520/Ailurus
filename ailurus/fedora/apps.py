@@ -85,10 +85,9 @@ class Enhance_Decompression_Capability(_rpm_install) :
         self.pkgs = "p7zip cabextract"
 
 class Evince_Read_Chinese_PDF(_rpm_install) :
-    __doc__ = _('Make Evince be able to reveal Chinese pdf')
+    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     detail = _('Command: yum install poppler-data')
     category='office'
-    Chinese = True
     logo = 'evince.png'
     def __init__(self):
         self.pkgs = 'poppler-data'

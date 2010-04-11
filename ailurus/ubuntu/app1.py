@@ -134,7 +134,7 @@ class Typespeed(_apt_install) :
         self.pkgs = "typespeed"
 
 class Evince_Read_Chinese_PDF(_apt_install) :
-    __doc__ = _('Make Evince be able to reveal Chinese pdf')
+    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     detail = _('Command: sudo apt-get install poppler-data')
     category='office'
     Chinese = True
