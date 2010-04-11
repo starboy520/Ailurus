@@ -40,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
             # We add all children of this class to 'self.selected_categories'
             self.selected_categories = []
             child = model.iter_children(parent)
-            while True:
+            while child:
                 category = model.get_value(child, 2)
                 self.selected_categories.append(category)
                 child = model.iter_next(child)
@@ -102,21 +102,18 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
     
     def __query_work(self, to_install, to_remove):
-        time = 0
         size = 0
         msg = ''
         if len(to_install):
             msg += _('To be installed:\n')
             for obj in to_install: 
                 msg += '<span color="blue">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size += obj.size
             msg += '\n'
         if len(to_remove):
             msg += _('To be removed:\n')
             for obj in to_remove: 
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size -= obj.size
             msg += '\n' 
         #display size cost
@@ -189,8 +186,8 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ cls for cls in self.classobjs
                                if cls.cache_installed==False
                                and cls.showed_in_toggle ]
-            depends = [ cls.depend for cls in to_install 
-                                   if hasattr(cls, 'depend') ]
+            depends = [ cls.depends for cls in to_install 
+                                   if hasattr(cls, 'depends') ]
             to_install += depends
             to_install_repos = [ cls for cls in to_install 
                                      if getattr(cls, 'this_class_is_a_repository', False) ]
@@ -381,6 +378,15 @@ class InstallRemovePane(gtk.VBox):
         self.__show_detail(obj)
 
     def __show_detail(self, obj):
+        def begin_color():
+            return '<span color="#870090">'
+        
+        def end_color():
+            return '</span>'
+        
+        def color(string):
+            return '%s%s%s'%( begin_color(), string, end_color() )
+
         if isinstance(obj, str) or isinstance(obj, unicode):
             self.detail.get_buffer().set_text(obj)
         else:
@@ -592,12 +598,8 @@ class InstallRemovePane(gtk.VBox):
 
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
-        button_quick_setup = gtk.Button(_('Start quick setup'))
-        button_quick_setup.connect('clicked', self.__launch_quick_setup)
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_apply, False, False)
-        if Config.is_Ubuntu() or Config.is_Mint():
-            bottom_box.pack_end(button_quick_setup, False, False)
 
         box2 = gtk.VBox(False, 0)
         align = gtk.Alignment(0)
@@ -721,9 +723,23 @@ class InstallRemovePane(gtk.VBox):
             if not i3 in all_categories: continue
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
+        
+        quick_setup_pane = gtk.HBox(False, 10)
+        quick_setup_pane.set_border_width(10)
+        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_button.connect('clicked', self.__launch_quick_setup)
+        quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
+        def hide_quick_setup(w):
+            Config.set_hide_quick_setup_pane(True)
+            quick_setup_pane.hide_all()
+        quick_setup_checkbutton.connect('clicked', hide_quick_setup)
+        quick_setup_pane.pack_start(quick_setup_button, False)
+        quick_setup_pane.pack_start(quick_setup_checkbutton, False)
 
         self.__left_tree_view_default_select()
 
+        if not Config.get_hide_quick_setup_pane() and (Config.is_Ubuntu() or Config.is_Mint()):
+            self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
         self.load_state()
