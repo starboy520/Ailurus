@@ -277,18 +277,14 @@ class MainView:
         ret = dialog.run()
         dialog.destroy()
         if ret == gtk.RESPONSE_OK:
-            Config.set_bool('query_before_exit', not check_button.get_active())
+            Config.set_query_before_exit(not check_button.get_active())
             return True
         else:
             return False
 
     def terminate_program(self, *w):
-        try:
-            query_before_exit = Config.get_bool('query_before_exit')
-        except:
-            query_before_exit = True
-        if query_before_exit and not self.query_whether_exit():
-            return
+        if Config.get_query_before_exit() and not self.query_whether_exit():
+            return True
         
         if self.stop_delete_event:
             return True

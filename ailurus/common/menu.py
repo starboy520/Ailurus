@@ -356,9 +356,9 @@ def read_changelog_callback(w):
 
 def __preferences(main_view):
     menu_query_before_exit = gtk.CheckMenuItem(_('Query before exit'))
-    menu_query_before_exit.set_active(Config.get_bool('query_before_exit'))
+    menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
-            lambda w: Config.set_bool('query_before_exit', w.get_active()))
+            lambda w: Config.set_query_before_exit(w.get_active()))
     menu_tooltip = gtk.CheckMenuItem( _("""Don't show "tip of the day" on start up""") )
     menu_tooltip.set_active( Config.get_disable_tip() )
     menu_tooltip.connect('toggled', 
