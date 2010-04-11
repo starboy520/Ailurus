@@ -671,12 +671,11 @@ class OSD_Lyrics(_apt_install):
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
-    'Vuze'
+    __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
     logo = 'vuze.png'
     license = 'GNU General Public License (GPL)'
-    detail = _('Download via bittorrent + Search videos + Play videos\n'
-               'Command: sudo apt-get install vuze')
+    detail = _('Command: sudo apt-get install vuze')
     def __init__(self):
         self.pkgs = 'vuze'
     def support(self):
