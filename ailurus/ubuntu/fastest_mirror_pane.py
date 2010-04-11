@@ -144,8 +144,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
         mi_refresh.connect('activate', self.__callback__refresh_state_box)
-        detect_all_repos_speed = image_stock_menuitem(gtk.STOCK_FIND, _('Detect response time of all repositories'))
-        detect_all_repos_speed.connect('activate', self.__callback__detect_all_repos_speed)
         self.mi_use_fastest_repo = mi_use_fastest_repo = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Use the fastest repository'))
         mi_use_fastest_repo.connect('activate', self.__callback__use_fastest_repository)
         mi_edit_by_texteditor = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by text editor'))
@@ -158,7 +156,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
         menu.append(mi_refresh)
-        menu.append(detect_all_repos_speed)
         menu.append(mi_use_fastest_repo)
         menu.append(mi_edit_by_texteditor)
         import os
