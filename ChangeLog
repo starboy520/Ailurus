@@ -1,3 +1,7 @@
+2010-04-11 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: Error happens when there is no sub-items in a big category. 
+
 2010-04-11 CHEN Yangyang <skabyy@gmail.com>
 
     * Add "Query before exit" dialog with "Do not query again" checkbutton.
@@ -6,14 +10,11 @@
     * Move the "Start quick setup" button to the top of the "Install and Remove" pane.
     * Add "Hide start quick setup button" menuitem in preferences menu.
     * Add a function returned a button with image
+    * Cut down start up time of "clean up pane" to less than 1 second.
 
 2010-04-11 MA Yue <velly.empire@gmail.com>
 
     * Add a new icon for "Ailurus quick start"
-
-2010-04-11 CHEN Yangyang <skabyy@gmail.com>
-
-    * Cut down start up time of "clean up pane" to less than 1 second.
 
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 

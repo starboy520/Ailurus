@@ -40,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
             # We add all children of this class to 'self.selected_categories'
             self.selected_categories = []
             child = model.iter_children(parent)
-            while True:
+            while child:
                 category = model.get_value(child, 2)
                 self.selected_categories.append(category)
                 child = model.iter_next(child)
