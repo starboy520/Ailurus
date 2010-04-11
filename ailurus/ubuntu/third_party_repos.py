@@ -528,6 +528,19 @@ class Repo_Songbird(_repo):
         self.key_id = '5719E347'
         _repo.__init__(self)
 
+class Repo_OSD_Lyrics(_repo):
+    __doc__ = _('OSD-Lyrics (stable)')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.desc = _('It displays lyrics. It supports many media players.')
+        self.apt_content = 'osd-lyrics'
+        self.web_page = 'https://launchpad.net/~osd-lyrics/+archive/ppa'
+        self.apt_file = '/etc/apt/sources.list.d/osd_lyrics.list'
+        self.apt_conf = ['deb http://ppa.launchpad.net/osd-lyrics/ppa/ubuntu $version main']
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?get&search=0xA1CE4D88AB90650AD1C2EB2C97F6E5D34865CF4F'
+        self.key_id = '4865CF4F'
+        _repo.__init__(self)
+
 class Repo_Mplayer_VOD(_repo):
     __doc__ = _('Mplayer-VOD (stable)')
     license = 'GNU General Public License (GPL)'

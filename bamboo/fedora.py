@@ -365,7 +365,7 @@ class VirtualBox_OSE(_rpm_install):
     category = 'vm'
     license = 'GNU General Public License (GPL)'
     logo = 'virtualbox.png'
-    depend = Repo_RPMFusion_Free
+    depends = Repo_RPMFusion_Free
     def __init__(self):
         self.pkgs = 'VirtualBox-OSE'
 

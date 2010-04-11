@@ -654,7 +654,7 @@ class XBMC(_apt_install):
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'xbmc.png'
-    depend = Repo_XBMC
+    depends = Repo_XBMC
     def __init__(self):
         self.pkgs = 'xbmc'
 
@@ -663,9 +663,17 @@ class Songbird(_apt_install):
     category = 'media'
     license = 'GNU General Public License (GPL)'
     logo = 'songbird.png'
-    depend = Repo_Songbird
+    depends = Repo_Songbird
     def __init__(self):
         self.pkgs = 'songbird'
+
+class OSD_Lyrics(_apt_install):
+    __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
+    category = 'media'
+    license = 'GNU General Public License (GPL)'
+    depends = Repo_OSD_Lyrics
+    def __init__(self):
+        self.pkgs = 'osdlyrics'
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
