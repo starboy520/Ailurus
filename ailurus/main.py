@@ -267,7 +267,28 @@ class MainView:
         self.stop_delete_event = False
         self.toolbar.set_sensitive(True)
 
+    def query_quit(self):
+        queryDialog = gtk.MessageDialog(self.window, 
+                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_OK_CANCEL, 
+                _('Exit Ailurus?'))
+        check_button = gtk.CheckButton(_('Do not ask again.'))
+        queryDialog.vbox.pack_start(check_button)
+        queryDialog.vbox.show_all()
+        ret = queryDialog.run()
+        queryDialog.destroy()
+        if (ret == gtk.RESPONSE_OK):
+            Config.set_bool('ask_when_quit', not check_button.get_active())
+            return True
+        return False
+
     def terminate_program(self, *w):
+        try:
+            ask_when_quit = Config.get_bool('ask_when_quit')
+        except:
+            ask_when_quit = True
+        if ask_when_quit and not self.query_quit():
+            return
+        
         if self.stop_delete_event:
             return True
         
