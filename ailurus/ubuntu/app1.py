@@ -43,7 +43,6 @@ class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
        '/apps/gedit-2/plugins/active-plugins += ["indent","codecomment","spell"]\n'
        'Then run this command: sudo apt-get install gedit-plugins')
     size = 1828 * 1000
-    time = 4
     logo = 'gedit.png'
     category = 'dev'
     def __init__(self):
@@ -108,7 +107,6 @@ class Full_Language_Pack(_apt_install):
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
 #    size = 172 * 1000
-#    time = 3
 #    logo = 'scim.png'
 #    def __init__(self):
 #        self.pkgs='scim-bridge-client-qt'
@@ -141,7 +139,6 @@ class Evince_Read_Chinese_PDF(_apt_install) :
     category='office'
     Chinese = True
     size = 12276 * 1000
-    time = 3
     logo = 'evince.png'
     def __init__(self):
         self.pkgs = 'poppler-data'
@@ -153,7 +150,6 @@ class CHMSee_Read_CHM_Documents(_apt_install) :
                'see http://code.google.com/p/chmsee/')
     category = 'office'
     size = 590 * 1000
-    time = 6
     logo = 'chmsee.png'
     def __init__(self):
         self.pkgs = 'chmsee'
@@ -165,7 +161,6 @@ class Workrave_And_Auto_Start_It(_apt_install) :
     license = ('GNU General Public License (GPL)'
                 'see http://sourceforge.net/projects/workrave/')
     size = 1012 * 1000
-    time = 5
     logo = 'workrave.png'
     def __init__(self):
         self.pkgs = 'workrave'
@@ -215,7 +210,6 @@ class VIM_and_VIMRC(_apt_install) :
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     size = 1892 * 1000
-    time = 4
     logo = 'vim.png'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
@@ -264,7 +258,6 @@ class Multimedia_Codecs (_apt_install) :
     category = 'media'
     license = 'GNU Lesser General Public License'
     size = 6868 * 1000
-    time = 28
     logo = 'codec.png'
     def __init__(self):
         self.pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
@@ -279,7 +272,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
     __file = '/etc/apparmor.d/usr.sbin.cupsd'
     size = 256 * 1000
-    time = 4
     category = 'office'
     license = 'GNU Lesser General Public License'
     logo = 'cups.png'
@@ -369,7 +361,6 @@ class Liferea(_apt_install):
        'Command: sudo apt-get install liferea')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
-    time = 7
     size = 3792 * 1000
     logo = 'liferea.png'
     def __init__(self):
@@ -382,7 +373,6 @@ class FireWall(_apt_install):
        'Command: sudo apt-get install firestarter')
     license = 'GNU General Public License (GPL)'
     category = 'internet'
-    time = 9
     size = 1980 * 1000
     logo = 'firestarter.png'
     def __init__(self):
