@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 13:19+0800\n"
+"POT-Creation-Date: 2010-04-11 13:24+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -612,6 +612,16 @@ msgstr ""
 #: .././ailurus/common/apps.py:815
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
+msgstr ""
+
+#: .././ailurus/common/apps.py:824
+msgid "World of Padman : Comic 3D-Shooter"
+msgstr ""
+
+#: .././ailurus/common/apps.py:825
+msgid ""
+"World of Padman (WoP) is an open source first-person shooter computer game "
+"available in both English and German. "
 msgstr ""
 
 #: .././ailurus/common/hardwareinfo.py:39
