@@ -359,7 +359,7 @@ def __preferences(main_view):
     menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
-    menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "start quick setup" button'))
+    menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
     menu_hide_quick_setup_pane.set_active(Config.get_hide_quick_setup_pane())
     menu_hide_quick_setup_pane.connect('toggled', 
             lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
