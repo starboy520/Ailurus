@@ -24,48 +24,6 @@ import sys, os
 from lib import *
 from libapp import *
 
-class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
-    __doc__ = _('Make GEdit more suitable for programmers')
-    detail = _('Change GEdit settings as follows. '
-       'Automatically indent current line. '
-       'Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. '
-       'Indent/unindent codes by Ctrl+T and Shift+Ctrl+T. '
-       'Add spell check function in "Tools" menu. '
-       'Do not automatically create a hidden copy of current file. '
-       'Automatically save files once in each minute. '
-       'Show line numbers. \n'
-       'The trick behind is to change GConf values.\n'
-       '/apps/gedit-2/preferences/editor/save/auto_save = true\n'
-       '/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n'
-       '/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n'
-       '/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n'
-       '/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n'
-       '/apps/gedit-2/plugins/active-plugins += ["indent","codecomment","spell"]\n'
-       'Then run this command: sudo apt-get install gedit-plugins')
-    size = 1828 * 1000
-    logo = 'gedit.png'
-    category = 'dev'
-    def __init__(self):
-        self.set = (
-('/apps/gedit-2/preferences/editor/save/auto_save',True,False),
-('/apps/gedit-2/preferences/editor/save/auto_save_interval',1,10),
-('/apps/gedit-2/preferences/editor/save/create_backup_copy',False,True),
-('/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers',True,False),
-('/apps/gedit-2/preferences/editor/auto_indent/auto_indent',True,False),
-                    )
-        self.add = (
-('/apps/gedit-2/plugins/active-plugins', ['indent','codecomment','spell'] ),
-                    )
-        self.pkgs = 'gedit-plugins'
-    def install(self):
-        _set_gconf.install(self)
-        _apt_install.install(self)
-    def installed(self):
-        return _set_gconf.installed(self) and _apt_install.installed(self)
-    def remove(self):
-        _set_gconf.remove(self)
-        _apt_install.remove(self)
-
 class Full_Language_Pack(_apt_install):
     __doc__ = _('Full language support and input method')
     detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')

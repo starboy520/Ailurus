@@ -144,3 +144,23 @@ class Speedup_Nautilus:
             return False
         else:
             return True
+
+class GEdit_Suitable_For_Programmer(_set_gconf):
+    __doc__ = _('Make GEdit more suitable for programmers')
+    detail = _('Change GEdit settings as follows. '
+       'Automatically indent current line. '
+       'Do not automatically create a hidden copy of current file. '
+       'Automatically save files once in each minute. '
+       'Show line numbers.')
+    logo = 'gedit.png'
+    category = 'dev'
+    def __init__(self):
+        self.set = (
+('/apps/gedit-2/preferences/editor/save/auto_save',True,False),
+('/apps/gedit-2/preferences/editor/save/auto_save_interval',1,10),
+('/apps/gedit-2/preferences/editor/save/create_backup_copy',False,True),
+('/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers',True,False),
+('/apps/gedit-2/preferences/editor/auto_indent/auto_indent',True,False),
+                    )
+        self.add = ()
+
