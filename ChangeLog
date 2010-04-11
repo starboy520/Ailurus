@@ -1,3 +1,6 @@
+2010-04-08 CHEN Yangyang <skabyy@gmail.com>
+    * cut the start up time of "clean up pane" down to less than 1 second
+
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: "apt-get update" run two times before install songbird.
