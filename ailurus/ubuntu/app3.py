@@ -671,7 +671,7 @@ class OSD_Lyrics(_apt_install):
     'OSD Lyrics'
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    depend = Repo_OSD_Lyrics
+    depends = Repo_OSD_Lyrics
     def __init__(self):
         self.pkgs = 'osdlyrics'
         
