@@ -71,8 +71,6 @@ def load_app_classes(common, desktop, distribution):
                     raise ValueError, obj.category
                 if hasattr(obj, 'support'):
                     if obj().support()==False: continue
-                if hasattr(obj, 'international'): 
-                    if Config.is_Chinese_locale(): continue
                 if hasattr(obj, 'Chinese'): 
                     if Config.is_Chinese_locale()==False: continue
                 obj.cache_installed = obj().installed()
