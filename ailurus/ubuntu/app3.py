@@ -55,65 +55,65 @@ Categories=Science;Engineering;''')
         _apt_install.remove(self)
         run_as_root('rm -f %s'%self.shortcut)
 
-class FreeCAD(_apt_install):
-    __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
-    detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
-    category = 'em'
-    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
-               'See http://sourceforge.net/projects/free-cad/')
-    size = 15724000
-    logo = 'freecad.png'
-    def __init__(self):
-        self.pkgs = 'freecad'
-    def install(self):
-        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1hardy1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1hardy1_i386.deb'],
-5481522, '366835db62f7f2ffb73908ad6e77c82be826fc35')
-
-        elif get_arch()==32 and Config.get_Ubuntu_version()=='intrepid':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1intrepid1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1intrepid1_i386.deb'],
-5138150, '58ec68193200787d3f237016f0c6ba9e36021cbf')
-            
-        elif get_arch()==32 and Config.get_Ubuntu_version()=='jaunty':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_i386.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_i386.deb'],
-5174974, 'f98fb51f95a1630d754480740ee0f192e30a2acf')
-            
-        elif get_arch()==64 and Config.get_Ubuntu_version()=='jaunty':
-            
-            r=R(
-['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_amd64.deb',
-'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_amd64.deb'],
-5267100, '681c05fd60b10a8b37661c339eb77debff881305')
-            
-        f = r.download()
-        
-        depends = DPKG.get_deb_depends(f)
-        depends.remove('libgl1-mesa')
-        depends.append('libgl1-mesa-dev')
-        for depend in depends:
-            run_as_root('apt-get install -qq %s'%depend)
-        run_as_root('dpkg -i %s'%f)
-        APT.cache_changed()
-    def support(self):
-        ver = Config.get_Ubuntu_version()
-        if ver=='jaunty': return True
-        if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
-        return False
+#class FreeCAD(_apt_install):
+#    __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
+#    detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
+#    category = 'em'
+#    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
+#               'See http://sourceforge.net/projects/free-cad/')
+#    size = 15724000
+#    logo = 'freecad.png'
+#    def __init__(self):
+#        self.pkgs = 'freecad'
+#    def install(self):
+#        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1hardy1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1hardy1_i386.deb'],
+#5481522, '366835db62f7f2ffb73908ad6e77c82be826fc35')
+#
+#        elif get_arch()==32 and Config.get_Ubuntu_version()=='intrepid':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1intrepid1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1intrepid1_i386.deb'],
+#5138150, '58ec68193200787d3f237016f0c6ba9e36021cbf')
+#            
+#        elif get_arch()==32 and Config.get_Ubuntu_version()=='jaunty':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_i386.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_i386.deb'],
+#5174974, 'f98fb51f95a1630d754480740ee0f192e30a2acf')
+#            
+#        elif get_arch()==64 and Config.get_Ubuntu_version()=='jaunty':
+#            
+#            r=R(
+#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_amd64.deb',
+#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_amd64.deb'],
+#5267100, '681c05fd60b10a8b37661c339eb77debff881305')
+#            
+#        f = r.download()
+#        
+#        depends = DPKG.get_deb_depends(f)
+#        depends.remove('libgl1-mesa')
+#        depends.append('libgl1-mesa-dev')
+#        for depend in depends:
+#            run_as_root('apt-get install -qq %s'%depend)
+#        run_as_root('dpkg -i %s'%f)
+#        APT.cache_changed()
+#    def support(self):
+#        ver = Config.get_Ubuntu_version()
+#        if ver=='jaunty': return True
+#        if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
+#        return False
 
 class QCad(_apt_install):
-    'QCad'
-    detail = _('A CAD software which supports DXF-format. ')
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    detail = ''
     category = 'em'
-    license = 'GPL'
+    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     size = 18056000
     logo = 'qcad.png'
     def __init__(self):

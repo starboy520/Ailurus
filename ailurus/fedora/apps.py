@@ -267,8 +267,8 @@ class QtiPlot(_rpm_install) :
         self.pkgs = 'qtiplot'
 
 class QCad(_rpm_install):
-    'QCad'
-    detail = _('A CAD software which supports DXF-format. ')
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    detail = ''
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     category = 'em'
     logo = 'qcad.png'
