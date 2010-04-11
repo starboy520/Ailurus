@@ -38,13 +38,11 @@ def _load_class(obj, default_category = 'tweak'):
     if type( getattr(obj,'remove',None) ) != types.MethodType: raise BrokenClass, obj
     size_type = type( getattr(obj,'size',1) )
     if size_type != int and size_type != long: raise TypeError, obj
-    if type( getattr(obj,'time',1) ) != int: raise TypeError, obj
     if type( getattr(obj,'category','') ) != str: raise TypeError, obj
     if not hasattr(obj, 'detail'): obj.detail=''
     if type( getattr(obj,'detail','') ) != str: obj.detail = str( getattr(obj,'detail','') ) 
     if obj.__doc__ is None: obj.__doc__ = obj.__name__
     if not hasattr(obj,'size'): obj.size = 0
-    if not hasattr(obj,'time'): obj.time = 0
     if not hasattr(obj,'category'): obj.category = default_category
     return obj
 

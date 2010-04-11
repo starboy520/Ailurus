@@ -34,7 +34,6 @@ class Varkon(_apt_install, _path_lists):
     category = 'em'
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
-    time = 10
     logo = 'varkon.png'
     def __init__(self):
         self.pkgs = 'varkon-user-manual varkon'
@@ -63,7 +62,6 @@ class FreeCAD(_apt_install):
     license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
                'See http://sourceforge.net/projects/free-cad/')
     size = 15724000
-    time = 51
     logo = 'freecad.png'
     def __init__(self):
         self.pkgs = 'freecad'
@@ -242,7 +240,6 @@ class Octave(_apt_install):
     logo = 'octave.png'
     license = 'GNU General Public License (GPL)'
     category = 'math'
-    time = 16
     size = 1736000
     def __init__(self):
         self.pkgs = 'qtoctave'

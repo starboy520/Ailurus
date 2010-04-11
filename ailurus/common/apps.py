@@ -80,7 +80,6 @@ class BRLCAD(_path_lists):
               _('A lot of commands are installed in /usr/brlcad/bin/') )
     category = 'em'
     size = 328851000
-    time = 115
     logo = 'brlcad.png'
     license = ('BRL-CAD is a large system with various portions under different license '
                'but is predominantly distributed as a collective work under the v2.1 LGPL. '
@@ -156,7 +155,6 @@ class Electric(_path_lists):
                _(' This application depends on Java.') )
     category = 'em'
     size = 11102000
-    time = 12
     logo = 'electric.png'
     license = ('GNU General Public License (GPL), '
                'see http://www.staticfreesoft.com/productsFree.html')
@@ -294,7 +292,6 @@ class OpenJUMP(_path_lists):
     license = ('GNU General Public License (GPL)')
     category = 'geography'
     size = 14124835
-    time = 61
     logo = 'openjump.png'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
@@ -429,7 +426,6 @@ class TsingHuaTeXTemplate(_download_one_file):
     detail = _('These templates include undergraduate dissertation template, master thesis template and PhD thesis template. '
        'They are developed by Tsing Hua University, China. Official website is http://thuthesis.sourceforge.net/\n'
        'After installation, a file "thuthesis.tgz" is placed in the folder "%s".')%os.environ['HOME']
-    time = 60 #estimated
     size = 9000000 #estimated
     category = 'latex'
     Chinese = True

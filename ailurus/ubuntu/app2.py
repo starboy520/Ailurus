@@ -52,7 +52,6 @@ class PBC:
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    time = 30
     size = ( 300 + 808 ) * 1000
     logo = 'pbc.png'
     def install(self):

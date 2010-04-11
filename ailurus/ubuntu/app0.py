@@ -65,7 +65,6 @@ class WINE(_apt_install):
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
-    time = 37
     size = 72280 * 1000
     international = True
     logo = 'wine.png'
@@ -90,7 +89,6 @@ class WINE_Chinese(_apt_install):
        'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
        'then Wen-Quan-Yi font is used as default Chinese font.')
     category = 'vm'
-    time = 37
     size = 72280 * 1000
     Chinese = True
     logo = 'wine.png'
