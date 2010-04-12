@@ -1408,6 +1408,7 @@ All images in directory "data/umut_icons" and "data/appicons" are are released
 under the GNU Lesser General Public License. Their copyright are holded by M. Umut Pulat.
 
 In directory "data/other_icons":
+acire.png is copied from Acire project. It is released under the GPL license.
 ailurus.png is released under the GPL license. Its copyright is holded by SU Yun.
 ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
 blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
