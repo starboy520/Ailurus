@@ -661,6 +661,7 @@ class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
     category = 'media'
     license = 'GNU General Public License (GPL)'
+    logo = 'osd-lyrics.png'
     depends = Repo_OSD_Lyrics
     def __init__(self):
         self.pkgs = 'osdlyrics'

@@ -383,6 +383,7 @@ class Repo_WebkitGTK(_repo):
 class Repo_XBMC(_repo):
     __doc__ = _('XBMC (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'xbmc.png'
     def __init__(self):
         self.desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
         self.apt_content = 'xbmc'
@@ -518,6 +519,7 @@ class Repo_Pidgin_Develop(_repo):
 class Repo_Songbird(_repo):
     __doc__ = _('Songbird (beta version)')
     license = 'GNU General Public License (GPL)'
+    logo = 'songbird.png'
     def __init__(self):
         self.desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
         self.apt_content = 'songbird'
@@ -531,6 +533,7 @@ class Repo_Songbird(_repo):
 class Repo_OSD_Lyrics(_repo):
     __doc__ = _('OSD-Lyrics (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'osd-lyrics.png'
     def __init__(self):
         self.desc = _('It displays lyrics. It supports many media players.')
         self.apt_content = 'osd-lyrics'
@@ -559,6 +562,7 @@ class Repo_Mplayer_VOD(_repo):
 class Repo_Acire(_repo):
     __doc__ = _('Acire (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'acire.png'
     def __init__(self):
         self.desc = ''
         self.apt_content = 'acire'
