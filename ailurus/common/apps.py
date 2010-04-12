@@ -817,36 +817,24 @@ class FFYSlow(_ff_extension):
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
 
-class WorldofPadman():
-    __doc__ = _('World of Padman : Comic 3D-Shooter')
-    detail = _('World of Padman (WoP) is an open source first-person shooter computer game available in both English and German. \n'
-                'Install it with the newest patch')
-    license = 'GNU General Public License (GPL) see http://sourceforge.net/projects/wop-engine/'
+class WorldofPadman:
+    __doc__ = _('World of Padman: Funny shooter game')
+    detail = _('Ailurus will install the game, and apply the latest patch.\n'
+               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
+    license = 'GNU General Public License (GPL), see http://sourceforge.net/projects/wop-engine/'
     logo = 'worldofpadman.png'
     category = 'game'
-    
     def install(self):
-        f = R(
-               'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
-               ).download()
-        import os
-        run_as_root('sh /var/cache/ailurus/worldofpadman.run')
-        
-        p = R(
-               'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
-               ).download()
-        run_as_root('sh /var/cache/ailurus/wop_patch_1_2.run')
+        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
+        run_as_root('bash ' + file1)
+        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
+        run_as_root('bash ' + file2)
         
     def installed(self):
         import os
-        if os.path.exists('/usr/local/games/WoP'):
-            return True
-        else:
-            return False
+        return os.path.exists('/usr/local/games/WoP')
         
     def remove(self):
         run_as_root('rm /usr/local/games/WoP -rf')
         run_as_root('rm /usr/local/bin/wop')
     
-    def __init__(self):
-        pass

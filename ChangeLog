@@ -1,3 +1,11 @@
+2010-04-11 MA Yue <velly.empire@gmail.com>
+
+    * Add Acire, a Python code fragment manager.
+    * Fix bug: cannot install bluez-gnome.
+    * Add a new icon for "Ailurus quick start"
+    * Add game "World of Padman".
+    * Fix bug: cannot speed up Firefox
+
 2010-04-11 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: Error happens when there is no sub-items in a big category. 
@@ -11,14 +19,6 @@
     * Add "Hide start quick setup button" menuitem in preferences menu.
     * Add a function returned a button with image
     * Cut down start up time of "clean up pane" to less than 1 second.
-
-2010-04-11 MA Yue <velly.empire@gmail.com>
-
-    * Add Acire, which is a develop tool for Python
-    * Fix the bug 'cannot install bluez-gnome'
-    * Add a new icon for "Ailurus quick start"
-    * Add game 'World of Padman'
-    * Fix the bug 'cannot Speed Up Firefox'
 
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 

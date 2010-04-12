@@ -696,12 +696,11 @@ class PiTiVi(_apt_install):
     def __init__(self):
         self.pkgs = 'pitivi'
 
-class acire(_apt_install):
-    __doc__ = _('Acire: provides a library of Python examples')
-    detail = _("Acire is a simple little tool that provides a library of Python examples called snippets that outline how to do specific taks.\n"
-               "Command: sudo apt-get install acire")
+class Acire(_apt_install):
+    __doc__ = _('Acire: A Python code fragment manager')
+    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
     logo = 'acire.png'
-    license = ('GNU General Public License')
+    license = 'GNU General Public License'
     category = 'dev'
     depends = Repo_Acire
     def __init__(self):
