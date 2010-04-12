@@ -461,6 +461,7 @@ class InstallRemovePane(gtk.VBox):
             import os
             if os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
             elif os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
+            else: path = D+'other_icons/blank.png'
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
