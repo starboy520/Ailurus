@@ -1435,6 +1435,7 @@ tuxpaint.png is copied from Tux Paint project. It is released under the GPL lice
 ubuntu.png is copied from Ubuntu project. Its copyright is holded by Canonical Ltd. Some rights reserved: The rights in the trademarks, logos, service marks of Canonical Ltd, as well as the look and feel of Ubuntu, are subject to the Canonical Trademark Policy at http://www.ubuntu.com/ubuntu/TrademarkPolicy 
 vuze.png is copied from Vuze project. It is released under the GPL license. Its copyright is holded by Vuze Team.
 wallpaper-tray.png is copied from Wallpaper Tray project. It is released under the GPL license. Its copyright is holded by Wallpaper Tray Team.
+worldofpadman.png is copied from World of Padman project. It is realeased under the GPL license.
 xbmc.png is copied from XBMC project. It is released under the GPL license. Its copyright is holded by XBMC Team.
 All rights of other images which are not mensioned above are preserves by their authors.
 
