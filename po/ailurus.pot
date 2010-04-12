@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-11 21:20+0800\n"
+"POT-Creation-Date: 2010-04-11 21:30+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -4478,14 +4478,15 @@ msgid "Command: sudo apt-get install piviti"
 msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:712
-msgid "Acire: a simple tool for Python"
+#: .././ailurus/ubuntu/third_party_repos.py:561
+msgid "Acire: provides a library of Python examples"
 msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:713
 msgid ""
 "Acire is a simple little tool that provides a library of Python examples "
-"called snippets that outline how to do specific taks.Command: sudo apt-get "
-"install acire"
+"called snippets that outline how to do specific taks.\n"
+"Command: sudo apt-get install acire"
 msgstr ""
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
@@ -5541,10 +5542,6 @@ msgstr ""
 msgid ""
 "A movie player for Linux. Supports reading from network, dvd, vcd, file, "
 "pipes, and v4l."
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:561
-msgid "Acire : a simple tool for Python"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:564
