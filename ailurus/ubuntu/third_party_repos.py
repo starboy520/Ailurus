@@ -555,3 +555,19 @@ class Repo_Mplayer_VOD(_repo):
         _repo.__init__(self)
     def support(self):
         return False
+	
+class Repo_Acire(_repo):
+    import lib
+    __doc__ = _('Acire: provides a library of Python examples')
+    license = 'GNU General Public License (GPL)'
+    def __init__(self):
+        self.desc = _('Acire is a simple little tool that provides a library of Python examples called snippets that outline how to do specific taks. ')
+	self.apt_content = 'acire'
+        self.web_page = 'https://launchpad.net/acire'
+	self.apt_file = '/etc/apt/sources.list.d/acire-team-acire-releases-%s.list' % Config.get_Ubuntu_version() 
+	self.apt_conf = [ 'deb http://ppa.launchpad.net/acire-team/acire-releases/ubuntu $version main' ]
+	self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x07559D60D0879214'
+	self.key_id = 'D0879214'
+	_repo.__init__(self)
+    def support(self):
+        return False

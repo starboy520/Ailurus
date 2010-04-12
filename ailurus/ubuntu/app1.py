@@ -347,11 +347,11 @@ class MACChanger(_apt_install):
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
+    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     license = 'GNU General Public License (GPL)'
     logo = 'bluetooth.png'
     category = 'hardware'
     def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
     def get_reason(self, f):
         self._get_reason(f)

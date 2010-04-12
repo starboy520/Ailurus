@@ -14,7 +14,11 @@
 
 2010-04-11 MA Yue <velly.empire@gmail.com>
 
+    * Add Acire, which is a develop tool for Python
+    * Fix the bug 'cannot install bluez-gnome'
     * Add a new icon for "Ailurus quick start"
+    * Add game 'World of Padman'
+    * Fix the bug 'cannot Speed Up Firefox'
 
 2010-04-08 Homer Xing <homer.xing@gmail.com>
 

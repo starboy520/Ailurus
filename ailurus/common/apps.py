@@ -190,6 +190,7 @@ class Speed_Up_Firefox:
                  '/usr/share/applications/firefox-3.5.desktop',
                  '/usr/share/applications/firefox.desktop', 
                  '/usr/share/applications/mozilla-firefox.desktop',
+		 '/usr/share/applications/abrowser.desktop',
                  ]
         for path in paths:
             import os
@@ -815,3 +816,37 @@ class FFYSlow(_ff_extension):
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
+
+class WorldofPadman():
+    __doc__ = _('World of Padman : Comic 3D-Shooter')
+    detail = _('World of Padman (WoP) is an open source first-person shooter computer game available in both English and German. \n'
+                'Install it with the newest patch')
+    license = 'GNU General Public License (GPL) see http://sourceforge.net/projects/wop-engine/'
+    logo = 'worldofpadman.png'
+    category = 'game'
+    
+    def install(self):
+        f = R(
+               'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
+               ).download()
+        import os
+        run_as_root('sh /var/cache/ailurus/worldofpadman.run')
+        
+        p = R(
+               'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
+               ).download()
+        run_as_root('sh /var/cache/ailurus/wop_patch_1_2.run')
+        
+    def installed(self):
+        import os
+        if os.path.exists('/usr/local/games/WoP'):
+            return True
+        else:
+            return False
+        
+    def remove(self):
+        run_as_root('rm /usr/local/games/WoP -rf')
+        run_as_root('rm /usr/local/bin/wop')
+    
+    def __init__(self):
+        pass
