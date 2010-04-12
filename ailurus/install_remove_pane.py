@@ -181,6 +181,7 @@ class InstallRemovePane(gtk.VBox):
             os.dup2(w, sys.stdout.fileno())
             import thread
             thread.start_new_thread(self.terminal.read, (r,) )
+            run_as_root('true') # require authentication first. do not require authentication any more.
             s_i = []; s_r = []; f_i = []; f_r = []
             
             to_install = [ cls for cls in self.classobjs
