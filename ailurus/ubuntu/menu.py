@@ -69,17 +69,5 @@ def __study_linux(main_view):
     
     return __get_menu(study_url_items)
 
-def __preferences(main_view):
-    menu_not_clean_apt_cache=gtk.CheckMenuItem(_("""Don't automatically clean /var/cache/apt/"""))
-    menu_not_clean_apt_cache.set_active( Config.get_disable_clean_apt_cache() )
-    menu_not_clean_apt_cache.connect('toggled',
-            lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
-                              or Config.set_disable_clean_apt_cache(w.get_active()))
-    
-    return [ menu_not_clean_apt_cache ]
-
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
-
-def get_preferences_menu(main_view):
-    return __preferences(main_view)

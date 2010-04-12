@@ -40,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
             # We add all children of this class to 'self.selected_categories'
             self.selected_categories = []
             child = model.iter_children(parent)
-            while True:
+            while child:
                 category = model.get_value(child, 2)
                 self.selected_categories.append(category)
                 child = model.iter_next(child)
@@ -102,21 +102,18 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
     
     def __query_work(self, to_install, to_remove):
-        time = 0
         size = 0
         msg = ''
         if len(to_install):
             msg += _('To be installed:\n')
             for obj in to_install: 
                 msg += '<span color="blue">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size += obj.size
             msg += '\n'
         if len(to_remove):
             msg += _('To be removed:\n')
             for obj in to_remove: 
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
-                time += obj.time
                 size -= obj.size
             msg += '\n' 
         #display size cost
@@ -184,6 +181,7 @@ class InstallRemovePane(gtk.VBox):
             os.dup2(w, sys.stdout.fileno())
             import thread
             thread.start_new_thread(self.terminal.read, (r,) )
+            run_as_root('true') # require authentication first. do not require authentication any more.
             s_i = []; s_r = []; f_i = []; f_r = []
             
             to_install = [ cls for cls in self.classobjs
@@ -381,6 +379,15 @@ class InstallRemovePane(gtk.VBox):
         self.__show_detail(obj)
 
     def __show_detail(self, obj):
+        def begin_color():
+            return '<span color="#870090">'
+        
+        def end_color():
+            return '</span>'
+        
+        def color(string):
+            return '%s%s%s'%( begin_color(), string, end_color() )
+
         if isinstance(obj, str) or isinstance(obj, unicode):
             self.detail.get_buffer().set_text(obj)
         else:
@@ -455,6 +462,7 @@ class InstallRemovePane(gtk.VBox):
             import os
             if os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
             elif os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
+            else: path = D+'other_icons/blank.png'
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
