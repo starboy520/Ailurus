@@ -132,19 +132,19 @@ class FedoraFastestMirrorPane(gtk.VBox):
         candidate_treeview.append_column(column_response_time)
         candidate_treeview.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
         candidate_treeview.set_tooltip_text(_('Click mouse right button to display the context menu.'))
-#        popupmenu = self.__get_popupmenu_for_candidate_repos_treeview(candidate_treeview)
-#        def button_press_event(w, event):
-#            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-#                path = w.get_path_at_pos(int(event.x),int(event.y))
-#                selection = w.get_selection()
-#                if path == None: selection.unselect_all()
-#                elif selection.path_is_selected(path[0])==False: 
-#                    selection.unselect_all()
-#                    selection.select_path(path[0])
-#                popupmenu.popup(None, None, None, event.button, event.time)
-#                return True
-#            return False
-#        candidate_treeview.connect('button_press_event', button_press_event)
+        popupmenu = self.__get_popupmenu_for_candidate_repos_treeview(candidate_treeview)
+        def button_press_event(w, event):
+            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                path = w.get_path_at_pos(int(event.x),int(event.y))
+                selection = w.get_selection()
+                if path == None: selection.unselect_all()
+                elif selection.path_is_selected(path[0])==False: 
+                    selection.unselect_all()
+                    selection.select_path(path[0])
+                popupmenu.popup(None, None, None, event.button, event.time)
+                return True
+            return False
+        candidate_treeview.connect('button_press_event', button_press_event)
         
         candidate_scroll = gtk.ScrolledWindow()
         candidate_scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
@@ -152,6 +152,95 @@ class FedoraFastestMirrorPane(gtk.VBox):
         candidate_scroll.add(candidate_treeview)
 
         return candidate_scroll
+
+    def __get_popupmenu_for_candidate_repos_treeview(self, treeview):
+        detect_speed_of_selected_repos = image_stock_menuitem(gtk.STOCK_FIND,
+            _('Detect response time of selected repositories'))
+        detect_speed_of_selected_repos.connect('activate', self.__callback__detect_selected_repos_speed, treeview)
+
+        detect_speed_of_all_repos = image_stock_menuitem(gtk.STOCK_FIND,
+            _('Detect response time of all repositories'))
+        detect_speed_of_all_repos.connect('activate', self.__callback__detect_all_repos_speed)
+
+        use_selected = image_stock_menuitem(
+            gtk.STOCK_GO_FORWARD, _('Use selected repositories'))
+        use_selected.connect('activate', self.__callback__use_selected_repositories_via_treeview, treeview)
+        
+        select_all = image_stock_menuitem(gtk.STOCK_SELECT_ALL, _('Select all'))
+        select_all.connect('activate', lambda w: treeview.get_selection().select_all())
+        select_all_repos_in_this_county = image_stock_menuitem(gtk.STOCK_SELECT_ALL, 
+            _('Select all repositories in these countries'))
+        select_all_repos_in_this_county.connect('activate', self.__callback__select_all_repos_in_selected_country, treeview)
+        
+        unselect_all = gtk.MenuItem(_('Unselect all'))
+        unselect_all.connect('activate', lambda w: treeview.get_selection().unselect_all())
+        
+        contact_maintainer = image_stock_menuitem(gtk.STOCK_DIALOG_WARNING, 
+            _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
+        contact_maintainer.connect('activate', lambda w: report_bug() )
+        
+        popupmenu = gtk.Menu()
+        popupmenu.append(use_selected)
+        popupmenu.append(detect_speed_of_selected_repos)
+        popupmenu.append(detect_speed_of_all_repos)
+        popupmenu.append(select_all)
+        popupmenu.append(select_all_repos_in_this_county)
+        popupmenu.append(unselect_all)
+        popupmenu.append(contact_maintainer)
+        popupmenu.show_all()
+        return popupmenu
+
+    def __callback__detect_selected_repos_speed(self, w, treeview):
+        selection = treeview.get_selection()
+        model, pathlist = selection.get_selected_rows()
+        if pathlist == None or len(pathlist)==0: # select nothing
+            return
+        
+        urls = []
+        for path in pathlist:
+            iter = model.get_iter(path)
+            url = model.get_value(iter, self.URL)
+            urls.append(url)
+        self.__detect_servers_speed(urls)
+
+    def __callback__detect_all_repos_speed(self, w):
+        urls = []
+        for row in self.candidate_store:
+            urls.append(row[self.URL]) 
+        self.__detect_servers_speed(urls)
+
+    def __callback__use_selected_repositories_via_treeview(self, w, treeview):
+        selection = treeview.get_selection()
+        model, pathlist = selection.get_selected_rows()
+        if pathlist == None or len(pathlist)==0: # select nothing
+            return
+        
+        if len(pathlist) > 1: 
+            notify(_('Please select one repository only'), ' ')
+        else:
+            path = pathlist[0]
+            iter = model.get_iter(path)
+            url = model.get_value(iter, self.URL)
+            self.__use_repository(url)
+
+    def __callback__select_all_repos_in_selected_country(self, w, treeview):
+        selection = treeview.get_selection()
+        model, pathlist = selection.get_selected_rows()
+        if pathlist == None or len(pathlist)==0: # select nothing
+            return
+        
+        countries = set()
+        for path in pathlist:
+            iter = model.get_iter(path)
+            country = model.get_value(iter, self.COUNTRY)
+            countries.add(country)
+        
+        iter = model.get_iter_first()
+        while iter:
+            country = model.get_value(iter, self.COUNTRY)
+            if country in countries:
+                selection.select_path(model.get_path(iter))
+            iter = model.iter_next(iter)
 
     def __get_state_box(self):
         print 'NotImplemented'
