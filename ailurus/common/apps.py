@@ -216,8 +216,8 @@ class Speed_Up_Firefox:
     def remove(self):
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
-class Netbeans:
-    __doc__ = _(u'Netbeans® 6.8')
+class Netbeans(_apt_install):
+    __doc__ = 'Netbeans'
     detail = (
               _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
                ' and frameworks (J2SE, J2ME, etc.). '
@@ -229,61 +229,77 @@ class Netbeans:
                'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
                'and the GNU General Public License (GPL) v2. '
                'See http://netbeans.org/about/legal/license.html')
-    def install(self):
-        # Download Netbeans and install it.
-        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
-                  ],
-                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
-                 ).download()
-        run_as_root("bash %s" %file)
-        # If there is no Netbeans shortcut, then we should create one.
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        if List == []:
-            import gtk
-            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
-                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
-            dialog.set_current_folder('/usr')
-            gtk.gdk.threads_enter()
-            dialog.run()
-            folder = dialog.get_filename()
-            dialog.destroy()
-            gtk.gdk.threads_leave()
-            create_file('/usr/share/applications/netbeans.desktop',
-'''[Desktop Entry]
-Encoding=UTF-8
-Name=NetBeans IDE 6.8
-Exec=/bin/sh "''' + folder + '''/bin/netbeans"
-Icon=''' + folder + '''/nb6.8/netbeans.png
-Categories=Application;Development;Java;IDE
-Version=1.0
-Type=Application
-Terminal=0
-''')
-    def installed(self):
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        return bool(List)
-    def remove(self):
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        File = List[0]
-        with open(File) as f:
-            lines = f.readlines()
-        for line in lines:
-            if line.startswith('Icon='):
-                break
-        else: 
-            raise Exception('Bad format.', File)
-        path = line.split('=', 1)[1].strip()
-        import os
-        path = os.path.dirname(path)
-        path = os.path.dirname(path)
-        uninstaller = path + '/uninstall.sh'
-        run_as_root(uninstaller)
-        run_as_root('rm %s -f'%File)
+    def __init__(self):
+        self.pkgs = 'netbeans'
+    
+#class Netbeans:
+#    __doc__ = _(u'Netbeans® 6.8')
+#    detail = (
+#              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
+#               ' and frameworks (J2SE, J2ME, etc.). '
+#               'Official site: http://netbeans.org/downloads/ .') +
+#              _(' This application depends on Java.') )
+#    category = 'dev'
+#    logo = 'netbeans.png'
+#    license = ('The majority of the NetBeans IDE 6.8 code is available under '
+#               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
+#               'and the GNU General Public License (GPL) v2. '
+#               'See http://netbeans.org/about/legal/license.html')
+#    def install(self):
+#        # Download Netbeans and install it.
+#        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
+#                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
+#                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
+#                  ],
+#                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
+#                 ).download()
+#        run_as_root("bash %s" %file)
+#        # If there is no Netbeans shortcut, then we should create one.
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        if List == []:
+#            import gtk
+#            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
+#                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
+#            dialog.set_current_folder('/usr')
+#            gtk.gdk.threads_enter()
+#            dialog.run()
+#            folder = dialog.get_filename()
+#            dialog.destroy()
+#            gtk.gdk.threads_leave()
+#            create_file('/usr/share/applications/netbeans.desktop',
+#'''[Desktop Entry]
+#Encoding=UTF-8
+#Name=NetBeans IDE 6.8
+#Exec=/bin/sh "''' + folder + '''/bin/netbeans"
+#Icon=''' + folder + '''/nb6.8/netbeans.png
+#Categories=Application;Development;Java;IDE
+#Version=1.0
+#Type=Application
+#Terminal=0
+#''')
+#    def installed(self):
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        return bool(List)
+#    def remove(self):
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        File = List[0]
+#        with open(File) as f:
+#            lines = f.readlines()
+#        for line in lines:
+#            if line.startswith('Icon='):
+#                break
+#        else: 
+#            raise Exception('Bad format.', File)
+#        path = line.split('=', 1)[1].strip()
+#        import os
+#        path = os.path.dirname(path)
+#        path = os.path.dirname(path)
+#        uninstaller = path + '/uninstall.sh'
+#        run_as_root(uninstaller)
+#        run_as_root('rm %s -f'%File)
         
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
@@ -342,6 +358,13 @@ class QueryBeforeRmALotFiles :
         return file_contain ( self.bashrc, self.line )
     def remove(self):
         file_remove ( self.bashrc, self.line )
+
+class TeXLive2007(_apt_install):
+    'TeXLive 2007'
+    category = 'latex'
+    logo = 'texlive.png'
+    def __init__(self):
+        self.pkgs = 'texlive'
 
 class TeXLive2009:
     __doc__ = _('TeXLive 2009')
