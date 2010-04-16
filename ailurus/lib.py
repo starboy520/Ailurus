@@ -228,6 +228,49 @@ class Config:
 
 Config.init()
 
+class ResponseTime:
+    map = {}
+    changed = False
+    @classmethod
+    def load(cls):
+        import os
+        try:
+            path = Config.get_config_dir() + 'response_time_2'
+            if not os.path.exists(path): return
+            with open(path) as f:
+                lines = f.readlines()
+            for i in range(0, len(lines), 2):
+                url = lines[i].strip()
+                time = float(lines[i+1].strip())
+                cls.map[url] = time
+        except IOError:
+            import traceback
+            traceback.print_exc()
+    @classmethod
+    def save(cls):
+        if not cls.changed: return
+        try:
+            path = Config.get_config_dir() + 'response_time_2'
+            with open(path, 'w') as f:
+                for key, value in cls.map.items():
+                    print >>f, key
+                    print >>f, value
+        except IOError:
+            import traceback
+            traceback.print_exc()
+    @classmethod
+    def get(cls, url):
+        is_string_not_empty(url)
+        return cls.map[url]
+    @classmethod
+    def set(cls, url, value):
+        is_string_not_empty(url)
+        assert isinstance(value, (int,float)) and value > 0
+        cls.map[url] = value
+        cls.changed = True
+import atexit
+atexit.register(ResponseTime.save)
+
 class ShowALinuxSkill:
     @classmethod
     def installed(cls):

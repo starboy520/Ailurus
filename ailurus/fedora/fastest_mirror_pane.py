@@ -41,3 +41,13 @@ class FedoraFastestMirrorPane(gtk.VBox):
         self.main_view = main_view
         
         gtk.VBox.__init__(self, False, 5)
+
+if __name__ == '__main__':
+    path = Config.get_config_dir() + 'response_time_2'
+    if not os.path.exists(path):
+        with open(path, 'w') as f:
+            f.write('a\n1\nb\n2\n')
+    ResponseTime.load()
+    print ResponseTime.map
+    ResponseTime.set('b', 3)
+    
