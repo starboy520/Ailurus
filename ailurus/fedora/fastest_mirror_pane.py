@@ -242,9 +242,94 @@ class FedoraFastestMirrorPane(gtk.VBox):
                 selection.select_path(model.get_path(iter))
             iter = model.iter_next(iter)
 
+    def __show_and_return_widgets_in_progress_box(self):
+        progress_label = gtk.Label()
+        progress_bar = gtk.ProgressBar()
+        for child in self.progress_box.get_children():
+            self.progress_box.remove(child)
+        self.progress_box.pack_start(progress_label, False)
+        self.progress_box.pack_start(progress_bar, False)
+        self.progress_box.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return progress_label, progress_bar
+
+    def __show_result_in_progress_box(self, result, total, progress_label, progress_bar):
+        assert isinstance(result, list)
+        assert isinstance(total, int)
+        
+        len_result = len(result)
+        if len_result == 0: return
+        server, value = result[-1]
+
+        #display progress
+        progress = float(len_result) / total
+        progress_bar.set_fraction(progress)
+        progress_bar.set_text('%s / %s' % (len_result, total) )
+        #display text
+        if isinstance(value, float):
+            text = _("<span color='black'>Response time of %(server)s is %(value).2f ms.</span>") % {'server' : server, 'value' : value}
+        elif value == 'cannot ping' or value == 'unreachable':
+            text = _("<span color='black'>Server %s is unreachable.</span>") % server
+        else:
+            raise ValueError(value)
+        progress_label.set_markup(text)
+        while gtk.events_pending(): gtk.main_iteration()
+
+    def __update_candidate_store_with_ping_result(self, result):
+        for i in result:
+            url = i[0]
+            if isinstance(i[1], float):
+                time = int(i[1])
+            else:
+                time = self.NO_PING_RESPONSE
+            ResponseTime.set(url, time)
+        for row in self.candidate_store:
+            url = row[self.URL]
+            if url in ResponseTime.map:
+                row[self.RESPONSE_TIME] = ResponseTime.get(url)
+
+    def __delete_all_widgets_in_progress_box(self):
+        for child in self.progress_box.get_children():
+            self.progress_box.remove(child)
+            child.destroy()
+
+    def __detect_servers_speed(self, urls):
+        assert isinstance(urls, list)
+        
+        import threading
+        result = []
+        total = len(urls)
+        threads = []
+
+        self.main_view.lock()
+        self.set_sensitive(False)
+        progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
+
+        for url in urls:
+            while len([t for t in threads if t.isAlive()])>10:
+                import time
+                time.sleep(0.1)
+            thread = PingThread(url, url, result) # the second argument should be url, not server. It is used in __update_candidate_store_with_ping_result
+            threads.append(thread)
+            thread.start()
+            self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
+        for thread in threads:
+            if not thread.isAlive(): continue
+            thread.join()
+            self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
+        self.__update_candidate_store_with_ping_result(result)
+#        self.__write_config_according_to_candidate_store()
+        self.__callback__refresh_state_box()
+        self.__delete_all_widgets_in_progress_box()
+        self.main_view.unlock()
+        self.set_sensitive(True)
+
     def __get_state_box(self):
         print 'NotImplemented'
         return gtk.VBox()
+
+    def __callback__refresh_state_box(self):
+        print 'NotImplemented'
 
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
