@@ -1004,6 +1004,11 @@ class PingThread(threading.Thread):
         self.url = url
         self.server = server
         self.result = result
+        import time
+        self.start_time = time.time()
+    def elapsed_time(self):
+        import time
+        return time.time() - self.start_time
     def run(self):
         try:
             time = get_response_time(self.url)

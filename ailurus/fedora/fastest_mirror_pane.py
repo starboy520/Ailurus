@@ -316,7 +316,9 @@ class FedoraFastestMirrorPane(gtk.VBox):
                 self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
             for thread in threads:
                 if not thread.isAlive(): continue
-                thread.join()
+                while thread.isAlive() and thread.elapsed_time()<3:
+                    import time
+                    time.sleep(0.1)
                 self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
             self.__update_candidate_store_with_ping_result(result)
     #        self.__write_config_according_to_candidate_store()
