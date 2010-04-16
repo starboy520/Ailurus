@@ -223,6 +223,11 @@ class FedoraFastestMirrorPane(gtk.VBox):
             url = model.get_value(iter, self.URL)
             self.__use_repository(url)
 
+    def __use_repository(self, new_url):
+        repo_objs = FedoraReposFile.all_repo_objects()
+        for obj in repo_objs:
+            obj.change_baseurl(new_url)
+
     def __callback__select_all_repos_in_selected_country(self, w, treeview):
         selection = treeview.get_selection()
         model, pathlist = selection.get_selected_rows()
