@@ -322,13 +322,22 @@ class FedoraReposFile:
                 for section in self.sections:
                     section.write_to_stream(f)
 
-class FedoraRepos:
     @classmethod
-    def all_paths(cls):
+    def all_repo_paths(cls):
         import glob
         return glob.glob('/etc/yum.repos.d/*.repo')
 
+    @classmethod
+    def all_repo_objects(cls):
+        ret = []
+        for path in cls.all_repo_paths():
+            obj = FedoraReposFile(path)
+            ret.append(obj)
+        return ret
+
 if __name__ == '__main__':
+    objs = FedoraReposFile.all_repo_objects()
+
     f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
     assert 3 == len(f.sections)
     assert f.sections[0].is_fedora_repos()
