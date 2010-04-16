@@ -28,7 +28,7 @@ class OpenJDK6:
     'OpenJDK 6'
     detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
-    license = 'Sun License'
+    license = 'GPL'
     logo = 'java.png'
     def install(self):
         APT.install('openjdk-6-jdk')
@@ -53,9 +53,9 @@ class OpenJDK6:
         APT.remove('openjdk-6-jre-lib')
 
         env = ETCEnvironment()
-        env.remove('JAVA_HOME', '/usr/lib/jvm/java-6-sun')
-        env.remove('JAVA_BIN', '/usr/lib/jvm/java-6-sun/bin')
-        env.remove('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
+        env.remove('JAVA_HOME')
+        env.remove('JAVA_BIN')
+        env.remove('CLASSPATH')
         env.save()
 
 class WINE_1(_apt_install):

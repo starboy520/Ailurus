@@ -1283,7 +1283,6 @@ class ETCEnvironment:
             self.values[key] = values+self.values[key]
     def remove(self, key, *values):
         assert key and isinstance(key, str),    key
-        assert values
         for v in values:
             assert v and isinstance(v, str),    v
             assert not ':' in v,     v
@@ -1291,8 +1290,10 @@ class ETCEnvironment:
         if not key in self.keys: return
         if not values: 
             # delete it directly
-            self.keys.remove(key)
-            del self.values[key]
+            try:    self.keys.remove(key)
+            except: pass
+            try:    del self.values[key]
+            except: pass
         else:
             List = self.values[key]
             self.values[key] = [e for e in List if not e in values]
