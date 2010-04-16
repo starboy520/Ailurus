@@ -1,7 +1,6 @@
 MANIFEST
 build/
 dist/
-exported-translation/
 comicview/note
 
 po/ailurus.pot
