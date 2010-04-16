@@ -267,11 +267,11 @@ class FedoraReposSection:
         else:
             raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
 
-    def comment_line(self, index):
+    def comment_line(self, i):
         if not self.lines[i].startswith('#'):
             self.lines[i] = '#' + self.lines[i] 
 
-    def uncomment_line(self, index):
+    def uncomment_line(self, i):
         if self.lines[i].startswith('#'):
             self.lines[i] = self.lines[i][1:] 
 
@@ -314,6 +314,9 @@ if __name__ == '__main__':
     assert f.sections[0].is_fedora_repos()
     assert f.sections[1].is_fedora_repos()
     assert f.sections[2].is_fedora_repos()
-    print f.sections[0].baseurl()
-    print f.sections[1].baseurl()
-    print f.sections[2].baseurl()
+    section = f.sections[0]
+    print section.lines[0]
+    section.comment_line(0)
+    print section.lines[0]
+    section.uncomment_line(0)
+    print section.lines[0]
