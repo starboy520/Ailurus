@@ -190,7 +190,7 @@ class Speed_Up_Firefox:
                  '/usr/share/applications/firefox-3.5.desktop',
                  '/usr/share/applications/firefox.desktop', 
                  '/usr/share/applications/mozilla-firefox.desktop',
-		 '/usr/share/applications/abrowser.desktop',
+                 '/usr/share/applications/abrowser.desktop',
                  ]
         for path in paths:
             import os
