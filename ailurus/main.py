@@ -129,6 +129,7 @@ def exception_happened(etype, value, tb):
     print >>msg, _('Traceback:')
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
+    print >>msg, 'Ailurus version:', AILURUS_VERSION
 
     title_box = gtk.HBox(False, 5)
     import os

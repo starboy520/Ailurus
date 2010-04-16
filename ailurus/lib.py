@@ -336,6 +336,7 @@ class CommandFailError(Exception):
             with open('/etc/fedora-release') as f:
                 new_args.append(f.read().strip())
         except: pass
+        new_args.append(AILURUS_VERSION)
         Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):

@@ -4,6 +4,7 @@
     * Fix bug: If netbeans 6.5 is installed, then "Netbeans 6.8" item is displayed as installed. (issue 47)
     * Fix bug: If TeXLive 2007 is installed, then "TeXLive" item is not displayed as installed. (issue 47)
     * Fix issue: firefox.nopango.desktop should be put in /usr/local (issue 221)
+    * Shows version when report errors. 
 
 2010-04-16 HUANG Wei <wei.kukey@gmail.com>
 
