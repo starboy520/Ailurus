@@ -46,6 +46,15 @@ class FedoraFastestMirrorPane(gtk.VBox):
              self.search_content.search(org) or
              self.search_content.search(url) )
 
+    def __fill_candidate_store(self):
+        for item in all_candidate_repositories():
+            try:
+                time = ResponseTime.get(item[self.URL])
+            except KeyError:
+                time = self.NO_PING_RESPONSE
+            item.append(time)
+            self.candidate_store.append(item)
+
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
         assert hasattr(main_view, 'unlock')
@@ -56,6 +65,9 @@ class FedoraFastestMirrorPane(gtk.VBox):
         self.filted_store = self.candidate_store.filter_new()
         self.search_content = None
         self.filted_store.set_visible_func(self.__repository_visibility_function)
+        self.sorted_store = gtk.TreeModelSort(self.filted_store)
+        self.sorted_store.set_sort_column_id(self.COUNTRY, gtk.SORT_ASCENDING)
+        self.__fill_candidate_store()
 
 if __name__ == '__main__':
     path = Config.get_config_dir() + 'response_time_2'
