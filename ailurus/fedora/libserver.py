@@ -251,7 +251,7 @@ class RepoConf:
 class FedoraReposSection:
     def __init__(self, lines):
         for line in lines: assert isinstance(line, str) and line.endswith('\n')
-        assert lines[0].startswith('[')
+        assert lines[0].startswith('['), lines
         
         self.lines = lines
 
@@ -299,6 +299,8 @@ class FedoraReposFile:
         self.sections = []
         with open(path) as f:
             contents = f.readlines()
+        while contents[0].startswith('#') or contents[0].strip() == '': # skip comments and blank lines at the beginning
+            del contents[0]
         lines = []
         for line in contents:
             if line.startswith('[') and lines:
