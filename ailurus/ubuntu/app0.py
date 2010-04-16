@@ -58,30 +58,30 @@ class OpenJDK6:
         env.remove('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
         env.save()
 
-class WINE(_apt_install):
-    __doc__ = _('WINE')
+class WINE_1(_apt_install):
+    'WINE 1.0'
     detail = _('This is an indispensable application for running Windows applications on Linux.\n'
        'Command: sudo apt-get install wine wine-gecko')
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
-    size = 72280 * 1000
     logo = 'wine.png'
     def __init__(self):
         self.pkgs = 'wine wine-gecko'
-    def install(self):
-        _apt_install.install(self)
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            run("wineprefixcreate") #Do not use 'winecfg' !
-    def installed(self):
-        if not _apt_install.installed(self):
-            return False
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            return False
-        return True
 
+class WINE_2(_apt_install):
+    'WINE 1.2'
+    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
+       'Command: sudo apt-get install wine1.2 wine1.2-gecko')
+    license = ('GNU Lesser General Public License, '
+               'see http://wiki.winehq.org/Licensing')
+    category = 'vm'
+    logo = 'wine.png'
+    def __init__(self):
+        self.pkgs = 'wine1.2 wine1.2-gecko'
+    def support(self):
+        return APT.exist('wine1.2') and APT.exist('wine1.2-gecko')
+    
 # In Ubuntu Karmic, there is no need to configure WINE font substitution.
 # The solution is to designate a right font.
 #

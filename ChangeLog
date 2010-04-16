@@ -5,6 +5,7 @@
     * Fix bug: If TeXLive 2007 is installed, then "TeXLive" item is not displayed as installed. (issue 47)
     * Fix issue: firefox.nopango.desktop should be put in /usr/local (issue 221)
     * Shows version when report errors. 
+    * Split WINE into "WINE 1.0" & "WINE 1.2".
 
 2010-04-16 HUANG Wei <wei.kukey@gmail.com>
 
