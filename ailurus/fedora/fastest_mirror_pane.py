@@ -334,8 +334,16 @@ class FedoraFastestMirrorPane(gtk.VBox):
             self.set_sensitive(True)
 
     def __get_state_box(self):
-        print 'NotImplemented'
-        return gtk.VBox()
+        self.label_state = label_state = gtk.Label()
+        label_state.set_alignment(0, 0)
+        label_state.set_ellipsize(pango.ELLIPSIZE_END)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_border_width(5)
+        scroll.add_with_viewport(label_state)
+        scroll.get_child().set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        self.__callback__refresh_state_box()
+        return scroll
 
     def __callback__refresh_state_box(self):
         print 'NotImplemented'
