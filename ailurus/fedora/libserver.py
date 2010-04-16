@@ -241,3 +241,56 @@ class RepoConf:
     def __init__(self):
         self.name = None
         self.file_path = None
+
+
+class FedoraReposSection:
+    def __init__(self, lines):
+        for line in lines: assert isinstance(line, str)
+        assert lines[0].startswith('[')
+        
+        self.lines = lines
+
+    def is_fedora_repos(self):
+        for line in self.lines:
+            if line.startswith('gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch'):
+                return True
+        return False
+
+    def baseurl(self):
+        for line in self.lines:
+            if line.startswith('baseurl='):
+                return line.strip()
+        return None
+
+class FedoraReposFile:
+    def __init__(self, path):
+        assert isinstance(path, str) and path.endswith('.repo')
+
+        self.sections = []
+        with open(path) as f:
+            contents = f.readlines()
+        lines = []
+        for line in contents:
+            if line.startswith('[') and lines:
+                section = FedoraReposSection(lines)
+                self.sections.append(section)
+                lines = []
+            lines.append(line)
+        section = FedoraReposSection(lines)
+        self.sections.append(section)
+
+class FedoraRepos:
+    @classmethod
+    def all_paths(cls):
+        import glob
+        return glob.glob('/etc/yum.repos.d/*.repo')
+
+if __name__ == '__main__':
+    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
+    assert 3 == len(f.sections)
+    assert f.sections[0].is_fedora_repos()
+    assert f.sections[1].is_fedora_repos()
+    assert f.sections[2].is_fedora_repos()
+    print f.sections[0].baseurl()
+    print f.sections[1].baseurl()
+    print f.sections[2].baseurl()
