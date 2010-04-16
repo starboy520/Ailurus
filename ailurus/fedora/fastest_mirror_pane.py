@@ -55,6 +55,25 @@ class FedoraFastestMirrorPane(gtk.VBox):
             item.append(time)
             self.candidate_store.append(item)
 
+    def __get_candidate_repositories_box(self):
+#        label = gtk.Label(_('All repositories:'))
+#        label.set_alignment(0, 0)
+#        from support.searchbox import SearchBox
+#        searchbox = SearchBox(self.__callback__search_content_changed)
+#        treeview = self.__get_candidate_repositories_treeview()
+#        box = gtk.VBox(False, 5)
+#        box.set_border_width(5)
+#        box.pack_start(label, False)
+#        box.pack_start(searchbox, False)
+#        box.pack_start(treeview)
+#        return box
+        print 'NotImplemented'
+        return gtk.VBox()
+
+    def __get_state_box(self):
+        print 'NotImplemented'
+        return gtk.VBox()
+
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
         assert hasattr(main_view, 'unlock')
@@ -68,6 +87,15 @@ class FedoraFastestMirrorPane(gtk.VBox):
         self.sorted_store = gtk.TreeModelSort(self.filted_store)
         self.sorted_store.set_sort_column_id(self.COUNTRY, gtk.SORT_ASCENDING)
         self.__fill_candidate_store()
+
+        self.progress_box = gtk.VBox(False, 5)
+        box2 = gtk.VBox(False, 5)
+        box2.pack_start(self.__get_candidate_repositories_box())
+        box2.pack_start(self.progress_box, False)
+        vpaned = gtk.VPaned()
+        vpaned.pack1(self.__get_state_box(), False, True)
+        vpaned.pack2(box2, True, True)
+        self.pack_start(vpaned)
 
 if __name__ == '__main__':
     path = Config.get_config_dir() + 'response_time_2'
