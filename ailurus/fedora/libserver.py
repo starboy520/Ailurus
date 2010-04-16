@@ -257,7 +257,7 @@ class FedoraReposSection:
 
     def is_fedora_repos(self):
         for line in self.lines:
-            if line.startswith('gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch'):
+            if line.startswith('gpgkey=') and 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch' in line:
                 return True
         return False
 
@@ -338,6 +338,9 @@ class FedoraReposFile:
         return ret
 
 if __name__ == '__main__':
+    f = FedoraReposFile('/etc/yum.repos.d/fedora-rawhide.repo')
+    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
+    
     objs = FedoraReposFile.all_repo_objects()
 
     f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
