@@ -301,28 +301,30 @@ class FedoraFastestMirrorPane(gtk.VBox):
         total = len(urls)
         threads = []
 
-        self.main_view.lock()
-        self.set_sensitive(False)
-        progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
-
-        for url in urls:
-            while len([t for t in threads if t.isAlive()])>10:
-                import time
-                time.sleep(0.1)
-            thread = PingThread(url, url, result) # the second argument should be url, not server. It is used in __update_candidate_store_with_ping_result
-            threads.append(thread)
-            thread.start()
-            self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
-        for thread in threads:
-            if not thread.isAlive(): continue
-            thread.join()
-            self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
-        self.__update_candidate_store_with_ping_result(result)
-#        self.__write_config_according_to_candidate_store()
-        self.__callback__refresh_state_box()
-        self.__delete_all_widgets_in_progress_box()
-        self.main_view.unlock()
-        self.set_sensitive(True)
+        try:
+            self.main_view.lock()
+            self.set_sensitive(False)
+            progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
+    
+            for url in urls:
+                while len([t for t in threads if t.isAlive()])>10:
+                    import time
+                    time.sleep(0.1)
+                thread = PingThread(url, url, result) # the second argument should be url, not server. It is used in __update_candidate_store_with_ping_result
+                threads.append(thread)
+                thread.start()
+                self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
+            for thread in threads:
+                if not thread.isAlive(): continue
+                thread.join()
+                self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
+            self.__update_candidate_store_with_ping_result(result)
+    #        self.__write_config_according_to_candidate_store()
+            self.__callback__refresh_state_box()
+            self.__delete_all_widgets_in_progress_box()
+        finally:
+            self.main_view.unlock()
+            self.set_sensitive(True)
 
     def __get_state_box(self):
         print 'NotImplemented'
