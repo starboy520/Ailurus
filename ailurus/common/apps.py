@@ -207,13 +207,15 @@ class Speed_Up_Firefox:
                 content[i] = new
             if line.startswith('Name='):
                 content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        with TempOwn('/usr/share/applications/firefox.nopango.desktop') as o:
-            with open('/usr/share/applications/firefox.nopango.desktop', 'w') as f:
+        with TempOwn('/usr/local/share/applications/firefox.nopango.desktop') as o:
+            with open('/usr/local/share/applications/firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
     def installed(self):
         import os 
-        return os.path.exists('/usr/share/applications/firefox.nopango.desktop')
+        return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
+                 os.path.exists('/usr/share/applications/firefox.nopango.desktop') )
     def remove(self):
+        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
 class Netbeans(_apt_install):
