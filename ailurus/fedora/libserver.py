@@ -265,7 +265,7 @@ class FedoraReposSection:
             if pos != -1:
                 return line[pos:]
         else:
-            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
+            raise ValueError('No /releases/, /development/ or /updates/ found.', self.lines)
 
     def comment_line(self, i):
         if not self.lines[i].startswith('#'):
@@ -320,3 +320,7 @@ if __name__ == '__main__':
     print section.lines[0]
     section.uncomment_line(0)
     print section.lines[0]
+    
+    print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/$releasever/$basearch/')
+    print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
+    
