@@ -212,10 +212,13 @@ def __set1():
     
 def __set2():
     return [
-['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux/'],
+['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux'],
 ]
     
 def all_candidate_repositories():
+    for e in __set1() + __set2():
+        assert not e[2].endswith('/')
+        
     return __set1() + __set2()
 
 class RepoConf:
@@ -245,7 +248,7 @@ class RepoConf:
 
 class FedoraReposSection:
     def __init__(self, lines):
-        for line in lines: assert isinstance(line, str)
+        for line in lines: assert isinstance(line, str) and line.endswith('\n')
         assert lines[0].startswith('[')
         
         self.lines = lines
@@ -256,11 +259,31 @@ class FedoraReposSection:
                 return True
         return False
 
-    def baseurl(self):
-        for line in self.lines:
+    def part2_of(self, line):
+        for word in ['/releases/', '/development/', '/updates/']:
+            pos = line.find(word)
+            if pos != -1:
+                return line[pos:]
+        else:
+            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
+
+    def comment_line(self, index):
+        if not self.lines[i].startswith('#'):
+            self.lines[i] = '#' + self.lines[i] 
+
+    def uncomment_line(self, index):
+        if self.lines[i].startswith('#'):
+            self.lines[i] = self.lines[i][1:] 
+
+    def change_baseurl(self, new_url):
+        for i, line in enumerate(self.lines):
+            if 'mirrorlist=' in line:
+                self.comment_line(i)
+            elif 'baseurl=' in line:
+                self.uncomment_line(i)
+        for i, line in enumerate(self.lines):
             if line.startswith('baseurl='):
-                return line.strip()
-        return None
+                self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
 
 class FedoraReposFile:
     def __init__(self, path):
