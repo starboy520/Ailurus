@@ -383,6 +383,7 @@ class Repo_WebkitGTK(_repo):
 class Repo_XBMC(_repo):
     __doc__ = _('XBMC (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'xbmc.png'
     def __init__(self):
         self.desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
         self.apt_content = 'xbmc'
@@ -518,6 +519,7 @@ class Repo_Pidgin_Develop(_repo):
 class Repo_Songbird(_repo):
     __doc__ = _('Songbird (beta version)')
     license = 'GNU General Public License (GPL)'
+    logo = 'songbird.png'
     def __init__(self):
         self.desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
         self.apt_content = 'songbird'
@@ -526,6 +528,20 @@ class Repo_Songbird(_repo):
         self.apt_conf = ['deb http://ppa.launchpad.net/songbird-daily/ppa/ubuntu $version main']
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x31E0163DFE442D34A17B17BDD725E4885719E347'
         self.key_id = '5719E347'
+        _repo.__init__(self)
+
+class Repo_OSD_Lyrics(_repo):
+    __doc__ = _('OSD-Lyrics (stable)')
+    license = 'GNU General Public License (GPL)'
+    logo = 'osd-lyrics.png'
+    def __init__(self):
+        self.desc = _('It displays lyrics. It supports many media players.')
+        self.apt_content = 'osd-lyrics'
+        self.web_page = 'https://launchpad.net/~osd-lyrics/+archive/ppa'
+        self.apt_file = '/etc/apt/sources.list.d/osd_lyrics.list'
+        self.apt_conf = ['deb http://ppa.launchpad.net/osd-lyrics/ppa/ubuntu $version main']
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?get&search=0xA1CE4D88AB90650AD1C2EB2C97F6E5D34865CF4F'
+        self.key_id = '4865CF4F'
         _repo.__init__(self)
 
 class Repo_Mplayer_VOD(_repo):
@@ -542,3 +558,17 @@ class Repo_Mplayer_VOD(_repo):
         _repo.__init__(self)
     def support(self):
         return False
+	
+class Repo_Acire(_repo):
+    __doc__ = _('Acire (stable)')
+    license = 'GNU General Public License (GPL)'
+    logo = 'acire.png'
+    def __init__(self):
+        self.desc = ''
+        self.apt_content = 'acire'
+        self.web_page = 'https://launchpad.net/acire'
+        self.apt_file = '/etc/apt/sources.list.d/acire.list' 
+        self.apt_conf = [ 'deb http://ppa.launchpad.net/acire-team/acire-releases/ubuntu $version main' ]
+        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x07559D60D0879214'
+        self.key_id = 'D0879214'
+        _repo.__init__(self)

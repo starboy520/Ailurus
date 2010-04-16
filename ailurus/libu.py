@@ -95,6 +95,20 @@ def image_stock_button(stock, label):
     button.add(box)
     return button
 
+def image_file_button(label, image_file_name, size):
+    import gtk
+    pixbuf = get_pixbuf(image_file_name, size, size)
+    image = gtk.Image()
+    image.set_from_pixbuf(pixbuf)
+    box = gtk.HBox(False, 3)
+    box.pack_start(image, False, False)
+    l = gtk.Label()
+    l.set_text_with_mnemonic(label)
+    box.pack_start(l, False, False)
+    button = gtk.Button()
+    button.add(box)
+    return button
+
 def image_icon_button(icon_name, label):
     import gtk
     box = gtk.HBox(False, 3)
@@ -172,15 +186,6 @@ def image_left_align(path):
     image.set_from_file(path)
     return image
 
-def begin_color():
-    return '<span color="#870090">'
-
-def end_color():
-    return '</span>'
-
-def color(string):
-    return '%s%s%s'%( begin_color(), string, end_color() )
-
 def add_expander(vbox, title):
     def __title(text):
         label = gtk.Label()
@@ -195,21 +200,3 @@ def add_expander(vbox, title):
     expander.add(vbox)
     expander.set_expanded(False)
     return expander
-
-def url_button(url):
-    import gtk
-    from lib import open_web_page
-    def func(w, url): open_web_page(url)
-    def enter(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
-    def leave(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
-    label = gtk.Label()
-    label.set_markup("<span color='blue'><u>%s</u></span>"%url)
-    button = gtk.Button()
-    button.connect('clicked', func, url)
-    button.connect('enter-notify-event', enter)
-    button.connect('leave-notify-event', leave)
-    button.set_relief(gtk.RELIEF_NONE)
-    button.add(label)
-    align = gtk.Alignment(0, 0.5)
-    align.add(button)
-    return align

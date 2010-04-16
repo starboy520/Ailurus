@@ -96,7 +96,7 @@ elif Config.is_Ubuntu():
 
 def make_sure_installed():
     if Config.is_Ubuntu():
-        if not APT.installed('eclipse-plateform'): APT.install('eclipse-platform')
+        if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
     else:
         if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
 

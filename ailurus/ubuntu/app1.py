@@ -24,49 +24,6 @@ import sys, os
 from lib import *
 from libapp import *
 
-class GEdit_Suitable_For_Programmer(_set_gconf, _apt_install) :
-    __doc__ = _('Make GEdit more suitable for programmers')
-    detail = _('Change GEdit settings as follows. '
-       'Automatically indent current line. '
-       'Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. '
-       'Indent/unindent codes by Ctrl+T and Shift+Ctrl+T. '
-       'Add spell check function in "Tools" menu. '
-       'Do not automatically create a hidden copy of current file. '
-       'Automatically save files once in each minute. '
-       'Show line numbers. \n'
-       'The trick behind is to change GConf values.\n'
-       '/apps/gedit-2/preferences/editor/save/auto_save = true\n'
-       '/apps/gedit-2/preferences/editor/save/auto_save_interval = 1\n'
-       '/apps/gedit-2/preferences/editor/save/create_backup_copy = false\n'
-       '/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers = true\n'
-       '/apps/gedit-2/preferences/editor/auto_indent/auto_indent = true\n'
-       '/apps/gedit-2/plugins/active-plugins += ["indent","codecomment","spell"]\n'
-       'Then run this command: sudo apt-get install gedit-plugins')
-    size = 1828 * 1000
-    time = 4
-    logo = 'gedit.png'
-    category = 'dev'
-    def __init__(self):
-        self.set = (
-('/apps/gedit-2/preferences/editor/save/auto_save',True,False),
-('/apps/gedit-2/preferences/editor/save/auto_save_interval',1,10),
-('/apps/gedit-2/preferences/editor/save/create_backup_copy',False,True),
-('/apps/gedit-2/preferences/editor/line_numbers/display_line_numbers',True,False),
-('/apps/gedit-2/preferences/editor/auto_indent/auto_indent',True,False),
-                    )
-        self.add = (
-('/apps/gedit-2/plugins/active-plugins', ['indent','codecomment','spell'] ),
-                    )
-        self.pkgs = 'gedit-plugins'
-    def install(self):
-        _set_gconf.install(self)
-        _apt_install.install(self)
-    def installed(self):
-        return _set_gconf.installed(self) and _apt_install.installed(self)
-    def remove(self):
-        _set_gconf.remove(self)
-        _apt_install.remove(self)
-
 class Full_Language_Pack(_apt_install):
     __doc__ = _('Full language support and input method')
     detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
@@ -108,7 +65,6 @@ class Full_Language_Pack(_apt_install):
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
 #    size = 172 * 1000
-#    time = 3
 #    logo = 'scim.png'
 #    def __init__(self):
 #        self.pkgs='scim-bridge-client-qt'
@@ -136,12 +92,11 @@ class Typespeed(_apt_install) :
         self.pkgs = "typespeed"
 
 class Evince_Read_Chinese_PDF(_apt_install) :
-    __doc__ = _('Make Evince be able to reveal Chinese pdf')
+    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     detail = _('Command: sudo apt-get install poppler-data')
     category='office'
     Chinese = True
     size = 12276 * 1000
-    time = 3
     logo = 'evince.png'
     def __init__(self):
         self.pkgs = 'poppler-data'
@@ -153,7 +108,6 @@ class CHMSee_Read_CHM_Documents(_apt_install) :
                'see http://code.google.com/p/chmsee/')
     category = 'office'
     size = 590 * 1000
-    time = 6
     logo = 'chmsee.png'
     def __init__(self):
         self.pkgs = 'chmsee'
@@ -165,7 +119,6 @@ class Workrave_And_Auto_Start_It(_apt_install) :
     license = ('GNU General Public License (GPL)'
                 'see http://sourceforge.net/projects/workrave/')
     size = 1012 * 1000
-    time = 5
     logo = 'workrave.png'
     def __init__(self):
         self.pkgs = 'workrave'
@@ -206,7 +159,7 @@ X-GNOME-Autostart-enabled=true
             os.remove(self.file)
 
 class VIM_and_VIMRC(_apt_install) :
-    __doc__ = _('VIM')
+    __doc__ = _('Make VIM more suitable for programming')
     detail = _('Install VIM and make it more suitable for programming. '
        'The installation process is as follows. '
        '"sudo apt-get install vim" command is executed. '
@@ -215,7 +168,6 @@ class VIM_and_VIMRC(_apt_install) :
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     size = 1892 * 1000
-    time = 4
     logo = 'vim.png'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
@@ -264,7 +216,6 @@ class Multimedia_Codecs (_apt_install) :
     category = 'media'
     license = 'GNU Lesser General Public License'
     size = 6868 * 1000
-    time = 28
     logo = 'codec.png'
     def __init__(self):
         self.pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
@@ -279,7 +230,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
     __file = '/etc/apparmor.d/usr.sbin.cupsd'
     size = 256 * 1000
-    time = 4
     category = 'office'
     license = 'GNU Lesser General Public License'
     logo = 'cups.png'
@@ -305,7 +255,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
-    detail = _('Command: sudo apt-get install cpus-pdf')
+    detail = _('Command: sudo apt-get install cups-pdf')
     license = 'GNU Lesser General Public License'
     category = 'office'
     logo = 'cups.png'
@@ -369,20 +319,18 @@ class Liferea(_apt_install):
        'Command: sudo apt-get install liferea')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
-    time = 7
     size = 3792 * 1000
     logo = 'liferea.png'
     def __init__(self):
         self.pkgs = 'liferea'
 
 class FireWall(_apt_install):
-    __doc__ = _('Firestarter')
+    __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
        'Firestarter is the graphical frontend of "iptables".\n'
        'Command: sudo apt-get install firestarter')
     license = 'GNU General Public License (GPL)'
     category = 'internet'
-    time = 9
     size = 1980 * 1000
     logo = 'firestarter.png'
     def __init__(self):
@@ -399,9 +347,11 @@ class MACChanger(_apt_install):
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
+    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     license = 'GNU General Public License (GPL)'
     logo = 'bluetooth.png'
     category = 'hardware'
     def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-gnome bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+    def get_reason(self, f):
+        self._get_reason(f)

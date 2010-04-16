@@ -267,7 +267,25 @@ class MainView:
         self.stop_delete_event = False
         self.toolbar.set_sensitive(True)
 
+    def query_whether_exit(self):
+        dialog = gtk.MessageDialog(self.window, 
+                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_OK_CANCEL, 
+                _('Are you sure to exit?'))
+        check_button = gtk.CheckButton(_('Do not query me any more.'))
+        dialog.vbox.pack_start(check_button)
+        dialog.vbox.show_all()
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_OK:
+            Config.set_query_before_exit(not check_button.get_active())
+            return True
+        else:
+            return False
+
     def terminate_program(self, *w):
+        if Config.get_query_before_exit() and not self.query_whether_exit():
+            return True
+        
         if self.stop_delete_event:
             return True
         
@@ -336,13 +354,12 @@ parser.add_option('--system-setting', action='store_true', dest='system_setting'
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
 parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
 parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
-if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
-    parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
+parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
-     and not getattr(options, 'recovery', False) 
-     and not getattr(options, 'clean_up', False) 
-     and not getattr(options, 'fastest_repository', False)
+     and not options.recovery
+     and not options.clean_up
+     and not options.fastest_repository
      and not options.information
      and not options.install_software
      and not options.system_setting ):
@@ -386,6 +403,11 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__') == 'fedora':
+    if options.fastest_repository or options.all:
+        from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
+        pane = FedoraFastestMirrorPane(main_view)
+        main_view.register(pane)
+
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
         pane = FedoraRPMRecoveryPane(main_view)

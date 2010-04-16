@@ -72,51 +72,50 @@ Icon=/opt/bioclipse/icon.xpm
         finally:
             FileServer.chdir_back()
 
-class BRLCAD(_path_lists):
-    __doc__ = _('BRL-CAD: Military solid modeling software')
-    detail = (
-              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
-              _('Developed by Ballistic Research Laboratory. ') +
-              _('A lot of commands are installed in /usr/brlcad/bin/') )
-    category = 'em'
-    size = 328851000
-    time = 115
-    logo = 'brlcad.png'
-    license = ('BRL-CAD is a large system with various portions under different license '
-               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
-               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
-               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
-    def __init__(self):
-        self.shortcut = '/usr/share/applications/brlcad.desktop'
-        self.file = '/usr/brlcad/'
-        self.paths = [self.shortcut, self.file]
-    def install(self):
-        if get_arch()==32:
-            f = R(
-['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
-'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
-65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
-        else:
-            f = R(
-['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
-'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
-88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
-
-        FileServer.chdir_local()
-        try:
-            run('tar jxf %s'%f)
-            run_as_root('rm /usr/brlcad/ -rf')
-            run_as_root('mv usr/brlcad/ /usr/')
-            create_file(self.shortcut, '''[Desktop Entry]
-Name=BRL-CAD
-Exec=/usr/brlcad/bin/mged
-Encoding=UTF-8
-StartupNotify=true
-Terminal=true
-Type=Application
-Categories=Science;Engineering;''')
-        finally:
-            FileServer.chdir_back()
+#class BRLCAD(_path_lists):
+#    __doc__ = _('BRL-CAD: Military solid modeling software')
+#    detail = (
+#              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
+#              _('Developed by Ballistic Research Laboratory. ') +
+#              _('A lot of commands are installed in /usr/brlcad/bin/') )
+#    category = 'em'
+#    size = 328851000
+#    logo = 'brlcad.png'
+#    license = ('BRL-CAD is a large system with various portions under different license '
+#               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
+#               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
+#               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
+#    def __init__(self):
+#        self.shortcut = '/usr/share/applications/brlcad.desktop'
+#        self.file = '/usr/brlcad/'
+#        self.paths = [self.shortcut, self.file]
+#    def install(self):
+#        if get_arch()==32:
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
+#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
+#65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
+#        else:
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
+#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
+#88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
+#
+#        FileServer.chdir_local()
+#        try:
+#            run('tar jxf %s'%f)
+#            run_as_root('rm /usr/brlcad/ -rf')
+#            run_as_root('mv usr/brlcad/ /usr/')
+#            create_file(self.shortcut, '''[Desktop Entry]
+#Name=BRL-CAD
+#Exec=/usr/brlcad/bin/mged
+#Encoding=UTF-8
+#StartupNotify=true
+#Terminal=true
+#Type=Application
+#Categories=Science;Engineering;''')
+#        finally:
+#            FileServer.chdir_back()
 
 class CreateDesktopFolder:
     __doc__ = _('Create a directory "Desktop" in your home folder')
@@ -156,7 +155,6 @@ class Electric(_path_lists):
                _(' This application depends on Java.') )
     category = 'em'
     size = 11102000
-    time = 12
     logo = 'electric.png'
     license = ('GNU General Public License (GPL), '
                'see http://www.staticfreesoft.com/productsFree.html')
@@ -192,6 +190,7 @@ class Speed_Up_Firefox:
                  '/usr/share/applications/firefox-3.5.desktop',
                  '/usr/share/applications/firefox.desktop', 
                  '/usr/share/applications/mozilla-firefox.desktop',
+		 '/usr/share/applications/abrowser.desktop',
                  ]
         for path in paths:
             import os
@@ -294,7 +293,6 @@ class OpenJUMP(_path_lists):
     license = ('GNU General Public License (GPL)')
     category = 'geography'
     size = 14124835
-    time = 61
     logo = 'openjump.png'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
@@ -429,7 +427,6 @@ class TsingHuaTeXTemplate(_download_one_file):
     detail = _('These templates include undergraduate dissertation template, master thesis template and PhD thesis template. '
        'They are developed by Tsing Hua University, China. Official website is http://thuthesis.sourceforge.net/\n'
        'After installation, a file "thuthesis.tgz" is placed in the folder "%s".')%os.environ['HOME']
-    time = 60 #estimated
     size = 9000000 #estimated
     category = 'latex'
     Chinese = True
@@ -459,13 +456,13 @@ class FFAdblock(_ff_extension):
         _ff_extension.__init__(self)
 
 class FFAutoProxy(_ff_extension):
-    'AutoProxy'
+    __doc__ = _('AutoProxy: Proxy management via a third party list')
     logo = 'ff_autoproxy.png'
     Chinese = True
     size = 500862
     license = 'Mozilla Public License 1.1'
     def __init__(self):
-        self.desc = _('Proxy management depending on a third party list.')
+        self.desc = ''
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
@@ -520,12 +517,12 @@ class FFCleanHide(_ff_extension):
         _ff_extension.__init__(self)
 
 class FFDownloadStatusBar(_ff_extension): 
-    'DownloadStatusBar'
+    __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
     logo = 'ff_dlstatusbar.png'
     size = 1443763
     license = 'Mozilla Public License, v1.1'
     def __init__(self):
-        self.desc = _('Keep track of ongoing and completed downloads in a tiny statusbar.')
+        self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
@@ -819,3 +816,25 @@ class FFYSlow(_ff_extension):
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
+
+class WorldofPadman:
+    __doc__ = _('World of Padman: Funny shooter game')
+    detail = _('Ailurus will install the game, and apply the latest patch.\n'
+               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
+    license = 'GNU General Public License (GPL), see http://sourceforge.net/projects/wop-engine/'
+    logo = 'worldofpadman.png'
+    category = 'game'
+    def install(self):
+        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
+        run_as_root('bash ' + file1)
+        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
+        run_as_root('bash ' + file2)
+        
+    def installed(self):
+        import os
+        return os.path.exists('/usr/local/games/WoP')
+        
+    def remove(self):
+        run_as_root('rm /usr/local/games/WoP -rf')
+        run_as_root('rm /usr/local/bin/wop')
+    

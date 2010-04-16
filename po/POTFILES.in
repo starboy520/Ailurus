@@ -1,3 +1,4 @@
+ailurus_quick_start.directory.in
 ailurus-clean-up.desktop.in
 ailurus.desktop.in
 ailurus-fastest-repository.desktop.in
@@ -70,5 +71,3 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/ubuntu/setting.py
 ./ailurus/ubuntu/third_party_repos.py
 ./ailurus/ubuntu/tips.py
-./bamboo/fedora.py
-./bamboo/ubuntu.py

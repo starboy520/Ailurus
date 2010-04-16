@@ -32,7 +32,7 @@ class ComicVODPlayer_new :
     Chinese = True
     logo = 'comic.png'
     license = 'GPL'
-    depend = Repo_Mplayer_VOD
+    depends = Repo_Mplayer_VOD
     def install(self):
         extension_path = FirefoxExtensions.get_extensions_path()
         comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
@@ -52,7 +52,6 @@ class PBC:
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    time = 30
     size = ( 300 + 808 ) * 1000
     logo = 'pbc.png'
     def install(self):
@@ -96,9 +95,9 @@ class Build_Essential(_apt_install):
     def __init__(self):
         self.pkgs = 'build-essential'
 
-class ManPages(_apt_install):
-    'ManPages'
-    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
+class POSIX_ManPages(_apt_install):
+    __doc__ = _('POSIX library manual pages')
+    detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.\n'
               'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
     category = 'dev'
     license = 'GNU General Public License (GPL)'
@@ -106,15 +105,14 @@ class ManPages(_apt_install):
     def __init__(self):
         self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
-class Ctags(_apt_install):
-    'Exuberant-ctags'
-    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
-               'Command: sudo apt-get install exuberant-ctags')
+class Ctags_Cscope(_apt_install):
+    __doc__ = _('Ctags and Cscope: Popular source code parsers')
+    detail = _('Command: sudo apt-get install exuberant-ctags cscope')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     logo = 'program-tools.png'
     def __init__(self):
-        self.pkgs = 'exuberant-ctags'
+        self.pkgs = 'exuberant-ctags cscope'
 
 class GMP(_apt_install):
     __doc__ = _('GNU multiprecision arithmetic library')
@@ -137,9 +135,8 @@ class Ncurses_and_qt3mt(_apt_install):
         self.pkgs = 'libncurses5-dev libqt3-mt-dev'
         
 class Svn_Git_bzr(_apt_install):
-    __doc__ = _('Subversion, git, and bzr')
-    detail = _('subversion, git and bzr are popular version control systems.\n'
-               'Command: sudo apt-get install subversion git-core bzr')
+    __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
+    detail = _('Command: sudo apt-get install subversion git-core bzr')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'program-tools.png'
@@ -147,10 +144,8 @@ class Svn_Git_bzr(_apt_install):
         self.pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Autoconf and automake')
-    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
-               'automake is a tool for automatically generating Makefile.\n'
-               'Command: sudo apt-get install autoconf automake')
+    __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
+    detail = _('Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'program-tools.png'
@@ -188,14 +183,14 @@ class SDL(_apt_install):
     def __init__(self):
         self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
-class PipeViewer(_apt_install):
-    __doc__ = _('pv: a pipe viewer')
-    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-               'Command: sudo apt-get install pv')
-    license = ('Free software, ARTISTIC 2.0 license, '
-               'see http://www.ivarch.com/programs/quickref/pv.shtml')
-    def __init__(self):
-        self.pkgs = 'pv'
+#class PipeViewer(_apt_install):
+#    __doc__ = _('pv: a pipe viewer')
+#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
+#               'Command: sudo apt-get install pv')
+#    license = ('Free software, ARTISTIC 2.0 license, '
+#               'see http://www.ivarch.com/programs/quickref/pv.shtml')
+#    def __init__(self):
+#        self.pkgs = 'pv'
           
 class AutoApt(_apt_install):
     'Auto-apt'
@@ -233,7 +228,7 @@ class Ubuntu_Studio_Theme(_apt_install):
         self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
-    __doc__ = _('Minicom and ckermit')
+    __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
     detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
     category = 'embedded'
@@ -254,7 +249,7 @@ class VirtualBox(_apt_install):
         self.pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen:
-    __doc__ = _('GNOMEArtNG')
+    __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
@@ -325,9 +320,8 @@ class QtiPlot(_apt_install) :
         self.pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
-    'Extcalc'
-    detail = _('This is a multifunctional graphic calculator.\n'
-        'Command: sudo apt-get install extcalc')
+    __doc__ = _('Extcalc: A multifunctional graphic calculator')
+    detail = _('Command: sudo apt-get install extcalc')
     category = 'math'
     license = 'GNU General Public License (GPL)'
     logo = 'extcalc.png'
@@ -335,11 +329,12 @@ class Extcalc(_apt_install):
         self.pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
-    __doc__ = _('Startup Manager')   
+    __doc__ = _('Startup Manager: Change GRUB settings and themes')   
     detail = _('Startup manager helps you change GRUB settings and themes.\n'
                'Command: sudo apt-get install startupmanager')
     license = 'GNU General Public License (GPL)'
     logo = 'startup_manager.png'
+    category = 'appearance'
     def __init__(self):
         self.pkgs = 'startupmanager'
         
@@ -363,7 +358,7 @@ class PowerTop(_apt_install):
     def __init__(self):
         self.pkgs = 'powertop'
         
-class nautilus_actions(_apt_install):
+class Nautilus_Actions(_apt_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
@@ -373,7 +368,7 @@ class nautilus_actions(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-actions'
         
-class nautilus_filename_repairer(_apt_install):
+class Nautilus_Filename_Repairer(_apt_install):
     __doc__ = _('"Repair filename" entry')
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
     license = 'GNU General Public License (GPL)'
@@ -382,7 +377,7 @@ class nautilus_filename_repairer(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-filename-repairer'
 
-class nautilus_gksu(_apt_install):
+class Nautilus_Gksu(_apt_install):
     __doc__ = _('"Open as administrator" entry')
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
     license = 'GNU General Public License (GPL)'
@@ -391,7 +386,7 @@ class nautilus_gksu(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-gksu'
 
-class nautilus_script_audio_convert(_apt_install):
+class Nautilus_Audio_Convert(_apt_install):
     __doc__ = _('"Convert audio files" entry')
     detail = _('Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n'
                'These packages will also be installed: \n'
@@ -405,7 +400,7 @@ class nautilus_script_audio_convert(_apt_install):
         _apt_install.install(self)
         run('nautilus-script-manager enable ConvertAudioFile')
 
-class nautilus_image_converter(_apt_install):
+class Nautilus_Image_Converter(_apt_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
@@ -414,7 +409,7 @@ class nautilus_image_converter(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-image-converter'
         
-class nautilus_script_collection_svn(_apt_install):
+class Nautilus_Script_Collection_Svn(_apt_install):
     __doc__ = _('"Subversion commands" entries')
     detail = _('"Subversion commands" entries')
     license = 'GNU General Public License (GPL)'
@@ -426,7 +421,7 @@ class nautilus_script_collection_svn(_apt_install):
         _apt_install.install(self)
         run('nautilus-script-manager enable Subversion')
         
-class nautilus_open_terminal(_apt_install):
+class Nautilus_Open_Terminal(_apt_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
@@ -435,7 +430,7 @@ class nautilus_open_terminal(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-open-terminal'
         
-class nautilus_share(_apt_install):
+class Nautilus_Share(_apt_install):
     __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
     license = 'GNU General Public License (GPL)'
@@ -444,7 +439,7 @@ class nautilus_share(_apt_install):
     def __init__(self):
         self.pkgs = 'nautilus-share'
         
-class nautilus_wallpaper(_apt_install):
+class Nautilus_Wallpaper(_apt_install):
     __doc__ = _('"Set as wallpaper" entry')
     detail = _('"Set as wallpaper" entry')
     license = 'GNU General Public License (GPL)'
@@ -452,14 +447,3 @@ class nautilus_wallpaper(_apt_install):
     logo = 'nautilus.png'
     def __init__(self):
         self.pkgs = 'nautilus-wallpaper'
-        
-class nautilus_script_audio_convert(_apt_install):
-    __doc__ = _('"Write to Disc..." entry')
-    detail = _('When CD/DVD image file is clicked by mouse right button, \n'
-               'show a "Write to Disc..." menu item.\n'
-               '<span color="red">This item conflicts with "brasero".</span>')
-    license = 'GNU General Public License (GPL)'
-    category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-cd-burner'
