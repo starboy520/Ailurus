@@ -495,3 +495,13 @@ class PiTiVi(_rpm_install):
     category = 'media'
     def __init__(self):
         self.pkgs = 'pitivi'
+
+class Audacity(_rpm_install):
+    __doc__ = _('Audacity: audio editor')
+    detail = _("Command: yum install audacity-freeworld")
+    logo = 'audacity.png'
+    license = ('GNU Lesser General Public License, '
+               'see http://audacity.sourceforge.net/')
+    category = 'media'
+    def __init__(self):
+        self.pkgs = 'audacity'
