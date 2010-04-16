@@ -1369,8 +1369,10 @@ class Tasksel:
     def get_packages(cls, name):
         ret = []
         output = get_output('tasksel --task-packages '+name)
-        for e in output.split():
-            if e: ret.append(e)
+        for line in output.split('\n'):
+            if line.startswith('W: '): continue # skip warning messages, such as Duplicate sources.list entry
+            item = line.strip()
+            if item: ret.append(item)
         return ret
     @classmethod
     def install(cls, name):

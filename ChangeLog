@@ -6,6 +6,7 @@
     * Fix issue: firefox.nopango.desktop should be put in /usr/local (issue 221)
     * Shows version when report errors. 
     * Split WINE into "WINE 1.0" & "WINE 1.2".
+    * Fix bug: Error in parsing "tasksel --task-packages" output when warning messages are output. (issue 257)
 
 2010-04-16 HUANG Wei <wei.kukey@gmail.com>
 
