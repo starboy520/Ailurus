@@ -35,12 +35,27 @@ class FedoraFastestMirrorPane(gtk.VBox):
     RESPONSE_TIME = 3
     NO_PING_RESPONSE = 10000
     
+    def __repository_visibility_function(self, treestore, iter):
+        if self.search_content == None:
+            return True
+        country = treestore.get_value(iter, self.COUNTRY)
+        org = treestore.get_value(iter, self.ORG)
+        url = treestore.get_value(iter, self.URL)
+        return bool( 
+             self.search_content.search(country) or 
+             self.search_content.search(org) or
+             self.search_content.search(url) )
+
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
         assert hasattr(main_view, 'unlock')
         self.main_view = main_view
-        
+        ResponseTime.load()
         gtk.VBox.__init__(self, False, 5)
+        self.candidate_store = gtk.ListStore(str, str, str, int) # country, org, url, response_time
+        self.filted_store = self.candidate_store.filter_new()
+        self.search_content = None
+        self.filted_store.set_visible_func(self.__repository_visibility_function)
 
 if __name__ == '__main__':
     path = Config.get_config_dir() + 'response_time_2'
