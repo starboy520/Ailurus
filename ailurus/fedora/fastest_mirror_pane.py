@@ -56,19 +56,102 @@ class FedoraFastestMirrorPane(gtk.VBox):
             self.candidate_store.append(item)
 
     def __get_candidate_repositories_box(self):
-#        label = gtk.Label(_('All repositories:'))
-#        label.set_alignment(0, 0)
-#        from support.searchbox import SearchBox
-#        searchbox = SearchBox(self.__callback__search_content_changed)
-#        treeview = self.__get_candidate_repositories_treeview()
-#        box = gtk.VBox(False, 5)
-#        box.set_border_width(5)
-#        box.pack_start(label, False)
-#        box.pack_start(searchbox, False)
-#        box.pack_start(treeview)
-#        return box
-        print 'NotImplemented'
-        return gtk.VBox()
+        label = gtk.Label(_('All repositories:'))
+        label.set_alignment(0, 0)
+        from support.searchbox import SearchBox
+        searchbox = SearchBox(self.__callback__search_content_changed)
+        treeview = self.__get_candidate_repositories_treeview()
+        box = gtk.VBox(False, 5)
+        box.set_border_width(5)
+        box.pack_start(label, False)
+        box.pack_start(searchbox, False)
+        box.pack_start(treeview)
+        return box
+
+    def __callback__search_content_changed(self, itext):
+        assert isinstance(itext, str)
+        if not itext:
+            self.search_content = None
+        else:
+            import StringIO
+            import re
+            otext = StringIO.StringIO()
+            for char in itext:
+                if char in r'.^$+*?{}[]\|()': otext.write('\\')
+                otext.write(char)
+            self.search_content = re.compile(otext.getvalue(), re.IGNORECASE)
+        self.filted_store.refilter()
+
+    def __show_response_time_in_cell(self, column, cell, model, iter):
+        value = model.get_value(iter, self.RESPONSE_TIME)
+        assert isinstance(value, (int, float))
+        value = int(value)
+        if value == self.NO_PING_RESPONSE: 
+            text = _('No response')
+        else:
+            text = '%s ms' % value
+        cell.set_property('text', text)
+
+    def __get_candidate_repositories_treeview(self):
+        render_country = gtk.CellRendererText()
+        column_country = gtk.TreeViewColumn( _('Country') )
+        column_country.pack_start(render_country)
+        column_country.add_attribute(render_country, 'text', self.COUNTRY)
+        column_country.set_sort_column_id(self.COUNTRY)
+        
+        render_org = gtk.CellRendererText()
+        render_org.set_property('ellipsize', pango.ELLIPSIZE_END)
+        column_org = gtk.TreeViewColumn( _('Organization') )
+        column_org.pack_start(render_org)
+        column_org.add_attribute(render_org, 'text', self.ORG)
+        column_org.set_sort_column_id(self.ORG)
+        column_org.set_expand(True)
+        column_org.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+        
+        render_url = gtk.CellRendererText()
+        render_url.set_property('ellipsize', pango.ELLIPSIZE_END)
+        column_url = gtk.TreeViewColumn('URL')
+        column_url.pack_start(render_url)
+        column_url.add_attribute(render_url, 'text', self.URL)
+        column_url.set_sort_column_id(self.URL)
+        column_url.set_expand(True)
+        column_url.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
+        
+        render_response_time = gtk.CellRendererText()
+        render_response_time.set_property('ellipsize', pango.ELLIPSIZE_END)
+        column_response_time = gtk.TreeViewColumn( _('Response time') )
+        column_response_time.pack_start(render_response_time)
+        column_response_time.set_cell_data_func(render_response_time, self.__show_response_time_in_cell)
+        column_response_time.set_sort_column_id(self.RESPONSE_TIME)
+        
+        candidate_treeview = gtk.TreeView(self.sorted_store)
+        candidate_treeview.set_rules_hint(True)
+        candidate_treeview.append_column(column_country)
+        candidate_treeview.append_column(column_org)
+        candidate_treeview.append_column(column_url)
+        candidate_treeview.append_column(column_response_time)
+        candidate_treeview.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+        candidate_treeview.set_tooltip_text(_('Click mouse right button to display the context menu.'))
+#        popupmenu = self.__get_popupmenu_for_candidate_repos_treeview(candidate_treeview)
+#        def button_press_event(w, event):
+#            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+#                path = w.get_path_at_pos(int(event.x),int(event.y))
+#                selection = w.get_selection()
+#                if path == None: selection.unselect_all()
+#                elif selection.path_is_selected(path[0])==False: 
+#                    selection.unselect_all()
+#                    selection.select_path(path[0])
+#                popupmenu.popup(None, None, None, event.button, event.time)
+#                return True
+#            return False
+#        candidate_treeview.connect('button_press_event', button_press_event)
+        
+        candidate_scroll = gtk.ScrolledWindow()
+        candidate_scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        candidate_scroll.set_shadow_type(gtk.SHADOW_IN)
+        candidate_scroll.add(candidate_treeview)
+
+        return candidate_scroll
 
     def __get_state_box(self):
         print 'NotImplemented'
