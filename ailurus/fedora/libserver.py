@@ -19,6 +19,8 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from lib import *
+
 def __set1():
     return [
 ['AR', 'i386', 'http://fedora.patan.com.ar/linux'],
@@ -265,7 +267,7 @@ class FedoraReposSection:
             if pos != -1:
                 return line[pos:]
         else:
-            raise ValueError('No /releases/, /development/ or /updates/ found.', self.lines)
+            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
 
     def comment_line(self, i):
         if not self.lines[i].startswith('#'):
@@ -285,9 +287,14 @@ class FedoraReposSection:
             if line.startswith('baseurl='):
                 self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
 
+    def write_to_stream(self, stream):
+        stream.writelines(self.lines)
+
 class FedoraReposFile:
     def __init__(self, path):
         assert isinstance(path, str) and path.endswith('.repo')
+
+        self.path = path
 
         self.sections = []
         with open(path) as f:
@@ -301,6 +308,19 @@ class FedoraReposFile:
             lines.append(line)
         section = FedoraReposSection(lines)
         self.sections.append(section)
+
+    def change_baseurl(self, new_url):
+        changed = False
+        for section in self.sections:
+            if section.is_fedora_repos():
+                section.change_baseurl(new_url)
+                changed = True
+
+        if not changed: return
+        with TempOwn(self.path) as o:
+            with open(self.path, 'w') as f:
+                for section in self.sections:
+                    section.write_to_stream(f)
 
 class FedoraRepos:
     @classmethod
@@ -322,5 +342,15 @@ if __name__ == '__main__':
     print section.lines[0]
     
     print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/$releasever/$basearch/')
-    print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
-    
+    try:
+        print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
+    except:
+        import traceback
+        traceback.print_exc()
+    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
+    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
+    import sys
+    for section in f.sections:
+        section.write_to_stream(sys.stdout)
+#    f = FedoraReposFile('/etc/yum.repos.d/ailurus.repo')
+#    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
