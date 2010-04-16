@@ -214,3 +214,9 @@ class FedoraFastestMirrorPane(gtk.VBox):
         box2.pack_start(self.__get_candidate_repositories_box())
         box2.pack_start(self.progress_box, False)
         self.pack_start(box2)
+
+class FedoraFastestMirrorPane(gtk.VBox):
+    name = _('Find fastest repository mirror')
+
+    def __init__(self, *w):
+        gtk.VBox.__init__(self, False, 0)
