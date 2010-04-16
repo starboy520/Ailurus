@@ -209,7 +209,7 @@ class DisableGettyKarmic(DisableGetty):
                             contents[j]='#exec\n'
                             break
                     else:
-                        raise Exception('Not found')
+                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
         finally:
@@ -227,7 +227,7 @@ class DisableGettyKarmic(DisableGetty):
                             contents[j]='exec /sbin/getty -8 38400 tty%s\n'%i
                             break
                     else:
-                        raise Exception('Not found')
+                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
         finally:

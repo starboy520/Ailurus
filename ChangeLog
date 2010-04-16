@@ -8,6 +8,7 @@
     * Split WINE into "WINE 1.0" & "WINE 1.2".
     * Fix bug: Error in parsing "tasksel --task-packages" output when warning messages are output. (issue 257)
     * Fix bug: OpenJDK cannot be installed or removed.
+    * Display more message when "Disable GETTY" failed.
 
 2010-04-16 HUANG Wei <wei.kukey@gmail.com>
 
