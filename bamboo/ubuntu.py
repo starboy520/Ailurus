@@ -35,7 +35,6 @@ class Alice(_path_lists):
               _(' This application depends on Java.') )
     category = 'education'
     size = 374600000
-    logo = 'alice.png'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
         self.shortcut = '/usr/share/applications/alice.desktop'
@@ -73,7 +72,6 @@ class AliPayFirefoxPlugin:
     category = 'firefox'
     size = 240000
     Chinese = True
-    logo = 'alipay.png'
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.mozilla/plugins')
@@ -114,7 +112,6 @@ class AstroMenace(_path_lists):
        'Official site: http://www.viewizard.com/')
     size = 62265282
     category = 'game'
-    logo = 'astromenace.png'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
     def install(self):
@@ -188,7 +185,6 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 244000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/CASthesis-v0.1j.zip',],
@@ -204,7 +200,6 @@ class XJTUTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 3010000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/XJTUthesis.rar',],
@@ -220,7 +215,6 @@ class HITTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 2710000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/PlutoThesis_UTF8_1.9.2.20090424.zip',
@@ -244,7 +238,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
-    logo = 'ff_macosxtheme.png'
     size = 1026679
     def __init__(self):
         self.desc = ''
@@ -258,7 +251,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
-    logo = 'ff_netvideohunter.png'
     size = 104411
     def __init__(self):
         self.desc = ''
@@ -272,7 +264,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
-    logo = 'ff_personas.png'
     size = 383371
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')

@@ -29,7 +29,6 @@ class OpenJDK6:
     detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
     license = 'GPL'
-    logo = 'java.png'
     def install(self):
         APT.install('openjdk-6-jdk')
         
@@ -65,7 +64,6 @@ class WINE_1(_apt_install):
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
-    logo = 'wine.png'
     pkgs = 'wine wine-gecko'
 
 class WINE_2(_apt_install):
@@ -75,7 +73,6 @@ class WINE_2(_apt_install):
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
-    logo = 'wine.png'
     pkgs = 'wine1.2 wine1.2-gecko'
     def support(self):
         return APT.exist('wine1.2') and APT.exist('wine1.2-gecko')

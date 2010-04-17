@@ -30,7 +30,6 @@ class ComicVODPlayer_new :
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
     category = 'media'
     Chinese = True
-    logo = 'comic.png'
     license = 'GPL'
     depends = Repo_Mplayer_VOD
     def install(self):
@@ -53,7 +52,6 @@ class PBC:
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     size = ( 300 + 808 ) * 1000
-    logo = 'pbc.png'
     def install(self):
         if get_arch()==32:
             fdev=R(
@@ -91,7 +89,6 @@ class Build_Essential(_apt_install):
                'Command: sudo apt-get install build-essential')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
     pkgs = 'build-essential'
 
 class POSIX_ManPages(_apt_install):
@@ -100,7 +97,6 @@ class POSIX_ManPages(_apt_install):
               'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
     pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
 class Ctags_Cscope(_apt_install):
@@ -108,7 +104,6 @@ class Ctags_Cscope(_apt_install):
     detail = _('Command: sudo apt-get install exuberant-ctags cscope')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
     pkgs = 'exuberant-ctags cscope'
 
 class GMP(_apt_install):
@@ -116,7 +111,6 @@ class GMP(_apt_install):
     detail = _('Command: sudo apt-get install libgmp3-dev')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
     pkgs = 'libgmp3-dev'
 
 class Ncurses_and_qt3mt(_apt_install):
@@ -126,7 +120,6 @@ class Ncurses_and_qt3mt(_apt_install):
                'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'libncurses5-dev libqt3-mt-dev'
         
 class Svn_Git_bzr(_apt_install):
@@ -134,7 +127,6 @@ class Svn_Git_bzr(_apt_install):
     detail = _('Command: sudo apt-get install subversion git-core bzr')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
@@ -142,7 +134,6 @@ class AutoTools(_apt_install):
     detail = _('Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'autoconf automake'
         
 class FreeGLut3(_apt_install):
@@ -151,7 +142,6 @@ class FreeGLut3(_apt_install):
                 'Command: sudo apt-get install freeglut3-dev') 
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'freeglut3-dev'
         
 class Boost(_apt_install):
@@ -159,7 +149,6 @@ class Boost(_apt_install):
     detail = _('Command: sudo apt-get install libboost-dev')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'libboost-dev'
 
 class SDL(_apt_install):
@@ -170,7 +159,6 @@ class SDL(_apt_install):
                'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
     category = 'dev'
     license ='GNU Lesser General Public License'
-    logo = 'program-tools.png'
     pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
 #class PipeViewer(_apt_install):
@@ -201,7 +189,6 @@ class Umbrello(_apt_install):
                'Command: sudo apt-get install umbrello')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'program-tools.png'
     pkgs = 'umbrello'
 
 class Ubuntu_Studio_Theme(_apt_install):
@@ -209,7 +196,6 @@ class Ubuntu_Studio_Theme(_apt_install):
     detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
     license = 'GNU General Public License (GPL)'
     category = 'appearance'
-    logo = 'ubuntu-studio-themes.png'
     pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
@@ -217,7 +203,6 @@ class MiniCom_Ckermit(_apt_install):
     detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
     category = 'embedded'
-    logo = 'minicom.png'
     pkgs = 'minicom ckermit'
 
 class VirtualBox(_apt_install):
@@ -228,7 +213,6 @@ class VirtualBox(_apt_install):
     license = 'GNU General Public License (GPL)'
     category = 'vm'
     manual = True
-    logo = 'virtualbox.png'
     pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen:
@@ -239,7 +223,6 @@ class GNOMEArtNextGen:
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
     size = 225 * 1000
-    logo = 'gnomeartng.png'
     def install(self):
         if Config.get_Ubuntu_version() == 'hardy':
 
@@ -298,7 +281,6 @@ class QtiPlot(_apt_install) :
     category = 'math'
     size = 6064 * 1000
     license = 'GNU General Public License (GPL)'
-    logo = 'qtiplot.png'
     pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
@@ -306,7 +288,6 @@ class Extcalc(_apt_install):
     detail = _('Command: sudo apt-get install extcalc')
     category = 'math'
     license = 'GNU General Public License (GPL)'
-    logo = 'extcalc.png'
     pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
@@ -314,7 +295,6 @@ class StartupManager(_apt_install):
     detail = _('Startup manager helps you change GRUB settings and themes.\n'
                'Command: sudo apt-get install startupmanager')
     license = 'GNU General Public License (GPL)'
-    logo = 'startup_manager.png'
     category = 'appearance'
     pkgs = 'startupmanager'
         
@@ -325,7 +305,6 @@ class Zhcon(_apt_install):
                'Command: sudo apt-get install zhcon')
     Chinese = True
     license = 'GNU General Public License (GPL)'
-    logo = 'zhcon.png'
     pkgs = 'zhcon'
         
 class PowerTop(_apt_install):
@@ -333,7 +312,6 @@ class PowerTop(_apt_install):
     detail = _('Powertop helps you save power for your laptop.\n'
                'Command: sudo apt-get install powertop')
     license = 'GNU General Public License (GPL)'
-    logo = 'powertop.png'
     pkgs = 'powertop'
         
 class Nautilus_Actions(_apt_install):
@@ -342,7 +320,6 @@ class Nautilus_Actions(_apt_install):
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-actions'
         
 class Nautilus_Filename_Repairer(_apt_install):
@@ -350,7 +327,6 @@ class Nautilus_Filename_Repairer(_apt_install):
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-filename-repairer'
 
 class Nautilus_Gksu(_apt_install):
@@ -358,7 +334,6 @@ class Nautilus_Gksu(_apt_install):
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-gksu'
 
 class Nautilus_Audio_Convert(_apt_install):
@@ -368,7 +343,6 @@ class Nautilus_Audio_Convert(_apt_install):
                '<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
     def install(self):
         _apt_install.install(self)
@@ -379,7 +353,6 @@ class Nautilus_Image_Converter(_apt_install):
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-image-converter'
         
 class Nautilus_Script_Collection_Svn(_apt_install):
@@ -387,7 +360,6 @@ class Nautilus_Script_Collection_Svn(_apt_install):
     detail = _('"Subversion commands" entries')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'        
     pkgs = 'nautilus-script-collection-svn'
     def install(self):
         _apt_install.install(self)
@@ -398,7 +370,6 @@ class Nautilus_Open_Terminal(_apt_install):
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-open-terminal'
         
 class Nautilus_Share(_apt_install):
@@ -406,7 +377,6 @@ class Nautilus_Share(_apt_install):
     detail = _('Share folders by Samba.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-share'
         
 class Nautilus_Wallpaper(_apt_install):
@@ -414,5 +384,4 @@ class Nautilus_Wallpaper(_apt_install):
     detail = _('"Set as wallpaper" entry')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
     pkgs = 'nautilus-wallpaper'

@@ -34,7 +34,6 @@ class Varkon(_apt_install, _path_lists):
     category = 'em'
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
-    logo = 'varkon.png'
     pkgs = 'varkon-user-manual varkon'
     def __init__(self):
         self.shortcut = '/usr/share/applications/varkon.desktop'
@@ -114,7 +113,6 @@ class QCad(_apt_install):
     category = 'em'
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     size = 18056000
-    logo = 'qcad.png'
     pkgs = 'qcad'
         
 class Moonlight(_apt_install):
@@ -126,13 +124,11 @@ class Moonlight(_apt_install):
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
     category = 'media'
-    logo = 'moonlight.png'
     pkgs = 'moonlight-plugin-mozilla'
 
 class DisableGetty:
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    logo = 'tty.png'
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
@@ -172,7 +168,6 @@ class DisableGetty:
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
-    logo = 'tty.png'
     def support(self):
         return Config.get_Ubuntu_version() in ['karmic']
     def installed(self):
@@ -215,7 +210,6 @@ class DisableGettyKarmic(DisableGetty):
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
     detail = _('Command: sudo apt-get install qtoctave')
-    logo = 'octave.png'
     license = 'GNU General Public License (GPL)'
     category = 'math'
     size = 1736000
@@ -232,7 +226,6 @@ class Generic_Genome_Browser:
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = 'Perl Artistic License v2'
-    logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run('sudo perl %s' %f)
@@ -249,7 +242,6 @@ class Screenlets(_apt_install):
        'Command: sudo apt-get install screenlets')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    logo = 'screenlets.png'
     size = 9089000
     pkgs = 'screenlets'
 
@@ -261,7 +253,6 @@ class CompizSettingManager(_apt_install):
        'Command: sudo apt-get install compizconfig-settings-manager')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    logo = 'compizconfig.png'
     size = 4166000 #estimated
     pkgs = 'compizconfig-settings-manager'
 
@@ -271,7 +262,6 @@ class CompizSettingManagerSimple(_apt_install):
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
-    logo = 'simple-ccsm.png'
     pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
@@ -280,7 +270,6 @@ class ScienceBiology(_apt_install):
                'Command: sudo apt-get install med-bio')
     category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
-    logo = 'med-bio.png'
     pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
@@ -288,14 +277,12 @@ class TuxPaint(_apt_install):
     detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'tuxpaint.png'
     pkgs = 'tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'codeblocks.png'
     pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
@@ -303,7 +290,6 @@ class ChildsPlay(_apt_install):
     detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'childsplay.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
@@ -322,7 +308,6 @@ class GCompris(_apt_install):
     detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'gcompris.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
@@ -338,7 +323,6 @@ class QT_Creator(_apt_install):
                'Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'qtcreator.png'
     pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
 class Kadu(_apt_install):
@@ -386,7 +370,6 @@ class Parcellite(_apt_install):
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
     license = 'GNU General Public License'
-    logo = 'parcellite.png'
     pkgs = 'parcellite'
     def support(self):
         return not ( Config.get_Ubuntu_version() in ['hardy'] )
@@ -398,7 +381,6 @@ class R_Language_Basic(_apt_install):
                'Command: sudo apt-get install r-base-core')
     category = 'statistics'
     license = 'GNU General Public License' 
-    logo = 'R_language.png'
     pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
@@ -407,7 +389,6 @@ class R_Language_Full(_apt_install):
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
                'Command: sudo apt-get install r-base-core r-cran-*')
     category = 'statistics'
-    logo = 'R_language.png'
     license = 'GNU General Public License' 
     def __init__(self):
         import StringIO
@@ -422,7 +403,6 @@ class Bluefish(_apt_install):
     detail = _('Command: sudo apt-get install bluefish')
     license = 'GNU General Public License' 
     category = 'dev'
-    logo = 'bluefish.png'
     pkgs = 'bluefish'
 
 #class Wallpaper_Tray(_apt_install):
@@ -437,7 +417,6 @@ class Bluefish(_apt_install):
 
 class _tasksel:
     category = 'server'
-    logo = 'tasksel.png'
     def install(self):
         Tasksel.install(self.name)
     def installed(self):
@@ -581,7 +560,6 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
-    logo = 'fcitx.png'
     license = 'GNU General Public License (GPL)'
     def install(self):
         if get_arch() == 32:
@@ -600,7 +578,6 @@ class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'xbmc.png'
     depends = Repo_XBMC
     pkgs = 'xbmc'
 
@@ -608,7 +585,6 @@ class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'songbird.png'
     depends = Repo_Songbird
     pkgs = 'songbird'
 
@@ -616,7 +592,6 @@ class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'osd-lyrics.png'
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
         
@@ -624,7 +599,6 @@ class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
-    logo = 'vuze.png'
     license = 'GNU General Public License (GPL)'
     detail = _('Command: sudo apt-get install vuze')
     pkgs = 'vuze'
@@ -636,13 +610,11 @@ class ImageMagick(_apt_install):
     detail = _('You can start it by /usr/bin/display\n'
                'Command: sudo apt-get install imagemagick')
     category = 'media'
-    logo = 'imagemagick.png'
     pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
     detail = _("Command: sudo apt-get install pitivi")
-    logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
     category = 'media'
@@ -651,7 +623,6 @@ class PiTiVi(_apt_install):
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    logo = 'acire.png'
     license = 'GNU General Public License'
     category = 'dev'
     depends = Repo_Acire

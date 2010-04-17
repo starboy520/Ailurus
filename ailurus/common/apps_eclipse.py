@@ -73,7 +73,6 @@ if Config.is_Fedora():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        logo = 'eclipse.png'
         license = ('Eclipse Public License (EPL), '
                    'see http://www.eclipse.org/org/documents/epl-v10.php')
         pkgs = 'eclipse-platform'
@@ -87,7 +86,6 @@ elif Config.is_Ubuntu():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        logo = 'eclipse.png'
         license = ('Eclipse Public License (EPL), '
                    'see http://www.eclipse.org/org/documents/epl-v10.php')
         pkgs = 'eclipse'
@@ -104,7 +102,6 @@ class CDT(_path_lists):
     category = 'eclipse'
     license = ('Eclipse Public License (EPL), '
                'see http://www.eclipse.org/legal/')
-    logo = 'cdt.png'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',

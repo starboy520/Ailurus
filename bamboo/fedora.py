@@ -224,7 +224,6 @@ class Repo_Google_Chrome:
 class Repo_VirtualBox:
     'VirtualBox'
     category = 'repository'
-    logo = 'virtualbox.png'
     detail = _('This repository provides VirtualBox.\n'
                'Webpage: http://www.virtualbox.org/wiki/Linux_Downloads')
     def __init__(self):
@@ -255,7 +254,6 @@ class GStreamer_Codecs (_rpm_install) :
        'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
                      'gstreamer-plugins-good gstreamer-plugins-ugly')
     category = 'media'
-    logo = 'codec.png'
     depends = Repo_RPMFusion_Free
     pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
             'gstreamer-plugins-good gstreamer-plugins-ugly')
@@ -264,7 +262,6 @@ class Adobe_Flash_Player(_rpm_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
     detail = _('Command: yum install flash-plugin')
     category = 'media'
-    logo = 'flash.png'
     depends = Repo_Adobe
     pkgs = 'flash-plugin'
 
@@ -272,7 +269,6 @@ class AdobeReader(_rpm_install):
     __doc__ = _(u'Adobe® PDF Reader')
     detail = _('Official site: http://get.adobe.com/cn/reader/')
     category = 'office'
-    logo = 'adobereader.png'
     depends = Repo_Adobe
     def __init__(self):
         package_dict = {
@@ -301,7 +297,6 @@ class Realplayer32:
        'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>\n'
        'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
     category = 'media'
-    logo = 'realplayer.png'
     def install(self):
         f = R(
 ['http://software-dl.real.com/079f1e1c74ca25924402/unix/RealPlayer11GOLD.rpm'],
@@ -340,7 +335,6 @@ class VirtualBox(_rpm_install):
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     category = 'vm'
     manual = True
-    logo = 'virtualbox.png'
     depends = Repo_VirtualBox
     pkgs = 'virtualbox'
 
@@ -358,7 +352,6 @@ class VirtualBox_OSE(_rpm_install):
     detail = _('Command: yum install VirtualBox-OSE')
     category = 'vm'
     license = 'GNU General Public License (GPL)'
-    logo = 'virtualbox.png'
     depends = Repo_RPMFusion_Free
     pkgs = 'VirtualBox-OSE'
 
