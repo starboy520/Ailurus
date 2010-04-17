@@ -231,7 +231,7 @@ def __others(main_view):
         check_update()
     help_update.connect('activate', callback)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'sora_icons/m_propose_suggestion.png', 16, 3) 
+    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16, 3) 
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
