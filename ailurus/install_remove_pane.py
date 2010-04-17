@@ -465,7 +465,7 @@ class InstallRemovePane(gtk.VBox):
                 if os.path.exists(path): break
             else:
                 path = D + 'other_icons/blank.png'
-                print 'Warning: class %s has not any logo.' % class_name
+                # print 'Warning: class %s has not any logo.' % class_name
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
