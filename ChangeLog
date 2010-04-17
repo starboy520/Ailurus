@@ -7,6 +7,7 @@
       Improve get_reason() in _apt_install, _rpm_install and _path_lists.
       Remove get_reason() from _set_gconf.
       Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
+      Do not write "logo=" attribute any more.
 
 2010-04-16 Homer Xing <homer.xing@gmail.com>
 
