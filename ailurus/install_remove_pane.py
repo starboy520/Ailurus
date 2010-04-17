@@ -418,20 +418,10 @@ class InstallRemovePane(gtk.VBox):
                         text.write( end_color() )
                 else:  
                     print >>text, color( _('Will be installed.') ),
-                # attach installed size
-                if obj.size: 
-                    size = derive_size(obj.size)
-                    print >>text, begin_color()+_('Installed size is'), size, end_color(),
 
             else: # already installed
-                if obj.showed_in_toggle:
-                    print >>text, color(_('Installed.')), 
-                else: # will be removed?
-                    print >>text, color(_('Will be removed.')), 
-                    # attach size
-                    if obj.size: 
-                        size = derive_size(obj.size)
-                        print >>text, begin_color()+_('Will free %s disk space.')%size, end_color(),
+                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
+                else:                    print >>text, color(_('Will be removed.')), 
                         
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()
