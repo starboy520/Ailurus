@@ -284,21 +284,15 @@ class Flash_Player(_apt_install):
 #        import os
 #        return not os.path.exists(self.__file)
 #    def install(self):
-#        try:
-#            FileServer.chdir('/etc/fonts/conf.d')
+#        with Chdir('/etc/fonts/conf.d') as o:
 #            import os
 #            if os.path.exists('49-sansserif.conf'):
 #                run_as_root('mv 49-sansserif.conf 49-sansserif.back')
-#        finally:
-#            FileServer.chdir_back()
 #    def remove(self):
-#        try:
-#            FileServer.chdir('/etc/fonts/conf.d')
+#        with Chdir('/etc/fonts/conf.d') as o:
 #            import os
 #            if os.path.exists('49-sansserif.back'):
 #                run_as_root('mv 49-sansserif.back 49-sansserif.conf')
-#        finally:
-#            FileServer.chdir_back()
 #    def get_reason(self, f):
 #        import os
 #        if os.path.exists(self.__file):

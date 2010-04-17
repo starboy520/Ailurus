@@ -53,15 +53,12 @@ class NScripts():
         import os
         dir = os.path.expanduser('~/.gnome2/nautilus-scripts/')
         if not os.path.exists(dir): os.mkdir(dir)
-        FileServer.chdir('/tmp')
-        try:
+        with Chdir('/tmp') as o:
             os.system('tar xf ' + f)
             os.system('cp -r nscripts/* ' + dir)
             os.remove(dir + 'ChangeLog')
             os.remove(dir + 'TODO')
             os.system('touch ' + dir +'.nscripts_is_installed')
-        finally:
-            FileServer.chdir_back()
 
     def installed(self):
         import os
