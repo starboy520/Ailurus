@@ -110,24 +110,24 @@ class _set_gconf :
                 if not to_add in List:
                     return False
         return True
-    def _get_reason(self, f):
-        import gconf
-        G = gconf.client_get_default()
-        for key, newvalue, oldvalue in self.set:
-            try: value = G.get_value(key)
-            except: value = None
-            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
-                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
-        for key, to_add_list in self.add:
-            List = G.get_list(key, gconf.VALUE_STRING)
-            #evaluate "not_in" list
-            not_in = []
-            for to_add in to_add_list:
-                if not to_add in List:
-                    not_in.append(to_add)
-            #output
-            if not_in:
-                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
+#    def _get_reason(self, f):
+#        import gconf
+#        G = gconf.client_get_default()
+#        for key, newvalue, oldvalue in self.set:
+#            try: value = G.get_value(key)
+#            except: value = None
+#            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
+#                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
+#        for key, to_add_list in self.add:
+#            List = G.get_list(key, gconf.VALUE_STRING)
+#            #evaluate "not_in" list
+#            not_in = []
+#            for to_add in to_add_list:
+#                if not to_add in List:
+#                    not_in.append(to_add)
+#            #output
+#            if not_in:
+#                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
     def remove(self):
         self.__check()
         import gconf
@@ -216,15 +216,11 @@ class _path_lists:
         self.__check()
         for path in self.paths:
             run_as_root('rm "%s" -rf'%path)
-    def _get_reason(self, f):
+    def get_reason(self, f):
         import os
-        #evaluate
-        no_list = []
-        for path in self.paths:
-            if not os.path.exists(path): no_list.append(path)
-        #output
-        if no_list:
-            print >>f, _('"%s" does not exist.')%' '.join(no_list),
+        not_exist = [p for p in self.paths if not os.path.exists(p)]
+        if not_exist:
+            print >>f, _('"%s" does not exist.')%' '.join(not_exist),
 
 class _ff_extension:
     'Firefox Extension'
