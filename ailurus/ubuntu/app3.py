@@ -139,17 +139,13 @@ class DisableGetty:
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 if file_contain('tty%s'%i, 'start on runlevel 2'):
                     return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with TempOwn(filename) as o:
@@ -162,11 +158,8 @@ class DisableGetty:
                             contents[j]='stop on runlevel 3\n'
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with TempOwn(filename) as o:
@@ -179,8 +172,6 @@ class DisableGetty:
                             contents[j]='start on runlevel 3\n'
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
@@ -188,17 +179,13 @@ class DisableGettyKarmic(DisableGetty):
     def support(self):
         return Config.get_Ubuntu_version() in ['karmic']
     def installed(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 if file_contain('tty%s.conf'%i, 'exec /sbin/getty -8 38400 tty%s'%i):
                     return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename) as o:
@@ -212,11 +199,8 @@ class DisableGettyKarmic(DisableGetty):
                         raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename) as o:
@@ -230,8 +214,6 @@ class DisableGettyKarmic(DisableGetty):
                         raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')

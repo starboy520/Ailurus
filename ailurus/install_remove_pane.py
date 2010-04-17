@@ -470,20 +470,17 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         self.set_sensitive(False)
         def launch():
-            try:
-                import os
-                me_path = os.path.dirname(os.path.abspath(__file__))
-                FileServer.chdir(me_path)
+            import os
+            me_path = os.path.dirname(os.path.abspath(__file__))
+            with Chdir(me_path) as o:
                 import subprocess
                 task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
                 task.wait()
-            finally:
-                FileServer.chdir_back()
-                gtk.gdk.threads_enter()
-                self.app_class_installed_state_changed_by_external()
-                self.parentwindow.unlock()
-                self.set_sensitive(True)
-                gtk.gdk.threads_leave()
+            gtk.gdk.threads_enter()
+            self.app_class_installed_state_changed_by_external()
+            self.parentwindow.unlock()
+            self.set_sensitive(True)
+            gtk.gdk.threads_leave()
 
         import thread
         thread.start_new_thread(launch, ())
