@@ -180,14 +180,12 @@ class _apt_install :
             if not APT.installed ( pkg ):
                 return False
         return True
-    def _get_reason(self, f):
-        #evaluate
-        not_in = []
-        for pkg in self.pkgs.split():
-            if not APT.installed ( pkg ):
-                not_in.append(pkg)
-        #output
-        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not APT.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
@@ -303,12 +301,10 @@ class _rpm_install:
     def remove(self):
         self._check()
         RPM.remove(self.pkgs)
-    def _get_reason(self, f):
+    def get_reason(self, f):
         self._check()
-        #evaluate
-        not_in = []
-        for pkg in self.pkgs.split():
-            if not RPM.installed ( pkg ):
-                not_in.append(pkg)
-        #output
-        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
