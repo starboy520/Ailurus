@@ -258,8 +258,7 @@ class QT_Creator(_apt_install):
 
 class Kadu(_apt_install):
     __doc__ = 'Kadu'
-    detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
-               'Command : sudo apt-get install kadu')
+    detail = _('Kadu is an instant messenger, which is very popular in Poland.')
     category = 'internet'
     pkgs = 'kadu'
     def support(self):
