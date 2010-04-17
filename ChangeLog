@@ -1,3 +1,30 @@
+2010-04-17 Homer Xing <homer.xing@gmail.com>
+
+    * Add "Contributing to Ailurus" dialog in "Others" menu.
+    * Optimize source code: 
+      Replace FileServer by Chdir.
+	  Reduce reduplicative get_reason() call.
+      Improve get_reason() in _apt_install, _rpm_install and _path_lists.
+      Remove get_reason() from _set_gconf.
+      Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
+      Do not write "logo=" attribute any more.
+
+2010-04-16 Homer Xing <homer.xing@gmail.com>
+
+    * Implement "Fastest repository" pane for Fedora.
+    * Fix bug: If netbeans 6.5 is installed, then "Netbeans 6.8" item is displayed as installed. (issue 47)
+    * Fix bug: If TeXLive 2007 is installed, then "TeXLive" item is not displayed as installed. (issue 47)
+    * Fix issue: firefox.nopango.desktop should be put in /usr/local (issue 221)
+    * Shows version when report errors. 
+    * Split WINE into "WINE 1.0" & "WINE 1.2".
+    * Fix bug: Error in parsing "tasksel --task-packages" output when warning messages are output. (issue 257)
+    * Fix bug: OpenJDK cannot be installed or removed.
+    * Display more message when "Disable GETTY" failed.
+
+2010-04-16 HUANG Wei <wei.kukey@gmail.com>
+
+    * Add Audacity, a music editor.
+
 2010-04-11 MA Yue <velly.empire@gmail.com>
 
     * Add Acire, a Python code fragment manager.

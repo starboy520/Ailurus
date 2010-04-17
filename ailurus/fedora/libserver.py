@@ -19,7 +19,9 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-def set1():
+from lib import *
+
+def __set1():
     return [
 ['AR', 'i386', 'http://fedora.patan.com.ar/linux'],
 ['AT', 'Zero42', 'http://fedora.zero42.at/linux'],
@@ -210,10 +212,159 @@ def set1():
 ['US', 'Nuvio Corporation', 'http://mirror.nuvio.com/pub/fedora/linux'],
 ]
     
-def set2():
+def __set2():
     return [
-['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux/'],
+['CN', 'Shanghai Jiao Tong University', 'ftp://ftp.sjtu.edu.cn/fedora/linux'],
 ]
     
-def get_candidate_repositories():
-    return set1() + set2()
+def all_candidate_repositories():
+    for e in __set1() + __set2():
+        assert not e[2].endswith('/')
+        
+    return __set1() + __set2()
+
+class RepoConf:
+    @classmethod
+    def load(cls, file_path):
+        assert isinstance(file_path, str) and file_path.endswith('.repo')
+        
+        ret = []
+        
+        currentobj = None
+        with open(file_path) as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith('[') and line.endswith(']'): # this is the beginning of a repository
+                    currentobj = RepoConf()
+                    currentobj.file_path = file_path
+                    ret.append(currentobj)
+                    name = line[1:-1]
+                    currentobj.name = name
+                elif '=' in line: # this is a configuration
+                    key, value = line.split('=', 1)
+                    
+    def __init__(self):
+        self.name = None
+        self.file_path = None
+
+
+class FedoraReposSection:
+    def __init__(self, lines):
+        for line in lines: assert isinstance(line, str) and line.endswith('\n')
+        assert lines[0].startswith('['), lines
+        
+        self.lines = lines
+
+    def is_fedora_repos(self):
+        for line in self.lines:
+            if line.startswith('gpgkey=') and 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch' in line:
+                return True
+        return False
+
+    def part2_of(self, line):
+        for word in ['/releases/', '/development/', '/updates/']:
+            pos = line.find(word)
+            if pos != -1:
+                return line[pos:]
+        else:
+            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
+
+    def comment_line(self, i):
+        if not self.lines[i].startswith('#'):
+            self.lines[i] = '#' + self.lines[i] 
+
+    def uncomment_line(self, i):
+        if self.lines[i].startswith('#'):
+            self.lines[i] = self.lines[i][1:] 
+
+    def change_baseurl(self, new_url):
+        for i, line in enumerate(self.lines):
+            if 'mirrorlist=' in line:
+                self.comment_line(i)
+            elif 'baseurl=' in line:
+                self.uncomment_line(i)
+        for i, line in enumerate(self.lines):
+            if line.startswith('baseurl='):
+                self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
+
+    def write_to_stream(self, stream):
+        stream.writelines(self.lines)
+
+class FedoraReposFile:
+    def __init__(self, path):
+        assert isinstance(path, str) and path.endswith('.repo')
+
+        self.path = path
+
+        self.sections = []
+        with open(path) as f:
+            contents = f.readlines()
+        while contents[0].startswith('#') or contents[0].strip() == '': # skip comments and blank lines at the beginning
+            del contents[0]
+        lines = []
+        for line in contents:
+            if line.startswith('[') and lines:
+                section = FedoraReposSection(lines)
+                self.sections.append(section)
+                lines = []
+            lines.append(line)
+        section = FedoraReposSection(lines)
+        self.sections.append(section)
+
+    def change_baseurl(self, new_url):
+        changed = False
+        for section in self.sections:
+            if section.is_fedora_repos():
+                section.change_baseurl(new_url)
+                changed = True
+
+        if not changed: return
+        with TempOwn(self.path) as o:
+            with open(self.path, 'w') as f:
+                for section in self.sections:
+                    section.write_to_stream(f)
+
+    @classmethod
+    def all_repo_paths(cls):
+        import glob
+        return glob.glob('/etc/yum.repos.d/*.repo')
+
+    @classmethod
+    def all_repo_objects(cls):
+        ret = []
+        for path in cls.all_repo_paths():
+            obj = FedoraReposFile(path)
+            ret.append(obj)
+        return ret
+
+if __name__ == '__main__':
+    f = FedoraReposFile('/etc/yum.repos.d/fedora-rawhide.repo')
+    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
+    
+    objs = FedoraReposFile.all_repo_objects()
+
+    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
+    assert 3 == len(f.sections)
+    assert f.sections[0].is_fedora_repos()
+    assert f.sections[1].is_fedora_repos()
+    assert f.sections[2].is_fedora_repos()
+    section = f.sections[0]
+    print section.lines[0]
+    section.comment_line(0)
+    print section.lines[0]
+    section.uncomment_line(0)
+    print section.lines[0]
+    
+    print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/$releasever/$basearch/')
+    try:
+        print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
+    except:
+        import traceback
+        traceback.print_exc()
+    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
+    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
+    import sys
+    for section in f.sections:
+        section.write_to_stream(sys.stdout)
+#    f = FedoraReposFile('/etc/yum.repos.d/ailurus.repo')
+#    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')

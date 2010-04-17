@@ -35,7 +35,6 @@ class Alice(_path_lists):
               _(' This application depends on Java.') )
     category = 'education'
     size = 374600000
-    logo = 'alice.png'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
         self.shortcut = '/usr/share/applications/alice.desktop'
@@ -54,8 +53,7 @@ class Alice(_path_lists):
         if not os.path.exists('/opt'):
             gksudo('mkdir /opt')
         own_by_user('/opt')
-        FileServer.chdir('/opt')
-        try:
+        with Chdir('/opt') as o:
             run('tar jxf '+f)
             assert os.path.exists(self.dir)
             create_file(self.shortcut, '''[Desktop Entry]
@@ -67,8 +65,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Education;Science; ''')
-        finally:
-            FileServer.chdir_back()
 
 class AliPayFirefoxPlugin:
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
@@ -76,7 +72,6 @@ class AliPayFirefoxPlugin:
     category = 'firefox'
     size = 240000
     Chinese = True
-    logo = 'alipay.png'
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.mozilla/plugins')
@@ -88,11 +83,8 @@ class AliPayFirefoxPlugin:
         import os
         if not os.path.exists(path):
             run('mkdir -p %s'%path)
-        FileServer.chdir(path)
-        try:
+        with Chdir(path) as o:
             run('tar zxf %s'%file)
-        finally:
-            FileServer.chdir_back()
     def installed(self):
         import os
         return (
@@ -120,7 +112,6 @@ class AstroMenace(_path_lists):
        'Official site: http://www.viewizard.com/')
     size = 62265282
     category = 'game'
-    logo = 'astromenace.png'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
     def install(self):
@@ -132,8 +123,7 @@ class AstroMenace(_path_lists):
         import os
         if not os.path.exists('/opt'): gksudo('mkdir /opt')
         gksudo('chown $USER:$USER /opt')
-        FileServer.chdir('/opt')
-        try:
+        with Chdir('/opt') as o:
             run('tar xf %s'%f)
             create_file('/usr/share/applications/astromenace.desktop', 
 '''[Desktop Entry]
@@ -146,8 +136,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Game;''')
-        finally:
-            FileServer.chdir_back()
 
 #class EIOffice:
 #    __doc__ = _('Evermore Integrated Office 2009 free version')
@@ -158,10 +146,8 @@ Categories=Game;''')
 #    time=112
 #    size=217428*1000
 #    manual=True
-#    logo = 'eio.png'
 #    def install(self):
-#        FileServer.chdir_local()
-#        try:
+#        with Chdir('/tmp') as o:
 #            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
 #            run('tar xf %s' % f)
 #            run('chmod a+x EIOffice_Personal_Lin/setup')
@@ -182,8 +168,6 @@ Categories=Game;''')
 #                    run("tar zxf /tmp/eio.tar.gz")
 #                    notify( _('Installing EIOffice'), msg )
 #                    gksudo("./setup")
-#        finally:
-#            FileServer.chdir_back()
 #    def installed(self):
 #        import os
 #        return os.path.exists('/usr/bin/eio')
@@ -200,7 +184,6 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 244000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/CASthesis-v0.1j.zip',],
@@ -216,7 +199,6 @@ class XJTUTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 3010000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/XJTUthesis.rar',],
@@ -232,7 +214,6 @@ class HITTeXTemplate(_download_one_file) :
     category = 'latex'
     size = 2710000 #estimated
     Chinese = True
-    logo = 'texlive-templates.png'
     def __init__(self):
         self.R = R(
 ['http://tdt.sjtu.edu.cn/S/PlutoThesis_UTF8_1.9.2.20090424.zip',
@@ -256,7 +237,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
-    logo = 'ff_macosxtheme.png'
     size = 1026679
     def __init__(self):
         self.desc = ''
@@ -270,7 +250,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
-    logo = 'ff_netvideohunter.png'
     size = 104411
     def __init__(self):
         self.desc = ''
@@ -284,7 +263,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
-    logo = 'ff_personas.png'
     size = 383371
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')

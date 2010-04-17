@@ -20,8 +20,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.1.2'
-AILURUS_RELEASE_DATE = '2010-04-11'
+AILURUS_VERSION = '10.04.1.3'
+AILURUS_RELEASE_DATE = '2010-04-16'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -228,6 +228,49 @@ class Config:
 
 Config.init()
 
+class ResponseTime:
+    map = {}
+    changed = False
+    @classmethod
+    def load(cls):
+        import os
+        try:
+            path = Config.get_config_dir() + 'response_time_2'
+            if not os.path.exists(path): return
+            with open(path) as f:
+                lines = f.readlines()
+            for i in range(0, len(lines), 2):
+                url = lines[i].strip()
+                time = float(lines[i+1].strip())
+                cls.map[url] = time
+        except IOError:
+            import traceback
+            traceback.print_exc()
+    @classmethod
+    def save(cls):
+        if not cls.changed: return
+        try:
+            path = Config.get_config_dir() + 'response_time_2'
+            with open(path, 'w') as f:
+                for key, value in cls.map.items():
+                    print >>f, key
+                    print >>f, value
+        except IOError:
+            import traceback
+            traceback.print_exc()
+    @classmethod
+    def get(cls, url):
+        is_string_not_empty(url)
+        return cls.map[url]
+    @classmethod
+    def set(cls, url, value):
+        is_string_not_empty(url)
+        assert isinstance(value, (int,float)) and value > 0
+        cls.map[url] = value
+        cls.changed = True
+import atexit
+atexit.register(ResponseTime.save)
+
 class ShowALinuxSkill:
     @classmethod
     def installed(cls):
@@ -293,6 +336,7 @@ class CommandFailError(Exception):
             with open('/etc/fedora-release') as f:
                 new_args.append(f.read().strip())
         except: pass
+        new_args.append(AILURUS_VERSION)
         Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):
@@ -497,26 +541,6 @@ def own_by_user(*paths):
         import os
         if os.stat(path).st_uid != os.getuid():
             run_as_root('chown $USER:$USER "%s"'%path)
-
-class FileServer:
-    @classmethod
-    def chdir(cls, path):
-        is_string_not_empty(path)
-        import os
-        cls.__saved_path = os.getcwd()
-        os.chdir(path)
-    @classmethod
-    def chdir_local(cls):
-        import os
-        cls.__saved_path = os.getcwd()
-        if not os.path.exists('/var/cache/ailurus/'):
-            run_as_root('mkdir -p /var/cache/ailurus/')
-            run_as_root('chown $USER:$USER /var/cache/ailurus/')
-        os.chdir('/var/cache/ailurus/')
-    @classmethod
-    def chdir_back(cls):
-        import os
-        os.chdir(cls.__saved_path)
 
 def is_pkg_list(packages):
     if not len(packages): raise ValueError
@@ -961,6 +985,11 @@ class PingThread(threading.Thread):
         self.url = url
         self.server = server
         self.result = result
+        import time
+        self.start_time = time.time()
+    def elapsed_time(self):
+        import time
+        return time.time() - self.start_time
     def run(self):
         try:
             time = get_response_time(self.url)
@@ -1234,7 +1263,6 @@ class ETCEnvironment:
             self.values[key] = values+self.values[key]
     def remove(self, key, *values):
         assert key and isinstance(key, str),    key
-        assert values
         for v in values:
             assert v and isinstance(v, str),    v
             assert not ':' in v,     v
@@ -1242,8 +1270,10 @@ class ETCEnvironment:
         if not key in self.keys: return
         if not values: 
             # delete it directly
-            self.keys.remove(key)
-            del self.values[key]
+            try:    self.keys.remove(key)
+            except: pass
+            try:    del self.values[key]
+            except: pass
         else:
             List = self.values[key]
             self.values[key] = [e for e in List if not e in values]
@@ -1320,8 +1350,10 @@ class Tasksel:
     def get_packages(cls, name):
         ret = []
         output = get_output('tasksel --task-packages '+name)
-        for e in output.split():
-            if e: ret.append(e)
+        for line in output.split('\n'):
+            if line.startswith('W: '): continue # skip warning messages, such as Duplicate sources.list entry
+            item = line.strip()
+            if item: ret.append(item)
         return ret
     @classmethod
     def install(cls, name):
@@ -1411,6 +1443,7 @@ In directory "data/other_icons":
 acire.png is copied from Acire project. It is released under the GPL license.
 ailurus.png is released under the GPL license. Its copyright is holded by SU Yun.
 ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
+audacity.png is copied from Audacity project. It is released under the GPL license. Its copyright is holded by Audacity Team.
 blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
 bluefish.png is copied from Bluefish project. It is released under the GPL license. Its copyright is holded by Olivier Sessink.
 bluetooth.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
@@ -1462,7 +1495,7 @@ def show_special_thank_dialog():
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
-    print >>text, 'DaringSoule</big></b>'
+    print >>text, 'DaringSoule, Ramesh Mandaleeka</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'

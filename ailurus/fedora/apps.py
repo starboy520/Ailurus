@@ -23,53 +23,43 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-from repos import *
 
 class WINE(_rpm_install):
     __doc__ = _('WINE')
     detail = _('This is an indispensable application for running Windows applications on Linux.\n'
        'Command: yum install wine')
-    logo = 'wine.png'
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
-    def __init__(self):
-        self.pkgs = 'wine'
+    pkgs = 'wine'
         
 class Enhance_Decompression_Capability(_rpm_install) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
     detail = _('Command: yum install p7zip cabextract')
-    logo = 'extract.png'
-    def __init__(self):
-        self.pkgs = "p7zip cabextract"
+    pkgs = "p7zip cabextract"
 
 class Evince_Read_Chinese_PDF(_rpm_install) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     detail = _('Command: yum install poppler-data')
     category='office'
-    logo = 'evince.png'
-    def __init__(self):
-        self.pkgs = 'poppler-data'
+    pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_rpm_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
     detail = _('Command: yum install chmsee')
     category = 'office'
-    logo = 'chmsee.png'
     license = ('GNU General Public License (GPL), '
                'see http://code.google.com/p/chmsee/')
-    def __init__(self):
-        self.pkgs = 'chmsee'
+    pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_rpm_install) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
        'Command: yum install workrave')
-    logo = 'workrave.png'
     license = ('GNU General Public License (GPL), '
                'see http://sourceforge.net/projects/workrave/')
+    pkgs = 'workrave'
     def __init__(self):
-        self.pkgs = 'workrave'
         import os
         self.path = os.path.expanduser('~/.config/autostart/')
         self.file = self.path + 'workrave.desktop'
@@ -94,12 +84,6 @@ X-GNOME-Autostart-enabled=true
         import os
         if not os.path.exists(self.file): return False
         return _rpm_install.installed(self)
-    def get_reason(self, f):
-        import os
-        if not RPM.installed('workrave'):
-            print >>f, _('"%s" is not installed.')%'workrave'
-        if not os.path.exists(self.file):
-            print >>f, _('The file "%s" does not exist.')%self.file,
     def remove(self):
         _rpm_install.remove(self)
         import os
@@ -115,13 +99,12 @@ class VIM_and_VIMRC(_rpm_install) :
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
     license = ('GNU General Public License (GPL)')
     category = 'dev'
-    logo = 'vim.png'
+    pkgs = 'vim-enhanced'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
     def __vimrc_install(self):
         file_append ( self.vimrc, *self.lines )
     def __init__(self):
-        self.pkgs = 'vim-enhanced'
         import os
         self.vimrc = os.path.expanduser("~/.vimrc")
         self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
@@ -142,7 +125,6 @@ class ColorfulBashPromptSymbols :
        '<span color="#729fcf">~</span>$ ".\n'
        'The trick behind is to add this line into "$HOME/.bashrc".\n'
        r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
-    logo = 'terminal.png'
     def __init__(self):
         import os
         self.__class__.detail = os.path.expandvars( self.__class__.detail )
@@ -160,9 +142,7 @@ class CUPS (_rpm_install):
     __doc__ = _('Enable "Print to pdf" capability.')
     detail = _('Command: yum install cups-pdf')
     category = 'office'
-    logo = 'cups.png'
-    def __init__(self):
-        self.pkgs = 'cups-pdf'
+    pkgs = 'cups-pdf'
 
 class Stardict_without_Dictionaries(_rpm_install):
     __doc__ = _('Stardict')
@@ -177,9 +157,7 @@ class Stardict_without_Dictionaries(_rpm_install):
                'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
                'stardict-dic-zh_TW: Traditional Chinese dictionaries')
     license = _('GNU General Public License (GPL)')
-    logo = 'stardict.png'
-    def __init__(self):
-        self.pkgs = 'stardict'
+    pkgs = 'stardict'
 
 class Liferea(_rpm_install):
     __doc__ = _('Liferea: a RSS feed reader')
@@ -187,9 +165,7 @@ class Liferea(_rpm_install):
        'Command: yum install liferea')
     license = ('GNU General Public License (GPL)')
     category = 'internet'
-    logo = 'liferea.png'
-    def __init__(self):
-        self.pkgs = 'liferea'
+    pkgs = 'liferea'
 
 class CommonUsedProgrammingPackages(_rpm_install):
     __doc__ = _('Useful applications for programming')
@@ -208,12 +184,8 @@ class CommonUsedProgrammingPackages(_rpm_install):
        'gcc gcc-c++ ctags gmp-devel ncurses-devel '
        'qt3-devel subversion git')
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
-                     'qt3-devel subversion git')
-    def get_reason(self, f):
-        self._get_reason(f)
+    pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
+            'qt3-devel subversion git')
 
 class QtiPlot(_rpm_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
@@ -221,36 +193,27 @@ class QtiPlot(_rpm_install) :
        'Command: yum install qtiplot')
     category = 'math'
     license = ('GNU General Public License (GPL)')
-    logo = 'qtiplot.png'
-    def __init__(self):
-        self.pkgs = 'qtiplot'
+    pkgs = 'qtiplot'
 
 class QCad(_rpm_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
     detail = ''
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     category = 'em'
-    logo = 'qcad.png'
-    def __init__(self):
-        self.pkgs = 'qcad'
+    pkgs = 'qcad'
 
 class DisableGetty:
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    logo = 'tty.png'
     def installed(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 with open('tty%s'%i) as f:
                     content = f.read()
                 if 'exec /sbin/' in content: return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with open(filename) as f:
@@ -261,11 +224,8 @@ class DisableGetty:
                 with TempOwn(filename) as o:
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with open(filename) as f:
@@ -276,18 +236,14 @@ class DisableGetty:
                 with TempOwn(filename) as o:
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class Octave(_rpm_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
     detail = _('Command: yum install qtoctave')
     license = ('GNU General Public License (GPL), '
                'see http://www.gnu.org/software/octave/license.html')
-    logo = 'octave.png'
     category = 'math'
-    def __init__(self):
-        self.pkgs = 'qtoctave'
+    pkgs = 'qtoctave'
 
 class Generic_Genome_Browser:
     __doc__ = _('Generic Genome Browser')
@@ -297,7 +253,6 @@ class Generic_Genome_Browser:
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
     license = 'Perl Artistic License v2'
     category='biology'
-    logo = 'generic_genome_browser.png'
     def install(self):
         for package in ['perl-libwww-perl', 'perl-CPAN']:
             if not RPM.installed(package):
@@ -315,27 +270,21 @@ class TuxPaint(_rpm_install):
     detail = _('Command: yum install tuxpaint')
     category = 'education'
     license = ('GNU General Public License (GPL)')
-    logo = 'tuxpaint.png'
-    def __init__(self):
-        self.pkgs='tuxpaint'
+    pkgs = 'tuxpaint'
 
 class ChildsPlay(_rpm_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
     detail = _('Command: yum install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'childsplay.png'
-    def __init__(self):
-        self.pkgs ='childsplay'
+    pkgs = 'childsplay'
         
 class GCompris(_rpm_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
     detail = _('Command: yum install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'gcompris.png'
-    def __init__(self):
-        self.pkgs = 'gcompris'
+    pkgs = 'gcompris'
 
 class QT_Creator(_rpm_install):
     'Qt Creator'
@@ -343,9 +292,7 @@ class QT_Creator(_rpm_install):
                'Command: yum install qt-creator')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'qtcreator.png'
-    def __init__(self):
-        self.pkgs = 'qt-creator'
+    pkgs = 'qt-creator'
 
 class Kadu(_rpm_install):
     __doc__ = 'Kadu'
@@ -353,8 +300,7 @@ class Kadu(_rpm_install):
                'Command : yum install kadu')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.pkgs = 'kadu'
+    pkgs = 'kadu'
     def support(self):
         return Config.is_Poland_locale()
 
@@ -363,9 +309,7 @@ class Parcellite(_rpm_install):
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
     license = 'GNU General Public License (GPL)'
-    logo = 'parcellite.png'
-    def __init__(self):
-        self.pkgs = 'parcellite'
+    pkgs = 'parcellite'
 
 class Enable_Sudo:
     __doc__ = _('Enable "sudo"')
@@ -421,25 +365,12 @@ class Disable_SELinux:
                     f.writelines(lines)
         run_as_root_in_terminal('/usr/sbin/setenforce 1')
 
-#class Wallpaper_Tray(_rpm_install):
-#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-#    category = 'appearance'
-#    detail = _('Command: yum install wp_tray\n'
-#               'After installation, please restart your computer. '
-#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-#    license = 'GNU General Public License (GPL)'
-#    logo = 'wallpaper-tray.png'
-#    def __init__(self):
-#        self.pkgs = 'wp_tray'
-
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
     detail = _('Command: yum install gnash')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'flash.png'
-    def __init__(self):
-        self.pkgs = 'gnash gnash-plugin'
+    pkgs = 'gnash gnash-plugin'
         
 class Nautilus_Actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
@@ -447,51 +378,47 @@ class Nautilus_Actions(_rpm_install):
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-actions'
+    pkgs = 'nautilus-actions'
         
 class Nautilus_Image_Converter(_rpm_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-image-converter'
+    pkgs = 'nautilus-image-converter'
         
 class Nautilus_Open_Terminal(_rpm_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-open-terminal'
+    pkgs = 'nautilus-open-terminal'
         
 class Nautilus_Search_Tool(_rpm_install):
     __doc__ = _('"Search files" entries')
     license = 'GNU General Public License (GPL)'
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-search-tool'
+    pkgs = 'nautilus-search-tool'
 
 class ImageMagick(_rpm_install):
     __doc__ = _('ImageMagick: Edit images')
     detail = _('You can start it by /usr/bin/display\n'
                'Command: yum install ImageMagick')
     category = 'media'
-    logo = 'imagemagick.png'
-    def __init__(self):
-        self.pkgs = 'ImageMagick'
+    pkgs = 'ImageMagick'
 
 class PiTiVi(_rpm_install):
     __doc__ = _('PiTiVi: Movie editor')
     detail = _("Command: yum install pitivi")
-    logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
     category = 'media'
-    def __init__(self):
-        self.pkgs = 'pitivi'
+    pkgs = 'pitivi'
+
+class Audacity(_rpm_install):
+    __doc__ = _('Audacity: Music editor')
+    detail = _("Command: yum install audacity-freeworld")
+    license = ('GNU Lesser General Public License, '
+               'see http://audacity.sourceforge.net/')
+    category = 'media'
+    pkgs = 'audacity-freeworld'

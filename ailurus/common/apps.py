@@ -31,7 +31,6 @@ class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
     detail = _('It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/')
     category = 'biology'
-    logo = 'bioclipse.png'
     license = ('Eclipse Public License (EPL) + exception, '
                'see http://www.bioclipse.net/license-0')
     def __init__(self):
@@ -45,8 +44,7 @@ class Bioclipse(_path_lists):
         else:
             f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download'],
                   filename = 'bioclipse2.0.linux.gtk.x86_64.zip').download()
-        FileServer.chdir('/tmp')
-        try:
+        with Chdir('/tmp') as o:
             run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
@@ -69,8 +67,6 @@ Icon=/opt/bioclipse/icon.xpm
 ''')
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
-        finally:
-            FileServer.chdir_back()
 
 #class BRLCAD(_path_lists):
 #    __doc__ = _('BRL-CAD: Military solid modeling software')
@@ -80,7 +76,6 @@ Icon=/opt/bioclipse/icon.xpm
 #              _('A lot of commands are installed in /usr/brlcad/bin/') )
 #    category = 'em'
 #    size = 328851000
-#    logo = 'brlcad.png'
 #    license = ('BRL-CAD is a large system with various portions under different license '
 #               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
 #               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
@@ -101,8 +96,7 @@ Icon=/opt/bioclipse/icon.xpm
 #'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
 #88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
 #
-#        FileServer.chdir_local()
-#        try:
+#        with Chdir('/tmp') as o:
 #            run('tar jxf %s'%f)
 #            run_as_root('rm /usr/brlcad/ -rf')
 #            run_as_root('mv usr/brlcad/ /usr/')
@@ -114,13 +108,10 @@ Icon=/opt/bioclipse/icon.xpm
 #Terminal=true
 #Type=Application
 #Categories=Science;Engineering;''')
-#        finally:
-#            FileServer.chdir_back()
 
 class CreateDesktopFolder:
     __doc__ = _('Create a directory "Desktop" in your home folder')
     detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
-    logo = 'terminal.png'
     def __init__(self):
         import os
         self.desktop = os.path.expanduser('~/Desktop')
@@ -155,7 +146,6 @@ class Electric(_path_lists):
                _(' This application depends on Java.') )
     category = 'em'
     size = 11102000
-    logo = 'electric.png'
     license = ('GNU General Public License (GPL), '
                'see http://www.staticfreesoft.com/productsFree.html')
     def __init__(self):
@@ -184,13 +174,12 @@ class Speed_Up_Firefox:
     detail = _('Firefox is faster when Pango rendering is disabled. '
         'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
         'Ailurus will create a new icon "Firefox without Pango (faster)" in the menu "Applications"-->"Internet".')
-    logo = 'firefox.png'
     def install(self):
         paths = [
                  '/usr/share/applications/firefox-3.5.desktop',
                  '/usr/share/applications/firefox.desktop', 
                  '/usr/share/applications/mozilla-firefox.desktop',
-		 '/usr/share/applications/abrowser.desktop',
+                 '/usr/share/applications/abrowser.desktop',
                  ]
         for path in paths:
             import os
@@ -207,83 +196,98 @@ class Speed_Up_Firefox:
                 content[i] = new
             if line.startswith('Name='):
                 content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        with TempOwn('/usr/share/applications/firefox.nopango.desktop') as o:
-            with open('/usr/share/applications/firefox.nopango.desktop', 'w') as f:
+        with TempOwn('/usr/local/share/applications/firefox.nopango.desktop') as o:
+            with open('/usr/local/share/applications/firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
     def installed(self):
         import os 
-        return os.path.exists('/usr/share/applications/firefox.nopango.desktop')
+        return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
+                 os.path.exists('/usr/share/applications/firefox.nopango.desktop') )
     def remove(self):
+        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
-class Netbeans:
-    __doc__ = _(u'Netbeans® 6.8')
+class Netbeans(_apt_install):
+    __doc__ = 'Netbeans'
     detail = (
               _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
                ' and frameworks (J2SE, J2ME, etc.). '
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
     category = 'dev'
-    logo = 'netbeans.png'
     license = ('The majority of the NetBeans IDE 6.8 code is available under '
                'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
                'and the GNU General Public License (GPL) v2. '
                'See http://netbeans.org/about/legal/license.html')
-    def install(self):
-        # Download Netbeans and install it.
-        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
-                  ],
-                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
-                 ).download()
-        run_as_root("bash %s" %file)
-        # If there is no Netbeans shortcut, then we should create one.
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        if List == []:
-            import gtk
-            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
-                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
-            dialog.set_current_folder('/usr')
-            gtk.gdk.threads_enter()
-            dialog.run()
-            folder = dialog.get_filename()
-            dialog.destroy()
-            gtk.gdk.threads_leave()
-            create_file('/usr/share/applications/netbeans.desktop',
-'''[Desktop Entry]
-Encoding=UTF-8
-Name=NetBeans IDE 6.8
-Exec=/bin/sh "''' + folder + '''/bin/netbeans"
-Icon=''' + folder + '''/nb6.8/netbeans.png
-Categories=Application;Development;Java;IDE
-Version=1.0
-Type=Application
-Terminal=0
-''')
-    def installed(self):
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        return bool(List)
-    def remove(self):
-        import glob
-        List = glob.glob('/usr/share/applications/netbeans*')
-        File = List[0]
-        with open(File) as f:
-            lines = f.readlines()
-        for line in lines:
-            if line.startswith('Icon='):
-                break
-        else: 
-            raise Exception('Bad format.', File)
-        path = line.split('=', 1)[1].strip()
-        import os
-        path = os.path.dirname(path)
-        path = os.path.dirname(path)
-        uninstaller = path + '/uninstall.sh'
-        run_as_root(uninstaller)
-        run_as_root('rm %s -f'%File)
+    pkgs = 'netbeans'
+    
+#class Netbeans:
+#    __doc__ = _(u'Netbeans® 6.8')
+#    detail = (
+#              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
+#               ' and frameworks (J2SE, J2ME, etc.). '
+#               'Official site: http://netbeans.org/downloads/ .') +
+#              _(' This application depends on Java.') )
+#    category = 'dev'
+#    license = ('The majority of the NetBeans IDE 6.8 code is available under '
+#               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
+#               'and the GNU General Public License (GPL) v2. '
+#               'See http://netbeans.org/about/legal/license.html')
+#    def install(self):
+#        # Download Netbeans and install it.
+#        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
+#                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
+#                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
+#                  ],
+#                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
+#                 ).download()
+#        run_as_root("bash %s" %file)
+#        # If there is no Netbeans shortcut, then we should create one.
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        if List == []:
+#            import gtk
+#            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
+#                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
+#            dialog.set_current_folder('/usr')
+#            gtk.gdk.threads_enter()
+#            dialog.run()
+#            folder = dialog.get_filename()
+#            dialog.destroy()
+#            gtk.gdk.threads_leave()
+#            create_file('/usr/share/applications/netbeans.desktop',
+#'''[Desktop Entry]
+#Encoding=UTF-8
+#Name=NetBeans IDE 6.8
+#Exec=/bin/sh "''' + folder + '''/bin/netbeans"
+#Icon=''' + folder + '''/nb6.8/netbeans.png
+#Categories=Application;Development;Java;IDE
+#Version=1.0
+#Type=Application
+#Terminal=0
+#''')
+#    def installed(self):
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        return bool(List)
+#    def remove(self):
+#        import glob
+#        List = glob.glob('/usr/share/applications/netbeans*')
+#        File = List[0]
+#        with open(File) as f:
+#            lines = f.readlines()
+#        for line in lines:
+#            if line.startswith('Icon='):
+#                break
+#        else: 
+#            raise Exception('Bad format.', File)
+#        path = line.split('=', 1)[1].strip()
+#        import os
+#        path = os.path.dirname(path)
+#        path = os.path.dirname(path)
+#        uninstaller = path + '/uninstall.sh'
+#        run_as_root(uninstaller)
+#        run_as_root('rm %s -f'%File)
         
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
@@ -293,7 +297,6 @@ class OpenJUMP(_path_lists):
     license = ('GNU General Public License (GPL)')
     category = 'geography'
     size = 14124835
-    logo = 'openjump.png'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
         self.shortcut = '/usr/share/applications/openjump.desktop'
@@ -305,8 +308,7 @@ class OpenJUMP(_path_lists):
 'http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
 12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
 
-        FileServer.chdir_local()
-        try:
+        with Chdir('/tmp') as o:
             run('unzip -oq %s'%f)
             import os
             if not os.path.exists('/opt'):
@@ -321,8 +323,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
-        finally:
-            FileServer.chdir_back()
 
 class QueryBeforeRmALotFiles :
     __doc__ = _('Query you before delete more than three files')
@@ -331,7 +331,6 @@ class QueryBeforeRmALotFiles :
        'This is useful if you mistype "rm subdir/*" as "rm subdir/ *".\n'
        'The trick behind is to add this line into "$HOME/.bashrc".\n'
        'alias rm="rm -I"')
-    logo = 'terminal.png'
     def __init__(self):
         self.line = r"alias rm='rm -I'"
         import os
@@ -343,12 +342,16 @@ class QueryBeforeRmALotFiles :
     def remove(self):
         file_remove ( self.bashrc, self.line )
 
+class TeXLive2007(_apt_install):
+    'TeXLive 2007'
+    category = 'latex'
+    pkgs = 'texlive'
+
 class TeXLive2009:
     __doc__ = _('TeXLive 2009')
     detail = _('TeXLive is obtained from http://www.tug.org/texlive/')
     category = 'latex'
     size = 1916986059
-    logo = 'texlive.png'
     license = ('all the material in TeX Live may be freely used, copied, '
                'modified, and redistributed, subject to the sources remaining freely available. '
                'See http://www.tug.org/texlive/copying.html')
@@ -430,7 +433,6 @@ class TsingHuaTeXTemplate(_download_one_file):
     size = 9000000 #estimated
     category = 'latex'
     Chinese = True
-    logo = 'texlive-templates.png'
     license = 'GPL'
     def __init__(self):
         self.R = R(
@@ -442,7 +444,6 @@ class TsingHuaTeXTemplate(_download_one_file):
 
 class FFAdblock(_ff_extension):
     __doc__ = _('Adblock+: Block 99% advertisement')
-    logo = 'ff_adblock.png'
     size = 1336773
     license = 'Mozilla Public License 1.1.'
     def __init__(self):
@@ -457,7 +458,6 @@ class FFAdblock(_ff_extension):
 
 class FFAutoProxy(_ff_extension):
     __doc__ = _('AutoProxy: Proxy management via a third party list')
-    logo = 'ff_autoproxy.png'
     Chinese = True
     size = 500862
     license = 'Mozilla Public License 1.1'
@@ -473,7 +473,6 @@ class FFAutoProxy(_ff_extension):
 
 class FFChromeTheme_3_0(_ff_extension):
     __doc__ = _('Chrome Theme for Firefox 3.0.*')
-    logo = 'ff_chrometheme.png'
     size = 1923143
     license = 'MPL/GPL/LGPL tri-license'
     def __init__(self):
@@ -488,7 +487,6 @@ class FFChromeTheme_3_0(_ff_extension):
 
 class FFChromeTheme_3_5(_ff_extension): 
     __doc__ = _('Chrome Theme for Firefox 3.5.*')
-    logo = 'ff_chrometheme.png'
     size = 1610196
     license = 'MPL/GPL/LGPL tri-license'
     def __init__(self):
@@ -503,7 +501,6 @@ class FFChromeTheme_3_5(_ff_extension):
 
 class FFCleanHide(_ff_extension):
     __doc__ = _('CleanHide: Delete hidden text in web page')
-    logo = 'ff_cleanhide.png'
     size = 51079
     license = 'GPL v2'
     def __init__(self):
@@ -518,7 +515,6 @@ class FFCleanHide(_ff_extension):
 
 class FFDownloadStatusBar(_ff_extension): 
     __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
-    logo = 'ff_dlstatusbar.png'
     size = 1443763
     license = 'Mozilla Public License, v1.1'
     def __init__(self):
@@ -533,7 +529,6 @@ class FFDownloadStatusBar(_ff_extension):
 
 class FFDownThemAll(_ff_extension):
     __doc__ = _('DownThemAll: A reliable multithread downloader')
-    logo = 'ff_downthemall.png'
     size = 1561642
     license = 'GPL v2'
     def __init__(self):
@@ -548,7 +543,6 @@ class FFDownThemAll(_ff_extension):
 
 class FFEasyDragToGo(_ff_extension):
     __doc__ = _('EasyDragToGo: Open new tabs by dragging text, links and pictures')
-    logo = 'ff_easydragtogo.png'
     size = 121740
     license = 'Mozilla Public License, v1.1'
     def __init__(self):
@@ -566,7 +560,6 @@ class FFFireBug(_ff_extension):
     category = 'firefoxdev'
     size = 2383665
     license = 'BSD License'
-    logo = 'firebug.png'
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
@@ -578,7 +571,6 @@ class FFFireBug(_ff_extension):
 
 class FFFireGesture(_ff_extension):
     __doc__ = _('FireGesture: Execute commands and user scripts by mouse gestures')
-    logo = 'ff_firegesture.png'
     size = 333029
     license = 'Mozilla Public License v1.1'
     def __init__(self):
@@ -594,7 +586,6 @@ class FFFireGesture(_ff_extension):
 class FFFlashgot(_ff_extension):
     __doc__ = _('Flashgot: A lightweight and reliable download managers')
     size = 1161889
-    logo = 'ff_flashgot.png'
     license = 'GPL v2'
     def __init__(self):
         self.desc = _("It is able to download all the links, movies and audio clips of a page with a single click.")
@@ -607,7 +598,6 @@ class FFFlashgot(_ff_extension):
 
 class FFFoxyProxy(_ff_extension):
     __doc__ = _('FoxyProxy: One-click switching proxy')
-    logo = 'ff_foxyproxy.png'
     size = 2086840
     license = 'GPL v2'
     def __init__(self):
@@ -622,7 +612,6 @@ class FFFoxyProxy(_ff_extension):
 
 class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
-    logo = 'ff_greasemonkey.png'
     size = 480077
     license = 'MIT/X11 License'
     def __init__(self):
@@ -643,7 +632,6 @@ class FFLiveHTTPHeaders(_ff_extension):
     category = 'firefoxdev'
     size = 175730
     license = 'GPL v2'
-    logo = 'live_http_header.png'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
@@ -656,7 +644,6 @@ class FFLiveHTTPHeaders(_ff_extension):
 class FFNoscript(_ff_extension):
     __doc__ = _('NoScript: Allow active content to run only from sites you trust')
     size = 1838461
-    logo = 'ff_noscript.png'
     license = 'GPL v2'
     def __init__(self):
         self.desc = _(
@@ -670,7 +657,6 @@ class FFNoscript(_ff_extension):
 
 class FFRadioGet(_ff_extension):
     __doc__  = _('SHA-DA network radio: Listen to and watch radio and TV programs in China')
-    logo = 'ff_shada-radio.png'
     Chinese = True
     size = 62549
     license = 'GPL v3'
@@ -689,7 +675,6 @@ class FFSeoQuake(_ff_extension):
     category = 'firefoxdev'
     size = 801876
     license = 'Mozilla Public License v1.1'
-    logo = 'seoquake.png'
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
@@ -701,7 +686,6 @@ class FFSeoQuake(_ff_extension):
 
 class FFTabMixLite(_ff_extension):
     __doc__ = _('Tab Mix Lite CE: Re-open closed tabs')
-    logo = 'ff_tabmixlite.png'
     size = 134296
     license = 'Mozilla Public License v1.1'
     def __init__(self):
@@ -719,7 +703,6 @@ class FFTamperData(_ff_extension):
     category = 'firefoxdev'
     size = 112344
     license = 'GPL v2'
-    logo = 'tamper_data.png'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
@@ -732,7 +715,6 @@ class FFTamperData(_ff_extension):
 class FFUserAgentSwitcher(_ff_extension):
     __doc__ = _('User Agent Switcher: Camousflag Firefox as other kinds of browsers.')
     size = 183930
-    logo = 'ff_useragentswitcher.png'
     license = 'GPL v3'
     def __init__(self):
         self.desc = _('It tells the remote websites that you are an IE user.')
@@ -748,7 +730,6 @@ class FFViewSourceChart(_ff_extension):
     category = 'firefoxdev'
     size = 89958
     license = 'GPL v2'
-    logo = 'view_source_chart.png'
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
@@ -760,7 +741,6 @@ class FFViewSourceChart(_ff_extension):
 
 class FFWeaveSync35(_ff_extension):
     __doc__ = _('Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
-    logo = 'ff_weavesync.png'
     size = 1098397
     license = 'Mozilla Public License v1.1'
     def __init__(self):
@@ -777,7 +757,6 @@ class FFWebDeveloper(_ff_extension):
     category = 'firefoxdev'
     size = 2420362
     license = 'LGPL v3.0'
-    logo = 'web_developer.png'
     def __init__(self):
         self.desc = _('Many developers installed it.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
@@ -789,7 +768,6 @@ class FFWebDeveloper(_ff_extension):
 
 class FFYetAnotherSmoothScrolling(_ff_extension):
     __doc__ = _('Yet Another Smooth Scrolling: Customize scrolling behavior')
-    logo = 'ff_yasmoothscroll.png'
     size = 136295
     license = 'BSD License'
     def __init__(self):
@@ -807,7 +785,6 @@ class FFYSlow(_ff_extension):
     category = 'firefoxdev'
     size = 797081
     license = 'Mozilla Public License v1.1'
-    logo = 'yslow.png'
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
@@ -822,7 +799,6 @@ class WorldofPadman:
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
     license = 'GNU General Public License (GPL), see http://sourceforge.net/projects/wop-engine/'
-    logo = 'worldofpadman.png'
     category = 'game'
     def install(self):
         file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()

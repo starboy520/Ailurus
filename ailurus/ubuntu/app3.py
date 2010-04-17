@@ -34,9 +34,8 @@ class Varkon(_apt_install, _path_lists):
     category = 'em'
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
-    logo = 'varkon.png'
+    pkgs = 'varkon-user-manual varkon'
     def __init__(self):
-        self.pkgs = 'varkon-user-manual varkon'
         self.shortcut = '/usr/share/applications/varkon.desktop'
         self.paths = [ self.shortcut ]
     def install(self):
@@ -55,69 +54,13 @@ Categories=Science;Engineering;''')
         _apt_install.remove(self)
         run_as_root('rm -f %s'%self.shortcut)
 
-#class FreeCAD(_apt_install):
-#    __doc__ = _('FreeCAD: A CAD software based on OpenCasCade')
-#    detail = _('Be good at three-dimensional solid design. Official site: <span color="blue"><u>http://sourceforge.net/projects/free-cad/</u></span>')
-#    category = 'em'
-#    license = ('GNU General Public License (GPL), GNU Library or Lesser General Public License (LGPL). '
-#               'See http://sourceforge.net/projects/free-cad/')
-#    size = 15724000
-#    logo = 'freecad.png'
-#    def __init__(self):
-#        self.pkgs = 'freecad'
-#    def install(self):
-#        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
-#            
-#            r=R(
-#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1hardy1_i386.deb',
-#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1hardy1_i386.deb'],
-#5481522, '366835db62f7f2ffb73908ad6e77c82be826fc35')
-#
-#        elif get_arch()==32 and Config.get_Ubuntu_version()=='intrepid':
-#            
-#            r=R(
-#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1intrepid1_i386.deb',
-#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1intrepid1_i386.deb'],
-#5138150, '58ec68193200787d3f237016f0c6ba9e36021cbf')
-#            
-#        elif get_arch()==32 and Config.get_Ubuntu_version()=='jaunty':
-#            
-#            r=R(
-#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_i386.deb',
-#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_i386.deb'],
-#5174974, 'f98fb51f95a1630d754480740ee0f192e30a2acf')
-#            
-#        elif get_arch()==64 and Config.get_Ubuntu_version()=='jaunty':
-#            
-#            r=R(
-#['http://tdt.sjtu.edu.cn/S/freecad_0.8.2237-1jaunty1_amd64.deb',
-#'http://ncu.dl.sourceforge.net/project/free-cad/FreeCAD%20Linux/FreeCAD%200.8%20R2237/freecad_0.8.2237-1jaunty1_amd64.deb'],
-#5267100, '681c05fd60b10a8b37661c339eb77debff881305')
-#            
-#        f = r.download()
-#        
-#        depends = DPKG.get_deb_depends(f)
-#        depends.remove('libgl1-mesa')
-#        depends.append('libgl1-mesa-dev')
-#        for depend in depends:
-#            run_as_root('apt-get install -qq %s'%depend)
-#        run_as_root('dpkg -i %s'%f)
-#        APT.cache_changed()
-#    def support(self):
-#        ver = Config.get_Ubuntu_version()
-#        if ver=='jaunty': return True
-#        if ver in ['hardy', 'intrepid'] and get_arch()==32: return True 
-#        return False
-
 class QCad(_apt_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
     detail = ''
     category = 'em'
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     size = 18056000
-    logo = 'qcad.png'
-    def __init__(self):
-        self.pkgs = 'qcad'
+    pkgs = 'qcad'
         
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
@@ -128,28 +71,21 @@ class Moonlight(_apt_install):
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
     category = 'media'
-    logo = 'moonlight.png'
-    def __init__(self):
-        self.pkgs = 'moonlight-plugin-mozilla'
+    pkgs = 'moonlight-plugin-mozilla'
 
 class DisableGetty:
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    logo = 'tty.png'
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 if file_contain('tty%s'%i, 'start on runlevel 2'):
                     return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with TempOwn(filename) as o:
@@ -162,11 +98,8 @@ class DisableGetty:
                             contents[j]='stop on runlevel 3\n'
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with TempOwn(filename) as o:
@@ -179,26 +112,19 @@ class DisableGetty:
                             contents[j]='start on runlevel 3\n'
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
-    logo = 'tty.png'
     def support(self):
         return Config.get_Ubuntu_version() in ['karmic']
     def installed(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 if file_contain('tty%s.conf'%i, 'exec /sbin/getty -8 38400 tty%s'%i):
                     return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename) as o:
@@ -209,14 +135,11 @@ class DisableGettyKarmic(DisableGetty):
                             contents[j]='#exec\n'
                             break
                     else:
-                        raise Exception('Not found')
+                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/init/')
-        try:
+        with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename) as o:
@@ -227,21 +150,17 @@ class DisableGettyKarmic(DisableGetty):
                             contents[j]='exec /sbin/getty -8 38400 tty%s\n'%i
                             break
                     else:
-                        raise Exception('Not found')
+                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
     detail = _('Command: sudo apt-get install qtoctave')
-    logo = 'octave.png'
     license = 'GNU General Public License (GPL)'
     category = 'math'
     size = 1736000
-    def __init__(self):
-        self.pkgs = 'qtoctave'
+    pkgs = 'qtoctave'
     def remove(self):
         _apt_install.remove(self)
         run_as_root('apt-get remove octave* -qq')
@@ -254,7 +173,6 @@ class Generic_Genome_Browser:
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = 'Perl Artistic License v2'
-    logo = 'generic_genome_browser.png'
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run('sudo perl %s' %f)
@@ -271,10 +189,8 @@ class Screenlets(_apt_install):
        'Command: sudo apt-get install screenlets')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    logo = 'screenlets.png'
     size = 9089000
-    def __init__(self):
-        self.pkgs = 'screenlets'
+    pkgs = 'screenlets'
 
 class CompizSettingManager(_apt_install):
     __doc__ = _('Compiz settings manager')
@@ -284,21 +200,16 @@ class CompizSettingManager(_apt_install):
        'Command: sudo apt-get install compizconfig-settings-manager')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    logo = 'compizconfig.png'
     size = 4166000 #estimated
-    def __init__(self):
-        self.pkgs = 'compizconfig-settings-manager'
+    pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
     detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
-    logo = 'compizconfig.png'
     license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
-    logo = 'simple-ccsm.png'
-    def __init__(self):
-        self.pkgs = 'simple-ccsm'
+    pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
@@ -306,33 +217,26 @@ class ScienceBiology(_apt_install):
                'Command: sudo apt-get install med-bio')
     category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
-    logo = 'med-bio.png'
-    def __init__(self):
-        self.pkgs = 'med-bio'
+    pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
     detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'tuxpaint.png'
-    def __init__(self):
-        self.pkgs='tuxpaint'
+    pkgs = 'tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
-    logo = 'codeblocks.png'
-    def __init__(self):
-        self.pkgs = 'codeblocks'
+    pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
     detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'childsplay.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
@@ -340,20 +244,17 @@ class ChildsPlay(_apt_install):
         voice = 'childsplay-alphabet-sounds-'+lang
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
-        self.pkgs ='childsplay' + voice
+        self.pkgs = 'childsplay' + voice
         # There is no 'childsplay-plugins-lfc' package in Karmic :)
         # 'childsplay-plugins-lfc' is letterFlashscard game.
         if APT.exist('childsplay-plugins-lfc'):
             self.pkgs += ' childsplay-plugins-lfc'
-    def get_reason(self, f):
-        self._get_reason(f)
         
 class GCompris(_apt_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
     detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
-    logo = 'gcompris.png'
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
@@ -362,8 +263,6 @@ class GCompris(_apt_install):
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
         self.pkgs = 'gnucap gcompris' + voice
-    def get_reason(self, f):
-        self._get_reason(f)
  
 class QT_Creator(_apt_install):
     'Qt Creator'
@@ -371,17 +270,14 @@ class QT_Creator(_apt_install):
                'Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    logo = 'qtcreator.png'
-    def __init__(self):
-        self.pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
+    pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
 class Kadu(_apt_install):
     __doc__ = 'Kadu'
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : sudo apt-get install kadu')
     category = 'internet'
-    def __init__(self):
-        self.pkgs = 'kadu'
+    pkgs = 'kadu'
     def support(self):
         return Config.is_Poland_locale()
 
@@ -392,8 +288,7 @@ class Qnapi(_apt_install):
                 'Command: sudo apt-get install qnapi')
     license = 'GNU General Public License (GPL)'
     category = 'media'
-    def __init__(self):
-        self.pkgs = 'qnapi'
+    pkgs = 'qnapi'
     def support(self):
         return Config.is_Poland_locale()
 
@@ -402,32 +297,27 @@ class Qnapi(_apt_install):
 #    detail = _('Audacious is a media player which supports many media formats and third-party plugins.\n'
 #                   'Command: sudo apt-get install audacious')
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'audacious'    
+#    pkgs = 'audacious'    
 
 #class Miro(_apt_install):
 #    __doc__ = 'Miro'
 #    detail = _("Miro is a free and Internet TV application.\n"
 #                    "Command: sudo apt-get install miro")
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'miro'
+#    pkgs = 'miro'
 
 #class VLC(_apt_install):
 #    __doc__ = 'VLC'
 #    detail = _("VLC is a media player which supports many media formats.")
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'vlc'
+#    pkgs = 'vlc'
 
 class Parcellite(_apt_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
     license = 'GNU General Public License'
-    logo = 'parcellite.png'
-    def __init__(self):
-        self.pkgs = 'parcellite'
+    pkgs = 'parcellite'
     def support(self):
         return not ( Config.get_Ubuntu_version() in ['hardy'] )
 
@@ -438,9 +328,7 @@ class R_Language_Basic(_apt_install):
                'Command: sudo apt-get install r-base-core')
     category = 'statistics'
     license = 'GNU General Public License' 
-    logo = 'R_language.png'
-    def __init__(self):
-        self.pkgs = 'r-base-core'
+    pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
@@ -448,7 +336,6 @@ class R_Language_Full(_apt_install):
                'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
                'Command: sudo apt-get install r-base-core r-cran-*')
     category = 'statistics'
-    logo = 'R_language.png'
     license = 'GNU General Public License' 
     def __init__(self):
         import StringIO
@@ -463,24 +350,10 @@ class Bluefish(_apt_install):
     detail = _('Command: sudo apt-get install bluefish')
     license = 'GNU General Public License' 
     category = 'dev'
-    logo = 'bluefish.png'
-    def __init__(self):
-        self.pkgs = 'bluefish'
-
-#class Wallpaper_Tray(_apt_install):
-#    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
-#    category = 'appearance'
-#    detail = _('Command: sudo apt-get install wallpaper-tray\n'
-#               'After installation, please restart your computer. '
-#               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
-#    logo = 'wallpaper-tray.png'
-#    license = 'GNU General Public License'
-#    def __init__(self):
-#        self.pkgs = 'wallpaper-tray'
+    pkgs = 'bluefish'
 
 class _tasksel:
     category = 'server'
-    logo = 'tasksel.png'
     def install(self):
         Tasksel.install(self.name)
     def installed(self):
@@ -624,7 +497,6 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
-    logo = 'fcitx.png'
     license = 'GNU General Public License (GPL)'
     def install(self):
         if get_arch() == 32:
@@ -643,38 +515,30 @@ class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'xbmc.png'
     depends = Repo_XBMC
-    def __init__(self):
-        self.pkgs = 'xbmc'
+    pkgs = 'xbmc'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'songbird.png'
     depends = Repo_Songbird
-    def __init__(self):
-        self.pkgs = 'songbird'
+    pkgs = 'songbird'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
     category = 'media'
     license = 'GNU General Public License (GPL)'
-    logo = 'osd-lyrics.png'
     depends = Repo_OSD_Lyrics
-    def __init__(self):
-        self.pkgs = 'osdlyrics'
+    pkgs = 'osdlyrics'
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
-    logo = 'vuze.png'
     license = 'GNU General Public License (GPL)'
     detail = _('Command: sudo apt-get install vuze')
-    def __init__(self):
-        self.pkgs = 'vuze'
+    pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
@@ -683,26 +547,20 @@ class ImageMagick(_apt_install):
     detail = _('You can start it by /usr/bin/display\n'
                'Command: sudo apt-get install imagemagick')
     category = 'media'
-    logo = 'imagemagick.png'
-    def __init__(self):
-        self.pkgs = 'imagemagick'
+    pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
     detail = _("Command: sudo apt-get install pitivi")
-    logo = 'pitivi.png'
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
     category = 'media'
-    def __init__(self):
-        self.pkgs = 'pitivi'
+    pkgs = 'pitivi'
 
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    logo = 'acire.png'
     license = 'GNU General Public License'
     category = 'dev'
     depends = Repo_Acire
-    def __init__(self):
-        self.pkgs = 'acire'
+    pkgs = 'acire'
