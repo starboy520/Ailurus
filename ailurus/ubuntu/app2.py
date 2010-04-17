@@ -84,30 +84,26 @@ class PBC:
    
 class Build_Essential(_apt_install):
     'Build-essential'
-    detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
-               'Command: sudo apt-get install build-essential')
+    detail = _('By installing build-essential, you will get g++, make, gdb and libc.')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     pkgs = 'build-essential'
 
 class POSIX_ManPages(_apt_install):
     __doc__ = _('POSIX library manual pages')
-    detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.\n'
-              'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
+    detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
 class Ctags_Cscope(_apt_install):
     __doc__ = _('Ctags and Cscope: Popular source code parsers')
-    detail = _('Command: sudo apt-get install exuberant-ctags cscope')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     pkgs = 'exuberant-ctags cscope'
 
 class GMP(_apt_install):
     __doc__ = _('GNU multiprecision arithmetic library')
-    detail = _('Command: sudo apt-get install libgmp3-dev')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     pkgs = 'libgmp3-dev'
@@ -115,37 +111,32 @@ class GMP(_apt_install):
 class Ncurses_and_qt3mt(_apt_install):
     __doc__ = _('Ncurses5 and QT3')
     detail = _('libncurses5 is a library controlling writing to the console screen.\n'
-               'libqt3-mt is Trolltech Qt library, version 3.\n' 
-               'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
+               'libqt3-mt is Trolltech Qt library, version 3.') 
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'libncurses5-dev libqt3-mt-dev'
         
 class Svn_Git_bzr(_apt_install):
     __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
-    detail = _('Command: sudo apt-get install subversion git-core bzr')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
     __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
-    detail = _('Command: sudo apt-get install autoconf automake')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'autoconf automake'
         
 class FreeGLut3(_apt_install):
     __doc__ = _('OpenGL library')  
-    detail = _('This is a library for writing OpenGL programs.\n'
-                'Command: sudo apt-get install freeglut3-dev') 
+    detail = _('This is a library for writing OpenGL programs.')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'freeglut3-dev'
         
 class Boost(_apt_install):
     __doc__ = _('Boost library')
-    detail = _('Command: sudo apt-get install libboost-dev')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'libboost-dev'
@@ -154,52 +145,45 @@ class SDL(_apt_install):
     __doc__ = _('SDL library')
     detail = _('This is a library for writing SDL programs.\n'
                'SDL is a cross-platform multimedia library designed to provide low level access to audio'
-               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
-               'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
+               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.')
     category = 'dev'
     license ='GNU Lesser General Public License'
     pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
 #class PipeViewer(_apt_install):
 #    __doc__ = _('pv: a pipe viewer')
-#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-#               'Command: sudo apt-get install pv')
+#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
 #    license = ('Free software, ARTISTIC 2.0 license, '
 #               'see http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
           
 class AutoApt(_apt_install):
     'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.\n'
-               'Command: sudo apt-get install auto-apt')
+    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
     license = 'GNU General Public License (GPL)'
     pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
-    detail = _('Checkinstall help you build deb package. '
-               'Command: sudo apt-get install checkinstall')
+    detail = _('Checkinstall help you build deb package.')
     license = 'GNU General Public License (GPL)'
     pkgs = 'checkinstall'
         
 class Umbrello(_apt_install):
     __doc__ = _('Umbrello: UML modelling')
-    detail = _('Umbrello help you do UML modelling.\n'
-               'Command: sudo apt-get install umbrello')
+    detail = _('Umbrello help you do UML modelling.')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     pkgs = 'umbrello'
 
 class Ubuntu_Studio_Theme(_apt_install):
     __doc__ = _('Ubuntu Studio Theme')
-    detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
     license = 'GNU General Public License (GPL)'
     category = 'appearance'
     pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
     __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
-    detail = _('Command: sudo apt-get install minicom ckermit')
     license = 'GNU General Public License (GPL)'
     category = 'embedded'
     pkgs = 'minicom ckermit'
@@ -274,23 +258,20 @@ class GNOMEArtNextGen:
 
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
-    detail = _('It is the indispensable plotting application for writing Physics experiments reports.\n'
-       'Command: sudo apt-get install qtiplot')
+    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
     category = 'math'
     license = 'GNU General Public License (GPL)'
     pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
     __doc__ = _('Extcalc: A multifunctional graphic calculator')
-    detail = _('Command: sudo apt-get install extcalc')
     category = 'math'
     license = 'GNU General Public License (GPL)'
     pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
     __doc__ = _('Startup Manager: Change GRUB settings and themes')   
-    detail = _('Startup manager helps you change GRUB settings and themes.\n'
-               'Command: sudo apt-get install startupmanager')
+    detail = _('Startup manager helps you change GRUB settings and themes.')
     license = 'GNU General Public License (GPL)'
     category = 'appearance'
     pkgs = 'startupmanager'
@@ -298,16 +279,14 @@ class StartupManager(_apt_install):
 class Zhcon(_apt_install):
     __doc__ = _('Zhcon')
     detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
-               'You can launch it by "zhcon --utf8".\n'
-               'Command: sudo apt-get install zhcon')
+               'You can launch it by "zhcon --utf8".')
     Chinese = True
     license = 'GNU General Public License (GPL)'
     pkgs = 'zhcon'
         
 class PowerTop(_apt_install):
     'PowerTop'
-    detail = _('Powertop helps you save power for your laptop.\n'
-               'Command: sudo apt-get install powertop')
+    detail = _('Powertop helps you save power for your laptop.')
     license = 'GNU General Public License (GPL)'
     pkgs = 'powertop'
         

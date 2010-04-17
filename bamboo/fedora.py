@@ -249,10 +249,6 @@ class Repo_VirtualBox:
 
 class GStreamer_Codecs (_rpm_install) :
     __doc__ = _('Multi-media codec')
-    detail = _(
-       'Command: yum install '
-       'gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
-                     'gstreamer-plugins-good gstreamer-plugins-ugly')
     category = 'media'
     depends = Repo_RPMFusion_Free
     pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
@@ -260,7 +256,6 @@ class GStreamer_Codecs (_rpm_install) :
 
 class Adobe_Flash_Player(_rpm_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
-    detail = _('Command: yum install flash-plugin')
     category = 'media'
     depends = Repo_Adobe
     pkgs = 'flash-plugin'
@@ -349,7 +344,6 @@ class Skype(_rpm_install):
 
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')
-    detail = _('Command: yum install VirtualBox-OSE')
     category = 'vm'
     license = 'GNU General Public License (GPL)'
     depends = Repo_RPMFusion_Free

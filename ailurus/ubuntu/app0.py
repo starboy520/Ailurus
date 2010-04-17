@@ -26,7 +26,6 @@ from libapp import *
 
 class OpenJDK6:
     'OpenJDK 6'
-    detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
     license = 'GPL'
     def install(self):
@@ -59,8 +58,7 @@ class OpenJDK6:
 
 class WINE_1(_apt_install):
     'WINE 1.0'
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: sudo apt-get install wine wine-gecko')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
@@ -68,8 +66,7 @@ class WINE_1(_apt_install):
 
 class WINE_2(_apt_install):
     'WINE 1.2'
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: sudo apt-get install wine1.2 wine1.2-gecko')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
     license = ('GNU Lesser General Public License, '
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'

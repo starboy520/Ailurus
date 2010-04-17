@@ -63,8 +63,7 @@ class QCad(_apt_install):
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
     detail = _(u'Moonlight provides Windows® media codecs. '
-       u'By this application, you can enjoy Windows® video/audio in webpages.\n'
-       'Command: sudo apt-get install moonlight-plugin-mozilla')
+       u'By this application, you can enjoy Windows® video/audio in webpages.')
     license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
@@ -154,7 +153,6 @@ class DisableGettyKarmic(DisableGetty):
 
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    detail = _('Command: sudo apt-get install qtoctave')
     license = 'GNU General Public License (GPL)'
     category = 'math'
     pkgs = 'qtoctave'
@@ -182,8 +180,7 @@ class Screenlets(_apt_install):
     __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
     detail = _('Screenlets is able to add eye candy gadgets on desktop, '
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
-       'in order to decorate the desktop.\n'
-       'Command: sudo apt-get install screenlets')
+       'in order to decorate the desktop.')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
     pkgs = 'screenlets'
@@ -192,30 +189,26 @@ class CompizSettingManager(_apt_install):
     __doc__ = _('Compiz settings manager')
     detail = _('Compiz Fusion is the unification of the Beryl project and the community around the Compiz Window Manager. '
        'Compiz settings manager is the configuration application for Compiz Fusion. '
-       'It can configurate effects such as "Desktop cube" and "3D windows".\n'
-       'Command: sudo apt-get install compizconfig-settings-manager')
+       'It can configurate effects such as "Desktop cube" and "3D windows".')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
     pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
-    detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
     pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
-    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.\n' 
-               'Command: sudo apt-get install med-bio')
+    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.')
     category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
     pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
-    detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     pkgs = 'tuxpaint'
@@ -228,7 +221,6 @@ class CodeBlocks(_apt_install):
 
 class ChildsPlay(_apt_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
-    detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
@@ -246,7 +238,6 @@ class ChildsPlay(_apt_install):
         
 class GCompris(_apt_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
-    detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
     license = 'GNU General Public License (GPL)'
     def __init__(self):
@@ -260,8 +251,7 @@ class GCompris(_apt_install):
  
 class QT_Creator(_apt_install):
     'Qt Creator'
-    detail = _('This is an IDE for Qt.\n'
-               'Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig')
+    detail = _('This is an IDE for Qt.')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
@@ -278,8 +268,7 @@ class Kadu(_apt_install):
 class Qnapi(_apt_install):
     __doc__ = 'Qnapi'
     detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
-                'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.\n'
-                'Command: sudo apt-get install qnapi')
+                'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.')
     license = 'GNU General Public License (GPL)'
     category = 'media'
     pkgs = 'qnapi'
@@ -288,15 +277,13 @@ class Qnapi(_apt_install):
 
 #class Audacious(_apt_install):
 #    __doc__ = 'Audacious'
-#    detail = _('Audacious is a media player which supports many media formats and third-party plugins.\n'
-#                   'Command: sudo apt-get install audacious')
+#    detail = _('Audacious is a media player which supports many media formats and third-party plugins.')
 #    category = 'media'
 #    pkgs = 'audacious'    
 
 #class Miro(_apt_install):
 #    __doc__ = 'Miro'
-#    detail = _("Miro is a free and Internet TV application.\n"
-#                    "Command: sudo apt-get install miro")
+#    detail = _("Miro is a free and Internet TV application.")
 #    category = 'media'
 #    pkgs = 'miro'
 
@@ -318,8 +305,7 @@ class Parcellite(_apt_install):
 class R_Language_Basic(_apt_install):
     __doc__ = _('R language (basic development environment)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
-               'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base-core')
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
     license = 'GNU General Public License' 
     pkgs = 'r-base-core'
@@ -327,8 +313,7 @@ class R_Language_Basic(_apt_install):
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
-               'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base-core r-cran-*')
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
     license = 'GNU General Public License' 
     def __init__(self):
@@ -341,7 +326,6 @@ class R_Language_Full(_apt_install):
 
 class Bluefish(_apt_install):
     __doc__ = _('Bluefish: Edit HTML web-pages')
-    detail = _('Command: sudo apt-get install bluefish')
     license = 'GNU General Public License' 
     category = 'dev'
     pkgs = 'bluefish'
@@ -531,21 +515,18 @@ class Vuze_Karmic(_apt_install):
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
-    detail = _('Command: sudo apt-get install vuze')
     pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
 class ImageMagick(_apt_install):
     __doc__ = _('ImageMagick: Edit images')
-    detail = _('You can start it by /usr/bin/display\n'
-               'Command: sudo apt-get install imagemagick')
+    detail = _('You can start it by /usr/bin/display')
     category = 'media'
     pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
-    detail = _("Command: sudo apt-get install pitivi")
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
     category = 'media'

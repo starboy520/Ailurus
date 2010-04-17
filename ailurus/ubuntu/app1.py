@@ -67,7 +67,6 @@ class Full_Language_Pack(_apt_install):
 
 class Decompression_Capability(_apt_install) :
     __doc__ = _('Decompression software: 7z, rar, cab, ace')
-    detail = _('Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace')
     license = 'GPL'
     pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
 
@@ -80,14 +79,12 @@ class Typespeed(_apt_install) :
 
 class Evince_Read_Chinese_PDF(_apt_install) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
-    detail = _('Command: sudo apt-get install poppler-data')
     category='office'
     Chinese = True
     pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    detail = _('Command: sudo apt-get install chmsee')
     license = ('GNU General Public License (GPL), '
                'see http://code.google.com/p/chmsee/')
     category = 'office'
@@ -95,8 +92,7 @@ class CHMSee_Read_CHM_Documents(_apt_install) :
 
 class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
-    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
-       'Command: sudo apt-get install workrave')
+    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = ('GNU General Public License (GPL)'
                 'see http://sourceforge.net/projects/workrave/')
     pkgs = 'workrave'
@@ -180,9 +176,6 @@ class ColorfulBashPromptSymbols :
         
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
-    detail = _(
-       'Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad '
-       'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse')
     category = 'media'
     license = 'GNU Lesser General Public License'
     pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
@@ -217,7 +210,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
-    detail = _('Command: sudo apt-get install cups-pdf')
     license = 'GNU Lesser General Public License'
     category = 'office'
     pkgs = 'cups-pdf'
@@ -226,7 +218,6 @@ class CUPS(_apt_install):
         
 class Flash_Player(_apt_install):
     __doc__ = _(u'GNU Flash plugin for web browser')
-    detail = _('Command: sudo apt-get install gnash mozilla-plugin-gnash')
     category = 'media'
     license = 'GPL'
     pkgs = 'gnash mozilla-plugin-gnash'
@@ -258,14 +249,12 @@ class Flash_Player(_apt_install):
 class Stardict(_apt_install):
     __doc__ = _('Stardict')
     category = 'office'
-    detail = 'Command: sudo apt-get install stardict'
     license = 'GNU General Public License (GPL)'
     pkgs = 'stardict'
         
 class Liferea(_apt_install):
     __doc__ = _('Liferea: a RSS feed reader')
-    detail = _('This is a simple and easy used RSS feed reader.\n'
-       'Command: sudo apt-get install liferea')
+    detail = _('This is a simple and easy used RSS feed reader.')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
     pkgs = 'liferea'
@@ -273,23 +262,20 @@ class Liferea(_apt_install):
 class FireWall(_apt_install):
     __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
-       'Firestarter is the graphical frontend of "iptables".\n'
-       'Command: sudo apt-get install firestarter')
+       'Firestarter is the graphical frontend of "iptables".')
     license = 'GNU General Public License (GPL)'
     category = 'internet'
     pkgs = 'firestarter'
 
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
-    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
-               'Command: sudo apt-get install macchanger')
+    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
     license = 'GNU General Public License (GPL)'
     category = 'hardware'
     pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
     license = 'GNU General Public License (GPL)'
     category = 'hardware'
     pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
