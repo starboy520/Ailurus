@@ -269,7 +269,6 @@ class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
     detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
-    logo = 'compizconfig.png'
     license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
     logo = 'simple-ccsm.png'
