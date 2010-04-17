@@ -21,7 +21,7 @@
 
 from __future__ import with_statement
 import sys, os
-import gtk
+import gtk, pango
 from lib import *
 from libu import *
 
@@ -127,7 +127,91 @@ def __preferences(main_view):
     
     return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
 
+def right_label(text):
+    font = pango.FontDescription('Georgia')
+    ret = gtk.Label(text)
+    ret.modify_font(font)
+    ret.modify_fg(gtk.STATE_NORMAL, gtk.gdk.color_parse("#667766"))
+    ret.set_alignment(1, 0)
+    ret.set_justify(gtk.JUSTIFY_RIGHT)
+    return ret
+
+def left_label(text):
+    font = pango.FontDescription('Georgia')
+    ret = gtk.Label(text)
+    ret.modify_font(font)
+    ret.set_alignment(0, 0.5)
+    ret.set_justify(gtk.JUSTIFY_LEFT)
+    ret.set_selectable(True)
+    box = gtk.HBox()
+    box.pack_start(ret, True, True, 6)
+    return box
+
+def url_button(url):
+    import gtk
+    def func(w, url): open_web_page(url)
+    def enter(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
+    def leave(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+    label = gtk.Label()
+    label.set_markup("<span color='blue'><u>%s</u></span>"%url)
+    font = pango.FontDescription('Georgia')
+    label.modify_font(font)
+    button = gtk.Button()
+    button.connect('clicked', func, url)
+    button.connect('enter-notify-event', enter)
+    button.connect('leave-notify-event', leave)
+    button.set_relief(gtk.RELIEF_NONE)
+    button.add(label)
+    align = gtk.Alignment(0, 0.5)
+    align.add(button)
+    return align
+
+def show_contribution_to_ailurus():
+    titlelabel = gtk.Label()
+    titlelabel.set_markup('Contributing to <i>Ailurus</i>')
+    titlelabel.modify_font(pango.FontDescription('Georgia 20'))
+    
+    table = gtk.Table()
+    
+    table.set_border_width(15)
+    table.set_col_spacings(20)
+    table.set_row_spacings(15)
+    
+    table.attach(titlelabel, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('Project homepage:')), 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://ailurus.googlecode.com/'), 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('Code repository:')), 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://github.com/homerxing/Ailurus'), 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('Bug Tracker:')), 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://code.google.com/p/ailurus/issues/list'), 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('How to submit' '\n' 'patches:')), 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    text = left_label(_('Send me patches on github. No mailing list (yet?) but feel \n'
+                      'free to email me about possible features or whatever: \n'
+                      'homer.xing@gmail.com'))
+    table.attach(text, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('Maintainer of this' '\n' 'metadata page:')), 0, 1, 5, 6, gtk.FILL, gtk.FILL)
+    table.attach(left_label('Homer Xing'), 1, 2, 5, 6, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('Last modified:')), 0, 1, 6, 7, gtk.FILL, gtk.FILL)
+    table.attach(left_label('2010-4-17'), 1, 2, 6, 7, gtk.FILL, gtk.FILL)
+    
+    dialog = gtk.Dialog(title = _('Contributing to Ailurus'),
+                        flags = gtk.DIALOG_NO_SEPARATOR, 
+                        buttons = (gtk.STOCK_OK, gtk.RESPONSE_OK))
+    dialog.vbox.pack_start(table)
+    dialog.vbox.show_all()
+    dialog.run()
+    dialog.destroy()
+
 def __others(main_view):
+    help_contribute = gtk.MenuItem(_('Contributing to Ailurus'))
+    help_contribute.connect('activate', lambda w: show_contribution_to_ailurus())
+    
     help_blog = image_stock_menuitem(gtk.STOCK_HOME, _('Ailurus blog'))
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
@@ -155,7 +239,7 @@ def __others(main_view):
     changelog = gtk.MenuItem( _('Read changelog') )
     changelog.connect('activate', lambda *w: show_changelog())
     
-    return [ changelog, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
+    return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
