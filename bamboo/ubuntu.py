@@ -54,8 +54,7 @@ class Alice(_path_lists):
         if not os.path.exists('/opt'):
             gksudo('mkdir /opt')
         own_by_user('/opt')
-        FileServer.chdir('/opt')
-        try:
+        with Chdir('/opt') as o:
             run('tar jxf '+f)
             assert os.path.exists(self.dir)
             create_file(self.shortcut, '''[Desktop Entry]
@@ -67,8 +66,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Education;Science; ''')
-        finally:
-            FileServer.chdir_back()
 
 class AliPayFirefoxPlugin:
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
@@ -88,11 +85,8 @@ class AliPayFirefoxPlugin:
         import os
         if not os.path.exists(path):
             run('mkdir -p %s'%path)
-        FileServer.chdir(path)
-        try:
+        with Chdir(path) as o:
             run('tar zxf %s'%file)
-        finally:
-            FileServer.chdir_back()
     def installed(self):
         import os
         return (
@@ -132,8 +126,7 @@ class AstroMenace(_path_lists):
         import os
         if not os.path.exists('/opt'): gksudo('mkdir /opt')
         gksudo('chown $USER:$USER /opt')
-        FileServer.chdir('/opt')
-        try:
+        with Chdir('/opt') as o:
             run('tar xf %s'%f)
             create_file('/usr/share/applications/astromenace.desktop', 
 '''[Desktop Entry]
@@ -146,8 +139,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Game;''')
-        finally:
-            FileServer.chdir_back()
 
 #class EIOffice:
 #    __doc__ = _('Evermore Integrated Office 2009 free version')
@@ -160,8 +151,7 @@ Categories=Game;''')
 #    manual=True
 #    logo = 'eio.png'
 #    def install(self):
-#        FileServer.chdir_local()
-#        try:
+#        with Chdir('/tmp') as o:
 #            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
 #            run('tar xf %s' % f)
 #            run('chmod a+x EIOffice_Personal_Lin/setup')
@@ -182,8 +172,6 @@ Categories=Game;''')
 #                    run("tar zxf /tmp/eio.tar.gz")
 #                    notify( _('Installing EIOffice'), msg )
 #                    gksudo("./setup")
-#        finally:
-#            FileServer.chdir_back()
 #    def installed(self):
 #        import os
 #        return os.path.exists('/usr/bin/eio')

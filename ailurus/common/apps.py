@@ -98,8 +98,7 @@ Icon=/opt/bioclipse/icon.xpm
 #'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
 #88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
 #
-#        FileServer.chdir_local()
-#        try:
+#        with Chdir('/tmp') as o:
 #            run('tar jxf %s'%f)
 #            run_as_root('rm /usr/brlcad/ -rf')
 #            run_as_root('mv usr/brlcad/ /usr/')
@@ -111,8 +110,6 @@ Icon=/opt/bioclipse/icon.xpm
 #Terminal=true
 #Type=Application
 #Categories=Science;Engineering;''')
-#        finally:
-#            FileServer.chdir_back()
 
 class CreateDesktopFolder:
     __doc__ = _('Create a directory "Desktop" in your home folder')
