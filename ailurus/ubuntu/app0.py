@@ -92,8 +92,8 @@ class WINE_2(_apt_install):
 #    size = 72280 * 1000
 #    Chinese = True
 #    logo = 'wine.png'
+#    pkgs = 'ttf-wqy-zenhei wine wine-gecko'
 #    def __init__(self):
-#        self.pkgs = 'ttf-wqy-zenhei wine wine-gecko'
 #        self.wqy = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
 #    def install(self):
 #        _apt_install.install(self)
