@@ -102,24 +102,17 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
     
     def __query_work(self, to_install, to_remove):
-        size = 0
         msg = ''
         if len(to_install):
             msg += _('To be installed:\n')
             for obj in to_install: 
                 msg += '<span color="blue">%s</span>\n'%obj.__doc__
-                size += obj.size
             msg += '\n'
         if len(to_remove):
             msg += _('To be removed:\n')
             for obj in to_remove: 
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
-                size -= obj.size
             msg += '\n' 
-        #display size cost
-        if size:
-            if size>0: msg += _('%s disk space will be occupied.')%derive_size(size)
-            else: msg += _('%s disk space will be freed.')%derive_size(-size)
         
         dialog = gtk.MessageDialog( None,
             gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION,
