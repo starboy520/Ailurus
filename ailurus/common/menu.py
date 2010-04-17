@@ -182,23 +182,32 @@ def show_contribution_to_ailurus():
     table.attach(right_label(_('Project homepage:')), 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     table.attach(url_button('http://ailurus.googlecode.com/'), 1, 2, 1, 2, gtk.FILL, gtk.FILL)
     
-    table.attach(right_label(_('Code repository:')), 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    table.attach(url_button('http://github.com/homerxing/Ailurus'), 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(right_label(_('Project news:')), 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://ailurus.cn/'), 1, 2, 2, 3, gtk.FILL, gtk.FILL)
     
-    table.attach(right_label(_('Bug Tracker:')), 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    table.attach(url_button('http://code.google.com/p/ailurus/issues/list'), 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    table.attach(right_label(_('Code repository:')), 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://github.com/homerxing/Ailurus'), 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
-    table.attach(right_label(_('How to submit' '\n' 'patches:')), 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    table.attach(right_label(_('Bug Tracker:')), 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    table.attach(url_button('http://code.google.com/p/ailurus/issues/list'), 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+    
+    table.attach(right_label(_('How to submit' '\n' 'patches:')), 0, 1, 5, 6, gtk.FILL, gtk.FILL)
     text = left_label(_('Send me patches on github. No mailing list (yet?) but feel \n'
                       'free to email me about possible features or whatever: \n'
                       'homer.xing@gmail.com'))
-    table.attach(text, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+    text2 = left_label(_('How to use github? Please read:'))
+    box = gtk.VBox(False, 0)
+    box.pack_start(text, False)
+    box.pack_start(gtk.Label(), False)
+    box.pack_start(text2, False)
+    box.pack_start(url_button('http://wiki.github.com/homerxing/Ailurus/join-ailurus-development'))
+    table.attach(box, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
     
-    table.attach(right_label(_('Maintainer of this' '\n' 'metadata page:')), 0, 1, 5, 6, gtk.FILL, gtk.FILL)
-    table.attach(left_label('Homer Xing'), 1, 2, 5, 6, gtk.FILL, gtk.FILL)
+    table.attach(right_label(_('Maintainer of this' '\n' 'metadata page:')), 0, 1, 6, 7, gtk.FILL, gtk.FILL)
+    table.attach(left_label('Homer Xing'), 1, 2, 6, 7, gtk.FILL, gtk.FILL)
     
-    table.attach(right_label(_('Last modified:')), 0, 1, 6, 7, gtk.FILL, gtk.FILL)
-    table.attach(left_label('2010-4-17'), 1, 2, 6, 7, gtk.FILL, gtk.FILL)
+    table.attach(right_label(_('Last modified:')), 0, 1, 7, 8, gtk.FILL, gtk.FILL)
+    table.attach(left_label('2010-4-17'), 1, 2, 7, 8, gtk.FILL, gtk.FILL)
     
     dialog = gtk.Dialog(title = _('Contributing to Ailurus'),
                         flags = gtk.DIALOG_NO_SEPARATOR, 
