@@ -86,7 +86,6 @@ class WINE_2(_apt_install):
 #       'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
 #       'then Wen-Quan-Yi font is used as default Chinese font.')
 #    category = 'vm'
-#    size = 72280 * 1000
 #    Chinese = True
 #    pkgs = 'ttf-wqy-zenhei wine wine-gecko'
 #    def __init__(self):

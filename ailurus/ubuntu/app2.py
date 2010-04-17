@@ -51,7 +51,6 @@ class PBC:
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    size = ( 300 + 808 ) * 1000
     def install(self):
         if get_arch()==32:
             fdev=R(
@@ -222,7 +221,6 @@ class GNOMEArtNextGen:
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    size = 225 * 1000
     def install(self):
         if Config.get_Ubuntu_version() == 'hardy':
 
@@ -279,7 +277,6 @@ class QtiPlot(_apt_install) :
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.\n'
        'Command: sudo apt-get install qtiplot')
     category = 'math'
-    size = 6064 * 1000
     license = 'GNU General Public License (GPL)'
     pkgs = 'qtiplot'
 

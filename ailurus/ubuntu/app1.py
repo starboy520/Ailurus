@@ -61,7 +61,6 @@ class Full_Language_Pack(_apt_install):
 
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
-#    size = 172 * 1000
 #    pkgs='scim-bridge-client-qt'
 #    def support(self):
 #        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
@@ -75,7 +74,6 @@ class Decompression_Capability(_apt_install) :
 class Typespeed(_apt_install) :
     'Typespeed'
     detail= _('Typespeed is a typing practise. It only runs in terminal.')
-    size = 356 * 1000
     category = 'game'
     license = 'GNU Lesser General Public License (LGPL)'
     pkgs = "typespeed"
@@ -85,7 +83,6 @@ class Evince_Read_Chinese_PDF(_apt_install) :
     detail = _('Command: sudo apt-get install poppler-data')
     category='office'
     Chinese = True
-    size = 12276 * 1000
     pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
@@ -94,7 +91,6 @@ class CHMSee_Read_CHM_Documents(_apt_install) :
     license = ('GNU General Public License (GPL), '
                'see http://code.google.com/p/chmsee/')
     category = 'office'
-    size = 590 * 1000
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_apt_install) :
@@ -103,7 +99,6 @@ class Workrave_And_Auto_Start_It(_apt_install) :
        'Command: sudo apt-get install workrave')
     license = ('GNU General Public License (GPL)'
                 'see http://sourceforge.net/projects/workrave/')
-    size = 1012 * 1000
     pkgs = 'workrave'
     def __init__(self):
         import os
@@ -145,7 +140,6 @@ class VIM_and_VIMRC(_apt_install) :
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
     category = 'dev'
     license = 'GNU General Public License (GPL)'
-    size = 1892 * 1000
     pkgs = 'vim'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
@@ -191,7 +185,6 @@ class Multimedia_Codecs (_apt_install) :
        'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse')
     category = 'media'
     license = 'GNU Lesser General Public License'
-    size = 6868 * 1000
     pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
              'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
 
@@ -201,7 +194,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
        'Then a bug in "/etc/apparmor.d/usr.sbin.cupsd" file is eliminated.')
     __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
     __file = '/etc/apparmor.d/usr.sbin.cupsd'
-    size = 256 * 1000
     category = 'office'
     license = 'GNU Lesser General Public License'
     pkgs = 'cups-pdf'
@@ -276,7 +268,6 @@ class Liferea(_apt_install):
        'Command: sudo apt-get install liferea')
     category = 'internet'
     license = 'GNU General Public License (GPL)'
-    size = 3792 * 1000
     pkgs = 'liferea'
 
 class FireWall(_apt_install):
@@ -286,7 +277,6 @@ class FireWall(_apt_install):
        'Command: sudo apt-get install firestarter')
     license = 'GNU General Public License (GPL)'
     category = 'internet'
-    size = 1980 * 1000
     pkgs = 'firestarter'
 
 class MACChanger(_apt_install):

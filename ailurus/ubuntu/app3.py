@@ -33,7 +33,6 @@ class Varkon(_apt_install, _path_lists):
                _(u'Developed by Örebro university, Sweden.') )
     category = 'em'
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
-    size = 5000000
     pkgs = 'varkon-user-manual varkon'
     def __init__(self):
         self.shortcut = '/usr/share/applications/varkon.desktop'
@@ -59,7 +58,6 @@ class QCad(_apt_install):
     detail = ''
     category = 'em'
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
-    size = 18056000
     pkgs = 'qcad'
         
 class Moonlight(_apt_install):
@@ -159,7 +157,6 @@ class Octave(_apt_install):
     detail = _('Command: sudo apt-get install qtoctave')
     license = 'GNU General Public License (GPL)'
     category = 'math'
-    size = 1736000
     pkgs = 'qtoctave'
     def remove(self):
         _apt_install.remove(self)
@@ -189,7 +186,6 @@ class Screenlets(_apt_install):
        'Command: sudo apt-get install screenlets')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    size = 9089000
     pkgs = 'screenlets'
 
 class CompizSettingManager(_apt_install):
@@ -200,7 +196,6 @@ class CompizSettingManager(_apt_install):
        'Command: sudo apt-get install compizconfig-settings-manager')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    size = 4166000 #estimated
     pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
@@ -208,7 +203,6 @@ class CompizSettingManagerSimple(_apt_install):
     detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
     license = 'GNU General Public License (GPL)'
-    size = 635000 #estimated
     pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):

@@ -34,7 +34,6 @@ class Alice(_path_lists):
               _('Official site: <span color="blue"><u>http://www.alice.org/</u></span> .') + 
               _(' This application depends on Java.') )
     category = 'education'
-    size = 374600000
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
         self.shortcut = '/usr/share/applications/alice.desktop'
@@ -70,7 +69,6 @@ class AliPayFirefoxPlugin:
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
     detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
     category = 'firefox'
-    size = 240000
     Chinese = True
     def __init__(self):
         import os
@@ -110,7 +108,6 @@ class AstroMenace(_path_lists):
        'This is a full 3d style space shooter game. '
        'It supports mouse, keyboard and joystick control. '
        'Official site: http://www.viewizard.com/')
-    size = 62265282
     category = 'game'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
@@ -182,7 +179,6 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "CASthesis.zip" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 244000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -197,7 +193,6 @@ class XJTUTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "XJTUthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 3010000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -212,7 +207,6 @@ class HITTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "HITthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 2710000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -225,7 +219,6 @@ class HITTeXTemplate(_download_one_file) :
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefoxdev'
-    size = 907935
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
@@ -237,7 +230,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
-    size = 1026679
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
@@ -250,7 +242,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
-    size = 104411
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
@@ -263,7 +254,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
-    size = 383371
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
