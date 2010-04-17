@@ -59,8 +59,6 @@ class Full_Language_Pack(_apt_install):
         if not getattr(self.__class__, 'appended', False) and hasattr(self, 'pkgs'):
             self.__class__.appended = True
             self.__class__.detail += _('Command: ')+'sudo apt-get install '+self.pkgs
-    def get_reason(self, f):
-        self._get_reason(f)
 
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
@@ -78,8 +76,6 @@ class Decompression_Capability(_apt_install) :
     license = 'GPL'
     def __init__(self):
         self.pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
-    def get_reason(self, f):
-        self._get_reason(f)
 
 class Typespeed(_apt_install) :
     'Typespeed'
@@ -146,12 +142,6 @@ X-GNOME-Autostart-enabled=true
         import os
         if not os.path.exists(self.file): return False
         return _apt_install.installed(self)
-    def get_reason(self, f):
-        import os
-        if not APT.installed('workrave'):
-            print >>f, _('"%s" is not installed.')%'workrave'
-        if not os.path.exists(self.file):
-            print >>f, _('The file "%s" does not exist.')%self.file,
     def remove(self):
         _apt_install.remove(self)
         import os
@@ -220,8 +210,6 @@ class Multimedia_Codecs (_apt_install) :
     def __init__(self):
         self.pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
                       'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
-    def get_reason(self, f):
-        self._get_reason(f)
 
 class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
@@ -347,5 +335,3 @@ class Bluetooth(_apt_install):
     category = 'hardware'
     def __init__(self):
         self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
-    def get_reason(self, f):
-        self._get_reason(f)

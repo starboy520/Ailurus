@@ -327,8 +327,6 @@ class ChildsPlay(_apt_install):
         # 'childsplay-plugins-lfc' is letterFlashscard game.
         if APT.exist('childsplay-plugins-lfc'):
             self.pkgs += ' childsplay-plugins-lfc'
-    def get_reason(self, f):
-        self._get_reason(f)
         
 class GCompris(_apt_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
@@ -344,8 +342,6 @@ class GCompris(_apt_install):
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
         self.pkgs = 'gnucap gcompris' + voice
-    def get_reason(self, f):
-        self._get_reason(f)
  
 class QT_Creator(_apt_install):
     'Qt Creator'

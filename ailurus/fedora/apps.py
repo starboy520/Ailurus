@@ -93,12 +93,6 @@ X-GNOME-Autostart-enabled=true
         import os
         if not os.path.exists(self.file): return False
         return _rpm_install.installed(self)
-    def get_reason(self, f):
-        import os
-        if not RPM.installed('workrave'):
-            print >>f, _('"%s" is not installed.')%'workrave'
-        if not os.path.exists(self.file):
-            print >>f, _('The file "%s" does not exist.')%self.file,
     def remove(self):
         _rpm_install.remove(self)
         import os
@@ -211,8 +205,6 @@ class CommonUsedProgrammingPackages(_rpm_install):
     def __init__(self):
         self.pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
                      'qt3-devel subversion git')
-    def get_reason(self, f):
-        self._get_reason(f)
 
 class QtiPlot(_rpm_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')

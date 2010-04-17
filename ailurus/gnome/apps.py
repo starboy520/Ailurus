@@ -83,8 +83,6 @@ class Gedit_GB2312(_set_gconf) :
 ('/apps/gedit-2/preferences/encodings/auto_detected', [ 'GB2312', 'GBK', 'GB18030' ] ),
 ('/apps/gedit-2/preferences/encodings/shown_in_menu', [ 'GB2312' ] ),
                     )
-    def get_reason(self, f):
-        self._get_reason(f)
 
 class Speedup_Nautilus:
     __doc__ = _('Speed up Nautilus')

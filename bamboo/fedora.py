@@ -260,8 +260,6 @@ class GStreamer_Codecs (_rpm_install) :
     def __init__(self):
         self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
                      'gstreamer-plugins-good gstreamer-plugins-ugly')
-    def get_reason(self, f):
-        self._get_reason(f)
 
 class Adobe_Flash_Player(_rpm_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
