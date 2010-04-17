@@ -345,97 +345,78 @@ class _tasksel:
 
 class Tasksel_LAMP_server(_tasksel):
     __doc__ = _('LAMP: Install Apache2 + MySQL + PHP')
-    detail = _('Command: sudo tasksel install lamp-server')
     name = 'lamp-server'
 
 class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
-    detail = _('Command: sudo tasksel install dns-server')
     name = 'dns-server'
 
 class Tasksel_Mail_server(_tasksel):
     __doc__ = _('Mail server')
-    detail = _('Command: sudo tasksel install mail-server')
     name = 'mail-server'
 
 class Tasksel_Openssh_server(_tasksel):
     __doc__ = _('OpenSSH server')
-    detail = _('Command: sudo tasksel install openssh-server')
     name = 'openssh-server'
 
 class Tasksel_Postgresql_server(_tasksel):
     __doc__ = _('PostgreSQL server')
-    detail = _('Command: sudo tasksel install postgresql-server')
     name = 'postgresql-server'
 
 class Tasksel_Print_server(_tasksel):
     __doc__ = _('Printer server')
-    detail = _('Command: sudo tasksel install print-server')
     name = 'print-server'
 
 class Tasksel_Samba_server(_tasksel):
     __doc__ = _('Samba file sharing server')
-    detail = _('Command: sudo tasksel install samba-server')
     name = 'samba-server'
 
 class Tasksel_Tomcat_server(_tasksel):
     __doc__ = _('Tomcat Java server')
-    detail = _('Command: sudo tasksel install tomcat-server')
     name = 'tomcat-server'
 
 class Tasksel_Ubuntustudio_graphics(_tasksel):
     __doc__ = _('Ubuntustudio-graphics: 2D/3D creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-graphics')
     name = 'ubuntustudio-graphics'
 
 class Tasksel_Ubuntustudio_audio(_tasksel):
     __doc__ = _('Ubuntustudio-audio: Audio creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-audio')
     name = 'ubuntustudio-audio'
 
 class Tasksel_Ubuntustudio_audio_plugins(_tasksel):
     __doc__ = _('Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-audio-plugins')
     name = 'ubuntustudio-audio-plugins'
 
 class Tasksel_Mobile_MID(_tasksel):
     __doc__ = _('Ubuntu MID')
-    detail = _('Command: sudo tasksel install mobile-mid')
     name = 'mobile-mid'
 
 class Tasksel_Mobile_netbook_remix(_tasksel):
     __doc__ = _('Ubuntu Netbook')
-    detail = _('Command: sudo tasksel install mobile-netbook-remix')
     name = 'mobile-netbook-remix'
 
 class Tasksel_Ubuntustudio_video(_tasksel):
     __doc__ = _('Ubuntustudio-video: Video creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-video')
     name = 'ubuntustudio-video'
 
 class Tasksel_Mobile_Live(_tasksel):
     __doc__ = _('Ubuntu MID Live')
-    detail = _('Command: sudo tasksel install mobile-live')
     name = 'mobile-live'
 
 class Tasksel_Eucalyptus_simple_cluster(_tasksel):
     __doc__ = _('Eucalyptus cloud computing cluster')
-    detail = _('Command: sudo tasksel install eucalyptus-simple-cluster')
     name = 'eucalyptus-simple-cluster'
         
 class Tasksel_Eucalyptus_node(_tasksel):
     __doc__ = _('Eucalyptus cloud computing node')
-    detail = _('Command: sudo tasksel install eucalyptus-node')
     name = 'eucalyptus-node'
 
 class Tasksel_UEC(_tasksel):
     __doc__ = _('Ubuntu Enterprise Cloud server')
-    detail = _('Command: sudo tasksel install uec')
     name = 'uec'
 
 class Tasksel_Ubuntustudio_font_meta(_tasksel):
     __doc__ = _('Ubuntustudio-font-meta: A lot of font')
-    detail = _('Command: sudo tasksel install ubuntustudio-font-meta')
     name = 'ubuntustudio-font-meta'
 
 class Launch_Tasksel:
