@@ -8,6 +8,7 @@
       Remove get_reason() from _set_gconf.
       Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
       Do not write "logo=" attribute any more.
+      Remove "size=" attribute. 
 
 2010-04-16 Homer Xing <homer.xing@gmail.com>
 
