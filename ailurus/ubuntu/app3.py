@@ -428,7 +428,7 @@ class Launch_Tasksel:
         return False
     def install(self):
         if not APT.installed('tasksel'): APT.install('tasksel')
-        run('sudo tasksel')
+        run_as_root_in_terminal('tasksel')
         APT.cache_changed()
     def remove(self):
         raise NotImplementedError
