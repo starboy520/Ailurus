@@ -187,6 +187,8 @@ class _apt_install :
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
+    def installation_command(self):
+        return _('Command:') + ' sudo apt-get install ' + self.pkgs
 
 class _path_lists:
     def __check(self):
@@ -299,3 +301,5 @@ class _rpm_install:
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)

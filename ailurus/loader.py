@@ -70,6 +70,10 @@ def load_app_classes(common, desktop, distribution):
                     if obj().support()==False: continue
                 if hasattr(obj, 'Chinese'): 
                     if Config.is_Chinese_locale()==False: continue
+                if hasattr(obj, 'installation_command'):
+                    if obj.detail and not obj.detail.endswith('\n'):
+                        obj.detail += '\n'
+                    obj.detail += obj().installation_command()
                 obj.cache_installed = obj().installed()
                 if not isinstance(obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
