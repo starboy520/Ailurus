@@ -542,26 +542,6 @@ def own_by_user(*paths):
         if os.stat(path).st_uid != os.getuid():
             run_as_root('chown $USER:$USER "%s"'%path)
 
-class FileServer:
-    @classmethod
-    def chdir(cls, path):
-        is_string_not_empty(path)
-        import os
-        cls.__saved_path = os.getcwd()
-        os.chdir(path)
-    @classmethod
-    def chdir_local(cls):
-        import os
-        cls.__saved_path = os.getcwd()
-        if not os.path.exists('/var/cache/ailurus/'):
-            run_as_root('mkdir -p /var/cache/ailurus/')
-            run_as_root('chown $USER:$USER /var/cache/ailurus/')
-        os.chdir('/var/cache/ailurus/')
-    @classmethod
-    def chdir_back(cls):
-        import os
-        os.chdir(cls.__saved_path)
-
 def is_pkg_list(packages):
     if not len(packages): raise ValueError
     for package in packages:
