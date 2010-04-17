@@ -45,8 +45,7 @@ class Bioclipse(_path_lists):
         else:
             f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download'],
                   filename = 'bioclipse2.0.linux.gtk.x86_64.zip').download()
-        FileServer.chdir('/tmp')
-        try:
+        with Chdir('/tmp') as o:
             run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
@@ -69,8 +68,6 @@ Icon=/opt/bioclipse/icon.xpm
 ''')
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
-        finally:
-            FileServer.chdir_back()
 
 #class BRLCAD(_path_lists):
 #    __doc__ = _('BRL-CAD: Military solid modeling software')
@@ -323,8 +320,7 @@ class OpenJUMP(_path_lists):
 'http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
 12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
 
-        FileServer.chdir_local()
-        try:
+        with Chdir('/tmp') as o:
             run('unzip -oq %s'%f)
             import os
             if not os.path.exists('/opt'):
@@ -339,8 +335,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
-        finally:
-            FileServer.chdir_back()
 
 class QueryBeforeRmALotFiles :
     __doc__ = _('Query you before delete more than three files')

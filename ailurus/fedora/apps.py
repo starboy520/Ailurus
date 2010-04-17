@@ -238,18 +238,14 @@ class DisableGetty:
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     logo = 'tty.png'
     def installed(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 with open('tty%s'%i) as f:
                     content = f.read()
                 if 'exec /sbin/' in content: return False
             return True
-        finally:
-            FileServer.chdir_back()
     def install(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with open(filename) as f:
@@ -260,11 +256,8 @@ class DisableGetty:
                 with TempOwn(filename) as o:
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
     def remove(self):
-        FileServer.chdir('/etc/event.d/')
-        try:
+        with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 filename = 'tty%s'%i
                 with open(filename) as f:
@@ -275,8 +268,6 @@ class DisableGetty:
                 with TempOwn(filename) as o:
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-        finally:
-            FileServer.chdir_back()
 
 class Octave(_rpm_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
