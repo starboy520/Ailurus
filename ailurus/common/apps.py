@@ -76,7 +76,6 @@ Icon=/opt/bioclipse/icon.xpm
 #              _('A lot of commands are installed in /usr/brlcad/bin/') )
 #    category = 'em'
 #    size = 328851000
-#    logo = 'brlcad.png'
 #    license = ('BRL-CAD is a large system with various portions under different license '
 #               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
 #               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
@@ -230,7 +229,6 @@ class Netbeans(_apt_install):
 #               'Official site: http://netbeans.org/downloads/ .') +
 #              _(' This application depends on Java.') )
 #    category = 'dev'
-#    logo = 'netbeans.png'
 #    license = ('The majority of the NetBeans IDE 6.8 code is available under '
 #               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
 #               'and the GNU General Public License (GPL) v2. '

@@ -62,7 +62,6 @@ class Full_Language_Pack(_apt_install):
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
 #    size = 172 * 1000
-#    logo = 'scim.png'
 #    pkgs='scim-bridge-client-qt'
 #    def support(self):
 #        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
@@ -245,7 +244,6 @@ class Flash_Player(_apt_install):
 #    detail = _('Fix bug: characters are displayed as blank square in Flash.\n'
 #       'The trick behind is to modify "/etc/fonts/conf.d/49-sansserif.conf" file.')
 #    category = 'media'
-#    logo = 'flash.png'
 #    __file = '/etc/fonts/conf.d/49-sansserif.conf' 
 #    def installed(self):
 #        import os

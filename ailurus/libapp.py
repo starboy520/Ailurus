@@ -223,7 +223,6 @@ class _path_lists:
 class _ff_extension:
     'Firefox Extension'
     category = 'firefox'
-    logo = 'default.png'
     def __init__(self):
         if not hasattr(_ff_extension, 'ext_path'):
             _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
