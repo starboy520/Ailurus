@@ -64,8 +64,7 @@ class Full_Language_Pack(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
 #    size = 172 * 1000
 #    logo = 'scim.png'
-#    def __init__(self):
-#        self.pkgs='scim-bridge-client-qt'
+#    pkgs='scim-bridge-client-qt'
 #    def support(self):
 #        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
 
@@ -74,8 +73,7 @@ class Decompression_Capability(_apt_install) :
     detail = _('Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace')
     logo = 'extract.png'
     license = 'GPL'
-    def __init__(self):
-        self.pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
+    pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
 
 class Typespeed(_apt_install) :
     'Typespeed'
@@ -84,8 +82,7 @@ class Typespeed(_apt_install) :
     category = 'game'
     logo = 'typespeed.png'
     license = 'GNU Lesser General Public License (LGPL)'
-    def __init__(self):
-        self.pkgs = "typespeed"
+    pkgs = "typespeed"
 
 class Evince_Read_Chinese_PDF(_apt_install) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
@@ -94,8 +91,7 @@ class Evince_Read_Chinese_PDF(_apt_install) :
     Chinese = True
     size = 12276 * 1000
     logo = 'evince.png'
-    def __init__(self):
-        self.pkgs = 'poppler-data'
+    pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
@@ -105,8 +101,7 @@ class CHMSee_Read_CHM_Documents(_apt_install) :
     category = 'office'
     size = 590 * 1000
     logo = 'chmsee.png'
-    def __init__(self):
-        self.pkgs = 'chmsee'
+    pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
@@ -116,8 +111,8 @@ class Workrave_And_Auto_Start_It(_apt_install) :
                 'see http://sourceforge.net/projects/workrave/')
     size = 1012 * 1000
     logo = 'workrave.png'
+    pkgs = 'workrave'
     def __init__(self):
-        self.pkgs = 'workrave'
         import os
         self.path = os.path.expanduser('~/.config/autostart/')
         self.file = self.path + 'workrave.desktop'
@@ -159,12 +154,12 @@ class VIM_and_VIMRC(_apt_install) :
     license = 'GNU General Public License (GPL)'
     size = 1892 * 1000
     logo = 'vim.png'
+    pkgs = 'vim'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
     def __vimrc_install(self):
         file_append ( self.vimrc, *self.lines )
     def __init__(self):
-        self.pkgs = 'vim'
         import os
         self.vimrc = os.path.expanduser("~/.vimrc")
         self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
@@ -207,9 +202,8 @@ class Multimedia_Codecs (_apt_install) :
     license = 'GNU Lesser General Public License'
     size = 6868 * 1000
     logo = 'codec.png'
-    def __init__(self):
-        self.pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
-                      'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
+    pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
+             'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
 
 class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
@@ -221,8 +215,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     category = 'office'
     license = 'GNU Lesser General Public License'
     logo = 'cups.png'
-    def __init__(self):
-        self.pkgs = 'cups-pdf'
+    pkgs = 'cups-pdf'
     def install(self):
         _apt_install.install(self)
         run_as_root("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
@@ -247,8 +240,7 @@ class CUPS(_apt_install):
     license = 'GNU Lesser General Public License'
     category = 'office'
     logo = 'cups.png'
-    def __init__(self):
-        self.pkgs = 'cups-pdf'
+    pkgs = 'cups-pdf'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
         
@@ -258,8 +250,7 @@ class Flash_Player(_apt_install):
     category = 'media'
     license = 'GPL'
     logo = 'flash.png'
-    def __init__(self):
-        self.pkgs = 'gnash mozilla-plugin-gnash'
+    pkgs = 'gnash mozilla-plugin-gnash'
     
 #class Flash_Player_Font_Bug:
 #    __doc__ = _('Fix font bug in Flash plugin')
@@ -292,8 +283,7 @@ class Stardict(_apt_install):
     detail = 'Command: sudo apt-get install stardict'
     license = 'GNU General Public License (GPL)'
     logo = 'stardict.png'
-    def __init__(self):
-        self.pkgs = 'stardict'
+    pkgs = 'stardict'
         
 class Liferea(_apt_install):
     __doc__ = _('Liferea: a RSS feed reader')
@@ -303,8 +293,7 @@ class Liferea(_apt_install):
     license = 'GNU General Public License (GPL)'
     size = 3792 * 1000
     logo = 'liferea.png'
-    def __init__(self):
-        self.pkgs = 'liferea'
+    pkgs = 'liferea'
 
 class FireWall(_apt_install):
     __doc__ = _('Firestarter: Configure Linux firewall')
@@ -315,8 +304,7 @@ class FireWall(_apt_install):
     category = 'internet'
     size = 1980 * 1000
     logo = 'firestarter.png'
-    def __init__(self):
-        self.pkgs = 'firestarter'
+    pkgs = 'firestarter'
 
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
@@ -324,8 +312,7 @@ class MACChanger(_apt_install):
                'Command: sudo apt-get install macchanger')
     license = 'GNU General Public License (GPL)'
     category = 'hardware'
-    def __init__(self):
-        self.pkgs = 'macchanger'
+    pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
@@ -333,5 +320,4 @@ class Bluetooth(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'bluetooth.png'
     category = 'hardware'
-    def __init__(self):
-        self.pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+    pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

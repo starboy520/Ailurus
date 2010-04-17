@@ -66,8 +66,7 @@ class WINE_1(_apt_install):
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     logo = 'wine.png'
-    def __init__(self):
-        self.pkgs = 'wine wine-gecko'
+    pkgs = 'wine wine-gecko'
 
 class WINE_2(_apt_install):
     'WINE 1.2'
@@ -77,8 +76,7 @@ class WINE_2(_apt_install):
                'see http://wiki.winehq.org/Licensing')
     category = 'vm'
     logo = 'wine.png'
-    def __init__(self):
-        self.pkgs = 'wine1.2 wine1.2-gecko'
+    pkgs = 'wine1.2 wine1.2-gecko'
     def support(self):
         return APT.exist('wine1.2') and APT.exist('wine1.2-gecko')
     

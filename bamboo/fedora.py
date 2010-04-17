@@ -257,9 +257,8 @@ class GStreamer_Codecs (_rpm_install) :
     category = 'media'
     logo = 'codec.png'
     depends = Repo_RPMFusion_Free
-    def __init__(self):
-        self.pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
-                     'gstreamer-plugins-good gstreamer-plugins-ugly')
+    pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
+            'gstreamer-plugins-good gstreamer-plugins-ugly')
 
 class Adobe_Flash_Player(_rpm_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
@@ -267,8 +266,7 @@ class Adobe_Flash_Player(_rpm_install):
     category = 'media'
     logo = 'flash.png'
     depends = Repo_Adobe
-    def __init__(self):
-        self.pkgs = 'flash-plugin'
+    pkgs = 'flash-plugin'
 
 class AdobeReader(_rpm_install):
     __doc__ = _(u'Adobe® PDF Reader')
@@ -344,16 +342,14 @@ class VirtualBox(_rpm_install):
     manual = True
     logo = 'virtualbox.png'
     depends = Repo_VirtualBox
-    def __init__(self):
-        self.pkgs = 'virtualbox'
+    pkgs = 'virtualbox'
 
 class Skype(_rpm_install):
     'Skype'
     detail = _('With Skype you can make free calls over the Internet to other people. ')
     category = 'internet'
     depends = Repo_Skype
-    def __init__(self):
-        self.pkgs = 'skype'
+    pkgs = 'skype'
     def support(self):
         return get_arch() == 32
 
@@ -364,8 +360,7 @@ class VirtualBox_OSE(_rpm_install):
     license = 'GNU General Public License (GPL)'
     logo = 'virtualbox.png'
     depends = Repo_RPMFusion_Free
-    def __init__(self):
-        self.pkgs = 'VirtualBox-OSE'
+    pkgs = 'VirtualBox-OSE'
 
 class Repo_Chromium(_repo):
     'Chromium'

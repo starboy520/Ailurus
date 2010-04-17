@@ -225,8 +225,7 @@ class Netbeans(_apt_install):
                'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
                'and the GNU General Public License (GPL) v2. '
                'See http://netbeans.org/about/legal/license.html')
-    def __init__(self):
-        self.pkgs = 'netbeans'
+    pkgs = 'netbeans'
     
 #class Netbeans:
 #    __doc__ = _(u'Netbeans® 6.8')
@@ -356,8 +355,7 @@ class TeXLive2007(_apt_install):
     'TeXLive 2007'
     category = 'latex'
     logo = 'texlive.png'
-    def __init__(self):
-        self.pkgs = 'texlive'
+    pkgs = 'texlive'
 
 class TeXLive2009:
     __doc__ = _('TeXLive 2009')

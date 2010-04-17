@@ -157,8 +157,6 @@ class _set_gconf :
 
 class _apt_install :
     'Must subclass me and set "pkgs".'
-    def __init__(self):
-        raise NotImplementedError
     def __check(self):
         self.pkgs # check exists
         if type ( self.pkgs ) != str:
@@ -282,8 +280,6 @@ class _download_one_file:
             print >>f, _('"%s" does not exist.')%self.file,
 
 class _rpm_install:
-    def __init__(self):
-        raise Exception
     def _check(self):
         assert isinstance(self.pkgs, str)
     def install(self):

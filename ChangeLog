@@ -1,10 +1,12 @@
 2010-04-17 Homer Xing <homer.xing@gmail.com>
 
     * Add "Contributing to Ailurus" dialog in "Others" menu.
-    * Optimize source code: Replace FileServer by Chdir.
-                            Reduce reduplicative get_reason() call.
-                            Improve get_reason() in _apt_install, _rpm_install and _path_lists.
-                            Remove get_reason() from _set_gconf.
+    * Optimize source code: 
+      Replace FileServer by Chdir.
+	  Reduce reduplicative get_reason() call.
+      Improve get_reason() in _apt_install, _rpm_install and _path_lists.
+      Remove get_reason() from _set_gconf.
+      Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
 
 2010-04-16 Homer Xing <homer.xing@gmail.com>
 

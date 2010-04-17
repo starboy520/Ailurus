@@ -76,8 +76,7 @@ if Config.is_Fedora():
         logo = 'eclipse.png'
         license = ('Eclipse Public License (EPL), '
                    'see http://www.eclipse.org/org/documents/epl-v10.php')
-        def __init__(self):
-            self.pkgs = 'eclipse-platform'
+        pkgs = 'eclipse-platform'
 elif Config.is_Ubuntu():
     class Eclipse(_apt_install):
         __doc__ = _('Eclipse (basic development environment)')
@@ -91,8 +90,7 @@ elif Config.is_Ubuntu():
         logo = 'eclipse.png'
         license = ('Eclipse Public License (EPL), '
                    'see http://www.eclipse.org/org/documents/epl-v10.php')
-        def __init__(self):
-            self.pkgs = 'eclipse'
+        pkgs = 'eclipse'
 
 def make_sure_installed():
     if Config.is_Ubuntu():

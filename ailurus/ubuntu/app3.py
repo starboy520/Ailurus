@@ -35,8 +35,8 @@ class Varkon(_apt_install, _path_lists):
     license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
     size = 5000000
     logo = 'varkon.png'
+    pkgs = 'varkon-user-manual varkon'
     def __init__(self):
-        self.pkgs = 'varkon-user-manual varkon'
         self.shortcut = '/usr/share/applications/varkon.desktop'
         self.paths = [ self.shortcut ]
     def install(self):
@@ -63,8 +63,7 @@ Categories=Science;Engineering;''')
 #               'See http://sourceforge.net/projects/free-cad/')
 #    size = 15724000
 #    logo = 'freecad.png'
-#    def __init__(self):
-#        self.pkgs = 'freecad'
+#    pkgs = 'freecad'
 #    def install(self):
 #        if get_arch()==32 and Config.get_Ubuntu_version()=='hardy':
 #            
@@ -116,8 +115,7 @@ class QCad(_apt_install):
     license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
     size = 18056000
     logo = 'qcad.png'
-    def __init__(self):
-        self.pkgs = 'qcad'
+    pkgs = 'qcad'
         
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
@@ -129,8 +127,7 @@ class Moonlight(_apt_install):
                'See http://www.mono-project.com/Moonlight')
     category = 'media'
     logo = 'moonlight.png'
-    def __init__(self):
-        self.pkgs = 'moonlight-plugin-mozilla'
+    pkgs = 'moonlight-plugin-mozilla'
 
 class DisableGetty:
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
@@ -222,8 +219,7 @@ class Octave(_apt_install):
     license = 'GNU General Public License (GPL)'
     category = 'math'
     size = 1736000
-    def __init__(self):
-        self.pkgs = 'qtoctave'
+    pkgs = 'qtoctave'
     def remove(self):
         _apt_install.remove(self)
         run_as_root('apt-get remove octave* -qq')
@@ -255,8 +251,7 @@ class Screenlets(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'screenlets.png'
     size = 9089000
-    def __init__(self):
-        self.pkgs = 'screenlets'
+    pkgs = 'screenlets'
 
 class CompizSettingManager(_apt_install):
     __doc__ = _('Compiz settings manager')
@@ -268,8 +263,7 @@ class CompizSettingManager(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'compizconfig.png'
     size = 4166000 #estimated
-    def __init__(self):
-        self.pkgs = 'compizconfig-settings-manager'
+    pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
@@ -279,8 +273,7 @@ class CompizSettingManagerSimple(_apt_install):
     license = 'GNU General Public License (GPL)'
     size = 635000 #estimated
     logo = 'simple-ccsm.png'
-    def __init__(self):
-        self.pkgs = 'simple-ccsm'
+    pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
@@ -289,8 +282,7 @@ class ScienceBiology(_apt_install):
     category = 'biology'
     license = 'Eclipse Public License, GNU General Public License (GPL)'
     logo = 'med-bio.png'
-    def __init__(self):
-        self.pkgs = 'med-bio'
+    pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
@@ -298,16 +290,14 @@ class TuxPaint(_apt_install):
     category = 'education'
     license = 'GNU General Public License (GPL)'
     logo = 'tuxpaint.png'
-    def __init__(self):
-        self.pkgs='tuxpaint'
+    pkgs = 'tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
     license = 'GNU General Public License (GPL)'
     category = 'dev'
     logo = 'codeblocks.png'
-    def __init__(self):
-        self.pkgs = 'codeblocks'
+    pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
@@ -322,7 +312,7 @@ class ChildsPlay(_apt_install):
         voice = 'childsplay-alphabet-sounds-'+lang
         if not voice in voices: voice = ''
         else: voice = ' ' + voice
-        self.pkgs ='childsplay' + voice
+        self.pkgs = 'childsplay' + voice
         # There is no 'childsplay-plugins-lfc' package in Karmic :)
         # 'childsplay-plugins-lfc' is letterFlashscard game.
         if APT.exist('childsplay-plugins-lfc'):
@@ -350,16 +340,14 @@ class QT_Creator(_apt_install):
     category = 'dev'
     license = 'GNU General Public License (GPL)'
     logo = 'qtcreator.png'
-    def __init__(self):
-        self.pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
+    pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
 class Kadu(_apt_install):
     __doc__ = 'Kadu'
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : sudo apt-get install kadu')
     category = 'internet'
-    def __init__(self):
-        self.pkgs = 'kadu'
+    pkgs = 'kadu'
     def support(self):
         return Config.is_Poland_locale()
 
@@ -370,8 +358,7 @@ class Qnapi(_apt_install):
                 'Command: sudo apt-get install qnapi')
     license = 'GNU General Public License (GPL)'
     category = 'media'
-    def __init__(self):
-        self.pkgs = 'qnapi'
+    pkgs = 'qnapi'
     def support(self):
         return Config.is_Poland_locale()
 
@@ -380,23 +367,20 @@ class Qnapi(_apt_install):
 #    detail = _('Audacious is a media player which supports many media formats and third-party plugins.\n'
 #                   'Command: sudo apt-get install audacious')
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'audacious'    
+#    pkgs = 'audacious'    
 
 #class Miro(_apt_install):
 #    __doc__ = 'Miro'
 #    detail = _("Miro is a free and Internet TV application.\n"
 #                    "Command: sudo apt-get install miro")
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'miro'
+#    pkgs = 'miro'
 
 #class VLC(_apt_install):
 #    __doc__ = 'VLC'
 #    detail = _("VLC is a media player which supports many media formats.")
 #    category = 'media'
-#    def __init__(self):
-#        self.pkgs = 'vlc'
+#    pkgs = 'vlc'
 
 class Parcellite(_apt_install):
     __doc__ = _('Parcellite: clipboard manager')
@@ -404,8 +388,7 @@ class Parcellite(_apt_install):
                'It can preserve 25 strings concurrently.')
     license = 'GNU General Public License'
     logo = 'parcellite.png'
-    def __init__(self):
-        self.pkgs = 'parcellite'
+    pkgs = 'parcellite'
     def support(self):
         return not ( Config.get_Ubuntu_version() in ['hardy'] )
 
@@ -417,8 +400,7 @@ class R_Language_Basic(_apt_install):
     category = 'statistics'
     license = 'GNU General Public License' 
     logo = 'R_language.png'
-    def __init__(self):
-        self.pkgs = 'r-base-core'
+    pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
@@ -442,8 +424,7 @@ class Bluefish(_apt_install):
     license = 'GNU General Public License' 
     category = 'dev'
     logo = 'bluefish.png'
-    def __init__(self):
-        self.pkgs = 'bluefish'
+    pkgs = 'bluefish'
 
 #class Wallpaper_Tray(_apt_install):
 #    __doc__ = _('WallpaperTray: Randomly change GNOME desktop background')
@@ -453,8 +434,7 @@ class Bluefish(_apt_install):
 #               'Then right-click GNOME panel, and select "Add to panel"->"Wallpaper Tray".')
 #    logo = 'wallpaper-tray.png'
 #    license = 'GNU General Public License'
-#    def __init__(self):
-#        self.pkgs = 'wallpaper-tray'
+#    pkgs = 'wallpaper-tray'
 
 class _tasksel:
     category = 'server'
@@ -623,8 +603,7 @@ class XBMC(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'xbmc.png'
     depends = Repo_XBMC
-    def __init__(self):
-        self.pkgs = 'xbmc'
+    pkgs = 'xbmc'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
@@ -632,8 +611,7 @@ class Songbird(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'songbird.png'
     depends = Repo_Songbird
-    def __init__(self):
-        self.pkgs = 'songbird'
+    pkgs = 'songbird'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
@@ -641,8 +619,7 @@ class OSD_Lyrics(_apt_install):
     license = 'GNU General Public License (GPL)'
     logo = 'osd-lyrics.png'
     depends = Repo_OSD_Lyrics
-    def __init__(self):
-        self.pkgs = 'osdlyrics'
+    pkgs = 'osdlyrics'
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
@@ -651,8 +628,7 @@ class Vuze_Karmic(_apt_install):
     logo = 'vuze.png'
     license = 'GNU General Public License (GPL)'
     detail = _('Command: sudo apt-get install vuze')
-    def __init__(self):
-        self.pkgs = 'vuze'
+    pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
@@ -662,8 +638,7 @@ class ImageMagick(_apt_install):
                'Command: sudo apt-get install imagemagick')
     category = 'media'
     logo = 'imagemagick.png'
-    def __init__(self):
-        self.pkgs = 'imagemagick'
+    pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
@@ -672,8 +647,7 @@ class PiTiVi(_apt_install):
     license = ('GNU Lesser General Public License, '
                'see http://www.pitivi.org/')
     category = 'media'
-    def __init__(self):
-        self.pkgs = 'pitivi'
+    pkgs = 'pitivi'
 
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
@@ -682,5 +656,4 @@ class Acire(_apt_install):
     license = 'GNU General Public License'
     category = 'dev'
     depends = Repo_Acire
-    def __init__(self):
-        self.pkgs = 'acire'
+    pkgs = 'acire'
