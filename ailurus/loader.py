@@ -30,19 +30,19 @@ categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
 class BrokenClass(Exception):
     pass
 
-def check_class_members(obj, default_category = 'tweak'):
+def check_class_members(app_class, default_category = 'tweak'):
     import types
-    if type(obj)!=types.ClassType: raise TypeError, obj
-    if type( getattr(obj,'install',None) ) != types.MethodType: raise BrokenClass, obj
-    if type( getattr(obj,'installed',None) ) != types.MethodType: raise BrokenClass, obj
-    if type( getattr(obj,'remove',None) ) != types.MethodType: raise BrokenClass, obj
-    if not hasattr(obj,'category'): obj.category = default_category
-    if type( getattr(obj,'category','') ) != str: raise TypeError, obj
-    if not obj.category in categories: raise ValueError, obj.category
-    if not hasattr(obj, 'detail'): obj.detail=''
-    if type( getattr(obj,'detail','') ) != str: obj.detail = str( getattr(obj,'detail','') ) 
-    if obj.__doc__ is None: obj.__doc__ = obj.__name__
-    return obj
+    if type(app_class)!=types.ClassType: raise TypeError, app_class
+    if type( getattr(app_class,'install',None) ) != types.MethodType: raise BrokenClass, app_class
+    if type( getattr(app_class,'installed',None) ) != types.MethodType: raise BrokenClass, app_class
+    if type( getattr(app_class,'remove',None) ) != types.MethodType: raise BrokenClass, app_class
+    if not hasattr(app_class,'category'): app_class.category = default_category
+    if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
+    if not app_class.category in categories: raise ValueError, app_class.category
+    if not hasattr(app_class, 'detail'): app_class.detail=''
+    if type( getattr(app_class,'detail','') ) != str: app_class.detail = str( getattr(app_class,'detail','') ) 
+    if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
+    return app_class
 
 def load_app_classes(common, desktop, distribution):
     import lib
