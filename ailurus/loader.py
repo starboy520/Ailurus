@@ -30,20 +30,22 @@ categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
 class BrokenClass(Exception):
     pass
 
-def _load_class(obj, default_category = 'tweak'):
+def check_class_members(obj, default_category = 'tweak'):
     import types
     if type(obj)!=types.ClassType: raise TypeError, obj
     if type( getattr(obj,'install',None) ) != types.MethodType: raise BrokenClass, obj
     if type( getattr(obj,'installed',None) ) != types.MethodType: raise BrokenClass, obj
     if type( getattr(obj,'remove',None) ) != types.MethodType: raise BrokenClass, obj
+    if not hasattr(obj,'category'): obj.category = default_category
     if type( getattr(obj,'category','') ) != str: raise TypeError, obj
+    if not obj.category in categories: raise ValueError, obj.category
     if not hasattr(obj, 'detail'): obj.detail=''
     if type( getattr(obj,'detail','') ) != str: obj.detail = str( getattr(obj,'detail','') ) 
     if obj.__doc__ is None: obj.__doc__ = obj.__name__
-    if not hasattr(obj,'category'): obj.category = default_category
     return obj
 
 def load_app_classes(common, desktop, distribution):
+    import lib
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -51,33 +53,31 @@ def load_app_classes(common, desktop, distribution):
         if module and hasattr(module, 'apps'):
             modules.append(module.apps)
 
-    classobjs = []
+    classes = []
     names = set()
     for module in modules:
         for symbol in dir(module):
             if symbol[0]=='_': continue
-            import lib
             if symbol in dir(lib): continue
-            obj = getattr(module,symbol)
-            if type(obj)!=types.ClassType: continue
+            app_class = getattr(module,symbol)
+            if type(app_class)!=types.ClassType: continue
             if symbol in names: continue
     
             try:
-                _load_class(obj)
-                if not obj.category in categories:
-                    raise ValueError, obj.category
-                if hasattr(obj, 'support'):
-                    if obj().support()==False: continue
-                if hasattr(obj, 'Chinese'): 
+                check_class_members(app_class)
+                app_class_obj = app_class()
+                if hasattr(app_class, 'support'):
+                    if app_class_obj.support()==False: continue
+                if hasattr(app_class, 'Chinese'): 
                     if Config.is_Chinese_locale()==False: continue
-                if hasattr(obj, 'installation_command'):
-                    if obj.detail and not obj.detail.endswith('\n'):
-                        obj.detail += '\n'
-                    obj.detail += obj().installation_command()
-                obj.cache_installed = obj().installed()
-                if not isinstance(obj.cache_installed, bool):
+                if hasattr(app_class, 'installation_command'):
+                    if app_class.detail and not app_class.detail.endswith('\n'):
+                        app_class.detail += '\n'
+                    app_class.detail += app_class_obj.installation_command()
+                app_class.cache_installed = app_class_obj.installed()
+                if not isinstance(app_class.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
-                obj.showed_in_toggle = obj.cache_installed
+                app_class.showed_in_toggle = app_class.cache_installed
                 names.add(symbol)
             except:
                 import sys, traceback
@@ -85,9 +85,9 @@ def load_app_classes(common, desktop, distribution):
                 print >>sys.stderr, _('Traceback:')
                 traceback.print_exc(file=sys.stderr)
             else:
-                classobjs.append(obj)
+                classes.append(app_class)
 
-    return classobjs
+    return classes
 
 def _load_app_classes_from_module(module):
     import types
@@ -102,7 +102,7 @@ def _load_app_classes_from_module(module):
         if symbol in names: continue
 
         try:
-            _load_class(obj)
+            check_class_members(obj)
             if not obj.category in categories:
                 raise ValueError, obj.category
             if hasattr(obj, 'support'):
