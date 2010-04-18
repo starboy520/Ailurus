@@ -73,8 +73,7 @@ if Config.is_Fedora():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        license = ('Eclipse Public License (EPL), '
-                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse-platform'
 elif Config.is_Ubuntu():
     class Eclipse(_apt_install):
@@ -86,8 +85,7 @@ elif Config.is_Ubuntu():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        license = ('Eclipse Public License (EPL), '
-                   'see http://www.eclipse.org/org/documents/epl-v10.php')
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse'
 
 def make_sure_installed():
@@ -100,8 +98,7 @@ class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
     detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
+    license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
@@ -120,8 +117,7 @@ class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
     detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://pydev.org/about.html')
+    license = EPL + ' http://pydev.org/about.html'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
@@ -144,7 +140,7 @@ class Aptana:
                'Aptana cannot be removed by Ailurus. '
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
-    license = 'dual-licensed under the terms of Aptana Public License and GPL'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
@@ -167,7 +163,7 @@ class RadRails:
     detail = _('Over the past RadRails was called "RDT". '
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
     category = 'eclipse'
-    license = 'It is released under GPL v3 and Aptana Public License.'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.radrails.*')
@@ -189,9 +185,7 @@ class Mylyn(_path_lists):
     'Mylyn'
     detail = _('Mylyn is from http://www.eclipse.org/mylyn/downloads/')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
-    
+    license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
@@ -233,8 +227,7 @@ class PDT:
     __doc__ = _('PDT: PHP development')
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
+    license = EPL + ' http://www.eclipse.org/legal/'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
@@ -256,7 +249,7 @@ class Subversive:
     __doc__ = _('Subversive: Use SVN in Eclipse')
     detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
     category = 'eclipse'
-    license = 'Eclipse Public License (EPL)'
+    license = EPL
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
@@ -300,7 +293,7 @@ class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
     detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
     category = 'eclipse'
-    license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
+    license = DUAL_LICENSE(EPL, GPL)
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]

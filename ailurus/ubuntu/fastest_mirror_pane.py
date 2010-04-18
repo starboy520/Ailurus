@@ -314,7 +314,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
 
         for url,server in zip(urls,servers):
-            while len([t for t in threads if t.isAlive()])>10:
+            def alive_threads(threads):
+                i = 0
+                for t in threads:
+                    if t.isAlive(): i += 1
+                return i
+            while alive_threads(threads)>10:
                 import time
                 time.sleep(0.1)
             thread = PingThread(url, server, result)

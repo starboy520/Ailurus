@@ -75,7 +75,6 @@ Icon=/opt/bioclipse/icon.xpm
 #              _('Developed by Ballistic Research Laboratory. ') +
 #              _('A lot of commands are installed in /usr/brlcad/bin/') )
 #    category = 'em'
-#    size = 328851000
 #    license = ('BRL-CAD is a large system with various portions under different license '
 #               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
 #               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
@@ -145,9 +144,7 @@ class Electric(_path_lists):
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
                _(' This application depends on Java.') )
     category = 'em'
-    size = 11102000
-    license = ('GNU General Public License (GPL), '
-               'see http://www.staticfreesoft.com/productsFree.html')
+    license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
         self.file = '/opt/electricBinary.jar'
@@ -215,10 +212,7 @@ class Netbeans(_apt_install):
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
     category = 'dev'
-    license = ('The majority of the NetBeans IDE 6.8 code is available under '
-               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
-               'and the GNU General Public License (GPL) v2. '
-               'See http://netbeans.org/about/legal/license.html')
+    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
     
 #class Netbeans:
@@ -229,10 +223,7 @@ class Netbeans(_apt_install):
 #               'Official site: http://netbeans.org/downloads/ .') +
 #              _(' This application depends on Java.') )
 #    category = 'dev'
-#    license = ('The majority of the NetBeans IDE 6.8 code is available under '
-#               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
-#               'and the GNU General Public License (GPL) v2. '
-#               'See http://netbeans.org/about/legal/license.html')
+#    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
 #    def install(self):
 #        # Download Netbeans and install it.
 #        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
@@ -294,10 +285,9 @@ class OpenJUMP(_path_lists):
     detail = ( 
               _('Official site: http://openjump.org/ .') +
               _(' This application depends on Java.') )
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     category = 'geography'
-    size = 14124835
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/openjump.desktop'
         self.dir = '/opt/openjump-1.3'
@@ -351,7 +341,6 @@ class TeXLive2009:
     __doc__ = _('TeXLive 2009')
     detail = _('TeXLive is obtained from http://www.tug.org/texlive/')
     category = 'latex'
-    size = 1916986059
     license = ('all the material in TeX Live may be freely used, copied, '
                'modified, and redistributed, subject to the sources remaining freely available. '
                'See http://www.tug.org/texlive/copying.html')
@@ -430,7 +419,6 @@ class TsingHuaTeXTemplate(_download_one_file):
     detail = _('These templates include undergraduate dissertation template, master thesis template and PhD thesis template. '
        'They are developed by Tsing Hua University, China. Official website is http://thuthesis.sourceforge.net/\n'
        'After installation, a file "thuthesis.tgz" is placed in the folder "%s".')%os.environ['HOME']
-    size = 9000000 #estimated
     category = 'latex'
     Chinese = True
     license = 'GPL'
@@ -444,8 +432,7 @@ class TsingHuaTeXTemplate(_download_one_file):
 
 class FFAdblock(_ff_extension):
     __doc__ = _('Adblock+: Block 99% advertisement')
-    size = 1336773
-    license = 'Mozilla Public License 1.1.'
+    license = MPL
     def __init__(self):
         self.desc = _('It is able to block 99% ads and banners.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
@@ -459,8 +446,7 @@ class FFAdblock(_ff_extension):
 class FFAutoProxy(_ff_extension):
     __doc__ = _('AutoProxy: Proxy management via a third party list')
     Chinese = True
-    size = 500862
-    license = 'Mozilla Public License 1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
@@ -473,8 +459,7 @@ class FFAutoProxy(_ff_extension):
 
 class FFChromeTheme_3_0(_ff_extension):
     __doc__ = _('Chrome Theme for Firefox 3.0.*')
-    size = 1923143
-    license = 'MPL/GPL/LGPL tri-license'
+    license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.0.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
@@ -487,8 +472,7 @@ class FFChromeTheme_3_0(_ff_extension):
 
 class FFChromeTheme_3_5(_ff_extension): 
     __doc__ = _('Chrome Theme for Firefox 3.5.*')
-    size = 1610196
-    license = 'MPL/GPL/LGPL tri-license'
+    license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.5.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
@@ -501,8 +485,7 @@ class FFChromeTheme_3_5(_ff_extension):
 
 class FFCleanHide(_ff_extension):
     __doc__ = _('CleanHide: Delete hidden text in web page')
-    size = 51079
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _('If you find that some web page use hidden text and you cannot copy text easily, try this!')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
@@ -515,8 +498,7 @@ class FFCleanHide(_ff_extension):
 
 class FFDownloadStatusBar(_ff_extension): 
     __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
-    size = 1443763
-    license = 'Mozilla Public License, v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
@@ -529,8 +511,7 @@ class FFDownloadStatusBar(_ff_extension):
 
 class FFDownThemAll(_ff_extension):
     __doc__ = _('DownThemAll: A reliable multithread downloader')
-    size = 1561642
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _('It is able to download all images on web-pages.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
@@ -543,8 +524,7 @@ class FFDownThemAll(_ff_extension):
 
 class FFEasyDragToGo(_ff_extension):
     __doc__ = _('EasyDragToGo: Open new tabs by dragging text, links and pictures')
-    size = 121740
-    license = 'Mozilla Public License, v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
@@ -558,8 +538,7 @@ class FFEasyDragToGo(_ff_extension):
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
     category = 'firefoxdev'
-    size = 2383665
-    license = 'BSD License'
+    license = BSD
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
@@ -571,8 +550,7 @@ class FFFireBug(_ff_extension):
 
 class FFFireGesture(_ff_extension):
     __doc__ = _('FireGesture: Execute commands and user scripts by mouse gestures')
-    size = 333029
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('It supports five kinds of mouse gestures.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
@@ -585,8 +563,7 @@ class FFFireGesture(_ff_extension):
 
 class FFFlashgot(_ff_extension):
     __doc__ = _('Flashgot: A lightweight and reliable download managers')
-    size = 1161889
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _("It is able to download all the links, movies and audio clips of a page with a single click.")
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
@@ -598,8 +575,7 @@ class FFFlashgot(_ff_extension):
 
 class FFFoxyProxy(_ff_extension):
     __doc__ = _('FoxyProxy: One-click switching proxy')
-    size = 2086840
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
@@ -612,8 +588,7 @@ class FFFoxyProxy(_ff_extension):
 
 class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
-    size = 480077
-    license = 'MIT/X11 License'
+    license = MIT
     def __init__(self):
         self.desc = _('This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.'
               'You can download hundreds of scripts from http://userscripts.org, or '
@@ -630,8 +605,7 @@ class FFGreaseMonkey(_ff_extension):
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
     category = 'firefoxdev'
-    size = 175730
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
@@ -643,8 +617,7 @@ class FFLiveHTTPHeaders(_ff_extension):
 
 class FFNoscript(_ff_extension):
     __doc__ = _('NoScript: Allow active content to run only from sites you trust')
-    size = 1838461
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _(
               'Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks.' )
@@ -658,8 +631,7 @@ class FFNoscript(_ff_extension):
 class FFRadioGet(_ff_extension):
     __doc__  = _('SHA-DA network radio: Listen to and watch radio and TV programs in China')
     Chinese = True
-    size = 62549
-    license = 'GPL v3'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'http://ipget.cn/RadioGet/'
@@ -673,8 +645,7 @@ class FFRadioGet(_ff_extension):
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
     category = 'firefoxdev'
-    size = 801876
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
@@ -686,8 +657,7 @@ class FFSeoQuake(_ff_extension):
 
 class FFTabMixLite(_ff_extension):
     __doc__ = _('Tab Mix Lite CE: Re-open closed tabs')
-    size = 134296
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('Close tabs by double click tabs title. Re-open closed tabs.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/12391'
@@ -701,8 +671,7 @@ class FFTabMixLite(_ff_extension):
 class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
     category = 'firefoxdev'
-    size = 112344
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
@@ -714,8 +683,7 @@ class FFTamperData(_ff_extension):
 
 class FFUserAgentSwitcher(_ff_extension):
     __doc__ = _('User Agent Switcher: Camousflag Firefox as other kinds of browsers.')
-    size = 183930
-    license = 'GPL v3'
+    license = GPL
     def __init__(self):
         self.desc = _('It tells the remote websites that you are an IE user.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59'
@@ -728,8 +696,7 @@ class FFUserAgentSwitcher(_ff_extension):
 class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
     category = 'firefoxdev'
-    size = 89958
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
@@ -741,8 +708,7 @@ class FFViewSourceChart(_ff_extension):
 
 class FFWeaveSync35(_ff_extension):
     __doc__ = _('Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
-    size = 1098397
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
@@ -755,8 +721,7 @@ class FFWeaveSync35(_ff_extension):
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
     category = 'firefoxdev'
-    size = 2420362
-    license = 'LGPL v3.0'
+    license = LGPL
     def __init__(self):
         self.desc = _('Many developers installed it.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
@@ -768,8 +733,7 @@ class FFWebDeveloper(_ff_extension):
 
 class FFYetAnotherSmoothScrolling(_ff_extension):
     __doc__ = _('Yet Another Smooth Scrolling: Customize scrolling behavior')
-    size = 136295
-    license = 'BSD License'
+    license = BSD
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
@@ -783,8 +747,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
 class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
     category = 'firefoxdev'
-    size = 797081
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
@@ -798,7 +761,7 @@ class WorldofPadman:
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
-    license = 'GNU General Public License (GPL), see http://sourceforge.net/projects/wop-engine/'
+    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
     category = 'game'
     def install(self):
         file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()

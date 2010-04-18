@@ -24,19 +24,19 @@ import sys, os
 from lib import *
 
 #class Open_Repogen_Website:
-#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-#    category = 'repository'
-#    def installed(self): 
-#        return False
-#    def install(self):
-#        open_web_page('http://repogen.simplylinux.ch/')
-#    def remove(self):
-#        pass
+# __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
+# detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
+# 'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
+# category = 'repository'
+# def installed(self):
+# return False
+# def install(self):
+# open_web_page('http://repogen.simplylinux.ch/')
+# def remove(self):
+# pass
 
-class _repo:
-    this_class_is_a_repository = True
+class _repo(I):
+    this_is_a_repository = True
     category = 'repository'
     fresh_cache = False
 
@@ -90,7 +90,7 @@ class _repo:
         
         assert isinstance(self.apt_file, str)
         assert isinstance(self.apt_conf, list)
-        for i,a in enumerate(self.apt_conf): 
+        for i,a in enumerate(self.apt_conf):
             is_string_not_empty(a)
             if a.endswith('\n'): raise ValueError(a)
             if '$' in a: #variable substitution
@@ -115,7 +115,7 @@ class _repo:
         if self.apt_content:
             print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.apt_content, '</b>'
         print >>msg, _('<i>Web page:</i>'), self.web_page
-        print >>msg, _('<i>Source setting:</i>'), 
+        print >>msg, _('<i>Source setting:</i>'),
         for a in self.apt_conf:
             print >>msg, a
         self.__class__.detail = msg.getvalue()
@@ -150,23 +150,90 @@ class _repo:
         if self.key_id:
             run_as_root('apt-key del '+self.key_id, ignore_error=True)
 
-class Repo_Firefox_3_6(_repo):
-    __doc__ = _('Firefox 3.6 (stable)')
-    license = 'MPL, GNU GPL, GNU LGPL'
+def get_owner_and_name(ppa):
+    assert not ppa.startswith("ppa:")
+    ppa_owner = ppa.split("/")[0]
+    try:
+        ppa_name = ppa.split("/")[1]
+    except IndexError, e:
+        ppa_name = "ppa"
+    return (ppa_owner, ppa_name)
+
+def get_deb_line(ppa_owner, ppa_name, distro_codename):
+    return "deb http://ppa.launchpad.net/%s/%s/ubuntu %s main" % (
+        ppa_owner, ppa_name, distro_codename)
+
+def get_repos_file_name(ppa_owner, ppa_name, distro_codename):
+    return "%s-%s-%s.list" % (ppa_owner, ppa_name, distro_codename)
+
+def get_signing_key(ppa_owner, ppa_name):
+    import urllib2, re
+    lp_url = ('https://launchpad.net/api/beta/~%s/+archive/%s' % (
+        ppa_owner, ppa_name))
+    try:
+        req = urllib2.Request(lp_url)
+        req.add_header("Accept","application/json")
+        lp_page = urllib2.urlopen(req).read()
+        signing_key_fingerprint = re.findall(
+            '\"signing_key_fingerprint\": \"(\w*)\"', lp_page)[0]
+        return signing_key_fingerprint
+    except URLError, e:
+        import traceback, sys
+        traceback.print_exc(file = sys.stderr)
+        return None
+
+def add_signing_key(signing_key_fingerprint):
+    run_as_root_in_terminal("apt-key adv --keyserver keyserver.ubuntu.com --recv " + signing_key_fingerprint)
+
+def del_signing_key(signing_key_fingerprint):
+    run_as_root_in_terminal("apt-key del " + signing_key_fingerprint)
+
+class _launchpad(I):
+    this_is_a_repository = True
+    category = 'repository'
     def __init__(self):
-        self.desc = _('This repository contains Firefox stable version 3.6.')
-        self.apt_content = 'firefox'
-        self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
-        self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'
-        self.apt_conf = ['deb http://ppa.launchpad.net/mozillateam/firefox-stable/ubuntu $version main']
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x9BDB3D89CE49EC21'
-        self.key_id = 'CE49EC21'
-        _repo.__init__(self)
+        assert isinstance(self.ppa, str)
+        if hasattr(self, 'content'): assert isinstance(self.content, str)
+        if hasattr(self, 'desc'): assert isinstance(self.desc, (unicode, str))
+        self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
+        self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
+        self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
+
+        import StringIO
+        msg = StringIO.StringIO()
+        if hasattr(self, 'desc'): print >>msg, self.desc
+        if hasattr(self, 'content'):
+            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
+        print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
+        print >>msg, _('<i>Source setting:</i>'), self.deb_config
+        self.__class__.detail = msg.getvalue()
+    def install(self):
+        _repo.refresh_cache()
+        _repo.add_to_source(self.repos_file_name, self.deb_config)
+        _repo.save_source()
+        _repo.fresh_cache = False
+        signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
+        if signing_key: add_signing_key(signing_key)
+    def installed(self):
+        _repo.refresh_cache()
+        return _repo.exists_in_source(self.deb_config)
+    def remove(self):
+        _repo.refresh_cache()
+        _repo.remove_from_source(self.deb_config)
+        _repo.save_source()
+        _repo.fresh_cache = False
+        signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
+        if signing_key: del_signing_key(signing_key)
+
+class Repo_Firefox_3_6(_launchpad):
+    __doc__ = _('Firefox 3.6 (stable)')
+    license = TRI_LICENSE(MPL, GPL, LGPL)
+    ppa = 'mozillateam/firefox-stable'
+    content = 'firefox'
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
-    license = 'GNU Lesser General Public License (LGPL)'
-    logo = 'playonlinux.png'
+    license = LGPL
     def __init__(self):
         self.desc = _('PlayOnLinux is a front-end for wine. '
             'It helps to install Windows Games and softwares on Linux.')
@@ -180,8 +247,7 @@ class Repo_PlayOnLinux(_repo):
 
 class Repo_WINE(_repo):
     __doc__ = _('WINE (beta version)')
-    license = ('GNU Lesser General Public License (LGPL)'
-               'see http://wiki.winehq.org/Licensing')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     def __init__(self):
         self.desc = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
@@ -193,119 +259,65 @@ class Repo_WINE(_repo):
         self.key_id = 'F9CB8DB0'
         _repo.__init__(self)
 
-class Repo_Ailurus(_repo):
+class Repo_Ailurus(_launchpad):
     __doc__ = _('Ailurus (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('This is the repository of Ailurus.')
-        self.apt_content = 'ailurus'
-        self.web_page = 'https://launchpad.net/~ailurus/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/ailurus.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/ailurus/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A16033A9A6FE242'
-        self.key_id = '9A6FE242'
-        _repo.__init__(self)
+    license = GPL
+    ppa = 'ailurus'
+    content = 'ailurus'
 
-class Repo_AWN_Development(_repo):
+class Repo_AWN_Development(_launchpad):
     __doc__ = _('AWN (beta version)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'awn.png'
-    def __init__(self):
-        self.desc = _('AWN is a MacOS X like panel for GNOME. '
+    license = GPL
+    desc = _('AWN is a MacOS X like panel for GNOME. '
             'This repository provides the latest version of AWN.')
-        self.apt_content = 'avant-window-navigator-trunk'
-        self.web_page = 'https://launchpad.net/~awn-testing/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/awn_development.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/awn-testing/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xB0BE17C2A0C914F086B7B8327D2C7A23BF810CD5'
-        self.key_id = 'BF810CD5'
-        _repo.__init__(self)
+    content = 'avant-window-navigator-trunk'
+    ppa = 'awn-testing'
 
-class Repo_Blueman(_repo):
+class Repo_Blueman(_launchpad):
     __doc__ = _('Blueman (stable)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'blueman.png'
-    def __init__(self):
-        self.desc = _('Blueman is a graphical blue-tooth manager.')
-        self.apt_content = 'blueman'
-        self.web_page = 'https://launchpad.net/~blueman/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/blueman.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/blueman/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x947C4F7371932C794B153F0F6B15AB91951DC1E2'
-        self.key_id = '951DC1E2'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('Blueman is a graphical blue-tooth manager.')
+    content = 'blueman'
+    ppa = 'blueman'
 
-class Repo_Christine(_repo):
+class Repo_Christine(_launchpad):
     __doc__ = _('Christine (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('Christine is a small media player.')
-        self.apt_content = 'christine'
-        self.web_page = 'https://launchpad.net/~markuz/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/christine.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/markuz/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x09B5EC6264345EE1423E3C637FE57DFD1F808920'
-        self.key_id = '1F808920'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('Christine is a small media player.')
+    content = 'christine'
+    ppa = 'markuz'
 
-class Repo_Chromium_Daily(_repo):
+class Repo_Chromium_Daily(_launchpad):
     __doc__ = _('Chromium (beta version)')
-    license = 'BSD license, MIT License, LGPL, Ms-PL, MPL/GPL/LGPL tri-license'
-    logo = 'chromium.png'
-    def __init__(self):
-        self.desc = _('Chromium is the open source version of Google Chrome.')
-        self.apt_content = 'chromium-browser'
-        self.web_page = 'https://launchpad.net/~chromium-daily/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/chromium.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/chromium-daily/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xFBEF0D696DE1C72BA5A835FE5A9BF3BB4E5E17B5'
-        self.key_id = '4E5E17B5'
-        _repo.__init__(self)
+    license = BSD
+    desc = _('Chromium is the open source version of Google Chrome.')
+    content = 'chromium-browser'
+    ppa = 'chromium-daily'
 
-class Repo_GTG(_repo):
+class Repo_GTG(_launchpad):
     __doc__ = _('Getting things GNOME (stable)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'gtg.png'
-    def __init__(self):
-        self.desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
-        self.apt_content = 'gtg'
-        self.web_page = 'https://launchpad.net/~gtg/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/gtg.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/gtg/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x88C03D7B5195CEAFF3F9F7A7B82A968F7AC9B38F'
-        self.key_id = '7AC9B38F'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
+    content = 'gtg'
+    ppa = 'gtg'
 
-class Repo_GNOMEColors(_repo):
+class Repo_GNOMEColors(_launchpad):
     __doc__ = _('GNOME colors (stable)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'gnome_color.png'
-    def __init__(self):
-        self.desc = _('This repository contains some themes.')
-        self.apt_content = 'arc-colors gnome-colors shiki-colors-murrine'
-        self.web_page = 'https://launchpad.net/~gnome-colors-packagers/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/gnome-colors.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/gnome-colors-packagers/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x41C2359B9C2F88F0D47040322D79F61BE8D31A30'
-        self.key_id = 'E8D31A30'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('This repository contains some themes.')
+    content = 'arc-colors gnome-colors shiki-colors-murrine'
+    ppa = 'gnome-colors-packagers'
 
-class Repo_GlobalMenu(_repo):
+class Repo_GlobalMenu(_launchpad):
     __doc__ = _('GNOME Global Menu (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
-        self.apt_content = 'gnome-globalmenu'
-        self.web_page = 'https://launchpad.net/~globalmenu-team/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/gnome-globalmenu.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/globalmenu-team/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE97F4DB8F1F0EC20FF792CA37889D725DA6DEEAA'
-        self.key_id = 'DA6DEEAA'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
+    content = 'gnome-globalmenu'
+    ppa = 'globalmenu-team'
 
 class Repo_Medibuntu(_repo):
     __doc__ = _('Medibuntu (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
             'There are many packages in this repository. The list of packages is in http://packages.medibuntu.org/')
@@ -317,36 +329,23 @@ class Repo_Medibuntu(_repo):
         self.key_id = '0C5A2783'
         _repo.__init__(self)
 
-class Repo_Moovida(_repo):
+class Repo_Moovida(_launchpad):
     __doc__ = _('Moovida (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('Moovida is a cross platform media player.')
-        self.apt_content = 'moovida'
-        self.web_page = 'https://launchpad.net/~moovida-packagers/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/moovida.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/moovida-packagers/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE478BB3B6BCD9F67C5137DF13135CD5C26C2E075'
-        self.key_id = '26C2E075'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('Moovida is a cross platform media player.')
+    content = 'moovida'
+    ppa = 'moovida-packagers'
 
-class Repo_Shutter(_repo):
+class Repo_Shutter(_launchpad):
     __doc__ = _('Shutter (stable)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'shutter.png'
-    def __init__(self):
-        self.desc = _('Shutter is a powerful screenshot program.')
-        self.apt_content = 'shutter'
-        self.web_page = 'https://launchpad.net/~shutter/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/shutter.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/shutter/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5017D4931D0ACADE295B68ADFC6D7D9D009ED615'
-        self.key_id = '009ED615'
-        _repo.__init__(self)
-
+    license = GPL
+    desc = _('Shutter is a powerful screenshot program.')
+    content = 'shutter'
+    ppa = 'shutter'
+    
 class Repo_Synapse(_repo):
     __doc__ = _('Synapse (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Synapse is an instant messager.')
         self.apt_content = 'synapse'
@@ -357,61 +356,51 @@ class Repo_Synapse(_repo):
         self.key_id = '1654E635'
         _repo.__init__(self)
 
-class Repo_X_Server_Updates(_repo):
+class Repo_X_Server_Updates(_launchpad):
     __doc__ = _('X server updates (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('This repository provides latest versions of X.org drivers, libraries.')
-        self.apt_content = ( 'fglrx-installer xfree86-driver-synaptics xserver-xorg-input-vmmouse xserver-xorg-video-ati ' +
+    license = GPL
+    desc = _('This repository provides latest versions of X.org drivers, libraries.')
+    content = ( 'fglrx-installer xfree86-driver-synaptics xserver-xorg-input-vmmouse xserver-xorg-video-ati ' +
                              'xserver-xorg-video-intel xserver-xorg-video-nv' )
-        self.web_page = 'https://launchpad.net/~ubuntu-x-swat/+archive/x-updates'
-        self.apt_file = '/etc/apt/sources.list.d/x_server_updates.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/ubuntu-x-swat/x-updates/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x643DC6BD56580CEB1AB4A9F63B22AB97AF1CDFA9'
-        self.key_id = 'AF1CDFA9'
-        _repo.__init__(self)
+    ppa = 'ubuntu-x-swat/x-updates'
         
-class Repo_WebkitGTK(_repo):
+class Repo_WebkitGTK(_launchpad):
     __doc__ = _('WebkitGTK (stable)')
-    license = 'GNU Lesser General Public License (LGPL)'
-    def __init__(self):
-        self.desc = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
-        self.apt_content = 'webkit pywebkitgtk'
-        self.web_page = 'https://launchpad.net/~webkit-team/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/webkit_gtk.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/webkit-team/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x612D9FE65C733A79BB2AB07D991E6CF92D9A3C5B'
-        self.key_id = '2D9A3C5B'
-        _repo.__init__(self)
-
-class Repo_XBMC(_repo):
+    license = LGPL
+    desc = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
+    content = 'webkit pywebkitgtk'
+    ppa = 'webkit-team'
+    
+class Repo_XBMC(_launchpad):
     __doc__ = _('XBMC (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
-        self.apt_content = 'xbmc'
-        self.web_page = 'https://launchpad.net/~team-xbmc/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/xbmc.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/team-xbmc/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x189701DA570C56B9488EF60A6D975C4791E7EE5E'
-        self.key_id = '91E7EE5E'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
+    content = 'xbmc'
+    ppa = 'team-xbmc'
 
-class Repo_IBus(_repo):
+class Repo_IBus_Jaunty(_launchpad):
     __doc__ = _('IBus (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        version = Config.get_Ubuntu_version()
-        self.desc = _('Next generation input method')
-        self.apt_content = 'ibus ibus-table ibus-pinyin'
-        self.web_page = 'https://launchpad.net/~ibus-dev/+archive/ibus-1.2-%s'%version
-        self.apt_file = '/etc/apt/sources.list.d/ibus.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/ibus-dev/ibus-1.2-%s/ubuntu $version main'%version ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x72DBF294B86C9BEB7170023321C022AA985E0E11'
-        self.key_id = '985E0E11'
-        _repo.__init__(self)
+    license = GPL
+    content = 'ibus ibus-table ibus-pinyin'
+    ppa = 'ibus-dev/ibus-1.2-jaunty'
     def support(self):
-        return Config.get_Ubuntu_version() in ['jaunty', 'intrepid', 'karmic']
+        return Config.get_Ubuntu_version() == 'jaunty'
+
+class Repo_IBus_Intrepid(_launchpad):
+    __doc__ = _('IBus (stable)')
+    license = GPL
+    content = 'ibus ibus-table ibus-pinyin'
+    ppa = 'ibus-dev/ibus-1.2-intrepid'
+    def support(self):
+        return Config.get_Ubuntu_version() == 'intrepid'
+
+class Repo_IBus_Karmic(_launchpad):
+    __doc__ = _('IBus (stable)')
+    license = GPL
+    content = 'ibus ibus-table ibus-pinyin'
+    ppa = 'ibus-dev/ibus-1.2-karmic'
+    def support(self):
+        return Config.get_Ubuntu_version() == 'karmic'
 
 class Repo_Canonical_Partner(_repo):
     __doc__ = _('Partners of Canonical')
@@ -427,8 +416,7 @@ class Repo_Canonical_Partner(_repo):
 
 class Repo_RSSOwl(_repo):
     __doc__ = _('RSSOwl (stable)')
-    license = 'Eclipse Public License'
-    logo = 'rssowl.png'
+    license = EPL
     def __init__(self):
         self.desc = _('RSSOwl is an RSS reader.')
         self.apt_content = 'rssowl'
@@ -439,51 +427,31 @@ class Repo_RSSOwl(_repo):
         self.key_id = 'E53168C7'
         _repo.__init__(self)
 
-class Repo_Gmchess(_repo):
+class Repo_Gmchess(_launchpad):
     __doc__ = _('Gmchess (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     Chinese = True
-    def __init__(self):
-        self.desc = _('This is a Chinese chess game.')
-        self.apt_content = 'gmchess'
-        self.web_page = 'https://launchpad.net/~gmchess/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/gmchess.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/gmchess/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xE71F16D021FF134C818ECAC3FA442F4B04F95913'
-        self.key_id = '04F95913'
-        _repo.__init__(self)
+    desc = _('This is a Chinese chess game.')
+    content = 'gmchess'
+    ppa = 'gmchess'
 
-class Repo_Exaile(_repo):
+class Repo_Exaile(_launchpad):
     __doc__ = _('Exaile (beta version)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('A music manager and player for GTK+ written in Python.')
-        self.apt_content = 'exaile'
-        self.web_page = 'https://launchpad.net/~exaile-devel/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/exaile-devel.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/exaile-devel/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xB79BBC58DE219687E584187AC174A7B143CBFCC0'
-        self.key_id = '43CBFCC0'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('A music manager and player for GTK+ written in Python.')
+    content = 'exaile'
+    ppa = 'exaile-devel'
 
-class Repo_Audacious(_repo):
+class Repo_Audacious(_launchpad):
     __doc__ = _('Audacious (beta version)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'audacious.png'
-    def __init__(self):
-        self.desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
-        self.apt_content = 'audacious audacious-plugins'
-        self.web_page = 'https://launchpad.net/~dupondje/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/audacious.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/dupondje/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x227B9873BAD137667B06772ACD51A93283874559'
-        self.key_id = '83874559'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
+    content = 'audacious audacious-plugins'
+    ppa = 'dupondje'
         
 class Repo_Tor(_repo):
     __doc__ = _('Tor (stable)')
-    license = 'BSD License'
-    logo = 'tor.png'
+    license = BSD
     def __init__(self):
         self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
         'confidential business activities and relationships, and state security known as traffic analysis.')
@@ -497,7 +465,7 @@ class Repo_Tor(_repo):
 
 class Repo_RedNoteBook(_repo):
     __doc__ = _('RedNoteBook (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This is a desktop diary application.')
         self.apt_content = 'rednotebook'
@@ -508,72 +476,38 @@ class Repo_RedNoteBook(_repo):
         self.key_id = 'FF95D333'
         _repo.__init__(self)
 
-class Repo_Pidgin_Develop(_repo):
+class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')
-    license = 'GNU General Public License (GPL)'
-    logo = 'pidgin.png'
-    def __init__(self):
-        self.desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
-        self.apt_content = 'pidgin'
-        self.web_page = 'https://launchpad.net/~pidgin-developers/+archive/ppa' 
-        self.apt_file = '/etc/apt/sources.list.d/pidgin.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/pidgin-developers/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x67265EB522BDD6B1C69E66ED7FB8BEE0A1F196A8'
-        self.key_id = 'A1F196A8'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
+    content = 'pidgin'
+    ppa = 'pidgin-developers'
 
-class Repo_Songbird(_repo):
+class Repo_Songbird(_launchpad):
     __doc__ = _('Songbird (beta version)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
-        self.apt_content = 'songbird'
-        self.web_page = 'https://launchpad.net/~songbird-daily/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/songbird.list'
-        self.apt_conf = ['deb http://ppa.launchpad.net/songbird-daily/ppa/ubuntu $version main']
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x31E0163DFE442D34A17B17BDD725E4885719E347'
-        self.key_id = '5719E347'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
+    content = 'songbird'
+    ppa = 'songbird-daily'
 
-class Repo_OSD_Lyrics(_repo):
+class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('It displays lyrics. It supports many media players.')
-        self.apt_content = 'osd-lyrics'
-        self.web_page = 'https://launchpad.net/~osd-lyrics/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/osd_lyrics.list'
-        self.apt_conf = ['deb http://ppa.launchpad.net/osd-lyrics/ppa/ubuntu $version main']
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?get&search=0xA1CE4D88AB90650AD1C2EB2C97F6E5D34865CF4F'
-        self.key_id = '4865CF4F'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('It displays lyrics. It supports many media players.')
+    content = 'osd-lyrics'
+    ppa = 'osd-lyrics'
 
-class Repo_Mplayer_VOD(_repo):
+class Repo_Mplayer_VOD(_launchpad):
     __doc__ = _('Mplayer-VOD (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
-        self.apt_content = 'mplayer'
-        self.web_page = 'https://launchpad.net/~homer-xing/+archive/mplayer-vod'
-        self.apt_file = '/etc/apt/sources.list.d/mplayer-vod.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/homer-xing/mplayer-vod/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0xFDC8AE7E17C96D481FEA0410D10C093AFFA63A31'
-        self.key_id = 'FFA63A31'
-        _repo.__init__(self)
+    license = GPL
+    desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
+    content = 'mplayer'
+    ppa = 'homer-xing/mplayer-vod'
     def support(self):
         return False
-	
-class Repo_Acire(_repo):
+
+class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.desc = ''
-        self.apt_content = 'acire'
-        self.web_page = 'https://launchpad.net/acire'
-        self.apt_file = '/etc/apt/sources.list.d/acire.list' 
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/acire-team/acire-releases/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x07559D60D0879214'
-        self.key_id = 'D0879214'
-        _repo.__init__(self)
-    def support(self):
-        return False
+    license = GPL
+    content = 'acire'
+    ppa = 'acire-team/acire-releases'

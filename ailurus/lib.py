@@ -26,6 +26,9 @@ D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
+class I:
+    this_is_an_installer = True
+    
 class Config:
     @classmethod
     def make_config_dir(cls):
@@ -228,6 +231,34 @@ class Config:
 
 Config.init()
 
+def install_locale(force_reload=False):
+    assert isinstance(force_reload, bool)
+    
+    if force_reload or getattr(install_locale, 'installed', False)==False:
+        install_locale.installed = True
+    else: return
+
+    import gettext
+    gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
+
+install_locale()
+
+GPL = _('GNU General Public License')
+LGPL = _('GNU Lesser General Public License')
+EPL = _('Eclipse Public License')
+MPL = _('Mozilla Public License')
+BSD = _('Berkeley Software Distribution License')
+MIT = _('MIT License')
+CDDL = _('Common Development and Distribution License')
+APL = _('Aptana Public License')
+AL = _('Artistic License')
+
+def DUAL_LICENSE(A, B):
+    return _('Dual-licensed under %(A)s and %(B)s') % {'A':A, 'B':B}
+
+def TRI_LICENSE(A, B, C):
+    return _('Tri-licensed under %(A)s, %(B)s and %(C)s') % {'A':A, 'B':B, 'C':C}
+
 class ResponseTime:
     map = {}
     changed = False
@@ -308,18 +339,6 @@ except:
     except:
         import traceback
         traceback.print_exc()
-
-def install_locale(force_reload=False):
-    assert isinstance(force_reload, bool)
-    
-    if force_reload or getattr(install_locale, 'installed', False)==False:
-        install_locale.installed = True
-    else: return
-
-    import gettext
-    gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
-
-install_locale()
 
 class CommandFailError(Exception):
     'Fail to execute a command'

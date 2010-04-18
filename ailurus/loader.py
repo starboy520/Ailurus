@@ -30,23 +30,21 @@ categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
 class BrokenClass(Exception):
     pass
 
-def _load_class(obj, default_category = 'tweak'):
+def check_class_members(app_class, default_category = 'tweak'):
     import types
-    if type(obj)!=types.ClassType: raise TypeError, obj
-    if type( getattr(obj,'install',None) ) != types.MethodType: raise BrokenClass, obj
-    if type( getattr(obj,'installed',None) ) != types.MethodType: raise BrokenClass, obj
-    if type( getattr(obj,'remove',None) ) != types.MethodType: raise BrokenClass, obj
-    size_type = type( getattr(obj,'size',1) )
-    if size_type != int and size_type != long: raise TypeError, obj
-    if type( getattr(obj,'category','') ) != str: raise TypeError, obj
-    if not hasattr(obj, 'detail'): obj.detail=''
-    if type( getattr(obj,'detail','') ) != str: obj.detail = str( getattr(obj,'detail','') ) 
-    if obj.__doc__ is None: obj.__doc__ = obj.__name__
-    if not hasattr(obj,'size'): obj.size = 0
-    if not hasattr(obj,'category'): obj.category = default_category
-    return obj
+    if type(app_class)!=types.ClassType: raise TypeError, app_class
+    if type( getattr(app_class,'install',None) ) != types.MethodType: raise BrokenClass, app_class
+    if type( getattr(app_class,'installed',None) ) != types.MethodType: raise BrokenClass, app_class
+    if type( getattr(app_class,'remove',None) ) != types.MethodType: raise BrokenClass, app_class
+    if not hasattr(app_class,'category'): app_class.category = default_category
+    if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
+    if not app_class.category in categories: raise ValueError, app_class.category
+    if not hasattr(app_class, 'detail'): app_class.detail=''
+    if type( getattr(app_class,'detail','') ) != str: app_class.detail = str( getattr(app_class,'detail','') ) 
+    if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
+    return app_class
 
-def load_app_classes(common, desktop, distribution):
+def load_app_objs(common, desktop, distribution):
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -54,74 +52,66 @@ def load_app_classes(common, desktop, distribution):
         if module and hasattr(module, 'apps'):
             modules.append(module.apps)
 
-    classobjs = []
+    objs = []
     names = set()
     for module in modules:
-        for symbol in dir(module):
-            if symbol[0]=='_': continue
-            import lib
-            if symbol in dir(lib): continue
-            obj = getattr(module,symbol)
-            if type(obj)!=types.ClassType: continue
-            if symbol in names: continue
+        for name in dir(module):
+            if name in names: continue
+            if name[0]=='_' or name=='I': continue
+            app_class = getattr(module,name)
+            if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
     
             try:
-                _load_class(obj)
-                if not obj.category in categories:
-                    raise ValueError, obj.category
-                if hasattr(obj, 'support'):
-                    if obj().support()==False: continue
-                if hasattr(obj, 'Chinese'): 
-                    if Config.is_Chinese_locale()==False: continue
-                obj.cache_installed = obj().installed()
-                if not isinstance(obj.cache_installed, bool):
+                check_class_members(app_class)
+                app_class_obj = app_class()
+                if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+                if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
+                if hasattr(app_class_obj, 'installation_command'):
+                    if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
+                        app_class_obj.detail += '\n'
+                    app_class_obj.detail += app_class_obj.installation_command()
+                app_class_obj.cache_installed = app_class_obj.installed()
+                if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
-                obj.showed_in_toggle = obj.cache_installed
-                names.add(symbol)
+                app_class_obj.showed_in_toggle = app_class_obj.cache_installed
+                objs.append(app_class_obj)
+                names.add(name)
             except:
                 import sys, traceback
-                print >>sys.stderr, _('Cannot load class %s')%symbol
-                print >>sys.stderr, _('Traceback:')
+                print >>sys.stderr, _('Cannot load class %s') % name
                 traceback.print_exc(file=sys.stderr)
-            else:
-                classobjs.append(obj)
 
-    return classobjs
+    return objs
 
-def _load_app_classes_from_module(module):
+def load_app_objs_from_extension(extension):
+    from ailurus.lib import I
     import types
     classobjs = []
     names = set()
-    for symbol in dir(module):
-        if symbol[0]=='_': continue
-        import lib
-        if symbol in dir(lib): continue
-        obj = getattr(module,symbol)
-        if type(obj)!=types.ClassType: continue
-        if symbol in names: continue
+    for name in dir(extension):
+        if name[0]=='_' or name=='I': continue
+        if name in names: continue
+        app_class = getattr(extension,name)
+        if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
 
         try:
-            _load_class(obj)
-            if not obj.category in categories:
-                raise ValueError, obj.category
-            if hasattr(obj, 'support'):
-                if obj().support()==False: continue
-            if hasattr(obj, 'international'): 
-                if Config.is_Chinese_locale(): continue
-            if hasattr(obj, 'Chinese'): 
-                if Config.is_Chinese_locale()==False: continue
-            obj.cache_installed = obj().installed()
-            if not isinstance(obj.cache_installed, bool):
+            check_class_members(app_class)
+            app_class_obj = app_class()
+            if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+            if hasattr(app_class_obj, 'international') and Config.is_Chinese_locale(): continue
+            if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
+            app_class_obj.cache_installed = app_class_obj.installed()
+            if not isinstance(app_class_obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
-            obj.showed_in_toggle = obj.cache_installed
-            names.add(symbol)
+            app_class_obj.showed_in_toggle = app_class_obj.cache_installed
+            names.add(name)
         except:
             import sys, traceback
-            print >>sys.stderr, _('Cannot load class %s')%symbol
+            print >>sys.stderr, _('Cannot load class %s')%name
             print >>sys.stderr, _('Traceback:')
             traceback.print_exc(file=sys.stderr)
         else:
-            classobjs.append(obj)
+            classobjs.append(app_class_obj)
 
     return classobjs
 
@@ -129,7 +119,7 @@ def load_custom_app_classes():
     return_value = []
     # check whether the extension directory exist
     import os
-    extension_path = Config.get_config_dir() + 'extension'
+    extension_path = Config.get_config_dir()
     if not os.path.exists(extension_path):
         return []
     # add the extension directory to sys.path
@@ -143,7 +133,7 @@ def load_custom_app_classes():
         basename = os.path.splitext(filename)[0]
         try:
             module = __import__(basename)
-            return_value.extend( _load_app_classes_from_module(module) )
+            return_value.extend( load_app_objs_from_extension(module) )
         except:
             import traceback
             traceback.print_exc()

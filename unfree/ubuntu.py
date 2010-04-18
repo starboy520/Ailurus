@@ -34,7 +34,6 @@ class Alice(_path_lists):
               _('Official site: <span color="blue"><u>http://www.alice.org/</u></span> .') + 
               _(' This application depends on Java.') )
     category = 'education'
-    size = 374600000
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
         self.shortcut = '/usr/share/applications/alice.desktop'
@@ -51,7 +50,7 @@ class Alice(_path_lists):
 
         import os
         if not os.path.exists('/opt'):
-            gksudo('mkdir /opt')
+            run_as_root('mkdir /opt')
         own_by_user('/opt')
         with Chdir('/opt') as o:
             run('tar jxf '+f)
@@ -66,11 +65,10 @@ Terminal=false
 Type=Application
 Categories=Education;Science; ''')
 
-class AliPayFirefoxPlugin:
+class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
     detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
     category = 'firefox'
-    size = 240000
     Chinese = True
     def __init__(self):
         import os
@@ -97,9 +95,9 @@ class AliPayFirefoxPlugin:
         run('rm -f %s'%(self.path+'/aliedit.so') )
         run('rm -f %s'%(self.path+'/aliedit.xpt') )
         if os.path.exists('/usr/lib/firefox-addons/plugins/aliedit.so'):
-            gksudo('rm -f /usr/lib/firefox-addons/plugins/aliedit.so')
+            run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.so')
         if os.path.exists('/usr/lib/firefox-addons/plugins/aliedit.xpt'):
-            gksudo('rm -f /usr/lib/firefox-addons/plugins/aliedit.xpt')
+            run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.xpt')
     def support(self):
         import os
         return os.path.exists('/usr/bin/firefox')
@@ -110,7 +108,6 @@ class AstroMenace(_path_lists):
        'This is a full 3d style space shooter game. '
        'It supports mouse, keyboard and joystick control. '
        'Official site: http://www.viewizard.com/')
-    size = 62265282
     category = 'game'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
@@ -121,8 +118,8 @@ class AstroMenace(_path_lists):
 35948638, '752d6faec7a4432f991055ab788b1e7dba004995').download()
 
         import os
-        if not os.path.exists('/opt'): gksudo('mkdir /opt')
-        gksudo('chown $USER:$USER /opt')
+        if not os.path.exists('/opt'): run_as_root('mkdir /opt')
+        run_as_root('chown $USER:$USER /opt')
         with Chdir('/opt') as o:
             run('tar xf %s'%f)
             create_file('/usr/share/applications/astromenace.desktop', 
@@ -151,7 +148,7 @@ Categories=Game;''')
 #            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
 #            run('tar xf %s' % f)
 #            run('chmod a+x EIOffice_Personal_Lin/setup')
-#            gksudo("EIOffice_Personal_Lin/setup")
+#            run_as_root("EIOffice_Personal_Lin/setup")
 #            
 #            msgs = ( 
 #                     _('Clipboard arts are to be installed.'),
@@ -167,14 +164,14 @@ Categories=Game;''')
 #                    wget(file, '/tmp/eio.tar.gz') 
 #                    run("tar zxf /tmp/eio.tar.gz")
 #                    notify( _('Installing EIOffice'), msg )
-#                    gksudo("./setup")
+#                    run_as_root("./setup")
 #    def installed(self):
 #        import os
 #        return os.path.exists('/usr/bin/eio')
 #    def remove(self):
 #        import os
 #        if os.path.exists('/usr/bin/rmeio'):
-#            gksudo('/usr/bin/rmeio')
+#            run_as_root('/usr/bin/rmeio')
 
 class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     # cannot find out which license it is released under
@@ -182,7 +179,6 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "CASthesis.zip" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 244000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -197,7 +193,6 @@ class XJTUTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "XJTUthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 3010000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -212,7 +207,6 @@ class HITTeXTemplate(_download_one_file) :
     import os
     detail = _('After installation, a file "HITthesis.rar" is placed in the folder "%s".')%os.path.expanduser('~')
     category = 'latex'
-    size = 2710000 #estimated
     Chinese = True
     def __init__(self):
         self.R = R(
@@ -225,7 +219,6 @@ class HITTeXTemplate(_download_one_file) :
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefoxdev'
-    size = 907935
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
@@ -237,7 +230,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
-    size = 1026679
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
@@ -250,7 +242,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
-    size = 104411
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
@@ -263,7 +254,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
-    size = 383371
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'

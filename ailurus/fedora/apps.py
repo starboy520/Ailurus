@@ -26,38 +26,30 @@ from libapp import *
 
 class WINE(_rpm_install):
     __doc__ = _('WINE')
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: yum install wine')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine'
         
 class Enhance_Decompression_Capability(_rpm_install) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
-    detail = _('Command: yum install p7zip cabextract')
     pkgs = "p7zip cabextract"
 
 class Evince_Read_Chinese_PDF(_rpm_install) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
-    detail = _('Command: yum install poppler-data')
     category='office'
     pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_rpm_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    detail = _('Command: yum install chmsee')
     category = 'office'
-    license = ('GNU General Public License (GPL), '
-               'see http://code.google.com/p/chmsee/')
+    license = GPL + ' http://code.google.com/p/chmsee/'
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_rpm_install) :
     __doc__ = 'Workrave'
-    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
-       'Command: yum install workrave')
-    license = ('GNU General Public License (GPL), '
-               'see http://sourceforge.net/projects/workrave/')
+    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
+    license = GPL + ' http://sourceforge.net/projects/workrave/'
     pkgs = 'workrave'
     def __init__(self):
         import os
@@ -97,7 +89,7 @@ class VIM_and_VIMRC(_rpm_install) :
        '"yum install vim-enhanced" command is executed. '
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     category = 'dev'
     pkgs = 'vim-enhanced'
     def __vimrc_installed(self):
@@ -140,15 +132,13 @@ class ColorfulBashPromptSymbols :
 
 class CUPS (_rpm_install):
     __doc__ = _('Enable "Print to pdf" capability.')
-    detail = _('Command: yum install cups-pdf')
     category = 'office'
     pkgs = 'cups-pdf'
 
 class Stardict_without_Dictionaries(_rpm_install):
     __doc__ = _('Stardict')
     category = 'office'
-    detail = _('Command: yum install stardict\n'
-               'Moreover, you can install these dictionaries by yum.\n'
+    detail = _('You can install these dictionaries by yum.\n'
                'stardict-dic-cs_CZ: Czech dictionaries\n'
                'stardict-dic-en: English dictionaries\n'
                'stardict-dic-hi: Hindi dictionary\n'
@@ -156,14 +146,13 @@ class Stardict_without_Dictionaries(_rpm_install):
                'stardict-dic-ru: Russian dictionaries\n'
                'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
                'stardict-dic-zh_TW: Traditional Chinese dictionaries')
-    license = _('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'stardict'
 
 class Liferea(_rpm_install):
     __doc__ = _('Liferea: a RSS feed reader')
-    detail = _('This is a simple and easy used RSS feed reader.\n'
-       'Command: yum install liferea')
-    license = ('GNU General Public License (GPL)')
+    detail = _('This is a simple and easy used RSS feed reader.')
+    license = GPL
     category = 'internet'
     pkgs = 'liferea'
 
@@ -178,27 +167,22 @@ class CommonUsedProgrammingPackages(_rpm_install):
        'ncurses-devel: a library controlling writing to the console screen.\n'
        'qt3-devel: Trolltech Qt library, version 3.\n'
        'subversion: a version control system.\n'
-       'git: a distributed version control system.\n'
-       '</i>'
-       'Command: yum install '
-       'gcc gcc-c++ ctags gmp-devel ncurses-devel '
-       'qt3-devel subversion git')
+       'git: a distributed version control system.'
+       '</i>')
     category = 'dev'
     pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
             'qt3-devel subversion git')
 
 class QtiPlot(_rpm_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
-    detail = _('It is the indispensable plotting application for writing Physics experiments reports.\n'
-       'Command: yum install qtiplot')
+    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
     category = 'math'
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'qtiplot'
 
 class QCad(_rpm_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
-    detail = ''
-    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
+    license = GPL
     category = 'em'
     pkgs = 'qcad'
 
@@ -239,9 +223,7 @@ class DisableGetty:
 
 class Octave(_rpm_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    detail = _('Command: yum install qtoctave')
-    license = ('GNU General Public License (GPL), '
-               'see http://www.gnu.org/software/octave/license.html')
+    license = GPL + ' http://www.gnu.org/software/octave/license.html'
     category = 'math'
     pkgs = 'qtoctave'
 
@@ -251,7 +233,7 @@ class Generic_Genome_Browser:
                'for manipulating and displaying annotations on genomes.\n'
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
-    license = 'Perl Artistic License v2'
+    license = AL
     category='biology'
     def install(self):
         for package in ['perl-libwww-perl', 'perl-CPAN']:
@@ -267,31 +249,27 @@ class Generic_Genome_Browser:
 
 class TuxPaint(_rpm_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
-    detail = _('Command: yum install tuxpaint')
     category = 'education'
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'tuxpaint'
 
 class ChildsPlay(_rpm_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
-    detail = _('Command: yum install childsplay')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'childsplay'
         
 class GCompris(_rpm_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
-    detail = _('Command: yum install gcompris')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'gcompris'
 
 class QT_Creator(_rpm_install):
     'Qt Creator'
-    detail = _('This is an IDE for Qt.\n'
-               'Command: yum install qt-creator')
+    detail = _('This is an IDE for Qt.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'qt-creator'
 
 class Kadu(_rpm_install):
@@ -299,7 +277,7 @@ class Kadu(_rpm_install):
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : yum install kadu')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'kadu'
     def support(self):
         return Config.is_Poland_locale()
@@ -308,7 +286,7 @@ class Parcellite(_rpm_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'parcellite'
 
 class Enable_Sudo:
@@ -367,58 +345,52 @@ class Disable_SELinux:
 
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
-    detail = _('Command: yum install gnash')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'gnash gnash-plugin'
         
 class Nautilus_Actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-actions'
         
 class Nautilus_Image_Converter(_rpm_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-image-converter'
         
 class Nautilus_Open_Terminal(_rpm_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-open-terminal'
         
 class Nautilus_Search_Tool(_rpm_install):
     __doc__ = _('"Search files" entries')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-search-tool'
 
 class ImageMagick(_rpm_install):
     __doc__ = _('ImageMagick: Edit images')
-    detail = _('You can start it by /usr/bin/display\n'
-               'Command: yum install ImageMagick')
+    detail = _('You can start it by /usr/bin/display')
     category = 'media'
     pkgs = 'ImageMagick'
 
 class PiTiVi(_rpm_install):
     __doc__ = _('PiTiVi: Movie editor')
-    detail = _("Command: yum install pitivi")
-    license = ('GNU Lesser General Public License, '
-               'see http://www.pitivi.org/')
+    license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
 
 class Audacity(_rpm_install):
     __doc__ = _('Audacity: Music editor')
-    detail = _("Command: yum install audacity-freeworld")
-    license = ('GNU Lesser General Public License, '
-               'see http://audacity.sourceforge.net/')
+    license = LGPL + ' http://audacity.sourceforge.net/'
     category = 'media'
     pkgs = 'audacity-freeworld'

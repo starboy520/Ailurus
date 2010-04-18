@@ -24,11 +24,10 @@ import sys, os
 from lib import *
 from libapp import *
 
-class OpenJDK6:
+class OpenJDK6(I):
     'OpenJDK 6'
-    detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
-    license = 'GPL'
+    license = GPL
     def install(self):
         APT.install('openjdk-6-jdk')
         
@@ -59,19 +58,15 @@ class OpenJDK6:
 
 class WINE_1(_apt_install):
     'WINE 1.0'
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: sudo apt-get install wine wine-gecko')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine wine-gecko'
 
 class WINE_2(_apt_install):
     'WINE 1.2'
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: sudo apt-get install wine1.2 wine1.2-gecko')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine1.2 wine1.2-gecko'
     def support(self):
@@ -86,7 +81,6 @@ class WINE_2(_apt_install):
 #       'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
 #       'then Wen-Quan-Yi font is used as default Chinese font.')
 #    category = 'vm'
-#    size = 72280 * 1000
 #    Chinese = True
 #    pkgs = 'ttf-wqy-zenhei wine wine-gecko'
 #    def __init__(self):

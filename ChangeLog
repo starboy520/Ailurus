@@ -1,5 +1,7 @@
-2010-04-17 MA Yue <velly.empire@gmail.com>
-    * Improve the installation of third party software 
+2010-04-18 Homer Xing <homer.xing@gmail.com>
+
+    * Optimize source code:
+      Reduce strings in "license=" attributes.
 
 2010-04-17 Homer Xing <homer.xing@gmail.com>
 
@@ -11,6 +13,10 @@
       Remove get_reason() from _set_gconf.
       Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
       Do not write "logo=" attribute any more.
+      Remove "size=" attribute. 
+
+2010-04-17 MA Yue <velly.empire@gmail.com>
+    * Improve the installation of third party software 
 
 2010-04-16 Homer Xing <homer.xing@gmail.com>
 

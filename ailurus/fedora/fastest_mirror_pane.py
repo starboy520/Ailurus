@@ -312,7 +312,12 @@ class FedoraFastestMirrorPane(gtk.VBox):
             progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
     
             for url in urls:
-                while len([t for t in threads if t.isAlive()])>10:
+                def alive_threads(threads):
+                    i = 0
+                    for t in threads:
+                        if t.isAlive(): i += 1
+                    return i
+                while alive_threads(threads)>10:
                     import time
                     time.sleep(0.1)
                 thread = PingThread(url, url, result) # the second argument should be url, not server. It is used in __update_candidate_store_with_ping_result

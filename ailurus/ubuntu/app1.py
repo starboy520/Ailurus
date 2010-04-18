@@ -61,49 +61,38 @@ class Full_Language_Pack(_apt_install):
 
 #class Eliminate_SCIM_Crash_Bug(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
-#    size = 172 * 1000
 #    pkgs='scim-bridge-client-qt'
 #    def support(self):
 #        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
 
 class Decompression_Capability(_apt_install) :
     __doc__ = _('Decompression software: 7z, rar, cab, ace')
-    detail = _('Command: sudo apt-get install p7zip p7zip-rar p7zip-full cabextract unace')
-    license = 'GPL'
+    license = GPL
     pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
 
 class Typespeed(_apt_install) :
     'Typespeed'
     detail= _('Typespeed is a typing practise. It only runs in terminal.')
-    size = 356 * 1000
     category = 'game'
-    license = 'GNU Lesser General Public License (LGPL)'
+    license = LGPL
     pkgs = "typespeed"
 
 class Evince_Read_Chinese_PDF(_apt_install) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
-    detail = _('Command: sudo apt-get install poppler-data')
     category='office'
     Chinese = True
-    size = 12276 * 1000
     pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    detail = _('Command: sudo apt-get install chmsee')
-    license = ('GNU General Public License (GPL), '
-               'see http://code.google.com/p/chmsee/')
+    license = GPL + ' http://code.google.com/p/chmsee/'
     category = 'office'
-    size = 590 * 1000
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
-    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.\n'
-       'Command: sudo apt-get install workrave')
-    license = ('GNU General Public License (GPL)'
-                'see http://sourceforge.net/projects/workrave/')
-    size = 1012 * 1000
+    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
+    license = GPL + ' http://sourceforge.net/projects/workrave/'
     pkgs = 'workrave'
     def __init__(self):
         import os
@@ -144,8 +133,7 @@ class VIM_and_VIMRC(_apt_install) :
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    size = 1892 * 1000
+    license = GPL
     pkgs = 'vim'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
@@ -164,7 +152,7 @@ class VIM_and_VIMRC(_apt_install) :
         _apt_install.remove(self)
         file_remove ( self.vimrc, *self.lines )
 
-class ColorfulBashPromptSymbols :
+class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
        '"username@hostname:~$ " to '
@@ -186,12 +174,8 @@ class ColorfulBashPromptSymbols :
         
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
-    detail = _(
-       'Command: sudo apt-get install gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad '
-       'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse')
     category = 'media'
-    license = 'GNU Lesser General Public License'
-    size = 6868 * 1000
+    license = LGPL
     pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
              'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
 
@@ -201,9 +185,8 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
        'Then a bug in "/etc/apparmor.d/usr.sbin.cupsd" file is eliminated.')
     __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
     __file = '/etc/apparmor.d/usr.sbin.cupsd'
-    size = 256 * 1000
     category = 'office'
-    license = 'GNU Lesser General Public License'
+    license = LGPL
     pkgs = 'cups-pdf'
     def install(self):
         _apt_install.install(self)
@@ -225,8 +208,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
-    detail = _('Command: sudo apt-get install cups-pdf')
-    license = 'GNU Lesser General Public License'
+    license = LGPL
     category = 'office'
     pkgs = 'cups-pdf'
     def support(self):
@@ -234,9 +216,8 @@ class CUPS(_apt_install):
         
 class Flash_Player(_apt_install):
     __doc__ = _(u'GNU Flash plugin for web browser')
-    detail = _('Command: sudo apt-get install gnash mozilla-plugin-gnash')
     category = 'media'
-    license = 'GPL'
+    license = GPL
     pkgs = 'gnash mozilla-plugin-gnash'
     
 #class Flash_Player_Font_Bug:
@@ -266,40 +247,33 @@ class Flash_Player(_apt_install):
 class Stardict(_apt_install):
     __doc__ = _('Stardict')
     category = 'office'
-    detail = 'Command: sudo apt-get install stardict'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'stardict'
         
 class Liferea(_apt_install):
     __doc__ = _('Liferea: a RSS feed reader')
-    detail = _('This is a simple and easy used RSS feed reader.\n'
-       'Command: sudo apt-get install liferea')
+    detail = _('This is a simple and easy used RSS feed reader.')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
-    size = 3792 * 1000
+    license = GPL
     pkgs = 'liferea'
 
 class FireWall(_apt_install):
     __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
-       'Firestarter is the graphical frontend of "iptables".\n'
-       'Command: sudo apt-get install firestarter')
-    license = 'GNU General Public License (GPL)'
+       'Firestarter is the graphical frontend of "iptables".')
+    license = GPL
     category = 'internet'
-    size = 1980 * 1000
     pkgs = 'firestarter'
 
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
-    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.\n'
-               'Command: sudo apt-get install macchanger')
-    license = 'GNU General Public License (GPL)'
+    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
+    license = GPL
     category = 'hardware'
     pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
-    detail = _('Command: sudo apt-get install bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'hardware'
     pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

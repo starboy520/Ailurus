@@ -32,8 +32,7 @@ class Varkon(_apt_install, _path_lists):
                  '<span color="blue"><u>http://varkon.sourceforge.net/man.htm</u></span> before using it. ') +
                _(u'Developed by Örebro university, Sweden.') )
     category = 'em'
-    license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
-    size = 5000000
+    license = GPL
     pkgs = 'varkon-user-manual varkon'
     def __init__(self):
         self.shortcut = '/usr/share/applications/varkon.desktop'
@@ -58,22 +57,20 @@ class QCad(_apt_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
     detail = ''
     category = 'em'
-    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
-    size = 18056000
+    license = GPL
     pkgs = 'qcad'
         
 class Moonlight(_apt_install):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
     detail = _(u'Moonlight provides Windows® media codecs. '
-       u'By this application, you can enjoy Windows® video/audio in webpages.\n'
-       'Command: sudo apt-get install moonlight-plugin-mozilla')
+       u'By this application, you can enjoy Windows® video/audio in webpages.')
     license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
     category = 'media'
     pkgs = 'moonlight-plugin-mozilla'
 
-class DisableGetty:
+class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def support(self):
@@ -156,26 +153,24 @@ class DisableGettyKarmic(DisableGetty):
 
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    detail = _('Command: sudo apt-get install qtoctave')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'math'
-    size = 1736000
     pkgs = 'qtoctave'
     def remove(self):
         _apt_install.remove(self)
         run_as_root('apt-get remove octave* -qq')
 
-class Generic_Genome_Browser:
+class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
     detail = _('Generic Genome Browser is a combination of database and interactive web page '
                'for manipulating and displaying annotations on genomes.\n'
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
-    license = 'Perl Artistic License v2'
+    license = AL
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        run('sudo perl %s' %f)
+        run_as_root_in_terminal('perl %s' % f)
     def installed(self):
         return False
     def remove(self):
@@ -185,58 +180,49 @@ class Screenlets(_apt_install):
     __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
     detail = _('Screenlets is able to add eye candy gadgets on desktop, '
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
-       'in order to decorate the desktop.\n'
-       'Command: sudo apt-get install screenlets')
+       'in order to decorate the desktop.')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
-    size = 9089000
+    license = GPL
     pkgs = 'screenlets'
 
 class CompizSettingManager(_apt_install):
     __doc__ = _('Compiz settings manager')
     detail = _('Compiz Fusion is the unification of the Beryl project and the community around the Compiz Window Manager. '
        'Compiz settings manager is the configuration application for Compiz Fusion. '
-       'It can configurate effects such as "Desktop cube" and "3D windows".\n'
-       'Command: sudo apt-get install compizconfig-settings-manager')
+       'It can configurate effects such as "Desktop cube" and "3D windows".')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
-    size = 4166000 #estimated
+    license = GPL
     pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
-    detail = _('Command: sudo apt-get install simple-ccsm')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
-    size = 635000 #estimated
+    license = GPL
     pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
-    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.\n' 
-               'Command: sudo apt-get install med-bio')
+    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.')
     category = 'biology'
-    license = 'Eclipse Public License, GNU General Public License (GPL)'
+    license = DUAL_LICENSE(EPL, GPL)
     pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
-    detail = _('Command: sudo apt-get install tuxpaint')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'dev'
     pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
-    detail = _('Command: sudo apt-get install childsplay')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
@@ -252,9 +238,8 @@ class ChildsPlay(_apt_install):
         
 class GCompris(_apt_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
-    detail = _('Command: sudo apt-get install gcompris')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
@@ -266,16 +251,14 @@ class GCompris(_apt_install):
  
 class QT_Creator(_apt_install):
     'Qt Creator'
-    detail = _('This is an IDE for Qt.\n'
-               'Command: sudo apt-get install qtcreator qt-4-dev-tools qt4-doc qt4-qtconfig')
+    detail = _('This is an IDE for Qt.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
 class Kadu(_apt_install):
     __doc__ = 'Kadu'
-    detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
-               'Command : sudo apt-get install kadu')
+    detail = _('Kadu is an instant messenger, which is very popular in Poland.')
     category = 'internet'
     pkgs = 'kadu'
     def support(self):
@@ -284,9 +267,8 @@ class Kadu(_apt_install):
 class Qnapi(_apt_install):
     __doc__ = 'Qnapi'
     detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
-                'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.\n'
-                'Command: sudo apt-get install qnapi')
-    license = 'GNU General Public License (GPL)'
+                'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.')
+    license = GPL
     category = 'media'
     pkgs = 'qnapi'
     def support(self):
@@ -294,15 +276,13 @@ class Qnapi(_apt_install):
 
 #class Audacious(_apt_install):
 #    __doc__ = 'Audacious'
-#    detail = _('Audacious is a media player which supports many media formats and third-party plugins.\n'
-#                   'Command: sudo apt-get install audacious')
+#    detail = _('Audacious is a media player which supports many media formats and third-party plugins.')
 #    category = 'media'
 #    pkgs = 'audacious'    
 
 #class Miro(_apt_install):
 #    __doc__ = 'Miro'
-#    detail = _("Miro is a free and Internet TV application.\n"
-#                    "Command: sudo apt-get install miro")
+#    detail = _("Miro is a free and Internet TV application.")
 #    category = 'media'
 #    pkgs = 'miro'
 
@@ -316,7 +296,7 @@ class Parcellite(_apt_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
-    license = 'GNU General Public License'
+    license = GPL
     pkgs = 'parcellite'
     def support(self):
         return not ( Config.get_Ubuntu_version() in ['hardy'] )
@@ -324,19 +304,17 @@ class Parcellite(_apt_install):
 class R_Language_Basic(_apt_install):
     __doc__ = _('R language (basic development environment)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
-               'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base-core')
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
-    license = 'GNU General Public License' 
+    license = GPL
     pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
     __doc__ = _('R language (full development environment and all plugins)')
     detail = _('A powerful statistical computation language and a graphics system.\n'
-               'If you want to use the latest version of R language, please read http://cran.r-project.org/\n'
-               'Command: sudo apt-get install r-base-core r-cran-*')
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
-    license = 'GNU General Public License' 
+    license = GPL
     def __init__(self):
         import StringIO
         value = StringIO.StringIO()
@@ -347,12 +325,11 @@ class R_Language_Full(_apt_install):
 
 class Bluefish(_apt_install):
     __doc__ = _('Bluefish: Edit HTML web-pages')
-    detail = _('Command: sudo apt-get install bluefish')
-    license = 'GNU General Public License' 
+    license = GPL
     category = 'dev'
     pkgs = 'bluefish'
 
-class _tasksel:
+class _tasksel(I):
     category = 'server'
     def install(self):
         Tasksel.install(self.name)
@@ -362,122 +339,86 @@ class _tasksel:
         Tasksel.remove(self.name)
     def support(self):
         return Tasksel.exists(self.name)
+    def installation_command(self):
+        return _('Command:') + ' sudo tasksel install ' + self.name
 
 class Tasksel_LAMP_server(_tasksel):
     __doc__ = _('LAMP: Install Apache2 + MySQL + PHP')
-    detail = _('Command: sudo tasksel install lamp-server')
-    def __init__(self):
-        self.name = 'lamp-server'
+    name = 'lamp-server'
 
 class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
-    detail = _('Command: sudo tasksel install dns-server')
-    def __init__(self):
-        self.name = 'dns-server'
+    name = 'dns-server'
 
 class Tasksel_Mail_server(_tasksel):
     __doc__ = _('Mail server')
-    detail = _('Command: sudo tasksel install mail-server')
-    def __init__(self):
-        self.name = 'mail-server'
+    name = 'mail-server'
 
 class Tasksel_Openssh_server(_tasksel):
     __doc__ = _('OpenSSH server')
-    detail = _('Command: sudo tasksel install openssh-server')
-    def __init__(self):
-        self.name = 'openssh-server'
+    name = 'openssh-server'
 
 class Tasksel_Postgresql_server(_tasksel):
     __doc__ = _('PostgreSQL server')
-    detail = _('Command: sudo tasksel install postgresql-server')
-    def __init__(self):
-        self.name = 'postgresql-server'
+    name = 'postgresql-server'
 
 class Tasksel_Print_server(_tasksel):
     __doc__ = _('Printer server')
-    detail = _('Command: sudo tasksel install print-server')
-    def __init__(self):
-        self.name = 'print-server'
+    name = 'print-server'
 
 class Tasksel_Samba_server(_tasksel):
     __doc__ = _('Samba file sharing server')
-    detail = _('Command: sudo tasksel install samba-server')
-    def __init__(self):
-        self.name = 'samba-server'
+    name = 'samba-server'
 
 class Tasksel_Tomcat_server(_tasksel):
     __doc__ = _('Tomcat Java server')
-    detail = _('Command: sudo tasksel install tomcat-server')
-    def __init__(self):
-        self.name = 'tomcat-server'
+    name = 'tomcat-server'
 
 class Tasksel_Ubuntustudio_graphics(_tasksel):
     __doc__ = _('Ubuntustudio-graphics: 2D/3D creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-graphics')
-    def __init__(self):
-        self.name = 'ubuntustudio-graphics'
+    name = 'ubuntustudio-graphics'
 
 class Tasksel_Ubuntustudio_audio(_tasksel):
     __doc__ = _('Ubuntustudio-audio: Audio creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-audio')
-    def __init__(self):
-        self.name = 'ubuntustudio-audio'
+    name = 'ubuntustudio-audio'
 
 class Tasksel_Ubuntustudio_audio_plugins(_tasksel):
     __doc__ = _('Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-audio-plugins')
-    def __init__(self):
-        self.name = 'ubuntustudio-audio-plugins'
+    name = 'ubuntustudio-audio-plugins'
 
 class Tasksel_Mobile_MID(_tasksel):
     __doc__ = _('Ubuntu MID')
-    detail = _('Command: sudo tasksel install mobile-mid')
-    def __init__(self):
-        self.name = 'mobile-mid'
+    name = 'mobile-mid'
 
 class Tasksel_Mobile_netbook_remix(_tasksel):
     __doc__ = _('Ubuntu Netbook')
-    detail = _('Command: sudo tasksel install mobile-netbook-remix')
-    def __init__(self):
-        self.name = 'mobile-netbook-remix'
+    name = 'mobile-netbook-remix'
 
 class Tasksel_Ubuntustudio_video(_tasksel):
     __doc__ = _('Ubuntustudio-video: Video creation and editing')
-    detail = _('Command: sudo tasksel install ubuntustudio-video')
-    def __init__(self):
-        self.name = 'ubuntustudio-video'
+    name = 'ubuntustudio-video'
 
 class Tasksel_Mobile_Live(_tasksel):
     __doc__ = _('Ubuntu MID Live')
-    detail = _('Command: sudo tasksel install mobile-live')
-    def __init__(self):
-        self.name = 'mobile-live'
+    name = 'mobile-live'
 
 class Tasksel_Eucalyptus_simple_cluster(_tasksel):
     __doc__ = _('Eucalyptus cloud computing cluster')
-    detail = _('Command: sudo tasksel install eucalyptus-simple-cluster')
-    def __init__(self):
-        self.name = 'eucalyptus-simple-cluster'
+    name = 'eucalyptus-simple-cluster'
         
 class Tasksel_Eucalyptus_node(_tasksel):
     __doc__ = _('Eucalyptus cloud computing node')
-    detail = _('Command: sudo tasksel install eucalyptus-node')
-    def __init__(self):
-        self.name = 'eucalyptus-node'
+    name = 'eucalyptus-node'
 
 class Tasksel_UEC(_tasksel):
     __doc__ = _('Ubuntu Enterprise Cloud server')
-    detail = _('Command: sudo tasksel install uec')
-    def __init__(self):
-        self.name = 'uec'
+    name = 'uec'
 
 class Tasksel_Ubuntustudio_font_meta(_tasksel):
     __doc__ = _('Ubuntustudio-font-meta: A lot of font')
-    detail = _('Command: sudo tasksel install ubuntustudio-font-meta')
-    def __init__(self):
-        self.name = 'ubuntustudio-font-meta'
+    name = 'ubuntustudio-font-meta'
 
-class Launch_Tasksel:
+class Launch_Tasksel(I):
     __doc__ = _('* Launch tasksel')
     detail = _('This is a helper item. It just launches command: "sudo tasksel". '
                'Then you are free to customize your computer via "tasksel".')
@@ -486,18 +427,18 @@ class Launch_Tasksel:
         return False
     def install(self):
         if not APT.installed('tasksel'): APT.install('tasksel')
-        run('sudo tasksel')
+        run_as_root_in_terminal('tasksel')
         APT.cache_changed()
     def remove(self):
         raise NotImplementedError
 
-class Fctix:
+class Fctix(I):
     'Fcitx'
     category = 'language'
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def install(self):
         if get_arch() == 32:
             f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_i386.deb'],
@@ -514,21 +455,21 @@ class Fctix:
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
         
@@ -536,25 +477,27 @@ class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
-    detail = _('Command: sudo apt-get install vuze')
+    license = GPL
     pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
 class ImageMagick(_apt_install):
     __doc__ = _('ImageMagick: Edit images')
-    detail = _('You can start it by /usr/bin/display\n'
-               'Command: sudo apt-get install imagemagick')
+    detail = _('You can start it by /usr/bin/display')
     category = 'media'
     pkgs = 'imagemagick'
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
-    detail = _("Command: sudo apt-get install pitivi")
-    license = ('GNU Lesser General Public License, '
-               'see http://www.pitivi.org/')
+    license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
 
-
+class Acire(_apt_install):
+    __doc__ = _('Acire: A Python code fragment manager')
+    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
+    license = GPL
+    category = 'dev'
+    depends = Repo_Acire
+    pkgs = 'acire'

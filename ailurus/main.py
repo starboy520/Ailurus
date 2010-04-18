@@ -318,7 +318,6 @@ class MainView:
             traceback.print_exc()
 
     def __init__(self):
-        self.app_classes = None
         self.window = None # MainView window
         self.stop_delete_event = False
         self.contents = {}
@@ -442,11 +441,10 @@ if options.install_software or options.all:
     elif getattr(DISTRIBUTION, '__name__') == 'fedora':
         RPM.refresh_cache()
     
-    app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
-    main_view.app_classes = app_classes
+    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
     custom_app_classes = load_custom_app_classes()
     from install_remove_pane import InstallRemovePane
-    pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
+    pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
     main_view.register(pane)
     main_view.install_remove_pane = pane
 

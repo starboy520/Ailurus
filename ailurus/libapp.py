@@ -24,7 +24,7 @@ from lib import *
 
 __all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install']
 
-class _set_gconf :
+class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
     def __check_key(self, key):
         if key=='':
@@ -155,7 +155,7 @@ class _set_gconf :
         except:
             return False 
 
-class _apt_install :
+class _apt_install(I):
     'Must subclass me and set "pkgs".'
     def __check(self):
         self.pkgs # check exists
@@ -187,8 +187,10 @@ class _apt_install :
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
+    def installation_command(self):
+        return _('Command:') + ' sudo apt-get install ' + self.pkgs
 
-class _path_lists:
+class _path_lists(I):
     def __check(self):
         if not isinstance(self.paths, list):
             raise TypeError
@@ -220,7 +222,7 @@ class _path_lists:
         if not_exist:
             print >>f, _('"%s" does not exist.')%' '.join(not_exist),
 
-class _ff_extension:
+class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox'
     def __init__(self):
@@ -263,7 +265,7 @@ class _ff_extension:
         print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
         raise NotImplementedError
 
-class _download_one_file:
+class _download_one_file(I):
     def install(self):
         assert isinstance(self.R, R)
         f = self.R.download()
@@ -278,7 +280,7 @@ class _download_one_file:
         if not os.path.exists(self.file):
             print >>f, _('"%s" does not exist.')%self.file,
 
-class _rpm_install:
+class _rpm_install(I):
     def _check(self):
         assert isinstance(self.pkgs, str)
     def install(self):
@@ -299,3 +301,5 @@ class _rpm_install:
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)
