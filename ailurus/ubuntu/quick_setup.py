@@ -79,7 +79,7 @@ class SelectWorksDialog(gtk.Dialog):
             sys.exit()
 
 def acquire_root_privilege():
-    run_as_root('date')
+    run_as_root('true')
 
 class WaitNetworkDialog(gtk.Dialog):
     def __continuously_ping(self):
