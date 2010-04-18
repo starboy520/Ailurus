@@ -267,11 +267,11 @@ class Subversive:
     def remove(self):
         raise NotImplementedError
 
-class veditor:
-    __doc__ = _('Veditor: a editor provide Verilog and VHDL language specific features')
+class VEditor(I):
+    __doc__ = _('VEditor: Verilog and VHDL editor')
     detail = _('It is installed by http://veditor.sourceforge.net/update')
     category = 'eclipse'
-    license = 'Eclipse Public License (EPL)'
+    license = EPL
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
@@ -285,7 +285,7 @@ class veditor:
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://veditor.sourceforge.net/update'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Veditor\n'), msg )
+        message( _('Installing VEditor\n'), msg )
     def remove(self):
         raise NotImplementedError
 

@@ -1,6 +1,10 @@
 2010-04-19 MA Yue <velly.empire@gmail.com>
-    * Add the installaion of Firefox 3.6
-    * Add the OpenGL version display
+
+    * Add Firefox 3.6.
+    * Add Stylish: Change websites themes.
+    * Add VEditor: Verilog and VHDL editor.
+    * Display OpenGL version.
+    * Improve the installation of third party software.
 
 2010-04-18 Homer Xing <homer.xing@gmail.com>
 
@@ -18,9 +22,6 @@
       Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
       Do not write "logo=" attribute any more.
       Remove "size=" attribute. 
-
-2010-04-17 MA Yue <velly.empire@gmail.com>
-    * Improve the installation of third party software 
 
 2010-04-16 Homer Xing <homer.xing@gmail.com>
 

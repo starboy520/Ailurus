@@ -110,21 +110,23 @@ def __opengl():
             if v[0]=='OpenGL vendor string': vendor = v[1].strip()
             if v[0]=='OpenGL version string': vendor_version = v[1].strip()
             if v[0]=='OpenGL renderer string': renderer = v[1].strip()
-	    if v[0]=='server glx version string': glx_version = v[1].strip()
         if direct_render:
-            ret.append( row(_('Direct OpenGL:'), direct_render, 
-                 D+'umut_icons/i_opengl.png', _('OpenGL direct rendering') ) )
-       	if glx_version:
-	    ret.append( row(_('OpenGL version:'), glx_version,
-	         D+'umut_icons/i_opengl.png', _('OpenGL version') ) )
-        if vendor and vendor_version:
-            ret.append( row(_('OpenGL vendor:'), '%s (%s)'%(vendor, vendor_version), 
-                 D+'umut_icons/i_opengl.png', _('OpenGL vendor') ) )
+            ret.append( row(_('OpenGL direct rendering:'), direct_render, 
+                            D+'umut_icons/i_opengl.png') )
+        if vendor:
+            ret.append( row(_('OpenGL vendor:'), vendor, 
+                            D+'umut_icons/i_opengl.png') )
         if renderer:
             ret.append( row(_('OpenGL renderer:'), renderer, 
-                 D+'umut_icons/i_opengl.png', _('OpenGL renderer') ) )
+                            D+'umut_icons/i_opengl.png') )
+        if vendor_version:
+            ret.append( row(_('OpenGL version:'), vendor_version, 
+                            D+'umut_icons/i_opengl.png') )
 
-    except: print >>sys.stderr, 'Command failed: glxinfo'
+    except: 
+        import traceback
+        traceback.print_exc()
+        print >>sys.stderr, 'Command failed: glxinfo'
     return ret
 
 def __firefox():
