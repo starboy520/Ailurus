@@ -440,7 +440,7 @@ class InstallRemovePane(gtk.VBox):
         import os
         class0 = model.get_value ( iter, 0 )
         if not hasattr(class0, 'logo_pixbuf'):
-            class_name = class0.__name__
+            class_name = class0.__class__.__name__
             for dir in ['other_icons/', 'appicons/', ]:
                 path = D + dir + class_name + '.png'
                 if os.path.exists(path): break
@@ -731,6 +731,7 @@ if __name__ == '__main__':
     import common as COMMON
     import gnome as DESKTOP
     import ubuntu as DISTRIBUTION
+    from loader import load_app_objs
     app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
     class Dummy:
         def lock(self): pass
