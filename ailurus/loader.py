@@ -83,7 +83,7 @@ def load_app_objs(common, desktop, distribution):
 
     return objs
 
-def _load_app_classes_from_module(module):
+def load_app_objs_from_extension(module):
     import types
     classobjs = []
     names = set()
@@ -134,7 +134,7 @@ def load_custom_app_classes():
         basename = os.path.splitext(filename)[0]
         try:
             module = __import__(basename)
-            return_value.extend( _load_app_classes_from_module(module) )
+            return_value.extend( load_app_objs_from_extension(module) )
         except:
             import traceback
             traceback.print_exc()
