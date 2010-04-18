@@ -83,15 +83,15 @@ def load_app_objs(common, desktop, distribution):
 
     return objs
 
-def load_app_objs_from_extension(module):
+def load_app_objs_from_extension(extension):
     import types
     classobjs = []
     names = set()
-    for name in dir(module):
+    for name in dir(extension):
         if name[0]=='_': continue
         import lib
         if name in dir(lib): continue
-        app_class = getattr(module,name)
+        app_class = getattr(extension,name)
         if type(app_class)!=types.ClassType: continue
         if name in names: continue
 
