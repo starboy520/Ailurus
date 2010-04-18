@@ -492,7 +492,7 @@ class FFChromeTheme_3_5(_ff_extension):
 
 class FFCleanHide(_ff_extension):
     __doc__ = _('CleanHide: Delete hidden text in web page')
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _('If you find that some web page use hidden text and you cannot copy text easily, try this!')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
@@ -518,7 +518,7 @@ class FFDownloadStatusBar(_ff_extension):
 
 class FFDownThemAll(_ff_extension):
     __doc__ = _('DownThemAll: A reliable multithread downloader')
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _('It is able to download all images on web-pages.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
@@ -570,7 +570,7 @@ class FFFireGesture(_ff_extension):
 
 class FFFlashgot(_ff_extension):
     __doc__ = _('Flashgot: A lightweight and reliable download managers')
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _("It is able to download all the links, movies and audio clips of a page with a single click.")
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
@@ -582,7 +582,7 @@ class FFFlashgot(_ff_extension):
 
 class FFFoxyProxy(_ff_extension):
     __doc__ = _('FoxyProxy: One-click switching proxy')
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
@@ -612,7 +612,7 @@ class FFGreaseMonkey(_ff_extension):
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
     category = 'firefoxdev'
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
@@ -624,7 +624,7 @@ class FFLiveHTTPHeaders(_ff_extension):
 
 class FFNoscript(_ff_extension):
     __doc__ = _('NoScript: Allow active content to run only from sites you trust')
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _(
               'Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks.' )
@@ -678,7 +678,7 @@ class FFTabMixLite(_ff_extension):
 class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
     category = 'firefoxdev'
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
@@ -703,7 +703,7 @@ class FFUserAgentSwitcher(_ff_extension):
 class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
     category = 'firefoxdev'
-    license = 'GPL v2'
+    license = GPL
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
