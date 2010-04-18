@@ -93,24 +93,22 @@ def _load_app_classes_from_module(module):
         if name[0]=='_': continue
         import lib
         if name in dir(lib): continue
-        obj = getattr(module,name)
-        if type(obj)!=types.ClassType: continue
+        app_class = getattr(module,name)
+        if type(app_class)!=types.ClassType: continue
         if name in names: continue
 
         try:
-            check_class_members(obj)
-            if not obj.category in categories:
-                raise ValueError, obj.category
-            if hasattr(obj, 'support'):
-                if obj().support()==False: continue
-            if hasattr(obj, 'international'): 
+            check_class_members(app_class)
+            if hasattr(app_class, 'support'):
+                if app_class().support()==False: continue
+            if hasattr(app_class, 'international'): 
                 if Config.is_Chinese_locale(): continue
-            if hasattr(obj, 'Chinese'): 
+            if hasattr(app_class, 'Chinese'): 
                 if Config.is_Chinese_locale()==False: continue
-            obj.cache_installed = obj().installed()
-            if not isinstance(obj.cache_installed, bool):
+            app_class.cache_installed = app_class().installed()
+            if not isinstance(app_class.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
-            obj.showed_in_toggle = obj.cache_installed
+            app_class.showed_in_toggle = app_class.cache_installed
             names.add(name)
         except:
             import sys, traceback
@@ -118,7 +116,7 @@ def _load_app_classes_from_module(module):
             print >>sys.stderr, _('Traceback:')
             traceback.print_exc(file=sys.stderr)
         else:
-            classobjs.append(obj)
+            classobjs.append(app_class)
 
     return classobjs
 
