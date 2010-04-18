@@ -36,7 +36,7 @@ from lib import *
 #        pass
 
 class _repo:
-    this_class_is_a_repository = True
+    this_is_a_repository = True
     category = 'repository'
     fresh_cache = False
 
@@ -189,7 +189,7 @@ def del_signing_key(signing_key_fingerprint):
     run_as_root_in_terminal("apt-key del " + signing_key_fingerprint)
 
 class _launchpad:
-    this_class_is_a_repository = True
+    this_is_a_repository = True
     category = 'repository'
     def __init__(self):
         assert isinstance(self.ppa, str)

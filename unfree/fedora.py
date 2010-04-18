@@ -28,7 +28,7 @@ if not Config.is_Fedora():
     raise Exception
 
 class _repo:
-    this_class_is_a_repository = True
+    this_is_a_repository = True
     category = 'repository'
     @classmethod
     def exist(cls, path):

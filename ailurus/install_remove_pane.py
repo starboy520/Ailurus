@@ -184,7 +184,7 @@ class InstallRemovePane(gtk.VBox):
                                    if hasattr(o, 'depends') ]
             to_install += depends
             to_install_repos = [ o for o in to_install 
-                                     if getattr(o, 'this_class_is_a_repository', False) ]
+                                     if getattr(o, 'this_is_a_repository', False) ]
             to_install_non_repos = [ o for o in to_install
                                                  if o not in to_install_repos ]
             if to_install_repos:
