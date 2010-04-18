@@ -150,18 +150,99 @@ class _repo:
         if self.key_id:
             run_as_root('apt-key del '+self.key_id, ignore_error=True)
 
-class Repo_Firefox_3_6(_repo):
+def get_owner_and_name(ppa):
+    assert not ppa.startswith("ppa:")
+    ppa_owner = ppa.split("/")[0]
+    try:
+        ppa_name = ppa.split("/")[1]
+    except IndexError, e:
+        ppa_name = "ppa"
+    return (ppa_owner, ppa_name)
+
+def get_deb_line(ppa_owner, ppa_name, distro_codename):
+    return "deb http://ppa.launchpad.net/%s/%s/ubuntu %s main" % (
+        ppa_owner, ppa_name, distro_codename)
+
+def get_repos_file_name(ppa_owner, ppa_name, distro_codename):
+    return "%s-%s-%s.list" % (ppa_owner, ppa_name, distro_codename)
+
+def get_signing_key(ppa_owner, ppa_name):
+    import urllib2, re
+    lp_url = ('https://launchpad.net/api/beta/~%s/+archive/%s' % (
+        ppa_owner, ppa_name))
+    try:
+        req = urllib2.Request(lp_url)
+        req.add_header("Accept","application/json")
+        lp_page = urllib2.urlopen(req).read()
+        signing_key_fingerprint = re.findall(
+            '\"signing_key_fingerprint\": \"(\w*)\"', lp_page)[0]
+        return signing_key_fingerprint
+    except URLError, e:
+        import traceback, sys
+        traceback.print_exc(file = sys.stderr)
+        return None
+
+def add_signing_key(signing_key_fingerprint):
+    run_as_root_in_terminal("apt-key adv --keyserver keyserver.ubuntu.com --recv " + signing_key_fingerprint)
+
+def del_signing_key(signing_key_fingerprint):
+    run_as_root_in_terminal("apt-key del " + signing_key_fingerprint)
+
+class _launchpad:
+    this_class_is_a_repository = True
+    category = 'repository'
+    def __init__(self):
+        assert isinstance(self.ppa, str)
+        if hasattr(self, 'content'): assert isinstance(self.content, str)
+        if hasattr(self, 'desc'):    assert isinstance(self.desc, (unicode, str))
+        self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
+        self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
+        self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
+
+        import StringIO
+        msg = StringIO.StringIO()
+        if hasattr(self, 'desc'): print >>msg, self.desc
+        if hasattr(self, 'content'): 
+            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
+        print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
+        print >>msg, _('<i>Source setting:</i>'), self.deb_config 
+        self.__class__.detail = msg.getvalue()
+    def install(self):
+        _repo.refresh_cache()
+        _repo.add_to_source(self.repos_file_name, self.deb_config)
+        _repo.save_source()
+        _repo.fresh_cache = False
+        signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
+        if signing_key: add_signing_key(signing_key)
+    def installed(self):
+        _repo.refresh_cache()
+        return _repo.exists_in_source(self.deb_config)
+    def remove(self):
+        _repo.refresh_cache()
+        _repo.remove_from_source(self.deb_config)
+        _repo.save_source()
+        _repo.fresh_cache = False
+        signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
+        if signing_key: del_signing_key(signing_key)        
+
+class Repo_Firefox_3_6(_launchpad):
     __doc__ = _('Firefox 3.6 (stable)')
     license = TRI_LICENSE(MPL, GPL, LGPL)
-    def __init__(self):
-        self.desc = _('This repository contains Firefox stable version 3.6.')
-        self.apt_content = 'firefox'
-        self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
-        self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'
-        self.apt_conf = ['deb http://ppa.launchpad.net/mozillateam/firefox-stable/ubuntu $version main']
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x9BDB3D89CE49EC21'
-        self.key_id = 'CE49EC21'
-        _repo.__init__(self)
+    ppa = 'mozillateam/firefox-stable'
+    content = 'firefox'
+
+#class Repo_Firefox_3_6(_repo):
+#    __doc__ = _('Firefox 3.6 (stable)')
+#    license = TRI_LICENSE(MPL, GPL, LGPL)
+#    def __init__(self):
+#        self.desc = _('This repository contains Firefox stable version 3.6.')
+#        self.apt_content = 'firefox'
+#        self.web_page = 'http://launchpad.net/~mozillateam/+archive/firefox-stable'
+#        self.apt_file = '/etc/apt/sources.list.d/firefox-stable.list'
+#        self.apt_conf = ['deb http://ppa.launchpad.net/mozillateam/firefox-stable/ubuntu $version main']
+#        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x9BDB3D89CE49EC21'
+#        self.key_id = 'CE49EC21'
+#        _repo.__init__(self)
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
