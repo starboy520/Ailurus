@@ -212,9 +212,7 @@ class Netbeans(_apt_install):
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
     category = 'dev'
-    license = ('The majority of the NetBeans IDE 6.8 code is available under '
-               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
-               'and the GNU General Public License (GPL) v2. '
+    license = ('Dual-licensed under Common Development and Distribution License v1.0 and GPL v2. '
                'See http://netbeans.org/about/legal/license.html')
     pkgs = 'netbeans'
     
@@ -226,9 +224,7 @@ class Netbeans(_apt_install):
 #               'Official site: http://netbeans.org/downloads/ .') +
 #              _(' This application depends on Java.') )
 #    category = 'dev'
-#    license = ('The majority of the NetBeans IDE 6.8 code is available under '
-#               'a dual license consisting of the Common Development and Distribution License (CDDL) v1.0 '
-#               'and the GNU General Public License (GPL) v2. '
+#    license = ('Dual-licensed under Common Development and Distribution License v1.0 and GPL v2. '
 #               'See http://netbeans.org/about/legal/license.html')
 #    def install(self):
 #        # Download Netbeans and install it.
@@ -465,7 +461,7 @@ class FFAutoProxy(_ff_extension):
 
 class FFChromeTheme_3_0(_ff_extension):
     __doc__ = _('Chrome Theme for Firefox 3.0.*')
-    license = 'MPL/GPL/LGPL tri-license'
+    license = 'Tri-licensed under MPL/GPL/LGPL'
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.0.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
@@ -478,7 +474,7 @@ class FFChromeTheme_3_0(_ff_extension):
 
 class FFChromeTheme_3_5(_ff_extension): 
     __doc__ = _('Chrome Theme for Firefox 3.5.*')
-    license = 'MPL/GPL/LGPL tri-license'
+    license = 'Tri-licensed under MPL/GPL/LGPL'
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.5.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
