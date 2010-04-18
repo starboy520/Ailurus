@@ -89,13 +89,13 @@ def _load_app_classes_from_module(module):
     import types
     classobjs = []
     names = set()
-    for symbol in dir(module):
-        if symbol[0]=='_': continue
+    for name in dir(module):
+        if name[0]=='_': continue
         import lib
-        if symbol in dir(lib): continue
-        obj = getattr(module,symbol)
+        if name in dir(lib): continue
+        obj = getattr(module,name)
         if type(obj)!=types.ClassType: continue
-        if symbol in names: continue
+        if name in names: continue
 
         try:
             check_class_members(obj)
@@ -111,10 +111,10 @@ def _load_app_classes_from_module(module):
             if not isinstance(obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
             obj.showed_in_toggle = obj.cache_installed
-            names.add(symbol)
+            names.add(name)
         except:
             import sys, traceback
-            print >>sys.stderr, _('Cannot load class %s')%symbol
+            print >>sys.stderr, _('Cannot load class %s')%name
             print >>sys.stderr, _('Traceback:')
             traceback.print_exc(file=sys.stderr)
         else:
