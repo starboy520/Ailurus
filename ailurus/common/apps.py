@@ -544,7 +544,7 @@ class FFEasyDragToGo(_ff_extension):
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
     category = 'firefoxdev'
-    license = 'BSD License'
+    license = BSD
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
@@ -739,7 +739,7 @@ class FFWebDeveloper(_ff_extension):
 
 class FFYetAnotherSmoothScrolling(_ff_extension):
     __doc__ = _('Yet Another Smooth Scrolling: Customize scrolling behavior')
-    license = 'BSD License'
+    license = BSD
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'

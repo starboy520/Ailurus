@@ -473,7 +473,7 @@ class Repo_Audacious(_repo):
         
 class Repo_Tor(_repo):
     __doc__ = _('Tor (stable)')
-    license = 'BSD License'
+    license = BSD
     def __init__(self):
         self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
         'confidential business activities and relationships, and state security known as traffic analysis.')
