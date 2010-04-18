@@ -24,7 +24,7 @@ import sys, os
 from lib import *
 from libapp import *
 
-class OpenJDK6:
+class OpenJDK6(I):
     'OpenJDK 6'
     category = 'dev'
     license = GPL

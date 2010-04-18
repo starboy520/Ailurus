@@ -35,7 +35,7 @@ from lib import *
 #    def remove(self):
 #        pass
 
-class _repo:
+class _repo(I):
     this_is_a_repository = True
     category = 'repository'
     fresh_cache = False
@@ -188,7 +188,7 @@ def add_signing_key(signing_key_fingerprint):
 def del_signing_key(signing_key_fingerprint):
     run_as_root_in_terminal("apt-key del " + signing_key_fingerprint)
 
-class _launchpad:
+class _launchpad(I):
     this_is_a_repository = True
     category = 'repository'
     def __init__(self):

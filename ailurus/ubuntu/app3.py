@@ -70,7 +70,7 @@ class Moonlight(_apt_install):
     category = 'media'
     pkgs = 'moonlight-plugin-mozilla'
 
-class DisableGetty:
+class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def support(self):
@@ -160,7 +160,7 @@ class Octave(_apt_install):
         _apt_install.remove(self)
         run_as_root('apt-get remove octave* -qq')
 
-class Generic_Genome_Browser:
+class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
     detail = _('Generic Genome Browser is a combination of database and interactive web page '
                'for manipulating and displaying annotations on genomes.\n'
@@ -329,7 +329,7 @@ class Bluefish(_apt_install):
     category = 'dev'
     pkgs = 'bluefish'
 
-class _tasksel:
+class _tasksel(I):
     category = 'server'
     def install(self):
         Tasksel.install(self.name)
@@ -418,7 +418,7 @@ class Tasksel_Ubuntustudio_font_meta(_tasksel):
     __doc__ = _('Ubuntustudio-font-meta: A lot of font')
     name = 'ubuntustudio-font-meta'
 
-class Launch_Tasksel:
+class Launch_Tasksel(I):
     __doc__ = _('* Launch tasksel')
     detail = _('This is a helper item. It just launches command: "sudo tasksel". '
                'Then you are free to customize your computer via "tasksel".')
@@ -432,7 +432,7 @@ class Launch_Tasksel:
     def remove(self):
         raise NotImplementedError
 
-class Fctix:
+class Fctix(I):
     'Fcitx'
     category = 'language'
     detail = _('This is a popular Chinese input method.\n'

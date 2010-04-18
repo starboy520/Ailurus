@@ -25,7 +25,7 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class ComicVODPlayer_new :
+class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
     category = 'media'
@@ -45,7 +45,7 @@ class ComicVODPlayer_new :
     def remove(self):
         raise NotImplemented
 
-class PBC:
+class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
@@ -197,7 +197,7 @@ class VirtualBox(_apt_install):
     manual = True
     pkgs = 'virtualbox-ose'
 
-class GNOMEArtNextGen:
+class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '

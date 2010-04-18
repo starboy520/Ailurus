@@ -152,7 +152,7 @@ class VIM_and_VIMRC(_apt_install) :
         _apt_install.remove(self)
         file_remove ( self.vimrc, *self.lines )
 
-class ColorfulBashPromptSymbols :
+class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
        '"username@hostname:~$ " to '

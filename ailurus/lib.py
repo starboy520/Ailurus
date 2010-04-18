@@ -26,6 +26,9 @@ D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
+class I:
+    this_is_an_installer = True
+    
 class Config:
     @classmethod
     def make_config_dir(cls):
