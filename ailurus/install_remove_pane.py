@@ -405,7 +405,7 @@ class InstallRemovePane(gtk.VBox):
                         print >>text, color( _('Not installed.') ),
                     else:
                         print >>text, begin_color()+_('Not installed, because:'),
-                        obj().get_reason(text)
+                        obj.get_reason(text)
                         text.write( end_color() )
                 else:  
                     print >>text, color( _('Will be installed.') ),
