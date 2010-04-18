@@ -212,7 +212,7 @@ class Netbeans(_apt_install):
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
     category = 'dev'
-    license = DUAL_LICENSE(CDDL, GPL) + 'http://netbeans.org/about/legal/license.html'
+    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
     
 #class Netbeans:
@@ -223,7 +223,7 @@ class Netbeans(_apt_install):
 #               'Official site: http://netbeans.org/downloads/ .') +
 #              _(' This application depends on Java.') )
 #    category = 'dev'
-#    license = DUAL_LICENSE(CDDL, GPL) + 'http://netbeans.org/about/legal/license.html'
+#    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
 #    def install(self):
 #        # Download Netbeans and install it.
 #        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
@@ -761,7 +761,7 @@ class WorldofPadman:
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
-    license = GPL + 'http://sourceforge.net/projects/wop-engine/'
+    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
     category = 'game'
     def install(self):
         file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()

@@ -73,7 +73,7 @@ if Config.is_Fedora():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        license = EPL + 'http://www.eclipse.org/org/documents/epl-v10.php'
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse-platform'
 elif Config.is_Ubuntu():
     class Eclipse(_apt_install):
@@ -85,7 +85,7 @@ elif Config.is_Ubuntu():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        license = EPL + 'http://www.eclipse.org/org/documents/epl-v10.php'
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse'
 
 def make_sure_installed():
@@ -98,7 +98,7 @@ class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
     detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse'
-    license = EPL + 'http://www.eclipse.org/legal/'
+    license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
@@ -117,7 +117,7 @@ class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
     detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse'
-    license = EPL + 'http://pydev.org/about.html'
+    license = EPL + ' http://pydev.org/about.html'
     def __init__(self):
         self.r = R(
 ['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
@@ -185,7 +185,7 @@ class Mylyn(_path_lists):
     'Mylyn'
     detail = _('Mylyn is from http://www.eclipse.org/mylyn/downloads/')
     category = 'eclipse'
-    license = EPL + 'http://www.eclipse.org/legal/'
+    license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/mylyn'
         self.paths = [ self.path ]
@@ -227,7 +227,7 @@ class PDT:
     __doc__ = _('PDT: PHP development')
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
-    license = EPL + 'http://www.eclipse.org/legal/'
+    license = EPL + ' http://www.eclipse.org/legal/'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')

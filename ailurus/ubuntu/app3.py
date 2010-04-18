@@ -490,7 +490,7 @@ class ImageMagick(_apt_install):
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
-    license = LGPL + 'http://www.pitivi.org/'
+    license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
 

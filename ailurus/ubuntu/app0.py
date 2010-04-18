@@ -59,14 +59,14 @@ class OpenJDK6:
 class WINE_1(_apt_install):
     'WINE 1.0'
     detail = _('This is an indispensable application for running Windows applications on Linux.')
-    license = LGPL + 'http://wiki.winehq.org/Licensing'
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine wine-gecko'
 
 class WINE_2(_apt_install):
     'WINE 1.2'
     detail = _('This is an indispensable application for running Windows applications on Linux.')
-    license = LGPL + 'http://wiki.winehq.org/Licensing'
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine1.2 wine1.2-gecko'
     def support(self):

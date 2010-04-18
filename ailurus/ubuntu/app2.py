@@ -153,7 +153,7 @@ class SDL(_apt_install):
 #class PipeViewer(_apt_install):
 #    __doc__ = _('pv: a pipe viewer')
 #    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
-#    license = AL + 'http://www.ivarch.com/programs/quickref/pv.shtml')
+#    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
           
 class AutoApt(_apt_install):

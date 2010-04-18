@@ -85,14 +85,14 @@ class Evince_Read_Chinese_PDF(_apt_install) :
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    license = GPL + 'http://code.google.com/p/chmsee/'
+    license = GPL + ' http://code.google.com/p/chmsee/'
     category = 'office'
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
-    license = GPL + 'http://sourceforge.net/projects/workrave/'
+    license = GPL + ' http://sourceforge.net/projects/workrave/'
     pkgs = 'workrave'
     def __init__(self):
         import os

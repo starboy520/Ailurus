@@ -179,7 +179,7 @@ class Repo_PlayOnLinux(_repo):
 
 class Repo_WINE(_repo):
     __doc__ = _('WINE (beta version)')
-    license = LGPL + 'http://wiki.winehq.org/Licensing'
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     def __init__(self):
         self.desc = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
