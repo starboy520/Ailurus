@@ -261,20 +261,20 @@ class TuxPaint(_rpm_install):
 class ChildsPlay(_rpm_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'childsplay'
         
 class GCompris(_rpm_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'gcompris'
 
 class QT_Creator(_rpm_install):
     'Qt Creator'
     detail = _('This is an IDE for Qt.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'qt-creator'
 
 class Kadu(_rpm_install):
@@ -282,7 +282,7 @@ class Kadu(_rpm_install):
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : yum install kadu')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'kadu'
     def support(self):
         return Config.is_Poland_locale()
@@ -291,7 +291,7 @@ class Parcellite(_rpm_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'parcellite'
 
 class Enable_Sudo:
@@ -351,34 +351,34 @@ class Disable_SELinux:
 class Gnash(_rpm_install):
     __doc__ = _('Flash plugin for web browser')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'gnash gnash-plugin'
         
 class Nautilus_Actions(_rpm_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-actions'
         
 class Nautilus_Image_Converter(_rpm_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-image-converter'
         
 class Nautilus_Open_Terminal(_rpm_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-open-terminal'
         
 class Nautilus_Search_Tool(_rpm_install):
     __doc__ = _('"Search files" entries')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-search-tool'
 

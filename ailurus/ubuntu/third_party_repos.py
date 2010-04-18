@@ -194,7 +194,7 @@ class Repo_WINE(_repo):
 
 class Repo_Ailurus(_repo):
     __doc__ = _('Ailurus (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This is the repository of Ailurus.')
         self.apt_content = 'ailurus'
@@ -207,7 +207,7 @@ class Repo_Ailurus(_repo):
 
 class Repo_AWN_Development(_repo):
     __doc__ = _('AWN (beta version)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('AWN is a MacOS X like panel for GNOME. '
             'This repository provides the latest version of AWN.')
@@ -221,7 +221,7 @@ class Repo_AWN_Development(_repo):
 
 class Repo_Blueman(_repo):
     __doc__ = _('Blueman (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Blueman is a graphical blue-tooth manager.')
         self.apt_content = 'blueman'
@@ -234,7 +234,7 @@ class Repo_Blueman(_repo):
 
 class Repo_Christine(_repo):
     __doc__ = _('Christine (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Christine is a small media player.')
         self.apt_content = 'christine'
@@ -260,7 +260,7 @@ class Repo_Chromium_Daily(_repo):
 
 class Repo_GTG(_repo):
     __doc__ = _('Getting things GNOME (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
         self.apt_content = 'gtg'
@@ -273,7 +273,7 @@ class Repo_GTG(_repo):
 
 class Repo_GNOMEColors(_repo):
     __doc__ = _('GNOME colors (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This repository contains some themes.')
         self.apt_content = 'arc-colors gnome-colors shiki-colors-murrine'
@@ -286,7 +286,7 @@ class Repo_GNOMEColors(_repo):
 
 class Repo_GlobalMenu(_repo):
     __doc__ = _('GNOME Global Menu (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
         self.apt_content = 'gnome-globalmenu'
@@ -299,7 +299,7 @@ class Repo_GlobalMenu(_repo):
 
 class Repo_Medibuntu(_repo):
     __doc__ = _('Medibuntu (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
             'There are many packages in this repository. The list of packages is in http://packages.medibuntu.org/')
@@ -313,7 +313,7 @@ class Repo_Medibuntu(_repo):
 
 class Repo_Moovida(_repo):
     __doc__ = _('Moovida (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Moovida is a cross platform media player.')
         self.apt_content = 'moovida'
@@ -326,7 +326,7 @@ class Repo_Moovida(_repo):
 
 class Repo_Shutter(_repo):
     __doc__ = _('Shutter (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Shutter is a powerful screenshot program.')
         self.apt_content = 'shutter'
@@ -339,7 +339,7 @@ class Repo_Shutter(_repo):
 
 class Repo_Synapse(_repo):
     __doc__ = _('Synapse (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Synapse is an instant messager.')
         self.apt_content = 'synapse'
@@ -352,7 +352,7 @@ class Repo_Synapse(_repo):
 
 class Repo_X_Server_Updates(_repo):
     __doc__ = _('X server updates (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This repository provides latest versions of X.org drivers, libraries.')
         self.apt_content = ( 'fglrx-installer xfree86-driver-synaptics xserver-xorg-input-vmmouse xserver-xorg-video-ati ' +
@@ -379,7 +379,7 @@ class Repo_WebkitGTK(_repo):
 
 class Repo_XBMC(_repo):
     __doc__ = _('XBMC (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
         self.apt_content = 'xbmc'
@@ -392,7 +392,7 @@ class Repo_XBMC(_repo):
 
 class Repo_IBus(_repo):
     __doc__ = _('IBus (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         version = Config.get_Ubuntu_version()
         self.desc = _('Next generation input method')
@@ -433,7 +433,7 @@ class Repo_RSSOwl(_repo):
 
 class Repo_Gmchess(_repo):
     __doc__ = _('Gmchess (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     Chinese = True
     def __init__(self):
         self.desc = _('This is a Chinese chess game.')
@@ -447,7 +447,7 @@ class Repo_Gmchess(_repo):
 
 class Repo_Exaile(_repo):
     __doc__ = _('Exaile (beta version)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('A music manager and player for GTK+ written in Python.')
         self.apt_content = 'exaile'
@@ -460,7 +460,7 @@ class Repo_Exaile(_repo):
 
 class Repo_Audacious(_repo):
     __doc__ = _('Audacious (beta version)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
         self.apt_content = 'audacious audacious-plugins'
@@ -487,7 +487,7 @@ class Repo_Tor(_repo):
 
 class Repo_RedNoteBook(_repo):
     __doc__ = _('RedNoteBook (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('This is a desktop diary application.')
         self.apt_content = 'rednotebook'
@@ -500,7 +500,7 @@ class Repo_RedNoteBook(_repo):
 
 class Repo_Pidgin_Develop(_repo):
     __doc__ = _('Pidgin (beta version)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
         self.apt_content = 'pidgin'
@@ -513,7 +513,7 @@ class Repo_Pidgin_Develop(_repo):
 
 class Repo_Songbird(_repo):
     __doc__ = _('Songbird (beta version)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
         self.apt_content = 'songbird'
@@ -526,7 +526,7 @@ class Repo_Songbird(_repo):
 
 class Repo_OSD_Lyrics(_repo):
     __doc__ = _('OSD-Lyrics (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('It displays lyrics. It supports many media players.')
         self.apt_content = 'osd-lyrics'
@@ -539,7 +539,7 @@ class Repo_OSD_Lyrics(_repo):
 
 class Repo_Mplayer_VOD(_repo):
     __doc__ = _('Mplayer-VOD (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
         self.apt_content = 'mplayer'
@@ -554,7 +554,7 @@ class Repo_Mplayer_VOD(_repo):
 	
 class Repo_Acire(_repo):
     __doc__ = _('Acire (stable)')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.apt_content = 'acire'

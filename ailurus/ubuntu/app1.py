@@ -135,7 +135,7 @@ class VIM_and_VIMRC(_apt_install) :
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'vim'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
@@ -249,33 +249,33 @@ class Flash_Player(_apt_install):
 class Stardict(_apt_install):
     __doc__ = _('Stardict')
     category = 'office'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'stardict'
         
 class Liferea(_apt_install):
     __doc__ = _('Liferea: a RSS feed reader')
     detail = _('This is a simple and easy used RSS feed reader.')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'liferea'
 
 class FireWall(_apt_install):
     __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
        'Firestarter is the graphical frontend of "iptables".')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'internet'
     pkgs = 'firestarter'
 
 class MACChanger(_apt_install):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'hardware'
     pkgs = 'macchanger'
 
 class Bluetooth(_apt_install):
     __doc__ = _('Bluetooth support')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'hardware'
     pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'

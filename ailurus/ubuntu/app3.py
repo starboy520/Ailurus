@@ -153,7 +153,7 @@ class DisableGettyKarmic(DisableGetty):
 
 class Octave(_apt_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'math'
     pkgs = 'qtoctave'
     def remove(self):
@@ -182,7 +182,7 @@ class Screenlets(_apt_install):
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
        'in order to decorate the desktop.')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'screenlets'
 
 class CompizSettingManager(_apt_install):
@@ -191,13 +191,13 @@ class CompizSettingManager(_apt_install):
        'Compiz settings manager is the configuration application for Compiz Fusion. '
        'It can configurate effects such as "Desktop cube" and "3D windows".')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(_apt_install):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'simple-ccsm'
 
 class ScienceBiology(_apt_install):
@@ -210,19 +210,19 @@ class ScienceBiology(_apt_install):
 class TuxPaint(_apt_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'tuxpaint'
 
 class CodeBlocks(_apt_install):
     __doc__ = _('Code::Blocks - C/C++ IDE')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'dev'
     pkgs = 'codeblocks'
 
 class ChildsPlay(_apt_install):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
@@ -239,7 +239,7 @@ class ChildsPlay(_apt_install):
 class GCompris(_apt_install):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
     category = 'education'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         pkgs = APT.get_existing_pkgs_set()
         voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
@@ -253,7 +253,7 @@ class QT_Creator(_apt_install):
     'Qt Creator'
     detail = _('This is an IDE for Qt.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
 class Kadu(_apt_install):
@@ -268,7 +268,7 @@ class Qnapi(_apt_install):
     __doc__ = 'Qnapi'
     detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
                 'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'media'
     pkgs = 'qnapi'
     def support(self):
@@ -438,7 +438,7 @@ class Fctix:
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def install(self):
         if get_arch() == 32:
             f = R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_i386.deb'],
@@ -455,21 +455,21 @@ class Fctix:
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
     category = 'media'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
         
@@ -477,7 +477,7 @@ class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
     category = 'internet'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     pkgs = 'vuze'
     def support(self):
         return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']

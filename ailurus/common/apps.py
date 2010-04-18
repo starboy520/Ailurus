@@ -294,7 +294,7 @@ class OpenJUMP(_path_lists):
               _(' This application depends on Java.') )
     license = ('GNU General Public License (GPL)')
     category = 'geography'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/openjump.desktop'
         self.dir = '/opt/openjump-1.3'
