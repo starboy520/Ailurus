@@ -183,7 +183,7 @@ class _apt_install(I):
         if len(all_pkgs) > 1:
             not_installed = [p for p in all_pkgs if not APT.installed(p)]
             if len(not_installed) != len(all_pkgs):
-                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
@@ -220,7 +220,7 @@ class _path_lists(I):
         import os
         not_exist = [p for p in self.paths if not os.path.exists(p)]
         if not_exist:
-            print >>f, _('"%s" does not exist.')%' '.join(not_exist),
+            print >>f, _('Because "%s" does not exist.')%' '.join(not_exist),
 
 class _ff_extension(I):
     'Firefox Extension'
@@ -278,7 +278,7 @@ class _download_one_file(I):
     def get_reason(self, f):
         import os
         if not os.path.exists(self.file):
-            print >>f, _('"%s" does not exist.')%self.file,
+            print >>f, _('Because "%s" does not exist.')%self.file,
 
 class _rpm_install(I):
     def _check(self):
@@ -300,6 +300,6 @@ class _rpm_install(I):
         if len(all_pkgs) > 1:
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
-                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
         return _('Command:') + (' su -c "yum install %s"' % self.pkgs)

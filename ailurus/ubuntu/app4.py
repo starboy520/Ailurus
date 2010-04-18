@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+#-*- coding: utf-8 -*-
+#
+# Ailurus - make Linux easier to use
+#
+# Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -21,15 +27,13 @@ from third_party_repos import *
 
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
-    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
     license = GPL
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire python-snippets'
 
 class AWN(_apt_install):
-    __doc__ = _('Avant Window Navigator')
-    detail = _('Avant Window Navigator (Awn) is a dock-like bar which sits at the bottom of the screen. It has support for launchers, task lists, and third party applets.')
+    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
     license = GPL
     category = 'appearance'
     depends = Repo_AWN_Development
@@ -56,24 +60,21 @@ class ComicVODPlayer_new(I):
         raise NotImplemented
 
 class Audacious(_apt_install):
-    __doc__ = _('Audacious (beta version)')
-    detail = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
+    __doc__ = _('Audacious: Audio player')
     license = GPL
     category = 'media'
     depends = Repo_Audacious
     pkgs = 'audacious audacious-plugins'
 
-class blueman(_apt_install):
-    __doc__ = _('Blueman')
-    detail = _('Blueman is a graphical blue-tooth manager')
+class Blueman(_apt_install):
+    __doc__ = _('Blueman: Graphical blue-tooth manager')
     license = GPL
     category = 'hardware'
     depends = Repo_Blueman
     pkgs = 'blueman'
 
-class christine(_apt_install):
-    __doc__ = _('Christine')
-    detail = _('Christine is a small media player.')
+class Christine(_apt_install):
+    __doc__ = _('Christine: Media player')
     license = GPL
     category = 'media'
     depends = Repo_Christine
@@ -82,40 +83,35 @@ class christine(_apt_install):
         return Config.get_Ubuntu_version() != 'lucid'
 
 class Gmchess(_apt_install):
-    __doc__ = _('Gmchess')
-    detail = _('This is a Chinese chess game.')
+    __doc__ = _('Gmchess: Chinese chess game')
     license = GPL
     category = 'game'
     depends = Repo_Gmchess
     pkgs = 'gmchess'
 
-class chromium(_apt_install):
-    __doc__ = _('Chromium')
-    detail = _('Chromium is the open source version of Google Chrome.')
+class Chromium(_apt_install):
+    __doc__ = _('Chromium: Web browser')
     license = BSD
     category = 'internet'
     depends = Repo_Chromium_Daily
     pkgs = 'chromium-browser'
 
-class exaile(_apt_install):
-    __doc__ = _('Exaile')
-    detail = _('A music manager and player for GTK+ written in Python.')
+class Exaile(_apt_install):
+    __doc__ = _('Exaile: Audio player')
     license = GPL
     category = 'media'
     depends = Repo_Exaile
     pkgs = 'exiale'
 
-class gnome_global_menu(_apt_install):
-    __doc__ = _('Global Menu Bar')
-    detail = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
+class Gnome_global_menu(_apt_install):
+    __doc__ = _('Global Menu: A globally shared menu bar')
     license = GPL
     category = 'appearance'
     depends = Repo_GlobalMenu
     pkgs = 'gnoe-globalmenu'
 
-class gnome_color(_apt_install):
-    __doc__ = _('GNOME colors theme (stable)')
-    detail = _('Seven full color-schemes available; Brave (Blue), Human (Orange), Wine (Red), Noble (Purple), Wise (Green), Dust (Chocolate) and Illustrious (Pink) will be installed.')
+class Gnome_color(_apt_install):
+    __doc__ = _('GNOME colors themes')
     license = GPL
     category = 'appearance'
     depends = Repo_GNOMEColors
@@ -123,73 +119,65 @@ class gnome_color(_apt_install):
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
-class getting_things_gnome(_apt_install):
-    __doc__ = _('Getting Things Gnome(Lastest version)')
-    detail = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
+class Getting_things_gnome(_apt_install):
+    __doc__ = _('Getting Things Gnome: GTD tool')
     license = GPL
     category = 'office'
     logo = 'gtg.png'
     depends = Repo_GTG
     pkgs = 'gtg'
 
-class moovida(_apt_install):
-    __doc__ = _('Moovida')
-    detail = _('Moovida is a cross platform media player.')
+class Moovida(_apt_install):
+    __doc__ = _('Moovida: Media player')
     license = GPL
     category = 'media'
     depends = Repo_Moovida
     pkgs = 'moovida'
 
 class OSD_Lyrics(_apt_install):
-    __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
+    __doc__ = _('OSD-Lyrics: Display lyrics')
     category = 'media'
     license = GPL
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
 
-class pidgin_beta(_apt_install):
-    __doc__ = _('Pdigin beta version')
-    detail = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
+class Pidgin_beta(_apt_install):
+    __doc__ = _('Pdigin (beta version)')
     license = GPL
     category = 'internet'
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
 
 class PlayOnLinux(_apt_install):
-    __doc__ = _('PlayOnLinux')
-    detail =  _('PlayOnLinux is a front-end for wine. ''It helps to install Windows Games and softwares on Linux.')
+    __doc__ = _('PlayOnLinux: A graphical front-end for wine')
     license = LGPL
-    category = 'media'
+    category = 'game'
     depends = Repo_PlayOnLinux
     pkgs = 'playonlinux'
 
 class RSSOwl(_apt_install):
-    __doc__ = _('RSSOwl')
-    detail = _('RSSOwl is a free and powerful news feed reader. ')
+    __doc__ = _('RSSOwl: RSS feed reader')
     license = EPL
     category = 'internet'
     depends = Repo_RSSOwl
     pkgs = 'rssowl'
 
 class RedNoteBook(_apt_install):
-    __doc__ = _('RedNoteBook')
-    detail = _('This is a desktop diary application.')
+    __doc__ = _('RedNoteBook: A desktop diary application')
     license = GPL
     category = 'office'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
     
-class shutter(_apt_install):
-    __doc__ = _('Shutter')
-    detail = _('Shutter is a powerfull screenshot program')
+class Shutter(_apt_install):
+    __doc__ = _('Shutter: A screen-shot application')
     license = GPL
     category = 'tweak'
     depends = Repo_Shutter
     pkgs = 'shutter'
 
-class synapse(_apt_install):
-    __doc__ = _('Synapse')
-    detail = _('Synapse is an instant messager.')
+class Synapse(_apt_install):
+    __doc__ = _('Synapse: An instance messanger')
     license = GPL
     category = 'internet'
     depends = Repo_Synapse
@@ -197,26 +185,12 @@ class synapse(_apt_install):
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
-class tor(_apt_install):
-    __doc__ = _('Tor')
-    detail = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
-        'confidential business activities and relationships, and state security known as traffic analysis.')
-    license = BSD
-    category = 'internet'
-    depends = Repo_Tor
-    pkgs = 'tor privoxy vidalia'
-
-class firefox_3_6(_apt_install):
+class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
-    detail = _('')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     category = 'internet'
     depends = Repo_Firefox_3_6
     pkgs = 'firefox-3.6-branding'
-    def installed(self):
-        return APT.installed('firefox-3.6-branding')
-    def remove(self):
-        APT.install('firefox-3.5-branding')
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
