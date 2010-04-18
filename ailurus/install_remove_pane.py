@@ -401,12 +401,10 @@ class InstallRemovePane(gtk.VBox):
             if obj.cache_installed==False: # can install
                 # will be installed?
                 if not obj.showed_in_toggle: 
-                    if not hasattr(obj, 'get_reason'):
-                        print >>text, color( _('Not installed.') ),
-                    else:
-                        print >>text, begin_color()+_('Not installed, because:'),
+                    print >>text, begin_color() + _('Not installed.'),
+                    if hasattr(obj, 'get_reason'):
                         obj.get_reason(text)
-                        text.write( end_color() )
+                    text.write( end_color() )
                 else:  
                     print >>text, color( _('Will be installed.') ),
 
