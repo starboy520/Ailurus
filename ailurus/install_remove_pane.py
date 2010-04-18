@@ -180,7 +180,7 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ o for o in self.app_objs
                                if o.cache_installed==False
                                and o.showed_in_toggle ]
-            depends = [ o.depends for o in to_install 
+            depends = [ o.depends() for o in to_install # the type of o.depends is types.ClassType 
                                    if hasattr(o, 'depends') ]
             to_install += depends
             to_install_repos = [ o for o in to_install 
