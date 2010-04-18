@@ -452,27 +452,6 @@ class Fctix(I):
     def remove(self):
         APT.remove('fcitx-svn')
         
-class XBMC(_apt_install):
-    __doc__ = _('XBMC: Home entertainment system')
-    category = 'media'
-    license = GPL
-    depends = Repo_XBMC
-    pkgs = 'xbmc'
-
-class Songbird(_apt_install):
-    __doc__ = _('Songbird: Open source substitution of iTunes')
-    category = 'media'
-    license = GPL
-    depends = Repo_Songbird
-    pkgs = 'songbird'
-
-class OSD_Lyrics(_apt_install):
-    __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
-    category = 'media'
-    license = GPL
-    depends = Repo_OSD_Lyrics
-    pkgs = 'osdlyrics'
-        
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
@@ -493,11 +472,3 @@ class PiTiVi(_apt_install):
     license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
-
-class Acire(_apt_install):
-    __doc__ = _('Acire: A Python code fragment manager')
-    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    license = GPL
-    category = 'dev'
-    depends = Repo_Acire
-    pkgs = 'acire'

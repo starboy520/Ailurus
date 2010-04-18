@@ -25,26 +25,6 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class ComicVODPlayer_new(I):
-    __doc__ = _('Mplayer with "vod" protocol support')
-    detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
-    category = 'media'
-    Chinese = True
-    license = GPL
-    depends = Repo_Mplayer_VOD
-    def install(self):
-        extension_path = FirefoxExtensions.get_extensions_path()
-        comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
-        run('cp %s %s'%(comicview, extension_path) )
-        delay_notify_firefox_restart()
-        # Remove current mplayer. Then install a newer version.
-        APT.remove('mplayer')
-        APT.install('mplayer')
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplemented
-
 class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +

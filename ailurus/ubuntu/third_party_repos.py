@@ -24,16 +24,16 @@ import sys, os
 from lib import *
 
 #class Open_Repogen_Website:
-#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-#    category = 'repository'
-#    def installed(self): 
-#        return False
-#    def install(self):
-#        open_web_page('http://repogen.simplylinux.ch/')
-#    def remove(self):
-#        pass
+# __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
+# detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
+# 'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
+# category = 'repository'
+# def installed(self):
+# return False
+# def install(self):
+# open_web_page('http://repogen.simplylinux.ch/')
+# def remove(self):
+# pass
 
 class _repo(I):
     this_is_a_repository = True
@@ -90,7 +90,7 @@ class _repo(I):
         
         assert isinstance(self.apt_file, str)
         assert isinstance(self.apt_conf, list)
-        for i,a in enumerate(self.apt_conf): 
+        for i,a in enumerate(self.apt_conf):
             is_string_not_empty(a)
             if a.endswith('\n'): raise ValueError(a)
             if '$' in a: #variable substitution
@@ -115,7 +115,7 @@ class _repo(I):
         if self.apt_content:
             print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.apt_content, '</b>'
         print >>msg, _('<i>Web page:</i>'), self.web_page
-        print >>msg, _('<i>Source setting:</i>'), 
+        print >>msg, _('<i>Source setting:</i>'),
         for a in self.apt_conf:
             print >>msg, a
         self.__class__.detail = msg.getvalue()
@@ -194,7 +194,7 @@ class _launchpad(I):
     def __init__(self):
         assert isinstance(self.ppa, str)
         if hasattr(self, 'content'): assert isinstance(self.content, str)
-        if hasattr(self, 'desc'):    assert isinstance(self.desc, (unicode, str))
+        if hasattr(self, 'desc'): assert isinstance(self.desc, (unicode, str))
         self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
         self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
         self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
@@ -202,10 +202,10 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        if hasattr(self, 'content'): 
+        if hasattr(self, 'content'):
             print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
         print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
-        print >>msg, _('<i>Source setting:</i>'), self.deb_config 
+        print >>msg, _('<i>Source setting:</i>'), self.deb_config
         self.__class__.detail = msg.getvalue()
     def install(self):
         _repo.refresh_cache()
@@ -223,7 +223,7 @@ class _launchpad(I):
         _repo.save_source()
         _repo.fresh_cache = False
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
-        if signing_key: del_signing_key(signing_key)        
+        if signing_key: del_signing_key(signing_key)
 
 class Repo_Firefox_3_6(_launchpad):
     __doc__ = _('Firefox 3.6 (stable)')
@@ -505,7 +505,7 @@ class Repo_Mplayer_VOD(_launchpad):
     ppa = 'homer-xing/mplayer-vod'
     def support(self):
         return False
-	
+
 class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
     license = GPL

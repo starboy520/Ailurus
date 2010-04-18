@@ -718,6 +718,18 @@ class FFWeaveSync35(_ff_extension):
     360287, '23c23f795f564272348276f48cb506c7feabdad0')
         _ff_extension.__init__(self)
 
+class FFStylish(_ff_extension):
+    __doc__ = _('Stylish: install themes for website.')
+    license = GPL
+    def __init__(self):
+        self.desc = _('Stylish lets you easily install themes and skins for Google, '
+	            'Facebook, YouTube, Orkut, and many, many other sites. ')
+	self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2108'
+	self.range = '3.0~3.7'
+	self.name = u'Stylish'
+	self.R = R(['http://addons.mozilla.org/en-US/firefox/downloads/latest/2108/addon-2108-latest.xpi'])
+	_ff_extension.__init__(self)
+
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
     category = 'firefoxdev'
