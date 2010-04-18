@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-18 19:17+0800\n"
+"POT-Creation-Date: 2010-04-18 20:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1725,15 +1725,15 @@ msgstr ""
 msgid "\"Search files\" entries"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:381 .././ailurus/ubuntu/app3.py:472
+#: .././ailurus/fedora/apps.py:381 .././ailurus/ubuntu/app3.py:465
 msgid "ImageMagick: Edit images"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:382 .././ailurus/ubuntu/app3.py:473
+#: .././ailurus/fedora/apps.py:382 .././ailurus/ubuntu/app3.py:466
 msgid "You can start it by /usr/bin/display"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:387 .././ailurus/ubuntu/app3.py:478
+#: .././ailurus/fedora/apps.py:387 .././ailurus/ubuntu/app3.py:471
 msgid "PiTiVi: Movie editor"
 msgstr ""
 
@@ -4162,12 +4162,8 @@ msgid ""
 "It is from http://fcitx.googlecode.com/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app3.py:456
-msgid "OSD-Lyrics: Display lyrics. Supports many media players."
-msgstr ""
-
 #. Latest Vuze is in 9.10 repository.
-#: .././ailurus/ubuntu/app3.py:464
+#: .././ailurus/ubuntu/app3.py:457
 msgid "Vuze: Download via bittorrent; Search videos"
 msgstr ""
 
