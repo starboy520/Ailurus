@@ -292,7 +292,7 @@ class OpenJUMP(_path_lists):
     detail = ( 
               _('Official site: http://openjump.org/ .') +
               _(' This application depends on Java.') )
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     category = 'geography'
     license = GPL
     def __init__(self):

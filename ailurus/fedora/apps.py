@@ -92,7 +92,7 @@ class VIM_and_VIMRC(_rpm_install) :
        '"yum install vim-enhanced" command is executed. '
        'Then these lines are appended into "$HOME/.vimrc" file: \n'
        '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     category = 'dev'
     pkgs = 'vim-enhanced'
     def __vimrc_installed(self):
@@ -155,7 +155,7 @@ class Stardict_without_Dictionaries(_rpm_install):
 class Liferea(_rpm_install):
     __doc__ = _('Liferea: a RSS feed reader')
     detail = _('This is a simple and easy used RSS feed reader.')
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     category = 'internet'
     pkgs = 'liferea'
 
@@ -180,7 +180,7 @@ class QtiPlot(_rpm_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
     category = 'math'
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'qtiplot'
 
 class QCad(_rpm_install):
@@ -255,7 +255,7 @@ class Generic_Genome_Browser:
 class TuxPaint(_rpm_install):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
     category = 'education'
-    license = ('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'tuxpaint'
 
 class ChildsPlay(_rpm_install):
