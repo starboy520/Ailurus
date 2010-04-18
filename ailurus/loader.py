@@ -122,7 +122,7 @@ def load_custom_app_classes():
     return_value = []
     # check whether the extension directory exist
     import os
-    extension_path = Config.get_config_dir() + 'extension'
+    extension_path = Config.get_config_dir()
     if not os.path.exists(extension_path):
         return []
     # add the extension directory to sys.path
