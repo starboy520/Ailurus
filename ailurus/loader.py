@@ -44,7 +44,7 @@ def check_class_members(app_class, default_category = 'tweak'):
     if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
     return app_class
 
-def load_app_classes(common, desktop, distribution):
+def load_app_objs(common, desktop, distribution):
     import lib
     modules = []
     for module in [common, desktop, distribution]:
@@ -53,41 +53,37 @@ def load_app_classes(common, desktop, distribution):
         if module and hasattr(module, 'apps'):
             modules.append(module.apps)
 
-    classes = []
+    objs = []
     names = set()
     for module in modules:
-        for symbol in dir(module):
-            if symbol[0]=='_': continue
-            if symbol in dir(lib): continue
-            app_class = getattr(module,symbol)
+        for name in dir(module):
+            if name[0]=='_': continue
+            if name in dir(lib): continue
+            app_class = getattr(module,name)
             if type(app_class)!=types.ClassType: continue
-            if symbol in names: continue
+            if name in names: continue
     
             try:
                 check_class_members(app_class)
                 app_class_obj = app_class()
-                if hasattr(app_class, 'support'):
-                    if app_class_obj.support()==False: continue
-                if hasattr(app_class, 'Chinese'): 
-                    if Config.is_Chinese_locale()==False: continue
-                if hasattr(app_class, 'installation_command'):
-                    if app_class.detail and not app_class.detail.endswith('\n'):
-                        app_class.detail += '\n'
-                    app_class.detail += app_class_obj.installation_command()
-                app_class.cache_installed = app_class_obj.installed()
-                if not isinstance(app_class.cache_installed, bool):
+                if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+                if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
+                if hasattr(app_class_obj, 'installation_command'):
+                    if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
+                        app_class_obj.detail += '\n'
+                    app_class_obj.detail += app_class_obj.installation_command()
+                app_class_obj.cache_installed = app_class_obj.installed()
+                if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
-                app_class.showed_in_toggle = app_class.cache_installed
-                names.add(symbol)
+                app_class_obj.showed_in_toggle = app_class_obj.cache_installed
+                objs.append(app_class_obj)
+                names.add(name)
             except:
                 import sys, traceback
-                print >>sys.stderr, _('Cannot load class %s')%symbol
-                print >>sys.stderr, _('Traceback:')
+                print >>sys.stderr, _('Cannot load class %s') % name
                 traceback.print_exc(file=sys.stderr)
-            else:
-                classes.append(app_class)
 
-    return classes
+    return objs
 
 def _load_app_classes_from_module(module):
     import types

@@ -314,21 +314,21 @@ class Install_Hardware_Driver:
     def install(self):
         spawn_as_root('/usr/bin/jockey-gtk')
 
-def get_class_by_name(name, app_classes):
+def get_obj_by_class_name(name, app_objs):
     assert isinstance(name, str)
-    assert isinstance(app_classes, list)
+    assert isinstance(app_objs, list)
     
     import types
-    for c in app_classes:
-        assert isinstance(c, types.ClassType)
-        if c.__name__ == name:
-            return c
+    for o in app_objs:
+        assert isinstance(o, types.InstanceType)
+        if o.__class__.__name__ == name:
+            return o
     g = globals()
     if name in g: 
         c = g[name]
         assert isinstance(c, types.ClassType)
         assert hasattr(c, 'install') and hasattr(c, 'installed')
-        return c
+        return c()
     raise Exception(name)
 
 class DoStuffDialog(gtk.Dialog):
@@ -353,7 +353,7 @@ class DoStuffDialog(gtk.Dialog):
                 self.refresh_GUI()
                 print '\x1b[1;33m', _('Ongoing:'), row[1], '\x1b[m'
                 try:
-                    c = row[2]()
+                    c = row[2]
                     if not c.installed(): c.install()
                     row[0] = 3
                     print '\x1b[1;32m', _('Successful'), '\x1b[m'
@@ -381,7 +381,7 @@ class DoStuffDialog(gtk.Dialog):
         if self.can_exit == False: return True
         return False
 
-    def __init__(self, app_classes):
+    def __init__(self, app_objs):
         self.can_exit = False
         
         import os, sys
@@ -399,7 +399,7 @@ class DoStuffDialog(gtk.Dialog):
         for text, name, will_do in WORKS:
             if will_do == False: continue
             try:
-                c = get_class_by_name(name, app_classes)
+                c = get_obj_by_class_name(name, app_objs)
                 task_store.append([1, text, c])
             except:
                 import traceback
@@ -453,11 +453,11 @@ def quick_setup():
     import common as COMMON
     DESKTOP = None
     import ubuntu as DISTRIBUTION
-    from loader import load_app_classes
-    app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
+    from loader import load_app_objs
+    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
     window.destroy()
     #3
-    dialog = DoStuffDialog(app_classes)
+    dialog = DoStuffDialog(app_objs)
     import thread
     thread.start_new_thread(dialog.refresh_GUI_thread, () )
     dialog.start_button.emit('clicked')
