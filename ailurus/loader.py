@@ -84,16 +84,15 @@ def load_app_objs(common, desktop, distribution):
     return objs
 
 def load_app_objs_from_extension(extension):
+    from ailurus.lib import I
     import types
     classobjs = []
     names = set()
     for name in dir(extension):
-        if name[0]=='_': continue
-        import lib
-        if name in dir(lib): continue
-        app_class = getattr(extension,name)
-        if type(app_class)!=types.ClassType: continue
+        if name[0]=='_' or name=='I': continue
         if name in names: continue
+        app_class = getattr(extension,name)
+        if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
 
         try:
             check_class_members(app_class)
