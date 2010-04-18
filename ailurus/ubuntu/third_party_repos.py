@@ -24,16 +24,16 @@ import sys, os
 from lib import *
 
 #class Open_Repogen_Website:
-# __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-# detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-# 'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-# category = 'repository'
-# def installed(self):
-# return False
-# def install(self):
-# open_web_page('http://repogen.simplylinux.ch/')
-# def remove(self):
-# pass
+#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
+#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
+#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
+#    category = 'repository'
+#    def installed(self): 
+#        return False
+#    def install(self):
+#        open_web_page('http://repogen.simplylinux.ch/')
+#    def remove(self):
+#        pass
 
 class _repo(I):
     this_is_a_repository = True
