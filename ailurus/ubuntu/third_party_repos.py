@@ -165,7 +165,7 @@ class Repo_Firefox_3_6(_repo):
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
-    license = 'GNU Lesser General Public License (LGPL)'
+    license = LGPL
     def __init__(self):
         self.desc = _('PlayOnLinux is a front-end for wine. '
             'It helps to install Windows Games and softwares on Linux.')
@@ -179,8 +179,7 @@ class Repo_PlayOnLinux(_repo):
 
 class Repo_WINE(_repo):
     __doc__ = _('WINE (beta version)')
-    license = ('GNU Lesser General Public License (LGPL)'
-               'see http://wiki.winehq.org/Licensing')
+    license = LGPL + 'http://wiki.winehq.org/Licensing'
     def __init__(self):
         self.desc = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
@@ -366,7 +365,7 @@ class Repo_X_Server_Updates(_repo):
         
 class Repo_WebkitGTK(_repo):
     __doc__ = _('WebkitGTK (stable)')
-    license = 'GNU Lesser General Public License (LGPL)'
+    license = LGPL
     def __init__(self):
         self.desc = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
         self.apt_content = 'webkit pywebkitgtk'
@@ -420,7 +419,7 @@ class Repo_Canonical_Partner(_repo):
 
 class Repo_RSSOwl(_repo):
     __doc__ = _('RSSOwl (stable)')
-    license = 'Eclipse Public License'
+    license = EPL
     def __init__(self):
         self.desc = _('RSSOwl is an RSS reader.')
         self.apt_content = 'rssowl'

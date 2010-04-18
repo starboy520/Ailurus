@@ -27,8 +27,7 @@ from libapp import *
 class WINE(_rpm_install):
     __doc__ = _('WINE')
     detail = _('This is an indispensable application for running Windows applications on Linux.')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
+    license = LGPL + 'http://wiki.winehq.org/Licensing'
     category = 'vm'
     pkgs = 'wine'
         
@@ -44,15 +43,13 @@ class Evince_Read_Chinese_PDF(_rpm_install) :
 class CHMSee_Read_CHM_Documents(_rpm_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
     category = 'office'
-    license = ('GNU General Public License (GPL), '
-               'see http://code.google.com/p/chmsee/')
+    license = GPL + 'http://code.google.com/p/chmsee/'
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_rpm_install) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
-    license = ('GNU General Public License (GPL), '
-               'see http://sourceforge.net/projects/workrave/')
+    license = GPL + 'http://sourceforge.net/projects/workrave/'
     pkgs = 'workrave'
     def __init__(self):
         import os
@@ -149,7 +146,7 @@ class Stardict_without_Dictionaries(_rpm_install):
                'stardict-dic-ru: Russian dictionaries\n'
                'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
                'stardict-dic-zh_TW: Traditional Chinese dictionaries')
-    license = _('GNU General Public License (GPL)')
+    license = GPL
     pkgs = 'stardict'
 
 class Liferea(_rpm_install):
@@ -185,8 +182,7 @@ class QtiPlot(_rpm_install) :
 
 class QCad(_rpm_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
-    detail = ''
-    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
+    license = GPL
     category = 'em'
     pkgs = 'qcad'
 
@@ -227,8 +223,7 @@ class DisableGetty:
 
 class Octave(_rpm_install):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    license = ('GNU General Public License (GPL), '
-               'see http://www.gnu.org/software/octave/license.html')
+    license = GPL + 'http://www.gnu.org/software/octave/license.html'
     category = 'math'
     pkgs = 'qtoctave'
 
@@ -390,14 +385,12 @@ class ImageMagick(_rpm_install):
 
 class PiTiVi(_rpm_install):
     __doc__ = _('PiTiVi: Movie editor')
-    license = ('GNU Lesser General Public License, '
-               'see http://www.pitivi.org/')
+    license = LGPL + 'http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
 
 class Audacity(_rpm_install):
     __doc__ = _('Audacity: Music editor')
-    license = ('GNU Lesser General Public License, '
-               'see http://audacity.sourceforge.net/')
+    license = LGPL + 'http://audacity.sourceforge.net/'
     category = 'media'
     pkgs = 'audacity-freeworld'

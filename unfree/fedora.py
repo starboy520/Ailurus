@@ -345,7 +345,7 @@ class Skype(_rpm_install):
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')
     category = 'vm'
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     depends = Repo_RPMFusion_Free
     pkgs = 'VirtualBox-OSE'
 

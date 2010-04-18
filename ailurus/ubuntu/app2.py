@@ -30,7 +30,7 @@ class ComicVODPlayer_new :
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
     category = 'media'
     Chinese = True
-    license = 'GPL'
+    license = GPL
     depends = Repo_Mplayer_VOD
     def install(self):
         extension_path = FirefoxExtensions.get_extensions_path()
@@ -147,7 +147,7 @@ class SDL(_apt_install):
                'SDL is a cross-platform multimedia library designed to provide low level access to audio'
                ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.')
     category = 'dev'
-    license ='GNU Lesser General Public License'
+    license = LGPL
     pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
 #class PipeViewer(_apt_install):

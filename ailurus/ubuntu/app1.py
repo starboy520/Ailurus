@@ -74,7 +74,7 @@ class Typespeed(_apt_install) :
     'Typespeed'
     detail= _('Typespeed is a typing practise. It only runs in terminal.')
     category = 'game'
-    license = 'GNU Lesser General Public License (LGPL)'
+    license = LGPL
     pkgs = "typespeed"
 
 class Evince_Read_Chinese_PDF(_apt_install) :
@@ -85,16 +85,14 @@ class Evince_Read_Chinese_PDF(_apt_install) :
 
 class CHMSee_Read_CHM_Documents(_apt_install) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    license = ('GNU General Public License (GPL), '
-               'see http://code.google.com/p/chmsee/')
+    license = GPL + 'http://code.google.com/p/chmsee/'
     category = 'office'
     pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(_apt_install) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
-    license = ('GNU General Public License (GPL)'
-                'see http://sourceforge.net/projects/workrave/')
+    license = GPL + 'http://sourceforge.net/projects/workrave/'
     pkgs = 'workrave'
     def __init__(self):
         import os
@@ -177,7 +175,7 @@ class ColorfulBashPromptSymbols :
 class Multimedia_Codecs (_apt_install) :
     __doc__ = _('Multi-media codec')
     category = 'media'
-    license = 'GNU Lesser General Public License'
+    license = LGPL
     pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
              'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
 
@@ -188,7 +186,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
     __file = '/etc/apparmor.d/usr.sbin.cupsd'
     category = 'office'
-    license = 'GNU Lesser General Public License'
+    license = LGPL
     pkgs = 'cups-pdf'
     def install(self):
         _apt_install.install(self)
@@ -210,7 +208,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
-    license = 'GNU Lesser General Public License'
+    license = LGPL
     category = 'office'
     pkgs = 'cups-pdf'
     def support(self):
@@ -219,7 +217,7 @@ class CUPS(_apt_install):
 class Flash_Player(_apt_install):
     __doc__ = _(u'GNU Flash plugin for web browser')
     category = 'media'
-    license = 'GPL'
+    license = GPL
     pkgs = 'gnash mozilla-plugin-gnash'
     
 #class Flash_Player_Font_Bug:

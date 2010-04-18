@@ -32,7 +32,7 @@ class Varkon(_apt_install, _path_lists):
                  '<span color="blue"><u>http://varkon.sourceforge.net/man.htm</u></span> before using it. ') +
                _(u'Developed by Örebro university, Sweden.') )
     category = 'em'
-    license = 'GNU General Public License (GPL), Lesser GNU General Public License (LGPL)'
+    license = GPL
     pkgs = 'varkon-user-manual varkon'
     def __init__(self):
         self.shortcut = '/usr/share/applications/varkon.desktop'
@@ -57,7 +57,7 @@ class QCad(_apt_install):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
     detail = ''
     category = 'em'
-    license = ('Non-free with limited-time free trial (professional edition) or GPL (community edition)')
+    license = GPL
     pkgs = 'qcad'
         
 class Moonlight(_apt_install):
@@ -204,7 +204,7 @@ class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
     detail = _('A lot of software for molecular biology, structural biology and bioinformatics.')
     category = 'biology'
-    license = 'Eclipse Public License, GNU General Public License (GPL)'
+    license = 'Dual-licensed under Eclipse Public License and GPL.'
     pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):
@@ -490,8 +490,7 @@ class ImageMagick(_apt_install):
         
 class PiTiVi(_apt_install):
     __doc__ = _('PiTiVi: Movie editor')
-    license = ('GNU Lesser General Public License, '
-               'see http://www.pitivi.org/')
+    license = LGPL + 'http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
 

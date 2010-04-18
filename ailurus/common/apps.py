@@ -590,7 +590,7 @@ class FFFoxyProxy(_ff_extension):
 
 class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
-    license = 'MIT/X11 License'
+    license = MIT
     def __init__(self):
         self.desc = _('This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.'
               'You can download hundreds of scripts from http://userscripts.org, or '
@@ -723,7 +723,7 @@ class FFWeaveSync35(_ff_extension):
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
     category = 'firefoxdev'
-    license = 'LGPL v3.0'
+    license = LGPL
     def __init__(self):
         self.desc = _('Many developers installed it.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
@@ -763,7 +763,7 @@ class WorldofPadman:
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
-    license = 'GNU General Public License (GPL), see http://sourceforge.net/projects/wop-engine/'
+    license = GPL + 'http://sourceforge.net/projects/wop-engine/'
     category = 'game'
     def install(self):
         file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
