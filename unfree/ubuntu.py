@@ -50,7 +50,7 @@ class Alice(_path_lists):
 
         import os
         if not os.path.exists('/opt'):
-            gksudo('mkdir /opt')
+            run_as_root('mkdir /opt')
         own_by_user('/opt')
         with Chdir('/opt') as o:
             run('tar jxf '+f)
@@ -95,9 +95,9 @@ class AliPayFirefoxPlugin(I):
         run('rm -f %s'%(self.path+'/aliedit.so') )
         run('rm -f %s'%(self.path+'/aliedit.xpt') )
         if os.path.exists('/usr/lib/firefox-addons/plugins/aliedit.so'):
-            gksudo('rm -f /usr/lib/firefox-addons/plugins/aliedit.so')
+            run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.so')
         if os.path.exists('/usr/lib/firefox-addons/plugins/aliedit.xpt'):
-            gksudo('rm -f /usr/lib/firefox-addons/plugins/aliedit.xpt')
+            run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.xpt')
     def support(self):
         import os
         return os.path.exists('/usr/bin/firefox')
@@ -118,8 +118,8 @@ class AstroMenace(_path_lists):
 35948638, '752d6faec7a4432f991055ab788b1e7dba004995').download()
 
         import os
-        if not os.path.exists('/opt'): gksudo('mkdir /opt')
-        gksudo('chown $USER:$USER /opt')
+        if not os.path.exists('/opt'): run_as_root('mkdir /opt')
+        run_as_root('chown $USER:$USER /opt')
         with Chdir('/opt') as o:
             run('tar xf %s'%f)
             create_file('/usr/share/applications/astromenace.desktop', 
@@ -148,7 +148,7 @@ Categories=Game;''')
 #            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
 #            run('tar xf %s' % f)
 #            run('chmod a+x EIOffice_Personal_Lin/setup')
-#            gksudo("EIOffice_Personal_Lin/setup")
+#            run_as_root("EIOffice_Personal_Lin/setup")
 #            
 #            msgs = ( 
 #                     _('Clipboard arts are to be installed.'),
@@ -164,14 +164,14 @@ Categories=Game;''')
 #                    wget(file, '/tmp/eio.tar.gz') 
 #                    run("tar zxf /tmp/eio.tar.gz")
 #                    notify( _('Installing EIOffice'), msg )
-#                    gksudo("./setup")
+#                    run_as_root("./setup")
 #    def installed(self):
 #        import os
 #        return os.path.exists('/usr/bin/eio')
 #    def remove(self):
 #        import os
 #        if os.path.exists('/usr/bin/rmeio'):
-#            gksudo('/usr/bin/rmeio')
+#            run_as_root('/usr/bin/rmeio')
 
 class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     # cannot find out which license it is released under
