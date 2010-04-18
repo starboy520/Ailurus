@@ -557,10 +557,4 @@ class PiTiVi(_apt_install):
     category = 'media'
     pkgs = 'pitivi'
 
-class Acire(_apt_install):
-    __doc__ = _('Acire: A Python code fragment manager')
-    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    license = 'GNU General Public License'
-    category = 'dev'
-    depends = Repo_Acire
-    pkgs = 'acire'
+

@@ -166,6 +166,7 @@ class Repo_Firefox_3_6(_repo):
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
     license = 'GNU Lesser General Public License (LGPL)'
+    logo = 'playonlinux.png'
     def __init__(self):
         self.desc = _('PlayOnLinux is a front-end for wine. '
             'It helps to install Windows Games and softwares on Linux.')
@@ -208,6 +209,7 @@ class Repo_Ailurus(_repo):
 class Repo_AWN_Development(_repo):
     __doc__ = _('AWN (beta version)')
     license = 'GNU General Public License (GPL)'
+    logo = 'awn.png'
     def __init__(self):
         self.desc = _('AWN is a MacOS X like panel for GNOME. '
             'This repository provides the latest version of AWN.')
@@ -222,6 +224,7 @@ class Repo_AWN_Development(_repo):
 class Repo_Blueman(_repo):
     __doc__ = _('Blueman (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'blueman.png'
     def __init__(self):
         self.desc = _('Blueman is a graphical blue-tooth manager.')
         self.apt_content = 'blueman'
@@ -248,6 +251,7 @@ class Repo_Christine(_repo):
 class Repo_Chromium_Daily(_repo):
     __doc__ = _('Chromium (beta version)')
     license = 'BSD license, MIT License, LGPL, Ms-PL, MPL/GPL/LGPL tri-license'
+    logo = 'chromium.png'
     def __init__(self):
         self.desc = _('Chromium is the open source version of Google Chrome.')
         self.apt_content = 'chromium-browser'
@@ -261,6 +265,7 @@ class Repo_Chromium_Daily(_repo):
 class Repo_GTG(_repo):
     __doc__ = _('Getting things GNOME (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'gtg.png'
     def __init__(self):
         self.desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
         self.apt_content = 'gtg'
@@ -274,6 +279,7 @@ class Repo_GTG(_repo):
 class Repo_GNOMEColors(_repo):
     __doc__ = _('GNOME colors (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'gnome_color.png'
     def __init__(self):
         self.desc = _('This repository contains some themes.')
         self.apt_content = 'arc-colors gnome-colors shiki-colors-murrine'
@@ -327,6 +333,7 @@ class Repo_Moovida(_repo):
 class Repo_Shutter(_repo):
     __doc__ = _('Shutter (stable)')
     license = 'GNU General Public License (GPL)'
+    logo = 'shutter.png'
     def __init__(self):
         self.desc = _('Shutter is a powerful screenshot program.')
         self.apt_content = 'shutter'
@@ -421,6 +428,7 @@ class Repo_Canonical_Partner(_repo):
 class Repo_RSSOwl(_repo):
     __doc__ = _('RSSOwl (stable)')
     license = 'Eclipse Public License'
+    logo = 'rssowl.png'
     def __init__(self):
         self.desc = _('RSSOwl is an RSS reader.')
         self.apt_content = 'rssowl'
@@ -461,6 +469,7 @@ class Repo_Exaile(_repo):
 class Repo_Audacious(_repo):
     __doc__ = _('Audacious (beta version)')
     license = 'GNU General Public License (GPL)'
+    logo = 'audacious.png'
     def __init__(self):
         self.desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
         self.apt_content = 'audacious audacious-plugins'
@@ -474,6 +483,7 @@ class Repo_Audacious(_repo):
 class Repo_Tor(_repo):
     __doc__ = _('Tor (stable)')
     license = 'BSD License'
+    logo = 'tor.png'
     def __init__(self):
         self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
         'confidential business activities and relationships, and state security known as traffic analysis.')
@@ -501,6 +511,7 @@ class Repo_RedNoteBook(_repo):
 class Repo_Pidgin_Develop(_repo):
     __doc__ = _('Pidgin (beta version)')
     license = 'GNU General Public License (GPL)'
+    logo = 'pidgin.png'
     def __init__(self):
         self.desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
         self.apt_content = 'pidgin'
@@ -564,3 +575,5 @@ class Repo_Acire(_repo):
         self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x07559D60D0879214'
         self.key_id = 'D0879214'
         _repo.__init__(self)
+    def support(self):
+        return False

@@ -23,4 +23,5 @@ from app0 import *
 from app1 import *
 from app2 import *
 from app3 import *
+from app4 import *
 from third_party_repos import *
