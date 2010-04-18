@@ -99,16 +99,14 @@ def _load_app_classes_from_module(module):
 
         try:
             check_class_members(app_class)
-            if hasattr(app_class, 'support'):
-                if app_class().support()==False: continue
-            if hasattr(app_class, 'international'): 
-                if Config.is_Chinese_locale(): continue
-            if hasattr(app_class, 'Chinese'): 
-                if Config.is_Chinese_locale()==False: continue
-            app_class.cache_installed = app_class().installed()
-            if not isinstance(app_class.cache_installed, bool):
+            app_class_obj = app_class()
+            if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+            if hasattr(app_class_obj, 'international') and Config.is_Chinese_locale(): continue
+            if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
+            app_class_obj.cache_installed = app_class_obj.installed()
+            if not isinstance(app_class_obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
-            app_class.showed_in_toggle = app_class.cache_installed
+            app_class_obj.showed_in_toggle = app_class_obj.cache_installed
             names.add(name)
         except:
             import sys, traceback
@@ -116,7 +114,7 @@ def _load_app_classes_from_module(module):
             print >>sys.stderr, _('Traceback:')
             traceback.print_exc(file=sys.stderr)
         else:
-            classobjs.append(app_class)
+            classobjs.append(app_class_obj)
 
     return classobjs
 
