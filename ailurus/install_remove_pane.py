@@ -441,7 +441,7 @@ class InstallRemovePane(gtk.VBox):
         class0 = model.get_value ( iter, 0 )
         if not hasattr(class0, 'logo_pixbuf'):
             class_name = class0.__class__.__name__
-            for dir in ['other_icons/', 'appicons/', ]:
+            for dir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
                 path = D + dir + class_name + '.png'
                 if os.path.exists(path): break
             else:
