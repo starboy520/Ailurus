@@ -167,7 +167,7 @@ class Generic_Genome_Browser:
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
-    license = 'Perl Artistic License v2'
+    license = AL
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run_as_root_in_terminal('perl %s' % f)

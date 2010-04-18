@@ -67,7 +67,7 @@ class Full_Language_Pack(_apt_install):
 
 class Decompression_Capability(_apt_install) :
     __doc__ = _('Decompression software: 7z, rar, cab, ace')
-    license = 'GPL'
+    license = GPL
     pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
 
 class Typespeed(_apt_install) :

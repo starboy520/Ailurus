@@ -27,7 +27,7 @@ from libapp import *
 class OpenJDK6:
     'OpenJDK 6'
     category = 'dev'
-    license = 'GPL'
+    license = GPL
     def install(self):
         APT.install('openjdk-6-jdk')
         
