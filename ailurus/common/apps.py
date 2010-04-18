@@ -144,8 +144,7 @@ class Electric(_path_lists):
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
                _(' This application depends on Java.') )
     category = 'em'
-    license = ('GNU General Public License (GPL), '
-               'see http://www.staticfreesoft.com/productsFree.html')
+    license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
         self.file = '/opt/electricBinary.jar'
@@ -439,7 +438,7 @@ class TsingHuaTeXTemplate(_download_one_file):
 
 class FFAdblock(_ff_extension):
     __doc__ = _('Adblock+: Block 99% advertisement')
-    license = 'Mozilla Public License 1.1.'
+    license = MPL
     def __init__(self):
         self.desc = _('It is able to block 99% ads and banners.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
@@ -453,7 +452,7 @@ class FFAdblock(_ff_extension):
 class FFAutoProxy(_ff_extension):
     __doc__ = _('AutoProxy: Proxy management via a third party list')
     Chinese = True
-    license = 'Mozilla Public License 1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
@@ -505,7 +504,7 @@ class FFCleanHide(_ff_extension):
 
 class FFDownloadStatusBar(_ff_extension): 
     __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
-    license = 'Mozilla Public License, v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
@@ -531,7 +530,7 @@ class FFDownThemAll(_ff_extension):
 
 class FFEasyDragToGo(_ff_extension):
     __doc__ = _('EasyDragToGo: Open new tabs by dragging text, links and pictures')
-    license = 'Mozilla Public License, v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
@@ -557,7 +556,7 @@ class FFFireBug(_ff_extension):
 
 class FFFireGesture(_ff_extension):
     __doc__ = _('FireGesture: Execute commands and user scripts by mouse gestures')
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('It supports five kinds of mouse gestures.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
@@ -652,7 +651,7 @@ class FFRadioGet(_ff_extension):
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
     category = 'firefoxdev'
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
@@ -664,7 +663,7 @@ class FFSeoQuake(_ff_extension):
 
 class FFTabMixLite(_ff_extension):
     __doc__ = _('Tab Mix Lite CE: Re-open closed tabs')
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _('Close tabs by double click tabs title. Re-open closed tabs.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/12391'
@@ -715,7 +714,7 @@ class FFViewSourceChart(_ff_extension):
 
 class FFWeaveSync35(_ff_extension):
     __doc__ = _('Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
@@ -754,7 +753,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
 class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
     category = 'firefoxdev'
-    license = 'Mozilla Public License v1.1'
+    license = MPL
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
