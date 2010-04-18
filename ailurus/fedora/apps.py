@@ -233,7 +233,7 @@ class Generic_Genome_Browser:
                'for manipulating and displaying annotations on genomes.\n'
                '<span color="red">Due to the limitation of the authors\' programming ability, '
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
-    license = 'Perl Artistic License v2'
+    license = AL
     category='biology'
     def install(self):
         for package in ['perl-libwww-perl', 'perl-CPAN']:

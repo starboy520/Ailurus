@@ -152,7 +152,7 @@ class _repo:
 
 class Repo_Firefox_3_6(_repo):
     __doc__ = _('Firefox 3.6 (stable)')
-    license = 'MPL, GNU GPL, GNU LGPL'
+    license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
         self.desc = _('This repository contains Firefox stable version 3.6.')
         self.apt_content = 'firefox'
@@ -246,7 +246,7 @@ class Repo_Christine(_repo):
 
 class Repo_Chromium_Daily(_repo):
     __doc__ = _('Chromium (beta version)')
-    license = 'BSD license, MIT License, LGPL, Ms-PL, MPL/GPL/LGPL tri-license'
+    license = BSD
     def __init__(self):
         self.desc = _('Chromium is the open source version of Google Chrome.')
         self.apt_content = 'chromium-browser'

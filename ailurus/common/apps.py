@@ -212,8 +212,7 @@ class Netbeans(_apt_install):
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
     category = 'dev'
-    license = ('Dual-licensed under Common Development and Distribution License v1.0 and GPL v2. '
-               'See http://netbeans.org/about/legal/license.html')
+    license = DUAL_LICENSE(CDDL, GPL) + 'http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
     
 #class Netbeans:
@@ -224,8 +223,7 @@ class Netbeans(_apt_install):
 #               'Official site: http://netbeans.org/downloads/ .') +
 #              _(' This application depends on Java.') )
 #    category = 'dev'
-#    license = ('Dual-licensed under Common Development and Distribution License v1.0 and GPL v2. '
-#               'See http://netbeans.org/about/legal/license.html')
+#    license = DUAL_LICENSE(CDDL, GPL) + 'http://netbeans.org/about/legal/license.html'
 #    def install(self):
 #        # Download Netbeans and install it.
 #        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
@@ -461,7 +459,7 @@ class FFAutoProxy(_ff_extension):
 
 class FFChromeTheme_3_0(_ff_extension):
     __doc__ = _('Chrome Theme for Firefox 3.0.*')
-    license = 'Tri-licensed under MPL/GPL/LGPL'
+    license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.0.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
@@ -474,7 +472,7 @@ class FFChromeTheme_3_0(_ff_extension):
 
 class FFChromeTheme_3_5(_ff_extension): 
     __doc__ = _('Chrome Theme for Firefox 3.5.*')
-    license = 'Tri-licensed under MPL/GPL/LGPL'
+    license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox 3.5.*')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'

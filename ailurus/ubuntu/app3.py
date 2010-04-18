@@ -204,7 +204,7 @@ class ScienceBiology(_apt_install):
     __doc__ = _('Med-bio: A lot of micro-biology software')
     detail = _('A lot of software for molecular biology, structural biology and bioinformatics.')
     category = 'biology'
-    license = 'Dual-licensed under Eclipse Public License and GPL.'
+    license = DUAL_LICENSE(EPL, GPL)
     pkgs = 'med-bio'
 
 class TuxPaint(_apt_install):

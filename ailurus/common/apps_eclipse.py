@@ -140,7 +140,7 @@ class Aptana:
                'Aptana cannot be removed by Ailurus. '
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
-    license = 'Dual-licensed under Aptana Public License and GPL'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
@@ -163,7 +163,7 @@ class RadRails:
     detail = _('Over the past RadRails was called "RDT". '
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
     category = 'eclipse'
-    license = 'Dual-licensed under Aptana Public License and GPL'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.radrails.*')
@@ -271,7 +271,7 @@ class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
     detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
     category = 'eclipse'
-    license = 'Dual-licensed under Eclipse Public License and GPL'
+    license = DUAL_LICENSE(EPL, GPL)
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]
