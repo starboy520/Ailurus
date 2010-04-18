@@ -638,7 +638,7 @@ class FFNoscript(_ff_extension):
 class FFRadioGet(_ff_extension):
     __doc__  = _('SHA-DA network radio: Listen to and watch radio and TV programs in China')
     Chinese = True
-    license = 'GPL v3'
+    license = GPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'http://ipget.cn/RadioGet/'
@@ -690,7 +690,7 @@ class FFTamperData(_ff_extension):
 
 class FFUserAgentSwitcher(_ff_extension):
     __doc__ = _('User Agent Switcher: Camousflag Firefox as other kinds of browsers.')
-    license = 'GPL v3'
+    license = GPL
     def __init__(self):
         self.desc = _('It tells the remote websites that you are an IE user.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59'
