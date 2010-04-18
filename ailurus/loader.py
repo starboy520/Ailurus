@@ -45,7 +45,6 @@ def check_class_members(app_class, default_category = 'tweak'):
     return app_class
 
 def load_app_objs(common, desktop, distribution):
-    import lib
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -57,11 +56,10 @@ def load_app_objs(common, desktop, distribution):
     names = set()
     for module in modules:
         for name in dir(module):
-            if name[0]=='_': continue
-            if name in dir(lib): continue
-            app_class = getattr(module,name)
-            if type(app_class)!=types.ClassType: continue
             if name in names: continue
+            if name[0]=='_' or name=='I': continue
+            app_class = getattr(module,name)
+            if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
     
             try:
                 check_class_members(app_class)
