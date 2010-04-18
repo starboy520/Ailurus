@@ -65,7 +65,7 @@ Terminal=false
 Type=Application
 Categories=Education;Science; ''')
 
-class AliPayFirefoxPlugin:
+class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
     detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
     category = 'firefox'

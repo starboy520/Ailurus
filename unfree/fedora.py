@@ -27,7 +27,7 @@ from ailurus.libapp import *
 if not Config.is_Fedora():
     raise Exception
 
-class _repo:
+class _repo(I):
     this_is_a_repository = True
     category = 'repository'
     @classmethod
@@ -61,7 +61,7 @@ class _repo:
             with open(path, 'w') as f:
                 f.writelines(lines)
 
-class Repo_Adobe:
+class Repo_Adobe(I):
     'Adobe'
     detail = _('This repository provides flash-plugin and Adobe Reader.')
     category = 'repository'
@@ -82,7 +82,7 @@ class Repo_Adobe:
     def support(self):
         return get_arch() == 32
 
-class Repo_Skype:
+class Repo_Skype(I):
     'Skype'
     category = 'repository'
     def __init__(self):
@@ -106,7 +106,7 @@ class Repo_Skype:
     def support(self):
         return get_arch() == 32
 
-class Repo_RPMFusion_Free:
+class Repo_RPMFusion_Free(I):
     __doc__ = _('RPM Fusion (Free)')
     category = 'repository'
     detail = _('RPM Fusion provides software that not in the standard repositories.\n'
@@ -135,7 +135,7 @@ class Repo_RPMFusion_Free:
         for path in self.paths:
             if _repo.exist(path): _repo.disable(path)
 
-class Repo_RPMFusion_NonFree:
+class Repo_RPMFusion_NonFree(I):
     __doc__ = _('RPM Fusion (Non-Free)')
     category = 'repository'
     detail = _('RPM Fusion provides software that not in the standard repositories.\n'
@@ -164,7 +164,7 @@ class Repo_RPMFusion_NonFree:
         for path in self.paths:
             if _repo.exist(path): _repo.disable(path)
 
-class Repo_Google:
+class Repo_Google(I):
     'Google'
     category = 'repository'
     detail = _('This repository provides Picasa and Google Desktop.')
@@ -193,7 +193,7 @@ class Repo_Google:
     def remove(self):
         if _repo.exist(self.path): _repo.disable(self.path)
 
-class Repo_Google_Chrome:
+class Repo_Google_Chrome(I):
     'Google Chrome'
     category = 'repository'
     detail = _('This repository provides Google Chrome.')
@@ -221,7 +221,7 @@ class Repo_Google_Chrome:
     def remove(self):
         if _repo.exist(self.path): _repo.disable(self.path)
 
-class Repo_VirtualBox:
+class Repo_VirtualBox(I):
     'VirtualBox'
     category = 'repository'
     detail = _('This repository provides VirtualBox.\n'
@@ -286,7 +286,7 @@ class AdobeReader(_rpm_install):
     def support(self):
         return get_arch() == 32
 
-class Realplayer32:
+class Realplayer32(I):
     'RealPlayer® 11'
     detail = _('If you cannot play RMVB video, try this application!\n'
        'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>\n'
@@ -302,7 +302,7 @@ class Realplayer32:
     def remove(self):
         RPM.remove('RealPlayer')
 
-class GoogleChrome:
+class GoogleChrome(I):
     __doc__ = _('Google Chrome browser')
     detail = _(
         'This is the web browser from Google. \n'
@@ -349,7 +349,7 @@ class VirtualBox_OSE(_rpm_install):
     depends = Repo_RPMFusion_Free
     pkgs = 'VirtualBox-OSE'
 
-class Repo_Chromium(_repo):
+class Repo_Chromium(I):
     'Chromium'
     detail = _('Open source web browser')
     def __init__(self):
