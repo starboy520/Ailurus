@@ -233,7 +233,12 @@ class FastestRepositoryDialog(gtk.Dialog):
         urls = [ e[2] for e in candidate_repos ]
         #PING servers
         for url,server in zip(urls,servers):
-            while len([t for t in threads if t.isAlive()])>10: 
+            def alive_threads(threads):
+                i = 0
+                for t in threads:
+                    if t.isAlive(): i += 1
+                return i
+            while alive_threads(threads)>10:
                 import time
                 time.sleep(0.1)
                 show_result()
