@@ -1,3 +1,8 @@
+2010-04-18 Homer Xing <homer.xing@gmail.com>
+
+    * Optimize source code:
+      Reduce strings in "license=" attributes.
+
 2010-04-17 Homer Xing <homer.xing@gmail.com>
 
     * Add "Contributing to Ailurus" dialog in "Others" menu.
