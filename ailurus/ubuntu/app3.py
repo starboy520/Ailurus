@@ -296,7 +296,7 @@ class Parcellite(_apt_install):
     __doc__ = _('Parcellite: clipboard manager')
     detail = _('This is a powerful clipboard manager. '
                'It can preserve 25 strings concurrently.')
-    license = 'GNU General Public License'
+    license = GPL
     pkgs = 'parcellite'
     def support(self):
         return not ( Config.get_Ubuntu_version() in ['hardy'] )
@@ -306,7 +306,7 @@ class R_Language_Basic(_apt_install):
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
-    license = 'GNU General Public License' 
+    license = GPL
     pkgs = 'r-base-core'
 
 class R_Language_Full(_apt_install):
@@ -314,7 +314,7 @@ class R_Language_Full(_apt_install):
     detail = _('A powerful statistical computation language and a graphics system.\n'
                'If you want to use the latest version of R language, please read http://cran.r-project.org/')
     category = 'statistics'
-    license = 'GNU General Public License' 
+    license = GPL
     def __init__(self):
         import StringIO
         value = StringIO.StringIO()
@@ -325,7 +325,7 @@ class R_Language_Full(_apt_install):
 
 class Bluefish(_apt_install):
     __doc__ = _('Bluefish: Edit HTML web-pages')
-    license = 'GNU General Public License' 
+    license = GPL
     category = 'dev'
     pkgs = 'bluefish'
 
@@ -498,7 +498,7 @@ class PiTiVi(_apt_install):
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    license = 'GNU General Public License'
+    license = GPL
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire'
