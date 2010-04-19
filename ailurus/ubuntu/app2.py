@@ -188,29 +188,25 @@ class GNOMEArtNextGen(I):
         if Config.get_Ubuntu_version() == 'hardy':
 
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-hardy.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
 471212, '52c556fafa9664284dcff9851528f3e5aae00ebe').download()
         
         elif Config.get_Ubuntu_version() == 'intrepid':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-intrepid.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
 444822, '4dc42fd446ebd8e615cf6490d6ecc94a403719b8').download()
         
         elif Config.get_Ubuntu_version() == 'jaunty':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-jaunty.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
 441222, 'c9134ad3405c660e6e07333994ca38d494f0f90f').download()
         
         elif Config.get_Ubuntu_version() == 'karmic':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-karmic.deb',
-'http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
+['http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
 441558, 'b2b834b1bfc76f01dce370b60ea706f6ed35e4da').download()
 
         else:

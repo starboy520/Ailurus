@@ -113,8 +113,7 @@ class AstroMenace(_path_lists):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
     def install(self):
         f = R(
-['http://tdt.sjtu.edu.cn/S/amenace12.tar.bz2',
-'http://www.viewizard.com/download/amenace12.tar.bz2'],
+['http://www.viewizard.com/download/amenace12.tar.bz2'],
 35948638, '752d6faec7a4432f991055ab788b1e7dba004995').download()
 
         import os
@@ -210,8 +209,7 @@ class HITTeXTemplate(_download_one_file) :
     Chinese = True
     def __init__(self):
         self.R = R(
-['http://tdt.sjtu.edu.cn/S/PlutoThesis_UTF8_1.9.2.20090424.zip',
-'http://plutothesis.googlecode.com/files/PlutoThesis_UTF8_1.9.2.20090424.zip'],
+['http://plutothesis.googlecode.com/files/PlutoThesis_UTF8_1.9.2.20090424.zip'],
 2710034, 'aee937bf0a09936d78f57cd45616997af7a1ef3c')
         import os
         self.file = os.path.expanduser('~/HITthesis.rar')
@@ -235,8 +233,7 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
         self.range = '3.0.*~3.7.*'
         self.name = u'MacOSX Theme'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/macosx_theme-0.6.8-fx.jar',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/7172/macosx_theme-0.6.8-fx.jar'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7172/macosx_theme-0.6.8-fx.jar'],
     689344, '4b58d1c49ae123e50a76cb41bc6a1162d1bcaaf8')
         _ff_extension.__init__(self)
 
@@ -247,8 +244,7 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
         self.range = '2.0~3.7'
         self.name = u'NetVideoHunter'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/netvideohunter-0.4.3-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/7447/netvideohunter-0.4.3-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7447/netvideohunter-0.4.3-fx.xpi'],
                     44541, '3d47e726587743758097a069358ed306df63bc3a')
         _ff_extension.__init__(self)
 
@@ -259,7 +255,6 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
         self.range = '3.0~3.6.*'
         self.name = u'Personas'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/personas-1.4-fx+tb.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
     275501, 'ac6de4e93270e0650fc06a88cf5fe639e8a879fb')
         _ff_extension.__init__(self)
