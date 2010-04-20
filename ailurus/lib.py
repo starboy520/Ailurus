@@ -1408,8 +1408,9 @@ def show_about_dialog():
     about.set_authors( [
           'Homer Xing <homer.xing@gmail.com>', 
           'CHEN Yangyang <skabyy@gmail.com>',
+          'MA Yue <velly.empire@gmail.com>',
           'Starboy Qi <starboy.qi@gmail.com>',
-          'MA Yue <velly.empire@gmail.com>' ] )
+           ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
           'SU Yun',
