@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-04-18 20:39+0800\n"
-"PO-Revision-Date: 2010-04-18 15:14+0000\n"
-"Last-Translator: luisah <Unknown>\n"
+"POT-Creation-Date: 2010-04-19 18:42+0800\n"
+"PO-Revision-Date: 2010-04-19 04:35+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-19 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-20 03:39+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -63,7 +63,7 @@ msgstr "Ailurus - nastavení systému"
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr "Politika systému zabraňuje spustit program Ailurus jako \"root\""
 
-#: .././ailurus/clean_up_pane.py:28 .././ailurus/main.py:229
+#: .././ailurus/clean_up_pane.py:28 .././ailurus/main.py:232
 msgid "Clean up"
 msgstr "Vyčistit"
 
@@ -3909,7 +3909,7 @@ msgstr ""
 msgid "Cannot load class %s"
 msgstr "Nelze načíst třídu %s"
 
-#: .././ailurus/loader.py:111 .././ailurus/main.py:129
+#: .././ailurus/loader.py:111 .././ailurus/main.py:132
 msgid "Traceback:"
 msgstr "Traceback:"
 
@@ -3925,60 +3925,60 @@ msgstr ""
 "Jiná instance Ailuru již běží. Není doporučeno spouštět více instancí "
 "současně."
 
-#: .././ailurus/main.py:64
+#: .././ailurus/main.py:67
 msgid "Error happened. You cannot install any software by Ailurus. :("
 msgstr ""
 "Došlo k chybě. Nemůžete instalovat žádný software prostřednictvím Ailuru. :("
 
-#: .././ailurus/main.py:67
+#: .././ailurus/main.py:70
 msgid "System configuration file should be updated."
 msgstr "Systémový konfigurační soubor by měl být aktualizován."
 
-#: .././ailurus/main.py:68
+#: .././ailurus/main.py:71
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
 msgstr "Prosím, spusťte tyto příkazy s použitím <b>su</b> nebo <b>sudo</b>:"
 
-#: .././ailurus/main.py:74
+#: .././ailurus/main.py:77
 msgid "Ailurus' D-Bus daemon exited with error."
 msgstr "Ailurus' D-Bus démon skončil s chybou."
 
-#: .././ailurus/main.py:75
+#: .././ailurus/main.py:78
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 "Prosím, restartujte svůj počítač, nebo spusťte démon s použitím <b>su</b> "
 "nebo <b>sudo</b>:"
 
-#: .././ailurus/main.py:140
+#: .././ailurus/main.py:143
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 "Objevena chyba. Mohli byste ji prosím sdělit vývojářům Ailuru? Děkuji!"
 
-#: .././ailurus/main.py:153
+#: .././ailurus/main.py:156
 msgid "Click here to report bug via web-page"
 msgstr "Klikněte zde pro nahlášení chyby přes webové stránky"
 
-#: .././ailurus/main.py:155
+#: .././ailurus/main.py:158
 msgid "Close"
 msgstr "Zavřít"
 
-#: .././ailurus/main.py:161
+#: .././ailurus/main.py:164
 msgid "Bug appears!"
 msgstr "Objevena chyba!"
 
-#: .././ailurus/main.py:205
+#: .././ailurus/main.py:208
 msgid "Quit"
 msgstr "Ukončit"
 
-#: .././ailurus/main.py:210
+#: .././ailurus/main.py:213
 msgid "Others"
 msgstr "Ostatní"
 
-#: .././ailurus/main.py:213
+#: .././ailurus/main.py:216
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: .././ailurus/main.py:216
+#: .././ailurus/main.py:219
 msgid ""
 "Study\n"
 "Linux"
@@ -3986,7 +3986,7 @@ msgstr ""
 "Studovat\n"
 "Linux"
 
-#: .././ailurus/main.py:221
+#: .././ailurus/main.py:224
 msgid ""
 "Hardware\n"
 "Information"
@@ -3994,7 +3994,7 @@ msgstr ""
 "Informace\n"
 "o Hardwaru"
 
-#: .././ailurus/main.py:222
+#: .././ailurus/main.py:225
 msgid ""
 "Linux\n"
 "Information"
@@ -4002,7 +4002,7 @@ msgstr ""
 "Informace\n"
 "o Linuxu"
 
-#: .././ailurus/main.py:223
+#: .././ailurus/main.py:226
 msgid ""
 "System\n"
 "Settings"
@@ -4010,7 +4010,7 @@ msgstr ""
 "Nastavení\n"
 "systému"
 
-#: .././ailurus/main.py:224
+#: .././ailurus/main.py:227
 msgid ""
 "Install\n"
 "Software"
@@ -4018,7 +4018,7 @@ msgstr ""
 "Instalace\n"
 "softwaru"
 
-#: .././ailurus/main.py:225 .././ailurus/main.py:226
+#: .././ailurus/main.py:228 .././ailurus/main.py:229
 msgid ""
 "Fastest\n"
 "Repository"
@@ -4026,7 +4026,7 @@ msgstr ""
 "Nejrychlejší\n"
 "zdroj"
 
-#: .././ailurus/main.py:227
+#: .././ailurus/main.py:230
 msgid ""
 "Recover\n"
 "APT"
@@ -4034,7 +4034,7 @@ msgstr ""
 "Obnovit\n"
 "APT"
 
-#: .././ailurus/main.py:228
+#: .././ailurus/main.py:231
 msgid ""
 "Recover\n"
 "RPM"
@@ -4042,64 +4042,64 @@ msgstr ""
 "Obnovit\n"
 "RPM"
 
-#: .././ailurus/main.py:275
+#: .././ailurus/main.py:278
 msgid "Are you sure to exit?"
 msgstr "Opravdu ukončit?"
 
-#: .././ailurus/main.py:276
+#: .././ailurus/main.py:279
 msgid "Do not query me any more."
 msgstr "Příště se mě nedotazovat."
 
-#: .././ailurus/main.py:351
+#: .././ailurus/main.py:354
 msgid "usage: ailurus [options]"
 msgstr "použití: ailurus [volby]"
 
-#: .././ailurus/main.py:352
+#: .././ailurus/main.py:355
 msgid "do not load all functionality"
 msgstr "nenačteny všechny funkce"
 
-#: .././ailurus/main.py:353
+#: .././ailurus/main.py:356
 msgid "load \"information\" functionality"
 msgstr "načítá se funkce \"informace\""
 
-#: .././ailurus/main.py:354
+#: .././ailurus/main.py:357
 msgid "load \"system setting\" functionality"
 msgstr "načítá se funkce \"nastavení systému\""
 
-#: .././ailurus/main.py:355
+#: .././ailurus/main.py:358
 msgid "load \"install software\" functionality"
 msgstr "načítá se funkce \"instalovat software\""
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:359
 msgid "load \"recovery\" functionality"
 msgstr "načítá se funkce \"obnovit\""
 
-#: .././ailurus/main.py:357
+#: .././ailurus/main.py:360
 msgid "load \"clean up\" functionality"
 msgstr "načítá se funkce \"vyčistit\""
 
-#: .././ailurus/main.py:358
+#: .././ailurus/main.py:361
 msgid "load \"fastest repository\" functionality"
 msgstr "načítá se funkce \"nejrychlejší zdroj\""
 
-#: .././ailurus/main.py:367
+#: .././ailurus/main.py:370
 msgid "You did not specify any functionality. :)"
 msgstr "Nestanovili jste žádnou funkci. :)"
 
-#: .././ailurus/main.py:368
+#: .././ailurus/main.py:371
 msgid "For example: ailurus --fast --information"
 msgstr "Například: ailurus --fast --information"
 
-#: .././ailurus/main.py:389
+#: .././ailurus/main.py:392
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 "<span color=\"grey\">Načítá se podokno nastavení systému ... </span>\n"
 
-#: .././ailurus/main.py:423
+#: .././ailurus/main.py:426
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr "<span color=\"grey\">Načítá se podokno informace ... </span>\n"
 
-#: .././ailurus/main.py:435
+#: .././ailurus/main.py:438
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr "<span color=\"grey\">Nahrává se podokno aplikace ... </span>\n"
 
@@ -4829,8 +4829,9 @@ msgid "OSD-Lyrics: Display lyrics"
 msgstr ""
 
 #: .././ailurus/ubuntu/app4.py:145
-msgid "Pdigin (beta version)"
-msgstr "Pdigin (beta verze)"
+#: .././ailurus/ubuntu/third_party_repos.py:480
+msgid "Pidgin (beta version)"
+msgstr "Pidgin (beta verze)"
 
 #: .././ailurus/ubuntu/app4.py:152
 msgid "PlayOnLinux: A graphical front-end for wine"
@@ -5836,10 +5837,6 @@ msgstr "RedNoteBook (stabilní)"
 #: .././ailurus/ubuntu/third_party_repos.py:470
 msgid "This is a desktop diary application."
 msgstr "Aplikace Deník pro desktop."
-
-#: .././ailurus/ubuntu/third_party_repos.py:480
-msgid "Pidgin (beta version)"
-msgstr "Pidgin (beta verze)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:482
 msgid ""
@@ -7433,3 +7430,6 @@ msgstr ""
 #~ "git: Verze distribuce pro správu systému.\n"
 #~ "</i>Příkaz: yum install gcc gcc-c++ ctags gmp-devel ncurses-devel qt3-devel "
 #~ "subversion git"
+
+#~ msgid "Pdigin (beta version)"
+#~ msgstr "Pdigin (beta verze)"
