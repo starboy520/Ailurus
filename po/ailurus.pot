@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-18 20:13+0800\n"
+"POT-Creation-Date: 2010-04-18 20:37+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -296,7 +296,7 @@ msgid "Installing Subversive\n"
 msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:271
-msgid "Veditor: a editor provide Verilog and VHDL language specific features"
+msgid "VEditor: Verilog and VHDL editor"
 msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:272
@@ -304,7 +304,7 @@ msgid "It is installed by http://veditor.sourceforge.net/update"
 msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:288
-msgid "Installing Veditor\n"
+msgid "Installing VEditor\n"
 msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:293
@@ -549,75 +549,69 @@ msgid "It helps you promote your web sites."
 msgstr ""
 
 #: .././ailurus/common/apps.py:659
+msgid "Stylish: Install themes and skins for websites."
+msgstr ""
+
+#: .././ailurus/common/apps.py:670
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr ""
 
-#: .././ailurus/common/apps.py:662
+#: .././ailurus/common/apps.py:673
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 
-#: .././ailurus/common/apps.py:672
+#: .././ailurus/common/apps.py:683
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 
-#: .././ailurus/common/apps.py:685
+#: .././ailurus/common/apps.py:696
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
 
-#: .././ailurus/common/apps.py:688
+#: .././ailurus/common/apps.py:699
 msgid "It tells the remote websites that you are an IE user."
 msgstr ""
 
-#: .././ailurus/common/apps.py:697
+#: .././ailurus/common/apps.py:708
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr ""
 
-#: .././ailurus/common/apps.py:701
+#: .././ailurus/common/apps.py:712
 msgid "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 
-#: .././ailurus/common/apps.py:710
+#: .././ailurus/common/apps.py:721
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 
-#: .././ailurus/common/apps.py:722
-msgid "Stylish: install themes for website."
-msgstr ""
-
-#: .././ailurus/common/apps.py:725
-msgid ""
-"Stylish lets you easily install themes and skins for Google, Facebook, "
-"YouTube, Orkut, and many, many other sites. "
-msgstr ""
-
-#: .././ailurus/common/apps.py:734
+#: .././ailurus/common/apps.py:733
 msgid "Web Developer: Web page analysis tools"
 msgstr ""
 
-#: .././ailurus/common/apps.py:738
+#: .././ailurus/common/apps.py:737
 msgid "Many developers installed it."
 msgstr ""
 
-#: .././ailurus/common/apps.py:747
+#: .././ailurus/common/apps.py:746
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 
-#: .././ailurus/common/apps.py:760
+#: .././ailurus/common/apps.py:759
 msgid "YSlow: web page performance tuning"
 msgstr ""
 
-#: .././ailurus/common/apps.py:764
+#: .././ailurus/common/apps.py:763
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 
-#: .././ailurus/common/apps.py:773
+#: .././ailurus/common/apps.py:772
 msgid "World of Padman: Funny shooter game"
 msgstr ""
 
-#: .././ailurus/common/apps.py:774
+#: .././ailurus/common/apps.py:773
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
@@ -912,39 +906,23 @@ msgstr ""
 msgid "Current user:"
 msgstr ""
 
-#: .././ailurus/common/osinfo.py:115
-msgid "Direct OpenGL:"
+#: .././ailurus/common/osinfo.py:114
+msgid "OpenGL direct rendering:"
 msgstr ""
 
-#: .././ailurus/common/osinfo.py:116
-msgid "OpenGL direct rendering"
-msgstr ""
-
-#: .././ailurus/common/osinfo.py:118
-msgid "OpenGL version:"
-msgstr ""
-
-#: .././ailurus/common/osinfo.py:119
-msgid "OpenGL version"
-msgstr ""
-
-#: .././ailurus/common/osinfo.py:121
+#: .././ailurus/common/osinfo.py:117
 msgid "OpenGL vendor:"
 msgstr ""
 
-#: .././ailurus/common/osinfo.py:122
-msgid "OpenGL vendor"
-msgstr ""
-
-#: .././ailurus/common/osinfo.py:124
+#: .././ailurus/common/osinfo.py:120
 msgid "OpenGL renderer:"
 msgstr ""
 
-#: .././ailurus/common/osinfo.py:125
-msgid "OpenGL renderer"
+#: .././ailurus/common/osinfo.py:123
+msgid "OpenGL version:"
 msgstr ""
 
-#: .././ailurus/common/osinfo.py:132
+#: .././ailurus/common/osinfo.py:134
 msgid "Firefox version:"
 msgstr ""
 
@@ -2884,169 +2862,165 @@ msgstr ""
 msgid "License:"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:405
+#: .././ailurus/install_remove_pane.py:404
 msgid "Not installed."
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:407
-msgid "Not installed, because:"
-msgstr ""
-
-#: .././ailurus/install_remove_pane.py:411
+#: .././ailurus/install_remove_pane.py:409
 msgid "Will be installed."
 msgstr ""
 
 #. already installed
-#: .././ailurus/install_remove_pane.py:414
+#: .././ailurus/install_remove_pane.py:412
 msgid "Installed."
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:415
+#: .././ailurus/install_remove_pane.py:413
 msgid "Will be removed."
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:538
+#: .././ailurus/install_remove_pane.py:536
 msgid "Select _All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:540
+#: .././ailurus/install_remove_pane.py:538
 msgid "_Deselect All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:542
+#: .././ailurus/install_remove_pane.py:540
 msgid "_Reset All"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:582
+#: .././ailurus/install_remove_pane.py:580
 msgid "_Apply"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:589
+#: .././ailurus/install_remove_pane.py:587
 msgid "Details:"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:638
+#: .././ailurus/install_remove_pane.py:636
 msgid "Report bugs"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:640
+#: .././ailurus/install_remove_pane.py:638
 msgid "Close this terminal"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:669
+#: .././ailurus/install_remove_pane.py:667
 msgid "Common"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:670
+#: .././ailurus/install_remove_pane.py:668
 msgid "For students"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:671
+#: .././ailurus/install_remove_pane.py:669
 msgid "For developers"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:672
+#: .././ailurus/install_remove_pane.py:670
 msgid "Advanced"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:675
+#: .././ailurus/install_remove_pane.py:673
 msgid "Office"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:676
+#: .././ailurus/install_remove_pane.py:674
 msgid "Education"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:677
+#: .././ailurus/install_remove_pane.py:675
 msgid "Internet"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:678
-#: .././ailurus/install_remove_pane.py:701
+#: .././ailurus/install_remove_pane.py:676
+#: .././ailurus/install_remove_pane.py:699
 msgid "Firefox extensions"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:679
+#: .././ailurus/install_remove_pane.py:677
 msgid "Multimedia"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:680
+#: .././ailurus/install_remove_pane.py:678
 msgid "Appearance"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:681
+#: .././ailurus/install_remove_pane.py:679
 msgid "Enhancements"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:682
+#: .././ailurus/install_remove_pane.py:680
 msgid "Game"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:683
+#: .././ailurus/install_remove_pane.py:681
 msgid "Hardware"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:684
+#: .././ailurus/install_remove_pane.py:682
 msgid "Language support"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:685
+#: .././ailurus/install_remove_pane.py:683
 msgid "Nautilus context menu"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:687
+#: .././ailurus/install_remove_pane.py:685
 msgid "Third party repositories"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:688
+#: .././ailurus/install_remove_pane.py:686
 msgid "Virtual machine"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:689
+#: .././ailurus/install_remove_pane.py:687
 msgid "Establish a server"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:691
+#: .././ailurus/install_remove_pane.py:689
 msgid "Mathematics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:692
+#: .././ailurus/install_remove_pane.py:690
 msgid "Statistics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:693
+#: .././ailurus/install_remove_pane.py:691
 msgid "Biology"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:694
+#: .././ailurus/install_remove_pane.py:692
 msgid "Electronics & Mechanics"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:695
+#: .././ailurus/install_remove_pane.py:693
 msgid "Geography"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:696
+#: .././ailurus/install_remove_pane.py:694
 msgid "LaTeX"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:697
+#: .././ailurus/install_remove_pane.py:695
 msgid "Embedded system"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:699
+#: .././ailurus/install_remove_pane.py:697
 msgid "Development"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:700
+#: .././ailurus/install_remove_pane.py:698
 msgid "Eclipse"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:712
+#: .././ailurus/install_remove_pane.py:710
 msgid "Quickly install popular software"
 msgstr ""
 
-#: .././ailurus/install_remove_pane.py:714
+#: .././ailurus/install_remove_pane.py:712
 msgid "Hide"
 msgstr ""
 
@@ -3073,7 +3047,7 @@ msgstr ""
 
 #: .././ailurus/libapp.py:186 .././ailurus/libapp.py:303
 #, python-format
-msgid "The packages \"%s\" are not installed."
+msgid "Because the packages \"%s\" are not installed."
 msgstr ""
 
 #: .././ailurus/libapp.py:191 .././ailurus/libapp.py:305
@@ -3083,7 +3057,7 @@ msgstr ""
 
 #: .././ailurus/libapp.py:223 .././ailurus/libapp.py:281
 #, python-format
-msgid "\"%s\" does not exist."
+msgid "Because \"%s\" does not exist."
 msgstr ""
 
 #: .././ailurus/libapp.py:243
@@ -4165,6 +4139,104 @@ msgstr ""
 #. Latest Vuze is in 9.10 repository.
 #: .././ailurus/ubuntu/app3.py:457
 msgid "Vuze: Download via bittorrent; Search videos"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:29
+msgid "Acire: A Python code fragment manager"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:36
+msgid "AWN (Avant Window Navigator): A dock-like bar"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:43
+msgid "Mplayer with \"vod\" protocol support"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:44
+msgid ""
+"Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" "
+"protocol is used in some online video sites such as SJTU comic."
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:63
+msgid "Audacious: Audio player"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:70
+msgid "Blueman: Graphical blue-tooth manager"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:77
+msgid "Christine: Media player"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:86
+msgid "Gmchess: Chinese chess game"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:93
+msgid "Chromium: Web browser"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:100
+msgid "Exaile: Audio player"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:107
+msgid "Global Menu: A globally shared menu bar"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:114
+msgid "GNOME colors themes"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:123
+msgid "Getting Things Gnome: GTD tool"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:131
+msgid "Moovida: Media player"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:138
+msgid "OSD-Lyrics: Display lyrics"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:145
+msgid "Pdigin (beta version)"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:152
+msgid "PlayOnLinux: A graphical front-end for wine"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:159
+msgid "RSSOwl: RSS feed reader"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:166
+msgid "RedNoteBook: A desktop diary application"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:173
+msgid "Shutter: A screen-shot application"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:180
+msgid "Synapse: An instance messanger"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:189
+msgid "Firefox 3.6"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:198
+msgid "XBMC: Home entertainment system"
+msgstr ""
+
+#: .././ailurus/ubuntu/app4.py:205
+msgid "Songbird: Open source substitution of iTunes"
 msgstr ""
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
