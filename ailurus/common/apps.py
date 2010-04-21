@@ -86,13 +86,11 @@ Icon=/opt/bioclipse/icon.xpm
 #    def install(self):
 #        if get_arch()==32:
 #            f = R(
-#['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
-#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
+#['http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
 #65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
 #        else:
 #            f = R(
-#['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
-#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
+#['http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
 #88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
 #
 #        with Chdir('/tmp') as o:
@@ -151,8 +149,7 @@ class Electric(_path_lists):
         self.paths = [self.shortcut, self.file]
     def install(self):
         f = R(
-['http://tdt.sjtu.edu.cn/S/electricBinary-8.09.jar',
-'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
+['http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
 11102701, 'c50557bc54b74948e707dc4606009bd93274ec71').download()
 
         run_as_root('mkdir /opt', ignore_error=True)
@@ -228,7 +225,6 @@ class Netbeans(_apt_install):
 #        # Download Netbeans and install it.
 #        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
 #                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-#                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
 #                  ],
 #                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
 #                 ).download()
@@ -294,8 +290,7 @@ class OpenJUMP(_path_lists):
         self.paths = [self.shortcut, self.dir]
     def install(self):
         f = R(
-['http://tdt.sjtu.edu.cn/S/openjump-v1.3.zip',
-'http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
+['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
 12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
 
         with Chdir('/tmp') as o:
@@ -348,18 +343,15 @@ class TeXLive2009:
         import os
         #prepare xzdec
         if get_arch() == 32:
-            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.i386-linux',
-                       'http://tdt.sjtu.edu.cn/S/xzdec.i386-linux',],
+            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.i386-linux'],
                69556, '974f3ddeae66d34c5e5de3c7cd9651f249e677e7').download()
         else:
-            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.x86_64-linux',
-                       'http://tdt.sjtu.edu.cn/S/xzdec.x86_64-linux',],
+            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.x86_64-linux'],
                73856, '0272dce41fdf2d3da1eeda6574238a1ed18e05d6').download()
         import os, stat
         os.chmod(xzdec, stat.S_IRWXU)
         #download iso.xz
         isoxz = R([
-'http://tdt.sjtu.edu.cn/S/texlive2009-20091107.iso.xz',
 'http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
 'ftp://ftp.comp.hkbu.edu.hk/pub/TeX/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
 'ftp://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
@@ -424,8 +416,7 @@ class TsingHuaTeXTemplate(_download_one_file):
     license = 'GPL'
     def __init__(self):
         self.R = R(
-['http://tdt.sjtu.edu.cn/S/thuthesis-4.5.1.tgz',
-'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
+['http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
 9101319, '7f617b66479cafe7c01b7b104e0392a947a064ef')
         import os
         self.file = os.path.expandvars('$HOME/thuthesis.tgz')
@@ -438,8 +429,7 @@ class FFAdblock(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
         self.range = '3.0.9~3.7'
         self.name = u'Adblock Plus'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/adblock_plus-1.1.1-fx+sm+tb.xpi',
-                    'http://ftp.mozilla.org/pub/mozilla.org/addons/1865/adblock_plus-1.1.1-fx+sm+tb.xpi'],
+        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/1865/adblock_plus-1.1.1-fx+sm+tb.xpi'],
     297455, 'e95e558d65759a078935c61b4f937f1dcb31527d')
         _ff_extension.__init__(self)
 
@@ -452,8 +442,7 @@ class FFAutoProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/69166/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi?confirmed'],
+        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/69166/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi?confirmed'],
     108858, '03f7b46e5a042491dffc08022360cb4ba7efc9d1')
         _ff_extension.__init__(self)
 
@@ -465,8 +454,7 @@ class FFChromeTheme_3_0(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
         self.range = '3.0.*'
         self.name = u'Chromifox'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/chromifox-1.0-fx.jar',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/37478/chromifox-1.0-fx.jar'],
+        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/37478/chromifox-1.0-fx.jar'],
     1290316, '7ee2366a8efad2e94936871eed7a7e93feb0c238')
         _ff_extension.__init__(self)
 
@@ -478,8 +466,7 @@ class FFChromeTheme_3_5(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
         self.range = '3.5.*'
         self.name = u'Chromifox Basic'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/chromifox_basic-1.1.3-fx.jar',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/8782/chromifox_basic-1.1.3-fx.jar'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/8782/chromifox_basic-1.1.3-fx.jar'],
     1358662, '88e277d849021d8ee91dcbf40ccc8ecd8fe1138c')
         _ff_extension.__init__(self)
 
@@ -491,8 +478,7 @@ class FFCleanHide(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
         self.range = '1.5~3.5'
         self.name = u'CleanHide'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/cleanhide-1.1.0-fx+mz.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/3648/cleanhide-1.1.0-fx+mz.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/3648/cleanhide-1.1.0-fx+mz.xpi'],
     22341, '25812c05a1a2d944151654f9982974853c052b1e')
         _ff_extension.__init__(self)
 
@@ -504,8 +490,7 @@ class FFDownloadStatusBar(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/download_statusbar-0.9.6.5-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
     455756, '4d47871f71877853c6194bf559f699db33f36ee1')
         _ff_extension.__init__(self)
 
@@ -517,8 +502,7 @@ class FFDownThemAll(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
         self.range = '3.0~3.6'
         self.name = u'DownThemAll!'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/downthemall!-1.1.7-fx+tb+sm.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/201/downthemall!-1.1.7-fx+tb+sm.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/201/downthemall!-1.1.7-fx+tb+sm.xpi'],
     543251, 'e8ec30863e5e42de87128ce269a2af2a60bcb4b1')
         _ff_extension.__init__(self)
 
@@ -530,8 +514,7 @@ class FFEasyDragToGo(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
         self.range = '2.0~3.6'
         self.name = u'Easy DragToGo'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/easy_dragtogo-1.1.2.4-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/6639/easy_dragtogo-1.1.2.4-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6639/easy_dragtogo-1.1.2.4-fx.xpi'],
     31537, '580bc24dc0b1ecd4dbddb001db0a7cad829d2f63')
         _ff_extension.__init__(self)
 
@@ -556,8 +539,7 @@ class FFFireGesture(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
         self.range = '3.0~3.7'
         self.name = u'FireGestures'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/firegestures-1.5.5.1-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/6366/firegestures-1.5.5.1-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6366/firegestures-1.5.5.1-fx.xpi'],
     70977, 'fce7abe465349cc34f36e8750fe7ad5b3441a8e9')
         _ff_extension.__init__(self)
 
@@ -581,8 +563,7 @@ class FFFoxyProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
         self.range = '3.0~3.7'
         self.name = u'FoxyProxy Standard'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/foxyproxy_standard-2.15-fx+sm+tb.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/2464/foxyproxy_standard-2.15-fx+sm+tb.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/2464/foxyproxy_standard-2.15-fx+sm+tb.xpi'],
     578121, 'd839747995e9d0b1cc6b2c445b754687daed520a')
         _ff_extension.__init__(self)
 
@@ -597,8 +578,7 @@ class FFGreaseMonkey(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/748'
         self.range = '1.5~3.5.*'
         self.name = u'Greasemonkey'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/greasemonkey-0.8.20090920.2-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
     143260, '0f1c48493e3b52a48e9b55db054a2022c46a8d08')
         _ff_extension.__init__(self)
 
@@ -637,8 +617,7 @@ class FFRadioGet(_ff_extension):
         self.download_url = 'http://ipget.cn/RadioGet/'
         self.range = '2.0~3.6'
         self.name = u'RadioGet'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/RadioGet-0.9.xpi',
-                    'http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
+        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
     15870, '132b45fd31dff76676d6d66bbe2b0f556f2f34fd')
         _ff_extension.__init__(self)
 
@@ -674,8 +653,7 @@ class FFTabMixLite(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/12391'
         self.range = '2.0~3.6'
         self.name = u'Tab Mix Lite CE'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/tab_mix_lite_ce-3.0.4-fx.xpi',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/55633/tab_mix_lite_ce-3.0.4-fx.xpi?confirmed'],
+        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/55633/tab_mix_lite_ce-3.0.4-fx.xpi?confirmed'],
     30135, '42997280a1eb4a70b56a79ad5bd38c4cc3274973')
         _ff_extension.__init__(self)
 
@@ -750,8 +728,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
         self.range = '1.5~3.6.*'
         self.name = u'Yet Another Smooth Scrolling'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/yet_another_smooth_scrolling-2.0.25-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/5846/yet_another_smooth_scrolling-2.0.25-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5846/yet_another_smooth_scrolling-2.0.25-fx.xpi'],
                     31014, '6fdcb60292a4103d7e83f79a5ccd5b480d341a3f')
         _ff_extension.__init__(self)
 

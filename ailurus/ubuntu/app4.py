@@ -142,7 +142,7 @@ class OSD_Lyrics(_apt_install):
     pkgs = 'osdlyrics'
 
 class Pidgin_beta(_apt_install):
-    __doc__ = _('Pdigin (beta version)')
+    __doc__ = _('Pidgin (beta version)')
     license = GPL
     category = 'internet'
     depends = Repo_Pidgin_Develop

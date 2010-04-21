@@ -101,8 +101,7 @@ class CDT(_path_lists):
     license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.r = R(
-['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
-'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
+['http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
 45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
@@ -120,8 +119,7 @@ class Pydev(_path_lists):
     license = EPL + ' http://pydev.org/about.html'
     def __init__(self):
         self.r = R(
-['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
-'http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
+['http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
 4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]

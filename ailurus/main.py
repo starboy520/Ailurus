@@ -41,6 +41,9 @@ def set_default_window_icon():
     gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
 
 def with_same_content(file1, file2):
+    import os
+    if not os.path.exists(file1) or not os.path.exists(file2):
+        return False
     with open(file1) as f:
         content1 = f.read()
     with open(file2) as f:
