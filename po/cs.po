@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-04-19 04:35+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"PO-Revision-Date: 2010-04-20 08:38+0000\n"
+"Last-Translator: Petr Šimáček <petr.simacek@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-20 03:39+0000\n"
+"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -328,7 +328,7 @@ msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:288
 msgid "Installing VEditor\n"
-msgstr ""
+msgstr "Instaluje se VEditor\n"
 
 #: .././ailurus/common/apps_eclipse.py:293
 msgid "MTJ: J2ME development"
@@ -686,13 +686,15 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:772
 msgid "World of Padman: Funny shooter game"
-msgstr ""
+msgstr "World of Padman: Legrační střílečka"
 
 #: .././ailurus/common/apps.py:773
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 msgstr ""
+"Ailurus nainstaluje hru a použije poslední patch.\n"
+"Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 
 #: .././ailurus/common/hardwareinfo.py:39
 msgid "BIOS vendor:"
@@ -858,15 +860,15 @@ msgstr "Nastavit parametry stahování"
 
 #: .././ailurus/common/menu.py:182
 msgid "Project homepage:"
-msgstr ""
+msgstr "Domovská stránka projektu:"
 
 #: .././ailurus/common/menu.py:185
 msgid "Project news:"
-msgstr ""
+msgstr "Novinky projektu:"
 
 #: .././ailurus/common/menu.py:188
 msgid "Code repository:"
-msgstr ""
+msgstr "Kód repozitáře:"
 
 #: .././ailurus/common/menu.py:191
 msgid "Bug Tracker:"
@@ -887,7 +889,7 @@ msgstr ""
 
 #: .././ailurus/common/menu.py:198
 msgid "How to use github? Please read:"
-msgstr ""
+msgstr "Jak používat github? Prosím čtěte:"
 
 #: .././ailurus/common/menu.py:206
 msgid ""
@@ -1770,7 +1772,7 @@ msgstr "Kompresní/dekompresní podpora pro \"*.7z\" and \"*.cab\" files"
 
 #: .././ailurus/fedora/apps.py:39 .././ailurus/ubuntu/app1.py:81
 msgid "Make Evince be able to reveal Chinese, Japanese, Korean pdf"
-msgstr ""
+msgstr "Přinutit Evince zobrazovat Čínská, Japonská a Korejská pdf"
 
 #: .././ailurus/fedora/apps.py:44 .././ailurus/ubuntu/app1.py:87
 msgid "ChmSee: A CHM file viewer"
@@ -1784,7 +1786,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:86 .././ailurus/ubuntu/app1.py:129
 msgid "Make VIM more suitable for programming"
-msgstr ""
+msgstr "Přinutit VIM, aby se více hodil k programování"
 
 #: .././ailurus/fedora/apps.py:87
 msgid ""
@@ -1859,7 +1861,7 @@ msgstr "Liferea: RSS čtečka"
 
 #: .././ailurus/fedora/apps.py:154 .././ailurus/ubuntu/app1.py:255
 msgid "This is a simple and easy used RSS feed reader."
-msgstr ""
+msgstr "Toto je jednoduchá RSS čtečka"
 
 #: .././ailurus/fedora/apps.py:160
 msgid "Useful applications for programming"
@@ -1891,7 +1893,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:184 .././ailurus/ubuntu/app3.py:57
 msgid "QCad: A CAD software which supports DXF-format"
-msgstr ""
+msgstr "QCad: CAD software, který podporuje DXF-format"
 
 #: .././ailurus/fedora/apps.py:190 .././ailurus/ubuntu/app3.py:74
 msgid ""
@@ -1927,15 +1929,15 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:251 .././ailurus/ubuntu/app3.py:211
 msgid "Tux Paint: A drawing program for young children three years and up"
-msgstr ""
+msgstr "Tux Paint: Malování pro děti od tří let."
 
 #: .././ailurus/fedora/apps.py:257 .././ailurus/ubuntu/app3.py:223
 msgid "ChildsPlay: A suite of educational games for children"
-msgstr ""
+msgstr "ChildsPlay: Soubor vzdělávacích her pro děti."
 
 #: .././ailurus/fedora/apps.py:263 .././ailurus/ubuntu/app3.py:240
 msgid "GCompris: Educational games for children aged 2 to 10"
-msgstr ""
+msgstr "GCompris: Vzdělávací hry pro děti od 2 do 10let."
 
 #: .././ailurus/fedora/apps.py:270 .././ailurus/ubuntu/app3.py:254
 msgid "This is an IDE for Qt."
@@ -3751,6 +3753,7 @@ msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
 "  Ailurus Developers https://launchpad.net/~ailurus\n"
+"  Petr Šimáček https://launchpad.net/~petr-simacek\n"
 "  Roman Horník https://launchpad.net/~roman.hornik\n"
 "  luisah https://launchpad.net/~luisah-linux-gmail"
 
@@ -4327,6 +4330,8 @@ msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\"."
 msgstr ""
+"Linuxový systém má firewall \"iptables\". Firestarter je grafické rozhraní "
+"pro  \"iptables\"."
 
 #: .././ailurus/ubuntu/app1.py:269
 msgid "MACChanger: change MAC address"
@@ -4407,7 +4412,7 @@ msgstr "OpenGL knihovna"
 
 #: .././ailurus/ubuntu/app2.py:113
 msgid "This is a library for writing OpenGL programs."
-msgstr ""
+msgstr "Toto je knihovna pro psaní OpenGL programů."
 
 #: .././ailurus/ubuntu/app2.py:119
 msgid "Boost library"
@@ -4430,10 +4435,12 @@ msgid ""
 "\"auto-apt run ./configure\" can help you install the packages which are not "
 "installed."
 msgstr ""
+"\"auto-apt run ./configure\" pomůže nainstalovat balíky, které nejsou "
+"nainstalované."
 
 #: .././ailurus/ubuntu/app2.py:147
 msgid "Checkinstall help you build deb package."
-msgstr ""
+msgstr "Checkinstall pomůže sestavit .deb balíček."
 
 #: .././ailurus/ubuntu/app2.py:152
 msgid "Umbrello: UML modelling"
@@ -4481,7 +4488,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:246
 msgid "Extcalc: A multifunctional graphic calculator"
-msgstr ""
+msgstr "Extcalc: Multifunkční grafický kalkulátor"
 
 #: .././ailurus/ubuntu/app2.py:252
 msgid "Startup Manager: Change GRUB settings and themes"
@@ -4503,7 +4510,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:268
 msgid "Powertop helps you save power for your laptop."
-msgstr ""
+msgstr "Powertop pomůže ušetřit energii na vašem laptopu."
 
 #: .././ailurus/ubuntu/app2.py:281
 msgid "\"Repair filename\" entry"
@@ -4615,11 +4622,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app3.py:198
 msgid "Simple-ccsm: A simple Compiz settings manager"
-msgstr ""
+msgstr "Simple-ccsm: Jednoduchý  správce nastavení Compizu"
 
 #: .././ailurus/ubuntu/app3.py:204
 msgid "Med-bio: A lot of micro-biology software"
-msgstr ""
+msgstr "Med-bio: Program pro mikrobiologii"
 
 #: .././ailurus/ubuntu/app3.py:205
 msgid ""
@@ -4633,7 +4640,7 @@ msgstr "Code::Blocks - C/C++ IDE"
 
 #: .././ailurus/ubuntu/app3.py:261
 msgid "Kadu is an instant messenger, which is very popular in Poland."
-msgstr ""
+msgstr "Kadu je velmi populární instant messenger v Polsku."
 
 #: .././ailurus/ubuntu/app3.py:269
 msgid ""
@@ -4761,7 +4768,7 @@ msgstr ""
 #. Latest Vuze is in 9.10 repository.
 #: .././ailurus/ubuntu/app3.py:457
 msgid "Vuze: Download via bittorrent; Search videos"
-msgstr ""
+msgstr "Vuze: Stahujte přes bittorrent; hledejte videa"
 
 #: .././ailurus/ubuntu/app4.py:29
 msgid "Acire: A Python code fragment manager"
@@ -4798,7 +4805,7 @@ msgstr "Christine: Multimediální přehrávač"
 
 #: .././ailurus/ubuntu/app4.py:86
 msgid "Gmchess: Chinese chess game"
-msgstr ""
+msgstr "Gmchess: Čínské šachy"
 
 #: .././ailurus/ubuntu/app4.py:93
 msgid "Chromium: Web browser"
@@ -4826,7 +4833,7 @@ msgstr "Moovida: Multimediální centrum"
 
 #: .././ailurus/ubuntu/app4.py:138
 msgid "OSD-Lyrics: Display lyrics"
-msgstr ""
+msgstr "OSD-Lyrics: Zobrazuje text"
 
 #: .././ailurus/ubuntu/app4.py:145
 #: .././ailurus/ubuntu/third_party_repos.py:480
@@ -4839,7 +4846,7 @@ msgstr "PlayOnLinux: Grafický frontend pro"
 
 #: .././ailurus/ubuntu/app4.py:159
 msgid "RSSOwl: RSS feed reader"
-msgstr ""
+msgstr "RSSOwl: RSS čtečka"
 
 #: .././ailurus/ubuntu/app4.py:166
 msgid "RedNoteBook: A desktop diary application"
@@ -4863,7 +4870,7 @@ msgstr "XBMC: Zábavní domácí systém"
 
 #: .././ailurus/ubuntu/app4.py:205
 msgid "Songbird: Open source substitution of iTunes"
-msgstr ""
+msgstr "Songbird: Open source náhrada iTunes"
 
 #: .././ailurus/ubuntu/apt_recovery_pane.py:29
 msgid "APT recovery"
@@ -5861,11 +5868,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:494
 msgid "OSD-Lyrics (stable)"
-msgstr ""
+msgstr "OSD-Lyrics (stabilní)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:496
 msgid "It displays lyrics. It supports many media players."
-msgstr ""
+msgstr "Zobrazuje text. Podporuje řadu přehrávačů."
 
 #: .././ailurus/ubuntu/third_party_repos.py:501
 msgid "Mplayer-VOD (stable)"

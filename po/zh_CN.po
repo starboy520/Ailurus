@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-04-19 10:49+0000\n"
+"PO-Revision-Date: 2010-04-20 13:45+0000\n"
 "Last-Translator: Homer Xing <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2010-04-20 03:40+0000\n"
+"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -668,6 +668,8 @@ msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 msgstr ""
+"Ailurus 将安装游戏，并应用最新的补丁。\n"
+"文件是从 ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/ 下载的"
 
 #: .././ailurus/common/hardwareinfo.py:39
 msgid "BIOS vendor:"
@@ -859,6 +861,8 @@ msgid ""
 "free to email me about possible features or whatever: \n"
 "homer.xing@gmail.com"
 msgstr ""
+"在 github 上发送代码补丁，用邮件发送您的要求和意见:\n"
+"homer.xing@gmail.com"
 
 #: .././ailurus/common/menu.py:198
 msgid "How to use github? Please read:"
@@ -1725,7 +1729,7 @@ msgstr "WINE"
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux."
-msgstr ""
+msgstr "这是在 Linux 上运行 Windows 应用的必不可少的程序。"
 
 #: .././ailurus/fedora/apps.py:35
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
@@ -1733,7 +1737,7 @@ msgstr "压缩/解压缩 7z, cab 文件"
 
 #: .././ailurus/fedora/apps.py:39 .././ailurus/ubuntu/app1.py:81
 msgid "Make Evince be able to reveal Chinese, Japanese, Korean pdf"
-msgstr ""
+msgstr "中日韩语 pdf 支持"
 
 #: .././ailurus/fedora/apps.py:44 .././ailurus/ubuntu/app1.py:87
 msgid "ChmSee: A CHM file viewer"
@@ -1813,6 +1817,14 @@ msgid ""
 "stardict-dic-zh_CN: Simplified Chinese dictionaries\n"
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
+"您可以用 yum 安装这些辞典:\n"
+"stardict-dic-cs_CZ: 捷克语辞典\n"
+"stardict-dic-en: 英语辞典\n"
+"stardict-dic-hi: 印地语辞典\n"
+"stardict-dic-ja: 日语辞典\n"
+"stardict-dic-ru: 俄语辞典\n"
+"stardict-dic-zh_CN: 简体中文辞典\n"
+"stardict-dic-zh_TW: 正体中文辞典"
 
 #: .././ailurus/fedora/apps.py:153 .././ailurus/ubuntu/app1.py:254
 msgid "Liferea: a RSS feed reader"
@@ -1839,6 +1851,15 @@ msgid ""
 "subversion: a version control system.\n"
 "git: a distributed version control system.</i>"
 msgstr ""
+"这些工具是:\n"
+"<i>gcc: GNU C 编译器\n"
+"gcc-c++: GNU C++ 编译器\n"
+"ctags: vi 和 emacs 使用的源代码分析器\n"
+"gmp-devel: GNU 高精度运算库\n"
+"ncurses-devel: 终端编程库\n"
+"qt3-devel: Qt 库第三版\n"
+"subversion: 版本控制系统\n"
+"git: 分布式版本控制系统</i>"
 
 #: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:239
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
@@ -1848,7 +1869,7 @@ msgstr "QtiPlot: Linux 里的 Origin 软件的替代者"
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
-msgstr ""
+msgstr "这是写物理实验报告的必不可少的绘图程序。"
 
 #: .././ailurus/fedora/apps.py:184 .././ailurus/ubuntu/app3.py:57
 msgid "QCad: A CAD software which supports DXF-format"
@@ -1953,6 +1974,8 @@ msgid ""
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
 ">\"Preferences\" menu.</span>"
 msgstr ""
+"它能配置用何种程序打开何种文件。\n"
+"<span color=\"red\">它不在右键菜单中，而是在 “系统”->“首选项” 菜单中。</span>"
 
 #: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:307
 msgid "\"Resize/Rotate images\" entries"
@@ -2268,6 +2291,13 @@ msgid ""
 "/apps/nautilus/icon_view/default_use_tighter_layout = true\n"
 "delete \"size\" from /apps/nautilus/list_view/default_visible_columns"
 msgstr ""
+"改变 Nautilus 设置: 不统计文件夹里的文件数目。不预览音频文件。不在图标里显示文字。使用紧凑布局。\n"
+"技巧是改变这些 GConf 设置:\n"
+"/apps/nautilus/preferences/show_directory_item_counts = never\n"
+"/apps/nautilus/preferences/preview_sound = never\n"
+"/apps/nautilus/preferences/show_icon_text = never\n"
+"/apps/nautilus/icon_view/default_use_tighter_layout = true\n"
+"从 /apps/nautilus/list_view/default_visible_columns 中删去 \"大小\" 列"
 
 #: .././ailurus/gnome/apps.py:140
 msgid "Make GEdit more suitable for programmers"
@@ -2280,6 +2310,8 @@ msgid ""
 "of current file. Automatically save files once in each minute. Show line "
 "numbers."
 msgstr ""
+"这样改变 GEdit 设置:\n"
+"自动缩进当前行。不创建隐藏的备份文件。每分钟自动保存一次文件。显示行号。"
 
 #: .././ailurus/gnome/osinfo.py:45
 msgid "GNOME version:"
@@ -4194,7 +4226,7 @@ msgstr "Firestarter: 配置 Linux 防火墙"
 msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\"."
-msgstr ""
+msgstr "Linux 自带了 iptables 防火墙。Firestarter 是 iptables 的图形界面。"
 
 #: .././ailurus/ubuntu/app1.py:269
 msgid "MACChanger: change MAC address"
@@ -4204,7 +4236,7 @@ msgstr "MACChanger: 改变 MAC 地址"
 msgid ""
 "MACChanger is a utility for viewing/manipulating the MAC address of network "
 "interfaces."
-msgstr ""
+msgstr "MACChanger 可以查看/改变网卡的 MAC。"
 
 #: .././ailurus/ubuntu/app1.py:276
 msgid "Bluetooth support"
@@ -4228,7 +4260,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:67
 msgid "By installing build-essential, you will get g++, make, gdb and libc."
-msgstr ""
+msgstr "安装 build-essential 后，您可以使用 g++, make, gdb 和 libc 了。"
 
 #: .././ailurus/ubuntu/app2.py:73
 msgid "POSIX library manual pages"
@@ -4238,7 +4270,7 @@ msgstr "POSIX 库的手册页"
 msgid ""
 "Install manual pages about Linux system calls, library calls, and POSIX "
 "libraries."
-msgstr ""
+msgstr "安装 Linux 系统调用，POSIX 库的手册页。"
 
 #: .././ailurus/ubuntu/app2.py:80
 msgid "Ctags and Cscope: Popular source code parsers"
@@ -4257,14 +4289,16 @@ msgid ""
 "libncurses5 is a library controlling writing to the console screen.\n"
 "libqt3-mt is Trolltech Qt library, version 3."
 msgstr ""
+"libncurses5 是终端编程库。\n"
+"libqt3-mt 是第三版 Qt 库。"
 
 #: .././ailurus/ubuntu/app2.py:100
 msgid "Subversion, Git and Bzr: Popular version control systems"
-msgstr ""
+msgstr "Subversion, Git 和 Bzr: 热门的版本控制系统"
 
 #: .././ailurus/ubuntu/app2.py:106
 msgid "Autoconf and Automake: Generate configure scripts and Makefiles"
-msgstr ""
+msgstr "Autoconf 和 Automake: 生成 configure 脚本和 Makefile"
 
 #: .././ailurus/ubuntu/app2.py:112
 msgid "OpenGL library"
@@ -4289,12 +4323,14 @@ msgid ""
 "access to audio keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D "
 "video framebuffer."
 msgstr ""
+"这是写 SDL 程序用的库。\n"
+"SDL 是跨平台的多媒体库，可以访问音频设备，键盘，鼠标，3D硬件等。"
 
 #: .././ailurus/ubuntu/app2.py:141
 msgid ""
 "\"auto-apt run ./configure\" can help you install the packages which are not "
 "installed."
-msgstr ""
+msgstr "\"auto-apt run ./configure\" 帮助您自动安装依赖的软件包。"
 
 #: .././ailurus/ubuntu/app2.py:147
 msgid "Checkinstall help you build deb package."
@@ -4314,7 +4350,7 @@ msgstr "Ubuntu Studio 主题"
 
 #: .././ailurus/ubuntu/app2.py:165
 msgid "Minicom and Kermit: Communication software for embedded MCU boards"
-msgstr ""
+msgstr "Minicom 和 Kermit: 单片机开发板通讯软件"
 
 #: .././ailurus/ubuntu/app2.py:171
 msgid "VirtualBox open source edition"
@@ -4350,7 +4386,7 @@ msgstr "Startup Manager: 改变 GRUB 设置和主题"
 
 #: .././ailurus/ubuntu/app2.py:253
 msgid "Startup manager helps you change GRUB settings and themes."
-msgstr ""
+msgstr "Startup manager 帮您改变 GRUB 设置和主题。"
 
 #: .././ailurus/ubuntu/app2.py:259
 msgid "Zhcon"
@@ -4361,6 +4397,8 @@ msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
 msgstr ""
+"Zhcon 帮助您在 TTY 终端中显示汉字。\n"
+"用 \"zhcon --utf8\" 启动它。"
 
 #: .././ailurus/ubuntu/app2.py:268
 msgid "Powertop helps you save power for your laptop."
@@ -4388,6 +4426,8 @@ msgid ""
 "menu.\n"
 "Open selected folder with administration privileges."
 msgstr ""
+"以系统管理员身份启动选定的文件。\n"
+"以系统管理员身份打开文件夹。"
 
 #: .././ailurus/ubuntu/app2.py:295
 msgid "\"Convert audio files\" entry"
@@ -4399,6 +4439,9 @@ msgid ""
 "These packages will also be installed: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 msgstr ""
+"转化音频文件格式，支持 WAV, OGG, MP3, MPC, FLAC, APE 和 AAC 格式。\n"
+"这些软件包也会安装:\n"
+"<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 
 #: .././ailurus/ubuntu/app2.py:314 .././ailurus/ubuntu/app2.py:315
 msgid "\"Subversion commands\" entries"
@@ -4441,7 +4484,7 @@ msgstr "Moonlight: Microsoft Silverlight 的开源的实现"
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages."
-msgstr ""
+msgstr "Moonlight 支持 Windows® 媒体格式。通过 Moonlight，您可以欣赏网页中的 Windows® 视频/音频。"
 
 #: .././ailurus/ubuntu/app3.py:180
 msgid "Screenlets: Add eye candy gadgets on desktop"
@@ -4452,7 +4495,7 @@ msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
 "the desktop."
-msgstr ""
+msgstr "Screenlets 能在桌面上增加养眼的小程序，比如记事帖，时钟，天气预报，日历等。"
 
 #: .././ailurus/ubuntu/app3.py:189
 msgid "Compiz settings manager"
@@ -4465,6 +4508,8 @@ msgid ""
 "configuration application for Compiz Fusion. It can configurate effects such "
 "as \"Desktop cube\" and \"3D windows\"."
 msgstr ""
+"Compiz Fusion 是 Beryl 项目和 Compiz 窗口管理器的融合。Compiz 设置管理器可以配置 Compiz Fusion，能配置 "
+"“桌面立方体” 和 “三维窗口” 等特效。"
 
 #: .././ailurus/ubuntu/app3.py:198
 msgid "Simple-ccsm: A simple Compiz settings manager"
@@ -4478,7 +4523,7 @@ msgstr "Med-bio: 很多微生物软件"
 msgid ""
 "A lot of software for molecular biology, structural biology and "
 "bioinformatics."
-msgstr ""
+msgstr "很多分子生物学，结构生物学，微生物学的软件"
 
 #: .././ailurus/ubuntu/app3.py:217
 msgid "Code::Blocks - C/C++ IDE"
@@ -4493,7 +4538,7 @@ msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
 "subtitles are available."
-msgstr ""
+msgstr "QNapi 是 NAPI-PROJEKT 的开源实现。它能搜索，下载字幕文件。目前只支持波兰语字幕。"
 
 #: .././ailurus/ubuntu/app3.py:305
 msgid "R language (basic development environment)"
@@ -4505,6 +4550,8 @@ msgid ""
 "If you want to use the latest version of R language, please read "
 "http://cran.r-project.org/"
 msgstr ""
+"这是强力的统计学计算语言、图形系统。\n"
+"如果您想使用最新版的 R 语言，请浏览 http://cran.r-project.org/"
 
 #: .././ailurus/ubuntu/app3.py:313
 msgid "R language (full development environment and all plugins)"
@@ -4612,15 +4659,15 @@ msgstr ""
 #. Latest Vuze is in 9.10 repository.
 #: .././ailurus/ubuntu/app3.py:457
 msgid "Vuze: Download via bittorrent; Search videos"
-msgstr ""
+msgstr "Vuze: bittorrent 下载; 搜索视频"
 
 #: .././ailurus/ubuntu/app4.py:29
 msgid "Acire: A Python code fragment manager"
-msgstr ""
+msgstr "Acire: Python 代码片段管理程序"
 
 #: .././ailurus/ubuntu/app4.py:36
 msgid "AWN (Avant Window Navigator): A dock-like bar"
-msgstr ""
+msgstr "AWN (Avant 窗口导航器): 一个导航条"
 
 #: .././ailurus/ubuntu/app4.py:43
 msgid "Mplayer with \"vod\" protocol support"
@@ -5487,7 +5534,7 @@ msgstr "WINE (beta 版)"
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux."
-msgstr ""
+msgstr "这个源里有最新版本的 Wine。Wine 用于在 Linux 上运行 Windows 程序。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:263
 msgid "Ailurus (stable)"
@@ -5501,7 +5548,7 @@ msgstr "AWN (beta 版)"
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
 "version of AWN."
-msgstr ""
+msgstr "AWN 是像 MacOS X 的面板。这个源提供了最新版的 AWN。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:277
 msgid "Blueman (stable)"
@@ -5654,7 +5701,7 @@ msgstr "Exaile (beta 版)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:441
 msgid "A music manager and player for GTK+ written in Python."
-msgstr ""
+msgstr "用 Python 写的音乐播放器"
 
 #: .././ailurus/ubuntu/third_party_repos.py:446
 msgid "Audacious (beta version)"
@@ -5664,7 +5711,7 @@ msgstr "Audacious (beta 版)"
 msgid ""
 "An advanced audio player.It focused on audio quality and supporting a wide "
 "range of audio codecs."
-msgstr ""
+msgstr "高级音乐播放器。它专注于音乐质量，支持多种音乐格式。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:453
 msgid "Tor (stable)"
@@ -5675,7 +5722,7 @@ msgid ""
 "An open network that helps you defend against a form of network surveillance "
 "that threatens personal freedom and privacy, confidential business "
 "activities and relationships, and state security known as traffic analysis."
-msgstr ""
+msgstr "这是一个开放的网络，保护您的自由和隐私。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:467
 msgid "RedNoteBook (stable)"
@@ -5699,7 +5746,7 @@ msgstr "Songbird (beta 版)"
 msgid ""
 "Music player which integrates with online content via plugins. Site contains "
 "project news, download, add-ons directory, help, and how to contribute."
-msgstr ""
+msgstr "这是一个音乐播放器。可以通过插件来获取在线内容，如新闻，扩展，帮助信息等等。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:494
 msgid "OSD-Lyrics (stable)"
@@ -5707,7 +5754,7 @@ msgstr "OSD-Lyrics (稳定版)"
 
 #: .././ailurus/ubuntu/third_party_repos.py:496
 msgid "It displays lyrics. It supports many media players."
-msgstr ""
+msgstr "它可以显示歌词，支持多种播放器。"
 
 #: .././ailurus/ubuntu/third_party_repos.py:501
 msgid "Mplayer-VOD (stable)"

@@ -7,16 +7,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-04-18 20:39+0800\n"
-"PO-Revision-Date: 2010-04-18 04:47+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"POT-Creation-Date: 2010-04-19 18:42+0800\n"
+"PO-Revision-Date: 2010-04-20 08:20+0000\n"
+"Last-Translator: Natalia Wietecha <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-19 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -41,15 +41,15 @@ msgstr ""
 
 #: ../ailurus-fastest-repository.desktop.in.h:1
 msgid "Ailurus - Fastest repository"
-msgstr "AIlurus - Najszybsze repozytorium"
+msgstr "Ailurus - Najszybsze repozytorium"
 
 #: ../ailurus-information.desktop.in.h:1
 msgid "Ailurus - Information"
-msgstr "AIlurus - Informacje"
+msgstr "Ailurus - Informacje"
 
 #: ../ailurus-install-software.desktop.in.h:1
 msgid "Ailurus - Install software"
-msgstr "AIlurus - Zainstaluj oprogramowanie"
+msgstr "Ailurus - Zainstaluj oprogramowanie"
 
 #: ../ailurus-recovery.desktop.in.h:1
 msgid "Ailurus - Recovery"
@@ -66,7 +66,7 @@ msgstr ""
 "Ustawienia zabezpieczeń systemu nie pozwalają uruchamiać Ailurus jako "
 "\"root\""
 
-#: .././ailurus/clean_up_pane.py:28 .././ailurus/main.py:229
+#: .././ailurus/clean_up_pane.py:28 .././ailurus/main.py:232
 msgid "Clean up"
 msgstr "Wyczyść"
 
@@ -190,7 +190,7 @@ msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:99
 msgid "CDT is from http://www.eclipse.org/cdt/"
-msgstr ""
+msgstr "CDT pochodzi ze strony http://www.eclipse.org/cdt/"
 
 #: .././ailurus/common/apps_eclipse.py:117
 msgid "Pydev: Python development"
@@ -202,7 +202,7 @@ msgstr "Pydev można pobrać z http://pydev.org/download.html"
 
 #: .././ailurus/common/apps_eclipse.py:136
 msgid "Aptana: Web application development"
-msgstr ""
+msgstr "Aptana: Tworzenie aplikacji internetowych"
 
 #: .././ailurus/common/apps_eclipse.py:137
 msgid ""
@@ -282,7 +282,7 @@ msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:227
 msgid "PDT: PHP development"
-msgstr ""
+msgstr "PDT: Rozwój PHP"
 
 #: .././ailurus/common/apps_eclipse.py:228
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
@@ -301,6 +301,8 @@ msgid ""
 "It is installed by "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
 msgstr ""
+"Został zainstalowany poprzez "
+"http://download.eclipse.org/technology/subversive/0.7/update-site/"
 
 #: .././ailurus/common/apps_eclipse.py:266
 msgid "Installing Subversive\n"
@@ -320,7 +322,7 @@ msgstr ""
 
 #: .././ailurus/common/apps_eclipse.py:293
 msgid "MTJ: J2ME development"
-msgstr ""
+msgstr "MTJ: rozwój J2ME"
 
 #: .././ailurus/common/apps_eclipse.py:294
 msgid ""
@@ -336,6 +338,7 @@ msgstr ""
 msgid ""
 "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 msgstr ""
+"Pochodzi z http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 
 #: .././ailurus/common/apps.py:112
 msgid "Create a directory \"Desktop\" in your home folder"
@@ -514,7 +517,7 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:543
 msgid "This is a powerful web development tool."
-msgstr ""
+msgstr "Jest to potężne narzędzie do tworzenia stron internetowych."
 
 #: .././ailurus/common/apps.py:552
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
@@ -526,13 +529,15 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:565
 msgid "Flashgot: A lightweight and reliable download managers"
-msgstr ""
+msgstr "FlashGot: lekki i niezawodny menedżer pobierania"
 
 #: .././ailurus/common/apps.py:568
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
 msgstr ""
+"Jest w stanie pobrać wszystkie linki, filmy i pliki audio strony za pomocą "
+"jednego kliknięcia."
 
 #: .././ailurus/common/apps.py:577
 msgid "FoxyProxy: One-click switching proxy"
@@ -578,11 +583,11 @@ msgstr ""
 
 #: .././ailurus/common/apps.py:650
 msgid "It helps you promote your web sites."
-msgstr ""
+msgstr "To pomaga promować twoje strony internetowe."
 
 #: .././ailurus/common/apps.py:659
 msgid "Stylish: Install themes and skins for websites."
-msgstr ""
+msgstr "Stylowe: Zainstaluj motywy i skórki do strony"
 
 #: .././ailurus/common/apps.py:670
 msgid "Tab Mix Lite CE: Re-open closed tabs"
@@ -3418,7 +3423,7 @@ msgstr ""
 msgid "Cannot load class %s"
 msgstr "Nie można załadować klasy %s"
 
-#: .././ailurus/loader.py:111 .././ailurus/main.py:129
+#: .././ailurus/loader.py:111 .././ailurus/main.py:132
 msgid "Traceback:"
 msgstr "Traceback:"
 
@@ -3434,162 +3439,162 @@ msgstr ""
 "Inny proces Ailurus jest uruchomiony. Nie jest zalecane uruchamianie wielu "
 "procesów jednocześnie."
 
-#: .././ailurus/main.py:64
+#: .././ailurus/main.py:67
 msgid "Error happened. You cannot install any software by Ailurus. :("
 msgstr ""
 
-#: .././ailurus/main.py:67
+#: .././ailurus/main.py:70
 msgid "System configuration file should be updated."
 msgstr ""
 
-#: .././ailurus/main.py:68
+#: .././ailurus/main.py:71
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 
-#: .././ailurus/main.py:74
+#: .././ailurus/main.py:77
 msgid "Ailurus' D-Bus daemon exited with error."
 msgstr ""
 
-#: .././ailurus/main.py:75
+#: .././ailurus/main.py:78
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 
-#: .././ailurus/main.py:140
+#: .././ailurus/main.py:143
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 "Pojawił się błąd. Czy mógłbyś poinformować o tym deweloperów Ailurus? "
 "Dziękuję!"
 
-#: .././ailurus/main.py:153
+#: .././ailurus/main.py:156
 msgid "Click here to report bug via web-page"
 msgstr "Kliknij tutaj, aby zgłosić błąd za pomocą strony internetowej"
 
-#: .././ailurus/main.py:155
+#: .././ailurus/main.py:158
 msgid "Close"
 msgstr ""
 
-#: .././ailurus/main.py:161
+#: .././ailurus/main.py:164
 msgid "Bug appears!"
 msgstr "Pojawił się błąd!"
 
-#: .././ailurus/main.py:205
+#: .././ailurus/main.py:208
 msgid "Quit"
 msgstr "Zamknij"
 
-#: .././ailurus/main.py:210
+#: .././ailurus/main.py:213
 msgid "Others"
 msgstr ""
 
-#: .././ailurus/main.py:213
+#: .././ailurus/main.py:216
 msgid "Preferences"
 msgstr ""
 
-#: .././ailurus/main.py:216
+#: .././ailurus/main.py:219
 msgid ""
 "Study\n"
 "Linux"
 msgstr ""
 
-#: .././ailurus/main.py:221
+#: .././ailurus/main.py:224
 msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:222
+#: .././ailurus/main.py:225
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
 
-#: .././ailurus/main.py:223
+#: .././ailurus/main.py:226
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
 
-#: .././ailurus/main.py:224
+#: .././ailurus/main.py:227
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
 
-#: .././ailurus/main.py:225 .././ailurus/main.py:226
+#: .././ailurus/main.py:228 .././ailurus/main.py:229
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
 
-#: .././ailurus/main.py:227
+#: .././ailurus/main.py:230
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
 
-#: .././ailurus/main.py:228
+#: .././ailurus/main.py:231
 msgid ""
 "Recover\n"
 "RPM"
 msgstr ""
 
-#: .././ailurus/main.py:275
+#: .././ailurus/main.py:278
 msgid "Are you sure to exit?"
 msgstr ""
 
-#: .././ailurus/main.py:276
+#: .././ailurus/main.py:279
 msgid "Do not query me any more."
 msgstr ""
 
-#: .././ailurus/main.py:351
+#: .././ailurus/main.py:354
 msgid "usage: ailurus [options]"
 msgstr ""
 
-#: .././ailurus/main.py:352
+#: .././ailurus/main.py:355
 msgid "do not load all functionality"
 msgstr ""
 
-#: .././ailurus/main.py:353
+#: .././ailurus/main.py:356
 msgid "load \"information\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:354
+#: .././ailurus/main.py:357
 msgid "load \"system setting\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:355
+#: .././ailurus/main.py:358
 msgid "load \"install software\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:356
+#: .././ailurus/main.py:359
 msgid "load \"recovery\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:357
+#: .././ailurus/main.py:360
 msgid "load \"clean up\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:358
+#: .././ailurus/main.py:361
 msgid "load \"fastest repository\" functionality"
 msgstr ""
 
-#: .././ailurus/main.py:367
+#: .././ailurus/main.py:370
 msgid "You did not specify any functionality. :)"
 msgstr ""
 
-#: .././ailurus/main.py:368
+#: .././ailurus/main.py:371
 msgid "For example: ailurus --fast --information"
 msgstr ""
 
-#: .././ailurus/main.py:389
+#: .././ailurus/main.py:392
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:423
+#: .././ailurus/main.py:426
 msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 msgstr ""
 
-#: .././ailurus/main.py:435
+#: .././ailurus/main.py:438
 msgid "<span color=\"grey\">Loading applications pane ... </span>\n"
 msgstr ""
 
@@ -4265,7 +4270,8 @@ msgid "OSD-Lyrics: Display lyrics"
 msgstr ""
 
 #: .././ailurus/ubuntu/app4.py:145
-msgid "Pdigin (beta version)"
+#: .././ailurus/ubuntu/third_party_repos.py:480
+msgid "Pidgin (beta version)"
 msgstr ""
 
 #: .././ailurus/ubuntu/app4.py:152
@@ -5235,10 +5241,6 @@ msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:470
 msgid "This is a desktop diary application."
-msgstr ""
-
-#: .././ailurus/ubuntu/third_party_repos.py:480
-msgid "Pidgin (beta version)"
 msgstr ""
 
 #: .././ailurus/ubuntu/third_party_repos.py:482
