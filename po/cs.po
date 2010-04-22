@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-04-20 08:38+0000\n"
-"Last-Translator: Petr Šimáček <petr.simacek@gmail.com>\n"
+"PO-Revision-Date: 2010-04-21 11:41+0000\n"
+"Last-Translator: luisah <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
+"X-Launchpad-Export-Date: 2010-04-22 03:49+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -1854,6 +1854,14 @@ msgid ""
 "stardict-dic-zh_CN: Simplified Chinese dictionaries\n"
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
+"Můžete nainstalovat tyto slovníky prostřednictvím yum.\n"
+"stardict-dic-cs_CZ: Český slovník\n"
+"stardict-dic-en: Anglický slovník\n"
+"stardict-dic-hi: Hindský slovník\n"
+"stardict-dic-ja: Japonský slovník\n"
+"stardict-dic-ru: Ruský slovník\n"
+"stardict-dic-zh_CN: Zjednodušený čínský slovník\n"
+"stardict-dic-zh_TW: Tradiční čínský slovník"
 
 #: .././ailurus/fedora/apps.py:153 .././ailurus/ubuntu/app1.py:254
 msgid "Liferea: a RSS feed reader"
@@ -1907,7 +1915,7 @@ msgstr "Zrychlit proces startu Linuxu. Bude uvolněno z paměti 2.5MiB. "
 
 #: .././ailurus/fedora/apps.py:225 .././ailurus/ubuntu/app3.py:155
 msgid "Octave: A Matlab® compatible numerical computation appliation"
-msgstr ""
+msgstr "Octave: Aplikace pro numerické výpočty, kompatibilní s Matlab®em"
 
 #: .././ailurus/fedora/apps.py:231 .././ailurus/ubuntu/app3.py:164
 msgid "Generic Genome Browser"
@@ -4342,6 +4350,8 @@ msgid ""
 "MACChanger is a utility for viewing/manipulating the MAC address of network "
 "interfaces."
 msgstr ""
+"MACChanger je nástroj pro prohlížení/manipulaci s MAC adresami síťových "
+"zařízení."
 
 #: .././ailurus/ubuntu/app1.py:276
 msgid "Bluetooth support"
@@ -4368,11 +4378,11 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:67
 msgid "By installing build-essential, you will get g++, make, gdb and libc."
-msgstr ""
+msgstr "Instalací build-essential získáte g++, make, gdb a libc."
 
 #: .././ailurus/ubuntu/app2.py:73
 msgid "POSIX library manual pages"
-msgstr ""
+msgstr "POSIX knihovna manuálových stránek"
 
 #: .././ailurus/ubuntu/app2.py:74
 msgid ""
@@ -4448,7 +4458,7 @@ msgstr "Umbrello: Modelování v UML"
 
 #: .././ailurus/ubuntu/app2.py:153
 msgid "Umbrello help you do UML modelling."
-msgstr ""
+msgstr "Umbrello pomůže s UML modelováním."
 
 #: .././ailurus/ubuntu/app2.py:159
 msgid "Ubuntu Studio Theme"
@@ -4507,6 +4517,8 @@ msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
 msgstr ""
+"Zhcon pomůže zobrazit čínské znaky v TTY terminálu.\n"
+"Prohlížet můžete prostřednictvím \"zhcon --utf8\"."
 
 #: .././ailurus/ubuntu/app2.py:268
 msgid "Powertop helps you save power for your laptop."
@@ -4596,10 +4608,12 @@ msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages."
 msgstr ""
+"Moonlight poskytuje Windows® média kodeky. Pomocí této aplikace, si můžete "
+"vychutnat Windows® video/audio na webových stránkách."
 
 #: .././ailurus/ubuntu/app3.py:180
 msgid "Screenlets: Add eye candy gadgets on desktop"
-msgstr ""
+msgstr "Screenlets: Přidejte si úžasné miniaplikace na plochu"
 
 #: .././ailurus/ubuntu/app3.py:181
 msgid ""
@@ -4776,7 +4790,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app4.py:36
 msgid "AWN (Avant Window Navigator): A dock-like bar"
-msgstr ""
+msgstr "AWN (Avant Window Navigator): Panel na plochu"
 
 #: .././ailurus/ubuntu/app4.py:43
 msgid "Mplayer with \"vod\" protocol support"
