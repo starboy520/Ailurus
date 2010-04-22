@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=Ailurus - Install software
-_Comment=makes Linux easier to use
+_Comment=Install popular software
 Exec=/usr/bin/ailurus --fast --install-software
 Icon=/usr/share/ailurus/data/velly_icons/m_install_software.png
 Terminal=false
