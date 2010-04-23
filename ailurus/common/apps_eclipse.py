@@ -179,21 +179,6 @@ class RadRails:
     def remove(self):
         raise NotImplementedError
 
-class Mylyn(_path_lists):
-    'Mylyn'
-    detail = _('Mylyn is from http://www.eclipse.org/mylyn/downloads/')
-    category = 'eclipse'
-    license = EPL + ' http://www.eclipse.org/legal/'
-    def __init__(self):
-        self.path = '/usr/lib/eclipse/dropins/mylyn'
-        self.paths = [ self.path ]
-    def install(self):
-        make_sure_installed()
-        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
-        run_as_root('mkdir -p '+self.path)
-        run_as_root("unzip -qo %s -d %s" % (f, self.path) )
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
-
 class DLTK:
     __doc__ = _('Dynamic languages toolkit')
     detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
