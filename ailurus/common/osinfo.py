@@ -65,7 +65,7 @@ def __java():
     return []
 
 def __python():
-     try: return [row(_('Python version:'), get_output('python -V'), D+'other_icons/python.png' )]
+     try: return [row(_('Python version:'), sys.version.split()[0], D+'other_icons/python.png' )]
      except: traceback.print_exc(file=sys.stderr)
      return []
 
