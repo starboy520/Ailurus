@@ -1417,11 +1417,13 @@ def show_about_dialog():
     about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
     about.set_website('http://ailurus.cn/')
     about.set_authors( [
+          _('Developers:'),
           'Homer Xing <homer.xing@gmail.com>', 
           'CHEN Yangyang <skabyy@gmail.com>',
           'MA Yue <velly.empire@gmail.com>',
           'QI Chengjie <starboy.qi@gmail.com>',
-          'Contributors:',
+          '',
+          _('Contributors:'),
           'HUANG Wei <wei.kukey@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
