@@ -135,12 +135,13 @@ class SDL(_apt_install):
 #    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
 #    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-    license = GPL
-    pkgs = 'auto-apt'
+
+# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
+#class AutoApt(_apt_install):
+#    'Auto-apt'
+#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+#    license = GPL
+#    pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
