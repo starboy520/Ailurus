@@ -130,7 +130,7 @@ class Pydev(_path_lists):
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
         run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
 
-class Aptana:
+class Aptana(I):
     __doc__ = _('Aptana: Web application development')
     detail = _('Aptana is from http://www.aptana.org/studio/plugin\n'
                'Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n'
@@ -156,7 +156,7 @@ class Aptana:
     def remove(self):
         raise NotImplementedError
 
-class RadRails:
+class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
     detail = _('Over the past RadRails was called "RDT". '
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
@@ -179,7 +179,7 @@ class RadRails:
     def remove(self):
         raise NotImplementedError
 
-class DLTK:
+class DLTK(I):
     __doc__ = _('Dynamic languages toolkit')
     detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
     category = 'eclipse'
@@ -206,7 +206,7 @@ class DLTK:
         obj = cls()
         if not obj.installed(): obj.install()
 
-class PDT:
+class PDT(I):
     __doc__ = _('PDT: PHP development')
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
@@ -228,7 +228,7 @@ class PDT:
     def remove(self):
         raise NotImplementedError
 
-class Subversive:
+class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
     detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
     category = 'eclipse'

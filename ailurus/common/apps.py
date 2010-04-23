@@ -68,7 +68,7 @@ Icon=/opt/bioclipse/icon.xpm
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
 
-class CreateDesktopFolder:
+class CreateDesktopFolder(I):
     __doc__ = _('Create a directory "Desktop" in your home folder')
     detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
     def __init__(self):
@@ -125,7 +125,7 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
-class Speed_Up_Firefox:
+class Speed_Up_Firefox(I):
     __doc__ = _('Speed up Firefox')
     detail = _('Firefox is faster when Pango rendering is disabled. '
         'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
@@ -207,7 +207,7 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
 
-class QueryBeforeRmALotFiles :
+class QueryBeforeRmALotFiles(I) :
     __doc__ = _('Query you before delete more than three files')
     detail = _('If you try to delete more than three files by "rm *", '
        'BASH will ask you a question "remove all argument?" to make sure if you really want to delete files. '
@@ -643,7 +643,7 @@ class FFYSlow(_ff_extension):
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
 
-class WorldofPadman:
+class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')

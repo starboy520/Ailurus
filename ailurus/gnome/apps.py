@@ -38,7 +38,7 @@ class ChangeTerminalColor(_set_gconf):
                   )
         self.add=()
 
-class NScripts():
+class NScripts(I):
     __doc__ = _('NScripts: a set of useful Nautilus scripts')
     detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus. '
                'Its web site is http://freshmeat.net/projects/nscripts . '
@@ -81,7 +81,7 @@ class Gedit_GB2312(_set_gconf) :
 ('/apps/gedit-2/preferences/encodings/shown_in_menu', [ 'GB2312' ] ),
                     )
 
-class Speedup_Nautilus:
+class Speedup_Nautilus(I):
     __doc__ = _('Speed up Nautilus')
     detail = _('Change Nautilus settings: '
        'Do not count directory items. Do not preview sound. '
