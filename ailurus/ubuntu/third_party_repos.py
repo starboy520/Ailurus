@@ -494,7 +494,7 @@ class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
     license = GPL
     desc = _('It displays lyrics. It supports many media players.')
-    content = 'osd-lyrics'
+    content = 'osdlyrics'
     ppa = 'osd-lyrics'
 
 class Repo_Mplayer_VOD(_launchpad):
