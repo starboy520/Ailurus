@@ -75,11 +75,11 @@ class _set_gconf(I):
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;32m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, newvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%newvalue
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;32m%s\x1b[m"%_("New value:"), newvalue
         for key, to_add_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_add in to_add_list:
@@ -89,8 +89,8 @@ class _set_gconf(I):
                     pass
                 List.insert(0, to_add)
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Appended items:"), "\x1b[1;33m%s\x1b[m"%to_add_list
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;32m%s\x1b[m"%_("Appended items:"), to_add_list
     def installed(self):
         self.__check()
         import gconf
@@ -133,11 +133,11 @@ class _set_gconf(I):
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;31m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, oldvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%oldvalue
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;31m%s\x1b[m"%_("New value:"), oldvalue
         for key, to_remove_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_remove in to_remove_list:
@@ -146,8 +146,8 @@ class _set_gconf(I):
                 except ValueError:
                     pass
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Removed items:"), "\x1b[1;33m%s\x1b[m"%to_remove_list
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;31m%s\x1b[m"%_("Removed items:"), to_remove_list
     def support(self):
         try:
             import gconf
