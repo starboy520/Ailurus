@@ -81,8 +81,6 @@ class Christine(_apt_install):
     category = 'media'
     depends = Repo_Christine
     pkgs = 'christine'
-    def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
 
 class Gmchess(_apt_install):
     __doc__ = _('Gmchess: Chinese chess game')
