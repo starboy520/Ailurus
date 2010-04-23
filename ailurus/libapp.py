@@ -162,7 +162,7 @@ class _apt_install(I):
         if type ( self.pkgs ) != str:
             raise TypeError
         if self.pkgs == '' :
-            raise ValueError
+            raise ValueError, 'self.pkgs is empty.'
         for pkg in self.pkgs.split():
             import re
             if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
