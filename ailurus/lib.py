@@ -37,7 +37,7 @@ class Config:
         if not os.path.exists(dir): # make directory
             try:    os.makedirs(dir)
             except: pass # directory exists
-        if os.stat(dir).st_uid != os.getuid() and os.getuid()!=0: # change owner
+        if os.stat(dir).st_uid != os.getuid(): # change owner
             run_as_root('chown $USER:$USER "%s"'%dir)
         if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
             os.chmod(dir, 0755)
@@ -229,8 +229,6 @@ class Config:
     def get_fastest_repository_response_time(cls):
         return cls.get_int('fastest_repository_response_time')
 
-Config.init()
-
 def install_locale(force_reload=False):
     assert isinstance(force_reload, bool)
     
@@ -240,18 +238,6 @@ def install_locale(force_reload=False):
 
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
-
-install_locale()
-
-GPL = _('GNU General Public License')
-LGPL = _('GNU Lesser General Public License')
-EPL = _('Eclipse Public License')
-MPL = _('Mozilla Public License')
-BSD = _('Berkeley Software Distribution License')
-MIT = _('MIT License')
-CDDL = _('Common Development and Distribution License')
-APL = _('Aptana Public License')
-AL = _('Artistic License')
 
 def DUAL_LICENSE(A, B):
     return _('Dual-licensed under %(A)s and %(B)s') % {'A':A, 'B':B}
@@ -299,8 +285,6 @@ class ResponseTime:
         assert isinstance(value, (int,float)) and value > 0
         cls.map[url] = value
         cls.changed = True
-import atexit
-atexit.register(ResponseTime.save)
 
 class ShowALinuxSkill:
     @classmethod
@@ -329,16 +313,6 @@ class ShowALinuxSkill:
         import os
         path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
         os.system('rm %s -f'%path)
-
-try:
-    Config.get_bool('show-a-linux-skill-bubble')
-except:
-    try:
-        Config.set_bool('show-a-linux-skill-bubble', True)
-        ShowALinuxSkill.install()
-    except:
-        import traceback
-        traceback.print_exc()
 
 class CommandFailError(Exception):
     'Fail to execute a command'
@@ -859,9 +833,6 @@ class KillWhenExit:
                 import traceback, sys
                 traceback.print_exc(file=sys.stderr)
         cls.task_list = []
-
-import atexit
-atexit.register(KillWhenExit.kill_all)
 
 def download(url, filename):
     is_string_not_empty(url)
@@ -1680,3 +1651,32 @@ def show_changelog():
     dialog.vbox.show_all()
     dialog.run()
     dialog.destroy()
+
+
+Config.init()
+
+install_locale()
+
+GPL = _('GNU General Public License')
+LGPL = _('GNU Lesser General Public License')
+EPL = _('Eclipse Public License')
+MPL = _('Mozilla Public License')
+BSD = _('Berkeley Software Distribution License')
+MIT = _('MIT License')
+CDDL = _('Common Development and Distribution License')
+APL = _('Aptana Public License')
+AL = _('Artistic License')
+
+import atexit
+atexit.register(ResponseTime.save)
+atexit.register(KillWhenExit.kill_all)
+
+try:
+    Config.get_bool('show-a-linux-skill-bubble')
+except:
+    try:
+        Config.set_bool('show-a-linux-skill-bubble', True)
+        ShowALinuxSkill.install()
+    except:
+        import traceback
+        traceback.print_exc()
