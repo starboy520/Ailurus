@@ -68,44 +68,6 @@ Icon=/opt/bioclipse/icon.xpm
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
 
-#class BRLCAD(_path_lists):
-#    __doc__ = _('BRL-CAD: Military solid modeling software')
-#    detail = (
-#              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
-#              _('Developed by Ballistic Research Laboratory. ') +
-#              _('A lot of commands are installed in /usr/brlcad/bin/') )
-#    category = 'em'
-#    license = ('BRL-CAD is a large system with various portions under different license '
-#               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
-#               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
-#               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
-#    def __init__(self):
-#        self.shortcut = '/usr/share/applications/brlcad.desktop'
-#        self.file = '/usr/brlcad/'
-#        self.paths = [self.shortcut, self.file]
-#    def install(self):
-#        if get_arch()==32:
-#            f = R(
-#['http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
-#65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
-#        else:
-#            f = R(
-#['http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
-#88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
-#
-#        with Chdir('/tmp') as o:
-#            run('tar jxf %s'%f)
-#            run_as_root('rm /usr/brlcad/ -rf')
-#            run_as_root('mv usr/brlcad/ /usr/')
-#            create_file(self.shortcut, '''[Desktop Entry]
-#Name=BRL-CAD
-#Exec=/usr/brlcad/bin/mged
-#Encoding=UTF-8
-#StartupNotify=true
-#Terminal=true
-#Type=Application
-#Categories=Science;Engineering;''')
-
 class CreateDesktopFolder:
     __doc__ = _('Create a directory "Desktop" in your home folder')
     detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
@@ -212,70 +174,6 @@ class Netbeans(_apt_install):
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
     
-#class Netbeans:
-#    __doc__ = _(u'Netbeans® 6.8')
-#    detail = (
-#              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
-#               ' and frameworks (J2SE, J2ME, etc.). '
-#               'Official site: http://netbeans.org/downloads/ .') +
-#              _(' This application depends on Java.') )
-#    category = 'dev'
-#    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
-#    def install(self):
-#        # Download Netbeans and install it.
-#        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-#                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-#                  ],
-#                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
-#                 ).download()
-#        run_as_root("bash %s" %file)
-#        # If there is no Netbeans shortcut, then we should create one.
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        if List == []:
-#            import gtk
-#            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
-#                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
-#            dialog.set_current_folder('/usr')
-#            gtk.gdk.threads_enter()
-#            dialog.run()
-#            folder = dialog.get_filename()
-#            dialog.destroy()
-#            gtk.gdk.threads_leave()
-#            create_file('/usr/share/applications/netbeans.desktop',
-#'''[Desktop Entry]
-#Encoding=UTF-8
-#Name=NetBeans IDE 6.8
-#Exec=/bin/sh "''' + folder + '''/bin/netbeans"
-#Icon=''' + folder + '''/nb6.8/netbeans.png
-#Categories=Application;Development;Java;IDE
-#Version=1.0
-#Type=Application
-#Terminal=0
-#''')
-#    def installed(self):
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        return bool(List)
-#    def remove(self):
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        File = List[0]
-#        with open(File) as f:
-#            lines = f.readlines()
-#        for line in lines:
-#            if line.startswith('Icon='):
-#                break
-#        else: 
-#            raise Exception('Bad format.', File)
-#        path = line.split('=', 1)[1].strip()
-#        import os
-#        path = os.path.dirname(path)
-#        path = os.path.dirname(path)
-#        uninstaller = path + '/uninstall.sh'
-#        run_as_root(uninstaller)
-#        run_as_root('rm %s -f'%File)
-        
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
     detail = ( 
