@@ -30,7 +30,9 @@ class Acire(_apt_install):
     license = GPL
     category = 'dev'
     depends = Repo_Acire
-    pkgs = 'acire python-snippets'
+    pkgs = 'acire'
+    def support(self):
+        return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
 class AWN(_apt_install):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
@@ -101,7 +103,7 @@ class Exaile(_apt_install):
     license = GPL
     category = 'media'
     depends = Repo_Exaile
-    pkgs = 'exiale'
+    pkgs = 'exaile'
 
 class Gnome_global_menu(_apt_install):
     __doc__ = _('Global Menu: A globally shared menu bar')
