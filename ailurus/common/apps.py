@@ -230,7 +230,7 @@ class TeXLive2007(_apt_install):
     category = 'latex'
     pkgs = 'texlive'
 
-class TeXLive2009:
+class TeXLive2009(I):
     __doc__ = _('TeXLive 2009')
     detail = _('TeXLive is obtained from http://www.tug.org/texlive/')
     category = 'latex'
