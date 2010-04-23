@@ -141,7 +141,6 @@ Categories=Game;''')
 #    Chinese = True
 #    time=112
 #    size=217428*1000
-#    manual=True
 #    def install(self):
 #        with Chdir('/tmp') as o:
 #            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()

@@ -174,7 +174,6 @@ class VirtualBox(_apt_install):
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     license = GPL
     category = 'vm'
-    manual = True
     pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen(I):
