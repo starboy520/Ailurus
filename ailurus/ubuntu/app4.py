@@ -168,6 +168,8 @@ class RedNoteBook(_apt_install):
     category = 'office'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
     
 class Shutter(_apt_install):
     __doc__ = _('Shutter: A screen-shot application')
