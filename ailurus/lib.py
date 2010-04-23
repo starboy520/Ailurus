@@ -721,7 +721,7 @@ class APT:
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
-        print '\x1b[1;33m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
+        print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
         cls.updated = True
