@@ -84,14 +84,14 @@ def check_dbus_configuration():
     dialog.run()
     dialog.destroy()
 
-def get_desktop_environment():
+def import_desktop_environment():
     if Config.is_GNOME():
         import gnome
         return gnome
     else:
         return None
 
-def get_distribution():
+def import_distribution():
     if Config.is_Mint():
         try:
             versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
@@ -346,8 +346,8 @@ class MainView:
         WindowPos.load(window,'main')
 
 import common as COMMON
-DESKTOP = get_desktop_environment()
-DISTRIBUTION = get_distribution()
+DESKTOP = import_desktop_environment()
+DISTRIBUTION = import_distribution()
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 from optparse import OptionParser
