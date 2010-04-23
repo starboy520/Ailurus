@@ -110,7 +110,7 @@ class Gnome_global_menu(_apt_install):
     license = GPL
     category = 'appearance'
     depends = Repo_GlobalMenu
-    pkgs = 'gnoe-globalmenu'
+    pkgs = 'gnome-globalmenu'
 
 class Gnome_color(_apt_install):
     __doc__ = _('GNOME colors themes')
