@@ -305,7 +305,7 @@ class Repo_GNOMEColors(_launchpad):
     __doc__ = _('GNOME colors (stable)')
     license = GPL
     desc = _('This repository contains some themes.')
-    content = 'arc-colors gnome-colors shiki-colors-murrine'
+    content = 'gnome-colors'
     ppa = 'gnome-colors-packagers'
 
 class Repo_GlobalMenu(_launchpad):

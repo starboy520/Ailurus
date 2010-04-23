@@ -117,7 +117,7 @@ class Gnome_color(_apt_install):
     license = GPL
     category = 'appearance'
     depends = Repo_GNOMEColors
-    pkgs = 'arc-colors gnome-color shiki-colors-murrine'
+    pkgs = 'gnome-colors'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
