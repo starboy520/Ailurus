@@ -1216,6 +1216,15 @@ class R:
             self.filename = re.match('^.+/(.+)$', u).group(1)
             
         self.sorted = False
+    def can_download(self):
+        import urllib2
+        for url in self.url:
+            try:
+                f = urllib2.urlopen(url)
+                return True
+            except:
+                pass
+        return False
     @classmethod
     def create_tmp_dir(cls):
         dir = '/var/cache/ailurus/'
