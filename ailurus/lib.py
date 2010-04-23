@@ -751,6 +751,7 @@ class APT:
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
         cls.updated = True
+        cls.cache_changed()
 
 class DPKG:
     @classmethod
@@ -1215,6 +1216,16 @@ class R:
             self.filename = re.match('^.+/(.+)$', u).group(1)
             
         self.sorted = False
+    def can_download(self):
+        import urllib2
+        for url in self.url:
+            try:
+                print url
+                f = urllib2.urlopen(url)
+                return True
+            except:
+                pass
+        return False
     @classmethod
     def create_tmp_dir(cls):
         dir = '/var/cache/ailurus/'
@@ -1406,11 +1417,13 @@ def show_about_dialog():
     about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
     about.set_website('http://ailurus.cn/')
     about.set_authors( [
+          _('Developers:'),
           'Homer Xing <homer.xing@gmail.com>', 
           'CHEN Yangyang <skabyy@gmail.com>',
           'MA Yue <velly.empire@gmail.com>',
           'QI Chengjie <starboy.qi@gmail.com>',
-          'Contributors:',
+          '',
+          _('Contributors:'),
           'HUANG Wei <wei.kukey@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))

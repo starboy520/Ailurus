@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ailurus - Information
-Comment=makes Linux easier to use
+Comment=Get system information
 Exec=/usr/bin/ailurus --fast --information
 Icon=/usr/share/ailurus/data/velly_icons/m_hardware_info.png
 Terminal=false

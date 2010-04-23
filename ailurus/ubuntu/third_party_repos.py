@@ -305,7 +305,7 @@ class Repo_GNOMEColors(_launchpad):
     __doc__ = _('GNOME colors (stable)')
     license = GPL
     desc = _('This repository contains some themes.')
-    content = 'arc-colors gnome-colors shiki-colors-murrine'
+    content = 'gnome-colors'
     ppa = 'gnome-colors-packagers'
 
 class Repo_GlobalMenu(_launchpad):
@@ -343,18 +343,18 @@ class Repo_Shutter(_launchpad):
     content = 'shutter'
     ppa = 'shutter'
     
-class Repo_Synapse(_repo):
-    __doc__ = _('Synapse (stable)')
-    license = GPL
-    def __init__(self):
-        self.desc = _('Synapse is an instant messager.')
-        self.apt_content = 'synapse'
-        self.web_page = 'http://synapse.im/download/'
-        self.apt_file = '/etc/apt/sources.list.d/synapse.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/firerabbit/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x83419668F12469157BCD4BE904508D5C1654E635'
-        self.key_id = '1654E635'
-        _repo.__init__(self)
+#class Repo_Synapse(_repo):
+#    __doc__ = _('Synapse (stable)')
+#    license = GPL
+#    def __init__(self):
+#        self.desc = _('Synapse is an instant messager.')
+#        self.apt_content = 'synapse'
+#        self.web_page = 'http://synapse.im/download/'
+#        self.apt_file = '/etc/apt/sources.list.d/synapse.list'
+#        self.apt_conf = [ 'deb http://ppa.launchpad.net/firerabbit/ppa/ubuntu $version main' ]
+#        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x83419668F12469157BCD4BE904508D5C1654E635'
+#        self.key_id = '1654E635'
+#        _repo.__init__(self)
 
 class Repo_X_Server_Updates(_launchpad):
     __doc__ = _('X server updates (stable)')
@@ -494,7 +494,7 @@ class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
     license = GPL
     desc = _('It displays lyrics. It supports many media players.')
-    content = 'osd-lyrics'
+    content = 'osdlyrics'
     ppa = 'osd-lyrics'
 
 class Repo_Mplayer_VOD(_launchpad):

@@ -30,7 +30,9 @@ class Acire(_apt_install):
     license = GPL
     category = 'dev'
     depends = Repo_Acire
-    pkgs = 'acire python-snippets'
+    pkgs = 'acire'
+    def support(self):
+        return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
 
 class AWN(_apt_install):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
@@ -101,21 +103,21 @@ class Exaile(_apt_install):
     license = GPL
     category = 'media'
     depends = Repo_Exaile
-    pkgs = 'exiale'
+    pkgs = 'exaile'
 
 class Gnome_global_menu(_apt_install):
     __doc__ = _('Global Menu: A globally shared menu bar')
     license = GPL
     category = 'appearance'
     depends = Repo_GlobalMenu
-    pkgs = 'gnoe-globalmenu'
+    pkgs = 'gnome-globalmenu'
 
 class Gnome_color(_apt_install):
     __doc__ = _('GNOME colors themes')
     license = GPL
     category = 'appearance'
     depends = Repo_GNOMEColors
-    pkgs = 'arc-colors gnome-color shiki-colors-murrine'
+    pkgs = 'gnome-colors'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
@@ -176,21 +178,21 @@ class Shutter(_apt_install):
     depends = Repo_Shutter
     pkgs = 'shutter'
 
-class Synapse(_apt_install):
-    __doc__ = _('Synapse: An instance messanger')
-    license = GPL
-    category = 'internet'
-    depends = Repo_Synapse
-    pkgs = 'synapse'
-    def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+#class Synapse(_apt_install):
+#    __doc__ = _('Synapse: An instance messanger')
+#    license = GPL
+#    category = 'internet'
+#    depends = Repo_Synapse
+#    pkgs = 'synapse'
+#    def support(self):
+#        return Config.get_Ubuntu_version() != 'lucid'
 
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     category = 'internet'
     depends = Repo_Firefox_3_6
-    pkgs = 'firefox-3.6-branding'
+    pkgs = 'firefox'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 

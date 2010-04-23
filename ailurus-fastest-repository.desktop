@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ailurus - Fastest repository
-Comment=makes Linux easier to use
+Comment=Search fastest repository
 Exec=/usr/bin/ailurus --fast --fastest-repository
 Icon=/usr/share/ailurus/data/velly_icons/m_fastest_repos.png
 Terminal=false

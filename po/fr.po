@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-04-20 04:17+0000\n"
+"POT-Creation-Date: 2010-04-22 17:07+0800\n"
+"PO-Revision-Date: 2010-04-22 08:02+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
+"X-Launchpad-Export-Date: 2010-04-23 03:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -26,37 +26,58 @@ msgstr "Ailurus - Démarrage rapide"
 msgid "Ailurus - Clean up"
 msgstr "Ailurus - Nettoyer"
 
-#: ../ailurus-clean-up.desktop.in.h:2 ../ailurus.desktop.in.h:2
-#: ../ailurus-fastest-repository.desktop.in.h:2
-#: ../ailurus-information.desktop.in.h:2
-#: ../ailurus-install-software.desktop.in.h:2
-#: ../ailurus-recovery.desktop.in.h:2 ../ailurus-system-setting.desktop.in.h:2
-msgid "makes Linux easier to use"
-msgstr "Rendre Linux plus facile à utiliser"
+#: ../ailurus-clean-up.desktop.in.h:2
+msgid "Clean up temporary files"
+msgstr ""
 
 #: ../ailurus.desktop.in.h:1
 msgid "Ailurus"
 msgstr "Ailurus"
 
+#: ../ailurus.desktop.in.h:2
+msgid "makes Linux easier to use"
+msgstr "Rendre Linux plus facile à utiliser"
+
 #: ../ailurus-fastest-repository.desktop.in.h:1
 msgid "Ailurus - Fastest repository"
 msgstr "Ailurus - Dépôt le plus rapide"
+
+#: ../ailurus-fastest-repository.desktop.in.h:2
+#: .././ailurus/ubuntu/quick_setup.py:32
+msgid "Search fastest repository"
+msgstr "Cherche le dépôt le plus rapide"
 
 #: ../ailurus-information.desktop.in.h:1
 msgid "Ailurus - Information"
 msgstr "Ailurus - Information"
 
+#: ../ailurus-information.desktop.in.h:2
+msgid "Get system information"
+msgstr ""
+
 #: ../ailurus-install-software.desktop.in.h:1
 msgid "Ailurus - Install software"
 msgstr "Ailurus - Installer logiciel"
+
+#: ../ailurus-install-software.desktop.in.h:2
+msgid "Install popular software"
+msgstr ""
 
 #: ../ailurus-recovery.desktop.in.h:1
 msgid "Ailurus - Recovery"
 msgstr "Ailurus - Récupération"
 
+#: ../ailurus-recovery.desktop.in.h:2
+msgid "Backup and recover Synaptic/YUM status"
+msgstr ""
+
 #: ../ailurus-system-setting.desktop.in.h:1
 msgid "Ailurus - System setting"
 msgstr "Ailurus - Paramètre système"
+
+#: ../ailurus-system-setting.desktop.in.h:2
+msgid "Change system setting"
+msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -178,8 +199,8 @@ msgstr ""
 "p, and extract \".zip\" file to directory \"/opt/eclipse\" ."
 
 #: .././ailurus/common/apps_eclipse.py:74
-#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:145
-#: .././ailurus/common/apps.py:213 .././ailurus/common/apps.py:287
+#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:210 .././ailurus/common/apps.py:283
 msgid " This application depends on Java."
 msgstr " Cette application dépend de Java."
 
@@ -191,19 +212,19 @@ msgstr "CDT : développement C/C++"
 msgid "CDT is from http://www.eclipse.org/cdt/"
 msgstr "CDT provient de http://www.eclipse.org/cdt/"
 
-#: .././ailurus/common/apps_eclipse.py:117
+#: .././ailurus/common/apps_eclipse.py:116
 msgid "Pydev: Python development"
 msgstr "Pydev : Développement python"
 
-#: .././ailurus/common/apps_eclipse.py:118
+#: .././ailurus/common/apps_eclipse.py:117
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr "Pydev viens de http://pydev.org/download.html"
 
-#: .././ailurus/common/apps_eclipse.py:136
+#: .././ailurus/common/apps_eclipse.py:134
 msgid "Aptana: Web application development"
 msgstr "Aptana : Application de développement web"
 
-#: .././ailurus/common/apps_eclipse.py:137
+#: .././ailurus/common/apps_eclipse.py:135
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by "
@@ -218,17 +239,29 @@ msgstr ""
 "A cause des limitations des auteurs \"programming ability\", Aptana ne peut "
 "être enlevé par Ailurus. Pour enlever Aptana, vous devez réinstaller Eclipse"
 
+#: .././ailurus/common/apps_eclipse.py:150
+#: .././ailurus/common/apps_eclipse.py:173
+#: .././ailurus/common/apps_eclipse.py:211
+#: .././ailurus/common/apps_eclipse.py:237
+#: .././ailurus/common/apps_eclipse.py:259
+#: .././ailurus/common/apps_eclipse.py:281
+msgid ""
+"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+msgstr ""
+"S'il vous plaît, lancez Eclipse, et aller dans \"Aide\" -> \"Installation de "
+"nouveau logiciel\"."
+
 #: .././ailurus/common/apps_eclipse.py:152
 #: .././ailurus/common/apps_eclipse.py:175
 #: .././ailurus/common/apps_eclipse.py:213
 #: .././ailurus/common/apps_eclipse.py:239
 #: .././ailurus/common/apps_eclipse.py:261
 #: .././ailurus/common/apps_eclipse.py:283
-msgid ""
-"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+#, python-format
+msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
-"S'il vous plaît, lancez Eclipse, et aller dans \"Aide\" -> \"Installation de "
-"nouveau logiciel\"."
+"Cliquer sur le bouton \"Ajouter\". Ensuite taper <b>%s</b> dans "
+"\"Localisation\""
 
 #: .././ailurus/common/apps_eclipse.py:154
 #: .././ailurus/common/apps_eclipse.py:177
@@ -236,30 +269,18 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:241
 #: .././ailurus/common/apps_eclipse.py:263
 #: .././ailurus/common/apps_eclipse.py:285
-#, python-format
-msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
-msgstr ""
-"Cliquer sur le bouton \"Ajouter\". Ensuite taper <b>%s</b> dans "
-"\"Localisation\""
-
-#: .././ailurus/common/apps_eclipse.py:156
-#: .././ailurus/common/apps_eclipse.py:179
-#: .././ailurus/common/apps_eclipse.py:217
-#: .././ailurus/common/apps_eclipse.py:243
-#: .././ailurus/common/apps_eclipse.py:265
-#: .././ailurus/common/apps_eclipse.py:287
 msgid "Then click the \"Next\" button and agree the license."
 msgstr "Ensuite, cliquez sur le bouton \"suivant\" et acceptez la licence."
 
-#: .././ailurus/common/apps_eclipse.py:157
+#: .././ailurus/common/apps_eclipse.py:155
 msgid "Installing Aptana"
 msgstr "Installation d'Aptana"
 
-#: .././ailurus/common/apps_eclipse.py:162
+#: .././ailurus/common/apps_eclipse.py:160
 msgid "RadRails: Ruby development"
 msgstr "RadRails : Développement Ruby"
 
-#: .././ailurus/common/apps_eclipse.py:163
+#: .././ailurus/common/apps_eclipse.py:161
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
@@ -267,46 +288,46 @@ msgstr ""
 "RaidRails était appelé par le passé \"RDT\". RadRails est installé depuis "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 
-#: .././ailurus/common/apps_eclipse.py:180
+#: .././ailurus/common/apps_eclipse.py:178
 msgid "Installing RadRails\n"
 msgstr "Installation de RadRails\n"
 
-#: .././ailurus/common/apps_eclipse.py:186
+#: .././ailurus/common/apps_eclipse.py:184
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr "Mylyn vient de http://www.eclipse.org/mylyn/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:200
+#: .././ailurus/common/apps_eclipse.py:198
 msgid "Dynamic languages toolkit"
 msgstr "Kit d'outils de langage dynamique"
 
-#: .././ailurus/common/apps_eclipse.py:201
+#: .././ailurus/common/apps_eclipse.py:199
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
 "Est installé par http://download.eclipse.org/technology/dltk/updates-dev/2.0/"
 
-#: .././ailurus/common/apps_eclipse.py:218
+#: .././ailurus/common/apps_eclipse.py:216
 msgid "Installing Dynamic languages toolkit\n"
 msgstr "Installation du Kit d'outils de langage dynamique\n"
 
-#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:225
 msgid "PDT: PHP development"
 msgstr "PDT : développement PHP"
 
-#: .././ailurus/common/apps_eclipse.py:228
+#: .././ailurus/common/apps_eclipse.py:226
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr "PDT vient de http://www.eclipse.org/pdt/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:244
+#: .././ailurus/common/apps_eclipse.py:242
 msgid "Installing PDT\n"
 msgstr "Installation de PDT\n"
 
-#: .././ailurus/common/apps_eclipse.py:249
+#: .././ailurus/common/apps_eclipse.py:247
 msgid "Subversive: Use SVN in Eclipse"
 msgstr "Subversive : Utiliser SVN dans Eclipse"
 
-#: .././ailurus/common/apps_eclipse.py:250
+#: .././ailurus/common/apps_eclipse.py:248
 msgid ""
 "It is installed by "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
@@ -314,27 +335,27 @@ msgstr ""
 "Est installé par "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
 
-#: .././ailurus/common/apps_eclipse.py:266
+#: .././ailurus/common/apps_eclipse.py:264
 msgid "Installing Subversive\n"
 msgstr "Installation de Subversive\n"
 
-#: .././ailurus/common/apps_eclipse.py:271
+#: .././ailurus/common/apps_eclipse.py:269
 msgid "VEditor: Verilog and VHDL editor"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:272
+#: .././ailurus/common/apps_eclipse.py:270
 msgid "It is installed by http://veditor.sourceforge.net/update"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:288
+#: .././ailurus/common/apps_eclipse.py:286
 msgid "Installing VEditor\n"
 msgstr ""
 
-#: .././ailurus/common/apps_eclipse.py:293
+#: .././ailurus/common/apps_eclipse.py:291
 msgid "MTJ: J2ME development"
 msgstr "MTJ : Développement J2ME"
 
-#: .././ailurus/common/apps_eclipse.py:294
+#: .././ailurus/common/apps_eclipse.py:292
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
@@ -353,11 +374,11 @@ msgid ""
 "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 msgstr "Vient de http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 
-#: .././ailurus/common/apps.py:112
+#: .././ailurus/common/apps.py:110
 msgid "Create a directory \"Desktop\" in your home folder"
 msgstr "Créer un dossier \"Bureau\" dans votre répertoire racine"
 
-#: .././ailurus/common/apps.py:113
+#: .././ailurus/common/apps.py:111
 msgid ""
 "Create a directory \"Desktop\" which is linked to the desktop. After that, "
 "you can chdir to the desktop folder by command \"cd ~/Desktop\"."
@@ -365,13 +386,13 @@ msgstr ""
 "Crée un répertoire \"Bureau\" qui sera lié au bureau. Après cela, vous "
 "pourrez déplacer le répertoire sur le bureau avec la commande \"cd ~Bureau\"."
 
-#: .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:141
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr ""
 "Electric : Un logiciel de design de circuits intégrés qui prend en charge "
 "les formats VHDL et Verilog"
 
-#: .././ailurus/common/apps.py:144
+#: .././ailurus/common/apps.py:142
 msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
@@ -379,11 +400,11 @@ msgstr ""
 "Site officiel : <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
 
-#: .././ailurus/common/apps.py:170
+#: .././ailurus/common/apps.py:167
 msgid "Speed up Firefox"
 msgstr "Accélère Firefox"
 
-#: .././ailurus/common/apps.py:171
+#: .././ailurus/common/apps.py:168
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -395,11 +416,11 @@ msgstr ""
 "Ailurus créera un nouvel icône \"Firefox sans Pango (plus rapide)\" dans le "
 "menu \"Applications\"-->\"Internet\"."
 
-#: .././ailurus/common/apps.py:195
+#: .././ailurus/common/apps.py:192
 msgid "Firefox without Pango (faster)"
 msgstr "Firefox sans Pango (plus rapide)"
 
-#: .././ailurus/common/apps.py:210
+#: .././ailurus/common/apps.py:207
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
@@ -409,19 +430,19 @@ msgstr ""
 "languages (C, C++, Java, Ruby, etc.) et des espaces de travail (frameworks) "
 "tels que J2SE,J2ME, etc. Site officiel: http://netbeans.org/downloads/ ."
 
-#: .././ailurus/common/apps.py:284
+#: .././ailurus/common/apps.py:280
 msgid "OpenJUMP: A geographic information system"
 msgstr "OpenJUMP : Un système d'information géographique"
 
-#: .././ailurus/common/apps.py:286
+#: .././ailurus/common/apps.py:282
 msgid "Official site: http://openjump.org/ ."
 msgstr "Site officiel : http://openjump.org/ ."
 
-#: .././ailurus/common/apps.py:318
+#: .././ailurus/common/apps.py:313
 msgid "Query you before delete more than three files"
 msgstr "Demander confirmation avant de supprimer plus de trois fichiers"
 
-#: .././ailurus/common/apps.py:319
+#: .././ailurus/common/apps.py:314
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -437,32 +458,32 @@ msgstr ""
 "\n"
 "alias rm=\"rm -l\""
 
-#: .././ailurus/common/apps.py:341
+#: .././ailurus/common/apps.py:336
 msgid "TeXLive 2009"
 msgstr "TeXLive 2009"
 
-#: .././ailurus/common/apps.py:342
+#: .././ailurus/common/apps.py:337
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr "TeXLive peut être obtenu ici: http://www.tug.org/texlive/"
 
 #. extract
-#: .././ailurus/common/apps.py:372
+#: .././ailurus/common/apps.py:364
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr "Déballage.. Patientez quelques minutes s'il vous plaît."
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive is installed."
 msgstr "TeXLive est installé."
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive will not work until you restart the computer."
 msgstr "TeXLive ne fonctionnera pas avant un redémarrage de l'ordinateur."
 
-#: .././ailurus/common/apps.py:417
+#: .././ailurus/common/apps.py:409
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr "LaTeX Thesis Templates par l'Université Tsing Hua, Chine"
 
-#: .././ailurus/common/apps.py:419
+#: .././ailurus/common/apps.py:411
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -476,39 +497,39 @@ msgstr ""
 "Après l'installation, un fichier nommé \"thuthesis.tgz\" est placé dans le "
 "dossier \"%s\"."
 
-#: .././ailurus/common/apps.py:434
+#: .././ailurus/common/apps.py:425
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+ : Bloque 99% de la publicité"
 
-#: .././ailurus/common/apps.py:437
+#: .././ailurus/common/apps.py:428
 msgid "It is able to block 99% ads and banners."
 msgstr "Est capable de bloquer 99% annonces et bannières publicitaires."
 
-#: .././ailurus/common/apps.py:447
+#: .././ailurus/common/apps.py:437
 msgid "AutoProxy: Proxy management via a third party list"
 msgstr ""
 
-#: .././ailurus/common/apps.py:461
+#: .././ailurus/common/apps.py:450
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr "Thème Chrome pour Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:464
+#: .././ailurus/common/apps.py:453
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr "Une couche de Chrome pour Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:474
+#: .././ailurus/common/apps.py:462
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr "Thème Chrome pour Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:477
+#: .././ailurus/common/apps.py:465
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr "Une couche de Chrome pour Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:487
+#: .././ailurus/common/apps.py:474
 msgid "CleanHide: Delete hidden text in web page"
 msgstr "CleanHide : Efface les textes cachés dans une page web"
 
-#: .././ailurus/common/apps.py:490
+#: .././ailurus/common/apps.py:477
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
@@ -516,48 +537,48 @@ msgstr ""
 "Si vous trouvez certaines page web qui utilisent les textes cachés et que "
 "vous ne pouvez pas les copier facilement, essayez cela!"
 
-#: .././ailurus/common/apps.py:500
+#: .././ailurus/common/apps.py:486
 msgid "DownloadStatusBar: Keep track of downloads in a tiny statusbar."
 msgstr ""
 
-#: .././ailurus/common/apps.py:513
+#: .././ailurus/common/apps.py:498
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr "DownThemAll:  Un manager de téléchargements multi-tâches"
 
-#: .././ailurus/common/apps.py:516
+#: .././ailurus/common/apps.py:501
 msgid "It is able to download all images on web-pages."
 msgstr "Permet le téléchargement de toutes les images d'une page web."
 
-#: .././ailurus/common/apps.py:526
+#: .././ailurus/common/apps.py:510
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 "EasyDragToGo: Ouvre de nouveau onglets en glissant textes, liens et images"
 
-#: .././ailurus/common/apps.py:539
+#: .././ailurus/common/apps.py:522
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 "FireBug: Editeur et debuggeur CSS/HTML/JavaScript en temps réel dans une "
 "page web"
 
-#: .././ailurus/common/apps.py:543
+#: .././ailurus/common/apps.py:526
 msgid "This is a powerful web development tool."
 msgstr "Ceci est un outils de développement web puissant"
 
-#: .././ailurus/common/apps.py:552
+#: .././ailurus/common/apps.py:535
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 "FireGesture: Exécute commandes et scripts utilisateurs par des mouvements de "
 "la souris"
 
-#: .././ailurus/common/apps.py:555
+#: .././ailurus/common/apps.py:538
 msgid "It supports five kinds of mouse gestures."
 msgstr "Supporte cinq sortes de mouvements de souris"
 
-#: .././ailurus/common/apps.py:565
+#: .././ailurus/common/apps.py:547
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr "Flashgot: Un gestionnaire de téléchargements léger et rapide"
 
-#: .././ailurus/common/apps.py:568
+#: .././ailurus/common/apps.py:550
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
@@ -565,15 +586,15 @@ msgstr ""
 "Permet d'un simple clic de télécharger tous les liens, films et clips audio "
 "d'une page."
 
-#: .././ailurus/common/apps.py:577
+#: .././ailurus/common/apps.py:559
 msgid "FoxyProxy: One-click switching proxy"
 msgstr "FoxyProxy"
 
-#: .././ailurus/common/apps.py:590
+#: .././ailurus/common/apps.py:571
 msgid "GreaseMonkey: Make change to web pages"
 msgstr "GreaseMonkey : Permet les modifications sur les pages web"
 
-#: .././ailurus/common/apps.py:593
+#: .././ailurus/common/apps.py:574
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image "
@@ -591,17 +612,17 @@ msgstr ""
 "livre \"Dive into Greasemonkey\" est une lecture importante. Elle peut être "
 "téléchargée depuis http://diveintogreasemonkey.org/ ."
 
-#: .././ailurus/common/apps.py:606
+#: .././ailurus/common/apps.py:586
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr "Live HTTP Headers: Affiche les en-têtes HTTp en temps réel"
 
-#: .././ailurus/common/apps.py:619
+#: .././ailurus/common/apps.py:599
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 "NuScript: Permet aux contenus actifs de s'exécuter uniquement depuis les "
 "site qui ont votre confiance"
 
-#: .././ailurus/common/apps.py:623
+#: .././ailurus/common/apps.py:603
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
@@ -609,98 +630,98 @@ msgstr ""
 "Permet aux contenus actifs de s'exécuter uniquement depuis les site qui ont "
 "votre confiance, et vous protège des attaques XSS et Clickjacking"
 
-#: .././ailurus/common/apps.py:632
+#: .././ailurus/common/apps.py:612
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 "SHA-DA network radio: Permet la lecture des programmes de radio et "
 "télévision de Chine"
 
-#: .././ailurus/common/apps.py:646
+#: .././ailurus/common/apps.py:625
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 "SeoQuake : Vous aide à voir les paramètres de moteur de recherche de votre "
 "site web."
 
-#: .././ailurus/common/apps.py:650
+#: .././ailurus/common/apps.py:629
 msgid "It helps you promote your web sites."
 msgstr "Vous aide à la promotion de vos sites web."
 
-#: .././ailurus/common/apps.py:659
+#: .././ailurus/common/apps.py:638
 msgid "Stylish: Install themes and skins for websites."
 msgstr ""
 
-#: .././ailurus/common/apps.py:670
+#: .././ailurus/common/apps.py:649
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr "Tab Mix Lite CE : Vous permet la réouverture des onglets fermés"
 
-#: .././ailurus/common/apps.py:673
+#: .././ailurus/common/apps.py:652
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 "Fermer les onglets en double-cliquant sur leurs titres. Rouvre les onglets "
 "fermés."
 
-#: .././ailurus/common/apps.py:683
+#: .././ailurus/common/apps.py:661
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 "Tamper Data: Afficher et modifier les en-têtes  HTTP/HTTPS et les paramètres "
 "de requête post."
 
-#: .././ailurus/common/apps.py:696
+#: .././ailurus/common/apps.py:674
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr "User Agent Switcher: Camoufle Firefox et simule un autre navigateur."
 
-#: .././ailurus/common/apps.py:699
+#: .././ailurus/common/apps.py:677
 msgid "It tells the remote websites that you are an IE user."
 msgstr "Cela signifie au site web que vous êtes un utilisateur d'IE."
 
-#: .././ailurus/common/apps.py:708
+#: .././ailurus/common/apps.py:686
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr "View Source Chart : Affiche le code source HTML joliment coloré"
 
-#: .././ailurus/common/apps.py:712
+#: .././ailurus/common/apps.py:690
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 "Cette extension vous aide à scanner et reconnaitre les tag's d'un document."
 
-#: .././ailurus/common/apps.py:721
+#: .././ailurus/common/apps.py:699
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 "Weave Sync : synchronise vos marque-pages, votre historique et vos onglets "
 "où que vous soyez."
 
-#: .././ailurus/common/apps.py:733
+#: .././ailurus/common/apps.py:711
 msgid "Web Developer: Web page analysis tools"
 msgstr "Web Developer : outils d'analyse de page web"
 
-#: .././ailurus/common/apps.py:737
+#: .././ailurus/common/apps.py:715
 msgid "Many developers installed it."
 msgstr "Beaucoup de développeurs l'ont installé."
 
-#: .././ailurus/common/apps.py:746
+#: .././ailurus/common/apps.py:724
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr ""
 "Yet Another Smooth Scrolling: Personnaliser le comportement du scroll"
 
-#: .././ailurus/common/apps.py:759
+#: .././ailurus/common/apps.py:736
 msgid "YSlow: web page performance tuning"
 msgstr "YSlow: amélioration des performances des pages web"
 
-#: .././ailurus/common/apps.py:763
+#: .././ailurus/common/apps.py:740
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 "Vous aide à améliorer les performances d'une pages web. Il vous dit pourquoi "
 "les pages web sont lentes."
 
-#: .././ailurus/common/apps.py:772
+#: .././ailurus/common/apps.py:749
 msgid "World of Padman: Funny shooter game"
 msgstr ""
 
-#: .././ailurus/common/apps.py:773
+#: .././ailurus/common/apps.py:750
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
@@ -1888,11 +1909,11 @@ msgid ""
 "git: a distributed version control system.</i>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:239
+#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:235
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr "QtiPlot: un équivalent à \"Origin\" pour réaliser des graphiques"
 
-#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:240
+#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:236
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
@@ -2000,11 +2021,11 @@ msgstr "Mettre Selinux en mode permissif, au lieu du mode renforcé"
 msgid "Flash plugin for web browser"
 msgstr "Greffon Flash pour les navigateurs web"
 
-#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:273
+#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:269
 msgid "\"Actions configuration\" entry"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:274
+#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:270
 msgid ""
 "It allows the configuration of programs to be launched on files selected.\n"
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
@@ -2015,19 +2036,19 @@ msgstr ""
 "<span color=\"red\">Cette entrée n'est pas dans le menu contextuel. C'est "
 "dans le menu  \"System\"->\"Preferences\".</span>"
 
-#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:307
+#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:303
 msgid "\"Resize/Rotate images\" entries"
 msgstr "Entrées \"Pivoter/Redimensionner les images\""
 
-#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:308
+#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:304
 msgid "Resize or rotate selected images."
 msgstr "Redimensionner ou pivoter les images"
 
-#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:324
+#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:320
 msgid "\"Open in terminal\" entry"
 msgstr "Entrée \"Ouvrir dans un termial\""
 
-#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:325
+#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:321
 msgid "Open a terminal in current folder."
 msgstr "Ouvrir un terminal dans le dossier sélectionné"
 
@@ -3724,7 +3745,7 @@ msgstr "Utilisant le miroir %(i)s. il y a un totale de %(total)s miroirs"
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
-#: .././ailurus/lib.py:1413
+#: .././ailurus/lib.py:1416
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -3743,7 +3764,7 @@ msgstr ""
 "  royto https://launchpad.net/~royto\n"
 "  ubuntosaure https://launchpad.net/~ubuntosaure"
 
-#: .././ailurus/lib.py:1419
+#: .././ailurus/lib.py:1422
 msgid ""
 "Copyright © 2007-2010,\n"
 "Trusted Digital Technology Laboratory,\n"
@@ -3753,80 +3774,80 @@ msgstr ""
 "Trusted Digital Technology Laboratory,\n"
 "Shanghai Jiao Tong University, China."
 
-#: .././ailurus/lib.py:1496
+#: .././ailurus/lib.py:1499
 msgid "Welcome to leave response in blog~"
 msgstr "Les commentaires sont bienvenus sur le blog~"
 
-#: .././ailurus/lib.py:1497
+#: .././ailurus/lib.py:1500
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: .././ailurus/lib.py:1505
+#: .././ailurus/lib.py:1508
 msgid "We wish to express thankfulness to these projects:"
 msgstr "Nous voulons nous montrer reconnaissants envers ces projets :"
 
-#: .././ailurus/lib.py:1509
+#: .././ailurus/lib.py:1512
 msgid "We sincerely thank these people:"
 msgstr "Nous remercions sincèrement ces personnes :"
 
-#: .././ailurus/lib.py:1511
+#: .././ailurus/lib.py:1514
 msgid "The people who provide inspiration:"
 msgstr "Ces personnes nous ont inspirées :"
 
-#: .././ailurus/lib.py:1519
+#: .././ailurus/lib.py:1522
 msgid "The people who designs the logo:"
 msgstr "Les personnes qui ont créé le logo :"
 
-#: .././ailurus/lib.py:1522
+#: .././ailurus/lib.py:1525
 msgid "The people who maintain PPA repository:"
 msgstr "Personnes maintenant le dépôt PPA :"
 
-#: .././ailurus/lib.py:1525
+#: .././ailurus/lib.py:1528
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 "Les personnes qui nous ont apportée de nombreuses compétences Linux :"
 
-#: .././ailurus/lib.py:1528
+#: .././ailurus/lib.py:1531
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 "Les personnes qui nous ont fournie une grande quantité de paquets Debian :"
 
-#: .././ailurus/lib.py:1531
+#: .././ailurus/lib.py:1534
 msgid "The people who provide a lot of translation:"
 msgstr "Les personnes qui nous ont apportées de nombreuses traductions :"
 
-#: .././ailurus/lib.py:1533 .././ailurus/lib.py:1537 .././ailurus/lib.py:1544
+#: .././ailurus/lib.py:1536 .././ailurus/lib.py:1540 .././ailurus/lib.py:1547
 msgid "and many other people."
 msgstr "et beaucoup d'autres."
 
-#: .././ailurus/lib.py:1535
+#: .././ailurus/lib.py:1538
 msgid "The people who report bugs:"
 msgstr "Les personnes qui on rapporté des bugs :"
 
-#: .././ailurus/lib.py:1539
+#: .././ailurus/lib.py:1542
 msgid "The people who eliminate bugs:"
 msgstr "Les personnes qui ont éliminées les bugs"
 
-#: .././ailurus/lib.py:1542
+#: .././ailurus/lib.py:1545
 msgid "The people who publicize this software:"
 msgstr "Les personnes qui ont publiées ce logiciel"
 
-#: .././ailurus/lib.py:1546
+#: .././ailurus/lib.py:1549
 msgid "and the people not mensioned here."
 msgstr "et les personnes qui ne sont pas mentionnées ici."
 
-#: .././ailurus/lib.py:1557
+#: .././ailurus/lib.py:1560
 msgid "Thanks"
 msgstr "Remerciements"
 
-#: .././ailurus/lib.py:1620
+#: .././ailurus/lib.py:1623
 msgid "A new version is available"
 msgstr "Une nouvelle version est disponible"
 
-#: .././ailurus/lib.py:1621
+#: .././ailurus/lib.py:1624
 #, python-format
 msgid ""
 "Version %s is released.\n"
@@ -3835,15 +3856,15 @@ msgstr ""
 "La version %s est sortie.\n"
 "Vous pouvez la téléchargée là :"
 
-#: .././ailurus/lib.py:1628
+#: .././ailurus/lib.py:1631
 msgid "Check update"
 msgstr "Vérifier la disponibilité de mises à jour"
 
-#: .././ailurus/lib.py:1629
+#: .././ailurus/lib.py:1632
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "Vous avez déjà la dernière version de Ailurus. :)"
 
-#: .././ailurus/lib.py:1658
+#: .././ailurus/lib.py:1661
 msgid "Ailurus changelog"
 msgstr "Journal des modifications d'Ailurus"
 
@@ -4467,47 +4488,47 @@ msgid ""
 "GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:246
+#: .././ailurus/ubuntu/app2.py:242
 msgid "Extcalc: A multifunctional graphic calculator"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:252
+#: .././ailurus/ubuntu/app2.py:248
 msgid "Startup Manager: Change GRUB settings and themes"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:253
+#: .././ailurus/ubuntu/app2.py:249
 msgid "Startup manager helps you change GRUB settings and themes."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:259
+#: .././ailurus/ubuntu/app2.py:255
 msgid "Zhcon"
 msgstr "Zhcon"
 
-#: .././ailurus/ubuntu/app2.py:260
+#: .././ailurus/ubuntu/app2.py:256
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:268
+#: .././ailurus/ubuntu/app2.py:264
 msgid "Powertop helps you save power for your laptop."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:281
+#: .././ailurus/ubuntu/app2.py:277
 msgid "\"Repair filename\" entry"
 msgstr "\"Correction du nom de fichier\" entrée"
 
-#: .././ailurus/ubuntu/app2.py:282
+#: .././ailurus/ubuntu/app2.py:278
 msgid ""
 "When any file with wrong encoding filename is right clicked,\n"
 " show a \"Repair filename\" menu item."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:288
+#: .././ailurus/ubuntu/app2.py:284
 msgid "\"Open as administrator\" entry"
 msgstr "Entrée \"Ouvrir en tant qu'administrateur\""
 
-#: .././ailurus/ubuntu/app2.py:289
+#: .././ailurus/ubuntu/app2.py:285
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
@@ -4517,11 +4538,11 @@ msgstr ""
 "utilisant le menu contextuel.\n"
 "Ouvrir le répertoire sélectionné avec les privilèges administrateur."
 
-#: .././ailurus/ubuntu/app2.py:295
+#: .././ailurus/ubuntu/app2.py:291
 msgid "\"Convert audio files\" entry"
 msgstr "Entrée \"Convertir les fichiers audio\""
 
-#: .././ailurus/ubuntu/app2.py:296
+#: .././ailurus/ubuntu/app2.py:292
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -4531,19 +4552,19 @@ msgstr ""
 "Ces paquets seront aussi installés: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: .././ailurus/ubuntu/app2.py:314 .././ailurus/ubuntu/app2.py:315
+#: .././ailurus/ubuntu/app2.py:310 .././ailurus/ubuntu/app2.py:311
 msgid "\"Subversion commands\" entries"
 msgstr "Entrées \"Commandes subversion\""
 
-#: .././ailurus/ubuntu/app2.py:331
+#: .././ailurus/ubuntu/app2.py:327
 msgid "\"Share folders\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:332
+#: .././ailurus/ubuntu/app2.py:328
 msgid "Share folders by Samba."
 msgstr "Partager des dossiers avec Samba"
 
-#: .././ailurus/ubuntu/app2.py:338 .././ailurus/ubuntu/app2.py:339
+#: .././ailurus/ubuntu/app2.py:334 .././ailurus/ubuntu/app2.py:335
 msgid "\"Set as wallpaper\" entry"
 msgstr "Entrée \"Choisir comme fond d'écran\""
 
@@ -5460,10 +5481,6 @@ msgstr ""
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
 msgstr "Version d'Ubuntu :"
-
-#: .././ailurus/ubuntu/quick_setup.py:32
-msgid "Search fastest repository"
-msgstr "Cherche le dépôt le plus rapide"
 
 #: .././ailurus/ubuntu/quick_setup.py:35
 msgid "Decompression software"

@@ -7,67 +7,89 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-03-28 07:52+0000\n"
-"Last-Translator: Vladimir Kolev <admin@vladimirkolev.com>\n"
+"POT-Creation-Date: 2010-04-22 17:07+0800\n"
+"PO-Revision-Date: 2010-04-22 07:45+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: Vladimir Kolev <admin@vladimirkolev.com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-04-21 03:16+0000\n"
+"X-Launchpad-Export-Date: 2010-04-23 03:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: BULGARIA\n"
 "X-Poedit-Language: Bulgarian\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
 msgid "Ailurus - Quick start"
-msgstr ""
+msgstr "Ailurus - Бърз старт"
 
 #: ../ailurus-clean-up.desktop.in.h:1
 msgid "Ailurus - Clean up"
-msgstr ""
+msgstr "Ailurus - Почистване"
 
-#: ../ailurus-clean-up.desktop.in.h:2 ../ailurus.desktop.in.h:2
-#: ../ailurus-fastest-repository.desktop.in.h:2
-#: ../ailurus-information.desktop.in.h:2
-#: ../ailurus-install-software.desktop.in.h:2
-#: ../ailurus-recovery.desktop.in.h:2 ../ailurus-system-setting.desktop.in.h:2
-msgid "makes Linux easier to use"
+#: ../ailurus-clean-up.desktop.in.h:2
+msgid "Clean up temporary files"
 msgstr ""
 
 #: ../ailurus.desktop.in.h:1
 msgid "Ailurus"
 msgstr "Ailurus"
 
+#: ../ailurus.desktop.in.h:2
+msgid "makes Linux easier to use"
+msgstr "прави Linux по-лесен за използване"
+
 #: ../ailurus-fastest-repository.desktop.in.h:1
 msgid "Ailurus - Fastest repository"
-msgstr ""
+msgstr "Ailurus - Най-бързо хранилище"
+
+#: ../ailurus-fastest-repository.desktop.in.h:2
+#: .././ailurus/ubuntu/quick_setup.py:32
+msgid "Search fastest repository"
+msgstr "Намиране на най-бързо хранилище"
 
 #: ../ailurus-information.desktop.in.h:1
 msgid "Ailurus - Information"
+msgstr "Ailurus - Информация"
+
+#: ../ailurus-information.desktop.in.h:2
+msgid "Get system information"
 msgstr ""
 
 #: ../ailurus-install-software.desktop.in.h:1
 msgid "Ailurus - Install software"
+msgstr "Ailurus - Инсталиране на софтуер"
+
+#: ../ailurus-install-software.desktop.in.h:2
+msgid "Install popular software"
 msgstr ""
 
 #: ../ailurus-recovery.desktop.in.h:1
 msgid "Ailurus - Recovery"
+msgstr "Ailurus - Възстановяване"
+
+#: ../ailurus-recovery.desktop.in.h:2
+msgid "Backup and recover Synaptic/YUM status"
 msgstr ""
 
 #: ../ailurus-system-setting.desktop.in.h:1
 msgid "Ailurus - System setting"
+msgstr "Ailurus - Системни настройки"
+
+#: ../ailurus-system-setting.desktop.in.h:2
+msgid "Change system setting"
 msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr ""
+"Системната политика предотвратява стартирането на Ailurus като \"root\""
 
 #: .././ailurus/clean_up_pane.py:28 .././ailurus/main.py:232
 msgid "Clean up"
-msgstr ""
+msgstr "Почистване"
 
 #: .././ailurus/clean_up_pane.py:49
 #, python-format
@@ -77,39 +99,39 @@ msgstr ""
 #: .././ailurus/clean_up_pane.py:53
 #, python-format
 msgid "Clean %s."
-msgstr ""
+msgstr "Почистване на %s"
 
 #: .././ailurus/clean_up_pane.py:57 .././ailurus/clean_up_pane.py:62
 msgid "APT cache"
-msgstr ""
+msgstr "APT кеш"
 
 #: .././ailurus/clean_up_pane.py:64
 msgid "Command: sudo apt-get clean"
-msgstr ""
+msgstr "Команда: sudo apt-get clean"
 
 #: .././ailurus/clean_up_pane.py:68 .././ailurus/clean_up_pane.py:73
 msgid "RPM cache"
-msgstr ""
+msgstr "RPM кеш"
 
 #: .././ailurus/clean_up_pane.py:75
 msgid "Command: yum --enablerepo='*' clean all"
-msgstr ""
+msgstr "Команда: yum --enablerepo='*' clean all"
 
 #: .././ailurus/clean_up_pane.py:79 .././ailurus/clean_up_pane.py:84
 msgid "Ailurus cache"
-msgstr ""
+msgstr "Ailurus кеш"
 
 #: .././ailurus/clean_up_pane.py:86
 msgid "Command: sudo rm /var/cache/ailurus/* -rf"
-msgstr ""
+msgstr "Команда: sudo rm /var/cache/ailurus/* -rf"
 
 #: .././ailurus/clean_up_pane.py:97
 msgid "Clear \"recent documents\" list"
-msgstr ""
+msgstr "Почистване на списъка \"настоящи документи\""
 
 #: .././ailurus/clean_up_pane.py:99
 msgid "Command: echo \"\" > ~/.recently-used.xbel"
-msgstr ""
+msgstr "Команда: echo \"\" > ~/.recently-used.xbel"
 
 #: .././ailurus/clean_up_pane.py:105
 msgid "Reclaim memory"
@@ -140,16 +162,16 @@ msgstr "%s KB памет беше изискана."
 #. all check buttons
 #: .././ailurus/clean_up_pane.py:160
 msgid "Remove Linux kernels"
-msgstr ""
+msgstr "Премахни Linux ядра"
 
 #: .././ailurus/clean_up_pane.py:164
 #, python-format
 msgid "Current Linux kernel version is %s"
-msgstr ""
+msgstr "Настоящата версия на Linux ядрото е %s"
 
 #: .././ailurus/clean_up_pane.py:166
 msgid "All installed Linux kernels are:"
-msgstr ""
+msgstr "Всички инсталирани Linux ядра са:"
 
 #: .././ailurus/common/apps_eclipse.py:58
 msgid "Installing Eclipse extension"
@@ -181,8 +203,8 @@ msgstr ""
 "p, и да разархивирате \".zip\" файла в директория \"/opt/eclipse\" ."
 
 #: .././ailurus/common/apps_eclipse.py:74
-#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:145
-#: .././ailurus/common/apps.py:213 .././ailurus/common/apps.py:287
+#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:210 .././ailurus/common/apps.py:283
 msgid " This application depends on Java."
 msgstr " Това приложение изисква Java."
 
@@ -194,19 +216,19 @@ msgstr "CDT: C/C++ разработка"
 msgid "CDT is from http://www.eclipse.org/cdt/"
 msgstr "CDT е от http://www.eclipse.org/cdt/"
 
-#: .././ailurus/common/apps_eclipse.py:117
+#: .././ailurus/common/apps_eclipse.py:116
 msgid "Pydev: Python development"
 msgstr "Pydev: Python разработка"
 
-#: .././ailurus/common/apps_eclipse.py:118
+#: .././ailurus/common/apps_eclipse.py:117
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr "Pydev е от http://pydev.org/download.html"
 
-#: .././ailurus/common/apps_eclipse.py:136
+#: .././ailurus/common/apps_eclipse.py:134
 msgid "Aptana: Web application development"
 msgstr "Aptana: Разработка на Web приложения"
 
-#: .././ailurus/common/apps_eclipse.py:137
+#: .././ailurus/common/apps_eclipse.py:135
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by "
@@ -215,12 +237,23 @@ msgid ""
 "removed by Ailurus. In order to remove Aptana, you have to re-install "
 "Eclipse."
 msgstr ""
-"Aptanaе е от http://www.aptana.org/studio/plugin\n"
+"Aptana е от http://www.aptana.org/studio/plugin\n"
 "Aptana е иснталирана от "
 "http://download.aptana.org/tools/studio/plugin/install/studio\n"
 "Поради ограничения в програмните възможности на автора. Aptana не може да "
 "бъде премахната чрез Ailurus. За да премахнете Aptana, трябва да "
 "преинсталирате Eclipse."
+
+#: .././ailurus/common/apps_eclipse.py:150
+#: .././ailurus/common/apps_eclipse.py:173
+#: .././ailurus/common/apps_eclipse.py:211
+#: .././ailurus/common/apps_eclipse.py:237
+#: .././ailurus/common/apps_eclipse.py:259
+#: .././ailurus/common/apps_eclipse.py:281
+msgid ""
+"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+msgstr ""
+"Моля, стартирайте Eclipse и отидете на \"Help\" -> \"Install New Software\"."
 
 #: .././ailurus/common/apps_eclipse.py:152
 #: .././ailurus/common/apps_eclipse.py:175
@@ -228,10 +261,10 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:239
 #: .././ailurus/common/apps_eclipse.py:261
 #: .././ailurus/common/apps_eclipse.py:283
-msgid ""
-"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+#, python-format
+msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
-"Моля, стартирайте Eclipse и отидете на \"Help\" -> \"Install New Software\"."
+"Натиснете бутона \"Add\". След, което въведете <b>%s</b> в \"Location\"."
 
 #: .././ailurus/common/apps_eclipse.py:154
 #: .././ailurus/common/apps_eclipse.py:177
@@ -239,29 +272,18 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:241
 #: .././ailurus/common/apps_eclipse.py:263
 #: .././ailurus/common/apps_eclipse.py:285
-#, python-format
-msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
-msgstr ""
-"Натиснете бутона \"Add\". След, което въведете <b>%s</b> в \"Location\"."
-
-#: .././ailurus/common/apps_eclipse.py:156
-#: .././ailurus/common/apps_eclipse.py:179
-#: .././ailurus/common/apps_eclipse.py:217
-#: .././ailurus/common/apps_eclipse.py:243
-#: .././ailurus/common/apps_eclipse.py:265
-#: .././ailurus/common/apps_eclipse.py:287
 msgid "Then click the \"Next\" button and agree the license."
 msgstr "След, което натиснете бутона \"Next\" и се съгласете с лиценза."
 
-#: .././ailurus/common/apps_eclipse.py:157
+#: .././ailurus/common/apps_eclipse.py:155
 msgid "Installing Aptana"
 msgstr "Инсталиране на Aptana"
 
-#: .././ailurus/common/apps_eclipse.py:162
+#: .././ailurus/common/apps_eclipse.py:160
 msgid "RadRails: Ruby development"
 msgstr "RadRails: Ruby разработка"
 
-#: .././ailurus/common/apps_eclipse.py:163
+#: .././ailurus/common/apps_eclipse.py:161
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
@@ -269,46 +291,46 @@ msgstr ""
 "В миналото RadRails беше наричан \"RDT\". RadRails е инсталиран от "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 
-#: .././ailurus/common/apps_eclipse.py:180
+#: .././ailurus/common/apps_eclipse.py:178
 msgid "Installing RadRails\n"
 msgstr "Инсталиране на RadRails\n"
 
-#: .././ailurus/common/apps_eclipse.py:186
+#: .././ailurus/common/apps_eclipse.py:184
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr "Mylyn е от http://www.eclipse.org/mylyn/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:200
+#: .././ailurus/common/apps_eclipse.py:198
 msgid "Dynamic languages toolkit"
 msgstr "Dynamic languages toolkit"
 
-#: .././ailurus/common/apps_eclipse.py:201
+#: .././ailurus/common/apps_eclipse.py:199
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 msgstr ""
 "Инсталиран е от http://download.eclipse.org/technology/dltk/updates-dev/2.0/"
 
-#: .././ailurus/common/apps_eclipse.py:218
+#: .././ailurus/common/apps_eclipse.py:216
 msgid "Installing Dynamic languages toolkit\n"
 msgstr "Инсталиране на Dynamic languages toolkit\n"
 
-#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:225
 msgid "PDT: PHP development"
 msgstr "PDT: PHP разработка"
 
-#: .././ailurus/common/apps_eclipse.py:228
+#: .././ailurus/common/apps_eclipse.py:226
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr "PDT е от http://www.eclipse.org/pdt/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:244
+#: .././ailurus/common/apps_eclipse.py:242
 msgid "Installing PDT\n"
 msgstr "Инсталиране на PDT\n"
 
-#: .././ailurus/common/apps_eclipse.py:249
+#: .././ailurus/common/apps_eclipse.py:247
 msgid "Subversive: Use SVN in Eclipse"
 msgstr "Subversive: Използвайте SVN в Eclipse"
 
-#: .././ailurus/common/apps_eclipse.py:250
+#: .././ailurus/common/apps_eclipse.py:248
 msgid ""
 "It is installed by "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
@@ -316,27 +338,27 @@ msgstr ""
 "Инсталиран е от http://download.eclipse.org/technology/subversive/0.7/update-"
 "site/"
 
-#: .././ailurus/common/apps_eclipse.py:266
+#: .././ailurus/common/apps_eclipse.py:264
 msgid "Installing Subversive\n"
 msgstr "Инсталиране на Subversive\n"
 
-#: .././ailurus/common/apps_eclipse.py:271
+#: .././ailurus/common/apps_eclipse.py:269
 msgid "VEditor: Verilog and VHDL editor"
-msgstr ""
+msgstr "VEditor: Verilog и VHDL редактор"
 
-#: .././ailurus/common/apps_eclipse.py:272
+#: .././ailurus/common/apps_eclipse.py:270
 msgid "It is installed by http://veditor.sourceforge.net/update"
-msgstr ""
+msgstr "Инсталиран от http://veditor.sourceforge.net/update"
 
-#: .././ailurus/common/apps_eclipse.py:288
+#: .././ailurus/common/apps_eclipse.py:286
 msgid "Installing VEditor\n"
-msgstr ""
+msgstr "Инсталиране на VEditor\n"
 
-#: .././ailurus/common/apps_eclipse.py:293
+#: .././ailurus/common/apps_eclipse.py:291
 msgid "MTJ: J2ME development"
 msgstr "MTJ: J2ME разработка"
 
-#: .././ailurus/common/apps_eclipse.py:294
+#: .././ailurus/common/apps_eclipse.py:292
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
@@ -355,11 +377,11 @@ msgstr ""
 "Намира се на адрес: "
 "http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 
-#: .././ailurus/common/apps.py:112
+#: .././ailurus/common/apps.py:110
 msgid "Create a directory \"Desktop\" in your home folder"
 msgstr "Създава директория \"Desktop\" в домашната ви директория"
 
-#: .././ailurus/common/apps.py:113
+#: .././ailurus/common/apps.py:111
 msgid ""
 "Create a directory \"Desktop\" which is linked to the desktop. After that, "
 "you can chdir to the desktop folder by command \"cd ~/Desktop\"."
@@ -367,11 +389,11 @@ msgstr ""
 "Създава директория \"Desktop\", която е свързана с десктопа. След това "
 "можете да изпълните chdir в десктоп папката с комантата \"cd ~/Desktop\"."
 
-#: .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:141
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr "Electric: Софтуер за IC дизайн, който поддържа VHDL и Verilog"
 
-#: .././ailurus/common/apps.py:144
+#: .././ailurus/common/apps.py:142
 msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
@@ -379,11 +401,11 @@ msgstr ""
 "Официална страница: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
 
-#: .././ailurus/common/apps.py:170
+#: .././ailurus/common/apps.py:167
 msgid "Speed up Firefox"
 msgstr "Ускоряване на Firefox"
 
-#: .././ailurus/common/apps.py:171
+#: .././ailurus/common/apps.py:168
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -395,11 +417,11 @@ msgstr ""
 "Ailurus ще създаде нова икона \"Firefox without Pango (faster)\" в менюто "
 "\"Applications\"-->\"Internet\"."
 
-#: .././ailurus/common/apps.py:195
+#: .././ailurus/common/apps.py:192
 msgid "Firefox without Pango (faster)"
 msgstr "Firefox без Pango (по-бърз)"
 
-#: .././ailurus/common/apps.py:210
+#: .././ailurus/common/apps.py:207
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
@@ -409,19 +431,19 @@ msgstr ""
 "и т.н.) и фреймуъркс (J2SE, J2ME, и т.н.) Официална страница: "
 "http://netbeans.org/downloads/ ."
 
-#: .././ailurus/common/apps.py:284
+#: .././ailurus/common/apps.py:280
 msgid "OpenJUMP: A geographic information system"
 msgstr "OpenJUMP: географска информационна система"
 
-#: .././ailurus/common/apps.py:286
+#: .././ailurus/common/apps.py:282
 msgid "Official site: http://openjump.org/ ."
-msgstr ""
+msgstr "Официална страница: http://openjump.org/ ."
 
-#: .././ailurus/common/apps.py:318
+#: .././ailurus/common/apps.py:313
 msgid "Query you before delete more than three files"
 msgstr "Пита ви преди да изтрие повече от три файла"
 
-#: .././ailurus/common/apps.py:319
+#: .././ailurus/common/apps.py:314
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -431,37 +453,37 @@ msgid ""
 msgstr ""
 "Ако опитате да изтриете повече от три файла с \"rm *\", BASH ще ви зададе "
 "въпрос \"remove all argument?\", за да се увери, че наистина искате да "
-"изтриете тези файлове. Това е полезно при грешки в писането  \"rm subdir/*\" "
+"изтриете тези файлове. Това е полезно при грешки в писането \"rm subdir/*\" "
 "като \"rm subdir/ *\".\n"
-"Трикър при това е да се добави следния ред в \"$HOME/.bashrc\".\n"
+"Трикът при това е да се добави следния ред в \"$HOME/.bashrc\".\n"
 "alias rm=\"rm -I\""
 
-#: .././ailurus/common/apps.py:341
+#: .././ailurus/common/apps.py:336
 msgid "TeXLive 2009"
 msgstr "TeXLive 2009"
 
-#: .././ailurus/common/apps.py:342
+#: .././ailurus/common/apps.py:337
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr "TexLive е изтеглен от http://www.tug.org/texlive/"
 
 #. extract
-#: .././ailurus/common/apps.py:372
+#: .././ailurus/common/apps.py:364
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr "Разопаковане ... Моля изчакайте няколко минути"
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive is installed."
 msgstr "TeXLive е инсталиран."
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive will not work until you restart the computer."
 msgstr "TeXLive няма да работи, докато не рестартирате вашия компютър."
 
-#: .././ailurus/common/apps.py:417
+#: .././ailurus/common/apps.py:409
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr "LaTeX Образци за дисертации от университет Tsing Hua, Китай"
 
-#: .././ailurus/common/apps.py:419
+#: .././ailurus/common/apps.py:411
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -474,39 +496,39 @@ msgstr ""
 "University, China. Official website is http://thuthesis.sourceforge.net/\n"
 "After installation, a file \"thuthesis.tgz\" is placed in the folder \"%s\"."
 
-#: .././ailurus/common/apps.py:434
+#: .././ailurus/common/apps.py:425
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+: Блокира 99% реклами"
 
-#: .././ailurus/common/apps.py:437
+#: .././ailurus/common/apps.py:428
 msgid "It is able to block 99% ads and banners."
 msgstr "Може да блокира 99% от рекламите и банерите."
 
-#: .././ailurus/common/apps.py:447
+#: .././ailurus/common/apps.py:437
 msgid "AutoProxy: Proxy management via a third party list"
-msgstr ""
+msgstr "AutoProxy: Прокси управление чрез лист от трети страни"
 
-#: .././ailurus/common/apps.py:461
+#: .././ailurus/common/apps.py:450
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr "Chrome тема за Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:464
+#: .././ailurus/common/apps.py:453
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr "Кожа на Chrome за Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:474
+#: .././ailurus/common/apps.py:462
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr "Chrome тема за Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:477
+#: .././ailurus/common/apps.py:465
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr "Кожа на Chrome за Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:487
+#: .././ailurus/common/apps.py:474
 msgid "CleanHide: Delete hidden text in web page"
 msgstr "CleanHide: Изтрива скрит текст от уеб страница"
 
-#: .././ailurus/common/apps.py:490
+#: .././ailurus/common/apps.py:477
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
@@ -514,49 +536,49 @@ msgstr ""
 "Ако откриете уеб страница, използваща скрит текст и не можете лесно да "
 "копирате текста, опитайте това!"
 
-#: .././ailurus/common/apps.py:500
+#: .././ailurus/common/apps.py:486
 msgid "DownloadStatusBar: Keep track of downloads in a tiny statusbar."
-msgstr ""
+msgstr "DownloadStatusBar: Следи свалянията чрез малък статус бар"
 
-#: .././ailurus/common/apps.py:513
+#: .././ailurus/common/apps.py:498
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr "DownThemAll: Надеждна програма за изтегляне на много файлове"
 
-#: .././ailurus/common/apps.py:516
+#: .././ailurus/common/apps.py:501
 msgid "It is able to download all images on web-pages."
 msgstr "Може да изетгли всички изображения от уеб страница."
 
-#: .././ailurus/common/apps.py:526
+#: .././ailurus/common/apps.py:510
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 "EasyDragToGo: Отваря нови табове при провлачване на текст, връзки и "
 "изображения"
 
-#: .././ailurus/common/apps.py:539
+#: .././ailurus/common/apps.py:522
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 "FireBug: Редактиране и откриване на грешки в реално време на "
 "CSS/HTML/JavaScript в уебстраница"
 
-#: .././ailurus/common/apps.py:543
+#: .././ailurus/common/apps.py:526
 msgid "This is a powerful web development tool."
 msgstr "Това е мощен инструмент за уеб-разработка."
 
-#: .././ailurus/common/apps.py:552
+#: .././ailurus/common/apps.py:535
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 "FireGesture: Изпълняване на команди и потребителски скриптове с движения на "
 "мишката."
 
-#: .././ailurus/common/apps.py:555
+#: .././ailurus/common/apps.py:538
 msgid "It supports five kinds of mouse gestures."
 msgstr "Поддържа пет вида движения на мишката."
 
-#: .././ailurus/common/apps.py:565
+#: .././ailurus/common/apps.py:547
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr "Flashgot: Лек и стабилен мениджър за изтеглянията"
 
-#: .././ailurus/common/apps.py:568
+#: .././ailurus/common/apps.py:550
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
@@ -564,15 +586,15 @@ msgstr ""
 "Може да изтегли всички връзки, видео и аудио клипове от страница с едно "
 "натискане на мишката."
 
-#: .././ailurus/common/apps.py:577
+#: .././ailurus/common/apps.py:559
 msgid "FoxyProxy: One-click switching proxy"
 msgstr "FoxyProxy: Смяна на проксито с едно кликване"
 
-#: .././ailurus/common/apps.py:590
+#: .././ailurus/common/apps.py:571
 msgid "GreaseMonkey: Make change to web pages"
 msgstr "GreaseMonkey: Прави промени по уеб страници="
 
-#: .././ailurus/common/apps.py:593
+#: .././ailurus/common/apps.py:574
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image "
@@ -590,17 +612,17 @@ msgstr ""
 "Greasemonkey\" си струва прочитането. Може да бъде изтеглена безплатно от "
 "http://diveintogreasemonkey.org/ ."
 
-#: .././ailurus/common/apps.py:606
+#: .././ailurus/common/apps.py:586
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr "Live HTTP Headers: Вижте HTTP headers в реално време"
 
-#: .././ailurus/common/apps.py:619
+#: .././ailurus/common/apps.py:599
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 "NoScript: Разрешава стартирането на активно съдържание само от сайтове, на "
 "които имате доверие"
 
-#: .././ailurus/common/apps.py:623
+#: .././ailurus/common/apps.py:603
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
@@ -608,101 +630,103 @@ msgstr ""
 "Разрешава стартирането на активно съдържание само от сайтове, на които имате "
 "доверие, и ви защитава срещу XSS и Clickjacking атаки."
 
-#: .././ailurus/common/apps.py:632
+#: .././ailurus/common/apps.py:612
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 "SHA-DA network radio: Слушайте и гледайте радио и телевизионни програми в "
 "Китай"
 
-#: .././ailurus/common/apps.py:646
+#: .././ailurus/common/apps.py:625
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
 "SeoQuake: Помага ви да видите параметрите за търсещи машини за вашата уеб "
 "страница"
 
-#: .././ailurus/common/apps.py:650
+#: .././ailurus/common/apps.py:629
 msgid "It helps you promote your web sites."
 msgstr "Помага ви в разпространението на вашите уеб страници."
 
-#: .././ailurus/common/apps.py:659
+#: .././ailurus/common/apps.py:638
 msgid "Stylish: Install themes and skins for websites."
-msgstr ""
+msgstr "Stylish: Инсталирайте теми и скинове за уеб сайтове"
 
-#: .././ailurus/common/apps.py:670
+#: .././ailurus/common/apps.py:649
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr "Tab Mix Lite CE: Отваря затворени табове"
 
-#: .././ailurus/common/apps.py:673
+#: .././ailurus/common/apps.py:652
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 "Затваряне на табове с двойно натискане на мишката. Отваряне на затворени "
 "табове."
 
-#: .././ailurus/common/apps.py:683
+#: .././ailurus/common/apps.py:661
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 "Tamper Data: Преглеждане и модифициране на HTTP/HTTPS глави и параметри на "
 "POST заявки."
 
-#: .././ailurus/common/apps.py:696
+#: .././ailurus/common/apps.py:674
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr "User Agent Switcher: Маскира Firefox като друг вид браузър."
 
-#: .././ailurus/common/apps.py:699
+#: .././ailurus/common/apps.py:677
 msgid "It tells the remote websites that you are an IE user."
 msgstr "Казва на страницата, че сте IE потребител."
 
-#: .././ailurus/common/apps.py:708
+#: .././ailurus/common/apps.py:686
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr "View Source Chart: показва хубаво оцветен HTML изходен код"
 
-#: .././ailurus/common/apps.py:712
+#: .././ailurus/common/apps.py:690
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 "Това разширение ви позволява бързо сканиране и разпознаване на тагове в "
 "документ."
 
-#: .././ailurus/common/apps.py:721
+#: .././ailurus/common/apps.py:699
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 "Weave Sync: синхронизира отметки, история и табове където и да отидете."
 
-#: .././ailurus/common/apps.py:733
+#: .././ailurus/common/apps.py:711
 msgid "Web Developer: Web page analysis tools"
 msgstr "Web Developer: Инструменти за анализ на уеб страници"
 
-#: .././ailurus/common/apps.py:737
+#: .././ailurus/common/apps.py:715
 msgid "Many developers installed it."
 msgstr "Инсталирано от много разработчици"
 
-#: .././ailurus/common/apps.py:746
+#: .././ailurus/common/apps.py:724
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr "Yet Another Smooth Scrolling: Променя държането при скрол"
 
-#: .././ailurus/common/apps.py:759
+#: .././ailurus/common/apps.py:736
 msgid "YSlow: web page performance tuning"
 msgstr "YSlow: Тунинг на производителността на уеб страница."
 
-#: .././ailurus/common/apps.py:763
+#: .././ailurus/common/apps.py:740
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 "Помага ви да подобрите производителността на уеб страницата. Казва ви защо "
 "уеб страницата е бавна."
 
-#: .././ailurus/common/apps.py:772
+#: .././ailurus/common/apps.py:749
 msgid "World of Padman: Funny shooter game"
-msgstr ""
+msgstr "World of Padman: Забавна игра със стрелба"
 
-#: .././ailurus/common/apps.py:773
+#: .././ailurus/common/apps.py:750
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 msgstr ""
+"Ailurus ще инсталира играта и ще приложи последния пач.\n"
+"Изтегляне от ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 
 #: .././ailurus/common/hardwareinfo.py:39
 msgid "BIOS vendor:"
@@ -834,11 +858,11 @@ msgstr "Задайте параметри при изтегляне за Ailurus
 
 #: .././ailurus/common/menu.py:102
 msgid "Query before exit"
-msgstr ""
+msgstr "Питане преди изход"
 
 #: .././ailurus/common/menu.py:106
 msgid "Hide \"quickly install popular software\" button"
-msgstr ""
+msgstr "Скрий бутона \"бързо инсталиране на популярен софтуер\""
 
 #: .././ailurus/common/menu.py:109 .././ailurus/common/menu.py:114
 #: .././ailurus/common/menu.py:122
@@ -871,15 +895,15 @@ msgstr "Задай параметри за изтегляне"
 
 #: .././ailurus/common/menu.py:182
 msgid "Project homepage:"
-msgstr ""
+msgstr "Страница на проекта:"
 
 #: .././ailurus/common/menu.py:185
 msgid "Project news:"
-msgstr ""
+msgstr "Новини от проекта:"
 
 #: .././ailurus/common/menu.py:188
 msgid "Code repository:"
-msgstr ""
+msgstr "Хранилище на кода:"
 
 #: .././ailurus/common/menu.py:191
 msgid "Bug Tracker:"
@@ -890,6 +914,8 @@ msgid ""
 "How to submit\n"
 "patches:"
 msgstr ""
+"Как да представим\n"
+"пачове:"
 
 #: .././ailurus/common/menu.py:195
 msgid ""
@@ -897,24 +923,29 @@ msgid ""
 "free to email me about possible features or whatever: \n"
 "homer.xing@gmail.com"
 msgstr ""
+"Изпратете ми пачове на github. Все още няма бюлети, но се чувствайте \n"
+"свободни да ми пращате email-и относно вероятни функций или каквото и да е \n"
+"homer.xing@gmail.com"
 
 #: .././ailurus/common/menu.py:198
 msgid "How to use github? Please read:"
-msgstr ""
+msgstr "Как да използвате github? Моля прочетете:"
 
 #: .././ailurus/common/menu.py:206
 msgid ""
 "Maintainer of this\n"
 "metadata page:"
 msgstr ""
+"Подръжка на това\n"
+"метаданни страница:"
 
 #: .././ailurus/common/menu.py:209
 msgid "Last modified:"
-msgstr ""
+msgstr "Последна промяна:"
 
 #: .././ailurus/common/menu.py:212 .././ailurus/common/menu.py:221
 msgid "Contributing to Ailurus"
-msgstr ""
+msgstr "Принос към Ailurus"
 
 #: .././ailurus/common/menu.py:224 .././ailurus/lib.py:1406
 msgid "Ailurus blog"
@@ -942,7 +973,7 @@ msgstr "Относно"
 
 #: .././ailurus/common/menu.py:248
 msgid "Read changelog"
-msgstr ""
+msgstr "Прочети списък с промени"
 
 #: .././ailurus/common/osinfo.py:31
 msgid "Host name:"
@@ -1000,7 +1031,7 @@ msgstr "Настоящ потребител"
 
 #: .././ailurus/common/osinfo.py:114
 msgid "OpenGL direct rendering:"
-msgstr ""
+msgstr "OpenGL директно рендиране:"
 
 #: .././ailurus/common/osinfo.py:117
 msgid "OpenGL vendor:"
@@ -1012,7 +1043,7 @@ msgstr "OpenGL renderer:"
 
 #: .././ailurus/common/osinfo.py:123
 msgid "OpenGL version:"
-msgstr ""
+msgstr "OpenGL версия:"
 
 #: .././ailurus/common/osinfo.py:134
 msgid "Firefox version:"
@@ -1784,6 +1815,7 @@ msgstr ""
 #: .././ailurus/fedora/apps.py:39 .././ailurus/ubuntu/app1.py:81
 msgid "Make Evince be able to reveal Chinese, Japanese, Korean pdf"
 msgstr ""
+"Правене на Evince възможен да разкрива Китайски, Японски, Корейски pdf"
 
 #: .././ailurus/fedora/apps.py:44 .././ailurus/ubuntu/app1.py:87
 msgid "ChmSee: A CHM file viewer"
@@ -1794,10 +1826,12 @@ msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers."
 msgstr ""
+"Тази програма често ви сигнализира да оставяте компютри, правите микро-"
+"паузи, почивки и ви ограничава в дневният лимит за използването на компютрите"
 
 #: .././ailurus/fedora/apps.py:86 .././ailurus/ubuntu/app1.py:129
 msgid "Make VIM more suitable for programming"
-msgstr ""
+msgstr "Прави VIM по-подходящ за програмиране"
 
 #: .././ailurus/fedora/apps.py:87
 msgid ""
@@ -1865,6 +1899,14 @@ msgid ""
 "stardict-dic-zh_CN: Simplified Chinese dictionaries\n"
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
+"Може да инсталирате тези речници чрез yum\n"
+"stardict-dic-cs_CZ: Чешки речници\n"
+"stardict-dic-en: Английски речници\n"
+"stardict-dic-hi: Индийски речници\n"
+"stardict-dic-ja: Японски речници\n"
+"stardict-dic-ru: Руски речници\n"
+"stardict-dic-zh_CN: Опростени Китайски речници\n"
+"stardict-dic-zh_TW: Традиционни Китайски речници"
 
 #: .././ailurus/fedora/apps.py:153 .././ailurus/ubuntu/app1.py:254
 msgid "Liferea: a RSS feed reader"
@@ -1872,7 +1914,7 @@ msgstr "Liferea: Четец на RSS емисии"
 
 #: .././ailurus/fedora/apps.py:154 .././ailurus/ubuntu/app1.py:255
 msgid "This is a simple and easy used RSS feed reader."
-msgstr ""
+msgstr "Това е прост и лесен за употреба RSS четец"
 
 #: .././ailurus/fedora/apps.py:160
 msgid "Useful applications for programming"
@@ -1892,11 +1934,11 @@ msgid ""
 "git: a distributed version control system.</i>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:239
+#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:235
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr "QtiPlot: Еквивалента на \"Origin\" приложение за графики под Linux"
 
-#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:240
+#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:236
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
@@ -1904,7 +1946,7 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:184 .././ailurus/ubuntu/app3.py:57
 msgid "QCad: A CAD software which supports DXF-format"
-msgstr ""
+msgstr "QCad: CAD софтуер, който подържа DXF-формат"
 
 #: .././ailurus/fedora/apps.py:190 .././ailurus/ubuntu/app3.py:74
 msgid ""
@@ -1941,18 +1983,19 @@ msgstr ""
 #: .././ailurus/fedora/apps.py:251 .././ailurus/ubuntu/app3.py:211
 msgid "Tux Paint: A drawing program for young children three years and up"
 msgstr ""
+"Tux Paint: Програма за рисуване за малки деца на 3 и над 3 годишна възраст"
 
 #: .././ailurus/fedora/apps.py:257 .././ailurus/ubuntu/app3.py:223
 msgid "ChildsPlay: A suite of educational games for children"
-msgstr ""
+msgstr "ChildsPlay: Пакет от образователни игри за деца"
 
 #: .././ailurus/fedora/apps.py:263 .././ailurus/ubuntu/app3.py:240
 msgid "GCompris: Educational games for children aged 2 to 10"
-msgstr ""
+msgstr "GCompris: Образователни игри за деца от 2 до 10 годишна възраст"
 
 #: .././ailurus/fedora/apps.py:270 .././ailurus/ubuntu/app3.py:254
 msgid "This is an IDE for Qt."
-msgstr ""
+msgstr "Това е IDE за Qt"
 
 #: .././ailurus/fedora/apps.py:277
 msgid ""
@@ -1999,32 +2042,32 @@ msgstr "Постава Selinux в permissive режим, вместо в enforci
 
 #: .././ailurus/fedora/apps.py:347 .././ailurus/ubuntu/quick_setup.py:37
 msgid "Flash plugin for web browser"
-msgstr ""
+msgstr "Флаш плъгин за уеб броузъри"
 
-#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:273
+#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:269
 msgid "\"Actions configuration\" entry"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:274
+#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:270
 msgid ""
 "It allows the configuration of programs to be launched on files selected.\n"
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
 ">\"Preferences\" menu.</span>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:307
+#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:303
 msgid "\"Resize/Rotate images\" entries"
 msgstr "\"Resize/Rotate images\" запис"
 
-#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:308
+#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:304
 msgid "Resize or rotate selected images."
 msgstr "Оразмеряване или завъртане на избраните изображения"
 
-#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:324
+#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:320
 msgid "\"Open in terminal\" entry"
 msgstr "\"Open in terminal\" запис"
 
-#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:325
+#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:321
 msgid "Open a terminal in current folder."
 msgstr "Отваря терминал в настоящата директория"
 
@@ -2034,19 +2077,19 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:381 .././ailurus/ubuntu/app3.py:465
 msgid "ImageMagick: Edit images"
-msgstr ""
+msgstr "ImageMagick: Редактирайте изображения"
 
 #: .././ailurus/fedora/apps.py:382 .././ailurus/ubuntu/app3.py:466
 msgid "You can start it by /usr/bin/display"
-msgstr ""
+msgstr "Може да го стартирате чрез /usr/bin/display"
 
 #: .././ailurus/fedora/apps.py:387 .././ailurus/ubuntu/app3.py:471
 msgid "PiTiVi: Movie editor"
-msgstr ""
+msgstr "PiTiVi: Редактор на филми"
 
 #: .././ailurus/fedora/apps.py:393
 msgid "Audacity: Music editor"
-msgstr ""
+msgstr "Audacity: Редактор на музика"
 
 #: .././ailurus/fedora/fastest_mirror_pane.py:30
 #: .././ailurus/ubuntu/fastest_mirror_pane.py:38
@@ -2149,7 +2192,7 @@ msgstr "Fedora версия:"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:29
 msgid "RPM recovery"
-msgstr ""
+msgstr "RPM възстановяване"
 
 #: .././ailurus/fedora/rpm_recovery_pane.py:48
 #: .././ailurus/ubuntu/apt_recovery_pane.py:52
@@ -2290,7 +2333,7 @@ msgstr ""
 
 #: .././ailurus/gnome/apps.py:42
 msgid "NScripts: a set of useful Nautilus scripts"
-msgstr ""
+msgstr "NScripts: пакет от удобни Nautilus скриптове"
 
 #: .././ailurus/gnome/apps.py:43
 msgid ""
@@ -2391,7 +2434,7 @@ msgstr "Поставане на икона на десктопа, сочеща �
 #: .././ailurus/gnome/setting.py:47 .././ailurus/gnome/setting.py:57
 #: .././ailurus/gnome/setting.py:67 .././ailurus/gnome/setting.py:77
 msgid "Change icon name to:"
-msgstr ""
+msgstr "Променете името на иконката на:"
 
 #: .././ailurus/gnome/setting.py:53
 msgid "Display \"Home folder\" icon"
@@ -2424,19 +2467,19 @@ msgstr "Икони на работния плот"
 
 #: .././ailurus/gnome/setting.py:100 .././ailurus/gnome/setting.py:131
 msgid "Icon changed"
-msgstr ""
+msgstr "Иконата променена"
 
 #: .././ailurus/gnome/setting.py:125
 msgid "Change \"start-here\" icon"
-msgstr ""
+msgstr "Променете \"start-here\" иконата"
 
 #: .././ailurus/gnome/setting.py:133
 msgid "The login icon is ~/.face"
-msgstr ""
+msgstr "Входящата икона е ~./face"
 
 #: .././ailurus/gnome/setting.py:141
 msgid "Change login icon"
-msgstr ""
+msgstr "Сменете входящата икона"
 
 #: .././ailurus/gnome/setting.py:145
 msgid "Show icons of menu entries"
@@ -2460,7 +2503,7 @@ msgstr "Дали бутоните могат да показват икона д
 
 #: .././ailurus/gnome/setting.py:158
 msgid "Button icons setting"
-msgstr ""
+msgstr "Настройки на иконите за бутона"
 
 #: .././ailurus/gnome/setting.py:162
 msgid "Disable terminal bell"
@@ -2493,10 +2536,11 @@ msgstr ""
 #: .././ailurus/gnome/setting.py:174
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
+"Покажете повече разрешителни настройки в прозореца на файловите настройки"
 
 #: .././ailurus/gnome/setting.py:177
 msgid "More Nautilus settings"
-msgstr ""
+msgstr "Още Nautilus настройки"
 
 #: .././ailurus/gnome/setting.py:199
 msgid "Larger font"
@@ -2504,7 +2548,7 @@ msgstr "По-голям шрифт"
 
 #: .././ailurus/gnome/setting.py:202 .././ailurus/gnome/setting.py:211
 msgid "Change these GConf keys:\n"
-msgstr ""
+msgstr "Променя тези GConf ключове:\n"
 
 #: .././ailurus/gnome/setting.py:208
 msgid "Smaller font"
@@ -2527,15 +2571,15 @@ msgstr "GConf ключ: "
 
 #: .././ailurus/gnome/setting.py:226
 msgid "It can be used in Metacity only."
-msgstr ""
+msgstr "Може да се използва в Metacity само."
 
 #: .././ailurus/gnome/setting.py:228
 msgid "GNOME classic"
-msgstr ""
+msgstr "GNOME класика"
 
 #: .././ailurus/gnome/setting.py:228
 msgid "MAC OS X"
-msgstr ""
+msgstr "MAC OS X"
 
 #: .././ailurus/gnome/setting.py:228
 msgid "Ubuntu Lucid"
@@ -2793,7 +2837,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:405
 msgid "Lock screen when screen saver is activated"
-msgstr ""
+msgstr "Заключете екрана когато screen saver-а е активиран"
 
 #: .././ailurus/gnome/setting.py:409
 msgid "GNOME session"
@@ -2817,11 +2861,11 @@ msgstr "Подсветка"
 
 #: .././ailurus/gnome/setting.py:443
 msgid "Use your home folder as the desktop"
-msgstr ""
+msgstr "Използва вашата home директория като десктопа"
 
 #: .././ailurus/gnome/setting.py:447
 msgid "Change default file manager to:"
-msgstr ""
+msgstr "Сменете файловия мениджър по подразбиране на:"
 
 #: .././ailurus/gnome/setting.py:453
 msgid "Change default panel program to:"
@@ -2837,7 +2881,7 @@ msgstr ""
 
 #: .././ailurus/gnome/setting.py:470
 msgid "Command line"
-msgstr ""
+msgstr "Команден ред"
 
 #: .././ailurus/gnome/setting.py:471 .././ailurus/gnome/setting.py:484
 #: .././ailurus/system_setting_pane.py:58
@@ -2847,7 +2891,7 @@ msgstr ""
 #: .././ailurus/gnome/setting.py:480
 #, python-format
 msgid "%2d:"
-msgstr ""
+msgstr "%2d:"
 
 #: .././ailurus/gnome/tips.py:27
 msgid ""
@@ -3396,7 +3440,7 @@ msgstr "Всички задачи изпълнени. "
 
 #: .././ailurus/install_remove_pane.py:399
 msgid "License:"
-msgstr ""
+msgstr "Лиценз:"
 
 #: .././ailurus/install_remove_pane.py:404
 msgid "Not installed."
@@ -3494,11 +3538,11 @@ msgstr "Игра"
 
 #: .././ailurus/install_remove_pane.py:681
 msgid "Hardware"
-msgstr ""
+msgstr "Хардуер"
 
 #: .././ailurus/install_remove_pane.py:682
 msgid "Language support"
-msgstr ""
+msgstr "Езикова подръжка"
 
 #: .././ailurus/install_remove_pane.py:683
 msgid "Nautilus context menu"
@@ -3554,11 +3598,11 @@ msgstr "Eclipse"
 
 #: .././ailurus/install_remove_pane.py:710
 msgid "Quickly install popular software"
-msgstr ""
+msgstr "Бързо инсталиране на популярен софтуер"
 
 #: .././ailurus/install_remove_pane.py:712
 msgid "Hide"
-msgstr ""
+msgstr "Скрий"
 
 #: .././ailurus/libapp.py:78 .././ailurus/libapp.py:136
 msgid "Change GConf values:"
@@ -3584,17 +3628,17 @@ msgstr "Премахнати елементи:"
 #: .././ailurus/libapp.py:186 .././ailurus/libapp.py:303
 #, python-format
 msgid "Because the packages \"%s\" are not installed."
-msgstr ""
+msgstr "Защото пакетите \"%s\" не са инсталирани."
 
 #: .././ailurus/libapp.py:191 .././ailurus/libapp.py:305
 #: .././ailurus/ubuntu/app3.py:343
 msgid "Command:"
-msgstr ""
+msgstr "Команда:"
 
 #: .././ailurus/libapp.py:223 .././ailurus/libapp.py:281
 #, python-format
 msgid "Because \"%s\" does not exist."
-msgstr ""
+msgstr "Защото \"%s\" не съществува."
 
 #: .././ailurus/libapp.py:243
 msgid ""
@@ -3618,10 +3662,12 @@ msgid ""
 "This extension cannot be removed by Ailurus. It can be removed in 'Tools'-"
 ">'Add-ons' menu of firefox."
 msgstr ""
+"Това разширение не може да се премахне от Ailurus. Може да се премахне от "
+"'Tools'->'Add-ons' менюто във firefox"
 
 #: .././ailurus/lib.py:246
 msgid "GNU General Public License"
-msgstr ""
+msgstr "ГНУ Генерален Публичен Лиценз"
 
 #: .././ailurus/lib.py:247
 msgid "GNU Lesser General Public License"
@@ -3629,11 +3675,11 @@ msgstr ""
 
 #: .././ailurus/lib.py:248
 msgid "Eclipse Public License"
-msgstr ""
+msgstr "Eclipse Публичен Лиценз"
 
 #: .././ailurus/lib.py:249
 msgid "Mozilla Public License"
-msgstr ""
+msgstr "Mozilla Публичен Лиценз"
 
 #: .././ailurus/lib.py:250
 msgid "Berkeley Software Distribution License"
@@ -3653,7 +3699,7 @@ msgstr ""
 
 #: .././ailurus/lib.py:254
 msgid "Artistic License"
-msgstr ""
+msgstr "Artistic Лиценз"
 
 #: .././ailurus/lib.py:257
 #, python-format
@@ -3705,7 +3751,7 @@ msgstr "%.1f KB"
 #: .././ailurus/lib.py:827
 #, python-format
 msgid "%s bytes"
-msgstr ""
+msgstr "%s байта"
 
 #: .././ailurus/lib.py:835
 #, python-format
@@ -3720,7 +3766,7 @@ msgstr "%.1f минути"
 #: .././ailurus/lib.py:838
 #, python-format
 msgid "%d seconds"
-msgstr ""
+msgstr "%d секунди"
 
 #: .././ailurus/lib.py:1021 .././ailurus/lib.py:1026
 msgid "Opening web page"
@@ -3754,112 +3800,116 @@ msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 "Преглеждане на сигурно изтриваеми пакети. Моля изчакайте няколко минути."
 
-#: .././ailurus/lib.py:1413
+#: .././ailurus/lib.py:1416
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
+"  Ailurus Developers https://launchpad.net/~ailurus\n"
+"  Hristo Hristov https://launchpad.net/~hri100v\n"
 "  Vladimir Kolev https://launchpad.net/~vladimir.kolev"
 
-#: .././ailurus/lib.py:1419
+#: .././ailurus/lib.py:1422
 msgid ""
 "Copyright © 2007-2010,\n"
 "Trusted Digital Technology Laboratory,\n"
 "Shanghai Jiao Tong University, China."
 msgstr ""
 
-#: .././ailurus/lib.py:1496
+#: .././ailurus/lib.py:1499
 msgid "Welcome to leave response in blog~"
 msgstr "Добре дошли да оставите отговор в блога~"
 
-#: .././ailurus/lib.py:1497
+#: .././ailurus/lib.py:1500
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
+"\n"
+"Тази версия е пусната през %s."
 
-#: .././ailurus/lib.py:1505
+#: .././ailurus/lib.py:1508
 msgid "We wish to express thankfulness to these projects:"
 msgstr "Искаме да изразим нашите благодарности на следните проекти:"
 
-#: .././ailurus/lib.py:1509
+#: .././ailurus/lib.py:1512
 msgid "We sincerely thank these people:"
 msgstr "Искрено благодарим на следните хора:"
 
-#: .././ailurus/lib.py:1511
+#: .././ailurus/lib.py:1514
 msgid "The people who provide inspiration:"
 msgstr "Хората дали вдъхновение:"
 
-#: .././ailurus/lib.py:1519
+#: .././ailurus/lib.py:1522
 msgid "The people who designs the logo:"
 msgstr "Хората направили дизайна на логото:"
 
-#: .././ailurus/lib.py:1522
+#: .././ailurus/lib.py:1525
 msgid "The people who maintain PPA repository:"
 msgstr "Хората, които поддържат PPA хранилището:"
 
-#: .././ailurus/lib.py:1525
+#: .././ailurus/lib.py:1528
 msgid "The people who provide a lot of Linux skills:"
 msgstr "Хората, които предоставиха много Linux умения:"
 
-#: .././ailurus/lib.py:1528
+#: .././ailurus/lib.py:1531
 msgid "The people who provide a lot of Debian packages:"
 msgstr "Хората, които предоставят много Debian пакети:"
 
-#: .././ailurus/lib.py:1531
+#: .././ailurus/lib.py:1534
 msgid "The people who provide a lot of translation:"
 msgstr "Хората, които предоставят много преводи:"
 
-#: .././ailurus/lib.py:1533 .././ailurus/lib.py:1537 .././ailurus/lib.py:1544
+#: .././ailurus/lib.py:1536 .././ailurus/lib.py:1540 .././ailurus/lib.py:1547
 msgid "and many other people."
 msgstr "и още много други"
 
-#: .././ailurus/lib.py:1535
+#: .././ailurus/lib.py:1538
 msgid "The people who report bugs:"
 msgstr "Хората, които съобщават за грешки:"
 
-#: .././ailurus/lib.py:1539
+#: .././ailurus/lib.py:1542
 msgid "The people who eliminate bugs:"
 msgstr "Хората, които отстраняват грешки:"
 
-#: .././ailurus/lib.py:1542
+#: .././ailurus/lib.py:1545
 msgid "The people who publicize this software:"
 msgstr "Хората, които публикуват този софтуер:"
 
-#: .././ailurus/lib.py:1546
+#: .././ailurus/lib.py:1549
 msgid "and the people not mensioned here."
 msgstr "и хората, които не са споменати тук."
 
-#: .././ailurus/lib.py:1557
+#: .././ailurus/lib.py:1560
 msgid "Thanks"
 msgstr "Благодарности"
 
-#: .././ailurus/lib.py:1620
+#: .././ailurus/lib.py:1623
 msgid "A new version is available"
-msgstr ""
+msgstr "Налична е нова версия"
 
-#: .././ailurus/lib.py:1621
+#: .././ailurus/lib.py:1624
 #, python-format
 msgid ""
 "Version %s is released.\n"
 "You can download it from:"
-msgstr ""
+msgstr "Версия %s е пусната."
 
-#: .././ailurus/lib.py:1628
+#: .././ailurus/lib.py:1631
 msgid "Check update"
-msgstr ""
+msgstr "Проверка за актуализация"
 
-#: .././ailurus/lib.py:1629
+#: .././ailurus/lib.py:1632
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "Вече сте инсталирани последната версия на Ailurus. :)"
 
-#: .././ailurus/lib.py:1658
+#: .././ailurus/lib.py:1661
 msgid "Ailurus changelog"
 msgstr ""
 
 #: .././ailurus/libsetting.py:133
 msgid "The command which will be run."
-msgstr ""
+msgstr "Командата, която ще бъде изпълнена."
 
 #: .././ailurus/libsetting.py:140
 msgid "The shortcut key."
@@ -3867,11 +3917,11 @@ msgstr ""
 
 #: .././ailurus/libsetting.py:159
 msgid "Images"
-msgstr ""
+msgstr "Изображения"
 
 #: .././ailurus/libsetting.py:170
 msgid "Choose an image"
-msgstr ""
+msgstr "Изберете изображение"
 
 #: .././ailurus/libsetting.py:234
 #, python-format
@@ -3926,15 +3976,15 @@ msgstr ""
 
 #: .././ailurus/main.py:67
 msgid "Error happened. You cannot install any software by Ailurus. :("
-msgstr ""
+msgstr "Грешка. Не може да инсталирате никакъв софтуер от Ailurus. ;("
 
 #: .././ailurus/main.py:70
 msgid "System configuration file should be updated."
-msgstr ""
+msgstr "Системния конфигурационен файл трябва да се актуализира"
 
 #: .././ailurus/main.py:71
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
-msgstr ""
+msgstr "Моля изпълнете тази команда използвайки <b>su</b> или <b>sudo</b>:"
 
 #: .././ailurus/main.py:77
 msgid "Ailurus' D-Bus daemon exited with error."
@@ -3944,6 +3994,8 @@ msgstr ""
 msgid ""
 "Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:"
 msgstr ""
+"Моля рестартирайте вашия компютър или стартирайте демона чрез <b>su</b> или "
+"<b>sudo</b>"
 
 #: .././ailurus/main.py:143
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
@@ -3968,7 +4020,7 @@ msgstr "Изход"
 
 #: .././ailurus/main.py:213
 msgid "Others"
-msgstr ""
+msgstr "Други"
 
 #: .././ailurus/main.py:216
 msgid "Preferences"
@@ -3979,56 +4031,72 @@ msgid ""
 "Study\n"
 "Linux"
 msgstr ""
+"Научи\n"
+"Linux"
 
 #: .././ailurus/main.py:224
 msgid ""
 "Hardware\n"
 "Information"
 msgstr ""
+"Хардуерна\n"
+"Информация"
 
 #: .././ailurus/main.py:225
 msgid ""
 "Linux\n"
 "Information"
 msgstr ""
+"Linux\n"
+"Информация"
 
 #: .././ailurus/main.py:226
 msgid ""
 "System\n"
 "Settings"
 msgstr ""
+"Системна\n"
+"Информация"
 
 #: .././ailurus/main.py:227
 msgid ""
 "Install\n"
 "Software"
 msgstr ""
+"Инсталирайте\n"
+"Софтуер"
 
 #: .././ailurus/main.py:228 .././ailurus/main.py:229
 msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
+"По-бързо\n"
+"хранилище"
 
 #: .././ailurus/main.py:230
 msgid ""
 "Recover\n"
 "APT"
 msgstr ""
+"Възстановяване\n"
+"APT"
 
 #: .././ailurus/main.py:231
 msgid ""
 "Recover\n"
 "RPM"
 msgstr ""
+"Възстановяване\n"
+"RPM"
 
 #: .././ailurus/main.py:278
 msgid "Are you sure to exit?"
-msgstr ""
+msgstr "Сигурни ли сте, че искате да излезете?"
 
 #: .././ailurus/main.py:279
 msgid "Do not query me any more."
-msgstr ""
+msgstr "Не ме питай повече"
 
 #: .././ailurus/main.py:354
 msgid "usage: ailurus [options]"
@@ -4036,39 +4104,39 @@ msgstr ""
 
 #: .././ailurus/main.py:355
 msgid "do not load all functionality"
-msgstr ""
+msgstr "Не зареждай всички функционалността"
 
 #: .././ailurus/main.py:356
 msgid "load \"information\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"Информация\""
 
 #: .././ailurus/main.py:357
 msgid "load \"system setting\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"Системни настройки\""
 
 #: .././ailurus/main.py:358
 msgid "load \"install software\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"Инсталирай софтуер\""
 
 #: .././ailurus/main.py:359
 msgid "load \"recovery\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"възстановяване\""
 
 #: .././ailurus/main.py:360
 msgid "load \"clean up\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"почисти\""
 
 #: .././ailurus/main.py:361
 msgid "load \"fastest repository\" functionality"
-msgstr ""
+msgstr "зареди функционалността \"по-бързо хранилище\""
 
 #: .././ailurus/main.py:370
 msgid "You did not specify any functionality. :)"
-msgstr ""
+msgstr "Не сте въвели функционалност. :P"
 
 #: .././ailurus/main.py:371
 msgid "For example: ailurus --fast --information"
-msgstr ""
+msgstr "Пример: ailurus --fast --information"
 
 #: .././ailurus/main.py:392
 msgid "<span color=\"grey\">Loading system settings pane ... </span>\n"
@@ -4092,11 +4160,11 @@ msgstr ""
 
 #: .././ailurus/support/keygrabber.py:138
 msgid "Please press the new key combination"
-msgstr ""
+msgstr "Моля натиснете новата клавишна комбинация"
 
 #: .././ailurus/support/keygrabber.py:189
 msgid "Disabled"
-msgstr ""
+msgstr "Изключено"
 
 #: .././ailurus/support/multidragview.py:79
 #, python-format
@@ -4458,77 +4526,77 @@ msgstr ""
 "http://art.gnome.org . Официалната страница на GNOMEArtNG е "
 "http://developer.berlios.de/projects/gnomeartng/"
 
-#: .././ailurus/ubuntu/app2.py:246
+#: .././ailurus/ubuntu/app2.py:242
 msgid "Extcalc: A multifunctional graphic calculator"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:252
+#: .././ailurus/ubuntu/app2.py:248
 msgid "Startup Manager: Change GRUB settings and themes"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:253
+#: .././ailurus/ubuntu/app2.py:249
 msgid "Startup manager helps you change GRUB settings and themes."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:259
+#: .././ailurus/ubuntu/app2.py:255
 msgid "Zhcon"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:260
+#: .././ailurus/ubuntu/app2.py:256
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:268
+#: .././ailurus/ubuntu/app2.py:264
 msgid "Powertop helps you save power for your laptop."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:281
+#: .././ailurus/ubuntu/app2.py:277
 msgid "\"Repair filename\" entry"
 msgstr "\"Repair filename\" запис"
 
-#: .././ailurus/ubuntu/app2.py:282
+#: .././ailurus/ubuntu/app2.py:278
 msgid ""
 "When any file with wrong encoding filename is right clicked,\n"
 " show a \"Repair filename\" menu item."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:288
+#: .././ailurus/ubuntu/app2.py:284
 msgid "\"Open as administrator\" entry"
 msgstr "\"Open as administrator\" запис"
 
-#: .././ailurus/ubuntu/app2.py:289
+#: .././ailurus/ubuntu/app2.py:285
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
 "Open selected folder with administration privileges."
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:295
+#: .././ailurus/ubuntu/app2.py:291
 msgid "\"Convert audio files\" entry"
 msgstr "\"Convert audio files\" запис"
 
-#: .././ailurus/ubuntu/app2.py:296
+#: .././ailurus/ubuntu/app2.py:292
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:314 .././ailurus/ubuntu/app2.py:315
+#: .././ailurus/ubuntu/app2.py:310 .././ailurus/ubuntu/app2.py:311
 msgid "\"Subversion commands\" entries"
 msgstr "\"Subversion commands\" записи"
 
-#: .././ailurus/ubuntu/app2.py:331
+#: .././ailurus/ubuntu/app2.py:327
 msgid "\"Share folders\" entry"
 msgstr ""
 
-#: .././ailurus/ubuntu/app2.py:332
+#: .././ailurus/ubuntu/app2.py:328
 msgid "Share folders by Samba."
 msgstr "Споделяне на директории чрез Samba."
 
-#: .././ailurus/ubuntu/app2.py:338 .././ailurus/ubuntu/app2.py:339
+#: .././ailurus/ubuntu/app2.py:334 .././ailurus/ubuntu/app2.py:335
 msgid "\"Set as wallpaper\" entry"
 msgstr "\"Set as wallpaper\" запис"
 
@@ -5438,10 +5506,6 @@ msgstr "Открий други трети хранилища на http://repoge
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
 msgstr "Ubuntu версия:"
-
-#: .././ailurus/ubuntu/quick_setup.py:32
-msgid "Search fastest repository"
-msgstr "Намиране на най-бързо хранилище"
 
 #: .././ailurus/ubuntu/quick_setup.py:35
 msgid "Decompression software"

@@ -168,7 +168,7 @@ def url_button(url):
 
 def show_contribution_to_ailurus():
     titlelabel = gtk.Label()
-    titlelabel.set_markup('Contributing to <i>Ailurus</i>')
+    titlelabel.set_markup(_('Contributing to <i>Ailurus</i>'))
     titlelabel.modify_font(pango.FontDescription('Georgia 20'))
     
     table = gtk.Table()
