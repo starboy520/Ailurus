@@ -350,9 +350,10 @@ class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
     name = 'dns-server'
 
-class Tasksel_Mail_server(_tasksel):
-    __doc__ = _('Mail server')
-    name = 'mail-server'
+# 'postfix' cannot be installed in Lucid :(
+#class Tasksel_Mail_server(_tasksel):
+#    __doc__ = _('Mail server')
+#    name = 'mail-server'
 
 class Tasksel_Openssh_server(_tasksel):
     __doc__ = _('OpenSSH server')
