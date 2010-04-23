@@ -178,14 +178,14 @@ class Shutter(_apt_install):
     depends = Repo_Shutter
     pkgs = 'shutter'
 
-class Synapse(_apt_install):
-    __doc__ = _('Synapse: An instance messanger')
-    license = GPL
-    category = 'internet'
-    depends = Repo_Synapse
-    pkgs = 'synapse'
-    def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+#class Synapse(_apt_install):
+#    __doc__ = _('Synapse: An instance messanger')
+#    license = GPL
+#    category = 'internet'
+#    depends = Repo_Synapse
+#    pkgs = 'synapse'
+#    def support(self):
+#        return Config.get_Ubuntu_version() != 'lucid'
 
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
