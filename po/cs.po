@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-04-19 18:42+0800\n"
-"PO-Revision-Date: 2010-04-21 11:41+0000\n"
+"POT-Creation-Date: 2010-04-22 17:07+0800\n"
+"PO-Revision-Date: 2010-04-22 07:58+0000\n"
 "Last-Translator: luisah <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-04-22 03:49+0000\n"
+"X-Launchpad-Export-Date: 2010-04-23 03:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus_quick_start.directory.in.h:1
@@ -26,37 +26,58 @@ msgstr "Ailurus - Rychlé spuštění"
 msgid "Ailurus - Clean up"
 msgstr "Ailurus - vyčištění"
 
-#: ../ailurus-clean-up.desktop.in.h:2 ../ailurus.desktop.in.h:2
-#: ../ailurus-fastest-repository.desktop.in.h:2
-#: ../ailurus-information.desktop.in.h:2
-#: ../ailurus-install-software.desktop.in.h:2
-#: ../ailurus-recovery.desktop.in.h:2 ../ailurus-system-setting.desktop.in.h:2
-msgid "makes Linux easier to use"
-msgstr "dělá Linux snadnějším k použití"
+#: ../ailurus-clean-up.desktop.in.h:2
+msgid "Clean up temporary files"
+msgstr ""
 
 #: ../ailurus.desktop.in.h:1
 msgid "Ailurus"
 msgstr "Ailurus"
 
+#: ../ailurus.desktop.in.h:2
+msgid "makes Linux easier to use"
+msgstr "dělá Linux snadnějším k použití"
+
 #: ../ailurus-fastest-repository.desktop.in.h:1
 msgid "Ailurus - Fastest repository"
 msgstr "Ailurus - nejrychlejší zdroj"
+
+#: ../ailurus-fastest-repository.desktop.in.h:2
+#: .././ailurus/ubuntu/quick_setup.py:32
+msgid "Search fastest repository"
+msgstr "Vyhledat nejrychlejší zdroj"
 
 #: ../ailurus-information.desktop.in.h:1
 msgid "Ailurus - Information"
 msgstr "Ailurus - informace"
 
+#: ../ailurus-information.desktop.in.h:2
+msgid "Get system information"
+msgstr ""
+
 #: ../ailurus-install-software.desktop.in.h:1
 msgid "Ailurus - Install software"
 msgstr "Ailurus - instalace softwaru"
+
+#: ../ailurus-install-software.desktop.in.h:2
+msgid "Install popular software"
+msgstr ""
 
 #: ../ailurus-recovery.desktop.in.h:1
 msgid "Ailurus - Recovery"
 msgstr "Ailurus - obnova"
 
+#: ../ailurus-recovery.desktop.in.h:2
+msgid "Backup and recover Synaptic/YUM status"
+msgstr ""
+
 #: ../ailurus-system-setting.desktop.in.h:1
 msgid "Ailurus - System setting"
 msgstr "Ailurus - nastavení systému"
+
+#: ../ailurus-system-setting.desktop.in.h:2
+msgid "Change system setting"
+msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -178,8 +199,8 @@ msgstr ""
 "p a rozbalit \". zip\" soubor do složky \"/opt/eclipse\"."
 
 #: .././ailurus/common/apps_eclipse.py:74
-#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:145
-#: .././ailurus/common/apps.py:213 .././ailurus/common/apps.py:287
+#: .././ailurus/common/apps_eclipse.py:86 .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:210 .././ailurus/common/apps.py:283
 msgid " This application depends on Java."
 msgstr " Tato aplikace je závislá na Javě."
 
@@ -191,19 +212,19 @@ msgstr "CDT: Vývoj v C/C++"
 msgid "CDT is from http://www.eclipse.org/cdt/"
 msgstr "CDT je z http://www.eclipse.org/cdt/"
 
-#: .././ailurus/common/apps_eclipse.py:117
+#: .././ailurus/common/apps_eclipse.py:116
 msgid "Pydev: Python development"
 msgstr "Pydev: Vývoj v Pythonu"
 
-#: .././ailurus/common/apps_eclipse.py:118
+#: .././ailurus/common/apps_eclipse.py:117
 msgid "Pydev is from http://pydev.org/download.html"
 msgstr "Pydev je z http://pydev.org/download.html"
 
-#: .././ailurus/common/apps_eclipse.py:136
+#: .././ailurus/common/apps_eclipse.py:134
 msgid "Aptana: Web application development"
 msgstr "Aptana: Vývoj webových aplikací"
 
-#: .././ailurus/common/apps_eclipse.py:137
+#: .././ailurus/common/apps_eclipse.py:135
 msgid ""
 "Aptana is from http://www.aptana.org/studio/plugin\n"
 "Aptana is installed by "
@@ -219,16 +240,27 @@ msgstr ""
 "odstraněna pomocí Ailurusu. Pokud chcete odstranit program Aptana, musíte "
 "reinstalovat Eclipse."
 
+#: .././ailurus/common/apps_eclipse.py:150
+#: .././ailurus/common/apps_eclipse.py:173
+#: .././ailurus/common/apps_eclipse.py:211
+#: .././ailurus/common/apps_eclipse.py:237
+#: .././ailurus/common/apps_eclipse.py:259
+#: .././ailurus/common/apps_eclipse.py:281
+msgid ""
+"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+msgstr ""
+"Prosím spusťte Eclipse a jděte do \"Help\" -> \"Install New Software\"."
+
 #: .././ailurus/common/apps_eclipse.py:152
 #: .././ailurus/common/apps_eclipse.py:175
 #: .././ailurus/common/apps_eclipse.py:213
 #: .././ailurus/common/apps_eclipse.py:239
 #: .././ailurus/common/apps_eclipse.py:261
 #: .././ailurus/common/apps_eclipse.py:283
-msgid ""
-"Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
+#, python-format
+msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
 msgstr ""
-"Prosím spusťte Eclipse a jděte do \"Help\" -> \"Install New Software\"."
+"Klikněte na tlačítko \"Add\". Potom zadejte do \"Location\" <b>%s</b> ."
 
 #: .././ailurus/common/apps_eclipse.py:154
 #: .././ailurus/common/apps_eclipse.py:177
@@ -236,29 +268,18 @@ msgstr ""
 #: .././ailurus/common/apps_eclipse.py:241
 #: .././ailurus/common/apps_eclipse.py:263
 #: .././ailurus/common/apps_eclipse.py:285
-#, python-format
-msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
-msgstr ""
-"Klikněte na tlačítko \"Add\". Potom zadejte do \"Location\" <b>%s</b> ."
-
-#: .././ailurus/common/apps_eclipse.py:156
-#: .././ailurus/common/apps_eclipse.py:179
-#: .././ailurus/common/apps_eclipse.py:217
-#: .././ailurus/common/apps_eclipse.py:243
-#: .././ailurus/common/apps_eclipse.py:265
-#: .././ailurus/common/apps_eclipse.py:287
 msgid "Then click the \"Next\" button and agree the license."
 msgstr "Potom klikněte na tlačítko \"Next\" a přijměte licenci."
 
-#: .././ailurus/common/apps_eclipse.py:157
+#: .././ailurus/common/apps_eclipse.py:155
 msgid "Installing Aptana"
 msgstr "Instaluje se Aptana"
 
-#: .././ailurus/common/apps_eclipse.py:162
+#: .././ailurus/common/apps_eclipse.py:160
 msgid "RadRails: Ruby development"
 msgstr "RadRails: Vývoj v Ruby"
 
-#: .././ailurus/common/apps_eclipse.py:163
+#: .././ailurus/common/apps_eclipse.py:161
 msgid ""
 "Over the past RadRails was called \"RDT\". RadRails is installed by "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
@@ -266,19 +287,19 @@ msgstr ""
 "Naposledy byl RadRails nazýván \"RDT\". RadRails je nainstalován podle "
 "http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle"
 
-#: .././ailurus/common/apps_eclipse.py:180
+#: .././ailurus/common/apps_eclipse.py:178
 msgid "Installing RadRails\n"
 msgstr "Instaluje se RadRails\n"
 
-#: .././ailurus/common/apps_eclipse.py:186
+#: .././ailurus/common/apps_eclipse.py:184
 msgid "Mylyn is from http://www.eclipse.org/mylyn/downloads/"
 msgstr "Mylyn je z http://www.eclipse.org/mylyn/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:200
+#: .././ailurus/common/apps_eclipse.py:198
 msgid "Dynamic languages toolkit"
 msgstr "Dynamické jazykové nástroje"
 
-#: .././ailurus/common/apps_eclipse.py:201
+#: .././ailurus/common/apps_eclipse.py:199
 msgid ""
 "It is installed by http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
@@ -286,27 +307,27 @@ msgstr ""
 "Je nainstalován podle http://download.eclipse.org/technology/dltk/updates-"
 "dev/2.0/"
 
-#: .././ailurus/common/apps_eclipse.py:218
+#: .././ailurus/common/apps_eclipse.py:216
 msgid "Installing Dynamic languages toolkit\n"
 msgstr "Instaluje se Dynamic languages toolkit\n"
 
-#: .././ailurus/common/apps_eclipse.py:227
+#: .././ailurus/common/apps_eclipse.py:225
 msgid "PDT: PHP development"
 msgstr "PDT: Vývoj v PHP"
 
-#: .././ailurus/common/apps_eclipse.py:228
+#: .././ailurus/common/apps_eclipse.py:226
 msgid "PDT is from http://www.eclipse.org/pdt/downloads/"
 msgstr "PDT je z http://www.eclipse.org/pdt/downloads/"
 
-#: .././ailurus/common/apps_eclipse.py:244
+#: .././ailurus/common/apps_eclipse.py:242
 msgid "Installing PDT\n"
 msgstr "Instaluje se PDT\n"
 
-#: .././ailurus/common/apps_eclipse.py:249
+#: .././ailurus/common/apps_eclipse.py:247
 msgid "Subversive: Use SVN in Eclipse"
 msgstr "Subversive: Použití SVN v Eclipse"
 
-#: .././ailurus/common/apps_eclipse.py:250
+#: .././ailurus/common/apps_eclipse.py:248
 msgid ""
 "It is installed by "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
@@ -314,27 +335,27 @@ msgstr ""
 "Je nainstalován podle "
 "http://download.eclipse.org/technology/subversive/0.7/update-site/"
 
-#: .././ailurus/common/apps_eclipse.py:266
+#: .././ailurus/common/apps_eclipse.py:264
 msgid "Installing Subversive\n"
 msgstr "Instaluje se Subversive\n"
 
-#: .././ailurus/common/apps_eclipse.py:271
+#: .././ailurus/common/apps_eclipse.py:269
 msgid "VEditor: Verilog and VHDL editor"
-msgstr ""
+msgstr "VEditor: Verilog a VHDL editor"
 
-#: .././ailurus/common/apps_eclipse.py:272
+#: .././ailurus/common/apps_eclipse.py:270
 msgid "It is installed by http://veditor.sourceforge.net/update"
-msgstr ""
+msgstr "Je nainstalován podle http://veditor.sourceforge.net/update"
 
-#: .././ailurus/common/apps_eclipse.py:288
+#: .././ailurus/common/apps_eclipse.py:286
 msgid "Installing VEditor\n"
 msgstr "Instaluje se VEditor\n"
 
-#: .././ailurus/common/apps_eclipse.py:293
+#: .././ailurus/common/apps_eclipse.py:291
 msgid "MTJ: J2ME development"
 msgstr "MTJ: Vývoj v J2ME"
 
-#: .././ailurus/common/apps_eclipse.py:294
+#: .././ailurus/common/apps_eclipse.py:292
 msgid ""
 "It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-"
 "1.0.1-200909181641/"
@@ -351,11 +372,11 @@ msgid ""
 "It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 msgstr "Je z http://sourceforge.net/projects/bioclipse/files/bioclipse2/"
 
-#: .././ailurus/common/apps.py:112
+#: .././ailurus/common/apps.py:110
 msgid "Create a directory \"Desktop\" in your home folder"
 msgstr "Vytvořit složku \"Desktop\" ve své domovské složce"
 
-#: .././ailurus/common/apps.py:113
+#: .././ailurus/common/apps.py:111
 msgid ""
 "Create a directory \"Desktop\" which is linked to the desktop. After that, "
 "you can chdir to the desktop folder by command \"cd ~/Desktop\"."
@@ -363,11 +384,11 @@ msgstr ""
 "Vytvořit složku \"Desktop\", která odkazuje na pracovní plochu. Potom můžete "
 "vejít do složky Desktop pomocí příkazu \"cd ~/Desktop\"."
 
-#: .././ailurus/common/apps.py:143
+#: .././ailurus/common/apps.py:141
 msgid "Electric: A software for IC design which supports VHDL and Verilog"
 msgstr "Electric: Software pro IC design, který podporuje VHDL a Verilog"
 
-#: .././ailurus/common/apps.py:144
+#: .././ailurus/common/apps.py:142
 msgid ""
 "Official site: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
@@ -375,11 +396,11 @@ msgstr ""
 "Oficiální stránka: <span "
 "color=\"blue\"><u>http://www.staticfreesoft.com/</u></span>"
 
-#: .././ailurus/common/apps.py:170
+#: .././ailurus/common/apps.py:167
 msgid "Speed up Firefox"
 msgstr "Zrychlit Firefox"
 
-#: .././ailurus/common/apps.py:171
+#: .././ailurus/common/apps.py:168
 msgid ""
 "Firefox is faster when Pango rendering is disabled. The trick is to launch "
 "Firefox by the command: \"export MOZ_DISABLE_PANGO=1; firefox\". Ailurus "
@@ -391,11 +412,11 @@ msgstr ""
 "Ailurus vytvoří ikonu \"Firefoxu bez Pango (rychlejší)\" v nabídce "
 "\"Aplikace\"-->\"Internet\"."
 
-#: .././ailurus/common/apps.py:195
+#: .././ailurus/common/apps.py:192
 msgid "Firefox without Pango (faster)"
 msgstr "Firefox bez Panga (rychlejší)"
 
-#: .././ailurus/common/apps.py:210
+#: .././ailurus/common/apps.py:207
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
@@ -405,19 +426,19 @@ msgstr ""
 "(C, C++, Java, Ruby, a další.) a frameworky (J2SE, J2ME, a další). Oficiální "
 "stránka: http://netbeans.org/downloads/ ."
 
-#: .././ailurus/common/apps.py:284
+#: .././ailurus/common/apps.py:280
 msgid "OpenJUMP: A geographic information system"
 msgstr "OpenJUMP: Geografický informační systém"
 
-#: .././ailurus/common/apps.py:286
+#: .././ailurus/common/apps.py:282
 msgid "Official site: http://openjump.org/ ."
 msgstr "Oficiální stránka: http://openjump.org/ ."
 
-#: .././ailurus/common/apps.py:318
+#: .././ailurus/common/apps.py:313
 msgid "Query you before delete more than three files"
 msgstr "Dotázat se před smazáním více jak tří souborů"
 
-#: .././ailurus/common/apps.py:319
+#: .././ailurus/common/apps.py:314
 msgid ""
 "If you try to delete more than three files by \"rm *\", BASH will ask you a "
 "question \"remove all argument?\" to make sure if you really want to delete "
@@ -432,32 +453,32 @@ msgstr ""
 "Trik spočívá v přidání řádky do \"$HOME/.bashrc\".\n"
 "alias rm=\"rm -I\""
 
-#: .././ailurus/common/apps.py:341
+#: .././ailurus/common/apps.py:336
 msgid "TeXLive 2009"
 msgstr "TeXLive 2009"
 
-#: .././ailurus/common/apps.py:342
+#: .././ailurus/common/apps.py:337
 msgid "TeXLive is obtained from http://www.tug.org/texlive/"
 msgstr "TeXLive je získán z http://www.tug.org/texlive/"
 
 #. extract
-#: .././ailurus/common/apps.py:372
+#: .././ailurus/common/apps.py:364
 msgid "Unpacking ... Please wait for a few minutes."
 msgstr "Rozbaluje se ... Prosím čekejte."
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive is installed."
 msgstr "TeXLive je nainstalován."
 
-#: .././ailurus/common/apps.py:399
+#: .././ailurus/common/apps.py:391
 msgid "TeXLive will not work until you restart the computer."
 msgstr "TeXLive nebude pracovat před restartem počítače."
 
-#: .././ailurus/common/apps.py:417
+#: .././ailurus/common/apps.py:409
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr "LaTeX Šablony prací z univerzity Tsing Hua, Čína"
 
-#: .././ailurus/common/apps.py:419
+#: .././ailurus/common/apps.py:411
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -470,39 +491,39 @@ msgstr ""
 "webová stránka je http://thuthesis.sourceforge.net/\n"
 "Po instalaci je soubor \"thuthesis.tgz\" umístěný ve složce \"%s\" ."
 
-#: .././ailurus/common/apps.py:434
+#: .././ailurus/common/apps.py:425
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+: Blokuje 99% reklamy"
 
-#: .././ailurus/common/apps.py:437
+#: .././ailurus/common/apps.py:428
 msgid "It is able to block 99% ads and banners."
 msgstr "Je schopen zablokovat 99% reklam a bannerů."
 
-#: .././ailurus/common/apps.py:447
+#: .././ailurus/common/apps.py:437
 msgid "AutoProxy: Proxy management via a third party list"
 msgstr ""
 
-#: .././ailurus/common/apps.py:461
+#: .././ailurus/common/apps.py:450
 msgid "Chrome Theme for Firefox 3.0.*"
 msgstr "Chrome téma pro Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:464
+#: .././ailurus/common/apps.py:453
 msgid "A coat of Chrome for Firefox 3.0.*"
 msgstr "Chrome kabát pro Firefox 3.0.*"
 
-#: .././ailurus/common/apps.py:474
+#: .././ailurus/common/apps.py:462
 msgid "Chrome Theme for Firefox 3.5.*"
 msgstr "Chrome téma pro Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:477
+#: .././ailurus/common/apps.py:465
 msgid "A coat of Chrome for Firefox 3.5.*"
 msgstr "Chrome kabát pro Firefox 3.5.*"
 
-#: .././ailurus/common/apps.py:487
+#: .././ailurus/common/apps.py:474
 msgid "CleanHide: Delete hidden text in web page"
 msgstr "CleanHide: Odstranit skrytý text ve webové stránce"
 
-#: .././ailurus/common/apps.py:490
+#: .././ailurus/common/apps.py:477
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
@@ -510,47 +531,47 @@ msgstr ""
 "Pokud naleznete, že některé webové stránky používají skrytý text a nemůžete "
 "jednoduše text zkopírovat, zkuste toto!"
 
-#: .././ailurus/common/apps.py:500
+#: .././ailurus/common/apps.py:486
 msgid "DownloadStatusBar: Keep track of downloads in a tiny statusbar."
-msgstr ""
+msgstr "DownloadStatusBar: Sledovat stahování v malé stavové liště."
 
-#: .././ailurus/common/apps.py:513
+#: .././ailurus/common/apps.py:498
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr "DownThemAll: Spolehlivý vícevláknový stahovač"
 
-#: .././ailurus/common/apps.py:516
+#: .././ailurus/common/apps.py:501
 msgid "It is able to download all images on web-pages."
 msgstr "Je schopen stáhnout všechny obrázky z webových stránek."
 
-#: .././ailurus/common/apps.py:526
+#: .././ailurus/common/apps.py:510
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr ""
 "EasyDragToGo: Otevřít novou kartu přetáhnutím textu, odkazů a obrázků"
 
-#: .././ailurus/common/apps.py:539
+#: .././ailurus/common/apps.py:522
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 "FireBug: Úprava a ladění CSS/HTML/JavaScript ve webových stránkách v reálném "
 "čase"
 
-#: .././ailurus/common/apps.py:543
+#: .././ailurus/common/apps.py:526
 msgid "This is a powerful web development tool."
 msgstr "Toto je mocný nástroj pro vývoj webu"
 
-#: .././ailurus/common/apps.py:552
+#: .././ailurus/common/apps.py:535
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 "FireGesture: Spouštět příkazy a uživatelské skripty pomocí gest myši."
 
-#: .././ailurus/common/apps.py:555
+#: .././ailurus/common/apps.py:538
 msgid "It supports five kinds of mouse gestures."
 msgstr "Podporuje pět druhů gest myší."
 
-#: .././ailurus/common/apps.py:565
+#: .././ailurus/common/apps.py:547
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr "Flashgot: Je lehkým a spolehlivým správcem stahování"
 
-#: .././ailurus/common/apps.py:568
+#: .././ailurus/common/apps.py:550
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
@@ -558,15 +579,15 @@ msgstr ""
 "Je schopný stáhnout všechny odkazy, filmy a zvukové klipy ze stránky pomocí "
 "jednoho kliknutí."
 
-#: .././ailurus/common/apps.py:577
+#: .././ailurus/common/apps.py:559
 msgid "FoxyProxy: One-click switching proxy"
 msgstr "FoxyProxy: Přepnutí proxy jedním kliknutím"
 
-#: .././ailurus/common/apps.py:590
+#: .././ailurus/common/apps.py:571
 msgid "GreaseMonkey: Make change to web pages"
 msgstr "GreaseMonkey: Udělá změny na webových stránkách"
 
-#: .././ailurus/common/apps.py:593
+#: .././ailurus/common/apps.py:574
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image "
@@ -583,17 +604,17 @@ msgstr ""
 "vlastní skripty. Kniha \"Dive into Greasemonkey\" stojí za přečtení. Je "
 "volně ke stažení z http://diveintogreasemonkey.org/."
 
-#: .././ailurus/common/apps.py:606
+#: .././ailurus/common/apps.py:586
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr "Live HTTP Headers: Zobrazit HTTP hlavičky v reálném čase"
 
-#: .././ailurus/common/apps.py:619
+#: .././ailurus/common/apps.py:599
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 "NoScript: Povolit spouštění aktivního obsahu pouze ze stránek, kterým "
 "důvěřujete"
 
-#: .././ailurus/common/apps.py:623
+#: .././ailurus/common/apps.py:603
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
@@ -601,94 +622,94 @@ msgstr ""
 "Povolit spouštění aktivního obsahu pouze ze stránek, kterým důvěřujete a "
 "ochránit se tak před útoky XSS a Clickjacking."
 
-#: .././ailurus/common/apps.py:632
+#: .././ailurus/common/apps.py:612
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 "SHA-DA network radio: Poslouchat a dívat se na rádio a televizní stanice v "
 "Číně"
 
-#: .././ailurus/common/apps.py:646
+#: .././ailurus/common/apps.py:625
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr "SeoQuake: Pomůže zobrazit parametry webové stránky ve vyhledávači"
 
-#: .././ailurus/common/apps.py:650
+#: .././ailurus/common/apps.py:629
 msgid "It helps you promote your web sites."
 msgstr "Pomůže k propagování webových stránek."
 
-#: .././ailurus/common/apps.py:659
+#: .././ailurus/common/apps.py:638
 msgid "Stylish: Install themes and skins for websites."
-msgstr ""
+msgstr "Stylish: Instalace témat a skinů pro webové stránky."
 
-#: .././ailurus/common/apps.py:670
+#: .././ailurus/common/apps.py:649
 msgid "Tab Mix Lite CE: Re-open closed tabs"
 msgstr "Tab Mix Lite CE: Znovuotevření zavřených karet"
 
-#: .././ailurus/common/apps.py:673
+#: .././ailurus/common/apps.py:652
 msgid "Close tabs by double click tabs title. Re-open closed tabs."
 msgstr ""
 "Zavřít karty dvojklikem na titulek karty. Znovuotevřít zavřené karty."
 
-#: .././ailurus/common/apps.py:683
+#: .././ailurus/common/apps.py:661
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 "Tamper Data: Zobrazit a upravit HTTP/HTTPS hlavičky a umístění požadovaných "
 "parametrů."
 
-#: .././ailurus/common/apps.py:696
+#: .././ailurus/common/apps.py:674
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr "User Agent Switcher: Kamuflovat Firefox jako jiné druhy prohlížečů."
 
-#: .././ailurus/common/apps.py:699
+#: .././ailurus/common/apps.py:677
 msgid "It tells the remote websites that you are an IE user."
 msgstr "Řekne vzdáleným webovým stránkám, že jste uživatelem IE."
 
-#: .././ailurus/common/apps.py:708
+#: .././ailurus/common/apps.py:686
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr "View Source Chart: Zobrazit barevné označení zdrojového kódu HTML"
 
-#: .././ailurus/common/apps.py:712
+#: .././ailurus/common/apps.py:690
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 "Toto rozšíření umožňuje rychle skenovat a rozpoznat značky dokumentů."
 
-#: .././ailurus/common/apps.py:721
+#: .././ailurus/common/apps.py:699
 msgid ""
 "Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go."
 msgstr ""
 "Weave Sync: Synchronizovat záložky, historii prohlížení a karty, ať jste "
 "kdekoli."
 
-#: .././ailurus/common/apps.py:733
+#: .././ailurus/common/apps.py:711
 msgid "Web Developer: Web page analysis tools"
 msgstr "Web Developer: Nástroje pro analýzu webových stránek"
 
-#: .././ailurus/common/apps.py:737
+#: .././ailurus/common/apps.py:715
 msgid "Many developers installed it."
 msgstr "Mnoho vývojářů ho má nainstalováno."
 
-#: .././ailurus/common/apps.py:746
+#: .././ailurus/common/apps.py:724
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr "Yet Another Smooth Scrolling: Vlastní chování rolování"
 
-#: .././ailurus/common/apps.py:759
+#: .././ailurus/common/apps.py:736
 msgid "YSlow: web page performance tuning"
 msgstr "YSlow: Ladění výkonu webové stránky"
 
-#: .././ailurus/common/apps.py:763
+#: .././ailurus/common/apps.py:740
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 "Pomůže vylepšit výkon webové stránky. Dozvíte se proč je webová stránka "
 "pomalá."
 
-#: .././ailurus/common/apps.py:772
+#: .././ailurus/common/apps.py:749
 msgid "World of Padman: Funny shooter game"
 msgstr "World of Padman: Legrační střílečka"
 
-#: .././ailurus/common/apps.py:773
+#: .././ailurus/common/apps.py:750
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
@@ -879,6 +900,8 @@ msgid ""
 "How to submit\n"
 "patches:"
 msgstr ""
+"Jak poslat\n"
+"patch:"
 
 #: .././ailurus/common/menu.py:195
 msgid ""
@@ -992,7 +1015,7 @@ msgstr "Aktuální uživatel:"
 
 #: .././ailurus/common/osinfo.py:114
 msgid "OpenGL direct rendering:"
-msgstr ""
+msgstr "OpenGL direct rendering:"
 
 #: .././ailurus/common/osinfo.py:117
 msgid "OpenGL vendor:"
@@ -1764,7 +1787,7 @@ msgstr "WINE"
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux."
-msgstr ""
+msgstr "Tato aplikace je nezbytná pro běh Windows aplikací na Linuxu."
 
 #: .././ailurus/fedora/apps.py:35
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
@@ -1889,11 +1912,11 @@ msgid ""
 "git: a distributed version control system.</i>"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:239
+#: .././ailurus/fedora/apps.py:177 .././ailurus/ubuntu/app2.py:235
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr "QtiPlot: Rovnocenná s \"původní\" kreslící aplikací v linuxu"
 
-#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:240
+#: .././ailurus/fedora/apps.py:178 .././ailurus/ubuntu/app2.py:236
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
@@ -1998,11 +2021,11 @@ msgstr "Ponechat Selinux v permissive módu, namísto enforcing módu."
 msgid "Flash plugin for web browser"
 msgstr "Flash plugin pro webový prohlížeč"
 
-#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:273
+#: .././ailurus/fedora/apps.py:353 .././ailurus/ubuntu/app2.py:269
 msgid "\"Actions configuration\" entry"
 msgstr "Položka \"Nastavení akcí\""
 
-#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:274
+#: .././ailurus/fedora/apps.py:354 .././ailurus/ubuntu/app2.py:270
 msgid ""
 "It allows the configuration of programs to be launched on files selected.\n"
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
@@ -2013,19 +2036,19 @@ msgstr ""
 "<span color=\"red\">Tato položka není v kontextové nabídce. Je v nabídce "
 "\"Systém\"->\"Předvolby\" .</span>"
 
-#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:307
+#: .././ailurus/fedora/apps.py:361 .././ailurus/ubuntu/app2.py:303
 msgid "\"Resize/Rotate images\" entries"
 msgstr "Položka \"Změnit/Otočit obrázky\""
 
-#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:308
+#: .././ailurus/fedora/apps.py:362 .././ailurus/ubuntu/app2.py:304
 msgid "Resize or rotate selected images."
 msgstr "Změnit velikost nebo otočit zvolené obrázky."
 
-#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:324
+#: .././ailurus/fedora/apps.py:368 .././ailurus/ubuntu/app2.py:320
 msgid "\"Open in terminal\" entry"
 msgstr "Položka \"Otevřít v terminálu\""
 
-#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:325
+#: .././ailurus/fedora/apps.py:369 .././ailurus/ubuntu/app2.py:321
 msgid "Open a terminal in current folder."
 msgstr "Otevřít terminál v aktuální složce."
 
@@ -3756,7 +3779,7 @@ msgstr "Používá se zrcadlo %(i)s. K dispozici je celkem %(total)s zrcadel."
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr "Kontrola bezpečně odstranitelných balíků. Prosím čekejte."
 
-#: .././ailurus/lib.py:1413
+#: .././ailurus/lib.py:1416
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -3765,7 +3788,7 @@ msgstr ""
 "  Roman Horník https://launchpad.net/~roman.hornik\n"
 "  luisah https://launchpad.net/~luisah-linux-gmail"
 
-#: .././ailurus/lib.py:1419
+#: .././ailurus/lib.py:1422
 msgid ""
 "Copyright © 2007-2010,\n"
 "Trusted Digital Technology Laboratory,\n"
@@ -3775,11 +3798,11 @@ msgstr ""
 "Trusted Digital Technology Laboratory,\n"
 "Shanghai Jiao Tong University, China."
 
-#: .././ailurus/lib.py:1496
+#: .././ailurus/lib.py:1499
 msgid "Welcome to leave response in blog~"
 msgstr "Uvítáme zanechání reakcí na blogu~"
 
-#: .././ailurus/lib.py:1497
+#: .././ailurus/lib.py:1500
 #, python-format
 msgid ""
 "\n"
@@ -3788,67 +3811,67 @@ msgstr ""
 "\n"
 "Tato verze byla vydána %s."
 
-#: .././ailurus/lib.py:1505
+#: .././ailurus/lib.py:1508
 msgid "We wish to express thankfulness to these projects:"
 msgstr "Chtěli bychom vyjádřit vděčnost těmto projektům:"
 
-#: .././ailurus/lib.py:1509
+#: .././ailurus/lib.py:1512
 msgid "We sincerely thank these people:"
 msgstr "Upřímně děkujeme těmto lidem:"
 
-#: .././ailurus/lib.py:1511
+#: .././ailurus/lib.py:1514
 msgid "The people who provide inspiration:"
 msgstr "Lidem, kteří poskytují inspiraci:"
 
-#: .././ailurus/lib.py:1519
+#: .././ailurus/lib.py:1522
 msgid "The people who designs the logo:"
 msgstr "Lidem, kteří navrhli logo"
 
-#: .././ailurus/lib.py:1522
+#: .././ailurus/lib.py:1525
 msgid "The people who maintain PPA repository:"
 msgstr "Lidem, kteří udržují PPA zdroje:"
 
-#: .././ailurus/lib.py:1525
+#: .././ailurus/lib.py:1528
 msgid "The people who provide a lot of Linux skills:"
 msgstr "Lidem, kteří poskytují mnoho linuxových dovedností:"
 
-#: .././ailurus/lib.py:1528
+#: .././ailurus/lib.py:1531
 msgid "The people who provide a lot of Debian packages:"
 msgstr "Lidem, kteří poskytují mnoho debianích balíků:"
 
-#: .././ailurus/lib.py:1531
+#: .././ailurus/lib.py:1534
 msgid "The people who provide a lot of translation:"
 msgstr "Lidem, kteří poskytují překlady:"
 
-#: .././ailurus/lib.py:1533 .././ailurus/lib.py:1537 .././ailurus/lib.py:1544
+#: .././ailurus/lib.py:1536 .././ailurus/lib.py:1540 .././ailurus/lib.py:1547
 msgid "and many other people."
 msgstr "a mnoha dalším lidem."
 
-#: .././ailurus/lib.py:1535
+#: .././ailurus/lib.py:1538
 msgid "The people who report bugs:"
 msgstr "Lidem, kteří oznámují chyby:"
 
-#: .././ailurus/lib.py:1539
+#: .././ailurus/lib.py:1542
 msgid "The people who eliminate bugs:"
 msgstr "Lidem, kteří odstraňují chyby:"
 
-#: .././ailurus/lib.py:1542
+#: .././ailurus/lib.py:1545
 msgid "The people who publicize this software:"
 msgstr "Lidem, kteří zveřejňují tento software:"
 
-#: .././ailurus/lib.py:1546
+#: .././ailurus/lib.py:1549
 msgid "and the people not mensioned here."
 msgstr "a lidem zde neuvedeným."
 
-#: .././ailurus/lib.py:1557
+#: .././ailurus/lib.py:1560
 msgid "Thanks"
 msgstr "Poděkování"
 
-#: .././ailurus/lib.py:1620
+#: .././ailurus/lib.py:1623
 msgid "A new version is available"
 msgstr "Dostupnost nové verze"
 
-#: .././ailurus/lib.py:1621
+#: .././ailurus/lib.py:1624
 #, python-format
 msgid ""
 "Version %s is released.\n"
@@ -3857,15 +3880,15 @@ msgstr ""
 "Verze %s je dostupná.\n"
 "Můžete ji stáhnout z:"
 
-#: .././ailurus/lib.py:1628
+#: .././ailurus/lib.py:1631
 msgid "Check update"
 msgstr "Zkontrolovat aktualizaci"
 
-#: .././ailurus/lib.py:1629
+#: .././ailurus/lib.py:1632
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "Již je nainstalovaná poslední verze Ailurus. :-)"
 
-#: .././ailurus/lib.py:1658
+#: .././ailurus/lib.py:1661
 msgid "Ailurus changelog"
 msgstr "Ailurus protokol změn"
 
@@ -4414,7 +4437,7 @@ msgstr ""
 
 #: .././ailurus/ubuntu/app2.py:106
 msgid "Autoconf and Automake: Generate configure scripts and Makefiles"
-msgstr ""
+msgstr "Autoconf a Automake: Generuje konfigurační skripty a make soubory"
 
 #: .././ailurus/ubuntu/app2.py:112
 msgid "OpenGL library"
@@ -4496,23 +4519,23 @@ msgstr ""
 "stažena z http://art.gnome.org . Oficiální stránka GNOMEARtNG je "
 "http://developer.berlios.de/projects/gnomeartng/"
 
-#: .././ailurus/ubuntu/app2.py:246
+#: .././ailurus/ubuntu/app2.py:242
 msgid "Extcalc: A multifunctional graphic calculator"
 msgstr "Extcalc: Multifunkční grafický kalkulátor"
 
-#: .././ailurus/ubuntu/app2.py:252
+#: .././ailurus/ubuntu/app2.py:248
 msgid "Startup Manager: Change GRUB settings and themes"
 msgstr "Startup Manager: Změna nastavení a témat GRUBu"
 
-#: .././ailurus/ubuntu/app2.py:253
+#: .././ailurus/ubuntu/app2.py:249
 msgid "Startup manager helps you change GRUB settings and themes."
 msgstr "Startup manager pomůže změnit nastavení a témata GRUBu."
 
-#: .././ailurus/ubuntu/app2.py:259
+#: .././ailurus/ubuntu/app2.py:255
 msgid "Zhcon"
 msgstr "Zhcon"
 
-#: .././ailurus/ubuntu/app2.py:260
+#: .././ailurus/ubuntu/app2.py:256
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
@@ -4520,15 +4543,15 @@ msgstr ""
 "Zhcon pomůže zobrazit čínské znaky v TTY terminálu.\n"
 "Prohlížet můžete prostřednictvím \"zhcon --utf8\"."
 
-#: .././ailurus/ubuntu/app2.py:268
+#: .././ailurus/ubuntu/app2.py:264
 msgid "Powertop helps you save power for your laptop."
 msgstr "Powertop pomůže ušetřit energii na vašem laptopu."
 
-#: .././ailurus/ubuntu/app2.py:281
+#: .././ailurus/ubuntu/app2.py:277
 msgid "\"Repair filename\" entry"
 msgstr "Položka \"Opravit název souboru\""
 
-#: .././ailurus/ubuntu/app2.py:282
+#: .././ailurus/ubuntu/app2.py:278
 msgid ""
 "When any file with wrong encoding filename is right clicked,\n"
 " show a \"Repair filename\" menu item."
@@ -4536,11 +4559,11 @@ msgstr ""
 "Pokud je nějaký soubor se špatným kódováním názvu, pak pravým kliknutím,\n"
 " zobrazíte položku nabídky \"Opravit název souboru\"."
 
-#: .././ailurus/ubuntu/app2.py:288
+#: .././ailurus/ubuntu/app2.py:284
 msgid "\"Open as administrator\" entry"
 msgstr "Položka \"Otevřít jako správce\""
 
-#: .././ailurus/ubuntu/app2.py:289
+#: .././ailurus/ubuntu/app2.py:285
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
@@ -4550,11 +4573,11 @@ msgstr ""
 "nabídky.\n"
 "Otevření vybrané složky se správcovskými právy."
 
-#: .././ailurus/ubuntu/app2.py:295
+#: .././ailurus/ubuntu/app2.py:291
 msgid "\"Convert audio files\" entry"
 msgstr "Položka \"Převod audio souborů\""
 
-#: .././ailurus/ubuntu/app2.py:296
+#: .././ailurus/ubuntu/app2.py:292
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -4564,19 +4587,19 @@ msgstr ""
 "Následující balíky budou taktéž nainstalovány: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: .././ailurus/ubuntu/app2.py:314 .././ailurus/ubuntu/app2.py:315
+#: .././ailurus/ubuntu/app2.py:310 .././ailurus/ubuntu/app2.py:311
 msgid "\"Subversion commands\" entries"
 msgstr "Položka \"Subversion příkazy\""
 
-#: .././ailurus/ubuntu/app2.py:331
+#: .././ailurus/ubuntu/app2.py:327
 msgid "\"Share folders\" entry"
 msgstr "Položka \"Možnosti sdílení\""
 
-#: .././ailurus/ubuntu/app2.py:332
+#: .././ailurus/ubuntu/app2.py:328
 msgid "Share folders by Samba."
 msgstr "Sdílet složky pomocí Samby."
 
-#: .././ailurus/ubuntu/app2.py:338 .././ailurus/ubuntu/app2.py:339
+#: .././ailurus/ubuntu/app2.py:334 .././ailurus/ubuntu/app2.py:335
 msgid "\"Set as wallpaper\" entry"
 msgstr "Položka \"Nastavit jako tapetu\""
 
@@ -4621,6 +4644,9 @@ msgid ""
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
 "the desktop."
 msgstr ""
+"Screenlets umožňuje přidání úžasných miniaplikací na pracovní plochu, jako "
+"jsou lístky s poznámkami, hodiny, předpověď počasí, kalendáře a mnoho "
+"dalších, s cílem ozdobit svou pracovní plochu."
 
 #: .././ailurus/ubuntu/app3.py:189
 msgid "Compiz settings manager"
@@ -4633,6 +4659,10 @@ msgid ""
 "configuration application for Compiz Fusion. It can configurate effects such "
 "as \"Desktop cube\" and \"3D windows\"."
 msgstr ""
+"Compiz Fusion je sjednocení projektu Beryl a komunity okolo okenního správce "
+"Compizu. Compiz settings manager je konfigurační aplikace pro Compiz Fusion. "
+"Můžou být konfigurovány efekty jako je \"Kostka pracovní plochy\" a \"3D "
+"okna\"."
 
 #: .././ailurus/ubuntu/app3.py:198
 msgid "Simple-ccsm: A simple Compiz settings manager"
@@ -4647,6 +4677,8 @@ msgid ""
 "A lot of software for molecular biology, structural biology and "
 "bioinformatics."
 msgstr ""
+"Mnoho softwaru pro molekulární biologii, strukturální biologii a "
+"bioinformatiku."
 
 #: .././ailurus/ubuntu/app3.py:217
 msgid "Code::Blocks - C/C++ IDE"
@@ -4673,6 +4705,9 @@ msgid ""
 "If you want to use the latest version of R language, please read "
 "http://cran.r-project.org/"
 msgstr ""
+"Mocný statistický výpočetní jazyk a grafický systém.\n"
+"Pokud chcete použít poslední verzi R language, prosím čtěte http://cran.r-"
+"project.org/"
 
 #: .././ailurus/ubuntu/app3.py:313
 msgid "R language (full development environment and all plugins)"
@@ -4839,7 +4874,7 @@ msgstr "GNOME colors themes"
 
 #: .././ailurus/ubuntu/app4.py:123
 msgid "Getting Things Gnome: GTD tool"
-msgstr ""
+msgstr "Getting Things Gnome: GTD nástroj"
 
 #: .././ailurus/ubuntu/app4.py:131
 msgid "Moovida: Media player"
@@ -5487,10 +5522,6 @@ msgstr "Najít více zdrojů třetích stran na http://repogen.simplylinux.ch/"
 #: .././ailurus/ubuntu/osinfo.py:38
 msgid "Ubuntu version:"
 msgstr "Verze Ubuntu:"
-
-#: .././ailurus/ubuntu/quick_setup.py:32
-msgid "Search fastest repository"
-msgstr "Vyhledat nejrychlejší zdroj"
 
 #: .././ailurus/ubuntu/quick_setup.py:35
 msgid "Decompression software"
