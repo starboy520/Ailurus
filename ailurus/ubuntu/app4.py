@@ -192,7 +192,7 @@ class Firefox_3_6(_apt_install):
     license = TRI_LICENSE(MPL, GPL, LGPL)
     category = 'internet'
     depends = Repo_Firefox_3_6
-    pkgs = 'firefox-3.6-branding'
+    pkgs = 'firefox'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
 
