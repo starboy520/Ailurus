@@ -1220,6 +1220,7 @@ class R:
         import urllib2
         for url in self.url:
             try:
+                print url
                 f = urllib2.urlopen(url)
                 return True
             except:
