@@ -432,7 +432,7 @@ class Launch_Tasksel(I):
     def remove(self):
         raise NotImplementedError
 
-class Fctix(I):
+class Fcitx(I):
     'Fcitx'
     category = 'language'
     detail = _('This is a popular Chinese input method.\n'
