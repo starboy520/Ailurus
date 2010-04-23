@@ -226,7 +226,7 @@ def __layout_of_window_titlebar_buttons():
                            + _("It can be used in Metacity only.") )
     o = GConfComboBox('/apps/metacity/general/button_layout', 
                       [_('GNOME classic'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'close,minimize,maximize:menu'],)
+                      ['menu:minimize,maximize,close', 'close,minimize,maximize:'],)
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)
