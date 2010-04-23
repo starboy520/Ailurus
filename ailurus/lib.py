@@ -670,7 +670,7 @@ class APT:
             cmd.append("--set-selections-file")
             cmd.append("%s" % f.name)
             # print message
-            print '\x1b[1;33m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+            print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
             # run command
             run_as_root(' '.join(cmd))
             # notify change
