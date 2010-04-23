@@ -751,6 +751,7 @@ class APT:
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
         cls.updated = True
+        cls.cache_changed()
 
 class DPKG:
     @classmethod
