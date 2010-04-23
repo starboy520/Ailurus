@@ -447,6 +447,7 @@ class Fctix(I):
             f=R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_amd64.deb'],
                 7408298,'00e9508a6602f71495e21222c204d14289ff0f13').download()
         run('gdebi-gtk ' + f)
+        APT.cache_changed()
     def installed(self):
         return APT.installed('fcitx-svn')
     def remove(self):
