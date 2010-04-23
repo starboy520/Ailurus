@@ -37,7 +37,7 @@ class Config:
         if not os.path.exists(dir): # make directory
             try:    os.makedirs(dir)
             except: pass # directory exists
-        if os.stat(dir).st_uid != os.getuid(): # change owner
+        if os.stat(dir).st_uid != os.getuid() and os.getuid()!=0: # change owner
             run_as_root('chown $USER:$USER "%s"'%dir)
         if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
             os.chmod(dir, 0755)
