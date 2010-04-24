@@ -1,3 +1,15 @@
+2010-04-24 Homer Xing <homer.xing@gmail.com>
+
+    * Do not raise exception when user cancel policy-kit in clean up pane.
+    * Show a notify after clearing recent documents list.
+    * Fix bug: MPlayer-vod cannot be installed.
+    * Fix bug: "Speed up firefox" failed if directory does not exist.
+    * Fix bug: AutoProxy installation error.
+    * Fix bug: Fcitx cannot be detected after installation.
+    * Change text color.
+    * Reduce border width of "Quick install" button. Increase its width.
+    * Fix bug: Cannot launch Ailurus by root.
+
 2010-04-23 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: APT cache is not automatically refreshed after "apt-get update".
