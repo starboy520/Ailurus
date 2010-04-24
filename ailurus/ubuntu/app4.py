@@ -204,6 +204,7 @@ class Shutter(_apt_install):
 #    def support(self):
 #        return Config.get_Ubuntu_version() != 'lucid'
 
+# Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
     license = TRI_LICENSE(MPL, GPL, LGPL)
@@ -211,7 +212,7 @@ class Firefox_3_6(_apt_install):
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
@@ -226,4 +227,5 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
