@@ -220,6 +220,8 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
