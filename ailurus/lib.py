@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.2'
+AILURUS_VERSION = '10.04.2.1'
 AILURUS_RELEASE_DATE = '2010-04-24'
 D = '/usr/share/ailurus/data/'
 import warnings
