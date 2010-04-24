@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.2.1'
+AILURUS_VERSION = '10.04.2.2'
 AILURUS_RELEASE_DATE = '2010-04-24'
 D = '/usr/share/ailurus/data/'
 import warnings
@@ -1566,8 +1566,12 @@ def check_update():
         def url_button(url):
             import gtk
             def func(w, url): open_web_page(url)
-            def enter(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
-            def leave(w, e): w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+            def enter(w, e): 
+                try: w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
+                except AttributeError: pass
+            def leave(w, e): 
+                try: w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+                except AttributeError: pass
             label = gtk.Label()
             label.set_markup("<span color='blue'><u>%s</u></span>"%url)
             button = gtk.Button()
