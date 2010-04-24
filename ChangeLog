@@ -1,3 +1,6 @@
+2010-04-24 MA Yue <velly.empire@gmail.com>
+    * Import the installation of Pidgin beta
+
 2010-04-23 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: APT cache is not automatically refreshed after "apt-get update".
