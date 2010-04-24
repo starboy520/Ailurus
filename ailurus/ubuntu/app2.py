@@ -255,6 +255,31 @@ class GNOMEArtNextGen(I):
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
+
+class GoogleEarth(I):
+    __doc__ = _('Google Earth')
+    def install(self):
+        self.file = R(['http://dl.google.com/earth/client/current/GoogleEarthLinux.bin'],25989559,'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        import os
+        run('cp %s /tmp/' % self.file)
+        os.chdir('/tmp/')
+        run('chmod +x GoogleEarthLinux.bin')
+        run('./GoogleEarthLinux.bin')
+    def installed(self):
+        import os
+        path = os.path.expanduser('~/google-earth')
+        return os.path.exists(path) or os.path.exists('/opt/google-earth')
+    def remove(self):
+        import os
+        path = os.path.expanduser('~/google-earth/')
+        if os.path.exists(path):
+            os.chdir(path)
+            run('./uninstall')
+        elif os.path.exists('/opt/google-earth'):
+            os.chdir('/opt/google-earth/')
+            run('./uninstall')
+            
+            
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
