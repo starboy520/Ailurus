@@ -41,6 +41,19 @@ class AWN(_apt_install):
     depends = Repo_AWN_Development
     pkgs = 'avant-window-navigator-trunk'
 
+class ComicView(_ff_extension):
+    __doc__ = _('Adblock+: Block 99% advertisement')
+    license = GPL
+    def __init__(self):
+        self.desc = ''
+        self.download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
+        self.range = '3.0~3.7'
+        self.name = u'Comic Viewer'
+        self.R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
+        _ff_extension.__init__(self)
+    def support(self):
+        return False
+
 class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
@@ -48,18 +61,22 @@ class ComicVODPlayer_new(I):
     Chinese = True
     license = GPL
     depends = Repo_Mplayer_VOD
+    def __init__(self):
+        self.comicview = ComicView()
     def install(self):
-        extension_path = FirefoxExtensions.get_extensions_path()
-        comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
-        run('cp %s %s'%(comicview, extension_path) )
-        delay_notify_firefox_restart()
+        if not self.comicview.installed():
+            self.comicview.install()
         # Remove current mplayer. Then install a newer version.
         APT.remove('mplayer')
         APT.install('mplayer')
+        # Remove repository
+        Repo_Mplayer_VOD().remove()
     def installed(self):
-        return False
+        return self.comicview.installed() and APT.installed('mplayer')
     def remove(self):
-        raise NotImplemented
+        APT.remove('mplayer')
+    def support(self):
+        return APT.installed('firefox')
 
 class Audacious(_apt_install):
     __doc__ = _('Audacious: Audio player')
