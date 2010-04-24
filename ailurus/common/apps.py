@@ -152,8 +152,10 @@ class Speed_Up_Firefox(I):
                 content[i] = new
             if line.startswith('Name='):
                 content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        with TempOwn('/usr/local/share/applications/firefox.nopango.desktop') as o:
-            with open('/usr/local/share/applications/firefox.nopango.desktop', 'w') as f:
+        dir = '/usr/local/share/applications/'
+        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
+        with TempOwn(dir + 'firefox.nopango.desktop') as o:
+            with open(dir + 'firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
     def installed(self):
         import os 
