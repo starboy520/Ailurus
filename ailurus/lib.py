@@ -388,6 +388,9 @@ def spawn_as_root(command):
     obj = bus.get_object('cn.ailurus', '/')
     obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
+class AccessDeniedError(Exception):
+    'User press cancel button in policykit window'
+
 def run_as_root(cmd, ignore_error=False):
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
@@ -399,7 +402,11 @@ def run_as_root(cmd, ignore_error=False):
         import dbus
         bus = dbus.SystemBus()
         obj = bus.get_object('cn.ailurus', '/')
-        obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        try:
+            obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        except dbus.exceptions.DBusException, e:
+            if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+            else: raise
     else:
         run(cmd, ignore_error)
 
