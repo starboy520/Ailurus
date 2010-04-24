@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ailurus - System setting
-Comment=makes Linux easier to use
+Comment=Change system setting
 Exec=/usr/bin/ailurus --fast --system-setting
 Icon=/usr/share/ailurus/data/velly_icons/m_setting.png
 Terminal=false

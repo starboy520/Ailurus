@@ -109,7 +109,7 @@ class VIM_and_VIMRC(_rpm_install) :
         _rpm_install.remove(self)
         file_remove ( self.vimrc, *self.lines )
 
-class ColorfulBashPromptSymbols :
+class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
        '"[username@hostname ~]$ " to '
@@ -186,7 +186,7 @@ class QCad(_rpm_install):
     category = 'em'
     pkgs = 'qcad'
 
-class DisableGetty:
+class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def installed(self):
@@ -227,7 +227,7 @@ class Octave(_rpm_install):
     category = 'math'
     pkgs = 'qtoctave'
 
-class Generic_Genome_Browser:
+class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
     detail = _('Generic Genome Browser is a combination of database and interactive web page '
                'for manipulating and displaying annotations on genomes.\n'
@@ -289,7 +289,7 @@ class Parcellite(_rpm_install):
     license = GPL
     pkgs = 'parcellite'
 
-class Enable_Sudo:
+class Enable_Sudo(I):
     __doc__ = _('Enable "sudo"')
     detail = _('If you enabled "sudo" and you want to execute commands as root, '
                'you can type command "sudo COMMAND" instead of complicated command "su -c \'COMMAND\'". '
@@ -302,7 +302,7 @@ class Enable_Sudo:
     def remove(self):
         pass
 
-class Disable_Sudo:
+class Disable_Sudo(I):
     __doc__ = _('Disable "sudo". Prevent yourself from using "sudo".')
     def installed(self):
         return False
@@ -311,7 +311,7 @@ class Disable_Sudo:
     def remove(self):
         pass
 
-class Disable_SELinux:
+class Disable_SELinux(I):
     __doc__ = _('Put Selinux in permissive mode, instead of enforcing mode.')
     def installed(self):
         with open('/etc/sysconfig/selinux') as f:

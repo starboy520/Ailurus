@@ -90,7 +90,7 @@ class _repo(I):
         
         assert isinstance(self.apt_file, str)
         assert isinstance(self.apt_conf, list)
-        for i,a in enumerate(self.apt_conf): 
+        for i,a in enumerate(self.apt_conf):
             is_string_not_empty(a)
             if a.endswith('\n'): raise ValueError(a)
             if '$' in a: #variable substitution
@@ -115,7 +115,7 @@ class _repo(I):
         if self.apt_content:
             print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.apt_content, '</b>'
         print >>msg, _('<i>Web page:</i>'), self.web_page
-        print >>msg, _('<i>Source setting:</i>'), 
+        print >>msg, _('<i>Source setting:</i>'),
         for a in self.apt_conf:
             print >>msg, a
         self.__class__.detail = msg.getvalue()
@@ -194,7 +194,7 @@ class _launchpad(I):
     def __init__(self):
         assert isinstance(self.ppa, str)
         if hasattr(self, 'content'): assert isinstance(self.content, str)
-        if hasattr(self, 'desc'):    assert isinstance(self.desc, (unicode, str))
+        if hasattr(self, 'desc'): assert isinstance(self.desc, (unicode, str))
         self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
         self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
         self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
@@ -202,10 +202,10 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        if hasattr(self, 'content'): 
+        if hasattr(self, 'content'):
             print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
         print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
-        print >>msg, _('<i>Source setting:</i>'), self.deb_config 
+        print >>msg, _('<i>Source setting:</i>'), self.deb_config
         self.__class__.detail = msg.getvalue()
     def install(self):
         _repo.refresh_cache()
@@ -223,13 +223,16 @@ class _launchpad(I):
         _repo.save_source()
         _repo.fresh_cache = False
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
-        if signing_key: del_signing_key(signing_key)        
+        if signing_key: del_signing_key(signing_key)
 
+# Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
     __doc__ = _('Firefox 3.6 (stable)')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     ppa = 'mozillateam/firefox-stable'
     content = 'firefox'
+    def support(self):
+        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
@@ -305,7 +308,7 @@ class Repo_GNOMEColors(_launchpad):
     __doc__ = _('GNOME colors (stable)')
     license = GPL
     desc = _('This repository contains some themes.')
-    content = 'arc-colors gnome-colors shiki-colors-murrine'
+    content = 'gnome-colors'
     ppa = 'gnome-colors-packagers'
 
 class Repo_GlobalMenu(_launchpad):
@@ -343,18 +346,18 @@ class Repo_Shutter(_launchpad):
     content = 'shutter'
     ppa = 'shutter'
     
-class Repo_Synapse(_repo):
-    __doc__ = _('Synapse (stable)')
-    license = GPL
-    def __init__(self):
-        self.desc = _('Synapse is an instant messager.')
-        self.apt_content = 'synapse'
-        self.web_page = 'http://synapse.im/download/'
-        self.apt_file = '/etc/apt/sources.list.d/synapse.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/firerabbit/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x83419668F12469157BCD4BE904508D5C1654E635'
-        self.key_id = '1654E635'
-        _repo.__init__(self)
+#class Repo_Synapse(_repo):
+#    __doc__ = _('Synapse (stable)')
+#    license = GPL
+#    def __init__(self):
+#        self.desc = _('Synapse is an instant messager.')
+#        self.apt_content = 'synapse'
+#        self.web_page = 'http://synapse.im/download/'
+#        self.apt_file = '/etc/apt/sources.list.d/synapse.list'
+#        self.apt_conf = [ 'deb http://ppa.launchpad.net/firerabbit/ppa/ubuntu $version main' ]
+#        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x83419668F12469157BCD4BE904508D5C1654E635'
+#        self.key_id = '1654E635'
+#        _repo.__init__(self)
 
 class Repo_X_Server_Updates(_launchpad):
     __doc__ = _('X server updates (stable)')
@@ -475,6 +478,8 @@ class Repo_RedNoteBook(_repo):
         self.key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
         self.key_id = 'FF95D333'
         _repo.__init__(self)
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
 
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')
@@ -494,7 +499,7 @@ class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
     license = GPL
     desc = _('It displays lyrics. It supports many media players.')
-    content = 'osd-lyrics'
+    content = 'osdlyrics'
     ppa = 'osd-lyrics'
 
 class Repo_Mplayer_VOD(_launchpad):
@@ -505,7 +510,7 @@ class Repo_Mplayer_VOD(_launchpad):
     ppa = 'homer-xing/mplayer-vod'
     def support(self):
         return False
-	
+
 class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
     license = GPL

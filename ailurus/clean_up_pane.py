@@ -58,7 +58,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root('apt-get clean')
+            try: run_as_root('apt-get clean')
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo apt-get clean'))
@@ -69,7 +70,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root("yum --enablerepo='*' clean all")
+            try: run_as_root("yum --enablerepo='*' clean all")
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
@@ -80,7 +82,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root('rm /var/cache/ailurus/* -rf')
+            try: run_as_root('rm /var/cache/ailurus/* -rf')
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
@@ -94,6 +97,7 @@ class CleanUpPane(gtk.VBox):
                 os.system("echo '' > ~/.recently-used.xbel")
             else: # is dir
                 os.system("rm ~/.recently-used.xbel/* -rf")
+            notify(' ', _('"Recent documents" list is empty now.'))
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
         button.set_tooltip_text(_('Command: echo "" > ~/.recently-used.xbel'))
@@ -144,7 +148,8 @@ class ReclaimMemoryBox(gtk.HBox):
             src = tempfile.NamedTemporaryFile('w')
             src.write('3\n')
             src.flush()
-            run_as_root('cp %s %s'%(src.name, dest) )
+            try: run_as_root('cp %s %s'%(src.name, dest) )
+            except AccessDeniedError: pass
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
@@ -196,7 +201,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
             self.__regenerate_check_buttons()
         if delete_list:
             try:    run_as_root('rm -rf %s'%' '.join(delete_list))
-            except: pass
+            except AccessDeniedError: pass
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         button_apply.set_sensitive(False)

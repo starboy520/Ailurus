@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Ailurus - Clean up
-Comment=makes Linux easier to use
+Comment=Clean up temporary files
 Exec=/usr/bin/ailurus --fast --clean-up
 Icon=/usr/share/ailurus/data/velly_icons/m_clean_up.png
 Terminal=false

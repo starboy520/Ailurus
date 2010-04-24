@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.03.5
-%define unmangled_version 10.03.5
+%define version 10.04.2
+%define unmangled_version 10.04.2
 %define release 1
 
 Summary: makes Linux easier to use
@@ -52,5 +52,5 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root)
 
 %changelog
-* Mon Mar 22 2010 Homer Xing <homer.xing@gmail.com> 10.03.3-1
+* Sat Apr 24 2010 Homer Xing <homer.xing@gmail.com> 10.04.2-1
 - Initial package

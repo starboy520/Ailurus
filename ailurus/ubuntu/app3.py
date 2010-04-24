@@ -350,9 +350,10 @@ class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
     name = 'dns-server'
 
-class Tasksel_Mail_server(_tasksel):
-    __doc__ = _('Mail server')
-    name = 'mail-server'
+# 'postfix' cannot be installed in Lucid :(
+#class Tasksel_Mail_server(_tasksel):
+#    __doc__ = _('Mail server')
+#    name = 'mail-server'
 
 class Tasksel_Openssh_server(_tasksel):
     __doc__ = _('OpenSSH server')
@@ -432,7 +433,7 @@ class Launch_Tasksel(I):
     def remove(self):
         raise NotImplementedError
 
-class Fctix(I):
+class Fcitx(I):
     'Fcitx'
     category = 'language'
     detail = _('This is a popular Chinese input method.\n'
@@ -447,31 +448,11 @@ class Fctix(I):
             f=R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_amd64.deb'],
                 7408298,'00e9508a6602f71495e21222c204d14289ff0f13').download()
         run('gdebi-gtk ' + f)
+        APT.cache_changed()
     def installed(self):
         return APT.installed('fcitx-svn')
     def remove(self):
         APT.remove('fcitx-svn')
-        
-class XBMC(_apt_install):
-    __doc__ = _('XBMC: Home entertainment system')
-    category = 'media'
-    license = GPL
-    depends = Repo_XBMC
-    pkgs = 'xbmc'
-
-class Songbird(_apt_install):
-    __doc__ = _('Songbird: Open source substitution of iTunes')
-    category = 'media'
-    license = GPL
-    depends = Repo_Songbird
-    pkgs = 'songbird'
-
-class OSD_Lyrics(_apt_install):
-    __doc__ = _('OSD-Lyrics: Display lyrics. Supports many media players.')
-    category = 'media'
-    license = GPL
-    depends = Repo_OSD_Lyrics
-    pkgs = 'osdlyrics'
         
 class Vuze_Karmic(_apt_install):
     # Latest Vuze is in 9.10 repository.
@@ -493,11 +474,3 @@ class PiTiVi(_apt_install):
     license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
-
-class Acire(_apt_install):
-    __doc__ = _('Acire: A Python code fragment manager')
-    detail = _("Acire provides Python code fragments which outline how to do specific tasks.")
-    license = GPL
-    category = 'dev'
-    depends = Repo_Acire
-    pkgs = 'acire'

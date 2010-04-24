@@ -68,47 +68,7 @@ Icon=/opt/bioclipse/icon.xpm
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
 
-#class BRLCAD(_path_lists):
-#    __doc__ = _('BRL-CAD: Military solid modeling software')
-#    detail = (
-#              _('Official site: <span color="blue"><u>http://sourceforge.net/projects/brlcad/</u></span>. ') +
-#              _('Developed by Ballistic Research Laboratory. ') +
-#              _('A lot of commands are installed in /usr/brlcad/bin/') )
-#    category = 'em'
-#    license = ('BRL-CAD is a large system with various portions under different license '
-#               'but is predominantly distributed as a collective work under the v2.1 LGPL. '
-#               'Most of our data files and documentation are provided under a modified BSD license or are in the public domain. '
-#               'See http://brlcad.svn.sourceforge.net/svnroot/brlcad/brlcad/trunk/COPYING')
-#    def __init__(self):
-#        self.shortcut = '/usr/share/applications/brlcad.desktop'
-#        self.file = '/usr/brlcad/'
-#        self.paths = [self.shortcut, self.file]
-#    def install(self):
-#        if get_arch()==32:
-#            f = R(
-#['http://tdt.sjtu.edu.cn/S/brlcad_7.10.4_ia32.tar.bz2',
-#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.10.4/brlcad_7.10.4_ia32.tar.bz2'],
-#65691691, '3d8c19aaf6e560b33874819936c9ae2c649cb1b8').download()
-#        else:
-#            f = R(
-#['http://tdt.sjtu.edu.cn/S/brlcad_7.12.2_x86_64.tar.bz2',
-#'http://ncu.dl.sourceforge.net/project/brlcad/BRL-CAD%20for%20Linux/7.12.2/brlcad_7.12.2_x86_64.tar.bz2'],
-#88272078, 'f670ba0d99facb9ee1c35e9f4a53ca5dc2750833').download()
-#
-#        with Chdir('/tmp') as o:
-#            run('tar jxf %s'%f)
-#            run_as_root('rm /usr/brlcad/ -rf')
-#            run_as_root('mv usr/brlcad/ /usr/')
-#            create_file(self.shortcut, '''[Desktop Entry]
-#Name=BRL-CAD
-#Exec=/usr/brlcad/bin/mged
-#Encoding=UTF-8
-#StartupNotify=true
-#Terminal=true
-#Type=Application
-#Categories=Science;Engineering;''')
-
-class CreateDesktopFolder:
+class CreateDesktopFolder(I):
     __doc__ = _('Create a directory "Desktop" in your home folder')
     detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
     def __init__(self):
@@ -151,8 +111,7 @@ class Electric(_path_lists):
         self.paths = [self.shortcut, self.file]
     def install(self):
         f = R(
-['http://tdt.sjtu.edu.cn/S/electricBinary-8.09.jar',
-'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
+['http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
 11102701, 'c50557bc54b74948e707dc4606009bd93274ec71').download()
 
         run_as_root('mkdir /opt', ignore_error=True)
@@ -166,7 +125,7 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
-class Speed_Up_Firefox:
+class Speed_Up_Firefox(I):
     __doc__ = _('Speed up Firefox')
     detail = _('Firefox is faster when Pango rendering is disabled. '
         'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
@@ -193,8 +152,10 @@ class Speed_Up_Firefox:
                 content[i] = new
             if line.startswith('Name='):
                 content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        with TempOwn('/usr/local/share/applications/firefox.nopango.desktop') as o:
-            with open('/usr/local/share/applications/firefox.nopango.desktop', 'w') as f:
+        dir = '/usr/local/share/applications/'
+        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
+        with TempOwn(dir + 'firefox.nopango.desktop') as o:
+            with open(dir + 'firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
     def installed(self):
         import os 
@@ -215,71 +176,6 @@ class Netbeans(_apt_install):
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
     
-#class Netbeans:
-#    __doc__ = _(u'Netbeans® 6.8')
-#    detail = (
-#              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
-#               ' and frameworks (J2SE, J2ME, etc.). '
-#               'Official site: http://netbeans.org/downloads/ .') +
-#              _(' This application depends on Java.') )
-#    category = 'dev'
-#    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
-#    def install(self):
-#        # Download Netbeans and install it.
-#        file = R(['http://ftp.snt.utwente.nl/pub/software/netbeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-#                  'http://ftp.isu.edu.tw/pub/NetBeans/6.8/bundles/netbeans-6.8-ml-linux.sh',
-#                  'http://tdt.sjtu.edu.cn/S/netbeans-6.8-ml-linux.sh',
-#                  ],
-#                 247610368, 'bc6ed22cd6619a1d7e51a9469da02fd82c979aab'
-#                 ).download()
-#        run_as_root("bash %s" %file)
-#        # If there is no Netbeans shortcut, then we should create one.
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        if List == []:
-#            import gtk
-#            dialog = gtk.FileChooserDialog( _('Please select the folder where Netbeans is installed'), None,
-#                                            gtk.FILE_CHOOSER_ACTION_SELECT_FOLDER, (gtk.STOCK_OK, gtk.RESPONSE_OK) )
-#            dialog.set_current_folder('/usr')
-#            gtk.gdk.threads_enter()
-#            dialog.run()
-#            folder = dialog.get_filename()
-#            dialog.destroy()
-#            gtk.gdk.threads_leave()
-#            create_file('/usr/share/applications/netbeans.desktop',
-#'''[Desktop Entry]
-#Encoding=UTF-8
-#Name=NetBeans IDE 6.8
-#Exec=/bin/sh "''' + folder + '''/bin/netbeans"
-#Icon=''' + folder + '''/nb6.8/netbeans.png
-#Categories=Application;Development;Java;IDE
-#Version=1.0
-#Type=Application
-#Terminal=0
-#''')
-#    def installed(self):
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        return bool(List)
-#    def remove(self):
-#        import glob
-#        List = glob.glob('/usr/share/applications/netbeans*')
-#        File = List[0]
-#        with open(File) as f:
-#            lines = f.readlines()
-#        for line in lines:
-#            if line.startswith('Icon='):
-#                break
-#        else: 
-#            raise Exception('Bad format.', File)
-#        path = line.split('=', 1)[1].strip()
-#        import os
-#        path = os.path.dirname(path)
-#        path = os.path.dirname(path)
-#        uninstaller = path + '/uninstall.sh'
-#        run_as_root(uninstaller)
-#        run_as_root('rm %s -f'%File)
-        
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
     detail = ( 
@@ -294,8 +190,7 @@ class OpenJUMP(_path_lists):
         self.paths = [self.shortcut, self.dir]
     def install(self):
         f = R(
-['http://tdt.sjtu.edu.cn/S/openjump-v1.3.zip',
-'http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
+['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
 12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
 
         with Chdir('/tmp') as o:
@@ -314,7 +209,7 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
 
-class QueryBeforeRmALotFiles :
+class QueryBeforeRmALotFiles(I) :
     __doc__ = _('Query you before delete more than three files')
     detail = _('If you try to delete more than three files by "rm *", '
        'BASH will ask you a question "remove all argument?" to make sure if you really want to delete files. '
@@ -337,7 +232,7 @@ class TeXLive2007(_apt_install):
     category = 'latex'
     pkgs = 'texlive'
 
-class TeXLive2009:
+class TeXLive2009(I):
     __doc__ = _('TeXLive 2009')
     detail = _('TeXLive is obtained from http://www.tug.org/texlive/')
     category = 'latex'
@@ -348,18 +243,15 @@ class TeXLive2009:
         import os
         #prepare xzdec
         if get_arch() == 32:
-            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.i386-linux',
-                       'http://tdt.sjtu.edu.cn/S/xzdec.i386-linux',],
+            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.i386-linux'],
                69556, '974f3ddeae66d34c5e5de3c7cd9651f249e677e7').download()
         else:
-            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.x86_64-linux',
-                       'http://tdt.sjtu.edu.cn/S/xzdec.x86_64-linux',],
+            xzdec = R(['http://www.tug.org/texlive/xz/xzdec.x86_64-linux'],
                73856, '0272dce41fdf2d3da1eeda6574238a1ed18e05d6').download()
         import os, stat
         os.chmod(xzdec, stat.S_IRWXU)
         #download iso.xz
         isoxz = R([
-'http://tdt.sjtu.edu.cn/S/texlive2009-20091107.iso.xz',
 'http://ftp.ctex.org/mirrors/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
 'ftp://ftp.comp.hkbu.edu.hk/pub/TeX/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
 'ftp://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/Images/texlive2009-20091107.iso.xz',
@@ -424,8 +316,7 @@ class TsingHuaTeXTemplate(_download_one_file):
     license = 'GPL'
     def __init__(self):
         self.R = R(
-['http://tdt.sjtu.edu.cn/S/thuthesis-4.5.1.tgz',
-'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
+['http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
 9101319, '7f617b66479cafe7c01b7b104e0392a947a064ef')
         import os
         self.file = os.path.expandvars('$HOME/thuthesis.tgz')
@@ -438,8 +329,7 @@ class FFAdblock(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
         self.range = '3.0.9~3.7'
         self.name = u'Adblock Plus'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/adblock_plus-1.1.1-fx+sm+tb.xpi',
-                    'http://ftp.mozilla.org/pub/mozilla.org/addons/1865/adblock_plus-1.1.1-fx+sm+tb.xpi'],
+        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/1865/adblock_plus-1.1.1-fx+sm+tb.xpi'],
     297455, 'e95e558d65759a078935c61b4f937f1dcb31527d')
         _ff_extension.__init__(self)
 
@@ -452,8 +342,7 @@ class FFAutoProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/69166/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi?confirmed'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/11009/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi'],
     108858, '03f7b46e5a042491dffc08022360cb4ba7efc9d1')
         _ff_extension.__init__(self)
 
@@ -465,8 +354,7 @@ class FFChromeTheme_3_0(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
         self.range = '3.0.*'
         self.name = u'Chromifox'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/chromifox-1.0-fx.jar',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/37478/chromifox-1.0-fx.jar'],
+        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/37478/chromifox-1.0-fx.jar'],
     1290316, '7ee2366a8efad2e94936871eed7a7e93feb0c238')
         _ff_extension.__init__(self)
 
@@ -478,8 +366,7 @@ class FFChromeTheme_3_5(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
         self.range = '3.5.*'
         self.name = u'Chromifox Basic'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/chromifox_basic-1.1.3-fx.jar',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/8782/chromifox_basic-1.1.3-fx.jar'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/8782/chromifox_basic-1.1.3-fx.jar'],
     1358662, '88e277d849021d8ee91dcbf40ccc8ecd8fe1138c')
         _ff_extension.__init__(self)
 
@@ -491,8 +378,7 @@ class FFCleanHide(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
         self.range = '1.5~3.5'
         self.name = u'CleanHide'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/cleanhide-1.1.0-fx+mz.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/3648/cleanhide-1.1.0-fx+mz.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/3648/cleanhide-1.1.0-fx+mz.xpi'],
     22341, '25812c05a1a2d944151654f9982974853c052b1e')
         _ff_extension.__init__(self)
 
@@ -504,8 +390,7 @@ class FFDownloadStatusBar(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/download_statusbar-0.9.6.5-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
     455756, '4d47871f71877853c6194bf559f699db33f36ee1')
         _ff_extension.__init__(self)
 
@@ -517,8 +402,7 @@ class FFDownThemAll(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
         self.range = '3.0~3.6'
         self.name = u'DownThemAll!'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/downthemall!-1.1.7-fx+tb+sm.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/201/downthemall!-1.1.7-fx+tb+sm.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/201/downthemall!-1.1.7-fx+tb+sm.xpi'],
     543251, 'e8ec30863e5e42de87128ce269a2af2a60bcb4b1')
         _ff_extension.__init__(self)
 
@@ -530,8 +414,7 @@ class FFEasyDragToGo(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
         self.range = '2.0~3.6'
         self.name = u'Easy DragToGo'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/easy_dragtogo-1.1.2.4-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/6639/easy_dragtogo-1.1.2.4-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6639/easy_dragtogo-1.1.2.4-fx.xpi'],
     31537, '580bc24dc0b1ecd4dbddb001db0a7cad829d2f63')
         _ff_extension.__init__(self)
 
@@ -556,8 +439,7 @@ class FFFireGesture(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
         self.range = '3.0~3.7'
         self.name = u'FireGestures'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/firegestures-1.5.5.1-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/6366/firegestures-1.5.5.1-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6366/firegestures-1.5.5.1-fx.xpi'],
     70977, 'fce7abe465349cc34f36e8750fe7ad5b3441a8e9')
         _ff_extension.__init__(self)
 
@@ -581,8 +463,7 @@ class FFFoxyProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
         self.range = '3.0~3.7'
         self.name = u'FoxyProxy Standard'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/foxyproxy_standard-2.15-fx+sm+tb.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/2464/foxyproxy_standard-2.15-fx+sm+tb.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/2464/foxyproxy_standard-2.15-fx+sm+tb.xpi'],
     578121, 'd839747995e9d0b1cc6b2c445b754687daed520a')
         _ff_extension.__init__(self)
 
@@ -597,8 +478,7 @@ class FFGreaseMonkey(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/748'
         self.range = '1.5~3.5.*'
         self.name = u'Greasemonkey'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/greasemonkey-0.8.20090920.2-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
     143260, '0f1c48493e3b52a48e9b55db054a2022c46a8d08')
         _ff_extension.__init__(self)
 
@@ -637,8 +517,7 @@ class FFRadioGet(_ff_extension):
         self.download_url = 'http://ipget.cn/RadioGet/'
         self.range = '2.0~3.6'
         self.name = u'RadioGet'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/RadioGet-0.9.xpi',
-                    'http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
+        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
     15870, '132b45fd31dff76676d6d66bbe2b0f556f2f34fd')
         _ff_extension.__init__(self)
 
@@ -655,17 +534,15 @@ class FFSeoQuake(_ff_extension):
                      222226,'b52c18a1607cafa70243226c8861c8d9a7591d48')
         _ff_extension.__init__(self)
 
-class FFTabMixLite(_ff_extension):
-    __doc__ = _('Tab Mix Lite CE: Re-open closed tabs')
-    license = MPL
+class FFStylish(_ff_extension):
+    __doc__ = _('Stylish: Install themes and skins for websites.')
+    license = GPL
     def __init__(self):
-        self.desc = _('Close tabs by double click tabs title. Re-open closed tabs.')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/12391'
-        self.range = '2.0~3.6'
-        self.name = u'Tab Mix Lite CE'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/tab_mix_lite_ce-3.0.4-fx.xpi',
-                    'https://addons.mozilla.org/en-US/firefox/downloads/file/55633/tab_mix_lite_ce-3.0.4-fx.xpi?confirmed'],
-    30135, '42997280a1eb4a70b56a79ad5bd38c4cc3274973')
+        self.desc = ''
+        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2108'
+        self.range = '3.0~3.7'
+        self.name = u'Stylish'
+        self.R = R(['http://addons.mozilla.org/en-US/firefox/downloads/latest/2108/addon-2108-latest.xpi'])
         _ff_extension.__init__(self)
 
 class FFTamperData(_ff_extension):
@@ -739,8 +616,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
         self.range = '1.5~3.6.*'
         self.name = u'Yet Another Smooth Scrolling'
-        self.R = R(['http://tdt.sjtu.edu.cn/S/FirefoxExt/yet_another_smooth_scrolling-2.0.25-fx.xpi',
-                    'http://releases.mozilla.org/pub/mozilla.org/addons/5846/yet_another_smooth_scrolling-2.0.25-fx.xpi'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5846/yet_another_smooth_scrolling-2.0.25-fx.xpi'],
                     31014, '6fdcb60292a4103d7e83f79a5ccd5b480d341a3f')
         _ff_extension.__init__(self)
 
@@ -757,7 +633,7 @@ class FFYSlow(_ff_extension):
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
 
-class WorldofPadman:
+class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')

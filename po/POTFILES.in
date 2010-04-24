@@ -60,6 +60,7 @@ support/policykit1/cn.ailurus.policy.in
 ./ailurus/ubuntu/app1.py
 ./ailurus/ubuntu/app2.py
 ./ailurus/ubuntu/app3.py
+./ailurus/ubuntu/app4.py
 ./ailurus/ubuntu/apps.py
 ./ailurus/ubuntu/apt_recovery_pane.py
 ./ailurus/ubuntu/fastest_mirror_pane.py

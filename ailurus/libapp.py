@@ -75,11 +75,11 @@ class _set_gconf(I):
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;32m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, newvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%newvalue
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;32m%s\x1b[m"%_("New value:"), newvalue
         for key, to_add_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_add in to_add_list:
@@ -89,8 +89,8 @@ class _set_gconf(I):
                     pass
                 List.insert(0, to_add)
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Appended items:"), "\x1b[1;33m%s\x1b[m"%to_add_list
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;32m%s\x1b[m"%_("Appended items:"), to_add_list
     def installed(self):
         self.__check()
         import gconf
@@ -133,11 +133,11 @@ class _set_gconf(I):
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;31m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, oldvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%oldvalue
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;31m%s\x1b[m"%_("New value:"), oldvalue
         for key, to_remove_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_remove in to_remove_list:
@@ -146,8 +146,8 @@ class _set_gconf(I):
                 except ValueError:
                     pass
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Removed items:"), "\x1b[1;33m%s\x1b[m"%to_remove_list
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;31m%s\x1b[m"%_("Removed items:"), to_remove_list
     def support(self):
         try:
             import gconf
@@ -162,7 +162,7 @@ class _apt_install(I):
         if type ( self.pkgs ) != str:
             raise TypeError
         if self.pkgs == '' :
-            raise ValueError
+            raise ValueError, 'self.pkgs is empty.'
         for pkg in self.pkgs.split():
             import re
             if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
@@ -183,7 +183,7 @@ class _apt_install(I):
         if len(all_pkgs) > 1:
             not_installed = [p for p in all_pkgs if not APT.installed(p)]
             if len(not_installed) != len(all_pkgs):
-                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
@@ -220,7 +220,7 @@ class _path_lists(I):
         import os
         not_exist = [p for p in self.paths if not os.path.exists(p)]
         if not_exist:
-            print >>f, _('"%s" does not exist.')%' '.join(not_exist),
+            print >>f, _('Because "%s" does not exist.')%' '.join(not_exist),
 
 class _ff_extension(I):
     'Firefox Extension'
@@ -278,7 +278,7 @@ class _download_one_file(I):
     def get_reason(self, f):
         import os
         if not os.path.exists(self.file):
-            print >>f, _('"%s" does not exist.')%self.file,
+            print >>f, _('Because "%s" does not exist.')%self.file,
 
 class _rpm_install(I):
     def _check(self):
@@ -300,6 +300,6 @@ class _rpm_install(I):
         if len(all_pkgs) > 1:
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
-                print >>f, _('The packages "%s" are not installed.')%' '.join(not_installed),
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
         return _('Command:') + (' su -c "yum install %s"' % self.pkgs)

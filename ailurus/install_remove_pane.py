@@ -180,7 +180,7 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ o for o in self.app_objs
                                if o.cache_installed==False
                                and o.showed_in_toggle ]
-            depends = [ o.depends for o in to_install 
+            depends = [ o.depends() for o in to_install # the type of o.depends is types.ClassType 
                                    if hasattr(o, 'depends') ]
             to_install += depends
             to_install_repos = [ o for o in to_install 
@@ -401,12 +401,10 @@ class InstallRemovePane(gtk.VBox):
             if obj.cache_installed==False: # can install
                 # will be installed?
                 if not obj.showed_in_toggle: 
-                    if not hasattr(obj, 'get_reason'):
-                        print >>text, color( _('Not installed.') ),
-                    else:
-                        print >>text, begin_color()+_('Not installed, because:'),
-                        obj().get_reason(text)
-                        text.write( end_color() )
+                    print >>text, begin_color() + _('Not installed.'),
+                    if hasattr(obj, 'get_reason'):
+                        obj.get_reason(text)
+                    text.write( end_color() )
                 else:  
                     print >>text, color( _('Will be installed.') ),
 
@@ -708,8 +706,8 @@ class InstallRemovePane(gtk.VBox):
             treestore.append(parent, item)
         
         quick_setup_pane = gtk.HBox(False, 10)
-        quick_setup_pane.set_border_width(10)
-        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_pane.set_border_width(5)
+        quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
         def hide_quick_setup(w):

@@ -25,26 +25,6 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class ComicVODPlayer_new(I):
-    __doc__ = _('Mplayer with "vod" protocol support')
-    detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
-    category = 'media'
-    Chinese = True
-    license = GPL
-    depends = Repo_Mplayer_VOD
-    def install(self):
-        extension_path = FirefoxExtensions.get_extensions_path()
-        comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
-        run('cp %s %s'%(comicview, extension_path) )
-        delay_notify_firefox_restart()
-        # Remove current mplayer. Then install a newer version.
-        APT.remove('mplayer')
-        APT.install('mplayer')
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplemented
-
 class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
@@ -155,12 +135,13 @@ class SDL(_apt_install):
 #    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
 #    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-    license = GPL
-    pkgs = 'auto-apt'
+
+# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
+#class AutoApt(_apt_install):
+#    'Auto-apt'
+#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+#    license = GPL
+#    pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
@@ -194,7 +175,6 @@ class VirtualBox(_apt_install):
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     license = GPL
     category = 'vm'
-    manual = True
     pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen(I):
@@ -208,29 +188,25 @@ class GNOMEArtNextGen(I):
         if Config.get_Ubuntu_version() == 'hardy':
 
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-hardy.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
 471212, '52c556fafa9664284dcff9851528f3e5aae00ebe').download()
         
         elif Config.get_Ubuntu_version() == 'intrepid':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-intrepid.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
 444822, '4dc42fd446ebd8e615cf6490d6ecc94a403719b8').download()
         
         elif Config.get_Ubuntu_version() == 'jaunty':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-jaunty.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
 441222, 'c9134ad3405c660e6e07333994ca38d494f0f90f').download()
         
         elif Config.get_Ubuntu_version() == 'karmic':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-karmic.deb',
-'http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
+['http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
 441558, 'b2b834b1bfc76f01dce370b60ea706f6ed35e4da').download()
 
         else:

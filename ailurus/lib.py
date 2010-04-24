@@ -20,8 +20,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.1.3'
-AILURUS_RELEASE_DATE = '2010-04-16'
+AILURUS_VERSION = '10.04.2'
+AILURUS_RELEASE_DATE = '2010-04-24'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -229,8 +229,6 @@ class Config:
     def get_fastest_repository_response_time(cls):
         return cls.get_int('fastest_repository_response_time')
 
-Config.init()
-
 def install_locale(force_reload=False):
     assert isinstance(force_reload, bool)
     
@@ -240,18 +238,6 @@ def install_locale(force_reload=False):
 
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
-
-install_locale()
-
-GPL = _('GNU General Public License')
-LGPL = _('GNU Lesser General Public License')
-EPL = _('Eclipse Public License')
-MPL = _('Mozilla Public License')
-BSD = _('Berkeley Software Distribution License')
-MIT = _('MIT License')
-CDDL = _('Common Development and Distribution License')
-APL = _('Aptana Public License')
-AL = _('Artistic License')
 
 def DUAL_LICENSE(A, B):
     return _('Dual-licensed under %(A)s and %(B)s') % {'A':A, 'B':B}
@@ -299,8 +285,6 @@ class ResponseTime:
         assert isinstance(value, (int,float)) and value > 0
         cls.map[url] = value
         cls.changed = True
-import atexit
-atexit.register(ResponseTime.save)
 
 class ShowALinuxSkill:
     @classmethod
@@ -329,16 +313,6 @@ class ShowALinuxSkill:
         import os
         path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
         os.system('rm %s -f'%path)
-
-try:
-    Config.get_bool('show-a-linux-skill-bubble')
-except:
-    try:
-        Config.set_bool('show-a-linux-skill-bubble', True)
-        ShowALinuxSkill.install()
-    except:
-        import traceback
-        traceback.print_exc()
 
 class CommandFailError(Exception):
     'Fail to execute a command'
@@ -414,6 +388,9 @@ def spawn_as_root(command):
     obj = bus.get_object('cn.ailurus', '/')
     obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
+class AccessDeniedError(Exception):
+    'User press cancel button in policykit window'
+
 def run_as_root(cmd, ignore_error=False):
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
@@ -425,7 +402,11 @@ def run_as_root(cmd, ignore_error=False):
         import dbus
         bus = dbus.SystemBus()
         obj = bus.get_object('cn.ailurus', '/')
-        obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        try:
+            obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        except dbus.exceptions.DBusException, e:
+            if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+            else: raise
     else:
         run(cmd, ignore_error)
 
@@ -696,7 +677,7 @@ class APT:
             cmd.append("--set-selections-file")
             cmd.append("%s" % f.name)
             # print message
-            print '\x1b[1;33m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+            print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
             # run command
             run_as_root(' '.join(cmd))
             # notify change
@@ -747,10 +728,11 @@ class APT:
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
-        print '\x1b[1;33m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
+        print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
         cls.updated = True
+        cls.cache_changed()
 
 class DPKG:
     @classmethod
@@ -858,9 +840,6 @@ class KillWhenExit:
                 import traceback, sys
                 traceback.print_exc(file=sys.stderr)
         cls.task_list = []
-
-import atexit
-atexit.register(KillWhenExit.kill_all)
 
 def download(url, filename):
     is_string_not_empty(url)
@@ -1215,6 +1194,16 @@ class R:
             self.filename = re.match('^.+/(.+)$', u).group(1)
             
         self.sorted = False
+    def can_download(self):
+        import urllib2
+        for url in self.url:
+            try:
+                print url
+                f = urllib2.urlopen(url)
+                return True
+            except:
+                pass
+        return False
     @classmethod
     def create_tmp_dir(cls):
         dir = '/var/cache/ailurus/'
@@ -1406,10 +1395,15 @@ def show_about_dialog():
     about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
     about.set_website('http://ailurus.cn/')
     about.set_authors( [
+          _('Developers:'),
           'Homer Xing <homer.xing@gmail.com>', 
           'CHEN Yangyang <skabyy@gmail.com>',
-          'Starboy Qi <starboy.qi@gmail.com>',
-          'MA Yue <velly.empire@gmail.com>' ] )
+          'MA Yue <velly.empire@gmail.com>',
+          'QI Chengjie <starboy.qi@gmail.com>',
+          '',
+          _('Contributors:'),
+          'HUANG Wei <wei.kukey@gmail.com>',
+           ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
           'SU Yun',
@@ -1664,3 +1658,32 @@ def show_changelog():
     dialog.vbox.show_all()
     dialog.run()
     dialog.destroy()
+
+
+Config.init()
+
+install_locale()
+
+GPL = _('GNU General Public License')
+LGPL = _('GNU Lesser General Public License')
+EPL = _('Eclipse Public License')
+MPL = _('Mozilla Public License')
+BSD = _('Berkeley Software Distribution License')
+MIT = _('MIT License')
+CDDL = _('Common Development and Distribution License')
+APL = _('Aptana Public License')
+AL = _('Artistic License')
+
+import atexit
+atexit.register(ResponseTime.save)
+atexit.register(KillWhenExit.kill_all)
+
+try:
+    Config.get_bool('show-a-linux-skill-bubble')
+except:
+    try:
+        Config.set_bool('show-a-linux-skill-bubble', True)
+        ShowALinuxSkill.install()
+    except:
+        import traceback
+        traceback.print_exc()
