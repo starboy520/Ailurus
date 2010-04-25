@@ -706,8 +706,8 @@ class InstallRemovePane(gtk.VBox):
             treestore.append(parent, item)
         
         quick_setup_pane = gtk.HBox(False, 10)
-        quick_setup_pane.set_border_width(10)
-        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_pane.set_border_width(5)
+        quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
         def hide_quick_setup(w):

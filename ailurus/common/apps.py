@@ -152,8 +152,10 @@ class Speed_Up_Firefox(I):
                 content[i] = new
             if line.startswith('Name='):
                 content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        with TempOwn('/usr/local/share/applications/firefox.nopango.desktop') as o:
-            with open('/usr/local/share/applications/firefox.nopango.desktop', 'w') as f:
+        dir = '/usr/local/share/applications/'
+        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
+        with TempOwn(dir + 'firefox.nopango.desktop') as o:
+            with open(dir + 'firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
     def installed(self):
         import os 
@@ -340,7 +342,7 @@ class FFAutoProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
-        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/69166/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi?confirmed'],
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/11009/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi'],
     108858, '03f7b46e5a042491dffc08022360cb4ba7efc9d1')
         _ff_extension.__init__(self)
 
@@ -541,18 +543,6 @@ class FFStylish(_ff_extension):
         self.range = '3.0~3.7'
         self.name = u'Stylish'
         self.R = R(['http://addons.mozilla.org/en-US/firefox/downloads/latest/2108/addon-2108-latest.xpi'])
-        _ff_extension.__init__(self)
-
-class FFTabMixLite(_ff_extension):
-    __doc__ = _('Tab Mix Lite CE: Re-open closed tabs')
-    license = MPL
-    def __init__(self):
-        self.desc = _('Close tabs by double click tabs title. Re-open closed tabs.')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/12391'
-        self.range = '2.0~3.6'
-        self.name = u'Tab Mix Lite CE'
-        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/55633/tab_mix_lite_ce-3.0.4-fx.xpi?confirmed'],
-    30135, '42997280a1eb4a70b56a79ad5bd38c4cc3274973')
         _ff_extension.__init__(self)
 
 class FFTamperData(_ff_extension):

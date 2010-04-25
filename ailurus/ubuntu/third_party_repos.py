@@ -225,11 +225,14 @@ class _launchpad(I):
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
 
+# Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
     __doc__ = _('Firefox 3.6 (stable)')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     ppa = 'mozillateam/firefox-stable'
     content = 'firefox'
+    def support(self):
+        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
@@ -475,6 +478,8 @@ class Repo_RedNoteBook(_repo):
         self.key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
         self.key_id = 'FF95D333'
         _repo.__init__(self)
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
 
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')

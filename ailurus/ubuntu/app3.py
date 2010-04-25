@@ -350,9 +350,10 @@ class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
     name = 'dns-server'
 
-class Tasksel_Mail_server(_tasksel):
-    __doc__ = _('Mail server')
-    name = 'mail-server'
+# 'postfix' cannot be installed in Lucid :(
+#class Tasksel_Mail_server(_tasksel):
+#    __doc__ = _('Mail server')
+#    name = 'mail-server'
 
 class Tasksel_Openssh_server(_tasksel):
     __doc__ = _('OpenSSH server')
@@ -432,7 +433,7 @@ class Launch_Tasksel(I):
     def remove(self):
         raise NotImplementedError
 
-class Fctix(I):
+class Fcitx(I):
     'Fcitx'
     category = 'language'
     detail = _('This is a popular Chinese input method.\n'
@@ -447,6 +448,7 @@ class Fctix(I):
             f=R(['http://fcitx.googlecode.com/files/fcitx-svn_3.6.3-20100305-r309_amd64.deb'],
                 7408298,'00e9508a6602f71495e21222c204d14289ff0f13').download()
         run('gdebi-gtk ' + f)
+        APT.cache_changed()
     def installed(self):
         return APT.installed('fcitx-svn')
     def remove(self):

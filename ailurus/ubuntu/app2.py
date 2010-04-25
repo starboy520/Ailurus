@@ -135,12 +135,13 @@ class SDL(_apt_install):
 #    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
 #    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-    license = GPL
-    pkgs = 'auto-apt'
+
+# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
+#class AutoApt(_apt_install):
+#    'Auto-apt'
+#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+#    license = GPL
+#    pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
@@ -174,7 +175,6 @@ class VirtualBox(_apt_install):
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     license = GPL
     category = 'vm'
-    manual = True
     pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen(I):
@@ -231,6 +231,31 @@ class GNOMEArtNextGen(I):
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
+
+class GoogleEarth(I):
+    __doc__ = _('Google Earth')
+    def install(self):
+        self.file = R(['http://dl.google.com/earth/client/current/GoogleEarthLinux.bin'],25989559,'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        import os
+        run('cp %s /tmp/' % self.file)
+        os.chdir('/tmp/')
+        run('chmod +x GoogleEarthLinux.bin')
+        run('./GoogleEarthLinux.bin')
+    def installed(self):
+        import os
+        path = os.path.expanduser('~/google-earth')
+        return os.path.exists(path) or os.path.exists('/opt/google-earth')
+    def remove(self):
+        import os
+        path = os.path.expanduser('~/google-earth/')
+        if os.path.exists(path):
+            os.chdir(path)
+            run('./uninstall')
+        elif os.path.exists('/opt/google-earth'):
+            os.chdir('/opt/google-earth/')
+            run('./uninstall')
+            
+            
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.')

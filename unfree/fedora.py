@@ -329,7 +329,6 @@ class VirtualBox(_rpm_install):
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     category = 'vm'
-    manual = True
     depends = Repo_VirtualBox
     pkgs = 'virtualbox'
 

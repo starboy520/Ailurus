@@ -79,6 +79,7 @@ class SelectWorksDialog(gtk.Dialog):
             sys.exit()
 
 def acquire_root_privilege():
+    print '\x1b[1;36m', _('Acquire root privilege'), '\x1b[m'
     run_as_root('true')
 
 class WaitNetworkDialog(gtk.Dialog):

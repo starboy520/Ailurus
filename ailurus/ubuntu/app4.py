@@ -41,6 +41,19 @@ class AWN(_apt_install):
     depends = Repo_AWN_Development
     pkgs = 'avant-window-navigator-trunk'
 
+class ComicView(_ff_extension):
+    __doc__ = _('Adblock+: Block 99% advertisement')
+    license = GPL
+    def __init__(self):
+        self.desc = ''
+        self.download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
+        self.range = '3.0~3.7'
+        self.name = u'Comic Viewer'
+        self.R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
+        _ff_extension.__init__(self)
+    def support(self):
+        return False
+
 class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
@@ -48,18 +61,22 @@ class ComicVODPlayer_new(I):
     Chinese = True
     license = GPL
     depends = Repo_Mplayer_VOD
+    def __init__(self):
+        self.comicview = ComicView()
     def install(self):
-        extension_path = FirefoxExtensions.get_extensions_path()
-        comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
-        run('cp %s %s'%(comicview, extension_path) )
-        delay_notify_firefox_restart()
+        if not self.comicview.installed():
+            self.comicview.install()
         # Remove current mplayer. Then install a newer version.
         APT.remove('mplayer')
         APT.install('mplayer')
+        # Remove repository
+        Repo_Mplayer_VOD().remove()
     def installed(self):
-        return False
+        return self.comicview.installed() and APT.installed('mplayer')
     def remove(self):
-        raise NotImplemented
+        APT.remove('mplayer')
+    def support(self):
+        return APT.installed('firefox')
 
 class Audacious(_apt_install):
     __doc__ = _('Audacious: Audio player')
@@ -81,8 +98,6 @@ class Christine(_apt_install):
     category = 'media'
     depends = Repo_Christine
     pkgs = 'christine'
-    def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
 
 class Gmchess(_apt_install):
     __doc__ = _('Gmchess: Chinese chess game')
@@ -170,6 +185,8 @@ class RedNoteBook(_apt_install):
     category = 'office'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
     
 class Shutter(_apt_install):
     __doc__ = _('Shutter: A screen-shot application')
@@ -187,6 +204,7 @@ class Shutter(_apt_install):
 #    def support(self):
 #        return Config.get_Ubuntu_version() != 'lucid'
 
+# Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
     license = TRI_LICENSE(MPL, GPL, LGPL)
@@ -194,7 +212,7 @@ class Firefox_3_6(_apt_install):
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
@@ -202,6 +220,8 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
@@ -209,4 +229,5 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-
+    def support(self):
+        return Config.get_Ubuntu_version() != 'lucid'
