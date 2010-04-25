@@ -2,6 +2,7 @@
 %define version 10.04.2.2
 %define unmangled_version 10.04.2.2
 %define release 1
+%define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
 Summary: makes Linux easier to use
 Name: %{name}
