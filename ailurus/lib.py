@@ -850,8 +850,15 @@ def download(url, filename):
         timeout = Config.wget_get_timeout()
         tries = Config.wget_get_triesnum()
 
-        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
-            %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
+        import subprocess
+        import os
+        env = os.environ
+        env['http_proxy'] = ''
+        env['ftp_proxy'] = ''
+        task = subprocess.Popen("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
+            %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename}, shell=True, cwd=os.getcwd(), env=env)
+        returncode = task.wait()
+        assert returncode == 0
     except:
         import os
         if os.path.exists(filename): os.unlink(filename)
@@ -1468,6 +1475,7 @@ fedora.png is copied from Fedora project. It is released under the GPL v3.0 lice
 firestarter.png is copied from Firestarter project. It is released under the GPL license. Its copyright is holded by Tomas Junnonen.
 gcompris.png is copied from GCompris project. It is released under the GPL license. Its copyright is holded by Bruno Coudoin.
 liferea.png is copied from Liferea project. It is released under the GPL license. Its copyright is holded by Liferea Team.
+locale.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
 stardict.png is copied from Stardict project. It is released under GPL v3 license. Its copyright is holded by Stardict Team.
 m_clean_up.png is released under the GPL license. Its copyright is holded by MA Yue.
 netbeans.png is copied from Netbeans project. It is released under the GPL v2 license. Its copyright is holded by Sun Microsystems Ltd.
