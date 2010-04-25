@@ -850,15 +850,8 @@ def download(url, filename):
         timeout = Config.wget_get_timeout()
         tries = Config.wget_get_triesnum()
 
-        import subprocess
-        import os
-        env = os.environ
-        env['http_proxy'] = ''
-        env['ftp_proxy'] = ''
-        task = subprocess.Popen("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
-            %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename}, shell=True, cwd=os.getcwd(), env=env)
-        returncode = task.wait()
-        assert returncode == 0
+        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
+            %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
         import os
         if os.path.exists(filename): os.unlink(filename)
