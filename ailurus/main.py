@@ -41,6 +41,9 @@ def set_default_window_icon():
     gtk.window_set_default_icon_from_file(D+'suyun_icons/default.png')
 
 def with_same_content(file1, file2):
+    import os
+    if not os.path.exists(file1) or not os.path.exists(file2):
+        return False
     with open(file1) as f:
         content1 = f.read()
     with open(file2) as f:
@@ -81,14 +84,14 @@ def check_dbus_configuration():
     dialog.run()
     dialog.destroy()
 
-def get_desktop_environment():
+def import_desktop_environment():
     if Config.is_GNOME():
         import gnome
         return gnome
     else:
         return None
 
-def get_distribution():
+def import_distribution():
     if Config.is_Mint():
         try:
             versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
@@ -129,6 +132,7 @@ def exception_happened(etype, value, tb):
     print >>msg, _('Traceback:')
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
+    print >>msg, 'Ailurus version:', AILURUS_VERSION
 
     title_box = gtk.HBox(False, 5)
     import os
@@ -172,47 +176,76 @@ def exception_happened(etype, value, tb):
 
 sys.excepthook = exception_happened
 
-class MainView:
-    def __create_toolitem(self, icon, text, signal_name, callback, *callback_args):
+class toolitem(gtk.ToolItem):
+    def __load_image(self):
+        pixbuf = get_pixbuf(self.icon, self.image_size, self.image_size)
+        image = gtk.image_new_from_pixbuf(pixbuf)
+        child = self.align_image.get_child()
+        if child:
+            self.align_image.remove(child)
+        self.align_image.add(image)
+        self.align_image.set_size_request(3*self.image_size/2, -1)
+        self.align_image.show_all()
+    
+    def refresh(self, size):
+        if self.image_size != size:
+            self.image_size = size
+            self.__load_image()
+            self.__change_font_size()
+    
+    def __change_font_size(self):
+        import pango
+        if self.image_size <= 25:
+            font_size = 4
+        elif 25 < self.image_size <= 30:
+            font_size = 5
+        elif 30 < self.image_size <= 40:
+            font_size = 6
+        else:
+            font_size = 8
+        self.text.modify_font(pango.FontDescription('Sans %s' % font_size))
+        
+    def __init__(self, icon, text, signal_name, callback, *callback_args):
+        gtk.ToolItem.__init__(self)
+        
         is_string_not_empty(icon)
         is_string_not_empty(text)
         is_string_not_empty(signal_name)
         assert callable(callback)
         
-        pixbuf = get_pixbuf(icon, 40, 40)
-        image = gtk.image_new_from_pixbuf(pixbuf)
-        align_image = gtk.Alignment(0.5, 0.5)
-        align_image.add(image)
-        align_image.set_size_request(65, -1)
-        text = gtk.Label(text)
+        self.image_size = 40;
+        self.icon = icon
+        self.align_image = align_image = gtk.Alignment(0.5, 0.5)
+        self.__load_image()
+        self.text = text = gtk.Label(text)
         import pango
         text.modify_font(pango.FontDescription('Sans 9'))
         text.set_alignment(0.5, 0.5)
         text.set_justify(gtk.JUSTIFY_CENTER)
-        vbox = gtk.VBox(False, 5)
-        vbox.pack_start(align_image)
-        vbox.pack_start(text)
+#        text.set_ellipsize(pango.ELLIPSIZE_END)
+        vbox = vbox = gtk.VBox(False, 5)
+        vbox.pack_end(text)
+        vbox.pack_end(align_image)
         button = gtk.Button()
         button.add(vbox)
         button.set_relief(gtk.RELIEF_NONE)
         button.connect(signal_name, callback, *callback_args)
-        item = gtk.ToolItem()
-        item.add(button)
-        return item
+        self.add(button)
 
+class MainView:
     def add_quit_button(self):
-        item_quit = self.__create_toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
+        item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
         menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
         menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION, self)
-        item = self.__create_toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
@@ -222,6 +255,7 @@ class MainView:
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
+                ('FedoraFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
                 ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
                 ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
@@ -229,7 +263,7 @@ class MainView:
         List.reverse()
         for name, icon, text in List:
             if not name in self.contents: continue
-            item = self.__create_toolitem(icon, text, 'clicked', self.activate_pane, name)
+            item = toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
             left_most_pane_name = name
         
@@ -239,12 +273,35 @@ class MainView:
             assert left_most_pane_name != None
             self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
+    def get_item_icon_size(self):
+#        if self.last_x < 750:
+#            return 10
+#        if self.last_x < 800:
+#            return 20
+#        elif self.last_x < 850:
+#            return 30
+#        else:
+#            return 40
+        return int(self.last_x / 20)
+
+    def __refresh_toolbar(self):
+        icon_size = self.get_item_icon_size()
+        for i in range(0, self.toolbar.get_n_items()):
+            item = self.toolbar.get_nth_item(i)
+            item.refresh(icon_size)
+
     def __show_popupmenu_on_toolbaritem(self, widget, event, menu):
         if event.type == gtk.gdk.BUTTON_RELEASE and event.button == 1:
-            menu.popup(None, None, None, event.button, event.time)
+            def func(menu):
+                (x, y) = self.window.get_position()
+                rectangle = widget.get_allocation()
+                x += rectangle.x
+                y += rectangle.y + rectangle.height + 20
+                return (x, y, True)
+            menu.popup(None, None, func, event.button, event.time)
             return True
         return False
-
+    
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
         if name in self.contents:
@@ -316,7 +373,6 @@ class MainView:
             traceback.print_exc()
 
     def __init__(self):
-        self.app_classes = None
         self.window = None # MainView window
         self.stop_delete_event = False
         self.contents = {}
@@ -335,6 +391,12 @@ class MainView:
         
         self.window = window = gtk.Window(gtk.WINDOW_TOPLEVEL)
         window.set_title('Ailurus ' + AILURUS_VERSION)
+        self.last_x = self.window.get_size()[0]
+        def configure_event(window, event, toolbar):
+            if self.last_x != self.window.get_size()[0]:
+                self.last_x = self.window.get_size()[0]
+                self.__refresh_toolbar()
+        self.window.connect('configure_event', configure_event, self.toolbar)
         window.connect("delete_event", self.terminate_program)
         window.add(vbox)
 
@@ -342,8 +404,8 @@ class MainView:
         WindowPos.load(window,'main')
 
 import common as COMMON
-DESKTOP = get_desktop_environment()
-DISTRIBUTION = get_distribution()
+DESKTOP = import_desktop_environment()
+DISTRIBUTION = import_distribution()
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 from optparse import OptionParser
@@ -440,11 +502,10 @@ if options.install_software or options.all:
     elif getattr(DISTRIBUTION, '__name__') == 'fedora':
         RPM.refresh_cache()
     
-    app_classes = load_app_classes(COMMON, DESKTOP, DISTRIBUTION)
-    main_view.app_classes = app_classes
+    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
     custom_app_classes = load_custom_app_classes()
     from install_remove_pane import InstallRemovePane
-    pane = InstallRemovePane(main_view, app_classes + custom_app_classes)
+    pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
     main_view.register(pane)
     main_view.install_remove_pane = pane
 

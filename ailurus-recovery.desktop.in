@@ -1,6 +1,6 @@
 [Desktop Entry]
 _Name=Ailurus - Recovery
-_Comment=makes Linux easier to use
+_Comment=Backup and recover Synaptic/YUM status
 Exec=/usr/bin/ailurus --fast --recovery
 Icon=/usr/share/ailurus/data/velly_icons/m_recovery.png
 Terminal=false

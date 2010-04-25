@@ -40,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
             # We add all children of this class to 'self.selected_categories'
             self.selected_categories = []
             child = model.iter_children(parent)
-            while True:
+            while child:
                 category = model.get_value(child, 2)
                 self.selected_categories.append(category)
                 child = model.iter_next(child)
@@ -102,27 +102,17 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
     
     def __query_work(self, to_install, to_remove):
-        time = 0
-        size = 0
         msg = ''
         if len(to_install):
             msg += _('To be installed:\n')
             for obj in to_install: 
                 msg += '<span color="blue">%s</span>\n'%obj.__doc__
-                time += obj.time
-                size += obj.size
             msg += '\n'
         if len(to_remove):
             msg += _('To be removed:\n')
             for obj in to_remove: 
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
-                time += obj.time
-                size -= obj.size
             msg += '\n' 
-        #display size cost
-        if size:
-            if size>0: msg += _('%s disk space will be occupied.')%derive_size(size)
-            else: msg += _('%s disk space will be freed.')%derive_size(-size)
         
         dialog = gtk.MessageDialog( None,
             gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION,
@@ -163,8 +153,8 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
 
     def app_class_installed_state_changed_by_external(self):
-        for obj in self.classobjs:
-            obj.showed_in_toggle = obj.cache_installed = obj().installed()
+        for obj in self.app_objs:
+            obj.showed_in_toggle = obj.cache_installed = obj.installed()
             
         level1 = self.treestore.get_iter_first()
         while level1!=None:
@@ -184,51 +174,50 @@ class InstallRemovePane(gtk.VBox):
             os.dup2(w, sys.stdout.fileno())
             import thread
             thread.start_new_thread(self.terminal.read, (r,) )
+            run_as_root('true') # require authentication first. do not require authentication any more.
             s_i = []; s_r = []; f_i = []; f_r = []
             
-            to_install = [ cls for cls in self.classobjs
-                               if cls.cache_installed==False
-                               and cls.showed_in_toggle ]
-            depends = [ cls.depends for cls in to_install 
-                                   if hasattr(cls, 'depends') ]
+            to_install = [ o for o in self.app_objs
+                               if o.cache_installed==False
+                               and o.showed_in_toggle ]
+            depends = [ o.depends() for o in to_install # the type of o.depends is types.ClassType 
+                                   if hasattr(o, 'depends') ]
             to_install += depends
-            to_install_repos = [ cls for cls in to_install 
-                                     if getattr(cls, 'this_class_is_a_repository', False) ]
-            to_install_non_repos = [ cls for cls in to_install
-                                                 if cls not in to_install_repos ]
+            to_install_repos = [ o for o in to_install 
+                                     if getattr(o, 'this_is_a_repository', False) ]
+            to_install_non_repos = [ o for o in to_install
+                                                 if o not in to_install_repos ]
             if to_install_repos:
-                for cls in to_install_repos:
-                    print '\x1b[1;32m', _('Installing:'), cls.__doc__, '\x1b[m'
+                for obj in to_install_repos:
+                    print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
                     try: 
                         reset_dir()
-                        obj = cls()
                         if not obj.installed(): obj.install()
-                    except: f_i += [(cls,sys.exc_info())]
-                    else: s_i += [cls]
+                    except: f_i += [(obj, sys.exc_info())]
+                    else: s_i += [obj]
                 APT.apt_get_update()
                 
-            for cls in to_install_non_repos:
-                print '\x1b[1;32m', _('Installing:'), cls.__doc__, '\x1b[m'
+            for obj in to_install_non_repos:
+                print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
-                    obj = cls()
                     if not obj.installed(): obj.install()
-                except: f_i += [(cls,sys.exc_info())]
-                else: s_i += [cls]
+                except: f_i += [(obj, sys.exc_info())]
+                else: s_i += [obj]
             
-            to_remove = [ cls for cls in self.classobjs
-                         if cls.cache_installed 
-                         and cls.showed_in_toggle==False ]
-            for cls in to_remove:
-                print '\x1b[1;35m', _('Removing:'), cls.__doc__, '\x1b[m'
+            to_remove = [ o for o in self.app_objs
+                         if o.cache_installed 
+                         and o.showed_in_toggle==False ]
+            for obj in to_remove:
+                print '\x1b[1;35m', _('Removing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
-                    cls().remove()
-                except: f_r += [(cls,sys.exc_info())]
-                else: s_r += [cls]
+                    obj.remove()
+                except: f_r += [(obj, sys.exc_info())]
+                else: s_r += [obj]
             
-            for cls in self.classobjs:
-                cls.showed_in_toggle = cls.cache_installed = cls().installed()
+            for o in self.app_objs:
+                o.showed_in_toggle = o.cache_installed = o.installed()
             
             gtk.gdk.threads_enter()
             level1 = self.treestore.get_iter_first()
@@ -243,9 +232,9 @@ class InstallRemovePane(gtk.VBox):
             
             print '\n', _('Summary:'), '\n'
             if len(s_i):
-                for cls in s_i: print '\x1b[1;32m', _('Successfully installed:'), cls.__doc__, '\x1b[m'
+                for o in s_i: print '\x1b[1;32m', _('Successfully installed:'), o.__doc__, '\x1b[m'
             if len(s_r):
-                for cls in s_r: print '\x1b[1;35m', _('Successfully removed:'), cls.__doc__, '\x1b[m'
+                for o in s_r: print '\x1b[1;35m', _('Successfully removed:'), o.__doc__, '\x1b[m'
             if len(f_i):
                 for tup in f_i:
                     print '\x1b[1;31m', _('Failed to install:'), tup[0].__doc__, '\x1b[m'
@@ -298,10 +287,10 @@ class InstallRemovePane(gtk.VBox):
         parentbox.show_all()
 
     def __apply_button_clicked(self, widget):
-        to_install = [ obj for obj in self.classobjs
+        to_install = [ obj for obj in self.app_objs
                       if obj.cache_installed==False
                       and obj.showed_in_toggle ]
-        to_remove = [ obj for obj in self.classobjs
+        to_remove = [ obj for obj in self.app_objs
                      if obj.cache_installed 
                      and obj.showed_in_toggle==False ]
         has_work = len(to_install) or len(to_remove)
@@ -327,8 +316,8 @@ class InstallRemovePane(gtk.VBox):
         obj1 = model.get_value ( iter1, 0 )
         obj2 = model.get_value ( iter2, 0 )
         import types
-        assert isinstance ( obj1 , types.ClassType )
-        assert isinstance ( obj2 , types.ClassType )        
+        assert isinstance ( obj1 , types.InstanceType )
+        assert isinstance ( obj2 , types.InstanceType )        
         str1, str2 = obj1.__doc__, obj2.__doc__
         return cmp(str1, str2)
 
@@ -337,7 +326,7 @@ class InstallRemovePane(gtk.VBox):
         path = treestorefilter.convert_path_to_child_path(path1)
         obj = treestore[path][0]
         import types
-        assert isinstance(obj, types.ClassType)
+        assert isinstance(obj, types.InstanceType)
         assert hasattr(obj, 'showed_in_toggle')
         obj.showed_in_toggle = not obj.showed_in_toggle
         treestore.row_changed(path,  treestore.get_iter(path) )
@@ -346,14 +335,14 @@ class InstallRemovePane(gtk.VBox):
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value ( iter, 0 )
         import types
-        assert isinstance ( obj, types.ClassType )
+        assert isinstance ( obj, types.InstanceType )
         assert hasattr ( obj, 'showed_in_toggle' )
         cell.set_property ( 'active', obj.showed_in_toggle )
 
     def __text_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value ( iter, 0 )
         import types
-        assert isinstance ( obj, types.ClassType )
+        assert isinstance ( obj, types.InstanceType )
         assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
         cell.set_property ( 'markup', '%s'%obj.__doc__ )
         cell.set_property ( 'strikethrough', 
@@ -376,16 +365,25 @@ class InstallRemovePane(gtk.VBox):
         iter = store.get_iter( pathlist[0] )
         obj=store.get_value ( iter, 0 )
         import types
-        assert isinstance(obj, types.ClassType)
+        assert isinstance(obj, types.InstanceType)
         assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
         self.__show_detail(obj)
 
     def __show_detail(self, obj):
+        def begin_color():
+            return '<span color="#870090">'
+        
+        def end_color():
+            return '</span>'
+        
+        def color(string):
+            return '%s%s%s'%( begin_color(), string, end_color() )
+
         if isinstance(obj, str) or isinstance(obj, unicode):
             self.detail.get_buffer().set_text(obj)
         else:
             import types
-            assert isinstance(obj, types.ClassType)
+            assert isinstance(obj, types.InstanceType)
             assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
             
             import StringIO
@@ -403,28 +401,16 @@ class InstallRemovePane(gtk.VBox):
             if obj.cache_installed==False: # can install
                 # will be installed?
                 if not obj.showed_in_toggle: 
-                    if not hasattr(obj, 'get_reason'):
-                        print >>text, color( _('Not installed.') ),
-                    else:
-                        print >>text, begin_color()+_('Not installed, because:'),
-                        obj().get_reason(text)
-                        text.write( end_color() )
+                    print >>text, begin_color() + _('Not installed.'),
+                    if hasattr(obj, 'get_reason'):
+                        obj.get_reason(text)
+                    text.write( end_color() )
                 else:  
                     print >>text, color( _('Will be installed.') ),
-                # attach installed size
-                if obj.size: 
-                    size = derive_size(obj.size)
-                    print >>text, begin_color()+_('Installed size is'), size, end_color(),
 
             else: # already installed
-                if obj.showed_in_toggle:
-                    print >>text, color(_('Installed.')), 
-                else: # will be removed?
-                    print >>text, color(_('Will be removed.')), 
-                    # attach size
-                    if obj.size: 
-                        size = derive_size(obj.size)
-                        print >>text, begin_color()+_('Will free %s disk space.')%size, end_color(),
+                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
+                else:                    print >>text, color(_('Will be removed.')), 
                         
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()
@@ -434,7 +420,7 @@ class InstallRemovePane(gtk.VBox):
         assert isinstance(self.selected_categories, list)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
-        assert isinstance(obj, types.ClassType)
+        assert isinstance(obj, types.InstanceType)
         assert hasattr(obj, 'category')
         
         is_right_category = obj.category in self.selected_categories
@@ -449,12 +435,16 @@ class InstallRemovePane(gtk.VBox):
                 return is_right_category and ( inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail) )
 
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
+        import os
         class0 = model.get_value ( iter, 0 )
         if not hasattr(class0, 'logo_pixbuf'):
-            logo = getattr(class0, 'logo', 'blank.png')
-            import os
-            if os.path.exists(D+'other_icons/'+logo): path = D+'other_icons/'+logo
-            elif os.path.exists(D+'appicons/'+logo): path = D+'appicons/'+logo
+            class_name = class0.__class__.__name__
+            for dir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
+                path = D + dir + class_name + '.png'
+                if os.path.exists(path): break
+            else:
+                path = D + 'other_icons/blank.png'
+                # print 'Warning: class %s has not any logo.' % class_name
             class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
 
@@ -462,20 +452,17 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         self.set_sensitive(False)
         def launch():
-            try:
-                import os
-                me_path = os.path.dirname(os.path.abspath(__file__))
-                FileServer.chdir(me_path)
+            import os
+            me_path = os.path.dirname(os.path.abspath(__file__))
+            with Chdir(me_path) as o:
                 import subprocess
                 task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
                 task.wait()
-            finally:
-                FileServer.chdir_back()
-                gtk.gdk.threads_enter()
-                self.app_class_installed_state_changed_by_external()
-                self.parentwindow.unlock()
-                self.set_sensitive(True)
-                gtk.gdk.threads_leave()
+            gtk.gdk.threads_enter()
+            self.app_class_installed_state_changed_by_external()
+            self.parentwindow.unlock()
+            self.set_sensitive(True)
+            gtk.gdk.threads_leave()
 
         import thread
         thread.start_new_thread(launch, ())
@@ -622,7 +609,7 @@ class InstallRemovePane(gtk.VBox):
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
 
-    def __init__(self, parentwindow, classobjs):
+    def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 0)
         self.detail = None # A gtk.Label which shows widget detail.
         self.treeview = None # A gtk.TreeView in right pane.
@@ -631,7 +618,7 @@ class InstallRemovePane(gtk.VBox):
         self.filter_text = ''
         self.filter_option = ''
         self.selected_categories = [ 'tweak' ] # Selected categories in the left pane
-        self.classobjs = None # objs in self.treestore
+        self.app_objs = None # objs in self.treestore
         self.left_treeview = None # A gtk.TreeView in left pane.
         self.hpaned = hpaned = gtk.HPaned()
         self.vpaned = None
@@ -661,15 +648,15 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
-        self.classobjs = classobjs
+        self.app_objs = app_objs
         # only append clsobjs into treestore.
         # do not append titles into treestore.
-        for obj in classobjs :
+        for obj in app_objs :
             self.treestore.append ( None, [obj] )
         
         # the set of all categories
         all_categories = set()
-        for obj in classobjs :
+        for obj in app_objs :
             all_categories.add(obj.category)
 
         def icon(path):
@@ -719,8 +706,8 @@ class InstallRemovePane(gtk.VBox):
             treestore.append(parent, item)
         
         quick_setup_pane = gtk.HBox(False, 10)
-        quick_setup_pane.set_border_width(10)
-        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_pane.set_border_width(5)
+        quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
         def hide_quick_setup(w):
@@ -737,3 +724,19 @@ class InstallRemovePane(gtk.VBox):
         self.pack_start(hpaned)
         self.show_all()
         self.load_state()
+
+if __name__ == '__main__':
+    import common as COMMON
+    import gnome as DESKTOP
+    import ubuntu as DISTRIBUTION
+    from loader import load_app_objs
+    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
+    class Dummy:
+        def lock(self): pass
+        def unlock(self): pass
+    main_view = Dummy()
+    pane = InstallRemovePane(main_view, app_objs)
+    window = gtk.Window()
+    window.add(pane)
+    window.show_all()
+    gtk.main()

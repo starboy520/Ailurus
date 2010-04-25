@@ -1,3 +1,79 @@
+2010-04-25 CHEN Yangyang <skabyy@gmail.com>
+    * Change the position of the popup menu of toolitem
+    * The remove list for kernel will not list the current using kernel anymore
+    * Add a button to show all the tips of day
+    * The top toolbar will automatically resize when the window is resized
+
+2010-04-24 Homer Xing <homer.xing@gmail.com>
+
+    * Do not raise exception when user cancel policy-kit in clean up pane.
+    * Show a notify after clearing recent documents list.
+    * Fix bug: MPlayer-vod cannot be installed.
+    * Fix bug: "Speed up firefox" failed if directory does not exist.
+    * Fix bug: AutoProxy installation error.
+    * Fix bug: Fcitx cannot be detected after installation.
+    * Change text color.
+    * Reduce border width of "Quick install" button. Increase its width.
+    * Fix bug: Cannot launch Ailurus by root.
+
+2010-04-23 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: APT cache is not automatically refreshed after "apt-get update".
+    * Correct some typos.
+
+2010-04-19 MA Yue <velly.empire@gmail.com>
+
+    * Add Firefox 3.6.
+    * Add Stylish: Change websites themes.
+    * Add VEditor: Verilog and VHDL editor.
+    * Display OpenGL version.
+    * Add third party software.
+
+2010-04-18 Homer Xing <homer.xing@gmail.com>
+
+    * Optimize source code:
+      Reduce strings in "license=" attributes.
+
+2010-04-17 Homer Xing <homer.xing@gmail.com>
+
+    * Add "Contributing to Ailurus" dialog in "Others" menu.
+    * Optimize source code: 
+      Replace FileServer by Chdir.
+	  Reduce reduplicative get_reason() call.
+      Improve get_reason() in _apt_install, _rpm_install and _path_lists.
+      Remove get_reason() from _set_gconf.
+      Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
+      Do not write "logo=" attribute any more.
+      Remove "size=" attribute. 
+
+2010-04-16 Homer Xing <homer.xing@gmail.com>
+
+    * Implement "Fastest repository" pane for Fedora.
+    * Fix bug: If netbeans 6.5 is installed, then "Netbeans 6.8" item is displayed as installed. (issue 47)
+    * Fix bug: If TeXLive 2007 is installed, then "TeXLive" item is not displayed as installed. (issue 47)
+    * Fix issue: firefox.nopango.desktop should be put in /usr/local (issue 221)
+    * Shows version when report errors. 
+    * Split WINE into "WINE 1.0" & "WINE 1.2".
+    * Fix bug: Error in parsing "tasksel --task-packages" output when warning messages are output. (issue 257)
+    * Fix bug: OpenJDK cannot be installed or removed.
+    * Display more message when "Disable GETTY" failed.
+
+2010-04-16 HUANG Wei <wei.kukey@gmail.com>
+
+    * Add Audacity, a music editor.
+
+2010-04-11 MA Yue <velly.empire@gmail.com>
+
+    * Add Acire, a Python code fragment manager.
+    * Fix bug: cannot install bluez-gnome.
+    * Add a new icon for "Ailurus quick start"
+    * Add game "World of Padman".
+    * Fix bug: cannot speed up Firefox
+
+2010-04-11 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: Error happens when there is no sub-items in a big category. 
+
 2010-04-11 CHEN Yangyang <skabyy@gmail.com>
 
     * Add "Query before exit" dialog with "Do not query again" checkbutton.
@@ -6,13 +82,6 @@
     * Move the "Start quick setup" button to the top of the "Install and Remove" pane.
     * Add "Hide start quick setup button" menuitem in preferences menu.
     * Add a function returned a button with image
-
-2010-04-11 MA Yue <velly.empire@gmail.com>
-
-    * Add a new icon for "Ailurus quick start"
-
-2010-04-11 CHEN Yangyang <skabyy@gmail.com>
-
     * Cut down start up time of "clean up pane" to less than 1 second.
 
 2010-04-08 Homer Xing <homer.xing@gmail.com>
@@ -50,7 +119,7 @@
     * Improve GNOME splash screen setting.
       Display splash image via button.
 
-2010-04-03 Starboy Qi <starboy.qi@gmail.com>
+2010-04-03 QI Chengjie <starboy.qi@gmail.com>
 
 	* Add ImageMagick for Fedora
 	* Add error message when remove Firefox extensions
@@ -68,7 +137,7 @@
 
     * Add some settings for Fedora
 
-2010-04-02 Starboy Qi <starboy.qi@gmail.com>
+2010-04-02 QI Chengjie <starboy.qi@gmail.com>
 
     * Improve copyright text in "About" dialog
     * Move "Reclaim memory" and "Clean recent documents" to "Clean up" pane.
@@ -87,7 +156,7 @@
       Require root privilege first. Do not ask for privilege afterwhile.
       Do not block process when search hardware driver.
 
-2010-04-01 Starboy Qi <starboy.qi@gmail.com>
+2010-04-01 QI Chengjie <starboy.qi@gmail.com>
 
     * Fix multimedia package error in Fedora.
     * Add VirtualBox open source edition for Fedora.
@@ -157,7 +226,7 @@
     * Fix "Songbird cannot be installed" issue.
     * Improve installation process.
 
-2010-03-26 Starboy Qi <starboy.qi@gmail.com>
+2010-03-26 QI Chengjie <starboy.qi@gmail.com>
 
     * Improve functionality for setting login icon and start-here icon.
 
@@ -187,7 +256,7 @@
       Disable minimize effect
       Set multiplier of screen size
 
-2010-03-22 Starboy Qi <starboy.qi@gmail.com>
+2010-03-22 QI Chengjie <starboy.qi@gmail.com>
 
     * Add functionality for setting application icons.
     * Add functionality for change the login icon.
@@ -235,7 +304,7 @@
       Enlarge toolbar icon to 64 x 64.
       Show text under icon. 
 
-2010-03-18 Starboy Qi <starboy.qi@gmail.com>
+2010-03-18 QI Chengjie <starboy.qi@gmail.com>
 
     * We can read change log in "About" dialog now.
 
@@ -272,7 +341,7 @@
                                      /apps/nautilus/preferences/show_advanced_permissions
                                      /apps/gnome-power-manager/lock/blank_screen
 
-2010-03-15 Starboy Qi <starboy.qi@gmail.com>
+2010-03-15 QI Chengjie <starboy.qi@gmail.com>
 
     * Change stardict icon
     * Optimize virtualbox installation
@@ -293,7 +362,7 @@
     * Add a button to skip the network checking in quick setup dialog.
     * Change the implementation of nautilus setting using signal.
 
-2010-03-08 Starboy Qi <starboy.qi@gmail.com>
+2010-03-08 QI Chengjie <starboy.qi@gmail.com>
 
     * Add extcalc, a awesome calculator.
     * Update fcitx to latest version.
@@ -315,7 +384,7 @@
 
     * Improve mplayer-vod.
 
-2010-03-02 Starboy Qi <starboy.qi@gmail.com>
+2010-03-02 QI Chengjie <starboy.qi@gmail.com>
 
     * Display sound card information in hardware-info pane.
     * Add XBMC and Songbird.
@@ -373,7 +442,7 @@
 
     * Implemented “APT recovery” functionality with Homer Xing.
 
-2010-01-17 Starboy Qi <starboy.qi@gmail.com>
+2010-01-17 QI Chengjie <starboy.qi@gmail.com>
 
     * More Firefox extensions can be installed by Ailurus, such as Firebug, YSlow, FireShot, MeasureIt, Web developer.
     * Three educational application are added. They are Tux Paint, ChildsPlay and GCompris.
@@ -383,7 +452,7 @@
 
     * Add 83 Linux skills. They are provided by Mr. Oneleaf and Ubuntu Chinese forum.
 
-2009-12-27 Starboy Qi <starboy.qi@gmail.com>
+2009-12-27 QI Chengjie <starboy.qi@gmail.com>
 
     * Installation for “med-bio”, “med-bio-dev” and “science-biology”
     * Installation for “Generic Genome Browser”
@@ -406,7 +475,7 @@
     * Ailurus works well in KUbuntu & XUbuntu now.
     * Add a new menu-item “Help”->”Check for updates”.
 
-2009-12-22 Starboy Qi <starboy.qi@gmail.com>
+2009-12-22 QI Chengjie <starboy.qi@gmail.com>
 
     * A new function “Create ~/Desktop” is added in “Install/Remove pane. By this function, you can create a shortcut in your home folder, which is linked to the Desktop. Then you can chdir to Desktop by this command “cd ~/Desktop”.
     * The message “synchronizing software packages list” is re-written.

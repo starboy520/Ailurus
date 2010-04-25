@@ -73,11 +73,8 @@ if Config.is_Fedora():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        logo = 'eclipse.png'
-        license = ('Eclipse Public License (EPL), '
-                   'see http://www.eclipse.org/org/documents/epl-v10.php')
-        def __init__(self):
-            self.pkgs = 'eclipse-platform'
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
+        pkgs = 'eclipse-platform'
 elif Config.is_Ubuntu():
     class Eclipse(_apt_install):
         __doc__ = _('Eclipse (basic development environment)')
@@ -88,15 +85,12 @@ elif Config.is_Ubuntu():
                   'and extract ".zip" file to directory "/opt/eclipse" .') + 
                 _(' This application depends on Java.') )
         category = 'eclipse'
-        logo = 'eclipse.png'
-        license = ('Eclipse Public License (EPL), '
-                   'see http://www.eclipse.org/org/documents/epl-v10.php')
-        def __init__(self):
-            self.pkgs = 'eclipse'
+        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
+        pkgs = 'eclipse'
 
 def make_sure_installed():
     if Config.is_Ubuntu():
-        if not APT.installed('eclipse-plateform'): APT.install('eclipse-platform')
+        if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
     else:
         if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
 
@@ -104,13 +98,10 @@ class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
     detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
-    logo = 'cdt.png'
+    license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
         self.r = R(
-['http://tdt.sjtu.edu.cn/S/Eclipse/cdt-master-6.0.0.zip',
-'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
+['http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
 45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
@@ -125,12 +116,10 @@ class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
     detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://pydev.org/about.html')
+    license = EPL + ' http://pydev.org/about.html'
     def __init__(self):
         self.r = R(
-['http://tdt.sjtu.edu.cn/S/Eclipse/org.python.pydev.feature-1.4.6.2788.zip',
-'http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
+['http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
 4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
@@ -141,7 +130,7 @@ class Pydev(_path_lists):
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
         run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
 
-class Aptana:
+class Aptana(I):
     __doc__ = _('Aptana: Web application development')
     detail = _('Aptana is from http://www.aptana.org/studio/plugin\n'
                'Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n'
@@ -149,7 +138,7 @@ class Aptana:
                'Aptana cannot be removed by Ailurus. '
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
-    license = 'dual-licensed under the terms of Aptana Public License and GPL'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
@@ -167,12 +156,12 @@ class Aptana:
     def remove(self):
         raise NotImplementedError
 
-class RadRails:
+class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
     detail = _('Over the past RadRails was called "RDT". '
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
     category = 'eclipse'
-    license = 'It is released under GPL v3 and Aptana Public License.'
+    license = DUAL_LICENSE(APL, GPL)
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.radrails.*')
@@ -190,24 +179,7 @@ class RadRails:
     def remove(self):
         raise NotImplementedError
 
-class Mylyn(_path_lists):
-    'Mylyn'
-    detail = _('Mylyn is from http://www.eclipse.org/mylyn/downloads/')
-    category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
-    
-    def __init__(self):
-        self.path = '/usr/lib/eclipse/dropins/mylyn'
-        self.paths = [ self.path ]
-    def install(self):
-        make_sure_installed()
-        f = R('http://download.eclipse.org/tools/mylyn/update/mylyn-3.3.2-e3.4.zip').download()
-        run_as_root('mkdir -p '+self.path)
-        run_as_root("unzip -qo %s -d %s" % (f, self.path) )
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
-
-class DLTK:
+class DLTK(I):
     __doc__ = _('Dynamic languages toolkit')
     detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
     category = 'eclipse'
@@ -234,12 +206,11 @@ class DLTK:
         obj = cls()
         if not obj.installed(): obj.install()
 
-class PDT:
+class PDT(I):
     __doc__ = _('PDT: PHP development')
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
-    license = ('Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
+    license = EPL + ' http://www.eclipse.org/legal/'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
@@ -257,11 +228,11 @@ class PDT:
     def remove(self):
         raise NotImplementedError
 
-class Subversive:
+class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
     detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
     category = 'eclipse'
-    license = 'Eclipse Public License (EPL)'
+    license = EPL
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
@@ -279,11 +250,33 @@ class Subversive:
     def remove(self):
         raise NotImplementedError
 
+class VEditor(I):
+    __doc__ = _('VEditor: Verilog and VHDL editor')
+    detail = _('It is installed by http://veditor.sourceforge.net/update')
+    category = 'eclipse'
+    license = EPL
+    def installed(self):
+        import glob
+        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
+        return bool(List)
+    def install(self):
+        make_sure_installed()
+        import StringIO
+        msg = StringIO.StringIO()
+        print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
+        print >>msg
+        print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://veditor.sourceforge.net/update'
+        print >>msg
+        print >>msg, _('Then click the "Next" button and agree the license.')
+        message( _('Installing VEditor\n'), msg )
+    def remove(self):
+        raise NotImplementedError
+
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
     detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
     category = 'eclipse'
-    license = 'Eclipse Public License (EPL), GNU General Public License (GPL)'
+    license = DUAL_LICENSE(EPL, GPL)
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]

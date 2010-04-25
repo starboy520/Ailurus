@@ -25,36 +25,12 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class ComicVODPlayer_new :
-    __doc__ = _('Mplayer with "vod" protocol support')
-    detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
-    category = 'media'
-    Chinese = True
-    logo = 'comic.png'
-    license = 'GPL'
-    depends = Repo_Mplayer_VOD
-    def install(self):
-        extension_path = FirefoxExtensions.get_extensions_path()
-        comicview = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi']).download()
-        run('cp %s %s'%(comicview, extension_path) )
-        delay_notify_firefox_restart()
-        # Remove current mplayer. Then install a newer version.
-        APT.remove('mplayer')
-        APT.install('mplayer')
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplemented
-
-class PBC:
+class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    time = 30
-    size = ( 300 + 808 ) * 1000
-    logo = 'pbc.png'
+    license = GPL
     def install(self):
         if get_arch()==32:
             fdev=R(
@@ -88,207 +64,149 @@ class PBC:
    
 class Build_Essential(_apt_install):
     'Build-essential'
-    detail = _('By installing build-essential, you will get g++, make, gdb and libc.\n'
-               'Command: sudo apt-get install build-essential')
+    detail = _('By installing build-essential, you will get g++, make, gdb and libc.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'build-essential'
+    license = GPL
+    pkgs = 'build-essential'
 
-class ManPages(_apt_install):
-    'ManPages'
-    detail = _('Install manual pages about Linux system calls, library calls, using POSIX, and POSIX library files.\n'
-              'Command: sudo apt-get install manpages-dev manpages-posix manpages-posix-dev')      
+class POSIX_ManPages(_apt_install):
+    __doc__ = _('POSIX library manual pages')
+    detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
+    license = GPL
+    pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
 
-class Ctags(_apt_install):
-    'Exuberant-ctags'
-    detail = _('This is a source code parser. It allows moving to the definition of a symbol. It is used in vi and emacs.\n'
-               'Command: sudo apt-get install exuberant-ctags')
+class Ctags_Cscope(_apt_install):
+    __doc__ = _('Ctags and Cscope: Popular source code parsers')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'exuberant-ctags'
+    license = GPL
+    pkgs = 'exuberant-ctags cscope'
 
 class GMP(_apt_install):
     __doc__ = _('GNU multiprecision arithmetic library')
-    detail = _('Command: sudo apt-get install libgmp3-dev')
     category = 'dev'
-    license = 'GNU General Public License (GPL)'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libgmp3-dev'
+    license = GPL
+    pkgs = 'libgmp3-dev'
 
 class Ncurses_and_qt3mt(_apt_install):
     __doc__ = _('Ncurses5 and QT3')
     detail = _('libncurses5 is a library controlling writing to the console screen.\n'
-               'libqt3-mt is Trolltech Qt library, version 3.\n' 
-               'Command: sudo apt-get install libncurses5-dev libqt3-mt-dev')
-    license = 'GNU General Public License (GPL)'
+               'libqt3-mt is Trolltech Qt library, version 3.') 
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libncurses5-dev libqt3-mt-dev'
+    pkgs = 'libncurses5-dev libqt3-mt-dev'
         
 class Svn_Git_bzr(_apt_install):
-    __doc__ = _('Subversion, git, and bzr')
-    detail = _('subversion, git and bzr are popular version control systems.\n'
-               'Command: sudo apt-get install subversion git-core bzr')
-    license = 'GNU General Public License (GPL)'
+    __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'subversion git-core bzr'
+    pkgs = 'subversion git-core bzr'
         
 class AutoTools(_apt_install):
-    __doc__ = _('Autoconf and automake')
-    detail = _('autoconf can produce shell scripts to automatically configure software source code packages.\n'
-               'automake is a tool for automatically generating Makefile.\n'
-               'Command: sudo apt-get install autoconf automake')
-    license = 'GNU General Public License (GPL)'
+    __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'autoconf automake'
+    pkgs = 'autoconf automake'
         
 class FreeGLut3(_apt_install):
     __doc__ = _('OpenGL library')  
-    detail = _('This is a library for writing OpenGL programs.\n'
-                'Command: sudo apt-get install freeglut3-dev') 
-    license = 'GNU General Public License (GPL)'
+    detail = _('This is a library for writing OpenGL programs.')
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'freeglut3-dev'
+    pkgs = 'freeglut3-dev'
         
 class Boost(_apt_install):
     __doc__ = _('Boost library')
-    detail = _('Command: sudo apt-get install libboost-dev')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libboost-dev'
+    pkgs = 'libboost-dev'
 
 class SDL(_apt_install):
     __doc__ = _('SDL library')
     detail = _('This is a library for writing SDL programs.\n'
                'SDL is a cross-platform multimedia library designed to provide low level access to audio'
-               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.\n'
-               'Command: sudo apt-get install libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev')
+               ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.')
     category = 'dev'
-    license ='GNU Lesser General Public License'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+    license = LGPL
+    pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
     
-class PipeViewer(_apt_install):
-    __doc__ = _('pv: a pipe viewer')
-    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.\n'
-               'Command: sudo apt-get install pv')
-    license = ('Free software, ARTISTIC 2.0 license, '
-               'see http://www.ivarch.com/programs/quickref/pv.shtml')
-    def __init__(self):
-        self.pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.\n'
-               'Command: sudo apt-get install auto-apt')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.pkgs = 'auto-apt'
+#class PipeViewer(_apt_install):
+#    __doc__ = _('pv: a pipe viewer')
+#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
+#    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
+#    pkgs = 'pv'
+
+# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
+#class AutoApt(_apt_install):
+#    'Auto-apt'
+#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+#    license = GPL
+#    pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
-    detail = _('Checkinstall help you build deb package. '
-               'Command: sudo apt-get install checkinstall')
-    license = 'GNU General Public License (GPL)'
-    def __init__(self):
-        self.pkgs = 'checkinstall'
+    detail = _('Checkinstall help you build deb package.')
+    license = GPL
+    pkgs = 'checkinstall'
         
 class Umbrello(_apt_install):
     __doc__ = _('Umbrello: UML modelling')
-    detail = _('Umbrello help you do UML modelling.\n'
-               'Command: sudo apt-get install umbrello')
-    license = 'GNU General Public License (GPL)'
+    detail = _('Umbrello help you do UML modelling.')
+    license = GPL
     category = 'dev'
-    logo = 'program-tools.png'
-    def __init__(self):
-        self.pkgs = 'umbrello'
+    pkgs = 'umbrello'
 
 class Ubuntu_Studio_Theme(_apt_install):
     __doc__ = _('Ubuntu Studio Theme')
-    detail = _('Command: sudo apt-get install ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'appearance'
-    logo = 'ubuntu-studio-themes.png'
-    def __init__(self):
-        self.pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
+    pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
 class MiniCom_Ckermit(_apt_install):
-    __doc__ = _('Minicom and ckermit')
-    detail = _('Command: sudo apt-get install minicom ckermit')
-    license = 'GNU General Public License (GPL)'
+    __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
+    license = GPL
     category = 'embedded'
-    logo = 'minicom.png'
-    def __init__(self):
-        self.pkgs = 'minicom ckermit'
+    pkgs = 'minicom ckermit'
 
 class VirtualBox(_apt_install):
     __doc__ = _('VirtualBox open source edition')
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'vm'
-    manual = True
-    logo = 'virtualbox.png'
-    def __init__(self):
-        self.pkgs = 'virtualbox-ose'
+    pkgs = 'virtualbox-ose'
 
-class GNOMEArtNextGen:
-    __doc__ = _('GNOMEArtNG')
+class GNOMEArtNextGen(I):
+    __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
-    license = 'GNU General Public License (GPL)'
-    size = 225 * 1000
-    logo = 'gnomeartng.png'
+    license = GPL
     def install(self):
         if Config.get_Ubuntu_version() == 'hardy':
 
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-hardy.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
 471212, '52c556fafa9664284dcff9851528f3e5aae00ebe').download()
         
         elif Config.get_Ubuntu_version() == 'intrepid':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-intrepid.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
 444822, '4dc42fd446ebd8e615cf6490d6ecc94a403719b8').download()
         
         elif Config.get_Ubuntu_version() == 'jaunty':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-jaunty.deb',
-'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
+['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
 441222, 'c9134ad3405c660e6e07333994ca38d494f0f90f').download()
         
         elif Config.get_Ubuntu_version() == 'karmic':
         
             file = R(
-['http://tdt.sjtu.edu.cn/S/gnomeartng-0.7.0-karmic.deb',
-'http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
+['http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
 441558, 'b2b834b1bfc76f01dce370b60ea706f6ed35e4da').download()
 
         else:
@@ -315,151 +233,106 @@ class GNOMEArtNextGen:
 
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
-    detail = _('It is the indispensable plotting application for writing Physics experiments reports.\n'
-       'Command: sudo apt-get install qtiplot')
+    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
     category = 'math'
-    size = 6064 * 1000
-    license = 'GNU General Public License (GPL)'
-    logo = 'qtiplot.png'
-    def __init__(self):
-        self.pkgs = 'qtiplot'
+    license = GPL
+    pkgs = 'qtiplot'
 
 class Extcalc(_apt_install):
-    'Extcalc'
-    detail = _('This is a multifunctional graphic calculator.\n'
-        'Command: sudo apt-get install extcalc')
+    __doc__ = _('Extcalc: A multifunctional graphic calculator')
     category = 'math'
-    license = 'GNU General Public License (GPL)'
-    logo = 'extcalc.png'
-    def __init__(self):
-        self.pkgs = 'extcalc'
+    license = GPL
+    pkgs = 'extcalc'
         
 class StartupManager(_apt_install):
-    __doc__ = _('Startup Manager')   
-    detail = _('Startup manager helps you change GRUB settings and themes.\n'
-               'Command: sudo apt-get install startupmanager')
-    license = 'GNU General Public License (GPL)'
-    logo = 'startup_manager.png'
-    def __init__(self):
-        self.pkgs = 'startupmanager'
+    __doc__ = _('Startup Manager: Change GRUB settings and themes')   
+    detail = _('Startup manager helps you change GRUB settings and themes.')
+    license = GPL
+    category = 'appearance'
+    pkgs = 'startupmanager'
         
 class Zhcon(_apt_install):
     __doc__ = _('Zhcon')
     detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
-               'You can launch it by "zhcon --utf8".\n'
-               'Command: sudo apt-get install zhcon')
+               'You can launch it by "zhcon --utf8".')
     Chinese = True
-    license = 'GNU General Public License (GPL)'
-    logo = 'zhcon.png'
-    def __init__(self):
-        self.pkgs = 'zhcon'
+    license = GPL
+    pkgs = 'zhcon'
         
 class PowerTop(_apt_install):
     'PowerTop'
-    detail = _('Powertop helps you save power for your laptop.\n'
-               'Command: sudo apt-get install powertop')
-    license = 'GNU General Public License (GPL)'
-    logo = 'powertop.png'
-    def __init__(self):
-        self.pkgs = 'powertop'
+    detail = _('Powertop helps you save power for your laptop.')
+    license = GPL
+    pkgs = 'powertop'
         
-class nautilus_actions(_apt_install):
+class Nautilus_Actions(_apt_install):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-actions'
+    pkgs = 'nautilus-actions'
         
-class nautilus_filename_repairer(_apt_install):
+class Nautilus_Filename_Repairer(_apt_install):
     __doc__ = _('"Repair filename" entry')
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-filename-repairer'
+    pkgs = 'nautilus-filename-repairer'
 
-class nautilus_gksu(_apt_install):
+class Nautilus_Gksu(_apt_install):
     __doc__ = _('"Open as administrator" entry')
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-gksu'
+    pkgs = 'nautilus-gksu'
 
-class nautilus_script_audio_convert(_apt_install):
+class Nautilus_Audio_Convert(_apt_install):
     __doc__ = _('"Convert audio files" entry')
     detail = _('Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n'
                'These packages will also be installed: \n'
                '<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
+    pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
     def install(self):
         _apt_install.install(self)
         run('nautilus-script-manager enable ConvertAudioFile')
 
-class nautilus_image_converter(_apt_install):
+class Nautilus_Image_Converter(_apt_install):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-image-converter'
+    pkgs = 'nautilus-image-converter'
         
-class nautilus_script_collection_svn(_apt_install):
+class Nautilus_Script_Collection_Svn(_apt_install):
     __doc__ = _('"Subversion commands" entries')
     detail = _('"Subversion commands" entries')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'        
-    def __init__(self):
-        self.pkgs = 'nautilus-script-collection-svn'
+    pkgs = 'nautilus-script-collection-svn'
     def install(self):
         _apt_install.install(self)
         run('nautilus-script-manager enable Subversion')
         
-class nautilus_open_terminal(_apt_install):
+class Nautilus_Open_Terminal(_apt_install):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-open-terminal'
+    pkgs = 'nautilus-open-terminal'
         
-class nautilus_share(_apt_install):
+class Nautilus_Share(_apt_install):
     __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-share'
+    pkgs = 'nautilus-share'
         
-class nautilus_wallpaper(_apt_install):
+class Nautilus_Wallpaper(_apt_install):
     __doc__ = _('"Set as wallpaper" entry')
     detail = _('"Set as wallpaper" entry')
-    license = 'GNU General Public License (GPL)'
+    license = GPL
     category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-wallpaper'
-        
-class nautilus_script_audio_convert(_apt_install):
-    __doc__ = _('"Write to Disc..." entry')
-    detail = _('When CD/DVD image file is clicked by mouse right button, \n'
-               'show a "Write to Disc..." menu item.\n'
-               '<span color="red">This item conflicts with "brasero".</span>')
-    license = 'GNU General Public License (GPL)'
-    category = 'nautilus'
-    logo = 'nautilus.png'
-    def __init__(self):
-        self.pkgs = 'nautilus-cd-burner'
+    pkgs = 'nautilus-wallpaper'

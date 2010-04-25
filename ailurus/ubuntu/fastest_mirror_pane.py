@@ -144,8 +144,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
         mi_refresh.connect('activate', self.__callback__refresh_state_box)
-        detect_all_repos_speed = image_stock_menuitem(gtk.STOCK_FIND, _('Detect response time of all repositories'))
-        detect_all_repos_speed.connect('activate', self.__callback__detect_all_repos_speed)
         self.mi_use_fastest_repo = mi_use_fastest_repo = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Use the fastest repository'))
         mi_use_fastest_repo.connect('activate', self.__callback__use_fastest_repository)
         mi_edit_by_texteditor = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by text editor'))
@@ -158,17 +156,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
         menu.append(mi_refresh)
-        menu.append(gtk.SeparatorMenuItem())
-        menu.append(detect_all_repos_speed)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(mi_use_fastest_repo)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(mi_edit_by_texteditor)
         import os
         if os.path.exists('/usr/bin/software-properties-gtk') or os.path.exists('/usr/bin/software-properties-kde'):
             menu.append(mi_edit_by_synaptic)
         menu.append(mi_merge_sourceslist)
-        menu.append(gtk.SeparatorMenuItem())
         menu.append(how_to_backup)
         menu.show_all()
         return menu
@@ -321,7 +314,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         progress_label, progress_bar = self.__show_and_return_widgets_in_progress_box()
 
         for url,server in zip(urls,servers):
-            while len([t for t in threads if t.isAlive()])>10:
+            def alive_threads(threads):
+                i = 0
+                for t in threads:
+                    if t.isAlive(): i += 1
+                return i
+            while alive_threads(threads)>10:
                 import time
                 time.sleep(0.1)
             thread = PingThread(url, server, result)
@@ -417,15 +415,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
         popupmenu = gtk.Menu()
+        popupmenu.append(use_selected)
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
-        popupmenu.append(gtk.SeparatorMenuItem())
-        popupmenu.append(use_selected)
-        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(select_all)
         popupmenu.append(select_all_repos_in_this_county)
         popupmenu.append(unselect_all)
-        popupmenu.append(gtk.SeparatorMenuItem())
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
@@ -657,7 +652,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
                 f.writelines(contents)
-        run_as_root_in_terminal('rm /etc/apt/sources.list.d/*')
+        run_as_root('rm /etc/apt/sources.list.d/*')
         notify(_('Merge complete'), ' ')
             
         

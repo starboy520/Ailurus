@@ -24,7 +24,7 @@ from lib import *
 
 __all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install']
 
-class _set_gconf :
+class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
     def __check_key(self, key):
         if key=='':
@@ -75,11 +75,11 @@ class _set_gconf :
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;32m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, newvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%newvalue
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;32m%s\x1b[m"%_("New value:"), newvalue
         for key, to_add_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_add in to_add_list:
@@ -89,8 +89,8 @@ class _set_gconf :
                     pass
                 List.insert(0, to_add)
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Appended items:"), "\x1b[1;33m%s\x1b[m"%to_add_list
+            print "\x1b[1;32m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;32m%s\x1b[m"%_("Appended items:"), to_add_list
     def installed(self):
         self.__check()
         import gconf
@@ -110,34 +110,34 @@ class _set_gconf :
                 if not to_add in List:
                     return False
         return True
-    def _get_reason(self, f):
-        import gconf
-        G = gconf.client_get_default()
-        for key, newvalue, oldvalue in self.set:
-            try: value = G.get_value(key)
-            except: value = None
-            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
-                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
-        for key, to_add_list in self.add:
-            List = G.get_list(key, gconf.VALUE_STRING)
-            #evaluate "not_in" list
-            not_in = []
-            for to_add in to_add_list:
-                if not to_add in List:
-                    not_in.append(to_add)
-            #output
-            if not_in:
-                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
+#    def _get_reason(self, f):
+#        import gconf
+#        G = gconf.client_get_default()
+#        for key, newvalue, oldvalue in self.set:
+#            try: value = G.get_value(key)
+#            except: value = None
+#            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
+#                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
+#        for key, to_add_list in self.add:
+#            List = G.get_list(key, gconf.VALUE_STRING)
+#            #evaluate "not_in" list
+#            not_in = []
+#            for to_add in to_add_list:
+#                if not to_add in List:
+#                    not_in.append(to_add)
+#            #output
+#            if not_in:
+#                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
     def remove(self):
         self.__check()
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
-            print _("Change GConf values:")
+            print '\x1b[1;31m', _("Change GConf values:"), '\x1b[m'
         for key, newvalue, oldvalue in self.set:
             G.set_value(key, oldvalue)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key,
-            print _("New value:"), "\x1b[1;33m%s\x1b[m"%oldvalue
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key,
+            print "\x1b[1;31m%s\x1b[m"%_("New value:"), oldvalue
         for key, to_remove_list in self.add:
             List = G.get_list(key, gconf.VALUE_STRING)
             for to_remove in to_remove_list:
@@ -146,8 +146,8 @@ class _set_gconf :
                 except ValueError:
                     pass
             G.set_list(key, gconf.VALUE_STRING, List)
-            print _("Key:"), "\x1b[1;33m%s\x1b[m"%key
-            print _("Removed items:"), "\x1b[1;33m%s\x1b[m"%to_remove_list
+            print "\x1b[1;31m%s\x1b[m"%_("Key:"), key
+            print "\x1b[1;31m%s\x1b[m"%_("Removed items:"), to_remove_list
     def support(self):
         try:
             import gconf
@@ -155,16 +155,14 @@ class _set_gconf :
         except:
             return False 
 
-class _apt_install :
+class _apt_install(I):
     'Must subclass me and set "pkgs".'
-    def __init__(self):
-        raise NotImplementedError
     def __check(self):
         self.pkgs # check exists
         if type ( self.pkgs ) != str:
             raise TypeError
         if self.pkgs == '' :
-            raise ValueError
+            raise ValueError, 'self.pkgs is empty.'
         for pkg in self.pkgs.split():
             import re
             if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
@@ -180,19 +178,19 @@ class _apt_install :
             if not APT.installed ( pkg ):
                 return False
         return True
-    def _get_reason(self, f):
-        #evaluate
-        not_in = []
-        for pkg in self.pkgs.split():
-            if not APT.installed ( pkg ):
-                not_in.append(pkg)
-        #output
-        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not APT.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         self.__check()
         APT.remove(*self.pkgs.split() )
+    def installation_command(self):
+        return _('Command:') + ' sudo apt-get install ' + self.pkgs
 
-class _path_lists:
+class _path_lists(I):
     def __check(self):
         if not isinstance(self.paths, list):
             raise TypeError
@@ -218,20 +216,15 @@ class _path_lists:
         self.__check()
         for path in self.paths:
             run_as_root('rm "%s" -rf'%path)
-    def _get_reason(self, f):
+    def get_reason(self, f):
         import os
-        #evaluate
-        no_list = []
-        for path in self.paths:
-            if not os.path.exists(path): no_list.append(path)
-        #output
-        if no_list:
-            print >>f, _('"%s" does not exist.')%' '.join(no_list),
+        not_exist = [p for p in self.paths if not os.path.exists(p)]
+        if not_exist:
+            print >>f, _('Because "%s" does not exist.')%' '.join(not_exist),
 
-class _ff_extension:
+class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox'
-    logo = 'default.png'
     def __init__(self):
         if not hasattr(_ff_extension, 'ext_path'):
             _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
@@ -272,7 +265,7 @@ class _ff_extension:
         print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
         raise NotImplementedError
 
-class _download_one_file:
+class _download_one_file(I):
     def install(self):
         assert isinstance(self.R, R)
         f = self.R.download()
@@ -285,11 +278,9 @@ class _download_one_file:
     def get_reason(self, f):
         import os
         if not os.path.exists(self.file):
-            print >>f, _('"%s" does not exist.')%self.file,
+            print >>f, _('Because "%s" does not exist.')%self.file,
 
-class _rpm_install:
-    def __init__(self):
-        raise Exception
+class _rpm_install(I):
     def _check(self):
         assert isinstance(self.pkgs, str)
     def install(self):
@@ -303,12 +294,12 @@ class _rpm_install:
     def remove(self):
         self._check()
         RPM.remove(self.pkgs)
-    def _get_reason(self, f):
+    def get_reason(self, f):
         self._check()
-        #evaluate
-        not_in = []
-        for pkg in self.pkgs.split():
-            if not RPM.installed ( pkg ):
-                not_in.append(pkg)
-        #output
-        print >>f, _('The packages "%s" are not installed.')%' '.join(not_in),
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)

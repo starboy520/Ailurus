@@ -24,12 +24,10 @@ import sys, os
 from lib import *
 from libapp import *
 
-class OpenJDK6:
+class OpenJDK6(I):
     'OpenJDK 6'
-    detail = _('Command: sudo apt-get install openjdk-6-jdk')
     category = 'dev'
-    license = 'Sun License'
-    logo = 'java.png'
+    license = GPL
     def install(self):
         APT.install('openjdk-6-jdk')
         
@@ -53,63 +51,53 @@ class OpenJDK6:
         APT.remove('openjdk-6-jre-lib')
 
         env = ETCEnvironment()
-        env.remove('JAVA_HOME', '/usr/lib/jvm/java-6-sun')
-        env.remove('JAVA_BIN', '/usr/lib/jvm/java-6-sun/bin')
-        env.remove('CLASSPATH', '.', '/usr/lib/jvm/java-6-sun/lib/dt.jar', '/usr/lib/jvm/java-6-sun/lib/tools.jar')
+        env.remove('JAVA_HOME')
+        env.remove('JAVA_BIN')
+        env.remove('CLASSPATH')
         env.save()
 
-class WINE(_apt_install):
-    __doc__ = _('WINE')
-    detail = _('This is an indispensable application for running Windows applications on Linux.\n'
-       'Command: sudo apt-get install wine wine-gecko')
-    license = ('GNU Lesser General Public License, '
-               'see http://wiki.winehq.org/Licensing')
+class WINE_1(_apt_install):
+    'WINE 1.0'
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
-    time = 37
-    size = 72280 * 1000
-    international = True
-    logo = 'wine.png'
-    def __init__(self):
-        self.pkgs = 'wine wine-gecko'
-    def install(self):
-        _apt_install.install(self)
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            run("wineprefixcreate") #Do not use 'winecfg' !
-    def installed(self):
-        if not _apt_install.installed(self):
-            return False
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            return False
-        return True
+    pkgs = 'wine wine-gecko'
 
-class WINE_Chinese(_apt_install):
-    __doc__ = _('WINE &amp; Wen-Quan-Yi Chinese font')
-    detail = _('WINE is an indispensable application for running Windows applications on Linux.\n'
-       'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
-       'then Wen-Quan-Yi font is used as default Chinese font.')
+class WINE_2(_apt_install):
+    'WINE 1.2'
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
     category = 'vm'
-    time = 37
-    size = 72280 * 1000
-    Chinese = True
-    logo = 'wine.png'
-    def __init__(self):
-        self.pkgs = 'ttf-wqy-zenhei wine wine-gecko'
-        self.wqy = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
-    def install(self):
-        _apt_install.install(self)
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            run("wineprefixcreate") #Do not use 'winecfg' !
-        run("cp %s ~/.wine/drive_c/windows/Fonts/"%self.wqy)
-        run(r"wine regedit "+D+"../support/wine_wqy_font.reg")
-    def installed(self):
-        if not _apt_install.installed(self):
-            return False
-        import os
-        if not os.path.exists( os.path.expanduser('~/.wine') ):
-            return False
-        if not os.path.exists( os.path.expanduser('~/.wine/drive_c/windows/Fonts/wqy-zenhei.ttc') ):
-            return False
-        return True
+    pkgs = 'wine1.2 wine1.2-gecko'
+    def support(self):
+        return APT.exist('wine1.2') and APT.exist('wine1.2-gecko')
+    
+# In Ubuntu Karmic, there is no need to configure WINE font substitution.
+# The solution is to designate a right font.
+#
+#class WINE_Chinese(_apt_install):
+#    __doc__ = _('WINE &amp; Wen-Quan-Yi Chinese font')
+#    detail = _('WINE is an indispensable application for running Windows applications on Linux.\n'
+#       'During the installation process, firstly "sudo apt-get install wine wine-gecko ttf-wqy-zenhei" command is executed, '
+#       'then Wen-Quan-Yi font is used as default Chinese font.')
+#    category = 'vm'
+#    Chinese = True
+#    pkgs = 'ttf-wqy-zenhei wine wine-gecko'
+#    def __init__(self):
+#        self.wqy = '/usr/share/fonts/truetype/wqy/wqy-zenhei.ttc'
+#    def install(self):
+#        _apt_install.install(self)
+#        import os
+#        if not os.path.exists( os.path.expanduser('~/.wine') ):
+#            run("wineprefixcreate") #Do not use 'winecfg' !
+#        run("cp %s ~/.wine/drive_c/windows/Fonts/"%self.wqy)
+#        run(r"wine regedit "+D+"../support/wine_wqy_font.reg")
+#    def installed(self):
+#        if not _apt_install.installed(self):
+#            return False
+#        import os
+#        if not os.path.exists( os.path.expanduser('~/.wine') ):
+#            return False
+#        if not os.path.exists( os.path.expanduser('~/.wine/drive_c/windows/Fonts/wqy-zenhei.ttc') ):
+#            return False
+#        return True
