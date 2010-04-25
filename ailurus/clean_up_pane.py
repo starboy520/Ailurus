@@ -158,6 +158,7 @@ class ReclaimMemoryBox(gtk.HBox):
 class UbuntuCleanKernelBox(gtk.VBox):
     def __init__(self):
         gtk.VBox.__init__(self, False, 10)
+        self.current_kernel_version = current_kernel_version = self.get_current_kernel_version()
         self.version_to_packages = {} # map version to package names
         self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
@@ -166,10 +167,9 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply = self.button_apply = gtk.Button(_('Remove Linux kernels'))
         button_apply.set_sensitive(False)
         button_apply.connect('clicked', self.remove_kernel)
-        current_kernel_version = self.get_current_kernel_version()
         label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
-        label2 = gtk.Label(_('All installed Linux kernels are:'))
+        label2 = gtk.Label(_('Not used Linux kernels are:'))
         label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
         self.pack_start(label2, False)
@@ -217,6 +217,8 @@ class UbuntuCleanKernelBox(gtk.VBox):
             match = re.search(pattern, p)
             if not match: continue
             version = match.group(1)
+            if version == self.current_kernel_version:
+                continue
             if match.group(2) == '-':
                 pkgs = [
                         'linux-headers-%s'%version, 

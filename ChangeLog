@@ -1,3 +1,10 @@
+2010-04-25 CHEN Yangyang <skabyy@gmail.com>
+
+    * Change the position of the popup menu of toolitem
+    * The remove list for kernel will not list the current using kernel anymore
+    * Add a button to show all the tips of day
+    * The top toolbar will automatically resize when the window is resized
+
 2010-04-24 Homer Xing <homer.xing@gmail.com>
 
     * Do not raise exception when user cancel policy-kit in clean up pane.
