@@ -110,11 +110,60 @@ def __restart_network():
      vbox.set_border_width(10)
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
- 
+
+
+
+def __change_hostname():
+    class hostname(gtk.HBox):
+        def __value_changed(self, *w):
+            self.button.set_sensitive(True)
+                
+        def __button_clicked(self, *w):
+            data = self.entry.get_text()
+            run_as_root('hostname %s' %data)
+            self.button.set_sensitive(False)
+        def __init__(self):
+            self.entry = gtk.Entry()
+            self.button = gtk.Button(_('Applied'))
+            self.label = gtk.Label(_('Change hostname:'))
+            value =  get_output('hostname')
+            self.entry.set_text(value)
+            self.entry.connect('changed', self.__value_changed)
+            self.button.connect('clicked', self. __button_clicked)
+            
+            gtk.HBox.__init__(self, False, 5)
+            self.pack_start(self.label, False)
+            self.pack_start(self.entry, False)
+            self.pack_start(self.button, False)
+            
+
+    hbox = hostname()
+#    def __value_changed(entry, button):
+#        button.set_sensitive(True)
+        
+#    def __button_clicked(button, entry):
+ #       data = entry.get_text()
+#        run_as_root('hostname %s' %data)
+#        button.set_sensitive(False)
+#    entry = gtk.Entry()
+#    lable = gtk.Label('Enter the host name:')
+#    button = gtk.Button(_('Applied'))
+      
+#    entry.connect('changed', __value_changed, button)
+#    button.connect('clicked',  __button_clicked, entry)
+   
+#    hbox = gtk.HBox(False,5)
+#    hbox.pack_start(lable, False)
+#    hbox.pack_start(entry, False)
+ #   hbox.pack_start(button, False)
+    return Setting(hbox, _('Change Hostname'), ['menu'])
+    
+    
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
+            __change_hostname,
             __restart_network ]:
         try:
             ret.append(f())
