@@ -1,8 +1,7 @@
 %define name ailurus
-%define version 10.04.2.2
-%define unmangled_version 10.04.2.2
+%define version 10.04.2
+%define unmangled_version 10.04.2
 %define release 1
-%define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
 Summary: makes Linux easier to use
 Name: %{name}
@@ -42,28 +41,16 @@ python setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install -O1 --root=$RPM_BUILD_ROOT
+python setup.py install -O1 --root=$RPM_BUILD_ROOT --record=INSTALLED_FILES
+sed -e 's/\.[0-9]$/&\*/' < INSTALLED_FILES > INSTALLED_FILES2 # fix manpage bug
+mv INSTALLED_FILES2 INSTALLED_FILES
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f INSTALLED_FILES
 %defattr(-,root,root)
-%{python_sitelib}/ailurus/
-%{_bindir}/ailurus
-%doc %{_mandir}/man1/ailurus.1*
-%{_datadir}/desktop-directories/ailurus_quick_start.directory
-%{_sysconfdir}/xdg/menus/applications-merged/ailurus.menu
-%{_datadir}/applications/ailurus*.desktop
-%{_datadir}/ailurus/
-%{_datadir}/dbus-1/system-services/cn.ailurus.service
-%{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
-%{_datadir}/PolicyKit/policy/cn.ailurus.policy
-%{_datadir}/polkit-1/actions/cn.ailurus.policy
-%{_datadir}/locale/*/LC_MESSAGES/ailurus.mo
-%{_datadir}/omf/ailurus
-%{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Sun Apr 25 2010 Homer Xing <homer.xing@gmail.com> 10.04.2.2-1
+* Sat Apr 24 2010 Homer Xing <homer.xing@gmail.com> 10.04.2-1
 - Initial package

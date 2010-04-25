@@ -113,46 +113,68 @@ def __restart_network():
 
 
 
-def __change_hostname():
-#    class hostname(gtk.HBox):
-#        def __value_changed(self, *w):
-#            self.button.set_sensitive(True)
-#                
-#        def __button_clicked(self, *w):
-#            data = self.entry.get_text()
-#            run_as_root('hostname %s' %data)
-#            self.button.set_sensitive(False)
-#        def __init__(self):
-#            self.entry = gtk.Entry()
-#            self.button = gtk.Button(_('Applied'))
-#            self.label = gtk.Label(_('Change hostname:'))
-#            value =  get_output('hostname')
-#            self.entry.set_text(value)
-#            self.entry.connect('changed', self.__value_changed)
-#            self.button.connect('clicked', self. __button_clicked)
-#            
-#            gtk.HBox.__init__(self, False, 5)
-#            self.pack_start(self.label, False)
-#            self.pack_start(self.entry, False)
-#            self.pack_start(self.button, False)
-#     hbox = hostname()
-    def __button_clicked(button):
-        data = entry.get_text()
-        run_as_root('hostname %s' %data)
-        button.set_sensitive(False)
-    def __value_changed(entry):
-        button.set_sensitive(False)
-    entry = gtk.Entry()
-    lable = gtk.Label('Enter the host name:')
-    button = gtk.Button(_('Applied'))
-    button.connect('clicked',  __button_clicked)
-    entry.connect('changed',  __value_changed)
+
+class hostname(gtk.HBox):
+    def __value_changed(self, *w):
+        self.button.set_sensitive(True)
+                
+    def __button_clicked(self, *w):
+        new_host_name = self.entry.get_text()
+ #       old_host_name = get_output('hostname')
+        with TempOwn('/etc/hosts') as o:
+            with open('/etc/hosts') as f:
+                content = f.read()
+                content = content.replace(old_host_name, new_host_name)
+            with open('/etc/hosts', 'w') as f:
+                f.write(content)
+        if Config.is_Ubuntu():
+            with TempOwn('/etc/hostname') as o:
+                with open('/etc/hostname', 'w') as f:
+                    f.write(new_host_name)
+        elif Config.is_Fedora():
+            with TempOwn('/etc/sysconfig/network') as o:
+                with open('/etc/sysconfig/network') as f:
+                    content = f.read()
+                    content = content.replace(old_host_name, new_host_name)
+                with open('/etc/sysconfig/network', 'w') as f:
+                    f.write(content)
+        self.button.set_sensitive(False)
+        
+    def __init__(self):
+        self.entry = gtk.Entry()
+        self.button = gtk.Button(_('Apply'))
+        self.label = gtk.Label(_('New host name:'))
+        old_host_name = get_output('hostname')
+        self.entry.set_text(old_host_name)
+        self.entry.connect('changed', self.__value_changed)
+        self.button.connect('clicked', self. __button_clicked)
+            
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(self.label, False)
+        self.pack_start(self.entry, False)
+        self.pack_start(self.button, False)
+
+    hbox = hostname()
+#    def __value_changed(entry, button):
+#        button.set_sensitive(True)
+        
+#    def __button_clicked(button, entry):
+ #       data = entry.get_text()
+#        run_as_root('hostname %s' %data)
+#        button.set_sensitive(False)
+#    entry = gtk.Entry()
+#    label = gtk.Label('Enter the host name:')
+#    button = gtk.Button(_('Applied'))
+      
+#    entry.connect('changed', __value_changed, button)
+#    button.connect('clicked',  __button_clicked, entry)
    
-    hbox = gtk.HBox(False,5)
-    hbox.pack_start(lable, False)
-    hbox.pack_start(entry, False)
-    hbox.pack_start(button, False)
-    return Setting(hbox, _('Change Hostname'), ['menu'])
+#    hbox = gtk.HBox(False,5)
+#    hbox.pack_start(label, False)
+#    hbox.pack_start(entry, False)
+ #   hbox.pack_start(button, False)
+    return Setting(hbox, _('Change host name'), ['menu'])
+
     
 def get():
     ret = []
