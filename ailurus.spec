@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/polkit-1/actions/cn.ailurus.policy
 %{_datadir}/locale/*/LC_MESSAGES/ailurus.mo
 %{_datadir}/omf/ailurus
-%{python_sitelib}/ailurus-10.04.2.2-py2.6.egg-info
+%{python_sitelib}/ailurus*.egg-info
 
 %changelog
 * Sun Apr 25 2010 Homer Xing <homer.xing@gmail.com> 10.04.2.2-1
