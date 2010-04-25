@@ -44,9 +44,6 @@ Features:
         ('share/ailurus/', ['ChangeLog']),
         
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
-        ('share/ailurus/data/nautilus_screenshot/', glob('data/nautilus_screenshot/*.png') ),
-        ('share/ailurus/data/nautilus_screenshot/es/', glob('data/nautilus_screenshot/es/*.png') ),
-        ('share/ailurus/data/nautilus_screenshot/zh_CN/', glob('data/nautilus_screenshot/zh_CN/*.png') ),
         ('share/ailurus/data/other_icons/', glob('data/other_icons/*.png') ),
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),
         ('share/ailurus/data/umut_icons/', glob('data/umut_icons/*.png') ),
