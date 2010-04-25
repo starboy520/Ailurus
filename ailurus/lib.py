@@ -1539,7 +1539,7 @@ def show_special_thank_dialog():
     print >>text, 'novia, hardtzh, fegue</big></b>', _('and many other people.')
     print >>text
     print >>text, _('The people who eliminate bugs:')
-    print >>text, '<b><big>anjiannian, PES6</big></b>'
+    print >>text, '<b><big>anjiannian, PES6, eemil.lagerspetz</big></b>'
     print >>text
     print >>text, _('The people who publicize this software:')
     print >>text, '<b><big>dsj, BingZhiGuFeng, chinairaq, coloos,'
