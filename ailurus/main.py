@@ -222,7 +222,6 @@ class toolitem(gtk.ToolItem):
         text.modify_font(pango.FontDescription('Sans 9'))
         text.set_alignment(0.5, 0.5)
         text.set_justify(gtk.JUSTIFY_CENTER)
-#        text.set_ellipsize(pango.ELLIPSIZE_END)
         vbox = vbox = gtk.VBox(False, 5)
         vbox.pack_end(text)
         vbox.pack_end(align_image)
@@ -274,14 +273,6 @@ class MainView:
             self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
     def get_item_icon_size(self):
-#        if self.last_x < 750:
-#            return 10
-#        if self.last_x < 800:
-#            return 20
-#        elif self.last_x < 850:
-#            return 30
-#        else:
-#            return 40
         return int(self.last_x / 20)
 
     def __refresh_toolbar(self):
