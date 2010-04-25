@@ -395,7 +395,7 @@ if options.system_setting or options.all:
     pane = SystemSettingPane(items)
     main_view.register(pane)
 
-if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
     if options.fastest_repository or options.all:
         from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
         pane = UbuntuFastestMirrorPane(main_view)
@@ -406,7 +406,7 @@ if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
         pane = UbuntuAPTRecoveryPane(main_view)
         main_view.register(pane)
 
-if getattr(DISTRIBUTION, '__name__') == 'fedora':
+if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
     if options.fastest_repository or options.all:
         from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
         pane = FedoraFastestMirrorPane(main_view)
@@ -439,9 +439,9 @@ if options.install_software or options.all:
     
     wait_firefox_to_create_profile()
     
-    if getattr(DISTRIBUTION, '__name__') == 'ubuntu':
+    if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
         APT.refresh_cache()
-    elif getattr(DISTRIBUTION, '__name__') == 'fedora':
+    elif getattr(DISTRIBUTION, '__name__', '') == 'fedora':
         RPM.refresh_cache()
     
     app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
