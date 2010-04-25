@@ -186,6 +186,12 @@ class QCad(_rpm_install):
     category = 'em'
     pkgs = 'qcad'
 
+class Alacarte(_rpm_install):
+    __doc__ = ("Alacarte: fedora's graphical menu editor")
+    detail = ("Startup: input 'alacarte' in terminal" )
+    license = LGPL
+    pkgs = 'alacarte'
+    
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
@@ -394,3 +400,4 @@ class Audacity(_rpm_install):
     license = LGPL + ' http://audacity.sourceforge.net/'
     category = 'media'
     pkgs = 'audacity-freeworld'
+    
