@@ -9,6 +9,13 @@
     * The remove list for kernel will not list the current using kernel anymore
     * Add a button to show all the tips of day
     * The top toolbar will automatically resize when the window is resized
+    
+2010-04-25 Starboy <starboy.qi@gmail.com>
+
+	* Add alacarte in Fedora
+	* Display GTK version and Python-GTK version in Linux information pane
+	* Add a way to modify host name
+	* Add google-earth
 
 2010-04-24 Homer Xing <homer.xing@gmail.com>
 

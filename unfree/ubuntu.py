@@ -184,7 +184,7 @@ class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
 244765, 'dc84597ee626b7a2dcd3ee8825d2e374f6822197')
         import os
         self.file = os.path.expanduser('~/CASthesis.zip')
-
+     
 class XJTUTeXTemplate(_download_one_file) :
     # cannot find out which license it is released under
     __doc__ = _("LaTeX Thesis Templates by Xi\'an Jiaotong University, China")
@@ -257,3 +257,16 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
     275501, 'ac6de4e93270e0650fc06a88cf5fe639e8a879fb')
         _ff_extension.__init__(self)
+        
+class GoogleEarth(I):
+    __doc__ = _('Google Earth')
+    detail = _('Please install by default, do not change the install path')
+    category = 'internet'
+    def install(self):
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        os.system('chmod a+x ' + f)
+        run_as_root_in_terminal(f)
+    def installed(self):
+        return os.path.exists('/opt/google-earth')
+    def remove(self):
+        run_as_root_in_terminal('/opt/google-earth/uninstall')
