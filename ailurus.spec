@@ -38,6 +38,8 @@ Features:
 %setup -q -n %{name}-%{unmangled_version}
 
 %build
+# "System" for Debian, "System Tools" for Fedora
+sed -e 's/System/System Tools/' -i ailurus.menu
 python setup.py build
 
 %install
