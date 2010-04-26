@@ -1,3 +1,8 @@
+2010-04-26 Homer Xing <homer.xing@gmail.com>
+
+    * Fix problem: After installing Ailurus on Fedora, 
+      "Ailurus quick setup" does not appear in "System Tools" entry.
+
 2010-04-25 CHEN Yangyang <skabyy@gmail.com>
 
     * Change the position of the popup menu of toolitem

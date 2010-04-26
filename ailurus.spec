@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.04.2.2
-%define unmangled_version 10.04.2.2
+%define version 10.04.2.3
+%define unmangled_version 10.04.2.3
 %define release 1
 %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
