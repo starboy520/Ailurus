@@ -187,8 +187,7 @@ class QCad(_rpm_install):
     pkgs = 'qcad'
 
 class Alacarte(_rpm_install):
-    __doc__ = ("Alacarte: fedora's graphical menu editor")
-    detail = ("Startup: input 'alacarte' in terminal" )
+    __doc__ = ("Alacarte: menu editor")
     license = LGPL
     pkgs = 'alacarte'
     

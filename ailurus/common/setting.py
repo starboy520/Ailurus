@@ -110,21 +110,30 @@ def __restart_network():
      vbox.set_border_width(10)
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
+ 
 def __change_hostname(): 
-    class hostname(gtk.HBox):
+#use the method of class to resolve conflict of the two callback functions as follows:
+#        def __value_changed(button):
+#            button.set_sensitive(True)
+#                    
+#        def __button_clicked(entry):
+#            new_host_name = entry.get_text()
+#             button.set_sensitive(False)
+# if we use fuction this way, the error message is 'free variable referenced before assignment'
+#  where is the problem when we call the two function?
+    class change_host_name(gtk.HBox):
         def __value_changed(self, *w):
             self.button.set_sensitive(True)
                     
         def __button_clicked(self, *w):
             new_host_name = self.entry.get_text()
-     #       old_host_name = get_output('hostname')
             with TempOwn('/etc/hosts') as o:
                 with open('/etc/hosts') as f:
                     content = f.read()
                     content = content.replace(self.old_host_name, new_host_name)
                 with open('/etc/hosts', 'w') as f:
                     f.write(content)
-            if Config.is_Ubuntu():
+            if Config.is_Ubuntu() or Config.is_Mint():
                 with TempOwn('/etc/hostname') as o:
                     with open('/etc/hostname', 'w') as f:
                         f.write(new_host_name)
@@ -134,7 +143,15 @@ def __change_hostname():
                         content = f.read()
                         content = content.replace(old_host_name, new_host_name)
                     with open('/etc/sysconfig/network', 'w') as f:
-                        f.write(content)
+                        f.write(content)       
+            else:
+                dialog = gtk.Dialog('', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
+                                     buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+                dialog.vbox.pack_start(gtk.Label( _('Ailurus has not implement the function of the distribution of Linux') ))
+                dialog.vbox.show_all()
+                dialog.run()
+                dialog.destroy()      
+                            
             self.button.set_sensitive(False)
         
         def __init__(self):
@@ -150,7 +167,8 @@ def __change_hostname():
             self.pack_start(self.label, False)
             self.pack_start(self.entry, False)
             self.pack_start(self.button, False)
-    hbox = hostname()
+            
+    hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['menu'])
 
 

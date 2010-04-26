@@ -1,6 +1,6 @@
 2010-04-25 Starboy <starboy.qi@gmail.com>
 	* Add alacarte in Fedora
-	* Add gtk and pygtk version in osinfo
+	* Display GTK version and Python-GTK version in Linux information pane
 	* Add a way to modify host name
 	* Add google-earth
 

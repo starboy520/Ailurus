@@ -324,6 +324,7 @@ class GoogleChrome(I):
                          'However, you have installed "google-chrome-unstable".'),
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
+    detail = _('Please install by default, do not change the install path')
     category = 'internet'
     def install(self):
         f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
