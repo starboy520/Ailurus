@@ -322,14 +322,25 @@ class GoogleChrome(I):
         if RPM.installed('google-chrome-unstable'):
             print >>f, _('"google-chrome-beta" is not installed. '
                          'However, you have installed "google-chrome-unstable".'),
-
+class GoogleEarth(I):
+    __doc__ = _('Google Earth')
+    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    category = 'game'
+    def install(self):
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        os.system('chmod a+x ' + f)
+        run_as_root_in_terminal(f)
+    def installed(self):
+        return os.path.exists('/opt/google-earth')
+    def remove(self):
+        run_as_root_in_terminal('/opt/google-earth/uninstall')
+           
 class VirtualBox(_rpm_install):
     'SUN® VirtualBox 3'
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     category = 'vm'
-    manual = True
     depends = Repo_VirtualBox
     pkgs = 'virtualbox'
 

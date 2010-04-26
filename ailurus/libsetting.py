@@ -162,7 +162,7 @@ class ImageChooser(gtk.Button):
                               ('image/gif', '*.gif'),
                               ('image/x-xpixmap', '*.xpm'),
                               ('image/x-svg', '*.svg'),]:
-            filter.add_mime_type(type)
+            filter.add_mime_type(type)  
             filter.add_pattern(pattern)
         return filter
     

@@ -68,7 +68,18 @@ def __python():
      try: return [row(_('Python version:'), sys.version.split()[0], D+'other_icons/python.png' )]
      except: traceback.print_exc(file=sys.stderr)
      return []
-
+ 
+def __gtk():
+     import gtk
+     try: return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'umut_icons/gtk.png')]
+     except: traceback.print_exc(file=sys.stderr)
+     return []
+ 
+def __pygtk():
+     import gtk
+     try: return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'umut_icons/gtk.png' )]
+     except: traceback.print_exc(file = sys.stderr)
+    
 def __uptime():
     try:
         with open('/proc/uptime') as f:
@@ -138,7 +149,7 @@ def __firefox():
 
 def get():
     return ( __host_name() + __user() + __uptime() + __kernel() + __xorg() +
-             __opengl() + __gcc() + __java() + __python() + __firefox() )
+             __opengl() + __gcc() + __java() + __python() + __gtk() + __pygtk() +  __firefox() )
 
 if __name__ == '__main__':
     print get()

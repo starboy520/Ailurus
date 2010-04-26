@@ -135,12 +135,13 @@ class SDL(_apt_install):
 #    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
 #    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
 #    pkgs = 'pv'
-          
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-    license = GPL
-    pkgs = 'auto-apt'
+
+# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
+#class AutoApt(_apt_install):
+#    'Auto-apt'
+#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+#    license = GPL
+#    pkgs = 'auto-apt'
 
 class CheckInstall(_apt_install):
     'CheckInstall'
@@ -174,7 +175,6 @@ class VirtualBox(_apt_install):
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     license = GPL
     category = 'vm'
-    manual = True
     pkgs = 'virtualbox-ose'
 
 class GNOMEArtNextGen(I):
@@ -230,7 +230,7 @@ class GNOMEArtNextGen(I):
         APT.remove('gnomeartng')
     def support(self):
         return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
-
+           
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
     detail = _('It is the indispensable plotting application for writing Physics experiments reports.')

@@ -19,6 +19,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from __future__ import with_statement
 import sys, os
 import ailurus
 sys.path.insert(0, os.path.dirname(os.path.abspath(ailurus.__file__)))
@@ -79,6 +80,7 @@ class SelectWorksDialog(gtk.Dialog):
             sys.exit()
 
 def acquire_root_privilege():
+    print '\x1b[1;36m', _('Acquire root privilege'), '\x1b[m'
     run_as_root('true')
 
 class WaitNetworkDialog(gtk.Dialog):

@@ -58,9 +58,12 @@ def __change_kernel_swappiness():
                 contents.append(new_line)
             with open('/etc/sysctl.conf', 'w') as f:
                 f.writelines(contents)
-        run_as_root('/sbin/sysctl -p', ignore_error = True)
-        current_value = int( get_output('/sbin/sysctl -n vm.swappiness').strip() )
-        if current_value != new_value: raise CommandFailError
+        try:
+            run_as_root('/sbin/sysctl -p', ignore_error = True)
+            current_value = int( get_output('/sbin/sysctl -n vm.swappiness').strip() )
+            if current_value != new_value: raise CommandFailError
+        except AccessDeniedError:
+            pass
     
     apply_button = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
     apply_button.connect('clicked', apply, adjustment)
@@ -85,7 +88,10 @@ def __restart_network():
              obj.wake(dbus_interface='org.freedesktop.NetworkManager')
              if Config.is_Ubuntu() or Config.is_Mint():
                  notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
-                 run_as_root('/etc/init.d/networking restart')
+                 try:
+                     run_as_root('/etc/init.d/networking restart')
+                 except AccessDeniedError:
+                     pass
              notify(_('Information'), _('Network restarted successfully.'))
          except: pass
      button_restart_network = gtk.Button(_('Restart network').center(30))
@@ -105,10 +111,72 @@ def __restart_network():
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
  
+def __change_hostname(): 
+#   I have to use the class, to resolve problem of these codes:
+#        def __value_changed(button):
+#            button.set_sensitive(True)
+#
+#        def __button_clicked(entry):
+#            new_host_name = entry.get_text()
+#            button.set_sensitive(False)
+#   error message is 'free variable referenced before assignment'. I don't know the reason.
+    class change_host_name(gtk.HBox):
+        def __value_changed(self, *w):
+            self.button.set_sensitive(True)
+
+        def __button_clicked(self, *w):
+            new_host_name = self.entry.get_text()
+            with TempOwn('/etc/hosts') as o:
+                with open('/etc/hosts') as f:
+                    content = f.read()
+                    content = content.replace(self.old_host_name, new_host_name)
+                with open('/etc/hosts', 'w') as f:
+                    f.write(content)
+            if Config.is_Ubuntu() or Config.is_Mint():
+                with TempOwn('/etc/hostname') as o:
+                    with open('/etc/hostname', 'w') as f:
+                        f.write(new_host_name)
+            elif Config.is_Fedora():
+                with TempOwn('/etc/sysconfig/network') as o:
+                    with open('/etc/sysconfig/network') as f:
+                        content = f.read()
+                        content = content.replace(old_host_name, new_host_name)
+                    with open('/etc/sysconfig/network', 'w') as f:
+                        f.write(content)       
+            else:
+                dialog = gtk.Dialog('Feature is not implemented', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
+                                     buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+                dialog.vbox.pack_start(gtk.Label('This feature has not been implement for your Linux distribution'))
+                dialog.vbox.show_all()
+                dialog.run()
+                dialog.destroy()      
+                            
+            self.button.set_sensitive(False)
+        
+        def __init__(self):
+            self.entry = gtk.Entry()
+            self.button = gtk.Button(_('Apply'))
+            self.label = gtk.Label(_('New host name:'))
+            self.old_host_name = get_output('hostname')
+            self.entry.set_text(self.old_host_name)
+            self.entry.connect('changed', self.__value_changed)
+            self.button.connect('clicked', self. __button_clicked)
+                
+            gtk.HBox.__init__(self, False, 5)
+            self.pack_start(self.label, False)
+            self.pack_start(self.entry, False)
+            self.pack_start(self.button, False)
+            
+    hbox = change_host_name()
+    return Setting(hbox, _('Change host name'), ['menu'])
+
+
+    
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
+            __change_hostname,
             __restart_network ]:
         try:
             ret.append(f())

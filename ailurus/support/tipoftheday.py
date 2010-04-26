@@ -48,6 +48,28 @@ class TipOfTheDay(gtk.Dialog):
             self.lasttip = len(self.tips)
         self.lasttip -= 1
         self.__change_content(content, self.tips[self.lasttip])
+    
+    def __show_all_tips(self, widget):
+        buffer = gtk.TextBuffer()
+        buffer.set_text('\n\n'.join(tips))
+        textview = gtk.TextView()
+        textview.set_buffer(buffer)
+        textview.set_editable(False)
+        textview.set_cursor_visible(False)
+        textview.set_wrap_mode(gtk.WRAP_WORD)
+        scroll = gtk.ScrolledWindow()
+        scroll.add(textview)
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        dialog = gtk.Dialog( _('tips'), None, 
+                    gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+                    buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
+        dialog.set_border_width(10)
+        dialog.vbox.pack_start(scroll)
+        dialog.vbox.set_size_request(500, 500)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
 
     def __init__(self):
         import gtk
@@ -91,11 +113,15 @@ class TipOfTheDay(gtk.Dialog):
         submit_skills = image_stock_button(gtk.STOCK_GO_UP, _('Submit Linux Skills'))
         submit_skills.connect('clicked', report_bug)
         
+        show_all_tips = image_stock_button(gtk.STOCK_INDEX, _('Show all tips'))
+        show_all_tips.connect('clicked', self.__show_all_tips)
+        
         hbox = gtk.HBox(False, 10)
         hbox.pack_end(close_button, False, False)
         hbox.pack_end(next_tip, False, False)
         hbox.pack_end(previous_tip, False, False)
         hbox.pack_end(submit_skills, False, False)
+        hbox.pack_end(show_all_tips, False, False)
 
         box = gtk.VBox ( False, 0 )
         box.pack_start ( titlebox, False )

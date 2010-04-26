@@ -1,5 +1,36 @@
+2010-04-26 Homer Xing <homer.xing@gmail.com>
+
+    * Fix problem: After installing Ailurus on Fedora, 
+      "Ailurus quick setup" does not appear in "System Tools" entry.
+
+2010-04-25 CHEN Yangyang <skabyy@gmail.com>
+
+    * Change the position of the popup menu of toolitem
+    * The remove list for kernel will not list the current using kernel anymore
+    * Add a button to show all the tips of day
+    * The top toolbar will automatically resize when the window is resized
+    
+2010-04-25 QI Chengjie <starboy.qi@gmail.com>
+
+	* Add alacarte in Fedora
+	* Display GTK version and Python-GTK version in Linux information pane
+	* Add a way to modify host name
+	* Add google-earth
+
 2010-04-24 MA Yue <velly.empire@gmail.com>
     * Import the installation of Pidgin beta
+
+2010-04-24 Homer Xing <homer.xing@gmail.com>
+
+    * Do not raise exception when user cancel policy-kit in clean up pane.
+    * Show a notify after clearing recent documents list.
+    * Fix bug: MPlayer-vod cannot be installed.
+    * Fix bug: "Speed up firefox" failed if directory does not exist.
+    * Fix bug: AutoProxy installation error.
+    * Fix bug: Fcitx cannot be detected after installation.
+    * Change text color.
+    * Reduce border width of "Quick install" button. Increase its width.
+    * Fix bug: Cannot launch Ailurus by root.
 
 2010-04-23 Homer Xing <homer.xing@gmail.com>
 

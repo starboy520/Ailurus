@@ -19,6 +19,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from __future__ import with_statement
 import gtk
 import sys
 import os
@@ -58,7 +59,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root('apt-get clean')
+            try: run_as_root('apt-get clean')
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo apt-get clean'))
@@ -69,7 +71,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root("yum --enablerepo='*' clean all")
+            try: run_as_root("yum --enablerepo='*' clean all")
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
@@ -80,7 +83,8 @@ class CleanUpPane(gtk.VBox):
         button = gtk.Button()
         button.add(label)
         def __clean_up(button, label):
-            run_as_root('rm /var/cache/ailurus/* -rf')
+            try: run_as_root('rm /var/cache/ailurus/* -rf')
+            except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
@@ -94,6 +98,7 @@ class CleanUpPane(gtk.VBox):
                 os.system("echo '' > ~/.recently-used.xbel")
             else: # is dir
                 os.system("rm ~/.recently-used.xbel/* -rf")
+            notify(' ', _('"Recent documents" list is empty now.'))
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
         button.set_tooltip_text(_('Command: echo "" > ~/.recently-used.xbel'))
@@ -144,7 +149,8 @@ class ReclaimMemoryBox(gtk.HBox):
             src = tempfile.NamedTemporaryFile('w')
             src.write('3\n')
             src.flush()
-            run_as_root('cp %s %s'%(src.name, dest) )
+            try: run_as_root('cp %s %s'%(src.name, dest) )
+            except AccessDeniedError: pass
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
@@ -152,6 +158,7 @@ class ReclaimMemoryBox(gtk.HBox):
 class UbuntuCleanKernelBox(gtk.VBox):
     def __init__(self):
         gtk.VBox.__init__(self, False, 10)
+        self.current_kernel_version = current_kernel_version = self.get_current_kernel_version()
         self.version_to_packages = {} # map version to package names
         self.__regenerate_version_to_packages() # regenerate self.version_to_packages
         
@@ -160,10 +167,9 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply = self.button_apply = gtk.Button(_('Remove Linux kernels'))
         button_apply.set_sensitive(False)
         button_apply.connect('clicked', self.remove_kernel)
-        current_kernel_version = self.get_current_kernel_version()
         label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
-        label2 = gtk.Label(_('All installed Linux kernels are:'))
+        label2 = gtk.Label(_('Not used Linux kernels are:'))
         label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
         self.pack_start(label2, False)
@@ -196,7 +202,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
             self.__regenerate_check_buttons()
         if delete_list:
             try:    run_as_root('rm -rf %s'%' '.join(delete_list))
-            except: pass
+            except AccessDeniedError: pass
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         button_apply.set_sensitive(False)
@@ -211,6 +217,8 @@ class UbuntuCleanKernelBox(gtk.VBox):
             match = re.search(pattern, p)
             if not match: continue
             version = match.group(1)
+            if version == self.current_kernel_version:
+                continue
             if match.group(2) == '-':
                 pkgs = [
                         'linux-headers-%s'%version, 
