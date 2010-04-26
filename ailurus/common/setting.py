@@ -112,19 +112,18 @@ def __restart_network():
      return Setting(vbox, _('Restart network'), ['network'])
  
 def __change_hostname(): 
-#use the method of class to resolve conflict of the two callback functions as follows:
+#   I have to use the class, to resolve problem of these codes:
 #        def __value_changed(button):
 #            button.set_sensitive(True)
-#                    
+#
 #        def __button_clicked(entry):
 #            new_host_name = entry.get_text()
-#             button.set_sensitive(False)
-# if we use fuction this way, the error message is 'free variable referenced before assignment'
-#  where is the problem when we call the two function?
+#            button.set_sensitive(False)
+#   error message is 'free variable referenced before assignment'. I don't know the reason.
     class change_host_name(gtk.HBox):
         def __value_changed(self, *w):
             self.button.set_sensitive(True)
-                    
+
         def __button_clicked(self, *w):
             new_host_name = self.entry.get_text()
             with TempOwn('/etc/hosts') as o:
@@ -145,9 +144,9 @@ def __change_hostname():
                     with open('/etc/sysconfig/network', 'w') as f:
                         f.write(content)       
             else:
-                dialog = gtk.Dialog('', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
+                dialog = gtk.Dialog('Feature is not implemented', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
                                      buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-                dialog.vbox.pack_start(gtk.Label( _('Ailurus has not implement the function of the distribution of Linux') ))
+                dialog.vbox.pack_start(gtk.Label('This feature has not been implement for your Linux distribution'))
                 dialog.vbox.show_all()
                 dialog.run()
                 dialog.destroy()      

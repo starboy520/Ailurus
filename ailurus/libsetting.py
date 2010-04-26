@@ -163,7 +163,6 @@ class ImageChooser(gtk.Button):
                               ('image/x-xpixmap', '*.xpm'),
                               ('image/x-svg', '*.svg'),]:
             filter.add_mime_type(type)  
-            #mime_type(multipurpose internet mail extensions which represent the internet media type
             filter.add_pattern(pattern)
         return filter
     
