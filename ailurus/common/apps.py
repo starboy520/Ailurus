@@ -653,3 +653,27 @@ class WorldofPadman(I):
         run_as_root('rm /usr/local/games/WoP -rf')
         run_as_root('rm /usr/local/bin/wop')
     
+    def support(self):
+        if Config.is_Fedora(): return False
+	else: return True
+
+class FirefoxConfig(I):
+    __doc__ = _('tweak the about:config')
+    detail = _('add it later')
+    license = GPL
+    category = 'game'
+    def install(self):
+        f = file('/home/velly/.mozilla/firefox/c3paj1j2.default/prefs.js', 'w')
+        for line in f.split('\n'):
+            for v in line.split(','):
+                if v[0] == 'user_pref("content.maxtextrun"' :
+                    v[1] = '8191);'
+                else :
+                    print 'user_pref("content.maxtextrun", 8191);' >> f
+        f.close()                
+    def installed(self):
+        return False
+    def remove(self):
+        pass
+    def __init__(self):
+        pass

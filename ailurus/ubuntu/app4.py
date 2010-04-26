@@ -165,10 +165,12 @@ class Pidgin_beta(_apt_install):
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
     def installed(self):
-        f = get_output('pidgin -v')
-	v = f.split(' ', 2)
-	if v[1] < '2.6.6': return False
-	else: return True
+	if APT.installed('pidgin'):
+            f = get_output('pidgin -v')
+	    v = f.split(' ', 2)
+	    if v[1] < '2.6.6': return False
+	    else: return True
+	else : return False
     def install(self):
         if APT.installed('pidgin'):
 	    run_as_root('apt-get upgrade pidgin')
