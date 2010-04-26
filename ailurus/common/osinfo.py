@@ -71,13 +71,13 @@ def __python():
  
 def __gtk():
      import gtk
-     try: return [row(_('Gtk version:'), '.'.join(map(str, gtk.gtk_version)), D+'umut_icons/gtk.png')]
+     try: return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'umut_icons/gtk.png')]
      except: traceback.print_exc(file=sys.stderr)
      return []
  
 def __pygtk():
      import gtk
-     try: return [row(_('Pygtk version:'), '.'.join(map(str, gtk.pygtk_version)), D+'umut_icons/gtk.png' )]
+     try: return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'umut_icons/gtk.png' )]
      except: traceback.print_exc(file = sys.stderr)
     
 def __uptime():
