@@ -168,7 +168,7 @@ def __change_hostname():
             self.pack_start(self.button, False)
             
     hbox = change_host_name()
-    return Setting(hbox, _('Change host name'), ['menu'])
+    return Setting(hbox, _('Change host name'), ['host name'])
 
 
     

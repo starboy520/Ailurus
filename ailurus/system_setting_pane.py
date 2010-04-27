@@ -55,7 +55,8 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_network.png', _('Network'), 'network', ),
               (D+'umut_icons/s_update.png', _('Update'), 'update', ),
               (D+'umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
-              (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', )
+              (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
+              (D+'umut_icons/s_host.png', _('Host name'), 'host name',)
                 ]:
             assert category in Setting.categories
             if category in existing_categories:
