@@ -19,10 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-import lib
 import warnings
+import os
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
-if Config.is_Ubuntu:
+if os.path.exists('/etc/lsb-release'):
+# i wanna import lib. but somehow it doesnt work :( i dont know why
     import apt
     cache = apt.cache.Cache()
     for p in cache:

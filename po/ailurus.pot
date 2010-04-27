@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-27 20:40+0800\n"
+"POT-Creation-Date: 2010-04-27 21:40+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1506,6 +1506,12 @@ msgid ""
 "gksudo tasksel\n"
 msgstr ""
 
+#: .././ailurus/common/tips.py:364
+msgid ""
+"Does your devices support Linux? You can run 'lspci -n' and paste the output "
+"to http://cdlinux.info/wiki/doku.php/\n"
+msgstr ""
+
 #: .././ailurus/fedora/apps.py:28
 msgid "WINE"
 msgstr ""
@@ -1758,6 +1764,18 @@ msgstr ""
 
 #: .././ailurus/fedora/apps.py:398
 msgid "Audacity: Music editor"
+msgstr ""
+
+#: .././ailurus/fedora/apps.py:413
+msgid "Hardware Lister"
+msgstr ""
+
+#: .././ailurus/fedora/apps.py:414
+msgid ""
+"lshw (Hardware Lister) is a small tool to provide detailed information on "
+"the hardware configuration of the machine. It can report exact memory "
+"configuration, firmware version, mainboard configuration, CPU version and "
+"speed, cache configuration, bus speed, etc."
 msgstr ""
 
 #: .././ailurus/fedora/fastest_mirror_pane.py:30
