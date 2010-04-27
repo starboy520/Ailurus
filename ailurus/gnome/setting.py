@@ -487,7 +487,9 @@ def __gnome_control_center():
     hbox = gtk.HBox()
     button = gtk.Button(_('Open Gnome Control Center'))
     def open_gnome_control_center(w):
-        run('gnome-control-center')
+        import subprocess
+        subprocess.call('gnome-control-center', shell = True)
+
     button.connect('clicked', open_gnome_control_center)
     hbox.pack_start(button, False, False)
     return Setting(hbox, _('Run Gnome Control Center'), ['desktop'] )

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-27 21:40+0800\n"
+"POT-Creation-Date: 2010-04-27 22:09+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -1766,11 +1766,11 @@ msgstr ""
 msgid "Audacity: Music editor"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:413
+#: .././ailurus/fedora/apps.py:413 .././ailurus/ubuntu/app3.py:479
 msgid "Hardware Lister"
 msgstr ""
 
-#: .././ailurus/fedora/apps.py:414
+#: .././ailurus/fedora/apps.py:414 .././ailurus/ubuntu/app3.py:480
 msgid ""
 "lshw (Hardware Lister) is a small tool to provide detailed information on "
 "the hardware configuration of the machine. It can report exact memory "
