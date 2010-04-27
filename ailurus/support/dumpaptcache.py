@@ -19,12 +19,13 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+import lib
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
-
-import apt
-cache = apt.cache.Cache()
-for p in cache:
-    if p.isInstalled: print 'i',
-    else: print 'u',
-    print p.name
+if Config.is_Ubuntu:
+    import apt
+    cache = apt.cache.Cache()
+    for p in cache:
+        if p.isInstalled: print 'i',
+        else: print 'u',
+        print p.name
