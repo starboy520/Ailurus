@@ -483,6 +483,39 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
+def __gnome_control_center():
+    hbox = gtk.HBox()
+    button = gtk.Button(_('Open Gnome Control Center'))
+    def open_gnome_control_center(w):
+        run('gnome-control-center')
+    button.connect('clicked', open_gnome_control_center)
+    hbox.pack_start(button, False, False)
+    return Setting(hbox, _('Run Gnome Control Center'), ['desktop'] )
+
+def __gconfig_backup():
+    table = gtk.Table()
+    table.set_col_spacings(30)
+    table.set_row_spacings(10)
+    label = gtk.Label(_('Gconfig Settings are saved as XML files in the folder ~/.conf, Ailurus can help you backup and reset this file.'))
+    backup_button = gtk.Button(_('Backup Gconfig Setting'))
+    def backup_gconf(w):
+        run('cd ~ && tar cvzf ~/.config/ailurus/gconfbackup.tar.gz /usr/share/gconf .gconf')
+    backup_button.connect('clicked', backup_gconf)
+    backup_button.set_tooltip_text(_("The backup file stored in ~/.config/ailurus/gconfbackup.tar.gz"))
+    recover_button = gtk.Button(_('Reset Gconfig Setting'))
+    def reset_gconf(w):
+        run('cd ~ && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz .gconf')
+	run_as_root('cd / && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz usr/share/gconf')
+	notify(_('Reset Successful'), _('Some Setting will be applied when you login next time.'))
+    recover_button.connect('clicked', reset_gconf)
+    import os
+    if not os.path.exists(os.path.expanduser('~/.config/ailurus/gconfbackup.tar.gz')):
+        recover_button.set_sensitive(False)
+    table.attach(label, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(backup_button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(recover_button, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    return Setting(table, _("backup and rset Gconfig Setting"), ['desktop'])
+
 #def __compiz_setting():
 #    table = gtk.Table()
 #    table.set_col_spacings(5)
@@ -565,6 +598,8 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
 #            __compiz_setting,
+            __gnome_control_center,
+	    __gconfig_backup,
             ]:
         try:
             import gconf
