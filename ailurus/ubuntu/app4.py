@@ -164,6 +164,16 @@ class Pidgin_beta(_apt_install):
     category = 'internet'
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
+    def installed(self):
+        if APT.installed('pidgin'):
+            string = get_output('pidgin -v')
+            version = string.split()[1]
+            return tuple(map(int,version.split('.'))) >= (2, 6, 6)
+        return False
+    def install(self):
+        if APT.installed('pidgin'):
+            APT.remove('pidgin')
+        APT.install('pidgin')
 
 class PlayOnLinux(_apt_install):
     __doc__ = _('PlayOnLinux: A graphical front-end for wine')
@@ -231,3 +241,19 @@ class Songbird(_apt_install):
     pkgs = 'songbird'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
+
+class Netbeans(_apt_install):
+    __doc__ = 'Netbeans'
+    detail = (
+              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
+               ' and frameworks (J2SE, J2ME, etc.). '
+               'Official site: http://netbeans.org/downloads/ .') +
+              _(' This application depends on Java.') )
+    category = 'dev'
+    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
+    pkgs = 'netbeans'
+
+class TeXLive2007(_apt_install):
+    'TeXLive 2007'
+    category = 'latex'
+    pkgs = 'texlive'

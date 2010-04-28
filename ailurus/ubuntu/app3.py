@@ -474,3 +474,10 @@ class PiTiVi(_apt_install):
     license = LGPL + ' http://www.pitivi.org/'
     category = 'media'
     pkgs = 'pitivi'
+
+class HardwareLister(_apt_install):
+    __doc__ = _('lshw: List hardware information')
+    detail = _('A small application which displays detailed hardware information')
+    license = GPL
+    category = 'hardware'
+    pkgs = 'lshw lshw-gtk'

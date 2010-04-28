@@ -32,6 +32,8 @@ def __study_linux(main_view):
 #         'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
         (True, gtk.STOCK_HELP, _('How to compile a LaTeX file into pdf file ?'), 
          'http://ailurus.cn/?p=329', False),
+        (True, gtk.STOCK_HELP, _('Check Linux device driver'),
+         'http://kmuto.jp/debian/hcl/', False),
          ]
 
     def __get_menu(items):

@@ -386,13 +386,13 @@ def spawn_as_root(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), random_string, dbus_interface='cn.ailurus.Interface')
+    obj.spawn(command, packed_env_string(), secret_key, dbus_interface='cn.ailurus.Interface')
 
-def remove_priviledge(string):
+def drop_priviledge():
     import dbus
     bus = dbus.SystemBus()
     obj = dbus.get_object('cn.ailurus', '/')
-    obj.remove_priviledge(string, dbus_interface='cn.ailurus.Interface')
+    obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
@@ -409,7 +409,7 @@ def run_as_root(cmd, ignore_error=False):
         bus = dbus.SystemBus()
         obj = bus.get_object('cn.ailurus', '/')
         try:
-            obj.run(cmd, packed_env_string(), random_string, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+            obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
         except dbus.exceptions.DBusException, e:
             if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
             else: raise
@@ -569,7 +569,7 @@ def run_as_root_in_terminal(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), random_string, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
 
 class RPM:
     fresh_cache = False
@@ -1688,7 +1688,7 @@ AL = _('Artistic License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
-atexit.register(remove_priviledge, random_string) 
+atexit.register(drop_priviledge, secret_key) 
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
@@ -1701,6 +1701,6 @@ except:
         traceback.print_exc()
         
 import os 
-random_string = os.urandom(64)
+secret_key = os.urandom(64)
 
 

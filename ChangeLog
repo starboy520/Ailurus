@@ -1,3 +1,13 @@
+2010-04-28 QI Chengjie <starboy.qi@gmail.com>
+
+    * Make DBus call persistent in a session
+
+2010-04-26 MA Yue <velly.empire@gmail.com>
+
+    * Improve "world of padman" installation in Fedora
+    * Add lshw: display hardware information
+    * Show "gnome control center" item in menu
+
 2010-04-26 Homer Xing <homer.xing@gmail.com>
 
     * Fix problem: After installing Ailurus on Fedora, 
@@ -16,6 +26,10 @@
 	* Display GTK version and Python-GTK version in Linux information pane
 	* Add a way to modify host name
 	* Add google-earth
+
+2010-04-24 MA Yue <velly.empire@gmail.com>
+
+    * Improve installation of Pidgin beta version
 
 2010-04-24 Homer Xing <homer.xing@gmail.com>
 
