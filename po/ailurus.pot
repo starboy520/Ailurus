@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-28 17:49+0800\n"
+"POT-Creation-Date: 2010-04-28 18:10+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -389,7 +389,7 @@ msgstr ""
 #: .././ailurus/common/apps.py:171
 msgid ""
 "There are some useful tweaks can help you make Firefox easy to use.\n"
-"All tweaks comes from DaringSoule <daringsoule@bluevalley.net>, Thanks a lot!"
+"All tweaks comes from DaringSoule (daringsoule@bluevalley.net), Thanks a lot!"
 msgstr ""
 
 #: .././ailurus/common/apps.py:185
@@ -1501,7 +1501,7 @@ msgstr ""
 #: .././ailurus/common/tips.py:364
 msgid ""
 "Does your devices support Linux? You can run 'lspci -n' and paste the output "
-"to http://cdlinux.info/wiki/doku.php/\n"
+"to http://kmuto.jp/debian/hcl/\n"
 msgstr ""
 
 #: .././ailurus/fedora/apps.py:28
