@@ -351,7 +351,7 @@ class FedoraFastestMirrorPane(gtk.VBox):
         return scroll
 
     def __callback__refresh_state_box(self):
-        print 'NotImplemented'
+        print 'refresh_state_box() is not implemented :('
 
     def __init__(self, main_view):
         assert hasattr(main_view, 'lock')
