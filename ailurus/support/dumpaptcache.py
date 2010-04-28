@@ -21,7 +21,7 @@
 
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
-# i wanna import lib. but somehow it doesnt work :( i dont know why
+
 import apt
 cache = apt.cache.Cache()
 for p in cache:

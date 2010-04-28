@@ -476,11 +476,8 @@ class PiTiVi(_apt_install):
     pkgs = 'pitivi'
 
 class HardwareLister(_apt_install):
-    __doc__ = _('Hardware Lister')
-    detail = _('lshw (Hardware Lister) is a small tool to provide detailed information'
-               ' on the hardware configuration of the machine. It can report exact memory configuration, '
-	       'firmware version, mainboard configuration, CPU version and speed, cache configuration, '
-	       'bus speed, etc.')
+    __doc__ = _('lshw: List hardware information')
+    detail = _('A small application which displays detailed hardware information')
     license = GPL
     category = 'hardware'
     pkgs = 'lshw lshw-gtk'

@@ -1,15 +1,8 @@
-2010-04-28 MA Yue <velly.empire@gmail.com>
-
-    * Add some tweak of Firefox
-
 2010-04-26 MA Yue <velly.empire@gmail.com>
 
-    * Change the installation of World of padman in Fedora
-    * Add the function of backup Gconfig Setting
-    * Add a Daily Tip
-    * fix the bug 'no apt' in Fedora
-    * Add device viewer :Hardware Lister
-    * Add function of 'Gnome Control Center' shows in menu
+    * Improve "world of padman" installation in Fedora
+    * Add lshw: display hardware information
+    * Show "gnome control center" item in menu
 
 2010-04-26 Homer Xing <homer.xing@gmail.com>
 
@@ -31,7 +24,8 @@
 	* Add google-earth
 
 2010-04-24 MA Yue <velly.empire@gmail.com>
-    * Import the installation of Pidgin beta
+
+    * Improve installation of Pidgin beta version
 
 2010-04-24 Homer Xing <homer.xing@gmail.com>
 

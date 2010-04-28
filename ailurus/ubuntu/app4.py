@@ -165,17 +165,15 @@ class Pidgin_beta(_apt_install):
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
     def installed(self):
-	if APT.installed('pidgin'):
-            f = get_output('pidgin -v')
-	    v = f.split(' ', 2)
-	    if v[1] < '2.6.6': return False
-	    else: return True
-	else: return False
+        if APT.installed('pidgin'):
+            string = get_output('pidgin -v')
+            version = string.split()[1]
+            return tuple(map(int,version.split('.'))) >= (2, 6, 6)
+        return False
     def install(self):
         if APT.installed('pidgin'):
-	    run_as_root('apt-get upgrade pidgin')
-	else:
-	    APT.install('pidgin')
+            APT.remove('pidgin')
+        APT.install('pidgin')
 
 class PlayOnLinux(_apt_install):
     __doc__ = _('PlayOnLinux: A graphical front-end for wine')
