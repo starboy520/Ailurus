@@ -252,3 +252,8 @@ class Netbeans(_apt_install):
     category = 'dev'
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     pkgs = 'netbeans'
+
+class TeXLive2007(_apt_install):
+    'TeXLive 2007'
+    category = 'latex'
+    pkgs = 'texlive'

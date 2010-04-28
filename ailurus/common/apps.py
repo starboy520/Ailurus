@@ -234,11 +234,6 @@ class QueryBeforeRmALotFiles(I) :
     def remove(self):
         file_remove ( self.bashrc, self.line )
 
-class TeXLive2007(_apt_install):
-    'TeXLive 2007'
-    category = 'latex'
-    pkgs = 'texlive'
-
 class TeXLive2009(I):
     __doc__ = _('TeXLive 2009')
     detail = _('TeXLive is obtained from http://www.tug.org/texlive/')
