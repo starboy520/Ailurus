@@ -140,7 +140,7 @@ def __change_hostname():
                 with TempOwn('/etc/sysconfig/network') as o:
                     with open('/etc/sysconfig/network') as f:
                         content = f.read()
-                        content = content.replace(old_host_name, new_host_name)
+                        content = content.replace(self.old_host_name, new_host_name)
                     with open('/etc/sysconfig/network', 'w') as f:
                         f.write(content)       
             else:

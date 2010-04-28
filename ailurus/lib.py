@@ -1693,7 +1693,15 @@ except:
         import traceback
         traceback.print_exc()
         
+def random_num_gen():
+    import random
+    st = ''
+    i = 1
+    while( i <= 20 ):
+        st += str(random.random())
+        i = i + 1
+    return st
 
-
-        
+random_string = random_num_gen()
+    
 
