@@ -36,10 +36,10 @@ class AilurusFulgens(dbus.service.Object):
                                           in_signature='ssb', 
                                           out_signature='', 
                                           sender_keyword='sender')
-    def run(self, command, env_string, random_string, ignore_error, sender=None):
-        if not random_string in self.authorized_process:
+    def run(self, command, env_string, secret_key, ignore_error, sender=None):
+        if not secret_key in self.authorized_secret_key:
             self.__check_permission(sender)
-            self.authorized_process.add(random_string)
+            self.authorized_secret_key.add(secret_key)
         
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
@@ -59,10 +59,10 @@ class AilurusFulgens(dbus.service.Object):
                                           in_signature='ss', 
                                           out_signature='i', 
                                           sender_keyword='sender')
-    def spawn(self, command, env_string, random_string, sender=None):
-        if not random_string in self.authorized_process:
+    def spawn(self, command, env_string, secret_key, sender=None):
+        if not secret_key in self.authorized_secret_key:
             self.__check_permission(sender)
-            self.authorized_process.add(random_string)
+            self.authorized_secret_key.add(secret_key)
 
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
@@ -97,7 +97,7 @@ class AilurusFulgens(dbus.service.Object):
             raise ValueError
 
     def __init__(self):
-        self.authorized_process = set()
+        self.authorized_secret_key = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
         
@@ -144,9 +144,9 @@ class AilurusFulgens(dbus.service.Object):
     @dbus.server.method('cn.ailurus.Interface', 
                                     in_signature='s',
                                     out_signature='') 
-    def remove_priviledge(self, string):
-        assert string in self.authorized_process
-        self.authorized_process.remove(string)
+    def drop_priviledge(self, secret_key):
+        if secret_key in self.authorized_secret_key:
+            self.authorized_secret_key.remove(secret_key)
         
 def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
