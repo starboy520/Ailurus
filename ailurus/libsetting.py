@@ -394,4 +394,20 @@ class Setting(gtk.VBox):
         
         self.category = category
 
-    
+  class FirefoxConfigButton(gtk.CheckButton):
+    def __toggled(self, w):
+        value = self.get_active()
+        import gconf
+        g = gconf.client_get_default()
+        g.set_bool(self.key, value)
+    def __init__(self, text, key, tooltip = None):
+        gtk.CheckButton.__init__(self)
+        self.key = key
+        self.set_label(text)
+        if not tooltip: tooltip = _('GConf key: ')+key
+        else: tooltip += _('\nGConf key: ')+key
+        self.set_tooltip_markup(tooltip)
+        import gconf
+        g = gconf.client_get_default()
+        self.set_active( g.get_bool(key) )
+        self.connect('toggled', self.__toggled)  
