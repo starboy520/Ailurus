@@ -20,13 +20,11 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 import warnings
-import os
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
-if os.path.exists('/etc/lsb-release'):
 # i wanna import lib. but somehow it doesnt work :( i dont know why
-    import apt
-    cache = apt.cache.Cache()
-    for p in cache:
-        if p.isInstalled: print 'i',
-        else: print 'u',
-        print p.name
+import apt
+cache = apt.cache.Cache()
+for p in cache:
+    if p.isInstalled: print 'i',
+    else: print 'u',
+    print p.name

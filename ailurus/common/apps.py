@@ -157,6 +157,7 @@ class Speed_Up_Firefox(I):
         with TempOwn(dir + 'firefox.nopango.desktop') as o:
             with open(dir + 'firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
+
     def installed(self):
         import os 
         return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
@@ -164,6 +165,19 @@ class Speed_Up_Firefox(I):
     def remove(self):
         run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
+
+class Firefox_config_tweak(I):
+    __doc__ = _('Some Useful Firefox Tweak')
+    detail = (_('There are some useful tweaks can help you make Firefox easy to use.\n'
+                'All tweaks comes from DaringSoule <daringsoule@bluevalley.net>, Thanks a lot!'))
+    def install(self):
+	run('cp /usr/share/ailurus/support/user.js ' + '/'+self.firefox_path)
+    def installed(self):
+        return (os.path.isfile('/' +self.firefox_path + '/user.js'))
+    def remove(self):
+        run('rm /' + self.firefox_path + '/user.js')
+    def __init__(self):
+        self.firefox_path = FirefoxExtensions.get_extensions_path()[1:-11] 
 
 class Netbeans(_apt_install):
     __doc__ = 'Netbeans'
