@@ -391,7 +391,7 @@ def spawn_as_root(command):
 def drop_priviledge():
     import dbus
     bus = dbus.SystemBus()
-    obj = dbus.get_object('cn.ailurus', '/')
+    obj = bus.get_object('cn.ailurus', '/')
     obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
@@ -1688,7 +1688,7 @@ AL = _('Artistic License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
-atexit.register(drop_priviledge, secret_key) 
+atexit.register(drop_priviledge) 
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
@@ -1701,7 +1701,5 @@ except:
         traceback.print_exc()
         
 
-import os 
-secret_key = os.urandom(64)
-
-
+import random
+secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
