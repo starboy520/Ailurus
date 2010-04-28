@@ -369,7 +369,7 @@ class Setting(gtk.VBox):
                   'sound', 'icon', 'font', 'session', 
                   'memory', 'network',
                   'restriction',
-                  'nautilus', 'terminal', 'host name',
+                  'nautilus', 'terminal', 'host_name',
                   'update', 'power', 'shortcut', ]
     
     def __title(self, text):
