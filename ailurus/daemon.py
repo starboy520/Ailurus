@@ -84,11 +84,6 @@ class AilurusFulgens(dbus.service.Object):
     def exit(self):
         mainloop.quit()
 
-    @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='s', 
-                                          out_signature='s'
-                                                             )
-    
     def __check_permission(self, sender):
         if self.check_permission_method == 0:
             self.__check_permission_0(sender)
@@ -140,7 +135,6 @@ class AilurusFulgens(dbus.service.Object):
             v = List[i+1]
             Dict[k] = v
         return Dict
-    
 
 def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
