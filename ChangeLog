@@ -1,6 +1,5 @@
 2010-04-26 Ma Yue <velly.empire@gmail.com>
     * Change the installation of World of padman in Fedora
-    * Add the buton to run Gnome Control Center
     * Add the function of backup Gconfig Setting
     * Add a Daily Tip
     * fix the bug 'no apt' in Fedora

@@ -483,16 +483,16 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
-def __gnome_control_center():
-    hbox = gtk.HBox()
-    button = gtk.Button(_('Open Gnome Control Center'))
-    def open_gnome_control_center(w):
-        import subprocess
-        subprocess.call('gnome-control-center', shell = True)
-
-    button.connect('clicked', open_gnome_control_center)
-    hbox.pack_start(button, False, False)
-    return Setting(hbox, _('Run Gnome Control Center'), ['desktop'] )
+#def __gnome_control_center():
+#    hbox = gtk.HBox()
+#    button = gtk.Button(_('Open Gnome Control Center'))
+#    def open_gnome_control_center(w):
+#        import subprocess
+#        subprocess.call('gnome-control-center', shell = True)
+#
+#    button.connect('clicked', open_gnome_control_center)
+#    hbox.pack_start(button, False, False)
+#    return Setting(hbox, _('Run Gnome Control Center'), ['desktop'] )
 
 def __gconfig_backup():
     table = gtk.Table()
