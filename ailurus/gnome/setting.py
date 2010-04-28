@@ -443,27 +443,47 @@ def __advance_setting():
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    
+
+    import os
+    def __gnome_control_icon(w):
+	icon = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
+	if not os.path.isfile(icon):
+	    f = open(icon, 'w')
+	    f.write('[Desktop Entry]\n'
+	    'Name=Gnome Control Center\n'
+	    'Exec=gnome-control-center\n'
+	    'Icon=gnome-control-center\n'
+	    'Terminal=false\n'
+	    'Type=Application\n'
+	    'Categories=System;Settings;')
+            f.close()
+	else:
+	    run('rm '+ icon )
+
+    gc = gtk.CheckButton(_('Show Gnome Cotrol Center in main menu'))
+    gc.set_tooltip_text(_('The Gnome Control Center allows you to configure various parts of your system.'))
+    gc.set_active(os.path.isfile(os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')))
+    gc.connect('clicked', __gnome_control_icon)
+    table.attach(gc, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+
     o = label_left_align(_('Change default file manager to:'))
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
 
     o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
     
     o = label_left_align(_('Change default panel program to:') )
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = label_left_align(_('Change default window manager to:') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
-
-
     
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+
     return Setting(table, _('Advance settings'), ['desktop'])
 
 def __shortcut_setting():
@@ -482,6 +502,30 @@ def __shortcut_setting():
         o = GConfShortcutKeyEntry('command_%d' % number)
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
+
+def __gconfig_backup():
+    table = gtk.Table()
+    table.set_col_spacings(30)
+    table.set_row_spacings(10)
+    label = gtk.Label(_('Gconfig Settings are saved as XML files in the folder ~/.gconf, Ailurus can help you backup and reset this file.'))
+    backup_button = gtk.Button(_('Backup Gconfig Setting'))
+    def backup_gconf(w):
+        run('cd ~ && tar cvzf ~/.config/ailurus/gconfbackup.tar.gz /usr/share/gconf .gconf')
+    backup_button.connect('clicked', backup_gconf)
+    backup_button.set_tooltip_text(_("The backup file stored in ~/.config/ailurus/gconfbackup.tar.gz"))
+    recover_button = gtk.Button(_('Reset Gconfig Setting'))
+    def reset_gconf(w):
+        run('cd ~ && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz .gconf')
+	run_as_root('cd / && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz usr/share/gconf')
+	notify(_('Reset Successful'), _('Some Setting will be applied when you login next time.'))
+    recover_button.connect('clicked', reset_gconf)
+    import os
+    if not os.path.exists(os.path.expanduser('~/.config/ailurus/gconfbackup.tar.gz')):
+        recover_button.set_sensitive(False)
+    table.attach(label, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(backup_button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(recover_button, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    return Setting(table, _("backup and rset Gconfig Setting"), ['desktop'])
 
 #def __compiz_setting():
 #    table = gtk.Table()
@@ -565,6 +609,7 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
 #            __compiz_setting,
+	    __gconfig_backup,
             ]:
         try:
             import gconf

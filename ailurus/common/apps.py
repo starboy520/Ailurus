@@ -157,6 +157,7 @@ class Speed_Up_Firefox(I):
         with TempOwn(dir + 'firefox.nopango.desktop') as o:
             with open(dir + 'firefox.nopango.desktop', 'w') as f:
                 f.writelines(content)
+
     def installed(self):
         import os 
         return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
@@ -164,6 +165,22 @@ class Speed_Up_Firefox(I):
     def remove(self):
         run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
+
+class Firefox_config_tweak(I):
+    __doc__ = _('Some Useful Firefox Tweak')
+    detail = (_('There are some useful tweaks can help you make Firefox easy to use.\n'
+                'All tweaks comes from DaringSoule (daringsoule@bluevalley.net), Thanks a lot!'))
+    def install(self):
+	run('cp /' + self.firefox_path + '/prefs.js ' + '/' + self.firefox_path + '/prefs.js.bak')
+	run('cp /usr/share/ailurus/support/user.js ' + '/'+self.firefox_path)
+
+    def installed(self):
+        return (os.path.isfile('/' +self.firefox_path + '/user.js'))
+    def remove(self):
+        run('rm /' + self.firefox_path + '/user.js')
+        run('cp /' + self.firefox_path + '/prefs.js.bak ' + '/' + self.firefox_path + '/prefs.js')
+    def __init__(self):
+        self.firefox_path = FirefoxExtensions.get_extensions_path()[1:-11] 
 
 class Netbeans(_apt_install):
     __doc__ = 'Netbeans'
@@ -633,23 +650,4 @@ class FFYSlow(_ff_extension):
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
 
-class WorldofPadman(I):
-    __doc__ = _('World of Padman: Funny shooter game')
-    detail = _('Ailurus will install the game, and apply the latest patch.\n'
-               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
-    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
-    category = 'game'
-    def install(self):
-        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
-        run_as_root('bash ' + file1)
-        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
-        run_as_root('bash ' + file2)
-        
-    def installed(self):
-        import os
-        return os.path.exists('/usr/local/games/WoP')
-        
-    def remove(self):
-        run_as_root('rm /usr/local/games/WoP -rf')
-        run_as_root('rm /usr/local/bin/wop')
-    
+

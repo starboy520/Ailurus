@@ -277,3 +277,23 @@ class Bluetooth(_apt_install):
     license = GPL
     category = 'hardware'
     pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+
+class WorldofPadman(I):
+    __doc__ = _('World of Padman: Funny shooter game')
+    detail = _('Ailurus will install the game, and apply the latest patch.\n'
+               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
+    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
+    category = 'game'
+    def install(self):
+        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
+        run_as_root('bash ' + file1)
+        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
+        run_as_root('bash ' + file2)
+        
+    def installed(self):
+        import os
+        return os.path.exists('/usr/local/games/WoP')
+        
+    def remove(self):
+        run_as_root('rm /usr/local/games/WoP -rf')
+        run_as_root('rm /usr/local/bin/wop')

@@ -400,3 +400,21 @@ class Audacity(_rpm_install):
     category = 'media'
     pkgs = 'audacity-freeworld'
     
+
+class WorldofPadman(_rpm_install):
+    __doc__ = _('World of Padman: Funny shooter game')
+    detail = _('Ailurus will install the game, and apply the latest patch.\n'
+               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
+    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
+    category = 'game'
+    pkgs = 'worldofpadman'
+
+class HardwareLister(_rpm_install):
+    __doc__ = _('Hardware Lister')
+    detail = _('lshw (Hardware Lister) is a small tool to provide detailed information'
+               ' on the hardware configuration of the machine. It can report exact memory configuration, '
+	       'firmware version, mainboard configuration, CPU version and speed, cache configuration, '
+	       'bus speed, etc.')
+    license = GPL
+    category = 'hardware'
+    pkgs = 'lshw lshw-gui'

@@ -1,3 +1,16 @@
+2010-04-28 MA Yue <velly.empire@gmail.com>
+
+    * Add some tweak of Firefox
+
+2010-04-26 MA Yue <velly.empire@gmail.com>
+
+    * Change the installation of World of padman in Fedora
+    * Add the function of backup Gconfig Setting
+    * Add a Daily Tip
+    * fix the bug 'no apt' in Fedora
+    * Add device viewer :Hardware Lister
+    * Add function of 'Gnome Control Center' shows in menu
+
 2010-04-26 Homer Xing <homer.xing@gmail.com>
 
     * Fix problem: After installing Ailurus on Fedora, 
@@ -16,6 +29,9 @@
 	* Display GTK version and Python-GTK version in Linux information pane
 	* Add a way to modify host name
 	* Add google-earth
+
+2010-04-24 MA Yue <velly.empire@gmail.com>
+    * Import the installation of Pidgin beta
 
 2010-04-24 Homer Xing <homer.xing@gmail.com>
 
