@@ -361,7 +361,7 @@ Install/remove a task
 gksudo tasksel
 '''),
 
-_('''Does your devices support Linux? You can run 'lspci -n' and paste the output to http://cdlinux.info/wiki/doku.php/
+_('''Does your devices support Linux? You can run 'lspci -n' and paste the output to http://kmuto.jp/debian/hcl/
 '''),
 
 ]
