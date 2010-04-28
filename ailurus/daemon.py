@@ -148,9 +148,6 @@ class AilurusFulgens(dbus.service.Object):
         assert string in self.authorized_process
         self.authorized_process.remove(string)
         
-import atexit        
-atexit.register(AilurusFulgens().remove_priviledge, random_string) 
-
 def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     AilurusFulgens()

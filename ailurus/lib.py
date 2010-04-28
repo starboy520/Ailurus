@@ -388,6 +388,12 @@ def spawn_as_root(command):
     obj = bus.get_object('cn.ailurus', '/')
     obj.spawn(command, packed_env_string(), random_string, dbus_interface='cn.ailurus.Interface')
 
+def remove_priviledge(string):
+    import dbus
+    bus = dbus.SystemBus()
+    obj = dbus.get_object('cn.ailurus', '/')
+    obj.remove_priviledge(string, dbus_interface='cn.ailurus.Interface')
+    
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
 
@@ -1682,6 +1688,7 @@ AL = _('Artistic License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
+atexit.register(remove_priviledge, random_string) 
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
@@ -1696,5 +1703,5 @@ except:
 
 import os 
 random_string = os.urandom(64)
-    
+
 
