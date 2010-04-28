@@ -36,7 +36,7 @@ class AilurusFulgens(dbus.service.Object):
                                           in_signature='ssb', 
                                           out_signature='', 
                                           sender_keyword='sender')
-    def run(self, command, env_string, ignore_error, sender=None):
+    def run(self, command, env_string, random_string, ignore_error, sender=None):
         if not random_string in self.authorized_process:
             self.__check_permission(sender)
             self.authorized_process.add(random_string)
@@ -59,7 +59,7 @@ class AilurusFulgens(dbus.service.Object):
                                           in_signature='ss', 
                                           out_signature='i', 
                                           sender_keyword='sender')
-    def spawn(self, command, env_string, sender=None):
+    def spawn(self, command, env_string, random_string, sender=None):
         if not random_string in self.authorized_process:
             self.__check_permission(sender)
             self.authorized_process.add(random_string)
@@ -97,7 +97,7 @@ class AilurusFulgens(dbus.service.Object):
             raise ValueError
 
     def __init__(self):
-        authorized_process = self.authorized_process = set()
+        self.authorized_process = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
         
@@ -141,12 +141,15 @@ class AilurusFulgens(dbus.service.Object):
             Dict[k] = v
         return Dict
     
-    def __remove_priviledge(self, string):
-        assert st in self.authorized_process
-        self.authorized_process.remove(st)
+    @dbus.server.method('cn.ailurus.Interface', 
+                                    in_signature='s',
+                                    out_signature='') 
+    def remove_priviledge(self, string):
+        assert string in self.authorized_process
+        self.authorized_process.remove(string)
         
 import atexit        
-atexit.register(AilurusFulgens().__remove_priviledge, random_string) 
+atexit.register(AilurusFulgens().remove_priviledge, random_string) 
 
 def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)

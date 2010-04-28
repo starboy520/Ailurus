@@ -386,7 +386,7 @@ def spawn_as_root(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
+    obj.spawn(command, packed_env_string(), random_string, dbus_interface='cn.ailurus.Interface')
 
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
@@ -403,7 +403,7 @@ def run_as_root(cmd, ignore_error=False):
         bus = dbus.SystemBus()
         obj = bus.get_object('cn.ailurus', '/')
         try:
-            obj.run(cmd, packed_env_string(), ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+            obj.run(cmd, packed_env_string(), random_string, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
         except dbus.exceptions.DBusException, e:
             if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
             else: raise
@@ -563,7 +563,7 @@ def run_as_root_in_terminal(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    obj.run(string, packed_env_string(), random_string, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
 
 class RPM:
     fresh_cache = False
@@ -1693,15 +1693,8 @@ except:
         import traceback
         traceback.print_exc()
         
-def random_num_gen():
-    import random
-    st = ''
-    i = 1
-    while( i <= 20 ):
-        st += str(random.random())
-        i = i + 1
-    return st
 
-random_string = random_num_gen()
+import os 
+random_string = os.urandom(64)
     
 
