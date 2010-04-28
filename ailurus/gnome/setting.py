@@ -451,7 +451,13 @@ def __advance_setting():
 	icon = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
 	if not os.path.isfile(icon):
 	    f = open(icon, 'w')
-	    f.write('''[Desktop Entry]\nName=Gnome Control Center\nExec=gnome-control-center\nIcon=gnome-control-center\nTerminal=false\nType=Application\nCategories=System;Settings;''')
+	    f.write('[Desktop Entry]\n'
+	    'Name=Gnome Control Center\n'
+	    'Exec=gnome-control-center\n'
+	    'Icon=gnome-control-center\n'
+	    'Terminal=false\n'
+	    'Type=Application\n'
+	    'Categories=System;Settings;')
             f.close()
 	else:
 	    run('rm '+ icon )
@@ -503,7 +509,7 @@ def __gconfig_backup():
     table = gtk.Table()
     table.set_col_spacings(30)
     table.set_row_spacings(10)
-    label = gtk.Label(_('Gconfig Settings are saved as XML files in the folder ~/.conf, Ailurus can help you backup and reset this file.'))
+    label = gtk.Label(_('Gconfig Settings are saved as XML files in the folder ~/.gconf, Ailurus can help you backup and reset this file.'))
     backup_button = gtk.Button(_('Backup Gconfig Setting'))
     def backup_gconf(w):
         run('cd ~ && tar cvzf ~/.config/ailurus/gconfbackup.tar.gz /usr/share/gconf .gconf')

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-27 22:09+0800\n"
+"POT-Creation-Date: 2010-04-28 13:01+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -788,8 +788,8 @@ msgstr ""
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 
-#: .././ailurus/common/menu.py:122 .././ailurus/gnome/setting.py:100
-#: .././ailurus/gnome/setting.py:131
+#: .././ailurus/common/menu.py:122 .././ailurus/gnome/setting.py:102
+#: .././ailurus/gnome/setting.py:133
 msgid ""
 "Your changes will take effect at the next time when you log in to GNOME."
 msgstr ""
@@ -2124,131 +2124,131 @@ msgstr ""
 msgid "Put an icon linking to the trash on the desktop."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:83
+#: .././ailurus/gnome/setting.py:85
 msgid "Desktop icons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:100 .././ailurus/gnome/setting.py:131
+#: .././ailurus/gnome/setting.py:102 .././ailurus/gnome/setting.py:133
 msgid "Icon changed"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:125
+#: .././ailurus/gnome/setting.py:127
 msgid "Change \"start-here\" icon"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:133
+#: .././ailurus/gnome/setting.py:135
 msgid "The login icon is ~/.face"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:141
+#: .././ailurus/gnome/setting.py:143
 msgid "Change login icon"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:145
+#: .././ailurus/gnome/setting.py:147
 msgid "Show icons of menu entries"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:147
+#: .././ailurus/gnome/setting.py:149
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:149
+#: .././ailurus/gnome/setting.py:151
 msgid "Menu entry icons setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:154
+#: .././ailurus/gnome/setting.py:156
 msgid "Show icon in buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:156
+#: .././ailurus/gnome/setting.py:158
 msgid "Whether buttons may display an icon next to text."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:158
+#: .././ailurus/gnome/setting.py:160
 msgid "Button icons setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:162
+#: .././ailurus/gnome/setting.py:164
 msgid "Disable terminal bell"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:164
+#: .././ailurus/gnome/setting.py:166
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:166
+#: .././ailurus/gnome/setting.py:168
 msgid "Terminal beep sound setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:170
+#: .././ailurus/gnome/setting.py:172
 msgid "Automatically mount CD and flash disks"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:172
+#: .././ailurus/gnome/setting.py:174
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:174
+#: .././ailurus/gnome/setting.py:176
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:177
+#: .././ailurus/gnome/setting.py:179
 msgid "More Nautilus settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:199
+#: .././ailurus/gnome/setting.py:201
 msgid "Larger font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:202 .././ailurus/gnome/setting.py:211
+#: .././ailurus/gnome/setting.py:204 .././ailurus/gnome/setting.py:213
 msgid "Change these GConf keys:\n"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:208
+#: .././ailurus/gnome/setting.py:210
 msgid "Smaller font"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:221
+#: .././ailurus/gnome/setting.py:223
 msgid "One-click changing font size"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:224 .././ailurus/gnome/setting.py:233
+#: .././ailurus/gnome/setting.py:226 .././ailurus/gnome/setting.py:235
 msgid "The layout of window title-bar buttons"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:225 .././ailurus/gnome/setting.py:295
+#: .././ailurus/gnome/setting.py:227 .././ailurus/gnome/setting.py:297
 #: .././ailurus/libsetting.py:37 .././ailurus/libsetting.py:53
 #: .././ailurus/libsetting.py:98 .././ailurus/libsetting.py:313
 #: .././ailurus/libsetting.py:345
 msgid "GConf key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:226
+#: .././ailurus/gnome/setting.py:228
 msgid "It can be used in Metacity only."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:228
+#: .././ailurus/gnome/setting.py:230
 msgid "GNOME classic"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:228
+#: .././ailurus/gnome/setting.py:230
 msgid "MAC OS X"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:236
+#: .././ailurus/gnome/setting.py:238
 msgid "double-clicked by mouse left button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237 .././ailurus/gnome/setting.py:250
+#: .././ailurus/gnome/setting.py:239 .././ailurus/gnome/setting.py:252
 msgid "The effects of double-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:237 .././ailurus/gnome/setting.py:239
-#: .././ailurus/gnome/setting.py:241 .././ailurus/libsetting.py:38
+#: .././ailurus/gnome/setting.py:239 .././ailurus/gnome/setting.py:241
+#: .././ailurus/gnome/setting.py:243 .././ailurus/libsetting.py:38
 #: .././ailurus/libsetting.py:54 .././ailurus/libsetting.py:133
 #: .././ailurus/libsetting.py:140 .././ailurus/libsetting.py:276
 msgid ""
@@ -2256,205 +2256,205 @@ msgid ""
 "GConf key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:238
+#: .././ailurus/gnome/setting.py:240
 msgid "clicked by mouse right button:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:239 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:241 .././ailurus/gnome/setting.py:261
 msgid "The effects of right-clicking on the title bar."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:240
+#: .././ailurus/gnome/setting.py:242
 msgid "clicked by mouse wheel:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:241 .././ailurus/gnome/setting.py:268
+#: .././ailurus/gnome/setting.py:243 .././ailurus/gnome/setting.py:270
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "maximize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "minimize"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "roll up"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "put behind others"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "maximize horizontally"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:248 .././ailurus/gnome/setting.py:257
-#: .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:250 .././ailurus/gnome/setting.py:259
+#: .././ailurus/gnome/setting.py:268
 msgid "maximize vertically"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:257 .././ailurus/gnome/setting.py:266
+#: .././ailurus/gnome/setting.py:259 .././ailurus/gnome/setting.py:268
 msgid "show menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:271
+#: .././ailurus/gnome/setting.py:273
 msgid "Window effect after that window title bar is ..."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:276
+#: .././ailurus/gnome/setting.py:278
 msgid "Show \"Input method\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:277 .././ailurus/gnome/setting.py:280
+#: .././ailurus/gnome/setting.py:279 .././ailurus/gnome/setting.py:282
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:279
+#: .././ailurus/gnome/setting.py:281
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:282
+#: .././ailurus/gnome/setting.py:284
 msgid "Text-boxes context menu"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:288
+#: .././ailurus/gnome/setting.py:290
 msgid "Show login splash image: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:290
+#: .././ailurus/gnome/setting.py:292
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:303
+#: .././ailurus/gnome/setting.py:305
 msgid "GNOME splash image"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:309
+#: .././ailurus/gnome/setting.py:311
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:311
+#: .././ailurus/gnome/setting.py:313
 msgid "Disable Alt+F2 (Launch application)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:313
+#: .././ailurus/gnome/setting.py:315
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:315
+#: .././ailurus/gnome/setting.py:317
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:317
+#: .././ailurus/gnome/setting.py:319
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:319
+#: .././ailurus/gnome/setting.py:321
 msgid "Disable \"print\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:321
+#: .././ailurus/gnome/setting.py:323
 msgid "Prevent current user from printing any documents."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:323
+#: .././ailurus/gnome/setting.py:325
 msgid "Disable \"print setup\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:325
+#: .././ailurus/gnome/setting.py:327
 msgid "Prevent current user from modifying print settings."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:327
+#: .././ailurus/gnome/setting.py:329
 msgid "Disable \"save as\" entry in all menus."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:329
+#: .././ailurus/gnome/setting.py:331
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:331
+#: .././ailurus/gnome/setting.py:333
 msgid "Forbid running multiple GNOME session."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:333
+#: .././ailurus/gnome/setting.py:335
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:335
+#: .././ailurus/gnome/setting.py:337
 msgid "Restriction on current user"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:342
+#: .././ailurus/gnome/setting.py:344
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:345
+#: .././ailurus/gnome/setting.py:347
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:347 .././ailurus/gnome/setting.py:355
-#: .././ailurus/gnome/setting.py:363
+#: .././ailurus/gnome/setting.py:349 .././ailurus/gnome/setting.py:357
+#: .././ailurus/gnome/setting.py:365
 #, python-format
 msgid "GConf key: %s"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:353
+#: .././ailurus/gnome/setting.py:355
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:361
+#: .././ailurus/gnome/setting.py:363
 msgid "Size of each thumbnail (in pixels):"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:369
+#: .././ailurus/gnome/setting.py:371
 msgid "Nautilus thumbnail settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:375
+#: .././ailurus/gnome/setting.py:377
 msgid "Remember running applications when you log out."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:377
+#: .././ailurus/gnome/setting.py:379
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
 "GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:380
+#: .././ailurus/gnome/setting.py:382
 msgid "Configure autostart applications"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:381
+#: .././ailurus/gnome/setting.py:383
 msgid "Run command: gnome-session-properties"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:384
+#: .././ailurus/gnome/setting.py:386
 msgid "Prompt you before you log out from GNOME."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:386
+#: .././ailurus/gnome/setting.py:388
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:388
+#: .././ailurus/gnome/setting.py:390
 msgid "Allow connection from remote hosts."
 msgstr ""
 
@@ -2467,103 +2467,105 @@ msgstr ""
 #. _('If its value is false, Gnome will not show confirmation '
 #. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
 #. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-#: .././ailurus/gnome/setting.py:401
+#: .././ailurus/gnome/setting.py:403
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:405
+#: .././ailurus/gnome/setting.py:407
 msgid "Lock screen when screen saver is activated"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:409
+#: .././ailurus/gnome/setting.py:411
 msgid "GNOME session"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:415
+#: .././ailurus/gnome/setting.py:417
 msgid "LCD brightness when on AC power:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:417 .././ailurus/gnome/setting.py:423
+#: .././ailurus/gnome/setting.py:419 .././ailurus/gnome/setting.py:425
 msgid "GConf Key: "
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:421
+#: .././ailurus/gnome/setting.py:423
 msgid "LCD dimming amount when on battery:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:427
+#: .././ailurus/gnome/setting.py:429
 msgid "Backlight"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:443
+#: .././ailurus/gnome/setting.py:445
 msgid "Use your home folder as the desktop"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:447
+#: .././ailurus/gnome/setting.py:459
+msgid "Show Gnome Cotrol Center in main menu"
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:460
+msgid ""
+"The Gnome Control Center allows you to configure various parts of your "
+"system."
+msgstr ""
+
+#: .././ailurus/gnome/setting.py:465
 msgid "Change default file manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:453
+#: .././ailurus/gnome/setting.py:471
 msgid "Change default panel program to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:459
+#: .././ailurus/gnome/setting.py:477
 msgid "Change default window manager to:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:467
+#: .././ailurus/gnome/setting.py:483
 msgid "Advance settings"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:470
+#: .././ailurus/gnome/setting.py:486
 msgid "Command line"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:471 .././ailurus/gnome/setting.py:484
+#: .././ailurus/gnome/setting.py:487 .././ailurus/gnome/setting.py:500
 #: .././ailurus/system_setting_pane.py:58
 msgid "Shortcut key"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:480
+#: .././ailurus/gnome/setting.py:496
 #, python-format
 msgid "%2d:"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:488
-msgid "Open Gnome Control Center"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:493
-msgid "Run Gnome Control Center"
-msgstr ""
-
-#: .././ailurus/gnome/setting.py:499
+#: .././ailurus/gnome/setting.py:506
 msgid ""
 "Gconfig Settings are saved as XML files in the folder ~/.conf, Ailurus can "
 "help you backup and reset this file."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:500
+#: .././ailurus/gnome/setting.py:507
 msgid "Backup Gconfig Setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:504
+#: .././ailurus/gnome/setting.py:511
 msgid "The backup file stored in ~/.config/ailurus/gconfbackup.tar.gz"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:505
+#: .././ailurus/gnome/setting.py:512
 msgid "Reset Gconfig Setting"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:509
+#: .././ailurus/gnome/setting.py:516
 msgid "Reset Successful"
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:509
+#: .././ailurus/gnome/setting.py:516
 msgid "Some Setting will be applied when you login next time."
 msgstr ""
 
-#: .././ailurus/gnome/setting.py:517
+#: .././ailurus/gnome/setting.py:524
 msgid "backup and rset Gconfig Setting"
 msgstr ""
 

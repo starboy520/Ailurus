@@ -633,47 +633,4 @@ class FFYSlow(_ff_extension):
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
 
-class WorldofPadman(I):
-    __doc__ = _('World of Padman: Funny shooter game')
-    detail = _('Ailurus will install the game, and apply the latest patch.\n'
-               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
-    license = GPL + ' http://sourceforge.net/projects/wop-engine/'
-    category = 'game'
-    def install(self):
-        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
-        run_as_root('bash ' + file1)
-        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
-        run_as_root('bash ' + file2)
-        
-    def installed(self):
-        import os
-        return os.path.exists('/usr/local/games/WoP')
-        
-    def remove(self):
-        run_as_root('rm /usr/local/games/WoP -rf')
-        run_as_root('rm /usr/local/bin/wop')
-    
-    def support(self):
-        if Config.is_Fedora(): return False
-	else: return True
 
-class FirefoxConfig(I):
-    __doc__ = _('tweak the about:config')
-    detail = _('add it later')
-    license = GPL
-    category = 'game'
-    def install(self):
-        f = file('/home/velly/.mozilla/firefox/c3paj1j2.default/prefs.js', 'w')
-        for line in f.split('\n'):
-            for v in line.split(','):
-                if v[0] == 'user_pref("content.maxtextrun"' :
-                    v[1] = '8191);'
-                else :
-                    print 'user_pref("content.maxtextrun", 8191);' >> f
-        f.close()                
-    def installed(self):
-        return False
-    def remove(self):
-        pass
-    def __init__(self):
-        pass
