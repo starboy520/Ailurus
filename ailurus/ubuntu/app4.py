@@ -241,3 +241,14 @@ class Songbird(_apt_install):
     pkgs = 'songbird'
     def support(self):
         return Config.get_Ubuntu_version() != 'lucid'
+
+class Netbeans(_apt_install):
+    __doc__ = 'Netbeans'
+    detail = (
+              _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
+               ' and frameworks (J2SE, J2ME, etc.). '
+               'Official site: http://netbeans.org/downloads/ .') +
+              _(' This application depends on Java.') )
+    category = 'dev'
+    license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
+    pkgs = 'netbeans'
