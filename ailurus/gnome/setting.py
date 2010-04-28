@@ -80,6 +80,8 @@ def __desktop_icon_setting():
     en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
     table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
 
+
+
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
 def __start_here_icon_setting():
@@ -443,27 +445,41 @@ def __advance_setting():
     o = GConfCheckButton(_('Use your home folder as the desktop'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    
+
+    import os
+    def __gnome_control_icon(w):
+	icon = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
+	if not os.path.isfile(icon):
+	    f = open(icon, 'w')
+	    f.write('''[Desktop Entry]\nName=Gnome Control Center\nExec=gnome-control-center\nIcon=gnome-control-center\nTerminal=false\nType=Application\nCategories=System;Settings;''')
+            f.close()
+	else:
+	    run('rm '+ icon )
+
+    gc = gtk.CheckButton(_('Show Gnome Cotrol Center in main menu'))
+    gc.set_tooltip_text(_('The Gnome Control Center allows you to configure various parts of your system.'))
+    gc.set_active(os.path.isfile(os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')))
+    gc.connect('clicked', __gnome_control_icon)
+    table.attach(gc, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+
     o = label_left_align(_('Change default file manager to:'))
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
 
     o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL )
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
     
     o = label_left_align(_('Change default panel program to:') )
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = label_left_align(_('Change default window manager to:') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
-
-
     
+    o = label_left_align(_('Change default window manager to:') )
+    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    
+    o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
+    table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+
     return Setting(table, _('Advance settings'), ['desktop'])
 
 def __shortcut_setting():
@@ -482,17 +498,6 @@ def __shortcut_setting():
         o = GConfShortcutKeyEntry('command_%d' % number)
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
-
-#def __gnome_control_center():
-#    hbox = gtk.HBox()
-#    button = gtk.Button(_('Open Gnome Control Center'))
-#    def open_gnome_control_center(w):
-#        import subprocess
-#        subprocess.call('gnome-control-center', shell = True)
-#
-#    button.connect('clicked', open_gnome_control_center)
-#    hbox.pack_start(button, False, False)
-#    return Setting(hbox, _('Run Gnome Control Center'), ['desktop'] )
 
 def __gconfig_backup():
     table = gtk.Table()
@@ -600,7 +605,6 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
 #            __compiz_setting,
-#            __gnome_control_center,
 	    __gconfig_backup,
             ]:
         try:
