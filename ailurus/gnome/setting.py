@@ -600,7 +600,7 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
 #            __compiz_setting,
-            __gnome_control_center,
+#            __gnome_control_center,
 	    __gconfig_backup,
             ]:
         try:
