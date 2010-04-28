@@ -80,8 +80,6 @@ def __desktop_icon_setting():
     en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
     table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
 
-
-
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
 def __start_here_icon_setting():
