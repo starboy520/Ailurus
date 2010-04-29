@@ -370,7 +370,7 @@ class Setting(gtk.VBox):
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 'host_name',
-                  'update', 'power', 'shortcut', ]
+                  'update', 'power', 'shortcut', 'firefox',]
     
     def __title(self, text):
         label = gtk.Label()
@@ -394,20 +394,36 @@ class Setting(gtk.VBox):
         
         self.category = category
 
-  class FirefoxConfigButton(gtk.CheckButton):
-    def __toggled(self, w):
-        value = self.get_active()
-        import gconf
-        g = gconf.client_get_default()
-        g.set_bool(self.key, value)
-    def __init__(self, text, key, tooltip = None):
+class FirefoxConfig(gtk.CheckButton):
+
+    @classmethod
+    def set_firefox(self,w, num):
+        self.num = num
+        with open('/usr/share/ailurus/data/user.js.bak') as f:
+            v = f.readlines()
+            f.close()
+        p = open(self.path + 'user.js.bak', 'w+')
+        for i in num:
+            if check_active(): #cancel    
+                v[self.num] = '//' + v[self.num]
+            else :
+                v[self.num] = v[self.num][2:]
+        p.writelines(v)
+        p.close()
+
+    def check_active(self):
+        with open(self.path + 'user.js.bak') as f:
+            v = f.readlines():
+            for i in self.num:
+                    v[i][:1] == '/'
+                return False
+            return True
+
+    def __init__(self, text, num, tooltip = None):
         gtk.CheckButton.__init__(self)
-        self.key = key
+        self.path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
+        self.num = num
         self.set_label(text)
-        if not tooltip: tooltip = _('GConf key: ')+key
-        else: tooltip += _('\nGConf key: ')+key
-        self.set_tooltip_markup(tooltip)
-        import gconf
-        g = gconf.client_get_default()
-        self.set_active( g.get_bool(key) )
-        self.connect('toggled', self.__toggled)  
+        self.set_active(check_active())
+        self.connect('toggled', self.set_firefox, self.num)
+        

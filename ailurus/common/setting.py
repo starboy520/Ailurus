@@ -169,12 +169,20 @@ def __change_hostname():
             
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
+
+def __firefox_setting():
+    a = FirefoxConfig('just a test', 'a')
+    hbox = gtk.HBox()
+    hbox.pack_start(a, False, False)
+    return Setting(hbox ,'Firefox setting', ['firefox'])
+
     
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
             __change_hostname,
+	    __firefox_setting,
             __restart_network ]:
         try:
             ret.append(f())
