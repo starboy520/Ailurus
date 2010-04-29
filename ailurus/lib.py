@@ -1417,7 +1417,8 @@ def show_about_dialog():
           'M. Umut Pulat    http://12m3.deviantart.com/', 
           'Andrea Soragna   http://sora-meliae.deviantart.com/',
           'Paul Davey       http://mattahan.deviantart.com/',] )
-    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") )
+    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") + '\n'
+                         + _(u"Copyright © 2009-2010, Ailurus Developers Team") )
     about.set_wrap_license(False)
     about.set_license(
 '''
@@ -1495,7 +1496,6 @@ xbmc.png is copied from XBMC project. It is released under the GPL license. Its 
 All rights of other images which are not mensioned above are preserves by their authors.
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
-    about.vbox.pack_start( gtk.Label( _('Welcome to leave response in blog~') ) , False, False )
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
     about.run()
