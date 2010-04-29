@@ -171,7 +171,7 @@ def __change_hostname():
     return Setting(hbox, _('Change host name'), ['host_name'])
 
 def __firefox_setting():
-    a = FirefoxConfig('just a test', 'a')
+    a = FirefoxConfig('just a test', [1,])
     hbox = gtk.HBox()
     hbox.pack_start(a, False, False)
     return Setting(hbox ,'Firefox setting', ['firefox'])

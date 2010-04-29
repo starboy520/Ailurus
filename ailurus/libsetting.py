@@ -397,33 +397,41 @@ class Setting(gtk.VBox):
 class FirefoxConfig(gtk.CheckButton):
 
     @classmethod
-    def set_firefox(self,w, num):
-        self.num = num
-        with open('/usr/share/ailurus/data/user.js.bak') as f:
+    def set_firefox(w, f_list):
+        self.f_list = f_list
+        with open('/usr/share/ailurus/support/user.js') as f:
             v = f.readlines()
             f.close()
-        p = open(self.path + 'user.js.bak', 'w+')
-        for i in num:
-            if check_active(): #cancel    
-                v[self.num] = '//' + v[self.num]
-            else :
-                v[self.num] = v[self.num][2:]
+        p = open('user.js.bak', 'w+')
+        for i in f_list:
+            if self.check_active():
+                v[i] = '//' + v[i]
+            else:
+                v[i] = v[i][2:]
         p.writelines(v)
         p.close()
-
+    
+    def __change_list(self, w):
+        for  i in self.num:
+            if i not in self.f_list:
+                self.f_list.append(i)
+	print self.f_list
+	return self.f_list
+        
     def check_active(self):
         with open(self.path + 'user.js.bak') as f:
-            v = f.readlines():
+            v = f.readlines()
             for i in self.num:
                     v[i][:1] == '/'
-                return False
+                    return False
             return True
 
     def __init__(self, text, num, tooltip = None):
         gtk.CheckButton.__init__(self)
         self.path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
-        self.num = num
+        self.f_list = []
+	self.num = num
         self.set_label(text)
-        self.set_active(check_active())
-        self.connect('toggled', self.set_firefox, self.num)
+        self.set_active(self.check_active())
+        self.connect('toggled', self.__change_list)
         
