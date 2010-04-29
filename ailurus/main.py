@@ -274,7 +274,7 @@ class MainView:
             self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
     def get_item_icon_size(self):
-        return int(self.last_x / 20)
+        return min( int(self.last_x / 20), 48)
 
     def __refresh_toolbar(self):
         icon_size = self.get_item_icon_size()
