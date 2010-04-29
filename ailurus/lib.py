@@ -1399,8 +1399,8 @@ def show_about_dialog():
     about.set_logo(gtk.gdk.pixbuf_new_from_file(D+'suyun_icons/logo.png'))
     about.set_name('Ailurus')
     about.set_version(AILURUS_VERSION)
-    about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
-    about.set_website('http://ailurus.cn/')
+    about.set_website_label( _('Project homepage') )
+    about.set_website('http://ailurus.googlecode.com/')
     about.set_authors( [
           _('Developers:'),
           'Homer Xing <homer.xing@gmail.com>', 
