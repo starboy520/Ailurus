@@ -25,3 +25,36 @@ import sys, os
 from lib import *
 from libapp import *
 
+class Electric(_path_lists):
+    __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
+    detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
+               _(' This application depends on Java.') )
+    category = 'em'
+    license = GPL
+    def __init__(self):
+        self.shortcut = '/usr/share/applications/electric.desktop'
+        self.file = '/opt/electricBinary.jar'
+        self.paths = [self.shortcut, self.file]
+    def install(self):
+        f = R(
+['http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
+11102701, 'c50557bc54b74948e707dc4606009bd93274ec71').download()
+
+        run_as_root('mkdir /opt', ignore_error=True)
+        run_as_root('cp %s %s'%(f, self.file) )
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=Electric
+Exec=java -jar %s -Xms512M -Xmx1024M -Dsun.java2d.opengl=true
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science;Engineering;'''%self.file)
+
+class QCad(_rpm_install):
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    license = GPL
+    category = 'em'
+    if FEDORA:
+        pkgs = 'qcad'
+

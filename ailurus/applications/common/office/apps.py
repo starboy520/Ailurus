@@ -25,3 +25,37 @@ import sys, os
 from lib import *
 from libapp import *
 
+class Evince_Read_Chinese_PDF(_rpm_install) :
+    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
+    category='office'
+    if FEDORA:
+        pkgs = 'poppler-data'
+
+class CHMSee_Read_CHM_Documents(_rpm_install) :
+    __doc__ = _('ChmSee: A CHM file viewer')
+    category = 'office'
+    license = GPL + ' http://code.google.com/p/chmsee/'
+    if FEDORA:
+        pkgs = 'chmsee'
+
+class CUPS (_rpm_install):
+    __doc__ = _('Enable "Print to pdf" capability.')
+    category = 'office'
+    if FEDORA:
+        pkgs = 'cups-pdf'
+
+class Stardict_without_Dictionaries(_rpm_install):
+    __doc__ = _('Stardict')
+    category = 'office'
+    detail = _('You can install these dictionaries by yum.\n'
+               'stardict-dic-cs_CZ: Czech dictionaries\n'
+               'stardict-dic-en: English dictionaries\n'
+               'stardict-dic-hi: Hindi dictionary\n'
+               'stardict-dic-ja: Japanese dictionaries\n'
+               'stardict-dic-ru: Russian dictionaries\n'
+               'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
+               'stardict-dic-zh_TW: Traditional Chinese dictionaries')
+    license = GPL
+    if FEDORA:
+        pkgs = 'stardict'
+

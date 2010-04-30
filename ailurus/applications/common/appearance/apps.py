@@ -25,3 +25,9 @@ import sys, os
 from lib import *
 from libapp import *
 
+class Alacarte(_rpm_install):
+    __doc__ = ("Alacarte: menu editor")
+    license = LGPL
+    if FEDORA:
+        pkgs = 'alacarte'
+    

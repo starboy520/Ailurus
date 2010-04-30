@@ -25,3 +25,10 @@ import sys, os
 from lib import *
 from libapp import *
 
+class WINE(_rpm_install):
+    __doc__ = _('WINE')
+    detail = _('This is an indispensable application for running Windows applications on Linux.')
+    license = LGPL + ' http://wiki.winehq.org/Licensing'
+    category = 'vm'
+    if FEDORA:
+        pkgs = 'wine'

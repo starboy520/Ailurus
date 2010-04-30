@@ -25,3 +25,36 @@ import sys, os
 from lib import *
 from libapp import *
 
+class OpenJUMP(_path_lists):
+    __doc__ = _('OpenJUMP: A geographic information system')
+    detail = ( 
+              _('Official site: http://openjump.org/ .') +
+              _(' This application depends on Java.') )
+    license = GPL
+    category = 'geography'
+    license = GPL
+    def __init__(self):
+        self.shortcut = '/usr/share/applications/openjump.desktop'
+        self.dir = '/opt/openjump-1.3'
+        self.paths = [self.shortcut, self.dir]
+    def install(self):
+        f = R(
+['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
+12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
+
+        with Chdir('/tmp') as o:
+            run('unzip -oq %s'%f)
+            import os
+            if not os.path.exists('/opt'):
+                run_as_root('mkdir /opt')
+            if not os.path.exists(self.dir):
+                run_as_root('mv openjump-1.3 /opt/')
+            create_file(self.shortcut, '''[Desktop Entry]
+Name=OpenJUMP
+Exec=bash /opt/openjump-1.3/bin/openjump.sh
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Science;Engineering; ''')
+

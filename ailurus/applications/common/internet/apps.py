@@ -25,3 +25,11 @@ import sys, os
 from lib import *
 from libapp import *
 
+class Liferea(_rpm_install):
+    __doc__ = _('Liferea: a RSS feed reader')
+    detail = _('This is a simple and easy used RSS feed reader.')
+    license = GPL
+    category = 'internet'
+    if FEDORA:
+        pkgs = 'liferea'
+

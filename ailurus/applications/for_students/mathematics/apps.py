@@ -25,3 +25,11 @@ import sys, os
 from lib import *
 from libapp import *
 
+class QtiPlot(_rpm_install) :
+    __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
+    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
+    category = 'math'
+    license = GPL
+    if FEDORA:
+        pkgs = 'qtiplot'
+
