@@ -25,10 +25,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-    return (text, value, icon, tooltip)
-
-def get():
+def __fedora_version():
     import sys, traceback
     try: 
         with open('/etc/fedora-release') as f:
@@ -37,3 +34,6 @@ def get():
     except: 
         traceback.print_exc(file=sys.stderr)
         return []
+
+def get():
+    return [__fedora_version]
