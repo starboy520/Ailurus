@@ -26,20 +26,20 @@ from lib import *
 from libapp import * 
 
 def create_eclipse_icon():
-        memarg = ''
-        try:
-            f = open('/proc/meminfo')
-            for line in f:
-                if 'MemTotal' in line:
-                    amount = int(line.split()[1]) ; break
-            if amount >= 1024 * 1024 * 1.5:
-                memarg = '-Xms512M -Xmx1024M'
-        except:
-            pass
-        icon = '/usr/share/applications/eclipse.desktop'
-        with TempOwn(icon) as o:
-            with open(icon, 'w') as f:
-                f.write('''[Desktop Entry]
+    memarg = ''
+    try:
+        f = open('/proc/meminfo')
+        for line in f:
+            if 'MemTotal' in line:
+                amount = int(line.split()[1]) ; break
+        if amount >= 1024 * 1024 * 1.5:
+            memarg = '-Xms512M -Xmx1024M'
+    except:
+        pass
+    icon = '/usr/share/applications/eclipse.desktop'
+    with TempOwn(icon) as o:
+        with open(icon, 'w') as f:
+            f.write('''[Desktop Entry]
 Name=Eclipse
 Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
 Encoding=UTF-8
