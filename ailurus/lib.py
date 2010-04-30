@@ -130,10 +130,6 @@ class Config:
     def is_Poland_locale(cls):
         return cls.get_locale().startswith('pl')
     @classmethod
-    def supported_Ubuntu_version(cls, version):
-        assert isinstance(version, str) and version
-        return version in ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-    @classmethod
     def is_Ubuntu(cls):
         import os
         if not os.path.exists('/etc/lsb-release'): 
