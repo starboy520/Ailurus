@@ -172,18 +172,22 @@ def __change_hostname():
 
 def firefox_setting_panel():
     table = gtk.Table()
-    o = FirefoxConfig('Speed up Firefox', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23,])
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-    o = FirefoxConfig('Autofill in Urlbar', [34,])
-    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
-    o = FirefoxConfig('Support ed2k', [31, 32,])
+    o = gtk.Label()
+    o.set_text(_('Ailurus can help tweak Firefox About:Config Setting, make it esaier to use.'))
+    table.attach(o, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig(_('Speed up Firefox'), [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23,])
     table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-    o = FirefoxConfig('Allow Windows to swap out memory when the program is minimized', [22,])
+    o = FirefoxConfig(_('Autofill in Urlbar'), [28,])
     table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
-    o = FirefoxConfig('Disable link prefetching.', [24,])
-    table.attach(o, 2, 3, 0, 1, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig(_('Support ed2k'), [26, 27,])
+    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig(_('Swap out memory when the program is minimized'), [22,])
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig(_('Disable link prefetching.'), [24,])
+    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig(_('Disable the delay of install extensions'), [25,])
+    table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     applyButton = gtk.Button(_('Apply Setting'))
-
     def apply_button(self):
         import os
         path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
@@ -193,13 +197,13 @@ def firefox_setting_panel():
         run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
 
     applyButton.connect('clicked', apply_button)
-    table.attach(applyButton, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+    table.attach(applyButton, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
 
     return Setting(table, _('Firefox Setting'), ['firefox'])
 
 def __firefox_setting():
     import os
-    if not os.path.isfile('/usr/bin/firefox'):
+    if os.path.isfile('/usr/bin/firefox'):
         return firefox_setting_panel()
     else:
         hbox = gtk.HBox()
