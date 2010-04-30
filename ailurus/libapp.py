@@ -191,6 +191,30 @@ class _apt_install(I):
     def installation_command(self):
         return _('Command:') + ' sudo apt-get install ' + self.pkgs
 
+class _rpm_install(I):
+    def _check(self):
+        assert isinstance(self.pkgs, str)
+    def install(self):
+        self._check()
+        RPM.install(self.pkgs)
+    def installed(self):
+        self._check()
+        for p in self.pkgs.split():
+            if not RPM.installed(p): return False
+        return True
+    def remove(self):
+        self._check()
+        RPM.remove(self.pkgs)
+    def get_reason(self, f):
+        self._check()
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)
+
 class _path_lists(I):
     def __check(self):
         if not isinstance(self.paths, list):
@@ -280,27 +304,3 @@ class _download_one_file(I):
         import os
         if not os.path.exists(self.file):
             print >>f, _('Because "%s" does not exist.')%self.file,
-
-class _rpm_install(I):
-    def _check(self):
-        assert isinstance(self.pkgs, str)
-    def install(self):
-        self._check()
-        RPM.install(self.pkgs)
-    def installed(self):
-        self._check()
-        for p in self.pkgs.split():
-            if not RPM.installed(p): return False
-        return True
-    def remove(self):
-        self._check()
-        RPM.remove(self.pkgs)
-    def get_reason(self, f):
-        self._check()
-        all_pkgs = self.pkgs.split()
-        if len(all_pkgs) > 1:
-            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
-            if len(not_installed) != len(all_pkgs):
-                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)
