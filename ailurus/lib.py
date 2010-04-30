@@ -167,13 +167,16 @@ class Config:
         return 'LinuxMint' in c
     @classmethod
     def get_Mint_version(cls):
-        '''return '5', '6', '7' or '8'. '''
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'. '''
         import os
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
             if line.startswith('DISTRIB_RELEASE='):
-                return line.split('=')[1].strip()
+                a = line.split('=')[1].strip()
+        versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
+        assert a in ['5', '6', '7', '8', '9']
+        return versions[int(a)-5]
     @classmethod
     def is_Fedora(cls):
         import os

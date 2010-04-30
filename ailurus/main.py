@@ -95,10 +95,7 @@ def import_desktop_environment():
 def import_distribution():
     if Config.is_Mint():
         try:
-            versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-            rs = Config.get_Mint_version()
-            if rs in ['5', '6', '7', '8', '9']:
-                version = versions[int(rs)-5]
+            version = Config.get_Ubuntu_version()
             Config.set_Ubuntu_version( version )
             import ubuntu
             return ubuntu
