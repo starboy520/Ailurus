@@ -96,7 +96,7 @@ class _repo(I):
             if a.endswith('\n'): raise ValueError(a)
             if '$' in a: #variable substitution
                 assert '$version' in a
-                self.apt_conf[i] = a.replace('$version', Config.get_Ubuntu_version() )
+                self.apt_conf[i] = a.replace('$version', VERSION )
         assert isinstance(self.apt_content, str)
         
         if hasattr(self, 'key_url'):
@@ -197,8 +197,8 @@ class _launchpad(I):
         if hasattr(self, 'content'): assert isinstance(self.content, str)
         if hasattr(self, 'desc'): assert isinstance(self.desc, (unicode, str))
         self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
-        self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
-        self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, Config.get_Ubuntu_version())
+        self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, VERSION)
+        self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, VERSION)
 
         import StringIO
         msg = StringIO.StringIO()
@@ -233,7 +233,7 @@ class Repo_Firefox_3_6(_launchpad):
     ppa = 'mozillateam/firefox-stable'
     content = 'firefox'
     def support(self):
-        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
+        return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
@@ -388,7 +388,7 @@ class Repo_IBus_Jaunty(_launchpad):
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-jaunty'
     def support(self):
-        return Config.get_Ubuntu_version() == 'jaunty'
+        return VERSION == 'jaunty'
 
 class Repo_IBus_Intrepid(_launchpad):
     __doc__ = _('IBus (stable)')
@@ -396,7 +396,7 @@ class Repo_IBus_Intrepid(_launchpad):
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-intrepid'
     def support(self):
-        return Config.get_Ubuntu_version() == 'intrepid'
+        return VERSION == 'intrepid'
 
 class Repo_IBus_Karmic(_launchpad):
     __doc__ = _('IBus (stable)')
@@ -404,7 +404,7 @@ class Repo_IBus_Karmic(_launchpad):
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-karmic'
     def support(self):
-        return Config.get_Ubuntu_version() == 'karmic'
+        return VERSION == 'karmic'
 
 class Repo_Canonical_Partner(_repo):
     __doc__ = _('Partners of Canonical')
@@ -480,7 +480,7 @@ class Repo_RedNoteBook(_repo):
         self.key_id = 'FF95D333'
         _repo.__init__(self)
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return VERSION != 'lucid'
 
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')

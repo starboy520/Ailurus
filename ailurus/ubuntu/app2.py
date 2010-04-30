@@ -186,32 +186,32 @@ class GNOMEArtNextGen(I):
     category = 'appearance'
     license = GPL
     def install(self):
-        if Config.get_Ubuntu_version() == 'hardy':
+        if VERSION == 'hardy':
 
             file = R(
 ['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy.deb'],
 471212, '52c556fafa9664284dcff9851528f3e5aae00ebe').download()
         
-        elif Config.get_Ubuntu_version() == 'intrepid':
+        elif VERSION == 'intrepid':
         
             file = R(
 ['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'],
 444822, '4dc42fd446ebd8e615cf6490d6ecc94a403719b8').download()
         
-        elif Config.get_Ubuntu_version() == 'jaunty':
+        elif VERSION == 'jaunty':
         
             file = R(
 ['http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'],
 441222, 'c9134ad3405c660e6e07333994ca38d494f0f90f').download()
         
-        elif Config.get_Ubuntu_version() == 'karmic':
+        elif VERSION == 'karmic':
         
             file = R(
 ['http://ailurus.googlecode.com/files/gnomeartng-0.7.0-karmic.deb',],
 441558, 'b2b834b1bfc76f01dce370b60ea706f6ed35e4da').download()
 
         else:
-            raise Exception('GNOMEArtNextGen', Config.get_Ubuntu_version())
+            raise Exception('GNOMEArtNextGen', VERSION)
 
         DPKG.install_deb(file)
         
@@ -230,7 +230,7 @@ class GNOMEArtNextGen(I):
     def remove(self):
         APT.remove('gnomeartng')
     def support(self):
-        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
+        return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
            
 class QtiPlot(_apt_install) :
     __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')

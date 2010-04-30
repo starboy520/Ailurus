@@ -93,17 +93,7 @@ def import_desktop_environment():
         return None
 
 def import_distribution():
-    if Config.is_Mint():
-        try:
-            version = Config.get_Ubuntu_version()
-            Config.set_Ubuntu_version( version )
-            import ubuntu
-            return ubuntu
-        except:
-            import traceback
-            traceback.print_exc()
-            return None
-    elif Config.is_Ubuntu(): 
+    if Config.is_Mint() or Config.is_Ubuntu():
         import ubuntu
         return ubuntu
     elif Config.is_Fedora():

@@ -33,7 +33,7 @@ class Acire(_apt_install):
     depends = Repo_Acire
     pkgs = 'acire'
     def support(self):
-        return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
 class AWN(_apt_install):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
@@ -135,7 +135,7 @@ class Gnome_color(_apt_install):
     depends = Repo_GNOMEColors
     pkgs = 'gnome-colors'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return VERSION != 'lucid'
 
 class Getting_things_gnome(_apt_install):
     __doc__ = _('Getting Things Gnome: GTD tool')
@@ -197,7 +197,7 @@ class RedNoteBook(_apt_install):
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return VERSION != 'lucid'
     
 class Shutter(_apt_install):
     __doc__ = _('Shutter: A screen-shot application')
@@ -213,7 +213,7 @@ class Shutter(_apt_install):
 #    depends = Repo_Synapse
 #    pkgs = 'synapse'
 #    def support(self):
-#        return Config.get_Ubuntu_version() != 'lucid'
+#        return VERSION != 'lucid'
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Firefox_3_6(_apt_install):
@@ -223,7 +223,7 @@ class Firefox_3_6(_apt_install):
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
     def support(self):
-        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty', 'karmic']
+        return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
@@ -232,7 +232,7 @@ class XBMC(_apt_install):
     depends = Repo_XBMC
     pkgs = 'xbmc'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return VERSION != 'lucid'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
@@ -241,7 +241,7 @@ class Songbird(_apt_install):
     depends = Repo_Songbird
     pkgs = 'songbird'
     def support(self):
-        return Config.get_Ubuntu_version() != 'lucid'
+        return VERSION != 'lucid'
 
 class Netbeans(_apt_install):
     __doc__ = 'Netbeans'

@@ -64,7 +64,7 @@ class Full_Language_Pack(_apt_install):
 #    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
 #    pkgs='scim-bridge-client-qt'
 #    def support(self):
-#        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
+#        return VERSION in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
 
 class Decompression_Capability(_apt_install) :
     __doc__ = _('Decompression software: 7z, rar, cab, ace')
@@ -205,7 +205,7 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     def installed(self):
         return _apt_install.installed(self) and file_contain(self.__file, self.__line)
     def support(self):
-        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty']
+        return VERSION in ['hardy', 'intrepid', 'jaunty']
 
 class CUPS(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability')
@@ -213,7 +213,7 @@ class CUPS(_apt_install):
     category = 'office'
     pkgs = 'cups-pdf'
     def support(self):
-        return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
         
 class Flash_Player(_apt_install):
     __doc__ = _(u'GNU Flash plugin for web browser')

@@ -75,7 +75,7 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def support(self):
-        return Config.get_Ubuntu_version() in ['hardy', 'intrepid', 'jaunty']
+        return VERSION in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
@@ -114,7 +114,7 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def support(self):
-        return Config.get_Ubuntu_version() in ['karmic']
+        return VERSION in ['karmic']
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
@@ -300,7 +300,7 @@ class Parcellite(_apt_install):
     license = GPL
     pkgs = 'parcellite'
     def support(self):
-        return not ( Config.get_Ubuntu_version() in ['hardy'] )
+        return not ( VERSION in ['hardy'] )
 
 class R_Language_Basic(_apt_install):
     __doc__ = _('R language (basic development environment)')
@@ -462,7 +462,7 @@ class Vuze_Karmic(_apt_install):
     license = GPL
     pkgs = 'vuze'
     def support(self):
-        return Config.get_Ubuntu_version() not in ['hardy', 'intrepid', 'jaunty']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
 class ImageMagick(_apt_install):
     __doc__ = _('ImageMagick: Edit images')

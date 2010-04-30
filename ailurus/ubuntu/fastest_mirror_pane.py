@@ -611,7 +611,7 @@ deb-src %(fastest)s %(version)s-backports main restricted universe multiverse
 deb-src %(fastest)s %(version)s-proposed main restricted universe multiverse 
 deb-src %(fastest)s %(version)s-security main restricted universe multiverse 
 deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
-'''%{'fastest':fastest, 'version':Config.get_Ubuntu_version()} )
+'''%{'fastest':fastest, 'version':VERSION} )
         f.close()
 
         # We find out all files which will be opened, 
