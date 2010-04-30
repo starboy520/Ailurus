@@ -34,7 +34,7 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
-        if Config.is_Ubuntu() or Config.is_Mint():
+        if UBUNTU or Config.is_Mint():
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
         elif Config.is_Fedora():

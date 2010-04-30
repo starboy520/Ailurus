@@ -1588,7 +1588,7 @@ def check_update():
             filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
             version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
             code_url = 'http://homerxing.fedorapeople.org/'
-        elif Config.is_Ubuntu() or Config.is_Mint():
+        elif UBUNTU or Config.is_Mint():
             version_string = VERSION
             filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
             version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string

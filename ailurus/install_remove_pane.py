@@ -720,7 +720,7 @@ class InstallRemovePane(gtk.VBox):
 
         self.__left_tree_view_default_select()
 
-        if not Config.get_hide_quick_setup_pane() and (Config.is_Ubuntu() or Config.is_Mint()):
+        if not Config.get_hide_quick_setup_pane() and (UBUNTU or Config.is_Mint()):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()

@@ -25,7 +25,7 @@ import sys, os
 from lib import *
 from libapp import *
 
-if Config.is_Ubuntu() or Config.is_Fedora():
+if UBUNTU or MINT or Config.is_Fedora():
     from apps_eclipse import *
 
 class Bioclipse(_path_lists):

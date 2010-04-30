@@ -76,7 +76,7 @@ if Config.is_Fedora():
         category = 'eclipse'
         license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse-platform'
-elif Config.is_Ubuntu():
+elif UBUNTU or MINT:
     class Eclipse(_apt_install):
         __doc__ = _('Eclipse (basic development environment)')
         detail = ( 
@@ -90,7 +90,7 @@ elif Config.is_Ubuntu():
         pkgs = 'eclipse'
 
 def make_sure_installed():
-    if Config.is_Ubuntu():
+    if UBUNTU or MINT:
         if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
     else:
         if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')

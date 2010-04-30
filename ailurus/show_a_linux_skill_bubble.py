@@ -28,7 +28,7 @@ def main():
     
     DESKTOP = None
     
-    if Config.is_Mint() or Config.is_Ubuntu():
+    if Config.is_Mint() or UBUNTU:
         import ubuntu as DISTRIBUTION
     elif Config.is_Fedora():
         import fedora as DISTRIBUTION
