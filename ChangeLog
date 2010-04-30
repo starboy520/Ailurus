@@ -1,6 +1,7 @@
 2010-04-30 CHEN Yangyang <skabyy@gmail.com>
 
     * Merge the "Hardware information pane" and the "Linux information pane"
+    * "Information pane" will now Automatically update the information
 
 2010-04-28 QI Chengjie <starboy.qi@gmail.com>
 

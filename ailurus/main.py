@@ -473,12 +473,12 @@ if options.clean_up or options.all:
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-#    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-#    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
+    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
+    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
     from info_pane import InfoPane
-    pane = InfoPane(main_view, COMMON, DESKTOP, DISTRIBUTION, 
-                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', load_hardwareinfo], 
-                    [_('Linux Information'), D+'sora_icons/m_linux.png', load_linuxinfo]))
+    pane = InfoPane(main_view, 
+                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
+                    [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
     main_view.register(pane)
 
 if options.install_software or options.all:
