@@ -189,13 +189,13 @@ class _rpm_install(I):
     def self_check(self):
         assert isinstance(self.pkgs, str)
     def install(self):
-        RPM.install(self.pkgs)
+        RPM.install(*self.pkgs.split())
     def installed(self):
         for p in self.pkgs.split():
             if not RPM.installed(p): return False
         return True
     def remove(self):
-        RPM.remove(self.pkgs)
+        RPM.remove(*self.pkgs.split())
     def get_reason(self, f):
         all_pkgs = self.pkgs.split()
         if len(all_pkgs) > 1:
