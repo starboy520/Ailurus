@@ -23,7 +23,7 @@
 from __future__ import with_statement
 from lib import *
 
-__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install']
+__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install', 'N']
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -109,24 +109,6 @@ class _set_gconf(I):
                 if not to_add in List:
                     return False
         return True
-#    def _get_reason(self, f):
-#        import gconf
-#        G = gconf.client_get_default()
-#        for key, newvalue, oldvalue in self.set:
-#            try: value = G.get_value(key)
-#            except: value = None
-#            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
-#                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
-#        for key, to_add_list in self.add:
-#            List = G.get_list(key, gconf.VALUE_STRING)
-#            #evaluate "not_in" list
-#            not_in = []
-#            for to_add in to_add_list:
-#                if not to_add in List:
-#                    not_in.append(to_add)
-#            #output
-#            if not_in:
-#                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
     def remove(self):
         import gconf
         G = gconf.client_get_default()
@@ -153,20 +135,27 @@ class _set_gconf(I):
         except:
             return False 
 
+def is_package_names_string(string):
+    assert isinstance(string, str)
+    if string == '':
+        raise ValueError, 'String is empty.'
+    for pkg in string.split():
+        import re
+        if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
+            raise ValueError, pkg
+        if pkg[0]=='-':
+            raise ValueError, pkg
+
+def debian_installation_command(package_names):
+    return _('Command:') + ' sudo apt-get install ' + package_names
+
+def fedora_installation_command(package_names):
+    return _('Command:') + (' su -c "yum install %s"' % package_names)
+
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
     def self_check(self):
-        self.pkgs # check exists
-        if type ( self.pkgs ) != str:
-            raise TypeError
-        if self.pkgs == '' :
-            raise ValueError, 'self.pkgs is empty.'
-        for pkg in self.pkgs.split():
-            import re
-            if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
-                raise ValueError, pkg
-            if pkg[0]=='-':
-                raise ValueError, pkg
+        is_package_names_string(self.pkgs)
     def install(self):
         APT.install(*self.pkgs.split())
     def installed(self):
@@ -183,11 +172,11 @@ class _apt_install(I):
     def remove(self):
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
-        return _('Command:') + ' sudo apt-get install ' + self.pkgs
+        return debian_installation_command(self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
-        assert isinstance(self.pkgs, str)
+        is_package_names_string(self.pkgs)
     def install(self):
         RPM.install(*self.pkgs.split())
     def installed(self):
@@ -203,7 +192,37 @@ class _rpm_install(I):
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
-        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)
+        return fedora_installation_command(self.pkgs)
+
+class N(I):
+    if FEDORA:
+        backend = RPM
+        installation_command_backend = fedora_installation_command
+    elif UBUNTU or MINT:
+        backend = APT
+        installation_command_backend = debian_installation_command
+    
+    def support(self):
+        return hasattr(self, 'pkgs')
+    def self_check(self):
+        if hasattr(self, 'pkgs'):
+            is_package_names_string(self.pkgs)
+    def install(self):
+        backend.install(*self.pkgs.split())
+    def installed(self):
+        for p in self.pkgs.split():
+            if not backend.installed(p): return False
+        return True
+    def remove(self):
+        backend.remove(*self.pkgs.split())
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not backend.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return installation_command_backend(self.pkgs)
 
 class _path_lists(I):
     def self_check(self):

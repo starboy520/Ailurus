@@ -58,7 +58,7 @@ def load_app_objs(common, desktop, distribution):
     for module in modules:
         for name in dir(module):
             if name in names: continue
-            if name[0]=='_' or name=='I': continue
+            if name[0]=='_' or name=='I' or name=='N': continue
             app_class = getattr(module,name)
             if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
     
@@ -91,7 +91,7 @@ def load_app_objs_from_extension(extension):
     classobjs = []
     names = set()
     for name in dir(extension):
-        if name[0]=='_' or name=='I': continue
+        if name[0]=='_' or name=='I' or name=='N': continue
         if name in names: continue
         app_class = getattr(extension,name)
         if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
