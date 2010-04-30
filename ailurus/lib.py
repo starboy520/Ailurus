@@ -1704,3 +1704,18 @@ except:
 
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
+
+GNOME = Config.is_GNOME()
+XFCE = Config.is_XFCE()
+UBUNTU = Config.is_Ubuntu()
+MINT = Config.is_Mint()
+FEDORA = Config.is_Fedora()
+if UBUNTU:
+    VERSION = Config.get_Ubuntu_version()
+elif MINT:
+    VERSION = Config.get_Mint_version()
+elif FEDORA:
+    VERSION = Config.get_Fedora_version()
+else:
+    print _('Your Linux distribution is not supported. :(')
+    VERSION = ''
