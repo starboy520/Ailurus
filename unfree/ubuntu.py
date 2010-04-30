@@ -24,7 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not ( UBUNTU or Config.is_Mint() ):
+if not ( UBUNTU or MINT ):
     raise Exception
 
 class Alice(_path_lists):
