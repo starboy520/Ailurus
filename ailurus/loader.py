@@ -65,6 +65,7 @@ def load_app_objs(common, desktop, distribution):
             try:
                 check_class_members(app_class)
                 app_class_obj = app_class()
+                app_class_obj.self_check()
                 if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
                 if hasattr(app_class_obj, 'installation_command'):
@@ -98,6 +99,7 @@ def load_app_objs_from_extension(extension):
         try:
             check_class_members(app_class)
             app_class_obj = app_class()
+            app_class_obj.self_check()
             if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
             if hasattr(app_class_obj, 'international') and Config.is_Chinese_locale(): continue
             if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue

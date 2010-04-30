@@ -41,7 +41,7 @@ class _set_gconf(I):
                 raise ValueError
             if e=='':
                 raise ValueError
-    def __check(self):
+    def self_check(self):
         self.set # check existing
         self.add # check existing
         if type(self.set)!=tuple or type(self.add)!=tuple:
@@ -72,7 +72,6 @@ class _set_gconf(I):
     def __init__(self):
         raise NotImplementedError
     def install(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
@@ -93,7 +92,6 @@ class _set_gconf(I):
             print "\x1b[1;32m%s\x1b[m"%_("Key:"), key
             print "\x1b[1;32m%s\x1b[m"%_("Appended items:"), to_add_list
     def installed(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         for key, newvalue, oldvalue in self.set:
@@ -130,7 +128,6 @@ class _set_gconf(I):
 #            if not_in:
 #                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
     def remove(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
@@ -158,7 +155,7 @@ class _set_gconf(I):
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
-    def __check(self):
+    def self_check(self):
         self.pkgs # check exists
         if type ( self.pkgs ) != str:
             raise TypeError
@@ -171,10 +168,8 @@ class _apt_install(I):
             if pkg[0]=='-':
                 raise ValueError, pkg
     def install(self):
-        self.__check()
         APT.install(*self.pkgs.split())
     def installed(self):
-        self.__check()
         for pkg in self.pkgs.split():
             if not APT.installed ( pkg ):
                 return False
@@ -186,27 +181,22 @@ class _apt_install(I):
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
-        self.__check()
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
         return _('Command:') + ' sudo apt-get install ' + self.pkgs
 
 class _rpm_install(I):
-    def _check(self):
+    def self_check(self):
         assert isinstance(self.pkgs, str)
     def install(self):
-        self._check()
         RPM.install(self.pkgs)
     def installed(self):
-        self._check()
         for p in self.pkgs.split():
             if not RPM.installed(p): return False
         return True
     def remove(self):
-        self._check()
         RPM.remove(self.pkgs)
     def get_reason(self, f):
-        self._check()
         all_pkgs = self.pkgs.split()
         if len(all_pkgs) > 1:
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
@@ -216,7 +206,7 @@ class _rpm_install(I):
         return _('Command:') + (' su -c "yum install %s"' % self.pkgs)
 
 class _path_lists(I):
-    def __check(self):
+    def self_check(self):
         if not isinstance(self.paths, list):
             raise TypeError
         if len(self.paths)==0: 
@@ -231,14 +221,12 @@ class _path_lists(I):
     def install(self):
         raise NotImplementedError
     def installed(self):
-        self.__check()
         for path in self.paths:
             import os
             if not os.path.exists(path):
                 return False
         return True
     def remove(self):
-        self.__check()
         for path in self.paths:
             run_as_root('rm "%s" -rf'%path)
     def get_reason(self, f):

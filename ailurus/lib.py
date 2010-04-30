@@ -29,6 +29,8 @@ warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
 class I:
     this_is_an_installer = True
+    def self_check(self):
+        'Check errors in source code'
     
 class Config:
     @classmethod
