@@ -611,6 +611,7 @@ class RPM:
 
 class APT:
     fresh_cache = False
+    apt_get_update_is_called = False
     __set1 = set()
     __set2 = set()
     @classmethod
@@ -658,9 +659,8 @@ class APT:
         all_packages = packages
         packages = [ e for e in packages if not APT.installed(e) ]
         if packages:
-            if not hasattr(cls, 'updated'):
-                APT.apt_get_update()
-                cls.updated = True
+            if cls.apt_get_update_is_called == False:
+                cls.apt_get_update()
             # create packages-list
             import tempfile
             f = tempfile.NamedTemporaryFile()
@@ -730,7 +730,7 @@ class APT:
         print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
         cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
         run_as_root(cmd, ignore_error=True)
-        cls.updated = True
+        cls.apt_get_update_is_called = True
         cls.cache_changed()
 
 class DPKG:
