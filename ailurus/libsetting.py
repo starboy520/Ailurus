@@ -4,7 +4,6 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -396,43 +395,36 @@ class Setting(gtk.VBox):
         self.category = category
 
 class FirefoxConfig(gtk.CheckButton):
-
-    @classmethod
-    def set_firefox(w, f_list):
-        self.f_list = f_list
-        with open('/usr/share/ailurus/support/user.js') as f:
-            v = f.readlines()
-            f.close()
-        p = open('user.js.bak', 'w+')
-        for i in f_list:
-            if self.check_active():
-                v[i] = '//' + v[i]
-            else:
-                v[i] = v[i][2:]
-        p.writelines(v)
-        p.close()
-    
-    def __change_list(self, w):
-        for  i in self.num:
+    def set_firefox(self, w):
+        self.f_list = []
+        for i in self.line:
             if i not in self.f_list:
                 self.f_list.append(i)
-	print self.f_list
-	return self.f_list
-        
+        f = open('/home/velly/.config/ailurus/firefox_user_setting')
+        v = f.readlines()
+	f.close()
+        p = open(self.path + 'firefox_user_setting', 'w+')
+        for i in self.f_list:
+            if v[i-1][:1] == '/':
+                v[i-1] = v[i-1][2:]
+            else:
+                v[i-1] = '//' + v[i-1]
+        p.writelines(v)
+	p.close()
+	run('cp ' + self.path + 'firefox_user_setting ~/.config/ailurus/')
+    
     def check_active(self):
-        with open(self.path + 'user.js.bak') as f:
+        with open(self.path + 'firefox_user_setting') as f:
             v = f.readlines()
-            for i in self.num:
-                    v[i][:1] == '/'
+            for i in self.line:
+                if v[i-1][:1] == '/':
                     return False
             return True
 
-    def __init__(self, text, num, tooltip = None):
+    def __init__(self, text, line, tooltip = None):
         gtk.CheckButton.__init__(self)
         self.path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
-        self.f_list = []
-	self.num = num
+	self.line = line
         self.set_label(text)
         self.set_active(self.check_active())
-        self.connect('toggled', self.__change_list)
-        
+        self.connect('toggled', self.set_firefox)

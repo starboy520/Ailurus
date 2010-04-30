@@ -4,7 +4,6 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -171,12 +170,44 @@ def __change_hostname():
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
 
-def __firefox_setting():
-    a = FirefoxConfig('just a test', [1,])
-    hbox = gtk.HBox()
-    hbox.pack_start(a, False, False)
-    return Setting(hbox ,'Firefox setting', ['firefox'])
+def firefox_setting_panel():
+    table = gtk.Table()
+    o = FirefoxConfig('Speed up Firefox', [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 23,])
+    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig('Autofill in Urlbar', [34,])
+    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig('Support ed2k', [31, 32,])
+    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig('Allow Windows to swap out memory when the program is minimized', [22,])
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    o = FirefoxConfig('Disable link prefetching.', [24,])
+    table.attach(o, 2, 3, 0, 1, gtk.FILL, gtk.FILL)
+    applyButton = gtk.Button(_('Apply Setting'))
 
+    def apply_button(self):
+        import os
+        path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
+	if not os.path.isfile(path + 'prefs.js.bak'):
+	    run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.bak')
+	run('cp ' + path + 'firefox_user_setting ' + path + 'user.js')
+        run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
+
+    applyButton.connect('clicked', apply_button)
+    table.attach(applyButton, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
+
+    return Setting(table, _('Firefox Setting'), ['firefox'])
+
+def __firefox_setting():
+    import os
+    if not os.path.isfile('/usr/bin/firefox'):
+        return firefox_setting_panel()
+    else:
+        hbox = gtk.HBox()
+        label = gtk.Label()
+        label.set_text('Ailurus found you have not install Firefox in your computer,\n'
+                       'If there is a bug, please contant us. Thanks!')
+        hbox.pack_start(label, False, False)
+	return Setting(hbox, _('Firefox Setting'), ['firefox'])
     
 def get():
     ret = []

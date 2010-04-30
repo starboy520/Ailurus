@@ -1,5 +1,3 @@
-// Tweaks from DaringSoule<daringsoule@bluevalley.net>. Thanks a lot!
-//speed tweaks
 user_pref("content.max.tokenizing.time", true);
 user_pref("content.notify.ontimer", true);
 user_pref("network.http.pipelining.firstrequest", true);
@@ -21,8 +19,6 @@ user_pref("network.http.pipelining.maxrequests", 8);
 user_pref("network.http.max-connections", 96);
 user_pref("network.http.max-connections-per-server", 32);
 user_pref("network.http.max-persistent-connections-per-server", 8);
-
-//other tweaksuser_pref("network.http.max-persistent-connections-per-server", 8);
 user_pref("config.trim_on_minimize", true);
 user_pref("ui.submenuDelay", 0);
 user_pref("network.prefetch-next", false);
@@ -36,5 +32,3 @@ user_pref("network.protocol-handler.app.ed2k", '/usr/bin/ed2k');
 user_pref("network.protocol-handler.external.ed2k", true);
 user_pref("toolkit.scrollbox.scrollIncrement", 75);
 user_pref("browser.urlbar.autoFill", true);
-
-
