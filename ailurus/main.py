@@ -250,8 +250,7 @@ class MainView:
 
     def add_pane_buttons_in_toolbar(self):
         List = [
-                ('HardwareInfoPane', D+'sora_icons/m_hardware.png', _('Hardware\nInformation'), ),
-                ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
+                ('InfoPane', D+'sora_icons/m_hardware.png', _('Information'), ),
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
@@ -474,14 +473,12 @@ if options.clean_up or options.all:
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-    from info_pane import HardwareInfoPane
-    pane = HardwareInfoPane(main_view, hwinfo)
-    main_view.register(pane)
-
-    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
-    from info_pane import LinuxInfoPane
-    pane = LinuxInfoPane(main_view, linuxinfo)
+#    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
+#    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
+    from info_pane import InfoPane
+    pane = InfoPane(main_view, COMMON, DESKTOP, DISTRIBUTION, 
+                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', load_hardwareinfo], 
+                    [_('Linux Information'), D+'sora_icons/m_linux.png', load_linuxinfo]))
     main_view.register(pane)
 
 if options.install_software or options.all:

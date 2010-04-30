@@ -1,10 +1,17 @@
-#Fri Apr 30 16:12:24 CST 2010
+#Fri Apr 30 19:31:38 CST 2010
 eclipse.preferences.version=1
+encoding//ailurus/clean_up_pane.py=utf-8
+encoding//ailurus/common/__init__.py=utf-8
+encoding//ailurus/common/hardwareinfo.py=utf-8
 encoding//ailurus/common/osinfo.py=utf-8
 encoding//ailurus/fedora/apps.py=utf-8
+encoding//ailurus/fedora/osinfo.py=utf-8
+encoding//ailurus/gnome/osinfo.py=utf-8
+encoding//ailurus/gnome/setting.py=utf-8
 encoding//ailurus/info_pane.py=utf-8
 encoding//ailurus/install_remove_pane.py=utf-8
 encoding//ailurus/lib.py=utf-8
+encoding//ailurus/libu.py=utf-8
 encoding//ailurus/loader.py=utf-8
 encoding//ailurus/main.py=utf-8
 encoding//ailurus/ubuntu/app1.py=utf-8
