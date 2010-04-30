@@ -113,12 +113,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     def support(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty']
 
-class Flash_Player(_apt_install):
-    __doc__ = _(u'GNU Flash plugin for web browser')
-    category = 'media'
-    license = GPL
-    pkgs = 'gnash mozilla-plugin-gnash'
-    
 #class Flash_Player_Font_Bug:
 #    __doc__ = _('Fix font bug in Flash plugin')
 #    detail = _('Fix bug: characters are displayed as blank square in Flash.\n'
@@ -142,40 +136,6 @@ class Flash_Player(_apt_install):
 #        import os
 #        if os.path.exists(self.__file):
 #            print >>f, _('The file "%s" exists.')%self.__file
-
-class Stardict(_apt_install):
-    __doc__ = _('Stardict')
-    category = 'office'
-    license = GPL
-    pkgs = 'stardict'
-        
-class Liferea(_apt_install):
-    __doc__ = _('Liferea: a RSS feed reader')
-    detail = _('This is a simple and easy used RSS feed reader.')
-    category = 'internet'
-    license = GPL
-    pkgs = 'liferea'
-
-class FireWall(_apt_install):
-    __doc__ = _('Firestarter: Configure Linux firewall')
-    detail = _('Linux system comes up with a firewall "iptables". '
-       'Firestarter is the graphical frontend of "iptables".')
-    license = GPL
-    category = 'internet'
-    pkgs = 'firestarter'
-
-class MACChanger(_apt_install):
-    __doc__ = _('MACChanger: change MAC address')
-    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
-    license = GPL
-    category = 'hardware'
-    pkgs = 'macchanger'
-
-class Bluetooth(_apt_install):
-    __doc__ = _('Bluetooth support')
-    license = GPL
-    category = 'hardware'
-    pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
 
 class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')

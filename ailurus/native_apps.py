@@ -147,16 +147,18 @@ class CUPS (N):
 class Stardict_without_Dictionaries(N):
     __doc__ = _('Stardict')
     category = 'office'
-    detail = _('You can install these dictionaries by yum.\n'
-               'stardict-dic-cs_CZ: Czech dictionaries\n'
-               'stardict-dic-en: English dictionaries\n'
-               'stardict-dic-hi: Hindi dictionary\n'
-               'stardict-dic-ja: Japanese dictionaries\n'
-               'stardict-dic-ru: Russian dictionaries\n'
-               'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
-               'stardict-dic-zh_TW: Traditional Chinese dictionaries')
     license = GPL
     if FEDORA:
+        detail = _('You can install these dictionaries by yum.\n'
+                   'stardict-dic-cs_CZ: Czech dictionaries\n'
+                   'stardict-dic-en: English dictionaries\n'
+                   'stardict-dic-hi: Hindi dictionary\n'
+                   'stardict-dic-ja: Japanese dictionaries\n'
+                   'stardict-dic-ru: Russian dictionaries\n'
+                   'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
+                   'stardict-dic-zh_TW: Traditional Chinese dictionaries')
+        pkgs = 'stardict'
+    if UBUNTU or MINT:
         pkgs = 'stardict'
 
 class Liferea(N):
@@ -166,6 +168,32 @@ class Liferea(N):
     category = 'internet'
     if FEDORA:
         pkgs = 'liferea'
+    if UBUNTU or MINT:
+        pkgs = 'liferea'
+
+class FireWall(_apt_install):
+    __doc__ = _('Firestarter: Configure Linux firewall')
+    detail = _('Linux system comes up with a firewall "iptables". '
+       'Firestarter is the graphical frontend of "iptables".')
+    license = GPL
+    category = 'internet'
+    if UBUNTU or MINT:
+        pkgs = 'firestarter'
+
+class MACChanger(_apt_install):
+    __doc__ = _('MACChanger: change MAC address')
+    detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
+    license = GPL
+    category = 'hardware'
+    if UBUNTU or MINT:
+        pkgs = 'macchanger'
+
+class Bluetooth(_apt_install):
+    __doc__ = _('Bluetooth support')
+    license = GPL
+    category = 'hardware'
+    if UBUNTU or MINT:
+        pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
 
 class CommonUsedProgrammingPackages(N):
     __doc__ = _('Useful applications for programming')
@@ -267,7 +295,9 @@ class Gnash(N):
     license = GPL
     if FEDORA:
         pkgs = 'gnash gnash-plugin'
-        
+    if UBUNTU and MINT:
+        pkgs = 'gnash mozilla-plugin-gnash'
+    
 class Nautilus_Actions(N):
     __doc__ = _('"Actions configuration" entry')
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
