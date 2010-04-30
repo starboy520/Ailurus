@@ -654,82 +654,31 @@ class APT:
         return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def install(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        all_packages = packages
-        packages = [ e for e in packages if not APT.installed(e) ]
-        if packages:
-            if cls.apt_get_update_is_called == False:
-                cls.apt_get_update()
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tinstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in all_packages:
-            if not APT.installed(p): failed.append(p)
+        if cls.apt_get_update_is_called == False:
+            cls.apt_get_update()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('apt-get install ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if not APT.installed(p)]
         if failed:
             msg = 'Cannot install "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        # get list of not-existed packages
-        not_exist = [ e for e in packages if not APT.exist(e) ]
-        # reduce package list
-        packages = [ e for e in packages if APT.installed(e) ]
-        if packages:
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tuninstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in packages:
-            if APT.installed(p): failed.append(p)
-        if failed or not_exist:
-            msg = 'Cannot remove "%s".' % ' '.join(failed+not_exist)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('apt-get remove ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if APT.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
         print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
-        run_as_root(cmd, ignore_error=True)
+        run_as_root_in_terminal('apt-get update')
         cls.apt_get_update_is_called = True
         cls.cache_changed()
 
