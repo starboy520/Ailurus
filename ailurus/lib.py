@@ -142,22 +142,13 @@ class Config:
             c = f.read()
         return 'Ubuntu' in c
     @classmethod
-    def set_Ubuntu_version(cls, version):
-        if not cls.supported_Ubuntu_version(version):
-            raise ValueError
-        cls.set_string('ubuntu-version', version)
-    @classmethod
     def get_Ubuntu_version(cls):
         '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
-        if cls.is_Ubuntu():
-            with open('/etc/lsb-release') as f:
-                lines = f.readlines()
-            for line in lines:
-                if line.startswith('DISTRIB_CODENAME='):
-                    return line.split('=')[1].strip()
-        value = cls.get_string('ubuntu-version')
-        assert cls.supported_Ubuntu_version(value), value
-        return value
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
     @classmethod
     def is_Mint(cls):
         import os
