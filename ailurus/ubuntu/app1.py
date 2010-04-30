@@ -66,93 +66,6 @@ class Full_Language_Pack(_apt_install):
 #    def support(self):
 #        return VERSION in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
 
-class Decompression_Capability(_apt_install) :
-    __doc__ = _('Decompression software: 7z, rar, cab, ace')
-    license = GPL
-    pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
-
-class Typespeed(_apt_install) :
-    'Typespeed'
-    detail= _('Typespeed is a typing practise. It only runs in terminal.')
-    category = 'game'
-    license = LGPL
-    pkgs = "typespeed"
-
-class Evince_Read_Chinese_PDF(_apt_install) :
-    __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
-    category='office'
-    Chinese = True
-    pkgs = 'poppler-data'
-
-class CHMSee_Read_CHM_Documents(_apt_install) :
-    __doc__ = _('ChmSee: A CHM file viewer')
-    license = GPL + ' http://code.google.com/p/chmsee/'
-    category = 'office'
-    pkgs = 'chmsee'
-
-class Workrave_And_Auto_Start_It(_apt_install) :
-    __doc__ = 'Workrave'
-    detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
-    license = GPL + ' http://sourceforge.net/projects/workrave/'
-    pkgs = 'workrave'
-    def __init__(self):
-        import os
-        self.path = os.path.expanduser('~/.config/autostart/')
-        self.file = self.path + 'workrave.desktop'
-    def __workraveautostart(self):
-        if not os.path.exists(self.path):
-            run('mkdir -p '+self.path)
-        with open(self.file, 'w') as f:
-            f.write(
-'''[Desktop Entry]
-Name=Workrave
-Exec=workrave
-Encoding=UTF-8
-Version=1.0
-Type=Application
-X-GNOME-Autostart-enabled=true
-'''
-            )
-    def install(self):
-        _apt_install.install(self)
-        self.__workraveautostart()
-    def installed(self):
-        import os
-        if not os.path.exists(self.file): return False
-        return _apt_install.installed(self)
-    def remove(self):
-        _apt_install.remove(self)
-        import os
-        if os.path.exists(self.file):
-            os.remove(self.file)
-
-class VIM_and_VIMRC(_apt_install) :
-    __doc__ = _('Make VIM more suitable for programming')
-    detail = _('Install VIM and make it more suitable for programming. '
-       'The installation process is as follows. '
-       '"sudo apt-get install vim" command is executed. '
-       'Then these lines are appended into "$HOME/.vimrc" file: \n'
-       '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
-    category = 'dev'
-    license = GPL
-    pkgs = 'vim'
-    def __vimrc_installed(self):
-        return file_contain ( self.vimrc, *self.lines )
-    def __vimrc_install(self):
-        file_append ( self.vimrc, *self.lines )
-    def __init__(self):
-        import os
-        self.vimrc = os.path.expanduser("~/.vimrc")
-        self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
-    def install(self):
-        _apt_install.install(self)
-        self.__vimrc_install()
-    def installed(self):
-        return _apt_install.installed(self)
-    def remove(self):
-        _apt_install.remove(self)
-        file_remove ( self.vimrc, *self.lines )
-
 class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
@@ -173,13 +86,6 @@ class ColorfulBashPromptSymbols(I):
     def remove(self):
         file_remove ( self.bashrc, self.line )
         
-class Multimedia_Codecs (_apt_install) :
-    __doc__ = _('Multi-media codec')
-    category = 'media'
-    license = LGPL
-    pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
-             'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
-
 class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
     detail = _('The installation process is as follows. Firstly, the command "sudo apt-get install cups-pdf" is launched. '
@@ -207,14 +113,6 @@ class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
     def support(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty']
 
-class CUPS(_apt_install):
-    __doc__ = _('Enable "Print to pdf" capability')
-    license = LGPL
-    category = 'office'
-    pkgs = 'cups-pdf'
-    def support(self):
-        return VERSION not in ['hardy', 'intrepid', 'jaunty']
-        
 class Flash_Player(_apt_install):
     __doc__ = _(u'GNU Flash plugin for web browser')
     category = 'media'

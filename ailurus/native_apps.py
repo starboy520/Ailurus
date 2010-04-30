@@ -32,16 +32,20 @@ class WINE(N):
     category = 'vm'
     if FEDORA:
         pkgs = 'wine'
-        
+
 class Enhance_Decompression_Capability(N) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
     if FEDORA:
         pkgs = "p7zip cabextract"
+    if UBUNTU or MINT:
+        pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
 
 class Evince_Read_Chinese_PDF(N) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     category='office'
     if FEDORA:
+        pkgs = 'poppler-data'
+    if UBUNTU or MINT:
         pkgs = 'poppler-data'
 
 class CHMSee_Read_CHM_Documents(N) :
@@ -50,12 +54,16 @@ class CHMSee_Read_CHM_Documents(N) :
     license = GPL + ' http://code.google.com/p/chmsee/'
     if FEDORA:
         pkgs = 'chmsee'
+    if UBUNTU or MINT:
+        pkgs = 'chmsee'
 
 class Workrave_And_Auto_Start_It(N) :
     __doc__ = 'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:
+        pkgs = 'workrave'
+    if UBUNTU or MINT:
         pkgs = 'workrave'
     def __init__(self):
         import os
@@ -99,6 +107,8 @@ class VIM_and_VIMRC(N) :
     category = 'dev'
     if FEDORA:
         pkgs = 'vim-enhanced'
+    if UBUNTU or MINT:
+        pkgs = 'vim'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
     def __vimrc_install(self):
@@ -116,11 +126,23 @@ class VIM_and_VIMRC(N) :
         N.remove(self)
         file_remove ( self.vimrc, *self.lines )
 
+class Multimedia_Codecs (_apt_install) :
+    __doc__ = _('Multi-media codec')
+    category = 'media'
+    license = LGPL
+    if UBUNTU or MINT:
+        pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
+                 'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
+
 class CUPS (N):
     __doc__ = _('Enable "Print to pdf" capability.')
     category = 'office'
     if FEDORA:
         pkgs = 'cups-pdf'
+    if UBUNTU or MINT:
+        pkgs = 'cups-pdf'
+        def support(self):
+            return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
 class Stardict_without_Dictionaries(N):
     __doc__ = _('Stardict')
@@ -315,3 +337,12 @@ class HardwareLister(N):
     category = 'hardware'
     if FEDORA:
         pkgs = 'lshw lshw-gui'
+
+class Typespeed(_apt_install) :
+    'Typespeed'
+    detail= _('Typespeed is a typing practise. It only runs in terminal.')
+    category = 'game'
+    license = LGPL
+    if UBUNTU or MINT:
+        pkgs = "typespeed"
+
