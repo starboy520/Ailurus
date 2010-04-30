@@ -1584,7 +1584,7 @@ def check_update():
     
         import urllib2
         import re
-        if Config.is_Fedora():
+        if FEDORA:
             filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
             version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
             code_url = 'http://homerxing.fedorapeople.org/'

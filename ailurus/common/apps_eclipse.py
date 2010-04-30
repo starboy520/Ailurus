@@ -64,7 +64,7 @@ def message(title, content):
     dialog.destroy()
     gtk.gdk.threads_leave()
 
-if Config.is_Fedora():
+if FEDORA:
     class Eclipse(_rpm_install):
         __doc__ = _('Eclipse (basic development environment)')
         detail = ( 

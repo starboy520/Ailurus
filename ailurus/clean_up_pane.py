@@ -37,7 +37,7 @@ class CleanUpPane(gtk.VBox):
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-        elif Config.is_Fedora():
+        elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
 
     def get_folder_size(self, folder_path):

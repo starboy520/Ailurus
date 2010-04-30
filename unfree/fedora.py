@@ -24,7 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not Config.is_Fedora():
+if not FEDORA:
     raise Exception
 
 class _repo(I):

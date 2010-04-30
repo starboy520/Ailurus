@@ -96,7 +96,7 @@ def import_distribution():
     if MINT or UBUNTU:
         import ubuntu
         return ubuntu
-    elif Config.is_Fedora():
+    elif FEDORA:
         import fedora
         return fedora
     else:

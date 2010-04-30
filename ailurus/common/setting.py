@@ -137,7 +137,7 @@ def __change_hostname():
                 with TempOwn('/etc/hostname') as o:
                     with open('/etc/hostname', 'w') as f:
                         f.write(new_host_name)
-            elif Config.is_Fedora():
+            elif FEDORA:
                 with TempOwn('/etc/sysconfig/network') as o:
                     with open('/etc/sysconfig/network') as f:
                         content = f.read()

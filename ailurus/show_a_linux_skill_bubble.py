@@ -30,7 +30,7 @@ def main():
     
     if MINT or UBUNTU:
         import ubuntu as DISTRIBUTION
-    elif Config.is_Fedora():
+    elif FEDORA:
         import fedora as DISTRIBUTION
     else:
         DISTRIBUTION = None
