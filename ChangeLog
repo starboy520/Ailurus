@@ -2,6 +2,8 @@
 
     * Improve the efficiency of automatically updating "Information pane".
       Only refresh necessary items.
+    * Add a feature to print all information.
+    * Change "GNOME locale" icon.
 
 2010-04-30 CHEN Yangyang <skabyy@gmail.com>
 

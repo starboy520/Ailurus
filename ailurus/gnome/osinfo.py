@@ -44,7 +44,7 @@ def __gnome():
     except:
         traceback.print_exc(file=sys.stderr)
         
-    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], D+'umut_icons/i_locale.png' ) )
+    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], D+'other_icons/i_locale.png' ) )
     except: traceback.print_exc(file=sys.stderr)
 
     return ret
