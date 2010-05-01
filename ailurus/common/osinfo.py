@@ -25,6 +25,7 @@ import sys, os
 from lib import *
 
 def __host_name():
+    __host_name.please_refresh_me = True
     try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
     except: traceback.print_exc(file=sys.stderr)
     return []
@@ -78,6 +79,7 @@ def __pygtk():
      except: traceback.print_exc(file = sys.stderr)
     
 def __uptime():
+    __uptime.please_refresh_me = True
     try:
         with open('/proc/uptime') as f:
             string = f.read().split('.')[0]
