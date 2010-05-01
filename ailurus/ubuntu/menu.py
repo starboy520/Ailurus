@@ -29,7 +29,6 @@ from libu import *
 def __study_linux(main_view):
     study_url_items = [ 
         # text, web page url, Chinese only?
-        None, # Separator
         (_('Ubuntu/Kubuntu configuration guide'),
          'http://ubuntuguide.org/wiki/', False),
         (_('Ubuntu skills'), 
@@ -57,9 +56,6 @@ def __study_linux(main_view):
     def __get_menu(items):
         ret = []
         for item in items:
-            if item == None: 
-                ret.append( gtk.SeparatorMenuItem() )
-                continue 
             if item[2]==False or (item[2] and Config.is_Chinese_locale()):
                 menu_item = image_stock_menuitem(gtk.STOCK_HELP, item[0])
                 menu_item.url = item[1]
