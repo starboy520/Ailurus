@@ -24,10 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-    return (text, value, icon, tooltip)
-
-def get():
+def __ubuntu():
     import sys, traceback
     try: 
         with open('/etc/lsb-release') as f:
@@ -37,3 +34,6 @@ def get():
                 value = line.split('=')[1].strip()
         return [row(_('Ubuntu version:'), value, D+'other_icons/ubuntu.png' )]
     except: traceback.print_exc(file=sys.stderr)
+
+def get():
+    return [__ubuntu]

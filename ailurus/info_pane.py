@@ -25,90 +25,71 @@ from lib import *
 from libu import *
 
 class InfoPane(gtk.VBox):
-    def __init__(self):
+    def __tree_pixbuf(self, column, cell, model, iter):
+        pixbuf = model.get_value(iter, 0)
+        cell.set_property('pixbuf', pixbuf)
+    
+    def __tree_text(self, column, cell, model, iter):
+        text = model.get_value(iter, 1)
+        cell.set_property('text', text)
+    
+    def __tree_value(self, column, cell, model, iter):
+        text = model.get_value(iter, 2)
+        cell.set_property('text', text)
+
+    def __init__(self, main_view, tuples):
         gtk.VBox.__init__(self)
-        self.left_box = gtk.VBox(False, 5)
-        self.middle_box = gtk.VBox(False, 5)
-        self.right_box = gtk.VBox(False, 5)
-        hbox = gtk.HBox(False, 10)
-        hbox.pack_start(self.left_box, False)
-        hbox.pack_start(self.middle_box, False)
-        hbox.pack_start(self.right_box)
-        hbox_scroll = gtk.ScrolledWindow()
-        hbox_scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        hbox_scroll.add_with_viewport(hbox)
-        self.pack_start(hbox_scroll)
-    def add_row(self, text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-        assert isinstance(text, (str,unicode) )
-        assert isinstance(value, (str,unicode) )
-        assert isinstance(icon, str)
-        assert tooltip==None or isinstance(tooltip, (str,unicode) )
+        
+        self.treestore = gtk.TreeStore(gtk.gdk.Pixbuf, str, str)
+        self.treeview = treeview = gtk.TreeView(self.treestore)
+        column = gtk.TreeViewColumn()
+        treeview.append_column(column)
+        treeview.set_headers_visible(False)
+        pixbuf_render = gtk.CellRendererPixbuf()
+        text_render = gtk.CellRendererText()
+        value_render = gtk.CellRendererText()
+        column.pack_start(pixbuf_render, False)
+        column.set_cell_data_func(pixbuf_render, self.__tree_pixbuf)
+        column.pack_start(text_render, False)
+        column.set_cell_data_func(text_render, self.__tree_text)
+        column.pack_start(value_render, False)
+        column.set_cell_data_func(value_render, self.__tree_value)
+        
+        scrollwindow = gtk.ScrolledWindow ()
+        scrollwindow.add (treeview)
+        scrollwindow.set_policy (gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scrollwindow.set_shadow_type (gtk.SHADOW_IN)
+        
+        self.pack_start(scrollwindow)
+        
+        self.tuples = tuples
+        self.function2trees = {}
+        
+        for title, icon, functions in self.tuples:
+            pixbuf = get_pixbuf(icon, 24, 24)
+            parent = self.treestore.append(None, [pixbuf, title, None])
+            self.__build_subtree(parent, functions)
 
-        pixbuf = get_pixbuf(icon, 24, 24)
-        image = gtk.Image()
-        image.set_from_pixbuf(pixbuf)
-        if tooltip: image.set_tooltip_text(tooltip)
-        self.left_box.pack_start(image)
-        
-        label = gtk.Label(text)
-        if tooltip: label.set_tooltip_text(tooltip)
-        self.middle_box.pack_start( left_align(label) )
-        
-        label2 = gtk.Label(value)
-        label2.set_selectable(True)
-        if tooltip: label2.set_tooltip_text(tooltip)
-        self.right_box.pack_start( left_align(label2))
-        
-class InfoPane2(gtk.VBox):
-    def __init__(self):
-        gtk.VBox.__init__(self)
-        self.table = table = gtk.Table()
-        self.table_pos = 0
-        table.set_col_spacings(10)
-        table.set_border_width(10)
-        scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        scroll.add_with_viewport(table)
-        self.pack_start(scroll)
-    def add_row(self, text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-        assert isinstance(text, (str,unicode) )
-        assert isinstance(value, (str,unicode) )
-        assert isinstance(icon, str)
-        assert tooltip==None or isinstance(tooltip, (str,unicode) )
-        
-        pos = self.table_pos
-        pixbuf = get_pixbuf(icon, 32, 32)
-        image = gtk.Image()
-        image.set_from_pixbuf(pixbuf)
-        if tooltip: image.set_tooltip_text(tooltip)
-        self.table.attach(image, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL)
-        label = gtk.Label(text)
-        if tooltip: label.set_tooltip_text(tooltip)
-        align = gtk.Alignment(0,0.5)
-        align.add(label)
-        self.table.attach(align, 1, 2, pos, pos+1, gtk.FILL, gtk.FILL)
-        label2 = gtk.Entry()
-        gray_bg(label2)
-        if tooltip: label2.set_tooltip_text(tooltip)
-        label2.set_text(value)
-        label2.set_editable(False)
-        self.table.attach(label2, 2, 3, pos, pos+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        self.table_pos += 1
+        self.treeview.expand_all()
 
-class HardwareInfoPane(InfoPane):
-    name = _('Hardware Information')
-    def __init__(self, main_view, rows):
-        InfoPane.__init__(self)
-        for row in rows:
-            assert isinstance(row, tuple)
-            assert len(row)==4
-            self.add_row(*row)
-
-class LinuxInfoPane(InfoPane):
-    name = _('Linux Information')
-    def __init__(self, main_view, rows):
-        InfoPane.__init__(self)
-        for row in rows:
-            assert isinstance(row, tuple)
-            assert len(row)==4
-            self.add_row(*row)
+        import gobject
+        gobject.timeout_add(5000, self.refresh)
+    
+    def __build_subtree(self, tree, functions):
+        for function in functions:
+            rows = function()
+            trees = self.function2trees[function] = []
+            for row in rows:
+                pixbuf = get_pixbuf(row[2], 24, 24)
+                t = self.treestore.append(tree, [pixbuf, row[0], row[1]])
+                trees.append(t)
+        
+    def refresh(self):
+        for function in self.function2trees.keys():
+            rows = function()
+            index = 0
+            for tree in self.function2trees[function]:
+                row = rows[index]
+                self.treestore.set_value(tree, 2, row[1])
+                index += 1
+        return True

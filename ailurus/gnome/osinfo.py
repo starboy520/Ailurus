@@ -24,10 +24,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-    return (text, value, icon, tooltip)
-
-def get():
+def __gnome():
     import os, re
     ret = []
     
@@ -50,3 +47,6 @@ def get():
     except: traceback.print_exc(file=sys.stderr)
 
     return ret
+
+def get():
+    return [__gnome]

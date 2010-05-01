@@ -26,6 +26,9 @@ D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
+    return (text, value, icon, tooltip)
+
 class I:
     this_is_an_installer = True
     
