@@ -87,10 +87,11 @@ class InfoPane(gtk.VBox):
         
     def refresh(self):
         for function in self.function2trees.keys():
-            rows = function()
-            index = 0
-            for tree in self.function2trees[function]:
-                row = rows[index]
-                self.treestore.set_value(tree, 2, row[1])
-                index += 1
+            if hasattr(function, 'please_refresh_me'):
+                rows = function()
+                index = 0
+                for tree in self.function2trees[function]:
+                    row = rows[index]
+                    self.treestore.set_value(tree, 2, row[1])
+                    index += 1
         return True
