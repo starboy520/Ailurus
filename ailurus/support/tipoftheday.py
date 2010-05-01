@@ -62,7 +62,7 @@ class TipOfTheDay(gtk.Dialog):
         scroll.add(textview)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
-        dialog = gtk.Dialog( _('tips'), None, 
+        dialog = gtk.Dialog( _('All Linux skills'), None, 
                     gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
                     buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
         dialog.set_border_width(10)
