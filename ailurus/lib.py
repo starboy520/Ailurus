@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,6 +26,9 @@ AILURUS_RELEASE_DATE = '2010-04-25'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
+
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
+    return (text, value, icon, tooltip)
 
 class I:
     this_is_an_installer = True
@@ -391,7 +395,7 @@ def spawn_as_root(command):
 def drop_priviledge():
     import dbus
     bus = dbus.SystemBus()
-    obj = dbus.get_object('cn.ailurus', '/')
+    obj = bus.get_object('cn.ailurus', '/')
     obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
@@ -1398,8 +1402,8 @@ def show_about_dialog():
     about.set_logo(gtk.gdk.pixbuf_new_from_file(D+'suyun_icons/logo.png'))
     about.set_name('Ailurus')
     about.set_version(AILURUS_VERSION)
-    about.set_website_label( _('Ailurus blog')+' http://ailurus.cn/' )
-    about.set_website('http://ailurus.cn/')
+    about.set_website_label( _('Project homepage') )
+    about.set_website('http://ailurus.googlecode.com/')
     about.set_authors( [
           _('Developers:'),
           'Homer Xing <homer.xing@gmail.com>', 
@@ -1416,7 +1420,8 @@ def show_about_dialog():
           'M. Umut Pulat    http://12m3.deviantart.com/', 
           'Andrea Soragna   http://sora-meliae.deviantart.com/',
           'Paul Davey       http://mattahan.deviantart.com/',] )
-    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") )
+    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") + '\n'
+                         + _(u"Copyright © 2009-2010, Ailurus Developers Team") )
     about.set_wrap_license(False)
     about.set_license(
 '''
@@ -1494,7 +1499,6 @@ xbmc.png is copied from XBMC project. It is released under the GPL license. Its 
 All rights of other images which are not mensioned above are preserves by their authors.
 
 All rights of the applications installed by Ailurus are preserved by their authors.''')
-    about.vbox.pack_start( gtk.Label( _('Welcome to leave response in blog~') ) , False, False )
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
     about.run()
@@ -1688,7 +1692,7 @@ AL = _('Artistic License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
-atexit.register(drop_priviledge, secret_key) 
+atexit.register(drop_priviledge) 
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
@@ -1700,7 +1704,8 @@ except:
         import traceback
         traceback.print_exc()
         
-import os 
-secret_key = os.urandom(64)
 
+
+import random
+secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 

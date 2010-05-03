@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,10 +25,8 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-    return (text, value, icon, tooltip)
-
 def __host_name():
+    __host_name.please_refresh_me = True
     try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
     except: traceback.print_exc(file=sys.stderr)
     return []
@@ -81,6 +80,7 @@ def __pygtk():
      except: traceback.print_exc(file = sys.stderr)
     
 def __uptime():
+    __uptime.please_refresh_me = True
     try:
         with open('/proc/uptime') as f:
             string = f.read().split('.')[0]
@@ -148,8 +148,8 @@ def __firefox():
     return []
 
 def get():
-    return ( __host_name() + __user() + __uptime() + __kernel() + __xorg() +
-             __opengl() + __gcc() + __java() + __python() + __gtk() + __pygtk() +  __firefox() )
+    return [ __host_name, __user, __uptime, __kernel, __xorg,
+             __opengl, __gcc, __java, __python, __gtk, __pygtk,  __firefox ]
 
 if __name__ == '__main__':
     print get()

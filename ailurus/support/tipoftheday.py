@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +62,7 @@ class TipOfTheDay(gtk.Dialog):
         scroll.add(textview)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
-        dialog = gtk.Dialog( _('tips'), None, 
+        dialog = gtk.Dialog( _('All Linux skills'), None, 
                     gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
                     buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
         dialog.set_border_width(10)

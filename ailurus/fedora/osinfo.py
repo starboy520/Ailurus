@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,10 +25,7 @@ import traceback
 import sys, os
 from lib import *
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
-    return (text, value, icon, tooltip)
-
-def get():
+def __fedora_version():
     import sys, traceback
     try: 
         with open('/etc/fedora-release') as f:
@@ -36,3 +34,6 @@ def get():
     except: 
         traceback.print_exc(file=sys.stderr)
         return []
+
+def get():
+    return [__fedora_version]

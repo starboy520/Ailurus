@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -249,8 +250,7 @@ class MainView:
 
     def add_pane_buttons_in_toolbar(self):
         List = [
-                ('HardwareInfoPane', D+'sora_icons/m_hardware.png', _('Hardware\nInformation'), ),
-                ('LinuxInfoPane', D+'sora_icons/m_linux.png', _('Linux\nInformation'), ),
+                ('InfoPane', D+'sora_icons/m_hardware.png', _('Information'), ),
                 ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
                 ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
                 ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
@@ -273,7 +273,7 @@ class MainView:
             self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
 
     def get_item_icon_size(self):
-        return int(self.last_x / 20)
+        return min( int(self.last_x / 20), 48)
 
     def __refresh_toolbar(self):
         icon_size = self.get_item_icon_size()
@@ -474,13 +474,11 @@ if options.clean_up or options.all:
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
     hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-    from info_pane import HardwareInfoPane
-    pane = HardwareInfoPane(main_view, hwinfo)
-    main_view.register(pane)
-
     linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
-    from info_pane import LinuxInfoPane
-    pane = LinuxInfoPane(main_view, linuxinfo)
+    from info_pane import InfoPane
+    pane = InfoPane(main_view, 
+                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
+                    [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
     main_view.register(pane)
 
 if options.install_software or options.all:

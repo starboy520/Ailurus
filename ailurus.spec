@@ -24,15 +24,11 @@ Ailurus is an application which makes Linux easier to use.
 
 Features:
 * Help users learn some Linux skills
-* Install/remove some nice applications
-* Enable/disable some third party repositories
-* Display information about BIOS, motherboard, CPU and battery
-* Show/Hide Computer, Home folder, Trash icon and Network icon on desktop
-* Configure Nautilus thumbnail cache
-* Configure Nautilus context menu
-* Configure Window behavior
-* Configure GNOME auto-start applications
-* Show/Hide GNOME splash screen
+* Install some nice applications
+* Display basic hardware information
+* Clean APT/YUM cache
+* Backup and recover APT/YUM status
+* Change GNOME settings 
 
 %prep
 %setup -q -n %{name}-%{unmangled_version}

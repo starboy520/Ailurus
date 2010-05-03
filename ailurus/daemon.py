@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -33,7 +34,7 @@ class CommandFailError(dbus.DBusException):
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='ssb', 
+                                          in_signature='sssb', 
                                           out_signature='', 
                                           sender_keyword='sender')
     def run(self, command, env_string, secret_key, ignore_error, sender=None):
@@ -56,7 +57,7 @@ class AilurusFulgens(dbus.service.Object):
             raise CommandFailError(command, task.returncode)
 
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='ss', 
+                                          in_signature='sss', 
                                           out_signature='i', 
                                           sender_keyword='sender')
     def spawn(self, command, env_string, secret_key, sender=None):
@@ -141,7 +142,7 @@ class AilurusFulgens(dbus.service.Object):
             Dict[k] = v
         return Dict
     
-    @dbus.server.method('cn.ailurus.Interface', 
+    @dbus.service.method('cn.ailurus.Interface', 
                                     in_signature='s',
                                     out_signature='') 
     def drop_priviledge(self, secret_key):
