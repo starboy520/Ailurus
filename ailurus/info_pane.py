@@ -37,34 +37,8 @@ class InfoPane(gtk.VBox):
         text = model.get_value(iter, 2)
         cell.set_property('text', text)
 
-    def print_all_information(self):
-        file_name = '/tmp/information'
-        f = open(file_name, 'w')
-        
-        root = self.treestore.get_iter_first()
-        while root:
-            value1 = self.treestore.get_value(root, 1)
-            print >>f, value1
-            
-            child = self.treestore.iter_children(root)
-            while child:
-                value1 = self.treestore.get_value(child, 1)
-                value2 = self.treestore.get_value(child, 2)
-                print >>f, '\t', value1
-                print >>f, '\t\t', value2
-                child = self.treestore.iter_next(child)
-                
-            root = self.treestore.iter_next(root)
-
-        f.close()
-        import subprocess
-        subprocess.Popen('xdg-open ' + file_name, shell=True)
-
     def __init__(self, main_view, tuples):
-        gtk.VBox.__init__(self, False, 10)
-        
-        button = gtk.Button(_('Print all information'))
-        button.connect('clicked', lambda w: self.print_all_information())
+        gtk.VBox.__init__(self)
         
         self.treestore = gtk.TreeStore(gtk.gdk.Pixbuf, str, str)
         self.treeview = treeview = gtk.TreeView(self.treestore)
@@ -86,7 +60,6 @@ class InfoPane(gtk.VBox):
         scrollwindow.set_policy (gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type (gtk.SHADOW_IN)
         
-        self.pack_start(button, False)
         self.pack_start(scrollwindow)
         
         self.tuples = tuples
@@ -113,11 +86,10 @@ class InfoPane(gtk.VBox):
         
     def refresh(self):
         for function in self.function2trees.keys():
-            if hasattr(function, 'please_refresh_me'):
-                rows = function()
-                index = 0
-                for tree in self.function2trees[function]:
-                    row = rows[index]
-                    self.treestore.set_value(tree, 2, row[1])
-                    index += 1
+            rows = function()
+            index = 0
+            for tree in self.function2trees[function]:
+                row = rows[index]
+                self.treestore.set_value(tree, 2, row[1])
+                index += 1
         return True

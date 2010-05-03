@@ -395,36 +395,36 @@ class Setting(gtk.VBox):
         self.category = category
 
 class FirefoxConfig(gtk.CheckButton):
-    def set_firefox(self, w):
-        self.f_list = []
-        for i in self.line:
-            if i not in self.f_list:
-                self.f_list.append(i)
-        f = open('/home/velly/.config/ailurus/firefox_user_setting')
-        v = f.readlines()
-	f.close()
-        p = open(self.path + 'firefox_user_setting', 'w+')
-        for i in self.f_list:
-            if v[i-1][:1] == '/':
-                v[i-1] = v[i-1][2:]
-            else:
-                v[i-1] = '//' + v[i-1]
-        p.writelines(v)
-	p.close()
-	run('cp ' + self.path + 'firefox_user_setting ~/.config/ailurus/')
-    
+    def __toggled(self, w):
+        pass
+        
     def check_active(self):
-        with open(self.path + 'firefox_user_setting') as f:
-            v = f.readlines()
-            for i in self.line:
-                if v[i-1][:1] == '/':
-                    return False
-            return True
+        import os
+        if not os.path.isfile(self.path + 'user.js'):
+            return False
+        else :
+            with open(self.path + 'user.js') as f:
+                v = f.readlines()
+                for i in v:
+                    if i == self.config_item:
+                        return True
+                return False
 
-    def __init__(self, text, line, tooltip = None):
+    def __init__(self, container, config_item, 
+             plain_text, tooltip=None, ):
+        import os
+        self.path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
+        print self.path
         gtk.CheckButton.__init__(self)
-        self.path = '/' + FirefoxExtensions.get_extensions_path()[1:-11] + '/'
-	self.line = line
-        self.set_label(text)
+        assert isinstance(container, gtk.Container)
+        self.__container = container
+        assert isinstance(config_item, str)
+        self.config_item = config_item
+        assert isinstance(plain_text, (str,unicode))
+        self.plain_text = plain_text
+        self.label = gtk.Label(plain_text)
+        self.add(self.label)
+        self.tooltip = tooltip
         self.set_active(self.check_active())
-        self.connect('toggled', self.set_firefox)
+        self.connect("query-tooltip", lambda *w: True)
+        self.connect('toggled', self.__toggled)

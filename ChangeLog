@@ -1,10 +1,7 @@
-2010-05-01 Homer Xing <homer.xing@gmail.com>
+2010-05-03 MA Yue <velly.empire@gmail.com>
 
-    * Improve the efficiency of automatically updating "Information pane".
-      Only refresh necessary items.
-    * Add a feature to print all information.
-    * Change "GNOME locale" icon.
-
+    * Add Firefox Setting
+    
 2010-04-30 CHEN Yangyang <skabyy@gmail.com>
 
     * Merge the "Hardware information pane" and the "Linux information pane"

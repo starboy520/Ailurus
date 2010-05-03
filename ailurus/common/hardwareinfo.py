@@ -117,7 +117,6 @@ def __cpu():
     return ret
 
 def __cpu_temp():
-    __cpu_temp.please_refresh_me = True
     try:
         import glob
         pathlist = glob.glob('/proc/acpi/thermal_zone/*')
@@ -166,7 +165,6 @@ def __pci():
     return ret
 
 def __battery():
-    __battery.please_refresh_me = True
     ret = []
     try:
         with open('/proc/acpi/battery/BAT0/state') as f:
