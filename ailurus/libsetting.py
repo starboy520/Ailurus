@@ -412,7 +412,6 @@ class FirefoxConfig(gtk.CheckButton):
              plain_text, tooltip=None, ):
         import os
         self.path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
-        print self.path
         gtk.CheckButton.__init__(self)
         assert isinstance(container, gtk.Container)
         self.__container = container
