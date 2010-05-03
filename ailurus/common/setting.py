@@ -172,8 +172,7 @@ def __change_hostname():
 
 class FirefoxConfig_Box(gtk.VBox):
     def __get_config_item(self):
-        return [
-                
+        return [                
                 ['user_pref("content.max.tokenizing.time", true);\n'
                  'user_pref("content.notify.ontimer", true);\n'
                  'user_pref("network.http.pipelining.firstrequest", true);\n'
@@ -197,16 +196,11 @@ class FirefoxConfig_Box(gtk.VBox):
                  'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
                  'user_pref("ui.submenuDelay", 0);\n',
                  _('Speed up Firefox'),],
-                 
-                 ['user_pref("browser.urlbar.autoFill", true);\n', _('Autofill in Urlbar'),],
-                 
+                 ['user_pref("browser.urlbar.autoFill", true);\n', _('Autofill in Urlbar'),],                 
                  ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
-                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k'),],
-                  
-                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when the program is minimized'),],
-                 
-                 ['user_pref("network.prefetch-next", false);\n', _('Disable link prefetching'), ],
-                 
+                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k'),],                  
+                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when the program is minimized'),],                 
+                 ['user_pref("network.prefetch-next", false);\n', _('Disable link prefetching'), ],                 
                  ['user_pref("security.dialog_enable_delay", 0);\n', _('Disable the delay of install extensions'), ],
 
                 ]
@@ -259,7 +253,9 @@ def __firefox_config_panel():
     else:
         hbox = gtk.HBox()
         label = gtk.Label()
-        label.set_text('Ailurus cannot find your personal firefox setting file. \n')
+        label.set_text(_('Sorry! Ailurus cannot find your personal firefox setting file. \n'
+                       'Please make sure your Firefox work fine.\n'
+                       'If there is a buy, please tell us. Thanks!'))
         hbox.pack_start(label, False, False)
         return Setting(hbox, _('Firefox Advance Setting'), ['firefox'])
 

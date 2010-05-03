@@ -395,9 +395,7 @@ class Setting(gtk.VBox):
         self.category = category
 
 class FirefoxConfig(gtk.CheckButton):
-    def __toggled(self, w):
-        pass
-        
+          
     def check_active(self):
         import os
         if not os.path.isfile(self.path + 'user.js'):
@@ -427,4 +425,3 @@ class FirefoxConfig(gtk.CheckButton):
         self.tooltip = tooltip
         self.set_active(self.check_active())
         self.connect("query-tooltip", lambda *w: True)
-        self.connect('toggled', self.__toggled)
