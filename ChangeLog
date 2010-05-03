@@ -1,3 +1,7 @@
+2010-05-03 Haofu Han <gtxx3600@gmail.com>
+
+    * Add CPU L1&L2 Cache Information in "Information pane"
+
 2010-05-01 HUANG Wei <wei.kukey@gmail.com>
 
     * Add web page url: Upgrade Fedora using an application called "PreUpgrade"
