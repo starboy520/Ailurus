@@ -219,8 +219,8 @@ class FirefoxConfig_Box(gtk.VBox):
         btable = gtk.Table()
         btable.set_col_spacings(10)
         label = gtk.Label()
-        label.set_text(_('Ailurus can help you tweak Firefox.  '
-                         'Before setting, you should make sure your Firefox closed '))
+        label.set_text(_('Ailurus can help you setting the Firefox.  '
+                         'Before tweak, you should make sure your Firefox closed.'))
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1
@@ -253,9 +253,8 @@ def __firefox_config_panel():
     else:
         hbox = gtk.HBox()
         label = gtk.Label()
-        label.set_text(_('Sorry! Ailurus cannot find your personal firefox setting file. \n'
-                       'Please make sure your Firefox work fine.\n'
-                       'If there is a buy, please tell us. Thanks!'))
+        label.set_text(_('Ailurus cannot find Firefox Setting File. \n'
+                         'Please make sure Firefox have installed in your computer.\n'))
         hbox.pack_start(label, False, False)
         return Setting(hbox, _('Firefox Advance Setting'), ['firefox'])
 

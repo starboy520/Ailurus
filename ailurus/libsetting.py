@@ -402,10 +402,12 @@ class FirefoxConfig(gtk.CheckButton):
             return False
         else :
             with open(self.path + 'user.js') as f:
+                p = self.config_item.split('\n')
                 v = f.readlines()
-                for i in v:
-                    if i == self.config_item:
-                        return True
+                for s in p:
+                    for i in v:
+                        if i[:-1] == s:
+                            return True
                 return False
 
     def __init__(self, container, config_item, 
