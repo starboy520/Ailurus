@@ -238,7 +238,7 @@ class FirefoxConfig_Box(gtk.VBox):
                 install_package.append(button.config_item)
         import os
         path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
-        if not os.path.isfile(path + 'user.js'):
+        if not os.path.isfile(path + 'user.js.bak'):
             run('cp ' + path + 'prefs.js ' + path + 'prefs.js.bak')
         run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
         f = open(path + 'user.js', 'w+')
