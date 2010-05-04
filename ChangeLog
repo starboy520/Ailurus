@@ -1,7 +1,8 @@
 2010-05-03 MA Yue <velly.empire@gmail.com>
 
     * Add Firefox Setting
-    
+    * Fix the bug of 'enable/disable sudo not work'
+
 2010-04-30 CHEN Yangyang <skabyy@gmail.com>
 
     * Merge the "Hardware information pane" and the "Linux information pane"

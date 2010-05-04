@@ -303,7 +303,7 @@ class Enable_Sudo(I):
     def installed(self):
         return False
     def install(self):
-        run_as_root_in_terminal(D+'../support/enable_sudo.py')
+        run_as_root_in_terminal(D+'../support/enable_sudo')
     def remove(self):
         pass
 
@@ -312,7 +312,7 @@ class Disable_Sudo(I):
     def installed(self):
         return False
     def install(self):
-        run_as_root_in_terminal(D+'../support/disable_sudo.py')
+        run_as_root_in_terminal(D+'../support/disable_sudo')
     def remove(self):
         pass
 
