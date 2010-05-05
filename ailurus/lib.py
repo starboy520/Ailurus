@@ -461,6 +461,7 @@ def notify(title, content):
         import pynotify, os
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
+        n.set_timeout(20000)
         n.show()
     except:
         import sys, traceback
