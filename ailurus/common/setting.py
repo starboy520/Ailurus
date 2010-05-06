@@ -171,7 +171,7 @@ def __change_hostname():
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
 
-class FirefoxConfig_Box(gtk.VBox):
+class Configure_Firefox(gtk.VBox):
     def __get_config_item(self):
         return [                
                 ['user_pref("content.max.tokenizing.time", true);\n'
@@ -249,7 +249,7 @@ class FirefoxConfig_Box(gtk.VBox):
         
 def __firefox_config_panel():
     if FirefoxExtensions.get_extensions_path()!='':
-        return Setting(FirefoxConfig_Box(), _('Firefox Advance Setting'),
+        return Setting(Configure_Firefox(), _('Firefox Advance Setting'),
                    ['firefox'])
     else:
         hbox = gtk.HBox()
