@@ -40,11 +40,14 @@ class CleanUpPane(gtk.VBox):
         elif Config.is_Fedora():
             self.pack_start(self.clean_rpm_cache_button(), False)
 
-    def get_folder_size(self, folder_path):
+    def get_folder_size(self, folder_path, num=False):
         is_string_not_empty(folder_path)
-        size = get_output('du -bs ' + folder_path)
-        size = int(size.split('\t', 1)[0]) - 4096 # The size of an empty folder is 4096.
-        return derive_size(size)        
+        size = get_output('du -bsS ' + folder_path)
+        fsize = os.stat(folder_path).st_size # Get folder size
+        size = int(size.split('\t', 1)[0]) - fsize
+        if num:
+            return size
+        return derive_size(size)
 
     def get_button_text(self, folder_name, folder_path):
         try:
@@ -59,6 +62,8 @@ class CleanUpPane(gtk.VBox):
         label = gtk.Label(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button = gtk.Button()
         button.add(label)
+        if self.get_folder_size('/var/cache/apt/archives') == 0:
+            button.set_sensitive(False)
         def __clean_up(button, label):
             try: run_as_root('apt-get clean')
             except AccessDeniedError: pass
