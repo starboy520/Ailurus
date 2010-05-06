@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -111,15 +112,15 @@ def __restart_network():
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
  
-def __change_hostname(): 
-#   I have to use the class, to resolve problem of these codes:
-#        def __value_changed(button):
-#            button.set_sensitive(True)
+def __change_hostname():
+# I have to use the class, to resolve problem of these codes:
+# def __value_changed(button):
+# button.set_sensitive(True)
 #
-#        def __button_clicked(entry):
-#            new_host_name = entry.get_text()
-#            button.set_sensitive(False)
-#   error message is 'free variable referenced before assignment'. I don't know the reason.
+# def __button_clicked(entry):
+# new_host_name = entry.get_text()
+# button.set_sensitive(False)
+# error message is 'free variable referenced before assignment'. I don't know the reason.
     class change_host_name(gtk.HBox):
         def __value_changed(self, *w):
             self.button.set_sensitive(True)
@@ -142,14 +143,14 @@ def __change_hostname():
                         content = f.read()
                         content = content.replace(self.old_host_name, new_host_name)
                     with open('/etc/sysconfig/network', 'w') as f:
-                        f.write(content)       
+                        f.write(content)
             else:
                 dialog = gtk.Dialog('Feature is not implemented', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
                                      buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
                 dialog.vbox.pack_start(gtk.Label('This feature has not been implement for your Linux distribution'))
                 dialog.vbox.show_all()
                 dialog.run()
-                dialog.destroy()      
+                dialog.destroy()
                             
             self.button.set_sensitive(False)
         
@@ -170,9 +171,9 @@ def __change_hostname():
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
 
-class FirefoxConfig_Box(gtk.VBox):
-    def __get_config_item(self):
-        return [                
+class Configure_Firefox(gtk.VBox):
+    def items(self):
+        return [
                 ['user_pref("content.max.tokenizing.time", true);\n'
                  'user_pref("content.notify.ontimer", true);\n'
                  'user_pref("network.http.pipelining.firstrequest", true);\n'
@@ -195,16 +196,21 @@ class FirefoxConfig_Box(gtk.VBox):
                  'user_pref("network.http.max-connections-per-server", 32);\n'
                  'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
                  'user_pref("ui.submenuDelay", 0);\n',
-                 _('Speed up Firefox'),],
-                 ['user_pref("browser.urlbar.autoFill", true);\n', _('Autofill in Urlbar'),],                 
+                 _('Speed up'),],
+                 
+                 ['user_pref("browser.urlbar.autoFill", true);\n', _('URL bar auto-completion'),],
+                 
                  ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
-                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k'),],                  
-                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when the program is minimized'),],                 
-                 ['user_pref("network.prefetch-next", false);\n', _('Disable link prefetching'), ],                 
-                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Disable the delay of install extensions'), ],
+                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k protocol'),],
+                 
+                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when minimized'),],
+                 
+                 ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
+                 
+                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
 
                 ]
-        
+
     def __init__(self):
         gtk.VBox.__init__(self, False, 5)
         self.changed = 0
@@ -214,13 +220,12 @@ class FirefoxConfig_Box(gtk.VBox):
         align_button_apply = gtk.HBox(False, 0)
         align_button_apply.pack_end(button_apply, False)
         self.checkbuttons = []
-        for msg in self.__get_config_item():
-            self.checkbuttons.append( FirefoxConfig(self, *msg) )        
+        for item in self.items():
+            self.checkbuttons.append(FirefoxConfig(self, *item))
         btable = gtk.Table()
         btable.set_col_spacings(10)
         label = gtk.Label()
-        label.set_text(_('Ailurus can help you setting the Firefox.  '
-                         'Before tweak, you should make sure your Firefox closed.'))
+        label.set_text(_('Before configuring Firefox, please close all Firefox windows.'))
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1
@@ -237,33 +242,21 @@ class FirefoxConfig_Box(gtk.VBox):
             if button.get_active():
                 install_package.append(button.config_item)
         import os
-        path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
-        if not os.path.isfile(path + 'user.js.bak'):
-            run('cp ' + path + 'prefs.js ' + path + 'prefs.js.bak')
-        run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
-        f = open(path + 'user.js', 'w+')
-        f.writelines(install_package)
-        f.close()
-        notify(_('Setting Success!'), _('Please restart Firefox to make setting effect!'))
+        preference_path = FirefoxExtensions.get_preference_path()
+        os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
+        with open(preference_path + 'user.js', 'w+') as f:
+            f.writelines(install_package)
         
-def __firefox_config_panel():
-    if FirefoxExtensions.get_extensions_path()!='':
-        return Setting(FirefoxConfig_Box(), _('Firefox Advance Setting'),
-                   ['firefox'])
-    else:
-        hbox = gtk.HBox()
-        label = gtk.Label()
-        label.set_text(_('Ailurus cannot find Firefox Setting File. \n'
-                         'Please make sure Firefox have installed in your computer.\n'))
-        hbox.pack_start(label, False, False)
-        return Setting(hbox, _('Firefox Advance Setting'), ['firefox'])
-
+def __configure_firefox():
+    FirefoxExtensions.get_extensions_path()
+    return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+    
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
             __change_hostname,
-	        __firefox_config_panel,
+            __configure_firefox,
             __restart_network ]:
         try:
             ret.append(f())
@@ -271,3 +264,5 @@ def get():
             import traceback
             traceback.print_exc()
     return ret
+
+

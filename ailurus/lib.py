@@ -1016,7 +1016,7 @@ def report_bug(*w):
 
 class FirefoxExtensions:
     @classmethod
-    def get_extensions_path(cls):
+    def get_preference_path(cls):
         import os
         path = os.path.expandvars('$HOME/.mozilla/firefox')
         assert os.path.exists(path), path
@@ -1035,8 +1035,12 @@ class FirefoxExtensions:
                         break
             else:
                 raise Exception('default profile not found')
-        return '%s/%s/extensions'%(path,default_profile_path)
-    
+        return '%s/%s/'%(path,default_profile_path)
+        
+    @classmethod
+    def get_extensions_path(cls):
+        return cls.get_preference_path() + '/extensions/'
+
     @classmethod
     def analysis_method1(cls, doc):
         import re
@@ -1412,6 +1416,8 @@ def show_about_dialog():
           '',
           _('Contributors:'),
           'HUANG Wei <wei.kukey@gmail.com>',
+          'HAN Haofu <gtxx3600@gmail.com>',
+          'SHANG Yuanchun <idealities@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [

@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -72,7 +73,7 @@ class GConfComboBox(gtk.HBox):
         g.set_string(self.key, value)
 
 class GConfTextEntry(gtk.HBox):
-    def __value_changed(self, *w): 
+    def __value_changed(self, *w):
         self.button.set_sensitive(True)
         
     def __button_clicked(self, *w):
@@ -84,11 +85,11 @@ class GConfTextEntry(gtk.HBox):
     
     def __init__(self, key):
         self.key = key
-        self.entry = gtk.Entry()    
+        self.entry = gtk.Entry()
         import gconf
         g = gconf.client_get_default()
         value = g.get_string(key)
-        if value: self.entry.set_text(value) 
+        if value: self.entry.set_text(value)
         
         self.button = gtk.Button(stock=gtk.STOCK_APPLY)
         self.button.set_sensitive(False)
@@ -116,7 +117,7 @@ class GConfShortcutKeyEntry(gtk.HBox):
         g.set_string('/apps/metacity/keybinding_commands/' + self.number, self.command_entry.get_text())
         g.set_string('/apps/metacity/global_keybindings/run_' + self.number, self.shortcut_entry.get_text())
 
-    def __clear_entry_content(self, *w):        
+    def __clear_entry_content(self, *w):
         self.command_entry.set_text('')
         self.shortcut_entry.set_text('')
         
@@ -162,7 +163,7 @@ class ImageChooser(gtk.Button):
                               ('image/gif', '*.gif'),
                               ('image/x-xpixmap', '*.xpm'),
                               ('image/x-svg', '*.svg'),]:
-            filter.add_mime_type(type)  
+            filter.add_mime_type(type)
             filter.add_pattern(pattern)
         return filter
     
@@ -242,7 +243,7 @@ class GConfFileEntry(gtk.HBox):
         path = self.entry.get_text()
         import os
         if path: chooser.set_current_folder( os.path.dirname(path) )
-        else:     chooser.set_current_folder( os.environ['HOME'] )
+        else: chooser.set_current_folder( os.environ['HOME'] )
         
         chooser.set_select_multiple(False)
 
@@ -365,12 +366,12 @@ import gtk
 class Setting(gtk.VBox):
     categories = [
                   'all',
-                  'desktop', 'window', 'menu', 
-                  'sound', 'icon', 'font', 'session', 
+                  'desktop', 'window', 'menu',
+                  'sound', 'icon', 'font', 'session',
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 'host_name',
-                  'update', 'power', 'shortcut', 'firefox',]
+                  'update', 'power', 'shortcut', 'firefox', ]
     
     def __title(self, text):
         label = gtk.Label()
@@ -382,7 +383,7 @@ class Setting(gtk.VBox):
         assert isinstance(title, (str, unicode) )
         assert isinstance(category, list)
         assert category != []
-        for i in category: 
+        for i in category:
             assert isinstance(i, str)
             assert i in self.categories
 
@@ -395,7 +396,6 @@ class Setting(gtk.VBox):
         self.category = category
 
 class FirefoxConfig(gtk.CheckButton):
-          
     def check_active(self):
         import os
         if not os.path.isfile(self.path + 'user.js'):
@@ -410,10 +410,9 @@ class FirefoxConfig(gtk.CheckButton):
                             return True
                 return False
 
-    def __init__(self, container, config_item, 
+    def __init__(self, container, config_item,
              plain_text, tooltip=None, ):
-        import os
-        self.path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
+        self.path = FirefoxExtensions.get_preference_path()
         gtk.CheckButton.__init__(self)
         assert isinstance(container, gtk.Container)
         self.__container = container

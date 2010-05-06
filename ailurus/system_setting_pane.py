@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -41,27 +42,27 @@ class SystemSettingPane(gtk.VBox):
         self.left_store = left_store = gtk.ListStore(gtk.gdk.Pixbuf, str, str) #pixbuf, text, category
         
         for iconpath, text, category in [
-              (D+'other_icons/s_nautilus.png', 'Nautilus', 'nautilus', ), 
-              (D+'other_icons/s_desktop.png', _('Desktop'), 'desktop', ), 
-              (D+'umut_icons/s_window.png', _('Window effect'), 'window', ), 
-              (D+'umut_icons/s_menu.png', _('Menu'), 'menu', ), 
-              (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ), 
-              (D+'umut_icons/s_font.png', _('Font'), 'font', ), 
-              (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
-              (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
+              (D+'other_icons/s_nautilus.png', 'Nautilus', 'nautilus', ),
+              (D+'other_icons/s_desktop.png', _('Desktop'), 'desktop', ),
+              (D+'umut_icons/s_window.png', _('Window effect'), 'window', ),
+              (D+'umut_icons/s_menu.png', _('Menu'), 'menu', ),
+              (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ),
+              (D+'umut_icons/s_font.png', _('Font'), 'font', ),
+              (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ),
+              (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ),
               (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
-              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 
+              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ),
               (D+'umut_icons/s_power.png', _('Power management'), 'power', ),
               (D+'umut_icons/s_network.png', _('Network'), 'network', ),
               (D+'umut_icons/s_update.png', _('Update'), 'update', ),
               (D+'umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
               (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
-	      (D+'appicons/Speed_Up_Firefox.png', _('Firefox Tweak'), 'firefox', ),
+              (D+'other_icons/s_configure_firefox.png', _('Configure Firefox'), 'firefox', ),
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
                 ]:
             assert category in Setting.categories
             if category in existing_categories:
-                pixbuf = icon(iconpath) 
+                pixbuf = icon(iconpath)
                 left_store.append([pixbuf, text, category])
         
         render_pixbuf = gtk.CellRendererPixbuf()
@@ -124,3 +125,5 @@ class SystemSettingPane(gtk.VBox):
         paned.pack1(left, False, False)
         paned.pack2(right, True, True)
         self.pack_start(paned)
+
+
