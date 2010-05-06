@@ -371,7 +371,7 @@ class Setting(gtk.VBox):
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 'host_name',
-                  'update', 'power', 'shortcut', ]
+                  'update', 'power', 'shortcut', 'firefox', ]
     
     def __title(self, text):
         label = gtk.Label()
@@ -395,4 +395,34 @@ class Setting(gtk.VBox):
         
         self.category = category
 
-    
+class FirefoxConfig(gtk.CheckButton):          
+    def check_active(self):
+        import os
+        if not os.path.isfile(self.path + 'user.js'):
+            return False
+        else :
+            with open(self.path + 'user.js') as f:
+                p = self.config_item.split('\n')
+                v = f.readlines()
+                for s in p:
+                    for i in v:
+                        if i[:-1] == s:
+                            return True
+                return False
+
+    def __init__(self, container, config_item, 
+             plain_text, tooltip=None, ):
+        import os
+        self.path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
+        gtk.CheckButton.__init__(self)
+        assert isinstance(container, gtk.Container)
+        self.__container = container
+        assert isinstance(config_item, str)
+        self.config_item = config_item
+        assert isinstance(plain_text, (str,unicode))
+        self.plain_text = plain_text
+        self.label = gtk.Label(plain_text)
+        self.add(self.label)
+        self.tooltip = tooltip
+        self.set_active(self.check_active())
+        self.connect("query-tooltip", lambda *w: True)

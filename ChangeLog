@@ -1,3 +1,8 @@
+2010-05-03 MA Yue <velly.empire@gmail.com>
+
+    * Add a new page in System Setting pane, in order to configure Firefox
+    * Fix a bug: "enable/disable sudo" does not work
+
 2010-05-01 HUANG Wei <wei.kukey@gmail.com>
 
     * Add web page url: Upgrade Fedora using an application called "PreUpgrade"

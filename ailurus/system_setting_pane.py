@@ -57,6 +57,7 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_update.png', _('Update'), 'update', ),
               (D+'umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
               (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
+              (D+'appicons/Speed_Up_Firefox.png', _('Firefox Tweak'), 'firefox', ),
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
                 ]:
             assert category in Setting.categories

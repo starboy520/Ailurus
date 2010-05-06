@@ -170,12 +170,101 @@ def __change_hostname():
             
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
+
+class FirefoxConfig_Box(gtk.VBox):
+    def __get_config_item(self):
+        return [                
+                ['user_pref("content.max.tokenizing.time", true);\n'
+                 'user_pref("content.notify.ontimer", true);\n'
+                 'user_pref("network.http.pipelining.firstrequest", true);\n'
+                 'user_pref("network.http.pipelining.ssl", true);\n'
+                 'user_pref("network.http.proxy.pipelining", true);\n'
+                 'user_pref("content.max.tokenizing.time", 3000000);\n'
+                 'user_pref("content.maxtextrun", 8191);\n'
+                 'user_pref("content.notify.backoffcount", 200);\n'
+                 'user_pref("content.notify.interval", 100000);\n'
+                 'user_pref("content.notify.threshold", 100000);\n'
+                 'user_pref("content.switch.threshold", 650000);\n'
+                 'user_pref("network.dnsCacheEntries", 256);\n'
+                 'user_pref("network.dnsCacheExpiration", 86400);\n'
+                 'user_pref("network.ftp.idleConnectionTimeout", 60);\n'
+                 'user_pref("network.http.keep-alive.timeout", 30);\n'
+                 'user_pref("network.http.max-persistent-connections-per-proxy", 24);\n'
+                 'user_pref("nglayout.initialpaint.delay", 0);\n'
+                 'user_pref("network.http.pipelining.maxrequests", 8);\n'
+                 'user_pref("network.http.max-connections", 96);\n'
+                 'user_pref("network.http.max-connections-per-server", 32);\n'
+                 'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
+                 'user_pref("ui.submenuDelay", 0);\n',
+                 _('Speed up Firefox'),],
+                 ['user_pref("browser.urlbar.autoFill", true);\n', _('Autofill in Urlbar'),],                 
+                 ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
+                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k'),],                  
+                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when the program is minimized'),],
+                 ['user_pref("network.prefetch-next", false);\n', _('Disable link prefetching'), ],                 
+                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Disable the delay of install extensions'), ],
+
+                ]
+
+    def __init__(self):
+        gtk.VBox.__init__(self, False, 5)
+        self.changed = 0
+        self.button_apply = button_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
+        button_apply.connect('clicked', self.__apply_change)
+        button_apply.set_sensitive(True)
+        align_button_apply = gtk.HBox(False, 0)
+        align_button_apply.pack_end(button_apply, False)
+        self.checkbuttons = []
+        for msg in self.__get_config_item():
+            self.checkbuttons.append( FirefoxConfig(self, *msg) )        
+        btable = gtk.Table()
+        btable.set_col_spacings(10)
+        label = gtk.Label()
+        label.set_text(_('Ailurus can help you setting the Firefox.  '
+                         'Before tweak, you should make sure your Firefox closed.'))
+        btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
+        X = 0
+        Y = 1
+        for button in self.checkbuttons:
+            btable.attach(button, X, X+1, Y, Y+1, gtk.FILL, gtk.FILL)
+            X+=1
+            if X==2: ( X,Y ) = ( 0,Y+1 )
+        btable.attach(align_button_apply, 1, 2, Y+1, Y+2, gtk.FILL, gtk.FILL)
+        self.pack_start(btable, False)
+
+    def __apply_change(self, w):
+        install_package = []
+        for button in self.checkbuttons:
+            if button.get_active():
+                install_package.append(button.config_item)
+        import os
+        path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
+        if not os.path.isfile(path + 'user.js.bak'):
+            run('cp ' + path + 'prefs.js ' + path + 'prefs.js.bak')
+        run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
+        f = open(path + 'user.js', 'w+')
+        f.writelines(install_package)
+        f.close()
+        notify(_('Setting Success!'), _('Please restart Firefox to make setting effect!'))
+        
+def __firefox_config_panel():
+    if FirefoxExtensions.get_extensions_path()!='':
+        return Setting(FirefoxConfig_Box(), _('Firefox Advance Setting'),
+                   ['firefox'])
+    else:
+        hbox = gtk.HBox()
+        label = gtk.Label()
+        label.set_text(_('Ailurus cannot find Firefox Setting File. \n'
+                         'Please make sure Firefox have installed in your computer.\n'))
+        hbox.pack_start(label, False, False)
+        return Setting(hbox, _('Firefox Advance Setting'), ['firefox'])
     
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
             __change_hostname,
+            __firefox_config_panel,
             __restart_network ]:
         try:
             ret.append(f())
