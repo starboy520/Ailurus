@@ -1,3 +1,7 @@
+2010-05-03 Homer Xing <homer.xing@gmail.com>
+
+    * Improve memory information. Display "GB" if memory is more than 1 GB.
+
 2010-05-03 HAN Haofu <gtxx3600@gmail.com>
 
     * Display CPU Level 1 & Level 2 cache information in "Information pane"

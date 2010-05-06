@@ -121,7 +121,7 @@ def __cpu():
                         L2_cache_value = all_l2_cache[0]
                     ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
                     ret.append(row(L2_cache_name, L2_cache_value, D+'umut_icons/i_cpu.png')) 
-                    ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png'), _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.'))
+                    ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png', _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.')))
             
             _64bit = _('No')
             f.seek(0, 0)
@@ -164,7 +164,15 @@ def __mem():
             for line in f:
                 v = line.split(':')
                 if v[0]=='MemTotal':
-                    return [row(_('Total memory:'), v[1].strip(), D+'umut_icons/i_memory.png' )]
+                    string = v[1].strip() # format: YYY KB
+                    value = float(string.split()[0])
+                    if value > 1024*1024:
+                        new_string = '%.1f GB' % (value/1024/1024)
+                    elif value > 1024:
+                        new_string = '%.1f MB' % (value/1024)
+                    else:
+                        new_string = string
+                    return [row(_('Total memory:'), new_string, D+'umut_icons/i_memory.png' )]
     except:
         traceback.print_exc(file=sys.stderr)
         return []
