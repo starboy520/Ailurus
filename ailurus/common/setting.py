@@ -196,13 +196,18 @@ class Configure_Firefox(gtk.VBox):
                  'user_pref("network.http.max-connections-per-server", 32);\n'
                  'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
                  'user_pref("ui.submenuDelay", 0);\n',
-                 _('Speed up Firefox'),],
-                 ['user_pref("browser.urlbar.autoFill", true);\n', _('Autofill in Urlbar'),],                 
+                 _('Speed up'),],
+                 
+                 ['user_pref("browser.urlbar.autoFill", true);\n', _('URL bar auto-completion'),],
+                 
                  ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
-                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k'),],                  
-                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when the program is minimized'),],
-                 ['user_pref("network.prefetch-next", false);\n', _('Disable link prefetching'), ],                 
-                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Disable the delay of install extensions'), ],
+                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k protocol'),],
+                 
+                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when minimized'),],
+                 
+                 ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
+                 
+                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
 
                 ]
 
