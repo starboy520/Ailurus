@@ -40,14 +40,13 @@ class CleanUpPane(gtk.VBox):
         elif Config.is_Fedora():
             self.pack_start(self.clean_rpm_cache_button(), False)
 
-    def get_folder_size(self, folder_path, num=False):
+    def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
         size = get_output('du -bsS ' + folder_path)
-        fsize = os.stat(folder_path).st_size # Get folder size
-        size = int(size.split('\t', 1)[0]) - fsize
-        if num:
-            return size
-        return derive_size(size)
+        fsize = os.stat(folder_path).st_size
+        size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
+        if please_return_integer: return size
+        else: return derive_size(size)
 
     def get_button_text(self, folder_name, folder_path):
         try:
@@ -62,12 +61,12 @@ class CleanUpPane(gtk.VBox):
         label = gtk.Label(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
         button = gtk.Button()
         button.add(label)
-        if self.get_folder_size('/var/cache/apt/archives') == 0:
-            button.set_sensitive(False)
+        button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
             try: run_as_root('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
+            button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo apt-get clean'))
         return button
@@ -76,10 +75,12 @@ class CleanUpPane(gtk.VBox):
         label = gtk.Label(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
         button = gtk.Button()
         button.add(label)
+        button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
             try: run_as_root("yum --enablerepo='*' clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
+            button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
         return button
@@ -88,10 +89,12 @@ class CleanUpPane(gtk.VBox):
         label = gtk.Label(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
         button = gtk.Button()
         button.add(label)
+        button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         def __clean_up(button, label):
             try: run_as_root('rm /var/cache/ailurus/* -rf')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
+            button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
         return button
