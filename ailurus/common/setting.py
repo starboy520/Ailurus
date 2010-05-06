@@ -242,12 +242,10 @@ class Configure_Firefox(gtk.VBox):
             if button.get_active():
                 install_package.append(button.config_item)
         import os
-        path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
-        os.system('cp %s/prefs.js %s/prefs.js.back' % (path, path))
-        f = open(path + 'user.js', 'w+')
-        f.writelines(install_package)
-        f.close()
-        notify(_('Setting Success!'), _('Please restart Firefox to make setting effect!'))
+        preference_path = FirefoxExtensions.get_preference_path()
+        os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
+        with open(preference_path + 'user.js', 'w+') as f:
+            f.writelines(install_package)
         
 def __configure_firefox():
     FirefoxExtensions.get_extensions_path()
