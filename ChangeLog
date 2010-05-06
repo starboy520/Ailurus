@@ -1,3 +1,11 @@
+2010-05-06 QI Chengjie <starboy.qi@gmail.com>
+	* Sorting icons  in system settings section
+	  Create a icon for imagemagick
+	  extract the text dialog and embed it into function for invocation
+	  add "copy url" in the fastest_mirror menu
+	  add the timeout for notify
+      add skills to tips
+
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 
     * Gray buttons if APT cache is empty. 

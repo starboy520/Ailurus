@@ -346,6 +346,20 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             urls.append(row[2]) 
             servers.append(row[3])
         self.__detect_servers_speed(urls, servers)
+        
+    def __callback__copy_selected_repos(self, w, treeview):
+        selection = treeview.get_selection()
+        model, pathlist = selection.get_selected_rows()
+        if pathlist == None or len(pathlist)==0: # select nothing
+            return
+        urls = ''
+        for path in pathlist:
+            iter = model.get_iter(path)
+            url = model.get_value(iter, 2)
+            url += '\n'
+            urls += url 
+        clipboard = gtk.clipboard_get()
+        clipboard.set_text(urls)
 
     def __callback__detect_selected_repos_speed(self, w, treeview):
         selection = treeview.get_selection()
@@ -415,16 +429,21 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
+        copy_repos = image_stock_menuitem(gtk.STOCK_COPY, _('Copy the selected repository urls'))
+        copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
         popupmenu = gtk.Menu()
         popupmenu.append(use_selected)
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
         popupmenu.append(select_all)
+        popupmenu.append(copy_repos)
         popupmenu.append(select_all_repos_in_this_county)
         popupmenu.append(unselect_all)
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
+
+
 
     def __get_candidate_repositories_treeview(self):
         render_country = gtk.CellRendererText()
