@@ -172,7 +172,7 @@ def __change_hostname():
     return Setting(hbox, _('Change host name'), ['host_name'])
 
 class Configure_Firefox(gtk.VBox):
-    def __get_config_item(self):
+    def items(self):
         return [                
                 ['user_pref("content.max.tokenizing.time", true);\n'
                  'user_pref("content.notify.ontimer", true);\n'
@@ -220,13 +220,12 @@ class Configure_Firefox(gtk.VBox):
         align_button_apply = gtk.HBox(False, 0)
         align_button_apply.pack_end(button_apply, False)
         self.checkbuttons = []
-        for msg in self.__get_config_item():
-            self.checkbuttons.append( FirefoxConfig(self, *msg) )        
+        for item in self.items():
+            self.checkbuttons.append( FirefoxConfig(self, *item) )        
         btable = gtk.Table()
         btable.set_col_spacings(10)
         label = gtk.Label()
-        label.set_text(_('Ailurus can help you setting the Firefox.  '
-                         'Before tweak, you should make sure your Firefox closed.'))
+        label.set_text(_('Before configuring Firefox, please close all Firefox windows.'))
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1
@@ -244,32 +243,22 @@ class Configure_Firefox(gtk.VBox):
                 install_package.append(button.config_item)
         import os
         path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
-        if not os.path.isfile(path + 'user.js.bak'):
-            run('cp ' + path + 'prefs.js ' + path + 'prefs.js.bak')
-        run('cp ' + path + 'prefs.js.bak ' + path + 'prefs.js')
+        os.system('cp %s/prefs.js %s/prefs.js.back' % (path, path))
         f = open(path + 'user.js', 'w+')
         f.writelines(install_package)
         f.close()
         notify(_('Setting Success!'), _('Please restart Firefox to make setting effect!'))
         
-def __firefox_config_panel():
-    if FirefoxExtensions.get_extensions_path()!='':
-        return Setting(Configure_Firefox(), _('Firefox Advance Setting'),
-                   ['firefox'])
-    else:
-        hbox = gtk.HBox()
-        label = gtk.Label()
-        label.set_text(_('Ailurus cannot find Firefox Setting File. \n'
-                         'Please make sure Firefox have installed in your computer.\n'))
-        hbox.pack_start(label, False, False)
-        return Setting(hbox, _('Firefox Advance Setting'), ['firefox'])
+def __configure_firefox():
+    FirefoxExtensions.get_extensions_path()
+    return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
     
 def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
             __change_hostname,
-            __firefox_config_panel,
+            __configure_firefox,
             __restart_network ]:
         try:
             ret.append(f())
