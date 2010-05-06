@@ -1,3 +1,22 @@
+2010-05-03 SHANG Yuanchun <idealities@gmail.com>
+
+    * Gray buttons if APT cache is empty. 
+      Gray buttons if Ailurus cache is empty.
+      Make folder statistic more precise. 
+
+2010-05-03 Homer Xing <homer.xing@gmail.com>
+
+    * Improve memory information. Display "GB" if memory is more than 1 GB.
+
+2010-05-03 HAN Haofu <gtxx3600@gmail.com>
+
+    * Display CPU Level 1 & Level 2 cache information in "Information pane"
+
+2010-05-03 MA Yue <velly.empire@gmail.com>
+
+    * Add a new page in System Setting pane, in order to configure Firefox
+    * Fix a bug: "enable/disable sudo" does not work
+
 2010-05-01 HUANG Wei <wei.kukey@gmail.com>
 
     * Add web page url: Upgrade Fedora using an application called "PreUpgrade"
