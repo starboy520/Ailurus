@@ -1018,6 +1018,10 @@ def report_bug(*w):
 class FirefoxExtensions:
     @classmethod
     def get_extensions_path(cls):
+        return cls.get_preference_path() + '/extensions/'
+
+    @classmethod
+    def get_preference_path(cls):
         import os
         path = os.path.expandvars('$HOME/.mozilla/firefox')
         assert os.path.exists(path), path
@@ -1036,8 +1040,8 @@ class FirefoxExtensions:
                         break
             else:
                 raise Exception('default profile not found')
-        return '%s/%s/extensions'%(path,default_profile_path)
-    
+        return '%s/%s/'%(path,default_profile_path)
+        
     @classmethod
     def analysis_method1(cls, doc):
         import re
