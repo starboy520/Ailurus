@@ -43,7 +43,6 @@ class CleanUpPane(gtk.VBox):
     def get_folder_size(self, folder_path):
         is_string_not_empty(folder_path)
         size = get_output('du -bsS ' + folder_path)
-        import os
         fsize = os.stat(folder_path).st_size # Get folder size
         size = int(size.split('\t', 1)[0]) - fsize
         return derive_size(size)
