@@ -221,7 +221,7 @@ class Configure_Firefox(gtk.VBox):
         align_button_apply.pack_end(button_apply, False)
         self.checkbuttons = []
         for item in self.items():
-            self.checkbuttons.append( FirefoxConfig(self, *item) )        
+            self.checkbuttons.append(FirefoxConfig(self, *item))        
         btable = gtk.Table()
         btable.set_col_spacings(10)
         label = gtk.Label()

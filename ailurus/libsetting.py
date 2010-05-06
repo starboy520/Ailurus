@@ -412,8 +412,7 @@ class FirefoxConfig(gtk.CheckButton):
 
     def __init__(self, container, config_item, 
              plain_text, tooltip=None, ):
-        import os
-        self.path = os.path.expanduser('~/.mozilla/firefox/' + FirefoxExtensions.get_extensions_path().split('/')[5] + '/')
+        self.path = FirefoxExtensions.get_preference_path()
         gtk.CheckButton.__init__(self)
         assert isinstance(container, gtk.Container)
         self.__container = container
