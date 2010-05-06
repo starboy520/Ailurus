@@ -88,6 +88,15 @@ def __cpu():
                 if 'model name'==v[0]: core+=1
         multicore = core>1
         core = 0
+  #      def get_cpu_cache_detail():
+        import re
+        all_info=get_output('dmesg|grep CPU')
+        p=re.compile('.*L1 I cache: (\d+\D).*L1 D cache: (\d+\D).*')
+        all_l1_cache=p.findall(all_info)
+        p=re.compile('.*L2 cache: (\d+\D).*')
+        all_l2_cache=p.findall(all_info)
+        
+        
         with open('/proc/cpuinfo') as f:
             for line in f:
                 v = line.split(':')
@@ -98,11 +107,24 @@ def __cpu():
                     else: string = _('CPU name:')
                     ret.append( row(string, v[1].strip().replace('  ',' '), D+'umut_icons/i_cpu.png' ) )
                 elif v[0]=='bogomips':
-                    if multicore: string = _('CPU %s Mips:')%core
-                    else: string = _('CPU Mips:')
+                    if multicore: 
+                        string = _('CPU %s Mips:')%core
+                        l1_string=_('CPU %s L1 Cache:')%core
+                        l1_detail=_('L1 I Cache: %s,L1 D Cache: %s')%all_l1_cache[core-1]
+                        l2_string=_('CPU %s L2 Cache:')%core
+                        l2_detail=_('%s')%all_l2_cache[core-1]
+                    else: 
+                        string = _('CPU Mips:')
+                        l1_string=_('CPU L1 Cache:')
+                        l1_detail=_('L1 I Cache: %s,L1 D Cache: %s')%all_l1_cache[0]
+                        l2_string=_('CPU L2 Cache:')
+                        l2_detail=_('%s')%all_l2_cache[0]
+                    ret.append( row(l1_string, '%s'%l1_detail.strip(), D+'umut_icons/i_cpu.png', 
+                         _('It is a measure for the computation speed. "L1 I Cache" means "Level 1 Instruction Cache";"L1 D Cache" means "Level 1 Data Cache".' ) ) )
+                    ret.append( row(l2_string, '%s'%l2_detail.strip(), D+'umut_icons/i_cpu.png', 
+                         _('It is a measure for the computation speed. "L2 Cache" means "Level 2 Cache".' ) ) )
                     ret.append( row(string, '%s'%v[1].strip(), D+'umut_icons/i_cpu.png', 
                          _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.' ) ) )
-            
             _64bit = _('No')
             f.seek(0, 0)
             for line in f:
