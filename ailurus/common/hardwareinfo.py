@@ -121,7 +121,7 @@ def __cpu():
                         L2_cache_value = all_l2_cache[0]
                     ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
                     ret.append(row(L2_cache_name, L2_cache_value, D+'umut_icons/i_cpu.png')) 
-                    ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png') )
+                    ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png'), _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.'))
             
             _64bit = _('No')
             f.seek(0, 0)
