@@ -63,12 +63,11 @@ class PBC(I):
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
     
-# Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
-#class AutoApt(_apt_install):
-#    'Auto-apt'
-#    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-#    license = GPL
-#    pkgs = 'auto-apt'
+class AutoApt(_apt_install):
+    'Auto-apt'
+    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+    license = GPL
+    pkgs = 'auto-apt'
 
 class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
