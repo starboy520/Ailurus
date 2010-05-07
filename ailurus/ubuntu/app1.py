@@ -60,12 +60,6 @@ class Full_Language_Pack(_apt_install):
             self.__class__.appended = True
             self.__class__.detail += _('Command: ')+'sudo apt-get install '+self.pkgs
 
-#class Eliminate_SCIM_Crash_Bug(_apt_install):
-#    __doc__ = _('Eliminate bug: SCIM suddenly crashes without reason')
-#    pkgs='scim-bridge-client-qt'
-#    def support(self):
-#        return VERSION in ['hardy', 'intrepid', 'jaunty'] and APT.installed('scim')
-
 class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
