@@ -1,3 +1,7 @@
+2010-05-07 Homer Xing <homer.xing@gmail.com>
+
+    * Optimize source code architecture. Provide a generic architecture for software install/remove.
+
 2010-04-30 Homer Xing <homer.xing@gmail.com>
 
     * Fix problem: Synaptic is not installed on KUbuntu.
