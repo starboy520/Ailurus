@@ -1,3 +1,7 @@
+2010-05-07 HAN Haofu <gtxx3600@gmail.com>
+
+	* Fix a bug: "CPU Cache information is incorrect in some kernel version"
+
 2010-05-07 Homer Xing <homer.xing@gmail.com>
 
     * Optimize source code architecture. Provide a generic architecture for software install/remove.
