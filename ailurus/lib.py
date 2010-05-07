@@ -861,27 +861,6 @@ class APTSource:
                         ret.append(line)
         return ''.join(ret)
 
-def parse_maintainer(string):
-    is_string_not_empty(string)
-    
-    if not hasattr(parse_maintainer, 'init'):
-        import re
-        parse_maintainer.p1 = re.compile(r'^(.+)(?P<webpage>https?://.+)$')
-        parse_maintainer.p2 = re.compile(r'^(.+)<(?P<email>.+)>$')
-        parse_maintainer.init = True
-    match = parse_maintainer.p1.match(string)
-    name = email = webpage = None
-    if match:
-        webpage=match.group('webpage')
-        string = match.group(1).strip()
-    match = parse_maintainer.p2.match(string)
-    if match:
-        email = match.group('email')
-        name = match.group(1).strip()
-    else:
-        name = string
-    return name, email, webpage
-
 import threading
 class PingThread(threading.Thread):
     def __init__(self, url, server, result):
