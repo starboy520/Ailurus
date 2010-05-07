@@ -658,7 +658,7 @@ class APT:
         if cls.apt_get_update_is_called == False:
             cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('apt-get install ' + ' '.join(packages))
+        run_as_root_in_terminal('apt-get install -y ' + ' '.join(packages))
         APT.cache_changed()
         failed = [p for p in packages if not APT.installed(p)]
         if failed:
@@ -668,7 +668,7 @@ class APT:
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('apt-get remove ' + ' '.join(packages))
+        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
         APT.cache_changed()
         failed = [p for p in packages if APT.installed(p)]
         if failed:
