@@ -650,3 +650,219 @@ class AutoApt(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'auto-apt'
+
+class QCad(N):
+    __doc__ = _('QCad: A CAD software which supports DXF-format')
+    detail = ''
+    category = 'em'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'qcad'
+        
+class Moonlight(N):
+    __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
+    detail = _(u'Moonlight provides Windows® media codecs. '
+       u'By this application, you can enjoy Windows® video/audio in webpages.')
+    license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
+               'Moonlight 1.0 is licensed under LGPL. '
+               'See http://www.mono-project.com/Moonlight')
+    category = 'media'
+    if UBUNTU or MINT:
+        pkgs = 'moonlight-plugin-mozilla'
+
+class Octave(N):
+    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
+    license = GPL
+    category = 'math'
+    if UBUNTU or MINT:
+        pkgs = 'qtoctave'
+
+class Screenlets(N):
+    __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
+    detail = _('Screenlets is able to add eye candy gadgets on desktop, '
+       'such as sticky notes, clocks, weather forecasts, calendars and so on, '
+       'in order to decorate the desktop.')
+    category = 'appearance'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'screenlets'
+
+class CompizSettingManager(N):
+    __doc__ = _('Compiz settings manager')
+    detail = _('Compiz Fusion is the unification of the Beryl project and the community around the Compiz Window Manager. '
+       'Compiz settings manager is the configuration application for Compiz Fusion. '
+       'It can configurate effects such as "Desktop cube" and "3D windows".')
+    category = 'appearance'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'compizconfig-settings-manager'
+
+class CompizSettingManagerSimple(N):
+    __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
+    category = 'appearance'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'simple-ccsm'
+
+class ScienceBiology(N):
+    __doc__ = _('Med-bio: A lot of micro-biology software')
+    detail = _('A lot of software for molecular biology, structural biology and bioinformatics.')
+    category = 'biology'
+    license = DUAL_LICENSE(EPL, GPL)
+    if UBUNTU or MINT:
+        pkgs = 'med-bio'
+
+class TuxPaint(N):
+    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
+    category = 'education'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'tuxpaint'
+
+class CodeBlocks(N):
+    __doc__ = _('Code::Blocks - C/C++ IDE')
+    license = GPL
+    category = 'dev'
+    if UBUNTU or MINT:
+        pkgs = 'codeblocks'
+
+class ChildsPlay(N):
+    __doc__ = _('ChildsPlay: A suite of educational games for children')
+    category = 'education'
+    license = GPL
+    if UBUNTU or MINT:
+        def __init__(self):
+            pkgs = APT.get_existing_pkgs_set()
+            voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
+            lang = Config.get_locale().split('_')[0]
+            voice = 'childsplay-alphabet-sounds-'+lang
+            if not voice in voices: voice = ''
+            else: voice = ' ' + voice
+            self.pkgs = 'childsplay' + voice
+            # There is no 'childsplay-plugins-lfc' package in Karmic :)
+            # 'childsplay-plugins-lfc' is letterFlashscard game.
+            if APT.exist('childsplay-plugins-lfc'):
+                self.pkgs += ' childsplay-plugins-lfc'
+        
+class GCompris(N):
+    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
+    category = 'education'
+    license = GPL
+    if UBUNTU or MINT:
+        def __init__(self):
+            pkgs = APT.get_existing_pkgs_set()
+            voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
+            lang = Config.get_locale().split('_')[0]
+            voice = 'gcompris-sound-'+lang
+            if not voice in voices: voice = ''
+            else: voice = ' ' + voice
+            self.pkgs = 'gnucap gcompris' + voice
+ 
+class QT_Creator(N):
+    'Qt Creator'
+    detail = _('This is an IDE for Qt.')
+    category = 'dev'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
+
+class Kadu(N):
+    __doc__ = 'Kadu'
+    detail = _('Kadu is an instant messenger, which is very popular in Poland.')
+    category = 'internet'
+    if UBUNTU or MINT:
+        pkgs = 'kadu'
+        def visible(self):
+            return Config.is_Poland_locale()
+
+class Qnapi(N):
+    __doc__ = 'Qnapi'
+    detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
+                'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.')
+    license = GPL
+    category = 'media'
+    if UBUNTU or MINT:
+        pkgs = 'qnapi'
+        def visible(self):
+            return Config.is_Poland_locale()
+
+class Parcellite(N):
+    __doc__ = _('Parcellite: clipboard manager')
+    detail = _('This is a powerful clipboard manager. '
+               'It can preserve 25 strings concurrently.')
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'parcellite'
+
+class R_Language_Basic(N):
+    __doc__ = _('R language (basic development environment)')
+    detail = _('A powerful statistical computation language and a graphics system.\n'
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
+    category = 'statistics'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'r-base-core'
+
+class R_Language_Full(N):
+    __doc__ = _('R language (full development environment and all plugins)')
+    detail = _('A powerful statistical computation language and a graphics system.\n'
+               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
+    category = 'statistics'
+    license = GPL
+    if UBUNTU or MINT:
+        def __init__(self):
+            import StringIO
+            value = StringIO.StringIO()
+            print >>value, 'r-base-core',
+            for p in APT.get_existing_pkgs_set():
+                if p.startswith('r-cran-'): print >>value, p,
+            self.pkgs = value.getvalue()
+
+class Bluefish(N):
+    __doc__ = _('Bluefish: Edit HTML web-pages')
+    license = GPL
+    category = 'dev'
+    if UBUNTU or MINT:
+        pkgs = 'bluefish'
+
+class Vuze_Karmic(N):
+    # Latest Vuze is in 9.10 repository.
+    __doc__ = _('Vuze: Download via bittorrent; Search videos')
+    category = 'internet'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'vuze'
+        def visible(self):
+            return VERSION not in ['hardy', 'intrepid', 'jaunty']
+
+class ImageMagick(N):
+    __doc__ = _('ImageMagick: Edit images')
+    detail = _('You can start it by /usr/bin/display')
+    category = 'media'
+    if UBUNTU or MINT:
+        pkgs = 'imagemagick'
+        
+class PiTiVi(N):
+    __doc__ = _('PiTiVi: Movie editor')
+    license = LGPL + ' http://www.pitivi.org/'
+    category = 'media'
+    if UBUNTU or MINT:
+        pkgs = 'pitivi'
+
+class HardwareLister(N):
+    __doc__ = _('lshw: List hardware information')
+    detail = _('A small application which displays detailed hardware information')
+    license = GPL
+    category = 'hardware'
+    if UBUNTU or MINT:
+        pkgs = 'lshw lshw-gtk'
+
+class Fcitx(N):
+    'Fcitx'
+    category = 'language'
+    detail = _('This is a popular Chinese input method.\n'
+               'It is from http://fcitx.googlecode.com/')
+    Chinese = True
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'fcitx'
