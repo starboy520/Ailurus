@@ -45,58 +45,6 @@ class ColorfulBashPromptSymbols(I):
     def remove(self):
         file_remove ( self.bashrc, self.line )
 
-# In Ubuntu 10.04, there is not CUPS print bug. 
-#class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
-#    __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
-#    detail = _('The installation process is as follows. Firstly, the command "sudo apt-get install cups-pdf" is launched. '
-#       'Then a bug in "/etc/apparmor.d/usr.sbin.cupsd" file is eliminated.')
-#    __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
-#    __file = '/etc/apparmor.d/usr.sbin.cupsd'
-#    category = 'office'
-#    license = LGPL
-#    pkgs = 'cups-pdf'
-#    def install(self):
-#        _apt_install.install(self)
-#        run_as_root("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
-#        with TempOwn( self.__file ) as o:
-#            with open( self.__file , "r") as f:
-#                content = f.readlines()
-#                for i in range(0, len(content)):
-#                    if content[i].find('/usr/lib/cups/backend/cups-pdf')==0:
-#                        content[i]=self.__line
-#                        break
-#            with open( self.__file , "w") as f:
-#                for c in content:
-#                    f.write(c)
-#    def installed(self):
-#        return _apt_install.installed(self) and file_contain(self.__file, self.__line)
-#    def visible(self):
-#        return VERSION in ['hardy', 'intrepid', 'jaunty']
-
-#class Flash_Player_Font_Bug:
-#    __doc__ = _('Fix font bug in Flash plugin')
-#    detail = _('Fix bug: characters are displayed as blank square in Flash.\n'
-#       'The trick behind is to modify "/etc/fonts/conf.d/49-sansserif.conf" file.')
-#    category = 'media'
-#    __file = '/etc/fonts/conf.d/49-sansserif.conf' 
-#    def installed(self):
-#        import os
-#        return not os.path.exists(self.__file)
-#    def install(self):
-#        with Chdir('/etc/fonts/conf.d') as o:
-#            import os
-#            if os.path.exists('49-sansserif.conf'):
-#                run_as_root('mv 49-sansserif.conf 49-sansserif.back')
-#    def remove(self):
-#        with Chdir('/etc/fonts/conf.d') as o:
-#            import os
-#            if os.path.exists('49-sansserif.back'):
-#                run_as_root('mv 49-sansserif.back 49-sansserif.conf')
-#    def get_reason(self, f):
-#        import os
-#        if os.path.exists(self.__file):
-#            print >>f, _('The file "%s" exists.')%self.__file
-
 class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
