@@ -32,7 +32,7 @@ class Acire(_apt_install):
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire'
-    def support(self):
+    def visible(self):
         return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
 class AWN(_apt_install):
@@ -52,7 +52,7 @@ class ComicView(_ff_extension):
         self.name = u'Comic Viewer'
         self.R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
         _ff_extension.__init__(self)
-    def support(self):
+    def visible(self):
         return False
 
 class ComicVODPlayer_new(I):
@@ -76,7 +76,7 @@ class ComicVODPlayer_new(I):
         return self.comicview.installed() and APT.installed('mplayer')
     def remove(self):
         APT.remove('mplayer')
-    def support(self):
+    def visible(self):
         return APT.installed('firefox')
 
 class Audacious(_apt_install):
@@ -134,7 +134,7 @@ class Gnome_color(_apt_install):
     category = 'appearance'
     depends = Repo_GNOMEColors
     pkgs = 'gnome-colors'
-    def support(self):
+    def visible(self):
         return VERSION != 'lucid'
 
 class Getting_things_gnome(_apt_install):
@@ -196,7 +196,7 @@ class RedNoteBook(_apt_install):
     category = 'office'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
-    def support(self):
+    def visible(self):
         return VERSION != 'lucid'
     
 class Shutter(_apt_install):
@@ -212,7 +212,7 @@ class Shutter(_apt_install):
 #    category = 'internet'
 #    depends = Repo_Synapse
 #    pkgs = 'synapse'
-#    def support(self):
+#    def visible(self):
 #        return VERSION != 'lucid'
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
@@ -222,7 +222,7 @@ class Firefox_3_6(_apt_install):
     category = 'internet'
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
-    def support(self):
+    def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class XBMC(_apt_install):
@@ -231,7 +231,7 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
-    def support(self):
+    def visible(self):
         return VERSION != 'lucid'
 
 class Songbird(_apt_install):
@@ -240,7 +240,7 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-    def support(self):
+    def visible(self):
         return VERSION != 'lucid'
 
 class Netbeans(_apt_install):

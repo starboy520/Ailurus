@@ -128,7 +128,7 @@ class _set_gconf(I):
             G.set_list(key, gconf.VALUE_STRING, List)
             print "\x1b[1;31m%s\x1b[m"%_("Key:"), key
             print "\x1b[1;31m%s\x1b[m"%_("Removed items:"), to_remove_list
-    def support(self):
+    def visible(self):
         try:
             import gconf
             return True
@@ -202,7 +202,7 @@ class N(I):
         backend = APT
         installation_command_backend = debian_installation_command
     
-    def support(self):
+    def visible(self):
         return hasattr(self, 'pkgs')
     def self_check(self):
         if hasattr(self, 'pkgs'):

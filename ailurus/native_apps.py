@@ -141,16 +141,6 @@ class Multimedia_Codecs (N) :
         pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
                  'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
 
-class CUPS (N):
-    __doc__ = _('Enable "Print to pdf" capability.')
-    category = 'office'
-    if FEDORA:
-        pkgs = 'cups-pdf'
-    if UBUNTU or MINT:
-        pkgs = 'cups-pdf'
-        def support(self):
-            return VERSION not in ['hardy', 'intrepid', 'jaunty']
-
 class Stardict_without_Dictionaries(N):
     __doc__ = _('Stardict')
     category = 'office'
@@ -285,7 +275,7 @@ class Kadu(N):
     license = GPL
     if FEDORA:
         pkgs = 'kadu'
-    def support(self):
+    def visible(self):
         return Config.is_Poland_locale()
 
 class Parcellite(N):

@@ -232,7 +232,7 @@ class Repo_Firefox_3_6(_launchpad):
     license = TRI_LICENSE(MPL, GPL, LGPL)
     ppa = 'mozillateam/firefox-stable'
     content = 'firefox'
-    def support(self):
+    def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class Repo_PlayOnLinux(_repo):
@@ -387,7 +387,7 @@ class Repo_IBus_Jaunty(_launchpad):
     license = GPL
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-jaunty'
-    def support(self):
+    def visible(self):
         return VERSION == 'jaunty'
 
 class Repo_IBus_Intrepid(_launchpad):
@@ -395,7 +395,7 @@ class Repo_IBus_Intrepid(_launchpad):
     license = GPL
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-intrepid'
-    def support(self):
+    def visible(self):
         return VERSION == 'intrepid'
 
 class Repo_IBus_Karmic(_launchpad):
@@ -403,7 +403,7 @@ class Repo_IBus_Karmic(_launchpad):
     license = GPL
     content = 'ibus ibus-table ibus-pinyin'
     ppa = 'ibus-dev/ibus-1.2-karmic'
-    def support(self):
+    def visible(self):
         return VERSION == 'karmic'
 
 class Repo_Canonical_Partner(_repo):
@@ -479,7 +479,7 @@ class Repo_RedNoteBook(_repo):
         self.key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
         self.key_id = 'FF95D333'
         _repo.__init__(self)
-    def support(self):
+    def visible(self):
         return VERSION != 'lucid'
 
 class Repo_Pidgin_Develop(_launchpad):
@@ -509,7 +509,7 @@ class Repo_Mplayer_VOD(_launchpad):
     desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
     content = 'mplayer'
     ppa = 'homer-xing/mplayer-vod'
-    def support(self):
+    def visible(self):
         return False
 
 class Repo_Acire(_launchpad):

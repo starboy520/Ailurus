@@ -74,7 +74,7 @@ class Moonlight(_apt_install):
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    def support(self):
+    def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
         with Chdir('/etc/event.d/') as o:
@@ -113,7 +113,7 @@ class DisableGetty(I):
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
-    def support(self):
+    def visible(self):
         return VERSION in ['karmic']
     def installed(self):
         with Chdir('/etc/init/') as o:
@@ -262,7 +262,7 @@ class Kadu(_apt_install):
     detail = _('Kadu is an instant messenger, which is very popular in Poland.')
     category = 'internet'
     pkgs = 'kadu'
-    def support(self):
+    def visible(self):
         return Config.is_Poland_locale()
 
 class Qnapi(_apt_install):
@@ -272,7 +272,7 @@ class Qnapi(_apt_install):
     license = GPL
     category = 'media'
     pkgs = 'qnapi'
-    def support(self):
+    def visible(self):
         return Config.is_Poland_locale()
 
 #class Audacious(_apt_install):
@@ -299,7 +299,7 @@ class Parcellite(_apt_install):
                'It can preserve 25 strings concurrently.')
     license = GPL
     pkgs = 'parcellite'
-    def support(self):
+    def visible(self):
         return not ( VERSION in ['hardy'] )
 
 class R_Language_Basic(_apt_install):
@@ -338,7 +338,7 @@ class _tasksel(I):
         return Tasksel.installed(self.name)
     def remove(self):
         Tasksel.remove(self.name)
-    def support(self):
+    def visible(self):
         return Tasksel.exists(self.name)
     def installation_command(self):
         return _('Command:') + ' sudo tasksel install ' + self.name
@@ -461,7 +461,7 @@ class Vuze_Karmic(_apt_install):
     category = 'internet'
     license = GPL
     pkgs = 'vuze'
-    def support(self):
+    def visible(self):
         return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
 class ImageMagick(_apt_install):

@@ -98,7 +98,7 @@ class AliPayFirefoxPlugin(I):
             run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.so')
         if os.path.exists('/usr/lib/firefox-addons/plugins/aliedit.xpt'):
             run_as_root('rm -f /usr/lib/firefox-addons/plugins/aliedit.xpt')
-    def support(self):
+    def visible(self):
         import os
         return os.path.exists('/usr/bin/firefox')
 

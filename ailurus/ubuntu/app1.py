@@ -70,7 +70,7 @@ class ColorfulBashPromptSymbols(I):
 #                    f.write(c)
 #    def installed(self):
 #        return _apt_install.installed(self) and file_contain(self.__file, self.__line)
-#    def support(self):
+#    def visible(self):
 #        return VERSION in ['hardy', 'intrepid', 'jaunty']
 
 #class Flash_Player_Font_Bug:

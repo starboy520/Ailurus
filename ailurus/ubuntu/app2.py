@@ -229,7 +229,7 @@ class GNOMEArtNextGen(I):
         return APT.installed('gnomeartng')
     def remove(self):
         APT.remove('gnomeartng')
-    def support(self):
+    def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
            
 class QtiPlot(_apt_install) :
