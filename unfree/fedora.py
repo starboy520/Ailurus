@@ -24,7 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not Config.is_Fedora():
+if not FEDORA:
     raise Exception
 
 class _repo(I):
@@ -79,8 +79,8 @@ class Repo_Adobe(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
-    def support(self):
-        return get_arch() == 32
+    def visible(self):
+        return is32()
 
 class Repo_Skype(I):
     'Skype'
@@ -103,8 +103,8 @@ class Repo_Skype(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
-    def support(self):
-        return get_arch() == 32
+    def visible(self):
+        return is32()
 
 class Repo_RPMFusion_Free(I):
     __doc__ = _('RPM Fusion (Free)')
@@ -205,7 +205,7 @@ class Repo_Google_Chrome(I):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
             with TempOwn(self.path) as o:
-                if get_arch() == 32: arch = 'i386'
+                if is32(): arch = 'i386'
                 else: arch = 'x86_64'
                 
                 with open(self.path, 'w') as f:
@@ -283,8 +283,8 @@ class AdobeReader(_rpm_install):
             self.pkgs = package_dict[value]
         except KeyError:
             self.pkgs = package_dict['en']
-    def support(self):
-        return get_arch() == 32
+    def visible(self):
+        return is32()
 
 class Realplayer32(I):
     'RealPlayer® 11'
@@ -309,7 +309,7 @@ class GoogleChrome(I):
         'You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome.')
     category = 'internet'
     def install(self):
-        if get_arch() == 32:
+        if is32():
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm').download()
         else:
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm').download()
@@ -350,8 +350,8 @@ class Skype(_rpm_install):
     category = 'internet'
     depends = Repo_Skype
     pkgs = 'skype'
-    def support(self):
-        return get_arch() == 32
+    def visible(self):
+        return is32()
 
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')

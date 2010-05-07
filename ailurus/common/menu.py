@@ -105,17 +105,13 @@ def __preferences(main_view):
     menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
+
     menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
     menu_hide_quick_setup_pane.set_active(Config.get_hide_quick_setup_pane())
     menu_hide_quick_setup_pane.connect('toggled', 
             lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
                               or Config.set_hide_quick_setup_pane(w.get_active()))
-    menu_tooltip = gtk.CheckMenuItem( _("""Don't show "tip of the day" on start up""") )
-    menu_tooltip.set_active( Config.get_disable_tip() )
-    menu_tooltip.connect('toggled', 
-            lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
-                              or Config.set_disable_tip(w.get_active()) )
-    
+
     menu_tip_after_logging_in = gtk.CheckMenuItem( _('Show a random Linux skill after you log in to GNOME') )
     menu_tip_after_logging_in.set_active(ShowALinuxSkill.installed())
     def toggled(w):
@@ -127,7 +123,7 @@ def __preferences(main_view):
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
+    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tip_after_logging_in, menu_set_wget_option ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')

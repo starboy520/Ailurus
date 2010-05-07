@@ -45,7 +45,8 @@ def check_class_members(app_class, default_category = 'tweak'):
     return app_class
 
 def load_app_objs(common, desktop, distribution):
-    modules = []
+    import native_apps
+    modules = [native_apps]
     for module in [common, desktop, distribution]:
         import types
         assert module==None or isinstance(module, types.ModuleType)
@@ -57,14 +58,15 @@ def load_app_objs(common, desktop, distribution):
     for module in modules:
         for name in dir(module):
             if name in names: continue
-            if name[0]=='_' or name=='I': continue
+            if name[0]=='_' or name=='I' or name=='N': continue
             app_class = getattr(module,name)
             if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
     
             try:
                 check_class_members(app_class)
                 app_class_obj = app_class()
-                if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+                app_class_obj.self_check()
+                if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
                 if hasattr(app_class_obj, 'installation_command'):
                     if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
@@ -89,7 +91,7 @@ def load_app_objs_from_extension(extension):
     classobjs = []
     names = set()
     for name in dir(extension):
-        if name[0]=='_' or name=='I': continue
+        if name[0]=='_' or name=='I' or name=='N': continue
         if name in names: continue
         app_class = getattr(extension,name)
         if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
@@ -97,7 +99,8 @@ def load_app_objs_from_extension(extension):
         try:
             check_class_members(app_class)
             app_class_obj = app_class()
-            if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+            app_class_obj.self_check()
+            if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
             if hasattr(app_class_obj, 'international') and Config.is_Chinese_locale(): continue
             if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
             app_class_obj.cache_installed = app_class_obj.installed()

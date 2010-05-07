@@ -23,7 +23,9 @@ import gtk
 
 class SplashWindow(gtk.Window):
     def __init__(self):
-        gtk.Window.__init__(self, gtk.WINDOW_POPUP)
+        gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
+        self.set_decorated(False)
+        
         self.set_position(gtk.WIN_POS_CENTER)
         self.set_default_size(450, -1)
         self.set_border_width(15)
