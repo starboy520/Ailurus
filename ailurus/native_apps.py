@@ -643,3 +643,10 @@ class Nautilus_Wallpaper(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-wallpaper'
+
+class AutoApt(N):
+    'Auto-apt'
+    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'auto-apt'

@@ -63,12 +63,6 @@ class PBC(I):
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
     
-class AutoApt(_apt_install):
-    'Auto-apt'
-    detail = _('"auto-apt run ./configure" can help you install the packages which are not installed.')
-    license = GPL
-    pkgs = 'auto-apt'
-
 class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
