@@ -21,6 +21,3 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from app1 import *
-from app_tasksel import *
-from app_from_external_repos import *
-from third_party_repos import *

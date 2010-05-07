@@ -24,6 +24,8 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from app_tasksel import *
+from app_from_external_repos import *
 
 class OpenJDK6(I):
     'OpenJDK 6'
