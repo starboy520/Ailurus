@@ -152,16 +152,12 @@ class Config:
         return 'LinuxMint' in c
     @classmethod
     def get_Mint_version(cls):
-        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'. '''
-        import os
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
             if line.startswith('DISTRIB_RELEASE='):
                 a = line.split('=')[1].strip()
-        versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-        assert a in ['5', '6', '7', '8', '9']
-        return versions[int(a)-5]
+        return a
     @classmethod
     def is_Fedora(cls):
         import os
@@ -218,13 +214,7 @@ class Config:
     def get_fastest_repository_response_time(cls):
         return cls.get_int('fastest_repository_response_time')
 
-def install_locale(force_reload=False):
-    assert isinstance(force_reload, bool)
-    
-    if force_reload or getattr(install_locale, 'installed', False)==False:
-        install_locale.installed = True
-    else: return
-
+def install_locale():
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
 
@@ -1659,6 +1649,8 @@ if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
     VERSION = Config.get_Mint_version()
+    assert VERSION in ['5', '6', '7', '8', '9']
+    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 else:
