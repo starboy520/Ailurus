@@ -32,6 +32,13 @@ class WINE(N):
     category = 'vm'
     if FEDORA:
         pkgs = 'wine'
+    if UBUNTU or MINT:
+        def __init__(self):
+            if APT.exist('wine1.2') and APT.exist('wine1.2-gecko'):
+                WINE.pkgs = 'wine1.2 wine1.2-gecko'
+            else:
+                WINE.pkgs = 'wine wine-gecko'
+            N.__init__(self)
 
 class Enhance_Decompression_Capability(N) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
