@@ -39,7 +39,7 @@ class Alice(_path_lists):
         self.shortcut = '/usr/share/applications/alice.desktop'
         self.paths = [ self.dir, self.shortcut ]
     def install(self):
-        if get_arch()==32:
+        if is32():
             f = R(
 ['http://tdt.sjtu.edu.cn/S/Alice2.2b_i386.tar.bz2',],
 296544228, '0c6340a5b52d72abc12c394561d61c3ccba21ca7').download()

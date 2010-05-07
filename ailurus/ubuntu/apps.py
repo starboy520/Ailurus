@@ -106,7 +106,7 @@ class PBC(I):
     category = 'dev'
     license = GPL
     def install(self):
-        if get_arch()==32:
+        if is32():
             fdev=R(
 ['http://voltar.org/pbcfiles/libpbc-dev_0.5.4-1_i386.deb'],
 182700, 'f2493c4c8ad0515babf28b1c5241583d993ad169'
@@ -117,7 +117,7 @@ class PBC(I):
 206752, '6ebfb58ddb53f8c63c475f871f843e2e5c2ec676'
 ).download()
 
-        if get_arch()==32:
+        if is32():
             f=R(
 ['http://voltar.org/pbcfiles/libpbc0_0.5.4-1_i386.deb'],
 87122, '4424b14adee23683eff979c4efe33f493f2d2a55'

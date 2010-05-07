@@ -80,7 +80,7 @@ class Repo_Adobe(I):
         if _repo.exist(self.path):
             _repo.disable(self.path)
     def visible(self):
-        return get_arch() == 32
+        return is32()
 
 class Repo_Skype(I):
     'Skype'
@@ -104,7 +104,7 @@ class Repo_Skype(I):
         if _repo.exist(self.path):
             _repo.disable(self.path)
     def visible(self):
-        return get_arch() == 32
+        return is32()
 
 class Repo_RPMFusion_Free(I):
     __doc__ = _('RPM Fusion (Free)')
@@ -205,7 +205,7 @@ class Repo_Google_Chrome(I):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
             with TempOwn(self.path) as o:
-                if get_arch() == 32: arch = 'i386'
+                if is32(): arch = 'i386'
                 else: arch = 'x86_64'
                 
                 with open(self.path, 'w') as f:
@@ -284,7 +284,7 @@ class AdobeReader(_rpm_install):
         except KeyError:
             self.pkgs = package_dict['en']
     def visible(self):
-        return get_arch() == 32
+        return is32()
 
 class Realplayer32(I):
     'RealPlayer® 11'
@@ -309,7 +309,7 @@ class GoogleChrome(I):
         'You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome.')
     category = 'internet'
     def install(self):
-        if get_arch() == 32:
+        if is32():
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm').download()
         else:
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_x86_64.rpm').download()
@@ -351,7 +351,7 @@ class Skype(_rpm_install):
     depends = Repo_Skype
     pkgs = 'skype'
     def visible(self):
-        return get_arch() == 32
+        return is32()
 
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')

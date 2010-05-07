@@ -39,7 +39,7 @@ class Bioclipse(_path_lists):
         self.path = '/opt/bioclipse'
         self.paths = [ self.shortcut, self.path ]
     def install(self):
-        if get_arch() == 32:
+        if is32():
             f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download'],
                   filename = 'bioclipse2.0.linux.gtk.x86.zip').download()
         else:
@@ -50,7 +50,7 @@ class Bioclipse(_path_lists):
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
             run_as_root('rm /opt/bioclipse -rf')
-            if get_arch() == 32:
+            if is32():
                 run_as_root('mv bioclipse2.0.linux.gtk.x86/bioclipse /opt/')
             else:
                 run_as_root('mv bioclipse2.0.linux.gtk.x86_64/bioclipse /opt/')

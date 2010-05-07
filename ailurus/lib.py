@@ -437,11 +437,9 @@ def notify(title, content):
         import sys, traceback
         traceback.print_exc(file=sys.stderr)
 
-def get_arch():
-    'Return 64 if the operating system is 64-bit. Return 32 otherwise.'
+def is32():
     import os
-    if os.uname()[-1] == 'x86_64': return 64
-    return 32
+    return os.uname()[-1] != 'x86_64'
 
 def file_contain(path, *lines):
     'Return True if the file contains all the lines'
