@@ -178,10 +178,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply.connect('clicked', self.remove_kernel)
         label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
-        label2 = gtk.Label(_('Not used Linux kernels are:'))
-        label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
-        self.pack_start(label2, False)
         self.__regenerate_check_buttons()
         self.pack_start(check_buttons_box, False)
         hbox = gtk.HBox()
@@ -248,8 +245,8 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply.set_sensitive(True)
     
     def __regenerate_check_buttons(self):
-        for button in self.check_buttons_box.get_children():
-            self.check_buttons_box.remove(button)
+        for child in self.check_buttons_box.get_children():
+            self.check_buttons_box.remove(child)
         self.check_buttons_list = []
         version_list = self.version_to_packages.keys()
         version_list.sort()
@@ -262,7 +259,14 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.set_active(True)
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
-            self.check_buttons_box.pack_start(check_button, False)
+            
+        if self.check_buttons_list:
+            label = gtk.Label(_('Not used Linux kernels are:'))
+            label.set_alignment(0, 0.5)
+            self.check_buttons_box.pack_start(label, False)
+            for button in self.check_buttons_list:
+                self.check_buttons_box.pack_start(button, False)
+
         self.check_buttons_box.show_all()
     
     def get_current_kernel_version(self):
