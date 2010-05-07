@@ -1,6 +1,7 @@
 2010-05-07 Homer Xing <homer.xing@gmail.com>
 
     * Optimize source code architecture. Provide a generic architecture for software install/remove.
+    * Improve TeXLive installation. Do not download 1.4G iso any more. Reduce disk space cost.
 
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 

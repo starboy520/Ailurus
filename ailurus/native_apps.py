@@ -637,11 +637,13 @@ class Svn_Git_bzr(N):
     if UBUNTU or MINT:
         pkgs = 'subversion git-core bzr'
         
-class TeXLive2007(N):
-    'TeXLive 2007'
+class TeXLive(N):
+    'TeXLive'
+    detail = _('Create a file "example.tex", then compile it by "xelatex example.tex".') + ' http://ailurus.cn/?p=329'
     category = 'latex'
     if UBUNTU or MINT:
-        pkgs = 'texlive'
+        pkgs = 'texlive-xetex lmodern'
+
 class TuxPaint(N):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
     category = 'education'
