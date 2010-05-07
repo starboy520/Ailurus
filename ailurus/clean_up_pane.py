@@ -200,10 +200,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
                 else:
                     delete_list.extend([
                             '/lib/modules/%s'%kernel_version, 
-                            '/boot/System.map-%s'%kernel_version,
-                            'config-%s'%kernel_version,
-                            'initrd.img-%s'%kernel_version
-                                        ])
+                            '/boot/*-%s*'%kernel_version,])
         if remove_list:
             try:    APT.remove(*remove_list)
             except:
