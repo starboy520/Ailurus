@@ -81,48 +81,6 @@ class DisableGetty(I):
                     with open(filename, 'w') as f:
                         f.writelines(contents)
 
-class Generic_Genome_Browser(I):
-    __doc__ = _('Generic Genome Browser')
-    detail = _('Generic Genome Browser is a combination of database and interactive web page '
-               'for manipulating and displaying annotations on genomes.\n'
-               '<span color="red">Due to the limitation of the authors\' programming ability, '
-               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
-    license = AL
-    category='biology'
-    def install(self):
-        for package in ['perl-libwww-perl', 'perl-CPAN']:
-            if not RPM.installed(package):
-                RPM.install(package)
-        
-        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        run_as_root_in_terminal('perl ' + f)
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplementedError
-
-class Enable_Sudo(I):
-    __doc__ = _('Enable "sudo"')
-    detail = _('If you enabled "sudo" and you want to execute commands as root, '
-               'you can type command "sudo COMMAND" instead of complicated command "su -c \'COMMAND\'". '
-               '<span color="red">Due to restriction on filesystem permission, '
-               'Ailurus cannot detect whether "sudo" is enabled.</span> ')
-    def installed(self):
-        return False
-    def install(self):
-        run_as_root_in_terminal(D+'../support/enable_sudo.py')
-    def remove(self):
-        pass
-
-class Disable_Sudo(I):
-    __doc__ = _('Disable "sudo". Prevent yourself from using "sudo".')
-    def installed(self):
-        return False
-    def install(self):
-        run_as_root_in_terminal(D+'../support/disable_sudo.py')
-    def remove(self):
-        pass
-
 class Disable_SELinux(I):
     __doc__ = _('Put Selinux in permissive mode, instead of enforcing mode.')
     def installed(self):
@@ -154,3 +112,45 @@ class Disable_SELinux(I):
                 with open(path, 'w') as f:
                     f.writelines(lines)
         run_as_root_in_terminal('/usr/sbin/setenforce 1')
+
+class Disable_Sudo(I):
+    __doc__ = _('Disable "sudo". Prevent yourself from using "sudo".')
+    def installed(self):
+        return False
+    def install(self):
+        run_as_root_in_terminal(D+'../support/disable_sudo.py')
+    def remove(self):
+        pass
+
+class Enable_Sudo(I):
+    __doc__ = _('Enable "sudo"')
+    detail = _('If you enabled "sudo" and you want to execute commands as root, '
+               'you can type command "sudo COMMAND" instead of complicated command "su -c \'COMMAND\'". '
+               '<span color="red">Due to restriction on filesystem permission, '
+               'Ailurus cannot detect whether "sudo" is enabled.</span> ')
+    def installed(self):
+        return False
+    def install(self):
+        run_as_root_in_terminal(D+'../support/enable_sudo.py')
+    def remove(self):
+        pass
+
+class Generic_Genome_Browser(I):
+    __doc__ = _('Generic Genome Browser')
+    detail = _('Generic Genome Browser is a combination of database and interactive web page '
+               'for manipulating and displaying annotations on genomes.\n'
+               '<span color="red">Due to the limitation of the authors\' programming ability, '
+               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
+    license = AL
+    category='biology'
+    def install(self):
+        for package in ['perl-libwww-perl', 'perl-CPAN']:
+            if not RPM.installed(package):
+                RPM.install(package)
+        
+        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
+        run_as_root_in_terminal('perl ' + f)
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
