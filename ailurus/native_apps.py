@@ -103,11 +103,6 @@ class ChildsPlay(N):
     license = GPL
     if FEDORA:
         pkgs = 'childsplay'
-        
-class ChildsPlay(N):
-    __doc__ = _('ChildsPlay: A suite of educational games for children')
-    category = 'education'
-    license = GPL
     if UBUNTU or MINT:
         def __init__(self):
             pkgs = APT.get_existing_pkgs_set()
@@ -260,11 +255,6 @@ class GCompris(N):
     license = GPL
     if FEDORA:
         pkgs = 'gcompris'
-
-class GCompris(N):
-    __doc__ = _('GCompris: Educational games for children aged 2 to 10')
-    category = 'education'
-    license = GPL
     if UBUNTU or MINT:
         def __init__(self):
             pkgs = APT.get_existing_pkgs_set()
@@ -298,12 +288,6 @@ class HardwareLister(N):
     category = 'hardware'
     if FEDORA:
         pkgs = 'lshw lshw-gui'
-
-class HardwareLister(N):
-    __doc__ = _('lshw: List hardware information')
-    detail = _('A small application which displays detailed hardware information')
-    license = GPL
-    category = 'hardware'
     if UBUNTU or MINT:
         pkgs = 'lshw lshw-gtk'
 
@@ -313,11 +297,6 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
-
-class ImageMagick(N):
-    __doc__ = _('ImageMagick: Edit images')
-    detail = _('You can start it by /usr/bin/display')
-    category = 'media'
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
         
@@ -329,17 +308,10 @@ class Kadu(N):
     license = GPL
     if FEDORA:
         pkgs = 'kadu'
-    def visible(self):
-        return Config.is_Poland_locale()
-
-class Kadu(N):
-    __doc__ = 'Kadu'
-    detail = _('Kadu is an instant messenger, which is very popular in Poland.')
-    category = 'internet'
     if UBUNTU or MINT:
         pkgs = 'kadu'
-        def visible(self):
-            return Config.is_Poland_locale()
+    def visible(self):
+        return Config.is_Poland_locale()
 
 class Liferea(N):
     __doc__ = _('Liferea: a RSS feed reader')
@@ -393,13 +365,6 @@ class Nautilus_Actions(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-actions'
-        
-class Nautilus_Actions(N):
-    __doc__ = _('"Actions configuration" entry')
-    detail = _('It allows the configuration of programs to be launched on files selected.\n'
-               '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
-    license = GPL
-    category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-actions'
         
@@ -439,12 +404,6 @@ class Nautilus_Image_Converter(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-image-converter'
-        
-class Nautilus_Image_Converter(N):
-    __doc__ = _('"Resize/Rotate images" entries')
-    detail = _('Resize or rotate selected images.')
-    license = GPL
-    category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-image-converter'
         
@@ -455,12 +414,6 @@ class Nautilus_Open_Terminal(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-open-terminal'
-        
-class Nautilus_Open_Terminal(N):
-    __doc__ = _('"Open in terminal" entry')
-    detail = _('Open a terminal in current folder.')
-    license = GPL
-    category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-open-terminal'
         
@@ -525,11 +478,6 @@ class Octave(N):
     category = 'math'
     if FEDORA:
         pkgs = 'qtoctave'
-
-class Octave(N):
-    __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
-    license = GPL
-    category = 'math'
     if UBUNTU or MINT:
         pkgs = 'qtoctave'
 
@@ -548,12 +496,6 @@ class Parcellite(N):
     license = GPL
     if FEDORA:
         pkgs = 'parcellite'
-
-class Parcellite(N):
-    __doc__ = _('Parcellite: clipboard manager')
-    detail = _('This is a powerful clipboard manager. '
-               'It can preserve 25 strings concurrently.')
-    license = GPL
     if UBUNTU or MINT:
         pkgs = 'parcellite'
 
@@ -563,11 +505,6 @@ class PiTiVi(N):
     category = 'media'
     if FEDORA:
         pkgs = 'pitivi'
-
-class PiTiVi(N):
-    __doc__ = _('PiTiVi: Movie editor')
-    license = LGPL + ' http://www.pitivi.org/'
-    category = 'media'
     if UBUNTU or MINT:
         pkgs = 'pitivi'
 
@@ -584,12 +521,6 @@ class QCad(N):
     category = 'em'
     if FEDORA:
         pkgs = 'qcad'
-
-class QCad(N):
-    __doc__ = _('QCad: A CAD software which supports DXF-format')
-    detail = ''
-    category = 'em'
-    license = GPL
     if UBUNTU or MINT:
         pkgs = 'qcad'
         
@@ -600,12 +531,6 @@ class QT_Creator(N):
     license = GPL
     if FEDORA:
         pkgs = 'qt-creator'
-
-class QT_Creator(N):
-    'Qt Creator'
-    detail = _('This is an IDE for Qt.')
-    category = 'dev'
-    license = GPL
     if UBUNTU or MINT:
         pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
 
@@ -627,12 +552,6 @@ class QtiPlot(N) :
     license = GPL
     if FEDORA:
         pkgs = 'qtiplot'
-
-class QtiPlot(N) :
-    __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
-    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
-    category = 'math'
-    license = GPL
     if UBUNTU or MINT:
         pkgs = 'qtiplot'
 
@@ -731,11 +650,6 @@ class TuxPaint(N):
     license = GPL
     if FEDORA:
         pkgs = 'tuxpaint'
-
-class TuxPaint(N):
-    __doc__ = _('Tux Paint: A drawing program for young children three years and up')
-    category = 'education'
-    license = GPL
     if UBUNTU or MINT:
         pkgs = 'tuxpaint'
 
