@@ -665,33 +665,6 @@ class APT:
 
 class DPKG:
     @classmethod
-    def installed(cls, package_name):
-        'Return True if the package is installed. False if not installed or not exist.'
-        is_pkg_list([package_name])
-        import commands
-        status, output = commands.getstatusoutput( 'LANG=C dpkg-query -l %s'%package_name )
-        if status == 0 : 
-            return output.split('\n')[-1][1] == 'i'
-        elif status == 256 : # package does not exist
-            return False
-        raise CommandFailError # other error reason
-    @classmethod
-    def get_deb_depends(cls, filename):
-        is_pkg_list([filename])
-        import os
-        if os.path.splitext(filename)[1]!='.deb': raise ValueError
-        if not os.path.exists(filename): raise ValueError
-        output = get_output('LANG=C dpkg --info %s' % filename)
-        import re
-        match=re.search('Depends: (.*)', output)
-        if match is None: # no depends 
-            return [] 
-        items=match.group(1).split( ',' )
-        depends = []
-        for item in items:
-            depends.append( item.split()[0] )
-        return depends
-    @classmethod
     def install_deb(cls, *packages):
         is_pkg_list(packages)
         for package in packages:
@@ -703,11 +676,6 @@ class DPKG:
                 APT.install(*depends)
             run_as_root('dpkg --install --force-architecture %s'%package)
             APT.cache_changed()
-    @classmethod
-    def remove_deb(cls, package_name):
-        is_string_not_empty(package_name)
-        run_as_root('dpkg -r %s'%package_name)
-        APT.cache_changed()
 
 def get_response_time(url):
     is_string_not_empty(url)
