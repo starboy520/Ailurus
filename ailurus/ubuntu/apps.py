@@ -128,7 +128,7 @@ class PBC(I):
 96028, 'db19a612666605a18db319976b92c492e5371b91'
 ).download()
 
-        DPKG.install_deb(f, fdev)
+        APT.install_local(f, fdev)
         
     def installed(self):
         return APT.installed('libpbc0') and APT.installed('libpbc-dev')
@@ -171,7 +171,7 @@ class GNOMEArtNextGen(I):
         else:
             raise Exception('GNOMEArtNextGen', VERSION)
 
-        DPKG.install_deb(file)
+        APT.install_local(file)
         
         try: # Do not raise error, when this file cannot be downloaded.
             thumb = R(['http://download.berlios.de/gnomeartng/thumbs.tar.gz'],

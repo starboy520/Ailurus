@@ -662,20 +662,33 @@ class APT:
         run_as_root_in_terminal('apt-get update')
         cls.apt_get_update_is_called = True
         cls.cache_changed()
-
-class DPKG:
     @classmethod
-    def install_deb(cls, *packages):
+    def get_deb_depends(cls, filename):
+        is_pkg_list([filename])
+        import os, re
+        if not filename.endswith('.deb'): raise ValueError
+        if not os.path.exists(filename): raise ValueError
+        output = get_output('LANG=C dpkg --info %s' % filename)
+        match=re.search('Depends: (.*)', output)
+        if match is None: # no depends 
+            return [] 
+        items=match.group(1).split(',')
+        depends = []
+        for item in items:
+            depends.append(item.split()[0])
+        return depends
+    @classmethod
+    def install_local(cls, *packages):
         is_pkg_list(packages)
         for package in packages:
             import os
-            if os.path.splitext(package)[1]!='.deb': raise ValueError
+            if not package.endswith('.deb'): raise ValueError
             if not os.path.exists(package): raise ValueError
-            depends = DPKG.get_deb_depends(package)
+            depends = cls.get_deb_depends(package)
             if len(depends):
-                APT.install(*depends)
-            run_as_root('dpkg --install --force-architecture %s'%package)
-            APT.cache_changed()
+                cls.install(*depends)
+            run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
+            cls.cache_changed()
 
 def get_response_time(url):
     is_string_not_empty(url)
