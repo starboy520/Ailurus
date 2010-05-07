@@ -484,3 +484,162 @@ class SDL(N):
     license = LGPL
     if UBUNTU or MINT:
         pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+
+class CheckInstall(N):
+    'CheckInstall'
+    detail = _('Checkinstall help you build deb package.')
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'checkinstall'
+        
+class Umbrello(N):
+    __doc__ = _('Umbrello: UML modelling')
+    detail = _('Umbrello help you do UML modelling.')
+    license = GPL
+    category = 'dev'
+    if UBUNTU or MINT:
+        pkgs = 'umbrello'
+
+class Ubuntu_Studio_Theme(N):
+    __doc__ = _('Ubuntu Studio Theme')
+    license = GPL
+    category = 'appearance'
+    if UBUNTU or MINT:
+        pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
+    
+class MiniCom_Ckermit(N):
+    __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
+    license = GPL
+    category = 'embedded'
+    if UBUNTU or MINT:
+        pkgs = 'minicom ckermit'
+
+class VirtualBox(N):
+    __doc__ = _('VirtualBox open source edition')
+    detail = _('It is the only professional virtual machine which is freely available '
+       'under the terms of GPL. '
+       'Official site: http://www.virtualbox.org/wiki/Downloads')
+    license = GPL
+    category = 'vm'
+    if UBUNTU or MINT:
+        pkgs = 'virtualbox-ose'
+
+class QtiPlot(N) :
+    __doc__ = _('QtiPlot: The equivalence of "Origin" plotting application in Linux')
+    detail = _('It is the indispensable plotting application for writing Physics experiments reports.')
+    category = 'math'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'qtiplot'
+
+class Extcalc(N):
+    __doc__ = _('Extcalc: A multifunctional graphic calculator')
+    category = 'math'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'extcalc'
+        
+class StartupManager(N):
+    __doc__ = _('Startup Manager: Change GRUB settings and themes')   
+    detail = _('Startup manager helps you change GRUB settings and themes.')
+    license = GPL
+    category = 'appearance'
+    if UBUNTU or MINT:
+        pkgs = 'startupmanager'
+        
+class Zhcon(N):
+    __doc__ = _('Zhcon')
+    detail = _('Zhcon helps you display Chinese characters in TTY terminal.\n'
+               'You can launch it by "zhcon --utf8".')
+    Chinese = True
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'zhcon'
+        
+class PowerTop(N):
+    'PowerTop'
+    detail = _('Powertop helps you save power for your laptop.')
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'powertop'
+        
+class Nautilus_Actions(N):
+    __doc__ = _('"Actions configuration" entry')
+    detail = _('It allows the configuration of programs to be launched on files selected.\n'
+               '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-actions'
+        
+class Nautilus_Filename_Repairer(N):
+    __doc__ = _('"Repair filename" entry')
+    detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-filename-repairer'
+
+class Nautilus_Gksu(N):
+    __doc__ = _('"Open as administrator" entry')
+    detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-gksu'
+
+class Nautilus_Audio_Convert(N):
+    __doc__ = _('"Convert audio files" entry')
+    detail = _('Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n'
+               'These packages will also be installed: \n'
+               '<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
+        def install(self):
+            N.install(self)
+            run('nautilus-script-manager enable ConvertAudioFile')
+
+class Nautilus_Image_Converter(N):
+    __doc__ = _('"Resize/Rotate images" entries')
+    detail = _('Resize or rotate selected images.')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-image-converter'
+        
+class Nautilus_Script_Collection_Svn(N):
+    __doc__ = _('"Subversion commands" entries')
+    detail = _('"Subversion commands" entries')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-script-collection-svn'
+        def install(self):
+            N.install(self)
+            run('nautilus-script-manager enable Subversion')
+        
+class Nautilus_Open_Terminal(N):
+    __doc__ = _('"Open in terminal" entry')
+    detail = _('Open a terminal in current folder.')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-open-terminal'
+        
+class Nautilus_Share(N):
+    __doc__ = _('"Share folders" entry')
+    detail = _('Share folders by Samba.')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-share'
+        
+class Nautilus_Wallpaper(N):
+    __doc__ = _('"Set as wallpaper" entry')
+    detail = _('"Set as wallpaper" entry')
+    license = GPL
+    category = 'nautilus'
+    if UBUNTU or MINT:
+        pkgs = 'nautilus-wallpaper'
