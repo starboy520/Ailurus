@@ -146,6 +146,12 @@ def is_package_names_string(string):
         if pkg[0]=='-':
             raise ValueError, pkg
 
+def debian_installation_command(package_names):
+    return _('Command:') + ' sudo apt-get install ' + package_names
+
+def fedora_installation_command(package_names):
+    return _('Command:') + (' su -c "yum install %s"' % package_names)
+
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
     def self_check(self):
@@ -189,12 +195,6 @@ class _rpm_install(I):
         return fedora_installation_command(self.pkgs)
 
 class N(I):
-    @staticmethod
-    def debian_installation_command(package_names):
-        return _('Command:') + ' sudo apt-get install ' + package_names
-    @staticmethod
-    def fedora_installation_command(package_names):
-        return _('Command:') + (' su -c "yum install %s"' % package_names)
     def visible(self):
         return hasattr(self, 'pkgs')
     def self_check(self):
@@ -219,10 +219,10 @@ class N(I):
 
     if FEDORA:
         backend = RPM
-        installation_command_backend = fedora_installation_command
+        installation_command_backend = staticmethod(fedora_installation_command)
     elif UBUNTU or MINT:
         backend = APT
-        installation_command_backend = debian_installation_command
+        installation_command_backend = staticmethod(debian_installation_command)
 
 class _path_lists(I):
     def self_check(self):
