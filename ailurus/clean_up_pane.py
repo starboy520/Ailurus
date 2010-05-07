@@ -206,7 +206,9 @@ class UbuntuCleanKernelBox(gtk.VBox):
                                         ])
         if remove_list:
             try:    APT.remove(*remove_list)
-            except: pass
+            except:
+                import traceback
+                traceback.print_exc()
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         if delete_list:

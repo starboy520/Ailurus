@@ -671,6 +671,8 @@ class APT:
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        APT.cache_changed()
+        packages = [p for p in packages if APT.installed(p)]
         run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
         APT.cache_changed()
         failed = [p for p in packages if APT.installed(p)]
