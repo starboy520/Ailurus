@@ -385,7 +385,7 @@ class Typespeed(N) :
 
 class Full_Language_Pack(N):
     __doc__ = _('Full language support and input method')
-    detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
+    detail = _('Because of live CD capacity limitation, this Linux distribution does not have full language support.\n')
     category = 'language'
     if UBUNTU or MINT:
         def __init__(self):
