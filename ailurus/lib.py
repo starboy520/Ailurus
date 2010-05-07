@@ -425,22 +425,17 @@ class TempOwn:
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
-    is_string_not_empty(title)
-    is_string_not_empty(content)
-    if not hasattr(notify, 'inited'):
-        notify.inited = True
-        import pynotify
-        pynotify.init('Trusted Digital Technology Laboratory, Shanghai Jiao Tong Univ., China.')
+    assert isinstance(title, str)
+    assert isinstance(content, str)
 
     try:
-        import pynotify, os
+        import pynotify
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
         n.show()
     except:
         import sys, traceback
         traceback.print_exc(file=sys.stderr)
-        print >>sys.stderr, content
 
 def get_arch():
     'Return 64 if the operating system is 64-bit. Return 32 otherwise.'
@@ -1625,6 +1620,9 @@ import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge) 
+
+import pynotify
+pynotify.init('Ailurus')
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
