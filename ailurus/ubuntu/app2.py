@@ -63,12 +63,6 @@ class PBC(I):
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
     
-#class PipeViewer(_apt_install):
-#    __doc__ = _('pv: a pipe viewer')
-#    detail = _('A terminal-based tool for monitoring the progress of data through a pipeline.')
-#    license = AL + ' http://www.ivarch.com/programs/quickref/pv.shtml')
-#    pkgs = 'pv'
-
 # Auto-apt depends on postfix. But 'posifix' cannot be installed in Lucid :(
 #class AutoApt(_apt_install):
 #    'Auto-apt'
