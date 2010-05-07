@@ -1,3 +1,7 @@
+2010-05-07 HAN Haofu <gtxx3600@gmail.com>
+
+	* Fix a bug:"CPU Cache information incorrect in some kernel version"
+
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 
     * Gray buttons if APT cache is empty. 

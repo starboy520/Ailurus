@@ -80,11 +80,6 @@ def __cpu():
     ret = []
     
     try:
-        import re
-        dmesg = get_output('dmesg')
-        all_l1_cache = re.findall('.*L1 I cache: (\d+\D).*L1 D cache: (\d+\D).*', dmesg)
-        all_l2_cache = re.findall('.*L2 cache: (\d+\D).*', dmesg)
-
         core = 0
         with open('/proc/cpuinfo') as f:
             for line in f:
@@ -93,6 +88,24 @@ def __cpu():
                 if 'model name'==v[0]: core+=1
         multicore = core>1
         
+        cache_info = {}
+        for cpu_num in range(0, core):
+            path = "/sys/devices/system/cpu/cpu%d/cache/" % cpu_num
+            cache_info['cpu%s' % cpu_num] = cpus = { 'L1':'','L2':'','L3':'' }
+            indexes = os.listdir(path)
+            for index in indexes:
+                subpath = path + index + os.sep
+                with open(subpath + 'level') as f:
+                    level = f.read()
+                    if level.endswith('\n'):level = level[:-1]
+                with open(subpath + 'type') as f:
+                    cache_type = f.read()
+                    if cache_type.endswith('\n'):cache_type = cache_type[:-1]
+                with open(subpath + 'size') as f:
+                    size = f.read()
+                    if size.endswith('\n'):size = size[:-1]
+                cpus['L%s' % level] += '%s cache : %s ; ' % (cache_type, size)   
+                    
         core = 0
         with open('/proc/cpuinfo') as f:
             for line in f:
@@ -109,16 +122,14 @@ def __cpu():
                         mips_name = _('CPU %s Mips:') % core
                         mips_value = v[1].strip()
                         L1_cache_name = _('CPU %s level 1 cache size:') % core
-                        L1_cache_value = _('Instruction cache %s, data cache %s') % (all_l1_cache[core-1][0], all_l1_cache[core-1][1])
                         L2_cache_name = _('CPU %s level 2 cache size:') % core
-                        L2_cache_value = _('%s') % all_l2_cache[core-1]
                     else: 
                         mips_name = _('CPU Mips:')
                         mips_value = v[1].strip()
                         L1_cache_name = _('Level 1 cache size:')
-                        L1_cache_value = _('Instruction cache %s, data cache %s') % (all_l1_cache[0][0], all_l1_cache[0][1])
                         L2_cache_name = _('Level 2 cache size:')
-                        L2_cache_value = all_l2_cache[0]
+                    L1_cache_value = cache_info['cpu%s' % (core-1)]['L1']
+                    L2_cache_value = cache_info['cpu%s' % (core-1)]['L2']
                     ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
                     ret.append(row(L2_cache_name, L2_cache_value, D+'umut_icons/i_cpu.png')) 
                     ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png', _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.')))
