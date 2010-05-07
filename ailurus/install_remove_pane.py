@@ -609,6 +609,12 @@ class InstallRemovePane(gtk.VBox):
         self.filter_RE = re.compile(otext.getvalue().encode(locale.getpreferredencoding()),
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
+    
+    def show_all(self):
+        gtk.VBox.show_all(self)
+        if Config.get_hide_quick_setup_pane():
+            print 'hide'
+            self.quick_setup_pane.hide_all()
 
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 0)
@@ -706,21 +712,22 @@ class InstallRemovePane(gtk.VBox):
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
         
-        quick_setup_pane = gtk.HBox(False, 10)
+        self.quick_setup_pane = quick_setup_pane = gtk.HBox(False, 10)
         quick_setup_pane.set_border_width(5)
         quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        def hide_quick_setup(w):
-            Config.set_hide_quick_setup_pane(True)
-            quick_setup_pane.hide_all()
+        def hide_quick_setup(chkbtn):
+            Config.set_hide_quick_setup_pane(chkbtn.get_active())
+            self.show_all()
+            #quick_setup_pane.hide_all()
         quick_setup_checkbutton.connect('clicked', hide_quick_setup)
         quick_setup_pane.pack_start(quick_setup_button, False)
         quick_setup_pane.pack_start(quick_setup_checkbutton, False)
 
         self.__left_tree_view_default_select()
 
-        if not Config.get_hide_quick_setup_pane() and (Config.is_Ubuntu() or Config.is_Mint()):
+        if Config.is_Ubuntu() or Config.is_Mint():
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
