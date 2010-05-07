@@ -79,33 +79,34 @@ class ColorfulBashPromptSymbols(I):
         return file_contain ( self.bashrc, self.line )
     def remove(self):
         file_remove ( self.bashrc, self.line )
-        
-class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
-    __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
-    detail = _('The installation process is as follows. Firstly, the command "sudo apt-get install cups-pdf" is launched. '
-       'Then a bug in "/etc/apparmor.d/usr.sbin.cupsd" file is eliminated.')
-    __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
-    __file = '/etc/apparmor.d/usr.sbin.cupsd'
-    category = 'office'
-    license = LGPL
-    pkgs = 'cups-pdf'
-    def install(self):
-        _apt_install.install(self)
-        run_as_root("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
-        with TempOwn( self.__file ) as o:
-            with open( self.__file , "r") as f:
-                content = f.readlines()
-                for i in range(0, len(content)):
-                    if content[i].find('/usr/lib/cups/backend/cups-pdf')==0:
-                        content[i]=self.__line
-                        break
-            with open( self.__file , "w") as f:
-                for c in content:
-                    f.write(c)
-    def installed(self):
-        return _apt_install.installed(self) and file_contain(self.__file, self.__line)
-    def support(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty']
+
+# In Ubuntu 10.04, there is not CUPS print bug. 
+#class Eliminate_CUPS_Cannot_Print_Bug(_apt_install):
+#    __doc__ = _('Enable "Print to pdf" capability and eliminate "Cannot print" bug')
+#    detail = _('The installation process is as follows. Firstly, the command "sudo apt-get install cups-pdf" is launched. '
+#       'Then a bug in "/etc/apparmor.d/usr.sbin.cupsd" file is eliminated.')
+#    __line = '/usr/lib/cups/backend/cups-pdf flags=(complain) {\n'
+#    __file = '/etc/apparmor.d/usr.sbin.cupsd'
+#    category = 'office'
+#    license = LGPL
+#    pkgs = 'cups-pdf'
+#    def install(self):
+#        _apt_install.install(self)
+#        run_as_root("chmod 4755 /usr/lib/cups/backend/cups-pdf") #rwsr-xr-x
+#        with TempOwn( self.__file ) as o:
+#            with open( self.__file , "r") as f:
+#                content = f.readlines()
+#                for i in range(0, len(content)):
+#                    if content[i].find('/usr/lib/cups/backend/cups-pdf')==0:
+#                        content[i]=self.__line
+#                        break
+#            with open( self.__file , "w") as f:
+#                for c in content:
+#                    f.write(c)
+#    def installed(self):
+#        return _apt_install.installed(self) and file_contain(self.__file, self.__line)
+#    def support(self):
+#        return VERSION in ['hardy', 'intrepid', 'jaunty']
 
 #class Flash_Player_Font_Bug:
 #    __doc__ = _('Fix font bug in Flash plugin')
