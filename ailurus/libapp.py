@@ -201,17 +201,17 @@ class N(I):
         if hasattr(self, 'pkgs'):
             is_package_names_string(self.pkgs)
     def install(self):
-        backend.install(*self.pkgs.split())
+        self.backend.install(*self.pkgs.split())
     def installed(self):
         for p in self.pkgs.split():
-            if not backend.installed(p): return False
+            if not self.backend.installed(p): return False
         return True
     def remove(self):
-        backend.remove(*self.pkgs.split())
+        self.backend.remove(*self.pkgs.split())
     def get_reason(self, f):
         all_pkgs = self.pkgs.split()
         if len(all_pkgs) > 1:
-            not_installed = [p for p in all_pkgs if not backend.installed(p)]
+            not_installed = [p for p in all_pkgs if not self.backend.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):

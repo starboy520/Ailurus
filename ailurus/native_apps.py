@@ -246,8 +246,6 @@ class Full_Language_Pack(N):
                 if APT.exist(p): pkgs.append(p)
     
             self.pkgs = ' '.join(pkgs)
-            
-            N.__init__(self)
 
 class GCompris(N):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
@@ -739,7 +737,6 @@ class WINE(N):
                 self.pkgs = 'wine1.2 wine1.2-gecko'
             else:
                 self.pkgs = 'wine wine-gecko'
-            N.__init__(self)
 
 class Workrave_And_Auto_Start_It(N) :
     __doc__ = 'Workrave'
