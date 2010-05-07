@@ -94,17 +94,14 @@ def __cpu():
             cache_info['cpu%s' % cpu_num] = cpus = { 'L1':'','L2':'','L3':'' }
             indexes = os.listdir(path)
             for index in indexes:
-                subpath = path + index + os.sep
+                subpath = path + index + '/'
                 with open(subpath + 'level') as f:
-                    level = f.read()
-                    if level.endswith('\n'):level = level[:-1]
+                    level = f.read().strip()
                 with open(subpath + 'type') as f:
-                    cache_type = f.read()
-                    if cache_type.endswith('\n'):cache_type = cache_type[:-1]
+                    cache_type = f.read().strip()
                 with open(subpath + 'size') as f:
-                    size = f.read()
-                    if size.endswith('\n'):size = size[:-1]
-                cpus['L%s' % level] += '%s cache : %s ; ' % (cache_type, size)   
+                    size = f.read().strip()
+                cpus['L%s' % level] += '%s %s cache. ' % (size, cache_type)   
                     
         core = 0
         with open('/proc/cpuinfo') as f:
@@ -126,8 +123,8 @@ def __cpu():
                     else: 
                         mips_name = _('CPU Mips:')
                         mips_value = v[1].strip()
-                        L1_cache_name = _('Level 1 cache size:')
-                        L2_cache_name = _('Level 2 cache size:')
+                        L1_cache_name = _('Level 1 cache:')
+                        L2_cache_name = _('Level 2 cache:')
                     L1_cache_value = cache_info['cpu%s' % (core-1)]['L1']
                     L2_cache_value = cache_info['cpu%s' % (core-1)]['L2']
                     ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
