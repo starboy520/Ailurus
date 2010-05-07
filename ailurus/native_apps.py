@@ -35,9 +35,9 @@ class WINE(N):
     if UBUNTU or MINT:
         def __init__(self):
             if APT.exist('wine1.2') and APT.exist('wine1.2-gecko'):
-                WINE.pkgs = 'wine1.2 wine1.2-gecko'
+                self.pkgs = 'wine1.2 wine1.2-gecko'
             else:
-                WINE.pkgs = 'wine wine-gecko'
+                self.pkgs = 'wine wine-gecko'
             N.__init__(self)
 
 class Enhance_Decompression_Capability(N) :
@@ -133,7 +133,7 @@ class VIM_and_VIMRC(N) :
         N.remove(self)
         file_remove ( self.vimrc, *self.lines )
 
-class Multimedia_Codecs (_apt_install) :
+class Multimedia_Codecs (N) :
     __doc__ = _('Multi-media codec')
     category = 'media'
     license = LGPL
@@ -178,7 +178,7 @@ class Liferea(N):
     if UBUNTU or MINT:
         pkgs = 'liferea'
 
-class FireWall(_apt_install):
+class FireWall(N):
     __doc__ = _('Firestarter: Configure Linux firewall')
     detail = _('Linux system comes up with a firewall "iptables". '
        'Firestarter is the graphical frontend of "iptables".')
@@ -187,7 +187,7 @@ class FireWall(_apt_install):
     if UBUNTU or MINT:
         pkgs = 'firestarter'
 
-class MACChanger(_apt_install):
+class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
     license = GPL
@@ -195,7 +195,7 @@ class MACChanger(_apt_install):
     if UBUNTU or MINT:
         pkgs = 'macchanger'
 
-class Bluetooth(_apt_install):
+class Bluetooth(N):
     __doc__ = _('Bluetooth support')
     license = GPL
     category = 'hardware'
@@ -375,7 +375,7 @@ class HardwareLister(N):
     if FEDORA:
         pkgs = 'lshw lshw-gui'
 
-class Typespeed(_apt_install) :
+class Typespeed(N) :
     'Typespeed'
     detail= _('Typespeed is a typing practise. It only runs in terminal.')
     category = 'game'
@@ -383,3 +383,36 @@ class Typespeed(_apt_install) :
     if UBUNTU or MINT:
         pkgs = "typespeed"
 
+class Full_Language_Pack(N):
+    __doc__ = _('Full language support and input method')
+    detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
+    category = 'language'
+    if UBUNTU or MINT:
+        def __init__(self):
+            import locale
+            lang = locale.getdefaultlocale()
+            try:
+                lang = lang[0].split('_')[0]
+            except AttributeError: # lang == null
+                lang = 'en'
+    
+            List = [
+                    'language-pack-' + lang,
+                    'language-support-fonts-' + lang,
+                    'language-support-input-' + lang,
+                    'language-support-translations-' + lang,
+                    'language-support-' + lang,
+                    'language-support-writing-' + lang,
+                    ]
+            try:
+                get_output('pgrep -u $USER gnome-panel')
+                List.append('language-pack-gnome-' + lang)
+            except: pass
+    
+            pkgs = []
+            for p in List:
+                if APT.exist(p): pkgs.append(p)
+    
+            self.pkgs = ' '.join(pkgs)
+            
+            N.__init__(self)

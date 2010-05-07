@@ -25,41 +25,6 @@ import sys, os
 from lib import *
 from libapp import *
 
-class Full_Language_Pack(_apt_install):
-    __doc__ = _('Full language support and input method')
-    detail = _('Because of live CD capacity limitation, the Ubuntu system does not have full language support.\n')
-    category = 'language'
-    def __init__(self):
-        import locale
-        lang = locale.getdefaultlocale()
-        try:
-            lang = lang[0].split('_')[0]
-        except AttributeError: # lang == null
-            lang = 'en'
-
-        List = [
-                'language-pack-' + lang,
-                'language-support-fonts-' + lang,
-                'language-support-input-' + lang,
-                'language-support-translations-' + lang,
-                'language-support-' + lang,
-                'language-support-writing-' + lang,
-                ]
-        try:
-            get_output('pgrep -u $USER gnome-panel')
-            List.append('language-pack-gnome-' + lang)
-        except: pass
-
-        pkgs = []
-        for p in List:
-            if APT.exist(p): pkgs.append(p)
-
-        self.pkgs = ' '.join(pkgs)
-
-        if not getattr(self.__class__, 'appended', False) and hasattr(self, 'pkgs'):
-            self.__class__.appended = True
-            self.__class__.detail += _('Command: ')+'sudo apt-get install '+self.pkgs
-
 class ColorfulBashPromptSymbols(I):
     __doc__ = _('Use colorful Bash prompt symbols')
     detail = _('Change Bash prompt symbols from '
