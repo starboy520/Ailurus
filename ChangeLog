@@ -1,3 +1,8 @@
+2010-05-07 CHEN Yangyang <skabyy@gmail.com>
+
+    * The splash window will not always on top anymore
+    * Fix a bug in "hide quick setup" check button
+
 2010-05-07 HAN Haofu <gtxx3600@gmail.com>
 
 	* Fix a bug: "CPU Cache information is incorrect in some kernel version"
@@ -9,6 +14,10 @@
     * Fix bug: Custom linux kernel cannot be removed
     * Fix bug: APT.remove failed if any package is not installed
     * Hide "Not used Linux kernels" label, when there is no unused Linux kernel.
+
+2010-05-06 CHEN Yangyang <skabyy@gmail.com>
+
+    * Fix a bug that the "clean up pane" will crash if /var/cache/ailurus is not exists
 
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 

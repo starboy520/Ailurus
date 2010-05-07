@@ -609,12 +609,6 @@ class InstallRemovePane(gtk.VBox):
         self.filter_RE = re.compile(otext.getvalue().encode(locale.getpreferredencoding()),
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
-    
-    def show_all(self):
-        gtk.VBox.show_all(self)
-        if Config.get_hide_quick_setup_pane():
-            print 'hide'
-            self.quick_setup_pane.hide_all()
 
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 0)
@@ -719,15 +713,14 @@ class InstallRemovePane(gtk.VBox):
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
         def hide_quick_setup(chkbtn):
             Config.set_hide_quick_setup_pane(chkbtn.get_active())
-            self.show_all()
-            #quick_setup_pane.hide_all()
+            notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
         quick_setup_checkbutton.connect('clicked', hide_quick_setup)
         quick_setup_pane.pack_start(quick_setup_button, False)
         quick_setup_pane.pack_start(quick_setup_checkbutton, False)
 
         self.__left_tree_view_default_select()
 
-        if Config.is_Ubuntu() or Config.is_Mint():
+        if not Config.get_hide_quick_setup_pane() and (UBUNTU or MINT):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()

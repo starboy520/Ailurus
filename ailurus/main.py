@@ -423,7 +423,6 @@ support.tipoftheday.tips = tips
 
 # load main window
 main_view = MainView()
-
 if options.system_setting or options.all:
     splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
     items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
