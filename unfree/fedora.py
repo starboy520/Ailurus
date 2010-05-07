@@ -24,7 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not Config.is_Fedora():
+if not FEDORA:
     raise Exception
 
 class _repo(I):
@@ -79,7 +79,7 @@ class Repo_Adobe(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
-    def support(self):
+    def visible(self):
         return get_arch() == 32
 
 class Repo_Skype(I):
@@ -103,7 +103,7 @@ class Repo_Skype(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
-    def support(self):
+    def visible(self):
         return get_arch() == 32
 
 class Repo_RPMFusion_Free(I):
@@ -283,7 +283,7 @@ class AdobeReader(_rpm_install):
             self.pkgs = package_dict[value]
         except KeyError:
             self.pkgs = package_dict['en']
-    def support(self):
+    def visible(self):
         return get_arch() == 32
 
 class Realplayer32(I):
@@ -350,7 +350,7 @@ class Skype(_rpm_install):
     category = 'internet'
     depends = Repo_Skype
     pkgs = 'skype'
-    def support(self):
+    def visible(self):
         return get_arch() == 32
 
 class VirtualBox_OSE(_rpm_install):

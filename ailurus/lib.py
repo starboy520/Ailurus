@@ -32,6 +32,8 @@ def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
 
 class I:
     this_is_an_installer = True
+    def self_check(self):
+        'Check errors in source code'
     
 class Config:
     @classmethod
@@ -133,10 +135,6 @@ class Config:
     def is_Poland_locale(cls):
         return cls.get_locale().startswith('pl')
     @classmethod
-    def supported_Ubuntu_version(cls, version):
-        assert isinstance(version, str) and version
-        return version in ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-    @classmethod
     def is_Ubuntu(cls):
         import os
         if not os.path.exists('/etc/lsb-release'): 
@@ -145,22 +143,13 @@ class Config:
             c = f.read()
         return 'Ubuntu' in c
     @classmethod
-    def set_Ubuntu_version(cls, version):
-        if not cls.supported_Ubuntu_version(version):
-            raise ValueError
-        cls.set_string('ubuntu-version', version)
-    @classmethod
     def get_Ubuntu_version(cls):
         '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
-        if cls.is_Ubuntu():
-            with open('/etc/lsb-release') as f:
-                lines = f.readlines()
-            for line in lines:
-                if line.startswith('DISTRIB_CODENAME='):
-                    return line.split('=')[1].strip()
-        value = cls.get_string('ubuntu-version')
-        assert cls.supported_Ubuntu_version(value), value
-        return value
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
     @classmethod
     def is_Mint(cls):
         import os
@@ -170,13 +159,16 @@ class Config:
         return 'LinuxMint' in c
     @classmethod
     def get_Mint_version(cls):
-        '''return '5', '6', '7' or '8'. '''
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'. '''
         import os
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
             if line.startswith('DISTRIB_RELEASE='):
-                return line.split('=')[1].strip()
+                a = line.split('=')[1].strip()
+        versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
+        assert a in ['5', '6', '7', '8', '9']
+        return versions[int(a)-5]
     @classmethod
     def is_Fedora(cls):
         import os
@@ -622,6 +614,7 @@ class RPM:
 
 class APT:
     fresh_cache = False
+    apt_get_update_is_called = False
     __set1 = set()
     __set2 = set()
     @classmethod
@@ -664,84 +657,32 @@ class APT:
         return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def install(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        all_packages = packages
-        packages = [ e for e in packages if not APT.installed(e) ]
-        if packages:
-            if not hasattr(cls, 'updated'):
-                APT.apt_get_update()
-                cls.updated = True
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tinstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in all_packages:
-            if not APT.installed(p): failed.append(p)
+        if cls.apt_get_update_is_called == False:
+            cls.apt_get_update()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('apt-get install -y ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if not APT.installed(p)]
         if failed:
             msg = 'Cannot install "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        # get list of not-existed packages
-        not_exist = [ e for e in packages if not APT.exist(e) ]
-        # reduce package list
-        packages = [ e for e in packages if APT.installed(e) ]
-        if packages:
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tuninstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in packages:
-            if APT.installed(p): failed.append(p)
-        if failed or not_exist:
-            msg = 'Cannot remove "%s".' % ' '.join(failed+not_exist)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if APT.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
         print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
-        run_as_root(cmd, ignore_error=True)
-        cls.updated = True
+        run_as_root_in_terminal('apt-get update')
+        cls.apt_get_update_is_called = True
         cls.cache_changed()
 
 class DPKG:
@@ -1603,12 +1544,12 @@ def check_update():
     
         import urllib2
         import re
-        if Config.is_Fedora():
+        if FEDORA:
             filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
             version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
             code_url = 'http://homerxing.fedorapeople.org/'
-        elif Config.is_Ubuntu():
-            version_string = Config.get_Ubuntu_version()
+        elif UBUNTU or MINT:
+            version_string = VERSION
             filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
             version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string
             code_url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
@@ -1713,3 +1654,18 @@ except:
 
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
+
+GNOME = Config.is_GNOME()
+XFCE = Config.is_XFCE()
+UBUNTU = Config.is_Ubuntu()
+MINT = Config.is_Mint()
+FEDORA = Config.is_Fedora()
+if UBUNTU:
+    VERSION = Config.get_Ubuntu_version()
+elif MINT:
+    VERSION = Config.get_Mint_version()
+elif FEDORA:
+    VERSION = Config.get_Fedora_version()
+else:
+    print _('Your Linux distribution is not supported. :(')
+    VERSION = ''
