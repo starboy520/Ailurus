@@ -400,7 +400,7 @@ def get_candidate_repositories():
 def get_current_official_repositories():
     'Return the official repositories currently in use'
 
-    version = Config.get_Ubuntu_version()
+    version = VERSION
     s1 = ' %s-backports ' % version
     s2 = ' %s-proposed ' % version
     s3 = ' %s-security ' % version

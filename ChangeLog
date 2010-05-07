@@ -1,3 +1,15 @@
+2010-05-07 HAN Haofu <gtxx3600@gmail.com>
+
+	* Fix a bug: "CPU Cache information is incorrect in some kernel version"
+
+2010-05-07 Homer Xing <homer.xing@gmail.com>
+
+    * Optimize source code architecture. Provide a generic architecture for software install/remove.
+    * Improve TeXLive installation. Do not download 1.4G iso any more. Reduce disk space cost.
+    * Fix bug: Custom linux kernel cannot be removed
+    * Fix bug: APT.remove failed if any package is not installed
+    * Hide "Not used Linux kernels" label, when there is no unused Linux kernel.
+
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 
     * Gray buttons if APT cache is empty. 
@@ -32,6 +44,10 @@
 
     * Merge the "Hardware information pane" and the "Linux information pane"
     * "Information pane" will now Automatically update the information
+
+2010-04-30 Homer Xing <homer.xing@gmail.com>
+
+    * Fix problem: Synaptic is not installed on KUbuntu.
 
 2010-04-28 QI Chengjie <starboy.qi@gmail.com>
 

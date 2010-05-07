@@ -34,10 +34,10 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
-        if Config.is_Ubuntu() or Config.is_Mint():
+        if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-        elif Config.is_Fedora():
+        elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
 
     def get_folder_size(self, folder_path, please_return_integer = False):
@@ -181,10 +181,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply.connect('clicked', self.remove_kernel)
         label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
-        label2 = gtk.Label(_('Not used Linux kernels are:'))
-        label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
-        self.pack_start(label2, False)
         self.__regenerate_check_buttons()
         self.pack_start(check_buttons_box, False)
         hbox = gtk.HBox()
@@ -203,13 +200,12 @@ class UbuntuCleanKernelBox(gtk.VBox):
                 else:
                     delete_list.extend([
                             '/lib/modules/%s'%kernel_version, 
-                            '/boot/System.map-%s'%kernel_version,
-                            'config-%s'%kernel_version,
-                            'initrd.img-%s'%kernel_version
-                                        ])
+                            '/boot/*-%s*'%kernel_version,])
         if remove_list:
             try:    APT.remove(*remove_list)
-            except: pass
+            except:
+                import traceback
+                traceback.print_exc()
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         if delete_list:
@@ -252,8 +248,8 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply.set_sensitive(True)
     
     def __regenerate_check_buttons(self):
-        for button in self.check_buttons_box.get_children():
-            self.check_buttons_box.remove(button)
+        for child in self.check_buttons_box.get_children():
+            self.check_buttons_box.remove(child)
         self.check_buttons_list = []
         version_list = self.version_to_packages.keys()
         version_list.sort()
@@ -266,7 +262,14 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.set_active(True)
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
-            self.check_buttons_box.pack_start(check_button, False)
+            
+        if self.check_buttons_list:
+            label = gtk.Label(_('Not used Linux kernels are:'))
+            label.set_alignment(0, 0.5)
+            self.check_buttons_box.pack_start(label, False)
+            for button in self.check_buttons_list:
+                self.check_buttons_box.pack_start(button, False)
+
         self.check_buttons_box.show_all()
     
     def get_current_kernel_version(self):
