@@ -206,15 +206,6 @@ class Shutter(_apt_install):
     depends = Repo_Shutter
     pkgs = 'shutter'
 
-#class Synapse(_apt_install):
-#    __doc__ = _('Synapse: An instance messanger')
-#    license = GPL
-#    category = 'internet'
-#    depends = Repo_Synapse
-#    pkgs = 'synapse'
-#    def visible(self):
-#        return VERSION != 'lucid'
-
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
