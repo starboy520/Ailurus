@@ -46,7 +46,8 @@ def check_class_members(app_class, default_category = 'tweak'):
     return app_class
 
 def load_app_objs(common, desktop, distribution):
-    modules = []
+    import native_apps
+    modules = [native_apps]
     for module in [common, desktop, distribution]:
         import types
         assert module==None or isinstance(module, types.ModuleType)
