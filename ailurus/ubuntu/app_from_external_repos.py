@@ -206,14 +206,13 @@ class Shutter(_apt_install):
     depends = Repo_Shutter
     pkgs = 'shutter'
 
-# Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     category = 'internet'
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
-    def visible(self):
+    def visible(self): # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
 class XBMC(_apt_install):
