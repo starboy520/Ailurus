@@ -66,7 +66,7 @@ def load_app_objs(common, desktop, distribution):
                 check_class_members(app_class)
                 app_class_obj = app_class()
                 app_class_obj.self_check()
-                if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+                if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
                 if hasattr(app_class_obj, 'installation_command'):
                     if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
@@ -100,7 +100,7 @@ def load_app_objs_from_extension(extension):
             check_class_members(app_class)
             app_class_obj = app_class()
             app_class_obj.self_check()
-            if hasattr(app_class_obj, 'support') and app_class_obj.support()==False: continue
+            if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
             if hasattr(app_class_obj, 'international') and Config.is_Chinese_locale(): continue
             if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
             app_class_obj.cache_installed = app_class_obj.installed()
