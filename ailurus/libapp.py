@@ -192,18 +192,9 @@ class N(I):
     @staticmethod
     def debian_installation_command(package_names):
         return _('Command:') + ' sudo apt-get install ' + package_names
-
     @staticmethod
     def fedora_installation_command(package_names):
         return _('Command:') + (' su -c "yum install %s"' % package_names)
-
-    if FEDORA:
-        backend = RPM
-        installation_command_backend = fedora_installation_command
-    elif UBUNTU or MINT:
-        backend = APT
-        installation_command_backend = debian_installation_command
-    
     def visible(self):
         return hasattr(self, 'pkgs')
     def self_check(self):
@@ -225,6 +216,13 @@ class N(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
         return self.installation_command_backend(self.pkgs)
+
+    if FEDORA:
+        backend = RPM
+        installation_command_backend = fedora_installation_command
+    elif UBUNTU or MINT:
+        backend = APT
+        installation_command_backend = debian_installation_command
 
 class _path_lists(I):
     def self_check(self):
