@@ -109,13 +109,6 @@ class Config:
         try:        return cls.get_bool('hide_quick_setup_pane')
         except:     return False
     @classmethod
-    def set_disable_tip(cls, value):
-        cls.set_bool('disable-tip-on-startup', value)
-    @classmethod
-    def get_disable_tip(cls):
-        try:       return cls.get_bool('disable-tip-on-startup')
-        except: return False
-    @classmethod
     def set_query_before_exit(cls, value):
         cls.set_bool('query_before_exit', value)
     @classmethod
