@@ -70,18 +70,6 @@ def image_file_button(label, image_file_name, size):
     button.add(box)
     return button
 
-def image_icon_button(icon_name, label):
-    import gtk
-    box = gtk.HBox(False, 3)
-    box.pack_start(
-        gtk.image_new_from_icon_name(icon_name, gtk.ICON_SIZE_BUTTON), False, False)           
-    l = gtk.Label()
-    l.set_text_with_mnemonic(label)
-    box.pack_start(l, False, False)
-    button = gtk.Button()
-    button.add(box)
-    return button
-
 def stock_image_only_button(stock):
     import gtk
     image = gtk.image_new_from_stock(stock, gtk.ICON_SIZE_BUTTON)
