@@ -643,6 +643,8 @@ class TeXLive(N):
     category = 'latex'
     if UBUNTU or MINT:
         pkgs = 'texlive-xetex texlive lmodern'
+    if FEDORA:
+        pkgs = 'texlive-xetex texlive-latex texlive'
 
 class TuxPaint(N):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
