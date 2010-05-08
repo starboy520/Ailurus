@@ -45,12 +45,12 @@ def gray_bg(widget):
     widget.connect('expose-event', event)
     widget.connect('map-event', event)
 
-def image_stock_button(stock, label):
+def image_stock_button(stock, text):
     import gtk
     box = gtk.HBox(False, 3)
     box.pack_start(gtk.image_new_from_stock(stock, gtk.ICON_SIZE_BUTTON), False, False)
     l = gtk.Label()
-    l.set_text_with_mnemonic(label)
+    l.set_text_with_mnemonic(text)
     box.pack_start(l, False, False)
     button = gtk.Button()
     button.add(box)
