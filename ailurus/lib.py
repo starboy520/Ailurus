@@ -118,9 +118,14 @@ class Config:
     @classmethod
     def get_locale(cls):
         import locale
-        value = locale.getdefaultlocale()[0]
-        if value: return value # language code and encoding may be None if their values cannot be determined.
-        else: return 'en_US'
+        try:
+            value = locale.getdefaultlocale()[0]
+            if value: return value # language code and encoding may be None if their values cannot be determined.
+            else: return 'en_US'
+        except ValueError: # may raise exception: "unknown locale"
+            import traceback
+            traceback.print_exc()
+            return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
         return cls.get_locale().startswith('zh')
