@@ -919,7 +919,10 @@ class FirefoxExtensions:
         
     @classmethod
     def get_extensions_path(cls):
-        return cls.get_preference_path() + '/extensions/'
+        dir = cls.get_preference_path() + '/extensions/'
+        import os
+        if not os.path.exists(dir): os.mkdir(dir)
+        return dir
 
     @classmethod
     def analysis_method1(cls, doc):

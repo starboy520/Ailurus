@@ -5,6 +5,7 @@
     * Fix a bug: exception when remove files in sources.list.d.
     * Fix a bug: nautilus-script-manager failed.
     * Fix a bug: name 'URLError' is not defined.
+    * Fix a bug: "cp" failed when install firefox extension.
 
 2010-05-07 CHEN Yangyang <skabyy@gmail.com>
 
