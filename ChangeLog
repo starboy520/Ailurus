@@ -2,6 +2,7 @@
 
     * Fix a bug: all repository give no response on Ubuntu hardy.
     * Print message if python-distutils-extra is missing.
+    * Fix a bug: exception when remove files in sources.list.d
 
 2010-05-07 CHEN Yangyang <skabyy@gmail.com>
 
