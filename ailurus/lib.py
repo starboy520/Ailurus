@@ -168,6 +168,14 @@ class Config:
             c = f.read()
         return c.split()[2].strip()
     @classmethod
+    def is_ArchLinux(cls):
+        import os
+        return os.path.exists('/etc/arch-release')
+    @classmethod
+    def get_ArchLinux_version(cls):
+        import os
+        return os.uname()[2]
+    @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
         try:
@@ -689,6 +697,31 @@ class APT:
                 cls.install(*depends)
             run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
             cls.cache_changed()
+
+class PACMAN:
+    fresh_cache = False
+    __set1 = set()
+    @classmethod
+    def cache_changed(cls):
+        cls.fresh_cache = False
+    @classmethod
+    def refresh_cache(cls):
+        if getattr(cls, 'fresh_cache', False): return
+        cls.fresh_cache = True
+        del cls.__set1
+        cls.__set1 = set()
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumppacmancache.py'
+        task = subprocess.Popen(['python', path],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__set1.add(line[:-1]) #need to modify?
+    @classmethod
+    def installed(cls, package_name):
+        is_pkg_list([package_name])
+        cls.refresh_cache()
+        return package_name in cls.__set1
 
 def get_response_time(url):
     is_string_not_empty(url)
@@ -1601,6 +1634,7 @@ XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
 FEDORA = Config.is_Fedora()
+ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
@@ -1609,6 +1643,8 @@ elif MINT:
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
+elif ARCHLUNUX:
+    VERSION = Config.get_ArchLinux_version()
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
