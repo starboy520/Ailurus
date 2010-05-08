@@ -22,15 +22,15 @@
 
 from __future__ import with_statement
 
-def get_pixbuf(file, x, y):
+def get_pixbuf(file, width, height):
     from lib import D
     import gtk
     try:
-        return gtk.gdk.pixbuf_new_from_file_at_size(file, x, y)
+        return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
     except:
         import traceback
         traceback.print_exc()
-        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)
+        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
     
 def gray_bg(w):
     import gtk
