@@ -32,18 +32,18 @@ def get_pixbuf(file, width, height):
         traceback.print_exc()
         return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
     
-def gray_bg(w):
+def gray_bg(widget):
     import gtk
-    if not isinstance(w, gtk.Entry) and not isinstance(w, gtk.TextView): raise TypeError
+    if not isinstance(widget, gtk.Entry) and not isinstance(widget, gtk.TextView): raise TypeError
     
-    def event(w, e):
-        if w.base_color_changed==False:
-            color = w.style.bg[gtk.STATE_NORMAL]
-            w.modify_base(gtk.STATE_NORMAL, color)
-            w.base_color_changed = True
-    w.base_color_changed = False
-    w.connect('expose-event', event)
-    w.connect('map-event', event)
+    def event(widget, e):
+        if widget.base_color_changed==False:
+            color = widget.style.bg[gtk.STATE_NORMAL]
+            widget.modify_base(gtk.STATE_NORMAL, color)
+            widget.base_color_changed = True
+    widget.base_color_changed = False
+    widget.connect('expose-event', event)
+    widget.connect('map-event', event)
 
 def image_stock_button(stock, label):
     import gtk
