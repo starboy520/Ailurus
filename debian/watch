@@ -1,3 +1,3 @@
 version=3
-http://code.google.com/p/ailurus/downloads/list \
-http://ailurus.googlecode.com/files/ailurus-(.*).tar.gz
+http://launchpad.net/ailurus/+download \
+http://launchpad.net/ailurus/.*/ailurus-(.*)\.tar\.gz
