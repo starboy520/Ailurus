@@ -1687,7 +1687,7 @@ elif MINT:
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
-elif ARCHLUNUX:
+elif ARCHLINUX:
     VERSION = Config.get_ArchLinux_version()
 else:
     print _('Your Linux distribution is not supported. :(')

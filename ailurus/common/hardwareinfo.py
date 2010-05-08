@@ -91,8 +91,12 @@ def __cpu():
         cache_info = {}
         for cpu_num in range(0, core):
             path = "/sys/devices/system/cpu/cpu%d/cache/" % cpu_num
-            cache_info['cpu%s' % cpu_num] = cpus = { 'L1':'','L2':'','L3':'' }
-            indexes = os.listdir(path)
+            cache_info['cpu%s' % cpu_num] = cpus = { 'L1':_('Unkown'),'L2':_('Unkown'),'L3':_('Unknown') }
+            indexes = []
+            try:
+                indexes = os.listdir(path)
+            except OSError:
+                pass
             for index in indexes:
                 subpath = path + index + '/'
                 with open(subpath + 'level') as f:
