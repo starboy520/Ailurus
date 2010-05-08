@@ -92,14 +92,6 @@ def image_file_menuitem(label, image_file_name, size, space=10):
     item.set_image(image)
     item.get_child().set_text(label)
     return item
-
-def image_icon_menuitem(label, icon_name, space=10):
-    import gtk
-    image = gtk.image_new_from_icon_name(icon_name, gtk.ICON_SIZE_MENU)
-    item = gtk.ImageMenuItem(stock_id=gtk.STOCK_ABOUT)
-    item.set_image(image)
-    item.get_child().set_text(label)
-    return item
     
 def title_menuitem(string):
     import gtk
