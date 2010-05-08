@@ -4,6 +4,7 @@
     * Print message if python-distutils-extra is missing.
     * Fix a bug: exception when remove files in sources.list.d.
     * Fix a bug: nautilus-script-manager failed.
+    * Fix a bug: name 'URLError' is not defined.
 
 2010-05-07 CHEN Yangyang <skabyy@gmail.com>
 
