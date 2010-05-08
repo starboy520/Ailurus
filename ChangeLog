@@ -8,6 +8,7 @@
     * Fix a bug: "cp" failed when install firefox extension.
     * Fix a bug: error happens when the font size is 8.5
     * Fix a bug: "unknown locale" ValueError raised for ug_CN
+    * Fix a bug: error happens when "apt-get clean" fails.
 
 2010-05-07 CHEN Yangyang <skabyy@gmail.com>
 

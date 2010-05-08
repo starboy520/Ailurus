@@ -66,7 +66,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
-            try: run_as_root('apt-get clean')
+            try: run_as_root_in_terminal('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
