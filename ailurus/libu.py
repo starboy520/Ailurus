@@ -45,30 +45,6 @@ def gray_bg(w):
     w.connect('expose-event', event)
     w.connect('map-event', event)
 
-def image_toolitem(image_path, callback, text=None, tooltip = None):
-    import gtk
-    image = gtk.image_new_from_file(image_path)
-    box = gtk.HBox(False, 3)
-    box.pack_start(image, False)
-    if text:
-        box.pack_start(gtk.Label(text), False)
-    button = gtk.Button()
-    button.add(box)
-    button.set_relief(gtk.RELIEF_NONE)
-    if tooltip: button.set_tooltip_text(tooltip)
-    button.connect('clicked', callback)
-    item = gtk.ToolItem()
-    item.add(button)
-    return item
-
-def separator_toolitem():
-    import gtk
-    w = gtk.Label()
-    w.set_size_request(15,-1)
-    item = gtk.ToolItem()
-    item.add(w)
-    return item
-
 def image_stock_button(stock, label):
     import gtk
     box = gtk.HBox(False, 3)
