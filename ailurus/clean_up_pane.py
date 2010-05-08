@@ -42,9 +42,12 @@ class CleanUpPane(gtk.VBox):
 
     def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
-        size = get_output('du -bsS ' + folder_path)
-        fsize = os.stat(folder_path).st_size
-        size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
+        if os.path.exists(folder_path):
+            size = get_output('du -bsS ' + folder_path)
+            fsize = os.stat(folder_path).st_size
+            size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
+        else:
+            size = 0
         if please_return_integer: return size
         else: return derive_size(size)
 
@@ -63,7 +66,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
-            try: run_as_root('apt-get clean')
+            try: run_as_root_in_terminal('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))

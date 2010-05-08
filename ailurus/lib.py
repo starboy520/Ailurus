@@ -118,9 +118,14 @@ class Config:
     @classmethod
     def get_locale(cls):
         import locale
-        value = locale.getdefaultlocale()[0]
-        if value: return value # language code and encoding may be None if their values cannot be determined.
-        else: return 'en_US'
+        try:
+            value = locale.getdefaultlocale()[0]
+            if value: return value # language code and encoding may be None if their values cannot be determined.
+            else: return 'en_US'
+        except ValueError: # may raise exception: "unknown locale"
+            import traceback
+            traceback.print_exc()
+            return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
         return cls.get_locale().startswith('zh')
@@ -730,7 +735,7 @@ def get_response_time(url):
     import time
     import sys
     begin = time.time()
-    if sys.version_info>(2,5): # for python 2.6+
+    if sys.version_info[:2]>(2,5): # for python 2.6+
         urllib2.urlopen(url, timeout=3)
     else: # for python 2.5
         urllib2.urlopen(url) # FIXME: no timeout!
@@ -952,7 +957,10 @@ class FirefoxExtensions:
         
     @classmethod
     def get_extensions_path(cls):
-        return cls.get_preference_path() + '/extensions/'
+        dir = cls.get_preference_path() + '/extensions/'
+        import os
+        if not os.path.exists(dir): os.mkdir(dir)
+        return dir
 
     @classmethod
     def analysis_method1(cls, doc):
@@ -1331,6 +1339,7 @@ def show_about_dialog():
           'HUANG Wei <wei.kukey@gmail.com>',
           'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
+          'DU Yue <ooooo825@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [

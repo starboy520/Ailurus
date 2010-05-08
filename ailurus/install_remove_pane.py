@@ -711,9 +711,9 @@ class InstallRemovePane(gtk.VBox):
         quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        def hide_quick_setup(w):
-            Config.set_hide_quick_setup_pane(True)
-            quick_setup_pane.hide_all()
+        def hide_quick_setup(button):
+            Config.set_hide_quick_setup_pane(button.get_active())
+            notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
         quick_setup_checkbutton.connect('clicked', hide_quick_setup)
         quick_setup_pane.pack_start(quick_setup_button, False)
         quick_setup_pane.pack_start(quick_setup_checkbutton, False)

@@ -653,7 +653,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
                 f.writelines(contents)
-        run_as_root('rm /etc/apt/sources.list.d/*')
+        run_as_root('rm /etc/apt/sources.list.d/* -f')
         notify(_('Merge complete'), ' ')
             
         

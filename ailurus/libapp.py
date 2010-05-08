@@ -280,7 +280,8 @@ class _ff_extension(I):
     def install(self):
         f = self.R.download()
         if f.endswith('.xpi') or f.endswith('.jar'):
-            run('cp %s %s'%(f, _ff_extension.ext_path) )
+            import shutil
+            shutil.copy(f, _ff_extension.ext_path)
             delay_notify_firefox_restart()
         else:
             raise NotImplementedError(self.name, f)
