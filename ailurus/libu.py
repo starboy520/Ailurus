@@ -83,7 +83,7 @@ def image_stock_menuitem(image_stock, label):
     item.get_child().set_text(label)
     return item
 
-def image_file_menuitem(label, image_file_name, size, space=10):
+def image_file_menuitem(label, image_file_name, size):
     import gtk
     pixbuf = get_pixbuf(image_file_name, size, size)
     image = gtk.Image()
