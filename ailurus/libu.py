@@ -21,75 +21,35 @@
 
 from __future__ import with_statement
 
-def get_pixbuf(file, x, y):
+def get_pixbuf(file, width, height):
     from lib import D
     import gtk
     try:
-        return gtk.gdk.pixbuf_new_from_file_at_size(file, x, y)
+        return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
     except:
         import traceback
         traceback.print_exc()
-        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)
+        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
     
-def gray_bg(w):
+def gray_bg(widget):
     import gtk
-    if not isinstance(w, gtk.Entry) and not isinstance(w, gtk.TextView): raise TypeError
+    if not isinstance(widget, gtk.Entry) and not isinstance(widget, gtk.TextView): raise TypeError
     
-    def event(w, e):
-        if w.base_color_changed==False:
-            color = w.style.bg[gtk.STATE_NORMAL]
-            w.modify_base(gtk.STATE_NORMAL, color)
-            w.base_color_changed = True
-    w.base_color_changed = False
-    w.connect('expose-event', event)
-    w.connect('map-event', event)
+    def event(widget, e):
+        if widget.base_color_changed==False:
+            color = widget.style.bg[gtk.STATE_NORMAL]
+            widget.modify_base(gtk.STATE_NORMAL, color)
+            widget.base_color_changed = True
+    widget.base_color_changed = False
+    widget.connect('expose-event', event)
+    widget.connect('map-event', event)
 
-def stock_toolitem(stock, callback, text=None, tooltip = None):
-    import gtk
-    image = gtk.image_new_from_stock(stock, gtk.ICON_SIZE_SMALL_TOOLBAR)
-    box = gtk.HBox(False, 3)
-    box.pack_start(image, False)
-    if text:
-        box.pack_start(gtk.Label(text), False)
-    button = gtk.Button()
-    button.add(box)
-    button.set_relief(gtk.RELIEF_NONE)
-    if tooltip: button.set_tooltip_text(tooltip)
-    button.connect('clicked', callback)
-    item = gtk.ToolItem()
-    item.add(button)
-    return item
-
-def image_toolitem(image_path, callback, text=None, tooltip = None):
-    import gtk
-    image = gtk.image_new_from_file(image_path)
-    box = gtk.HBox(False, 3)
-    box.pack_start(image, False)
-    if text:
-        box.pack_start(gtk.Label(text), False)
-    button = gtk.Button()
-    button.add(box)
-    button.set_relief(gtk.RELIEF_NONE)
-    if tooltip: button.set_tooltip_text(tooltip)
-    button.connect('clicked', callback)
-    item = gtk.ToolItem()
-    item.add(button)
-    return item
-
-def separator_toolitem():
-    import gtk
-    w = gtk.Label()
-    w.set_size_request(15,-1)
-    item = gtk.ToolItem()
-    item.add(w)
-    return item
-
-def image_stock_button(stock, label):
+def image_stock_button(stock, text):
     import gtk
     box = gtk.HBox(False, 3)
     box.pack_start(gtk.image_new_from_stock(stock, gtk.ICON_SIZE_BUTTON), False, False)
     l = gtk.Label()
-    l.set_text_with_mnemonic(label)
+    l.set_text_with_mnemonic(text)
     box.pack_start(l, False, False)
     button = gtk.Button()
     button.add(box)
@@ -102,18 +62,6 @@ def image_file_button(label, image_file_name, size):
     image.set_from_pixbuf(pixbuf)
     box = gtk.HBox(False, 3)
     box.pack_start(image, False, False)
-    l = gtk.Label()
-    l.set_text_with_mnemonic(label)
-    box.pack_start(l, False, False)
-    button = gtk.Button()
-    button.add(box)
-    return button
-
-def image_icon_button(icon_name, label):
-    import gtk
-    box = gtk.HBox(False, 3)
-    box.pack_start(
-        gtk.image_new_from_icon_name(icon_name, gtk.ICON_SIZE_BUTTON), False, False)           
     l = gtk.Label()
     l.set_text_with_mnemonic(label)
     box.pack_start(l, False, False)
@@ -134,19 +82,11 @@ def image_stock_menuitem(image_stock, label):
     item.get_child().set_text(label)
     return item
 
-def image_file_menuitem(label, image_file_name, size, space=10):
+def image_file_menuitem(label, image_file_name, size):
     import gtk
     pixbuf = get_pixbuf(image_file_name, size, size)
     image = gtk.Image()
     image.set_from_pixbuf(pixbuf)
-    item = gtk.ImageMenuItem(stock_id=gtk.STOCK_ABOUT)
-    item.set_image(image)
-    item.get_child().set_text(label)
-    return item
-
-def image_icon_menuitem(label, icon_name, space=10):
-    import gtk
-    image = gtk.image_new_from_icon_name(icon_name, gtk.ICON_SIZE_MENU)
     item = gtk.ImageMenuItem(stock_id=gtk.STOCK_ABOUT)
     item.set_image(image)
     item.get_child().set_text(label)

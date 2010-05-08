@@ -696,7 +696,7 @@ def get_response_time(url):
     import time
     import sys
     begin = time.time()
-    if sys.version_info>(2,5): # for python 2.6+
+    if sys.version_info[:2]>(2,5): # for python 2.6+
         urllib2.urlopen(url, timeout=3)
     else: # for python 2.5
         urllib2.urlopen(url) # FIXME: no timeout!

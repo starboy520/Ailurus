@@ -114,7 +114,7 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = ImageChooser('The "start-here" icon is %s'% path, 24, 24)
+    i = ImageChooser(_('The "start-here" icon is %s') % path, 24, 24)
     try:
         i.display_image(path)
     except:
