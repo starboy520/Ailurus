@@ -1,3 +1,7 @@
+2010-05-08 Homer Xing <homer.xing@gmail.com>
+
+    * Fix a bug: all repository give no response on Ubuntu hardy.
+
 2010-05-07 CHEN Yangyang <skabyy@gmail.com>
 
     * The splash window will not always on top anymore
