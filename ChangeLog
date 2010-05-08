@@ -1,3 +1,7 @@
+2010-05-08 DU Yue <ooooo825@gmail.com>
+
+    * Add XELatex support for Fedora
+
 2010-05-08 Homer Xing <homer.xing@gmail.com>
 
     * Fix a bug: all repository give no response on Ubuntu hardy.
