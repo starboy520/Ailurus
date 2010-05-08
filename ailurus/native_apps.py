@@ -377,6 +377,8 @@ class Nautilus_Audio_Convert(N):
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
         def install(self):
             N.install(self)
+            if not APT.installed('nautilus-script-manager'):
+                APT.install('nautilus-script-manager')
             run('nautilus-script-manager enable ConvertAudioFile')
 
 class Nautilus_Filename_Repairer(N):
@@ -424,6 +426,8 @@ class Nautilus_Script_Collection_Svn(N):
         pkgs = 'nautilus-script-collection-svn'
         def install(self):
             N.install(self)
+            if not APT.installed('nautilus-script-manager'):
+                APT.install('nautilus-script-manager')
             run('nautilus-script-manager enable Subversion')
         
 class Nautilus_Search_Tool(N):
