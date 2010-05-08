@@ -39,6 +39,8 @@ class CleanUpPane(gtk.VBox):
             self.pack_start(UbuntuCleanKernelBox(), False)
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
+        elif ARCHLINUX:
+            self.pack_start(self.clean_pacman_cache_button(), False)
 
     def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
@@ -102,6 +104,20 @@ class CleanUpPane(gtk.VBox):
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
         return button
     
+    def clean_pacman_cache_button(self):
+        label = gtk.Label(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
+        button = gtk.Button()
+        button.add(label)
+        button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
+        def __clean_up(button, label):
+            try: run_as_root_in_terminal('pacman -Sc --noconfirm')
+            except AccessDeniedError: pass
+            label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
+            button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
+        button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command: sudo pacman -Sc'))
+        return button
+
     def clean_recently_used_document_button(self):
         def clear(w):
             import os

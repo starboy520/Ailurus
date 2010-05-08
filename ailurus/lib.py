@@ -660,7 +660,6 @@ class APT:
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        APT.cache_changed()
         packages = [p for p in packages if APT.installed(p)]
         run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
         APT.cache_changed()
@@ -705,7 +704,8 @@ class APT:
 
 class PACMAN:
     fresh_cache = False
-    __set1 = set()
+    pacman_sync_called = False
+    __pkgs = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -713,20 +713,55 @@ class PACMAN:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__set1
-        cls.__set1 = set()
+        del cls.__pkgs
+        cls.__pkgs = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumppacmancache.py'
-        task = subprocess.Popen(['python', path],
+        #get installed package names
+        task = subprocess.Popen(['pacman', '-Q'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__set1.add(line[:-1]) #need to modify?
+            cls.__pkgs.add(line[:line.find(' ')])
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.__set1
+        return package_name in cls.__pkgs
+    @classmethod
+    def install(cls, *package):
+        is_pkg_list(packages)
+        if not cls.pacman_sync_called:
+            cls.pacman_sync()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if not PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot install "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def install_local(cls, path):
+        assert isinstance(path, str)
+        import os
+        assert os.path.exists(path)
+        run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
+        cls.cache_changed()
+    @classmethod
+    def remove(cls, *package):
+        is_pkg_list(packages)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        packages = [p for p in packages if PACMAN.installed(p)]
+        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def pacman_sync():
+        print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
+        run_as_root_in_terminal('pacman -Sy')
+        cls.pacman_sync_called = True
 
 def get_response_time(url):
     is_string_not_empty(url)
