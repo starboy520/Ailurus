@@ -1339,7 +1339,7 @@ def show_about_dialog():
           'HUANG Wei <wei.kukey@gmail.com>',
           'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
-          'DU Yue <ooooo825@gmail.com>',
+          'DU Yue <elyes.du@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
