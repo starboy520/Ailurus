@@ -1,3 +1,10 @@
+2010-05-09 SHANG Yuanchun <idealities@gmail.com>
+
+    * Clear pacman cache on archlinux
+    * Class PACMAN for install packages on archlinux
+    * Gray apply button when user doesn't want to remove unused kernels
+    * hide rows when ailurus can't get L1 and L2 cache info of cpu
+
 2010-05-09 DU Yue <elyes.du@gmail.com>
 
     * Fix a bug in is_package_names_string(), since some package names may have '_' or '+'.

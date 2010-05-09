@@ -261,8 +261,9 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.label.set_markup("%s" % check_button.kernel_version)
         else:
             check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
-        button_apply.set_sensitive(True)
-    
+        button_apply.set_sensitive(bool([c for c in
+                self.check_buttons_list if not c.get_active()]))
+
     def __regenerate_check_buttons(self):
         for child in self.check_buttons_box.get_children():
             self.check_buttons_box.remove(child)

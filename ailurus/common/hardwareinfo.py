@@ -91,7 +91,7 @@ def __cpu():
         cache_info = {}
         for cpu_num in range(0, core):
             path = "/sys/devices/system/cpu/cpu%d/cache/" % cpu_num
-            cache_info['cpu%s' % cpu_num] = cpus = { 'L1':_('Unknown'),'L2':_('Unknown'),'L3':_('Unknown') }
+            cache_info['cpu%s' % cpu_num] = cpus = { 'L1':'','L2':'','L3':'' }
             indexes = []
             try:
                 indexes = os.listdir(path)
@@ -131,8 +131,8 @@ def __cpu():
                         L2_cache_name = _('Level 2 cache:')
                     L1_cache_value = cache_info['cpu%s' % (core-1)]['L1']
                     L2_cache_value = cache_info['cpu%s' % (core-1)]['L2']
-                    ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
-                    ret.append(row(L2_cache_name, L2_cache_value, D+'umut_icons/i_cpu.png')) 
+                    if L1_cache_value != '': ret.append(row(L1_cache_name, L1_cache_value, D+'umut_icons/i_cpu.png'))
+                    if L2_cache_value != '': ret.append(row(L2_cache_name, L2_cache_value, D+'umut_icons/i_cpu.png'))
                     ret.append(row(mips_name, mips_value, D+'umut_icons/i_cpu.png', _('It is a measure for the computation speed. "Mips" is short for Millions of Instructions Per Second.')))
             
             _64bit = _('No')
