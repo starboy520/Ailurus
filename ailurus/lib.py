@@ -706,6 +706,7 @@ class PACMAN:
     fresh_cache = False
     pacman_sync_called = False
     __pkgs = set()
+    __allpkgs = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -714,7 +715,9 @@ class PACMAN:
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
         del cls.__pkgs
+        del cls.__allpkgs
         cls.__pkgs = set()
+        cls.__allpkgs = set()
         import subprocess, os
         #get installed package names
         task = subprocess.Popen(['pacman', '-Q'],
@@ -722,6 +725,16 @@ class PACMAN:
             )
         for line in task.stdout:
             cls.__pkgs.add(line[:line.find(' ')])
+        #get all existing package names
+        task = subprocess.Popen(['pacman', '-Sl'],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__allpkgs.add(line[line.find(' ')+1:line.rfind(' ')])
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__allpkgs
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
