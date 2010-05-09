@@ -1,3 +1,8 @@
+2010-05-09 DU Yue <elyes.du@gmail.com>
+
+    * Fix a bug in is_package_names_string(), since some package names may have '_' or '+'.
+    * Add some software installation entries for Fedora
+
 2010-05-08 DU Yue <elyes.du@gmail.com>
 
     * Add XELatex support for Fedora
