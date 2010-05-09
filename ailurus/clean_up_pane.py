@@ -110,7 +110,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         def __clean_up(button, label):
-            try: run_as_root_in_terminal('pacman -Sc --noconfirm')
+            try: run_as_root('rm -rf /var/cache/pacman/pkg/*')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
