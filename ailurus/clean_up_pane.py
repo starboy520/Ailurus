@@ -261,8 +261,15 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.label.set_markup("%s" % check_button.kernel_version)
         else:
             check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
-        button_apply.set_sensitive(True)
-    
+
+    def check_button_clicked(self, check_button, button_apply):
+        toclean = False
+        for checkbutton in self.check_buttons_list:
+            if checkbutton.get_active() == False:
+                toclean = True
+                break
+        button_apply.set_sensitive(toclean)
+
     def __regenerate_check_buttons(self):
         for child in self.check_buttons_box.get_children():
             self.check_buttons_box.remove(child)
@@ -277,6 +284,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.add(label)
             check_button.set_active(True)
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
+            check_button.connect('clicked', self.check_button_clicked, self.button_apply)
             self.check_buttons_list.append(check_button)
             
         if self.check_buttons_list:
