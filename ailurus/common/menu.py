@@ -253,10 +253,15 @@ def __others(main_view):
     about.connect('activate', lambda *w: show_about_dialog())
     
     changelog = gtk.MenuItem( _('Read changelog') )
-    changelog.connect('activate', lambda *w: show_text_window('Ailurus changelog','/usr/share/ailurus/ChangeLog'))
+    changelog.connect('activate', lambda *w: show_changelog('Ailurus changelog','/usr/share/ailurus/ChangeLog'))
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 
+def show_changelog(title, path):
+    with open(path) as f:
+        content = f.read()
+    show_text_window(title, content)
+        
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
 

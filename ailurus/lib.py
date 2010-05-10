@@ -1657,12 +1657,11 @@ def check_update():
         import traceback
         traceback.print_exc()
         
-def show_text_window(title, path):
+def show_text_window(title, content):
     import gtk
     buffer = gtk.TextBuffer()
-    with open(path) as f:
-        buffer.set_text(f.read())
-        textview = gtk.TextView()
+    buffer.set_text(content)
+    textview = gtk.TextView()
     textview.set_buffer(buffer)
     textview.set_editable(False)
     textview.set_cursor_visible(False)
@@ -1674,6 +1673,12 @@ def show_text_window(title, path):
 
     def delete_event(w,event):
         return False
+#    from libu import image_stock_button
+#    button = image_stock_button(gtk.STOCK_QUIT, _('Quit') )
+#    button.set_size_request(10,10)
+#    table = gtk.Table()
+#    table.attach(scroll, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+#    table.attach(button, 1, 2, 1, 2)
     window = gtk.Window()
     window.set_title(title)
     window.add(scroll)
