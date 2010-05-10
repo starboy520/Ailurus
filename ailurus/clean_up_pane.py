@@ -110,12 +110,12 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         def __clean_up(button, label):
-            try: run_as_root('rm -rf /var/cache/pacman/pkg/*')
+            try: run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command: sudo pacman -Sc'))
+        button.set_tooltip_text(_('Command:') + ' rm -rf /var/cache/pacman/pkg/*') #sudo pacman -Sc
         return button
 
     def clean_recently_used_document_button(self):

@@ -176,10 +176,7 @@ class Config:
     def is_ArchLinux(cls):
         import os
         return os.path.exists('/etc/arch-release')
-    @classmethod
-    def get_ArchLinux_version(cls):
-        import os
-        return os.uname()[2]
+    # There is no get_arch_version, since ArchLinux has no version.
     @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
@@ -714,8 +711,6 @@ class PACMAN:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__pkgs
-        del cls.__allpkgs
         cls.__pkgs = set()
         cls.__allpkgs = set()
         import subprocess, os
@@ -724,13 +719,13 @@ class PACMAN:
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__pkgs.add(line[:line.find(' ')])
+            cls.__pkgs.add(line.strip())
         #get all existing package names
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__allpkgs.add(line[line.find(' ')+1:line.rfind(' ')])
+            cls.__allpkgs.add(line.strip())
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
@@ -1701,7 +1696,7 @@ elif MINT:
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
-    VERSION = Config.get_ArchLinux_version()
+    VERSION = '' # ArchLinux has no version
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
