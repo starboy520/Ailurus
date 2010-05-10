@@ -726,7 +726,7 @@ class PACMAN:
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__allpkgs.add(line.strip())
+            cls.__allpkgs.add(line.split()[1])
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
