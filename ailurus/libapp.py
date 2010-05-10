@@ -140,7 +140,7 @@ def is_package_names_string(string):
         raise ValueError, 'String is empty.'
     for pkg in string.split():
         import re
-        if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
+        if re.match(r'^[a-zA-Z0-9._+-]+$', pkg) is None:
             raise ValueError, pkg
         if pkg[0]=='-':
             raise ValueError, pkg
@@ -279,7 +279,8 @@ class _ff_extension(I):
     def install(self):
         f = self.R.download()
         if f.endswith('.xpi') or f.endswith('.jar'):
-            run('cp %s %s'%(f, _ff_extension.ext_path) )
+            import shutil
+            shutil.copy(f, _ff_extension.ext_path)
             delay_notify_firefox_restart()
         else:
             raise NotImplementedError(self.name, f)

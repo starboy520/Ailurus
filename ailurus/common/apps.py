@@ -166,23 +166,6 @@ class Speed_Up_Firefox(I):
         run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
         run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
-# I think it is better to create a page in "System setting" pane.
-#class Firefox_config_tweak(I):
-#    __doc__ = _('Some Useful Firefox Tweak')
-#    detail = (_('There are some useful tweaks can help you make Firefox easy to use.\n'
-#                'All tweaks comes from DaringSoule (daringsoule@bluevalley.net), Thanks a lot!'))
-#    def install(self):
-#	run('cp /' + self.firefox_path + '/prefs.js ' + '/' + self.firefox_path + '/prefs.js.bak')
-#	run('cp /usr/share/ailurus/support/user.js ' + '/'+self.firefox_path)
-#
-#    def installed(self):
-#        return (os.path.isfile('/' +self.firefox_path + '/user.js'))
-#    def remove(self):
-#        run('rm /' + self.firefox_path + '/user.js')
-#        run('cp /' + self.firefox_path + '/prefs.js.bak ' + '/' + self.firefox_path + '/prefs.js')
-#    def __init__(self):
-#        self.firefox_path = FirefoxExtensions.get_extensions_path()[1:-11] 
-
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
     detail = ( 

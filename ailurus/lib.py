@@ -117,9 +117,14 @@ class Config:
     @classmethod
     def get_locale(cls):
         import locale
-        value = locale.getdefaultlocale()[0]
-        if value: return value # language code and encoding may be None if their values cannot be determined.
-        else: return 'en_US'
+        try:
+            value = locale.getdefaultlocale()[0]
+            if value: return value # language code and encoding may be None if their values cannot be determined.
+            else: return 'en_US'
+        except ValueError: # may raise exception: "unknown locale"
+            import traceback
+            traceback.print_exc()
+            return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
         return cls.get_locale().startswith('zh')
@@ -166,6 +171,11 @@ class Config:
         with open('/etc/fedora-release') as f:
             c = f.read()
         return c.split()[2].strip()
+    @classmethod
+    def is_ArchLinux(cls):
+        import os
+        return os.path.exists('/etc/arch-release')
+    # There is no get_arch_version, since ArchLinux has no version.
     @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
@@ -646,7 +656,6 @@ class APT:
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        APT.cache_changed()
         packages = [p for p in packages if APT.installed(p)]
         run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
         APT.cache_changed()
@@ -688,6 +697,78 @@ class APT:
                 cls.install(*depends)
             run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
             cls.cache_changed()
+
+class PACMAN:
+    fresh_cache = False
+    pacman_sync_called = False
+    __pkgs = set()
+    __allpkgs = set()
+    @classmethod
+    def cache_changed(cls):
+        cls.fresh_cache = False
+    @classmethod
+    def refresh_cache(cls):
+        if getattr(cls, 'fresh_cache', False): return
+        cls.fresh_cache = True
+        cls.__pkgs = set()
+        cls.__allpkgs = set()
+        import subprocess, os
+        #get installed package names
+        task = subprocess.Popen(['pacman', '-Q'],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__pkgs.add(line.strip())
+        #get all existing package names
+        task = subprocess.Popen(['pacman', '-Sl'],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__allpkgs.add(line.strip())
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__allpkgs
+    @classmethod
+    def installed(cls, package_name):
+        is_pkg_list([package_name])
+        cls.refresh_cache()
+        return package_name in cls.__pkgs
+    @classmethod
+    def install(cls, *package):
+        is_pkg_list(packages)
+        if not cls.pacman_sync_called:
+            cls.pacman_sync()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if not PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot install "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def install_local(cls, path):
+        assert isinstance(path, str)
+        import os
+        assert os.path.exists(path)
+        run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
+        cls.cache_changed()
+    @classmethod
+    def remove(cls, *package):
+        is_pkg_list(packages)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        packages = [p for p in packages if PACMAN.installed(p)]
+        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def pacman_sync():
+        print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
+        run_as_root_in_terminal('pacman -Sy')
+        cls.pacman_sync_called = True
 
 def get_response_time(url):
     is_string_not_empty(url)
@@ -918,7 +999,10 @@ class FirefoxExtensions:
         
     @classmethod
     def get_extensions_path(cls):
-        return cls.get_preference_path() + '/extensions/'
+        dir = cls.get_preference_path() + '/extensions/'
+        import os
+        if not os.path.exists(dir): os.mkdir(dir)
+        return dir
 
     @classmethod
     def analysis_method1(cls, doc):
@@ -1297,6 +1381,7 @@ def show_about_dialog():
           'HUANG Wei <wei.kukey@gmail.com>',
           'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
+          'DU Yue <elyes.du@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
@@ -1403,7 +1488,7 @@ def show_special_thank_dialog():
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
-    print >>text, 'DaringSoule, Ramesh Mandaleeka</big></b>'
+    print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
@@ -1600,6 +1685,7 @@ XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
 FEDORA = Config.is_Fedora()
+ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
@@ -1608,6 +1694,8 @@ elif MINT:
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
+elif ARCHLINUX:
+    VERSION = '' # ArchLinux has no version
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
