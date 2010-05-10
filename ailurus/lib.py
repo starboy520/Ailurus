@@ -1657,10 +1657,10 @@ def check_update():
         import traceback
         traceback.print_exc()
         
-def show_text_window(title, content):
+def show_text_window(title, path):
     import gtk
     buffer = gtk.TextBuffer()
-    with open(content) as f:
+    with open(path) as f:
         buffer.set_text(f.read())
         textview = gtk.TextView()
     textview.set_buffer(buffer)
@@ -1671,19 +1671,11 @@ def show_text_window(title, content):
     scroll.add(textview)
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
     scroll.set_shadow_type(gtk.SHADOW_IN)
-#    dialog = gtk.Dialog( _(title), None, 
-#                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-#                buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-#    dialog.set_border_width(10)
-#    dialog.vbox.pack_start(scroll)
-#    dialog.vbox.set_size_request(700, 500)
-#    dialog.vbox.show_all()
-#    dialog.run()
-#    dialog.destroy()
+
     def delete_event(w,event):
         return False
     window = gtk.Window()
-    window.set_title(_(title))
+    window.set_title(title)
     window.add(scroll)
     window.set_default_size(700, 500)
     window.set_border_width(10)

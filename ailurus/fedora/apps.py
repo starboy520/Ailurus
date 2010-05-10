@@ -382,23 +382,7 @@ class Nautilus_Search_Tool(_rpm_install):
     license = GPL
     category = 'nautilus'
     pkgs = 'nautilus-search-tool'
-
-#def create_image_icon():
-#    path = D + 'umut_icons/imagemagick.png'
-#    run_as_root('cp %s /usr/share/icons/ ' %path)
-#    icon = '/usr/share/applications/imagemagick.desktop' 
-#    with TempOwn(icon) as o:
-#        with open(icon, 'w') as f:
-#            f.write('''[Desktop Entry]
-#Name=ImageMagick
-#Exec=display %f    
-#Encoding=UTF-8
-#StartupNotify=true
-#Terminal=true
-#Type=Application
-#Categories=GNOME;GTK;Graphics;
-#Icon=/usr/share/icons/imagemagick.png''')
-
+    
 class ImageMagick(_rpm_install):
     __doc__ = _('ImageMagick: Edit images')
     detail = _('You can start it by /usr/bin/display')
@@ -410,24 +394,24 @@ class ImageMagick(_rpm_install):
     def install(self):
         RPM.install(self.pkgs)
         path = D + 'umut_icons/imagemagick.png'
-        run_as_root('cp %s /usr/share/icons/ ' %path)
+        run_as_root('cp %s /usr/share/icons/ ' % path)
         with TempOwn(self.icon) as o:
             with open(self.icon, 'w') as f:
-                f.write('''[Desktop Entry]
-    Name=ImageMagick
-    Exec=display %f    
-    Encoding=UTF-8
-    StartupNotify=true
-    Terminal=true
-    Type=Application
-    Categories=GNOME;GTK;Graphics;
-    Icon=/usr/share/icons/imagemagick.png''')
+                f.write('[Desktop Entry]\n'
+    'Name=ImageMagick\n'
+    'Exec=display %f\n'    
+    'Encoding=UTF-8\n'
+    'StartupNotify=true\n'
+    'Terminal=true\n'
+    'Type=Application\n'
+    'Categories=GNOME;GTK;Graphics;\n'
+    'Icon=/usr/share/icons/imagemagick.png\n')
         
     def remove(self):
         RPM.remove(self.pkgs)
         import os
         if os.path.exists(self.icon):
-            run_as_root('rm %s'%self.icon )
+            run_as_root('rm %s' % self.icon )
         
     
 
