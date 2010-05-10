@@ -1679,12 +1679,13 @@ def show_text_window(title, content):
     from libu import image_stock_button
     button = image_stock_button(gtk.STOCK_QUIT, _('Quit') )
     button.connect_object("clicked", gtk.Widget.destroy, window)
-    table = gtk.Table()
-    table.attach(button, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
-    
+    from libu import right_align
+    button = right_align(button)
     box = gtk.VBox(False, 5)
     box.pack_start(scroll)
-    box.pack_start(table)
+    box.pack_start(button)
+   
+    
     window.set_title(title)
     window.add(box)
     window.set_default_size(700, 500)
