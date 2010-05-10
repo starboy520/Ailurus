@@ -720,7 +720,7 @@ class PACMAN:
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__pkgs.add(line.strip())
+            cls.__pkgs.add(line.split()[0])
         #get all existing package names
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
