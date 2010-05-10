@@ -1657,6 +1657,11 @@ def check_update():
         import traceback
         traceback.print_exc()
         
+def show_changelog(title, path):
+    with open(path) as f:
+        content = f.read()
+    show_text_window(title, content)
+           
 def show_text_window(title, content):
     import gtk
     window = gtk.Window()
