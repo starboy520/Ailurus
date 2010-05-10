@@ -1659,6 +1659,7 @@ def check_update():
         
 def show_text_window(title, content):
     import gtk
+    window = gtk.Window()
     buffer = gtk.TextBuffer()
     buffer.set_text(content)
     textview = gtk.TextView()
@@ -1668,20 +1669,24 @@ def show_text_window(title, content):
     textview.set_wrap_mode(gtk.WRAP_WORD)
     scroll = gtk.ScrolledWindow()
     scroll.add(textview)
+    scroll.set_size_request(700,400)
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
     scroll.set_shadow_type(gtk.SHADOW_IN)
 
     def delete_event(w,event):
         return False
-#    from libu import image_stock_button
-#    button = image_stock_button(gtk.STOCK_QUIT, _('Quit') )
-#    button.set_size_request(10,10)
-#    table = gtk.Table()
-#    table.attach(scroll, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-#    table.attach(button, 1, 2, 1, 2)
-    window = gtk.Window()
+    
+    from libu import image_stock_button
+    button = image_stock_button(gtk.STOCK_QUIT, _('Quit') )
+    button.connect_object("clicked", gtk.Widget.destroy, window)
+    table = gtk.Table()
+    table.attach(button, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
+    
+    box = gtk.VBox(False, 5)
+    box.pack_start(scroll)
+    box.pack_start(table)
     window.set_title(title)
-    window.add(scroll)
+    window.add(box)
     window.set_default_size(700, 500)
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
