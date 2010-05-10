@@ -1,10 +1,10 @@
 2010-05-06 QI Chengjie <starboy.qi@gmail.com>
 
-	* Sorting icons by name in "System Setting" pane
-	* Create imagemagick shortcut
-	* Extract the text dialog to a specific function
-	* Add "copy url" in the "Fastest Mirror" pane
-	* Add timeout for notify
+    * Sorting icons by name in "System Setting" pane
+    * Create imagemagick shortcut
+    * Extract the text dialog to a specific function
+    * Add "copy url" in the "Fastest Mirror" pane
+    * Add timeout for notify
     * Add a Linux skill
 
 2010-05-09 SHANG Yuanchun <idealities@gmail.com>

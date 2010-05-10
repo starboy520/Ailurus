@@ -1626,7 +1626,7 @@ def show_text_window(title, path):
     buffer = gtk.TextBuffer()
     with open(path) as f:
         buffer.set_text(f.read())
-        textview = gtk.TextView()
+    textview = gtk.TextView()
     textview.set_buffer(buffer)
     textview.set_editable(False)
     textview.set_cursor_visible(False)
@@ -1636,15 +1636,12 @@ def show_text_window(title, path):
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
     scroll.set_shadow_type(gtk.SHADOW_IN)
 
-    def delete_event(w,event):
-        return False
     window = gtk.Window()
     window.set_title(title)
     window.add(scroll)
     window.set_default_size(700, 500)
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
-    window.connect('delete_event',delete_event)
     window.show_all()
     
 Config.init()
