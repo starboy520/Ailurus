@@ -442,6 +442,7 @@ def notify(title, content):
         import pynotify
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
+        n.set_timeout(20000)
         n.show()
     except:
         import sys, traceback
@@ -1619,13 +1620,13 @@ def check_update():
     except:
         import traceback
         traceback.print_exc()
-    
-def show_changelog():
+        
+def show_text_window(title, path):
     import gtk
     buffer = gtk.TextBuffer()
-    with open('/usr/share/ailurus/ChangeLog') as f:
+    with open(path) as f:
         buffer.set_text(f.read())
-    textview = gtk.TextView()
+        textview = gtk.TextView()
     textview.set_buffer(buffer)
     textview.set_editable(False)
     textview.set_cursor_visible(False)
@@ -1634,17 +1635,18 @@ def show_changelog():
     scroll.add(textview)
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
     scroll.set_shadow_type(gtk.SHADOW_IN)
-    dialog = gtk.Dialog( _('Ailurus changelog'), None, 
-                gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-                buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-    dialog.set_border_width(10)
-    dialog.vbox.pack_start(scroll)
-    dialog.vbox.set_size_request(700, 500)
-    dialog.vbox.show_all()
-    dialog.run()
-    dialog.destroy()
 
-
+    def delete_event(w,event):
+        return False
+    window = gtk.Window()
+    window.set_title(title)
+    window.add(scroll)
+    window.set_default_size(700, 500)
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.connect('delete_event',delete_event)
+    window.show_all()
+    
 Config.init()
 
 install_locale()
@@ -1677,6 +1679,7 @@ except:
         import traceback
         traceback.print_exc()
         
+
 
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
