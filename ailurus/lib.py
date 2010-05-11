@@ -1620,12 +1620,15 @@ def check_update():
     except:
         import traceback
         traceback.print_exc()
+
+def show_changelog():
+    with open(D+'/../ChangeLog') as f:
+        show_text_window(_('Ailurus changelog'), f.read())
         
-def show_text_window(title, path):
+def show_text_window(title, content):
     import gtk
     buffer = gtk.TextBuffer()
-    with open(path) as f:
-        buffer.set_text(f.read())
+    buffer.set_text(content)
     textview = gtk.TextView()
     textview.set_buffer(buffer)
     textview.set_editable(False)
