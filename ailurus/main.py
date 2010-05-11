@@ -385,9 +385,7 @@ class MainView:
 
     def show_day_tip(self, *w):
         from support.tipoftheday import TipOfTheDay
-        w=TipOfTheDay()
-        w.run()
-        w.destroy()
+        TipOfTheDay()
 
     def register(self, pane):
         key = pane.__class__.__name__

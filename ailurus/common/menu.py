@@ -55,9 +55,7 @@ def __study_linux(main_view):
     study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16)
     def show_day_tip(*w):
         from support.tipoftheday import TipOfTheDay
-        w=TipOfTheDay()
-        w.run()
-        w.destroy()
+        TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
