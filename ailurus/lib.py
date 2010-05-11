@@ -1639,7 +1639,7 @@ def show_text_window(title, path):
     window = gtk.Window()
     window.set_title(title)
     window.add(scroll)
-    window.set_default_size(700, 500)
+    window.set_default_size(600, 400)
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
     window.show_all()
