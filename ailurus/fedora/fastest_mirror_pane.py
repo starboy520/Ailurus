@@ -180,6 +180,9 @@ class FedoraFastestMirrorPane(gtk.VBox):
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
+        copy_repos = gtk.ImageMenuItem(stock_id = gtk.STOCK_COPY)
+        copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
+        
         popupmenu = gtk.Menu()
         popupmenu.append(use_selected)
         popupmenu.append(detect_speed_of_selected_repos)
@@ -191,6 +194,21 @@ class FedoraFastestMirrorPane(gtk.VBox):
         popupmenu.show_all()
         return popupmenu
 
+    def __callback__copy_selected_repos(self, w, treeview):
+        selection = treeview.get_selection()
+        model, pathlist = selection.get_selected_rows()
+        if pathlist == None or len(pathlist)==0: # select nothing
+            return
+        
+        import StringIO
+        msg = StringIO.StringIO()
+        for path in pathlist:
+            iter = model.get_iter(path)
+            print >>msg, model.get_value(iter, self.URL)
+        content = msg.getvalue()
+        clipboard = gtk.clipboard_get()
+        clipboard.set_text(content)
+               
     def __callback__detect_selected_repos_speed(self, w, treeview):
         selection = treeview.get_selection()
         model, pathlist = selection.get_selected_rows()

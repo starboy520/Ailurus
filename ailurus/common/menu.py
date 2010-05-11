@@ -45,14 +45,14 @@ def __study_linux(main_view):
                 continue 
             if item[4]==False or (item[4] and Config.is_Chinese_locale()):
                 if item[0]: menu_item = image_stock_menuitem(item[1], item[2])
-                else: menu_item = image_file_menuitem(item[2], item[1], 16, 3)
+                else: menu_item = image_file_menuitem(item[2], item[1], 16)
                 menu_item.url = item[3]
                 menu_item.connect('activate', lambda w: open_web_page(w.url))
                 ret.append( menu_item )
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16, 3)
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16)
     def show_day_tip(*w):
         from support.tipoftheday import TipOfTheDay
         w=TipOfTheDay()
@@ -228,13 +228,13 @@ def __others(main_view):
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
     
-    help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16, 3) 
+    help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16) 
     def callback(*w):
         while gtk.events_pending(): gtk.main_iteration()
         check_update()
     help_update.connect('activate', callback)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16, 3) 
+    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16) 
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
@@ -249,7 +249,7 @@ def __others(main_view):
     about.connect('activate', lambda *w: show_about_dialog())
     
     changelog = gtk.MenuItem( _('Read changelog') )
-    changelog.connect('activate', lambda *w: show_changelog())
+    changelog.connect('activate', lambda *w: show_text_window('Ailurus changelog','/usr/share/ailurus/ChangeLog'))
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
 

@@ -178,7 +178,7 @@ def get_signing_key(ppa_owner, ppa_name):
         signing_key_fingerprint = re.findall(
             '\"signing_key_fingerprint\": \"(\w*)\"', lp_page)[0]
         return signing_key_fingerprint
-    except URLError, e:
+    except urllib2.URLError, e:
         import traceback, sys
         traceback.print_exc(file = sys.stderr)
         return None

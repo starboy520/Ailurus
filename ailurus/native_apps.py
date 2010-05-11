@@ -51,12 +51,16 @@ class AutoTools(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'autoconf automake'
+    if FEDORA:
+        pkgs = 'autoconf automake'
         
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
     license = GPL
     category = 'dev'
     if UBUNTU or MINT:
+        pkgs = 'bluefish'
+    if FEDORA:
         pkgs = 'bluefish'
 
 class Bluetooth(N):
@@ -65,6 +69,8 @@ class Bluetooth(N):
     category = 'hardware'
     if UBUNTU or MINT:
         pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+    if FEDORA:
+        pkgs = 'bluez-alsa bluez-cups bluez-gstreamer pybluez gnome-bluetooth gnome-phone-manager'
 
 class Boost(N):
     __doc__ = _('Boost library')
@@ -72,6 +78,8 @@ class Boost(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'libboost-dev'
+    if FEDORA:
+        pkgs = 'boost-devel'
 
 class Build_Essential(N):
     'Build-essential'
@@ -123,7 +131,9 @@ class CodeBlocks(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'codeblocks'
-
+    if FEDORA:
+        pkgs = 'codeblocks'
+    
 class CommonUsedProgrammingPackages(N):
     __doc__ = _('Useful applications for programming')
     detail = _('The tools are:\n'
@@ -165,6 +175,8 @@ class Ctags_Cscope(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'exuberant-ctags cscope'
+    if FEDORA:
+        pkgs = 'ctags-etags cscope'
 
 class Enhance_Decompression_Capability(N) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
@@ -197,6 +209,8 @@ class Fcitx(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'fcitx'
+    if FEDORA:
+        pkgs = 'fcitx'
 
 class FireWall(N):
     __doc__ = _('Firestarter: Configure Linux firewall')
@@ -214,6 +228,8 @@ class FreeGLut3(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'freeglut3-dev'
+    if FEDORA:
+        pkgs = 'freeglut-devel'
         
 class Full_Language_Pack(N):
     __doc__ = _('Full language support and input method')
@@ -269,6 +285,8 @@ class GMP(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'libgmp3-dev'
+    if FEDORA:
+        pkgs = 'gmp-devel'
 
 class Gnash(N):
     __doc__ = _('Flash plugin for web browser')
@@ -295,6 +313,29 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
+        def __init__(self):
+            self.pkgs = 'ImageMagick'
+            self.icon = '/usr/share/applications/imagemagick.desktop'
+        def install(self):
+            N.install(self.pkgs)
+            path = D + 'umut_icons/imagemagick.png'
+            run_as_root('cp %s /usr/share/icons/ ' % path)
+            with TempOwn(self.icon) as o:
+                with open(self.icon, 'w') as f:
+                    f.write('[Desktop Entry]\n'
+                            'Name=ImageMagick\n'
+                            'Exec=display %f\n'    
+                            'Encoding=UTF-8\n'
+                            'StartupNotify=true\n'
+                            'Terminal=true\n'
+                            'Type=Application\n'
+                            'Categories=GNOME;GTK;Graphics;\n'
+                            'Icon=/usr/share/icons/imagemagick.png\n')
+        def remove(self):
+            N.remove(self.pkgs)
+            import os
+            if os.path.exists(self.icon):
+                run_as_root('rm %s' % self.icon )
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
         
@@ -327,6 +368,8 @@ class MACChanger(N):
     license = GPL
     category = 'hardware'
     if UBUNTU or MINT:
+        pkgs = 'macchanger'
+    if FEDORA:
         pkgs = 'macchanger'
 
 class MiniCom_Ckermit(N):
@@ -377,6 +420,8 @@ class Nautilus_Audio_Convert(N):
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
         def install(self):
             N.install(self)
+            if not APT.installed('nautilus-script-manager'):
+                APT.install('nautilus-script-manager')
             run('nautilus-script-manager enable ConvertAudioFile')
 
 class Nautilus_Filename_Repairer(N):
@@ -424,6 +469,8 @@ class Nautilus_Script_Collection_Svn(N):
         pkgs = 'nautilus-script-collection-svn'
         def install(self):
             N.install(self)
+            if not APT.installed('nautilus-script-manager'):
+                APT.install('nautilus-script-manager')
             run('nautilus-script-manager enable Subversion')
         
 class Nautilus_Search_Tool(N):
@@ -469,6 +516,8 @@ class Netbeans(N):
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     if UBUNTU or MINT:
         pkgs = 'netbeans'
+    if FEDORA:
+        pkgs = 'netbeans'
 
 class Octave(N):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
@@ -511,6 +560,8 @@ class PowerTop(N):
     detail = _('Powertop helps you save power for your laptop.')
     license = GPL
     if UBUNTU or MINT:
+        pkgs = 'powertop'
+    if FEDORA:
         pkgs = 'powertop'
         
 class QCad(N):
@@ -586,6 +637,8 @@ class SDL(N):
     license = LGPL
     if UBUNTU or MINT:
         pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+    if FEDORA:
+        pkgs = 'SDL-devel SDL_gfx SDL_ttf SDL_mixer'
 
 class ScienceBiology(N):
     __doc__ = _('Med-bio: A lot of micro-biology software')
@@ -636,6 +689,8 @@ class Svn_Git_bzr(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'subversion git-core bzr'
+    if FEDORA:
+        pkgs = 'subversion git bzr'
         
 class TeXLive(N):
     'TeXLive'
@@ -643,6 +698,8 @@ class TeXLive(N):
     category = 'latex'
     if UBUNTU or MINT:
         pkgs = 'texlive-xetex texlive lmodern'
+    if FEDORA:
+        pkgs = 'texlive-xetex texlive-latex texlive'
 
 class TuxPaint(N):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
@@ -660,6 +717,8 @@ class Typespeed(N) :
     license = LGPL
     if UBUNTU or MINT:
         pkgs = "typespeed"
+    if FEDORA:
+        pkgs = 'typespeed'
 
 class Ubuntu_Studio_Theme(N):
     __doc__ = _('Ubuntu Studio Theme')

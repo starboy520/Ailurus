@@ -36,6 +36,7 @@ WORKS = [
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
             [_('Decompression software'), 'Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
+            [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
             [_('Flash plugin for web browser'), 'Flash_Player', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]

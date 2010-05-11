@@ -3,6 +3,49 @@
 	*Add icon for package that has no icon
 	*Move some relative code to loader.py 
 
+2010-05-06 QI Chengjie <starboy.qi@gmail.com>
+
+    * Sorting icons by name in "System Setting" pane
+    * Create imagemagick shortcut
+    * Extract the text dialog to a specific function
+    * Add "copy url" in the "Fastest Mirror" pane
+    * Add timeout for notify
+    * Add a Linux skill
+
+2010-05-09 SHANG Yuanchun <idealities@gmail.com>
+
+    * Clear pacman cache on archlinux
+    * Class PACMAN for install packages on archlinux
+    * Gray apply button when user doesn't want to remove unused kernels
+    * hide rows when ailurus can't get L1 and L2 cache info of cpu
+
+2010-05-09 DU Yue <elyes.du@gmail.com>
+
+    * Fix a bug in is_package_names_string(), since some package names may have '_' or '+'.
+    * Add some software installation entries for Fedora
+
+2010-05-08 DU Yue <elyes.du@gmail.com>
+
+    * Add XELatex support for Fedora
+
+2010-05-08 Homer Xing <homer.xing@gmail.com>
+
+    * Fix a bug: all repository give no response on Ubuntu hardy.
+    * Print message if python-distutils-extra is missing.
+    * Fix a bug: exception when remove files in sources.list.d.
+    * Fix a bug: nautilus-script-manager failed.
+    * Fix a bug: name 'URLError' is not defined.
+    * Fix a bug: "cp" failed when install firefox extension.
+    * Fix a bug: error happens when the font size is 8.5
+    * Fix a bug: "unknown locale" ValueError raised for ug_CN
+    * Fix a bug: error happens when "apt-get clean" fails.
+    * Check required packages when start up.
+
+2010-05-07 CHEN Yangyang <skabyy@gmail.com>
+
+    * The splash window will not always on top anymore
+    * Fix a bug in "hide quick setup" check button
+
 2010-05-07 HAN Haofu <gtxx3600@gmail.com>
 
 	* Fix a bug: "CPU Cache information is incorrect in some kernel version"
@@ -14,6 +57,10 @@
     * Fix bug: Custom linux kernel cannot be removed
     * Fix bug: APT.remove failed if any package is not installed
     * Hide "Not used Linux kernels" label, when there is no unused Linux kernel.
+
+2010-05-06 CHEN Yangyang <skabyy@gmail.com>
+
+    * Fix a bug that the "clean up pane" will crash if /var/cache/ailurus is not exists
 
 2010-05-03 SHANG Yuanchun <idealities@gmail.com>
 

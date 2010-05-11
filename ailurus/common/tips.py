@@ -362,4 +362,12 @@ Install/remove a task
 gksudo tasksel
 '''),
 
+_('''Change Process priority
+renice NEW_PRIORITY `pgrep NAME_OF_PROCESS`
+example: renice 5  `pgrep firefox`     
+         renice -5 `pgrep wine-server`       
+               high <------------------> low
+NEW_PRIORITY = -19, -18, -17 [...] 18, 19, 20
+'''),
+
 ]

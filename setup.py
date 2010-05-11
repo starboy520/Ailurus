@@ -1,8 +1,13 @@
 #!/usr/bin/env python
+import os, sys
 from distutils.core import setup
-from DistUtilsExtra.command import *
+try:
+    from DistUtilsExtra.command import *
+except ImportError:
+    print 'Cannot install Ailurus :('
+    print 'Would you please install package "python-distutils-extra" first?'
+    sys.exit()
 from glob import glob
-import os
 
 f = open('version')
 version = f.read().strip()
