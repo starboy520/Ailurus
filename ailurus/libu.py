@@ -32,6 +32,16 @@ def get_pixbuf(file, x, y):
         traceback.print_exc()
         return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', x, y)
     
+def load_app_icon(name):
+    import os
+    from lib import Config,D
+    for ddir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
+        path = D + ddir + name + '.png'
+        if os.path.exists(path): break
+    else:
+        path = D + 'velly_icons/m_install_software.png'
+    return get_pixbuf(path, 24, 24)
+
 def gray_bg(w):
     import gtk
     if not isinstance(w, gtk.Entry) and not isinstance(w, gtk.TextView): raise TypeError

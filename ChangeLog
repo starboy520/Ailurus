@@ -1,3 +1,8 @@
+2010-05-11 Han Haofu <gtxx3600@gmail.com>
+
+	*Add icon for package that has no icon
+	*Move some relative code to loader.py 
+
 2010-05-07 HAN Haofu <gtxx3600@gmail.com>
 
 	* Fix a bug: "CPU Cache information is incorrect in some kernel version"

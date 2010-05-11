@@ -77,6 +77,8 @@ def load_app_objs(common, desktop, distribution):
                 if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
                 app_class_obj.showed_in_toggle = app_class_obj.cache_installed
+                from libu import load_app_icon
+                app_class_obj.logo_pixbuf = load_app_icon(name)
                 objs.append(app_class_obj)
                 names.add(name)
             except:
@@ -107,6 +109,8 @@ def load_app_objs_from_extension(extension):
             app_class_obj.cache_installed = app_class_obj.installed()
             if not isinstance(app_class_obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
+            from libu import load_app_icon
+            app_class_obj.logo_pixbuf = load_app_icon(name)
             app_class_obj.showed_in_toggle = app_class_obj.cache_installed
             names.add(name)
         except:
