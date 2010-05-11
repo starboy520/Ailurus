@@ -25,6 +25,7 @@ import sys, os
 import gtk, pango
 from lib import *
 from libu import *
+from support.checkupdate import *
 
 def __study_linux(main_view):
     study_url_items = [ 

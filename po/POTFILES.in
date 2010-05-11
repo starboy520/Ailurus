@@ -22,6 +22,7 @@ ailurus/fedora/apps.py
 ailurus/fedora/fastest_mirror_pane.py
 ailurus/fedora/__init__.py
 ailurus/fedora/libserver.py
+ailurus/fedora/menu.py
 ailurus/fedora/osinfo.py
 ailurus/fedora/rpm_recovery_pane.py
 ailurus/gnome/apps.py
@@ -40,6 +41,7 @@ ailurus/loader.py
 ailurus/main.py
 ailurus/native_apps.py
 ailurus/show_a_linux_skill_bubble.py
+ailurus/support/checkupdate.py
 ailurus/support/dumpaptcache2.py
 ailurus/support/dumpaptcache.py
 ailurus/support/dumprpmcache.py
