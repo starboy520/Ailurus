@@ -39,8 +39,8 @@ class InfoPane(gtk.VBox):
         cell.set_property('text', text)
 
     def print_all_information(self):
-        file_name = '/tmp/information'
-        f = open(file_name, 'w')
+        import StringIO
+        f = StringIO.StringIO()
         
         root = self.treestore.get_iter_first()
         while root:
@@ -57,9 +57,7 @@ class InfoPane(gtk.VBox):
                 
             root = self.treestore.iter_next(root)
 
-        f.close()
-        import subprocess
-        subprocess.Popen('xdg-open ' + file_name, shell=True)
+        show_text_window(_('Information'), f.getvalue())
 
     def __init__(self, main_view, tuples):
         gtk.VBox.__init__(self, False, 10)
