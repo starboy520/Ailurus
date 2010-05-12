@@ -57,6 +57,7 @@ class InfoPane(gtk.VBox):
                 
             root = self.treestore.iter_next(root)
 
+        from support.checkupdate import show_text_window
         show_text_window(_('Information'), f.getvalue())
 
     def __init__(self, main_view, tuples):
