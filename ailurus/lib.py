@@ -1685,7 +1685,6 @@ def show_text_window(title, content):
     box.pack_start(scroll)
     box.pack_start(button)
    
-    
     window.set_title(title)
     window.add(box)
     window.set_default_size(700, 500)
