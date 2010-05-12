@@ -180,7 +180,7 @@ class FedoraFastestMirrorPane(gtk.VBox):
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
-        copy_repos = image_stock_menuitem(gtk.STOCK_COPY, _('Copy'))
+        copy_repos = gtk.ImageMenuItem(stock_id = gtk.STOCK_COPY)
         copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
         
         popupmenu = gtk.Menu()

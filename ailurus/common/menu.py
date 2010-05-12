@@ -25,6 +25,7 @@ import sys, os
 import gtk, pango
 from lib import *
 from libu import *
+from support.checkupdate import *
 
 def __study_linux(main_view):
     study_url_items = [ 
@@ -45,19 +46,17 @@ def __study_linux(main_view):
                 continue 
             if item[4]==False or (item[4] and Config.is_Chinese_locale()):
                 if item[0]: menu_item = image_stock_menuitem(item[1], item[2])
-                else: menu_item = image_file_menuitem(item[2], item[1], 16, 3)
+                else: menu_item = image_file_menuitem(item[2], item[1], 16)
                 menu_item.url = item[3]
                 menu_item.connect('activate', lambda w: open_web_page(w.url))
                 ret.append( menu_item )
         return ret
     
     ret = __get_menu(study_url_items)
-    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16, 3)
+    study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16)
     def show_day_tip(*w):
         from support.tipoftheday import TipOfTheDay
-        w=TipOfTheDay()
-        w.run()
-        w.destroy()
+        TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
@@ -106,17 +105,13 @@ def __preferences(main_view):
     menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
+
     menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
     menu_hide_quick_setup_pane.set_active(Config.get_hide_quick_setup_pane())
     menu_hide_quick_setup_pane.connect('toggled', 
             lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
                               or Config.set_hide_quick_setup_pane(w.get_active()))
-    menu_tooltip = gtk.CheckMenuItem( _("""Don't show "tip of the day" on start up""") )
-    menu_tooltip.set_active( Config.get_disable_tip() )
-    menu_tooltip.connect('toggled', 
-            lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
-                              or Config.set_disable_tip(w.get_active()) )
-    
+
     menu_tip_after_logging_in = gtk.CheckMenuItem( _('Show a random Linux skill after you log in to GNOME') )
     menu_tip_after_logging_in.set_active(ShowALinuxSkill.installed())
     def toggled(w):
@@ -128,7 +123,7 @@ def __preferences(main_view):
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tooltip, menu_tip_after_logging_in, menu_set_wget_option ]
+    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tip_after_logging_in, menu_set_wget_option ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')
@@ -232,13 +227,13 @@ def __others(main_view):
     help_blog.connect('activate', 
         lambda w: open_web_page('http://ailurus.cn/' ) )
     
-    help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16, 3) 
+    help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16) 
     def callback(*w):
         while gtk.events_pending(): gtk.main_iteration()
         check_update()
     help_update.connect('activate', callback)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16, 3) 
+    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16) 
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
@@ -253,15 +248,10 @@ def __others(main_view):
     about.connect('activate', lambda *w: show_about_dialog())
     
     changelog = gtk.MenuItem( _('Read changelog') )
-    changelog.connect('activate', lambda *w: show_changelog('Ailurus changelog','/usr/share/ailurus/ChangeLog'))
+    changelog.connect('activate', lambda *w: show_changelog())
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
-
-def show_changelog(title, path):
-    with open(path) as f:
-        content = f.read()
-    show_text_window(title, content)
-        
+   
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
 

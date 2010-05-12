@@ -430,7 +430,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
         
-        copy_repos = image_stock_menuitem(gtk.STOCK_COPY, _('Copy'))
+        copy_repos = gtk.ImageMenuItem(stock_id = gtk.STOCK_COPY)
         copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
         popupmenu = gtk.Menu()
         popupmenu.append(use_selected)
@@ -443,8 +443,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
-
-
 
     def __get_candidate_repositories_treeview(self):
         render_country = gtk.CellRendererText()
@@ -631,7 +629,7 @@ deb-src %(fastest)s %(version)s-backports main restricted universe multiverse
 deb-src %(fastest)s %(version)s-proposed main restricted universe multiverse 
 deb-src %(fastest)s %(version)s-security main restricted universe multiverse 
 deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
-'''%{'fastest':fastest, 'version':Config.get_Ubuntu_version()} )
+'''%{'fastest':fastest, 'version':VERSION} )
         f.close()
 
         # We find out all files which will be opened, 
@@ -673,7 +671,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
                 f.writelines(contents)
-        run_as_root('rm /etc/apt/sources.list.d/*')
+        run_as_root('rm /etc/apt/sources.list.d/* -f')
         notify(_('Merge complete'), ' ')
             
         

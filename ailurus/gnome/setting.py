@@ -115,7 +115,7 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = ImageChooser('The "start-here" icon is %s'% path, 24, 24)
+    i = ImageChooser(_('The "start-here" icon is %s') % path, 24, 24)
     try:
         i.display_image(path)
     except:
@@ -190,7 +190,7 @@ def __font_size_setting():
         for key in gconf_font_keys:
             value = g.get_string(key)
             l = value.rsplit(' ',1)
-            size = int(l[-1])
+            size = int(float(l[-1]))
             if isincrease: size += 1
             else: size -= 1
             l[-1] = str(size)

@@ -32,6 +32,8 @@ def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
 
 class I:
     this_is_an_installer = True
+    def self_check(self):
+        'Check errors in source code'
     
 class Config:
     @classmethod
@@ -107,13 +109,6 @@ class Config:
         try:        return cls.get_bool('hide_quick_setup_pane')
         except:     return False
     @classmethod
-    def set_disable_tip(cls, value):
-        cls.set_bool('disable-tip-on-startup', value)
-    @classmethod
-    def get_disable_tip(cls):
-        try:       return cls.get_bool('disable-tip-on-startup')
-        except: return False
-    @classmethod
     def set_query_before_exit(cls, value):
         cls.set_bool('query_before_exit', value)
     @classmethod
@@ -123,19 +118,20 @@ class Config:
     @classmethod
     def get_locale(cls):
         import locale
-        value = locale.getdefaultlocale()[0]
-        if value: return value # language code and encoding may be None if their values cannot be determined.
-        else: return 'en_US'
+        try:
+            value = locale.getdefaultlocale()[0]
+            if value: return value # language code and encoding may be None if their values cannot be determined.
+            else: return 'en_US'
+        except ValueError: # may raise exception: "unknown locale"
+            import traceback
+            traceback.print_exc()
+            return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
         return cls.get_locale().startswith('zh')
     @classmethod
     def is_Poland_locale(cls):
         return cls.get_locale().startswith('pl')
-    @classmethod
-    def supported_Ubuntu_version(cls, version):
-        assert isinstance(version, str) and version
-        return version in ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
     @classmethod
     def is_Ubuntu(cls):
         import os
@@ -145,22 +141,13 @@ class Config:
             c = f.read()
         return 'Ubuntu' in c
     @classmethod
-    def set_Ubuntu_version(cls, version):
-        if not cls.supported_Ubuntu_version(version):
-            raise ValueError
-        cls.set_string('ubuntu-version', version)
-    @classmethod
     def get_Ubuntu_version(cls):
         '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
-        if cls.is_Ubuntu():
-            with open('/etc/lsb-release') as f:
-                lines = f.readlines()
-            for line in lines:
-                if line.startswith('DISTRIB_CODENAME='):
-                    return line.split('=')[1].strip()
-        value = cls.get_string('ubuntu-version')
-        assert cls.supported_Ubuntu_version(value), value
-        return value
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
     @classmethod
     def is_Mint(cls):
         import os
@@ -170,13 +157,12 @@ class Config:
         return 'LinuxMint' in c
     @classmethod
     def get_Mint_version(cls):
-        '''return '5', '6', '7' or '8'. '''
-        import os
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
             if line.startswith('DISTRIB_RELEASE='):
-                return line.split('=')[1].strip()
+                a = line.split('=')[1].strip()
+        return a
     @classmethod
     def is_Fedora(cls):
         import os
@@ -186,6 +172,11 @@ class Config:
         with open('/etc/fedora-release') as f:
             c = f.read()
         return c.split()[2].strip()
+    @classmethod
+    def is_ArchLinux(cls):
+        import os
+        return os.path.exists('/etc/arch-release')
+    # There is no get_arch_version, since ArchLinux has no version.
     @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
@@ -233,13 +224,7 @@ class Config:
     def get_fastest_repository_response_time(cls):
         return cls.get_int('fastest_repository_response_time')
 
-def install_locale(force_reload=False):
-    assert isinstance(force_reload, bool)
-    
-    if force_reload or getattr(install_locale, 'installed', False)==False:
-        install_locale.installed = True
-    else: return
-
+def install_locale():
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
 
@@ -450,15 +435,11 @@ class TempOwn:
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
-    is_string_not_empty(title)
-    is_string_not_empty(content)
-    if not hasattr(notify, 'inited'):
-        notify.inited = True
-        import pynotify
-        pynotify.init('Trusted Digital Technology Laboratory, Shanghai Jiao Tong Univ., China.')
+    assert isinstance(title, str)
+    assert isinstance(content, str)
 
     try:
-        import pynotify, os
+        import pynotify
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
         n.set_timeout(20000)
@@ -466,13 +447,10 @@ def notify(title, content):
     except:
         import sys, traceback
         traceback.print_exc(file=sys.stderr)
-        print >>sys.stderr, content
 
-def get_arch():
-    'Return 64 if the operating system is 64-bit. Return 32 otherwise.'
+def is32():
     import os
-    if os.uname()[-1] == 'x86_64': return 64
-    return 32
+    return os.uname()[-1] != 'x86_64'
 
 def file_contain(path, *lines):
     'Return True if the file contains all the lines'
@@ -623,6 +601,7 @@ class RPM:
 
 class APT:
     fresh_cache = False
+    apt_get_update_is_called = False
     __set1 = set()
     __set2 = set()
     @classmethod
@@ -665,131 +644,133 @@ class APT:
         return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def install(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        all_packages = packages
-        packages = [ e for e in packages if not APT.installed(e) ]
-        if packages:
-            if not hasattr(cls, 'updated'):
-                APT.apt_get_update()
-                cls.updated = True
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tinstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in all_packages:
-            if not APT.installed(p): failed.append(p)
+        if cls.apt_get_update_is_called == False:
+            cls.apt_get_update()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('apt-get install -y ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if not APT.installed(p)]
         if failed:
             msg = 'Cannot install "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def remove(cls, *packages):
-        # (c) 2005-2007 Canonical, GPL
         is_pkg_list(packages)
-        # get list of not-existed packages
-        not_exist = [ e for e in packages if not APT.exist(e) ]
-        # reduce package list
-        packages = [ e for e in packages if APT.installed(e) ]
-        if packages:
-            # create packages-list
-            import tempfile
-            f = tempfile.NamedTemporaryFile()
-            for item in packages:
-                f.write("%s\tuninstall\n" % item)
-            f.flush()
-            # construct command
-            import os
-            cmd = ["/usr/sbin/synaptic",
-                    "--hide-main-window",
-                    "--non-interactive",
-                    "-o", "Synaptic::closeZvt=true", ]
-            cmd.append("--set-selections-file")
-            cmd.append("%s" % f.name)
-            # print message
-            print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-            # run command
-            run_as_root(' '.join(cmd))
-            # notify change
-            APT.cache_changed()
-        # check state
-        failed = []
-        for p in packages:
-            if APT.installed(p): failed.append(p)
-        if failed or not_exist:
-            msg = 'Cannot remove "%s".' % ' '.join(failed+not_exist)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        packages = [p for p in packages if APT.installed(p)]
+        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
+        APT.cache_changed()
+        failed = [p for p in packages if APT.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL
         print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        cmd = "/usr/sbin/synaptic --hide-main-window --non-interactive -o Synaptic::closeZvt=true --update-at-startup"
-        run_as_root(cmd, ignore_error=True)
-        cls.updated = True
+        run_as_root_in_terminal('apt-get update')
+        cls.apt_get_update_is_called = True
         cls.cache_changed()
-
-class DPKG:
-    @classmethod
-    def installed(cls, package_name):
-        'Return True if the package is installed. False if not installed or not exist.'
-        is_pkg_list([package_name])
-        import commands
-        status, output = commands.getstatusoutput( 'LANG=C dpkg-query -l %s'%package_name )
-        if status == 0 : 
-            return output.split('\n')[-1][1] == 'i'
-        elif status == 256 : # package does not exist
-            return False
-        raise CommandFailError # other error reason
     @classmethod
     def get_deb_depends(cls, filename):
         is_pkg_list([filename])
-        import os
-        if os.path.splitext(filename)[1]!='.deb': raise ValueError
+        import os, re
+        if not filename.endswith('.deb'): raise ValueError
         if not os.path.exists(filename): raise ValueError
         output = get_output('LANG=C dpkg --info %s' % filename)
-        import re
         match=re.search('Depends: (.*)', output)
         if match is None: # no depends 
             return [] 
-        items=match.group(1).split( ',' )
+        items=match.group(1).split(',')
         depends = []
         for item in items:
-            depends.append( item.split()[0] )
+            depends.append(item.split()[0])
         return depends
     @classmethod
-    def install_deb(cls, *packages):
+    def install_local(cls, *packages):
         is_pkg_list(packages)
         for package in packages:
             import os
-            if os.path.splitext(package)[1]!='.deb': raise ValueError
+            if not package.endswith('.deb'): raise ValueError
             if not os.path.exists(package): raise ValueError
-            depends = DPKG.get_deb_depends(package)
+            depends = cls.get_deb_depends(package)
             if len(depends):
-                APT.install(*depends)
-            run_as_root('dpkg --install --force-architecture %s'%package)
-            APT.cache_changed()
+                cls.install(*depends)
+            run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
+            cls.cache_changed()
+
+class PACMAN:
+    fresh_cache = False
+    pacman_sync_called = False
+    __pkgs = set()
+    __allpkgs = set()
     @classmethod
-    def remove_deb(cls, package_name):
-        is_string_not_empty(package_name)
-        run_as_root('dpkg -r %s'%package_name)
-        APT.cache_changed()
+    def cache_changed(cls):
+        cls.fresh_cache = False
+    @classmethod
+    def refresh_cache(cls):
+        if getattr(cls, 'fresh_cache', False): return
+        cls.fresh_cache = True
+        cls.__pkgs = set()
+        cls.__allpkgs = set()
+        import subprocess, os
+        #get installed package names
+        task = subprocess.Popen(['pacman', '-Q'],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__pkgs.add(line.split()[0])
+        #get all existing package names
+        task = subprocess.Popen(['pacman', '-Sl'],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            cls.__allpkgs.add(line.split()[1])
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__allpkgs
+    @classmethod
+    def installed(cls, package_name):
+        is_pkg_list([package_name])
+        cls.refresh_cache()
+        return package_name in cls.__pkgs
+    @classmethod
+    def install(cls, *package):
+        is_pkg_list(packages)
+        if not cls.pacman_sync_called:
+            cls.pacman_sync()
+        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if not PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot install "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def install_local(cls, path):
+        assert isinstance(path, str)
+        import os
+        assert os.path.exists(path)
+        run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
+        cls.cache_changed()
+    @classmethod
+    def remove(cls, *package):
+        is_pkg_list(packages)
+        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+        packages = [p for p in packages if PACMAN.installed(p)]
+        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(package))
+        cls.cache_changed()
+        failed = [p for p in packages if PACMAN.installed(p)]
+        if failed:
+            msg = 'Cannot remove "%s".' % ' '.join(failed)
+            raise CommandFailError(msg)
+    @classmethod
+    def pacman_sync():
+        print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
+        run_as_root_in_terminal('pacman -Sy')
+        cls.pacman_sync_called = True
 
 def get_response_time(url):
     is_string_not_empty(url)
@@ -798,7 +779,7 @@ def get_response_time(url):
     import time
     import sys
     begin = time.time()
-    if sys.version_info>(2,5): # for python 2.6+
+    if sys.version_info[:2]>(2,5): # for python 2.6+
         urllib2.urlopen(url, timeout=3)
     else: # for python 2.5
         urllib2.urlopen(url) # FIXME: no timeout!
@@ -962,27 +943,6 @@ class APTSource:
                         ret.append(line)
         return ''.join(ret)
 
-def parse_maintainer(string):
-    is_string_not_empty(string)
-    
-    if not hasattr(parse_maintainer, 'init'):
-        import re
-        parse_maintainer.p1 = re.compile(r'^(.+)(?P<webpage>https?://.+)$')
-        parse_maintainer.p2 = re.compile(r'^(.+)<(?P<email>.+)>$')
-        parse_maintainer.init = True
-    match = parse_maintainer.p1.match(string)
-    name = email = webpage = None
-    if match:
-        webpage=match.group('webpage')
-        string = match.group(1).strip()
-    match = parse_maintainer.p2.match(string)
-    if match:
-        email = match.group('email')
-        name = match.group(1).strip()
-    else:
-        name = string
-    return name, email, webpage
-
 import threading
 class PingThread(threading.Thread):
     def __init__(self, url, server, result):
@@ -1041,7 +1001,10 @@ class FirefoxExtensions:
         
     @classmethod
     def get_extensions_path(cls):
-        return cls.get_preference_path() + '/extensions/'
+        dir = cls.get_preference_path() + '/extensions/'
+        import os
+        if not os.path.exists(dir): os.mkdir(dir)
+        return dir
 
     @classmethod
     def analysis_method1(cls, doc):
@@ -1712,6 +1675,9 @@ atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge) 
 
+import pynotify
+pynotify.init('Ailurus')
+
 try:
     Config.get_bool('show-a-linux-skill-bubble')
 except:
@@ -1722,8 +1688,25 @@ except:
         import traceback
         traceback.print_exc()
         
-
-
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
+GNOME = Config.is_GNOME()
+XFCE = Config.is_XFCE()
+UBUNTU = Config.is_Ubuntu()
+MINT = Config.is_Mint()
+FEDORA = Config.is_Fedora()
+ARCHLINUX = Config.is_ArchLinux()
+if UBUNTU:
+    VERSION = Config.get_Ubuntu_version()
+elif MINT:
+    VERSION = Config.get_Mint_version()
+    assert VERSION in ['5', '6', '7', '8', '9']
+    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+elif FEDORA:
+    VERSION = Config.get_Fedora_version()
+elif ARCHLINUX:
+    VERSION = '' # ArchLinux has no version
+else:
+    print _('Your Linux distribution is not supported. :(')
+    VERSION = ''

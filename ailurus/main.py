@@ -51,6 +51,55 @@ def with_same_content(file1, file2):
         content2 = f.read()
     return content1 == content2
 
+def check_required_packages():
+    ubuntu_missing = []
+    fedora_missing = []
+
+    try: import pynotify
+    except: 
+        ubuntu_missing.append('python-notify')
+        fedora_missing.append('notify-python')
+    try: import vte
+    except: 
+        ubuntu_missing.append('python-vte')
+        fedora_missing.append('vte')
+    try: import apt
+    except: 
+        ubuntu_missing.append('python-apt')
+    try: import rpm
+    except: 
+        fedora_missing.append('rpm-python')
+    try: import dbus
+    except: 
+        ubuntu_missing.append('python-dbus')
+        fedora_missing.append('dbus-python')
+    if not os.path.exists('/usr/bin/unzip'):
+        ubuntu_missing.append('unzip')
+        fedora_missing.append('unzip')
+    if not os.path.exists('/usr/bin/wget'):
+        fedora_missing.append('wget')
+    if not os.path.exists('/usr/bin/xterm'):
+        
+        fedora_missing.append('xterm')
+
+    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) 
+    if error:
+        import StringIO
+        message = StringIO.StringIO()
+        print >>message, _('Necessary packages are not installed. Ailurus cannot work.')
+        print >>message, ''
+        print >>message, _('Please install these packages:')
+        print >>message, ''
+        if UBUNTU or MINT:
+            print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
+        if FEDORA:
+            print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
+        dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+        dialog.set_title('Ailurus ' + AILURUS_VERSION)
+        dialog.set_markup(message.getvalue())
+        dialog.run()
+        dialog.destroy()
+
 def check_dbus_configuration():
     same_content = True
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
@@ -93,23 +142,10 @@ def import_desktop_environment():
         return None
 
 def import_distribution():
-    if Config.is_Mint():
-        try:
-            versions = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ]
-            rs = Config.get_Mint_version()
-            if rs in ['5', '6', '7', '8', '9']:
-                version = versions[int(rs)-5]
-            Config.set_Ubuntu_version( version )
-            import ubuntu
-            return ubuntu
-        except:
-            import traceback
-            traceback.print_exc()
-            return None
-    elif Config.is_Ubuntu(): 
+    if MINT or UBUNTU:
         import ubuntu
         return ubuntu
-    elif Config.is_Fedora():
+    elif FEDORA:
         import fedora
         return fedora
     else:
@@ -349,9 +385,7 @@ class MainView:
 
     def show_day_tip(self, *w):
         from support.tipoftheday import TipOfTheDay
-        w=TipOfTheDay()
-        w.run()
-        w.destroy()
+        TipOfTheDay()
 
     def register(self, pane):
         key = pane.__class__.__name__
@@ -421,6 +455,7 @@ if ( options.all == False
     sys.exit()
 change_task_name()
 set_default_window_icon()
+check_required_packages()
 check_dbus_configuration()
 
 # show splash window
@@ -436,7 +471,6 @@ support.tipoftheday.tips = tips
 
 # load main window
 main_view = MainView()
-
 if options.system_setting or options.all:
     splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
     items = load_setting(COMMON, DESKTOP, DISTRIBUTION)

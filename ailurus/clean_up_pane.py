@@ -34,17 +34,22 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
-        if Config.is_Ubuntu() or Config.is_Mint():
+        if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-        elif Config.is_Fedora():
+        elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
+        elif ARCHLINUX:
+            self.pack_start(self.clean_pacman_cache_button(), False)
 
     def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
-        size = get_output('du -bsS ' + folder_path)
-        fsize = os.stat(folder_path).st_size
-        size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
+        if os.path.exists(folder_path):
+            size = get_output('du -bsS ' + folder_path)
+            fsize = os.stat(folder_path).st_size
+            size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
+        else:
+            size = 0
         if please_return_integer: return size
         else: return derive_size(size)
 
@@ -63,7 +68,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
-            try: run_as_root('apt-get clean')
+            try: run_as_root_in_terminal('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
@@ -99,6 +104,20 @@ class CleanUpPane(gtk.VBox):
         button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
         return button
     
+    def clean_pacman_cache_button(self):
+        label = gtk.Label(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
+        button = gtk.Button()
+        button.add(label)
+        button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
+        def __clean_up(button, label):
+            try: run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
+            except AccessDeniedError: pass
+            label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
+            button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
+        button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command:') + ' rm -rf /var/cache/pacman/pkg/*') #sudo pacman -Sc
+        return button
+
     def clean_recently_used_document_button(self):
         def clear(w):
             import os
@@ -178,10 +197,7 @@ class UbuntuCleanKernelBox(gtk.VBox):
         button_apply.connect('clicked', self.remove_kernel)
         label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
         label.set_alignment(0, 0.5)
-        label2 = gtk.Label(_('Not used Linux kernels are:'))
-        label2.set_alignment(0, 0.5)
         self.pack_start(label, False)
-        self.pack_start(label2, False)
         self.__regenerate_check_buttons()
         self.pack_start(check_buttons_box, False)
         hbox = gtk.HBox()
@@ -200,13 +216,12 @@ class UbuntuCleanKernelBox(gtk.VBox):
                 else:
                     delete_list.extend([
                             '/lib/modules/%s'%kernel_version, 
-                            '/boot/System.map-%s'%kernel_version,
-                            'config-%s'%kernel_version,
-                            'initrd.img-%s'%kernel_version
-                                        ])
+                            '/boot/*-%s*'%kernel_version,])
         if remove_list:
             try:    APT.remove(*remove_list)
-            except: pass
+            except:
+                import traceback
+                traceback.print_exc()
             self.__regenerate_version_to_packages()
             self.__regenerate_check_buttons()
         if delete_list:
@@ -246,11 +261,12 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.label.set_markup("%s" % check_button.kernel_version)
         else:
             check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
-        button_apply.set_sensitive(True)
-    
+        button_apply.set_sensitive(bool([c for c in
+                self.check_buttons_list if not c.get_active()]))
+
     def __regenerate_check_buttons(self):
-        for button in self.check_buttons_box.get_children():
-            self.check_buttons_box.remove(button)
+        for child in self.check_buttons_box.get_children():
+            self.check_buttons_box.remove(child)
         self.check_buttons_list = []
         version_list = self.version_to_packages.keys()
         version_list.sort()
@@ -263,7 +279,14 @@ class UbuntuCleanKernelBox(gtk.VBox):
             check_button.set_active(True)
             check_button.connect('toggled', self.check_button_toggled, self.button_apply)
             self.check_buttons_list.append(check_button)
-            self.check_buttons_box.pack_start(check_button, False)
+            
+        if self.check_buttons_list:
+            label = gtk.Label(_('Not used Linux kernels are:'))
+            label.set_alignment(0, 0.5)
+            self.check_buttons_box.pack_start(label, False)
+            for button in self.check_buttons_list:
+                self.check_buttons_box.pack_start(button, False)
+
         self.check_buttons_box.show_all()
     
     def get_current_kernel_version(self):

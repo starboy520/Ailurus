@@ -23,7 +23,7 @@
 from __future__ import with_statement
 from lib import *
 
-__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install']
+__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install', 'N']
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -41,7 +41,7 @@ class _set_gconf(I):
                 raise ValueError
             if e=='':
                 raise ValueError
-    def __check(self):
+    def self_check(self):
         self.set # check existing
         self.add # check existing
         if type(self.set)!=tuple or type(self.add)!=tuple:
@@ -72,7 +72,6 @@ class _set_gconf(I):
     def __init__(self):
         raise NotImplementedError
     def install(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
@@ -93,7 +92,6 @@ class _set_gconf(I):
             print "\x1b[1;32m%s\x1b[m"%_("Key:"), key
             print "\x1b[1;32m%s\x1b[m"%_("Appended items:"), to_add_list
     def installed(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         for key, newvalue, oldvalue in self.set:
@@ -111,26 +109,7 @@ class _set_gconf(I):
                 if not to_add in List:
                     return False
         return True
-#    def _get_reason(self, f):
-#        import gconf
-#        G = gconf.client_get_default()
-#        for key, newvalue, oldvalue in self.set:
-#            try: value = G.get_value(key)
-#            except: value = None
-#            if ( type(value)!=float and value!=newvalue ) or ( type(value)==float and abs(value-newvalue)>1e-6 ):
-#                print >>f, _('The value of "%(key)s" is not "%(value)s".')%{'key':key, 'value':newvalue},
-#        for key, to_add_list in self.add:
-#            List = G.get_list(key, gconf.VALUE_STRING)
-#            #evaluate "not_in" list
-#            not_in = []
-#            for to_add in to_add_list:
-#                if not to_add in List:
-#                    not_in.append(to_add)
-#            #output
-#            if not_in:
-#                print >>f, _('"%(value)s" is not in "%(key)s".')%{'value':' '.join(not_in), 'key':key}, 
     def remove(self):
-        self.__check()
         import gconf
         G = gconf.client_get_default()
         if len(self.set) or len(self.add):
@@ -149,32 +128,37 @@ class _set_gconf(I):
             G.set_list(key, gconf.VALUE_STRING, List)
             print "\x1b[1;31m%s\x1b[m"%_("Key:"), key
             print "\x1b[1;31m%s\x1b[m"%_("Removed items:"), to_remove_list
-    def support(self):
+    def visible(self):
         try:
             import gconf
             return True
         except:
             return False 
 
+def is_package_names_string(string):
+    assert isinstance(string, str)
+    if string == '':
+        raise ValueError, 'String is empty.'
+    for pkg in string.split():
+        import re
+        if re.match(r'^[a-zA-Z0-9._+-]+$', pkg) is None:
+            raise ValueError, pkg
+        if pkg[0]=='-':
+            raise ValueError, pkg
+
+def debian_installation_command(package_names):
+    return _('Command:') + ' sudo apt-get install ' + package_names
+
+def fedora_installation_command(package_names):
+    return _('Command:') + (' su -c "yum install %s"' % package_names)
+
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
-    def __check(self):
-        self.pkgs # check exists
-        if type ( self.pkgs ) != str:
-            raise TypeError
-        if self.pkgs == '' :
-            raise ValueError, 'self.pkgs is empty.'
-        for pkg in self.pkgs.split():
-            import re
-            if re.match(r'^[a-zA-Z0-9.-]+$', pkg) is None:
-                raise ValueError, pkg
-            if pkg[0]=='-':
-                raise ValueError, pkg
+    def self_check(self):
+        is_package_names_string(self.pkgs)
     def install(self):
-        self.__check()
         APT.install(*self.pkgs.split())
     def installed(self):
-        self.__check()
         for pkg in self.pkgs.split():
             if not APT.installed ( pkg ):
                 return False
@@ -186,13 +170,62 @@ class _apt_install(I):
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
-        self.__check()
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
-        return _('Command:') + ' sudo apt-get install ' + self.pkgs
+        return debian_installation_command(self.pkgs)
+
+class _rpm_install(I):
+    def self_check(self):
+        is_package_names_string(self.pkgs)
+    def install(self):
+        RPM.install(*self.pkgs.split())
+    def installed(self):
+        for p in self.pkgs.split():
+            if not RPM.installed(p): return False
+        return True
+    def remove(self):
+        RPM.remove(*self.pkgs.split())
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return fedora_installation_command(self.pkgs)
+
+class N(I):
+    def visible(self):
+        return hasattr(self, 'pkgs')
+    def self_check(self):
+        if hasattr(self, 'pkgs'):
+            is_package_names_string(self.pkgs)
+    def install(self):
+        self.backend.install(*self.pkgs.split())
+    def installed(self):
+        for p in self.pkgs.split():
+            if not self.backend.installed(p): return False
+        return True
+    def remove(self):
+        self.backend.remove(*self.pkgs.split())
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not self.backend.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def installation_command(self):
+        return self.installation_command_backend(self.pkgs)
+
+    if FEDORA:
+        backend = RPM
+        installation_command_backend = staticmethod(fedora_installation_command)
+    elif UBUNTU or MINT:
+        backend = APT
+        installation_command_backend = staticmethod(debian_installation_command)
 
 class _path_lists(I):
-    def __check(self):
+    def self_check(self):
         if not isinstance(self.paths, list):
             raise TypeError
         if len(self.paths)==0: 
@@ -207,14 +240,12 @@ class _path_lists(I):
     def install(self):
         raise NotImplementedError
     def installed(self):
-        self.__check()
         for path in self.paths:
             import os
             if not os.path.exists(path):
                 return False
         return True
     def remove(self):
-        self.__check()
         for path in self.paths:
             run_as_root('rm "%s" -rf'%path)
     def get_reason(self, f):
@@ -249,7 +280,8 @@ class _ff_extension(I):
     def install(self):
         f = self.R.download()
         if f.endswith('.xpi') or f.endswith('.jar'):
-            run('cp %s %s'%(f, _ff_extension.ext_path) )
+            import shutil
+            shutil.copy(f, _ff_extension.ext_path)
             delay_notify_firefox_restart()
         else:
             raise NotImplementedError(self.name, f)
@@ -280,27 +312,3 @@ class _download_one_file(I):
         import os
         if not os.path.exists(self.file):
             print >>f, _('Because "%s" does not exist.')%self.file,
-
-class _rpm_install(I):
-    def _check(self):
-        assert isinstance(self.pkgs, str)
-    def install(self):
-        self._check()
-        RPM.install(self.pkgs)
-    def installed(self):
-        self._check()
-        for p in self.pkgs.split():
-            if not RPM.installed(p): return False
-        return True
-    def remove(self):
-        self._check()
-        RPM.remove(self.pkgs)
-    def get_reason(self, f):
-        self._check()
-        all_pkgs = self.pkgs.split()
-        if len(all_pkgs) > 1:
-            not_installed = [p for p in all_pkgs if not RPM.installed(p)]
-            if len(not_installed) != len(all_pkgs):
-                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return _('Command:') + (' su -c "yum install %s"' % self.pkgs)

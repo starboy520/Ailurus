@@ -679,13 +679,13 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
-            [ i_common, _('Language support'), D+'umut_icons/p_language_support.png', 'language'],
+            [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
             [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
+            [ i_advanced, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
             
             [ i_students, _('Mathematics'), D+'umut_icons/p_math.png', 'math' ] ,
             [ i_students, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics' ],
@@ -711,16 +711,16 @@ class InstallRemovePane(gtk.VBox):
         quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        def hide_quick_setup(w):
-            Config.set_hide_quick_setup_pane(True)
-            quick_setup_pane.hide_all()
+        def hide_quick_setup(button):
+            Config.set_hide_quick_setup_pane(button.get_active())
+            notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
         quick_setup_checkbutton.connect('clicked', hide_quick_setup)
         quick_setup_pane.pack_start(quick_setup_button, False)
         quick_setup_pane.pack_start(quick_setup_checkbutton, False)
 
         self.__left_tree_view_default_select()
 
-        if not Config.get_hide_quick_setup_pane() and (Config.is_Ubuntu() or Config.is_Mint()):
+        if not Config.get_hide_quick_setup_pane() and (UBUNTU or MINT):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()

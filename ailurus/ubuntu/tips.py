@@ -109,4 +109,5 @@ _("""Display some information of a given package
 apt-cache show PACKAGE_NAME
 
 """),
+
 ]
