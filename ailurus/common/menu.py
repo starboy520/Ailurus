@@ -25,6 +25,7 @@ import sys, os
 import gtk, pango
 from lib import *
 from libu import *
+from support.checkupdate import *
 
 def __study_linux(main_view):
     study_url_items = [ 
@@ -250,7 +251,7 @@ def __others(main_view):
     changelog.connect('activate', lambda *w: show_changelog())
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
-
+   
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
 
