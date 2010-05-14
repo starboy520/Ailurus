@@ -1,0 +1,13 @@
+#!/bin/bash 
+# 
+# This script is in order to help developers uninstall Ailurus clean
+# Author : Devil Wang
+# Date   : Fri May 14
+#
+
+if [ -f install_log ];then
+    cat install_log | xargs rm -rf
+else
+    python setup.py install --record install_log
+    cat install_log | xargs rm -rf 
+fi
