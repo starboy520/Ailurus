@@ -442,7 +442,10 @@ class InstallRemovePane(gtk.VBox):
     def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
         if hasattr(class0, 'DE'):
-            cell.set_property('pixbuf', getattr(self,'DE_%s' % class0.DE) )
+            if class0.DE == 'gnome':
+                cell.set_property('pixbuf', self.DE_GNOME)
+            elif class0.DE == 'kde':
+                cell.set_property('pixbuf', self.DE_KDE)
         else:
             cell.set_property('pixbuf', self.DE_DEFAULT)
             
