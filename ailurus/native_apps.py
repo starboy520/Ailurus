@@ -431,9 +431,9 @@ class MiniCom_Ckermit(N):
         platform = 'universe'
 
 class Moonlight(N):
-    __doc__ = _(u'Moonlight: an open source implementation of Microsoft庐 Silverlight')
-    detail = _(u'Moonlight provides Windows庐 media codecs. '
-       u'By this application, you can enjoy Windows庐 video/audio in webpages.')
+    __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
+    detail = _(u'Moonlight provides Windows® media codecs. '
+       u'By this application, you can enjoy Windows® video/audio in webpages.')
     license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
