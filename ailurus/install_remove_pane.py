@@ -444,7 +444,7 @@ class InstallRemovePane(gtk.VBox):
         if hasattr(class0, 'DE'):
             cell.set_property('pixbuf', getattr(self,'DE_%s' % class0.DE) )
         else:
-            cell.set_property('pixbuf', self.DE_universe)
+            cell.set_property('pixbuf', self.DE_DEFAULT)
             
     def __launch_quick_setup(self, *w):
         self.parentwindow.lock()
@@ -628,9 +628,9 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        self.DE_kde = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
-        self.DE_gnome = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
-        self.DE_universe = get_pixbuf(D + 'other_icons/universe.png', 24, 24)
+        self.DE_KDE = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
+        self.DE_GNOME = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
+        self.DE_DEFAULT = get_pixbuf(D + 'other_icons/blank.png', 24, 24)
 
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)

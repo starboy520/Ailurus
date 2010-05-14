@@ -47,13 +47,13 @@ def check_class_members(app_class, default_category = 'tweak'):
 
 def load_app_icon(name):
     import os
-    from libu import get_pixbuf
-    for ddir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
-        path = D + ddir + name + '.png'
+    for dir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
+        path = D + dir + name + '.png'
         if os.path.exists(path): break
     else:
         path = D + 'velly_icons/software_default_icon.png'
-    return get_pixbuf(path, 24, 24)
+    import gtk
+    return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
 
 def load_app_objs(common, desktop, distribution):
     import native_apps
