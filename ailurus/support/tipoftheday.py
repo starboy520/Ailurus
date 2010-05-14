@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +26,8 @@ from libu import *
 tips = None
 
 import gtk
-class TipOfTheDay(gtk.Dialog):
+
+class TipOfTheDay(gtk.Window):
     def __change_content (self, content, text):
         content.get_buffer().set_text(text)
     
@@ -50,33 +52,14 @@ class TipOfTheDay(gtk.Dialog):
         self.__change_content(content, self.tips[self.lasttip])
     
     def __show_all_tips(self, widget):
-        buffer = gtk.TextBuffer()
-        buffer.set_text('\n\n'.join(tips))
-        textview = gtk.TextView()
-        textview.set_buffer(buffer)
-        textview.set_editable(False)
-        textview.set_cursor_visible(False)
-        textview.set_wrap_mode(gtk.WRAP_WORD)
-        scroll = gtk.ScrolledWindow()
-        scroll.add(textview)
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        scroll.set_shadow_type(gtk.SHADOW_IN)
-        dialog = gtk.Dialog( _('tips'), None, 
-                    gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-                    buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-        dialog.set_border_width(10)
-        dialog.vbox.pack_start(scroll)
-        dialog.vbox.set_size_request(500, 500)
-        dialog.vbox.show_all()
-        dialog.run()
-        dialog.destroy()
+        show_text_window(_('All Linux skills'), '\n\n'.join(tips))
 
     def __init__(self):
         import gtk
         from support.releasenotesviewer import ReleaseNotesViewer
-        gtk.Dialog.__init__(self, _('Tip of the Day'), None, 
-            gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, None )
-        
+        gtk.Window.__init__(self)
+        self.set_position(gtk.WIN_POS_CENTER)
+        self.set_title(_('Tip of the Day'))
         self.set_border_width(10)
         
         title = gtk.Label ()
@@ -129,10 +112,11 @@ class TipOfTheDay(gtk.Dialog):
         box.pack_start ( hbox, False )
         box.show_all()
 
-        self.vbox.pack_start(box)
+        self.add(box)
         self.tips = tips
         assert isinstance(self.tips, list)
         for e in self.tips:
             assert isinstance(e, (str,unicode) )
         self.lasttip = None
         self.__random ( content ) # show the first tip
+        self.show_all()

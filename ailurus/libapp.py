@@ -26,6 +26,7 @@ __all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_downl
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
+    DE = 'gnome'
     def __check_key(self, key):
         if key=='':
             raise ValueError

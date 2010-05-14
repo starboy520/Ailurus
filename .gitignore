@@ -1,7 +1,7 @@
 MANIFEST
 build/
 dist/
-comicview/note
+installed_files
 
 po/ailurus.pot
 .project

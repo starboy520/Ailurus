@@ -64,7 +64,9 @@ class SystemSettingPane(gtk.VBox):
             if category in existing_categories:
                 pixbuf = icon(iconpath)
                 left_store.append([pixbuf, text, category])
-        
+                
+        left_store_sort = gtk.TreeModelSort(left_store)
+        left_store_sort.set_sort_column_id(1, gtk.SORT_ASCENDING)
         render_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
         column = gtk.TreeViewColumn()
@@ -72,7 +74,7 @@ class SystemSettingPane(gtk.VBox):
         column.add_attribute(render_pixbuf, 'pixbuf', 0)
         column.pack_start(render_text, False)
         column.add_attribute(render_text, 'text', 1)
-        treeview = gtk.TreeView(left_store)
+        treeview = gtk.TreeView(left_store_sort)
         treeview.append_column(column)
         treeview.set_headers_visible(False)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)

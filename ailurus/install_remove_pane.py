@@ -435,19 +435,19 @@ class InstallRemovePane(gtk.VBox):
                 return is_right_category and ( inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail) )
 
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
-        import os
         class0 = model.get_value ( iter, 0 )
-        if not hasattr(class0, 'logo_pixbuf'):
-            class_name = class0.__class__.__name__
-            for dir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
-                path = D + dir + class_name + '.png'
-                if os.path.exists(path): break
-            else:
-                path = D + 'other_icons/blank.png'
-                # print 'Warning: class %s has not any logo.' % class_name
-            class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
-
+        
+    def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
+        class0 = model.get_value ( iter, 0 )
+        if hasattr(class0, 'DE'):
+            if class0.DE == 'gnome':
+                cell.set_property('pixbuf', self.DE_GNOME)
+            elif class0.DE == 'kde':
+                cell.set_property('pixbuf', self.DE_KDE)
+        else:
+            cell.set_property('pixbuf', self.DE_DEFAULT)
+            
     def __launch_quick_setup(self, *w):
         self.parentwindow.lock()
         self.set_sensitive(False)
@@ -481,6 +481,7 @@ class InstallRemovePane(gtk.VBox):
         render_toggle = gtk.CellRendererToggle ()
         render_toggle.connect('toggled',self.__toggle,treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
+        render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
 
         col_toggle = gtk.TreeViewColumn ()
@@ -492,6 +493,8 @@ class InstallRemovePane(gtk.VBox):
         col_text.set_cell_data_func ( render_pixbuf, self.__pixbuf_cell_data_func )
         col_text.pack_start (render_text, True)
         col_text.set_cell_data_func ( render_text, self.__text_cell_data_func )
+        col_text.pack_end(render_DE_pixbuf, False)
+        col_text.set_cell_data_func ( render_DE_pixbuf, self.__DE_pixbuf_cell_data_func )
         col_text.set_sort_column_id(1000)
 
         self.treeview = treeview = gtk.TreeView ( treemodelsort )
@@ -627,7 +630,10 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        
+        self.DE_KDE = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
+        self.DE_GNOME = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
+        self.DE_DEFAULT = get_pixbuf(D + 'other_icons/blank.png', 24, 24)
+
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)
         self._final_box_text = gtk.Label()
@@ -678,7 +684,7 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Language support'), D+'umut_icons/p_language_support.png', 'language'],
+            [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],

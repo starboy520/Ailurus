@@ -76,6 +76,7 @@ if FEDORA:
         category = 'eclipse'
         license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse-platform'
+        
 elif UBUNTU or MINT:
     class Eclipse(_apt_install):
         __doc__ = _('Eclipse (basic development environment)')

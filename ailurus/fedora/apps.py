@@ -79,6 +79,8 @@ class DisableGetty(I):
                 with TempOwn(filename) as o:
                     with open(filename, 'w') as f:
                         f.writelines(contents)
+    def visible(self):
+        return os.path.exists('/etc/event.d/')
 
 class Disable_SELinux(I):
     __doc__ = _('Put Selinux in permissive mode, instead of enforcing mode.')
