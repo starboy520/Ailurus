@@ -5,9 +5,9 @@
 # Date   : Fri May 14
 #
 
-if [ -f install_log ];then
-    cat install_log | xargs rm -rf
+if [ -f "installed_files" ];then
+    cat installed_files | xargs rm -rf
+    echo "Uninstall completed"
 else
-    python setup.py install --record install_log
-    cat install_log | xargs rm -rf 
+    echo "Uninstall Failure, Log did not exist"
 fi
