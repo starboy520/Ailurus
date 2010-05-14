@@ -124,6 +124,7 @@ def show_about_dialog():
           'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
           'DU Yue <elyes.du@gmail.com>',
+          'Devil Wang <wxjeacen@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
@@ -283,32 +284,3 @@ def show_special_thank_dialog():
 def show_changelog():
     with open(D+'/../ChangeLog') as f:
         show_text_window(_('Ailurus changelog'), f.read())
-        
-def show_text_window(title, content):
-    import gtk
-    buffer = gtk.TextBuffer()
-    buffer.set_text(content)
-    textview = gtk.TextView()
-    textview.set_buffer(buffer)
-    textview.set_editable(False)
-    textview.set_cursor_visible(False)
-    textview.set_wrap_mode(gtk.WRAP_WORD)
-    scroll = gtk.ScrolledWindow()
-    scroll.add(textview)
-    scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-    scroll.set_shadow_type(gtk.SHADOW_IN)
-    close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
-    close_button.connect('clicked', lambda *w: window.destroy())
-    align = gtk.Alignment(1, 0.5)
-    align.add(close_button)
-    vbox = gtk.VBox(False, 10)
-    vbox.pack_start(scroll)
-    vbox.pack_start(align, False)
-
-    window = gtk.Window()
-    window.set_title(title)
-    window.add(vbox)
-    window.set_default_size(600, 400)
-    window.set_border_width(10)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.show_all()

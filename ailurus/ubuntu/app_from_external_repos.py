@@ -32,13 +32,14 @@ class AWN(_apt_install):
     category = 'appearance'
     depends = Repo_AWN_Development
     pkgs = 'avant-window-navigator-trunk'
-
+    
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire'
+    DE = 'gnome'
     def visible(self):
         return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
@@ -48,28 +49,28 @@ class Audacious(_apt_install):
     category = 'media'
     depends = Repo_Audacious
     pkgs = 'audacious audacious-plugins'
-
+    
 class Blueman(_apt_install):
     __doc__ = _('Blueman: Graphical blue-tooth manager')
     license = GPL
     category = 'hardware'
     depends = Repo_Blueman
     pkgs = 'blueman'
-
+    
 class Christine(_apt_install):
     __doc__ = _('Christine: Media player')
     license = GPL
     category = 'media'
     depends = Repo_Christine
     pkgs = 'christine'
-
+    
 class Chromium(_apt_install):
     __doc__ = _('Chromium: Web browser')
     license = BSD
     category = 'internet'
     depends = Repo_Chromium_Daily
     pkgs = 'chromium-browser'
-
+    
 class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
@@ -130,6 +131,7 @@ class Getting_things_gnome(_apt_install):
     logo = 'gtg.png'
     depends = Repo_GTG
     pkgs = 'gtg'
+    DE = 'gnome'
 
 class Gmchess(_apt_install):
     __doc__ = _('Gmchess: Chinese chess game')
@@ -144,6 +146,7 @@ class Gnome_color(_apt_install):
     category = 'appearance'
     depends = Repo_GNOMEColors
     pkgs = 'gnome-colors'
+    DE = 'gnome'
     def visible(self):
         return VERSION != 'lucid'
 
@@ -153,6 +156,7 @@ class Gnome_global_menu(_apt_install):
     category = 'appearance'
     depends = Repo_GlobalMenu
     pkgs = 'gnome-globalmenu'
+    DE = 'gnome'
 
 class Moovida(_apt_install):
     __doc__ = _('Moovida: Media player')
@@ -174,6 +178,7 @@ class Pidgin_beta(_apt_install):
     category = 'internet'
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
+    DE = 'gnome'
     def installed(self):
         if APT.installed('pidgin'):
             string = get_output('pidgin -v')
@@ -214,6 +219,7 @@ class Shutter(_apt_install):
     category = 'tweak'
     depends = Repo_Shutter
     pkgs = 'shutter'
+    DE = 'gnome'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')

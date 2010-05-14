@@ -1,0 +1,5 @@
+#!/bin/bash 
+
+if [ -f "installed_files" ] ; then
+    cat installed_files | xargs rm -rf
+fi

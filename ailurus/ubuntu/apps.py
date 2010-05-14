@@ -143,6 +143,7 @@ class GNOMEArtNextGen(I):
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
     license = GPL
+    DE = 'gnome'
     def install(self):
         if VERSION == 'hardy':
 
@@ -194,7 +195,7 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty']
+        return VERSION in ['hardy', 'intrepid', 'jaunty'] and os.path.exists('/etc/event.d/')
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
@@ -233,7 +234,7 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION in ['karmic']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
@@ -279,6 +280,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = AL
+    
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run_as_root_in_terminal('perl %s' % f)
