@@ -1,7 +1,18 @@
+2010-05-14 Han Haofu <gtxx3600@gamil.com>
+
+	*Add an new attr 'platform' in all 'package_class' to identify the package's desktop platform(default value is 'universe')
+	*Add icon on install_remove_pane to show package's desktop platform('gnome' or 'kde')
+	*Add 3 icon files into 'other_icons'('kde.png','gnome.png','universe.png')
+	
 2010-05-11 Han Haofu <gtxx3600@gmail.com>
 
 	*Add icon for package that has no icon
 	*Move some relative code to loader.py 
+
+2010-05-11 Homer Xing <homer.xing@gmail.com>
+
+    * Improve show_text_window()
+    * Improve other code via show_text_window()
 
 2010-05-06 QI Chengjie <starboy.qi@gmail.com>
 

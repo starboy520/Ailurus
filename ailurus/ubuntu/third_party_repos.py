@@ -40,7 +40,7 @@ class _repo(I):
     this_is_a_repository = True
     category = 'repository'
     fresh_cache = False
-
+    platform = 'universe'
     @classmethod
     def refresh_cache(cls):
         if not _repo.fresh_cache:
@@ -192,6 +192,7 @@ def del_signing_key(signing_key_fingerprint):
 class _launchpad(I):
     this_is_a_repository = True
     category = 'repository'
+    platform = 'universe'
     def __init__(self):
         assert isinstance(self.ppa, str)
         if hasattr(self, 'content'): assert isinstance(self.content, str)
@@ -303,6 +304,7 @@ class Repo_GTG(_launchpad):
     license = GPL
     desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
     content = 'gtg'
+    platform = 'gnome'
     ppa = 'gtg'
 
 class Repo_GNOMEColors(_launchpad):
@@ -310,6 +312,7 @@ class Repo_GNOMEColors(_launchpad):
     license = GPL
     desc = _('This repository contains some themes.')
     content = 'gnome-colors'
+    platform = 'gnome'
     ppa = 'gnome-colors-packagers'
 
 class Repo_GlobalMenu(_launchpad):
@@ -317,6 +320,7 @@ class Repo_GlobalMenu(_launchpad):
     license = GPL
     desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
     content = 'gnome-globalmenu'
+    platform = 'gnome'
     ppa = 'globalmenu-team'
 
 class Repo_Medibuntu(_repo):
@@ -345,6 +349,7 @@ class Repo_Shutter(_launchpad):
     license = GPL
     desc = _('Shutter is a powerful screenshot program.')
     content = 'shutter'
+    platform = 'gnome'
     ppa = 'shutter'
     
 #class Repo_Synapse(_repo):
@@ -487,6 +492,7 @@ class Repo_Pidgin_Develop(_launchpad):
     license = GPL
     desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
     content = 'pidgin'
+    platform = 'gnome'
     ppa = 'pidgin-developers'
 
 class Repo_Songbird(_launchpad):
@@ -516,4 +522,5 @@ class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
     license = GPL
     content = 'acire'
+    platform = 'gnome'
     ppa = 'acire-team/acire-releases'

@@ -25,6 +25,7 @@ import sys, os
 import gtk, pango
 from lib import *
 from libu import *
+from support.checkupdate import *
 
 def __study_linux(main_view):
     study_url_items = [ 
@@ -55,9 +56,7 @@ def __study_linux(main_view):
     study_show_tip = image_file_menuitem(_('Tip of the day'), D+'sora_icons/m_tip_of_the_day.png', 16)
     def show_day_tip(*w):
         from support.tipoftheday import TipOfTheDay
-        w=TipOfTheDay()
-        w.run()
-        w.destroy()
+        TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
     ret.insert(1, gtk.SeparatorMenuItem() )
@@ -249,10 +248,10 @@ def __others(main_view):
     about.connect('activate', lambda *w: show_about_dialog())
     
     changelog = gtk.MenuItem( _('Read changelog') )
-    changelog.connect('activate', lambda *w: show_text_window('Ailurus changelog','/usr/share/ailurus/ChangeLog'))
+    changelog.connect('activate', lambda *w: show_changelog())
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
-
+   
 def get_study_linux_menu(main_view):
     return __study_linux(main_view)
 

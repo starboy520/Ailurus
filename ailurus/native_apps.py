@@ -30,6 +30,7 @@ class Alacarte(N):
     license = LGPL
     if FEDORA:
         pkgs = 'alacarte'
+        platform = 'gnome'
     
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
@@ -37,6 +38,7 @@ class Audacity(N):
     category = 'media'
     if FEDORA:
         pkgs = 'audacity-freeworld'
+        platform = 'universe'
 
 class AutoApt(N):
     'Auto-apt'
@@ -44,6 +46,7 @@ class AutoApt(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'auto-apt'
+        platform = 'universe'
 
 class AutoTools(N):
     __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
@@ -51,8 +54,10 @@ class AutoTools(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'autoconf automake'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'autoconf automake'
+        platform = 'universe'
         
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
@@ -60,8 +65,10 @@ class Bluefish(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'bluefish'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'bluefish'
+        platform = 'universe'
 
 class Bluetooth(N):
     __doc__ = _('Bluetooth support')
@@ -69,8 +76,10 @@ class Bluetooth(N):
     category = 'hardware'
     if UBUNTU or MINT:
         pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+        platform = 'gnome'
     if FEDORA:
         pkgs = 'bluez-alsa bluez-cups bluez-gstreamer pybluez gnome-bluetooth gnome-phone-manager'
+        platform = 'gnome'
 
 class Boost(N):
     __doc__ = _('Boost library')
@@ -78,8 +87,10 @@ class Boost(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'libboost-dev'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'boost-devel'
+        platform = 'universe'
 
 class Build_Essential(N):
     'Build-essential'
@@ -88,6 +99,7 @@ class Build_Essential(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'build-essential'
+        platform = 'universe'
 
 class CHMSee_Read_CHM_Documents(N) :
     __doc__ = _('ChmSee: A CHM file viewer')
@@ -95,8 +107,10 @@ class CHMSee_Read_CHM_Documents(N) :
     license = GPL + ' http://code.google.com/p/chmsee/'
     if FEDORA:
         pkgs = 'chmsee'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'chmsee'
+        platform = 'universe'
 
 class CheckInstall(N):
     'CheckInstall'
@@ -104,11 +118,13 @@ class CheckInstall(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'checkinstall'
+        platform = 'universe'
         
 class ChildsPlay(N):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
     category = 'education'
     license = GPL
+    platform = 'universe'
     if FEDORA:
         pkgs = 'childsplay'
     if UBUNTU or MINT:
@@ -131,8 +147,10 @@ class CodeBlocks(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'codeblocks'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'codeblocks'
+        platform = 'universe'
     
 class CommonUsedProgrammingPackages(N):
     __doc__ = _('Useful applications for programming')
@@ -151,6 +169,7 @@ class CommonUsedProgrammingPackages(N):
     if FEDORA:
         pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
             'qt3-devel subversion git')
+        platform = 'universe'
 
 class CompizSettingManager(N):
     __doc__ = _('Compiz settings manager')
@@ -161,6 +180,7 @@ class CompizSettingManager(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'compizconfig-settings-manager'
+        platform = 'universe'
 
 class CompizSettingManagerSimple(N):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
@@ -168,6 +188,7 @@ class CompizSettingManagerSimple(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'simple-ccsm'
+        platform = 'universe'
 
 class Ctags_Cscope(N):
     __doc__ = _('Ctags and Cscope: Popular source code parsers')
@@ -175,23 +196,29 @@ class Ctags_Cscope(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'exuberant-ctags cscope'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'ctags-etags cscope'
+        platform = 'universe'
 
 class Enhance_Decompression_Capability(N) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
     if FEDORA:
         pkgs = "p7zip cabextract"
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = "p7zip p7zip-rar p7zip-full cabextract unace"
+        platform = 'universe'
 
 class Evince_Read_Chinese_PDF(N) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
     category='office'
     if FEDORA:
         pkgs = 'poppler-data'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'poppler-data'
+        platform = 'universe'
 
 class Extcalc(N):
     __doc__ = _('Extcalc: A multifunctional graphic calculator')
@@ -199,6 +226,7 @@ class Extcalc(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'extcalc'
+        platform = 'universe'
         
 class Fcitx(N):
     'Fcitx'
@@ -209,8 +237,10 @@ class Fcitx(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'fcitx'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'fcitx'
+        platform = 'universe'
 
 class FireWall(N):
     __doc__ = _('Firestarter: Configure Linux firewall')
@@ -220,6 +250,7 @@ class FireWall(N):
     category = 'internet'
     if UBUNTU or MINT:
         pkgs = 'firestarter'
+        platform = 'universe'
 
 class FreeGLut3(N):
     __doc__ = _('OpenGL library')  
@@ -228,13 +259,16 @@ class FreeGLut3(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'freeglut3-dev'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'freeglut-devel'
+        platform = 'universe'
         
 class Full_Language_Pack(N):
     __doc__ = _('Full language support and input method')
     detail = _('Because of live CD capacity limitation, this Linux distribution does not have full language support.\n')
     category = 'language'
+    platform = 'universe'
     if UBUNTU or MINT:
         def __init__(self):
             import locale
@@ -258,6 +292,7 @@ class Full_Language_Pack(N):
             except: pass
     
             pkgs = []
+            platform = 'universe'
             for p in List:
                 if APT.exist(p): pkgs.append(p)
     
@@ -267,6 +302,7 @@ class GCompris(N):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
     category = 'education'
     license = GPL
+    platform = 'universe'
     if FEDORA:
         pkgs = 'gcompris'
     if UBUNTU or MINT:
@@ -285,8 +321,10 @@ class GMP(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'libgmp3-dev'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'gmp-devel'
+        platform = 'universe'
 
 class Gnash(N):
     __doc__ = _('Flash plugin for web browser')
@@ -294,8 +332,10 @@ class Gnash(N):
     license = GPL
     if FEDORA:
         pkgs = 'gnash gnash-plugin'
+        platform = 'universe'
     if UBUNTU and MINT:
         pkgs = 'gnash mozilla-plugin-gnash'
+        platform = 'universe'
     
 class HardwareLister(N):
     __doc__ = _('lshw: List hardware information')
@@ -304,8 +344,10 @@ class HardwareLister(N):
     category = 'hardware'
     if FEDORA:
         pkgs = 'lshw lshw-gui'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'lshw lshw-gtk'
+        platform = 'universe'
 
 class ImageMagick(N):
     __doc__ = _('ImageMagick: Edit images')
@@ -313,6 +355,7 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
+        platform = 'universe'
         def __init__(self):
             self.pkgs = 'ImageMagick'
             self.icon = '/usr/share/applications/imagemagick.desktop'
@@ -338,6 +381,7 @@ class ImageMagick(N):
                 run_as_root('rm %s' % self.icon )
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
+        platform = 'universe'
         
 class Kadu(N):
     __doc__ = 'Kadu'
@@ -347,8 +391,10 @@ class Kadu(N):
     license = GPL
     if FEDORA:
         pkgs = 'kadu'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'kadu'
+        platform = 'universe'
     def visible(self):
         return Config.is_Poland_locale()
 
@@ -359,8 +405,10 @@ class Liferea(N):
     category = 'internet'
     if FEDORA:
         pkgs = 'liferea'
+        platform = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'liferea'
+        platform = 'gnome'
 
 class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
@@ -369,8 +417,10 @@ class MACChanger(N):
     category = 'hardware'
     if UBUNTU or MINT:
         pkgs = 'macchanger'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'macchanger'
+        platform = 'universe'
 
 class MiniCom_Ckermit(N):
     __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
@@ -378,17 +428,19 @@ class MiniCom_Ckermit(N):
     category = 'embedded'
     if UBUNTU or MINT:
         pkgs = 'minicom ckermit'
+        platform = 'universe'
 
 class Moonlight(N):
-    __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
-    detail = _(u'Moonlight provides Windows® media codecs. '
-       u'By this application, you can enjoy Windows® video/audio in webpages.')
+    __doc__ = _(u'Moonlight: an open source implementation of Microsoft庐 Silverlight')
+    detail = _(u'Moonlight provides Windows庐 media codecs. '
+       u'By this application, you can enjoy Windows庐 video/audio in webpages.')
     license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
     category = 'media'
     if UBUNTU or MINT:
         pkgs = 'moonlight-plugin-mozilla'
+        platform = 'universe'
 
 class Multimedia_Codecs (N) :
     __doc__ = _('Multi-media codec')
@@ -397,6 +449,7 @@ class Multimedia_Codecs (N) :
     if UBUNTU or MINT:
         pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
                  'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
+        platform ='universe'
 
 class Nautilus_Actions(N):
     __doc__ = _('"Actions configuration" entry')
@@ -406,8 +459,10 @@ class Nautilus_Actions(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-actions'
+        platform = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-actions'
+        platform = 'gnome'
         
 class Nautilus_Audio_Convert(N):
     __doc__ = _('"Convert audio files" entry')
@@ -418,6 +473,7 @@ class Nautilus_Audio_Convert(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
+        platform = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -431,6 +487,7 @@ class Nautilus_Filename_Repairer(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-filename-repairer'
+        platform = 'gnome'
 
 class Nautilus_Gksu(N):
     __doc__ = _('"Open as administrator" entry')
@@ -439,6 +496,7 @@ class Nautilus_Gksu(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-gksu'
+        platform = 'gnome'
 
 class Nautilus_Image_Converter(N):
     __doc__ = _('"Resize/Rotate images" entries')
@@ -447,8 +505,10 @@ class Nautilus_Image_Converter(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-image-converter'
+        platform = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-image-converter'
+        platform = 'gnome'
         
 class Nautilus_Open_Terminal(N):
     __doc__ = _('"Open in terminal" entry')
@@ -457,8 +517,10 @@ class Nautilus_Open_Terminal(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-open-terminal'
+        platform = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-open-terminal'
+        platform = 'gnome'
         
 class Nautilus_Script_Collection_Svn(N):
     __doc__ = _('"Subversion commands" entries')
@@ -467,6 +529,7 @@ class Nautilus_Script_Collection_Svn(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-collection-svn'
+        platform = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -479,6 +542,7 @@ class Nautilus_Search_Tool(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-search-tool'
+        platform = 'gnome'
 
 class Nautilus_Share(N):
     __doc__ = _('"Share folders" entry')
@@ -487,6 +551,7 @@ class Nautilus_Share(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-share'
+        platform = 'gnome'
         
 class Nautilus_Wallpaper(N):
     __doc__ = _('"Set as wallpaper" entry')
@@ -495,6 +560,7 @@ class Nautilus_Wallpaper(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-wallpaper'
+        platform = 'gnome'
 
 class Ncurses_and_qt3mt(N):
     __doc__ = _('Ncurses5 and QT3')
@@ -504,6 +570,7 @@ class Ncurses_and_qt3mt(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'libncurses5-dev libqt3-mt-dev'
+        platform = 'universe'
         
 class Netbeans(N):
     __doc__ = 'Netbeans'
@@ -516,8 +583,10 @@ class Netbeans(N):
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     if UBUNTU or MINT:
         pkgs = 'netbeans'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'netbeans'
+        platform = 'universe'
 
 class Octave(N):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
@@ -525,8 +594,10 @@ class Octave(N):
     category = 'math'
     if FEDORA:
         pkgs = 'qtoctave'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'qtoctave'
+        platform = 'universe'
 
 class POSIX_ManPages(N):
     __doc__ = _('POSIX library manual pages')
@@ -535,6 +606,7 @@ class POSIX_ManPages(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
+        platform = 'universe'
 
 class Parcellite(N):
     __doc__ = _('Parcellite: clipboard manager')
@@ -543,8 +615,10 @@ class Parcellite(N):
     license = GPL
     if FEDORA:
         pkgs = 'parcellite'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'parcellite'
+        platform = 'universe'
 
 class PiTiVi(N):
     __doc__ = _('PiTiVi: Movie editor')
@@ -552,8 +626,10 @@ class PiTiVi(N):
     category = 'media'
     if FEDORA:
         pkgs = 'pitivi'
+        platform = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'pitivi'
+        platform = 'gnome'
 
 class PowerTop(N):
     'PowerTop'
@@ -561,8 +637,10 @@ class PowerTop(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'powertop'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'powertop'
+        platform = 'universe'
         
 class QCad(N):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
@@ -570,8 +648,10 @@ class QCad(N):
     category = 'em'
     if FEDORA:
         pkgs = 'qcad'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'qcad'
+        platform = 'universe'
         
 class QT_Creator(N):
     'Qt Creator'
@@ -580,8 +660,10 @@ class QT_Creator(N):
     license = GPL
     if FEDORA:
         pkgs = 'qt-creator'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
+        platform = 'universe'
 
 class Qnapi(N):
     __doc__ = 'Qnapi'
@@ -591,6 +673,7 @@ class Qnapi(N):
     category = 'media'
     if UBUNTU or MINT:
         pkgs = 'qnapi'
+        platform = 'universe'
         def visible(self):
             return Config.is_Poland_locale()
 
@@ -601,8 +684,10 @@ class QtiPlot(N) :
     license = GPL
     if FEDORA:
         pkgs = 'qtiplot'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'qtiplot'
+        platform = 'universe'
 
 class R_Language_Basic(N):
     __doc__ = _('R language (basic development environment)')
@@ -612,6 +697,7 @@ class R_Language_Basic(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'r-base-core'
+        platform = 'universe'
 
 class R_Language_Full(N):
     __doc__ = _('R language (full development environment and all plugins)')
@@ -627,6 +713,7 @@ class R_Language_Full(N):
             for p in APT.get_existing_pkgs_set():
                 if p.startswith('r-cran-'): print >>value, p,
             self.pkgs = value.getvalue()
+            self.platform = 'universe'
 
 class SDL(N):
     __doc__ = _('SDL library')
@@ -637,8 +724,10 @@ class SDL(N):
     license = LGPL
     if UBUNTU or MINT:
         pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'SDL-devel SDL_gfx SDL_ttf SDL_mixer'
+        platform = 'universe'
 
 class ScienceBiology(N):
     __doc__ = _('Med-bio: A lot of micro-biology software')
@@ -647,6 +736,7 @@ class ScienceBiology(N):
     license = DUAL_LICENSE(EPL, GPL)
     if UBUNTU or MINT:
         pkgs = 'med-bio'
+        platform = 'universe'
 
 class Screenlets(N):
     __doc__ = _('Screenlets: Add eye candy gadgets on desktop')
@@ -657,6 +747,7 @@ class Screenlets(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'screenlets'
+        platform = 'universe'
 
 class Stardict_without_Dictionaries(N):
     __doc__ = _('Stardict')
@@ -672,8 +763,10 @@ class Stardict_without_Dictionaries(N):
                    'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
                    'stardict-dic-zh_TW: Traditional Chinese dictionaries')
         pkgs = 'stardict'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'stardict'
+        platform = 'universe'
 
 class StartupManager(N):
     __doc__ = _('Startup Manager: Change GRUB settings and themes')   
@@ -682,6 +775,7 @@ class StartupManager(N):
     category = 'appearance'
     if UBUNTU or MINT:
         pkgs = 'startupmanager'
+        platform = 'universe'
         
 class Svn_Git_bzr(N):
     __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
@@ -689,8 +783,10 @@ class Svn_Git_bzr(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'subversion git-core bzr'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'subversion git bzr'
+        platform = 'universe'
         
 class TeXLive(N):
     'TeXLive'
@@ -698,8 +794,10 @@ class TeXLive(N):
     category = 'latex'
     if UBUNTU or MINT:
         pkgs = 'texlive-xetex texlive lmodern'
+        platform = 'universe'
     if FEDORA:
         pkgs = 'texlive-xetex texlive-latex texlive'
+        platform = 'universe'
 
 class TuxPaint(N):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
@@ -707,8 +805,10 @@ class TuxPaint(N):
     license = GPL
     if FEDORA:
         pkgs = 'tuxpaint'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'tuxpaint'
+        platform = 'universe'
 
 class Typespeed(N) :
     'Typespeed'
@@ -717,8 +817,10 @@ class Typespeed(N) :
     license = LGPL
     if UBUNTU or MINT:
         pkgs = "typespeed"
+        platform = 'universe'
     if FEDORA:
         pkgs = 'typespeed'
+        platform = 'universe'
 
 class Ubuntu_Studio_Theme(N):
     __doc__ = _('Ubuntu Studio Theme')
@@ -726,6 +828,7 @@ class Ubuntu_Studio_Theme(N):
     category = 'appearance'
     if UBUNTU or MINT:
         pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
+        platform = 'universe'
     
 class Umbrello(N):
     __doc__ = _('Umbrello: UML modelling')
@@ -734,6 +837,7 @@ class Umbrello(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'umbrello'
+        platform = 'kde'
 
 class VIM_and_VIMRC(N) :
     __doc__ = _('Make VIM more suitable for programming')
@@ -746,8 +850,10 @@ class VIM_and_VIMRC(N) :
     category = 'dev'
     if FEDORA:
         pkgs = 'vim-enhanced'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'vim'
+        platform = 'universe'
     def __vimrc_installed(self):
         return file_contain ( self.vimrc, *self.lines )
     def __vimrc_install(self):
@@ -774,6 +880,7 @@ class VirtualBox(N):
     category = 'vm'
     if UBUNTU or MINT:
         pkgs = 'virtualbox-ose'
+        platform = 'universe'
 
 class Vuze_Karmic(N):
     # Latest Vuze is in 9.10 repository.
@@ -782,6 +889,7 @@ class Vuze_Karmic(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'vuze'
+        platform = 'universe'
         def visible(self):
             return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
@@ -792,12 +900,14 @@ class WINE(N):
     category = 'vm'
     if FEDORA:
         pkgs = 'wine'
+        platform = 'universe'
     if UBUNTU or MINT:
         def __init__(self):
             if APT.exist('wine1.2') and APT.exist('wine1.2-gecko'):
                 self.pkgs = 'wine1.2 wine1.2-gecko'
             else:
                 self.pkgs = 'wine wine-gecko'
+            self.platform = 'universe'
 
 class Workrave_And_Auto_Start_It(N) :
     __doc__ = 'Workrave'
@@ -805,8 +915,10 @@ class Workrave_And_Auto_Start_It(N) :
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:
         pkgs = 'workrave'
+        platform = 'universe'
     if UBUNTU or MINT:
         pkgs = 'workrave'
+        platform = 'universe'
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.config/autostart/')
@@ -846,6 +958,7 @@ class WorldofPadman(N):
     category = 'game'
     if FEDORA:
         pkgs = 'worldofpadman'
+        platform = 'universe'
 
 class Zhcon(N):
     __doc__ = _('Zhcon')
@@ -855,3 +968,4 @@ class Zhcon(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'zhcon'
+        platform = 'universe'

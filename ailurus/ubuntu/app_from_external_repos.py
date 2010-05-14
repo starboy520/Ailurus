@@ -32,13 +32,14 @@ class AWN(_apt_install):
     category = 'appearance'
     depends = Repo_AWN_Development
     pkgs = 'avant-window-navigator-trunk'
-
+    platform = 'universe'
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire'
+    platform = 'gnome'
     def visible(self):
         return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
@@ -48,28 +49,32 @@ class Audacious(_apt_install):
     category = 'media'
     depends = Repo_Audacious
     pkgs = 'audacious audacious-plugins'
-
+    platform = 'universe'
+    
 class Blueman(_apt_install):
     __doc__ = _('Blueman: Graphical blue-tooth manager')
     license = GPL
     category = 'hardware'
     depends = Repo_Blueman
     pkgs = 'blueman'
-
+    platform = 'universe'
+    
 class Christine(_apt_install):
     __doc__ = _('Christine: Media player')
     license = GPL
     category = 'media'
     depends = Repo_Christine
     pkgs = 'christine'
-
+    platform = 'universe'
+    
 class Chromium(_apt_install):
     __doc__ = _('Chromium: Web browser')
     license = BSD
     category = 'internet'
     depends = Repo_Chromium_Daily
     pkgs = 'chromium-browser'
-
+    platform = 'universe'
+    
 class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
@@ -77,6 +82,7 @@ class ComicVODPlayer_new(I):
     Chinese = True
     license = GPL
     depends = Repo_Mplayer_VOD
+    platform = 'universe'
     def __init__(self):
         self.comicview = ComicView()
     def install(self):
@@ -97,6 +103,7 @@ class ComicVODPlayer_new(I):
 class ComicView(_ff_extension):
     __doc__ = _('Adblock+: Block 99% advertisement')
     license = GPL
+    platform = 'universe'
     def __init__(self):
         self.desc = ''
         self.download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
@@ -113,6 +120,7 @@ class Exaile(_apt_install):
     category = 'media'
     depends = Repo_Exaile
     pkgs = 'exaile'
+    platform = 'universe'
 
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
@@ -120,6 +128,7 @@ class Firefox_3_6(_apt_install):
     category = 'internet'
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
+    platform = 'universe'
     def visible(self): # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
@@ -130,6 +139,7 @@ class Getting_things_gnome(_apt_install):
     logo = 'gtg.png'
     depends = Repo_GTG
     pkgs = 'gtg'
+    platform = 'gnome'
 
 class Gmchess(_apt_install):
     __doc__ = _('Gmchess: Chinese chess game')
@@ -137,6 +147,7 @@ class Gmchess(_apt_install):
     category = 'game'
     depends = Repo_Gmchess
     pkgs = 'gmchess'
+    platform = 'universe'
 
 class Gnome_color(_apt_install):
     __doc__ = _('GNOME colors themes')
@@ -144,6 +155,7 @@ class Gnome_color(_apt_install):
     category = 'appearance'
     depends = Repo_GNOMEColors
     pkgs = 'gnome-colors'
+    platform = 'gnome'
     def visible(self):
         return VERSION != 'lucid'
 
@@ -153,6 +165,7 @@ class Gnome_global_menu(_apt_install):
     category = 'appearance'
     depends = Repo_GlobalMenu
     pkgs = 'gnome-globalmenu'
+    platform = 'gnome'
 
 class Moovida(_apt_install):
     __doc__ = _('Moovida: Media player')
@@ -160,6 +173,7 @@ class Moovida(_apt_install):
     category = 'media'
     depends = Repo_Moovida
     pkgs = 'moovida'
+    platform = 'universe'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics')
@@ -167,6 +181,7 @@ class OSD_Lyrics(_apt_install):
     license = GPL
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
+    platform = 'universe'
 
 class Pidgin_beta(_apt_install):
     __doc__ = _('Pidgin (beta version)')
@@ -174,6 +189,7 @@ class Pidgin_beta(_apt_install):
     category = 'internet'
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
+    platform = 'gnome'
     def installed(self):
         if APT.installed('pidgin'):
             string = get_output('pidgin -v')
@@ -191,6 +207,7 @@ class PlayOnLinux(_apt_install):
     category = 'game'
     depends = Repo_PlayOnLinux
     pkgs = 'playonlinux'
+    platform = 'universe'
 
 class RSSOwl(_apt_install):
     __doc__ = _('RSSOwl: RSS feed reader')
@@ -198,6 +215,7 @@ class RSSOwl(_apt_install):
     category = 'internet'
     depends = Repo_RSSOwl
     pkgs = 'rssowl'
+    platform = 'universe'
 
 class RedNoteBook(_apt_install):
     __doc__ = _('RedNoteBook: A desktop diary application')
@@ -205,6 +223,7 @@ class RedNoteBook(_apt_install):
     category = 'office'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
+    platform = 'universe'
     def visible(self):
         return VERSION != 'lucid'
     
@@ -214,6 +233,7 @@ class Shutter(_apt_install):
     category = 'tweak'
     depends = Repo_Shutter
     pkgs = 'shutter'
+    platform = 'gnome'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
@@ -221,6 +241,7 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
+    platform = 'universe'
     def visible(self):
         return VERSION != 'lucid'
 
@@ -230,5 +251,6 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
+    platform = 'universe'
     def visible(self):
         return VERSION != 'lucid'

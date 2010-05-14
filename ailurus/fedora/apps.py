@@ -33,6 +33,7 @@ class ColorfulBashPromptSymbols(I):
        '<span color="#729fcf">~</span>$ ".\n'
        'The trick behind is to add this line into "$HOME/.bashrc".\n'
        r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
+    platform = 'universe'
     def __init__(self):
         import os
         self.__class__.detail = os.path.expandvars( self.__class__.detail )
@@ -49,6 +50,7 @@ class ColorfulBashPromptSymbols(I):
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
+    platform = 'universe'
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
@@ -83,6 +85,7 @@ class DisableGetty(I):
 
 class Disable_SELinux(I):
     __doc__ = _('Put Selinux in permissive mode, instead of enforcing mode.')
+    platform = 'universe'
     def installed(self):
         with open('/etc/sysconfig/selinux') as f:
             c = f.read()
@@ -115,6 +118,7 @@ class Disable_SELinux(I):
 
 class Disable_Sudo(I):
     __doc__ = _('Disable "sudo". Prevent yourself from using "sudo".')
+    platform = 'universe'
     def installed(self):
         return False
     def install(self):
@@ -128,6 +132,7 @@ class Enable_Sudo(I):
                'you can type command "sudo COMMAND" instead of complicated command "su -c \'COMMAND\'". '
                '<span color="red">Due to restriction on filesystem permission, '
                'Ailurus cannot detect whether "sudo" is enabled.</span> ')
+    platform = 'universe'
     def installed(self):
         return False
     def install(self):
@@ -143,6 +148,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
     license = AL
     category='biology'
+    platform = 'universe'
     def install(self):
         for package in ['perl-libwww-perl', 'perl-CPAN']:
             if not RPM.installed(package):
