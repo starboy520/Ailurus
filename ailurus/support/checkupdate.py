@@ -124,6 +124,7 @@ def show_about_dialog():
           'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
           'DU Yue <elyes.du@gmail.com>',
+          'Devil Wang <wxjeacen@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
