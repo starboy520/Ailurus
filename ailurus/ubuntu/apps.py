@@ -194,7 +194,7 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty']
+        return VERSION in ['hardy', 'intrepid', 'jaunty'] and os.path.exists('/etc/event.d/')
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
@@ -233,7 +233,7 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION in ['karmic']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):

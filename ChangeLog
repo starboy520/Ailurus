@@ -1,3 +1,7 @@
+2010-05-14 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: DisableGetty output error on Fedora 13
+
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 
     * Improve show_text_window()
