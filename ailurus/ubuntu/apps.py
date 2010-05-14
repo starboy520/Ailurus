@@ -31,7 +31,6 @@ class OpenJDK6(I):
     'OpenJDK 6'
     category = 'dev'
     license = GPL
-    platform = 'universe'
     def install(self):
         APT.install('openjdk-6-jdk')
         
@@ -68,7 +67,6 @@ class ColorfulBashPromptSymbols(I):
        '<span color="#729fcf">~</span>$ ".\n'
        'The trick behind is to add this line into "$HOME/.bashrc".\n'
        r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '")
-    platform = 'universe'
     def __init__(self):
         self.line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
         import os
@@ -87,7 +85,6 @@ class WorldofPadman(I):
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
     license = GPL + ' http://sourceforge.net/projects/wop-engine/'
     category = 'game'
-    platform = 'universe'
     def install(self):
         file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
         run_as_root('bash ' + file1)
@@ -108,7 +105,6 @@ class PBC(I):
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
     category = 'dev'
     license = GPL
-    platform = 'universe'
     def install(self):
         if is32():
             fdev=R(
@@ -147,7 +143,7 @@ class GNOMEArtNextGen(I):
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
     license = GPL
-    platform = 'gnome'
+    DE = 'gnome'
     def install(self):
         if VERSION == 'hardy':
 
@@ -198,7 +194,6 @@ class GNOMEArtNextGen(I):
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    platform = 'universe'
     def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
@@ -238,7 +233,6 @@ class DisableGetty(I):
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
-    platform = 'universe'
     def visible(self):
         return VERSION in ['karmic']
     def installed(self):
@@ -286,7 +280,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = AL
-    platform = 'universe'
+    
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run_as_root_in_terminal('perl %s' % f)

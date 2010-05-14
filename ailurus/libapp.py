@@ -27,7 +27,7 @@ __all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_downl
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
-    platform = 'gnome'
+    DE = 'gnome'
     def __check_key(self, key):
         if key=='':
             raise ValueError
@@ -155,7 +155,6 @@ def fedora_installation_command(package_names):
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
-    platform = 'universe'
     def self_check(self):
         is_package_names_string(self.pkgs)
     def install(self):
@@ -177,7 +176,6 @@ class _apt_install(I):
         return debian_installation_command(self.pkgs)
 
 class _rpm_install(I):
-    platform = 'universe'
     def self_check(self):
         is_package_names_string(self.pkgs)
     def install(self):
@@ -198,7 +196,6 @@ class _rpm_install(I):
         return fedora_installation_command(self.pkgs)
 
 class N(I):
-    platform = 'universe'
     def visible(self):
         return hasattr(self, 'pkgs')
     def self_check(self):
@@ -261,7 +258,6 @@ class _path_lists(I):
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox'
-    platform = 'universe'
     def __init__(self):
         if not hasattr(_ff_extension, 'ext_path'):
             _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()

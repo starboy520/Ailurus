@@ -30,7 +30,6 @@ class Launch_Tasksel(I):
     detail = _('This is a helper item. It just launches command: "sudo tasksel". '
                'Then you are free to customize your computer via "tasksel".')
     category = 'server'
-    platform = 'universe'
     def installed(self):
         return False
     def install(self):
@@ -42,7 +41,6 @@ class Launch_Tasksel(I):
 
 class _tasksel(I):
     category = 'server'
-    platform = 'universe'
     def install(self):
         Tasksel.install(self.name)
     def installed(self):

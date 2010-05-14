@@ -76,7 +76,7 @@ if FEDORA:
         category = 'eclipse'
         license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse-platform'
-        platform = 'universe'
+        
 elif UBUNTU or MINT:
     class Eclipse(_apt_install):
         __doc__ = _('Eclipse (basic development environment)')
@@ -89,7 +89,6 @@ elif UBUNTU or MINT:
         category = 'eclipse'
         license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
         pkgs = 'eclipse'
-        platform = 'universe'
 
 def make_sure_installed():
     if UBUNTU or MINT:
@@ -102,7 +101,6 @@ class CDT(_path_lists):
     detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse'
     license = EPL + ' http://www.eclipse.org/legal/'
-    platform = 'universe'
     def __init__(self):
         self.r = R(
 ['http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
@@ -121,7 +119,6 @@ class Pydev(_path_lists):
     detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse'
     license = EPL + ' http://pydev.org/about.html'
-    platform = 'universe'
     def __init__(self):
         self.r = R(
 ['http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
@@ -144,7 +141,6 @@ class Aptana(I):
                'In order to remove Aptana, you have to re-install Eclipse.')
     category = 'eclipse'
     license = DUAL_LICENSE(APL, GPL)
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.ide.*')
@@ -168,7 +164,6 @@ class RadRails(I):
                'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
     category = 'eclipse'
     license = DUAL_LICENSE(APL, GPL)
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/com.aptana.radrails.*')
@@ -192,7 +187,6 @@ class DLTK(I):
     category = 'eclipse'
     License = ('Eclipse Distribution License (EDL), Eclipse Public License (EPL), '
                'see http://www.eclipse.org/legal/')
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.dltk.*')
@@ -219,7 +213,6 @@ class PDT(I):
     detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
     category = 'eclipse'
     license = EPL + ' http://www.eclipse.org/legal/'
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
@@ -242,7 +235,6 @@ class Subversive(I):
     detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
     category = 'eclipse'
     license = EPL
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
@@ -265,7 +257,6 @@ class VEditor(I):
     detail = _('It is installed by http://veditor.sourceforge.net/update')
     category = 'eclipse'
     license = EPL
-    platform = 'universe'
     def installed(self):
         import glob
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
@@ -288,7 +279,6 @@ class MTJ(_path_lists):
     detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
     category = 'eclipse'
     license = DUAL_LICENSE(EPL, GPL)
-    platform = 'universe'
     def __init__(self):
         self.path = '/usr/lib/eclipse/dropins/MTJ/'
         self.paths = [ self.path ]

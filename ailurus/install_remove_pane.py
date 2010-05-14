@@ -437,20 +437,15 @@ class InstallRemovePane(gtk.VBox):
 
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
-        if not hasattr(class0, 'logo_pixbuf'):
-            path = D + 'other_icons/blank.png'
-            # print 'Warning: class %s has not any logo.' % class_name
-            class0.logo_pixbuf = get_pixbuf(path, 24, 24)
         cell.set_property('pixbuf', class0.logo_pixbuf)
         
-    def __platform_pixbuf_cell_data_func(self, column, cell, model, iter):
+    def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
-        path = D + 'other_icons/blank.png'
-        if hasattr(class0, 'platform'):
-            path = D + 'other_icons/%s.png' % class0.platform
-        tmppixbuf = get_pixbuf(path, 24, 24)
-        cell.set_property('pixbuf', tmppixbuf)
-
+        if hasattr(class0, 'DE'):
+            cell.set_property('pixbuf', getattr(self,'DE_%s' % class0.DE) )
+        else:
+            cell.set_property('pixbuf', self.DE_universe)
+            
     def __launch_quick_setup(self, *w):
         self.parentwindow.lock()
         self.set_sensitive(False)
@@ -484,7 +479,7 @@ class InstallRemovePane(gtk.VBox):
         render_toggle = gtk.CellRendererToggle ()
         render_toggle.connect('toggled',self.__toggle,treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
-        render_platform_pixbuf = gtk.CellRendererPixbuf()
+        render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
 
         col_toggle = gtk.TreeViewColumn ()
@@ -496,8 +491,8 @@ class InstallRemovePane(gtk.VBox):
         col_text.set_cell_data_func ( render_pixbuf, self.__pixbuf_cell_data_func )
         col_text.pack_start (render_text, True)
         col_text.set_cell_data_func ( render_text, self.__text_cell_data_func )
-        col_text.pack_end(render_platform_pixbuf, False)
-        col_text.set_cell_data_func ( render_platform_pixbuf, self.__platform_pixbuf_cell_data_func )
+        col_text.pack_end(render_DE_pixbuf, False)
+        col_text.set_cell_data_func ( render_DE_pixbuf, self.__DE_pixbuf_cell_data_func )
         col_text.set_sort_column_id(1000)
 
         self.treeview = treeview = gtk.TreeView ( treemodelsort )
@@ -633,7 +628,10 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        
+        self.DE_kde = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
+        self.DE_gnome = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
+        self.DE_universe = get_pixbuf(D + 'other_icons/universe.png', 24, 24)
+
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)
         self._final_box_text = gtk.Label()

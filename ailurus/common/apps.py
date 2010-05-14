@@ -34,7 +34,6 @@ class Bioclipse(_path_lists):
     category = 'biology'
     license = ('Eclipse Public License (EPL) + exception, '
                'see http://www.bioclipse.net/license-0')
-    platform = 'universe'
     def __init__(self):
         self.shortcut = '/usr/share/applications/bioclipse.desktop'
         self.path = '/opt/bioclipse'
@@ -73,7 +72,6 @@ Icon=/opt/bioclipse/icon.xpm
 class CreateDesktopFolder(I):
     __doc__ = _('Create a directory "Desktop" in your home folder')
     detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
-    platform = 'universe'
     def __init__(self):
         import os
         self.desktop = os.path.expanduser('~/Desktop')
@@ -108,7 +106,6 @@ class Electric(_path_lists):
                _(' This application depends on Java.') )
     category = 'em'
     license = GPL
-    platform = 'universe'
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
         self.file = '/opt/electricBinary.jar'
@@ -134,7 +131,6 @@ class Speed_Up_Firefox(I):
     detail = _('Firefox is faster when Pango rendering is disabled. '
         'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
         'Ailurus will create a new icon "Firefox without Pango (faster)" in the menu "Applications"-->"Internet".')
-    platform = 'universe'
     def install(self):
         paths = [
                  '/usr/share/applications/firefox-3.5.desktop',
@@ -178,8 +174,6 @@ class OpenJUMP(_path_lists):
               _(' This application depends on Java.') )
     license = GPL
     category = 'geography'
-    license = GPL
-    platform = 'universe'
     def __init__(self):
         self.shortcut = '/usr/share/applications/openjump.desktop'
         self.dir = '/opt/openjump-1.3'
@@ -212,7 +206,6 @@ class QueryBeforeRmALotFiles(I) :
        'This is useful if you mistype "rm subdir/*" as "rm subdir/ *".\n'
        'The trick behind is to add this line into "$HOME/.bashrc".\n'
        'alias rm="rm -I"')
-    platform = 'universe'
     def __init__(self):
         self.line = r"alias rm='rm -I'"
         import os
@@ -233,7 +226,6 @@ class TsingHuaTeXTemplate(_download_one_file):
     category = 'latex'
     Chinese = True
     license = 'GPL'
-    platform = 'universe'
     def __init__(self):
         self.R = R(
 ['http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
