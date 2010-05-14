@@ -40,7 +40,6 @@ class _repo(I):
     this_is_a_repository = True
     category = 'repository'
     fresh_cache = False
-
     @classmethod
     def refresh_cache(cls):
         if not _repo.fresh_cache:
@@ -303,6 +302,7 @@ class Repo_GTG(_launchpad):
     license = GPL
     desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
     content = 'gtg'
+    DE = 'gnome'
     ppa = 'gtg'
 
 class Repo_GNOMEColors(_launchpad):
@@ -310,6 +310,7 @@ class Repo_GNOMEColors(_launchpad):
     license = GPL
     desc = _('This repository contains some themes.')
     content = 'gnome-colors'
+    DE = 'gnome'
     ppa = 'gnome-colors-packagers'
 
 class Repo_GlobalMenu(_launchpad):
@@ -317,6 +318,7 @@ class Repo_GlobalMenu(_launchpad):
     license = GPL
     desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
     content = 'gnome-globalmenu'
+    DE = 'gnome'
     ppa = 'globalmenu-team'
 
 class Repo_Medibuntu(_repo):
@@ -345,6 +347,7 @@ class Repo_Shutter(_launchpad):
     license = GPL
     desc = _('Shutter is a powerful screenshot program.')
     content = 'shutter'
+    DE = 'gnome'
     ppa = 'shutter'
     
 #class Repo_Synapse(_repo):
@@ -487,6 +490,7 @@ class Repo_Pidgin_Develop(_launchpad):
     license = GPL
     desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
     content = 'pidgin'
+    DE = 'gnome'
     ppa = 'pidgin-developers'
 
 class Repo_Songbird(_launchpad):
@@ -516,4 +520,5 @@ class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
     license = GPL
     content = 'acire'
+    DE = 'gnome'
     ppa = 'acire-team/acire-releases'

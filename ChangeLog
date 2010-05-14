@@ -6,6 +6,26 @@
 
     * Fix bug: DisableGetty output error on Fedora 13
 
+2010-05-14 HAN Haofu <gtxx3600@gmail.com>
+
+	*Remove all "platform = 'universe'" because it's not necessarry
+	*Rename 'platfrom' to 'DE'(Desktop Environment)
+	*Add attrs(DE_kde,DE_gnome,DE_universe) in install_remove_pane
+	*Add new icon velly_icons/software_default_icon.png
+	*Optimize '__pixbuf_cell_data_func' and '__DE_pixbuf_cell_data_func' in install_remove_pane.py
+	*Move load_app_icon(name) from 'libu.py' to 'loader.py'
+
+2010-05-14 HAN Haofu <gtxx3600@gamil.com>
+
+	*Add an new attr 'platform' in all 'package_class' to identify the package's desktop platform(default value is 'universe')
+	*Add icon on install_remove_pane to show package's desktop platform('gnome' or 'kde')
+	*Add 3 icon files into 'other_icons'('kde.png','gnome.png','universe.png')
+	
+2010-05-11 HAN Haofu <gtxx3600@gmail.com>
+
+	*Add icon for package that has no icon
+	*Move some relative code to loader.py 
+
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 
     * Improve show_text_window()

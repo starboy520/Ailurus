@@ -143,6 +143,7 @@ class GNOMEArtNextGen(I):
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
     category = 'appearance'
     license = GPL
+    DE = 'gnome'
     def install(self):
         if VERSION == 'hardy':
 
@@ -279,6 +280,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = AL
+    
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run_as_root_in_terminal('perl %s' % f)

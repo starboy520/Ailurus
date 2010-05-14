@@ -30,6 +30,7 @@ class Alacarte(N):
     license = LGPL
     if FEDORA:
         pkgs = 'alacarte'
+        DE = 'gnome'
     
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
@@ -69,8 +70,10 @@ class Bluetooth(N):
     category = 'hardware'
     if UBUNTU or MINT:
         pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
+        DE = 'gnome'
     if FEDORA:
         pkgs = 'bluez-alsa bluez-cups bluez-gstreamer pybluez gnome-bluetooth gnome-phone-manager'
+        DE = 'gnome'
 
 class Boost(N):
     __doc__ = _('Boost library')
@@ -219,7 +222,7 @@ class FireWall(N):
     license = GPL
     category = 'internet'
     if UBUNTU or MINT:
-        pkgs = 'firestarter'
+        pkgs = 'firestarter'   
 
 class FreeGLut3(N):
     __doc__ = _('OpenGL library')  
@@ -260,7 +263,7 @@ class Full_Language_Pack(N):
             pkgs = []
             for p in List:
                 if APT.exist(p): pkgs.append(p)
-    
+                
             self.pkgs = ' '.join(pkgs)
 
 class GCompris(N):
@@ -359,8 +362,10 @@ class Liferea(N):
     category = 'internet'
     if FEDORA:
         pkgs = 'liferea'
+        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'liferea'
+        DE = 'gnome'
 
 class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
@@ -406,8 +411,10 @@ class Nautilus_Actions(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-actions'
+        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-actions'
+        DE = 'gnome'
         
 class Nautilus_Audio_Convert(N):
     __doc__ = _('"Convert audio files" entry')
@@ -418,6 +425,7 @@ class Nautilus_Audio_Convert(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
+        DE = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -431,6 +439,7 @@ class Nautilus_Filename_Repairer(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-filename-repairer'
+        DE = 'gnome'
 
 class Nautilus_Gksu(N):
     __doc__ = _('"Open as administrator" entry')
@@ -439,6 +448,7 @@ class Nautilus_Gksu(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-gksu'
+        DE = 'gnome'
 
 class Nautilus_Image_Converter(N):
     __doc__ = _('"Resize/Rotate images" entries')
@@ -447,8 +457,10 @@ class Nautilus_Image_Converter(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-image-converter'
+        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-image-converter'
+        DE = 'gnome'
         
 class Nautilus_Open_Terminal(N):
     __doc__ = _('"Open in terminal" entry')
@@ -457,8 +469,10 @@ class Nautilus_Open_Terminal(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-open-terminal'
+        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-open-terminal'
+        DE = 'gnome'
         
 class Nautilus_Script_Collection_Svn(N):
     __doc__ = _('"Subversion commands" entries')
@@ -467,6 +481,7 @@ class Nautilus_Script_Collection_Svn(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-collection-svn'
+        DE = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -479,6 +494,7 @@ class Nautilus_Search_Tool(N):
     category = 'nautilus'
     if FEDORA:
         pkgs = 'nautilus-search-tool'
+        DE = 'gnome'
 
 class Nautilus_Share(N):
     __doc__ = _('"Share folders" entry')
@@ -487,6 +503,7 @@ class Nautilus_Share(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-share'
+        DE = 'gnome'
         
 class Nautilus_Wallpaper(N):
     __doc__ = _('"Set as wallpaper" entry')
@@ -495,6 +512,7 @@ class Nautilus_Wallpaper(N):
     category = 'nautilus'
     if UBUNTU or MINT:
         pkgs = 'nautilus-wallpaper'
+        DE = 'gnome'
 
 class Ncurses_and_qt3mt(N):
     __doc__ = _('Ncurses5 and QT3')
@@ -552,8 +570,10 @@ class PiTiVi(N):
     category = 'media'
     if FEDORA:
         pkgs = 'pitivi'
+        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'pitivi'
+        DE = 'gnome'
 
 class PowerTop(N):
     'PowerTop'
@@ -734,6 +754,7 @@ class Umbrello(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'umbrello'
+        DE = 'kde'
 
 class VIM_and_VIMRC(N) :
     __doc__ = _('Make VIM more suitable for programming')
@@ -773,7 +794,7 @@ class VirtualBox(N):
     license = GPL
     category = 'vm'
     if UBUNTU or MINT:
-        pkgs = 'virtualbox-ose'
+        pkgs = 'virtualbox-ose' 
 
 class Vuze_Karmic(N):
     # Latest Vuze is in 9.10 repository.
@@ -804,7 +825,7 @@ class Workrave_And_Auto_Start_It(N) :
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:
-        pkgs = 'workrave'
+        pkgs = 'workrave'  
     if UBUNTU or MINT:
         pkgs = 'workrave'
     def __init__(self):

@@ -31,7 +31,7 @@ def get_pixbuf(file, width, height):
         import traceback
         traceback.print_exc()
         return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
-    
+
 def gray_bg(widget):
     import gtk
     if not isinstance(widget, gtk.Entry) and not isinstance(widget, gtk.TextView): raise TypeError

@@ -32,6 +32,7 @@ class ChangeTerminalColor(_set_gconf):
        '/apps/gnome-terminal/profiles/Default/use_theme_colors = False\n'
        '/apps/gnome-terminal/profiles/Default/background_color = #000000000000\n'
        '/apps/gnome-terminal/profiles/Default/foreground_color = #FFFFFFFFFFFF')
+    DE = 'gnome'
     def __init__(self):
         self.set=(
 ('/apps/gnome-terminal/profiles/Default/use_theme_colors',False,True), 
@@ -47,7 +48,7 @@ class NScripts(I):
                'NScripts is installed in ~/.gnome2/nautilus-scripts.')
     license = GPL
     category = 'nautilus'
-
+    DE = 'gnome'
     def install(self):
         f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
         import os
@@ -76,6 +77,7 @@ class Gedit_GB2312(_set_gconf) :
        '/apps/gedit-2/preferences/encodings/auto_detected += ["GB2312", "GBK", "GB18030"]\n'
        '/apps/gedit-2/preferences/encodings/shown_in_menu += ["GB2312"]')
     Chinese = True
+    DE = 'gnome'
     def __init__(self):
         self.set = ()
         self.add = (
@@ -95,7 +97,8 @@ class Speedup_Nautilus(I):
        '/apps/nautilus/icon_view/default_use_tighter_layout = true\n'
        'delete "size" from /apps/nautilus/list_view/default_visible_columns')
     category = 'nautilus'
-
+    DE = 'gnome'
+    
     def __init__(self):
         self.keys = ['/apps/nautilus/preferences/show_icon_text',
                      '/apps/nautilus/preferences/show_directory_item_counts',
@@ -146,6 +149,7 @@ class GEdit_Suitable_For_Programmer(_set_gconf):
        'Automatically save files once in each minute. '
        'Show line numbers.')
     category = 'dev'
+    DE = 'gnome'
     def __init__(self):
         self.set = (
 ('/apps/gedit-2/preferences/editor/save/auto_save',True,False),

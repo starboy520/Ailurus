@@ -45,6 +45,16 @@ def check_class_members(app_class, default_category = 'tweak'):
     if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
     return app_class
 
+def load_app_icon(name):
+    import os
+    from libu import get_pixbuf
+    for ddir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
+        path = D + ddir + name + '.png'
+        if os.path.exists(path): break
+    else:
+        path = D + 'velly_icons/software_default_icon.png'
+    return get_pixbuf(path, 24, 24)
+
 def load_app_objs(common, desktop, distribution):
     import native_apps
     modules = [native_apps]
@@ -77,6 +87,7 @@ def load_app_objs(common, desktop, distribution):
                 if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
                 app_class_obj.showed_in_toggle = app_class_obj.cache_installed
+                app_class_obj.logo_pixbuf = load_app_icon(name)
                 objs.append(app_class_obj)
                 names.add(name)
             except:
@@ -107,6 +118,7 @@ def load_app_objs_from_extension(extension):
             app_class_obj.cache_installed = app_class_obj.installed()
             if not isinstance(app_class_obj.cache_installed, bool):
                 raise ValueError, 'Return type of installed() is not bool.'
+            app_class_obj.logo_pixbuf = load_app_icon(name)
             app_class_obj.showed_in_toggle = app_class_obj.cache_installed
             names.add(name)
         except:
