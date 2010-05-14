@@ -1,5 +1,9 @@
-#!/bin/bash 
-
-if [ -f "installed_files" ] ; then
-    cat installed_files | xargs rm -rf
+#!/bin/bash
+ 
+log=installed_files
+if [ -f $log ] ; then
+    cat $log | xargs rm -rf
+    rm -f $log
 fi
+
+echo "Ailurus has been uninstalled"
