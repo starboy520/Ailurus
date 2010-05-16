@@ -42,6 +42,7 @@ ailurus/main.py
 ailurus/native_apps.py
 ailurus/show_a_linux_skill_bubble.py
 ailurus/support/checkupdate.py
+ailurus/support/dump_apt_autoremovable.py
 ailurus/support/dumpaptcache2.py
 ailurus/support/dumpaptcache.py
 ailurus/support/dumprpmcache.py

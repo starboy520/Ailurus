@@ -29,3 +29,7 @@ for pkg in cache:
     
     if auto_removable:
         print pkg.name
+        print pkg.installedSize # in bytes
+        print pkg.summary.replace('\n', ' ')
+        
+        
