@@ -116,6 +116,32 @@ class Config:
         try:       return cls.get_bool('query_before_exit')
         except:    return True
     @classmethod
+    def wget_set_timeout(cls, timeout):
+        assert isinstance(timeout, int) and timeout>0, timeout
+        cls.set_int('wget_timeout', timeout)
+    @classmethod
+    def wget_get_timeout(cls):
+        try:       value = cls.get_int('wget_timeout')
+        except: value = 20
+        return value
+    @classmethod
+    def wget_set_triesnum(cls, triesnum):
+        assert isinstance(triesnum, int) and triesnum>0, triesnum
+        cls.set_int('wget_triesnum', triesnum)
+    @classmethod
+    def wget_get_triesnum(cls):
+        try:       value = cls.get_int('wget_triesnum')
+        except: value = 3
+        return value
+    @classmethod
+    def set_show_software_icon(cls, value):
+        cls.set_bool('show_software_icon', value)
+    @classmethod
+    def get_show_software_icon(cls):
+        try: value = cls.get_bool('show_software_icon')
+        except: value = False
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
@@ -192,37 +218,6 @@ class Config:
             return True
         except: 
             return False
-    @classmethod
-    def wget_set_timeout(cls, timeout):
-        assert isinstance(timeout, int) and timeout>0, timeout
-        cls.set_int('wget_timeout', timeout)
-    @classmethod
-    def wget_get_timeout(cls):
-        try:       value = cls.get_int('wget_timeout')
-        except: value = 20
-        return value
-    @classmethod
-    def wget_set_triesnum(cls, triesnum):
-        assert isinstance(triesnum, int) and triesnum>0, triesnum
-        cls.set_int('wget_triesnum', triesnum)
-    @classmethod
-    def wget_get_triesnum(cls):
-        try:       value = cls.get_int('wget_triesnum')
-        except: value = 3
-        return value
-    @classmethod
-    def set_fastest_repository(cls, value):
-        assert ':' in value
-        cls.set_string('fastest_repository', value)
-    @classmethod
-    def get_fastest_repository(cls):
-        return cls.get_string('fastest_repository')
-    @classmethod
-    def set_fastest_repository_response_time(cls, value):
-        cls.set_int('fastest_repository_response_time', value)
-    @classmethod
-    def get_fastest_repository_response_time(cls):
-        return cls.get_int('fastest_repository_response_time')
 
 def install_locale():
     import gettext
@@ -564,23 +559,43 @@ def run_as_root_in_terminal(command):
 class RPM:
     fresh_cache = False
     __set1 = set()
+    __set2 = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
-        del cls.__set1
         cls.__set1 = set()
+        cls.__set2 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumprpmcache.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__set1.add(line[:-1])
+            cls.__set1.add(line.strip())
         task.wait()
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing.py'
+        task = subprocess.Popen(['python', path],
+            stderr=subprocess.PIPE, # must be stderr
+            )
+        for line in task.stderr: # must be stderr
+            cls.__set2.add(line.strip())
+        task.wait()
+    @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set1
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set2
+    @classmethod
+    def exist(cls, package_name):
+        cls.refresh_cache()
+        return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])

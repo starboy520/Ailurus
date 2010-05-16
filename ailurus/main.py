@@ -165,9 +165,10 @@ def exception_happened(etype, value, tb):
     
     import traceback, StringIO
     msg = StringIO.StringIO()
-    print >>msg, _('Traceback:')
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
+    import platform
+    print >>msg, platform.dist()
     print >>msg, 'Ailurus version:', AILURUS_VERSION
 
     title_box = gtk.HBox(False, 5)
@@ -176,7 +177,8 @@ def exception_happened(etype, value, tb):
         image = gtk.Image()
         image.set_from_file(D+'umut_icons/bug.png')
         title_box.pack_start(image, False)
-    title = label_left_align( _('A bug appears. Would you please tell Ailurus developers? Thank you!') )
+    title = label_left_align(_('A bug appears. Would you please tell Ailurus developers? Thank you!') + 
+                             '\n' + _('Please copy and paste following text into bug report web-page.'))
     title_box.pack_start(title, False)
     
     textview_traceback = gtk.TextView()
@@ -192,23 +194,20 @@ def exception_happened(etype, value, tb):
     button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
     button_report_bug.connect('clicked', lambda w: report_bug() )
     button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
-    button_close.connect('clicked', lambda w: dialog.destroy())
+    button_close.connect('clicked', lambda w: window.destroy())
     bottom_box = gtk.HBox(False, 10)
     bottom_box.pack_start(button_report_bug, False)
     bottom_box.pack_start(button_close, False)
     
-    dialog = gtk.Dialog(_('Bug appears!'), None, gtk.DIALOG_NO_SEPARATOR)
-    dialog.set_border_width(10)
-    dialog.vbox.set_spacing(5)
-    dialog.vbox.pack_start(title_box, False)
-    dialog.vbox.pack_start(scroll_traceback)
-    dialog.vbox.show_all()
-    
-    dialog.action_area.pack_start(bottom_box, False)
-    dialog.action_area.show_all()
-    
-    dialog.run()
-    dialog.destroy()
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(title_box, False)
+    vbox.pack_start(scroll_traceback)
+    vbox.pack_start(bottom_box, False)
+    window = gtk.Window()
+    window.set_title(_('Bug appears!'))
+    window.set_border_width(10)
+    window.add(vbox)
+    window.show_all()
 
 sys.excepthook = exception_happened
 

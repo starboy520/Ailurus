@@ -105,9 +105,9 @@ def __preferences(main_view):
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
 
-    menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
-    menu_hide_quick_setup_pane.set_active(Config.get_hide_quick_setup_pane())
-    menu_hide_quick_setup_pane.connect('toggled', 
+    menu_hide_quick_setup_button = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
+    menu_hide_quick_setup_button.set_active(Config.get_hide_quick_setup_pane())
+    menu_hide_quick_setup_button.connect('toggled', 
             lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
                               or Config.set_hide_quick_setup_pane(w.get_active()))
 
@@ -122,7 +122,15 @@ def __preferences(main_view):
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tip_after_logging_in, menu_set_wget_option ]
+    menu_show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
+    menu_show_software_icon.set_active(Config.get_show_software_icon())
+    menu_show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()))
+    
+    return [ menu_hide_quick_setup_button, 
+             menu_query_before_exit, 
+             menu_tip_after_logging_in, 
+             menu_set_wget_option,
+             menu_show_software_icon ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')
