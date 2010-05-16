@@ -573,6 +573,7 @@ class RPM:
             )
         for line in task.stdout:
             cls.__set1.add(line[:-1])
+        task.wait()
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
@@ -624,6 +625,7 @@ class APT:
             name = line[2:-1]
             if line[0]=='i': cls.__set1.add(name)
             else: cls.__set2.add(name)
+        task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -721,12 +723,14 @@ class PACMAN:
             )
         for line in task.stdout:
             cls.__pkgs.add(line.split()[0])
+        task.wait()
         #get all existing package names
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__allpkgs.add(line.split()[1])
+        task.wait()
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
@@ -1359,6 +1363,7 @@ class Tasksel:
         to_remove = []
         for line in task.stdout:
             to_remove.append(line.strip())
+        task.wait()
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
