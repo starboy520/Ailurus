@@ -435,7 +435,9 @@ class TempOwn:
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
-    assert isinstance(title, str)
+    # title must not be empty. 
+    # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
+    assert isinstance(title, str) and title
     assert isinstance(content, str)
 
     try:
@@ -1387,8 +1389,11 @@ atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge) 
 
-import pynotify
-pynotify.init('Ailurus')
+try:
+    import pynotify
+    pynotify.init('Ailurus')
+except:
+    print 'Cannot init pynotify'
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
