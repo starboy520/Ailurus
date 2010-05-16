@@ -566,16 +566,19 @@ class RPM:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__set1
         cls.__set1 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumprpmcache.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__set1.add(line[:-1])
         task.wait()
+    @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set1
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
