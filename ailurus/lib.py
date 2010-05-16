@@ -211,15 +211,8 @@ class Config:
         except: value = 3
         return value
     @classmethod
-    def set_fastest_repository(cls, value):
-        assert ':' in value
-        cls.set_string('fastest_repository', value)
-    @classmethod
     def get_fastest_repository(cls):
         return cls.get_string('fastest_repository')
-    @classmethod
-    def set_fastest_repository_response_time(cls, value):
-        cls.set_int('fastest_repository_response_time', value)
     @classmethod
     def get_fastest_repository_response_time(cls):
         return cls.get_int('fastest_repository_response_time')

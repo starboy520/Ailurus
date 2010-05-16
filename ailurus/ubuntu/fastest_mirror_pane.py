@@ -332,7 +332,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             thread.join()
             self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
         self.__update_candidate_store_with_ping_result(result)
-        self.__write_config_according_to_candidate_store()
         self.__callback__refresh_state_box()
         self.__delete_all_widgets_in_progress_box()
         self.__save_last_response_time()
@@ -391,19 +390,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
                 server = row[3]
                 row[4] = self.__response_times[server]
         
-    def __write_config_according_to_candidate_store(self):
-        min_time = self.NO_PING_RESPONSE
-        fastest_url = None
-        for row in self.candidate_store:
-            time = row[4]
-            assert isinstance(time, int)
-            if time < min_time:
-                fastest_url = row[2]
-                min_time = time
-        if fastest_url:
-            Config.set_fastest_repository(fastest_url)
-            Config.set_fastest_repository_response_time(min_time)
-
     def __get_popupmenu_for_candidate_repos_treeview(self, treeview):
         detect_speed_of_selected_repos = image_stock_menuitem(gtk.STOCK_FIND,
             _('Detect response time of selected repositories'))

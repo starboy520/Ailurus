@@ -280,8 +280,6 @@ class FastestRepositoryDialog(gtk.Dialog):
                 if e[3] == fastest_server:
                     new_url = e[2]
                     break
-            Config.set_fastest_repository(new_url)
-            Config.set_fastest_repository_response_time(int(min_time))
             #check whether repositories should be changed
             for repos in get_current_official_repositories():
                 assert ':' in repos
