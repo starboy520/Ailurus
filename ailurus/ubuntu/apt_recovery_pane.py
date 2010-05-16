@@ -40,7 +40,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
         for line in task.stdout:
             name = line[2:-1]
             if line[0]=='i': set1.add(name)
-            
+        task.wait()
         return set1
 
     def __make_dir(self):
