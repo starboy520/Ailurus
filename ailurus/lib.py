@@ -637,6 +637,28 @@ class APT:
         cls.refresh_cache()
         return cls.__set2
     @classmethod
+    def get_autoremovable_pkgs(cls):
+        ret = []
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_autoremovable.py'
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
+        class EndOfStream:
+            pass
+        def readline(stream):
+            line = stream.readline()
+            if len(line) == 0: raise EndOfStream
+            return line.strip()
+        try:
+            while True:
+                name = readline(task.stdout)
+                size = readline(task.stdout)
+                summary = readline(task.stdout)
+                ret.append((name, size, summary,))
+        except EndOfStream:
+            pass
+        task.wait()
+        return ret
+    @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
         cls.refresh_cache()
