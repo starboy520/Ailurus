@@ -45,7 +45,8 @@ ailurus/support/checkupdate.py
 ailurus/support/dump_apt_autoremovable.py
 ailurus/support/dumpaptcache2.py
 ailurus/support/dumpaptcache.py
-ailurus/support/dumprpmcache.py
+ailurus/support/dump_rpm_existing.py
+ailurus/support/dump_rpm_installed.py
 ailurus/support/__init__.py
 ailurus/support/keygrabber.py
 ailurus/support/multidragview.py
