@@ -208,6 +208,11 @@ class UbuntuCleanKernelBox(gtk.HBox):
         
         self.button_delete.set_sensitive(False)
         
+        if self.unused_kernels == []:
+            self.view.set_sensitive(False)
+            self.liststore.append([False, _('There is no unused Linux Kernel.'), 0])
+            self.button_delete.set_sensitive(False)
+        
     def get_size(self, version):
         import glob
         files = glob.glob('/boot/*%s*' % version) + glob.glob('/lib/modules/%s' % version)
