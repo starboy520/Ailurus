@@ -1,3 +1,7 @@
+2010-05-16 Homer Xing <homer.xing@gmail.com>
+
+    * Improve "Clean up unused kernels". Display Linux kernel size.
+
 2010-05-16 Devil Wang <wxjeacen.gmail.com>
 
     * Add Emacs

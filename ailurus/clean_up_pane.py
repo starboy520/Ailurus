@@ -186,121 +186,98 @@ class ReclaimMemoryBox(gtk.HBox):
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
-            
-class UbuntuCleanKernelBox(gtk.VBox):
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 10)
-        self.current_kernel_version = current_kernel_version = self.get_current_kernel_version()
-        self.version_to_packages = {} # map version to package names
-        self.__regenerate_version_to_packages() # regenerate self.version_to_packages
+
+class UbuntuCleanKernelBox(gtk.HBox):
+    def version_of_current_kernel(self):
+        return os.uname()[2]
+    
+    def refresh(self):
+        self.unused_kernels = []
+        import glob, re
+        for file_name in glob.glob('/boot/vmlinuz-*'):
+            match = re.search(r'vmlinuz-(.+(-[a-z]+)?)', file_name)
+            if not match: continue
+            version = match.group(1)
+            if version == self.version_of_current_kernel(): continue
+            self.unused_kernels.append(version)
+        self.unused_kernels.sort()
+    
+        self.liststore.clear()
+        for version in self.unused_kernels:
+            self.liststore.append([True, version, self.get_size(version)])
         
-        check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5) # put all check buttons in this box
-        check_buttons_list = self.check_buttons_list = [] # all check buttons
-        button_apply = self.button_apply = gtk.Button(_('Remove Linux kernels'))
-        button_apply.set_sensitive(False)
-        button_apply.connect('clicked', self.remove_kernel)
-        label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
-        label.set_alignment(0, 0.5)
-        self.pack_start(label, False)
-        self.__regenerate_check_buttons()
-        self.pack_start(check_buttons_box, False)
-        hbox = gtk.HBox()
-        hbox.pack_start(button_apply, False)
-        self.pack_start(hbox, False)
+        self.button_delete.set_sensitive(False)
         
-    def remove_kernel(self, button_apply):
-        remove_list = []
-        delete_list = []
-        for button in self.check_buttons_list:
-            if button.get_active() == False:
-                kernel_version = button.kernel_version
-                pkgs = self.version_to_packages[kernel_version]
-                if pkgs: 
-                    remove_list.extend(pkgs)
-                else:
-                    delete_list.extend([
-                            '/lib/modules/%s'%kernel_version, 
-                            '/boot/*-%s*'%kernel_version,])
-        if remove_list:
-            try:    APT.remove(*remove_list)
+    def get_size(self, version):
+        import glob
+        files = glob.glob('/boot/*%s*' % version) + glob.glob('/lib/modules/%s' % version)
+        ret = 0
+        for file in files:
+            ret += os.stat(file).st_size
+        return ret
+    
+    def text_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        version = model.get_value(iter, 1)
+        size = model.get_value(iter, 2)
+        markup = '<b>%s</b>\n%s' % (version, derive_size(size))
+        if not keep:
+            markup += ' ' + _('will be removed')
+        cell.set_property('markup', markup)
+    
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            keep = row[0]
+            sensitive = sensitive or not keep
+        self.button_delete.set_sensitive(sensitive)
+    
+    def delete_kernel(self):
+        for row in self.liststore:
+            keep = row[0]
+            if keep: continue
+            version = row[1]
+            import re
+            pure_version = re.match('[0-9.-]+', version).group(0)
+            if pure_version.endswith('-'): pure_version = pure_version[:-1]
+            to_remove = [p for p in APT.get_installed_pkgs_set() if pure_version in p]
+            try:
+                if to_remove:
+                    APT.remove(*to_remove)
+                run_as_root('rm -rf /boot/*%s*' % version)
+                run_as_root('rm -rf /lib/modules/%s' % version)
             except:
                 import traceback
                 traceback.print_exc()
-            self.__regenerate_version_to_packages()
-            self.__regenerate_check_buttons()
-        if delete_list:
-            try:    run_as_root('rm -rf %s'%' '.join(delete_list))
-            except AccessDeniedError: pass
-            self.__regenerate_version_to_packages()
-            self.__regenerate_check_buttons()
-        button_apply.set_sensitive(False)
-
-    def __regenerate_version_to_packages(self):
-        import glob
-        import re
-        self.version_to_packages.clear()
-        kernel_list = glob.glob('/boot/vmlinuz-*');
-        pattern = r'vmlinuz-([0-9]+\.[0-9]+\.[0-9]+([-.])[0-9]+)'
-        for p in kernel_list:
-            match = re.search(pattern, p)
-            if not match: continue
-            version = match.group(1)
-            if version == self.current_kernel_version:
-                continue
-            if match.group(2) == '-':
-                pkgs = [
-                        'linux-headers-%s'%version, 
-                        'linux-headers-%s-generic'%version, 
-                        'linux-image-%s-generic'%version, 
-                        ]
-            else:
-                pkgs = None
-            if self.version_to_packages.has_key(version):
-                self.version_to_packages[version].extend(pkgs)
-            else:
-                self.version_to_packages[version] = pkgs
-
-    def check_button_toggled(self, check_button, button_apply):
-        if check_button.get_active():
-            check_button.label.set_markup("%s" % check_button.kernel_version)
-        else:
-            check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
-        button_apply.set_sensitive(bool([c for c in
-                self.check_buttons_list if not c.get_active()]))
-
-    def __regenerate_check_buttons(self):
-        for child in self.check_buttons_box.get_children():
-            self.check_buttons_box.remove(child)
-        self.check_buttons_list = []
-        version_list = self.version_to_packages.keys()
-        version_list.sort()
-        for version in version_list:
-            label = gtk.Label(version)
-            check_button = gtk.CheckButton()
-            check_button.kernel_version = version
-            check_button.label = label
-            check_button.add(label)
-            check_button.set_active(True)
-            check_button.connect('toggled', self.check_button_toggled, self.button_apply)
-            self.check_buttons_list.append(check_button)
-            
-        if self.check_buttons_list:
-            label = gtk.Label(_('Not used Linux kernels are:'))
-            label.set_alignment(0, 0.5)
-            self.check_buttons_box.pack_start(label, False)
-            for button in self.check_buttons_list:
-                self.check_buttons_box.pack_start(button, False)
-
-        self.check_buttons_box.show_all()
+        self.refresh()
     
-    def get_current_kernel_version(self):
-        import re
-        version = os.uname()[2]
-        pattern = r'[0-9.-]+'
-        match = re.search(pattern, version)
-        if match: 
-            version = match.group(0)
-            if version.endswith('-'): version = version[:-1]
-            return version
-        else: 
-            raise Exception, os.uname()[2]
+    def __init__(self):
+        self.liststore = gtk.ListStore(bool, str, long) #keep?, version, disk space cost
+        render_keep = gtk.CellRendererToggle()
+        render_keep.connect('toggled', self.toggled)
+        column_keep = gtk.TreeViewColumn()
+        column_keep.pack_start(render_keep, False)
+        column_keep.add_attribute(render_keep, 'active', 0)
+        render_text = gtk.CellRendererText()
+        column_text = gtk.TreeViewColumn(_('Unused Linux kernels'))
+        column_text.pack_start(render_text, True)
+        column_text.set_cell_data_func(render_text, self.text_data_func)
+        self.view = view = gtk.TreeView(self.liststore)
+        view.append_column(column_keep)
+        view.append_column(column_text)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
+        
+        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        button_delete.connect('clicked', lambda *w: self.delete_kernel())
+        align = gtk.Alignment(0, 0.5)
+        align.add(button_delete)
+
+        gtk.HBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.pack_start(align, False)
+        
+        self.refresh()
