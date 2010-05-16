@@ -876,3 +876,11 @@ class Zhcon(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'zhcon'
+
+class Emacs(N):
+    __doc__=_('Emacs: Customizable Text Editor—and More ')
+    detail = _('Emacs is the most powerfull editer , you can customize it as to what you wanna to.')
+    license= GPL + "http://www.gnu.org/software/emacs/"
+    category = 'dev'
+    pkgs = 'emacs'
+    
