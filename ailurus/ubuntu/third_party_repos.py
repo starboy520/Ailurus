@@ -482,8 +482,6 @@ class Repo_RedNoteBook(_repo):
         self.key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
         self.key_id = 'FF95D333'
         _repo.__init__(self)
-    def visible(self):
-        return VERSION != 'lucid'
 
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')
