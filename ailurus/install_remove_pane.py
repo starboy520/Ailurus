@@ -189,23 +189,21 @@ class InstallRemovePane(gtk.VBox):
         button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
         button_report_bug.connect('clicked', lambda w: report_bug() )
         button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
-        button_close.connect('clicked', lambda w: dialog.destroy())
+        button_close.connect('clicked', lambda w: window.destroy())
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_report_bug, False)
         bottom_box.pack_start(button_close, False)
         
-        dialog = gtk.Dialog(_('Some operations failed'), None, gtk.DIALOG_NO_SEPARATOR)
-        dialog.set_border_width(10)
-        dialog.vbox.set_spacing(5)
-        dialog.vbox.pack_start(title_box, False)
-        dialog.vbox.pack_start(scroll)
-        dialog.vbox.show_all()
-        
-        dialog.action_area.pack_start(bottom_box, False)
-        dialog.action_area.show_all()
-        
-        dialog.run()
-        dialog.destroy()
+        vbox = gtk.VBox(False, 5)
+        vbox.pack_start(title_box, False)
+        vbox.pack_start(scroll)
+        vbox.pack_start(bottom_box, False)
+        window = gtk.Window()
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_title(_('Some operations failed'))
+        window.set_border_width(10)
+        window.add(vbox)
+        window.show_all()
     
     def __apply_change_thread(self):
         import os, sys, traceback, StringIO, thread, platform
