@@ -37,7 +37,7 @@ class Audacity(N):
     license = LGPL + ' http://audacity.sourceforge.net/'
     category = 'media'
     if FEDORA:
-        pkgs = 'audacity-freeworld'
+        pkgs = 'audacity'
 
 class AutoApt(N):
     'Auto-apt'
