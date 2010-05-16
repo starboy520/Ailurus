@@ -2,6 +2,7 @@
 
     * Improve "Clean up unused kernels". Display Linux kernel size.
     * Add "Remove auto-removable packages" feature.
+    * Add text to explain cache dropping operation.
 
 2010-05-16 Devil Wang <wxjeacen.gmail.com>
 

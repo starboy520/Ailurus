@@ -25,6 +25,7 @@ import gtk
 import sys
 import os
 from lib import *
+from libu import *
 
 class CleanUpPane(gtk.VBox):
     name = _('Clean up')
@@ -137,9 +138,9 @@ class CleanUpPane(gtk.VBox):
         button.set_tooltip_text(_('Command:') + ' echo "" > ~/.recently-used.xbel')
         return button
 
-class ReclaimMemoryBox(gtk.HBox):
+class ReclaimMemoryBox(gtk.VBox):
     def __init__(self):
-        gtk.HBox.__init__(self, False, 10)
+        gtk.VBox.__init__(self, False, 5)
         button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
         button_free_memory.set_tooltip_text(
                                             _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
@@ -149,8 +150,21 @@ class ReclaimMemoryBox(gtk.HBox):
         import gobject
         gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
     
-        self.pack_start(button_free_memory)
-        self.pack_start(label_info, False)
+        hbox = gtk.HBox(False, 10)
+        hbox.pack_start(button_free_memory)
+        hbox.pack_start(label_info, False)
+        
+        text_buffer = gtk.TextBuffer()
+        text_buffer.set_text(_('Linux uses up extra physical memory to work as a disk buffer cache. '
+                               'Press the button above to free cache. '
+                               'This is not a destructive operation because dirty data will not be freed.\n'
+                               'Command: echo 3 >/proc/sys/vm/drop_caches'))
+        text_view = gtk.TextView(text_buffer)
+        text_view.set_wrap_mode(gtk.WRAP_WORD)
+        gray_bg(text_view)
+        
+        self.pack_start(hbox)
+        self.pack_start(text_view, False)
         
     def show_cached_memory_amount(self,label):
         try:
