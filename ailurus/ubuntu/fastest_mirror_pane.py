@@ -334,7 +334,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.__update_candidate_store_with_ping_result(result)
         self.__callback__refresh_state_box()
         self.__delete_all_widgets_in_progress_box()
-        self.__save_last_response_time()
         self.main_view.unlock()
         self.set_sensitive(True)
 
@@ -382,13 +381,15 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             server = i[0]
             if isinstance(i[1], float):
                 time = int(i[1])
-                self.__response_times[server] = time
+                ResponseTime.set(server, time)
             else:
                 time = self.NO_PING_RESPONSE
         for row in self.candidate_store:
-            if row[3] in self.__response_times:
+            try:
                 server = row[3]
-                row[4] = self.__response_times[server]
+                row[4] = ResponseTime.get(server)
+            except KeyError:
+                pass
         
     def __get_popupmenu_for_candidate_repos_treeview(self, treeview):
         detect_speed_of_selected_repos = image_stock_menuitem(gtk.STOCK_FIND,
@@ -531,38 +532,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         box.pack_start(treeview)
         return box
 
-    def __save_last_response_time(self):
-        try:
-            Config.make_config_dir()
-            
-            path = Config.get_config_dir() + 'response_time'
-            with open(path, 'w') as f:
-                for url in self.__response_times:
-                    line = [url, str(self.__response_times[url])]
-                    f.write(':'.join(line))
-                    f.write('\n')
-        except:
-            import traceback
-            traceback.print_exc()
-
-    def __init_last_response_time(self):
-        self.__response_times = {}
-        try:
-            path = Config.get_config_dir() + 'response_time'
-            if not os.path.exists(path): return
-            with open(path) as f:
-                lines = f.readlines()
-            for line in lines:
-                r = line.rsplit(':', 1)
-                self.__response_times[r[0]] = float(r[1])
-        except IOError:
-            import traceback
-            traceback.print_exc()
-
     def __fill_candidate_store(self):
         for e in libserver.get_candidate_repositories():
             try:
-                res_time = self.__response_times[e[3]]
+                res_time = ResponseTime.get(e[3])
             except KeyError:
                 res_time = self.NO_PING_RESPONSE
             e.append(res_time)
@@ -573,7 +546,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         assert hasattr(main_view, 'unlock')
         self.main_view = main_view
         
-        self.__init_last_response_time()
+        ResponseTime.load()
         
         gtk.VBox.__init__(self, False, 5)
         # organization, country, URL, server, response time(in millisecond)
