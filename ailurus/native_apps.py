@@ -878,9 +878,10 @@ class Zhcon(N):
         pkgs = 'zhcon'
 
 class Emacs(N):
-    __doc__=_('Emacs: Customizable Text Editor—and More ')
-    detail = _('Emacs is the most powerfull editer , you can customize it as to what you wanna to.')
-    license= GPL + "http://www.gnu.org/software/emacs/"
+    __doc__=_('Emacs: Advanced text editor')
+    license= GPL + ' http://www.gnu.org/software/emacs/'
     category = 'dev'
-    pkgs = 'emacs'
-    
+    if UBUNTU or MINT:
+        pkgs = 'emacs'
+    if FEDORA:
+        pkgs = 'emacs'
