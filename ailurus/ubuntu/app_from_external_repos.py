@@ -234,5 +234,3 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
-    def visible(self):
-        return VERSION != 'lucid'
