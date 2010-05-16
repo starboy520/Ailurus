@@ -391,19 +391,20 @@ def run_as_root(cmd, ignore_error=False):
     assert isinstance(ignore_error, bool)
     
     import os
-    if os.getuid()!=0:
-        print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
-        authenticate()
-        import dbus
-        bus = dbus.SystemBus()
-        obj = bus.get_object('cn.ailurus', '/')
-        try:
-            obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
-        except dbus.exceptions.DBusException, e:
-            if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
-            else: raise
-    else:
+    if os.getuid()==0:
         run(cmd, ignore_error)
+        return
+    
+    print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
+    authenticate()
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    try:
+        obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 def is_string_not_empty(string):
     if type(string)!=str and type(string)!=unicode: raise TypeError(string)
@@ -554,7 +555,11 @@ def run_as_root_in_terminal(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    try:
+        obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 class RPM:
     fresh_cache = False
