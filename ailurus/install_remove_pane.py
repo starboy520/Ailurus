@@ -519,6 +519,7 @@ class InstallRemovePane(gtk.VBox):
         render_toggle = gtk.CellRendererToggle ()
         render_toggle.connect('toggled',self.__toggle,treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
+        render_pixbuf.set_visible(Config.get_show_software_icon())
         render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
 

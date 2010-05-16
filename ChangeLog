@@ -4,6 +4,7 @@
     * Add "Remove auto-removable packages" feature.
     * Add text to explain cache dropping operation.
     * Show traceback in window, rather than in terminal.
+    * Show/hide an icon by the side of software name.
 
 2010-05-16 Devil Wang <wxjeacen.gmail.com>
 

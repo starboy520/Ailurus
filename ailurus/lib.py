@@ -134,6 +134,14 @@ class Config:
         except: value = 3
         return value
     @classmethod
+    def set_show_software_icon(cls, value):
+        cls.set_bool('show_software_icon', value)
+    @classmethod
+    def get_show_software_icon(cls):
+        try: value = cls.get_bool('show_software_icon')
+        except: value = False
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
