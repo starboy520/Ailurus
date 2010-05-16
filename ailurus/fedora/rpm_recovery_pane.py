@@ -36,6 +36,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         for line in task.stdout:
             set1.add(line.strip())
+        task.wait()
         return set1
 
     def __make_dir(self):

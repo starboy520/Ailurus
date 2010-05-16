@@ -876,3 +876,12 @@ class Zhcon(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'zhcon'
+
+class Emacs(N):
+    __doc__=_('Emacs: Advanced text editor')
+    license= GPL + ' http://www.gnu.org/software/emacs/'
+    category = 'dev'
+    if UBUNTU or MINT:
+        pkgs = 'emacs'
+    if FEDORA:
+        pkgs = 'emacs'
