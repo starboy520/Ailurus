@@ -227,8 +227,6 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-    def visible(self):
-        return VERSION != 'lucid'
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
