@@ -116,6 +116,32 @@ class Config:
         try:       return cls.get_bool('query_before_exit')
         except:    return True
     @classmethod
+    def wget_set_timeout(cls, timeout):
+        assert isinstance(timeout, int) and timeout>0, timeout
+        cls.set_int('wget_timeout', timeout)
+    @classmethod
+    def wget_get_timeout(cls):
+        try:       value = cls.get_int('wget_timeout')
+        except: value = 20
+        return value
+    @classmethod
+    def wget_set_triesnum(cls, triesnum):
+        assert isinstance(triesnum, int) and triesnum>0, triesnum
+        cls.set_int('wget_triesnum', triesnum)
+    @classmethod
+    def wget_get_triesnum(cls):
+        try:       value = cls.get_int('wget_triesnum')
+        except: value = 3
+        return value
+    @classmethod
+    def set_show_software_icon(cls, value):
+        cls.set_bool('show_software_icon', value)
+    @classmethod
+    def get_show_software_icon(cls):
+        try: value = cls.get_bool('show_software_icon')
+        except: value = False
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
@@ -192,37 +218,6 @@ class Config:
             return True
         except: 
             return False
-    @classmethod
-    def wget_set_timeout(cls, timeout):
-        assert isinstance(timeout, int) and timeout>0, timeout
-        cls.set_int('wget_timeout', timeout)
-    @classmethod
-    def wget_get_timeout(cls):
-        try:       value = cls.get_int('wget_timeout')
-        except: value = 20
-        return value
-    @classmethod
-    def wget_set_triesnum(cls, triesnum):
-        assert isinstance(triesnum, int) and triesnum>0, triesnum
-        cls.set_int('wget_triesnum', triesnum)
-    @classmethod
-    def wget_get_triesnum(cls):
-        try:       value = cls.get_int('wget_triesnum')
-        except: value = 3
-        return value
-    @classmethod
-    def set_fastest_repository(cls, value):
-        assert ':' in value
-        cls.set_string('fastest_repository', value)
-    @classmethod
-    def get_fastest_repository(cls):
-        return cls.get_string('fastest_repository')
-    @classmethod
-    def set_fastest_repository_response_time(cls, value):
-        cls.set_int('fastest_repository_response_time', value)
-    @classmethod
-    def get_fastest_repository_response_time(cls):
-        return cls.get_int('fastest_repository_response_time')
 
 def install_locale():
     import gettext
@@ -391,19 +386,20 @@ def run_as_root(cmd, ignore_error=False):
     assert isinstance(ignore_error, bool)
     
     import os
-    if os.getuid()!=0:
-        print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
-        authenticate()
-        import dbus
-        bus = dbus.SystemBus()
-        obj = bus.get_object('cn.ailurus', '/')
-        try:
-            obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
-        except dbus.exceptions.DBusException, e:
-            if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
-            else: raise
-    else:
+    if os.getuid()==0:
         run(cmd, ignore_error)
+        return
+    
+    print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
+    authenticate()
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    try:
+        obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 def is_string_not_empty(string):
     if type(string)!=str and type(string)!=unicode: raise TypeError(string)
@@ -435,7 +431,9 @@ class TempOwn:
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
-    assert isinstance(title, str)
+    # title must not be empty. 
+    # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
+    assert isinstance(title, str) and title
     assert isinstance(content, str)
 
     try:
@@ -552,7 +550,11 @@ def run_as_root_in_terminal(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    try:
+        obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 class RPM:
     fresh_cache = False
@@ -564,15 +566,19 @@ class RPM:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__set1
         cls.__set1 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumprpmcache.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__set1.add(line[:-1])
+        task.wait()
+    @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set1
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
@@ -624,6 +630,7 @@ class APT:
             name = line[2:-1]
             if line[0]=='i': cls.__set1.add(name)
             else: cls.__set2.add(name)
+        task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -632,6 +639,29 @@ class APT:
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
         return cls.__set2
+    @classmethod
+    def get_autoremovable_pkgs(cls):
+        ret = []
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_autoremovable.py'
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
+        class EndOfStream:
+            pass
+        def readline(stream):
+            line = stream.readline()
+            if len(line) == 0: raise EndOfStream
+            return line.strip()
+        try:
+            while True:
+                name = readline(task.stdout)
+                size = readline(task.stdout)
+                size = long(size)
+                summary = readline(task.stdout)
+                ret.append([name, size, summary,])
+        except EndOfStream:
+            pass
+        task.wait()
+        return ret
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
@@ -721,12 +751,14 @@ class PACMAN:
             )
         for line in task.stdout:
             cls.__pkgs.add(line.split()[0])
+        task.wait()
         #get all existing package names
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__allpkgs.add(line.split()[1])
+        task.wait()
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
@@ -1359,6 +1391,7 @@ class Tasksel:
         to_remove = []
         for line in task.stdout:
             to_remove.append(line.strip())
+        task.wait()
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
@@ -1382,8 +1415,11 @@ atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge) 
 
-import pynotify
-pynotify.init('Ailurus')
+try:
+    import pynotify
+    pynotify.init('Ailurus')
+except:
+    print 'Cannot init pynotify'
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')

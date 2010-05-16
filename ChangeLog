@@ -1,3 +1,15 @@
+2010-05-16 Homer Xing <homer.xing@gmail.com>
+
+    * Improve "Clean up unused kernels". Display Linux kernel size.
+    * Add "Remove auto-removable packages" feature.
+    * Add text to explain cache dropping operation.
+    * Show traceback in window, rather than in terminal.
+    * Show/hide an icon by the side of software name.
+
+2010-05-16 Devil Wang <wxjeacen.gmail.com>
+
+    * Add Emacs
+
 2010-05-14 Devil Wang <wxjeacen.gmail.com>
     
     * Add Ailurus un-install script. It helps developers to un-install Ailurus.
@@ -25,15 +37,6 @@
 
     * Improve show_text_window()
     * Improve other code via show_text_window()
-
-2010-05-06 QI Chengjie <starboy.qi@gmail.com>
-
-    * Sorting icons by name in "System Setting" pane
-    * Create imagemagick shortcut
-    * Extract the text dialog to a specific function
-    * Add "copy url" in the "Fastest Mirror" pane
-    * Add timeout for notify
-    * Add a Linux skill
 
 2010-05-09 SHANG Yuanchun <idealities@gmail.com>
 
@@ -80,6 +83,15 @@
     * Fix bug: Custom linux kernel cannot be removed
     * Fix bug: APT.remove failed if any package is not installed
     * Hide "Not used Linux kernels" label, when there is no unused Linux kernel.
+
+2010-05-06 QI Chengjie <starboy.qi@gmail.com>
+
+    * Sorting icons by name in "System Setting" pane
+    * Create imagemagick shortcut
+    * Extract the text dialog to a specific function
+    * Add "copy url" in the "Fastest Mirror" pane
+    * Add timeout for notify
+    * Add a Linux skill
 
 2010-05-06 CHEN Yangyang <skabyy@gmail.com>
 

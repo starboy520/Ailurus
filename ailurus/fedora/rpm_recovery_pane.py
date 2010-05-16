@@ -28,16 +28,6 @@ from libu import *
 
 class FedoraRPMRecoveryPane(gtk.VBox):
     name = _('RPM recovery')
-    
-    def __get_installed_packages_set(self):
-        path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumprpmcache.py'
-        
-        set1 = set()
-        import subprocess
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        for line in task.stdout:
-            set1.add(line.strip())
-        return set1
 
     def __make_dir(self):
         Config.make_config_dir()
@@ -70,7 +60,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         today = datetime.date.today().__str__()
         filename = '%s/rpm-snapshot-%s'%(Dir, today)
         with open(filename, 'w') as f:
-            for p in self.__get_installed_packages_set():
+            for p in RPM.get_installed_pkgs_set():
                 print >>f, p
 
         #write comment
@@ -150,7 +140,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
             for line in f:
                 name = line.strip()
                 past_set.add(name)
-        current_set = self.__get_installed_packages_set()
+        current_set = RPM.get_installed_pkgs_set()
         if current_set == past_set:
             notify( _('Since %(year)04d-%(month)02d-%(day)02d, there is no change.')
                           %{'year':year, 'month':month, 'day':day}, ' ' )
