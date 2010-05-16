@@ -116,6 +116,24 @@ class Config:
         try:       return cls.get_bool('query_before_exit')
         except:    return True
     @classmethod
+    def wget_set_timeout(cls, timeout):
+        assert isinstance(timeout, int) and timeout>0, timeout
+        cls.set_int('wget_timeout', timeout)
+    @classmethod
+    def wget_get_timeout(cls):
+        try:       value = cls.get_int('wget_timeout')
+        except: value = 20
+        return value
+    @classmethod
+    def wget_set_triesnum(cls, triesnum):
+        assert isinstance(triesnum, int) and triesnum>0, triesnum
+        cls.set_int('wget_triesnum', triesnum)
+    @classmethod
+    def wget_get_triesnum(cls):
+        try:       value = cls.get_int('wget_triesnum')
+        except: value = 3
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
@@ -192,24 +210,6 @@ class Config:
             return True
         except: 
             return False
-    @classmethod
-    def wget_set_timeout(cls, timeout):
-        assert isinstance(timeout, int) and timeout>0, timeout
-        cls.set_int('wget_timeout', timeout)
-    @classmethod
-    def wget_get_timeout(cls):
-        try:       value = cls.get_int('wget_timeout')
-        except: value = 20
-        return value
-    @classmethod
-    def wget_set_triesnum(cls, triesnum):
-        assert isinstance(triesnum, int) and triesnum>0, triesnum
-        cls.set_int('wget_triesnum', triesnum)
-    @classmethod
-    def wget_get_triesnum(cls):
-        try:       value = cls.get_int('wget_triesnum')
-        except: value = 3
-        return value
 
 def install_locale():
     import gettext
