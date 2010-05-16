@@ -37,6 +37,7 @@ class CleanUpPane(gtk.VBox):
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
+            self.pack_start(UbuntuAutoRemovableBox(), False)
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -210,7 +211,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         
         if self.unused_kernels == []:
             self.view.set_sensitive(False)
-            self.liststore.append([False, _('There is no unused Linux Kernel.'), 0])
+            self.liststore.append([True, _('There is no unused Linux Kernel.'), 0])
             self.button_delete.set_sensitive(False)
         
     def get_size(self, version):
@@ -225,7 +226,12 @@ class UbuntuCleanKernelBox(gtk.HBox):
         keep = model.get_value(iter, 0)
         version = model.get_value(iter, 1)
         size = model.get_value(iter, 2)
-        markup = '<b>%s</b>\n%s' % (version, derive_size(size))
+        if size: size = derive_size(size)
+        else: size = ''
+        markup = '<b>%s</b>' % version
+        if size:
+            markup += '\n'
+            markup += size
         if not keep:
             markup += ' ' + _('will be removed')
         cell.set_property('markup', markup)
@@ -286,3 +292,62 @@ class UbuntuCleanKernelBox(gtk.HBox):
         self.pack_start(align, False)
         
         self.refresh()
+
+class UbuntuAutoRemovableBox(gtk.HBox):
+    def text_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        name = model.get_value(iter, 1)
+        size = model.get_value(iter, 2)
+        if size: size = derive_size(size)
+        else: size = ''
+        summary = model.get_value(iter, 3)
+        markup = '<b>%s</b> %s' % (name, size)
+        if not keep:
+            markup += ' ' + _('will be removed')
+        if summary:
+            markup += '\n'
+            markup += summary
+        cell.set_property('markup', markup)
+    
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+    
+    def refresh(self):
+        pass
+    
+    def __init__(self):
+        self.liststore = gtk.ListStore(bool, str, long, str) #keep?, name, disk space cost, summary 
+        render_keep = gtk.CellRendererToggle()
+        render_keep.connect('toggled', self.toggled)
+        column_keep = gtk.TreeViewColumn()
+        column_keep.pack_start(render_keep, False)
+        column_keep.add_attribute(render_keep, 'active', 0)
+        render_text = gtk.CellRendererText()
+        column_text = gtk.TreeViewColumn(_('Auto-removable packages'))
+        column_text.pack_start(render_text, True)
+        column_text.set_cell_data_func(render_text, self.text_data_func)
+        self.view = view = gtk.TreeView(self.liststore)
+        view.append_column(column_keep)
+        view.append_column(column_text)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
+        
+        button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
+        button_refresh.connect('clicked', lambda *w: self.refresh())
+        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        button_delete.connect('clicked', lambda *w: self.delete_packages())
+        button_delete.set_sensitive(False)
+        button_box = gtk.VBox(False, 5)
+        button_box.pack_start(button_refresh, False)
+        button_box.pack_start(button_delete, False)
+        align = gtk.Alignment(0, 0.5)
+        align.add(button_box)
+
+        gtk.HBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.pack_start(align, False)
+        
+        view.set_sensitive(False)
+        self.liststore.append([True, _('Please press the "Refresh" button.'), 0, ''])

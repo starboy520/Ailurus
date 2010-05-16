@@ -652,6 +652,7 @@ class APT:
             while True:
                 name = readline(task.stdout)
                 size = readline(task.stdout)
+                size = long(size)
                 summary = readline(task.stdout)
                 ret.append((name, size, summary,))
         except EndOfStream:
