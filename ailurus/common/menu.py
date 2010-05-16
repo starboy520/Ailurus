@@ -125,9 +125,7 @@ def __preferences(main_view):
     
     menu_show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
     menu_show_software_icon.set_active(Config.get_show_software_icon())
-    menu_show_software_icon.connect('toggled', 
-            lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
-                              or Config.set_show_software_icon(w.get_active()))
+    menu_show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()))
     
     return [ menu_hide_quick_setup_button, 
              menu_query_before_exit, 

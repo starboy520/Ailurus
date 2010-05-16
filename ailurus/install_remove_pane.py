@@ -475,6 +475,7 @@ class InstallRemovePane(gtk.VBox):
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
         cell.set_property('pixbuf', class0.logo_pixbuf)
+        cell.set_property('visible', Config.get_show_software_icon())
         
     def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
@@ -519,7 +520,6 @@ class InstallRemovePane(gtk.VBox):
         render_toggle = gtk.CellRendererToggle ()
         render_toggle.connect('toggled',self.__toggle,treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
-        render_pixbuf.set_visible(Config.get_show_software_icon())
         render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
 
