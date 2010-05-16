@@ -37,7 +37,7 @@ class CleanUpPane(gtk.VBox):
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-            self.pack_start(UbuntuAutoRemovableBox(), False)
+            self.pack_start(UbuntuAutoRemovableBox())
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -277,6 +277,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         self.view = view = gtk.TreeView(self.liststore)
         view.append_column(column_keep)
         view.append_column(column_text)
+        view.set_rules_hint(True)
         scroll = gtk.ScrolledWindow()
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
         scroll.set_shadow_type(gtk.SHADOW_IN)
@@ -311,9 +312,62 @@ class UbuntuAutoRemovableBox(gtk.HBox):
     
     def toggled(self, render_toggle, path):
         self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            keep = row[0]
+            sensitive = sensitive or not keep
+        self.button_delete.set_sensitive(sensitive)
+
+    def show_scan_installed_package_splash(self):
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_border_width(15)
+        color = gtk.gdk.color_parse('#202020')
+        window.modify_bg(gtk.STATE_NORMAL, color)
+        text = gtk.Label()
+        text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
+                                   ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
+        window.add(text)
+        window.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return window
     
     def refresh(self):
-        pass
+        window = self.show_scan_installed_package_splash()
+        pkgs = APT.get_autoremovable_pkgs()
+        window.destroy()
+        self.liststore.clear()
+        self.view.set_model(None)
+        for row in pkgs:
+            self.liststore.append([True] + row)
+        self.view.set_model(self.liststore)
+        self.view.set_sensitive(True)
+        self.button_unselect_all.set_sensitive(True)
+        
+        if pkgs == []:
+            self.view.set_sensitive(False)
+            self.liststore.append([True, _('There is no auto-removable package.'), 0, ''])
+            self.button_delete.set_sensitive(False)
+            self.button_unselect_all.set_sensitive(False)
+    
+    def unselect_all(self):
+        for row in self.liststore:
+            keep = row[0]
+            row[0] = not keep
+        self.button_delete.set_sensitive(True)
+    
+    def delete_packages(self):
+        to_delete = []
+        for row in self.liststore:
+            keep = row[0]
+            name = row[1]
+            if not keep: to_delete.append(name)
+        if to_delete:
+            try: APT.remove(*to_delete)
+            except:
+                import traceback
+                traceback.print_exc()
+        self.refresh()
     
     def __init__(self):
         self.liststore = gtk.ListStore(bool, str, long, str) #keep?, name, disk space cost, summary 
@@ -329,18 +383,21 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         self.view = view = gtk.TreeView(self.liststore)
         view.append_column(column_keep)
         view.append_column(column_text)
+        view.set_rules_hint(True)
         scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
         
         button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
         button_refresh.connect('clicked', lambda *w: self.refresh())
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Unselect all'))
+        button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
         self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
         button_delete.connect('clicked', lambda *w: self.delete_packages())
-        button_delete.set_sensitive(False)
         button_box = gtk.VBox(False, 5)
         button_box.pack_start(button_refresh, False)
+        button_box.pack_start(button_unselect_all, False)
         button_box.pack_start(button_delete, False)
         align = gtk.Alignment(0, 0.5)
         align.add(button_box)
@@ -351,3 +408,5 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         
         view.set_sensitive(False)
         self.liststore.append([True, _('Please press the "Refresh" button.'), 0, ''])
+        button_unselect_all.set_sensitive(False)
+        button_delete.set_sensitive(False)

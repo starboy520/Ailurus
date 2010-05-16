@@ -659,7 +659,7 @@ class APT:
                 size = readline(task.stdout)
                 size = long(size)
                 summary = readline(task.stdout)
-                ret.append((name, size, summary,))
+                ret.append([name, size, summary,])
         except EndOfStream:
             pass
         task.wait()

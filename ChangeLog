@@ -1,6 +1,7 @@
 2010-05-16 Homer Xing <homer.xing@gmail.com>
 
     * Improve "Clean up unused kernels". Display Linux kernel size.
+    * Add "Remove auto-removable packages" feature.
 
 2010-05-16 Devil Wang <wxjeacen.gmail.com>
 
