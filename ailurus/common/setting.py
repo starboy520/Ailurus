@@ -208,7 +208,14 @@ class Configure_Firefox(gtk.VBox):
                  ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
                  
                  ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
-
+                 
+                 ['user_pref("dom.disable_window_open_feature.menubar", true);\n'
+                  'user_pref("dom.disable_window_move_resize", true);\n'
+                  'user_pref("dom.disable_window_open_feature.titlebar", true);\n'
+                  'user_pref("dom.disable_window_open_feature.toolbar", true);\n', _('Disable Annoying Browser Behavior'), ],
+                  
+                 ['user_pref("browser.blink_allowed", false);\n)', _('Disable Blinking Text'), ],
+                 
                 ]
 
     def __init__(self):
@@ -224,8 +231,7 @@ class Configure_Firefox(gtk.VBox):
             self.checkbuttons.append(FirefoxConfig(self, *item))
         btable = gtk.Table()
         btable.set_col_spacings(10)
-        label = gtk.Label()
-        label.set_text(_('Before configuring Firefox, please close all Firefox windows.'))
+        label = label_left_align(_('Before configuring Firefox, please close all Firefox windows.'))
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1
