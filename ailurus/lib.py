@@ -210,12 +210,6 @@ class Config:
         try:       value = cls.get_int('wget_triesnum')
         except: value = 3
         return value
-    @classmethod
-    def get_fastest_repository(cls):
-        return cls.get_string('fastest_repository')
-    @classmethod
-    def get_fastest_repository_response_time(cls):
-        return cls.get_int('fastest_repository_response_time')
 
 def install_locale():
     import gettext

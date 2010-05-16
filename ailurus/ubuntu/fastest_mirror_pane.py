@@ -43,15 +43,24 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     # This value is displayed as text "No response" in TreeView.
     NO_PING_RESPONSE = 100000000
 
+    def get_fastest_repository(self):
+        min_server = None
+        min_time = self.NO_PING_RESPONSE
+        # organization, country, URL, server, response time(in millisecond)
+        for row in self.candidate_store:
+            server = row[2]
+            time = row[4]
+            if time < min_time:
+                min_server, min_time = server, time
+        return min_server, min_time
+
     def __print_the_fastest_repository(self, msg, current_all, current_official):
-        fastest = None
-        try:
-            fastest = Config.get_fastest_repository()
-            response_time = Config.get_fastest_repository_response_time()
-            print >>msg, _('The fastest repository is %s;')%fastest, _('Its response time is %s millisecond.')%response_time
-        except:
+        fastest, response_time = self.get_fastest_repository()
+        if fastest:
+            print >>msg, _('The fastest repository is %s;') % fastest, _('Its response time is %s millisecond.') % response_time
+        else:
             print >>msg, _('<span color="red"><big>We have not searched out the fastest repository.</big></span>')
-        # print whether the fastest repository is in use
+
         if fastest:
             if fastest in current_official: 
                 print >>msg, _('<span color="blue">The fastest repository is being used.</span>')
@@ -76,7 +85,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         if len_files == 1:  print >>msg, _('There is one configuration file in /etc/apt/sources.list.d/')
         elif len_files > 1: print >>msg, _('There are %s configuration files in /etc/apt/sources.list.d/')%len_files
 
-        if len_files <= 10:
+        if 0 < len_files <= 10:
             print >>msg, _('They are:'),
             for path in files:
                 filename = os.path.split(path)[1]
@@ -98,12 +107,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         # show text
         self.label_state.set_markup(msg.getvalue())
         # set the menu-item sensitive state
-        try:
-            fastest = Config.get_fastest_repository()
-        except:
-            self.mi_use_fastest_repo.set_sensitive(False)
-        else:
+        fastest = self.get_fastest_repository()[0]
+        if fastest:
             self.mi_use_fastest_repo.set_sensitive(bool(fastest and (fastest not in current_official)))
+        else:
+            self.mi_use_fastest_repo.set_sensitive(False)
 
     def __callback__show_how_to_backup_repositories(self, *w):
         label = gtk.Label()
@@ -136,11 +144,9 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         button_close.grab_focus()
 
     def __callback__use_fastest_repository(self, *w):
-        try:
-            fastest = Config.get_fastest_repository()
-        except:
-            return
-        self.__use_repository(fastest)
+        fastest = self.get_fastest_repository()[0]
+        if fastest:
+            self.__use_repository(fastest)
 
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
@@ -569,8 +575,9 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.pack_start(vpaned)
 
     def __callback__edit_repository_by_text_editor(self, *w):
-        try:    fastest = Config.get_fastest_repository()
-        except: fastest = 'http://archive.ubuntu.com/ubuntu/'
+        fastest = self.get_fastest_repository()[0]
+        if not fastest:
+            fastest = 'http://archive.ubuntu.com/ubuntu/'
         
         # We create an example file.
         f = open('/tmp/Example-of-sources.list', 'w')
