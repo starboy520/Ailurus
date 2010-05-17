@@ -5,6 +5,7 @@
     * Add text to explain cache dropping operation.
     * Show traceback in window, rather than in terminal.
     * Show/hide an icon by the side of software name.
+    * Hide a software item if its package name has been changed.
 
 2010-05-16 Devil Wang <wxjeacen.gmail.com>
 

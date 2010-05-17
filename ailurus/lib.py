@@ -559,26 +559,43 @@ def run_as_root_in_terminal(command):
 class RPM:
     fresh_cache = False
     __set1 = set()
+    __set2 = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
         cls.__set1 = set()
+        cls.__set2 = set()
         import subprocess, os
         path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__set1.add(line[:-1])
+            cls.__set1.add(line.strip())
+        task.wait()
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing.py'
+        task = subprocess.Popen(['python', path],
+            stderr=subprocess.PIPE, # must be stderr
+            )
+        for line in task.stderr: # must be stderr
+            cls.__set2.add(line.strip())
         task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
         return cls.__set1
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set2
+    @classmethod
+    def exist(cls, package_name):
+        cls.refresh_cache()
+        return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])

@@ -20,8 +20,10 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-from yum.rpmsack import RPMDBPackageSack
-rpmdb = RPMDBPackageSack()
-list = rpmdb.simplePkgList()
-for item in list:
-    print item[0]
+import sys
+from yum import YumBase
+base = YumBase()
+ygh = base.doPackageLists()
+for available in ygh.available:
+    name = available.pkgtup[0]
+    print >>sys.stderr, name # because base.doPackageLists prints text to stdout
