@@ -502,7 +502,7 @@ if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
 
 if options.clean_up or options.all:
     from clean_up_pane import CleanUpPane
-    pane = CleanUpPane(main_view)
+    pane = CleanUpPane()
     main_view.register(pane)
 
 if options.information or options.all:

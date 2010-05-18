@@ -30,7 +30,7 @@ from libu import *
 class CleanUpPane(gtk.VBox):
     name = _('Clean up')
     
-    def __init__(self, main_view):
+    def __init__(self):
         gtk.VBox.__init__(self, False, 10)
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
