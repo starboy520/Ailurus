@@ -78,6 +78,14 @@ class ComputerDoctorPane(gtk.VBox):
         else:
             text = _('Found no error :)')
         self.show_text(text)
+    def apply(self):
+        for row in self.liststore:
+            apply = row[0]
+            if apply:
+                obj = row[1]
+                try:    obj.cure()
+                except: print_traceback()
+        self.refresh()
     def show_text(self, text):
         self.column_text.set_title(text)
     def __init__(self, cure_objs):
