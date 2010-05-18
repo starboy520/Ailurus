@@ -46,22 +46,30 @@ class ComputerDoctorPane(gtk.VBox):
     def sort_by_type(self, model, iter1, iter2):
         obj1 = model.get_value(iter1, 1)
         obj2 = model.get_value(iter2, 1)
-        return cmp(obj1.type, obj2.type) or cmp(obj1.__doc__, obj2.__doc__)
+        if obj1 and obj2:
+            return cmp(obj1.type, obj2.type) or cmp(obj1.__doc__, obj2.__doc__)
+        else:
+            return 0
     def sort_by_text(self, model, iter1, iter2):
         obj1 = model.get_value(iter1, 1)
         obj2 = model.get_value(iter2, 1)
-        return cmp(obj1.__doc__, obj2.__doc__)
+        if obj1 and obj2:
+            return cmp(obj1.__doc__, obj2.__doc__)
+        else:
+            return 0
     def refresh(self):
         self.liststore.clear()
         for obj in self.cure_objs:
             if obj.exists():
                 self.liststore.append([False, obj])
+        self.sortedstore.set_sort_column_id(1000, gtk.SORT_ASCENDING)
+        self.button_apply.set_sensitive(False)
     def __init__(self, cure_objs):
         self.cure_objs = cure_objs
         self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
         self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)
         self.liststore = liststore = gtk.ListStore(bool, gobject.TYPE_PYOBJECT) # apply?, cure_object
-        sortedstore = gtk.TreeModelSort(liststore)
+        self.sortedstore = sortedstore = gtk.TreeModelSort(liststore)
         sortedstore.set_sort_func(1000, self.sort_by_type)
         sortedstore.set_sort_func(1001, self.sort_by_text)
         render_toggle = gtk.CellRendererToggle()
@@ -102,4 +110,4 @@ class ComputerDoctorPane(gtk.VBox):
         self.pack_start(button_box, False)
         self.pack_start(scroll)
         self.refresh()
-        sortedstore.set_sort_column_id(1000, gtk.SORT_ASCENDING)
+        
