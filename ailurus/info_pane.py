@@ -62,8 +62,10 @@ class InfoPane(gtk.VBox):
     def __init__(self, main_view, tuples):
         gtk.VBox.__init__(self, False, 10)
         
-        button = gtk.Button(_('Print all information'))
+        button = image_stock_button(gtk.STOCK_PRINT, _('Print all information'))
         button.connect('clicked', lambda w: self.print_all_information())
+        align_button = gtk.Alignment(0, 0.5)
+        align_button.add(button)
         
         self.treestore = gtk.TreeStore(gtk.gdk.Pixbuf, str, str)
         self.treeview = treeview = gtk.TreeView(self.treestore)
@@ -85,8 +87,8 @@ class InfoPane(gtk.VBox):
         scrollwindow.set_policy (gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type (gtk.SHADOW_IN)
         
-        self.pack_start(button, False)
         self.pack_start(scrollwindow)
+        self.pack_start(align_button, False)
         
         self.tuples = tuples
         self.function2trees = {}
