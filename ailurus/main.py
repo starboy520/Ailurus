@@ -486,7 +486,7 @@ if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
 
     if options.recovery or options.all:
         from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane(main_view)
+        pane = UbuntuAPTRecoveryPane()
         main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
@@ -497,7 +497,7 @@ if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
 
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane(main_view)
+        pane = FedoraRPMRecoveryPane()
         main_view.register(pane)
 
 if options.clean_up or options.all:
@@ -533,7 +533,7 @@ if options.install_software or options.all:
 if options.computer_doctor or options.all:
     cure_objs = load_cure_objs(COMMON, DESKTOP, DISTRIBUTION)
     from computer_doctor_pane import ComputerDoctorPane
-    pane = ComputerDoctorPane(main_view, cure_objs)
+    pane = ComputerDoctorPane(cure_objs)
     main_view.register(pane)
 
 main_view.add_quit_button()
