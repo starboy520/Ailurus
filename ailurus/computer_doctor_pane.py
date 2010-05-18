@@ -64,6 +64,8 @@ class ComputerDoctorPane(gtk.VBox):
                 self.liststore.append([False, obj])
         self.sortedstore.set_sort_column_id(1000, gtk.SORT_ASCENDING)
         self.button_apply.set_sensitive(False)
+    def show_text(self, text):
+        self.column_text.set_title(text)
     def __init__(self, cure_objs):
         self.cure_objs = cure_objs
         self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
@@ -84,11 +86,11 @@ class ComputerDoctorPane(gtk.VBox):
         column_type.pack_start(render_type, False)
         column_type.set_cell_data_func(render_type, self.render_type_func)
         column_type.set_sort_column_id(1000)
-        column_text = gtk.TreeViewColumn()
+        self.column_text = column_text = gtk.TreeViewColumn()
         column_text.pack_start(render_text)
         column_text.set_cell_data_func(render_text, self.render_text_func)
         column_text.set_sort_column_id(1001)
-        view = gtk.TreeView(sortedstore)
+        self.view = view = gtk.TreeView(sortedstore)
         view.set_rules_hint(True)
         view.append_column(column_toggle)
         view.append_column(column_type)
@@ -109,5 +111,4 @@ class ComputerDoctorPane(gtk.VBox):
         self.set_border_width(5)
         self.pack_start(button_box, False)
         self.pack_start(scroll)
-        self.refresh()
-        
+        self.show_text(_('Please click "refresh" button.'))
