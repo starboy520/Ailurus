@@ -43,6 +43,8 @@ class I:
 
 class C:
     this_is_a_cure = True
+    MUST_FIX, SUGGESTION = range(2)
+    type = SUGGESTION
     def exists(self):
         raise NotImplementedError
     def cure(self):
