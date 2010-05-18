@@ -83,3 +83,12 @@ class Create_Imagemagick_shortcut(C):
                                'Type=Application\n'
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')
+
+#class Test(C):
+#    __doc__ = 'A test'
+#    detail = 'A test'
+#    type = C.MUST_FIX
+#    def exists(self):
+#        return True
+#    def cure(self):
+#        pass

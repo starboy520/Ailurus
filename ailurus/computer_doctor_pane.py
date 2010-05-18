@@ -79,13 +79,19 @@ class ComputerDoctorPane(gtk.VBox):
             text = _('Found no error :)')
         self.show_text(text)
     def apply(self):
+        success = 0
         for row in self.liststore:
             apply = row[0]
             if apply:
                 obj = row[1]
-                try:    obj.cure()
+                try:
+                    obj.cure()
+                    success += 1
                 except: print_traceback()
         self.refresh()
+        if success:
+            show_text_window(_('Computer doctor'), _('Successfully applied %s suggestions.') % success,
+                             show_textbox_border = False, show_a_big_window = False)
     def show_text(self, text):
         self.column_text.set_title(text)
     def __init__(self, cure_objs):
