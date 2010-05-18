@@ -24,7 +24,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-
+from native_apps import *
 if UBUNTU or MINT or FEDORA:
     from apps_eclipse import *
 

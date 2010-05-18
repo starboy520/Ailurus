@@ -50,8 +50,7 @@ def load_app_icon(name):
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
 
 def load_app_objs(common, desktop, distribution):
-    import native_apps
-    modules = [native_apps]
+    modules = []
     for module in [common, desktop, distribution]:
         import types
         assert module==None or isinstance(module, types.ModuleType)
