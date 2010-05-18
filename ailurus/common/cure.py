@@ -138,6 +138,24 @@ class Colorful_BASH_prompt_symbols_Ubuntu(C):
         file_append(self.bashrc, self.line)
         notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
 
+class Fix_error_in_49_sansserif_conf(C):
+    __doc__ = _('Fix errors in 49-sansserif.conf. Otherwise, characters in Flash may be displayed as blank diamond.')
+    detail = _('Change "sans-serif" to "sans serif".')
+    type = C.MUST_FIX
+    def exists(self):
+        try:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                return '>sans-serif<' in f.read()
+        except IOError: # File does not exist
+            return False
+    def cure(self):
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                content = f.read()
+            content = content.replace('>sans-serif<', '>sans serif<')
+            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
+                f.write(content)
+
 # This class needs improvement
 #
 #class Speed_Up_Firefox(I):
