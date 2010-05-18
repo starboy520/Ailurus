@@ -293,6 +293,7 @@ class MainView:
                 ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
                 ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
+                ('ComputerDoctorPane', D+'sora_icons/m_computer_doctor.png', _('Computer\nDoctor')),
                 ]
         List.reverse()
         for name, icon, text in List:
@@ -440,6 +441,7 @@ parser.add_option('--install-software', action='store_true', dest='install_softw
 parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
 parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
 parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
+parser.add_option('--computer-doctor', action='store_true', dest='computer_doctor', default=False, help=_('load "computer doctor" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
      and not options.recovery
@@ -528,7 +530,12 @@ if options.install_software or options.all:
     from install_remove_pane import InstallRemovePane
     pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
     main_view.register(pane)
-    main_view.install_remove_pane = pane
+
+if options.computer_doctor or options.all:
+    cure_objs = load_cure_objs(COMMON, DESKTOP, DISTRIBUTION)
+    from computer_doctor_pane import ComputerDoctorPane
+    pane = ComputerDoctorPane(main_view, cure_objs)
+    main_view.register(pane)
 
 main_view.add_quit_button()
 if options.all:
