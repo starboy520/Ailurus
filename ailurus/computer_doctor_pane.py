@@ -64,6 +64,20 @@ class ComputerDoctorPane(gtk.VBox):
                 self.liststore.append([False, obj])
         self.sortedstore.set_sort_column_id(1000, gtk.SORT_ASCENDING)
         self.button_apply.set_sensitive(False)
+        self.show_text('')
+        must_fix = 0
+        for row in self.liststore:
+            obj = row[1]
+            if obj.type == C.MUST_FIX: must_fix += 1
+        text = ''
+        if len(self.liststore):
+            if must_fix:
+                text += _('Found %s errors in your system.') % must_fix
+                text += ' '
+            text += _('There is a total of %s suggestions.') % len(self.liststore)
+        else:
+            text = _('Found no error :)')
+        self.show_text(text)
     def show_text(self, text):
         self.column_text.set_title(text)
     def __init__(self, cure_objs):
