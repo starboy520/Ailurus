@@ -24,3 +24,9 @@ from __future__ import with_statement
 import gtk, sys, os
 from lib import *
 from libu import *
+
+class InfoPane(gtk.VBox):
+    def __init__(self, main_view, cure_objs):
+        self.cure_objs = cure_objs
+        self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
+        self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)
