@@ -95,47 +95,6 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
-class Speed_Up_Firefox(I):
-    __doc__ = _('Speed up Firefox')
-    detail = _('Firefox is faster when Pango rendering is disabled. '
-        'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
-        'Ailurus will create a new icon "Firefox without Pango (faster)" in the menu "Applications"-->"Internet".')
-    def install(self):
-        paths = [
-                 '/usr/share/applications/firefox-3.5.desktop',
-                 '/usr/share/applications/firefox.desktop', 
-                 '/usr/share/applications/mozilla-firefox.desktop',
-                 '/usr/share/applications/abrowser.desktop',
-                 ]
-        for path in paths:
-            import os
-            if os.path.exists(path): break
-        else:
-            raise Exception('Firefox shortcut is not found.')
-            
-        with open(path) as f:
-            content = f.readlines()
-        for i, line in enumerate(content):
-            if line.startswith('Exec='):
-                firefox_launcher = line.split('=')[1].strip()
-                new = 'Exec=sh -c "export MOZ_DISABLE_PANGO=1; %s"\n'%firefox_launcher
-                content[i] = new
-            if line.startswith('Name='):
-                content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        dir = '/usr/local/share/applications/'
-        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
-        with TempOwn(dir + 'firefox.nopango.desktop') as o:
-            with open(dir + 'firefox.nopango.desktop', 'w') as f:
-                f.writelines(content)
-
-    def installed(self):
-        import os 
-        return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
-                 os.path.exists('/usr/share/applications/firefox.nopango.desktop') )
-    def remove(self):
-        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
-        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
-
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
     detail = ( 
@@ -167,24 +126,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
-
-class QueryBeforeRmALotFiles(I) :
-    __doc__ = _('Query you before delete more than three files')
-    detail = _('If you try to delete more than three files by "rm *", '
-       'BASH will ask you a question "remove all argument?" to make sure if you really want to delete files. '
-       'This is useful if you mistype "rm subdir/*" as "rm subdir/ *".\n'
-       'The trick behind is to add this line into "$HOME/.bashrc".\n'
-       'alias rm="rm -I"')
-    def __init__(self):
-        self.line = r"alias rm='rm -I'"
-        import os
-        self.bashrc = os.path.expandvars('$HOME/.bashrc')
-    def install(self):
-        file_append ( self.bashrc, self.line )
-    def installed(self):
-        return file_contain ( self.bashrc, self.line )
-    def remove(self):
-        file_remove ( self.bashrc, self.line )
 
 class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')

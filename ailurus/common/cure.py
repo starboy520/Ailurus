@@ -102,7 +102,61 @@ class Create_softlink_to_desktop_folder(C):
                 name = os.path.expandvars(name)
         if name and os.path.exists(name):
             run('ln -s %s %s'%(name, self.desktop))
-            
+
+class Query_before_remove_a_lot_of_files(C) :
+    __doc__ = _('Query you before delete more than three files in BASH')
+    detail = _('Prevent destruction when you mistype "rm subdir/*" as "rm subdir/ *".\n'
+               'Add this line into ~/.bashrc: alias rm="rm -I"')
+    bashrc = os.path.expandvars('$HOME/.bashrc')
+    line = "alias rm='rm -I'"
+    def exists(self):
+        return not file_contain(self.bashrc, self.line)
+    def cure(self):
+        file_append(self.bashrc, self.line)
+
+# This class needs improvement
+#
+#class Speed_Up_Firefox(I):
+#    __doc__ = _('Speed up Firefox')
+#    detail = _('Firefox is faster when Pango rendering is disabled. '
+#        'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
+#        'Ailurus will create a new icon "Firefox without Pango (faster)" in the menu "Applications"-->"Internet".')
+#    def install(self):
+#        paths = [
+#                 '/usr/share/applications/firefox-3.5.desktop',
+#                 '/usr/share/applications/firefox.desktop', 
+#                 '/usr/share/applications/mozilla-firefox.desktop',
+#                 '/usr/share/applications/abrowser.desktop',
+#                 ]
+#        for path in paths:
+#            import os
+#            if os.path.exists(path): break
+#        else:
+#            raise Exception('Firefox shortcut is not found.')
+#            
+#        with open(path) as f:
+#            content = f.readlines()
+#        for i, line in enumerate(content):
+#            if line.startswith('Exec='):
+#                firefox_launcher = line.split('=')[1].strip()
+#                new = 'Exec=sh -c "export MOZ_DISABLE_PANGO=1; %s"\n'%firefox_launcher
+#                content[i] = new
+#            if line.startswith('Name='):
+#                content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
+#        dir = '/usr/local/share/applications/'
+#        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
+#        with TempOwn(dir + 'firefox.nopango.desktop') as o:
+#            with open(dir + 'firefox.nopango.desktop', 'w') as f:
+#                f.writelines(content)
+#
+#    def installed(self):
+#        import os 
+#        return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
+#                 os.path.exists('/usr/share/applications/firefox.nopango.desktop') )
+#    def remove(self):
+#        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
+#        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
+
 #class Test(C):
 #    __doc__ = 'A test'
 #    detail = 'A test'
