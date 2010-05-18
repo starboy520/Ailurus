@@ -828,36 +828,6 @@ class Workrave_And_Auto_Start_It(N) :
         pkgs = 'workrave'  
     if UBUNTU or MINT:
         pkgs = 'workrave'
-    def __init__(self):
-        import os
-        self.path = os.path.expanduser('~/.config/autostart/')
-        self.file = self.path + 'workrave.desktop'
-    def __workraveautostart(self):
-        if not os.path.exists(self.path):
-            run('mkdir -p '+self.path)
-        with open(self.file, 'w') as f:
-            f.write(
-'''[Desktop Entry]
-Name=Workrave
-Exec=workrave
-Encoding=UTF-8
-Version=1.0
-Type=Application
-X-GNOME-Autostart-enabled=true
-'''
-            )
-    def install(self):
-        N.install(self)
-        self.__workraveautostart()
-    def installed(self):
-        import os
-        if not os.path.exists(self.file): return False
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        import os
-        if os.path.exists(self.file):
-            os.remove(self.file)
 
 class WorldofPadman(N):
     __doc__ = _('World of Padman: Funny shooter game')
