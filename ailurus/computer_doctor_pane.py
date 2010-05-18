@@ -42,6 +42,14 @@ class ComputerDoctorPane(gtk.VBox):
             to_apply = row[0]
             sensitive = sensitive or to_apply
         self.button_apply.set_sensitive(sensitive)
+    def sort_by_type(self, model, iter1, iter2):
+        obj1 = model.get_value(iter1, 1)
+        obj2 = model.get_value(iter2, 1)
+        return cmp(obj1.type, obj2.type)
+    def sort_by_text(self, model, iter1, iter2):
+        obj1 = model.get_value(iter1, 1)
+        obj2 = model.get_value(iter2, 1)
+        return cmp(obj1.__doc__, obj2.__doc__)
     def refresh(self):
         self.liststore.clear()
         for obj in self.cure_objs:
@@ -52,6 +60,9 @@ class ComputerDoctorPane(gtk.VBox):
         self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
         self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)
         self.liststore = liststore = gtk.ListStore(bool, gobject.TYPE_PYOBJECT) # apply?, cure_object
+        sortedstore = gtk.TreeModelSort(liststore)
+        sortedstore.set_sort_func(1000, self.sort_by_type)
+        sortedstore.set_sort_func(1001, self.sort_by_text)
         render_toggle = gtk.CellRendererToggle()
         render_toggle.connect('toggled', self.toggled)
         render_type = gtk.CellRendererPixbuf()
@@ -59,13 +70,16 @@ class ComputerDoctorPane(gtk.VBox):
         column_toggle = gtk.TreeViewColumn()
         column_toggle.pack_start(render_toggle, False)
         column_toggle.add_attribute(render_toggle, 'active', 0)
+        column_toggle.set_sort_column_id(0)
         column_type = gtk.TreeViewColumn()
         column_type.pack_start(render_type, False)
         column_type.set_cell_data_func(render_type, self.render_type_func)
+        column_type.set_sort_column_id(1000)
         column_text = gtk.TreeViewColumn()
         column_text.pack_start(render_text)
         column_text.set_cell_data_func(render_text, self.render_text_func)
-        view = gtk.TreeView(liststore)
+        column_text.set_sort_column_id(1001)
+        view = gtk.TreeView(sortedstore)
         view.set_rules_hint(True)
         view.append_column(column_toggle)
         view.append_column(column_type)
@@ -87,3 +101,4 @@ class ComputerDoctorPane(gtk.VBox):
         self.pack_start(button_box, False)
         self.pack_start(scroll)
         self.refresh()
+        sortedstore.set_sort_column_id(1000, gtk.SORT_ASCENDING)
