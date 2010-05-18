@@ -107,12 +107,26 @@ class Query_before_remove_a_lot_of_files(C) :
     __doc__ = _('Query you before delete more than three files in BASH')
     detail = _('Prevent destruction when you mistype "rm subdir/*" as "rm subdir/ *".\n'
                'Add this line into ~/.bashrc: alias rm="rm -I"')
-    bashrc = os.path.expandvars('$HOME/.bashrc')
+    bashrc = os.path.expanduser('~/.bashrc')
     line = "alias rm='rm -I'"
     def exists(self):
         return not file_contain(self.bashrc, self.line)
     def cure(self):
         file_append(self.bashrc, self.line)
+
+class Colorful_BASH_prompt_symbols_Fedora(C):
+    __doc__ = _('Use colorful Bash prompt symbols')
+    detail = _('Add this line into ~/.bashrc:\n'
+               r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
+    bashrc = os.path.expanduser('~/.bashrc')
+    line = r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '"
+    def exists(self):
+        return FEDORA and not file_contain(self.bashrc, self.line)
+    def cure(self):
+        file_append(self.bashrc, self.line)
+        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
+
+
 
 # This class needs improvement
 #
