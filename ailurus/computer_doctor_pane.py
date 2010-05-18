@@ -35,7 +35,8 @@ class ComputerDoctorPane(gtk.VBox):
         markup = '<b>%s</b>' % cure_obj.__doc__
         if cure_obj.detail: markup += '\n' + cure_obj.detail
         cell.set_property('markup', markup)
-    def toggled(self, render_toggle, path):
+    def toggled(self, render_toggle, path, sortedstore):
+        path = sortedstore.convert_path_to_child_path(path)
         self.liststore[path][0] = not self.liststore[path][0]
         sensitive = False
         for row in self.liststore:
@@ -45,7 +46,7 @@ class ComputerDoctorPane(gtk.VBox):
     def sort_by_type(self, model, iter1, iter2):
         obj1 = model.get_value(iter1, 1)
         obj2 = model.get_value(iter2, 1)
-        return cmp(obj1.type, obj2.type)
+        return cmp(obj1.type, obj2.type) or cmp(obj1.__doc__, obj2.__doc__)
     def sort_by_text(self, model, iter1, iter2):
         obj1 = model.get_value(iter1, 1)
         obj2 = model.get_value(iter2, 1)
@@ -64,7 +65,7 @@ class ComputerDoctorPane(gtk.VBox):
         sortedstore.set_sort_func(1000, self.sort_by_type)
         sortedstore.set_sort_func(1001, self.sort_by_text)
         render_toggle = gtk.CellRendererToggle()
-        render_toggle.connect('toggled', self.toggled)
+        render_toggle.connect('toggled', self.toggled, sortedstore)
         render_type = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
         column_toggle = gtk.TreeViewColumn()
