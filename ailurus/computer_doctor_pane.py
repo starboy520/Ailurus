@@ -21,14 +21,45 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk, sys, os
+import gtk, gobject, sys, os
 from lib import *
 from libu import *
 
 class ComputerDoctorPane(gtk.VBox):
+    def render_type_func(self, column, cell, model, iter):
+        cure_obj = model.get_value(iter, 1)
+        pixbuf = [self.icon_must_fix, self.icon_suggestion][cure_obj.type]
+        cell.set_property('pixbuf', pixbuf)
+    def render_text_func(self, column, cell, model, iter):
+        cure_obj = model.get_value(iter, 1)
+        text = cure_obj.__doc__
+        cell.set_property('text', text)
+    def refresh(self):
+        self.liststore.clear()
+        for obj in self.cure_objs:
+            if obj.exists():
+                self.liststore.append([False, obj])
     def __init__(self, cure_objs):
         self.cure_objs = cure_objs
         self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
         self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)
-
+        self.liststore = liststore = gtk.ListStore(bool, gobject.TYPE_PYOBJECT) # apply?, cure_object
+        render_toggle = gtk.CellRendererToggle()
+        render_type = gtk.CellRendererPixbuf()
+        render_text = gtk.CellRendererText()
+        column = gtk.TreeViewColumn()
+        column.pack_start(render_toggle, False)
+        column.add_attribute(render_toggle, 'active', 0)
+        column.pack_start(render_type, False)
+        column.set_cell_data_func(render_type, self.render_type_func)
+        column.pack_start(render_text)
+        column.set_cell_data_func(render_text, self.render_text_func)
+        view = gtk.TreeView(liststore)
+        view.append_column(column)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
         gtk.VBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.refresh()
