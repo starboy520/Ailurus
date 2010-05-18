@@ -66,6 +66,7 @@ class ComputerDoctorPane(gtk.VBox):
         column_text.pack_start(render_text)
         column_text.set_cell_data_func(render_text, self.render_text_func)
         view = gtk.TreeView(liststore)
+        view.set_rules_hint(True)
         view.append_column(column_toggle)
         view.append_column(column_type)
         view.append_column(column_text)
