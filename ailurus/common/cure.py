@@ -65,7 +65,7 @@ class Create_basic_vimrc(C):
                     'set mouse=a\n')
 
 class Create_Imagemagick_shortcut(C):
-    __doc__ = _('Create ImageMagicK shortcut in menu')
+    __doc__ = _('Create ImageMagicK shortcut in "Application->Graphics" menu')
     file = '/usr/share/applications/imagemagick.desktop'
     def exists(self):
         if UBUNTU or MINT:
@@ -85,4 +85,3 @@ class Create_Imagemagick_shortcut(C):
                                'Type=Application\n'
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')
-
