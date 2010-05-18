@@ -69,37 +69,6 @@ Icon=/opt/bioclipse/icon.xpm
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
 
-class CreateDesktopFolder(I):
-    __doc__ = _('Create a directory "Desktop" in your home folder')
-    detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
-    def __init__(self):
-        import os
-        self.desktop = os.path.expanduser('~/Desktop')
-    def install(self):
-        import os
-        if not os.path.exists(self.desktop):
-            # read file
-            with open( os.path.expanduser('~/.config/user-dirs.dirs') ) as f:
-                contents = f.readlines()
-            # get name
-            name = None
-            for line in contents:
-                if line.strip()[0] == '#': continue
-                if 'XDG_DESKTOP_DIR' in line:
-                    name = line.strip().split('=')[1]
-                    if name[0] == '"' and name[-1] == '"': name = name[1:-1]
-                    name = os.path.expandvars(name)
-            # create link
-            if name and os.path.exists(name):
-                run('ln -s %s %s'%(name,self.desktop))
-    def installed(self):
-        import os 
-        return os.path.exists(self.desktop)
-    def remove(self):
-        import os
-        if os.path.islink(self.desktop):
-            run('rm -f '+self.desktop)
-  
 class Electric(_path_lists):
     __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +

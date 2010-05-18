@@ -84,6 +84,25 @@ class Create_Imagemagick_shortcut(C):
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')
 
+class Create_softlink_to_desktop_folder(C):
+    __doc__ = _('Create a directory "Desktop" linked to the desktop in your home folder')
+    detail = _('After that, you can easily chdir to desktop folder by command "cd ~/Desktop".')
+    desktop = os.path.expanduser('~/Desktop')
+    def exists(self):
+        return not os.path.exists(self.desktop)
+    def cure(self):
+        with open(os.path.expanduser('~/.config/user-dirs.dirs')) as f:
+            contents = f.readlines()
+        name = None
+        for line in contents:
+            if line.startswith('#'): continue
+            if 'XDG_DESKTOP_DIR' in line:
+                name = line.split('=')[1].strip()
+                if name.startswith('"') and name.endswith('"'): name = name[1:-1]
+                name = os.path.expandvars(name)
+        if name and os.path.exists(name):
+            run('ln -s %s %s'%(name, self.desktop))
+            
 #class Test(C):
 #    __doc__ = 'A test'
 #    detail = 'A test'
