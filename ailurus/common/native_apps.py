@@ -316,29 +316,6 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
-        def __init__(self):
-            self.pkgs = 'ImageMagick'
-            self.icon = '/usr/share/applications/imagemagick.desktop'
-        def install(self):
-            N.install(self.pkgs)
-            path = D + 'umut_icons/imagemagick.png'
-            run_as_root('cp %s /usr/share/icons/ ' % path)
-            with TempOwn(self.icon) as o:
-                with open(self.icon, 'w') as f:
-                    f.write('[Desktop Entry]\n'
-                            'Name=ImageMagick\n'
-                            'Exec=display %f\n'    
-                            'Encoding=UTF-8\n'
-                            'StartupNotify=true\n'
-                            'Terminal=true\n'
-                            'Type=Application\n'
-                            'Categories=GNOME;GTK;Graphics;\n'
-                            'Icon=/usr/share/icons/imagemagick.png\n')
-        def remove(self):
-            N.remove(self.pkgs)
-            import os
-            if os.path.exists(self.icon):
-                run_as_root('rm %s' % self.icon )
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
         

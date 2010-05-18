@@ -33,11 +33,9 @@ class Autostart_Workrave(C):
     file = path + 'workrave.desktop'
     def exists(self):
         if UBUNTU or MINT:
-            if APT.installed('workrave') and not os.path.exists(self.file):
-                return True
+            return APT.installed('workrave') and not os.path.exists(self.file)
         if FEDORA:
-            if RPM.installed('workrave') and not os.path.exists(self.file):
-                return True
+            return RPM.installed('workrave') and not os.path.exists(self.file)
         return False
     def cure(self):
         if not os.path.exists(self.path):
@@ -51,23 +49,44 @@ class Autostart_Workrave(C):
                     'Type=Application\n'
                     'X-GNOME-Autostart-enabled=true\n')
 
-class Create_VIMRC(C):
+class Basic_VIMRC(C):
     __doc__ = _('Create basic ~/.vimrc\n'
                 'Content: syntax on; set autoindent; set number; set mouse=a')
     file = os.path.expanduser('~/.vimrc')
     def exists(self):
         if UBUNTU or MINT:
-            if APT.installed('vim') and not os.path.exists(self.file):
-                return True
+            return APT.installed('vim') and not os.path.exists(self.file)
         if FEDORA:
-            if RPM.installed('vim-enhanced') and not os.path.exists(self.file):
-                return True
+            return RPM.installed('vim-enhanced') and not os.path.exists(self.file)
+        return False
     def cure(self):
         with open(self.file, 'w') as f:
             f.write('syntax on\n'
                     'set autoindent\n'
                     'set number\n'
                     'set mouse=a\n')
+
+class Imagemagick_Shortcut(C):
+    __doc__ = _('Create ImageMagicK shortcut in menu')
+    file = '/usr/share/applications/imagemagick.desktop'
+    def exists(self):
+        if UBUNTU or MINT:
+            return APT.installed('imagemagick') and not os.path.exists(self.file)
+        if FEDORA:
+            return RPM.installed('ImageMagick') and not os.path.exists(self.file)
+        return False
+    def cure(self):
+        path = D + 'umut_icons/imagemagick.png'
+        run_as_root('cp %s /usr/share/icons/ ' % path)
+        create_file(self.file, '[Desktop Entry]\n'
+                               'Name=ImageMagick\n'
+                               'Exec=display %f\n'    
+                               'Encoding=UTF-8\n'
+                               'StartupNotify=true\n'
+                               'Terminal=true\n'
+                               'Type=Application\n'
+                               'Categories=GNOME;GTK;Graphics;\n'
+                               'Icon=/usr/share/icons/imagemagick.png\n')
 
 if __name__ == '__main__':
     obj = Autostart_Workrave()
