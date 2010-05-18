@@ -34,6 +34,12 @@ class I:
     this_is_an_installer = True
     def self_check(self):
         'Check errors in source code'
+    def install(self):
+        raise NotImplementedError
+    def installed(self):
+        raise NotImplementedError
+    def remove(self):
+        raise NotImplementedError
     
 class Config:
     @classmethod
@@ -440,7 +446,7 @@ def notify(title, content):
         import pynotify
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
-        n.set_timeout(20000)
+        n.set_timeout(10000)
         n.show()
     except:
         import sys, traceback

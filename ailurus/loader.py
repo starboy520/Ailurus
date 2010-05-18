@@ -28,15 +28,9 @@ categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'geography','education','media','vm','game', 'statistics', 
             'eclipse', 'hardware', 'language', 'nautilus', 'embedded',)
 
-class BrokenClass(Exception):
-    pass
-
 def check_class_members(app_class, default_category = 'tweak'):
     import types
     if type(app_class)!=types.ClassType: raise TypeError, app_class
-    if type( getattr(app_class,'install',None) ) != types.MethodType: raise BrokenClass, app_class
-    if type( getattr(app_class,'installed',None) ) != types.MethodType: raise BrokenClass, app_class
-    if type( getattr(app_class,'remove',None) ) != types.MethodType: raise BrokenClass, app_class
     if not hasattr(app_class,'category'): app_class.category = default_category
     if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
     if not app_class.category in categories: raise ValueError, app_class.category
