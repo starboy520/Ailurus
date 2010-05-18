@@ -84,9 +84,8 @@ def load_app_objs(common, desktop, distribution):
                 objs.append(app_class_obj)
                 names.add(name)
             except:
-                import sys, traceback
-                print >>sys.stderr, _('Cannot load class %s') % name
-                traceback.print_exc(file=sys.stderr)
+                print 'Cannot load class %s' % name
+                print_traceback()
 
     return objs
 
@@ -115,10 +114,8 @@ def load_app_objs_from_extension(extension):
             app_class_obj.showed_in_toggle = app_class_obj.cache_installed
             names.add(name)
         except:
-            import sys, traceback
-            print >>sys.stderr, _('Cannot load class %s')%name
-            print >>sys.stderr, _('Traceback:')
-            traceback.print_exc(file=sys.stderr)
+            print 'Cannot load class %s' % name
+            print_traceback()
         else:
             classobjs.append(app_class_obj)
 
@@ -144,8 +141,7 @@ def load_custom_app_classes():
             module = __import__(basename)
             return_value.extend( load_app_objs_from_extension(module) )
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     # remove the extension directory from sys.path
     sys.path.pop(0)
     return return_value
@@ -275,9 +271,8 @@ def load_cure_objs(common, desktop, distribution):
             try:
                 objs.append(cure_class())
             except:
-                import sys, traceback
-                print >>sys.stderr, _('Cannot load class %s') % name
-                traceback.print_exc(file=sys.stderr)
+                print 'Cannot load class %s' % name
+                print_traceback()
     
     return objs
 

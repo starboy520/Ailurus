@@ -393,8 +393,7 @@ class MainView:
             assert not key in self.contents, key
             self.contents[key] = pane
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
 
     def __init__(self):
         self.window = None # MainView window

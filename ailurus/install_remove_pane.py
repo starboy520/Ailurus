@@ -307,7 +307,7 @@ class InstallRemovePane(gtk.VBox):
             # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
         except:
-            traceback.print_exc(file=sys.stderr)
+            print_traceback()
         finally:
             sys.stdout.flush()
             os.close(r)

@@ -303,8 +303,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
             if to_install: RPM.install(*to_install)
             if to_remove: RPM.remove(*to_remove)
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
         self.diff_liststore.clear()
         self.change_liststore.clear()
 

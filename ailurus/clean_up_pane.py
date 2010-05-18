@@ -176,8 +176,7 @@ class ReclaimMemoryBox(gtk.VBox):
                         break
             label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     
         return True
         
@@ -273,8 +272,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
                 run_as_root('rm -rf /boot/*%s*' % version)
                 run_as_root('rm -rf /lib/modules/%s' % version)
             except:
-                import traceback
-                traceback.print_exc()
+                print_traceback()
         self.refresh()
     
     def __init__(self):
@@ -379,8 +377,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         if to_delete:
             try: APT.remove(*to_delete)
             except:
-                import traceback
-                traceback.print_exc()
+                print_traceback()
         self.refresh()
     
     def __init__(self):
