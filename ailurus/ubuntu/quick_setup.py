@@ -287,8 +287,7 @@ class FastestRepositoryDialog(gtk.Dialog):
                 return
             self.change_server(new_url)
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
         finally:
             #destroy dialog
             self.can_exit = True
@@ -346,7 +345,6 @@ class DoStuffDialog(gtk.Dialog):
     def refresh_GUI(self):
         pass
     def start(self, *w):
-        import os, sys, traceback
         try:
             run.terminal = self.terminal
             r,w = os.pipe()
@@ -366,7 +364,7 @@ class DoStuffDialog(gtk.Dialog):
                 except:
                     row[0] = 0
                     print '\x1b[1;31m', _('Failed'), '\x1b[m'
-                    traceback.print_exc()
+                    print_traceback()
                 print
         finally:
             self.can_exit = True
@@ -408,8 +406,7 @@ class DoStuffDialog(gtk.Dialog):
                 c = get_obj_by_class_name(name, app_objs)
                 task_store.append([1, text, c])
             except:
-                import traceback
-                traceback.print_exc()
+                print_traceback()
 
         self.pixbuf_fail = get_pixbuf(D+'other_icons/fail.png', 16, 16)
         self.pixbuf_blank = get_pixbuf(D+'other_icons/blank.png', 16, 16)

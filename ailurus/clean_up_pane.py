@@ -29,7 +29,7 @@ from libu import *
 class CleanUpPane(gtk.VBox):
     name = _('Clean up')
     
-    def __init__(self, main_view):
+    def __init__(self):
         gtk.VBox.__init__(self, False, 10)
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
@@ -175,8 +175,7 @@ class ReclaimMemoryBox(gtk.VBox):
                         break
             label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     
         return True
         
@@ -272,8 +271,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
                 run_as_root('rm -rf /boot/*%s*' % version)
                 run_as_root('rm -rf /lib/modules/%s' % version)
             except:
-                import traceback
-                traceback.print_exc()
+                print_traceback()
         self.refresh()
     
     def __init__(self):
@@ -378,8 +376,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         if to_delete:
             try: APT.remove(*to_delete)
             except:
-                import traceback
-                traceback.print_exc()
+                print_traceback()
         self.refresh()
     
     def __init__(self):

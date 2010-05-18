@@ -145,7 +145,7 @@ def add_expander(vbox, title):
     expander.set_expanded(False)
     return expander
 
-def show_text_window(title, content):
+def show_text_window(title, content, show_textbox_border = True, show_a_big_window = True):
     import gtk
     buffer = gtk.TextBuffer()
     buffer.set_text(content)
@@ -158,7 +158,8 @@ def show_text_window(title, content):
     scroll = gtk.ScrolledWindow()
     scroll.add(textview)
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-    scroll.set_shadow_type(gtk.SHADOW_IN)
+    if show_textbox_border:
+        scroll.set_shadow_type(gtk.SHADOW_IN)
     close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
     close_button.connect('clicked', lambda *w: window.destroy())
     align = gtk.Alignment(1, 0.5)
@@ -170,7 +171,8 @@ def show_text_window(title, content):
     window = gtk.Window()
     window.set_title(title)
     window.add(vbox)
-    window.set_default_size(600, 400)
+    if show_a_big_window:
+        window.set_default_size(600, 400)
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
     window.show_all()

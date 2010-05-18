@@ -20,12 +20,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import traceback
 import sys, os
 from lib import *
 
 def __ubuntu():
-    import sys, traceback
     try: 
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
@@ -33,7 +31,7 @@ def __ubuntu():
             if line.startswith('DISTRIB_RELEASE='):
                 value = line.split('=')[1].strip()
         return [row(_('Ubuntu version:'), value, D+'other_icons/ubuntu.png' )]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
 
 def get():
     return [__ubuntu]

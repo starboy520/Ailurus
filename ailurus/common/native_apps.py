@@ -316,29 +316,6 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
-        def __init__(self):
-            self.pkgs = 'ImageMagick'
-            self.icon = '/usr/share/applications/imagemagick.desktop'
-        def install(self):
-            N.install(self.pkgs)
-            path = D + 'umut_icons/imagemagick.png'
-            run_as_root('cp %s /usr/share/icons/ ' % path)
-            with TempOwn(self.icon) as o:
-                with open(self.icon, 'w') as f:
-                    f.write('[Desktop Entry]\n'
-                            'Name=ImageMagick\n'
-                            'Exec=display %f\n'    
-                            'Encoding=UTF-8\n'
-                            'StartupNotify=true\n'
-                            'Terminal=true\n'
-                            'Type=Application\n'
-                            'Categories=GNOME;GTK;Graphics;\n'
-                            'Icon=/usr/share/icons/imagemagick.png\n')
-        def remove(self):
-            N.remove(self.pkgs)
-            import os
-            if os.path.exists(self.icon):
-                run_as_root('rm %s' % self.icon )
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
         
@@ -756,35 +733,14 @@ class Umbrello(N):
         pkgs = 'umbrello'
         DE = 'kde'
 
-class VIM_and_VIMRC(N) :
-    __doc__ = _('Make VIM more suitable for programming')
-    detail = _('Install VIM and make it more suitable for programming. '
-       'The installation process is as follows. '
-       '"yum install vim-enhanced" command is executed. '
-       'Then these lines are appended into "$HOME/.vimrc" file: \n'
-       '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
+class VIM(N) :
+    'VIM'
     license = GPL
     category = 'dev'
     if FEDORA:
         pkgs = 'vim-enhanced'
     if UBUNTU or MINT:
         pkgs = 'vim'
-    def __vimrc_installed(self):
-        return file_contain ( self.vimrc, *self.lines )
-    def __vimrc_install(self):
-        file_append ( self.vimrc, *self.lines )
-    def __init__(self):
-        import os
-        self.vimrc = os.path.expanduser("~/.vimrc")
-        self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
-    def install(self):
-        N.install(self)
-        self.__vimrc_install()
-    def installed(self):
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        file_remove ( self.vimrc, *self.lines )
 
 class VirtualBox(N):
     __doc__ = _('VirtualBox open source edition')
@@ -820,44 +776,14 @@ class WINE(N):
             else:
                 self.pkgs = 'wine wine-gecko'
 
-class Workrave_And_Auto_Start_It(N) :
-    __doc__ = 'Workrave'
+class Workrave(N) :
+    'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:
         pkgs = 'workrave'  
     if UBUNTU or MINT:
         pkgs = 'workrave'
-    def __init__(self):
-        import os
-        self.path = os.path.expanduser('~/.config/autostart/')
-        self.file = self.path + 'workrave.desktop'
-    def __workraveautostart(self):
-        if not os.path.exists(self.path):
-            run('mkdir -p '+self.path)
-        with open(self.file, 'w') as f:
-            f.write(
-'''[Desktop Entry]
-Name=Workrave
-Exec=workrave
-Encoding=UTF-8
-Version=1.0
-Type=Application
-X-GNOME-Autostart-enabled=true
-'''
-            )
-    def install(self):
-        N.install(self)
-        self.__workraveautostart()
-    def installed(self):
-        import os
-        if not os.path.exists(self.file): return False
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        import os
-        if os.path.exists(self.file):
-            os.remove(self.file)
 
 class WorldofPadman(N):
     __doc__ = _('World of Padman: Funny shooter game')

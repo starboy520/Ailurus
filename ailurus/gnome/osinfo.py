@@ -20,7 +20,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import traceback
 import sys, os
 from lib import *
 
@@ -41,10 +40,10 @@ def __gnome():
         string = "%s.%s.%s" % (platform, minor, micro)
         ret.append( row(_('GNOME version:'), string, D+'umut_icons/i_gnome.png' ) )
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
         
-    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], D+'umut_icons/i_locale.png' ) )
-    except: traceback.print_exc(file=sys.stderr)
+    try: ret.append( row(_('GNOME locale:'), os.environ['LANG'], D+'other_icons/i_locale.png' ) )
+    except: print_traceback()
 
     return ret
 

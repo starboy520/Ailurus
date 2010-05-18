@@ -610,8 +610,7 @@ if __name__ == '__main__':
 #    try:
 #        print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
 #    except:
-#        import traceback
-#        traceback.print_exc()
+#        print_traceback()
 #    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
 #    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
 #    import sys

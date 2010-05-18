@@ -634,6 +634,5 @@ def get():
             import gconf
             ret.append(f())
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     return ret
