@@ -34,7 +34,6 @@ class Autostart_Workrave(C):
             return APT.installed('workrave') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('workrave') and not os.path.exists(self.file)
-        return False
     def cure(self):
         if not os.path.exists(self.path):
             os.mkdir(self.path)
@@ -56,7 +55,6 @@ class Create_basic_vimrc(C):
             return APT.installed('vim') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('vim-enhanced') and not os.path.exists(self.file)
-        return False
     def cure(self):
         with open(self.file, 'w') as f:
             f.write('syntax on\n'
@@ -72,7 +70,6 @@ class Create_Imagemagick_shortcut(C):
             return APT.installed('imagemagick') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('ImageMagick') and not os.path.exists(self.file)
-        return False
     def cure(self):
         path = D + 'umut_icons/imagemagick.png'
         run_as_root('cp %s /usr/share/icons/ ' % path)
