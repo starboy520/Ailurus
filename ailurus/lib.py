@@ -40,6 +40,13 @@ class I:
         raise NotImplementedError
     def remove(self):
         raise NotImplementedError
+
+class C:
+    this_is_a_cure = True
+    def exists(self):
+        raise NotImplementedError
+    def cure(self):
+        raise NotImplementedError
     
 class Config:
     @classmethod
