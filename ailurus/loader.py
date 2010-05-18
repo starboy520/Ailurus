@@ -210,7 +210,7 @@ def __create_menu(menuitems):
     menu.show_all()
     return menu
 
-def load_study_linux_menu(common, desktop, distribution, main_view):
+def load_study_linux_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -218,10 +218,10 @@ def load_study_linux_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_study_linux_menu'):
-            ret.extend(module.menu.get_study_linux_menu(main_view))
+            ret.extend(module.menu.get_study_linux_menu())
     return __create_menu(ret)
 
-def load_preferences_menu(common, desktop, distribution, main_view):
+def load_preferences_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -229,10 +229,10 @@ def load_preferences_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_preferences_menu'):
-            ret.extend(module.menu.get_preferences_menu(main_view))
+            ret.extend(module.menu.get_preferences_menu())
     return __create_menu(ret)
 
-def load_others_menu(common, desktop, distribution, main_view):
+def load_others_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -240,7 +240,7 @@ def load_others_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [distribution, common, desktop]: # not [common, desktop, distribution]. Because we show "quick setup" first.
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
-            ret.extend(module.menu.get_others_menu(main_view))
+            ret.extend(module.menu.get_others_menu())
     return __create_menu(ret)
 
 def load_tips(common, desktop, distribution):
