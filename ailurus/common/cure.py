@@ -22,8 +22,6 @@
 
 from __future__ import with_statement
 import sys, os
-if __name__ == '__main__':
-    sys.path.insert(0, '/home/ds/workspace/Ailurus/ailurus')
 from lib import *
 
 class Autostart_Workrave(C):
@@ -88,8 +86,3 @@ class Create_Imagemagick_shortcut(C):
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')
 
-if __name__ == '__main__':
-    obj = Autostart_Workrave()
-    assert obj.exists()
-    obj.cure()
-    assert False == obj.exists()

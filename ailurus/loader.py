@@ -256,3 +256,31 @@ def load_tips(common, desktop, distribution):
             if hasattr(module, 'tips') and hasattr(module.tips, 'get'):
                 ret.extend(module.tips.get())
     return ret
+
+def load_cure_objs(common, desktop, distribution):
+    modules = []
+    for module in [common, desktop, distribution]:
+        import types
+        assert module==None or isinstance(module, types.ModuleType)
+        if module and hasattr(module, 'cure'):
+            modules.append(module.cure)
+    
+    objs = []
+    names = set()
+    for module in modules:
+        for name in dir(module):
+            if name in names or name == 'C': continue
+            cure_class = getattr(module,name)
+            if not isinstance(cure_class, types.ClassType) or not issubclass(cure_class, C): continue
+            try:
+                objs.append(cure_class())
+            except:
+                import sys, traceback
+                print >>sys.stderr, _('Cannot load class %s') % name
+                traceback.print_exc(file=sys.stderr)
+    
+    return objs
+
+if __name__ == '__main__':
+    import common
+    print load_cure_objs(common, None, None)
