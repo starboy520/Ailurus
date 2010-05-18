@@ -116,8 +116,8 @@ class Query_before_remove_a_lot_of_files(C) :
 
 class Colorful_BASH_prompt_symbols_Fedora(C):
     __doc__ = _('Use colorful Bash prompt symbols')
-    detail = _('Add this line into ~/.bashrc:\n'
-               r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
+    detail = (_('Add this line into ~/.bashrc:') + '\n' +
+              r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
     bashrc = os.path.expanduser('~/.bashrc')
     line = r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '"
     def exists(self):
@@ -126,7 +126,17 @@ class Colorful_BASH_prompt_symbols_Fedora(C):
         file_append(self.bashrc, self.line)
         notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
 
-
+class Colorful_BASH_prompt_symbols_Ubuntu(C):
+    __doc__ = _('Use colorful Bash prompt symbols')
+    detail = (_('Add this line into ~/.bashrc:') + '\n' + 
+              r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '")
+    bashrc = os.path.expanduser('~/.bashrc')
+    line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
+    def exists(self):
+        return (UBUNTU or MINT) and not file_contain(self.bashrc, self.line)
+    def cure(self):
+        file_append(self.bashrc, self.line)
+        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
 
 # This class needs improvement
 #
