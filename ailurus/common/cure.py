@@ -49,7 +49,7 @@ class Autostart_Workrave(C):
                     'Type=Application\n'
                     'X-GNOME-Autostart-enabled=true\n')
 
-class Basic_VIMRC(C):
+class Create_basic_vimrc(C):
     __doc__ = _('Create basic ~/.vimrc\n'
                 'Content: syntax on; set autoindent; set number; set mouse=a')
     file = os.path.expanduser('~/.vimrc')
@@ -66,7 +66,7 @@ class Basic_VIMRC(C):
                     'set number\n'
                     'set mouse=a\n')
 
-class Imagemagick_Shortcut(C):
+class Create_Imagemagick_shortcut(C):
     __doc__ = _('Create ImageMagicK shortcut in menu')
     file = '/usr/share/applications/imagemagick.desktop'
     def exists(self):
