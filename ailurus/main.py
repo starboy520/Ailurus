@@ -510,8 +510,7 @@ if options.information or options.all:
     hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
     linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
     from info_pane import InfoPane
-    pane = InfoPane(main_view, 
-                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
+    pane = InfoPane(([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
                     [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
     main_view.register(pane)
 

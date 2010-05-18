@@ -59,7 +59,7 @@ class InfoPane(gtk.VBox):
 
         show_text_window(_('Information'), f.getvalue())
 
-    def __init__(self, main_view, tuples):
+    def __init__(self, tuples):
         gtk.VBox.__init__(self, False, 10)
         
         button = image_stock_button(gtk.STOCK_PRINT, _('Print all information'))
