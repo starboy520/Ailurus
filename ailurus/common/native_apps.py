@@ -756,35 +756,14 @@ class Umbrello(N):
         pkgs = 'umbrello'
         DE = 'kde'
 
-class VIM_and_VIMRC(N) :
-    __doc__ = _('Make VIM more suitable for programming')
-    detail = _('Install VIM and make it more suitable for programming. '
-       'The installation process is as follows. '
-       '"yum install vim-enhanced" command is executed. '
-       'Then these lines are appended into "$HOME/.vimrc" file: \n'
-       '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
+class VIM(N) :
+    'VIM'
     license = GPL
     category = 'dev'
     if FEDORA:
         pkgs = 'vim-enhanced'
     if UBUNTU or MINT:
         pkgs = 'vim'
-    def __vimrc_installed(self):
-        return file_contain ( self.vimrc, *self.lines )
-    def __vimrc_install(self):
-        file_append ( self.vimrc, *self.lines )
-    def __init__(self):
-        import os
-        self.vimrc = os.path.expanduser("~/.vimrc")
-        self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
-    def install(self):
-        N.install(self)
-        self.__vimrc_install()
-    def installed(self):
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        file_remove ( self.vimrc, *self.lines )
 
 class VirtualBox(N):
     __doc__ = _('VirtualBox open source edition')
@@ -820,8 +799,8 @@ class WINE(N):
             else:
                 self.pkgs = 'wine wine-gecko'
 
-class Workrave_And_Auto_Start_It(N) :
-    __doc__ = 'Workrave'
+class Workrave(N) :
+    'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:

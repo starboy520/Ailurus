@@ -27,7 +27,8 @@ if __name__ == '__main__':
 from lib import *
 
 class Autostart_Workrave(C):
-    __doc__ = _('Automatically start up Workrave')
+    __doc__ = _('Automatically start up Workrave\n'
+                'Create file ~/.config/autostart/workrave.desktop')
     path = os.path.expanduser('~/.config/autostart/')
     file = path + 'workrave.desktop'
     def exists(self):
@@ -49,6 +50,24 @@ class Autostart_Workrave(C):
                     'Version=1.0\n'
                     'Type=Application\n'
                     'X-GNOME-Autostart-enabled=true\n')
+
+class Create_VIMRC(C):
+    __doc__ = _('Create basic ~/.vimrc\n'
+                'Content: syntax on; set autoindent; set number; set mouse=a')
+    file = os.path.expanduser('~/.vimrc')
+    def exists(self):
+        if UBUNTU or MINT:
+            if APT.installed('vim') and not os.path.exists(self.file):
+                return True
+        if FEDORA:
+            if RPM.installed('vim-enhanced') and not os.path.exists(self.file):
+                return True
+    def cure(self):
+        with open(self.file, 'w') as f:
+            f.write('syntax on\n'
+                    'set autoindent\n'
+                    'set number\n'
+                    'set mouse=a\n')
 
 if __name__ == '__main__':
     obj = Autostart_Workrave()
