@@ -25,8 +25,8 @@ import sys, os
 from lib import *
 
 class Autostart_Workrave(C):
-    __doc__ = _('Automatically start up Workrave\n'
-                'Create file ~/.config/autostart/workrave.desktop')
+    __doc__ = _('Automatically start up Workrave')
+    detail = _('Create file:') + '~/.config/autostart/workrave.desktop'
     path = os.path.expanduser('~/.config/autostart/')
     file = path + 'workrave.desktop'
     def exists(self):
@@ -47,8 +47,8 @@ class Autostart_Workrave(C):
                     'X-GNOME-Autostart-enabled=true\n')
 
 class Create_basic_vimrc(C):
-    __doc__ = _('Create basic ~/.vimrc\n'
-                'Content: syntax on; set autoindent; set number; set mouse=a')
+    __doc__ = _('Create basic VIM configuration file (.vimrc)')
+    detail = _('File content:') + ' syntax on; set autoindent; set number; set mouse=a'
     file = os.path.expanduser('~/.vimrc')
     def exists(self):
         if UBUNTU or MINT:
@@ -63,8 +63,9 @@ class Create_basic_vimrc(C):
                     'set mouse=a\n')
 
 class Create_Imagemagick_shortcut(C):
-    __doc__ = _('Create ImageMagicK shortcut in "Application->Graphics" menu')
+    __doc__ = _('Create ImageMagick shortcut in "Application->Graphics" menu')
     file = '/usr/share/applications/imagemagick.desktop'
+    detail = _('Create file:') + ' ' + file
     def exists(self):
         if UBUNTU or MINT:
             return APT.installed('imagemagick') and not os.path.exists(self.file)

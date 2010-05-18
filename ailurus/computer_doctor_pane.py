@@ -32,8 +32,9 @@ class ComputerDoctorPane(gtk.VBox):
         cell.set_property('pixbuf', pixbuf)
     def render_text_func(self, column, cell, model, iter):
         cure_obj = model.get_value(iter, 1)
-        text = cure_obj.__doc__
-        cell.set_property('text', text)
+        markup = '<b>%s</b>' % cure_obj.__doc__
+        if cure_obj.detail: markup += '\n' + cure_obj.detail
+        cell.set_property('markup', markup)
     def refresh(self):
         self.liststore.clear()
         for obj in self.cure_objs:
