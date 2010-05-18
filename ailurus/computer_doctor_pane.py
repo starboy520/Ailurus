@@ -35,6 +35,13 @@ class ComputerDoctorPane(gtk.VBox):
         markup = '<b>%s</b>' % cure_obj.__doc__
         if cure_obj.detail: markup += '\n' + cure_obj.detail
         cell.set_property('markup', markup)
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            to_apply = row[0]
+            sensitive = sensitive or to_apply
+        self.button_apply.set_sensitive(sensitive)
     def refresh(self):
         self.liststore.clear()
         for obj in self.cure_objs:
@@ -46,6 +53,7 @@ class ComputerDoctorPane(gtk.VBox):
         self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)
         self.liststore = liststore = gtk.ListStore(bool, gobject.TYPE_PYOBJECT) # apply?, cure_object
         render_toggle = gtk.CellRendererToggle()
+        render_toggle.connect('toggled', self.toggled)
         render_type = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
         column_toggle = gtk.TreeViewColumn()
@@ -65,6 +73,16 @@ class ComputerDoctorPane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
+        button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
+        button_refresh.connect('clicked', lambda *w: self.refresh())
+        self.button_apply = button_apply = gtk.Button(stock = gtk.STOCK_APPLY)
+        button_apply.connect('clicked', lambda *w: self.apply())
+        button_apply.set_sensitive(False)
+        button_box = gtk.HBox(False, 10)
+        button_box.pack_start(button_refresh, False)
+        button_box.pack_start(button_apply, False)
         gtk.VBox.__init__(self, False, 10)
+        self.set_border_width(5)
+        self.pack_start(button_box, False)
         self.pack_start(scroll)
         self.refresh()
