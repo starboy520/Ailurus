@@ -197,6 +197,7 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
+        print >>msg, _('Command:'), 'sudo add-apt-repository ppa:%s' % self.ppa
         print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
         print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
@@ -217,8 +218,8 @@ class _launchpad(I):
         _repo.fresh_cache = False
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
-    def installation_command(self):
-        return _('Command:') + ' sudo add-apt-repository ppa:%s' % self.ppa
+    def launchpad_installation_command(self):
+        return 'sudo add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
