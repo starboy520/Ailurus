@@ -241,7 +241,7 @@ class NVIDEA_Driver(I):
     else:
         filename = '195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt
         url = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/' + filename
-    detail = _('Latest driver is ') + url
+    detail = _('Please click this link:') + ' ' + url
     def install(self):
         f = R(self.url).download()
         os.system('chmod a+x ' + f)
@@ -254,7 +254,7 @@ class NVIDEA_Driver(I):
 class ATI_Driver(I):
     __doc__ = 'ATI ' + _('video card driver')
     category = 'videocarddriver'
-    detail = _('Please visit') + ' http://ati.amd.com/support/driver.HTML'
+    detail = _('Please click this link:') + ' http://ati.amd.com/support/driver.HTML'
     def install(self):
         raise NotImplementedError
     def installed(self):
