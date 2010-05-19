@@ -297,7 +297,7 @@ class Gnash(N):
     license = GPL
     if FEDORA:
         pkgs = 'gnash gnash-plugin'
-    if UBUNTU and MINT:
+    if UBUNTU or MINT:
         pkgs = 'gnash mozilla-plugin-gnash'
     
 class HardwareLister(N):
