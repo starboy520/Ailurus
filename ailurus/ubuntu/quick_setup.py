@@ -28,7 +28,11 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
 from libserver import *
+from libapp import *
 import gtk
+
+class Adobe_Flash_plugin(_apt_install):
+    pkgs = 'flash-plugin-installer'
 
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
@@ -37,7 +41,8 @@ WORKS = [
             [_('Decompression software'), 'Enhance_Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
-            [_('Flash plugin for web browser'), 'Gnash', True],
+            [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
+            [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
@@ -61,7 +66,7 @@ class SelectWorksDialog(gtk.Dialog):
         for item in WORKS:
             name = item[0]
             check_button = gtk.CheckButton(name)
-            check_button.set_active(True)
+            check_button.set_active(item[2])
             check_button.connect('toggled', self.toggled, item)
             check_button_list.append(check_button)
         box = gtk.VBox(False, 5)
