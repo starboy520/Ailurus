@@ -132,44 +132,6 @@ Terminal=false
 Type=Application
 Categories=Game;''')
 
-#class EIOffice:
-#    __doc__ = _('Evermore Integrated Office 2009 free version')
-#    detail = _('It is able to edit text, spreadsheets, and slides. '
-#       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
-#    category='office'
-#    Chinese = True
-#    time=112
-#    size=217428*1000
-#    def install(self):
-#        with Chdir('/tmp') as o:
-#            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
-#            run('tar xf %s' % f)
-#            run('chmod a+x EIOffice_Personal_Lin/setup')
-#            run_as_root("EIOffice_Personal_Lin/setup")
-#            
-#            msgs = ( 
-#                     _('Clipboard arts are to be installed.'),
-#                     _('Help files are to be installed.'),
-#                     _('Science editor images are to be installed.'),
-#                     _('Templates are to be installed.')
-#                        )
-#            for file, msg in zip(
-#               ['http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_Clipart.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz',], msgs):
-#                    download(file, '/tmp/eio.tar.gz') 
-#                    run("tar zxf /tmp/eio.tar.gz")
-#                    notify( _('Installing EIOffice'), msg )
-#                    run_as_root("./setup")
-#    def installed(self):
-#        import os
-#        return os.path.exists('/usr/bin/eio')
-#    def remove(self):
-#        import os
-#        if os.path.exists('/usr/bin/rmeio'):
-#            run_as_root('/usr/bin/rmeio')
-
 class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     # cannot find out which license it is released under
     __doc__ = _('LaTeX Thesis Templates by Chinese Academy of Sciences')
