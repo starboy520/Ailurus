@@ -806,3 +806,15 @@ class FreeDOOM(N):
     __doc__ = _('FreeDOOM: Open source clone of DOOM')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'freedoom'
+
+class Inkscape(N):
+    __doc__ = _('Inkscape: Design vector image. Open source substitution of CorelDraw.')
+    category = 'design'
+    if UBUNTU or MINT: pkgs = 'inkscape'
+    if FEDORA: pkgs = 'inkscape'
+
+class K3B(N):
+    __doc__ = _('K3B: Create DVD/VCD')
+    category = 'media'
+    if UBUNTU or MINT: pkgs = 'k3b'
+    if FEDORA: pkgs = 'k3b'
