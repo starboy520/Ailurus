@@ -99,6 +99,8 @@ def load_app_objs_from_extension(extension):
         if name[0]=='_' or name=='I' or name=='N': continue
         if name in names: continue
         app_class = getattr(extension,name)
+        if isinstance(app_class, types.ClassType):
+            print app_class.__name__
         if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
 
         try:
