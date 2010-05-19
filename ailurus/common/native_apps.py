@@ -95,6 +95,8 @@ class Build_Essential(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'build-essential'
+    if FEDORA:
+        pkgs = 'gcc make gdb'
 
 class CHMSee_Read_CHM_Documents(N) :
     __doc__ = _('ChmSee: A CHM file viewer')
@@ -140,24 +142,6 @@ class CodeBlocks(N):
         pkgs = 'codeblocks'
     if FEDORA:
         pkgs = 'codeblocks'
-    
-class CommonUsedProgrammingPackages(N):
-    __doc__ = _('Useful applications for programming')
-    detail = _('The tools are:\n'
-       '<i>'
-       'gcc: GNU C compiler.\n'
-       'gcc-c++: GNU C++ compiler.\n'
-       'ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
-       'gmp-devel: GNU multiprecision arithmetic library.\n'
-       'ncurses-devel: a library controlling writing to the console screen.\n'
-       'qt3-devel: Trolltech Qt library, version 3.\n'
-       'subversion: a version control system.\n'
-       'git: a distributed version control system.'
-       '</i>')
-    category = 'dev'
-    if FEDORA:
-        pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
-            'qt3-devel subversion git')
 
 class CompizSettingManager(N):
     __doc__ = _('Compiz settings manager')
@@ -503,6 +487,8 @@ class Ncurses_and_qt3mt(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'libncurses5-dev libqt3-mt-dev'
+    if FEDORA:
+        pkgs = 'ncurses-devel qt3-devel'
         
 class Netbeans(N):
     __doc__ = 'Netbeans'
