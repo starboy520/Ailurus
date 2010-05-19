@@ -435,13 +435,20 @@ def notify(title, content):
     # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
     assert isinstance(title, str) and title
     assert isinstance(content, str)
+    import pynotify
+    if not hasattr(notify,'ailurus_notify'):
+        notify.ailurus_notify = pynotify.Notification(' ',' ')
 
     try:
-        import pynotify
         icon = D+'suyun_icons/notify-icon.png'
-        n=pynotify.Notification(title, content, icon)
-        n.set_timeout(20000)
-        n.show()
+        if title == notify.ailurus_notify.get_property('summary'):
+            notify.ailurus_notify = pynotify.Notification(title, content, icon)
+            notify.ailurus_notify.set_hint_string("x-canonical-append", "")
+        else:
+            notify.ailurus_notify.update(title, content, icon)
+               
+        notify.ailurus_notify.set_timeout(20000)
+        notify.ailurus_notify.show()
     except:
         import sys, traceback
         traceback.print_exc(file=sys.stderr)

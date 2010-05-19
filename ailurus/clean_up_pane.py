@@ -200,7 +200,7 @@ class ReclaimMemoryBox(gtk.VBox):
             except AccessDeniedError: pass
             after = self.get_free_memory()
             amount = max(0, after - before)
-            notify( _('%s KB memory was reclaimed.')%amount, ' ')
+            notify(' ', _('%s KB memory was reclaimed.')%amount )
 
 class UbuntuCleanKernelBox(gtk.HBox):
     def version_of_current_kernel(self):
