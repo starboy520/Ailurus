@@ -804,10 +804,15 @@ class Zhcon(N):
         pkgs = 'zhcon'
 
 class Emacs(N):
-    __doc__=_('Emacs: Advanced text editor')
-    license= GPL + ' http://www.gnu.org/software/emacs/'
+    __doc__ = _('Emacs: Advanced text editor')
+    license = GPL + ' http://www.gnu.org/software/emacs/'
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'emacs'
     if FEDORA:
         pkgs = 'emacs'
+
+class FreeDOOM(N):
+    __doc__ = _('FreeDOOM: Open source clone of DOOM')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'freedoom'
