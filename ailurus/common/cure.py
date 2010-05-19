@@ -193,6 +193,29 @@ class Fix_error_in_fontconfig_properties_Ubuntu(C):
             with open(self.file, 'w') as f:
                 f.write(content)
 
+class Fix_error_in_netbeans_shortcut_Ubuntu(C):
+    __doc__ = _('Fix errors in Netbeans shortcut. Otherwise, some unicode characters cannot be displayed.')
+    detail = _("""Add "export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'" """)
+    type = C.MUST_FIX
+    file = '/usr/share/applications/netbeans.desktop'
+    def exists(self):
+        if not (UBUNTU or MINT): return False
+        try:
+            with open(self.file) as f:
+                content = f.read()
+            return '\nExec=/usr/bin/netbeans\n' in content
+        except IOError:
+            return False
+    def cure(self):
+        with TempOwn(self.file) as o:
+            with open(self.file) as f:
+                lines = f.readlines()
+            for i, line in enumerate(lines):
+                if line.startswith('Exec='):
+                    lines[i] = """Exec=sh -c "_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' /usr/bin/netbeans" \n"""
+            with open(self.file, 'w') as f:
+                f.writelines(lines)
+            
 # This class needs improvement
 #
 #class Speed_Up_Firefox(I):
