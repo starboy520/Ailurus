@@ -158,7 +158,7 @@ Categories=Game;''')
 #                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz',
 #                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz',
 #                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz',], msgs):
-#                    wget(file, '/tmp/eio.tar.gz') 
+#                    download(file, '/tmp/eio.tar.gz') 
 #                    run("tar zxf /tmp/eio.tar.gz")
 #                    notify( _('Installing EIOffice'), msg )
 #                    run_as_root("./setup")
@@ -259,10 +259,10 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
     category = 'game'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
