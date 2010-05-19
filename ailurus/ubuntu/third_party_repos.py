@@ -24,18 +24,6 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
-#class Open_Repogen_Website:
-#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-#    category = 'repository'
-#    def installed(self): 
-#        return False
-#    def install(self):
-#        open_web_page('http://repogen.simplylinux.ch/')
-#    def remove(self):
-#        pass
-
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
@@ -516,3 +504,7 @@ class Repo_Acire(_launchpad):
     content = 'acire'
     DE = 'gnome'
     ppa = 'acire-team/acire-releases'
+
+class Repo_ElementaryArtwork(_launchpad):
+    __doc__ = _('Elementary Theme')
+    ppa = 'elementaryart/ppa'
