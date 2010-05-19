@@ -123,16 +123,20 @@ def load_app_objs_from_extension(extension):
     return classobjs
 
 def load_custom_app_classes():
-    return_value = []
-    # check whether the extension directory exist
     import os
-    extension_path = Config.get_config_dir()
-    if not os.path.exists(extension_path):
+    # check whether the extension directory exist
+    for path in [os.path.dirname(__file__) + '/../unfree/',
+                 Config.get_config_dir()]:
+        if os.path.exists(path): 
+            extension_path = path
+            break
+    else:
         return []
     # add the extension directory to sys.path
     import sys
     sys.path.insert(0, extension_path)
     # try to load extensions
+    return_value = []
     import glob
     pys = glob.glob(extension_path+'/*.py')
     for py in pys:
