@@ -64,7 +64,6 @@ ailurus/support/tipoftheday.py
 ailurus/support/undobuffer.py
 ailurus/support/windowpos.py
 ailurus/system_setting_pane.py
-ailurus/test1.py
 ailurus/ubuntu/app_from_external_repos.py
 ailurus/ubuntu/apps.py
 ailurus/ubuntu/app_tasksel.py
