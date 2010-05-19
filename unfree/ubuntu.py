@@ -24,8 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not ( UBUNTU or MINT ):
-    raise Exception
+assert UBUNTU or MINT
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')

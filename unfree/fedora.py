@@ -24,8 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not FEDORA:
-    raise Exception
+assert FEDORA
 
 class _repo(I):
     this_is_a_repository = True
