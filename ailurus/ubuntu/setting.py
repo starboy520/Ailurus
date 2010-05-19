@@ -46,6 +46,5 @@ def get():
         try:
             ret.append(f())
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     return ret

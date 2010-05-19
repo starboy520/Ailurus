@@ -14,6 +14,7 @@ ailurus/common/apps.py
 ailurus/common/hardwareinfo.py
 ailurus/common/__init__.py
 ailurus/common/menu.py
+ailurus/common/native_apps.py
 ailurus/common/osinfo.py
 ailurus/common/setting.py
 ailurus/common/tips.py
@@ -39,7 +40,6 @@ ailurus/libsetting.py
 ailurus/libu.py
 ailurus/loader.py
 ailurus/main.py
-ailurus/native_apps.py
 ailurus/show_a_linux_skill_bubble.py
 ailurus/support/checkupdate.py
 ailurus/support/dump_apt_autoremovable.py

@@ -273,13 +273,13 @@ class MainView:
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION)
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION)
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION, self)
+        menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION)
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
@@ -293,6 +293,7 @@ class MainView:
                 ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
                 ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
+                ('ComputerDoctorPane', D+'sora_icons/m_computer_doctor.png', _('Computer\nDoctor')),
                 ]
         List.reverse()
         for name, icon, text in List:
@@ -393,8 +394,7 @@ class MainView:
             assert not key in self.contents, key
             self.contents[key] = pane
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
 
     def __init__(self):
         self.window = None # MainView window
@@ -441,6 +441,7 @@ parser.add_option('--install-software', action='store_true', dest='install_softw
 parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
 parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
 parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
+parser.add_option('--computer-doctor', action='store_true', dest='computer_doctor', default=False, help=_('load "computer doctor" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
      and not options.recovery
@@ -485,7 +486,7 @@ if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
 
     if options.recovery or options.all:
         from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane(main_view)
+        pane = UbuntuAPTRecoveryPane()
         main_view.register(pane)
 
 if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
@@ -496,12 +497,12 @@ if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
 
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane(main_view)
+        pane = FedoraRPMRecoveryPane()
         main_view.register(pane)
 
 if options.clean_up or options.all:
     from clean_up_pane import CleanUpPane
-    pane = CleanUpPane(main_view)
+    pane = CleanUpPane()
     main_view.register(pane)
 
 if options.information or options.all:
@@ -509,8 +510,7 @@ if options.information or options.all:
     hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
     linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
     from info_pane import InfoPane
-    pane = InfoPane(main_view, 
-                    ([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
+    pane = InfoPane(([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
                     [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
     main_view.register(pane)
 
@@ -529,7 +529,12 @@ if options.install_software or options.all:
     from install_remove_pane import InstallRemovePane
     pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
     main_view.register(pane)
-    main_view.install_remove_pane = pane
+
+if options.computer_doctor or options.all:
+    cure_objs = load_cure_objs(COMMON, DESKTOP, DISTRIBUTION)
+    from computer_doctor_pane import ComputerDoctorPane
+    pane = ComputerDoctorPane(cure_objs)
+    main_view.register(pane)
 
 main_view.add_quit_button()
 if options.all:

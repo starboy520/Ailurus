@@ -25,27 +25,6 @@ import sys, os
 from lib import *
 from libapp import *
 
-class ColorfulBashPromptSymbols(I):
-    __doc__ = _('Use colorful Bash prompt symbols')
-    detail = _('Change Bash prompt symbols from '
-       '"[username@hostname ~]$ " to '
-       '"<span color="#3dba34">username@hostname</span> '
-       '<span color="#729fcf">~</span>$ ".\n'
-       'The trick behind is to add this line into "$HOME/.bashrc".\n'
-       r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
-    def __init__(self):
-        import os
-        self.__class__.detail = os.path.expandvars( self.__class__.detail )
-        self.line = r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '"
-        self.bashrc = os.path.expandvars('$HOME/.bashrc')
-    def install(self):
-        file_append ( self.bashrc, self.line )
-        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
-    def installed(self):
-        return file_contain ( self.bashrc, self.line )
-    def remove(self):
-        file_remove ( self.bashrc, self.line )
-
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')

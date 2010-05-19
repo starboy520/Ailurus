@@ -34,6 +34,22 @@ class I:
     this_is_an_installer = True
     def self_check(self):
         'Check errors in source code'
+    def install(self):
+        raise NotImplementedError
+    def installed(self):
+        raise NotImplementedError
+    def remove(self):
+        raise NotImplementedError
+
+class C:
+    this_is_a_cure = True
+    MUST_FIX, SUGGESTION = range(2)
+    type = SUGGESTION
+    detail = ''
+    def exists(self):
+        raise NotImplementedError
+    def cure(self):
+        raise NotImplementedError
     
 class Config:
     @classmethod
@@ -149,8 +165,7 @@ class Config:
             if value: return value # language code and encoding may be None if their values cannot be determined.
             else: return 'en_US'
         except ValueError: # may raise exception: "unknown locale"
-            import traceback
-            traceback.print_exc()
+            print_traceback()
             return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
@@ -245,8 +260,7 @@ class ResponseTime:
                 time = float(lines[i+1].strip())
                 cls.map[url] = time
         except IOError:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     @classmethod
     def save(cls):
         if not cls.changed: return
@@ -257,8 +271,7 @@ class ResponseTime:
                     print >>f, key
                     print >>f, value
         except IOError:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     @classmethod
     def get(cls, url):
         is_string_not_empty(url)
@@ -447,11 +460,10 @@ def notify(title, content):
         else:
             notify.ailurus_notify.update(title, content, icon)
                
-        notify.ailurus_notify.set_timeout(20000)
+        notify.ailurus_notify.set_timeout(10000)
         notify.ailurus_notify.show()
     except:
-        import sys, traceback
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
 
 def is32():
     import os
@@ -885,8 +897,7 @@ class KillWhenExit:
                 import os, signal
                 os.kill(task.pid, signal.SIGTERM)
             except:
-                import traceback, sys
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
         cls.task_list = []
 
 def download(url, filename):
@@ -1087,12 +1098,11 @@ class FirefoxExtensions:
             name = cls.analysis_method1(doc) or cls.analysis_method2(doc)  
             if name: ret.append(name) 
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     
     @classmethod
     def __get_extensions_basic(cls):
-        import os, traceback, glob
+        import os, glob
         try:
             ret = []
             extensions_path = cls.get_extensions_path()
@@ -1102,7 +1112,7 @@ class FirefoxExtensions:
                 cls.analysis_extension(extension, ret)
             return ret
         except:
-            traceback.print_exc()
+            print_traceback()
             return []
     
     @classmethod
@@ -1131,8 +1141,7 @@ def delay_notify_firefox_restart(show_notify=False):
                 else:
                     KillWhenExit.add('firefox')
             except:
-                import traceback
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
                 notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
 
 def sha1(path):
@@ -1260,7 +1269,7 @@ class R:
     def download(self):
         self.sort()
         dest = '/var/cache/ailurus/'+self.filename
-        import os, sys, traceback
+        import os, sys
         assert isinstance(self.sorted_url, list)
         for i, url in enumerate(self.sorted_url):
             print '\x1b[1;36m', _('Using mirror %(i)s. There are a total of %(total)s mirrors.') % {'i' : i+1, 'total' : len(self.sorted_url)}, '\x1b[m'
@@ -1271,7 +1280,7 @@ class R:
                 self.check(dest)
                 return dest
             except:
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
         
         raise CommandFailError(self.url)
 
@@ -1352,6 +1361,10 @@ def create_file(path, content):
     with TempOwn(path) as o:
         with open(path, 'w') as f:
             f.write(content)
+
+def print_traceback():
+    import sys, traceback
+    traceback.print_exc(file = sys.stderr)
 
 class Tasksel:
     fresh_cache = False
@@ -1452,8 +1465,7 @@ except:
         Config.set_bool('show-a-linux-skill-bubble', True)
         ShowALinuxSkill.install()
     except:
-        import traceback
-        traceback.print_exc()
+        print_traceback()
         
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])

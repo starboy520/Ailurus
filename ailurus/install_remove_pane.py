@@ -307,7 +307,7 @@ class InstallRemovePane(gtk.VBox):
             # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
         except:
-            traceback.print_exc(file=sys.stderr)
+            print_traceback()
         finally:
             sys.stdout.flush()
             os.close(r)
@@ -718,6 +718,7 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
             [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
+            [ i_common, _('Design'), D+'umut_icons/p_design.png', 'design' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
             [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],

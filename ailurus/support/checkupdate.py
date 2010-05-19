@@ -100,8 +100,7 @@ def check_update():
         dlg.run()
         dlg.destroy()
     except:
-        import traceback
-        traceback.print_exc()
+        print_traceback()
 
 def show_about_dialog():
     import gtk

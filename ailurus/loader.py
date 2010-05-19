@@ -26,17 +26,12 @@ from lib import *
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
             'geography','education','media','vm','game', 'statistics', 
-            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',)
-
-class BrokenClass(Exception):
-    pass
+            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
+            'design',)
 
 def check_class_members(app_class, default_category = 'tweak'):
     import types
     if type(app_class)!=types.ClassType: raise TypeError, app_class
-    if type( getattr(app_class,'install',None) ) != types.MethodType: raise BrokenClass, app_class
-    if type( getattr(app_class,'installed',None) ) != types.MethodType: raise BrokenClass, app_class
-    if type( getattr(app_class,'remove',None) ) != types.MethodType: raise BrokenClass, app_class
     if not hasattr(app_class,'category'): app_class.category = default_category
     if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
     if not app_class.category in categories: raise ValueError, app_class.category
@@ -56,8 +51,7 @@ def load_app_icon(name):
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
 
 def load_app_objs(common, desktop, distribution):
-    import native_apps
-    modules = [native_apps]
+    modules = []
     for module in [common, desktop, distribution]:
         import types
         assert module==None or isinstance(module, types.ModuleType)
@@ -91,9 +85,8 @@ def load_app_objs(common, desktop, distribution):
                 objs.append(app_class_obj)
                 names.add(name)
             except:
-                import sys, traceback
-                print >>sys.stderr, _('Cannot load class %s') % name
-                traceback.print_exc(file=sys.stderr)
+                print 'Cannot load class %s' % name
+                print_traceback()
 
     return objs
 
@@ -122,10 +115,8 @@ def load_app_objs_from_extension(extension):
             app_class_obj.showed_in_toggle = app_class_obj.cache_installed
             names.add(name)
         except:
-            import sys, traceback
-            print >>sys.stderr, _('Cannot load class %s')%name
-            print >>sys.stderr, _('Traceback:')
-            traceback.print_exc(file=sys.stderr)
+            print 'Cannot load class %s' % name
+            print_traceback()
         else:
             classobjs.append(app_class_obj)
 
@@ -151,8 +142,7 @@ def load_custom_app_classes():
             module = __import__(basename)
             return_value.extend( load_app_objs_from_extension(module) )
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     # remove the extension directory from sys.path
     sys.path.pop(0)
     return return_value
@@ -221,7 +211,7 @@ def __create_menu(menuitems):
     menu.show_all()
     return menu
 
-def load_study_linux_menu(common, desktop, distribution, main_view):
+def load_study_linux_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -229,10 +219,10 @@ def load_study_linux_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_study_linux_menu'):
-            ret.extend(module.menu.get_study_linux_menu(main_view))
+            ret.extend(module.menu.get_study_linux_menu())
     return __create_menu(ret)
 
-def load_preferences_menu(common, desktop, distribution, main_view):
+def load_preferences_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -240,10 +230,10 @@ def load_preferences_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_preferences_menu'):
-            ret.extend(module.menu.get_preferences_menu(main_view))
+            ret.extend(module.menu.get_preferences_menu())
     return __create_menu(ret)
 
-def load_others_menu(common, desktop, distribution, main_view):
+def load_others_menu(common, desktop, distribution):
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -251,7 +241,7 @@ def load_others_menu(common, desktop, distribution, main_view):
     ret = []
     for module in [distribution, common, desktop]: # not [common, desktop, distribution]. Because we show "quick setup" first.
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
-            ret.extend(module.menu.get_others_menu(main_view))
+            ret.extend(module.menu.get_others_menu())
     return __create_menu(ret)
 
 def load_tips(common, desktop, distribution):
@@ -263,3 +253,30 @@ def load_tips(common, desktop, distribution):
             if hasattr(module, 'tips') and hasattr(module.tips, 'get'):
                 ret.extend(module.tips.get())
     return ret
+
+def load_cure_objs(common, desktop, distribution):
+    modules = []
+    for module in [common, desktop, distribution]:
+        import types
+        assert module==None or isinstance(module, types.ModuleType)
+        if module and hasattr(module, 'cure'):
+            modules.append(module.cure)
+    
+    objs = []
+    names = set()
+    for module in modules:
+        for name in dir(module):
+            if name in names or name == 'C': continue
+            cure_class = getattr(module,name)
+            if not isinstance(cure_class, types.ClassType) or not issubclass(cure_class, C): continue
+            try:
+                objs.append(cure_class())
+            except:
+                print 'Cannot load class %s' % name
+                print_traceback()
+    
+    return objs
+
+if __name__ == '__main__':
+    import common
+    print load_cure_objs(common, None, None)
