@@ -26,17 +26,21 @@ from lib import *
 from libapp import *
 
 class Alacarte(N):
-    __doc__ = ("Alacarte: menu editor")
+    __doc__ = ("Alacarte: Edit GNOME menu")
     license = LGPL
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'alacarte'
-        DE = 'gnome'
+    if UBUNTU or MINT:
+        pkgs = 'alacarte'
     
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
     license = LGPL + ' http://audacity.sourceforge.net/'
     category = 'media'
     if FEDORA:
+        pkgs = 'audacity'
+    if UBUNTU or MINT:
         pkgs = 'audacity'
 
 class AutoApt(N):
