@@ -244,8 +244,6 @@ class _path_lists(I):
                 raise TypeError
             if path=='':
                 raise ValueError
-    def __init__(self):
-        raise NotImplementedError
     def install(self):
         raise NotImplementedError
     def installed(self):

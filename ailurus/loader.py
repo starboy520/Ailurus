@@ -26,7 +26,8 @@ from lib import *
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
             'geography','education','media','vm','game', 'statistics', 
-            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',)
+            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
+            'design',)
 
 def check_class_members(app_class, default_category = 'tweak'):
     import types
