@@ -24,18 +24,6 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
-#class Open_Repogen_Website:
-#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-#    category = 'repository'
-#    def installed(self): 
-#        return False
-#    def install(self):
-#        open_web_page('http://repogen.simplylinux.ch/')
-#    def remove(self):
-#        pass
-
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
@@ -84,7 +72,6 @@ class _repo(I):
                 f.writelines(contents)
                 f.close()
     def __init__(self):
-        # check
         assert isinstance(self.desc, (str,unicode) )
         assert isinstance(self.web_page, str)
         
@@ -107,15 +94,12 @@ class _repo(I):
         
         assert isinstance(self.key_id, str)
         
-        # create detail
         import StringIO
         msg = StringIO.StringIO()
         if self.desc:
             print >>msg, self.desc, '\n'
-        if self.apt_content:
-            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.apt_content, '</b>'
-        print >>msg, _('<i>Web page:</i>'), self.web_page
-        print >>msg, _('<i>Source setting:</i>'),
+        print >>msg, _('Web page:'), self.web_page
+        print >>msg, _('Source setting:'),
         for a in self.apt_conf:
             print >>msg, a
         self.__class__.detail = msg.getvalue()
@@ -201,10 +185,9 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        if hasattr(self, 'content'):
-            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
-        print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
-        print >>msg, _('<i>Source setting:</i>'), self.deb_config
+        print >>msg, _('Command:'), 'sudo add-apt-repository ppa:%s' % self.ppa
+        print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
+        print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
     def install(self):
         _repo.refresh_cache()
@@ -223,6 +206,8 @@ class _launchpad(I):
         _repo.fresh_cache = False
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
+    def launchpad_installation_command(self):
+        return 'sudo add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
@@ -519,3 +504,7 @@ class Repo_Acire(_launchpad):
     content = 'acire'
     DE = 'gnome'
     ppa = 'acire-team/acire-releases'
+
+class Repo_ElementaryArtwork(_launchpad):
+    __doc__ = _('Elementary Theme')
+    ppa = 'elementaryart/ppa'

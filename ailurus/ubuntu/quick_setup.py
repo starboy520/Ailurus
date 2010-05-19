@@ -28,16 +28,39 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
 from libserver import *
+from libapp import *
 import gtk
 
+class Adobe_Flash_plugin(_apt_install):
+    pkgs = 'flash-plugin-installer'
+
+class Fix_error_in_49_sansserif_conf(I):
+    def installed(self):
+        try:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                if '>sans-serif<' in f.read():
+                    return False
+        except IOError: # File does not exist
+            pass
+        return True
+    def install(self):
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                content = f.read()
+            content = content.replace('>sans-serif<', '>sans serif<')
+            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
+                f.write(content)
+                
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
             [_('Full language support and input method'), 'Full_Language_Pack', True],
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
-            [_('Decompression software'), 'Decompression_Capability', True],
+            [_('Decompression software'), 'Enhance_Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
-            [_('Flash plugin for web browser'), 'Flash_Player', True],
+            [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
+            [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
+            [_('Fix Flash plugin font error'), 'Fix_error_in_49_sansserif_conf', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
@@ -61,7 +84,7 @@ class SelectWorksDialog(gtk.Dialog):
         for item in WORKS:
             name = item[0]
             check_button = gtk.CheckButton(name)
-            check_button.set_active(True)
+            check_button.set_active(item[2])
             check_button.connect('toggled', self.toggled, item)
             check_button_list.append(check_button)
         box = gtk.VBox(False, 5)
