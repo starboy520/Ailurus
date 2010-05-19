@@ -60,8 +60,7 @@ WORKS = [
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
             [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
             [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
-            [_('Fix errors in 49-sansserif.conf. Otherwise, some character in Flash would be displayed as blank diamond.'), 
-             'Fix_error_in_49_sansserif_conf', True],
+            [_('Fix Flash plugin font error'), 'Fix_error_in_49_sansserif_conf', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
