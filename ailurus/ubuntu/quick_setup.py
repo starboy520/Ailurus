@@ -34,6 +34,23 @@ import gtk
 class Adobe_Flash_plugin(_apt_install):
     pkgs = 'flash-plugin-installer'
 
+class Fix_error_in_49_sansserif_conf(I):
+    def exists(self):
+        try:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                return '>sans-serif<' in f.read()
+        except IOError: # File does not exist
+            return False
+    def cure(self):
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                content = f.read()
+            content = content.replace('>sans-serif<', '>sans serif<')
+            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
+                f.write(content)
+    def install(self):
+        if self.exists(): self.cure()
+                
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
             [_('Full language support and input method'), 'Full_Language_Pack', True],
@@ -43,6 +60,8 @@ WORKS = [
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
             [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
             [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
+            [_('Fix errors in 49-sansserif.conf. Otherwise, some character in Flash would be displayed as blank diamond.'), 
+             'Fix_error_in_49_sansserif_conf', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
