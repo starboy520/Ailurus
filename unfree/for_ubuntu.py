@@ -231,3 +231,33 @@ class GoogleEarth(I):
         return os.path.exists('/opt/google-earth')
     def remove(self):
         run_as_root_in_terminal('/opt/google-earth/uninstall')
+
+class NVIDEA_Driver(I):
+    __doc__ = 'NVIDEA ' + _('video card driver')
+    category = 'videocarddriver'
+    if is32():
+        filename = '195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86/latest.txt
+        url = 'ftp://download.nvidia.com/XFree86/Linux-x86/' + filename
+    else:
+        filename = '195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt
+        url = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/' + filename
+    detail = _('Latest driver is ') + url
+    def install(self):
+        f = R(self.url).download()
+        os.system('chmod a+x ' + f)
+        run_as_root_in_terminal(f)
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
+
+class ATI_Driver(I):
+    __doc__ = 'ATI ' + _('video card driver')
+    category = 'videocarddriver'
+    detail = _('Please visit') + ' http://ati.amd.com/support/driver.HTML'
+    def install(self):
+        raise NotImplementedError
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
