@@ -655,7 +655,7 @@ class Screenlets(N):
     if UBUNTU or MINT:
         pkgs = 'screenlets'
 
-class Stardict_without_Dictionaries(N):
+class Stardict(N):
     __doc__ = _('Stardict')
     category = 'office'
     license = GPL

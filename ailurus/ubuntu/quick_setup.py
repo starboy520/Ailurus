@@ -34,10 +34,10 @@ WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
             [_('Full language support and input method'), 'Full_Language_Pack', True],
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
-            [_('Decompression software'), 'Decompression_Capability', True],
+            [_('Decompression software'), 'Enhance_Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
-            [_('Flash plugin for web browser'), 'Flash_Player', True],
+            [_('Flash plugin for web browser'), 'Gnash', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
