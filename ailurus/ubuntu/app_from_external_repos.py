@@ -233,3 +233,9 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
+
+class ElementaryTheme(_apt_install):
+    __doc__ = _('Elementary: Beautiful theme which looks like Mac OS X')
+    category = 'appearance'
+    depends = Repo_ElementaryArtwork
+    pkgs = 'elementary-icon-theme elementary-theme elementary-wallpapers'

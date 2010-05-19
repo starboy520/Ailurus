@@ -1,6 +1,14 @@
+2010-05-19 Homer Xing <homer.xing@gmail.com>
+
+    * Add SweetHome3D
+    * Add Fix_error_in_netbeans_shortcut_Ubuntu in "Computer Doctor" pane.
+    * Add Add_user_to_vboxusers_group in "Computer Doctor" pane.
+    * Add Fix_error_in_fontconfig_properties_Ubuntu in "Computer Doctor" pane.
+    * Add Fix_error_in_49_sansserif_conf in "Computer Doctor" pane.
+
 2010-05-18 Homer Xing <homer.xing@gmail.com>
 
-    * Add "Computer Doctor".
+    * Add "Computer Doctor" pane.
 
 2010-05-16 Homer Xing <homer.xing@gmail.com>
 

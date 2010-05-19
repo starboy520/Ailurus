@@ -22,6 +22,7 @@
 
 from __future__ import with_statement
 import gtk, gobject, sys, os
+import pango
 from lib import *
 from libu import *
 
@@ -106,6 +107,7 @@ class ComputerDoctorPane(gtk.VBox):
         render_toggle.connect('toggled', self.toggled, sortedstore)
         render_type = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_toggle = gtk.TreeViewColumn()
         column_toggle.pack_start(render_toggle, False)
         column_toggle.add_attribute(render_toggle, 'active', 0)

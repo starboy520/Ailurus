@@ -172,7 +172,10 @@ class _apt_install(I):
     def remove(self):
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
-        return debian_installation_command(self.pkgs)
+        string = ''
+        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
+            string = self.depends().launchpad_installation_command() + '; '
+        return '%s %ssudo apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -243,8 +246,6 @@ class _path_lists(I):
                 raise TypeError
             if path=='':
                 raise ValueError
-    def __init__(self):
-        raise NotImplementedError
     def install(self):
         raise NotImplementedError
     def installed(self):

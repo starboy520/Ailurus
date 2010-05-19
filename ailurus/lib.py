@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.2.3'
-AILURUS_RELEASE_DATE = '2010-04-25'
+AILURUS_VERSION = '10.05.4'
+AILURUS_RELEASE_DATE = '2010-05-19'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -313,21 +313,6 @@ class ShowALinuxSkill:
 
 class CommandFailError(Exception):
     'Fail to execute a command'
-    def __init__(self, *args):
-        new_args = list(args)
-        import os
-        arch = os.uname()[-1]
-        new_args.append(arch)
-        try:
-            with open('/etc/lsb-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        try:
-            with open('/etc/fedora-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        new_args.append(AILURUS_VERSION)
-        Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):
     is_string_not_empty(cmd)

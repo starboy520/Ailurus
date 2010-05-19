@@ -94,6 +94,29 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
+class SweetHome3D(_path_lists):
+    __doc__ = _('SweetHome3D: open source interior design application')
+    detail = _('Official site:') + ' http://www.sweethome3d.com/'
+    category = 'design'
+    shortcut = '/usr/share/applications/SweetHome3D.desktop'
+    path = '/opt/SweetHome3D-2.3'
+    paths = [shortcut, path]
+    def install(self):
+        if is32(): url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x86.tgz'
+        else:       url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x64.tgz'
+        f = R([url]).download()
+        run_as_root('mkdir /opt', ignore_error=True)
+        with Chdir('/opt') as c:
+            run_as_root('tar xf ' + f)
+        create_file(self.shortcut, '[Desktop Entry]\n'
+                                   'Name=SweetHome3D\n'
+                                   'Exec=' + self.path + '/SweetHome3D\n'
+                                   'Encoding=UTF-8\n'
+                                   'StartupNotify=true\n'
+                                   'Terminal=false\n'
+                                   'Type=Application\n'
+                                   'Categories=Graphics;\n')
+
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
     detail = ( 

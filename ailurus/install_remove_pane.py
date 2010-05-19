@@ -717,11 +717,13 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
             [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
+            [ i_common, _('Design'), D+'umut_icons/p_design.png', 'design' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
             [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
+            [ i_advanced, _('Video card driver'), D+'umut_icons/p_video_card_driver.png', 'videocarddriver'],
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
             [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],

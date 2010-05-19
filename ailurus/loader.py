@@ -25,7 +25,8 @@ from lib import *
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
             'geography','education','media','vm','game', 'statistics', 
-            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',)
+            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
+            'design', 'videocarddriver')
 
 def check_class_members(app_class, default_category = 'tweak'):
     import types
@@ -89,7 +90,6 @@ def load_app_objs(common, desktop, distribution):
     return objs
 
 def load_app_objs_from_extension(extension):
-    from ailurus.lib import I
     import types
     classobjs = []
     names = set()
@@ -97,8 +97,7 @@ def load_app_objs_from_extension(extension):
         if name[0]=='_' or name=='I' or name=='N': continue
         if name in names: continue
         app_class = getattr(extension,name)
-        if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
-
+        if not isinstance(app_class, types.ClassType) or not hasattr(app_class, 'this_is_an_installer'): continue
         try:
             check_class_members(app_class)
             app_class_obj = app_class()
@@ -121,16 +120,20 @@ def load_app_objs_from_extension(extension):
     return classobjs
 
 def load_custom_app_classes():
-    return_value = []
-    # check whether the extension directory exist
     import os
-    extension_path = Config.get_config_dir()
-    if not os.path.exists(extension_path):
+    # check whether the extension directory exist
+    for path in [os.path.dirname(__file__) + '/../unfree/',
+                 Config.get_config_dir()]:
+        if os.path.exists(path): 
+            extension_path = path
+            break
+    else:
         return []
     # add the extension directory to sys.path
     import sys
     sys.path.insert(0, extension_path)
     # try to load extensions
+    return_value = []
     import glob
     pys = glob.glob(extension_path+'/*.py')
     for py in pys:

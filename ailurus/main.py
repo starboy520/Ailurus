@@ -413,7 +413,7 @@ class MainView:
         vbox.pack_start(self.toggle_area, True, True)
         
         self.window = window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-        window.set_title('Ailurus ' + AILURUS_VERSION)
+        window.set_title('Ailurus')
         self.last_x = self.window.get_size()[0]
         def configure_event(window, event, toolbar):
             if self.last_x != self.window.get_size()[0]:
