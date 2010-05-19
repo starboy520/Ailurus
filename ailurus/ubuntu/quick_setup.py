@@ -35,21 +35,21 @@ class Adobe_Flash_plugin(_apt_install):
     pkgs = 'flash-plugin-installer'
 
 class Fix_error_in_49_sansserif_conf(I):
-    def exists(self):
+    def installed(self):
         try:
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
-                return '>sans-serif<' in f.read()
+                if '>sans-serif<' in f.read():
+                    return False
         except IOError: # File does not exist
-            return False
-    def cure(self):
+            pass
+        return True
+    def install(self):
         with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans-serif<', '>sans serif<')
             with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
                 f.write(content)
-    def install(self):
-        if self.exists(): self.cure()
                 
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
