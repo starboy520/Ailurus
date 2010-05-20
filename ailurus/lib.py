@@ -227,6 +227,17 @@ class Config:
         except:
             return False
     @classmethod
+    def is_KDE(cls):
+        try:
+            get_output('pgrep -u $USER kdeinit')
+            return True
+        except:
+            try:
+                get_output('pgrep -u $USER kdeinit4')
+                return True
+            except: pass
+        return False
+    @classmethod
     def is_XFCE(cls):
         try:  
             get_output('pgrep -u $USER xfce4-session')
