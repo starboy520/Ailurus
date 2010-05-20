@@ -54,15 +54,18 @@ def with_same_content(file1, file2):
 def check_required_packages():
     ubuntu_missing = []
     fedora_missing = []
+    archlinux_missing = []
 
     try: import pynotify
     except: 
         ubuntu_missing.append('python-notify')
         fedora_missing.append('notify-python')
+        archlinux_missing.append('python-notify')
     try: import vte
     except: 
         ubuntu_missing.append('python-vte')
         fedora_missing.append('vte')
+        archlinux_missing.append('vte')
     try: import apt
     except: 
         ubuntu_missing.append('python-apt')
@@ -73,16 +76,19 @@ def check_required_packages():
     except: 
         ubuntu_missing.append('python-dbus')
         fedora_missing.append('dbus-python')
+        archlinux_missing.append('dbus-python')
     if not os.path.exists('/usr/bin/unzip'):
         ubuntu_missing.append('unzip')
         fedora_missing.append('unzip')
+        archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
         fedora_missing.append('wget')
+        archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/xterm'):
-        
         fedora_missing.append('xterm')
+        archlinux_missing.append('xterm')
 
-    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) 
+    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
         import StringIO
         message = StringIO.StringIO()
@@ -94,6 +100,8 @@ def check_required_packages():
             print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
         if FEDORA:
             print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
+        if ARCHLINUX:
+            print >>message, '<span color="blue">', ' '.join(archlinux_missing), '</span>'
         dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus ' + AILURUS_VERSION)
         dialog.set_markup(message.getvalue())
