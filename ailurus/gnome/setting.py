@@ -29,14 +29,10 @@ from libsetting import *
 def __desktop_icon_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
-    o = GConfCheckButton(_('Show desktop content'), '/apps/nautilus/preferences/show_desktop',
-             _('Show/hide icons on desktop.\n'
-               '<span color="red">The change will take effect at the next time GNOME starts up.</span>'))
-    def show_notify(checkbutton):
-         if checkbutton.get_active():
-             notify(_('Information'), _('Desktop content will be displayed at the next time GNOME starts up.'))
-    o.connect('toggled', show_notify)
+    o = GConfCheckButton(_('Show desktop content') + ' ' + _('(take effect at the next time GNOME starts up)'),
+                         '/apps/nautilus/preferences/show_desktop')
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+
     o = GConfCheckButton(_('Display "Mounted volumn" icon'), '/apps/nautilus/desktop/volumes_visible',
              _('Put icons linking to mounted volumes on the desktop.'))
     table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
@@ -97,8 +93,6 @@ def __start_here_icon_setting():
                     local_dir = os.path.dirname(local_path)
                     if not os.path.exists(local_dir): run('mkdir -p ' + local_dir)
                     run('cp /tmp/start-here.png %s' % local_path)
-        
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
     def get_start_here_icon_path():
         import os , gconf
@@ -123,13 +117,12 @@ def __start_here_icon_setting():
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
-    return Setting(box, _('Change "start-here" icon'), ['icon'])
+    return Setting(box, _('Change "start-here" icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
 
 def __login_icon_setting():
     def apply(w, image):
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' % (image, path))
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
     i = ImageChooser(_('The login icon is ~/.face'), 96, 96)
     try:
@@ -139,7 +132,7 @@ def __login_icon_setting():
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
-    return Setting(box, _('Change login icon'), ['icon'])
+    return Setting(box, _('Change login icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
     
 def __menu_icon_setting():
     vbox = gtk.VBox()
