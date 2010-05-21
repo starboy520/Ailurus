@@ -269,25 +269,12 @@ class PaneLoader:
         self.pane_object = None
     def get_pane(self):
         if self.pane_object is None:
-            window = self.show_splash()
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
             self.pane_object = self.pane_class(self.main_view, *arg)
-            window.destroy()
         return self.pane_object
-    def show_splash(self):
-        window = gtk.Window(gtk.WINDOW_POPUP)
-        window.set_position(gtk.WIN_POS_CENTER)
-        window.set_border_width(15)
-        color = gtk.gdk.color_parse('#202020')
-        window.modify_bg(gtk.STATE_NORMAL, color)
-        text = gtk.Label()
-        text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
-                                   ( _('Loading module ...'), _('Please wait a few seconds.') ) )
-        window.add(text)
-        window.show_all()
-        while gtk.events_pending(): gtk.main_iteration()
-        return window
+    def need_to_load(self):
+        return self.pane_object is None
 
 class MainView:
     def add_quit_button(self):
@@ -342,6 +329,16 @@ class MainView:
         for child in self.toggle_area.get_children():
             self.toggle_area.remove(child)
         pane_loader = self.contents[name]
+        if pane_loader.need_to_load():
+            import pango
+            label = gtk.Label(_('Please wait a few seconds'))
+            label.modify_font(pango.FontDescription('Sans 20'))
+            self.toggle_area.add(label)
+            self.toggle_area.show_all()
+            while gtk.events_pending(): gtk.main_iteration()
+            pane_loader.get_pane()
+            for child in self.toggle_area.get_children():
+                self.toggle_area.remove(child)
         self.toggle_area.add(pane_loader.get_pane())
         self.toggle_area.show_all()
 
