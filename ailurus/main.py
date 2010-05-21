@@ -486,10 +486,9 @@ if options.clean_up or options.all:
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-    hwinfo = load_hardwareinfo()
-    linuxinfo = load_linuxinfo()
+    info = load_info()
     from info_pane import InfoPane
-    pane = InfoPane(main_view, hwinfo, linuxinfo)
+    pane = InfoPane(main_view, info)
     main_view.register(pane)
 
 if options.install_software or options.all:

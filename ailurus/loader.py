@@ -182,26 +182,19 @@ def load_R_objs():
     
     return objs
 
-def load_hardwareinfo():
+def load_info():
     import types
-    ret = []
+    hardware_info = []
+    os_info = []
     for module in [common, desktop, distribution]:
         if module:
             assert isinstance(module, types.ModuleType)
             if hasattr(module, 'hardwareinfo') and hasattr(module.hardwareinfo, 'get'):
-                ret.extend(module.hardwareinfo.get())
-    return ret
-
-def load_linuxinfo():
-    import types
-    ret = []
-    for module in [common, desktop, distribution]:
-        if module:
-            assert isinstance(module, types.ModuleType)
+                hardware_info.extend(module.hardwareinfo.get())
             if hasattr(module, 'osinfo') and hasattr(module.osinfo, 'get'):
-                ret.extend(module.osinfo.get())
-    return ret
-
+                os_info.extend(module.osinfo.get())
+    return hardware_info, os_info
+    
 def load_setting():
     import types
     ret = []
