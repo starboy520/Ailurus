@@ -415,28 +415,6 @@ class MainView:
         WindowPos.load(window,'main')
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
-
-from optparse import OptionParser
-parser = OptionParser(usage=_('usage: ailurus [options]'))
-parser.add_option('--fast', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
-parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
-parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
-parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
-parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
-parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
-parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
-parser.add_option('--computer-doctor', action='store_true', dest='computer_doctor', default=False, help=_('load "computer doctor" functionality'))
-options, args = parser.parse_args()
-if ( options.all == False 
-     and not options.recovery
-     and not options.clean_up
-     and not options.fastest_repository
-     and not options.information
-     and not options.install_software
-     and not options.system_setting ):
-    print _('You did not specify any functionality. :)')
-    print _('For example: ailurus --fast --information')
-    sys.exit()
 change_task_name()
 set_default_window_icon()
 check_required_packages()
@@ -450,71 +428,51 @@ while gtk.events_pending(): gtk.main_iteration()
 
 # load main window
 main_view = MainView()
-if options.system_setting or options.all:
-    splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-    items = load_setting()
-    from system_setting_pane import SystemSettingPane
-    pane = SystemSettingPane(main_view, items)
-    main_view.register(pane)
+items = load_setting()
+from system_setting_pane import SystemSettingPane
+pane = SystemSettingPane(main_view, items)
+main_view.register(pane)
 
 if UBUNTU or MINT:
-    if options.fastest_repository or options.all:
-        from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-        pane = UbuntuFastestMirrorPane(main_view)
-        main_view.register(pane)
+    from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+    pane = UbuntuFastestMirrorPane(main_view)
+    main_view.register(pane)
 
-    if options.recovery or options.all:
-        from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane(main_view)
-        main_view.register(pane)
+    from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+    pane = UbuntuAPTRecoveryPane(main_view)
+    main_view.register(pane)
 
 if FEDORA:
-    if options.fastest_repository or options.all:
-        from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
-        pane = FedoraFastestMirrorPane(main_view)
-        main_view.register(pane)
-
-    if options.recovery or options.all:
-        from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane(main_view)
-        main_view.register(pane)
-
-if options.clean_up or options.all:
-    from clean_up_pane import CleanUpPane
-    pane = CleanUpPane(main_view)
+    from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
+    pane = FedoraFastestMirrorPane(main_view)
     main_view.register(pane)
 
-if options.information or options.all:
-    splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-    info = load_info()
-    from info_pane import InfoPane
-    pane = InfoPane(main_view, info)
+    from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
+    pane = FedoraRPMRecoveryPane(main_view)
     main_view.register(pane)
 
-if options.install_software or options.all:
-    splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
-    
-    wait_firefox_to_create_profile()
-    
-    if UBUNTU or MINT:
-        APT.refresh_cache()
-    elif FEDORA:
-        RPM.refresh_cache()
-    
-    app_objs = load_app_objs()
-    from install_remove_pane import InstallRemovePane
-    pane = InstallRemovePane(main_view, app_objs)
-    main_view.register(pane)
+from clean_up_pane import CleanUpPane
+pane = CleanUpPane(main_view)
+main_view.register(pane)
 
-if options.computer_doctor or options.all:
-    cure_objs = load_cure_objs()
-    from computer_doctor_pane import ComputerDoctorPane
-    pane = ComputerDoctorPane(main_view, cure_objs)
-    main_view.register(pane)
+info = load_info()
+from info_pane import InfoPane
+pane = InfoPane(main_view, info)
+main_view.register(pane)
+
+wait_firefox_to_create_profile()
+app_objs = load_app_objs()
+from install_remove_pane import InstallRemovePane
+pane = InstallRemovePane(main_view, app_objs)
+main_view.register(pane)
+
+cure_objs = load_cure_objs()
+from computer_doctor_pane import ComputerDoctorPane
+pane = ComputerDoctorPane(main_view, cure_objs)
+main_view.register(pane)
 
 main_view.add_quit_button()
-if options.all:
-    main_view.add_study_button_preference_button_other_button()
+main_view.add_study_button_preference_button_other_button()
 main_view.add_pane_buttons_in_toolbar()
 main_view.window.show_all()
 splash.destroy()
