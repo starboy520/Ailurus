@@ -152,11 +152,11 @@ def __button_icon_setting():
     return Setting(vbox, _('Button icons setting'), ['icon'])
 
 def __disable_terminal_beep():
-    vbox = gtk.VBox()
+    box = gtk.VBox(False, 5)
     o = GConfCheckButton(_('Disable terminal bell'), 
              '/apps/gnome-terminal/profiles/Default/silent_bell',
              _("If it is set to true, gnome terminal will not generate beep sound when error happens.") )
-    vbox.pack_start(o, False)
+    box.pack_start(o, False)
     return Setting(vbox, _('Terminal beep sound setting'), ['sound'])
 
 def __more_nautilus_settings():
