@@ -32,9 +32,10 @@ class CleanUpPane(gtk.VBox):
     
     def __init__(self):
         gtk.VBox.__init__(self, False, 10)
-        self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
+        self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
+        self.pack_start(self.clean_nautilus_cache_button(), False)
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
@@ -47,7 +48,7 @@ class CleanUpPane(gtk.VBox):
     def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
         if os.path.exists(folder_path):
-            size = get_output('du -bsS ' + folder_path)
+            size = get_output('du -bs ' + folder_path)
             fsize = os.stat(folder_path).st_size
             size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
         else:
@@ -70,7 +71,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(' ', 'apt-get clean')
+            notify(_('Run command:'), 'apt-get clean')
             try: run_as_root_in_terminal('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
@@ -85,7 +86,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(' ', "yum --enablerepo='*' clean all")
+            notify(_('Run command:'), "yum --enablerepo='*' clean all")
             try: run_as_root("yum --enablerepo='*' clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
@@ -100,7 +101,7 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(' ', 'rm /var/cache/ailurus/* -rf')
+            notify(_('Run command:'), 'rm /var/cache/ailurus/* -rf')
             try: run_as_root('rm /var/cache/ailurus/* -rf')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
@@ -115,13 +116,28 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(' ', 'rm -rf /var/cache/pacman/pkg/*')
+            notify(_('Run command:'), 'rm -rf /var/cache/pacman/pkg/*')
             try: run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command:') + ' rm -rf /var/cache/pacman/pkg/*') #sudo pacman -Sc
+        return button
+
+    def clean_nautilus_cache_button(self):
+        path = os.path.expanduser('~/.thumbnails/')
+        label = gtk.Label(self.get_button_text(_('Nautilus thumbnail image cache'), path))
+        button = gtk.Button()
+        button.add(label)
+        button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
+        def __clean_up(button, label):
+            notify(_('Run command:'), 'rm -rf ~/.thumbnails/*')
+            os.system('rm -rf ~/.thumbnails/*')
+            label.set_text(self.get_button_text(_('Nautilus thumbnail image cache'), path))
+            button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
+        button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command:') + ' rm -rf ~/.thumbnails/*') #sudo pacman -Sc
         return button
 
     def clean_recently_used_document_button(self):
@@ -132,7 +148,7 @@ class CleanUpPane(gtk.VBox):
                 os.system("echo '' > ~/.recently-used.xbel")
             else: # is dir
                 os.system("rm ~/.recently-used.xbel/* -rf")
-            notify(' ', _('"Recent documents" list is empty now.'))
+            notify(_('Run command:'), _('echo "" > ~/.recently-used.xbel'))
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
         button.set_tooltip_text(_('Command:') + ' echo "" > ~/.recently-used.xbel')
