@@ -374,10 +374,6 @@ class MainView:
         gtk.main_quit()
         sys.exit()
 
-    def show_day_tip(self, *w):
-        from support.tipoftheday import TipOfTheDay
-        TipOfTheDay()
-
     def register(self, pane):
         key = pane.__class__.__name__
         try:
@@ -525,9 +521,6 @@ if options.all:
 main_view.add_pane_buttons_in_toolbar()
 main_view.window.show_all()
 splash.destroy()
-# do not show tip of the day
-# if not Config.get_disable_tip():
-#    main_view.show_day_tip()
 
 # all right
 gtk.gdk.threads_init()
