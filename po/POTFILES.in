@@ -1,11 +1,4 @@
-ailurus_quick_start.directory.in
-ailurus-clean-up.desktop.in
 ailurus.desktop.in
-ailurus-fastest-repository.desktop.in
-ailurus-information.desktop.in
-ailurus-install-software.desktop.in
-ailurus-recovery.desktop.in
-ailurus-system-setting.desktop.in
 support/policykit0/cn.ailurus.policy.in
 support/policykit1/cn.ailurus.policy.in
 ailurus/clean_up_pane.py

@@ -50,9 +50,7 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus/
 %{_bindir}/ailurus
 %doc %{_mandir}/man1/ailurus.1*
-%{_datadir}/desktop-directories/ailurus_quick_start.directory
-%{_sysconfdir}/xdg/menus/applications-merged/ailurus.menu
-%{_datadir}/applications/ailurus*.desktop
+%{_datadir}/applications/ailurus.desktop
 %{_datadir}/ailurus/
 %{_datadir}/dbus-1/system-services/cn.ailurus.service
 %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
