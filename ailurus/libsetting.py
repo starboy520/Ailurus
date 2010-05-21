@@ -296,15 +296,6 @@ class GConfHScale(gtk.HScale):
         
 import gtk
 class Setting(gtk.VBox):
-    categories = [
-                  'all',
-                  'desktop', 'window', 'menu', 
-                  'sound', 'icon', 'font', 'session', 
-                  'memory', 'network',
-                  'restriction',
-                  'nautilus', 'terminal', 'host_name',
-                  'update', 'power', 'shortcut', 'firefox', 'panel',]
-    
     def __title(self, text):
         label = gtk.Label()
         label.set_markup('<b>%s</b>'%text)
@@ -317,7 +308,6 @@ class Setting(gtk.VBox):
         assert category != []
         for i in category: 
             assert isinstance(i, str)
-            assert i in self.categories
 
         gtk.VBox.__init__(self, False, 0)
         self.set_border_width(5)
