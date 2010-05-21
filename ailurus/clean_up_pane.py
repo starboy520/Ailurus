@@ -425,7 +425,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
-        button_box.pack_start(button_refresh, False)
+#        button_box.pack_start(button_refresh, False)
         button_box.pack_start(button_unselect_all, False)
         button_box.pack_start(button_delete, False)
         align = gtk.Alignment(0, 0.5)
@@ -439,6 +439,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         self.liststore.append([True, _('Please press the "Refresh" button.'), 0, ''])
         button_unselect_all.set_sensitive(False)
         button_delete.set_sensitive(False)
+        self.refresh()
 
 class UbuntuDeleteUnusedConfigBox(gtk.HBox):
     def text_data_func(self, column, cell, model, iter):
@@ -529,7 +530,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
-        button_box.pack_start(button_refresh, False)
+#        button_box.pack_start(button_refresh, False)
         button_box.pack_start(button_unselect_all, False)
         button_box.pack_start(button_delete, False)
         align = gtk.Alignment(0, 0.5)
@@ -543,3 +544,4 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         self.liststore.append([True, _('Please press the "Refresh" button.')])
         button_unselect_all.set_sensitive(False)
         button_delete.set_sensitive(False)
+        self.refresh()
