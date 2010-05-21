@@ -426,6 +426,25 @@ class MainView:
             from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
             from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
 
+        self.register(SystemSettingPane, load_setting)
+        
+        if UBUNTU or MINT:
+            self.register(UbuntuFastestMirrorPane)
+            self.register(UbuntuAPTRecoveryPane)
+        
+        if FEDORA:
+            self.register(FedoraFastestMirrorPane)
+            self.register(FedoraRPMRecoveryPane)
+        
+        self.register(CleanUpPane)
+        self.register(InfoPane, load_info)
+        self.register(InstallRemovePane, load_app_objs)
+        self.register(ComputerDoctorPane, load_cure_objs)
+        
+        self.add_quit_button()
+        self.add_study_button_preference_button_other_button()
+        self.add_pane_buttons_in_toolbar()
+        self.window.show_all()
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
@@ -433,35 +452,13 @@ set_default_window_icon()
 check_required_packages()
 check_dbus_configuration()
 
-# show splash window
 from support.splashwindow import SplashWindow
 splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
-
 main_view = MainView()
-main_view.register(SystemSettingPane, load_setting)
-
-if UBUNTU or MINT:
-    main_view.register(UbuntuFastestMirrorPane)
-    main_view.register(UbuntuAPTRecoveryPane)
-
-if FEDORA:
-    main_view.register(FedoraFastestMirrorPane)
-    main_view.register(FedoraRPMRecoveryPane)
-
-main_view.register(CleanUpPane)
-main_view.register(InfoPane, load_info)
-main_view.register(InstallRemovePane, load_app_objs)
-main_view.register(ComputerDoctorPane, load_cure_objs)
-
-main_view.add_quit_button()
-main_view.add_study_button_preference_button_other_button()
-main_view.add_pane_buttons_in_toolbar()
-main_view.window.show_all()
 splash.destroy()
 
-# all right
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
 gtk.main()
