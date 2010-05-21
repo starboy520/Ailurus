@@ -36,7 +36,8 @@ class RepoCheckButton(gtk.CheckButton):
         self.new_repo = new_repo
 
 class UbuntuFastestMirrorPane(gtk.VBox):
-    name = _('Find fastest repository mirror')
+    icon = D+'sora_icons/m_fastest_repos.png'
+    text = _('Fastest\nRepository')
 
     # This value is used in UbuntuFastestMirrorPane.candidate_store .
     # If the server does not respond PING, then its response time is NO_PING_RESPONSE .

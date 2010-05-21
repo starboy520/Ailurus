@@ -306,21 +306,11 @@ class MainView:
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
-        List = [
-                ('InfoPane', D+'sora_icons/m_hardware.png', _('Information'), ),
-                ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
-                ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
-                ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('FedoraFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
-                ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
-                ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
-                ('ComputerDoctorPane', D+'sora_icons/m_computer_doctor.png', _('Computer\nDoctor')),
-                ]
-        List.reverse()
-        for name, icon, text in List:
-            if not name in self.contents: continue
-            item = toolitem(icon, text, 'clicked', self.activate_pane, name)
+        for key in self.ordered_key:
+            pane_loader = self.contents[key]
+            icon = pane_loader.pane_class.icon
+            text = pane_loader.pane_class.text
+            item = toolitem(icon, text, 'clicked', self.activate_pane, key)
             self.toolbar.insert(item, 0)
         
         self.activate_pane(None, 'SystemSettingPane')
@@ -395,11 +385,13 @@ class MainView:
         import gobject
         key = pane_class.__name__
         self.contents[key] = PaneLoader(self, pane_class, content_function)
+        self.ordered_key.append(key)
 
     def __init__(self):
         self.window = None # MainView window
         self.stop_delete_event = False
         self.contents = {}
+        self.ordered_key = [] # contains keys in self.contents, in calling order of self.register
         
         self.toggle_area = gtk.VBox()
         self.toggle_area.set_border_width(5)
@@ -439,20 +431,17 @@ class MainView:
             from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
             from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
 
-        self.register(SystemSettingPane, load_setting)
-        
-        if UBUNTU or MINT:
-            self.register(UbuntuFastestMirrorPane)
-            self.register(UbuntuAPTRecoveryPane)
-        
-        if FEDORA:
-            self.register(FedoraFastestMirrorPane)
-            self.register(FedoraRPMRecoveryPane)
-        
-        self.register(CleanUpPane)
-        self.register(InfoPane, load_info)
-        self.register(InstallRemovePane, load_app_objs)
         self.register(ComputerDoctorPane, load_cure_objs)
+        self.register(CleanUpPane)
+        if UBUNTU or MINT:
+            self.register(UbuntuAPTRecoveryPane)
+            self.register(UbuntuFastestMirrorPane)
+        if FEDORA:
+            self.register(FedoraRPMRecoveryPane)
+            self.register(FedoraFastestMirrorPane)
+        self.register(InstallRemovePane, load_app_objs)
+        self.register(SystemSettingPane, load_setting)
+        self.register(InfoPane, load_info)
         
         self.add_quit_button()
         self.add_study_button_preference_button_other_button()

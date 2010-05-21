@@ -26,6 +26,9 @@ from lib import *
 from libu import *
 
 class InfoPane(gtk.VBox):
+    icon = D+'sora_icons/m_hardware.png'
+    text = _('Information')
+    
     def __tree_pixbuf(self, column, cell, model, iter):
         pixbuf = model.get_value(iter, 0)
         cell.set_property('pixbuf', pixbuf)

@@ -27,7 +27,8 @@ from lib import *
 from libu import *
 
 class FedoraRPMRecoveryPane(gtk.VBox):
-    name = _('RPM recovery')
+    icon = D+'sora_icons/m_recovery.png'
+    text = _('Recover\nRPM')
 
     def __make_dir(self):
         Config.make_config_dir()

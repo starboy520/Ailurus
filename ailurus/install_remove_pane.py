@@ -26,7 +26,8 @@ from lib import *
 from libu import *
 
 class InstallRemovePane(gtk.VBox):
-    name = _('Install/Remove')
+    icon = D+'sora_icons/m_install_remove.png'
+    text = _('Install\nSoftware')
     
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()

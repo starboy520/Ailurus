@@ -27,7 +27,8 @@ from libu import *
 from libsetting import Setting
 
 class SystemSettingPane(gtk.VBox):
-    name = _('System settings')
+    icon = D+'sora_icons/m_linux_setting.png'
+    text = _('System\nSettings')
 
     def __left_pane(self):
         def icon(path):
