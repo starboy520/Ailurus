@@ -452,11 +452,6 @@ splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
-# load Linux skills
-tips = load_tips()
-import support.tipoftheday
-support.tipoftheday.tips = tips
-
 # load main window
 main_view = MainView()
 if options.system_setting or options.all:
