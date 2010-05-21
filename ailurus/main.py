@@ -309,8 +309,8 @@ class MainView:
             self.toolbar.insert(item, 0)
             left_most_pane_name = name
         
-        if 'InstallRemovePane' in self.contents:
-            self.activate_pane(None, 'InstallRemovePane')
+        if 'SystemSettingPane' in self.contents:
+            self.activate_pane(None, 'SystemSettingPane')
         else:
             assert left_most_pane_name != None
             self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
