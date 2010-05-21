@@ -489,8 +489,7 @@ if options.information or options.all:
     hwinfo = load_hardwareinfo()
     linuxinfo = load_linuxinfo()
     from info_pane import InfoPane
-    pane = InfoPane(([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
-                    [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
+    pane = InfoPane(hwinfo, linuxinfo)
     main_view.register(pane)
 
 if options.install_software or options.all:

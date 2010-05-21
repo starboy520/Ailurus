@@ -33,6 +33,7 @@ class SplashWindow(gtk.Window):
         color = gtk.gdk.color_parse('#202020')
         self.modify_bg(gtk.STATE_NORMAL, color)
         
+        from lib import D
         logo = gtk.Image()
         logo.set_from_file(D+'suyun_icons/logo_with_reflection.png')
         

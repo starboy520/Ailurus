@@ -59,7 +59,12 @@ class InfoPane(gtk.VBox):
 
         show_text_window(_('Information'), f.getvalue())
 
-    def __init__(self, tuples):
+    def __init__(self, hardware_subtree_functions, os_subtree_functions):
+        self.hardware_subtree_text = _('Hardware Information')
+        self.hardware_subtree_icon = get_pixbuf(D + 'sora_icons/m_hardware.png', 24, 24)
+        self.os_subtree_text = _('Linux Information')
+        self.os_subtree_icon = get_pixbuf(D+'sora_icons/m_linux.png', 24, 24)
+        
         gtk.VBox.__init__(self, False, 10)
         
         button = image_stock_button(gtk.STOCK_PRINT, _('Print all information'))
@@ -90,13 +95,12 @@ class InfoPane(gtk.VBox):
         self.pack_start(scrollwindow)
         self.pack_start(align_button, False)
         
-        self.tuples = tuples
         self.function2trees = {}
         
-        for title, icon, functions in self.tuples:
-            pixbuf = get_pixbuf(icon, 24, 24)
-            parent = self.treestore.append(None, [pixbuf, title, None])
-            self.__build_subtree(parent, functions)
+        parent = self.treestore.append(None, [self.hardware_subtree_icon, self.hardware_subtree_text, None])
+        self.__build_subtree(parent, hardware_subtree_functions)
+        parent = self.treestore.append(None, [self.os_subtree_icon, self.os_subtree_text, None])
+        self.__build_subtree(parent, os_subtree_functions)
 
         self.treeview.expand_all()
 
