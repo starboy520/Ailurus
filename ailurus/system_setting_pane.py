@@ -115,7 +115,7 @@ class SystemSettingPane(gtk.VBox):
         
         return bigbox
     
-    def __init__(self, setting_items):
+    def __init__(self, main_view, setting_items):
         for i in setting_items:
             assert isinstance(i, Setting)
         

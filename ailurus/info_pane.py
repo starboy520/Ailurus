@@ -59,7 +59,7 @@ class InfoPane(gtk.VBox):
 
         show_text_window(_('Information'), f.getvalue())
 
-    def __init__(self, hardware_subtree_functions, os_subtree_functions):
+    def __init__(self, main_view, hardware_subtree_functions, os_subtree_functions):
         self.hardware_subtree_text = _('Hardware Information')
         self.hardware_subtree_icon = get_pixbuf(D + 'sora_icons/m_hardware.png', 24, 24)
         self.os_subtree_text = _('Linux Information')

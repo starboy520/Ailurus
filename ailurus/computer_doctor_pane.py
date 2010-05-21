@@ -95,7 +95,7 @@ class ComputerDoctorPane(gtk.VBox):
                              show_textbox_border = False, show_a_big_window = False)
     def show_text(self, text):
         self.column_text.set_title(text)
-    def __init__(self, cure_objs):
+    def __init__(self, main_view, cure_objs):
         self.cure_objs = cure_objs
         self.icon_must_fix = get_pixbuf(D+'sora_icons/c_must_fix.png', 24, 24)
         self.icon_suggestion = get_pixbuf(D+'sora_icons/c_suggestion.png', 24, 24)

@@ -161,7 +161,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         textview.set_cursor_visible(False)
         return textview
 
-    def __init__(self):
+    def __init__(self, main_view):
         from support.multidragview import MultiDragTreeView
         
         gtk.VBox.__init__(self, False, 10)

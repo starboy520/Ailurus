@@ -454,7 +454,7 @@ if options.system_setting or options.all:
     splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
     items = load_setting()
     from system_setting_pane import SystemSettingPane
-    pane = SystemSettingPane(items)
+    pane = SystemSettingPane(main_view, items)
     main_view.register(pane)
 
 if UBUNTU or MINT:
@@ -465,7 +465,7 @@ if UBUNTU or MINT:
 
     if options.recovery or options.all:
         from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane()
+        pane = UbuntuAPTRecoveryPane(main_view)
         main_view.register(pane)
 
 if FEDORA:
@@ -476,12 +476,12 @@ if FEDORA:
 
     if options.recovery or options.all:
         from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane()
+        pane = FedoraRPMRecoveryPane(main_view)
         main_view.register(pane)
 
 if options.clean_up or options.all:
     from clean_up_pane import CleanUpPane
-    pane = CleanUpPane()
+    pane = CleanUpPane(main_view)
     main_view.register(pane)
 
 if options.information or options.all:
@@ -489,7 +489,7 @@ if options.information or options.all:
     hwinfo = load_hardwareinfo()
     linuxinfo = load_linuxinfo()
     from info_pane import InfoPane
-    pane = InfoPane(hwinfo, linuxinfo)
+    pane = InfoPane(main_view, hwinfo, linuxinfo)
     main_view.register(pane)
 
 if options.install_software or options.all:
@@ -510,7 +510,7 @@ if options.install_software or options.all:
 if options.computer_doctor or options.all:
     cure_objs = load_cure_objs()
     from computer_doctor_pane import ComputerDoctorPane
-    pane = ComputerDoctorPane(cure_objs)
+    pane = ComputerDoctorPane(main_view, cure_objs)
     main_view.register(pane)
 
 main_view.add_quit_button()
