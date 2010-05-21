@@ -269,10 +269,25 @@ class PaneLoader:
         self.pane_object = None
     def get_pane(self):
         if self.pane_object is None:
+            window = self.show_splash()
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
             self.pane_object = self.pane_class(self.main_view, *arg)
+            window.destroy()
         return self.pane_object
+    def show_splash(self):
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_border_width(15)
+        color = gtk.gdk.color_parse('#202020')
+        window.modify_bg(gtk.STATE_NORMAL, color)
+        text = gtk.Label()
+        text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
+                                   ( _('Loading module ...'), _('Please wait a few seconds.') ) )
+        window.add(text)
+        window.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return window
 
 class MainView:
     def add_quit_button(self):
