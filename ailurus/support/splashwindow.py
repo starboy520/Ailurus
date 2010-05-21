@@ -20,7 +20,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-import gtk
+import gtk, pango
 
 class SplashWindow(gtk.Window):
     def __init__(self):
@@ -36,7 +36,6 @@ class SplashWindow(gtk.Window):
         logo = gtk.Image()
         logo.set_from_file(D+'suyun_icons/logo_with_reflection.png')
         
-        from lib import AILURUS_VERSION
         title = gtk.Image()
         title.set_from_file(D+'other_icons/ailurus_for_splash.png')
         
@@ -47,7 +46,6 @@ class SplashWindow(gtk.Window):
               '<span color="#00A0E9">Help</span> you do tedious settings.\n'
               '<span color="#00A0E9">Tell</span> you some Linux skills.'
               '</span>') )
-        import pango
         comment.modify_font(pango.FontDescription('Purisa 10'))
        
         titlevbox = gtk.VBox(False, 0)
