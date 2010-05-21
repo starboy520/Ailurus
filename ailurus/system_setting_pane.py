@@ -31,7 +31,7 @@ class SystemSettingPane(gtk.VBox):
 
     def __left_pane(self):
         def icon(path):
-            return get_pixbuf(path, 24, 24)
+            return get_pixbuf(path, 28, 28)
         
         existing_categories = []
         for i in self.setting_items:
