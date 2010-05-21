@@ -269,7 +269,7 @@ class PaneLoader:
         self.pane_object = None
     def get_pane(self):
         if self.pane_object is None:
-            if self.content_function: arg = [self.content_function] # has argument
+            if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
             self.pane_object = self.pane_class(self.main_view, *arg)
         return self.pane_object
