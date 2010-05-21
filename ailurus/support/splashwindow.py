@@ -88,14 +88,3 @@ class SplashWindow(gtk.Window):
         self.progressbar.set_fraction( min(1, 0.334*len(list) ) )
         #refresh
         while gtk.events_pending(): gtk.main_iteration()
-
-from lib import *
-if __name__ == '__main__':
-    win = SplashWindow()
-    win.show_all()
-    import time
-    win.add_text('<span color="grey">Hello1</span>\n')
-    time.sleep(2)
-    win.add_text('<span color="grey">Hello2</span>\n')
-    time.sleep(2)
-    gtk.main()
