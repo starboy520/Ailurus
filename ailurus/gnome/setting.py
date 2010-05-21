@@ -342,29 +342,29 @@ def __nautilus_thumbnail_setting():
     import os
     text = label_left_align( _('The thumbnail cache directory is "%s/.thumbnails".')%os.environ['HOME'] )
     table.attach(text, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+
+    label = label_left_align(_('Size of each thumbnail (in pixels):'))
+    key = '/apps/nautilus/icon_view/thumbnail_size'
+    label.set_tooltip_text(_('GConf key: %s')%key)
+    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    
+    o = GConfNumericEntry(key, 16, 96)
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
     
     label = label_left_align(_('Maximum size of thumbnail cache (in MBytes):'))
     key = '/desktop/gnome/thumbnail_cache/maximum_size'
     label.set_tooltip_text(_('GConf key: %s')%key)
-    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     
     o = GConfNumericEntry(key, 0, 2048)
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
     
     label = label_left_align(_('Maximum time each thumbnail remains in cache (in days):'))
     key = '/desktop/gnome/thumbnail_cache/maximum_age'
     label.set_tooltip_text(_('GConf key: %s')%key)
-    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = GConfNumericEntry(key, 0, 30)
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    label = label_left_align(_('Size of each thumbnail (in pixels):'))
-    key = '/apps/nautilus/icon_view/thumbnail_size'
-    label.set_tooltip_text(_('GConf key: %s')%key)
     table.attach(label, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    o = GConfNumericEntry(key, 16, 96)
+    o = GConfNumericEntry(key, 0, 30)
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
     return Setting(table, _('Nautilus thumbnail settings'), ['nautilus'])
