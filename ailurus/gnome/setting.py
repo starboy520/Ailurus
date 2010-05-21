@@ -431,12 +431,12 @@ def __backlight():
 #    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
 
 def __advance_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)    
+    box = gtk.VBox(False, 5)
     
     o = GConfCheckButton(_('Display content of your home folder on desktop') + ' ' + _('(take effect at the next time GNOME starts up)'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
+    
 
     def clicked(button, path):
         if button.get_active():
@@ -455,8 +455,12 @@ def __advance_setting():
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
     button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu'))
     button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
-    button.set_active(os.path.exists(os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')))
+    button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
+    box.pack_start(button, False)
+
+    table = gtk.Table()
+    table.set_col_spacings(10)    
     table.attach(button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
 
     o = label_left_align(_('Change default file manager to:'))
@@ -477,10 +481,12 @@ def __advance_setting():
     o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
     table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
 
-    return Setting(table, _('Advance settings'), ['desktop'])
+    box.pack_start(table, False)
+
+    return Setting(box, _('Advance settings'), ['desktop'])
 
 def __gnome_panel_setting():
-    box = gtk.VBox(False, 10)
+    box = gtk.VBox(False, 5)
     o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
     box.pack_start(o, False)
     o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
