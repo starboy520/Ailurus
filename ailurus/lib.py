@@ -1460,6 +1460,7 @@ import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 GNOME = Config.is_GNOME()
+KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()

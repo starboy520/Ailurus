@@ -26,7 +26,10 @@ from lib import *
 def main():
     import common as COMMON
     
-    DESKTOP = None
+    if GNOME:
+        import gnome as DESKTOP
+    else:
+        DESKTOP = None
     
     if MINT or UBUNTU:
         import ubuntu as DISTRIBUTION
