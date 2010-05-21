@@ -333,10 +333,6 @@ class MainView:
     
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
-        self.change_content_basic(name)
-
-    def change_content_basic(self, name):
-        assert isinstance(name, str)
         self.current_pane = name
         for child in self.toggle_area.get_children():
             self.toggle_area.remove(child)
