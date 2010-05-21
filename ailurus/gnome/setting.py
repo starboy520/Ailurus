@@ -434,7 +434,7 @@ def __advance_setting():
     table = gtk.Table()
     table.set_col_spacings(10)    
     
-    o = GConfCheckButton(_('Use your home folder as the desktop'),
+    o = GConfCheckButton(_('Display content of your home folder on desktop') + ' ' + _('(take effect at the next time GNOME starts up)'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
     table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
 
