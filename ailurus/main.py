@@ -201,7 +201,7 @@ def exception_happened(etype, value, tb):
     window.add(vbox)
     window.show_all()
 
-#sys.excepthook = exception_happened
+sys.excepthook = exception_happened
 
 class toolitem(gtk.ToolItem):
     def __load_image(self):
