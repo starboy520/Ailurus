@@ -322,8 +322,7 @@ class MainView:
     
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
-        if name in self.contents:
-            self.change_content_basic(name)
+        self.change_content_basic(name)
 
     def change_content_basic(self, name):
         assert isinstance(name, str)
@@ -374,14 +373,12 @@ class MainView:
         gtk.main_quit()
         sys.exit()
 
-    def register(self, pane):
-        key = pane.__class__.__name__
-        try:
-            assert not '.' in key, key
-            assert not key in self.contents, key
-            self.contents[key] = pane
-        except:
-            print_traceback()
+    def register(self, pane_class, content_function = None):
+        import gobject
+        assert isinstance(pane_class, gobject.GObjectMeta)
+        key = pane_class.__name__
+        assert not '.' in key
+        self.contents[key] = (pane_class, content_function)
 
     def __init__(self):
         self.window = None # MainView window
