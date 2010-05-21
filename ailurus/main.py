@@ -372,11 +372,6 @@ class MainView:
         
         from support.windowpos import WindowPos
         WindowPos.save(self.window,'main')
-        
-        for pane_loader in self.contents.values():
-            pane = pane_loader.get_pane()
-            if hasattr(pane, 'save_state'):
-                pane.save_state()
 
         gtk.main_quit()
         sys.exit()
