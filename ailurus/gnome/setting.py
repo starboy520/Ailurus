@@ -45,41 +45,41 @@ def __desktop_icon_setting():
              _('Put an icon linking to the computer location on the desktop.'))
     table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
+#    l = gtk.Label(_('Change icon name to:'))
+#    table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
     
-    en = GConfTextEntry('/apps/nautilus/desktop/computer_icon_name')
-    table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
+#    en = GConfTextEntry('/apps/nautilus/desktop/computer_icon_name')
+#    table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
     
     o = GConfCheckButton(_('Display "Home folder" icon'), '/apps/nautilus/desktop/home_icon_visible',
              _('Put an icon linking to the home folder on the desktop.'))
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+#    l = gtk.Label(_('Change icon name to:'))
+#    table.attach(l, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
-    en = GConfTextEntry('/apps/nautilus/desktop/home_icon_name')
-    table.attach(en, 2, 3, 3, 4, gtk.FILL, gtk.FILL)
+#    en = GConfTextEntry('/apps/nautilus/desktop/home_icon_name')
+#    table.attach(en, 2, 3, 3, 4, gtk.FILL, gtk.FILL)
         
     o = GConfCheckButton(_('Display "Network server" icon'), '/apps/nautilus/desktop/network_icon_visible',
              _('Put an icon linking to the Network Servers view on the desktop.'))
     table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
     
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
+#    l = gtk.Label(_('Change icon name to:'))
+#    table.attach(l, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
     
-    en = GConfTextEntry('/apps/nautilus/desktop/network_icon_name')
-    table.attach(en, 2, 3, 4, 5, gtk.FILL, gtk.FILL)
+#    en = GConfTextEntry('/apps/nautilus/desktop/network_icon_name')
+#    table.attach(en, 2, 3, 4, 5, gtk.FILL, gtk.FILL)
     
     o = GConfCheckButton(_('Display "Trash" icon'),'/apps/nautilus/desktop/trash_icon_visible',
              _('Put an icon linking to the trash on the desktop.'))
     table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
     
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
+#    l = gtk.Label(_('Change icon name to:'))
+#    table.attach(l, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
 
-    en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
-    table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
+#    en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
+#    table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
 
     return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
 
