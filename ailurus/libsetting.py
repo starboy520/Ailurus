@@ -303,7 +303,7 @@ class Setting(gtk.VBox):
                   'memory', 'network',
                   'restriction',
                   'nautilus', 'terminal', 'host_name',
-                  'update', 'power', 'shortcut', 'firefox', ]
+                  'update', 'power', 'shortcut', 'firefox', 'panel',]
     
     def __title(self, text):
         label = gtk.Label()

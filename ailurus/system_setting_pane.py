@@ -49,6 +49,7 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ), 
               (D+'umut_icons/s_font.png', _('Font'), 'font', ), 
               (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
+              (D+'umut_icons/s_panel.png', _('GNOME Panel'), 'panel', ),
               (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
               (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
               (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 

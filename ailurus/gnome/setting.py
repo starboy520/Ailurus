@@ -479,6 +479,17 @@ def __advance_setting():
 
     return Setting(table, _('Advance settings'), ['desktop'])
 
+def __gnome_panel_setting():
+    box = gtk.VBox(False, 10)
+    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('GNOME panels settings'), ['panel'])
+
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))
     l2 = gtk.Label(_('Shortcut key'))
@@ -590,6 +601,7 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
+            __gnome_panel_setting,
             __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
