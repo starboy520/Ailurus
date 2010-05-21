@@ -307,13 +307,8 @@ class MainView:
             if not name in self.contents: continue
             item = toolitem(icon, text, 'clicked', self.activate_pane, name)
             self.toolbar.insert(item, 0)
-            left_most_pane_name = name
         
-        if 'SystemSettingPane' in self.contents:
-            self.activate_pane(None, 'SystemSettingPane')
-        else:
-            assert left_most_pane_name != None
-            self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
+        self.activate_pane(None, 'SystemSettingPane')
 
     def get_item_icon_size(self):
         return min( int(self.last_x / 20), 48)
