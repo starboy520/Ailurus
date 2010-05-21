@@ -127,7 +127,7 @@ def load_app_objs_from_extension(extension):
 
     return classobjs
 
-def load_custom_app_classes():
+def load_custom_app_objs():
     import os
     # check whether the extension directory exist
     for path in [os.path.dirname(__file__) + '/../unfree/',
