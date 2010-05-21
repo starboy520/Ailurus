@@ -363,25 +363,22 @@ def __nautilus_thumbnail_setting():
     return Setting(table, _('Nautilus thumbnail settings'), ['nautilus'])
 
 def __gnome_session_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)
-    pos = 0
+    box = gtk.VBox(False, 5)
+    button = gtk.Button(_('Configure autostart applications') + ' ' + _('(Command: gnome-session-properties)'))
+    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
+    box.pack_start(left_align(button), False)
     o = GConfCheckButton(_('Remember running applications when you log out.'),
              '/apps/gnome-session/options/auto_save_session',
              _('If its value is true, GNOME will remember the running applications when you log out, '
                'and re-launch these applications at the next time you log in to GNOME.') )
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL)
-    button = gtk.Button(_('Configure autostart applications'))
-    button.set_tooltip_text(_('Run command: gnome-session-properties'))
-    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
-    table.attach(button, 1, 2, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
     o = GConfCheckButton(_('Prompt you before you log out from GNOME.'),
             '/apps/gnome-session/options/logout_prompt',
             _('If its value is false, GNOME session will terminate immediately if you click the menu "System"->"Log out".') )
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
     o = GConfCheckButton(_('Allow connection from remote hosts.'),
             '/apps/gnome-session/options/allow_tcp_connections')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
 #    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
 #            '/apps/gnome-screensaver/user_switch_enable',
 #            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
@@ -393,14 +390,20 @@ def __gnome_session_setting():
 #    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     
     o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
-            '/apps/gnome-screensaver/idle_activation_enabled')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+                         '/apps/gnome-screensaver/idle_activation_enabled')
+    box.pack_start(o, False)
     
     o = GConfCheckButton(_('Lock screen when screen saver is activated'),
-            '/apps/gnome-screensaver/lock_enabled')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+                         '/apps/gnome-screensaver/lock_enabled')
+    box.pack_start(o, False)
     
-    return Setting(table, _('GNOME session'), ['session'])
+    o = GConfCheckButton(_('Lock screen after hibernating'), '/apps/gnome-power-manager/lock/hibernate')
+    box.pack_start(o, False)
+    
+    o = GConfCheckButton(_('Lock screen after suspending'), '/apps/gnome-power-manager/lock/suspend')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('GNOME session'), ['session'])
 
 def __backlight():
     table = gtk.Table()
