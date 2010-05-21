@@ -259,18 +259,19 @@ class toolitem(gtk.ToolItem):
         self.add(button)
 
 class PaneLoader:
-    def __init__(self, pane_class, content_function = None):
+    def __init__(self, main_view, pane_class, content_function = None):
         import gobject
         assert isinstance(pane_class, gobject.GObjectMeta)
         assert callable(content_function) or content_function is None
+        self.main_view = main_view
         self.pane_class = pane_class
         self.content_function = content_function
         self.pane_object = None
     def get_pane(self):
         if self.pane_object is None:
-            if content_function: content_function = [content_function] # has argument
-            else: content_function = [] # no argument
-            self.pane_object = pane_class(self, *content_function)
+            if self.content_function: arg = [self.content_function] # has argument
+            else: arg = [] # no argument
+            self.pane_object = self.pane_class(self.main_view, *arg)
         return self.pane_object
 
 class MainView:
@@ -344,8 +345,8 @@ class MainView:
         self.current_pane = name
         for child in self.toggle_area.get_children():
             self.toggle_area.remove(child)
-        content = self.contents[name]
-        self.toggle_area.add(content)
+        pane_loader = self.contents[name]
+        self.toggle_area.add(pane_loader.get_pane())
         self.toggle_area.show_all()
 
     def lock(self):
@@ -381,7 +382,8 @@ class MainView:
         from support.windowpos import WindowPos
         WindowPos.save(self.window,'main')
         
-        for pane in self.contents.values():
+        for pane_loader in self.contents.values():
+            pane = pane_loader.get_pane()
             if hasattr(pane, 'save_state'):
                 pane.save_state()
 
@@ -391,7 +393,7 @@ class MainView:
     def register(self, pane_class, content_function = None):
         import gobject
         key = pane_class.__name__
-        self.contents[key] = PaneLoader(pane_class, content_function)
+        self.contents[key] = PaneLoader(self, pane_class, content_function)
 
     def __init__(self):
         self.window = None # MainView window
