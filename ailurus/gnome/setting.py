@@ -157,7 +157,7 @@ def __disable_terminal_beep():
              '/apps/gnome-terminal/profiles/Default/silent_bell',
              _("If it is set to true, gnome terminal will not generate beep sound when error happens.") )
     box.pack_start(o, False)
-    return Setting(vbox, _('Terminal beep sound setting'), ['sound'])
+    return Setting(box, _('Terminal beep sound setting'), ['sound'])
 
 def __more_nautilus_settings():
     table = gtk.Table()
@@ -464,23 +464,19 @@ def __advance_setting():
 
     table = gtk.Table()
     table.set_col_spacings(10)    
-    table.attach(button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
 
     o = label_left_align(_('Change default file manager to:'))
     table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-
     o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
     table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
     
     o = label_left_align(_('Change default panel program to:') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    
     o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
     o = label_left_align(_('Change default window manager to:') )
     table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
-    
     o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
     table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
 
@@ -498,6 +494,15 @@ def __gnome_panel_setting():
     box.pack_start(o, False)
     
     return Setting(box, _('GNOME panels settings'), ['panel'])
+
+def __login_window_setting():
+    box = gtk.VBox(False, 5)
+    o = GConfCheckButton(_('Do not list username'), '/apps/gdm/simple-greeter/disable_user_list')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('Login window settings'), ['login_window'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))
@@ -622,6 +627,7 @@ def get():
             __layout_of_window_titlebar_buttons,
             __more_nautilus_settings,
             __shortcut_setting,
+            __login_window_setting,
 #            __compiz_setting,
 #            __gconfig_backup,
             ]:

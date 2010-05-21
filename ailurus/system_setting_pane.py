@@ -60,8 +60,8 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
               (D+'other_icons/s_configure_firefox.png', _('Configure Firefox'), 'firefox', ),
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
+              (D+'umut_icons/s_login_window.png', _('Login window'), 'login_window', ),
                 ]:
-            assert category in Setting.categories
             if category in existing_categories:
                 pixbuf = icon(iconpath) 
                 left_store.append([pixbuf, text, category])
