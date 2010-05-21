@@ -2,6 +2,7 @@
 
     * Clean up Nautilus thumbnails image cache.
     * Remove unused software configuration.
+    * Dynamic pane loading.
 
 2010-05-20 Homer Xing <homer.xing@gmail.com>
 
