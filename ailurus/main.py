@@ -142,23 +142,6 @@ def check_dbus_configuration():
     dialog.run()
     dialog.destroy()
 
-def import_desktop_environment():
-    if Config.is_GNOME():
-        import gnome
-        return gnome
-    else:
-        return None
-
-def import_distribution():
-    if MINT or UBUNTU:
-        import ubuntu
-        return ubuntu
-    elif FEDORA:
-        import fedora
-        return fedora
-    else:
-        return None
-
 def wait_firefox_to_create_profile():
     if os.path.exists('/usr/bin/firefox'):
         propath = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
@@ -281,13 +264,13 @@ class MainView:
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_others_menu()
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_preferences_menu()
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_study_linux_menu()
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
@@ -435,9 +418,6 @@ class MainView:
         from support.windowpos import WindowPos
         WindowPos.load(window,'main')
 
-import common as COMMON
-DESKTOP = import_desktop_environment()
-DISTRIBUTION = import_distribution()
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 
 from optparse import OptionParser
@@ -473,7 +453,7 @@ splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
 # load Linux skills
-tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
+tips = load_tips()
 import support.tipoftheday
 support.tipoftheday.tips = tips
 
@@ -481,12 +461,12 @@ support.tipoftheday.tips = tips
 main_view = MainView()
 if options.system_setting or options.all:
     splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-    items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
+    items = load_setting()
     from system_setting_pane import SystemSettingPane
     pane = SystemSettingPane(items)
     main_view.register(pane)
 
-if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
+if UBUNTU or MINT:
     if options.fastest_repository or options.all:
         from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
         pane = UbuntuFastestMirrorPane(main_view)
@@ -497,7 +477,7 @@ if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
         pane = UbuntuAPTRecoveryPane()
         main_view.register(pane)
 
-if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
+if FEDORA:
     if options.fastest_repository or options.all:
         from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
         pane = FedoraFastestMirrorPane(main_view)
@@ -515,8 +495,8 @@ if options.clean_up or options.all:
 
 if options.information or options.all:
     splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
+    hwinfo = load_hardwareinfo()
+    linuxinfo = load_linuxinfo()
     from info_pane import InfoPane
     pane = InfoPane(([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
                     [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
@@ -527,19 +507,19 @@ if options.install_software or options.all:
     
     wait_firefox_to_create_profile()
     
-    if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
+    if UBUNTU or MINT:
         APT.refresh_cache()
-    elif getattr(DISTRIBUTION, '__name__', '') == 'fedora':
+    elif FEDORA:
         RPM.refresh_cache()
     
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
+    app_objs = load_app_objs()
     custom_app_classes = load_custom_app_classes()
     from install_remove_pane import InstallRemovePane
     pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
     main_view.register(pane)
 
 if options.computer_doctor or options.all:
-    cure_objs = load_cure_objs(COMMON, DESKTOP, DISTRIBUTION)
+    cure_objs = load_cure_objs()
     from computer_doctor_pane import ComputerDoctorPane
     pane = ComputerDoctorPane(cure_objs)
     main_view.register(pane)

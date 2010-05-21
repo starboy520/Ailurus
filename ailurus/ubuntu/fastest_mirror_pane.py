@@ -125,10 +125,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             'cd /etc/apt/\n'
             'sudo tar xzf ~/sources.backup.tar.gz') )
         def unselect(*w):
-            if getattr(label, 'unselected', False) == False:
+            if not label.unselected:
                 label.unselected = True
                 label.select_region(0, 0)
             return False
+        label.unselected = False
         label.connect('expose-event', unselect)
         button_close = gtk.Button(stock = gtk.STOCK_CLOSE)
         button_close.connect('clicked', lambda *w: window.destroy())
