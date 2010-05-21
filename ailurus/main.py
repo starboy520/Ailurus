@@ -413,6 +413,19 @@ class MainView:
 
         from support.windowpos import WindowPos
         WindowPos.load(window,'main')
+        
+        from system_setting_pane import SystemSettingPane
+        from clean_up_pane import CleanUpPane
+        from info_pane import InfoPane
+        from install_remove_pane import InstallRemovePane
+        from computer_doctor_pane import ComputerDoctorPane
+        if UBUNTU or MINT:
+            from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+            from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+        if FEDORA:
+            from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
+            from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
+
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
@@ -426,50 +439,21 @@ splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 
-# load main window
 main_view = MainView()
-items = load_setting()
-from system_setting_pane import SystemSettingPane
-pane = SystemSettingPane(main_view, items)
-main_view.register(pane)
+main_view.register(SystemSettingPane, load_setting)
 
 if UBUNTU or MINT:
-    from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-    pane = UbuntuFastestMirrorPane(main_view)
-    main_view.register(pane)
-
-    from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-    pane = UbuntuAPTRecoveryPane(main_view)
-    main_view.register(pane)
+    main_view.register(UbuntuFastestMirrorPane)
+    main_view.register(UbuntuAPTRecoveryPane)
 
 if FEDORA:
-    from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
-    pane = FedoraFastestMirrorPane(main_view)
-    main_view.register(pane)
+    main_view.register(FedoraFastestMirrorPane)
+    main_view.register(FedoraRPMRecoveryPane)
 
-    from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-    pane = FedoraRPMRecoveryPane(main_view)
-    main_view.register(pane)
-
-from clean_up_pane import CleanUpPane
-pane = CleanUpPane(main_view)
-main_view.register(pane)
-
-info = load_info()
-from info_pane import InfoPane
-pane = InfoPane(main_view, info)
-main_view.register(pane)
-
-wait_firefox_to_create_profile()
-app_objs = load_app_objs()
-from install_remove_pane import InstallRemovePane
-pane = InstallRemovePane(main_view, app_objs)
-main_view.register(pane)
-
-cure_objs = load_cure_objs()
-from computer_doctor_pane import ComputerDoctorPane
-pane = ComputerDoctorPane(main_view, cure_objs)
-main_view.register(pane)
+main_view.register(CleanUpPane)
+main_view.register(InfoPane, load_info)
+main_view.register(InstallRemovePane, load_app_objs)
+main_view.register(ComputerDoctorPane, load_cure_objs)
 
 main_view.add_quit_button()
 main_view.add_study_button_preference_button_other_button()
