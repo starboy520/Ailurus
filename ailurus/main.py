@@ -201,7 +201,7 @@ def exception_happened(etype, value, tb):
     window.add(vbox)
     window.show_all()
 
-sys.excepthook = exception_happened
+#sys.excepthook = exception_happened
 
 class toolitem(gtk.ToolItem):
     def __load_image(self):
@@ -257,6 +257,21 @@ class toolitem(gtk.ToolItem):
         button.set_relief(gtk.RELIEF_NONE)
         button.connect(signal_name, callback, *callback_args)
         self.add(button)
+
+class PaneLoader:
+    def __init__(self, pane_class, content_function = None):
+        import gobject
+        assert isinstance(pane_class, gobject.GObjectMeta)
+        assert callable(content_function) or content_function is None
+        self.pane_class = pane_class
+        self.content_function = content_function
+        self.pane_object = None
+    def get_pane(self):
+        if self.pane_object is None:
+            if content_function: content_function = [content_function] # has argument
+            else: content_function = [] # no argument
+            self.pane_object = pane_class(self, *content_function)
+        return self.pane_object
 
 class MainView:
     def add_quit_button(self):
@@ -375,10 +390,8 @@ class MainView:
 
     def register(self, pane_class, content_function = None):
         import gobject
-        assert isinstance(pane_class, gobject.GObjectMeta)
         key = pane_class.__name__
-        assert not '.' in key
-        self.contents[key] = (pane_class, content_function)
+        self.contents[key] = PaneLoader(pane_class, content_function)
 
     def __init__(self):
         self.window = None # MainView window
