@@ -95,7 +95,7 @@ def load_app_objs():
                 print 'Cannot load class %s' % name
                 print_traceback()
 
-    return objs
+    return objs + load_custom_app_objs()
 
 def load_app_objs_from_extension(extension):
     import types

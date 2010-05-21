@@ -503,9 +503,8 @@ if options.install_software or options.all:
         RPM.refresh_cache()
     
     app_objs = load_app_objs()
-    custom_app_classes = load_custom_app_objs()
     from install_remove_pane import InstallRemovePane
-    pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
+    pane = InstallRemovePane(main_view, app_objs)
     main_view.register(pane)
 
 if options.computer_doctor or options.all:
