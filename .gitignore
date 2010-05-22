@@ -5,6 +5,8 @@ installed_files
 
 po/ailurus.pot
 .project
+.settings/
+ailurus/.settings/
 .pydevproject
 .metadata
 *.pyc

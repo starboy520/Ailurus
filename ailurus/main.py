@@ -294,6 +294,7 @@ class MainView:
                 ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
                 ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
                 ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
+                ('ReposConfigPane', D+'other_icons/m_clean_up.png', _('Repository\nConfigure')),
                 ]
         List.reverse()
         for name, icon, text in List:
@@ -441,6 +442,7 @@ parser.add_option('--system-setting', action='store_true', dest='system_setting'
 parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
 parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
 parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
+parser.add_option('--repository-config', action='store_true', dest='repos_config', default=False, help=_('load "repository config" functionality'))
 parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
 options, args = parser.parse_args()
 if ( options.all == False 
@@ -449,7 +451,8 @@ if ( options.all == False
      and not options.fastest_repository
      and not options.information
      and not options.install_software
-     and not options.system_setting ):
+     and not options.system_setting 
+     and not options.repos_config ):
     print _('You did not specify any functionality. :)')
     print _('For example: ailurus --fast --information')
     sys.exit()
@@ -482,6 +485,11 @@ if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
     if options.fastest_repository or options.all:
         from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
         pane = UbuntuFastestMirrorPane(main_view)
+        main_view.register(pane)
+    
+    if options.repos_config or options.all:
+        from ubuntu.repos_config_pane import ReposConfigPane
+        pane = ReposConfigPane(main_view)
         main_view.register(pane)
 
     if options.recovery or options.all:
