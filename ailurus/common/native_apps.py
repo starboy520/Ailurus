@@ -228,34 +228,36 @@ class FreeGLut3(N):
         pkgs = 'freeglut3-dev'
     if FEDORA:
         pkgs = 'freeglut-devel'
-        
-class Full_Language_Pack(N):
-    __doc__ = _('Full language support and input method')
-    detail = _('Because of live CD capacity limitation, this Linux distribution does not have full language support.\n')
-    category = 'language'
-    if UBUNTU or MINT:
-        def __init__(self):
-            import locale
-            lang = Config.get_locale().split('_')[0]
-    
-            List = [
-                    'language-pack-' + lang,
-                    'language-support-fonts-' + lang,
-                    'language-support-input-' + lang,
-                    'language-support-translations-' + lang,
-                    'language-support-' + lang,
-                    'language-support-writing-' + lang,
-                    ]
-            try:
-                get_output('pgrep -u $USER gnome-panel')
-                List.append('language-pack-gnome-' + lang)
-            except: pass
-    
-            pkgs = []
-            for p in List:
-                if APT.exist(p): pkgs.append(p)
-                
-            self.pkgs = ' '.join(pkgs)
+
+# Hide this item because more packages will be removed when remove it.
+#        
+#class Full_Language_Pack(N):
+#    __doc__ = _('Full language support and input method')
+#    detail = _('Because of live CD capacity limitation, this Linux distribution does not have full language support.\n')
+#    category = 'language'
+#    if UBUNTU or MINT:
+#        def __init__(self):
+#            import locale
+#            lang = Config.get_locale().split('_')[0]
+#    
+#            List = [
+#                    'language-pack-' + lang,
+#                    'language-support-fonts-' + lang,
+#                    'language-support-input-' + lang,
+#                    'language-support-translations-' + lang,
+#                    'language-support-' + lang,
+#                    'language-support-writing-' + lang,
+#                    ]
+#            try:
+#                get_output('pgrep -u $USER gnome-panel')
+#                List.append('language-pack-gnome-' + lang)
+#            except: pass
+#    
+#            pkgs = []
+#            for p in List:
+#                if APT.exist(p): pkgs.append(p)
+#                
+#            self.pkgs = ' '.join(pkgs)
 
 class GCompris(N):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')

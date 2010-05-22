@@ -363,9 +363,9 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         return window
     
     def refresh(self):
-        window = self.show_scan_installed_package_splash()
+#        window = self.show_scan_installed_package_splash()
         pkgs = APT.get_autoremovable_pkgs()
-        window.destroy()
+#        window.destroy()
         self.liststore.clear()
         self.view.set_model(None)
         for row in pkgs:
