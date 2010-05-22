@@ -27,11 +27,12 @@ from libu import *
 from libsetting import Setting
 
 class SystemSettingPane(gtk.VBox):
-    name = _('System settings')
+    icon = D+'sora_icons/m_linux_setting.png'
+    text = _('System\nSettings')
 
     def __left_pane(self):
         def icon(path):
-            return get_pixbuf(path, 24, 24)
+            return get_pixbuf(path, 28, 28)
         
         existing_categories = []
         for i in self.setting_items:
@@ -49,6 +50,7 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ), 
               (D+'umut_icons/s_font.png', _('Font'), 'font', ), 
               (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
+              (D+'umut_icons/s_panel.png', _('GNOME Panel'), 'panel', ),
               (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
               (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
               (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 
@@ -59,8 +61,8 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
               (D+'other_icons/s_configure_firefox.png', _('Configure Firefox'), 'firefox', ),
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
+              (D+'umut_icons/s_login_window.png', _('Login window'), 'login_window', ),
                 ]:
-            assert category in Setting.categories
             if category in existing_categories:
                 pixbuf = icon(iconpath) 
                 left_store.append([pixbuf, text, category])
@@ -114,7 +116,7 @@ class SystemSettingPane(gtk.VBox):
         
         return bigbox
     
-    def __init__(self, setting_items):
+    def __init__(self, main_view, setting_items):
         for i in setting_items:
             assert isinstance(i, Setting)
         

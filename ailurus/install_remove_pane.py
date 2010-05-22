@@ -26,7 +26,8 @@ from lib import *
 from libu import *
 
 class InstallRemovePane(gtk.VBox):
-    name = _('Install/Remove')
+    icon = D+'sora_icons/m_install_remove.png'
+    text = _('Install\nSoftware')
     
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
@@ -338,17 +339,6 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
-        
-    def load_state(self):
-        try:
-            hpos = Config.get_int('hpane_position')
-            self.hpaned.set_position( int(hpos) )
-        except: pass
-        self.vpaned.set_position(300)
-    
-    def save_state(self):
-        Config.set_int('hpane_position', self.hpaned.get_position())
-        Config.set_int('vpane_position', self.vpaned.get_position())
     
     def __sort_treestore ( self, model, iter1, iter2 ):
         obj1 = model.get_value ( iter1, 0 )
@@ -724,6 +714,7 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
+            [ i_advanced, _('Video card driver'), D+'umut_icons/p_video_card_driver.png', 'videocarddriver'],
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
             [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
@@ -766,20 +757,3 @@ class InstallRemovePane(gtk.VBox):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
-        self.load_state()
-
-if __name__ == '__main__':
-    import common as COMMON
-    import gnome as DESKTOP
-    import ubuntu as DISTRIBUTION
-    from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    main_view = Dummy()
-    pane = InstallRemovePane(main_view, app_objs)
-    window = gtk.Window()
-    window.add(pane)
-    window.show_all()
-    gtk.main()

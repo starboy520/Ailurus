@@ -28,7 +28,8 @@ from libu import *
 from libserver import *
 
 class FedoraFastestMirrorPane(gtk.VBox):
-    name = _('Find fastest repository mirror')
+    icon = D+'sora_icons/m_fastest_repos.png'
+    text = _('Fastest\nRepository')
 
     COUNTRY, ORG, URL, RESPONSE_TIME = range(4)
     NO_PING_RESPONSE = 10000

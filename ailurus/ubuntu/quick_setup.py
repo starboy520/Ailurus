@@ -28,16 +28,39 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 from lib import *
 from libu import *
 from libserver import *
+from libapp import *
 import gtk
 
+class Adobe_Flash_plugin(_apt_install):
+    pkgs = 'flash-plugin-installer'
+
+class Fix_error_in_49_sansserif_conf(I):
+    def installed(self):
+        try:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                if '>sans-serif<' in f.read():
+                    return False
+        except IOError: # File does not exist
+            pass
+        return True
+    def install(self):
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                content = f.read()
+            content = content.replace('>sans-serif<', '>sans serif<')
+            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
+                f.write(content)
+                
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],
             [_('Full language support and input method'), 'Full_Language_Pack', True],
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
-            [_('Decompression software'), 'Decompression_Capability', True],
+            [_('Decompression software'), 'Enhance_Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
             [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
-            [_('Flash plugin for web browser'), 'Flash_Player', True],
+            [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
+            [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
+            [_('Fix Flash plugin font error'), 'Fix_error_in_49_sansserif_conf', True],
             [_('Install hardware drivers'), 'Install_Hardware_Driver', True],
         ]
 
@@ -61,7 +84,7 @@ class SelectWorksDialog(gtk.Dialog):
         for item in WORKS:
             name = item[0]
             check_button = gtk.CheckButton(name)
-            check_button.set_active(True)
+            check_button.set_active(item[2])
             check_button.connect('toggled', self.toggled, item)
             check_button_list.append(check_button)
         box = gtk.VBox(False, 5)
@@ -281,7 +304,7 @@ class FastestRepositoryDialog(gtk.Dialog):
                     new_url = e[2]
                     break
             #check whether repositories should be changed
-            for repos in get_current_official_repositories():
+            for repos in APTSource2.official_urls():
                 assert ':' in repos
                 if repos != new_url: break
             else:
@@ -298,10 +321,11 @@ class FastestRepositoryDialog(gtk.Dialog):
         'apply the fastest repository'
         run_as_root('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
-        for repos in get_current_official_repositories():
+        for repos in APTSource2.official_urls():
             changes[repos] = fastest_url
         notify( _('Apply the fastest repository:'), fastest_url )
-        change_repositories_in_source_files(changes)
+        APTSource2.remove_official_servers()
+        APTSource2.add_official_url(fastest_url)
         #apt-get update
         self.progress_label.set_text( _('Run command: "sudo apt-get update"') )
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
@@ -454,11 +478,8 @@ def quick_setup():
     WaitNetworkDialog.show_dialog()
     #load app_classes
     window = show_scan_installed_package_splash()
-    import common as COMMON
-    DESKTOP = None
-    import ubuntu as DISTRIBUTION
     from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
+    app_objs = load_app_objs()
     window.destroy()
     #3
     dialog = DoStuffDialog(app_objs)

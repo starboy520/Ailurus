@@ -27,7 +27,8 @@ from lib import *
 from libu import *
 
 class UbuntuAPTRecoveryPane(gtk.VBox):
-    name = _('APT recovery')
+    icon = D+'sora_icons/m_recovery.png'
+    text = _('Recover\nAPT')
     
     def __get_installed_packages_set(self):
         path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumpaptcache2.py'
@@ -175,7 +176,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
         textview.set_cursor_visible(False)
         return textview
 
-    def __init__(self):
+    def __init__(self, main_view):
         from support.multidragview import MultiDragTreeView
         
         gtk.VBox.__init__(self, False, 10)

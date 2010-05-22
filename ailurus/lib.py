@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.2.3'
-AILURUS_RELEASE_DATE = '2010-04-25'
+AILURUS_VERSION = '10.05.6'
+AILURUS_RELEASE_DATE = '2010-05-22'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -227,6 +227,17 @@ class Config:
         except:
             return False
     @classmethod
+    def is_KDE(cls):
+        try:
+            get_output('pgrep -u $USER kdeinit')
+            return True
+        except:
+            try:
+                get_output('pgrep -u $USER kdeinit4')
+                return True
+            except: pass
+        return False
+    @classmethod
     def is_XFCE(cls):
         try:  
             get_output('pgrep -u $USER xfce4-session')
@@ -313,21 +324,6 @@ class ShowALinuxSkill:
 
 class CommandFailError(Exception):
     'Fail to execute a command'
-    def __init__(self, *args):
-        new_args = list(args)
-        import os
-        arch = os.uname()[-1]
-        new_args.append(arch)
-        try:
-            with open('/etc/lsb-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        try:
-            with open('/etc/fedora-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        new_args.append(AILURUS_VERSION)
-        Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):
     is_string_not_empty(cmd)
@@ -921,94 +917,182 @@ def reset_dir():
     if sys.argv[0]!='':
         os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
 
-class APTSource:
+class APTSource2:
+    re_pattern_server = None
+    re_pattern_url = None
     @classmethod
-    def apt_source_files_list(cls):
-        'Return a list of apt source files'
+    def all_conf_files(cls):
         import glob, os
         ret = glob.glob('/etc/apt/sources.list.d/*.list')
         if os.path.exists('/etc/apt/sources.list'):
             ret.append('/etc/apt/sources.list')
         return ret
     @classmethod
-    def current_servers(cls):
-        'Return a list of currently used apt servers'
-        ret = set()
-    
-        for file in APTSource.apt_source_files_list():
+    def iter_all_lines(cls):
+        for file in cls.all_conf_files():
+            f = open(file)
+            for line in f:
+                yield line
+            f.close()
+    @classmethod
+    def all_lines(cls):
+        ret = []
+        for file in cls.all_conf_files():
             with open(file) as f:
-                for line in f:
-                    line = line.strip()
-                    if len(line)==0 or line[0]=='#': continue # skip blank lines or comments
-                    import re
-                    match = re.match(r'^deb(-src)? http://([^/]+)/.*$', line)
-                    if match:
-                        server = match.group(2)
-                        ret.add(server)
-    
-        ret = list(ret)
-        ret.sort()
+                ret.extend(f.readlines())
         return ret
     @classmethod
-    def change_servers_in_source_files(cls, changes):
-        'Input a dict: old_server->new_server'
-        'Change servers in all source files'
-
-        if not isinstance(changes, dict): raise TypeError
-        for key, value in changes.items():
-            is_string_not_empty(key)
-            is_string_not_empty(value)
+    def all_lines_contain(cls, snip):
+        snip = cls.remove_comment(snip)
+        for line in cls.iter_all_lines():
+            if snip in line: return True
+        return False
+    @classmethod
+    def all_lines_contain_all_of(cls, many_snips):
+        for snip in many_snips:
+            if not cls.all_lines_contain(snip): return False
+        return True
+    @classmethod
+    def add_lines_to_file(cls, lines, file_path = '/etc/apt/sources.list'):
+        assert isinstance(lines, list)
+        assert isinstance(file_path, str)
         
-        for file in APTSource.apt_source_files_list():
-            # read content
+        with TempOwn(file_path) as o:
+            with open(file_path) as f:
+                contents = f.readlines()
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.extend(lines)
+            with open(file_path, 'w') as f:
+                f.writelines(contents)
+    @classmethod
+    def remove_snips_from(cls, snips, file_path):
+        assert isinstance(snips, list)
+        assert isinstance(file_path, str)
+        
+        with open(file_path) as f:
+            contents = f.readlines()
+        changed = False
+        for i, line in enumerate(contents):
+            line = cls.remove_comment(line)
+            for snip in snips:
+                snip = cls.remove_comment(snip)
+                if snip in cls.remove_comment(line):
+                    contents[i] = ''
+                    changed = True
+                    break
+        if changed:
+            with TempOwn(file_path) as o:
+                with open(file_path, 'w') as f:
+                    f.writelines(contents)
+    @classmethod
+    def remove_snips_from_all_files(cls, snips):
+        assert isinstance(snips, list)
+        for file_path in cls.all_conf_files():
+            cls.remove_snips_from(snips, file_path)
+    @classmethod
+    def remove_comment(cls, line):
+        return line.split('#', 1)[0].strip()
+    @classmethod
+    def is_official_line(cls, line):
+        line = cls.remove_comment(line)
+        for snip in ['-backports', '-proposed', '-security', '-updates']:
+            snip = VERSION + snip
+            if snip in line: return True
+        return False
+    @classmethod
+    def get_server_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern_server is None:
+            cls.re_pattern_server = re.compile(r'^deb(-src)? [a-z]+://([^/]+)/.*$')
+        match = cls.re_pattern_server.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def get_url_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern_url is None:
+            cls.re_pattern_url = re.compile(r'^deb(-src)? (\S+) .*$')
+        match = cls.re_pattern_url.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def official_servers(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                server = cls.get_server_from_line(line)
+                ret.add(server)
+        return ret
+    @classmethod
+    def official_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                url = cls.get_url_from_line(line)
+                ret.add(url)
+        return ret
+    @classmethod
+    def third_party_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if not cls.is_official_line(line):
+                url = cls.get_url_from_line(line)
+                if url: ret.add(url)
+        return ret
+    @classmethod
+    def all_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            url = cls.get_url_from_line(line)
+            if url: ret.add(url)
+        return ret
+    @classmethod
+    def this_line_contain(cls, line, snip):
+        return snip in cls.remove_comment(line)
+    @classmethod
+    def this_line_contain_any_of(cls, line, snip_set):
+        for snip in snip_set:
+            if cls.this_line_contain(line, snip):
+                return True
+        return False
+    @classmethod
+    def remove_official_servers(cls):
+        offi_servers = cls.official_servers()
+        for file in cls.all_conf_files():
             with open(file) as f:
                 contents = f.readlines()
-                
-            # do replacement
             changed = False
             for i, line in enumerate(contents):
-                # skip blank lines and commented lines
-                if len(line.strip())==0 or line.strip()[0]=='#': continue
-                string = line.split('#')[0]
-                for old, new in changes.items():
-                    if old in string:
-                        contents[i] = line.replace(old, new, 1)
-                        changed = True
-                        break
-            
-            # write back
+                if cls.this_line_contain_any_of(line, offi_servers):
+                    contents[i] = ''
+                    changed = True
             if changed:
                 with TempOwn(file) as o:
                     with open(file, 'w') as f:
                         f.writelines(contents)
     @classmethod
-    def get_source_contents(cls):
-        'Return a dict: file_name->file_content'
-        ret = {}
-        for file in APTSource.apt_source_files_list():
-            with open(file) as f:
+    def add_official_url(cls, url):
+        with TempOwn('/etc/apt/sources.list') as o:
+            with open('/etc/apt/sources.list') as f:
                 contents = f.readlines()
-            ret[file] = contents
-        return ret
-    @classmethod
-    def get_apt_source_config_content(cls, strip_comments=False):
-        if not isinstance(strip_comments, bool): raise TypeError
-        
-        ret = []
-        for file in APTSource.apt_source_files_list():
-            if strip_comments:
-                with open(file) as f:
-                    for line in f:
-                        line = line.strip()
-                        if len(line)==0 or line[0]=='#': continue # skip comments and blank lines
-                        line = line.split('#', 1)[0] # strip comments
-                        ret.append(line+'\n')
-            else:
-                with open(file) as f:
-                    for line in f:
-                        if line[-1]!='\n': line+='\n'
-                        ret.append(line)
-        return ''.join(ret)
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.append('deb %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-backports restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-backports main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            % {'url':url, 'version':VERSION})
+            with open('/etc/apt/sources.list', 'w') as f:
+                f.writelines(contents)
 
 import threading
 class PingThread(threading.Thread):
@@ -1471,6 +1555,7 @@ import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 GNOME = Config.is_GNOME()
+KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()

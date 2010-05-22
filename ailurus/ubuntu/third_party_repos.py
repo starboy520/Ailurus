@@ -24,67 +24,10 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
-#class Open_Repogen_Website:
-#    __doc__ = _('* Find more repositories on http://repogen.simplylinux.ch')
-#    detail = _('This item is an auxiliary item. It will not install anything. It will open web-page http://repogen.simplylinux.ch/\n'
-#               'http://repogen.simplylinux.ch/ has collected a lot of useful third party repositories.')
-#    category = 'repository'
-#    def installed(self): 
-#        return False
-#    def install(self):
-#        open_web_page('http://repogen.simplylinux.ch/')
-#    def remove(self):
-#        pass
-
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
-    fresh_cache = False
-    @classmethod
-    def refresh_cache(cls):
-        if not _repo.fresh_cache:
-            _repo.source_settings = APTSource.get_source_contents()
-            _repo.fresh_cache = True
-    @classmethod
-    def exists_in_source(cls, seed):
-        assert isinstance(seed, str)
-        seed = seed.split('#')[0].strip()
-        _repo.refresh_cache()
-        for contents in _repo.source_settings.values():
-            for line in contents:
-                if seed in line.split('#')[0]: return True
-        return False
-    @classmethod
-    def add_to_source(cls, file_name, seed):
-        assert isinstance(file_name, str)
-        assert isinstance(seed, str)
-        assert seed[-1]!='\n'
-        _repo.refresh_cache()
-        if not file_name in _repo.source_settings:
-            _repo.source_settings[file_name] = []
-        _repo.source_settings[file_name].append(seed+'\n')
-    @classmethod
-    def remove_from_source(cls, seed):
-        assert isinstance(seed, str)
-        seed = seed.split('#')[0].strip()
-        _repo.refresh_cache()
-        for contents in _repo.source_settings.values():
-            for i in reversed(range(len(contents))):
-                line = contents[i]
-                if seed in line.split('#')[0]:
-                    del contents[i]
-    @classmethod
-    def save_source(cls):
-        for file_path, contents in _repo.source_settings.items():
-            if contents == []:
-                run_as_root("rm -f '%s' "%file_path)
-                continue
-            with TempOwn(file_path) as o:
-                f = open(file_path, 'w')
-                f.writelines(contents)
-                f.close()
     def __init__(self):
-        # check
         assert isinstance(self.desc, (str,unicode) )
         assert isinstance(self.web_page, str)
         
@@ -96,6 +39,7 @@ class _repo(I):
             if '$' in a: #variable substitution
                 assert '$version' in a
                 self.apt_conf[i] = a.replace('$version', VERSION )
+                assert '$' not in self.apt_conf[i], self.apt_conf[i]
         assert isinstance(self.apt_content, str)
         
         if hasattr(self, 'key_url'):
@@ -107,46 +51,24 @@ class _repo(I):
         
         assert isinstance(self.key_id, str)
         
-        # create detail
         import StringIO
         msg = StringIO.StringIO()
         if self.desc:
             print >>msg, self.desc, '\n'
-        if self.apt_content:
-            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.apt_content, '</b>'
-        print >>msg, _('<i>Web page:</i>'), self.web_page
-        print >>msg, _('<i>Source setting:</i>'),
+        print >>msg, _('Web page:'), self.web_page
+        print >>msg, _('Source setting:'),
         for a in self.apt_conf:
             print >>msg, a
         self.__class__.detail = msg.getvalue()
     def installed(self):
-        _repo.refresh_cache()
-        for seed in self.apt_conf:
-            if not self.exists_in_source(seed):
-                return False
-        return True
+        return APTSource2.all_lines_contain_all_of(self.apt_conf)
     def install(self):
-        # change souce
-        _repo.refresh_cache()
-        for seed in self.apt_conf:
-            self.add_to_source(self.apt_file, seed)
-        self.save_source()
-        _repo.fresh_cache = False
-        # add key
-        if hasattr(self, 'key_url'):
-            if self.key_url: #if has key
-                download(self.key_url, '/tmp/key.gpg')
-                run_as_root('apt-key add /tmp/key.gpg')
-        else:
-            raise NotImplementedError
+        APTSource2.add_lines_to_file(self.apt_conf, self.apt_file)
+        if hasattr(self, 'key_url') and self.key_url:
+            download(self.key_url, '/tmp/key.gpg')
+            run_as_root('apt-key add /tmp/key.gpg')
     def remove(self):
-        # change source
-        _repo.refresh_cache()
-        for seed in self.apt_conf:
-            self.remove_from_source(seed)
-        self.save_source()
-        _repo.fresh_cache = False
-        # remove key
+        APTSource2.remove_snips_from_all_files(self.apt_conf)
         if self.key_id:
             run_as_root('apt-key del '+self.key_id, ignore_error=True)
 
@@ -201,28 +123,22 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        if hasattr(self, 'content'):
-            print >>msg, _('<i>Install packages by:</i>'), '<b>sudo apt-get install', self.content, '</b>'
-        print >>msg, _('<i>Web page:</i>'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
-        print >>msg, _('<i>Source setting:</i>'), self.deb_config
+        print >>msg, _('Command:'), 'sudo add-apt-repository ppa:%s' % self.ppa
+        print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
+        print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
     def install(self):
-        _repo.refresh_cache()
-        _repo.add_to_source(self.repos_file_name, self.deb_config)
-        _repo.save_source()
-        _repo.fresh_cache = False
+        APTSource2.add_lines_to_file([self.deb_config], self.repos_file_name)
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: add_signing_key(signing_key)
     def installed(self):
-        _repo.refresh_cache()
-        return _repo.exists_in_source(self.deb_config)
+        return APTSource2.all_lines_contain(self.deb_config)
     def remove(self):
-        _repo.refresh_cache()
-        _repo.remove_from_source(self.deb_config)
-        _repo.save_source()
-        _repo.fresh_cache = False
+        APTSource2.remove_snips_from_all_files([self.deb_config])
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
+    def launchpad_installation_command(self):
+        return 'sudo add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
@@ -519,3 +435,7 @@ class Repo_Acire(_launchpad):
     content = 'acire'
     DE = 'gnome'
     ppa = 'acire-team/acire-releases'
+
+class Repo_ElementaryArtwork(_launchpad):
+    __doc__ = _('Elementary Theme')
+    ppa = 'elementaryart/ppa'

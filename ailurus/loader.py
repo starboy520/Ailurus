@@ -23,11 +23,18 @@
 from __future__ import with_statement
 from lib import *
 
+common = __import__('common')
+if Config.is_GNOME(): import gnome as desktop
+else: desktop = None
+if MINT or UBUNTU: import ubuntu as distribution
+elif FEDORA: import fedora as distribution
+else: distribution = None
+
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
             'geography','education','media','vm','game', 'statistics', 
             'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
-            'design',)
+            'design', 'videocarddriver')
 
 def check_class_members(app_class, default_category = 'tweak'):
     import types
@@ -50,7 +57,7 @@ def load_app_icon(name):
     import gtk
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
 
-def load_app_objs(common, desktop, distribution):
+def load_app_objs():
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -88,10 +95,9 @@ def load_app_objs(common, desktop, distribution):
                 print 'Cannot load class %s' % name
                 print_traceback()
 
-    return objs
+    return objs + load_custom_app_objs()
 
 def load_app_objs_from_extension(extension):
-    from ailurus.lib import I
     import types
     classobjs = []
     names = set()
@@ -99,8 +105,7 @@ def load_app_objs_from_extension(extension):
         if name[0]=='_' or name=='I' or name=='N': continue
         if name in names: continue
         app_class = getattr(extension,name)
-        if not isinstance(app_class, types.ClassType) or not issubclass(app_class, I): continue
-
+        if not isinstance(app_class, types.ClassType) or not hasattr(app_class, 'this_is_an_installer'): continue
         try:
             check_class_members(app_class)
             app_class_obj = app_class()
@@ -122,17 +127,21 @@ def load_app_objs_from_extension(extension):
 
     return classobjs
 
-def load_custom_app_classes():
-    return_value = []
-    # check whether the extension directory exist
+def load_custom_app_objs():
     import os
-    extension_path = Config.get_config_dir()
-    if not os.path.exists(extension_path):
+    # check whether the extension directory exist
+    for path in [os.path.dirname(__file__) + '/../unfree/',
+                 Config.get_config_dir()]:
+        if os.path.exists(path): 
+            extension_path = path
+            break
+    else:
         return []
     # add the extension directory to sys.path
     import sys
     sys.path.insert(0, extension_path)
     # try to load extensions
+    return_value = []
     import glob
     pys = glob.glob(extension_path+'/*.py')
     for py in pys:
@@ -147,7 +156,7 @@ def load_custom_app_classes():
     sys.path.pop(0)
     return return_value
 
-def load_R_objs(common, desktop, distribution):
+def load_R_objs():
     paths = []
     import types
     import os, glob, re
@@ -173,27 +182,20 @@ def load_R_objs(common, desktop, distribution):
     
     return objs
 
-def load_hardwareinfo(common, desktop, distribution):
+def load_info():
     import types
-    ret = []
+    hardware_info = []
+    os_info = []
     for module in [common, desktop, distribution]:
         if module:
             assert isinstance(module, types.ModuleType)
             if hasattr(module, 'hardwareinfo') and hasattr(module.hardwareinfo, 'get'):
-                ret.extend(module.hardwareinfo.get())
-    return ret
-
-def load_linuxinfo(common, desktop, distribution):
-    import types
-    ret = []
-    for module in [common, desktop, distribution]:
-        if module:
-            assert isinstance(module, types.ModuleType)
+                hardware_info.extend(module.hardwareinfo.get())
             if hasattr(module, 'osinfo') and hasattr(module.osinfo, 'get'):
-                ret.extend(module.osinfo.get())
-    return ret
-
-def load_setting(common, desktop, distribution):
+                os_info.extend(module.osinfo.get())
+    return hardware_info, os_info
+    
+def load_setting():
     import types
     ret = []
     for module in [distribution, desktop, common]:
@@ -211,7 +213,7 @@ def __create_menu(menuitems):
     menu.show_all()
     return menu
 
-def load_study_linux_menu(common, desktop, distribution):
+def load_study_linux_menu():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -222,7 +224,7 @@ def load_study_linux_menu(common, desktop, distribution):
             ret.extend(module.menu.get_study_linux_menu())
     return __create_menu(ret)
 
-def load_preferences_menu(common, desktop, distribution):
+def load_preferences_menu():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -233,18 +235,16 @@ def load_preferences_menu(common, desktop, distribution):
             ret.extend(module.menu.get_preferences_menu())
     return __create_menu(ret)
 
-def load_others_menu(common, desktop, distribution):
+def load_others_menu():
     import types
+    ret = []
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
-    
-    ret = []
-    for module in [distribution, common, desktop]: # not [common, desktop, distribution]. Because we show "quick setup" first.
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
             ret.extend(module.menu.get_others_menu())
     return __create_menu(ret)
 
-def load_tips(common, desktop, distribution):
+def load_tips():
     import types
     ret = []
     for module in [common, desktop, distribution]:
@@ -254,7 +254,7 @@ def load_tips(common, desktop, distribution):
                 ret.extend(module.tips.get())
     return ret
 
-def load_cure_objs(common, desktop, distribution):
+def load_cure_objs():
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -276,7 +276,3 @@ def load_cure_objs(common, desktop, distribution):
                 print_traceback()
     
     return objs
-
-if __name__ == '__main__':
-    import common
-    print load_cure_objs(common, None, None)

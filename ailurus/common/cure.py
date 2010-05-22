@@ -79,7 +79,7 @@ class Create_Imagemagick_shortcut(C):
                                'Exec=display %f\n'    
                                'Encoding=UTF-8\n'
                                'StartupNotify=true\n'
-                               'Terminal=true\n'
+                               'Terminal=false\n'
                                'Type=Application\n'
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')
@@ -114,108 +114,6 @@ class Query_before_remove_a_lot_of_files(C) :
     def cure(self):
         file_append(self.bashrc, self.line)
 
-class Colorful_BASH_prompt_symbols_Fedora(C):
-    __doc__ = _('Use colorful Bash prompt symbols')
-    detail = (_('Add this line into ~/.bashrc:') + '\n' +
-              r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
-    bashrc = os.path.expanduser('~/.bashrc')
-    line = r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '"
-    def exists(self):
-        return FEDORA and not file_contain(self.bashrc, self.line)
-    def cure(self):
-        file_append(self.bashrc, self.line)
-        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
-
-class Colorful_BASH_prompt_symbols_Ubuntu(C):
-    __doc__ = _('Use colorful Bash prompt symbols')
-    detail = (_('Add this line into ~/.bashrc:') + '\n' + 
-              r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '")
-    bashrc = os.path.expanduser('~/.bashrc')
-    line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
-    def exists(self):
-        return (UBUNTU or MINT) and not file_contain(self.bashrc, self.line)
-    def cure(self):
-        file_append(self.bashrc, self.line)
-        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
-
-class Fix_error_in_49_sansserif_conf(C):
-    __doc__ = _('Fix errors in 49-sansserif.conf. Otherwise, some character in Flash would be displayed as blank diamond.')
-    detail = _('Change "sans-serif" to "sans serif".')
-    type = C.MUST_FIX
-    def exists(self):
-        try:
-            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
-                return '>sans-serif<' in f.read()
-        except IOError: # File does not exist
-            return False
-    def cure(self):
-        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
-            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
-                content = f.read()
-            content = content.replace('>sans-serif<', '>sans serif<')
-            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
-                f.write(content)
-
-class Add_user_to_vboxusers_group(C):
-    __doc__ = _('Add yourself to "vboxusers" group. Otherwise, USB devices cannot be used in VirtualBox.')
-    detail = _('Command:') + ' gpasswd -a $USER vboxusers'
-    type = C.MUST_FIX
-    def exists(self):
-        username = os.environ['USER']
-        with open('/etc/group') as f:
-            lines = f.readlines()
-        for line in lines:
-            if line.startswith('vboxusers:'):
-                return not username in line
-    def cure(self):
-        command = os.path.expandvars('gpasswd -a $USER vboxusers')
-        run_as_root(command)
-
-class Fix_error_in_fontconfig_properties_Ubuntu(C):
-    __doc__ = _('Fix errors in Java font configuration. Otherwise, some unicode characters cannot be displayed.')
-    detail = _('Change wqy-zenhei.ttf to wqy-zenhei.ttc. Change uming.ttf to uming.ttc.')
-    type = C.MUST_FIX
-    file = '/etc/java-6-openjdk/fontconfig.properties'
-    def exists(self):
-        if not (UBUNTU or MINT): return False
-        try:
-            with open(self.file) as f:
-                content = f.read()
-            return '/wqy-zenhei.ttf' in content or '/uming.ttf' in content
-        except IOError:
-            return False
-    def cure(self):
-        with TempOwn(self.file) as o:
-            with open(self.file) as f:
-                content = f.read()
-            content = content.replace('/wqy-zenhei.ttf', '/wqy-zenhei.ttc')
-            content = content.replace('/uming.ttf', '/uming.ttc')
-            with open(self.file, 'w') as f:
-                f.write(content)
-
-class Fix_error_in_netbeans_shortcut_Ubuntu(C):
-    __doc__ = _('Fix errors in Netbeans shortcut. Otherwise, some unicode characters cannot be displayed.')
-    detail = _("""Add "export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'" """)
-    type = C.MUST_FIX
-    file = '/usr/share/applications/netbeans.desktop'
-    def exists(self):
-        if not (UBUNTU or MINT): return False
-        try:
-            with open(self.file) as f:
-                content = f.read()
-            return '\nExec=/usr/bin/netbeans\n' in content
-        except IOError:
-            return False
-    def cure(self):
-        with TempOwn(self.file) as o:
-            with open(self.file) as f:
-                lines = f.readlines()
-            for i, line in enumerate(lines):
-                if line.startswith('Exec='):
-                    lines[i] = """Exec=sh -c "_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' /usr/bin/netbeans" \n"""
-            with open(self.file, 'w') as f:
-                f.writelines(lines)
-            
 # This class needs improvement
 #
 #class Speed_Up_Firefox(I):

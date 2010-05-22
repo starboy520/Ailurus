@@ -24,8 +24,7 @@ import sys, os
 from ailurus.lib import *
 from ailurus.libapp import *
 
-if not ( UBUNTU or MINT ):
-    raise Exception
+assert UBUNTU or MINT
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
@@ -133,44 +132,6 @@ Terminal=false
 Type=Application
 Categories=Game;''')
 
-#class EIOffice:
-#    __doc__ = _('Evermore Integrated Office 2009 free version')
-#    detail = _('It is able to edit text, spreadsheets, and slides. '
-#       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
-#    category='office'
-#    Chinese = True
-#    time=112
-#    size=217428*1000
-#    def install(self):
-#        with Chdir('/tmp') as o:
-#            f = R('http://218.90.147.70/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
-#            run('tar xf %s' % f)
-#            run('chmod a+x EIOffice_Personal_Lin/setup')
-#            run_as_root("EIOffice_Personal_Lin/setup")
-#            
-#            msgs = ( 
-#                     _('Clipboard arts are to be installed.'),
-#                     _('Help files are to be installed.'),
-#                     _('Science editor images are to be installed.'),
-#                     _('Templates are to be installed.')
-#                        )
-#            for file, msg in zip(
-#               ['http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_Clipart.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz',
-#                'http://218.90.147.70/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz',], msgs):
-#                    wget(file, '/tmp/eio.tar.gz') 
-#                    run("tar zxf /tmp/eio.tar.gz")
-#                    notify( _('Installing EIOffice'), msg )
-#                    run_as_root("./setup")
-#    def installed(self):
-#        import os
-#        return os.path.exists('/usr/bin/eio')
-#    def remove(self):
-#        import os
-#        if os.path.exists('/usr/bin/rmeio'):
-#            run_as_root('/usr/bin/rmeio')
-
 class ChineseAcademyofSciencesTeXTemplate(_download_one_file) :
     # cannot find out which license it is released under
     __doc__ = _('LaTeX Thesis Templates by Chinese Academy of Sciences')
@@ -260,13 +221,43 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
     category = 'game'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
         return os.path.exists('/opt/google-earth')
     def remove(self):
         run_as_root_in_terminal('/opt/google-earth/uninstall')
+
+class NVIDEA_Driver(I):
+    __doc__ = 'NVIDEA ' + _('video card driver')
+    category = 'videocarddriver'
+    if is32():
+        filename = '195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86/latest.txt
+        url = 'ftp://download.nvidia.com/XFree86/Linux-x86/' + filename
+    else:
+        filename = '195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt
+        url = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/' + filename
+    detail = _('Please click this link:') + ' ' + url
+    def install(self):
+        f = R(self.url).download()
+        os.system('chmod a+x ' + f)
+        run_as_root_in_terminal(f)
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
+
+class ATI_Driver(I):
+    __doc__ = 'ATI ' + _('video card driver')
+    category = 'videocarddriver'
+    detail = _('Please click this link:') + ' http://ati.amd.com/support/driver.HTML'
+    def install(self):
+        raise NotImplementedError
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
