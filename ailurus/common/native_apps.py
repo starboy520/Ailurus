@@ -58,7 +58,14 @@ class AutoTools(N):
         pkgs = 'autoconf automake'
     if FEDORA:
         pkgs = 'autoconf automake'
-        
+
+class AWN(N):
+    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
+    license = GPL
+    category = 'appearance'
+    if UBUNTU or MINT:
+        pkgs = 'avant-window-navigator'
+            
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
     license = GPL

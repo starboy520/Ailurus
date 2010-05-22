@@ -26,13 +26,6 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class AWN(_apt_install):
-    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
-    license = GPL
-    category = 'appearance'
-    depends = Repo_AWN_Development
-    pkgs = 'avant-window-navigator-trunk'
-    
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
