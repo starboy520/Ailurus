@@ -56,35 +56,19 @@ class UbuntuFastestMirrorPane(gtk.VBox):
                 min, min_time = url, time
         return min, min_time
 
-    def __print_the_fastest_repository(self, msg, current_all, current_official):
+    def refresh_state_box(self, *w):
+        current_third_party = APTSource2.third_party_urls()
+        import StringIO
+        msg = StringIO.StringIO()
         fastest, response_time = self.get_fastest_repository()
         if fastest:
             print >>msg, _('The fastest repository is %s') % fastest, _('(%s millisecond)') % response_time
-
-    def __print_repositories_currently_in_use(self, msg, current_all, current_official):
-        print >>msg, _('Currently you are using these repositories:')
-        for s in current_all:
-            print >>msg, s,
-            if s in current_official: print >>msg, _('(Official repository)'),
-            else: print >>msg, _('(Third-party repository)'),
-            print >>msg, ''
-
-    def refresh_state_box(self, *w):
-        import StringIO
-        msg = StringIO.StringIO()
-        current_all = APTSource2.all_urls()
-        current_official = APTSource2.official_urls()
-
-        self.__print_the_fastest_repository(msg, current_all, current_official)
-        self.__print_repositories_currently_in_use(msg, current_all, current_official)
-        # show text
+        if current_third_party:
+            print >>msg, _('Currently you are using these third-party repositories:')
+            for s in current_all:
+                print >>msg, s,
+                if s in current_third_party: print >>msg
         self.label_state.set_markup(msg.getvalue().strip())
-        # set the menu-item sensitive state
-        fastest = self.get_fastest_repository()[0]
-        if fastest:
-            self.mi_use_fastest_repo.set_sensitive(bool(fastest and (fastest not in current_official)))
-        else:
-            self.mi_use_fastest_repo.set_sensitive(False)
 
     def __callback__show_how_to_backup_repositories(self, *w):
         label = gtk.Label()
@@ -125,8 +109,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
         mi_refresh.connect('activate', self.refresh_state_box)
-        self.mi_use_fastest_repo = mi_use_fastest_repo = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Use the fastest repository'))
-        mi_use_fastest_repo.connect('activate', self.__callback__use_fastest_repository)
         mi_edit_by_texteditor = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by text editor'))
         mi_edit_by_texteditor.connect('activate', self.__callback__edit_repository_by_text_editor)
         mi_edit_by_synaptic = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by Synaptic'))
@@ -137,7 +119,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
         menu.append(mi_refresh)
-        menu.append(mi_use_fastest_repo)
         menu.append(mi_edit_by_texteditor)
         import os
         if os.path.exists('/usr/bin/software-properties-gtk') or os.path.exists('/usr/bin/software-properties-kde'):
@@ -535,7 +516,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.search_content = None
         self.filted_store.set_visible_func(self.__repository_visibility_function)
         self.sorted_store = gtk.TreeModelSort(self.filted_store)
-        self.sorted_store.set_sort_column_id(self.COUNTRY, gtk.SORT_ASCENDING)
+        self.sorted_store.set_sort_column_id(self.IN_USE, gtk.SORT_DESCENDING)
         self.__fill_candidate_store()
 
         self.progress_box = gtk.VBox(False, 5)
