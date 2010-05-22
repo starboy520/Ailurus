@@ -303,7 +303,7 @@ class FastestRepositoryDialog(gtk.Dialog):
                     new_url = e[2]
                     break
             #check whether repositories should be changed
-            for repos in get_current_official_repositories():
+            for repos in APTSource2.official_urls():
                 assert ':' in repos
                 if repos != new_url: break
             else:
@@ -320,10 +320,11 @@ class FastestRepositoryDialog(gtk.Dialog):
         'apply the fastest repository'
         run_as_root('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
-        for repos in get_current_official_repositories():
+        for repos in APTSource2.official_urls():
             changes[repos] = fastest_url
         notify( _('Apply the fastest repository:'), fastest_url )
-        change_repositories_in_source_files(changes)
+        APTSource2.remove_official_servers()
+        APTSource2.add_official_url(fastest_url)
         #apt-get update
         self.progress_label.set_text( _('Run command: "sudo apt-get update"') )
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
@@ -476,11 +477,8 @@ def quick_setup():
     WaitNetworkDialog.show_dialog()
     #load app_classes
     window = show_scan_installed_package_splash()
-    import common as COMMON
-    DESKTOP = None
-    import ubuntu as DISTRIBUTION
     from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
+    app_objs = load_app_objs()
     window.destroy()
     #3
     dialog = DoStuffDialog(app_objs)

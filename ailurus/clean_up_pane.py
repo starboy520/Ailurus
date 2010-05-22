@@ -216,7 +216,7 @@ class ReclaimMemoryBox(gtk.VBox):
             except AccessDeniedError: pass
             after = self.get_free_memory()
             amount = max(0, after - before)
-            notify( _('%s KB memory was reclaimed.')%amount, ' ')
+            notify(' ', _('%s KB memory was reclaimed.') % amount)
 
 class UbuntuCleanKernelBox(gtk.HBox):
     def version_of_current_kernel(self):
@@ -312,7 +312,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
         
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_kernel())
         align = gtk.Alignment(0, 0.5)
         align.add(button_delete)
@@ -362,9 +362,9 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         return window
     
     def refresh(self):
-        window = self.show_scan_installed_package_splash()
+#        window = self.show_scan_installed_package_splash()
         pkgs = APT.get_autoremovable_pkgs()
-        window.destroy()
+#        window.destroy()
         self.liststore.clear()
         self.view.set_model(None)
         for row in pkgs:
@@ -419,9 +419,9 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         
         button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
         button_refresh.connect('clicked', lambda *w: self.refresh())
-        self.button_unselect_all = button_unselect_all = gtk.Button(_('Unselect all'))
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
 #        button_box.pack_start(button_refresh, False)
@@ -524,9 +524,9 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         
         button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
         button_refresh.connect('clicked', lambda *w: self.refresh())
-        self.button_unselect_all = button_unselect_all = gtk.Button(_('Unselect all'))
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
 #        button_box.pack_start(button_refresh, False)
