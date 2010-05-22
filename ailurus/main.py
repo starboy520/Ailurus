@@ -461,12 +461,12 @@ set_default_window_icon()
 check_required_packages()
 check_dbus_configuration()
 
-from support.splashwindow import SplashWindow
-splash = SplashWindow()
-splash.show_all()
+#from support.splashwindow import SplashWindow
+#splash = SplashWindow()
+#splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
-splash.destroy()
+#splash.destroy()
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
