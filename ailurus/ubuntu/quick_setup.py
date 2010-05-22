@@ -477,11 +477,8 @@ def quick_setup():
     WaitNetworkDialog.show_dialog()
     #load app_classes
     window = show_scan_installed_package_splash()
-    import common as COMMON
-    DESKTOP = None
-    import ubuntu as DISTRIBUTION
     from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
+    app_objs = load_app_objs()
     window.destroy()
     #3
     dialog = DoStuffDialog(app_objs)

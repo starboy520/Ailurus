@@ -237,11 +237,9 @@ def load_preferences_menu():
 
 def load_others_menu():
     import types
+    ret = []
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
-    
-    ret = []
-    for module in [distribution, common, desktop]: # not [common, desktop, distribution]. Because we show "quick setup" first.
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
             ret.extend(module.menu.get_others_menu())
     return __create_menu(ret)

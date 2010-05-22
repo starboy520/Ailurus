@@ -757,19 +757,3 @@ class InstallRemovePane(gtk.VBox):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
-
-if __name__ == '__main__':
-    import common as COMMON
-    import gnome as DESKTOP
-    import ubuntu as DISTRIBUTION
-    from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    main_view = Dummy()
-    pane = InstallRemovePane(main_view, app_objs)
-    window = gtk.Window()
-    window.add(pane)
-    window.show_all()
-    gtk.main()
