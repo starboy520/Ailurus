@@ -97,7 +97,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         import StringIO
         msg = StringIO.StringIO()
         current_all = libserver.get_all_current_repositories()
-        current_official = libserver.get_current_official_repositories()
+        current_official = APTSource2.official_urls()
 
         # print tip
         print >>msg, _('<small>(Click mouse right button to display the context menu.)</small>')
@@ -265,7 +265,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         assert isinstance(new_repo, str)
         assert ':' in new_repo
         
-        old_repos = [ r for r in libserver.get_current_official_repositories() if r != new_repo ]
+        old_repos = [ r for r in APTSource2.official_urls() if r != new_repo ]
         if old_repos == []: 
             notify(_('Currently you are using %s.')%new_repo, ' ')
             return

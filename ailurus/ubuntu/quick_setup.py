@@ -304,7 +304,7 @@ class FastestRepositoryDialog(gtk.Dialog):
                     new_url = e[2]
                     break
             #check whether repositories should be changed
-            for repos in get_current_official_repositories():
+            for repos in APTSource2.official_urls():
                 assert ':' in repos
                 if repos != new_url: break
             else:
@@ -321,7 +321,7 @@ class FastestRepositoryDialog(gtk.Dialog):
         'apply the fastest repository'
         run_as_root('cp /etc/apt/sources.list /etc/apt/sources.list.back') # do a back up first
         changes = {}
-        for repos in get_current_official_repositories():
+        for repos in APTSource2.official_urls():
             changes[repos] = fastest_url
         notify( _('Apply the fastest repository:'), fastest_url )
         change_repositories_in_source_files(changes)

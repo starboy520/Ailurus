@@ -397,9 +397,6 @@ def get_candidate_repositories():
     
     return ret
 
-def get_current_official_repositories():
-    return APTSource2.official_urls()
-
 def get_all_current_repositories():
     'Return all repositories currently in use. For example, Launchpad.'
 
