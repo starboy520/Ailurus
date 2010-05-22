@@ -372,6 +372,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
 
     def render_in_use_toggled(self, render_toggle, path):
         path = self.sorted_store.convert_path_to_child_path(path)
+        path = self.filted_store.convert_path_to_child_path(path)
         in_use = not self.candidate_store[path][self.IN_USE]
         url = self.candidate_store[path][self.FULL_URL]
         if in_use:
