@@ -26,7 +26,8 @@ from lib import *
 from libu import *
 
 class FedoraRPMRecoveryPane(gtk.VBox):
-    name = _('RPM recovery')
+    icon = D+'sora_icons/m_recovery.png'
+    text = _('Recover\nRPM')
 
     def __make_dir(self):
         Config.make_config_dir()
@@ -160,7 +161,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
         textview.set_cursor_visible(False)
         return textview
 
-    def __init__(self):
+    def __init__(self, main_view):
         from support.multidragview import MultiDragTreeView
         
         gtk.VBox.__init__(self, False, 10)

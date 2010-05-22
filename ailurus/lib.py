@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.4'
-AILURUS_RELEASE_DATE = '2010-05-19'
+AILURUS_VERSION = '10.05.5'
+AILURUS_RELEASE_DATE = '2010-05-21'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -226,6 +226,17 @@ class Config:
             return True
         except:
             return False
+    @classmethod
+    def is_KDE(cls):
+        try:
+            get_output('pgrep -u $USER kdeinit')
+            return True
+        except:
+            try:
+                get_output('pgrep -u $USER kdeinit4')
+                return True
+            except: pass
+        return False
     @classmethod
     def is_XFCE(cls):
         try:  
@@ -1449,6 +1460,7 @@ import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 GNOME = Config.is_GNOME()
+KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()

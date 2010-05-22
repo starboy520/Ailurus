@@ -25,7 +25,8 @@ from lib import *
 from libu import *
 
 class InstallRemovePane(gtk.VBox):
-    name = _('Install/Remove')
+    icon = D+'sora_icons/m_install_remove.png'
+    text = _('Install\nSoftware')
     
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
@@ -337,17 +338,6 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
-        
-    def load_state(self):
-        try:
-            hpos = Config.get_int('hpane_position')
-            self.hpaned.set_position( int(hpos) )
-        except: pass
-        self.vpaned.set_position(300)
-    
-    def save_state(self):
-        Config.set_int('hpane_position', self.hpaned.get_position())
-        Config.set_int('vpane_position', self.vpaned.get_position())
     
     def __sort_treestore ( self, model, iter1, iter2 ):
         obj1 = model.get_value ( iter1, 0 )
@@ -766,7 +756,6 @@ class InstallRemovePane(gtk.VBox):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
-        self.load_state()
 
 if __name__ == '__main__':
     import common as COMMON

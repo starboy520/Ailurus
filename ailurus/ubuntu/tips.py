@@ -25,10 +25,6 @@ from lib import *
 
 def get():
     return [
-_('''Some skills. For example, "change Ubuntu logo on panel"
-https://help.ubuntu.com/community/QuickTips'''
-  ),
-
 _('''Set apt source
 sudo software-properties-gtk
 sudo software-properties-kde'''),

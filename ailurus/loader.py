@@ -22,6 +22,13 @@
 from __future__ import with_statement
 from lib import *
 
+common = __import__('common')
+if Config.is_GNOME(): import gnome as desktop
+else: desktop = None
+if MINT or UBUNTU: import ubuntu as distribution
+elif FEDORA: import fedora as distribution
+else: distribution = None
+
 categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
             'appearance','office','math','latex','dev','em', 'server',
             'geography','education','media','vm','game', 'statistics', 
@@ -49,7 +56,7 @@ def load_app_icon(name):
     import gtk
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
 
-def load_app_objs(common, desktop, distribution):
+def load_app_objs():
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -87,7 +94,7 @@ def load_app_objs(common, desktop, distribution):
                 print 'Cannot load class %s' % name
                 print_traceback()
 
-    return objs
+    return objs + load_custom_app_objs()
 
 def load_app_objs_from_extension(extension):
     import types
@@ -119,7 +126,7 @@ def load_app_objs_from_extension(extension):
 
     return classobjs
 
-def load_custom_app_classes():
+def load_custom_app_objs():
     import os
     # check whether the extension directory exist
     for path in [os.path.dirname(__file__) + '/../unfree/',
@@ -148,7 +155,7 @@ def load_custom_app_classes():
     sys.path.pop(0)
     return return_value
 
-def load_R_objs(common, desktop, distribution):
+def load_R_objs():
     paths = []
     import types
     import os, glob, re
@@ -174,27 +181,20 @@ def load_R_objs(common, desktop, distribution):
     
     return objs
 
-def load_hardwareinfo(common, desktop, distribution):
+def load_info():
     import types
-    ret = []
+    hardware_info = []
+    os_info = []
     for module in [common, desktop, distribution]:
         if module:
             assert isinstance(module, types.ModuleType)
             if hasattr(module, 'hardwareinfo') and hasattr(module.hardwareinfo, 'get'):
-                ret.extend(module.hardwareinfo.get())
-    return ret
-
-def load_linuxinfo(common, desktop, distribution):
-    import types
-    ret = []
-    for module in [common, desktop, distribution]:
-        if module:
-            assert isinstance(module, types.ModuleType)
+                hardware_info.extend(module.hardwareinfo.get())
             if hasattr(module, 'osinfo') and hasattr(module.osinfo, 'get'):
-                ret.extend(module.osinfo.get())
-    return ret
-
-def load_setting(common, desktop, distribution):
+                os_info.extend(module.osinfo.get())
+    return hardware_info, os_info
+    
+def load_setting():
     import types
     ret = []
     for module in [distribution, desktop, common]:
@@ -212,7 +212,7 @@ def __create_menu(menuitems):
     menu.show_all()
     return menu
 
-def load_study_linux_menu(common, desktop, distribution):
+def load_study_linux_menu():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -223,7 +223,7 @@ def load_study_linux_menu(common, desktop, distribution):
             ret.extend(module.menu.get_study_linux_menu())
     return __create_menu(ret)
 
-def load_preferences_menu(common, desktop, distribution):
+def load_preferences_menu():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -234,7 +234,7 @@ def load_preferences_menu(common, desktop, distribution):
             ret.extend(module.menu.get_preferences_menu())
     return __create_menu(ret)
 
-def load_others_menu(common, desktop, distribution):
+def load_others_menu():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -245,7 +245,7 @@ def load_others_menu(common, desktop, distribution):
             ret.extend(module.menu.get_others_menu())
     return __create_menu(ret)
 
-def load_tips(common, desktop, distribution):
+def load_tips():
     import types
     ret = []
     for module in [common, desktop, distribution]:
@@ -255,7 +255,7 @@ def load_tips(common, desktop, distribution):
                 ret.extend(module.tips.get())
     return ret
 
-def load_cure_objs(common, desktop, distribution):
+def load_cure_objs():
     modules = []
     for module in [common, desktop, distribution]:
         import types
@@ -277,7 +277,3 @@ def load_cure_objs(common, desktop, distribution):
                 print_traceback()
     
     return objs
-
-if __name__ == '__main__':
-    import common
-    print load_cure_objs(common, None, None)

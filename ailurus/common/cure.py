@@ -79,7 +79,7 @@ class Create_Imagemagick_shortcut(C):
                                'Exec=display %f\n'    
                                'Encoding=UTF-8\n'
                                'StartupNotify=true\n'
-                               'Terminal=true\n'
+                               'Terminal=false\n'
                                'Type=Application\n'
                                'Categories=GNOME;GTK;Graphics;\n'
                                'Icon=/usr/share/icons/imagemagick.png\n')

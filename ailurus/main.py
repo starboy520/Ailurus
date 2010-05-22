@@ -53,15 +53,18 @@ def with_same_content(file1, file2):
 def check_required_packages():
     ubuntu_missing = []
     fedora_missing = []
+    archlinux_missing = []
 
     try: import pynotify
     except: 
         ubuntu_missing.append('python-notify')
         fedora_missing.append('notify-python')
+        archlinux_missing.append('python-notify')
     try: import vte
     except: 
         ubuntu_missing.append('python-vte')
         fedora_missing.append('vte')
+        archlinux_missing.append('vte')
     try: import apt
     except: 
         ubuntu_missing.append('python-apt')
@@ -72,16 +75,19 @@ def check_required_packages():
     except: 
         ubuntu_missing.append('python-dbus')
         fedora_missing.append('dbus-python')
+        archlinux_missing.append('dbus-python')
     if not os.path.exists('/usr/bin/unzip'):
         ubuntu_missing.append('unzip')
         fedora_missing.append('unzip')
+        archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
         fedora_missing.append('wget')
+        archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/xterm'):
-        
         fedora_missing.append('xterm')
+        archlinux_missing.append('xterm')
 
-    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) 
+    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
         import StringIO
         message = StringIO.StringIO()
@@ -93,6 +99,8 @@ def check_required_packages():
             print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
         if FEDORA:
             print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
+        if ARCHLINUX:
+            print >>message, '<span color="blue">', ' '.join(archlinux_missing), '</span>'
         dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus ' + AILURUS_VERSION)
         dialog.set_markup(message.getvalue())
@@ -132,23 +140,6 @@ def check_dbus_configuration():
     dialog.set_markup(message.getvalue())
     dialog.run()
     dialog.destroy()
-
-def import_desktop_environment():
-    if Config.is_GNOME():
-        import gnome
-        return gnome
-    else:
-        return None
-
-def import_distribution():
-    if MINT or UBUNTU:
-        import ubuntu
-        return ubuntu
-    elif FEDORA:
-        import fedora
-        return fedora
-    else:
-        return None
 
 def wait_firefox_to_create_profile():
     if os.path.exists('/usr/bin/firefox'):
@@ -266,46 +257,49 @@ class toolitem(gtk.ToolItem):
         button.connect(signal_name, callback, *callback_args)
         self.add(button)
 
+class PaneLoader:
+    def __init__(self, main_view, pane_class, content_function = None):
+        import gobject
+        assert isinstance(pane_class, gobject.GObjectMeta)
+        assert callable(content_function) or content_function is None
+        self.main_view = main_view
+        self.pane_class = pane_class
+        self.content_function = content_function
+        self.pane_object = None
+    def get_pane(self):
+        if self.pane_object is None:
+            if self.content_function: arg = [self.content_function()] # has argument
+            else: arg = [] # no argument
+            self.pane_object = self.pane_class(self.main_view, *arg)
+        return self.pane_object
+    def need_to_load(self):
+        return self.pane_object is None
+
 class MainView:
     def add_quit_button(self):
         item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_others_menu()
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_preferences_menu()
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menu(COMMON, DESKTOP, DISTRIBUTION)
+        menu = load_study_linux_menu()
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
-        List = [
-                ('InfoPane', D+'sora_icons/m_hardware.png', _('Information'), ),
-                ('SystemSettingPane', D+'sora_icons/m_linux_setting.png', _('System\nSettings'), ),
-                ('InstallRemovePane', D+'sora_icons/m_install_remove.png', _('Install\nSoftware'), ),
-                ('UbuntuFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('FedoraFastestMirrorPane', D+'sora_icons/m_fastest_repos.png', _('Fastest\nRepository'), ),
-                ('UbuntuAPTRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nAPT'), ),
-                ('FedoraRPMRecoveryPane', D+'sora_icons/m_recovery.png', _('Recover\nRPM'), ),
-                ('CleanUpPane', D+'other_icons/m_clean_up.png', _('Clean up')),
-                ('ComputerDoctorPane', D+'sora_icons/m_computer_doctor.png', _('Computer\nDoctor')),
-                ]
-        List.reverse()
-        for name, icon, text in List:
-            if not name in self.contents: continue
-            item = toolitem(icon, text, 'clicked', self.activate_pane, name)
+        for key in self.ordered_key:
+            pane_loader = self.contents[key]
+            icon = pane_loader.pane_class.icon
+            text = pane_loader.pane_class.text
+            item = toolitem(icon, text, 'clicked', self.activate_pane, key)
             self.toolbar.insert(item, 0)
-            left_most_pane_name = name
         
-        if 'InstallRemovePane' in self.contents:
-            self.activate_pane(None, 'InstallRemovePane')
-        else:
-            assert left_most_pane_name != None
-            self.activate_pane(None, left_most_pane_name) # automatically activate the left-most pane
+        self.activate_pane(None, 'SystemSettingPane')
 
     def get_item_icon_size(self):
         return int(self.last_x / 20)
@@ -330,16 +324,21 @@ class MainView:
     
     def activate_pane(self, widget, name):
         assert isinstance(name, str)
-        if name in self.contents:
-            self.change_content_basic(name)
-
-    def change_content_basic(self, name):
-        assert isinstance(name, str)
         self.current_pane = name
         for child in self.toggle_area.get_children():
             self.toggle_area.remove(child)
-        content = self.contents[name]
-        self.toggle_area.add(content)
+        pane_loader = self.contents[name]
+        if pane_loader.need_to_load():
+            import pango
+            label = gtk.Label(_('Please wait a few seconds'))
+            label.modify_font(pango.FontDescription('Sans 20'))
+            self.toggle_area.add(label)
+            self.toggle_area.show_all()
+            while gtk.events_pending(): gtk.main_iteration()
+            pane_loader.get_pane()
+            for child in self.toggle_area.get_children():
+                self.toggle_area.remove(child)
+        self.toggle_area.add(pane_loader.get_pane())
         self.toggle_area.show_all()
 
     def lock(self):
@@ -374,31 +373,21 @@ class MainView:
         
         from support.windowpos import WindowPos
         WindowPos.save(self.window,'main')
-        
-        for pane in self.contents.values():
-            if hasattr(pane, 'save_state'):
-                pane.save_state()
 
         gtk.main_quit()
         sys.exit()
 
-    def show_day_tip(self, *w):
-        from support.tipoftheday import TipOfTheDay
-        TipOfTheDay()
-
-    def register(self, pane):
-        key = pane.__class__.__name__
-        try:
-            assert not '.' in key, key
-            assert not key in self.contents, key
-            self.contents[key] = pane
-        except:
-            print_traceback()
+    def register(self, pane_class, content_function = None):
+        import gobject
+        key = pane_class.__name__
+        self.contents[key] = PaneLoader(self, pane_class, content_function)
+        self.ordered_key.append(key)
 
     def __init__(self):
         self.window = None # MainView window
         self.stop_delete_event = False
         self.contents = {}
+        self.ordered_key = [] # contains keys in self.contents, in calling order of self.register
         
         self.toggle_area = gtk.VBox()
         self.toggle_area.set_border_width(5)
@@ -425,127 +414,49 @@ class MainView:
 
         from support.windowpos import WindowPos
         WindowPos.load(window,'main')
+        
+        from system_setting_pane import SystemSettingPane
+        from clean_up_pane import CleanUpPane
+        from info_pane import InfoPane
+        from install_remove_pane import InstallRemovePane
+        from computer_doctor_pane import ComputerDoctorPane
+        if UBUNTU or MINT:
+            from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
+            from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+        if FEDORA:
+            from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
+            from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
 
-import common as COMMON
-DESKTOP = import_desktop_environment()
-DISTRIBUTION = import_distribution()
+        self.register(ComputerDoctorPane, load_cure_objs)
+        self.register(CleanUpPane)
+        if UBUNTU or MINT:
+            self.register(UbuntuAPTRecoveryPane)
+            self.register(UbuntuFastestMirrorPane)
+        if FEDORA:
+            self.register(FedoraRPMRecoveryPane)
+            self.register(FedoraFastestMirrorPane)
+        self.register(InstallRemovePane, load_app_objs)
+        self.register(SystemSettingPane, load_setting)
+        self.register(InfoPane, load_info)
+        
+        self.add_quit_button()
+        self.add_study_button_preference_button_other_button()
+        self.add_pane_buttons_in_toolbar()
+        self.window.show_all()
+
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
-
-from optparse import OptionParser
-parser = OptionParser(usage=_('usage: ailurus [options]'))
-parser.add_option('--fast', action='store_false', dest='all', default=True, help=_('do not load all functionality'))
-parser.add_option('--information', action='store_true', dest='information', default=False, help=_('load "information" functionality'))
-parser.add_option('--system-setting', action='store_true', dest='system_setting', default=False, help=_('load "system setting" functionality'))
-parser.add_option('--install-software', action='store_true', dest='install_software', default=False, help=_('load "install software" functionality'))
-parser.add_option('--recovery', action='store_true', dest='recovery', default=False, help=_('load "recovery" functionality'))
-parser.add_option('--clean-up', action='store_true', dest='clean_up', default=False, help=_('load "clean up" functionality'))
-parser.add_option('--fastest-repository', action='store_true', dest='fastest_repository', default=False, help=_('load "fastest repository" functionality'))
-parser.add_option('--computer-doctor', action='store_true', dest='computer_doctor', default=False, help=_('load "computer doctor" functionality'))
-options, args = parser.parse_args()
-if ( options.all == False 
-     and not options.recovery
-     and not options.clean_up
-     and not options.fastest_repository
-     and not options.information
-     and not options.install_software
-     and not options.system_setting ):
-    print _('You did not specify any functionality. :)')
-    print _('For example: ailurus --fast --information')
-    sys.exit()
 change_task_name()
 set_default_window_icon()
 check_required_packages()
 check_dbus_configuration()
 
-# show splash window
 from support.splashwindow import SplashWindow
 splash = SplashWindow()
 splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
-
-# load Linux skills
-tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
-import support.tipoftheday
-support.tipoftheday.tips = tips
-
-# load main window
 main_view = MainView()
-if options.system_setting or options.all:
-    splash.add_text(_('<span color="grey">Loading system settings pane ... </span>\n'))
-    items = load_setting(COMMON, DESKTOP, DISTRIBUTION)
-    from system_setting_pane import SystemSettingPane
-    pane = SystemSettingPane(items)
-    main_view.register(pane)
-
-if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
-    if options.fastest_repository or options.all:
-        from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-        pane = UbuntuFastestMirrorPane(main_view)
-        main_view.register(pane)
-
-    if options.recovery or options.all:
-        from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
-        pane = UbuntuAPTRecoveryPane()
-        main_view.register(pane)
-
-if getattr(DISTRIBUTION, '__name__', '') == 'fedora':
-    if options.fastest_repository or options.all:
-        from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
-        pane = FedoraFastestMirrorPane(main_view)
-        main_view.register(pane)
-
-    if options.recovery or options.all:
-        from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
-        pane = FedoraRPMRecoveryPane()
-        main_view.register(pane)
-
-if options.clean_up or options.all:
-    from clean_up_pane import CleanUpPane
-    pane = CleanUpPane()
-    main_view.register(pane)
-
-if options.information or options.all:
-    splash.add_text(_('<span color="grey">Loading information pane ... </span>\n'))
-    hwinfo = load_hardwareinfo(COMMON, DESKTOP, DISTRIBUTION)
-    linuxinfo = load_linuxinfo(COMMON, DESKTOP, DISTRIBUTION)
-    from info_pane import InfoPane
-    pane = InfoPane(([_('Hardware Information'), D+'sora_icons/m_hardware.png', hwinfo], 
-                    [_('Linux Information'), D+'sora_icons/m_linux.png', linuxinfo]))
-    main_view.register(pane)
-
-if options.install_software or options.all:
-    splash.add_text(_('<span color="grey">Loading applications pane ... </span>\n'))
-    
-    wait_firefox_to_create_profile()
-    
-    if getattr(DISTRIBUTION, '__name__', '') == 'ubuntu':
-        APT.refresh_cache()
-    elif getattr(DISTRIBUTION, '__name__', '') == 'fedora':
-        RPM.refresh_cache()
-    
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
-    custom_app_classes = load_custom_app_classes()
-    from install_remove_pane import InstallRemovePane
-    pane = InstallRemovePane(main_view, app_objs + custom_app_classes)
-    main_view.register(pane)
-
-if options.computer_doctor or options.all:
-    cure_objs = load_cure_objs(COMMON, DESKTOP, DISTRIBUTION)
-    from computer_doctor_pane import ComputerDoctorPane
-    pane = ComputerDoctorPane(cure_objs)
-    main_view.register(pane)
-
-main_view.add_quit_button()
-if options.all:
-    main_view.add_study_button_preference_button_other_button()
-main_view.add_pane_buttons_in_toolbar()
-main_view.window.show_all()
 splash.destroy()
-# do not show tip of the day
-# if not Config.get_disable_tip():
-#    main_view.show_day_tip()
 
-# all right
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
 gtk.main()

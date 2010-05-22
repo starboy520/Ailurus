@@ -113,6 +113,10 @@ class TipOfTheDay(gtk.Window):
         box.show_all()
 
         self.add(box)
+        global tips
+        if tips == None:
+            import loader
+            tips = loader.load_tips() 
         self.tips = tips
         assert isinstance(self.tips, list)
         for e in self.tips:

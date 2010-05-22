@@ -26,61 +26,35 @@ from lib import *
 from libu import *
 from libsetting import *
 def __desktop_icon_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)
-    o = GConfCheckButton(_('Show desktop content'), '/apps/nautilus/preferences/show_desktop',
-             _('Show/hide icons on desktop.\n'
-               '<span color="red">The change will take effect at the next time GNOME starts up.</span>'))
-    def show_notify(checkbutton):
-         if checkbutton.get_active():
-             notify(_('Information'), _('Desktop content will be displayed at the next time GNOME starts up.'))
-    o.connect('toggled', show_notify)
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    box = gtk.VBox(False, 5)
+    o = GConfCheckButton(_('Show desktop content') + ' ' + _('(take effect at the next time GNOME starts up)'),
+                         '/apps/nautilus/preferences/show_desktop')
+    box.pack_start(o, False)
+
     o = GConfCheckButton(_('Display "Mounted volumn" icon'), '/apps/nautilus/desktop/volumes_visible',
              _('Put icons linking to mounted volumes on the desktop.'))
-    table.attach(o, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
     
     o = GConfCheckButton(_('Display "Computer" icon'), '/apps/nautilus/desktop/computer_icon_visible',
              _('Put an icon linking to the computer location on the desktop.'))
-    table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    en = GConfTextEntry('/apps/nautilus/desktop/computer_icon_name')
-    table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
     
     o = GConfCheckButton(_('Display "Home folder" icon'), '/apps/nautilus/desktop/home_icon_visible',
              _('Put an icon linking to the home folder on the desktop.'))
-    table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
-    
-    en = GConfTextEntry('/apps/nautilus/desktop/home_icon_name')
-    table.attach(en, 2, 3, 3, 4, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)    
         
     o = GConfCheckButton(_('Display "Network server" icon'), '/apps/nautilus/desktop/network_icon_visible',
              _('Put an icon linking to the Network Servers view on the desktop.'))
-    table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
-    
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
-    
-    en = GConfTextEntry('/apps/nautilus/desktop/network_icon_name')
-    table.attach(en, 2, 3, 4, 5, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
     
     o = GConfCheckButton(_('Display "Trash" icon'),'/apps/nautilus/desktop/trash_icon_visible',
              _('Put an icon linking to the trash on the desktop.'))
-    table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
     
-    l = gtk.Label(_('Change icon name to:'))
-    table.attach(l, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
-
-    en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
-    table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
-
-    return Setting(table, _('Desktop icons'), ['desktop', 'icon'])
+    box.pack_start(label_left_align(_('In order to change the name of "Computer", "Home folder", "Network server" or "Trash" icon,\n'
+                               'please select the icon, then press F2.')), False)
+    
+    return Setting(box, _('Desktop icons'), ['desktop', 'icon'])
 
 def __start_here_icon_setting():
     def apply(imagechooser, old_image):
@@ -96,8 +70,6 @@ def __start_here_icon_setting():
                     local_dir = os.path.dirname(local_path)
                     if not os.path.exists(local_dir): run('mkdir -p ' + local_dir)
                     run('cp /tmp/start-here.png %s' % local_path)
-        
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
     def get_start_here_icon_path():
         import os , gconf
@@ -122,13 +94,12 @@ def __start_here_icon_setting():
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
-    return Setting(box, _('Change "start-here" icon'), ['icon'])
+    return Setting(box, _('Change "start-here" icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
 
 def __login_icon_setting():
     def apply(w, image):
         path = os.path.expanduser('~/.face')
         os.system('cp %s %s' % (image, path))
-        notify(_('Icon changed'), _('Your changes will take effect at the next time when you log in to GNOME.'))
 
     i = ImageChooser(_('The login icon is ~/.face'), 96, 96)
     try:
@@ -138,7 +109,7 @@ def __login_icon_setting():
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
-    return Setting(box, _('Change login icon'), ['icon'])
+    return Setting(box, _('Change login icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
     
 def __menu_icon_setting():
     vbox = gtk.VBox()
@@ -158,12 +129,12 @@ def __button_icon_setting():
     return Setting(vbox, _('Button icons setting'), ['icon'])
 
 def __disable_terminal_beep():
-    vbox = gtk.VBox()
+    box = gtk.VBox(False, 5)
     o = GConfCheckButton(_('Disable terminal bell'), 
              '/apps/gnome-terminal/profiles/Default/silent_bell',
              _("If it is set to true, gnome terminal will not generate beep sound when error happens.") )
-    vbox.pack_start(o, False)
-    return Setting(vbox, _('Terminal beep sound setting'), ['sound'])
+    box.pack_start(o, False)
+    return Setting(box, _('Terminal beep sound setting'), ['sound'])
 
 def __more_nautilus_settings():
     table = gtk.Table()
@@ -341,53 +312,50 @@ def __nautilus_thumbnail_setting():
     import os
     text = label_left_align( _('The thumbnail cache directory is "%s/.thumbnails".')%os.environ['HOME'] )
     table.attach(text, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+
+    label = label_left_align(_('Size of each thumbnail (in pixels):'))
+    key = '/apps/nautilus/icon_view/thumbnail_size'
+    label.set_tooltip_text(_('GConf key: %s')%key)
+    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    
+    o = GConfNumericEntry(key, 16, 96)
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
     
     label = label_left_align(_('Maximum size of thumbnail cache (in MBytes):'))
     key = '/desktop/gnome/thumbnail_cache/maximum_size'
     label.set_tooltip_text(_('GConf key: %s')%key)
-    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
     
     o = GConfNumericEntry(key, 0, 2048)
-    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
     
     label = label_left_align(_('Maximum time each thumbnail remains in cache (in days):'))
     key = '/desktop/gnome/thumbnail_cache/maximum_age'
     label.set_tooltip_text(_('GConf key: %s')%key)
-    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-    
-    o = GConfNumericEntry(key, 0, 30)
-    table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    
-    label = label_left_align(_('Size of each thumbnail (in pixels):'))
-    key = '/apps/nautilus/icon_view/thumbnail_size'
-    label.set_tooltip_text(_('GConf key: %s')%key)
     table.attach(label, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
     
-    o = GConfNumericEntry(key, 16, 96)
+    o = GConfNumericEntry(key, 0, 30)
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
     return Setting(table, _('Nautilus thumbnail settings'), ['nautilus'])
 
 def __gnome_session_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)
-    pos = 0
+    box = gtk.VBox(False, 5)
+    button = gtk.Button(_('Configure autostart applications') + ' ' + _('(Command: gnome-session-properties)'))
+    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
+    box.pack_start(left_align(button), False)
     o = GConfCheckButton(_('Remember running applications when you log out.'),
              '/apps/gnome-session/options/auto_save_session',
              _('If its value is true, GNOME will remember the running applications when you log out, '
                'and re-launch these applications at the next time you log in to GNOME.') )
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL)
-    button = gtk.Button(_('Configure autostart applications'))
-    button.set_tooltip_text(_('Run command: gnome-session-properties'))
-    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
-    table.attach(button, 1, 2, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
     o = GConfCheckButton(_('Prompt you before you log out from GNOME.'),
             '/apps/gnome-session/options/logout_prompt',
             _('If its value is false, GNOME session will terminate immediately if you click the menu "System"->"Log out".') )
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
     o = GConfCheckButton(_('Allow connection from remote hosts.'),
             '/apps/gnome-session/options/allow_tcp_connections')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+    box.pack_start(o, False)
 #    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
 #            '/apps/gnome-screensaver/user_switch_enable',
 #            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
@@ -399,14 +367,20 @@ def __gnome_session_setting():
 #    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
     
     o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
-            '/apps/gnome-screensaver/idle_activation_enabled')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+                         '/apps/gnome-screensaver/idle_activation_enabled')
+    box.pack_start(o, False)
     
     o = GConfCheckButton(_('Lock screen when screen saver is activated'),
-            '/apps/gnome-screensaver/lock_enabled')
-    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
+                         '/apps/gnome-screensaver/lock_enabled')
+    box.pack_start(o, False)
     
-    return Setting(table, _('GNOME session'), ['session'])
+    o = GConfCheckButton(_('Lock screen after hibernating'), '/apps/gnome-power-manager/lock/hibernate')
+    box.pack_start(o, False)
+    
+    o = GConfCheckButton(_('Lock screen after suspending'), '/apps/gnome-power-manager/lock/suspend')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('GNOME session'), ['session'])
 
 def __backlight():
     table = gtk.Table()
@@ -437,12 +411,12 @@ def __backlight():
 #    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
 
 def __advance_setting():
-    table = gtk.Table()
-    table.set_col_spacings(10)    
+    box = gtk.VBox(False, 5)
     
-    o = GConfCheckButton(_('Use your home folder as the desktop'),
+    o = GConfCheckButton(_('Display content of your home folder on desktop') + ' ' + _('(take effect at the next time GNOME starts up)'),
                 '/apps/nautilus/preferences/desktop_is_home_dir')
-    table.attach(o, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    box.pack_start(o, False)
+    
 
     def clicked(button, path):
         if button.get_active():
@@ -461,25 +435,25 @@ def __advance_setting():
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
     button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu'))
     button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
-    button.set_active(os.path.exists(os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')))
+    button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
-    table.attach(button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    box.pack_start(button, False)
+
+    table = gtk.Table()
+    table.set_col_spacings(10)    
 
     o = label_left_align(_('Change default file manager to:'))
     table.attach(o, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-
     o = GConfTextEntry('/desktop/gnome/session/required_components/filemanager')
     table.attach(o, 1, 2, 2, 3, gtk.FILL, gtk.FILL )
     
     o = label_left_align(_('Change default panel program to:') )
     table.attach(o, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-    
     o = GConfTextEntry('/desktop/gnome/session/required_components/panel')
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
     o = label_left_align(_('Change default window manager to:') )
     table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
-    
     o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
     table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
     
@@ -503,7 +477,29 @@ def __advance_setting():
     reset_button.connect('clicked', reset_gconf)
     table.attach(reset_button, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
 
-    return Setting(table, _('Advance settings'), ['desktop'])
+    box.pack_start(table, False)
+
+    return Setting(box, _('Advance settings'), ['desktop'])
+
+def __gnome_panel_setting():
+    box = gtk.VBox(False, 5)
+    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('GNOME panels settings'), ['panel'])
+
+def __login_window_setting():
+    box = gtk.VBox(False, 5)
+    o = GConfCheckButton(_('Do not list username'), '/apps/gdm/simple-greeter/disable_user_list')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('Login window settings'), ['login_window'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))
@@ -616,6 +612,7 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
+            __gnome_panel_setting,
             __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
@@ -627,6 +624,7 @@ def get():
             __layout_of_window_titlebar_buttons,
             __more_nautilus_settings,
             __shortcut_setting,
+            __login_window_setting,
 #            __compiz_setting,
 #            __gconfig_backup,
             ]:
