@@ -935,6 +935,55 @@ class APTSource2:
                 ret.extend(f.readlines())
         return ret
     @classmethod
+    def all_lines_contain(cls, snip):
+        snip = cls.remove_comment(snip)
+        for line in cls.iter_all_lines():
+            if snip in line: return True
+        return False
+    @classmethod
+    def all_lines_contain_all_of(cls, many_snips):
+        for snip in many_snips:
+            if not cls.all_lines_contain(snip): return False
+        return True
+    @classmethod
+    def add_lines_to_file(cls, lines, file_path = '/etc/apt/sources.list'):
+        assert isinstance(lines, list)
+        assert isinstance(file_path, str)
+        
+        with TempOwn(file_path) as o:
+            with open(file_path) as f:
+                contents = f.readlines()
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.append(lines)
+            with open(file_path, 'w') as f:
+                f.writelines(contents)
+    @classmethod
+    def remove_snips_from(cls, snips, file_path):
+        assert isinstance(snips, list)
+        assert isinstance(file_path)
+        
+        snip = cls.remove_comment(snip)
+        with open(file_path) as f:
+            contents = f.readlines()
+        changed = False
+        for i, line in enumerate(contents):
+            line = cls.remove_comment(line)
+            for snip in snips:
+                if snip in cls.remove_comment(line):
+                    contents[i] = ''
+                    changed = True
+                    break
+        if changed:
+            with TempOwn(file_path) as o:
+                with open(file_path, 'w') as f:
+                    f.writelines(contents)
+    @classmethod
+    def remove_snips_from_all_files(cls, snips):
+        assert isinstance(snips, list)
+        for file_path in cls.all_conf_files():
+            cls.remove_snips_from(snips, file_path)
+    @classmethod
     def remove_comment(cls, line):
         return line.split('#', 1)[0].strip()
     @classmethod
@@ -949,7 +998,7 @@ class APTSource2:
         line = cls.remove_comment(line)
         import re
         if cls.re_pattern_server is None:
-            cls.re_pattern_server = re.compile(r'^deb(-src)? http://([^/]+)/.*$')
+            cls.re_pattern_server = re.compile(r'^deb(-src)? [a-z]+://([^/]+)/.*$')
         match = cls.re_pattern_server.match(line)
         if match: return match.group(2)
         else:     return None
