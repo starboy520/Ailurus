@@ -39,7 +39,7 @@ class _repo(I):
             if '$' in a: #variable substitution
                 assert '$version' in a
                 self.apt_conf[i] = a.replace('$version', VERSION )
-                assert '$' not in a
+                assert '$' not in self.apt_conf[i], self.apt_conf[i]
         assert isinstance(self.apt_content, str)
         
         if hasattr(self, 'key_url'):
