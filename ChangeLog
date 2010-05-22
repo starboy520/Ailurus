@@ -1,3 +1,7 @@
+2010-05-22 Homer Xing <homer.xing@gmail.com>
+
+    * Add button, in order to support "copy to clipboard"
+
 2010-05-21 Homer Xing <homer.xing@gmail.com>
 
     * Clean up Nautilus thumbnails image cache.
