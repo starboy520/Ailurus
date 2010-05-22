@@ -156,6 +156,7 @@ def exception_happened(etype, value, tb):
     if etype == KeyboardInterrupt: return
     
     import traceback, StringIO
+    traceback.print_tb(tb, file=sys.stderr)
     msg = StringIO.StringIO()
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
