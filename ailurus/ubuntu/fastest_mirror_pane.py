@@ -69,7 +69,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             else: print >>msg, _('(Third-party repository)'),
             print >>msg, ''
 
-    def __callback__refresh_state_box(self, *w):
+    def refresh_state_box(self, *w):
         import StringIO
         msg = StringIO.StringIO()
         current_all = APTSource2.all_urls()
@@ -124,7 +124,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
 
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
-        mi_refresh.connect('activate', self.__callback__refresh_state_box)
+        mi_refresh.connect('activate', self.refresh_state_box)
         self.mi_use_fastest_repo = mi_use_fastest_repo = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Use the fastest repository'))
         mi_use_fastest_repo.connect('activate', self.__callback__use_fastest_repository)
         mi_edit_by_texteditor = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by text editor'))
@@ -164,7 +164,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
                 return True
             return False
         scroll.connect('button_press_event', button_press_event)
-        self.__callback__refresh_state_box()
+        self.refresh_state_box()
         return scroll
     
     def __show_response_time_in_cell(self, column, cell, model, iter):
@@ -266,7 +266,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         for c in check_boxes:
             if c.get_active():
                 APTSource2.add_official_url(new_repo)
-        self.__callback__refresh_state_box()
+        self.refresh_state_box()
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
         APT.apt_get_update()
     
@@ -302,7 +302,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             thread.join()
             self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
         self.__update_candidate_store_with_ping_result(result)
-        self.__callback__refresh_state_box()
+        self.refresh_state_box()
         self.__delete_all_widgets_in_progress_box()
         self.main_view.unlock()
         self.set_sensitive(True)
@@ -389,8 +389,20 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         popupmenu.show_all()
         return popupmenu
 
+    def render_in_use_toggled(self, render_toggle, path):
+        path = self.sorted_store.convert_path_to_child_path(path)
+        in_use = not self.candidate_store[path][self.IN_USE]
+        url = self.candidate_store[path][self.FULL_URL]
+        if in_use:
+            APTSource2.add_official_url(url)
+        else:
+            APTSource2.remove_snips_from_all_files([url])
+        self.candidate_store[path][self.IN_USE] = in_use
+        self.refresh_state_box()
+
     def __get_candidate_repositories_treeview(self):
         render_in_use = gtk.CellRendererToggle()
+        render_in_use.connect('toggled', self.render_in_use_toggled)
         column_in_use = gtk.TreeViewColumn()
         column_in_use.pack_start(render_in_use)
         column_in_use.add_attribute(render_in_use, 'active', self.IN_USE)
