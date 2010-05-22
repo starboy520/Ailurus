@@ -27,17 +27,10 @@ from lib import *
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
-    fresh_cache = False
-    @classmethod
-    def refresh_cache(cls):
-        if not _repo.fresh_cache:
-            _repo.source_settings = APTSource.get_source_contents()
-            _repo.fresh_cache = True
     @classmethod
     def exists_in_source(cls, seed):
         assert isinstance(seed, str)
         seed = seed.split('#')[0].strip()
-        _repo.refresh_cache()
         for contents in _repo.source_settings.values():
             for line in contents:
                 if seed in line.split('#')[0]: return True
@@ -47,7 +40,6 @@ class _repo(I):
         assert isinstance(file_name, str)
         assert isinstance(seed, str)
         assert seed[-1]!='\n'
-        _repo.refresh_cache()
         if not file_name in _repo.source_settings:
             _repo.source_settings[file_name] = []
         _repo.source_settings[file_name].append(seed+'\n')
@@ -55,7 +47,6 @@ class _repo(I):
     def remove_from_source(cls, seed):
         assert isinstance(seed, str)
         seed = seed.split('#')[0].strip()
-        _repo.refresh_cache()
         for contents in _repo.source_settings.values():
             for i in reversed(range(len(contents))):
                 line = contents[i]
@@ -104,14 +95,12 @@ class _repo(I):
             print >>msg, a
         self.__class__.detail = msg.getvalue()
     def installed(self):
-        _repo.refresh_cache()
         for seed in self.apt_conf:
             if not self.exists_in_source(seed):
                 return False
         return True
     def install(self):
         # change souce
-        _repo.refresh_cache()
         for seed in self.apt_conf:
             self.add_to_source(self.apt_file, seed)
         self.save_source()
@@ -125,7 +114,6 @@ class _repo(I):
             raise NotImplementedError
     def remove(self):
         # change source
-        _repo.refresh_cache()
         for seed in self.apt_conf:
             self.remove_from_source(seed)
         self.save_source()
@@ -190,17 +178,14 @@ class _launchpad(I):
         print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
     def install(self):
-        _repo.refresh_cache()
         _repo.add_to_source(self.repos_file_name, self.deb_config)
         _repo.save_source()
         _repo.fresh_cache = False
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: add_signing_key(signing_key)
     def installed(self):
-        _repo.refresh_cache()
         return _repo.exists_in_source(self.deb_config)
     def remove(self):
-        _repo.refresh_cache()
         _repo.remove_from_source(self.deb_config)
         _repo.save_source()
         _repo.fresh_cache = False
