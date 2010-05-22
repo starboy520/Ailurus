@@ -444,11 +444,10 @@ def notify(title, content):
     # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
     assert isinstance(title, str) and title
     assert isinstance(content, str)
-    import pynotify
-    if not hasattr(notify,'ailurus_notify'):
-        notify.ailurus_notify = pynotify.Notification(' ',' ')
-
     try:
+        import pynotify
+        if not hasattr(notify,'ailurus_notify'):
+            notify.ailurus_notify = pynotify.Notification(' ',' ')
         icon = D+'suyun_icons/notify-icon.png'
         if title == notify.ailurus_notify.get_property('summary'):
             notify.ailurus_notify = pynotify.Notification(title, content, icon)
