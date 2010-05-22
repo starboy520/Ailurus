@@ -39,21 +39,22 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     icon = D+'sora_icons/m_fastest_repos.png'
     text = _('Fastest\nRepository')
 
+    ORG, COUNTRY, FULL_URL, SERVER, RESPONSE_TIME = range(5)
     # This value is used in UbuntuFastestMirrorPane.candidate_store .
     # If the server does not respond PING, then its response time is NO_PING_RESPONSE .
     # This value is displayed as text "No response" in TreeView.
     NO_PING_RESPONSE = 100000000
 
     def get_fastest_repository(self):
-        min_server = None
+        min = None
         min_time = self.NO_PING_RESPONSE
         # organization, country, URL, server, response time(in millisecond)
         for row in self.candidate_store:
-            server = row[2]
-            time = row[4]
+            url = row[self.FULL_URL]
+            time = row[self.RESPONSE_TIME]
             if time < min_time:
-                min_server, min_time = server, time
-        return min_server, min_time
+                min, min_time = url, time
+        return min, min_time
 
     def __print_the_fastest_repository(self, msg, current_all, current_official):
         fastest, response_time = self.get_fastest_repository()
@@ -196,7 +197,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         return scroll
     
     def __show_response_time_in_cell(self, column, cell, model, iter):
-        value = model.get_value(iter, 4)
+        value = model.get_value(iter, self.RESPONSE_TIME)
         assert isinstance(value, int)
         if value == self.NO_PING_RESPONSE: 
             text = _('No response')
@@ -213,12 +214,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         countries = set()
         for path in pathlist:
             iter = model.get_iter(path)
-            country = model.get_value(iter, 1)
+            country = model.get_value(iter, self.COUNTRY)
             countries.add(country)
         
         iter = model.get_iter_first()
         while iter:
-            country = model.get_value(iter, 1)
+            country = model.get_value(iter, self.COUNTRY)
             if country in countries:
                 selection.select_path(model.get_path(iter))
             iter = model.iter_next(iter)
@@ -309,7 +310,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         else:
             path = pathlist[0]
             iter = model.get_iter(path)
-            URL = model.get_value(iter, 2)
+            URL = model.get_value(iter, self.FULL_URL)
             self.__use_repository(URL)
     
     def __detect_servers_speed(self, urls, servers):
@@ -353,8 +354,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         servers = []
         urls = []
         for row in self.candidate_store:
-            urls.append(row[2]) 
-            servers.append(row[3])
+            urls.append(row[self.FULL_URL]) 
+            servers.append(row[self.SERVER])
         self.__detect_servers_speed(urls, servers)
         
     def __callback__copy_selected_repos(self, w, treeview):
@@ -367,7 +368,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         msg = StringIO.StringIO()
         for path in pathlist:
             iter = model.get_iter(path)
-            print >>msg, model.get_value(iter, 2)
+            print >>msg, model.get_value(iter, self.FULL_URL)
         content = msg.getvalue()
         clipboard = gtk.clipboard_get()
         clipboard.set_text(content)
@@ -382,8 +383,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         urls = []
         for path in pathlist:
             iter = model.get_iter(path)
-            server = model.get_value(iter, 3)
-            url = model.get_value(iter, 2)
+            server = model.get_value(iter, self.SERVER)
+            url = model.get_value(iter, self.FULL_URL)
             servers.append(server)
             urls.append(url)
         self.__detect_servers_speed(urls, servers)
@@ -398,8 +399,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
                 time = self.NO_PING_RESPONSE
         for row in self.candidate_store:
             try:
-                server = row[3]
-                row[4] = ResponseTime.get(server)
+                server = row[self.SERVER]
+                row[self.RESPONSE_TIME] = ResponseTime.get(server)
             except KeyError:
                 pass
         
@@ -447,15 +448,15 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         render_country = gtk.CellRendererText()
         column_country = gtk.TreeViewColumn( _('Country') )
         column_country.pack_start(render_country)
-        column_country.add_attribute(render_country, 'text', 1)
+        column_country.add_attribute(render_country, 'text', self.COUNTRY)
         column_country.set_sort_column_id(1)
         
         render_org = gtk.CellRendererText()
         render_org.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_org = gtk.TreeViewColumn( _('Organization') )
         column_org.pack_start(render_org)
-        column_org.add_attribute(render_org, 'text', 0)
-        column_org.set_sort_column_id(0)
+        column_org.add_attribute(render_org, 'text', self.ORG)
+        column_org.set_sort_column_id(self.ORG)
         column_org.set_expand(True)
         column_org.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
         
@@ -463,8 +464,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         render_url.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_url = gtk.TreeViewColumn('URL')
         column_url.pack_start(render_url)
-        column_url.add_attribute(render_url, 'text', 2)
-        column_url.set_sort_column_id(3)
+        column_url.add_attribute(render_url, 'text', self.FULL_URL)
+        column_url.set_sort_column_id(self.SERVER)
         column_url.set_expand(True)
         column_url.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
         
@@ -473,7 +474,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         column_response_time = gtk.TreeViewColumn( _('Response time') )
         column_response_time.pack_start(render_response_time)
         column_response_time.set_cell_data_func(render_response_time, self.__show_response_time_in_cell)
-        column_response_time.set_sort_column_id(4)
+        column_response_time.set_sort_column_id(self.RESPONSE_TIME)
         
         candidate_treeview = gtk.TreeView(self.sorted_store)
         candidate_treeview.set_rules_hint(True)
@@ -522,10 +523,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         if self.search_content == None:
             return True
         else:
-            org = treestore.get_value(iter, 0)
-            country = treestore.get_value(iter, 1)
-            URL = treestore.get_value(iter, 2)
-            server = treestore.get_value(iter, 3)
+            org = treestore.get_value(iter, self.ORG)
+            country = treestore.get_value(iter, self.COUNTRY)
+            URL = treestore.get_value(iter, self.FULL_URL)
+            server = treestore.get_value(iter, self.SERVER)
             return bool( self.search_content.search(org) or 
                  self.search_content.search(country) or
                  self.search_content.search(URL) or
@@ -547,7 +548,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __fill_candidate_store(self):
         for e in libserver.get_candidate_repositories():
             try:
-                res_time = ResponseTime.get(e[3])
+                res_time = ResponseTime.get(e[self.SERVER])
             except KeyError:
                 res_time = self.NO_PING_RESPONSE
             e.append(res_time)
@@ -567,7 +568,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         self.search_content = None
         self.filted_store.set_visible_func(self.__repository_visibility_function)
         self.sorted_store = gtk.TreeModelSort(self.filted_store)
-        self.sorted_store.set_sort_column_id(1, gtk.SORT_ASCENDING)
+        self.sorted_store.set_sort_column_id(self.COUNTRY, gtk.SORT_ASCENDING)
         self.__fill_candidate_store()
 
         self.progress_box = gtk.VBox(False, 5)
@@ -628,16 +629,3 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
             with open('/etc/apt/sources.list', 'w') as f:
                 f.writelines(APTSource2.all_lines())
         run_as_root('rm /etc/apt/sources.list.d/* -rf')
-        
-if __name__ == '__main__':
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    window = gtk.Window()
-    window.set_size_request(-1, 700)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.connect('delete-event', gtk.main_quit)
-    obj = UbuntuFastestMirrorPane(Dummy())
-    window.add(obj)
-    window.show_all()
-    gtk.main()
