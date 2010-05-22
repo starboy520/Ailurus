@@ -1000,7 +1000,8 @@ class APTSource:
         return ''.join(ret)
 
 class APTSource2:
-    re_pattern = None
+    re_pattern_server = None
+    re_pattern_url = None
     @classmethod
     def all_conf_files(cls):
         import glob, os
@@ -1016,6 +1017,13 @@ class APTSource2:
                 yield line
             f.close()
     @classmethod
+    def all_lines(cls):
+        ret = []
+        for file in cls.all_conf_files():
+            with open(file) as f:
+                ret.extend(f.readlines())
+        return ret
+    @classmethod
     def remove_comment(cls, line):
         return line.split('#', 1)[0].strip()
     @classmethod
@@ -1029,9 +1037,18 @@ class APTSource2:
     def get_server_from_line(cls, line):
         line = cls.remove_comment(line)
         import re
-        if cls.re_pattern is None:
-            cls.re_pattern = re.compile(r'^deb(-src)? http://([^/]+)/.*$')
-        match = cls.re_pattern.match(line)
+        if cls.re_pattern_server is None:
+            cls.re_pattern_server = re.compile(r'^deb(-src)? http://([^/]+)/.*$')
+        match = cls.re_pattern_server.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def get_url_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern_url is None:
+            cls.re_pattern_url = re.compile(r'^deb(-src)? (\S+) .*$')
+        match = cls.re_pattern_url.match(line)
         if match: return match.group(2)
         else:     return None
     @classmethod

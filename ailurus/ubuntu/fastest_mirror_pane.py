@@ -600,21 +600,11 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
 '''%{'fastest':fastest, 'version':VERSION} )
         f.close()
 
-        # We find out all files which will be opened, 
-        # including /etc/apt/sources.list and /etc/apt/sources.list.d/*.list
-        paths = APTSource.apt_source_files_list()
-        if not '/etc/apt/sources.list' in paths:
-            paths.insert(0, '/etc/apt/sources.list')
-        paths.insert(0, '/tmp/Example-of-sources.list')
-        
-        # We find out the text editor.
+        paths = ['/tmp/Example-of-sources.list'] + APTSource2.all_conf_files()
         editor = 'xdg-open'
-        import os
         if os.path.exists('/usr/bin/gedit'): editor = 'gedit'
         elif os.path.exists('/usr/bin/kate'): editor = 'kate'
         elif os.path.exists('/usr/bin/mousepad'): editor = 'mousepad'
-        
-        # Then we open the files.
         for path in paths:
             spawn_as_root("%s '%s'"%(editor, path))
 
@@ -630,18 +620,10 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         spawn_as_root(launcher)
     
     def __callback__merge_sourceslist(self, *w):
-        contents = []
-        for filename in APTSource.apt_source_files_list():
-            with open(filename) as f:
-                if len(contents) and not contents[-1].endswith('\n'):
-                    contents[-1] += '\n'
-                contents += f.readlines()
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
-                f.writelines(contents)
-        run_as_root('rm /etc/apt/sources.list.d/* -f')
-        notify(_('Merge complete'), ' ')
-            
+                f.writelines(APTSource2.all_lines())
+        run_as_root('rm /etc/apt/sources.list.d/* -rf')
         
 if __name__ == '__main__':
     class Dummy:

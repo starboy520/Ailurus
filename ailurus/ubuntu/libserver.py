@@ -398,40 +398,14 @@ def get_candidate_repositories():
     return ret
 
 def get_current_official_repositories():
-    'Return the official repositories currently in use'
-
-    version = VERSION
-    s1 = ' %s-backports ' % version
-    s2 = ' %s-proposed ' % version
-    s3 = ' %s-security ' % version
-    s4 = ' %s-updates ' % version
-
-    repos = set()
-    
-    for file in APTSource.apt_source_files_list():
-        with open(file) as f:
-            for line in f:
-                # skip blank lines or comments
-                line = line.split('#')[0].strip()
-                if len(line)==0: continue
-                # get server
-                import re
-                match = re.match(r'^deb(-src)? [a-z]+://([^/]+)/.*$', line)
-                if match:
-                    server = match.group(2)
-                    if server.endswith('archive.ubuntu.com'):
-                        repos.add(line.split()[1])
-                    elif (s1 in line) or (s2 in line) or (s3 in line) or (s4 in line): 
-                        repos.add(line.split()[1])
-                    
-    return repos
+    return APTSource2.official_servers()
 
 def get_all_current_repositories():
     'Return all repositories currently in use. For example, Launchpad.'
 
     repos = set()
     
-    for file in APTSource.apt_source_files_list():
+    for file in APTSource2.all_conf_files():
         with open(file) as f:
             for line in f:
                 # skip blank lines or comments
@@ -456,7 +430,7 @@ def change_repositories_in_source_files(changes):
         is_string_not_empty(value)
         assert ':' in value
     
-    for file in APTSource.apt_source_files_list():
+    for file in APTSource2.all_conf_files():
         # read content
         with open(file) as f:
             contents = f.readlines()
