@@ -1,4 +1,4 @@
-#Sun May 16 21:47:36 CST 2010
+#Sat May 22 14:31:19 CST 2010
 eclipse.preferences.version=1
 encoding//ailurus/clean_up_pane.py=utf-8
 encoding//ailurus/common/apps.py=utf-8
@@ -17,7 +17,6 @@ encoding//ailurus/libsetting.py=utf-8
 encoding//ailurus/libu.py=utf-8
 encoding//ailurus/loader.py=utf-8
 encoding//ailurus/main.py=utf-8
-encoding//ailurus/native_apps.py=utf-8
 encoding//ailurus/support/splashwindow.py=utf-8
 encoding//ailurus/ubuntu/__init__.py=utf-8
 encoding//ailurus/ubuntu/apps.py=utf-8

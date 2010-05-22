@@ -27,7 +27,7 @@ from lib import *
 from libu import *
 from support.checkupdate import *
 
-def __study_linux(main_view):
+def __study_linux():
     study_url_items = [ 
         # (use stock?, stock name or icon path, text, web page url, Chinese only?
 #        (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'), 
@@ -59,7 +59,6 @@ def __study_linux(main_view):
         TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
-    ret.insert(1, gtk.SeparatorMenuItem() )
     return ret
 
 def __set_wget_options(w): # called by __preferences
@@ -100,15 +99,15 @@ def __set_wget_options(w): # called by __preferences
         Config.wget_set_timeout(new_timeout)
         Config.wget_set_triesnum(new_tries)
         
-def __preferences(main_view):
+def __preferences():
     menu_query_before_exit = gtk.CheckMenuItem(_('Query before exit'))
     menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
 
-    menu_hide_quick_setup_pane = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
-    menu_hide_quick_setup_pane.set_active(Config.get_hide_quick_setup_pane())
-    menu_hide_quick_setup_pane.connect('toggled', 
+    menu_hide_quick_setup_button = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
+    menu_hide_quick_setup_button.set_active(Config.get_hide_quick_setup_pane())
+    menu_hide_quick_setup_button.connect('toggled', 
             lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
                               or Config.set_hide_quick_setup_pane(w.get_active()))
 
@@ -123,7 +122,15 @@ def __preferences(main_view):
     menu_set_wget_option = gtk.MenuItem(_("Set download parameters"))
     menu_set_wget_option.connect('activate', __set_wget_options)
     
-    return [ menu_hide_quick_setup_pane, menu_query_before_exit, menu_tip_after_logging_in, menu_set_wget_option ]
+    menu_show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
+    menu_show_software_icon.set_active(Config.get_show_software_icon())
+    menu_show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()))
+    
+    return [ menu_hide_quick_setup_button, 
+             menu_query_before_exit, 
+             menu_tip_after_logging_in, 
+             menu_set_wget_option,
+             menu_show_software_icon ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')
@@ -219,7 +226,7 @@ def show_contribution_to_ailurus():
     dialog.run()
     dialog.destroy()
 
-def __others(main_view):
+def __others():
     help_contribute = gtk.MenuItem(_('Contributing to Ailurus'))
     help_contribute.connect('activate', lambda w: show_contribution_to_ailurus())
     
@@ -252,11 +259,11 @@ def __others(main_view):
     
     return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
    
-def get_study_linux_menu(main_view):
-    return __study_linux(main_view)
+def get_study_linux_menu():
+    return __study_linux()
 
-def get_preferences_menu(main_view):
-    return __preferences(main_view)
+def get_preferences_menu():
+    return __preferences()
 
-def get_others_menu(main_view):
-    return __others(main_view)
+def get_others_menu():
+    return __others()

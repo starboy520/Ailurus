@@ -21,7 +21,6 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import traceback
 import sys, os
 from lib import *
 
@@ -64,7 +63,7 @@ def __motherboard():
              D+'umut_icons/i_motherboard.png') )
     except IOError: pass
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
         
     try:
         ret.append( row(_('Motherboard vendor:'), 
@@ -72,7 +71,7 @@ def __motherboard():
              D+'umut_icons/i_motherboard.png') )
     except IOError: pass
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
     
     return ret
 
@@ -143,7 +142,7 @@ def __cpu():
                         _64bit = _('Yes!')
             ret.append( row(_('64 bit CPU?'), _64bit, D+'umut_icons/i_cpu.png') )
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
 
     return ret
 
@@ -165,7 +164,7 @@ def __cpu_temp():
                 v = line.split(':')
             return [row(_('CPU temperature'), v[-1].strip(), D+'umut_icons/i_cpu.png')]
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
         return []
 
 def __mem():
@@ -184,7 +183,7 @@ def __mem():
                         new_string = string
                     return [row(_('Total memory:'), new_string, D+'umut_icons/i_memory.png' )]
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
         return []
 
 def __pci():
@@ -201,7 +200,7 @@ def __pci():
             elif v[0]=='Multimedia audio controller':
                 ret.append( row(_('Audio card:'), v[1].strip(), D+'umut_icons/i_audiocard.png' ) )
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
     return ret
 
 def __battery():
@@ -228,7 +227,7 @@ def __battery():
                     ret.append( row(_('Battery full capacity:'), v[1].strip(), D+'umut_icons/i_battery.png') )
     except IOError: pass
     except:
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
     return ret
 
 def get():

@@ -26,13 +26,6 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class AWN(_apt_install):
-    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
-    license = GPL
-    category = 'appearance'
-    depends = Repo_AWN_Development
-    pkgs = 'avant-window-navigator-trunk'
-    
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
@@ -227,8 +220,6 @@ class Songbird(_apt_install):
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-    def visible(self):
-        return VERSION != 'lucid'
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
@@ -236,5 +227,9 @@ class XBMC(_apt_install):
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
-    def visible(self):
-        return VERSION != 'lucid'
+
+class ElementaryTheme(_apt_install):
+    __doc__ = _('Elementary: Beautiful theme which looks like Mac OS X')
+    category = 'appearance'
+    depends = Repo_ElementaryArtwork
+    pkgs = 'elementary-icon-theme elementary-theme elementary-wallpapers'

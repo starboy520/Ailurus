@@ -39,12 +39,7 @@ Features:
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
-        ('share/desktop-directories', ['ailurus_quick_start.directory']),
-        ('/etc/xdg/menus/applications-merged', ['ailurus.menu']),
-        ('share/applications/', ['ailurus-recovery.desktop', 'ailurus-information.desktop',
-                                 'ailurus-clean-up.desktop', 'ailurus-install-software.desktop',
-                                 'ailurus.desktop', 'ailurus-fastest-repository.desktop', 'ailurus-system-setting.desktop'
-                                 ]),
+        ('share/applications/', ['ailurus.desktop']),
         
         ('share/ailurus/', ['ChangeLog']),
         

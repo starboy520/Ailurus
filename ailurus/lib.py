@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.04.2.3'
-AILURUS_RELEASE_DATE = '2010-04-25'
+AILURUS_VERSION = '10.05.6'
+AILURUS_RELEASE_DATE = '2010-05-22'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -34,6 +34,22 @@ class I:
     this_is_an_installer = True
     def self_check(self):
         'Check errors in source code'
+    def install(self):
+        raise NotImplementedError
+    def installed(self):
+        raise NotImplementedError
+    def remove(self):
+        raise NotImplementedError
+
+class C:
+    this_is_a_cure = True
+    MUST_FIX, SUGGESTION = range(2)
+    type = SUGGESTION
+    detail = ''
+    def exists(self):
+        raise NotImplementedError
+    def cure(self):
+        raise NotImplementedError
     
 class Config:
     @classmethod
@@ -116,6 +132,32 @@ class Config:
         try:       return cls.get_bool('query_before_exit')
         except:    return True
     @classmethod
+    def wget_set_timeout(cls, timeout):
+        assert isinstance(timeout, int) and timeout>0, timeout
+        cls.set_int('wget_timeout', timeout)
+    @classmethod
+    def wget_get_timeout(cls):
+        try:       value = cls.get_int('wget_timeout')
+        except: value = 20
+        return value
+    @classmethod
+    def wget_set_triesnum(cls, triesnum):
+        assert isinstance(triesnum, int) and triesnum>0, triesnum
+        cls.set_int('wget_triesnum', triesnum)
+    @classmethod
+    def wget_get_triesnum(cls):
+        try:       value = cls.get_int('wget_triesnum')
+        except: value = 3
+        return value
+    @classmethod
+    def set_show_software_icon(cls, value):
+        cls.set_bool('show_software_icon', value)
+    @classmethod
+    def get_show_software_icon(cls):
+        try: value = cls.get_bool('show_software_icon')
+        except: value = False
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
@@ -123,8 +165,7 @@ class Config:
             if value: return value # language code and encoding may be None if their values cannot be determined.
             else: return 'en_US'
         except ValueError: # may raise exception: "unknown locale"
-            import traceback
-            traceback.print_exc()
+            print_traceback()
             return 'en_US'
     @classmethod
     def is_Chinese_locale(cls):
@@ -186,43 +227,23 @@ class Config:
         except:
             return False
     @classmethod
+    def is_KDE(cls):
+        try:
+            get_output('pgrep -u $USER kdeinit')
+            return True
+        except:
+            try:
+                get_output('pgrep -u $USER kdeinit4')
+                return True
+            except: pass
+        return False
+    @classmethod
     def is_XFCE(cls):
         try:  
             get_output('pgrep -u $USER xfce4-session')
             return True
         except: 
             return False
-    @classmethod
-    def wget_set_timeout(cls, timeout):
-        assert isinstance(timeout, int) and timeout>0, timeout
-        cls.set_int('wget_timeout', timeout)
-    @classmethod
-    def wget_get_timeout(cls):
-        try:       value = cls.get_int('wget_timeout')
-        except: value = 20
-        return value
-    @classmethod
-    def wget_set_triesnum(cls, triesnum):
-        assert isinstance(triesnum, int) and triesnum>0, triesnum
-        cls.set_int('wget_triesnum', triesnum)
-    @classmethod
-    def wget_get_triesnum(cls):
-        try:       value = cls.get_int('wget_triesnum')
-        except: value = 3
-        return value
-    @classmethod
-    def set_fastest_repository(cls, value):
-        assert ':' in value
-        cls.set_string('fastest_repository', value)
-    @classmethod
-    def get_fastest_repository(cls):
-        return cls.get_string('fastest_repository')
-    @classmethod
-    def set_fastest_repository_response_time(cls, value):
-        cls.set_int('fastest_repository_response_time', value)
-    @classmethod
-    def get_fastest_repository_response_time(cls):
-        return cls.get_int('fastest_repository_response_time')
 
 def install_locale():
     import gettext
@@ -250,8 +271,7 @@ class ResponseTime:
                 time = float(lines[i+1].strip())
                 cls.map[url] = time
         except IOError:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     @classmethod
     def save(cls):
         if not cls.changed: return
@@ -262,8 +282,7 @@ class ResponseTime:
                     print >>f, key
                     print >>f, value
         except IOError:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     @classmethod
     def get(cls, url):
         is_string_not_empty(url)
@@ -305,21 +324,6 @@ class ShowALinuxSkill:
 
 class CommandFailError(Exception):
     'Fail to execute a command'
-    def __init__(self, *args):
-        new_args = list(args)
-        import os
-        arch = os.uname()[-1]
-        new_args.append(arch)
-        try:
-            with open('/etc/lsb-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        try:
-            with open('/etc/fedora-release') as f:
-                new_args.append(f.read().strip())
-        except: pass
-        new_args.append(AILURUS_VERSION)
-        Exception.__init__(self, *new_args)
 
 def run(cmd, ignore_error=False):
     is_string_not_empty(cmd)
@@ -391,19 +395,20 @@ def run_as_root(cmd, ignore_error=False):
     assert isinstance(ignore_error, bool)
     
     import os
-    if os.getuid()!=0:
-        print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
-        authenticate()
-        import dbus
-        bus = dbus.SystemBus()
-        obj = bus.get_object('cn.ailurus', '/')
-        try:
-            obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
-        except dbus.exceptions.DBusException, e:
-            if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
-            else: raise
-    else:
+    if os.getuid()==0:
         run(cmd, ignore_error)
+        return
+    
+    print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
+    authenticate()
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    try:
+        obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 def is_string_not_empty(string):
     if type(string)!=str and type(string)!=unicode: raise TypeError(string)
@@ -435,18 +440,19 @@ class TempOwn:
 
 def notify(title, content):
     'Show a notification in the right-upper corner.'
-    assert isinstance(title, str)
+    # title must not be empty. 
+    # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
+    assert isinstance(title, str) and title
     assert isinstance(content, str)
 
     try:
         import pynotify
         icon = D+'suyun_icons/notify-icon.png'
         n=pynotify.Notification(title, content, icon)
-        n.set_timeout(20000)
+        n.set_timeout(10000)
         n.show()
     except:
-        import sys, traceback
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
 
 def is32():
     import os
@@ -552,27 +558,52 @@ def run_as_root_in_terminal(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    try:
+        obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+    except dbus.exceptions.DBusException, e:
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        else: raise
 
 class RPM:
     fresh_cache = False
     __set1 = set()
+    __set2 = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
-        del cls.__set1
         cls.__set1 = set()
+        cls.__set2 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dumprpmcache.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
-            cls.__set1.add(line[:-1])
+            cls.__set1.add(line.strip())
+        task.wait()
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing.py'
+        task = subprocess.Popen(['python', path],
+            stderr=subprocess.PIPE, # must be stderr
+            )
+        for line in task.stderr: # must be stderr
+            cls.__set2.add(line.strip())
+        task.wait()
+    @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set1
+    @classmethod
+    def get_existing_pkgs_set(cls):
+        cls.refresh_cache()
+        return cls.__set2
+    @classmethod
+    def exist(cls, package_name):
+        cls.refresh_cache()
+        return package_name in cls.__set1 or package_name in cls.__set2
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
@@ -624,6 +655,7 @@ class APT:
             name = line[2:-1]
             if line[0]=='i': cls.__set1.add(name)
             else: cls.__set2.add(name)
+        task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -632,6 +664,29 @@ class APT:
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
         return cls.__set2
+    @classmethod
+    def get_autoremovable_pkgs(cls):
+        ret = []
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_autoremovable.py'
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
+        class EndOfStream:
+            pass
+        def readline(stream):
+            line = stream.readline()
+            if len(line) == 0: raise EndOfStream
+            return line.strip()
+        try:
+            while True:
+                name = readline(task.stdout)
+                size = readline(task.stdout)
+                size = long(size)
+                summary = readline(task.stdout)
+                ret.append([name, size, summary,])
+        except EndOfStream:
+            pass
+        task.wait()
+        return ret
     @classmethod
     def installed(cls, package_name):
         is_pkg_list([package_name])
@@ -721,12 +776,14 @@ class PACMAN:
             )
         for line in task.stdout:
             cls.__pkgs.add(line.split()[0])
+        task.wait()
         #get all existing package names
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__allpkgs.add(line.split()[1])
+        task.wait()
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
@@ -829,8 +886,7 @@ class KillWhenExit:
                 import os, signal
                 os.kill(task.pid, signal.SIGTERM)
             except:
-                import traceback, sys
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
         cls.task_list = []
 
 def download(url, filename):
@@ -854,94 +910,182 @@ def reset_dir():
     if sys.argv[0]!='':
         os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
 
-class APTSource:
+class APTSource2:
+    re_pattern_server = None
+    re_pattern_url = None
     @classmethod
-    def apt_source_files_list(cls):
-        'Return a list of apt source files'
+    def all_conf_files(cls):
         import glob, os
         ret = glob.glob('/etc/apt/sources.list.d/*.list')
         if os.path.exists('/etc/apt/sources.list'):
             ret.append('/etc/apt/sources.list')
         return ret
     @classmethod
-    def current_servers(cls):
-        'Return a list of currently used apt servers'
-        ret = set()
-    
-        for file in APTSource.apt_source_files_list():
+    def iter_all_lines(cls):
+        for file in cls.all_conf_files():
+            f = open(file)
+            for line in f:
+                yield line
+            f.close()
+    @classmethod
+    def all_lines(cls):
+        ret = []
+        for file in cls.all_conf_files():
             with open(file) as f:
-                for line in f:
-                    line = line.strip()
-                    if len(line)==0 or line[0]=='#': continue # skip blank lines or comments
-                    import re
-                    match = re.match(r'^deb(-src)? http://([^/]+)/.*$', line)
-                    if match:
-                        server = match.group(2)
-                        ret.add(server)
-    
-        ret = list(ret)
-        ret.sort()
+                ret.extend(f.readlines())
         return ret
     @classmethod
-    def change_servers_in_source_files(cls, changes):
-        'Input a dict: old_server->new_server'
-        'Change servers in all source files'
-
-        if not isinstance(changes, dict): raise TypeError
-        for key, value in changes.items():
-            is_string_not_empty(key)
-            is_string_not_empty(value)
+    def all_lines_contain(cls, snip):
+        snip = cls.remove_comment(snip)
+        for line in cls.iter_all_lines():
+            if snip in line: return True
+        return False
+    @classmethod
+    def all_lines_contain_all_of(cls, many_snips):
+        for snip in many_snips:
+            if not cls.all_lines_contain(snip): return False
+        return True
+    @classmethod
+    def add_lines_to_file(cls, lines, file_path = '/etc/apt/sources.list'):
+        assert isinstance(lines, list)
+        assert isinstance(file_path, str)
         
-        for file in APTSource.apt_source_files_list():
-            # read content
+        with TempOwn(file_path) as o:
+            with open(file_path) as f:
+                contents = f.readlines()
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.extend(lines)
+            with open(file_path, 'w') as f:
+                f.writelines(contents)
+    @classmethod
+    def remove_snips_from(cls, snips, file_path):
+        assert isinstance(snips, list)
+        assert isinstance(file_path, str)
+        
+        with open(file_path) as f:
+            contents = f.readlines()
+        changed = False
+        for i, line in enumerate(contents):
+            line = cls.remove_comment(line)
+            for snip in snips:
+                snip = cls.remove_comment(snip)
+                if snip in cls.remove_comment(line):
+                    contents[i] = ''
+                    changed = True
+                    break
+        if changed:
+            with TempOwn(file_path) as o:
+                with open(file_path, 'w') as f:
+                    f.writelines(contents)
+    @classmethod
+    def remove_snips_from_all_files(cls, snips):
+        assert isinstance(snips, list)
+        for file_path in cls.all_conf_files():
+            cls.remove_snips_from(snips, file_path)
+    @classmethod
+    def remove_comment(cls, line):
+        return line.split('#', 1)[0].strip()
+    @classmethod
+    def is_official_line(cls, line):
+        line = cls.remove_comment(line)
+        for snip in ['-backports', '-proposed', '-security', '-updates']:
+            snip = VERSION + snip
+            if snip in line: return True
+        return False
+    @classmethod
+    def get_server_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern_server is None:
+            cls.re_pattern_server = re.compile(r'^deb(-src)? [a-z]+://([^/]+)/.*$')
+        match = cls.re_pattern_server.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def get_url_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern_url is None:
+            cls.re_pattern_url = re.compile(r'^deb(-src)? (\S+) .*$')
+        match = cls.re_pattern_url.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def official_servers(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                server = cls.get_server_from_line(line)
+                ret.add(server)
+        return ret
+    @classmethod
+    def official_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                url = cls.get_url_from_line(line)
+                ret.add(url)
+        return ret
+    @classmethod
+    def third_party_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if not cls.is_official_line(line):
+                url = cls.get_url_from_line(line)
+                if url: ret.add(url)
+        return ret
+    @classmethod
+    def all_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            url = cls.get_url_from_line(line)
+            if url: ret.add(url)
+        return ret
+    @classmethod
+    def this_line_contain(cls, line, snip):
+        return snip in cls.remove_comment(line)
+    @classmethod
+    def this_line_contain_any_of(cls, line, snip_set):
+        for snip in snip_set:
+            if cls.this_line_contain(line, snip):
+                return True
+        return False
+    @classmethod
+    def remove_official_servers(cls):
+        offi_servers = cls.official_servers()
+        for file in cls.all_conf_files():
             with open(file) as f:
                 contents = f.readlines()
-                
-            # do replacement
             changed = False
             for i, line in enumerate(contents):
-                # skip blank lines and commented lines
-                if len(line.strip())==0 or line.strip()[0]=='#': continue
-                string = line.split('#')[0]
-                for old, new in changes.items():
-                    if old in string:
-                        contents[i] = line.replace(old, new, 1)
-                        changed = True
-                        break
-            
-            # write back
+                if cls.this_line_contain_any_of(line, offi_servers):
+                    contents[i] = ''
+                    changed = True
             if changed:
                 with TempOwn(file) as o:
                     with open(file, 'w') as f:
                         f.writelines(contents)
     @classmethod
-    def get_source_contents(cls):
-        'Return a dict: file_name->file_content'
-        ret = {}
-        for file in APTSource.apt_source_files_list():
-            with open(file) as f:
+    def add_official_url(cls, url):
+        with TempOwn('/etc/apt/sources.list') as o:
+            with open('/etc/apt/sources.list') as f:
                 contents = f.readlines()
-            ret[file] = contents
-        return ret
-    @classmethod
-    def get_apt_source_config_content(cls, strip_comments=False):
-        if not isinstance(strip_comments, bool): raise TypeError
-        
-        ret = []
-        for file in APTSource.apt_source_files_list():
-            if strip_comments:
-                with open(file) as f:
-                    for line in f:
-                        line = line.strip()
-                        if len(line)==0 or line[0]=='#': continue # skip comments and blank lines
-                        line = line.split('#', 1)[0] # strip comments
-                        ret.append(line+'\n')
-            else:
-                with open(file) as f:
-                    for line in f:
-                        if line[-1]!='\n': line+='\n'
-                        ret.append(line)
-        return ''.join(ret)
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.append('deb %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-backports restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-backports main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            % {'url':url, 'version':VERSION})
+            with open('/etc/apt/sources.list', 'w') as f:
+                f.writelines(contents)
 
 import threading
 class PingThread(threading.Thread):
@@ -1031,12 +1175,11 @@ class FirefoxExtensions:
             name = cls.analysis_method1(doc) or cls.analysis_method2(doc)  
             if name: ret.append(name) 
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     
     @classmethod
     def __get_extensions_basic(cls):
-        import os, traceback, glob
+        import os, glob
         try:
             ret = []
             extensions_path = cls.get_extensions_path()
@@ -1046,7 +1189,7 @@ class FirefoxExtensions:
                 cls.analysis_extension(extension, ret)
             return ret
         except:
-            traceback.print_exc()
+            print_traceback()
             return []
     
     @classmethod
@@ -1075,8 +1218,7 @@ def delay_notify_firefox_restart(show_notify=False):
                 else:
                     KillWhenExit.add('firefox')
             except:
-                import traceback
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
                 notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
 
 def sha1(path):
@@ -1204,7 +1346,7 @@ class R:
     def download(self):
         self.sort()
         dest = '/var/cache/ailurus/'+self.filename
-        import os, sys, traceback
+        import os, sys
         assert isinstance(self.sorted_url, list)
         for i, url in enumerate(self.sorted_url):
             print '\x1b[1;36m', _('Using mirror %(i)s. There are a total of %(total)s mirrors.') % {'i' : i+1, 'total' : len(self.sorted_url)}, '\x1b[m'
@@ -1215,7 +1357,7 @@ class R:
                 self.check(dest)
                 return dest
             except:
-                traceback.print_exc(file=sys.stderr)
+                print_traceback()
         
         raise CommandFailError(self.url)
 
@@ -1297,6 +1439,10 @@ def create_file(path, content):
         with open(path, 'w') as f:
             f.write(content)
 
+def print_traceback():
+    import sys, traceback
+    traceback.print_exc(file = sys.stderr)
+
 class Tasksel:
     fresh_cache = False
     set1 = set()
@@ -1359,6 +1505,7 @@ class Tasksel:
         to_remove = []
         for line in task.stdout:
             to_remove.append(line.strip())
+        task.wait()
         if to_remove:
             APT.remove( *to_remove )
             cls.cache_changed()
@@ -1382,8 +1529,11 @@ atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge) 
 
-import pynotify
-pynotify.init('Ailurus')
+try:
+    import pynotify
+    pynotify.init('Ailurus')
+except:
+    print 'Cannot init pynotify'
 
 try:
     Config.get_bool('show-a-linux-skill-bubble')
@@ -1392,13 +1542,13 @@ except:
         Config.set_bool('show-a-linux-skill-bubble', True)
         ShowALinuxSkill.install()
     except:
-        import traceback
-        traceback.print_exc()
+        print_traceback()
         
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 GNOME = Config.is_GNOME()
+KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()

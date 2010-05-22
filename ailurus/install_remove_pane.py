@@ -26,7 +26,8 @@ from lib import *
 from libu import *
 
 class InstallRemovePane(gtk.VBox):
-    name = _('Install/Remove')
+    icon = D+'sora_icons/m_install_remove.png'
+    text = _('Install\nSoftware')
     
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
@@ -166,14 +167,55 @@ class InstallRemovePane(gtk.VBox):
                 level2 = self.treestore.iter_next(level2)
             level1 = self.treestore.iter_next(level1)
 
+    def show_error(self, content):
+        title_box = gtk.HBox(False, 5)
+        import os
+        if os.path.exists(D+'umut_icons/bug.png'):
+            image = gtk.Image()
+            image.set_from_file(D+'umut_icons/bug.png')
+            title_box.pack_start(image, False)
+        title = label_left_align( _('Some operations failed. Would you please copy and paste following text into bug report web-page?') )
+        title_box.pack_start(title, False)
+        
+        textview = gtk.TextView()
+        gray_bg(textview)
+        textview.set_wrap_mode(gtk.WRAP_WORD)
+        textview.get_buffer().set_text(content)
+        textview.set_cursor_visible(False)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroll.add(textview)
+        scroll.set_size_request(-1, 500)
+        button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
+        button_report_bug.connect('clicked', lambda w: report_bug() )
+        button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+        button_close.connect('clicked', lambda w: window.destroy())
+        bottom_box = gtk.HBox(False, 10)
+        bottom_box.pack_start(button_report_bug, False)
+        bottom_box.pack_start(button_close, False)
+        
+        vbox = gtk.VBox(False, 5)
+        vbox.pack_start(title_box, False)
+        vbox.pack_start(scroll)
+        vbox.pack_start(bottom_box, False)
+        window = gtk.Window()
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_title(_('Some operations failed'))
+        window.set_border_width(10)
+        window.add(vbox)
+        window.show_all()
+    
     def __apply_change_thread(self):
-        import os, sys, traceback
+        import os, sys, traceback, StringIO, thread, platform
         try:
+            error_traceback = StringIO.StringIO()
+            print >>error_traceback, platform.dist()
+            print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
             r,w = os.pipe()
             os.dup2(w, sys.stdout.fileno())
-            import thread
             thread.start_new_thread(self.terminal.read, (r,) )
             run_as_root('true') # require authentication first. do not require authentication any more.
             s_i = []; s_r = []; f_i = []; f_r = []
@@ -240,26 +282,22 @@ class InstallRemovePane(gtk.VBox):
                 for tup in f_i:
                     print '\x1b[1;31m', _('Failed to install:'), tup[0].__doc__, '\x1b[m'
                     exc = tup[1]
-                    traceback.print_exception( exc[0], exc[1], exc[2], file=sys.stdout) 
+                    print >>error_traceback, tup[0].__doc__
+                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback) 
             if len(f_r):
                 for tup in f_r: 
                     print '\x1b[1;31m', _('Failed to remove:'), tup[0].__doc__, '\x1b[m'
                     exc = tup[1]
-                    traceback.print_exception( exc[0], exc[1], exc[2], file=sys.stdout)
+                    print >>error_traceback, tup[0].__doc__
+                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
             print 
 
             gtk.gdk.threads_enter()
             parentbox = self.terminal.get_widget().parent
             parentbox.pack_start(self.final_box, False)
             parentbox.show_all()
-            if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" button.
-                self._report_problems_button.show()
-                self._final_box_text.set_text(_('Some operations failed.\n'
-                  'Would you please report bugs to Ailurus developer?\n'
-                  'Please press "PrtSc" key to make a screenshot, and attach the screenshot in bug report. '))
-            else: # All operations succeeded.
-                self._report_problems_button.hide()
-                self._final_box_text.set_text(_('All works finished. '))
+            if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
+                self.show_error(error_traceback.getvalue())
             gtk.gdk.threads_leave()
             
             delay_notify_firefox_restart(True)
@@ -270,7 +308,7 @@ class InstallRemovePane(gtk.VBox):
             # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
         except:
-            traceback.print_exc(file=sys.stderr)
+            print_traceback()
         finally:
             sys.stdout.flush()
             os.close(r)
@@ -301,17 +339,6 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
-        
-    def load_state(self):
-        try:
-            hpos = Config.get_int('hpane_position')
-            self.hpaned.set_position( int(hpos) )
-        except: pass
-        self.vpaned.set_position(300)
-    
-    def save_state(self):
-        Config.set_int('hpane_position', self.hpaned.get_position())
-        Config.set_int('vpane_position', self.vpaned.get_position())
     
     def __sort_treestore ( self, model, iter1, iter2 ):
         obj1 = model.get_value ( iter1, 0 )
@@ -438,6 +465,7 @@ class InstallRemovePane(gtk.VBox):
     def __pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
         cell.set_property('pixbuf', class0.logo_pixbuf)
+        cell.set_property('visible', Config.get_show_software_icon())
         
     def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
@@ -637,15 +665,12 @@ class InstallRemovePane(gtk.VBox):
 
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)
-        self._final_box_text = gtk.Label()
+        self._final_box_text = gtk.Label(_('All works finished. '))
         self._final_box_text.set_alignment(0, 0.5)
         self.final_box.pack_start( self._final_box_text, False )
-        self._report_problems_button = image_stock_button( gtk.STOCK_DIALOG_WARNING, _('Report bugs') )
-        self._report_problems_button.connect('clicked', lambda w: report_bug() )
         _close_button = image_stock_button( gtk.STOCK_CLOSE, _('Close this terminal') )
         _close_button.connect('clicked', self.__return_to_app_view )
         _hbox = gtk.HBox(False, 5)
-        _hbox.pack_start(self._report_problems_button, False)
         _hbox.pack_start(_close_button, False) 
         self.final_box.pack_start(_hbox, False)
         
@@ -683,11 +708,13 @@ class InstallRemovePane(gtk.VBox):
             [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
             [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
             [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
+            [ i_common, _('Design'), D+'umut_icons/p_design.png', 'design' ] ,
             [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
             [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
             [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
             [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
 
+            [ i_advanced, _('Video card driver'), D+'umut_icons/p_video_card_driver.png', 'videocarddriver'],
             [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
             [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
             [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
@@ -730,20 +757,3 @@ class InstallRemovePane(gtk.VBox):
             self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
         self.show_all()
-        self.load_state()
-
-if __name__ == '__main__':
-    import common as COMMON
-    import gnome as DESKTOP
-    import ubuntu as DISTRIBUTION
-    from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    main_view = Dummy()
-    pane = InstallRemovePane(main_view, app_objs)
-    window = gtk.Window()
-    window.add(pane)
-    window.show_all()
-    gtk.main()

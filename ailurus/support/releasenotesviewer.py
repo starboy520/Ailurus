@@ -69,7 +69,7 @@ class ReleaseNotesViewer(gtk.TextView):
         and tag them accordingly"""
         offset = iter_end.get_offset() - len(text)
         offset = max(0, offset)
-        for protocol in ["http://", "https://"]:
+        for protocol in ["http://", "https://", "ftp://", ]:
             iter = buffer.get_iter_at_offset(offset)
             iter_real_end = buffer.get_end_iter()
             while True:

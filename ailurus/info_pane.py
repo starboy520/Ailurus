@@ -21,11 +21,14 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk, traceback, sys, os
+import gtk, sys, os
 from lib import *
 from libu import *
 
 class InfoPane(gtk.VBox):
+    icon = D+'sora_icons/m_hardware.png'
+    text = _('Information')
+    
     def __tree_pixbuf(self, column, cell, model, iter):
         pixbuf = model.get_value(iter, 0)
         cell.set_property('pixbuf', pixbuf)
@@ -59,11 +62,20 @@ class InfoPane(gtk.VBox):
 
         show_text_window(_('Information'), f.getvalue())
 
-    def __init__(self, main_view, tuples):
+    def __init__(self, main_view, infos):
+        assert isinstance(infos, tuple) and len(infos) == 2
+        hardware_subtree_functions, os_subtree_functions = infos
+        self.hardware_subtree_text = _('Hardware Information')
+        self.hardware_subtree_icon = get_pixbuf(D + 'sora_icons/m_hardware.png', 24, 24)
+        self.os_subtree_text = _('Linux Information')
+        self.os_subtree_icon = get_pixbuf(D+'sora_icons/m_linux.png', 24, 24)
+        
         gtk.VBox.__init__(self, False, 10)
         
-        button = gtk.Button(_('Print all information'))
+        button = image_stock_button(gtk.STOCK_PRINT, _('Print all information'))
         button.connect('clicked', lambda w: self.print_all_information())
+        align_button = gtk.Alignment(0, 0.5)
+        align_button.add(button)
         
         self.treestore = gtk.TreeStore(gtk.gdk.Pixbuf, str, str)
         self.treeview = treeview = gtk.TreeView(self.treestore)
@@ -85,16 +97,15 @@ class InfoPane(gtk.VBox):
         scrollwindow.set_policy (gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type (gtk.SHADOW_IN)
         
-        self.pack_start(button, False)
         self.pack_start(scrollwindow)
+        self.pack_start(align_button, False)
         
-        self.tuples = tuples
         self.function2trees = {}
         
-        for title, icon, functions in self.tuples:
-            pixbuf = get_pixbuf(icon, 24, 24)
-            parent = self.treestore.append(None, [pixbuf, title, None])
-            self.__build_subtree(parent, functions)
+        parent = self.treestore.append(None, [self.hardware_subtree_icon, self.hardware_subtree_text, None])
+        self.__build_subtree(parent, hardware_subtree_functions)
+        parent = self.treestore.append(None, [self.os_subtree_icon, self.os_subtree_text, None])
+        self.__build_subtree(parent, os_subtree_functions)
 
         self.treeview.expand_all()
 

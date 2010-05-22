@@ -8,6 +8,7 @@ po/ailurus.pot
 .settings/
 ailurus/.settings/
 .pydevproject
+.settings/
 .metadata
 *.pyc
 *~

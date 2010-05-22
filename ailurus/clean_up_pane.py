@@ -25,18 +25,23 @@ import gtk
 import sys
 import os
 from lib import *
+from libu import *
 
 class CleanUpPane(gtk.VBox):
-    name = _('Clean up')
+    icon = D+'other_icons/m_clean_up.png'
+    text = _('Clean up')
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False, 10)
-        self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(ReclaimMemoryBox(),False)
+        self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
+        self.pack_start(self.clean_nautilus_cache_button(), False)
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
+            self.pack_start(UbuntuAutoRemovableBox())
+            self.pack_start(UbuntuDeleteUnusedConfigBox())
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -45,7 +50,7 @@ class CleanUpPane(gtk.VBox):
     def get_folder_size(self, folder_path, please_return_integer = False):
         is_string_not_empty(folder_path)
         if os.path.exists(folder_path):
-            size = get_output('du -bsS ' + folder_path)
+            size = get_output('du -bs ' + folder_path)
             fsize = os.stat(folder_path).st_size
             size = int(size.split('\t', 1)[0]) - fsize # get all file size in folder, not folder size
         else:
@@ -68,12 +73,13 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
+            notify(_('Run command:'), 'apt-get clean')
             try: run_as_root_in_terminal('apt-get clean')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command: sudo apt-get clean'))
+        button.set_tooltip_text(_('Command:') + ' sudo apt-get clean')
         return button
     
     def clean_rpm_cache_button(self):
@@ -82,12 +88,13 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
+            notify(_('Run command:'), "yum --enablerepo='*' clean all")
             try: run_as_root("yum --enablerepo='*' clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_("Command: yum --enablerepo='*' clean all"))
+        button.set_tooltip_text(_("Command:") + " yum --enablerepo='*' clean all")
         return button
     
     def clean_ailurus_cache_button(self):
@@ -96,12 +103,13 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         def __clean_up(button, label):
+            notify(_('Run command:'), 'rm /var/cache/ailurus/* -rf')
             try: run_as_root('rm /var/cache/ailurus/* -rf')
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command: sudo rm /var/cache/ailurus/* -rf'))
+        button.set_tooltip_text(_('Command:') + ' sudo rm /var/cache/ailurus/* -rf')
         return button
     
     def clean_pacman_cache_button(self):
@@ -110,12 +118,28 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         def __clean_up(button, label):
+            notify(_('Run command:'), 'rm -rf /var/cache/pacman/pkg/*')
             try: run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command:') + ' rm -rf /var/cache/pacman/pkg/*') #sudo pacman -Sc
+        return button
+
+    def clean_nautilus_cache_button(self):
+        path = os.path.expanduser('~/.thumbnails/')
+        label = gtk.Label(self.get_button_text(_('Nautilus thumbnail image cache'), path))
+        button = gtk.Button()
+        button.add(label)
+        button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
+        def __clean_up(button, label):
+            notify(_('Run command:'), 'rm -rf ~/.thumbnails/*')
+            os.system('rm -rf ~/.thumbnails/*')
+            label.set_text(self.get_button_text(_('Nautilus thumbnail image cache'), path))
+            button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
+        button.connect('clicked', __clean_up, label)
+        button.set_tooltip_text(_('Command:') + ' rm -rf ~/.thumbnails/*') #sudo pacman -Sc
         return button
 
     def clean_recently_used_document_button(self):
@@ -126,15 +150,15 @@ class CleanUpPane(gtk.VBox):
                 os.system("echo '' > ~/.recently-used.xbel")
             else: # is dir
                 os.system("rm ~/.recently-used.xbel/* -rf")
-            notify(' ', _('"Recent documents" list is empty now.'))
+            notify(_('Run command:'), _('echo "" > ~/.recently-used.xbel'))
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
-        button.set_tooltip_text(_('Command: echo "" > ~/.recently-used.xbel'))
+        button.set_tooltip_text(_('Command:') + ' echo "" > ~/.recently-used.xbel')
         return button
 
-class ReclaimMemoryBox(gtk.HBox):
+class ReclaimMemoryBox(gtk.VBox):
     def __init__(self):
-        gtk.HBox.__init__(self, False, 10)
+        gtk.VBox.__init__(self, False, 5)
         button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
         button_free_memory.set_tooltip_text(
                                             _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
@@ -144,8 +168,21 @@ class ReclaimMemoryBox(gtk.HBox):
         import gobject
         gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
     
-        self.pack_start(button_free_memory)
-        self.pack_start(label_info, False)
+        hbox = gtk.HBox(False, 10)
+        hbox.pack_start(button_free_memory)
+        hbox.pack_start(label_info, False)
+        
+        text_buffer = gtk.TextBuffer()
+        text_buffer.set_text(_('Linux uses up extra physical memory to work as a disk buffer cache. '
+                               'Press the button above to free cache. '
+                               'This is not a destructive operation because dirty data will not be freed.\n'
+                               'Command: echo 3 >/proc/sys/vm/drop_caches'))
+        text_view = gtk.TextView(text_buffer)
+        text_view.set_wrap_mode(gtk.WRAP_WORD)
+        gray_bg(text_view)
+        
+        self.pack_start(hbox)
+        self.pack_start(text_view, False)
         
     def show_cached_memory_amount(self,label):
         try:
@@ -157,8 +194,7 @@ class ReclaimMemoryBox(gtk.HBox):
                         break
             label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
     
         return True
         
@@ -182,121 +218,330 @@ class ReclaimMemoryBox(gtk.HBox):
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify( _('%s KB memory was reclaimed.')%amount, ' ')
-            
-class UbuntuCleanKernelBox(gtk.VBox):
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 10)
-        self.current_kernel_version = current_kernel_version = self.get_current_kernel_version()
-        self.version_to_packages = {} # map version to package names
-        self.__regenerate_version_to_packages() # regenerate self.version_to_packages
-        
-        check_buttons_box = self.check_buttons_box = gtk.VBox(False, 5) # put all check buttons in this box
-        check_buttons_list = self.check_buttons_list = [] # all check buttons
-        button_apply = self.button_apply = gtk.Button(_('Remove Linux kernels'))
-        button_apply.set_sensitive(False)
-        button_apply.connect('clicked', self.remove_kernel)
-        label = gtk.Label(_('Current Linux kernel version is %s') % current_kernel_version)
-        label.set_alignment(0, 0.5)
-        self.pack_start(label, False)
-        self.__regenerate_check_buttons()
-        self.pack_start(check_buttons_box, False)
-        hbox = gtk.HBox()
-        hbox.pack_start(button_apply, False)
-        self.pack_start(hbox, False)
-        
-    def remove_kernel(self, button_apply):
-        remove_list = []
-        delete_list = []
-        for button in self.check_buttons_list:
-            if button.get_active() == False:
-                kernel_version = button.kernel_version
-                pkgs = self.version_to_packages[kernel_version]
-                if pkgs: 
-                    remove_list.extend(pkgs)
-                else:
-                    delete_list.extend([
-                            '/lib/modules/%s'%kernel_version, 
-                            '/boot/*-%s*'%kernel_version,])
-        if remove_list:
-            try:    APT.remove(*remove_list)
-            except:
-                import traceback
-                traceback.print_exc()
-            self.__regenerate_version_to_packages()
-            self.__regenerate_check_buttons()
-        if delete_list:
-            try:    run_as_root('rm -rf %s'%' '.join(delete_list))
-            except AccessDeniedError: pass
-            self.__regenerate_version_to_packages()
-            self.__regenerate_check_buttons()
-        button_apply.set_sensitive(False)
 
-    def __regenerate_version_to_packages(self):
-        import glob
-        import re
-        self.version_to_packages.clear()
-        kernel_list = glob.glob('/boot/vmlinuz-*');
-        pattern = r'vmlinuz-([0-9]+\.[0-9]+\.[0-9]+([-.])[0-9]+)'
-        for p in kernel_list:
-            match = re.search(pattern, p)
+class UbuntuCleanKernelBox(gtk.HBox):
+    def version_of_current_kernel(self):
+        return os.uname()[2]
+    
+    def refresh(self):
+        self.unused_kernels = []
+        import glob, re
+        for file_name in glob.glob('/boot/vmlinuz-*'):
+            match = re.search(r'vmlinuz-(.+(-[a-z]+)?)', file_name)
             if not match: continue
             version = match.group(1)
-            if version == self.current_kernel_version:
-                continue
-            if match.group(2) == '-':
-                pkgs = [
-                        'linux-headers-%s'%version, 
-                        'linux-headers-%s-generic'%version, 
-                        'linux-image-%s-generic'%version, 
-                        ]
-            else:
-                pkgs = None
-            if self.version_to_packages.has_key(version):
-                self.version_to_packages[version].extend(pkgs)
-            else:
-                self.version_to_packages[version] = pkgs
-
-    def check_button_toggled(self, check_button, button_apply):
-        if check_button.get_active():
-            check_button.label.set_markup("%s" % check_button.kernel_version)
-        else:
-            check_button.label.set_markup("<s>%s</s>" % check_button.kernel_version)
-        button_apply.set_sensitive(bool([c for c in
-                self.check_buttons_list if not c.get_active()]))
-
-    def __regenerate_check_buttons(self):
-        for child in self.check_buttons_box.get_children():
-            self.check_buttons_box.remove(child)
-        self.check_buttons_list = []
-        version_list = self.version_to_packages.keys()
-        version_list.sort()
-        for version in version_list:
-            label = gtk.Label(version)
-            check_button = gtk.CheckButton()
-            check_button.kernel_version = version
-            check_button.label = label
-            check_button.add(label)
-            check_button.set_active(True)
-            check_button.connect('toggled', self.check_button_toggled, self.button_apply)
-            self.check_buttons_list.append(check_button)
-            
-        if self.check_buttons_list:
-            label = gtk.Label(_('Not used Linux kernels are:'))
-            label.set_alignment(0, 0.5)
-            self.check_buttons_box.pack_start(label, False)
-            for button in self.check_buttons_list:
-                self.check_buttons_box.pack_start(button, False)
-
-        self.check_buttons_box.show_all()
+            if version == self.version_of_current_kernel(): continue
+            self.unused_kernels.append(version)
+        self.unused_kernels.sort()
     
-    def get_current_kernel_version(self):
-        import re
-        version = os.uname()[2]
-        pattern = r'[0-9.-]+'
-        match = re.search(pattern, version)
-        if match: 
-            version = match.group(0)
-            if version.endswith('-'): version = version[:-1]
-            return version
-        else: 
-            raise Exception, os.uname()[2]
+        self.liststore.clear()
+        for version in self.unused_kernels:
+            self.liststore.append([True, version, self.get_size(version)])
+        
+        self.button_delete.set_sensitive(False)
+        
+        if self.unused_kernels == []:
+            self.view.set_sensitive(False)
+            self.liststore.append([True, _('There is no unused Linux Kernel.'), 0])
+            self.button_delete.set_sensitive(False)
+        
+    def get_size(self, version):
+        import glob
+        files = glob.glob('/boot/*%s*' % version) + glob.glob('/lib/modules/%s' % version)
+        ret = 0
+        for file in files:
+            ret += os.stat(file).st_size
+        return ret
+    
+    def text_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        version = model.get_value(iter, 1)
+        size = model.get_value(iter, 2)
+        if size: size = derive_size(size)
+        else: size = ''
+        markup = '<b>%s</b>' % version
+        if size:
+            markup += '\n'
+            markup += size
+        if not keep:
+            markup += ' ' + _('will be removed')
+        cell.set_property('markup', markup)
+    
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            keep = row[0]
+            sensitive = sensitive or not keep
+        self.button_delete.set_sensitive(sensitive)
+    
+    def delete_kernel(self):
+        for row in self.liststore:
+            keep = row[0]
+            if keep: continue
+            version = row[1]
+            import re
+            pure_version = re.match('[0-9.-]+', version).group(0)
+            if pure_version.endswith('-'): pure_version = pure_version[:-1]
+            to_remove = [p for p in APT.get_installed_pkgs_set() if pure_version in p]
+            try:
+                if to_remove:
+                    APT.remove(*to_remove)
+                run_as_root('rm -rf /boot/*%s*' % version)
+                run_as_root('rm -rf /lib/modules/%s' % version)
+            except:
+                print_traceback()
+        self.refresh()
+    
+    def __init__(self):
+        self.liststore = gtk.ListStore(bool, str, long) #keep?, version, disk space cost
+        render_keep = gtk.CellRendererToggle()
+        render_keep.connect('toggled', self.toggled)
+        column_keep = gtk.TreeViewColumn()
+        column_keep.pack_start(render_keep, False)
+        column_keep.add_attribute(render_keep, 'active', 0)
+        render_text = gtk.CellRendererText()
+        column_text = gtk.TreeViewColumn(_('Unused Linux kernels'))
+        column_text.pack_start(render_text, True)
+        column_text.set_cell_data_func(render_text, self.text_data_func)
+        self.view = view = gtk.TreeView(self.liststore)
+        view.append_column(column_keep)
+        view.append_column(column_text)
+        view.set_rules_hint(True)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
+        
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        button_delete.connect('clicked', lambda *w: self.delete_kernel())
+        align = gtk.Alignment(0, 0.5)
+        align.add(button_delete)
+
+        gtk.HBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.pack_start(align, False)
+        
+        self.refresh()
+
+class UbuntuAutoRemovableBox(gtk.HBox):
+    def text_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        name = model.get_value(iter, 1)
+        size = model.get_value(iter, 2)
+        if size: size = derive_size(size)
+        else: size = ''
+        summary = model.get_value(iter, 3)
+        markup = '<b>%s</b> %s' % (name, size)
+        if not keep:
+            markup += ' ' + _('will be removed')
+        if summary:
+            markup += '\n'
+            markup += summary
+        cell.set_property('markup', markup)
+    
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            keep = row[0]
+            sensitive = sensitive or not keep
+        self.button_delete.set_sensitive(sensitive)
+
+    def show_scan_installed_package_splash(self):
+        window = gtk.Window(gtk.WINDOW_POPUP)
+        window.set_position(gtk.WIN_POS_CENTER)
+        window.set_border_width(15)
+        color = gtk.gdk.color_parse('#202020')
+        window.modify_bg(gtk.STATE_NORMAL, color)
+        text = gtk.Label()
+        text.set_markup('<span color="yellow"><big><b>%s</b></big>\n%s</span>' % 
+                                   ( _('Scanning installed packages.'), _('Please wait a few seconds.') ) )
+        window.add(text)
+        window.show_all()
+        while gtk.events_pending(): gtk.main_iteration()
+        return window
+    
+    def refresh(self):
+        window = self.show_scan_installed_package_splash()
+        pkgs = APT.get_autoremovable_pkgs()
+        window.destroy()
+        self.liststore.clear()
+        self.view.set_model(None)
+        for row in pkgs:
+            self.liststore.append([True] + row)
+        self.view.set_model(self.liststore)
+        self.view.set_sensitive(True)
+        self.button_unselect_all.set_sensitive(True)
+        
+        if pkgs == []:
+            self.view.set_sensitive(False)
+            self.liststore.append([True, _('There is no auto-removable package.'), 0, ''])
+            self.button_delete.set_sensitive(False)
+            self.button_unselect_all.set_sensitive(False)
+    
+    def unselect_all(self):
+        for row in self.liststore:
+            keep = row[0]
+            row[0] = not keep
+        self.button_delete.set_sensitive(True)
+    
+    def delete_packages(self):
+        to_delete = []
+        for row in self.liststore:
+            keep = row[0]
+            name = row[1]
+            if not keep: to_delete.append(name)
+        if to_delete:
+            try: APT.remove(*to_delete)
+            except:
+                print_traceback()
+        self.refresh()
+    
+    def __init__(self):
+        self.liststore = gtk.ListStore(bool, str, long, str) #keep?, name, disk space cost, summary 
+        render_keep = gtk.CellRendererToggle()
+        render_keep.connect('toggled', self.toggled)
+        column_keep = gtk.TreeViewColumn()
+        column_keep.pack_start(render_keep, False)
+        column_keep.add_attribute(render_keep, 'active', 0)
+        render_text = gtk.CellRendererText()
+        column_text = gtk.TreeViewColumn(_('Auto-removable packages'))
+        column_text.pack_start(render_text, True)
+        column_text.set_cell_data_func(render_text, self.text_data_func)
+        self.view = view = gtk.TreeView(self.liststore)
+        view.append_column(column_keep)
+        view.append_column(column_text)
+        view.set_rules_hint(True)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
+        
+        button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
+        button_refresh.connect('clicked', lambda *w: self.refresh())
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
+        button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        button_delete.connect('clicked', lambda *w: self.delete_packages())
+        button_box = gtk.VBox(False, 5)
+#        button_box.pack_start(button_refresh, False)
+        button_box.pack_start(button_unselect_all, False)
+        button_box.pack_start(button_delete, False)
+        align = gtk.Alignment(0, 0.5)
+        align.add(button_box)
+
+        gtk.HBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.pack_start(align, False)
+        
+        view.set_sensitive(False)
+        self.liststore.append([True, _('Please press the "Refresh" button.'), 0, ''])
+        button_unselect_all.set_sensitive(False)
+        button_delete.set_sensitive(False)
+        self.refresh()
+
+class UbuntuDeleteUnusedConfigBox(gtk.HBox):
+    def text_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        name = model.get_value(iter, 1)
+        markup = '<b>%s</b>' % name
+        if not keep:
+            markup += ' ' + _('will be removed')
+        cell.set_property('markup', markup)
+    
+    def toggled(self, render_toggle, path):
+        self.liststore[path][0] = not self.liststore[path][0]
+        sensitive = False
+        for row in self.liststore:
+            keep = row[0]
+            sensitive = sensitive or not keep
+        self.button_delete.set_sensitive(sensitive)
+
+    def get_unused_software_configuration(self):
+        ret = []
+        for line in os.popen('dpkg -l'):
+            try:
+                state, name = line.split()[:2]
+                if state == 'rc':
+                    ret.append(name)
+            except ValueError: # need more than 1 value to unpack
+                pass
+        return ret
+    
+    def refresh(self):
+        pkgs = self.get_unused_software_configuration()
+        self.liststore.clear()
+        self.view.set_model(None)
+        for name in pkgs:
+            self.liststore.append([True, name])
+        self.view.set_model(self.liststore)
+        self.view.set_sensitive(True)
+        self.button_unselect_all.set_sensitive(True)
+        
+        if pkgs == []:
+            self.view.set_sensitive(False)
+            self.liststore.append([True, _('There is no unused software configuration.')])
+            self.button_delete.set_sensitive(False)
+            self.button_unselect_all.set_sensitive(False)
+    
+    def unselect_all(self):
+        for row in self.liststore:
+            keep = row[0]
+            row[0] = not keep
+        self.button_delete.set_sensitive(True)
+    
+    def delete_packages(self):
+        to_delete = []
+        for row in self.liststore:
+            keep = row[0]
+            name = row[1]
+            if not keep: to_delete.append(name)
+        if to_delete:
+            try: run_as_root_in_terminal('dpkg --purge ' + ' '.join(to_delete))
+            except:
+                print_traceback()
+        self.refresh()
+    
+    def __init__(self):
+        self.liststore = gtk.ListStore(bool, str) #keep?, name 
+        render_keep = gtk.CellRendererToggle()
+        render_keep.connect('toggled', self.toggled)
+        column_keep = gtk.TreeViewColumn()
+        column_keep.pack_start(render_keep, False)
+        column_keep.add_attribute(render_keep, 'active', 0)
+        render_text = gtk.CellRendererText()
+        column_text = gtk.TreeViewColumn(_('Unused software configuration'))
+        column_text.pack_start(render_text, True)
+        column_text.set_cell_data_func(render_text, self.text_data_func)
+        self.view = view = gtk.TreeView(self.liststore)
+        view.append_column(column_keep)
+        view.append_column(column_text)
+        view.set_rules_hint(True)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.add(view)
+        
+        button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
+        button_refresh.connect('clicked', lambda *w: self.refresh())
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
+        button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        button_delete.connect('clicked', lambda *w: self.delete_packages())
+        button_box = gtk.VBox(False, 5)
+#        button_box.pack_start(button_refresh, False)
+        button_box.pack_start(button_unselect_all, False)
+        button_box.pack_start(button_delete, False)
+        align = gtk.Alignment(0, 0.5)
+        align.add(button_box)
+
+        gtk.HBox.__init__(self, False, 10)
+        self.pack_start(scroll)
+        self.pack_start(align, False)
+        
+        view.set_sensitive(False)
+        self.liststore.append([True, _('Please press the "Refresh" button.')])
+        button_unselect_all.set_sensitive(False)
+        button_delete.set_sensitive(False)
+        self.refresh()

@@ -21,23 +21,22 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import traceback
 import sys, os
 from lib import *
 
 def __host_name():
     __host_name.please_refresh_me = True
     try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __kernel():
     ret = []
     try: ret.append( row(_('Kernel version:'), get_output('uname -r'), D+'other_icons/tux.png' ) )
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     
     try: ret.append( row(_('Kernel arch:'), get_output('uname -m'), D+'other_icons/tux.png' ) )
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return ret
 
 def __xorg():
@@ -45,13 +44,13 @@ def __xorg():
         for line in get_output('Xorg -version').split('\n'):
             if line.startswith('X.Org X Server'):
                 return [row(_('X server version:'), line.strip(), D+'umut_icons/i_X.png')]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __gcc():
     try:
         return [row(_('GCC version:'), get_output('gcc -dumpversion').strip(), D+'umut_icons/i_gcc.png')]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __java():
@@ -60,24 +59,24 @@ def __java():
         c=re.split('"', get_output('java -version'))[1]
         return [row(_('Java version:'), c, D+'umut_icons/i_java.png' )]
     except CommandFailError: pass
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __python():
      try: return [row(_('Python version:'), sys.version.split()[0], D+'other_icons/python.png' )]
-     except: traceback.print_exc(file=sys.stderr)
+     except: print_traceback()
      return []
  
 def __gtk():
      import gtk
      try: return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'umut_icons/gtk.png')]
-     except: traceback.print_exc(file=sys.stderr)
+     except: print_traceback()
      return []
  
 def __pygtk():
      import gtk
      try: return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'umut_icons/gtk.png' )]
-     except: traceback.print_exc(file = sys.stderr)
+     except: print_traceback()
     
 def __uptime():
     __uptime.please_refresh_me = True
@@ -99,7 +98,7 @@ def __uptime():
         if minutes:
             print >>text, minutes, ngettext('minute', 'minutes', minutes),
         return [row(_('Uptime:'), text.getvalue(), D+'umut_icons/i_uptime.png' )]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __user():
@@ -107,7 +106,7 @@ def __user():
         import os
         string = '%s (UID: %s, GID: %s)'%(os.environ['USER'], os.getuid(), os.getgid() )
         return [row(_('Current user:'), string, D+'umut_icons/i_userinfo.png')]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def __opengl():
@@ -135,8 +134,7 @@ def __opengl():
                             D+'umut_icons/i_opengl.png') )
 
     except: 
-        import traceback
-        traceback.print_exc()
+        print_traceback()
         print >>sys.stderr, 'Command failed: glxinfo'
     return ret
 
@@ -144,7 +142,7 @@ def __firefox():
     try:
         return [row(_('Firefox version:'), 
           get_output('firefox -version').split(',')[0], D+'umut_icons/i_firefox.png' )]
-    except: traceback.print_exc(file=sys.stderr)
+    except: print_traceback()
     return []
 
 def get():

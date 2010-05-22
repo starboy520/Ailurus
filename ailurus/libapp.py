@@ -173,7 +173,10 @@ class _apt_install(I):
     def remove(self):
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
-        return debian_installation_command(self.pkgs)
+        string = ''
+        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
+            string = self.depends().launchpad_installation_command() + '; '
+        return '%s %ssudo apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -196,8 +199,6 @@ class _rpm_install(I):
         return fedora_installation_command(self.pkgs)
 
 class N(I):
-    def visible(self):
-        return hasattr(self, 'pkgs')
     def self_check(self):
         if hasattr(self, 'pkgs'):
             is_package_names_string(self.pkgs)
@@ -217,6 +218,16 @@ class N(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
         return self.installation_command_backend(self.pkgs)
+    def visible(self):
+        if not hasattr(self, 'pkgs'): 
+            print self.__doc__, ' is hidden because no package name.'
+            return False # It is not supported for this Linux distribution.
+        # package names change from time to time. we hide an item if package_name does not exists. 
+        for pkg in self.pkgs.split():
+            if not self.backend.exist(pkg):
+                print self.__doc__, ' is hidden because package name changed.'
+                return False
+        return True
 
     if FEDORA:
         backend = RPM
@@ -236,8 +247,6 @@ class _path_lists(I):
                 raise TypeError
             if path=='':
                 raise ValueError
-    def __init__(self):
-        raise NotImplementedError
     def install(self):
         raise NotImplementedError
     def installed(self):

@@ -26,18 +26,22 @@ from lib import *
 from libapp import *
 
 class Alacarte(N):
-    __doc__ = ("Alacarte: menu editor")
+    __doc__ = ("Alacarte: Edit GNOME menu")
     license = LGPL
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'alacarte'
-        DE = 'gnome'
+    if UBUNTU or MINT:
+        pkgs = 'alacarte'
     
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
     license = LGPL + ' http://audacity.sourceforge.net/'
     category = 'media'
     if FEDORA:
-        pkgs = 'audacity-freeworld'
+        pkgs = 'audacity'
+    if UBUNTU or MINT:
+        pkgs = 'audacity'
 
 class AutoApt(N):
     'Auto-apt'
@@ -54,7 +58,14 @@ class AutoTools(N):
         pkgs = 'autoconf automake'
     if FEDORA:
         pkgs = 'autoconf automake'
-        
+
+class AWN(N):
+    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
+    license = GPL
+    category = 'appearance'
+    if UBUNTU or MINT:
+        pkgs = 'avant-window-navigator'
+            
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
     license = GPL
@@ -91,6 +102,8 @@ class Build_Essential(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'build-essential'
+    if FEDORA:
+        pkgs = 'gcc make gdb'
 
 class CHMSee_Read_CHM_Documents(N) :
     __doc__ = _('ChmSee: A CHM file viewer')
@@ -136,24 +149,6 @@ class CodeBlocks(N):
         pkgs = 'codeblocks'
     if FEDORA:
         pkgs = 'codeblocks'
-    
-class CommonUsedProgrammingPackages(N):
-    __doc__ = _('Useful applications for programming')
-    detail = _('The tools are:\n'
-       '<i>'
-       'gcc: GNU C compiler.\n'
-       'gcc-c++: GNU C++ compiler.\n'
-       'ctags: source code parser used in vi and emacs, which allow moving to the definition of a symbol.\n'
-       'gmp-devel: GNU multiprecision arithmetic library.\n'
-       'ncurses-devel: a library controlling writing to the console screen.\n'
-       'qt3-devel: Trolltech Qt library, version 3.\n'
-       'subversion: a version control system.\n'
-       'git: a distributed version control system.'
-       '</i>')
-    category = 'dev'
-    if FEDORA:
-        pkgs = ('gcc gcc-c++ ctags gmp-devel ncurses-devel '
-            'qt3-devel subversion git')
 
 class CompizSettingManager(N):
     __doc__ = _('Compiz settings manager')
@@ -241,11 +236,7 @@ class Full_Language_Pack(N):
     if UBUNTU or MINT:
         def __init__(self):
             import locale
-            lang = locale.getdefaultlocale()
-            try:
-                lang = lang[0].split('_')[0]
-            except AttributeError: # lang == null
-                lang = 'en'
+            lang = Config.get_locale().split('_')[0]
     
             List = [
                     'language-pack-' + lang,
@@ -297,7 +288,7 @@ class Gnash(N):
     license = GPL
     if FEDORA:
         pkgs = 'gnash gnash-plugin'
-    if UBUNTU and MINT:
+    if UBUNTU or MINT:
         pkgs = 'gnash mozilla-plugin-gnash'
     
 class HardwareLister(N):
@@ -316,29 +307,6 @@ class ImageMagick(N):
     category = 'media'
     if FEDORA:
         pkgs = 'ImageMagick'
-        def __init__(self):
-            self.pkgs = 'ImageMagick'
-            self.icon = '/usr/share/applications/imagemagick.desktop'
-        def install(self):
-            N.install(self.pkgs)
-            path = D + 'umut_icons/imagemagick.png'
-            run_as_root('cp %s /usr/share/icons/ ' % path)
-            with TempOwn(self.icon) as o:
-                with open(self.icon, 'w') as f:
-                    f.write('[Desktop Entry]\n'
-                            'Name=ImageMagick\n'
-                            'Exec=display %f\n'    
-                            'Encoding=UTF-8\n'
-                            'StartupNotify=true\n'
-                            'Terminal=true\n'
-                            'Type=Application\n'
-                            'Categories=GNOME;GTK;Graphics;\n'
-                            'Icon=/usr/share/icons/imagemagick.png\n')
-        def remove(self):
-            N.remove(self.pkgs)
-            import os
-            if os.path.exists(self.icon):
-                run_as_root('rm %s' % self.icon )
     if UBUNTU or MINT:
         pkgs = 'imagemagick'
         
@@ -522,6 +490,8 @@ class Ncurses_and_qt3mt(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'libncurses5-dev libqt3-mt-dev'
+    if FEDORA:
+        pkgs = 'ncurses-devel qt3-devel'
         
 class Netbeans(N):
     __doc__ = 'Netbeans'
@@ -678,7 +648,7 @@ class Screenlets(N):
     if UBUNTU or MINT:
         pkgs = 'screenlets'
 
-class Stardict_without_Dictionaries(N):
+class Stardict(N):
     __doc__ = _('Stardict')
     category = 'office'
     license = GPL
@@ -756,35 +726,14 @@ class Umbrello(N):
         pkgs = 'umbrello'
         DE = 'kde'
 
-class VIM_and_VIMRC(N) :
-    __doc__ = _('Make VIM more suitable for programming')
-    detail = _('Install VIM and make it more suitable for programming. '
-       'The installation process is as follows. '
-       '"yum install vim-enhanced" command is executed. '
-       'Then these lines are appended into "$HOME/.vimrc" file: \n'
-       '    syntax on\n    set autoindent\n    set number\n    set mouse=a')
+class VIM(N) :
+    'VIM'
     license = GPL
     category = 'dev'
     if FEDORA:
         pkgs = 'vim-enhanced'
     if UBUNTU or MINT:
         pkgs = 'vim'
-    def __vimrc_installed(self):
-        return file_contain ( self.vimrc, *self.lines )
-    def __vimrc_install(self):
-        file_append ( self.vimrc, *self.lines )
-    def __init__(self):
-        import os
-        self.vimrc = os.path.expanduser("~/.vimrc")
-        self.lines = [ 'syntax on', 'set autoindent', 'set number', 'set mouse=a' ]
-    def install(self):
-        N.install(self)
-        self.__vimrc_install()
-    def installed(self):
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        file_remove ( self.vimrc, *self.lines )
 
 class VirtualBox(N):
     __doc__ = _('VirtualBox open source edition')
@@ -820,44 +769,14 @@ class WINE(N):
             else:
                 self.pkgs = 'wine wine-gecko'
 
-class Workrave_And_Auto_Start_It(N) :
-    __doc__ = 'Workrave'
+class Workrave(N) :
+    'Workrave'
     detail = _('The program frequently alerts you to leave computers, take micro-pauses, rest breaks and restricts you to your daily limit of using computers.')
     license = GPL + ' http://sourceforge.net/projects/workrave/'
     if FEDORA:
         pkgs = 'workrave'  
     if UBUNTU or MINT:
         pkgs = 'workrave'
-    def __init__(self):
-        import os
-        self.path = os.path.expanduser('~/.config/autostart/')
-        self.file = self.path + 'workrave.desktop'
-    def __workraveautostart(self):
-        if not os.path.exists(self.path):
-            run('mkdir -p '+self.path)
-        with open(self.file, 'w') as f:
-            f.write(
-'''[Desktop Entry]
-Name=Workrave
-Exec=workrave
-Encoding=UTF-8
-Version=1.0
-Type=Application
-X-GNOME-Autostart-enabled=true
-'''
-            )
-    def install(self):
-        N.install(self)
-        self.__workraveautostart()
-    def installed(self):
-        import os
-        if not os.path.exists(self.file): return False
-        return N.installed(self)
-    def remove(self):
-        N.remove(self)
-        import os
-        if os.path.exists(self.file):
-            os.remove(self.file)
 
 class WorldofPadman(N):
     __doc__ = _('World of Padman: Funny shooter game')
@@ -876,3 +795,29 @@ class Zhcon(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'zhcon'
+
+class Emacs(N):
+    __doc__ = _('Emacs: Advanced text editor')
+    license = GPL + ' http://www.gnu.org/software/emacs/'
+    category = 'dev'
+    if UBUNTU or MINT:
+        pkgs = 'emacs'
+    if FEDORA:
+        pkgs = 'emacs'
+
+class FreeDOOM(N):
+    __doc__ = _('FreeDOOM: Open source clone of DOOM')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'freedoom'
+
+class Inkscape(N):
+    __doc__ = _('Inkscape: Design vector image. Open source substitution of CorelDraw.')
+    category = 'design'
+    if UBUNTU or MINT: pkgs = 'inkscape'
+    if FEDORA: pkgs = 'inkscape'
+
+class K3B(N):
+    __doc__ = _('K3B: Create DVD/VCD')
+    category = 'media'
+    if UBUNTU or MINT: pkgs = 'k3b'
+    if FEDORA: pkgs = 'k3b'
