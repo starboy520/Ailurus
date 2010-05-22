@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-05-21 17:03+0800\n"
+"POT-Creation-Date: 2010-05-22 13:17+0800\n"
 "PO-Revision-Date: 2010-05-01 05:16+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-05-21 13:01+0000\n"
+"X-Launchpad-Export-Date: 2010-05-22 12:01+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -63,7 +63,7 @@ msgstr "Spouští se příkaz:"
 #: ../ailurus/clean_up_pane.py:142 ../ailurus/clean_up_pane.py:156
 #: ../ailurus/libapp.py:151 ../ailurus/libapp.py:154 ../ailurus/libapp.py:179
 #: ../ailurus/ubuntu/app_tasksel.py:53 ../ailurus/ubuntu/cure.py:59
-#: ../ailurus/ubuntu/third_party_repos.py:188
+#: ../ailurus/ubuntu/third_party_repos.py:126
 msgid "Command:"
 msgstr "Příkaz:"
 
@@ -126,7 +126,7 @@ msgid "There is no unused Linux Kernel."
 msgstr ""
 
 #: ../ailurus/clean_up_pane.py:267 ../ailurus/clean_up_pane.py:337
-#: ../ailurus/clean_up_pane.py:449 ../ailurus/fedora/rpm_recovery_pane.py:231
+#: ../ailurus/clean_up_pane.py:450 ../ailurus/fedora/rpm_recovery_pane.py:231
 #: ../ailurus/ubuntu/apt_recovery_pane.py:245
 msgid "will be removed"
 msgstr "bude odstraněn"
@@ -135,12 +135,20 @@ msgstr "bude odstraněn"
 msgid "Unused Linux kernels"
 msgstr ""
 
+#: ../ailurus/clean_up_pane.py:316 ../ailurus/clean_up_pane.py:425
+#: ../ailurus/clean_up_pane.py:530 ../ailurus/common/setting.py:69
+#: ../ailurus/common/setting.py:159 ../ailurus/common/setting.py:217
+#: ../ailurus/computer_doctor_pane.py:137
+#: ../ailurus/fedora/rpm_recovery_pane.py:276 ../ailurus/libsetting.py:265
+#: ../ailurus/ubuntu/apt_recovery_pane.py:290
+msgid "Apply"
+msgstr "Použít"
+
 #: ../ailurus/clean_up_pane.py:359 ../ailurus/ubuntu/quick_setup.py:186
 msgid "Scanning installed packages."
 msgstr "Skenování nainstalovaných balíků."
 
-#: ../ailurus/clean_up_pane.py:359 ../ailurus/main.py:286
-#: ../ailurus/ubuntu/quick_setup.py:186
+#: ../ailurus/clean_up_pane.py:359 ../ailurus/ubuntu/quick_setup.py:186
 msgid "Please wait a few seconds."
 msgstr "Prosím, vyčkejte několik sekund."
 
@@ -152,21 +160,20 @@ msgstr ""
 msgid "Auto-removable packages"
 msgstr ""
 
-#: ../ailurus/clean_up_pane.py:423 ../ailurus/clean_up_pane.py:527
-#: ../ailurus/fedora/fastest_mirror_pane.py:174
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:421
-msgid "Unselect all"
-msgstr "Odznačit všechny"
+#: ../ailurus/clean_up_pane.py:423 ../ailurus/clean_up_pane.py:528
+#: ../ailurus/fedora/fastest_mirror_pane.py:168
+msgid "Select all"
+msgstr "Označit všechny"
 
-#: ../ailurus/clean_up_pane.py:439 ../ailurus/clean_up_pane.py:543
+#: ../ailurus/clean_up_pane.py:439 ../ailurus/clean_up_pane.py:544
 msgid "Please press the \"Refresh\" button."
 msgstr ""
 
-#: ../ailurus/clean_up_pane.py:483
+#: ../ailurus/clean_up_pane.py:484
 msgid "There is no unused software configuration."
 msgstr ""
 
-#: ../ailurus/clean_up_pane.py:513
+#: ../ailurus/clean_up_pane.py:514
 msgid "Unused software configuration"
 msgstr ""
 
@@ -198,7 +205,7 @@ msgstr ""
 
 #: ../ailurus/common/apps_eclipse.py:75 ../ailurus/common/apps_eclipse.py:88
 #: ../ailurus/common/apps.py:75 ../ailurus/common/apps.py:125
-#: ../ailurus/common/native_apps.py:499
+#: ../ailurus/common/native_apps.py:502
 msgid " This application depends on Java."
 msgstr " Tato aplikace je závislá na Javě."
 
@@ -403,7 +410,7 @@ msgstr ""
 "Po instalaci je soubor \"thuthesis.tgz\" umístěný ve složce \"%s\" ."
 
 #: ../ailurus/common/apps.py:170
-#: ../ailurus/ubuntu/app_from_external_repos.py:99
+#: ../ailurus/ubuntu/app_from_external_repos.py:92
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+: Blokuje 99% reklamy"
 
@@ -936,42 +943,46 @@ msgid "Autoconf and Automake: Generate configure scripts and Makefiles"
 msgstr "Autoconf a Automake: Generuje konfigurační skripty a make soubory"
 
 #: ../ailurus/common/native_apps.py:63
+msgid "AWN (Avant Window Navigator): A dock-like bar"
+msgstr "AWN (Avant Window Navigator): Panel na plochu"
+
+#: ../ailurus/common/native_apps.py:70
 msgid "Bluefish: Edit HTML web-pages"
 msgstr "Bluefish: Upravit HTML webové stránky"
 
-#: ../ailurus/common/native_apps.py:72
+#: ../ailurus/common/native_apps.py:79
 msgid "Bluetooth support"
 msgstr "Podpora bluetooth"
 
-#: ../ailurus/common/native_apps.py:83
+#: ../ailurus/common/native_apps.py:90
 msgid "Boost library"
 msgstr "Boost knihovna"
 
-#: ../ailurus/common/native_apps.py:93
+#: ../ailurus/common/native_apps.py:100
 msgid "By installing build-essential, you will get g++, make, gdb and libc."
 msgstr "Instalací build-essential získáte g++, make, gdb a libc."
 
-#: ../ailurus/common/native_apps.py:102
+#: ../ailurus/common/native_apps.py:109
 msgid "ChmSee: A CHM file viewer"
 msgstr "ChmSee: Prohlížeč CHM souborů"
 
-#: ../ailurus/common/native_apps.py:112
+#: ../ailurus/common/native_apps.py:119
 msgid "Checkinstall help you build deb package."
 msgstr "Checkinstall pomůže sestavit .deb balíček."
 
-#: ../ailurus/common/native_apps.py:118
+#: ../ailurus/common/native_apps.py:125
 msgid "ChildsPlay: A suite of educational games for children"
 msgstr "ChildsPlay: Soubor vzdělávacích her pro děti."
 
-#: ../ailurus/common/native_apps.py:138
+#: ../ailurus/common/native_apps.py:145
 msgid "Code::Blocks - C/C++ IDE"
 msgstr "Code::Blocks - C/C++ IDE"
 
-#: ../ailurus/common/native_apps.py:147
+#: ../ailurus/common/native_apps.py:154
 msgid "Compiz settings manager"
 msgstr "Compiz settings manager"
 
-#: ../ailurus/common/native_apps.py:148
+#: ../ailurus/common/native_apps.py:155
 msgid ""
 "Compiz Fusion is the unification of the Beryl project and the community "
 "around the Compiz Window Manager. Compiz settings manager is the "
@@ -983,27 +994,27 @@ msgstr ""
 "Můžou být konfigurovány efekty jako je \"Kostka pracovní plochy\" a \"3D "
 "okna\"."
 
-#: ../ailurus/common/native_apps.py:157
+#: ../ailurus/common/native_apps.py:164
 msgid "Simple-ccsm: A simple Compiz settings manager"
 msgstr "Simple-ccsm: Jednoduchý  správce nastavení Compizu"
 
-#: ../ailurus/common/native_apps.py:164
+#: ../ailurus/common/native_apps.py:171
 msgid "Ctags and Cscope: Popular source code parsers"
 msgstr "Ctags and Cscope: Populární analyzátor zdrojového kódu"
 
-#: ../ailurus/common/native_apps.py:173
+#: ../ailurus/common/native_apps.py:180
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
 msgstr "Kompresní/dekompresní podpora pro \"*.7z\" and \"*.cab\" files"
 
-#: ../ailurus/common/native_apps.py:180
+#: ../ailurus/common/native_apps.py:187
 msgid "Make Evince be able to reveal Chinese, Japanese, Korean pdf"
 msgstr "Přinutit Evince zobrazovat Čínská, Japonská a Korejská pdf"
 
-#: ../ailurus/common/native_apps.py:188
+#: ../ailurus/common/native_apps.py:195
 msgid "Extcalc: A multifunctional graphic calculator"
 msgstr "Extcalc: Multifunkční grafický kalkulátor"
 
-#: ../ailurus/common/native_apps.py:197
+#: ../ailurus/common/native_apps.py:204
 msgid ""
 "This is a popular Chinese input method.\n"
 "It is from http://fcitx.googlecode.com/"
@@ -1011,11 +1022,11 @@ msgstr ""
 "Jedná se o populární čínskou vstupní metodu.\n"
 "Je z http://fcitx.googlecode.com/"
 
-#: ../ailurus/common/native_apps.py:207
+#: ../ailurus/common/native_apps.py:214
 msgid "Firestarter: Configure Linux firewall"
 msgstr "Firestarter: Konfigurovat Linuxový firewall"
 
-#: ../ailurus/common/native_apps.py:208
+#: ../ailurus/common/native_apps.py:215
 msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\"."
@@ -1023,54 +1034,54 @@ msgstr ""
 "Linuxový systém má firewall \"iptables\". Firestarter je grafické rozhraní "
 "pro  \"iptables\"."
 
-#: ../ailurus/common/native_apps.py:216
+#: ../ailurus/common/native_apps.py:223
 msgid "OpenGL library"
 msgstr "OpenGL knihovna"
 
-#: ../ailurus/common/native_apps.py:217
+#: ../ailurus/common/native_apps.py:224
 msgid "This is a library for writing OpenGL programs."
 msgstr "Toto je knihovna pro psaní OpenGL programů."
 
-#: ../ailurus/common/native_apps.py:226 ../ailurus/ubuntu/quick_setup.py:56
+#: ../ailurus/common/native_apps.py:233 ../ailurus/ubuntu/quick_setup.py:56
 msgid "Full language support and input method"
 msgstr "Plná jazyková podpora a vstupní metody"
 
-#: ../ailurus/common/native_apps.py:227
+#: ../ailurus/common/native_apps.py:234
 msgid ""
 "Because of live CD capacity limitation, this Linux distribution does not "
 "have full language support.\n"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:258
+#: ../ailurus/common/native_apps.py:261
 msgid "GCompris: Educational games for children aged 2 to 10"
 msgstr "GCompris: Vzdělávací hry pro děti od 2 do 10let."
 
-#: ../ailurus/common/native_apps.py:274
+#: ../ailurus/common/native_apps.py:277
 msgid "GNU multiprecision arithmetic library"
 msgstr "GNU multiprecizní aritmetická knihovna"
 
-#: ../ailurus/common/native_apps.py:283 ../ailurus/ubuntu/quick_setup.py:61
+#: ../ailurus/common/native_apps.py:286 ../ailurus/ubuntu/quick_setup.py:61
 #: ../ailurus/ubuntu/quick_setup.py:62
 msgid "Flash plugin for web browser"
 msgstr "Flash plugin pro webový prohlížeč"
 
-#: ../ailurus/common/native_apps.py:292
+#: ../ailurus/common/native_apps.py:295
 msgid "lshw: List hardware information"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:293
+#: ../ailurus/common/native_apps.py:296
 msgid "A small application which displays detailed hardware information"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:302
+#: ../ailurus/common/native_apps.py:305
 msgid "ImageMagick: Edit images"
 msgstr "ImageMagick: Úprava obrázků"
 
-#: ../ailurus/common/native_apps.py:303
+#: ../ailurus/common/native_apps.py:306
 msgid "You can start it by /usr/bin/display"
 msgstr "Možno spustit prostřednictvím /usr/bin/display"
 
-#: ../ailurus/common/native_apps.py:312
+#: ../ailurus/common/native_apps.py:315
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
@@ -1078,19 +1089,19 @@ msgstr ""
 "Kadu je IM komunikátor velmi oblíbený v Polsku.\n"
 "Příkaz : yum install kadu"
 
-#: ../ailurus/common/native_apps.py:324
+#: ../ailurus/common/native_apps.py:327
 msgid "Liferea: a RSS feed reader"
 msgstr "Liferea: RSS čtečka"
 
-#: ../ailurus/common/native_apps.py:325
+#: ../ailurus/common/native_apps.py:328
 msgid "This is a simple and easy used RSS feed reader."
 msgstr "Toto je jednoduchá RSS čtečka"
 
-#: ../ailurus/common/native_apps.py:336
+#: ../ailurus/common/native_apps.py:339
 msgid "MACChanger: change MAC address"
 msgstr "MACChanger: Změnit MAC adresu"
 
-#: ../ailurus/common/native_apps.py:337
+#: ../ailurus/common/native_apps.py:340
 msgid ""
 "MACChanger is a utility for viewing/manipulating the MAC address of network "
 "interfaces."
@@ -1098,16 +1109,16 @@ msgstr ""
 "MACChanger je nástroj pro prohlížení/manipulaci s MAC adresami síťových "
 "zařízení."
 
-#: ../ailurus/common/native_apps.py:346
+#: ../ailurus/common/native_apps.py:349
 msgid "Minicom and Kermit: Communication software for embedded MCU boards"
 msgstr "Minicom a Kermit: Komunikační software pro vložené MCU desky"
 
-#: ../ailurus/common/native_apps.py:353 ../ailurus/ubuntu/quick_setup.py:60
+#: ../ailurus/common/native_apps.py:356 ../ailurus/ubuntu/quick_setup.py:60
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
 msgstr ""
 "Moonlight: implementace Microsoft® Silverlight s otevřeným zdrojovým kódem"
 
-#: ../ailurus/common/native_apps.py:354
+#: ../ailurus/common/native_apps.py:357
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages."
@@ -1115,15 +1126,15 @@ msgstr ""
 "Moonlight poskytuje Windows® média kodeky. Pomocí této aplikace, si můžete "
 "vychutnat Windows® video/audio na webových stránkách."
 
-#: ../ailurus/common/native_apps.py:364 ../ailurus/ubuntu/quick_setup.py:57
+#: ../ailurus/common/native_apps.py:367 ../ailurus/ubuntu/quick_setup.py:57
 msgid "Multi-media codec"
 msgstr "Multimediální kodeky"
 
-#: ../ailurus/common/native_apps.py:372
+#: ../ailurus/common/native_apps.py:375
 msgid "\"Actions configuration\" entry"
 msgstr "Položka \"Nastavení akcí\""
 
-#: ../ailurus/common/native_apps.py:373
+#: ../ailurus/common/native_apps.py:376
 msgid ""
 "It allows the configuration of programs to be launched on files selected.\n"
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
@@ -1134,11 +1145,11 @@ msgstr ""
 "<span color=\"red\">Tato položka není v kontextové nabídce. Je v nabídce "
 "\"Systém\"->\"Předvolby\" .</span>"
 
-#: ../ailurus/common/native_apps.py:385
+#: ../ailurus/common/native_apps.py:388
 msgid "\"Convert audio files\" entry"
 msgstr "Položka \"Převod audio souborů\""
 
-#: ../ailurus/common/native_apps.py:386
+#: ../ailurus/common/native_apps.py:389
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -1148,11 +1159,11 @@ msgstr ""
 "Následující balíky budou taktéž nainstalovány: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: ../ailurus/common/native_apps.py:401
+#: ../ailurus/common/native_apps.py:404
 msgid "\"Repair filename\" entry"
 msgstr "Položka \"Opravit název souboru\""
 
-#: ../ailurus/common/native_apps.py:402
+#: ../ailurus/common/native_apps.py:405
 msgid ""
 "When any file with wrong encoding filename is right clicked,\n"
 " show a \"Repair filename\" menu item."
@@ -1160,11 +1171,11 @@ msgstr ""
 "Pokud je nějaký soubor se špatným kódováním názvu, pak pravým kliknutím,\n"
 " zobrazíte položku nabídky \"Opravit název souboru\"."
 
-#: ../ailurus/common/native_apps.py:410
+#: ../ailurus/common/native_apps.py:413
 msgid "\"Open as administrator\" entry"
 msgstr "Položka \"Otevřít jako správce\""
 
-#: ../ailurus/common/native_apps.py:411
+#: ../ailurus/common/native_apps.py:414
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
@@ -1174,47 +1185,47 @@ msgstr ""
 "nabídky.\n"
 "Otevření vybrané složky se správcovskými právy."
 
-#: ../ailurus/common/native_apps.py:419
+#: ../ailurus/common/native_apps.py:422
 msgid "\"Resize/Rotate images\" entries"
 msgstr "Položka \"Změnit/Otočit obrázky\""
 
-#: ../ailurus/common/native_apps.py:420
+#: ../ailurus/common/native_apps.py:423
 msgid "Resize or rotate selected images."
 msgstr "Změnit velikost nebo otočit zvolené obrázky."
 
-#: ../ailurus/common/native_apps.py:431
+#: ../ailurus/common/native_apps.py:434
 msgid "\"Open in terminal\" entry"
 msgstr "Položka \"Otevřít v terminálu\""
 
-#: ../ailurus/common/native_apps.py:432
+#: ../ailurus/common/native_apps.py:435
 msgid "Open a terminal in current folder."
 msgstr "Otevřít terminál v aktuální složce."
 
-#: ../ailurus/common/native_apps.py:443 ../ailurus/common/native_apps.py:444
+#: ../ailurus/common/native_apps.py:446 ../ailurus/common/native_apps.py:447
 msgid "\"Subversion commands\" entries"
 msgstr "Položka \"Subversion příkazy\""
 
-#: ../ailurus/common/native_apps.py:457
+#: ../ailurus/common/native_apps.py:460
 msgid "\"Search files\" entries"
 msgstr "Položky \"Hledat soubory\""
 
-#: ../ailurus/common/native_apps.py:465
+#: ../ailurus/common/native_apps.py:468
 msgid "\"Share folders\" entry"
 msgstr "Položka \"Možnosti sdílení\""
 
-#: ../ailurus/common/native_apps.py:466
+#: ../ailurus/common/native_apps.py:469
 msgid "Share folders by Samba."
 msgstr "Sdílet složky pomocí Samby."
 
-#: ../ailurus/common/native_apps.py:474 ../ailurus/common/native_apps.py:475
+#: ../ailurus/common/native_apps.py:477 ../ailurus/common/native_apps.py:478
 msgid "\"Set as wallpaper\" entry"
 msgstr "Položka \"Nastavit jako tapetu\""
 
-#: ../ailurus/common/native_apps.py:483
+#: ../ailurus/common/native_apps.py:486
 msgid "Ncurses5 and QT3"
 msgstr "Ncurses5 a QT3"
 
-#: ../ailurus/common/native_apps.py:484
+#: ../ailurus/common/native_apps.py:487
 msgid ""
 "libncurses5 is a library controlling writing to the console screen.\n"
 "libqt3-mt is Trolltech Qt library, version 3."
@@ -1222,7 +1233,7 @@ msgstr ""
 "libncurses5 je knihovnou ovládající psaní v terminálu.\n"
 "libqt3-mt is Trolltech Qt library, verze 3."
 
-#: ../ailurus/common/native_apps.py:496
+#: ../ailurus/common/native_apps.py:499
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
@@ -1232,15 +1243,15 @@ msgstr ""
 "(C, C++, Java, Ruby, a další.) a frameworky (J2SE, J2ME, a další). Oficiální "
 "stránka: http://netbeans.org/downloads/ ."
 
-#: ../ailurus/common/native_apps.py:508
+#: ../ailurus/common/native_apps.py:511
 msgid "Octave: A Matlab® compatible numerical computation appliation"
 msgstr "Octave: Aplikace pro numerické výpočty, kompatibilní s Matlab®em"
 
-#: ../ailurus/common/native_apps.py:517
+#: ../ailurus/common/native_apps.py:520
 msgid "POSIX library manual pages"
 msgstr "POSIX knihovna manuálových stránek"
 
-#: ../ailurus/common/native_apps.py:518
+#: ../ailurus/common/native_apps.py:521
 msgid ""
 "Install manual pages about Linux system calls, library calls, and POSIX "
 "libraries."
@@ -1248,34 +1259,34 @@ msgstr ""
 "Nainstalovat manuálové stránky o systémových voláních Linuxu, voláních "
 "knihovny a POSIX knihoven."
 
-#: ../ailurus/common/native_apps.py:525
+#: ../ailurus/common/native_apps.py:528
 msgid "Parcellite: clipboard manager"
 msgstr "Parcellite: Správce schránky"
 
-#: ../ailurus/common/native_apps.py:526
+#: ../ailurus/common/native_apps.py:529
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr ""
 "Jedná se o mocného správce schránky. Umožňuje zachovat současně 25 řetězců."
 
-#: ../ailurus/common/native_apps.py:535
+#: ../ailurus/common/native_apps.py:538
 msgid "PiTiVi: Movie editor"
 msgstr "PiTiVi: Video editor"
 
-#: ../ailurus/common/native_apps.py:547
+#: ../ailurus/common/native_apps.py:550
 msgid "Powertop helps you save power for your laptop."
 msgstr "Powertop pomůže ušetřit energii na vašem laptopu."
 
-#: ../ailurus/common/native_apps.py:555
+#: ../ailurus/common/native_apps.py:558
 msgid "QCad: A CAD software which supports DXF-format"
 msgstr "QCad: CAD software, který podporuje DXF-format"
 
-#: ../ailurus/common/native_apps.py:565
+#: ../ailurus/common/native_apps.py:568
 msgid "This is an IDE for Qt."
 msgstr "Toto je IDE pro Qt."
 
-#: ../ailurus/common/native_apps.py:575
+#: ../ailurus/common/native_apps.py:578
 msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
@@ -1285,21 +1296,21 @@ msgstr ""
 "stáhnout titulky pro daný video soubor. Aktuálně jsou k dispozici pouze "
 "polské titulky."
 
-#: ../ailurus/common/native_apps.py:585
+#: ../ailurus/common/native_apps.py:588
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr "QtiPlot: Rovnocenná s \"původní\" kreslící aplikací v linuxu"
 
-#: ../ailurus/common/native_apps.py:586
+#: ../ailurus/common/native_apps.py:589
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:595
+#: ../ailurus/common/native_apps.py:598
 msgid "R language (basic development environment)"
 msgstr "R language (základní vývojové prostředí)"
 
-#: ../ailurus/common/native_apps.py:596 ../ailurus/common/native_apps.py:605
+#: ../ailurus/common/native_apps.py:599 ../ailurus/common/native_apps.py:608
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read "
@@ -1309,15 +1320,15 @@ msgstr ""
 "Pokud chcete použít poslední verzi R language, prosím čtěte http://cran.r-"
 "project.org/"
 
-#: ../ailurus/common/native_apps.py:604
+#: ../ailurus/common/native_apps.py:607
 msgid "R language (full development environment and all plugins)"
 msgstr "R language (kompletní vývojové prostředí a všechny zásuvné moduly)"
 
-#: ../ailurus/common/native_apps.py:619
+#: ../ailurus/common/native_apps.py:622
 msgid "SDL library"
 msgstr "SDL knihovna"
 
-#: ../ailurus/common/native_apps.py:620
+#: ../ailurus/common/native_apps.py:623
 msgid ""
 "This is a library for writing SDL programs.\n"
 "SDL is a cross-platform multimedia library designed to provide low level "
@@ -1325,11 +1336,11 @@ msgid ""
 "video framebuffer."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:631
+#: ../ailurus/common/native_apps.py:634
 msgid "Med-bio: A lot of micro-biology software"
 msgstr "Med-bio: Program pro mikrobiologii"
 
-#: ../ailurus/common/native_apps.py:632
+#: ../ailurus/common/native_apps.py:635
 msgid ""
 "A lot of software for molecular biology, structural biology and "
 "bioinformatics."
@@ -1337,11 +1348,11 @@ msgstr ""
 "Mnoho softwaru pro molekulární biologii, strukturální biologii a "
 "bioinformatiku."
 
-#: ../ailurus/common/native_apps.py:639
+#: ../ailurus/common/native_apps.py:642
 msgid "Screenlets: Add eye candy gadgets on desktop"
 msgstr "Screenlets: Přidejte si úžasné miniaplikace na plochu"
 
-#: ../ailurus/common/native_apps.py:640
+#: ../ailurus/common/native_apps.py:643
 msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
@@ -1351,11 +1362,11 @@ msgstr ""
 "jsou lístky s poznámkami, hodiny, předpověď počasí, kalendáře a mnoho "
 "dalších, s cílem ozdobit svou pracovní plochu."
 
-#: ../ailurus/common/native_apps.py:649 ../ailurus/ubuntu/quick_setup.py:59
+#: ../ailurus/common/native_apps.py:652 ../ailurus/ubuntu/quick_setup.py:59
 msgid "Stardict"
 msgstr "Stardict"
 
-#: ../ailurus/common/native_apps.py:653
+#: ../ailurus/common/native_apps.py:656
 msgid ""
 "You can install these dictionaries by yum.\n"
 "stardict-dic-cs_CZ: Czech dictionaries\n"
@@ -1375,48 +1386,48 @@ msgstr ""
 "stardict-dic-zh_CN: Zjednodušený čínský slovník\n"
 "stardict-dic-zh_TW: Tradiční čínský slovník"
 
-#: ../ailurus/common/native_apps.py:666
+#: ../ailurus/common/native_apps.py:669
 msgid "Startup Manager: Change GRUB settings and themes"
 msgstr "Startup Manager: Změna nastavení a témat GRUBu"
 
-#: ../ailurus/common/native_apps.py:667
+#: ../ailurus/common/native_apps.py:670
 msgid "Startup manager helps you change GRUB settings and themes."
 msgstr "Startup manager pomůže změnit nastavení a témata GRUBu."
 
-#: ../ailurus/common/native_apps.py:674
+#: ../ailurus/common/native_apps.py:677
 msgid "Subversion, Git and Bzr: Popular version control systems"
 msgstr "Subversion, Git a Bzr: Populární systémy pro správu verzí"
 
-#: ../ailurus/common/native_apps.py:684
+#: ../ailurus/common/native_apps.py:687
 msgid ""
 "Create a file \"example.tex\", then compile it by \"xelatex example.tex\"."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:692
+#: ../ailurus/common/native_apps.py:695
 msgid "Tux Paint: A drawing program for young children three years and up"
 msgstr "Tux Paint: Malování pro děti od tří let."
 
-#: ../ailurus/common/native_apps.py:702
+#: ../ailurus/common/native_apps.py:705
 msgid "Typespeed is a typing practise. It only runs in terminal."
 msgstr "Typespeed je praktické psaní. Funguje pouze v terminálu."
 
-#: ../ailurus/common/native_apps.py:711
+#: ../ailurus/common/native_apps.py:714
 msgid "Ubuntu Studio Theme"
 msgstr "Téma Ubuntu Studio"
 
-#: ../ailurus/common/native_apps.py:718
+#: ../ailurus/common/native_apps.py:721
 msgid "Umbrello: UML modelling"
 msgstr "Umbrello: Modelování v UML"
 
-#: ../ailurus/common/native_apps.py:719
+#: ../ailurus/common/native_apps.py:722
 msgid "Umbrello help you do UML modelling."
 msgstr "Umbrello pomůže s UML modelováním."
 
-#: ../ailurus/common/native_apps.py:736
+#: ../ailurus/common/native_apps.py:739
 msgid "VirtualBox open source edition"
 msgstr "VirtualBox edice s otevřeným zdrojovým kódem"
 
-#: ../ailurus/common/native_apps.py:737
+#: ../ailurus/common/native_apps.py:740
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -1425,21 +1436,21 @@ msgstr ""
 "podmínek GPL. Oficiální stránky: http://www.virtualbox.org/wiki/Downloads"
 
 #. Latest Vuze is in 9.10 repository.
-#: ../ailurus/common/native_apps.py:747
+#: ../ailurus/common/native_apps.py:750
 msgid "Vuze: Download via bittorrent; Search videos"
 msgstr "Vuze: Stahujte přes bittorrent; hledejte videa"
 
-#: ../ailurus/common/native_apps.py:756
+#: ../ailurus/common/native_apps.py:759
 msgid "WINE"
 msgstr "WINE"
 
-#: ../ailurus/common/native_apps.py:757
+#: ../ailurus/common/native_apps.py:760
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux."
 msgstr "Tato aplikace je nezbytná pro běh Windows aplikací na Linuxu."
 
-#: ../ailurus/common/native_apps.py:771
+#: ../ailurus/common/native_apps.py:774
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers."
@@ -1447,11 +1458,11 @@ msgstr ""
 "Program vyzývající k opuštění počítače, malé přestávce, odpočinku a omezuje "
 "denní limit práce na počítači."
 
-#: ../ailurus/common/native_apps.py:779 ../ailurus/ubuntu/apps.py:63
+#: ../ailurus/common/native_apps.py:782 ../ailurus/ubuntu/apps.py:63
 msgid "World of Padman: Funny shooter game"
 msgstr "World of Padman: Legrační střílečka"
 
-#: ../ailurus/common/native_apps.py:780 ../ailurus/ubuntu/apps.py:64
+#: ../ailurus/common/native_apps.py:783 ../ailurus/ubuntu/apps.py:64
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
@@ -1459,11 +1470,11 @@ msgstr ""
 "Ailurus nainstaluje hru a použije poslední patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 
-#: ../ailurus/common/native_apps.py:788
+#: ../ailurus/common/native_apps.py:791
 msgid "Zhcon"
 msgstr "Zhcon"
 
-#: ../ailurus/common/native_apps.py:789
+#: ../ailurus/common/native_apps.py:792
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
@@ -1471,19 +1482,19 @@ msgstr ""
 "Zhcon pomůže zobrazit čínské znaky v TTY terminálu.\n"
 "Prohlížet můžete prostřednictvím \"zhcon --utf8\"."
 
-#: ../ailurus/common/native_apps.py:797
+#: ../ailurus/common/native_apps.py:800
 msgid "Emacs: Advanced text editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:806
+#: ../ailurus/common/native_apps.py:809
 msgid "FreeDOOM: Open source clone of DOOM"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:811
+#: ../ailurus/common/native_apps.py:814
 msgid "Inkscape: Design vector image. Open source substitution of CorelDraw."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:817
+#: ../ailurus/common/native_apps.py:820
 msgid "K3B: Create DVD/VCD"
 msgstr ""
 
@@ -1579,13 +1590,6 @@ msgstr "0 = Málo paměti na disk"
 #: ../ailurus/common/setting.py:35
 msgid "100 = Swap a lot of mem to disk"
 msgstr "100 = Značná část paměti na disk"
-
-#: ../ailurus/common/setting.py:69 ../ailurus/common/setting.py:159
-#: ../ailurus/common/setting.py:217 ../ailurus/computer_doctor_pane.py:137
-#: ../ailurus/fedora/rpm_recovery_pane.py:276 ../ailurus/libsetting.py:265
-#: ../ailurus/ubuntu/apt_recovery_pane.py:290
-msgid "Apply"
-msgstr "Použít"
 
 #: ../ailurus/common/setting.py:80
 msgid "Change the tendency of swapping memory to disk"
@@ -2399,7 +2403,7 @@ msgid "Successfully applied %s suggestions."
 msgstr ""
 
 #: ../ailurus/computer_doctor_pane.py:135
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:154
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:110
 msgid "Refresh"
 msgstr "Obnovit"
 
@@ -2485,63 +2489,61 @@ msgstr ""
 "zdroj"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:58
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:531
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:481
 msgid "All repositories:"
 msgstr "Všechny zdroje:"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:89
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:202
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:155
 msgid "No response"
 msgstr "Žádná odpověď"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:96
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:444
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:393
 msgid "Country"
 msgstr "Země"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:103
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:451
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:400
 msgid "Organization"
 msgstr "Organizace"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:121
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:469
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:418
 msgid "Response time"
 msgstr "Čas odezvy"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:133
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:187
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:481
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:140
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:431
 msgid "Click mouse right button to display the context menu."
 msgstr "Klikněte pravým tlačítkem myši k zobrazení kontextové nabídky."
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:157
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:404
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:347
 msgid "Detect response time of selected repositories"
 msgstr "Rozpoznat dobu odezvy vybraných zdrojů"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:161
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:408
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:351
 msgid "Detect response time of all repositories"
 msgstr "Rozpoznat dobu odezvy všech zdrojů"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:165
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:412
 msgid "Use selected repositories"
 msgstr "Použít vybraný zdroj"
 
-#: ../ailurus/fedora/fastest_mirror_pane.py:168
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:415
-msgid "Select all"
-msgstr "Označit všechny"
-
 #: ../ailurus/fedora/fastest_mirror_pane.py:171
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:418
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:355
 msgid "Select all repositories in these countries"
 msgstr "Vybrat všechny zdroje této země"
 
+#: ../ailurus/fedora/fastest_mirror_pane.py:174
+msgid "Unselect all"
+msgstr "Odznačit všechny"
+
 #: ../ailurus/fedora/fastest_mirror_pane.py:178
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:425
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:359
 msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
@@ -2550,19 +2552,18 @@ msgstr ""
 "vývojářům Ailuru."
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:236
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:304
 msgid "Please select one repository only"
 msgstr "Prosím, vyberte pouze jeden zdroj"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:292
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:256
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:209
 #, python-format
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
 msgstr "<span color='black'>Čas odezvy %(server)s je %(value).2f ms.</span>"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:294
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:258
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:211
 #: ../ailurus/ubuntu/quick_setup.py:245
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
@@ -2795,121 +2796,112 @@ msgstr "Verze GNOME:"
 msgid "GNOME locale:"
 msgstr "Lokalizace GNOME:"
 
-#: ../ailurus/gnome/setting.py:32
+#: ../ailurus/gnome/setting.py:31
 msgid "Show desktop content"
 msgstr "Ukázat obsah pracovní plochy"
 
-#: ../ailurus/gnome/setting.py:32 ../ailurus/gnome/setting.py:120
-#: ../ailurus/gnome/setting.py:135 ../ailurus/gnome/setting.py:439
+#: ../ailurus/gnome/setting.py:31 ../ailurus/gnome/setting.py:98
+#: ../ailurus/gnome/setting.py:113 ../ailurus/gnome/setting.py:417
 msgid "(take effect at the next time GNOME starts up)"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:36
+#: ../ailurus/gnome/setting.py:35
 msgid "Display \"Mounted volumn\" icon"
 msgstr "Zobrazit ikonu \"Připojená zařízení\""
 
-#: ../ailurus/gnome/setting.py:37
+#: ../ailurus/gnome/setting.py:36
 msgid "Put icons linking to mounted volumes on the desktop."
 msgstr "Vložit ikony na pracovní plochu odkazující na připojená zařízení."
 
-#: ../ailurus/gnome/setting.py:40
+#: ../ailurus/gnome/setting.py:39
 msgid "Display \"Computer\" icon"
 msgstr "Zobrazit ikonu \"Počítač\""
 
-#: ../ailurus/gnome/setting.py:41
+#: ../ailurus/gnome/setting.py:40
 msgid "Put an icon linking to the computer location on the desktop."
 msgstr "Vložit ikonu na pracovní plochu odkazující na umístění \"Počítač\"."
 
-#. l = gtk.Label(_('Change icon name to:'))
-#. table.attach(l, 1, 2, 2, 3, gtk.FILL, gtk.FILL)
-#. en = GConfTextEntry('/apps/nautilus/desktop/computer_icon_name')
-#. table.attach(en, 2, 3, 2, 3, gtk.FILL, gtk.FILL)
-#: ../ailurus/gnome/setting.py:50
+#: ../ailurus/gnome/setting.py:43
 msgid "Display \"Home folder\" icon"
 msgstr "Zobrazit ikonu \"Domovská složka\""
 
-#: ../ailurus/gnome/setting.py:51
+#: ../ailurus/gnome/setting.py:44
 msgid "Put an icon linking to the home folder on the desktop."
 msgstr "Vložit ikonu na pracovní plochu odkazující na domovskou složku."
 
-#. l = gtk.Label(_('Change icon name to:'))
-#. table.attach(l, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
-#. en = GConfTextEntry('/apps/nautilus/desktop/home_icon_name')
-#. table.attach(en, 2, 3, 3, 4, gtk.FILL, gtk.FILL)
-#: ../ailurus/gnome/setting.py:60
+#: ../ailurus/gnome/setting.py:47
 msgid "Display \"Network server\" icon"
 msgstr "Zobrazit ikonu \"Síťové servery\""
 
-#: ../ailurus/gnome/setting.py:61
+#: ../ailurus/gnome/setting.py:48
 msgid "Put an icon linking to the Network Servers view on the desktop."
 msgstr "Vložit ikonu na pracovní plochu odkazující na síťové servery."
 
-#. l = gtk.Label(_('Change icon name to:'))
-#. table.attach(l, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
-#. en = GConfTextEntry('/apps/nautilus/desktop/network_icon_name')
-#. table.attach(en, 2, 3, 4, 5, gtk.FILL, gtk.FILL)
-#: ../ailurus/gnome/setting.py:70
+#: ../ailurus/gnome/setting.py:51
 msgid "Display \"Trash\" icon"
 msgstr "Zobrazit ikonu \"Koš\""
 
-#: ../ailurus/gnome/setting.py:71
+#: ../ailurus/gnome/setting.py:52
 msgid "Put an icon linking to the trash on the desktop."
 msgstr "Vložit ikonu na pracovní plochu odkazující na koš."
 
-#. l = gtk.Label(_('Change icon name to:'))
-#. table.attach(l, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
-#. en = GConfTextEntry('/apps/nautilus/desktop/trash_icon_name')
-#. table.attach(en, 2, 3, 5, 6, gtk.FILL, gtk.FILL)
-#: ../ailurus/gnome/setting.py:80
+#: ../ailurus/gnome/setting.py:55
+msgid ""
+"In order to change the name of \"Computer\", \"Home folder\", \"Network "
+"server\" or \"Trash\" icon,\n"
+"please select the icon, then press F2."
+msgstr ""
+
+#: ../ailurus/gnome/setting.py:58
 msgid "Desktop icons"
 msgstr "Ikony na ploše"
 
-#: ../ailurus/gnome/setting.py:112
+#: ../ailurus/gnome/setting.py:90
 #, python-format
 msgid "The \"start-here\" icon is %s"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:120
+#: ../ailurus/gnome/setting.py:98
 msgid "Change \"start-here\" icon"
 msgstr "Změnit ikonu v hlavní nabídce"
 
-#: ../ailurus/gnome/setting.py:127
+#: ../ailurus/gnome/setting.py:105
 msgid "The login icon is ~/.face"
 msgstr "Přihlašovací ikona je ~/.face"
 
-#: ../ailurus/gnome/setting.py:135
+#: ../ailurus/gnome/setting.py:113
 msgid "Change login icon"
 msgstr "Změnit ikonu přihlášení"
 
-#: ../ailurus/gnome/setting.py:139
+#: ../ailurus/gnome/setting.py:117
 msgid "Show icons of menu entries"
 msgstr "Zobrazit ikony u položek v nabídce"
 
-#: ../ailurus/gnome/setting.py:141
+#: ../ailurus/gnome/setting.py:119
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr "Zda mohou nabídky zobrazovat ikonu vedle položky v nabídce."
 
-#: ../ailurus/gnome/setting.py:143
+#: ../ailurus/gnome/setting.py:121
 msgid "Menu entry icons setting"
 msgstr "Nastavení ikon u položek v nabídce"
 
-#: ../ailurus/gnome/setting.py:148
+#: ../ailurus/gnome/setting.py:126
 msgid "Show icon in buttons"
 msgstr "Zobrazit ikonu na tlačítkách"
 
-#: ../ailurus/gnome/setting.py:150
+#: ../ailurus/gnome/setting.py:128
 msgid "Whether buttons may display an icon next to text."
 msgstr "Zda na tlačítkách mohou být zobrazeny ikony vedle textu."
 
-#: ../ailurus/gnome/setting.py:152
+#: ../ailurus/gnome/setting.py:130
 msgid "Button icons setting"
 msgstr "Nastavení ikon tlačítek"
 
-#: ../ailurus/gnome/setting.py:156
+#: ../ailurus/gnome/setting.py:134
 msgid "Disable terminal bell"
 msgstr "Zakázat pípnutí terminálu"
 
-#: ../ailurus/gnome/setting.py:158
+#: ../ailurus/gnome/setting.py:136
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
@@ -2917,15 +2909,15 @@ msgstr ""
 "Pokud je hodnota nastavena na pravda, gnome terminál nebude generovat "
 "zvukové pípnutí, když se stane chyba."
 
-#: ../ailurus/gnome/setting.py:160
+#: ../ailurus/gnome/setting.py:138
 msgid "Terminal beep sound setting"
 msgstr "Nastavení pípnutí terminálu"
 
-#: ../ailurus/gnome/setting.py:164
+#: ../ailurus/gnome/setting.py:142
 msgid "Automatically mount CD and flash disks"
 msgstr "Automaticky připojit CD a flash disky"
 
-#: ../ailurus/gnome/setting.py:166
+#: ../ailurus/gnome/setting.py:144
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
@@ -2933,63 +2925,63 @@ msgstr ""
 "Pokud je hodnota nastavena na pravda, pak bude Nautilus automaticky "
 "připojovat média jako jsou CD a flash disky."
 
-#: ../ailurus/gnome/setting.py:168
+#: ../ailurus/gnome/setting.py:146
 msgid "Show more permissions setting in file property dialog"
 msgstr "Zobrazit více možností v dialogu oprávnění k souboru"
 
-#: ../ailurus/gnome/setting.py:171
+#: ../ailurus/gnome/setting.py:149
 msgid "More Nautilus settings"
 msgstr "Rozšířená nastavení Nautila"
 
-#: ../ailurus/gnome/setting.py:193
+#: ../ailurus/gnome/setting.py:171
 msgid "Larger font"
 msgstr "Větší písmo"
 
-#: ../ailurus/gnome/setting.py:196 ../ailurus/gnome/setting.py:205
+#: ../ailurus/gnome/setting.py:174 ../ailurus/gnome/setting.py:183
 msgid "Change these GConf keys:\n"
 msgstr "Změnit tyto GConf klíče:\n"
 
-#: ../ailurus/gnome/setting.py:202
+#: ../ailurus/gnome/setting.py:180
 msgid "Smaller font"
 msgstr "Menší písmo"
 
-#: ../ailurus/gnome/setting.py:215
+#: ../ailurus/gnome/setting.py:193
 msgid "One-click changing font size"
 msgstr "Jedním kliknutím změnit velikost písma"
 
-#: ../ailurus/gnome/setting.py:218 ../ailurus/gnome/setting.py:227
+#: ../ailurus/gnome/setting.py:196 ../ailurus/gnome/setting.py:205
 msgid "The layout of window title-bar buttons"
 msgstr "Rozložení tlačítek v záhlaví okna"
 
-#: ../ailurus/gnome/setting.py:219 ../ailurus/gnome/setting.py:289
+#: ../ailurus/gnome/setting.py:197 ../ailurus/gnome/setting.py:267
 #: ../ailurus/libsetting.py:38 ../ailurus/libsetting.py:54
 #: ../ailurus/libsetting.py:99 ../ailurus/libsetting.py:246
 #: ../ailurus/libsetting.py:278
 msgid "GConf key: "
 msgstr "GConf klíč: "
 
-#: ../ailurus/gnome/setting.py:220
+#: ../ailurus/gnome/setting.py:198
 msgid "It can be used in Metacity only."
 msgstr "Může být použito pouze metacity."
 
-#: ../ailurus/gnome/setting.py:222
+#: ../ailurus/gnome/setting.py:200
 msgid "GNOME classic"
 msgstr "GNOME klasik"
 
-#: ../ailurus/gnome/setting.py:222
+#: ../ailurus/gnome/setting.py:200
 msgid "MAC OS X"
 msgstr "MAC OS X"
 
-#: ../ailurus/gnome/setting.py:230
+#: ../ailurus/gnome/setting.py:208
 msgid "double-clicked by mouse left button:"
 msgstr "dvojité kliknutí levým tlačítkem myši:"
 
-#: ../ailurus/gnome/setting.py:231 ../ailurus/gnome/setting.py:244
+#: ../ailurus/gnome/setting.py:209 ../ailurus/gnome/setting.py:222
 msgid "The effects of double-clicking on the title bar."
 msgstr "Efekty dvojitého kliknutí na záhlaví okna."
 
-#: ../ailurus/gnome/setting.py:231 ../ailurus/gnome/setting.py:233
-#: ../ailurus/gnome/setting.py:235 ../ailurus/libsetting.py:39
+#: ../ailurus/gnome/setting.py:209 ../ailurus/gnome/setting.py:211
+#: ../ailurus/gnome/setting.py:213 ../ailurus/libsetting.py:39
 #: ../ailurus/libsetting.py:55 ../ailurus/libsetting.py:134
 #: ../ailurus/libsetting.py:141
 msgid ""
@@ -2999,147 +2991,147 @@ msgstr ""
 "\n"
 "GConf klíč: "
 
-#: ../ailurus/gnome/setting.py:232
+#: ../ailurus/gnome/setting.py:210
 msgid "clicked by mouse right button:"
 msgstr "kliknutí pravým tlačítkem myši:"
 
-#: ../ailurus/gnome/setting.py:233 ../ailurus/gnome/setting.py:253
+#: ../ailurus/gnome/setting.py:211 ../ailurus/gnome/setting.py:231
 msgid "The effects of right-clicking on the title bar."
 msgstr "Efekty kliknutí pravým tlačítkem myši na záhlaví okna."
 
-#: ../ailurus/gnome/setting.py:234
+#: ../ailurus/gnome/setting.py:212
 msgid "clicked by mouse wheel:"
 msgstr "kliknutí kolečkem myši:"
 
-#: ../ailurus/gnome/setting.py:235 ../ailurus/gnome/setting.py:262
+#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:240
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr "Efekty kliknutí kolečkem myši na záhlaví okna."
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "maximize"
 msgstr "maximalizovat"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "minimize"
 msgstr "minimalizovat"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "roll up"
 msgstr "zasunout"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "put behind others"
 msgstr "přenést za ostatní"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "maximize horizontally"
 msgstr "maximalizovat vodorovně"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:251
-#: ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:220 ../ailurus/gnome/setting.py:229
+#: ../ailurus/gnome/setting.py:238
 msgid "maximize vertically"
 msgstr "maximalizovat svisle"
 
-#: ../ailurus/gnome/setting.py:251 ../ailurus/gnome/setting.py:260
+#: ../ailurus/gnome/setting.py:229 ../ailurus/gnome/setting.py:238
 msgid "show menu"
 msgstr "zobrazit nabídku"
 
-#: ../ailurus/gnome/setting.py:265
+#: ../ailurus/gnome/setting.py:243
 msgid "Window effect after that window title bar is ..."
 msgstr "Efekty okna po kliknutí na záhlaví ..."
 
-#: ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:248
 msgid "Show \"Input method\" entry"
 msgstr "Zobrazit položku \"Vstupní metody\""
 
-#: ../ailurus/gnome/setting.py:271 ../ailurus/gnome/setting.py:274
+#: ../ailurus/gnome/setting.py:249 ../ailurus/gnome/setting.py:252
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr "Tato volba ovlivňuje Gedit a všechna textová pole GTK."
 
-#: ../ailurus/gnome/setting.py:273
+#: ../ailurus/gnome/setting.py:251
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr "Zobrazit položku \"Vložit řídící znak Unicode\""
 
-#: ../ailurus/gnome/setting.py:276
+#: ../ailurus/gnome/setting.py:254
 msgid "Text-boxes context menu"
 msgstr "Textová pole kontextové nabídky"
 
-#: ../ailurus/gnome/setting.py:282
+#: ../ailurus/gnome/setting.py:260
 msgid "Show login splash image: "
 msgstr "Zobrazit přihlašovací splash obrázek: "
 
-#: ../ailurus/gnome/setting.py:284
+#: ../ailurus/gnome/setting.py:262
 msgid ""
 "If its value is true, a splash image is displayed after you log in to GNOME."
 msgstr ""
 "Pokud je hodnotou pravda, splash obrázek je zobrazen po přihlášení do GNOME."
 
-#: ../ailurus/gnome/setting.py:297
+#: ../ailurus/gnome/setting.py:275
 msgid "GNOME splash image"
 msgstr "GNOME splash obrázek"
 
-#: ../ailurus/gnome/setting.py:303
+#: ../ailurus/gnome/setting.py:281
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr ""
 "Tato nastavení omezují pouze aktuálního uživatele. Nemají vliv na ostatní "
 "uživatele."
 
-#: ../ailurus/gnome/setting.py:305
+#: ../ailurus/gnome/setting.py:283
 msgid "Disable Alt+F2 (Launch application)"
 msgstr "Zakázat Alt+F2 (spustit aplikaci)."
 
-#: ../ailurus/gnome/setting.py:307
+#: ../ailurus/gnome/setting.py:285
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr ""
 "Zakázat aktuálnímu uživateli klávesovou zkratku Alt+F2 ke spouštění aplikací."
 
-#: ../ailurus/gnome/setting.py:309
+#: ../ailurus/gnome/setting.py:287
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr "Zakázat Ctrl+Alt+L (uzamknout obrazovku)."
 
-#: ../ailurus/gnome/setting.py:311
+#: ../ailurus/gnome/setting.py:289
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr ""
 "Zakázat aktuálnímu uživateli klávesovou zkratku Ctrl+Alt+L k uzamčení "
 "obrazovky."
 
-#: ../ailurus/gnome/setting.py:313
+#: ../ailurus/gnome/setting.py:291
 msgid "Disable \"print\" entry in all menus."
 msgstr "Zakázat položku \"tisk\" do všech nabídek."
 
-#: ../ailurus/gnome/setting.py:315
+#: ../ailurus/gnome/setting.py:293
 msgid "Prevent current user from printing any documents."
 msgstr "Zakázat aktuálnímu uživateli tisk libovolných dokumentů."
 
-#: ../ailurus/gnome/setting.py:317
+#: ../ailurus/gnome/setting.py:295
 msgid "Disable \"print setup\" entry in all menus."
 msgstr "Zakázat položku \"nastavení tiskárny\" do všech nabídek."
 
-#: ../ailurus/gnome/setting.py:319
+#: ../ailurus/gnome/setting.py:297
 msgid "Prevent current user from modifying print settings."
 msgstr "Zakázat aktuálnímu uživateli upravovat nastavení tisku."
 
-#: ../ailurus/gnome/setting.py:321
+#: ../ailurus/gnome/setting.py:299
 msgid "Disable \"save as\" entry in all menus."
 msgstr "Zakázat položku \"uložit jako\" do všech nabídek."
 
-#: ../ailurus/gnome/setting.py:323
+#: ../ailurus/gnome/setting.py:301
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr ""
 "Zakázat aktuálnímu uživateli ukládat soubory pomocí dialogu \"Uložit jako "
 "...\""
 
-#: ../ailurus/gnome/setting.py:325
+#: ../ailurus/gnome/setting.py:303
 msgid "Forbid running multiple GNOME session."
 msgstr "Zakázat spouštět více GNOME sezení."
 
-#: ../ailurus/gnome/setting.py:327
+#: ../ailurus/gnome/setting.py:305
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
@@ -3147,50 +3139,50 @@ msgstr ""
 "Zakázat aktuálnímu uživateli přepnout na jiný účet, pokud se před přepnutím "
 "nejdříve z GNOME neodhlásí."
 
-#: ../ailurus/gnome/setting.py:329
+#: ../ailurus/gnome/setting.py:307
 msgid "Restriction on current user"
 msgstr "Omezení aktuálního uživatele"
 
-#: ../ailurus/gnome/setting.py:336
+#: ../ailurus/gnome/setting.py:314
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr "Složka mezipaměti náhledů je v \"%s/.thumbnails\"."
 
-#: ../ailurus/gnome/setting.py:339
+#: ../ailurus/gnome/setting.py:317
 msgid "Size of each thumbnail (in pixels):"
 msgstr "Velikost každého náhledu (v pixelech):"
 
-#: ../ailurus/gnome/setting.py:341 ../ailurus/gnome/setting.py:349
-#: ../ailurus/gnome/setting.py:357
+#: ../ailurus/gnome/setting.py:319 ../ailurus/gnome/setting.py:327
+#: ../ailurus/gnome/setting.py:335
 #, python-format
 msgid "GConf key: %s"
 msgstr "GConf klíč: %s"
 
-#: ../ailurus/gnome/setting.py:347
+#: ../ailurus/gnome/setting.py:325
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr "Maximální velikost mezipaměti s náhledy (v megabajtech):"
 
-#: ../ailurus/gnome/setting.py:355
+#: ../ailurus/gnome/setting.py:333
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr "Maximální čas, ve kterém zůstávají náhledy v mezipaměti (ve dnech):"
 
-#: ../ailurus/gnome/setting.py:363
+#: ../ailurus/gnome/setting.py:341
 msgid "Nautilus thumbnail settings"
 msgstr "Nastavení náhledů v Nautilu"
 
-#: ../ailurus/gnome/setting.py:367
+#: ../ailurus/gnome/setting.py:345
 msgid "Configure autostart applications"
 msgstr "Konfigurovat automatické spuštění aplikací"
 
-#: ../ailurus/gnome/setting.py:367
+#: ../ailurus/gnome/setting.py:345
 msgid "(Command: gnome-session-properties)"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:370
+#: ../ailurus/gnome/setting.py:348
 msgid "Remember running applications when you log out."
 msgstr "Zapamatovat běžící aplikace při odhlášení."
 
-#: ../ailurus/gnome/setting.py:372
+#: ../ailurus/gnome/setting.py:350
 msgid ""
 "If its value is true, GNOME will remember the running applications when you "
 "log out, and re-launch these applications at the next time you log in to "
@@ -3199,11 +3191,11 @@ msgstr ""
 "Pokud je hodnota nastavena na pravda, bude si GNOME pamatovat běžící "
 "aplikace při odhlášení a znovu je spustí při následujícím přihlášení."
 
-#: ../ailurus/gnome/setting.py:375
+#: ../ailurus/gnome/setting.py:353
 msgid "Prompt you before you log out from GNOME."
 msgstr "Zobrazit výzvu před odhlášením z GNOME."
 
-#: ../ailurus/gnome/setting.py:377
+#: ../ailurus/gnome/setting.py:355
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
@@ -3211,7 +3203,7 @@ msgstr ""
 "Pokud je hodnotou nepravda, GNOME sezení bude ukončeno okamžitě po kliknutí "
 "na nabídku \"Systém\" -> \"Odhlásit\"."
 
-#: ../ailurus/gnome/setting.py:379
+#: ../ailurus/gnome/setting.py:357
 msgid "Allow connection from remote hosts."
 msgstr "Povolit připojení ze vzdáleného počítače."
 
@@ -3224,113 +3216,113 @@ msgstr "Povolit připojení ze vzdáleného počítače."
 #. _('If its value is false, Gnome will not show confirmation '
 #. 'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
 #. table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-#: ../ailurus/gnome/setting.py:392
+#: ../ailurus/gnome/setting.py:370
 msgid "Activate screen saver when computer is idle for long time"
 msgstr "Aktivovat šetřič obrazovky, když je počítač dlouho nečinný."
 
-#: ../ailurus/gnome/setting.py:396
+#: ../ailurus/gnome/setting.py:374
 msgid "Lock screen when screen saver is activated"
 msgstr "Uzamknout obrazovku, když je aktivován šetřič obrazovky."
 
-#: ../ailurus/gnome/setting.py:400
+#: ../ailurus/gnome/setting.py:378
 msgid "Lock screen after hibernating"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:403
+#: ../ailurus/gnome/setting.py:381
 msgid "Lock screen after suspending"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:406
+#: ../ailurus/gnome/setting.py:384
 msgid "GNOME session"
 msgstr "GNOME sezení"
 
-#: ../ailurus/gnome/setting.py:412
+#: ../ailurus/gnome/setting.py:390
 msgid "LCD brightness when on AC power:"
 msgstr "Jas LCD displeje při napájení ze sítě:"
 
-#: ../ailurus/gnome/setting.py:414 ../ailurus/gnome/setting.py:420
+#: ../ailurus/gnome/setting.py:392 ../ailurus/gnome/setting.py:398
 msgid "GConf Key: "
 msgstr "GConf klíč: "
 
-#: ../ailurus/gnome/setting.py:418
+#: ../ailurus/gnome/setting.py:396
 msgid "LCD dimming amount when on battery:"
 msgstr "Jas LCD displeje při napájení z baterie:"
 
-#: ../ailurus/gnome/setting.py:424
+#: ../ailurus/gnome/setting.py:402
 msgid "Backlight"
 msgstr "Podsvícení"
 
-#: ../ailurus/gnome/setting.py:439
+#: ../ailurus/gnome/setting.py:417
 msgid "Display content of your home folder on desktop"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:459
+#: ../ailurus/gnome/setting.py:437
 msgid "Display \"GNOME control center\" entry in \"System\" menu"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:460
+#: ../ailurus/gnome/setting.py:438
 msgid ""
 "Create a file ~/.local/share/applications/gnome-control-center.desktop"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:468
+#: ../ailurus/gnome/setting.py:446
 msgid "Change default file manager to:"
 msgstr "Změnit výchozího správce souborů na:"
 
-#: ../ailurus/gnome/setting.py:473
+#: ../ailurus/gnome/setting.py:451
 msgid "Change default panel program to:"
 msgstr "Změnit výchozí aplikaci pro panel na:"
 
-#: ../ailurus/gnome/setting.py:478
+#: ../ailurus/gnome/setting.py:456
 msgid "Change default window manager to:"
 msgstr "Změnit výchozího správce oken na:"
 
-#: ../ailurus/gnome/setting.py:485
+#: ../ailurus/gnome/setting.py:463
 msgid "Advance settings"
 msgstr "Pokročilá nastavení"
 
-#: ../ailurus/gnome/setting.py:489
+#: ../ailurus/gnome/setting.py:467
 msgid "Enable GNOME panel animations"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:491
+#: ../ailurus/gnome/setting.py:469
 msgid "Lock down all GNOME panels"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:491
+#: ../ailurus/gnome/setting.py:469
 msgid "(take effect at the next time when GNOME starts up)"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:493
+#: ../ailurus/gnome/setting.py:471
 msgid "Confirm before removing a panel"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:496
+#: ../ailurus/gnome/setting.py:474
 msgid "GNOME panels settings"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:500
+#: ../ailurus/gnome/setting.py:478
 msgid "Do not list username"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:502
+#: ../ailurus/gnome/setting.py:480
 msgid "Do not display \"restart\" button"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:505
+#: ../ailurus/gnome/setting.py:483
 msgid "Login window settings"
 msgstr ""
 
-#: ../ailurus/gnome/setting.py:508
+#: ../ailurus/gnome/setting.py:486
 msgid "Command line"
 msgstr "Příkazový řádek"
 
-#: ../ailurus/gnome/setting.py:509 ../ailurus/gnome/setting.py:522
+#: ../ailurus/gnome/setting.py:487 ../ailurus/gnome/setting.py:500
 #: ../ailurus/system_setting_pane.py:61
 msgid "Shortcut key"
 msgstr "Klávesová zkratka"
 
-#: ../ailurus/gnome/setting.py:518
+#: ../ailurus/gnome/setting.py:496
 #, python-format
 msgid "%2d:"
 msgstr "%2d:"
@@ -3459,11 +3451,12 @@ msgid ""
 "bug report web-page?"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:190 ../ailurus/main.py:186
+#: ../ailurus/install_remove_pane.py:190 ../ailurus/main.py:195
 msgid "Click here to report bug via web-page"
 msgstr "Klikněte zde pro nahlášení chyby přes webové stránky"
 
-#: ../ailurus/install_remove_pane.py:192 ../ailurus/main.py:188
+#: ../ailurus/install_remove_pane.py:192 ../ailurus/libu.py:171
+#: ../ailurus/main.py:197
 msgid "Close"
 msgstr "Zavřít"
 
@@ -3747,8 +3740,8 @@ msgid "Removing packages:"
 msgstr "Odstraňují se balíky:"
 
 #. (c) 2005-2007 Canonical, GPL
-#: ../ailurus/lib.py:726 ../ailurus/ubuntu/fastest_mirror_pane.py:294
-#: ../ailurus/ubuntu/quick_setup.py:330
+#: ../ailurus/lib.py:726 ../ailurus/ubuntu/fastest_mirror_pane.py:251
+#: ../ailurus/ubuntu/quick_setup.py:331
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "Probíhá \"apt-get update\". Čekejte prosím."
 
@@ -3791,74 +3784,74 @@ msgstr "%.1f minut"
 msgid "%d seconds"
 msgstr "%d sekund"
 
-#: ../ailurus/lib.py:1027 ../ailurus/lib.py:1032
+#: ../ailurus/lib.py:1115 ../ailurus/lib.py:1120
 msgid "Opening web page"
 msgstr "Otevírá se webová stránka"
 
-#: ../ailurus/lib.py:1164
+#: ../ailurus/lib.py:1252
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "Čas odezvy serveru %(name)s je %(time).1f ms."
 
-#: ../ailurus/lib.py:1166
+#: ../ailurus/lib.py:1254
 #, python-format
 msgid "Server %s does not respond."
 msgstr "Server %s nereaguje."
 
-#: ../ailurus/lib.py:1253
+#: ../ailurus/lib.py:1341
 msgid "Checking file integrity ..."
 msgstr "Kontrola integrity souborů ..."
 
-#: ../ailurus/lib.py:1257
+#: ../ailurus/lib.py:1345
 msgid "Good."
 msgstr "Dobrý."
 
-#: ../ailurus/lib.py:1264
+#: ../ailurus/lib.py:1352
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr "Používá se zrcadlo %(i)s. K dispozici je celkem %(total)s zrcadel."
 
-#: ../ailurus/lib.py:1410
+#: ../ailurus/lib.py:1498
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr "Kontrola bezpečně odstranitelných balíků. Prosím čekejte."
 
-#: ../ailurus/lib.py:1429
+#: ../ailurus/lib.py:1517
 msgid "GNU General Public License"
 msgstr "GNU General Public License"
 
-#: ../ailurus/lib.py:1430
+#: ../ailurus/lib.py:1518
 msgid "GNU Lesser General Public License"
 msgstr "GNU Lesser General Public License"
 
-#: ../ailurus/lib.py:1431
+#: ../ailurus/lib.py:1519
 msgid "Eclipse Public License"
 msgstr "Eclipse Public License"
 
-#: ../ailurus/lib.py:1432
+#: ../ailurus/lib.py:1520
 msgid "Mozilla Public License"
 msgstr "Mozilla Public License"
 
-#: ../ailurus/lib.py:1433
+#: ../ailurus/lib.py:1521
 msgid "Berkeley Software Distribution License"
 msgstr "Berkeley Software Distribution License"
 
-#: ../ailurus/lib.py:1434
+#: ../ailurus/lib.py:1522
 msgid "MIT License"
 msgstr "MIT License"
 
-#: ../ailurus/lib.py:1435
+#: ../ailurus/lib.py:1523
 msgid "Common Development and Distribution License"
 msgstr "Common Development and Distribution License"
 
-#: ../ailurus/lib.py:1436
+#: ../ailurus/lib.py:1524
 msgid "Aptana Public License"
 msgstr "Aptana Public License"
 
-#: ../ailurus/lib.py:1437
+#: ../ailurus/lib.py:1525
 msgid "Artistic License"
 msgstr "Artistic License"
 
-#: ../ailurus/lib.py:1480
+#: ../ailurus/lib.py:1568
 msgid "Your Linux distribution is not supported. :("
 msgstr ""
 
@@ -3886,6 +3879,10 @@ msgid ""
 msgstr ""
 "\n"
 "Minimální hodnota: %(min)s. Maximální hodnota: %(max)s."
+
+#: ../ailurus/libu.py:164 ../ailurus/main.py:187
+msgid "Copy text to clipboard"
+msgstr ""
 
 #: ../ailurus/main.py:32
 msgid "Warning!"
@@ -3931,36 +3928,32 @@ msgstr ""
 "Prosím, restartujte svůj počítač, nebo spusťte démon s použitím <b>su</b> "
 "nebo <b>sudo</b>:"
 
-#: ../ailurus/main.py:172
+#: ../ailurus/main.py:173
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
 "Objevena chyba. Mohli byste ji prosím sdělit vývojářům Ailuru? Děkuji!"
 
-#: ../ailurus/main.py:173
+#: ../ailurus/main.py:174
 msgid "Please copy and paste following text into bug report web-page."
 msgstr ""
 
-#: ../ailurus/main.py:199
+#: ../ailurus/main.py:209
 msgid "Bug appears!"
 msgstr "Objevena chyba!"
 
-#: ../ailurus/main.py:286
-msgid "Loading module ..."
-msgstr ""
-
-#: ../ailurus/main.py:294
+#: ../ailurus/main.py:291
 msgid "Quit"
 msgstr "Ukončit"
 
-#: ../ailurus/main.py:299
+#: ../ailurus/main.py:296
 msgid "Others"
 msgstr "Ostatní"
 
-#: ../ailurus/main.py:302
+#: ../ailurus/main.py:299
 msgid "Preferences"
 msgstr "Předvolby"
 
-#: ../ailurus/main.py:305
+#: ../ailurus/main.py:302
 msgid ""
 "Study\n"
 "Linux"
@@ -3968,11 +3961,15 @@ msgstr ""
 "Studovat\n"
 "Linux"
 
-#: ../ailurus/main.py:359
+#: ../ailurus/main.py:344
+msgid "Please wait a few seconds"
+msgstr ""
+
+#: ../ailurus/main.py:366
 msgid "Are you sure to exit?"
 msgstr "Opravdu ukončit?"
 
-#: ../ailurus/main.py:360
+#: ../ailurus/main.py:367
 msgid "Do not query me any more."
 msgstr "Příště se mě nedotazovat."
 
@@ -4139,7 +4136,7 @@ msgstr "V názvech a podrobnostech"
 msgid "Search"
 msgstr "Hledat"
 
-#: ../ailurus/support/splashwindow.py:45
+#: ../ailurus/support/splashwindow.py:44
 msgid ""
 "<span color=\"grey\"><span color=\"#00A0E9\">Help</span> <span "
 "color=\"grey\">you install some nice applications.\n"
@@ -4257,34 +4254,30 @@ msgstr ""
 "daném nastavení :-)"
 
 #: ../ailurus/ubuntu/app_from_external_repos.py:30
-msgid "AWN (Avant Window Navigator): A dock-like bar"
-msgstr "AWN (Avant Window Navigator): Panel na plochu"
-
-#: ../ailurus/ubuntu/app_from_external_repos.py:37
 msgid "Acire: A Python code fragment manager"
 msgstr "Acire: Správce fragmentů python kódu"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:47
+#: ../ailurus/ubuntu/app_from_external_repos.py:40
 msgid "Audacious: Audio player"
 msgstr "Audacious: Hudební přehrávač"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:54
+#: ../ailurus/ubuntu/app_from_external_repos.py:47
 msgid "Blueman: Graphical blue-tooth manager"
 msgstr "Blueman: Grafický bluetooth správce"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:61
+#: ../ailurus/ubuntu/app_from_external_repos.py:54
 msgid "Christine: Media player"
 msgstr "Christine: Multimediální přehrávač"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:68
+#: ../ailurus/ubuntu/app_from_external_repos.py:61
 msgid "Chromium: Web browser"
 msgstr "Chromium: Webový prohlížeč"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:75
+#: ../ailurus/ubuntu/app_from_external_repos.py:68
 msgid "Mplayer with \"vod\" protocol support"
 msgstr "Mplayer s podporou protokolu \"vod\""
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:76
+#: ../ailurus/ubuntu/app_from_external_repos.py:69
 msgid ""
 "Install mplayer and comicview. Mplayer supports \"vod\" protocol. \"vod\" "
 "protocol is used in some online video sites such as SJTU comic."
@@ -4293,68 +4286,68 @@ msgstr ""
 "Protokol \"vod\" je používán u některých online video sítí jako je SJTU "
 "comic."
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:112
+#: ../ailurus/ubuntu/app_from_external_repos.py:105
 msgid "Exaile: Audio player"
 msgstr "Exaile: Hudební přehrávač"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:119
+#: ../ailurus/ubuntu/app_from_external_repos.py:112
 msgid "Firefox 3.6"
 msgstr "Firefox 3.6"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:128
+#: ../ailurus/ubuntu/app_from_external_repos.py:121
 msgid "Getting Things Gnome: GTD tool"
 msgstr "Getting Things Gnome: GTD nástroj"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:137
+#: ../ailurus/ubuntu/app_from_external_repos.py:130
 msgid "Gmchess: Chinese chess game"
 msgstr "Gmchess: Čínské šachy"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:144
+#: ../ailurus/ubuntu/app_from_external_repos.py:137
 msgid "GNOME colors themes"
 msgstr "GNOME colors themes"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:154
+#: ../ailurus/ubuntu/app_from_external_repos.py:147
 msgid "Global Menu: A globally shared menu bar"
 msgstr "Global Menu: Globálně sdílená nabídka"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:162
+#: ../ailurus/ubuntu/app_from_external_repos.py:155
 msgid "Moovida: Media player"
 msgstr "Moovida: Multimediální centrum"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:169
+#: ../ailurus/ubuntu/app_from_external_repos.py:162
 msgid "OSD-Lyrics: Display lyrics"
 msgstr "OSD-Lyrics: Zobrazuje text"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:176
-#: ../ailurus/ubuntu/third_party_repos.py:471
+#: ../ailurus/ubuntu/app_from_external_repos.py:169
+#: ../ailurus/ubuntu/third_party_repos.py:402
 msgid "Pidgin (beta version)"
 msgstr "Pidgin (beta verze)"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:194
+#: ../ailurus/ubuntu/app_from_external_repos.py:187
 msgid "PlayOnLinux: A graphical front-end for wine"
 msgstr "PlayOnLinux: Grafický frontend pro Wine"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:201
+#: ../ailurus/ubuntu/app_from_external_repos.py:194
 msgid "RSSOwl: RSS feed reader"
 msgstr "RSSOwl: RSS čtečka"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:208
+#: ../ailurus/ubuntu/app_from_external_repos.py:201
 msgid "RedNoteBook: A desktop diary application"
 msgstr "RedNoteBook: Aplikace Deník pro Desktop"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:217
+#: ../ailurus/ubuntu/app_from_external_repos.py:210
 msgid "Shutter: A screen-shot application"
 msgstr "Shutter: Aplikací k vytváření snímků"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:225
+#: ../ailurus/ubuntu/app_from_external_repos.py:218
 msgid "Songbird: Open source substitution of iTunes"
 msgstr "Songbird: Open source náhrada iTunes"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:232
+#: ../ailurus/ubuntu/app_from_external_repos.py:225
 msgid "XBMC: Home entertainment system"
 msgstr "XBMC: Zábavní domácí systém"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:239
+#: ../ailurus/ubuntu/app_from_external_repos.py:232
 msgid "Elementary: Beautiful theme which looks like Mac OS X"
 msgstr ""
 
@@ -4532,68 +4525,21 @@ msgstr ""
 msgid "change %(old)s to %(new)s"
 msgstr "změnit %(old)s na %(new)s"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:61
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
-msgid "The fastest repository is %s;"
-msgstr "Nejrychlejší zdroj je %s;"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:61
-#, python-format
-msgid "Its response time is %s millisecond."
-msgstr "Jeho čas odezvy je %s milisekund."
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:63
-msgid ""
-"<span color=\"red\"><big>We have not searched out the fastest "
-"repository.</big></span>"
+msgid "The fastest repository is %s"
 msgstr ""
-"<span color=\"red\"><big>Nebyl vyhledán nejrychlejší zdroj.</big></span>"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:65
+#, python-format
+msgid "(%s millisecond)"
+msgstr ""
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:67
-msgid "<span color=\"blue\">The fastest repository is being used.</span>"
-msgstr "<span color=\"blue\">Nejrychlejší zdroj je používán..</span>"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:69
-msgid ""
-"<span color=\"red\"><big>The fastest repository is not being "
-"used.</big></span>"
+msgid "Currently you are using these third-party repositories:"
 msgstr ""
-"<span color=\"red\"><big>Nejrychlejší zdroj není používán..</big></span>"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:73
-msgid "Currently you are using these repositories:"
-msgstr "Aktuálně se používají tyto zdroje:"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:76
-msgid "(Official repository)"
-msgstr "(Oficiální zdroj)"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:77
-msgid "(Third-party repository)"
-msgstr "(Zdroj třetí strany)"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:86
-msgid "There is one configuration file in /etc/apt/sources.list.d/"
-msgstr "Existuje jeden konfigurační soubor v /etc/apt/sources.list.d/"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:87
-#, python-format
-msgid "There are %s configuration files in /etc/apt/sources.list.d/"
-msgstr "Existují %s konfigurační soubory v /etc/apt/sources.list.d/"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:90
-msgid "They are:"
-msgstr "Jsou to:"
-
-#. print tip
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:103
-msgid ""
-"<small>(Click mouse right button to display the context menu.)</small>"
-msgstr ""
-"<small>(Klikněte pravým tlačítkem myši k zobrazení kontextové "
-"nabídky.)</small>"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:121
 msgid ""
 "<b>Backup the configuration of repositories:</b>\n"
 "cd /etc/apt/\n"
@@ -4611,42 +4557,38 @@ msgstr ""
 "cd /etc/apt/\n"
 "sudo tar xzf ~/sources.backup.tar.gz"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:142
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:98
 msgid "Backup and restore the configuration of repositories"
 msgstr "Záloha a obnova konfigurace zdrojů"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:156
-msgid "Use the fastest repository"
-msgstr "Použit nejrychlejší zdroj"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:158
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:112
 msgid "Edit repository configuration by text editor"
 msgstr "Upravit konfiguraci zdrojů pomocí textového editoru"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:160
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:114
 msgid "Edit repository configuration by Synaptic"
 msgstr "Upravit konfiguraci zdrojů pomocí Synapticu"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:162
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:116
 msgid ""
 "Merge all files in /etc/apt/sources.list.d/ into /etc/apt/sources.list"
 msgstr ""
 "Sloučit všechny soubory z /etc/apt/sources.list.d/ do /etc/apt/sources.list"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:164
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:118
 msgid "How to backup and restore the configuration of repositories?"
 msgstr "Jak zálohovat a obnovit konfiguraci zdrojů?"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:270
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:223
 #, python-format
 msgid "Currently you are using %s."
 msgstr "Aktuálně se používá %s."
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:277
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:230
 msgid "Change repository"
 msgstr "Změnit zdroj"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:586
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:537
 msgid ""
 "# Do not edit this file. This is just an example.\n"
 "# The following content can be copy-pasted into /etc/apt/sources.list\n"
@@ -4655,10 +4597,6 @@ msgstr ""
 "# Neupravujte tento soubor. Jedná se pouze o příklad.\n"
 "# Následující obsah můžete zkopírovat a vložit do /etc/apt/sources.list\n"
 "\n"
-
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:643
-msgid "Merge complete"
-msgstr "Sloučení kompletní"
 
 #: ../ailurus/ubuntu/libserver.py:29
 msgid "Argentina"
@@ -5136,7 +5074,7 @@ msgstr ""
 msgid "Install hardware drivers"
 msgstr "Instalovat ovladače hardwaru"
 
-#: ../ailurus/ubuntu/quick_setup.py:72 ../ailurus/ubuntu/quick_setup.py:418
+#: ../ailurus/ubuntu/quick_setup.py:72 ../ailurus/ubuntu/quick_setup.py:419
 msgid "Quick setup"
 msgstr "Rychlé nastavení"
 
@@ -5208,24 +5146,24 @@ msgid "Apply the fastest repository:"
 msgstr "Použít nejrychlejší zdroj"
 
 #. apt-get update
-#: ../ailurus/ubuntu/quick_setup.py:329
+#: ../ailurus/ubuntu/quick_setup.py:330
 msgid "Run command: \"sudo apt-get update\""
 msgstr "Spuštěn příkaz: \"sudo apt-get update\""
 
-#: ../ailurus/ubuntu/quick_setup.py:382
+#: ../ailurus/ubuntu/quick_setup.py:383
 msgid "Ongoing:"
 msgstr "Probíhá:"
 
-#: ../ailurus/ubuntu/quick_setup.py:387
+#: ../ailurus/ubuntu/quick_setup.py:388
 msgid "Successful"
 msgstr "Úspěch"
 
-#: ../ailurus/ubuntu/quick_setup.py:390
+#: ../ailurus/ubuntu/quick_setup.py:391
 msgid "Failed"
 msgstr "Selhání"
 
 #. 4
-#: ../ailurus/ubuntu/quick_setup.py:492
+#: ../ailurus/ubuntu/quick_setup.py:490
 msgid "All works are done."
 msgstr "Všechny úlohy jsou hotové."
 
@@ -5241,25 +5179,25 @@ msgstr "Interval (ve dnech), kdy budou kontrolovány aktualizace:"
 msgid "Ubuntu update manager setting"
 msgstr "Nastavení správce aktualizací Ubuntu"
 
-#: ../ailurus/ubuntu/third_party_repos.py:101
-#: ../ailurus/ubuntu/third_party_repos.py:189
+#: ../ailurus/ubuntu/third_party_repos.py:58
+#: ../ailurus/ubuntu/third_party_repos.py:127
 msgid "Web page:"
 msgstr ""
 
-#: ../ailurus/ubuntu/third_party_repos.py:102
-#: ../ailurus/ubuntu/third_party_repos.py:190
+#: ../ailurus/ubuntu/third_party_repos.py:59
+#: ../ailurus/ubuntu/third_party_repos.py:128
 msgid "Source setting:"
 msgstr ""
 
-#: ../ailurus/ubuntu/third_party_repos.py:214
+#: ../ailurus/ubuntu/third_party_repos.py:145
 msgid "Firefox 3.6 (stable)"
 msgstr "Firefox 3.6 (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:222
+#: ../ailurus/ubuntu/third_party_repos.py:153
 msgid "PlayOnLinux (stable)"
 msgstr "PlayOnLinux (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:225
+#: ../ailurus/ubuntu/third_party_repos.py:156
 msgid ""
 "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
 "softwares on Linux."
@@ -5267,11 +5205,11 @@ msgstr ""
 "PlayOnLinux je nadstavba pro Wine. Pomůže s instalací windows her a softwaru "
 "pro linux."
 
-#: ../ailurus/ubuntu/third_party_repos.py:236
+#: ../ailurus/ubuntu/third_party_repos.py:167
 msgid "WINE (beta version)"
 msgstr "WINE (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:239
+#: ../ailurus/ubuntu/third_party_repos.py:170
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux."
@@ -5279,15 +5217,15 @@ msgstr ""
 "Tento zdroj obsahuje poslední verzi Wine. Wine je určené pro běh windows "
 "aplikací na linuxu."
 
-#: ../ailurus/ubuntu/third_party_repos.py:250
+#: ../ailurus/ubuntu/third_party_repos.py:181
 msgid "Ailurus (stable)"
 msgstr "Ailurus (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:256
+#: ../ailurus/ubuntu/third_party_repos.py:187
 msgid "AWN (beta version)"
 msgstr "AWN (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:258
+#: ../ailurus/ubuntu/third_party_repos.py:189
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
 "version of AWN."
@@ -5295,36 +5233,36 @@ msgstr ""
 "AWN je ala MacOS X panel pro GNOME. Tento zdroj obsahuje nejnovější verzi "
 "AWN."
 
-#: ../ailurus/ubuntu/third_party_repos.py:264
+#: ../ailurus/ubuntu/third_party_repos.py:195
 msgid "Blueman (stable)"
 msgstr "Blueman (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:266
+#: ../ailurus/ubuntu/third_party_repos.py:197
 msgid "Blueman is a graphical blue-tooth manager."
 msgstr "Blueman je grafický bluetooth správce."
 
-#: ../ailurus/ubuntu/third_party_repos.py:271
+#: ../ailurus/ubuntu/third_party_repos.py:202
 msgid "Christine (stable)"
 msgstr "Christine (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:273
+#: ../ailurus/ubuntu/third_party_repos.py:204
 msgid "Christine is a small media player."
 msgstr "Christine je drobný multimediální přehrávač."
 
-#: ../ailurus/ubuntu/third_party_repos.py:278
+#: ../ailurus/ubuntu/third_party_repos.py:209
 msgid "Chromium (beta version)"
 msgstr "Chromium (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:280
+#: ../ailurus/ubuntu/third_party_repos.py:211
 msgid "Chromium is the open source version of Google Chrome."
 msgstr ""
 "Chromium je verze prohlížeče Google Chrome s otevřeným zdrojovým kódem."
 
-#: ../ailurus/ubuntu/third_party_repos.py:285
+#: ../ailurus/ubuntu/third_party_repos.py:216
 msgid "Getting things GNOME (stable)"
 msgstr "Getting things GNOME (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:287
+#: ../ailurus/ubuntu/third_party_repos.py:218
 msgid ""
 "\"Getting things GNOME\" is a simple, powerful and flexible organization "
 "tool."
@@ -5332,28 +5270,28 @@ msgstr ""
 "\"Getting things GNOME\" je jednoduchý, výkonný a flexibilní organizační "
 "nástroj."
 
-#: ../ailurus/ubuntu/third_party_repos.py:293
+#: ../ailurus/ubuntu/third_party_repos.py:224
 msgid "GNOME colors (stable)"
 msgstr "GNOME colors (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:295
+#: ../ailurus/ubuntu/third_party_repos.py:226
 msgid "This repository contains some themes."
 msgstr "Tento zdroj obsahuje některá témata."
 
-#: ../ailurus/ubuntu/third_party_repos.py:301
+#: ../ailurus/ubuntu/third_party_repos.py:232
 msgid "GNOME Global Menu (stable)"
 msgstr "GNOME Global Menu (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:303
+#: ../ailurus/ubuntu/third_party_repos.py:234
 msgid ""
 "GNOME Global Menu is the globally-shared menu bar of all applications."
 msgstr "GNOME Global Menu je globálně sdílená nabídka pro všechny aplikace."
 
-#: ../ailurus/ubuntu/third_party_repos.py:309
+#: ../ailurus/ubuntu/third_party_repos.py:240
 msgid "Medibuntu (stable)"
 msgstr "Medibuntu (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:312
+#: ../ailurus/ubuntu/third_party_repos.py:243
 msgid ""
 "This is a repository providing packages which cannot be included into the "
 "Ubuntu distribution for legal reasons. There are many packages in this "
@@ -5363,43 +5301,43 @@ msgstr ""
 "distribuci Ubuntu. Zdroj obsahuje mnoho balíků. Seznam balíků naleznete v "
 "http://packages.medibuntu.org/"
 
-#: ../ailurus/ubuntu/third_party_repos.py:323
+#: ../ailurus/ubuntu/third_party_repos.py:254
 msgid "Moovida (stable)"
 msgstr "Moovida (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:325
+#: ../ailurus/ubuntu/third_party_repos.py:256
 msgid "Moovida is a cross platform media player."
 msgstr "Moovida je multiplatformní multimediální přehrávací centrum."
 
-#: ../ailurus/ubuntu/third_party_repos.py:330
+#: ../ailurus/ubuntu/third_party_repos.py:261
 msgid "Shutter (stable)"
 msgstr "Shutter (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:332
+#: ../ailurus/ubuntu/third_party_repos.py:263
 msgid "Shutter is a powerful screenshot program."
 msgstr "Shutter je mocný program k zachycování snímků."
 
-#: ../ailurus/ubuntu/third_party_repos.py:351
+#: ../ailurus/ubuntu/third_party_repos.py:282
 msgid "X server updates (stable)"
 msgstr "X server aktualizace (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:353
+#: ../ailurus/ubuntu/third_party_repos.py:284
 msgid "This repository provides latest versions of X.org drivers, libraries."
 msgstr "Tento zdroj obsahuje nejnovější verze X.org ovladačů, knihoven."
 
-#: ../ailurus/ubuntu/third_party_repos.py:359
+#: ../ailurus/ubuntu/third_party_repos.py:290
 msgid "WebkitGTK (stable)"
 msgstr "WebkitGTK (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:361
+#: ../ailurus/ubuntu/third_party_repos.py:292
 msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
 msgstr "WebkitGTK je port Webkitu pro platformu GTK+ ."
 
-#: ../ailurus/ubuntu/third_party_repos.py:366
+#: ../ailurus/ubuntu/third_party_repos.py:297
 msgid "XBMC (stable)"
 msgstr "XBMC (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:368
+#: ../ailurus/ubuntu/third_party_repos.py:299
 msgid ""
 "XBMC is an open source software media player and entertainment hub for "
 "digital media."
@@ -5407,49 +5345,49 @@ msgstr ""
 "XBMC je multimediální přehrávač a zábavní centrum pro digitální média s "
 "otevřeným zdrojovým kódem."
 
-#: ../ailurus/ubuntu/third_party_repos.py:373
-#: ../ailurus/ubuntu/third_party_repos.py:381
-#: ../ailurus/ubuntu/third_party_repos.py:389
+#: ../ailurus/ubuntu/third_party_repos.py:304
+#: ../ailurus/ubuntu/third_party_repos.py:312
+#: ../ailurus/ubuntu/third_party_repos.py:320
 msgid "IBus (stable)"
 msgstr "IBus (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:397
+#: ../ailurus/ubuntu/third_party_repos.py:328
 msgid "Partners of Canonical"
 msgstr "Partneři Canonicalu"
 
-#: ../ailurus/ubuntu/third_party_repos.py:399
+#: ../ailurus/ubuntu/third_party_repos.py:330
 msgid "This repository provides many packages from partners of Canonical."
 msgstr "Tento zdroj obsahuje mnoho balíků od partnerů Canonicalu."
 
-#: ../ailurus/ubuntu/third_party_repos.py:409
+#: ../ailurus/ubuntu/third_party_repos.py:340
 msgid "RSSOwl (stable)"
 msgstr "RSSOwl (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:412
+#: ../ailurus/ubuntu/third_party_repos.py:343
 msgid "RSSOwl is an RSS reader."
 msgstr "RSSOwl je čtečka RSS."
 
-#: ../ailurus/ubuntu/third_party_repos.py:422
+#: ../ailurus/ubuntu/third_party_repos.py:353
 msgid "Gmchess (stable)"
 msgstr "Gmchess (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:425
+#: ../ailurus/ubuntu/third_party_repos.py:356
 msgid "This is a Chinese chess game."
 msgstr "Toto je čínská šachová hra."
 
-#: ../ailurus/ubuntu/third_party_repos.py:430
+#: ../ailurus/ubuntu/third_party_repos.py:361
 msgid "Exaile (beta version)"
 msgstr "Exaile (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:432
+#: ../ailurus/ubuntu/third_party_repos.py:363
 msgid "A music manager and player for GTK+ written in Python."
 msgstr "Správce hudby a přehrávač pro GTK+ psaný v Pythonu."
 
-#: ../ailurus/ubuntu/third_party_repos.py:437
+#: ../ailurus/ubuntu/third_party_repos.py:368
 msgid "Audacious (beta version)"
 msgstr "Audacious (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:439
+#: ../ailurus/ubuntu/third_party_repos.py:370
 msgid ""
 "An advanced audio player.It focused on audio quality and supporting a wide "
 "range of audio codecs."
@@ -5457,26 +5395,26 @@ msgstr ""
 "Pokročilý hudební přehrávač. Je zaměřen na kvalitu zvuku a podporuje širokou "
 "škálu audio kodeků."
 
-#: ../ailurus/ubuntu/third_party_repos.py:444
+#: ../ailurus/ubuntu/third_party_repos.py:375
 msgid "Tor (stable)"
 msgstr "Tor (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:447
+#: ../ailurus/ubuntu/third_party_repos.py:378
 msgid ""
 "An open network that helps you defend against a form of network surveillance "
 "that threatens personal freedom and privacy, confidential business "
 "activities and relationships, and state security known as traffic analysis."
 msgstr ""
 
-#: ../ailurus/ubuntu/third_party_repos.py:458
+#: ../ailurus/ubuntu/third_party_repos.py:389
 msgid "RedNoteBook (stable)"
 msgstr "RedNoteBook (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:461
+#: ../ailurus/ubuntu/third_party_repos.py:392
 msgid "This is a desktop diary application."
 msgstr "Aplikace Deník pro desktop."
 
-#: ../ailurus/ubuntu/third_party_repos.py:473
+#: ../ailurus/ubuntu/third_party_repos.py:404
 msgid ""
 "A free chat client used by millions. Connect easily to MSN, Google Talk, "
 "Yahoo, AIM and other chat networks all at once."
@@ -5484,11 +5422,11 @@ msgstr ""
 "Svobodný chat klient používaný milióny uživateli. Připojte se snadno k MSN, "
 "Google Talk, Yahoo, AIM a dalším chat sítím najednou."
 
-#: ../ailurus/ubuntu/third_party_repos.py:479
+#: ../ailurus/ubuntu/third_party_repos.py:410
 msgid "Songbird (beta version)"
 msgstr "Songbird (beta verze)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:481
+#: ../ailurus/ubuntu/third_party_repos.py:412
 msgid ""
 "Music player which integrates with online content via plugins. Site contains "
 "project news, download, add-ons directory, help, and how to contribute."
@@ -5497,19 +5435,19 @@ msgstr ""
 "modulů. Stránka obsahuje novinky projektu, stahování, složku doplňků, "
 "nápovědu a možnost jak přispět."
 
-#: ../ailurus/ubuntu/third_party_repos.py:486
+#: ../ailurus/ubuntu/third_party_repos.py:417
 msgid "OSD-Lyrics (stable)"
 msgstr "OSD-Lyrics (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:488
+#: ../ailurus/ubuntu/third_party_repos.py:419
 msgid "It displays lyrics. It supports many media players."
 msgstr "Zobrazuje text. Podporuje řadu přehrávačů."
 
-#: ../ailurus/ubuntu/third_party_repos.py:493
+#: ../ailurus/ubuntu/third_party_repos.py:424
 msgid "Mplayer-VOD (stable)"
 msgstr "Mplayer-VOD (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:495
+#: ../ailurus/ubuntu/third_party_repos.py:426
 msgid ""
 "A movie player for Linux. Supports reading from network, dvd, vcd, file, "
 "pipes, and v4l."
@@ -5517,11 +5455,11 @@ msgstr ""
 "Multimediální přehrávač pro linux. Podporuje čtení ze sítě, dvd, vcd, "
 "souboru, roury a v4l."
 
-#: ../ailurus/ubuntu/third_party_repos.py:502
+#: ../ailurus/ubuntu/third_party_repos.py:433
 msgid "Acire (stable)"
 msgstr "Acire (stabilní)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:509
+#: ../ailurus/ubuntu/third_party_repos.py:440
 msgid "Elementary Theme"
 msgstr ""
 
@@ -5794,6 +5732,19 @@ msgstr ""
 #~ msgid "Find fastest repository mirror"
 #~ msgstr "Najít nejrychlejší zrcadlo zdroje"
 
+#, python-format
+#~ msgid "The fastest repository is %s;"
+#~ msgstr "Nejrychlejší zdroj je %s;"
+
+#~ msgid ""
+#~ "<span color=\"red\"><big>The fastest repository is not being "
+#~ "used.</big></span>"
+#~ msgstr ""
+#~ "<span color=\"red\"><big>Nejrychlejší zdroj není používán..</big></span>"
+
+#~ msgid "<span color=\"blue\">The fastest repository is being used.</span>"
+#~ msgstr "<span color=\"blue\">Nejrychlejší zdroj je používán..</span>"
+
 #~ msgid "APT recovery"
 #~ msgstr "Obnovit APT"
 
@@ -5934,6 +5885,18 @@ msgstr ""
 
 #~ msgid "Command: sudo tasksel install mobile-netbook-remix"
 #~ msgstr "Příkaz: sudo tasksel install mobile-netbook-remix"
+
+#~ msgid ""
+#~ "<small>(Click mouse right button to display the context menu.)</small>"
+#~ msgstr ""
+#~ "<small>(Klikněte pravým tlačítkem myši k zobrazení kontextové "
+#~ "nabídky.)</small>"
+
+#~ msgid "Currently you are using these repositories:"
+#~ msgstr "Aktuálně se používají tyto zdroje:"
+
+#~ msgid "Merge complete"
+#~ msgstr "Sloučení kompletní"
 
 #~ msgid "VIM"
 #~ msgstr "VIM"
@@ -6149,11 +6112,23 @@ msgstr ""
 #~ msgid "Enable \"Print to pdf\" capability."
 #~ msgstr "Povolit vlastnost \"Tisk do pdf\"."
 
+#~ msgid "(Third-party repository)"
+#~ msgstr "(Zdroj třetí strany)"
+
+#~ msgid "(Official repository)"
+#~ msgstr "(Oficiální zdroj)"
+
+#~ msgid "There is one configuration file in /etc/apt/sources.list.d/"
+#~ msgstr "Existuje jeden konfigurační soubor v /etc/apt/sources.list.d/"
+
 #~ msgid "<i>Web page:</i>"
 #~ msgstr "<i>Webová stránka:</i>"
 
 #~ msgid "<i>Source setting:</i>"
 #~ msgstr "<i>Nastavit zdroj:</i>"
+
+#~ msgid "They are:"
+#~ msgstr "Jsou to:"
 
 #~ msgid "This repository contains Firefox stable version 3.6."
 #~ msgstr "Tento zdroj obsahuje stabilní verzi Firefoxu 3.6."
@@ -6168,6 +6143,10 @@ msgstr ""
 
 #~ msgid "<i>Install packages by:</i>"
 #~ msgstr "<i>Instalovat balíky:</i>"
+
+#, python-format
+#~ msgid "There are %s configuration files in /etc/apt/sources.list.d/"
+#~ msgstr "Existují %s konfigurační soubory v /etc/apt/sources.list.d/"
 
 #~ msgid "Context menu screenshot:"
 #~ msgstr "Snímek kontextové nabídky:"
@@ -6392,6 +6371,12 @@ msgstr ""
 #~ msgstr ""
 #~ "AWN ja ala MacOS X panel pro GNOME. Tento zdroj obsahuje nejnovější verzi "
 #~ "AWN. "
+
+#~ msgid ""
+#~ "<span color=\"red\"><big>We have not searched out the fastest "
+#~ "repository.</big></span>"
+#~ msgstr ""
+#~ "<span color=\"red\"><big>Nebyl vyhledán nejrychlejší zdroj.</big></span>"
 
 #~ msgid "Synapse is an instant messager."
 #~ msgstr "Synapse je IM komunikátor."
@@ -6643,6 +6628,10 @@ msgstr ""
 #~ "Zhcon pomůže se zobrazením čínských znaků v TTY terminálu.\n"
 #~ "Můžete spustit jako \"zhcon --utf8\".\n"
 #~ "Příkaz: sudo apt-get install zhcon"
+
+#, python-format
+#~ msgid "Its response time is %s millisecond."
+#~ msgstr "Jeho čas odezvy je %s milisekund."
 
 #~ msgid ""
 #~ "GConf key:\n"
@@ -7233,6 +7222,9 @@ msgstr ""
 #~ msgstr ""
 #~ "Aplikace pro numerické výpočty kompatibilní s programem Matlab® .\n"
 #~ "Příkaz: yum install qtoctave"
+
+#~ msgid "Use the fastest repository"
+#~ msgstr "Použit nejrychlejší zdroj"
 
 #~ msgid ""
 #~ "GConf key:\n"
