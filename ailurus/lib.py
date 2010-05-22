@@ -999,6 +999,95 @@ class APTSource:
                         ret.append(line)
         return ''.join(ret)
 
+class APTSource2:
+    re_pattern = None
+    @classmethod
+    def all_conf_files(cls):
+        import glob, os
+        ret = glob.glob('/etc/apt/sources.list.d/*.list')
+        if os.path.exists('/etc/apt/sources.list'):
+            ret.append('/etc/apt/sources.list')
+        return ret
+    @classmethod
+    def iter_all_lines(cls):
+        for file in cls.all_conf_files():
+            f = open(file)
+            for line in f:
+                yield line
+            f.close()
+    @classmethod
+    def remove_comment(cls, line):
+        return line.split('#', 1)[0].strip()
+    @classmethod
+    def is_official_line(cls, line):
+        line = cls.remove_comment(line)
+        for snip in ['-backports', '-proposed', '-security', '-updates']:
+            snip = VERSION + snip
+            if snip in line: return True
+        return False
+    @classmethod
+    def get_server_from_line(cls, line):
+        line = cls.remove_comment(line)
+        import re
+        if cls.re_pattern is None:
+            cls.re_pattern = re.compile(r'^deb(-src)? http://([^/]+)/.*$')
+        match = cls.re_pattern.match(line)
+        if match: return match.group(2)
+        else:     return None
+    @classmethod
+    def official_servers(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                server = cls.get_server_from_line(line)
+                ret.add(server)
+        return ret
+    @classmethod
+    def this_line_is_using_that_server(cls, line, server):
+        return server in cls.remove_comment(line)
+    @classmethod
+    def this_line_is_using_those_servers(cls, line, servers):
+        assert isinstance(servers, set)
+        for server in servers:
+            if cls.this_line_is_using_that_server(line, server):
+                return True
+        return False
+    @classmethod
+    def remove_official_servers(cls):
+        offi_servers = cls.official_servers()
+        for file in cls.all_conf_files():
+            with open(file) as f:
+                contents = f.readlines()
+            changed = False
+            for i, line in enumerate(contents):
+                if cls.this_line_is_using_those_servers(line, offi_servers):
+                    contents[i] = ''
+                    changed = True
+            if changed:
+                with TempOwn(file) as o:
+                    with open(file, 'w') as f:
+                        f.writelines(contents)
+    @classmethod
+    def add_official_server(cls, server):
+        with TempOwn('/etc/apt/sources.list') as o:
+            with open('/etc/apt/sources.list') as f:
+                contents = f.readlines()
+            if len(contents) and not contents[-1].endswith('\n'):
+                contents.append('\n')
+            contents.append('deb %(server)s %(version)s main restricted universe multiverse\n'
+                            'deb %(server)s %(version)s-backports restricted universe multiverse\n'
+                            'deb %(server)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb %(server)s %(version)s-security main restricted universe multiverse\n'
+                            'deb %(server)s %(version)s-updates main restricted universe multiverse\n'
+                            'deb-src %(server)s %(version)s main restricted universe multiverse\n'
+                            'deb-src %(server)s %(version)s-backports main restricted universe multiverse\n'
+                            'deb-src %(server)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb-src %(server)s %(version)s-security main restricted universe multiverse\n'
+                            'deb-src %(server)s %(version)s-updates main restricted universe multiverse\n'
+                            % {'server':server, 'version':VERSION})
+            with open('/etc/apt/sources.list', 'w') as f:
+                f.writelines(contents)
+
 import threading
 class PingThread(threading.Thread):
     def __init__(self, url, server, result):
