@@ -1028,6 +1028,13 @@ class APTSource2:
                 ret.add(url)
         return ret
     @classmethod
+    def all_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            url = cls.get_url_from_line(line)
+            if url: ret.add(url)
+        return ret
+    @classmethod
     def this_line_contain(cls, line, snip):
         return snip in cls.remove_comment(line)
     @classmethod

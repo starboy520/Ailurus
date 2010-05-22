@@ -397,25 +397,6 @@ def get_candidate_repositories():
     
     return ret
 
-def get_all_current_repositories():
-    'Return all repositories currently in use. For example, Launchpad.'
-
-    repos = set()
-    
-    for file in APTSource2.all_conf_files():
-        with open(file) as f:
-            for line in f:
-                # skip blank lines or comments
-                line = line.split('#')[0].strip()
-                if len(line)==0: continue
-                # get server
-                import re
-                match = re.match(r'^deb(-src)? [a-z]+://([^/]+)/.*$', line)
-                if match:
-                    repos.add(line.split()[1])
-                    
-    return repos
-
 def change_repositories_in_source_files(changes):
     'Input a dict: old_server->new_url'
     'Change servers in all source files'

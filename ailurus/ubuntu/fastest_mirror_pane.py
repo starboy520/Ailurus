@@ -96,7 +96,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
     def __callback__refresh_state_box(self, *w):
         import StringIO
         msg = StringIO.StringIO()
-        current_all = libserver.get_all_current_repositories()
+        current_all = APTSource2.all_urls()
         current_official = APTSource2.official_urls()
 
         # print tip
