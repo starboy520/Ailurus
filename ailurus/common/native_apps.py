@@ -236,11 +236,7 @@ class Full_Language_Pack(N):
     if UBUNTU or MINT:
         def __init__(self):
             import locale
-            lang = locale.getdefaultlocale()
-            try:
-                lang = lang[0].split('_')[0]
-            except AttributeError: # lang == null
-                lang = 'en'
+            lang = Config.get_locale().split('_')[0]
     
             List = [
                     'language-pack-' + lang,
