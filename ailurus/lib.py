@@ -1060,13 +1060,20 @@ class APTSource2:
                 ret.add(server)
         return ret
     @classmethod
-    def this_line_is_using_that_server(cls, line, server):
-        return server in cls.remove_comment(line)
+    def official_urls(cls):
+        ret = set()
+        for line in cls.iter_all_lines():
+            if cls.is_official_line(line):
+                url = cls.get_url_from_line(line)
+                ret.add(url)
+        return ret
     @classmethod
-    def this_line_is_using_those_servers(cls, line, servers):
-        assert isinstance(servers, set)
-        for server in servers:
-            if cls.this_line_is_using_that_server(line, server):
+    def this_line_contain(cls, line, snip):
+        return snip in cls.remove_comment(line)
+    @classmethod
+    def this_line_contain_any_of(cls, line, snip_set):
+        for snip in snip_set:
+            if cls.this_line_contain(line, snip):
                 return True
         return False
     @classmethod
@@ -1085,23 +1092,23 @@ class APTSource2:
                     with open(file, 'w') as f:
                         f.writelines(contents)
     @classmethod
-    def add_official_server(cls, server):
+    def add_official_url(cls, url):
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list') as f:
                 contents = f.readlines()
             if len(contents) and not contents[-1].endswith('\n'):
                 contents.append('\n')
-            contents.append('deb %(server)s %(version)s main restricted universe multiverse\n'
-                            'deb %(server)s %(version)s-backports restricted universe multiverse\n'
-                            'deb %(server)s %(version)s-proposed main restricted universe multiverse\n'
-                            'deb %(server)s %(version)s-security main restricted universe multiverse\n'
-                            'deb %(server)s %(version)s-updates main restricted universe multiverse\n'
-                            'deb-src %(server)s %(version)s main restricted universe multiverse\n'
-                            'deb-src %(server)s %(version)s-backports main restricted universe multiverse\n'
-                            'deb-src %(server)s %(version)s-proposed main restricted universe multiverse\n'
-                            'deb-src %(server)s %(version)s-security main restricted universe multiverse\n'
-                            'deb-src %(server)s %(version)s-updates main restricted universe multiverse\n'
-                            % {'server':server, 'version':VERSION})
+            contents.append('deb %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-backports restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-backports main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-proposed main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-security main restricted universe multiverse\n'
+                            'deb-src %(url)s %(version)s-updates main restricted universe multiverse\n'
+                            % {'url':url, 'version':VERSION})
             with open('/etc/apt/sources.list', 'w') as f:
                 f.writelines(contents)
 
