@@ -65,7 +65,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             print >>msg, _('The fastest repository is %s') % fastest, _('(%s millisecond)') % response_time
         if current_third_party:
             print >>msg, _('Currently you are using these third-party repositories:')
-            for s in current_all:
+            for s in current_third_party:
                 print >>msg, s,
                 if s in current_third_party: print >>msg
         self.label_state.set_markup(msg.getvalue().strip())

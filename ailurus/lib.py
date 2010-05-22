@@ -1033,7 +1033,7 @@ class APTSource2:
         for line in cls.iter_all_lines():
             if not cls.is_official_line(line):
                 url = cls.get_url_from_line(line)
-                ret.add(url)
+                if url: ret.add(url)
         return ret
     @classmethod
     def all_urls(cls):
