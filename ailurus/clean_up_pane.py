@@ -313,7 +313,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
         
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_kernel())
         align = gtk.Alignment(0, 0.5)
         align.add(button_delete)
@@ -420,9 +420,9 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         
         button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
         button_refresh.connect('clicked', lambda *w: self.refresh())
-        self.button_unselect_all = button_unselect_all = gtk.Button(_('Unselect all'))
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
 #        button_box.pack_start(button_refresh, False)
@@ -525,9 +525,9 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         
         button_refresh = gtk.Button(stock = gtk.STOCK_REFRESH)
         button_refresh.connect('clicked', lambda *w: self.refresh())
-        self.button_unselect_all = button_unselect_all = gtk.Button(_('Unselect all'))
+        self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(stock = gtk.STOCK_DELETE)
+        self.button_delete = button_delete = gtk.Button(_('Apply'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
 #        button_box.pack_start(button_refresh, False)
