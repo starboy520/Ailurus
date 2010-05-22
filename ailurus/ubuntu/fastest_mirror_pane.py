@@ -289,7 +289,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             if c.get_active():
                 changes[c.old_repo] = c.new_repo
         if changes == {}: return
-        libserver.change_repositories_in_source_files(changes)
+        
+        APTSource2.remove_official_servers()
+        for c in check_boxes:
+            if c.get_active():
+                APTSource2.add_official_url(new_repo)
         self.__callback__refresh_state_box()
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
         APT.apt_get_update()

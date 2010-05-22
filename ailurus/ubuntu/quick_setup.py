@@ -324,7 +324,8 @@ class FastestRepositoryDialog(gtk.Dialog):
         for repos in APTSource2.official_urls():
             changes[repos] = fastest_url
         notify( _('Apply the fastest repository:'), fastest_url )
-        change_repositories_in_source_files(changes)
+        APTSource2.remove_official_servers()
+        APTSource2.add_official_url(fastest_url)
         #apt-get update
         self.progress_label.set_text( _('Run command: "sudo apt-get update"') )
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')

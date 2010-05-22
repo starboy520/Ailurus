@@ -396,39 +396,3 @@ def get_candidate_repositories():
             ret.append(e)
     
     return ret
-
-def change_repositories_in_source_files(changes):
-    'Input a dict: old_server->new_url'
-    'Change servers in all source files'
-
-    if not isinstance(changes, dict): raise TypeError
-    for key, value in changes.items():
-        is_string_not_empty(key)
-        assert ':' in key
-        is_string_not_empty(value)
-        assert ':' in value
-    
-    for file in APTSource2.all_conf_files():
-        # read content
-        with open(file) as f:
-            contents = f.readlines()
-            
-        # do replacement
-        changed = False
-        for i, line in enumerate(contents):
-            # skip blank lines and commented lines
-            line = line.split('#', 1)[0].strip()
-            if len(line)==0: continue
-            for old, new in changes.items():
-                if old in line:
-                    list = line.split(' ', 3)
-                    list[1] = new
-                    contents[i] = ' '.join(list)+'\n'
-                    changed = True
-                    break
-        
-        # write back
-        if changed:
-            with TempOwn(file) as o:
-                with open(file, 'w') as f:
-                    f.writelines(contents)

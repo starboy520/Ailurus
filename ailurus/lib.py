@@ -1051,7 +1051,7 @@ class APTSource2:
                 contents = f.readlines()
             changed = False
             for i, line in enumerate(contents):
-                if cls.this_line_is_using_those_servers(line, offi_servers):
+                if cls.this_line_contain_any_of(line, offi_servers):
                     contents[i] = ''
                     changed = True
             if changed:
