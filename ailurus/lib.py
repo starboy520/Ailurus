@@ -955,13 +955,13 @@ class APTSource2:
                 contents = f.readlines()
             if len(contents) and not contents[-1].endswith('\n'):
                 contents.append('\n')
-            contents.append(lines)
+            contents.extend(lines)
             with open(file_path, 'w') as f:
                 f.writelines(contents)
     @classmethod
     def remove_snips_from(cls, snips, file_path):
         assert isinstance(snips, list)
-        assert isinstance(file_path)
+        assert isinstance(file_path, str)
         
         snip = cls.remove_comment(snip)
         with open(file_path) as f:
