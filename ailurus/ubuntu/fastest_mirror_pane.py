@@ -270,20 +270,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
         APT.apt_get_update()
     
-    def __callback__use_selected_repositories_via_treeview(self, w, treeview):
-        selection = treeview.get_selection()
-        model, pathlist = selection.get_selected_rows()
-        if pathlist == None or len(pathlist)==0: # select nothing
-            return
-        
-        if len(pathlist) > 1: 
-            notify(_('Please select one repository only'), ' ')
-        else:
-            path = pathlist[0]
-            iter = model.get_iter(path)
-            URL = model.get_value(iter, self.FULL_URL)
-            self.__use_repository(URL)
-    
     def __detect_servers_speed(self, urls, servers):
         assert len(urls) == len(servers)
         assert isinstance(urls, list)
@@ -384,19 +370,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             _('Detect response time of all repositories'))
         detect_speed_of_all_repos.connect('activate', self.__callback__detect_all_repos_speed)
 
-        use_selected = image_stock_menuitem(
-            gtk.STOCK_GO_FORWARD, _('Use selected repositories'))
-        use_selected.connect('activate', self.__callback__use_selected_repositories_via_treeview, treeview)
-        
-        select_all = image_stock_menuitem(gtk.STOCK_SELECT_ALL, _('Select all'))
-        select_all.connect('activate', lambda w: treeview.get_selection().select_all())
         select_all_repos_in_this_county = image_stock_menuitem(gtk.STOCK_SELECT_ALL, 
             _('Select all repositories in these countries'))
         select_all_repos_in_this_county.connect('activate', self.__callback__select_all_repos_in_selected_country, treeview)
-        
-        unselect_all = gtk.MenuItem(_('Unselect all'))
-        unselect_all.connect('activate', lambda w: treeview.get_selection().unselect_all())
-        
+
         contact_maintainer = image_stock_menuitem(gtk.STOCK_DIALOG_WARNING, 
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
@@ -404,13 +381,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         copy_repos = gtk.ImageMenuItem(stock_id = gtk.STOCK_COPY)
         copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
         popupmenu = gtk.Menu()
-        popupmenu.append(use_selected)
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
-        popupmenu.append(select_all)
-        popupmenu.append(copy_repos)
         popupmenu.append(select_all_repos_in_this_county)
-        popupmenu.append(unselect_all)
+        popupmenu.append(copy_repos)
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
