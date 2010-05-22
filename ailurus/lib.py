@@ -963,13 +963,13 @@ class APTSource2:
         assert isinstance(snips, list)
         assert isinstance(file_path, str)
         
-        snip = cls.remove_comment(snip)
         with open(file_path) as f:
             contents = f.readlines()
         changed = False
         for i, line in enumerate(contents):
             line = cls.remove_comment(line)
             for snip in snips:
+                snip = cls.remove_comment(snip)
                 if snip in cls.remove_comment(line):
                     contents[i] = ''
                     changed = True
