@@ -516,7 +516,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             except KeyError:
                 res_time = self.NO_PING_RESPONSE
             e.append(res_time)
-            in_use = False
+            url = e[2]
+            in_use = APTSource2.all_lines_contain(url)
             e.append(in_use)
             self.candidate_store.append(e)
 
