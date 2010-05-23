@@ -292,13 +292,13 @@ class MainView:
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menu()
+        menu = load_others_menuitems()
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menu()
+        menu = load_preferences_menuitems()
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menu()
+        menu = load_study_linux_menuitems()
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
         self.toolbar.insert(item, 0)
 

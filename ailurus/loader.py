@@ -205,7 +205,7 @@ def load_setting():
                 ret.extend(module.setting.get())
     return ret
 
-def load_study_linux_menu():
+def load_study_linux_menuitems():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -216,7 +216,7 @@ def load_study_linux_menu():
             ret.extend(module.menu.get_study_linux_menu())
     return ret
 
-def load_preferences_menu():
+def load_preferences_menuitems():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -227,7 +227,7 @@ def load_preferences_menu():
             ret.extend(module.menu.get_preferences_menu())
     return ret
 
-def load_others_menu():
+def load_others_menuitems():
     import types
     ret = []
     for module in [common, desktop, distribution]:
