@@ -732,12 +732,9 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack2 ( self.__right_pane(), True, False )
 
         self.app_objs = app_objs
-        # only append clsobjs into treestore.
-        # do not append titles into treestore.
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
         
-        # the set of all categories
         all_categories = set()
         for obj in app_objs :
             all_categories.add(obj.category)
