@@ -301,14 +301,14 @@ class MainView:
 
     def add_study_button_preference_button_other_button(self):
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', 
-                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_other_menu))
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(load_others_menuitems()))
         self.toolbar.insert(item, 0)
-        self.menu_preference = create_menu_from(self.menuitems_preference_menu)
+        self.menu_preference = create_menu_from(load_preferences_menuitems())
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', 
                         self.__show_popupmenu_on_toolbaritem, self.menu_preference)
         self.toolbar.insert(item, 0)
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', 
-                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_study_linux_menu))
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(load_study_linux_menuitems()))
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
@@ -412,9 +412,6 @@ class MainView:
         self.stop_delete_event = False
         self.contents = {}
         self.ordered_key = [] # contains keys in self.contents, in calling order of self.register
-        self.menuitems_other_menu = [] # menu items in "Other" menu
-        self.menuitems_preference_menu = [] # menu items in "Preference" menu
-        self.menuitems_study_linux_menu = [] # menu items in "Study Linux" menu
         self.menu_preference = None # "Preference" menu
         
         self.toggle_area = gtk.VBox()
@@ -466,10 +463,6 @@ class MainView:
         self.register(InstallRemovePane, load_app_objs)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
-        
-        self.menuitems_other_menu += load_others_menuitems()
-        self.menuitems_preference_menu += load_preferences_menuitems()
-        self.menuitems_study_linux_menu += load_study_linux_menuitems()
         
         self.add_quit_button()
         self.add_study_button_preference_button_other_button()
