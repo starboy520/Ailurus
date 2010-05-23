@@ -1,3 +1,7 @@
+2010-05-23 Homer Xing <homer.xing@gmail.com>
+
+    * Immediately show/hide "quick setup" button.
+
 2010-05-23 Ray Chen <chenrano2002@gmail.com>
 
     * Use "yum clean all" command when clean YUM cache
