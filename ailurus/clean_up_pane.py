@@ -88,13 +88,15 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(_('Run command:'), "yum --enablerepo='*' clean all")
-            try: run_as_root("yum --enablerepo='*' clean all")
+            notify(_('Run command:'), "yum clean all")
+            try: run_as_root("yum clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
-            button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
+            # now all enabled repo's cache is clean, the free disk space is only some blank directory.
+            # disable clean button
+            button.set_sensitive(False)
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_("Command:") + " yum --enablerepo='*' clean all")
+        button.set_tooltip_text(_("Command:") + " yum clean all")
         return button
     
     def clean_ailurus_cache_button(self):
@@ -539,7 +541,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         gtk.HBox.__init__(self, False, 10)
         self.pack_start(scroll)
         self.pack_start(align, False)
-        
+
         view.set_sensitive(False)
         self.liststore.append([True, _('Please press the "Refresh" button.')])
         button_unselect_all.set_sensitive(False)
