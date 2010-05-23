@@ -355,9 +355,13 @@ class MainView:
             self.toggle_area.add(label)
             self.toggle_area.show_all()
             while gtk.events_pending(): gtk.main_iteration()
-            pane_loader.get_pane()
+            pane = pane_loader.get_pane() # load pane
             for child in self.toggle_area.get_children():
                 self.toggle_area.remove(child)
+            if hasattr(pane, 'get_preference_menuitems'): # insert preference_menuitems
+                for item in pane.get_preference_menuitems():
+                    self.menu_preference.append(item)
+                self.menu_preference.show_all()
         self.toggle_area.add(pane_loader.get_pane())
         self.toggle_area.show_all()
 
