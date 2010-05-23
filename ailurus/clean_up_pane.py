@@ -385,9 +385,8 @@ class UbuntuAutoRemovableBox(gtk.HBox):
     
     def unselect_all(self):
         for row in self.liststore:
-            keep = row[0]
-            row[0] = not keep
-        self.button_delete.set_sensitive(True)
+            row[0] = False # do not keep
+        self.button_delete.set_sensitive( bool(len(self.liststore)) )
     
     def delete_packages(self):
         to_delete = []
@@ -490,9 +489,8 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
     
     def unselect_all(self):
         for row in self.liststore:
-            keep = row[0]
-            row[0] = not keep
-        self.button_delete.set_sensitive(True)
+            row[0] = False # do not keep
+        self.button_delete.set_sensitive(bool(len(self.liststore)))
     
     def delete_packages(self):
         to_delete = []

@@ -566,7 +566,7 @@ class QT_Creator(N):
     if FEDORA:
         pkgs = 'qt-creator'
     if UBUNTU or MINT:
-        pkgs = 'qtcreator qt4-dev-tools qt4-doc qt4-qtconfig'
+        pkgs = 'qtcreator'
 
 class Qnapi(N):
     __doc__ = 'Qnapi'
