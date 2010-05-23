@@ -286,20 +286,28 @@ class PaneLoader:
     def need_to_load(self):
         return self.pane_object is None
 
+def create_menu_from(menuitems):
+    import gtk
+    menu = gtk.Menu()
+    for item in menuitems:
+        menu.append(item)
+    menu.show_all()
+    return menu
+
 class MainView:
     def add_quit_button(self):
         item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menuitems()
-        item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_other_menu))
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menuitems()
-        item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_preference_menu))
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menuitems()
-        item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_study_linux_menu))
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
@@ -399,6 +407,9 @@ class MainView:
         self.stop_delete_event = False
         self.contents = {}
         self.ordered_key = [] # contains keys in self.contents, in calling order of self.register
+        self.menuitems_other_menu = [] # menu items in "Other" menu
+        self.menuitems_preference_menu = [] # menu items in "Preference" menu
+        self.menuitems_study_linux_menu = [] # menu items in "Study Linux" menu
         
         self.toggle_area = gtk.VBox()
         self.toggle_area.set_border_width(5)
@@ -449,6 +460,10 @@ class MainView:
         self.register(InstallRemovePane, load_app_objs)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
+        
+        self.menuitems_other_menu += load_others_menuitems()
+        self.menuitems_preference_menu += load_preferences_menuitems()
+        self.menuitems_study_linux_menu += load_study_linux_menuitems()
         
         self.add_quit_button()
         self.add_study_button_preference_button_other_button()
