@@ -685,7 +685,7 @@ class InstallRemovePane(gtk.VBox):
         
         show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
         show_software_icon.set_active(Config.get_show_software_icon())
-        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()))
+        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
         
         if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
             return [show_quick_setup, set_wget_param, show_software_icon]
