@@ -37,7 +37,7 @@ class Alacarte(N):
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
     license = LGPL + ' http://audacity.sourceforge.net/'
-    category = 'media'
+    category = 'media_editor'
     if FEDORA:
         pkgs = 'audacity'
     if UBUNTU or MINT:
@@ -53,7 +53,7 @@ class AutoApt(N):
 class AutoTools(N):
     __doc__ = _('Autoconf and Automake: Generate configure scripts and Makefiles')
     license = GPL
-    category = 'dev'
+    category = 'saber'
     if UBUNTU or MINT:
         pkgs = 'autoconf automake'
     if FEDORA:
@@ -62,14 +62,14 @@ class AutoTools(N):
 class AWN(N):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
     license = GPL
-    category = 'appearance'
+    category = 'panel'
     if UBUNTU or MINT:
         pkgs = 'avant-window-navigator'
             
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
     license = GPL
-    category = 'dev'
+    category = 'saber'
     if UBUNTU or MINT:
         pkgs = 'bluefish'
     if FEDORA:
@@ -78,7 +78,7 @@ class Bluefish(N):
 class Bluetooth(N):
     __doc__ = _('Bluetooth support')
     license = GPL
-    category = 'hardware'
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'bluetooth bluez-alsa bluez-cups bluez-utils python-bluez gnome-bluetooth gnome-phone-manager'
         DE = 'gnome'
@@ -89,7 +89,7 @@ class Bluetooth(N):
 class Boost(N):
     __doc__ = _('Boost library')
     license = GPL
-    category = 'dev'
+    category = 'library'
     if UBUNTU or MINT:
         pkgs = 'libboost-dev'
     if FEDORA:
@@ -98,7 +98,7 @@ class Boost(N):
 class Build_Essential(N):
     'Build-essential'
     detail = _('By installing build-essential, you will get g++, make, gdb and libc.')
-    category = 'dev'
+    category = 'saber'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'build-essential'
@@ -107,7 +107,7 @@ class Build_Essential(N):
 
 class CHMSee_Read_CHM_Documents(N) :
     __doc__ = _('ChmSee: A CHM file viewer')
-    category = 'office'
+    category = 'business'
     license = GPL + ' http://code.google.com/p/chmsee/'
     if FEDORA:
         pkgs = 'chmsee'

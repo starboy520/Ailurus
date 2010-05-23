@@ -73,7 +73,7 @@ class Electric(_path_lists):
     __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
                _(' This application depends on Java.') )
-    category = 'em'
+    category = 'electronics'
     license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
@@ -265,7 +265,7 @@ class FFEasyDragToGo(_ff_extension):
 
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = BSD
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
@@ -329,7 +329,7 @@ class FFGreaseMonkey(_ff_extension):
 
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = ''
@@ -368,7 +368,7 @@ class FFRadioGet(_ff_extension):
 
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = MPL
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
@@ -392,7 +392,7 @@ class FFStylish(_ff_extension):
 
 class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = ''
@@ -417,7 +417,7 @@ class FFUserAgentSwitcher(_ff_extension):
 
 class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
@@ -442,7 +442,7 @@ class FFWeaveSync35(_ff_extension):
 
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = LGPL
     def __init__(self):
         self.desc = _('Many developers installed it.')
@@ -467,7 +467,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
 
 class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = MPL
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
