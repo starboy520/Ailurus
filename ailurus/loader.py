@@ -205,14 +205,6 @@ def load_setting():
                 ret.extend(module.setting.get())
     return ret
 
-def __create_menu(menuitems):
-    import gtk
-    menu = gtk.Menu()
-    for item in menuitems:
-        menu.append(item)
-    menu.show_all()
-    return menu
-
 def load_study_linux_menu():
     import types
     for module in [common, desktop, distribution]:
@@ -222,7 +214,7 @@ def load_study_linux_menu():
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_study_linux_menu'):
             ret.extend(module.menu.get_study_linux_menu())
-    return __create_menu(ret)
+    return ret
 
 def load_preferences_menu():
     import types
@@ -233,7 +225,7 @@ def load_preferences_menu():
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_preferences_menu'):
             ret.extend(module.menu.get_preferences_menu())
-    return __create_menu(ret)
+    return ret
 
 def load_others_menu():
     import types
@@ -242,7 +234,7 @@ def load_others_menu():
         assert isinstance(module, types.ModuleType) or module == None
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
             ret.extend(module.menu.get_others_menu())
-    return __create_menu(ret)
+    return ret
 
 def load_tips():
     import types
