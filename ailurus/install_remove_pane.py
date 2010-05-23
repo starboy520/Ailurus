@@ -801,6 +801,7 @@ class InstallRemovePane(gtk.VBox):
                  [i_design, _('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
                  [i_design, _('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
                  [i_for_gnome, _('Nautilus extension'), D+'umut_icons/p_nautilus_extension.png', 'nautilus_extension'],
+                 [i_others, _('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
                  )
 
         for item in items:
