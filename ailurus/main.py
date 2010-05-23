@@ -303,8 +303,9 @@ class MainView:
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', 
                         self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_other_menu))
         self.toolbar.insert(item, 0)
+        self.menu_preference = create_menu_from(self.menuitems_preference_menu)
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', 
-                        self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_preference_menu))
+                        self.__show_popupmenu_on_toolbaritem, self.menu_preference)
         self.toolbar.insert(item, 0)
         item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', 
                         self.__show_popupmenu_on_toolbaritem, create_menu_from(self.menuitems_study_linux_menu))
@@ -410,6 +411,7 @@ class MainView:
         self.menuitems_other_menu = [] # menu items in "Other" menu
         self.menuitems_preference_menu = [] # menu items in "Preference" menu
         self.menuitems_study_linux_menu = [] # menu items in "Study Linux" menu
+        self.menu_preference = None # "Preference" menu
         
         self.toggle_area = gtk.VBox()
         self.toggle_area.set_border_width(5)
