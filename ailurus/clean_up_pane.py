@@ -92,8 +92,9 @@ class CleanUpPane(gtk.VBox):
             try: run_as_root("yum clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
-            # now all enabled repo's cache is clean, the free disk space is only some blank directory.
-            # disable clean button
+            # Now all enabled repo's cache is clean. However, disabled repo's cache cannot be clean.
+            # The remaining disk space is not zero. There are some blank directories in /var/cache/yum/
+            # We disable clean button afterwhile.
             button.set_sensitive(False)
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command:") + " yum clean all")
