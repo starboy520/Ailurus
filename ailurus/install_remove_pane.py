@@ -768,42 +768,40 @@ class InstallRemovePane(gtk.VBox):
         i_game = treestore.append(None, [_('Game'), None, '*game'])
         i_others = treestore.append(None, [_('Others'), None, '*others'])
 
-        i_common = treestore.append(None, [_('Common'), None, '*common'])
-        i_students = treestore.append(None, [_('For students'), None, '*students'])
-        i_developers = treestore.append(None, [_('For developers'), None, '*developers'])
-        i_advanced = treestore.append(None, [_('Advanced'), None, '*advanced'])
-        
-        items =  (
-            [ i_common, _('Office'), D+'umut_icons/p_office.png', 'office' ] ,
-            [ i_common, _('Education'), D+'umut_icons/p_education.png', 'education' ] ,
-            [ i_common, _('Internet'), D+'umut_icons/p_internet.png', 'internet' ] ,
-            [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
-            [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
-            [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
-            [ i_common, _('Design'), D+'umut_icons/p_design.png', 'design' ] ,
-            [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
-            [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
-            [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
-
-            [ i_advanced, _('Video card driver'), D+'umut_icons/p_video_card_driver.png', 'videocarddriver'],
-            [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
-            [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
-            [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
-            [ i_advanced, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
-            
-            [ i_students, _('Mathematics'), D+'umut_icons/p_math.png', 'math' ] ,
-            [ i_students, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics' ],
-            [ i_students, _('Biology'), D+'umut_icons/p_biology.png', 'biology' ],
-            [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
-            [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
-            [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
-            [ i_students, _('Embedded system'),  D+'umut_icons/p_embedded_system.png', 'embedded' ],
-
-            [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
-            [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,
-            [ i_developers, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefoxdev' ] ,
-                )
+        items = (
+                 [i_internet, _('Browser'), D+'umut_icons/p_browser.png', 'browser'],
+                 [i_internet, _('Email'), D+'umut_icons/p_email.png', 'email'],
+                 [i_internet, _('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
+                 [i_internet, _('Chat'), D+'umut_icons/p_chat.png', 'chat'],
+                 [i_internet, _('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
+                 [i_internet, _('Flash'), D+'umut_icons/p_flash.png', 'flash'],
+                 [i_internet, _('Blog'), D+'umut_icons/p_blog.png', 'blog'],
+                 [i_internet, _('RSS'), D+'umut_icons/p_rss.png', 'rss'],
+                 [i_multimedia, _('Player'), D+'umut_icons/p_player.png', 'player'],
+                 [i_multimedia, _('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
+                 [i_multimedia, _('Media editor'), D+'umut_icons/p_media_editor.png', 'media_editor'],
+                 [i_appearance, _('Panel'), D+'umut_icons/p_panel.png', 'panel'],
+                 [i_appearance, _('Theme'), D+'umut_icons/p_theme.png', 'theme'],
+                 [i_appearance, _('Candy'), D+'umut_icons/p_candy.png', 'candy'],
+                 [i_appearance, _('Compiz setting'), D+'umut_icons/p_compiz_setting.png', 'compiz_setting'],
+                 [i_science, _('Math'), D+'umut_icons/p_math.png', 'math'],
+                 [i_science, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
+                 [i_science, _('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
+                 [i_science, _('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
+                 [i_science, _('Geography'), D+'umut_icons/p_geography.png', 'geography'],
+                 [i_science, _('Biology'), D+'umut_icons/p_biology.png', 'biology'],
+                 [i_science, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
+                 [i_programming, _('IDE'), D+'umut_icons/p_ide.png', 'ide'],
+                 [i_programming, _('Version control'), D+'umut_icons/p_version_control.png', 'version_control'],
+                 [i_programming, _('Library'), D+'umut_icons/p_library.png', 'library'],
+                 [i_programming, _('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
+                 [i_programming, _('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
+                 [i_programming, _('Eclipse extension'), D+'umut_icons/p_eclipse_extension.png', 'eclipse_extension'],
+                 [i_programming, _('Saber'), D+'umut_icons/p_saber.png', 'saber'],
+                 [i_design, _('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
+                 [i_design, _('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
+                 [i_for_gnome, _('Nautilus extension'), D+'umut_icons/p_nautilus_extension.png', 'nautilus_extension'],
+                 )
 
         for item in items:
             parent, i1, i2, i3 = item
