@@ -755,6 +755,19 @@ class InstallRemovePane(gtk.VBox):
         
         treestore = self.left_treestore
 
+        i_internet = treestore.append(None, [_('Internet'), None, '*internet'])
+        i_multimedia = treestore.append(None, [_('Multimedia'), None, '*multimedia'])
+        i_appearance = treestore.append(None, [_('Appearance'), None, '*appearance'])
+        i_science = treestore.append(None, [_('Science'), None, '*science'])
+        i_programming = treestore.append(None, [_('Programming'), None, '*programming'])
+        i_business = treestore.append(None, [_('Business'), None, '*business'])
+        i_design = treestore.append(None, [_('Design'), None, '*design'])
+        i_for_gnome = treestore.append(None, [_('For GNOME'), None, '*for_gnome'])
+        i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
+        i_education = treestore.append(None, [_('Education'), None, '*education'])
+        i_game = treestore.append(None, [_('Game'), None, '*game'])
+        i_others = treestore.append(None, [_('Others'), None, '*others'])
+
         i_common = treestore.append(None, [_('Common'), None, '*common'])
         i_students = treestore.append(None, [_('For students'), None, '*students'])
         i_developers = treestore.append(None, [_('For developers'), None, '*developers'])
