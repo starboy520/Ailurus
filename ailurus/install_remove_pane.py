@@ -40,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
         category = model.get_value(parent, 2)
         if category.startswith('*'): # A big class is selected
             # We add all children of this class to 'self.selected_categories'
-            self.selected_categories = []
+            self.selected_categories = [category[1:]] # strip '*' and use it as category. Because some software items also use the name of top-level class
             child = model.iter_children(parent)
             while child:
                 category = model.get_value(child, 2)
