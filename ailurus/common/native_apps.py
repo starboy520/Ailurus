@@ -332,10 +332,8 @@ class Liferea(N):
     category = 'internet'
     if FEDORA:
         pkgs = 'liferea'
-        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'liferea'
-        DE = 'gnome'
 
 class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
@@ -379,12 +377,11 @@ class Nautilus_Actions(N):
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-actions'
-        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-actions'
-        DE = 'gnome'
         
 class Nautilus_Audio_Convert(N):
     __doc__ = _('"Convert audio files" entry')
@@ -393,9 +390,9 @@ class Nautilus_Audio_Convert(N):
                '<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
-        DE = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -407,51 +404,49 @@ class Nautilus_Filename_Repairer(N):
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-filename-repairer'
-        DE = 'gnome'
 
 class Nautilus_Gksu(N):
     __doc__ = _('"Open as administrator" entry')
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-gksu'
-        DE = 'gnome'
 
 class Nautilus_Image_Converter(N):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-image-converter'
-        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-image-converter'
-        DE = 'gnome'
         
 class Nautilus_Open_Terminal(N):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-open-terminal'
-        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-open-terminal'
-        DE = 'gnome'
         
 class Nautilus_Script_Collection_Svn(N):
     __doc__ = _('"Subversion commands" entries')
     detail = _('"Subversion commands" entries')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-collection-svn'
-        DE = 'gnome'
         def install(self):
             N.install(self)
             if not APT.installed('nautilus-script-manager'):
@@ -462,27 +457,27 @@ class Nautilus_Search_Tool(N):
     __doc__ = _('"Search files" entries')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-search-tool'
-        DE = 'gnome'
 
 class Nautilus_Share(N):
     __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-share'
-        DE = 'gnome'
         
 class Nautilus_Wallpaper(N):
     __doc__ = _('"Set as wallpaper" entry')
     detail = _('"Set as wallpaper" entry')
     license = GPL
     category = 'nautilus'
+    DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-wallpaper'
-        DE = 'gnome'
 
 class Ncurses_and_qt3mt(N):
     __doc__ = _('Ncurses5 and QT3')
@@ -542,10 +537,8 @@ class PiTiVi(N):
     category = 'media'
     if FEDORA:
         pkgs = 'pitivi'
-        DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'pitivi'
-        DE = 'gnome'
 
 class PowerTop(N):
     'PowerTop'
@@ -726,7 +719,6 @@ class Umbrello(N):
     category = 'dev'
     if UBUNTU or MINT:
         pkgs = 'umbrello'
-        DE = 'kde'
 
 class VIM(N) :
     'VIM'

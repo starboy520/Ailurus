@@ -32,7 +32,6 @@ class Acire(_apt_install):
     category = 'dev'
     depends = Repo_Acire
     pkgs = 'acire'
-    DE = 'gnome'
     def visible(self):
         return VERSION not in ['hardy', 'intrepid', 'jaunty']
 
@@ -124,7 +123,6 @@ class Getting_things_gnome(_apt_install):
     logo = 'gtg.png'
     depends = Repo_GTG
     pkgs = 'gtg'
-    DE = 'gnome'
 
 class Gmchess(_apt_install):
     __doc__ = _('Gmchess: Chinese chess game')
@@ -171,7 +169,6 @@ class Pidgin_beta(_apt_install):
     category = 'internet'
     depends = Repo_Pidgin_Develop
     pkgs = 'pidgin'
-    DE = 'gnome'
     def installed(self):
         if APT.installed('pidgin'):
             string = get_output('pidgin -v')
@@ -212,7 +209,6 @@ class Shutter(_apt_install):
     category = 'tweak'
     depends = Repo_Shutter
     pkgs = 'shutter'
-    DE = 'gnome'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
