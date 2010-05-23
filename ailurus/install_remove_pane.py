@@ -641,6 +641,57 @@ class InstallRemovePane(gtk.VBox):
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
 
+    @classmethod
+    def set_wget_parameters(cls):
+        current_timeout = Config.wget_get_timeout()
+        current_tries = Config.wget_get_triesnum()
+        
+        adjustment_timeout = gtk.Adjustment(current_timeout, 1, 60, 1, 1, 0)
+        scale_timeout = gtk.HScale(adjustment_timeout)
+        scale_timeout.set_digits(0)
+        scale_timeout.set_value_pos(gtk.POS_BOTTOM)
+        timeout_label = label_left_align(_('How long after the server does not respond, give up downloading? (in seconds)'))
+        
+        adjustment_tries = gtk.Adjustment(current_tries, 1, 20, 1, 1, 0)
+        scale_tries = gtk.HScale(adjustment_tries)
+        scale_tries.set_digits(0)
+        scale_tries.set_value_pos(gtk.POS_BOTTOM)
+        tries_label = label_left_align(_('How many times does Ailurus try to download the same resource?'))
+        
+        dialog = gtk.Dialog(
+            _('Set Ailurus download parameter'), 
+            None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+        dialog.set_border_width(5)
+        dialog.vbox.pack_start(timeout_label, False)
+        dialog.vbox.pack_start(scale_timeout, False)
+        dialog.vbox.pack_start(tries_label, False)
+        dialog.vbox.pack_start(scale_tries, False)
+        dialog.vbox.show_all()
+        ret = dialog.run()
+        new_timeout = int(adjustment_timeout.get_value())
+        new_tries = int(adjustment_tries.get_value())
+        dialog.destroy()
+        if ret == gtk.RESPONSE_OK:
+            Config.wget_set_timeout(new_timeout)
+            Config.wget_set_triesnum(new_tries)
+    
+    def get_preference_menuitems(self):
+        hide_quick_setup = gtk.CheckMenuItem(_('Hide "quickly install popular software" button'))
+        hide_quick_setup.set_active(Config.get_hide_quick_setup_pane())
+        hide_quick_setup.connect('toggled', 
+                lambda w: notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.')) 
+                                  or Config.set_hide_quick_setup_pane(w.get_active()))
+    
+        set_wget_param = gtk.MenuItem(_("Set download parameters"))
+        set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
+        
+        show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
+        show_software_icon.set_active(Config.get_show_software_icon())
+        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()))
+        
+        return [hide_quick_setup, set_wget_param, show_software_icon]
+            
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 0)
         self.detail = None # A gtk.Label which shows widget detail.
