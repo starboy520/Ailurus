@@ -29,9 +29,6 @@ from support.checkupdate import *
 
 def __study_linux():
     study_url_items = [ 
-        # (use stock?, stock name or icon path, text, web page url, Chinese only?
-#        (True, gtk.STOCK_HELP, _(u'How to use Intel® compiler & math library ?'), 
-#         'http://tdt.sjtu.edu.cn/S/how_to/icc_mkl_tbb.html', False),
         (True, gtk.STOCK_HELP, _('How to compile a LaTeX file into pdf file ?'), 
          'http://ailurus.cn/?p=329', False),
         (True, gtk.STOCK_HELP, _('Check Linux device driver'),
