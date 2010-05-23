@@ -82,19 +82,15 @@ def __set_wget_options(w): # called by __preferences
         None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
         (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
     dialog.set_border_width(5)
-#    dialog.set_size_request(500,-1)
     dialog.vbox.pack_start(timeout_label, False)
     dialog.vbox.pack_start(scale_timeout, False)
     dialog.vbox.pack_start(tries_label, False)
     dialog.vbox.pack_start(scale_tries, False)
     dialog.vbox.show_all()
-    #display dialog
     ret = dialog.run()
-    #get parameter
     new_timeout = int(adjustment_timeout.get_value())
     new_tries = int(adjustment_tries.get_value())
     dialog.destroy()
-    #write back
     if ret == gtk.RESPONSE_OK:
         Config.wget_set_timeout(new_timeout)
         Config.wget_set_triesnum(new_tries)
