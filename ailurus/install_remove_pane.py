@@ -640,6 +640,68 @@ class InstallRemovePane(gtk.VBox):
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
 
+    @classmethod
+    def set_wget_parameters(cls):
+        current_timeout = Config.wget_get_timeout()
+        current_tries = Config.wget_get_triesnum()
+        
+        adjustment_timeout = gtk.Adjustment(current_timeout, 1, 60, 1, 1, 0)
+        scale_timeout = gtk.HScale(adjustment_timeout)
+        scale_timeout.set_digits(0)
+        scale_timeout.set_value_pos(gtk.POS_BOTTOM)
+        timeout_label = label_left_align(_('How long after the server does not respond, give up downloading? (in seconds)'))
+        
+        adjustment_tries = gtk.Adjustment(current_tries, 1, 20, 1, 1, 0)
+        scale_tries = gtk.HScale(adjustment_tries)
+        scale_tries.set_digits(0)
+        scale_tries.set_value_pos(gtk.POS_BOTTOM)
+        tries_label = label_left_align(_('How many times does Ailurus try to download the same resource?'))
+        
+        dialog = gtk.Dialog(
+            _('Set Ailurus download parameter'), 
+            None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+        dialog.set_border_width(5)
+        dialog.vbox.pack_start(timeout_label, False)
+        dialog.vbox.pack_start(scale_timeout, False)
+        dialog.vbox.pack_start(tries_label, False)
+        dialog.vbox.pack_start(scale_tries, False)
+        dialog.vbox.show_all()
+        ret = dialog.run()
+        new_timeout = int(adjustment_timeout.get_value())
+        new_tries = int(adjustment_tries.get_value())
+        dialog.destroy()
+        if ret == gtk.RESPONSE_OK:
+            Config.wget_set_timeout(new_timeout)
+            Config.wget_set_triesnum(new_tries)
+    
+    def get_preference_menuitems(self):
+        show_quick_setup = gtk.MenuItem(_('Show "quickly install popular software" button'))
+        show_quick_setup.connect('activate', lambda w: Config.set_hide_quick_setup_pane(False) or self.show_quick_setup())
+    
+        set_wget_param = gtk.MenuItem(_("Set download parameters"))
+        set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
+        
+        show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
+        show_software_icon.set_active(Config.get_show_software_icon())
+        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
+        
+        if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
+            return [show_quick_setup, set_wget_param, show_software_icon]
+        else:
+            return [set_wget_param, show_software_icon]
+    
+    def hide_quick_setup(self):
+        children = self.quick_setup_area.get_children()
+        if children:
+            for child in children:
+                self.quick_setup_area.remove(child)
+    
+    def show_quick_setup(self):
+        self.hide_quick_setup()
+        self.quick_setup_area.pack_start(self.quick_setup_content, False)
+        self.quick_setup_area.show_all()
+    
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 0)
         self.detail = None # A gtk.Label which shows widget detail.
@@ -680,12 +742,9 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack2 ( self.__right_pane(), True, False )
 
         self.app_objs = app_objs
-        # only append clsobjs into treestore.
-        # do not append titles into treestore.
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
         
-        # the set of all categories
         all_categories = set()
         for obj in app_objs :
             all_categories.add(obj.category)
@@ -738,21 +797,20 @@ class InstallRemovePane(gtk.VBox):
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
         
-        quick_setup_pane = gtk.HBox(False, 10)
-        quick_setup_pane.set_border_width(5)
         quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        def hide_quick_setup(button):
-            Config.set_hide_quick_setup_pane(button.get_active())
-            notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
-        quick_setup_checkbutton.connect('clicked', hide_quick_setup)
-        quick_setup_pane.pack_start(quick_setup_button, False)
-        quick_setup_pane.pack_start(quick_setup_checkbutton, False)
-
+        quick_setup_checkbutton.connect('clicked', lambda w: w.set_active(False) or Config.set_hide_quick_setup_pane(True) or self.hide_quick_setup())
+        self.quick_setup_content = gtk.HBox(False, 10)
+        self.quick_setup_content.set_border_width(5)
+        self.quick_setup_content.pack_start(quick_setup_button, False)
+        self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
+        self.quick_setup_area = gtk.HBox(False)
+        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+            self.show_quick_setup()
+            
         self.__left_tree_view_default_select()
 
-        if not Config.get_hide_quick_setup_pane() and (UBUNTU or MINT):
-            self.pack_start(quick_setup_pane, False)
+        self.pack_start(self.quick_setup_area, False)
         self.pack_start(hpaned)
         self.show_all()

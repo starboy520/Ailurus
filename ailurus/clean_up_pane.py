@@ -87,13 +87,16 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
-            notify(_('Run command:'), "yum --enablerepo='*' clean all")
-            try: run_as_root("yum --enablerepo='*' clean all")
+            notify(_('Run command:'), "yum clean all")
+            try: run_as_root("yum clean all")
             except AccessDeniedError: pass
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
-            button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
+            # Now all enabled repo's cache is clean. However, disabled repo's cache cannot be clean.
+            # The remaining disk space is not zero. There are some blank directories in /var/cache/yum/
+            # We disable clean button afterwhile.
+            button.set_sensitive(False)
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_("Command:") + " yum --enablerepo='*' clean all")
+        button.set_tooltip_text(_("Command:") + " yum clean all")
         return button
     
     def clean_ailurus_cache_button(self):
@@ -381,9 +384,8 @@ class UbuntuAutoRemovableBox(gtk.HBox):
     
     def unselect_all(self):
         for row in self.liststore:
-            keep = row[0]
-            row[0] = not keep
-        self.button_delete.set_sensitive(True)
+            row[0] = False # do not keep
+        self.button_delete.set_sensitive( bool(len(self.liststore)) )
     
     def delete_packages(self):
         to_delete = []
@@ -486,9 +488,8 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
     
     def unselect_all(self):
         for row in self.liststore:
-            keep = row[0]
-            row[0] = not keep
-        self.button_delete.set_sensitive(True)
+            row[0] = False # do not keep
+        self.button_delete.set_sensitive(bool(len(self.liststore)))
     
     def delete_packages(self):
         to_delete = []
@@ -538,7 +539,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         gtk.HBox.__init__(self, False, 10)
         self.pack_start(scroll)
         self.pack_start(align, False)
-        
+
         view.set_sensitive(False)
         self.liststore.append([True, _('Please press the "Refresh" button.')])
         button_unselect_all.set_sensitive(False)

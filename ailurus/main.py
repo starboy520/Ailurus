@@ -285,20 +285,29 @@ class PaneLoader:
     def need_to_load(self):
         return self.pane_object is None
 
+def create_menu_from(menuitems):
+    import gtk
+    menu = gtk.Menu()
+    for item in menuitems:
+        menu.append(item)
+    menu.show_all()
+    return menu
+
 class MainView:
     def add_quit_button(self):
         item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
 
     def add_study_button_preference_button_other_button(self):
-        menu = load_others_menu()
-        item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(load_others_menuitems()))
         self.toolbar.insert(item, 0)
-        menu = load_preferences_menu()
-        item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        self.menu_preference = create_menu_from(load_preferences_menuitems())
+        item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, self.menu_preference)
         self.toolbar.insert(item, 0)
-        menu = load_study_linux_menu()
-        item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', self.__show_popupmenu_on_toolbaritem, menu)
+        item = toolitem(D+'sora_icons/m_study_linux.png', _('Study\nLinux'), 'button_release_event', 
+                        self.__show_popupmenu_on_toolbaritem, create_menu_from(load_study_linux_menuitems()))
         self.toolbar.insert(item, 0)
 
     def add_pane_buttons_in_toolbar(self):
@@ -345,9 +354,13 @@ class MainView:
             self.toggle_area.add(label)
             self.toggle_area.show_all()
             while gtk.events_pending(): gtk.main_iteration()
-            pane_loader.get_pane()
+            pane = pane_loader.get_pane() # load pane
             for child in self.toggle_area.get_children():
                 self.toggle_area.remove(child)
+            if hasattr(pane, 'get_preference_menuitems'): # insert preference_menuitems
+                for item in pane.get_preference_menuitems():
+                    self.menu_preference.append(item)
+                self.menu_preference.show_all()
         self.toggle_area.add(pane_loader.get_pane())
         self.toggle_area.show_all()
 
@@ -398,6 +411,7 @@ class MainView:
         self.stop_delete_event = False
         self.contents = {}
         self.ordered_key = [] # contains keys in self.contents, in calling order of self.register
+        self.menu_preference = None # "Preference" menu
         
         self.toggle_area = gtk.VBox()
         self.toggle_area.set_border_width(5)

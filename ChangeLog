@@ -1,3 +1,12 @@
+2010-05-23 Homer Xing <homer.xing@gmail.com>
+
+    * Immediately show/hide "quick setup" button.
+    * Immediately show/hide icons at the side of software names.
+
+2010-05-23 Ray Chen <chenrano2002@gmail.com>
+
+    * Use "yum clean all" command when clean YUM cache
+
 2010-05-22 HAN Haofu <gtxx3600@gmail.com>
 
 	* Optimize the behaviour of lib.notify()
