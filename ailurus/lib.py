@@ -1035,11 +1035,11 @@ class APTSource2:
         return ret
     @classmethod
     def third_party_urls(cls):
+        offi_urls = cls.official_urls()
         ret = set()
         for line in cls.iter_all_lines():
-            if not cls.is_official_line(line):
-                url = cls.get_url_from_line(line)
-                if url: ret.add(url)
+            url = cls.get_url_from_line(line)
+            if url and url not in offi_urls: ret.add(url)
         return ret
     @classmethod
     def all_urls(cls):
