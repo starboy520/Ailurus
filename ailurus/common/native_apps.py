@@ -1028,4 +1028,27 @@ class Shutter(N):
     detail = _('Make screenshots')
     category = 'others'
     if UBUNTU or MINT: pkgs = 'shutter'
-    
+
+class Emesene(N):
+    'Emesene'
+    detail = _('MSN Messenger client, with a simpler interface and a nicer look.')
+    category = 'chat'
+    if UBUNTU or MINT: pkgs = 'emesene'
+
+class Empathy(N):
+    'Empathy'
+    detail = _('A messaging program which supports many protocols.')
+    category = 'chat'
+    if UBUNTU or MINT: pkgs = 'empathy'
+
+class Pidgin(N):
+    'Pidgin'
+    category = 'chat'
+    if UBUNTU or MINT: pkgs = 'pidgin'
+
+class QutIM(N):
+    'qutIM'
+    detail = _('Lightweight messaging program')
+    category = 'chat'
+    if UBUNTU or MINT: pkgs = 'qutim'
+
