@@ -491,7 +491,7 @@ class Ncurses_and_qt3mt(N):
         pkgs = 'ncurses-devel qt3-devel'
         
 class Netbeans(N):
-    __doc__ = 'Netbeans'
+    __doc__ = 'NetBeans'
     detail = (
               _('It is an open source IDE which supports several languages (C, C++, Java, Ruby, etc.)'
                ' and frameworks (J2SE, J2ME, etc.). '
@@ -851,3 +851,10 @@ class Kupfer(N):
     detail = _('Lightweight desktop launcher')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'kupfer'
+    
+class Anjuta(N):
+    'Anjuta'
+    detail = _('GNOME IDE for C/C++')
+    category = 'ide'
+    if UBUNTU or MINT: pkgs = 'anjuta'
+
