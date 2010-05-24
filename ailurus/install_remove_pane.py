@@ -32,7 +32,7 @@ class InstallRemovePane(gtk.VBox):
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
         self.left_treeview.expand_all()
-        self.left_treeview.get_selection().select_path('0:0')
+        self.left_treeview.get_selection().select_path('1:0')
 
     def __left_pane_changed ( self, treeselection, treeview ):
         model, parent = treeselection.get_selected()
