@@ -820,13 +820,13 @@ class K3B(N):
 
 class Midori(N):
     'Midori'
-    detail = _('lightweight graphical web browser')
+    detail = _('Lightweight web browser')
     category = 'browser'
     if UBUNTU or MINT: pkgs = 'midori'
 
 class GNOMEDo(N):
     'GNOME Do'
-    detail = _('Quickly perform actions')
+    detail = _('Desktop launcher. Quickly perform actions')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-do'
 
@@ -845,3 +845,9 @@ class GoogleGadgetsQT(N):
     __doc__ = _('Google gadgets') + ' ' + _('(QT version)')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'google-gadgets-qt'
+
+class Kupfer(N):
+    'Kupfer'
+    detail = _('Lightweight desktop launcher')
+    category = 'candy'
+    if UBUNTU or MINT: pkgs = 'kupfer'
