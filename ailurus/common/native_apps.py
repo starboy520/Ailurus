@@ -864,3 +864,9 @@ class Devhelp(N):
     category = 'saber'
     if UBUNTU or MINT: pkgs = 'devhelp'
 
+class Geany(N):
+    'Geany'
+    detail = _('Lightweight text editor')
+    category = 'text_editor'
+    if UBUNTU or MINT: pkgs = 'geany'
+
