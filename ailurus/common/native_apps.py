@@ -986,3 +986,11 @@ class Wesnoth(N):
         def __init__(self):
             if APT.exist('wesnoth-1.8'): self.pkgs = 'wesnoth-1.8'
             else: self.pkgs = 'wesnoth'
+
+class Agave(N):
+    'Agave'
+    detail = _('A colorscheme designer')
+    category = 'drawing'
+    if UBUNTU or MINT: pkgs = 'agave'
+
+
