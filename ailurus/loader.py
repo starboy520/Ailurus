@@ -48,7 +48,7 @@ def load_app_icon(name):
     else:
         path = D + 'velly_icons/software_default_icon.png'
     import gtk
-    return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
+    return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
 
 def load_app_objs():
     modules = []
