@@ -829,3 +829,9 @@ class GNOMEDo(N):
     detail = _('Quickly perform actions')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-do'
+
+class GNOMEShell(N):
+    'GNOME shell'
+    detail = _('Experience GNOME 3 desktop')
+    category = 'candy'
+    if UBUNTU or MINT: pkgs = 'gnome-shell'
