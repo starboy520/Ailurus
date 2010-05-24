@@ -858,3 +858,9 @@ class Anjuta(N):
     category = 'ide'
     if UBUNTU or MINT: pkgs = 'anjuta'
 
+class Devhelp(N):
+    'Devhelp'
+    detail = _('Browse GNOME/GTK API documentation')
+    category = 'saber'
+    if UBUNTU or MINT: pkgs = 'devhelp'
+
