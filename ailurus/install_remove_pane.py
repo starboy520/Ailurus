@@ -612,17 +612,11 @@ class InstallRemovePane(gtk.VBox):
         scroll_d.set_shadow_type(gtk.SHADOW_IN)
         scroll_d.add(detail)
 
-        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
-        button_apply.connect('clicked', self.__apply_button_clicked)
-        bottom_box = gtk.HBox(False, 10)
-        bottom_box.pack_start(button_apply, False, False)
-
         box2 = gtk.VBox(False, 0)
         align = gtk.Alignment(0)
         align.add(gtk.Label( _('Details:') ))
         box2.pack_start(align , False, False)
         box2.pack_start(scroll_d, True, True, 5)
-        box2.pack_start(bottom_box, False, False)
 
         self.vpaned = vpaned = gtk.VPaned()
         vpaned.pack1(box1, True, False)
@@ -745,15 +739,16 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
-        button_expand_left_treeview = stock_image_only_button(gtk.STOCK_ADD)
+        button_expand_left_treeview = image_stock_button(gtk.STOCK_ADD, _('Expand'))
         button_expand_left_treeview.connect('clicked', lambda w: self.left_treeview.expand_all())
-        button_expand_left_treeview.set_tooltip_text(_('Expand all'))
-        button_collapse_left_treeview = stock_image_only_button(gtk.STOCK_REMOVE)
+        button_collapse_left_treeview = image_stock_button(gtk.STOCK_REMOVE, _('Collapse'))
         button_collapse_left_treeview.connect('clicked', lambda w: self.left_treeview.collapse_all())
-        button_collapse_left_treeview.set_tooltip_text(_('Collapse all'))
+        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
+        button_apply.connect('clicked', self.__apply_button_clicked)
         bottom_box = gtk.HBox(False, 5)
         bottom_box.pack_start(button_expand_left_treeview, False)
         bottom_box.pack_start(button_collapse_left_treeview, False)
+        bottom_box.pack_start(button_apply, False)
 
         self.app_objs = app_objs
         for obj in app_objs :
