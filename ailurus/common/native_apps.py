@@ -835,3 +835,13 @@ class GNOMEShell(N):
     detail = _('Experience GNOME 3 desktop')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-shell'
+    
+class GoogleGadgetsGTK(N):
+    __doc__ = _('Google gadgets') + ' ' + _('(GTK version)')
+    category = 'candy'
+    if UBUNTU or MINT: pkgs = 'google-gadgets-gtk'
+
+class GoogleGadgetsQT(N):
+    __doc__ = _('Google gadgets') + ' ' + _('(QT version)')
+    category = 'candy'
+    if UBUNTU or MINT: pkgs = 'google-gadgets-qt'
