@@ -563,7 +563,9 @@ class Keepassx(N):
     'Keepassx'
     detail = _('Password manager which saves many different information e.g. user names and passwords in one single database.')
     category = 'business'
-    if UBUNTU or MINT: pkgs = 'keepassx'class Kflickr(N):
+    if UBUNTU or MINT: pkgs = 'keepassx'
+
+class Kflickr(N):
     'kflickr'
     detail = _('Upload photos to Flickr')
     category = 'others'
