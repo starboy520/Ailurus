@@ -173,7 +173,10 @@ class _apt_install(I):
     def remove(self):
         APT.remove(*self.pkgs.split() )
     def installation_command(self):
-        return debian_installation_command(self.pkgs)
+        string = ''
+        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
+            string = self.depends().launchpad_installation_command() + '; '
+        return '%s %ssudo apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -216,7 +219,9 @@ class N(I):
     def installation_command(self):
         return self.installation_command_backend(self.pkgs)
     def visible(self):
-        if not hasattr(self, 'pkgs'): return False # It is not supported for this Linux distribution.
+        if not hasattr(self, 'pkgs'): 
+            print self.__doc__, ' is hidden because no package name.'
+            return False # It is not supported for this Linux distribution.
         # package names change from time to time. we hide an item if package_name does not exists. 
         for pkg in self.pkgs.split():
             if not self.backend.exist(pkg):
@@ -242,8 +247,6 @@ class _path_lists(I):
                 raise TypeError
             if path=='':
                 raise ValueError
-    def __init__(self):
-        raise NotImplementedError
     def install(self):
         raise NotImplementedError
     def installed(self):
@@ -263,7 +266,7 @@ class _path_lists(I):
 
 class _ff_extension(I):
     'Firefox Extension'
-    category = 'firefox'
+    category = 'firefox_extension'
     def __init__(self):
         if not hasattr(_ff_extension, 'ext_path'):
             _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
@@ -279,9 +282,9 @@ class _ff_extension(I):
         text = StringIO.StringIO()
         if self.desc:
             print >>text, self.desc
-        print >>text, _("<span color='red'>This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox.</span>")
-        print >>text, _('It can be used in Firefox version %s')%self.range
-        print >>text, _('It can be obtained from '), self.download_url
+#        print >>text, _("<span color='red'>This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox.</span>")
+#        print >>text, _('It can be used in Firefox version %s')%self.range
+        print >>text, _('It can be obtained from '), self.download_url,
         self.__class__.detail = text.getvalue()
         text.close()
     def install(self):

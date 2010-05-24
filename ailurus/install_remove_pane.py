@@ -26,12 +26,13 @@ from lib import *
 from libu import *
 
 class InstallRemovePane(gtk.VBox):
-    name = _('Install/Remove')
+    icon = D+'sora_icons/m_install_remove.png'
+    text = _('Install\nSoftware')
     
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
         self.left_treeview.expand_all()
-        self.left_treeview.get_selection().select_path('0:0')
+        self.left_treeview.get_selection().select_path('1:0')
 
     def __left_pane_changed ( self, treeselection, treeview ):
         model, parent = treeselection.get_selected()
@@ -39,7 +40,7 @@ class InstallRemovePane(gtk.VBox):
         category = model.get_value(parent, 2)
         if category.startswith('*'): # A big class is selected
             # We add all children of this class to 'self.selected_categories'
-            self.selected_categories = []
+            self.selected_categories = [category[1:]] # strip '*' and use it as category. Because some software items also use the name of top-level class
             child = model.iter_children(parent)
             while child:
                 category = model.get_value(child, 2)
@@ -63,11 +64,13 @@ class InstallRemovePane(gtk.VBox):
         category = model.get_value(iter, 2)
         text = model.get_value(iter, 0)
         if category.startswith('*'): # This is a big class.
-            cell.set_property('markup', '<b>%s</b>'%text)
+            cell.set_property('markup', '<big><b>%s</b></big>'%text)
         else: # This is an item.
             cell.set_property('text', text)
 
     def __left_pane(self):
+        column_expander = gtk.TreeViewColumn()
+        column_expander.set_visible(False)
         pixbuf_render = gtk.CellRendererPixbuf()
         text_render = gtk.CellRendererText()
         column = gtk.TreeViewColumn()
@@ -78,11 +81,13 @@ class InstallRemovePane(gtk.VBox):
         # each row of liststore contains ( title, icon, category )
         self.left_treestore = treestore = gtk.TreeStore ( str, gtk.gdk.Pixbuf, str )
         self.left_treeview = treeview = gtk.TreeView()
+        treeview.append_column(column_expander)
         treeview.append_column ( column )
         treeview.set_model(treestore)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
         treeview.get_selection().connect('changed', self.__left_pane_changed, treeview )
         treeview.set_headers_visible(False)
+        treeview.set_expander_column(column_expander)
 
         scrollwindow = gtk.ScrolledWindow ()
         scrollwindow.add ( treeview )
@@ -307,7 +312,7 @@ class InstallRemovePane(gtk.VBox):
             # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
         except:
-            traceback.print_exc(file=sys.stderr)
+            print_traceback()
         finally:
             sys.stdout.flush()
             os.close(r)
@@ -338,17 +343,6 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
-        
-    def load_state(self):
-        try:
-            hpos = Config.get_int('hpane_position')
-            self.hpaned.set_position( int(hpos) )
-        except: pass
-        self.vpaned.set_position(300)
-    
-    def save_state(self):
-        Config.set_int('hpane_position', self.hpaned.get_position())
-        Config.set_int('vpane_position', self.vpaned.get_position())
     
     def __sort_treestore ( self, model, iter1, iter2 ):
         obj1 = model.get_value ( iter1, 0 )
@@ -382,15 +376,22 @@ class InstallRemovePane(gtk.VBox):
         import types
         assert isinstance ( obj, types.InstanceType )
         assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
-        cell.set_property ( 'markup', '%s'%obj.__doc__ )
-        cell.set_property ( 'strikethrough', 
-                            obj.cache_installed==True and obj.showed_in_toggle==False )
+        import StringIO
+        markup = StringIO.StringIO()
+        print >>markup, '<b>%s</b>' % obj.__doc__,
+        if obj.detail:
+            detail = obj.detail.split('\n', 1)[0]
+            print >>markup, ''
+            print >>markup, detail,
+        cell.set_property('markup', markup.getvalue())
+        cell.set_property('strikethrough', 
+                          obj.cache_installed==True and obj.showed_in_toggle==False )
         if obj.cache_installed==False and obj.showed_in_toggle==True :
-            cell.set_property ( 'scale', 1.2 )
-            cell.set_property ( 'underline', True )
+            cell.set_property('scale', 1.2)
+#            cell.set_property ( 'underline', True )
         else :
-            cell.set_property ( 'scale', 1 )
-            cell.set_property ( 'underline', False )
+            cell.set_property('scale', 1)
+#            cell.set_property ( 'underline', False )
 
     def __right_pane_changed(self, treeselection, treeview):
         ( store, pathlist ) = treeselection.get_selected_rows ()
@@ -430,25 +431,25 @@ class InstallRemovePane(gtk.VBox):
             detail = getattr(obj, 'detail' ,'')
             if detail:
                 text.write(detail)
-                if detail[-1]!='\n': text.write('\n')
+#                if detail[-1]!='\n': text.write('\n')
             
-            license = getattr(obj, 'license' ,'')
-            if license:
-                print >>text, _('License:'), license   
+#            license = getattr(obj, 'license' ,'')
+#            if license:
+#                print >>text, _('License:'), license   
             
-            if obj.cache_installed==False: # can install
-                # will be installed?
-                if not obj.showed_in_toggle: 
-                    print >>text, begin_color() + _('Not installed.'),
-                    if hasattr(obj, 'get_reason'):
-                        obj.get_reason(text)
-                    text.write( end_color() )
-                else:  
-                    print >>text, color( _('Will be installed.') ),
+#            if obj.cache_installed==False: # can install
+#                # will be installed?
+#                if not obj.showed_in_toggle: 
+#                    print >>text, begin_color() + _('Not installed.'),
+#                    if hasattr(obj, 'get_reason'):
+#                        obj.get_reason(text)
+#                    text.write( end_color() )
+#                else:  
+#                    print >>text, color( _('Will be installed.') ),
 
-            else: # already installed
-                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
-                else:                    print >>text, color(_('Will be removed.')), 
+#            else: # already installed
+#                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
+#                else:                    print >>text, color(_('Will be removed.')), 
                         
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()
@@ -459,9 +460,8 @@ class InstallRemovePane(gtk.VBox):
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
         assert isinstance(obj, types.InstanceType)
-        assert hasattr(obj, 'category')
         
-        is_right_category = obj.category in self.selected_categories
+        is_right_category = obj.category in self.selected_categories or 'all' in self.selected_categories
         if self.filter_text=='':
             return is_right_category
         else:
@@ -507,7 +507,7 @@ class InstallRemovePane(gtk.VBox):
         thread.start_new_thread(launch, ())
 
     def __right_pane(self):
-        import gobject
+        import gobject, pango
         self.treestore = treestore = gtk.TreeStore ( gobject.TYPE_PYOBJECT )
         
         self.treestorefilter = treestorefilter = treestore.filter_new()
@@ -522,6 +522,7 @@ class InstallRemovePane(gtk.VBox):
         render_pixbuf = gtk.CellRendererPixbuf()
         render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
 
         col_toggle = gtk.TreeViewColumn ()
         col_toggle.pack_start (render_toggle,False)
@@ -598,13 +599,6 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
-        from support.searchbox import SearchBoxForApp
-        sbox = SearchBoxForApp()
-        sbox.connect('changed', self.__search_content_changed)
-        box1 = gtk.VBox(False, 10)
-        box1.pack_start(sbox, False, False)
-        box1.pack_start(scroll)
-        
         from support.pangobuffer import PangoBuffer
         from support.releasenotesviewer import ReleaseNotesViewer
         detail = ReleaseNotesViewer( PangoBuffer() )
@@ -619,20 +613,14 @@ class InstallRemovePane(gtk.VBox):
         scroll_d.set_shadow_type(gtk.SHADOW_IN)
         scroll_d.add(detail)
 
-        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
-        button_apply.connect('clicked', self.__apply_button_clicked)
-        bottom_box = gtk.HBox(False, 10)
-        bottom_box.pack_start(button_apply, False, False)
-
         box2 = gtk.VBox(False, 0)
         align = gtk.Alignment(0)
         align.add(gtk.Label( _('Details:') ))
         box2.pack_start(align , False, False)
         box2.pack_start(scroll_d, True, True, 5)
-        box2.pack_start(bottom_box, False, False)
 
         self.vpaned = vpaned = gtk.VPaned()
-        vpaned.pack1(box1, True, False)
+        vpaned.pack1(scroll, True, False)
         vpaned.pack2(box2, False, False)
 
         return vpaned 
@@ -651,8 +639,70 @@ class InstallRemovePane(gtk.VBox):
                                     re.IGNORECASE)
         self.treestorefilter.refilter()
 
+    @classmethod
+    def set_wget_parameters(cls):
+        current_timeout = Config.wget_get_timeout()
+        current_tries = Config.wget_get_triesnum()
+        
+        adjustment_timeout = gtk.Adjustment(current_timeout, 1, 60, 1, 1, 0)
+        scale_timeout = gtk.HScale(adjustment_timeout)
+        scale_timeout.set_digits(0)
+        scale_timeout.set_value_pos(gtk.POS_BOTTOM)
+        timeout_label = label_left_align(_('How long after the server does not respond, give up downloading? (in seconds)'))
+        
+        adjustment_tries = gtk.Adjustment(current_tries, 1, 20, 1, 1, 0)
+        scale_tries = gtk.HScale(adjustment_tries)
+        scale_tries.set_digits(0)
+        scale_tries.set_value_pos(gtk.POS_BOTTOM)
+        tries_label = label_left_align(_('How many times does Ailurus try to download the same resource?'))
+        
+        dialog = gtk.Dialog(
+            _('Set Ailurus download parameter'), 
+            None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+        dialog.set_border_width(5)
+        dialog.vbox.pack_start(timeout_label, False)
+        dialog.vbox.pack_start(scale_timeout, False)
+        dialog.vbox.pack_start(tries_label, False)
+        dialog.vbox.pack_start(scale_tries, False)
+        dialog.vbox.show_all()
+        ret = dialog.run()
+        new_timeout = int(adjustment_timeout.get_value())
+        new_tries = int(adjustment_tries.get_value())
+        dialog.destroy()
+        if ret == gtk.RESPONSE_OK:
+            Config.wget_set_timeout(new_timeout)
+            Config.wget_set_triesnum(new_tries)
+    
+    def get_preference_menuitems(self):
+        show_quick_setup = gtk.MenuItem(_('Show "quickly install popular software" button'))
+        show_quick_setup.connect('activate', lambda w: Config.set_hide_quick_setup_pane(False) or self.show_quick_setup())
+    
+        set_wget_param = gtk.MenuItem(_("Set download parameters"))
+        set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
+        
+        show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
+        show_software_icon.set_active(Config.get_show_software_icon())
+        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
+        
+        if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
+            return [show_quick_setup, set_wget_param, show_software_icon]
+        else:
+            return [set_wget_param, show_software_icon]
+    
+    def hide_quick_setup(self):
+        children = self.quick_setup_area.get_children()
+        if children:
+            for child in children:
+                self.quick_setup_area.remove(child)
+    
+    def show_quick_setup(self):
+        self.hide_quick_setup()
+        self.quick_setup_area.pack_start(self.quick_setup_content, False)
+        self.quick_setup_area.show_all()
+    
     def __init__(self, parentwindow, app_objs):
-        gtk.VBox.__init__(self, False, 0)
+        gtk.VBox.__init__(self, False, 5)
         self.detail = None # A gtk.Label which shows widget detail.
         self.treeview = None # A gtk.TreeView in right pane.
         self.treestore = None # A gtk.TreeStore behind self.treeview
@@ -690,95 +740,112 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
+        button_expand_left_treeview = image_stock_button(gtk.STOCK_ADD, _('Expand'))
+        button_expand_left_treeview.connect('clicked', lambda w: self.left_treeview.expand_all())
+        button_collapse_left_treeview = image_stock_button(gtk.STOCK_REMOVE, _('Collapse'))
+        button_collapse_left_treeview.connect('clicked', lambda w: self.left_treeview.collapse_all())
+        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
+        button_apply.connect('clicked', self.__apply_button_clicked)
+        from support.searchbox import SearchBoxForApp
+        sbox = SearchBoxForApp()
+        sbox.connect('changed', self.__search_content_changed)
+        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_button.connect('clicked', self.__launch_quick_setup)
+        quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
+        quick_setup_checkbutton.connect('clicked', lambda w: w.set_active(False) or Config.set_hide_quick_setup_pane(True) or self.hide_quick_setup())
+        self.quick_setup_content = gtk.HBox(False, 3)
+        self.quick_setup_content.pack_start(quick_setup_button, False)
+        self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
+        self.quick_setup_area = gtk.HBox(False)
+        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+            self.show_quick_setup()
+        bottom_box = gtk.HBox(False, 5)
+        bottom_box.pack_start(button_collapse_left_treeview, False)
+        bottom_box.pack_start(button_expand_left_treeview, False)
+        bottom_box.pack_start(button_apply, False, False, 10)
+        bottom_box.pack_start(sbox, False)
+        bottom_box.pack_start(self.quick_setup_area, False)
+
         self.app_objs = app_objs
-        # only append clsobjs into treestore.
-        # do not append titles into treestore.
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
         
-        # the set of all categories
-        all_categories = set()
-        for obj in app_objs :
-            all_categories.add(obj.category)
-
         def icon(path):
-            return get_pixbuf(path, 32, 32)
+            return get_pixbuf(path, 24, 24)
         
         treestore = self.left_treestore
 
-        i_common = treestore.append(None, [_('Common'), None, '*common'])
-        i_students = treestore.append(None, [_('For students'), None, '*students'])
-        i_developers = treestore.append(None, [_('For developers'), None, '*developers'])
-        i_advanced = treestore.append(None, [_('Advanced'), None, '*advanced'])
-        
-        items =  (
-            [ i_common, _('Office'), D+'umut_icons/p_office.png', 'office' ] ,
-            [ i_common, _('Education'), D+'umut_icons/p_education.png', 'education' ] ,
-            [ i_common, _('Internet'), D+'umut_icons/p_internet.png', 'internet' ] ,
-            [ i_common, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefox' ] ,
-            [ i_common, _('Multimedia'), D+'umut_icons/p_multimedia.png', 'media' ] ,
-            [ i_common, _('Appearance'), D+'umut_icons/p_appearance.png', 'appearance' ] ,
-            [ i_common, _('Enhancements'), D+'umut_icons/p_widgets.png', 'tweak' ] ,
-            [ i_common, _('Game'), D+'umut_icons/p_game.png', 'game' ] ,
-            [ i_common, _('Language support'), D+'other_icons/p_language_support.png', 'language'],
-            [ i_common, _('Nautilus context menu'),  D+'other_icons/nautilus.png', 'nautilus'],
+        i_all = treestore.append(None, [_('All'), None, '*all'])
+        i_internet = treestore.append(None, [_('Internet'), None, '*internet'])
+        i_multimedia = treestore.append(None, [_('Multimedia'), None, '*multimedia'])
+        i_appearance = treestore.append(None, [_('Appearance'), None, '*appearance'])
+        i_science = treestore.append(None, [_('Science'), None, '*science'])
+        i_programming = treestore.append(None, [_('Programming'), None, '*programming'])
+        i_business = treestore.append(None, [_('Business'), None, '*business'])
+        i_design = treestore.append(None, [_('Design'), None, '*design'])
+        i_for_gnome = treestore.append(None, [_('For GNOME'), None, '*for_gnome'])
+        i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
+        i_education = treestore.append(None, [_('Education'), None, '*education'])
+        i_game = treestore.append(None, [_('Game'), None, '*game'])
+        i_others = treestore.append(None, [_('Others'), None, '*others'])
+        i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
 
-            [ i_advanced, _('Third party repositories'), D+'umut_icons/p_repository.png', 'repository'],
-            [ i_advanced, _('Virtual machine'), D+'umut_icons/p_virtualmachine.png', 'vm' ] ,
-            [ i_advanced, _('Establish a server'), D+'umut_icons/p_server.png', 'server'],
-            [ i_advanced, _('Hardware'), D+'umut_icons/p_hardware.png', 'hardware' ],
-            
-            [ i_students, _('Mathematics'), D+'umut_icons/p_math.png', 'math' ] ,
-            [ i_students, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics' ],
-            [ i_students, _('Biology'), D+'umut_icons/p_biology.png', 'biology' ],
-            [ i_students, _('Electronics & Mechanics'), D+'umut_icons/p_em.png', 'em' ] ,
-            [ i_students, _('Geography'), D+'umut_icons/p_geography.png', 'geography' ] ,
-            [ i_students, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex' ] ,
-            [ i_students, _('Embedded system'),  D+'umut_icons/p_embedded_system.png', 'embedded' ],
+        items = (
+                 [i_internet, _('Browser'), D+'umut_icons/p_browser.png', 'browser'],
+                 [i_internet, _('Email'), D+'umut_icons/p_email.png', 'email'],
+                 [i_internet, _('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
+                 [i_internet, _('Chat'), D+'umut_icons/p_chat.png', 'chat'],
+                 [i_internet, _('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
+                 [i_internet, _('Flash'), D+'sora_icons/p_flash.png', 'flash'],
+                 [i_internet, _('Blog'), D+'umut_icons/p_blog.png', 'blog'],
+                 [i_internet, _('RSS'), D+'sora_icons/p_rss.png', 'rss'],
+                 [i_multimedia, _('Player'), D+'sora_icons/p_player.png', 'player'],
+                 [i_multimedia, _('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
+                 [i_multimedia, _('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
+                 [i_appearance, _('Panel'), D+'sora_icons/p_panel.png', 'panel'],
+                 [i_appearance, _('Theme'), D+'umut_icons/p_theme.png', 'theme'],
+                 [i_appearance, _('Candy'), D+'umut_icons/p_candy.png', 'candy'],
+                 [i_appearance, _('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
+                 [i_science, _('Math'), D+'umut_icons/p_math.png', 'math'],
+                 [i_science, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
+                 [i_science, _('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
+                 [i_science, _('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
+                 [i_science, _('Geography'), D+'sora_icons/p_geography.png', 'geography'],
+                 [i_science, _('Biology'), D+'umut_icons/p_biology.png', 'biology'],
+                 [i_science, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
+                 [i_programming, _('IDE'), D+'sora_icons/p_ide.png', 'ide'],
+                 [i_programming, _('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
+                 [i_programming, _('Library'), D+'sora_icons/p_library.png', 'library'],
+                 [i_programming, _('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
+                 [i_programming, _('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
+                 [i_programming, _('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
+                 [i_programming, _('Saber'), D+'sora_icons/p_saber.png', 'saber'],
+                 [i_design, _('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
+                 [i_design, _('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
+                 [i_for_gnome, _('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
+                 [i_others, _('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
+                 )
 
-            [ i_developers, _('Development'), D+'umut_icons/p_develop.png', 'dev' ] ,
-            [ i_developers, _('Eclipse'), D+'umut_icons/eclipse.png', 'eclipse' ] ,
-            [ i_developers, _('Firefox extensions'), D+'umut_icons/p_firefox.png', 'firefoxdev' ] ,
-                )
-
+        all_categories = set()
+        for obj in app_objs :
+            all_categories.add(obj.category)
         for item in items:
             parent, i1, i2, i3 = item
             if not i3 in all_categories: continue
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
-        
-        quick_setup_pane = gtk.HBox(False, 10)
-        quick_setup_pane.set_border_width(5)
-        quick_setup_button = image_file_button(_('Quickly install popular software').center(60), D + 'umut_icons/quick_setup.png', 24)
-        quick_setup_button.connect('clicked', self.__launch_quick_setup)
-        quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        def hide_quick_setup(button):
-            Config.set_hide_quick_setup_pane(button.get_active())
-            notify(_('Preferences changed'), _('Your changes will take effect at the next time when the program starts up.'))
-        quick_setup_checkbutton.connect('clicked', hide_quick_setup)
-        quick_setup_pane.pack_start(quick_setup_button, False)
-        quick_setup_pane.pack_start(quick_setup_checkbutton, False)
-
+        left_categories = set()
+        for row in treestore:
+            assert row[2].startswith('*')
+            left_categories.add(row[2][1:])
+        for item in items:
+            left_categories.add(item[3])
+        for obj in app_objs:
+            if obj.category not in left_categories:
+                print obj.__class__.__name__, 'category is wrong'
+            
         self.__left_tree_view_default_select()
 
-        if not Config.get_hide_quick_setup_pane() and (UBUNTU or MINT):
-            self.pack_start(quick_setup_pane, False)
         self.pack_start(hpaned)
+        self.pack_start(bottom_box, False)
         self.show_all()
-        self.load_state()
-
-if __name__ == '__main__':
-    import common as COMMON
-    import gnome as DESKTOP
-    import ubuntu as DISTRIBUTION
-    from loader import load_app_objs
-    app_objs = load_app_objs(COMMON, DESKTOP, DISTRIBUTION)
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    main_view = Dummy()
-    pane = InstallRemovePane(main_view, app_objs)
-    window = gtk.Window()
-    window.add(pane)
-    window.show_all()
-    gtk.main()

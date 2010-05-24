@@ -27,7 +27,8 @@ from lib import *
 from libu import *
 
 class FedoraRPMRecoveryPane(gtk.VBox):
-    name = _('RPM recovery')
+    icon = D+'sora_icons/m_recovery.png'
+    text = _('Recover\nRPM')
 
     def __make_dir(self):
         Config.make_config_dir()
@@ -303,8 +304,7 @@ class FedoraRPMRecoveryPane(gtk.VBox):
             if to_install: RPM.install(*to_install)
             if to_remove: RPM.remove(*to_remove)
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
         self.diff_liststore.clear()
         self.change_liststore.clear()
 

@@ -28,12 +28,10 @@ from libu import *
 from libserver import *
 
 class FedoraFastestMirrorPane(gtk.VBox):
-    name = _('Find fastest repository mirror')
+    icon = D+'sora_icons/m_fastest_repos.png'
+    text = _('Fastest\nRepository')
 
-    COUNTRY = 0
-    ORG = 1
-    URL = 2
-    RESPONSE_TIME = 3
+    COUNTRY, ORG, URL, RESPONSE_TIME = range(4)
     NO_PING_RESPONSE = 10000
     
     def __repository_visibility_function(self, treestore, iter):

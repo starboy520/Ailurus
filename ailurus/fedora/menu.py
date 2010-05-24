@@ -26,7 +26,7 @@ import sys, os
 from lib import *
 from libu import *
 
-def __study_linux(main_view):
+def __study_linux():
     study_url_items = [ 
         # text, web page url, Chinese only?
         (_('Upgrade Fedora using an application called "PreUpgrade"'),
@@ -44,5 +44,5 @@ def __study_linux(main_view):
     
     return __get_menu(study_url_items)
 
-def get_study_linux_menu(main_view):
-    return __study_linux(main_view)
+def get_study_linux_menu():
+    return __study_linux()

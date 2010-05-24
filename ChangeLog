@@ -1,3 +1,42 @@
+2010-05-23 Homer Xing <homer.xing@gmail.com>
+
+    * Immediately show/hide "quick setup" button.
+    * Immediately show/hide icons at the side of software names.
+
+2010-05-23 Ray Chen <chenrano2002@gmail.com>
+
+    * Use "yum clean all" command when clean YUM cache
+
+2010-05-22 HAN Haofu <gtxx3600@gmail.com>
+
+	* Optimize the behaviour of lib.notify()
+
+2010-05-22 Homer Xing <homer.xing@gmail.com>
+
+    * Add button, in order to support "copy to clipboard"
+
+2010-05-21 Homer Xing <homer.xing@gmail.com>
+
+    * Clean up Nautilus thumbnails image cache.
+    * Remove unused software configuration.
+    * Dynamic pane loading.
+
+2010-05-20 Homer Xing <homer.xing@gmail.com>
+
+    * Detect missing packages in ArchLinux
+
+2010-05-19 Homer Xing <homer.xing@gmail.com>
+
+    * Add SweetHome3D
+    * Add Fix_error_in_netbeans_shortcut_Ubuntu in "Computer Doctor" pane.
+    * Add Add_user_to_vboxusers_group in "Computer Doctor" pane.
+    * Add Fix_error_in_fontconfig_properties_Ubuntu in "Computer Doctor" pane.
+    * Add Fix_error_in_49_sansserif_conf in "Computer Doctor" pane.
+
+2010-05-18 Homer Xing <homer.xing@gmail.com>
+
+    * Add "Computer Doctor" pane.
+
 2010-05-16 Homer Xing <homer.xing@gmail.com>
 
     * Improve "Clean up unused kernels". Display Linux kernel size.
@@ -14,25 +53,25 @@
 2010-05-14 Devil Wang <wxjeacen.gmail.com>
     
     * Add Ailurus un-install script. It helps developers to un-install Ailurus.
-	
+    
 2010-05-14 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: DisableGetty output error on Fedora 13
 
 2010-05-14 HAN Haofu <gtxx3600@gmail.com>
 
-	*Rename 'platfrom' to 'DE'(Desktop Environment)
-	*Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
-	*Add new icon velly_icons/software_default_icon.png
-	*Move load_app_icon(name) from 'libu.py' to 'loader.py'
-	*Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
-	*Add icon on install_remove_pane to show package's desktop environment
-	*Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
-	
+    *Rename 'platfrom' to 'DE'(Desktop Environment)
+    *Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
+    *Add new icon velly_icons/software_default_icon.png
+    *Move load_app_icon(name) from 'libu.py' to 'loader.py'
+    *Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
+    *Add icon on install_remove_pane to show package's desktop environment
+    *Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
+    
 2010-05-11 HAN Haofu <gtxx3600@gmail.com>
 
-	*Add icon for package that has no icon
-	*Move some relative code to loader.py 
+    *Add icon for package that has no icon
+    *Move some relative code to loader.py 
 
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 
@@ -75,7 +114,7 @@
 
 2010-05-07 HAN Haofu <gtxx3600@gmail.com>
 
-	* Fix a bug: "CPU Cache information is incorrect in some kernel version"
+    * Fix a bug: "CPU Cache information is incorrect in some kernel version"
 
 2010-05-07 Homer Xing <homer.xing@gmail.com>
 
@@ -161,10 +200,10 @@
     
 2010-04-25 QI Chengjie <starboy.qi@gmail.com>
 
-	* Add alacarte in Fedora
-	* Display GTK version and Python-GTK version in Linux information pane
-	* Add a way to modify host name
-	* Add google-earth
+    * Add alacarte in Fedora
+    * Display GTK version and Python-GTK version in Linux information pane
+    * Add a way to modify host name
+    * Add google-earth
 
 2010-04-24 MA Yue <velly.empire@gmail.com>
 
@@ -205,7 +244,7 @@
     * Add "Contributing to Ailurus" dialog in "Others" menu.
     * Optimize source code: 
       Replace FileServer by Chdir.
-	  Reduce reduplicative get_reason() call.
+      Reduce reduplicative get_reason() call.
       Improve get_reason() in _apt_install, _rpm_install and _path_lists.
       Remove get_reason() from _set_gconf.
       Use class.pkgs instead of self.pkgs for _apt_install and _rpm_install.
@@ -287,9 +326,9 @@
 
 2010-04-03 QI Chengjie <starboy.qi@gmail.com>
 
-	* Add ImageMagick for Fedora
-	* Add error message when remove Firefox extensions
-	* Fix a bug that more packages will be remove when try to remove gstreamer
+    * Add ImageMagick for Fedora
+    * Add error message when remove Firefox extensions
+    * Fix a bug that more packages will be remove when try to remove gstreamer
 
 2010-04-03 Homer Xing <homer.xing@gmail.com>
 
@@ -772,390 +811,390 @@
 
 2009-10-01 Ubun-student developers
 
-	* "Ubuntu Easy Setuper" is renamed to "Ubun-student"!
+    * "Ubuntu Easy Setuper" is renamed to "Ubun-student"!
 
 2009-09-17 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate two bugs.
+    Eliminate two bugs.
 
 2009-08-17 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade VirtualBox to 3.0.4
+    Upgrade VirtualBox to 3.0.4
 
 2009-08-03 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade Adobe Reader to 9.1.3
+    Upgrade Adobe Reader to 9.1.3
 
 2009-07-23 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade Linux Kernel to 2.6.31-rc3 due to this report 
-	* http://threatpost.com/blogs/researcher-uses-new-linux-kernel-flaw-bypass-selinux-other-protections
-	Add Linux Kernel deb URL.
+    Upgrade Linux Kernel to 2.6.31-rc3 due to this report 
+    * http://threatpost.com/blogs/researcher-uses-new-linux-kernel-flaw-bypass-selinux-other-protections
+    Add Linux Kernel deb URL.
 
 2009-07-16 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate bugs:
-	* Chinese font bug of the second JDK.
-	* Icon bug of Matlab.
-	* J2ME start up bug on x86_64 systems.
-	* Icon bug of Warcraft III.
-	Add JDK-6-doc URL.
+    Eliminate bugs:
+    * Chinese font bug of the second JDK.
+    * Icon bug of Matlab.
+    * J2ME start up bug on x86_64 systems.
+    * Icon bug of Warcraft III.
+    Add JDK-6-doc URL.
 
 2009-07-02 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade
-	* Eclipse -> 3.5.0
-	* DownThemAll -> 1.1.4
-	* VirtualBox -> 3.0
-	Eliminate stardict font bug.
+    Upgrade
+    * Eclipse -> 3.5.0
+    * DownThemAll -> 1.1.4
+    * VirtualBox -> 3.0
+    Eliminate stardict font bug.
 
 2009-06-30 Homer Xing <homer.xing@gmail.com>
 
-	Rewrite WINE installation code.
-	Upgrade
-	* VirtualBox -> 3.0 Beta 2
-	* Netbeans -> 6.7
+    Rewrite WINE installation code.
+    Upgrade
+    * VirtualBox -> 3.0 Beta 2
+    * Netbeans -> 6.7
 
 2009-06-29 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate '\' bug in `installwar3.py'.
-	Use wqy-zenhei.ttc instead of simsun.ttc as the Chinese font of WINE.
-	Add Jian-Xin Warcraft III patch.
-	Add Warcraft III screen resolution auto detection.
+    Eliminate '\' bug in `installwar3.py'.
+    Use wqy-zenhei.ttc instead of simsun.ttc as the Chinese font of WINE.
+    Add Jian-Xin Warcraft III patch.
+    Add Warcraft III screen resolution auto detection.
 
 2009-06-27 Homer Xing <homer.xing@gmail.com>
 
-	Rewrite KScope and FireStarter installation code.
-	Do not install pagesaver.xpi .
-	Reduce the output of TBB, MPlayer, TeXLive .
-	Add tips for JDK6 installation.
-	Reduce codes.
-	Eliminate file owner bug of `How to compose a LaTeX file'.
+    Rewrite KScope and FireStarter installation code.
+    Do not install pagesaver.xpi .
+    Reduce the output of TBB, MPlayer, TeXLive .
+    Add tips for JDK6 installation.
+    Reduce codes.
+    Eliminate file owner bug of `How to compose a LaTeX file'.
 
 2009-06-19 Homer Xing <homer.xing@gmail.com>
 
-	Add Linux Kernel 2.6.30, which enhances the capability of Intel GM945 video card.
-	Upgrade:
-	* Netbeans -> 6.7 rc3
-	* VirtualBox -> 3.0.0 Beta1
-	Eliminate bugs:
-	* Netbeans installation bug
-	* Eclipse shortcut bug
+    Add Linux Kernel 2.6.30, which enhances the capability of Intel GM945 video card.
+    Upgrade:
+    * Netbeans -> 6.7 rc3
+    * VirtualBox -> 3.0.0 Beta1
+    Eliminate bugs:
+    * Netbeans installation bug
+    * Eclipse shortcut bug
 
 2009-06-08 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* Netbeans -> 6.7 rc1
+    Upgrade:
+    * Netbeans -> 6.7 rc1
 
 2009-06-05 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate a bunch of bugs.
+    Eliminate a bunch of bugs.
 
 2009-05-31 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* VirtualBox -> 2.2.4
-	* WINE -> 1.1.22
+    Upgrade:
+    * VirtualBox -> 2.2.4
+    * WINE -> 1.1.22
 
 2009-05-12 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate the bug that GEdit cannot recognize GB2312 coding.
-	UPgrade:
-	* WINE -> 1.1.21
-	* DownThemAll -> 1.1.3
+    Eliminate the bug that GEdit cannot recognize GB2312 coding.
+    UPgrade:
+    * WINE -> 1.1.21
+    * DownThemAll -> 1.1.3
 
 2009-05-01 Homer Xing <homer.xing@gmail.com>
 
-	Add Eclipse 3.4.2 + PyDev + CDT
+    Add Eclipse 3.4.2 + PyDev + CDT
 
 2009-04-30 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* WINE -> 1.1.20
-	* VirtualBox -> 2.2.2
-	* NetBeans -> 6.7 Beta
-	Eliminate TeXLive 2008 download URL bug.
-	Add a bunch of download URLs .
-	Rewrite installation code of VirtualBox.
+    Upgrade:
+    * WINE -> 1.1.20
+    * VirtualBox -> 2.2.2
+    * NetBeans -> 6.7 Beta
+    Eliminate TeXLive 2008 download URL bug.
+    Add a bunch of download URLs .
+    Rewrite installation code of VirtualBox.
 
 2009-04-24 Homer Xing <homer.xing@gmail.com>
-	
-	Upgrade:
-	* WINE -> 1.1.19
-	Support Ubuntu 9.04
+    
+    Upgrade:
+    * WINE -> 1.1.19
+    Support Ubuntu 9.04
 
 2009-04-23 Homer Xing <homer.xing@gmail.com>
 
-	Refuse to start if the program is started by `sudo'
+    Refuse to start if the program is started by `sudo'
 
 2009-04-22 Homer Xing <homer.xing@gmail.com>
 
-	Add OpenGL 2D to Eclipse.
+    Add OpenGL 2D to Eclipse.
 
 2009-04-17 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate several bugs.
-	Make codes clean and clear.
+    Eliminate several bugs.
+    Make codes clean and clear.
 
 2009-04-11 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade WINE to 1.1.18
+    Upgrade WINE to 1.1.18
 
 2009-04-10 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade VirtualBox to 2.2.0
+    Upgrade VirtualBox to 2.2.0
 
 2009-04-06 Homer Xing <homer.xing@gmail.com>
 
-	Make codes clean and clear.
-	Add documents.
-	Add construction method.
+    Make codes clean and clear.
+    Add documents.
+    Add construction method.
 
 2009-04-05 Homer Xing <homer.xing@gmail.com>
 
-	Reduce Windows_XP_SP3.vdi from 2,291 MB to 1,350 MB.
+    Reduce Windows_XP_SP3.vdi from 2,291 MB to 1,350 MB.
 
 2009-03-30 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* Matlab -> 2009a
-	* WarcraftIII -> 1.23
+    Upgrade:
+    * Matlab -> 2009a
+    * WarcraftIII -> 1.23
 
 2009-03-28 Homer Xing <homer.xing@gmail.com>
 
-	Add AdobeReader 9.1
+    Add AdobeReader 9.1
 
 2009-03-27 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* DownThemAll -> 1.1.2
-	* PageSaver -> 2.1
-	* WINE -> 1.1.17
-	* Netbeans -> 6.7 M2
+    Upgrade:
+    * DownThemAll -> 1.1.2
+    * PageSaver -> 2.1
+    * WINE -> 1.1.17
+    * Netbeans -> 6.7 M2
 
 2009-03-07 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade DotA to 6.59c
+    Upgrade DotA to 6.59c
 
 2009-03-06 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate CUPS do not print into pdf file bug.
+    Eliminate CUPS do not print into pdf file bug.
 
 2009-02-28 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate Flash Chinese font bug.
-	Add 7-zip.
+    Eliminate Flash Chinese font bug.
+    Add 7-zip.
 
 2009-02-23 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade WINE to 1.1.15
-	Elimate a trivial bug.
-	Change the coding of readme.txt
+    Upgrade WINE to 1.1.15
+    Elimate a trivial bug.
+    Change the coding of readme.txt
 
 2009-02-21 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade VirtualBox to 2.1.4
+    Upgrade VirtualBox to 2.1.4
 
 2009-02-15 Homer Xing <homer.xing@gmail.com>
-	
-	Eliminate bugs:
-	* Netbeans J2SE programs start up bug.
-	* J2ME programs start up bug on x86_64 systems.
-	Upgrade VirtualBox to 2.1.2
+    
+    Eliminate bugs:
+    * Netbeans J2SE programs start up bug.
+    * J2ME programs start up bug on x86_64 systems.
+    Upgrade VirtualBox to 2.1.2
 
 2009-01-15 Homer Xing <homer.xing@gmail.com>
 
-	Reduce the size of generated pdf files.
-	Eliminate the bug that eps files cannot be inserted into pdf.
+    Reduce the size of generated pdf files.
+    Eliminate the bug that eps files cannot be inserted into pdf.
 
 2009-01-11 Homer Xing <homer.xing@gmail.com>
-	
-	Eliminate a trivial bug.
+    
+    Eliminate a trivial bug.
 
 2009-01-09 Homer Xing <homer.xing@gmail.com>
-	
-	Add auto-install function for FoxitReader.
+    
+    Add auto-install function for FoxitReader.
 
 2009-01-04 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade Tencent QQ to 1.0 Beta1
+    Upgrade Tencent QQ to 1.0 Beta1
 
 2009-01-02 Homer Xing <homer.xing@gmail.com>
 
-	Add msn-pecan
+    Add msn-pecan
 
 2009-01-01 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade DownThemAll to 1.1.0
+    Upgrade DownThemAll to 1.1.0
 
 2008-12-31 Homer Xing <homer.xing@gmail.com>
 
-	Improve Gedit, Nautilus, Terminal, Font settings.
-	Improve the documents.
-	Add auto installation for FireStarter.
-	Rewrite SendKey.py
-	Add partial auto installation for EIOffice & NetBeans.
-	Reduce the installation of VirtualBox.
+    Improve Gedit, Nautilus, Terminal, Font settings.
+    Improve the documents.
+    Add auto installation for FireStarter.
+    Rewrite SendKey.py
+    Add partial auto installation for EIOffice & NetBeans.
+    Reduce the installation of VirtualBox.
 
 2008-12-30 Homer Xing <homer.xing@gmail.com>
 
-	Reduce WindowsXP_SP3.vdi from 6,886 MB to 2,291 MB
-	Add documents.
-	Rewrite Matlab installation tips.
-	Rewrite LaTeX example file.
-	Upgrade TeXLive to 2008.
+    Reduce WindowsXP_SP3.vdi from 6,886 MB to 2,291 MB
+    Add documents.
+    Rewrite Matlab installation tips.
+    Rewrite LaTeX example file.
+    Upgrade TeXLive to 2008.
 
 2008-12-29 Homer Xing <homer.xing@gmail.com>
 
-	Do not install inkscape and its tutorial.
-	Add SUN JDK instead of OpenJDK.
-	Eliminate the bug of SUN JDK Chinese font.
-	Rewrite the installation of Adobe Flash Plugin.
-	Add EIOffice.
-	Add software architecture auto selection function.
-	Reduce codes.
-	Add Foxit Reader.
-	Add WarcraftIII auto installation.
-	Add Chinese Language support for FoxitReader.
-	Add CrossFTP.
+    Do not install inkscape and its tutorial.
+    Add SUN JDK instead of OpenJDK.
+    Eliminate the bug of SUN JDK Chinese font.
+    Rewrite the installation of Adobe Flash Plugin.
+    Add EIOffice.
+    Add software architecture auto selection function.
+    Reduce codes.
+    Add Foxit Reader.
+    Add WarcraftIII auto installation.
+    Add Chinese Language support for FoxitReader.
+    Add CrossFTP.
 
 2008-12-25 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate Matlab Chinese font bug.
+    Eliminate Matlab Chinese font bug.
 
 2008-12-22 Homer Xing <homer.xing@gmail.com>
 
-	Rewrite Battle net document.
-	Upgrade VirtualBox to 2.1.0
+    Rewrite Battle net document.
+    Upgrade VirtualBox to 2.1.0
 
 2008-12-15 Homer Xing <homer.xing@gmail.com>
 
-	Add Warcraft III auto installation.
-	Upgrade DotA to 6.57
+    Add Warcraft III auto installation.
+    Upgrade DotA to 6.57
 
 2008-12-11 Homer Xing <homer.xing@gmail.com>
-	
-	Upgrade DownThemAll to 1.0.4
+    
+    Upgrade DownThemAll to 1.0.4
 
 2008-12-05 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade:
-	* Matlab -> 2008b
-	* TeXLive -> 2008
-	* Adobe Reader -> 8.13
+    Upgrade:
+    * Matlab -> 2008b
+    * TeXLive -> 2008
+    * Adobe Reader -> 8.13
 
 2008-11-28 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade DotA to 6.56
+    Upgrade DotA to 6.56
 
 2008-11-27 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade Tencent QQ to preview 3.
+    Upgrade Tencent QQ to preview 3.
 
 2008-11-24 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade VirtualBox to 2.0.6
+    Upgrade VirtualBox to 2.0.6
 
 2008-11-20 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade Netbeans to 6.5
+    Upgrade Netbeans to 6.5
 
 2008-11-13 Homer Xing <homer.xing@gmail.com>
 
-	Rewrite the package download scripts.
+    Rewrite the package download scripts.
 
 2008-11-07 Homer Xing <homer.xing@gmail.com>
 
-	Add Intel Compiler. Add document. Eliminate Intel compiler installation bug.
+    Add Intel Compiler. Add document. Eliminate Intel compiler installation bug.
 
 2008-11-06 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade PageSaver to 2.0.0
+    Upgrade PageSaver to 2.0.0
 
 2008-11-02 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate ivtv library bug.
-	Eliminate Firefox xpi installation bug.
-	Add document for comic.
-	Add kscope. Eliminate kscope start up bug.
+    Eliminate ivtv library bug.
+    Eliminate Firefox xpi installation bug.
+    Add document for comic.
+    Add kscope. Eliminate kscope start up bug.
 
 2008-11-01 Homer Xing <homer.xing@gmail.com>
 
-	Add Flash plugin for x86_64 systems.
+    Add Flash plugin for x86_64 systems.
 
 2008-10-31 Homer Xing <homer.xing@gmail.com>
 
-	Do a complete test in Ubuntu 8.10
-	Improve the prompt message.
-	Eliminate Matlab OpenJDK start up bug.
-	Upgrade Ubuntu.iso to 8.10
+    Do a complete test in Ubuntu 8.10
+    Improve the prompt message.
+    Eliminate Matlab OpenJDK start up bug.
+    Upgrade Ubuntu.iso to 8.10
 
 2008-10-29 Homer Xing <homer.xing@gmail.com>
 
-	Update VirtualBox to 2.0.4
+    Update VirtualBox to 2.0.4
 
 2008-10-03 Homer Xing <homer.xing@gmail.com>
 
-	Update Tencent QQ to version 0926
+    Update Tencent QQ to version 0926
 
 2008-09-22 Homer Xing <homer.xing@gmail.com>
 
-	Add documents for LaTeX.
-	Eliminate file owner bug.
+    Add documents for LaTeX.
+    Eliminate file owner bug.
 
 2008-09-20 Homer Xing <homer.xing@gmail.com>
 
-	Add Ubuntu installation document, battle net document and virtualbox document.
-	Do not set DHCP, DNS server.
+    Add Ubuntu installation document, battle net document and virtualbox document.
+    Do not set DHCP, DNS server.
 
 2008-09-19 Homer Xing <homer.xing@gmail.com>
 
-	Add VIM LaTeX forward search.
-	Add Warcraft III battle net.
-	Eliminate the bug that VirtualBox cannot use host USB devices.
+    Add VIM LaTeX forward search.
+    Add Warcraft III battle net.
+    Eliminate the bug that VirtualBox cannot use host USB devices.
 
 2008-09-17 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade VirtualBox to 2.0.2
+    Upgrade VirtualBox to 2.0.2
 
 2008-09-09 Homer Xing <homer.xing@gmail.com>
-	
-	Rewrite VirtualBox image
+    
+    Rewrite VirtualBox image
 
 2008-09-08 Homer Xing <homer.xing@gmail.com>
-	
-	Upgrade VirtualBox to 2.0.0
+    
+    Upgrade VirtualBox to 2.0.0
 
 2008-09-03 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate the bug that some folders are owned by root.
+    Eliminate the bug that some folders are owned by root.
 
 2008-09-01 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate the bug that libqt3-mt is not installed before VirtualBox.
+    Eliminate the bug that libqt3-mt is not installed before VirtualBox.
 
 2008-08-31 Homer Xing <homer.xing@gmail.com>
 
-	Eliminate several bugs.
+    Eliminate several bugs.
 
 2008-08-30 Homer Xing <homer.xing@gmail.com>
 
-	Add mplayer for comic.
+    Add mplayer for comic.
 
 2008-08-28 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade PageSaver to 1.7.1
-	Add Ubuntu iso on server.
-	Do not install VMWare.
-	Add VirtualBox.
+    Upgrade PageSaver to 1.7.1
+    Add Ubuntu iso on server.
+    Do not install VMWare.
+    Add VirtualBox.
 
 2008-08-26 Homer Xing <homer.xing@gmail.com>
 
-	Upgrade WarcraftIII to 1.22.
-	Upgrade DotA to 6.54.
+    Upgrade WarcraftIII to 1.22.
+    Upgrade DotA to 6.54.
 
-	change log before 2008-08-26 are lost ...
-	
+    change log before 2008-08-26 are lost ...
+    
 2007-07-01 Homer Xing <homer.xing@gmail.com>
 
     * Begin developing "Ubuntu Easy Setuper".

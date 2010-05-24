@@ -28,6 +28,7 @@ def get_pixbuf(file, width, height):
     try:
         return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
     except:
+        print file, 'not found'
         return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
 
 def gray_bg(widget):
@@ -146,7 +147,7 @@ def add_expander(vbox, title):
     expander.set_expanded(False)
     return expander
 
-def show_text_window(title, content):
+def show_text_window(title, content, show_textbox_border = True, show_a_big_window = True):
     import gtk
     buffer = gtk.TextBuffer()
     buffer.set_text(content)
@@ -159,19 +160,29 @@ def show_text_window(title, content):
     scroll = gtk.ScrolledWindow()
     scroll.add(textview)
     scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-    scroll.set_shadow_type(gtk.SHADOW_IN)
-    close_button = gtk.Button(stock=gtk.STOCK_CLOSE)
+    if show_textbox_border:
+        scroll.set_shadow_type(gtk.SHADOW_IN)
+    copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
+    def clicked():
+        clipboard = gtk.clipboard_get()
+        start = buffer.get_start_iter()
+        end = buffer.get_end_iter()
+        clipboard.set_text(buffer.get_text(start, end))
+    copy.connect('clicked', lambda w: clicked())
+    close_button = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
     close_button.connect('clicked', lambda *w: window.destroy())
-    align = gtk.Alignment(1, 0.5)
-    align.add(close_button)
+    buttonbox = gtk.HBox(False, 10)
+    buttonbox.pack_end(close_button, False)
+    buttonbox.pack_end(copy, False)
     vbox = gtk.VBox(False, 10)
     vbox.pack_start(scroll)
-    vbox.pack_start(align, False)
+    vbox.pack_start(buttonbox, False)
 
     window = gtk.Window()
     window.set_title(title)
     window.add(vbox)
-    window.set_default_size(600, 400)
+    if show_a_big_window:
+        window.set_default_size(600, 400)
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
     window.show_all()

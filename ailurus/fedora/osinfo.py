@@ -21,18 +21,16 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import traceback
 import sys, os
 from lib import *
 
 def __fedora_version():
-    import sys, traceback
     try: 
         with open('/etc/fedora-release') as f:
             value = f.read().strip()
         return [row(_('Fedora version:'), value, D+'other_icons/fedora.png')]
     except: 
-        traceback.print_exc(file=sys.stderr)
+        print_traceback()
         return []
 
 def get():

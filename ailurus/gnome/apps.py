@@ -47,7 +47,7 @@ class NScripts(I):
                'Its web site is http://freshmeat.net/projects/nscripts . '
                'NScripts is installed in ~/.gnome2/nautilus-scripts.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     def install(self):
         f = R('http://www.nanolx.org/free/NScripts-3.6.tar.bz2').download()
@@ -96,7 +96,7 @@ class Speedup_Nautilus(I):
        '/apps/nautilus/preferences/show_icon_text = never\n'
        '/apps/nautilus/icon_view/default_use_tighter_layout = true\n'
        'delete "size" from /apps/nautilus/list_view/default_visible_columns')
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     
     def __init__(self):
@@ -148,7 +148,7 @@ class GEdit_Suitable_For_Programmer(_set_gconf):
        'Do not automatically create a hidden copy of current file. '
        'Automatically save files once in each minute. '
        'Show line numbers.')
-    category = 'dev'
+    category = 'saber'
     DE = 'gnome'
     def __init__(self):
         self.set = (

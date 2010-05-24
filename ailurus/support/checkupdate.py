@@ -100,8 +100,7 @@ def check_update():
         dlg.run()
         dlg.destroy()
     except:
-        import traceback
-        traceback.print_exc()
+        print_traceback()
 
 def show_about_dialog():
     import gtk
@@ -125,6 +124,7 @@ def show_about_dialog():
           'SHANG Yuanchun <idealities@gmail.com>',
           'DU Yue <elyes.du@gmail.com>',
           'Devil Wang <wxjeacen@gmail.com>',
+          'Ray Chen <chenrano2002@gmail.com>',
            ] )
     about.set_translator_credits(_('translator-credits'))
     about.set_artists( [
