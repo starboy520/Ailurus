@@ -826,7 +826,16 @@ class InstallRemovePane(gtk.VBox):
             if not i3 in all_categories: continue
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
-        
+        left_categories = set()
+        for row in treestore:
+            assert row[2].startswith('*')
+            left_categories.add(row[2][1:])
+        for item in items:
+            left_categories.add(item[3])
+        for obj in app_objs:
+            if obj.category not in left_categories:
+                print obj.__class__.__name__, 'category is wrong'
+            
         self.__left_tree_view_default_select()
 
         self.pack_start(hpaned)

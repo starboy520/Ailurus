@@ -185,7 +185,7 @@ class Enhance_Decompression_Capability(N) :
 
 class Evince_Read_Chinese_PDF(N) :
     __doc__ = _('Make Evince be able to reveal Chinese, Japanese, Korean pdf')
-    category='office'
+    category='business'
     if FEDORA:
         pkgs = 'poppler-data'
     if UBUNTU or MINT:
@@ -1018,10 +1018,10 @@ class GIMP(N):
     if UBUNTU or MINT: pkgs = 'gimp'
 
 class Scribus(N):
-    'GIMP'
+    'Scribus'
     detail = _('Professional typesetting software')
     category = 'typesetting'
-    if UBUNTU or MINT: pkgs = 'gimp'
+    if UBUNTU or MINT: pkgs = 'scribus'
 
 class Shutter(N):
     'Shutter'
