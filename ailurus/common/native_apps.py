@@ -817,3 +817,10 @@ class K3B(N):
     category = 'cd_burner'
     if UBUNTU or MINT: pkgs = 'k3b'
     if FEDORA: pkgs = 'k3b'
+
+class Midori(N):
+    'Midori'
+    detail = _('lightweight graphical web browser')
+    category = 'browser'
+    if UBUNTU or MINT: pkgs = 'midori'
+
