@@ -64,7 +64,7 @@ class InstallRemovePane(gtk.VBox):
         category = model.get_value(iter, 2)
         text = model.get_value(iter, 0)
         if category.startswith('*'): # This is a big class.
-            cell.set_property('markup', '<b>%s</b>'%text)
+            cell.set_property('markup', '<big><b>%s</b></big>'%text)
         else: # This is an item.
             cell.set_property('text', text)
 
@@ -376,15 +376,22 @@ class InstallRemovePane(gtk.VBox):
         import types
         assert isinstance ( obj, types.InstanceType )
         assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
-        cell.set_property ( 'markup', '%s'%obj.__doc__ )
-        cell.set_property ( 'strikethrough', 
-                            obj.cache_installed==True and obj.showed_in_toggle==False )
+        import StringIO
+        markup = StringIO.StringIO()
+        print >>markup, '<b>%s</b>' % obj.__doc__,
+        if obj.detail:
+            detail = obj.detail.split('\n', 1)[0]
+            print >>markup, ''
+            print >>markup, detail,
+        cell.set_property('markup', markup.getvalue())
+        cell.set_property('strikethrough', 
+                          obj.cache_installed==True and obj.showed_in_toggle==False )
         if obj.cache_installed==False and obj.showed_in_toggle==True :
-            cell.set_property ( 'scale', 1.2 )
-            cell.set_property ( 'underline', True )
+            cell.set_property('scale', 1.2)
+#            cell.set_property ( 'underline', True )
         else :
-            cell.set_property ( 'scale', 1 )
-            cell.set_property ( 'underline', False )
+            cell.set_property('scale', 1)
+#            cell.set_property ( 'underline', False )
 
     def __right_pane_changed(self, treeselection, treeview):
         ( store, pathlist ) = treeselection.get_selected_rows ()
@@ -500,7 +507,7 @@ class InstallRemovePane(gtk.VBox):
         thread.start_new_thread(launch, ())
 
     def __right_pane(self):
-        import gobject
+        import gobject, pango
         self.treestore = treestore = gtk.TreeStore ( gobject.TYPE_PYOBJECT )
         
         self.treestorefilter = treestorefilter = treestore.filter_new()
@@ -515,6 +522,7 @@ class InstallRemovePane(gtk.VBox):
         render_pixbuf = gtk.CellRendererPixbuf()
         render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText ()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
 
         col_toggle = gtk.TreeViewColumn ()
         col_toggle.pack_start (render_toggle,False)
