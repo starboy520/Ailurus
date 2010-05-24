@@ -439,3 +439,7 @@ class Repo_ElementaryArtwork(_launchpad):
 class Repo_Docky(_launchpad):
     'Docky'
     ppa = 'docky-core'
+
+class Repo_CairoDock(_launchpad):
+    'Cairo Dock'
+    ppa = 'cairo-dock-team/weekly'

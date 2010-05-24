@@ -236,3 +236,10 @@ class Docky(_apt_install):
     category = 'panel'
     depends = Repo_Docky
     pkgs = 'docky'
+
+class CairoDock(_apt_install):
+    'Cairo-Dock'
+    detail = _('A dock, a taskbar, and many applets')
+    category = 'panel'
+    depends = Repo_CairoDock
+    pkgs = 'cairo-dock cairo-dock-plug-ins'
