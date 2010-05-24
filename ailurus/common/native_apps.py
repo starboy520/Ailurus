@@ -1052,3 +1052,15 @@ class QutIM(N):
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'qutim'
 
+class FileZilla(N):
+    'FileZilla'
+    detail = _('FTP client')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'filezilla'
+
+class Gwibber(N):
+    'Gwibber'
+    detail = _('A microblogging client which supports Twitter and Facebook')
+    category = 'blog'
+    if UBUNTU or MINT: pkgs = 'gwibber'
+
