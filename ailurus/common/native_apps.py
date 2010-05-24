@@ -1162,7 +1162,7 @@ class BreatheIconTheme(N):
 
 class ShikiColors(N):
     'Shiki Colors'
-    detail = _('A hybrid theme which is designed to be fast and stable')
+    detail = _('Hybrid theme which is designed to be fast and stable')
     category = 'theme'
     if UBUNTU or MINT: pkgs = 'shiki-colors'
     
@@ -1172,3 +1172,14 @@ class GNOMEColors(N):
     category = 'theme'
     if UBUNTU or MINT: pkgs = 'gnome-colors'
 
+class GCstar(N):
+    'GCstar'
+    detail = _('Manage your collections such as movies, books, music')
+    category = 'business'
+    if UBUNTU or MINT: pkgs = 'gcstar'
+
+class Keepassx(N):
+    'Keepassx'
+    detail = _('Password manager which saves many different information e.g. user names and passwords in one single database.')
+    category = 'business'
+    if UBUNTU or MINT: pkgs = 'keepassx'
