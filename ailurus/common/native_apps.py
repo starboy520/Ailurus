@@ -982,10 +982,7 @@ class Wesnoth(N):
     __doc__ = _('Battle for Wesnoth')
     detail = _('A popular turn-based game')
     category = 'game'
-    if UBUNTU or MINT: pkgs = 'wesnoth'
-
-class Wesnoth_new(N):
-    __doc__ = _('Battle for Wesnoth 1.8')
-    detail = _('A popular turn-based game')
-    category = 'game'
-    if UBUNTU or MINT: pkgs = 'wesnoth-1.8'
+    if UBUNTU or MINT:
+        def __init__(self):
+            if APT.exist('wesnoth-1.8'): self.pkgs = 'wesnoth-1.8'
+            else: self.pkgs = 'wesnoth'
