@@ -870,3 +870,9 @@ class Geany(N):
     category = 'text_editor'
     if UBUNTU or MINT: pkgs = 'geany'
 
+class ClawsMail(N):
+    'Claws Mail'
+    detail = _('Lightweight email client')
+    category = 'email'
+    if UBUNTU or MINT: pkgs = 'claws-mail'
+    
