@@ -881,3 +881,9 @@ class Evolution(N):
     detail = _('Email client, calendar, contact manager and address manager')
     category = 'email'
     if UBUNTU or MINT: pkgs = 'evolution'
+
+class Thunderbird(N):
+    'Thunderbird'
+    detail = _('Email client and RSS reader')
+    category = 'email'
+    if UBUNTU or MINT: pkgs = 'thunderbird'
