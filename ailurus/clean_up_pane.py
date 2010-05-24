@@ -365,10 +365,12 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         while gtk.events_pending(): gtk.main_iteration()
         return window
     
-    def refresh(self):
-#        window = self.show_scan_installed_package_splash()
+    def refresh(self, show_splash = False):
+        if show_splash:
+            window = self.show_scan_installed_package_splash()
         pkgs = APT.get_autoremovable_pkgs()
-#        window.destroy()
+        if show_splash:
+            window.destroy()
         self.liststore.clear()
         self.view.set_model(None)
         for row in pkgs:
@@ -421,7 +423,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         scroll.add(view)
         
         button_refresh = gtk.Button(_('Refresh'))
-        button_refresh.connect('clicked', lambda *w: self.refresh())
+        button_refresh.connect('clicked', lambda *w: self.refresh(show_splash = True))
         self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
         self.button_delete = button_delete = gtk.Button(_('Apply'))
