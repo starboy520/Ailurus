@@ -591,13 +591,6 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
-        from support.searchbox import SearchBoxForApp
-        sbox = SearchBoxForApp()
-        sbox.connect('changed', self.__search_content_changed)
-        box1 = gtk.VBox(False, 10)
-        box1.pack_start(sbox, False, False)
-        box1.pack_start(scroll)
-        
         from support.pangobuffer import PangoBuffer
         from support.releasenotesviewer import ReleaseNotesViewer
         detail = ReleaseNotesViewer( PangoBuffer() )
@@ -619,7 +612,7 @@ class InstallRemovePane(gtk.VBox):
         box2.pack_start(scroll_d, True, True, 5)
 
         self.vpaned = vpaned = gtk.VPaned()
-        vpaned.pack1(box1, True, False)
+        vpaned.pack1(scroll, True, False)
         vpaned.pack2(box2, False, False)
 
         return vpaned 
@@ -745,10 +738,14 @@ class InstallRemovePane(gtk.VBox):
         button_collapse_left_treeview.connect('clicked', lambda w: self.left_treeview.collapse_all())
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
+        from support.searchbox import SearchBoxForApp
+        sbox = SearchBoxForApp()
+        sbox.connect('changed', self.__search_content_changed)
         bottom_box = gtk.HBox(False, 5)
-        bottom_box.pack_start(button_expand_left_treeview, False)
         bottom_box.pack_start(button_collapse_left_treeview, False)
-        bottom_box.pack_start(button_apply, False)
+        bottom_box.pack_start(button_expand_left_treeview, False)
+        bottom_box.pack_start(button_apply, False, False, 10)
+        bottom_box.pack_start(sbox, False)
 
         self.app_objs = app_objs
         for obj in app_objs :
