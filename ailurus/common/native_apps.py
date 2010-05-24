@@ -887,3 +887,33 @@ class Thunderbird(N):
     detail = _('Email client and RSS reader')
     category = 'email'
     if UBUNTU or MINT: pkgs = 'thunderbird'
+
+class AMule(N):
+    'aMule'
+    detail = _('An eMule-like client for eD2k and Kademlia networks')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'amule'
+
+class Deluge(N):
+    'Deluge'
+    detail = _('Lightweight bittorrent client')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'deluge'
+    
+class Giver(N):
+    'Giver'
+    detail = _('Send files to other people. Automatically discover other people running Giver on the network.')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'giver'
+
+class LinuxDCPP(N):
+    'Linuxdcpp'
+    detail = _('Connect to a central hub. Share files and chat with other people.')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'linuxdcpp'
+
+class Transmission(N):
+    'Transmission'
+    detail = _('Lightweight bittorrent client')
+    category = 'file_sharing'
+    if UBUNTU or MINT: pkgs = 'transmission'
