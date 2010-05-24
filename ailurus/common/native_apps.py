@@ -920,7 +920,72 @@ class Transmission(N):
 
 class BosWars(N):
     'Bos Wars'
-    detail = _('A real time strategy game, just like red alarm')
+    detail = _('A real time strategy game, just like Red Alarm')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'boswars'
 
+class FrozenBubble(N):
+    'Frozen Bubble'
+    detail = _('A clone of the popular "Puzzle Bobble" game')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'frozen-bubble'
+
+class Glest(N):
+    'Glest'
+    detail = _('A real time strategy game, just like Warcraft')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'glest'
+
+class Globulation2(N):
+    'Globulation 2'
+    detail = _('A real time strategy game which focuses on strategy rather than on micro-management.')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'glob2'
+
+class Hedgewars(N):
+    'Hedgewars'
+    detail = _('A turn based strategy game. Hedgehogs fight enemies with fantastic weapons.')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'hedgewars'
+
+class Nexuiz(N):
+    'Nexuiz'
+    detail = _('3D first-person shooter game')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'nexuiz'
+    
+class TheManaWorld(N):
+    __doc__ = _('The Mana World')
+    detail = _('2D MMORPG')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'tmw'
+    
+class Warsow(N):
+    'Warsow'
+    detail = _('3D first-person shooter game, just like DOOM.')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'warsow'
+
+class Warzone2100(N):
+    'Warzone 2100'
+    detail = _('A real time strategy game')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'warzone2100'
+
+class Wormux(N):
+    'Wormux'
+    detail = _('A funny fight game on 2D maps')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'wormux'
+
+class Wesnoth(N):
+    __doc__ = _('Battle for Wesnoth')
+    detail = _('A popular turn-based game')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'wesnoth'
+
+class Wesnoth_new(N):
+    __doc__ = _('Battle for Wesnoth 1.8')
+    detail = _('A popular turn-based game')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'wesnoth-1.8'
