@@ -917,3 +917,10 @@ class Transmission(N):
     detail = _('Lightweight bittorrent client')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'transmission'
+
+class BosWars(N):
+    'Bos Wars'
+    detail = _('A real time strategy game, just like red alarm')
+    category = 'game'
+    if UBUNTU or MINT: pkgs = 'boswars'
+
