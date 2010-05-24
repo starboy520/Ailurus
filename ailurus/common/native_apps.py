@@ -1160,5 +1160,15 @@ class BreatheIconTheme(N):
     category = 'theme'
     if UBUNTU or MINT: pkgs = 'breathe-icon-theme'
 
-
+class ShikiColors(N):
+    'Shiki Colors'
+    detail = _('A hybrid theme which is designed to be fast and stable')
+    category = 'theme'
+    if UBUNTU or MINT: pkgs = 'shiki-colors'
+    
+class GNOMEColors(N):
+    'GNOME Colors'
+    detail = _('A set of icons with 7 color variations')
+    category = 'theme'
+    if UBUNTU or MINT: pkgs = 'gnome-colors'
 
