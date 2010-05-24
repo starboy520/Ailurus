@@ -69,6 +69,8 @@ class InstallRemovePane(gtk.VBox):
             cell.set_property('text', text)
 
     def __left_pane(self):
+        column_expander = gtk.TreeViewColumn()
+        column_expander.set_visible(False)
         pixbuf_render = gtk.CellRendererPixbuf()
         text_render = gtk.CellRendererText()
         column = gtk.TreeViewColumn()
@@ -79,11 +81,13 @@ class InstallRemovePane(gtk.VBox):
         # each row of liststore contains ( title, icon, category )
         self.left_treestore = treestore = gtk.TreeStore ( str, gtk.gdk.Pixbuf, str )
         self.left_treeview = treeview = gtk.TreeView()
+        treeview.append_column(column_expander)
         treeview.append_column ( column )
         treeview.set_model(treestore)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
         treeview.get_selection().connect('changed', self.__left_pane_changed, treeview )
         treeview.set_headers_visible(False)
+        treeview.set_expander_column(column_expander)
 
         scrollwindow = gtk.ScrolledWindow ()
         scrollwindow.add ( treeview )
@@ -751,7 +755,7 @@ class InstallRemovePane(gtk.VBox):
             all_categories.add(obj.category)
 
         def icon(path):
-            return get_pixbuf(path, 32, 32)
+            return get_pixbuf(path, 24, 24)
         
         treestore = self.left_treestore
 
