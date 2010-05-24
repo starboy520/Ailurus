@@ -45,7 +45,7 @@ class SearchBoxForApp(gtk.HBox):
         self.pack_start(label, False, False)
         self.pack_start(entry)
         self.pack_start(button_clear,False,False)
-        self.pack_start(option, False, False)
+#        self.pack_start(option, False, False)
     def __text(self):
         return self.__entry.get_text()
     def __option(self):
