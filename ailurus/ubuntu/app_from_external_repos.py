@@ -229,3 +229,10 @@ class ElementaryTheme(_apt_install):
     category = 'theme'
     depends = Repo_ElementaryArtwork
     pkgs = 'elementary-icon-theme elementary-theme elementary-wallpapers'
+
+class Docky(_apt_install):
+    'Docky'
+    detail = _('Simple GNOME dock')
+    category = 'panel'
+    depends = Repo_Docky
+    pkgs = 'docky'

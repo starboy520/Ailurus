@@ -435,3 +435,7 @@ class Repo_Acire(_launchpad):
 class Repo_ElementaryArtwork(_launchpad):
     __doc__ = _('Elementary Theme')
     ppa = 'elementaryart/ppa'
+
+class Repo_Docky(_launchpad):
+    'Docky'
+    ppa = 'docky-core'
