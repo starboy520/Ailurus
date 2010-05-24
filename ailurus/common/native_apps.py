@@ -1115,3 +1115,50 @@ class Openshot(N):
 class SMPlayer(N):
     'SMPlayer'
     detail = _('Qt frontend for MPlayer')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'smplayer'
+
+class VLC(N):
+    'VLC'
+    detail = _('Media player and media format converter')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'vlc'
+
+class Cheese(N):
+    __doc__ = _('Cheese')
+    detail = _('Take pictures and videos from your webcam, also provides some graphical effects')
+    category = 'others'
+    if UBUNTU or MINT: pkgs = 'cheese'
+
+class Ghex(N):
+    'Ghex'
+    detail = _('Hex editor')
+    category = 'text_editor'
+    if UBUNTU or MINT: pkgs = 'ghex'
+
+class Gnote(N):
+    'Gnote'
+    detail = _('Mono-free alternative to Tomboy Notes')
+    category = 'business'
+    if UBUNTU or MINT: pkgs = 'gnote'
+
+class Leafpad(N):
+    'Leafpad'
+    detail = _('Simple text editor')
+    category = 'text_editor'
+    if UBUNTU or MINT: pkgs = 'leafpad'
+
+class Zim(N):
+    'Zim'
+    detail = _('Notebook software which helps you create a wiki to your desktop')
+    category = 'business'
+    if UBUNTU or MINT: pkgs = 'zim'
+
+class BreatheIconTheme(N):
+    __doc__ = _('Breathe Icon Theme')
+    detail = _("""Mix KDE's "Oxygen" icons with Ubuntu's "Human" theme.""")
+    category = 'theme'
+    if UBUNTU or MINT: pkgs = 'breathe-icon-theme'
+
+
+
