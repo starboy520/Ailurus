@@ -67,7 +67,7 @@ Categories=Education;Science; ''')
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
     detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
-    category = 'firefox'
+    category = 'firefox_extension'
     Chinese = True
     def __init__(self):
         import os
@@ -176,7 +176,7 @@ class HITTeXTemplate(_download_one_file) :
 
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
@@ -234,7 +234,7 @@ class GoogleEarth(I):
 
 class NVIDEA_Driver(I):
     __doc__ = 'NVIDEA ' + _('video card driver')
-    category = 'videocarddriver'
+    category = 'others'
     if is32():
         filename = '195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86/latest.txt
         url = 'ftp://download.nvidia.com/XFree86/Linux-x86/' + filename
@@ -253,7 +253,7 @@ class NVIDEA_Driver(I):
 
 class ATI_Driver(I):
     __doc__ = 'ATI ' + _('video card driver')
-    category = 'videocarddriver'
+    category = 'others'
     detail = _('Please click this link:') + ' http://ati.amd.com/support/driver.HTML'
     def install(self):
         raise NotImplementedError

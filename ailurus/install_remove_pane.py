@@ -767,6 +767,7 @@ class InstallRemovePane(gtk.VBox):
         i_education = treestore.append(None, [_('Education'), None, '*education'])
         i_game = treestore.append(None, [_('Game'), None, '*game'])
         i_others = treestore.append(None, [_('Others'), None, '*others'])
+        i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
 
         items = (
                  [i_internet, _('Browser'), D+'umut_icons/p_browser.png', 'browser'],

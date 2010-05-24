@@ -29,7 +29,7 @@ from app_from_external_repos import *
 
 class OpenJDK6(I):
     'OpenJDK 6'
-    category = 'dev'
+    category = 'saber'
     license = GPL
     def install(self):
         APT.install('openjdk-6-jdk')
@@ -83,7 +83,7 @@ class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
-    category = 'dev'
+    category = 'library'
     license = GPL
     def install(self):
         if is32():
@@ -121,7 +121,7 @@ class GNOMEArtNextGen(I):
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
-    category = 'appearance'
+    category = 'theme'
     license = GPL
     DE = 'gnome'
     def install(self):

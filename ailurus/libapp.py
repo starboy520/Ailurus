@@ -266,7 +266,7 @@ class _path_lists(I):
 
 class _ff_extension(I):
     'Firefox Extension'
-    category = 'firefox'
+    category = 'firefox_extension'
     def __init__(self):
         if not hasattr(_ff_extension, 'ext_path'):
             _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()

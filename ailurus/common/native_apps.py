@@ -144,7 +144,7 @@ class ChildsPlay(N):
 class CodeBlocks(N):
     __doc__ = _('Code::Blocks - C/C++ IDE')
     license = GPL
-    category = 'dev'
+    category = 'ide'
     if UBUNTU or MINT:
         pkgs = 'codeblocks'
     if FEDORA:
@@ -155,21 +155,21 @@ class CompizSettingManager(N):
     detail = _('Compiz Fusion is the unification of the Beryl project and the community around the Compiz Window Manager. '
        'Compiz settings manager is the configuration application for Compiz Fusion. '
        'It can configurate effects such as "Desktop cube" and "3D windows".')
-    category = 'appearance'
+    category = 'compiz_setting'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'compizconfig-settings-manager'
 
 class CompizSettingManagerSimple(N):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
-    category = 'appearance'
+    category = 'compiz_setting'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'simple-ccsm'
 
 class Ctags_Cscope(N):
     __doc__ = _('Ctags and Cscope: Popular source code parsers')
-    category = 'dev'
+    category = 'saber'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'exuberant-ctags cscope'
@@ -200,7 +200,7 @@ class Extcalc(N):
         
 class Fcitx(N):
     'Fcitx'
-    category = 'language'
+    category = 'others'
     detail = _('This is a popular Chinese input method.\n'
                'It is from http://fcitx.googlecode.com/')
     Chinese = True
@@ -223,7 +223,7 @@ class FreeGLut3(N):
     __doc__ = _('OpenGL library')  
     detail = _('This is a library for writing OpenGL programs.')
     license = GPL
-    category = 'dev'
+    category = 'library'
     if UBUNTU or MINT:
         pkgs = 'freeglut3-dev'
     if FEDORA:
@@ -234,7 +234,7 @@ class FreeGLut3(N):
 #class Full_Language_Pack(N):
 #    __doc__ = _('Full language support and input method')
 #    detail = _('Because of live CD capacity limitation, this Linux distribution does not have full language support.\n')
-#    category = 'language'
+#    category = 'others'
 #    if UBUNTU or MINT:
 #        def __init__(self):
 #            import locale
@@ -277,7 +277,7 @@ class GCompris(N):
  
 class GMP(N):
     __doc__ = _('GNU multiprecision arithmetic library')
-    category = 'dev'
+    category = 'library'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'libgmp3-dev'
@@ -286,7 +286,7 @@ class GMP(N):
 
 class Gnash(N):
     __doc__ = _('Flash plugin for web browser')
-    category = 'media'
+    category = 'flash'
     license = GPL
     if FEDORA:
         pkgs = 'gnash gnash-plugin'
@@ -297,7 +297,7 @@ class HardwareLister(N):
     __doc__ = _('lshw: List hardware information')
     detail = _('A small application which displays detailed hardware information')
     license = GPL
-    category = 'hardware'
+    category = 'others'
     if FEDORA:
         pkgs = 'lshw lshw-gui'
     if UBUNTU or MINT:
@@ -306,7 +306,7 @@ class HardwareLister(N):
 class ImageMagick(N):
     __doc__ = _('ImageMagick: Edit images')
     detail = _('You can start it by /usr/bin/display')
-    category = 'media'
+    category = 'drawing'
     if FEDORA:
         pkgs = 'ImageMagick'
     if UBUNTU or MINT:
@@ -316,7 +316,7 @@ class Kadu(N):
     __doc__ = 'Kadu'
     detail = _('Kadu is an instant messenger, which is very popular in Poland.\n'
                'Command : yum install kadu')
-    category = 'internet'
+    category = 'chat'
     license = GPL
     if FEDORA:
         pkgs = 'kadu'
@@ -329,7 +329,7 @@ class Liferea(N):
     __doc__ = _('Liferea: a RSS feed reader')
     detail = _('This is a simple and easy used RSS feed reader.')
     license = GPL
-    category = 'internet'
+    category = 'rss'
     if FEDORA:
         pkgs = 'liferea'
     if UBUNTU or MINT:
@@ -339,7 +339,7 @@ class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
     detail = _('MACChanger is a utility for viewing/manipulating the MAC address of network interfaces.')
     license = GPL
-    category = 'hardware'
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'macchanger'
     if FEDORA:
@@ -348,7 +348,7 @@ class MACChanger(N):
 class MiniCom_Ckermit(N):
     __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
     license = GPL
-    category = 'embedded'
+    category = 'embedded_system'
     if UBUNTU or MINT:
         pkgs = 'minicom ckermit'
 
@@ -359,13 +359,13 @@ class Moonlight(N):
     license = ('Moonlight 2.0 is licensed under LGPL and MIT X11 licenses. '
                'Moonlight 1.0 is licensed under LGPL. '
                'See http://www.mono-project.com/Moonlight')
-    category = 'media'
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'moonlight-plugin-mozilla'
 
 class Multimedia_Codecs (N) :
     __doc__ = _('Multi-media codec')
-    category = 'media'
+    category = 'others'
     license = LGPL
     if UBUNTU or MINT:
         pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
@@ -376,7 +376,7 @@ class Nautilus_Actions(N):
     detail = _('It allows the configuration of programs to be launched on files selected.\n'
                '<span color="red">This entry is not in context menu. It is in "System"->"Preferences" menu.</span>')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-actions'
@@ -389,7 +389,7 @@ class Nautilus_Audio_Convert(N):
                'These packages will also be installed: \n'
                '<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppenc'
@@ -403,7 +403,7 @@ class Nautilus_Filename_Repairer(N):
     __doc__ = _('"Repair filename" entry')
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-filename-repairer'
@@ -412,7 +412,7 @@ class Nautilus_Gksu(N):
     __doc__ = _('"Open as administrator" entry')
     detail = _('Launch selected files with administration privileges using the context menu.\nOpen selected folder with administration privileges.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-gksu'
@@ -421,7 +421,7 @@ class Nautilus_Image_Converter(N):
     __doc__ = _('"Resize/Rotate images" entries')
     detail = _('Resize or rotate selected images.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-image-converter'
@@ -432,7 +432,7 @@ class Nautilus_Open_Terminal(N):
     __doc__ = _('"Open in terminal" entry')
     detail = _('Open a terminal in current folder.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-open-terminal'
@@ -443,7 +443,7 @@ class Nautilus_Script_Collection_Svn(N):
     __doc__ = _('"Subversion commands" entries')
     detail = _('"Subversion commands" entries')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-script-collection-svn'
@@ -456,7 +456,7 @@ class Nautilus_Script_Collection_Svn(N):
 class Nautilus_Search_Tool(N):
     __doc__ = _('"Search files" entries')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if FEDORA:
         pkgs = 'nautilus-search-tool'
@@ -465,7 +465,7 @@ class Nautilus_Share(N):
     __doc__ = _('"Share folders" entry')
     detail = _('Share folders by Samba.')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-share'
@@ -474,7 +474,7 @@ class Nautilus_Wallpaper(N):
     __doc__ = _('"Set as wallpaper" entry')
     detail = _('"Set as wallpaper" entry')
     license = GPL
-    category = 'nautilus'
+    category = 'nautilus_extension'
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-wallpaper'
@@ -484,7 +484,7 @@ class Ncurses_and_qt3mt(N):
     detail = _('libncurses5 is a library controlling writing to the console screen.\n'
                'libqt3-mt is Trolltech Qt library, version 3.') 
     license = GPL
-    category = 'dev'
+    category = 'library'
     if UBUNTU or MINT:
         pkgs = 'libncurses5-dev libqt3-mt-dev'
     if FEDORA:
@@ -497,7 +497,7 @@ class Netbeans(N):
                ' and frameworks (J2SE, J2ME, etc.). '
                'Official site: http://netbeans.org/downloads/ .') +
               _(' This application depends on Java.') )
-    category = 'dev'
+    category = 'ide'
     license = DUAL_LICENSE(CDDL, GPL) + ' http://netbeans.org/about/legal/license.html'
     if UBUNTU or MINT:
         pkgs = 'netbeans'
@@ -516,7 +516,7 @@ class Octave(N):
 class POSIX_ManPages(N):
     __doc__ = _('POSIX library manual pages')
     detail = _('Install manual pages about Linux system calls, library calls, and POSIX libraries.')
-    category = 'dev'
+    category = 'saber'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'manpages-dev manpages-posix manpages-posix-dev'
@@ -534,7 +534,7 @@ class Parcellite(N):
 class PiTiVi(N):
     __doc__ = _('PiTiVi: Movie editor')
     license = LGPL + ' http://www.pitivi.org/'
-    category = 'media'
+    category = 'media_editor'
     if FEDORA:
         pkgs = 'pitivi'
     if UBUNTU or MINT:
@@ -544,6 +544,7 @@ class PowerTop(N):
     'PowerTop'
     detail = _('Powertop helps you save power for your laptop.')
     license = GPL
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'powertop'
     if FEDORA:
@@ -552,7 +553,7 @@ class PowerTop(N):
 class QCad(N):
     __doc__ = _('QCad: A CAD software which supports DXF-format')
     license = GPL
-    category = 'em'
+    category = 'mechanics'
     if FEDORA:
         pkgs = 'qcad'
     if UBUNTU or MINT:
@@ -561,7 +562,7 @@ class QCad(N):
 class QT_Creator(N):
     'Qt Creator'
     detail = _('This is an IDE for Qt.')
-    category = 'dev'
+    category = 'ide'
     license = GPL
     if FEDORA:
         pkgs = 'qt-creator'
@@ -573,7 +574,7 @@ class Qnapi(N):
     detail = _('QNapi is unofficial free clone of NAPI-PROJEKT program. '
                 'Its purpose is to find and download subtitles for given video file. Currently only Polish subtitles are available.')
     license = GPL
-    category = 'media'
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'qnapi'
         def visible(self):
@@ -618,7 +619,7 @@ class SDL(N):
     detail = _('This is a library for writing SDL programs.\n'
                'SDL is a cross-platform multimedia library designed to provide low level access to audio'
                ' keyboard, mouse, joystick, 3D hardware via OpenGL, and 2D video framebuffer.')
-    category = 'dev'
+    category = 'library'
     license = LGPL
     if UBUNTU or MINT:
         pkgs = 'libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev'
@@ -638,14 +639,14 @@ class Screenlets(N):
     detail = _('Screenlets is able to add eye candy gadgets on desktop, '
        'such as sticky notes, clocks, weather forecasts, calendars and so on, '
        'in order to decorate the desktop.')
-    category = 'appearance'
+    category = 'candy'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'screenlets'
 
 class Stardict(N):
     __doc__ = _('Stardict')
-    category = 'office'
+    category = 'business'
     license = GPL
     if FEDORA:
         detail = _('You can install these dictionaries by yum.\n'
@@ -664,14 +665,14 @@ class StartupManager(N):
     __doc__ = _('Startup Manager: Change GRUB settings and themes')   
     detail = _('Startup manager helps you change GRUB settings and themes.')
     license = GPL
-    category = 'appearance'
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'startupmanager'
         
 class Svn_Git_bzr(N):
     __doc__ = _('Subversion, Git and Bzr: Popular version control systems')
     license = GPL
-    category = 'dev'
+    category = 'version_control'
     if UBUNTU or MINT:
         pkgs = 'subversion git-core bzr'
     if FEDORA:
@@ -708,7 +709,7 @@ class Typespeed(N) :
 class Ubuntu_Studio_Theme(N):
     __doc__ = _('Ubuntu Studio Theme')
     license = GPL
-    category = 'appearance'
+    category = 'theme'
     if UBUNTU or MINT:
         pkgs = 'ubuntustudio-theme ubuntustudio-icon-theme ubuntustudio-wallpapers ubuntustudio-gdm-theme'
     
@@ -716,14 +717,14 @@ class Umbrello(N):
     __doc__ = _('Umbrello: UML modelling')
     detail = _('Umbrello help you do UML modelling.')
     license = GPL
-    category = 'dev'
+    category = 'saber'
     if UBUNTU or MINT:
         pkgs = 'umbrello'
 
 class VIM(N) :
     'VIM'
     license = GPL
-    category = 'dev'
+    category = 'saber'
     if FEDORA:
         pkgs = 'vim-enhanced'
     if UBUNTU or MINT:
@@ -735,14 +736,14 @@ class VirtualBox(N):
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
     license = GPL
-    category = 'vm'
+    category = 'simulator'
     if UBUNTU or MINT:
         pkgs = 'virtualbox-ose' 
 
 class Vuze_Karmic(N):
     # Latest Vuze is in 9.10 repository.
     __doc__ = _('Vuze: Download via bittorrent; Search videos')
-    category = 'internet'
+    category = 'file_sharing'
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'vuze'
@@ -753,7 +754,7 @@ class WINE(N):
     __doc__ = _('WINE')
     detail = _('This is an indispensable application for running Windows applications on Linux.')
     license = LGPL + ' http://wiki.winehq.org/Licensing'
-    category = 'vm'
+    category = 'simulator'
     if FEDORA:
         pkgs = 'wine'
     if UBUNTU or MINT:
@@ -777,7 +778,7 @@ class WorldofPadman(N):
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
                'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
     license = GPL + ' http://sourceforge.net/projects/wop-engine/'
-    category = 'game'
+    category = 'others'
     if FEDORA:
         pkgs = 'worldofpadman'
 
@@ -787,13 +788,14 @@ class Zhcon(N):
                'You can launch it by "zhcon --utf8".')
     Chinese = True
     license = GPL
+    category = 'others'
     if UBUNTU or MINT:
         pkgs = 'zhcon'
 
 class Emacs(N):
     __doc__ = _('Emacs: Advanced text editor')
     license = GPL + ' http://www.gnu.org/software/emacs/'
-    category = 'dev'
+    category = 'saber'
     if UBUNTU or MINT:
         pkgs = 'emacs'
     if FEDORA:
@@ -806,12 +808,12 @@ class FreeDOOM(N):
 
 class Inkscape(N):
     __doc__ = _('Inkscape: Design vector image. Open source substitution of CorelDraw.')
-    category = 'design'
+    category = 'drawing'
     if UBUNTU or MINT: pkgs = 'inkscape'
     if FEDORA: pkgs = 'inkscape'
 
 class K3B(N):
     __doc__ = _('K3B: Create DVD/VCD')
-    category = 'media'
+    category = 'cd_burner'
     if UBUNTU or MINT: pkgs = 'k3b'
     if FEDORA: pkgs = 'k3b'
