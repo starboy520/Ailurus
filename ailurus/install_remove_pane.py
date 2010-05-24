@@ -741,11 +741,22 @@ class InstallRemovePane(gtk.VBox):
         from support.searchbox import SearchBoxForApp
         sbox = SearchBoxForApp()
         sbox.connect('changed', self.__search_content_changed)
+        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_button.connect('clicked', self.__launch_quick_setup)
+        quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
+        quick_setup_checkbutton.connect('clicked', lambda w: w.set_active(False) or Config.set_hide_quick_setup_pane(True) or self.hide_quick_setup())
+        self.quick_setup_content = gtk.HBox(False, 3)
+        self.quick_setup_content.pack_start(quick_setup_button, False)
+        self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
+        self.quick_setup_area = gtk.HBox(False)
+        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+            self.show_quick_setup()
         bottom_box = gtk.HBox(False, 5)
         bottom_box.pack_start(button_collapse_left_treeview, False)
         bottom_box.pack_start(button_expand_left_treeview, False)
         bottom_box.pack_start(button_apply, False, False, 10)
         bottom_box.pack_start(sbox, False)
+        bottom_box.pack_start(self.quick_setup_area, False)
 
         self.app_objs = app_objs
         for obj in app_objs :
@@ -817,21 +828,8 @@ class InstallRemovePane(gtk.VBox):
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
         
-        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
-        quick_setup_button.connect('clicked', self.__launch_quick_setup)
-        quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
-        quick_setup_checkbutton.connect('clicked', lambda w: w.set_active(False) or Config.set_hide_quick_setup_pane(True) or self.hide_quick_setup())
-        self.quick_setup_content = gtk.HBox(False, 10)
-        self.quick_setup_content.set_border_width(5)
-        self.quick_setup_content.pack_start(quick_setup_button, False)
-        self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
-        self.quick_setup_area = gtk.HBox(False)
-        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
-            self.show_quick_setup()
-            
         self.__left_tree_view_default_select()
 
-        self.pack_start(self.quick_setup_area, False)
         self.pack_start(hpaned)
         self.pack_start(bottom_box, False)
         self.show_all()
