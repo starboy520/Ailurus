@@ -778,7 +778,7 @@ class InstallRemovePane(gtk.VBox):
                  [i_internet, _('Flash'), D+'sora_icons/p_flash.png', 'flash'],
                  [i_internet, _('Blog'), D+'umut_icons/p_blog.png', 'blog'],
                  [i_internet, _('RSS'), D+'sora_icons/p_rss.png', 'rss'],
-                 [i_multimedia, _('Player'), D+'umut_icons/p_player.png', 'player'],
+                 [i_multimedia, _('Player'), D+'sora_icons/p_player.png', 'player'],
                  [i_multimedia, _('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
                  [i_multimedia, _('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
                  [i_appearance, _('Panel'), D+'sora_icons/p_panel.png', 'panel'],
