@@ -826,7 +826,7 @@ class Midori(N):
 
 class GNOMEDo(N):
     'GNOME Do'
-    detail = _('Desktop launcher. Quickly perform actions')
+    detail = _('Desktop launcher, which helps you quickly perform actions')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-do'
 
@@ -902,13 +902,13 @@ class Deluge(N):
     
 class Giver(N):
     'Giver'
-    detail = _('Send files to other people. Automatically discover other people running Giver on the network.')
+    detail = _('Automatically discover other people running Giver on the network, then send files to other people')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'giver'
 
 class LinuxDCPP(N):
     'Linuxdcpp'
-    detail = _('Connect to a central hub. Share files and chat with other people.')
+    detail = _('Connect to a central hub then share files and chat with other people.')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'linuxdcpp'
 
@@ -920,31 +920,31 @@ class Transmission(N):
 
 class BosWars(N):
     'Bos Wars'
-    detail = _('A real time strategy game, just like Red Alarm')
+    detail = _('Real time strategy game, just like Red Alarm')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'boswars'
 
 class FrozenBubble(N):
     'Frozen Bubble'
-    detail = _('A clone of the popular "Puzzle Bobble" game')
+    detail = _('Clone of the popular "Puzzle Bobble" game')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'frozen-bubble'
 
 class Glest(N):
     'Glest'
-    detail = _('A real time strategy game, just like Warcraft')
+    detail = _('Real time strategy game, just like Warcraft')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'glest'
 
 class Globulation2(N):
     'Globulation 2'
-    detail = _('A real time strategy game which focuses on strategy rather than on micro-management.')
+    detail = _('Real time strategy game which focuses on strategy rather than on micro-management')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'glob2'
 
 class Hedgewars(N):
     'Hedgewars'
-    detail = _('A turn based strategy game. Hedgehogs fight enemies with fantastic weapons.')
+    detail = _('Hedgehogs fight enemies with fantastic weapons')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'hedgewars'
 
@@ -962,19 +962,19 @@ class TheManaWorld(N):
     
 class Warsow(N):
     'Warsow'
-    detail = _('3D first-person shooter game, just like DOOM.')
+    detail = _('3D first-person shooter game, just like DOOM')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'warsow'
 
 class Warzone2100(N):
     'Warzone 2100'
-    detail = _('A real time strategy game')
+    detail = _('Real time strategy game')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'warzone2100'
 
 class Wormux(N):
     'Wormux'
-    detail = _('A funny fight game on 2D maps')
+    detail = _('Funny fight game on 2D maps')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'wormux'
 
@@ -989,13 +989,13 @@ class Wesnoth(N):
 
 class Agave(N):
     'Agave'
-    detail = _('A colorscheme designer')
+    detail = _('Colorscheme designer')
     category = 'drawing'
     if UBUNTU or MINT: pkgs = 'agave'
 
 class Comix(N):
     'Comix'
-    detail = _('A customizable image viewer specifically designed to handle comic books.')
+    detail = _('Customizable image viewer specifically designed to handle comic books')
     category = 'others'
     if UBUNTU or MINT: pkgs = 'comix'
 
@@ -1031,13 +1031,13 @@ class Shutter(N):
 
 class Emesene(N):
     'Emesene'
-    detail = _('MSN Messenger client, with a simpler interface and a nicer look.')
+    detail = _('MSN Messenger client, with a simpler interface and a nicer look')
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'emesene'
 
 class Empathy(N):
     'Empathy'
-    detail = _('A messaging program which supports many protocols.')
+    detail = _('Messaging program which supports many protocols')
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'empathy'
 
@@ -1060,7 +1060,58 @@ class FileZilla(N):
 
 class Gwibber(N):
     'Gwibber'
-    detail = _('A microblogging client which supports Twitter and Facebook')
+    detail = _('Microblogging client which supports Twitter and Facebook')
     category = 'blog'
     if UBUNTU or MINT: pkgs = 'gwibber'
 
+class Avidemux(N):
+    'Avidemux'
+    detail = _('Video editor')
+    category = 'media_editor'
+    if UBUNTU or MINT: pkgs = 'avidemux'
+
+class Banshee(N):
+    'Banshee'
+    detail = _('Media player and media manager')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'banshee'
+
+class EasyTAG(N):
+    'EasyTAG'
+    detail = _('Edit tags for MP3, FLAC, Ogg files')
+    category = 'media_editor'
+    if UBUNTU or MINT: pkgs = 'easytag'
+
+class GNOME_mplayer(N):
+    'GNOME MPlayer'
+    detail = _('GTK frontend for MPlayer')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'gnome-mplayer'
+
+class Sonata(N):
+    'Sonata'
+    detail = _('Lightweight music player')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'sonata'
+
+class Minitube(N):
+    'Minitube'
+    detail = _('Simple Youtube client')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'minitube'
+    
+class Miro(N):
+    'Miro'
+    detail = _('Video player')
+    category = 'player'
+    if UBUNTU or MINT: pkgs = 'miro'
+
+class Openshot(N):
+    'Openshot'
+    detail = _('Non-linear video editor')
+    category = 'media_editor'
+    if UBUNTU or MINT: pkgs = 'openshot'
+
+class SMPlayer(N):
+    'SMPlayer'
+    detail = _('Qt frontend for MPlayer')
