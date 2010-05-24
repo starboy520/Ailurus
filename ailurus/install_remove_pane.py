@@ -762,10 +762,6 @@ class InstallRemovePane(gtk.VBox):
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
         
-        all_categories = set()
-        for obj in app_objs :
-            all_categories.add(obj.category)
-
         def icon(path):
             return get_pixbuf(path, 24, 24)
         
@@ -822,6 +818,9 @@ class InstallRemovePane(gtk.VBox):
                  [i_others, _('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
                  )
 
+        all_categories = set()
+        for obj in app_objs :
+            all_categories.add(obj.category)
         for item in items:
             parent, i1, i2, i3 = item
             if not i3 in all_categories: continue
