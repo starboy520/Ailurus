@@ -876,3 +876,8 @@ class ClawsMail(N):
     category = 'email'
     if UBUNTU or MINT: pkgs = 'claws-mail'
     
+class Evolution(N):
+    'Evolution'
+    detail = _('Email client, calendar, contact manager and address manager')
+    category = 'email'
+    if UBUNTU or MINT: pkgs = 'evolution'
