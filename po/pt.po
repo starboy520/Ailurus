@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: ailurus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-05-22 13:17+0800\n"
-"PO-Revision-Date: 2010-04-26 04:33+0000\n"
+"PO-Revision-Date: 2010-05-23 04:36+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-05-22 12:01+0000\n"
+"X-Launchpad-Export-Date: 2010-05-24 03:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: PORTUGAL\n"
 "X-Poedit-Language: Portuguese\n"
@@ -78,15 +78,15 @@ msgstr "Cache Ailurus"
 
 #: ../ailurus/clean_up_pane.py:116 ../ailurus/clean_up_pane.py:124
 msgid "Pacman cache"
-msgstr ""
+msgstr "Pacman cache"
 
 #: ../ailurus/clean_up_pane.py:132 ../ailurus/clean_up_pane.py:139
 msgid "Nautilus thumbnail image cache"
-msgstr ""
+msgstr "Cache de miniaturas Nautilus"
 
 #: ../ailurus/clean_up_pane.py:153
 msgid "echo \"\" > ~/.recently-used.xbel"
-msgstr ""
+msgstr "echo \"\" > ~/.recently-used.xbel"
 
 #: ../ailurus/clean_up_pane.py:154
 msgid "Clear \"recent documents\" list"
@@ -116,6 +116,10 @@ msgid ""
 "dirty data will not be freed.\n"
 "Command: echo 3 >/proc/sys/vm/drop_caches"
 msgstr ""
+"O Linux usa a memória física para funcionar como cache de disco. Prima o "
+"botão abaixo para libertar cache. Esta operação não é destrutiva pois os "
+"dados obscenos não serão apagados.\n"
+"Comando: echo 3 >/proc/sys/vm/drop_caches"
 
 #: ../ailurus/clean_up_pane.py:220
 #, python-format
@@ -124,7 +128,7 @@ msgstr "%s KB de memória recuperada."
 
 #: ../ailurus/clean_up_pane.py:245
 msgid "There is no unused Linux Kernel."
-msgstr ""
+msgstr "Não existe nenhum Kernel sem ser utilizado."
 
 #: ../ailurus/clean_up_pane.py:267 ../ailurus/clean_up_pane.py:337
 #: ../ailurus/clean_up_pane.py:450 ../ailurus/fedora/rpm_recovery_pane.py:231
@@ -134,7 +138,7 @@ msgstr "será removido"
 
 #: ../ailurus/clean_up_pane.py:304
 msgid "Unused Linux kernels"
-msgstr ""
+msgstr "Kernels a não serem utilizados"
 
 #: ../ailurus/clean_up_pane.py:316 ../ailurus/clean_up_pane.py:425
 #: ../ailurus/clean_up_pane.py:530 ../ailurus/common/setting.py:69
@@ -155,11 +159,11 @@ msgstr "Por favor, aguarde alguns segundos."
 
 #: ../ailurus/clean_up_pane.py:379
 msgid "There is no auto-removable package."
-msgstr ""
+msgstr "Não existem pacotes auto-removíveis."
 
 #: ../ailurus/clean_up_pane.py:409
 msgid "Auto-removable packages"
-msgstr ""
+msgstr "Pacotes auto-removíveis"
 
 #: ../ailurus/clean_up_pane.py:423 ../ailurus/clean_up_pane.py:528
 #: ../ailurus/fedora/fastest_mirror_pane.py:168
@@ -168,15 +172,15 @@ msgstr "Seleccionar todos"
 
 #: ../ailurus/clean_up_pane.py:439 ../ailurus/clean_up_pane.py:544
 msgid "Please press the \"Refresh\" button."
-msgstr ""
+msgstr "Por favor, prima o botão Actualizar."
 
 #: ../ailurus/clean_up_pane.py:484
 msgid "There is no unused software configuration."
-msgstr ""
+msgstr "Não existe configurações não utilizadas."
 
 #: ../ailurus/clean_up_pane.py:514
 msgid "Unused software configuration"
-msgstr ""
+msgstr "Configuração de aplicações não utilizadas"
 
 #: ../ailurus/common/apps_eclipse.py:59
 msgid "Installing Eclipse extension"
@@ -377,11 +381,11 @@ msgstr ""
 
 #: ../ailurus/common/apps.py:99
 msgid "SweetHome3D: open source interior design application"
-msgstr ""
+msgstr "SweetHome3D: aplicação de desenho de interiores de código livre"
 
 #: ../ailurus/common/apps.py:100
 msgid "Official site:"
-msgstr ""
+msgstr "Sítio oficial:"
 
 #: ../ailurus/common/apps.py:122
 msgid "OpenJUMP: A geographic information system"
@@ -614,44 +618,49 @@ msgstr ""
 
 #: ../ailurus/common/cure.py:28
 msgid "Automatically start up Workrave"
-msgstr ""
+msgstr "Iniciar Workrave automaticamente"
 
 #: ../ailurus/common/cure.py:29 ../ailurus/common/cure.py:68
 msgid "Create file:"
-msgstr ""
+msgstr "Criar ficheiro:"
 
 #: ../ailurus/common/cure.py:50
 msgid "Create basic VIM configuration file (.vimrc)"
-msgstr ""
+msgstr "Criar ficheiro de configuração básica VIM (.vimrc)"
 
 #: ../ailurus/common/cure.py:51
 msgid "File content:"
-msgstr ""
+msgstr "Conteúdo:"
 
 #: ../ailurus/common/cure.py:66
 msgid "Create ImageMagick shortcut in \"Application->Graphics\" menu"
-msgstr ""
+msgstr "Criar atalho para ImageMagick no menu \"Aplicações->Gráficos\""
 
 #: ../ailurus/common/cure.py:88
 msgid ""
 "Create a directory \"Desktop\" linked to the desktop in your home folder"
 msgstr ""
+"Criar um directório \"Ambiente de trabalho\" com ligação à sua pasta pessoal"
 
 #: ../ailurus/common/cure.py:89
 msgid ""
 "After that, you can easily chdir to desktop folder by command \"cd "
 "~/Desktop\"."
 msgstr ""
+"Logo depois, pode ir para a pasta do ambiente com o comando \"cd ~/Desktop\"."
 
 #: ../ailurus/common/cure.py:107
 msgid "Query you before delete more than three files in BASH"
-msgstr ""
+msgstr "Consultar antes de apagar mais que três ficheiros na BASH"
 
 #: ../ailurus/common/cure.py:108
 msgid ""
 "Prevent destruction when you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
 "Add this line into ~/.bashrc: alias rm=\"rm -I\""
 msgstr ""
+"Prevenir destruição no caso de se enganar ao escrever \"rm subdir/*\" como "
+"\"rm subdir/ *\".\n"
+"Adicione esta linha em ~/.bashrc: alias rm=\"rm -I\""
 
 #: ../ailurus/common/hardwareinfo.py:36
 msgid "BIOS vendor:"
@@ -690,12 +699,12 @@ msgstr "CPU %s Mips:"
 #: ../ailurus/common/hardwareinfo.py:122
 #, python-format
 msgid "CPU %s level 1 cache size:"
-msgstr ""
+msgstr "CPU %s tamanho de cache de nível 1:"
 
 #: ../ailurus/common/hardwareinfo.py:123
 #, python-format
 msgid "CPU %s level 2 cache size:"
-msgstr ""
+msgstr "CPU %s tamanho de cache de nível 2:"
 
 #: ../ailurus/common/hardwareinfo.py:125
 msgid "CPU Mips:"
@@ -703,11 +712,11 @@ msgstr "CPU Mips:"
 
 #: ../ailurus/common/hardwareinfo.py:127
 msgid "Level 1 cache:"
-msgstr ""
+msgstr "Nível 1 de cache:"
 
 #: ../ailurus/common/hardwareinfo.py:128
 msgid "Level 2 cache:"
-msgstr ""
+msgstr "Nível 2 de cache:"
 
 #: ../ailurus/common/hardwareinfo.py:133
 msgid ""
@@ -782,7 +791,7 @@ msgstr "Como compilar um ficheiro LaTeX para pdf?"
 
 #: ../ailurus/common/menu.py:37
 msgid "Check Linux device driver"
-msgstr ""
+msgstr "Verificar o controlador do dispositivo Linux"
 
 #: ../ailurus/common/menu.py:56 ../ailurus/show_a_linux_skill_bubble.py:34
 msgid "Tip of the day"
@@ -836,7 +845,7 @@ msgstr "Definir parâmetros de transferência"
 
 #: ../ailurus/common/menu.py:125
 msgid "Show an icon by the side of software name"
-msgstr ""
+msgstr "Mostrar um ícone ao lado do nome da aplicação"
 
 #: ../ailurus/common/menu.py:180
 msgid "Contributing to <i>Ailurus</i>"
@@ -1049,6 +1058,8 @@ msgid ""
 "Because of live CD capacity limitation, this Linux distribution does not "
 "have full language support.\n"
 msgstr ""
+"Por restrições no tamanho do Live CD, esta distribuição Linux não oferece o "
+"suporte total de idiomas.\n"
 
 #: ../ailurus/common/native_apps.py:261
 msgid "GCompris: Educational games for children aged 2 to 10"
@@ -1065,11 +1076,11 @@ msgstr "Plugin flash para o navegador web"
 
 #: ../ailurus/common/native_apps.py:295
 msgid "lshw: List hardware information"
-msgstr ""
+msgstr "lshw: Listar a informação do equipamento"
 
 #: ../ailurus/common/native_apps.py:296
 msgid "A small application which displays detailed hardware information"
-msgstr ""
+msgstr "Uma pequena aplicação que mostra a informação sobre o equipamento"
 
 #: ../ailurus/common/native_apps.py:305
 msgid "ImageMagick: Edit images"
@@ -1406,6 +1417,7 @@ msgstr "Subversion, Git e Bzr: Sistemas de controlo de versões"
 msgid ""
 "Create a file \"example.tex\", then compile it by \"xelatex example.tex\"."
 msgstr ""
+"Criar um ficheiro \"example.tex\" e compilá-lo com \"xelatex example.tex\"."
 
 #: ../ailurus/common/native_apps.py:695
 msgid "Tux Paint: A drawing program for young children three years and up"
@@ -1491,19 +1503,21 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:800
 msgid "Emacs: Advanced text editor"
-msgstr ""
+msgstr "Emacs: Editor avançado de texto"
 
 #: ../ailurus/common/native_apps.py:809
 msgid "FreeDOOM: Open source clone of DOOM"
-msgstr ""
+msgstr "FreeDOOM: Clone do DOOM de código livre"
 
 #: ../ailurus/common/native_apps.py:814
 msgid "Inkscape: Design vector image. Open source substitution of CorelDraw."
 msgstr ""
+"Inkscape: Desenho de imagens vectoriais. Substituto do CorelDraw em código "
+"livre."
 
 #: ../ailurus/common/native_apps.py:820
 msgid "K3B: Create DVD/VCD"
-msgstr ""
+msgstr "K3B: Criação de DVD/VCD"
 
 #: ../ailurus/common/osinfo.py:29
 msgid "Host name:"
@@ -1535,11 +1549,11 @@ msgstr "Versão Python:"
 
 #: ../ailurus/common/osinfo.py:72
 msgid "GTK version:"
-msgstr ""
+msgstr "Versão GTK:"
 
 #: ../ailurus/common/osinfo.py:78
 msgid "PyGTK version:"
-msgstr ""
+msgstr "Versão PyGTK:"
 
 #: ../ailurus/common/osinfo.py:95
 msgid "day"
@@ -1634,43 +1648,43 @@ msgstr ""
 
 #: ../ailurus/common/setting.py:160
 msgid "New host name:"
-msgstr ""
+msgstr "Novo nome da máquina:"
 
 #: ../ailurus/common/setting.py:172
 msgid "Change host name"
-msgstr ""
+msgstr "Mudar o nome da máquina"
 
 #: ../ailurus/common/setting.py:199
 msgid "Speed up"
-msgstr ""
+msgstr "Acelerar"
 
 #: ../ailurus/common/setting.py:201
 msgid "URL bar auto-completion"
-msgstr ""
+msgstr "Conclusão automática de URL"
 
 #: ../ailurus/common/setting.py:204
 msgid "Support ed2k protocol"
-msgstr ""
+msgstr "Suporte ao protocolo ed2k"
 
 #: ../ailurus/common/setting.py:206
 msgid "Swap out memory when minimized"
-msgstr ""
+msgstr "Trocar memória ao minimizar"
 
 #: ../ailurus/common/setting.py:208
 msgid "Do not pre-fetch link"
-msgstr ""
+msgstr "Não obter previamente a ligação"
 
 #: ../ailurus/common/setting.py:210
 msgid "Do not delay before installing extensions"
-msgstr ""
+msgstr "Não atrasar antes de instalar extensões"
 
 #: ../ailurus/common/setting.py:228
 msgid "Before configuring Firefox, please close all Firefox windows."
-msgstr ""
+msgstr "Antes de configurar o Firefox, feche todas as janelas."
 
 #: ../ailurus/common/setting.py:252 ../ailurus/system_setting_pane.py:62
 msgid "Configure Firefox"
-msgstr ""
+msgstr "Configurar Firefox"
 
 #: ../ailurus/common/tips.py:29
 msgid ""
@@ -2376,35 +2390,43 @@ msgid ""
 "               high <------------------> low\n"
 "NEW_PRIORITY = -19, -18, -17 [...] 18, 19, 20\n"
 msgstr ""
+"Alterar Prioridade dos Processos\n"
+"renice NOVA_PRIORIDADE `pgrep NOME_DO_PROCESSO`\n"
+"exemplo: renice 5 `pgrep firefox`     \n"
+"         renice -5 `pgrep wine-server`       \n"
+"               high <------------------> low\n"
+"NOVA_PRIORIDADE = -19, -18, -17 [...] 18, 19, 20\n"
 
 #: ../ailurus/computer_doctor_pane.py:31
 msgid ""
 "Computer\n"
 "Doctor"
 msgstr ""
+"Reparar\n"
+"Computador"
 
 #: ../ailurus/computer_doctor_pane.py:79
 #, python-format
 msgid "Found %s errors in your system."
-msgstr ""
+msgstr "Encontrados %s erros no sistema."
 
 #: ../ailurus/computer_doctor_pane.py:81
 #, python-format
 msgid "There is a total of %s suggestions."
-msgstr ""
+msgstr "Existe um total de %s sugestões."
 
 #: ../ailurus/computer_doctor_pane.py:83
 msgid "Found no error :)"
-msgstr ""
+msgstr "Não foram encontrados erros:)"
 
 #: ../ailurus/computer_doctor_pane.py:97
 msgid "Computer doctor"
-msgstr ""
+msgstr "Reparar cumputador"
 
 #: ../ailurus/computer_doctor_pane.py:97
 #, python-format
 msgid "Successfully applied %s suggestions."
-msgstr ""
+msgstr "Aplicadas com sucesso %s sugestões."
 
 #: ../ailurus/computer_doctor_pane.py:135
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:110
@@ -2413,7 +2435,7 @@ msgstr "Actualizar"
 
 #: ../ailurus/computer_doctor_pane.py:147
 msgid "Please click \"refresh\" button."
-msgstr ""
+msgstr "Por favor, prima o botão \"Actualizar\"."
 
 #: ../ailurus/fedora/apps.py:29 ../ailurus/ubuntu/apps.py:175
 msgid ""
@@ -2474,7 +2496,7 @@ msgstr "Utilizar símbolos coloridos na Bash"
 
 #: ../ailurus/fedora/cure.py:29 ../ailurus/ubuntu/cure.py:29
 msgid "Add this line into ~/.bashrc:"
-msgstr ""
+msgstr "Adicione esta linha em ~/.bashrc:"
 
 #: ../ailurus/fedora/cure.py:37 ../ailurus/ubuntu/cure.py:37
 msgid "The color of bash prompt symbols is changed."
@@ -2579,7 +2601,7 @@ msgstr "<span color='black'>O servidor %s está inacessível.</span>"
 #. text, web page url, Chinese only?
 #: ../ailurus/fedora/menu.py:32
 msgid "Upgrade Fedora using an application called \"PreUpgrade\""
-msgstr ""
+msgstr "Actualize o Fedora utilizando a aplicação \"PreUpgrade\""
 
 #: ../ailurus/fedora/osinfo.py:31
 msgid "Fedora version:"
@@ -2812,7 +2834,7 @@ msgstr "Mostrar conteúdo do ambiente de trabalho"
 #: ../ailurus/gnome/setting.py:31 ../ailurus/gnome/setting.py:98
 #: ../ailurus/gnome/setting.py:113 ../ailurus/gnome/setting.py:417
 msgid "(take effect at the next time GNOME starts up)"
-msgstr ""
+msgstr "((produzirá efeitos na próxima vez que iniciar o GNOME)"
 
 #: ../ailurus/gnome/setting.py:35
 msgid "Display \"Mounted volumn\" icon"
@@ -2863,6 +2885,9 @@ msgid ""
 "server\" or \"Trash\" icon,\n"
 "please select the icon, then press F2."
 msgstr ""
+"De forma a alterar o nome do \"Computador\", \"Pasta pessoal\", \"Servidor "
+"de rede\"\n"
+"ou o ícone do \"Lixo\", seleccione o ícone e prima F2."
 
 #: ../ailurus/gnome/setting.py:58
 msgid "Desktop icons"
@@ -2871,7 +2896,7 @@ msgstr "Ícones de ambiente de trabalho"
 #: ../ailurus/gnome/setting.py:90
 #, python-format
 msgid "The \"start-here\" icon is %s"
-msgstr ""
+msgstr "O ícone \"Iniciar aqui\" é %s"
 
 #: ../ailurus/gnome/setting.py:98
 msgid "Change \"start-here\" icon"
@@ -3187,7 +3212,7 @@ msgstr "Configurar aplicações de arranque"
 
 #: ../ailurus/gnome/setting.py:345
 msgid "(Command: gnome-session-properties)"
-msgstr ""
+msgstr "(Comando: gnome-session-properties)"
 
 #: ../ailurus/gnome/setting.py:348
 msgid "Remember running applications when you log out."
@@ -3239,11 +3264,11 @@ msgstr "Bloquer ecrã se o protector de ecrã for activado"
 
 #: ../ailurus/gnome/setting.py:378
 msgid "Lock screen after hibernating"
-msgstr ""
+msgstr "Bloquear ecrã após hibernação"
 
 #: ../ailurus/gnome/setting.py:381
 msgid "Lock screen after suspending"
-msgstr ""
+msgstr "Bloquear ecrã após suspensão"
 
 #: ../ailurus/gnome/setting.py:384
 msgid "GNOME session"
@@ -3267,16 +3292,17 @@ msgstr "Luz de fundo"
 
 #: ../ailurus/gnome/setting.py:417
 msgid "Display content of your home folder on desktop"
-msgstr ""
+msgstr "Mostrar conteúdo da pasta pessoal no ambiente de trabalho"
 
 #: ../ailurus/gnome/setting.py:437
 msgid "Display \"GNOME control center\" entry in \"System\" menu"
-msgstr ""
+msgstr "Mostrar entrada \"Centro de Controlo GNOME\" no menu \"Sistema\""
 
 #: ../ailurus/gnome/setting.py:438
 msgid ""
 "Create a file ~/.local/share/applications/gnome-control-center.desktop"
 msgstr ""
+"Criar o ficheiro ~/.local/share/applications/gnome-control-center.desktop"
 
 #: ../ailurus/gnome/setting.py:446
 msgid "Change default file manager to:"
@@ -3296,35 +3322,35 @@ msgstr "Definições avançadas"
 
 #: ../ailurus/gnome/setting.py:467
 msgid "Enable GNOME panel animations"
-msgstr ""
+msgstr "Activar animações de painel GNOME"
 
 #: ../ailurus/gnome/setting.py:469
 msgid "Lock down all GNOME panels"
-msgstr ""
+msgstr "Bloquear todos os painéis GNOME"
 
 #: ../ailurus/gnome/setting.py:469
 msgid "(take effect at the next time when GNOME starts up)"
-msgstr ""
+msgstr "(produzirá efeito da próxima vez que iniciar o GNOME)"
 
 #: ../ailurus/gnome/setting.py:471
 msgid "Confirm before removing a panel"
-msgstr ""
+msgstr "Confirmar antes de remover um painel"
 
 #: ../ailurus/gnome/setting.py:474
 msgid "GNOME panels settings"
-msgstr ""
+msgstr "Definições do painel GNOME"
 
 #: ../ailurus/gnome/setting.py:478
 msgid "Do not list username"
-msgstr ""
+msgstr "Não listar nome de utilizador"
 
 #: ../ailurus/gnome/setting.py:480
 msgid "Do not display \"restart\" button"
-msgstr ""
+msgstr "Não mostrar botão \"Reiniciar\""
 
 #: ../ailurus/gnome/setting.py:483
 msgid "Login window settings"
-msgstr ""
+msgstr "Definições da janela de início de sessão"
 
 #: ../ailurus/gnome/setting.py:486
 msgid "Command line"
@@ -3395,7 +3421,7 @@ msgstr "Informação do Linux"
 
 #: ../ailurus/info_pane.py:75
 msgid "Print all information"
-msgstr ""
+msgstr "Imprimir todas as informações"
 
 #: ../ailurus/install_remove_pane.py:30
 msgid ""
@@ -3462,6 +3488,8 @@ msgid ""
 "Some operations failed. Would you please copy and paste following text into "
 "bug report web-page?"
 msgstr ""
+"Falha em algumas operações. Pretende copiar o texto seguinte e coloca-lo na "
+"pagina de reporte de erros?"
 
 #: ../ailurus/install_remove_pane.py:190 ../ailurus/main.py:195
 msgid "Click here to report bug via web-page"
@@ -3474,7 +3502,7 @@ msgstr "Fechar"
 
 #: ../ailurus/install_remove_pane.py:204
 msgid "Some operations failed"
-msgstr ""
+msgstr "Falha em algumas operações"
 
 #: ../ailurus/install_remove_pane.py:235 ../ailurus/install_remove_pane.py:244
 msgid "Installing:"
@@ -3595,7 +3623,7 @@ msgstr "Aparência"
 
 #: ../ailurus/install_remove_pane.py:711
 msgid "Design"
-msgstr ""
+msgstr "Desenho"
 
 #: ../ailurus/install_remove_pane.py:712
 msgid "Enhancements"
@@ -3615,7 +3643,7 @@ msgstr "Menu de contexto Nautilus"
 
 #: ../ailurus/install_remove_pane.py:717
 msgid "Video card driver"
-msgstr ""
+msgstr "Controlador da placa gráfica"
 
 #: ../ailurus/install_remove_pane.py:718
 msgid "Third party repositories"
@@ -3759,7 +3787,7 @@ msgstr "Executar \"apt-get update\". Por favor, aguarde alguns minutos."
 
 #: ../ailurus/lib.py:828
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
-msgstr ""
+msgstr "Executando \"pacman -Sy\". Aguarde alguns minutos."
 
 #: ../ailurus/lib.py:853
 #, python-format
@@ -3865,7 +3893,7 @@ msgstr "Licença Artística"
 
 #: ../ailurus/lib.py:1568
 msgid "Your Linux distribution is not supported. :("
-msgstr ""
+msgstr "A sua distribuição Linux não é suportada."
 
 #: ../ailurus/libsetting.py:134
 msgid "The command which will be run."
@@ -3894,7 +3922,7 @@ msgstr ""
 
 #: ../ailurus/libu.py:164 ../ailurus/main.py:187
 msgid "Copy text to clipboard"
-msgstr ""
+msgstr "Copiar texto para a área de transferência"
 
 #: ../ailurus/main.py:32
 msgid "Warning!"
@@ -3911,10 +3939,11 @@ msgstr ""
 #: ../ailurus/main.py:95
 msgid "Necessary packages are not installed. Ailurus cannot work."
 msgstr ""
+"Os pacotes necessários não estão instalados. O Ailurus não funcionará."
 
 #: ../ailurus/main.py:97
 msgid "Please install these packages:"
-msgstr ""
+msgstr "Por favor, instale estes pacotes:"
 
 #: ../ailurus/main.py:125
 msgid "Error happened. You cannot install any software by Ailurus. :("
@@ -3947,6 +3976,7 @@ msgstr ""
 #: ../ailurus/main.py:174
 msgid "Please copy and paste following text into bug report web-page."
 msgstr ""
+"Por favor, copie o texto seguinte e coloque-o na página de reporte de erros."
 
 #: ../ailurus/main.py:209
 msgid "Bug appears!"
@@ -3974,7 +4004,7 @@ msgstr ""
 
 #: ../ailurus/main.py:344
 msgid "Please wait a few seconds"
-msgstr ""
+msgstr "Aguarde alguns segundos"
 
 #: ../ailurus/main.py:366
 msgid "Are you sure to exit?"
@@ -4007,7 +4037,7 @@ msgstr "Você tem instalada a versão mais recente do Ailurus. :)"
 
 #: ../ailurus/support/checkupdate.py:112
 msgid "Project homepage"
-msgstr ""
+msgstr "Página do Projecto"
 
 #: ../ailurus/support/checkupdate.py:115
 msgid "Developers:"
@@ -4040,7 +4070,7 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:135
 msgid "Copyright © 2009-2010, Ailurus Developers Team"
-msgstr ""
+msgstr "Direitos de Autor © 2009-2010, Equipa de Desenvolvimento Ailurus"
 
 #: ../ailurus/support/checkupdate.py:213
 #, python-format
@@ -4170,7 +4200,7 @@ msgstr ""
 
 #: ../ailurus/support/tipoftheday.py:55
 msgid "All Linux skills"
-msgstr ""
+msgstr "Todas as técnicas Linux"
 
 #: ../ailurus/support/tipoftheday.py:62
 msgid "Tip of the Day"
@@ -4186,7 +4216,7 @@ msgstr "Submeter Técnicas Linux"
 
 #: ../ailurus/support/tipoftheday.py:99
 msgid "Show all tips"
-msgstr ""
+msgstr "Mostrar todas as dicas"
 
 #: ../ailurus/system_setting_pane.py:31
 msgid ""
@@ -4222,7 +4252,7 @@ msgstr "Sessão GNOME"
 
 #: ../ailurus/system_setting_pane.py:53
 msgid "GNOME Panel"
-msgstr ""
+msgstr "Painel GNOME"
 
 #: ../ailurus/system_setting_pane.py:54
 msgid "Memory"
@@ -4254,11 +4284,11 @@ msgstr "Restrição"
 
 #: ../ailurus/system_setting_pane.py:63
 msgid "Host name"
-msgstr ""
+msgstr "Nome da máquina"
 
 #: ../ailurus/system_setting_pane.py:64
 msgid "Login window"
-msgstr ""
+msgstr "Janela de Início de Sessão"
 
 #: ../ailurus/system_setting_pane.py:105
 msgid ""
@@ -4363,7 +4393,7 @@ msgstr "XBMC: Sistema de Entretenimento"
 
 #: ../ailurus/ubuntu/app_from_external_repos.py:232
 msgid "Elementary: Beautiful theme which looks like Mac OS X"
-msgstr ""
+msgstr "Elementary:  Tema similar ao do Mac OS X"
 
 #: ../ailurus/ubuntu/apps.py:83
 msgid "PBC (Pairing-Based Cryptography) library"
@@ -4502,37 +4532,47 @@ msgid ""
 "Fix errors in 49-sansserif.conf. Otherwise, some character in Flash would be "
 "displayed as blank diamond."
 msgstr ""
+"Corrija os erros em 49-sansserif.conf. Se não o fizer, alguns caracteres "
+"Flash serão apresentados como um diamante."
 
 #: ../ailurus/ubuntu/cure.py:41
 msgid "Change \"sans-serif\" to \"sans serif\"."
-msgstr ""
+msgstr "Alterar \"sans-serif\" para \"sans serif\"."
 
 #: ../ailurus/ubuntu/cure.py:58
 msgid ""
 "Add yourself to \"vboxusers\" group. Otherwise, USB devices cannot be used "
 "in VirtualBox."
 msgstr ""
+"Adicione-se ao grupo \"vboxusers\". Se não o fizer, não conseguirá usar "
+"dispositivos USB no VirtualBox."
 
 #: ../ailurus/ubuntu/cure.py:73
 msgid ""
 "Fix errors in Java font configuration. Otherwise, some unicode characters "
 "cannot be displayed."
 msgstr ""
+"Corrija os erros na configuração de fontes Java. Se não o fizer, alguns "
+"caracteres unicode não serão apresentados."
 
 #: ../ailurus/ubuntu/cure.py:74
 msgid ""
 "Change wqy-zenhei.ttf to wqy-zenhei.ttc. Change uming.ttf to uming.ttc."
 msgstr ""
+"Alterar wqy-zenhei.ttf para wqy-zenhei.ttc. Alterar uming.ttf para uming.ttc."
 
 #: ../ailurus/ubuntu/cure.py:94
 msgid ""
 "Fix errors in Netbeans shortcut. Otherwise, some unicode characters cannot "
 "be displayed."
 msgstr ""
+"Corrija os erros no atalho Netbeans. Se não o fizer, alguns caracteres "
+"unicode não serão apresentados."
 
 #: ../ailurus/ubuntu/cure.py:95
 msgid "Add \"export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'\" "
 msgstr ""
+"Adicione \"export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'\" "
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:32
 #, python-format
@@ -4542,16 +4582,16 @@ msgstr "alterar %(old)s para %(new)s"
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "The fastest repository is %s"
-msgstr ""
+msgstr "O repositório mais rápido é %s"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "(%s millisecond)"
-msgstr ""
+msgstr "(%s millisegundos)"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:67
 msgid "Currently you are using these third-party repositories:"
-msgstr ""
+msgstr "Actualmente, está a utilizar estes repositórios de terceiros:"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:77
 msgid ""
@@ -5084,7 +5124,7 @@ msgstr "Programa de descompressão"
 
 #: ../ailurus/ubuntu/quick_setup.py:63
 msgid "Fix Flash plugin font error"
-msgstr ""
+msgstr "Corrija o erro nas fontes Flash"
 
 #: ../ailurus/ubuntu/quick_setup.py:64
 msgid "Install hardware drivers"
@@ -5201,12 +5241,12 @@ msgstr "Definição do gestor de actualizações Ubuntu"
 #: ../ailurus/ubuntu/third_party_repos.py:58
 #: ../ailurus/ubuntu/third_party_repos.py:127
 msgid "Web page:"
-msgstr ""
+msgstr "Página Web:"
 
 #: ../ailurus/ubuntu/third_party_repos.py:59
 #: ../ailurus/ubuntu/third_party_repos.py:128
 msgid "Source setting:"
-msgstr ""
+msgstr "Definição de fonte:"
 
 #: ../ailurus/ubuntu/third_party_repos.py:145
 msgid "Firefox 3.6 (stable)"
@@ -5484,7 +5524,7 @@ msgstr "Acire (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:440
 msgid "Elementary Theme"
-msgstr ""
+msgstr "Tema Elementary"
 
 #: ../ailurus/ubuntu/tips.py:29
 msgid ""

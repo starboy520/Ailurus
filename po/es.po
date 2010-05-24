@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-05-22 13:17+0800\n"
-"PO-Revision-Date: 2010-05-22 04:43+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"PO-Revision-Date: 2010-05-23 20:04+0000\n"
+"Last-Translator: Eduardo Parra <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-05-22 12:01+0000\n"
+"X-Launchpad-Export-Date: 2010-05-24 03:52+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -82,7 +82,7 @@ msgstr "caché de Pacman"
 
 #: ../ailurus/clean_up_pane.py:132 ../ailurus/clean_up_pane.py:139
 msgid "Nautilus thumbnail image cache"
-msgstr ""
+msgstr "Caché de las imágenes en miniatura de Nautilus"
 
 #: ../ailurus/clean_up_pane.py:153
 msgid "echo \"\" > ~/.recently-used.xbel"
@@ -155,7 +155,7 @@ msgstr "Por favor espere unos segundos."
 
 #: ../ailurus/clean_up_pane.py:379
 msgid "There is no auto-removable package."
-msgstr ""
+msgstr "No hay paquetes autoextraibles."
 
 #: ../ailurus/clean_up_pane.py:409
 msgid "Auto-removable packages"
@@ -625,7 +625,7 @@ msgstr ""
 
 #: ../ailurus/common/cure.py:28
 msgid "Automatically start up Workrave"
-msgstr ""
+msgstr "Iniciar Workrave al arrancar el equipo"
 
 #: ../ailurus/common/cure.py:29 ../ailurus/common/cure.py:68
 msgid "Create file:"
@@ -701,7 +701,7 @@ msgstr "MIPS del %s CPU"
 #: ../ailurus/common/hardwareinfo.py:122
 #, python-format
 msgid "CPU %s level 1 cache size:"
-msgstr ""
+msgstr "Tamaño de la caché de nivel 1 de la CPU %s:"
 
 #: ../ailurus/common/hardwareinfo.py:123
 #, python-format
@@ -714,11 +714,11 @@ msgstr "MIPS del CPU:"
 
 #: ../ailurus/common/hardwareinfo.py:127
 msgid "Level 1 cache:"
-msgstr ""
+msgstr "Caché de nivel 1:"
 
 #: ../ailurus/common/hardwareinfo.py:128
 msgid "Level 2 cache:"
-msgstr ""
+msgstr "Caché de nivel 2:"
 
 #: ../ailurus/common/hardwareinfo.py:133
 msgid ""
