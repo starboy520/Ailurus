@@ -424,25 +424,25 @@ class InstallRemovePane(gtk.VBox):
             detail = getattr(obj, 'detail' ,'')
             if detail:
                 text.write(detail)
-                if detail[-1]!='\n': text.write('\n')
+#                if detail[-1]!='\n': text.write('\n')
             
-            license = getattr(obj, 'license' ,'')
-            if license:
-                print >>text, _('License:'), license   
+#            license = getattr(obj, 'license' ,'')
+#            if license:
+#                print >>text, _('License:'), license   
             
-            if obj.cache_installed==False: # can install
-                # will be installed?
-                if not obj.showed_in_toggle: 
-                    print >>text, begin_color() + _('Not installed.'),
-                    if hasattr(obj, 'get_reason'):
-                        obj.get_reason(text)
-                    text.write( end_color() )
-                else:  
-                    print >>text, color( _('Will be installed.') ),
+#            if obj.cache_installed==False: # can install
+#                # will be installed?
+#                if not obj.showed_in_toggle: 
+#                    print >>text, begin_color() + _('Not installed.'),
+#                    if hasattr(obj, 'get_reason'):
+#                        obj.get_reason(text)
+#                    text.write( end_color() )
+#                else:  
+#                    print >>text, color( _('Will be installed.') ),
 
-            else: # already installed
-                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
-                else:                    print >>text, color(_('Will be removed.')), 
+#            else: # already installed
+#                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
+#                else:                    print >>text, color(_('Will be removed.')), 
                         
             self.detail.get_buffer().set_text( text.getvalue() )
             text.close()
