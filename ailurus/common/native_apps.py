@@ -993,4 +993,39 @@ class Agave(N):
     category = 'drawing'
     if UBUNTU or MINT: pkgs = 'agave'
 
+class Comix(N):
+    'Comix'
+    detail = _('A customizable image viewer specifically designed to handle comic books.')
+    category = 'others'
+    if UBUNTU or MINT: pkgs = 'comix'
 
+class Dia(N):
+    'Dia'
+    detail = _('Open source substitution for Visio')
+    category = 'drawing'
+    if UBUNTU or MINT: pkgs = 'dia'
+
+class Kflickr(N):
+    'kflickr'
+    detail = _('Upload photos to Flickr')
+    category = 'others'
+    if UBUNTU or MINT: pkgs = 'kflickr'
+
+class GIMP(N):
+    'GIMP'
+    detail = _('Open source substitution for Photoshop')
+    category = 'drawing'
+    if UBUNTU or MINT: pkgs = 'gimp'
+
+class Scribus(N):
+    'GIMP'
+    detail = _('Professional typesetting software')
+    category = 'typesetting'
+    if UBUNTU or MINT: pkgs = 'gimp'
+
+class Shutter(N):
+    'Shutter'
+    detail = _('Make screenshots')
+    category = 'others'
+    if UBUNTU or MINT: pkgs = 'shutter'
+    

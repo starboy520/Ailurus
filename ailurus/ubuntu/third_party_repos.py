@@ -255,13 +255,6 @@ class Repo_Moovida(_launchpad):
     desc = _('Moovida is a cross platform media player.')
     content = 'moovida'
     ppa = 'moovida-packagers'
-
-class Repo_Shutter(_launchpad):
-    __doc__ = _('Shutter (stable)')
-    license = GPL
-    desc = _('Shutter is a powerful screenshot program.')
-    content = 'shutter'
-    ppa = 'shutter'
     
 #class Repo_Synapse(_repo):
 #    __doc__ = _('Synapse (stable)')

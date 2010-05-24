@@ -202,13 +202,6 @@ class RedNoteBook(_apt_install):
     pkgs = 'rednotebook'
     def visible(self):
         return VERSION != 'lucid'
-    
-class Shutter(_apt_install):
-    __doc__ = _('Shutter: A screen-shot application')
-    license = GPL
-    category = 'others'
-    depends = Repo_Shutter
-    pkgs = 'shutter'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
