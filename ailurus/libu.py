@@ -28,6 +28,7 @@ def get_pixbuf(file, width, height):
     try:
         return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
     except:
+        print file, 'not found'
         return gtk.gdk.pixbuf_new_from_file_at_size(D + 'other_icons/blank.png', width, height)
 
 def gray_bg(widget):
