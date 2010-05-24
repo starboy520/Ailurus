@@ -824,3 +824,8 @@ class Midori(N):
     category = 'browser'
     if UBUNTU or MINT: pkgs = 'midori'
 
+class GNOMEDo(N):
+    'GNOME Do'
+    detail = _('Quickly perform actions')
+    category = 'candy'
+    if UBUNTU or MINT: pkgs = 'gnome-do'
