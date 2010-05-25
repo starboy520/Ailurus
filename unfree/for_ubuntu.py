@@ -188,6 +188,7 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
@@ -199,6 +200,7 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
@@ -210,6 +212,7 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
@@ -222,7 +225,7 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
     # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
-    category = 'game'
+    category = 'others'
     def install(self):
         f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
@@ -278,3 +281,4 @@ class Google_Chrome(I):
         return APT.installed('google-chrome-beta')
     def remove(self):
         APT.remove('google-chrome-beta')
+
