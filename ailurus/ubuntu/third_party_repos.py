@@ -254,13 +254,6 @@ class Repo_Moovida(_launchpad):
     desc = _('Moovida is a cross platform media player.')
     content = 'moovida'
     ppa = 'moovida-packagers'
-
-class Repo_Shutter(_launchpad):
-    __doc__ = _('Shutter (stable)')
-    license = GPL
-    desc = _('Shutter is a powerful screenshot program.')
-    content = 'shutter'
-    ppa = 'shutter'
     
 #class Repo_Synapse(_repo):
 #    __doc__ = _('Synapse (stable)')
@@ -434,3 +427,11 @@ class Repo_Acire(_launchpad):
 class Repo_ElementaryArtwork(_launchpad):
     __doc__ = _('Elementary Theme')
     ppa = 'elementaryart/ppa'
+
+class Repo_Docky(_launchpad):
+    'Docky'
+    ppa = 'docky-core'
+
+class Repo_CairoDock(_launchpad):
+    'Cairo Dock'
+    ppa = 'cairo-dock-team/weekly'

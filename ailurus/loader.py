@@ -29,18 +29,11 @@ if MINT or UBUNTU: import ubuntu as distribution
 elif FEDORA: import fedora as distribution
 else: distribution = None
 
-categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
-            'appearance','office','math','latex','dev','em', 'server',
-            'geography','education','media','vm','game', 'statistics', 
-            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
-            'design', 'videocarddriver')
-
-def check_class_members(app_class, default_category = 'tweak'):
+def check_class_members(app_class):
     import types
     if type(app_class)!=types.ClassType: raise TypeError, app_class
-    if not hasattr(app_class,'category'): app_class.category = default_category
+    if not hasattr(app_class,'category'): app_class.category = 'others'
     if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
-    if not app_class.category in categories: raise ValueError, app_class.category
     if not hasattr(app_class, 'detail'): app_class.detail=''
     if type( getattr(app_class,'detail','') ) != str: app_class.detail = str( getattr(app_class,'detail','') ) 
     if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
@@ -54,7 +47,7 @@ def load_app_icon(name):
     else:
         path = D + 'velly_icons/software_default_icon.png'
     import gtk
-    return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
+    return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
 
 def load_app_objs():
     modules = []

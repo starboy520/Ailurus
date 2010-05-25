@@ -27,7 +27,7 @@ class SearchBoxForApp(gtk.HBox):
                                 (gobject.TYPE_STRING, gobject.TYPE_STRING)  ) }
     
     def __init__(self):
-        gtk.HBox.__init__(self, False, 5)
+        gtk.HBox.__init__(self, False, 3)
         label = gtk.Label( _('Search items:') )
         self.__entry = entry = gtk.Entry()
         entry.connect('changed', self.__entry_changed)
@@ -41,10 +41,10 @@ class SearchBoxForApp(gtk.HBox):
         option.append_text( _('In names & details.' ) )
         option.set_active(1)
         option.connect('changed', self.__option_changed)
-        self.pack_start(label, False, False)
+        self.pack_start(option, False, False)
+#        self.pack_start(label, False, False)
         self.pack_start(entry)
         self.pack_start(button_clear,False,False)
-        self.pack_start(option, False, False)
     def __text(self):
         return self.__entry.get_text()
     def __option(self):

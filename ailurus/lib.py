@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.6'
-AILURUS_RELEASE_DATE = '2010-05-22'
+AILURUS_VERSION = '10.05.9'
+AILURUS_RELEASE_DATE = '2010-05-24'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)

@@ -29,7 +29,7 @@ class Launch_Tasksel(I):
     __doc__ = _('* Launch tasksel')
     detail = _('This is a helper item. It just launches command: "sudo tasksel". '
                'Then you are free to customize your computer via "tasksel".')
-    category = 'server'
+    category = 'establish_a_server'
     def installed(self):
         return False
     def install(self):
@@ -40,7 +40,7 @@ class Launch_Tasksel(I):
         raise NotImplementedError
 
 class _tasksel(I):
-    category = 'server'
+    category = 'establish_a_server'
     def install(self):
         Tasksel.install(self.name)
     def installed(self):

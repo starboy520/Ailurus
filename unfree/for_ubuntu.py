@@ -67,7 +67,7 @@ Categories=Education;Science; ''')
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
     detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
-    category = 'firefox'
+    category = 'firefox_extension'
     Chinese = True
     def __init__(self):
         import os
@@ -176,7 +176,7 @@ class HITTeXTemplate(_download_one_file) :
 
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
@@ -188,6 +188,7 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
@@ -199,6 +200,7 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
@@ -210,6 +212,7 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
+    category = 'firefox_extension'
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
@@ -222,7 +225,7 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
     # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
-    category = 'game'
+    category = 'others'
     def install(self):
         f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
@@ -234,7 +237,7 @@ class GoogleEarth(I):
 
 class NVIDEA_Driver(I):
     __doc__ = 'NVIDEA ' + _('video card driver')
-    category = 'videocarddriver'
+    category = 'others'
     if is32():
         filename = '195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86/latest.txt
         url = 'ftp://download.nvidia.com/XFree86/Linux-x86/' + filename
@@ -253,7 +256,7 @@ class NVIDEA_Driver(I):
 
 class ATI_Driver(I):
     __doc__ = 'ATI ' + _('video card driver')
-    category = 'videocarddriver'
+    category = 'others'
     detail = _('Please click this link:') + ' http://ati.amd.com/support/driver.HTML'
     def install(self):
         raise NotImplementedError
@@ -261,3 +264,21 @@ class ATI_Driver(I):
         return False
     def remove(self):
         raise NotImplementedError
+
+class Google_Chrome(I):
+    'Google Chrome'
+    detail = _('Download from ') + 'http://www.google.com/chrome'
+    category = 'browser'
+    def install(self):
+        if is32():
+            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb'
+        else:
+            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb'
+        f = R(url).download()
+        run_as_root_in_terminal('dpkg --install %s' % f)
+        APT.cache_changed()
+    def installed(self):
+        return APT.installed('google-chrome-beta')
+    def remove(self):
+        APT.remove('google-chrome-beta')
+
