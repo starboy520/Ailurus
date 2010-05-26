@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-05-24 21:17+0800\n"
-"PO-Revision-Date: 2010-05-24 17:46+0000\n"
+"PO-Revision-Date: 2010-05-25 12:24+0000\n"
 "Last-Translator: luisah <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Launchpad-Export-Date: 2010-05-25 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-05-26 03:54+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -85,7 +85,7 @@ msgstr ""
 
 #: ../ailurus/clean_up_pane.py:156
 msgid "echo \"\" > ~/.recently-used.xbel"
-msgstr ""
+msgstr "echo \"\" > ~/.recently-used.xbel"
 
 #: ../ailurus/clean_up_pane.py:157
 msgid "Clear \"recent documents\" list"
@@ -173,7 +173,7 @@ msgstr "Označit všechny"
 
 #: ../ailurus/clean_up_pane.py:443 ../ailurus/clean_up_pane.py:547
 msgid "Please press the \"Refresh\" button."
-msgstr ""
+msgstr "Prosím stiskněte tlačítko \"Obnovit\"."
 
 #: ../ailurus/clean_up_pane.py:488
 msgid "There is no unused software configuration."
@@ -385,10 +385,11 @@ msgstr ""
 #: ../ailurus/common/apps.py:99
 msgid "SweetHome3D: open source interior design application"
 msgstr ""
+"SweetHome3D: aplikace k designu interiérů s otevřeným zdrojovým kódem"
 
 #: ../ailurus/common/apps.py:100
 msgid "Official site:"
-msgstr ""
+msgstr "Oficiální stránka:"
 
 #: ../ailurus/common/apps.py:122
 msgid "OpenJUMP: A geographic information system"
@@ -627,7 +628,7 @@ msgstr ""
 
 #: ../ailurus/common/cure.py:29 ../ailurus/common/cure.py:68
 msgid "Create file:"
-msgstr ""
+msgstr "Vytvořit soubor:"
 
 #: ../ailurus/common/cure.py:50
 msgid "Create basic VIM configuration file (.vimrc)"
@@ -635,7 +636,7 @@ msgstr ""
 
 #: ../ailurus/common/cure.py:51
 msgid "File content:"
-msgstr ""
+msgstr "Obsah souboru:"
 
 #: ../ailurus/common/cure.py:66
 msgid "Create ImageMagick shortcut in \"Application->Graphics\" menu"
@@ -825,7 +826,7 @@ msgstr "Novinky projektu:"
 
 #: ../ailurus/common/menu.py:140
 msgid "Code repository:"
-msgstr "Kód repozitáře:"
+msgstr "Kód zdroje:"
 
 #: ../ailurus/common/menu.py:143
 msgid "Bug Tracker:"
@@ -912,7 +913,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:58
 msgid "GNOME IDE for C/C++"
-msgstr ""
+msgstr "GNOME IDE pro C/C++"
 
 #: ../ailurus/common/native_apps.py:63
 msgid "Audacity: Music editor"
@@ -932,11 +933,11 @@ msgstr "Autoconf a Automake: Generuje konfigurační skripty a make soubory"
 
 #: ../ailurus/common/native_apps.py:89
 msgid "Video editor"
-msgstr ""
+msgstr "Video editor"
 
 #: ../ailurus/common/native_apps.py:95
 msgid "Media player and media manager"
-msgstr ""
+msgstr "Multimediální přehrávač a správce"
 
 #: ../ailurus/common/native_apps.py:100
 msgid "Bluefish: Edit HTML web-pages"
@@ -956,11 +957,11 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:135
 msgid "Breathe Icon Theme"
-msgstr ""
+msgstr "Téma Breathe Icon"
 
 #: ../ailurus/common/native_apps.py:136
 msgid "Mix KDE's \"Oxygen\" icons with Ubuntu's \"Human\" theme."
-msgstr ""
+msgstr "Mix KDE \"Oxygen\" ikon s Ubuntu \"Human\" tématem."
 
 #: ../ailurus/common/native_apps.py:142
 msgid "By installing build-essential, you will get g++, make, gdb and libc."
@@ -990,7 +991,7 @@ msgstr "ChildsPlay: Soubor vzdělávacích her pro děti."
 
 #: ../ailurus/common/native_apps.py:194
 msgid "Lightweight email client"
-msgstr ""
+msgstr "Odlehčený e-mailový klient"
 
 #: ../ailurus/common/native_apps.py:199
 msgid "Code::Blocks - C/C++ IDE"
@@ -1062,7 +1063,7 @@ msgstr "Přinutit Evince zobrazovat Čínská, Japonská a Korejská pdf"
 
 #: ../ailurus/common/native_apps.py:301
 msgid "Email client, calendar, contact manager and address manager"
-msgstr ""
+msgstr "E-mailový klient, kalendář, správce kontaktů a správce adres"
 
 #: ../ailurus/common/native_apps.py:306
 msgid "Extcalc: A multifunctional graphic calculator"
@@ -1078,7 +1079,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:326
 msgid "FTP client"
-msgstr ""
+msgstr "FTP klient"
 
 #: ../ailurus/common/native_apps.py:331
 msgid "Firestarter: Configure Linux firewall"
@@ -1138,15 +1139,15 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:447
 msgid "GTK frontend for MPlayer"
-msgstr ""
+msgstr "GTK frontend pro MPlayer"
 
 #: ../ailurus/common/native_apps.py:453
 msgid "Lightweight text editor"
-msgstr ""
+msgstr "Odlehčený textový editor"
 
 #: ../ailurus/common/native_apps.py:459
 msgid "Hex editor"
-msgstr ""
+msgstr "Hex editor"
 
 #: ../ailurus/common/native_apps.py:465
 msgid ""
@@ -1175,23 +1176,23 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:497 ../ailurus/common/native_apps.py:502
 msgid "Google gadgets"
-msgstr ""
+msgstr "Google gadgets"
 
 #: ../ailurus/common/native_apps.py:497
 msgid "(GTK version)"
-msgstr ""
+msgstr "(GTK verze)"
 
 #: ../ailurus/common/native_apps.py:502
 msgid "(QT version)"
-msgstr ""
+msgstr "(QT verze)"
 
 #: ../ailurus/common/native_apps.py:508
 msgid "Microblogging client which supports Twitter and Facebook"
-msgstr ""
+msgstr "Mikrobloging klient s podporou Twitteru a Facebooku"
 
 #: ../ailurus/common/native_apps.py:513
 msgid "lshw: List hardware information"
-msgstr ""
+msgstr "lshw: Seznam informací o hardwaru"
 
 #: ../ailurus/common/native_apps.py:514
 msgid "A small application which displays detailed hardware information"
@@ -1215,7 +1216,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:544
 msgid "K3B: Create DVD/VCD"
-msgstr ""
+msgstr "K3B: Vytvořit DVD/VCD"
 
 #: ../ailurus/common/native_apps.py:551
 msgid ""
@@ -1241,7 +1242,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:582
 msgid "Simple text editor"
-msgstr ""
+msgstr "Jednoduchý textový editor"
 
 #: ../ailurus/common/native_apps.py:587
 msgid "Liferea: a RSS feed reader"
@@ -1269,7 +1270,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:614
 msgid "Lightweight web browser"
-msgstr ""
+msgstr "Odlehčený webový prohlížeč"
 
 #: ../ailurus/common/native_apps.py:619
 msgid "Minicom and Kermit: Communication software for embedded MCU boards"
@@ -1277,11 +1278,11 @@ msgstr "Minicom a Kermit: Komunikační software pro vložené MCU desky"
 
 #: ../ailurus/common/native_apps.py:627
 msgid "Simple Youtube client"
-msgstr ""
+msgstr "Jednoduchý Youtube klient"
 
 #: ../ailurus/common/native_apps.py:633
 msgid "Video player"
-msgstr ""
+msgstr "Video přehrávač"
 
 #: ../ailurus/common/native_apps.py:638 ../ailurus/ubuntu/quick_setup.py:60
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
@@ -1423,7 +1424,7 @@ msgstr "Octave: Aplikace pro numerické výpočty, kompatibilní s Matlab®em"
 
 #: ../ailurus/common/native_apps.py:806
 msgid "Non-linear video editor"
-msgstr ""
+msgstr "Nelineární video editor"
 
 #: ../ailurus/common/native_apps.py:811
 msgid "POSIX library manual pages"
@@ -1520,7 +1521,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:936
 msgid "Qt frontend for MPlayer"
-msgstr ""
+msgstr "Qt frontend pro MPlayer"
 
 #: ../ailurus/common/native_apps.py:941
 msgid "Med-bio: A lot of micro-biology software"
@@ -1550,7 +1551,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:960
 msgid "Professional typesetting software"
-msgstr ""
+msgstr "Profesionální sázecí software"
 
 #: ../ailurus/common/native_apps.py:966
 msgid "Hybrid theme which is designed to be fast and stable"
@@ -1562,7 +1563,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:978
 msgid "Lightweight music player"
-msgstr ""
+msgstr "Odlehčený hudební přehrávač"
 
 #: ../ailurus/common/native_apps.py:983 ../ailurus/ubuntu/quick_setup.py:59
 msgid "Stardict"
@@ -1611,11 +1612,11 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:1027
 msgid "2D MMORPG"
-msgstr ""
+msgstr "2D MMORPG"
 
 #: ../ailurus/common/native_apps.py:1033
 msgid "Email client and RSS reader"
-msgstr ""
+msgstr "E-mailový klient a RSS čtečka"
 
 #: ../ailurus/common/native_apps.py:1044
 msgid "Tux Paint: A drawing program for young children three years and up"
@@ -1639,7 +1640,7 @@ msgstr "Umbrello pomůže s UML modelováním."
 
 #: ../ailurus/common/native_apps.py:1088
 msgid "Media player and media format converter"
-msgstr ""
+msgstr "Multimediální přehrávač a konvertor multimediálních formátů"
 
 #: ../ailurus/common/native_apps.py:1093
 msgid "VirtualBox open source edition"
@@ -1678,7 +1679,7 @@ msgstr ""
 
 #: ../ailurus/common/native_apps.py:1139
 msgid "Battle for Wesnoth"
-msgstr ""
+msgstr "Bitva o Wesnoth"
 
 #: ../ailurus/common/native_apps.py:1140
 msgid "A popular turn-based game"
@@ -1754,11 +1755,11 @@ msgstr "Verze Pythonu:"
 
 #: ../ailurus/common/osinfo.py:72
 msgid "GTK version:"
-msgstr ""
+msgstr "Verze GTK:"
 
 #: ../ailurus/common/osinfo.py:78
 msgid "PyGTK version:"
-msgstr ""
+msgstr "Verze PyGTK"
 
 #: ../ailurus/common/osinfo.py:95
 msgid "day"
@@ -1864,7 +1865,7 @@ msgstr "Změnit název počítače"
 
 #: ../ailurus/common/setting.py:199
 msgid "Speed up"
-msgstr ""
+msgstr "Zrychlení"
 
 #: ../ailurus/common/setting.py:201
 msgid "URL bar auto-completion"
@@ -1872,7 +1873,7 @@ msgstr ""
 
 #: ../ailurus/common/setting.py:204
 msgid "Support ed2k protocol"
-msgstr ""
+msgstr "Podpora ed2k protokolu"
 
 #: ../ailurus/common/setting.py:206
 msgid "Swap out memory when minimized"
@@ -1880,15 +1881,15 @@ msgstr ""
 
 #: ../ailurus/common/setting.py:208
 msgid "Do not pre-fetch link"
-msgstr ""
+msgstr "Nepoužívat Prefetch link"
 
 #: ../ailurus/common/setting.py:210
 msgid "Do not delay before installing extensions"
-msgstr ""
+msgstr "Žádná prodleva před instalací rozšíření"
 
 #: ../ailurus/common/setting.py:228
 msgid "Before configuring Firefox, please close all Firefox windows."
-msgstr ""
+msgstr "Před konfigurací Firefoxu, prosím zavřete všechny okna Firefoxu."
 
 #: ../ailurus/common/setting.py:252 ../ailurus/system_setting_pane.py:62
 msgid "Configure Firefox"
@@ -2610,16 +2611,16 @@ msgstr ""
 #: ../ailurus/computer_doctor_pane.py:79
 #, python-format
 msgid "Found %s errors in your system."
-msgstr ""
+msgstr "Nalezeno %s chyb v systému."
 
 #: ../ailurus/computer_doctor_pane.py:81
 #, python-format
 msgid "There is a total of %s suggestions."
-msgstr ""
+msgstr "K dispozici je celkem %s návrhů."
 
 #: ../ailurus/computer_doctor_pane.py:83
 msgid "Found no error :)"
-msgstr ""
+msgstr "Nenalezeny žádné chyby :-)"
 
 #: ../ailurus/computer_doctor_pane.py:97
 msgid "Computer doctor"
@@ -2628,11 +2629,11 @@ msgstr "Počítačový doktor"
 #: ../ailurus/computer_doctor_pane.py:97
 #, python-format
 msgid "Successfully applied %s suggestions."
-msgstr ""
+msgstr "Úspěšně aplikováno %s návrhů."
 
 #: ../ailurus/computer_doctor_pane.py:147
 msgid "Please click \"refresh\" button."
-msgstr ""
+msgstr "Prosím klikněte na tlačítko \"Obnovit\"."
 
 #: ../ailurus/fedora/apps.py:29 ../ailurus/ubuntu/apps.py:175
 msgid ""
@@ -2692,7 +2693,7 @@ msgstr "Použít barevné znaky v bashi"
 
 #: ../ailurus/fedora/cure.py:29 ../ailurus/ubuntu/cure.py:29
 msgid "Add this line into ~/.bashrc:"
-msgstr ""
+msgstr "Přidat tento řádek do ~/.bashrc:"
 
 #: ../ailurus/fedora/cure.py:37 ../ailurus/ubuntu/cure.py:37
 msgid "The color of bash prompt symbols is changed."
@@ -3026,7 +3027,7 @@ msgstr "Ukázat obsah pracovní plochy"
 #: ../ailurus/gnome/setting.py:31 ../ailurus/gnome/setting.py:98
 #: ../ailurus/gnome/setting.py:113 ../ailurus/gnome/setting.py:417
 msgid "(take effect at the next time GNOME starts up)"
-msgstr ""
+msgstr "(změna se projeví při následujícím spuštění GNOME)"
 
 #: ../ailurus/gnome/setting.py:35
 msgid "Display \"Mounted volumn\" icon"
@@ -3074,6 +3075,9 @@ msgid ""
 "server\" or \"Trash\" icon,\n"
 "please select the icon, then press F2."
 msgstr ""
+"Aby bylo možné změnit název ikony \"Počítač\", \"Domovská složka\", \"Síťové "
+"servery\" nebo \"Koš, \n"
+"prosím zvolte ikonu, potom stiskněte F2."
 
 #: ../ailurus/gnome/setting.py:58
 msgid "Desktop icons"
@@ -3082,7 +3086,7 @@ msgstr "Ikony na ploše"
 #: ../ailurus/gnome/setting.py:90
 #, python-format
 msgid "The \"start-here\" icon is %s"
-msgstr ""
+msgstr "\"start-here\" ikona je %s"
 
 #: ../ailurus/gnome/setting.py:98
 msgid "Change \"start-here\" icon"
@@ -3399,7 +3403,7 @@ msgstr "Konfigurovat automatické spuštění aplikací"
 
 #: ../ailurus/gnome/setting.py:345
 msgid "(Command: gnome-session-properties)"
-msgstr ""
+msgstr "(Příkaz: gnome-session-properties)"
 
 #: ../ailurus/gnome/setting.py:348
 msgid "Remember running applications when you log out."
@@ -3477,16 +3481,18 @@ msgstr "Podsvícení"
 
 #: ../ailurus/gnome/setting.py:417
 msgid "Display content of your home folder on desktop"
-msgstr ""
+msgstr "Zobrazit obsah domovské složky na ploše"
 
 #: ../ailurus/gnome/setting.py:437
 msgid "Display \"GNOME control center\" entry in \"System\" menu"
 msgstr ""
+"Zobrazit položku \"GNOME Control Center\" v nabídce \"Systémové nástroje\""
 
 #: ../ailurus/gnome/setting.py:438
 msgid ""
 "Create a file ~/.local/share/applications/gnome-control-center.desktop"
 msgstr ""
+"Vytvořit soubor ~/.local/share/applications/gnome-control-center.desktop"
 
 #: ../ailurus/gnome/setting.py:446
 msgid "Change default file manager to:"
@@ -3506,19 +3512,19 @@ msgstr "Pokročilá nastavení"
 
 #: ../ailurus/gnome/setting.py:467
 msgid "Enable GNOME panel animations"
-msgstr ""
+msgstr "Povolit animace GNOME panelu"
 
 #: ../ailurus/gnome/setting.py:469
 msgid "Lock down all GNOME panels"
-msgstr ""
+msgstr "Uzamknout všechny GNOME panely"
 
 #: ../ailurus/gnome/setting.py:469
 msgid "(take effect at the next time when GNOME starts up)"
-msgstr ""
+msgstr "(změna se projeví při následujícím spuštění GNOME)"
 
 #: ../ailurus/gnome/setting.py:471
 msgid "Confirm before removing a panel"
-msgstr ""
+msgstr "Potvrzení před odebráním panelu"
 
 #: ../ailurus/gnome/setting.py:474
 msgid "GNOME panels settings"
@@ -3673,6 +3679,8 @@ msgid ""
 "Some operations failed. Would you please copy and paste following text into "
 "bug report web-page?"
 msgstr ""
+"Některé operace selhaly. Mohli byste prosím zkopírovat a vložit následující "
+"text, jako oznámení o chybě na webové stránky?"
 
 #: ../ailurus/install_remove_pane.py:194 ../ailurus/main.py:195
 msgid "Click here to report bug via web-page"
@@ -3685,7 +3693,7 @@ msgstr "Zavřít"
 
 #: ../ailurus/install_remove_pane.py:208
 msgid "Some operations failed"
-msgstr ""
+msgstr "Některé operace selhaly"
 
 #: ../ailurus/install_remove_pane.py:239 ../ailurus/install_remove_pane.py:248
 msgid "Installing:"
@@ -3754,7 +3762,7 @@ msgstr "Nastavit parametry stahování"
 
 #: ../ailurus/install_remove_pane.py:684
 msgid "Show an icon by the side of software name"
-msgstr ""
+msgstr "Zobrazit ikonu u názvu softwaru"
 
 #: ../ailurus/install_remove_pane.py:728
 msgid "All works finished. "
@@ -3786,7 +3794,7 @@ msgstr "Skrýt"
 
 #: ../ailurus/install_remove_pane.py:778
 msgid "All"
-msgstr ""
+msgstr "Vše"
 
 #: ../ailurus/install_remove_pane.py:779
 msgid "Internet"
@@ -3802,11 +3810,11 @@ msgstr "Vzhled"
 
 #: ../ailurus/install_remove_pane.py:782
 msgid "Science"
-msgstr ""
+msgstr "Věda"
 
 #: ../ailurus/install_remove_pane.py:783
 msgid "Programming"
-msgstr ""
+msgstr "Programování"
 
 #: ../ailurus/install_remove_pane.py:784
 msgid "Business"
@@ -3814,15 +3822,15 @@ msgstr ""
 
 #: ../ailurus/install_remove_pane.py:785
 msgid "Design"
-msgstr ""
+msgstr "Design"
 
 #: ../ailurus/install_remove_pane.py:786
 msgid "For GNOME"
-msgstr ""
+msgstr "Pro GNOME"
 
 #: ../ailurus/install_remove_pane.py:787
 msgid "Simulator"
-msgstr ""
+msgstr "Simulátor"
 
 #: ../ailurus/install_remove_pane.py:788
 msgid "Education"
@@ -3838,71 +3846,71 @@ msgstr "Ostatní"
 
 #: ../ailurus/install_remove_pane.py:791
 msgid "Repository"
-msgstr ""
+msgstr "Zdroj"
 
 #: ../ailurus/install_remove_pane.py:794
 msgid "Browser"
-msgstr ""
+msgstr "Prohlížeč"
 
 #: ../ailurus/install_remove_pane.py:795
 msgid "Email"
-msgstr ""
+msgstr "E-mail"
 
 #: ../ailurus/install_remove_pane.py:796
 msgid "File sharing"
-msgstr ""
+msgstr "Sdílení souborů"
 
 #: ../ailurus/install_remove_pane.py:797
 msgid "Chat"
-msgstr ""
+msgstr "Chat"
 
 #: ../ailurus/install_remove_pane.py:798
 msgid "Firefox extension"
-msgstr ""
+msgstr "Firefox rozšíření"
 
 #: ../ailurus/install_remove_pane.py:799
 msgid "Flash"
-msgstr ""
+msgstr "Flash"
 
 #: ../ailurus/install_remove_pane.py:800
 msgid "Blog"
-msgstr ""
+msgstr "Blog"
 
 #: ../ailurus/install_remove_pane.py:801
 msgid "RSS"
-msgstr ""
+msgstr "RSS"
 
 #: ../ailurus/install_remove_pane.py:802
 msgid "Player"
-msgstr ""
+msgstr "Přehrávač"
 
 #: ../ailurus/install_remove_pane.py:803
 msgid "CD burner"
-msgstr ""
+msgstr "Vypalování CD"
 
 #: ../ailurus/install_remove_pane.py:804
 msgid "Media editor"
-msgstr ""
+msgstr "Editace multimédií"
 
 #: ../ailurus/install_remove_pane.py:805
 msgid "Panel"
-msgstr ""
+msgstr "Panel"
 
 #: ../ailurus/install_remove_pane.py:806
 msgid "Theme"
-msgstr ""
+msgstr "Téma"
 
 #: ../ailurus/install_remove_pane.py:807
 msgid "Candy"
-msgstr ""
+msgstr "Bonbónek"
 
 #: ../ailurus/install_remove_pane.py:808
 msgid "Compiz setting"
-msgstr ""
+msgstr "Nastavení Compizu"
 
 #: ../ailurus/install_remove_pane.py:809
 msgid "Math"
-msgstr ""
+msgstr "Matematika"
 
 #: ../ailurus/install_remove_pane.py:810
 msgid "Statistics"
@@ -3910,11 +3918,11 @@ msgstr "Statistika"
 
 #: ../ailurus/install_remove_pane.py:811
 msgid "Electronics"
-msgstr ""
+msgstr "Elektronika"
 
 #: ../ailurus/install_remove_pane.py:812
 msgid "Mechanics"
-msgstr ""
+msgstr "Mechanika"
 
 #: ../ailurus/install_remove_pane.py:813
 msgid "Geography"
@@ -3930,15 +3938,15 @@ msgstr "LaTeX"
 
 #: ../ailurus/install_remove_pane.py:816
 msgid "IDE"
-msgstr ""
+msgstr "IDE"
 
 #: ../ailurus/install_remove_pane.py:817
 msgid "Version control"
-msgstr ""
+msgstr "Kontrola verzí"
 
 #: ../ailurus/install_remove_pane.py:818
 msgid "Library"
-msgstr ""
+msgstr "Knihovna"
 
 #: ../ailurus/install_remove_pane.py:819
 msgid "Embedded system"
@@ -3946,11 +3954,11 @@ msgstr "Vestavěný systém"
 
 #: ../ailurus/install_remove_pane.py:820
 msgid "Text editor"
-msgstr ""
+msgstr "Textový editor"
 
 #: ../ailurus/install_remove_pane.py:821
 msgid "Eclipse extension"
-msgstr ""
+msgstr "Eclipse rozšíření"
 
 #: ../ailurus/install_remove_pane.py:822
 msgid "Saber"
@@ -3958,15 +3966,15 @@ msgstr ""
 
 #: ../ailurus/install_remove_pane.py:823
 msgid "Drawing"
-msgstr ""
+msgstr "Kreslení"
 
 #: ../ailurus/install_remove_pane.py:824
 msgid "Typesetting"
-msgstr ""
+msgstr "Sazba"
 
 #: ../ailurus/install_remove_pane.py:825
 msgid "Nautilus extension"
-msgstr ""
+msgstr "Nautilus rozšíření"
 
 #: ../ailurus/install_remove_pane.py:826
 msgid "Establish a server"
@@ -4149,7 +4157,7 @@ msgstr "Artistic License"
 
 #: ../ailurus/lib.py:1574
 msgid "Your Linux distribution is not supported. :("
-msgstr ""
+msgstr "Vaše linuxová distribuce není podporována :-("
 
 #: ../ailurus/libsetting.py:134
 msgid "The command which will be run."
@@ -4194,11 +4202,11 @@ msgstr ""
 
 #: ../ailurus/main.py:95
 msgid "Necessary packages are not installed. Ailurus cannot work."
-msgstr ""
+msgstr "Potřebné balíky nejsou nainstalovány. Ailurus nemůže pracovat."
 
 #: ../ailurus/main.py:97
 msgid "Please install these packages:"
-msgstr ""
+msgstr "Prosím nainstalujte tyto balíky:"
 
 #: ../ailurus/main.py:125
 msgid "Error happened. You cannot install any software by Ailurus. :("
@@ -4232,6 +4240,8 @@ msgstr ""
 #: ../ailurus/main.py:174
 msgid "Please copy and paste following text into bug report web-page."
 msgstr ""
+"Prosím zkopírujte a vložte následující text jako oznámení o chybě na webové "
+"stránky."
 
 #: ../ailurus/main.py:209
 msgid "Bug appears!"
@@ -4255,7 +4265,7 @@ msgstr ""
 
 #: ../ailurus/main.py:353
 msgid "Please wait a few seconds"
-msgstr ""
+msgstr "Prosím, vyčkejte několik sekund."
 
 #: ../ailurus/main.py:379
 msgid "Are you sure to exit?"
@@ -4288,7 +4298,7 @@ msgstr "Již je nainstalovaná poslední verze Ailurus. :-)"
 
 #: ../ailurus/support/checkupdate.py:112
 msgid "Project homepage"
-msgstr ""
+msgstr "Domovská stránka projektu"
 
 #: ../ailurus/support/checkupdate.py:115
 msgid "Developers:"
@@ -4319,7 +4329,7 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:136
 msgid "Copyright © 2009-2010, Ailurus Developers Team"
-msgstr ""
+msgstr "Copyright © 2009-2010, Ailurus Developers Team"
 
 #: ../ailurus/support/checkupdate.py:214
 #, python-format
@@ -4447,7 +4457,7 @@ msgstr "Stiskněte \"Ctrl+C\" k ukončení instalačního procesu Ailuru."
 
 #: ../ailurus/support/tipoftheday.py:55
 msgid "All Linux skills"
-msgstr ""
+msgstr "Všechny linuxové dovednosti"
 
 #: ../ailurus/support/tipoftheday.py:62
 msgid "Tip of the Day"
@@ -4463,7 +4473,7 @@ msgstr "Odeslat linuxové znalosti"
 
 #: ../ailurus/support/tipoftheday.py:99
 msgid "Show all tips"
-msgstr ""
+msgstr "Zobrazit všechny tipy"
 
 #: ../ailurus/system_setting_pane.py:31
 msgid ""
@@ -4499,7 +4509,7 @@ msgstr "GNOME sezení"
 
 #: ../ailurus/system_setting_pane.py:53
 msgid "GNOME Panel"
-msgstr ""
+msgstr "GNOME panel"
 
 #: ../ailurus/system_setting_pane.py:54
 msgid "Memory"
@@ -4632,11 +4642,11 @@ msgstr "XBMC: Zábavní domácí systém"
 
 #: ../ailurus/ubuntu/app_from_external_repos.py:204
 msgid "Elementary: Beautiful theme which looks like Mac OS X"
-msgstr ""
+msgstr "Elementary: Krásné téma vypadající jako Mac OS X"
 
 #: ../ailurus/ubuntu/app_from_external_repos.py:211
 msgid "Simple GNOME dock"
-msgstr ""
+msgstr "Jednoduchý GNOME dock"
 
 #: ../ailurus/ubuntu/app_from_external_repos.py:218
 msgid "A dock, a taskbar, and many applets"
@@ -4782,7 +4792,7 @@ msgstr ""
 
 #: ../ailurus/ubuntu/cure.py:41
 msgid "Change \"sans-serif\" to \"sans serif\"."
-msgstr ""
+msgstr "Změna \"sans-serif\" za \"sans serif\"."
 
 #: ../ailurus/ubuntu/cure.py:58
 msgid ""
@@ -4819,16 +4829,16 @@ msgstr "změnit %(old)s na %(new)s"
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "The fastest repository is %s"
-msgstr ""
+msgstr "Nejrychlejší zdroj je %s"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "(%s millisecond)"
-msgstr ""
+msgstr "(%s millisekund)"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:67
 msgid "Currently you are using these third-party repositories:"
-msgstr ""
+msgstr "Aktuálně jsou používány tyto zdroje třetích stran:"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:77
 msgid ""
@@ -5477,7 +5487,7 @@ msgstr "Nastavení správce aktualizací Ubuntu"
 #: ../ailurus/ubuntu/third_party_repos.py:58
 #: ../ailurus/ubuntu/third_party_repos.py:127
 msgid "Web page:"
-msgstr ""
+msgstr "Webová stránka:"
 
 #: ../ailurus/ubuntu/third_party_repos.py:59
 #: ../ailurus/ubuntu/third_party_repos.py:128
@@ -5752,7 +5762,7 @@ msgstr "Acire (stabilní)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:429
 msgid "Elementary Theme"
-msgstr ""
+msgstr "Téma Elementary"
 
 #: ../ailurus/ubuntu/tips.py:29
 msgid ""
