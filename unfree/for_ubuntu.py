@@ -271,14 +271,52 @@ class Google_Chrome(I):
     category = 'browser'
     def install(self):
         if is32():
-            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb'
+            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb'
         else:
-            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb'
+            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
         f = R(url).download()
         run_as_root_in_terminal('dpkg --install %s' % f)
         APT.cache_changed()
     def installed(self):
-        return APT.installed('google-chrome-beta')
+        return APT.installed('google-chrome-stable')
     def remove(self):
-        APT.remove('google-chrome-beta')
+    	if APT.installed('google-chrome-beta'):
+    		APT.remove('google-chrome-beta')
+        APT.remove('google-chrome-stable')
+
+class EIOffice(I):
+    __doc__ = _('Evermore Integrated Office 2009 free version')
+    detail = _('It is able to edit text, spreadsheets, and slides. '
+       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
+    category='business'
+    Chinese = True
+    def install(self):
+        with Chdir('/tmp') as o:
+            f = R('http://evermoresw.com.cn/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
+            run('tar xf %s' % f)
+            run('chmod a+x EIOffice_Personal_Lin/setup')
+            run_as_root("EIOffice_Personal_Lin/setup")
+            
+            msgs = ( 
+                     _('Install clipboard arts'),
+                     _('Install help files'),
+                     _('Install formulae editor'),
+                     _('Install templates')
+                        )
+            for file, msg in zip(
+               ['http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Clipart.tar.gz',
+                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz',
+                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz',
+                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz',], msgs):
+                    download(file, '/tmp/eio.tar.gz') 
+                    run("tar zxf /tmp/eio.tar.gz")
+                    notify( _('Installing EIOffice'), msg )
+                    run_as_root("./setup")
+    def installed(self):
+        import os
+        return os.path.exists('/usr/bin/eio')
+    def remove(self):
+        import os
+        if os.path.exists('/usr/bin/rmeio'):
+            run_as_root('/usr/bin/rmeio')
 
