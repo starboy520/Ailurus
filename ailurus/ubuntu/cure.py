@@ -129,3 +129,11 @@ class Show_a_Linux_skill_bubble(C):
                     'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
                     'Categories=System;\n'
                     'StartupNotify=false\n')
+
+class Google_chrome_is_upgradable(C):
+    __doc__ = _('Google Chrome can be upgraded.')
+    def exists(self):
+        if UBUNTU or MINT:
+            return APT.installed('google-chrome-beta')
+    def cure(self):
+        open_web_page('http://www.google.com/chrome/')
