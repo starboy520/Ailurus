@@ -29,20 +29,24 @@ class AMule(N):
     'aMule'
     detail = _('An eMule-like client for eD2k and Kademlia networks')
     category = 'file_sharing'
-    if UBUNTU or MINT or FEDORA : pkgs = 'amule'
+    if UBUNTU or MINT: pkgs = 'amule'
+    if FEDORA: pkgs = 'amule'
 
 class AWN(N):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
     license = GPL
     category = 'panel'
-    if UBUNTU or MINT or FEDORA:
+    if UBUNTU or MINT:
+        pkgs = 'avant-window-navigator'
+    if FEDORA:
         pkgs = 'avant-window-navigator'
             
 class Agave(N):
     'Agave'
     detail = _('Colorscheme designer')
     category = 'drawing'
-    if UBUNTU or MINT or FEDORA: pkgs = 'agave'
+    if UBUNTU or MINT: pkgs = 'agave'
+    if FEDORA: pkgs = 'agave'
 
 class Alacarte(N):
     __doc__ = ("Alacarte: Edit GNOME menu")
@@ -91,14 +95,15 @@ class Avidemux(N):
     detail = _('Video editor')
     category = 'media_editor'
     if UBUNTU or MINT: pkgs = 'avidemux'
-    if FEDORA : pkgs = 'avidemux'
+    if FEDORA: pkgs = 'avidemux'
 
 
 class Banshee(N):
     'Banshee'
     detail = _('Media player and media manager')
     category = 'player'
-    if UBUNTU or MINT or FEDORA : pkgs = 'banshee'
+    if UBUNTU or MINT: pkgs = 'banshee'
+    if FEDORA: pkgs = 'banshee'
 
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
@@ -133,7 +138,8 @@ class BosWars(N):
     'Bos Wars'
     detail = _('Real time strategy game, just like Red Alarm')
     category = 'game'
-    if UBUNTU or MINT or FEDORA: pkgs = 'boswars'
+    if UBUNTU or MINT: pkgs = 'boswars'
+    if FEDORA: pkgs = 'boswars'
 
 class BreatheIconTheme(N):
     __doc__ = _('Breathe Icon Theme')
@@ -668,7 +674,6 @@ class MiniCom_Ckermit(N):
     category = 'embedded_system'
     if UBUNTU or MINT:
         pkgs = 'minicom ckermit'
-    # if FEDORA : pkgs = 'picocom' 
 
 class Minitube(N):
     'Minitube'
