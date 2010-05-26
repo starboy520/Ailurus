@@ -271,14 +271,16 @@ class Google_Chrome(I):
     category = 'browser'
     def install(self):
         if is32():
-            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_i386.deb'
+            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb'
         else:
-            url = 'http://dl.google.com/dl/linux/direct/google-chrome-beta_current_amd64.deb'
+            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
         f = R(url).download()
         run_as_root_in_terminal('dpkg --install %s' % f)
         APT.cache_changed()
     def installed(self):
-        return APT.installed('google-chrome-beta')
+        return APT.installed('google-chrome-stable')
     def remove(self):
-        APT.remove('google-chrome-beta')
+    	if APT.installed('google-chrome-beta'):
+    		APT.remove('google-chrome-beta')
+        APT.remove('google-chrome-stable')
 
