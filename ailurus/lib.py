@@ -913,8 +913,7 @@ def download(url, filename):
     
 def reset_dir():
     import os, sys
-    if sys.argv[0]!='':
-        os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 class APTSource2:
     re_pattern_server = None
