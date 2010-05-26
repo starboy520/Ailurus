@@ -294,34 +294,6 @@ class ResponseTime:
         cls.map[url] = value
         cls.changed = True
 
-class ShowALinuxSkill:
-    @classmethod
-    def installed(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        return os.path.exists(path)
-    @classmethod
-    def install(cls):
-        import os
-        dir = os.path.expanduser('~/.config/autostart/')
-        if not os.path.exists(dir): os.system('mkdir %s -p' % dir)
-        file = dir + 'show-a-linux-skill-bubble.desktop'
-        with open(file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
-    @classmethod
-    def remove(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        os.system('rm %s -f'%path)
-
 class CommandFailError(Exception):
     'Fail to execute a command'
 
@@ -1540,15 +1512,6 @@ try:
 except:
     print 'Cannot init pynotify'
 
-try:
-    Config.get_bool('show-a-linux-skill-bubble')
-except:
-    try:
-        Config.set_bool('show-a-linux-skill-bubble', True)
-        ShowALinuxSkill.install()
-    except:
-        print_traceback()
-        
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
