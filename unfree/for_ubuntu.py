@@ -284,7 +284,7 @@ class Google_Chrome(I):
     		APT.remove('google-chrome-beta')
         APT.remove('google-chrome-stable')
 
-class EIOffice:
+class EIOffice(I):
     __doc__ = _('Evermore Integrated Office 2009 free version')
     detail = _('It is able to edit text, spreadsheets, and slides. '
        'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
