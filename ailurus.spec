@@ -1,6 +1,6 @@
 %define name ailurus
-%define version 10.04.2.3
-%define unmangled_version 10.04.2.3
+%define version 10.05.91
+%define unmangled_version 10.05.91
 %define release 1
 %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
@@ -34,8 +34,6 @@ Features:
 %setup -q -n %{name}-%{unmangled_version}
 
 %build
-# "System" for Debian, "System Tools" for Fedora
-sed -e 's/System/System Tools/' -i ailurus.menu
 python setup.py build
 
 %install
@@ -61,5 +59,5 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Sun Apr 25 2010 Homer Xing <homer.xing@gmail.com> 10.04.2.2-1
+* Thu May 27 2010 Homer Xing <homer.xing@gmail.com> 10.05.91-1
 - Initial package
