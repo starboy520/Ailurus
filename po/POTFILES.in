@@ -1,8 +1,6 @@
 ailurus.desktop.in
 support/policykit0/cn.ailurus.policy.in
 support/policykit1/cn.ailurus.policy.in
-unfree/for_fedora.py
-unfree/for_ubuntu.py
 ailurus/clean_up_pane.py
 ailurus/common/apps_eclipse.py
 ailurus/common/apps.py
