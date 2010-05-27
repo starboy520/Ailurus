@@ -1,22 +1,19 @@
 %define name ailurus
 %define version 10.05.91
-%define unmangled_version 10.05.91
-%define release 1
 %define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
 
 Summary: makes Linux easier to use
 Name: %{name}
 Version: %{version}
-Release: %{release}
-Source: http://homerxing.fedorapeople.org/%{name}-%{unmangled_version}.tar.gz
+Release: 0%{?dist}
+Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
 License: GPLv2+
 Group: Applications/System
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: Homer Xing <homer.xing@gmail.com>
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm
-Url: http://ailurus.googlecode.com/
+URL: http://ailurus.googlecode.com/
 BuildRequires: python python-devel python-distutils-extra intltool sed
 
 %description
