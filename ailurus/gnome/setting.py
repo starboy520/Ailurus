@@ -499,11 +499,36 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
-def __gedit_config():
-    box = gtk.VBox()
-    o = GConfEntry('/apps/gedit-2/preferences/editor/undo/max_undo_actions')
-    box.pack_start(o, False)
-    return Setting(box, _('Gedit configure'), ['gedit_configure'])
+def __file_config():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    label = label_left_align(_('Maximum number of actions that gedit will be able to undo or redo:')) 
+    key = '/apps/gedit-2/preferences/editor/undo/max_undo_actions'
+    label.set_tooltip_text(_('GConf key: %s')%key)
+    table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    
+    o = GConfNumericEntry(key, -1, 10000)
+    table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    
+    label = label_left_align(_('Maximum number of recently opened files displayed in the "Recent Files" submenu:') )
+    key = '/apps/gedit-2/preferences/ui/recents/max_recents'
+    label.set_tooltip_text(_('GConf key: %s')%key)
+    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    o = GConfNumericEntry(key, 1, 20)
+    table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    
+    label = label_left_align('Change the compression level when adding files to an archive:')
+    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(
+            GConfComboBox(
+              '/apps/file-roller/general/compression_level',
+              [_('normal'),        _('very fast'),  _('fast'),    _('maximum') ],
+              ['normal',            'very_fast',   'fast',           'maximum'],
+              _('Compression level used when adding files to an archive.')
+              ),
+              1, 2, 2, 3, gtk.FILL, gtk.FILL)
+    return Setting(table, _('File configure'), ['file_configure'])
+
 #def __gconfig_backup():
 #    table = gtk.Table()
 #    table.set_col_spacings(30)
