@@ -142,8 +142,9 @@ def load_custom_app_objs():
         try:
             module = __import__(basename)
             return_value.extend( load_app_objs_from_extension(module) )
+            print 'Load extension', os.path.abspath(py)
         except:
-            print_traceback()
+            print 'Cannot load extension', os.path.abspath(py)
     # remove the extension directory from sys.path
     sys.path.pop(0)
     return return_value

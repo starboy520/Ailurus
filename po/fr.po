@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-05-24 21:17+0800\n"
-"PO-Revision-Date: 2010-05-24 04:29+0000\n"
+"POT-Creation-Date: 2010-05-26 18:39+0800\n"
+"PO-Revision-Date: 2010-05-27 04:33+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2010-05-25 03:47+0000\n"
+"X-Launchpad-Export-Date: 2010-05-28 03:45+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -54,8 +54,8 @@ msgstr "cache d'APT"
 #: ../ailurus/clean_up_pane.py:76 ../ailurus/clean_up_pane.py:91
 #: ../ailurus/clean_up_pane.py:109 ../ailurus/clean_up_pane.py:124
 #: ../ailurus/clean_up_pane.py:140 ../ailurus/clean_up_pane.py:156
-#: ../ailurus/lib.py:339 ../ailurus/lib.py:402 ../ailurus/lib.py:555
-#: ../ailurus/lib.py:885 ../ailurus/support/terminal.py:54
+#: ../ailurus/lib.py:311 ../ailurus/lib.py:374 ../ailurus/lib.py:527
+#: ../ailurus/lib.py:857 ../ailurus/support/terminal.py:54
 #: ../ailurus/support/terminal_single_thread.py:51
 msgid "Run command:"
 msgstr "Lancer une commande :"
@@ -211,7 +211,7 @@ msgstr ""
 
 #: ../ailurus/common/apps_eclipse.py:75 ../ailurus/common/apps_eclipse.py:88
 #: ../ailurus/common/apps.py:75 ../ailurus/common/apps.py:125
-#: ../ailurus/common/native_apps.py:781
+#: ../ailurus/common/native_apps.py:841 ../unfree/for_ubuntu.py:34
 msgid " This application depends on Java."
 msgstr " Cette application dépend de Java."
 
@@ -638,6 +638,7 @@ msgid "Automatically start up Workrave"
 msgstr ""
 
 #: ../ailurus/common/cure.py:29 ../ailurus/common/cure.py:68
+#: ../ailurus/ubuntu/cure.py:117
 msgid "Create file:"
 msgstr ""
 
@@ -810,41 +811,27 @@ msgstr "Astuce du jour"
 msgid "Query before exit"
 msgstr ""
 
-#: ../ailurus/common/menu.py:67
-msgid "Show a random Linux skill after you log in to GNOME"
-msgstr "Afficher une astuce aléatoire après la connexion à GNOME"
-
-#: ../ailurus/common/menu.py:72
-msgid "Preferences changed"
-msgstr "Les préférences ont été changées"
-
-#: ../ailurus/common/menu.py:72
-msgid ""
-"Your changes will take effect at the next time when you log in to GNOME."
-msgstr ""
-"Vos changements prendront effet lors de votre prochaine connexion à GNOME."
-
-#: ../ailurus/common/menu.py:123
+#: ../ailurus/common/menu.py:114
 msgid "Contributing to <i>Ailurus</i>"
 msgstr "Contribution ã <i>Ailurus</i>"
 
-#: ../ailurus/common/menu.py:134
+#: ../ailurus/common/menu.py:125
 msgid "Project homepage:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:137
+#: ../ailurus/common/menu.py:128
 msgid "Project news:"
 msgstr "Nouvelles du projet :"
 
-#: ../ailurus/common/menu.py:140
+#: ../ailurus/common/menu.py:131
 msgid "Code repository:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:143
+#: ../ailurus/common/menu.py:134
 msgid "Bug Tracker:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:146
+#: ../ailurus/common/menu.py:137
 msgid ""
 "How to submit\n"
 "patches:"
@@ -852,56 +839,56 @@ msgstr ""
 "Comment soumettre des \n"
 "patches :"
 
-#: ../ailurus/common/menu.py:147
+#: ../ailurus/common/menu.py:138
 msgid ""
 "Send me patches on github. No mailing list (yet?) but feel \n"
 "free to email me about possible features or whatever: \n"
 "homer.xing@gmail.com"
 msgstr ""
 
-#: ../ailurus/common/menu.py:150
+#: ../ailurus/common/menu.py:141
 msgid "How to use github? Please read:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:158
+#: ../ailurus/common/menu.py:149
 msgid ""
 "Maintainer of this\n"
 "metadata page:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:161
+#: ../ailurus/common/menu.py:152
 msgid "Last modified:"
 msgstr ""
 
-#: ../ailurus/common/menu.py:164 ../ailurus/common/menu.py:173
+#: ../ailurus/common/menu.py:155 ../ailurus/common/menu.py:164
 msgid "Contributing to Ailurus"
 msgstr ""
 
-#: ../ailurus/common/menu.py:176
+#: ../ailurus/common/menu.py:167
 msgid "Ailurus blog"
 msgstr "Blog d'Ailurus"
 
-#: ../ailurus/common/menu.py:180
+#: ../ailurus/common/menu.py:171
 msgid "Check for updates"
 msgstr "Rechercher des mises à jour"
 
-#: ../ailurus/common/menu.py:186
+#: ../ailurus/common/menu.py:177
 msgid "Propose suggestion and report bugs"
 msgstr "Proposer des améliorations et reporter des anomalies"
 
-#: ../ailurus/common/menu.py:190
+#: ../ailurus/common/menu.py:181
 msgid "Translate this application"
 msgstr "Traduire cette application"
 
-#: ../ailurus/common/menu.py:194
+#: ../ailurus/common/menu.py:185
 msgid "Special thanks"
 msgstr "Remerciements"
 
-#: ../ailurus/common/menu.py:197
+#: ../ailurus/common/menu.py:188
 msgid "About"
 msgstr "À propos"
 
-#: ../ailurus/common/menu.py:200
+#: ../ailurus/common/menu.py:191
 msgid "Read changelog"
 msgstr "Lire le journal des modifications"
 
@@ -909,107 +896,107 @@ msgstr "Lire le journal des modifications"
 msgid "An eMule-like client for eD2k and Kademlia networks"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:35
+#: ../ailurus/common/native_apps.py:36
 msgid "AWN (Avant Window Navigator): A dock-like bar"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:43
+#: ../ailurus/common/native_apps.py:46
 msgid "Colorscheme designer"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:58
+#: ../ailurus/common/native_apps.py:62
 msgid "GNOME IDE for C/C++"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:63
+#: ../ailurus/common/native_apps.py:69
 msgid "Audacity: Music editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:73
+#: ../ailurus/common/native_apps.py:79
 msgid ""
 "\"auto-apt run ./configure\" can help you install the packages which are not "
 "installed."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:79
+#: ../ailurus/common/native_apps.py:85
 msgid "Autoconf and Automake: Generate configure scripts and Makefiles"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:89
+#: ../ailurus/common/native_apps.py:95
 msgid "Video editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:95
+#: ../ailurus/common/native_apps.py:103
 msgid "Media player and media manager"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:100
+#: ../ailurus/common/native_apps.py:109
 msgid "Bluefish: Edit HTML web-pages"
 msgstr "Bluefish: Édite les pages web HTML"
 
-#: ../ailurus/common/native_apps.py:109
+#: ../ailurus/common/native_apps.py:118
 msgid "Bluetooth support"
 msgstr "Prise en charge Bluetooth"
 
-#: ../ailurus/common/native_apps.py:120
+#: ../ailurus/common/native_apps.py:129
 msgid "Boost library"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:130
+#: ../ailurus/common/native_apps.py:139
 msgid "Real time strategy game, just like Red Alarm"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:135
+#: ../ailurus/common/native_apps.py:145
 msgid "Breathe Icon Theme"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:136
+#: ../ailurus/common/native_apps.py:146
 msgid "Mix KDE's \"Oxygen\" icons with Ubuntu's \"Human\" theme."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:142
+#: ../ailurus/common/native_apps.py:152
 msgid "By installing build-essential, you will get g++, make, gdb and libc."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:151
+#: ../ailurus/common/native_apps.py:161
 msgid "ChmSee: A CHM file viewer"
 msgstr "ChmSee : Un lecteur de fichier CHM"
 
-#: ../ailurus/common/native_apps.py:161
+#: ../ailurus/common/native_apps.py:171
 msgid "Checkinstall help you build deb package."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:167
+#: ../ailurus/common/native_apps.py:177
 msgid "Cheese"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:168
+#: ../ailurus/common/native_apps.py:178
 msgid ""
 "Take pictures and videos from your webcam, also provides some graphical "
 "effects"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:173
+#: ../ailurus/common/native_apps.py:184
 msgid "ChildsPlay: A suite of educational games for children"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:194
+#: ../ailurus/common/native_apps.py:205
 msgid "Lightweight email client"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:199
+#: ../ailurus/common/native_apps.py:211
 msgid "Code::Blocks - C/C++ IDE"
 msgstr "Code::Blocks - Environnement de développement intégré C/C++"
 
-#: ../ailurus/common/native_apps.py:209
+#: ../ailurus/common/native_apps.py:221
 msgid "Customizable image viewer specifically designed to handle comic books"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:214
+#: ../ailurus/common/native_apps.py:227
 msgid "Compiz settings manager"
 msgstr "Gestionnaire de configuration de Compiz"
 
-#: ../ailurus/common/native_apps.py:215
+#: ../ailurus/common/native_apps.py:228
 msgid ""
 "Compiz Fusion is the unification of the Beryl project and the community "
 "around the Compiz Window Manager. Compiz settings manager is the "
@@ -1017,61 +1004,61 @@ msgid ""
 "as \"Desktop cube\" and \"3D windows\"."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:224
+#: ../ailurus/common/native_apps.py:239
 msgid "Simple-ccsm: A simple Compiz settings manager"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:231
+#: ../ailurus/common/native_apps.py:249
 msgid "Ctags and Cscope: Popular source code parsers"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:241 ../ailurus/common/native_apps.py:1039
+#: ../ailurus/common/native_apps.py:259 ../ailurus/common/native_apps.py:1108
 msgid "Lightweight bittorrent client"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:247
+#: ../ailurus/common/native_apps.py:266
 msgid "Browse GNOME/GTK API documentation"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:253
+#: ../ailurus/common/native_apps.py:274
 msgid "Open source substitution for Visio"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:259
+#: ../ailurus/common/native_apps.py:281
 msgid "Edit tags for MP3, FLAC, Ogg files"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:264
+#: ../ailurus/common/native_apps.py:287
 msgid "Emacs: Advanced text editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:274
+#: ../ailurus/common/native_apps.py:297
 msgid "MSN Messenger client, with a simpler interface and a nicer look"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:280
+#: ../ailurus/common/native_apps.py:304
 msgid "Messaging program which supports many protocols"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:285
+#: ../ailurus/common/native_apps.py:310
 msgid "Compression/decompression support for \"*.7z\" and \"*.cab\" files"
 msgstr ""
 "Prise en charge de la compression/décompression des fichiers \"*7z\" et "
 "\"*.cab\""
 
-#: ../ailurus/common/native_apps.py:292
+#: ../ailurus/common/native_apps.py:317
 msgid "Make Evince be able to reveal Chinese, Japanese, Korean pdf"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:301
+#: ../ailurus/common/native_apps.py:326
 msgid "Email client, calendar, contact manager and address manager"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:306
+#: ../ailurus/common/native_apps.py:332
 msgid "Extcalc: A multifunctional graphic calculator"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:315
+#: ../ailurus/common/native_apps.py:341
 msgid ""
 "This is a popular Chinese input method.\n"
 "It is from http://fcitx.googlecode.com/"
@@ -1079,146 +1066,146 @@ msgstr ""
 "C'est une méthode de saisie du chinois très populaire.\n"
 "C'est de http://fcitx.googlecode.com/"
 
-#: ../ailurus/common/native_apps.py:326
+#: ../ailurus/common/native_apps.py:352
 msgid "FTP client"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:331
+#: ../ailurus/common/native_apps.py:358
 msgid "Firestarter: Configure Linux firewall"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:332
+#: ../ailurus/common/native_apps.py:359
 msgid ""
 "Linux system comes up with a firewall \"iptables\". Firestarter is the "
 "graphical frontend of \"iptables\"."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:340
+#: ../ailurus/common/native_apps.py:367
 msgid "FreeDOOM: Open source clone of DOOM"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:345
+#: ../ailurus/common/native_apps.py:373
 msgid "OpenGL library"
 msgstr "Librairie OpenGL"
 
-#: ../ailurus/common/native_apps.py:346
+#: ../ailurus/common/native_apps.py:374
 msgid "This is a library for writing OpenGL programs."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:386
+#: ../ailurus/common/native_apps.py:414
 msgid "Clone of the popular \"Puzzle Bobble\" game"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:391
+#: ../ailurus/common/native_apps.py:420
 msgid "GCompris: Educational games for children aged 2 to 10"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:408
+#: ../ailurus/common/native_apps.py:437
 msgid "Manage your collections such as movies, books, music"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:414
+#: ../ailurus/common/native_apps.py:444
 msgid "Open source substitution for Photoshop"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:419
+#: ../ailurus/common/native_apps.py:450
 msgid "GNU multiprecision arithmetic library"
 msgstr "Librairie GNU de multiprécison arithmétique"
 
-#: ../ailurus/common/native_apps.py:429
+#: ../ailurus/common/native_apps.py:460
 msgid "A set of icons with 7 color variations"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:435
+#: ../ailurus/common/native_apps.py:467
 msgid "Desktop launcher, which helps you quickly perform actions"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:441
+#: ../ailurus/common/native_apps.py:474
 msgid "Experience GNOME 3 desktop"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:447
+#: ../ailurus/common/native_apps.py:481
 msgid "GTK frontend for MPlayer"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:453
+#: ../ailurus/common/native_apps.py:489
 msgid "Lightweight text editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:459
+#: ../ailurus/common/native_apps.py:497
 msgid "Hex editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:465
+#: ../ailurus/common/native_apps.py:504
 msgid ""
 "Automatically discover other people running Giver on the network, then send "
 "files to other people"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:471
+#: ../ailurus/common/native_apps.py:511
 msgid "Real time strategy game, just like Warcraft"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:477
+#: ../ailurus/common/native_apps.py:518
 msgid ""
 "Real time strategy game which focuses on strategy rather than on micro-"
 "management"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:482 ../ailurus/ubuntu/quick_setup.py:61
+#: ../ailurus/common/native_apps.py:524 ../ailurus/ubuntu/quick_setup.py:61
 #: ../ailurus/ubuntu/quick_setup.py:62
 msgid "Flash plugin for web browser"
 msgstr "Greffon Flash pour les navigateurs web"
 
-#: ../ailurus/common/native_apps.py:492
+#: ../ailurus/common/native_apps.py:534
 msgid "Mono-free alternative to Tomboy Notes"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:497 ../ailurus/common/native_apps.py:502
+#: ../ailurus/common/native_apps.py:540 ../ailurus/common/native_apps.py:546
 msgid "Google gadgets"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:497
+#: ../ailurus/common/native_apps.py:540
 msgid "(GTK version)"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:502
+#: ../ailurus/common/native_apps.py:546
 msgid "(QT version)"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:508
+#: ../ailurus/common/native_apps.py:553
 msgid "Microblogging client which supports Twitter and Facebook"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:513
+#: ../ailurus/common/native_apps.py:559
 msgid "lshw: List hardware information"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:514
+#: ../ailurus/common/native_apps.py:560
 msgid "A small application which displays detailed hardware information"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:524
+#: ../ailurus/common/native_apps.py:570
 msgid "Hedgehogs fight enemies with fantastic weapons"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:529
+#: ../ailurus/common/native_apps.py:576
 msgid "ImageMagick: Edit images"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:530
+#: ../ailurus/common/native_apps.py:577
 msgid "You can start it by /usr/bin/display"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:538
+#: ../ailurus/common/native_apps.py:585
 msgid "Inkscape: Design vector image. Open source substitution of CorelDraw."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:544
+#: ../ailurus/common/native_apps.py:591
 msgid "K3B: Create DVD/VCD"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:551
+#: ../ailurus/common/native_apps.py:598
 msgid ""
 "Kadu is an instant messenger, which is very popular in Poland.\n"
 "Command : yum install kadu"
@@ -1226,81 +1213,82 @@ msgstr ""
 "Kadu est une messagerie instantanée, très populaire en Pologne.\n"
 "Commande : sudo apt-get install kadu"
 
-#: ../ailurus/common/native_apps.py:564
+#: ../ailurus/common/native_apps.py:611
 msgid ""
 "Password manager which saves many different information e.g. user names and "
 "passwords in one single database."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:570
+#: ../ailurus/common/native_apps.py:618
 msgid "Upload photos to Flickr"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:576
+#: ../ailurus/common/native_apps.py:625
 msgid "Lightweight desktop launcher"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:582
+#: ../ailurus/common/native_apps.py:631
 msgid "Simple text editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:587
+#: ../ailurus/common/native_apps.py:638
 msgid "Liferea: a RSS feed reader"
 msgstr "Liferea : un agrégateur de flux RSS"
 
-#: ../ailurus/common/native_apps.py:588
+#: ../ailurus/common/native_apps.py:639
 msgid "This is a simple and easy used RSS feed reader."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:598
+#: ../ailurus/common/native_apps.py:649
 msgid "Connect to a central hub then share files and chat with other people."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:603
+#: ../ailurus/common/native_apps.py:655
 msgid "MACChanger: change MAC address"
 msgstr "MACChanger : change la MAC addresse"
 
-#: ../ailurus/common/native_apps.py:604
+#: ../ailurus/common/native_apps.py:656
 msgid ""
 "MACChanger is a utility for viewing/manipulating the MAC address of network "
 "interfaces."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:614
+#: ../ailurus/common/native_apps.py:666
 msgid "Lightweight web browser"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:619
+#: ../ailurus/common/native_apps.py:672
 msgid "Minicom and Kermit: Communication software for embedded MCU boards"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:627
+#: ../ailurus/common/native_apps.py:680
 msgid "Simple Youtube client"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:633
+#: ../ailurus/common/native_apps.py:686
 msgid "Video player"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:638 ../ailurus/ubuntu/quick_setup.py:60
+#: ../ailurus/common/native_apps.py:692 ../ailurus/ubuntu/quick_setup.py:60
 msgid "Moonlight: an open source implementation of Microsoft® Silverlight"
 msgstr "Moonlight : une implémentation open source de Microsoft® Silverlight"
 
-#: ../ailurus/common/native_apps.py:639
+#: ../ailurus/common/native_apps.py:693
 msgid ""
 "Moonlight provides Windows® media codecs. By this application, you can enjoy "
 "Windows® video/audio in webpages."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:649 ../ailurus/ubuntu/quick_setup.py:57
+#: ../ailurus/common/native_apps.py:704 ../ailurus/ubuntu/quick_setup.py:57
+#: ../unfree/for_fedora.py:250
 msgid "Multi-media codec"
 msgstr "Codec multimédia"
 
-#: ../ailurus/common/native_apps.py:657
+#: ../ailurus/common/native_apps.py:714
 msgid "\"Actions configuration\" entry"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:658
+#: ../ailurus/common/native_apps.py:715
 msgid ""
 "It allows the configuration of programs to be launched on files selected.\n"
 "<span color=\"red\">This entry is not in context menu. It is in \"System\"-"
@@ -1311,11 +1299,11 @@ msgstr ""
 "<span color=\"red\">Cette entrée n'est pas dans le menu contextuel. C'est "
 "dans le menu  \"System\"->\"Preferences\".</span>"
 
-#: ../ailurus/common/native_apps.py:669
+#: ../ailurus/common/native_apps.py:726
 msgid "\"Convert audio files\" entry"
 msgstr "Entrée \"Convertir les fichiers audio\""
 
-#: ../ailurus/common/native_apps.py:670
+#: ../ailurus/common/native_apps.py:727
 msgid ""
 "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files.\n"
 "These packages will also be installed: \n"
@@ -1325,21 +1313,21 @@ msgstr ""
 "Ces paquets seront aussi installés: \n"
 "<i>lame libid3-3.8.3-dev flac faac faad mppenc</i>"
 
-#: ../ailurus/common/native_apps.py:685
+#: ../ailurus/common/native_apps.py:743
 msgid "\"Repair filename\" entry"
 msgstr "\"Correction du nom de fichier\" entrée"
 
-#: ../ailurus/common/native_apps.py:686
+#: ../ailurus/common/native_apps.py:744
 msgid ""
 "When any file with wrong encoding filename is right clicked,\n"
 " show a \"Repair filename\" menu item."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:694
+#: ../ailurus/common/native_apps.py:752
 msgid "\"Open as administrator\" entry"
 msgstr "Entrée \"Ouvrir en tant qu'administrateur\""
 
-#: ../ailurus/common/native_apps.py:695
+#: ../ailurus/common/native_apps.py:753
 msgid ""
 "Launch selected files with administration privileges using the context "
 "menu.\n"
@@ -1349,53 +1337,53 @@ msgstr ""
 "utilisant le menu contextuel.\n"
 "Ouvrir le répertoire sélectionné avec les privilèges administrateur."
 
-#: ../ailurus/common/native_apps.py:703
+#: ../ailurus/common/native_apps.py:763
 msgid "\"Resize/Rotate images\" entries"
 msgstr "Entrées \"Pivoter/Redimensionner les images\""
 
-#: ../ailurus/common/native_apps.py:704
+#: ../ailurus/common/native_apps.py:764
 msgid "Resize or rotate selected images."
 msgstr "Redimensionner ou pivoter les images"
 
-#: ../ailurus/common/native_apps.py:714
+#: ../ailurus/common/native_apps.py:774
 msgid "\"Open in terminal\" entry"
 msgstr "Entrée \"Ouvrir dans un termial\""
 
-#: ../ailurus/common/native_apps.py:715
+#: ../ailurus/common/native_apps.py:775
 msgid "Open a terminal in current folder."
 msgstr "Ouvrir un terminal dans le dossier sélectionné"
 
-#: ../ailurus/common/native_apps.py:725 ../ailurus/common/native_apps.py:726
+#: ../ailurus/common/native_apps.py:785 ../ailurus/common/native_apps.py:786
 msgid "\"Subversion commands\" entries"
 msgstr "Entrées \"Commandes subversion\""
 
-#: ../ailurus/common/native_apps.py:739
+#: ../ailurus/common/native_apps.py:799
 msgid "\"Search files\" entries"
 msgstr "Entrée \"Chercher fichiers\""
 
-#: ../ailurus/common/native_apps.py:747
+#: ../ailurus/common/native_apps.py:807
 msgid "\"Share folders\" entry"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:748
+#: ../ailurus/common/native_apps.py:808
 msgid "Share folders by Samba."
 msgstr "Partager des dossiers avec Samba"
 
-#: ../ailurus/common/native_apps.py:756 ../ailurus/common/native_apps.py:757
+#: ../ailurus/common/native_apps.py:816 ../ailurus/common/native_apps.py:817
 msgid "\"Set as wallpaper\" entry"
 msgstr "Entrée \"Choisir comme fond d'écran\""
 
-#: ../ailurus/common/native_apps.py:765
+#: ../ailurus/common/native_apps.py:825
 msgid "Ncurses5 and QT3"
 msgstr "Ncurses5 et QT3"
 
-#: ../ailurus/common/native_apps.py:766
+#: ../ailurus/common/native_apps.py:826
 msgid ""
 "libncurses5 is a library controlling writing to the console screen.\n"
 "libqt3-mt is Trolltech Qt library, version 3."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:778
+#: ../ailurus/common/native_apps.py:838
 msgid ""
 "It is an open source IDE which supports several languages (C, C++, Java, "
 "Ruby, etc.) and frameworks (J2SE, J2ME, etc.). Official site: "
@@ -1405,97 +1393,97 @@ msgstr ""
 "languages (C, C++, Java, Ruby, etc.) et des espaces de travail (frameworks) "
 "tels que J2SE,J2ME, etc. Site officiel: http://netbeans.org/downloads/ ."
 
-#: ../ailurus/common/native_apps.py:791
+#: ../ailurus/common/native_apps.py:851
 msgid "3D first-person shooter game"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:796
+#: ../ailurus/common/native_apps.py:857
 msgid "Octave: A Matlab® compatible numerical computation appliation"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:806
+#: ../ailurus/common/native_apps.py:867
 msgid "Non-linear video editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:811
+#: ../ailurus/common/native_apps.py:872
 msgid "POSIX library manual pages"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:812
+#: ../ailurus/common/native_apps.py:873
 msgid ""
 "Install manual pages about Linux system calls, library calls, and POSIX "
 "libraries."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:819
+#: ../ailurus/common/native_apps.py:880
 msgid "Parcellite: clipboard manager"
 msgstr "Parcellite : gestionnaire de presse-papier"
 
-#: ../ailurus/common/native_apps.py:820
+#: ../ailurus/common/native_apps.py:881
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr ""
 "C'est un presse-papiers puissant. Il peut conserver 25 chaines en même temps."
 
-#: ../ailurus/common/native_apps.py:829
+#: ../ailurus/common/native_apps.py:890
 msgid "PiTiVi: Movie editor"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:844
+#: ../ailurus/common/native_apps.py:906
 msgid "Powertop helps you save power for your laptop."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:853
+#: ../ailurus/common/native_apps.py:915
 msgid "QCad: A CAD software which supports DXF-format"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:863
+#: ../ailurus/common/native_apps.py:925
 msgid "This is an IDE for Qt."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:873
+#: ../ailurus/common/native_apps.py:935
 msgid ""
 "QNapi is unofficial free clone of NAPI-PROJEKT program. Its purpose is to "
 "find and download subtitles for given video file. Currently only Polish "
 "subtitles are available."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:883
+#: ../ailurus/common/native_apps.py:945
 msgid "QtiPlot: The equivalence of \"Origin\" plotting application in Linux"
 msgstr "QtiPlot: un équivalent à \"Origin\" pour réaliser des graphiques"
 
-#: ../ailurus/common/native_apps.py:884
+#: ../ailurus/common/native_apps.py:946
 msgid ""
 "It is the indispensable plotting application for writing Physics experiments "
 "reports."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:894
+#: ../ailurus/common/native_apps.py:956
 msgid "Lightweight messaging program"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:899
+#: ../ailurus/common/native_apps.py:962
 msgid "R language (basic development environment)"
 msgstr "Langage R (Environnement de développement basique)"
 
-#: ../ailurus/common/native_apps.py:900 ../ailurus/common/native_apps.py:909
+#: ../ailurus/common/native_apps.py:963 ../ailurus/common/native_apps.py:972
 msgid ""
 "A powerful statistical computation language and a graphics system.\n"
 "If you want to use the latest version of R language, please read "
 "http://cran.r-project.org/"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:908
+#: ../ailurus/common/native_apps.py:971
 msgid "R language (full development environment and all plugins)"
 msgstr ""
 "Langage (environnement de développement complet et tout les greffons)"
 
-#: ../ailurus/common/native_apps.py:923
+#: ../ailurus/common/native_apps.py:986
 msgid "SDL library"
 msgstr "Librairie SDL"
 
-#: ../ailurus/common/native_apps.py:924
+#: ../ailurus/common/native_apps.py:987
 msgid ""
 "This is a library for writing SDL programs.\n"
 "SDL is a cross-platform multimedia library designed to provide low level "
@@ -1503,52 +1491,52 @@ msgid ""
 "video framebuffer."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:936
+#: ../ailurus/common/native_apps.py:999
 msgid "Qt frontend for MPlayer"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:941
+#: ../ailurus/common/native_apps.py:1005
 msgid "Med-bio: A lot of micro-biology software"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:942
+#: ../ailurus/common/native_apps.py:1006
 msgid ""
 "A lot of software for molecular biology, structural biology and "
 "bioinformatics."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:949
+#: ../ailurus/common/native_apps.py:1013
 msgid "Screenlets: Add eye candy gadgets on desktop"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:950
+#: ../ailurus/common/native_apps.py:1014
 msgid ""
 "Screenlets is able to add eye candy gadgets on desktop, such as sticky "
 "notes, clocks, weather forecasts, calendars and so on, in order to decorate "
 "the desktop."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:960
+#: ../ailurus/common/native_apps.py:1024
 msgid "Professional typesetting software"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:966
+#: ../ailurus/common/native_apps.py:1031
 msgid "Hybrid theme which is designed to be fast and stable"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:972
+#: ../ailurus/common/native_apps.py:1037
 msgid "Make screenshots"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:978
+#: ../ailurus/common/native_apps.py:1044
 msgid "Lightweight music player"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:983 ../ailurus/ubuntu/quick_setup.py:59
+#: ../ailurus/common/native_apps.py:1050 ../ailurus/ubuntu/quick_setup.py:59
 msgid "Stardict"
 msgstr "Stardict"
 
-#: ../ailurus/common/native_apps.py:987
+#: ../ailurus/common/native_apps.py:1054
 msgid ""
 "You can install these dictionaries by yum.\n"
 "stardict-dic-cs_CZ: Czech dictionaries\n"
@@ -1560,66 +1548,66 @@ msgid ""
 "stardict-dic-zh_TW: Traditional Chinese dictionaries"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1000
+#: ../ailurus/common/native_apps.py:1067
 msgid "Startup Manager: Change GRUB settings and themes"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1001
+#: ../ailurus/common/native_apps.py:1068
 msgid "Startup manager helps you change GRUB settings and themes."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1008
+#: ../ailurus/common/native_apps.py:1075
 msgid "Subversion, Git and Bzr: Popular version control systems"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1018
+#: ../ailurus/common/native_apps.py:1085
 msgid ""
 "Create a file \"example.tex\", then compile it by \"xelatex example.tex\"."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1026
+#: ../ailurus/common/native_apps.py:1093
 msgid "The Mana World"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1027
+#: ../ailurus/common/native_apps.py:1094
 msgid "2D MMORPG"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1033
+#: ../ailurus/common/native_apps.py:1101
 msgid "Email client and RSS reader"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1044
+#: ../ailurus/common/native_apps.py:1114
 msgid "Tux Paint: A drawing program for young children three years and up"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1054
+#: ../ailurus/common/native_apps.py:1124
 msgid "Typespeed is a typing practise. It only runs in terminal."
 msgstr ""
 "Typespeed permet l'apprentissage dactylographique. Il ne fonctionne que dans "
 "un terminal."
 
-#: ../ailurus/common/native_apps.py:1063
+#: ../ailurus/common/native_apps.py:1133
 msgid "Ubuntu Studio Theme"
 msgstr "Thème Ubuntu Studio"
 
-#: ../ailurus/common/native_apps.py:1070
+#: ../ailurus/common/native_apps.py:1140
 msgid "Umbrello: UML modelling"
 msgstr "Umbrello: modélisation UML"
 
-#: ../ailurus/common/native_apps.py:1071
+#: ../ailurus/common/native_apps.py:1141
 msgid "Umbrello help you do UML modelling."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1088
+#: ../ailurus/common/native_apps.py:1158
 msgid "Media player and media format converter"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1093
+#: ../ailurus/common/native_apps.py:1164 ../unfree/for_fedora.py:356
 msgid "VirtualBox open source edition"
 msgstr "Édition libre de VirtualBox"
 
-#: ../ailurus/common/native_apps.py:1094
+#: ../ailurus/common/native_apps.py:1165 ../unfree/for_fedora.py:339
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -1629,67 +1617,67 @@ msgstr ""
 "http://www.virtualbox.org/wiki/Downloads"
 
 #. Latest Vuze is in 9.10 repository.
-#: ../ailurus/common/native_apps.py:1104
+#: ../ailurus/common/native_apps.py:1177
 msgid "Vuze: Download via bittorrent; Search videos"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1113
+#: ../ailurus/common/native_apps.py:1186
 msgid "WINE"
 msgstr "WINE"
 
-#: ../ailurus/common/native_apps.py:1114
+#: ../ailurus/common/native_apps.py:1187
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1128
+#: ../ailurus/common/native_apps.py:1201
 msgid "3D first-person shooter game, just like DOOM"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1134
+#: ../ailurus/common/native_apps.py:1207
 msgid "Real time strategy game"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1139
+#: ../ailurus/common/native_apps.py:1214
 msgid "Battle for Wesnoth"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1140
+#: ../ailurus/common/native_apps.py:1215
 msgid "A popular turn-based game"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1149
+#: ../ailurus/common/native_apps.py:1226
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1157 ../ailurus/ubuntu/apps.py:63
+#: ../ailurus/common/native_apps.py:1234 ../ailurus/ubuntu/apps.py:63
 msgid "World of Padman: Funny shooter game"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1158 ../ailurus/ubuntu/apps.py:64
+#: ../ailurus/common/native_apps.py:1235 ../ailurus/ubuntu/apps.py:64
 msgid ""
 "Ailurus will install the game, and apply the latest patch.\n"
 "Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1167
+#: ../ailurus/common/native_apps.py:1244
 msgid "Funny fight game on 2D maps"
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1172
+#: ../ailurus/common/native_apps.py:1251
 msgid "Zhcon"
 msgstr "Zhcon"
 
-#: ../ailurus/common/native_apps.py:1173
+#: ../ailurus/common/native_apps.py:1252
 msgid ""
 "Zhcon helps you display Chinese characters in TTY terminal.\n"
 "You can launch it by \"zhcon --utf8\"."
 msgstr ""
 
-#: ../ailurus/common/native_apps.py:1183
+#: ../ailurus/common/native_apps.py:1264
 msgid "Notebook software which helps you create a wiki to your desktop"
 msgstr ""
 
@@ -3974,127 +3962,127 @@ msgstr ""
 msgid "Tri-licensed under %(A)s, %(B)s and %(C)s"
 msgstr ""
 
-#: ../ailurus/lib.py:711 ../ailurus/lib.py:807
+#: ../ailurus/lib.py:683 ../ailurus/lib.py:779
 msgid "Installing packages:"
 msgstr "Installation des paquets :"
 
-#: ../ailurus/lib.py:721 ../ailurus/lib.py:824
+#: ../ailurus/lib.py:693 ../ailurus/lib.py:796
 msgid "Removing packages:"
 msgstr "Suppression des paquets :"
 
 #. (c) 2005-2007 Canonical, GPL
-#: ../ailurus/lib.py:732 ../ailurus/ubuntu/fastest_mirror_pane.py:251
+#: ../ailurus/lib.py:704 ../ailurus/ubuntu/fastest_mirror_pane.py:251
 #: ../ailurus/ubuntu/quick_setup.py:331
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "Exécuter \"apt-get update\". Veuillez patienter quelques minutes."
 
-#: ../ailurus/lib.py:834
+#: ../ailurus/lib.py:806
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
 msgstr ""
 
-#: ../ailurus/lib.py:859
+#: ../ailurus/lib.py:831
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f Gio"
 
-#: ../ailurus/lib.py:861
+#: ../ailurus/lib.py:833
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f Mio"
 
-#: ../ailurus/lib.py:863
+#: ../ailurus/lib.py:835
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f Kio"
 
-#: ../ailurus/lib.py:864
+#: ../ailurus/lib.py:836
 #, python-format
 msgid "%s bytes"
 msgstr "%s octets"
 
-#: ../ailurus/lib.py:872
+#: ../ailurus/lib.py:844
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f heures"
 
-#: ../ailurus/lib.py:874
+#: ../ailurus/lib.py:846
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f minutes"
 
-#: ../ailurus/lib.py:875
+#: ../ailurus/lib.py:847
 #, python-format
 msgid "%d seconds"
 msgstr "%d secondes"
 
-#: ../ailurus/lib.py:1121 ../ailurus/lib.py:1126
+#: ../ailurus/lib.py:1092 ../ailurus/lib.py:1097
 msgid "Opening web page"
 msgstr "Ouverture de la page web"
 
-#: ../ailurus/lib.py:1258
+#: ../ailurus/lib.py:1229
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "Temps de réponse du serveur %(name)s est %(time).1f ms."
 
-#: ../ailurus/lib.py:1260
+#: ../ailurus/lib.py:1231
 #, python-format
 msgid "Server %s does not respond."
 msgstr "Le serveur %s ne répond pas."
 
-#: ../ailurus/lib.py:1347
+#: ../ailurus/lib.py:1318
 msgid "Checking file integrity ..."
 msgstr "Vérification de l'intégrité du fichier ..."
 
-#: ../ailurus/lib.py:1351
+#: ../ailurus/lib.py:1322
 msgid "Good."
 msgstr "Bon."
 
-#: ../ailurus/lib.py:1358
+#: ../ailurus/lib.py:1329
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr "Utilisant le miroir %(i)s. il y a un totale de %(total)s miroirs"
 
-#: ../ailurus/lib.py:1504
+#: ../ailurus/lib.py:1475
 msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 msgstr ""
 
-#: ../ailurus/lib.py:1523
+#: ../ailurus/lib.py:1494
 msgid "GNU General Public License"
 msgstr ""
 
-#: ../ailurus/lib.py:1524
+#: ../ailurus/lib.py:1495
 msgid "GNU Lesser General Public License"
 msgstr ""
 
-#: ../ailurus/lib.py:1525
+#: ../ailurus/lib.py:1496
 msgid "Eclipse Public License"
 msgstr ""
 
-#: ../ailurus/lib.py:1526
+#: ../ailurus/lib.py:1497
 msgid "Mozilla Public License"
 msgstr ""
 
-#: ../ailurus/lib.py:1527
+#: ../ailurus/lib.py:1498
 msgid "Berkeley Software Distribution License"
 msgstr ""
 
-#: ../ailurus/lib.py:1528
+#: ../ailurus/lib.py:1499
 msgid "MIT License"
 msgstr ""
 
-#: ../ailurus/lib.py:1529
+#: ../ailurus/lib.py:1500
 msgid "Common Development and Distribution License"
 msgstr ""
 
-#: ../ailurus/lib.py:1530
+#: ../ailurus/lib.py:1501
 msgid "Aptana Public License"
 msgstr ""
 
-#: ../ailurus/lib.py:1531
+#: ../ailurus/lib.py:1502
 msgid "Artistic License"
 msgstr ""
 
-#: ../ailurus/lib.py:1574
+#: ../ailurus/lib.py:1536
 msgid "Your Linux distribution is not supported. :("
 msgstr ""
 
@@ -4216,11 +4204,11 @@ msgstr ""
 msgid "Do not query me any more."
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:82
+#: ../ailurus/support/checkupdate.py:83
 msgid "A new version is available"
 msgstr "Une nouvelle version est disponible"
 
-#: ../ailurus/support/checkupdate.py:83
+#: ../ailurus/support/checkupdate.py:84
 #, python-format
 msgid ""
 "Version %s is released.\n"
@@ -4229,27 +4217,27 @@ msgstr ""
 "La version %s est sortie.\n"
 "Vous pouvez la téléchargée là :"
 
-#: ../ailurus/support/checkupdate.py:90
+#: ../ailurus/support/checkupdate.py:91
 msgid "Check update"
 msgstr "Vérifier la disponibilité de mises à jour"
 
-#: ../ailurus/support/checkupdate.py:91
+#: ../ailurus/support/checkupdate.py:92
 msgid "You have already installed the latest Ailurus version. :)"
 msgstr "Vous avez déjà la dernière version de Ailurus. :)"
 
-#: ../ailurus/support/checkupdate.py:112
+#: ../ailurus/support/checkupdate.py:113
 msgid "Project homepage"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:115
+#: ../ailurus/support/checkupdate.py:116
 msgid "Developers:"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:121
+#: ../ailurus/support/checkupdate.py:122
 msgid "Contributors:"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:129
+#: ../ailurus/support/checkupdate.py:130
 msgid "translator-credits"
 msgstr ""
 "Launchpad Contributions:\n"
@@ -4269,7 +4257,7 @@ msgstr ""
 "  serre https://launchpad.net/~serre-f\n"
 "  ubuntosaure https://launchpad.net/~ubuntosaure"
 
-#: ../ailurus/support/checkupdate.py:135
+#: ../ailurus/support/checkupdate.py:136
 msgid ""
 "Copyright © 2007-2010,\n"
 "Trusted Digital Technology Laboratory,\n"
@@ -4279,77 +4267,77 @@ msgstr ""
 "Trusted Digital Technology Laboratory,\n"
 "Shanghai Jiao Tong University, China."
 
-#: ../ailurus/support/checkupdate.py:136
+#: ../ailurus/support/checkupdate.py:137
 msgid "Copyright © 2009-2010, Ailurus Developers Team"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:214
+#: ../ailurus/support/checkupdate.py:215
 #, python-format
 msgid ""
 "\n"
 "This version is released at %s."
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:222
+#: ../ailurus/support/checkupdate.py:223
 msgid "We wish to express thankfulness to these projects:"
 msgstr "Nous voulons nous montrer reconnaissants envers ces projets :"
 
-#: ../ailurus/support/checkupdate.py:226
+#: ../ailurus/support/checkupdate.py:227
 msgid "We sincerely thank these people:"
 msgstr "Nous remercions sincèrement ces personnes :"
 
-#: ../ailurus/support/checkupdate.py:228
+#: ../ailurus/support/checkupdate.py:229
 msgid "The people who provide inspiration:"
 msgstr "Ces personnes nous ont inspirées :"
 
-#: ../ailurus/support/checkupdate.py:236
+#: ../ailurus/support/checkupdate.py:237
 msgid "The people who designs the logo:"
 msgstr "Les personnes qui ont créé le logo :"
 
-#: ../ailurus/support/checkupdate.py:239
+#: ../ailurus/support/checkupdate.py:240
 msgid "The people who maintain PPA repository:"
 msgstr "Personnes maintenant le dépôt PPA :"
 
-#: ../ailurus/support/checkupdate.py:242
+#: ../ailurus/support/checkupdate.py:243
 msgid "The people who provide a lot of Linux skills:"
 msgstr ""
 "Les personnes qui nous ont apportée de nombreuses compétences Linux :"
 
-#: ../ailurus/support/checkupdate.py:245
+#: ../ailurus/support/checkupdate.py:246
 msgid "The people who provide a lot of Debian packages:"
 msgstr ""
 "Les personnes qui nous ont fournie une grande quantité de paquets Debian :"
 
-#: ../ailurus/support/checkupdate.py:248
+#: ../ailurus/support/checkupdate.py:249
 msgid "The people who provide a lot of translation:"
 msgstr "Les personnes qui nous ont apportées de nombreuses traductions :"
 
-#: ../ailurus/support/checkupdate.py:250 ../ailurus/support/checkupdate.py:254
-#: ../ailurus/support/checkupdate.py:261
+#: ../ailurus/support/checkupdate.py:251 ../ailurus/support/checkupdate.py:255
+#: ../ailurus/support/checkupdate.py:262
 msgid "and many other people."
 msgstr "et beaucoup d'autres."
 
-#: ../ailurus/support/checkupdate.py:252
+#: ../ailurus/support/checkupdate.py:253
 msgid "The people who report bugs:"
 msgstr "Les personnes qui on rapporté des bugs :"
 
-#: ../ailurus/support/checkupdate.py:256
+#: ../ailurus/support/checkupdate.py:257
 msgid "The people who eliminate bugs:"
 msgstr "Les personnes qui ont éliminées les bugs"
 
-#: ../ailurus/support/checkupdate.py:259
+#: ../ailurus/support/checkupdate.py:260
 msgid "The people who publicize this software:"
 msgstr "Les personnes qui ont publiées ce logiciel"
 
-#: ../ailurus/support/checkupdate.py:263
+#: ../ailurus/support/checkupdate.py:264
 msgid "and the people not mensioned here."
 msgstr "et les personnes qui ne sont pas mentionnées ici."
 
-#: ../ailurus/support/checkupdate.py:274
+#: ../ailurus/support/checkupdate.py:275
 msgid "Thanks"
 msgstr "Remerciements"
 
-#: ../ailurus/support/checkupdate.py:286
+#: ../ailurus/support/checkupdate.py:287
 msgid "Ailurus changelog"
 msgstr "Journal des modifications d'Ailurus"
 
@@ -4761,6 +4749,14 @@ msgstr ""
 
 #: ../ailurus/ubuntu/cure.py:95
 msgid "Add \"export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'\" "
+msgstr ""
+
+#: ../ailurus/ubuntu/cure.py:116
+msgid "Show a random Linux skill after you log in to GNOME"
+msgstr "Afficher une astuce aléatoire après la connexion à GNOME"
+
+#: ../ailurus/ubuntu/cure.py:134
+msgid "Google Chrome can be upgraded."
 msgstr ""
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:32
@@ -5862,6 +5858,263 @@ msgstr ""
 "apt-cache show PACKAGE_NAME\n"
 "\n"
 
+#: ../unfree/for_fedora.py:65
+msgid "This repository provides flash-plugin and Adobe Reader."
+msgstr "Ce dépot fourni les greffon-flash et Adobe Reader."
+
+#: ../unfree/for_fedora.py:109
+msgid "RPM Fusion (Free)"
+msgstr "RPM Fusion (Libre)"
+
+#: ../unfree/for_fedora.py:111 ../unfree/for_fedora.py:140
+msgid ""
+"RPM Fusion provides software that not in the standard repositories.\n"
+"It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
+"repository."
+msgstr ""
+"RPM Fusion fournit des logiciels qui ne sont pas dans les dépôts standards.\n"
+"Il est possible que le dépôt \"ATrpms\" soit en conflit avec le dépôt \"RPM "
+"Fusion\"."
+
+#: ../unfree/for_fedora.py:138
+msgid "RPM Fusion (Non-Free)"
+msgstr "RPM Fusion (Non-Libre)"
+
+#: ../unfree/for_fedora.py:169
+msgid "This repository provides Picasa and Google Desktop."
+msgstr "Ce dépot fournit Picasa et Google Desktop"
+
+#: ../unfree/for_fedora.py:198
+msgid "This repository provides Google Chrome."
+msgstr "Ce dépot fournit Google Chrome"
+
+#: ../unfree/for_fedora.py:226
+msgid ""
+"This repository provides VirtualBox.\n"
+"Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
+msgstr ""
+"Ce répertoire fournit VirtualBox.\n"
+"Page web: http://www.virtualbox.org/wiki/Linux_Downloads"
+
+#: ../unfree/for_fedora.py:257
+msgid "Adobe® Flash plugin for web browser"
+msgstr "Greffon Adobe® Flash pour navigateur web"
+
+#: ../unfree/for_fedora.py:263
+msgid "Adobe® PDF Reader"
+msgstr "Lecteur PDF Adobe ®"
+
+#: ../unfree/for_fedora.py:264
+msgid "Official site: http://get.adobe.com/cn/reader/"
+msgstr "Site officiel: http://get.adobe.com/cn/reader/"
+
+#: ../unfree/for_fedora.py:290
+msgid ""
+"If you cannot play RMVB video, try this application!\n"
+"Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+"You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
+msgstr ""
+"Si vous ne pouvez lire de vidéo RMVB, essayez cette application !\n"
+"Site officiel : <span "
+"color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
+"Vous pouvez lancer RealPlayer par \"/opt/real/RealPlayer/realplay\"."
+
+#: ../unfree/for_fedora.py:305
+msgid "Google Chrome browser"
+msgstr "Navigateur Google Chrome"
+
+#: ../unfree/for_fedora.py:307
+msgid ""
+"This is the web browser from Google. \n"
+"You can change themes by opening web-page "
+"https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
+msgstr ""
+"C'est un navigateur web fait par google. \n"
+"Vous pouvez changer le thème en ouvrant la page web "
+"https://tools.google.com/chrome/intl/pt/themes/index.html dans Google Chrome."
+
+#: ../unfree/for_fedora.py:322
+msgid ""
+"\"google-chrome-beta\" is not installed. However, you have installed "
+"\"google-chrome-unstable\"."
+msgstr ""
+"\"google-chrome-beta\" n'est pas installé. Cependant, vous avez installé "
+"\"google-chrome-unstable\"."
+
+#: ../unfree/for_fedora.py:325 ../unfree/for_ubuntu.py:226
+msgid "Google Earth"
+msgstr ""
+
+#: ../unfree/for_fedora.py:326
+msgid ""
+"Please install it in /opt/google-earch. Otherwise it cannot be detected."
+msgstr ""
+
+#: ../unfree/for_fedora.py:348
+msgid ""
+"With Skype you can make free calls over the Internet to other people. "
+msgstr "Avec Skype vous pouvez faire des appels via internet. "
+
+#: ../unfree/for_fedora.py:364
+msgid "Open source web browser"
+msgstr "Navigateur Web Open source"
+
+#: ../unfree/for_ubuntu.py:30
+msgid "Alice: A new way to learn programming"
+msgstr "Alice: une nouvelle façon d'apprendre à programmer"
+
+#: ../unfree/for_ubuntu.py:32
+msgid ""
+"A storytelling application, especially appropriate for middle school "
+"students."
+msgstr ""
+"Une application qui lis des contes, spécialement approprié pour des "
+"étudiants de l'école moyenne."
+
+#: ../unfree/for_ubuntu.py:33
+msgid ""
+"Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
+msgstr ""
+"Site officiel : <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
+
+#: ../unfree/for_ubuntu.py:68
+msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
+msgstr "Alipay ( Zhi Fu Bao ) plugin de sécurité pour Firefox"
+
+#: ../unfree/for_ubuntu.py:69
+msgid ""
+"Official site: <span "
+"color='blue'><u>http://blog.alipay.com/301.html</u></span>"
+msgstr ""
+"Site officiel: <span "
+"color='blue'><u>http://blog.alipay.com/301.html</u></span>"
+
+#: ../unfree/for_ubuntu.py:106
+msgid ""
+"Drive a spaceship and battle against invaders! Collect money during the "
+"combat. Upgrade armaments and weapons. This is a full 3d style space shooter "
+"game. It supports mouse, keyboard and joystick control. Official site: "
+"http://www.viewizard.com/"
+msgstr ""
+"Conduisez un vaisseau et battez-vous contre les envahisseurs. Collectez de "
+"l'argent durant le combat. Améliorez armements et armes. C'est un jeu de tir "
+"en 3d complète. Il supporte la souris, le clavier et le joystick. Site "
+"officiel: http://www.viewizard.com/"
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:137
+msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
+msgstr "LaTeX Thesis Templates par l'Academie Chinoise des Sciences"
+
+#: ../unfree/for_ubuntu.py:139
+#, python-format
+msgid ""
+"After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
+msgstr ""
+"Après installation, un fichier \"CASthesis.zip\" sera présent dans le "
+"dossier \"%s\"."
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:151
+msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
+msgstr "LaTeX Thesis Templates par l'Université Xi'an Jiaotong, Chine"
+
+#: ../unfree/for_ubuntu.py:153
+#, python-format
+msgid ""
+"After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
+msgstr ""
+"Après installation, un fichier \"XJTUthesis.rar\" sera présent dans le "
+"dossier \"%s\"."
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:165
+msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
+msgstr "LaTeX Thesis Templates par l'Institut Harbin de Technology, Chine"
+
+#: ../unfree/for_ubuntu.py:167
+#, python-format
+msgid ""
+"After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
+msgstr ""
+"Après installation, un fichier \"HITthesis.rar\" sera présent dans le "
+"dossier \"%s\"."
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:178
+msgid "JavaScript Debugger: a powerful JavaScript debugger"
+msgstr "JavaScript Debugger: Un débuggeur JavaScript puissant"
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:190
+msgid "Mac OS X Theme"
+msgstr "Thème Mac OS X"
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:202
+msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
+msgstr ""
+"NetVideoHunter: Permet de télécharger des clips vidéo depuis les site de "
+"partage de vidéo"
+
+#. cannot find out which license it is released under
+#: ../unfree/for_ubuntu.py:214
+msgid "Personas: One-click changing Firefox skin"
+msgstr "Personas: Changer le thème de Firefox en un clic"
+
+#: ../unfree/for_ubuntu.py:217
+msgid "Theme your browser according to your mood, hobby or season."
+msgstr ""
+"Choisissez le thème de votre navigateur en fonction de votre humeur, passion "
+"ou de la saison."
+
+#: ../unfree/for_ubuntu.py:239 ../unfree/for_ubuntu.py:258
+msgid "video card driver"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:247 ../unfree/for_ubuntu.py:260
+msgid "Please click this link:"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:270
+msgid "Download from "
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:288
+msgid "Evermore Integrated Office 2009 free version"
+msgstr "De plus en plus intègré à la version gratuite de Office 2009"
+
+#: ../unfree/for_ubuntu.py:289
+msgid ""
+"It is able to edit text, spreadsheets, and slides. Official site: <span "
+"color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal"
+".jsp</u></span>"
+msgstr ""
+"Est capable d'éditer des textes, tableurs, et présentations. Site officiel: "
+"<span "
+"color=\"blue\"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal"
+".jsp</u></span>"
+
+#: ../unfree/for_ubuntu.py:301
+msgid "Install clipboard arts"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:302
+msgid "Install help files"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:303
+msgid "Install formulae editor"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:304
+msgid "Install templates"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:313
+msgid "Installing EIOffice"
+msgstr "Installation d'EIOffice"
+
 #~ msgid ""
 #~ "motto of Ubun-student\n"
 #~ "Give a man a fish and he can eat for a day; but if you teach him how to "
@@ -6170,9 +6423,6 @@ msgstr ""
 #~ msgid "Install multimedia codec"
 #~ msgstr "Installer les codecs multimédia"
 
-#~ msgid "Adobe® Flash plugin for web browser"
-#~ msgstr "Greffon Adobe® Flash pour navigateur web"
-
 #~ msgid ""
 #~ "Command: sudo apt-get install flashplugin-installer flashplugin-nonfree"
 #~ msgstr ""
@@ -6210,13 +6460,6 @@ msgstr ""
 #~ msgid "Useful applications for programming"
 #~ msgstr "Applications utiles pour le développement"
 
-#~ msgid ""
-#~ "Official site: <span "
-#~ "color='blue'><u>http://blog.alipay.com/301.html</u></span>"
-#~ msgstr ""
-#~ "Site officiel: <span "
-#~ "color='blue'><u>http://blog.alipay.com/301.html</u></span>"
-
 #~ msgid "GNOMEArtNG"
 #~ msgstr "GNOMEArtNG"
 
@@ -6237,14 +6480,6 @@ msgstr ""
 #~ "Site officiel : <span "
 #~ "color=\"blue\"><u>http://openjump.org/wiki/show/HomePage</u></span> ."
 
-#~ msgid "Alice: A new way to learn programming"
-#~ msgstr "Alice: une nouvelle façon d'apprendre à programmer"
-
-#~ msgid ""
-#~ "Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
-#~ msgstr ""
-#~ "Site officiel : <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
-
 #~ msgid ""
 #~ "If you cannot play RMVB video, try this application!\n"
 #~ "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>"
@@ -6261,12 +6496,6 @@ msgstr ""
 #~ msgstr ""
 #~ "<span color=\"red\">Ce module complémentaire ne fonctionne pas correctement "
 #~ "sous Firefox 3.0 :(</span>"
-
-#~ msgid "Mac OS X Theme"
-#~ msgstr "Thème Mac OS X"
-
-#~ msgid "Personas: One-click changing Firefox skin"
-#~ msgstr "Personas: Changer le thème de Firefox en un clic"
 
 #, python-format
 #~ msgid "The value of \"%(key)s\" is not \"%(value)s\"."
@@ -6334,35 +6563,12 @@ msgstr ""
 #~ msgid "TeXLive 2009"
 #~ msgstr "TeXLive 2009"
 
-#, python-format
-#~ msgid ""
-#~ "After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
-#~ msgstr ""
-#~ "Après installation, un fichier \"HITthesis.rar\" sera présent dans le "
-#~ "dossier \"%s\"."
-
-#, python-format
-#~ msgid ""
-#~ "After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
-#~ msgstr ""
-#~ "Après installation, un fichier \"CASthesis.zip\" sera présent dans le "
-#~ "dossier \"%s\"."
-
-#, python-format
-#~ msgid ""
-#~ "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
-#~ msgstr ""
-#~ "Après installation, un fichier \"XJTUthesis.rar\" sera présent dans le "
-#~ "dossier \"%s\"."
-
-#~ msgid "Theme your browser according to your mood, hobby or season."
-#~ msgstr ""
-#~ "Choisissez le thème de votre navigateur en fonction de votre humeur, passion "
-#~ "ou de la saison."
-
 #~ msgid ""
 #~ "Your changes will take effect at the next time when the program starts up."
 #~ msgstr "Vos changements prendront effet au prochain démarrage du programme."
+
+#~ msgid "Preferences changed"
+#~ msgstr "Les préférences ont été changées"
 
 #~ msgid "Wallpaper:"
 #~ msgstr "Fond d'écran :"
@@ -6441,27 +6647,6 @@ msgstr ""
 #~ msgid "Eclipse (basic development environment + J2EE)"
 #~ msgstr "Eclipse (Environnement de développement basique + J2EE"
 
-#~ msgid ""
-#~ "A storytelling application, especially appropriate for middle school "
-#~ "students."
-#~ msgstr ""
-#~ "Une application qui lis des contes, spécialement approprié pour des "
-#~ "étudiants de l'école moyenne."
-
-#~ msgid ""
-#~ "Drive a spaceship and battle against invaders! Collect money during the "
-#~ "combat. Upgrade armaments and weapons. This is a full 3d style space shooter "
-#~ "game. It supports mouse, keyboard and joystick control. Official site: "
-#~ "http://www.viewizard.com/"
-#~ msgstr ""
-#~ "Conduisez un vaisseau et battez-vous contre les envahisseurs. Collectez de "
-#~ "l'argent durant le combat. Améliorez armements et armes. C'est un jeu de tir "
-#~ "en 3d complète. Il supporte la souris, le clavier et le joystick. Site "
-#~ "officiel: http://www.viewizard.com/"
-
-#~ msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-#~ msgstr "Alipay ( Zhi Fu Bao ) plugin de sécurité pour Firefox"
-
 #~ msgid "Create a directory \"Desktop\" in your home folder"
 #~ msgstr "Créer un dossier \"Bureau\" dans votre répertoire racine"
 
@@ -6508,9 +6693,6 @@ msgstr ""
 #~ msgid "TeXLive will not work until you restart the computer."
 #~ msgstr "TeXLive ne fonctionnera pas avant un redémarrage de l'ordinateur."
 
-#~ msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
-#~ msgstr "LaTeX Thesis Templates par l'Université Xi'an Jiaotong, Chine"
-
 #~ msgid "Unpacking ... Please wait for a few minutes."
 #~ msgstr "Déballage.. Patientez quelques minutes s'il vous plaît."
 
@@ -6520,12 +6702,6 @@ msgstr ""
 #~ msgid "Download via bittorrent + Search videos + Play videos"
 #~ msgstr "Rechercher via bittorrent + rechercher des vidéos + lire des vidéos"
 
-#~ msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
-#~ msgstr "LaTeX Thesis Templates par l'Academie Chinoise des Sciences"
-
-#~ msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
-#~ msgstr "LaTeX Thesis Templates par l'Institut Harbin de Technology, Chine"
-
 #~ msgid "Keep track of ongoing and completed downloads in a tiny statusbar."
 #~ msgstr ""
 #~ "Garder une trace des téléchargement en cours et terminé dans une petit barre "
@@ -6533,14 +6709,6 @@ msgstr ""
 
 #~ msgid "Proxy management depending on a third party list."
 #~ msgstr "La gestion du proxy dépend d'une liste tierce."
-
-#~ msgid "JavaScript Debugger: a powerful JavaScript debugger"
-#~ msgstr "JavaScript Debugger: Un débuggeur JavaScript puissant"
-
-#~ msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
-#~ msgstr ""
-#~ "NetVideoHunter: Permet de télécharger des clips vidéo depuis les site de "
-#~ "partage de vidéo"
 
 #~ msgid ""
 #~ "Copyright © 2007-2010, Trusted Digital Technology Lab., Shanghai Jiao Tong "
@@ -6565,28 +6733,8 @@ msgstr ""
 #~ msgid "Make Evince be able to reveal Chinese pdf"
 #~ msgstr "Permet à Evince d'afficher les fichiers pdf Chinois"
 
-#~ msgid "This repository provides flash-plugin and Adobe Reader."
-#~ msgstr "Ce dépot fourni les greffon-flash et Adobe Reader."
-
-#~ msgid ""
-#~ "With Skype you can make free calls over the Internet to other people. "
-#~ msgstr "Avec Skype vous pouvez faire des appels via internet. "
-
 #~ msgid "Adobe native 64bit Flash plugin for Firefox"
 #~ msgstr "Greffon Adobe Flash natif 64bits pour Firefox"
-
-#~ msgid "This repository provides Picasa and Google Desktop."
-#~ msgstr "Ce dépot fournit Picasa et Google Desktop"
-
-#~ msgid ""
-#~ "This repository provides VirtualBox.\n"
-#~ "Webpage: http://www.virtualbox.org/wiki/Linux_Downloads"
-#~ msgstr ""
-#~ "Ce répertoire fournit VirtualBox.\n"
-#~ "Page web: http://www.virtualbox.org/wiki/Linux_Downloads"
-
-#~ msgid "This repository provides Google Chrome."
-#~ msgstr "Ce dépot fournit Google Chrome"
 
 #~ msgid "Desktop content will be displayed at the next time GNOME starts up."
 #~ msgstr "Le contenu du bureau apparaîtra au prochain démarrage. de GNOME"
@@ -6934,12 +7082,6 @@ msgstr ""
 #~ msgid "Command: yum install cups-pdf"
 #~ msgstr "Commande: sudo apt-get install cups-pdf"
 
-#~ msgid "Adobe® PDF Reader"
-#~ msgstr "Lecteur PDF Adobe ®"
-
-#~ msgid "Official site: http://get.adobe.com/cn/reader/"
-#~ msgstr "Site officiel: http://get.adobe.com/cn/reader/"
-
 #~ msgid "Enable \"Print to pdf\" capability."
 #~ msgstr "Active l'option \"Imprimer vers pdf\""
 
@@ -6949,31 +7091,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Une application de calcul numérique compatible avec MatLab®.\n"
 #~ "Commande: sudo apt-get install qtoctave"
-
-#~ msgid ""
-#~ "\"google-chrome-beta\" is not installed. However, you have installed "
-#~ "\"google-chrome-unstable\"."
-#~ msgstr ""
-#~ "\"google-chrome-beta\" n'est pas installé. Cependant, vous avez installé "
-#~ "\"google-chrome-unstable\"."
-
-#~ msgid ""
-#~ "This is the web browser from Google. \n"
-#~ "You can change themes by opening web-page "
-#~ "https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
-#~ msgstr ""
-#~ "C'est un navigateur web fait par google. \n"
-#~ "Vous pouvez changer le thème en ouvrant la page web "
-#~ "https://tools.google.com/chrome/intl/pt/themes/index.html dans Google Chrome."
-
-#~ msgid "Google Chrome browser"
-#~ msgstr "Navigateur Google Chrome"
-
-#~ msgid "RPM Fusion (Free)"
-#~ msgstr "RPM Fusion (Libre)"
-
-#~ msgid "RPM Fusion (Non-Free)"
-#~ msgstr "RPM Fusion (Non-Libre)"
 
 #~ msgid ""
 #~ "Command: sudo apt-get install rar unrar p7zip p7zip-rar p7zip-full "
@@ -7288,16 +7405,6 @@ msgstr ""
 #~ msgstr "Libérera %s d'espace disque."
 
 #~ msgid ""
-#~ "If you cannot play RMVB video, try this application!\n"
-#~ "Official site: <span color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
-#~ "You can launch RealPlayer by \"/opt/real/RealPlayer/realplay\"."
-#~ msgstr ""
-#~ "Si vous ne pouvez lire de vidéo RMVB, essayez cette application !\n"
-#~ "Site officiel : <span "
-#~ "color=\"blue\"><u>http://www.real.com/linux</u></span>\n"
-#~ "Vous pouvez lancer RealPlayer par \"/opt/real/RealPlayer/realplay\"."
-
-#~ msgid ""
 #~ "<span color=\"red\">You should manually agree a license during the "
 #~ "installation.</span>\n"
 #~ "In the installation process, these commands will be executed: \"sudo apt-get "
@@ -7476,6 +7583,11 @@ msgstr ""
 #~ msgid "<span color=\"grey\">Loading information pane ... </span>\n"
 #~ msgstr ""
 #~ "<span color=\"grey\">Chargement du panneau d'information ... </span>\n"
+
+#~ msgid ""
+#~ "Your changes will take effect at the next time when you log in to GNOME."
+#~ msgstr ""
+#~ "Vos changements prendront effet lors de votre prochaine connexion à GNOME."
 
 #~ msgid "Report bugs"
 #~ msgstr "Rapporter des anomalies"
@@ -7729,18 +7841,6 @@ msgstr ""
 #~ msgstr ""
 #~ " \"Installer des logiciels\" + \"Configurer Linux\" + \"Améliorer ses "
 #~ "connaissances sous Linux\""
-
-#~ msgid "Open source web browser"
-#~ msgstr "Navigateur Web Open source"
-
-#~ msgid ""
-#~ "RPM Fusion provides software that not in the standard repositories.\n"
-#~ "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
-#~ "repository."
-#~ msgstr ""
-#~ "RPM Fusion fournit des logiciels qui ne sont pas dans les dépôts standards.\n"
-#~ "Il est possible que le dépôt \"ATrpms\" soit en conflit avec le dépôt \"RPM "
-#~ "Fusion\"."
 
 #~ msgid ""
 #~ "The program frequently alerts you to leave computers, take micro-pauses, "

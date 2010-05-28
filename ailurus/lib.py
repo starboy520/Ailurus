@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.9'
-AILURUS_RELEASE_DATE = '2010-05-24'
+AILURUS_VERSION = '10.05.91'
+AILURUS_RELEASE_DATE = '2010-05-26'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -293,34 +293,6 @@ class ResponseTime:
         assert isinstance(value, (int,float)) and value > 0
         cls.map[url] = value
         cls.changed = True
-
-class ShowALinuxSkill:
-    @classmethod
-    def installed(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        return os.path.exists(path)
-    @classmethod
-    def install(cls):
-        import os
-        dir = os.path.expanduser('~/.config/autostart/')
-        if not os.path.exists(dir): os.system('mkdir %s -p' % dir)
-        file = dir + 'show-a-linux-skill-bubble.desktop'
-        with open(file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
-    @classmethod
-    def remove(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        os.system('rm %s -f'%path)
 
 class CommandFailError(Exception):
     'Fail to execute a command'
@@ -913,8 +885,7 @@ def download(url, filename):
     
 def reset_dir():
     import os, sys
-    if sys.argv[0]!='':
-        os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 class APTSource2:
     re_pattern_server = None
@@ -1541,15 +1512,6 @@ try:
 except:
     print 'Cannot init pynotify'
 
-try:
-    Config.get_bool('show-a-linux-skill-bubble')
-except:
-    try:
-        Config.set_bool('show-a-linux-skill-bubble', True)
-        ShowALinuxSkill.install()
-    except:
-        print_traceback()
-        
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 

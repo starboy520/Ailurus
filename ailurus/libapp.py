@@ -219,7 +219,7 @@ class N(I):
         return self.installation_command_backend(self.pkgs)
     def visible(self):
         if not hasattr(self, 'pkgs'): 
-            print self.__doc__, ' is hidden because no package name.'
+            #print self.__doc__, ' is hidden because no package name.'
             return False # It is not supported for this Linux distribution.
         # package names change from time to time. we hide an item if package_name does not exists. 
         for pkg in self.pkgs.split():
