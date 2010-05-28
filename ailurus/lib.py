@@ -205,6 +205,22 @@ class Config:
                 a = line.split('=')[1].strip()
         return a
     @classmethod
+    def is_YLMF(cls):
+        import os
+        if not os.path.exists('/etc/lsb-release'): 
+            return False
+        with open('/etc/lsb-release') as f:
+            c = f.read()
+        return 'Ylmf_OS' in c
+    @classmethod
+    def get_YLMF_version(cls):
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
+    @classmethod
     def is_Fedora(cls):
         import os
         return os.path.exists('/etc/fedora-release')
@@ -1520,6 +1536,7 @@ KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
+YLMF = Config.is_YLMF()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
@@ -1528,6 +1545,9 @@ elif MINT:
     VERSION = Config.get_Mint_version()
     assert VERSION in ['5', '6', '7', '8', '9']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+elif YLMF:
+    VERSION = Config.get_YLMF_version()
+    UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
