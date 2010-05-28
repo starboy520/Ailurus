@@ -224,7 +224,7 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
     category = 'others'
     def install(self):
         f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()

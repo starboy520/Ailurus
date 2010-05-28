@@ -323,10 +323,10 @@ class GoogleChrome(I):
                          'However, you have installed "google-chrome-unstable".'),
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
     category = 'others'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
