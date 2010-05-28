@@ -629,7 +629,7 @@ def get():
             __textbox_context_menu_setting,
             __disable_terminal_beep,
             __backlight,
-            __gedit_config,
+            __file_config,
             __advance_setting,
 #            __suspend_and_hibernate,
             __restriction_on_current_user,
