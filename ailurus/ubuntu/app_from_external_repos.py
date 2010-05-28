@@ -26,17 +26,10 @@ from lib import *
 from libapp import *
 from third_party_repos import *
 
-class AWN(_apt_install):
-    __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
-    license = GPL
-    category = 'appearance'
-    depends = Repo_AWN_Development
-    pkgs = 'avant-window-navigator-trunk'
-
 class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
-    category = 'dev'
+    category = 'saber'
     depends = Repo_Acire
     pkgs = 'acire'
     def visible(self):
@@ -45,35 +38,35 @@ class Acire(_apt_install):
 class Audacious(_apt_install):
     __doc__ = _('Audacious: Audio player')
     license = GPL
-    category = 'media'
+    category = 'player'
     depends = Repo_Audacious
     pkgs = 'audacious audacious-plugins'
-
+    
 class Blueman(_apt_install):
     __doc__ = _('Blueman: Graphical blue-tooth manager')
     license = GPL
-    category = 'hardware'
+    category = 'others'
     depends = Repo_Blueman
     pkgs = 'blueman'
-
+    
 class Christine(_apt_install):
     __doc__ = _('Christine: Media player')
     license = GPL
-    category = 'media'
+    category = 'player'
     depends = Repo_Christine
     pkgs = 'christine'
-
+    
 class Chromium(_apt_install):
     __doc__ = _('Chromium: Web browser')
     license = BSD
-    category = 'internet'
+    category = 'browser'
     depends = Repo_Chromium_Daily
     pkgs = 'chromium-browser'
-
+    
 class ComicVODPlayer_new(I):
     __doc__ = _('Mplayer with "vod" protocol support')
     detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
-    category = 'media'
+    category = 'player'
     Chinese = True
     license = GPL
     depends = Repo_Mplayer_VOD
@@ -110,14 +103,14 @@ class ComicView(_ff_extension):
 class Exaile(_apt_install):
     __doc__ = _('Exaile: Audio player')
     license = GPL
-    category = 'media'
+    category = 'player'
     depends = Repo_Exaile
     pkgs = 'exaile'
 
 class Firefox_3_6(_apt_install):
     __doc__ = _('Firefox 3.6')
     license = TRI_LICENSE(MPL, GPL, LGPL)
-    category = 'internet'
+    category = 'browser'
     depends = Repo_Firefox_3_6
     pkgs = 'firefox'
     def visible(self): # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
@@ -126,7 +119,7 @@ class Firefox_3_6(_apt_install):
 class Getting_things_gnome(_apt_install):
     __doc__ = _('Getting Things Gnome: GTD tool')
     license = GPL
-    category = 'office'
+    category = 'business'
     logo = 'gtg.png'
     depends = Repo_GTG
     pkgs = 'gtg'
@@ -141,94 +134,88 @@ class Gmchess(_apt_install):
 class Gnome_color(_apt_install):
     __doc__ = _('GNOME colors themes')
     license = GPL
-    category = 'appearance'
+    category = 'theme'
     depends = Repo_GNOMEColors
     pkgs = 'gnome-colors'
+    DE = 'gnome'
     def visible(self):
         return VERSION != 'lucid'
 
 class Gnome_global_menu(_apt_install):
     __doc__ = _('Global Menu: A globally shared menu bar')
     license = GPL
-    category = 'appearance'
+    category = 'others'
     depends = Repo_GlobalMenu
     pkgs = 'gnome-globalmenu'
+    DE = 'gnome'
 
 class Moovida(_apt_install):
     __doc__ = _('Moovida: Media player')
     license = GPL
-    category = 'media'
+    category = 'player'
     depends = Repo_Moovida
     pkgs = 'moovida'
 
 class OSD_Lyrics(_apt_install):
     __doc__ = _('OSD-Lyrics: Display lyrics')
-    category = 'media'
+    category = 'others'
     license = GPL
     depends = Repo_OSD_Lyrics
     pkgs = 'osdlyrics'
 
-class Pidgin_beta(_apt_install):
-    __doc__ = _('Pidgin (beta version)')
-    license = GPL
-    category = 'internet'
-    depends = Repo_Pidgin_Develop
-    pkgs = 'pidgin'
-    def installed(self):
-        if APT.installed('pidgin'):
-            string = get_output('pidgin -v')
-            version = string.split()[1]
-            return tuple(map(int,version.split('.'))) >= (2, 6, 6)
-        return False
-    def install(self):
-        if APT.installed('pidgin'):
-            APT.remove('pidgin')
-        APT.install('pidgin')
-
 class PlayOnLinux(_apt_install):
     __doc__ = _('PlayOnLinux: A graphical front-end for wine')
     license = LGPL
-    category = 'game'
+    category = 'simulator'
     depends = Repo_PlayOnLinux
     pkgs = 'playonlinux'
 
 class RSSOwl(_apt_install):
     __doc__ = _('RSSOwl: RSS feed reader')
     license = EPL
-    category = 'internet'
+    category = 'rss'
     depends = Repo_RSSOwl
     pkgs = 'rssowl'
 
 class RedNoteBook(_apt_install):
     __doc__ = _('RedNoteBook: A desktop diary application')
     license = GPL
-    category = 'office'
+    category = 'business'
     depends = Repo_RedNoteBook
     pkgs = 'rednotebook'
     def visible(self):
         return VERSION != 'lucid'
-    
-class Shutter(_apt_install):
-    __doc__ = _('Shutter: A screen-shot application')
-    license = GPL
-    category = 'tweak'
-    depends = Repo_Shutter
-    pkgs = 'shutter'
 
 class Songbird(_apt_install):
     __doc__ = _('Songbird: Open source substitution of iTunes')
-    category = 'media'
+    category = 'player'
     license = GPL
     depends = Repo_Songbird
     pkgs = 'songbird'
-    def visible(self):
-        return VERSION != 'lucid'
 
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
-    category = 'media'
+    category = 'player'
     license = GPL
     depends = Repo_XBMC
     pkgs = 'xbmc'
-    def visible(self):
-        return VERSION != 'lucid'
+
+class ElementaryTheme(_apt_install):
+    __doc__ = _('Elementary: Beautiful theme which looks like Mac OS X')
+    category = 'theme'
+    depends = Repo_ElementaryArtwork
+    pkgs = 'elementary-icon-theme elementary-theme elementary-wallpapers'
+
+class Docky(_apt_install):
+    'Docky'
+    detail = _('Simple GNOME dock')
+    category = 'panel'
+    depends = Repo_Docky
+    pkgs = 'docky'
+
+class CairoDock(_apt_install):
+    'Cairo-Dock'
+    detail = _('A dock, a taskbar, and many applets')
+    category = 'panel'
+    depends = Repo_CairoDock
+    pkgs = 'cairo-dock cairo-dock-plug-ins'

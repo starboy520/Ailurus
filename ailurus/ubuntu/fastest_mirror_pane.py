@@ -36,74 +36,39 @@ class RepoCheckButton(gtk.CheckButton):
         self.new_repo = new_repo
 
 class UbuntuFastestMirrorPane(gtk.VBox):
-    name = _('Find fastest repository mirror')
+    icon = D+'sora_icons/m_fastest_repos.png'
+    text = _('Fastest\nRepository')
 
+    ORG, COUNTRY, FULL_URL, SERVER, RESPONSE_TIME, IN_USE = range(6)
     # This value is used in UbuntuFastestMirrorPane.candidate_store .
     # If the server does not respond PING, then its response time is NO_PING_RESPONSE .
     # This value is displayed as text "No response" in TreeView.
     NO_PING_RESPONSE = 100000000
 
-    def __print_the_fastest_repository(self, msg, current_all, current_official):
-        fastest = None
-        try:
-            fastest = Config.get_fastest_repository()
-            response_time = Config.get_fastest_repository_response_time()
-            print >>msg, _('The fastest repository is %s;')%fastest, _('Its response time is %s millisecond.')%response_time
-        except:
-            print >>msg, _('<span color="red"><big>We have not searched out the fastest repository.</big></span>')
-        # print whether the fastest repository is in use
-        if fastest:
-            if fastest in current_official: 
-                print >>msg, _('<span color="blue">The fastest repository is being used.</span>')
-            else:
-                print >>msg, _('<span color="red"><big>The fastest repository is not being used.</big></span>')
-        print >>msg, ''
+    def get_fastest_repository(self):
+        min = None
+        min_time = self.NO_PING_RESPONSE
+        # organization, country, URL, server, response time(in millisecond)
+        for row in self.candidate_store:
+            url = row[self.FULL_URL]
+            time = row[self.RESPONSE_TIME]
+            if time < min_time:
+                min, min_time = url, time
+        return min, min_time
 
-    def __print_repositories_currently_in_use(self, msg, current_all, current_official):
-        print >>msg, _('Currently you are using these repositories:')
-        for s in current_all:
-            print >>msg, s,
-            if s in current_official: print >>msg, _('(Official repository)'),
-            else: print >>msg, _('(Third-party repository)'),
-            print >>msg, ''
-        print >>msg, ''
-
-    def __print_repository_configuration_files(self, msg, current_all, current_official):
-        import glob
-        import os
-        files = glob.glob('/etc/apt/sources.list.d/*.list')
-        len_files = len(files)
-        if len_files == 1:  print >>msg, _('There is one configuration file in /etc/apt/sources.list.d/')
-        elif len_files > 1: print >>msg, _('There are %s configuration files in /etc/apt/sources.list.d/')%len_files
-
-        if len_files <= 10:
-            print >>msg, _('They are:'),
-            for path in files:
-                filename = os.path.split(path)[1]
-                print >>msg, filename, 
-            print >>msg, ''
-
-    def __callback__refresh_state_box(self, *w):
+    def refresh_state_box(self, *w):
+        current_third_party = APTSource2.third_party_urls()
         import StringIO
         msg = StringIO.StringIO()
-        current_all = libserver.get_all_current_repositories()
-        current_official = libserver.get_current_official_repositories()
-
-        # print tip
-        print >>msg, _('<small>(Click mouse right button to display the context menu.)</small>')
-        
-        self.__print_the_fastest_repository(msg, current_all, current_official)
-        self.__print_repositories_currently_in_use(msg, current_all, current_official)
-        self.__print_repository_configuration_files(msg, current_all, current_official)
-        # show text
-        self.label_state.set_markup(msg.getvalue())
-        # set the menu-item sensitive state
-        try:
-            fastest = Config.get_fastest_repository()
-        except:
-            self.mi_use_fastest_repo.set_sensitive(False)
-        else:
-            self.mi_use_fastest_repo.set_sensitive(bool(fastest and (fastest not in current_official)))
+        fastest, response_time = self.get_fastest_repository()
+        if fastest:
+            print >>msg, _('The fastest repository is %s') % fastest, _('(%s millisecond)') % response_time
+        if current_third_party:
+            print >>msg, _('Currently you are using these third-party repositories:')
+            for s in current_third_party:
+                print >>msg, s,
+                if s in current_third_party: print >>msg
+        self.label_state.set_markup(msg.getvalue().strip())
 
     def __callback__show_how_to_backup_repositories(self, *w):
         label = gtk.Label()
@@ -117,10 +82,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             'cd /etc/apt/\n'
             'sudo tar xzf ~/sources.backup.tar.gz') )
         def unselect(*w):
-            if getattr(label, 'unselected', False) == False:
+            if not label.unselected:
                 label.unselected = True
                 label.select_region(0, 0)
             return False
+        label.unselected = False
         label.connect('expose-event', unselect)
         button_close = gtk.Button(stock = gtk.STOCK_CLOSE)
         button_close.connect('clicked', lambda *w: window.destroy())
@@ -136,17 +102,13 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         button_close.grab_focus()
 
     def __callback__use_fastest_repository(self, *w):
-        try:
-            fastest = Config.get_fastest_repository()
-        except:
-            return
-        self.__use_repository(fastest)
+        fastest = self.get_fastest_repository()[0]
+        if fastest:
+            self.__use_repository(fastest)
 
     def __get_popupmenu_for_state_box(self):
         mi_refresh = image_stock_menuitem(gtk.STOCK_REFRESH, _('Refresh'))
-        mi_refresh.connect('activate', self.__callback__refresh_state_box)
-        self.mi_use_fastest_repo = mi_use_fastest_repo = image_stock_menuitem(gtk.STOCK_GO_FORWARD, _('Use the fastest repository'))
-        mi_use_fastest_repo.connect('activate', self.__callback__use_fastest_repository)
+        mi_refresh.connect('activate', self.refresh_state_box)
         mi_edit_by_texteditor = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by text editor'))
         mi_edit_by_texteditor.connect('activate', self.__callback__edit_repository_by_text_editor)
         mi_edit_by_synaptic = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit repository configuration by Synaptic'))
@@ -157,7 +119,6 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         how_to_backup.connect('activate', self.__callback__show_how_to_backup_repositories)
         menu = gtk.Menu()
         menu.append(mi_refresh)
-        menu.append(mi_use_fastest_repo)
         menu.append(mi_edit_by_texteditor)
         import os
         if os.path.exists('/usr/bin/software-properties-gtk') or os.path.exists('/usr/bin/software-properties-kde'):
@@ -172,7 +133,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         label_state.set_alignment(0, 0)
         label_state.set_ellipsize(pango.ELLIPSIZE_END)
         scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
         scroll.set_border_width(5)
         scroll.add_with_viewport(label_state)
         scroll.get_child().set_shadow_type(gtk.SHADOW_ETCHED_IN)
@@ -184,11 +145,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
                 return True
             return False
         scroll.connect('button_press_event', button_press_event)
-        self.__callback__refresh_state_box()
+        self.refresh_state_box()
         return scroll
     
     def __show_response_time_in_cell(self, column, cell, model, iter):
-        value = model.get_value(iter, 4)
+        value = model.get_value(iter, self.RESPONSE_TIME)
         assert isinstance(value, int)
         if value == self.NO_PING_RESPONSE: 
             text = _('No response')
@@ -205,12 +166,12 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         countries = set()
         for path in pathlist:
             iter = model.get_iter(path)
-            country = model.get_value(iter, 1)
+            country = model.get_value(iter, self.COUNTRY)
             countries.add(country)
         
         iter = model.get_iter_first()
         while iter:
-            country = model.get_value(iter, 1)
+            country = model.get_value(iter, self.COUNTRY)
             if country in countries:
                 selection.select_path(model.get_path(iter))
             iter = model.iter_next(iter)
@@ -257,7 +218,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         assert isinstance(new_repo, str)
         assert ':' in new_repo
         
-        old_repos = [ r for r in libserver.get_current_official_repositories() if r != new_repo ]
+        old_repos = [ r for r in APTSource2.official_urls() if r != new_repo ]
         if old_repos == []: 
             notify(_('Currently you are using %s.')%new_repo, ' ')
             return
@@ -281,24 +242,14 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             if c.get_active():
                 changes[c.old_repo] = c.new_repo
         if changes == {}: return
-        libserver.change_repositories_in_source_files(changes)
-        self.__callback__refresh_state_box()
+        
+        APTSource2.remove_official_servers()
+        for c in check_boxes:
+            if c.get_active():
+                APTSource2.add_official_url(new_repo)
+        self.refresh_state_box()
         notify(_('Run "apt-get update". Please wait for few minutes.'), ' ')
         APT.apt_get_update()
-    
-    def __callback__use_selected_repositories_via_treeview(self, w, treeview):
-        selection = treeview.get_selection()
-        model, pathlist = selection.get_selected_rows()
-        if pathlist == None or len(pathlist)==0: # select nothing
-            return
-        
-        if len(pathlist) > 1: 
-            notify(_('Please select one repository only'), ' ')
-        else:
-            path = pathlist[0]
-            iter = model.get_iter(path)
-            URL = model.get_value(iter, 2)
-            self.__use_repository(URL)
     
     def __detect_servers_speed(self, urls, servers):
         assert len(urls) == len(servers)
@@ -332,10 +283,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             thread.join()
             self.__show_result_in_progress_box(result, total, progress_label, progress_bar)
         self.__update_candidate_store_with_ping_result(result)
-        self.__write_config_according_to_candidate_store()
-        self.__callback__refresh_state_box()
+        self.refresh_state_box()
         self.__delete_all_widgets_in_progress_box()
-        self.__save_last_response_time()
         self.main_view.unlock()
         self.set_sensitive(True)
 
@@ -343,8 +292,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         servers = []
         urls = []
         for row in self.candidate_store:
-            urls.append(row[2]) 
-            servers.append(row[3])
+            urls.append(row[self.FULL_URL]) 
+            servers.append(row[self.SERVER])
         self.__detect_servers_speed(urls, servers)
         
     def __callback__copy_selected_repos(self, w, treeview):
@@ -357,7 +306,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         msg = StringIO.StringIO()
         for path in pathlist:
             iter = model.get_iter(path)
-            print >>msg, model.get_value(iter, 2)
+            print >>msg, model.get_value(iter, self.FULL_URL)
         content = msg.getvalue()
         clipboard = gtk.clipboard_get()
         clipboard.set_text(content)
@@ -372,8 +321,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         urls = []
         for path in pathlist:
             iter = model.get_iter(path)
-            server = model.get_value(iter, 3)
-            url = model.get_value(iter, 2)
+            server = model.get_value(iter, self.SERVER)
+            url = model.get_value(iter, self.FULL_URL)
             servers.append(server)
             urls.append(url)
         self.__detect_servers_speed(urls, servers)
@@ -383,27 +332,16 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             server = i[0]
             if isinstance(i[1], float):
                 time = int(i[1])
-                self.__response_times[server] = time
+                ResponseTime.set(server, time)
             else:
                 time = self.NO_PING_RESPONSE
         for row in self.candidate_store:
-            if row[3] in self.__response_times:
-                server = row[3]
-                row[4] = self.__response_times[server]
+            try:
+                server = row[self.SERVER]
+                row[self.RESPONSE_TIME] = ResponseTime.get(server)
+            except KeyError:
+                pass
         
-    def __write_config_according_to_candidate_store(self):
-        min_time = self.NO_PING_RESPONSE
-        fastest_url = None
-        for row in self.candidate_store:
-            time = row[4]
-            assert isinstance(time, int)
-            if time < min_time:
-                fastest_url = row[2]
-                min_time = time
-        if fastest_url:
-            Config.set_fastest_repository(fastest_url)
-            Config.set_fastest_repository_response_time(min_time)
-
     def __get_popupmenu_for_candidate_repos_treeview(self, treeview):
         detect_speed_of_selected_repos = image_stock_menuitem(gtk.STOCK_FIND,
             _('Detect response time of selected repositories'))
@@ -413,19 +351,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
             _('Detect response time of all repositories'))
         detect_speed_of_all_repos.connect('activate', self.__callback__detect_all_repos_speed)
 
-        use_selected = image_stock_menuitem(
-            gtk.STOCK_GO_FORWARD, _('Use selected repositories'))
-        use_selected.connect('activate', self.__callback__use_selected_repositories_via_treeview, treeview)
-        
-        select_all = image_stock_menuitem(gtk.STOCK_SELECT_ALL, _('Select all'))
-        select_all.connect('activate', lambda w: treeview.get_selection().select_all())
         select_all_repos_in_this_county = image_stock_menuitem(gtk.STOCK_SELECT_ALL, 
             _('Select all repositories in these countries'))
         select_all_repos_in_this_county.connect('activate', self.__callback__select_all_repos_in_selected_country, treeview)
-        
-        unselect_all = gtk.MenuItem(_('Unselect all'))
-        unselect_all.connect('activate', lambda w: treeview.get_selection().unselect_all())
-        
+
         contact_maintainer = image_stock_menuitem(gtk.STOCK_DIALOG_WARNING, 
             _('If some repositories are not listed above, please click here to tell Ailurus developers.') )
         contact_maintainer.connect('activate', lambda w: report_bug() )
@@ -433,30 +362,46 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         copy_repos = gtk.ImageMenuItem(stock_id = gtk.STOCK_COPY)
         copy_repos.connect('activate', self.__callback__copy_selected_repos, treeview)
         popupmenu = gtk.Menu()
-        popupmenu.append(use_selected)
         popupmenu.append(detect_speed_of_selected_repos)
         popupmenu.append(detect_speed_of_all_repos)
-        popupmenu.append(select_all)
-        popupmenu.append(copy_repos)
         popupmenu.append(select_all_repos_in_this_county)
-        popupmenu.append(unselect_all)
+        popupmenu.append(copy_repos)
         popupmenu.append(contact_maintainer)
         popupmenu.show_all()
         return popupmenu
 
+    def render_in_use_toggled(self, render_toggle, path):
+        path = self.sorted_store.convert_path_to_child_path(path)
+        path = self.filted_store.convert_path_to_child_path(path)
+        in_use = not self.candidate_store[path][self.IN_USE]
+        url = self.candidate_store[path][self.FULL_URL]
+        if in_use:
+            APTSource2.add_official_url(url)
+        else:
+            APTSource2.remove_snips_from_all_files([url])
+        self.candidate_store[path][self.IN_USE] = in_use
+        self.refresh_state_box()
+
     def __get_candidate_repositories_treeview(self):
+        render_in_use = gtk.CellRendererToggle()
+        render_in_use.connect('toggled', self.render_in_use_toggled)
+        column_in_use = gtk.TreeViewColumn()
+        column_in_use.pack_start(render_in_use)
+        column_in_use.add_attribute(render_in_use, 'active', self.IN_USE)
+        column_in_use.set_sort_column_id(self.IN_USE)
+        
         render_country = gtk.CellRendererText()
         column_country = gtk.TreeViewColumn( _('Country') )
         column_country.pack_start(render_country)
-        column_country.add_attribute(render_country, 'text', 1)
-        column_country.set_sort_column_id(1)
+        column_country.add_attribute(render_country, 'text', self.COUNTRY)
+        column_country.set_sort_column_id(self.COUNTRY)
         
         render_org = gtk.CellRendererText()
         render_org.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_org = gtk.TreeViewColumn( _('Organization') )
         column_org.pack_start(render_org)
-        column_org.add_attribute(render_org, 'text', 0)
-        column_org.set_sort_column_id(0)
+        column_org.add_attribute(render_org, 'text', self.ORG)
+        column_org.set_sort_column_id(self.ORG)
         column_org.set_expand(True)
         column_org.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
         
@@ -464,8 +409,8 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         render_url.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_url = gtk.TreeViewColumn('URL')
         column_url.pack_start(render_url)
-        column_url.add_attribute(render_url, 'text', 2)
-        column_url.set_sort_column_id(3)
+        column_url.add_attribute(render_url, 'text', self.FULL_URL)
+        column_url.set_sort_column_id(self.SERVER)
         column_url.set_expand(True)
         column_url.set_sizing(gtk.TREE_VIEW_COLUMN_FIXED)
         
@@ -474,10 +419,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         column_response_time = gtk.TreeViewColumn( _('Response time') )
         column_response_time.pack_start(render_response_time)
         column_response_time.set_cell_data_func(render_response_time, self.__show_response_time_in_cell)
-        column_response_time.set_sort_column_id(4)
+        column_response_time.set_sort_column_id(self.RESPONSE_TIME)
         
         candidate_treeview = gtk.TreeView(self.sorted_store)
         candidate_treeview.set_rules_hint(True)
+        candidate_treeview.append_column(column_in_use)
         candidate_treeview.append_column(column_country)
         candidate_treeview.append_column(column_org)
         candidate_treeview.append_column(column_url)
@@ -523,10 +469,10 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         if self.search_content == None:
             return True
         else:
-            org = treestore.get_value(iter, 0)
-            country = treestore.get_value(iter, 1)
-            URL = treestore.get_value(iter, 2)
-            server = treestore.get_value(iter, 3)
+            org = treestore.get_value(iter, self.ORG)
+            country = treestore.get_value(iter, self.COUNTRY)
+            URL = treestore.get_value(iter, self.FULL_URL)
+            server = treestore.get_value(iter, self.SERVER)
             return bool( self.search_content.search(org) or 
                  self.search_content.search(country) or
                  self.search_content.search(URL) or
@@ -545,41 +491,16 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         box.pack_start(treeview)
         return box
 
-    def __save_last_response_time(self):
-        try:
-            Config.make_config_dir()
-            
-            path = Config.get_config_dir() + 'response_time'
-            with open(path, 'w') as f:
-                for url in self.__response_times:
-                    line = [url, str(self.__response_times[url])]
-                    f.write(':'.join(line))
-                    f.write('\n')
-        except:
-            import traceback
-            traceback.print_exc()
-
-    def __init_last_response_time(self):
-        self.__response_times = {}
-        try:
-            path = Config.get_config_dir() + 'response_time'
-            if not os.path.exists(path): return
-            with open(path) as f:
-                lines = f.readlines()
-            for line in lines:
-                r = line.rsplit(':', 1)
-                self.__response_times[r[0]] = float(r[1])
-        except IOError:
-            import traceback
-            traceback.print_exc()
-
     def __fill_candidate_store(self):
         for e in libserver.get_candidate_repositories():
             try:
-                res_time = self.__response_times[e[3]]
+                res_time = ResponseTime.get(e[self.SERVER])
             except KeyError:
                 res_time = self.NO_PING_RESPONSE
             e.append(res_time)
+            url = e[2]
+            in_use = APTSource2.all_lines_contain(url)
+            e.append(in_use)
             self.candidate_store.append(e)
 
     def __init__(self, main_view):
@@ -587,31 +508,30 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         assert hasattr(main_view, 'unlock')
         self.main_view = main_view
         
-        self.__init_last_response_time()
+        ResponseTime.load()
         
         gtk.VBox.__init__(self, False, 5)
-        # organization, country, URL, server, response time(in millisecond)
-        self.candidate_store = gtk.ListStore(str, str, str, str, int)
+        # organization, country, URL, server, response time(in millisecond), in use?
+        self.candidate_store = gtk.ListStore(str, str, str, str, int, bool)
         self.filted_store = self.candidate_store.filter_new()
         self.search_content = None
         self.filted_store.set_visible_func(self.__repository_visibility_function)
         self.sorted_store = gtk.TreeModelSort(self.filted_store)
-        self.sorted_store.set_sort_column_id(1, gtk.SORT_ASCENDING)
+        self.sorted_store.set_sort_column_id(self.IN_USE, gtk.SORT_DESCENDING)
         self.__fill_candidate_store()
 
         self.progress_box = gtk.VBox(False, 5)
 
         box2 = gtk.VBox(False, 5)
+        box2.pack_start(self.__get_state_box(), False)
         box2.pack_start(self.__get_candidate_repositories_box())
         box2.pack_start(self.progress_box, False)
-        vpaned = gtk.VPaned()
-        vpaned.pack1(self.__get_state_box(), False, True)
-        vpaned.pack2(box2, True, True)
-        self.pack_start(vpaned)
+        self.pack_start(box2)
 
     def __callback__edit_repository_by_text_editor(self, *w):
-        try:    fastest = Config.get_fastest_repository()
-        except: fastest = 'http://archive.ubuntu.com/ubuntu/'
+        fastest = self.get_fastest_repository()[0]
+        if not fastest:
+            fastest = 'http://archive.ubuntu.com/ubuntu/'
         
         # We create an example file.
         f = open('/tmp/Example-of-sources.list', 'w')
@@ -632,21 +552,11 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
 '''%{'fastest':fastest, 'version':VERSION} )
         f.close()
 
-        # We find out all files which will be opened, 
-        # including /etc/apt/sources.list and /etc/apt/sources.list.d/*.list
-        paths = APTSource.apt_source_files_list()
-        if not '/etc/apt/sources.list' in paths:
-            paths.insert(0, '/etc/apt/sources.list')
-        paths.insert(0, '/tmp/Example-of-sources.list')
-        
-        # We find out the text editor.
+        paths = ['/tmp/Example-of-sources.list'] + APTSource2.all_conf_files()
         editor = 'xdg-open'
-        import os
         if os.path.exists('/usr/bin/gedit'): editor = 'gedit'
         elif os.path.exists('/usr/bin/kate'): editor = 'kate'
         elif os.path.exists('/usr/bin/mousepad'): editor = 'mousepad'
-        
-        # Then we open the files.
         for path in paths:
             spawn_as_root("%s '%s'"%(editor, path))
 
@@ -662,28 +572,7 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         spawn_as_root(launcher)
     
     def __callback__merge_sourceslist(self, *w):
-        contents = []
-        for filename in APTSource.apt_source_files_list():
-            with open(filename) as f:
-                if len(contents) and not contents[-1].endswith('\n'):
-                    contents[-1] += '\n'
-                contents += f.readlines()
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
-                f.writelines(contents)
-        run_as_root('rm /etc/apt/sources.list.d/* -f')
-        notify(_('Merge complete'), ' ')
-            
-        
-if __name__ == '__main__':
-    class Dummy:
-        def lock(self): pass
-        def unlock(self): pass
-    window = gtk.Window()
-    window.set_size_request(-1, 700)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.connect('delete-event', gtk.main_quit)
-    obj = UbuntuFastestMirrorPane(Dummy())
-    window.add(obj)
-    window.show_all()
-    gtk.main()
+                f.writelines(APTSource2.all_lines())
+        run_as_root('rm /etc/apt/sources.list.d/* -rf')

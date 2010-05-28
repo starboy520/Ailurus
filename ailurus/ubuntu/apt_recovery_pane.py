@@ -27,7 +27,8 @@ from lib import *
 from libu import *
 
 class UbuntuAPTRecoveryPane(gtk.VBox):
-    name = _('APT recovery')
+    icon = D+'sora_icons/m_recovery.png'
+    text = _('Recover\nAPT')
     
     def __get_installed_packages_set(self):
         path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumpaptcache2.py'
@@ -40,7 +41,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
         for line in task.stdout:
             name = line[2:-1]
             if line[0]=='i': set1.add(name)
-            
+        task.wait()
         return set1
 
     def __make_dir(self):
@@ -317,8 +318,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
             if to_install: APT.install(*to_install)
             if to_remove: APT.remove(*to_remove)
         except:
-            import traceback
-            traceback.print_exc()
+            print_traceback()
         self.diff_liststore.clear()
         self.change_liststore.clear()
 

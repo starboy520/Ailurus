@@ -29,7 +29,7 @@ from app_from_external_repos import *
 
 class OpenJDK6(I):
     'OpenJDK 6'
-    category = 'dev'
+    category = 'saber'
     license = GPL
     def install(self):
         APT.install('openjdk-6-jdk')
@@ -59,26 +59,6 @@ class OpenJDK6(I):
         env.remove('CLASSPATH')
         env.save()
 
-class ColorfulBashPromptSymbols(I):
-    __doc__ = _('Use colorful Bash prompt symbols')
-    detail = _('Change Bash prompt symbols from '
-       '"username@hostname:~$ " to '
-       '"<span color="#3dba34">username@hostname</span>:'
-       '<span color="#729fcf">~</span>$ ".\n'
-       'The trick behind is to add this line into "$HOME/.bashrc".\n'
-       r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '")
-    def __init__(self):
-        self.line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
-        import os
-        self.bashrc = os.path.expandvars('$HOME/.bashrc')
-    def install(self):
-        file_append ( self.bashrc, self.line )
-        notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
-    def installed(self):
-        return file_contain ( self.bashrc, self.line )
-    def remove(self):
-        file_remove ( self.bashrc, self.line )
-
 class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')
     detail = _('Ailurus will install the game, and apply the latest patch.\n'
@@ -103,7 +83,7 @@ class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
                _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
-    category = 'dev'
+    category = 'library'
     license = GPL
     def install(self):
         if is32():
@@ -141,8 +121,9 @@ class GNOMEArtNextGen(I):
     detail = _('It is able to customize the backgrounds, application look, window borders, icons, GNOME splash and GDM window. '
        'More than 100 themes can be installed, which are downloaded from http://art.gnome.org . '
        'The official site of GNOMEArtNG is http://developer.berlios.de/projects/gnomeartng/')
-    category = 'appearance'
+    category = 'theme'
     license = GPL
+    DE = 'gnome'
     def install(self):
         if VERSION == 'hardy':
 
@@ -194,7 +175,7 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty']
+        return VERSION in ['hardy', 'intrepid', 'jaunty'] and os.path.exists('/etc/event.d/')
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
@@ -233,7 +214,7 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION in ['karmic']
+        return VERSION not in ['hardy', 'intrepid', 'jaunty']
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
@@ -279,6 +260,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
     category='biology'
     license = AL
+    
     def install(self):
         f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
         run_as_root_in_terminal('perl %s' % f)

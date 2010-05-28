@@ -24,19 +24,8 @@ from __future__ import with_statement
 from lib import *
 
 def main():
-    import common as COMMON
-    
-    DESKTOP = None
-    
-    if MINT or UBUNTU:
-        import ubuntu as DISTRIBUTION
-    elif FEDORA:
-        import fedora as DISTRIBUTION
-    else:
-        DISTRIBUTION = None
-    
     from loader import load_tips
-    tips = load_tips(COMMON, DESKTOP, DISTRIBUTION)
+    tips = load_tips()
     
     import random
     index = random.randint(0, len(tips)-1)

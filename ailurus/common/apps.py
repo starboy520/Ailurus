@@ -24,7 +24,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-
+from native_apps import *
 if UBUNTU or MINT or FEDORA:
     from apps_eclipse import *
 
@@ -69,42 +69,11 @@ Icon=/opt/bioclipse/icon.xpm
             
             file_append('/opt/bioclipse/bioclipse.ini', '-Dorg.eclipse.swt.browser.XULRunnerPath=/usr/lib/xulrunner/')
 
-class CreateDesktopFolder(I):
-    __doc__ = _('Create a directory "Desktop" in your home folder')
-    detail = _('Create a directory "Desktop" which is linked to the desktop. After that, you can chdir to the desktop folder by command "cd ~/Desktop".')
-    def __init__(self):
-        import os
-        self.desktop = os.path.expanduser('~/Desktop')
-    def install(self):
-        import os
-        if not os.path.exists(self.desktop):
-            # read file
-            with open( os.path.expanduser('~/.config/user-dirs.dirs') ) as f:
-                contents = f.readlines()
-            # get name
-            name = None
-            for line in contents:
-                if line.strip()[0] == '#': continue
-                if 'XDG_DESKTOP_DIR' in line:
-                    name = line.strip().split('=')[1]
-                    if name[0] == '"' and name[-1] == '"': name = name[1:-1]
-                    name = os.path.expandvars(name)
-            # create link
-            if name and os.path.exists(name):
-                run('ln -s %s %s'%(name,self.desktop))
-    def installed(self):
-        import os 
-        return os.path.exists(self.desktop)
-    def remove(self):
-        import os
-        if os.path.islink(self.desktop):
-            run('rm -f '+self.desktop)
-  
 class Electric(_path_lists):
     __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
     detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
                _(' This application depends on Java.') )
-    category = 'em'
+    category = 'electronics'
     license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
@@ -126,46 +95,28 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
-class Speed_Up_Firefox(I):
-    __doc__ = _('Speed up Firefox')
-    detail = _('Firefox is faster when Pango rendering is disabled. '
-        'The trick is to launch Firefox by the command: "export MOZ_DISABLE_PANGO=1; firefox". '
-        'Ailurus will create a new icon "Firefox without Pango (faster)" in the menu "Applications"-->"Internet".')
+class SweetHome3D(_path_lists):
+    __doc__ = _('SweetHome3D: open source interior design application')
+    detail = _('Official site:') + ' http://www.sweethome3d.com/'
+    category = 'design'
+    shortcut = '/usr/share/applications/SweetHome3D.desktop'
+    path = '/opt/SweetHome3D-2.3'
+    paths = [shortcut, path]
     def install(self):
-        paths = [
-                 '/usr/share/applications/firefox-3.5.desktop',
-                 '/usr/share/applications/firefox.desktop', 
-                 '/usr/share/applications/mozilla-firefox.desktop',
-                 '/usr/share/applications/abrowser.desktop',
-                 ]
-        for path in paths:
-            import os
-            if os.path.exists(path): break
-        else:
-            raise Exception('Firefox shortcut is not found.')
-            
-        with open(path) as f:
-            content = f.readlines()
-        for i, line in enumerate(content):
-            if line.startswith('Exec='):
-                firefox_launcher = line.split('=')[1].strip()
-                new = 'Exec=sh -c "export MOZ_DISABLE_PANGO=1; %s"\n'%firefox_launcher
-                content[i] = new
-            if line.startswith('Name='):
-                content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
-        dir = '/usr/local/share/applications/'
-        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
-        with TempOwn(dir + 'firefox.nopango.desktop') as o:
-            with open(dir + 'firefox.nopango.desktop', 'w') as f:
-                f.writelines(content)
-
-    def installed(self):
-        import os 
-        return ( os.path.exists('/usr/local/share/applications/firefox.nopango.desktop') or
-                 os.path.exists('/usr/share/applications/firefox.nopango.desktop') )
-    def remove(self):
-        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
-        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
+        if is32(): url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x86.tgz'
+        else:       url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x64.tgz'
+        f = R([url]).download()
+        run_as_root('mkdir /opt', ignore_error=True)
+        with Chdir('/opt') as c:
+            run_as_root('tar xf ' + f)
+        create_file(self.shortcut, '[Desktop Entry]\n'
+                                   'Name=SweetHome3D\n'
+                                   'Exec=' + self.path + '/SweetHome3D\n'
+                                   'Encoding=UTF-8\n'
+                                   'StartupNotify=true\n'
+                                   'Terminal=false\n'
+                                   'Type=Application\n'
+                                   'Categories=Graphics;\n')
 
 class OpenJUMP(_path_lists):
     __doc__ = _('OpenJUMP: A geographic information system')
@@ -174,7 +125,6 @@ class OpenJUMP(_path_lists):
               _(' This application depends on Java.') )
     license = GPL
     category = 'geography'
-    license = GPL
     def __init__(self):
         self.shortcut = '/usr/share/applications/openjump.desktop'
         self.dir = '/opt/openjump-1.3'
@@ -199,24 +149,6 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering; ''')
-
-class QueryBeforeRmALotFiles(I) :
-    __doc__ = _('Query you before delete more than three files')
-    detail = _('If you try to delete more than three files by "rm *", '
-       'BASH will ask you a question "remove all argument?" to make sure if you really want to delete files. '
-       'This is useful if you mistype "rm subdir/*" as "rm subdir/ *".\n'
-       'The trick behind is to add this line into "$HOME/.bashrc".\n'
-       'alias rm="rm -I"')
-    def __init__(self):
-        self.line = r"alias rm='rm -I'"
-        import os
-        self.bashrc = os.path.expandvars('$HOME/.bashrc')
-    def install(self):
-        file_append ( self.bashrc, self.line )
-    def installed(self):
-        return file_contain ( self.bashrc, self.line )
-    def remove(self):
-        file_remove ( self.bashrc, self.line )
 
 class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')
@@ -333,7 +265,7 @@ class FFEasyDragToGo(_ff_extension):
 
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = BSD
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
@@ -397,7 +329,7 @@ class FFGreaseMonkey(_ff_extension):
 
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = ''
@@ -436,7 +368,7 @@ class FFRadioGet(_ff_extension):
 
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = MPL
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
@@ -460,7 +392,7 @@ class FFStylish(_ff_extension):
 
 class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = ''
@@ -485,7 +417,7 @@ class FFUserAgentSwitcher(_ff_extension):
 
 class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = GPL
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
@@ -510,7 +442,7 @@ class FFWeaveSync35(_ff_extension):
 
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = LGPL
     def __init__(self):
         self.desc = _('Many developers installed it.')
@@ -535,7 +467,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
 
 class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
-    category = 'firefoxdev'
+    category = 'firefox_extension'
     license = MPL
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
