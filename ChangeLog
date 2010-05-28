@@ -13,7 +13,7 @@
 
 2010-05-22 HAN Haofu <gtxx3600@gmail.com>
 
-	* Optimize the behaviour of lib.notify()
+    * Optimize the behaviour of lib.notify()
 
 2010-05-22 Homer Xing <homer.xing@gmail.com>
 
@@ -64,18 +64,18 @@
 
 2010-05-14 HAN Haofu <gtxx3600@gmail.com>
 
-    *Rename 'platfrom' to 'DE'(Desktop Environment)
-    *Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
-    *Add new icon velly_icons/software_default_icon.png
-    *Move load_app_icon(name) from 'libu.py' to 'loader.py'
-    *Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
-    *Add icon on install_remove_pane to show package's desktop environment
-    *Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
+    * Rename 'platfrom' to 'DE'(Desktop Environment)
+    * Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
+    * Add new icon velly_icons/software_default_icon.png
+    * Move load_app_icon(name) from 'libu.py' to 'loader.py'
+    * Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
+    * Add icon on install_remove_pane to show package's desktop environment
+    * Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
     
 2010-05-11 HAN Haofu <gtxx3600@gmail.com>
 
-    *Add icon for package that has no icon
-    *Move some relative code to loader.py 
+    * Add icon for package that has no icon
+    * Move some relative code to loader.py 
 
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 
