@@ -499,6 +499,11 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
+def __gedit_config():
+    box = gtk.VBox()
+    o = GConfEntry('/apps/gedit-2/preferences/editor/undo/max_undo_actions')
+    box.pack_start(o, False)
+    return Setting(box, _('Gedit configure'), ['gedit_configure'])
 #def __gconfig_backup():
 #    table = gtk.Table()
 #    table.set_col_spacings(30)
@@ -599,6 +604,7 @@ def get():
             __textbox_context_menu_setting,
             __disable_terminal_beep,
             __backlight,
+            __gedit_config,
             __advance_setting,
 #            __suspend_and_hibernate,
             __restriction_on_current_user,
