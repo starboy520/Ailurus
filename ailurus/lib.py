@@ -155,7 +155,7 @@ class Config:
     @classmethod
     def get_show_software_icon(cls):
         try: value = cls.get_bool('show_software_icon')
-        except: value = False
+        except: value = True
         return value
     @classmethod
     def get_locale(cls):
