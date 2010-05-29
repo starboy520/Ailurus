@@ -1265,3 +1265,52 @@ class Zim(N):
     category = 'business'
     if UBUNTU or MINT: pkgs = 'zim'
     if FEDORA: pkgs = 'Zim'
+    
+class CDT1(N):
+    __doc__ = _('CDT: C/C++ development')
+    category = 'eclipse_extension'
+    license = EPL + ' http://www.eclipse.org/legal/'
+    if FEDORA: pkgs = 'eclipse-cdt'
+
+class Pydev1(N):
+    __doc__ = _('Pydev: Python development')
+    category = 'eclipse_extension'
+    license = EPL + ' http://pydev.org/about.html'
+    if FEDORA: pkgs = 'eclipse-pydev'
+
+class Phpeclipse1(N):
+    __doc__ = _('Phpeclipse: PHP development')
+    category = 'eclipse_extension'
+    license = CPL + 'http://www.eclipse.org/legal/cpl-v10.html'
+    if FEDORA: pkgs = 'eclipse-phpeclipse'
+
+class Subversive1(N):
+    __doc__ = _('Subversive: Use SVN in Eclipse')
+    category = 'eclipse_extension'
+    license = EPL    
+    if FEDORA: pkgs = 'eclipse-subclipse'
+    
+class VEditor1(N):
+    __doc__ = _('VEditor: Verilog and VHDL editor')
+    category = 'eclipse_extension'
+    license = EPL
+    if FEDORA: pkgs = 'eclipse-veditor'
+    
+class Photran(N):
+    __doc__ = _('Photran: Fortran Development')
+    category = 'eclipse_extension'
+    license = EPL + 'http://www.eclipse.org/photran/'
+    if FEDORA: pkgs = 'eclipse-photran'
+    
+class Texlipse(N):
+    __doc__ = _('Texlipse: Eclipse plugin for editing Latex')
+    category = 'eclipse_extension'
+    license = EPL + 'http://eclipse-plugins.2y.net/eclipse/plugin_details.jsp?id=992'
+    if FEDORA: pkgs = 'eclipse-texlipse'    
+
+class Ruby(N):
+    __doc__ = ('Ruby: Ruby Development')
+    category = 'eclipse_extension'
+    license = EPL + 'http://marketplace.eclipse.org/content/dltk-ruby'
+    if FEDORA: pkgs = 'eclipse-dltk-ruby'
+    

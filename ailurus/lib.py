@@ -1793,7 +1793,7 @@ MIT = _('MIT License')
 CDDL = _('Common Development and Distribution License')
 APL = _('Aptana Public License')
 AL = _('Artistic License')
-
+CPL = _('Common Public License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
