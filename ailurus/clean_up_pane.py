@@ -40,8 +40,10 @@ class CleanUpPane(gtk.VBox):
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-            self.pack_start(UbuntuAutoRemovableBox())
-            self.pack_start(UbuntuDeleteUnusedConfigBox())
+            hbox = gtk.HBox(True, 20)
+            hbox.pack_start(UbuntuAutoRemovableBox())
+            hbox.pack_start(UbuntuDeleteUnusedConfigBox())
+            self.pack_start(hbox)
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
