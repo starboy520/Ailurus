@@ -21,7 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, pango
 import sys
 import os
 from lib import *
@@ -416,6 +416,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         column_keep.pack_start(render_keep, False)
         column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Auto-removable packages'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)
@@ -524,6 +525,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         column_keep.pack_start(render_keep, False)
         column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Unused software configuration'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)
