@@ -251,21 +251,3 @@ class DisableGettyKarmic(DisableGetty):
                         raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
-
-class Generic_Genome_Browser(I):
-    __doc__ = _('Generic Genome Browser')
-    detail = _('Generic Genome Browser is a combination of database and interactive web page '
-               'for manipulating and displaying annotations on genomes.\n'
-               '<span color="red">Due to the limitation of the authors\' programming ability, '
-               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
-    category='biology'
-    license = AL
-    
-    def install(self):
-        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        run_as_root_in_terminal('perl %s' % f)
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplementedError
-

@@ -28,6 +28,26 @@ from native_apps import *
 if UBUNTU or MINT or FEDORA:
     from apps_eclipse import *
 
+class Generic_Genome_Browser(I):
+    __doc__ = _('Generic Genome Browser')
+    detail = _('Generic Genome Browser is a combination of database and interactive web page '
+               'for manipulating and displaying annotations on genomes.\n'
+               '<span color="red">Due to the limitation of the authors\' programming ability, '
+               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
+    license = AL
+    category='biology'
+    def install(self):
+        if FEDORA:
+            for package in ['perl-libwww-perl', 'perl-CPAN']:
+                if not RPM.installed(package): RPM.install(package)
+        
+        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
+        run_as_root_in_terminal('perl ' + f)
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
+
 class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
     detail = _('It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/')
@@ -477,5 +497,3 @@ class FFYSlow(_ff_extension):
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
-
-
