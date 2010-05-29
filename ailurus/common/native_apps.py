@@ -862,6 +862,13 @@ class Octave(N):
     if UBUNTU or MINT:
         pkgs = 'qtoctave'
 
+class OpenJDK(N):
+    'OpenJDK 6'
+    category = 'saber'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'openjdk-6-jdk openjdk-6-jre-lib'
+
 class Openshot(N):
     'Openshot'
     detail = _('Non-linear video editor')
