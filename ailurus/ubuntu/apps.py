@@ -269,3 +269,15 @@ class Generic_Genome_Browser(I):
     def remove(self):
         raise NotImplementedError
 
+class EsetNod32(I):
+    __doc__ = ('Eset Nod32: a Antivirus software for Desktop Linux distributions')
+    detail = _('officical site:') + 'http://beta.eset.com/linux'
+    
+    def install(self):
+        if is32():
+            f =  R(['http://download.eset.com/special/eav_linux/ueav.i386.linux'], 28642812, '9090031fc8b7dae1a12a798aa383b0513cc8100a').download()
+        else:
+            f = R(['http://download.eset.com/special/eav_linux/ueav.x86_64.linux'], 28828744, '9d76959c7de46bb847272af65760173ae437106a').download()
+        run_as_root('chmod +x %s'%f)
+        run_as_root_in_terminal(f)
+    
