@@ -457,6 +457,10 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         if not keep:
             markup += ' ' + _('will be removed')
         cell.set_property('markup', markup)
+
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
     
     def toggled(self, render_toggle, path):
         self.liststore[path][0] = not self.liststore[path][0]
@@ -516,7 +520,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
         column_text = gtk.TreeViewColumn(_('Unused software configuration'))
         column_text.pack_start(render_text, True)
