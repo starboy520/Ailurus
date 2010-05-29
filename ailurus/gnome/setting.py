@@ -502,7 +502,7 @@ def __shortcut_setting():
 def __file_config():
     table = gtk.Table()
     table.set_col_spacings(10)
-    label = label_left_align(_('Maximum number of actions that gedit will be able to undo or redo:')) 
+    label = label_left_align(_('Maximum number of actions that gedit will be able to undo or redo(-1 for unlimited number of actions:)')) 
     key = '/apps/gedit-2/preferences/editor/undo/max_undo_actions'
     label.set_tooltip_text(_('GConf key: %s')%key)
     table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
