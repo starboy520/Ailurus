@@ -20,6 +20,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from __future__ import with_statement
 from lib import *
 from libu import *
 
@@ -117,10 +118,9 @@ def show_about_dialog():
           'CHEN Yangyang <skabyy@gmail.com>',
           'MA Yue <velly.empire@gmail.com>',
           'QI Chengjie <starboy.qi@gmail.com>',
-          '',
+          'HAN Haofu <gtxx3600@gmail.com>',
           _('Contributors:'),
           'HUANG Wei <wei.kukey@gmail.com>',
-          'HAN Haofu <gtxx3600@gmail.com>',
           'SHANG Yuanchun <idealities@gmail.com>',
           'DU Yue <elyes.du@gmail.com>',
           'Devil Wang <wxjeacen@gmail.com>',
@@ -231,7 +231,8 @@ def show_special_thank_dialog():
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
-    print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM</big></b>'
+    print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
+    print >>text, 'Michael McBride</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'

@@ -64,16 +64,7 @@ def __preferences():
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
 
-    menu_tip_after_logging_in = gtk.CheckMenuItem( _('Show a random Linux skill after you log in to GNOME') )
-    menu_tip_after_logging_in.set_active(ShowALinuxSkill.installed())
-    def toggled(w):
-        if w.get_active(): ShowALinuxSkill.install()
-        else: ShowALinuxSkill.remove()
-        notify(_('Preferences changed'), _('Your changes will take effect at the next time when you log in to GNOME.') )
-    menu_tip_after_logging_in.connect('toggled', toggled)
-    
-    return [ menu_query_before_exit, 
-             menu_tip_after_logging_in, ]
+    return [ menu_query_before_exit ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')

@@ -30,6 +30,7 @@ class AMule(N):
     detail = _('An eMule-like client for eD2k and Kademlia networks')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'amule'
+    if FEDORA: pkgs = 'amule'
 
 class AWN(N):
     __doc__ = _('AWN (Avant Window Navigator): A dock-like bar')
@@ -37,12 +38,15 @@ class AWN(N):
     category = 'panel'
     if UBUNTU or MINT:
         pkgs = 'avant-window-navigator'
+    if FEDORA:
+        pkgs = 'avant-window-navigator'
             
 class Agave(N):
     'Agave'
     detail = _('Colorscheme designer')
     category = 'drawing'
     if UBUNTU or MINT: pkgs = 'agave'
+    if FEDORA: pkgs = 'agave'
 
 class Alacarte(N):
     __doc__ = ("Alacarte: Edit GNOME menu")
@@ -58,6 +62,8 @@ class Anjuta(N):
     detail = _('GNOME IDE for C/C++')
     category = 'ide'
     if UBUNTU or MINT: pkgs = 'anjuta'
+    if FEDORA : pkgs = 'anjuta'
+
 
 class Audacity(N):
     __doc__ = _('Audacity: Music editor')
@@ -89,12 +95,15 @@ class Avidemux(N):
     detail = _('Video editor')
     category = 'media_editor'
     if UBUNTU or MINT: pkgs = 'avidemux'
+    if FEDORA: pkgs = 'avidemux'
+
 
 class Banshee(N):
     'Banshee'
     detail = _('Media player and media manager')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'banshee'
+    if FEDORA: pkgs = 'banshee'
 
 class Bluefish(N):
     __doc__ = _('Bluefish: Edit HTML web-pages')
@@ -130,6 +139,7 @@ class BosWars(N):
     detail = _('Real time strategy game, just like Red Alarm')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'boswars'
+    if FEDORA: pkgs = 'boswars'
 
 class BreatheIconTheme(N):
     __doc__ = _('Breathe Icon Theme')
@@ -167,7 +177,8 @@ class Cheese(N):
     __doc__ = _('Cheese')
     detail = _('Take pictures and videos from your webcam, also provides some graphical effects')
     category = 'others'
-    if UBUNTU or MINT: pkgs = 'cheese'
+    if UBUNTU or MINT : pkgs = 'cheese'
+    if FEDORA : pkgs = 'cheese'
 
 class ChildsPlay(N):
     __doc__ = _('ChildsPlay: A suite of educational games for children')
@@ -194,6 +205,7 @@ class ClawsMail(N):
     detail = _('Lightweight email client')
     category = 'email'
     if UBUNTU or MINT: pkgs = 'claws-mail'
+    if FEDORA :pkgs = 'claws-mail'
     
 class CodeBlocks(N):
     __doc__ = _('Code::Blocks - C/C++ IDE')
@@ -209,6 +221,7 @@ class Comix(N):
     detail = _('Customizable image viewer specifically designed to handle comic books')
     category = 'others'
     if UBUNTU or MINT: pkgs = 'comix'
+    if FEDORA : pkgs = 'comix'
 
 class CompizSettingManager(N):
     __doc__ = _('Compiz settings manager')
@@ -219,6 +232,8 @@ class CompizSettingManager(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'compizconfig-settings-manager'
+    if FEDORA : 
+        pkgs = 'compiz-manager'
 
 class CompizSettingManagerSimple(N):
     __doc__ = _('Simple-ccsm: A simple Compiz settings manager')
@@ -226,6 +241,9 @@ class CompizSettingManagerSimple(N):
     license = GPL
     if UBUNTU or MINT:
         pkgs = 'simple-ccsm'
+    if FEDORA :
+        pkgs = 'ccsm'
+    
 
 class Ctags_Cscope(N):
     __doc__ = _('Ctags and Cscope: Popular source code parsers')
@@ -241,24 +259,29 @@ class Deluge(N):
     detail = _('Lightweight bittorrent client')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'deluge'
-    
+    if FEDORA : pkgs = 'deluge'
+
 class Devhelp(N):
     'Devhelp'
     detail = _('Browse GNOME/GTK API documentation')
     category = 'saber'
     if UBUNTU or MINT: pkgs = 'devhelp'
+    if FEDORA : pkgs = 'devhelp'
+    
 
 class Dia(N):
     'Dia'
     detail = _('Open source substitution for Visio')
     category = 'drawing'
     if UBUNTU or MINT: pkgs = 'dia'
+    if FEDORA : pkgs = 'dia'
 
 class EasyTAG(N):
     'EasyTAG'
     detail = _('Edit tags for MP3, FLAC, Ogg files')
     category = 'media_editor'
     if UBUNTU or MINT: pkgs = 'easytag'
+    if FEDORA : pkgs = 'easytag'
 
 class Emacs(N):
     __doc__ = _('Emacs: Advanced text editor')
@@ -274,12 +297,14 @@ class Emesene(N):
     detail = _('MSN Messenger client, with a simpler interface and a nicer look')
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'emesene'
+    if FEDORA: pkgs = 'emesene'
 
 class Empathy(N):
     'Empathy'
     detail = _('Messaging program which supports many protocols')
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'empathy'
+    if FEDORA : pkgs = 'empathy'
 
 class Enhance_Decompression_Capability(N) :
     __doc__ = _('Compression/decompression support for "*.7z" and "*.cab" files')
@@ -301,6 +326,7 @@ class Evolution(N):
     detail = _('Email client, calendar, contact manager and address manager')
     category = 'email'
     if UBUNTU or MINT: pkgs = 'evolution'
+    if FEDORA: pkgs = 'evolution'
 
 class Extcalc(N):
     __doc__ = _('Extcalc: A multifunctional graphic calculator')
@@ -326,6 +352,7 @@ class FileZilla(N):
     detail = _('FTP client')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'filezilla'
+    if FEDORA : pkgs = 'filezilla'
 
 class FireWall(N):
     __doc__ = _('Firestarter: Configure Linux firewall')
@@ -340,6 +367,7 @@ class FreeDOOM(N):
     __doc__ = _('FreeDOOM: Open source clone of DOOM')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'freedoom'
+    if FEDORA : pkgs = 'freedoom'
 
 class FreeGLut3(N):
     __doc__ = _('OpenGL library')  
@@ -386,6 +414,7 @@ class FrozenBubble(N):
     detail = _('Clone of the popular "Puzzle Bobble" game')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'frozen-bubble'
+    if FEDORA : pkgs = 'frozen-bubble'
 
 class GCompris(N):
     __doc__ = _('GCompris: Educational games for children aged 2 to 10')
@@ -408,12 +437,14 @@ class GCstar(N):
     detail = _('Manage your collections such as movies, books, music')
     category = 'business'
     if UBUNTU or MINT: pkgs = 'gcstar'
+    if FEDORA : pkgs = 'gcstar'
 
 class GIMP(N):
     'GIMP'
     detail = _('Open source substitution for Photoshop')
     category = 'drawing'
     if UBUNTU or MINT: pkgs = 'gimp'
+    if FEDORA : pkgs = 'gimp'
 
 class GMP(N):
     __doc__ = _('GNU multiprecision arithmetic library')
@@ -429,54 +460,65 @@ class GNOMEColors(N):
     detail = _('A set of icons with 7 color variations')
     category = 'theme'
     if UBUNTU or MINT: pkgs = 'gnome-colors'
+    if FEDORA : pkgs = 'gnome-colors-icon-theme'
 
 class GNOMEDo(N):
     'GNOME Do'
     detail = _('Desktop launcher, which helps you quickly perform actions')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-do'
+    if FEDORA : pkgs = 'gnome-do'
 
 class GNOMEShell(N):
     'GNOME shell'
     detail = _('Experience GNOME 3 desktop')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'gnome-shell'
+    if FEDORA : pkgs = 'gnome-shell'
     
 class GNOME_mplayer(N):
     'GNOME MPlayer'
     detail = _('GTK frontend for MPlayer')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'gnome-mplayer'
+    if FEDORA : pkgs = 'gnome-mplayer'
+
 
 class Geany(N):
     'Geany'
     detail = _('Lightweight text editor')
     category = 'text_editor'
     if UBUNTU or MINT: pkgs = 'geany'
+    if FEDORA : pkgs = 'geany'
+
 
 class Ghex(N):
     'Ghex'
     detail = _('Hex editor')
     category = 'text_editor'
     if UBUNTU or MINT: pkgs = 'ghex'
+    if FEDORA: pkgs = 'ghex'
 
 class Giver(N):
     'Giver'
     detail = _('Automatically discover other people running Giver on the network, then send files to other people')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'giver'
+    if FEDORA : pkgs = 'giver'
 
 class Glest(N):
     'Glest'
     detail = _('Real time strategy game, just like Warcraft')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'glest'
+    if FEDORA : pkgs = 'glest'
 
 class Globulation2(N):
     'Globulation 2'
     detail = _('Real time strategy game which focuses on strategy rather than on micro-management')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'glob2'
+    if FEDORA : pkgs = 'glob2'
 
 class Gnash(N):
     __doc__ = _('Flash plugin for web browser')
@@ -492,22 +534,26 @@ class Gnote(N):
     detail = _('Mono-free alternative to Tomboy Notes')
     category = 'business'
     if UBUNTU or MINT: pkgs = 'gnote'
+    if FEDORA : pkgs = 'gnote'
 
 class GoogleGadgetsGTK(N):
     __doc__ = _('Google gadgets') + ' ' + _('(GTK version)')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'google-gadgets-gtk'
+    if FEDORA : pkgs = 'google-gadgets-gtk'
 
 class GoogleGadgetsQT(N):
     __doc__ = _('Google gadgets') + ' ' + _('(QT version)')
     category = 'candy'
     if UBUNTU or MINT: pkgs = 'google-gadgets-qt'
+    if FEDORA : pkgs = 'google-gadgets-qt'
 
 class Gwibber(N):
     'Gwibber'
     detail = _('Microblogging client which supports Twitter and Facebook')
     category = 'blog'
     if UBUNTU or MINT: pkgs = 'gwibber'
+    if FEDORA : pkgs = 'gwibber'
 
 class HardwareLister(N):
     __doc__ = _('lshw: List hardware information')
@@ -524,6 +570,7 @@ class Hedgewars(N):
     detail = _('Hedgehogs fight enemies with fantastic weapons')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'hedgewars'
+    if FEDORA : pkgs = 'hedgewars'
 
 class ImageMagick(N):
     __doc__ = _('ImageMagick: Edit images')
@@ -564,12 +611,14 @@ class Keepassx(N):
     detail = _('Password manager which saves many different information e.g. user names and passwords in one single database.')
     category = 'business'
     if UBUNTU or MINT: pkgs = 'keepassx'
+    if FEDORA : pkgs = 'keepassx'
 
 class Kflickr(N):
     'kflickr'
     detail = _('Upload photos to Flickr')
     category = 'others'
     if UBUNTU or MINT: pkgs = 'kflickr'
+    if FEDORA : pkgs = 'kflickr'
 
 class Kupfer(N):
     'Kupfer'
@@ -582,6 +631,8 @@ class Leafpad(N):
     detail = _('Simple text editor')
     category = 'text_editor'
     if UBUNTU or MINT: pkgs = 'leafpad'
+    if FEDORA : pkgs = 'leafpad'
+
 
 class Liferea(N):
     __doc__ = _('Liferea: a RSS feed reader')
@@ -598,6 +649,7 @@ class LinuxDCPP(N):
     detail = _('Connect to a central hub then share files and chat with other people.')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'linuxdcpp'
+    if FEDORA : pkgs = 'linuxdcpp'
 
 class MACChanger(N):
     __doc__ = _('MACChanger: change MAC address')
@@ -614,6 +666,7 @@ class Midori(N):
     detail = _('Lightweight web browser')
     category = 'browser'
     if UBUNTU or MINT: pkgs = 'midori'
+    if FEDORA : pkgs = 'midori'
 
 class MiniCom_Ckermit(N):
     __doc__ = _('Minicom and Kermit: Communication software for embedded MCU boards')
@@ -633,6 +686,7 @@ class Miro(N):
     detail = _('Video player')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'miro'
+    if FEDORA : pkgs ='Miro'
 
 class Moonlight(N):
     __doc__ = _(u'Moonlight: an open source implementation of Microsoft® Silverlight')
@@ -645,13 +699,16 @@ class Moonlight(N):
     if UBUNTU or MINT:
         pkgs = 'moonlight-plugin-mozilla'
 
+
 class Multimedia_Codecs (N) :
     __doc__ = _('Multi-media codec')
     category = 'others'
     license = LGPL
     if UBUNTU or MINT:
         pkgs = ( 'gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad ' +
-                 'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse' )
+                 'gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse'
+    )
+    if FEDORA: pkgs = 'gstreamermm'
 
 class Nautilus_Actions(N):
     __doc__ = _('"Actions configuration" entry')
@@ -681,6 +738,7 @@ class Nautilus_Audio_Convert(N):
                 APT.install('nautilus-script-manager')
             run('nautilus-script-manager enable ConvertAudioFile')
 
+
 class Nautilus_Filename_Repairer(N):
     __doc__ = _('"Repair filename" entry')
     detail = _('When any file with wrong encoding filename is right clicked,\n show a "Repair filename" menu item.')
@@ -698,6 +756,8 @@ class Nautilus_Gksu(N):
     DE = 'gnome'
     if UBUNTU or MINT:
         pkgs = 'nautilus-gksu'
+    if FEDORA: 
+        pkgs = 'nautilus-beesu-manage'
 
 class Nautilus_Image_Converter(N):
     __doc__ = _('"Resize/Rotate images" entries')
@@ -791,6 +851,7 @@ class Nexuiz(N):
     detail = _('3D first-person shooter game')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'nexuiz'
+    if FEDORA : pkgs = 'nexuiz'
     
 class Octave(N):
     __doc__ = _(u'Octave: A Matlab® compatible numerical computation appliation')
@@ -800,6 +861,13 @@ class Octave(N):
         pkgs = 'qtoctave'
     if UBUNTU or MINT:
         pkgs = 'qtoctave'
+
+class OpenJDK(N):
+    'OpenJDK 6'
+    category = 'saber'
+    license = GPL
+    if UBUNTU or MINT:
+        pkgs = 'openjdk-6-jdk openjdk-6-jre-lib'
 
 class Openshot(N):
     'Openshot'
@@ -838,6 +906,7 @@ class Pidgin(N):
     'Pidgin'
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'pidgin'
+    if FEDORA: pkgs = 'pidgin'
 
 class PowerTop(N):
     'PowerTop'
@@ -894,6 +963,7 @@ class QutIM(N):
     detail = _('Lightweight messaging program')
     category = 'chat'
     if UBUNTU or MINT: pkgs = 'qutim'
+    if FEDORA : pkgs = 'qutim'
 
 class R_Language_Basic(N):
     __doc__ = _('R language (basic development environment)')
@@ -936,6 +1006,7 @@ class SMPlayer(N):
     detail = _('Qt frontend for MPlayer')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'smplayer'
+    if FEDORA : pkgs = 'smplayer'
 
 class ScienceBiology(N):
     __doc__ = _('Med-bio: A lot of micro-biology software')
@@ -960,6 +1031,7 @@ class Scribus(N):
     detail = _('Professional typesetting software')
     category = 'typesetting'
     if UBUNTU or MINT: pkgs = 'scribus'
+    if FEDORA : pkgs = 'scribus'
 
 class ShikiColors(N):
     'Shiki Colors'
@@ -972,12 +1044,14 @@ class Shutter(N):
     detail = _('Make screenshots')
     category = 'others'
     if UBUNTU or MINT: pkgs = 'shutter'
+    if FEDORA : pkgs = 'shutter'
 
 class Sonata(N):
     'Sonata'
     detail = _('Lightweight music player')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'sonata'
+    if FEDORA: pkgs = 'sonata'
 
 class Stardict(N):
     __doc__ = _('Stardict')
@@ -1027,18 +1101,21 @@ class TheManaWorld(N):
     detail = _('2D MMORPG')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'tmw'
+    if FEDORA : pkgs = 'manaworld'
     
 class Thunderbird(N):
     'Thunderbird'
     detail = _('Email client and RSS reader')
     category = 'email'
     if UBUNTU or MINT: pkgs = 'thunderbird'
+    if FEDORA : pkgs ='thunderbird'
 
 class Transmission(N):
     'Transmission'
     detail = _('Lightweight bittorrent client')
     category = 'file_sharing'
     if UBUNTU or MINT: pkgs = 'transmission'
+    if FEDORA : pkgs = 'transmission'
 
 class TuxPaint(N):
     __doc__ = _('Tux Paint: A drawing program for young children three years and up')
@@ -1088,6 +1165,7 @@ class VLC(N):
     detail = _('Media player and media format converter')
     category = 'player'
     if UBUNTU or MINT: pkgs = 'vlc'
+    if FEDORA : pkgs = 'vlc'
 
 class VirtualBox(N):
     __doc__ = _('VirtualBox open source edition')
@@ -1098,6 +1176,8 @@ class VirtualBox(N):
     category = 'simulator'
     if UBUNTU or MINT:
         pkgs = 'virtualbox-ose' 
+    if FEDORA :
+        pkgs = 'VirtualBox-OSE'
 
 class Vuze_Karmic(N):
     # Latest Vuze is in 9.10 repository.
@@ -1134,6 +1214,8 @@ class Warzone2100(N):
     detail = _('Real time strategy game')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'warzone2100'
+    if FEDORA :
+        pkgs = 'warzone2100'
 
 class Wesnoth(N):
     __doc__ = _('Battle for Wesnoth')
@@ -1143,6 +1225,8 @@ class Wesnoth(N):
         def __init__(self):
             if APT.exist('wesnoth-1.8'): self.pkgs = 'wesnoth-1.8'
             else: self.pkgs = 'wesnoth'
+    if FEDORA:
+        pkgs = 'wesnoth'
 
 class Workrave(N) :
     'Workrave'
@@ -1167,6 +1251,8 @@ class Wormux(N):
     detail = _('Funny fight game on 2D maps')
     category = 'game'
     if UBUNTU or MINT: pkgs = 'wormux'
+    if FEDORA :
+        pkgs = 'wormux'
 
 class Zhcon(N):
     __doc__ = _('Zhcon')
@@ -1177,10 +1263,12 @@ class Zhcon(N):
     category = 'others'
     if UBUNTU or MINT:
         pkgs = 'zhcon'
+    if FEDORA :
+        pkgs = 'zhcon'
 
 class Zim(N):
     'Zim'
     detail = _('Notebook software which helps you create a wiki to your desktop')
     category = 'business'
     if UBUNTU or MINT: pkgs = 'zim'
-
+    if FEDORA: pkgs = 'Zim'
