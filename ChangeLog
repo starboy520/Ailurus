@@ -1,3 +1,24 @@
+2010-05-28 Homer Xing <homer.xing@gmail.com>
+
+    * Support YLMF. For YLMF users, please upgrade to version 10.05.92
+
+2010-05-23 Devil Wang <wxjeacen@gmail.com>
+
+    * Add a lot of software for Fedora
+	
+2010-05-23 Homer Xing <homer.xing@gmail.com>
+
+    * Immediately show/hide "quick setup" button.
+    * Immediately show/hide icons at the side of software names.
+
+2010-05-23 Ray Chen <chenrano2002@gmail.com>
+
+    * Use "yum clean all" command when clean YUM cache
+
+2010-05-22 HAN Haofu <gtxx3600@gmail.com>
+
+    * Optimize the behaviour of lib.notify()
+
 2010-05-22 Homer Xing <homer.xing@gmail.com>
 
     * Add button, in order to support "copy to clipboard"
@@ -47,18 +68,18 @@
 
 2010-05-14 HAN Haofu <gtxx3600@gmail.com>
 
-    *Rename 'platfrom' to 'DE'(Desktop Environment)
-    *Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
-    *Add new icon velly_icons/software_default_icon.png
-    *Move load_app_icon(name) from 'libu.py' to 'loader.py'
-    *Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
-    *Add icon on install_remove_pane to show package's desktop environment
-    *Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
+    * Rename 'platfrom' to 'DE'(Desktop Environment)
+    * Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
+    * Add new icon velly_icons/software_default_icon.png
+    * Move load_app_icon(name) from 'libu.py' to 'loader.py'
+    * Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
+    * Add icon on install_remove_pane to show package's desktop environment
+    * Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
     
 2010-05-11 HAN Haofu <gtxx3600@gmail.com>
 
-    *Add icon for package that has no icon
-    *Move some relative code to loader.py 
+    * Add icon for package that has no icon
+    * Move some relative code to loader.py 
 
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 

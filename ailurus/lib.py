@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.6'
-AILURUS_RELEASE_DATE = '2010-05-22'
+AILURUS_VERSION = '10.05.92'
+AILURUS_RELEASE_DATE = '2010-05-29'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -205,6 +205,22 @@ class Config:
                 a = line.split('=')[1].strip()
         return a
     @classmethod
+    def is_YLMF(cls):
+        import os
+        if not os.path.exists('/etc/lsb-release'): 
+            return False
+        with open('/etc/lsb-release') as f:
+            c = f.read()
+        return 'Ylmf_OS' in c
+    @classmethod
+    def get_YLMF_version(cls):
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
+    @classmethod
     def is_Fedora(cls):
         import os
         return os.path.exists('/etc/fedora-release')
@@ -293,34 +309,6 @@ class ResponseTime:
         assert isinstance(value, (int,float)) and value > 0
         cls.map[url] = value
         cls.changed = True
-
-class ShowALinuxSkill:
-    @classmethod
-    def installed(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        return os.path.exists(path)
-    @classmethod
-    def install(cls):
-        import os
-        dir = os.path.expanduser('~/.config/autostart/')
-        if not os.path.exists(dir): os.system('mkdir %s -p' % dir)
-        file = dir + 'show-a-linux-skill-bubble.desktop'
-        with open(file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
-    @classmethod
-    def remove(cls):
-        import os
-        path = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-        os.system('rm %s -f'%path)
 
 class CommandFailError(Exception):
     'Fail to execute a command'
@@ -444,13 +432,19 @@ def notify(title, content):
     # otherwise, this error happens. notify_notification_update: assertion `summary != NULL && *summary != '\0'' failed
     assert isinstance(title, str) and title
     assert isinstance(content, str)
-
     try:
         import pynotify
+        if not hasattr(notify,'ailurus_notify'):
+            notify.ailurus_notify = pynotify.Notification(' ',' ')
         icon = D+'suyun_icons/notify-icon.png'
-        n=pynotify.Notification(title, content, icon)
-        n.set_timeout(10000)
-        n.show()
+        if title == notify.ailurus_notify.get_property('summary'):
+            notify.ailurus_notify = pynotify.Notification(title, content, icon)
+            notify.ailurus_notify.set_hint_string("x-canonical-append", "")
+        else:
+            notify.ailurus_notify.update(title, content, icon)
+               
+        notify.ailurus_notify.set_timeout(10000)
+        notify.ailurus_notify.show()
     except:
         print_traceback()
 
@@ -907,8 +901,7 @@ def download(url, filename):
     
 def reset_dir():
     import os, sys
-    if sys.argv[0]!='':
-        os.chdir(os.path.dirname(os.path.realpath(sys.argv[0])))
+    os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 class APTSource2:
     re_pattern_server = None
@@ -1029,11 +1022,11 @@ class APTSource2:
         return ret
     @classmethod
     def third_party_urls(cls):
+        offi_urls = cls.official_urls()
         ret = set()
         for line in cls.iter_all_lines():
-            if not cls.is_official_line(line):
-                url = cls.get_url_from_line(line)
-                if url: ret.add(url)
+            url = cls.get_url_from_line(line)
+            if url and url not in offi_urls: ret.add(url)
         return ret
     @classmethod
     def all_urls(cls):
@@ -1535,15 +1528,6 @@ try:
 except:
     print 'Cannot init pynotify'
 
-try:
-    Config.get_bool('show-a-linux-skill-bubble')
-except:
-    try:
-        Config.set_bool('show-a-linux-skill-bubble', True)
-        ShowALinuxSkill.install()
-    except:
-        print_traceback()
-        
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
@@ -1552,6 +1536,7 @@ KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
+YLMF = Config.is_YLMF()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
@@ -1560,6 +1545,9 @@ elif MINT:
     VERSION = Config.get_Mint_version()
     assert VERSION in ['5', '6', '7', '8', '9']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+elif YLMF:
+    VERSION = Config.get_YLMF_version()
+    UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:

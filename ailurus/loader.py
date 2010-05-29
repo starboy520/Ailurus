@@ -30,18 +30,11 @@ if MINT or UBUNTU: import ubuntu as distribution
 elif FEDORA: import fedora as distribution
 else: distribution = None
 
-categories=('tweak','repository','biology','internet','firefox', 'firefoxdev',
-            'appearance','office','math','latex','dev','em', 'server',
-            'geography','education','media','vm','game', 'statistics', 
-            'eclipse', 'hardware', 'language', 'nautilus', 'embedded',
-            'design', 'videocarddriver')
-
-def check_class_members(app_class, default_category = 'tweak'):
+def check_class_members(app_class):
     import types
     if type(app_class)!=types.ClassType: raise TypeError, app_class
-    if not hasattr(app_class,'category'): app_class.category = default_category
+    if not hasattr(app_class,'category'): app_class.category = 'others'
     if type( getattr(app_class,'category','') ) != str: raise TypeError, app_class
-    if not app_class.category in categories: raise ValueError, app_class.category
     if not hasattr(app_class, 'detail'): app_class.detail=''
     if type( getattr(app_class,'detail','') ) != str: app_class.detail = str( getattr(app_class,'detail','') ) 
     if app_class.__doc__ is None: app_class.__doc__ = app_class.__name__
@@ -55,7 +48,7 @@ def load_app_icon(name):
     else:
         path = D + 'velly_icons/software_default_icon.png'
     import gtk
-    return gtk.gdk.pixbuf_new_from_file_at_size(path, 24, 24)
+    return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
 
 def load_app_objs():
     modules = []
@@ -150,8 +143,9 @@ def load_custom_app_objs():
         try:
             module = __import__(basename)
             return_value.extend( load_app_objs_from_extension(module) )
+            print 'Load extension', os.path.abspath(py)
         except:
-            print_traceback()
+            print 'Cannot load extension', os.path.abspath(py)
     # remove the extension directory from sys.path
     sys.path.pop(0)
     return return_value
@@ -205,15 +199,7 @@ def load_setting():
                 ret.extend(module.setting.get())
     return ret
 
-def __create_menu(menuitems):
-    import gtk
-    menu = gtk.Menu()
-    for item in menuitems:
-        menu.append(item)
-    menu.show_all()
-    return menu
-
-def load_study_linux_menu():
+def load_study_linux_menuitems():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -222,9 +208,9 @@ def load_study_linux_menu():
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_study_linux_menu'):
             ret.extend(module.menu.get_study_linux_menu())
-    return __create_menu(ret)
+    return ret
 
-def load_preferences_menu():
+def load_preferences_menuitems():
     import types
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
@@ -233,16 +219,16 @@ def load_preferences_menu():
     for module in [common, desktop, distribution]:
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_preferences_menu'):
             ret.extend(module.menu.get_preferences_menu())
-    return __create_menu(ret)
+    return ret
 
-def load_others_menu():
+def load_others_menuitems():
     import types
     ret = []
     for module in [common, desktop, distribution]:
         assert isinstance(module, types.ModuleType) or module == None
         if module and hasattr(module, 'menu') and hasattr(module.menu, 'get_others_menu'):
             ret.extend(module.menu.get_others_menu())
-    return __create_menu(ret)
+    return ret
 
 def load_tips():
     import types

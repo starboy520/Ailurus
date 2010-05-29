@@ -248,21 +248,21 @@ class Repo_VirtualBox(I):
 
 class GStreamer_Codecs (_rpm_install) :
     __doc__ = _('Multi-media codec')
-    category = 'media'
+    category = 'others'
     depends = Repo_RPMFusion_Free
     pkgs = ('gstreamer gstreamer-plugins-bad gstreamer-plugins-bad-extras gstreamer-plugins-base'
             'gstreamer-plugins-good gstreamer-plugins-ugly')
 
 class Adobe_Flash_Player(_rpm_install):
     __doc__ = _(u'Adobe® Flash plugin for web browser')
-    category = 'media'
+    category = 'flash'
     depends = Repo_Adobe
     pkgs = 'flash-plugin'
 
 class AdobeReader(_rpm_install):
     __doc__ = _(u'Adobe® PDF Reader')
     detail = _('Official site: http://get.adobe.com/cn/reader/')
-    category = 'office'
+    category = 'business'
     depends = Repo_Adobe
     def __init__(self):
         package_dict = {
@@ -290,7 +290,7 @@ class Realplayer32(I):
     detail = _('If you cannot play RMVB video, try this application!\n'
        'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>\n'
        'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
-    category = 'media'
+    category = 'player'
     def install(self):
         f = R(
 ['http://software-dl.real.com/079f1e1c74ca25924402/unix/RealPlayer11GOLD.rpm'],
@@ -306,7 +306,7 @@ class GoogleChrome(I):
     detail = _(
         'This is the web browser from Google. \n'
         'You can change themes by opening web-page https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome.')
-    category = 'internet'
+    category = 'browser'
     def install(self):
         if is32():
             f = R('http://dl.google.com/linux/direct/google-chrome-beta_current_i386.rpm').download()
@@ -323,10 +323,10 @@ class GoogleChrome(I):
                          'However, you have installed "google-chrome-unstable".'),
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
-    category = 'game'
+    detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
+    category = 'others'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
@@ -339,14 +339,14 @@ class VirtualBox(_rpm_install):
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
-    category = 'vm'
+    category = 'simulator'
     depends = Repo_VirtualBox
     pkgs = 'virtualbox'
 
 class Skype(_rpm_install):
     'Skype'
     detail = _('With Skype you can make free calls over the Internet to other people. ')
-    category = 'internet'
+    category = 'chat'
     depends = Repo_Skype
     pkgs = 'skype'
     def visible(self):
@@ -354,7 +354,7 @@ class Skype(_rpm_install):
 
 class VirtualBox_OSE(_rpm_install):
     __doc__ = _('VirtualBox open source edition')
-    category = 'vm'
+    category = 'simulator'
     license = GPL
     depends = Repo_RPMFusion_Free
     pkgs = 'VirtualBox-OSE'
