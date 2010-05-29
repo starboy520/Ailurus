@@ -1,3 +1,11 @@
+2010-05-29 Homer Xing <homer.xing@gmail.com>
+
+    * Move OpenJDK to native_apps
+    * Merge Generic_Genome_Browser
+    * Ellipsize text end in UbuntuAutoRemovableBox
+    * Put UbuntuAutoRemovableBox & UbuntuDeleteUnusedConfigBox in a row
+    * Chosen means "will remove" in UbuntuDeleteUnusedConfigBox & UbuntuAutoRemovableBox
+
 2010-05-28 Homer Xing <homer.xing@gmail.com>
 
     * Support YLMF. For YLMF users, please upgrade to version 10.05.92
