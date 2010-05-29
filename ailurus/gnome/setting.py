@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -196,8 +197,8 @@ def __layout_of_window_titlebar_buttons():
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
                            + _("It can be used in Metacity only.") )
     o = GConfComboBox('/apps/metacity/general/button_layout', 
-                      [_('GNOME classic'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'close,minimize,maximize:'],)
+                      [_('GNOME classic'), _('Ubuntu Lucid beta'), _('MAC OS X')],
+                      ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:'],)
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)
@@ -456,26 +457,6 @@ def __advance_setting():
     table.attach(o, 0, 1, 4, 5, gtk.FILL, gtk.FILL)
     o = GConfTextEntry('/desktop/gnome/session/required_components/windowmanager')
     table.attach(o, 1, 2, 4, 5, gtk.FILL, gtk.FILL)
-    
-    o = label_left_align(_('Restore the defaults of Gnome Envirnoment:'))
-    o.set_tooltip_text(_('Remove the following files:\n'
-                         '${HOME}/.gnome*'
-                         '${HOME}/.gconf*\n'
-                         '${HOME}/.metacity\n'
-                         '${HOME}/.nautilus\n'
-                         '/tmp/gconfd-${USER}\n'
-                         '/tmp/orbit-${USER}'))
-    table.attach(o, 0, 1, 5, 6, gtk.FILL, gtk.FILL)
-
-    reset_button = gtk.Button(_("Restore Settings"))
-    def reset_gconf(self):
-        run_as_root_in_terminal('rm /tmp/gconfd-${USER} /tmp/orbit-${USER}')
-        run('rm ~/.gnome* ~/.gconf* ~/.metacity ~/.nautilus -rf')
-        notify(_('Restore Success!'), _('On the next boot and login (as the affected user), '
-                                      'the desktop will be rebuilt.'))
-    
-    reset_button.connect('clicked', reset_gconf)
-    table.attach(reset_button, 1, 2, 5, 6, gtk.FILL, gtk.FILL)
 
     box.pack_start(table, False)
 
@@ -531,8 +512,8 @@ def __shortcut_setting():
 #    recover_button = gtk.Button(_('Reset Gconfig Setting'))
 #    def reset_gconf(w):
 #        run('cd ~ && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz .gconf')
-#	run_as_root('cd / && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz usr/share/gconf')
-#	notify(_('Reset Successful'), _('Some Setting will be applied when you login next time.'))
+#    run_as_root('cd / && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz usr/share/gconf')
+#    notify(_('Reset Successful'), _('Some Setting will be applied when you login next time.'))
 #    recover_button.connect('clicked', reset_gconf)
 #    import os
 #    if not os.path.exists(os.path.expanduser('~/.config/ailurus/gconfbackup.tar.gz')):
