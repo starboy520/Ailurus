@@ -380,3 +380,21 @@ class Repo_Chromium(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
+
+class ESETNOD32(I):
+    __doc__ = ('ESET NOD32')
+    detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    def install(self):
+        if is32():
+            f =  R(['http://download.eset.com/special/eav_linux/ueav.i386.linux']).download()
+        else:
+            f = R(['http://download.eset.com/special/eav_linux/ueav.x86_64.linux']).download()
+        run_as_root('chmod +x %s' %f)
+        run_as_root_in_terminal(f)
+        if not is32():
+            run_as_root('rm /usr/lib/libesets_pac.so -rf')
+    def installed(self):
+        import os
+        return os.path.exists('/opt/eset/')
+    def remove(self):
+        run_as_root('/opt/eset/esets/bin/esets_gil')

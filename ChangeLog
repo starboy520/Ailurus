@@ -1,7 +1,9 @@
 2010-05-29 QI Chengjie<starboy.qi@gmail.com>
-	* Add some plugins for Fedora 
-	* Add some system settings in setting panel
 
+	* Add Phpeclipse VEditor Photran DLTK_Ruby  for Fedora 
+	* Add gedit settings and file compression level in setting panel
+    * Add ESET NOD32 in fedora and ubuntu
+    
 2010-05-23 Devil Wang <wxjeacen@gmail.com>
 
     * Add a lot of software for Fedora

@@ -499,12 +499,12 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
-def __file_config():
+def __file_editor_setting():
     table = gtk.Table()
     table.set_col_spacings(10)
-    label = label_left_align(_('Maximum number of actions that gedit will be able to undo or redo(-1 for unlimited number of actions:)')) 
+    label = label_left_align(_('Maximum number of actions that gedit will be able to undo or redo(-1 for unlimited number of actions):')) 
     key = '/apps/gedit-2/preferences/editor/undo/max_undo_actions'
-    label.set_tooltip_text(_('GConf key: %s')%key)
+    label.set_tooltip_text(_('GConf key:') + '' + key )
     table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     
     o = GConfNumericEntry(key, -1, 10000)
@@ -512,13 +512,17 @@ def __file_config():
     
     label = label_left_align(_('Maximum number of recently opened files displayed in the "Recent Files" submenu:') )
     key = '/apps/gedit-2/preferences/ui/recents/max_recents'
-    label.set_tooltip_text(_('GConf key: %s')%key)
+    label.set_tooltip_text(_('GConf key:') + '' + key)
     table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     o = GConfNumericEntry(key, 1, 20)
     table.attach(o, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
-    
+    return Setting(table, _('Gedit management'), ['file_editor'])
+
+def __file_comression():
+    table = gtk.Table()
+    table.set_col_spacings(10)
     label = label_left_align('Change the compression level when adding files to an archive:')
-    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
     table.attach(
             GConfComboBox(
               '/apps/file-roller/general/compression_level',
@@ -526,9 +530,8 @@ def __file_config():
               ['normal',            'very_fast',   'fast',           'maximum'],
               _('Compression level used when adding files to an archive.')
               ),
-              1, 2, 2, 3, gtk.FILL, gtk.FILL)
-    return Setting(table, _('File configure'), ['file_configure'])
-
+              1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    return Setting(table, _('File compression level'), ['file_editor'])
 #def __gconfig_backup():
 #    table = gtk.Table()
 #    table.set_col_spacings(30)
@@ -629,7 +632,7 @@ def get():
             __textbox_context_menu_setting,
             __disable_terminal_beep,
             __backlight,
-            __file_config,
+            __file_editor_setting,
             __advance_setting,
 #            __suspend_and_hibernate,
             __restriction_on_current_user,
@@ -637,6 +640,7 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
             __login_window_setting,
+            __file_comression,
 #            __compiz_setting,
 #            __gconfig_backup,
             ]:

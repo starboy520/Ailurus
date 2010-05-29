@@ -112,7 +112,6 @@ class CDT(_path_lists):
         f = self.r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-#        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
     def visible(self):
         return not FEDORA
 
@@ -211,8 +210,6 @@ class DLTK(I):
     def make_sure_DLTK_installed(cls):
         obj = cls()
         if not obj.installed(): obj.install()
-    def visible(self):
-        return not FEDORA
 
 class PDT(I):
     __doc__ = _('PDT: PHP development')
