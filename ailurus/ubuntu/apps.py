@@ -268,7 +268,7 @@ class Generic_Genome_Browser(I):
         return False
     def remove(self):
         raise NotImplementedError
-#not merge , I am testing it
+    
 class EsetNod32(I):
     __doc__ = ('Eset Nod32: a Antivirus software for Desktop Linux distributions')
     detail = _('officical site:') + 'http://beta.eset.com/linux'
@@ -281,7 +281,8 @@ class EsetNod32(I):
         run_as_root('chmod +x %s'%f)
         run_as_root_in_terminal(f)
     def installed(self):
-        return False
+        import os
+        return os.path.exists('/opt/eset/')
     def remove(self):
-        pass
+        run_as_root('/opt/eset/esets/bin/esets_gil')
     
