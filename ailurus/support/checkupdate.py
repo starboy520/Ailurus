@@ -232,7 +232,8 @@ def show_special_thank_dialog():
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
-    print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM</big></b>'
+    print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
+    print >>text, 'Michael McBride</big></b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
