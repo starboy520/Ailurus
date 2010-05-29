@@ -197,8 +197,8 @@ def __layout_of_window_titlebar_buttons():
     label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
                            + _("It can be used in Metacity only.") )
     o = GConfComboBox('/apps/metacity/general/button_layout', 
-                      [_('GNOME classic'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'close,minimize,maximize:'],)
+                      [_('GNOME classic'), _('Ubuntu Lucid beta'), _('MAC OS X')],
+                      ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:'],)
     hbox = gtk.HBox(False, 10)
     hbox.pack_start(label, False)
     hbox.pack_start(o, False)

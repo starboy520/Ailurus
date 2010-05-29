@@ -71,5 +71,3 @@ ailurus/ubuntu/quick_setup.py
 ailurus/ubuntu/setting.py
 ailurus/ubuntu/third_party_repos.py
 ailurus/ubuntu/tips.py
-unfree/for_fedora.py
-unfree/for_ubuntu.py
