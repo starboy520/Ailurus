@@ -547,14 +547,35 @@ class ResetGNOME(gtk.VBox):
         self.pack_start(label, False)
         
         current_user = os.environ['USER']
-        users_list = [ dir for dir in os.listdir('/home/') if dir != current_user ]
-        for user in users_list:
-            button = gtk.Button(_('Reset user %s') % user)
-            button.connect('clicked', self.do_reset, user)
+        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
+        if users_list == []:
+            button = gtk.Button(_('No other users in this computer'))
+            button.set_sensitive(False)
             self.pack_start(button)
+        else:
+            for user in users_list:
+                button = gtk.Button(_('Reset user %s') % user)
+                button.connect('clicked', self.do_reset, user)
+                self.pack_start(button)
 
 def __reset_gnome():
     return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
+
+def __screen_saver():
+    
+    box = gtk.VBox()
+    o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
+                         '/apps/gnome-screensaver/idle_activation_enabled')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen when screen saver is activated'),
+                         '/apps/gnome-screensaver/lock_enabled')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen after hibernating'), '/apps/gnome-power-manager/lock/hibernate')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen after suspending'), '/apps/gnome-power-manager/lock/suspend')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('Screensaver'), ['screensaver'])
 
 def get():
     try:
@@ -588,6 +609,7 @@ def get():
             __compression_strategy,
             __gedit_setting,
             __reset_gnome,
+            __screen_saver,
             ]:
         try:
             ret.append(f())
