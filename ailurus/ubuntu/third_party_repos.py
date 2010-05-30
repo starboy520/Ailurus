@@ -362,7 +362,7 @@ class Repo_Audacious(_launchpad):
     content = 'audacious audacious-plugins'
     ppa = 'dupondje'
 
-# Disable Repo_Tor, because the packages are provided in Ubuntu Lucid and Fedora 12/13        
+# Disable Repo_Tor, because the packages are provided in Ubuntu Lucid and Fedora 12/13
 #class Repo_Tor(_repo):
 #    __doc__ = _('Tor (stable)')
 #    license = BSD

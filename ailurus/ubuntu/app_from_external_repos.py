@@ -76,8 +76,9 @@ class ComicVODPlayer_new(I):
         if not self.comicview.installed():
             self.comicview.install()
         # Remove current mplayer. Then install a newer version.
-        APT.remove('mplayer')
-        APT.install('mplayer')
+        to_remove = [ p for p in APT.get_installed_pkgs_set() if p.startswith('mplayer') ]
+        APT.remove(*to_remove)
+        APT.install('mplayer', 'mplayer-gui')
         # Remove repository
         Repo_Mplayer_VOD().remove()
     def installed(self):
