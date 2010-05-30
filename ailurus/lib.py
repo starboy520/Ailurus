@@ -900,7 +900,7 @@ def download(url, filename):
         timeout = Config.wget_get_timeout()
         tries = Config.wget_get_triesnum()
 
-        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
+        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' 2>&1"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
         import os

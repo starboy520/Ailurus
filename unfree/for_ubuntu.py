@@ -320,3 +320,25 @@ class EIOffice(I):
         if os.path.exists('/usr/bin/rmeio'):
             run_as_root('/usr/bin/rmeio')
 
+class ESETNOD32(I):
+    __doc__ = _('ESET NOD32')
+    detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    def install(self):
+        if is32():
+            f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()
+        else:
+            f = R('http://download.eset.com/special/eav_linux/ueav.x86_64.linux').download()
+        run('chmod +x ' + f)
+        run_as_root(f)
+        if not is32():
+            # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
+            with TempOwn('/etc/ld.so.preload') as o:
+                with open('/etc/ld.so.preload') as f:
+                    content = f.read()
+                content = content.replace('/usr/lib/libesets_pac.so', '')
+                with open('/etc/ld.so.preload', 'w') as f:
+                    f.write(content)
+    def installed(self):
+        return os.path.exists('/opt/eset/esets/bin/esets_gil')
+    def remove(self):
+        run_as_root('/opt/eset/esets/bin/esets_gil')
