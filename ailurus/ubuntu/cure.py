@@ -112,24 +112,6 @@ class Fix_error_in_netbeans_shortcut(C):
             with open(self.file, 'w') as f:
                 f.writelines(lines)
 
-class Show_a_Linux_skill_bubble(C):
-    __doc__ = _('Show a random Linux skill after you log in to GNOME')
-    detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
-    file = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-    def exists(self):
-        return not os.path.exists(self.file)
-    def cure(self):
-        with open(self.file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
-
 class Google_chrome_is_upgradable(C):
     __doc__ = _('Google Chrome can be upgraded.')
     detail = _('You are using Google Chrome beta version, but stable version is released.')
