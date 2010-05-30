@@ -229,6 +229,15 @@ class Config:
             if line.startswith('DISTRIB_CODENAME='):
                 return line.split('=')[1].strip()
     @classmethod
+    def is_Deepin(cls): # Linux Deepin is based on XUbuntu karmic
+        import platform
+        return platform.dist()[0] == 'Deepin'
+    @classmethod
+    def get_Deepin_version(cls):
+        'return karmic'
+        import platform
+        return platform.dist()[2]
+    @classmethod
     def is_Fedora(cls):
         import os
         return os.path.exists('/etc/fedora-release')
@@ -1546,6 +1555,7 @@ XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
 YLMF = Config.is_YLMF()
+DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
@@ -1557,6 +1567,9 @@ elif MINT:
 elif YLMF:
     VERSION = Config.get_YLMF_version()
     UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
+elif DEEPIN:
+    VERSION = Config.get_Deepin_version()
+    UBUNTU = True # Another dirty hack. Not good.
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
