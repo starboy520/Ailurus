@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, pango
 import sys
 import os
 from lib import *
@@ -39,8 +39,10 @@ class CleanUpPane(gtk.VBox):
         if UBUNTU or MINT:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-            self.pack_start(UbuntuAutoRemovableBox())
-            self.pack_start(UbuntuDeleteUnusedConfigBox())
+            hbox = gtk.HBox(True, 20)
+            hbox.pack_start(UbuntuAutoRemovableBox())
+            hbox.pack_start(UbuntuDeleteUnusedConfigBox())
+            self.pack_start(hbox)
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -401,14 +403,19 @@ class UbuntuAutoRemovableBox(gtk.HBox):
                 print_traceback()
         self.refresh()
     
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
+    
     def __init__(self):
         self.liststore = gtk.ListStore(bool, str, long, str) #keep?, name, disk space cost, summary 
         render_keep = gtk.CellRendererToggle()
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Auto-removable packages'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)
@@ -452,6 +459,10 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         if not keep:
             markup += ' ' + _('will be removed')
         cell.set_property('markup', markup)
+
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
     
     def toggled(self, render_toggle, path):
         self.liststore[path][0] = not self.liststore[path][0]
@@ -511,8 +522,9 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Unused software configuration'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)

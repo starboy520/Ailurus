@@ -33,5 +33,18 @@ def __ubuntu():
         return [row(_('Ubuntu version:'), value, D+'other_icons/ubuntu.png' )]
     except: print_traceback()
 
+def __ubuntu_derivative(): # dirty hack. It is better to create a new folder for each Ubuntu derivative.
+    try: 
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_RELEASE='):
+                value = line.split('=')[1].strip()
+        return [row(_('Operating system version:'), value, D+'other_icons/tux.png' )]
+    except: print_traceback()
+
 def get():
-    return [__ubuntu]
+    if Config.is_Ubuntu():
+        return [__ubuntu]
+    else:
+        return [__ubuntu_derivative]

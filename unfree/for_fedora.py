@@ -380,3 +380,28 @@ class Repo_Chromium(I):
     def remove(self):
         if _repo.exist(self.path):
             _repo.disable(self.path)
+
+class ESETNOD32(I):
+    __doc__ = _('ESET NOD32')
+    detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    category = 'antivirus'
+    def install(self):
+        if is32():
+            f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()
+        else:
+            f = R('http://download.eset.com/special/eav_linux/ueav.x86_64.linux').download()
+        run('chmod +x ' + f)
+        run_as_root(f)
+        if not is32():
+            # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
+            with TempOwn('/etc/ld.so.preload') as o:
+                with open('/etc/ld.so.preload') as f:
+                    content = f.read()
+                with open('/etc/ld.so.preload', 'w') as f:
+                    for item in content.split():
+                        if 'libesets_pac.so' not in item:
+                            print >>f, item, 
+    def installed(self):
+        return os.path.exists('/opt/eset/esets/bin/esets_gil')
+    def remove(self):
+        run_as_root('/opt/eset/esets/bin/esets_gil')

@@ -1,6 +1,27 @@
+2010-05-30 Homer Xing <homer.xing@gmail.com>
+
+    * Add a preference menuitem to choose default pane.
+
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
     * Add the 'reset gnome configuration settings'
+
+2010-05-29 QI Chengjie <starboy.qi@gmail.com>
+
+    * Add some eclipse extensions for Fedora
+    * Add ESET NOD32
+    
+2010-05-29 Homer Xing <homer.xing@gmail.com>
+
+    * Move OpenJDK to native_apps
+    * Merge Generic_Genome_Browser
+    * Ellipsize text end in UbuntuAutoRemovableBox
+    * Put UbuntuAutoRemovableBox & UbuntuDeleteUnusedConfigBox in a row
+    * Chosen means "will remove" in UbuntuDeleteUnusedConfigBox & UbuntuAutoRemovableBox
+
+2010-05-28 Homer Xing <homer.xing@gmail.com>
+
+    * Support YLMF. YLMF users please upgrade to version 10.05.92
 
 2010-05-23 Devil Wang <wxjeacen@gmail.com>
 

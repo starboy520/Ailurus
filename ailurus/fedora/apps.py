@@ -23,6 +23,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from apps_eclipse import *
 
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
@@ -114,23 +115,3 @@ class Enable_Sudo(I):
         run_as_root_in_terminal(D+'../support/enable_sudo.py')
     def remove(self):
         pass
-
-class Generic_Genome_Browser(I):
-    __doc__ = _('Generic Genome Browser')
-    detail = _('Generic Genome Browser is a combination of database and interactive web page '
-               'for manipulating and displaying annotations on genomes.\n'
-               '<span color="red">Due to the limitation of the authors\' programming ability, '
-               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
-    license = AL
-    category='biology'
-    def install(self):
-        for package in ['perl-libwww-perl', 'perl-CPAN']:
-            if not RPM.installed(package):
-                RPM.install(package)
-        
-        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        run_as_root_in_terminal('perl ' + f)
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplementedError

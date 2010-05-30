@@ -21,8 +21,8 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.91'
-AILURUS_RELEASE_DATE = '2010-05-26'
+AILURUS_VERSION = '10.05.92'
+AILURUS_RELEASE_DATE = '2010-05-29'
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -155,7 +155,15 @@ class Config:
     @classmethod
     def get_show_software_icon(cls):
         try: value = cls.get_bool('show_software_icon')
-        except: value = False
+        except: value = True
+        return value
+    @classmethod
+    def set_default_pane(cls, value):
+        cls.set_string('default_pane', value)
+    @classmethod
+    def get_default_pane(cls):
+        try: value = cls.get_string('default_pane')
+        except: value = 'SystemSettingPane'
         return value
     @classmethod
     def get_locale(cls):
@@ -204,6 +212,22 @@ class Config:
             if line.startswith('DISTRIB_RELEASE='):
                 a = line.split('=')[1].strip()
         return a
+    @classmethod
+    def is_YLMF(cls):
+        import os
+        if not os.path.exists('/etc/lsb-release'): 
+            return False
+        with open('/etc/lsb-release') as f:
+            c = f.read()
+        return 'Ylmf_OS' in c
+    @classmethod
+    def get_YLMF_version(cls):
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
+        with open('/etc/lsb-release') as f:
+            lines = f.readlines()
+        for line in lines:
+            if line.startswith('DISTRIB_CODENAME='):
+                return line.split('=')[1].strip()
     @classmethod
     def is_Fedora(cls):
         import os
@@ -876,7 +900,7 @@ def download(url, filename):
         timeout = Config.wget_get_timeout()
         tries = Config.wget_get_triesnum()
 
-        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
+        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' 2>&1"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
         import os
@@ -1520,6 +1544,7 @@ KDE = Config.is_KDE()
 XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
+YLMF = Config.is_YLMF()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
@@ -1528,6 +1553,9 @@ elif MINT:
     VERSION = Config.get_Mint_version()
     assert VERSION in ['5', '6', '7', '8', '9']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+elif YLMF:
+    VERSION = Config.get_YLMF_version()
+    UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
