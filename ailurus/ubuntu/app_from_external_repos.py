@@ -187,13 +187,6 @@ class RedNoteBook(_apt_install):
     def visible(self):
         return VERSION != 'lucid'
 
-class Songbird(_apt_install):
-    __doc__ = _('Songbird: Open source substitution of iTunes')
-    category = 'player'
-    license = GPL
-    depends = Repo_Songbird
-    pkgs = 'songbird'
-
 class XBMC(_apt_install):
     __doc__ = _('XBMC: Home entertainment system')
     category = 'player'

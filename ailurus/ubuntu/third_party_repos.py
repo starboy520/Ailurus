@@ -397,13 +397,6 @@ class Repo_Pidgin_Develop(_launchpad):
     content = 'pidgin'
     ppa = 'pidgin-developers'
 
-class Repo_Songbird(_launchpad):
-    __doc__ = _('Songbird (beta version)')
-    license = GPL
-    desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
-    content = 'songbird'
-    ppa = 'songbird-daily'
-
 class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
     license = GPL

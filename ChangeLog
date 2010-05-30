@@ -8,6 +8,7 @@
     * Fix bug: cannot install software without key.
     * Fix bug: SHA-DA radio cannot be installed.
     * Do not raise NotImplementedError when remove Aptana. Display some text instead.
+    * Fix bug: Install the latest songbird.
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
