@@ -132,8 +132,31 @@ class Show_a_Linux_skill_bubble(C):
 
 class Google_chrome_is_upgradable(C):
     __doc__ = _('Google Chrome can be upgraded.')
+    detail = _('You are using Google Chrome beta version, but stable version is released.')
     def exists(self):
-        if UBUNTU or MINT:
-            return APT.installed('google-chrome-beta')
+        return APT.installed('google-chrome-beta')
     def cure(self):
+        APT.remove('google-chrome-beta')
         open_web_page('http://www.google.com/chrome/')
+
+class Install_full_language_support(C):
+    __doc__ = _('Install full language support and input method')
+    def exists(self):
+        lang = Config.get_locale().split('_')[0]
+        list = [
+                'language-pack-' + lang,
+                'language-support-fonts-' + lang,
+                'language-support-input-' + lang,
+                'language-support-translations-' + lang,
+                'language-support-' + lang,
+                'language-support-writing-' + lang,
+                ]
+        if GNOME: list.append('language-pack-gnome-' + lang)
+        if KDE:   list.append('language-pack-kde-' + lang)
+        pkgs = [p for p in list if APT.exist(p) and not APT.installed(p)]
+        self.pkgs = pkgs
+        self.detail = _('Command:') + ' apt-get install ' + ' '.join(self.pkgs)
+        return bool(pkgs)
+    def cure(self):
+        if self.pkgs:
+            APT.install(*self.pkgs)
