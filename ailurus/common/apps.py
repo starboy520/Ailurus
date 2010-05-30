@@ -380,7 +380,8 @@ class FFRadioGet(_ff_extension):
         self.download_url = 'http://ipget.cn/RadioGet/'
         self.range = '2.0~3.6'
         self.name = u'RadioGet'
-        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
+        # We add a second url because ipget.cn is in expiration date now :(
+        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi', 'http://ailurus.googlecode.com/files/RadioGet-0.9.xpi'],
     15870, '132b45fd31dff76676d6d66bbe2b0f556f2f34fd')
         _ff_extension.__init__(self)
 

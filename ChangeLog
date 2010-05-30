@@ -4,8 +4,9 @@
     * Re-enable Oracle repository.
     * Move language support to Computer Doctor pane.
     * Add Eclipse owner correction in Computer Doctor pane.
-    * Fix bug: MPlayer-vod cannot be installed
-    * Fix bug: cannot install software without key
+    * Fix bug: MPlayer-vod cannot be installed.
+    * Fix bug: cannot install software without key.
+    * Fix bug: SHA-DA radio cannot be installed.
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
