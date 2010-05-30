@@ -63,6 +63,7 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
               (D+'umut_icons/s_login_window.png', _('Login window'), 'login_window', ),
               (D+'umut_icons/s_compression.png', _('Compression'), 'compression', ),
+              (D+'umut_icons/s_gedit.png', _('GEdit'), 'gedit', ),
                 ]:
             if category in existing_categories:
                 pixbuf = icon(iconpath) 

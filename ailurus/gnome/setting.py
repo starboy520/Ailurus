@@ -511,6 +511,28 @@ def __compression_strategy():
     hbox.pack_start(combo, False)
     return Setting(hbox, _('Compression strategy'), ['compression'])
 
+def __gedit_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    
+    key = '/apps/gedit-2/preferences/editor/undo/max_undo_actions'
+    label = gtk.Label(_('Maximum number of undos:'))
+    label.set_tooltip_text(_('GConf key: ') + key)
+    label.set_alignment(0, 0.5)
+    entry = GConfNumericEntry(key, 0, 200)
+    table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(entry, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    
+    key = '/apps/gedit-2/preferences/ui/recents/max_recents'
+    label = gtk.Label(_('Maximum number of recent files:'))
+    label.set_tooltip_text(_('GConf key: ') + key)
+    label.set_alignment(0, 0.5)
+    entry = GConfNumericEntry(key, 0, 20)
+    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(entry, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+
+    return Setting(table, _('GEdit settings'), ['gedit'])
+
 #def __gconfig_backup():
 #    table = gtk.Table()
 #    table.set_col_spacings(30)
@@ -595,6 +617,12 @@ def __compression_strategy():
 #    return Setting(table, _('CompizConfig Settings'), ['window'])
 
 def get():
+    try:
+        import gconf
+    except: # python-gconf is missing 
+        print 'python-gconf is missing. Do not load GNOME settings.'
+        return []
+    
     ret = []
     for f in [
             __desktop_icon_setting,
@@ -619,11 +647,11 @@ def get():
             __shortcut_setting,
             __login_window_setting,
             __compression_strategy,
+            __gedit_setting,
 #            __compiz_setting,
 #            __gconfig_backup,
             ]:
         try:
-            import gconf
             ret.append(f())
         except:
             print_traceback()
