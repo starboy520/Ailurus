@@ -359,7 +359,7 @@ class MainView:
             item = toolitem(icon, text, 'clicked', self.activate_pane, key)
             self.toolbar.insert(item, 0)
         
-        self.activate_pane(None, 'SystemSettingPane')
+        self.activate_pane(None, Config.get_default_pane())
 
     def get_item_icon_size(self):
         return min( int(self.last_x / 20), 48)
