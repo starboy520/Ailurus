@@ -396,9 +396,10 @@ class ESETNOD32(I):
             with TempOwn('/etc/ld.so.preload') as o:
                 with open('/etc/ld.so.preload') as f:
                     content = f.read()
-                content = content.replace('/usr/lib/libesets_pac.so', '')
                 with open('/etc/ld.so.preload', 'w') as f:
-                    f.write(content)
+                    for item in content.split():
+                        if 'libesets_pac.so' not in item:
+                            print >>f, item, 
     def installed(self):
         return os.path.exists('/opt/eset/esets/bin/esets_gil')
     def remove(self):
