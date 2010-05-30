@@ -11,6 +11,7 @@
     * Fix bug: Install the latest songbird.
     * Fix bug: _download_one_file.install() always fail even if successfully copied file.
     * Fix bug: cannot download NScript.
+    * Fix bug: Weave is renamed to Firefox Sync.
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 

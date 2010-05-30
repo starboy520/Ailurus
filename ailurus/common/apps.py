@@ -462,16 +462,15 @@ class FFViewSourceChart(_ff_extension):
                       29360,'6b7e07b806e2a8158cad85413bb50d28e4680755')
         _ff_extension.__init__(self)
 
-class FFWeaveSync35(_ff_extension):
-    __doc__ = _('Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
+class FFFirefoxSync(_ff_extension):
+    __doc__ = _('Firefox Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
     license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
         self.range = '3.5~3.7'
         self.name = u'Weave'
-        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/10868/weave-1.0b3-fx+fn+sm.xpi'],
-    360287, '23c23f795f564272348276f48cb506c7feabdad0')
+        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/10868/firefox_sync-1.3-fx+fn+sm.xpi'])
         _ff_extension.__init__(self)
 
 class FFWebDeveloper(_ff_extension):
