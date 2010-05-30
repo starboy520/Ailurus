@@ -24,6 +24,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from apps_eclipse import *
 
 class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')

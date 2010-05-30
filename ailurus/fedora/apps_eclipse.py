@@ -23,114 +23,30 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from libapp import * 
+from libapp import *
 
-def create_eclipse_icon():
-    memarg = ''
-    try:
-        f = open('/proc/meminfo')
-        for line in f:
-            if 'MemTotal' in line:
-                amount = int(line.split()[1]) ; break
-        if amount >= 1024 * 1024 * 1.5:
-            memarg = '-Xms512M -Xmx1024M'
-    except:
-        pass
-    icon = '/usr/share/applications/eclipse.desktop'
-    with TempOwn(icon) as o:
-        with open(icon, 'w') as f:
-            f.write('''[Desktop Entry]
-Name=Eclipse
-Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
-Encoding=UTF-8
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Development
-Icon=/usr/lib/eclipse/icon.xpm''')
-
-def message(title, content):
-    import StringIO
-    assert isinstance(title, (str, unicode)) and title
-    assert isinstance(content, (str, unicode, StringIO.StringIO) )
-    if isinstance(content, StringIO.StringIO): content = content.getvalue()
-    import gtk
-    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
-    dialog.set_title( _('Installing Eclipse extension') )
-    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
-    dialog.show_all()
-    gtk.gdk.threads_enter()
-    dialog.run()
-    dialog.destroy()
-    gtk.gdk.threads_leave()
-
-if FEDORA:
-    class Eclipse(_rpm_install):
-        __doc__ = _('Eclipse (basic development environment)')
-        detail = ( 
-                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
-                _(' This application depends on Java.') )
-        category = 'ide'
-        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
-        pkgs = 'eclipse-platform'
-        
-elif UBUNTU or MINT:
-    class Eclipse(_apt_install):
-        __doc__ = _('Eclipse (basic development environment)')
-        detail = ( 
-                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
-                _(' This application depends on Java.') )
-        category = 'ide'
-        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
-        pkgs = 'eclipse'
+class Eclipse(_rpm_install):
+    __doc__ = _('Eclipse (basic development environment)')
+    detail = (_('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+              _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php'))
+    category = 'ide'
+    license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
+    pkgs = 'eclipse-platform' # Eclipse without any plugin
 
 def make_sure_installed():
-    if UBUNTU or MINT:
-        if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
-    else:
-        if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
+    if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
 
-class CDT(_path_lists):
+class CDT(_rpm_install):
     __doc__ = _('CDT: C/C++ development')
-    detail = _('CDT is from http://www.eclipse.org/cdt/')
     category = 'eclipse_extension'
     license = EPL + ' http://www.eclipse.org/legal/'
-    def __init__(self):
-        self.r = R(
-['http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
-45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
-        self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
-        self.paths = [ self.path ]
-    def install(self):
-        make_sure_installed()
-        f = self.r.download()
-        run_as_root('mkdir -p '+self.path)
-        run_as_root("unzip -qo %s -d %s"%(f, self.path))
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
+    pkgs = 'eclipse-cdt'
 
-class Pydev(_path_lists):
+class Pydev(_rpm_install):
     __doc__ = _('Pydev: Python development')
-    detail = _('Pydev is from http://pydev.org/download.html')
     category = 'eclipse_extension'
     license = EPL + ' http://pydev.org/about.html'
-    def __init__(self):
-        self.r = R(
-['http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
-4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
-        self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
-        self.paths = [ self.path ]
-    def install(self):
-        make_sure_installed()
-        f = self.r.download()
-        run_as_root('mkdir -p '+self.path)
-        run_as_root("unzip -qo %s -d %s"%(f, self.path))
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
+    pkgs = 'eclipse-pydev'
 
 class Aptana(I):
     __doc__ = _('Aptana: Web application development')
@@ -154,7 +70,7 @@ class Aptana(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.aptana.org/tools/studio/plugin/install/studio'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Aptana'), msg )
+        install_eclipse_extension_message( _('Installing Aptana'), msg )
     def remove(self):
         raise NotImplementedError
 
@@ -177,36 +93,9 @@ class RadRails(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing RadRails\n'), msg )
+        install_eclipse_extension_message( _('Installing RadRails\n'), msg )
     def remove(self):
         raise NotImplementedError
-
-class DLTK(I):
-    __doc__ = _('Dynamic languages toolkit')
-    detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
-    category = 'eclipse_extension'
-    License = ('Eclipse Distribution License (EDL), Eclipse Public License (EPL), '
-               'see http://www.eclipse.org/legal/')
-    def installed(self):
-        import glob
-        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.dltk.*')
-        return bool(List)
-    def install(self):
-        make_sure_installed()
-        import StringIO
-        msg = StringIO.StringIO()
-        print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
-        print >>msg
-        print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.eclipse.org/technology/dltk/updates-dev/2.0/'
-        print >>msg
-        print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Dynamic languages toolkit\n'), msg )
-    def remove(self):
-        raise NotImplementedError
-    @classmethod
-    def make_sure_DLTK_installed(cls):
-        obj = cls()
-        if not obj.installed(): obj.install()
 
 class PDT(I):
     __doc__ = _('PDT: PHP development')
@@ -218,7 +107,8 @@ class PDT(I):
         List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.php.*')
         return bool(List)
     def install(self):
-        DLTK.make_sure_DLTK_installed()
+        if not RPM.installed('eclipse-dltk-sdk'):
+            RPM.install('eclipse-dltk-sdk')
         import StringIO
         msg = StringIO.StringIO()
         print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
@@ -226,9 +116,14 @@ class PDT(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://www.eclipse.org/pdt/downloads/'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing PDT\n'), msg )
+        install_eclipse_extension_message( _('Installing PDT\n'), msg )
     def remove(self):
         raise NotImplementedError
+
+class PHPEclipse(_rpm_install):
+    __doc__ = _('PHPEclipse: PHP development')
+    category = 'eclipse_extension'
+    pkgs = 'eclipse-phpeclipse'
 
 class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
@@ -248,31 +143,34 @@ class Subversive(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.eclipse.org/technology/subversive/0.7/update-site/'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Subversive\n'), msg )
+        install_eclipse_extension_message( _('Installing Subversive\n'), msg )
     def remove(self):
         raise NotImplementedError
 
-class VEditor(I):
-    __doc__ = _('VEditor: Verilog and VHDL editor')
-    detail = _('It is installed by http://veditor.sourceforge.net/update')
+class Subclipse(_rpm_install):
+    __doc__ = _('Subclipse: Use SVN in Eclipse')
     category = 'eclipse_extension'
-    license = EPL
-    def installed(self):
-        import glob
-        List = glob.glob('/usr/lib/eclipse/plugins/org.eclipse.team.svn.*')
-        return bool(List)
-    def install(self):
-        make_sure_installed()
-        import StringIO
-        msg = StringIO.StringIO()
-        print >>msg, _('Please launch Eclipse, and go to "Help" -> "Install New Software".')
-        print >>msg
-        print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://veditor.sourceforge.net/update'
-        print >>msg
-        print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing VEditor\n'), msg )
-    def remove(self):
-        raise NotImplementedError
+    pkgs = 'eclipse-subclipse'
+    
+class VEditor(_rpm_install):
+    __doc__ = _('VEditor: Verilog and VHDL editor')
+    category = 'eclipse_extension'
+    pkgs = 'eclipse-veditor'
+
+class Mylyn(_rpm_install):
+    __doc__ = _('Mylyn: Task-focused UI for Eclipse')
+    cagetory = 'eclipse_extension'
+    pkgs = 'eclipse-mylyn'
+
+class Photran(_rpm_install):
+    __doc__ = _('Photran: Fortran development')
+    cagetory = 'eclipse_extension'
+    pkgs = 'eclipse-photran'
+
+class Texlipse(_rpm_install):
+    __doc__ = _('Texlipse: Edit LaTeX in Eclipse')
+    cagetory = 'eclipse_extension'
+    pkgs = 'eclipse-texlipse'
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
@@ -375,4 +273,3 @@ class MTJ(_path_lists):
         f = r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")

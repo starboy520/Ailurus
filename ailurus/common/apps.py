@@ -25,8 +25,6 @@ import sys, os
 from lib import *
 from libapp import *
 from native_apps import *
-if UBUNTU or MINT or FEDORA:
-    from apps_eclipse import *
 
 class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')

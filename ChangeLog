@@ -2,6 +2,10 @@
 
     * Add a preference menuitem to choose default pane.
 
+2010-05-29 QI Chengjie <starboy.qi@gmail.com>
+
+    * Add some eclipse extensions for Fedora
+    
 2010-05-29 Homer Xing <homer.xing@gmail.com>
 
     * Move OpenJDK to native_apps

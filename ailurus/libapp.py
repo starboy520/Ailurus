@@ -23,7 +23,9 @@
 from __future__ import with_statement
 from lib import *
 
-__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install', 'N']
+__all__ = ['_set_gconf', '_apt_install', '_path_lists', 
+           '_ff_extension', '_download_one_file', '_rpm_install', 'N',
+           'create_eclipse_icon', 'install_eclipse_extension_message']
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -322,3 +324,42 @@ class _download_one_file(I):
         import os
         if not os.path.exists(self.file):
             print >>f, _('Because "%s" does not exist.')%self.file,
+
+def create_eclipse_icon():
+    memarg = ''
+    try:
+        f = open('/proc/meminfo')
+        for line in f:
+            if 'MemTotal' in line:
+                amount = int(line.split()[1]) ; break
+        if amount >= 1024 * 1024 * 1.5:
+            memarg = '-Xms512M -Xmx1024M'
+    except:
+        pass
+    icon = '/usr/share/applications/eclipse.desktop'
+    with TempOwn(icon) as o:
+        with open(icon, 'w') as f:
+            f.write('''[Desktop Entry]
+Name=Eclipse
+Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development
+Icon=/usr/lib/eclipse/icon.xpm''')
+
+def install_eclipse_extension_message(title, content):
+    import StringIO
+    assert isinstance(title, (str, unicode)) and title
+    assert isinstance(content, (str, unicode, StringIO.StringIO) )
+    if isinstance(content, StringIO.StringIO): content = content.getvalue()
+    import gtk
+    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
+    dialog.set_title( _('Installing Eclipse extension') )
+    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
+    dialog.show_all()
+    gtk.gdk.threads_enter()
+    dialog.run()
+    dialog.destroy()
+    gtk.gdk.threads_leave()
