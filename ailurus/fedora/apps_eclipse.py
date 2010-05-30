@@ -72,7 +72,7 @@ class Aptana(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing Aptana'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
@@ -95,7 +95,7 @@ class RadRails(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing RadRails\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class PDT(I):
     __doc__ = _('PDT: PHP development')
@@ -118,7 +118,7 @@ class PDT(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing PDT\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class PHPEclipse(_rpm_install):
     __doc__ = _('PHPEclipse: PHP development')
@@ -145,7 +145,7 @@ class Subversive(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing Subversive\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class Subclipse(_rpm_install):
     __doc__ = _('Subclipse: Use SVN in Eclipse')

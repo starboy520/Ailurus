@@ -25,7 +25,8 @@ from lib import *
 
 __all__ = ['_set_gconf', '_apt_install', '_path_lists', 
            '_ff_extension', '_download_one_file', '_rpm_install', 'N',
-           'create_eclipse_icon', 'install_eclipse_extension_message']
+           'create_eclipse_icon', 'install_eclipse_extension_message',
+           'remove_eclipse_extesion_message', ]
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -363,3 +364,27 @@ def install_eclipse_extension_message(title, content):
     dialog.run()
     dialog.destroy()
     gtk.gdk.threads_leave()
+
+def remove_eclipse_extesion_message(name):
+    assert isinstance(name, (str, unicode)) and name
+    title = _('Removing %s') % name
+    import StringIO
+    msg = StringIO.StringIO()
+    print >>msg, _('Please launch Eclipse, and go to "Help" -> "About Eclipse SDK".')
+    print >>msg
+    print >>msg, _('Click the "Installation Details" button. Then remove %s.') % name
+    import gtk
+    label = gtk.Label(msg.getvalue())
+    close = gtk.Button(stock = gtk.STOCK_CLOSE)
+    close.connect('clicked', lambda w: window.destroy())
+    align = gtk.Alignment(1, 0.5)
+    align.add(close)
+    box = gtk.VBox(False)
+    box.pack_start(label, False)
+    box.pack_start(align, False)
+    window = gtk.Window()
+    window.set_title(title)
+    window.add(box)
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.show_all()

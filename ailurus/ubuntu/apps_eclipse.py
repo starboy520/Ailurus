@@ -96,7 +96,7 @@ class Aptana(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing Aptana'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
@@ -119,7 +119,7 @@ class RadRails(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing RadRails\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class DLTK(I):
     __doc__ = _('Dynamic languages toolkit')
@@ -142,7 +142,7 @@ class DLTK(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing Dynamic languages toolkit\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
     @classmethod
     def make_sure_DLTK_installed(cls):
         obj = cls()
@@ -168,7 +168,7 @@ class PDT(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing PDT\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
@@ -190,7 +190,7 @@ class Subversive(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing Subversive\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class VEditor(I):
     __doc__ = _('VEditor: Verilog and VHDL editor')
@@ -212,7 +212,7 @@ class VEditor(I):
         print >>msg, _('Then click the "Next" button and agree the license.')
         install_eclipse_extension_message( _('Installing VEditor\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')

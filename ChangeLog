@@ -7,6 +7,7 @@
     * Fix bug: MPlayer-vod cannot be installed.
     * Fix bug: cannot install software without key.
     * Fix bug: SHA-DA radio cannot be installed.
+    * Do not raise NotImplementedError when remove Aptana. Display some text instead.
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
