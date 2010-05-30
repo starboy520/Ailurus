@@ -158,6 +158,14 @@ class Config:
         except: value = True
         return value
     @classmethod
+    def set_default_pane(cls, value):
+        cls.set_string('default_pane', value)
+    @classmethod
+    def get_default_pane(cls):
+        try: value = cls.get_string('default_pane')
+        except: value = 'SystemSettingPane'
+        return value
+    @classmethod
     def get_locale(cls):
         import locale
         try:
