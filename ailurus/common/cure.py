@@ -157,15 +157,6 @@ class Query_before_remove_a_lot_of_files(C) :
 #        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
 #        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
-#class Test(C):
-#    __doc__ = 'A test'
-#    detail = 'A test'
-#    type = C.MUST_FIX
-#    def exists(self):
-#        return True
-#    def cure(self):
-#        pass
-
 class Show_a_Linux_skill_bubble(C):
     __doc__ = _('Show a random Linux skill after you log in to GNOME')
     detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
@@ -183,3 +174,18 @@ class Show_a_Linux_skill_bubble(C):
                     'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
                     'Categories=System;\n'
                     'StartupNotify=false\n')
+
+class Own_usr_lib_eclipse_by_root(C):
+    __doc__ = _('Let root own /usr/lib/eclipse and /usr/share/eclipse')
+    detail = _('Otherwise, Pydev and CDT do not work.')
+    def wrong(self, path):
+        if os.path.exists(path):
+            statinfo = os.stat(path)
+            if statinfo.st_uid != 0 or statinfo.st_gid != 0:
+                return True
+        return False
+    def exists(self):
+        return self.wrong('/usr/lib/eclipse') or self.wrong('/usr/share/eclipse')
+    def cure(self):
+        run_as_root('chown -R root:root /usr/lib/eclipse', ignore_error=True)
+        run_as_root('chown -R root:root /usr/share/eclipse', ignore_error=True)
