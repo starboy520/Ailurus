@@ -390,7 +390,7 @@ def __backlight():
     o = GConfHScale( '/apps/gnome-power-manager/backlight/brightness_dim_battery', 0, 100 )
     table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     table.attach(o, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
-    return Setting(table, _('Backlight'), ['power'])
+    return Setting(table, _('Backlight') + ' ' + _('(valid only for laptops)'), ['power'])
 
 def __advance_setting():
     box = gtk.VBox(False, 5)
