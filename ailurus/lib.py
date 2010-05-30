@@ -705,7 +705,8 @@ class APT:
         if cls.apt_get_update_is_called == False:
             cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('apt-get install -y ' + ' '.join(packages))
+        # use "force-yes" because playonlinux repository has no gpg key, we want to install it without key.
+        run_as_root_in_terminal('apt-get install -y --force-yes ' + ' '.join(packages))
         APT.cache_changed()
         failed = [p for p in packages if not APT.installed(p)]
         if failed:
