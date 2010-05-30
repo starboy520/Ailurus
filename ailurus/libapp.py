@@ -315,7 +315,9 @@ class _download_one_file(I):
     def install(self):
         assert isinstance(self.R, R)
         f = self.R.download()
-        run('cp %s %s'%(f, self.file) )
+        import shutil
+        shutil.copyfile(f, self.file)
+        # run('cp %s %s'%(f, self.file) ) # This command always fail. I don't know the reason :(
     def installed(self):
         import os
         return os.path.exists(self.file)
