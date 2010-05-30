@@ -10,6 +10,7 @@
     * Do not raise NotImplementedError when remove Aptana. Display some text instead.
     * Fix bug: Install the latest songbird.
     * Fix bug: _download_one_file.install() always fail even if successfully copied file.
+    * Fix bug: cannot download NScript.
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
