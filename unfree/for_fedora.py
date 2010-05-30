@@ -384,6 +384,7 @@ class Repo_Chromium(I):
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
     detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    category = 'antivirus'
     def install(self):
         if is32():
             f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()

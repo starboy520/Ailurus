@@ -787,6 +787,7 @@ class InstallRemovePane(gtk.VBox):
         i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
         i_education = treestore.append(None, [_('Education'), None, '*education'])
         i_game = treestore.append(None, [_('Game'), None, '*game'])
+        i_antivirus = treestore.append(None, [_('Anti-virus'), None, '*antivirus'])
         i_others = treestore.append(None, [_('Others'), None, '*others'])
         i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
 

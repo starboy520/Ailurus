@@ -46,8 +46,6 @@ def __ubuntu_derivative(): # dirty hack. It is better to create a new folder for
 
 def get():
     if Config.is_Ubuntu():
-        print 1
         return [__ubuntu]
     else:
-        print 2
         return [__ubuntu_derivative]
