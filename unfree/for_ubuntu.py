@@ -22,9 +22,9 @@
 from __future__ import with_statement
 import sys, os
 from ailurus.lib import *
-from ailurus.libapp import *
-
 assert UBUNTU or MINT
+from ailurus.libapp import *
+from ailurus.ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
@@ -344,3 +344,16 @@ class ESETNOD32(I):
         return os.path.exists('/opt/eset/esets/bin/esets_gil')
     def remove(self):
         run_as_root('/opt/eset/esets/bin/esets_gil')
+
+class Repo_Oracle(_repo):
+    __doc__ = _('Oracle')
+    def __init__(self):
+        self.desc = _('This repository provides Oracle Database Express Edition.\n'
+            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
+        self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
+        self.web_page = 'http://oss.oracle.com/'
+        self.apt_file = '/etc/apt/sources.list.d/oracle.list'
+        self.apt_conf = [ 'deb http://oss.oracle.com/debian unstable main non-free' ]
+        self.key_url = 'http://oss.oracle.com/el4/RPM-GPG-KEY-oracle'
+        self.key_id = 'B38A8516'
+        _repo.__init__(self)
