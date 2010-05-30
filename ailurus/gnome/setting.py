@@ -499,6 +499,18 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
+def __compression_strategy():
+    label = gtk.Label(_('Compression strategy of file-roller:'))
+    label.set_tooltip_text(_('GConf key: ') + '/apps/file-roller/general/compression_level')
+    combo = GConfComboBox(
+              '/apps/file-roller/general/compression_level',
+              [_('Very high speed'), _('High speed'), _('Balanced'), _('High compression rate') ],
+              ['very_fast',          'fast',          'normal',      'maximum'])
+    hbox = gtk.HBox(False, 10)
+    hbox.pack_start(label, False)
+    hbox.pack_start(combo, False)
+    return Setting(hbox, _('Compression strategy'), ['compression'])
+
 #def __gconfig_backup():
 #    table = gtk.Table()
 #    table.set_col_spacings(30)
@@ -606,6 +618,7 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
             __login_window_setting,
+            __compression_strategy,
 #            __compiz_setting,
 #            __gconfig_backup,
             ]:
