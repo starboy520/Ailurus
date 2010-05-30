@@ -1,6 +1,11 @@
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 
     * Add a preference menuitem to choose default pane.
+    * Re-enable Oracle repository.
+
+2010-05-29 MA Yue <velly.empire@gmail.com>
+
+    * Reset GNOME
 
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
@@ -10,6 +15,8 @@
 
     * Add some eclipse extensions for Fedora
     * Add ESET NOD32
+    * Add compression strategy setting
+    * Add some GEdit setting
     
 2010-05-29 Homer Xing <homer.xing@gmail.com>
 

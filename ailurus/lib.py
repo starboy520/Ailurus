@@ -1563,4 +1563,3 @@ elif ARCHLINUX:
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
-

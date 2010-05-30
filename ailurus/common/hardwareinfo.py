@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -146,6 +147,7 @@ def __cpu():
     return ret
 
 def __cpu_temp():
+    __cpu_temp.please_refresh_me = True
     try:
         import glob
         pathlist = glob.glob('/proc/acpi/thermal_zone/*')
@@ -202,6 +204,7 @@ def __pci():
     return ret
 
 def __battery():
+    __battery.please_refresh_me = True
     ret = []
     try:
         with open('/proc/acpi/battery/BAT0/state') as f:

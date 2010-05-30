@@ -73,7 +73,7 @@ class GConfComboBox(gtk.HBox):
         g.set_string(self.key, value)
 
 class GConfTextEntry(gtk.HBox):
-    def __value_changed(self, *w):
+    def __value_changed(self, *w): 
         self.button.set_sensitive(True)
         
     def __button_clicked(self, *w):
@@ -85,11 +85,11 @@ class GConfTextEntry(gtk.HBox):
     
     def __init__(self, key):
         self.key = key
-        self.entry = gtk.Entry()
+        self.entry = gtk.Entry()    
         import gconf
         g = gconf.client_get_default()
         value = g.get_string(key)
-        if value: self.entry.set_text(value)
+        if value: self.entry.set_text(value) 
         
         self.button = gtk.Button(stock=gtk.STOCK_APPLY)
         self.button.set_sensitive(False)
@@ -117,7 +117,7 @@ class GConfShortcutKeyEntry(gtk.HBox):
         g.set_string('/apps/metacity/keybinding_commands/' + self.number, self.command_entry.get_text())
         g.set_string('/apps/metacity/global_keybindings/run_' + self.number, self.shortcut_entry.get_text())
 
-    def __clear_entry_content(self, *w):
+    def __clear_entry_content(self, *w):        
         self.command_entry.set_text('')
         self.shortcut_entry.set_text('')
         
@@ -163,7 +163,7 @@ class ImageChooser(gtk.Button):
                               ('image/gif', '*.gif'),
                               ('image/x-xpixmap', '*.xpm'),
                               ('image/x-svg', '*.svg'),]:
-            filter.add_mime_type(type)
+            filter.add_mime_type(type)  
             filter.add_pattern(pattern)
         return filter
     
@@ -306,7 +306,7 @@ class Setting(gtk.VBox):
         assert isinstance(title, (str, unicode) )
         assert isinstance(category, list)
         assert category != []
-        for i in category:
+        for i in category: 
             assert isinstance(i, str)
 
         gtk.VBox.__init__(self, False, 0)
@@ -317,7 +317,7 @@ class Setting(gtk.VBox):
         
         self.category = category
 
-class FirefoxConfig(gtk.CheckButton):
+class FirefoxConfig(gtk.CheckButton):          
     def check_active(self):
         import os
         if not os.path.isfile(self.path + 'user.js'):
@@ -332,7 +332,7 @@ class FirefoxConfig(gtk.CheckButton):
                             return True
                 return False
 
-    def __init__(self, container, config_item,
+    def __init__(self, container, config_item, 
              plain_text, tooltip=None, ):
         self.path = FirefoxExtensions.get_preference_path()
         gtk.CheckButton.__init__(self)

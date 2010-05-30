@@ -43,7 +43,7 @@ class SystemSettingPane(gtk.VBox):
         self.left_store = left_store = gtk.ListStore(gtk.gdk.Pixbuf, str, str) #pixbuf, text, category
         
         for iconpath, text, category in [
-              (D+'other_icons/s_nautilus.png', 'Nautilus', 'nautilus', ), 
+              (D+'other_icons/s_nautilus.png', _('Nautilus'), 'nautilus', ), 
               (D+'other_icons/s_desktop.png', _('Desktop'), 'desktop', ), 
               (D+'umut_icons/s_window.png', _('Window effect'), 'window', ), 
               (D+'umut_icons/s_menu.png', _('Menu'), 'menu', ), 
@@ -53,7 +53,7 @@ class SystemSettingPane(gtk.VBox):
               (D+'umut_icons/s_panel.png', _('GNOME Panel'), 'panel', ),
               (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
               (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
-              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ),
+              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 
               (D+'umut_icons/s_power.png', _('Power management'), 'power', ),
               (D+'umut_icons/s_network.png', _('Network'), 'network', ),
               (D+'umut_icons/s_update.png', _('Update'), 'update', ),
@@ -62,9 +62,12 @@ class SystemSettingPane(gtk.VBox):
               (D+'other_icons/s_configure_firefox.png', _('Configure Firefox'), 'firefox', ),
               (D+'umut_icons/s_host_name.png', _('Host name'), 'host_name', ),
               (D+'umut_icons/s_login_window.png', _('Login window'), 'login_window', ),
+              (D+'umut_icons/s_compression.png', _('Compression'), 'compression', ),
+              (D+'umut_icons/s_gedit.png', _('GEdit'), 'gedit', ),
+              (D+'umut_icons/s_reset_gnome.png', _('Reset GNOME'), 'reset_gnome', ),
                 ]:
             if category in existing_categories:
-                pixbuf = icon(iconpath)
+                pixbuf = icon(iconpath) 
                 left_store.append([pixbuf, text, category])
                 
         left_store_sort = gtk.TreeModelSort(left_store)
@@ -129,5 +132,3 @@ class SystemSettingPane(gtk.VBox):
         paned.pack1(left, False, False)
         paned.pack2(right, True, True)
         self.pack_start(paned)
-
-

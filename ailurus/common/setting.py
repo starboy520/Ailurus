@@ -112,15 +112,15 @@ def __restart_network():
      vbox.pack_start(align_bfm, False)
      return Setting(vbox, _('Restart network'), ['network'])
  
-def __change_hostname():
-# I have to use the class, to resolve problem of these codes:
-# def __value_changed(button):
-# button.set_sensitive(True)
+def __change_hostname(): 
+#   I have to use the class, to resolve problem of these codes:
+#        def __value_changed(button):
+#            button.set_sensitive(True)
 #
-# def __button_clicked(entry):
-# new_host_name = entry.get_text()
-# button.set_sensitive(False)
-# error message is 'free variable referenced before assignment'. I don't know the reason.
+#        def __button_clicked(entry):
+#            new_host_name = entry.get_text()
+#            button.set_sensitive(False)
+#   error message is 'free variable referenced before assignment'. I don't know the reason.
     class change_host_name(gtk.HBox):
         def __value_changed(self, *w):
             self.button.set_sensitive(True)
@@ -143,14 +143,14 @@ def __change_hostname():
                         content = f.read()
                         content = content.replace(self.old_host_name, new_host_name)
                     with open('/etc/sysconfig/network', 'w') as f:
-                        f.write(content)
+                        f.write(content)       
             else:
                 dialog = gtk.Dialog('Feature is not implemented', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
                                      buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
                 dialog.vbox.pack_start(gtk.Label('This feature has not been implement for your Linux distribution'))
                 dialog.vbox.show_all()
                 dialog.run()
-                dialog.destroy()
+                dialog.destroy()      
                             
             self.button.set_sensitive(False)
         
@@ -173,7 +173,7 @@ def __change_hostname():
 
 class Configure_Firefox(gtk.VBox):
     def items(self):
-        return [
+        return [                
                 ['user_pref("content.max.tokenizing.time", true);\n'
                  'user_pref("content.notify.ontimer", true);\n'
                  'user_pref("network.http.pipelining.firstrequest", true);\n'
@@ -208,14 +208,7 @@ class Configure_Firefox(gtk.VBox):
                  ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
                  
                  ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
-                 
-                 ['user_pref("dom.disable_window_open_feature.menubar", true);\n'
-                  'user_pref("dom.disable_window_move_resize", true);\n'
-                  'user_pref("dom.disable_window_open_feature.titlebar", true);\n'
-                  'user_pref("dom.disable_window_open_feature.toolbar", true);\n', _('Disable Annoying Browser Behavior'), ],
-                  
-                 ['user_pref("browser.blink_allowed", false);\n)', _('Disable Blinking Text'), ],
-                 
+
                 ]
 
     def __init__(self):
@@ -228,10 +221,11 @@ class Configure_Firefox(gtk.VBox):
         align_button_apply.pack_end(button_apply, False)
         self.checkbuttons = []
         for item in self.items():
-            self.checkbuttons.append(FirefoxConfig(self, *item))
+            self.checkbuttons.append(FirefoxConfig(self, *item))        
         btable = gtk.Table()
         btable.set_col_spacings(10)
-        label = label_left_align(_('Before configuring Firefox, please close all Firefox windows.'))
+        label = gtk.Label()
+        label.set_text(_('Before configuring Firefox, please close all Firefox windows.'))
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1
@@ -269,5 +263,3 @@ def get():
         except:
             print_traceback()
     return ret
-
-

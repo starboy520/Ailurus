@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -361,7 +362,7 @@ class MainView:
         self.activate_pane(None, Config.get_default_pane())
 
     def get_item_icon_size(self):
-        return int(self.last_x / 20)
+        return min( int(self.last_x / 20), 48)
 
     def __refresh_toolbar(self):
         icon_size = self.get_item_icon_size()

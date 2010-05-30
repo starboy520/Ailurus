@@ -4,6 +4,7 @@
 # Ailurus - make Linux easier to use
 #
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
+# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -24,6 +25,7 @@ import sys, os
 from lib import *
 
 def __host_name():
+    __host_name.please_refresh_me = True
     try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
     except: print_traceback()
     return []
@@ -77,6 +79,7 @@ def __pygtk():
      except: print_traceback()
     
 def __uptime():
+    __uptime.please_refresh_me = True
     try:
         with open('/proc/uptime') as f:
             string = f.read().split('.')[0]
