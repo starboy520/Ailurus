@@ -1,3 +1,9 @@
+2010-05-31 HAN Haofu<gtxx3600@gmail.com>
+
+	* Move all apps in native_apps.py to native_apps.cfg.
+	* Move app's __doc__ and detail to support/strings.py.
+	* Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
+
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 
     * Add a preference menuitem to choose default pane.
