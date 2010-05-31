@@ -247,36 +247,9 @@ class Config:
             c = f.read()
         return c.split()[2].strip()
     @classmethod
-    def is_ArchLinux(cls):
+    def is_ArchLinux(cls): # There is no get_arch_version, since ArchLinux has no version.
         import os
         return os.path.exists('/etc/arch-release')
-    # There is no get_arch_version, since ArchLinux has no version.
-    @classmethod
-    def is_GNOME(cls):
-        if cls.is_XFCE(): return False
-        try:
-            get_output('pgrep -u $USER gnome-panel')
-            return True
-        except:
-            return False
-    @classmethod
-    def is_KDE(cls):
-        try:
-            get_output('pgrep -u $USER kdeinit')
-            return True
-        except:
-            try:
-                get_output('pgrep -u $USER kdeinit4')
-                return True
-            except: pass
-        return False
-    @classmethod
-    def is_XFCE(cls):
-        try:  
-            get_output('pgrep -u $USER xfce4-session')
-            return True
-        except: 
-            return False
 
 def install_locale():
     import gettext
@@ -1521,6 +1494,28 @@ class Tasksel:
             APT.remove( *to_remove )
             cls.cache_changed()
 
+def window_manager_name():
+    """Returns window manager name"""
+    # Thanks to Whise (Helder Fraga), we have this elegant function!
+    # This function is from Screenlets/sensors.py
+    # GPLv3
+    import gtk
+    root = gtk.gdk.get_default_root_window()
+    try:
+        ident = root.property_get("_NET_SUPPORTING_WM_CHECK", "WINDOW")[2]
+        _WM_NAME_WIN = gtk.gdk.window_foreign_new(long(ident[0]))
+    except TypeError, exc:
+        _WM_NAME_WIN = ""
+
+    name = ""
+    win = _WM_NAME_WIN
+    if (win != None):
+        try:
+            name = win.property_get("_NET_WM_NAME")[2]
+        except TypeError, exc:
+            pass
+    return name
+
 Config.init()
 
 install_locale()
@@ -1549,9 +1544,6 @@ except:
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
-GNOME = Config.is_GNOME()
-KDE = Config.is_KDE()
-XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
 MINT = Config.is_Mint()
 YLMF = Config.is_YLMF()
@@ -1577,3 +1569,19 @@ elif ARCHLINUX:
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
+
+GNOME = False
+KDE = False
+XFCE = False
+# Thank you, GShutdown Team!
+# This code is from gshutdown/src/values.c
+# GPLv2
+WINDOW_MANAGER = window_manager_name()
+if WINDOW_MANAGER == "Metacity":
+    GNOME = True
+elif WINDOW_MANAGER == "KWin":
+    KDE = True
+elif WINDOW_MANAGER == "Xfwm4":
+    XFCE = True
+else:
+    print 'Window Manager is not recognized:', WINDOW_MANAGER

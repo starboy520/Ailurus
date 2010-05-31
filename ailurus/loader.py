@@ -24,7 +24,7 @@ from __future__ import with_statement
 from lib import *
 
 common = __import__('common')
-if Config.is_GNOME(): import gnome as desktop
+if GNOME: import gnome as desktop
 else: desktop = None
 if MINT or UBUNTU: import ubuntu as distribution
 elif FEDORA: import fedora as distribution

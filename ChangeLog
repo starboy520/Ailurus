@@ -1,3 +1,7 @@
+2010-05-31 Homer Xing <homer.xing@gmail.com>
+
+    * Improve desktop environment detection.
+
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 
     * Add a preference menuitem to choose default pane.
