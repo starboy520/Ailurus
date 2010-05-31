@@ -141,7 +141,9 @@ class Songbird(I):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     detail = (_('Music player which integrates with online content via plugins. '
                'Site contains project news, download, add-ons directory, help, and how to contribute.') + '\n' + 
-              _('Please download from:') + ' http://developer.songbirdnest.com/builds/trunk/latest/')
+              _('Please download from:') + ' http://developer.songbirdnest.com/builds/trunk/latest/\n' + 
+              _('Launch it by this command:') + ' LD_BIND_NOW=1 ./songbird')
+    
     category = 'player'
     license = GPL
     def install(self):
