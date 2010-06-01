@@ -2,6 +2,10 @@
 
     * Improve desktop environment detection.
 
+2010-05-30 MA Yue <velly.empire@gmail.com>
+
+    *Add the Screensaver Panel
+
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 
     * Add a preference menuitem to choose default pane.
@@ -21,6 +25,10 @@
 2010-05-29 MA Yue <velly.empire@gmail.com>
 
     * Reset GNOME
+
+2010-05-29 MA Yue <velly.empire@gmail.com>
+
+    * Add the 'reset gnome configuration settings'
 
 2010-05-29 QI Chengjie <starboy.qi@gmail.com>
 
