@@ -337,3 +337,22 @@ class ESETNOD32(I):
         return os.path.exists('/opt/eset/')
     def remove(self):
         run_as_root('/opt/eset/esets/bin/esets_gil')
+        
+class Adobe_AIR(I):
+    __doc__ = ('Adobe AIR: Run your favorite web applications on the desktop')
+    detail = _('Download from:') + ' http://get.adobe.com/cn/air/'
+    category = 'others'
+    def install(self):
+        f = R(['http://airdownload.adobe.com/air/lin/download/latest/AdobeAIRInstaller.bin']).download()
+        run_as_root('chmod +x %s' %f)
+        run_as_root_in_terminal(f)
+    def installed(self):
+        import os
+        return os.path.exists('/opt/Adobe AIR/')
+    def remove(self):
+        run_as_root_in_terminal('/opt/Adobe\ AIR/Versions/1.0/Resources/Adobe\ AIR\ Updater -arp:uninstall')
+
+            
+            
+            
+    

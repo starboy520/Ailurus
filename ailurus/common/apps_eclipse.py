@@ -384,4 +384,3 @@ class MTJ(_path_lists):
         f = r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-#        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
