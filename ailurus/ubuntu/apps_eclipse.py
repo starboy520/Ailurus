@@ -316,3 +316,4 @@ class MTJ(_path_lists):
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
         # run_as_root("chown $USER:$USER /usr/lib/eclipse -R") # It is strange. This command disables Pydev. I don't know the reason. :(
+
