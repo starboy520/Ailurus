@@ -55,7 +55,7 @@ def load_app_from_file():
     import ConfigParser
     from libapp import N
     import lib
-    from support import strings
+    import strings
     c = ConfigParser.RawConfigParser()
     c.optionxform = str # case sensitive in option_name
     try:
