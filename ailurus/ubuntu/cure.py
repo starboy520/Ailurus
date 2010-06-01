@@ -142,3 +142,15 @@ class Install_full_language_support(C):
     def cure(self):
         if self.pkgs:
             APT.install(*self.pkgs)
+
+class Install_GCompris_sound(C):
+    __doc__ = _('Install voice data for GCompris')
+    def exists(self):
+        if not APT.installed('gcompris'): return False
+        lang = Config.get_locale().split('_')[0]
+        voice = 'gcompris-sound-' + lang
+        self.pkg = voice
+        self.detail = _('Command:') + ' apt-get install ' + self.pkg
+        return APT.exist(voice) and not APT.installed(voice)
+    def cure(self):
+        APT.install(self.pkg)

@@ -393,14 +393,7 @@ class GCompris(N):
     if FEDORA:
         pkgs = 'gcompris'
     if UBUNTU or MINT:
-        def __init__(self):
-            pkgs = APT.get_existing_pkgs_set()
-            voices = [ e for e in pkgs if e.startswith('gcompris-sound-') ]
-            lang = Config.get_locale().split('_')[0]
-            voice = 'gcompris-sound-'+lang
-            if not voice in voices: voice = ''
-            else: voice = ' ' + voice
-            self.pkgs = 'gnucap gcompris' + voice
+        pkgs = 'gnucap gcompris'
  
 class GCstar(N):
     'GCstar'

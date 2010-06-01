@@ -36,7 +36,7 @@ class Colorful_BASH_prompt_symbols(C):
         file_append(self.bashrc, self.line)
         notify( _('The color of bash prompt symbols is changed.'), _('It will take effect at the next time you log in.') )
 
-class Stardict_dictionary(C):
+class Install_Stardict_dictionary(C):
     __doc__ = _('Install Stardict dictionaries')
     def exists(self):
         if not RPM.installed('stardict'):
