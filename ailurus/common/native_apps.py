@@ -1028,14 +1028,6 @@ class Stardict(N):
     category = 'business'
     license = GPL
     if FEDORA:
-        detail = _('You can install these dictionaries by yum.\n'
-                   'stardict-dic-cs_CZ: Czech dictionaries\n'
-                   'stardict-dic-en: English dictionaries\n'
-                   'stardict-dic-hi: Hindi dictionary\n'
-                   'stardict-dic-ja: Japanese dictionaries\n'
-                   'stardict-dic-ru: Russian dictionaries\n'
-                   'stardict-dic-zh_CN: Simplified Chinese dictionaries\n'
-                   'stardict-dic-zh_TW: Traditional Chinese dictionaries')
         pkgs = 'stardict'
     if UBUNTU or MINT:
         pkgs = 'stardict'
