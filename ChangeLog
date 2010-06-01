@@ -3,6 +3,12 @@
     * Move stardict dictionaries into computer doctor pane
     * Move gcompris voice, childsplay voice into computer doctor pane
 
+2010-05-31 HAN Haofu<gtxx3600@gmail.com>
+
+	* Move all apps in native_apps.py to native_apps.cfg.
+	* Move app's __doc__ and detail to support/strings.py.
+	* Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
+
 2010-05-31 Homer Xing <homer.xing@gmail.com>
 
     * Improve desktop environment detection.

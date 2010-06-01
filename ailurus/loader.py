@@ -50,6 +50,72 @@ def load_app_icon(name):
     import gtk
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
 
+def load_app_from_file():
+    objs = []
+    import ConfigParser
+    from libapp import N
+    import lib
+    from support import strings
+    c = ConfigParser.RawConfigParser()
+    c.optionxform = str # case sensitive in option_name
+    try:
+        c.read(D + 'applications/native_apps.cfg')
+    except:
+        print_traceback()
+        return []
+    
+    for secs in c.sections():
+        try:
+            dict = {}       
+            for ops in c.options(secs):
+                value = c.get(secs, ops)
+                if ops == 'ubuntu' and (UBUNTU or MINT):
+                    dict['pkgs'] = value
+                elif ops == 'fedora' and (FEDORA):
+                    dict['pkgs'] = value
+                elif ops == 'Chinese':
+                    dict[ops] = True
+                elif ops == 'license':
+                    ls = value.split()
+                    ls = [getattr(lib, e) for e in ls]
+                    if len(ls)==1: dict[ops] = ls[0]
+                    elif len(ls)==2: dict[ops] = DUAL_LICENSE(ls[0],ls[1])
+                    elif len(ls)==3: dict[ops] = TRI_LICENSE(ls[0],ls[1],ls[2])
+                else:
+                    dict[ops] = value
+            
+            assert hasattr(strings, secs+'_0')
+            assert hasattr(strings, secs+'_1')
+            dict['__doc__'] = getattr(strings, secs + '_0')
+            if dict['__doc__'] == 'FIXME' : dict['__doc__'] =''
+            dict['detail'] = getattr(strings, secs + '_1')
+            if dict['detail'] == 'FIXME' : dict['detail'] = ''
+            if dict['pkgs'] == 'FIXME' : continue # means not supported in this version
+            if dict.has_key('Chinese') and Config.is_Chinese_locale()==False: continue # means such software provides Chinese locale only
+
+            obj = N()
+            for key in dict.keys():
+                setattr(obj,key,dict[key])
+                
+            if not hasattr(obj, 'category'): obj.category = 'others'
+            if hasattr(obj, 'visible') and not obj.visible():continue
+            obj.self_check()
+            if hasattr(obj, 'installation_command'):
+                if obj.detail and not obj.detail.endswith('\n'):
+                    obj.detail += '\n'
+                obj.detail += obj.installation_command()
+                
+            obj.cache_installed = obj.installed()
+            if not isinstance(obj.cache_installed, bool):
+                raise ValueError, 'Return type of installed() is not bool.'
+            obj.showed_in_toggle = obj.cache_installed
+            obj.logo_pixbuf = load_app_icon(secs)
+            objs.append(obj)
+        except:
+            print_traceback()
+    
+    return objs
+
 def load_app_objs():
     modules = []
     for module in [common, desktop, distribution]:
@@ -88,7 +154,7 @@ def load_app_objs():
                 print 'Cannot load class %s' % name
                 print_traceback()
 
-    return objs + load_custom_app_objs()
+    return objs + load_custom_app_objs() + load_app_from_file()
 
 def load_app_objs_from_extension(extension):
     import types

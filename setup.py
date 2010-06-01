@@ -42,7 +42,7 @@ Features:
         ('share/applications/', ['ailurus.desktop']),
         
         ('share/ailurus/', ['ChangeLog']),
-        
+        ('share/ailurus/data/applications/', glob('data/applications/*.cfg') ),
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
         ('share/ailurus/data/other_icons/', glob('data/other_icons/*.png') ),
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),
