@@ -56,10 +56,11 @@ def load_app_from_file():
     from libapp import N
     import lib
     import strings
+    import os
     c = ConfigParser.RawConfigParser()
     c.optionxform = str # case sensitive in option_name
     try:
-        c.read(D + 'applications/native_apps.cfg')
+        c.read(os.path.dirname(__file__) + '/native_apps')
     except:
         print_traceback()
         return []

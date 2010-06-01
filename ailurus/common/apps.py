@@ -24,7 +24,6 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-from native_apps import *
 
 class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
