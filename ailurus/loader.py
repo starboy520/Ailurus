@@ -57,6 +57,7 @@ def load_app_from_file():
     import lib
     import strings
     import os
+    import new
     c = ConfigParser.RawConfigParser()
     c.optionxform = str # case sensitive in option_name
     try:
@@ -67,6 +68,7 @@ def load_app_from_file():
     
     for secs in c.sections():
         try:
+            is_string_not_empty(secs)
             dict = {}       
             for ops in c.options(secs):
                 value = c.get(secs, ops)
@@ -94,7 +96,7 @@ def load_app_from_file():
             if dict['pkgs'] == 'FIXME' : continue # means not supported in this version
             if dict.has_key('Chinese') and Config.is_Chinese_locale()==False: continue # means such software provides Chinese locale only
 
-            obj = N()
+            obj = new.classobj(secs, (N,), {})()
             for key in dict.keys():
                 setattr(obj,key,dict[key])
                 
