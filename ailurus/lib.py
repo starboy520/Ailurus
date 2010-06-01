@@ -255,10 +255,15 @@ def install_locale():
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
 
+def is_legal_license(license):
+    return license in [GPL, LGPL, EPL, MPL, BSD, MIT, CDDL, APL, AL] 
+
 def DUAL_LICENSE(A, B):
+    assert is_legal_license(A) and is_legal_license(B)
     return _('Dual-licensed under %(A)s and %(B)s') % {'A':A, 'B':B}
 
 def TRI_LICENSE(A, B, C):
+    assert is_legal_license(A) and is_legal_license(B) and is_legal_license(C)
     return _('Tri-licensed under %(A)s, %(B)s and %(C)s') % {'A':A, 'B':B, 'C':C}
 
 class ResponseTime:
