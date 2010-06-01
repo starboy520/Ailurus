@@ -937,21 +937,6 @@ class R_Language_Basic(N):
     if UBUNTU or MINT:
         pkgs = 'r-base-core'
 
-class R_Language_Full(N):
-    __doc__ = _('R language (full development environment and all plugins)')
-    detail = _('A powerful statistical computation language and a graphics system.\n'
-               'If you want to use the latest version of R language, please read http://cran.r-project.org/')
-    category = 'statistics'
-    license = GPL
-    if UBUNTU or MINT:
-        def __init__(self):
-            import StringIO
-            value = StringIO.StringIO()
-            print >>value, 'r-base-core',
-            for p in APT.get_existing_pkgs_set():
-                if p.startswith('r-cran-'): print >>value, p,
-            self.pkgs = value.getvalue()
-
 class SDL(N):
     __doc__ = _('SDL library')
     detail = _('This is a library for writing SDL programs.\n'
