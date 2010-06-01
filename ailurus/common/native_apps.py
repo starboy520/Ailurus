@@ -187,18 +187,7 @@ class ChildsPlay(N):
     if FEDORA:
         pkgs = 'childsplay'
     if UBUNTU or MINT:
-        def __init__(self):
-            pkgs = APT.get_existing_pkgs_set()
-            voices = [ e for e in pkgs if e.startswith('childsplay-alphabet-sounds-') ]
-            lang = Config.get_locale().split('_')[0]
-            voice = 'childsplay-alphabet-sounds-'+lang
-            if not voice in voices: voice = ''
-            else: voice = ' ' + voice
-            self.pkgs = 'childsplay' + voice
-            # There is no 'childsplay-plugins-lfc' package in Karmic :)
-            # 'childsplay-plugins-lfc' is letterFlashscard game.
-            if APT.exist('childsplay-plugins-lfc'):
-                self.pkgs += ' childsplay-plugins-lfc'
+        pkgs = 'childsplay'
         
 class ClawsMail(N):
     'Claws Mail'
