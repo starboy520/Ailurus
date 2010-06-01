@@ -268,4 +268,4 @@ class Generic_Genome_Browser(I):
         return False
     def remove(self):
         raise NotImplementedError
-
+    

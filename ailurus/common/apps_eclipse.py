@@ -112,7 +112,9 @@ class CDT(_path_lists):
         f = self.r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-#        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
+    def visible(self):
+        return not FEDORA
+
 
 class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
@@ -130,7 +132,10 @@ class Pydev(_path_lists):
         f = self.r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-#        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
+        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
+    def visible(self):
+        return not FEDORA
+
 
 class Aptana(I):
     __doc__ = _('Aptana: Web application development')
@@ -251,6 +256,8 @@ class Subversive(I):
         message( _('Installing Subversive\n'), msg )
     def remove(self):
         raise NotImplementedError
+    def visible(self):
+        return not FEDORA
 
 class VEditor(I):
     __doc__ = _('VEditor: Verilog and VHDL editor')
@@ -273,6 +280,8 @@ class VEditor(I):
         message( _('Installing VEditor\n'), msg )
     def remove(self):
         raise NotImplementedError
+    def visible(self):
+        return not FEDORA
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
