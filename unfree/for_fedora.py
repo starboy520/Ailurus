@@ -323,10 +323,10 @@ class GoogleChrome(I):
                          'However, you have installed "google-chrome-unstable".'),
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
     category = 'others'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin', 25989559, 'e64f2840bf7161b9860c4d99e9de0c27f960e131').download()
+        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
@@ -382,20 +382,27 @@ class Repo_Chromium(I):
             _repo.disable(self.path)
 
 class ESETNOD32(I):
-    __doc__ = ('ESET NOD32')
-    detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    __doc__ = _('ESET NOD32')
+    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    category = 'antivirus'
     def install(self):
         if is32():
-            f =  R(['http://download.eset.com/special/eav_linux/ueav.i386.linux']).download()
+            f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()
         else:
-            f = R(['http://download.eset.com/special/eav_linux/ueav.x86_64.linux']).download()
-        run_as_root('chmod +x %s' %f)
-        run_as_root_in_terminal(f)
+            f = R('http://download.eset.com/special/eav_linux/ueav.x86_64.linux').download()
+        run('chmod +x ' + f)
+        run_as_root(f)
         if not is32():
-            run_as_root('rm /usr/lib/libesets_pac.so -rf')
+            # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
+            with TempOwn('/etc/ld.so.preload') as o:
+                with open('/etc/ld.so.preload') as f:
+                    content = f.read()
+                with open('/etc/ld.so.preload', 'w') as f:
+                    for item in content.split():
+                        if 'libesets_pac.so' not in item:
+                            print >>f, item, 
     def installed(self):
-        import os
-        return os.path.exists('/opt/eset/')
+        return os.path.exists('/opt/eset/esets/bin/esets_gil')
     def remove(self):
         run_as_root('/opt/eset/esets/bin/esets_gil')
         
@@ -412,3 +419,4 @@ class Adobe_AIR(I):
         return os.path.exists('/opt/Adobe AIR/')
     def remove(self):
         run_as_root_in_terminal('/opt/Adobe\ AIR/Versions/1.0/Resources/Adobe\ AIR\ Updater -arp:uninstall')
+

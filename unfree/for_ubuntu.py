@@ -22,9 +22,9 @@
 from __future__ import with_statement
 import sys, os
 from ailurus.lib import *
-from ailurus.libapp import *
-
 assert UBUNTU or MINT
+from ailurus.libapp import *
+from ailurus.ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
@@ -224,7 +224,7 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
-    # detail = _('Please install it in /opt/google-earch. Otherwise it cannot be detected.')
+    detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
     category = 'others'
     def install(self):
         f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
@@ -321,20 +321,27 @@ class EIOffice(I):
             run_as_root('/usr/bin/rmeio')
 
 class ESETNOD32(I):
-    __doc__ = ('ESET NOD32')
-    detail = _('Officical site:') + ' http://beta.eset.com/linux'
+    __doc__ = _('ESET NOD32')
+    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    category = 'antivirus'
     def install(self):
         if is32():
-            f =  R(['http://download.eset.com/special/eav_linux/ueav.i386.linux']).download()
+            f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()
         else:
-            f = R(['http://download.eset.com/special/eav_linux/ueav.x86_64.linux']).download()
-        run_as_root('chmod +x %s' %f)
-        run_as_root_in_terminal(f)
+            f = R('http://download.eset.com/special/eav_linux/ueav.x86_64.linux').download()
+        run('chmod +x ' + f)
+        run_as_root(f)
         if not is32():
-            run_as_root('rm /usr/lib/libesets_pac.so -rf')
+            # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
+            with TempOwn('/etc/ld.so.preload') as o:
+                with open('/etc/ld.so.preload') as f:
+                    content = f.read()
+                with open('/etc/ld.so.preload', 'w') as f:
+                    for item in content.split():
+                        if 'libesets_pac.so' not in item:
+                            print >>f, item, 
     def installed(self):
-        import os
-        return os.path.exists('/opt/eset/')
+        return os.path.exists('/opt/eset/esets/bin/esets_gil')
     def remove(self):
         run_as_root('/opt/eset/esets/bin/esets_gil')
         
@@ -352,7 +359,15 @@ class Adobe_AIR(I):
     def remove(self):
         run_as_root_in_terminal('/opt/Adobe\ AIR/Versions/1.0/Resources/Adobe\ AIR\ Updater -arp:uninstall')
 
-            
-            
-            
-    
+class Repo_Oracle(_repo):
+    __doc__ = _('Oracle')
+    def __init__(self):
+        self.desc = _('This repository provides Oracle Database Express Edition.\n'
+            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
+        self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
+        self.web_page = 'http://oss.oracle.com/'
+        self.apt_file = '/etc/apt/sources.list.d/oracle.list'
+        self.apt_conf = [ 'deb http://oss.oracle.com/debian unstable main non-free' ]
+        self.key_url = 'http://oss.oracle.com/el4/RPM-GPG-KEY-oracle'
+        self.key_id = 'B38A8516'
+        _repo.__init__(self)

@@ -3,7 +3,7 @@ build/
 dist/
 installed_files
 
-po/ailurus.pot
+po/
 .project
 .pydevproject
 .settings/

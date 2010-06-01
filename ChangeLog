@@ -1,9 +1,65 @@
-2010-05-29 QI Chengjie<starboy.qi@gmail.com>
+2010-06-01 Homer Xing <homer.xing@gmail.com>
 
-	* Add Phpeclipse VEditor Photran DLTK_Ruby  for Fedora 
-	* Add gedit settings and file compression level in setting panel
-    * Add ESET NOD32 in fedora and ubuntu
+    * Move stardict dictionaries into computer doctor pane
+    * Move gcompris voice, childsplay voice into computer doctor pane
+
+2010-05-31 HAN Haofu<gtxx3600@gmail.com>
+
+	* Move all apps in native_apps.py to native_apps.cfg.
+	* Move app's __doc__ and detail to support/strings.py.
+	* Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
+
+2010-05-31 Homer Xing <homer.xing@gmail.com>
+
+    * Improve desktop environment detection.
+
+2010-05-30 MA Yue <velly.empire@gmail.com>
+
+    *Add the Screensaver Panel
+
+2010-05-30 Homer Xing <homer.xing@gmail.com>
+
+    * Add a preference menuitem to choose default pane.
+    * Re-enable Oracle repository.
+    * Move language support to Computer Doctor pane.
+    * Add Eclipse owner correction in Computer Doctor pane.
+    * Fix bug: MPlayer-vod cannot be installed.
+    * Fix bug: cannot install software without key.
+    * Fix bug: SHA-DA radio cannot be installed.
+    * Do not raise NotImplementedError when remove Aptana. Display some text instead.
+    * Fix bug: Install the latest songbird.
+    * Fix bug: _download_one_file.install() always fail even if successfully copied file.
+    * Fix bug: cannot download NScript.
+    * Fix bug: Weave is renamed to Firefox Sync.
+    * Support Linux Deepin. Linux Deepin users please upgrade to 10.05.93.
+
+2010-05-29 MA Yue <velly.empire@gmail.com>
+
+    * Reset GNOME
+
+2010-05-29 MA Yue <velly.empire@gmail.com>
+
+    * Add the 'reset gnome configuration settings'
+
+2010-05-29 QI Chengjie <starboy.qi@gmail.com>
+
+    * Add some eclipse extensions for Fedora
+    * Add ESET NOD32
+    * Add compression strategy setting
+    * Add some GEdit setting
     
+2010-05-29 Homer Xing <homer.xing@gmail.com>
+
+    * Move OpenJDK to native_apps
+    * Merge Generic_Genome_Browser
+    * Ellipsize text end in UbuntuAutoRemovableBox
+    * Put UbuntuAutoRemovableBox & UbuntuDeleteUnusedConfigBox in a row
+    * Chosen means "will remove" in UbuntuDeleteUnusedConfigBox & UbuntuAutoRemovableBox
+
+2010-05-28 Homer Xing <homer.xing@gmail.com>
+
+    * Support YLMF. YLMF users please upgrade to version 10.05.92
+
 2010-05-23 Devil Wang <wxjeacen@gmail.com>
 
     * Add a lot of software for Fedora
@@ -19,7 +75,7 @@
 
 2010-05-22 HAN Haofu <gtxx3600@gmail.com>
 
-	* Optimize the behaviour of lib.notify()
+    * Optimize the behaviour of lib.notify()
 
 2010-05-22 Homer Xing <homer.xing@gmail.com>
 
@@ -70,18 +126,18 @@
 
 2010-05-14 HAN Haofu <gtxx3600@gmail.com>
 
-    *Rename 'platfrom' to 'DE'(Desktop Environment)
-    *Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
-    *Add new icon velly_icons/software_default_icon.png
-    *Move load_app_icon(name) from 'libu.py' to 'loader.py'
-    *Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
-    *Add icon on install_remove_pane to show package's desktop environment
-    *Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
+    * Rename 'platfrom' to 'DE'(Desktop Environment)
+    * Add attrs (DE_kde,DE_gnome,DE_universe) in install_remove_pane
+    * Add new icon velly_icons/software_default_icon.png
+    * Move load_app_icon(name) from 'libu.py' to 'loader.py'
+    * Add an new attr 'DE' in all 'package_class' to identify the package's desktop environment
+    * Add icon on install_remove_pane to show package's desktop environment
+    * Add 2 icon files into 'other_icons': 'kde.png', 'gnome.png'
     
 2010-05-11 HAN Haofu <gtxx3600@gmail.com>
 
-    *Add icon for package that has no icon
-    *Move some relative code to loader.py 
+    * Add icon for package that has no icon
+    * Move some relative code to loader.py 
 
 2010-05-11 Homer Xing <homer.xing@gmail.com>
 

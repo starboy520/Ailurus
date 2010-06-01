@@ -37,12 +37,12 @@ Features:
       license = 'GPLv2+',
       platforms = ['linux'],
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
+      package_data={'ailurus': ['native_apps']},
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
         ('share/applications/', ['ailurus.desktop']),
         
         ('share/ailurus/', ['ChangeLog']),
-        
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
         ('share/ailurus/data/other_icons/', glob('data/other_icons/*.png') ),
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),

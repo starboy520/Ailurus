@@ -287,14 +287,50 @@ class PaneLoader:
         return self.pane_object is None
 
 def create_menu_from(menuitems):
-    import gtk
+    assert isinstance(menuitems, list)
     menu = gtk.Menu()
     for item in menuitems:
         menu.append(item)
     menu.show_all()
     return menu
 
+class DefaultPaneMenuItem(gtk.CheckMenuItem):
+    def __init__(self, text, value, group):
+        'text is displayed. value is saved in Config. group consists of all menu items'
+        assert isinstance(text, str)
+        assert isinstance(value, str)
+        assert isinstance(group, list)
+        for obj in group:
+            assert isinstance(obj, gtk.CheckMenuItem)
+        self.text = text
+        self.value = value.replace('\n', '')
+        self.group = group
+        gtk.CheckMenuItem.__init__(self, text)
+        self.set_draw_as_radio(True)
+        self.set_active(Config.get_default_pane() == value)
+        self.connect('toggled', lambda w: self.toggled())
+    def toggled(self):
+        if self.get_active():
+            Config.set_default_pane(self.value)
+            for obj in self.group:
+                if obj != self:
+                    obj.set_active(False)
+        self.set_active(Config.get_default_pane() == self.value)
+
 class MainView:
+    def create_default_pane_menu(self):
+        'Create a menu, to select default pane.'
+        menuitems = []
+        reversed_order = self.ordered_key[:]
+        reversed_order.reverse()
+        for key in reversed_order:
+            pane = self.contents[key]
+            assert hasattr(pane, 'pane_class') # pane is a PaneLoader object
+            assert hasattr(pane.pane_class, 'text')
+            item = DefaultPaneMenuItem(pane.pane_class.text, pane.pane_class.__name__, menuitems)
+            menuitems.append(item)
+        return create_menu_from(menuitems)
+    
     def add_quit_button(self):
         item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
         self.toolbar.insert(item_quit, 0)
@@ -304,6 +340,10 @@ class MainView:
                         self.__show_popupmenu_on_toolbaritem, create_menu_from(load_others_menuitems()))
         self.toolbar.insert(item, 0)
         self.menu_preference = create_menu_from(load_preferences_menuitems())
+        default_pane_item = gtk.MenuItem(_('Default pane'))
+        default_pane_item.set_submenu(self.create_default_pane_menu())
+        self.menu_preference.append(default_pane_item)
+        self.menu_preference.show_all()
         item = toolitem(D+'sora_icons/m_preference.png', _('Preferences'), 'button_release_event', 
                         self.__show_popupmenu_on_toolbaritem, self.menu_preference)
         self.toolbar.insert(item, 0)
@@ -319,7 +359,7 @@ class MainView:
             item = toolitem(icon, text, 'clicked', self.activate_pane, key)
             self.toolbar.insert(item, 0)
         
-        self.activate_pane(None, 'SystemSettingPane')
+        self.activate_pane(None, Config.get_default_pane())
 
     def get_item_icon_size(self):
         return min( int(self.last_x / 20), 48)

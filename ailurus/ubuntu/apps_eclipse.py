@@ -25,76 +25,16 @@ import sys, os
 from lib import *
 from libapp import * 
 
-def create_eclipse_icon():
-    memarg = ''
-    try:
-        f = open('/proc/meminfo')
-        for line in f:
-            if 'MemTotal' in line:
-                amount = int(line.split()[1]) ; break
-        if amount >= 1024 * 1024 * 1.5:
-            memarg = '-Xms512M -Xmx1024M'
-    except:
-        pass
-    icon = '/usr/share/applications/eclipse.desktop'
-    with TempOwn(icon) as o:
-        with open(icon, 'w') as f:
-            f.write('''[Desktop Entry]
-Name=Eclipse
-Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
-Encoding=UTF-8
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Development
-Icon=/usr/lib/eclipse/icon.xpm''')
-
-def message(title, content):
-    import StringIO
-    assert isinstance(title, (str, unicode)) and title
-    assert isinstance(content, (str, unicode, StringIO.StringIO) )
-    if isinstance(content, StringIO.StringIO): content = content.getvalue()
-    import gtk
-    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
-    dialog.set_title( _('Installing Eclipse extension') )
-    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
-    dialog.show_all()
-    gtk.gdk.threads_enter()
-    dialog.run()
-    dialog.destroy()
-    gtk.gdk.threads_leave()
-
-if FEDORA:
-    class Eclipse(_rpm_install):
-        __doc__ = _('Eclipse (basic development environment)')
-        detail = ( 
-                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
-                _(' This application depends on Java.') )
-        category = 'ide'
-        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
-        pkgs = 'eclipse-platform'
-        
-elif UBUNTU or MINT:
-    class Eclipse(_apt_install):
-        __doc__ = _('Eclipse (basic development environment)')
-        detail = ( 
-                _('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-                _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php\n'
-                  'You can download Language pack from http://download.eclipse.org/technology/babel/babel_language_packs/ganymede.php, '
-                  'and extract ".zip" file to directory "/opt/eclipse" .') + 
-                _(' This application depends on Java.') )
-        category = 'ide'
-        license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
-        pkgs = 'eclipse'
+class Eclipse(_apt_install):
+    __doc__ = _('Eclipse (basic development environment)')
+    detail = (_('Eclipse is from http://www.eclipse.org/downloads/ \n') +
+              _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php'))
+    category = 'ide'
+    license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
+    pkgs = 'eclipse-platform' # Eclipse without any plugin
 
 def make_sure_installed():
-    if UBUNTU or MINT:
-        if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
-    else:
-        if not RPM.installed('eclipse-platform'): RPM.install('eclipse-platform')
+    if not APT.installed('eclipse-platform'): APT.install('eclipse-platform')
 
 class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
@@ -112,8 +52,7 @@ class CDT(_path_lists):
         f = self.r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-    def visible(self):
-        return not FEDORA
+        # run_as_root("chown $USER:$USER /usr/lib/eclipse -R") # It is strange. This command disables Pydev. I don't know the reason. :(
 
 
 class Pydev(_path_lists):
@@ -132,9 +71,7 @@ class Pydev(_path_lists):
         f = self.r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
-        run_as_root("chown $USER:$USER /usr/lib/eclipse -R")
-    def visible(self):
-        return not FEDORA
+        # run_as_root("chown $USER:$USER /usr/lib/eclipse -R") # It is strange. This command disables Pydev. I don't know the reason. :(
 
 
 class Aptana(I):
@@ -159,9 +96,9 @@ class Aptana(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.aptana.org/tools/studio/plugin/install/studio'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Aptana'), msg )
+        install_eclipse_extension_message( _('Installing Aptana'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
@@ -182,9 +119,9 @@ class RadRails(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing RadRails\n'), msg )
+        install_eclipse_extension_message( _('Installing RadRails\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class DLTK(I):
     __doc__ = _('Dynamic languages toolkit')
@@ -205,9 +142,9 @@ class DLTK(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.eclipse.org/technology/dltk/updates-dev/2.0/'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Dynamic languages toolkit\n'), msg )
+        install_eclipse_extension_message( _('Installing Dynamic languages toolkit\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
     @classmethod
     def make_sure_DLTK_installed(cls):
         obj = cls()
@@ -231,9 +168,9 @@ class PDT(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://www.eclipse.org/pdt/downloads/'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing PDT\n'), msg )
+        install_eclipse_extension_message( _('Installing PDT\n'), msg )
     def remove(self):
-        raise NotImplementedError
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
@@ -253,11 +190,9 @@ class Subversive(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://download.eclipse.org/technology/subversive/0.7/update-site/'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing Subversive\n'), msg )
+        install_eclipse_extension_message( _('Installing Subversive\n'), msg )
     def remove(self):
-        raise NotImplementedError
-    def visible(self):
-        return not FEDORA
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class VEditor(I):
     __doc__ = _('VEditor: Verilog and VHDL editor')
@@ -277,11 +212,9 @@ class VEditor(I):
         print >>msg, _('Click the "Add" button. Then type <b>%s</b> in "Location".')%'http://veditor.sourceforge.net/update'
         print >>msg
         print >>msg, _('Then click the "Next" button and agree the license.')
-        message( _('Installing VEditor\n'), msg )
+        install_eclipse_extension_message( _('Installing VEditor\n'), msg )
     def remove(self):
-        raise NotImplementedError
-    def visible(self):
-        return not FEDORA
+        remove_eclipse_extesion_message(self.__class__.__name__)
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
@@ -384,3 +317,5 @@ class MTJ(_path_lists):
         f = r.download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
+        # run_as_root("chown $USER:$USER /usr/lib/eclipse -R") # It is strange. This command disables Pydev. I don't know the reason. :(
+
