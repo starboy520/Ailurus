@@ -250,6 +250,33 @@ class Config:
     def is_ArchLinux(cls): # There is no get_arch_version, since ArchLinux has no version.
         import os
         return os.path.exists('/etc/arch-release')
+    @classmethod
+    def is_GNOME(cls):
+        if cls.is_XFCE(): return False
+        try:
+            get_output('pgrep -u $USER gnome-panel')
+            return True
+        except:
+            return False
+    @classmethod
+    def is_KDE(cls):
+        try:
+            get_output('pgrep -u $USER kdeinit')
+            return True
+        except:
+            try:
+                get_output('pgrep -u $USER kdeinit4')
+                return True
+            except: pass
+        return False
+    @classmethod
+    def is_XFCE(cls):
+        try:  
+            get_output('pgrep -u $USER xfce4-session')
+            return True
+        except: 
+            return False
+
 
 def install_locale():
     import gettext
@@ -1590,3 +1617,7 @@ elif WINDOW_MANAGER == "Xfwm4":
     XFCE = True
 else:
     print 'Window Manager is not recognized:', WINDOW_MANAGER
+    # These functions are less effective, but they work.
+    GNOME = Config.is_GNOME()
+    KDE = Config.is_KDE()
+    XFCE = Config.is_XFCE()
