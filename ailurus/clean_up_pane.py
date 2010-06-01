@@ -184,6 +184,7 @@ class ReclaimMemoryBox(gtk.VBox):
                                'Command: echo 3 >/proc/sys/vm/drop_caches'))
         text_view = gtk.TextView(text_buffer)
         text_view.set_editable(False)
+        text_view.set_cursor_visible(False)
         text_view.set_wrap_mode(gtk.WRAP_WORD)
         gray_bg(text_view)
         
