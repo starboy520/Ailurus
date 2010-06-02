@@ -2,6 +2,7 @@
 
     * Do not interrupt installation process if download() failed
     * Fix bug: TempOwn fails if directory does not exist
+    * Handle the situation such that information function returns []
 
 2010-06-01 Homer Xing <homer.xing@gmail.com>
 
