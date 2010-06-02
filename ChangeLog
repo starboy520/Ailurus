@@ -1,3 +1,7 @@
+2010-06-02 Homer Xing <homer.xing@gmail.com>
+
+    * Do not interrupt installation process if download() failed
+
 2010-06-01 Homer Xing <homer.xing@gmail.com>
 
     * Move stardict dictionaries into computer doctor pane
@@ -5,9 +9,9 @@
 
 2010-05-31 HAN Haofu<gtxx3600@gmail.com>
 
-	* Move all apps in native_apps.py to native_apps.cfg.
-	* Move app's __doc__ and detail to support/strings.py.
-	* Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
+    * Move all apps in native_apps.py to native_apps.cfg.
+    * Move app's __doc__ and detail to support/strings.py.
+    * Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
 
 2010-05-31 Homer Xing <homer.xing@gmail.com>
 
@@ -15,7 +19,7 @@
 
 2010-05-30 MA Yue <velly.empire@gmail.com>
 
-    *Add the Screensaver Panel
+    * Add the Screensaver Panel
 
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 

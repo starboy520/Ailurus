@@ -65,8 +65,12 @@ class _repo(I):
     def install(self):
         APTSource2.add_lines_to_file(self.apt_conf, self.apt_file)
         if hasattr(self, 'key_url') and self.key_url:
-            download(self.key_url, '/tmp/key.gpg')
-            run_as_root('apt-key add /tmp/key.gpg')
+            try: # do not interrupt installation process if download() failed
+                download(self.key_url, '/tmp/key.gpg')
+            except CommandFailError:
+                print_traceback()
+            else:
+                run_as_root('apt-key add /tmp/key.gpg')
     def remove(self):
         APTSource2.remove_snips_from_all_files(self.apt_conf)
         if self.key_id:
