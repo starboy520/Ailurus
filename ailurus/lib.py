@@ -439,6 +439,9 @@ class TempOwn:
         if path[0]=='-':
             raise ValueError
         import os
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            run_as_root('mkdir "%s"'%dirname)
         if not os.path.exists(path):
             run_as_root('touch "%s"'%path)
         run_as_root('chown $USER:$USER %s'%path )

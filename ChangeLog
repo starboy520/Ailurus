@@ -1,6 +1,7 @@
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 
     * Do not interrupt installation process if download() failed
+    * Fix bug: TempOwn fails if directory does not exist
 
 2010-06-01 Homer Xing <homer.xing@gmail.com>
 
