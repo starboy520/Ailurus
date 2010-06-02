@@ -226,6 +226,7 @@ class InstallRemovePane(gtk.VBox):
         try:
             error_traceback = StringIO.StringIO()
             print >>error_traceback, platform.dist()
+            print >>error_traceback, os.uname()
             print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
