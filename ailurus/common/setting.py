@@ -208,6 +208,24 @@ class Configure_Firefox(gtk.VBox):
                  ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
                  
                  ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
+                 
+                 ['user_pref("browser.sessionstore.max_tabs_undo", 25);\n', _('Increase the limit of Recent Closed Tabs'), ],
+                 
+                 ['user_pref("browser.search.openintab", true);\n', _('Open search result in new tab'), ],
+                 
+                 ['user_pref("browser.blink_allowed", false);\n', _('Disable Blinking Text'), ],
+                 
+                 ['user_pref("view_source.editor.external", true);\n'
+                  'user_pref("view_source.editor.path", "/usr/bin/gedit");\n', _('View page Source in Gediter'), ],
+                  
+                 ['user_pref("browser.tabs.tabMinWidth", 40);\n', _('Show more Tabs on single window'), ],
+                 
+                 ['user_pref("browser.history_expire_days", 30);\n'
+                  'user_pref("browser.history_expire_sites", 1000);\n', _('Reduce history keeping'), ],
+                  
+                 ['user_pref("browser.urlbar.clickSelectsAll", true);\n', _('Single click to select the whole URL in Address Bar'), ],
+                 
+                 ['user_pref("browser.bookmarks.autoExportHTML", 0);\n', _('Auto export bookmarks as HTML'), ],
 
                 ]
 
@@ -225,7 +243,9 @@ class Configure_Firefox(gtk.VBox):
         btable = gtk.Table()
         btable.set_col_spacings(10)
         label = gtk.Label()
-        label.set_text(_('Before configuring Firefox, please close all Firefox windows.'))
+        label.set_text(_('Before configuring Firefox, please close all Firefox windows.\n'))
+        label.set_tooltip_text("Tips: Ailurus creat a file called user.js in the folder of Firefox personal settings,"
+                               "which save these tweaks you choose below.")
         btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
         X = 0
         Y = 1

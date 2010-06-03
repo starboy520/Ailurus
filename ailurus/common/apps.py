@@ -297,6 +297,19 @@ class FFEasyDragToGo(_ff_extension):
     31537, '580bc24dc0b1ecd4dbddb001db0a7cad829d2f63')
         _ff_extension.__init__(self)
 
+class FFEaseLink(_ff_extension):
+    __doc__ = _('Ease Link: decode Thunder, QQ Xuanfeng, Flashget, Rayfile, Namipan and QQ Temporary Chatting links.')
+    category = 'firefox_extension'
+    license = MPL
+    def __init__(self):
+        self.desc = _("It can fix Thunder, QQ Xuanfeng, Flashget, Rayfile, Namipan, and QQ Temporary Chatting links. Converting URL text of above types on the webpage to a Hyperlink.")
+        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59133/'
+        self.range = '1.5 - 3.7'
+        self.name = u'Ease Link'
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/59133/ease_link-1.0.2.3-fx.xpi'],
+                   20679, '4c79ae5f7d9fe2c2bb5fdbe5e5dbc06c9f79b789')
+        _ff_extension.__init__(self)
+
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
     category = 'firefox_extension'
@@ -359,6 +372,19 @@ class FFGreaseMonkey(_ff_extension):
         self.name = u'Greasemonkey'
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
     143260, '0f1c48493e3b52a48e9b55db054a2022c46a8d08')
+        _ff_extension.__init__(self)
+
+class FFFlashblock(_ff_extension):
+    __doc__ = _('Flashblock: blocks Flash content from loading web page')
+    category = 'firefox_extension'
+    license = GPL + MPL
+    def __init__(self):
+        self.desc = _("Never annoyed by a Flash animation again! Blocks Flash so it won't get in your way, but if you want to see it, just click on...")
+        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
+        self.range = '1.5 - 3.7'
+        self.name = u'Flashblock'
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/433/flashblock-1.5.13-fx.xpi',],
+                   91189, '97154760c0374197d8c6ee1e02fc5b0011c02ba7')
         _ff_extension.__init__(self)
 
 class FFLiveHTTPHeaders(_ff_extension):
@@ -511,3 +537,17 @@ class FFYSlow(_ff_extension):
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
+        
+class FFWebMailNotifier(_ff_extension):
+    __doc__ = _('WebMail Notifier: check your webmail accounts and notifie the number of unread emails.')
+    category = 'firefox_extension'
+    license = MPL
+    def __init__(self):
+        self.desc = _("Supports : gmail, yahoo, hotmail, aol, daum, naver, nate, paran, POP3/IMAP and more.")
+        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/4490/'
+        self.range = '1.5 - 3.7'
+        self.name = u'WebMail Notifier'
+        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/4490/webmail_notifier-2.4.2-fx+tb+sm.xpi'],
+                   122669, 'ff635ed0350878094bcc5d3c58fdb0d92ea4a7a9')
+        _ff_extension.__init__(self)
+

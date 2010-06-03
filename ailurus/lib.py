@@ -1609,7 +1609,7 @@ XFCE = False
 # This code is from gshutdown/src/values.c
 # GPLv2
 WINDOW_MANAGER = window_manager_name()
-if WINDOW_MANAGER == "Metacity":
+if WINDOW_MANAGER == "Metacity" or "compiz":
     GNOME = True
 elif WINDOW_MANAGER == "KWin":
     KDE = True
