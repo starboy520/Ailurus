@@ -127,8 +127,8 @@ def check_dbus_daemon_status():
     from daemon import version as current_version
     same_version = (current_version == running_version)
     if correct_conf_files and dbus_ok and same_version: return
-    def show_error_dialog(msg):
-        dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    def show_text_dialog(msg, icon=gtk.MESSAGE_ERROR):
+        dialog = gtk.MessageDialog(type=icon, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus')
         dialog.set_markup(msg)
         dialog.run()
@@ -144,20 +144,21 @@ def check_dbus_daemon_status():
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
         print >>message, ''
-        show_error_dialog(message.getvalue())
+        show_text_dialog(message.getvalue())
     elif not dbus_ok:
         print >>message, _("Ailurus' D-Bus daemon exited with error.")
         print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
         print >>message, ''
         print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon', '</span>'
-        show_error_dialog(message.getvalue())
+        show_text_dialog(message.getvalue())
     elif not same_version:
-        print >>message, _('We need to restart Ailurus background process.')
+        print >>message, _('We need to restart Ailurus daemon.')
         print >>message, ''
         print >>message, _('Old version is %s.') % running_version, _('New version is %s') % current_version
-        show_error_dialog(message.getvalue())
+        show_text_dialog(message.getvalue())
         try:
             restart_dbus_daemon()
+            show_text_dialog(_('Ailurus daemon successfully restarted. Ailurus will work fine.'), icon=gtk.MESSAGE_INFO)
         except:
             print_traceback()
 

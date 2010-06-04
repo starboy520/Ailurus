@@ -2,7 +2,7 @@
 
     * Improve architecture. Do not need to manually update AILURUS_VERSION.
     * Add dbus daemon version. Check dbus daemon status by reading version.
-    
+    * Provide a dialog to restart daemon.
 
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 

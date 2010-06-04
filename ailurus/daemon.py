@@ -26,7 +26,7 @@ import dbus.service
 import dbus.glib
 import gobject
 
-version = 1
+version = 1 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
