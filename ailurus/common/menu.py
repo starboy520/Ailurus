@@ -58,13 +58,47 @@ def __study_linux():
     ret.insert(0, study_show_tip)
     return ret
 
+def set_proxy_server():
+    proxy_string_entry = gtk.Entry()
+    proxy_string_entry.set_text(get_proxy_string())
+    proxy_table = gtk.Table()
+    proxy_table.set_row_spacings(5)
+    proxy_table.set_col_spacings(5)
+    proxy_table.attach(gtk.Label(_('Proxy string:')), 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    proxy_table.attach(proxy_string_entry, 1, 2, 0, 1)
+    label_example = gtk.Label()
+    label_example.set_markup('<small>%s</small>'%(_('Example:') + ' http://USERNAME:PASSWORD@inproxy.sjtu.edu.cn:PORTNUMBER/'))
+    proxy_table.attach(label_example, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+    
+    use_proxy = gtk.CheckButton(_('Use a proxy server'))
+    use_proxy.connect('toggled', lambda w: Config.set_use_proxy(w.get_active())
+                      or proxy_table.set_sensitive(w.get_active()))
+    use_proxy.set_active(Config.get_use_proxy())
+    use_proxy.toggled() # raise "toggled" signal
+
+    dialog = gtk.Dialog(
+        _('Set proxy server'), 
+        None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
+        (gtk.STOCK_OK, gtk.RESPONSE_OK) )
+    dialog.set_border_width(10)
+    dialog.vbox.set_spacing(10)
+    dialog.vbox.pack_start(use_proxy, False)
+    dialog.vbox.pack_start(proxy_table, False)
+    dialog.vbox.show_all()
+    dialog.run()
+    set_proxy_string(proxy_string_entry.get_text())
+    dialog.destroy()
+
 def __preferences():
     menu_query_before_exit = gtk.CheckMenuItem(_('Query before exit'))
     menu_query_before_exit.set_active(Config.get_query_before_exit())
     menu_query_before_exit.connect('toggled', 
             lambda w: Config.set_query_before_exit(w.get_active()))
 
-    return [ menu_query_before_exit ]
+    set_proxy = gtk.MenuItem(_('Proxy server'))
+    set_proxy.connect('activate', lambda w: set_proxy_server())
+
+    return [ set_proxy, menu_query_before_exit ]
 
 def right_label(text):
     font = pango.FontDescription('Georgia')
