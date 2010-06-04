@@ -26,6 +26,8 @@ import dbus.service
 import dbus.glib
 import gobject
 
+version = 1
+
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
 
@@ -82,6 +84,12 @@ class AilurusFulgens(dbus.service.Object):
                                           out_signature='i') 
     def get_check_permission_method(self):
         return self.check_permission_method
+
+    @dbus.service.method('cn.ailurus.Interface', 
+                                          in_signature='', 
+                                          out_signature='i') 
+    def get_version(self):
+        return version
 
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='', 

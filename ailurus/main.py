@@ -116,7 +116,7 @@ def check_dbus_configuration():
         same_content = False
     dbus_ok = True
     try:
-        get_authentication_method()
+        get_dbus_daemon_version()
     except:
         dbus_ok = False
     if same_content and dbus_ok: return
@@ -135,7 +135,7 @@ def check_dbus_configuration():
         print >>message, _("Ailurus' D-Bus daemon exited with error.")
         print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
         print >>message, ''
-        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon &amp;', '</span>'
+        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon', '</span>'
     dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
     dialog.set_title('Ailurus ' + AILURUS_VERSION)
     dialog.set_markup(message.getvalue())

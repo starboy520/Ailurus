@@ -364,6 +364,13 @@ def packed_env_string():
     env['PWD'] = os.getcwd()
     return pack(env)
 
+def get_dbus_daemon_version():
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
+    return ret    
+
 def get_authentication_method():
     import dbus
     bus = dbus.SystemBus()
