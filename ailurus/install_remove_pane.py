@@ -663,20 +663,19 @@ class InstallRemovePane(gtk.VBox):
         dialog = gtk.Dialog(
             _('Set Ailurus download parameter'), 
             None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+            (gtk.STOCK_OK, gtk.RESPONSE_OK) )
         dialog.set_border_width(5)
         dialog.vbox.pack_start(timeout_label, False)
         dialog.vbox.pack_start(scale_timeout, False)
         dialog.vbox.pack_start(tries_label, False)
         dialog.vbox.pack_start(scale_tries, False)
         dialog.vbox.show_all()
-        ret = dialog.run()
+        dialog.run()
         new_timeout = int(adjustment_timeout.get_value())
         new_tries = int(adjustment_tries.get_value())
+        Config.wget_set_timeout(new_timeout)
+        Config.wget_set_triesnum(new_tries)
         dialog.destroy()
-        if ret == gtk.RESPONSE_OK:
-            Config.wget_set_timeout(new_timeout)
-            Config.wget_set_triesnum(new_tries)
     
     def get_preference_menuitems(self):
         def toggled(w):
