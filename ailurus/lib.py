@@ -336,6 +336,18 @@ def get_proxy_string():
         get_proxy_string.denied = True
         raise UserDeniedError
 
+def enable_urllib2_proxy():
+    string = get_proxy_string()
+    assert string
+    import urllib2
+    proxy_support = urllib2.ProxyHandler({'http':string}) # FIXME: please support https, ftp, rstp
+    opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)
+    urllib2.install_opener(opener)
+
+def disable_urllib2_proxy():
+    import urllib2
+    urllib2.install_opener(None)
+
 def install_locale():
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
