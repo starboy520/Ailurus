@@ -1,6 +1,6 @@
 include AUTHORS COPYING INSTALL README
 include MANIFEST.in MANIFEST
-include ChangeLog version
+include ChangeLog
 include ailurus*
 recursive-include data *
 recursive-include po *

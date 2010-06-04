@@ -21,8 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.93'
-AILURUS_RELEASE_DATE = '2010-05-30'
+
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -1550,6 +1549,21 @@ def window_manager_name():
         except TypeError, exc:
             pass
     return name
+
+def get_ailurus_version():
+    import os
+    path = os.path.dirname(__file__) + '/version'
+    with open(path) as f:
+        return f.read().strip()
+    
+def get_ailurus_release_date():
+    import os, time
+    path = os.path.dirname(__file__) + '/version'
+    info = os.stat(path)
+    return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
+
+AILURUS_VERSION = get_ailurus_version()
+AILURUS_RELEASE_DATE = get_ailurus_release_date()
 
 Config.init()
 
