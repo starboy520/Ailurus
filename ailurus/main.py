@@ -155,6 +155,7 @@ def check_dbus_daemon_status():
         print >>message, _('We need to restart Ailurus daemon.')
         print >>message, _('Old version is %s.') % running_version, _('New version is %s') % current_version
         print >>message, ''
+        print >>message, _('Press this button to restart daemon. Require authentication.')
         show_text_dialog(message.getvalue())
         try:
             restart_dbus_daemon()

@@ -26,7 +26,7 @@ import dbus.service
 import dbus.glib
 import gobject
 
-version = 1 # must be integer
+version = 3 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -93,8 +93,10 @@ class AilurusFulgens(dbus.service.Object):
 
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='', 
-                                          out_signature='')
-    def exit(self):
+                                          out_signature='',
+                                          sender_keyword='sender')
+    def exit(self, sender=None):
+        self.__check_permission(sender)
         self.mainloop.quit()
 
     def __check_permission(self, sender):
