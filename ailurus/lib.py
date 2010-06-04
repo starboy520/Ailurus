@@ -389,20 +389,31 @@ class ResponseTime:
 class CommandFailError(Exception):
     'Fail to execute a command'
 
-def run(cmd, ignore_error=False):
-    is_string_not_empty(cmd)
+def run(command, ignore_error=False):
+    is_string_not_empty(command)
     if not isinstance(ignore_error,  bool): raise TypeError
 
     if getattr(run, 'terminal', None):
         assert run.terminal.__class__.__name__ == 'Terminal'
         try:
-            run.terminal.run(cmd)
+            run.terminal.run(command)
         except CommandFailError:
             if not ignore_error: raise
     else:
-        print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
-        import os
-        if os.system(cmd) and not ignore_error: raise CommandFailError(cmd)
+        print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
+        import os, subprocess
+        env = None
+        if Config.get_use_proxy():
+            env = os.environ.copy()
+            proxy_string = get_proxy_string()
+            env.update({'http_proxy':proxy_string,
+                        'https_proxy':proxy_string,
+                        'ftp_proxy':proxy_string,
+                        })
+        task = subprocess.Popen(command, env=env, shell=True)
+        task.wait()
+        if task.returncode and ignore_error == False:
+            raise CommandFailError(command, task.returncode)
 
 def pack(D):
     assert isinstance(D, dict)
