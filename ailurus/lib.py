@@ -117,6 +117,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_proxy_string_id_in_keyring(cls, value):
+        cls.set_int('proxy_string_id_in_keyring', value)
+    @classmethod
+    def get_proxy_string_id_in_keyring(cls):
+        # do not wrap it in try..except
+        return cls.get_int('proxy_string_id_in_keyring')
+    @classmethod
     def set_hide_quick_setup_pane(cls, value):
         cls.set_bool('hide_quick_setup_pane', value)
     @classmethod
