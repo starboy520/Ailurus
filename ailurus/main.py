@@ -77,6 +77,11 @@ def check_required_packages():
         ubuntu_missing.append('python-dbus')
         fedora_missing.append('dbus-python')
         archlinux_missing.append('dbus-python')
+    try: import gnomekeyring
+    except:
+        ubuntu_missing.append('python-gnomekeyring')
+        fedora_missing.append('gnome-python2-gnomekeyring')
+        archlinux_missing.append('python-gnomekeyring') # I am not sure. python-gnomekeyring is on AUR. get nothing from pacman -Ss python*keyring 
     if not os.path.exists('/usr/bin/unzip'):
         ubuntu_missing.append('unzip')
         fedora_missing.append('unzip')
