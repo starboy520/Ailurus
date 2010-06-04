@@ -21,8 +21,11 @@
 
 from __future__ import with_statement
 import sys, os
-from ailurus.lib import *
-from ailurus.libapp import *
+import ailurus
+path = os.path.dirname(ailurus.__file__)
+sys.path.insert(0, path)
+from lib import *
+from libapp import *
 
 assert FEDORA
 

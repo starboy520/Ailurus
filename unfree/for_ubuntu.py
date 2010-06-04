@@ -21,10 +21,13 @@
 
 from __future__ import with_statement
 import sys, os
-from ailurus.lib import *
+import ailurus
+path = os.path.dirname(ailurus.__file__)
+sys.path.insert(0, path)
+from lib import *
 assert UBUNTU or UBUNTU_DERIV
-from ailurus.libapp import *
-from ailurus.ubuntu.third_party_repos import _repo
+from libapp import *
+from ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
