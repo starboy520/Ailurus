@@ -270,10 +270,8 @@ class _path_lists(I):
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
+    ext_path = None
     def __init__(self):
-        if not hasattr(_ff_extension, 'ext_path'):
-            _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
-        
         assert self.name, 'No %s.name'%self.__class__.__name__
         assert isinstance(self.name, unicode)
         assert self.R, 'No %s.R'%self.__class__.__name__
@@ -299,6 +297,9 @@ class _ff_extension(I):
         else:
             raise NotImplementedError(self.name, f)
     def __exists_in_ext_path(self):
+        if not _ff_extension.ext_path:
+            _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
+
         try:
             f = self.R.filename
             import os
