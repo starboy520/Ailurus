@@ -116,13 +116,15 @@ def check_dbus_daemon_status():
         correct_conf_files = False
     dbus_ok = True
     try:
-        get_dbus_daemon_version()
+        get_authentication_method()
     except:
+        print_traceback()
         dbus_ok = False
     same_version = True
     try:
         running_version = get_dbus_daemon_version()
     except:
+        print_traceback()
         running_version = 0
     from daemon import version as current_version
     same_version = (current_version == running_version)
@@ -147,14 +149,12 @@ def check_dbus_daemon_status():
         show_text_dialog(message.getvalue())
     elif not dbus_ok:
         print >>message, _("Ailurus' D-Bus daemon exited with error.")
-        print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
-        print >>message, ''
-        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon', '</span>'
+        print >>message, _("Please restart your computer.")
         show_text_dialog(message.getvalue())
     elif not same_version:
         print >>message, _('We need to restart Ailurus daemon.')
-        print >>message, ''
         print >>message, _('Old version is %s.') % running_version, _('New version is %s') % current_version
+        print >>message, ''
         show_text_dialog(message.getvalue())
         try:
             restart_dbus_daemon()
