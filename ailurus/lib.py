@@ -96,7 +96,7 @@ class Config:
     @classmethod
     def set_int(cls, key, value):
         assert isinstance(key, str) and key
-        assert isinstance(value, (int, long)), type(value)
+        assert isinstance(value, int), type(value)
         cls.parser.set('DEFAULT', key, value)
         cls.save()
     @classmethod
@@ -104,6 +104,17 @@ class Config:
         assert isinstance(key, str) and key
         value = cls.parser.get('DEFAULT', key)
         return int(value)
+    @classmethod
+    def set_long(cls, key, value):
+        assert isinstance(key, str) and key
+        assert isinstance(value, long), type(value)
+        cls.parser.set('DEFAULT', key, value)
+        cls.save()
+    @classmethod
+    def get_long(cls, key):
+        assert isinstance(key, str) and key
+        value = cls.parser.get('DEFAULT', key)
+        return long(value)
     @classmethod
     def set_bool(cls, key, value):
         assert isinstance(key, str) and key
@@ -118,11 +129,11 @@ class Config:
         return value=='True' or value=='true'
     @classmethod
     def set_proxy_string_id_in_keyring(cls, value):
-        cls.set_int('proxy_string_id_in_keyring', value)
+        cls.set_long('proxy_string_id_in_keyring', value)
     @classmethod
     def get_proxy_string_id_in_keyring(cls):
         # do not wrap it in try..except
-        return cls.get_int('proxy_string_id_in_keyring')
+        return cls.get_long('proxy_string_id_in_keyring')
     @classmethod
     def set_hide_quick_setup_pane(cls, value):
         cls.set_bool('hide_quick_setup_pane', value)
