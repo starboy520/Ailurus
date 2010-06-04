@@ -109,22 +109,35 @@ def check_required_packages():
         dialog.destroy()
 
 def check_dbus_daemon_status():
-    same_content = True
+    correct_conf_files = True
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
-        same_content = False
+        correct_conf_files = False
     if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
-        same_content = False
+        correct_conf_files = False
     dbus_ok = True
     try:
         get_dbus_daemon_version()
     except:
         dbus_ok = False
-    if same_content and dbus_ok: return
+    same_version = True
+    try:
+        running_version = get_dbus_daemon_version()
+    except:
+        running_version = 0
+    from daemon import version as current_version
+    same_version = (current_version == running_version)
+    if correct_conf_files and dbus_ok and same_version: return
+    def show_error_dialog(msg):
+        dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+        dialog.set_title('Ailurus ' + AILURUS_VERSION)
+        dialog.set_markup(msg)
+        dialog.run()
+        dialog.destroy()
     import StringIO
     message = StringIO.StringIO()
     print >>message, _('Error happened. You cannot install any software by Ailurus. :(')
     print >>message, ''
-    if not same_content:
+    if not correct_conf_files:
         print >>message, _('System configuration file should be updated.')
         print >>message, _('Please run these commands using <b>su</b> or <b>sudo</b>:')
         print >>message, ''
@@ -136,11 +149,7 @@ def check_dbus_daemon_status():
         print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
         print >>message, ''
         print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon', '</span>'
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
-    dialog.set_title('Ailurus ' + AILURUS_VERSION)
-    dialog.set_markup(message.getvalue())
-    dialog.run()
-    dialog.destroy()
+    show_error_dialog(message.getvalue())
 
 def wait_firefox_to_create_profile():
     if os.path.exists('/usr/bin/firefox'):
