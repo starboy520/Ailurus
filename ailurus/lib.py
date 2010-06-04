@@ -96,7 +96,7 @@ class Config:
     @classmethod
     def set_int(cls, key, value):
         assert isinstance(key, str) and key
-        assert isinstance(value, int)
+        assert isinstance(value, (int, long)), type(value)
         cls.parser.set('DEFAULT', key, value)
         cls.save()
     @classmethod
@@ -286,6 +286,33 @@ class Config:
         except: 
             return False
 
+def set_proxy_string(proxy_string):
+    import gnomekeyring
+    keyring = gnomekeyring.get_default_keyring_sync()
+    id = gnomekeyring.item_create_sync(keyring,
+                                       gnomekeyring.ITEM_GENERIC_SECRET,
+                                       'ailurus proxy string',
+                                       {'appname':'ailurus'},
+                                       proxy_string,
+                                       True, # update_if_exists
+                                      )
+    Config.set_proxy_string_id_in_keyring(id)
+
+def get_proxy_string():
+    if hasattr(get_proxy_string, 'denied'): # user has denied access before
+        return ''
+    
+    try:    id = Config.get_proxy_string_id_in_keyring()
+    except: return '' # not exist
+    
+    import gnomekeyring
+    keyring = gnomekeyring.get_default_keyring_sync()
+    try:
+        proxy_string = gnomekeyring.item_get_info_sync(keyring, id).get_secret()
+    except gnomekeyring.DeniedError: # user denied authentication
+        get_proxy_string.denied = True
+        return ''
+    return proxy_string
 
 def install_locale():
     import gettext
