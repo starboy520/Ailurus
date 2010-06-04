@@ -72,8 +72,14 @@ def set_proxy_server():
     proxy_table.attach(label_example, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
     
     use_proxy = gtk.CheckButton(_('Use a proxy server'))
-    use_proxy.connect('toggled', lambda w: Config.set_use_proxy(w.get_active())
-                      or proxy_table.set_sensitive(w.get_active()))
+    def toggled(w):
+        Config.set_use_proxy(w.get_active())
+        proxy_table.set_sensitive(w.get_active())
+        if w.get_active():
+            enable_urllib2_proxy()
+        else:
+            disable_urllib2_proxy()
+    use_proxy.connect('toggled', toggled)
     use_proxy.set_active(Config.get_use_proxy())
     use_proxy.toggled() # raise "toggled" signal
 
