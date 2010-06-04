@@ -108,7 +108,7 @@ def check_required_packages():
         dialog.run()
         dialog.destroy()
 
-def check_dbus_configuration():
+def check_dbus_daemon_status():
     same_content = True
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
         same_content = False
@@ -514,7 +514,7 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
 set_default_window_icon()
 check_required_packages()
-check_dbus_configuration()
+check_dbus_daemon_status()
 
 #from support.splashwindow import SplashWindow
 #splash = SplashWindow()
