@@ -128,6 +128,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_use_proxy(cls, value):
+        cls.set_bool('use_proxy', value)
+    @classmethod
+    def get_use_proxy(cls):
+        try: return cls.get_bool('use_proxy')
+        except: return False
+    @classmethod
     def set_proxy_string_id_in_keyring(cls, value):
         cls.set_long('proxy_string_id_in_keyring', value)
     @classmethod
