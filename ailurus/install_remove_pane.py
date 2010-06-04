@@ -679,8 +679,13 @@ class InstallRemovePane(gtk.VBox):
             Config.wget_set_triesnum(new_tries)
     
     def get_preference_menuitems(self):
-        show_quick_setup = gtk.MenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.connect('activate', lambda w: Config.set_hide_quick_setup_pane(False) or self.show_quick_setup())
+        def toggled(w):
+            Config.set_hide_quick_setup_pane(not w.get_active())
+            if w.get_active(): self.show_quick_setup()
+            else: self.hide_quick_setup()
+        show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
+        show_quick_setup.set_active(not Config.get_hide_quick_setup_pane())
+        show_quick_setup.connect('toggled', toggled)
     
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
