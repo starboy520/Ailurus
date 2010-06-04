@@ -1157,6 +1157,29 @@ def report_bug(*w):
 
 class FirefoxExtensions:
     @classmethod
+    def preference_path_exists(cls):
+        import os
+        path = os.path.expandvars('$HOME/.mozilla/firefox')
+        if not os.path.exists(path): return False
+        try:
+            ini = '%s/profiles.ini'%path
+            with open(ini) as f:
+                default_found = False
+                for line in f:
+                    if not default_found:
+                        if line=='Name=default\n':
+                            default_found = True
+                        continue
+                    else:
+                        if line.find('Path=')==0:
+                            return True
+                else:
+                    return False # default profile location is not found in profiles.ini
+        except IOError: # profiles.ini does not exists
+            pass
+        return False
+    
+    @classmethod
     def get_preference_path(cls):
         import os
         path = os.path.expandvars('$HOME/.mozilla/firefox')
