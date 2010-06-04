@@ -5,6 +5,7 @@
     * Provide a dialog to restart daemon.
     * Improve code. Express all of Mint, YLMF, Deepin as UBUNTU_DERIV.
     * Improve code. Do not import lib twice.
+    * Check wrong code name in sources list.
 
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 

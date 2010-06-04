@@ -175,12 +175,11 @@ def wait_firefox_to_create_profile():
 def exception_happened(etype, value, tb):
     if etype == KeyboardInterrupt: return
     
-    import traceback, StringIO
+    import traceback, StringIO, os, platform
     traceback.print_tb(tb, file=sys.stderr)
     msg = StringIO.StringIO()
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
-    import platform
     print >>msg, platform.dist()
     print >>msg, os.uname()
     print >>msg, 'Ailurus version:', AILURUS_VERSION

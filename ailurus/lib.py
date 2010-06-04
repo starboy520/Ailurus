@@ -197,6 +197,9 @@ class Config:
             if line.startswith('DISTRIB_CODENAME='):
                 return line.split('=')[1].strip()
     @classmethod
+    def get_all_Ubuntu_versions(cls):
+        return ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid']
+    @classmethod
     def is_Mint(cls):
         import os
         if not os.path.exists('/etc/lsb-release'): return False

@@ -166,3 +166,27 @@ class Install_Childsplay_voice(C):
         return APT.exist(voice) and not APT.installed(voice)
     def cure(self):
         APT.install(self.pkg)
+
+class Sources_list_is_using_wrong_code_name(C):
+    __doc__ = _('/etc/apt/sources.list or /etc/apt/sources.list.d/ contains wrong code name.')
+    def exists(self):
+        lines = [APTSource2.remove_comment(line) for line in APTSource2.all_lines()]
+        self.right_code_name = right_code_name = VERSION
+        self.wrong_code_names = wrong_code_names = set(Config.get_all_Ubuntu_versions())
+        wrong_code_names.discard(right_code_name)
+        wrong = False
+        for line in lines:
+            for c in wrong_code_names:
+                if c in line:
+                    wrong = True
+        self.detail = _('Correct code name is %s. Get code name by "lsb_release -cs".') % right_code_name
+        return wrong
+    def cure(self):
+        for file in APTSource2.all_conf_files():
+            with TempOwn(file) as o:
+                with open(file) as f:
+                    content = f.read()
+                for c in self.wrong_code_names:
+                    content = content.replace(c, VERSION)
+                with open(file, 'w') as f:
+                    f.write(content)
