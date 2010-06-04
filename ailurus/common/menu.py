@@ -60,7 +60,8 @@ def __study_linux():
 
 def set_proxy_server():
     proxy_string_entry = gtk.Entry()
-    proxy_string_entry.set_text(get_proxy_string())
+    try:    proxy_string_entry.set_text(get_proxy_string())
+    except: proxy_string_entry.set_text('')
     proxy_table = gtk.Table()
     proxy_table.set_row_spacings(5)
     proxy_table.set_col_spacings(5)

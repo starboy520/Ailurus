@@ -316,9 +316,13 @@ def set_proxy_string(proxy_string):
                                       )
     Config.set_proxy_string_id_in_keyring(id)
 
+class UserDeniedError:
+    'User has denied keyring authentication'
+
 def get_proxy_string():
+    "Return '', non-empty string or raise exception"
     if hasattr(get_proxy_string, 'denied'): # user has denied access before
-        return ''
+        raise UserDeniedError
     
     try:    id = Config.get_proxy_string_id_in_keyring()
     except: return '' # not exist
@@ -327,10 +331,10 @@ def get_proxy_string():
     keyring = gnomekeyring.get_default_keyring_sync()
     try:
         proxy_string = gnomekeyring.item_get_info_sync(keyring, id).get_secret()
+        return proxy_string
     except gnomekeyring.DeniedError: # user denied authentication
         get_proxy_string.denied = True
-        return ''
-    return proxy_string
+        raise UserDeniedError
 
 def install_locale():
     import gettext
@@ -404,12 +408,16 @@ def run(command, ignore_error=False):
         import os, subprocess
         env = None
         if Config.get_use_proxy():
-            env = os.environ.copy()
-            proxy_string = get_proxy_string()
-            env.update({'http_proxy':proxy_string,
-                        'https_proxy':proxy_string,
-                        'ftp_proxy':proxy_string,
-                        })
+            try:
+                proxy_string = get_proxy_string()
+                assert proxy_string
+            except: pass
+            else:
+                env = os.environ.copy()
+                env.update({'http_proxy':proxy_string,
+                            'https_proxy':proxy_string,
+                            'ftp_proxy':proxy_string,
+                            })
         task = subprocess.Popen(command, env=env, shell=True)
         task.wait()
         if task.returncode and ignore_error == False:
