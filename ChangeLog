@@ -6,6 +6,7 @@
     * Improve code. Express all of Mint, YLMF, Deepin as UBUNTU_DERIV.
     * Improve code. Do not import lib twice.
     * Check wrong code name in sources list.
+    * Do not check colorful BASH PS1 on Deepin Linux because BASH PS1 is colorful already.
 
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 

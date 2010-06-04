@@ -31,6 +31,8 @@ class Colorful_BASH_prompt_symbols(C):
     bashrc = os.path.expanduser('~/.bashrc')
     line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
     def exists(self):
+        if DEEPIN: # Deepin Linux has already adopted colorful BASH prompt symbols
+            return False
         return not file_contain(self.bashrc, self.line)
     def cure(self):
         file_append(self.bashrc, self.line)
