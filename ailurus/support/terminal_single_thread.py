@@ -20,7 +20,9 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+from lib import *
 import sys, os, gtk
+
 class Terminal:
     def read(self, fd):
         r=os.fdopen(fd)
@@ -49,8 +51,18 @@ class Terminal:
             assert type(i)==int
             if a[0]=='~': argv[i]=os.path.expanduser(a)
         print '\x1b[1;33m', _('Run command:'), string, '\x1b[m'
-        pid = self.terminal.fork_command(command=argv[0], argv=argv, directory=os.getcwd())
-        from lib import CommandFailError
+        env = {}
+        if Config.get_use_proxy():
+            env = os.environ.copy()
+            proxy_string = get_proxy_string()
+            env.update({'http_proxy':proxy_string,
+                        'https_proxy':proxy_string,
+                        'ftp_proxy':proxy_string,
+                        })
+        pid = self.terminal.fork_command(command=argv[0],
+                                         argv=argv,
+                                         directory=os.getcwd(),
+                                         envv=['%s=%s' % x for x in env.items()],)
         if pid==-1: raise CommandFailError(string)
         try:
             ret = os.waitpid(pid, 0)[1]
