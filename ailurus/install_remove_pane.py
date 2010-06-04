@@ -161,15 +161,7 @@ class InstallRemovePane(gtk.VBox):
     def app_class_installed_state_changed_by_external(self):
         for obj in self.app_objs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
-            
-        level1 = self.treestore.get_iter_first()
-        while level1!=None:
-            level2 = self.treestore.iter_children(level1)
-            while level2!=None:
-                path = self.treestore.get_path(level2)
-                self.treestore.row_changed(path, level2)
-                level2 = self.treestore.iter_next(level2)
-            level1 = self.treestore.iter_next(level1)
+        self.treeview.queue_draw()
 
     def show_error(self, content):
         title_box = gtk.HBox(False, 5)

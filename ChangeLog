@@ -8,6 +8,7 @@
     * Check wrong code name in sources list.
     * Do not check colorful BASH PS1 on Deepin Linux because BASH PS1 is colorful already.
     * Do not try to read Firefox preference location if Firefox is not installed.
+    * Fix bug: state is not refeshed after running quick setup.
 
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 
