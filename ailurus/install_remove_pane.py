@@ -697,7 +697,7 @@ class InstallRemovePane(gtk.VBox):
         show_software_icon.set_active(Config.get_show_software_icon())
         show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
         
-        if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
+        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
             return [show_quick_setup, set_wget_param, show_software_icon]
         else:
             return [set_wget_param, show_software_icon]
@@ -769,7 +769,7 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_content.pack_start(quick_setup_button, False)
         self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
         self.quick_setup_area = gtk.HBox(False)
-        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+        if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
         bottom_box = gtk.HBox(False, 5)
         bottom_box.pack_start(button_collapse_left_treeview, False)

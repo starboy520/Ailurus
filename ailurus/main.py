@@ -88,7 +88,7 @@ def check_required_packages():
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
 
-    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
+    error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
         import StringIO
         message = StringIO.StringIO()
@@ -96,7 +96,7 @@ def check_required_packages():
         print >>message, ''
         print >>message, _('Please install these packages:')
         print >>message, ''
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
         if FEDORA:
             print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
@@ -506,7 +506,7 @@ class MainView:
         from info_pane import InfoPane
         from install_remove_pane import InstallRemovePane
         from computer_doctor_pane import ComputerDoctorPane
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
             from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
         if FEDORA:
@@ -515,7 +515,7 @@ class MainView:
 
         self.register(ComputerDoctorPane, load_cure_objs)
         self.register(CleanUpPane)
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
         if FEDORA:

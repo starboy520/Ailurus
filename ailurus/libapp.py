@@ -235,7 +235,7 @@ class N(I):
     if FEDORA:
         backend = RPM
         installation_command_backend = staticmethod(fedora_installation_command)
-    elif UBUNTU or MINT:
+    elif UBUNTU or UBUNTU_DERIV:
         backend = APT
         installation_command_backend = staticmethod(debian_installation_command)
 

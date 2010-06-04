@@ -26,7 +26,7 @@ from lib import *
 common = __import__('common')
 if GNOME: import gnome as desktop
 else: desktop = None
-if MINT or UBUNTU: import ubuntu as distribution
+if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
 elif FEDORA: import fedora as distribution
 else: distribution = None
 
@@ -72,7 +72,7 @@ def load_app_from_file():
             dict = {}       
             for ops in c.options(secs):
                 value = c.get(secs, ops)
-                if ops == 'ubuntu' and (UBUNTU or MINT):
+                if ops == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
                     dict['pkgs'] = value
                 elif ops == 'fedora' and (FEDORA):
                     dict['pkgs'] = value

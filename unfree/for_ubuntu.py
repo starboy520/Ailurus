@@ -22,7 +22,7 @@
 from __future__ import with_statement
 import sys, os
 from ailurus.lib import *
-assert UBUNTU or MINT
+assert UBUNTU or UBUNTU_DERIV
 from ailurus.libapp import *
 from ailurus.ubuntu.third_party_repos import _repo
 

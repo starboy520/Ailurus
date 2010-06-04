@@ -87,7 +87,7 @@ def __restart_network():
              obj = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
              obj.sleep(dbus_interface='org.freedesktop.NetworkManager')
              obj.wake(dbus_interface='org.freedesktop.NetworkManager')
-             if UBUNTU or MINT:
+             if UBUNTU or UBUNTU_DERIV:
                  notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
                  try:
                      run_as_root('/etc/init.d/networking restart')
@@ -133,7 +133,7 @@ def __change_hostname():
                     content = content.replace(self.old_host_name, new_host_name)
                 with open('/etc/hosts', 'w') as f:
                     f.write(content)
-            if UBUNTU or MINT:
+            if UBUNTU or UBUNTU_DERIV:
                 with TempOwn('/etc/hostname') as o:
                     with open('/etc/hostname', 'w') as f:
                         f.write(new_host_name)

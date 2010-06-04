@@ -30,7 +30,7 @@ class Autostart_Workrave(C):
     path = os.path.expanduser('~/.config/autostart/')
     file = path + 'workrave.desktop'
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('workrave') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('workrave') and not os.path.exists(self.file)
@@ -51,7 +51,7 @@ class Create_basic_vimrc(C):
     detail = _('File content:') + ' syntax on; set autoindent; set number; set mouse=a'
     file = os.path.expanduser('~/.vimrc')
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('vim') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('vim-enhanced') and not os.path.exists(self.file)
@@ -67,7 +67,7 @@ class Create_Imagemagick_shortcut(C):
     file = '/usr/share/applications/imagemagick.desktop'
     detail = _('Create file:') + ' ' + file
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('imagemagick') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('ImageMagick') and not os.path.exists(self.file)

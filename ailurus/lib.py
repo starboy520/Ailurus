@@ -1608,6 +1608,7 @@ import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 UBUNTU = Config.is_Ubuntu()
+UBUNTU_DERIV = False # True value means Ubuntu derivative. For Ubuntu it is False. For Mint it is True.
 MINT = Config.is_Mint()
 YLMF = Config.is_YLMF()
 DEEPIN = Config.is_Deepin()
@@ -1616,19 +1617,20 @@ ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
+    UBUNTU_DERIV = True
     VERSION = Config.get_Mint_version()
     assert VERSION in ['5', '6', '7', '8', '9']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
 elif YLMF:
+    UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
-    UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
 elif DEEPIN:
+    UBUNTU_DERIV = True
     VERSION = Config.get_Deepin_version()
-    UBUNTU = True # Another dirty hack. Not good.
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
-    VERSION = '' # ArchLinux has no version
+    VERSION = '' # ArchLinux has no version -_-b
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
