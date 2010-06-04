@@ -982,10 +982,9 @@ def download(url, filename):
     assert url[0]!='-'
     is_string_not_empty(filename)
     assert filename[0]!='-'
+    timeout = Config.wget_get_timeout()
+    tries = Config.wget_get_triesnum()
     try:
-        timeout = Config.wget_get_timeout()
-        tries = Config.wget_get_triesnum()
-
         run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s'"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
