@@ -371,6 +371,13 @@ def get_dbus_daemon_version():
     ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
     return ret    
 
+def restart_dbus_daemon():
+    authenticate()
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    obj.exit(dbus_interface='cn.ailurus.Interface')
+
 def get_authentication_method():
     import dbus
     bus = dbus.SystemBus()

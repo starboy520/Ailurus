@@ -95,7 +95,7 @@ class AilurusFulgens(dbus.service.Object):
                                           in_signature='', 
                                           out_signature='')
     def exit(self):
-        mainloop.quit()
+        self.mainloop.quit()
 
     def __check_permission(self, sender):
         if self.check_permission_method == 0:
@@ -105,7 +105,8 @@ class AilurusFulgens(dbus.service.Object):
         else:
             raise ValueError
 
-    def __init__(self):
+    def __init__(self, mainloop):
+        self.mainloop = mainloop # use to terminate mainloop
         self.authorized_secret_key = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
@@ -159,8 +160,8 @@ class AilurusFulgens(dbus.service.Object):
         
 def main():
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
-    AilurusFulgens()
     mainloop = gobject.MainLoop()
+    AilurusFulgens(mainloop)
     mainloop.run()    
 
 if __name__ == '__main__':
