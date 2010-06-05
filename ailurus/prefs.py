@@ -9,7 +9,7 @@ def print_traceback():
 class firefox:
     prefs_js_path = '/home/ds/.mozilla/firefox/5y7bqw54.default/prefs.js'
     prefs_js_line_pattern = re.compile(r'''^user_pref\( # begin
-        ("[^"]+") # key
+        (['"][^'"]+['"]) # key
         ,\s
         ([^)]+) # value
         \); # end ''', re.VERBOSE)
@@ -28,6 +28,7 @@ class firefox:
         'return (key, value). both of them are native python constant.'
         assert isinstance(user_pref_line, (str, unicode))
         match = cls.prefs_js_line_pattern.match(user_pref_line)
+        assert match, user_pref_line
         key = match.group(1)
         key = eval(key)
         value = match.group(2)
@@ -72,5 +73,11 @@ class firefox:
                 print >>f, line
 
 firefox.load_user_prefs()
-print firefox.get('browser.download.lastDir')
-print firefox.get('extensions.dta.directory')
+firefox.set('zzz1', 1.1)
+firefox.set('zzz2', '2')
+firefox.set('zzz3', True)
+firefox.save_user_prefs()
+firefox.load_user_prefs()
+assert firefox.get('zzz1') == 1.1
+assert firefox.get('zzz2') == '2'
+assert firefox.get('zzz3') == True
