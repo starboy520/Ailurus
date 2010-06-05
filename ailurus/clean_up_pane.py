@@ -37,7 +37,7 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
             hbox = gtk.HBox(True, 20)
@@ -183,6 +183,8 @@ class ReclaimMemoryBox(gtk.VBox):
                                'This is not a destructive operation because dirty data will not be freed.\n'
                                'Command: echo 3 >/proc/sys/vm/drop_caches'))
         text_view = gtk.TextView(text_buffer)
+        text_view.set_editable(False)
+        text_view.set_cursor_visible(False)
         text_view.set_wrap_mode(gtk.WRAP_WORD)
         gray_bg(text_view)
         
@@ -318,7 +320,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
         
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_kernel())
         align = gtk.Alignment(0, 0.5)
         align.add(button_delete)
@@ -380,6 +382,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         self.view.set_model(self.liststore)
         self.view.set_sensitive(True)
         self.button_unselect_all.set_sensitive(True)
+        self.button_delete.set_sensitive(False)
         
         if pkgs == []:
             self.view.set_sensitive(False)
@@ -433,7 +436,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         button_refresh.connect('clicked', lambda *w: self.refresh(show_splash = True))
         self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
         button_box.pack_start(button_refresh, False)
@@ -493,6 +496,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         self.view.set_model(self.liststore)
         self.view.set_sensitive(True)
         self.button_unselect_all.set_sensitive(True)
+        self.button_delete.set_sensitive(False)
         
         if pkgs == []:
             self.view.set_sensitive(False)
@@ -542,7 +546,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         button_refresh.connect('clicked', lambda *w: self.refresh())
         self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
         button_box.pack_start(button_refresh, False)

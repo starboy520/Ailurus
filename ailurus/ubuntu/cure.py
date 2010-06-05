@@ -31,6 +31,8 @@ class Colorful_BASH_prompt_symbols(C):
     bashrc = os.path.expanduser('~/.bashrc')
     line = r"PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '"
     def exists(self):
+        if DEEPIN: # Deepin Linux has already adopted colorful BASH prompt symbols
+            return False
         return not file_contain(self.bashrc, self.line)
     def cure(self):
         file_append(self.bashrc, self.line)
@@ -112,28 +114,81 @@ class Fix_error_in_netbeans_shortcut(C):
             with open(self.file, 'w') as f:
                 f.writelines(lines)
 
-class Show_a_Linux_skill_bubble(C):
-    __doc__ = _('Show a random Linux skill after you log in to GNOME')
-    detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
-    file = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
-    def exists(self):
-        return not os.path.exists(self.file)
-    def cure(self):
-        with open(self.file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
-
 class Google_chrome_is_upgradable(C):
     __doc__ = _('Google Chrome can be upgraded.')
+    detail = _('You are using Google Chrome beta version, but stable version is released.')
     def exists(self):
-        if UBUNTU or MINT:
-            return APT.installed('google-chrome-beta')
+        return APT.installed('google-chrome-beta')
     def cure(self):
+        APT.remove('google-chrome-beta')
         open_web_page('http://www.google.com/chrome/')
+
+class Install_full_language_support(C):
+    __doc__ = _('Install full language support and input method')
+    def exists(self):
+        lang = Config.get_locale().split('_')[0]
+        list = [
+                'language-pack-' + lang,
+                'language-support-fonts-' + lang,
+                'language-support-input-' + lang,
+                'language-support-translations-' + lang,
+                'language-support-' + lang,
+                'language-support-writing-' + lang,
+                ]
+        if GNOME: list.append('language-pack-gnome-' + lang)
+        if KDE:   list.append('language-pack-kde-' + lang)
+        pkgs = [p for p in list if APT.exist(p) and not APT.installed(p)]
+        self.pkgs = pkgs
+        self.detail = _('Command:') + ' apt-get install ' + ' '.join(self.pkgs)
+        return bool(pkgs)
+    def cure(self):
+        if self.pkgs:
+            APT.install(*self.pkgs)
+
+class Install_GCompris_voice(C):
+    __doc__ = _('Install voice data for GCompris')
+    def exists(self):
+        if not APT.installed('gcompris'): return False
+        lang = Config.get_locale().split('_')[0]
+        voice = 'gcompris-sound-' + lang
+        self.pkg = voice
+        self.detail = _('Command:') + ' apt-get install ' + self.pkg
+        return APT.exist(voice) and not APT.installed(voice)
+    def cure(self):
+        APT.install(self.pkg)
+
+class Install_Childsplay_voice(C):
+    __doc__ = _('Install voice data for Childsplay')
+    def exists(self):
+        if not APT.installed('childsplay'): return False
+        lang = Config.get_locale().split('_')[0]
+        voice = 'childsplay-alphabet-sounds-' + lang
+        self.pkg = voice
+        self.detail = _('Command:') + ' apt-get install ' + self.pkg
+        return APT.exist(voice) and not APT.installed(voice)
+    def cure(self):
+        APT.install(self.pkg)
+
+class Sources_list_is_using_wrong_code_name(C):
+    __doc__ = _('/etc/apt/sources.list or /etc/apt/sources.list.d/ contains wrong code name.')
+    def exists(self):
+        lines = [APTSource2.remove_comment(line) for line in APTSource2.all_lines()]
+        self.right_code_name = right_code_name = VERSION
+        self.wrong_code_names = wrong_code_names = set(Config.get_all_Ubuntu_versions())
+        wrong_code_names.discard(right_code_name)
+        wrong = False
+        for line in lines:
+            for c in wrong_code_names:
+                if c in line:
+                    wrong = True
+        self.detail = _('Correct code name is %s. Get code name by "lsb_release -cs".') % right_code_name
+        return wrong
+    def cure(self):
+        for file in APTSource2.all_conf_files():
+            with TempOwn(file) as o:
+                with open(file) as f:
+                    content = f.read()
+                for c in self.wrong_code_names:
+                    content = content.replace(c, VERSION)
+                with open(file, 'w') as f:
+                    f.write(content)

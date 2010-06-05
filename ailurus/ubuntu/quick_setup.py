@@ -32,7 +32,7 @@ from libapp import *
 import gtk
 
 class Adobe_Flash_plugin(_apt_install):
-    pkgs = 'flash-plugin-installer'
+    pkgs = 'flashplugin-installer'
 
 class Fix_error_in_49_sansserif_conf(I):
     def installed(self):
@@ -50,6 +50,28 @@ class Fix_error_in_49_sansserif_conf(I):
             content = content.replace('>sans-serif<', '>sans serif<')
             with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
                 f.write(content)
+
+class Full_Language_Pack(I):
+    def determine_packages(self):
+        lang = Config.get_locale().split('_')[0]
+        list = [
+                'language-pack-' + lang,
+                'language-support-fonts-' + lang,
+                'language-support-input-' + lang,
+                'language-support-translations-' + lang,
+                'language-support-' + lang,
+                'language-support-writing-' + lang,
+                ]
+        if GNOME: list.append('language-pack-gnome-' + lang)
+        if KDE:   list.append('language-pack-kde-' + lang)
+        pkgs = [p for p in list if APT.exist(p) and not APT.installed(p)]
+        self.pkgs = pkgs        
+    def installed(self):
+        self.determine_packages()
+        return self.pkgs == []
+    def install(self):
+        if self.pkgs:
+            APT.install(*self.pkgs)
                 
 WORKS = [
             [_('Search fastest repository'), 'Search_Fastest_Repository', True],

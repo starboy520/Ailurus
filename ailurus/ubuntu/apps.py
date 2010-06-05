@@ -24,6 +24,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from apps_eclipse import *
 from app_tasksel import *
 from app_from_external_repos import *
 
@@ -251,3 +252,12 @@ class DisableGettyKarmic(DisableGetty):
                         raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
+
+class OpenJUMP(_apt_install): # OpenJUMP is not in Fedora :(
+    __doc__ = _('OpenJUMP: A geographic information system')
+    detail = ( 
+              _('Official site: http://openjump.org/ .') +
+              _(' This application depends on Java.') )
+    license = GPL
+    category = 'geography'
+    pkgs = 'openjump'

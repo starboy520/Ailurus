@@ -161,15 +161,7 @@ class InstallRemovePane(gtk.VBox):
     def app_class_installed_state_changed_by_external(self):
         for obj in self.app_objs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
-            
-        level1 = self.treestore.get_iter_first()
-        while level1!=None:
-            level2 = self.treestore.iter_children(level1)
-            while level2!=None:
-                path = self.treestore.get_path(level2)
-                self.treestore.row_changed(path, level2)
-                level2 = self.treestore.iter_next(level2)
-            level1 = self.treestore.iter_next(level1)
+        self.treeview.queue_draw()
 
     def show_error(self, content):
         title_box = gtk.HBox(False, 5)
@@ -178,7 +170,9 @@ class InstallRemovePane(gtk.VBox):
             image = gtk.Image()
             image.set_from_file(D+'umut_icons/bug.png')
             title_box.pack_start(image, False)
-        title = label_left_align( _('Some operations failed. Would you please copy and paste following text into bug report web-page?') )
+        title = gtk.Label( _('Operations failed.\n'
+                             'Would you please copy and paste following text into bug report web-page?') )
+        title.set_alignment(0, 0.5)
         title_box.pack_start(title, False)
         
         textview = gtk.TextView()
@@ -193,10 +187,19 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_size_request(-1, 500)
         button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
         button_report_bug.connect('clicked', lambda w: report_bug() )
-        button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+        button_copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
+        def clicked():
+            clipboard = gtk.clipboard_get()
+            buffer = textview.get_buffer()
+            start = buffer.get_start_iter()
+            end = buffer.get_end_iter()
+            clipboard.set_text(buffer.get_text(start, end))
+        button_copy.connect('clicked', lambda w: clicked())
+        button_close = gtk.Button(_('Close'))
         button_close.connect('clicked', lambda w: window.destroy())
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_report_bug, False)
+        bottom_box.pack_start(button_copy, False)
         bottom_box.pack_start(button_close, False)
         
         vbox = gtk.VBox(False, 5)
@@ -205,7 +208,7 @@ class InstallRemovePane(gtk.VBox):
         vbox.pack_start(bottom_box, False)
         window = gtk.Window()
         window.set_position(gtk.WIN_POS_CENTER)
-        window.set_title(_('Some operations failed'))
+        window.set_title(_('Operations failed'))
         window.set_border_width(10)
         window.add(vbox)
         window.show_all()
@@ -215,6 +218,7 @@ class InstallRemovePane(gtk.VBox):
         try:
             error_traceback = StringIO.StringIO()
             print >>error_traceback, platform.dist()
+            print >>error_traceback, os.uname()
             print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
@@ -659,24 +663,28 @@ class InstallRemovePane(gtk.VBox):
         dialog = gtk.Dialog(
             _('Set Ailurus download parameter'), 
             None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+            (gtk.STOCK_OK, gtk.RESPONSE_OK) )
         dialog.set_border_width(5)
         dialog.vbox.pack_start(timeout_label, False)
         dialog.vbox.pack_start(scale_timeout, False)
         dialog.vbox.pack_start(tries_label, False)
         dialog.vbox.pack_start(scale_tries, False)
         dialog.vbox.show_all()
-        ret = dialog.run()
+        dialog.run()
         new_timeout = int(adjustment_timeout.get_value())
         new_tries = int(adjustment_tries.get_value())
+        Config.wget_set_timeout(new_timeout)
+        Config.wget_set_triesnum(new_tries)
         dialog.destroy()
-        if ret == gtk.RESPONSE_OK:
-            Config.wget_set_timeout(new_timeout)
-            Config.wget_set_triesnum(new_tries)
     
     def get_preference_menuitems(self):
-        show_quick_setup = gtk.MenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.connect('activate', lambda w: Config.set_hide_quick_setup_pane(False) or self.show_quick_setup())
+        def toggled(w):
+            Config.set_hide_quick_setup_pane(not w.get_active())
+            if w.get_active(): self.show_quick_setup()
+            else: self.hide_quick_setup()
+        show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
+        show_quick_setup.set_active(not Config.get_hide_quick_setup_pane())
+        show_quick_setup.connect('toggled', toggled)
     
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
@@ -685,7 +693,7 @@ class InstallRemovePane(gtk.VBox):
         show_software_icon.set_active(Config.get_show_software_icon())
         show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
         
-        if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
+        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
             return [show_quick_setup, set_wget_param, show_software_icon]
         else:
             return [set_wget_param, show_software_icon]
@@ -757,7 +765,7 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_content.pack_start(quick_setup_button, False)
         self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
         self.quick_setup_area = gtk.HBox(False)
-        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+        if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
         bottom_box = gtk.HBox(False, 5)
         bottom_box.pack_start(button_collapse_left_treeview, False)
@@ -787,6 +795,7 @@ class InstallRemovePane(gtk.VBox):
         i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
         i_education = treestore.append(None, [_('Education'), None, '*education'])
         i_game = treestore.append(None, [_('Game'), None, '*game'])
+        i_antivirus = treestore.append(None, [_('Anti-virus'), None, '*antivirus'])
         i_others = treestore.append(None, [_('Others'), None, '*others'])
         i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
 

@@ -380,6 +380,7 @@ def _g2():
 ['Ubuntu Repository @ Peru', _('Peru'), 'http://pe.archive.ubuntu.com/ubuntu/', 'pe.archive.ubuntu.com', ],
 ['Ubuntu Repository @ Ghana', _('Ghana'), 'http://gh.archive.ubuntu.com/ubuntu/', 'gh.archive.ubuntu.com', ],
 ['Alfred State College', _('United States'), 'http://mirror.alfredstate.edu/ubuntu/', 'mirror.alfredstate.edu', ],
+['Ubuntu Repository @ Egypt', _('Egypt'), 'http://eg.archive.ubuntu.com/ubuntu/', 'eg.archive.ubuntu.com' ],
 ]
 
 def get_candidate_repositories():

@@ -21,8 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-AILURUS_VERSION = '10.05.92'
-AILURUS_RELEASE_DATE = '2010-05-29'
+
 D = '/usr/share/ailurus/data/'
 import warnings
 warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
@@ -97,7 +96,7 @@ class Config:
     @classmethod
     def set_int(cls, key, value):
         assert isinstance(key, str) and key
-        assert isinstance(value, int)
+        assert isinstance(value, int), type(value)
         cls.parser.set('DEFAULT', key, value)
         cls.save()
     @classmethod
@@ -105,6 +104,17 @@ class Config:
         assert isinstance(key, str) and key
         value = cls.parser.get('DEFAULT', key)
         return int(value)
+    @classmethod
+    def set_long(cls, key, value):
+        assert isinstance(key, str) and key
+        assert isinstance(value, long), type(value)
+        cls.parser.set('DEFAULT', key, value)
+        cls.save()
+    @classmethod
+    def get_long(cls, key):
+        assert isinstance(key, str) and key
+        value = cls.parser.get('DEFAULT', key)
+        return long(value)
     @classmethod
     def set_bool(cls, key, value):
         assert isinstance(key, str) and key
@@ -117,6 +127,20 @@ class Config:
         value = cls.parser.get('DEFAULT', key)
         value = str(value)
         return value=='True' or value=='true'
+    @classmethod
+    def set_use_proxy(cls, value):
+        cls.set_bool('use_proxy', value)
+    @classmethod
+    def get_use_proxy(cls):
+        try: return cls.get_bool('use_proxy')
+        except: return False
+    @classmethod
+    def set_proxy_string_id_in_keyring(cls, value):
+        cls.set_long('proxy_string_id_in_keyring', value)
+    @classmethod
+    def get_proxy_string_id_in_keyring(cls):
+        # do not wrap it in try..except
+        return cls.get_long('proxy_string_id_in_keyring')
     @classmethod
     def set_hide_quick_setup_pane(cls, value):
         cls.set_bool('hide_quick_setup_pane', value)
@@ -155,7 +179,15 @@ class Config:
     @classmethod
     def get_show_software_icon(cls):
         try: value = cls.get_bool('show_software_icon')
-        except: value = False
+        except: value = True
+        return value
+    @classmethod
+    def set_default_pane(cls, value):
+        cls.set_string('default_pane', value)
+    @classmethod
+    def get_default_pane(cls):
+        try: value = cls.get_string('default_pane')
+        except: value = 'SystemSettingPane'
         return value
     @classmethod
     def get_locale(cls):
@@ -183,12 +215,15 @@ class Config:
         return 'Ubuntu' in c
     @classmethod
     def get_Ubuntu_version(cls):
-        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid' ...'''
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
             if line.startswith('DISTRIB_CODENAME='):
                 return line.split('=')[1].strip()
+    @classmethod
+    def get_all_Ubuntu_versions(cls):
+        return ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick']
     @classmethod
     def is_Mint(cls):
         import os
@@ -221,6 +256,15 @@ class Config:
             if line.startswith('DISTRIB_CODENAME='):
                 return line.split('=')[1].strip()
     @classmethod
+    def is_Deepin(cls): # Linux Deepin is based on XUbuntu karmic
+        import platform
+        return platform.dist()[0] == 'Deepin'
+    @classmethod
+    def get_Deepin_version(cls):
+        'return karmic'
+        import platform
+        return platform.dist()[2]
+    @classmethod
     def is_Fedora(cls):
         import os
         return os.path.exists('/etc/fedora-release')
@@ -230,10 +274,9 @@ class Config:
             c = f.read()
         return c.split()[2].strip()
     @classmethod
-    def is_ArchLinux(cls):
+    def is_ArchLinux(cls): # There is no get_arch_version, since ArchLinux has no version.
         import os
         return os.path.exists('/etc/arch-release')
-    # There is no get_arch_version, since ArchLinux has no version.
     @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
@@ -261,14 +304,63 @@ class Config:
         except: 
             return False
 
+def set_proxy_string(proxy_string):
+    import gnomekeyring
+    keyring = gnomekeyring.get_default_keyring_sync()
+    id = gnomekeyring.item_create_sync(keyring,
+                                       gnomekeyring.ITEM_GENERIC_SECRET,
+                                       'ailurus proxy string',
+                                       {'appname':'ailurus'},
+                                       proxy_string,
+                                       True, # update_if_exists
+                                      )
+    Config.set_proxy_string_id_in_keyring(id)
+
+class UserDeniedError:
+    'User has denied keyring authentication'
+
+def get_proxy_string():
+    "Return '', non-empty string or raise exception"
+    if hasattr(get_proxy_string, 'denied'): # user has denied access before
+        raise UserDeniedError
+    
+    try:    id = Config.get_proxy_string_id_in_keyring()
+    except: return '' # not exist
+    
+    import gnomekeyring
+    keyring = gnomekeyring.get_default_keyring_sync()
+    try:
+        proxy_string = gnomekeyring.item_get_info_sync(keyring, id).get_secret()
+        return proxy_string
+    except gnomekeyring.DeniedError: # user denied authentication
+        get_proxy_string.denied = True
+        raise UserDeniedError
+
+def enable_urllib2_proxy():
+    string = get_proxy_string()
+    assert string
+    import urllib2
+    proxy_support = urllib2.ProxyHandler({'http':string}) # FIXME: please support https, ftp, rstp
+    opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)
+    urllib2.install_opener(opener)
+
+def disable_urllib2_proxy():
+    import urllib2
+    urllib2.install_opener(None)
+
 def install_locale():
     import gettext
     gettext.translation('ailurus', '/usr/share/locale', fallback=True).install(names=['ngettext'])
 
+def is_legal_license(license):
+    return license in [GPL, LGPL, EPL, MPL, BSD, MIT, CDDL, APL, AL] 
+
 def DUAL_LICENSE(A, B):
+    assert is_legal_license(A) and is_legal_license(B)
     return _('Dual-licensed under %(A)s and %(B)s') % {'A':A, 'B':B}
 
 def TRI_LICENSE(A, B, C):
+    assert is_legal_license(A) and is_legal_license(B) and is_legal_license(C)
     return _('Tri-licensed under %(A)s, %(B)s and %(C)s') % {'A':A, 'B':B, 'C':C}
 
 class ResponseTime:
@@ -313,20 +405,35 @@ class ResponseTime:
 class CommandFailError(Exception):
     'Fail to execute a command'
 
-def run(cmd, ignore_error=False):
-    is_string_not_empty(cmd)
+def run(command, ignore_error=False):
+    is_string_not_empty(command)
     if not isinstance(ignore_error,  bool): raise TypeError
 
     if getattr(run, 'terminal', None):
         assert run.terminal.__class__.__name__ == 'Terminal'
         try:
-            run.terminal.run(cmd)
+            run.terminal.run(command)
         except CommandFailError:
             if not ignore_error: raise
     else:
-        print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
-        import os
-        if os.system(cmd) and not ignore_error: raise CommandFailError(cmd)
+        print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
+        import os, subprocess
+        env = None
+        if Config.get_use_proxy():
+            try:
+                proxy_string = get_proxy_string()
+                assert proxy_string
+            except: pass
+            else:
+                env = os.environ.copy()
+                env.update({'http_proxy':proxy_string,
+                            'https_proxy':proxy_string,
+                            'ftp_proxy':proxy_string,
+                            })
+        task = subprocess.Popen(command, env=env, shell=True)
+        task.wait()
+        if task.returncode and ignore_error == False:
+            raise CommandFailError(command, task.returncode)
 
 def pack(D):
     assert isinstance(D, dict)
@@ -342,6 +449,20 @@ def packed_env_string():
     env = dict( os.environ )
     env['PWD'] = os.getcwd()
     return pack(env)
+
+def get_dbus_daemon_version():
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
+    return ret    
+
+def restart_dbus_daemon():
+    authenticate()
+    import dbus
+    bus = dbus.SystemBus()
+    obj = bus.get_object('cn.ailurus', '/')
+    obj.exit(dbus_interface='cn.ailurus.Interface')
 
 def get_authentication_method():
     import dbus
@@ -417,6 +538,9 @@ class TempOwn:
         if path[0]=='-':
             raise ValueError
         import os
+        dirname = os.path.dirname(path)
+        if not os.path.exists(dirname):
+            run_as_root('mkdir "%s"'%dirname)
         if not os.path.exists(path):
             run_as_root('touch "%s"'%path)
         run_as_root('chown $USER:$USER %s'%path )
@@ -697,7 +821,8 @@ class APT:
         if cls.apt_get_update_is_called == False:
             cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('apt-get install -y ' + ' '.join(packages))
+        # use "force-yes" because playonlinux repository has no gpg key, we want to install it without key.
+        run_as_root_in_terminal('apt-get install -y --force-yes ' + ' '.join(packages))
         APT.cache_changed()
         failed = [p for p in packages if not APT.installed(p)]
         if failed:
@@ -888,11 +1013,10 @@ def download(url, filename):
     assert url[0]!='-'
     is_string_not_empty(filename)
     assert filename[0]!='-'
+    timeout = Config.wget_get_timeout()
+    tries = Config.wget_get_triesnum()
     try:
-        timeout = Config.wget_get_timeout()
-        tries = Config.wget_get_triesnum()
-
-        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s' "
+        run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s'"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
         import os
@@ -1113,89 +1237,162 @@ def report_bug(*w):
     notify( _('Opening web page'), page)
     KillWhenExit.add('xdg-open %s'%page)
 
-class FirefoxExtensions:
+import os
+class firefox:
+    support = False # do not use this class if support is False
+    preference_dir = None # form: ~/.mozilla/firefox/5y7bqw54.default/
+    extensions_dir = None # form: preference_dir + 'extensions/'
+    prefs_js_path = None # form: preference_dir + 'prefs.js'
+    pattern1 = None # regexp
+    pattern2 = None # regexp
+    prefs_js_line_pattern = None
+    key2value = {} # key is native python constant. value is native python constant.
+    key2line = {} # key is native python constant. line is the line in prefs.js
     @classmethod
-    def get_preference_path(cls):
-        import os
-        path = os.path.expandvars('$HOME/.mozilla/firefox')
-        assert os.path.exists(path), path
-        ini = '%s/profiles.ini'%path
-        assert os.path.exists(ini), ini
-        with open(ini) as f:
-            default_found = False
-            for line in f:
-                if not default_found:
-                    if line=='Name=default\n':
-                        default_found = True
-                    continue
-                else:
-                    if line.find('Path=')==0:
-                        default_profile_path = line[5:-1]
-                        break
-            else:
-                raise Exception('default profile not found')
-        return '%s/%s/'%(path,default_profile_path)
-        
-    @classmethod
-    def get_extensions_path(cls):
-        dir = cls.get_preference_path() + '/extensions/'
-        import os
-        if not os.path.exists(dir): os.mkdir(dir)
-        return dir
-
-    @classmethod
-    def analysis_method1(cls, doc):
+    def init(cls):
+        'may raise exception'
+        ini_file = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        with open(ini_file) as f:
+            lines = f.readlines()
+        for i, line in enumerate(lines):
+            if line == 'Name=default\n': break
+        else:
+            raise Exception('"Name=default" not found')
+        lines = lines[i+1:]
+        for line in lines:
+            if line.startswith('Path='):
+                dir_name = line.split('=', 1)[1].strip()
+                break
+        else:
+            raise Exception('"Path=..." not found')
+        cls.preference_dir = os.path.expanduser('~/.mozilla/firefox/') + dir_name + '/'
+        assert os.path.exists(cls.preference_dir), cls.preference_dir
+        cls.extensions_dir = cls.preference_dir + 'extensions/'
+        if not os.path.exists(cls.extensions_dir): os.mkdir(cls.extensions_dir)
+        cls.prefs_js_path = cls.preference_dir + 'prefs.js'
+        if not os.path.exists(cls.prefs_js_path): # touch file
+            with open(cls.prefs_js_path, 'w') as f: pass
         import re
-        try:       return re.search('em:name="(.+)"', doc).group(1)
+        cls.pattern1 = re.compile('em:name="(.+)"')
+        cls.pattern2 = re.compile('<em:name>(.+)</em:name>')
+        cls.prefs_js_line_pattern = re.compile(r'''^user_pref\( # begin
+            (['"][^'"]+['"]) # key
+            ,\s
+            ([^)]+) # value
+            \); # end ''', re.VERBOSE)
+        cls.load_user_prefs()
+        cls.support = True
+    @classmethod
+    def is_extension_archive(cls, file_path):
+        assert isinstance(file_path, str) and file_path
+        assert file_path.endswith('.xpi') or file_path.endswith('.jar')
+    @classmethod
+    def install_extension_archive(cls, file_path):
+        cls.is_extension_archive(file_path)
+        print '\x1b[1;33m', _('Run command:'), 'cp %s %s' % (file_path, cls.extensions_dir), '\x1b[m'
+        import shutil
+        shutil.copy(file_path, cls.extensions_dir)
+    @classmethod
+    def extension_archive_exists(cls, file_path):
+        cls.is_extension_archive(file_path)
+        return os.path.exists(cls.extensions_dir + file_path)
+    @classmethod
+    def remove_extension_archive(cls, file_path):
+        cls.is_extension_archive(file_path)
+        print '\x1b[1;33m', _('Run command:'), 'rm -f %s%s' % (cls.extensions_dir, file_path), '\x1b[m'
+        os.unlink(cls.extensions_dir + file_path)
+    @classmethod
+    def extension_is_installed(cls, extension_name):
+        assert isinstance(extension_name, (str, unicode)) and extension_name
+        import glob
+        dirs = glob.glob(cls.extensions_dir + '*')
+        ret = []
+        for dir in dirs:
+            if extension_name == cls.get_extension_name_in(dir):
+                return True
+        return False
+    @classmethod
+    def all_installed_extensions(cls):
+        import glob
+        dirs = glob.glob(cls.extensions_dir + '*')
+        ret = []
+        for dir in dirs:
+            ret.append(cls.get_extension_name_in(dir))
+        return ret
+    @classmethod
+    def get_extension_name_in(cls, dir):
+        assert isinstance(dir, str) and dir
+        rdf_file = '%s/install.rdf' % dir
+        if not os.path.exists(rdf_file): return None
+        with open(rdf_file) as f:
+            content = f.read()
+        return cls.guess_name_from_content_method1(content) or cls.guess_name_from_content_method2(content)  
+    @classmethod
+    def guess_name_from_content_method1(cls, content):
+        try:    return cls.pattern1.search(content).group(1)
         except: return None
     @classmethod
-    def analysis_method2(cls, doc):
-        import re
-        try:       return re.search('<em:name>(.+)</em:name>', doc).group(1)
+    def guess_name_from_content_method2(cls, content):
+        try:    return cls.pattern2.search(content).group(1)
         except: return None
     @classmethod
-    def analysis_extension(cls, extension_path, ret):
-        import os
-        if os.path.isdir(extension_path)==False: return
-        
-        try:
-            rdf = '%s/install.rdf'%extension_path
-            if not os.path.exists(rdf): 
-                return
-            
-            with open(rdf) as f:
-                doc = f.read()
-            name = cls.analysis_method1(doc) or cls.analysis_method2(doc)  
-            if name: ret.append(name) 
-        except:
-            print_traceback()
-    
+    def all_user_pref_lines(cls, content):
+        assert isinstance(content, (str, unicode))
+        lines = content.splitlines()
+        ret = []
+        for line in lines:
+            if line.startswith('user_pref(') and line.endswith(');'):
+                ret.append(line)
+        return ret
     @classmethod
-    def __get_extensions_basic(cls):
-        import os, glob
-        try:
-            ret = []
-            extensions_path = cls.get_extensions_path()
-            assert os.path.exists(extensions_path), extensions_path
-            extensions = glob.glob('%s/*'%extensions_path)
-            for extension in extensions:
-                cls.analysis_extension(extension, ret)
-            return ret
-        except:
-            print_traceback()
-            return []
-    
+    def get_key_value_from(cls, user_pref_line): # may raise exception
+        'return (key, value). both of them are native python constant.'
+        assert isinstance(user_pref_line, (str, unicode))
+        match = cls.prefs_js_line_pattern.match(user_pref_line)
+        assert match, user_pref_line
+        key = match.group(1)
+        key = eval(key)
+        value = match.group(2)
+        true = True # javascript boolean
+        false = False # javascript boolean
+        value = eval(value)
+        return key, value
     @classmethod
-    def get_extensions(cls, force_reload = False):
-        if not hasattr(cls, 'cache_get_extensions') or force_reload:
-            cls.cache_get_extensions = cls.__get_extensions_basic()
-        return cls.cache_get_extensions
-    
+    def load_user_prefs(cls):
+        cls.key2value.clear()
+        with open(cls.prefs_js_path) as f:
+            content = f.read()
+        lines = cls.all_user_pref_lines(content)
+        for line in lines:
+            try:
+                key, value = cls.get_key_value_from(line)
+                cls.key2value[key] = value
+                cls.key2line[key] = line
+            except:
+                print_traceback()
     @classmethod
-    def installed(cls, extension_name):
-        assert isinstance(extension_name, (str, unicode))
-        ret = cls.get_extensions()
-        return extension_name in ret
+    def get_pref(cls, key):
+        'key should be native python string. return native python constant'
+        assert isinstance(key, (str, unicode))
+        if key in cls.key2value: return cls.key2value[key]
+        else: return ''
+    @classmethod
+    def set_pref(cls, key, value):
+        'value should be native python variable'
+        cls.key2value[key] = value
+        repr_key = '"%s"' % key
+        repr_value = repr(value)
+        if value == True: repr_value = 'true'
+        elif value == False: repr_value = 'false'
+        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
+    @classmethod
+    def save_user_prefs(cls):
+        keys = cls.key2value.keys()
+        keys.sort()
+        with open(cls.prefs_js_path, 'w') as f:
+            for key in keys:
+                line = cls.key2line[key]
+                print >>f, line
 
 def delay_notify_firefox_restart(show_notify=False):
     assert isinstance(show_notify, bool)
@@ -1503,9 +1700,52 @@ class Tasksel:
             APT.remove( *to_remove )
             cls.cache_changed()
 
+def window_manager_name():
+    """Returns window manager name"""
+    # Thanks to Whise (Helder Fraga), we have this elegant function!
+    # This function is from Screenlets/sensors.py
+    # GPLv3
+    import gtk
+    root = gtk.gdk.get_default_root_window()
+    try:
+        ident = root.property_get("_NET_SUPPORTING_WM_CHECK", "WINDOW")[2]
+        _WM_NAME_WIN = gtk.gdk.window_foreign_new(long(ident[0]))
+    except TypeError, exc:
+        _WM_NAME_WIN = ""
+
+    name = ""
+    win = _WM_NAME_WIN
+    if (win != None):
+        try:
+            name = win.property_get("_NET_WM_NAME")[2]
+        except TypeError, exc:
+            pass
+    return name
+
+def get_ailurus_version():
+    import os
+    path = os.path.dirname(__file__) + '/version'
+    with open(path) as f:
+        return f.read().strip()
+    
+def get_ailurus_release_date():
+    import os, time
+    path = os.path.dirname(__file__) + '/version'
+    info = os.stat(path)
+    return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
+
+try:
+    AILURUS_VERSION = get_ailurus_version()
+    AILURUS_RELEASE_DATE = get_ailurus_release_date()
+except: # raise exception in python console because __file__ is not defined
+    print_traceback()
+
 Config.init()
 
 install_locale()
+
+try: firefox.init()
+except: print_traceback()
 
 GPL = _('GNU General Public License')
 LGPL = _('GNU Lesser General Public License')
@@ -1531,27 +1771,49 @@ except:
 import random
 secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
-GNOME = Config.is_GNOME()
-KDE = Config.is_KDE()
-XFCE = Config.is_XFCE()
 UBUNTU = Config.is_Ubuntu()
+UBUNTU_DERIV = False # True value means Ubuntu derivative. For Ubuntu it is False. For Mint it is True.
 MINT = Config.is_Mint()
 YLMF = Config.is_YLMF()
+DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
-    VERSION = Config.get_Mint_version()
-    assert VERSION in ['5', '6', '7', '8', '9']
-    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+    UBUNTU_DERIV = True
+    VERSION = Config.get_Mint_version() # VERSION is in ['5', '6', '7', '8', '9', '10']
+    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick'][int(VERSION)-5]
 elif YLMF:
+    UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
-    UBUNTU = True # Dirty hack. I think create a new directory YLMF is better. Please fix me.
+elif DEEPIN:
+    UBUNTU_DERIV = True
+    VERSION = Config.get_Deepin_version()
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
 elif ARCHLINUX:
-    VERSION = '' # ArchLinux has no version
+    VERSION = '' # ArchLinux has no version -_-b
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
+
+GNOME = False
+KDE = False
+XFCE = False
+# Thank you, GShutdown Team!
+# This code is from gshutdown/src/values.c
+# GPLv2
+WINDOW_MANAGER = window_manager_name()
+if WINDOW_MANAGER == "Metacity":
+    GNOME = True
+elif WINDOW_MANAGER == "KWin":
+    KDE = True
+elif WINDOW_MANAGER == "Xfwm4":
+    XFCE = True
+else:
+    print 'Window Manager is not recognized:', WINDOW_MANAGER
+    # These functions are less effective, but they work.
+    GNOME = Config.is_GNOME()
+    KDE = Config.is_KDE()
+    XFCE = Config.is_XFCE()

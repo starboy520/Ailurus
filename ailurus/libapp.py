@@ -23,7 +23,10 @@
 from __future__ import with_statement
 from lib import *
 
-__all__ = ['_set_gconf', '_apt_install', '_path_lists', '_ff_extension', '_download_one_file', '_rpm_install', 'N']
+__all__ = ['_set_gconf', '_apt_install', '_path_lists', 
+           '_ff_extension', '_download_one_file', '_rpm_install', 'N',
+           'create_eclipse_icon', 'install_eclipse_extension_message',
+           'remove_eclipse_extesion_message', ]
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -148,10 +151,10 @@ def is_package_names_string(string):
             raise ValueError, pkg
 
 def debian_installation_command(package_names):
-    return _('Command:') + ' sudo apt-get install ' + package_names
+    return _('Command:') + ' apt-get install ' + package_names
 
 def fedora_installation_command(package_names):
-    return _('Command:') + (' su -c "yum install %s"' % package_names)
+    return _('Command:') + ' yum install ' + package_names
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
@@ -176,7 +179,7 @@ class _apt_install(I):
         string = ''
         if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
             string = self.depends().launchpad_installation_command() + '; '
-        return '%s %ssudo apt-get install %s' % (_('Command:'), string, self.pkgs)
+        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -232,7 +235,7 @@ class N(I):
     if FEDORA:
         backend = RPM
         installation_command_backend = staticmethod(fedora_installation_command)
-    elif UBUNTU or MINT:
+    elif UBUNTU or UBUNTU_DERIV:
         backend = APT
         installation_command_backend = staticmethod(debian_installation_command)
 
@@ -267,14 +270,13 @@ class _path_lists(I):
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
+    ext_path = None
     def __init__(self):
-        if not hasattr(_ff_extension, 'ext_path'):
-            _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
-        
         assert self.name, 'No %s.name'%self.__class__.__name__
         assert isinstance(self.name, unicode)
         assert self.R, 'No %s.R'%self.__class__.__name__
         assert isinstance(self.R, R)
+        assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
         assert isinstance(self.desc, unicode) or isinstance(self.desc, str) 
         assert isinstance(self.download_url, str)
         assert isinstance(self.range, str)
@@ -286,33 +288,27 @@ class _ff_extension(I):
 #        print >>text, _('It can be used in Firefox version %s')%self.range
         print >>text, _('It can be obtained from '), self.download_url,
         self.__class__.detail = text.getvalue()
-        text.close()
     def install(self):
         f = self.R.download()
-        if f.endswith('.xpi') or f.endswith('.jar'):
-            import shutil
-            shutil.copy(f, _ff_extension.ext_path)
-            delay_notify_firefox_restart()
-        else:
-            raise NotImplementedError(self.name, f)
-    def __exists_in_ext_path(self):
-        try:
-            f = self.R.filename
-            import os
-            return os.path.exists(_ff_extension.ext_path+'/'+f)
-        except:
-            return False
+        firefox.install_extension_archive(f)
+        delay_notify_firefox_restart()
     def installed(self):
-        return FirefoxExtensions.installed(self.name) or self.__exists_in_ext_path()
+        return firefox.extension_archive_exists(self.R.filename) or firefox.extension_is_installed(self.name)
     def remove(self):
-        print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
-        raise NotImplementedError
+        if firefox.extension_archive_exists(self.R.filename):
+            firefox.remove_extension_archive(self.R.filename)
+        else:
+            print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
+    def visible(self):
+        return firefox.support
 
 class _download_one_file(I):
     def install(self):
         assert isinstance(self.R, R)
         f = self.R.download()
-        run('cp %s %s'%(f, self.file) )
+        import shutil
+        shutil.copyfile(f, self.file)
+        # run('cp %s %s'%(f, self.file) ) # This command always fail. I don't know the reason :(
     def installed(self):
         import os
         return os.path.exists(self.file)
@@ -322,3 +318,66 @@ class _download_one_file(I):
         import os
         if not os.path.exists(self.file):
             print >>f, _('Because "%s" does not exist.')%self.file,
+
+def create_eclipse_icon():
+    memarg = ''
+    try:
+        f = open('/proc/meminfo')
+        for line in f:
+            if 'MemTotal' in line:
+                amount = int(line.split()[1]) ; break
+        if amount >= 1024 * 1024 * 1.5:
+            memarg = '-Xms512M -Xmx1024M'
+    except:
+        pass
+    icon = '/usr/share/applications/eclipse.desktop'
+    with TempOwn(icon) as o:
+        with open(icon, 'w') as f:
+            f.write('''[Desktop Entry]
+Name=Eclipse
+Exec=sh -c "export GDK_NATIVE_WINDOWS=true; exec /usr/lib/eclipse -vmargs ''' + memarg + ''' -Dsun.java2d.opengl=true"
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Categories=Development
+Icon=/usr/lib/eclipse/icon.xpm''')
+
+def install_eclipse_extension_message(title, content):
+    import StringIO
+    assert isinstance(title, (str, unicode)) and title
+    assert isinstance(content, (str, unicode, StringIO.StringIO) )
+    if isinstance(content, StringIO.StringIO): content = content.getvalue()
+    import gtk
+    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_CLOSE)
+    dialog.set_title( _('Installing Eclipse extension') )
+    dialog.set_markup('<big><b>%s</b></big>\n\n'%title + content)
+    dialog.show_all()
+    gtk.gdk.threads_enter()
+    dialog.run()
+    dialog.destroy()
+    gtk.gdk.threads_leave()
+
+def remove_eclipse_extesion_message(name):
+    assert isinstance(name, (str, unicode)) and name
+    title = _('Removing %s') % name
+    import StringIO
+    msg = StringIO.StringIO()
+    print >>msg, _('Please launch Eclipse, and go to "Help" -> "About Eclipse SDK".')
+    print >>msg
+    print >>msg, _('Click the "Installation Details" button. Then remove %s.') % name
+    import gtk
+    label = gtk.Label(msg.getvalue())
+    close = gtk.Button(stock = gtk.STOCK_CLOSE)
+    close.connect('clicked', lambda w: window.destroy())
+    align = gtk.Alignment(1, 0.5)
+    align.add(close)
+    box = gtk.VBox(False)
+    box.pack_start(label, False)
+    box.pack_start(align, False)
+    window = gtk.Window()
+    window.set_title(title)
+    window.add(box)
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.show_all()

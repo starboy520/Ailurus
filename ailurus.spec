@@ -1,20 +1,21 @@
-%define name ailurus
-%define version 10.05.91
-%define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%endif
 
-Summary: makes Linux easier to use
-Name: %{name}
-Version: %{version}
+Name: ailurus
+Version: 10.05.93
 Release: 0%{?dist}
-Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
-License: GPLv2+
+Summary: makes Linux easier to use
 Group: Applications/System
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildArch: noarch
-Vendor: Homer Xing <homer.xing@gmail.com>
-Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm
+License: GPLv2+
 URL: http://ailurus.googlecode.com/
-BuildRequires: python python-devel python-distutils-extra intltool sed
+Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires: python-devel python2-devel python-distutils-extra intltool
+BuildArch: noarch
+# The automatic dependency consists of python and rpmlib only. It is insufficient.
+Requires: pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
 
 %description
 Ailurus is an application which makes Linux easier to use.
@@ -23,19 +24,19 @@ Features:
 * Help users learn some Linux skills
 * Install some nice applications
 * Display basic hardware information
-* Clean APT/YUM cache
-* Backup and recover APT/YUM status
+* Clean YUM cache
+* Backup and recover YUM status
 * Change GNOME settings 
 
 %prep
-%setup -q -n %{name}-%{unmangled_version}
+%setup -q -n %{name}-%{version}
 
 %build
-python setup.py build
+CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install -O1 --root=$RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --root=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -56,5 +57,5 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Thu May 27 2010 Homer Xing <homer.xing@gmail.com> 10.05.91-1
+* Sat Jun 05 2010 Homer Xing <homer.xing@gmail.com> 10.05.93-1
 - Initial package
