@@ -1,10 +1,11 @@
-%define name ailurus
-%define version 10.05.91
-%define python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print get_python_lib()")
+%if ! (0%{?fedora} > 12 || 0%{?rhel} > 5)
+%{!?python_sitelib: %global python_sitelib %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib())")}
+%{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
+%endif
 
 Summary: makes Linux easier to use
-Name: %{name}
-Version: %{version}
+Name: ailurus
+Version: 10.05.91
 Release: 0%{?dist}
 Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
 License: GPLv2+
@@ -14,7 +15,7 @@ BuildArch: noarch
 Vendor: Homer Xing <homer.xing@gmail.com>
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
 URL: http://ailurus.googlecode.com/
-BuildRequires: python python-devel python-distutils-extra intltool sed
+BuildRequires: python-devel python2-devel python-distutils-extra intltool
 
 %description
 Ailurus is an application which makes Linux easier to use.
@@ -23,12 +24,12 @@ Features:
 * Help users learn some Linux skills
 * Install some nice applications
 * Display basic hardware information
-* Clean APT/YUM cache
-* Backup and recover APT/YUM status
+* Clean YUM cache
+* Backup and recover YUM status
 * Change GNOME settings 
 
 %prep
-%setup -q -n %{name}-%{unmangled_version}
+%setup -q -n %{name}-%{version}
 
 %build
 python setup.py build
