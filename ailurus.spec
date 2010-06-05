@@ -4,7 +4,7 @@
 %endif
 
 Name: ailurus
-Version: 10.05.91
+Version: 10.05.93
 Release: 0%{?dist}
 Summary: makes Linux easier to use
 Group: Applications/System
@@ -14,7 +14,7 @@ Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: python-devel python2-devel python-distutils-extra intltool
 BuildArch: noarch
-Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
+#Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
 
 %description
 Ailurus is an application which makes Linux easier to use.
@@ -56,5 +56,5 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Thu May 27 2010 Homer Xing <homer.xing@gmail.com> 10.05.91-1
+* Sat Jun 05 2010 Homer Xing <homer.xing@gmail.com> 10.05.93-1
 - Initial package
