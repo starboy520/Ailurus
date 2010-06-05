@@ -1237,6 +1237,83 @@ def report_bug(*w):
     notify( _('Opening web page'), page)
     KillWhenExit.add('xdg-open %s'%page)
 
+import os
+class firefox:
+    support = False # do not use this class if support is False
+    preference_dir = None # form: ~/.mozilla/firefox/5y7bqw54.default/
+    extensions_dir = None # form: preference_dir + 'extensions/'
+    pattern1 = None # regexp
+    pattern2 = None # regexp
+    @classmethod
+    def init(cls):
+        'may raise exception'
+        ini_file = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        with open(ini_file) as f:
+            lines = f.readlines()
+        for i, line in enumerate(lines):
+            if line == 'Name=default\n': break
+        else:
+            raise Exception('"Name=default" not found')
+        lines = lines[i+1:]
+        for line in lines:
+            if line.startswith('Path='):
+                dir_name = line.split('=', 1)[1].strip()
+                break
+        else:
+            raise Exception('"Path=..." not found')
+        cls.preference_dir = os.path.expanduser('~/.mozilla/firefox/') + dir_name
+        assert os.path.exists(cls.preference_dir), cls.preference_dir
+        cls.extensions_dir = cls.preference_dir + '/extensions/'
+        if not os.path.exists(cls.extensions_dir): os.mkdir(cls.extensions_dir)
+        import re
+        cls.pattern1 = re.compile('em:name="(.+)"')
+        cls.pattern2 = re.compile('<em:name>(.+)</em:name>')
+        cls.support = True
+    @classmethod
+    def is_extension_archive(cls, file_path):
+        assert isinstance(file_path, str) and file_path
+        assert file_path.endswith('.xpi') or file_path.endswith('.jar')
+    @classmethod
+    def install_extension_archive(cls, file_path):
+        cls.is_extension_archive(file_path)
+        run('cp %s %s' % (file_path, cls.extensions_dir))
+    @classmethod
+    def extension_archive_exists(cls, file_path):
+        cls.is_extension_archive(file_path)
+        return os.path.exists(cls.extensions_dir + file_path)
+    @classmethod
+    def remove_extension_archive(cls, file_path):
+        cls.is_extension_archive(file_path)
+        run('rm -f %s%s' % (cls.extensions_dir, file_path))
+    @classmethod
+    def extension_is_installed(cls, extension_name):
+        assert isinstance(extension_name, (str, unicode))
+        return extension_name in cls.all_installed_extensions()
+    @classmethod
+    def all_installed_extensions(cls):
+        import glob
+        dirs = glob.glob(cls.extensions_dir + '*')
+        ret = []
+        for dir in dirs:
+            ret.append(cls.get_extension_name_in(dir))
+        return ret
+    @classmethod
+    def get_extension_name_in(cls, dir):
+        assert isinstance(dir, str) and dir
+        rdf_file = '%s/install.rdf' % dir
+        if not os.path.exists(rdf_file): return None
+        with open(rdf_file) as f:
+            content = f.read()
+        return cls.guess_name_from_content_method1(content) or cls.guess_name_from_content_method2(content)  
+    @classmethod
+    def guess_name_from_content_method1(cls, content):
+        try:    return cls.pattern1.search(content).group(1)
+        except: return None
+    @classmethod
+    def guess_name_from_content_method2(cls, content):
+        try:    return cls.pattern2.search(content).group(1)
+        except: return None        
+
 class FirefoxExtensions:
     @classmethod
     def preference_path_exists(cls):
@@ -1293,12 +1370,12 @@ class FirefoxExtensions:
     @classmethod
     def analysis_method1(cls, doc):
         import re
-        try:       return re.search('em:name="(.+)"', doc).group(1)
+        try:    return re.search('em:name="(.+)"', doc).group(1)
         except: return None
     @classmethod
     def analysis_method2(cls, doc):
         import re
-        try:       return re.search('<em:name>(.+)</em:name>', doc).group(1)
+        try:    return re.search('<em:name>(.+)</em:name>', doc).group(1)
         except: return None
     @classmethod
     def analysis_extension(cls, extension_path, ret):
@@ -1306,7 +1383,7 @@ class FirefoxExtensions:
         if os.path.isdir(extension_path)==False: return
         
         try:
-            rdf = '%s/install.rdf'%extension_path
+            rdf = '%s/install.rdf' % extension_path
             if not os.path.exists(rdf): 
                 return
             
@@ -1684,12 +1761,18 @@ def get_ailurus_release_date():
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
-AILURUS_VERSION = get_ailurus_version()
-AILURUS_RELEASE_DATE = get_ailurus_release_date()
+try:
+    AILURUS_VERSION = get_ailurus_version()
+    AILURUS_RELEASE_DATE = get_ailurus_release_date()
+except: # raise exception in python console because __file__ is not defined
+    print_traceback()
 
 Config.init()
 
 install_locale()
+
+try: firefox.init()
+except: print_traceback()
 
 GPL = _('GNU General Public License')
 LGPL = _('GNU Lesser General Public License')
