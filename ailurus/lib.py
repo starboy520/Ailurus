@@ -1386,6 +1386,10 @@ class firefox:
         elif value == False: repr_value = 'false'
         cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
     @classmethod
+    def remove_pref(cls, key):
+        try: del cls.key2value[key]
+        except KeyError: pass
+    @classmethod
     def save_user_prefs(cls):
         keys = cls.key2value.keys()
         keys.sort()
