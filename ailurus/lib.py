@@ -1242,6 +1242,7 @@ class firefox:
     support = False # do not use this class if support is False
     preference_dir = None # form: ~/.mozilla/firefox/5y7bqw54.default/
     extensions_dir = None # form: preference_dir + 'extensions/'
+    prefs_js_path = None # form: preference_dir + 'prefs.js'
     pattern1 = None # regexp
     pattern2 = None # regexp
     @classmethod
@@ -1261,10 +1262,13 @@ class firefox:
                 break
         else:
             raise Exception('"Path=..." not found')
-        cls.preference_dir = os.path.expanduser('~/.mozilla/firefox/') + dir_name
+        cls.preference_dir = os.path.expanduser('~/.mozilla/firefox/') + dir_name + '/'
         assert os.path.exists(cls.preference_dir), cls.preference_dir
-        cls.extensions_dir = cls.preference_dir + '/extensions/'
+        cls.extensions_dir = cls.preference_dir + 'extensions/'
         if not os.path.exists(cls.extensions_dir): os.mkdir(cls.extensions_dir)
+        cls.prefs_js_path = cls.preference_dir + 'prefs.js'
+        if not os.path.exists(cls.prefs_js_path): # touch file
+            with open(cls.prefs_js_path, 'w') as f: pass
         import re
         cls.pattern1 = re.compile('em:name="(.+)"')
         cls.pattern2 = re.compile('<em:name>(.+)</em:name>')
