@@ -156,6 +156,9 @@ def debian_installation_command(package_names):
 def fedora_installation_command(package_names):
     return _('Command:') + ' yum install ' + package_names
 
+def archlinux_installation_command(package_names):
+    return _('Command:') + ' pacman -S ' + package_names
+
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
     def self_check(self):
@@ -200,6 +203,27 @@ class _rpm_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def installation_command(self):
         return fedora_installation_command(self.pkgs)
+
+class _pacman_install(I):
+    def self_check(self):
+        is_package_names_string(self.pkgs)
+    def install(self):
+        PACMAN.install(*self.pkgs.split())
+    def installed(self):
+        for pkg in self.pkgs.split():
+            if not PACMAN.installed (pkg):
+                return False
+        return True
+    def get_reason(self, f):
+        all_pkgs = self.pkgs.split()
+        if len(all_pkgs) > 1:
+            not_installed = [p for p in all_pkgs if not PACMAN.installed(p)]
+            if len(not_installed) != len(all_pkgs):
+                print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
+    def remove(self):
+        PACMAN.remove(*self.pkgs.split())
+    def installation_command(self):
+        return archlinux_installation_command(self.pkgs)
 
 class N(I):
     def self_check(self):
