@@ -14,6 +14,7 @@ class firefox:
         ([^)]+) # value
         \); # end ''', re.VERBOSE)
     key2value = {} # key is native python constant. value is native python constant.
+    key2line = {} # key is native python constant. line is the line in prefs.js
     @classmethod
     def all_user_pref_lines(cls, content):
         assert isinstance(content, (str, unicode))
@@ -46,6 +47,7 @@ class firefox:
             try:
                 key, value = cls.get_key_value_from(line)
                 cls.key2value[key] = value
+                cls.key2line[key] = line
             except:
                 print_traceback()
     @classmethod
@@ -58,18 +60,18 @@ class firefox:
     def set(cls, key, value):
         'value should be native python variable'
         cls.key2value[key] = value
+        repr_key = '"%s"' % key
+        repr_value = repr(value)
+        if value == True: repr_value = 'true'
+        elif value == False: repr_value = 'false'
+        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
     @classmethod
     def save_user_prefs(cls):
         keys = cls.key2value.keys()
         keys.sort()
         with open(cls.prefs_js_path, 'w') as f:
             for key in keys:
-                value = cls.key2value[key]
-                repr_key = repr(key)
-                repr_value = repr(value)
-                if value == True: repr_value = 'true'
-                elif value == False: repr_value = 'false'
-                line = 'user_pref(%s, %s);' % (repr_key, repr_value)
+                line = cls.key2line[key]
                 print >>f, line
 
 firefox.load_user_prefs()
