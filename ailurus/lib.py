@@ -1287,8 +1287,14 @@ class firefox:
         run('rm -f %s%s' % (cls.extensions_dir, file_path))
     @classmethod
     def extension_is_installed(cls, extension_name):
-        assert isinstance(extension_name, (str, unicode))
-        return extension_name in cls.all_installed_extensions()
+        assert isinstance(extension_name, (str, unicode)) and extension_name
+        import glob
+        dirs = glob.glob(cls.extensions_dir + '*')
+        ret = []
+        for dir in dirs:
+            if extension_name == cls.get_extension_name_in(dir):
+                return True
+        return False
     @classmethod
     def all_installed_extensions(cls):
         import glob
