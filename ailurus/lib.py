@@ -1245,6 +1245,9 @@ class firefox:
     prefs_js_path = None # form: preference_dir + 'prefs.js'
     pattern1 = None # regexp
     pattern2 = None # regexp
+    prefs_js_line_pattern = None
+    key2value = {} # key is native python constant. value is native python constant.
+    key2line = {} # key is native python constant. line is the line in prefs.js
     @classmethod
     def init(cls):
         'may raise exception'
@@ -1272,6 +1275,12 @@ class firefox:
         import re
         cls.pattern1 = re.compile('em:name="(.+)"')
         cls.pattern2 = re.compile('<em:name>(.+)</em:name>')
+        cls.prefs_js_line_pattern = re.compile(r'''^user_pref\( # begin
+            (['"][^'"]+['"]) # key
+            ,\s
+            ([^)]+) # value
+            \); # end ''', re.VERBOSE)
+        cls.load_user_prefs()
         cls.support = True
     @classmethod
     def is_extension_archive(cls, file_path):
@@ -1325,7 +1334,65 @@ class firefox:
     @classmethod
     def guess_name_from_content_method2(cls, content):
         try:    return cls.pattern2.search(content).group(1)
-        except: return None        
+        except: return None
+    @classmethod
+    def all_user_pref_lines(cls, content):
+        assert isinstance(content, (str, unicode))
+        lines = content.splitlines()
+        ret = []
+        for line in lines:
+            if line.startswith('user_pref(') and line.endswith(');'):
+                ret.append(line)
+        return ret
+    @classmethod
+    def get_key_value_from(cls, user_pref_line): # may raise exception
+        'return (key, value). both of them are native python constant.'
+        assert isinstance(user_pref_line, (str, unicode))
+        match = cls.prefs_js_line_pattern.match(user_pref_line)
+        assert match, user_pref_line
+        key = match.group(1)
+        key = eval(key)
+        value = match.group(2)
+        true = True # javascript boolean
+        false = False # javascript boolean
+        value = eval(value)
+        return key, value
+    @classmethod
+    def load_user_prefs(cls):
+        cls.key2value.clear()
+        with open(cls.prefs_js_path) as f:
+            content = f.read()
+        lines = cls.all_user_pref_lines(content)
+        for line in lines:
+            try:
+                key, value = cls.get_key_value_from(line)
+                cls.key2value[key] = value
+                cls.key2line[key] = line
+            except:
+                print_traceback()
+    @classmethod
+    def get_pref(cls, key):
+        'key should be native python string. return native python constant'
+        assert isinstance(key, (str, unicode))
+        if key in cls.key2value: return cls.key2value[key]
+        else: return ''
+    @classmethod
+    def set_pref(cls, key, value):
+        'value should be native python variable'
+        cls.key2value[key] = value
+        repr_key = '"%s"' % key
+        repr_value = repr(value)
+        if value == True: repr_value = 'true'
+        elif value == False: repr_value = 'false'
+        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
+    @classmethod
+    def save_user_prefs(cls):
+        keys = cls.key2value.keys()
+        keys.sort()
+        with open(cls.prefs_js_path, 'w') as f:
+            for key in keys:
+                line = cls.key2line[key]
+                print >>f, line
 
 def delay_notify_firefox_restart(show_notify=False):
     assert isinstance(show_notify, bool)

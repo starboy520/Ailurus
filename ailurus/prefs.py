@@ -78,6 +78,7 @@ firefox.load_user_prefs()
 firefox.set('zzz1', 1.1)
 firefox.set('zzz2', '2')
 firefox.set('zzz3', True)
+firefox.set('browser.history_expire_days.mirror', 90)
 firefox.save_user_prefs()
 firefox.load_user_prefs()
 assert firefox.get('zzz1') == 1.1
