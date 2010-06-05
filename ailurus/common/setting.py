@@ -248,8 +248,10 @@ class Configure_Firefox(gtk.VBox):
             f.writelines(install_package)
         
 def __configure_firefox():
-    FirefoxExtensions.get_extensions_path()
-    return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+    if firefox.support:
+        return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+    else:
+        return None
     
 def get():
     ret = []
@@ -259,7 +261,8 @@ def get():
             __configure_firefox,
             __restart_network ]:
         try:
-            ret.append(f())
+            a = f()
+            if a: ret.append(a) # if such function is not supported, f() returns None.
         except:
             print_traceback()
     return ret
