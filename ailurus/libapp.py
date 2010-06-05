@@ -151,10 +151,10 @@ def is_package_names_string(string):
             raise ValueError, pkg
 
 def debian_installation_command(package_names):
-    return _('Command:') + ' sudo apt-get install ' + package_names
+    return _('Command:') + ' apt-get install ' + package_names
 
 def fedora_installation_command(package_names):
-    return _('Command:') + (' su -c "yum install %s"' % package_names)
+    return _('Command:') + ' yum install ' + package_names
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
@@ -179,7 +179,7 @@ class _apt_install(I):
         string = ''
         if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
             string = self.depends().launchpad_installation_command() + '; '
-        return '%s %ssudo apt-get install %s' % (_('Command:'), string, self.pkgs)
+        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
