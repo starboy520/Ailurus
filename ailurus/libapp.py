@@ -276,6 +276,7 @@ class _ff_extension(I):
         assert isinstance(self.name, unicode)
         assert self.R, 'No %s.R'%self.__class__.__name__
         assert isinstance(self.R, R)
+        assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
         assert isinstance(self.desc, unicode) or isinstance(self.desc, str) 
         assert isinstance(self.download_url, str)
         assert isinstance(self.range, str)
@@ -287,7 +288,6 @@ class _ff_extension(I):
 #        print >>text, _('It can be used in Firefox version %s')%self.range
         print >>text, _('It can be obtained from '), self.download_url,
         self.__class__.detail = text.getvalue()
-        text.close()
     def install(self):
         f = self.R.download()
         if f.endswith('.xpi') or f.endswith('.jar'):
