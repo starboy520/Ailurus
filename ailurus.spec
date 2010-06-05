@@ -3,18 +3,18 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-Summary: makes Linux easier to use
 Name: ailurus
 Version: 10.05.91
 Release: 0%{?dist}
-Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
-License: GPLv2+
+Summary: makes Linux easier to use
 Group: Applications/System
+License: GPLv2+
+URL: http://ailurus.googlecode.com/
+Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires: python-devel python2-devel python-distutils-extra intltool
 BuildArch: noarch
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
-URL: http://ailurus.googlecode.com/
-BuildRequires: python-devel python2-devel python-distutils-extra intltool
 
 %description
 Ailurus is an application which makes Linux easier to use.
