@@ -32,11 +32,11 @@ Features:
 %setup -q -n %{name}-%{version}
 
 %build
-python setup.py build
+CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-python setup.py install -O1 --root=$RPM_BUILD_ROOT
+%{__python} setup.py install -O1 --root=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
