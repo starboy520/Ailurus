@@ -242,7 +242,7 @@ class Configure_Firefox(gtk.VBox):
             if button.get_active():
                 install_package.append(button.config_item)
         import os
-        preference_path = FirefoxExtensions.get_preference_path()
+        preference_path = firefox.preference_dir
         os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
         with open(preference_path + 'user.js', 'w+') as f:
             f.writelines(install_package)

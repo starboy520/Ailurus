@@ -290,29 +290,17 @@ class _ff_extension(I):
         self.__class__.detail = text.getvalue()
     def install(self):
         f = self.R.download()
-        if f.endswith('.xpi') or f.endswith('.jar'):
-            import shutil
-            shutil.copy(f, _ff_extension.ext_path)
-            delay_notify_firefox_restart()
-        else:
-            raise NotImplementedError(self.name, f)
-    def __exists_in_ext_path(self):
-        if not _ff_extension.ext_path:
-            _ff_extension.ext_path =  FirefoxExtensions.get_extensions_path()
-
-        try:
-            f = self.R.filename
-            import os
-            return os.path.exists(_ff_extension.ext_path+'/'+f)
-        except:
-            return False
+        firefox.install_extension_archive(f)
+        delay_notify_firefox_restart()
     def installed(self):
-        return FirefoxExtensions.installed(self.name) or self.__exists_in_ext_path()
+        return firefox.extension_archive_exists(self.R.filename) or firefox.extension_is_installed(self.name)
     def remove(self):
-        print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
-        raise NotImplementedError
+        if firefox.extension_archive_exists(self.R.filename):
+            firefox.remove_extension_archive(self.R.filename)
+        else:
+            print '\x1b[1;31m', _("This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox."), '\x1b[m'
     def visible(self):
-        return FirefoxExtensions.preference_path_exists()
+        return firefox.support
 
 class _download_one_file(I):
     def install(self):

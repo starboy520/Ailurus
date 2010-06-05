@@ -1276,7 +1276,9 @@ class firefox:
     @classmethod
     def install_extension_archive(cls, file_path):
         cls.is_extension_archive(file_path)
-        run('cp %s %s' % (file_path, cls.extensions_dir))
+        print '\x1b[1;33m', _('Run command:'), 'cp %s %s' % (file_path, cls.extensions_dir), '\x1b[m'
+        import shutil
+        shutil.copy(file_path, cls.extensions_dir)
     @classmethod
     def extension_archive_exists(cls, file_path):
         cls.is_extension_archive(file_path)
@@ -1284,7 +1286,8 @@ class firefox:
     @classmethod
     def remove_extension_archive(cls, file_path):
         cls.is_extension_archive(file_path)
-        run('rm -f %s%s' % (cls.extensions_dir, file_path))
+        print '\x1b[1;33m', _('Run command:'), 'rm -f %s%s' % (cls.extensions_dir, file_path), '\x1b[m'
+        os.unlink(cls.extensions_dir + file_path)
     @classmethod
     def extension_is_installed(cls, extension_name):
         assert isinstance(extension_name, (str, unicode)) and extension_name
