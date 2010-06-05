@@ -215,7 +215,7 @@ class Config:
         return 'Ubuntu' in c
     @classmethod
     def get_Ubuntu_version(cls):
-        '''return 'hardy', 'intrepid', 'jaunty', 'karmic' or 'lucid'.'''
+        '''return 'hardy', 'intrepid', 'jaunty', 'karmic', 'lucid' ...'''
         with open('/etc/lsb-release') as f:
             lines = f.readlines()
         for line in lines:
@@ -223,7 +223,7 @@ class Config:
                 return line.split('=')[1].strip()
     @classmethod
     def get_all_Ubuntu_versions(cls):
-        return ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid']
+        return ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick']
     @classmethod
     def is_Mint(cls):
         import os
@@ -1782,9 +1782,8 @@ if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
     UBUNTU_DERIV = True
-    VERSION = Config.get_Mint_version()
-    assert VERSION in ['5', '6', '7', '8', '9']
-    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', ][int(VERSION)-5]
+    VERSION = Config.get_Mint_version() # VERSION is in ['5', '6', '7', '8', '9', '10']
+    VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick'][int(VERSION)-5]
 elif YLMF:
     UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
