@@ -12,7 +12,6 @@ License: GPLv2+
 Group: Applications/System
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildArch: noarch
-Vendor: Homer Xing <homer.xing@gmail.com>
 Requires: python pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
 URL: http://ailurus.googlecode.com/
 BuildRequires: python-devel python2-devel python-distutils-extra intltool
