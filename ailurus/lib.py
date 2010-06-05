@@ -913,12 +913,16 @@ class PACMAN:
         cls.refresh_cache()
         return package_name in cls.__pkgs
     @classmethod
-    def install(cls, *package):
+    def exist(cls, package_name):
+        cls.refresh_cache()
+        return package_name in cls.__pkgs or package_name in cls.__allpkgs
+    @classmethod
+    def install(cls, *packages):
         is_pkg_list(packages)
         if not cls.pacman_sync_called:
             cls.pacman_sync()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(package))
+        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
         failed = [p for p in packages if not PACMAN.installed(p)]
         if failed:
@@ -932,18 +936,18 @@ class PACMAN:
         run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
         cls.cache_changed()
     @classmethod
-    def remove(cls, *package):
+    def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
         packages = [p for p in packages if PACMAN.installed(p)]
-        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(package))
+        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
         failed = [p for p in packages if PACMAN.installed(p)]
         if failed:
             msg = 'Cannot remove "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
     @classmethod
-    def pacman_sync():
+    def pacman_sync(cls):
         print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
         run_as_root_in_terminal('pacman -Sy')
         cls.pacman_sync_called = True

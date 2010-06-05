@@ -262,6 +262,9 @@ class N(I):
     elif UBUNTU or UBUNTU_DERIV:
         backend = APT
         installation_command_backend = staticmethod(debian_installation_command)
+    if ARCHLINUX:
+        backend = PACMAN
+        installation_command_backend = staticmethod(archlinux_installation_command)
 
 class _path_lists(I):
     def self_check(self):
