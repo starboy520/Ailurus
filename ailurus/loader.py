@@ -28,6 +28,7 @@ if GNOME: import gnome as desktop
 else: desktop = None
 if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
 elif FEDORA: import fedora as distribution
+elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
 def check_class_members(app_class):
@@ -74,7 +75,9 @@ def load_app_from_file():
                 value = c.get(secs, ops)
                 if ops == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
                     dict['pkgs'] = value
-                elif ops == 'fedora' and (FEDORA):
+                elif ops == 'fedora' and FEDORA:
+                    dict['pkgs'] = value
+                elif ops == 'archlinux' and ARCHLINUX:
                     dict['pkgs'] = value
                 elif ops == 'Chinese':
                     dict[ops] = True
@@ -93,7 +96,7 @@ def load_app_from_file():
             if dict['__doc__'] == 'FIXME' : dict['__doc__'] =''
             dict['detail'] = getattr(strings, secs + '_1')
             if dict['detail'] == 'FIXME' : dict['detail'] = ''
-            if dict['pkgs'] == 'FIXME' : continue # means not supported in this version
+            if dict.has_key('pkgs') and dict['pkgs'] == 'FIXME' : continue # means not supported in this version
             if dict.has_key('Chinese') and Config.is_Chinese_locale()==False: continue # means such software provides Chinese locale only
 
             obj = new.classobj(secs, (N,), {})()

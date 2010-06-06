@@ -36,7 +36,7 @@ Features:
       url = 'http://ailurus.googlecode.com/',
       license = 'GPLv2+',
       platforms = ['linux'],
-      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
+      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.archlinux', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       package_data={'ailurus': ['native_apps', 'version']},
       data_files = [
         ('share/man/man1/', ['ailurus.1']),

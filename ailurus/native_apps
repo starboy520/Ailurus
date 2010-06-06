@@ -2,16 +2,19 @@
 category = saber
 license = GPL
 ubuntu = openjdk-6-jdk openjdk-6-jre-lib
+archlinux = openjdk6
 
 [Geany]
 category = text_editor
 fedora = geany
 ubuntu = geany
+archlinux = geany
 
 [Emesene]
 category = chat
 fedora = emesene
 ubuntu = emesene
+archlinux = emesene
 
 [GCompris]
 category = education
@@ -42,6 +45,7 @@ category = flash
 fedora = gnash gnash-plugin
 license = GPL
 ubuntu = gnash mozilla-plugin-gnash
+archlinux = gnash-gtk
 
 [CompizSettingManager]
 category = compiz_setting
@@ -765,9 +769,10 @@ category = ide
 fedora = codeblocks
 license = GPL
 ubuntu = codeblocks
+archlinux = codeblocks
 
 [VLC]
 category = player
 fedora = vlc
 ubuntu = vlc
-
+archlinux = vlc

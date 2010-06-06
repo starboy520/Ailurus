@@ -1,3 +1,8 @@
+2010-06-05 SHANG Yuanchun <idealities@gmail.com>
+
+    * Add support for installing software on Archlinux
+    * Fix bugs in class PACMAN
+
 2010-06-04 Homer Xing <homer.xing@gmail.com>
 
     * Improve architecture. Do not need to manually update AILURUS_VERSION.
