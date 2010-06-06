@@ -119,12 +119,6 @@ def check_dbus_daemon_status():
         correct_conf_files = False
     if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
         correct_conf_files = False
-    dbus_ok = True
-    try:
-        get_authentication_method()
-    except:
-        print_traceback()
-        dbus_ok = False
     same_version = True
     try:
         running_version = get_dbus_daemon_version()
@@ -133,7 +127,7 @@ def check_dbus_daemon_status():
         running_version = 0
     from daemon import version as current_version
     same_version = (current_version == running_version)
-    if correct_conf_files and dbus_ok and same_version: return
+    if correct_conf_files and same_version: return
     def show_text_dialog(msg, icon=gtk.MESSAGE_ERROR):
         dialog = gtk.MessageDialog(type=icon, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus')
@@ -152,10 +146,6 @@ def check_dbus_daemon_status():
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
         print >>message, ''
         show_text_dialog(message.getvalue())
-    elif not dbus_ok:
-        print >>message, _("Ailurus' D-Bus daemon exited with error.")
-        print >>message, _("Please restart your computer.")
-        show_text_dialog(message.getvalue())
     elif not same_version:
         print >>message, _('We need to restart Ailurus daemon.')
         print >>message, _('Old version is %s.') % running_version, _('New version is %s') % current_version
@@ -166,6 +156,7 @@ def check_dbus_daemon_status():
             restart_dbus_daemon()
             show_text_dialog(_('Ailurus daemon successfully restarted. Ailurus will work fine.'), icon=gtk.MESSAGE_INFO)
         except:
+            show_text_dialog(_("Cannot restart Ailurus daemon. Please restart your computer."))
             print_traceback()
 
 def wait_firefox_to_create_profile():
