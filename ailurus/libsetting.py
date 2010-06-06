@@ -411,15 +411,23 @@ class FirefoxConfig(gtk.CheckButton):
         self.connect("query-tooltip", lambda *w: True)
 
 if __name__ == '__main__':
+    content_interrupt_parsing_t = FirefoxPrefText(_('whether interrupt parsing a page to respond to UI events?') , 'content.interrupt.parsing')
+    content_interrupt_parsing = FirefoxBooleanPref('content.interrupt.parsing')
+    content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
+    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 100000, 5000000, 100000, 5000000)
+    content_maxtextrun_t = FirefoxPrefText(_('maximum number of bytes to split a long text node'), 'content.maxtextrun')
+    content_maxtextrun = FirefoxNumericPref('content.maxtextrun', 1024, 32768, 1024, 8192)
+    
     table = gtk.Table()
-    table.attach(FirefoxPrefText('content.interrupt.parsing' , 'content.interrupt.parsing'), 
-                 0, 1, 0, 1)
-    table.attach(FirefoxBooleanPref('content.interrupt.parsing'),
-                 1, 2, 0, 1, gtk.FILL)
-    table.attach(FirefoxPrefText('content.maxtextrun', 'content.maxtextrun'),
-                 0, 1, 1, 2)
-    table.attach(FirefoxNumericPref('content.maxtextrun', 0, 8192, 1024, 1024),
-                 1, 2, 1, 2, gtk.FILL)
+    row = 0
+    def add(t, w):
+        global table, row
+        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        table.attach(w, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
+        row += 1
+    add(content_interrupt_parsing_t, content_interrupt_parsing)
+    add(content_max_tokenizing_time_t, content_max_tokenizing_time)
+    add(content_maxtextrun_t, content_maxtextrun)
     window = gtk.Window()
     window.set_position(gtk.WIN_POS_CENTER)
     window.connect('delete-event', gtk.main_quit)
