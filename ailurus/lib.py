@@ -912,6 +912,7 @@ class PACMAN:
         is_pkg_list([package_name])
         cls.refresh_cache()
         return package_name in cls.__pkgs
+    @classmethod
     def exist(cls, package_name):
         cls.refresh_cache()
         return package_name in cls.__pkgs or package_name in cls.__allpkgs
