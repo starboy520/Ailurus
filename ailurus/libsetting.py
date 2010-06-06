@@ -21,7 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, pango
 from lib import *
 from libu import *
 
@@ -294,7 +294,6 @@ class GConfHScale(gtk.HScale):
         g = gconf.client_get_default()
         g.set_int(self.gconf_key, new_value)
         
-import gtk
 class Setting(gtk.VBox):
     def __title(self, text):
         label = gtk.Label()
@@ -316,6 +315,68 @@ class Setting(gtk.VBox):
         box.set_border_width(5)
         
         self.category = category
+
+class FirefoxPrefText(gtk.Label):
+    def __init__(self, text, key):
+        assert isinstance(text, (str, unicode)) and text
+        assert isinstance(key, str) and key
+        new_text = '%s <small>(%s)</small>' % (text, key)
+        gtk.Label.__init__(self)
+        self.set_markup(new_text)
+        self.set_ellipsize(pango.ELLIPSIZE_END)
+        self.set_alignment(0, 0.5)
+
+class FirefoxBooleanPref(gtk.HBox):
+    def __init__(self, key):
+        assert isinstance(key, str) and key
+        self.key = key
+        self.combo = combo = gtk.combo_box_new_text()
+        combo.append_text(_('Yes'))
+        combo.append_text(_('No'))
+        combo.connect('changed', lambda w: self.set_value())
+        combo.connect('scroll-event', lambda w: True)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(combo, False)
+    def get_value(self):
+        try:
+            value = bool(firefox.get_pref(self.key))
+        except:
+            pass
+        else:
+            self.combo.set_active({True:0, False:1}[value])
+    def set_value(self):
+        index = self.combo.get_active()
+        if index == -1: firefox.remove_pref(self.key)
+        else: firefox.set_pref(self.key, {0:True, 1:False}[index])
+
+class FirefoxNumericPref(gtk.SpinButton):
+    def __init__(self, key, min, max, step, default_value):
+        assert isinstance(key, str) and key
+        assert isinstance(min, (int, long))
+        assert isinstance(max, (int, long))
+        assert isinstance(step, (int, long)) and step>0
+        assert isinstance(default_value, (int, long)) and min<=default_value<=max
+        self.key = key
+        self.default_value = default_value
+        gtk.SpinButton.__init__(self)
+        self.set_range(min, max)
+        self.set_increments(step, step)
+        self.set_update_policy(gtk.UPDATE_IF_VALID)
+        self.set_numeric(True)
+        self.set_wrap(False)
+        self.set_snap_to_ticks(True) # if True invalid values should be corrected.
+        self.m_get_value()
+        self.connect('value-changed', lambda w: self.m_set_value())
+    def m_get_value(self):
+        try:
+            value = int(firefox.get_pref(self.key))
+        except:
+            self.set_value(self.default_value)
+        else:
+            self.set_value(value)
+    def m_set_value(self):
+        value = self.get_value_as_int()
+        firefox.set_pref(self.key, value)
 
 class FirefoxConfig(gtk.CheckButton):          
     def check_active(self):
@@ -347,3 +408,21 @@ class FirefoxConfig(gtk.CheckButton):
         self.tooltip = tooltip
         self.set_active(self.check_active())
         self.connect("query-tooltip", lambda *w: True)
+
+if __name__ == '__main__':
+    table = gtk.Table()
+    table.attach(FirefoxPrefText('content.interrupt.parsing' , 'content.interrupt.parsing'), 
+                 0, 1, 0, 1)
+    table.attach(FirefoxBooleanPref('content.interrupt.parsing'),
+                 1, 2, 0, 1, gtk.FILL)
+    table.attach(FirefoxPrefText('content.maxtextrun', 'content.maxtextrun'),
+                 0, 1, 1, 2)
+    table.attach(FirefoxNumericPref('content.maxtextrun', 0, 8192, 1024, 1024),
+                 1, 2, 1, 2, gtk.FILL)
+    window = gtk.Window()
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.connect('delete-event', gtk.main_quit)
+    window.add(table)
+    window.show_all()
+    window.set_size_request(300, -1)
+    gtk.main()
