@@ -21,6 +21,7 @@ category = education
 fedora = gcompris
 license = GPL
 ubuntu = gnucap gcompris
+archlinux = gcompris
 
 [StartupManager]
 category = others
@@ -32,6 +33,7 @@ ubuntu = startupmanager
 category = business
 fedora = Zim
 ubuntu = zim
+archlinux = zim
 
 [Nautilus_Filename_Repairer]
 category = nautilus_extension
@@ -57,43 +59,51 @@ ubuntu = compizconfig-settings-manager
 category = email
 fedora = claws-mail
 ubuntu = claws-mail
+archlinux = claws-mail
 
 [Gnote]
 category = business
 fedora = gnote
 ubuntu = gnote
+archlinux = gnote
 
 [Workrave]
 fedora = workrave
 license = GPL
 ubuntu = workrave
+archlinux = workrave
 
 [Pidgin]
 category = chat
 fedora = pidgin
 ubuntu = pidgin
+archlinux = pidgin
 
 [PiTiVi]
 category = media_editor
 fedora = pitivi
 license = LGPL
 ubuntu = pitivi
+archlinux = pitivi
 
 [TheManaWorld]
 category = game
 fedora = manaworld
 ubuntu = tmw
+archlinux = tmw
 
 [Octave]
 category = math
 fedora = qtoctave
 license = GPL
 ubuntu = qtoctave
+archlinux = qtoctave
 
 [Avidemux]
 category = media_editor
 fedora = avidemux
 ubuntu = avidemux
+archlinux = avidemux-gtk
 
 [QutIM]
 category = chat
@@ -111,6 +121,7 @@ ubuntu = nautilus-script-audio-convert lame libid3-3.8.3-dev flac faac faad mppe
 fedora = parcellite
 license = GPL
 ubuntu = parcellite
+archlinux = parcellite
 
 [GNOMEColors]
 category = theme
@@ -121,66 +132,78 @@ ubuntu = gnome-colors
 category = email
 fedora = evolution
 ubuntu = evolution
+archlinux = evolution
 
 [Deluge]
 category = file_sharing
 fedora = deluge
 ubuntu = deluge
+archlinux = deluge
 
 [Dia]
 category = drawing
 fedora = dia
 ubuntu = dia
+archlinux = dia
 
 [Banshee]
 category = player
 fedora = banshee
 ubuntu = banshee
+archlinux = banshee
 
 [Hedgewars]
 category = game
 fedora = hedgewars
 ubuntu = hedgewars
+archlinux = hedgewars
 
 [VirtualBox]
 category = simulator
 fedora = VirtualBox-OSE
 license = GPL
 ubuntu = virtualbox-ose
+archlinux = virtualbox-ose
 
 [Bluefish]
 category = saber
 fedora = bluefish
 license = GPL
 ubuntu = bluefish
+archlinux = bluefish
 
 [VIM]
 category = saber
 fedora = vim-enhanced
 license = GPL
 ubuntu = vim
+archlinux = vim
 
 [PowerTop]
 category = others
 fedora = powertop
 license = GPL
 ubuntu = powertop
+archlinux = powertop
 
 [AMule]
 category = file_sharing
 fedora = amule
 ubuntu = amule
+archlinux = amule
 
 [CheckInstall]
 fedora = FIXME
 license = GPL
 ubuntu = checkinstall
+archlinux = checkinstall
 
 [Vuze_Karmic]
 category = file_sharing
 fedora = FIXME
 license = GPL
 ubuntu = vuze
+archlinux = vuze
 
 [Extcalc]
 category = math
@@ -192,23 +215,27 @@ ubuntu = extcalc
 category = game
 fedora = glest
 ubuntu = glest
+archlinux = glest
 
 [MACChanger]
 category = others
 fedora = macchanger
 license = GPL
 ubuntu = macchanger
+archlinux = macchanger
 
 [Anjuta]
 category = ide
 fedora = anjuta
 ubuntu = anjuta
+archlinux = anjuta
 
 [MiniCom_Ckermit]
 category = embedded_system
 fedora = FIXME
 license = GPL
 ubuntu = minicom ckermit
+archlinux = minicom
 
 [Minitube]
 category = player
@@ -225,17 +252,20 @@ ubuntu = libncurses5-dev libqt3-mt-dev
 category = text_editor
 fedora = ghex
 ubuntu = ghex
+archlinux = ghex
 
 [Keepassx]
 category = business
 fedora = keepassx
 ubuntu = keepassx
+archlinux = keepassx
 
 [CompizSettingManagerSimple]
 category = compiz_setting
 fedora = ccsm
 license = GPL
 ubuntu = simple-ccsm
+archlinux = ccsm
 
 [Bluetooth]
 category = others
@@ -249,17 +279,20 @@ category = library
 fedora = boost-devel
 license = GPL
 ubuntu = libboost-dev
+archlinux = boost
 
 [TuxPaint]
 category = education
 fedora = tuxpaint
 license = GPL
 ubuntu = tuxpaint
+archlinux = tuxpaint
 
 [Miro]
 category = player
 fedora = Miro
 ubuntu = miro
+archlinux = miro
 
 [Nautilus_Share]
 category = nautilus_extension
@@ -267,17 +300,20 @@ fedora = FIXME
 license = GPL
 DE = gnome
 ubuntu = nautilus-share
+archlinux = nautilus-share
 
 [Svn_Git_bzr]
 category = version_control
 fedora = subversion git bzr
 license = GPL
 ubuntu = subversion git-core bzr
+archlinux = subversion git bzr
 
 [GNOME_mplayer]
 category = player
 fedora = gnome-mplayer
 ubuntu = gnome-mplayer
+archlinux = gnome-mplayer
 
 [Nautilus_Wallpaper]
 category = nautilus_extension
@@ -296,6 +332,7 @@ ubuntu = FIXME
 category = file_sharing
 fedora = transmission
 ubuntu = transmission
+archlinux = transmission-gtk
 
 [Fcitx]
 category = others
@@ -303,17 +340,20 @@ Chinese = True
 fedora = fcitx
 license = GPL
 ubuntu = fcitx
+archlinux = fcitx
 
 [Sonata]
 category = player
 fedora = sonata
 ubuntu = sonata
+archlinux = sonata
 
 [QT_Creator]
 category = ide
 fedora = qt-creator
 license = GPL
 ubuntu = qtcreator
+archlinux = qtcreator
 
 [ChildsPlay]
 category = education
@@ -327,6 +367,7 @@ fedora = nautilus-open-terminal
 license = GPL
 DE = gnome
 ubuntu = nautilus-open-terminal
+archlinux = nautilus-open-terminal
 
 [CHMSee_Read_CHM_Documents]
 category = business
@@ -344,11 +385,13 @@ ubuntu = nautilus-image-converter
 [Enhance_Decompression_Capability]
 fedora = p7zip cabextract
 ubuntu = p7zip p7zip-rar p7zip-full cabextract unace
+archlinux = p7zip cabextract unace
 
 [Midori]
 category = browser
 fedora = midori
 ubuntu = midori
+archlinux = midori
 
 [Kupfer]
 category = candy
@@ -359,16 +402,19 @@ ubuntu = kupfer
 category = latex
 fedora = texlive-xetex texlive-latex texlive
 ubuntu = texlive-xetex texlive lmodern
+archlinux = FIXME
 
 [Comix]
 category = others
 fedora = comix
 ubuntu = comix
+archlinux = comix
 
 [GNOMEDo]
 category = candy
 fedora = gnome-do
 ubuntu = gnome-do
+archlinux = gnome-do
 
 [Nautilus_Script_Collection_Svn]
 category = nautilus_extension
@@ -381,11 +427,13 @@ ubuntu = nautilus-script-collection-svn
 category = game
 fedora = glob2
 ubuntu = glob2
+archlinux = glob2
 
 [Devhelp]
 category = saber
 fedora = devhelp
 ubuntu = devhelp
+archlinux = devhelp
 
 [GNOMEShell]
 category = candy
@@ -397,39 +445,46 @@ category = saber
 fedora = gcc make gdb
 license = GPL
 ubuntu = build-essential
+archlinux = FIXME
 
 [LinuxDCPP]
 category = file_sharing
 fedora = linuxdcpp
 ubuntu = linuxdcpp
+archlinux = linuxdcpp
 
 [Umbrello]
 category = saber
 fedora = FIXME
 license = GPL
 ubuntu = umbrello
+archlinux = kdesdk-umbrello
 
 [Inkscape]
 category = drawing
 fedora = inkscape
 ubuntu = inkscape
+archlinux = inkscape
 
 [WINE]
 category = simulator
 fedora = wine
 license = LGPL
 ubuntu = FIXME
+archlinux = wine
 
 [ImageMagick]
 category = drawing
 fedora = ImageMagick
 ubuntu = imagemagick
+archlinux = imagemagick
 
 [Liferea]
 category = rss
 fedora = liferea
 license = GPL
 ubuntu = liferea
+archlinux = liferea
 
 [Nautilus_Search_Tool]
 category = nautilus_extension
@@ -443,6 +498,7 @@ category = saber
 fedora = emacs
 license = GPL
 ubuntu = emacs
+archlinux = emacs
 
 [Giver]
 category = file_sharing
@@ -453,11 +509,11 @@ ubuntu = giver
 category = drawing
 fedora = gimp
 ubuntu = gimp
+archlinux = gimp
 
 [Moonlight]
 category = others
 fedora = FIXME
-license = 
 ubuntu = moonlight-plugin-mozilla
 
 [FreeGLut3]
@@ -465,49 +521,58 @@ category = library
 fedora = freeglut-devel
 license = GPL
 ubuntu = freeglut3-dev
+archlinux = freeglut
 
 [AWN]
 category = panel
 fedora = avant-window-navigator
 license = GPL
 ubuntu = avant-window-navigator
+archlinux = avant-window-navigator
 
 [FrozenBubble]
 category = game
 fedora = frozen-bubble
 ubuntu = frozen-bubble
+archlinux = frozen-bubble
 
 [Ctags_Cscope]
 category = saber
 fedora = ctags-etags cscope
 license = GPL
 ubuntu = exuberant-ctags cscope
+archlinux = ctags cscope
 
 [Openshot]
 category = media_editor
 fedora = FIXME
 ubuntu = openshot
+archlinux = openshot
 
 [Wesnoth]
 category = game
 fedora = wesnoth
 ubuntu = FIXME
+archlinux = wesnoth
 
 [QCad]
 category = mechanics
 fedora = qcad
 license = GPL
 ubuntu = qcad
+archlinux = qcad
 
 [EasyTAG]
 category = media_editor
 fedora = easytag
 ubuntu = easytag
+archlinux = easytag
 
 [Wormux]
 category = game
 fedora = wormux
 ubuntu = wormux
+archlinux = wormux
 
 [FreeDOOM]
 category = game
@@ -518,11 +583,13 @@ ubuntu = freedoom
 category = player
 fedora = smplayer
 ubuntu = smplayer
+archlinux = smplayer
 
 [Scribus]
 category = typesetting
 fedora = scribus
 ubuntu = scribus
+archlinux = scribus
 
 [Shutter]
 category = others
@@ -534,12 +601,14 @@ category = media_editor
 fedora = audacity
 license = LGPL
 ubuntu = audacity
+archlinux = audacity
 
 [HardwareLister]
 category = others
 fedora = lshw lshw-gui
 license = GPL
 ubuntu = lshw lshw-gtk
+archlinux = lshw
 
 [AutoApt]
 fedora = FIXME
@@ -556,28 +625,33 @@ category = business
 fedora = stardict
 license = GPL
 ubuntu = stardict
+archlinux = stardict
 
 [Nexuiz]
 category = game
 fedora = nexuiz
 ubuntu = nexuiz
+archlinux = nexuiz
 
 [GMP]
 category = library
 fedora = gmp-devel
 license = GPL
 ubuntu = libgmp3-dev
+archlinux = gmp
 
 [Cheese]
 category = others
 fedora = cheese
 ubuntu = cheese
+archlinux = cheese
 
 [Typespeed]
 category = game
 fedora = typespeed
 license = LGPL
 ubuntu = typespeed
+archlinux = typespeed
 
 [Nautilus_Gksu]
 category = nautilus_extension
@@ -596,12 +670,14 @@ DE = gnome
 fedora = alacarte
 license = LGPL
 ubuntu = alacarte
+archlinux = alacarte
 
 [QtiPlot]
 category = math
 fedora = qtiplot
 license = GPL
 ubuntu = qtiplot
+archlinux = qtiplot
 
 [Zhcon]
 category = others
@@ -627,6 +703,7 @@ fedora = nautilus-actions
 license = GPL
 DE = gnome
 ubuntu = nautilus-actions
+archlinux = nautilus-actions
 
 [R_Language_Basic]
 category = statistics
@@ -639,11 +716,13 @@ category = chat
 fedora = kadu
 license = GPL
 ubuntu = kadu
+archlinux = kadu
 
 [Warzone2100]
 category = game
 fedora = warzone2100
 ubuntu = warzone2100
+archlinux = warzone2100
 
 [ScienceBiology]
 category = biology
@@ -655,6 +734,7 @@ ubuntu = med-bio
 category = business
 fedora = gcstar
 ubuntu = gcstar
+archlinux = gcstar
 
 [Gwibber]
 category = blog
@@ -665,6 +745,7 @@ ubuntu = gwibber
 category = text_editor
 fedora = leafpad
 ubuntu = leafpad
+archlinux = leafpad
 
 [Ubuntu_Studio_Theme]
 category = theme
@@ -682,17 +763,20 @@ category = saber
 fedora = autoconf automake
 license = GPL
 ubuntu = autoconf automake
+archlinux = autoconf automake
 
 [Empathy]
 category = chat
 fedora = empathy
 ubuntu = empathy
+archlinux = empathy
 
 [Multimedia_Codecs]
 category = others
 fedora = gstreamermm
 license = LGPL
 ubuntu = gstreamer0.10-fluendo-mp3 gstreamer0.10-ffmpeg gstreamer0.10-plugins-bad gstreamer0.10-plugins-bad-multiverse gstreamer0.10-plugins-ugly gstreamer0.10-plugins-ugly-multiverse
+archlinux = gstreamer0.10 gstreamer0.10-bad-plugins gstreamer0.10-ffmpeg gstreamer0.10-good-plugins gstreamer0.10-ugly-plugins gstreamer0.10-pulse gstreamermm
 
 [FireWall]
 category = internet
@@ -704,6 +788,7 @@ ubuntu = firestarter
 category = email
 fedora = thunderbird
 ubuntu = thunderbird
+archlinux = thunderbird
 
 [ShikiColors]
 category = theme
@@ -714,38 +799,45 @@ ubuntu = shiki-colors
 category = file_sharing
 fedora = filezilla
 ubuntu = filezilla
+archlinux = filezilla
 
 [Screenlets]
 category = candy
 fedora = FIXME
 license = GPL
 ubuntu = screenlets
+archlinux = screenlets
 
 [Agave]
 category = drawing
 fedora = agave
 ubuntu = agave
+archlinux = agave
 
 [GoogleGadgetsQT]
 category = candy
 fedora = google-gadgets-qt
 ubuntu = google-gadgets-qt
+archlinux = google-gadgets-qt
 
 [Evince_Read_Chinese_PDF]
 category = business
 fedora = poppler-data
 ubuntu = poppler-data
+archlinux = poppler-data
 
 [GoogleGadgetsGTK]
 category = candy
 fedora = google-gadgets-gtk
 ubuntu = google-gadgets-gtk
+archlinux = google-gadgets-gtk
 
 [Netbeans]
 category = ide
 fedora = netbeans
 license = GPL CDDL
 ubuntu = netbeans
+archlinux = netbeans
 
 [POSIX_ManPages]
 category = saber
@@ -757,12 +849,14 @@ ubuntu = manpages-dev manpages-posix manpages-posix-dev
 category = cd_burner
 fedora = k3b
 ubuntu = k3b
+archlinux = k3b
 
 [SDL]
 category = library
 fedora = SDL-devel SDL_gfx SDL_ttf SDL_mixer
 license = LGPL
 ubuntu = libsdl1.2-dev libsdl-image1.2-dev libsdl-mixer1.2-dev libsdl-ttf2.0-dev
+archlinux = sdl sdl_image sdl_mixer sdl_ttf
 
 [CodeBlocks]
 category = ide
