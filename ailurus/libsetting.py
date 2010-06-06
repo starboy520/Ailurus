@@ -333,10 +333,11 @@ class FirefoxBooleanPref(gtk.HBox):
         self.combo = combo = gtk.combo_box_new_text()
         combo.append_text(_('Yes'))
         combo.append_text(_('No'))
-        combo.connect('changed', lambda w: self.set_value())
         combo.connect('scroll-event', lambda w: True)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
+        self.get_value()
+        combo.connect('changed', lambda w: self.set_value())
     def get_value(self):
         try:
             value = bool(firefox.get_pref(self.key))
@@ -426,3 +427,5 @@ if __name__ == '__main__':
     window.show_all()
     window.set_size_request(300, -1)
     gtk.main()
+    print firefox.get_pref('content.interrupt.parsing')
+    print firefox.get_pref('content.maxtextrun')
