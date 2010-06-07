@@ -863,7 +863,7 @@ class InstallRemovePane(gtk.VBox):
         for item in items:
             i1, i2, i3 = item
             if item.is_big_class:
-                last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(i2, 24, 24), i3])
+                last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(D+'other_icons/blank.png', 24, 24), i3])
             else:
                 self.left_treestore.append(last_big_class, [i1, get_pixbuf(i2, 24, 24), i3])
         
