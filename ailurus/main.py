@@ -319,10 +319,10 @@ class DefaultPaneMenuItem(gtk.CheckMenuItem):
         assert isinstance(group, list)
         for obj in group:
             assert isinstance(obj, gtk.CheckMenuItem)
-        self.text = text
-        self.value = value.replace('\n', '')
+        self.text = text.replace('\n', '')
+        self.value = value
         self.group = group
-        gtk.CheckMenuItem.__init__(self, text)
+        gtk.CheckMenuItem.__init__(self, self.text)
         self.set_draw_as_radio(True)
         self.set_active(Config.get_default_pane() == value)
         self.connect('toggled', lambda w: self.toggled())

@@ -1,3 +1,7 @@
+2010-06-07 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: newline appears in menuitems of default pane
+
 2010-06-05 Homer Xing <homer.xing@gmail.com>
 
     * Add software items for Archlinux
