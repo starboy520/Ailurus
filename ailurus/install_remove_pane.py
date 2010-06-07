@@ -777,7 +777,14 @@ class InstallRemovePane(gtk.VBox):
         self.app_objs = app_objs
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
-        
+
+        self.fill_left_treestore()
+        self.__left_tree_view_default_select()
+        self.pack_start(hpaned)
+        self.pack_start(bottom_box, False)
+        self.show_all()
+
+    def fill_left_treestore(self):
         def icon(path):
             return get_pixbuf(path, 24, 24)
         
@@ -836,25 +843,20 @@ class InstallRemovePane(gtk.VBox):
                  )
 
         all_categories = set()
-        for obj in app_objs :
+        for obj in self.app_objs:
             all_categories.add(obj.category)
         for item in items:
             parent, i1, i2, i3 = item
             if not i3 in all_categories: continue
             item = [i1, icon(i2), i3]
             treestore.append(parent, item)
+        
         left_categories = set()
         for row in treestore:
             assert row[2].startswith('*')
             left_categories.add(row[2][1:])
         for item in items:
             left_categories.add(item[3])
-        for obj in app_objs:
+        for obj in self.app_objs:
             if obj.category not in left_categories:
                 print obj.__class__.__name__, 'category is wrong'
-            
-        self.__left_tree_view_default_select()
-
-        self.pack_start(hpaned)
-        self.pack_start(bottom_box, False)
-        self.show_all()
