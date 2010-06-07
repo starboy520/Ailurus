@@ -2,6 +2,7 @@
 
     * Fix bug: newline appears in menuitems of default pane
     * Pretty changelog rendering
+    * Hide empty category
 
 2010-06-05 Homer Xing <homer.xing@gmail.com>
 
