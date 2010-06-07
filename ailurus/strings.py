@@ -158,8 +158,7 @@ Inkscape_1 = "FIXME"
 K3B_0 = _("""K3B: Create DVD/VCD""")
 K3B_1 = "FIXME"
 Kadu_0 = _("""Kadu""")
-Kadu_1 = _("""Kadu is an instant messenger, which is very popular in Poland.
-Command : yum install kadu""")
+Kadu_1 = _("""Kadu is an instant messenger, which is very popular in Poland.""")
 Keepassx_0 = _("""Keepassx""")
 Keepassx_1 = _("""Password manager which saves many different information e.g. user names and passwords in one single database.""")
 Kflickr_0 = _("""kflickr""")

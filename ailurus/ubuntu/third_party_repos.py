@@ -65,8 +65,12 @@ class _repo(I):
     def install(self):
         APTSource2.add_lines_to_file(self.apt_conf, self.apt_file)
         if hasattr(self, 'key_url') and self.key_url:
-            download(self.key_url, '/tmp/key.gpg')
-            run_as_root('apt-key add /tmp/key.gpg')
+            try: # do not interrupt installation process if download() failed
+                download(self.key_url, '/tmp/key.gpg')
+            except CommandFailError:
+                print_traceback()
+            else:
+                run_as_root('apt-key add /tmp/key.gpg')
     def remove(self):
         APTSource2.remove_snips_from_all_files(self.apt_conf)
         if self.key_id:
@@ -123,7 +127,7 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        print >>msg, _('Command:'), 'sudo add-apt-repository ppa:%s' % self.ppa
+        print >>msg, _('Command:'), 'add-apt-repository ppa:%s' % self.ppa
         print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
         print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
@@ -138,7 +142,7 @@ class _launchpad(I):
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
     def launchpad_installation_command(self):
-        return 'sudo add-apt-repository ppa:%s' % self.ppa
+        return 'add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):

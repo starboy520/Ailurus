@@ -87,7 +87,7 @@ def __restart_network():
              obj = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
              obj.sleep(dbus_interface='org.freedesktop.NetworkManager')
              obj.wake(dbus_interface='org.freedesktop.NetworkManager')
-             if UBUNTU or MINT:
+             if UBUNTU or UBUNTU_DERIV:
                  notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
                  try:
                      run_as_root('/etc/init.d/networking restart')
@@ -133,7 +133,7 @@ def __change_hostname():
                     content = content.replace(self.old_host_name, new_host_name)
                 with open('/etc/hosts', 'w') as f:
                     f.write(content)
-            if UBUNTU or MINT:
+            if UBUNTU or UBUNTU_DERIV:
                 with TempOwn('/etc/hostname') as o:
                     with open('/etc/hostname', 'w') as f:
                         f.write(new_host_name)
@@ -262,14 +262,16 @@ class Configure_Firefox(gtk.VBox):
             if button.get_active():
                 install_package.append(button.config_item)
         import os
-        preference_path = FirefoxExtensions.get_preference_path()
+        preference_path = firefox.preference_dir
         os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
         with open(preference_path + 'user.js', 'w+') as f:
             f.writelines(install_package)
         
 def __configure_firefox():
-    FirefoxExtensions.get_extensions_path()
-    return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+    if firefox.support:
+        return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+    else:
+        return None
     
 def get():
     ret = []
@@ -279,7 +281,8 @@ def get():
             __configure_firefox,
             __restart_network ]:
         try:
-            ret.append(f())
+            a = f()
+            if a: ret.append(a) # if such function is not supported, f() returns None.
         except:
             print_traceback()
     return ret

@@ -34,7 +34,7 @@ def __ubuntu():
         return [row(_('Ubuntu version:'), value, D+'other_icons/ubuntu.png' )]
     except: print_traceback()
 
-def __ubuntu_derivative(): # dirty hack. It is better to create a new folder for each Ubuntu derivative.
+def __ubuntu_derivative():
     try:
         import platform
         name, version = platform.dist()[0:2]
@@ -42,7 +42,9 @@ def __ubuntu_derivative(): # dirty hack. It is better to create a new folder for
     except: print_traceback()
 
 def get():
-    if Config.is_Ubuntu():
+    if UBUNTU:
         return [__ubuntu]
-    else:
+    elif UBUNTU_DERIV: # Ubuntu derivative
         return [__ubuntu_derivative]
+    else:
+        raise Exception # This must be a bug.

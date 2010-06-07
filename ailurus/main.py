@@ -77,6 +77,11 @@ def check_required_packages():
         ubuntu_missing.append('python-dbus')
         fedora_missing.append('dbus-python')
         archlinux_missing.append('dbus-python')
+    try: import gnomekeyring
+    except:
+        ubuntu_missing.append('python-gnomekeyring')
+        fedora_missing.append('gnome-python2-gnomekeyring')
+        archlinux_missing.append('python-gnomekeyring') # I am not sure. python-gnomekeyring is on AUR. get nothing from pacman -Ss python*keyring 
     if not os.path.exists('/usr/bin/unzip'):
         ubuntu_missing.append('unzip')
         fedora_missing.append('unzip')
@@ -88,7 +93,7 @@ def check_required_packages():
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
 
-    error = ((UBUNTU or MINT) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
+    error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
         import StringIO
         message = StringIO.StringIO()
@@ -96,7 +101,7 @@ def check_required_packages():
         print >>message, ''
         print >>message, _('Please install these packages:')
         print >>message, ''
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
         if FEDORA:
             print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
@@ -108,39 +113,51 @@ def check_required_packages():
         dialog.run()
         dialog.destroy()
 
-def check_dbus_configuration():
-    same_content = True
+def check_dbus_daemon_status():
+    correct_conf_files = True
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
-        same_content = False
+        correct_conf_files = False
     if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
-        same_content = False
-    dbus_ok = True
+        correct_conf_files = False
+    same_version = True
     try:
-        get_authentication_method()
+        running_version = get_dbus_daemon_version()
     except:
-        dbus_ok = False
-    if same_content and dbus_ok: return
+        print_traceback()
+        running_version = 0
+    from daemon import version as current_version
+    same_version = (current_version == running_version)
+    if correct_conf_files and same_version: return
+    def show_text_dialog(msg, icon=gtk.MESSAGE_ERROR):
+        dialog = gtk.MessageDialog(type=icon, buttons=gtk.BUTTONS_OK)
+        dialog.set_title('Ailurus')
+        dialog.set_markup(msg)
+        dialog.run()
+        dialog.destroy()
     import StringIO
     message = StringIO.StringIO()
     print >>message, _('Error happened. You cannot install any software by Ailurus. :(')
     print >>message, ''
-    if not same_content:
+    if not correct_conf_files:
         print >>message, _('System configuration file should be updated.')
         print >>message, _('Please run these commands using <b>su</b> or <b>sudo</b>:')
         print >>message, ''
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
         print >>message, ''
-    if not dbus_ok:
-        print >>message, _("Ailurus' D-Bus daemon exited with error.")
-        print >>message, _("Please restart your computer, or start daemon using <b>su</b> or <b>sudo</b>:")
+        show_text_dialog(message.getvalue())
+    elif not same_version:
+        print >>message, _('We need to restart Ailurus daemon.')
+        print >>message, _('Old version is %s.') % running_version, _('New version is %s') % current_version
         print >>message, ''
-        print >>message, '<span color="blue">', '/usr/share/ailurus/support/ailurus-daemon &amp;', '</span>'
-    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
-    dialog.set_title('Ailurus ' + AILURUS_VERSION)
-    dialog.set_markup(message.getvalue())
-    dialog.run()
-    dialog.destroy()
+        print >>message, _('Press this button to restart daemon. Require authentication.')
+        show_text_dialog(message.getvalue())
+        try:
+            restart_dbus_daemon()
+            show_text_dialog(_('Ailurus daemon successfully restarted. Ailurus will work fine.'), icon=gtk.MESSAGE_INFO)
+        except:
+            show_text_dialog(_("Cannot restart Ailurus daemon. Please restart your computer."))
+            print_traceback()
 
 def wait_firefox_to_create_profile():
     if os.path.exists('/usr/bin/firefox'):
@@ -155,13 +172,13 @@ def wait_firefox_to_create_profile():
 def exception_happened(etype, value, tb):
     if etype == KeyboardInterrupt: return
     
-    import traceback, StringIO
+    import traceback, StringIO, os, platform
     traceback.print_tb(tb, file=sys.stderr)
     msg = StringIO.StringIO()
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value
-    import platform
     print >>msg, platform.dist()
+    print >>msg, os.uname()
     print >>msg, 'Ailurus version:', AILURUS_VERSION
 
     title_box = gtk.HBox(False, 5)
@@ -302,10 +319,10 @@ class DefaultPaneMenuItem(gtk.CheckMenuItem):
         assert isinstance(group, list)
         for obj in group:
             assert isinstance(obj, gtk.CheckMenuItem)
-        self.text = text
-        self.value = value.replace('\n', '')
+        self.text = text.replace('\n', '')
+        self.value = value
         self.group = group
-        gtk.CheckMenuItem.__init__(self, text)
+        gtk.CheckMenuItem.__init__(self, self.text)
         self.set_draw_as_radio(True)
         self.set_active(Config.get_default_pane() == value)
         self.connect('toggled', lambda w: self.toggled())
@@ -485,7 +502,7 @@ class MainView:
         from info_pane import InfoPane
         from install_remove_pane import InstallRemovePane
         from computer_doctor_pane import ComputerDoctorPane
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
             from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
         if FEDORA:
@@ -494,7 +511,7 @@ class MainView:
 
         self.register(ComputerDoctorPane, load_cure_objs)
         self.register(CleanUpPane)
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
         if FEDORA:
@@ -513,7 +530,7 @@ sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
 set_default_window_icon()
 check_required_packages()
-check_dbus_configuration()
+check_dbus_daemon_status()
 
 #from support.splashwindow import SplashWindow
 #splash = SplashWindow()

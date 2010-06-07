@@ -1,3 +1,31 @@
+2010-06-07 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug: newline appears in menuitems of default pane
+    * Pretty changelog rendering
+    * Hide empty category
+
+2010-06-05 Homer Xing <homer.xing@gmail.com>
+
+    * Add software items for Archlinux
+
+2010-06-05 SHANG Yuanchun <idealities@gmail.com>
+
+    * Add support for installing software on Archlinux
+    * Fix bugs in class PACMAN
+
+2010-06-04 Homer Xing <homer.xing@gmail.com>
+
+    * Improve architecture. Do not need to manually update AILURUS_VERSION.
+    * Add dbus daemon version. Check dbus daemon status by reading version.
+    * Provide a dialog to restart daemon.
+    * Improve code. Express all of Mint, YLMF, Deepin as UBUNTU_DERIV.
+    * Improve code. Do not import lib twice.
+    * Check wrong code name in sources list.
+    * Do not check colorful BASH PS1 on Deepin Linux because BASH PS1 is colorful already.
+    * Do not try to read Firefox preference location if Firefox is not installed.
+    * Fix bug: state is not refeshed after running quick setup.
+    * Support proxy server.
+
 2010-06-03 MA Yue <velly.empire@gail.com>
 
     * Add Flashblock, Ease Link and WebMail Notifier
@@ -7,6 +35,13 @@
 
     * Complete all Firefox Tweaks
 
+2010-06-02 Homer Xing <homer.xing@gmail.com>
+
+    * Do not interrupt installation process if download() failed
+    * Fix bug: TempOwn fails if directory does not exist
+    * Handle the situation such that information function returns []
+>>>>>>> FETCH_HEAD
+
 2010-06-01 Homer Xing <homer.xing@gmail.com>
 
     * Move stardict dictionaries into computer doctor pane
@@ -14,9 +49,9 @@
 
 2010-05-31 HAN Haofu<gtxx3600@gmail.com>
 
-	* Move all apps in native_apps.py to native_apps.cfg.
-	* Move app's __doc__ and detail to support/strings.py.
-	* Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
+    * Move all apps in native_apps.py to native_apps.cfg.
+    * Move app's __doc__ and detail to support/strings.py.
+    * Fix bug: In clean_up_pane, TextView under 'Reclaim memory' button is editable. 
 
 2010-05-31 Homer Xing <homer.xing@gmail.com>
 
@@ -24,7 +59,7 @@
 
 2010-05-30 MA Yue <velly.empire@gmail.com>
 
-    *Add the Screensaver Panel
+    * Add the Screensaver Panel
 
 2010-05-30 Homer Xing <homer.xing@gmail.com>
 
@@ -797,7 +832,7 @@
     * Create local cache folder if the folder does not exists.
     * Add “Disable automatically mount CD and flash disks” into “Ubuntu setting” pane.
 
-2009-12-10 Ailurus developers
+2009-12-10 Ailurus developers <email_not_available>
 
     * Ubun-student is renamed to “Ailurus”
 
@@ -884,7 +919,7 @@
       (See second screenshot 2 below)
     * Customize Nautilus context menu
 
-2009-10-01 Ubun-student developers
+2009-10-01 Ubun-student developers <email_not_available>
 
     * "Ubuntu Easy Setuper" is renamed to "Ubun-student"!
 
