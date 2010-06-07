@@ -789,7 +789,6 @@ class InstallRemovePane(gtk.VBox):
             [_('All'), None, '*all'],
             [_('Internet'), None, '*internet'],
                  [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
-                 [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
                  [_('Email'), D+'umut_icons/p_email.png', 'email'],
                  [_('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
                  [_('Chat'), D+'umut_icons/p_chat.png', 'chat'],
@@ -858,9 +857,10 @@ class InstallRemovePane(gtk.VBox):
         all_categories = [obj.category for obj in self.app_objs]
         for i, item in enumerate(items):
             item.visible = item.category in all_categories
-            if item.parent: item.parent.visible = True
+            if item.visible and item.parent!=None: item.parent.visible = True
             
         for item in items:
+            if item.visible == False: continue
             i1, i2, i3 = item
             if item.is_big_class:
                 last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(D+'other_icons/blank.png', 24, 24), i3])
