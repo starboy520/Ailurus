@@ -785,78 +785,89 @@ class InstallRemovePane(gtk.VBox):
         self.show_all()
 
     def fill_left_treestore(self):
-        def icon(path):
-            return get_pixbuf(path, 24, 24)
-        
-        treestore = self.left_treestore
-
-        i_all = treestore.append(None, [_('All'), None, '*all'])
-        i_internet = treestore.append(None, [_('Internet'), None, '*internet'])
-        i_multimedia = treestore.append(None, [_('Multimedia'), None, '*multimedia'])
-        i_appearance = treestore.append(None, [_('Appearance'), None, '*appearance'])
-        i_science = treestore.append(None, [_('Science'), None, '*science'])
-        i_programming = treestore.append(None, [_('Programming'), None, '*programming'])
-        i_business = treestore.append(None, [_('Business'), None, '*business'])
-        i_design = treestore.append(None, [_('Design'), None, '*design'])
-        i_for_gnome = treestore.append(None, [_('For GNOME'), None, '*for_gnome'])
-        i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
-        i_education = treestore.append(None, [_('Education'), None, '*education'])
-        i_game = treestore.append(None, [_('Game'), None, '*game'])
-        i_antivirus = treestore.append(None, [_('Anti-virus'), None, '*antivirus'])
-        i_others = treestore.append(None, [_('Others'), None, '*others'])
-        i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
-
-        items = (
-                 [i_internet, _('Browser'), D+'umut_icons/p_browser.png', 'browser'],
-                 [i_internet, _('Email'), D+'umut_icons/p_email.png', 'email'],
-                 [i_internet, _('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
-                 [i_internet, _('Chat'), D+'umut_icons/p_chat.png', 'chat'],
-                 [i_internet, _('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
-                 [i_internet, _('Flash'), D+'sora_icons/p_flash.png', 'flash'],
-                 [i_internet, _('Blog'), D+'umut_icons/p_blog.png', 'blog'],
-                 [i_internet, _('RSS'), D+'sora_icons/p_rss.png', 'rss'],
-                 [i_multimedia, _('Player'), D+'sora_icons/p_player.png', 'player'],
-                 [i_multimedia, _('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
-                 [i_multimedia, _('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
-                 [i_appearance, _('Panel'), D+'sora_icons/p_panel.png', 'panel'],
-                 [i_appearance, _('Theme'), D+'umut_icons/p_theme.png', 'theme'],
-                 [i_appearance, _('Candy'), D+'umut_icons/p_candy.png', 'candy'],
-                 [i_appearance, _('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
-                 [i_science, _('Math'), D+'umut_icons/p_math.png', 'math'],
-                 [i_science, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
-                 [i_science, _('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
-                 [i_science, _('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
-                 [i_science, _('Geography'), D+'sora_icons/p_geography.png', 'geography'],
-                 [i_science, _('Biology'), D+'umut_icons/p_biology.png', 'biology'],
-                 [i_science, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
-                 [i_programming, _('IDE'), D+'sora_icons/p_ide.png', 'ide'],
-                 [i_programming, _('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
-                 [i_programming, _('Library'), D+'sora_icons/p_library.png', 'library'],
-                 [i_programming, _('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
-                 [i_programming, _('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
-                 [i_programming, _('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
-                 [i_programming, _('Saber'), D+'sora_icons/p_saber.png', 'saber'],
-                 [i_design, _('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
-                 [i_design, _('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
-                 [i_for_gnome, _('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
-                 [i_others, _('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
-                 )
-
-        all_categories = set()
-        for obj in self.app_objs:
-            all_categories.add(obj.category)
+        items = [
+            [_('All'), None, '*all'],
+            [_('Internet'), None, '*internet'],
+                 [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
+                 [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
+                 [_('Email'), D+'umut_icons/p_email.png', 'email'],
+                 [_('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
+                 [_('Chat'), D+'umut_icons/p_chat.png', 'chat'],
+                 [_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
+                 [_('Flash'), D+'sora_icons/p_flash.png', 'flash'],
+                 [_('Blog'), D+'umut_icons/p_blog.png', 'blog'],
+                 [_('RSS'), D+'sora_icons/p_rss.png', 'rss'],
+            [_('Multimedia'), None, '*multimedia'],
+                 [_('Player'), D+'sora_icons/p_player.png', 'player'],
+                 [_('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
+                 [_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
+            [_('Appearance'), None, '*appearance'],
+                 [_('Panel'), D+'sora_icons/p_panel.png', 'panel'],
+                 [_('Theme'), D+'umut_icons/p_theme.png', 'theme'],
+                 [_('Candy'), D+'umut_icons/p_candy.png', 'candy'],
+                 [_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
+            [_('Science'), None, '*science'],
+                 [_('Math'), D+'umut_icons/p_math.png', 'math'],
+                 [_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
+                 [_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
+                 [_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
+                 [_('Geography'), D+'sora_icons/p_geography.png', 'geography'],
+                 [_('Biology'), D+'umut_icons/p_biology.png', 'biology'],
+                 [_('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
+            [_('Programming'), None, '*programming'],
+                 [_('IDE'), D+'sora_icons/p_ide.png', 'ide'],
+                 [_('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
+                 [_('Library'), D+'sora_icons/p_library.png', 'library'],
+                 [_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
+                 [_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
+                 [_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
+                 [_('Saber'), D+'sora_icons/p_saber.png', 'saber'],
+            [_('Business'), None, '*business'],
+            [_('Design'), None, '*design'],
+                 [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
+                 [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
+            [_('For GNOME'), None, '*for_gnome'],
+                 [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
+            [_('Simulator'), None, '*simulator'],
+            [_('Education'), None, '*education'],
+            [_('Game'), None, '*game'],
+            [_('Anti-virus'), None, '*antivirus'],
+            [_('Others'), None, '*others'],
+                 [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
+            [_('Repository'), None, '*repository'],
+                 ] # end of items
+        class T(list):
+            pass
+        for i, item in enumerate(items):
+            items[i] = T(item)
         for item in items:
-            parent, i1, i2, i3 = item
-            if not i3 in all_categories: continue
-            item = [i1, icon(i2), i3]
-            treestore.append(parent, item)
-        
-        left_categories = set()
-        for row in treestore:
-            assert row[2].startswith('*')
-            left_categories.add(row[2][1:])
+            category = item[2]
+            item.is_big_class = category.startswith('*')
         for item in items:
-            left_categories.add(item[3])
+            if item.is_big_class:
+                last_big_class = item
+                item.parent = None
+            else:
+                item.parent = last_big_class
+        for item in items:
+            category = item[2]
+            if category.startswith('*'): category = category[1:]
+            item.category = category
+        for item in items:
+            item.visible = False
+        all_categories = [obj.category for obj in self.app_objs]
+        for i, item in enumerate(items):
+            item.visible = item.category in all_categories
+            if item.parent: item.parent.visible = True
+            
+        for item in items:
+            i1, i2, i3 = item
+            if item.is_big_class:
+                last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(i2, 24, 24), i3])
+            else:
+                self.left_treestore.append(last_big_class, [i1, get_pixbuf(i2, 24, 24), i3])
+        
+        right_categories = [item.category for item in items]
         for obj in self.app_objs:
-            if obj.category not in left_categories:
+            if obj.category not in right_categories:
                 print obj.__class__.__name__, 'category is wrong'
