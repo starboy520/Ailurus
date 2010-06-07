@@ -1,6 +1,7 @@
 2010-06-07 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: newline appears in menuitems of default pane
+    * Pretty changelog rendering
 
 2010-06-05 Homer Xing <homer.xing@gmail.com>
 
@@ -820,7 +821,7 @@
     * Create local cache folder if the folder does not exists.
     * Add “Disable automatically mount CD and flash disks” into “Ubuntu setting” pane.
 
-2009-12-10 Ailurus developers
+2009-12-10 Ailurus developers <email_not_available>
 
     * Ubun-student is renamed to “Ailurus”
 
@@ -907,7 +908,7 @@
       (See second screenshot 2 below)
     * Customize Nautilus context menu
 
-2009-10-01 Ubun-student developers
+2009-10-01 Ubun-student developers <email_not_available>
 
     * "Ubuntu Easy Setuper" is renamed to "Ubun-student"!
 
