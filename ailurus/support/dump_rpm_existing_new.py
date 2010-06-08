@@ -20,8 +20,10 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+'''may output repeat results'''
+
 import sys, os
-sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))+'/../')
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))+'/../') # Without this line, error happens. I don't know the reason. *Sigh*
 from lib import *
 import platform, glob, sqlite3
 
@@ -43,7 +45,7 @@ all_dirs = [ '/var/cache/yum/%s/%s/%s/' % (fedora_arch, fedora_version, section_
 
 all_databases = []
 for dir in all_dirs:
-    all_databases += glob.glob(dir+'*primary.sqlite')
+    all_databases += glob.glob(dir+'*primary.sqlite') # not good. To read filename from repomd.xml is better.
 
 all_package_names = []
 for database in all_databases:
