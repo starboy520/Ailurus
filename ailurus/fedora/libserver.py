@@ -515,6 +515,9 @@ class FedoraReposSection:
 
     def write_to_stream(self, stream):
         stream.writelines(self.lines)
+    
+    def enabled(self):
+        return 'enabled=1\n' in self.lines
 
 class FedoraReposFile:
     def __init__(self, path):
