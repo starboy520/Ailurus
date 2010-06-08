@@ -1735,6 +1735,7 @@ class FedoraReposSection:
         for line in lines: assert isinstance(line, str) and line.endswith('\n')
         assert lines[0].startswith('['), lines
         
+        self.name = lines[0].strip()[1:-1]
         self.lines = lines
 
     def is_fedora_repos(self):
