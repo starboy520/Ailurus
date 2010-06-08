@@ -562,35 +562,3 @@ class FedoraReposFile:
             obj = FedoraReposFile(path)
             ret.append(obj)
         return ret
-
-if __name__ == '__main__':
-    print all_candidate_repositories()
-#    f = FedoraReposFile('/etc/yum.repos.d/fedora-rawhide.repo')
-#    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
-#    
-#    objs = FedoraReposFile.all_repo_objects()
-#
-#    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
-#    assert 3 == len(f.sections)
-#    assert f.sections[0].is_fedora_repos()
-#    assert f.sections[1].is_fedora_repos()
-#    assert f.sections[2].is_fedora_repos()
-#    section = f.sections[0]
-#    print section.lines[0]
-#    section.comment_line(0)
-#    print section.lines[0]
-#    section.uncomment_line(0)
-#    print section.lines[0]
-#    
-#    print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/updates/testing/$releasever/$basearch/')
-#    try:
-#        print section.part2_of('#baseurl=http://download.fedoraproject.org/pub/fedora/linux/pdates/testing/$releasever/$basearch/')
-#    except:
-#        print_traceback()
-#    f = FedoraReposFile('/etc/yum.repos.d/fedora.repo')
-#    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
-#    import sys
-#    for section in f.sections:
-#        section.write_to_stream(sys.stdout)
-#    f = FedoraReposFile('/etc/yum.repos.d/ailurus.repo')
-#    f.change_baseurl('ftp://ftp.sjtu.edu.cn/fedora/linux')
