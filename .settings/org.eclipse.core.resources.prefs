@@ -1,10 +1,11 @@
-#Sat May 22 14:31:19 CST 2010
+#Sat Jun 05 21:52:44 CST 2010
 eclipse.preferences.version=1
 encoding//ailurus/clean_up_pane.py=utf-8
 encoding//ailurus/common/apps.py=utf-8
 encoding//ailurus/common/apps_eclipse.py=utf-8
 encoding//ailurus/common/hardwareinfo.py=utf-8
 encoding//ailurus/common/menu.py=utf-8
+encoding//ailurus/common/native_apps.py=utf-8
 encoding//ailurus/common/osinfo.py=utf-8
 encoding//ailurus/fedora/apps.py=utf-8
 encoding//ailurus/fedora/fastest_mirror_pane.py=utf-8
@@ -13,14 +14,22 @@ encoding//ailurus/gnome/apps.py=utf-8
 encoding//ailurus/info_pane.py=utf-8
 encoding//ailurus/install_remove_pane.py=utf-8
 encoding//ailurus/lib.py=utf-8
+encoding//ailurus/libapp.py=utf-8
 encoding//ailurus/libsetting.py=utf-8
 encoding//ailurus/libu.py=utf-8
 encoding//ailurus/loader.py=utf-8
 encoding//ailurus/main.py=utf-8
 encoding//ailurus/support/splashwindow.py=utf-8
+encoding//ailurus/system_setting_pane.py=utf-8
 encoding//ailurus/ubuntu/__init__.py=utf-8
 encoding//ailurus/ubuntu/apps.py=utf-8
+encoding//ailurus/ubuntu/apt_recovery_pane.py=utf-8
 encoding//ailurus/ubuntu/fastest_mirror_pane.py=utf-8
+encoding//ailurus/ubuntu/libserver.py=utf-8
+encoding//ailurus/ubuntu/menu.py=utf-8
+encoding//ailurus/ubuntu/quick_setup.py=utf-8
 encoding//ailurus/ubuntu/repos_config_pane.py=utf-8
 encoding//ailurus/ubuntu/setting.py=utf-8
 encoding//ailurus/ubuntu/third_party_repos.py=utf-8
+encoding//ailurus/ubuntu/tips.py=utf-8
+encoding//unfree/for_ubuntu.py=utf-8

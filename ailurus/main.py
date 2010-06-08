@@ -448,6 +448,7 @@ class MainView:
         if UBUNTU or MINT:
             from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
             from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
+            from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
             from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
             from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
@@ -457,6 +458,7 @@ class MainView:
         if UBUNTU or MINT:
             self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
+            self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
             self.register(FedoraFastestMirrorPane)
