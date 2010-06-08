@@ -703,11 +703,11 @@ class RPM:
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
-            stderr=subprocess.PIPE, # must be stderr
+            stdout=subprocess.PIPE,
             )
-        for line in task.stderr: # must be stderr
+        for line in task.stdout:
             cls.__set2.add(line.strip())
         task.wait()
     @classmethod
