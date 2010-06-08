@@ -24,40 +24,41 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+from apps_eclipse import *
 from app_tasksel import *
 from app_from_external_repos import *
 
-class OpenJDK6(I):
-    'OpenJDK 6'
-    category = 'saber'
-    license = GPL
-    def install(self):
-        APT.install('openjdk-6-jdk')
-        
-        env = ETCEnvironment()
-        env.remove('JAVA_HOME')
-        env.remove('JAVA_BIN')
-        env.remove('CLASSPATH')
-        env.add('JAVA_HOME', '/usr/lib/jvm/java-6-openjdk')
-        env.add('JAVA_BIN', '/usr/lib/jvm/java-6-openjdk/bin')
-        env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-openjdk/lib/dt.jar', '/usr/lib/jvm/java-6-openjdk/lib/tools.jar')
-        env.save()
-        
-        run_as_root('update-java-alternatives -s java-6-openjdk', ignore_error=True)
-        
-        with TempOwn('/etc/jvm') as o:
-            with open('/etc/jvm', "w") as f:
-                f.write('/usr/lib/jvm/java-6-openjdk\n')
-    def installed(self):
-        return APT.installed('openjdk-6-jdk')
-    def remove(self):
-        APT.remove('openjdk-6-jre-lib')
-
-        env = ETCEnvironment()
-        env.remove('JAVA_HOME')
-        env.remove('JAVA_BIN')
-        env.remove('CLASSPATH')
-        env.save()
+#class OpenJDK6(I):
+#    'OpenJDK 6'
+#    category = 'saber'
+#    license = GPL
+#    def install(self):
+#        APT.install('openjdk-6-jdk')
+#        
+#        env = ETCEnvironment()
+#        env.remove('JAVA_HOME')
+#        env.remove('JAVA_BIN')
+#        env.remove('CLASSPATH')
+#        env.add('JAVA_HOME', '/usr/lib/jvm/java-6-openjdk')
+#        env.add('JAVA_BIN', '/usr/lib/jvm/java-6-openjdk/bin')
+#        env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-openjdk/lib/dt.jar', '/usr/lib/jvm/java-6-openjdk/lib/tools.jar')
+#        env.save()
+#        
+#        run_as_root('update-java-alternatives -s java-6-openjdk', ignore_error=True)
+#        
+#        with TempOwn('/etc/jvm') as o:
+#            with open('/etc/jvm', "w") as f:
+#                f.write('/usr/lib/jvm/java-6-openjdk\n')
+#    def installed(self):
+#        return APT.installed('openjdk-6-jdk')
+#    def remove(self):
+#        APT.remove('openjdk-6-jre-lib')
+#
+#        env = ETCEnvironment()
+#        env.remove('JAVA_HOME')
+#        env.remove('JAVA_BIN')
+#        env.remove('CLASSPATH')
+#        env.save()
 
 class WorldofPadman(I):
     __doc__ = _('World of Padman: Funny shooter game')
@@ -252,20 +253,11 @@ class DisableGettyKarmic(DisableGetty):
                     with open(filename, 'w') as f:
                         f.writelines(contents)
 
-class Generic_Genome_Browser(I):
-    __doc__ = _('Generic Genome Browser')
-    detail = _('Generic Genome Browser is a combination of database and interactive web page '
-               'for manipulating and displaying annotations on genomes.\n'
-               '<span color="red">Due to the limitation of the authors\' programming ability, '
-               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>') 
-    category='biology'
-    license = AL
-    
-    def install(self):
-        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
-        run_as_root_in_terminal('perl %s' % f)
-    def installed(self):
-        return False
-    def remove(self):
-        raise NotImplementedError
-
+class OpenJUMP(_apt_install): # OpenJUMP is not in Fedora :(
+    __doc__ = _('OpenJUMP: A geographic information system')
+    detail = ( 
+              _('Official site: http://openjump.org/ .') +
+              _(' This application depends on Java.') )
+    license = GPL
+    category = 'geography'
+    pkgs = 'openjump'

@@ -26,6 +26,8 @@ import dbus.service
 import dbus.glib
 import gobject
 
+version = 3 # must be integer
+
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
 
@@ -85,9 +87,17 @@ class AilurusFulgens(dbus.service.Object):
 
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='', 
-                                          out_signature='')
-    def exit(self):
-        mainloop.quit()
+                                          out_signature='i') 
+    def get_version(self):
+        return version
+
+    @dbus.service.method('cn.ailurus.Interface', 
+                                          in_signature='', 
+                                          out_signature='',
+                                          sender_keyword='sender')
+    def exit(self, sender=None):
+        self.__check_permission(sender)
+        self.mainloop.quit()
 
     def __check_permission(self, sender):
         if self.check_permission_method == 0:
@@ -97,7 +107,8 @@ class AilurusFulgens(dbus.service.Object):
         else:
             raise ValueError
 
-    def __init__(self):
+    def __init__(self, mainloop):
+        self.mainloop = mainloop # use to terminate mainloop
         self.authorized_secret_key = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
@@ -150,9 +161,12 @@ class AilurusFulgens(dbus.service.Object):
             self.authorized_secret_key.remove(secret_key)
         
 def main():
+    import ctypes
+    libc = ctypes.CDLL('libc.so.6')
+    libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
-    AilurusFulgens()
     mainloop = gobject.MainLoop()
+    AilurusFulgens(mainloop)
     mainloop.run()    
 
 if __name__ == '__main__':

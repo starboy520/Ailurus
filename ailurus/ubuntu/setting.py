@@ -39,6 +39,11 @@ def __update_manager_setting():
     return Setting(vbox, _('Ubuntu update manager setting'), ['update'])
 
 def get():
+    try:
+        import gconf
+    except: # python-gconf is missing 
+        return []
+    
     ret = []
     for f in [
             __update_manager_setting ,

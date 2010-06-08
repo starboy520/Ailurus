@@ -357,29 +357,6 @@ def __gnome_session_setting():
     o = GConfCheckButton(_('Allow connection from remote hosts.'),
             '/apps/gnome-session/options/allow_tcp_connections')
     box.pack_start(o, False)
-#    o = GConfCheckButton(_('Enable switch to different user from the "Unlock" dialog'),
-#            '/apps/gnome-screensaver/user_switch_enable',
-#            _('If its value is true, you will be able to switch to a different user account from the "Unlock" dialog.') )
-#    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-#    o = GConfCheckButton(_('Show confirmation dialogs when you using indicator session tool to logout/restart/shutdown'),
-#            '/apps/indicator-session/suppress_logout_restart_shutdown', 
-#            _('If its value is false, Gnome will not show confirmation '
-#              'dialogs when you using the Indicator Session Tool to logout/restart/shutdown computer.') )
-#    table.attach(o, 0, 1, pos, pos+1, gtk.FILL, gtk.FILL); pos += 1
-    
-    o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
-                         '/apps/gnome-screensaver/idle_activation_enabled')
-    box.pack_start(o, False)
-    
-    o = GConfCheckButton(_('Lock screen when screen saver is activated'),
-                         '/apps/gnome-screensaver/lock_enabled')
-    box.pack_start(o, False)
-    
-    o = GConfCheckButton(_('Lock screen after hibernating'), '/apps/gnome-power-manager/lock/hibernate')
-    box.pack_start(o, False)
-    
-    o = GConfCheckButton(_('Lock screen after suspending'), '/apps/gnome-power-manager/lock/suspend')
-    box.pack_start(o, False)
     
     return Setting(box, _('GNOME session'), ['session'])
 
@@ -399,17 +376,7 @@ def __backlight():
     o = GConfHScale( '/apps/gnome-power-manager/backlight/brightness_dim_battery', 0, 100 )
     table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
     table.attach(o, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
-    return Setting(table, _('Backlight'), ['power'])
-
-#def __suspend_and_hibernate():
-#    vbox = gtk.VBox()
-#    i = GConfCheckButton(_('Enable suspending function'),
-#                '/apps/gnome-power-manager/lock/suspend')
-#    j = GConfCheckButton(_('Enable hibernating function'),
-#                '/apps/gnome-power-manager/lock/suspend')
-#    vbox.pack_start(i, False)
-#    vbox.pack_start(j, False)
-#    return Setting(vbox, _('Suspending/hibernating funtion'), ['power'])
+    return Setting(table, _('Backlight') + ' ' + _('(valid only for laptops)'), ['power'])
 
 def __advance_setting():
     box = gtk.VBox(False, 5)
@@ -499,90 +466,110 @@ def __shortcut_setting():
         table.attach(o, 1, 2, number, number+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
     return Setting(table, _('Shortcut key'), ['shortcut'])
 
-#def __gconfig_backup():
-#    table = gtk.Table()
-#    table.set_col_spacings(30)
-#    table.set_row_spacings(10)
-#    label = gtk.Label(_('Gconfig Settings are saved as XML files in the folder ~/.gconf, Ailurus can help you backup and reset this file.'))
-#    backup_button = gtk.Button(_('Backup Gconfig Setting'))
-#    def backup_gconf(w):
-#        run('cd ~ && tar cvzf ~/.config/ailurus/gconfbackup.tar.gz /usr/share/gconf .gconf')
-#    backup_button.connect('clicked', backup_gconf)
-#    backup_button.set_tooltip_text(_("The backup file stored in ~/.config/ailurus/gconfbackup.tar.gz"))
-#    recover_button = gtk.Button(_('Reset Gconfig Setting'))
-#    def reset_gconf(w):
-#        run('cd ~ && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz .gconf')
-#	run_as_root('cd / && tar zxvf ~/.config/ailurus/gconfbackup.tar.gz usr/share/gconf')
-#	notify(_('Reset Successful'), _('Some Setting will be applied when you login next time.'))
-#    recover_button.connect('clicked', reset_gconf)
-#    import os
-#    if not os.path.exists(os.path.expanduser('~/.config/ailurus/gconfbackup.tar.gz')):
-#        recover_button.set_sensitive(False)
-#    table.attach(label, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
-#    table.attach(backup_button, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-#    table.attach(recover_button, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
-#    return Setting(table, _("backup and rset Gconfig Setting"), ['desktop'])
+def __compression_strategy():
+    label = gtk.Label(_('Compression strategy of file-roller:'))
+    label.set_tooltip_text(_('GConf key: ') + '/apps/file-roller/general/compression_level')
+    combo = GConfComboBox(
+              '/apps/file-roller/general/compression_level',
+              [_('Very high speed'), _('High speed'), _('Balanced'), _('High compression rate') ],
+              ['very_fast',          'fast',          'normal',      'maximum'])
+    hbox = gtk.HBox(False, 10)
+    hbox.pack_start(label, False)
+    hbox.pack_start(combo, False)
+    return Setting(hbox, _('Compression strategy'), ['compression'])
 
-#def __compiz_setting():
-#    table = gtk.Table()
-#    table.set_col_spacings(5)
-#    table.set_row_spacings(10)
-#    # Window Decorator    
-#    label = gtk.Label(_('Set Window Decorator:'))
-#    label.set_alignment(0, 0.5)
-#    label.set_tooltip_markup(_("<span color='red'>It takes effect after next startup. "
-#                               "If you are using Fedora, please run 'yum install fusion-icon' to install Fusion icons. "
-#                               "Otherwise, this option does not work.</span>\n")
-#                           + _('GConf key: ') + '/apps/compiz/plugins/decoration/allscreens/options/command')
-#    hbox = gtk.HBox()
-#    o = GConfComboBox('/apps/compiz/plugins/decoration/allscreens/options/command', 
-#                      [_('Metacity'), _('Emerald')],
-#                      ['/usr/bin/compiz-decorator', 'emerald --replace',] ) 
-#    hbox.pack_start(label, False)
-#    hbox.pack_start(o, False, True, 20)
-#    table.attach(hbox, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
-#    # Compiz Effect    
-#    def disable_minimize_effects(button):
-#        import gconf
-#        g = gconf.client_get_default()
-#        value = []
-#        g.set_list('/apps/compiz/plugins/animation/screen0/options/minimize_effects', gconf.VALUE_STRING, value)
-#    def random_all_effects(button):
-#        assert isinstance(button, gtk.Button)
-#        import gconf
-#        g = gconf.client_get_default()
-#        g.set_bool('/apps/compiz/plugins/animation/screen0/options/all_random', True)
-#    n = gtk.Button(_('Disable Minimize Effect'))
-#    n.connect('clicked', disable_minimize_effects)
-#    n.set_tooltip_text(_('GConf key: ')+'/apps/nautilus/list_view/default_visible_columns\n'
-#                       'you can reset it in CompizConfig Settings Manager')
-#    m = gtk.Button(_('Random All Effects'))
-#    m.set_tooltip_text(_('GConf Key: ') + '/apps/compiz/plugins/animation/screen0/options/all_random\n'
-#                       'All effects are chosen randomly, ignoring the selected effect. '
-#                       'If None is selected for an event, that event won\'t be animated.')
-#    m.connect('clicked', random_all_effects)
-#    hbox = gtk.HBox()
-#    hbox.pack_start(m, False)
-#    hbox.pack_start(n, False, True, 20)
-#    table.attach(hbox, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
-#    # number of desktop    
-#    label = gtk.Label(_('Screen horizontal size coefficient'))
-#    label.set_alignment(0, 0.5)
-#    label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/hsize' )
-#    o = GConfHScale( '/apps/compiz/general/screen0/options/hsize', 1, 32 )
-#    table.attach(label, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
-#    table.attach(o, 1, 2, 2, 3, gtk.FILL|gtk.EXPAND, gtk.FILL)
-#    label = gtk.Label(_('Screen vertical size coefficient'))
-#    label.set_alignment(0, 0.5)
-#    label.set_tooltip_text( _('GConf Key: ') + '/apps/compiz/general/screen0/options/vsize' )
-#    o = GConfHScale( '/apps/compiz/general/screen0/options/vsize', 1, 32 )
-#    table.attach(label, 0, 1, 3, 4, gtk.FILL, gtk.FILL)
-#    table.attach(o, 1, 2, 3, 4, gtk.FILL|gtk.EXPAND, gtk.FILL)
-#    
-#    
-#    return Setting(table, _('CompizConfig Settings'), ['window'])
+def __gedit_setting():
+    table = gtk.Table()
+    table.set_col_spacings(10)
+    
+    key = '/apps/gedit-2/preferences/editor/undo/max_undo_actions'
+    label = gtk.Label(_('Maximum number of undos:'))
+    label.set_tooltip_text(_('GConf key: ') + key)
+    label.set_alignment(0, 0.5)
+    entry = GConfNumericEntry(key, 0, 200)
+    table.attach(label, 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(entry, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+    
+    key = '/apps/gedit-2/preferences/ui/recents/max_recents'
+    label = gtk.Label(_('Maximum number of recent files:'))
+    label.set_tooltip_text(_('GConf key: ') + key)
+    label.set_alignment(0, 0.5)
+    entry = GConfNumericEntry(key, 0, 20)
+    table.attach(label, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(entry, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
+
+    return Setting(table, _('GEdit settings'), ['gedit'])
+
+class ResetGNOME(gtk.VBox):
+    def do_reset(self, w, user):
+        run_as_root('rm -rf /home/%s/.gnome*' % user)
+        run_as_root('rm -rf /home/%s/.gconf*' % user)
+        run_as_root('rm -rf /home/%s/.metacity' % user)
+        run_as_root('rm -rf /home/%s/.nautilus' % user)
+        run_as_root('rm -rf /tmp/gconfd-%s' % user)
+        run_as_root('rm -rf /tmp/orbit-%s' % user)
+        notify(' ', _('GNOME settings of user %s have been reset.') % user)
+    
+    def __init__(self):
+        gtk.VBox.__init__(self, False, 5)
+        
+        import StringIO
+        msg = StringIO.StringIO()
+        print >>msg, _('Reset GNOME by removing these directories:')
+        print >>msg, ('<small>'
+                      '$HOME/.gnome*, '
+                      '$HOME/.gconf*, '
+                      '$HOME/.metacity\n'
+                      '$HOME/.nautilus, '
+                      '/tmp/gconfd-$USER, '
+                      '/tmp/orbit-$USER'
+                      '</small>')
+        print >>msg, _('In order to reset GNOME, please logout first, then login GNOME as another user.')
+        print >>msg, _('Cannot reset GNOME for current user because above files are being used.')
+        print >>msg, _('Please be careful.'),
+        label = gtk.Label()
+        label.set_markup(msg.getvalue())
+        label.set_alignment(0, 0.5)
+        self.pack_start(label, False)
+        
+        current_user = os.environ['USER']
+        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
+        if users_list == []:
+            button = gtk.Button(_('There is no other user'))
+            button.set_sensitive(False)
+            self.pack_start(button)
+        else:
+            for user in users_list:
+                button = gtk.Button(_('Reset user %s') % user)
+                button.connect('clicked', self.do_reset, user)
+                self.pack_start(button)
+
+def __reset_gnome():
+    return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
+
+def __screen_saver():
+    
+    box = gtk.VBox()
+    o = GConfCheckButton(_('Activate screen saver when computer is idle for long time'),
+                         '/apps/gnome-screensaver/idle_activation_enabled')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen when screen saver is activated'),
+                         '/apps/gnome-screensaver/lock_enabled')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen after hibernating'), '/apps/gnome-power-manager/lock/hibernate')
+    box.pack_start(o, False)
+    o = GConfCheckButton(_('Lock screen after suspending'), '/apps/gnome-power-manager/lock/suspend')
+    box.pack_start(o, False)
+    
+    return Setting(box, _('Screensaver'), ['screensaver'])
 
 def get():
+    try:
+        import gconf
+    except: # python-gconf is missing 
+        print 'python-gconf is missing. Do not load GNOME settings.'
+        return []
+    
     ret = []
     for f in [
             __desktop_icon_setting,
@@ -600,17 +587,17 @@ def get():
             __disable_terminal_beep,
             __backlight,
             __advance_setting,
-#            __suspend_and_hibernate,
             __restriction_on_current_user,
             __layout_of_window_titlebar_buttons,
             __more_nautilus_settings,
             __shortcut_setting,
             __login_window_setting,
-#            __compiz_setting,
-#            __gconfig_backup,
+            __compression_strategy,
+            __gedit_setting,
+            __reset_gnome,
+            __screen_saver,
             ]:
         try:
-            import gconf
             ret.append(f())
         except:
             print_traceback()

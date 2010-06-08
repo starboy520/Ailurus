@@ -21,7 +21,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, pango
 import sys
 import os
 from lib import *
@@ -37,11 +37,13 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_ailurus_cache_button(), False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(UbuntuCleanKernelBox(), False)
-            self.pack_start(UbuntuAutoRemovableBox())
-            self.pack_start(UbuntuDeleteUnusedConfigBox())
+            hbox = gtk.HBox(True, 20)
+            hbox.pack_start(UbuntuAutoRemovableBox())
+            hbox.pack_start(UbuntuDeleteUnusedConfigBox())
+            self.pack_start(hbox)
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -181,6 +183,8 @@ class ReclaimMemoryBox(gtk.VBox):
                                'This is not a destructive operation because dirty data will not be freed.\n'
                                'Command: echo 3 >/proc/sys/vm/drop_caches'))
         text_view = gtk.TextView(text_buffer)
+        text_view.set_editable(False)
+        text_view.set_cursor_visible(False)
         text_view.set_wrap_mode(gtk.WRAP_WORD)
         gray_bg(text_view)
         
@@ -316,7 +320,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         scroll.add(view)
         
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_kernel())
         align = gtk.Alignment(0, 0.5)
         align.add(button_delete)
@@ -378,6 +382,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         self.view.set_model(self.liststore)
         self.view.set_sensitive(True)
         self.button_unselect_all.set_sensitive(True)
+        self.button_delete.set_sensitive(False)
         
         if pkgs == []:
             self.view.set_sensitive(False)
@@ -402,14 +407,19 @@ class UbuntuAutoRemovableBox(gtk.HBox):
                 print_traceback()
         self.refresh()
     
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
+    
     def __init__(self):
         self.liststore = gtk.ListStore(bool, str, long, str) #keep?, name, disk space cost, summary 
         render_keep = gtk.CellRendererToggle()
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Auto-removable packages'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)
@@ -426,7 +436,7 @@ class UbuntuAutoRemovableBox(gtk.HBox):
         button_refresh.connect('clicked', lambda *w: self.refresh(show_splash = True))
         self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
         button_box.pack_start(button_refresh, False)
@@ -453,6 +463,10 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         if not keep:
             markup += ' ' + _('will be removed')
         cell.set_property('markup', markup)
+
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
     
     def toggled(self, render_toggle, path):
         self.liststore[path][0] = not self.liststore[path][0]
@@ -482,6 +496,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         self.view.set_model(self.liststore)
         self.view.set_sensitive(True)
         self.button_unselect_all.set_sensitive(True)
+        self.button_delete.set_sensitive(False)
         
         if pkgs == []:
             self.view.set_sensitive(False)
@@ -512,8 +527,9 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
+        render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
         column_text = gtk.TreeViewColumn(_('Unused software configuration'))
         column_text.pack_start(render_text, True)
         column_text.set_cell_data_func(render_text, self.text_data_func)
@@ -530,7 +546,7 @@ class UbuntuDeleteUnusedConfigBox(gtk.HBox):
         button_refresh.connect('clicked', lambda *w: self.refresh())
         self.button_unselect_all = button_unselect_all = gtk.Button(_('Select all'))
         button_unselect_all.connect('clicked', lambda *w: self.unselect_all())
-        self.button_delete = button_delete = gtk.Button(_('Apply'))
+        self.button_delete = button_delete = gtk.Button(_('Delete'))
         button_delete.connect('clicked', lambda *w: self.delete_packages())
         button_box = gtk.VBox(False, 5)
         button_box.pack_start(button_refresh, False)

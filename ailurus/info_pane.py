@@ -100,7 +100,7 @@ class InfoPane(gtk.VBox):
         self.pack_start(scrollwindow)
         self.pack_start(align_button, False)
         
-        self.function2trees = {}
+        self.function2trees = {} # map function to the lines which appear in treeview
         
         parent = self.treestore.append(None, [self.hardware_subtree_icon, self.hardware_subtree_text, None])
         self.__build_subtree(parent, hardware_subtree_functions)
@@ -114,7 +114,7 @@ class InfoPane(gtk.VBox):
     
     def __build_subtree(self, tree, functions):
         for function in functions:
-            rows = function()
+            rows = function() # some function may returns many lines
             trees = self.function2trees[function] = []
             for row in rows:
                 pixbuf = get_pixbuf(row[2], 24, 24)
@@ -125,9 +125,10 @@ class InfoPane(gtk.VBox):
         for function in self.function2trees.keys():
             if hasattr(function, 'please_refresh_me'):
                 rows = function()
-                index = 0
-                for tree in self.function2trees[function]:
-                    row = rows[index]
-                    self.treestore.set_value(tree, 2, row[1])
-                    index += 1
+                if rows: # If function() fail, rows == [].
+                    index = 0
+                    for tree in self.function2trees[function]:
+                        row = rows[index]
+                        self.treestore.set_value(tree, 2, row[1])
+                        index += 1
         return True

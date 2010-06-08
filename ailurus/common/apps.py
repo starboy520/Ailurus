@@ -24,9 +24,26 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-from native_apps import *
-if UBUNTU or MINT or FEDORA:
-    from apps_eclipse import *
+
+class Generic_Genome_Browser(I):
+    __doc__ = _('Generic Genome Browser')
+    detail = _('Generic Genome Browser is a combination of database and interactive web page '
+               'for manipulating and displaying annotations on genomes.\n'
+               '<span color="red">Due to the limitation of the authors\' programming ability, '
+               '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
+    license = AL
+    category='biology'
+    def install(self):
+        if FEDORA:
+            for package in ['perl-libwww-perl', 'perl-CPAN']:
+                if not RPM.installed(package): RPM.install(package)
+        
+        f = R('http://gmod.svn.sourceforge.net/viewvc/gmod/Generic-Genome-Browser/trunk/bin/gbrowse_netinstall.pl').download()
+        run_as_root_in_terminal('perl ' + f)
+    def installed(self):
+        return False
+    def remove(self):
+        raise NotImplementedError
 
 class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
@@ -118,37 +135,54 @@ class SweetHome3D(_path_lists):
                                    'Type=Application\n'
                                    'Categories=Graphics;\n')
 
-class OpenJUMP(_path_lists):
-    __doc__ = _('OpenJUMP: A geographic information system')
-    detail = ( 
-              _('Official site: http://openjump.org/ .') +
-              _(' This application depends on Java.') )
+# Do not install it via Launchpad, because the packages there is 1.6. It is old, since 1.8 has been released. 
+class Songbird(I):
+    __doc__ = _('Songbird: Open source substitution of iTunes')
+    detail = (_('Music player which integrates with online content via plugins. '
+               'Site contains project news, download, add-ons directory, help, and how to contribute.') + '\n' + 
+              _('Please download from:') + ' http://developer.songbirdnest.com/builds/trunk/latest/\n' + 
+              _('Launch it by this command:') + ' LD_BIND_NOW=1 ./songbird')
+    
+    category = 'player'
     license = GPL
-    category = 'geography'
-    def __init__(self):
-        self.shortcut = '/usr/share/applications/openjump.desktop'
-        self.dir = '/opt/openjump-1.3'
-        self.paths = [self.shortcut, self.dir]
     def install(self):
-        f = R(
-['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
-12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
+        open_web_page('http://developer.songbirdnest.com/builds/trunk/latest/')
+    def installed(self):
+        return False
+    def remove(self):
+        pass
 
-        with Chdir('/tmp') as o:
-            run('unzip -oq %s'%f)
-            import os
-            if not os.path.exists('/opt'):
-                run_as_root('mkdir /opt')
-            if not os.path.exists(self.dir):
-                run_as_root('mv openjump-1.3 /opt/')
-            create_file(self.shortcut, '''[Desktop Entry]
-Name=OpenJUMP
-Exec=bash /opt/openjump-1.3/bin/openjump.sh
-Encoding=UTF-8
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Science;Engineering; ''')
+#class OpenJUMP(_path_lists):
+#    __doc__ = _('OpenJUMP: A geographic information system')
+#    detail = ( 
+#              _('Official site: http://openjump.org/ .') +
+#              _(' This application depends on Java.') )
+#    license = GPL
+#    category = 'geography'
+#    def __init__(self):
+#        self.shortcut = '/usr/share/applications/openjump.desktop'
+#        self.dir = '/opt/openjump-1.3'
+#        self.paths = [self.shortcut, self.dir]
+#    def install(self):
+#        f = R(
+#['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
+#12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
+#
+#        with Chdir('/tmp') as o:
+#            run('unzip -oq %s'%f)
+#            import os
+#            if not os.path.exists('/opt'):
+#                run_as_root('mkdir /opt')
+#            if not os.path.exists(self.dir):
+#                run_as_root('mv openjump-1.3 /opt/')
+#            create_file(self.shortcut, '''[Desktop Entry]
+#Name=OpenJUMP
+#Exec=bash /opt/openjump-1.3/bin/openjump.sh
+#Encoding=UTF-8
+#StartupNotify=true
+#Terminal=false
+#Type=Application
+#Categories=Science;Engineering; ''')
 
 class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')
@@ -362,7 +396,8 @@ class FFRadioGet(_ff_extension):
         self.download_url = 'http://ipget.cn/RadioGet/'
         self.range = '2.0~3.6'
         self.name = u'RadioGet'
-        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi'],
+        # We add a second url because ipget.cn is in expiration date now :(
+        self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi', 'http://ailurus.googlecode.com/files/RadioGet-0.9.xpi'],
     15870, '132b45fd31dff76676d6d66bbe2b0f556f2f34fd')
         _ff_extension.__init__(self)
 
@@ -428,16 +463,15 @@ class FFViewSourceChart(_ff_extension):
                       29360,'6b7e07b806e2a8158cad85413bb50d28e4680755')
         _ff_extension.__init__(self)
 
-class FFWeaveSync35(_ff_extension):
-    __doc__ = _('Weave Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
+class FFFirefoxSync(_ff_extension):
+    __doc__ = _('Firefox Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
     license = MPL
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
         self.range = '3.5~3.7'
         self.name = u'Weave'
-        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/10868/weave-1.0b3-fx+fn+sm.xpi'],
-    360287, '23c23f795f564272348276f48cb506c7feabdad0')
+        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/10868/firefox_sync-1.3-fx+fn+sm.xpi'])
         _ff_extension.__init__(self)
 
 class FFWebDeveloper(_ff_extension):
@@ -477,5 +511,3 @@ class FFYSlow(_ff_extension):
         self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
                      215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
         _ff_extension.__init__(self)
-
-

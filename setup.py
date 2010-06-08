@@ -9,7 +9,7 @@ except ImportError:
     sys.exit()
 from glob import glob
 
-f = open('version')
+f = open('ailurus/version')
 version = f.read().strip()
 f.close()
 
@@ -36,13 +36,13 @@ Features:
       url = 'http://ailurus.googlecode.com/',
       license = 'GPLv2+',
       platforms = ['linux'],
-      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
+      packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.archlinux', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
+      package_data={'ailurus': ['native_apps', 'version']},
       data_files = [
         ('share/man/man1/', ['ailurus.1']),
         ('share/applications/', ['ailurus.desktop']),
         
         ('share/ailurus/', ['ChangeLog']),
-        
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
         ('share/ailurus/data/other_icons/', glob('data/other_icons/*.png') ),
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),

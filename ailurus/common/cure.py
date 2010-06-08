@@ -30,7 +30,7 @@ class Autostart_Workrave(C):
     path = os.path.expanduser('~/.config/autostart/')
     file = path + 'workrave.desktop'
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('workrave') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('workrave') and not os.path.exists(self.file)
@@ -51,7 +51,7 @@ class Create_basic_vimrc(C):
     detail = _('File content:') + ' syntax on; set autoindent; set number; set mouse=a'
     file = os.path.expanduser('~/.vimrc')
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('vim') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('vim-enhanced') and not os.path.exists(self.file)
@@ -67,7 +67,7 @@ class Create_Imagemagick_shortcut(C):
     file = '/usr/share/applications/imagemagick.desktop'
     detail = _('Create file:') + ' ' + file
     def exists(self):
-        if UBUNTU or MINT:
+        if UBUNTU or UBUNTU_DERIV:
             return APT.installed('imagemagick') and not os.path.exists(self.file)
         if FEDORA:
             return RPM.installed('ImageMagick') and not os.path.exists(self.file)
@@ -157,11 +157,35 @@ class Query_before_remove_a_lot_of_files(C) :
 #        run_as_root('rm -f /usr/local/share/applications/firefox.nopango.desktop')
 #        run_as_root('rm -f /usr/share/applications/firefox.nopango.desktop')
 
-#class Test(C):
-#    __doc__ = 'A test'
-#    detail = 'A test'
-#    type = C.MUST_FIX
-#    def exists(self):
-#        return True
-#    def cure(self):
-#        pass
+class Show_a_Linux_skill_bubble(C):
+    __doc__ = _('Show a random Linux skill after you log in to GNOME')
+    detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
+    file = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
+    def exists(self):
+        return not os.path.exists(self.file)
+    def cure(self):
+        with open(self.file, 'w') as f:
+            f.write('[Desktop Entry]\n'
+                    'Name=Show a random Linux skill after logging in.\n'
+                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
+                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
+                    'Terminal=false\n'
+                    'Type=Application\n'
+                    'Icon=/usr/share/ailurus/data/suyun_icons/shortcut.png\n'
+                    'Categories=System;\n'
+                    'StartupNotify=false\n')
+
+class Own_usr_lib_eclipse_by_root(C):
+    __doc__ = _('Let root own /usr/lib/eclipse and /usr/share/eclipse')
+    detail = _('Otherwise, Pydev and CDT do not work.')
+    def wrong(self, path):
+        if os.path.exists(path):
+            statinfo = os.stat(path)
+            if statinfo.st_uid != 0 or statinfo.st_gid != 0:
+                return True
+        return False
+    def exists(self):
+        return self.wrong('/usr/lib/eclipse') or self.wrong('/usr/share/eclipse')
+    def cure(self):
+        run_as_root('chown -R root:root /usr/lib/eclipse', ignore_error=True)
+        run_as_root('chown -R root:root /usr/share/eclipse', ignore_error=True)

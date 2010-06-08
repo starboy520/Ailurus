@@ -65,8 +65,12 @@ class _repo(I):
     def install(self):
         APTSource2.add_lines_to_file(self.apt_conf, self.apt_file)
         if hasattr(self, 'key_url') and self.key_url:
-            download(self.key_url, '/tmp/key.gpg')
-            run_as_root('apt-key add /tmp/key.gpg')
+            try: # do not interrupt installation process if download() failed
+                download(self.key_url, '/tmp/key.gpg')
+            except CommandFailError:
+                print_traceback()
+            else:
+                run_as_root('apt-key add /tmp/key.gpg')
     def remove(self):
         APTSource2.remove_snips_from_all_files(self.apt_conf)
         if self.key_id:
@@ -123,7 +127,7 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        print >>msg, _('Command:'), 'sudo add-apt-repository ppa:%s' % self.ppa
+        print >>msg, _('Command:'), 'add-apt-repository ppa:%s' % self.ppa
         print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
         print >>msg, _('Source setting:'), self.deb_config
         self.__class__.detail = msg.getvalue()
@@ -138,7 +142,7 @@ class _launchpad(I):
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
     def launchpad_installation_command(self):
-        return 'sudo add-apt-repository ppa:%s' % self.ppa
+        return 'add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
@@ -361,20 +365,21 @@ class Repo_Audacious(_launchpad):
     desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
     content = 'audacious audacious-plugins'
     ppa = 'dupondje'
-        
-class Repo_Tor(_repo):
-    __doc__ = _('Tor (stable)')
-    license = BSD
-    def __init__(self):
-        self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
-        'confidential business activities and relationships, and state security known as traffic analysis.')
-        self.apt_content = 'tor privoxy vidalia'
-        self.web_page = 'http://deb.torproject.org/'
-        self.apt_file = '/etc/apt/sources.list.d/tor.list'
-        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
-        self.key_url = ''
-        self.key_id = '886DDD89'
-        _repo.__init__(self)
+
+# Disable Repo_Tor, because the packages are provided in Ubuntu Lucid and Fedora 12/13
+#class Repo_Tor(_repo):
+#    __doc__ = _('Tor (stable)')
+#    license = BSD
+#    def __init__(self):
+#        self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
+#        'confidential business activities and relationships, and state security known as traffic analysis.')
+#        self.apt_content = 'tor privoxy vidalia'
+#        self.web_page = 'http://deb.torproject.org/'
+#        self.apt_file = '/etc/apt/sources.list.d/tor.list'
+#        self.apt_conf = [ 'deb http://deb.torproject.org/torproject.org $version main' ]
+#        self.key_url = ''
+#        self.key_id = '886DDD89'
+#        _repo.__init__(self)
 
 class Repo_RedNoteBook(_repo):
     __doc__ = _('RedNoteBook (stable)')
@@ -395,13 +400,6 @@ class Repo_Pidgin_Develop(_launchpad):
     desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
     content = 'pidgin'
     ppa = 'pidgin-developers'
-
-class Repo_Songbird(_launchpad):
-    __doc__ = _('Songbird (beta version)')
-    license = GPL
-    desc = _('Music player which integrates with online content via plugins. Site contains project news, download, add-ons directory, help, and how to contribute.')
-    content = 'songbird'
-    ppa = 'songbird-daily'
 
 class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')

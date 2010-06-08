@@ -161,15 +161,7 @@ class InstallRemovePane(gtk.VBox):
     def app_class_installed_state_changed_by_external(self):
         for obj in self.app_objs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
-            
-        level1 = self.treestore.get_iter_first()
-        while level1!=None:
-            level2 = self.treestore.iter_children(level1)
-            while level2!=None:
-                path = self.treestore.get_path(level2)
-                self.treestore.row_changed(path, level2)
-                level2 = self.treestore.iter_next(level2)
-            level1 = self.treestore.iter_next(level1)
+        self.treeview.queue_draw()
 
     def show_error(self, content):
         title_box = gtk.HBox(False, 5)
@@ -178,7 +170,9 @@ class InstallRemovePane(gtk.VBox):
             image = gtk.Image()
             image.set_from_file(D+'umut_icons/bug.png')
             title_box.pack_start(image, False)
-        title = label_left_align( _('Some operations failed. Would you please copy and paste following text into bug report web-page?') )
+        title = gtk.Label( _('Operations failed.\n'
+                             'Would you please copy and paste following text into bug report web-page?') )
+        title.set_alignment(0, 0.5)
         title_box.pack_start(title, False)
         
         textview = gtk.TextView()
@@ -193,10 +187,19 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_size_request(-1, 500)
         button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
         button_report_bug.connect('clicked', lambda w: report_bug() )
-        button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+        button_copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
+        def clicked():
+            clipboard = gtk.clipboard_get()
+            buffer = textview.get_buffer()
+            start = buffer.get_start_iter()
+            end = buffer.get_end_iter()
+            clipboard.set_text(buffer.get_text(start, end))
+        button_copy.connect('clicked', lambda w: clicked())
+        button_close = gtk.Button(_('Close'))
         button_close.connect('clicked', lambda w: window.destroy())
         bottom_box = gtk.HBox(False, 10)
         bottom_box.pack_start(button_report_bug, False)
+        bottom_box.pack_start(button_copy, False)
         bottom_box.pack_start(button_close, False)
         
         vbox = gtk.VBox(False, 5)
@@ -205,7 +208,7 @@ class InstallRemovePane(gtk.VBox):
         vbox.pack_start(bottom_box, False)
         window = gtk.Window()
         window.set_position(gtk.WIN_POS_CENTER)
-        window.set_title(_('Some operations failed'))
+        window.set_title(_('Operations failed'))
         window.set_border_width(10)
         window.add(vbox)
         window.show_all()
@@ -215,6 +218,7 @@ class InstallRemovePane(gtk.VBox):
         try:
             error_traceback = StringIO.StringIO()
             print >>error_traceback, platform.dist()
+            print >>error_traceback, os.uname()
             print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
@@ -659,24 +663,28 @@ class InstallRemovePane(gtk.VBox):
         dialog = gtk.Dialog(
             _('Set Ailurus download parameter'), 
             None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR, 
-            (gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK) )
+            (gtk.STOCK_OK, gtk.RESPONSE_OK) )
         dialog.set_border_width(5)
         dialog.vbox.pack_start(timeout_label, False)
         dialog.vbox.pack_start(scale_timeout, False)
         dialog.vbox.pack_start(tries_label, False)
         dialog.vbox.pack_start(scale_tries, False)
         dialog.vbox.show_all()
-        ret = dialog.run()
+        dialog.run()
         new_timeout = int(adjustment_timeout.get_value())
         new_tries = int(adjustment_tries.get_value())
+        Config.wget_set_timeout(new_timeout)
+        Config.wget_set_triesnum(new_tries)
         dialog.destroy()
-        if ret == gtk.RESPONSE_OK:
-            Config.wget_set_timeout(new_timeout)
-            Config.wget_set_triesnum(new_tries)
     
     def get_preference_menuitems(self):
-        show_quick_setup = gtk.MenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.connect('activate', lambda w: Config.set_hide_quick_setup_pane(False) or self.show_quick_setup())
+        def toggled(w):
+            Config.set_hide_quick_setup_pane(not w.get_active())
+            if w.get_active(): self.show_quick_setup()
+            else: self.hide_quick_setup()
+        show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
+        show_quick_setup.set_active(not Config.get_hide_quick_setup_pane())
+        show_quick_setup.connect('toggled', toggled)
     
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
@@ -685,7 +693,7 @@ class InstallRemovePane(gtk.VBox):
         show_software_icon.set_active(Config.get_show_software_icon())
         show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
         
-        if UBUNTU or MINT: # this feature only support UBUNTU or MINT.
+        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
             return [show_quick_setup, set_wget_param, show_software_icon]
         else:
             return [set_wget_param, show_software_icon]
@@ -757,7 +765,7 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_content.pack_start(quick_setup_button, False)
         self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
         self.quick_setup_area = gtk.HBox(False)
-        if (UBUNTU or MINT) and not Config.get_hide_quick_setup_pane():
+        if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
         bottom_box = gtk.HBox(False, 5)
         bottom_box.pack_start(button_collapse_left_treeview, False)
@@ -769,83 +777,97 @@ class InstallRemovePane(gtk.VBox):
         self.app_objs = app_objs
         for obj in app_objs :
             self.treestore.append ( None, [obj] )
-        
-        def icon(path):
-            return get_pixbuf(path, 24, 24)
-        
-        treestore = self.left_treestore
 
-        i_all = treestore.append(None, [_('All'), None, '*all'])
-        i_internet = treestore.append(None, [_('Internet'), None, '*internet'])
-        i_multimedia = treestore.append(None, [_('Multimedia'), None, '*multimedia'])
-        i_appearance = treestore.append(None, [_('Appearance'), None, '*appearance'])
-        i_science = treestore.append(None, [_('Science'), None, '*science'])
-        i_programming = treestore.append(None, [_('Programming'), None, '*programming'])
-        i_business = treestore.append(None, [_('Business'), None, '*business'])
-        i_design = treestore.append(None, [_('Design'), None, '*design'])
-        i_for_gnome = treestore.append(None, [_('For GNOME'), None, '*for_gnome'])
-        i_simulator = treestore.append(None, [_('Simulator'), None, '*simulator'])
-        i_education = treestore.append(None, [_('Education'), None, '*education'])
-        i_game = treestore.append(None, [_('Game'), None, '*game'])
-        i_others = treestore.append(None, [_('Others'), None, '*others'])
-        i_repository = treestore.append(None, [_('Repository'), None, '*repository'])
-
-        items = (
-                 [i_internet, _('Browser'), D+'umut_icons/p_browser.png', 'browser'],
-                 [i_internet, _('Email'), D+'umut_icons/p_email.png', 'email'],
-                 [i_internet, _('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
-                 [i_internet, _('Chat'), D+'umut_icons/p_chat.png', 'chat'],
-                 [i_internet, _('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
-                 [i_internet, _('Flash'), D+'sora_icons/p_flash.png', 'flash'],
-                 [i_internet, _('Blog'), D+'umut_icons/p_blog.png', 'blog'],
-                 [i_internet, _('RSS'), D+'sora_icons/p_rss.png', 'rss'],
-                 [i_multimedia, _('Player'), D+'sora_icons/p_player.png', 'player'],
-                 [i_multimedia, _('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
-                 [i_multimedia, _('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
-                 [i_appearance, _('Panel'), D+'sora_icons/p_panel.png', 'panel'],
-                 [i_appearance, _('Theme'), D+'umut_icons/p_theme.png', 'theme'],
-                 [i_appearance, _('Candy'), D+'umut_icons/p_candy.png', 'candy'],
-                 [i_appearance, _('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
-                 [i_science, _('Math'), D+'umut_icons/p_math.png', 'math'],
-                 [i_science, _('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
-                 [i_science, _('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
-                 [i_science, _('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
-                 [i_science, _('Geography'), D+'sora_icons/p_geography.png', 'geography'],
-                 [i_science, _('Biology'), D+'umut_icons/p_biology.png', 'biology'],
-                 [i_science, _('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
-                 [i_programming, _('IDE'), D+'sora_icons/p_ide.png', 'ide'],
-                 [i_programming, _('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
-                 [i_programming, _('Library'), D+'sora_icons/p_library.png', 'library'],
-                 [i_programming, _('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
-                 [i_programming, _('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
-                 [i_programming, _('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
-                 [i_programming, _('Saber'), D+'sora_icons/p_saber.png', 'saber'],
-                 [i_design, _('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
-                 [i_design, _('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
-                 [i_for_gnome, _('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
-                 [i_others, _('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
-                 )
-
-        all_categories = set()
-        for obj in app_objs :
-            all_categories.add(obj.category)
-        for item in items:
-            parent, i1, i2, i3 = item
-            if not i3 in all_categories: continue
-            item = [i1, icon(i2), i3]
-            treestore.append(parent, item)
-        left_categories = set()
-        for row in treestore:
-            assert row[2].startswith('*')
-            left_categories.add(row[2][1:])
-        for item in items:
-            left_categories.add(item[3])
-        for obj in app_objs:
-            if obj.category not in left_categories:
-                print obj.__class__.__name__, 'category is wrong'
-            
+        self.fill_left_treestore()
         self.__left_tree_view_default_select()
-
         self.pack_start(hpaned)
         self.pack_start(bottom_box, False)
         self.show_all()
+
+    def fill_left_treestore(self):
+        items = [
+            [_('All'), None, '*all'],
+            [_('Internet'), None, '*internet'],
+                 [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
+                 [_('Email'), D+'umut_icons/p_email.png', 'email'],
+                 [_('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
+                 [_('Chat'), D+'umut_icons/p_chat.png', 'chat'],
+                 [_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
+                 [_('Flash'), D+'sora_icons/p_flash.png', 'flash'],
+                 [_('Blog'), D+'umut_icons/p_blog.png', 'blog'],
+                 [_('RSS'), D+'sora_icons/p_rss.png', 'rss'],
+            [_('Multimedia'), None, '*multimedia'],
+                 [_('Player'), D+'sora_icons/p_player.png', 'player'],
+                 [_('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
+                 [_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
+            [_('Appearance'), None, '*appearance'],
+                 [_('Panel'), D+'sora_icons/p_panel.png', 'panel'],
+                 [_('Theme'), D+'umut_icons/p_theme.png', 'theme'],
+                 [_('Candy'), D+'umut_icons/p_candy.png', 'candy'],
+                 [_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
+            [_('Science'), None, '*science'],
+                 [_('Math'), D+'umut_icons/p_math.png', 'math'],
+                 [_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
+                 [_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
+                 [_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
+                 [_('Geography'), D+'sora_icons/p_geography.png', 'geography'],
+                 [_('Biology'), D+'umut_icons/p_biology.png', 'biology'],
+                 [_('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
+            [_('Programming'), None, '*programming'],
+                 [_('IDE'), D+'sora_icons/p_ide.png', 'ide'],
+                 [_('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
+                 [_('Library'), D+'sora_icons/p_library.png', 'library'],
+                 [_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
+                 [_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
+                 [_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
+                 [_('Saber'), D+'sora_icons/p_saber.png', 'saber'],
+            [_('Business'), None, '*business'],
+            [_('Design'), None, '*design'],
+                 [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
+                 [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
+            [_('For GNOME'), None, '*for_gnome'],
+                 [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
+            [_('Simulator'), None, '*simulator'],
+            [_('Education'), None, '*education'],
+            [_('Game'), None, '*game'],
+            [_('Anti-virus'), None, '*antivirus'],
+            [_('Others'), None, '*others'],
+                 [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
+            [_('Repository'), None, '*repository'],
+                 ] # end of items
+        class T(list):
+            pass
+        for i, item in enumerate(items):
+            items[i] = T(item)
+        for item in items:
+            category = item[2]
+            item.is_big_class = category.startswith('*')
+        for item in items:
+            if item.is_big_class:
+                last_big_class = item
+                item.parent = None
+            else:
+                item.parent = last_big_class
+        for item in items:
+            category = item[2]
+            if category.startswith('*'): category = category[1:]
+            item.category = category
+        for item in items:
+            item.visible = False
+        all_categories = [obj.category for obj in self.app_objs]
+        for i, item in enumerate(items):
+            item.visible = item.category in all_categories
+            if item.visible and item.parent!=None: item.parent.visible = True
+            
+        for item in items:
+            if item.visible == False: continue
+            i1, i2, i3 = item
+            if item.is_big_class:
+                last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(D+'other_icons/blank.png', 24, 24), i3])
+            else:
+                self.left_treestore.append(last_big_class, [i1, get_pixbuf(i2, 24, 24), i3])
+        
+        right_categories = [item.category for item in items]
+        for obj in self.app_objs:
+            if obj.category not in right_categories:
+                print obj.__class__.__name__, 'category is wrong'
