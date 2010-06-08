@@ -474,31 +474,6 @@ def all_candidate_repositories():
         
     return ret
 
-class RepoConf:
-    @classmethod
-    def load(cls, file_path):
-        assert isinstance(file_path, str) and file_path.endswith('.repo')
-        
-        ret = []
-        
-        currentobj = None
-        with open(file_path) as f:
-            for line in f:
-                line = line.strip()
-                if line.startswith('[') and line.endswith(']'): # this is the beginning of a repository
-                    currentobj = RepoConf()
-                    currentobj.file_path = file_path
-                    ret.append(currentobj)
-                    name = line[1:-1]
-                    currentobj.name = name
-                elif '=' in line: # this is a configuration
-                    key, value = line.split('=', 1)
-                    
-    def __init__(self):
-        self.name = None
-        self.file_path = None
-
-
 class FedoraReposSection:
     def __init__(self, lines):
         for line in lines: assert isinstance(line, str) and line.endswith('\n')
