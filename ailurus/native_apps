@@ -498,6 +498,10 @@ category = file_sharing
 fedora = giver
 ubuntu = giver
 
+[Glade]
+category = ide
+ubuntu = glade
+
 [GIMP]
 category = drawing
 fedora = gimp
