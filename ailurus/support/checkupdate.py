@@ -284,4 +284,56 @@ def show_special_thank_dialog():
 
 def show_changelog():
     with open(D+'/../ChangeLog') as f:
-        show_text_window(_('Ailurus changelog'), f.read())
+        lines = f.readlines()
+    import gtk, pango, re
+    buffer = gtk.TextBuffer()
+    buffer.create_tag('feature', font='DejaVu Serif')
+    buffer.create_tag('date', scale=pango.SCALE_SMALL, foreground='purple')
+    buffer.create_tag('contributor', weight=pango.WEIGHT_BOLD)
+    buffer.create_tag('email', scale=pango.SCALE_SMALL, foreground='blue')
+    pattern = re.compile(r'(\S+) ([^<]+)(<[^>]+>)')
+    end = buffer.get_end_iter()
+    for line in lines:
+        if line.strip() == '': # do not display blank line
+            pass
+        elif line.startswith('2'): # this is a line consists of date, contributor, email
+            match = pattern.match(line)
+            if not match:
+                print 'not match:', line
+            else:
+                date = match.group(1)
+                contributor = match.group(2).strip()
+                email = match.group(3)
+                buffer.insert_with_tags_by_name(end, date, 'date')
+                buffer.insert(end, ' ')
+                buffer.insert_with_tags_by_name(end, contributor, 'contributor')
+                buffer.insert(end, ' ')
+                buffer.insert_with_tags_by_name(end, email, 'email')
+                buffer.insert(end, '\n')
+        elif line.startswith('\t') or line.startswith(' '): # this is a line of feature description
+            buffer.insert_with_tags_by_name(end, line, 'feature')
+    textview = gtk.TextView()
+    textview.set_buffer(buffer)
+    textview.set_editable(False)
+    textview.set_cursor_visible(False)
+    textview.set_wrap_mode(gtk.WRAP_WORD)
+    gray_bg(textview)
+    scroll = gtk.ScrolledWindow()
+    scroll.add(textview)
+    scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+    scroll.set_shadow_type(gtk.SHADOW_IN)
+    close_button = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    close_button.connect('clicked', lambda *w: window.destroy())
+    buttonbox = gtk.HBox(False, 10)
+    buttonbox.pack_end(close_button, False)
+    vbox = gtk.VBox(False, 10)
+    vbox.pack_start(scroll)
+    vbox.pack_start(buttonbox, False)
+
+    window = gtk.Window()
+    window.set_title(_('Ailurus changelog'))
+    window.add(vbox)
+    window.set_default_size(600, 400)
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.show_all()

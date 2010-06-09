@@ -684,8 +684,8 @@ def run_as_root_in_terminal(command):
 
 class RPM:
     fresh_cache = False
-    __set1 = set()
-    __set2 = set()
+    __set1 = set() # __set1 consists of all installed software
+    __set2 = set() # __set2 = __set1 + all available software
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -703,11 +703,11 @@ class RPM:
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing.py'
+        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
-            stderr=subprocess.PIPE, # must be stderr
+            stdout=subprocess.PIPE,
             )
-        for line in task.stderr: # must be stderr
+        for line in task.stdout:
             cls.__set2.add(line.strip())
         task.wait()
     @classmethod
@@ -751,8 +751,8 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    __set1 = set()
-    __set2 = set()
+    __set1 = set() # __set1 consists of all installed software
+    __set2 = set() # __set2 = __set1 + all available software
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -760,8 +760,6 @@ class APT:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__set1
-        del cls.__set2
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
@@ -1282,7 +1280,7 @@ class firefox:
         cls.prefs_js_line_pattern = re.compile(r'''^user_pref\( # begin
             (['"][^'"]+['"]) # key
             ,\s
-            ([^)]+) # value
+            (.+) # value
             \); # end ''', re.VERBOSE)
         cls.load_user_prefs()
         cls.support = True
@@ -1729,15 +1727,108 @@ def window_manager_name():
             pass
     return name
 
+class FedoraReposSection:
+    def __init__(self, lines):
+        for line in lines: assert isinstance(line, str) and line.endswith('\n')
+        assert lines[0].startswith('['), lines
+        
+        self.name = lines[0].strip()[1:-1]
+        self.lines = lines
+
+    def is_fedora_repos(self):
+        for line in self.lines:
+            if line.startswith('gpgkey=') and 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch' in line:
+                return True
+        return False
+
+    def part2_of(self, line):
+        for word in ['/releases/', '/development/', '/updates/']:
+            pos = line.find(word)
+            if pos != -1:
+                return line[pos:]
+        else:
+            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
+
+    def comment_line(self, i):
+        if not self.lines[i].startswith('#'):
+            self.lines[i] = '#' + self.lines[i] 
+
+    def uncomment_line(self, i):
+        if self.lines[i].startswith('#'):
+            self.lines[i] = self.lines[i][1:] 
+
+    def change_baseurl(self, new_url):
+        for i, line in enumerate(self.lines):
+            if 'mirrorlist=' in line:
+                self.comment_line(i)
+            elif 'baseurl=' in line:
+                self.uncomment_line(i)
+        for i, line in enumerate(self.lines):
+            if line.startswith('baseurl='):
+                self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
+
+    def write_to_stream(self, stream):
+        stream.writelines(self.lines)
+    
+    def enabled(self):
+        return 'enabled=1\n' in self.lines
+
+class FedoraReposFile:
+    def __init__(self, path):
+        assert isinstance(path, str) and path.endswith('.repo')
+
+        self.path = path
+
+        self.sections = []
+        with open(path) as f:
+            contents = f.readlines()
+        while contents[0].startswith('#') or contents[0].strip() == '': # skip comments and blank lines at the beginning
+            del contents[0]
+        lines = []
+        for line in contents:
+            if line.startswith('[') and lines:
+                section = FedoraReposSection(lines)
+                self.sections.append(section)
+                lines = []
+            lines.append(line)
+        section = FedoraReposSection(lines)
+        self.sections.append(section)
+
+    def change_baseurl(self, new_url):
+        changed = False
+        for section in self.sections:
+            if section.is_fedora_repos():
+                section.change_baseurl(new_url)
+                changed = True
+
+        if not changed: return
+        with TempOwn(self.path) as o:
+            with open(self.path, 'w') as f:
+                for section in self.sections:
+                    section.write_to_stream(f)
+
+    @classmethod
+    def all_repo_paths(cls):
+        import glob
+        return glob.glob('/etc/yum.repos.d/*.repo')
+
+    @classmethod
+    def all_repo_objects(cls):
+        ret = []
+        for path in cls.all_repo_paths():
+            obj = FedoraReposFile(path)
+            ret.append(obj)
+        return ret
+
 def get_ailurus_version():
     import os
-    path = os.path.dirname(__file__) + '/version'
+    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
     with open(path) as f:
         return f.read().strip()
     
 def get_ailurus_release_date():
     import os, time
-    path = os.path.dirname(__file__) + '/version'
+    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
