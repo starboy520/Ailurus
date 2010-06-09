@@ -1,3 +1,7 @@
+2010-06-08 Homer Xing <homer.xing@gmail.com>
+
+    * Improve RPM backend efficiency
+
 2010-06-07 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: newline appears in menuitems of default pane

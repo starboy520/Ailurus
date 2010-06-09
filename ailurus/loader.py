@@ -90,8 +90,8 @@ def load_app_from_file():
                 else:
                     dict[ops] = value
             
-            assert hasattr(strings, secs+'_0')
-            assert hasattr(strings, secs+'_1')
+            assert hasattr(strings, secs+'_0'), secs
+            assert hasattr(strings, secs+'_1'), secs
             dict['__doc__'] = getattr(strings, secs + '_0')
             if dict['__doc__'] == 'FIXME' : dict['__doc__'] =''
             dict['detail'] = getattr(strings, secs + '_1')
@@ -334,3 +334,19 @@ def load_cure_objs():
                 print_traceback()
     
     return objs
+
+if __name__ == '__main__':
+    APT.get_existing_pkgs_set()
+    
+    import time
+    begin = time.time()
+    load_app_objs()
+    print time.time() - begin
+    
+    begin = time.time()
+    load_custom_app_objs()
+    print time.time() - begin
+    
+    begin = time.time()
+    load_app_from_file()
+    print time.time() - begin
