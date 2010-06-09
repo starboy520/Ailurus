@@ -826,13 +826,13 @@ class InstallRemovePane(gtk.VBox):
                  [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
                  [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
             [_('For GNOME'), None, '*for_gnome'],
-                 [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
+            [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', '*nautilus_extension'],
             [_('Simulator'), None, '*simulator'],
             [_('Education'), None, '*education'],
             [_('Game'), None, '*game'],
             [_('Anti-virus'), None, '*antivirus'],
             [_('Others'), None, '*others'],
-                 [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
+            [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', '*establish_a_server'],
             [_('Repository'), None, '*repository'],
                  ] # end of items
         class T(list):
@@ -858,6 +858,8 @@ class InstallRemovePane(gtk.VBox):
         for i, item in enumerate(items):
             item.visible = item.category in all_categories
             if item.visible and item.parent!=None: item.parent.visible = True
+        assert items[0].category == 'all'
+        items[0].visible = True
             
         for item in items:
             if item.visible == False: continue
