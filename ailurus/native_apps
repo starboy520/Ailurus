@@ -486,13 +486,6 @@ license = GPL
 ubuntu = liferea
 archlinux = liferea
 
-[Nautilus_Search_Tool]
-category = nautilus_extension
-fedora = nautilus-search-tool
-license = GPL
-DE = gnome
-ubuntu = FIXME
-
 [Emacs]
 category = saber
 fedora = emacs
