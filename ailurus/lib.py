@@ -1823,13 +1823,13 @@ class FedoraReposFile:
 
 def get_ailurus_version():
     import os
-    path = os.path.dirname(__file__) + '/version'
+    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
     with open(path) as f:
         return f.read().strip()
     
 def get_ailurus_release_date():
     import os, time
-    path = os.path.dirname(__file__) + '/version'
+    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
