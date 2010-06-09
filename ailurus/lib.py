@@ -1282,7 +1282,7 @@ class firefox:
         cls.prefs_js_line_pattern = re.compile(r'''^user_pref\( # begin
             (['"][^'"]+['"]) # key
             ,\s
-            ([^)]+) # value
+            (.+) # value
             \); # end ''', re.VERBOSE)
         cls.load_user_prefs()
         cls.support = True
