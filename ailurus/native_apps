@@ -267,7 +267,7 @@ license = GPL
 ubuntu = simple-ccsm
 archlinux = ccsm
 
-[Bluetooth]
+[Bluez]
 category = others
 fedora = bluez-alsa bluez-cups bluez-gstreamer pybluez gnome-bluetooth gnome-phone-manager
 license = GPL
