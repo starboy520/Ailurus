@@ -684,8 +684,8 @@ def run_as_root_in_terminal(command):
 
 class RPM:
     fresh_cache = False
-    __set1 = set()
-    __set2 = set()
+    __set1 = set() # __set1 consists of all installed software
+    __set2 = set() # __set2 = __set1 + all available software
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -751,8 +751,8 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    __set1 = set()
-    __set2 = set()
+    __set1 = set() # __set1 consists of all installed software
+    __set2 = set() # __set2 = __set1 + all available software
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -760,8 +760,6 @@ class APT:
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
-        del cls.__set1
-        del cls.__set2
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
