@@ -384,18 +384,19 @@ class InstallRemovePane(gtk.VBox):
         markup = StringIO.StringIO()
         print >>markup, '<b>%s</b>' % obj.__doc__,
         if obj.detail:
-            detail = obj.detail.split('\n', 1)[0]
+#            detail = obj.detail.split('\n', 1)[0]
             print >>markup, ''
-            print >>markup, detail,
+            print >>markup, obj.detail,
+        if obj.how_to_install:
+            print >>markup, ''
+            print >>markup, '<small><span color="#8A00C2">%s</span></small>' % obj.how_to_install,
         cell.set_property('markup', markup.getvalue())
         cell.set_property('strikethrough', 
                           obj.cache_installed==True and obj.showed_in_toggle==False )
         if obj.cache_installed==False and obj.showed_in_toggle==True :
             cell.set_property('scale', 1.2)
-#            cell.set_property ( 'underline', True )
         else :
             cell.set_property('scale', 1)
-#            cell.set_property ( 'underline', False )
 
     def __right_pane_changed(self, treeselection, treeview):
         ( store, pathlist ) = treeselection.get_selected_rows ()
@@ -623,11 +624,11 @@ class InstallRemovePane(gtk.VBox):
         box2.pack_start(align , False, False)
         box2.pack_start(scroll_d, True, True, 5)
 
-        self.vpaned = vpaned = gtk.VPaned()
-        vpaned.pack1(scroll, True, False)
-        vpaned.pack2(box2, False, False)
+#        self.vpaned = vpaned = gtk.VPaned()
+#        vpaned.pack1(scroll, True, False)
+#        vpaned.pack2(box2, False, False)
 
-        return vpaned 
+        return scroll
 
     def __search_content_changed(self, widget, text, option):
         self.filter_text = text
@@ -826,13 +827,13 @@ class InstallRemovePane(gtk.VBox):
                  [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
                  [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
             [_('For GNOME'), None, '*for_gnome'],
-                 [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'],
+            [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', '*nautilus_extension'],
             [_('Simulator'), None, '*simulator'],
             [_('Education'), None, '*education'],
             [_('Game'), None, '*game'],
             [_('Anti-virus'), None, '*antivirus'],
             [_('Others'), None, '*others'],
-                 [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'],
+            [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', '*establish_a_server'],
             [_('Repository'), None, '*repository'],
                  ] # end of items
         class T(list):
@@ -858,6 +859,8 @@ class InstallRemovePane(gtk.VBox):
         for i, item in enumerate(items):
             item.visible = item.category in all_categories
             if item.visible and item.parent!=None: item.parent.visible = True
+        assert items[0].category == 'all'
+        items[0].visible = True
             
         for item in items:
             if item.visible == False: continue

@@ -90,8 +90,8 @@ def load_app_from_file():
                 else:
                     dict[ops] = value
             
-            assert hasattr(strings, secs+'_0')
-            assert hasattr(strings, secs+'_1')
+            assert hasattr(strings, secs+'_0'), secs
+            assert hasattr(strings, secs+'_1'), secs
             dict['__doc__'] = getattr(strings, secs + '_0')
             if dict['__doc__'] == 'FIXME' : dict['__doc__'] =''
             dict['detail'] = getattr(strings, secs + '_1')
@@ -106,10 +106,7 @@ def load_app_from_file():
             if not hasattr(obj, 'category'): obj.category = 'others'
             if hasattr(obj, 'visible') and not obj.visible():continue
             obj.self_check()
-            if hasattr(obj, 'installation_command'):
-                if obj.detail and not obj.detail.endswith('\n'):
-                    obj.detail += '\n'
-                obj.detail += obj.installation_command()
+            obj.fill()
                 
             obj.cache_installed = obj.installed()
             if not isinstance(obj.cache_installed, bool):
@@ -145,10 +142,7 @@ def load_app_objs():
                 app_class_obj.self_check()
                 if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
-                if hasattr(app_class_obj, 'installation_command'):
-                    if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
-                        app_class_obj.detail += '\n'
-                    app_class_obj.detail += app_class_obj.installation_command()
+                app_class_obj.fill()
                 app_class_obj.cache_installed = app_class_obj.installed()
                 if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'

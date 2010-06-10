@@ -31,8 +31,11 @@ def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
 
 class I:
     this_is_an_installer = True
+    how_to_install = ''
     def self_check(self):
-        'Check errors in source code'
+        'check errors in source code'
+    def fill(self):
+        'fill self.detail, self.how_to_install'
     def install(self):
         raise NotImplementedError
     def installed(self):
@@ -1376,8 +1379,7 @@ class firefox:
     def get_pref(cls, key):
         'key should be native python string. return native python constant'
         assert isinstance(key, (str, unicode))
-        if key in cls.key2value: return cls.key2value[key]
-        else: return ''
+        return cls.key2value[key]
     @classmethod
     def set_pref(cls, key, value):
         'value should be native python variable'
@@ -1409,13 +1411,12 @@ def delay_notify_firefox_restart(show_notify=False):
             delay_notify_firefox_restart.should_show = False
             try:
                 string = get_output('ps -a -u $USER | grep firefox', True)
-                if string!='':
-                    notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
+                if string:
+                    notify(_('Please restart Firefox'), _('Please restart Firefox to complete installation.'))
                 else:
                     KillWhenExit.add('firefox')
             except:
                 print_traceback()
-                notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
 
 def sha1(path):
     is_string_not_empty(path)
@@ -1843,9 +1844,6 @@ Config.init()
 
 install_locale()
 
-try: firefox.init()
-except: print_traceback()
-
 GPL = _('GNU General Public License')
 LGPL = _('GNU Lesser General Public License')
 EPL = _('Eclipse Public License')
@@ -1859,7 +1857,11 @@ AL = _('Artistic License')
 import atexit
 atexit.register(ResponseTime.save)
 atexit.register(KillWhenExit.kill_all)
-atexit.register(drop_priviledge) 
+atexit.register(drop_priviledge)
+try:
+    firefox.init()
+    atexit.register(firefox.save_user_prefs)
+except: print_traceback()
 
 try:
     import pynotify
