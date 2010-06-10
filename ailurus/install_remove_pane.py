@@ -384,9 +384,9 @@ class InstallRemovePane(gtk.VBox):
         markup = StringIO.StringIO()
         print >>markup, '<b>%s</b>' % obj.__doc__,
         if obj.detail:
-            detail = obj.detail.split('\n', 1)[0]
+#            detail = obj.detail.split('\n', 1)[0]
             print >>markup, ''
-            print >>markup, detail,
+            print >>markup, obj.detail,
         if obj.how_to_install:
             print >>markup, ''
             print >>markup, '<small>%s</small>' % obj.how_to_install,
@@ -624,11 +624,11 @@ class InstallRemovePane(gtk.VBox):
         box2.pack_start(align , False, False)
         box2.pack_start(scroll_d, True, True, 5)
 
-        self.vpaned = vpaned = gtk.VPaned()
-        vpaned.pack1(scroll, True, False)
-        vpaned.pack2(box2, False, False)
+#        self.vpaned = vpaned = gtk.VPaned()
+#        vpaned.pack1(scroll, True, False)
+#        vpaned.pack2(box2, False, False)
 
-        return vpaned 
+        return scroll
 
     def __search_content_changed(self, widget, text, option):
         self.filter_text = text

@@ -127,9 +127,8 @@ class _launchpad(I):
         import StringIO
         msg = StringIO.StringIO()
         if hasattr(self, 'desc'): print >>msg, self.desc
-        print >>msg, _('Command:'), 'add-apt-repository ppa:%s' % self.ppa
         print >>msg, _('Web page:'), 'http://launchpad.net/~%s/+archive/%s' % (self.ppa_owner, self.ppa_name)
-        print >>msg, _('Source setting:'), self.deb_config
+        print >>msg, _('Source setting:'), self.deb_config,
         self.__class__.detail = msg.getvalue()
     def install(self):
         APTSource2.add_lines_to_file([self.deb_config], self.repos_file_name)
