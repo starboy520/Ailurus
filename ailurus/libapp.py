@@ -300,8 +300,7 @@ def latest(id): # used in all subclasses of _ff_extension, to construct download
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
-    ext_path = None
-    def __init__(self):
+    def self_check(self):
         assert self.name, 'No %s.name'%self.__class__.__name__
         assert isinstance(self.name, unicode)
         assert self.R, 'No %s.R'%self.__class__.__name__
@@ -309,6 +308,8 @@ class _ff_extension(I):
         assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
         assert isinstance(self.desc, unicode) or isinstance(self.desc, str) 
         assert isinstance(self.download_url, str)
+    def __init__(self):
+        self.self_check()
         import StringIO
         text = StringIO.StringIO()
         if self.desc:
