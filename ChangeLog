@@ -1,3 +1,7 @@
+2010-06-10 Ray Chen <chenrano2002@gmail.com>
+
+    * Always download latest Firefox extensions
+
 2010-06-08 Homer Xing <homer.xing@gmail.com>
 
     * Improve RPM backend efficiency

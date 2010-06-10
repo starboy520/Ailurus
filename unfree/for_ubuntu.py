@@ -185,8 +185,7 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
         self.range = '0.9~3.7'
         self.name = u'JavaScript Debugger'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/216/javascript_debugger-0.9.87.4-fx+tb+sb+sm.xpi'],
-                      217578,'3369de2b98b747c4d1c79803819b2d727b9083f6')
+        self.R = R(latest(216), filename='javascript_debugger.xpi')
         _ff_extension.__init__(self)
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
@@ -197,8 +196,7 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
         self.range = '3.0.*~3.7.*'
         self.name = u'MacOSX Theme'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7172/macosx_theme-0.6.8-fx.jar'],
-    689344, '4b58d1c49ae123e50a76cb41bc6a1162d1bcaaf8')
+        self.R = R(latest(7172), filename='macosx_theme.jar')
         _ff_extension.__init__(self)
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
@@ -209,8 +207,7 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
         self.range = '2.0~3.7'
         self.name = u'NetVideoHunter'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7447/netvideohunter-0.4.3-fx.xpi'],
-                    44541, '3d47e726587743758097a069358ed306df63bc3a')
+        self.R = R(latest(7447), filename='netvideohunter.xpi')
         _ff_extension.__init__(self)
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
@@ -221,8 +218,7 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
         self.range = '3.0~3.6.*'
         self.name = u'Personas'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
-    275501, 'ac6de4e93270e0650fc06a88cf5fe639e8a879fb')
+        self.R = R(latest(10900), filename='personas.xpi')
         _ff_extension.__init__(self)
         
 class GoogleEarth(I):

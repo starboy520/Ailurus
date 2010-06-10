@@ -26,7 +26,7 @@ from lib import *
 __all__ = ['_set_gconf', '_apt_install', '_path_lists', 
            '_ff_extension', '_download_one_file', '_rpm_install', 'N',
            'create_eclipse_icon', 'install_eclipse_extension_message',
-           'remove_eclipse_extesion_message', ]
+           'remove_eclipse_extesion_message', 'latest']
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -293,6 +293,9 @@ class _path_lists(I):
         not_exist = [p for p in self.paths if not os.path.exists(p)]
         if not_exist:
             print >>f, _('Because "%s" does not exist.')%' '.join(not_exist),
+
+def latest(id): # used in all subclasses of _ff_extension, to construct download url. id is the number of firefox extension.
+    return 'https://addons.mozilla.org/en-US/firefox/downloads/latest/%s' % id
 
 class _ff_extension(I):
     'Firefox Extension'

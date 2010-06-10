@@ -208,8 +208,7 @@ class FFAdblock(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
         self.range = '3.0.9~3.7'
         self.name = u'Adblock Plus'
-        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/1865/adblock_plus-1.1.1-fx+sm+tb.xpi'],
-    297455, 'e95e558d65759a078935c61b4f937f1dcb31527d')
+        self.R = R(latest(1865), filename='adblock_plus.xpi')
         _ff_extension.__init__(self)
 
 class FFAutoProxy(_ff_extension):
@@ -221,32 +220,18 @@ class FFAutoProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
         self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/11009/autoproxy-0.3b4.0+.2009110800-fx+sm+tb.xpi'],
-    108858, '03f7b46e5a042491dffc08022360cb4ba7efc9d1')
+        self.R = R(latest(11009), filename='autoproxy.xpi')
         _ff_extension.__init__(self)
 
-class FFChromeTheme_3_0(_ff_extension):
-    __doc__ = _('Chrome Theme for Firefox 3.0.*')
+class FFChromifox(_ff_extension): 
+    __doc__ = _('Chromifox: Chrome theme')
     license = TRI_LICENSE(MPL, GPL, LGPL)
     def __init__(self):
-        self.desc = _('A coat of Chrome for Firefox 3.0.*')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
-        self.range = '3.0.*'
-        self.name = u'Chromifox'
-        self.R = R(['https://addons.mozilla.org/en-US/firefox/downloads/file/37478/chromifox-1.0-fx.jar'],
-    1290316, '7ee2366a8efad2e94936871eed7a7e93feb0c238')
-        _ff_extension.__init__(self)
-
-class FFChromeTheme_3_5(_ff_extension): 
-    __doc__ = _('Chrome Theme for Firefox 3.5.*')
-    license = TRI_LICENSE(MPL, GPL, LGPL)
-    def __init__(self):
-        self.desc = _('A coat of Chrome for Firefox 3.5.*')
+        self.desc = _('A coat of Chrome for Firefox')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
         self.range = '3.5.*'
         self.name = u'Chromifox Basic'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/8782/chromifox_basic-1.1.3-fx.jar'],
-    1358662, '88e277d849021d8ee91dcbf40ccc8ecd8fe1138c')
+        self.R = R(latest(8782), filename='chromifox_basic.jar')
         _ff_extension.__init__(self)
 
 class FFCleanHide(_ff_extension):
@@ -257,8 +242,7 @@ class FFCleanHide(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
         self.range = '1.5~3.5'
         self.name = u'CleanHide'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/3648/cleanhide-1.1.0-fx+mz.xpi'],
-    22341, '25812c05a1a2d944151654f9982974853c052b1e')
+        self.R = R(latest(3648), filename='cleanhide.xpi')
         _ff_extension.__init__(self)
 
 class FFDownloadStatusBar(_ff_extension): 
@@ -269,8 +253,7 @@ class FFDownloadStatusBar(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
         self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/26/download_statusbar-0.9.6.5-fx.xpi'],
-    455756, '4d47871f71877853c6194bf559f699db33f36ee1')
+        self.R = R(latest(26), filename='download_statusbar.xpi')
         _ff_extension.__init__(self)
 
 class FFDownThemAll(_ff_extension):
@@ -281,8 +264,7 @@ class FFDownThemAll(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
         self.range = '3.0~3.6'
         self.name = u'DownThemAll!'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/201/downthemall!-1.1.7-fx+tb+sm.xpi'],
-    543251, 'e8ec30863e5e42de87128ce269a2af2a60bcb4b1')
+        self.R = R(latest(201), filename='downthemall.xpi')
         _ff_extension.__init__(self)
 
 class FFEasyDragToGo(_ff_extension):
@@ -293,8 +275,7 @@ class FFEasyDragToGo(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
         self.range = '2.0~3.6'
         self.name = u'Easy DragToGo'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6639/easy_dragtogo-1.1.2.4-fx.xpi'],
-    31537, '580bc24dc0b1ecd4dbddb001db0a7cad829d2f63')
+        self.R = R(latest(6639), filename='easy_dragtogo.xpi')
         _ff_extension.__init__(self)
 
 class FFFireBug(_ff_extension):
@@ -306,8 +287,7 @@ class FFFireBug(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
         self.range = '3.0~3.6'
         self.name = u'Firebug'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/1843/firebug-1.4.5-fx.xpi'],
-                     695194,'aded0b0b673aec35bf5e56861e2aa8edf75d0375')
+        self.R = R(latest(1843), filename='firebug.xpi')
         _ff_extension.__init__(self)
 
 class FFFireGesture(_ff_extension):
@@ -318,8 +298,7 @@ class FFFireGesture(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
         self.range = '3.0~3.7'
         self.name = u'FireGestures'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/6366/firegestures-1.5.5.1-fx.xpi'],
-    70977, 'fce7abe465349cc34f36e8750fe7ad5b3441a8e9')
+        self.R = R(latest(6366), filename='firegestures.xpi')
         _ff_extension.__init__(self)
 
 class FFFlashgot(_ff_extension):
@@ -330,8 +309,7 @@ class FFFlashgot(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
         self.range = '1.5~3.7'
         self.name = u'Flashgot'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/220/flashgot-1.2.1.08-fx+mz+sm+tb.xpi'],
-                 324682 ,'d5660b2cde7045dce582051480a133c57e0ca75a')
+        self.R = R(latest(220), filename='flashgot.xpi')
         _ff_extension.__init__(self)
 
 class FFFoxyProxy(_ff_extension):
@@ -342,8 +320,7 @@ class FFFoxyProxy(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
         self.range = '3.0~3.7'
         self.name = u'FoxyProxy Standard'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/2464/foxyproxy_standard-2.15-fx+sm+tb.xpi'],
-    578121, 'd839747995e9d0b1cc6b2c445b754687daed520a')
+        self.R = R(latest(2464), filename='foxyproxy_standard.xpi')
         _ff_extension.__init__(self)
 
 class FFGreaseMonkey(_ff_extension):
@@ -357,8 +334,7 @@ class FFGreaseMonkey(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/748'
         self.range = '1.5~3.5.*'
         self.name = u'Greasemonkey'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/748/greasemonkey-0.8.20090920.2-fx.xpi'],
-    143260, '0f1c48493e3b52a48e9b55db054a2022c46a8d08')
+        self.R = R(latest(748), filename='greasemonke.xpi')
         _ff_extension.__init__(self)
 
 class FFLiveHTTPHeaders(_ff_extension):
@@ -370,8 +346,7 @@ class FFLiveHTTPHeaders(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
         self.range = '0.8~3.5.* '
         self.name = u'Live HTTP Headers'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/3829/live_http_headers-0.15-fx+sm.xpi',],
-                     108354,'d6cb0b4ca29c998247f03a34d786ec61f052fb44')
+        self.R = R(latest(3829), filename='live_http_headers.xpi')
         _ff_extension.__init__(self)
 
 class FFNoscript(_ff_extension):
@@ -383,8 +358,7 @@ class FFNoscript(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/722'
         self.range = '1.5~3.7'
         self.name = u'NoScript'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/722/noscript-1.9.9.27-fx+sm+fn.xpi'],
-                   457099, '7d7fa86b8a927531c5a1ff793b2a0ae39d6a8773')
+        self.R = R(latest(722), filename='noscript.xpi')
         _ff_extension.__init__(self)    
 
 class FFRadioGet(_ff_extension):
@@ -410,8 +384,7 @@ class FFSeoQuake(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
         self.range = '2.0~3.6.*'
         self.name = u'SeoQuake'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/3036/seoquake-2.5.9-fx.xpi',],
-                     222226,'b52c18a1607cafa70243226c8861c8d9a7591d48')
+        self.R = R(latest(3036), filename='seoquake.xpi')
         _ff_extension.__init__(self)
 
 class FFStylish(_ff_extension):
@@ -422,7 +395,7 @@ class FFStylish(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2108'
         self.range = '3.0~3.7'
         self.name = u'Stylish'
-        self.R = R(['http://addons.mozilla.org/en-US/firefox/downloads/latest/2108/addon-2108-latest.xpi'])
+        self.R = R(latest(2108), filename='stylish.xpi')
         _ff_extension.__init__(self)
 
 class FFTamperData(_ff_extension):
@@ -434,8 +407,7 @@ class FFTamperData(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
         self.name = u'Tamper Data'
         self.range = '2.0~3.5.*'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/966/tamper_data-10.1.0-fx.xpi',],
-                     84175,'09027a308cdc23e7c245896b331e9d6f859107d1')
+        self.R = R(latest(966), filename='tamper_data.xpi')
         _ff_extension.__init__(self)
 
 class FFUserAgentSwitcher(_ff_extension):
@@ -446,8 +418,7 @@ class FFUserAgentSwitcher(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59'
         self.range = '1.0~3.6.*'
         self.name = u'User Agent Switcher'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/59/user_agent_switcher-0.7.2-fx+sm.xpi',],
-                      38477,'fa4c7dcf9751e3239b14c2c441bb85e83450c678')
+        self.R = R(latest(59), filename='user_agent_switcher.xpi')
         _ff_extension.__init__(self)
 
 class FFViewSourceChart(_ff_extension):
@@ -459,8 +430,7 @@ class FFViewSourceChart(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
         self.range = '1.0~3.6.*'
         self.name = u'View Source Chart'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/655/view_source_chart-2.7-fx.xpi',],
-                      29360,'6b7e07b806e2a8158cad85413bb50d28e4680755')
+        self.R = R(latest(655), filename='view_source_chart.xpi')
         _ff_extension.__init__(self)
 
 class FFFirefoxSync(_ff_extension):
@@ -471,7 +441,7 @@ class FFFirefoxSync(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
         self.range = '3.5~3.7'
         self.name = u'Weave'
-        self.R = R(['http://ftp.mozilla.org/pub/mozilla.org/addons/10868/firefox_sync-1.3-fx+fn+sm.xpi'])
+        self.R = R(latest(10868), filename='firefox_sync.xpi')
         _ff_extension.__init__(self)
 
 class FFWebDeveloper(_ff_extension):
@@ -483,8 +453,7 @@ class FFWebDeveloper(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
         self.range = '1.0~3.6.*'
         self.name = u'Web Developer'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/60/web_developer-1.1.8-fx+sm.xpi',],
-                        408412,'acd5e3e05a903f3e4c899a53a5db32cf2977ce1a')
+        self.R = R(latest(60), filename='web_developer.xpi')
         _ff_extension.__init__(self)
 
 class FFYetAnotherSmoothScrolling(_ff_extension):
@@ -495,8 +464,7 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
         self.range = '1.5~3.6.*'
         self.name = u'Yet Another Smooth Scrolling'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5846/yet_another_smooth_scrolling-2.0.25-fx.xpi'],
-                    31014, '6fdcb60292a4103d7e83f79a5ccd5b480d341a3f')
+        self.R = R(latest(5846), filename='yet_another_smooth_scrolling.xpi')
         _ff_extension.__init__(self)
 
 class FFYSlow(_ff_extension):
@@ -508,6 +476,5 @@ class FFYSlow(_ff_extension):
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
         self.range = '2.0~3.5.*'
         self.name = u'YSlow'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
-                     215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
+        self.R = R(latest(5369), 'yslow.xpi')
         _ff_extension.__init__(self)
