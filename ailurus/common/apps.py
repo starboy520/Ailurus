@@ -206,7 +206,6 @@ class FFAdblock(_ff_extension):
     def __init__(self):
         self.desc = _('It is able to block 99% ads and banners.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
-        self.range = '3.0.9~3.7'
         self.name = u'Adblock Plus'
         self.R = R(latest(1865), filename='adblock_plus.xpi')
         _ff_extension.__init__(self)
@@ -218,7 +217,6 @@ class FFAutoProxy(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
-        self.range = '3.0.9~3.7'
         self.name = u'AutoProxy'
         self.R = R(latest(11009), filename='autoproxy.xpi')
         _ff_extension.__init__(self)
@@ -229,7 +227,6 @@ class FFChromifox(_ff_extension):
     def __init__(self):
         self.desc = _('A coat of Chrome for Firefox')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
-        self.range = '3.5.*'
         self.name = u'Chromifox Basic'
         self.R = R(latest(8782), filename='chromifox_basic.jar')
         _ff_extension.__init__(self)
@@ -240,7 +237,6 @@ class FFCleanHide(_ff_extension):
     def __init__(self):
         self.desc = _('If you find that some web page use hidden text and you cannot copy text easily, try this!')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
-        self.range = '1.5~3.5'
         self.name = u'CleanHide'
         self.R = R(latest(3648), filename='cleanhide.xpi')
         _ff_extension.__init__(self)
@@ -251,7 +247,6 @@ class FFDownloadStatusBar(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
-        self.range = '3.0~3.7'
         self.name = u'Download Statusbar'
         self.R = R(latest(26), filename='download_statusbar.xpi')
         _ff_extension.__init__(self)
@@ -262,7 +257,6 @@ class FFDownThemAll(_ff_extension):
     def __init__(self):
         self.desc = _('It is able to download all images on web-pages.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
-        self.range = '3.0~3.6'
         self.name = u'DownThemAll!'
         self.R = R(latest(201), filename='downthemall.xpi')
         _ff_extension.__init__(self)
@@ -273,7 +267,6 @@ class FFEasyDragToGo(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
-        self.range = '2.0~3.6'
         self.name = u'Easy DragToGo'
         self.R = R(latest(6639), filename='easy_dragtogo.xpi')
         _ff_extension.__init__(self)
@@ -285,7 +278,6 @@ class FFFireBug(_ff_extension):
     def __init__(self):
         self.desc = _('This is a powerful web development tool.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
-        self.range = '3.0~3.6'
         self.name = u'Firebug'
         self.R = R(latest(1843), filename='firebug.xpi')
         _ff_extension.__init__(self)
@@ -296,7 +288,6 @@ class FFFireGesture(_ff_extension):
     def __init__(self):
         self.desc = _('It supports five kinds of mouse gestures.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
-        self.range = '3.0~3.7'
         self.name = u'FireGestures'
         self.R = R(latest(6366), filename='firegestures.xpi')
         _ff_extension.__init__(self)
@@ -307,7 +298,6 @@ class FFFlashgot(_ff_extension):
     def __init__(self):
         self.desc = _("It is able to download all the links, movies and audio clips of a page with a single click.")
         self.download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
-        self.range = '1.5~3.7'
         self.name = u'Flashgot'
         self.R = R(latest(220), filename='flashgot.xpi')
         _ff_extension.__init__(self)
@@ -318,7 +308,6 @@ class FFFoxyProxy(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
-        self.range = '3.0~3.7'
         self.name = u'FoxyProxy Standard'
         self.R = R(latest(2464), filename='foxyproxy_standard.xpi')
         _ff_extension.__init__(self)
@@ -332,7 +321,6 @@ class FFGreaseMonkey(_ff_extension):
               'check out http://wiki.greasespot.net/ to get started to write your own scripts. '
               'The book "Dive into Greasemonkey" is worth reading. It can be downloaded freely from http://diveintogreasemonkey.org/ .' )
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/748'
-        self.range = '1.5~3.5.*'
         self.name = u'Greasemonkey'
         self.R = R(latest(748), filename='greasemonke.xpi')
         _ff_extension.__init__(self)
@@ -344,7 +332,6 @@ class FFLiveHTTPHeaders(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
-        self.range = '0.8~3.5.* '
         self.name = u'Live HTTP Headers'
         self.R = R(latest(3829), filename='live_http_headers.xpi')
         _ff_extension.__init__(self)
@@ -356,7 +343,6 @@ class FFNoscript(_ff_extension):
         self.desc = _(
               'Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks.' )
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/722'
-        self.range = '1.5~3.7'
         self.name = u'NoScript'
         self.R = R(latest(722), filename='noscript.xpi')
         _ff_extension.__init__(self)    
@@ -368,7 +354,6 @@ class FFRadioGet(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'http://ipget.cn/RadioGet/'
-        self.range = '2.0~3.6'
         self.name = u'RadioGet'
         # We add a second url because ipget.cn is in expiration date now :(
         self.R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi', 'http://ailurus.googlecode.com/files/RadioGet-0.9.xpi'],
@@ -382,7 +367,6 @@ class FFSeoQuake(_ff_extension):
     def __init__(self):
         self.desc = _('It helps you promote your web sites.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
-        self.range = '2.0~3.6.*'
         self.name = u'SeoQuake'
         self.R = R(latest(3036), filename='seoquake.xpi')
         _ff_extension.__init__(self)
@@ -393,7 +377,6 @@ class FFStylish(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2108'
-        self.range = '3.0~3.7'
         self.name = u'Stylish'
         self.R = R(latest(2108), filename='stylish.xpi')
         _ff_extension.__init__(self)
@@ -406,7 +389,6 @@ class FFTamperData(_ff_extension):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
         self.name = u'Tamper Data'
-        self.range = '2.0~3.5.*'
         self.R = R(latest(966), filename='tamper_data.xpi')
         _ff_extension.__init__(self)
 
@@ -416,7 +398,6 @@ class FFUserAgentSwitcher(_ff_extension):
     def __init__(self):
         self.desc = _('It tells the remote websites that you are an IE user.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59'
-        self.range = '1.0~3.6.*'
         self.name = u'User Agent Switcher'
         self.R = R(latest(59), filename='user_agent_switcher.xpi')
         _ff_extension.__init__(self)
@@ -428,7 +409,6 @@ class FFViewSourceChart(_ff_extension):
     def __init__(self):
         self.desc = _("This extension helps you quickly scan and recognize a document's tags.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
-        self.range = '1.0~3.6.*'
         self.name = u'View Source Chart'
         self.R = R(latest(655), filename='view_source_chart.xpi')
         _ff_extension.__init__(self)
@@ -439,7 +419,6 @@ class FFFirefoxSync(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
-        self.range = '3.5~3.7'
         self.name = u'Weave'
         self.R = R(latest(10868), filename='firefox_sync.xpi')
         _ff_extension.__init__(self)
@@ -451,7 +430,6 @@ class FFWebDeveloper(_ff_extension):
     def __init__(self):
         self.desc = _('Many developers installed it.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
-        self.range = '1.0~3.6.*'
         self.name = u'Web Developer'
         self.R = R(latest(60), filename='web_developer.xpi')
         _ff_extension.__init__(self)
@@ -462,7 +440,6 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
-        self.range = '1.5~3.6.*'
         self.name = u'Yet Another Smooth Scrolling'
         self.R = R(latest(5846), filename='yet_another_smooth_scrolling.xpi')
         _ff_extension.__init__(self)
@@ -474,7 +451,6 @@ class FFYSlow(_ff_extension):
     def __init__(self):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
-        self.range = '2.0~3.5.*'
         self.name = u'YSlow'
         self.R = R(latest(5369), 'yslow.xpi')
         _ff_extension.__init__(self)

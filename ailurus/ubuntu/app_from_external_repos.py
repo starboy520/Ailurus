@@ -94,7 +94,6 @@ class ComicView(_ff_extension):
     def __init__(self):
         self.desc = ''
         self.download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
-        self.range = '3.0~3.7'
         self.name = u'Comic Viewer'
         self.R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
         _ff_extension.__init__(self)

@@ -183,7 +183,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
-        self.range = '0.9~3.7'
         self.name = u'JavaScript Debugger'
         self.R = R(latest(216), filename='javascript_debugger.xpi')
         _ff_extension.__init__(self)
@@ -194,7 +193,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
-        self.range = '3.0.*~3.7.*'
         self.name = u'MacOSX Theme'
         self.R = R(latest(7172), filename='macosx_theme.jar')
         _ff_extension.__init__(self)
@@ -205,7 +203,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
     def __init__(self):
         self.desc = ''
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
-        self.range = '2.0~3.7'
         self.name = u'NetVideoHunter'
         self.R = R(latest(7447), filename='netvideohunter.xpi')
         _ff_extension.__init__(self)
@@ -216,7 +213,6 @@ class FFPersonas(_ff_extension): # cannot find out which license it is released 
     def __init__(self):
         self.desc = _('Theme your browser according to your mood, hobby or season.')
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
-        self.range = '3.0~3.6.*'
         self.name = u'Personas'
         self.R = R(latest(10900), filename='personas.xpi')
         _ff_extension.__init__(self)
