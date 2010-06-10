@@ -31,10 +31,8 @@ from ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
-    detail = (
-              _('A storytelling application, especially appropriate for middle school students.') +'\n' + 
-              _('Official site: <span color="blue"><u>http://www.alice.org/</u></span> .') + 
-              _(' This application depends on Java.') )
+    detail = _('A storytelling application, especially appropriate for middle school students.')
+    download_url = 'http://www.alice.org/' 
     category = 'education'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
@@ -270,8 +268,8 @@ class Google_Chrome(I):
 
 class EIOffice(I):
     __doc__ = _('Evermore Integrated Office 2009 free version')
-    detail = _('It is able to edit text, spreadsheets, and slides. '
-       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
+    detail = _('It is able to edit text, spreadsheets, and slides.')
+    download_url = 'http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp'
     category='business'
     Chinese = True
     def install(self):
@@ -306,7 +304,8 @@ class EIOffice(I):
 
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
-    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    detail = _('Anti virus and anti spyware')
+    download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
     def install(self):
         if is32():

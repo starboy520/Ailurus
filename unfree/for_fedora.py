@@ -386,7 +386,8 @@ class Repo_Chromium(I):
 
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
-    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    detail = _('Anti virus and anti spyware')
+    download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
     def install(self):
         if is32():

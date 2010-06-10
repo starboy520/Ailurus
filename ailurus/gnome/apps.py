@@ -43,9 +43,9 @@ class ChangeTerminalColor(_set_gconf):
 
 class NScripts(I):
     __doc__ = _('NScripts: a set of useful Nautilus scripts')
-    detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus. '
-               'Its web site is http://freshmeat.net/projects/nscripts . '
+    detail = _('NScripts help you change the background, create/check MD5 checksums, create a diff, create shortcuts via Nautilus.\n'
                'NScripts is installed in ~/.gnome2/nautilus-scripts.')
+    download_url = 'http://freshmeat.net/projects/nscripts'
     license = GPL
     category = 'nautilus_extension'
     DE = 'gnome'

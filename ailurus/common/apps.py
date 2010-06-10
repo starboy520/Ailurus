@@ -113,7 +113,7 @@ Categories=Science;Engineering;'''%self.file)
 
 class SweetHome3D(_path_lists):
     __doc__ = _('SweetHome3D: open source interior design application')
-    detail = _('Official site:') + ' http://www.sweethome3d.com/'
+    download_url = 'http://www.sweethome3d.com/'
     category = 'design'
     shortcut = '/usr/share/applications/SweetHome3D.desktop'
     path = '/opt/SweetHome3D-2.3'
