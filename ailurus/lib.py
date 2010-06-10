@@ -320,7 +320,7 @@ def set_proxy_string(proxy_string):
                                       )
     Config.set_proxy_string_id_in_keyring(id)
 
-class UserDeniedError:
+class UserDeniedError(Exception):
     'User has denied keyring authentication'
 
 def get_proxy_string():
@@ -342,7 +342,10 @@ def get_proxy_string():
 
 def enable_urllib2_proxy():
     string = get_proxy_string()
-    assert string
+    #assert string
+    if string == '':
+        print "proxy string is NULL, return"
+        return
     import urllib2
     proxy_support = urllib2.ProxyHandler({'http':string}) # FIXME: please support https, ftp, rstp
     opener = urllib2.build_opener(proxy_support, urllib2.HTTPHandler)
