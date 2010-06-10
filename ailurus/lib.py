@@ -33,7 +33,9 @@ class I:
     this_is_an_installer = True
     how_to_install = ''
     def self_check(self):
-        'Check errors in source code'
+        'check errors in source code'
+    def fill(self):
+        'fill self.detail, self.how_to_install'
     def install(self):
         raise NotImplementedError
     def installed(self):

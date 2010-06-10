@@ -151,13 +151,13 @@ def is_package_names_string(string):
             raise ValueError, pkg
 
 def debian_installation_command(package_names):
-    return _('Command:') + ' apt-get install ' + package_names
+    return 'apt-get install ' + package_names
 
 def fedora_installation_command(package_names):
-    return _('Command:') + ' yum install ' + package_names
+    return 'yum install ' + package_names
 
 def archlinux_installation_command(package_names):
-    return _('Command:') + ' pacman -S ' + package_names
+    return 'pacman -S ' + package_names
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
@@ -178,11 +178,13 @@ class _apt_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         APT.remove(*self.pkgs.split() )
-    def installation_command(self):
-        string = ''
-        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
-            string = self.depends().launchpad_installation_command() + '; '
-        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
+    def fill(self):
+        self.how_to_install = debian_installation_command(self.pkgs)
+# FIXME
+#        string = ''
+#        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
+#            string = self.depends().launchpad_installation_command() + '; '
+#        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -201,8 +203,8 @@ class _rpm_install(I):
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return fedora_installation_command(self.pkgs)
+    def fill(self):
+        self.how_to_install = fedora_installation_command(self.pkgs)
 
 class _pacman_install(I):
     def self_check(self):
@@ -222,8 +224,8 @@ class _pacman_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         PACMAN.remove(*self.pkgs.split())
-    def installation_command(self):
-        return archlinux_installation_command(self.pkgs)
+    def fill(self):
+        self.how_to_install = archlinux_installation_command(self.pkgs)
 
 class N(I):
     def self_check(self):
@@ -243,8 +245,8 @@ class N(I):
             not_installed = [p for p in all_pkgs if not self.backend.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return self.installation_command_backend(self.pkgs)
+    def fill(self):
+        self.how_to_install = self.installation_command_backend(self.pkgs)
     def visible(self):
         if not hasattr(self, 'pkgs'): 
             #print self.__doc__, ' is hidden because no package name.'

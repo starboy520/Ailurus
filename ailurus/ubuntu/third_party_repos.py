@@ -141,8 +141,8 @@ class _launchpad(I):
         APTSource2.remove_snips_from_all_files([self.deb_config])
         signing_key = get_signing_key(self.ppa_owner, self.ppa_name)
         if signing_key: del_signing_key(signing_key)
-    def launchpad_installation_command(self):
-        return 'add-apt-repository ppa:%s' % self.ppa
+    def fill(self):
+        self.how_to_install = 'add-apt-repository ppa:%s' % self.ppa
 
 # Hide it in Lucid. Since Firefox is 3.6.3 in Lucid.
 class Repo_Firefox_3_6(_launchpad):
