@@ -27,8 +27,8 @@ from libapp import *
 
 class Eclipse(_rpm_install):
     __doc__ = _('Eclipse (basic development environment)')
-    detail = (_('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-              _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php'))
+    detail = _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php')
+    download_url = 'http://www.eclipse.org/downloads/'
     category = 'ide'
     license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
     pkgs = 'eclipse-platform' # Eclipse without any plugin

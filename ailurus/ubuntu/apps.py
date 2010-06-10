@@ -82,8 +82,8 @@ class WorldofPadman(I):
 
 class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
-    detail = ( _('Install Pairing-Based Cryptography library, powered by Stanford University.\n') +
-               _('Official site: <span color="blue"><u>http://crypto.stanford.edu/pbc/</u></span> .') )
+    detail = _('Install Pairing-Based Cryptography library, powered by Stanford University.')
+    download_url = 'http://crypto.stanford.edu/pbc/'
     category = 'library'
     license = GPL
     def install(self):
@@ -255,9 +255,6 @@ class DisableGettyKarmic(DisableGetty):
 
 class OpenJUMP(_apt_install): # OpenJUMP is not in Fedora :(
     __doc__ = _('OpenJUMP: A geographic information system')
-    detail = ( 
-              _('Official site: http://openjump.org/ .') +
-              _(' This application depends on Java.') )
     license = GPL
     category = 'geography'
     pkgs = 'openjump'

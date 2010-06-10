@@ -69,7 +69,7 @@ Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
-    how_to_install = 'http://blog.alipay.com/301.html'
+    download_url = 'http://blog.alipay.com/301.html'
     category = 'firefox_extension'
     Chinese = True
     def __init__(self):
@@ -253,7 +253,7 @@ class ATI_Driver(I):
 
 class Google_Chrome(I):
     'Google Chrome'
-    detail = _('Download from ') + 'http://www.google.com/chrome'
+    download_url = 'http://www.google.com/chrome'
     category = 'browser'
     def install(self):
         if is32():

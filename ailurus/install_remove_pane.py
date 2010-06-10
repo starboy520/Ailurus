@@ -387,6 +387,9 @@ class InstallRemovePane(gtk.VBox):
 #            detail = obj.detail.split('\n', 1)[0]
             print >>markup, ''
             print >>markup, obj.detail,
+        if obj.download_url:
+            print >>markup, ''
+            print >>markup, '<small><span color="#0072B2">%s</span></small>' % obj.download_url,
         if obj.how_to_install:
             print >>markup, ''
             print >>markup, '<small><span color="#8A00C2">%s</span></small>' % obj.how_to_install,

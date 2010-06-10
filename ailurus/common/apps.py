@@ -47,7 +47,7 @@ class Generic_Genome_Browser(I):
 
 class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
-    detail = _('It is from http://sourceforge.net/projects/bioclipse/files/bioclipse2/')
+    download_url = 'http://sourceforge.net/projects/bioclipse/files/bioclipse2/'
     category = 'biology'
     license = ('Eclipse Public License (EPL) + exception, '
                'see http://www.bioclipse.net/license-0')
@@ -88,10 +88,9 @@ Icon=/opt/bioclipse/icon.xpm
 
 class Electric(_path_lists):
     __doc__ = _('Electric: A software for IC design which supports VHDL and Verilog')
-    detail = ( _('Official site: <span color="blue"><u>http://www.staticfreesoft.com/</u></span>') +
-               _(' This application depends on Java.') )
     category = 'electronics'
     license = GPL
+    download_url = 'http://www.staticfreesoft.com/'
     def __init__(self):
         self.shortcut = '/usr/share/applications/electric.desktop'
         self.file = '/opt/electricBinary.jar'
@@ -140,9 +139,8 @@ class Songbird(I):
     __doc__ = _('Songbird: Open source substitution of iTunes')
     detail = (_('Music player which integrates with online content via plugins. '
                'Site contains project news, download, add-ons directory, help, and how to contribute.') + '\n' + 
-              _('Please download from:') + ' http://developer.songbirdnest.com/builds/trunk/latest/\n' + 
               _('Launch it by this command:') + ' LD_BIND_NOW=1 ./songbird')
-    
+    download_url = 'http://developer.songbirdnest.com/builds/trunk/latest/' 
     category = 'player'
     license = GPL
     def install(self):
