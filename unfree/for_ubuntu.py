@@ -180,42 +180,34 @@ class HITTeXTemplate(_download_one_file) :
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
-        self.name = u'JavaScript Debugger'
-        self.R = R(latest(216), filename='javascript_debugger.xpi')
-        _ff_extension.__init__(self)
+    desc = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
+    name = u'JavaScript Debugger'
+    R = R(latest(216), filename='javascript_debugger.xpi')
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
-        self.name = u'MacOSX Theme'
-        self.R = R(latest(7172), filename='macosx_theme.jar')
-        _ff_extension.__init__(self)
+    desc = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
+    name = u'MacOSX Theme'
+    R = R(latest(7172), filename='macosx_theme.jar')
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
-        self.name = u'NetVideoHunter'
-        self.R = R(latest(7447), filename='netvideohunter.xpi')
-        _ff_extension.__init__(self)
+    desc = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
+    name = u'NetVideoHunter'
+    R = R(latest(7447), filename='netvideohunter.xpi')
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = _('Theme your browser according to your mood, hobby or season.')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
-        self.name = u'Personas'
-        self.R = R(latest(10900), filename='personas.xpi')
-        _ff_extension.__init__(self)
+    desc = _('Theme your browser according to your mood, hobby or season.')
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
+    name = u'Personas'
+    R = R(latest(10900), filename='personas.xpi')
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
