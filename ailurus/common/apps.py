@@ -203,7 +203,7 @@ class TsingHuaTeXTemplate(_download_one_file):
 class FFAdblock(_ff_extension):
     __doc__ = _('Adblock+: Block 99% advertisement')
     license = MPL
-    desc = _('It is able to block 99% ads and banners.')
+    detail = _('It is able to block 99% ads and banners.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1865'
     name = u'Adblock Plus'
     R = R(latest(1865), filename='adblock_plus.xpi')
@@ -212,7 +212,7 @@ class FFAutoProxy(_ff_extension):
     __doc__ = _('AutoProxy: Proxy management via a third party list')
     Chinese = True
     license = MPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/11009'
     name = u'AutoProxy'
     R = R(latest(11009), filename='autoproxy.xpi')
@@ -220,7 +220,7 @@ class FFAutoProxy(_ff_extension):
 class FFChromifox(_ff_extension): 
     __doc__ = _('Chromifox: Chrome theme')
     license = TRI_LICENSE(MPL, GPL, LGPL)
-    desc = _('A coat of Chrome for Firefox')
+    detail = _('A coat of Chrome for Firefox')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/8782'
     name = u'Chromifox Basic'
     R = R(latest(8782), filename='chromifox_basic.jar')
@@ -228,7 +228,7 @@ class FFChromifox(_ff_extension):
 class FFCleanHide(_ff_extension):
     __doc__ = _('CleanHide: Delete hidden text in web page')
     license = GPL
-    desc = _('If you find that some web page use hidden text and you cannot copy text easily, try this!')
+    detail = _('If you find that some web page use hidden text and you cannot copy text easily, try this!')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3648'
     name = u'CleanHide'
     R = R(latest(3648), filename='cleanhide.xpi')
@@ -236,7 +236,7 @@ class FFCleanHide(_ff_extension):
 class FFDownloadStatusBar(_ff_extension): 
     __doc__ = _('DownloadStatusBar: Keep track of downloads in a tiny statusbar.')
     license = MPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/26'
     name = u'Download Statusbar'
     R = R(latest(26), filename='download_statusbar.xpi')
@@ -244,7 +244,7 @@ class FFDownloadStatusBar(_ff_extension):
 class FFDownThemAll(_ff_extension):
     __doc__ = _('DownThemAll: A reliable multithread downloader')
     license = GPL
-    desc = _('It is able to download all images on web-pages.')
+    detail = _('It is able to download all images on web-pages.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/201'
     name = u'DownThemAll!'
     R = R(latest(201), filename='downthemall.xpi')
@@ -252,7 +252,7 @@ class FFDownThemAll(_ff_extension):
 class FFEasyDragToGo(_ff_extension):
     __doc__ = _('EasyDragToGo: Open new tabs by dragging text, links and pictures')
     license = MPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6639'
     name = u'Easy DragToGo'
     R = R(latest(6639), filename='easy_dragtogo.xpi')
@@ -261,7 +261,7 @@ class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
     category = 'firefox_extension'
     license = BSD
-    desc = _('This is a powerful web development tool.')
+    detail = _('This is a powerful web development tool.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
     name = u'Firebug'
     R = R(latest(1843), filename='firebug.xpi')
@@ -269,7 +269,7 @@ class FFFireBug(_ff_extension):
 class FFFireGesture(_ff_extension):
     __doc__ = _('FireGesture: Execute commands and user scripts by mouse gestures')
     license = MPL
-    desc = _('It supports five kinds of mouse gestures.')
+    detail = _('It supports five kinds of mouse gestures.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/6366'
     name = u'FireGestures'
     R = R(latest(6366), filename='firegestures.xpi')
@@ -277,7 +277,7 @@ class FFFireGesture(_ff_extension):
 class FFFlashgot(_ff_extension):
     __doc__ = _('Flashgot: A lightweight and reliable download managers')
     license = GPL
-    desc = _("It is able to download all the links, movies and audio clips of a page with a single click.")
+    detail = _("It is able to download all the links, movies and audio clips of a page with a single click.")
     download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
     name = u'Flashgot'
     R = R(latest(220), filename='flashgot.xpi')
@@ -285,7 +285,7 @@ class FFFlashgot(_ff_extension):
 class FFFoxyProxy(_ff_extension):
     __doc__ = _('FoxyProxy: One-click switching proxy')
     license = GPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2464'
     name = u'FoxyProxy Standard'
     R = R(latest(2464), filename='foxyproxy_standard.xpi')
@@ -293,7 +293,7 @@ class FFFoxyProxy(_ff_extension):
 class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
     license = MIT
-    desc = _('This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.'
+    detail = _('This is an extension that allow you to install scripts to make changes to web page, such as adding an HTML signature and bypassing image verification.'
               'You can download hundreds of scripts from http://userscripts.org, or '
               'check out http://wiki.greasespot.net/ to get started to write your own scripts. '
               'The book "Dive into Greasemonkey" is worth reading. It can be downloaded freely from http://diveintogreasemonkey.org/ .' )
@@ -305,7 +305,7 @@ class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
     category = 'firefox_extension'
     license = GPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
     name = u'Live HTTP Headers'
     R = R(latest(3829), filename='live_http_headers.xpi')
@@ -313,7 +313,7 @@ class FFLiveHTTPHeaders(_ff_extension):
 class FFNoscript(_ff_extension):
     __doc__ = _('NoScript: Allow active content to run only from sites you trust')
     license = GPL
-    desc = _('Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks.' )
+    detail = _('Allow active content to run only from sites you trust, and protect yourself against XSS and Clickjacking attacks.' )
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/722'
     name = u'NoScript'
     R = R(latest(722), filename='noscript.xpi')
@@ -322,7 +322,7 @@ class FFRadioGet(_ff_extension):
     __doc__  = _('SHA-DA network radio: Listen to and watch radio and TV programs in China')
     Chinese = True
     license = GPL
-    desc = ''
+    detail = ''
     download_url = 'http://ipget.cn/RadioGet/'
     name = u'RadioGet'
     R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi', 'http://ailurus.googlecode.com/files/RadioGet-0.9.xpi'],
@@ -332,7 +332,7 @@ class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
     category = 'firefox_extension'
     license = MPL
-    desc = _('It helps you promote your web sites.')
+    detail = _('It helps you promote your web sites.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
     name = u'SeoQuake'
     R = R(latest(3036), filename='seoquake.xpi')
@@ -340,7 +340,7 @@ class FFSeoQuake(_ff_extension):
 class FFStylish(_ff_extension):
     __doc__ = _('Stylish: Install themes and skins for websites.')
     license = GPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2108'
     name = u'Stylish'
     R = R(latest(2108), filename='stylish.xpi')
@@ -349,7 +349,7 @@ class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
     category = 'firefox_extension'
     license = GPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
     name = u'Tamper Data'
     R = R(latest(966), filename='tamper_data.xpi')
@@ -357,7 +357,7 @@ class FFTamperData(_ff_extension):
 class FFUserAgentSwitcher(_ff_extension):
     __doc__ = _('User Agent Switcher: Camousflag Firefox as other kinds of browsers.')
     license = GPL
-    desc = _('It tells the remote websites that you are an IE user.')
+    detail = _('It tells the remote websites that you are an IE user.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59'
     name = u'User Agent Switcher'
     R = R(latest(59), filename='user_agent_switcher.xpi')
@@ -366,7 +366,7 @@ class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
     category = 'firefox_extension'
     license = GPL
-    desc = _("This extension helps you quickly scan and recognize a document's tags.")
+    detail = _("This extension helps you quickly scan and recognize a document's tags.")
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
     name = u'View Source Chart'
     R = R(latest(655), filename='view_source_chart.xpi')
@@ -374,7 +374,7 @@ class FFViewSourceChart(_ff_extension):
 class FFFirefoxSync(_ff_extension):
     __doc__ = _('Firefox Sync: synchronize bookmarks, browsing history and tabs wherever you go.')
     license = MPL
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
     name = u'Weave'
     R = R(latest(10868), filename='firefox_sync.xpi')
@@ -383,7 +383,7 @@ class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
     category = 'firefox_extension'
     license = LGPL
-    desc = _('Many developers installed it.')
+    detail = _('Many developers installed it.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
     name = u'Web Developer'
     R = R(latest(60), filename='web_developer.xpi')
@@ -391,7 +391,7 @@ class FFWebDeveloper(_ff_extension):
 class FFYetAnotherSmoothScrolling(_ff_extension):
     __doc__ = _('Yet Another Smooth Scrolling: Customize scrolling behavior')
     license = BSD
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5846'
     name = u'Yet Another Smooth Scrolling'
     R = R(latest(5846), filename='yet_another_smooth_scrolling.xpi')
@@ -400,7 +400,7 @@ class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
     category = 'firefox_extension'
     license = MPL
-    desc = _("It helps you improve web page performance. It tells you why web page is slow.")
+    detail = _("It helps you improve web page performance. It tells you why web page is slow.")
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
     name = u'YSlow'
     R = R(latest(5369), filename='yslow.xpi')

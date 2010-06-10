@@ -301,22 +301,15 @@ class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
     def self_check(self):
-        assert self.name, 'No %s.name'%self.__class__.__name__
+        assert self.name
         assert isinstance(self.name, unicode)
-        assert self.R, 'No %s.R'%self.__class__.__name__
+        assert self.R
         assert isinstance(self.R, R)
         assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
-        assert isinstance(self.desc, unicode) or isinstance(self.desc, str) 
-        assert isinstance(self.download_url, str)
+        assert isinstance(self.download_url, str) and self.download_url
     def __init__(self):
         self.self_check()
-        import StringIO
-        text = StringIO.StringIO()
-        if self.desc:
-            print >>text, self.desc
-#        print >>text, _("<span color='red'>This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox.</span>")
-        print >>text, _('It can be obtained from '), self.download_url,
-        self.__class__.detail = text.getvalue()
+        self.how_to_install = self.download_url
     def install(self):
         f = self.R.download()
         firefox.install_extension_archive(f)

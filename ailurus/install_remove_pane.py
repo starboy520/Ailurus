@@ -387,15 +387,16 @@ class InstallRemovePane(gtk.VBox):
             detail = obj.detail.split('\n', 1)[0]
             print >>markup, ''
             print >>markup, detail,
+        if obj.how_to_install:
+            print >>markup, ''
+            print >>markup, '<small>%s</small>' % obj.how_to_install,
         cell.set_property('markup', markup.getvalue())
         cell.set_property('strikethrough', 
                           obj.cache_installed==True and obj.showed_in_toggle==False )
         if obj.cache_installed==False and obj.showed_in_toggle==True :
             cell.set_property('scale', 1.2)
-#            cell.set_property ( 'underline', True )
         else :
             cell.set_property('scale', 1)
-#            cell.set_property ( 'underline', False )
 
     def __right_pane_changed(self, treeselection, treeview):
         ( store, pathlist ) = treeselection.get_selected_rows ()

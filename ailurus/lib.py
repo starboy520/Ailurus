@@ -31,6 +31,7 @@ def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
 
 class I:
     this_is_an_installer = True
+    how_to_install = ''
     def self_check(self):
         'Check errors in source code'
     def install(self):

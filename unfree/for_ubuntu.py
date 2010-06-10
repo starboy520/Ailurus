@@ -69,14 +69,13 @@ Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
-    detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
+    how_to_install = 'http://blog.alipay.com/301.html'
     category = 'firefox_extension'
     Chinese = True
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.mozilla/plugins')
     def install(self):
-#        open_web_page('http://blog.alipay.com/301.html')
         file = '/tmp/aliedit.tar.gz'
         run('wget --timeout=60 http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz -O /tmp/aliedit.tar.gz')
         path = self.path
@@ -180,7 +179,7 @@ class HITTeXTemplate(_download_one_file) :
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefox_extension'
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
     name = u'JavaScript Debugger'
     R = R(latest(216), filename='javascript_debugger.xpi')
@@ -188,7 +187,7 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
     category = 'firefox_extension'
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
     name = u'MacOSX Theme'
     R = R(latest(7172), filename='macosx_theme.jar')
@@ -196,7 +195,7 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
     category = 'firefox_extension'
-    desc = ''
+    detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
     name = u'NetVideoHunter'
     R = R(latest(7447), filename='netvideohunter.xpi')
@@ -204,7 +203,7 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
     category = 'firefox_extension'
-    desc = _('Theme your browser according to your mood, hobby or season.')
+    detail = _('Theme your browser according to your mood, hobby or season.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
     name = u'Personas'
     R = R(latest(10900), filename='personas.xpi')
