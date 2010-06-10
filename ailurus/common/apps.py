@@ -452,5 +452,5 @@ class FFYSlow(_ff_extension):
         self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
         self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
         self.name = u'YSlow'
-        self.R = R(latest(5369), 'yslow.xpi')
+        self.R = R(latest(5369), filename='yslow.xpi')
         _ff_extension.__init__(self)
