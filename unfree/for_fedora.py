@@ -111,8 +111,7 @@ class Repo_Skype(I):
 class Repo_RPMFusion_Free(I):
     __doc__ = _('RPM Fusion (Free)')
     category = 'repository'
-    detail = _('RPM Fusion provides software that not in the standard repositories.\n'
-               'It is possible that "ATrpms" repository conflicts with "RPM Fusion" repository.')
+    detail = _('RPM Fusion provides software that not in the standard repositories.')
     def __init__(self):
         self.paths = ['/etc/yum.repos.d/rpmfusion-free.repo', '/etc/yum.repos.d/rpmfusion-free-updates.repo']
     def installed(self):
@@ -140,8 +139,7 @@ class Repo_RPMFusion_Free(I):
 class Repo_RPMFusion_NonFree(I):
     __doc__ = _('RPM Fusion (Non-Free)')
     category = 'repository'
-    detail = _('RPM Fusion provides software that not in the standard repositories.\n'
-               'It is possible that "ATrpms" repository conflicts with "RPM Fusion" repository.')
+    detail = _('RPM Fusion provides software that not in the standard repositories.')
     def __init__(self):
         self.paths = ['/etc/yum.repos.d/rpmfusion-nonfree.repo', '/etc/yum.repos.d/rpmfusion-nonfree-updates.repo']
     def installed(self):
@@ -226,8 +224,8 @@ class Repo_Google_Chrome(I):
 class Repo_VirtualBox(I):
     'VirtualBox'
     category = 'repository'
-    detail = _('This repository provides VirtualBox.\n'
-               'Webpage: http://www.virtualbox.org/wiki/Linux_Downloads')
+    detail = _('This repository provides VirtualBox.')
+    download_url = 'http://www.virtualbox.org/wiki/Linux_Downloads'
     def __init__(self):
         self.path = '/etc/yum.repos.d/virtualbox.repo'
     def installed(self):
@@ -264,7 +262,7 @@ class Adobe_Flash_Player(_rpm_install):
 
 class AdobeReader(_rpm_install):
     __doc__ = _(u'Adobe® PDF Reader')
-    detail = _('Official site: http://get.adobe.com/cn/reader/')
+    download_url = 'http://get.adobe.com/reader/'
     category = 'business'
     depends = Repo_Adobe
     def __init__(self):
@@ -290,9 +288,9 @@ class AdobeReader(_rpm_install):
 
 class Realplayer32(I):
     'RealPlayer® 11'
-    detail = _('If you cannot play RMVB video, try this application!\n'
-       'Official site: <span color="blue"><u>http://www.real.com/linux</u></span>\n'
+    detail = _('If you cannot play RMVB video, try this application! '
        'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
+    download_url = 'http://www.real.com/linux'
     category = 'player'
     def install(self):
         f = R(
@@ -354,13 +352,6 @@ class Skype(_rpm_install):
     pkgs = 'skype'
     def visible(self):
         return is32()
-
-class VirtualBox_OSE(_rpm_install):
-    __doc__ = _('VirtualBox open source edition')
-    category = 'simulator'
-    license = GPL
-    depends = Repo_RPMFusion_Free
-    pkgs = 'VirtualBox-OSE'
 
 class Repo_Chromium(I):
     'Chromium'
