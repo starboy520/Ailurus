@@ -389,7 +389,7 @@ class InstallRemovePane(gtk.VBox):
             print >>markup, obj.detail,
         if obj.how_to_install:
             print >>markup, ''
-            print >>markup, '<small>%s</small>' % obj.how_to_install,
+            print >>markup, '<small><span color="#8A00C2">%s</span></small>' % obj.how_to_install,
         cell.set_property('markup', markup.getvalue())
         cell.set_property('strikethrough', 
                           obj.cache_installed==True and obj.showed_in_toggle==False )
