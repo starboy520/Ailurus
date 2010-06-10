@@ -31,8 +31,11 @@ def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
 
 class I:
     this_is_an_installer = True
+    how_to_install = ''
     def self_check(self):
-        'Check errors in source code'
+        'check errors in source code'
+    def fill(self):
+        'fill self.detail, self.how_to_install'
     def install(self):
         raise NotImplementedError
     def installed(self):
@@ -1408,13 +1411,12 @@ def delay_notify_firefox_restart(show_notify=False):
             delay_notify_firefox_restart.should_show = False
             try:
                 string = get_output('ps -a -u $USER | grep firefox', True)
-                if string!='':
-                    notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
+                if string:
+                    notify(_('Please restart Firefox'), _('Please restart Firefox to complete installation.'))
                 else:
                     KillWhenExit.add('firefox')
             except:
                 print_traceback()
-                notify('Please restart Firefox', 'Please restart Firefox to complete installation.')
 
 def sha1(path):
     is_string_not_empty(path)

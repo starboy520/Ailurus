@@ -69,14 +69,13 @@ Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
-    detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
+    how_to_install = 'http://blog.alipay.com/301.html'
     category = 'firefox_extension'
     Chinese = True
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.mozilla/plugins')
     def install(self):
-#        open_web_page('http://blog.alipay.com/301.html')
         file = '/tmp/aliedit.tar.gz'
         run('wget --timeout=60 http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz -O /tmp/aliedit.tar.gz')
         path = self.path
@@ -180,50 +179,34 @@ class HITTeXTemplate(_download_one_file) :
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
-        self.range = '0.9~3.7'
-        self.name = u'JavaScript Debugger'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/216/javascript_debugger-0.9.87.4-fx+tb+sb+sm.xpi'],
-                      217578,'3369de2b98b747c4d1c79803819b2d727b9083f6')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
+    name = u'JavaScript Debugger'
+    R = R(latest(216), filename='javascript_debugger.xpi')
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
-        self.range = '3.0.*~3.7.*'
-        self.name = u'MacOSX Theme'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7172/macosx_theme-0.6.8-fx.jar'],
-    689344, '4b58d1c49ae123e50a76cb41bc6a1162d1bcaaf8')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
+    name = u'MacOSX Theme'
+    R = R(latest(7172), filename='macosx_theme.jar')
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
-        self.range = '2.0~3.7'
-        self.name = u'NetVideoHunter'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7447/netvideohunter-0.4.3-fx.xpi'],
-                    44541, '3d47e726587743758097a069358ed306df63bc3a')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
+    name = u'NetVideoHunter'
+    R = R(latest(7447), filename='netvideohunter.xpi')
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = _('Theme your browser according to your mood, hobby or season.')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
-        self.range = '3.0~3.6.*'
-        self.name = u'Personas'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
-    275501, 'ac6de4e93270e0650fc06a88cf5fe639e8a879fb')
-        _ff_extension.__init__(self)
+    detail = _('Theme your browser according to your mood, hobby or season.')
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
+    name = u'Personas'
+    R = R(latest(10900), filename='personas.xpi')
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')

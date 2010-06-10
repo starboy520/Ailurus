@@ -26,7 +26,7 @@ from lib import *
 __all__ = ['_set_gconf', '_apt_install', '_path_lists', 
            '_ff_extension', '_download_one_file', '_rpm_install', 'N',
            'create_eclipse_icon', 'install_eclipse_extension_message',
-           'remove_eclipse_extesion_message', ]
+           'remove_eclipse_extesion_message', 'latest']
 
 class _set_gconf(I):
     'Must subclass me and set "self.set" and "self.add"'
@@ -151,13 +151,13 @@ def is_package_names_string(string):
             raise ValueError, pkg
 
 def debian_installation_command(package_names):
-    return _('Command:') + ' apt-get install ' + package_names
+    return 'apt-get install ' + package_names
 
 def fedora_installation_command(package_names):
-    return _('Command:') + ' yum install ' + package_names
+    return 'yum install ' + package_names
 
 def archlinux_installation_command(package_names):
-    return _('Command:') + ' pacman -S ' + package_names
+    return 'pacman -S ' + package_names
 
 class _apt_install(I):
     'Must subclass me and set "pkgs".'
@@ -178,11 +178,13 @@ class _apt_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         APT.remove(*self.pkgs.split() )
-    def installation_command(self):
-        string = ''
-        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
-            string = self.depends().launchpad_installation_command() + '; '
-        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
+    def fill(self):
+        self.how_to_install = debian_installation_command(self.pkgs)
+# FIXME
+#        string = ''
+#        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
+#            string = self.depends().launchpad_installation_command() + '; '
+#        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
 
 class _rpm_install(I):
     def self_check(self):
@@ -201,8 +203,8 @@ class _rpm_install(I):
             not_installed = [p for p in all_pkgs if not RPM.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return fedora_installation_command(self.pkgs)
+    def fill(self):
+        self.how_to_install = fedora_installation_command(self.pkgs)
 
 class _pacman_install(I):
     def self_check(self):
@@ -222,8 +224,8 @@ class _pacman_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def remove(self):
         PACMAN.remove(*self.pkgs.split())
-    def installation_command(self):
-        return archlinux_installation_command(self.pkgs)
+    def fill(self):
+        self.how_to_install = archlinux_installation_command(self.pkgs)
 
 class N(I):
     def self_check(self):
@@ -243,8 +245,8 @@ class N(I):
             not_installed = [p for p in all_pkgs if not self.backend.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
-    def installation_command(self):
-        return self.installation_command_backend(self.pkgs)
+    def fill(self):
+        self.how_to_install = self.installation_command_backend(self.pkgs)
     def visible(self):
         if not hasattr(self, 'pkgs'): 
             #print self.__doc__, ' is hidden because no package name.'
@@ -294,27 +296,22 @@ class _path_lists(I):
         if not_exist:
             print >>f, _('Because "%s" does not exist.')%' '.join(not_exist),
 
+def latest(id): # used in all subclasses of _ff_extension, to construct download url. id is the number of firefox extension.
+    return 'https://addons.mozilla.org/en-US/firefox/downloads/latest/%s' % id
+
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
-    ext_path = None
-    def __init__(self):
-        assert self.name, 'No %s.name'%self.__class__.__name__
+    def self_check(self):
+        assert self.name
         assert isinstance(self.name, unicode)
-        assert self.R, 'No %s.R'%self.__class__.__name__
+        assert self.R
         assert isinstance(self.R, R)
         assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
-        assert isinstance(self.desc, unicode) or isinstance(self.desc, str) 
-        assert isinstance(self.download_url, str)
-        assert isinstance(self.range, str)
-        import StringIO
-        text = StringIO.StringIO()
-        if self.desc:
-            print >>text, self.desc
-#        print >>text, _("<span color='red'>This extension cannot be removed by Ailurus. It can be removed in 'Tools'->'Add-ons' menu of firefox.</span>")
-#        print >>text, _('It can be used in Firefox version %s')%self.range
-        print >>text, _('It can be obtained from '), self.download_url,
-        self.__class__.detail = text.getvalue()
+        assert isinstance(self.download_url, str) and self.download_url
+    def __init__(self):
+        self.self_check()
+        self.how_to_install = self.download_url
     def install(self):
         f = self.R.download()
         firefox.install_extension_archive(f)
