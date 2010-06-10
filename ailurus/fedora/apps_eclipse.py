@@ -27,8 +27,7 @@ from libapp import *
 
 class Eclipse(_rpm_install):
     __doc__ = _('Eclipse (basic development environment)')
-    detail = (_('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-              _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php'))
+    detail = _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php')
     category = 'ide'
     license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
     pkgs = 'eclipse-platform' # Eclipse without any plugin
@@ -50,11 +49,10 @@ class Pydev(_rpm_install):
 
 class Aptana(I):
     __doc__ = _('Aptana: Web application development')
-    detail = _('Aptana is from http://www.aptana.org/studio/plugin\n'
-               'Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n'
-               'Due to limitation of the authors\' programming ability, '
-               'Aptana cannot be removed by Ailurus. '
-               'In order to remove Aptana, you have to re-install Eclipse.')
+    detail = _('Due to limitation of the authors\' programming ability, Aptana cannot be removed by Ailurus.\n'
+               'In order to remove Aptana, please launch Eclipse, and go to "Help" -> "About Eclipse SDK" -> "Installation Details"')
+    download_url = 'http://www.aptana.org/studio/plugin'
+    how_to_install = 'http://download.aptana.org/tools/studio/plugin/install/studio'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(APL, GPL)
     def installed(self):
@@ -76,8 +74,8 @@ class Aptana(I):
 
 class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
-    detail = _('Over the past RadRails was called "RDT". '
-               'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
+    detail = _('Over the past RadRails was called "RDT".')
+    how_to_install = 'http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(APL, GPL)
     def installed(self):
@@ -99,7 +97,7 @@ class RadRails(I):
 
 class PDT(I):
     __doc__ = _('PDT: PHP development')
-    detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
+    download_url = 'http://www.eclipse.org/pdt/downloads/'
     category = 'eclipse_extension'
     license = EPL + ' http://www.eclipse.org/legal/'
     def installed(self):
@@ -127,7 +125,7 @@ class PHPEclipse(_rpm_install):
 
 class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
-    detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
+    how_to_install = 'http://download.eclipse.org/technology/subversive/0.7/update-site/'
     category = 'eclipse_extension'
     license = EPL
     def installed(self):
@@ -174,7 +172,7 @@ class Texlipse(_rpm_install):
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
-    detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
+    download_url = 'http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(EPL, GPL)
     def __init__(self):

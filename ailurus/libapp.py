@@ -309,9 +309,6 @@ class _ff_extension(I):
         assert isinstance(self.R, R)
         assert self.R.filename.endswith('.xpi') or self.R.filename.endswith('.jar')
         assert isinstance(self.download_url, str) and self.download_url
-    def __init__(self):
-        self.self_check()
-        self.how_to_install = self.download_url
     def install(self):
         f = self.R.download()
         firefox.install_extension_archive(f)

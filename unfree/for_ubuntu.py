@@ -31,10 +31,8 @@ from ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
-    detail = (
-              _('A storytelling application, especially appropriate for middle school students.') +'\n' + 
-              _('Official site: <span color="blue"><u>http://www.alice.org/</u></span> .') + 
-              _(' This application depends on Java.') )
+    detail = _('A storytelling application, especially appropriate for middle school students.')
+    download_url = 'http://www.alice.org/' 
     category = 'education'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
@@ -69,7 +67,7 @@ Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
-    how_to_install = 'http://blog.alipay.com/301.html'
+    download_url = 'http://blog.alipay.com/301.html'
     category = 'firefox_extension'
     Chinese = True
     def __init__(self):
@@ -105,10 +103,8 @@ class AliPayFirefoxPlugin(I):
 
 class AstroMenace(_path_lists):
     'AstroMenace'
-    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons. '
-       'This is a full 3d style space shooter game. '
-       'It supports mouse, keyboard and joystick control. '
-       'Official site: http://www.viewizard.com/')
+    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons.')
+    download_url = 'http://www.viewizard.com/'
     category = 'game'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
@@ -253,7 +249,7 @@ class ATI_Driver(I):
 
 class Google_Chrome(I):
     'Google Chrome'
-    detail = _('Download from ') + 'http://www.google.com/chrome'
+    download_url = 'http://www.google.com/chrome'
     category = 'browser'
     def install(self):
         if is32():
@@ -272,8 +268,8 @@ class Google_Chrome(I):
 
 class EIOffice(I):
     __doc__ = _('Evermore Integrated Office 2009 free version')
-    detail = _('It is able to edit text, spreadsheets, and slides. '
-       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
+    detail = _('It is able to edit text, spreadsheets, and slides.')
+    download_url = 'http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp'
     category='business'
     Chinese = True
     def install(self):
@@ -308,7 +304,8 @@ class EIOffice(I):
 
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
-    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    detail = _('Anti virus and anti spyware')
+    download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
     def install(self):
         if is32():
@@ -334,8 +331,8 @@ class ESETNOD32(I):
 class Repo_Oracle(_repo):
     __doc__ = _('Oracle')
     def __init__(self):
-        self.desc = _('This repository provides Oracle Database Express Edition.\n'
-            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
+        self.detail = _('This repository provides Oracle Database Express Edition.\n'
+            'After installing Oracle Database, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
         self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
         self.web_page = 'http://oss.oracle.com/'
         self.apt_file = '/etc/apt/sources.list.d/oracle.list'

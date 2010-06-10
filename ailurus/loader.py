@@ -81,6 +81,8 @@ def load_app_from_file():
                     dict['pkgs'] = value
                 elif ops == 'Chinese':
                     dict[ops] = True
+                elif ops == 'Poland':
+                    dict[ops] = True
                 elif ops == 'license':
                     ls = value.split()
                     ls = [getattr(lib, e) for e in ls]
@@ -98,6 +100,7 @@ def load_app_from_file():
             if dict['detail'] == 'FIXME' : dict['detail'] = ''
             if dict.has_key('pkgs') and dict['pkgs'] == 'FIXME' : continue # means not supported in this version
             if dict.has_key('Chinese') and Config.is_Chinese_locale()==False: continue # means such software provides Chinese locale only
+            if dict.has_key('Poland') and Config.is_Poland_locale()==False: continue # means such software provides Poland locale only
 
             obj = new.classobj(secs, (N,), {})()
             for key in dict.keys():
@@ -142,6 +145,7 @@ def load_app_objs():
                 app_class_obj.self_check()
                 if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
+                if hasattr(app_class_obj, 'Poland') and Config.is_Poland_locale()==False: continue
                 app_class_obj.fill()
                 app_class_obj.cache_installed = app_class_obj.installed()
                 if not isinstance(app_class_obj.cache_installed, bool):
