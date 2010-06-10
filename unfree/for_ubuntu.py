@@ -105,10 +105,8 @@ class AliPayFirefoxPlugin(I):
 
 class AstroMenace(_path_lists):
     'AstroMenace'
-    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons. '
-       'This is a full 3d style space shooter game. '
-       'It supports mouse, keyboard and joystick control. '
-       'Official site: http://www.viewizard.com/')
+    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons.')
+    download_url = 'http://www.viewizard.com/'
     category = 'game'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
@@ -334,8 +332,8 @@ class ESETNOD32(I):
 class Repo_Oracle(_repo):
     __doc__ = _('Oracle')
     def __init__(self):
-        self.desc = _('This repository provides Oracle Database Express Edition.\n'
-            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
+        self.detail = _('This repository provides Oracle Database Express Edition.\n'
+            'After installing Oracle Database, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
         self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
         self.web_page = 'http://oss.oracle.com/'
         self.apt_file = '/etc/apt/sources.list.d/oracle.list'

@@ -60,10 +60,10 @@ from app_from_external_repos import *
 #        env.remove('CLASSPATH')
 #        env.save()
 
-class WorldofPadman(I):
+class WorldofPadman_Ubuntu(I):
     __doc__ = _('World of Padman: Funny shooter game')
-    detail = _('Ailurus will install the game, and apply the latest patch.\n'
-               'Download from ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/')
+    detail = _('Ailurus will install the game, and apply the latest patch.')
+    download_url = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/'
     license = GPL + ' http://sourceforge.net/projects/wop-engine/'
     category = 'game'
     def install(self):
@@ -71,11 +71,9 @@ class WorldofPadman(I):
         run_as_root('bash ' + file1)
         file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
         run_as_root('bash ' + file2)
-        
     def installed(self):
         import os
         return os.path.exists('/usr/local/games/WoP')
-        
     def remove(self):
         run_as_root('rm /usr/local/games/WoP -rf')
         run_as_root('rm /usr/local/bin/wop')

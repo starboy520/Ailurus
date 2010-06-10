@@ -28,9 +28,7 @@ class _repo(I):
     this_is_a_repository = True
     category = 'repository'
     def __init__(self):
-        assert isinstance(self.desc, (str,unicode) )
         assert isinstance(self.web_page, str)
-        
         assert isinstance(self.apt_file, str)
         assert isinstance(self.apt_conf, list)
         for i,a in enumerate(self.apt_conf):
@@ -51,15 +49,8 @@ class _repo(I):
         
         assert isinstance(self.key_id, str)
         
-        import StringIO
-        msg = StringIO.StringIO()
-        if self.desc:
-            print >>msg, self.desc, '\n'
-        print >>msg, _('Web page:'), self.web_page
-        print >>msg, _('Source setting:'),
-        for a in self.apt_conf:
-            print >>msg, a
-        self.__class__.detail = msg.getvalue()
+        self.download_url = self.web_page
+        self.how_to_install = '\n'.join(self.apt_conf)
     def installed(self):
         return APTSource2.all_lines_contain_all_of(self.apt_conf)
     def install(self):
@@ -119,7 +110,6 @@ class _launchpad(I):
     def __init__(self):
         assert isinstance(self.ppa, str)
         if hasattr(self, 'content'): assert isinstance(self.content, str)
-        if hasattr(self, 'desc'): assert isinstance(self.desc, (unicode, str))
         self.ppa_owner, self.ppa_name = get_owner_and_name(self.ppa)
         self.deb_config = get_deb_line(self.ppa_owner, self.ppa_name, VERSION)
         self.repos_file_name = '/etc/apt/sources.list.d/' + get_repos_file_name(self.ppa_owner, self.ppa_name, VERSION)
@@ -152,7 +142,7 @@ class Repo_PlayOnLinux(_repo):
     __doc__ = _('PlayOnLinux (stable)')
     license = LGPL
     def __init__(self):
-        self.desc = _('PlayOnLinux is a front-end for wine. '
+        self.detail = _('PlayOnLinux is a front-end for wine. '
             'It helps to install Windows Games and softwares on Linux.')
         self.apt_content = 'playonlinux'
         self.web_page = 'http://www.playonlinux.com/en/download.html'
@@ -166,7 +156,7 @@ class Repo_WINE(_repo):
     __doc__ = _('WINE (beta version)')
     license = LGPL + ' http://wiki.winehq.org/Licensing'
     def __init__(self):
-        self.desc = _('This repository contains the latest version of Wine. '
+        self.detail = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
         self.apt_content = 'wine wine-gecko'
         self.web_page = 'https://launchpad.net/~ubuntu-wine/+archive/ppa'
@@ -185,7 +175,7 @@ class Repo_Ailurus(_launchpad):
 class Repo_AWN_Development(_launchpad):
     __doc__ = _('AWN (beta version)')
     license = GPL
-    desc = _('AWN is a MacOS X like panel for GNOME. '
+    detail = _('AWN is a MacOS X like panel for GNOME. '
             'This repository provides the latest version of AWN.')
     content = 'avant-window-navigator-trunk'
     ppa = 'awn-testing'
@@ -193,35 +183,35 @@ class Repo_AWN_Development(_launchpad):
 class Repo_Blueman(_launchpad):
     __doc__ = _('Blueman (stable)')
     license = GPL
-    desc = _('Blueman is a graphical blue-tooth manager.')
+    detail = _('Blueman is a graphical blue-tooth manager.')
     content = 'blueman'
     ppa = 'blueman'
 
 class Repo_Christine(_launchpad):
     __doc__ = _('Christine (stable)')
     license = GPL
-    desc = _('Christine is a small media player.')
+    detail = _('Christine is a small media player.')
     content = 'christine'
     ppa = 'markuz'
 
 class Repo_Chromium_Daily(_launchpad):
     __doc__ = _('Chromium (beta version)')
     license = BSD
-    desc = _('Chromium is the open source version of Google Chrome.')
+    detail = _('Chromium is the open source version of Google Chrome.')
     content = 'chromium-browser'
     ppa = 'chromium-daily'
 
 class Repo_GTG(_launchpad):
     __doc__ = _('Getting things GNOME (stable)')
     license = GPL
-    desc = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
+    detail = _('"Getting things GNOME" is a simple, powerful and flexible organization tool.')
     content = 'gtg'
     ppa = 'gtg'
 
 class Repo_GNOMEColors(_launchpad):
     __doc__ = _('GNOME colors (stable)')
     license = GPL
-    desc = _('This repository contains some themes.')
+    detail = _('This repository contains some themes.')
     content = 'gnome-colors'
     DE = 'gnome'
     ppa = 'gnome-colors-packagers'
@@ -229,7 +219,7 @@ class Repo_GNOMEColors(_launchpad):
 class Repo_GlobalMenu(_launchpad):
     __doc__ = _('GNOME Global Menu (stable)')
     license = GPL
-    desc = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
+    detail = _('GNOME Global Menu is the globally-shared menu bar of all applications.')
     content = 'gnome-globalmenu'
     DE = 'gnome'
     ppa = 'globalmenu-team'
@@ -238,7 +228,7 @@ class Repo_Medibuntu(_repo):
     __doc__ = _('Medibuntu (stable)')
     license = GPL
     def __init__(self):
-        self.desc = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
+        self.detail = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
             'There are many packages in this repository. The list of packages is in http://packages.medibuntu.org/')
         self.apt_content = ''
         self.web_page = 'http://packages.medibuntu.org/'
@@ -251,7 +241,7 @@ class Repo_Medibuntu(_repo):
 class Repo_Moovida(_launchpad):
     __doc__ = _('Moovida (stable)')
     license = GPL
-    desc = _('Moovida is a cross platform media player.')
+    detail = _('Moovida is a cross platform media player.')
     content = 'moovida'
     ppa = 'moovida-packagers'
     
@@ -259,7 +249,7 @@ class Repo_Moovida(_launchpad):
 #    __doc__ = _('Synapse (stable)')
 #    license = GPL
 #    def __init__(self):
-#        self.desc = _('Synapse is an instant messager.')
+#        self.detail = _('Synapse is an instant messager.')
 #        self.apt_content = 'synapse'
 #        self.web_page = 'http://synapse.im/download/'
 #        self.apt_file = '/etc/apt/sources.list.d/synapse.list'
@@ -271,7 +261,7 @@ class Repo_Moovida(_launchpad):
 class Repo_X_Server_Updates(_launchpad):
     __doc__ = _('X server updates (stable)')
     license = GPL
-    desc = _('This repository provides latest versions of X.org drivers, libraries.')
+    detail = _('This repository provides latest versions of X.org drivers, libraries.')
     content = ( 'fglrx-installer xfree86-driver-synaptics xserver-xorg-input-vmmouse xserver-xorg-video-ati ' +
                              'xserver-xorg-video-intel xserver-xorg-video-nv' )
     ppa = 'ubuntu-x-swat/x-updates'
@@ -279,14 +269,14 @@ class Repo_X_Server_Updates(_launchpad):
 class Repo_WebkitGTK(_launchpad):
     __doc__ = _('WebkitGTK (stable)')
     license = LGPL
-    desc = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
+    detail = _('WebkitGTK is the port of Webkit to the GTK+ platform.')
     content = 'webkit pywebkitgtk'
     ppa = 'webkit-team'
     
 class Repo_XBMC(_launchpad):
     __doc__ = _('XBMC (stable)')
     license = GPL
-    desc = _('XBMC is an open source software media player and entertainment hub for digital media.')
+    detail = _('XBMC is an open source software media player and entertainment hub for digital media.')
     content = 'xbmc'
     ppa = 'team-xbmc'
 
@@ -317,7 +307,7 @@ class Repo_IBus_Karmic(_launchpad):
 class Repo_Canonical_Partner(_repo):
     __doc__ = _('Partners of Canonical')
     def __init__(self):
-        self.desc = _('This repository provides many packages from partners of Canonical.')
+        self.detail = _('This repository provides many packages from partners of Canonical.')
         self.apt_content = 'acroread uex symphony accountz-baz'
         self.web_page = 'http://archive.canonical.com/ubuntu/dists/'
         self.apt_file = '/etc/apt/sources.list.d/partners-of-canonical.list'
@@ -330,7 +320,7 @@ class Repo_RSSOwl(_repo):
     __doc__ = _('RSSOwl (stable)')
     license = EPL
     def __init__(self):
-        self.desc = _('RSSOwl is an RSS reader.')
+        self.detail = _('RSSOwl is an RSS reader.')
         self.apt_content = 'rssowl'
         self.web_page = 'http://packages.rssowl.org/README'
         self.apt_file = '/etc/apt/sources.list.d/rssowl.list'
@@ -343,21 +333,21 @@ class Repo_Gmchess(_launchpad):
     __doc__ = _('Gmchess (stable)')
     license = GPL
     Chinese = True
-    desc = _('This is a Chinese chess game.')
+    detail = _('This is a Chinese chess game.')
     content = 'gmchess'
     ppa = 'gmchess'
 
 class Repo_Exaile(_launchpad):
     __doc__ = _('Exaile (beta version)')
     license = GPL
-    desc = _('A music manager and player for GTK+ written in Python.')
+    detail = _('A music manager and player for GTK+ written in Python.')
     content = 'exaile'
     ppa = 'exaile-devel'
 
 class Repo_Audacious(_launchpad):
     __doc__ = _('Audacious (beta version)')
     license = GPL
-    desc = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
+    detail = _('An advanced audio player.It focused on audio quality and supporting a wide range of audio codecs.')
     content = 'audacious audacious-plugins'
     ppa = 'dupondje'
 
@@ -366,7 +356,7 @@ class Repo_Audacious(_launchpad):
 #    __doc__ = _('Tor (stable)')
 #    license = BSD
 #    def __init__(self):
-#        self.desc = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
+#        self.detail = _('An open network that helps you defend against a form of network surveillance that threatens personal freedom and privacy, '
 #        'confidential business activities and relationships, and state security known as traffic analysis.')
 #        self.apt_content = 'tor privoxy vidalia'
 #        self.web_page = 'http://deb.torproject.org/'
@@ -380,7 +370,7 @@ class Repo_RedNoteBook(_repo):
     __doc__ = _('RedNoteBook (stable)')
     license = GPL
     def __init__(self):
-        self.desc = _('This is a desktop diary application.')
+        self.detail = _('This is a desktop diary application.')
         self.apt_content = 'rednotebook'
         self.web_page = 'http://robin.powdarrmonkey.net/ubuntu/'
         self.apt_file = '/etc/apt/sources.list.d/rednotebook.list'
@@ -392,21 +382,21 @@ class Repo_RedNoteBook(_repo):
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')
     license = GPL
-    desc = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
+    detail = _('A free chat client used by millions. Connect easily to MSN, Google Talk, Yahoo, AIM and other chat networks all at once.')
     content = 'pidgin'
     ppa = 'pidgin-developers'
 
 class Repo_OSD_Lyrics(_launchpad):
     __doc__ = _('OSD-Lyrics (stable)')
     license = GPL
-    desc = _('It displays lyrics. It supports many media players.')
+    detail = _('It displays lyrics. It supports many media players.')
     content = 'osdlyrics'
     ppa = 'osd-lyrics'
 
 class Repo_Mplayer_VOD(_launchpad):
     __doc__ = _('Mplayer-VOD (stable)')
     license = GPL
-    desc = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
+    detail = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
     content = 'mplayer'
     ppa = 'homer-xing/mplayer-vod'
     def visible(self):
