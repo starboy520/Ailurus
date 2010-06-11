@@ -20,13 +20,9 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import sys, os
-import ailurus
-path = os.path.dirname(ailurus.__file__)
-sys.path.insert(0, path)
+# don't change sys.path
 from lib import *
 from libapp import *
-
 assert FEDORA
 
 class _repo(I):

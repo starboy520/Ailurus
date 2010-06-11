@@ -20,13 +20,10 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import sys, os
-import ailurus
-path = os.path.dirname(ailurus.__file__)
-sys.path.insert(0, path)
+# don't change sys.path
 from lib import *
-assert UBUNTU or UBUNTU_DERIV
 from libapp import *
+assert UBUNTU or UBUNTU_DERIV
 from ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):

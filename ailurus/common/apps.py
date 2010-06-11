@@ -24,6 +24,7 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
+import urls
 
 class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
@@ -57,20 +58,18 @@ class Bioclipse(_path_lists):
         self.paths = [ self.shortcut, self.path ]
     def install(self):
         if is32():
-            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86.zip/download'],
-                  filename = 'bioclipse2.0.linux.gtk.x86.zip').download()
+            f = R(urls.bioclipse32, filename = 'bioclipse.zip').download()
         else:
-            f = R(['http://sourceforge.net/projects/bioclipse/files/bioclipse2/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip/download'],
-                  filename = 'bioclipse2.0.linux.gtk.x86_64.zip').download()
+            f = R(urls.bioclipse64, filename = 'bioclipse.zip').download()
         with Chdir('/tmp') as o:
             run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
             run_as_root('rm /opt/bioclipse -rf')
             if is32():
-                run_as_root('mv bioclipse2.0.linux.gtk.x86/bioclipse /opt/')
+                run_as_root('mv bioclipse*/bioclipse /opt/')
             else:
-                run_as_root('mv bioclipse2.0.linux.gtk.x86_64/bioclipse /opt/')
+                run_as_root('mv bioclipse*/bioclipse /opt/')
             run_as_root('chown $USER:$USER /opt/bioclipse -R')
             
             create_file(self.shortcut,'''[Desktop Entry]
