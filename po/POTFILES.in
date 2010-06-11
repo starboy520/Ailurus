@@ -36,7 +36,6 @@ ailurus/libsetting.py
 ailurus/libu.py
 ailurus/loader.py
 ailurus/main.py
-ailurus/refine_string.py
 ailurus/show_a_linux_skill_bubble.py
 ailurus/strings.py
 ailurus/support/checkupdate.py
