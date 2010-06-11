@@ -67,9 +67,9 @@ class WorldofPadman_Ubuntu(I):
     license = GPL + ' http://sourceforge.net/projects/wop-engine/'
     category = 'game'
     def install(self):
-        file1 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run').download()
+        file1 = R(urls.worldofpadman).download()
         run_as_root('bash ' + file1)
-        file2 = R('ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run').download()
+        file2 = R(urls.worldofpadman_patch).download()
         run_as_root('bash ' + file2)
     def installed(self):
         import os
