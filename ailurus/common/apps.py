@@ -24,7 +24,6 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 from libapp import *
-import urls
 
 class Generic_Genome_Browser(I):
     __doc__ = _('Generic Genome Browser')
@@ -48,7 +47,7 @@ class Generic_Genome_Browser(I):
 
 class Bioclipse(_path_lists):
     __doc__ = _('Bioclipse: an awesome Chemical and Biological Informatics application')
-    download_url = 'http://sourceforge.net/projects/bioclipse/files/bioclipse2/'
+    download_url = 'http://sourceforge.net/projects/bioclipse/'
     category = 'biology'
     license = ('Eclipse Public License (EPL) + exception, '
                'see http://www.bioclipse.net/license-0')
@@ -95,10 +94,7 @@ class Electric(_path_lists):
         self.file = '/opt/electricBinary.jar'
         self.paths = [self.shortcut, self.file]
     def install(self):
-        f = R(
-['http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'],
-11102701, 'c50557bc54b74948e707dc4606009bd93274ec71').download()
-
+        f = R(urls.electric).download()
         run_as_root('mkdir /opt', ignore_error=True)
         run_as_root('cp %s %s'%(f, self.file) )
         create_file(self.shortcut, '''[Desktop Entry]
@@ -118,9 +114,9 @@ class SweetHome3D(_path_lists):
     path = '/opt/SweetHome3D-2.3'
     paths = [shortcut, path]
     def install(self):
-        if is32(): url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x86.tgz'
-        else:       url = 'http://ncu.dl.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.3/SweetHome3D-2.3-linux-x64.tgz'
-        f = R([url]).download()
+        if is32(): url = urls.sweethome32
+        else:       url = urls.sweethome64
+        f = R(url).download()
         run_as_root('mkdir /opt', ignore_error=True)
         with Chdir('/opt') as c:
             run_as_root('tar xf ' + f)
@@ -149,38 +145,6 @@ class Songbird(I):
     def remove(self):
         pass
 
-#class OpenJUMP(_path_lists):
-#    __doc__ = _('OpenJUMP: A geographic information system')
-#    detail = ( 
-#              _('Official site: http://openjump.org/ .') +
-#              _(' This application depends on Java.') )
-#    license = GPL
-#    category = 'geography'
-#    def __init__(self):
-#        self.shortcut = '/usr/share/applications/openjump.desktop'
-#        self.dir = '/opt/openjump-1.3'
-#        self.paths = [self.shortcut, self.dir]
-#    def install(self):
-#        f = R(
-#['http://ncu.dl.sourceforge.net/project/jump-pilot/OpenJUMP/1.3/openjump-v1.3.zip'],
-#12431980, '4df9363f0e41c797f99265107d57184b8c394ae8').download()
-#
-#        with Chdir('/tmp') as o:
-#            run('unzip -oq %s'%f)
-#            import os
-#            if not os.path.exists('/opt'):
-#                run_as_root('mkdir /opt')
-#            if not os.path.exists(self.dir):
-#                run_as_root('mv openjump-1.3 /opt/')
-#            create_file(self.shortcut, '''[Desktop Entry]
-#Name=OpenJUMP
-#Exec=bash /opt/openjump-1.3/bin/openjump.sh
-#Encoding=UTF-8
-#StartupNotify=true
-#Terminal=false
-#Type=Application
-#Categories=Science;Engineering; ''')
-
 class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')
     import os
@@ -191,9 +155,7 @@ class TsingHuaTeXTemplate(_download_one_file):
     Chinese = True
     license = 'GPL'
     def __init__(self):
-        self.R = R(
-['http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'],
-9101319, '7f617b66479cafe7c01b7b104e0392a947a064ef')
+        self.R = R(urls.tsinghuatex)
         import os
         self.file = os.path.expandvars('$HOME/thuthesis.tgz')
 
