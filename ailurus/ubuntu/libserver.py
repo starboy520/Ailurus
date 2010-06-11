@@ -25,6 +25,19 @@ import sys, os
 from lib import *
 
 def _g1():
+    ret = []
+    path = os.path.dirname(os.path.abspath(__file__))+'/../support/ubuntu_server_list'
+    with open(path) as f:
+        contents = [l.strip() for l in f]
+    for i in range(0, len(contents), 4):
+        org = contents[i]
+        country = contents[i+1] # FIXME: How to do translation?
+        url = contents[i+2]
+        server = contents[i+3] # FIXME: I think we do not need this field.
+        ret.append([org, country, url, server])
+    return ret
+
+def _g1_old():
     return [
 ['Patan.com.ar', _('Argentina'), 'http://ubuntu.patan.com.ar/ubuntu/', 'ubuntu.patan.com.ar',],
 ['iiNet', _('Australia'), 'http://ftp.iinet.net.au/pub/ubuntu/', 'ftp.iinet.net.au',],
@@ -363,15 +376,15 @@ def _g1():
 ['FPT Telecom', _('Viet Nam'), 'http://mirror-fpt-telecom.fpt.net/ubuntu/', 'mirror-fpt-telecom.fpt.net',],
 ]
     
-def _g2():
+def _g2(): # I have submitted these servers to archivemirrors on launchpad
     return [ 
-['Shanghai Jiao Tong University', _('China'), 'http://ftp.sjtu.edu.cn/ubuntu/', 'ftp.sjtu.edu.cn', ],
-['University of Science and Technology', _('China'), 'http://debian.ustc.edu.cn/ubuntu/', 'debian.ustc.edu.cn', ],
-['University of Electronic Science and Technology', _('China'), 'http://ubuntu.uestc.edu.cn/ubuntu/', 'ubuntu.uestc.edu.cn', ],
-['Ubuntu Repository @ Peru', _('Peru'), 'http://pe.archive.ubuntu.com/ubuntu/', 'pe.archive.ubuntu.com', ],
-['Ubuntu Repository @ Ghana', _('Ghana'), 'http://gh.archive.ubuntu.com/ubuntu/', 'gh.archive.ubuntu.com', ],
-['Alfred State College', _('United States'), 'http://mirror.alfredstate.edu/ubuntu/', 'mirror.alfredstate.edu', ],
-['Ubuntu Repository @ Egypt', _('Egypt'), 'http://eg.archive.ubuntu.com/ubuntu/', 'eg.archive.ubuntu.com' ],
+['Shanghai Jiao Tong University', 'China', 'http://ftp.sjtu.edu.cn/ubuntu/', 'ftp.sjtu.edu.cn', ],
+['University of Science and Technology', 'China', 'http://debian.ustc.edu.cn/ubuntu/', 'debian.ustc.edu.cn', ],
+['University of Electronic Science and Technology', 'China', 'http://ubuntu.uestc.edu.cn/ubuntu/', 'ubuntu.uestc.edu.cn', ],
+['Ubuntu Repository @ Peru', 'Peru', 'http://pe.archive.ubuntu.com/ubuntu/', 'pe.archive.ubuntu.com', ],
+['Ubuntu Repository @ Ghana', 'Ghana', 'http://gh.archive.ubuntu.com/ubuntu/', 'gh.archive.ubuntu.com', ],
+['Alfred State College', 'United States', 'http://mirror.alfredstate.edu/ubuntu/', 'mirror.alfredstate.edu', ],
+['Ubuntu Repository @ Egypt', 'Egypt', 'http://eg.archive.ubuntu.com/ubuntu/', 'eg.archive.ubuntu.com' ],
 ]
 
 def get_candidate_repositories():

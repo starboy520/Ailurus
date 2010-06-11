@@ -42,10 +42,11 @@ class Analysis:
             return
         
         # set server
-        import re
-        match = re.match(r'^[a-z]+://([^/]+)/.*$', url)
-        assert match, url
-        self.server = match.group(1)
+        if self.server == None:
+            import re
+            match = re.match(r'^[a-z]+://([^/]+)/.*$', url)
+            assert match, url
+            self.server = match.group(1)
     
     def end_one_mirror(self):
         url = self.httpurl or self.ftpurl or self.rsyncurl

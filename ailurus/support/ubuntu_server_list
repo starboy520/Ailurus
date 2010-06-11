@@ -109,7 +109,7 @@ espelhos.edugraf.ufsc.br
 University of Sao Paulo
 Brazil
 http://sft.if.usp.br/ubuntu/
-sft.if.usp.br:
+sft.if.usp.br
 Locaweb
 Brazil
 http://ubuntu-archive.locaweb.com.br/ubuntu/
@@ -117,7 +117,7 @@ ubuntu-archive.locaweb.com.br
 LAS-IC-Unicamp
 Brazil
 http://www.las.ic.unicamp.br/pub/ubuntu/
-rsync.las.ic.unicamp.br
+www.las.ic.unicamp.br
 Interlegis
 Brazil
 http://ubuntu.interlegis.gov.br/ubuntu/
@@ -233,7 +233,7 @@ ftp.sh.cvut.cz
 UPC Česká republika, a.s.
 Czech Republic
 http://archive.ubuntu.mirror.dkm.cz/
-ubuntu.mirror.dkm.cz
+archive.ubuntu.mirror.dkm.cz
 Czech Technical University Prague
 Czech Republic
 http://ftp.cvut.cz/ubuntu/
@@ -269,7 +269,7 @@ mirrors.nic.funet.fi
 CSC / Funet
 Finland
 http://www.nic.funet.fi/pub/mirrors/archive.ubuntu.com/
-rsync.nic.funet.fi
+www.nic.funet.fi
 Tampere University of Technology / Department of Communications Engineering
 Finland
 http://ubuntu.trumpetti.atm.tut.fi/ubuntu/
@@ -305,11 +305,11 @@ ubuntu.univ-nantes.fr
 LIP6/UPMC
 France
 http://www-ftp.lip6.fr/pub/linux/distributions/Ubuntu/archive/
-ftp.lip6.fr
+www-ftp.lip6.fr
 CIRIL
 France
 http://wwwftp.ciril.fr/pub/linux/ubuntu/archives/
-ftp.ciril.fr
+wwwftp.ciril.fr
 Florian Entreprise
 France
 http://archive.monubuntu.fr/
@@ -389,7 +389,7 @@ ftp.tu-ilmenau.de
 Universität Bayreuth
 Germany
 http://ftp.uni-bayreuth.de/linux/ubuntu/ubuntu/
-rsync.uni-bayreuth.de
+ftp.uni-bayreuth.de
 Universität Erlangen-Nürnberg
 Germany
 http://ftp.uni-erlangen.de/mirrors/ubuntu/
@@ -421,7 +421,7 @@ ubuntu.unitedcolo.de
 University of Applied Sciences Wolfenbuettel
 Germany
 http://archive.ubuntu.uasw.edu/
-ftp.uasw.edu
+archive.ubuntu.uasw.edu
 Charite Berlin
 Germany
 http://debian.charite.de/ubuntu/
@@ -453,7 +453,7 @@ ftp.ntua.gr
 OTENET
 Greece
 http://ubuntu.otenet.gr/
-ftp.otenet.gr
+ubuntu.otenet.gr
 Tele Greenland A/S
 Greenland
 http://mirror.greennet.gl/ubuntu/
@@ -465,7 +465,7 @@ ftp.hostrino.com
 Budapest University of Technology and Economics CrySyS Lab
 Hungary
 http://ubuntu.mirrors.crysys.hu/
-mirrors.crysys.hu
+ubuntu.mirrors.crysys.hu
 FSN.hu Foundation 
 Hungary
 http://ftp.freepark.org/ubuntu/
@@ -581,7 +581,7 @@ ubuntu.mithril-linux.org
 KDDI R&amp;D Laboratories Inc.
 Japan
 http://www.ftp.ne.jp/Linux/packages/ubuntu/archive/
-rsync.kddilabs.jp
+www.ftp.ne.jp
 Neolabs LLP
 Kazakhstan
 http://mirror.neolabs.kz/ubuntu/
@@ -637,7 +637,7 @@ ftp.litnet.lt
 root S.A.
 Luxembourg
 http://ubuntu.mirror.root.lu/ubuntu/
-mirror.root.lu
+ubuntu.mirror.root.lu
 Multimedia University (MMU)
 Malaysia
 http://archive.mmu.edu.my/ubuntu/
@@ -677,7 +677,7 @@ ubuntu.ujed.mx
 BSD.MD
 Republic of Moldova
 http://mirrors.bsd.md/ubuntu/
-rsync.bsd.md
+mirrors.bsd.md
 Mongolian Open Source Initiative NGO
 Mongolia
 http://archive.ubuntu.mnosi.org/ubuntu/
@@ -685,7 +685,7 @@ archive.ubuntu.mnosi.org
 Polytechnic of Namibia
 Namibia
 http://ubuntu-archive.polytechnic.edu.na/ubuntu/
-ftp.polytechnic.edu.na
+ubuntu-archive.polytechnic.edu.na
 Mitra Network Private Limited
 Nepal
 http://archive.mitra.net.np/ubuntu/
@@ -789,7 +789,7 @@ ftp.man.szczecin.pl
 Piotrkosoft.net - Data Storage Center
 Poland
 http://piotrkosoft.net/pub/mirrors/ubuntu/
-rsync.piotrkosoft.net
+piotrkosoft.net
 Dep. de Ciência de Computadores - FCUP
 Portugal
 http://ubuntu.dcc.fc.up.pt/
@@ -825,7 +825,7 @@ ftp.ua.pt
 Mosel ESTG-IPleiria
 Portugal
 http://mosel.estg.ipleiria.pt/mirror/distros/ubuntu/archive/
-http:
+mosel.estg.ipleiria.pt
 Carnegie Mellon - Qatar
 Qatar
 http://ubuntu.qatar.cmu.edu/ubuntu/
@@ -897,7 +897,7 @@ ubuntu.etf.bg.ac.rs
 ezNetworking Solutions Pte. Ltd.
 Singapore
 http://ubuntu.oss.eznetsols.org/ubuntu/
-rsync.oss.eznetsols.org
+ubuntu.oss.eznetsols.org
 Nanyang Technological University Open Source Society
 Singapore
 http://linux.ntuoss.org/ubuntu/
@@ -921,7 +921,7 @@ tux.rainside.sk
 Energotel, a.s.
 Slovakia
 http://ftp.energotel.sk/pub/linux/ubuntu/
-rsync.energotel.sk
+ftp.energotel.sk
 Arnes
 Slovenia
 http://ftp.arnes.si/pub/mirrors/ubuntu/
@@ -933,7 +933,7 @@ mirror.lihnidos.org
 Telkom SAIX
 South Africa
 http://ubuntu.saix.net/ubuntu-archive/
-ftp.saix.net
+ubuntu.saix.net
 TENET
 South Africa
 http://ubuntu.mirror.ac.za/ubuntu-archive/
@@ -953,7 +953,7 @@ ubuntu.cica.es
 Universidade da Coruña
 Spain
 http://ftp.udc.es/ubuntu/
-rsync.udc.es
+ftp.udc.es
 Grupo Universitario de Informática
 Spain
 http://ftp.gui.uva.es/sites/ubuntu.com/ubuntu/
@@ -969,7 +969,7 @@ softlibre.unizar.es
 RedIRIS
 Spain
 http://sunsite.rediris.es/mirror/ubuntu-archive/
-ftp.rediris.es
+sunsite.rediris.es
 Universidad Carlos III de Madrid - Oficina de Software Libre
 Spain
 http://ubuntu.uc3m.es/ubuntu/
@@ -1017,7 +1017,7 @@ ubuntu.mirror.su.se
 Port80
 Sweden
 http://ftp.port80.se/ubuntu/
-rsync.port80.se
+ftp.port80.se
 SWITCH
 Switzerland
 http://mirror.switch.ch/ftp/mirror/ubuntu/
@@ -1085,7 +1085,7 @@ ftp.ncnu.edu.tw
 TAIWAN MIRROR
 Taiwan
 http://www.mirror.tw/pub/ubuntu/ubuntu/
-ftp.mirror.tw
+www.mirror.tw
 Computer Center, Khon Kaen University
 Thailand
 http://mirror.kku.ac.th/ubuntu/
@@ -1141,7 +1141,7 @@ ubuntu.org.ua
 University Of Kent UK Mirror Service
 United Kingdom
 http://www.mirrorservice.org/sites/archive.ubuntu.com/ubuntu/
-rsync.mirrorservice.org
+www.mirrorservice.org
 Ticklers.org
 United Kingdom
 http://ftp.ticklers.org/archive.ubuntu.org/ubuntu/
@@ -1189,7 +1189,7 @@ ubuntu.retrosnub.co.uk
 Virgin Media
 United Kingdom
 http://ubuntu.virginmedia.com/archive/
-mirrors.virginmedia.com
+ubuntu.virginmedia.com
 Argonne National Laboratory
 United States
 http://mirror.anl.gov/pub/ubuntu/
@@ -1229,7 +1229,7 @@ mirrors.cat.pdx.edu
 Northeastern University College of Computer Science
 United States
 http://mirrors.ccs.neu.edu/ubuntu/
-ftp.ccs.neu.edu
+mirrors.ccs.neu.edu
 Easynews
 United States
 http://mirrors.easynews.com/linux/ubuntu/
@@ -1261,7 +1261,7 @@ ubuntu.secsup.org
 Walla Walla University
 United States
 http://ubuntu.wallawalla.edu/ubuntu/
-ftp.wallawalla.edu
+ubuntu.wallawalla.edu
 Wikimedia Foundation
 United States
 http://ubuntu.wikimedia.org/ubuntu/
@@ -1277,7 +1277,7 @@ www.club.cc.cmu.edu
 Georgia Tech. Software Library
 United States
 http://www.gtlib.gatech.edu/pub/ubuntu/
-rsync.gtlib.gatech.edu
+www.gtlib.gatech.edu
 Duke University
 United States
 http://archive.linux.duke.edu/ubuntu/
@@ -1353,7 +1353,7 @@ ubuntu.securedservers.com
 Boston University Linux Users Group
 United States
 http://www.lug.bu.edu/mirror/ubuntu/
-ftp.lug.bu.edu
+www.lug.bu.edu
 University of California at Davis
 United States
 http://mirror.math.ucdavis.edu/ubuntu/
@@ -1393,7 +1393,7 @@ ubuntu.secs.oakland.edu
 RCN Washington DC Mirror
 United States
 http://ubuntu.washdc-linux.com/ubuntu/
-washdc-linux.com
+ubuntu.washdc-linux.com
 Sharq Telekom
 Uzbekistan
 http://ubuntu.uz/ubuntu/
