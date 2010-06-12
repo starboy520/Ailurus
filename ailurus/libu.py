@@ -28,11 +28,11 @@ def blank_pixbuf(width, height):
     pixbuf.fill(0) # transparent black
     return pixbuf
 
-def get_pixbuf(file, width, height):
+def get_pixbuf(path, width, height):
     import os, gtk
-    if os.path.exists(file): return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
+    if os.path.exists(path): return gtk.gdk.pixbuf_new_from_file_at_size(path, width, height)
     else:
-        print file, 'not found'
+        print path, 'is missing'
         return blank_pixbuf(width, height)
 
 def gray_bg(widget):

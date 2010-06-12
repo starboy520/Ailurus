@@ -25,6 +25,12 @@ import gtk, sys, os
 from lib import *
 from libu import *
 
+def get_information_pixbuf(path, width, height):
+    if not os.path.exists(path):
+        print path, 'is missing'
+        path = D+'sora_icons/default_information_icon.png'
+    return get_pixbuf(path, width, height)
+
 class InfoPane(gtk.VBox):
     icon = D+'sora_icons/m_hardware.png'
     text = _('Information')
@@ -105,7 +111,7 @@ class InfoPane(gtk.VBox):
             rows = function() # some function may returns many lines
             trees = self.function2trees[function] = []
             for row in rows:
-                pixbuf = get_pixbuf(row[2], 24, 24)
+                pixbuf = get_information_pixbuf(row[2], 24, 24)
                 t = self.treestore.append(tree, [pixbuf, row[0], row[1]])
                 trees.append(t)
         
