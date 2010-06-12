@@ -732,8 +732,8 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        self.DE_KDE = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
-        self.DE_GNOME = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
+        self.DE_KDE = get_pixbuf(D + 'umut_icons/kde.png', 24, 24)
+        self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 24, 24)
         self.DE_DEFAULT = blank_pixbuf(24, 24)
 
         self.final_box = gtk.VBox(False, 5)

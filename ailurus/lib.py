@@ -53,6 +53,8 @@ class C:
         raise NotImplementedError
     
 class Config:
+    import os
+    config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
     def make_config_dir(cls):
         import os
@@ -66,8 +68,7 @@ class Config:
             os.chmod(dir, 0755)
     @classmethod
     def get_config_dir(cls):
-        import os
-        return os.path.expanduser('~/.config/ailurus/')
+        return cls.config_dir
     @classmethod
     def init(cls):
         assert not hasattr(cls, 'inited')
