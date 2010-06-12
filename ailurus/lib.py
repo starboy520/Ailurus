@@ -1380,14 +1380,21 @@ class firefox:
         'key should be native python string. return native python constant'
         assert isinstance(key, (str, unicode))
         return cls.key2value[key]
+#    @classmethod
+#    def set_pref(cls, key, value):
+#        'value should be native python variable'
+#        cls.key2value[key] = value
+#        repr_key = '"%s"' % key
+#        repr_value = repr(value)
+#        if value == True: repr_value = 'true'
+#        elif value == False: repr_value = 'false'
+#        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
     @classmethod
-    def set_pref(cls, key, value):
+    def set_str_pref(cls, key, value):
         'value should be native python variable'
         cls.key2value[key] = value
         repr_key = '"%s"' % key
         repr_value = repr(value)
-        if value == True: repr_value = 'true'
-        elif value == False: repr_value = 'false'
         cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
     @classmethod
     def remove_pref(cls, key):

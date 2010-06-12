@@ -171,105 +171,230 @@ def __change_hostname():
     hbox = change_host_name()
     return Setting(hbox, _('Change host name'), ['host_name'])
 
-class Configure_Firefox(gtk.VBox):
-    def items(self):
-        return [                
-                ['user_pref("content.max.tokenizing.time", true);\n'
-                 'user_pref("content.notify.ontimer", true);\n'
-                 'user_pref("network.http.pipelining.firstrequest", true);\n'
-                 'user_pref("network.http.pipelining.ssl", true);\n'
-                 'user_pref("network.http.proxy.pipelining", true);\n'
-                 'user_pref("content.max.tokenizing.time", 3000000);\n'
-                 'user_pref("content.maxtextrun", 8191);\n'
-                 'user_pref("content.notify.backoffcount", 200);\n'
-                 'user_pref("content.notify.interval", 100000);\n'
-                 'user_pref("content.notify.threshold", 100000);\n'
-                 'user_pref("content.switch.threshold", 650000);\n'
-                 'user_pref("network.dnsCacheEntries", 256);\n'
-                 'user_pref("network.dnsCacheExpiration", 86400);\n'
-                 'user_pref("network.ftp.idleConnectionTimeout", 60);\n'
-                 'user_pref("network.http.keep-alive.timeout", 30);\n'
-                 'user_pref("network.http.max-persistent-connections-per-proxy", 24);\n'
-                 'user_pref("nglayout.initialpaint.delay", 0);\n'
-                 'user_pref("network.http.pipelining.maxrequests", 8);\n'
-                 'user_pref("network.http.max-connections", 96);\n'
-                 'user_pref("network.http.max-connections-per-server", 32);\n'
-                 'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
-                 'user_pref("ui.submenuDelay", 0);\n',
-                 _('Speed up'),],
-                 
-                 ['user_pref("browser.urlbar.autoFill", true);\n', _('URL bar auto-completion'),],
-                 
-                 ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
-                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k protocol'),],
-                 
-                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when minimized'),],
-                 
-                 ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
-                 
-                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
-                 
-                 ['user_pref("browser.sessionstore.max_tabs_undo", 25);\n', _('Increase the limit of Recent Closed Tabs'), ],
-                 
-                 ['user_pref("browser.search.openintab", true);\n', _('Open search result in new tab'), ],
-                 
-                 ['user_pref("browser.blink_allowed", false);\n', _('Disable Blinking Text'), ],
-                 
-                 ['user_pref("view_source.editor.external", true);\n'
-                  'user_pref("view_source.editor.path", "/usr/bin/gedit");\n', _('View page Source in Gediter'), ],
-                  
-                 ['user_pref("browser.tabs.tabMinWidth", 40);\n', _('Show more Tabs on single window'), ],
-                 
-                 ['user_pref("browser.history_expire_days", 30);\n'
-                  'user_pref("browser.history_expire_sites", 1000);\n', _('Reduce history keeping'), ],
-                  
-                 ['user_pref("browser.urlbar.clickSelectsAll", true);\n', _('Single click to select the whole URL in Address Bar'), ],
-                 
-                 ['user_pref("browser.bookmarks.autoExportHTML", 0);\n', _('Auto export bookmarks as HTML'), ],
-
-                ]
-
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 5)
-        self.changed = 0
-        self.button_apply = button_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
-        button_apply.connect('clicked', self.__apply_change)
-        button_apply.set_sensitive(True)
-        align_button_apply = gtk.HBox(False, 0)
-        align_button_apply.pack_end(button_apply, False)
-        self.checkbuttons = []
-        for item in self.items():
-            self.checkbuttons.append(FirefoxConfig(self, *item))        
-        btable = gtk.Table()
-        btable.set_col_spacings(10)
-        label = gtk.Label()
-        label.set_text(_('Before configuring Firefox, please close all Firefox windows.\n'))
-        label.set_tooltip_text("Tips: Ailurus creat a file called user.js in the folder of Firefox personal settings,"
-                               "which save these tweaks you choose below.")
-        btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
-        X = 0
-        Y = 1
-        for button in self.checkbuttons:
-            btable.attach(button, X, X+1, Y, Y+1, gtk.FILL, gtk.FILL)
-            X+=1
-            if X==2: ( X,Y ) = ( 0,Y+1 )
-        btable.attach(align_button_apply, 1, 2, Y+1, Y+2, gtk.FILL, gtk.FILL)
-        self.pack_start(btable, False)
-
-    def __apply_change(self, w):
-        install_package = []
-        for button in self.checkbuttons:
-            if button.get_active():
-                install_package.append(button.config_item)
-        import os
-        preference_path = firefox.preference_dir
-        os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
-        with open(preference_path + 'user.js', 'w+') as f:
-            f.writelines(install_package)
+#class Configure_Firefox(gtk.VBox):
+#    def items(self):
+#        return [                
+#                ['user_pref("content.max.tokenizing.time", true);\n'
+#                 'user_pref("content.notify.ontimer", true);\n'
+#                 'user_pref("network.http.pipelining.firstrequest", true);\n'
+#                 'user_pref("network.http.pipelining.ssl", true);\n'
+#                 'user_pref("network.http.proxy.pipelining", true);\n'
+#                 'user_pref("content.max.tokenizing.time", 3000000);\n'
+#                 'user_pref("content.maxtextrun", 8191);\n'
+#                 'user_pref("content.notify.backoffcount", 200);\n'
+#                 'user_pref("content.notify.interval", 100000);\n'
+#                 'user_pref("content.notify.threshold", 100000);\n'
+#                 'user_pref("content.switch.threshold", 650000);\n'
+#                 'user_pref("network.dnsCacheEntries", 256);\n'
+#                 'user_pref("network.dnsCacheExpiration", 86400);\n'
+#                 'user_pref("network.ftp.idleConnectionTimeout", 60);\n'
+#                 'user_pref("network.http.keep-alive.timeout", 30);\n'
+#                 'user_pref("network.http.max-persistent-connections-per-proxy", 24);\n'
+#                 'user_pref("nglayout.initialpaint.delay", 0);\n'
+#                 'user_pref("network.http.pipelining.maxrequests", 8);\n'
+#                 'user_pref("network.http.max-connections", 96);\n'
+#                 'user_pref("network.http.max-connections-per-server", 32);\n'
+#                 'user_pref("network.http.max-persistent-connections-per-server", 8);\n'
+#                 'user_pref("ui.submenuDelay", 0);\n',
+#                 _('Speed up'),],
+#                 
+#                 ['user_pref("browser.urlbar.autoFill", true);\n', _('URL bar auto-completion'),],
+#                 
+#                 ['user_pref("network.protocol-handler.app.ed2k", "/usr/bin/ed2k");\n'
+#                  'user_pref("network.protocol-handler.external.ed2k", true);\n', _('Support ed2k protocol'),],
+#                 
+#                 ['user_pref("config.trim_on_minimize", true);\n', _('Swap out memory when minimized'),],
+#                 
+#                 ['user_pref("network.prefetch-next", false);\n', _('Do not pre-fetch link'), ],
+#                 
+#                 ['user_pref("security.dialog_enable_delay", 0);\n', _('Do not delay before installing extensions'), ],
+#                 
+#                 ['user_pref("browser.sessionstore.max_tabs_undo", 25);\n', _('Increase the limit of Recent Closed Tabs'), ],
+#                 
+#                 ['user_pref("browser.search.openintab", true);\n', _('Open search result in new tab'), ],
+#                 
+#                 ['user_pref("browser.blink_allowed", false);\n', _('Disable Blinking Text'), ],
+#                 
+#                 ['user_pref("view_source.editor.external", true);\n'
+#                  'user_pref("view_source.editor.path", "/usr/bin/gedit");\n', _('View page Source in Gediter'), ],
+#                  
+#                 ['user_pref("browser.tabs.tabMinWidth", 40);\n', _('Show more Tabs on single window'), ],
+#                 
+#                 ['user_pref("browser.history_expire_days", 30);\n'
+#                  'user_pref("browser.history_expire_sites", 1000);\n', _('Reduce history keeping'), ],
+#                  
+#                 ['user_pref("browser.urlbar.clickSelectsAll", true);\n', _('Single click to select the whole URL in Address Bar'), ],
+#                 
+#                 ['user_pref("browser.bookmarks.autoExportHTML", 0);\n', _('Auto export bookmarks as HTML'), ],
+#
+#                ]
+#
+#    def __init__(self):
+#        gtk.VBox.__init__(self, False, 5)
+#        self.changed = 0
+#        self.button_apply = button_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
+#        button_apply.connect('clicked', self.__apply_change)
+#        button_apply.set_sensitive(True)
+#        align_button_apply = gtk.HBox(False, 0)
+#        align_button_apply.pack_end(button_apply, False)
+#        self.checkbuttons = []
+#        for item in self.items():
+#            self.checkbuttons.append(FirefoxConfig(self, *item))        
+#        btable = gtk.Table()
+#        btable.set_col_spacings(10)
+#        label = gtk.Label()
+#        label.set_text(_('Before configuring Firefox, please close all Firefox windows.\n'))
+#        label.set_tooltip_text("Tips: Ailurus creat a file called user.js in the folder of Firefox personal settings,"
+#                               "which save these tweaks you choose below.")
+#        btable.attach(label, 0 , 2, 0, 1, gtk.FILL, gtk.FILL)
+#        X = 0
+#        Y = 1
+#        for button in self.checkbuttons:
+#            btable.attach(button, X, X+1, Y, Y+1, gtk.FILL, gtk.FILL)
+#            X+=1
+#            if X==2: ( X,Y ) = ( 0,Y+1 )
+#        btable.attach(align_button_apply, 1, 2, Y+1, Y+2, gtk.FILL, gtk.FILL)
+#        self.pack_start(btable, False)
+#
+#    def __apply_change(self, w):
+#        install_package = []
+#        for button in self.checkbuttons:
+#            if button.get_active():
+#                install_package.append(button.config_item)
+#        import os
+#        preference_path = firefox.preference_dir
+#        os.system('cp %s/prefs.js %s/prefs.js.back' % (preference_path, preference_path))
+#        with open(preference_path + 'user.js', 'w+') as f:
+#            f.writelines(install_package)
         
 def __configure_firefox():
+    bool = {'Yes': 0, 'No' : 1}
+
+    content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
+    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 00000, 5000000, 50000, 360000)
+
+    content_notify_backoffcount_t = FirefoxPrefText(_('Reflow pages once when finishing downloading after this number has been reached'), 'content.notify.backoffcount')
+    content_notify_backoffcount = FirefoxNumericPref('content.notify.backoffcount', -1, 500, 1, -1)
+    
+    network_dnsCacheEntries_t = FirefoxPrefText(_('The number of DNS results to cache.'), 'network.dnsCacheEntries')
+    network_dnsCacheEntries = FirefoxNumericPref('network.dnsCacheEntries', 0, 256, 16, 20)
+    
+    network_dnsCacheExpiration_t = FirefoxPrefText(_('The number of seconds to cache DNS results.'), 'network.dnsCacheExpiration')
+    network_dnsCacheExpiration = FirefoxNumericPref('network.dnsCacheExpiration', 60, 86400, 120, 60)
+    
+    network_ftp_idleConnectionTimeout_t = FirefoxPrefText(_('The number of seconds before the FTP connection times out.'), 'network.ftp.idleConnectionTimeout')
+    network_ftp_idleConnectionTimeout = FirefoxNumericPref('network.ftp.idleConnectionTime', 60, 300, 60, 300)
+    
+    network_http_keep_alive_timeout_t = FirefoxPrefText(_('Amount of time in seconds to keep keep-alive connections alive.'), 'network.http.keep-alive.timeout', 
+                                                        _('HTTP keep-alive connections can be re-used for multiple requests, as opposed to non-keep-alive connections,'
+                                                          ' which are limited to one request. Using keep-alive connections improves performance. '
+                                                          'This preference determines how long keep-alive connections are kept alive. \n'))
+    network_http_keep_alive_timeout = FirefoxNumericPref('network.http.keep-alive.timeout', 30, 300, 10, 300)
+    
+    network_http_max_persistent_connections_per_proxy_t = FirefoxPrefText(_('the total number of HTTP keep-alive connections '),
+                                                                          'network.http.max-persistent-connections-per-proxy',
+                                                                          'If more connections are needed, they are queued until a connection "slot" is available. '
+                                                                          'This preference takes values between 1 and 255 inclusive, '
+                                                                          'directly corresponding to the maximum number of HTTP keep-alive connections the application '
+                                                                          'can have open at once to the proxy server. \n')
+    network_http_max_persistent_connections_per_proxy = FirefoxNumericPref('network.http.max-persistent-connections-per-proxy', 1, 255, 1, 24)
+    
+    nglayout_initialpaint_delay_t = FirefoxPrefText(_('The number of milliseconds to wait before first displaying the page.'), 'nglayout.initialpaint.delay', 
+                                                    _("Since the start of a web page normally doesn't have much useful information to display, "
+                                                      "Mozilla applications will wait a short interval before first rendering a page. "
+                                                      "This preference controls that interval. \n"))
+    nglayout_initialpaint_delay = FirefoxNumericPref('nglayout.initialpaint.delay', 0, 250, 25, 250)
+    
+    network_http_max_connections_t = FirefoxPrefText(_('the maximum number of HTTP connections Mozilla can have open at once.'), 'network.http.max-connections', 
+                                                   _('Users on slower connections may want to reduce this number to help prevent HTTP connection timeouts. '
+                                                     'Users on faster connections may want to increase it.\n'))
+    network_http_max_connections = FirefoxNumericPref('network.http.max-connections', 1, 65535, 96, 30)
+    
+    network_http_max_connections_per_server_t = FirefoxPrefText(_('The maximum number of connections of any type to a single server'), 'network.http.max-connections-per-server')
+    network_http_max_connections_per_server = FirefoxNumericPref('network.http.max-connections-per-server', 1, 255, 16, 32)
+    
+    browser_sessionstore_max_tabs_undo_t = FirefoxPrefText(_('Increase/Decrease History Undo Close Tab Limit'), 'browser.sessionstore.max_tabs_undo')
+    browser_sessionstore_max_tabs_undo = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', 5, 50, 4, 10)
+    
+    browser_blink_allowed_t = FirefoxPrefText(_('Display content in blink elements and styled with text-decoration'), 'browser.blink_allowed')
+    browser_blink_allowed = FirefoxStrPref('browser.blink_allowed', bool)
+    
+    browser_tabs_tab_min_width_t = FirefoxPrefText(_('Set the the width of narrowest tab'), 'browser.tabs.tabMinWidth',
+                                                   _("To fit more tabs on the tab strip, Firefox shrinks each tab’s width. "
+                                                     "This preference determines the narrowest a tab can become before the tab strip becomes scrollable "
+                                                     "to handle the overflow. \n"))
+    browser_tabs_tab_min_width = FirefoxNumericPref('browser.tabs.tabMinWidth', 38, 100, 1, 75)
+    
+    toolkit_scrollbox_scroll_increment_t = FirefoxPrefText(_('Speed of Scrolling Across Tabs'), 'toolkit.scrollbox.scrollIncrement')
+    toolkit_scrollbox_scroll_increment = FirefoxNumericPref('toolkit.scrollbox.scrollIncrement', 10, 100, 5, 20)
+    
+    browser_urlbar_autofill_t = FirefoxPrefText(_('Auto Complete URL while You type at address Bar'), 'browser.urlbar.autoFill')
+    browser_urlbar_autofill = FirefoxStrPref('browser.urlbar.autoFill', bool)
+    
+    browser_bookmarks_auto_export_html_t = FirefoxPrefText(_('Auto export bookmarks as HTML'), 'browser.bookmarks.autoExportHTML')
+    browser_bookmarks_auto_export_html = FirefoxStrPref('browser.bookmarks.autoExportHTML', bool)
+    
+    browser_history_expire_days_t = FirefoxPrefText(_('The History expiring time'), 'browser.history_expire_days')
+    browser_history_expire_days = FirefoxNumericPref('browser.history_expire_days', 1, 300, 1, 180)
+    
+    broswer_history_expire_sites_t = FirefoxPrefText(_('The maximum number of webpages to be recorded into the history'), 'browser.history_expire_sites')
+    broswer_history_expire_sites = FirefoxNumericPref('browser.history_expire_sites', 100, 100000, 100, 40000)
+    
+    extension_get_addons_max_results_t = FirefoxPrefText(_('The maximum number of add-on search results'), 'extension.getAddons.maxResults')
+    extension_get_addons_max_results = FirefoxNumericPref('extension.getAddons.maxResults', 1, 30, 1, 5)
+    
+    browser_cache_offline_capacity_t = FirefoxPrefText(_('Disk space for offline cashe'), 'browser.cache.offline.capacity',
+                                                       _('set this amount to what you want to allocate'
+                                                         ' the amount of disk space the offline cache may use, in kilobytes. \n'))
+    browser_cache_offline_capacity = FirefoxNumericPref('browser.cache.offline.capacity', 1024, 1024000, 1024, 521000)
+    
+    setting = {'normal' : 0, 'never open any new windows' : 1, 'default' : 2 }
+    browser_link_open_newwindow_restriction_t = FirefoxPrefText(_('Open Javascript popups as tabs'), 'browser.link.open_newwindow.restriction')
+    browser_link_open_newwindow_restriction = FirefoxStrPref('browser.link.open_newwindow.restriction', setting)
+    
+    setting = {'go back' : 0, 'go forward' : 1, 'unmap' : 2 }
+    browser_backspace_action_t = FirefoxPrefText(_('Redefine the Backspace button'), 'browser.backspace_action' )
+    browser_backspace_action = FirefoxStrPref('browser.backspace_action', setting)
+    
+    setting = {'none' : 'none', 'once' : 'once', 'normal' : 'normal' }
+    image_animation_mod_t = FirefoxPrefText(_('Way of animating multi-frame GIF images none'), 'image.animation_mode')
+    image_animation_mod = FirefoxStrPref('image.animation_mode', setting)
+     
+    global table 
+    table = gtk.Table()
+    global row 
+    row = 0
+    def add(t, w):
+        global table, row
+        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        table.attach(w, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
+        row += 1
+    add(content_max_tokenizing_time_t,content_max_tokenizing_time)
+    add(content_notify_backoffcount_t,content_notify_backoffcount)
+    add(network_dnsCacheEntries_t,network_dnsCacheEntries)
+    add(network_dnsCacheExpiration_t,network_dnsCacheExpiration)
+    add(network_ftp_idleConnectionTimeout_t,network_ftp_idleConnectionTimeout)
+    add(network_http_keep_alive_timeout_t,network_http_keep_alive_timeout)
+    add(network_http_max_persistent_connections_per_proxy_t,network_http_max_persistent_connections_per_proxy)
+    add(nglayout_initialpaint_delay_t,nglayout_initialpaint_delay)
+    add(network_http_max_connections_t,network_http_max_connections)
+    add(network_http_max_connections_per_server_t,network_http_max_connections_per_server)
+    add(browser_sessionstore_max_tabs_undo_t,browser_sessionstore_max_tabs_undo)
+    add(browser_blink_allowed_t,browser_blink_allowed)
+    add(browser_tabs_tab_min_width_t,browser_tabs_tab_min_width)
+    add(toolkit_scrollbox_scroll_increment_t,toolkit_scrollbox_scroll_increment)
+    add(browser_urlbar_autofill_t,browser_urlbar_autofill)
+    add(browser_bookmarks_auto_export_html_t,browser_bookmarks_auto_export_html)
+    add(browser_history_expire_days_t,browser_history_expire_days)
+    add(broswer_history_expire_sites_t,broswer_history_expire_sites)
+    add(extension_get_addons_max_results_t,extension_get_addons_max_results)
+    add(browser_cache_offline_capacity_t,browser_cache_offline_capacity)
+    add(browser_link_open_newwindow_restriction_t, browser_link_open_newwindow_restriction)
+    add(browser_backspace_action_t, browser_backspace_action)
+    add(image_animation_mod_t, image_animation_mod)
+    
     if firefox.support:
-        return Setting(Configure_Firefox(), _('Configure Firefox'), ['firefox'])
+        return Setting(table, _('Configure Firefox'), ['firefox'])
     else:
         return None
     
