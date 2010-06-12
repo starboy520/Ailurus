@@ -184,16 +184,12 @@ class ImageChooser(gtk.Button):
         chooser.destroy()
     
     def display_image(self, image_path):
-        'If image_path is none, then show blank.'
         child = self.get_child()
         if child:
             self.remove(child)
         
-        if image_path:
-            pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
-            pixbuf = self.scale_pixbuf(pixbuf)
-        else:
-            pixbuf = blank_pixbuf(self.image_max_width, self.image_max_height)
+        pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
+        pixbuf = self.scale_pixbuf(pixbuf)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.add(image)
         self.show_all()
@@ -331,29 +327,29 @@ class FirefoxPrefText(gtk.Label):
         self.set_ellipsize(pango.ELLIPSIZE_END)
         self.set_alignment(0, 0.5)
 
-#class FirefoxBooleanPref(gtk.HBox):
-#    def __init__(self, key):
-#        assert isinstance(key, str) and key
-#        self.key = key
-#        self.combo = combo = gtk.combo_box_new_text()
-#        combo.append_text(_('Yes'))
-#        combo.append_text(_('No'))
-#        #combo.connect('scroll-event', lambda w: True)
-#        gtk.HBox.__init__(self, False, 5)
-#        self.pack_start(combo, False)
-#        self.get_value()
-#        combo.connect('changed', lambda w: self.set_value())
-#    def get_value(self):
-#        try:
-#            value = bool(firefox.get_pref(self.key))
-#        except:
-#            pass
-#        else:
-#            self.combo.set_active({True:0, False:1}[value])
-#    def set_value(self):
-#        index = self.combo.get_active()
-#        if index == -1: firefox.remove_pref(self.key)
-#        else: firefox.set_pref(self.key, {0:True, 1:False}[index])
+class FirefoxBooleanPref(gtk.HBox):
+    def __init__(self, key):
+        assert isinstance(key, str) and key
+        self.key = key
+        self.combo = combo = gtk.combo_box_new_text()
+        combo.append_text(_('Yes'))
+        combo.append_text(_('No'))
+        #combo.connect('scroll-event', lambda w: True)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(combo, False)
+        self.get_value()
+        combo.connect('changed', lambda w: self.set_value())
+    def get_value(self):
+        try:
+            value = bool(firefox.get_pref(self.key))
+        except:
+            pass
+        else:
+            self.combo.set_active({True:0, False:1}[value])
+    def set_value(self):
+        index = self.combo.get_active()
+        if index == -1: firefox.remove_pref(self.key)
+        else: firefox.set_pref(self.key, {0:True, 1:False}[index])
         
 class FirefoxStrPref(gtk.HBox):
     def __init__(self, key, dictry):          #dict is {string : setting}

@@ -23,14 +23,15 @@
 from __future__ import with_statement
 
 D = '/usr/share/ailurus/data/'
+import warnings
+warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
 
-def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
+def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
     return (text, value, icon, tooltip)
 
 class I:
     this_is_an_installer = True
     how_to_install = ''
-    download_url = ''
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -53,8 +54,6 @@ class C:
         raise NotImplementedError
     
 class Config:
-    import os
-    config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
     def make_config_dir(cls):
         import os
@@ -68,7 +67,8 @@ class Config:
             os.chmod(dir, 0755)
     @classmethod
     def get_config_dir(cls):
-        return cls.config_dir
+        import os
+        return os.path.expanduser('~/.config/ailurus/')
     @classmethod
     def init(cls):
         assert not hasattr(cls, 'inited')
@@ -319,7 +319,7 @@ def set_proxy_string(proxy_string):
                                       )
     Config.set_proxy_string_id_in_keyring(id)
 
-class UserDeniedError(Exception):
+class UserDeniedError:
     'User has denied keyring authentication'
 
 def get_proxy_string():
@@ -519,7 +519,7 @@ def run_as_root(cmd, ignore_error=False):
     try:
         obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
-        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
         else: raise
 
 def is_string_not_empty(string):
@@ -682,7 +682,7 @@ def run_as_root_in_terminal(command):
     try:
         obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
-        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
         else: raise
 
 class RPM:
@@ -1380,15 +1380,15 @@ class firefox:
         'key should be native python string. return native python constant'
         assert isinstance(key, (str, unicode))
         return cls.key2value[key]
-#    @classmethod
-#    def set_pref(cls, key, value):
-#        'value should be native python variable'
-#        cls.key2value[key] = value
-#        repr_key = '"%s"' % key
-#        repr_value = repr(value)
-#        if value == True: repr_value = 'true'
-#        elif value == False: repr_value = 'false'
-#        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
+    @classmethod
+    def set_pref(cls, key, value):
+        'value should be native python variable'
+        cls.key2value[key] = value
+        repr_key = '"%s"' % key
+        repr_value = repr(value)
+        if value == True: repr_value = 'true'
+        elif value == False: repr_value = 'false'
+        cls.key2line[key] = 'user_pref(%s, %s);' % (repr_key, repr_value)
     @classmethod
     def set_str_pref(cls, key, value):
         'value should be native python variable'

@@ -268,8 +268,6 @@ def __change_hostname():
 #            f.writelines(install_package)
         
 def __configure_firefox():
-    bool = {'Yes': 0, 'No' : 1}
-
     content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
     content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 00000, 5000000, 50000, 360000)
 
@@ -317,7 +315,7 @@ def __configure_firefox():
     browser_sessionstore_max_tabs_undo = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', 5, 50, 4, 10)
     
     browser_blink_allowed_t = FirefoxPrefText(_('Display content in blink elements and styled with text-decoration'), 'browser.blink_allowed')
-    browser_blink_allowed = FirefoxStrPref('browser.blink_allowed', bool)
+    browser_blink_allowed = FirefoxBooleanPref('browser.blink_allowed')
     
     browser_tabs_tab_min_width_t = FirefoxPrefText(_('Set the the width of narrowest tab'), 'browser.tabs.tabMinWidth',
                                                    _("To fit more tabs on the tab strip, Firefox shrinks each tab’s width. "
@@ -329,10 +327,10 @@ def __configure_firefox():
     toolkit_scrollbox_scroll_increment = FirefoxNumericPref('toolkit.scrollbox.scrollIncrement', 10, 100, 5, 20)
     
     browser_urlbar_autofill_t = FirefoxPrefText(_('Auto Complete URL while You type at address Bar'), 'browser.urlbar.autoFill')
-    browser_urlbar_autofill = FirefoxStrPref('browser.urlbar.autoFill', bool)
+    browser_urlbar_autofill = FirefoxBooleanPref('browser.urlbar.autoFill')
     
     browser_bookmarks_auto_export_html_t = FirefoxPrefText(_('Auto export bookmarks as HTML'), 'browser.bookmarks.autoExportHTML')
-    browser_bookmarks_auto_export_html = FirefoxStrPref('browser.bookmarks.autoExportHTML', bool)
+    browser_bookmarks_auto_export_html = FirefoxBooleanPref('browser.bookmarks.autoExportHTML')
     
     browser_history_expire_days_t = FirefoxPrefText(_('The History expiring time'), 'browser.history_expire_days')
     browser_history_expire_days = FirefoxNumericPref('browser.history_expire_days', 1, 300, 1, 180)
@@ -393,6 +391,27 @@ def __configure_firefox():
     add(browser_backspace_action_t, browser_backspace_action)
     add(image_animation_mod_t, image_animation_mod)
     
+    def one_key_tweak(self):
+        firefox.set_str_pref('content.max.tokenizing.time', 3000000)
+        firefox.set_str_pref('content.notify.backoffcount', 200)
+        firefox.set_str_pref('network.dnsCacheEntries', 256)
+        firefox.set_str_pref('network.dnsCacheExpiration', 86400)
+        firefox.set_str_pref('network.ftp.idleConnectionTimeout', 60)
+        firefox.set_str_pref('network.http.keep-alive.timeout', 30)
+        firefox.set_str_pref('network.http.max-persistent-connections-per-proxy', 24)
+        firefox.set_str_pref('nglayout.initialpaint.delay', 0)
+        firefox.set_str_pref('network.http.max-connections', 96)
+        firefox.set_str_pref('network.http.max-connections-per-server', 32)
+        firefox.set_str_pref('toolkit.scrollbox.scrollIncrement', 75)
+        firefox.set_str_pref('browser.blink_allowed', 'false')
+        firefox.set_str_pref('browser.urlbar.autoFill', 'true')
+    tweak_key = gtk.Button()
+    tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto Setting Firefox') )
+    tweak_key.connect('clicked', one_key_tweak)
+    table.attach(tweak_key, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
+    row += 1
+    
+   
     if firefox.support:
         return Setting(table, _('Configure Firefox'), ['firefox'])
     else:
