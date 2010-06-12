@@ -24,7 +24,7 @@ from __future__ import with_statement
 
 D = '/usr/share/ailurus/data/'
 
-def row(text, value, icon=D+'umut_icons/i_default.png', tooltip = None):
+def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
     return (text, value, icon, tooltip)
 
 class I:
