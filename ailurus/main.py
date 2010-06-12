@@ -92,6 +92,32 @@ def check_required_packages():
     if not os.path.exists('/usr/bin/xterm'):
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
+    try: # detect policykit version 0.9.x
+        import dbus
+        obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
+        obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit')
+        has_policykit_0 = True
+    except ImportError:
+        has_policykit_0 = True # We cannot detect PolicyKit if we haven't dbus.
+    except:
+        has_policykit_0 = False
+    try: # detect policykit version 1.x
+        import dbus
+        obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
+        obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit1.Authority')
+        has_policykit_1 = True
+    except ImportError:
+        has_policykit_1 = True # We cannot detect PolicyKit if we haven't dbus.
+    except:
+        has_policykit_1 = False
+    if not has_policykit_0 and not has_policykit_1:
+        ubuntu_missing.append('policykit-gnome') # FIXME: It is not good to list all these packages. Should be more precise.
+        ubuntu_missing.append('policykit-kde')
+        ubuntu_missing.append('policykit-1-gnome') # FIXME: policykit-1-kde does not exist in Ubuntu.
+        fedora_missing.append('polkit-gnome')
+        fedora_missing.append('polkit-kde')
+        archlinux_missing.append('polkit-gnome')
+        archlinux_missing.append('polkit-kde')
 
     error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
