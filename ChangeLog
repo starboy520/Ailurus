@@ -1,3 +1,7 @@
+2010-06-13 MA Yue <velly.empire@gmail.com>
+
+    * Complete all Firefox Tweaks
+
 2010-06-12 Devil Wang <wxjeacen@gmail.com>
     
     * Add DOSBox to software pane
@@ -47,16 +51,11 @@
     * Add Flashblock, Ease Link and WebMail Notifier
     * Fix the buy "Window Manager is not recognized:compiz", but I'm not sure if the way is correct
 
-2010-06-02 MA Yue <velly.empire@gmail.com>
-
-    * Complete all Firefox Tweaks
-
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 
     * Do not interrupt installation process if download() failed
     * Fix bug: TempOwn fails if directory does not exist
     * Handle the situation such that information function returns []
->>>>>>> FETCH_HEAD
 
 2010-06-01 Homer Xing <homer.xing@gmail.com>
 
