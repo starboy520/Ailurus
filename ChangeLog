@@ -1,3 +1,7 @@
+2010-06-12 Devil Wang <wxjeacen@gmail.com>
+    
+    * Add DOSBox to software pane
+
 2010-06-11 Ray Chen <chenrano2002@gmail.com>
 
     * Do not raise Exception if proxy string is empty
