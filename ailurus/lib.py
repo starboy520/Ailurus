@@ -520,7 +520,7 @@ def run_as_root(cmd, ignore_error=False):
     try:
         obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
-        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         else: raise
 
 def is_string_not_empty(string):
@@ -683,7 +683,7 @@ def run_as_root_in_terminal(command):
     try:
         obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
-        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError
+        if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         else: raise
 
 class RPM:
