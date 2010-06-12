@@ -151,18 +151,6 @@ You should have received a copy of the GNU General Public License
 along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
 
-Unlike otherwise indicated, artwork is available under the Creative Commons 
-Attribution Share-alike license v3.0 or any later version. To view a copy of 
-this license, visit http://creativecommons.org/licenses/by-sa/3.0/ or send 
-a letter to Creative Commons, 171 Second Street, Suite 300, San Francisco,
-California, 94105, USA.
-
-Some Rights Reserved:
-
-The rights in the trademarks, logos, service marks of Canonical Ltd, as well as
-the look and feel of Ubuntu, are subject to the Canonical Trademark Policy at
-http://www.ubuntu.com/ubuntu/TrademarkPolicy 
-
 All images in directory "data/suyun_icons" are released under the GPL License, 
 version 2 or higher version. Their copyright are holded by SU Yun.
 
@@ -201,7 +189,6 @@ songbird.png is copied from Songbird project. It is released under the GPL v2. I
 toolbar_study.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tux.png is released under the LGPL license. Its copyright is holded by Umut Pulat.
 tuxpaint.png is copied from Tux Paint project. It is released under the GPL license. Its copyright is holded by Tux Paint Team.
-ubuntu.png is copied from Ubuntu project. Its copyright is holded by Canonical Ltd. Some rights reserved: The rights in the trademarks, logos, service marks of Canonical Ltd, as well as the look and feel of Ubuntu, are subject to the Canonical Trademark Policy at http://www.ubuntu.com/ubuntu/TrademarkPolicy 
 vuze.png is copied from Vuze project. It is released under the GPL license. Its copyright is holded by Vuze Team.
 wallpaper-tray.png is copied from Wallpaper Tray project. It is released under the GPL license. Its copyright is holded by Wallpaper Tray Team.
 worldofpadman.png is copied from World of Padman project. It is realeased under the GPL license.
