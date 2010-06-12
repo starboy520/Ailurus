@@ -45,7 +45,6 @@ Features:
         
         ('share/ailurus/', ['ChangeLog']),
         ('share/ailurus/data/appicons/', glob('data/appicons/*.png') ),
-        ('share/ailurus/data/other_icons/', glob('data/other_icons/*.png') ),
         ('share/ailurus/data/suyun_icons/', glob('data/suyun_icons/*.png') ),
         ('share/ailurus/data/umut_icons/', glob('data/umut_icons/*.png') ),
         ('share/ailurus/data/sora_icons/', glob('data/sora_icons/*.png') ),
