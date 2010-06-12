@@ -111,13 +111,10 @@ def check_required_packages():
     except:
         has_policykit_1 = False
     if not has_policykit_0 and not has_policykit_1:
-        ubuntu_missing.append('policykit-gnome') # FIXME: It is not good to list all these packages. Should be more precise.
-        ubuntu_missing.append('policykit-kde')
-        ubuntu_missing.append('policykit-1-gnome') # FIXME: policykit-1-kde does not exist in Ubuntu.
-        fedora_missing.append('polkit-gnome')
-        fedora_missing.append('polkit-kde')
-        archlinux_missing.append('polkit-gnome')
-        archlinux_missing.append('polkit-kde')
+        ubuntu_missing.append('policykit-gnome (or policykit-kde or policykit-1-gnome)') # FIXME: It is not good to list all these packages. Should be more precise.
+        # FIXME: policykit-1-kde does not exist in Ubuntu.
+        fedora_missing.append('polkit-gnome (or polkit-kde)')
+        archlinux_missing.append('polkit-gnome (or polkit-kde)')
 
     error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
@@ -128,11 +125,11 @@ def check_required_packages():
         print >>message, _('Please install these packages:')
         print >>message, ''
         if UBUNTU or UBUNTU_DERIV:
-            print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(ubuntu_missing), '</span>'
         if FEDORA:
-            print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(fedora_missing), '</span>'
         if ARCHLINUX:
-            print >>message, '<span color="blue">', ' '.join(archlinux_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(archlinux_missing), '</span>'
         dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus ' + AILURUS_VERSION)
         dialog.set_markup(message.getvalue())
