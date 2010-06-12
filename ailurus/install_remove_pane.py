@@ -225,7 +225,8 @@ class InstallRemovePane(gtk.VBox):
             r,w = os.pipe()
             os.dup2(w, sys.stdout.fileno())
             thread.start_new_thread(self.terminal.read, (r,) )
-            run_as_root('true') # require authentication first. do not require authentication any more.
+            try:    run_as_root('true') # require authentication first. do not require authentication any more.
+            except: print_traceback() # do not hang if run_as_root failed.
             s_i = []; s_r = []; f_i = []; f_r = []
             
             to_install = [ o for o in self.app_objs
