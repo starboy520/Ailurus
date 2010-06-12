@@ -184,12 +184,16 @@ class ImageChooser(gtk.Button):
         chooser.destroy()
     
     def display_image(self, image_path):
+        'If image_path is none, then show blank.'
         child = self.get_child()
         if child:
             self.remove(child)
         
-        pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
-        pixbuf = self.scale_pixbuf(pixbuf)
+        if image_path:
+            pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
+            pixbuf = self.scale_pixbuf(pixbuf)
+        else:
+            pixbuf = blank_pixbuf(self.image_max_width, self.image_max_height)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.add(image)
         self.show_all()

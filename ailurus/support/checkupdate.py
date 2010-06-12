@@ -180,7 +180,6 @@ acire.png is copied from Acire project. It is released under the GPL license.
 ailurus.png is released under the GPL license. Its copyright is holded by SU Yun.
 ailurus_for_splash.png is released under the GPL license. Its copyright is holded by MA Yue.
 audacity.png is copied from Audacity project. It is released under the GPL license. Its copyright is holded by Audacity Team.
-blank.png is released under the GPL license. Its copyright is holded by Homer Xing.
 bluefish.png is copied from Bluefish project. It is released under the GPL license. Its copyright is holded by Olivier Sessink.
 bluetooth.png is copied from GNOME project. It is released under the GPL license. Its copyright is holded by GNOME community.
 childsplay.png is copied from Childsplay project. It is released under the GPL license. Its copyright is holded by Stas Zytkiewicz.

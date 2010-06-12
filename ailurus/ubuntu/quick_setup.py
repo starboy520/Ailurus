@@ -456,7 +456,7 @@ class DoStuffDialog(gtk.Dialog):
                 print_traceback()
 
         self.pixbuf_fail = get_pixbuf(D+'sora_icons/quicksetup_fail.png', 16, 16)
-        self.pixbuf_blank = get_pixbuf(D+'sora_icons/quicksetup_blank.png', 16, 16)
+        self.pixbuf_blank = blank_pixbuf(16, 16)
         self.pixbuf_started = get_pixbuf(D+'sora_icons/quicksetup_start.png', 16, 16)
         self.pixbuf_done = get_pixbuf(D+'sora_icons/quicksetup_done.png', 16, 16)
 

@@ -734,7 +734,7 @@ class InstallRemovePane(gtk.VBox):
         self.terminal = Terminal()
         self.DE_KDE = get_pixbuf(D + 'other_icons/kde.png', 24, 24)
         self.DE_GNOME = get_pixbuf(D + 'other_icons/gnome.png', 24, 24)
-        self.DE_DEFAULT = get_pixbuf(D + 'umut_icons/blank.png', 24, 24)
+        self.DE_DEFAULT = blank_pixbuf(24, 24)
 
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)
@@ -870,7 +870,7 @@ class InstallRemovePane(gtk.VBox):
             if item.visible == False: continue
             i1, i2, i3 = item
             if item.is_big_class:
-                last_big_class = self.left_treestore.append(None, [i1, get_pixbuf(D+'umut_icons/blank.png', 24, 24), i3])
+                last_big_class = self.left_treestore.append(None, [i1, blank_pixbuf(24, 24), i3])
             else:
                 self.left_treestore.append(last_big_class, [i1, get_pixbuf(i2, 24, 24), i3])
         
