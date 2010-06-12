@@ -869,3 +869,8 @@ category = player
 fedora = vlc
 ubuntu = vlc
 archlinux = vlc
+
+[DosBox]
+category = simulator
+fedora = dosbox
+ubuntu = dosbox
