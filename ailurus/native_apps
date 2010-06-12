@@ -693,6 +693,7 @@ category = others
 fedora = FIXME
 license = GPL
 ubuntu = qnapi
+Poland = True
 
 [Nautilus_Actions]
 category = nautilus_extension
@@ -714,6 +715,7 @@ fedora = kadu
 license = GPL
 ubuntu = kadu
 archlinux = kadu
+Poland = True
 
 [Warzone2100]
 category = game
@@ -867,3 +869,9 @@ category = player
 fedora = vlc
 ubuntu = vlc
 archlinux = vlc
+
+[DOSBox]
+category = simulator
+fedora = dosbox
+ubuntu = dosbox
+archlinux = dosbox

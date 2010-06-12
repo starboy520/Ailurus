@@ -92,6 +92,29 @@ def check_required_packages():
     if not os.path.exists('/usr/bin/xterm'):
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
+    try: # detect policykit version 0.9.x
+        import dbus
+        obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
+        obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit')
+        has_policykit_0 = True
+    except ImportError:
+        has_policykit_0 = True # We cannot detect PolicyKit if we haven't dbus.
+    except:
+        has_policykit_0 = False
+    try: # detect policykit version 1.x
+        import dbus
+        obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
+        obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit1.Authority')
+        has_policykit_1 = True
+    except ImportError:
+        has_policykit_1 = True # We cannot detect PolicyKit if we haven't dbus.
+    except:
+        has_policykit_1 = False
+    if not has_policykit_0 and not has_policykit_1:
+        ubuntu_missing.append('policykit-gnome (or policykit-kde or policykit-1-gnome)') # FIXME: It is not good to list all these packages. Should be more precise.
+        # FIXME: policykit-1-kde does not exist in Ubuntu.
+        fedora_missing.append('polkit-gnome (or polkit-kde)')
+        archlinux_missing.append('polkit-gnome (or polkit-kde)')
 
     error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
     if error:
@@ -102,11 +125,11 @@ def check_required_packages():
         print >>message, _('Please install these packages:')
         print >>message, ''
         if UBUNTU or UBUNTU_DERIV:
-            print >>message, '<span color="blue">', ' '.join(ubuntu_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(ubuntu_missing), '</span>'
         if FEDORA:
-            print >>message, '<span color="blue">', ' '.join(fedora_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(fedora_missing), '</span>'
         if ARCHLINUX:
-            print >>message, '<span color="blue">', ' '.join(archlinux_missing), '</span>'
+            print >>message, '<span color="blue">', ', '.join(archlinux_missing), '</span>'
         dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus ' + AILURUS_VERSION)
         dialog.set_markup(message.getvalue())
@@ -114,12 +137,13 @@ def check_required_packages():
         dialog.destroy()
 
 def check_dbus_daemon_status():
-    correct_conf_files = True
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
         correct_conf_files = False
-    if not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
+    elif not with_same_content('/usr/share/dbus-1/system-services/cn.ailurus.service', '/usr/share/ailurus/support/cn.ailurus.service'):
         correct_conf_files = False
-    same_version = True
+    else:
+        correct_conf_files = True
+
     try:
         running_version = get_dbus_daemon_version()
     except:
@@ -127,7 +151,17 @@ def check_dbus_daemon_status():
         running_version = 0
     from daemon import version as current_version
     same_version = (current_version == running_version)
-    if correct_conf_files and same_version: return
+    
+    try:
+        import ailurus
+    except:
+        same_daemon = False
+    else:
+        daemon_current = os.path.dirname(os.path.abspath(__file__))+'/daemon.py'
+        daemon_installed = os.path.dirname(os.path.abspath(ailurus.__file__))+'/daemon.py'
+        same_daemon = with_same_content(daemon_current, daemon_installed)
+    
+    if correct_conf_files and same_version and same_daemon: return
     def show_text_dialog(msg, icon=gtk.MESSAGE_ERROR):
         dialog = gtk.MessageDialog(type=icon, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus')
@@ -145,6 +179,9 @@ def check_dbus_daemon_status():
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.conf /etc/dbus-1/system.d/cn.ailurus.conf', '</span>'
         print >>message, '<span color="blue">', 'cp /usr/share/ailurus/support/cn.ailurus.service /usr/share/dbus-1/system-services/cn.ailurus.service', '</span>'
         print >>message, ''
+        show_text_dialog(message.getvalue())
+    elif not same_daemon:
+        print >>message, _('Please re-install Ailurus.')
         show_text_dialog(message.getvalue())
     elif not same_version:
         print >>message, _('We need to restart Ailurus daemon.')
