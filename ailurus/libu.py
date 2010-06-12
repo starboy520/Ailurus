@@ -22,14 +22,18 @@
 
 from __future__ import with_statement
 
-def get_pixbuf(file, width, height):
-    from lib import D
+def blank_pixbuf(width, height):
     import gtk
-    try:
-        return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
-    except:
+    pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, width, height)
+    pixbuf.fill(0) # transparent black
+    return pixbuf
+
+def get_pixbuf(file, width, height):
+    import os, gtk
+    if os.path.exists(file): return gtk.gdk.pixbuf_new_from_file_at_size(file, width, height)
+    else:
         print file, 'not found'
-        return gtk.gdk.pixbuf_new_from_file_at_size(D + 'umut_icons/blank.png', width, height)
+        return blank_pixbuf(width, height)
 
 def gray_bg(widget):
     import gtk
