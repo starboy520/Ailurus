@@ -20,21 +20,16 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import sys, os
-import ailurus
-path = os.path.dirname(ailurus.__file__)
-sys.path.insert(0, path)
+# don't change sys.path
 from lib import *
-assert UBUNTU or UBUNTU_DERIV
 from libapp import *
+assert UBUNTU or UBUNTU_DERIV
 from ubuntu.third_party_repos import _repo
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
-    detail = (
-              _('A storytelling application, especially appropriate for middle school students.') +'\n' + 
-              _('Official site: <span color="blue"><u>http://www.alice.org/</u></span> .') + 
-              _(' This application depends on Java.') )
+    detail = _('A storytelling application, especially appropriate for middle school students.')
+    download_url = 'http://www.alice.org/' 
     category = 'education'
     def __init__(self):
         self.dir = '/opt/Alice 2.2'
@@ -69,16 +64,15 @@ Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
-    detail = _("Official site: <span color='blue'><u>http://blog.alipay.com/301.html</u></span>")
+    download_url = 'http://blog.alipay.com/301.html'
     category = 'firefox_extension'
     Chinese = True
     def __init__(self):
         import os
         self.path = os.path.expanduser('~/.mozilla/plugins')
     def install(self):
-#        open_web_page('http://blog.alipay.com/301.html')
         file = '/tmp/aliedit.tar.gz'
-        run('wget --timeout=60 http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz -O /tmp/aliedit.tar.gz')
+        run('wget --timeout=60 %s -O /tmp/aliedit.tar.gz' % urls.alipay)
         path = self.path
         import os
         if not os.path.exists(path):
@@ -106,17 +100,13 @@ class AliPayFirefoxPlugin(I):
 
 class AstroMenace(_path_lists):
     'AstroMenace'
-    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons. '
-       'This is a full 3d style space shooter game. '
-       'It supports mouse, keyboard and joystick control. '
-       'Official site: http://www.viewizard.com/')
+    detail = _('Drive a spaceship and battle against invaders! Collect money during the combat. Upgrade armaments and weapons.')
+    download_url = 'http://www.viewizard.com/'
     category = 'game'
     def __init__(self):
         self.paths = ['/opt/astromenace', '/usr/share/applications/astromenace.desktop']
     def install(self):
-        f = R(
-['http://www.viewizard.com/download/amenace12.tar.bz2'],
-35948638, '752d6faec7a4432f991055ab788b1e7dba004995').download()
+        f = R(urls.amenace).download()
 
         import os
         if not os.path.exists('/opt'): run_as_root('mkdir /opt')
@@ -171,66 +161,48 @@ class HITTeXTemplate(_download_one_file) :
     category = 'latex'
     Chinese = True
     def __init__(self):
-        self.R = R(
-['http://plutothesis.googlecode.com/files/PlutoThesis_UTF8_1.9.2.20090424.zip'],
-2710034, 'aee937bf0a09936d78f57cd45616997af7a1ef3c')
+        self.R = R(urls.hittex)
         import os
         self.file = os.path.expanduser('~/HITthesis.rar')
 
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
-        self.range = '0.9~3.7'
-        self.name = u'JavaScript Debugger'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/216/javascript_debugger-0.9.87.4-fx+tb+sb+sm.xpi'],
-                      217578,'3369de2b98b747c4d1c79803819b2d727b9083f6')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
+    name = u'JavaScript Debugger'
+    R = R(latest(216), filename='javascript_debugger.xpi')
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
-        self.range = '3.0.*~3.7.*'
-        self.name = u'MacOSX Theme'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7172/macosx_theme-0.6.8-fx.jar'],
-    689344, '4b58d1c49ae123e50a76cb41bc6a1162d1bcaaf8')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
+    name = u'MacOSX Theme'
+    R = R(latest(7172), filename='macosx_theme.jar')
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = ''
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
-        self.range = '2.0~3.7'
-        self.name = u'NetVideoHunter'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/7447/netvideohunter-0.4.3-fx.xpi'],
-                    44541, '3d47e726587743758097a069358ed306df63bc3a')
-        _ff_extension.__init__(self)
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
+    name = u'NetVideoHunter'
+    R = R(latest(7447), filename='netvideohunter.xpi')
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
     category = 'firefox_extension'
-    def __init__(self):
-        self.desc = _('Theme your browser according to your mood, hobby or season.')
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
-        self.range = '3.0~3.6.*'
-        self.name = u'Personas'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/10900/personas-1.4-fx+tb.xpi'],
-    275501, 'ac6de4e93270e0650fc06a88cf5fe639e8a879fb')
-        _ff_extension.__init__(self)
+    detail = _('Theme your browser according to your mood, hobby or season.')
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
+    name = u'Personas'
+    R = R(latest(10900), filename='personas.xpi')
         
 class GoogleEarth(I):
     __doc__ = _('Google Earth')
     detail = _('Please install it in /opt/google-earth. Otherwise it cannot be detected.')
     category = 'others'
     def install(self):
-        f = R('http://dl.google.com/earth/client/current/GoogleEarthLinux.bin').download()
+        f = R(urls.google_earch).download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
@@ -241,15 +213,10 @@ class GoogleEarth(I):
 class NVIDEA_Driver(I):
     __doc__ = 'NVIDEA ' + _('video card driver')
     category = 'others'
-    if is32():
-        filename = '195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86/latest.txt
-        url = 'ftp://download.nvidia.com/XFree86/Linux-x86/' + filename
-    else:
-        filename = '195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run' # please update me by ftp://download.nvidia.com/XFree86/Linux-x86_64/latest.txt
-        url = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/' + filename
-    detail = _('Please click this link:') + ' ' + url
+    if is32(): download_url = urls.nvidia_32
+    else:      download_url = urls.nvidia_64
     def install(self):
-        f = R(self.url).download()
+        f = R(self.download_url).download()
         os.system('chmod a+x ' + f)
         run_as_root_in_terminal(f)
     def installed(self):
@@ -260,9 +227,9 @@ class NVIDEA_Driver(I):
 class ATI_Driver(I):
     __doc__ = 'ATI ' + _('video card driver')
     category = 'others'
-    detail = _('Please click this link:') + ' http://ati.amd.com/support/driver.HTML'
+    download_url = 'http://ati.amd.com/support/driver.HTML'
     def install(self):
-        raise NotImplementedError
+        open_web_page('http://ati.amd.com/support/driver.HTML')
     def installed(self):
         return False
     def remove(self):
@@ -270,14 +237,11 @@ class ATI_Driver(I):
 
 class Google_Chrome(I):
     'Google Chrome'
-    detail = _('Download from ') + 'http://www.google.com/chrome'
+    download_url = 'http://www.google.com/chrome'
     category = 'browser'
     def install(self):
-        if is32():
-            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_i386.deb'
-        else:
-            url = 'http://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb'
-        f = R(url).download()
+        if is32(): f = R(urls.google_chrome_32).download()
+        else:      f = R(urls.google_chrome_64).download()
         run_as_root_in_terminal('dpkg --install %s' % f)
         APT.cache_changed()
     def installed(self):
@@ -289,13 +253,13 @@ class Google_Chrome(I):
 
 class EIOffice(I):
     __doc__ = _('Evermore Integrated Office 2009 free version')
-    detail = _('It is able to edit text, spreadsheets, and slides. '
-       'Official site: <span color="blue"><u>http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp</u></span>')
+    detail = _('It is able to edit text, spreadsheets, and slides.')
+    download_url = 'http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp'
     category='business'
     Chinese = True
     def install(self):
         with Chdir('/tmp') as o:
-            f = R('http://evermoresw.com.cn/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz').download()
+            f = R(urls.eioffice).download()
             run('tar xf %s' % f)
             run('chmod a+x EIOffice_Personal_Lin/setup')
             run_as_root("EIOffice_Personal_Lin/setup")
@@ -307,10 +271,11 @@ class EIOffice(I):
                      _('Install templates')
                         )
             for file, msg in zip(
-               ['http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Clipart.tar.gz',
-                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz',
-                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz',
-                'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz',], msgs):
+               [urls.eioffice_clipart,
+                urls.eioffice_help,
+                urls.eioffice_scienceeditor,
+                urls.eioffice_templates,
+                ], msgs):
                     download(file, '/tmp/eio.tar.gz') 
                     run("tar zxf /tmp/eio.tar.gz")
                     notify( _('Installing EIOffice'), msg )
@@ -325,13 +290,14 @@ class EIOffice(I):
 
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
-    detail = _('Antivirus and antispyware.') + ' ' + _('Officical site:') + ' http://beta.eset.com/linux'
+    detail = _('Anti virus and anti spyware')
+    download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
     def install(self):
         if is32():
-            f = R('http://download.eset.com/special/eav_linux/ueav.i386.linux').download()
+            f = R(urls.eset_antivirus_32).download()
         else:
-            f = R('http://download.eset.com/special/eav_linux/ueav.x86_64.linux').download()
+            f = R(urls.eset_antivirus_64).download()
         run('chmod +x ' + f)
         run_as_root(f)
         if not is32():
@@ -351,8 +317,8 @@ class ESETNOD32(I):
 class Repo_Oracle(_repo):
     __doc__ = _('Oracle')
     def __init__(self):
-        self.desc = _('This repository provides Oracle Database Express Edition.\n'
-            'After installation, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
+        self.detail = _('This repository provides Oracle Database Express Edition.\n'
+            'After installing Oracle Database, please add yourself to the "dba" group, then run "sudo /etc/init.d/oracle-xe configure".')
         self.apt_content = 'oracle-xe oracle-xe-client oracle-xe-universal'
         self.web_page = 'http://oss.oracle.com/'
         self.apt_file = '/etc/apt/sources.list.d/oracle.list'

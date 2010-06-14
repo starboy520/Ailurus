@@ -267,7 +267,7 @@ license = GPL
 ubuntu = simple-ccsm
 archlinux = ccsm
 
-[Bluetooth]
+[Bluez]
 category = others
 fedora = bluez-alsa bluez-cups bluez-gstreamer pybluez gnome-bluetooth gnome-phone-manager
 license = GPL
@@ -486,13 +486,6 @@ license = GPL
 ubuntu = liferea
 archlinux = liferea
 
-[Nautilus_Search_Tool]
-category = nautilus_extension
-fedora = nautilus-search-tool
-license = GPL
-DE = gnome
-ubuntu = FIXME
-
 [Emacs]
 category = saber
 fedora = emacs
@@ -504,6 +497,10 @@ archlinux = emacs
 category = file_sharing
 fedora = giver
 ubuntu = giver
+
+[Glade]
+category = ide
+ubuntu = glade
 
 [GIMP]
 category = drawing
@@ -696,6 +693,7 @@ category = others
 fedora = FIXME
 license = GPL
 ubuntu = qnapi
+Poland = True
 
 [Nautilus_Actions]
 category = nautilus_extension
@@ -717,6 +715,7 @@ fedora = kadu
 license = GPL
 ubuntu = kadu
 archlinux = kadu
+Poland = True
 
 [Warzone2100]
 category = game
@@ -870,3 +869,9 @@ category = player
 fedora = vlc
 ubuntu = vlc
 archlinux = vlc
+
+[DOSBox]
+category = simulator
+fedora = dosbox
+ubuntu = dosbox
+archlinux = dosbox

@@ -23,12 +23,11 @@
 from __future__ import with_statement
 import sys, os
 from lib import *
-from libapp import * 
+from libapp import *
 
 class Eclipse(_apt_install):
     __doc__ = _('Eclipse (basic development environment)')
-    detail = (_('Eclipse is from http://www.eclipse.org/downloads/ \n') +
-              _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php'))
+    detail = _('You can install Language pack according to the instructions on the page http://www.eclipse.org/babel/downloads.php')
     category = 'ide'
     license = EPL + ' http://www.eclipse.org/org/documents/epl-v10.php'
     pkgs = 'eclipse-platform' # Eclipse without any plugin
@@ -38,13 +37,11 @@ def make_sure_installed():
 
 class CDT(_path_lists):
     __doc__ = _('CDT: C/C++ development')
-    detail = _('CDT is from http://www.eclipse.org/cdt/')
+    download_url = 'http://www.eclipse.org/cdt/'
     category = 'eclipse_extension'
     license = EPL + ' http://www.eclipse.org/legal/'
     def __init__(self):
-        self.r = R(
-['http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'],
-45462495, '9f810b3d4a5cfc7bbbd7deddeceef705be4654a9')
+        self.r = R(urls.cdt)
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
@@ -56,13 +53,11 @@ class CDT(_path_lists):
 
 class Pydev(_path_lists):
     __doc__ = _('Pydev: Python development')
-    detail = _('Pydev is from http://pydev.org/download.html')
+    download_url = 'http://pydev.org/download.html'
     category = 'eclipse_extension'
     license = EPL + ' http://pydev.org/about.html'
     def __init__(self):
-        self.r = R(
-['http://ncu.dl.sourceforge.net/project/pydev/pydev/Pydev%201.4.6/org.python.pydev.feature-1.4.6.2788.zip'],
-4765497, '238037546162bf5ee198b5167cc5a32b95a6ab5c')
+        self.r = R(urls.pydev)
         self.path = '/usr/lib/eclipse/dropins/' + os.path.splitext(self.r.filename)[0]
         self.paths = [ self.path ]
     def install(self):
@@ -74,11 +69,10 @@ class Pydev(_path_lists):
 
 class Aptana(I):
     __doc__ = _('Aptana: Web application development')
-    detail = _('Aptana is from http://www.aptana.org/studio/plugin\n'
-               'Aptana is installed by http://download.aptana.org/tools/studio/plugin/install/studio\n'
-               'Due to limitation of the authors\' programming ability, '
-               'Aptana cannot be removed by Ailurus. '
-               'In order to remove Aptana, you have to re-install Eclipse.')
+    detail = _('Due to limitation of the authors\' programming ability, Aptana cannot be removed by Ailurus.\n'
+               'In order to remove Aptana, please launch Eclipse, and go to "Help" -> "About Eclipse SDK" -> "Installation Details"')
+    download_url = 'http://www.aptana.org/studio/plugin'
+    how_to_install = 'http://download.aptana.org/tools/studio/plugin/install/studio'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(APL, GPL)
     def installed(self):
@@ -100,8 +94,8 @@ class Aptana(I):
 
 class RadRails(I):
     __doc__ = _('RadRails: Ruby development')
-    detail = _('Over the past RadRails was called "RDT". '
-               'RadRails is installed by http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle')
+    detail = _('Over the past RadRails was called "RDT".')
+    how_to_install = 'http://download.aptana.com/tools/radrails/plugin/install/radrails-bundle'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(APL, GPL)
     def installed(self):
@@ -123,7 +117,7 @@ class RadRails(I):
 
 class DLTK(I):
     __doc__ = _('Dynamic languages toolkit')
-    detail = _('It is installed by http://download.eclipse.org/technology/dltk/updates-dev/2.0/')
+    how_to_install = 'http://download.eclipse.org/technology/dltk/updates-dev/2.0/'
     category = 'eclipse_extension'
     License = ('Eclipse Distribution License (EDL), Eclipse Public License (EPL), '
                'see http://www.eclipse.org/legal/')
@@ -150,7 +144,7 @@ class DLTK(I):
 
 class PDT(I):
     __doc__ = _('PDT: PHP development')
-    detail = _('PDT is from http://www.eclipse.org/pdt/downloads/')
+    download_url = 'http://www.eclipse.org/pdt/downloads/'
     category = 'eclipse_extension'
     license = EPL + ' http://www.eclipse.org/legal/'
     def installed(self):
@@ -172,7 +166,7 @@ class PDT(I):
 
 class Subversive(I):
     __doc__ = _('Subversive: Use SVN in Eclipse')
-    detail = _('It is installed by http://download.eclipse.org/technology/subversive/0.7/update-site/')
+    how_to_install = 'http://download.eclipse.org/technology/subversive/0.7/update-site/'
     category = 'eclipse_extension'
     license = EPL
     def installed(self):
@@ -194,7 +188,7 @@ class Subversive(I):
 
 class VEditor(I):
     __doc__ = _('VEditor: Verilog and VHDL editor')
-    detail = _('It is installed by http://veditor.sourceforge.net/update')
+    how_to_install = 'http://veditor.sourceforge.net/update'
     category = 'eclipse_extension'
     license = EPL
     def installed(self):
@@ -216,7 +210,7 @@ class VEditor(I):
 
 class MTJ(_path_lists):
     __doc__ = _('MTJ: J2ME development')
-    detail = _('It is downloaded from http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/')
+    download_url = 'http://download.eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/'
     category = 'eclipse_extension'
     license = DUAL_LICENSE(EPL, GPL)
     def __init__(self):
@@ -224,96 +218,11 @@ class MTJ(_path_lists):
         self.paths = [ self.path ]
     def install(self):
         make_sure_installed()
-        r = R([
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirrors.nsa.co.il/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.in.th/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.kaist.ac.kr/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.cs.pu.edu.tw/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://kambing.ui.ac.id/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.stu.edu.tw/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.yz.yamagata-u.ac.jp/pub/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.stu.edu.tw/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.daum.net/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.jaist.ac.jp/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.jaist.ac.jp/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.daum.net/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.kaist.ac.kr/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.stu.edu.tw/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirrors.nsa.co.il/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.in.th/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://kambing.ui.ac.id/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirrors.ibiblio.org/pub/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.cse.buffalo.edu/pub/Eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://www.gtlib.gatech.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.ussg.iu.edu/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.cc.vt.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirrors.xmission.com/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://carroll.aset.psu.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.cs.rit.edu/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.cc.vt.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.cc.columbia.edu/pub/software/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.ussg.iu.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.csclub.uwaterloo.ca/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirrors.xmission.com/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.cc.columbia.edu/pub/software/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.csclub.uwaterloo.ca/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirrors.med.harvard.edu/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.mirrors.tds.net/pub/eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://carroll.aset.psu.edu/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.osuosl.org/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.roedu.net/pub/mirrors/eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.cc.uoc.gr/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.heanet.ie/pub/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.ialto.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.man.poznan.pl/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp-stud.fht-esslingen.de/pub/Mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.ing.umu.se/mirror/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://www.mirrorservice.org/sites/download.eclipse.org/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://www.rcp-vision.com/pub/eclipse/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.switch.ch/mirror/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://rm.mirror.garr.it/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.ialto.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://www.rcp-vision.com/eclipse/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.sh.cvut.cz/MIRRORS/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipsemirror.yoxos.com/eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://rm.mirror.garr.it/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.a3-system.be/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.selfnet.de/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirrors.linux-bg.org/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.man.szczecin.pl/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.roedu.net/mirrors/eclipse.org//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.man.poznan.pl/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.i-logic.hu//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.mirror.kangaroot.net/pub/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.selfnet.de/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://d2u376ub0heus3.cloudfront.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.mirror.kangaroot.net/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.sh.cvut.cz/MIRRORS/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.saplabs.bg/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.heanet.ie/pub/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirror.netcologne.de/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.cc.uoc.gr/mirrors/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.roedu.net/mirrors/eclipse.org//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://mirror.netcologne.de/eclipse//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.ulak.net.tr/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://mirrors.linux-bg.org/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.ing.umu.se/mirror/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://ftp.roedu.net/pub/mirrors/eclipse.org/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.saplabs.bg//dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://ftp.ulak.net.tr/eclipse/eclipseMirror/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://linorg.usp.br/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'ftp://eclipse.c3sl.ufpr.br/eclipse/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-'http://eclipse.c3sl.ufpr.br/dsdp/mtj/downloads/drops/R-1.0.1-200909181641/dsdp-mtj-SDK-1.0.1.zip',
-               ])
-        f = r.download()
+        path = os.path.dirname(os.path.abspath(__file__))+'/../support/MTJ_urls'
+        with open(path) as f:
+            urls = f.readlines()
+        urls = [u.strip() for u in urls]
+        f = R(urls).download()
         run_as_root('mkdir -p '+self.path)
         run_as_root("unzip -qo %s -d %s"%(f, self.path))
         # run_as_root("chown $USER:$USER /usr/lib/eclipse -R") # It is strange. This command disables Pydev. I don't know the reason. :(
-

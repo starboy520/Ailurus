@@ -22,9 +22,9 @@
 
 from __future__ import with_statement
 import sys, os
-import ailurus
-sys.path.insert(0, os.path.dirname(os.path.abspath(ailurus.__file__)))
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
+path = os.path.dirname(os.path.abspath(__file__))+'/../'
+sys.path.insert(0, path)
+os.chdir(path)
 from lib import *
 from libu import *
 from libserver import *
@@ -455,10 +455,10 @@ class DoStuffDialog(gtk.Dialog):
             except:
                 print_traceback()
 
-        self.pixbuf_fail = get_pixbuf(D+'other_icons/fail.png', 16, 16)
-        self.pixbuf_blank = get_pixbuf(D+'other_icons/blank.png', 16, 16)
-        self.pixbuf_started = get_pixbuf(D+'other_icons/started.png', 16, 16)
-        self.pixbuf_done = get_pixbuf(D+'other_icons/done.png', 16, 16)
+        self.pixbuf_fail = get_pixbuf(D+'sora_icons/quicksetup_fail.png', 16, 16)
+        self.pixbuf_blank = blank_pixbuf(16, 16)
+        self.pixbuf_started = get_pixbuf(D+'sora_icons/quicksetup_start.png', 16, 16)
+        self.pixbuf_done = get_pixbuf(D+'sora_icons/quicksetup_done.png', 16, 16)
 
         render_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()

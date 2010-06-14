@@ -1,3 +1,19 @@
+2010-06-12 Devil Wang <wxjeacen@gmail.com>
+    
+    * Add DOSBox to software pane
+
+2010-06-11 Ray Chen <chenrano2002@gmail.com>
+
+    * Do not raise Exception if proxy string is empty
+
+2010-06-10 Ray Chen <chenrano2002@gmail.com>
+
+    * Always download latest Firefox extensions
+
+2010-06-08 Homer Xing <homer.xing@gmail.com>
+
+    * Improve RPM backend efficiency
+
 2010-06-07 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug: newline appears in menuitems of default pane

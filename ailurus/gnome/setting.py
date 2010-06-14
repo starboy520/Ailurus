@@ -91,7 +91,7 @@ def __start_here_icon_setting():
     try:
         i.display_image(path)
     except:
-        i.display_image(D + '/other_icons/blank.png')
+        i.display_image(None) # show blank
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
@@ -106,7 +106,7 @@ def __login_icon_setting():
     try:
         i.display_image(os.path.expanduser('~/.face'))
     except:
-        i.display_image(D + '/other_icons/blank.png')
+        i.display_image(None) # show blank
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
@@ -266,7 +266,7 @@ def __gnome_splash_setting():
     image_path = g.get_string('/apps/gnome-session/options/splash_image')
     o = ImageChooser(_('GConf key: ') + '/apps/gnome-session/options/splash_image', 96, 96)
     try: o.display_image(image_path)
-    except: o.display_image(D + '/other_icons/blank.png')
+    except: o.display_image(None) # show blank
     o.connect('changed', changed)
 
     hbox = gtk.HBox(False)

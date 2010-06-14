@@ -43,7 +43,7 @@ def check_class_members(app_class):
 
 def load_app_icon(name):
     import os
-    for dir in [Config.get_config_dir(), 'other_icons/', 'appicons/', ]:
+    for dir in [Config.get_config_dir(), 'appicons/']:
         path = D + dir + name + '.png'
         if os.path.exists(path): break
     else:
@@ -81,6 +81,8 @@ def load_app_from_file():
                     dict['pkgs'] = value
                 elif ops == 'Chinese':
                     dict[ops] = True
+                elif ops == 'Poland':
+                    dict[ops] = True
                 elif ops == 'license':
                     ls = value.split()
                     ls = [getattr(lib, e) for e in ls]
@@ -90,14 +92,15 @@ def load_app_from_file():
                 else:
                     dict[ops] = value
             
-            assert hasattr(strings, secs+'_0')
-            assert hasattr(strings, secs+'_1')
+            assert hasattr(strings, secs+'_0'), secs
+            assert hasattr(strings, secs+'_1'), secs
             dict['__doc__'] = getattr(strings, secs + '_0')
             if dict['__doc__'] == 'FIXME' : dict['__doc__'] =''
             dict['detail'] = getattr(strings, secs + '_1')
             if dict['detail'] == 'FIXME' : dict['detail'] = ''
             if dict.has_key('pkgs') and dict['pkgs'] == 'FIXME' : continue # means not supported in this version
             if dict.has_key('Chinese') and Config.is_Chinese_locale()==False: continue # means such software provides Chinese locale only
+            if dict.has_key('Poland') and Config.is_Poland_locale()==False: continue # means such software provides Poland locale only
 
             obj = new.classobj(secs, (N,), {})()
             for key in dict.keys():
@@ -106,10 +109,7 @@ def load_app_from_file():
             if not hasattr(obj, 'category'): obj.category = 'others'
             if hasattr(obj, 'visible') and not obj.visible():continue
             obj.self_check()
-            if hasattr(obj, 'installation_command'):
-                if obj.detail and not obj.detail.endswith('\n'):
-                    obj.detail += '\n'
-                obj.detail += obj.installation_command()
+            obj.fill()
                 
             obj.cache_installed = obj.installed()
             if not isinstance(obj.cache_installed, bool):
@@ -145,10 +145,8 @@ def load_app_objs():
                 app_class_obj.self_check()
                 if hasattr(app_class_obj, 'visible') and app_class_obj.visible()==False: continue
                 if hasattr(app_class_obj, 'Chinese') and Config.is_Chinese_locale()==False: continue
-                if hasattr(app_class_obj, 'installation_command'):
-                    if app_class_obj.detail and not app_class_obj.detail.endswith('\n'):
-                        app_class_obj.detail += '\n'
-                    app_class_obj.detail += app_class_obj.installation_command()
+                if hasattr(app_class_obj, 'Poland') and Config.is_Poland_locale()==False: continue
+                app_class_obj.fill()
                 app_class_obj.cache_installed = app_class_obj.installed()
                 if not isinstance(app_class_obj.cache_installed, bool):
                     raise ValueError, 'Return type of installed() is not bool.'
@@ -334,3 +332,19 @@ def load_cure_objs():
                 print_traceback()
     
     return objs
+
+if __name__ == '__main__':
+    APT.get_existing_pkgs_set()
+    
+    import time
+    begin = time.time()
+    load_app_objs()
+    print time.time() - begin
+    
+    begin = time.time()
+    load_custom_app_objs()
+    print time.time() - begin
+    
+    begin = time.time()
+    load_app_from_file()
+    print time.time() - begin

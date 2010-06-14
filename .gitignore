@@ -3,7 +3,7 @@ build/
 dist/
 installed_files
 
-po/
+po/*
 .project
 .settings/
 ailurus/.settings/

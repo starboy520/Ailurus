@@ -49,8 +49,8 @@ class _tasksel(I):
         Tasksel.remove(self.name)
     def visible(self):
         return Tasksel.exists(self.name)
-    def installation_command(self):
-        return _('Command:') + ' sudo tasksel install ' + self.name
+    def fill(self):
+        self.how_to_install = 'tasksel install ' + self.name
 
 class Tasksel_DNS_server(_tasksel):
     __doc__ = _('DNS server')
