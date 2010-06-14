@@ -332,9 +332,10 @@ class FirefoxPrefText(gtk.Label):
         self.set_alignment(0, 0.5)
 
 class FirefoxBooleanPref(gtk.HBox):
-    def __init__(self, key):
+    def __init__(self, key, default=None):
         assert isinstance(key, str) and key
-        self.key = key
+        if default is not None: assert isinstance(default, bool)
+        self.key, self.default = key, default
         self.combo = combo = gtk.combo_box_new_text()
         combo.append_text(_('Yes'))
         combo.append_text(_('No'))
@@ -347,7 +348,8 @@ class FirefoxBooleanPref(gtk.HBox):
         try:
             value = bool(firefox.get_pref(self.key))
         except:
-            pass
+            if self.default is not None:
+                self.combo.set_active({True:0, False:1}[self.default])
         else:
             self.combo.set_active({True:0, False:1}[value])
     def set_value(self):
@@ -356,12 +358,13 @@ class FirefoxBooleanPref(gtk.HBox):
         else: firefox.set_pref(self.key, {0:True, 1:False}[index])
 
 class FirefoxComboPref(gtk.HBox):
-    def __init__(self, key, texts, values): # "text" is displayed. "value" is stored in pref.js
+    def __init__(self, key, texts, values, default=None): # "text" is displayed. "value" is stored in pref.js
         assert isinstance(key, str) and key
         assert isinstance(texts, list) and texts
         assert isinstance(values, list) and values
         assert len(texts) == len(values)
-        self.key, self.texts, self.values = key, texts, values
+        if default: assert default in values
+        self.key, self.texts, self.values, self.default = key, texts, values, default
         self.combo = combo = gtk.combo_box_new_text()
         combo.connect('scroll-event', lambda w: True)
         for text in self.texts:
@@ -371,11 +374,15 @@ class FirefoxComboPref(gtk.HBox):
         combo.connect('changed', lambda w: self.set_value())
     def get_value(self):
         try:    value = firefox.get_pref(self.key)
-        except: pass
+        except:
+            if self.default:
+                for i in range(len(self.values)):
+                    if self.values[i] == default:
+                        self.combo.set_active(i)
         else:
             for i in range(len(self.values)):
                 if self.values[i] == value:
-                    self.combo.set_active(value)
+                    self.combo.set_active(i)
     def set_value(self):
         i = self.combo.get_active()
         firefox.set_pref(self.key, self.values[i])
@@ -405,7 +412,7 @@ class FirefoxNumericPref(gtk.Entry):
         else:
             firefox.set_pref(self.key, value)
         
-class FirefoxNumericPref2(gtk.SpinButton):
+class FirefoxNumericPref2(gtk.SpinButton): # do not use this class, because min & max is hard to determine
     def __init__(self, key, min, max, default):
         'default_value is displayed if the preference is not set'
         assert isinstance(key, str) and key
