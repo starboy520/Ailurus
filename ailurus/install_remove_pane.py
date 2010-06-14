@@ -759,6 +759,12 @@ class InstallRemovePane(gtk.VBox):
         button_collapse_left_treeview.connect('clicked', lambda w: self.left_treeview.collapse_all())
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
+        button_sync = image_stock_button(gtk.STOCK_REFRESH, _('Synchronize'))
+        def synchronize():
+            import subprocess
+            path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
+            subprocess.Popen(['python', path])
+        button_sync.connect('clicked', lambda w: synchronize())
         from support.searchbox import SearchBoxForApp
         sbox = SearchBoxForApp()
         sbox.connect('changed', self.__search_content_changed)
@@ -776,6 +782,7 @@ class InstallRemovePane(gtk.VBox):
         bottom_box.pack_start(button_collapse_left_treeview, False)
         bottom_box.pack_start(button_expand_left_treeview, False)
         bottom_box.pack_start(button_apply, False, False, 10)
+        bottom_box.pack_start(button_sync, False, False, 10)
         bottom_box.pack_start(sbox, False)
         bottom_box.pack_start(self.quick_setup_area, False)
 

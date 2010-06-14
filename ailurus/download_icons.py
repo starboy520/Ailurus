@@ -11,11 +11,15 @@ class DownloadIconsWindow(gtk.Window):
     
     def __init__(self):
         gtk.Window.__init__(self)
+        self.explainlabel = gtk.Label(_('Downloading icons of other open-source projects.\n') + 
+                                      _('Do not download any icon of close-source projects or proprietary software.\n'))
+        self.explainlabel.set_alignment(0, 0.5)
         self.urllabel = gtk.Label()
         self.urllabel.set_alignment(0, 0.5)
         self.progressbar = gtk.ProgressBar()
         vbox = gtk.VBox(False, 10)
         vbox.set_border_width(10)
+        vbox.pack_start(self.explainlabel)
         vbox.pack_start(self.urllabel)
         vbox.pack_start(self.progressbar)
         self.add(vbox)
@@ -29,8 +33,8 @@ class DownloadIconsWindow(gtk.Window):
 
         self.can_exit = False
         self.exception = None
-        self.set_title(_('Downloading icons'))
-        self.urllabel.set_text(_('Downloading:') + ' ' + self.url)
+        self.set_title(_('Downloading extra icons'))
+        self.urllabel.set_text(self.url)
         self.progressbar.set_text('0%')
         self.percentage = 0
 
