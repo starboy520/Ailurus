@@ -172,6 +172,32 @@ def __change_hostname():
     return Setting(hbox, _('Change host name'), ['host_name'])
 
 def __configure_firefox():
+    if not firefox.support: return None
+    
+    global table, row
+    table = gtk.Table()
+    table.set_row_spacings(5)
+    row = 0
+
+    def add(t, w):
+        global table, row
+        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        table.attach(w, 1, 2, row, row+1, 0, gtk.FILL)
+        row += 1
+    def add2(text):
+        global table, row
+        assert isinstance(text, (str, unicode)) and text
+        label = gtk.Label()
+        label.set_markup('<b>%s</b>' % text)
+        label.set_alignment(0, 0.5)
+        table.attach(label, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        row += 1
+    
+    tweak_key = gtk.Button()
+    tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
+    table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)
+    row += 1
+
     # DNS
     dns_entries = FirefoxNumericPref('network.dnsCacheEntries', default=20)
     dns_entries_t = FirefoxPrefText(_('the number of DNS results to cache'), 'network.dnsCacheEntries')
@@ -238,23 +264,6 @@ def __configure_firefox():
                                         default=2)
     backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
     
-    global table, row
-    table = gtk.Table()
-    table.set_row_spacings(5)
-    row = 0
-    def add(t, w):
-        global table, row
-        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        table.attach(w, 1, 2, row, row+1, 0, gtk.FILL)
-        row += 1
-    def add2(text):
-        global table, row
-        assert isinstance(text, (str, unicode)) and text
-        label = gtk.Label()
-        label.set_markup('<b>%s</b>' % text)
-        label.set_alignment(0, 0.5)
-        table.attach(label, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        row += 1
     add2(_('DNS'))
     add(dns_entries_t, dns_entries)
     add(dns_expiration_t, dns_expiration)
@@ -283,30 +292,20 @@ def __configure_firefox():
     add(addons_max_results_t, addons_max_results)
     add(backspace_action_t, backspace_action)
     
-    def one_key_tweak():
-        firefox.set_str_pref('content.max.tokenizing.time', 3000000)
-        firefox.set_str_pref('content.notify.backoffcount', 200)
-        firefox.set_str_pref('network.dnsCacheEntries', 256)
-        firefox.set_str_pref('network.dnsCacheExpiration', 86400)
-        firefox.set_str_pref('network.ftp.idleConnectionTimeout', 60)
-        firefox.set_str_pref('network.http.keep-alive.timeout', 30)
-        firefox.set_str_pref('network.http.max-persistent-connections-per-proxy', 24)
-        firefox.set_str_pref('nglayout.initialpaint.delay', 0)
-        firefox.set_str_pref('network.http.max-connections', 96)
-        firefox.set_str_pref('network.http.max-connections-per-server', 32)
-        firefox.set_str_pref('toolkit.scrollbox.scrollIncrement', 75)
-        firefox.set_str_pref('browser.blink_allowed', 'false')
-        firefox.set_str_pref('browser.urlbar.autoFill', 'true')
-    tweak_key = gtk.Button()
-    tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
-    tweak_key.connect('clicked', lambda w: one_key_tweak())
-    table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)
-    row += 1
+    def tweak():
+        dns_entries.set_value(256)
+        dns_expiration.set_value(86400)
+        ftp_timeout.set_value(60)
+        alive_connection_timeout.set_value(30)
+        max_connections.set_value(100)
+        max_connections_per_server.set_value(32)
+        max_connections_per_proxy.set_value(24)
+        initialpaint_delay.set_value(0)
+        max_time_between_reflow.set_value(3000000)
+        max_reflow_time.set_value(200)
+    tweak_key.connect('clicked', lambda w: tweak())
    
-    if firefox.support:
-        return Setting(table, _('Configure Firefox'), ['firefox'])
-    else:
-        return None
+    return Setting(table, _('Configure Firefox'), ['firefox'])
     
 def get():
     ret = []
