@@ -184,16 +184,12 @@ class ImageChooser(gtk.Button):
         chooser.destroy()
     
     def display_image(self, image_path):
-        'If image_path is none, then show blank.'
         child = self.get_child()
         if child:
             self.remove(child)
         
-        if image_path:
-            pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
-            pixbuf = self.scale_pixbuf(pixbuf)
-        else:
-            pixbuf = blank_pixbuf(self.image_max_width, self.image_max_height)
+        pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
+        pixbuf = self.scale_pixbuf(pixbuf)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.add(image)
         self.show_all()
@@ -321,11 +317,12 @@ class Setting(gtk.VBox):
         self.category = category
 
 class FirefoxPrefText(gtk.Label):
-    def __init__(self, text, key):
+    def __init__(self, text, key, tips = ''):
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(key, str) and key
-        new_text = '%s <small>(%s)</small>' % (text, key)
+        new_text= text
         gtk.Label.__init__(self)
+        self.set_tooltip_markup('%s <span color="#fb741b">%s</span>' % (tips, key))
         self.set_markup(new_text)
         self.set_ellipsize(pango.ELLIPSIZE_END)
         self.set_alignment(0, 0.5)
@@ -337,7 +334,7 @@ class FirefoxBooleanPref(gtk.HBox):
         self.combo = combo = gtk.combo_box_new_text()
         combo.append_text(_('Yes'))
         combo.append_text(_('No'))
-        combo.connect('scroll-event', lambda w: True)
+        #combo.connect('scroll-event', lambda w: True)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
         self.get_value()
@@ -353,6 +350,33 @@ class FirefoxBooleanPref(gtk.HBox):
         index = self.combo.get_active()
         if index == -1: firefox.remove_pref(self.key)
         else: firefox.set_pref(self.key, {0:True, 1:False}[index])
+        
+class FirefoxStrPref(gtk.HBox):
+    def __init__(self, key, dictry):          #dict is {string : setting}
+        assert isinstance(key, str) and key
+        assert isinstance(dictry, dict) and dictry
+        self.key = key
+        self.dictry = dictry
+        self.combo = combo = gtk.combo_box_new_text()
+        for i, m in dictry.items():
+            combo.append_text(_(i))
+        #combo.connect('scroll-event', lambda w: m)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(combo, False)
+        self.get_value()
+        combo.connect('changed', lambda w: self.set_value())
+    def get_value(self):
+        try:
+            value = firefox.get_pref(self.key)
+        except:
+            pass
+        else:
+            self.combo.set_active(value)
+    def set_value(self):
+        index = self.combo.get_active()
+        if index == None: firefox.remove_pref(self.key)
+        else: firefox.set_str_pref(self.key, index)
+
 
 class FirefoxNumericPref(gtk.SpinButton):
     def __init__(self, key, min, max, step, default_value):
@@ -381,38 +405,7 @@ class FirefoxNumericPref(gtk.SpinButton):
             self.set_value(value)
     def m_set_value(self):
         value = self.get_value_as_int()
-        firefox.set_pref(self.key, value)
-
-class FirefoxConfig(gtk.CheckButton):          
-    def check_active(self):
-        import os
-        if not os.path.isfile(self.path + 'user.js'):
-            return False
-        else :
-            with open(self.path + 'user.js') as f:
-                p = self.config_item.split('\n')
-                v = f.readlines()
-                for s in p:
-                    for i in v:
-                        if i[:-1] == s:
-                            return True
-                return False
-
-    def __init__(self, container, config_item, 
-             plain_text, tooltip=None, ):
-        self.path = firefox.preference_dir
-        gtk.CheckButton.__init__(self)
-        assert isinstance(container, gtk.Container)
-        self.__container = container
-        assert isinstance(config_item, str)
-        self.config_item = config_item
-        assert isinstance(plain_text, (str,unicode))
-        self.plain_text = plain_text
-        self.label = gtk.Label(plain_text)
-        self.add(self.label)
-        self.tooltip = tooltip
-        self.set_active(self.check_active())
-        self.connect("query-tooltip", lambda *w: True)
+        firefox.set_pref(self.key, value)        
 
 if __name__ == '__main__':
     content_interrupt_parsing_t = FirefoxPrefText(_('whether interrupt parsing a page to respond to UI events?') , 'content.interrupt.parsing')
