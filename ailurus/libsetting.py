@@ -325,8 +325,8 @@ class FirefoxPrefText(gtk.Label):
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(key, str) and key
         new_text = '%s <small>(%s)</small>' % (text, key)
+        if tips: new_text += '\n' + '<small>%s</small>' % tips
         gtk.Label.__init__(self)
-        self.set_tooltip_text(tips)
         self.set_markup(new_text)
         self.set_ellipsize(pango.ELLIPSIZE_END)
         self.set_alignment(0, 0.5)
@@ -380,7 +380,32 @@ class FirefoxComboPref(gtk.HBox):
         i = self.combo.get_active()
         firefox.set_pref(self.key, self.values[i])
 
-class FirefoxNumericPref(gtk.SpinButton):
+class FirefoxNumericPref(gtk.Entry):
+    def __init__(self, key, default):
+        'default is displayed if the preference is not set'
+        assert isinstance(key, str) and key
+        assert isinstance(default, (int, long))
+        self.key = key
+        self.default_value = str(default)
+        gtk.Entry.__init__(self)
+        self.connect('changed', lambda w: self.m_set_value())
+        self.m_get_value()
+    def m_get_value(self):
+        try:
+            value = int(firefox.get_pref(self.key))
+        except:
+            self.set_text(self.default_value)
+        else:
+            self.set_text(str(value))
+    def m_set_value(self):
+        try:
+            value = int(self.get_text())
+        except:
+            pass
+        else:
+            firefox.set_pref(self.key, value)
+        
+class FirefoxNumericPref2(gtk.SpinButton):
     def __init__(self, key, min, max, default):
         'default_value is displayed if the preference is not set'
         assert isinstance(key, str) and key
@@ -414,9 +439,9 @@ if __name__ == '__main__':
     content_interrupt_parsing_t = FirefoxPrefText(_('whether interrupt parsing a page to respond to UI events?') , 'content.interrupt.parsing')
     content_interrupt_parsing = FirefoxBooleanPref('content.interrupt.parsing')
     content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
-    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 100000, 5000000, 100000, 5000000)
+    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 100000)
     content_maxtextrun_t = FirefoxPrefText(_('maximum number of bytes to split a long text node'), 'content.maxtextrun')
-    content_maxtextrun = FirefoxNumericPref('content.maxtextrun', 1024, 32768, 1024, 8192)
+    content_maxtextrun = FirefoxNumericPref('content.maxtextrun', 1024)
     
     table = gtk.Table()
     row = 0
