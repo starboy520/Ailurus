@@ -356,6 +356,9 @@ class FirefoxBooleanPref(gtk.HBox):
         index = self.combo.get_active()
         if index == -1: firefox.remove_pref(self.key)
         else: firefox.set_pref(self.key, {0:True, 1:False}[index])
+    def set_value(self, new_value):
+        assert isinstance(new_value, bool)
+        self.combo.set_active({True:0, False:1}[new_value])
 
 class FirefoxComboPref(gtk.HBox):
     def __init__(self, key, texts, values, default=None): # "text" is displayed. "value" is stored in pref.js
@@ -386,6 +389,11 @@ class FirefoxComboPref(gtk.HBox):
     def m_set_value(self):
         i = self.combo.get_active()
         firefox.set_pref(self.key, self.values[i])
+    def set_value(self, new_value):
+        assert new_value in self.values
+        for i in range(len(self.values)):
+            if self.values[i] == new_value:
+                self.combo.set_active(i)
 
 class FirefoxNumericPref(gtk.Entry):
     def __init__(self, key, default):
