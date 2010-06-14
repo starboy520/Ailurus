@@ -227,7 +227,6 @@ class FFEaseLink(_ff_extension):
 
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
-    category = 'firefox_extension'
     license = BSD
     detail = _('This is a powerful web development tool.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/1843'
@@ -272,14 +271,13 @@ class FFGreaseMonkey(_ff_extension):
 class FFFlashblock(_ff_extension):
     __doc__ = _('Flashblock: blocks Flash animation')
     license = DUAL_LICENSE(GPL, MPL)
-    desc = _('Never annoyed by Flash animations again!')
+    desc = _('Never annoyed by Flash animations')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
     name = u'Flashblock'
     R = R(latest(433), 'flashblock.xpi')
 
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
-    category = 'firefox_extension'
     license = GPL
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3829'
@@ -306,7 +304,6 @@ class FFRadioGet(_ff_extension):
 
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
-    category = 'firefox_extension'
     license = MPL
     detail = _('It helps you promote your web sites.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/3036'
@@ -323,7 +320,6 @@ class FFStylish(_ff_extension):
 
 class FFTamperData(_ff_extension):
     __doc__ = _('Tamper Data: View and modify HTTP/HTTPS headers and post request parameters.')
-    category = 'firefox_extension'
     license = GPL
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/966'
@@ -340,7 +336,6 @@ class FFUserAgentSwitcher(_ff_extension):
 
 class FFViewSourceChart(_ff_extension):
     __doc__ = _('View Source Chart: Show pretty color-coded HTML source code')
-    category = 'firefox_extension'
     license = GPL
     detail = _("This extension helps you quickly scan and recognize a document's tags.")
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/655'
@@ -357,7 +352,6 @@ class FFFirefoxSync(_ff_extension):
 
 class FFWebDeveloper(_ff_extension):
     __doc__ = _('Web Developer: Web page analysis tools')
-    category = 'firefox_extension'
     license = LGPL
     detail = _('Many developers installed it.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/60'
@@ -374,30 +368,16 @@ class FFYetAnotherSmoothScrolling(_ff_extension):
 
 class FFYSlow(_ff_extension):
     __doc__ = _("YSlow: web page performance tuning")
-    category = 'firefox_extension'
     license = MPL
     detail = _("It helps you improve web page performance. It tells you why web page is slow.")
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
     name = u'YSlow'
     R = R(latest(5369), filename='yslow.xpi')
-    def __init__(self):
-        self.desc = _("It helps you improve web page performance. It tells you why web page is slow.")
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/5369'
-        self.range = '2.0~3.5.*'
-        self.name = u'YSlow'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/5369/yslow-2.0.2-fx.xpi',],
-                     215568,'6b90f75c4064b32ca21d720d7b6e40ecf8c024b7')
-        _ff_extension.__init__(self)
         
 class FFWebMailNotifier(_ff_extension):
-    __doc__ = _('WebMail Notifier: check your webmail accounts and notifie the number of unread emails.')
-    category = 'firefox_extension'
+    __doc__ = _('WebMail Notifier: check your email accounts and notify unread emails')
     license = MPL
-    def __init__(self):
-        self.desc = _("Supports : gmail, yahoo, hotmail, aol, daum, naver, nate, paran, POP3/IMAP and more.")
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/4490/'
-        self.range = '1.5 - 3.7'
-        self.name = u'WebMail Notifier'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/4490/webmail_notifier-2.4.2-fx+tb+sm.xpi'],
-                   122669, 'ff635ed0350878094bcc5d3c58fdb0d92ea4a7a9')
-        _ff_extension.__init__(self)
+    detail = _('Supports many email server')
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/4490'
+    name = u'WebMail Notifier'
+    R = R(latest(4490), filename='webmail_notifier.xpi')
