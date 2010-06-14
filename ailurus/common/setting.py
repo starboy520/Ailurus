@@ -173,70 +173,70 @@ def __change_hostname():
 
 def __configure_firefox():
     # DNS
-    network_dnsCacheEntries = FirefoxNumericPref('network.dnsCacheEntries', default=20)
-    network_dnsCacheEntries_t = FirefoxPrefText(_('the number of DNS results to cache'), 'network.dnsCacheEntries')
-    network_dnsCacheExpiration = FirefoxNumericPref('network.dnsCacheExpiration', default=60)
-    network_dnsCacheExpiration_t = FirefoxPrefText(_('the number of seconds to cache DNS results'), 'network.dnsCacheExpiration')
+    dns_entries = FirefoxNumericPref('network.dnsCacheEntries', default=20)
+    dns_entries_t = FirefoxPrefText(_('the number of DNS results to cache'), 'network.dnsCacheEntries')
+    dns_expiration = FirefoxNumericPref('network.dnsCacheExpiration', default=60)
+    dns_expiration_t = FirefoxPrefText(_('the number of seconds to cache DNS results'), 'network.dnsCacheExpiration')
     # connection number and timeout
-    network_ftp_idleConnectionTimeout = FirefoxNumericPref('network.ftp.idleConnectionTime', default=300)
-    network_ftp_idleConnectionTimeout_t = FirefoxPrefText(_('the number of seconds before the FTP connection times out'), 'network.ftp.idleConnectionTimeout')
-    network_http_keep_alive_timeout = FirefoxNumericPref('network.http.keep-alive.timeout', default=300)
-    network_http_keep_alive_timeout_t = FirefoxPrefText(_('amount of time in seconds to keep alive connections'), 'network.http.keep-alive.timeout', 
-                                                        _('alive connections can be re-used for multiple requests to improve performance'))
-    network_http_max_persistent_connections_per_proxy = FirefoxNumericPref('network.http.max-persistent-connections-per-proxy', default=8)
-    network_http_max_persistent_connections_per_proxy_t = FirefoxPrefText(_('the total number of alive connections per proxy server'),
-                                                                          'network.http.max-persistent-connections-per-proxy')
-    network_http_max_connections = FirefoxNumericPref('network.http.max-connections', default=30)
-    network_http_max_connections_t = FirefoxPrefText(_('the maximum number of HTTP connections'), 'network.http.max-connections',
-                                                     _('Users on slower connections may want to reduce this number to prevent HTTP connection timeouts.\n'
-                                                       'Users on faster connections may want to increase it.'))
-    network_http_max_connections_per_server = FirefoxNumericPref('network.http.max-connections-per-server', default=15)
-    network_http_max_connections_per_server_t = FirefoxPrefText(_('the maximum number of connections to a single server'), 'network.http.max-connections-per-server')
+    ftp_timeout = FirefoxNumericPref('network.ftp.idleConnectionTime', default=300)
+    ftp_timeout_t = FirefoxPrefText(_('the number of seconds before the FTP connection times out'), 'network.ftp.idleConnectionTimeout')
+    alive_connection_timeout = FirefoxNumericPref('network.http.keep-alive.timeout', default=300)
+    alive_connection_timeout_t = FirefoxPrefText(_('amount of time in seconds to keep alive connections'), 'network.http.keep-alive.timeout', 
+                                                 _('alive connections can be re-used for multiple requests to improve performance'))
+    max_connections = FirefoxNumericPref('network.http.max-connections', default=30)
+    max_connections_t = FirefoxPrefText(_('the maximum number of HTTP connections'), 'network.http.max-connections',
+                                        _('Users on slower connections may want to reduce this number to prevent HTTP connection timeouts.\n'
+                                          'Users on faster connections may want to increase it.'))
+    max_connections_per_server = FirefoxNumericPref('network.http.max-connections-per-server', default=15)
+    max_connections_per_server_t = FirefoxPrefText(_('the maximum number of connections to a single server'), 'network.http.max-connections-per-server')
+    max_connections_per_proxy = FirefoxNumericPref('network.http.max-persistent-connections-per-proxy', default=8)
+    max_connections_per_proxy_t = FirefoxPrefText(_('the total number of alive connections per proxy server'),
+                                                    'network.http.max-persistent-connections-per-proxy')
     # Page rendering
-    nglayout_initialpaint_delay = FirefoxNumericPref('nglayout.initialpaint.delay', default=250)
-    nglayout_initialpaint_delay_t = FirefoxPrefText(_('the number of milliseconds to wait before first displaying the page'), 'nglayout.initialpaint.delay',
-                                                    _("Since the start of a web page normally doesn't have much useful information to display,\n"
-                                                      "Firefox will wait a short interval before first rendering a page."))
-    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', default=360000)
-    content_max_tokenizing_time_t = FirefoxPrefText(_('the maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
-    content_notify_backoffcount = FirefoxNumericPref('content.notify.backoffcount', default=-1)
-    content_notify_backoffcount_t = FirefoxPrefText(_('re-render pages until this number has been reached (-1 means unlimited)'), 'content.notify.backoffcount')
+    initialpaint_delay = FirefoxNumericPref('nglayout.initialpaint.delay', default=250)
+    initialpaint_delay_t = FirefoxPrefText(_('the number of milliseconds to wait before first displaying the page'), 'nglayout.initialpaint.delay',
+                                           _("Since the start of a web page normally doesn't have much useful information to display,\n"
+                                             "Firefox will wait a short interval before first rendering a page."))
+    max_time_between_reflow = FirefoxNumericPref('content.max.tokenizing.time', default=360000)
+    max_time_between_reflow_t = FirefoxPrefText(_('the maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
+    max_reflow_time = FirefoxNumericPref('content.notify.backoffcount', default=-1)
+    max_reflow_time_t = FirefoxPrefText(_('re-render pages until this number has been reached (-1 means unlimited)'), 'content.notify.backoffcount')
     # page content
-    image_animation_mod = FirefoxComboPref('image.animation_mode', [_('loop'), _('only once'), _('never'),], ['normal', 'once', 'none'], default='normal')
-    image_animation_mod_t = FirefoxPrefText(_('how to animate GIF images'), 'image.animation_mode')
-    browser_blink_allowed = FirefoxBooleanPref('browser.blink_allowed', default=True)
-    browser_blink_allowed_t = FirefoxPrefText(_('display content in &lt;blink&gt; elements and styled with text-decoration:blink as blinking text'), 'browser.blink_allowed')
+    gif_mode = FirefoxComboPref('image.animation_mode', [_('loop'), _('only once'), _('never'),], ['normal', 'once', 'none'], default='normal')
+    gif_mode_t = FirefoxPrefText(_('how to animate GIF images'), 'image.animation_mode')
+    show_blink = FirefoxBooleanPref('browser.blink_allowed', default=True)
+    show_blink_t = FirefoxPrefText(_('display content in &lt;blink&gt; elements and styled with text-decoration:blink as blinking text'), 'browser.blink_allowed')
     # tab
-    browser_sessionstore_max_tabs_undo_t = FirefoxPrefText(_('how many closed tabs are kept track'), 'browser.sessionstore.max_tabs_undo')
-    browser_sessionstore_max_tabs_undo = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', default=10)
-    browser_tabs_tab_min_width = FirefoxNumericPref('browser.tabs.tabMinWidth', default=100)
-    browser_tabs_tab_min_width_t = FirefoxPrefText(_('the width of narrowest tab'), 'browser.tabs.tabMinWidth',
-                                                   _("To fit more tabs on the tab strip, Firefox shrinks every tab.\n"
-                                                     "This preference determines the narrowest a tab can become before the tab strip becomes scrollable."))
-    toolkit_scrollbox_scroll_increment = FirefoxNumericPref('toolkit.scrollbox.scrollIncrement', default=20)
-    toolkit_scrollbox_scroll_increment_t = FirefoxPrefText(_("how many pixels to scroll at a time when scrolling the tab strip's scrollbox"), 
-                                                             'toolkit.scrollbox.scrollIncrement',
-                                                           _('When there is a large number of tabs, you can scroll the tab strip horizontally to see all available tabs.\n'
-                                                             'This preference specifies how quickly the strip scrolls.'))
+    max_undo_tabs = FirefoxPrefText(_('how many closed tabs are kept track'), 'browser.sessionstore.max_tabs_undo')
+    max_undo_tabs_t = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', default=10)
+    min_tab_width = FirefoxNumericPref('browser.tabs.tabMinWidth', default=100)
+    min_tab_width_t = FirefoxPrefText(_('the width of narrowest tab'), 'browser.tabs.tabMinWidth',
+                                      _("To fit more tabs on the tab strip, Firefox shrinks every tab.\n"
+                                        "This preference determines the narrowest a tab can become before the tab strip becomes scrollable."))
+    tab_scroll_step = FirefoxNumericPref('toolkit.scrollbox.scrollIncrement', default=20)
+    tab_scroll_step_t = FirefoxPrefText(_("how many pixels to scroll at a time when scrolling the tab strip's scrollbox"), 
+                                        'toolkit.scrollbox.scrollIncrement',
+                                        _('When there is a large number of tabs, you can scroll the tab strip horizontally to see all available tabs.\n'
+                                          'This preference specifies how quickly the strip scrolls.'))
     # urlbar
-    browser_urlbar_autofill = FirefoxBooleanPref('browser.urlbar.autoFill', default=False)
-    browser_urlbar_autofill_t = FirefoxPrefText(_('auto complete url-bar, display entries you have previously typed that closely match the text your typed'),
-                                                  'browser.urlbar.autoFill')
+    urlbar_autofill = FirefoxBooleanPref('browser.urlbar.autoFill', default=False)
+    urlbar_autofill_t = FirefoxPrefText(_('auto complete url-bar, display entries you have previously typed that closely match the text your typed'),
+                                        'browser.urlbar.autoFill')
     # history
-    browser_history_expire_days = FirefoxNumericPref('browser.history_expire_days', default=180)
-    browser_history_expire_days_t = FirefoxPrefText(_('how many days in which history entries are expired'), 'browser.history_expire_days')
-    broswer_history_expire_sites = FirefoxNumericPref('browser.history_expire_sites', default=40000)
-    broswer_history_expire_sites_t = FirefoxPrefText(_('the maximum number of websites to keep in history'), 'browser.history_expire_sites')
+    history_expire_days = FirefoxNumericPref('browser.history_expire_days', default=180)
+    history_expire_days_t = FirefoxPrefText(_('how many days in which history entries are expired'), 'browser.history_expire_days')
+    history_expire_sites = FirefoxNumericPref('browser.history_expire_sites', default=40000)
+    history_expire_sites_t = FirefoxPrefText(_('the maximum number of websites to keep in history'), 'browser.history_expire_sites')
     # misc
-    browser_cache_offline_capacity = FirefoxNumericPref('browser.cache.offline.capacity', default=512000)
-    browser_cache_offline_capacity_t = FirefoxPrefText(_('the amount of disk space the offline cache may use (in kilobytes)'), 'browser.cache.offline.capacity')
-    extension_get_addons_max_results = FirefoxNumericPref('extension.getAddons.maxResults', default=5)
-    extension_get_addons_max_results_t = FirefoxPrefText(_('the maximum number of results to display in the "Get Add-ons" dialog'), 'extension.getAddons.maxResults')
-    browser_backspace_action = FirefoxComboPref('browser.backspace_action',
-                                                [_('go back a page in the session history'), _('scroll up a page'), _('do nothing')],
-                                                [0, 1, 2],
-                                                default=2)
-    browser_backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
+    cache_capacity = FirefoxNumericPref('browser.cache.offline.capacity', default=512000)
+    cache_capacity_t = FirefoxPrefText(_('the amount of disk space the offline cache may use (in kilobytes)'), 'browser.cache.offline.capacity')
+    addons_max_results = FirefoxNumericPref('extension.getAddons.maxResults', default=5)
+    addons_max_results_t = FirefoxPrefText(_('the maximum number of results to display in the "Get Add-ons" dialog'), 'extension.getAddons.maxResults')
+    backspace_action = FirefoxComboPref('browser.backspace_action',
+                                        [_('go back a page in the session history'), _('scroll up a page'), _('do nothing')],
+                                        [0, 1, 2],
+                                        default=2)
+    backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
     
     table = gtk.Table()
     row = 0
@@ -245,29 +245,29 @@ def __configure_firefox():
         table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
         table.attach(w, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
         row += 1
-    add(content_max_tokenizing_time_t,content_max_tokenizing_time)
-    add(content_notify_backoffcount_t,content_notify_backoffcount)
-    add(network_dnsCacheEntries_t,network_dnsCacheEntries)
-    add(network_dnsCacheExpiration_t,network_dnsCacheExpiration)
-    add(network_ftp_idleConnectionTimeout_t,network_ftp_idleConnectionTimeout)
-    add(network_http_keep_alive_timeout_t,network_http_keep_alive_timeout)
-    add(network_http_max_persistent_connections_per_proxy_t,network_http_max_persistent_connections_per_proxy)
-    add(nglayout_initialpaint_delay_t,nglayout_initialpaint_delay)
-    add(network_http_max_connections_t,network_http_max_connections)
-    add(network_http_max_connections_per_server_t,network_http_max_connections_per_server)
-    add(browser_sessionstore_max_tabs_undo_t,browser_sessionstore_max_tabs_undo)
-    add(browser_blink_allowed_t,browser_blink_allowed)
-    add(browser_tabs_tab_min_width_t,browser_tabs_tab_min_width)
-    add(toolkit_scrollbox_scroll_increment_t,toolkit_scrollbox_scroll_increment)
-    add(browser_urlbar_autofill_t,browser_urlbar_autofill)
+    add(max_time_between_reflow_t,max_time_between_reflow)
+    add(max_reflow_time_t,max_reflow_time)
+    add(dns_entries_t,dns_entries)
+    add(dns_expiration_t,dns_expiration)
+    add(ftp_timeout_t,ftp_timeout)
+    add(alive_connection_timeout_t,alive_connection_timeout)
+    add(max_connections_per_proxy_t,max_connections_per_proxy)
+    add(initialpaint_delay_t,initialpaint_delay)
+    add(max_connections_t,max_connections)
+    add(max_connections_per_server_t,max_connections_per_server)
+    add(max_undo_tabs,max_undo_tabs_t)
+    add(show_blink_t,show_blink)
+    add(min_tab_width_t,min_tab_width)
+    add(tab_scroll_step_t,tab_scroll_step)
+    add(urlbar_autofill_t,urlbar_autofill)
     add(browser_bookmarks_auto_export_html_t,browser_bookmarks_auto_export_html)
-    add(browser_history_expire_days_t,browser_history_expire_days)
-    add(broswer_history_expire_sites_t,broswer_history_expire_sites)
-    add(extension_get_addons_max_results_t,extension_get_addons_max_results)
-    add(browser_cache_offline_capacity_t,browser_cache_offline_capacity)
+    add(history_expire_days_t,history_expire_days)
+    add(history_expire_sites_t,history_expire_sites)
+    add(addons_max_results_t,addons_max_results)
+    add(cache_capacity_t,cache_capacity)
     add(browser_link_open_newwindow_restriction_t, browser_link_open_newwindow_restriction)
-    add(browser_backspace_action_t, browser_backspace_action)
-    add(image_animation_mod_t, image_animation_mod)
+    add(backspace_action_t, backspace_action)
+    add(gif_mode_t, gif_mode)
     
     def one_key_tweak(self):
         firefox.set_str_pref('content.max.tokenizing.time', 3000000)
