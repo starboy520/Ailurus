@@ -300,9 +300,8 @@ def __configure_firefox():
     tweak_key = gtk.Button()
     tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
     tweak_key.connect('clicked', lambda w: one_key_tweak())
-    table.attach(tweak_key, 0, 2, row, row+1, gtk.FILL, gtk.FILL)
+    table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)
     row += 1
-    
    
     if firefox.support:
         return Setting(table, _('Configure Firefox'), ['firefox'])
