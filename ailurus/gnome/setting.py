@@ -32,7 +32,7 @@ def __desktop_icon_setting():
                          '/apps/nautilus/preferences/show_desktop')
     box.pack_start(o, False)
 
-    o = GConfCheckButton(_('Display "Mounted volumn" icon'), '/apps/nautilus/desktop/volumes_visible',
+    o = GConfCheckButton(_('Display "Mounted volume" icon'), '/apps/nautilus/desktop/volumes_visible',
              _('Put icons linking to mounted volumes on the desktop.'))
     box.pack_start(o, False)
     
