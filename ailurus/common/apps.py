@@ -270,17 +270,12 @@ class FFGreaseMonkey(_ff_extension):
     R = R(latest(748), filename='greasemonke.xpi')
 
 class FFFlashblock(_ff_extension):
-    __doc__ = _('Flashblock: blocks Flash content from loading web page')
-    category = 'firefox_extension'
-    license = GPL + MPL
-    def __init__(self):
-        self.desc = _("Never annoyed by a Flash animation again! Blocks Flash so it won't get in your way, but if you want to see it, just click on...")
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
-        self.range = '1.5 - 3.7'
-        self.name = u'Flashblock'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/433/flashblock-1.5.13-fx.xpi',],
-                   91189, '97154760c0374197d8c6ee1e02fc5b0011c02ba7')
-        _ff_extension.__init__(self)
+    __doc__ = _('Flashblock: blocks Flash animation')
+    license = DUAL_LICENSE(GPL, MPL)
+    desc = _('Never annoyed by Flash animations again!')
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
+    name = u'Flashblock'
+    R = R(latest(433), 'flashblock.xpi')
 
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
