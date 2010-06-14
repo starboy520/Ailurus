@@ -283,7 +283,7 @@ def __configure_firefox():
     add(addons_max_results_t, addons_max_results)
     add(backspace_action_t, backspace_action)
     
-    def one_key_tweak(self):
+    def one_key_tweak():
         firefox.set_str_pref('content.max.tokenizing.time', 3000000)
         firefox.set_str_pref('content.notify.backoffcount', 200)
         firefox.set_str_pref('network.dnsCacheEntries', 256)
@@ -298,9 +298,9 @@ def __configure_firefox():
         firefox.set_str_pref('browser.blink_allowed', 'false')
         firefox.set_str_pref('browser.urlbar.autoFill', 'true')
     tweak_key = gtk.Button()
-    tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto Setting Firefox') )
-    tweak_key.connect('clicked', one_key_tweak)
-    table.attach(tweak_key, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
+    tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
+    tweak_key.connect('clicked', lambda w: one_key_tweak())
+    table.attach(tweak_key, 0, 2, row, row+1, gtk.FILL, gtk.FILL)
     row += 1
     
    
