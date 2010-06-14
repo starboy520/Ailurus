@@ -207,8 +207,8 @@ def __configure_firefox():
     show_blink = FirefoxBooleanPref('browser.blink_allowed', default=True)
     show_blink_t = FirefoxPrefText(_('display content in &lt;blink&gt; elements and styled with text-decoration:blink as blinking text'), 'browser.blink_allowed')
     # tab
-    max_undo_tabs = FirefoxPrefText(_('how many closed tabs are kept track'), 'browser.sessionstore.max_tabs_undo')
-    max_undo_tabs_t = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', default=10)
+    max_undo_tabs = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', default=10)
+    max_undo_tabs_t = FirefoxPrefText(_('how many closed tabs are kept track'), 'browser.sessionstore.max_tabs_undo')
     min_tab_width = FirefoxNumericPref('browser.tabs.tabMinWidth', default=100)
     min_tab_width_t = FirefoxPrefText(_('the width of narrowest tab'), 'browser.tabs.tabMinWidth',
                                       _("To fit more tabs on the tab strip, Firefox shrinks every tab.\n"
@@ -238,7 +238,9 @@ def __configure_firefox():
                                         default=2)
     backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
     
+    global table, row
     table = gtk.Table()
+    table.set_row_spacings(5)
     row = 0
     def add(t, w):
         global table, row
@@ -246,8 +248,8 @@ def __configure_firefox():
         table.attach(w, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
         row += 1
     def add2(text):
-        assert isinstance(text, (str, unicode)) and text
         global table, row
+        assert isinstance(text, (str, unicode)) and text
         label = gtk.Label()
         label.set_markup('<b>%s</b>' % text)
         label.set_alignment(0, 0.5)
