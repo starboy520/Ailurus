@@ -173,52 +173,48 @@ def __change_hostname():
 
 def __configure_firefox():
     content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
-    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 00000, 5000000, 50000, 360000)
+    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 0, 5000000, 50000, 360000)
 
-    content_notify_backoffcount_t = FirefoxPrefText(_('Reflow pages once when finishing downloading after this number has been reached'), 'content.notify.backoffcount')
+    content_notify_backoffcount_t = FirefoxPrefText(_('re-render pages until this number has been reached'), 'content.notify.backoffcount')
     content_notify_backoffcount = FirefoxNumericPref('content.notify.backoffcount', -1, 500, 1, -1)
     
-    network_dnsCacheEntries_t = FirefoxPrefText(_('The number of DNS results to cache.'), 'network.dnsCacheEntries')
+    network_dnsCacheEntries_t = FirefoxPrefText(_('the number of DNS results to cache'), 'network.dnsCacheEntries')
     network_dnsCacheEntries = FirefoxNumericPref('network.dnsCacheEntries', 0, 256, 16, 20)
     
-    network_dnsCacheExpiration_t = FirefoxPrefText(_('The number of seconds to cache DNS results.'), 'network.dnsCacheExpiration')
+    network_dnsCacheExpiration_t = FirefoxPrefText(_('the number of seconds to cache DNS results'), 'network.dnsCacheExpiration')
     network_dnsCacheExpiration = FirefoxNumericPref('network.dnsCacheExpiration', 60, 86400, 120, 60)
     
-    network_ftp_idleConnectionTimeout_t = FirefoxPrefText(_('The number of seconds before the FTP connection times out.'), 'network.ftp.idleConnectionTimeout')
+    network_ftp_idleConnectionTimeout_t = FirefoxPrefText(_('the number of seconds before the FTP connection times out'), 'network.ftp.idleConnectionTimeout')
     network_ftp_idleConnectionTimeout = FirefoxNumericPref('network.ftp.idleConnectionTime', 60, 300, 60, 300)
     
-    network_http_keep_alive_timeout_t = FirefoxPrefText(_('Amount of time in seconds to keep keep-alive connections alive.'), 'network.http.keep-alive.timeout', 
-                                                        _('HTTP keep-alive connections can be re-used for multiple requests, as opposed to non-keep-alive connections,'
-                                                          ' which are limited to one request. Using keep-alive connections improves performance. '
-                                                          'This preference determines how long keep-alive connections are kept alive. \n'))
+    network_http_keep_alive_timeout_t = FirefoxPrefText(_('amount of time in seconds to keep alive connections'), 'network.http.keep-alive.timeout', 
+                                                        _('alive connections can be re-used for multiple requests, therefore improve performance.'))
     network_http_keep_alive_timeout = FirefoxNumericPref('network.http.keep-alive.timeout', 30, 300, 10, 300)
     
-    network_http_max_persistent_connections_per_proxy_t = FirefoxPrefText(_('the total number of HTTP keep-alive connections '),
+    network_http_max_persistent_connections_per_proxy_t = FirefoxPrefText(_('the total number of alive connections per proxy server'),
                                                                           'network.http.max-persistent-connections-per-proxy',
-                                                                          'If more connections are needed, they are queued until a connection "slot" is available. '
-                                                                          'This preference takes values between 1 and 255 inclusive, '
-                                                                          'directly corresponding to the maximum number of HTTP keep-alive connections the application '
-                                                                          'can have open at once to the proxy server. \n')
+                                                                          'If more connections are needed, they are queued until a connection "slot" is available.')
     network_http_max_persistent_connections_per_proxy = FirefoxNumericPref('network.http.max-persistent-connections-per-proxy', 1, 255, 1, 24)
     
-    nglayout_initialpaint_delay_t = FirefoxPrefText(_('The number of milliseconds to wait before first displaying the page.'), 'nglayout.initialpaint.delay', 
+    nglayout_initialpaint_delay_t = FirefoxPrefText(_('The number of milliseconds to wait before first displaying the page.'),
+                                                    'nglayout.initialpaint.delay', 
                                                     _("Since the start of a web page normally doesn't have much useful information to display, "
-                                                      "Mozilla applications will wait a short interval before first rendering a page. "
-                                                      "This preference controls that interval. \n"))
+                                                      "Firefox will wait a short interval before first rendering a page."))
     nglayout_initialpaint_delay = FirefoxNumericPref('nglayout.initialpaint.delay', 0, 250, 25, 250)
     
-    network_http_max_connections_t = FirefoxPrefText(_('the maximum number of HTTP connections Mozilla can have open at once.'), 'network.http.max-connections', 
-                                                   _('Users on slower connections may want to reduce this number to help prevent HTTP connection timeouts. '
-                                                     'Users on faster connections may want to increase it.\n'))
+    network_http_max_connections_t = FirefoxPrefText(_('the maximum number of HTTP connections'),
+                                                     'network.http.max-connections',
+                                                     _('Users on slower connections may want to reduce this number to help prevent HTTP connection timeouts. '
+                                                       'Users on faster connections may want to increase it.'))
     network_http_max_connections = FirefoxNumericPref('network.http.max-connections', 1, 65535, 96, 30)
     
-    network_http_max_connections_per_server_t = FirefoxPrefText(_('The maximum number of connections of any type to a single server'), 'network.http.max-connections-per-server')
+    network_http_max_connections_per_server_t = FirefoxPrefText(_('The maximum number of connections to a single server'), 'network.http.max-connections-per-server')
     network_http_max_connections_per_server = FirefoxNumericPref('network.http.max-connections-per-server', 1, 255, 16, 32)
     
     browser_sessionstore_max_tabs_undo_t = FirefoxPrefText(_('Increase/Decrease History Undo Close Tab Limit'), 'browser.sessionstore.max_tabs_undo')
     browser_sessionstore_max_tabs_undo = FirefoxNumericPref('browser.sessionstore.max_tabs_undo', 5, 50, 4, 10)
     
-    browser_blink_allowed_t = FirefoxPrefText(_('Display content in blink elements and styled with text-decoration'), 'browser.blink_allowed')
+    browser_blink_allowed_t = FirefoxPrefText(_('display blink text'), 'browser.blink_allowed')
     browser_blink_allowed = FirefoxBooleanPref('browser.blink_allowed')
     
     browser_tabs_tab_min_width_t = FirefoxPrefText(_('Set the the width of narrowest tab'), 'browser.tabs.tabMinWidth',
