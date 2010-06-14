@@ -167,7 +167,6 @@ class HITTeXTemplate(_download_one_file) :
 
 class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('JavaScript Debugger: a powerful JavaScript debugger')
-    category = 'firefox_extension'
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/216'
     name = u'JavaScript Debugger'
@@ -175,7 +174,6 @@ class FFJavaScriptDebugger(_ff_extension): # cannot find out which license it is
 
 class FFMacOSXTheme(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Mac OS X Theme')
-    category = 'firefox_extension'
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7172'
     name = u'MacOSX Theme'
@@ -183,7 +181,6 @@ class FFMacOSXTheme(_ff_extension): # cannot find out which license it is releas
 
 class FFNetVideoHunter(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('NetVideoHunter: Download videoclips from video-sharing web sites')
-    category = 'firefox_extension'
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/7447'
     name = u'NetVideoHunter'
@@ -191,7 +188,6 @@ class FFNetVideoHunter(_ff_extension): # cannot find out which license it is rel
 
 class FFPersonas(_ff_extension): # cannot find out which license it is released under
     __doc__ = _('Personas: One-click changing Firefox skin')
-    category = 'firefox_extension'
     detail = _('Theme your browser according to your mood, hobby or season.')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10900'
     name = u'Personas'
