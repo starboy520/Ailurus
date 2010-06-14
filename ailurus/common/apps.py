@@ -217,17 +217,13 @@ class FFEasyDragToGo(_ff_extension):
     R = R(latest(6639), filename='easy_dragtogo.xpi')
 
 class FFEaseLink(_ff_extension):
-    __doc__ = _('Ease Link: decode Thunder, QQ Xuanfeng, Flashget, Rayfile, Namipan and QQ Temporary Chatting links.')
-    category = 'firefox_extension'
+    __doc__ = _('Ease Link: Decode Thunder, QQ, Flashget, Rayfile, Namipan links')
+    detail = _('Get normal HTML hyperlink from hyperlink dedicated to special software')
     license = MPL
-    def __init__(self):
-        self.desc = _("It can fix Thunder, QQ Xuanfeng, Flashget, Rayfile, Namipan, and QQ Temporary Chatting links. Converting URL text of above types on the webpage to a Hyperlink.")
-        self.download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59133/'
-        self.range = '1.5 - 3.7'
-        self.name = u'Ease Link'
-        self.R = R(['http://releases.mozilla.org/pub/mozilla.org/addons/59133/ease_link-1.0.2.3-fx.xpi'],
-                   20679, '4c79ae5f7d9fe2c2bb5fdbe5e5dbc06c9f79b789')
-        _ff_extension.__init__(self)
+    Chinese = True
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/59133'
+    name = u'Ease Link'
+    R = R(latest(59133), filename='ease_link.xpi')
 
 class FFFireBug(_ff_extension):
     __doc__ = _('FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage')
