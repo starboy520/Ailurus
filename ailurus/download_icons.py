@@ -44,7 +44,6 @@ class DownloadIconsWindow(gtk.Window):
     def download_thread(self):
         try:
             urllib.urlretrieve(self.url, self.filename, self.reporthook)
-            raise Exception(1,2,3)
         except:
             self.exception = sys.exc_info()
         finally:
@@ -65,13 +64,39 @@ class DownloadIconsWindow(gtk.Window):
             exception_happened(*self.exception)
             gtk.main() # show exception dialog
         else:
-            print 1 # todo
+            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Please press "OK" button to install icons. Authentication is required.'))
+            dialog.run()
+            dialog.destroy()
+            try:
+                self.install_icons()
+            except AccessDeniedError:
+                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Operation is canceled because you refused authentication.'))
+                dialog.run()
+                dialog.destroy()
+            except:
+                exception_happened(*sys.exc_info())
+                gtk.main()
+            else:
+                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed.'))
+                dialog.run()
+                dialog.destroy()
+                sys.exit()
+    
+    def install_icons(self):
+        import lib
+        icons_path = os.path.dirname(os.path.abspath(lib.__file__))+'/icons/'
+        assert os.path.exists(icons_path)
+        other_icons_path = icons_path + '/other_icons/'
+        if not os.path.exists(other_icons_path):
+            run_as_root('mkdir ' + other_icons_path)
+        os.chdir(other_icons_path)
+        run_as_root('tar xf ' + self.filename)
 
 import ctypes # change_task_name
 libc = ctypes.CDLL('libc.so.6')
 libc.prctl(15, 'ailurus_icon_downloader', 0, 0, 0)
 if get_output('pgrep -u $USER ailurus_icon_downloader', True): # detect_running_instances
-    sys.exit(1) # another instance is running
+    sys.exit(1) # another instance is running, therefore I exit
 gtk.gdk.threads_init()
 window = DownloadIconsWindow()
 thread.start_new_thread(window.download_thread, ())
