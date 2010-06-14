@@ -77,7 +77,7 @@ class DownloadIconsWindow(gtk.Window):
                 exception_happened(*sys.exc_info())
                 gtk.main()
             else:
-                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed.'))
+                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed. You will see extra icons at the next time when Ailurus starts up.'))
                 dialog.run()
                 dialog.destroy()
                 sys.exit()
