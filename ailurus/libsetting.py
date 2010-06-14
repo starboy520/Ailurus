@@ -342,9 +342,9 @@ class FirefoxBooleanPref(gtk.HBox):
         combo.connect('scroll-event', lambda *w: True)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
-        self.get_value()
-        combo.connect('changed', lambda *w: self.set_value())
-    def get_value(self):
+        self.m_get_value()
+        combo.connect('changed', lambda *w: self.m_set_value())
+    def m_get_value(self):
         try:
             value = bool(firefox.get_pref(self.key))
         except:
@@ -352,7 +352,7 @@ class FirefoxBooleanPref(gtk.HBox):
                 self.combo.set_active({True:0, False:1}[self.default])
         else:
             self.combo.set_active({True:0, False:1}[value])
-    def set_value(self):
+    def m_set_value(self):
         index = self.combo.get_active()
         if index == -1: firefox.remove_pref(self.key)
         else: firefox.set_pref(self.key, {0:True, 1:False}[index])
@@ -371,8 +371,8 @@ class FirefoxComboPref(gtk.HBox):
             combo.append_text(text)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
-        combo.connect('changed', lambda *w: self.set_value())
-    def get_value(self):
+        combo.connect('changed', lambda *w: self.m_set_value())
+    def m_get_value(self):
         try:    value = firefox.get_pref(self.key)
         except:
             if self.default:
@@ -383,7 +383,7 @@ class FirefoxComboPref(gtk.HBox):
             for i in range(len(self.values)):
                 if self.values[i] == value:
                     self.combo.set_active(i)
-    def set_value(self):
+    def m_set_value(self):
         i = self.combo.get_active()
         firefox.set_pref(self.key, self.values[i])
 
@@ -412,6 +412,9 @@ class FirefoxNumericPref(gtk.Entry):
             pass
         else:
             firefox.set_pref(self.key, value)
+    def set_value(self, new_value):
+        assert isinstance(new_value, (int, long))
+        self.set_text(str(new_value))
         
 class FirefoxNumericPref2(gtk.SpinButton): # do not use this class, because min & max is hard to determine
     def __init__(self, key, min, max, default):
