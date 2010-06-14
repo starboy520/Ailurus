@@ -22,7 +22,9 @@
 
 from __future__ import with_statement
 
-D = '/usr/share/ailurus/data/'
+def get_icons_path():
+    import os
+    return os.path.dirname(os.path.abspath(__file__))+'/icons/'
 
 def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
     return (text, value, icon, tooltip)
@@ -1834,6 +1836,13 @@ def get_ailurus_release_date():
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
+try:
+    D = get_icons_path()
+except: # raise exception in python console because __file__ is not defined
+    import os
+    D = os.path.expanduser('~/workspace/Ailurus/ailurus/icons/')
+    assert os.path.exists(D)
+    
 try:
     AILURUS_VERSION = get_ailurus_version()
     AILURUS_RELEASE_DATE = get_ailurus_release_date()
