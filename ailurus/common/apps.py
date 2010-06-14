@@ -274,7 +274,7 @@ class FFFlashblock(_ff_extension):
     desc = _('Never annoyed by Flash animations')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
     name = u'Flashblock'
-    R = R(latest(433), 'flashblock.xpi')
+    R = R(latest(433), filename='flashblock.xpi')
 
 class FFLiveHTTPHeaders(_ff_extension):
     __doc__ = _('Live HTTP Headers: View HTTP headers in real-time')
