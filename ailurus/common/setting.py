@@ -179,6 +179,13 @@ def __configure_firefox():
     table.set_row_spacings(5)
     row = 0
 
+    explain = gtk.Label(_('Tweak Firefox by changing file %s.\n'
+                          'Please close all Firefox windows.') % firefox.prefs_js_path)
+    explain.set_alignment(0, 0.5)
+    explain.set_selectable(True)
+    table.attach(explain, 0, 2, row, row+1, gtk.FILL, gtk.FILL)
+    row += 1
+
     tweak_key = gtk.Button()
     tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
     table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)

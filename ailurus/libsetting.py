@@ -330,6 +330,7 @@ class FirefoxPrefText(gtk.Label):
         self.set_markup(new_text)
         self.set_ellipsize(pango.ELLIPSIZE_END)
         self.set_alignment(0, 0.5)
+        self.set_selectable(True)
 
 class FirefoxBooleanPref(gtk.HBox):
     def __init__(self, key, default=None):
