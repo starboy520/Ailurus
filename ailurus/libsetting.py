@@ -324,8 +324,8 @@ class FirefoxPrefText(gtk.Label):
     def __init__(self, text, key, tips = ''):
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(key, str) and key
-        new_text = '%s <small>(%s)</small>' % (text, key)
-        if tips: new_text += '\n' + '<small>%s</small>' % tips
+        new_text = '%s <small>(<span color="#8A00C2">%s</span>)</small>' % (text, key)
+        if tips: new_text += '\n' + '<small><span color="#0072B2">%s</span></small>' % tips
         gtk.Label.__init__(self)
         self.set_markup(new_text)
         self.set_ellipsize(pango.ELLIPSIZE_END)
