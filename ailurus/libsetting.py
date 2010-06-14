@@ -381,14 +381,15 @@ class FirefoxComboPref(gtk.HBox):
         firefox.set_pref(self.key, self.values[i])
 
 class FirefoxNumericPref(gtk.SpinButton):
-    def __init__(self, key, min, max, step, default_value):
+    def __init__(self, key, min, max, default):
+        'default_value is displayed if the preference is not set'
         assert isinstance(key, str) and key
         assert isinstance(min, (int, long))
         assert isinstance(max, (int, long))
-        assert isinstance(step, (int, long)) and step>0
-        assert isinstance(default_value, (int, long)) and min<=default_value<=max
+        assert isinstance(default, (int, long)) and min<=default<=max
+        step = max(1, (max-min)/100)
         self.key = key
-        self.default_value = default_value
+        self.default_value = default
         gtk.SpinButton.__init__(self)
         self.set_range(min, max)
         self.set_increments(step, step)

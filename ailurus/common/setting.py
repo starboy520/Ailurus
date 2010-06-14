@@ -172,23 +172,23 @@ def __change_hostname():
     return Setting(hbox, _('Change host name'), ['host_name'])
 
 def __configure_firefox():
-    content_max_tokenizing_time_t = FirefoxPrefText(_('maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
-    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', 0, 5000000, 50000, 360000)
+    content_max_tokenizing_time_t = FirefoxPrefText(_('the maximum number of microseconds between two page rendering'), 'content.max.tokenizing.time')
+    content_max_tokenizing_time = FirefoxNumericPref('content.max.tokenizing.time', min=0, max=5000000, default=360000)
 
-    content_notify_backoffcount_t = FirefoxPrefText(_('re-render pages until this number has been reached'), 'content.notify.backoffcount')
-    content_notify_backoffcount = FirefoxNumericPref('content.notify.backoffcount', -1, 500, 1, -1)
+    content_notify_backoffcount_t = FirefoxPrefText(_('re-render pages until this number has been reached; -1=unlimited'), 'content.notify.backoffcount')
+    content_notify_backoffcount = FirefoxNumericPref('content.notify.backoffcount', min=-1, max=500, default=-1)
     
     network_dnsCacheEntries_t = FirefoxPrefText(_('the number of DNS results to cache'), 'network.dnsCacheEntries')
-    network_dnsCacheEntries = FirefoxNumericPref('network.dnsCacheEntries', 0, 256, 16, 20)
+    network_dnsCacheEntries = FirefoxNumericPref('network.dnsCacheEntries', 0, 256, 1, 20)
     
     network_dnsCacheExpiration_t = FirefoxPrefText(_('the number of seconds to cache DNS results'), 'network.dnsCacheExpiration')
-    network_dnsCacheExpiration = FirefoxNumericPref('network.dnsCacheExpiration', 60, 86400, 120, 60)
+    network_dnsCacheExpiration = FirefoxNumericPref('network.dnsCacheExpiration', 60, 86400, 60, 300)
     
     network_ftp_idleConnectionTimeout_t = FirefoxPrefText(_('the number of seconds before the FTP connection times out'), 'network.ftp.idleConnectionTimeout')
     network_ftp_idleConnectionTimeout = FirefoxNumericPref('network.ftp.idleConnectionTime', 60, 300, 60, 300)
     
     network_http_keep_alive_timeout_t = FirefoxPrefText(_('amount of time in seconds to keep alive connections'), 'network.http.keep-alive.timeout', 
-                                                        _('alive connections can be re-used for multiple requests, therefore improve performance.'))
+                                                        _('alive connections can be re-used for multiple requests, therefore they improve performance'))
     network_http_keep_alive_timeout = FirefoxNumericPref('network.http.keep-alive.timeout', 30, 300, 10, 300)
     
     network_http_max_persistent_connections_per_proxy_t = FirefoxPrefText(_('the total number of alive connections per proxy server'),
