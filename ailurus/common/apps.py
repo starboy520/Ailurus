@@ -271,7 +271,7 @@ class FFGreaseMonkey(_ff_extension):
 class FFFlashblock(_ff_extension):
     __doc__ = _('Flashblock: blocks Flash animation')
     license = DUAL_LICENSE(GPL, MPL)
-    desc = _('Never annoyed by Flash animations')
+    detail = _('Never annoyed by Flash animations')
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/433/'
     name = u'Flashblock'
     R = R(latest(433), filename='flashblock.xpi')
