@@ -3,6 +3,6 @@ include MANIFEST.in MANIFEST
 include ChangeLog
 include ailurus*
 include ailurus/version
-recursive-include data *
+recursive-include ailurus/icons *
 recursive-include po *
 recursive-include support *
