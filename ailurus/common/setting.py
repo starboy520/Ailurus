@@ -179,20 +179,6 @@ def __configure_firefox():
     table.set_row_spacings(5)
     row = 0
 
-    def add(t, w):
-        global table, row
-        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        table.attach(w, 1, 2, row, row+1, 0, gtk.FILL)
-        row += 1
-    def add2(text):
-        global table, row
-        assert isinstance(text, (str, unicode)) and text
-        label = gtk.Label()
-        label.set_markup('<b>%s</b>' % text)
-        label.set_alignment(0, 0.5)
-        table.attach(label, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        row += 1
-    
     tweak_key = gtk.Button()
     tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
     table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)
@@ -263,6 +249,21 @@ def __configure_firefox():
                                         [0, 1, 2],
                                         default=2)
     backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
+
+    def add(t, w):
+        global table, row
+        table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        table.attach(w, 1, 2, row, row+1, 0, gtk.FILL)
+        row += 1
+
+    def add2(text):
+        global table, row
+        assert isinstance(text, (str, unicode)) and text
+        label = gtk.Label()
+        label.set_markup('<b>%s</b>' % text)
+        label.set_alignment(0, 0.5)
+        table.attach(label, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
+        row += 1
     
     add2(_('DNS'))
     add(dns_entries_t, dns_entries)
