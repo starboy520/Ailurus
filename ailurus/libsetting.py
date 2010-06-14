@@ -184,12 +184,16 @@ class ImageChooser(gtk.Button):
         chooser.destroy()
     
     def display_image(self, image_path):
+        'If image_path is none, then show blank.'
         child = self.get_child()
         if child:
             self.remove(child)
         
-        pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
-        pixbuf = self.scale_pixbuf(pixbuf)
+        if image_path:
+            pixbuf = gtk.gdk.pixbuf_new_from_file(image_path)
+            pixbuf = self.scale_pixbuf(pixbuf)
+        else:
+            pixbuf = blank_pixbuf(self.image_max_width, self.image_max_height)
         image = gtk.image_new_from_pixbuf(pixbuf)
         self.add(image)
         self.show_all()
@@ -320,9 +324,9 @@ class FirefoxPrefText(gtk.Label):
     def __init__(self, text, key, tips = ''):
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(key, str) and key
-        new_text= text
+        new_text = '%s <small>(%s)</small>' % (text, key)
         gtk.Label.__init__(self)
-        self.set_tooltip_markup('%s <span color="#fb741b">%s</span>' % (tips, key))
+        self.set_tooltip_text(tips)
         self.set_markup(new_text)
         self.set_ellipsize(pango.ELLIPSIZE_END)
         self.set_alignment(0, 0.5)
@@ -334,7 +338,7 @@ class FirefoxBooleanPref(gtk.HBox):
         self.combo = combo = gtk.combo_box_new_text()
         combo.append_text(_('Yes'))
         combo.append_text(_('No'))
-        #combo.connect('scroll-event', lambda w: True)
+        combo.connect('scroll-event', lambda w: True)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
         self.get_value()
