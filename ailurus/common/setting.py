@@ -248,19 +248,17 @@ def __configure_firefox():
     
     setting = {'normal' : 0, 'never open any new windows' : 1, 'default' : 2 }
     browser_link_open_newwindow_restriction_t = FirefoxPrefText(_('Open Javascript popups as tabs'), 'browser.link.open_newwindow.restriction')
-    browser_link_open_newwindow_restriction = FirefoxStrPref('browser.link.open_newwindow.restriction', setting)
+    browser_link_open_newwindow_restriction = FirefoxComboPref('browser.link.open_newwindow.restriction', setting)
     
     setting = {'go back' : 0, 'go forward' : 1, 'unmap' : 2 }
     browser_backspace_action_t = FirefoxPrefText(_('Redefine the Backspace button'), 'browser.backspace_action' )
-    browser_backspace_action = FirefoxStrPref('browser.backspace_action', setting)
+    browser_backspace_action = FirefoxComboPref('browser.backspace_action', setting)
     
     setting = {'none' : 'none', 'once' : 'once', 'normal' : 'normal' }
     image_animation_mod_t = FirefoxPrefText(_('Way of animating multi-frame GIF images none'), 'image.animation_mode')
-    image_animation_mod = FirefoxStrPref('image.animation_mode', setting)
+    image_animation_mod = FirefoxComboPref('image.animation_mode', setting)
      
-    global table 
     table = gtk.Table()
-    global row 
     row = 0
     def add(t, w):
         global table, row
