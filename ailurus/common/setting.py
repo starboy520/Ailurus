@@ -233,7 +233,7 @@ def __configure_firefox():
     addons_max_results = FirefoxNumericPref('extension.getAddons.maxResults', default=5)
     addons_max_results_t = FirefoxPrefText(_('the maximum number of results to display in the "Get Add-ons" dialog'), 'extension.getAddons.maxResults')
     backspace_action = FirefoxComboPref('browser.backspace_action',
-                                        [_('go back a page in the session history'), _('scroll up a page'), _('do nothing')],
+                                        [_('go back'), _('scroll up'), _('do nothing')],
                                         [0, 1, 2],
                                         default=2)
     backspace_action_t = FirefoxPrefText(_('when press the Backspace button'), 'browser.backspace_action' )
