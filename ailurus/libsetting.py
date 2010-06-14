@@ -354,33 +354,31 @@ class FirefoxBooleanPref(gtk.HBox):
         index = self.combo.get_active()
         if index == -1: firefox.remove_pref(self.key)
         else: firefox.set_pref(self.key, {0:True, 1:False}[index])
-        
-class FirefoxStrPref(gtk.HBox):
-    def __init__(self, key, dictry):          #dict is {string : setting}
+
+class FirefoxComboPref(gtk.HBox):
+    def __init__(self, key, texts, values): # "text" is displayed. "value" is stored in pref.js
         assert isinstance(key, str) and key
-        assert isinstance(dictry, dict) and dictry
-        self.key = key
-        self.dictry = dictry
+        assert isinstance(texts, list) and texts
+        assert isinstance(values, list) and values
+        assert len(texts) == len(values)
+        self.key, self.texts, self.values = key, texts, values
         self.combo = combo = gtk.combo_box_new_text()
-        for i, m in dictry.items():
-            combo.append_text(_(i))
-        #combo.connect('scroll-event', lambda w: m)
+        combo.connect('scroll-event', lambda w: True)
+        for text in self.texts:
+            combo.append_text(text)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
-        self.get_value()
         combo.connect('changed', lambda w: self.set_value())
     def get_value(self):
-        try:
-            value = firefox.get_pref(self.key)
-        except:
-            pass
+        try:    value = firefox.get_pref(self.key)
+        except: pass
         else:
-            self.combo.set_active(value)
+            for i in range(len(self.values)):
+                if self.values[i] == value:
+                    self.combo.set_active(value)
     def set_value(self):
-        index = self.combo.get_active()
-        if index == None: firefox.remove_pref(self.key)
-        else: firefox.set_str_pref(self.key, index)
-
+        i = self.combo.get_active()
+        firefox.set_pref(self.key, self.values[i])
 
 class FirefoxNumericPref(gtk.SpinButton):
     def __init__(self, key, min, max, step, default_value):
