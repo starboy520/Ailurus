@@ -245,7 +245,7 @@ def __configure_firefox():
     def add(t, w):
         global table, row
         table.attach(t, 0, 1, row, row+1, gtk.FILL|gtk.EXPAND, gtk.FILL)
-        table.attach(w, 1, 2, row, row+1, gtk.FILL, gtk.FILL)
+        table.attach(w, 1, 2, row, row+1, 0, gtk.FILL)
         row += 1
     def add2(text):
         global table, row

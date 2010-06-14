@@ -339,11 +339,11 @@ class FirefoxBooleanPref(gtk.HBox):
         self.combo = combo = gtk.combo_box_new_text()
         combo.append_text(_('Yes'))
         combo.append_text(_('No'))
-        combo.connect('scroll-event', lambda w: True)
+        combo.connect('scroll-event', lambda *w: True)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
         self.get_value()
-        combo.connect('changed', lambda w: self.set_value())
+        combo.connect('changed', lambda *w: self.set_value())
     def get_value(self):
         try:
             value = bool(firefox.get_pref(self.key))
@@ -366,12 +366,12 @@ class FirefoxComboPref(gtk.HBox):
         if default: assert default in values
         self.key, self.texts, self.values, self.default = key, texts, values, default
         self.combo = combo = gtk.combo_box_new_text()
-        combo.connect('scroll-event', lambda w: True)
+        combo.connect('scroll-event', lambda *w: True)
         for text in self.texts:
             combo.append_text(text)
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
-        combo.connect('changed', lambda w: self.set_value())
+        combo.connect('changed', lambda *w: self.set_value())
     def get_value(self):
         try:    value = firefox.get_pref(self.key)
         except:
@@ -395,6 +395,7 @@ class FirefoxNumericPref(gtk.Entry):
         self.key = key
         self.default_value = str(default)
         gtk.Entry.__init__(self)
+        self.set_width_chars(7)
         self.connect('changed', lambda w: self.m_set_value())
         self.m_get_value()
     def m_get_value(self):
