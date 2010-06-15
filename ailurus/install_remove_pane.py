@@ -57,6 +57,7 @@ class Category:
             Category(_('Flash'), D+'sora_icons/p_flash.png', 'flash', 'internet'),
             Category(_('Blog'), D+'sora_icons/p_blog.png', 'blog', 'internet'),
             Category(_('RSS'), D+'sora_icons/p_rss.png', 'rss', 'internet'),
+            Category(_('Internet'), D+'sora_icons/p_internet.png', 'internet'),
             # multimedia
             Category(_('Player'), D+'sora_icons/p_player.png', 'player', 'multimedia'),
             Category(_('CD burner'), D+'sora_icons/p_cd_burner.png', 'cd_burner', 'multimedia'),
