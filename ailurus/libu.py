@@ -191,11 +191,31 @@ def show_text_window(title, content, show_textbox_border = True, show_a_big_wind
     window.set_position(gtk.WIN_POS_CENTER)
     window.show_all()
 
+def do_access_denied_error():
+    import gtk
+    message = _('Operation is canceled because you refused authentication.\n'
+                'Authentication is provided by system PolicyKit service.\n'
+                'Ailurus does not know your password at all.')
+    label = gtk.Label(message)
+    label.set_alignment(0, 0.5)
+    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    button_close.connect('clicked', lambda w: window.destroy())
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(label, False)
+    vbox.pack_start(right_align(button_close), False)
+    window = gtk.Window()
+    window.set_title(_('Operation is canceled'))
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.add(vbox)
+    window.show_all()
+    
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk
-    from lib import AILURUS_VERSION, D
+    from lib import AILURUS_VERSION, D, AccessDeniedError
 
     if etype == KeyboardInterrupt: return
+    if etype == AccessDeniedError: return do_access_denied_error()
     
     traceback.print_tb(tb, file=sys.stderr)
     msg = StringIO.StringIO()

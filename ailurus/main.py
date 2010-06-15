@@ -458,7 +458,7 @@ class MainView:
         self.toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
         self.toolbar.set_style(gtk.TOOLBAR_BOTH)
         vbox.pack_start(self.toolbar, False)
-        
+        vbox.pack_start(gtk.HSeparator(), False)
         vbox.pack_start(self.toggle_area, True, True)
         
         self.window = window = gtk.Window(gtk.WINDOW_TOPLEVEL)
