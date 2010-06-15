@@ -701,11 +701,6 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_area = gtk.HBox(False)
         if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
-        bottom_box = gtk.HBox(False, 5)
-        bottom_box.pack_start(button_apply, False, False, 10)
-        bottom_box.pack_start(button_sync, False, False, 10)
-        bottom_box.pack_start(sbox, False)
-        bottom_box.pack_start(self.quick_setup_area, False)
 
         self.app_objs = app_objs
         for obj in app_objs:
@@ -714,12 +709,16 @@ class InstallRemovePane(gtk.VBox):
         toolbar = gtk.HBox(False, 3)
         for text, class_name, icon_path in Category.all_left_class():
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(button_sync, False)
+        toolbar.pack_start(sbox, False)
+        toolbar.pack_start(self.quick_setup_area, False)
+        toolbar.pack_start(button_apply, False)
 
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
         self.pack_start(toolbar, False)
         self.pack_start(hpaned)
-        self.pack_start(bottom_box, False)
         self.show_all()
 
     def left_class_choose_button_clicked(self, button):
