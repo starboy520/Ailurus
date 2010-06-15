@@ -73,10 +73,6 @@ class DownloadIconsWindow(gtk.Window):
             dialog.destroy()
             try:
                 self.install_icons()
-            except AccessDeniedError:
-                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Operation is canceled because you refused authentication.'))
-                dialog.run()
-                dialog.destroy()
             except:
                 exception_happened(*sys.exc_info())
                 gtk.main()
