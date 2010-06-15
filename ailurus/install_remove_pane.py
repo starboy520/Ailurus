@@ -387,7 +387,6 @@ class InstallRemovePane(gtk.VBox):
             delay_notify_firefox_restart(True)
             
             gtk.gdk.threads_enter()
-            self.__show_detail('')
             self.treeview.get_selection().unselect_all()
             # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
@@ -441,8 +440,7 @@ class InstallRemovePane(gtk.VBox):
         assert isinstance(obj, types.InstanceType)
         assert hasattr(obj, 'showed_in_toggle')
         obj.showed_in_toggle = not obj.showed_in_toggle
-        treestore.row_changed(path,  treestore.get_iter(path) )
-        self.__show_detail(obj)
+        treestore.row_changed(path,  treestore.get_iter(path))
 
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value ( iter, 0 )
@@ -476,67 +474,6 @@ class InstallRemovePane(gtk.VBox):
             cell.set_property('scale', 1.2)
         else :
             cell.set_property('scale', 1)
-
-    def __right_pane_changed(self, treeselection, treeview):
-        ( store, pathlist ) = treeselection.get_selected_rows ()
-        if pathlist == None or len(pathlist)==0: # select nothing 
-            self.__show_detail('')
-            return
-        if len(pathlist)!=1: # select multi items 
-            self.__show_detail('')
-            return
-        iter = store.get_iter( pathlist[0] )
-        obj=store.get_value ( iter, 0 )
-        import types
-        assert isinstance(obj, types.InstanceType)
-        assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
-        self.__show_detail(obj)
-
-    def __show_detail(self, obj):
-        def begin_color():
-            return '<span color="#870090">'
-        
-        def end_color():
-            return '</span>'
-        
-        def color(string):
-            return '%s%s%s'%( begin_color(), string, end_color() )
-
-        if isinstance(obj, str) or isinstance(obj, unicode):
-            self.detail.get_buffer().set_text(obj)
-        else:
-            import types
-            assert isinstance(obj, types.InstanceType)
-            assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
-            
-            import StringIO
-            text = StringIO.StringIO()
-
-            detail = getattr(obj, 'detail' ,'')
-            if detail:
-                text.write(detail)
-#                if detail[-1]!='\n': text.write('\n')
-            
-#            license = getattr(obj, 'license' ,'')
-#            if license:
-#                print >>text, _('License:'), license   
-            
-#            if obj.cache_installed==False: # can install
-#                # will be installed?
-#                if not obj.showed_in_toggle: 
-#                    print >>text, begin_color() + _('Not installed.'),
-#                    if hasattr(obj, 'get_reason'):
-#                        obj.get_reason(text)
-#                    text.write( end_color() )
-#                else:  
-#                    print >>text, color( _('Will be installed.') ),
-
-#            else: # already installed
-#                if obj.showed_in_toggle: print >>text, color(_('Installed.')), 
-#                else:                    print >>text, color(_('Will be removed.')), 
-                        
-            self.detail.get_buffer().set_text( text.getvalue() )
-            text.close()
 
     def __visible_func(self, treestore, iter):
         import types
@@ -625,8 +562,7 @@ class InstallRemovePane(gtk.VBox):
         treeview.append_column ( col_toggle )
         treeview.append_column ( col_text )
         treeview.set_rules_hint ( True )
-        treeview.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
-        treeview.get_selection().connect('changed', self.__right_pane_changed, treeview )
+        treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
 
         def _all_shown_items():
             selection = treeview.get_selection()
@@ -677,36 +613,10 @@ class InstallRemovePane(gtk.VBox):
                 return True
             return False
         treeview.connect('button_press_event', right_treeview_button_press_event)
-        
         scroll = gtk.ScrolledWindow()
         scroll.add(treeview)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
-        
-        from support.pangobuffer import PangoBuffer
-        from support.releasenotesviewer import ReleaseNotesViewer
-        detail = ReleaseNotesViewer( PangoBuffer() )
-        detail.set_wrap_mode(gtk.WRAP_WORD)
-        detail.set_editable(False)
-        detail.set_cursor_visible(False)
-        gray_bg(detail)
-        self.detail = detail
-
-        scroll_d = gtk.ScrolledWindow()
-        scroll_d.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
-        scroll_d.set_shadow_type(gtk.SHADOW_IN)
-        scroll_d.add(detail)
-
-        box2 = gtk.VBox(False, 0)
-        align = gtk.Alignment(0)
-        align.add(gtk.Label( _('Details:') ))
-        box2.pack_start(align , False, False)
-        box2.pack_start(scroll_d, True, True, 5)
-
-#        self.vpaned = vpaned = gtk.VPaned()
-#        vpaned.pack1(scroll, True, False)
-#        vpaned.pack2(box2, False, False)
-
         return scroll
 
     def __search_content_changed(self, widget, text, option):
@@ -791,7 +701,6 @@ class InstallRemovePane(gtk.VBox):
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
-        self.detail = None # A gtk.Label which shows widget detail.
         self.treeview = None # A gtk.TreeView in right pane.
         self.treestore = None # A gtk.TreeStore behind self.treeview
         self.treestorefilter = None # A gtk.TreeModelFilter of self.treestore
