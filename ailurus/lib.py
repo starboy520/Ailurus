@@ -309,6 +309,9 @@ class Config:
         except: 
             return False
 
+def add_custom_app_inRepo(name):
+    summary = BACKEND.get_pkg_summary(name)
+    
 def set_proxy_string(proxy_string):
     import gnomekeyring
     keyring = gnomekeyring.get_default_keyring_sync()
@@ -762,6 +765,20 @@ class APT:
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
+    def get_pkg_summary(cls, name):
+        if not isinstance(name,str) or not name in cls.__set2:
+            return ''
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_pkg_summary.py %s' % name
+        task = subprocess.Popen(['python', path],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            summary = line[:-1]
+            task.wait()
+            return summary
+        return ''
+    @classmethod
     def refresh_cache(cls):
         if getattr(cls, 'fresh_cache', False): return
         cls.fresh_cache = True
@@ -876,6 +893,8 @@ class APT:
                 cls.install(*depends)
             run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
             cls.cache_changed()
+
+        
 
 class PACMAN:
     fresh_cache = False
@@ -1888,6 +1907,7 @@ YLMF = Config.is_YLMF()
 DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
+BACKEND = APT
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
@@ -1902,8 +1922,10 @@ elif DEEPIN:
     VERSION = Config.get_Deepin_version()
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
+    BACKEND = RPM
 elif ARCHLINUX:
     VERSION = '' # ArchLinux has no version -_-b
+    BACKEND = PACKMAN
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
