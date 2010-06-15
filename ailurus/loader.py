@@ -47,7 +47,7 @@ def load_app_icon(name):
         path = D + dir + name + '.png'
         if os.path.exists(path): break
     else:
-        path = D + 'velly_icons/software_default_icon.png'
+        path = D + 'sora_icons/default_application_icon.png'
     import gtk
     return gtk.gdk.pixbuf_new_from_file_at_size(path, 32, 32)
 
