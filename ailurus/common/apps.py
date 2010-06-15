@@ -257,6 +257,13 @@ class FFFoxyProxy(_ff_extension):
     name = u'FoxyProxy Standard'
     R = R(latest(2464), filename='foxyproxy_standard.xpi')
 
+class FFGMarks(_ff_extension):
+    __doc__ = _('GMarks: Synchronize bookmarks with Google Bookmarks service')
+    detail = ''
+    download_url = 'https://addons.mozilla.org/en-US/firefox/addon/2888'
+    name = u'GMarks'
+    R = R(latest(2888), filename='gmarks.xpi')
+
 class FFGreaseMonkey(_ff_extension):
     __doc__ = _('GreaseMonkey: Make change to web pages')
     license = MIT
