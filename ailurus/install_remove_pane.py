@@ -124,7 +124,7 @@ class InstallRemovePane(gtk.VBox):
         if parent == None: return
         category = model.get_value(parent, 2)
         self.selected_categories = [category]
-        self.treestorefilter.refilter()
+        self.right_store_filter.refilter()
 
     def __left_pane_pixbuf(self, column, cell, model, iter):
         category = model.get_value(iter, 2)
@@ -154,7 +154,7 @@ class InstallRemovePane(gtk.VBox):
         column.pack_start ( text_render, False )
         column.set_cell_data_func(text_render, self.__left_pane_text)
         # each row of liststore contains ( title, icon, category )
-        self.left_treestore = treestore = gtk.ListStore(str, gtk.gdk.Pixbuf, str)
+        self.left_store = treestore = gtk.ListStore(str, gtk.gdk.Pixbuf, str)
         self.left_treeview = treeview = gtk.TreeView()
         treeview.append_column(column_expander)
         treeview.append_column ( column )
@@ -236,7 +236,7 @@ class InstallRemovePane(gtk.VBox):
     def app_class_installed_state_changed_by_external(self):
         for obj in self.app_objs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
-        self.treeview.queue_draw()
+        self.right_treeview.queue_draw()
 
     def show_error(self, content):
         title_box = gtk.HBox(False, 5)
@@ -373,8 +373,8 @@ class InstallRemovePane(gtk.VBox):
             parentbox.show_all()
             if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
                 self.show_error(error_traceback.getvalue())
-            self.treeview.queue_draw()
-            self.treeview.get_selection().unselect_all()
+            self.right_treeview.queue_draw()
+            self.right_treeview.get_selection().unselect_all()
             gtk.gdk.threads_leave()
         except:
             print_traceback()
@@ -409,7 +409,7 @@ class InstallRemovePane(gtk.VBox):
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
     
-    def __sort_treestore ( self, model, iter1, iter2 ):
+    def __right_sort ( self, model, iter1, iter2 ):
         obj1 = model.get_value ( iter1, 0 )
         obj2 = model.get_value ( iter2, 0 )
         import types
@@ -418,7 +418,7 @@ class InstallRemovePane(gtk.VBox):
         str1, str2 = obj1.__doc__, obj2.__doc__
         return cmp(str1, str2)
 
-    def __toggle(self, render_toggle,path,treestore,treemodelsort,treestorefilter):
+    def __right_toggled(self, render_toggle,path,treestore,treemodelsort,treestorefilter):
         path1 = treemodelsort.convert_path_to_child_path(path)
         path = treestorefilter.convert_path_to_child_path(path1)
         obj = treestore[path][0]
@@ -427,11 +427,11 @@ class InstallRemovePane(gtk.VBox):
         assert hasattr(obj, 'showed_in_toggle')
         obj.showed_in_toggle = not obj.showed_in_toggle
 
-    def __toggle_cell_data_func ( self, column, cell, model, iter ):
+    def __right_toggle_data_func ( self, column, cell, model, iter ):
         obj = model.get_value(iter, 0)
         cell.set_property('active', obj.showed_in_toggle)
 
-    def __text_cell_data_func(self, column, cell, model, iter):
+    def __right_text_data_func(self, column, cell, model, iter):
         obj = model.get_value(iter, 0)
         import StringIO
         markup = StringIO.StringIO()
@@ -451,7 +451,7 @@ class InstallRemovePane(gtk.VBox):
             print >>markup, '<small><span color="#8A00C2">%s</span></small>' % obj.how_to_install,
         cell.set_property('markup', markup.getvalue())
 
-    def __visible_func(self, treestore, iter):
+    def __right_visible_func(self, treestore, iter):
         assert isinstance(self.selected_categories, list)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
@@ -467,12 +467,12 @@ class InstallRemovePane(gtk.VBox):
             else: # both
                 return is_right_category and ( inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail) )
 
-    def __pixbuf_cell_data_func(self, column, cell, model, iter):
+    def __right_pixbuf_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
         cell.set_property('pixbuf', class0.logo_pixbuf)
         cell.set_property('visible', Config.get_show_software_icon())
         
-    def __DE_pixbuf_cell_data_func(self, column, cell, model, iter):
+    def __right_DE_pixbuf_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
         if hasattr(class0, 'DE'):
             if class0.DE == 'gnome':
@@ -503,17 +503,17 @@ class InstallRemovePane(gtk.VBox):
 
     def __right_pane(self):
         import gobject, pango
-        self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT)
+        self.right_store = treestore = gtk.ListStore(gobject.TYPE_PYOBJECT)
         
-        self.treestorefilter = treestorefilter = treestore.filter_new()
-        treestorefilter.set_visible_func(self.__visible_func)
+        self.right_store_filter = treestorefilter = treestore.filter_new()
+        treestorefilter.set_visible_func(self.__right_visible_func)
         
         treemodelsort = gtk.TreeModelSort(treestorefilter)
-        treemodelsort.set_sort_func(1000, self.__sort_treestore)
+        treemodelsort.set_sort_func(1000, self.__right_sort)
         treemodelsort.set_sort_column_id(1000, gtk.SORT_ASCENDING)
 
         render_toggle = gtk.CellRendererToggle()
-        render_toggle.connect('toggled',self.__toggle, treestore, treemodelsort, treestorefilter)
+        render_toggle.connect('toggled',self.__right_toggled, treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
         render_DE_pixbuf = gtk.CellRendererPixbuf()
         render_text = gtk.CellRendererText()
@@ -521,18 +521,18 @@ class InstallRemovePane(gtk.VBox):
 
         col_toggle = gtk.TreeViewColumn()
         col_toggle.pack_start(render_toggle,False)
-        col_toggle.set_cell_data_func(render_toggle, self.__toggle_cell_data_func)
+        col_toggle.set_cell_data_func(render_toggle, self.__right_toggle_data_func)
 
         col_text = gtk.TreeViewColumn()
         col_text.pack_start(render_pixbuf, False)
-        col_text.set_cell_data_func(render_pixbuf, self.__pixbuf_cell_data_func)
+        col_text.set_cell_data_func(render_pixbuf, self.__right_pixbuf_data_func)
         col_text.pack_start (render_text, True)
-        col_text.set_cell_data_func(render_text, self.__text_cell_data_func)
+        col_text.set_cell_data_func(render_text, self.__right_text_data_func)
         col_text.pack_end(render_DE_pixbuf, False)
-        col_text.set_cell_data_func(render_DE_pixbuf, self.__DE_pixbuf_cell_data_func)
+        col_text.set_cell_data_func(render_DE_pixbuf, self.__right_DE_pixbuf_data_func)
         col_text.set_sort_column_id(1000)
 
-        self.treeview = treeview = gtk.TreeView(treemodelsort)
+        self.right_treeview = treeview = gtk.TreeView(treemodelsort)
         treeview.append_column(col_toggle)
         treeview.append_column(col_text)
         treeview.set_rules_hint(True)
@@ -606,7 +606,7 @@ class InstallRemovePane(gtk.VBox):
             otext.write(char)
         self.filter_RE = re.compile(otext.getvalue().encode(locale.getpreferredencoding()),
                                     re.IGNORECASE)
-        self.treestorefilter.refilter()
+        self.right_store_filter.refilter()
 
     @classmethod
     def set_wget_parameters(cls):
@@ -656,7 +656,7 @@ class InstallRemovePane(gtk.VBox):
         
         show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
         show_software_icon.set_active(Config.get_show_software_icon())
-        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.treeview.queue_draw())
+        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.right_treeview.queue_draw())
         
         if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
             return [show_quick_setup, set_wget_param, show_software_icon]
@@ -676,9 +676,9 @@ class InstallRemovePane(gtk.VBox):
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
-        self.treeview = None # A gtk.TreeView in right pane.
-        self.treestore = None # A gtk.TreeStore behind self.treeview
-        self.treestorefilter = None # A gtk.TreeModelFilter of self.treestore
+        self.right_treeview = None # A gtk.TreeView in right pane.
+        self.right_store = None # A gtk.TreeStore behind self.treeview
+        self.right_store_filter = None # A gtk.TreeModelFilter of self.treestore
         self.filter_text = ''
         self.filter_option = ''
         self.selected_categories = ['all'] # Selected categories in the left pane
@@ -745,8 +745,8 @@ class InstallRemovePane(gtk.VBox):
         bottom_box.pack_start(self.quick_setup_area, False)
 
         self.app_objs = app_objs
-        for obj in app_objs :
-            self.treestore.append ( None, [obj] )
+        for obj in app_objs:
+            self.right_store.append([obj])
 
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
@@ -763,7 +763,7 @@ class InstallRemovePane(gtk.VBox):
             if item.category in all_categories: item.visible = True
         for item in items:
             if item.visible:
-                self.left_treestore.append(item.to_list())
+                self.left_store.append(item.to_list())
         
         right_categories = [item.category for item in items]
         for obj in self.app_objs:
