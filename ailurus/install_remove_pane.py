@@ -123,17 +123,7 @@ class InstallRemovePane(gtk.VBox):
         model, parent = treeselection.get_selected()
         if parent == None: return
         category = model.get_value(parent, 2)
-        if category.startswith('*'): # A big class is selected
-            # We add all children of this class to 'self.selected_categories'
-            self.selected_categories = [category[1:]] # strip '*' and use it as category. Because some software items also use the name of top-level class
-            child = model.iter_children(parent)
-            while child:
-                category = model.get_value(child, 2)
-                self.selected_categories.append(category)
-                child = model.iter_next(child)
-                if child == None: break
-        else: # An item is selected.
-            self.selected_categories = [ category ]
+        self.selected_categories = [category]
         self.treestorefilter.refilter()
 
     def __left_pane_pixbuf(self, column, cell, model, iter):
