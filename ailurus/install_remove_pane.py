@@ -516,6 +516,7 @@ class InstallRemovePane(gtk.VBox):
         render_toggle.connect('toggled',self.__right_toggled, treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
         render_DE_pixbuf = gtk.CellRendererPixbuf()
+        render_DE_pixbuf.set_property('yalign', 0)
         render_text = gtk.CellRendererText()
         render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
 
@@ -641,9 +642,9 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        self.DE_KDE = get_pixbuf(D + 'umut_icons/kde.png', 24, 24)
-        self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 24, 24)
-        self.DE_DEFAULT = blank_pixbuf(24, 24)
+        self.DE_KDE = get_pixbuf(D + 'umut_icons/kde.png', 16, 16)
+        self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 16, 16)
+        self.DE_DEFAULT = blank_pixbuf(16, 16)
 
         self.final_box = gtk.VBox(False, 5)
         self.final_box.set_border_width(5)
