@@ -518,40 +518,41 @@ class InstallRemovePane(gtk.VBox):
 
     def __right_pane(self):
         import gobject, pango
-        self.treestore = treestore = gtk.TreeStore ( gobject.TYPE_PYOBJECT )
+        self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT)
         
         self.treestorefilter = treestorefilter = treestore.filter_new()
-        treestorefilter.set_visible_func( self.__visible_func )
+        treestorefilter.set_visible_func(self.__visible_func)
         
         treemodelsort = gtk.TreeModelSort(treestorefilter)
-        treemodelsort.set_sort_func ( 1000, self.__sort_treestore )
-        treemodelsort.set_sort_column_id( 1000, gtk.SORT_ASCENDING )
+        treemodelsort.set_sort_func(1000, self.__sort_treestore)
+        treemodelsort.set_sort_column_id(1000, gtk.SORT_ASCENDING)
 
-        render_toggle = gtk.CellRendererToggle ()
-        render_toggle.connect('toggled',self.__toggle,treestore, treemodelsort, treestorefilter)
+        render_toggle = gtk.CellRendererToggle()
+        render_toggle.connect('toggled',self.__toggle, treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
         render_DE_pixbuf = gtk.CellRendererPixbuf()
-        render_text = gtk.CellRendererText ()
+        render_text = gtk.CellRendererText()
         render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
 
-        col_toggle = gtk.TreeViewColumn ()
-        col_toggle.pack_start (render_toggle,False)
-        col_toggle.set_cell_data_func ( render_toggle, self.__toggle_cell_data_func )
+        col_toggle = gtk.TreeViewColumn()
+        col_toggle.pack_start(render_toggle,False)
+        col_toggle.set_cell_data_func(render_toggle, self.__toggle_cell_data_func)
 
-        col_text = gtk.TreeViewColumn ()
-        col_text.pack_start (render_pixbuf, False)
-        col_text.set_cell_data_func ( render_pixbuf, self.__pixbuf_cell_data_func )
+        col_text = gtk.TreeViewColumn()
+        col_text.pack_start(render_pixbuf, False)
+        col_text.set_cell_data_func(render_pixbuf, self.__pixbuf_cell_data_func)
         col_text.pack_start (render_text, True)
-        col_text.set_cell_data_func ( render_text, self.__text_cell_data_func )
+        col_text.set_cell_data_func(render_text, self.__text_cell_data_func)
         col_text.pack_end(render_DE_pixbuf, False)
-        col_text.set_cell_data_func ( render_DE_pixbuf, self.__DE_pixbuf_cell_data_func )
+        col_text.set_cell_data_func(render_DE_pixbuf, self.__DE_pixbuf_cell_data_func)
         col_text.set_sort_column_id(1000)
 
-        self.treeview = treeview = gtk.TreeView ( treemodelsort )
-        treeview.append_column ( col_toggle )
-        treeview.append_column ( col_text )
-        treeview.set_rules_hint ( True )
+        self.treeview = treeview = gtk.TreeView(treemodelsort)
+        treeview.append_column(col_toggle)
+        treeview.append_column(col_text)
+        treeview.set_rules_hint(True)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
+        treeview.set_headers_visible(False)
 
         def _all_shown_items():
             selection = treeview.get_selection()
