@@ -27,14 +27,12 @@ from libu import *
 from libapp import *
 
 class Category:
-    def __init__(self, text, icon_path, category, class_name=None):
+    def __init__(self, text, icon_path, category, class_name):
         '''category equals "category" attribute value of application class
-        class_name is used in left_treeview only
-        default value of class_name is the value of category'''
+        class_name is used in left_treeview only'''
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(icon_path, str) and icon_path
         assert isinstance(category, str) and category
-        if class_name is None: class_name = category
         assert isinstance(class_name, str) and class_name
         self.text, self.icon_path, self.category, self.class_name = text, icon_path, category, class_name
         self.icon = get_pixbuf(icon_path, 24, 24)
@@ -43,37 +41,40 @@ class Category:
         'Return a list. Add the list into gtk.Liststore'
         return [self.text, self.icon, self.category, self.class_name]
     @classmethod
-    def all_left_class_names(cls):
+    def all_left_class(cls):
         'return a list which consists of "text, class_name, icon_path"'
         return [
-            (_('Internet'), 'internet', D+'sora_icons/p_internet.png'),
             (_('Science'), 'science', D+'umut_icons/p_science.png'),
+            (_('Develop'), 'develop', D+'sora_icons/p_develop.png'),
+            (_('Home'), 'home', D+'sora_icons/p_home.png'),
+            (_('Other'), 'other', D+'sora_icons/p_others.png'),
+            (_('All'), 'all', D+'sora_icons/p_all.png'),
                 ]
     m_all = None
     @classmethod
     def all(cls):
         if cls.m_all: return cls.m_all
         cls.m_all = [
-            Category(_('All'), D+'sora_icons/p_all.png', 'all'),
+            Category(_('All'), D+'sora_icons/p_all.png', 'all', 'all'),
             # internet
-            Category(_('Browser'), D+'sora_icons/p_browser.png', 'browser', 'internet'),
-            Category(_('Email'), D+'sora_icons/p_email.png', 'email', 'internet'),
-            Category(_('File sharing'), D+'sora_icons/p_file_sharing.png', 'file_sharing', 'internet'),
-            Category(_('Chat'), D+'umut_icons/p_chat.png', 'chat', 'internet'),
-            Category(_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension', 'internet'),
-            Category(_('Flash'), D+'sora_icons/p_flash.png', 'flash', 'internet'),
-            Category(_('Blog'), D+'sora_icons/p_blog.png', 'blog', 'internet'),
-            Category(_('RSS'), D+'sora_icons/p_rss.png', 'rss', 'internet'),
-            Category(_('Internet'), D+'sora_icons/p_internet.png', 'internet'),
+            Category(_('Browser'), D+'sora_icons/p_browser.png', 'browser', 'home'),
+            Category(_('Email'), D+'sora_icons/p_email.png', 'email', 'home'),
+            Category(_('File sharing'), D+'sora_icons/p_file_sharing.png', 'file_sharing', 'home'),
+            Category(_('Chat'), D+'umut_icons/p_chat.png', 'chat', 'home'),
+            Category(_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension', 'home'),
+            Category(_('Flash'), D+'sora_icons/p_flash.png', 'flash', 'home'),
+            Category(_('Blog'), D+'sora_icons/p_blog.png', 'blog', 'home'),
+            Category(_('RSS'), D+'sora_icons/p_rss.png', 'rss', 'home'),
+            Category(_('Internet'), D+'sora_icons/p_internet.png', 'internet', 'home'),
             # multimedia
-            Category(_('Player'), D+'sora_icons/p_player.png', 'player', 'multimedia'),
-            Category(_('CD burner'), D+'sora_icons/p_cd_burner.png', 'cd_burner', 'multimedia'),
-            Category(_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor', 'multimedia'),
+            Category(_('Player'), D+'sora_icons/p_player.png', 'player', 'home'),
+            Category(_('CD burner'), D+'sora_icons/p_cd_burner.png', 'cd_burner', 'home'),
+            Category(_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor', 'home'),
             # appearance
-            Category(_('Panel'), D+'sora_icons/p_panel.png', 'panel', 'appearance'),
-            Category(_('Theme'), D+'sora_icons/p_theme.png', 'theme', 'appearance'),
-            Category(_('Screen widget'), D+'umut_icons/p_candy.png', 'candy', 'appearance'),
-            Category(_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting', 'appearance'),
+            Category(_('Panel'), D+'sora_icons/p_panel.png', 'panel', 'home'),
+            Category(_('Theme'), D+'sora_icons/p_theme.png', 'theme', 'home'),
+            Category(_('Screen widget'), D+'umut_icons/p_candy.png', 'candy', 'home'),
+            Category(_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting', 'home'),
             # science
             Category(_('Math'), D+'umut_icons/p_math.png', 'math', 'science'),
             Category(_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics', 'science'),
@@ -83,37 +84,37 @@ class Category:
             Category(_('Biology'), D+'sora_icons/p_biology.png', 'biology', 'science'),
             Category(_('LaTeX'), D+'umut_icons/p_latex.png', 'latex', 'science'),
             # programming
-            Category(_('IDE'), D+'sora_icons/p_ide.png', 'ide', 'programming'),
-            Category(_('Version control'), D+'sora_icons/p_version_control.png', 'version_control', 'programming'),
-            Category(_('Library'), D+'sora_icons/p_library.png', 'library', 'programming'),
-            Category(_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system', 'programming'),
-            Category(_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor', 'programming'),
-            Category(_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension', 'programming'),
-            Category(_('Programming tool'), D+'sora_icons/p_saber.png', 'saber', 'programming'),
+            Category(_('IDE'), D+'sora_icons/p_ide.png', 'ide', 'develop'),
+            Category(_('Version control'), D+'sora_icons/p_version_control.png', 'version_control', 'develop'),
+            Category(_('Library'), D+'sora_icons/p_library.png', 'library', 'develop'),
+            Category(_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system', 'develop'),
+            Category(_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor', 'develop'),
+            Category(_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension', 'develop'),
+            Category(_('Programming tool'), D+'sora_icons/p_saber.png', 'saber', 'develop'),
             # business
-            Category(_('Business'), D+'sora_icons/p_business.png', 'business'),
+            Category(_('Business'), D+'sora_icons/p_business.png', 'business', 'home'),
             # design
-            Category(_('Design'), D+'sora_icons/p_design.png', 'design'),
-            Category(_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing', 'design'),
-            Category(_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting', 'design'),
+            Category(_('Design'), D+'sora_icons/p_design.png', 'design', 'develop'),
+            Category(_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing', 'develop'),
+            Category(_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting', 'develop'),
             # gnome_dedicated
-            Category(_('GNOME dedicated'), D+'sora_icons/p_gnome_dedicated.png', 'gnome_dedicated'),
+            Category(_('GNOME dedicated'), D+'sora_icons/p_gnome_dedicated.png', 'gnome_dedicated', 'other'),
             # nautilus
-            Category(_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'),
+            Category(_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension', 'other'),
             # simulator
-            Category(_('Simulator'), D+'sora_icons/p_simulator.png', 'simulator'),
+            Category(_('Simulator'), D+'sora_icons/p_simulator.png', 'simulator', 'other'),
             # education
-            Category(_('Education'), D+'umut_icons/p_education.png', 'education'),
+            Category(_('Education'), D+'umut_icons/p_education.png', 'education', 'home'),
             # game
-            Category(_('Game'), D+'sora_icons/p_game.png', 'game'),
+            Category(_('Game'), D+'sora_icons/p_game.png', 'game', 'home'),
             # antivirus
-            Category(_('Anti-virus'), D+'sora_icons/p_antivirus.png', 'antivirus'),
+            Category(_('Anti-virus'), D+'sora_icons/p_antivirus.png', 'antivirus', 'home'),
             # others
-            Category(_('Others'), D+'sora_icons/p_others.png', 'others'),
+            Category(_('Others'), D+'sora_icons/p_others.png', 'others', 'other'),
             # tasksel
-            Category(_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'),
+            Category(_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server', 'other'),
             # repository
-            Category(_('Repository'), D+'sora_icons/p_repository.png', 'repository'),
+            Category(_('Repository'), D+'sora_icons/p_repository.png', 'repository', 'other'),
                  ]
         return cls.m_all
 
@@ -711,7 +712,7 @@ class InstallRemovePane(gtk.VBox):
             self.right_store.append([obj])
 
         toolbar = gtk.HBox(False, 3)
-        for text, class_name, icon_path in Category.all_left_class_names():
+        for text, class_name, icon_path in Category.all_left_class():
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
 
         self.fill_left_treestore()
