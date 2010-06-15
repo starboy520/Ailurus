@@ -41,7 +41,7 @@ class Category:
         self.visible = False
     def to_list(self):
         'Return a list. Add the list into gtk.Liststore'
-        return [self.text, self.icon, self.category]
+        return [self.text, self.icon, self.category, self.class_name]
     m_all = None
     @classmethod
     def all(cls):
@@ -123,7 +123,7 @@ class InstallRemovePane(gtk.VBox):
         model, parent = treeselection.get_selected()
         if parent == None: return
         category = model.get_value(parent, 2)
-        self.selected_categories = [category]
+        self.right_pane_visible_categories = [category]
         self.right_store_filter.refilter()
 
     def __left_pane_pixbuf(self, column, cell, model, iter):
@@ -153,12 +153,14 @@ class InstallRemovePane(gtk.VBox):
         column.set_cell_data_func(pixbuf_render, self.__left_pane_pixbuf)
         column.pack_start ( text_render, False )
         column.set_cell_data_func(text_render, self.__left_pane_text)
-        # each row of liststore contains ( title, icon, category )
-        self.left_store = treestore = gtk.ListStore(str, gtk.gdk.Pixbuf, str)
+        # each row of liststore contains (title, icon, category, class_name)
+        self.left_store = treestore = gtk.ListStore(str, gtk.gdk.Pixbuf, str, str)
+        self.left_store_filter = treefilter = treestore.filter_new()
+        self.left_store_filter.set_visible_func(self.__left_visible_func)
         self.left_treeview = treeview = gtk.TreeView()
         treeview.append_column(column_expander)
-        treeview.append_column ( column )
-        treeview.set_model(treestore)
+        treeview.append_column(column)
+        treeview.set_model(treefilter)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
         treeview.get_selection().connect('changed', self.__left_pane_changed, treeview )
         treeview.set_headers_visible(False)
@@ -452,11 +454,11 @@ class InstallRemovePane(gtk.VBox):
         cell.set_property('markup', markup.getvalue())
 
     def __right_visible_func(self, treestore, iter):
-        assert isinstance(self.selected_categories, list)
+        assert isinstance(self.right_pane_visible_categories, list)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
         
-        is_right_category = obj.category in self.selected_categories or 'all' in self.selected_categories
+        is_right_category = obj.category in self.right_pane_visible_categories or 'all' in self.right_pane_visible_categories
         if self.filter_text=='':
             return is_right_category
         else:
@@ -466,6 +468,12 @@ class InstallRemovePane(gtk.VBox):
                 return is_right_category and inside(self.filter_RE, obj.__doc__)
             else: # both
                 return is_right_category and ( inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail) )
+
+    def __left_visible_func(self, treestore, iter):
+        assert isinstance(self.left_pane_visible_class, str)
+        class_name = treestore.get_value(iter, 3)
+        if class_name == None: return False
+        return self.left_pane_visible_class == 'all' or class_name == self.left_pane_visible_class
 
     def __right_pixbuf_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
@@ -633,7 +641,8 @@ class InstallRemovePane(gtk.VBox):
         self.right_store_filter = None # A gtk.TreeModelFilter of self.treestore
         self.filter_text = ''
         self.filter_option = ''
-        self.selected_categories = ['all'] # Selected categories in the left pane
+        self.right_pane_visible_categories = ['all'] # Selected categories in the left pane
+        self.left_pane_visible_class = 'all' # string, visible class name in the left pane
         self.app_objs = None # objs in self.treestore
         self.left_treeview = None # A gtk.TreeView in left pane.
         self.hpaned = hpaned = gtk.HPaned()
@@ -699,6 +708,9 @@ class InstallRemovePane(gtk.VBox):
         self.app_objs = app_objs
         for obj in app_objs:
             self.right_store.append([obj])
+
+        
+        toolbar = gtk.HBox(False, 5)
 
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
