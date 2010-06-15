@@ -123,7 +123,7 @@ class InstallRemovePane(gtk.VBox):
         model, parent = treeselection.get_selected()
         if parent == None: return
         category = model.get_value(parent, 2)
-        self.right_pane_visible_categories = [category]
+        self.right_pane_visible_category = category
         self.right_store_filter.refilter()
 
     def __left_pane_pixbuf(self, column, cell, model, iter):
@@ -454,11 +454,11 @@ class InstallRemovePane(gtk.VBox):
         cell.set_property('markup', markup.getvalue())
 
     def __right_visible_func(self, treestore, iter):
-        assert isinstance(self.right_pane_visible_categories, list)
+        assert isinstance(self.right_pane_visible_category, str)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
         
-        is_right_category = obj.category in self.right_pane_visible_categories or 'all' in self.right_pane_visible_categories
+        is_right_category = 'all'==self.right_pane_visible_category or obj.category==self.right_pane_visible_category
         if self.filter_text=='':
             return is_right_category
         else:
@@ -641,7 +641,7 @@ class InstallRemovePane(gtk.VBox):
         self.right_store_filter = None # A gtk.TreeModelFilter of self.treestore
         self.filter_text = ''
         self.filter_option = ''
-        self.right_pane_visible_categories = ['all'] # Selected categories in the left pane
+        self.right_pane_visible_category = 'all' # string, selected category in the left pane
         self.left_pane_visible_class = 'all' # string, visible class name in the left pane
         self.app_objs = None # objs in self.treestore
         self.left_treeview = None # A gtk.TreeView in left pane.
