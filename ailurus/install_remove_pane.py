@@ -554,55 +554,55 @@ class InstallRemovePane(gtk.VBox):
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
         treeview.set_headers_visible(False)
 
-        def _all_shown_items():
-            selection = treeview.get_selection()
-            selection.select_all()
-            model, pathlist = treeview.get_selection().get_selected_rows()
-            selection.unselect_all()
-            if pathlist == None:
-                raise StopIteration
-            for path in pathlist:
-                obj = model[path][0]
-                iter = model.get_iter(path)
-                yield model, path, obj, iter, selection
-        def select_all_items(widget):
-            for model, path, obj, iter, selection in _all_shown_items():
-                if not obj.showed_in_toggle:
-                    obj.showed_in_toggle = True
-                    model.row_changed(path, iter)
-                    if obj.showed_in_toggle!= obj.cache_installed: 
-                        selection.select_path(path)
-        def select_no_item(widget):
-            for model, path, obj, iter, selection in _all_shown_items():
-                if obj.showed_in_toggle:
-                    obj.showed_in_toggle = False
-                    model.row_changed(path, iter)
-                    if obj.showed_in_toggle!= obj.cache_installed: 
-                        selection.select_path(path)
-        def revert_all_items(widget):
-            for model, path, obj, iter, selection in _all_shown_items():
-                if obj.showed_in_toggle != obj.cache_installed:
-                    obj.showed_in_toggle = obj.cache_installed
-                    model.row_changed(path, iter)
-                    if obj.showed_in_toggle!= obj.cache_installed: 
-                        selection.select_path(path)
-        select_all = image_stock_menuitem(gtk.STOCK_UNDERLINE, _('Select _All') )
-        select_all.connect("activate", select_all_items )
-        deselect_all = image_stock_menuitem(gtk.STOCK_STRIKETHROUGH, _('_Deselect All') )
-        deselect_all.connect("activate", select_no_item )
-        reset_all = image_stock_menuitem(gtk.STOCK_UNDO, _('_Reset All') )
-        reset_all.connect("activate", revert_all_items )
-        popupmenu = gtk.Menu()
-        popupmenu.append(select_all)
-        popupmenu.append(deselect_all)
-        popupmenu.append(reset_all)
-        popupmenu.show_all()
-        def right_treeview_button_press_event(treeview, event):
-            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-                popupmenu.popup(None, None, None, event.button, event.time)
-                return True
-            return False
-        treeview.connect('button_press_event', right_treeview_button_press_event)
+#        def _all_shown_items():
+#            selection = treeview.get_selection()
+#            selection.select_all()
+#            model, pathlist = treeview.get_selection().get_selected_rows()
+#            selection.unselect_all()
+#            if pathlist == None:
+#                raise StopIteration
+#            for path in pathlist:
+#                obj = model[path][0]
+#                iter = model.get_iter(path)
+#                yield model, path, obj, iter, selection
+#        def select_all_items(widget):
+#            for model, path, obj, iter, selection in _all_shown_items():
+#                if not obj.showed_in_toggle:
+#                    obj.showed_in_toggle = True
+#                    model.row_changed(path, iter)
+#                    if obj.showed_in_toggle!= obj.cache_installed: 
+#                        selection.select_path(path)
+#        def select_no_item(widget):
+#            for model, path, obj, iter, selection in _all_shown_items():
+#                if obj.showed_in_toggle:
+#                    obj.showed_in_toggle = False
+#                    model.row_changed(path, iter)
+#                    if obj.showed_in_toggle!= obj.cache_installed: 
+#                        selection.select_path(path)
+#        def revert_all_items(widget):
+#            for model, path, obj, iter, selection in _all_shown_items():
+#                if obj.showed_in_toggle != obj.cache_installed:
+#                    obj.showed_in_toggle = obj.cache_installed
+#                    model.row_changed(path, iter)
+#                    if obj.showed_in_toggle!= obj.cache_installed: 
+#                        selection.select_path(path)
+#        select_all = image_stock_menuitem(gtk.STOCK_UNDERLINE, _('Install all') )
+#        select_all.connect("activate", select_all_items )
+#        deselect_all = image_stock_menuitem(gtk.STOCK_STRIKETHROUGH, _('Remove all') )
+#        deselect_all.connect("activate", select_no_item )
+#        reset_all = image_stock_menuitem(gtk.STOCK_UNDO, _('Reset all'))
+#        reset_all.connect("activate", revert_all_items )
+#        popupmenu = gtk.Menu()
+#        popupmenu.append(select_all)
+#        popupmenu.append(deselect_all)
+#        popupmenu.append(reset_all)
+#        popupmenu.show_all()
+#        def right_treeview_button_press_event(treeview, event):
+#            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+#                popupmenu.popup(None, None, None, event.button, event.time)
+#                return True
+#            return False
+#        treeview.connect('button_press_event', right_treeview_button_press_event)
         scroll = gtk.ScrolledWindow()
         scroll.add(treeview)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
