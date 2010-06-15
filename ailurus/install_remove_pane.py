@@ -696,8 +696,10 @@ class InstallRemovePane(gtk.VBox):
         quick_setup_checkbutton = gtk.CheckButton(_('Hide'))
         quick_setup_checkbutton.connect('clicked', lambda w: w.set_active(False) or Config.set_hide_quick_setup_pane(True) or self.hide_quick_setup())
         self.quick_setup_content = gtk.HBox(False, 3)
+        self.quick_setup_content.pack_start(gtk.VSeparator())
         self.quick_setup_content.pack_start(quick_setup_button, False)
         self.quick_setup_content.pack_start(quick_setup_checkbutton, False)
+        self.quick_setup_content.pack_start(gtk.VSeparator())
         self.quick_setup_area = gtk.HBox(False)
         if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
@@ -711,6 +713,7 @@ class InstallRemovePane(gtk.VBox):
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(button_sync, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(sbox, False)
         toolbar.pack_start(self.quick_setup_area, False)
         toolbar.pack_start(button_apply, False)
