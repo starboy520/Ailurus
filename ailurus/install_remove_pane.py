@@ -24,6 +24,90 @@ from __future__ import with_statement
 import gtk
 from lib import *
 from libu import *
+from libapp import *
+
+class Category:
+    def __init__(self, text, icon_path, category, class_name=None):
+        '''category equals "category" attribute value of application class
+        class_name is used in left_treeview only
+        default value of class_name is the value of category'''
+        assert isinstance(text, (str, unicode)) and text
+        assert isinstance(icon_path, str) and icon_path
+        assert isinstance(category, str) and category
+        if class_name is None: class_name = category
+        assert isinstance(class_name, str) and class_name
+        self.text, self.icon_path, self.category, self.class_name = text, icon_path, category, class_name
+        self.icon = get_pixbuf(icon_path, 24, 24)
+        self.visible = False
+    def to_list(self):
+        'Return a list. Add the list into gtk.Liststore'
+        return [self.text, self.icon, self.category]
+    m_all = None
+    @classmethod
+    def all(cls):
+        if cls.m_all: return cls.m_all
+        cls.m_all = [
+            Category(_('All'), D+'sora_icons/p_all.png', 'all'),
+            # internet
+            Category(_('Browser'), D+'sora_icons/p_browser.png', 'browser', 'internet'),
+            Category(_('Email'), D+'sora_icons/p_email.png', 'email', 'internet'),
+            Category(_('File sharing'), D+'sora_icons/p_file_sharing.png', 'file_sharing', 'internet'),
+            Category(_('Chat'), D+'umut_icons/p_chat.png', 'chat', 'internet'),
+            Category(_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension', 'internet'),
+            Category(_('Flash'), D+'sora_icons/p_flash.png', 'flash', 'internet'),
+            Category(_('Blog'), D+'sora_icons/p_blog.png', 'blog', 'internet'),
+            Category(_('RSS'), D+'sora_icons/p_rss.png', 'rss', 'internet'),
+            # multimedia
+            Category(_('Player'), D+'sora_icons/p_player.png', 'player', 'multimedia'),
+            Category(_('CD burner'), D+'sora_icons/p_cd_burner.png', 'cd_burner', 'multimedia'),
+            Category(_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor', 'multimedia'),
+            # appearance
+            Category(_('Panel'), D+'sora_icons/p_panel.png', 'panel', 'appearance'),
+            Category(_('Theme'), D+'sora_icons/p_theme.png', 'theme', 'appearance'),
+            Category(_('Screen widget'), D+'umut_icons/p_candy.png', 'candy', 'appearance'),
+            Category(_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting', 'appearance'),
+            # science
+            Category(_('Math'), D+'umut_icons/p_math.png', 'math', 'science'),
+            Category(_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics', 'science'),
+            Category(_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics', 'science'),
+            Category(_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics', 'science'),
+            Category(_('Geography'), D+'sora_icons/p_geography.png', 'geography', 'science'),
+            Category(_('Biology'), D+'sora_icons/p_biology.png', 'biology', 'science'),
+            Category(_('LaTeX'), D+'umut_icons/p_latex.png', 'latex', 'science'),
+            # programming
+            Category(_('IDE'), D+'sora_icons/p_ide.png', 'ide', 'programming'),
+            Category(_('Version control'), D+'sora_icons/p_version_control.png', 'version_control', 'programming'),
+            Category(_('Library'), D+'sora_icons/p_library.png', 'library', 'programming'),
+            Category(_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system', 'programming'),
+            Category(_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor', 'programming'),
+            Category(_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension', 'programming'),
+            Category(_('Programming tool'), D+'sora_icons/p_saber.png', 'saber', 'programming'),
+            # business
+            Category(_('Business'), D+'sora_icons/p_business.png', 'business'),
+            # design
+            Category(_('Design'), D+'sora_icons/p_design.png', 'design'),
+            Category(_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing', 'design'),
+            Category(_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting', 'design'),
+            # gnome_dedicated
+            Category(_('GNOME dedicated'), D+'sora_icons/p_gnome_dedicated.png', 'gnome_dedicated'),
+            # nautilus
+            Category(_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'),
+            # simulator
+            Category(_('Simulator'), D+'sora_icons/p_simulator.png', 'simulator'),
+            # education
+            Category(_('Education'), D+'umut_icons/p_education.png', 'education'),
+            # game
+            Category(_('Game'), D+'sora_icons/p_game.png', 'game'),
+            # antivirus
+            Category(_('Anti-virus'), D+'sora_icons/p_antivirus.png', 'antivirus'),
+            # others
+            Category(_('Others'), D+'sora_icons/p_others.png', 'others'),
+            # tasksel
+            Category(_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'),
+            # repository
+            Category(_('Repository'), D+'sora_icons/p_repository.png', 'repository'),
+                 ]
+        return cls.m_all
 
 class InstallRemovePane(gtk.VBox):
     icon = D+'sora_icons/m_install_remove.png'
@@ -797,89 +881,14 @@ class InstallRemovePane(gtk.VBox):
         self.show_all()
 
     def fill_left_treestore(self):
-        items = [
-            [_('All'), None, '*all'],
-            [_('Internet'), None, '*internet'],
-                 [_('Browser'), D+'umut_icons/p_browser.png', 'browser'],
-                 [_('Email'), D+'umut_icons/p_email.png', 'email'],
-                 [_('File sharing'), D+'umut_icons/p_file_sharing.png', 'file_sharing'],
-                 [_('Chat'), D+'umut_icons/p_chat.png', 'chat'],
-                 [_('Firefox extension'), D+'umut_icons/p_firefox_extension.png', 'firefox_extension'],
-                 [_('Flash'), D+'sora_icons/p_flash.png', 'flash'],
-                 [_('Blog'), D+'umut_icons/p_blog.png', 'blog'],
-                 [_('RSS'), D+'sora_icons/p_rss.png', 'rss'],
-            [_('Multimedia'), None, '*multimedia'],
-                 [_('Player'), D+'sora_icons/p_player.png', 'player'],
-                 [_('CD burner'), D+'umut_icons/p_cd_burner.png', 'cd_burner'],
-                 [_('Media editor'), D+'sora_icons/p_media_editor.png', 'media_editor'],
-            [_('Appearance'), None, '*appearance'],
-                 [_('Panel'), D+'sora_icons/p_panel.png', 'panel'],
-                 [_('Theme'), D+'umut_icons/p_theme.png', 'theme'],
-                 [_('Candy'), D+'umut_icons/p_candy.png', 'candy'],
-                 [_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting'],
-            [_('Science'), None, '*science'],
-                 [_('Math'), D+'umut_icons/p_math.png', 'math'],
-                 [_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
-                 [_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
-                 [_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
-                 [_('Geography'), D+'sora_icons/p_geography.png', 'geography'],
-                 [_('Biology'), D+'umut_icons/p_biology.png', 'biology'],
-                 [_('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
-            [_('Programming'), None, '*programming'],
-                 [_('IDE'), D+'sora_icons/p_ide.png', 'ide'],
-                 [_('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
-                 [_('Library'), D+'sora_icons/p_library.png', 'library'],
-                 [_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
-                 [_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
-                 [_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
-                 [_('Saber'), D+'sora_icons/p_saber.png', 'saber'],
-            [_('Business'), None, '*business'],
-            [_('Design'), None, '*design'],
-                 [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
-                 [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
-            [_('For GNOME'), None, '*gnome_dedicated'],
-            [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', '*nautilus_extension'],
-            [_('Simulator'), None, '*simulator'],
-            [_('Education'), None, '*education'],
-            [_('Game'), None, '*game'],
-            [_('Anti-virus'), None, '*antivirus'],
-            [_('Others'), None, '*others'],
-            [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', '*establish_a_server'],
-            [_('Repository'), None, '*repository'],
-                 ] # end of items
-        class T(list):
-            pass
-        for i, item in enumerate(items):
-            items[i] = T(item)
-        for item in items:
-            category = item[2]
-            item.is_big_class = category.startswith('*')
-        for item in items:
-            if item.is_big_class:
-                last_big_class = item
-                item.parent = None
-            else:
-                item.parent = last_big_class
-        for item in items:
-            category = item[2]
-            if category.startswith('*'): category = category[1:]
-            item.category = category
-        for item in items:
-            item.visible = False
         all_categories = [obj.category for obj in self.app_objs]
-        for i, item in enumerate(items):
-            item.visible = item.category in all_categories
-            if item.visible and item.parent!=None: item.parent.visible = True
+        items = Category.all()
         assert items[0].category == 'all'
         items[0].visible = True
-            
         for item in items:
-            if item.visible == False: continue
-            i1, i2, i3 = item
-            if item.is_big_class:
-                last_big_class = self.left_treestore.append(None, [i1, blank_pixbuf(24, 24), i3])
-            else:
-                self.left_treestore.append(last_big_class, [i1, get_pixbuf(i2, 24, 24), i3])
+            if item.category in all_categories: item.visible = True
+        for item in items:
+            self.left_treestore.append(None, item.to_list())
         
         right_categories = [item.category for item in items]
         for obj in self.app_objs:
