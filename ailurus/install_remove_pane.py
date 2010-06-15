@@ -443,22 +443,19 @@ class InstallRemovePane(gtk.VBox):
         treestore.row_changed(path,  treestore.get_iter(path))
 
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
-        obj = model.get_value ( iter, 0 )
-        import types
-        assert isinstance ( obj, types.InstanceType )
-        assert hasattr ( obj, 'showed_in_toggle' )
-        cell.set_property ( 'active', obj.showed_in_toggle )
+        obj = model.get_value(iter, 0)
+        cell.set_property('active', obj.showed_in_toggle)
 
-    def __text_cell_data_func ( self, column, cell, model, iter ):
-        obj = model.get_value ( iter, 0 )
-        import types
-        assert isinstance ( obj, types.InstanceType )
-        assert hasattr(obj, 'cache_installed') and hasattr(obj, 'showed_in_toggle')
+    def __text_cell_data_func(self, column, cell, model, iter):
+        obj = model.get_value(iter, 0)
         import StringIO
         markup = StringIO.StringIO()
         print >>markup, '<b>%s</b>' % obj.__doc__,
+        if obj.cache_installed==False and obj.showed_in_toggle:
+            print >>markup, '<span color="blue">(%s)</span>' % _('will install'),
+        if obj.cache_installed and obj.showed_in_toggle==False:
+            print >>markup, '<span color="red">(%s)</span>' % _('will remove'),
         if obj.detail:
-#            detail = obj.detail.split('\n', 1)[0]
             print >>markup, ''
             print >>markup, obj.detail,
         if obj.download_url:
@@ -468,19 +465,11 @@ class InstallRemovePane(gtk.VBox):
             print >>markup, ''
             print >>markup, '<small><span color="#8A00C2">%s</span></small>' % obj.how_to_install,
         cell.set_property('markup', markup.getvalue())
-        cell.set_property('strikethrough', 
-                          obj.cache_installed==True and obj.showed_in_toggle==False )
-        if obj.cache_installed==False and obj.showed_in_toggle==True :
-            cell.set_property('scale', 1.2)
-        else :
-            cell.set_property('scale', 1)
 
     def __visible_func(self, treestore, iter):
-        import types
         assert isinstance(self.selected_categories, list)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
-        assert isinstance(obj, types.InstanceType)
         
         is_right_category = obj.category in self.selected_categories or 'all' in self.selected_categories
         if self.filter_text=='':
