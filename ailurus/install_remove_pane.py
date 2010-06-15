@@ -679,10 +679,6 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
-        button_expand_left_treeview = image_stock_button(gtk.STOCK_ADD, _('Expand'))
-        button_expand_left_treeview.connect('clicked', lambda w: self.left_treeview.expand_all())
-        button_collapse_left_treeview = image_stock_button(gtk.STOCK_REMOVE, _('Collapse'))
-        button_collapse_left_treeview.connect('clicked', lambda w: self.left_treeview.collapse_all())
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
         button_sync = image_stock_button(gtk.STOCK_REFRESH, _('Synchronize'))
@@ -705,8 +701,6 @@ class InstallRemovePane(gtk.VBox):
         if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
             self.show_quick_setup()
         bottom_box = gtk.HBox(False, 5)
-        bottom_box.pack_start(button_collapse_left_treeview, False)
-        bottom_box.pack_start(button_expand_left_treeview, False)
         bottom_box.pack_start(button_apply, False, False, 10)
         bottom_box.pack_start(button_sync, False, False, 10)
         bottom_box.pack_start(sbox, False)
@@ -716,7 +710,7 @@ class InstallRemovePane(gtk.VBox):
         for obj in app_objs:
             self.right_store.append([obj])
 
-        toolbar = gtk.HBox(False, 5)
+        toolbar = gtk.HBox(False, 3)
         for text, class_name, icon_path in Category.all_left_class_names():
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
 
