@@ -238,8 +238,7 @@ class Google_Chrome(I):
     def install(self):
         if is32(): f = R(urls.google_chrome_32).download()
         else:      f = R(urls.google_chrome_64).download()
-        run_as_root_in_terminal('dpkg --install %s' % f)
-        APT.cache_changed()
+        APT.install_local(f)
     def installed(self):
         return APT.installed('google-chrome-stable')
     def remove(self):
@@ -322,3 +321,15 @@ class Repo_Oracle(_repo):
         self.key_url = 'http://oss.oracle.com/el4/RPM-GPG-KEY-oracle'
         self.key_id = 'B38A8516'
         _repo.__init__(self)
+
+class AdobeAIR(I):
+    __doc__ = ('Adobe AIR: use HTML, JavaScript and Flash to build desktop applications')
+    download_url = 'http://get.adobe.com/air/'
+    category = 'ide'
+    def install(self):
+        f = R('http://airdownload.adobe.com/air/lin/download/latest/adobeair.deb').download()
+        APT.install_local(f)
+    def installed(self):
+        return APT.installed('adobeair')
+    def remove(self):
+        APT.remove('adobeair')
