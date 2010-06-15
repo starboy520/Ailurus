@@ -405,12 +405,14 @@ def remove_eclipse_extesion_message(name):
     window.show_all()
 
 class Category:
-    def __init__(self, text, icon_path, category, class_name):
+    def __init__(self, text, icon_path, category, class_name=None):
         '''category equals "category" attribute value of application class
-        class_name is used in left_treeview only'''
+        class_name is used in left_treeview only
+        default value of class_name is the value of category'''
         assert isinstance(text, (str, unicode)) and text
         assert isinstance(icon_path, str) and icon_path
         assert isinstance(category, str) and category
+        if class_name is None: class_name = category
         assert isinstance(class_name, str) and class_name
         self.text, self.icon_path, self.category, self.class_name = text, icon_path, category, class_name
         self.icon = get_pixbuf(icon_path, 24, 24)
@@ -422,7 +424,7 @@ class Category:
     def all(cls):
         if cls.m_all: return cls.m_all
         m_all = [
-            Category(_('All'), D+'sora_icons/p_all.png', 'all', 'all'),
+            Category(_('All'), D+'sora_icons/p_all.png', 'all'),
             # internet
             Category(_('Browser'), D+'sora_icons/p_browser.png', 'browser', 'internet'),
             Category(_('Email'), D+'sora_icons/p_email.png', 'email', 'internet'),
@@ -439,36 +441,46 @@ class Category:
             # appearance
             Category(_('Panel'), D+'sora_icons/p_panel.png', 'panel', 'appearance'),
             Category(_('Theme'), D+'sora_icons/p_theme.png', 'theme', 'appearance'),
-            Category(_('Candy'), D+'umut_icons/p_candy.png', 'candy', 'appearance'),
+            Category(_('Screen widget'), D+'umut_icons/p_candy.png', 'candy', 'appearance'),
             Category(_('Compiz setting'), D+'sora_icons/p_compiz_setting.png', 'compiz_setting', 'appearance'),
             # science
-            [_('Science'), None, '*science'],
-                 [_('Math'), D+'umut_icons/p_math.png', 'math'],
-                 [_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics'],
-                 [_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics'],
-                 [_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics'],
-                 [_('Geography'), D+'sora_icons/p_geography.png', 'geography'],
-                 [_('Biology'), D+'umut_icons/p_biology.png', 'biology'],
-                 [_('LaTeX'), D+'umut_icons/p_latex.png', 'latex'],
-            [_('Programming'), None, '*programming'],
-                 [_('IDE'), D+'sora_icons/p_ide.png', 'ide'],
-                 [_('Version control'), D+'sora_icons/p_version_control.png', 'version_control'],
-                 [_('Library'), D+'sora_icons/p_library.png', 'library'],
-                 [_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system'],
-                 [_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor'],
-                 [_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension'],
-                 [_('Saber'), D+'sora_icons/p_saber.png', 'saber'],
-            [_('Business'), None, '*business'],
-            [_('Design'), None, '*design'],
-                 [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
-                 [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
-            [_('For GNOME'), None, '*for_gnome'],
-            [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', '*nautilus_extension'],
-            [_('Simulator'), None, '*simulator'],
-            [_('Education'), None, '*education'],
-            [_('Game'), None, '*game'],
-            [_('Anti-virus'), None, '*antivirus'],
-            [_('Others'), None, '*others'],
+            Category(_('Math'), D+'umut_icons/p_math.png', 'math', 'science'),
+            Category(_('Statistics'), D+'umut_icons/p_statistics.png', 'statistics', 'science'),
+            Category(_('Electronics'), D+'umut_icons/p_electronics.png', 'electronics', 'science'),
+            Category(_('Mechanics'), D+'umut_icons/p_mechanics.png', 'mechanics', 'science'),
+            Category(_('Geography'), D+'sora_icons/p_geography.png', 'geography', 'science'),
+            Category(_('Biology'), D+'sora_icons/p_biology.png', 'biology', 'science'),
+            Category(_('LaTeX'), D+'umut_icons/p_latex.png', 'latex', 'science'),
+            # programming
+            Category(_('IDE'), D+'sora_icons/p_ide.png', 'ide', 'programming'),
+            Category(_('Version control'), D+'sora_icons/p_version_control.png', 'version_control', 'programming'),
+            Category(_('Library'), D+'sora_icons/p_library.png', 'library', 'programming'),
+            Category(_('Embedded system'), D+'umut_icons/p_embedded_system.png', 'embedded_system', 'programming'),
+            Category(_('Text editor'), D+'umut_icons/p_text_editor.png', 'text_editor', 'programming'),
+            Category(_('Eclipse extension'), D+'sora_icons/p_eclipse_extension.png', 'eclipse_extension', 'programming'),
+            Category(_('Programming tool'), D+'sora_icons/p_saber.png', 'saber', 'programming'),
+            # business
+            Category(_('Business'), D+'sora_icons/p_business.png', 'business'),
+            # design
+            Category(_('Design'), D+'sora_icons/p_design.png', 'design'),
+            Category(_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing', 'design'),
+            Category(_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting', 'design'),
+            # gnome_dedicated
+            Category(_('GNOME dedicated'), D+'sora_icons/p_gnome_dedicated.png', 'gnome_dedicated'),
+            # nautilus
+            Category(_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', 'nautilus_extension'),
+            # simulator
+            Category(_('Simulator'), D+'sora_icons/p_simulator.png', 'simulator'),
+            # education
+            Category(_('Education'), D+'umut_icons/p_education.png', 'education'),
+            # game
+            Category(_('Game'), D+'umut_icons/p_game.png', 'game'),
+            # antivirus
+            Category(_('Anti-virus'), D+'umut_icons/p_antivirus.png', 'antivirus'),
+            # others
+            Category(_('Others'), D+'umut_icons/p_others.png', 'others'),
+            # tasksel
             [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', '*establish_a_server'],
+            # repository
             [_('Repository'), None, '*repository'],                 Category()
                  ]

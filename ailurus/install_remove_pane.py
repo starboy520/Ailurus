@@ -837,7 +837,7 @@ class InstallRemovePane(gtk.VBox):
             [_('Design'), None, '*design'],
                  [_('Drawing'), D+'umut_icons/p_drawing.png', 'drawing'],
                  [_('Typesetting'), D+'umut_icons/p_typesetting.png', 'typesetting'],
-            [_('For GNOME'), None, '*for_gnome'],
+            [_('For GNOME'), None, '*gnome_dedicated'],
             [_('Nautilus extension'), D+'sora_icons/p_nautilus_extension.png', '*nautilus_extension'],
             [_('Simulator'), None, '*simulator'],
             [_('Education'), None, '*education'],
