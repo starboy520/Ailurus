@@ -480,7 +480,7 @@ class Category:
             # others
             Category(_('Others'), D+'umut_icons/p_others.png', 'others'),
             # tasksel
-            [_('Establish a server'), D+'umut_icons/p_establish_a_server.png', '*establish_a_server'],
+            Category(_('Establish a server'), D+'umut_icons/p_establish_a_server.png', 'establish_a_server'),
             # repository
-            [_('Repository'), None, '*repository'],                 Category()
+            Category(_('Repository'), D+'sora_icons/p_repository.png', 'repository'),
                  ]
