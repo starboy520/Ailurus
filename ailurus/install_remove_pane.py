@@ -346,17 +346,6 @@ class InstallRemovePane(gtk.VBox):
             for o in self.app_objs:
                 o.showed_in_toggle = o.cache_installed = o.installed()
             
-            gtk.gdk.threads_enter()
-            level1 = self.treestore.get_iter_first()
-            while level1!=None:
-                level2 = self.treestore.iter_children(level1)
-                while level2!=None:
-                    path = self.treestore.get_path(level2)
-                    self.treestore.row_changed(path, level2)
-                    level2 = self.treestore.iter_next(level2)
-                level1 = self.treestore.iter_next(level1)
-            gtk.gdk.threads_leave()
-            
             print '\n', _('Summary:'), '\n'
             if len(s_i):
                 for o in s_i: print '\x1b[1;32m', _('Successfully installed:'), o.__doc__, '\x1b[m'
@@ -376,19 +365,16 @@ class InstallRemovePane(gtk.VBox):
                     traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
             print 
 
+            delay_notify_firefox_restart(True)
+
             gtk.gdk.threads_enter()
             parentbox = self.terminal.get_widget().parent
             parentbox.pack_start(self.final_box, False)
             parentbox.show_all()
             if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
                 self.show_error(error_traceback.getvalue())
-            gtk.gdk.threads_leave()
-            
-            delay_notify_firefox_restart(True)
-            
-            gtk.gdk.threads_enter()
+            self.treeview.queue_draw()
             self.treeview.get_selection().unselect_all()
-            # self.__left_tree_view_default_select()
             gtk.gdk.threads_leave()
         except:
             print_traceback()
@@ -440,7 +426,6 @@ class InstallRemovePane(gtk.VBox):
         assert isinstance(obj, types.InstanceType)
         assert hasattr(obj, 'showed_in_toggle')
         obj.showed_in_toggle = not obj.showed_in_toggle
-        treestore.row_changed(path,  treestore.get_iter(path))
 
     def __toggle_cell_data_func ( self, column, cell, model, iter ):
         obj = model.get_value(iter, 0)
