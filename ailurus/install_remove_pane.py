@@ -42,6 +42,13 @@ class Category:
     def to_list(self):
         'Return a list. Add the list into gtk.Liststore'
         return [self.text, self.icon, self.category, self.class_name]
+    @classmethod
+    def all_left_class_names(cls):
+        'return a list which consists of "text, class_name, icon_path"'
+        return [
+            (_('Internet'), 'internet', D+'sora_icons/p_internet.png'),
+            (_('Science'), 'science', D+'umut_icons/p_science.png'),
+                ]
     m_all = None
     @classmethod
     def all(cls):
@@ -709,14 +716,30 @@ class InstallRemovePane(gtk.VBox):
         for obj in app_objs:
             self.right_store.append([obj])
 
-        
         toolbar = gtk.HBox(False, 5)
+        for text, class_name, icon_path in Category.all_left_class_names():
+            toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
 
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
+        self.pack_start(toolbar, False)
         self.pack_start(hpaned)
         self.pack_start(bottom_box, False)
         self.show_all()
+
+    def left_class_choose_button_clicked(self, button):
+        self.left_pane_visible_class = button.class_name
+        self.left_store_filter.refilter()
+
+    def left_class_choose_button(self, text, class_name, icon_path):
+        pixbuf = get_pixbuf(icon_path, 24, 24)
+        image = gtk.image_new_from_pixbuf(pixbuf)
+        button = gtk.Button()
+        button.add(image)
+        button.class_name = class_name
+        button.connect('clicked', self.left_class_choose_button_clicked)
+        button.set_tooltip_text(text)
+        return button
 
     def fill_left_treestore(self):
         all_categories = [obj.category for obj in self.app_objs]
