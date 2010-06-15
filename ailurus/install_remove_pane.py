@@ -154,7 +154,7 @@ class InstallRemovePane(gtk.VBox):
         column.pack_start ( text_render, False )
         column.set_cell_data_func(text_render, self.__left_pane_text)
         # each row of liststore contains ( title, icon, category )
-        self.left_treestore = treestore = gtk.TreeStore ( str, gtk.gdk.Pixbuf, str )
+        self.left_treestore = treestore = gtk.ListStore(str, gtk.gdk.Pixbuf, str)
         self.left_treeview = treeview = gtk.TreeView()
         treeview.append_column(column_expander)
         treeview.append_column ( column )
@@ -879,7 +879,8 @@ class InstallRemovePane(gtk.VBox):
         for item in items:
             if item.category in all_categories: item.visible = True
         for item in items:
-            self.left_treestore.append(None, item.to_list())
+            if item.visible:
+                self.left_treestore.append(item.to_list())
         
         right_categories = [item.category for item in items]
         for obj in self.app_objs:
