@@ -117,7 +117,7 @@ class InstallRemovePane(gtk.VBox):
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
         self.left_treeview.expand_all()
-        self.left_treeview.get_selection().select_path('1:0')
+        self.left_treeview.get_selection().select_path('1')
 
     def __left_pane_changed ( self, treeselection, treeview ):
         model, parent = treeselection.get_selected()
@@ -696,11 +696,10 @@ class InstallRemovePane(gtk.VBox):
         self.treestorefilter = None # A gtk.TreeModelFilter of self.treestore
         self.filter_text = ''
         self.filter_option = ''
-        self.selected_categories = [ 'tweak' ] # Selected categories in the left pane
+        self.selected_categories = ['all'] # Selected categories in the left pane
         self.app_objs = None # objs in self.treestore
         self.left_treeview = None # A gtk.TreeView in left pane.
         self.hpaned = hpaned = gtk.HPaned()
-        self.vpaned = None
         assert hasattr(parentwindow, 'lock')
         assert hasattr(parentwindow, 'unlock')
         self.parentwindow = parentwindow
