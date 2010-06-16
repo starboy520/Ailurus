@@ -1048,15 +1048,12 @@ class APTSource2:
         for file in cls.all_conf_files():
             f = open(file)
             for line in f:
+                if not line.endswith('\n'): line += '\n'
                 yield line
             f.close()
     @classmethod
     def all_lines(cls):
-        ret = []
-        for file in cls.all_conf_files():
-            with open(file) as f:
-                ret.extend(f.readlines())
-        return ret
+        return [line for line in cls.iter_all_lines()]
     @classmethod
     def all_lines_contain(cls, snip):
         snip = cls.remove_comment(snip)
