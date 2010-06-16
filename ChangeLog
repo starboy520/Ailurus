@@ -2,6 +2,7 @@
 
     * Synchronize latest application data from web
     * Automatically check new version
+    * Fix bug: bad file descriptor
 
 2010-06-15 QI Chengjie <starboy.qi@gmail.com>
 
