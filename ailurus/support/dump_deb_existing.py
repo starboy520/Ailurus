@@ -20,11 +20,10 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-import warnings
-warnings.filterwarnings("ignore", "apt API not stable yet", FutureWarning)
-import apt
-cache = apt.cache.Cache()
-for p in cache:
-    if p.isInstalled: print 'i',
-    else: print 'u',
-    print p.name
+import os, re
+pattern = re.compile('Package: (.+)')
+f = os.popen('apt-cache dumpavail')
+for line in f:
+    match = pattern.match(line)
+    if match: print match.group(1)
+f.close()

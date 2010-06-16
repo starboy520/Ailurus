@@ -755,35 +755,36 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    __set1 = set() # __set1 consists of all installed software
-    __set2 = set() # __set2 = __set1 + all available software
+    installed_set = set()
+    avail_set = set()
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
-        cls.__set1 = set()
-        cls.__set2 = set()
+        cls.installed_set.clear()
+        cls.avail_set.clear()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dumpaptcache.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_deb_installed.py'
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         for line in task.stdout:
-            name = line[2:-1]
-            if line[0]=='i': cls.__set1.add(name)
-            else: cls.__set2.add(name)
+            cls.installed_set.add(line.rstrip())
+        task.wait()
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_deb_existing.py'
+        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
+        for line in task.stdout:
+            cls.avail_set.add(line.rstrip())
         task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set1
+        return cls.installed_set
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set2
+        return cls.avail_set
     @classmethod
     def get_autoremovable_pkgs(cls):
         ret = []
@@ -811,12 +812,12 @@ class APT:
     def installed(cls, package_name):
         is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.__set1
+        return package_name in cls.installed_set
     @classmethod
     def exist(cls, package_name):
         is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.__set1 or package_name in cls.__set2
+        return package_name in cls.installed_set or package_name in cls.avail_set
     @classmethod
     def install(cls, *packages):
         is_pkg_list(packages)
