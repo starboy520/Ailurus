@@ -246,7 +246,7 @@ class FFFlashgot(_ff_extension):
     license = GPL
     detail = _("It is able to download all the links, movies and audio clips of a page with a single click.")
     download_url = 'https://addons.mozilla.org/zh-CN/firefox/addon/220'
-    name = u'Flashgot'
+    name = u'FlashGot'
     R = R(latest(220), filename='flashgot.xpi')
 
 class FFFoxyProxy(_ff_extension):
@@ -354,7 +354,7 @@ class FFFirefoxSync(_ff_extension):
     license = MPL
     detail = ''
     download_url = 'https://addons.mozilla.org/en-US/firefox/addon/10868'
-    name = u'Weave'
+    name = u'Firefox Sync'
     R = R(latest(10868), filename='firefox_sync.xpi')
 
 class FFWebDeveloper(_ff_extension):
