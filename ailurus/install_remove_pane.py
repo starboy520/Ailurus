@@ -323,11 +323,7 @@ class InstallRemovePane(gtk.VBox):
             print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
-            r,w = os.pipe()
-            os.dup2(w, sys.stdout.fileno())
-            thread.start_new_thread(self.terminal.read, (r,) )
-            try:    run_as_root('true') # require authentication first. do not require authentication any more.
-            except: print_traceback() # do not hang if run_as_root failed.
+            self.terminal.redirect_stdout()
             s_i = []; s_r = []; f_i = []; f_r = []
             
             to_install = [ o for o in self.app_objs
@@ -405,11 +401,8 @@ class InstallRemovePane(gtk.VBox):
         except:
             print_traceback()
         finally:
-            sys.stdout.flush()
-            os.close(r)
-            os.close(w)
+            self.terminal.recover_stdout()
             run.terminal = None
-            os.dup2(self.backup_stdout, sys.stdout.fileno())
 
     def __return_to_app_view(self, *w):
         self.parentwindow.unlock()
@@ -430,6 +423,8 @@ class InstallRemovePane(gtk.VBox):
         has_work = len(to_install) or len(to_remove)
         if not has_work: return
         if not self.__query_work(to_install, to_remove): return
+
+        run_as_root('true') # require authentication first. do not require authentication any more.
         
         self.parentwindow.lock()
         import thread
