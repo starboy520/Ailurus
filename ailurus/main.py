@@ -504,6 +504,12 @@ class MainView:
         self.add_study_button_preference_button_other_button()
         self.add_pane_buttons_in_toolbar()
         self.window.show_all()
+        
+        if Config.is_long_enough_since_last_check_update():
+            Config.set_last_check_update_time_to_now()
+            from support.checkupdate import check_update
+            import thread
+            thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
