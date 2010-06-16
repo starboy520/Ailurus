@@ -80,6 +80,14 @@ def stock_image_only_button(stock):
     button.add(image)
     return button
 
+def image_file_only_button(image_file_path, size):
+    import gtk
+    pixbuf = get_pixbuf(image_file_path, size, size)
+    image = gtk.image_new_from_pixbuf(pixbuf)
+    button = gtk.Button()
+    button.add(image)
+    return button
+
 def image_stock_menuitem(image_stock, label):
     import gtk
     item = gtk.ImageMenuItem(stock_id=image_stock)

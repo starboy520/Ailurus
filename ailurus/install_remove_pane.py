@@ -689,7 +689,8 @@ class InstallRemovePane(gtk.VBox):
 
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
-        button_sync = image_stock_button(gtk.STOCK_REFRESH, _('Synchronize'))
+        button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
+        button_sync.set_tooltip_text(_('Synchronize'))
         def synchronize():
             import subprocess
             path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
@@ -702,7 +703,8 @@ class InstallRemovePane(gtk.VBox):
         from support.searchbox import SearchBoxForApp
         searchbox = SearchBoxForApp()
         searchbox.connect('changed', self.__search_content_changed)
-        quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
+        quick_setup_button = image_file_only_button(D+'umut_icons/quick_setup.png', 24)
+        quick_setup_button.set_tooltip_text(_('Quickly install popular software'))
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
         self.quick_setup_area = Area()
         self.quick_setup_area.pack_start(gtk.VSeparator(), False)
