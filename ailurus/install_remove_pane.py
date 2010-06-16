@@ -390,17 +390,19 @@ class InstallRemovePane(gtk.VBox):
             delay_notify_firefox_restart(True)
 
             gtk.gdk.threads_enter()
-            parentbox = self.terminal.get_widget().parent
-            parentbox.pack_start(self.final_box, False)
-            parentbox.show_all()
             if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
                 self.show_error(error_traceback.getvalue())
-            self.right_treeview.queue_draw()
-            self.right_treeview.get_selection().unselect_all()
             gtk.gdk.threads_leave()
         except:
             print_traceback()
         finally:
+            gtk.gdk.threads_enter()
+            parentbox = self.terminal.get_widget().parent
+            parentbox.pack_start(self.final_box, False)
+            parentbox.show_all()
+            self.right_treeview.queue_draw()
+            self.right_treeview.get_selection().unselect_all()
+            gtk.gdk.threads_leave()
             self.terminal.recover_stdout()
             run.terminal = None
 
