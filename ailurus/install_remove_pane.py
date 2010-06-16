@@ -500,9 +500,8 @@ class InstallRemovePane(gtk.VBox):
         return self.left_pane_visible_class == 'all' or class_name == self.left_pane_visible_class
 
     def __right_pixbuf_data_func(self, column, cell, model, iter):
-        class0 = model.get_value ( iter, 0 )
-        cell.set_property('pixbuf', class0.logo_pixbuf)
-        cell.set_property('visible', Config.get_show_software_icon())
+        appobj = model.get_value(iter, 0)
+        cell.set_property('pixbuf', appobj.logo_pixbuf)
         
     def __right_DE_pixbuf_data_func(self, column, cell, model, iter):
         class0 = model.get_value ( iter, 0 )
@@ -645,14 +644,10 @@ class InstallRemovePane(gtk.VBox):
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
         
-        show_software_icon = gtk.CheckMenuItem(_('Show an icon by the side of software name'))
-        show_software_icon.set_active(Config.get_show_software_icon())
-        show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.right_treeview.queue_draw())
-        
         if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
-            return [show_sync, show_quick_setup, set_wget_param, show_software_icon]
+            return [show_sync, show_quick_setup, set_wget_param]
         else:
-            return [show_sync, set_wget_param, show_software_icon]
+            return [show_sync, set_wget_param]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)

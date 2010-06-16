@@ -186,14 +186,6 @@ class Config:
         except: value = 3
         return value
     @classmethod
-    def set_show_software_icon(cls, value):
-        cls.set_bool('show_software_icon', value)
-    @classmethod
-    def get_show_software_icon(cls):
-        try: value = cls.get_bool('show_software_icon')
-        except: value = True
-        return value
-    @classmethod
     def set_default_pane(cls, value):
         cls.set_string('default_pane', value)
     @classmethod
