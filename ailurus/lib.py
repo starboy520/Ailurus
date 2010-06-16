@@ -147,12 +147,19 @@ class Config:
         # do not wrap it in try..except
         return cls.get_long('proxy_string_id_in_keyring')
     @classmethod
-    def set_hide_quick_setup_pane(cls, value):
-        cls.set_bool('hide_quick_setup_pane', value)
+    def set_show_quick_setup_area(cls, value):
+        cls.set_bool('show_quick_setup_area', value)
     @classmethod
-    def get_hide_quick_setup_pane(cls):
-        try:        return cls.get_bool('hide_quick_setup_pane')
-        except:     return False
+    def get_show_quick_setup_area(cls):
+        try:        return cls.get_bool('show_quick_setup_area')
+        except:     return True
+    @classmethod
+    def set_show_sync_pane(cls, value):
+        cls.set_bool('show_sync_area', value)
+    @classmethod
+    def get_show_sync_pane(cls):
+        try:        return cls.get_bool('show_sync_area')
+        except:     return True
     @classmethod
     def set_query_before_exit(cls, value):
         cls.set_bool('query_before_exit', value)

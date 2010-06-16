@@ -118,6 +118,22 @@ class Category:
                  ]
         return cls.m_all
 
+class Area(gtk.HBox):
+    def __init__(self):
+        gtk.HBox.__init__(self, False, 3)
+        self.content = []
+    def pack_start(self, *arg):
+        self.content.append(arg[0])
+        gtk.HBox.pack_start(self, *arg)
+    def content_visible(self, visible):
+        assert isinstance(visible, bool)
+        for child in self.get_children():
+            self.remove(child)
+        if visible:
+            for child in self.content:
+                gtk.HBox.pack_start(self, child, False)
+            self.show_all()
+
 class InstallRemovePane(gtk.VBox):
     icon = D+'sora_icons/m_install_remove.png'
     text = _('Install\nSoftware')
@@ -612,11 +628,11 @@ class InstallRemovePane(gtk.VBox):
     
     def get_preference_menuitems(self):
         def toggled(w):
-            Config.set_hide_quick_setup_pane(not w.get_active())
-            if w.get_active(): self.show_quick_setup()
-            else: self.hide_quick_setup()
+            visible = w.get_active()
+            Config.set_show_quick_setup_area(visible)
+            self.quick_setup_area.content_visible(visible)
         show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.set_active(not Config.get_hide_quick_setup_pane())
+        show_quick_setup.set_active(Config.get_show_quick_setup_area())
         show_quick_setup.connect('toggled', toggled)
     
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
@@ -630,17 +646,6 @@ class InstallRemovePane(gtk.VBox):
             return [show_quick_setup, set_wget_param, show_software_icon]
         else:
             return [set_wget_param, show_software_icon]
-    
-    def hide_quick_setup(self):
-        children = self.quick_setup_area.get_children()
-        if children:
-            for child in children:
-                self.quick_setup_area.remove(child)
-    
-    def show_quick_setup(self):
-        self.hide_quick_setup()
-        self.quick_setup_area.pack_start(self.quick_setup_content, False)
-        self.quick_setup_area.show_all()
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
@@ -688,18 +693,20 @@ class InstallRemovePane(gtk.VBox):
             path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
             subprocess.Popen(['python', path])
         button_sync.connect('clicked', lambda w: synchronize())
+        self.sync_area = Area()
+        self.sync_area.pack_start(gtk.VSeparator(), False)
+        self.sync_area.pack_start(button_sync)
+        self.sync_area.content_visible(Config.get_show_sync_pane())
         from support.searchbox import SearchBoxForApp
-        sbox = SearchBoxForApp()
-        sbox.connect('changed', self.__search_content_changed)
+        searchbox = SearchBoxForApp()
+        searchbox.connect('changed', self.__search_content_changed)
         quick_setup_button = image_file_button(_('Quickly install popular software'), D + 'umut_icons/quick_setup.png', 24)
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
-        self.quick_setup_content = gtk.HBox(False, 3)
-        self.quick_setup_content.pack_start(gtk.VSeparator())
-        self.quick_setup_content.pack_start(quick_setup_button, False)
-        self.quick_setup_content.pack_start(gtk.VSeparator())
-        self.quick_setup_area = gtk.HBox(False)
-        if (UBUNTU or UBUNTU_DERIV) and not Config.get_hide_quick_setup_pane():
-            self.show_quick_setup()
+        self.quick_setup_area = Area()
+        self.quick_setup_area.pack_start(gtk.VSeparator(), False)
+        self.quick_setup_area.pack_start(quick_setup_button, False)
+        self.quick_setup_area.content_visible(
+            (UBUNTU or UBUNTU_DERIV) and Config.get_show_quick_setup_area())
 
         self.app_objs = app_objs
         for obj in app_objs:
@@ -708,11 +715,11 @@ class InstallRemovePane(gtk.VBox):
         toolbar = gtk.HBox(False, 3)
         for text, class_name, icon_path in Category.all_left_class():
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
+        toolbar.pack_start(self.sync_area, False)
         toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_sync, False)
-        toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(sbox, False)
+        toolbar.pack_start(searchbox, False)
         toolbar.pack_start(self.quick_setup_area, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(button_apply, False)
 
         self.fill_left_treestore()
