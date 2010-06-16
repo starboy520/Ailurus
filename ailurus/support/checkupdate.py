@@ -51,8 +51,8 @@ def version_to_tuple(string):
 def check_update():
     import gtk, urllib2, re
     if FEDORA:
-        pattern1 = r'ailurus-[0-9.]+-.+?\.rpm'
-        pattern2 = r'ailurus-([0-9.]+)-.+?\.rpm'
+        pattern1 = r'ailurus-[0-9.]+-.+?'+VERSION+'.+?\.rpm'
+        pattern2 = r'ailurus-([0-9.]+)-.+?'+VERSION+'.+?\.rpm'
         url = 'http://homerxing.fedorapeople.org/'
     elif UBUNTU or UBUNTU_DERIV:
         pattern1 = r'ailurus_[0-9.]+-.+?'+VERSION+'.+?\.deb'
