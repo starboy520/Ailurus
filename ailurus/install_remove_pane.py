@@ -629,6 +629,13 @@ class InstallRemovePane(gtk.VBox):
     def get_preference_menuitems(self):
         def toggled(w):
             visible = w.get_active()
+            Config.set_show_sync_pane(visible)
+            self.sync_area.content_visible(visible)
+        show_sync = gtk.CheckMenuItem(_('Show "synchronize" button'))
+        show_sync.set_active(Config.get_show_sync_pane())
+        show_sync.connect('toggled', toggled)
+        def toggled(w):
+            visible = w.get_active()
             Config.set_show_quick_setup_area(visible)
             self.quick_setup_area.content_visible(visible)
         show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
@@ -643,9 +650,9 @@ class InstallRemovePane(gtk.VBox):
         show_software_icon.connect('toggled', lambda w: Config.set_show_software_icon(w.get_active()) or self.right_treeview.queue_draw())
         
         if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
-            return [show_quick_setup, set_wget_param, show_software_icon]
+            return [show_sync, show_quick_setup, set_wget_param, show_software_icon]
         else:
-            return [set_wget_param, show_software_icon]
+            return [show_sync, set_wget_param, show_software_icon]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
