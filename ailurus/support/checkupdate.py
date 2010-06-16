@@ -49,6 +49,7 @@ def version_to_tuple(string):
     return tuple(string.split('.'))
 
 def check_update():
+    'Please launch me as a thread'
     import gtk, urllib2, re
     if FEDORA:
         pattern1 = r'ailurus-[0-9.]+-.+?'+VERSION+'.+?\.rpm'
@@ -78,6 +79,7 @@ def check_update():
             latest_filename = string
     
     latest_version = '.'.join(list(latest_version_tuple))
+    gtk.gdk.threads_enter()
     dlg = gtk.Dialog('',
                      None, gtk.DIALOG_NO_SEPARATOR,
                      (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
@@ -101,6 +103,7 @@ def check_update():
     dlg.vbox.show_all()
     dlg.run()
     dlg.destroy()
+    gtk.gdk.threads_leave()
 
 def show_about_dialog():
     import gtk
