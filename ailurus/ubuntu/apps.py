@@ -25,7 +25,7 @@ import sys, os
 from lib import *
 from libapp import *
 from apps_eclipse import *
-from app_tasksel import *
+#from app_tasksel import * # Shall we provide tasksel GUI? Its loading time is almost the same as dump_deb
 from app_from_external_repos import *
 
 #class OpenJDK6(I):
