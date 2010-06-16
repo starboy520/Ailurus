@@ -1,7 +1,7 @@
 [Desktop Entry]
-_Name=Ailurus
+Name=Ailurus
 _Comment=makes Linux easier to use
-Exec=/usr/bin/ailurus
+Exec=ailurus
 Icon=ailurus
 Terminal=false
 X-MultipleArgs=false
