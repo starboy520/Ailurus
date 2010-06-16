@@ -133,6 +133,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_synced(cls): # has synchronized latest application data?
+        cls.set_bool('synced', True)
+    @classmethod
+    def get_synced(cls):
+        try: return cls.get_bool('synced')
+        except: return False
+    @classmethod
     def set_use_proxy(cls, value):
         cls.set_bool('use_proxy', value)
     @classmethod

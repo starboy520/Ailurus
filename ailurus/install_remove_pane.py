@@ -644,10 +644,12 @@ class InstallRemovePane(gtk.VBox):
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
         
-        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
-            return [show_sync, show_quick_setup, set_wget_param]
-        else:
-            return [show_sync, set_wget_param]
+        return [set_wget_param]
+# always show sync & quick_setup
+#        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
+#            return [show_sync, show_quick_setup, set_wget_param]
+#        else:
+#            return [show_sync, set_wget_param]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
@@ -689,17 +691,15 @@ class InstallRemovePane(gtk.VBox):
 
         button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
         button_apply.connect('clicked', self.__apply_button_clicked)
-        button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
+        self.sync_button = button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
         button_sync.set_tooltip_text(_('Synchronize'))
-        def synchronize():
-            import subprocess
-            path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
-            subprocess.Popen(['python', path])
-        button_sync.connect('clicked', lambda w: synchronize())
+        button_sync.connect('clicked', lambda w: self.synchronize())
         self.sync_area = Area()
         self.sync_area.pack_start(gtk.VSeparator(), False)
         self.sync_area.pack_start(button_sync)
-        self.sync_area.content_visible(Config.get_show_sync_area())
+        self.sync_area.content_visible( #Config.get_show_sync_area()
+                                        True # always show sync
+                                      )
         from support.searchbox import SearchBoxForApp
         searchbox = SearchBoxForApp()
         searchbox.connect('changed', self.__search_content_changed)
@@ -710,7 +710,9 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_area.pack_start(gtk.VSeparator(), False)
         self.quick_setup_area.pack_start(quick_setup_button, False)
         self.quick_setup_area.content_visible(
-            (UBUNTU or UBUNTU_DERIV) and Config.get_show_quick_setup_area())
+#            (UBUNTU or UBUNTU_DERIV) and Config.get_show_quick_setup_area()
+             (UBUNTU or UBUNTU_DERIV) # always show quick_setup on Ubuntu
+            )
 
         self.app_objs = app_objs
         for obj in app_objs:
@@ -731,6 +733,28 @@ class InstallRemovePane(gtk.VBox):
         self.pack_start(toolbar, False)
         self.pack_start(hpaned)
         self.show_all()
+    
+        import thread
+        thread.start_new_thread(self.notify_sync, ())
+    
+    def notify_sync(self):
+        if not Config.get_synced():
+            gtk.gdk.threads_enter()
+            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
+                                       message_format=
+                                       _('Would you like to download latest application data from web?'))
+            ret = dialog.run()
+            dialog.destroy()
+            Config.set_synced()
+            if ret == gtk.RESPONSE_YES:
+                self.synchronize()
+            gtk.gdk.threads_leave()
+
+    def synchronize(self):
+        import subprocess
+        path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
+        task = subprocess.Popen(['python', path])
+        Config.set_synced()
 
     def left_class_choose_button_clicked(self, button):
         self.left_pane_visible_class = button.class_name
