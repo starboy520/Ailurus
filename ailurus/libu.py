@@ -220,7 +220,7 @@ def do_access_denied_error():
     
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk
-    from lib import AILURUS_VERSION, D, AccessDeniedError
+    from lib import AILURUS_VERSION, D, AccessDeniedError, report_bug
 
     if etype == KeyboardInterrupt: return
     if etype == AccessDeniedError: return do_access_denied_error()

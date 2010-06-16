@@ -234,7 +234,7 @@ def show_special_thank_dialog():
     dialog.destroy()
 
 def show_changelog():
-    with open(D+'/../ChangeLog') as f:
+    with open('/usr/share/ailurus/ChangeLog') as f:
         lines = f.readlines()
     import gtk, pango, re
     buffer = gtk.TextBuffer()
