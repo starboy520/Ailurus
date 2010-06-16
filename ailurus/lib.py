@@ -154,10 +154,10 @@ class Config:
         try:        return cls.get_bool('show_quick_setup_area')
         except:     return True
     @classmethod
-    def set_show_sync_pane(cls, value):
+    def set_show_sync_area(cls, value):
         cls.set_bool('show_sync_area', value)
     @classmethod
-    def get_show_sync_pane(cls):
+    def get_show_sync_area(cls):
         try:        return cls.get_bool('show_sync_area')
         except:     return True
     @classmethod

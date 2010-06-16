@@ -629,10 +629,10 @@ class InstallRemovePane(gtk.VBox):
     def get_preference_menuitems(self):
         def toggled(w):
             visible = w.get_active()
-            Config.set_show_sync_pane(visible)
+            Config.set_show_sync_area(visible)
             self.sync_area.content_visible(visible)
         show_sync = gtk.CheckMenuItem(_('Show "synchronize" button'))
-        show_sync.set_active(Config.get_show_sync_pane())
+        show_sync.set_active(Config.get_show_sync_area())
         show_sync.connect('toggled', toggled)
         def toggled(w):
             visible = w.get_active()
@@ -703,7 +703,7 @@ class InstallRemovePane(gtk.VBox):
         self.sync_area = Area()
         self.sync_area.pack_start(gtk.VSeparator(), False)
         self.sync_area.pack_start(button_sync)
-        self.sync_area.content_visible(Config.get_show_sync_pane())
+        self.sync_area.content_visible(Config.get_show_sync_area())
         from support.searchbox import SearchBoxForApp
         searchbox = SearchBoxForApp()
         searchbox.connect('changed', self.__search_content_changed)
