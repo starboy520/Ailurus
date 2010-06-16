@@ -572,7 +572,8 @@ deb-src %(fastest)s %(version)s-updates main restricted universe multiverse
         spawn_as_root(launcher)
     
     def __callback__merge_sourceslist(self, *w):
+        lines = APTSource2.all_lines()
         with TempOwn('/etc/apt/sources.list') as o:
             with open('/etc/apt/sources.list', 'w') as f:
-                f.writelines(APTSource2.all_lines())
+                f.writelines(lines)
         run_as_root('rm /etc/apt/sources.list.d/* -rf')
