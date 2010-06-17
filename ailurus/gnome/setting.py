@@ -445,8 +445,24 @@ def __login_window_setting():
     box.pack_start(o, False)
     o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
     box.pack_start(o, False)
-    
     return Setting(box, _('Login window settings'), ['login_window'])
+
+def __login_window_background():
+    box = gtk.VBox(False, 5)
+
+    def apply(w, image):
+        path = os.path.expanduser('~/.face')
+        os.system('cp %s %s' % (image, path))
+
+    i = ImageChooser(_('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'), 160, 120)
+    try:
+        i.display_image(os.path.expanduser('~/.face'))
+    except:
+        i.display_image(None) # show blank
+    i.connect('changed',apply)
+    box = gtk.VBox(False, 0)
+    box.pack_start(left_align(i))    
+    return Setting(box, _('Login window background'), ['login_window'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))

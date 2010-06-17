@@ -133,6 +133,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_login_window_background(cls, value):
+        'just a cache. value may be wrong. cache the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'
+        cls.set_string('login_window_background', value)
+    @classmethod
+    def get_login_window_background(cls):
+        return cls.get_string('login_window_background') # please do not catch exception
+    @classmethod
     def set_last_check_update_time_to_now(cls):
         import time
         value = long(time.time()) # the time as a floating point number expressed in seconds since the epoch, in UTC
