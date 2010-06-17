@@ -59,7 +59,7 @@ def __desktop_icon_setting():
 
 def __start_here_icon_setting():
     def apply(imagechooser, old_image):
-        imagechooser.scale_image(old_image, '/tmp/start-here.png', 24, 24)
+        scale_image(old_image, '/tmp/start-here.png', 24, 24)
         
         import os
         local_icons_dir = os.path.expanduser('~/.icons')
@@ -87,11 +87,9 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = ImageChooser(_('The "start-here" icon is %s') % path, 24, 24)
-    try:
-        i.display_image(path)
-    except:
-        i.display_image(None) # show blank
+    i = ImageChooser('/usr/share/pixmaps/', 24, 24, _('The "start-here" icon is %s') % path)
+    try:    i.display_image(path)
+    except: i.display_image(None) # show blank
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
@@ -99,14 +97,11 @@ def __start_here_icon_setting():
 
 def __login_icon_setting():
     def apply(w, image):
-        path = os.path.expanduser('~/.face')
-        os.system('cp %s %s' % (image, path))
+        os.system('cp %s ~/.face' % (image, path))
 
-    i = ImageChooser(_('The login icon is ~/.face'), 96, 96)
-    try:
-        i.display_image(os.path.expanduser('~/.face'))
-    except:
-        i.display_image(None) # show blank
+    i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is ~/.face'))
+    try:    i.display_image(os.path.expanduser('~/.face'))
+    except: i.display_image(None) # show blank
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))
@@ -263,7 +258,8 @@ def __gnome_splash_setting():
     import gconf
     g = gconf.client_get_default()
     image_path = g.get_string('/apps/gnome-session/options/splash_image')
-    o = ImageChooser(_('GConf key: ') + '/apps/gnome-session/options/splash_image', 96, 96)
+    o = ImageChooser('/usr/share/pixmaps/', 96, 96,
+                     _('GConf key: ') + '/apps/gnome-session/options/splash_image')
     try: o.display_image(image_path)
     except: o.display_image(None) # show blank
     o.connect('changed', changed)
@@ -451,14 +447,14 @@ def __login_window_background():
     box = gtk.VBox(False, 5)
 
     def apply(w, image):
-        path = os.path.expanduser('~/.face')
-        os.system('cp %s %s' % (image, path))
+        path = D+'/../support/gdm_gconf.py'
+        run_as_root('python "%s" --type string --set /desktop/gnome/background/picture_filename "%s"' % (path, image))
+        Config.set_login_window_background(image)
 
-    i = ImageChooser(_('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'), 160, 120)
-    try:
-        i.display_image(os.path.expanduser('~/.face'))
-    except:
-        i.display_image(None) # show blank
+    i = ImageChooser('/usr/share/backgrounds/', 160, 120,
+                     _('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'))
+    try:    i.display_image(Config.get_login_window_background())
+    except: i.display_image(None) # show blank
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))    
@@ -607,6 +603,7 @@ def get():
             __more_nautilus_settings,
             __shortcut_setting,
             __login_window_setting,
+            __login_window_background,
             __compression_strategy,
             __gedit_setting,
             __reset_gnome,

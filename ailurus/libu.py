@@ -22,6 +22,12 @@
 
 from __future__ import with_statement
 
+def scale_image(old_path, new_path, new_width, new_height):
+    import gtk
+    pixbuf = gtk.gdk.pixbuf_new_from_file(old_path)
+    pixbuf = pixbuf.scale_simple(new_width, new_height, gtk.gdk.INTERP_HYPER)
+    pixbuf.save(new_path, 'png')
+        
 def blank_pixbuf(width, height):
     import gtk
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, width, height)
