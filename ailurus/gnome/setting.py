@@ -120,7 +120,6 @@ def __menu_icon_setting():
     vbox.pack_start(o, False)
     return Setting(vbox, _('Menu entry icons setting'), ['menu', 'icon'])
 
-
 def __button_icon_setting():
     vbox = gtk.VBox()
     o = GConfCheckButton(_('Show icon in buttons'), 
