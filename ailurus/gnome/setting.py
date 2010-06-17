@@ -444,12 +444,24 @@ def __login_window_setting():
     return Setting(box, _('Login window settings'), ['login_window'])
 
 def __login_window_background():
+    # the method is on http://blog.roodo.com/rocksaying/archives/12316205.html
+    
+    if (UBUNTU or UBUNTU_DERIV) and VERSION >= 'karmic': pass
+    elif ARCHLINUX: pass
+    else: return None # do not support on Fedora because there is no sudo.
+
     box = gtk.VBox(False, 5)
 
     def apply(w, image):
-        path = D+'/../support/gdm_gconf.py'
-        run_as_root('python "%s" --type string --set /desktop/gnome/background/picture_filename "%s"' % (path, image))
-        Config.set_login_window_background(image)
+        try:
+            run_as_root('sudo -u gdm gconftool-2 --set --type string /desktop/gnome/background/picture_filename "%s"' % image)
+#           path = D+'/../support/gdm_gconf.py'
+#           run_as_root('python "%s" --type string --set /desktop/gnome/background/picture_filename "%s"' % (path, image))
+        except:
+            w.display_image(Config.get_login_window_background())
+            raise
+        else:
+            Config.set_login_window_background(image)
 
     i = ImageChooser('/usr/share/backgrounds/', 160, 120,
                      _('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'))
@@ -610,7 +622,8 @@ def get():
             __screen_saver,
             ]:
         try:
-            ret.append(f())
+            a = f()
+            if a: ret.append(a)
         except:
             print_traceback()
     return ret
