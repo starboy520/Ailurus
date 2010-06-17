@@ -470,7 +470,7 @@ def __login_window_background():
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))    
-    return Setting(box, _('Login window background'), ['login_window'])
+    return Setting(box, _('Change login window background'), ['login_window'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))

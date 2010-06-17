@@ -176,8 +176,8 @@ class ImageChooser(gtk.Button):
         chooser.add_filter(self.image_filter())
         if chooser.run() == gtk.RESPONSE_OK:
             image_path = chooser.get_filename()
-            self.emit('changed', image_path)
             self.display_image(image_path)
+            self.emit('changed', image_path)
         chooser.destroy()
     
     def display_image(self, image_path):
