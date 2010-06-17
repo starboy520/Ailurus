@@ -20,8 +20,10 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-'Write result to /tmp/output'
+# Write result to /tmp/output
+# Write error to /tmp/error
 
+from __future__ import with_statement
 import os, sys, subprocess
 assert len(sys.argv) > 1
 
@@ -34,9 +36,10 @@ def get_gdm_uid():
 
 uid = get_gdm_uid()
 os.setuid(uid)
-task = subprocess.Popen(['gconftool-2'] + sys.argv[1:], stdout=subprocess.PIPE)
-f = open('/tmp/output', 'w')
-f.write(task.stdout.read())
-f.close()
+task = subprocess.Popen(['gconftool-2'] + sys.argv[1:], stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+with open('/tmp/output', 'w') as f:
+    f.write(task.stdout.read())
+with open('/tmp/error', 'w') as f:
+    f.write(task.stderr.read())
 task.wait()
 assert task.returncode == 0
