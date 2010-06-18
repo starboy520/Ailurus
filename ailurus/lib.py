@@ -32,6 +32,7 @@ def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and o
 class I:
     this_is_an_installer = True
     this_is_a_repository = False
+    sane = True # False means installed() == False after calling install()
     category = 'others'
     detail = ''
     how_to_install = ''

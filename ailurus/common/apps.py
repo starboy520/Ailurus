@@ -33,6 +33,7 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
     license = AL
     category='biology'
+    sane = False # FIXME: don't know how to remove
     def install(self):
         if FEDORA:
             for package in ['perl-libwww-perl', 'perl-CPAN']:

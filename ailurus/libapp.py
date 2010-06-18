@@ -323,6 +323,7 @@ def latest(id): # used in all subclasses of _ff_extension, to construct download
 class _ff_extension(I):
     'Firefox Extension'
     category = 'firefox_extension'
+    sane = False # FIXME: we don't know how to remove Firefox extensions
     def self_check(self):
         assert self.name
         assert isinstance(self.name, unicode)

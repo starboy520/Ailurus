@@ -355,13 +355,15 @@ class InstallRemovePane(gtk.VBox):
             for o in self.app_objs:
                 o.showed_in_toggle = o.cache_installed = o.installed()
             
-#            for obj in to_install:
-#                try: assert obj.cache_installed
-#                except: f_i += [(obj, sys.exc_info())]
-#            
-#            for obj in to_remove:
-#                try: assert not obj.cache_installed
-#                except: f_r += [(obj, sys.exc_info())]
+            for obj in to_install:
+                try:
+                    if obj.sane: assert obj.cache_installed
+                except: f_i += [(obj, sys.exc_info())]
+            
+            for obj in to_remove:
+                try:
+                    if obj.sane: assert not obj.cache_installed
+                except: f_r += [(obj, sys.exc_info())]
             
             if len(f_i):
                 for tup in f_i:
