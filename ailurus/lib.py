@@ -46,6 +46,10 @@ class I:
         raise NotImplementedError
     def remove(self):
         raise NotImplementedError
+    def add_temp_repository(self):
+        'Add repository before installing me'
+    def clean_temp_repository(self):
+        'Remove repository after installing me'
 
 class C:
     this_is_a_cure = True
@@ -875,6 +879,9 @@ class APT:
         if failed:
             msg = 'Cannot remove "%s".' % ' '.join(failed)
             raise CommandFailError(msg)
+    @classmethod
+    def neet_to_run_apt_get_update(cls):
+        cls.apt_get_update_is_called = False
     @classmethod
     def apt_get_update(cls):
         # (c) 2005-2007 Canonical, GPL

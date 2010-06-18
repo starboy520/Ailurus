@@ -160,10 +160,10 @@ def fedora_installation_command(package_names):
 def archlinux_installation_command(package_names):
     return 'pacman -S ' + package_names
 
-def ppa_to_deb_conf(string):
+def ppa_to_deb_conf(ppa_string):
     'return deb conf string from ppa string'
-    ppa_owner = ppa.split("/")[0]
-    try: ppa_name = ppa.split("/")[1]
+    ppa_owner = ppa_string.split("/")[0]
+    try: ppa_name = ppa_string.split("/")[1]
     except IndexError: ppa_name = "ppa"
     return "deb http://ppa.launchpad.net/%s/%s/ubuntu %s main" % (ppa_owner, ppa_name, VERSION)
 
@@ -196,7 +196,16 @@ class _apt_install(I):
         elif self.deb:
             self.how_to_install = _('Add source <b>%s</b>; %s') % (self.deb, command)
         else:
-            self.how_to_install = command 
+            self.how_to_install = command
+    def add_temp_repository(self):
+        if self.deb:
+            with TempOwn('/etc/apt/sources.list.d/temp.list'):
+                with open('/etc/apt/sources.list.d/temp.list', 'a') as f:
+                    print >>f, self.deb
+            APT.neet_to_run_apt_get_update()
+    def clean_temp_repository(self):
+        if os.path.exists('/etc/apt/sources.list.d/temp.list'):
+            run_as_root('rm -f /etc/apt/sources.list.d/temp.list')
 
 class _rpm_install(I):
     def self_check(self):

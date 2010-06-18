@@ -30,6 +30,7 @@ class Acire(_apt_install):
     __doc__ = _('Acire: A Python code fragment manager')
     license = GPL
     category = 'saber'
+    ppa = 'acire-team/acire-releases'
     depends = Repo_Acire
     pkgs = 'acire'
     def visible(self):

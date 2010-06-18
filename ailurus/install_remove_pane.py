@@ -329,22 +329,13 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ o for o in self.app_objs
                                if o.cache_installed==False
                                and o.showed_in_toggle ]
-            depends = [ o.depends() for o in to_install # the type of o.depends is types.ClassType 
-                                   if hasattr(o, 'depends') ]
-            to_install += depends
-            to_install_repos = [ o for o in to_install if o.this_is_a_repository ]
-            to_install_non_repos = [ o for o in to_install if o not in to_install_repos ]
-            if to_install_repos:
-                for obj in to_install_repos:
-                    print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
-                    try: 
-                        reset_dir()
-                        if not obj.installed(): obj.install()
-                    except: f_i += [(obj, sys.exc_info())]
-                    else: s_i += [obj]
-                APT.apt_get_update()
+            
+            for obj in to_install:
+                try:
+                    obj.add_temp_repository()
+                except: f_i += [(obj, sys.exc_info())]
                 
-            for obj in to_install_non_repos:
+            for obj in to_install:
                 print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
@@ -352,6 +343,11 @@ class InstallRemovePane(gtk.VBox):
                 except: f_i += [(obj, sys.exc_info())]
                 else: s_i += [obj]
             
+            for obj in to_install:
+                try:
+                    obj.clean_temp_repository()
+                except: f_i += [(obj, sys.exc_info())]
+
             to_remove = [ o for o in self.app_objs
                          if o.cache_installed 
                          and o.showed_in_toggle==False ]
