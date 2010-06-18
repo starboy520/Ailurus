@@ -226,6 +226,14 @@ class _rpm_install(I):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def fill(self):
         self.how_to_install = fedora_installation_command(self.pkgs)
+    def add_temp_repository(self):
+        # FIXME: should write repository configuration to temp file
+        if hasattr(self, 'depends'):
+            self.depends.install()
+    def clean_temp_repository(self):
+        # FIXME
+        if hasattr(self, 'depends'):
+            self.depends.remove()
 
 class _pacman_install(I):
     def self_check(self):
