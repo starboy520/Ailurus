@@ -6,6 +6,8 @@
     * Improve local deb installation
     * Do not list repositories when list all software items.
     * Recover 49-sansserif.conf
+    * Improve software installation speed
+    * Display detailed information if software is from Launchpad or external repository
 
 2010-06-17 Homer Xing <homer.xing@gmail.com>
 
