@@ -880,31 +880,12 @@ class APT:
         cls.apt_get_update_is_called = True
         cls.cache_changed()
     @classmethod
-    def get_deb_depends(cls, filename):
-        is_pkg_list([filename])
-        import os, re
-        if not filename.endswith('.deb'): raise ValueError
-        if not os.path.exists(filename): raise ValueError
-        output = get_output('LANG=C dpkg --info %s' % filename)
-        match=re.search('Depends: (.*)', output)
-        if match is None: # no depends 
-            return [] 
-        items=match.group(1).split(',')
-        depends = []
-        for item in items:
-            depends.append(item.split()[0])
-        return depends
-    @classmethod
     def install_local(cls, *packages):
-        is_pkg_list(packages)
         for package in packages:
-            import os
-            if not package.endswith('.deb'): raise ValueError
-            if not os.path.exists(package): raise ValueError
-            depends = cls.get_deb_depends(package)
-            if len(depends):
-                cls.install(*depends)
-            run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
+            if VERSION>='lucid': # -n == non-interactive
+                run_as_root('gdebi-gtk -n --auto-close %s' % package)
+            else:
+                run_as_root('gdebi-gtk -n %s' % package)
             cls.cache_changed()
 
 class PACMAN:
