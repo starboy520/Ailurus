@@ -57,3 +57,4 @@ rpmfusion_repos_free = 'http://download1.rpmfusion.org/free/fedora/rpmfusion-fre
 rpmfusion_repos_nonfree = 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'
 nvidia_32 = 'ftp://download.nvidia.com/XFree86/Linux-x86/195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run'
 nvidia_64 = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run'
+remastersys = 'http://prdownloads.sourceforge.net/remastersys/remastersys_2.0.17-1_all.deb'

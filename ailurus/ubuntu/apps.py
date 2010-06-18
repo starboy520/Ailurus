@@ -220,3 +220,14 @@ class OpenJUMP(_apt_install): # OpenJUMP is not in Fedora :(
     license = GPL
     category = 'geography'
     pkgs = 'openjump'
+
+class Remastersys(_apt_install):
+    __doc__ = _('Remastersys: Backup your system to a live CD')
+    download_url = 'http://sourceforge.net/projects/remastersys/'
+    category = 'others'
+    pkgs = 'remastersys'
+    def visible(self):
+        return VERSION >= 'karmic'
+    def install(self):
+        f = R(urls.remastersys).download()
+        APT.install_local(f)
