@@ -332,10 +332,8 @@ class InstallRemovePane(gtk.VBox):
             depends = [ o.depends() for o in to_install # the type of o.depends is types.ClassType 
                                    if hasattr(o, 'depends') ]
             to_install += depends
-            to_install_repos = [ o for o in to_install 
-                                     if getattr(o, 'this_is_a_repository', False) ]
-            to_install_non_repos = [ o for o in to_install
-                                                 if o not in to_install_repos ]
+            to_install_repos = [ o for o in to_install if o.this_is_a_repository ]
+            to_install_non_repos = [ o for o in to_install if o not in to_install_repos ]
             if to_install_repos:
                 for obj in to_install_repos:
                     print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
@@ -475,20 +473,26 @@ class InstallRemovePane(gtk.VBox):
         cell.set_property('markup', markup.getvalue())
 
     def __right_visible_func(self, treestore, iter):
+        def inside(p, str2):
+            return p.search(str2) != None
+
         assert isinstance(self.right_pane_visible_category, str)
         obj = treestore.get_value(iter, 0)
         if obj == None: return False
-        
-        is_right_category = 'all'==self.right_pane_visible_category or obj.category==self.right_pane_visible_category
-        if self.filter_text=='':
-            return is_right_category
+
+        if 'all' == self.right_pane_visible_category:
+            visible1 = not obj.this_is_a_repository
         else:
-            def inside(p, str2):
-                return p.search(str2) != None
-            if self.filter_option=='name' or not hasattr(obj, 'detail'):
-                return is_right_category and inside(self.filter_RE, obj.__doc__)
-            else: # both
-                return is_right_category and ( inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail) )
+            visible1 = obj.category == self.right_pane_visible_category
+
+        if self.filter_text == '':
+            visible2 = True
+        elif self.filter_option == 'name':
+            visible2 = inside(self.filter_RE, obj.__doc__)
+        else: # both
+            visible2 = inside(self.filter_RE, obj.__doc__) or inside(self.filter_RE, obj.detail)
+        
+        return visible1 and visible2
 
     def __left_visible_func(self, treestore, iter):
         assert isinstance(self.left_pane_visible_class, str)
