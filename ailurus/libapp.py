@@ -194,7 +194,7 @@ class _apt_install(I):
         if self.ppa:
             self.how_to_install = 'add-apt-repository ppa:%s; %s' % (self.ppa, command)
         elif self.deb:
-            self.how_to_install = _('Add source <b>%s</b>; %s') % (self.deb, command)
+            self.how_to_install = _('Add source "<b>%s</b>"; %s') % (self.deb, command)
         else:
             self.how_to_install = command
     def add_temp_repository(self):
