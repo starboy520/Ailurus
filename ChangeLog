@@ -5,6 +5,7 @@
     * Add remastersys, backup your system to live cd, in "Applications->Other" category
     * Improve local deb installation
     * Do not list repositories when list all software items.
+    * Recover 49-sansserif.conf
 
 2010-06-17 Homer Xing <homer.xing@gmail.com>
 

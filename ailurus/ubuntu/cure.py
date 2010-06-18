@@ -43,8 +43,7 @@ class Fix_error_in_49_sansserif_conf(C):
     detail = _('Change "sans-serif" to "sans serif".')
     type = C.MUST_FIX
     def exists(self):
-        if VERSION >= 'lucid': # Some people say this method is incorrect ...
-            return False
+        return False # some users found side effect
         try:
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 return '>sans-serif<' in f.read()
@@ -55,6 +54,24 @@ class Fix_error_in_49_sansserif_conf(C):
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans-serif<', '>sans serif<')
+            with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
+                f.write(content)
+
+class Recover_49_sansserif_conf(C):
+    __doc__ = _('Recover 49-sansserif.conf. Change "sans serif" back to "sans-serif".')
+    detail = _('Ailurus tried to fix Flash font bug. But some users found that font in other applications is also affected.\n'
+               'This operation aims at recovering font configuration file.')
+    def exists(self):
+        try:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                return '>sans serif<' in f.read()
+        except IOError: # File does not exist
+            return False
+    def cure(self):
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
+                content = f.read()
+            content = content.replace('>sans serif<', '>sans-serif<')
             with open('/etc/fonts/conf.d/49-sansserif.conf', 'w') as f:
                 f.write(content)
 
