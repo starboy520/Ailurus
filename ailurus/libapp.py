@@ -160,10 +160,20 @@ def fedora_installation_command(package_names):
 def archlinux_installation_command(package_names):
     return 'pacman -S ' + package_names
 
+def ppa_to_deb_conf(string):
+    'return deb conf string from ppa string'
+    ppa_owner = ppa.split("/")[0]
+    try: ppa_name = ppa.split("/")[1]
+    except IndexError: ppa_name = "ppa"
+    return "deb http://ppa.launchpad.net/%s/%s/ubuntu %s main" % (ppa_owner, ppa_name, VERSION)
+
 class _apt_install(I):
+    deb = '' # deb conf string. It will be written to /etc/apt/sources.list
+    ppa = '' # ppa string. If it is not empty, then set self.deb = ppa_to_deb_conf(self.ppa)
     'Must subclass me and set "pkgs".'
     def self_check(self):
         is_package_names_string(self.pkgs)
+        if self.ppa: self.deb = ppa_to_deb_conf(self.ppa)
     def install(self):
         APT.install(*self.pkgs.split())
     def installed(self):
@@ -180,12 +190,13 @@ class _apt_install(I):
     def remove(self):
         APT.remove(*self.pkgs.split() )
     def fill(self):
-        self.how_to_install = debian_installation_command(self.pkgs)
-# FIXME
-#        string = ''
-#        if hasattr(self, 'depends') and hasattr(self.depends, 'launchpad_installation_command'):
-#            string = self.depends().launchpad_installation_command() + '; '
-#        return '%s %s apt-get install %s' % (_('Command:'), string, self.pkgs)
+        command = debian_installation_command(self.pkgs)
+        if self.ppa:
+            self.how_to_install = 'add-apt-repository ppa:%s; %s' % (self.ppa, command)
+        elif self.deb:
+            self.how_to_install = _('Add source <b>%s</b>; %s') % (self.deb, command)
+        else:
+            self.how_to_install = command 
 
 class _rpm_install(I):
     def self_check(self):
