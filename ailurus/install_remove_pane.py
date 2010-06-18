@@ -324,55 +324,51 @@ class InstallRemovePane(gtk.VBox):
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
             self.terminal.redirect_stdout()
-            s_i = []; s_r = []; f_i = []; f_r = []
+            f_i = [] # failed to install
+            f_r = [] # failed to remove
             
-            to_install = [ o for o in self.app_objs
-                               if o.cache_installed==False
-                               and o.showed_in_toggle ]
+            to_install = [ o for o in self.app_objs if not o.cache_installed and o.showed_in_toggle ]
+            to_remove = [ o for o in self.app_objs if o.cache_installed and not o.showed_in_toggle ]
             
             for obj in to_install:
-                try:
-                    obj.add_temp_repository()
+                try:    obj.add_temp_repository()
                 except: f_i += [(obj, sys.exc_info())]
                 
             for obj in to_install:
                 print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
-                    if not obj.installed(): obj.install()
+                    obj.install()
                 except: f_i += [(obj, sys.exc_info())]
-                else: s_i += [obj]
             
             for obj in to_install:
-                try:
-                    obj.clean_temp_repository()
+                try:    obj.clean_temp_repository()
                 except: f_i += [(obj, sys.exc_info())]
 
-            to_remove = [ o for o in self.app_objs
-                         if o.cache_installed 
-                         and o.showed_in_toggle==False ]
             for obj in to_remove:
                 print '\x1b[1;35m', _('Removing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
                     obj.remove()
                 except: f_r += [(obj, sys.exc_info())]
-                else: s_r += [obj]
             
             for o in self.app_objs:
                 o.showed_in_toggle = o.cache_installed = o.installed()
             
-            print '\n', _('Summary:'), '\n'
-            if len(s_i):
-                for o in s_i: print '\x1b[1;32m', _('Successfully installed:'), o.__doc__, '\x1b[m'
-            if len(s_r):
-                for o in s_r: print '\x1b[1;35m', _('Successfully removed:'), o.__doc__, '\x1b[m'
+#            for obj in to_install:
+#                try: assert obj.cache_installed
+#                except: f_i += [(obj, sys.exc_info())]
+#            
+#            for obj in to_remove:
+#                try: assert not obj.cache_installed
+#                except: f_r += [(obj, sys.exc_info())]
+            
             if len(f_i):
                 for tup in f_i:
                     print '\x1b[1;31m', _('Failed to install:'), tup[0].__doc__, '\x1b[m'
                     exc = tup[1]
                     print >>error_traceback, tup[0].__doc__
-                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback) 
+                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
             if len(f_r):
                 for tup in f_r: 
                     print '\x1b[1;31m', _('Failed to remove:'), tup[0].__doc__, '\x1b[m'
@@ -381,12 +377,12 @@ class InstallRemovePane(gtk.VBox):
                     traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
             print 
 
-            delay_notify_firefox_restart(True)
-
             gtk.gdk.threads_enter()
             if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
                 self.show_error(error_traceback.getvalue())
             gtk.gdk.threads_leave()
+
+            delay_notify_firefox_restart(True)
         except:
             print_traceback()
         finally:
