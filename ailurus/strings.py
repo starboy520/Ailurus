@@ -300,6 +300,8 @@ WorldofPadman_0 = _('World of Padman: Funny shooter game')
 WorldofPadman_1 = _('Funny shooter game')
 Wormux_0 = 'Wormux'
 Wormux_1 = _('Funny fight game on 2D maps')
+Youtubedl_0 = _('Youtube-dl: Download videos from Youtube')
+Youtubedl_1 = _('Run command in terminal:') + ' youtube-dl http://www.youtube.com/watch?v=VIDEO_ID'
 Zhcon_0 = 'Zhcon'
 Zhcon_1 = _('Help you display Chinese characters in TTY terminal. You can launch it by "zhcon --utf8".')
 Zim_0 = 'Zim'
