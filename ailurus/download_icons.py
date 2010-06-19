@@ -5,7 +5,7 @@ from lib import *
 from libu import *
 
 class DownloadIconsWindow(gtk.Window):
-    icons_pack_version = 1
+    icons_pack_version = 2
     url = 'http://ailurus.googlecode.com/files/appicons_v%s.tar.gz' % icons_pack_version
     filename = '/tmp/appicons.tar.gz'
     
@@ -92,14 +92,15 @@ class DownloadIconsWindow(gtk.Window):
         os.chdir(appicons_path)
         run_as_root('tar xf ' + self.filename)
 
-import ctypes # change_task_name
-libc = ctypes.CDLL('libc.so.6')
-libc.prctl(15, 'ailurus_icon_downloader', 0, 0, 0)
-if get_output('pgrep -u $USER ailurus_icon_downloader', True): # detect_running_instances
-    sys.exit(1) # another instance is running, therefore I exit
-gtk.gdk.threads_init()
-window = DownloadIconsWindow()
-thread.start_new_thread(window.download_thread, ())
-gtk.gdk.threads_enter()
-window.main_thread()
-gtk.gdk.threads_leave()
+if __name__ == '__main__':
+    import ctypes # change_task_name
+    libc = ctypes.CDLL('libc.so.6')
+    libc.prctl(15, 'ailurus_icon_downloader', 0, 0, 0)
+    if get_output('pgrep -u $USER ailurus_icon_downloader', True): # detect_running_instances
+        sys.exit(1) # another instance is running, therefore I exit
+    gtk.gdk.threads_init()
+    window = DownloadIconsWindow()
+    thread.start_new_thread(window.download_thread, ())
+    gtk.gdk.threads_enter()
+    window.main_thread()
+    gtk.gdk.threads_leave()
