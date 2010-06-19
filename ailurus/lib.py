@@ -580,7 +580,7 @@ class TempOwn:
         if path[0]=='-':
             raise ValueError
         import os
-        dirname = os.path.dirname(path)
+        dirname = os.path.dirname(os.path.abspath(path))
         if not os.path.exists(dirname):
             run_as_root('mkdir "%s"'%dirname)
         if not os.path.exists(path):

@@ -146,7 +146,7 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION not in ['hardy', 'intrepid', 'jaunty']
+        return VERSION >= 'karmic'
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
