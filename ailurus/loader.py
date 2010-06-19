@@ -41,7 +41,7 @@ def check_class_members(app_class):
 
 def load_app_icon(name):
     import os
-    for dir in ['other_icons/', 'appicons/']:
+    for dir in ['appicons/', 'umut_icons/', 'sora_icons/',]:
         path = D + dir + name + '.png'
         if os.path.exists(path): break
     else:

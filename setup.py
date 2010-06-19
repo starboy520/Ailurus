@@ -37,7 +37,7 @@ Features:
       platforms = ['linux'],
       packages = ['ailurus', 'ailurus.common', 'ailurus.gnome', 'ailurus.archlinux', 'ailurus.fedora', 'ailurus.ubuntu', 'ailurus.support', ],
       package_data={'ailurus': ['native_apps', 'version', 
-                                'icons/appicons/*', 'icons/sora_icons/*', 'icons/suyun_icons/*', 'icons/umut_icons/*', 'icons/velly_icons/*', ],
+                                'icons/suyun_icons/*', 'icons/umut_icons/*', 'icons/sora_icons/*', 'icons/velly_icons/*', ],
                     'ailurus.support': [os.path.basename(f) for f in glob.glob('ailurus/support/*') if '.' not in os.path.basename(f)]},
       data_files = [
         ('share/man/man1/', ['ailurus.1']),

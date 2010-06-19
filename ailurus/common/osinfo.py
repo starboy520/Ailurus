@@ -63,7 +63,7 @@ def __java():
     return []
 
 def __python():
-     try: return [row(_('Python version:'), sys.version.split()[0], D+'other_icons/python.png' )]
+     try: return [row(_('Python version:'), sys.version.split()[0], D+'appicons/python.png' )]
      except: print_traceback()
      return []
  

@@ -157,15 +157,14 @@ along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 All images in directory "data/suyun_icons" are released under the GPL License.
 Their copyright are holded by SU Yun.
 
+All images in directory "data/umut_icons" are released under the GNU Lesser General Public License.
+Their copyright are holded by M. Umut Pulat.
+
 All images in directory "data/sona_icons" are released under the GPL License. 
 Their copyright are holded by Andrea Soragna.
 
 All images in directory "data/velly_icons" are released under the GPL License. 
-Their copyright are holded by MA Yue.
-
-All images in directory "data/umut_icons" and "data/appicons" are are released
-under the GNU Lesser General Public License. Their copyright are holded by M. Umut Pulat.
-''')
+Their copyright are holded by MA Yue.''')
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
     about.run()

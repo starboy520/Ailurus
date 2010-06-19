@@ -5,6 +5,6 @@ include ailurus*
 recursive-include ailurus/ *
 recursive-exclude ailurus/ *.pyc
 recursive-include ailurus/icons *
-recursive-exclude ailurus/icons/other_icons *
+recursive-exclude ailurus/icons/appicons *
 recursive-include po *
 recursive-include support *
