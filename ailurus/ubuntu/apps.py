@@ -141,8 +141,9 @@ class DisableGetty(I):
                     with open(file_name, 'w') as f:
                         f.writelines(contents)
 
-class DisableGettyKarmic(DisableGetty):
-    __doc__ = DisableGetty.__doc__
+class DisableGettyKarmic(I):
+    __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
+    detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
         return os.path.exists('/etc/init/tty1.conf')
     def installed(self):
