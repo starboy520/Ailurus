@@ -2,6 +2,7 @@
 
     * Improve clean up pane. Reduce space cost.
     * If the server has not been detected, then show nothing.
+    * Fix problems when disable getty.
 
 2010-06-19 MA Yue <velly.empire@gmail.com>
 
