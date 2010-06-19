@@ -87,6 +87,7 @@ def check_required_packages():
         fedora_missing.append('unzip')
         archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
+        ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/xterm'):
