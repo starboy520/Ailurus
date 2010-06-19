@@ -97,7 +97,7 @@ def __start_here_icon_setting():
 
 def __login_icon_setting():
     def apply(w, image):
-        os.system('cp %s ~/.face' % (image, path))
+        os.system('cp %s ~/.face' % image)
 
     i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is ~/.face'))
     try:    i.display_image(os.path.expanduser('~/.face'))
