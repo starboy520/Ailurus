@@ -4,8 +4,9 @@ import sys, os, urllib, gtk, thread, time
 from lib import *
 from libu import *
 
+icons_pack_version = 2
+
 class DownloadIconsWindow(gtk.Window):
-    icons_pack_version = 2
     url = 'http://ailurus.googlecode.com/files/appicons_v%s.tar.gz' % icons_pack_version
     filename = '/tmp/appicons.tar.gz'
     
