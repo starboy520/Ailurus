@@ -25,40 +25,9 @@ import sys, os
 from lib import *
 from libapp import *
 from apps_eclipse import *
-from app_tasksel import *
+#from app_tasksel import * # Shall we provide tasksel GUI? Its loading time is almost the same as dump_deb
 from app_from_external_repos import *
-
-#class OpenJDK6(I):
-#    'OpenJDK 6'
-#    category = 'saber'
-#    license = GPL
-#    def install(self):
-#        APT.install('openjdk-6-jdk')
-#        
-#        env = ETCEnvironment()
-#        env.remove('JAVA_HOME')
-#        env.remove('JAVA_BIN')
-#        env.remove('CLASSPATH')
-#        env.add('JAVA_HOME', '/usr/lib/jvm/java-6-openjdk')
-#        env.add('JAVA_BIN', '/usr/lib/jvm/java-6-openjdk/bin')
-#        env.add('CLASSPATH', '.', '/usr/lib/jvm/java-6-openjdk/lib/dt.jar', '/usr/lib/jvm/java-6-openjdk/lib/tools.jar')
-#        env.save()
-#        
-#        run_as_root('update-java-alternatives -s java-6-openjdk', ignore_error=True)
-#        
-#        with TempOwn('/etc/jvm') as o:
-#            with open('/etc/jvm', "w") as f:
-#                f.write('/usr/lib/jvm/java-6-openjdk\n')
-#    def installed(self):
-#        return APT.installed('openjdk-6-jdk')
-#    def remove(self):
-#        APT.remove('openjdk-6-jre-lib')
-#
-#        env = ETCEnvironment()
-#        env.remove('JAVA_HOME')
-#        env.remove('JAVA_BIN')
-#        env.remove('CLASSPATH')
-#        env.save()
+from third_party_repos import *
 
 class WorldofPadman_Ubuntu(I):
     __doc__ = _('World of Padman: Funny shooter game')
@@ -220,3 +189,14 @@ class OpenJUMP(_apt_install): # OpenJUMP is not in Fedora :(
     license = GPL
     category = 'geography'
     pkgs = 'openjump'
+
+class Remastersys(_apt_install):
+    __doc__ = _('Remastersys: Backup your system to a live CD')
+    download_url = 'http://sourceforge.net/projects/remastersys/'
+    category = 'others'
+    pkgs = 'remastersys'
+    def visible(self):
+        return VERSION >= 'karmic'
+    def install(self):
+        f = R(urls.remastersys).download()
+        APT.install_local(f)
