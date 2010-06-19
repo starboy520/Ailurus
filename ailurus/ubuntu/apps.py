@@ -107,46 +107,44 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty'] and os.path.exists('/etc/event.d/')
+        return os.path.exists('/etc/event.d/tty1')
     def installed(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
-                if file_contain('tty%s'%i, 'start on runlevel 2'):
-                    return False
-            return True
+                file_name = 'tty%s' % i
+                with open(file_name) as f:
+                    for line in f:
+                        if line.startswith('exec'): return False
+        return True
     def install(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
-                filename = 'tty%s'%i
-                with TempOwn(filename) as o:
-                    with open(filename) as f:
+                file_name = 'tty%s'%i
+                with TempOwn(file_name) as o:
+                    with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='start on runlevel 2\n':
-                            contents[j]='stop on runlevel 2\n'
-                        elif line=='start on runlevel 3\n':
-                            contents[j]='stop on runlevel 3\n'
-                    with open(filename, 'w') as f:
+                        if line.startswith('exec'):
+                            contents[j]='#' + line
+                    with open(file_name, 'w') as f:
                         f.writelines(contents)
     def remove(self):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
-                filename = 'tty%s'%i
-                with TempOwn(filename) as o:
-                    with open(filename) as f:
+                file_name = 'tty%s'%i
+                with TempOwn(file_name) as o:
+                    with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='stop on runlevel 2\n':
-                            contents[j]='start on runlevel 2\n'
-                        elif line=='stop on runlevel 3\n':
-                            contents[j]='start on runlevel 3\n'
-                    with open(filename, 'w') as f:
+                        if line.startswith('#exec'):
+                            contents[j]='exec /sbin/getty 38400 tty%s\n' % i
+                    with open(file_name, 'w') as f:
                         f.writelines(contents)
 
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION >= 'karmic' and os.path.exists('/etc/init/tty1.conf')
+        return os.path.exists('/etc/init/tty1.conf')
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
