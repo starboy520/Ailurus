@@ -346,12 +346,13 @@ class FirefoxComboPref(gtk.HBox):
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
         combo.connect('changed', lambda *w: self.m_set_value())
+        self.m_get_value()
     def m_get_value(self):
         try:    value = firefox.get_pref(self.key)
         except:
             if self.default:
                 for i in range(len(self.values)):
-                    if self.values[i] == default:
+                    if self.values[i] == self.default:
                         self.combo.set_active(i)
         else:
             for i in range(len(self.values)):
