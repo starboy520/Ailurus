@@ -146,13 +146,15 @@ class DisableGetty(I):
 class DisableGettyKarmic(DisableGetty):
     __doc__ = DisableGetty.__doc__
     def visible(self):
-        return VERSION >= 'karmic'
+        return VERSION >= 'karmic' and os.path.exists('/etc/init/tty1.conf')
     def installed(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
-                if file_contain('tty%s.conf'%i, 'exec /sbin/getty -8 38400 tty%s'%i):
-                    return False
-            return True
+                file_name = 'tty%s.conf' % i
+                with open(file_name) as f:
+                    for line in f:
+                        if line.startswith('exec'): return False
+        return True
     def install(self):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
@@ -161,11 +163,8 @@ class DisableGettyKarmic(DisableGetty):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line.strip()=='exec /sbin/getty -8 38400 tty%s'%i:
-                            contents[j]='#exec\n'
-                            break
-                    else:
-                        raise CommandFailError('Not found', contents)
+                        if line.startswith('exec'):
+                            contents[j]='#' + line
                     with open(filename, 'w') as f:
                         f.writelines(contents)
     def remove(self):
@@ -176,11 +175,8 @@ class DisableGettyKarmic(DisableGetty):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='#exec\n':
+                        if line.startswith('#exec'):
                             contents[j]='exec /sbin/getty -8 38400 tty%s\n'%i
-                            break
-                    else:
-                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
 
