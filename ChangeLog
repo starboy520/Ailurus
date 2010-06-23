@@ -3,6 +3,7 @@
     * Display size of swap partitions
     * Example proxy string is selectable
     * Hide bios & motherboard item if value is empty
+    * Return to original software list immediately after successfully install software
 
 2010-06-19 Homer Xing <homer.xing@gmail.com>
 

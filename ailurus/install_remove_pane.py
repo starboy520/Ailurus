@@ -389,9 +389,10 @@ class InstallRemovePane(gtk.VBox):
             print_traceback()
         finally:
             gtk.gdk.threads_enter()
-            parentbox = self.terminal.get_widget().parent
-            parentbox.pack_start(self.final_box, False)
-            parentbox.show_all()
+            self.__return_to_app_view()
+#            parentbox = self.terminal.get_widget().parent
+#            parentbox.pack_start(self.final_box, False)
+#            parentbox.show_all()
             self.right_treeview.queue_draw()
             self.right_treeview.get_selection().unselect_all()
             gtk.gdk.threads_leave()
