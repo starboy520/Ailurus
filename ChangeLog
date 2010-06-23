@@ -2,6 +2,7 @@
 
     * Display size of swap partitions
     * Example proxy string is selectable
+    * Hide bios & motherboard item if value is empty
 
 2010-06-19 Homer Xing <homer.xing@gmail.com>
 
