@@ -186,6 +186,22 @@ def __mem():
         print_traceback()
         return []
 
+def __swap():
+    try:
+        total_size = 0
+        with open('/proc/swaps') as f:
+            contents = f.readlines()
+        for line in contents[1:]: # the first line is a text header
+            filename, type, size = line.split()[0:3]
+            total_size += int(size)
+        if total_size:
+            return [row(_('Total swap:'), _('%s MBytes') % (total_size/1000), D+'umut_icons/i_memory.png' )]
+        else:
+            return [] # no swap
+    except:
+        print_traceback()
+        return []
+        
 def __pci():
     ret = []
     try:
@@ -232,4 +248,4 @@ def __battery():
 
 def get():
     return [ __motherboard, __bios, __cpu, __cpu_temp,
-             __mem, __pci, __battery ]
+             __mem, __swap, __pci, __battery ]

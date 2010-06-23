@@ -1,3 +1,7 @@
+2010-06-23 Homer Xing <homer.xing@gmail.com>
+
+    * Display size of swap partitions
+
 2010-06-19 Homer Xing <homer.xing@gmail.com>
 
     * Improve clean up pane. Reduce space cost.
