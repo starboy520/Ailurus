@@ -22,9 +22,17 @@
 
 from __future__ import with_statement
 
-def get_icons_path():
+def get_ailurus_path():
     import os
-    return os.path.dirname(os.path.abspath(__file__))+'/icons/'
+    return os.path.dirname(os.path.abspath(__file__))
+
+try:
+    A = get_ailurus_path()
+except: # raise exception in python console because __file__ is not defined
+    import os
+    A = os.path.expanduser('~/workspace/Ailurus/ailurus/')
+    assert os.path.exists(A), 'Please put ailurus code in ~/workspace/Ailurus/'
+D = A + '/icons/'
 
 def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
     return (text, value, icon, tooltip)
@@ -738,14 +746,14 @@ class RPM:
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
+        path = A+'/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing_new.py'
+        path = A+'/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
@@ -804,12 +812,12 @@ class APT:
         cls.installed_set.clear()
         cls.avail_set.clear()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_deb_installed.py'
+        path = A+'/support/dump_deb_installed.py'
         task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         for line in task.stdout:
             cls.installed_set.add(line.rstrip())
         task.wait()
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_deb_existing.py'
+        path = A+'/support/dump_deb_existing.py'
         task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         for line in task.stdout:
             cls.avail_set.add(line.rstrip())
@@ -826,7 +834,7 @@ class APT:
     def get_autoremovable_pkgs(cls):
         ret = []
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_autoremovable.py'
+        path = A+'/support/dump_apt_autoremovable.py'
         task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
         class EndOfStream:
             pass
@@ -1037,7 +1045,7 @@ def download(url, filename):
     
 def reset_dir():
     import os, sys
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    os.chdir(A)
 
 class APTSource2:
     re_pattern_server = None
@@ -1698,7 +1706,7 @@ class Tasksel:
     def remove(cls, name):
         print '\x1b[1;36m', _('Inspecting safely deletable packages. Please wait for a few minutes.') ,'\x1b[m'
         import os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/safely_deletable_pkgs.py'
+        path = A+'/support/safely_deletable_pkgs.py'
         command = ['python', path]
         command.extend(cls.get_packages(name))
         import subprocess
@@ -1828,23 +1836,16 @@ class FedoraReposFile:
 
 def get_ailurus_version():
     import os
-    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
+    path = A+'/version'
     with open(path) as f:
         return f.read().strip()
     
 def get_ailurus_release_date():
     import os, time
-    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
+    path = A+'/version'
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
-try:
-    D = get_icons_path()
-except: # raise exception in python console because __file__ is not defined
-    import os
-    D = os.path.expanduser('~/workspace/Ailurus/ailurus/icons/')
-    assert os.path.exists(D)
-    
 try:
     AILURUS_VERSION = get_ailurus_version()
     AILURUS_RELEASE_DATE = get_ailurus_release_date()

@@ -60,7 +60,7 @@ def load_app_from_file():
     c = ConfigParser.RawConfigParser()
     c.optionxform = str # case sensitive in option_name
     try:
-        c.read(os.path.dirname(__file__) + '/native_apps')
+        c.read(A+'/native_apps')
     except:
         print_traceback()
         return []
@@ -191,8 +191,7 @@ def load_app_objs_from_extension(extension):
 def load_custom_app_objs():
     import os
     # check whether the extension directory exist
-    for path in [os.path.dirname(__file__) + '/../unfree/',
-                 Config.get_config_dir()]:
+    for path in [A+'/../unfree/', Config.get_config_dir()]:
         if os.path.exists(path): 
             extension_path = path
             break
