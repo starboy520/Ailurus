@@ -538,13 +538,13 @@ def spawn_as_root(command):
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), secret_key, dbus_interface='cn.ailurus.Interface')
+    obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
 def drop_priviledge():
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
+    obj.drop_priviledge(dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
@@ -564,7 +564,7 @@ def run_as_root(cmd, ignore_error=False):
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(cmd, packed_env_string(), secret_key, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        obj.run(cmd, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
@@ -729,7 +729,7 @@ def run_as_root_in_terminal(command):
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(string, packed_env_string(), secret_key, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        obj.run(string, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
@@ -1884,9 +1884,6 @@ try:
     pynotify.init('Ailurus')
 except:
     print 'Cannot init pynotify'
-
-import random
-secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 UBUNTU = Config.is_Ubuntu()
 UBUNTU_DERIV = False # True value means Ubuntu derivative. For Ubuntu it is False. For Mint it is True.
