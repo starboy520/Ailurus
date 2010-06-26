@@ -117,7 +117,8 @@ class AilurusFulgens(dbus.service.Object):
         self.authorized_secret_key = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
-        
+        self.apt_cache = None # an instance of apt.cache.Cache
+
         self.check_permission_method = -1
         try:
             obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
@@ -167,8 +168,7 @@ class AilurusFulgens(dbus.service.Object):
             self.authorized_secret_key.remove(secret_key)
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
-    def init_apt_cache(self):
-        self._cache = None # an instance of apt.cache.Cache
+    def apt_init(self):
         apt_pkg.init()
     
     def __apt_lock_cache(self): # will raise CannotLockAptCacheError
@@ -186,11 +186,11 @@ class AilurusFulgens(dbus.service.Object):
         apt_pkg.PkgSystemUnLock()
     
     def __apt_open_cache(self):
-        if self._cache: self._cache.open()
-        else: self._cache = apt.cache.Cache()
+        if self.apt_cache: self.apt_cache.open()
+        else: self.apt_cache = apt.cache.Cache()
         
     def __apt_close_cache(self):
-        self._cache = None
+        self.apt_cache = None
 
     def begin_apt_transaction(self):
         self.__apt_lock_cache()
@@ -203,33 +203,33 @@ class AilurusFulgens(dbus.service.Object):
     def apt_install(self, package_names):
         '''package_names -- package names concatenated by comma (,)
         may raise apt.cache.FetchFailedException, apt.cache.FetchCancelledException, SystemError'''
-        with self._cache.actiongroup():
+        with self.apt_cache.actiongroup():
             for pkg_name in package_names.split(','):
-                if self._cache.has_key(pkg_name):
-                    pkg = self._cache[pkg_name]
+                if self.apt_cache.has_key(pkg_name):
+                    pkg = self.apt_cache[pkg_name]
                 else:
                     raise AptPackageNotExistError(pkg_name)
                 pkg.mark_install()
-        self._cache.commit()
+        self.apt_cache.commit()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
-        with self._cache.actiongroup():
+        with self.apt_cache.actiongroup():
             for pkg_name in package_names.split(','):
-                if self._cache.has_key(pkg_name):
-                    pkg = self._cache[pkg_name]
+                if self.apt_cache.has_key(pkg_name):
+                    pkg = self.apt_cache[pkg_name]
                 else:
                     raise AptPackageNotExistError(pkg_name)
                 pkg.mark_delete()
-        self._cache.commit()
+        self.apt_cache.commit()
 
     def apt_install_local(self, package_path):
-        deb = apt.debfile.DebPackage(package_path, self._cache)
+        deb = apt.debfile.DebPackage(package_path, self.apt_cache)
         if not deb.check(): raise LocalDebPackageResolutionError
         deb.install()
 
     def apt_update(self):
-        try: self._cache.update()
+        try: self.apt_cache.update()
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
 def main(): # revoked by ailurus-daemon
