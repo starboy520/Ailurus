@@ -194,7 +194,7 @@ class AilurusFulgens(dbus.service.Object):
         self.__close_apt_cache()
         self.__unlock_apt_cache()
 
-    def install_packages(self, package_names):
+    def install_apt_packages(self, package_names):
         '''package_names -- package names concatenated by comma (,)
         may raise apt.cache.FetchFailedException, apt.cache.FetchCancelledException, SystemError'''
         with self._cache.actiongroup():
@@ -204,6 +204,17 @@ class AilurusFulgens(dbus.service.Object):
                 else:
                     raise AptPackageNotExistError(pkg_name)
                 pkg.mark_install()
+        self._cache.commit()
+
+    def remove_apt_packages(self, package_names):
+        '''package_names -- package names concatenated by comma (,)'''
+        with self._cache.actiongroup():
+            for pkg_name in package_names.split(','):
+                if self._cache.has_key(pkg_name):
+                    pkg = self._cache[pkg_name]
+                else:
+                    raise AptPackageNotExistError(pkg_name)
+                pkg.mark_delete()
         self._cache.commit()
 
 def main(): # revoked by ailurus-daemon
