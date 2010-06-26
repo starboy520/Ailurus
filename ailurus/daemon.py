@@ -171,7 +171,7 @@ class AilurusFulgens(dbus.service.Object):
         self._cache = None # an instance of apt.cache.Cache
         apt_pkg.init()
     
-    def __lock_apt_cache(self): # will raise CannotLockAptCacheError
+    def __apt_lock_cache(self): # will raise CannotLockAptCacheError
         # try the lock in /var/cache/apt/archive/lock first
         # this is because apt-get install will hold it all the time
         # while the dpkg lock is briefly given up before dpkg is
@@ -182,25 +182,25 @@ class AilurusFulgens(dbus.service.Object):
         os.close(lock)
         apt_pkg.PkgSystemLock()
     
-    def __unlock_apt_cache(self):
+    def __apt_unlock_cache(self):
         apt_pkg.PkgSystemUnLock()
     
-    def __open_apt_cache(self):
+    def __apt_open_cache(self):
         if self._cache: self._cache.open()
         else: self._cache = apt.cache.Cache()
         
-    def __close_apt_cache(self):
+    def __apt_close_cache(self):
         self._cache = None
 
     def begin_apt_transaction(self):
-        self.__lock_apt_cache()
-        self.__open_apt_cache()
+        self.__apt_lock_cache()
+        self.__apt_open_cache()
 
     def end_apt_transaction(self):
-        self.__close_apt_cache()
-        self.__unlock_apt_cache()
+        self.__apt_close_cache()
+        self.__apt_unlock_cache()
 
-    def install_apt_packages(self, package_names):
+    def apt_install(self, package_names):
         '''package_names -- package names concatenated by comma (,)
         may raise apt.cache.FetchFailedException, apt.cache.FetchCancelledException, SystemError'''
         with self._cache.actiongroup():
@@ -212,7 +212,7 @@ class AilurusFulgens(dbus.service.Object):
                 pkg.mark_install()
         self._cache.commit()
 
-    def remove_apt_packages(self, package_names):
+    def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
         with self._cache.actiongroup():
             for pkg_name in package_names.split(','):
@@ -223,12 +223,12 @@ class AilurusFulgens(dbus.service.Object):
                 pkg.mark_delete()
         self._cache.commit()
 
-    def install_local_deb_package(self, package_path):
+    def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self._cache)
         if not deb.check(): raise LocalDebPackageResolutionError
         deb.install()
 
-    def update_apt_cache(self):
+    def apt_update(self):
         try: self._cache.update()
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
