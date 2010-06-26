@@ -50,6 +50,9 @@ class AptPackageNotExistError(dbus.DBusException):
 class LocalDebPackageResolutionError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.LocalDebPackageResolutionError'
 
+class CannotUpdateAptCacheError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.CannotUpdateAptCacheError'
+
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='sss', 
@@ -224,6 +227,10 @@ class AilurusFulgens(dbus.service.Object):
         deb = apt.debfile.DebPackage(package_path, self._cache)
         if not deb.check(): raise LocalDebPackageResolutionError
         deb.install()
+
+    def update_apt_cache(self):
+        try: self._cache.update()
+        except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
 def main(): # revoked by ailurus-daemon
     try:
