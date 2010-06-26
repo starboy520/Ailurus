@@ -27,6 +27,7 @@ import dbus.glib
 import gobject
 import os
 import subprocess
+import ctypes
 
 version = 3 # must be integer
 
@@ -150,13 +151,14 @@ class AilurusFulgens(dbus.service.Object):
             self.authorized_secret_key.remove(secret_key)
         
 def main():
-    import ctypes
-    libc = ctypes.CDLL('libc.so.6')
-    libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
+    try:
+        libc = ctypes.CDLL('libc.so.6')
+        libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
+    except: pass
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = gobject.MainLoop()
     AilurusFulgens(mainloop)
-    mainloop.run()    
+    mainloop.run()
 
 if __name__ == '__main__':
     main()
