@@ -32,6 +32,8 @@ try:
     import apt, apt_pkg
 except ImportError: # This is not Debian or Ubuntu
     pass
+else:
+    apt_pkg.init()
 
 version = 6 # must be integer
 
@@ -167,10 +169,6 @@ class AilurusFulgens(dbus.service.Object):
         if secret_key in self.authorized_secret_key:
             self.authorized_secret_key.remove(secret_key)
 
-    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
-    def apt_init(self):
-        apt_pkg.init()
-    
     @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='', sender_keyword='sender')
     def apt_command(self, command, argument, sender=None):
         self.check_permission(sender)
