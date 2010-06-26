@@ -29,7 +29,7 @@ import os
 import subprocess
 import ctypes
 
-version = 3 # must be integer
+version = 4 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -39,10 +39,10 @@ class CommandFailError(dbus.DBusException):
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='sssb', 
+                                          in_signature='sss', 
                                           out_signature='', 
                                           sender_keyword='sender')
-    def run(self, command, env_string, secret_key, ignore_error, sender=None):
+    def run(self, command, env_string, secret_key, sender=None):
         if not secret_key in self.authorized_secret_key:
             self.__check_permission(sender)
             self.authorized_secret_key.add(secret_key)
@@ -52,7 +52,7 @@ class AilurusFulgens(dbus.service.Object):
         os.chdir(env['PWD'])
         task = subprocess.Popen(command, shell=True, env=env)
         task.wait()
-        if task.returncode and ignore_error == False:
+        if task.returncode:
             raise CommandFailError(command, task.returncode)
 
     @dbus.service.method('cn.ailurus.Interface', 
