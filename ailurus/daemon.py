@@ -247,7 +247,7 @@ class AilurusFulgens(dbus.service.Object):
 def main(): # revoked by ailurus-daemon
     try:
         libc = ctypes.CDLL('libc.so.6')
-        libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
+        libc.prctl(15, 'ailurus-daemon', 0, 0, 0) # change_task_name
     except: pass
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = gobject.MainLoop()
