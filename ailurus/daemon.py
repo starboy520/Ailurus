@@ -44,7 +44,7 @@ class AilurusFulgens(dbus.service.Object):
                                           sender_keyword='sender')
     def run(self, command, env_string, secret_key, sender=None):
         if not secret_key in self.authorized_secret_key:
-            self.__check_permission(sender)
+            self.check_permission(sender)
             self.authorized_secret_key.add(secret_key)
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
@@ -61,7 +61,7 @@ class AilurusFulgens(dbus.service.Object):
                                           sender_keyword='sender')
     def spawn(self, command, env_string, secret_key, sender=None):
         if not secret_key in self.authorized_secret_key:
-            self.__check_permission(sender)
+            self.check_permission(sender)
             self.authorized_secret_key.add(secret_key)
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
@@ -87,10 +87,10 @@ class AilurusFulgens(dbus.service.Object):
                                           out_signature='',
                                           sender_keyword='sender')
     def exit(self, sender=None):
-        self.__check_permission(sender)
+        self.check_permission(sender)
         self.mainloop.quit()
 
-    def __check_permission(self, sender):
+    def check_permission(self, sender):
         if self.check_permission_method == 0:
             self.__check_permission_0(sender)
         elif self.check_permission_method == 1:
