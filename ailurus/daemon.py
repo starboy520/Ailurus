@@ -246,6 +246,17 @@ class AilurusFulgens(dbus.service.Object):
         try: self.apt_cache.update()
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
+    def _window(self):
+        import gtk
+        import apt
+        import apt.progress.gtk2
+        window = gtk.Window()
+        window.set_position(gtk.WIN_POS_CENTER)
+        progress = apt.progress.gtk2.GtkAptProgress()
+        window.add(progress)
+        window.show_all()
+        return window, progress
+
 def main(): # revoked by ailurus-daemon
     try:
         libc = ctypes.CDLL('libc.so.6')
