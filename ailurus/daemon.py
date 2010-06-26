@@ -25,6 +25,8 @@ import dbus
 import dbus.service
 import dbus.glib
 import gobject
+import os
+import subprocess
 
 version = 3 # must be integer
 
@@ -43,16 +45,10 @@ class AilurusFulgens(dbus.service.Object):
         if not secret_key in self.authorized_secret_key:
             self.__check_permission(sender)
             self.authorized_secret_key.add(secret_key)
-        
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
-        
         env = self.__get_dict(env_string)
-        
-        import os
         os.chdir(env['PWD'])
-        
-        import subprocess
         task = subprocess.Popen(command, shell=True, env=env)
         task.wait()
         if task.returncode and ignore_error == False:
@@ -66,16 +62,10 @@ class AilurusFulgens(dbus.service.Object):
         if not secret_key in self.authorized_secret_key:
             self.__check_permission(sender)
             self.authorized_secret_key.add(secret_key)
-
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
-        
         env = self.__get_dict(env_string)
-        
-        import os
         os.chdir(env['PWD'])
-        
-        import subprocess
         task = subprocess.Popen(command, shell=True, env=env)
         return task.pid
 
