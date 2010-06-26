@@ -171,6 +171,24 @@ class AilurusFulgens(dbus.service.Object):
     def apt_init(self):
         apt_pkg.init()
     
+    @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='')
+    def apt_command(self, command, argument):
+        try:
+            self.__apt_lock_cache()
+            self.__apt_open_cache()
+            if command == 'install':
+                self.apt_install(argument)
+            elif command == 'install_local':
+                self.apt_install_local(argument)
+            elif command == 'remove':
+                self.apt_remove(argument)
+            elif command == 'update':
+                self.apt_update()
+            else:
+                raise Exception('unknown command', command)
+        finally:
+            self.__apt_unlock_cache()
+    
     def __apt_lock_cache(self): # will raise CannotLockAptCacheError
         # try the lock in /var/cache/apt/archive/lock first
         # this is because apt-get install will hold it all the time
@@ -191,14 +209,6 @@ class AilurusFulgens(dbus.service.Object):
         
     def __apt_close_cache(self):
         self.apt_cache = None
-
-    def begin_apt_transaction(self):
-        self.__apt_lock_cache()
-        self.__apt_open_cache()
-
-    def end_apt_transaction(self):
-        self.__apt_close_cache()
-        self.__apt_unlock_cache()
 
     def apt_install(self, package_names):
         '''package_names -- package names concatenated by comma (,)
