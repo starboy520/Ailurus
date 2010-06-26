@@ -33,7 +33,7 @@ try:
 except ImportError: # This is not Debian or Ubuntu
     pass
 
-version = 5 # must be integer
+version = 6 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -171,8 +171,9 @@ class AilurusFulgens(dbus.service.Object):
     def apt_init(self):
         apt_pkg.init()
     
-    @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='')
-    def apt_command(self, command, argument):
+    @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='', sender_keyword='sender')
+    def apt_command(self, command, argument, sender=None):
+        self.check_permission(sender)
         try:
             self.__apt_lock_cache()
             self.__apt_open_cache()
@@ -187,6 +188,7 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise Exception('unknown command', command)
         finally:
+            self.__apt_close_cache()
             self.__apt_unlock_cache()
     
     def __apt_lock_cache(self): # will raise CannotLockAptCacheError
