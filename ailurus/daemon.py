@@ -150,7 +150,7 @@ class AilurusFulgens(dbus.service.Object):
         if secret_key in self.authorized_secret_key:
             self.authorized_secret_key.remove(secret_key)
         
-def main():
+if __name__ == '__main__':
     try:
         libc = ctypes.CDLL('libc.so.6')
         libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
@@ -159,6 +159,3 @@ def main():
     mainloop = gobject.MainLoop()
     AilurusFulgens(mainloop)
     mainloop.run()
-
-if __name__ == '__main__':
-    main()
