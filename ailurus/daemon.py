@@ -57,13 +57,11 @@ class CannotUpdateAptCacheError(dbus.DBusException):
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='sss', 
+                                          in_signature='ss', 
                                           out_signature='', 
                                           sender_keyword='sender')
-    def run(self, command, env_string, secret_key, sender=None):
-        if not secret_key in self.authorized_secret_key:
-            self.check_permission(sender)
-            self.authorized_secret_key.add(secret_key)
+    def run(self, command, env_string, sender=None):
+        self.check_permission(sender)
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
         env = self.__get_dict(env_string)
@@ -74,13 +72,11 @@ class AilurusFulgens(dbus.service.Object):
             raise CommandFailError(command, task.returncode)
 
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='sss', 
+                                          in_signature='ss', 
                                           out_signature='i', 
                                           sender_keyword='sender')
-    def spawn(self, command, env_string, secret_key, sender=None):
-        if not secret_key in self.authorized_secret_key:
-            self.check_permission(sender)
-            self.authorized_secret_key.add(secret_key)
+    def spawn(self, command, env_string, sender=None):
+        self.check_permission(sender)
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
         env = self.__get_dict(env_string)
@@ -109,14 +105,20 @@ class AilurusFulgens(dbus.service.Object):
         self.mainloop.quit()
 
     def check_permission(self, sender):
-        if self.check_permission_method == 0:
-            self.__check_permission_0(sender)
-        elif self.check_permission_method == 1:
-            self.__check_permission_1(sender)
+        if sender in self.authorized_sender:
+            return
+        else:
+            if self.check_permission_method == 0:
+                self.__check_permission_0(sender)
+            elif self.check_permission_method == 1:
+                self.__check_permission_1(sender)
+            else:
+                raise Exception
+            self.authorized_sender.add(sender)
 
     def __init__(self, mainloop):
         self.mainloop = mainloop # use to terminate mainloop
-        self.authorized_secret_key = set()
+        self.authorized_sender = set()
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
         self.apt_cache = None # an instance of apt.cache.Cache
@@ -164,10 +166,11 @@ class AilurusFulgens(dbus.service.Object):
     
     @dbus.service.method('cn.ailurus.Interface', 
                                     in_signature='s',
-                                    out_signature='') 
-    def drop_priviledge(self, secret_key):
-        if secret_key in self.authorized_secret_key:
-            self.authorized_secret_key.remove(secret_key)
+                                    out_signature='',
+                                    sender_keyword='sender') 
+    def drop_priviledge(self, sender=None):
+        if sender in self.authorized_sender:
+            self.authorized_sender.remove(sender)
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='', sender_keyword='sender')
     def apt_command(self, command, argument, sender=None):
@@ -201,7 +204,8 @@ class AilurusFulgens(dbus.service.Object):
         apt_pkg.PkgSystemLock()
     
     def __apt_unlock_cache(self):
-        apt_pkg.PkgSystemUnLock()
+        try: apt_pkg.PkgSystemUnLock()
+        except SystemError: pass # E:Not locked
     
     def __apt_open_cache(self):
         if self.apt_cache: self.apt_cache.open()
