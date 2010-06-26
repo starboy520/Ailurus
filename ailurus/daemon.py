@@ -162,7 +162,7 @@ class AilurusFulgens(dbus.service.Object):
         self._cache = None # an instance of apt.cache.Cache
         apt_pkg.init()
     
-    def lock_apt_cache(self): # will raise CannotLockAptCacheError
+    def __lock_apt_cache(self): # will raise CannotLockAptCacheError
         # try the lock in /var/cache/apt/archive/lock first
         # this is because apt-get install will hold it all the time
         # while the dpkg lock is briefly given up before dpkg is
@@ -173,17 +173,23 @@ class AilurusFulgens(dbus.service.Object):
         os.close(lock)
         apt_pkg.PkgSystemLock()
     
-    def unlock_apt_cache(self):
+    def __unlock_apt_cache(self):
         apt_pkg.PkgSystemUnLock()
     
-    def open_apt_cache(self):
+    def __open_apt_cache(self):
         if self._cache: self._cache.open()
         else: self._cache = apt.cache.Cache()
         
-    def close_apt_cache(self):
-        pass
+    def __close_apt_cache(self):
+        self._cache = None
 
-    
+    def begin_apt_transaction(self):
+        self.__lock_apt_cache()
+        self.__open_apt_cache()
+
+    def end_apt_transaction(self):
+        self.__close_apt_cache()
+        self.__unlock_apt_cache()
 
 def main(): # revoked by ailurus-daemon
     try:
