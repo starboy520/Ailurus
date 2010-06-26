@@ -44,6 +44,9 @@ class CommandFailError(dbus.DBusException):
 class CannotLockAptCacheError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.CannotLockAptCacheError'
 
+class AptPackageNotExistError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.AptPackageNotExistError'
+
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='sss', 
@@ -190,6 +193,18 @@ class AilurusFulgens(dbus.service.Object):
     def end_apt_transaction(self):
         self.__close_apt_cache()
         self.__unlock_apt_cache()
+
+    def install_packages(self, package_names):
+        '''package_names -- package names concatenated by comma (,)
+        may raise apt.cache.FetchFailedException, apt.cache.FetchCancelledException, SystemError'''
+        with self._cache.actiongroup():
+            for pkg_name in package_names.split(','):
+                if self._cache.has_key(pkg_name):
+                    pkg = self._cache[pkg_name]
+                else:
+                    raise AptPackageNotExistError(pkg_name)
+                pkg.mark_install()
+        self._cache.commit()
 
 def main(): # revoked by ailurus-daemon
     try:
