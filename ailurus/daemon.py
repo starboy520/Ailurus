@@ -94,8 +94,6 @@ class AilurusFulgens(dbus.service.Object):
             self.__check_permission_0(sender)
         elif self.check_permission_method == 1:
             self.__check_permission_1(sender)
-        else:
-            raise ValueError
 
     def __init__(self, mainloop):
         self.mainloop = mainloop # use to terminate mainloop
@@ -112,6 +110,7 @@ class AilurusFulgens(dbus.service.Object):
             obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
             obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit')
             self.check_permission_method = 0
+        if self.check_permission_method == -1: raise Exception
 
     def __check_permission_0(self, sender):
         if not sender: raise ValueError('sender == None')
