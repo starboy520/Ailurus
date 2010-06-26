@@ -28,14 +28,21 @@ import gobject
 import os
 import subprocess
 import ctypes
+try:
+    import apt, apt_pkg
+except ImportError: # This is not Debian or Ubuntu
+    pass
 
-version = 4 # must be integer
+version = 5 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
 
 class CommandFailError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.CommandFailError'
+
+class CannotLockAptCacheError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.CannotLockAptCacheError'
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
@@ -149,7 +156,35 @@ class AilurusFulgens(dbus.service.Object):
     def drop_priviledge(self, secret_key):
         if secret_key in self.authorized_secret_key:
             self.authorized_secret_key.remove(secret_key)
+
+    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
+    def init_apt_cache(self):
+        self._cache = None # an instance of apt.cache.Cache
+        apt_pkg.init()
+    
+    def lock_apt_cache(self): # will raise CannotLockAptCacheError
+        # try the lock in /var/cache/apt/archive/lock first
+        # this is because apt-get install will hold it all the time
+        # while the dpkg lock is briefly given up before dpkg is
+        # forked off. this can cause a race (LP: #437709)
+        lockfile = apt_pkg.Config.FindDir("Dir::Cache::Archives") + "lock"
+        lock = apt_pkg.GetLock(lockfile)
+        if lock < 0: raise CannotLockAptCacheError
+        os.close(lock)
+        apt_pkg.PkgSystemLock()
+    
+    def unlock_apt_cache(self):
+        apt_pkg.PkgSystemUnLock()
+    
+    def open_apt_cache(self):
+        if self._cache: self._cache.open()
+        else: self._cache = apt.cache.Cache()
         
+    def close_apt_cache(self):
+        pass
+
+    
+
 def main(): # revoked by ailurus-daemon
     try:
         libc = ctypes.CDLL('libc.so.6')
