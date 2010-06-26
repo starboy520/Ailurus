@@ -47,6 +47,9 @@ class CannotLockAptCacheError(dbus.DBusException):
 class AptPackageNotExistError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AptPackageNotExistError'
 
+class LocalDebPackageResolutionError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.LocalDebPackageResolutionError'
+
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='sss', 
@@ -216,6 +219,11 @@ class AilurusFulgens(dbus.service.Object):
                     raise AptPackageNotExistError(pkg_name)
                 pkg.mark_delete()
         self._cache.commit()
+
+    def install_local_deb_package(self, package_path):
+        deb = apt.debfile.DebPackage(package_path, self._cache)
+        if not deb.check(): raise LocalDebPackageResolutionError
+        deb.install()
 
 def main(): # revoked by ailurus-daemon
     try:
