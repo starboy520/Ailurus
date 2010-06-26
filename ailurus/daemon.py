@@ -165,7 +165,7 @@ class AilurusFulgens(dbus.service.Object):
         return Dict
     
     @dbus.service.method('cn.ailurus.Interface', 
-                                    in_signature='s',
+                                    in_signature='',
                                     out_signature='',
                                     sender_keyword='sender') 
     def drop_priviledge(self, sender=None):
