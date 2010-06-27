@@ -125,6 +125,7 @@ class AilurusFulgens(dbus.service.Object):
         self.apt_cache = None # an instance of apt.cache.Cache
         self.lock1_fd = -1 # a fd
         self.lock2_fd = -1 # a fd
+        self.holding_apt_lock = False
     
         self.check_permission_method = -1
         try:
@@ -232,6 +233,19 @@ class AilurusFulgens(dbus.service.Object):
             apt_pkg.PkgSystemLock()
         except SystemError:
             raise CannotLockAptCacheError
+        self.holding_apt_lock = True
+    
+    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='b')
+    def is_apt_cache_lockable(self):
+        if self.holding_apt_lock:
+            return True
+        try:
+            self.apt_lock_cache()
+            return True
+        except:
+            return False
+        finally:
+            self.apt_unlock_cache()
 
     def close_lock1(self):
         if self.lock1_fd > 0:
@@ -253,6 +267,7 @@ class AilurusFulgens(dbus.service.Object):
         self.close_lock1()
         self.close_lock2()
         self.unlock_apt_pkg_global_lock()
+        self.holding_apt_lock = False
     
     @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
     def apt_open_cache(self):
