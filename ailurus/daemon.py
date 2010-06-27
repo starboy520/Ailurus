@@ -246,6 +246,7 @@ class AilurusFulgens(dbus.service.Object):
         window, progress = self._window()
         if self.apt_cache: self.apt_cache.open(progress.open)
         else: self.apt_cache = apt.cache.Cache(progress.open)
+        window.destroy()
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='b')
     def apt_package_exists(self, package_name):
@@ -298,6 +299,8 @@ class AilurusFulgens(dbus.service.Object):
         import apt.progress.gtk2
         window = gtk.Window()
         window.set_position(gtk.WIN_POS_CENTER)
+        window.set_deletable(False)
+        window.set_resizable(False)
         progress = apt.progress.gtk2.GtkAptProgress()
         window.add(progress)
         window.show_all()
