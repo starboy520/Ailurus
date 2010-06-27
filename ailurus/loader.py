@@ -280,19 +280,3 @@ def load_app_objs():
     AppObjs.all_objs_reset_status()
     
     return AppObjs.appobjs
-
-if __name__ == '__main__':
-    APT.get_existing_pkgs_set()
-    
-    import time
-    begin = time.time()
-    load_app_objs()
-    print time.time() - begin
-    
-    begin = time.time()
-    load_custom_app_objs()
-    print time.time() - begin
-    
-    begin = time.time()
-    load_app_from_file()
-    print time.time() - begin
