@@ -500,51 +500,41 @@ def packed_env_string():
     env['PWD'] = os.getcwd()
     return pack(env)
 
-def get_dbus_daemon_version():
+def daemon():
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
+    return obj
+
+def get_dbus_daemon_version():
+    ret = daemon().get_version(dbus_interface='cn.ailurus.Interface')
     return ret    
 
 def restart_dbus_daemon():
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.exit(dbus_interface='cn.ailurus.Interface')
+    daemon().exit(dbus_interface='cn.ailurus.Interface')
 
 def get_authentication_method():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_check_permission_method(dbus_interface='cn.ailurus.Interface')
+    ret = daemon().get_check_permission_method(dbus_interface='cn.ailurus.Interface')
     ret = int(ret)
     assert ret == 0 or ret == 1, ret
     return ret
 
 def authenticate():
     if get_authentication_method() == 0:
-        import dbus
+        import dbus, os
         bus = dbus.SessionBus()
         policykit = bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
-        import os
         policykit.ObtainAuthorization('cn.ailurus', dbus.UInt32(0), dbus.UInt32(os.getpid()))
 
 def spawn_as_root(command):
     is_string_not_empty(command)
     
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
+    daemon().spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
 def drop_priviledge():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.drop_priviledge(dbus_interface='cn.ailurus.Interface')
+    daemon().drop_priviledge(dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
@@ -560,11 +550,8 @@ def run_as_root(cmd, ignore_error=False):
     
     print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(cmd, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(cmd, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
@@ -725,11 +712,8 @@ def run_as_root_in_terminal(command):
     string = 'LANG=C xterm -T "Ailurus Terminal" -e bash %s' % t.name
 
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(string, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(string, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
