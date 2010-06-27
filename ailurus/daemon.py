@@ -35,7 +35,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 7 # must be integer
+version = 8 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -172,9 +172,11 @@ class AilurusFulgens(dbus.service.Object):
         if sender in self.authorized_sender:
             self.authorized_sender.remove(sender)
 
-    @dbus.service.method('cn.ailurus.Interface', in_signature='ss', out_signature='', sender_keyword='sender')
-    def apt_command(self, command, argument, sender=None):
+    @dbus.service.method('cn.ailurus.Interface', in_signature='sss', out_signature='', sender_keyword='sender')
+    def apt_command(self, command, argument, env_string, sender=None):
         self.check_permission(sender)
+        for key, value in self.__get_dict(env_string).items():
+            os.putenv(key, value)
         try:
             self.__apt_lock_cache()
             self.__apt_open_cache()
@@ -243,7 +245,9 @@ class AilurusFulgens(dbus.service.Object):
         deb.install()
 
     def apt_update(self):
-        try: self.apt_cache.update()
+        try:
+            window, progress = self._window()
+            self.apt_cache.update(progress.fetch)
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
     def _window(self):
