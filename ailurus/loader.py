@@ -23,7 +23,7 @@
 from __future__ import with_statement
 from lib import *
 
-common = __import__('common')
+import common
 if GNOME: import gnome as desktop
 else: desktop = None
 if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
