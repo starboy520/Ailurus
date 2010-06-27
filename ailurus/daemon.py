@@ -326,6 +326,7 @@ class AilurusFulgens(dbus.service.Object):
         window.set_default_size(300, -1)
         progress = apt.progress.gtk2.GtkAptProgress()
         window.add(progress)
+        window.iconify()
         window.show_all()
         return window, progress
 
