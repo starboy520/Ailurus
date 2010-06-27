@@ -525,9 +525,6 @@ set_default_window_icon()
 check_required_packages()
 check_dbus_daemon_status()
 
-#from support.splashwindow import SplashWindow
-#splash = SplashWindow()
-#splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
 #splash.destroy()

@@ -455,8 +455,6 @@ def __login_window_background():
     def apply(w, image):
         try:
             run_as_root('sudo -u gdm gconftool-2 --set --type string /desktop/gnome/background/picture_filename "%s"' % image)
-#           path = D+'/../support/gdm_gconf.py'
-#           run_as_root('python "%s" --type string --set /desktop/gnome/background/picture_filename "%s"' % (path, image))
         except:
             w.display_image(Config.get_login_window_background())
             raise
