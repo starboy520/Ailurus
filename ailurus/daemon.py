@@ -179,7 +179,9 @@ class AilurusFulgens(dbus.service.Object):
     def apt_command(self, command, argument, env_string, sender=None):
         self.check_permission(sender)
         env_dict = self.__get_dict(env_string)
-        for key in ['DISPLAY', 'TERM']:
+        if 'TERM' not in env_dict: env_dict['TERM'] = 'xterm'
+        env_dict['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
+        for key in ['DISPLAY', 'TERM', 'PATH']:
             os.putenv(key, env_dict[key])
         try:
             self.apt_lock_cache(sender)
@@ -281,6 +283,7 @@ class AilurusFulgens(dbus.service.Object):
         apt_pkg.PkgSystemUnLock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
+        window.destroy()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
@@ -295,6 +298,7 @@ class AilurusFulgens(dbus.service.Object):
         apt_pkg.PkgSystemUnLock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
+        window.destroy()
 
     def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self.apt_cache)
