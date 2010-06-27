@@ -186,9 +186,10 @@ class AilurusFulgens(dbus.service.Object):
     def apt_command(self, command, argument, env_string, sender=None):
         self.check_permission(sender)
         self.__prepare_env(env_string)
+        self.apt_window, self.apt_progress = self.create_apt_window()
         try:
             self.apt_lock_cache(sender)
-            self.apt_open_cache(env_dict['DISPLAY'])
+            self.apt_open_cache()
             if command == 'install':
                 self.apt_install(argument)
             elif command == 'install_local':
@@ -201,6 +202,8 @@ class AilurusFulgens(dbus.service.Object):
                 raise Exception('unknown command', command)
         finally:
             self.apt_unlock_cache(sender)
+            self.apt_window.destroy()
+            self.apt_window = self.apt_progress = None
     
     @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='', sender_keyword='sender')
     def apt_lock_cache(self, sender=None):
@@ -281,11 +284,9 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_install()
-        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
-        self.apt_cache.commit(progress.fetch, progress.install)
+        self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
         apt_pkg.PkgSystemLock()
-        window.destroy()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
@@ -295,31 +296,26 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_delete()
-        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
-        self.apt_cache.commit(progress.fetch, progress.install)
+        self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
         apt_pkg.PkgSystemLock()
-        window.destroy()
 
     def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self.apt_cache)
         if not deb.check(): raise LocalDebPackageResolutionError
-        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
         (install, remove, unauth) = deb.required_changes
         for name in install:
             self.apt_cache[name].mark_install()
         for name in remove:
             self.apt_cache[name].mark_delete()
-        self.apt_cache.commit(progress.fetch, progress.install)
+        self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
         deb.install(progress.dpkg_install)
         apt_pkg.PkgSystemLock()
-        window.destroy()
 
     def apt_update(self):
         try:
-            window, progress = self.create_apt_window()
-            self.apt_cache.update(progress.fetch)
+            self.apt_cache.update(self.apt_progress.fetch)
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
     def create_apt_window(self):
