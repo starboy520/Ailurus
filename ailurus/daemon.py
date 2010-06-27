@@ -310,7 +310,7 @@ class AilurusFulgens(dbus.service.Object):
         for name in remove:
             self.apt_cache[name].mark_delete()
         self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
-        deb.install(progress.dpkg_install)
+        deb.install(self.apt_progress.dpkg_install)
         apt_pkg.PkgSystemLock()
 
     def apt_update(self):
