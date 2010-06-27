@@ -176,12 +176,14 @@ class AilurusFulgens(dbus.service.Object):
             self.authorized_sender.remove(sender)
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='sss', out_signature='', sender_keyword='sender')
-    def apt_command(self, command, argument, display, sender=None):
+    def apt_command(self, command, argument, env_string, sender=None):
         self.check_permission(sender)
+        env_dict = self.__get_dict(env_string)
+        for key in ['DISPLAY', 'TERM']:
+            os.putenv(key, env_dict[key])
         try:
             self.apt_lock_cache(sender)
-            os.putenv('DISPLAY', display)
-            self.apt_open_cache(display)
+            self.apt_open_cache(env_dict['DISPLAY'])
             if command == 'install':
                 self.apt_install(argument)
             elif command == 'install_local':
