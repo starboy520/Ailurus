@@ -840,13 +840,15 @@ class APT:
         is_pkg_list(packages)
         cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+        daemon().apt_command('install', ','.join(packages),
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
         daemon().apt_command('remove', ','.join(packages),
-                        packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
     @classmethod
     def neet_to_run_apt_get_update(cls):
