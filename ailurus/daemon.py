@@ -193,7 +193,6 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise Exception('unknown command', command)
         finally:
-            self.__apt_close_cache()
             self.__apt_unlock_cache()
     
     def __apt_lock_cache(self):
@@ -253,9 +252,6 @@ class AilurusFulgens(dbus.service.Object):
         assert self.apt_cache is not None
         if package_name not in self.apt_cache: return False
         return self.apt_cache[package_name].isInstalled
-
-    def __apt_close_cache(self):
-        self.apt_cache = None
 
     def apt_install(self, package_names):
         '''package_names -- package names concatenated by comma (,)
