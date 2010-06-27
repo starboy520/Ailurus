@@ -189,7 +189,7 @@ class AilurusFulgens(dbus.service.Object):
         self.__prepare_env(env_string)
         self.apt_window, self.apt_progress = self.create_apt_window()
         try:
-            self.apt_lock_cache(sender)
+            self.apt_lock_cache()
             self.apt_open_cache()
             if command == 'install':
                 self.apt_install(argument)
@@ -202,13 +202,11 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise Exception('unknown command', command)
         finally:
-            self.apt_unlock_cache(sender)
+            self.apt_unlock_cache()
             self.apt_window.destroy()
             self.apt_window = self.apt_progress = None
     
-    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='', sender_keyword='sender')
-    def apt_lock_cache(self, sender=None):
-        self.check_permission(sender)
+    def apt_lock_cache(self):
         # /var/lib/apt/lists/lock, 
         # locked by apt-get update
         lockfile = apt_pkg.Config.FindDir("Dir::State::Lists") + "lock"
@@ -261,9 +259,7 @@ class AilurusFulgens(dbus.service.Object):
         try: apt_pkg.PkgSystemUnLock()
         except SystemError: pass # E:Not locked
     
-    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='', sender_keyword='sender')
-    def apt_unlock_cache(self, sender=None):
-        self.check_permission(sender)
+    def apt_unlock_cache(self):
         self.close_lock1()
         self.close_lock2()
         self.unlock_apt_pkg_global_lock()
