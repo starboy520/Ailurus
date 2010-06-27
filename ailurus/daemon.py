@@ -122,7 +122,9 @@ class AilurusFulgens(dbus.service.Object):
         bus_name = dbus.service.BusName('cn.ailurus', bus = dbus.SystemBus())
         dbus.service.Object.__init__(self, bus_name, '/')
         self.apt_cache = None # an instance of apt.cache.Cache
-
+        self.lock1_fd = -1 # a fd
+        self.lock2_fd = -1 # a fd
+    
         self.check_permission_method = -1
         try:
             obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit1', '/org/freedesktop/PolicyKit1/Authority')
@@ -164,10 +166,10 @@ class AilurusFulgens(dbus.service.Object):
             Dict[k] = v
         return Dict
     
-    @dbus.service.method('cn.ailurus.Interface', 
+    @dbus.service.method('cn.ailurus.Interface',
                                     in_signature='',
                                     out_signature='',
-                                    sender_keyword='sender') 
+                                    sender_keyword='sender')
     def drop_priviledge(self, sender=None):
         if sender in self.authorized_sender:
             self.authorized_sender.remove(sender)
@@ -194,25 +196,64 @@ class AilurusFulgens(dbus.service.Object):
             self.__apt_close_cache()
             self.__apt_unlock_cache()
     
-    def __apt_lock_cache(self): # will raise CannotLockAptCacheError
+    def __apt_lock_cache(self):
+        # /var/lib/apt/lists/lock, 
+        # locked by apt-get update
+        lockfile = apt_pkg.Config.FindDir("Dir::State::Lists") + "lock"
+        # This will create an empty file of the given name and lock it. 
+        # Once this is done all other calls to GetLock in any other process will fail with -1. 
+        # The return result is the fd of the file, the call should call close at some time
+        lock = apt_pkg.GetLock(lockfile)
+        if lock < 0:
+            raise CannotLockAptCacheError
+        self.lock1_fd = lock
+        # /var/cache/apt/archives/lock,
         # try the lock in /var/cache/apt/archive/lock first
         # this is because apt-get install will hold it all the time
         # while the dpkg lock is briefly given up before dpkg is
         # forked off. this can cause a race (LP: #437709)
         lockfile = apt_pkg.Config.FindDir("Dir::Cache::Archives") + "lock"
         lock = apt_pkg.GetLock(lockfile)
-        if lock < 0: raise CannotLockAptCacheError
-        os.close(lock)
-        apt_pkg.PkgSystemLock()
+        if lock < 0:
+            raise CannotLockAptCacheError
+        self.lock2_fd = lock
+        try:
+            apt_pkg.PkgSystemLock()
+        except SystemError:
+            raise CannotLockAptCacheError
+
+    def close_lock1(self):
+        if self.lock1_fd > 0:
+            os.close(self.lock1_fd)
+            self.lock1_fd = -1
+
+    def close_lock2(self):
+        if self.lock2_fd > 0:
+            os.close(self.lock2_fd)
+            self.lock2_fd = -1
     
     def __apt_unlock_cache(self):
+        self.close_lock1()
+        self.close_lock2()
         try: apt_pkg.PkgSystemUnLock()
         except SystemError: pass # E:Not locked
     
-    def __apt_open_cache(self):
+    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
+    def apt_open_cache(self):
         if self.apt_cache: self.apt_cache.open()
         else: self.apt_cache = apt.cache.Cache()
-        
+
+    @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='b')
+    def apt_package_exists(self, package_name):
+        assert self.apt_cache is not None
+        return package_name in self.apt_cache
+    
+    @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='b')
+    def apt_package_installed(self, package_name):
+        assert self.apt_cache is not None
+        if package_name not in self.apt_cache: return False
+        return self.apt_cache[package_name].isInstalled
+
     def __apt_close_cache(self):
         self.apt_cache = None
 
