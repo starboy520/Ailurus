@@ -7,14 +7,14 @@ msgstr ""
 "Project-Id-Version: ailurus\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2010-06-19 12:07+0800\n"
-"PO-Revision-Date: 2010-06-23 12:02+0000\n"
-"Last-Translator: Sérgio Marques <Unknown>\n"
+"PO-Revision-Date: 2010-06-25 04:33+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-06-24 03:54+0000\n"
+"X-Launchpad-Export-Date: 2010-06-26 04:07+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 "X-Poedit-Country: PORTUGAL\n"
 "X-Poedit-Language: Portuguese\n"
@@ -398,11 +398,12 @@ msgstr ""
 #: ../ailurus/common/apps.py:314
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr ""
-"SeoQuake: Ajuda-o a ver os parâmetros do motor de pesquisa do seu sítio web"
+"SeoQuake: Ajuda-o(a) a ver os parâmetros do motor de pesquisa do seu sítio "
+"web"
 
 #: ../ailurus/common/apps.py:316
 msgid "It helps you promote your web sites."
-msgstr "Ajuda-o a promover os seus sítios web."
+msgstr "Ajuda-o(a) a promover os seus sítios web."
 
 #: ../ailurus/common/apps.py:322
 msgid "Stylish: Install themes and skins for websites."
@@ -431,7 +432,7 @@ msgstr "View Source Chart: Mostrar código fonte HTML em cores diversas"
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
-"Esta extensão ajuda-o a procurar e reconhecer as etiquetas dos documentos."
+"Esta extensão ajuda-o(a) a procurar e reconhecer as etiquetas dos documentos."
 
 #: ../ailurus/common/apps.py:354
 msgid ""
@@ -462,7 +463,7 @@ msgstr "YSlow: aperfeiçomento de páginas web"
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
-"Ajuda-o a melhorar o desempenho da página web. Indica-lhe as razões da "
+"Ajuda-o(a) a melhorar o desempenho da página web. Indica-lhe as razões da "
 "lentidão."
 
 #: ../ailurus/common/apps.py:386
@@ -1933,6 +1934,10 @@ msgid ""
 "In order to remove Aptana, please launch Eclipse, and go to \"Help\" -> "
 "\"About Eclipse SDK\" -> \"Installation Details\""
 msgstr ""
+"Devido a limitações por parte dos autores, o Aptana não pode ser removido "
+"pelo Ailurus. \n"
+"Para que possa remover Aptana, inicie o Eclipse e vá até \"Ajuda\" -> "
+"\"Sobre Eclipse SDK\" -> \"Detalhes da Instalação\""
 
 #: ../ailurus/fedora/apps_eclipse.py:67 ../ailurus/fedora/apps_eclipse.py:91
 #: ../ailurus/fedora/apps_eclipse.py:115 ../ailurus/fedora/apps_eclipse.py:143
@@ -2286,7 +2291,7 @@ msgid ""
 "you often try to use new software, you do not have to worry about messing up "
 "your system now."
 msgstr ""
-"Ailurus ajuda-o a acompanhar os programas que instalou ou removeu. Se é "
+"Ailurus ajuda-o(a) a acompanhar os programas que instalou ou removeu. Se é "
 "daqueles que utiliza novos programas frequentemente, não tem mais que se "
 "preocupar sobre a barafunda no sistema."
 
@@ -2323,6 +2328,9 @@ msgid ""
 "a diff, create shortcuts via Nautilus.\n"
 "NScripts is installed in ~/.gnome2/nautilus-scripts."
 msgstr ""
+"NScripts ajuda-o(a) a alterar o fundo, criar/verificar chaves MD5, criar "
+"diff e atalhos através do Nautilus. \n"
+"O NScripts será instalado em ~/.gnome2/nautilus-scripts."
 
 #: ../ailurus/gnome/apps.py:76
 msgid "Add GB2312 detection ability to GEdit"
@@ -2399,7 +2407,7 @@ msgstr "((produzirá efeitos na próxima vez que iniciar o GNOME)"
 
 #: ../ailurus/gnome/setting.py:35
 msgid "Display \"Mounted volume\" icon"
-msgstr ""
+msgstr "Mostrar ícone \"Volume montado\""
 
 #: ../ailurus/gnome/setting.py:36
 msgid "Put icons linking to mounted volumes on the desktop."
@@ -2900,6 +2908,8 @@ msgid ""
 "The login window background is the gconf value "
 "\"/desktop/gnome/background/picture_filename\" of user \"gdm\"."
 msgstr ""
+"A imagem da janela de início de sessão é o valor gconf "
+"\"/desktop/gnome/background/picture_filename\" do utilizador \"gdm\"."
 
 #: ../ailurus/gnome/setting.py:473
 msgid "Change login window background"
@@ -3687,7 +3697,7 @@ msgstr ""
 
 #: ../ailurus/libsetting.py:431
 msgid "maximum number of microseconds between two page rendering"
-msgstr ""
+msgstr "número máximo de micro-segundos entre o processamento de 2 páginas"
 
 #: ../ailurus/libsetting.py:433
 msgid "maximum number of bytes to split a long text node"
@@ -3699,6 +3709,9 @@ msgid ""
 "Authentication is provided by system PolicyKit service.\n"
 "Ailurus does not know your password at all."
 msgstr ""
+"A operação foi cancelada porque você recusou a autenticação.\n"
+"A autenticação é disponibilizada pelo serviço PolicyKit.\n"
+"O Ailurus, como é óbvio, não sabe a sua palavra-passe."
 
 #: ../ailurus/libu.py:221
 msgid "Operation is canceled"
@@ -3821,6 +3834,8 @@ msgid ""
 "Free peer-to-peer file sharing application that works with EDonkey network "
 "and Kad network, offering similar features to eMule"
 msgstr ""
+"Aplicação de partilha de ficheiros peer-to-peer para utilizar com as redes "
+"EDonkey e Kad, com funcionalidades similares às do eMule"
 
 #: ../ailurus/strings.py:29
 msgid "Avant Window Navigator"
@@ -3831,12 +3846,16 @@ msgid ""
 "A dock sits at the bottom of the screen which lists open windows. It also "
 "supports third party applets."
 msgstr ""
+"Uma barra na base do ecrã com um resumo das janelas abertas. Com suporte a "
+"aplicações de terceiros."
 
 #: ../ailurus/strings.py:32
 msgid ""
 "A designer which can generate a variety of colorschemes from a single "
 "starting color"
 msgstr ""
+"Uma aplicação para gerar uma variedade de esquemas de cores a partir de "
+"apenas uma cor"
 
 #: ../ailurus/strings.py:34
 msgid "Edit GNOME menu easily"
@@ -3848,6 +3867,9 @@ msgid ""
 "application wizard, interactive debugger, source editor, version control, "
 "GUI designer and profiler."
 msgstr ""
+"IDE GNOME para C/C++ com funcionalidades de gestão de projectos, assistente "
+"a aplicações, depuradore interactivo, editor de código, controlo de versões, "
+"criador de GUIs e perfis."
 
 #: ../ailurus/strings.py:38
 msgid "Record and edit sounds"
@@ -3858,7 +3880,7 @@ msgid ""
 "\"auto-apt run ./configure\" helps you automatically install required "
 "packages."
 msgstr ""
-"\"auto-apt run ./configure\" ajuda-o a instalar os pacotes necessários."
+"\"auto-apt run ./configure\" ajuda-o(a) a instalar os pacotes necessários."
 
 #: ../ailurus/strings.py:41
 msgid "Autoconf and Automake"
@@ -3890,10 +3912,12 @@ msgid ""
 "An editor targeted towards webdesigners. It supports many programming and "
 "markup languages, and it focuses on editing dynamic websites."
 msgstr ""
+"Um editor direccionado a desenhadores web. Com suporte a diversas linguagens "
+"de programação e marcação, focado na criação de páginas web dinâmicas."
 
 #: ../ailurus/strings.py:50
 msgid "Official Linux bluetooth support"
-msgstr ""
+msgstr "Suporte Oficial Linux bluetooth"
 
 #: ../ailurus/strings.py:51
 msgid "Boost C++ libraries"
@@ -3903,7 +3927,7 @@ msgstr "Bibliotecas Boost C++"
 msgid ""
 "Peer-reviewed portable C++ libraries, which will be in the new C++ 0x "
 "standard."
-msgstr ""
+msgstr "Bibliotecas portáteis C++, que serão incluídas no novo padrão C++ 0x"
 
 #: ../ailurus/strings.py:53
 msgid "Bos Wars"
@@ -3935,13 +3959,15 @@ msgstr "Ver ficheiros .chm"
 
 #: ../ailurus/strings.py:62
 msgid "Help you build .deb packages"
-msgstr "Ajuda-o a compilar pacotes .deb"
+msgstr "Ajuda-o(a) a compilar pacotes .deb"
 
 #: ../ailurus/strings.py:64
 msgid ""
 "It helps you take pictures and videos from web camera. It also provides some "
 "graphical effects in order to please your play instinct."
 msgstr ""
+"Ajuda-o(a) a obter imagens e vídeos a partir da câmara web. Também "
+"disponibiliza alguns efeitos gráficos"
 
 #: ../ailurus/strings.py:66
 msgid "Educational games for young children"
@@ -3973,18 +3999,20 @@ msgid ""
 "Full-function software which can configure all options of Compiz window "
 "manager"
 msgstr ""
+"Programa completo para a configuração de todas as opções do gestor de "
+"janelas Compiz"
 
 #: ../ailurus/strings.py:76
 msgid "Simple configure software for Compiz window manager"
-msgstr ""
+msgstr "Programa simples para a configuração do gestor de janelas Compiz"
 
 #: ../ailurus/strings.py:77
 msgid "Ctags and Cscope"
-msgstr ""
+msgstr "Ctags e Cscope"
 
 #: ../ailurus/strings.py:78
 msgid "Popular source code parsers"
-msgstr ""
+msgstr "Populares analisadores de código"
 
 #: ../ailurus/strings.py:80 ../ailurus/strings.py:272
 msgid "Lightweight bittorrent client"
@@ -4001,7 +4029,7 @@ msgstr "Substituto para o Visio de código livre"
 #: ../ailurus/strings.py:86
 msgid ""
 "Lightweight DOS simulator, which primarily focuses on running DOS games"
-msgstr ""
+msgstr "Simulador de DOS, principalmente para a execução de jogos em DOS"
 
 #: ../ailurus/strings.py:88
 msgid "Edit tags for MP3, FLAC, Ogg files"
@@ -4009,11 +4037,11 @@ msgstr "Editar marcas em ficheiros MP3, FLAC e Ogg"
 
 #: ../ailurus/strings.py:90
 msgid "Advanced text editor"
-msgstr ""
+msgstr "Editor de texto avançado"
 
 #: ../ailurus/strings.py:92
 msgid "MSN Messenger client with a simpler interface and a nicer look"
-msgstr ""
+msgstr "Cliente para MSN com interface simples e agradável"
 
 #: ../ailurus/strings.py:94
 msgid "Messaging program which supports many protocols"
@@ -4021,19 +4049,19 @@ msgstr "Um programa de mensagens com suporte a diversos protocolos"
 
 #: ../ailurus/strings.py:95
 msgid "p7zip and cabextract"
-msgstr ""
+msgstr "p7zip e cabextract"
 
 #: ../ailurus/strings.py:96
 msgid "compressor/decompressor for .7z and .cab files"
-msgstr ""
+msgstr "compressão/descompressão de ficheiros .7z e .cab"
 
 #: ../ailurus/strings.py:97
 msgid "Encoding data for the poppler PDF library"
-msgstr ""
+msgstr "Codificando dados da biblioteca poppler PDF"
 
 #: ../ailurus/strings.py:98
 msgid "Make Evince be able to reveal Japanese, Korean, Chinese pdf"
-msgstr ""
+msgstr "Tornar Evince capaz de mostrar PDFs em Japonês, Coreano e Mandarim"
 
 #: ../ailurus/strings.py:100
 msgid "Email client, calendar, contact manager and address manager"
@@ -4041,25 +4069,27 @@ msgstr "Cliente de email, calendário, gestor de contactos e endereços"
 
 #: ../ailurus/strings.py:102
 msgid "Multifunctional graphic calculator"
-msgstr ""
+msgstr "Calculadora gráfica multi-funcional"
 
 #: ../ailurus/strings.py:104
 msgid "Popular Chinese input method"
-msgstr ""
+msgstr "Método de Entrada Chinês"
 
 #: ../ailurus/strings.py:106
 msgid "Popular FTP client"
-msgstr ""
+msgstr "Cliente FTP Popular"
 
 #: ../ailurus/strings.py:108
 msgid ""
 "Configure software for \"iptables\" firewall. \"iptables\" is the filewall "
 "which Linux system comes up with."
 msgstr ""
+"Programa de configuração para a firewall \"iptables\". A \"iptables\" é a "
+"firewall que as distribuições Linux incluem."
 
 #: ../ailurus/strings.py:110
 msgid "Open source clone of DOOM"
-msgstr ""
+msgstr "Clone do DOOM de código livre"
 
 #: ../ailurus/strings.py:111
 msgid "OpenGL library"
@@ -4071,15 +4101,15 @@ msgstr "Esta é a biblioteca para programar aplicações em OpenGL."
 
 #: ../ailurus/strings.py:113
 msgid "Frozen Bubble"
-msgstr ""
+msgstr "Frozen Bubble"
 
 #: ../ailurus/strings.py:114
 msgid "Open source clone of the popular \"Puzzle Bobble\" game"
-msgstr ""
+msgstr "Clone do jogo \"Puzzle Bobble\" de código livre"
 
 #: ../ailurus/strings.py:116
 msgid "Educational games for children aged 2 to 10"
-msgstr ""
+msgstr "Jogos educacionais para crianças entre os 2 e 10 anos"
 
 #: ../ailurus/strings.py:118
 msgid "Manage your collections such as movies, books, music"
@@ -4091,15 +4121,15 @@ msgstr "Substituto do Photoshop de código livre"
 
 #: ../ailurus/strings.py:122
 msgid "Visually graphical user interface designer"
-msgstr ""
+msgstr "Desenhador para Interface de Utilizador Gráfica"
 
 #: ../ailurus/strings.py:124
 msgid "GNU high precision arithmetic library"
-msgstr ""
+msgstr "Biblioteca aritmética de alta precisão GNU"
 
 #: ../ailurus/strings.py:125
 msgid "GNOME Colors"
-msgstr ""
+msgstr "GNOME Colors"
 
 #: ../ailurus/strings.py:126
 msgid "A set of icons with 7 color variations"
@@ -4107,15 +4137,15 @@ msgstr "Um conjunto de ícones com 7 cores"
 
 #: ../ailurus/strings.py:127
 msgid "GNOME Do"
-msgstr ""
+msgstr "GNOME Do"
 
 #: ../ailurus/strings.py:128
 msgid "Desktop launcher which helps you quickly perform actions"
-msgstr ""
+msgstr "Iniciador de aplicações que o ajuda a executar acções rapidamente"
 
 #: ../ailurus/strings.py:129
 msgid "GNOME shell"
-msgstr ""
+msgstr "GNOME shell"
 
 #: ../ailurus/strings.py:130
 msgid "Experience GNOME 3 desktop"
@@ -4123,7 +4153,7 @@ msgstr "Experimente o ambiente de trabalho GNOME 3"
 
 #: ../ailurus/strings.py:131
 msgid "GNOME MPlayer"
-msgstr ""
+msgstr "GNOME MPlayer"
 
 #: ../ailurus/strings.py:132
 msgid "GTK frontend for MPlayer"
@@ -4151,7 +4181,7 @@ msgstr "Jogo de estratégia em tempo real do género Warcraft"
 
 #: ../ailurus/strings.py:141
 msgid "Globulation 2"
-msgstr ""
+msgstr "Globulation 2"
 
 #: ../ailurus/strings.py:142
 msgid ""
@@ -4163,7 +4193,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:144
 msgid "SWF movie player for web browser"
-msgstr ""
+msgstr "Reprodutor de filmes SWF para o navegador web"
 
 #: ../ailurus/strings.py:146
 msgid "Mono-free alternative to Tomboy Notes"
@@ -4171,15 +4201,16 @@ msgstr "Alternativa ao Tomboy e que dispensa o Mono"
 
 #: ../ailurus/strings.py:147
 msgid "Google gadgets (GTK version)"
-msgstr ""
+msgstr "Google gadgets ( Versão GTK)"
 
 #: ../ailurus/strings.py:148 ../ailurus/strings.py:150
 msgid "Eye candy widgets most of which are developed by Google's users"
 msgstr ""
+"Widgets agradáveis, principalmente desenvolvidos pelos utilizadores Google"
 
 #: ../ailurus/strings.py:149
 msgid "Google gadgets (QT version)"
-msgstr ""
+msgstr "Google gadgets (Versão QT)"
 
 #: ../ailurus/strings.py:152
 msgid "Microblogging client which supports Twitter and Facebook"
@@ -4195,20 +4226,21 @@ msgstr "Ouriços que lutam contra os inimigos com armas fantásticas"
 
 #: ../ailurus/strings.py:158
 msgid "Help you edit images. You can launch it by /usr/bin/display"
-msgstr ""
+msgstr "Ajuda-o(a) a editar imagens. Pode inicia-lo com /usr/bin/display"
 
 #: ../ailurus/strings.py:160
 msgid ""
 "Vector image designer. It is the open source substitution of CorelDraw."
 msgstr ""
+"Desenho de imagens vectoriais. O substituto do CorelDraw em código livre."
 
 #: ../ailurus/strings.py:162
 msgid "Burn DVD/VCD"
-msgstr ""
+msgstr "Gravação de DVD/VCD"
 
 #: ../ailurus/strings.py:164
 msgid "Popular instant messenger in Poland"
-msgstr ""
+msgstr "Programa de mensagens instantâneas muito popular na Polónia"
 
 #: ../ailurus/strings.py:166
 msgid ""
@@ -4232,7 +4264,7 @@ msgstr "Editor de texto simples"
 
 #: ../ailurus/strings.py:174
 msgid "Simple RSS feed reader"
-msgstr ""
+msgstr "Leitor simpleas para fontes RSS"
 
 #: ../ailurus/strings.py:176
 msgid "Connect to a central hub then share files and chat with other people."
@@ -4241,7 +4273,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:178
 msgid "Change the MAC address of network interfaces"
-msgstr ""
+msgstr "Altere o endereço MAC das interfaces de rede."
 
 #: ../ailurus/strings.py:180
 msgid "Lightweight web browser"
@@ -4249,37 +4281,44 @@ msgstr "Navegador web leve"
 
 #: ../ailurus/strings.py:181
 msgid "Minicom and Kermit"
-msgstr ""
+msgstr "Minicom e Kermit"
 
 #: ../ailurus/strings.py:182
 msgid "Communication software for embedded MCU boards"
-msgstr ""
+msgstr "Programas de comunicação para placas MCU"
 
 #: ../ailurus/strings.py:184
 msgid ""
 "This is a simple YouTube client. You enter a keyword, then the software will "
 "retrieve all relative URLs from YouTube and play them one after the other."
 msgstr ""
+"Este é um cliente para o YouTube. Indique a palavra-chave e o programa irá "
+"obter todas as URLs relacionadas com a palavra e reproduzirá os vídeos "
+"consecutivamente."
 
 #: ../ailurus/strings.py:186
 msgid "Internet TV video player"
-msgstr ""
+msgstr "Reprodutor de vídeo para TV na Internet"
 
 #: ../ailurus/strings.py:188
 msgid ""
 "Open source implementation of Microsoft Silverlight. It provides Windows "
 "media codecs. You can enjoy Windows video in webpages."
 msgstr ""
+"Uma implementação de código livre do Microsoft Silverlight. Disponibiliza os "
+"codificadores Windows para que possa ver os vídeos Windows nas páginas web."
 
 #: ../ailurus/strings.py:189
 msgid "gstreamer multi-media codec"
-msgstr ""
+msgstr "codificador multimédia gstreamer"
 
 #: ../ailurus/strings.py:190
 msgid ""
 "Libraries supporting video playback, audio mixing and non-linear video "
 "editing"
 msgstr ""
+"Bibliotecas que suportam a reprodução de vídeo, áudio e edição de vídeo não "
+"linear"
 
 #: ../ailurus/strings.py:191
 msgid "\"Actions configuration\" entry"
@@ -4290,6 +4329,8 @@ msgid ""
 "Configure which software to be launched on selected files. This entry is in "
 "\"System\"->\"Preferences\" menu."
 msgstr ""
+"Configure as aplicações a iniciar nos ficheiros seleccionados. Esta entrada "
+"está no menu em \"Sistema\" -> \"Preferências\"."
 
 #: ../ailurus/strings.py:193
 msgid "\"Convert audio files\" entry"
@@ -4297,7 +4338,7 @@ msgstr "Entrada \"Converter ficheiros áudio\""
 
 #: ../ailurus/strings.py:194
 msgid "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files."
-msgstr ""
+msgstr "Conversão entre ficheiros WAV, OGG, MP3, MPC, FLAC, APE e AAC."
 
 #: ../ailurus/strings.py:195
 msgid "\"Repair filename\" entry"
@@ -4308,6 +4349,8 @@ msgid ""
 "When any file with wrong encoding filename is right clicked, show a \"Repair "
 "filename\" menu item."
 msgstr ""
+"Ao clicar com o botão direito do rato sobre um ficheiro com o nome "
+"incorrectamente codificado, mostrar \"Reparar nome de ficheiro\"."
 
 #: ../ailurus/strings.py:197
 msgid "\"Open as administrator\" entry"
@@ -4317,6 +4360,7 @@ msgstr "Entrada \"Abrir como administrador\""
 msgid ""
 "Launch selected files or open selected folder with administration privileges."
 msgstr ""
+"Iniciar ficheiros ou pastas seleccionadas com privilégios de administração."
 
 #: ../ailurus/strings.py:199
 msgid "\"Resize/Rotate images\" entries"
@@ -4340,7 +4384,7 @@ msgstr "Entradas \"Comandos Subversion\""
 
 #: ../ailurus/strings.py:204
 msgid "A lot of subversion management command"
-msgstr ""
+msgstr "Diversos comandos para gestão de subversion"
 
 #: ../ailurus/strings.py:205
 msgid "\"Share folders\" entry"
@@ -4348,7 +4392,7 @@ msgstr "Entrada \"Partilhar pastas\""
 
 #: ../ailurus/strings.py:206
 msgid "Share folders using Samba"
-msgstr ""
+msgstr "Partilhar pastas utilizando Samba"
 
 #: ../ailurus/strings.py:207
 msgid "\"Set as wallpaper\" entry"
@@ -4356,7 +4400,7 @@ msgstr "Entrada \"Definir com papel de parede\""
 
 #: ../ailurus/strings.py:208
 msgid "Set an image as wallpaper using context menu"
-msgstr ""
+msgstr "Definir o papel de parede utilizando o menu de contexto"
 
 #: ../ailurus/strings.py:209
 msgid "Ncurses5 and QT3"
@@ -4364,13 +4408,15 @@ msgstr "Ncurses5 e QT3"
 
 #: ../ailurus/strings.py:210
 msgid "Necessary libraries for compiling Linux kernel"
-msgstr ""
+msgstr "Bibliotecas necessárias para compilar o kernel Linux"
 
 #: ../ailurus/strings.py:212
 msgid ""
 "An open source IDE which supports several languages (C, C++, Java, Ruby, "
 "etc.) and frameworks (J2SE, J2ME, etc.)"
 msgstr ""
+"Um IDE de código livre com suporte a diversas linguagens (C, C++, Java, "
+"Ruby, etc.) e infra-estruturas (J2SE, J2ME, etc.)"
 
 #: ../ailurus/strings.py:214
 msgid "3D first-person shooter game"
@@ -4378,19 +4424,19 @@ msgstr "Jogo de tiros em 3 D"
 
 #: ../ailurus/strings.py:216
 msgid "Matlab compatible numerical computation appliation"
-msgstr ""
+msgstr "Uma aplicação de computação numérica compatível com Matlab"
 
 #: ../ailurus/strings.py:217
 msgid "OpenJDK 6"
-msgstr ""
+msgstr "OpenJDK 6"
 
 #: ../ailurus/strings.py:218
 msgid "Open source implementation of Java"
-msgstr ""
+msgstr "A implementação Java de código livre"
 
 #: ../ailurus/strings.py:220
 msgid "Popular non-linear video editor"
-msgstr ""
+msgstr "Editor de vídeo não linear de código livre"
 
 #: ../ailurus/strings.py:221
 msgid "POSIX library manual pages"
@@ -4415,38 +4461,45 @@ msgstr ""
 msgid ""
 "Movie editor designed for both the newcomer and the professional users"
 msgstr ""
+"Editor de filmes destinado tanto para utilizadores principiantes como para "
+"experientes"
 
 #: ../ailurus/strings.py:228
 msgid ""
 "A chat program which lets you log in multiple chat networks simultaneously. "
 "It supports many chat networks."
 msgstr ""
+"Um programa de conversação que o deixa iniciar sessão em diversas redes em "
+"simultâneo. Suporte a imensas redes de conversação."
 
 #: ../ailurus/strings.py:230
 msgid "Help you save power for your laptop."
-msgstr ""
+msgstr "Ajuda-o(a) a poupar energia nos portáteis."
 
 #: ../ailurus/strings.py:232
 msgid "Open source substitution of AutoCAD"
-msgstr ""
+msgstr "O substituto do AutoCAD de código livre"
 
 #: ../ailurus/strings.py:233
 msgid "Qt Creator"
-msgstr ""
+msgstr "Qt Creator"
 
 #: ../ailurus/strings.py:234
 msgid "Lightweight Qt IDE"
-msgstr ""
+msgstr "IDE Qt leve e rápido"
 
 #: ../ailurus/strings.py:236
 msgid "Help you find and download Poland subtitles for given video file"
 msgstr ""
+"Ajuda-o(a) a transferir as legendas em Polaco para o vídeo especificado"
 
 #: ../ailurus/strings.py:238
 msgid ""
 "Open source substitution of Origin. It is the indispensable plotting "
 "application for writing Physics experiments reports."
 msgstr ""
+"O substituto do Origin de código livre. É a aplicação de análise de dados "
+"indispensável para relatórios de experiências de Física."
 
 #: ../ailurus/strings.py:240
 msgid "Lightweight messaging program"
@@ -4454,11 +4507,11 @@ msgstr "Programa de mensagens leve"
 
 #: ../ailurus/strings.py:241
 msgid "R language"
-msgstr ""
+msgstr "R language"
 
 #: ../ailurus/strings.py:242
 msgid "A powerful statistical computation language and a graphics system."
-msgstr ""
+msgstr "Uma linguagem para computação estatística com sistema de gráficos."
 
 #: ../ailurus/strings.py:243
 msgid "SDL library"
@@ -4469,6 +4522,8 @@ msgid ""
 "A cross-platform multimedia library designed to provide low level access to "
 "hardware."
 msgstr ""
+"Uma biblioteca multimédia e multi-plataforma desenvolvida para providenciar "
+"o acesso de baixo nível ao equipamento."
 
 #: ../ailurus/strings.py:246
 msgid "Qt frontend for MPlayer"
@@ -4486,6 +4541,8 @@ msgid ""
 "Add eye candy gadgets on desktop, such as sticky notes, clocks, weather "
 "forecasts and so on."
 msgstr ""
+"Adicione gadgets ao ambiente de trabalho, tais como notas, relógios, "
+"previsões meteorológicas, entre outras..."
 
 #: ../ailurus/strings.py:252
 msgid "Professional typesetting software"
@@ -4493,7 +4550,7 @@ msgstr "Programa de composição profissional"
 
 #: ../ailurus/strings.py:253
 msgid "Shiki Colors"
-msgstr ""
+msgstr "Shiki Colors"
 
 #: ../ailurus/strings.py:254
 msgid "Hybrid theme which is designed to be fast and stable"
@@ -4504,6 +4561,8 @@ msgid ""
 "A screenshot program. You can take a screenshot of a specific area, window, "
 "whole screen, then apply different effects to it."
 msgstr ""
+"Um programa de capturas de ecrã. Pode obter capturas de áreas, janelas, ecrã "
+"e subsequentemente aplicar-lhes efeitos gráficos."
 
 #: ../ailurus/strings.py:258
 msgid "Lightweight music player"
@@ -4511,7 +4570,7 @@ msgstr "Reprodutor de música leve"
 
 #: ../ailurus/strings.py:260
 msgid "Popular dictionary software"
-msgstr ""
+msgstr "Programa de dicionário popular"
 
 #: ../ailurus/strings.py:261
 msgid "Startup Manager"
@@ -4519,15 +4578,15 @@ msgstr "Gestor de Arranque"
 
 #: ../ailurus/strings.py:262
 msgid "Change GRUB settings and themes"
-msgstr ""
+msgstr "Altere as definições e temas GRUB"
 
 #: ../ailurus/strings.py:263
 msgid "Subversion, Git and Bzr"
-msgstr ""
+msgstr "Subversion, Git e Bzr"
 
 #: ../ailurus/strings.py:264
 msgid "Popular version control systems"
-msgstr ""
+msgstr "Sistemas de controlo de versões"
 
 #: ../ailurus/strings.py:266
 msgid ""
@@ -4553,11 +4612,13 @@ msgstr "Tux Paint"
 
 #: ../ailurus/strings.py:274
 msgid "Drawing software for young children three years and up"
-msgstr ""
+msgstr "Programa de desenho para crianças com 3 anos ou mais"
 
 #: ../ailurus/strings.py:276
 msgid "Type words which are flying from left to right as fast as you can"
 msgstr ""
+"Digite as palavras que estão a voar da direita para a esquerda, o mais "
+"rapidamente possível"
 
 #: ../ailurus/strings.py:277
 msgid "Ubuntu Studio Theme"
@@ -4567,20 +4628,23 @@ msgstr "Tema Ubuntu Studio"
 msgid ""
 "A theme of Ubuntu which is aimed at audio, video and graphic enthusiast"
 msgstr ""
+"Um tema Ubuntu desenhado para os entusiastas de áudio, vídeo e gráficos"
 
 #: ../ailurus/strings.py:280
 msgid ""
 "Creates bootable USB flash disk, install Linux on USB flash disk, and create "
 "your custom Linux edition."
 msgstr ""
+"Criação de unidades de arranque USB, instalação de Linux na unidade e "
+"crie/personalize a sua distribuição Linux"
 
 #: ../ailurus/strings.py:282
 msgid "UML modelling software"
-msgstr ""
+msgstr "Programa de modelação UML"
 
 #: ../ailurus/strings.py:284
 msgid "Enhanced text editor"
-msgstr ""
+msgstr "Editor de texto melhorado"
 
 #: ../ailurus/strings.py:286
 msgid "Media player and media format converter"
@@ -4595,10 +4659,13 @@ msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL."
 msgstr ""
+"A única máquina virtual profissional, totalmente disponível nos termos da "
+"GPL."
 
 #: ../ailurus/strings.py:290
 msgid "Help you download files via bittorrent network and search videos"
 msgstr ""
+"Ajuda-o(a) a transferir e procurar ficheiros através das redes bittorrent"
 
 #: ../ailurus/strings.py:292
 msgid ""
@@ -4613,7 +4680,7 @@ msgstr "Jogo de tiros em 3D, similar ao DOOM"
 
 #: ../ailurus/strings.py:295
 msgid "Warzone 2100"
-msgstr ""
+msgstr "Warzone 2100"
 
 #: ../ailurus/strings.py:296
 msgid "Real time strategy game"
@@ -4641,7 +4708,7 @@ msgstr "World of Padman: Jogo de tiros divertido"
 
 #: ../ailurus/strings.py:302
 msgid "Funny shooter game"
-msgstr ""
+msgstr "Jogo de tiros divertido"
 
 #: ../ailurus/strings.py:304
 msgid "Funny fight game on 2D maps"
@@ -4649,17 +4716,19 @@ msgstr "Jogo divertido de luta com mapas 2D"
 
 #: ../ailurus/strings.py:305
 msgid "Youtube-dl: Download videos from Youtube"
-msgstr ""
+msgstr "Youtube-dl: Transfira vídeos no Youtube"
 
 #: ../ailurus/strings.py:306
 msgid "Run command in terminal:"
-msgstr ""
+msgstr "Execute este comando no terminal:"
 
 #: ../ailurus/strings.py:308
 msgid ""
 "Help you display Chinese characters in TTY terminal. You can launch it by "
 "\"zhcon --utf8\"."
 msgstr ""
+"Ajuda-o(a) a mostrar os caracteres Chineses no terminal TTY. Pode inicia-lo "
+"com \"zhcon --utf8\"."
 
 #: ../ailurus/strings.py:310
 msgid "Notebook software which helps you create a wiki to your desktop"
@@ -4669,12 +4738,12 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:88
 msgid "New version available"
-msgstr ""
+msgstr "Nova versão disponível"
 
 #: ../ailurus/support/checkupdate.py:89
 #, python-format
 msgid "Version %s released!"
-msgstr ""
+msgstr "Disponibilizada a versão %s!"
 
 #: ../ailurus/support/checkupdate.py:94
 msgid "Check update"
@@ -4682,7 +4751,7 @@ msgstr "Verificar actualizações"
 
 #: ../ailurus/support/checkupdate.py:95
 msgid "You are using the latest Ailurus :)"
-msgstr ""
+msgstr "Está a utilizar a última versão do Ailurus."
 
 #: ../ailurus/support/checkupdate.py:117
 msgid "Project homepage"
@@ -4835,7 +4904,7 @@ msgid ""
 "</span><span color=\"#00A0E9\">Help</span> you do tedious settings.\n"
 "<span color=\"#00A0E9\">Tell</span> you some Linux skills.</span>"
 msgstr ""
-"<span color=\"grey\"><span color=\"#00A0E9\">Ajuda-o</span> <span "
+"<span color=\"grey\"><span color=\"#00A0E9\">Ajuda-o(a)</span> <span "
 "color=\"grey\">a instalar algumas aplicações.\n"
 "</span><span color=\"#00A0E9\">Ajuda-o</span> a alterar definições "
 "aborrecidas.\n"
@@ -4877,7 +4946,7 @@ msgstr ""
 
 #: ../ailurus/system_setting_pane.py:46
 msgid "Nautilus"
-msgstr ""
+msgstr "Nautilus"
 
 #: ../ailurus/system_setting_pane.py:47
 msgid "Desktop"
@@ -4945,11 +5014,11 @@ msgstr "Janela de Início de Sessão"
 
 #: ../ailurus/system_setting_pane.py:65
 msgid "Compression"
-msgstr ""
+msgstr "Compressão"
 
 #: ../ailurus/system_setting_pane.py:66
 msgid "GEdit"
-msgstr ""
+msgstr "GEdit"
 
 #: ../ailurus/system_setting_pane.py:109
 msgid ""
@@ -5066,6 +5135,7 @@ msgstr "Instalando VEditor\n"
 #: ../ailurus/ubuntu/apps.py:34
 msgid "Ailurus will install the game, and apply the latest patch."
 msgstr ""
+"O Ailurus ajuda-o(a) a instalar o jogo e a aplicar a última correcção."
 
 #: ../ailurus/ubuntu/apps.py:51
 msgid "PBC (Pairing-Based Cryptography) library"
@@ -5075,6 +5145,8 @@ msgstr "Biblioteca PBC (Pairing-Based Cryptography)"
 msgid ""
 "Install Pairing-Based Cryptography library, powered by Stanford University."
 msgstr ""
+"Instalar a biblioteca Pairing-Based Cryptography, desenvolvida pela "
+"Universidade de Stanford."
 
 #: ../ailurus/ubuntu/apps.py:70
 msgid "GNOMEArtNG: Choose 100+ GNOME themes"
@@ -5099,7 +5171,7 @@ msgstr "OpenJUMP: Um sistema de informação geográfica"
 
 #: ../ailurus/ubuntu/apps.py:194
 msgid "Remastersys: Backup your system to a live CD"
-msgstr ""
+msgstr "Remastersys: Cópias de segurança do sistema para um live CD"
 
 #: ../ailurus/ubuntu/app_tasksel.py:29
 msgid "* Launch tasksel"
@@ -5214,6 +5286,7 @@ msgstr "Alterar \"sans-serif\" para \"sans serif\"."
 msgid ""
 "Recover 49-sansserif.conf. Change \"sans serif\" back to \"sans-serif\"."
 msgstr ""
+"Recuperar 49-sansserif.conf. Altere \"sans serif\" para \"sans-serif\"."
 
 #: ../ailurus/ubuntu/cure.py:62
 msgid ""
@@ -5221,6 +5294,10 @@ msgid ""
 "applications is also affected.\n"
 "This operation aims at recovering font configuration file."
 msgstr ""
+"O Ailurus tentou reparar o erro nas fontes Flash. No entanto, alguns "
+"utilizadores detectaram que as fontes\n"
+"de outras aplicações também eram afectadas. Esta operação irá recuperar o "
+"ficheiro de configuração inicial."
 
 #: ../ailurus/ubuntu/cure.py:79
 msgid ""
@@ -5265,24 +5342,29 @@ msgstr "Google Chrome pode ser actualizado."
 msgid ""
 "You are using Google Chrome beta version, but stable version is released."
 msgstr ""
+"Está a utilizar a versão beta do Google Chrome, mas existe uma versão "
+"estável."
 
 #: ../ailurus/ubuntu/cure.py:170
 msgid "Install voice data for GCompris"
-msgstr ""
+msgstr "Instalar dados vocais do GCompris."
 
 #: ../ailurus/ubuntu/cure.py:182
 msgid "Install voice data for Childsplay"
-msgstr ""
+msgstr "Instalar dados vocais do Childsplay."
 
 #: ../ailurus/ubuntu/cure.py:194
 msgid ""
 "/etc/apt/sources.list or /etc/apt/sources.list.d/ contains wrong code name."
 msgstr ""
+"/etc/apt/sources.list ou /etc/apt/sources.list.d/ contém um nome de código "
+"errado."
 
 #: ../ailurus/ubuntu/cure.py:205
 #, python-format
 msgid "Correct code name is %s. Get code name by \"lsb_release -cs\"."
 msgstr ""
+"O nome correcto é %s. Obtenha o nome do código com \"lsb_release -cs\"."
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:32
 #, python-format
@@ -5425,7 +5507,7 @@ msgid ""
 "Ailurus helps you quickly install popular software.\n"
 "Select the software which you would like to install."
 msgstr ""
-"Ailurus ajuda-o a instalar programas conhecidos.\n"
+"O Ailurus ajuda-o(a) a instalar programas conhecidos.\n"
 "Seleccione o programa que gostaria de instalar."
 
 #: ../ailurus/ubuntu/quick_setup.py:132
@@ -5537,8 +5619,8 @@ msgid ""
 "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
 "softwares on Linux."
 msgstr ""
-"PlayOnLinux é uma interface gráfica para o wine. Ajuda-o a instalar jogos e "
-"programas Windows no Linux."
+"PlayOnLinux é uma interface gráfica para o wine. Ajuda-o(a) a instalar jogos "
+"e programas Windows no Linux."
 
 #: ../ailurus/ubuntu/third_party_repos.py:156
 msgid "WINE (beta version)"
@@ -5968,6 +6050,8 @@ msgid ""
 "Drive a spaceship and battle against invaders! Collect money during the "
 "combat. Upgrade armaments and weapons."
 msgstr ""
+"Guie uma nave espacial e combata os invasores. Recolha o dinheiro durante o "
+"combate. Melhore as suas armas e protecções"
 
 #. cannot find out which license it is released under
 #: ../unfree/for_ubuntu.py:130
@@ -6056,7 +6140,7 @@ msgstr "Evermore Integrated Office 2009 - versão livre"
 
 #: ../unfree/for_ubuntu.py:251
 msgid "It is able to edit text, spreadsheets, and slides."
-msgstr ""
+msgstr "Para editar texto, folhas de cálculo e apresentações."
 
 #: ../unfree/for_ubuntu.py:265
 msgid "Install clipboard arts"
@@ -6080,11 +6164,11 @@ msgstr "Instalando EIOffice"
 
 #: ../unfree/for_ubuntu.py:289 ../unfree/for_fedora.py:375
 msgid "ESET NOD32"
-msgstr ""
+msgstr "ESET NOD32"
 
 #: ../unfree/for_ubuntu.py:290 ../unfree/for_fedora.py:376
 msgid "Anti virus and anti spyware"
-msgstr ""
+msgstr "Anti virus and anti spyware"
 
 #: ../unfree/for_ubuntu.py:315
 msgid "Oracle"
@@ -6096,6 +6180,9 @@ msgid ""
 "After installing Oracle Database, please add yourself to the \"dba\" group, "
 "then run \"sudo /etc/init.d/oracle-xe configure\"."
 msgstr ""
+"Este repositório disponibiliza Oracle Database Express Edition.\n"
+"Após instalar a base de dados Oracle, adicione-se ao grupo \"dba\" e execute "
+"\"sudo /etc/init.d/oracle-xe configure\"."
 
 #: ../unfree/for_fedora.py:64
 msgid "This repository provides flash-plugin and Adobe Reader."
@@ -6124,7 +6211,7 @@ msgstr "Este repositório disponibiliza o Google Chrome."
 
 #: ../unfree/for_fedora.py:223
 msgid "This repository provides VirtualBox."
-msgstr ""
+msgstr "Este repositório disponibilizado o VirtualBox."
 
 #: ../unfree/for_fedora.py:254
 msgid "Adobe® Flash plugin for web browser"
@@ -6139,6 +6226,8 @@ msgid ""
 "If you cannot play RMVB video, try this application! You can launch "
 "RealPlayer by \"/opt/real/RealPlayer/realplay\"."
 msgstr ""
+"Se não conseguir reproduzir vídeos RMVB, tente esta aplicação. Pode iniciar "
+"o RealPlayer com \"/opt/real/RealPlayer/realplay\"."
 
 #: ../unfree/for_fedora.py:300
 msgid "Google Chrome browser"
@@ -6156,11 +6245,11 @@ msgstr ""
 
 #: ../unfree/for_fedora.py:317
 msgid "You have installed \"google-chrome-unstable\"."
-msgstr ""
+msgstr "Você instalou o \"google-chrome-unstable\"."
 
 #: ../unfree/for_fedora.py:319
 msgid "You have installed \"google-chrome-beta\"."
-msgstr ""
+msgstr "Você instalou o \"google-chrome-beta\"."
 
 #: ../unfree/for_fedora.py:336
 msgid ""

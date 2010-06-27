@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-06-19 12:07+0800\n"
-"PO-Revision-Date: 2010-06-23 04:49+0000\n"
+"PO-Revision-Date: 2010-06-26 04:58+0000\n"
 "Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-06-24 03:54+0000\n"
+"X-Launchpad-Export-Date: 2010-06-27 03:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -2244,7 +2244,7 @@ msgstr ""
 #: ../ailurus/libsetting.py:54 ../ailurus/libsetting.py:99
 #: ../ailurus/libsetting.py:220 ../ailurus/libsetting.py:252
 msgid "GConf key: "
-msgstr ""
+msgstr "Κλειδί GConf: "
 
 #: ../ailurus/gnome/setting.py:192
 msgid "It can be used in Metacity only."
@@ -2278,6 +2278,8 @@ msgid ""
 "\n"
 "GConf key: "
 msgstr ""
+"\n"
+"Κλειδί GConf: "
 
 #: ../ailurus/gnome/setting.py:204
 msgid "clicked by mouse right button:"
@@ -4311,6 +4313,7 @@ msgstr ""
 "  Ailurus Developers https://launchpad.net/~ailurus\n"
 "  Dimitrios Ntoulas https://launchpad.net/~ntoulasd\n"
 "  Emmanouel Kapernaros https://launchpad.net/~kapcom01\n"
+"  Fotis Tsamis https://launchpad.net/~phantomas\n"
 "  Renji NsK https://launchpad.net/~redarmy-2505"
 
 #: ../ailurus/support/checkupdate.py:139

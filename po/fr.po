@@ -8,25 +8,26 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-06-19 12:07+0800\n"
-"PO-Revision-Date: 2010-06-23 13:01+0000\n"
-"Last-Translator: Ludwig La Capria <axalis@cegetel.net>\n"
+"PO-Revision-Date: 2010-06-26 05:03+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2010-06-24 03:53+0000\n"
+"X-Launchpad-Export-Date: 2010-06-27 03:53+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid "makes Linux easier to use"
-msgstr "Rendre Linux plus facile à utiliser"
+msgstr "rend Linux plus facile à utiliser"
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
 msgstr ""
-"La sécurité du système bloque le lancement de programmes en tant que \"root\""
+"La sécurité du système empêche Ailurus de lancer des programmes en tant que "
+"\"root\""
 
 #: ../ailurus/clean_up_pane.py:32
 msgid "Clean up"
@@ -62,7 +63,7 @@ msgstr "Lancer une commande :"
 #: ../ailurus/fedora/cure.py:52 ../ailurus/ubuntu/cure.py:80
 #: ../ailurus/ubuntu/cure.py:176 ../ailurus/ubuntu/cure.py:188
 msgid "Command:"
-msgstr ""
+msgstr "Commande:"
 
 #: ../ailurus/clean_up_pane.py:83 ../ailurus/clean_up_pane.py:90
 msgid "RPM cache"
