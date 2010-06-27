@@ -104,39 +104,38 @@ class AppObjs:
         c = ConfigParser.RawConfigParser()
         c.optionxform = str # case sensitive in option_name
         c.read(A+'/native_apps')
-        for secs in c.sections():
+        for section_name in c.sections():
             try:
                 dict = {}
-                assert hasattr(strings, secs+'_0'), secs
-                assert hasattr(strings, secs+'_1'), secs
-                dict['__doc__'] = getattr(strings, secs + '_0')
-                dict['detail'] = getattr(strings, secs + '_1')
-                for ops in c.options(secs):
-                    value = c.get(secs, ops)
-                    if ops == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
+                assert hasattr(strings, section_name+'_0'), section_name
+                assert hasattr(strings, section_name+'_1'), section_name
+                dict['__doc__'] = getattr(strings, section_name + '_0')
+                dict['detail'] = getattr(strings, section_name + '_1')
+                for option_name in c.options(section_name):
+                    value = c.get(section_name, option_name)
+                    if option_name == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
                         dict['pkgs'] = value
-                    elif ops == 'fedora' and FEDORA:
+                    elif option_name == 'fedora' and FEDORA:
                         dict['pkgs'] = value
-                    elif ops == 'archlinux' and ARCHLINUX:
+                    elif option_name == 'archlinux' and ARCHLINUX:
                         dict['pkgs'] = value
-                    elif ops == 'Chinese' or ops == 'Poland':
-                        dict[ops] = True
-                    elif ops == 'license':
-                        ls = value.split()
-                        ls = [globals()[e] for e in ls]
-                        if len(ls)==1: dict[ops] = ls[0]
-                        elif len(ls)==2: dict[ops] = DUAL_LICENSE(ls[0],ls[1])
-                        elif len(ls)==3: dict[ops] = TRI_LICENSE(ls[0],ls[1],ls[2])
+                    elif option_name == 'Chinese' or option_name == 'Poland':
+                        dict[option_name] = True
+                    elif option_name == 'license':
+                        list = [globals()[e] for e in value.split()]
+                        if len(list)==1: dict[option_name] = list[0]
+                        elif len(list)==2: dict[option_name] = DUAL_LICENSE(list[0],list[1])
+                        elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
                     else:
-                        dict[ops] = value
+                        dict[option_name] = value
                 if 'pkgs' not in dict: continue
-                obj = new.classobj(secs, (N,), {})()
+                obj = new.classobj(section_name, (N,), {})()
                 for key in dict.keys():
                     setattr(obj,key,dict[key])
                 obj.self_check()
                 obj.fill()
             except:
-                print 'Cannot load obj %s from native_apps' % secs
+                print 'Cannot load obj %s from native_apps' % section_name
                 print_traceback()
             else:
                 cls.appobjs.append(obj)
