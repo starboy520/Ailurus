@@ -517,7 +517,6 @@ def restart_dbus_daemon():
 def get_authentication_method():
     ret = daemon().get_check_permission_method(dbus_interface='cn.ailurus.Interface')
     ret = int(ret)
-    assert ret == 0 or ret == 1, ret
     return ret
 
 def authenticate():
@@ -540,6 +539,7 @@ class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
 
 def run_as_root(cmd, ignore_error=False):
+    import dbus
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
     
@@ -702,6 +702,7 @@ def is_pkg_list(packages):
         if ' ' in package: raise ValueError
 
 def run_as_root_in_terminal(command):
+    import dbus
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
