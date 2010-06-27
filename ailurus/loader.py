@@ -142,7 +142,7 @@ class AppObjs:
                 cls.appobjs.append(obj)
     @classmethod
     def strip_invisible(cls):
-        cls.appobjs = [obj for obj in cls.appobjs if obj.visible()==False]
+        cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
     @classmethod
     def strip_wrong_locale(cls):
         if not Config.is_Chinese_locale():
