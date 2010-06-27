@@ -180,7 +180,7 @@ class AilurusFulgens(dbus.service.Object):
         try:
             self.apt_lock_cache(sender)
             os.putenv('DISPLAY', display)
-            self.apt_open_cache()
+            self.apt_open_cache(display)
             if command == 'install':
                 self.apt_install(argument)
             elif command == 'install_local':
@@ -240,10 +240,12 @@ class AilurusFulgens(dbus.service.Object):
         try: apt_pkg.PkgSystemUnLock()
         except SystemError: pass # E:Not locked
     
-    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
-    def apt_open_cache(self):
-        if self.apt_cache: self.apt_cache.open()
-        else: self.apt_cache = apt.cache.Cache()
+    @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='')
+    def apt_open_cache(self, display):
+        os.putenv('DISPLAY', display)
+        window, progress = self._window()
+        if self.apt_cache: self.apt_cache.open(progress.open)
+        else: self.apt_cache = apt.cache.Cache(progress.open)
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='b')
     def apt_package_exists(self, package_name):
