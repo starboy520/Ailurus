@@ -22,6 +22,7 @@
 
 from __future__ import with_statement
 from lib import *
+import os, sys, glob, ConfigParser, types, gtk
 
 class AppObjs:
     appobjs = []
@@ -141,9 +142,9 @@ class AppObjs:
     @classmethod
     def strip_wrong_locale(cls):
         if not Config.is_Chinese_locale():
-            cls.appobjs = [obj for obj in cls.appobjs if not hasattr(app_class_obj, 'Chinese')]
+            cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Chinese')]
         if not Config.is_Poland_locale():
-            cls.appobjs = [obj for obj in cls.appobjs if not hasattr(app_class_obj, 'Poland')]
+            cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Poland')]
 
 def load_R_objs():
     paths = []
