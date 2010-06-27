@@ -306,6 +306,12 @@ class AilurusFulgens(dbus.service.Object):
         if not deb.check(): raise LocalDebPackageResolutionError
         window, progress = self._window()
         self.unlock_apt_pkg_global_lock()
+        (install, remove, unauth) = deb.required_changes
+        for name in install:
+            self.apt_cache[name].mark_install()
+        for name in remove:
+            self.apt_cache[name].mark_delete()
+        self.apt_cache.commit(progress.fetch, progress.install)
         deb.install(progress.dpkg_install)
         apt_pkg.PkgSystemLock()
         window.destroy()
