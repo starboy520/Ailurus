@@ -45,6 +45,8 @@ class I:
     detail = ''
     how_to_install = ''
     download_url = ''
+    cache_installed = showed_in_toggle = None # boolean
+    logo_pixbuf = None # gtk.gdk.Pixbuf
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -59,6 +61,8 @@ class I:
         'Add repository before installing me'
     def clean_temp_repository(self):
         'Remove repository after installing me'
+    def visible(self):
+        return True
 
 class C:
     this_is_a_cure = True
