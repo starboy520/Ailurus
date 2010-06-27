@@ -31,7 +31,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
     text = _('Recover\nAPT')
     
     def __get_installed_packages_set(self):
-        path = os.path.dirname(os.path.abspath(__file__))+'/../support/dumpaptcache2.py'
+        path = A+'/support/dumpaptcache2.py'
         
         set1 = set()
         

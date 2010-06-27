@@ -25,8 +25,11 @@ import dbus
 import dbus.service
 import dbus.glib
 import gobject
+import os
+import subprocess
+import ctypes
 
-version = 3 # must be integer
+version = 4 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -36,26 +39,20 @@ class CommandFailError(dbus.DBusException):
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
-                                          in_signature='sssb', 
+                                          in_signature='sss', 
                                           out_signature='', 
                                           sender_keyword='sender')
-    def run(self, command, env_string, secret_key, ignore_error, sender=None):
+    def run(self, command, env_string, secret_key, sender=None):
         if not secret_key in self.authorized_secret_key:
-            self.__check_permission(sender)
+            self.check_permission(sender)
             self.authorized_secret_key.add(secret_key)
-        
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
-        
         env = self.__get_dict(env_string)
-        
-        import os
         os.chdir(env['PWD'])
-        
-        import subprocess
         task = subprocess.Popen(command, shell=True, env=env)
         task.wait()
-        if task.returncode and ignore_error == False:
+        if task.returncode:
             raise CommandFailError(command, task.returncode)
 
     @dbus.service.method('cn.ailurus.Interface', 
@@ -64,18 +61,12 @@ class AilurusFulgens(dbus.service.Object):
                                           sender_keyword='sender')
     def spawn(self, command, env_string, secret_key, sender=None):
         if not secret_key in self.authorized_secret_key:
-            self.__check_permission(sender)
+            self.check_permission(sender)
             self.authorized_secret_key.add(secret_key)
-
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
-        
         env = self.__get_dict(env_string)
-        
-        import os
         os.chdir(env['PWD'])
-        
-        import subprocess
         task = subprocess.Popen(command, shell=True, env=env)
         return task.pid
 
@@ -96,16 +87,14 @@ class AilurusFulgens(dbus.service.Object):
                                           out_signature='',
                                           sender_keyword='sender')
     def exit(self, sender=None):
-        self.__check_permission(sender)
+        self.check_permission(sender)
         self.mainloop.quit()
 
-    def __check_permission(self, sender):
+    def check_permission(self, sender):
         if self.check_permission_method == 0:
             self.__check_permission_0(sender)
         elif self.check_permission_method == 1:
             self.__check_permission_1(sender)
-        else:
-            raise ValueError
 
     def __init__(self, mainloop):
         self.mainloop = mainloop # use to terminate mainloop
@@ -122,6 +111,7 @@ class AilurusFulgens(dbus.service.Object):
             obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
             obj = dbus.Interface(obj, 'org.freedesktop.PolicyKit')
             self.check_permission_method = 0
+        if self.check_permission_method == -1: raise Exception
 
     def __check_permission_0(self, sender):
         if not sender: raise ValueError('sender == None')
@@ -160,14 +150,15 @@ class AilurusFulgens(dbus.service.Object):
         if secret_key in self.authorized_secret_key:
             self.authorized_secret_key.remove(secret_key)
         
-def main():
-    import ctypes
-    libc = ctypes.CDLL('libc.so.6')
-    libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
+def main(): # revoked by ailurus-daemon
+    try:
+        libc = ctypes.CDLL('libc.so.6')
+        libc.prctl(15, 'policykit-ailurus', 0, 0, 0) # change_task_name
+    except: pass
     dbus.mainloop.glib.DBusGMainLoop(set_as_default=True)
     mainloop = gobject.MainLoop()
     AilurusFulgens(mainloop)
-    mainloop.run()    
+    mainloop.run()
 
 if __name__ == '__main__':
     main()

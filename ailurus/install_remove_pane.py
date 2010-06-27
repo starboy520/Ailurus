@@ -513,12 +513,9 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         self.set_sensitive(False)
         def launch():
-            import os
-            me_path = os.path.dirname(os.path.abspath(__file__))
-            with Chdir(me_path) as o:
-                import subprocess
-                task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
-                task.wait()
+            import subprocess
+            task = subprocess.Popen(['python', A+'/ubuntu/quick_setup.py'])
+            task.wait()
             gtk.gdk.threads_enter()
             self.app_class_installed_state_changed_by_external()
             self.parentwindow.unlock()
@@ -748,8 +745,7 @@ class InstallRemovePane(gtk.VBox):
 
     def synchronize(self):
         import subprocess
-        path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
-        task = subprocess.Popen(['python', path])
+        task = subprocess.Popen(['python', A+'/download_icons.py'])
         Config.set_synced()
 
     def left_class_choose_button_clicked(self, button):

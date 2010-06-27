@@ -162,7 +162,7 @@ def check_dbus_daemon_status():
     except:
         same_daemon = False
     else:
-        daemon_current = os.path.dirname(os.path.abspath(__file__))+'/daemon.py'
+        daemon_current = A+'/daemon.py'
         daemon_installed = os.path.dirname(os.path.abspath(ailurus.__file__))+'/daemon.py'
         same_daemon = with_same_content(daemon_current, daemon_installed)
     
