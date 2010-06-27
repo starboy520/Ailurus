@@ -237,13 +237,16 @@ class AilurusFulgens(dbus.service.Object):
             os.close(self.lock2_fd)
             self.lock2_fd = -1
     
+    def unlock_apt_pkg_global_lock(self):
+        try: apt_pkg.PkgSystemUnLock()
+        except SystemError: pass # E:Not locked
+    
     @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='', sender_keyword='sender')
     def apt_unlock_cache(self, sender=None):
         self.check_permission(sender)
         self.close_lock1()
         self.close_lock2()
-        try: apt_pkg.PkgSystemUnLock()
-        except SystemError: pass # E:Not locked
+        self.unlock_apt_pkg_global_lock()
     
     @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='')
     def apt_open_cache(self, display):
@@ -280,7 +283,7 @@ class AilurusFulgens(dbus.service.Object):
             pkg.mark_install()
         window, progress = self._window()
         progress.show_terminal(True)
-        apt_pkg.PkgSystemUnLock()
+        self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
         window.destroy()
@@ -295,7 +298,7 @@ class AilurusFulgens(dbus.service.Object):
             pkg.mark_delete()
         window, progress = self._window()
         progress.show_terminal(True)
-        apt_pkg.PkgSystemUnLock()
+        self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
         window.destroy()
