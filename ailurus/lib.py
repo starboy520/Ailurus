@@ -80,10 +80,6 @@ class Config:
         if not os.path.exists(dir): # make directory
             try:    os.makedirs(dir)
             except: pass # directory exists
-        if os.stat(dir).st_uid != os.getuid(): # change owner
-            run_as_root('chown $USER:$USER "%s"'%dir)
-        if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
-            os.chmod(dir, 0755)
     @classmethod
     def get_config_dir(cls):
         return cls.config_dir
