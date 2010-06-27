@@ -24,7 +24,7 @@ from __future__ import with_statement
 from lib import *
 from libapp import N
 import os, sys, glob, new, ConfigParser, types, gtk
-import strings, lib
+import strings
 
 class AppObjs:
     appobjs = []
@@ -123,7 +123,7 @@ class AppObjs:
                         dict[ops] = True
                     elif ops == 'license':
                         ls = value.split()
-                        ls = [getattr(lib, e) for e in ls]
+                        ls = [globals()[e] for e in ls]
                         if len(ls)==1: dict[ops] = ls[0]
                         elif len(ls)==2: dict[ops] = DUAL_LICENSE(ls[0],ls[1])
                         elif len(ls)==3: dict[ops] = TRI_LICENSE(ls[0],ls[1],ls[2])
