@@ -23,14 +23,6 @@
 from __future__ import with_statement
 from lib import *
 
-import common
-if GNOME: import gnome as desktop
-else: desktop = None
-if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
-elif FEDORA: import fedora as distribution
-elif ARCHLINUX: import archlinux as distribution
-else: distribution = None
-
 class AppObjs:
     appobjs = []
     appobjs_names = []
@@ -265,6 +257,14 @@ def load_cure_objs():
                 print_traceback()
     
     return objs
+
+import common
+if GNOME: import gnome as desktop
+else: desktop = None
+if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
+elif FEDORA: import fedora as distribution
+elif ARCHLINUX: import archlinux as distribution
+else: distribution = None
 
 if __name__ == '__main__':
     APT.get_existing_pkgs_set()
