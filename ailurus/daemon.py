@@ -268,25 +268,31 @@ class AilurusFulgens(dbus.service.Object):
     def apt_install(self, package_names):
         '''package_names -- package names concatenated by comma (,)
         may raise apt.cache.FetchFailedException, apt.cache.FetchCancelledException, SystemError'''
-        with self.apt_cache.actiongroup():
-            for pkg_name in package_names.split(','):
-                if self.apt_cache.has_key(pkg_name):
-                    pkg = self.apt_cache[pkg_name]
-                else:
-                    raise AptPackageNotExistError(pkg_name)
-                pkg.mark_install()
-        self.apt_cache.commit()
+        for pkg_name in package_names.split(','):
+            if self.apt_cache.has_key(pkg_name):
+                pkg = self.apt_cache[pkg_name]
+            else:
+                raise AptPackageNotExistError(pkg_name)
+            pkg.mark_install()
+        window, progress = self._window()
+        progress.show_terminal(True)
+        apt_pkg.PkgSystemUnLock()
+        self.apt_cache.commit(progress.fetch, progress.install)
+        apt_pkg.PkgSystemLock()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
-        with self.apt_cache.actiongroup():
-            for pkg_name in package_names.split(','):
-                if self.apt_cache.has_key(pkg_name):
-                    pkg = self.apt_cache[pkg_name]
-                else:
-                    raise AptPackageNotExistError(pkg_name)
-                pkg.mark_delete()
-        self.apt_cache.commit()
+        for pkg_name in package_names.split(','):
+            if self.apt_cache.has_key(pkg_name):
+                pkg = self.apt_cache[pkg_name]
+            else:
+                raise AptPackageNotExistError(pkg_name)
+            pkg.mark_delete()
+        window, progress = self._window()
+        progress.show_terminal(True)
+        apt_pkg.PkgSystemUnLock()
+        self.apt_cache.commit(progress.fetch, progress.install)
+        apt_pkg.PkgSystemLock()
 
     def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self.apt_cache)
