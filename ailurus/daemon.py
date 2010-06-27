@@ -252,6 +252,7 @@ class AilurusFulgens(dbus.service.Object):
     def apt_open_cache(self, display):
         os.putenv('DISPLAY', display)
         window, progress = self._window()
+        progress.set_size_request(300, -1)
         if self.apt_cache: self.apt_cache.open(progress.open)
         else: self.apt_cache = apt.cache.Cache(progress.open)
         window.destroy()
