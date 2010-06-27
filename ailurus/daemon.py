@@ -252,7 +252,6 @@ class AilurusFulgens(dbus.service.Object):
     def apt_open_cache(self, display):
         os.putenv('DISPLAY', display)
         window, progress = self._window()
-        progress.set_size_request(300, -1)
         if self.apt_cache: self.apt_cache.open(progress.open)
         else: self.apt_cache = apt.cache.Cache(progress.open)
         window.destroy()
@@ -283,7 +282,6 @@ class AilurusFulgens(dbus.service.Object):
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_install()
         window, progress = self._window()
-        progress.show_terminal(True)
         self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
@@ -298,7 +296,6 @@ class AilurusFulgens(dbus.service.Object):
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_delete()
         window, progress = self._window()
-        progress.show_terminal(True)
         self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
@@ -324,6 +321,7 @@ class AilurusFulgens(dbus.service.Object):
         window.set_deletable(False)
         window.set_resizable(False)
         progress = apt.progress.gtk2.GtkAptProgress()
+        progress.set_size_request(300, -1)
         window.add(progress)
         window.show_all()
         return window, progress
