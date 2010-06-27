@@ -22,7 +22,9 @@
 
 from __future__ import with_statement
 from lib import *
-import os, sys, glob, ConfigParser, types, gtk
+from libapp import N
+import os, sys, glob, new, ConfigParser, types, gtk
+import strings, lib
 
 class AppObjs:
     appobjs = []
@@ -127,6 +129,7 @@ class AppObjs:
                         elif len(ls)==3: dict[ops] = TRI_LICENSE(ls[0],ls[1],ls[2])
                     else:
                         dict[ops] = value
+                if 'pkgs' not in dict: continue
                 obj = new.classobj(secs, (N,), {})()
                 for key in dict.keys():
                     setattr(obj,key,dict[key])
@@ -134,6 +137,7 @@ class AppObjs:
                 obj.fill()
             except:
                 print 'Cannot load obj %s from native_apps' % secs
+                print_traceback()
             else:
                 cls.appobjs.append(obj)
     @classmethod
