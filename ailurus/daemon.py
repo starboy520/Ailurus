@@ -28,6 +28,7 @@ import gobject
 import os
 import subprocess
 import ctypes
+import gc
 try:
     import apt, apt_pkg
 except ImportError: # This is not Debian or Ubuntu
@@ -247,6 +248,11 @@ class AilurusFulgens(dbus.service.Object):
         if self.apt_cache: self.apt_cache.open(progress.open)
         else: self.apt_cache = apt.cache.Cache(progress.open)
         window.destroy()
+
+    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
+    def apt_close_cache(self):
+        self.apt_cache = None
+        gc.collect()
 
     @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='b')
     def apt_package_exists(self, package_name):
