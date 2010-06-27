@@ -254,7 +254,7 @@ class AilurusFulgens(dbus.service.Object):
         self.close_lock2()
         self.unlock_apt_pkg_global_lock()
     
-    @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='')
+    @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='')
     def apt_open_cache(self):
         if self.apt_cache: self.apt_cache.open()
         else: self.apt_cache = apt.cache.Cache()
