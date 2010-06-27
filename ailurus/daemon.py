@@ -175,14 +175,17 @@ class AilurusFulgens(dbus.service.Object):
         if sender in self.authorized_sender:
             self.authorized_sender.remove(sender)
 
-    @dbus.service.method('cn.ailurus.Interface', in_signature='sss', out_signature='', sender_keyword='sender')
-    def apt_command(self, command, argument, env_string, sender=None):
-        self.check_permission(sender)
+    def __prepare_env(self, env_string):
         env_dict = self.__get_dict(env_string)
         if 'TERM' not in env_dict: env_dict['TERM'] = 'xterm'
         env_dict['PATH'] = '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin'
         for key in ['DISPLAY', 'TERM', 'PATH']:
             os.putenv(key, env_dict[key])
+
+    @dbus.service.method('cn.ailurus.Interface', in_signature='sss', out_signature='', sender_keyword='sender')
+    def apt_command(self, command, argument, env_string, sender=None):
+        self.check_permission(sender)
+        self.__prepare_env(env_string)
         try:
             self.apt_lock_cache(sender)
             self.apt_open_cache(env_dict['DISPLAY'])
