@@ -408,6 +408,18 @@ class InstallRemovePane(gtk.VBox):
         parentbox.show_all()
 
     def __apply_button_clicked(self, widget):
+        if UBUNTU or UBUNTU_DERIV:
+            if not APT.is_cache_lockable():
+                dialog = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK,
+                                           message_format=_('Check if you are currently running another '
+                                                            'software management program, e.g. Synaptic or apt-get. '
+                                                            'Only one program is allowed to make changes at the '
+                                                            'same time.'))
+                dialog.set_title(_('Cannot lock apt cache'))
+                dialog.run()
+                dialog.destroy()
+                return
+
         to_install = [ obj for obj in self.app_objs
                       if obj.cache_installed==False
                       and obj.showed_in_toggle ]
@@ -419,7 +431,6 @@ class InstallRemovePane(gtk.VBox):
         if not self.__query_work(to_install, to_remove): return
 
         run_as_root('true') # require authentication first. do not require authentication any more.
-        
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )

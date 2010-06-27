@@ -865,6 +865,9 @@ class APT:
             daemon().apt_command('install_local', package,
                                  packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
+    @classmethod
+    def is_cache_lockable(cls):
+        return daemon().is_apt_cache_lockable(dbus_interface='cn.ailurus.Interface')
 
 class PACMAN:
     fresh_cache = False
