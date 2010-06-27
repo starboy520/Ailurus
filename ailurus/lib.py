@@ -788,8 +788,7 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    installed_set = set()
-    avail_set = set()
+    apt_cache = None
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -797,93 +796,72 @@ class APT:
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
-        cls.installed_set.clear()
-        cls.avail_set.clear()
-        import subprocess, os
-        path = A+'/support/dump_deb_installed.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        for line in task.stdout:
-            cls.installed_set.add(line.rstrip())
-        task.wait()
-        path = A+'/support/dump_deb_existing.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        for line in task.stdout:
-            cls.avail_set.add(line.rstrip())
-        task.wait()
+        import apt
+        cls.apt_cache = apt.cache.Cache()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.installed_set
+        ret = set()
+        for pkg in cls.apt_cache:
+            if pkg.isInstalled:
+                ret.add(pkg.name)
+        return ret
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.avail_set
+        ret = set()
+        for pkg in cls.apt_cache:
+            ret.add(pkg.name)
+        return ret
     @classmethod
     def get_autoremovable_pkgs(cls):
+        cls.refresh_cache()
         ret = []
-        import subprocess, os
-        path = A+'/support/dump_apt_autoremovable.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        class EndOfStream:
-            pass
-        def readline(stream):
-            line = stream.readline()
-            if len(line) == 0: raise EndOfStream
-            return line.strip()
-        try:
-            while True:
-                name = readline(task.stdout)
-                size = readline(task.stdout)
-                size = long(size)
-                summary = readline(task.stdout)
-                ret.append([name, size, summary,])
-        except EndOfStream:
-            pass
-        task.wait()
+        for pkg in cls.apt_cache:
+            if hasattr(pkg, 'isAutoRemovable'): auto_removable = pkg.isAutoRemovable
+            elif pkg.isInstalled and pkg._depcache.IsGarbage(pkg._pkg): auto_removable = True
+            else: auto_removable = True
+            
+            if auto_removable:
+                ret.append([pkg.name, long(pkg.installedSize), pkg.summary.replace('\n', ' ')])
         return ret
     @classmethod
     def installed(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.installed_set
+        if not package_name in cls.apt_cache:
+            return False
+        return cls.apt_cache[package_name].isInstalled
     @classmethod
     def exist(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.installed_set or package_name in cls.avail_set
+        return package_name in cls.apt_cache
     @classmethod
     def install(cls, *packages):
         is_pkg_list(packages)
-        if cls.apt_get_update_is_called == False:
-            cls.apt_get_update()
+        cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        # use "force-yes" because playonlinux repository has no gpg key, we want to install it without key.
-        run_as_root_in_terminal('apt-get install -y --force-yes ' + ' '.join(packages))
-        APT.cache_changed()
+        cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        packages = [p for p in packages if APT.installed(p)]
-        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
-        APT.cache_changed()
+        daemon().apt_command('remove', ','.join(packages),
+                        packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        cls.cache_changed()
     @classmethod
     def neet_to_run_apt_get_update(cls):
         cls.apt_get_update_is_called = False
     @classmethod
     def apt_get_update(cls):
-        # (c) 2005-2007 Canonical, GPL
-        print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        run_as_root_in_terminal('apt-get update')
-        cls.apt_get_update_is_called = True
-        cls.cache_changed()
+        if cls.apt_get_update_is_called == False:
+            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            cls.apt_get_update_is_called = True
+            cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
         for package in packages:
-            if VERSION>='lucid': # -n == non-interactive
-                run_as_root('gdebi-gtk -n --auto-close %s' % package)
-            else:
-                run_as_root('gdebi-gtk -n %s' % package)
+            daemon().apt_command('install_local', package,
+                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
 
 class PACMAN:
