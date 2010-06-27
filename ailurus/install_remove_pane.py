@@ -25,6 +25,7 @@ import gtk
 from lib import *
 from libu import *
 from libapp import *
+from loader import AppObjs
 
 class Category:
     def __init__(self, text, icon_path, category, class_name):
@@ -352,8 +353,7 @@ class InstallRemovePane(gtk.VBox):
                     obj.remove()
                 except: f_r += [(obj, sys.exc_info())]
             
-            for o in self.app_objs:
-                o.showed_in_toggle = o.cache_installed = o.installed()
+            AppObjs.all_objs_reset_status()
             
             for obj in to_install:
                 try:
