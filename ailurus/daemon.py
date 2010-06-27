@@ -30,7 +30,7 @@ import subprocess
 import ctypes
 import gc
 try:
-    import apt, apt_pkg
+    import apt, apt_pkg, apt.debfile
 except ImportError: # This is not Debian or Ubuntu
     pass
 else:
@@ -304,7 +304,11 @@ class AilurusFulgens(dbus.service.Object):
     def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self.apt_cache)
         if not deb.check(): raise LocalDebPackageResolutionError
-        deb.install()
+        window, progress = self._window()
+        self.unlock_apt_pkg_global_lock()
+        deb.install(progress.dpkg_install)
+        apt_pkg.PkgSystemLock()
+        window.destroy()
 
     def apt_update(self):
         try:
@@ -314,14 +318,13 @@ class AilurusFulgens(dbus.service.Object):
 
     def _window(self):
         import gtk
-        import apt
         import apt.progress.gtk2
         window = gtk.Window()
         window.set_position(gtk.WIN_POS_CENTER)
         window.set_deletable(False)
         window.set_resizable(False)
+        window.set_default_size(300, -1)
         progress = apt.progress.gtk2.GtkAptProgress()
-        progress.set_size_request(300, -1)
         window.add(progress)
         window.show_all()
         return window, progress
