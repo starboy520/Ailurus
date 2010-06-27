@@ -266,6 +266,21 @@ elif FEDORA: import fedora as distribution
 elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
+def load_app_objs():
+    AppObjs.set_basic_modules(common, desktop, distribution)
+
+    AppObjs.load_from_text_file()
+    AppObjs.load_from_basic_modules()
+    AppObjs.load_from_extensions()
+
+    AppObjs.strip_invisible()
+    AppObjs.strip_wrong_locale()
+
+    AppObjs.all_objs_reload_icon()
+    AppObjs.all_objs_reset_status()
+    
+    return AppObjs.appobjs
+
 if __name__ == '__main__':
     APT.get_existing_pkgs_set()
     
