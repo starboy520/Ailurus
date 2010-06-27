@@ -177,8 +177,8 @@ class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', in_signature='sss', out_signature='', sender_keyword='sender')
     def apt_command(self, command, argument, display, sender=None):
         self.check_permission(sender)
-        self.apt_lock_cache(sender)
         try:
+            self.apt_lock_cache(sender)
             os.putenv('DISPLAY', display)
             self.apt_open_cache()
             if command == 'install':
