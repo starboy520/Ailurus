@@ -45,6 +45,8 @@ class I:
     detail = ''
     how_to_install = ''
     download_url = ''
+    cache_installed = showed_in_toggle = None # boolean
+    logo_pixbuf = None # gtk.gdk.Pixbuf
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -59,6 +61,8 @@ class I:
         'Add repository before installing me'
     def clean_temp_repository(self):
         'Remove repository after installing me'
+    def visible(self):
+        return True
 
 class C:
     this_is_a_cure = True
@@ -80,10 +84,6 @@ class Config:
         if not os.path.exists(dir): # make directory
             try:    os.makedirs(dir)
             except: pass # directory exists
-        if os.stat(dir).st_uid != os.getuid(): # change owner
-            run_as_root('chown $USER:$USER "%s"'%dir)
-        if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
-            os.chmod(dir, 0755)
     @classmethod
     def get_config_dir(cls):
         return cls.config_dir
@@ -500,56 +500,46 @@ def packed_env_string():
     env['PWD'] = os.getcwd()
     return pack(env)
 
-def get_dbus_daemon_version():
+def daemon():
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
+    return obj
+
+def get_dbus_daemon_version():
+    ret = daemon().get_version(dbus_interface='cn.ailurus.Interface')
     return ret    
 
 def restart_dbus_daemon():
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.exit(dbus_interface='cn.ailurus.Interface')
+    daemon().exit(dbus_interface='cn.ailurus.Interface')
 
 def get_authentication_method():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_check_permission_method(dbus_interface='cn.ailurus.Interface')
+    ret = daemon().get_check_permission_method(dbus_interface='cn.ailurus.Interface')
     ret = int(ret)
-    assert ret == 0 or ret == 1, ret
     return ret
 
 def authenticate():
     if get_authentication_method() == 0:
-        import dbus
+        import dbus, os
         bus = dbus.SessionBus()
         policykit = bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
-        import os
         policykit.ObtainAuthorization('cn.ailurus', dbus.UInt32(0), dbus.UInt32(os.getpid()))
 
 def spawn_as_root(command):
     is_string_not_empty(command)
     
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), secret_key, dbus_interface='cn.ailurus.Interface')
+    daemon().spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
 def drop_priviledge():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
+    daemon().drop_priviledge(dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
 
 def run_as_root(cmd, ignore_error=False):
+    import dbus
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
     
@@ -560,11 +550,8 @@ def run_as_root(cmd, ignore_error=False):
     
     print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(cmd, packed_env_string(), secret_key, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(cmd, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
@@ -715,6 +702,7 @@ def is_pkg_list(packages):
         if ' ' in package: raise ValueError
 
 def run_as_root_in_terminal(command):
+    import dbus
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
@@ -725,11 +713,8 @@ def run_as_root_in_terminal(command):
     string = 'LANG=C xterm -T "Ailurus Terminal" -e bash %s' % t.name
 
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(string, packed_env_string(), secret_key, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(string, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
@@ -804,8 +789,7 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    installed_set = set()
-    avail_set = set()
+    apt_cache = None
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -813,94 +797,78 @@ class APT:
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
-        cls.installed_set.clear()
-        cls.avail_set.clear()
-        import subprocess, os
-        path = A+'/support/dump_deb_installed.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        for line in task.stdout:
-            cls.installed_set.add(line.rstrip())
-        task.wait()
-        path = A+'/support/dump_deb_existing.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        for line in task.stdout:
-            cls.avail_set.add(line.rstrip())
-        task.wait()
+        import apt
+        cls.apt_cache = apt.cache.Cache()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.installed_set
+        ret = set()
+        for pkg in cls.apt_cache:
+            if pkg.isInstalled:
+                ret.add(pkg.name)
+        return ret
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.avail_set
+        ret = set()
+        for pkg in cls.apt_cache:
+            ret.add(pkg.name)
+        return ret
     @classmethod
     def get_autoremovable_pkgs(cls):
+        cls.refresh_cache()
         ret = []
-        import subprocess, os
-        path = A+'/support/dump_apt_autoremovable.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        class EndOfStream:
-            pass
-        def readline(stream):
-            line = stream.readline()
-            if len(line) == 0: raise EndOfStream
-            return line.strip()
-        try:
-            while True:
-                name = readline(task.stdout)
-                size = readline(task.stdout)
-                size = long(size)
-                summary = readline(task.stdout)
-                ret.append([name, size, summary,])
-        except EndOfStream:
-            pass
-        task.wait()
+        for pkg in cls.apt_cache:
+            if hasattr(pkg, 'isAutoRemovable'): auto_removable = pkg.isAutoRemovable
+            elif pkg.isInstalled and pkg._depcache.IsGarbage(pkg._pkg): auto_removable = True
+            else: auto_removable = True
+            
+            if auto_removable:
+                ret.append([pkg.name, long(pkg.installedSize), pkg.summary.replace('\n', ' ')])
         return ret
     @classmethod
     def installed(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.installed_set
+        if not package_name in cls.apt_cache:
+            return False
+        return cls.apt_cache[package_name].isInstalled
     @classmethod
     def exist(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.installed_set or package_name in cls.avail_set
+        return package_name in cls.apt_cache
     @classmethod
     def install(cls, *packages):
         is_pkg_list(packages)
-        if cls.apt_get_update_is_called == False:
-            cls.apt_get_update()
+        cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        # use "force-yes" because playonlinux repository has no gpg key, we want to install it without key.
-        run_as_root_in_terminal('apt-get install -y --force-yes ' + ' '.join(packages))
-        APT.cache_changed()
+        daemon().apt_command('install', ','.join(packages),
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        packages = [p for p in packages if APT.installed(p)]
-        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
-        APT.cache_changed()
+        daemon().apt_command('remove', ','.join(packages),
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        cls.cache_changed()
     @classmethod
     def neet_to_run_apt_get_update(cls):
         cls.apt_get_update_is_called = False
     @classmethod
     def apt_get_update(cls):
-        # (c) 2005-2007 Canonical, GPL
-        print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        run_as_root_in_terminal('apt-get update')
-        cls.apt_get_update_is_called = True
-        cls.cache_changed()
+        if cls.apt_get_update_is_called == False:
+            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            cls.apt_get_update_is_called = True
+            cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
         for package in packages:
-            if VERSION>='lucid': # -n == non-interactive
-                run_as_root('gdebi-gtk -n --auto-close %s' % package)
-            else:
-                run_as_root('gdebi-gtk -n %s' % package)
+            daemon().apt_command('install_local', package,
+                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
+    @classmethod
+    def is_cache_lockable(cls):
+        return daemon().is_apt_cache_lockable(dbus_interface='cn.ailurus.Interface')
 
 class PACMAN:
     fresh_cache = False
@@ -1884,9 +1852,6 @@ try:
     pynotify.init('Ailurus')
 except:
     print 'Cannot init pynotify'
-
-import random
-secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 UBUNTU = Config.is_Ubuntu()
 UBUNTU_DERIV = False # True value means Ubuntu derivative. For Ubuntu it is False. For Mint it is True.
