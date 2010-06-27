@@ -251,7 +251,7 @@ class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', in_signature='s', out_signature='')
     def apt_open_cache(self, display):
         os.putenv('DISPLAY', display)
-        window, progress = self.create_window()
+        window, progress = self.create_apt_window()
         if self.apt_cache: self.apt_cache.open(progress.open)
         else: self.apt_cache = apt.cache.Cache(progress.open)
         window.destroy()
@@ -281,7 +281,7 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_install()
-        window, progress = self.create_window()
+        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
@@ -295,7 +295,7 @@ class AilurusFulgens(dbus.service.Object):
             else:
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_delete()
-        window, progress = self.create_window()
+        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
         self.apt_cache.commit(progress.fetch, progress.install)
         apt_pkg.PkgSystemLock()
@@ -304,7 +304,7 @@ class AilurusFulgens(dbus.service.Object):
     def apt_install_local(self, package_path):
         deb = apt.debfile.DebPackage(package_path, self.apt_cache)
         if not deb.check(): raise LocalDebPackageResolutionError
-        window, progress = self.create_window()
+        window, progress = self.create_apt_window()
         self.unlock_apt_pkg_global_lock()
         (install, remove, unauth) = deb.required_changes
         for name in install:
@@ -318,11 +318,11 @@ class AilurusFulgens(dbus.service.Object):
 
     def apt_update(self):
         try:
-            window, progress = self.create_window()
+            window, progress = self.create_apt_window()
             self.apt_cache.update(progress.fetch)
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
 
-    def create_window(self):
+    def create_apt_window(self):
         import gtk
         import apt.progress.gtk2
         window = gtk.Window()
