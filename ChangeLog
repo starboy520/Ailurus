@@ -2,6 +2,7 @@
 
     * Display lock path if failed to lock.
     * Create lock directory if necessary.
+    * Fix bug: No option 'login_window_background'
 
 2010-06-27 Homer Xing <homer.xing@gmail.com>
 
