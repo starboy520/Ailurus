@@ -852,3 +852,7 @@ ubuntu = youtube-dl
 [Unetbootin]
 category = others
 ubuntu = unetbootin
+
+[Pino]
+category = blog
+fedora = pino
