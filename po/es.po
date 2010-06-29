@@ -8,14 +8,14 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-06-27 21:17+0800\n"
-"PO-Revision-Date: 2010-06-27 04:24+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"PO-Revision-Date: 2010-06-28 19:58+0000\n"
+"Last-Translator: jamz3243 <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-06-28 03:55+0000\n"
+"X-Launchpad-Export-Date: 2010-06-29 03:48+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -55,7 +55,7 @@ msgstr "Caché de APT"
 #: ../ailurus/support/terminal.py:71
 #: ../ailurus/support/terminal_single_thread.py:53
 msgid "Run command:"
-msgstr "Ejecutar comando:"
+msgstr "Ejecutar orden:"
 
 #: ../ailurus/clean_up_pane.py:79 ../ailurus/clean_up_pane.py:96
 #: ../ailurus/clean_up_pane.py:110 ../ailurus/clean_up_pane.py:124
@@ -4819,6 +4819,7 @@ msgstr ""
 "  Matthias Metzger https://launchpad.net/~macellarius\n"
 "  Monkey https://launchpad.net/~monkey-libre\n"
 "  Ramon Villalonga Gómez https://launchpad.net/~ramonvillalongagomez\n"
+"  jamz3243 https://launchpad.net/~joedoe47\n"
 "  victor tejada yau https://launchpad.net/~victormtyau"
 
 #: ../ailurus/support/checkupdate.py:139

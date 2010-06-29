@@ -8,15 +8,15 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-06-27 21:17+0800\n"
-"PO-Revision-Date: 2010-06-27 18:13+0000\n"
-"Last-Translator: Omar <Omar.w.kh@gmail.com>\n"
+"PO-Revision-Date: 2010-06-28 22:37+0000\n"
+"Last-Translator: منصور اليوسف <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n % 100 >= "
 "3 && n % 100 <= 10 ? 3 : n % 100 >= 11 && n % 100 <= 99 ? 4 : 5;\n"
-"X-Launchpad-Export-Date: 2010-06-28 03:53+0000\n"
+"X-Launchpad-Export-Date: 2010-06-29 03:47+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -147,7 +147,7 @@ msgstr "حذف"
 
 #: ../ailurus/clean_up_pane.py:385 ../ailurus/ubuntu/quick_setup.py:210
 msgid "Scanning installed packages."
-msgstr ""
+msgstr "يفحص الحزم المثبتة."
 
 #: ../ailurus/clean_up_pane.py:385 ../ailurus/ubuntu/quick_setup.py:210
 msgid "Please wait a few seconds."
@@ -289,7 +289,7 @@ msgstr ""
 
 #: ../ailurus/common/apps.py:247
 msgid "Flashgot: A lightweight and reliable download managers"
-msgstr ""
+msgstr "Flashgot: مدير تحميل خفيف وموثوق به ."
 
 #: ../ailurus/common/apps.py:249
 msgid ""
@@ -300,7 +300,7 @@ msgstr ""
 
 #: ../ailurus/common/apps.py:255
 msgid "FoxyProxy: One-click switching proxy"
-msgstr ""
+msgstr "FoxyProxy: بنقرة واحدة لتبديل البروكسي"
 
 #: ../ailurus/common/apps.py:263
 msgid "GMarks: Synchronize bookmarks with Google Bookmarks service"
@@ -368,6 +368,7 @@ msgstr ""
 #: ../ailurus/common/apps.py:339
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
+"User Agent Switcher: اضافة لفايروفوكس ليجعله يتصفح بجميع انواع المتصفحات ."
 
 #: ../ailurus/common/apps.py:341
 msgid "It tells the remote websites that you are an IE user."
@@ -691,7 +692,7 @@ msgstr ""
 
 #: ../ailurus/common/menu.py:210
 msgid "Ailurus blog"
-msgstr "مدوّنة Ailurus"
+msgstr "مدوّنة آيلورَس"
 
 #: ../ailurus/common/menu.py:214
 msgid "Check for updates"
@@ -719,7 +720,7 @@ msgstr ""
 
 #: ../ailurus/common/osinfo.py:29
 msgid "Host name:"
-msgstr ""
+msgstr "اسم المضيف:"
 
 #: ../ailurus/common/osinfo.py:35
 msgid "Kernel version:"
@@ -2877,7 +2878,7 @@ msgstr ""
 #. game
 #: ../ailurus/install_remove_pane.py:110
 msgid "Game"
-msgstr ""
+msgstr "العاب"
 
 #. antivirus
 #: ../ailurus/install_remove_pane.py:112
@@ -2903,7 +2904,7 @@ msgstr ""
 msgid ""
 "Install\n"
 "Software"
-msgstr ""
+msgstr "تثبيت برمجيات"
 
 #: ../ailurus/install_remove_pane.py:215
 msgid "To be installed:\n"
@@ -2988,7 +2989,7 @@ msgstr ""
 
 #: ../ailurus/install_remove_pane.py:370
 msgid "Failed to install:"
-msgstr ""
+msgstr "فشل في تثبيت :"
 
 #: ../ailurus/install_remove_pane.py:376
 msgid "Failed to remove:"
@@ -3350,7 +3351,7 @@ msgstr ""
 
 #: ../ailurus/main.py:190
 msgid "Please re-install Ailurus."
-msgstr ""
+msgstr "الرجاء إعد تثبيت آيلورَس."
 
 #: ../ailurus/main.py:191
 msgid "Because file contents are different:"
@@ -3384,7 +3385,7 @@ msgstr ""
 
 #: ../ailurus/main.py:339
 msgid "Quit"
-msgstr ""
+msgstr "خروج"
 
 #: ../ailurus/main.py:347
 msgid "Default pane"
@@ -3392,7 +3393,7 @@ msgstr ""
 
 #: ../ailurus/main.py:351
 msgid "Preferences"
-msgstr ""
+msgstr "خيارات"
 
 #: ../ailurus/main.py:354
 msgid ""
@@ -4263,7 +4264,7 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:95
 msgid "You are using the latest Ailurus :)"
-msgstr ""
+msgstr "أنت تستخدم اخر نسخة من آيلورَس :)"
 
 #: ../ailurus/support/checkupdate.py:117
 msgid "Project homepage"
@@ -4289,7 +4290,8 @@ msgstr ""
 "  Omar https://launchpad.net/~omar-w-kh\n"
 "  alz3abi https://launchpad.net/~h-alz3abi\n"
 "  s3ode@live.nl https://launchpad.net/~morsel\n"
-"  someone https://launchpad.net/~somehow"
+"  someone https://launchpad.net/~somehow\n"
+"  منصور اليوسف https://launchpad.net/~mansour2008"
 
 #: ../ailurus/support/checkupdate.py:139
 msgid ""
@@ -4300,7 +4302,7 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:140
 msgid "Copyright © 2009-2010, Ailurus Developers Team"
-msgstr ""
+msgstr "جميع الحقوق محفوظة © 2009-2010, فريق مطورين آيلورَس"
 
 #: ../ailurus/support/checkupdate.py:168
 #, python-format
@@ -4376,15 +4378,15 @@ msgstr ""
 
 #: ../ailurus/support/searchbox.py:32
 msgid "Search items:"
-msgstr ""
+msgstr "عناصر البحث :"
 
 #: ../ailurus/support/searchbox.py:41
 msgid "In names only."
-msgstr ""
+msgstr "بالاسماء فقط"
 
 #: ../ailurus/support/searchbox.py:42
 msgid "In names & details."
-msgstr ""
+msgstr "بالاسماء والتفاصيل"
 
 #: ../ailurus/support/searchbox.py:68
 msgid "Search"
@@ -4463,11 +4465,11 @@ msgstr "الطرفية"
 
 #: ../ailurus/system_setting_pane.py:56
 msgid "Sound"
-msgstr ""
+msgstr "الصوت"
 
 #: ../ailurus/system_setting_pane.py:57
 msgid "Power management"
-msgstr ""
+msgstr "إدارة الطاقة"
 
 #: ../ailurus/system_setting_pane.py:58
 msgid "Network"
@@ -4483,7 +4485,7 @@ msgstr ""
 
 #: ../ailurus/system_setting_pane.py:63
 msgid "Host name"
-msgstr ""
+msgstr "اسم المضيف"
 
 #: ../ailurus/system_setting_pane.py:64
 msgid "Login window"
@@ -4825,7 +4827,7 @@ msgstr ""
 
 #: ../ailurus/ubuntu/quick_setup.py:78
 msgid "Search fastest repository"
-msgstr ""
+msgstr "بحثن عن اسرع مستودع"
 
 #: ../ailurus/ubuntu/quick_setup.py:79
 msgid "Full language support and input method"
@@ -4891,7 +4893,7 @@ msgstr ""
 
 #: ../ailurus/ubuntu/quick_setup.py:227
 msgid "Searching the fastest repository"
-msgstr ""
+msgstr "يبحث عن اسرع مستودع"
 
 #: ../ailurus/ubuntu/quick_setup.py:267
 #, python-format
