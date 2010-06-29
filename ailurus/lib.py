@@ -868,7 +868,15 @@ class APT:
         cls.cache_changed()
     @classmethod
     def is_cache_lockable(cls):
-        return daemon().is_apt_cache_lockable(dbus_interface='cn.ailurus.Interface')
+        import dbus
+        try:
+            daemon().is_apt_cache_lockable(dbus_interface='cn.ailurus.Interface')
+        except dbus.exceptions.DBusException, e:
+            if e.get_dbus_name() == 'cn.ailurus.CannotLockAptCacheError':
+                raise CannotLockAptCacheError(e.get_dbus_message())
+
+class CannotLockAptCacheError(Exception):
+    'Cannot lock apt cache'
 
 class PACMAN:
     fresh_cache = False

@@ -36,7 +36,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 8 # must be integer
+version = 9 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -215,7 +215,7 @@ class AilurusFulgens(dbus.service.Object):
         # The return result is the fd of the file, the call should call close at some time
         lock = apt_pkg.GetLock(lockfile)
         if lock < 0:
-            raise CannotLockAptCacheError
+            raise CannotLockAptCacheError(lockfile)
         self.lock1_fd = lock
         # /var/cache/apt/archives/lock,
         # try the lock in /var/cache/apt/archive/lock first
@@ -225,12 +225,12 @@ class AilurusFulgens(dbus.service.Object):
         lockfile = apt_pkg.Config.FindDir("Dir::Cache::Archives") + "lock"
         lock = apt_pkg.GetLock(lockfile)
         if lock < 0:
-            raise CannotLockAptCacheError
+            raise CannotLockAptCacheError(lockfile)
         self.lock2_fd = lock
         try:
             apt_pkg.PkgSystemLock()
         except SystemError:
-            raise CannotLockAptCacheError
+            raise CannotLockAptCacheError('apt_pkg.PkgSystemLock')
         self.holding_apt_lock = True
     
     @dbus.service.method('cn.ailurus.Interface', in_signature='', out_signature='b')
@@ -240,8 +240,6 @@ class AilurusFulgens(dbus.service.Object):
         try:
             self.apt_lock_cache()
             return True
-        except:
-            return False
         finally:
             self.apt_unlock_cache()
 

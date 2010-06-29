@@ -1,3 +1,7 @@
+2010-06-29 Homer Xing <homer.xing@gmail.com>
+
+    * Display lock path if failed to lock. Hope it works :P
+
 2010-06-27 Homer Xing <homer.xing@gmail.com>
 
     * Try to lock apt cache before install software
