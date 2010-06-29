@@ -420,7 +420,7 @@ class ResponseTime:
     def load(cls):
         import os
         try:
-            path = Config.get_config_dir() + 'response_time_2'
+            path = Config.get_config_dir() + 'response_time_3'
             if not os.path.exists(path): return
             with open(path) as f:
                 lines = f.readlines()
@@ -434,7 +434,7 @@ class ResponseTime:
     def save(cls):
         if not cls.changed: return
         try:
-            path = Config.get_config_dir() + 'response_time_2'
+            path = Config.get_config_dir() + 'response_time_3'
             with open(path, 'w') as f:
                 for key, value in cls.map.items():
                     print >>f, key

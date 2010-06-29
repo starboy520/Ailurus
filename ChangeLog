@@ -4,6 +4,7 @@
     * Create lock directory if necessary.
     * Fix bug: No option 'login_window_background'
     * Do not install Realplayer. It cannot be removed by yum.
+    * Fedora server response time may exceed 10 seconds. 
 
 2010-06-27 Homer Xing <homer.xing@gmail.com>
 

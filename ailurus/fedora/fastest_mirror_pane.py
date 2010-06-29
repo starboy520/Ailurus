@@ -32,7 +32,7 @@ class FedoraFastestMirrorPane(gtk.VBox):
     text = _('Fastest\nRepository')
 
     COUNTRY, ORG, URL, RESPONSE_TIME = range(4)
-    NO_PING_RESPONSE = 10000
+    NO_PING_RESPONSE = 100000000
     NOT_DETECTED = NO_PING_RESPONSE + 1
     
     def __repository_visibility_function(self, treestore, iter):
