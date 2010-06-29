@@ -1,6 +1,7 @@
 2010-06-29 Homer Xing <homer.xing@gmail.com>
 
-    * Display lock path if failed to lock. Hope it works :P
+    * Display lock path if failed to lock.
+    * Create lock directory if necessary.
 
 2010-06-27 Homer Xing <homer.xing@gmail.com>
 
