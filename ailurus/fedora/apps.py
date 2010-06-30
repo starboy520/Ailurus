@@ -34,10 +34,9 @@ class Disable_SELinux(I):
     #   disabled - No SELinux policy is loaded.
     selinux_sysconfig = "/etc/sysconfig/selinux"
     selinux_config    = "/etc/selinux/config"
+    def visible(self):
+        return os.path.exists(self.selinux_sysconfig) and os.path.exists(self.selinux_config)
     def installed(self):
-        if not os.path.exists(self.selinux_sysconfig): return False
-        if not os.path.exists(self.selinux_config): return False
-        
         with open(self.selinux_sysconfig) as f:
             c = f.read()
         if 'SELINUX=enforcing' in c: return False
