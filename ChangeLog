@@ -1,3 +1,7 @@
+2010-06-29 Ray Chen <chenrano2002@gmail.com>
+
+    * Fix Issue 729: load panel failed when there is no selinx on Fedora
+
 2010-06-29 Homer Xing <homer.xing@gmail.com>
 
     * Display lock path if failed to lock.
