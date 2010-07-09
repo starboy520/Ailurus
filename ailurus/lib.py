@@ -47,6 +47,7 @@ class I:
     download_url = ''
     cache_installed = showed_in_toggle = None # boolean
     logo_pixbuf = None # gtk.gdk.Pixbuf
+    use_default_icon = None # boolean
     def self_check(self):
         'check errors in source code'
     def fill(self):

@@ -34,15 +34,17 @@ class AppObjs:
     failed_extensions = []
     @classmethod
     def get_icon_path(cls, name):
+        'return (icon path, whether it is default icon)'
         for dir in [D+'appicons/', D+'umut_icons/', D+'sora_icons/',]:
             path = dir + name + '.png'
-            if os.path.exists(path): return path
-        return D + 'sora_icons/default_application_icon.png'
+            if os.path.exists(path): return (path, False)
+        return (D + 'sora_icons/default_application_icon.png', True)
     @classmethod
     def all_objs_reload_icon(cls):
         for obj in cls.appobjs:
             name = obj.__class__.__name__
-            obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(cls.get_icon_path(name), 32, 32)
+            icon_path, obj.use_default_icon = cls.get_icon_path(name)
+            obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
     @classmethod
     def all_objs_reset_status(cls):
         for obj in cls.appobjs:
