@@ -57,7 +57,7 @@ def get_candidate_repositories():
         assert '://' in e[2]
         assert '.' in e[3], e
         server = e[3]
-        if not server in all_servers:
+        if not server in all_servers: # do not add repeated server
             all_servers.add(server)
             ret.append(e)
     

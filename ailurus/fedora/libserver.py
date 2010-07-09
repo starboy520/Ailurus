@@ -284,13 +284,17 @@ __country_codes = {
 }
 
 def all_candidate_repositories():
-    ret = __set1() + __set2()
-    for e in ret:
+    ret = []
+    
+    all_urls = set()
+    for e in __set1() + __set2():
         assert len(e) == 3
-        try:
-            e[0] = __country_codes[e[0]]
-        except KeyError:
-            pass
-        assert not e[2].endswith('/')
+        try: e[0] = __country_codes[e[0]]
+        except KeyError: pass
+        url = e[2]
+        assert '://' in url and '.' in url
+        if not url in all_urls: # do not add repeated server
+            all_urls.add(url)
+            ret.append(e)
         
     return ret
