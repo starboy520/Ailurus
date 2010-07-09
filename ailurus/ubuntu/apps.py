@@ -120,7 +120,7 @@ class DisableGetty(I):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 file_name = 'tty%s'%i
-                with TempOwn(file_name) as o:
+                with TempOwn(file_name):
                     with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
@@ -132,7 +132,7 @@ class DisableGetty(I):
         with Chdir('/etc/event.d/') as o:
             for i in range(2,7):
                 file_name = 'tty%s'%i
-                with TempOwn(file_name) as o:
+                with TempOwn(file_name):
                     with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
@@ -158,7 +158,7 @@ class DisableGettyKarmic(I):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
-                with TempOwn(filename) as o:
+                with TempOwn(filename):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
@@ -170,7 +170,7 @@ class DisableGettyKarmic(I):
         with Chdir('/etc/init/') as o:
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
-                with TempOwn(filename) as o:
+                with TempOwn(filename):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):

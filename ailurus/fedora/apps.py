@@ -47,7 +47,7 @@ class Disable_SELinux(I):
     def install(self):
         run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
-            with TempOwn(path) as o:
+            with TempOwn(path):
                 with open(path) as f:
                     lines = f.readlines()
                 for i, line in enumerate(lines):
@@ -57,7 +57,7 @@ class Disable_SELinux(I):
     def remove(self):
         run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
-            with TempOwn(path) as o:
+            with TempOwn(path):
                 with open(path) as f:
                     lines = f.readlines()
                 for i, line in enumerate(lines):

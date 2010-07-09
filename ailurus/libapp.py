@@ -382,7 +382,7 @@ def create_eclipse_icon():
     except:
         pass
     icon = '/usr/share/applications/eclipse.desktop'
-    with TempOwn(icon) as o:
+    with TempOwn(icon):
         with open(icon, 'w') as f:
             f.write('''[Desktop Entry]
 Name=Eclipse

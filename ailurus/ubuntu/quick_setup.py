@@ -45,7 +45,7 @@ if VERSION < 'lucid':
                 pass
             return True
         def install(self):
-            with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
                 with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                     content = f.read()
                 content = content.replace('>sans-serif<', '>sans serif<')

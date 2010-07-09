@@ -145,7 +145,7 @@ class Query_before_remove_a_lot_of_files(C) :
 #                content[i] = 'Name=%s\n'%_('Firefox without Pango (faster)')
 #        dir = '/usr/local/share/applications/'
 #        if not os.path.exists(dir): run_as_root('mkdir ' + dir)
-#        with TempOwn(dir + 'firefox.nopango.desktop') as o:
+#        with TempOwn(dir + 'firefox.nopango.desktop'):
 #            with open(dir + 'firefox.nopango.desktop', 'w') as f:
 #                f.writelines(content)
 #

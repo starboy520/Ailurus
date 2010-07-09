@@ -1065,7 +1065,7 @@ class APTSource2:
         assert isinstance(lines, list)
         assert isinstance(file_path, str)
         
-        with TempOwn(file_path) as o:
+        with TempOwn(file_path):
             with open(file_path) as f:
                 contents = f.readlines()
             if len(contents) and not contents[-1].endswith('\n'):
@@ -1090,7 +1090,7 @@ class APTSource2:
                     changed = True
                     break
         if changed:
-            with TempOwn(file_path) as o:
+            with TempOwn(file_path):
                 with open(file_path, 'w') as f:
                     f.writelines(contents)
     @classmethod
@@ -1178,12 +1178,12 @@ class APTSource2:
                     contents[i] = ''
                     changed = True
             if changed:
-                with TempOwn(file) as o:
+                with TempOwn(file):
                     with open(file, 'w') as f:
                         f.writelines(contents)
     @classmethod
     def add_official_url(cls, url):
-        with TempOwn('/etc/apt/sources.list') as o:
+        with TempOwn('/etc/apt/sources.list'):
             with open('/etc/apt/sources.list') as f:
                 contents = f.readlines()
             if len(contents) and not contents[-1].endswith('\n'):
@@ -1596,7 +1596,7 @@ class ETCEnvironment:
             List = self.values[key]
             self.values[key] = [e for e in List if not e in values]
     def save(self):
-        with TempOwn('/etc/environment') as o:
+        with TempOwn('/etc/environment'):
             f = open('/etc/environment', 'w')
             for key in self.keys:
                 if not self.values[key]: continue
@@ -1625,7 +1625,7 @@ class Chdir:
         os.chdir(self.oldpath)
 
 def create_file(path, content):
-    with TempOwn(path) as o:
+    with TempOwn(path):
         with open(path, 'w') as f:
             f.write(content)
 
@@ -1730,7 +1730,7 @@ class FedoraReposFile:
                 changed = True
 
         if not changed: return
-        with TempOwn(self.path) as o:
+        with TempOwn(self.path):
             with open(self.path, 'w') as f:
                 for section in self.sections:
                     section.write_to_stream(f)

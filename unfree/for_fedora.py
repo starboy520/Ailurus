@@ -46,7 +46,7 @@ class _repo(I):
             if lines[i].startswith('enabled='):
                 lines[i] = 'enabled=1\n'
                 if only_enable_first_appearance: break
-        with TempOwn(path) as o:
+        with TempOwn(path):
             with open(path, 'w') as f:
                 f.writelines(lines)
     @classmethod
@@ -56,7 +56,7 @@ class _repo(I):
         for i, line in enumerate(lines):
             if lines[i].startswith('enabled='):
                 lines[i] = 'enabled=0\n'
-        with TempOwn(path) as o:
+        with TempOwn(path):
             with open(path, 'w') as f:
                 f.writelines(lines)
 
@@ -92,7 +92,7 @@ class Repo_Skype(I):
         if _repo.exist(self.path):
             _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[skype]\n'
                         'name=Skype Repository\n'
@@ -172,7 +172,7 @@ class Repo_Google(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path, False)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[Google]\n'
                         'name=Google - i386\n'
@@ -201,7 +201,7 @@ class Repo_Google_Chrome(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 if is32(): arch = 'i386'
                 else: arch = 'x86_64'
                 
@@ -230,7 +230,7 @@ class Repo_VirtualBox(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[virtualbox]\n'
                         'name=Fedora $releasever - $basearch - VirtualBox\n'
@@ -362,7 +362,7 @@ class Repo_Chromium(I):
         if _repo.exist(self.path):
             _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[chromium]\n'
                             'name=Chromium Test Packages\n'
@@ -387,7 +387,7 @@ class ESETNOD32(I):
         run_as_root(f)
         if not is32():
             # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
-            with TempOwn('/etc/ld.so.preload') as o:
+            with TempOwn('/etc/ld.so.preload'):
                 with open('/etc/ld.so.preload') as f:
                     content = f.read()
                 with open('/etc/ld.so.preload', 'w') as f:

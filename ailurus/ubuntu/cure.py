@@ -50,7 +50,7 @@ class Fix_error_in_49_sansserif_conf(C):
         except IOError: # File does not exist
             return False
     def cure(self):
-        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans-serif<', '>sans serif<')
@@ -68,7 +68,7 @@ class Recover_49_sansserif_conf(C):
         except IOError: # File does not exist
             return False
     def cure(self):
-        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans serif<', '>sans-serif<')
@@ -103,7 +103,7 @@ class Fix_error_in_fontconfig_properties(C):
         except IOError:
             return False
     def cure(self):
-        with TempOwn(self.file) as o:
+        with TempOwn(self.file):
             with open(self.file) as f:
                 content = f.read()
             content = content.replace('/wqy-zenhei.ttf', '/wqy-zenhei.ttc')
@@ -124,7 +124,7 @@ class Fix_error_in_netbeans_shortcut(C):
         except IOError:
             return False
     def cure(self):
-        with TempOwn(self.file) as o:
+        with TempOwn(self.file):
             with open(self.file) as f:
                 lines = f.readlines()
             for i, line in enumerate(lines):
@@ -206,7 +206,7 @@ class Sources_list_is_using_wrong_code_name(C):
         return wrong
     def cure(self):
         for file in APTSource2.all_conf_files():
-            with TempOwn(file) as o:
+            with TempOwn(file):
                 with open(file) as f:
                     content = f.read()
                 for c in self.wrong_code_names:

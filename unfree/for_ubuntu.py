@@ -300,7 +300,7 @@ class ESETNOD32(I):
         run_as_root(f)
         if not is32():
             # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
-            with TempOwn('/etc/ld.so.preload') as o:
+            with TempOwn('/etc/ld.so.preload'):
                 with open('/etc/ld.so.preload') as f:
                     content = f.read()
                 with open('/etc/ld.so.preload', 'w') as f:
