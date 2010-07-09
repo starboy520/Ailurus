@@ -81,6 +81,25 @@ class AppObjs:
                 cls.appobjs.append(obj)
                 cls.appobjs_names.append(name)
     @classmethod
+    def all_installer_names_in_module(cls, module):
+        ret = set()
+        for name in dir(module):
+            if name.startswith('_') or name=='I' or name=='N': continue
+            app_class = getattr(module,name)
+            if not isinstance(app_class, types.ClassType): continue
+            if getattr(app_class, 'this_is_an_installer', False) == False: continue
+            ret.add(name)
+        return list(ret)
+    @classmethod
+    def all_installer_names_in_text_file(cls):
+        ret = set()
+        c = ConfigParser.RawConfigParser()
+        c.optionxform = str # case sensitive in option_name
+        c.read(A+'/native_apps')
+        for section_name in c.sections():
+            ret.add(section_name)
+        return list(ret)
+    @classmethod
     def get_extension_path(cls):
         for path in [A+'/../unfree/', Config.get_config_dir()]:
             if os.path.exists(path): return path
