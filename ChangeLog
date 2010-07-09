@@ -1,3 +1,79 @@
+2010-06-29 Ray Chen <chenrano2002@gmail.com>
+
+    * Fix Issue 729: load panel failed when there is no selinx on Fedora
+
+2010-06-29 Homer Xing <homer.xing@gmail.com>
+
+    * Display lock path if failed to lock.
+    * Create lock directory if necessary.
+    * Fix bug: No option 'login_window_background'
+    * Do not install Realplayer. It cannot be removed by yum.
+    * Fedora server response time may exceed 10 seconds. 
+
+2010-06-27 Homer Xing <homer.xing@gmail.com>
+
+    * Try to lock apt cache before install software
+
+2010-06-23 Homer Xing <homer.xing@gmail.com>
+
+    * Display size of swap partitions
+    * Example proxy string is selectable
+    * Hide bios & motherboard item if value is empty
+    * Return to original software list immediately after successfully install software
+
+2010-06-19 Homer Xing <homer.xing@gmail.com>
+
+    * Improve clean up pane. Reduce space cost.
+    * If the server has not been detected, then show nothing.
+    * Fix problems when disable getty.
+
+2010-06-19 MA Yue <velly.empire@gmail.com>
+
+    * Add a lot of applications icons
+
+2010-06-18 Homer Xing <homer.xing@gmail.com>
+
+    * Add youtube-dl, download youtube video software, in "Applications->File sharing" category
+    * Add unetbootin, create bootable USB flash disk, in "Applications->Other" category
+    * Add remastersys, backup your system to live cd, in "Applications->Other" category
+    * Improve local deb installation
+    * Do not list repositories when list all software items.
+    * Recover 49-sansserif.conf
+    * Improve software installation speed
+    * Display detailed information if software is from Launchpad or external repository
+
+2010-06-17 Homer Xing <homer.xing@gmail.com>
+
+    * Change login window background.
+
+2010-06-16 Homer Xing <homer.xing@gmail.com>
+
+    * Synchronize latest application data from web
+    * Automatically check new version
+    * Fix bug: bad file descriptor
+
+2010-06-15 QI Chengjie <starboy.qi@gmail.com>
+
+    * Add Adobe AIR
+
+2010-06-15 Homer Xing <homer.xing@gmail.com>
+
+    * Improve processing for AccessDeniedError
+    * Show a horizontal separator on main-view
+    * Hide 49-sansserif cure
+    * Improve icons fetch
+    * Support online synchronization
+    * Detect policykit
+    * Improve server list for Ubuntu and Fedora
+    * Improve MTJ server list
+    * Detect Poland software as the same way as Chinese software
+    * Add GMarks
+    * Improve software center pane
+
+2010-06-13 MA Yue <velly.empire@gmail.com>
+
+    * Complete all Firefox tweaks
+
 2010-06-12 Devil Wang <wxjeacen@gmail.com>
     
     * Add DOSBox to software pane
@@ -41,6 +117,10 @@
     * Do not try to read Firefox preference location if Firefox is not installed.
     * Fix bug: state is not refeshed after running quick setup.
     * Support proxy server.
+
+2010-06-03 MA Yue <velly.empire@gail.com>
+
+    * Add Flashblock, Ease Link and WebMail Notifier
 
 2010-06-02 Homer Xing <homer.xing@gmail.com>
 

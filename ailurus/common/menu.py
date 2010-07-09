@@ -69,6 +69,7 @@ def set_proxy_server():
     proxy_table.attach(proxy_string_entry, 1, 2, 0, 1)
     label_example = gtk.Label()
     label_example.set_markup('<small>%s</small>'%(_('Example:') + ' http://USERNAME:PASSWORD@inproxy.sjtu.edu.cn:PORTNUMBER/'))
+    label_example.set_selectable(True)
     proxy_table.attach(label_example, 1, 2, 1, 2, gtk.FILL, gtk.FILL)
     
     use_proxy = gtk.CheckButton(_('Use a proxy server'))
@@ -213,7 +214,8 @@ def __others():
     help_update = image_file_menuitem(_('Check for updates'), D+'suyun_icons/m_check_update.png', 16) 
     def callback(*w):
         while gtk.events_pending(): gtk.main_iteration()
-        check_update()
+        import thread
+        thread.start_new_thread(check_update, ())
     help_update.connect('activate', callback)
 
     help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16) 

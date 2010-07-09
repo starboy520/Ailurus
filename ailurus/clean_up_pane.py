@@ -39,11 +39,7 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(self.clean_nautilus_cache_button(), False)
         if UBUNTU or UBUNTU_DERIV:
             self.pack_start(self.clean_apt_cache_button(), False)
-            self.pack_start(UbuntuCleanKernelBox(), False)
-            hbox = gtk.HBox(True, 20)
-            hbox.pack_start(UbuntuAutoRemovableBox())
-            hbox.pack_start(UbuntuDeleteUnusedConfigBox())
-            self.pack_start(hbox)
+            self.pack_start(Ubuntu_dedicated_clean_up_box())
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
         elif ARCHLINUX:
@@ -76,8 +72,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
             notify(_('Run command:'), 'apt-get clean')
-            try: run_as_root_in_terminal('apt-get clean')
-            except AccessDeniedError: pass
+            run_as_root_in_terminal('apt-get clean')
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
@@ -91,8 +86,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size('/var/cache/yum/',please_return_integer=True)))
         def __clean_up(button, label):
             notify(_('Run command:'), "yum clean all")
-            try: run_as_root("yum clean all")
-            except AccessDeniedError: pass
+            run_as_root("yum clean all")
             label.set_text(self.get_button_text(_('RPM cache'), '/var/cache/yum/'))
             # Now all enabled repo's cache is clean. However, disabled repo's cache cannot be clean.
             # The remaining disk space is not zero. There are some blank directories in /var/cache/yum/
@@ -109,8 +103,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         def __clean_up(button, label):
             notify(_('Run command:'), 'rm /var/cache/ailurus/* -rf')
-            try: run_as_root('rm /var/cache/ailurus/* -rf')
-            except AccessDeniedError: pass
+            run_as_root('rm /var/cache/ailurus/* -rf')
             label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
@@ -124,8 +117,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         def __clean_up(button, label):
             notify(_('Run command:'), 'rm -rf /var/cache/pacman/pkg/*')
-            try: run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
-            except AccessDeniedError: pass
+            run_as_root('rm -rf /var/cache/pacman/pkg/*') #"pacman -Sc" does not work
             label.set_text(self.get_button_text(_('Pacman cache'), '/var/cache/pacman/pkg'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/pacman/pkg',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
@@ -220,11 +212,38 @@ class ReclaimMemoryBox(gtk.VBox):
             src = tempfile.NamedTemporaryFile('w')
             src.write('3\n')
             src.flush()
-            try: run_as_root('cp %s %s'%(src.name, dest) )
-            except AccessDeniedError: pass
+            run_as_root('cp %s %s'%(src.name, dest) )
             after = self.get_free_memory()
             amount = max(0, after - before)
             notify(' ', _('%s KB memory was reclaimed.') % amount)
+
+class Ubuntu_dedicated_clean_up_box(gtk.HBox):
+    def change_content(self, button):
+        if self.content_pane.get_children():
+            for child in self.content_pane.get_children():
+                self.content_pane.remove(child)
+        self.content_pane.pack_start(button.content)
+        self.content_pane.show_all()
+        
+    def __init__(self):
+        button_1 = gtk.Button(_('Auto-removable packages'))
+        button_1.content = UbuntuAutoRemovableBox()
+        button_1.connect('clicked', self.change_content)
+        button_2 = gtk.Button(_('Unused software configuration'))
+        button_2.content = UbuntuDeleteUnusedConfigBox()
+        button_2.connect('clicked', self.change_content)
+        button_3 = gtk.Button(_('Unused Linux kernels'))
+        button_3.content = UbuntuCleanKernelBox()
+        button_3.connect('clicked', self.change_content)
+        self.buttons_pane = gtk.VBox(False, 5)
+        self.buttons_pane.pack_start(button_1, False)
+        self.buttons_pane.pack_start(button_2, False)
+        self.buttons_pane.pack_start(button_3, False)
+        self.content_pane = gtk.VBox(False, 0)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(self.buttons_pane, False)
+        self.pack_start(self.content_pane)
+        button_1.emit('clicked')
 
 class UbuntuCleanKernelBox(gtk.HBox):
     def version_of_current_kernel(self):

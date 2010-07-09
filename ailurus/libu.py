@@ -22,6 +22,12 @@
 
 from __future__ import with_statement
 
+def scale_image(old_path, new_path, new_width, new_height):
+    import gtk
+    pixbuf = gtk.gdk.pixbuf_new_from_file(old_path)
+    pixbuf = pixbuf.scale_simple(new_width, new_height, gtk.gdk.INTERP_HYPER)
+    pixbuf.save(new_path, 'png')
+        
 def blank_pixbuf(width, height):
     import gtk
     pixbuf = gtk.gdk.Pixbuf(gtk.gdk.COLORSPACE_RGB, True, 8, width, height)
@@ -76,6 +82,14 @@ def image_file_button(label, image_file_name, size):
 def stock_image_only_button(stock):
     import gtk
     image = gtk.image_new_from_stock(stock, gtk.ICON_SIZE_BUTTON)
+    button = gtk.Button()
+    button.add(image)
+    return button
+
+def image_file_only_button(image_file_path, size):
+    import gtk
+    pixbuf = get_pixbuf(image_file_path, size, size)
+    image = gtk.image_new_from_pixbuf(pixbuf)
     button = gtk.Button()
     button.add(image)
     return button
@@ -191,13 +205,34 @@ def show_text_window(title, content, show_textbox_border = True, show_a_big_wind
     window.set_position(gtk.WIN_POS_CENTER)
     window.show_all()
 
+def do_access_denied_error():
+    import gtk
+    message = _('Operation is canceled because you refused authentication.\n'
+                'Authentication is provided by system PolicyKit service.\n'
+                'Ailurus does not know your password at all.')
+    label = gtk.Label(message)
+    label.set_alignment(0, 0.5)
+    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    button_close.connect('clicked', lambda w: window.destroy())
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(label, False)
+    vbox.pack_start(right_align(button_close), False)
+    window = gtk.Window()
+    window.set_title(_('Operation is canceled'))
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.add(vbox)
+    window.show_all()
+    
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk
-    from lib import AILURUS_VERSION, D
+    from lib import AILURUS_VERSION, D, AccessDeniedError, report_bug
 
     if etype == KeyboardInterrupt: return
+    if etype == AccessDeniedError: return do_access_denied_error()
     
     traceback.print_tb(tb, file=sys.stderr)
+    sys.stderr.flush()
     msg = StringIO.StringIO()
     traceback.print_tb(tb, file=msg)
     print >>msg, etype, ':', value

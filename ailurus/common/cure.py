@@ -161,19 +161,23 @@ class Show_a_Linux_skill_bubble(C):
     __doc__ = _('Show a random Linux skill after you log in to GNOME')
     detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
     file = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
+    content = ('[Desktop Entry]\n'
+               'Name=Show a random Linux skill after logging in.\n'
+               'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
+               'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
+               'Terminal=false\n'
+               'Type=Application\n'
+               'Icon=ailurus\n'
+               'Categories=System;\n'
+               'StartupNotify=false\n')
     def exists(self):
-        return not os.path.exists(self.file)
+        if not os.path.exists(self.file): return True
+        with open(self.file) as f:
+            if f.read() != self.content: return True
+        return False
     def cure(self):
         with open(self.file, 'w') as f:
-            f.write('[Desktop Entry]\n'
-                    'Name=Show a random Linux skill after logging in.\n'
-                    'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
-                    'Exec=/usr/share/ailurus/support/show-a-linux-skill-bubble\n'
-                    'Terminal=false\n'
-                    'Type=Application\n'
-                    'Icon=' + D + 'suyun_icons/shortcut.png\n'
-                    'Categories=System;\n'
-                    'StartupNotify=false\n')
+            f.write(self.content)
 
 class Own_usr_lib_eclipse_by_root(C):
     __doc__ = _('Let root own /usr/lib/eclipse and /usr/share/eclipse')
@@ -189,3 +193,14 @@ class Own_usr_lib_eclipse_by_root(C):
     def cure(self):
         run_as_root('chown -R root:root /usr/lib/eclipse', ignore_error=True)
         run_as_root('chown -R root:root /usr/share/eclipse', ignore_error=True)
+
+class Own_config_dir_by_user(C):
+    __doc__ = _('Let you be the owner of directory ~/.config/ailurus')
+    detail = _('Command:') + ' chown -R $USER:$USER ~/.config/ailurus'
+    type = C.MUST_FIX
+    def exists(self):
+        dir = Config.get_config_dir()
+        if os.stat(dir).st_uid != os.getuid():
+            return True
+    def cure(self):
+        run_as_root('chown -R $USER:$USER "%s"' % Config.get_config_dir())

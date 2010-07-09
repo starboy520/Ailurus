@@ -22,17 +22,31 @@
 
 from __future__ import with_statement
 
-def get_icons_path():
+def get_ailurus_path():
     import os
-    return os.path.dirname(os.path.abspath(__file__))+'/icons/'
+    return os.path.dirname(os.path.abspath(__file__))
+
+try:
+    A = get_ailurus_path()
+except: # raise exception in python console because __file__ is not defined
+    import os
+    A = os.path.expanduser('~/workspace/Ailurus/ailurus/')
+    assert os.path.exists(A), 'Please put ailurus code in ~/workspace/Ailurus/'
+D = A + '/icons/'
 
 def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
     return (text, value, icon, tooltip)
 
 class I:
     this_is_an_installer = True
+    this_is_a_repository = False
+    sane = True # False means installed() == False after calling install()
+    category = 'others'
+    detail = ''
     how_to_install = ''
     download_url = ''
+    cache_installed = showed_in_toggle = None # boolean
+    logo_pixbuf = None # gtk.gdk.Pixbuf
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -43,6 +57,12 @@ class I:
         raise NotImplementedError
     def remove(self):
         raise NotImplementedError
+    def add_temp_repository(self):
+        'Add repository before installing me'
+    def clean_temp_repository(self):
+        'Remove repository after installing me'
+    def visible(self):
+        return True
 
 class C:
     this_is_a_cure = True
@@ -64,10 +84,6 @@ class Config:
         if not os.path.exists(dir): # make directory
             try:    os.makedirs(dir)
             except: pass # directory exists
-        if os.stat(dir).st_uid != os.getuid(): # change owner
-            run_as_root('chown $USER:$USER "%s"'%dir)
-        if not os.access(dir, os.R_OK|os.W_OK|os.X_OK): # change access mode
-            os.chmod(dir, 0755)
     @classmethod
     def get_config_dir(cls):
         return cls.config_dir
@@ -133,6 +149,36 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_login_window_background(cls, value):
+        'just a cache. value may be wrong. cache the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'
+        cls.set_string('login_window_background', value)
+    @classmethod
+    def get_login_window_background(cls):
+        return cls.get_string('login_window_background') # please do not catch exception
+    @classmethod
+    def set_last_check_update_time_to_now(cls):
+        import time
+        value = long(time.time()) # the time as a floating point number expressed in seconds since the epoch, in UTC
+        cls.set_long('last_check_update_time', value)
+    @classmethod
+    def get_last_check_update_time(cls):
+        try: return cls.get_long('last_check_update_time')
+        except: return 0
+    @classmethod
+    def is_long_enough_since_last_check_update(cls):
+        import time
+        last_check_time = cls.get_last_check_update_time()
+        now = time.time() # the time as a floating point number expressed in seconds since the epoch, in UTC
+        one_day = 3600 * 24
+        return now - last_check_time > one_day * 14
+    @classmethod
+    def set_synced(cls): # has synchronized latest application data?
+        cls.set_bool('synced', True)
+    @classmethod
+    def get_synced(cls):
+        try: return cls.get_bool('synced')
+        except: return False
+    @classmethod
     def set_use_proxy(cls, value):
         cls.set_bool('use_proxy', value)
     @classmethod
@@ -147,12 +193,19 @@ class Config:
         # do not wrap it in try..except
         return cls.get_long('proxy_string_id_in_keyring')
     @classmethod
-    def set_hide_quick_setup_pane(cls, value):
-        cls.set_bool('hide_quick_setup_pane', value)
+    def set_show_quick_setup_area(cls, value):
+        cls.set_bool('show_quick_setup_area', value)
     @classmethod
-    def get_hide_quick_setup_pane(cls):
-        try:        return cls.get_bool('hide_quick_setup_pane')
-        except:     return False
+    def get_show_quick_setup_area(cls):
+        try:        return cls.get_bool('show_quick_setup_area')
+        except:     return True
+    @classmethod
+    def set_show_sync_area(cls, value):
+        cls.set_bool('show_sync_area', value)
+    @classmethod
+    def get_show_sync_area(cls):
+        try:        return cls.get_bool('show_sync_area')
+        except:     return True
     @classmethod
     def set_query_before_exit(cls, value):
         cls.set_bool('query_before_exit', value)
@@ -177,14 +230,6 @@ class Config:
     def wget_get_triesnum(cls):
         try:       value = cls.get_int('wget_triesnum')
         except: value = 3
-        return value
-    @classmethod
-    def set_show_software_icon(cls, value):
-        cls.set_bool('show_software_icon', value)
-    @classmethod
-    def get_show_software_icon(cls):
-        try: value = cls.get_bool('show_software_icon')
-        except: value = True
         return value
     @classmethod
     def set_default_pane(cls, value):
@@ -375,7 +420,7 @@ class ResponseTime:
     def load(cls):
         import os
         try:
-            path = Config.get_config_dir() + 'response_time_2'
+            path = Config.get_config_dir() + 'response_time_3'
             if not os.path.exists(path): return
             with open(path) as f:
                 lines = f.readlines()
@@ -389,7 +434,7 @@ class ResponseTime:
     def save(cls):
         if not cls.changed: return
         try:
-            path = Config.get_config_dir() + 'response_time_2'
+            path = Config.get_config_dir() + 'response_time_3'
             with open(path, 'w') as f:
                 for key, value in cls.map.items():
                     print >>f, key
@@ -455,56 +500,46 @@ def packed_env_string():
     env['PWD'] = os.getcwd()
     return pack(env)
 
-def get_dbus_daemon_version():
+def daemon():
     import dbus
     bus = dbus.SystemBus()
     obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_version(dbus_interface='cn.ailurus.Interface')
+    return obj
+
+def get_dbus_daemon_version():
+    ret = daemon().get_version(dbus_interface='cn.ailurus.Interface')
     return ret    
 
 def restart_dbus_daemon():
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.exit(dbus_interface='cn.ailurus.Interface')
+    daemon().exit(dbus_interface='cn.ailurus.Interface')
 
 def get_authentication_method():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    ret = obj.get_check_permission_method(dbus_interface='cn.ailurus.Interface')
+    ret = daemon().get_check_permission_method(dbus_interface='cn.ailurus.Interface')
     ret = int(ret)
-    assert ret == 0 or ret == 1, ret
     return ret
 
 def authenticate():
     if get_authentication_method() == 0:
-        import dbus
+        import dbus, os
         bus = dbus.SessionBus()
         policykit = bus.get_object('org.freedesktop.PolicyKit.AuthenticationAgent', '/')
-        import os
         policykit.ObtainAuthorization('cn.ailurus', dbus.UInt32(0), dbus.UInt32(os.getpid()))
 
 def spawn_as_root(command):
     is_string_not_empty(command)
     
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.spawn(command, packed_env_string(), secret_key, dbus_interface='cn.ailurus.Interface')
+    daemon().spawn(command, packed_env_string(), dbus_interface='cn.ailurus.Interface')
 
 def drop_priviledge():
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
-    obj.drop_priviledge(secret_key, dbus_interface='cn.ailurus.Interface')
+    daemon().drop_priviledge(dbus_interface='cn.ailurus.Interface')
     
 class AccessDeniedError(Exception):
     'User press cancel button in policykit window'
 
 def run_as_root(cmd, ignore_error=False):
+    import dbus
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
     
@@ -515,13 +550,12 @@ def run_as_root(cmd, ignore_error=False):
     
     print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(cmd, packed_env_string(), secret_key, ignore_error, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(cmd, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
+        elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
+            if not ignore_error: raise CommandFailError(cmd)
         else: raise
 
 def is_string_not_empty(string):
@@ -543,7 +577,7 @@ class TempOwn:
         if path[0]=='-':
             raise ValueError
         import os
-        dirname = os.path.dirname(path)
+        dirname = os.path.dirname(os.path.abspath(path))
         if not os.path.exists(dirname):
             run_as_root('mkdir "%s"'%dirname)
         if not os.path.exists(path):
@@ -668,6 +702,7 @@ def is_pkg_list(packages):
         if ' ' in package: raise ValueError
 
 def run_as_root_in_terminal(command):
+    import dbus
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
@@ -678,13 +713,12 @@ def run_as_root_in_terminal(command):
     string = 'LANG=C xterm -T "Ailurus Terminal" -e bash %s' % t.name
 
     authenticate()
-    import dbus
-    bus = dbus.SystemBus()
-    obj = bus.get_object('cn.ailurus', '/')
     try:
-        obj.run(string, packed_env_string(), secret_key, False, timeout=36000, dbus_interface='cn.ailurus.Interface')
+        daemon().run(string, packed_env_string(), timeout=36000, dbus_interface='cn.ailurus.Interface')
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
+        elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
+            if not ignore_error: raise CommandFailError(cmd)
         else: raise
 
 class RPM:
@@ -701,14 +735,14 @@ class RPM:
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_installed.py'
+        path = A+'/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/dump_rpm_existing_new.py'
+        path = A+'/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
             )
@@ -741,7 +775,6 @@ class RPM:
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
-        
         run_as_root_in_terminal('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
     @classmethod
@@ -756,126 +789,94 @@ class RPM:
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    __set1 = set() # __set1 consists of all installed software
-    __set2 = set() # __set2 = __set1 + all available software
+    apt_cache = None
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
-        cls.__set1 = set()
-        cls.__set2 = set()
-        import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dumpaptcache.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            name = line[2:-1]
-            if line[0]=='i': cls.__set1.add(name)
-            else: cls.__set2.add(name)
-        task.wait()
+        import apt
+        cls.apt_cache = apt.cache.Cache()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set1
+        ret = set()
+        for pkg in cls.apt_cache:
+            if pkg.isInstalled:
+                ret.add(pkg.name)
+        return ret
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set2
+        ret = set()
+        for pkg in cls.apt_cache:
+            ret.add(pkg.name)
+        return ret
     @classmethod
     def get_autoremovable_pkgs(cls):
+        cls.refresh_cache()
         ret = []
-        import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_autoremovable.py'
-        task = subprocess.Popen(['python', path], stdout=subprocess.PIPE)
-        class EndOfStream:
-            pass
-        def readline(stream):
-            line = stream.readline()
-            if len(line) == 0: raise EndOfStream
-            return line.strip()
-        try:
-            while True:
-                name = readline(task.stdout)
-                size = readline(task.stdout)
-                size = long(size)
-                summary = readline(task.stdout)
-                ret.append([name, size, summary,])
-        except EndOfStream:
-            pass
-        task.wait()
+        for pkg in cls.apt_cache:
+            if hasattr(pkg, 'isAutoRemovable'): auto_removable = pkg.isAutoRemovable
+            elif pkg.isInstalled and pkg._depcache.IsGarbage(pkg._pkg): auto_removable = True
+            else: auto_removable = True
+            
+            if auto_removable:
+                ret.append([pkg.name, long(pkg.installedSize), pkg.summary.replace('\n', ' ')])
         return ret
     @classmethod
     def installed(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.__set1
+        if not package_name in cls.apt_cache:
+            return False
+        return cls.apt_cache[package_name].isInstalled
     @classmethod
     def exist(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
-        return package_name in cls.__set1 or package_name in cls.__set2
+        return package_name in cls.apt_cache
     @classmethod
     def install(cls, *packages):
         is_pkg_list(packages)
-        if cls.apt_get_update_is_called == False:
-            cls.apt_get_update()
+        cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        # use "force-yes" because playonlinux repository has no gpg key, we want to install it without key.
-        run_as_root_in_terminal('apt-get install -y --force-yes ' + ' '.join(packages))
-        APT.cache_changed()
-        failed = [p for p in packages if not APT.installed(p)]
-        if failed:
-            msg = 'Cannot install "%s".' % ' '.join(failed)
-            raise CommandFailError(msg)
+        daemon().apt_command('install', ','.join(packages),
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
         print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        packages = [p for p in packages if APT.installed(p)]
-        run_as_root_in_terminal('apt-get remove -y ' + ' '.join(packages))
-        APT.cache_changed()
-        failed = [p for p in packages if APT.installed(p)]
-        if failed:
-            msg = 'Cannot remove "%s".' % ' '.join(failed)
-            raise CommandFailError(msg)
-    @classmethod
-    def apt_get_update(cls):
-        # (c) 2005-2007 Canonical, GPL
-        print '\x1b[1;36m', _('Run "apt-get update". Please wait for few minutes.'), '\x1b[m'
-        run_as_root_in_terminal('apt-get update')
-        cls.apt_get_update_is_called = True
+        daemon().apt_command('remove', ','.join(packages),
+                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
     @classmethod
-    def get_deb_depends(cls, filename):
-        is_pkg_list([filename])
-        import os, re
-        if not filename.endswith('.deb'): raise ValueError
-        if not os.path.exists(filename): raise ValueError
-        output = get_output('LANG=C dpkg --info %s' % filename)
-        match=re.search('Depends: (.*)', output)
-        if match is None: # no depends 
-            return [] 
-        items=match.group(1).split(',')
-        depends = []
-        for item in items:
-            depends.append(item.split()[0])
-        return depends
+    def neet_to_run_apt_get_update(cls):
+        cls.apt_get_update_is_called = False
+    @classmethod
+    def apt_get_update(cls):
+        if cls.apt_get_update_is_called == False:
+            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            cls.apt_get_update_is_called = True
+            cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
-        is_pkg_list(packages)
         for package in packages:
-            import os
-            if not package.endswith('.deb'): raise ValueError
-            if not os.path.exists(package): raise ValueError
-            depends = cls.get_deb_depends(package)
-            if len(depends):
-                cls.install(*depends)
-            run_as_root_in_terminal('dpkg --install --force-architecture %s'%package)
-            cls.cache_changed()
+            daemon().apt_command('install_local', package,
+                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        cls.cache_changed()
+    @classmethod
+    def is_cache_lockable(cls):
+        import dbus
+        try:
+            daemon().is_apt_cache_lockable(dbus_interface='cn.ailurus.Interface')
+        except dbus.exceptions.DBusException, e:
+            if e.get_dbus_name() == 'cn.ailurus.CannotLockAptCacheError':
+                raise CannotLockAptCacheError(e.get_dbus_message())
+
+class CannotLockAptCacheError(Exception):
+    'Cannot lock apt cache'
 
 class PACMAN:
     fresh_cache = False
@@ -927,10 +928,6 @@ class PACMAN:
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
         run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
-        failed = [p for p in packages if not PACMAN.installed(p)]
-        if failed:
-            msg = 'Cannot install "%s".' % ' '.join(failed)
-            raise CommandFailError(msg)
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
@@ -945,10 +942,6 @@ class PACMAN:
         packages = [p for p in packages if PACMAN.installed(p)]
         run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
-        failed = [p for p in packages if PACMAN.installed(p)]
-        if failed:
-            msg = 'Cannot remove "%s".' % ' '.join(failed)
-            raise CommandFailError(msg)
     @classmethod
     def pacman_sync(cls):
         print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
@@ -1032,7 +1025,7 @@ def download(url, filename):
     
 def reset_dir():
     import os, sys
-    os.chdir(os.path.dirname(os.path.abspath(__file__)))
+    os.chdir(A)
 
 class APTSource2:
     re_pattern_server = None
@@ -1049,15 +1042,12 @@ class APTSource2:
         for file in cls.all_conf_files():
             f = open(file)
             for line in f:
+                if not line.endswith('\n'): line += '\n'
                 yield line
             f.close()
     @classmethod
     def all_lines(cls):
-        ret = []
-        for file in cls.all_conf_files():
-            with open(file) as f:
-                ret.extend(f.readlines())
-        return ret
+        return [line for line in cls.iter_all_lines()]
     @classmethod
     def all_lines_contain(cls, snip):
         snip = cls.remove_comment(snip)
@@ -1642,73 +1632,6 @@ def print_traceback():
     import sys, traceback
     traceback.print_exc(file = sys.stderr)
 
-class Tasksel:
-    fresh_cache = False
-    set1 = set()
-    set2 = set()
-    @classmethod
-    def cache_changed(cls):
-        cls.fresh_cache = False
-    @classmethod
-    def refresh_cache(cls):
-        if cls.fresh_cache: return
-        cls.fresh_cache = True
-        cls.set1 = set()
-        cls.set2 = set()
-        s = get_output('tasksel --list-tasks', ignore_error=True)
-        for line in s.split('\n'):
-            if len(line) == 0: break
-            name = line.split()[1]
-            if line[0] == 'i':
-                cls.set1.add(name)
-            elif line[0] == 'u':
-                cls.set2.add(name)
-    @classmethod
-    def install_tasksel_package(cls):
-        if not APT.installed('tasksel'):
-            APT.install('tasksel')
-    @classmethod
-    def installed(cls, name):
-        is_string_not_empty(name)
-        cls.refresh_cache()
-        return name in cls.set1
-    @classmethod
-    def exists(cls, name):
-        is_string_not_empty(name)
-        cls.refresh_cache()
-        return name in cls.set1 or name in cls.set2
-    @classmethod
-    def get_packages(cls, name):
-        ret = []
-        output = get_output('tasksel --task-packages '+name)
-        for line in output.split('\n'):
-            if line.startswith('W: '): continue # skip warning messages, such as Duplicate sources.list entry
-            item = line.strip()
-            if item: ret.append(item)
-        return ret
-    @classmethod
-    def install(cls, name):
-        is_string_not_empty(name)
-        cls.install_tasksel_package()
-        APT.install( *cls.get_packages(name) )
-        cls.cache_changed()
-    @classmethod
-    def remove(cls, name):
-        print '\x1b[1;36m', _('Inspecting safely deletable packages. Please wait for a few minutes.') ,'\x1b[m'
-        import os
-        path = os.path.dirname(os.path.abspath(__file__)) + '/support/safely_deletable_pkgs.py'
-        command = ['python', path]
-        command.extend(cls.get_packages(name))
-        import subprocess
-        task = subprocess.Popen(command, stdout=subprocess.PIPE)
-        to_remove = []
-        for line in task.stdout:
-            to_remove.append(line.strip())
-        task.wait()
-        if to_remove:
-            APT.remove( *to_remove )
-            cls.cache_changed()
-
 def window_manager_name():
     """Returns window manager name"""
     # Thanks to Whise (Helder Fraga), we have this elegant function!
@@ -1826,23 +1749,16 @@ class FedoraReposFile:
 
 def get_ailurus_version():
     import os
-    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
+    path = A+'/version'
     with open(path) as f:
         return f.read().strip()
     
 def get_ailurus_release_date():
     import os, time
-    path = os.path.dirname(os.path.abspath(__file__)) + '/version'
+    path = A+'/version'
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
-try:
-    D = get_icons_path()
-except: # raise exception in python console because __file__ is not defined
-    import os
-    D = os.path.expanduser('~/workspace/Ailurus/ailurus/icons/')
-    assert os.path.exists(D)
-    
 try:
     AILURUS_VERSION = get_ailurus_version()
     AILURUS_RELEASE_DATE = get_ailurus_release_date()
@@ -1877,9 +1793,6 @@ try:
     pynotify.init('Ailurus')
 except:
     print 'Cannot init pynotify'
-
-import random
-secret_key = ''.join([chr(random.randint(97,122)) for i in range(0, 64)])
 
 UBUNTU = Config.is_Ubuntu()
 UBUNTU_DERIV = False # True value means Ubuntu derivative. For Ubuntu it is False. For Mint it is True.

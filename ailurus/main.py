@@ -87,11 +87,14 @@ def check_required_packages():
         fedora_missing.append('unzip')
         archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
+        ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/xterm'):
+        ubuntu_missing.append('xterm')
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
+
     try: # detect policykit version 0.9.x
         import dbus
         obj = dbus.SystemBus().get_object('org.freedesktop.PolicyKit', '/')
@@ -152,12 +155,13 @@ def check_dbus_daemon_status():
     from daemon import version as current_version
     same_version = (current_version == running_version)
     
+    daemon_current = A+'/daemon.py'
+    daemon_installed = '<None>'
     try:
         import ailurus
     except:
         same_daemon = False
     else:
-        daemon_current = os.path.dirname(os.path.abspath(__file__))+'/daemon.py'
         daemon_installed = os.path.dirname(os.path.abspath(ailurus.__file__))+'/daemon.py'
         same_daemon = with_same_content(daemon_current, daemon_installed)
     
@@ -182,6 +186,9 @@ def check_dbus_daemon_status():
         show_text_dialog(message.getvalue())
     elif not same_daemon:
         print >>message, _('Please re-install Ailurus.')
+        print >>message, _('Because file contents are different:')
+        print >>message, '<span color="blue">', daemon_current, '</span>'
+        print >>message, '<span color="blue">', daemon_installed, '</span>'
         show_text_dialog(message.getvalue())
     elif not same_version:
         print >>message, _('We need to restart Ailurus daemon.')
@@ -458,7 +465,7 @@ class MainView:
         self.toolbar.set_orientation(gtk.ORIENTATION_HORIZONTAL)
         self.toolbar.set_style(gtk.TOOLBAR_BOTH)
         vbox.pack_start(self.toolbar, False)
-        
+        vbox.pack_start(gtk.HSeparator(), False)
         vbox.pack_start(self.toggle_area, True, True)
         
         self.window = window = gtk.Window(gtk.WINDOW_TOPLEVEL)
@@ -505,6 +512,12 @@ class MainView:
         self.add_study_button_preference_button_other_button()
         self.add_pane_buttons_in_toolbar()
         self.window.show_all()
+        
+        if Config.is_long_enough_since_last_check_update():
+            Config.set_last_check_update_time_to_now()
+            from support.checkupdate import check_update
+            import thread
+            thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
@@ -512,9 +525,6 @@ set_default_window_icon()
 check_required_packages()
 check_dbus_daemon_status()
 
-#from support.splashwindow import SplashWindow
-#splash = SplashWindow()
-#splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
 #splash.destroy()

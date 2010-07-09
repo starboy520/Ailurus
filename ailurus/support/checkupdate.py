@@ -45,63 +45,67 @@ def url_button(url):
     align.add(button)
     return align
 
-def check_update():
+def version_to_tuple(string):
+    return tuple(string.split('.'))
+
+def check_update(silent = False):
+    '''Please launch me as a thread
+    if silent is true, then do nothing if no new version found.'''
+    import gtk, urllib2, re
+    if FEDORA:
+        pattern1 = r'ailurus-[0-9.]+-.+?'+VERSION+'.+?\.rpm'
+        pattern2 = r'ailurus-([0-9.]+)-.+?'+VERSION+'.+?\.rpm'
+        url = 'http://homerxing.fedorapeople.org/'
+    elif UBUNTU or UBUNTU_DERIV:
+        pattern1 = r'ailurus_[0-9.]+-.+?'+VERSION+'.+?\.deb'
+        pattern2 = r'ailurus_([0-9.]+)-.+?'+VERSION+'.+?\.deb'
+        url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
+    else:
+        return
+    current_version = AILURUS_VERSION
     try:
-        OLD_RELEASE_DATE = AILURUS_RELEASE_DATE 
-        import gtk
-        import urllib2
-        import re
-        if FEDORA:
-            filename_pattern = r'ailurus-[0-9.]+-1\.noarch\.rpm'
-            version_pattern = r'ailurus-([0-9.]+)-1\.noarch\.rpm'
-            code_url = 'http://homerxing.fedorapeople.org/'
-        elif UBUNTU or UBUNTU_DERIV:
-            version_string = VERSION
-            filename_pattern = r'ailurus_[0-9.]+-0%s1_all\.deb' % version_string
-            version_pattern = r'ailurus_([0-9.]+)-0%s1_all\.deb' % version_string
-            code_url = 'http://ppa.launchpad.net/ailurus/ppa/ubuntu/pool/main/a/ailurus/'
-        else:
-            return
-        lastest_version = AILURUS_VERSION
-        lastest_filename = ''
-        f = urllib2.urlopen(code_url)
-        for line in f.readlines():
-            filenames = re.findall(filename_pattern, line)
-            for filename in filenames:
-                match = re.search(version_pattern, filename)
-                version = match.group(1)
-                if version.split('.') > lastest_version.split('.'):
-                    lastest_version = version
-                    lastest_filename = filename
+        f = urllib2.urlopen(url)
+        content = f.read()
         f.close()
-        import gtk
-        dlg = gtk.Dialog('',
-                         None, gtk.DIALOG_NO_SEPARATOR,
-                         (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
-        vbox = gtk.VBox(False, 5)
-        if lastest_filename:
-            dlg.set_title(_('A new version is available'))
-            label = gtk.Label( _('Version %s is released.\n'
-                                 'You can download it from:')
-                                 % lastest_version)
-            button = url_button(code_url+lastest_filename)
-            vbox.pack_start(label)
-            vbox.pack_start(button, False)
-        else:
-            dlg.set_title(_('Check update'))
-            label = gtk.Label( _('You have already installed the latest Ailurus version. :)') )
-            vbox.pack_start(label)
-        image = gtk.Image()
-        image.set_from_file(D+'suyun_icons/update.png')
-        hbox = gtk.HBox(False, 5)
-        hbox.pack_start(image, False)
-        hbox.pack_start(vbox, False)
-        dlg.vbox.pack_start(hbox, False)
-        dlg.vbox.show_all()
-        dlg.run()
-        dlg.destroy()
     except:
         print_traceback()
+        return
+    latest_version_tuple = version_to_tuple(current_version)
+    for string in re.findall(pattern1, content):
+        match = re.match(pattern2, string)
+        version = match.group(1)
+        tuple = version_to_tuple(version)
+        if tuple > latest_version_tuple:
+            latest_version_tuple = tuple
+            latest_filename = string
+    
+    latest_version = '.'.join(list(latest_version_tuple))
+    dlg = gtk.Dialog('',
+                     None, gtk.DIALOG_NO_SEPARATOR,
+                     (gtk.STOCK_CLOSE, gtk.RESPONSE_OK))
+    vbox = gtk.VBox(False, 5)
+    if latest_version != current_version:
+        dlg.set_title(_('New version available'))
+        label = gtk.Label(_('Version %s released!') % latest_version)
+        button = url_button(url + latest_filename)
+        vbox.pack_start(label)
+        vbox.pack_start(button, False)
+    else:
+        dlg.set_title(_('Check update'))
+        label = gtk.Label( _('You are using the latest Ailurus :)') )
+        vbox.pack_start(label)
+    image = gtk.Image()
+    image.set_from_file(D+'suyun_icons/update.png')
+    hbox = gtk.HBox(False, 5)
+    hbox.pack_start(image, False)
+    hbox.pack_start(vbox, False)
+    dlg.vbox.pack_start(hbox, False)
+    dlg.vbox.show_all()
+    if not silent or latest_version != current_version:
+        gtk.gdk.threads_enter()
+        dlg.run()
+        dlg.destroy()
+        gtk.gdk.threads_leave()
 
 def show_about_dialog():
     import gtk
@@ -153,15 +157,14 @@ along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 All images in directory "data/suyun_icons" are released under the GPL License.
 Their copyright are holded by SU Yun.
 
+All images in directory "data/umut_icons" are released under the GNU Lesser General Public License.
+Their copyright are holded by M. Umut Pulat.
+
 All images in directory "data/sona_icons" are released under the GPL License. 
 Their copyright are holded by Andrea Soragna.
 
 All images in directory "data/velly_icons" are released under the GPL License. 
-Their copyright are holded by MA Yue.
-
-All images in directory "data/umut_icons" and "data/appicons" are are released
-under the GNU Lesser General Public License. Their copyright are holded by M. Umut Pulat.
-''')
+Their copyright are holded by MA Yue.''')
     about.vbox.pack_start( gtk.Label( _('\nThis version is released at %s.') % AILURUS_RELEASE_DATE), False)
     about.vbox.show_all()
     about.run()
@@ -177,13 +180,14 @@ def show_special_thank_dialog():
     print >>text, _('We sincerely thank these people:')
     print >>text
     print >>text, _('The people who provide inspiration:')
-    print >>text, '<b><big>PCMan, Careone, novia, '
+    print >>text, '<b>PCMan, Careone, novia, '
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
     print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
-    print >>text, 'Michael McBride</big></b>'
+    print >>text, 'Michael McBride, CHEN Zhixue, hicks1gb, '
+    print >>text, 'Silber Cobra </b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
@@ -191,26 +195,15 @@ def show_special_thank_dialog():
     print >>text, _('The people who maintain PPA repository:')
     print >>text, '<b><big>Aron Xu</big></b>'
     print >>text
+    print >>text, _('The people who maintain ArchLinux package:')
+    print >>text, '<b><big>kiefer</big></b>'
+    print >>text
     print >>text, _('The people who provide a lot of Linux skills:')
     print >>text, '<b><big>Oneleaf</big></b>'
     print >>text
-    print >>text, _('The people who provide a lot of Debian packages:')
-    print >>text, '<b><big>Careone</big></b>'
-    print >>text
-    print >>text, _('The people who provide a lot of translation:')
-    print >>text, '<b><big>Federico Vera, Sergey Sedov, Sérgio Marques</big></b>', 
-    print >>text, _('and many other people.')
+    print >>text, _('The people who help translate Ailurus')
     print >>text 
-    print >>text, _('The people who report bugs:')
-    print >>text, '<b><big>LIU Liang, YU Pengfei, q1ha0,'
-    print >>text, 'novia, hardtzh, fegue</big></b>', _('and many other people.')
-    print >>text
-    print >>text, _('The people who eliminate bugs:')
-    print >>text, '<b><big>anjiannian, PES6, eemil.lagerspetz</big></b>'
-    print >>text
-    print >>text, _('The people who publicize this software:')
-    print >>text, '<b><big>dsj, BingZhiGuFeng, chinairaq, coloos,'
-    print >>text, 'TombDigger, sudo, Jandy Zhu</big></b>', _('and many other people.')
+    print >>text, _('The people who report bugs')
     print >>text
     print >>text, _('and the people not mensioned here.')
     import gtk
@@ -234,7 +227,7 @@ def show_special_thank_dialog():
     dialog.destroy()
 
 def show_changelog():
-    with open(D+'/../ChangeLog') as f:
+    with open('/usr/share/ailurus/ChangeLog') as f:
         lines = f.readlines()
     import gtk, pango, re
     buffer = gtk.TextBuffer()

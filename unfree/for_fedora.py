@@ -282,19 +282,20 @@ class AdobeReader(_rpm_install):
     def visible(self):
         return is32()
 
-class Realplayer32(I):
-    'RealPlayer® 11'
-    detail = _('If you cannot play RMVB video, try this application! '
-       'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
-    download_url = 'http://www.real.com/linux'
-    category = 'player'
-    def install(self):
-        f = R(urls.realplayer).download()
-        RPM.install_local(f)
-    def installed(self):
-        return RPM.installed('RealPlayer')
-    def remove(self):
-        RPM.remove('RealPlayer')
+# Do not install Realplayer. It cannot be removed by yum :(
+#class Realplayer32(I):
+#    'RealPlayer® 11'
+#    detail = _('If you cannot play RMVB video, try this application! '
+#       'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
+#    download_url = 'http://www.real.com/linux'
+#    category = 'player'
+#    def install(self):
+#        f = R(urls.realplayer).download()
+#        RPM.install_local(f)
+#    def installed(self):
+#        return RPM.installed('RealPlayer')
+#    def remove(self):
+#        RPM.remove('RealPlayer')
 
 class GoogleChrome(I):
     __doc__ = _('Google Chrome browser')
@@ -396,3 +397,15 @@ class ESETNOD32(I):
         return os.path.exists('/opt/eset/esets/bin/esets_gil')
     def remove(self):
         run_as_root('/opt/eset/esets/bin/esets_gil')
+
+class AdobeAIR(I):
+    __doc__ = ('Adobe AIR: use HTML, JavaScript and Flash to build desktop applications')
+    download_url = 'http://get.adobe.com/air/'
+    category = 'ide'
+    def install(self):
+        f = R('http://airdownload.adobe.com/air/lin/download/latest/adobeair.i386.rpm').download()
+        RPM.install_local(f)
+    def installed(self):
+        return RPM.installed('adobeair')
+    def remove(self):
+        RPM.remove('adobeair')
