@@ -633,7 +633,7 @@ class InstallRemovePane(gtk.VBox):
         Config.wget_set_triesnum(new_tries)
         dialog.destroy()
     
-    def do_refresh_icon():
+    def do_refresh_icon(self):
         AppObjs.all_objs_reload_icon()
         self.right_treeview.queue_draw()
 
@@ -642,7 +642,7 @@ class InstallRemovePane(gtk.VBox):
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
         
         refresh_icon = gtk.MenuItem(_('Refresh icons of all software items'))
-        refresh_icon.connect('activate', lambda w: do_refresh_icon())
+        refresh_icon.connect('activate', lambda w: self.do_refresh_icon())
         
         return [set_wget_param, refresh_icon]
     
@@ -749,6 +749,8 @@ class InstallRemovePane(gtk.VBox):
         import subprocess
         task = subprocess.Popen(['python', A+'/download_icons.py'])
         Config.set_synced()
+        task.wait()
+        self.do_refresh_icon()
 
     def left_class_choose_button_clicked(self, button):
         self.left_pane_visible_class = button.class_name
