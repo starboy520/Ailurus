@@ -633,31 +633,18 @@ class InstallRemovePane(gtk.VBox):
         Config.wget_set_triesnum(new_tries)
         dialog.destroy()
     
+    def do_refresh_icon():
+        AppObjs.all_objs_reload_icon()
+        self.right_treeview.queue_draw()
+
     def get_preference_menuitems(self):
-        def toggled(w):
-            visible = w.get_active()
-            Config.set_show_sync_area(visible)
-            self.sync_area.content_visible(visible)
-        show_sync = gtk.CheckMenuItem(_('Show "synchronize" button'))
-        show_sync.set_active(Config.get_show_sync_area())
-        show_sync.connect('toggled', toggled)
-        def toggled(w):
-            visible = w.get_active()
-            Config.set_show_quick_setup_area(visible)
-            self.quick_setup_area.content_visible(visible)
-        show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.set_active(Config.get_show_quick_setup_area())
-        show_quick_setup.connect('toggled', toggled)
-    
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
         
-        return [set_wget_param]
-# always show sync & quick_setup
-#        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
-#            return [show_sync, show_quick_setup, set_wget_param]
-#        else:
-#            return [show_sync, set_wget_param]
+        refresh_icon = gtk.MenuItem(_('Refresh icons of all software items'))
+        refresh_icon.connect('activate', lambda w: do_refresh_icon())
+        
+        return [set_wget_param, refresh_icon]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
