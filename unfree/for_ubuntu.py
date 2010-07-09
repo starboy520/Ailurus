@@ -50,7 +50,7 @@ class Alice(_path_lists):
         if not os.path.exists('/opt'):
             run_as_root('mkdir /opt')
         own_by_user('/opt')
-        with Chdir('/opt') as o:
+        with Chdir('/opt'):
             run('tar jxf '+f)
             assert os.path.exists(self.dir)
             create_file(self.shortcut, '''[Desktop Entry]
@@ -78,7 +78,7 @@ class AliPayFirefoxPlugin(I):
         import os
         if not os.path.exists(path):
             run('mkdir -p %s'%path)
-        with Chdir(path) as o:
+        with Chdir(path):
             run('tar zxf %s'%file)
     def installed(self):
         import os
@@ -112,7 +112,7 @@ class AstroMenace(_path_lists):
         import os
         if not os.path.exists('/opt'): run_as_root('mkdir /opt')
         run_as_root('chown $USER:$USER /opt')
-        with Chdir('/opt') as o:
+        with Chdir('/opt'):
             run('tar xf %s'%f)
             create_file('/usr/share/applications/astromenace.desktop', 
 '''[Desktop Entry]
@@ -256,7 +256,7 @@ class EIOffice(I):
     def visible(self): # EIOffice website is offline :(
         return False
     def install(self):
-        with Chdir('/tmp') as o:
+        with Chdir('/tmp'):
             f = R(urls.eioffice).download()
             run('tar xf %s' % f)
             run('chmod a+x EIOffice_Personal_Lin/setup')

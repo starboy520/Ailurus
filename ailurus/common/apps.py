@@ -61,7 +61,7 @@ class Bioclipse(_path_lists):
             f = R(urls.bioclipse32, filename = 'bioclipse.zip').download()
         else:
             f = R(urls.bioclipse64, filename = 'bioclipse.zip').download()
-        with Chdir('/tmp') as o:
+        with Chdir('/tmp'):
             run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
@@ -119,7 +119,7 @@ class SweetHome3D(_path_lists):
         else:       url = urls.sweethome64
         f = R(url).download()
         run_as_root('mkdir /opt', ignore_error=True)
-        with Chdir('/opt') as c:
+        with Chdir('/opt'):
             run_as_root('tar xf ' + f)
         create_file(self.shortcut, '[Desktop Entry]\n'
                                    'Name=SweetHome3D\n'

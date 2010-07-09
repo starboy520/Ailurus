@@ -93,7 +93,7 @@ class GNOMEArtNextGen(I):
         import os
         path = os.path.expanduser('~/.gnome2/gnome-art-ng/')
         if not os.path.exists(path): run('mkdir '+path)
-        with Chdir(path) as o:
+        with Chdir(path):
             run('tar xf '+thumb)
     def installed(self):
         return APT.installed('gnomeartng')
@@ -109,7 +109,7 @@ class DisableGetty(I):
     def visible(self):
         return os.path.exists('/etc/event.d/tty1')
     def installed(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s' % i
                 with open(file_name) as f:
@@ -117,7 +117,7 @@ class DisableGetty(I):
                         if line.startswith('exec'): return False
         return True
     def install(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s'%i
                 with TempOwn(file_name):
@@ -129,7 +129,7 @@ class DisableGetty(I):
                     with open(file_name, 'w') as f:
                         f.writelines(contents)
     def remove(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s'%i
                 with TempOwn(file_name):
@@ -147,7 +147,7 @@ class DisableGettyKarmic(I):
     def visible(self):
         return os.path.exists('/etc/init/tty1.conf')
     def installed(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
                 file_name = 'tty%s.conf' % i
                 with open(file_name) as f:
@@ -155,7 +155,7 @@ class DisableGettyKarmic(I):
                         if line.startswith('exec'): return False
         return True
     def install(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename):
@@ -167,7 +167,7 @@ class DisableGettyKarmic(I):
                     with open(filename, 'w') as f:
                         f.writelines(contents)
     def remove(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
                 with TempOwn(filename):

@@ -55,7 +55,7 @@ class NScripts(I):
         import os
         dir = os.path.expanduser('~/.gnome2/nautilus-scripts/')
         if not os.path.exists(dir): os.mkdir(dir)
-        with Chdir('/tmp') as o:
+        with Chdir('/tmp'):
             os.system('tar xf ' + f)
             os.system('cp -r nscripts/* ' + dir)
             os.remove(dir + 'ChangeLog')
