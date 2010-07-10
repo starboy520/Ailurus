@@ -702,14 +702,24 @@ class InstallRemovePane(gtk.VBox):
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(button_apply, False)
 
+        self.status_label = gtk.Label()
+        self.status_label.set_alignment(0.5, 0.5)
+        self.show_status()
+
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
         self.pack_start(toolbar, False)
         self.pack_start(hpaned)
+        self.pack_start(self.status_label, False)
         self.show_all()
     
         import thread
         thread.start_new_thread(self.notify_sync, ())
+    
+    def show_status(self):
+        num = len(self.app_objs)
+        text = _('%s available items') % num
+        self.status_label.set_text(text)
     
     def notify_sync(self):
         if not Config.get_synced():
