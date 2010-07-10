@@ -390,9 +390,6 @@ class InstallRemovePane(gtk.VBox):
         finally:
             gtk.gdk.threads_enter()
             self.__return_to_app_view()
-#            parentbox = self.terminal.get_widget().parent
-#            parentbox.pack_start(self.final_box, False)
-#            parentbox.show_all()
             self.right_treeview.queue_draw()
             self.right_treeview.get_selection().unselect_all()
             gtk.gdk.threads_leave()
@@ -667,17 +664,6 @@ class InstallRemovePane(gtk.VBox):
         self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 16, 16)
         self.DE_DEFAULT = blank_pixbuf(16, 16)
 
-        self.final_box = gtk.VBox(False, 5)
-        self.final_box.set_border_width(5)
-        self._final_box_text = gtk.Label(_('All works finished. '))
-        self._final_box_text.set_alignment(0, 0.5)
-        self.final_box.pack_start( self._final_box_text, False )
-        _close_button = image_stock_button( gtk.STOCK_CLOSE, _('Close this terminal') )
-        _close_button.connect('clicked', self.__return_to_app_view )
-        _hbox = gtk.HBox(False, 5)
-        _hbox.pack_start(_close_button, False) 
-        self.final_box.pack_start(_hbox, False)
-        
         import os, sys
         self.backup_stdout = os.dup(sys.stdout.fileno())
 
