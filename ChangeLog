@@ -1,3 +1,9 @@
+2010-07-10 CHEN Yangyang <skabyy@gmail.com>
+
+    * Finish a simple version of AilurusServer and upload it to google appengine
+    * Add support/clientlib.py to communicate with AilurusServer
+    * Add interfaces to upload skills and suggestions.
+
 2010-07-10 Homer Xing <homer.xing@gmail.com>
 
     * Install repository signing key from local directory.
