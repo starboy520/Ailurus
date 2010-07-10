@@ -736,6 +736,8 @@ class RPM:
         cls.__set1 = set()
         cls.__set2 = set()
         import subprocess, os
+
+        TimeStat.begin(_('dump installed rpm'))
         path = A+'/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
@@ -743,6 +745,9 @@ class RPM:
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
+        TimeStat.end(_('dump installed rpm'))
+        
+        TimeStat.begin(_('dump available rpm'))
         path = A+'/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
@@ -750,6 +755,7 @@ class RPM:
         for line in task.stdout:
             cls.__set2.add(line.strip())
         task.wait()
+        TimeStat.end(_('dump available rpm'))
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
