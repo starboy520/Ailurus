@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -224,7 +224,7 @@ class MTJ(_path_lists):
         self.paths = [ self.path ]
     def install(self):
         make_sure_installed()
-        path = os.path.dirname(os.path.abspath(__file__))+'/../support/MTJ_urls'
+        path = A+'/support/MTJ_urls'
         with open(path) as f:
             urls = f.readlines()
         urls = [u.strip() for u in urls]

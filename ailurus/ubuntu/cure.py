@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -50,7 +50,7 @@ class Fix_error_in_49_sansserif_conf(C):
         except IOError: # File does not exist
             return False
     def cure(self):
-        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans-serif<', '>sans serif<')
@@ -68,7 +68,7 @@ class Recover_49_sansserif_conf(C):
         except IOError: # File does not exist
             return False
     def cure(self):
-        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+        with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
             with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                 content = f.read()
             content = content.replace('>sans serif<', '>sans-serif<')
@@ -103,7 +103,7 @@ class Fix_error_in_fontconfig_properties(C):
         except IOError:
             return False
     def cure(self):
-        with TempOwn(self.file) as o:
+        with TempOwn(self.file):
             with open(self.file) as f:
                 content = f.read()
             content = content.replace('/wqy-zenhei.ttf', '/wqy-zenhei.ttc')
@@ -124,7 +124,7 @@ class Fix_error_in_netbeans_shortcut(C):
         except IOError:
             return False
     def cure(self):
-        with TempOwn(self.file) as o:
+        with TempOwn(self.file):
             with open(self.file) as f:
                 lines = f.readlines()
             for i, line in enumerate(lines):
@@ -142,27 +142,29 @@ class Google_chrome_is_upgradable(C):
         APT.remove('google-chrome-beta')
         open_web_page('http://www.google.com/chrome/')
 
-class Install_full_language_support(C):
-    __doc__ = _('Install full language support and input method')
-    def exists(self):
-        lang = Config.get_locale().split('_')[0]
-        list = [
-                'language-pack-' + lang,
-                'language-support-fonts-' + lang,
-                'language-support-input-' + lang,
-                'language-support-translations-' + lang,
-                'language-support-' + lang,
-                'language-support-writing-' + lang,
-                ]
-        if GNOME: list.append('language-pack-gnome-' + lang)
-        if KDE:   list.append('language-pack-kde-' + lang)
-        pkgs = [p for p in list if APT.exist(p) and not APT.installed(p)]
-        self.pkgs = pkgs
-        self.detail = _('Command:') + ' apt-get install ' + ' '.join(self.pkgs)
-        return bool(pkgs)
-    def cure(self):
-        if self.pkgs:
-            APT.install(*self.pkgs)
+# FIXME: After Chinese language support successfully installed, language-pack-zh will be automatically removed.
+# Then this item always appears.
+#class Install_full_language_support(C):
+#    __doc__ = _('Install full language support and input method')
+#    def exists(self):
+#        lang = Config.get_locale().split('_')[0]
+#        list = [
+#                'language-pack-' + lang,
+#                'language-support-fonts-' + lang,
+#                'language-support-input-' + lang,
+#                'language-support-translations-' + lang,
+#                'language-support-' + lang,
+#                'language-support-writing-' + lang,
+#                ]
+#        if GNOME: list.append('language-pack-gnome-' + lang)
+#        if KDE:   list.append('language-pack-kde-' + lang)
+#        pkgs = [p for p in list if APT.exist(p) and not APT.installed(p)]
+#        self.pkgs = pkgs
+#        self.detail = _('Command:') + ' apt-get install ' + ' '.join(self.pkgs)
+#        return bool(pkgs)
+#    def cure(self):
+#        if self.pkgs:
+#            APT.install(*self.pkgs)
 
 class Install_GCompris_voice(C):
     __doc__ = _('Install voice data for GCompris')
@@ -204,7 +206,7 @@ class Sources_list_is_using_wrong_code_name(C):
         return wrong
     def cure(self):
         for file in APTSource2.all_conf_files():
-            with TempOwn(file) as o:
+            with TempOwn(file):
                 with open(file) as f:
                     content = f.read()
                 for c in self.wrong_code_names:

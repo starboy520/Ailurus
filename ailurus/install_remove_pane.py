@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,6 +25,7 @@ import gtk
 from lib import *
 from libu import *
 from libapp import *
+from loader import AppObjs
 
 class Category:
     def __init__(self, text, icon_path, category, class_name):
@@ -352,8 +353,7 @@ class InstallRemovePane(gtk.VBox):
                     obj.remove()
                 except: f_r += [(obj, sys.exc_info())]
             
-            for o in self.app_objs:
-                o.showed_in_toggle = o.cache_installed = o.installed()
+            AppObjs.all_objs_reset_status()
             
             for obj in to_install:
                 try:
@@ -389,9 +389,10 @@ class InstallRemovePane(gtk.VBox):
             print_traceback()
         finally:
             gtk.gdk.threads_enter()
-            parentbox = self.terminal.get_widget().parent
-            parentbox.pack_start(self.final_box, False)
-            parentbox.show_all()
+            self.__return_to_app_view()
+#            parentbox = self.terminal.get_widget().parent
+#            parentbox.pack_start(self.final_box, False)
+#            parentbox.show_all()
             self.right_treeview.queue_draw()
             self.right_treeview.get_selection().unselect_all()
             gtk.gdk.threads_leave()
@@ -408,6 +409,22 @@ class InstallRemovePane(gtk.VBox):
         parentbox.show_all()
 
     def __apply_button_clicked(self, widget):
+        if UBUNTU or UBUNTU_DERIV:
+            try:
+                APT.is_cache_lockable()
+            except CannotLockAptCacheError, e:
+                message_format = _('Check if you are currently running another '
+                                   'software management program, e.g. Synaptic or apt-get. '
+                                   'Only one program is allowed to make changes at the '
+                                   'same time.')
+                message_format += '\n' + e.args[0]
+                dialog = gtk.MessageDialog(type=gtk.MESSAGE_WARNING, buttons=gtk.BUTTONS_OK,
+                                           message_format=message_format)
+                dialog.set_title(_('Cannot lock apt cache'))
+                dialog.run()
+                dialog.destroy()
+                return
+
         to_install = [ obj for obj in self.app_objs
                       if obj.cache_installed==False
                       and obj.showed_in_toggle ]
@@ -419,7 +436,6 @@ class InstallRemovePane(gtk.VBox):
         if not self.__query_work(to_install, to_remove): return
 
         run_as_root('true') # require authentication first. do not require authentication any more.
-        
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
@@ -512,12 +528,9 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow.lock()
         self.set_sensitive(False)
         def launch():
-            import os
-            me_path = os.path.dirname(os.path.abspath(__file__))
-            with Chdir(me_path) as o:
-                import subprocess
-                task = subprocess.Popen(['python', 'ubuntu/quick_setup.py'])
-                task.wait()
+            import subprocess
+            task = subprocess.Popen(['python', A+'/ubuntu/quick_setup.py'])
+            task.wait()
             gtk.gdk.threads_enter()
             self.app_class_installed_state_changed_by_external()
             self.parentwindow.unlock()
@@ -620,31 +633,18 @@ class InstallRemovePane(gtk.VBox):
         Config.wget_set_triesnum(new_tries)
         dialog.destroy()
     
+    def do_refresh_icon(self):
+        AppObjs.all_objs_reload_icon()
+        self.right_treeview.queue_draw()
+
     def get_preference_menuitems(self):
-        def toggled(w):
-            visible = w.get_active()
-            Config.set_show_sync_area(visible)
-            self.sync_area.content_visible(visible)
-        show_sync = gtk.CheckMenuItem(_('Show "synchronize" button'))
-        show_sync.set_active(Config.get_show_sync_area())
-        show_sync.connect('toggled', toggled)
-        def toggled(w):
-            visible = w.get_active()
-            Config.set_show_quick_setup_area(visible)
-            self.quick_setup_area.content_visible(visible)
-        show_quick_setup = gtk.CheckMenuItem(_('Show "quickly install popular software" button'))
-        show_quick_setup.set_active(Config.get_show_quick_setup_area())
-        show_quick_setup.connect('toggled', toggled)
-    
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
         
-        return [set_wget_param]
-# always show sync & quick_setup
-#        if UBUNTU or UBUNTU_DERIV: # this feature only support UBUNTU or MINT.
-#            return [show_sync, show_quick_setup, set_wget_param]
-#        else:
-#            return [show_sync, set_wget_param]
+        refresh_icon = gtk.MenuItem(_('Refresh icons of all software items'))
+        refresh_icon.connect('activate', lambda w: self.do_refresh_icon())
+        
+        return [set_wget_param, refresh_icon]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
@@ -747,9 +747,10 @@ class InstallRemovePane(gtk.VBox):
 
     def synchronize(self):
         import subprocess
-        path = os.path.dirname(os.path.abspath(__file__)) + '/download_icons.py'
-        task = subprocess.Popen(['python', path])
+        task = subprocess.Popen(['python', A+'/download_icons.py'])
         Config.set_synced()
+        task.wait()
+        self.do_refresh_icon()
 
     def left_class_choose_button_clicked(self, button):
         self.left_pane_visible_class = button.class_name

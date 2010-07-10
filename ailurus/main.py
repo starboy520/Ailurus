@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -87,14 +87,13 @@ def check_required_packages():
         fedora_missing.append('unzip')
         archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
+        ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/xterm'):
         ubuntu_missing.append('xterm')
         fedora_missing.append('xterm')
         archlinux_missing.append('xterm')
-    if not os.path.exists('/usr/bin/gdebi-gtk'):
-        ubuntu_missing.append('gdebi')
 
     try: # detect policykit version 0.9.x
         import dbus
@@ -156,12 +155,13 @@ def check_dbus_daemon_status():
     from daemon import version as current_version
     same_version = (current_version == running_version)
     
+    daemon_current = A+'/daemon.py'
+    daemon_installed = '<None>'
     try:
         import ailurus
     except:
         same_daemon = False
     else:
-        daemon_current = os.path.dirname(os.path.abspath(__file__))+'/daemon.py'
         daemon_installed = os.path.dirname(os.path.abspath(ailurus.__file__))+'/daemon.py'
         same_daemon = with_same_content(daemon_current, daemon_installed)
     
@@ -186,6 +186,9 @@ def check_dbus_daemon_status():
         show_text_dialog(message.getvalue())
     elif not same_daemon:
         print >>message, _('Please re-install Ailurus.')
+        print >>message, _('Because file contents are different:')
+        print >>message, '<span color="blue">', daemon_current, '</span>'
+        print >>message, '<span color="blue">', daemon_installed, '</span>'
         show_text_dialog(message.getvalue())
     elif not same_version:
         print >>message, _('We need to restart Ailurus daemon.')
@@ -280,7 +283,9 @@ class PaneLoader:
         if self.pane_object is None:
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
+            TimeStat.begin(self.pane_class.__name__)
             self.pane_object = self.pane_class(self.main_view, *arg)
+            TimeStat.end(self.pane_class.__name__)
         return self.pane_object
     def need_to_load(self):
         return self.pane_object is None
@@ -514,18 +519,16 @@ class MainView:
             import thread
             thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
+TimeStat.begin(_('start up'))
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
 set_default_window_icon()
 check_required_packages()
 check_dbus_daemon_status()
 
-#from support.splashwindow import SplashWindow
-#splash = SplashWindow()
-#splash.show_all()
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
-#splash.destroy()
+TimeStat.end(_('start up'))
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()

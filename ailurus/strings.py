@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -226,6 +226,8 @@ PiTiVi_0 = 'PiTiVi'
 PiTiVi_1 = _('Movie editor designed for both the newcomer and the professional users')
 Pidgin_0 = 'Pidgin'
 Pidgin_1 = _('A chat program which lets you log in multiple chat networks simultaneously. It supports many chat networks.')
+Pino_0 = 'Pino'
+Pino_1 = _('Twitter and Identi.ca client')
 PowerTop_0 = 'PowerTop'
 PowerTop_1 = _('Help you save power for your laptop.')
 QCad_0 = 'QCad'

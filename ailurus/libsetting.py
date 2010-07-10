@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -346,12 +346,13 @@ class FirefoxComboPref(gtk.HBox):
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(combo, False)
         combo.connect('changed', lambda *w: self.m_set_value())
+        self.m_get_value()
     def m_get_value(self):
         try:    value = firefox.get_pref(self.key)
         except:
             if self.default:
                 for i in range(len(self.values)):
-                    if self.values[i] == default:
+                    if self.values[i] == self.default:
                         self.combo.set_active(i)
         else:
             for i in range(len(self.values)):

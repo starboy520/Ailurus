@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -136,8 +136,9 @@ def show_about_dialog():
           'M. Umut Pulat    http://12m3.deviantart.com/', 
           'Andrea Soragna   http://sora-meliae.deviantart.com/',
           'Paul Davey       http://mattahan.deviantart.com/',] )
-    about.set_copyright( _(u"Copyright © 2007-2010,\nTrusted Digital Technology Laboratory,\nShanghai Jiao Tong University, China.") + '\n'
-                         + _(u"Copyright © 2009-2010, Ailurus Developers Team") )
+    about.set_copyright(_(u"Copyright ©") + ' 2009-2010, ' + _('Ailurus developers and Ailurus contributors') + '\n' + 
+                        _(u"Copyright ©") + ' 2007-2010, ' + 
+                        _('Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.'))
     about.set_wrap_license(False)
     about.set_license('''
 Ailurus is free software; you can redistribute it and/or modify
@@ -180,13 +181,14 @@ def show_special_thank_dialog():
     print >>text, _('We sincerely thank these people:')
     print >>text
     print >>text, _('The people who provide inspiration:')
-    print >>text, '<b><big>PCMan, Careone, novia, '
+    print >>text, '<b>PCMan, Careone, novia, '
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
     print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
     print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
     print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
-    print >>text, 'Michael McBride</big></b>'
+    print >>text, 'Michael McBride, CHEN Zhixue, hicks1gb, '
+    print >>text, 'Silber Cobra </b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b><big>SU Yun</big></b>'
@@ -194,26 +196,15 @@ def show_special_thank_dialog():
     print >>text, _('The people who maintain PPA repository:')
     print >>text, '<b><big>Aron Xu</big></b>'
     print >>text
+    print >>text, _('The people who maintain ArchLinux package:')
+    print >>text, '<b><big>kiefer</big></b>'
+    print >>text
     print >>text, _('The people who provide a lot of Linux skills:')
     print >>text, '<b><big>Oneleaf</big></b>'
     print >>text
-    print >>text, _('The people who provide a lot of Debian packages:')
-    print >>text, '<b><big>Careone</big></b>'
-    print >>text
-    print >>text, _('The people who provide a lot of translation:')
-    print >>text, '<b><big>Federico Vera, Sergey Sedov, Sérgio Marques</big></b>', 
-    print >>text, _('and many other people.')
+    print >>text, _('The people who help translate Ailurus')
     print >>text 
-    print >>text, _('The people who report bugs:')
-    print >>text, '<b><big>LIU Liang, YU Pengfei, q1ha0,'
-    print >>text, 'novia, hardtzh, fegue</big></b>', _('and many other people.')
-    print >>text
-    print >>text, _('The people who eliminate bugs:')
-    print >>text, '<b><big>anjiannian, PES6, eemil.lagerspetz</big></b>'
-    print >>text
-    print >>text, _('The people who publicize this software:')
-    print >>text, '<b><big>dsj, BingZhiGuFeng, chinairaq, coloos,'
-    print >>text, 'TombDigger, sudo, Jandy Zhu</big></b>', _('and many other people.')
+    print >>text, _('The people who report bugs')
     print >>text
     print >>text, _('and the people not mensioned here.')
     import gtk

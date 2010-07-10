@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -32,7 +32,8 @@ class FedoraFastestMirrorPane(gtk.VBox):
     text = _('Fastest\nRepository')
 
     COUNTRY, ORG, URL, RESPONSE_TIME = range(4)
-    NO_PING_RESPONSE = 10000
+    NO_PING_RESPONSE = 100000000
+    NOT_DETECTED = NO_PING_RESPONSE + 1
     
     def __repository_visibility_function(self, treestore, iter):
         if self.search_content == None:
@@ -47,10 +48,8 @@ class FedoraFastestMirrorPane(gtk.VBox):
 
     def __fill_candidate_store(self):
         for item in all_candidate_repositories():
-            try:
-                time = ResponseTime.get(item[self.URL])
-            except KeyError:
-                time = self.NO_PING_RESPONSE
+            try: time = ResponseTime.get(item[self.URL])
+            except KeyError: time = self.NOT_DETECTED
             item.append(time)
             self.candidate_store.append(item)
 
@@ -87,6 +86,8 @@ class FedoraFastestMirrorPane(gtk.VBox):
         value = int(value)
         if value == self.NO_PING_RESPONSE: 
             text = _('No response')
+        elif value == self.NOT_DETECTED:
+            text = _('Not detected')
         else:
             text = '%s ms' % value
         cell.set_property('text', text)
@@ -300,10 +301,8 @@ class FedoraFastestMirrorPane(gtk.VBox):
     def __update_candidate_store_with_ping_result(self, result):
         for i in result:
             url = i[0]
-            if isinstance(i[1], float):
-                time = int(i[1])
-            else:
-                time = self.NO_PING_RESPONSE
+            if isinstance(i[1], float): time = int(i[1])
+            else: time = self.NO_PING_RESPONSE
             ResponseTime.set(url, time)
         for row in self.candidate_store:
             url = row[self.URL]

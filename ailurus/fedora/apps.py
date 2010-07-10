@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -26,57 +26,28 @@ from lib import *
 from libapp import *
 from apps_eclipse import *
 
-class DisableGetty(I):
-    __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
-    detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
-    def installed(self):
-        with Chdir('/etc/event.d/') as o:
-            for i in range(2,7):
-                with open('tty%s'%i) as f:
-                    content = f.read()
-                if 'exec /sbin/' in content: return False
-            return True
-    def install(self):
-        with Chdir('/etc/event.d/') as o:
-            for i in range(2,7):
-                filename = 'tty%s'%i
-                with open(filename) as f:
-                    contents = f.readlines()
-                for j, line in enumerate(contents):
-                    if line.startswith('exec /sbin/'):
-                        contents[j] = '#' + line[1:]
-                with TempOwn(filename) as o:
-                    with open(filename, 'w') as f:
-                        f.writelines(contents)
-    def remove(self):
-        with Chdir('/etc/event.d/') as o:
-            for i in range(2,7):
-                filename = 'tty%s'%i
-                with open(filename) as f:
-                    contents = f.readlines()
-                for j, line in enumerate(contents):
-                    if line.startswith('#xec /sbin/'):
-                        contents[j] = 'e' + line[1:]
-                with TempOwn(filename) as o:
-                    with open(filename, 'w') as f:
-                        f.writelines(contents)
-    def visible(self):
-        return os.path.exists('/etc/event.d/')
-
 class Disable_SELinux(I):
     __doc__ = _('Put Selinux in permissive mode, instead of enforcing mode.')
+    # SELinux can take one of these three values:
+    #   enforcing - SELinux security policy is enforced.
+    #   permissive - SELinux prints warnings instead of enforcing.
+    #   disabled - No SELinux policy is loaded.
+    selinux_sysconfig = "/etc/sysconfig/selinux"
+    selinux_config    = "/etc/selinux/config"
+    def visible(self):
+        return os.path.exists(self.selinux_sysconfig) and os.path.exists(self.selinux_config)
     def installed(self):
-        with open('/etc/sysconfig/selinux') as f:
+        with open(self.selinux_sysconfig) as f:
             c = f.read()
         if 'SELINUX=enforcing' in c: return False
-        with open('/etc/selinux/config') as f:
+        with open(self.selinux_config) as f:
             c = f.read()
         if 'SELINUX=enforcing' in c: return False
         return True
     def install(self):
         run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
-            with TempOwn(path) as o:
+            with TempOwn(path):
                 with open(path) as f:
                     lines = f.readlines()
                 for i, line in enumerate(lines):
@@ -86,11 +57,11 @@ class Disable_SELinux(I):
     def remove(self):
         run_as_root_in_terminal('/usr/sbin/setenforce 0')
         for path in ['/etc/sysconfig/selinux', '/etc/selinux/config']:
-            with TempOwn(path) as o:
+            with TempOwn(path):
                 with open(path) as f:
                     lines = f.readlines()
                 for i, line in enumerate(lines):
-                    if 'SELINUX=permissive' in line: lines[i] = 'SELINUX=enforcing\n'
+                    if 'SELINUX=permissive' in line or 'SELINUX=disabled' in line: lines[i] = 'SELINUX=enforcing\n'
                 with open(path, 'w') as f:
                     f.writelines(lines)
         run_as_root_in_terminal('/usr/sbin/setenforce 1')

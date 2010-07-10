@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +25,7 @@ from lib import *
 
 def __set1():
     ret = []
-    path = os.path.dirname(os.path.abspath(__file__))+'/../support/fedora_server_list'
+    path = A+'/support/fedora_server_list'
     with open(path) as f:
         contents = [l.strip() for l in f]
     for i in range(0, len(contents), 3):
@@ -284,13 +284,17 @@ __country_codes = {
 }
 
 def all_candidate_repositories():
-    ret = __set1() + __set2()
-    for e in ret:
+    ret = []
+    
+    all_urls = set()
+    for e in __set1() + __set2():
         assert len(e) == 3
-        try:
-            e[0] = __country_codes[e[0]]
-        except KeyError:
-            pass
-        assert not e[2].endswith('/')
+        try: e[0] = __country_codes[e[0]]
+        except KeyError: pass
+        url = e[2]
+        assert '://' in url and '.' in url
+        if not url in all_urls: # do not add repeated server
+            all_urls.add(url)
+            ret.append(e)
         
     return ret

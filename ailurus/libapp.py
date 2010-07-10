@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -382,7 +382,7 @@ def create_eclipse_icon():
     except:
         pass
     icon = '/usr/share/applications/eclipse.desktop'
-    with TempOwn(icon) as o:
+    with TempOwn(icon):
         with open(icon, 'w') as f:
             f.write('''[Desktop Entry]
 Name=Eclipse

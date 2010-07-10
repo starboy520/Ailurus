@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -47,7 +47,7 @@ def __change_kernel_swappiness():
     def apply(w, adjustment):
         new_value = int( adjustment.get_value() )
         new_line = 'vm.swappiness = %s' % new_value
-        with TempOwn('/etc/sysctl.conf') as o:
+        with TempOwn('/etc/sysctl.conf'):
             with open('/etc/sysctl.conf') as f:
                 contents = f.readlines()
             for i, line in enumerate(contents):
@@ -121,18 +121,18 @@ def __change_hostname():
 
         def __button_clicked(self, *w):
             new_host_name = self.entry.get_text()
-            with TempOwn('/etc/hosts') as o:
+            with TempOwn('/etc/hosts'):
                 with open('/etc/hosts') as f:
                     content = f.read()
                     content = content.replace(self.old_host_name, new_host_name)
                 with open('/etc/hosts', 'w') as f:
                     f.write(content)
             if UBUNTU or UBUNTU_DERIV:
-                with TempOwn('/etc/hostname') as o:
+                with TempOwn('/etc/hostname'):
                     with open('/etc/hostname', 'w') as f:
                         f.write(new_host_name)
             elif FEDORA:
-                with TempOwn('/etc/sysconfig/network') as o:
+                with TempOwn('/etc/sysconfig/network'):
                     with open('/etc/sysconfig/network') as f:
                         content = f.read()
                         content = content.replace(self.old_host_name, new_host_name)
@@ -180,9 +180,13 @@ def __configure_firefox():
     table.attach(explain, 0, 2, row, row+1, gtk.FILL, gtk.FILL)
     row += 1
 
-    tweak_key = gtk.Button()
     tweak_key = image_stock_button(gtk.STOCK_APPLY, _('Auto tweak Firefox') )
-    table.attach(left_align(tweak_key), 0, 2, row, row+1, gtk.FILL, gtk.FILL)
+    save = image_stock_button(gtk.STOCK_SAVE, _('Save'))
+    save.connect('clicked', lambda w: firefox.save_user_prefs())
+    hbox = gtk.HBox(False, 10)
+    hbox.pack_start(tweak_key, False)
+    hbox.pack_start(save, False)
+    table.attach(hbox, 0, 2, row, row+1, gtk.FILL, gtk.FILL)
     row += 1
 
     # DNS

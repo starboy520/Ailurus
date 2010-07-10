@@ -1,6 +1,31 @@
+2010-06-29 Ray Chen <chenrano2002@gmail.com>
+
+    * Fix Issue 729: load panel failed when there is no selinx on Fedora
+
+2010-06-29 Homer Xing <homer.xing@gmail.com>
+
+    * Display lock path if failed to lock.
+    * Create lock directory if necessary.
+    * Fix bug: No option 'login_window_background'
+    * Do not install Realplayer. It cannot be removed by yum.
+    * Fedora server response time may exceed 10 seconds. 
+
+2010-06-27 Homer Xing <homer.xing@gmail.com>
+
+    * Try to lock apt cache before install software
+
+2010-06-23 Homer Xing <homer.xing@gmail.com>
+
+    * Display size of swap partitions
+    * Example proxy string is selectable
+    * Hide bios & motherboard item if value is empty
+    * Return to original software list immediately after successfully install software
+
 2010-06-19 Homer Xing <homer.xing@gmail.com>
 
     * Improve clean up pane. Reduce space cost.
+    * If the server has not been detected, then show nothing.
+    * Fix problems when disable getty.
 
 2010-06-19 MA Yue <velly.empire@gmail.com>
 

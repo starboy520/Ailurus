@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -93,7 +93,7 @@ class GNOMEArtNextGen(I):
         import os
         path = os.path.expanduser('~/.gnome2/gnome-art-ng/')
         if not os.path.exists(path): run('mkdir '+path)
-        with Chdir(path) as o:
+        with Chdir(path):
             run('tar xf '+thumb)
     def installed(self):
         return APT.installed('gnomeartng')
@@ -107,80 +107,75 @@ class DisableGetty(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
     detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION in ['hardy', 'intrepid', 'jaunty'] and os.path.exists('/etc/event.d/')
+        return os.path.exists('/etc/event.d/tty1')
     def installed(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
-                if file_contain('tty%s'%i, 'start on runlevel 2'):
-                    return False
-            return True
+                file_name = 'tty%s' % i
+                with open(file_name) as f:
+                    for line in f:
+                        if line.startswith('exec'): return False
+        return True
     def install(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
-                filename = 'tty%s'%i
-                with TempOwn(filename) as o:
-                    with open(filename) as f:
+                file_name = 'tty%s'%i
+                with TempOwn(file_name):
+                    with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='start on runlevel 2\n':
-                            contents[j]='stop on runlevel 2\n'
-                        elif line=='start on runlevel 3\n':
-                            contents[j]='stop on runlevel 3\n'
-                    with open(filename, 'w') as f:
+                        if line.startswith('exec'):
+                            contents[j]='#' + line
+                    with open(file_name, 'w') as f:
                         f.writelines(contents)
     def remove(self):
-        with Chdir('/etc/event.d/') as o:
+        with Chdir('/etc/event.d/'):
             for i in range(2,7):
-                filename = 'tty%s'%i
-                with TempOwn(filename) as o:
-                    with open(filename) as f:
+                file_name = 'tty%s'%i
+                with TempOwn(file_name):
+                    with open(file_name) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='stop on runlevel 2\n':
-                            contents[j]='start on runlevel 2\n'
-                        elif line=='stop on runlevel 3\n':
-                            contents[j]='start on runlevel 3\n'
-                    with open(filename, 'w') as f:
+                        if line.startswith('#exec'):
+                            contents[j]='exec /sbin/getty 38400 tty%s\n' % i
+                    with open(file_name, 'w') as f:
                         f.writelines(contents)
 
-class DisableGettyKarmic(DisableGetty):
-    __doc__ = DisableGetty.__doc__
+class DisableGettyKarmic(I):
+    __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
+    detail = _('Speed up Linux start up process. Free 2.5 MBytes memory. ')
     def visible(self):
-        return VERSION not in ['hardy', 'intrepid', 'jaunty']
+        return os.path.exists('/etc/init/tty1.conf')
     def installed(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
-                if file_contain('tty%s.conf'%i, 'exec /sbin/getty -8 38400 tty%s'%i):
-                    return False
-            return True
+                file_name = 'tty%s.conf' % i
+                with open(file_name) as f:
+                    for line in f:
+                        if line.startswith('exec'): return False
+        return True
     def install(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
-                with TempOwn(filename) as o:
+                with TempOwn(filename):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line.strip()=='exec /sbin/getty -8 38400 tty%s'%i:
-                            contents[j]='#exec\n'
-                            break
-                    else:
-                        raise CommandFailError('Not found', contents)
+                        if line.startswith('exec'):
+                            contents[j]='#' + line
                     with open(filename, 'w') as f:
                         f.writelines(contents)
     def remove(self):
-        with Chdir('/etc/init/') as o:
+        with Chdir('/etc/init/'):
             for i in range(2,7):
                 filename = 'tty%s.conf'%i
-                with TempOwn(filename) as o:
+                with TempOwn(filename):
                     with open(filename) as f:
                         contents = f.readlines()
                     for j, line in enumerate(contents):
-                        if line=='#exec\n':
+                        if line.startswith('#exec'):
                             contents[j]='exec /sbin/getty -8 38400 tty%s\n'%i
-                            break
-                    else:
-                        raise CommandFailError('Not found', contents)
                     with open(filename, 'w') as f:
                         f.writelines(contents)
 

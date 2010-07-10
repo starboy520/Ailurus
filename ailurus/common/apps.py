@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -61,7 +61,7 @@ class Bioclipse(_path_lists):
             f = R(urls.bioclipse32, filename = 'bioclipse.zip').download()
         else:
             f = R(urls.bioclipse64, filename = 'bioclipse.zip').download()
-        with Chdir('/tmp') as o:
+        with Chdir('/tmp'):
             run('unzip -qo %s' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
@@ -119,7 +119,7 @@ class SweetHome3D(_path_lists):
         else:       url = urls.sweethome64
         f = R(url).download()
         run_as_root('mkdir /opt', ignore_error=True)
-        with Chdir('/opt') as c:
+        with Chdir('/opt'):
             run_as_root('tar xf ' + f)
         create_file(self.shortcut, '[Desktop Entry]\n'
                                    'Name=SweetHome3D\n'
@@ -131,20 +131,21 @@ class SweetHome3D(_path_lists):
                                    'Categories=Graphics;\n')
 
 # Do not install it via Launchpad, because the packages there is 1.6. It is old, since 1.8 has been released. 
-class Songbird(I):
-    __doc__ = _('Songbird: Open source substitution of iTunes')
-    detail = (_('Music player which integrates with online content via plugins. '
-               'Site contains project news, download, add-ons directory, help, and how to contribute.') + '\n' + 
-              _('Launch it by this command:') + ' LD_BIND_NOW=1 ./songbird')
-    download_url = 'http://developer.songbirdnest.com/builds/trunk/latest/' 
-    category = 'player'
-    license = GPL
-    def install(self):
-        open_web_page('http://developer.songbirdnest.com/builds/trunk/latest/')
-    def installed(self):
-        return False
-    def remove(self):
-        pass
+# Songbird cannot be downloaded from http://developer.songbirdnest.com/builds/trunk/latest/ now :(
+#class Songbird(I):
+#    __doc__ = _('Songbird: Open source substitution of iTunes')
+#    detail = (_('Music player which integrates with online content via plugins. '
+#               'Site contains project news, download, add-ons directory, help, and how to contribute.') + '\n' + 
+#              _('Launch it by this command:') + ' LD_BIND_NOW=1 ./songbird')
+#    download_url = 'http://developer.songbirdnest.com/builds/trunk/latest/' 
+#    category = 'player'
+#    license = GPL
+#    def install(self):
+#        open_web_page('http://developer.songbirdnest.com/builds/trunk/latest/')
+#    def installed(self):
+#        return False
+#    def remove(self):
+#        pass
 
 class TsingHuaTeXTemplate(_download_one_file):
     __doc__ = _('LaTeX Thesis Templates by Tsing Hua University, China')

@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@ sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.4-li
 tsinghuatex = 'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'
 nscript = 'http://www.nanolx.org/free/NScripts-3.6.tar.bz2'
 cdt = 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'
-pydev = 'http://prdownloads.sourceforge.net/pydev/org.python.pydev.feature-1.4.6.2788.zip'
+pydev = 'http://prdownloads.sourceforge.net/pydev/org.python.pydev.feature-1.5.7.2010050621.zip'
 pbcdev32 = 'http://voltar.org/pbcfiles/libpbc-dev_0.5.4-1_i386.deb'
 pbcdev64 = 'http://voltar.org/pbcfiles/libpbc-dev_0.5.4-1_amd64.deb'
 pbc32 = 'http://voltar.org/pbcfiles/libpbc0_0.5.4-1_i386.deb'
