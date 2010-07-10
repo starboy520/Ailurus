@@ -901,21 +901,24 @@ class PACMAN:
         cls.fresh_cache = True
         cls.__pkgs = set()
         cls.__allpkgs = set()
+        TimeStat.begin(_('scan installed packages'))
         import subprocess, os
-        #get installed package names
         task = subprocess.Popen(['pacman', '-Q'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__pkgs.add(line.split()[0])
         task.wait()
-        #get all existing package names
+        TimeStat.end(_('scan installed packages'))
+        
+        TimeStat.begin(_('scan available packages'))
         task = subprocess.Popen(['pacman', '-Sl'],
             stdout=subprocess.PIPE,
             )
         for line in task.stdout:
             cls.__allpkgs.add(line.split()[1])
         task.wait()
+        TimeStat.end(_('scan available packages'))
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
