@@ -163,16 +163,14 @@ class Repo_Firefox_3_6(_launchpad):
 class Repo_WINE(_repo):
     __doc__ = _('WINE (beta version)')
     license = LGPL + ' http://wiki.winehq.org/Licensing'
-    def __init__(self):
-        self.detail = _('This repository contains the latest version of Wine. '
+    detail = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
-        self.apt_content = 'wine wine-gecko'
-        self.web_page = 'https://launchpad.net/~ubuntu-wine/+archive/ppa'
-        self.apt_file = '/etc/apt/sources.list.d/winehq.list'
-        self.apt_conf = [ 'deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu $version main' ]
-        self.key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A9A06AEF9CB8DB0'
-        self.key_id = 'F9CB8DB0'
-        _repo.__init__(self)
+    apt_content = 'wine wine-gecko'
+    web_page = 'https://launchpad.net/~ubuntu-wine/+archive/ppa'
+    apt_file = '/etc/apt/sources.list.d/winehq.list'
+    apt_conf = [ 'deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu $version main' ]
+    key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A9A06AEF9CB8DB0'
+    key_id = 'F9CB8DB0'
 
 class Repo_Ailurus(_launchpad):
     __doc__ = _('Ailurus (stable)')
@@ -235,16 +233,14 @@ class Repo_GlobalMenu(_launchpad):
 class Repo_Medibuntu(_repo):
     __doc__ = _('Medibuntu (stable)')
     license = GPL
-    def __init__(self):
-        self.detail = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
+    detail = _('This is a repository providing packages which cannot be included into the Ubuntu distribution for legal reasons. '
             'There are many packages in this repository. The list of packages is in http://packages.medibuntu.org/')
-        self.apt_content = ''
-        self.web_page = 'http://packages.medibuntu.org/'
-        self.apt_file = '/etc/apt/sources.list.d/medibuntu.list'
-        self.apt_conf = [ 'deb http://packages.medibuntu.org/ $version free non-free' ]
-        self.key_url = 'http://packages.medibuntu.org/medibuntu-key.gpg'
-        self.key_id = '0C5A2783'
-        _repo.__init__(self)
+    apt_content = ''
+    web_page = 'http://packages.medibuntu.org/'
+    apt_file = '/etc/apt/sources.list.d/medibuntu.list'
+    apt_conf = [ 'deb http://packages.medibuntu.org/ $version free non-free' ]
+    key_url = 'http://packages.medibuntu.org/medibuntu-key.gpg'
+    key_id = '0C5A2783'
 
 class Repo_Moovida(_launchpad):
     __doc__ = _('Moovida (stable)')
@@ -301,28 +297,24 @@ class Repo_IBus_Karmic(_launchpad):
 
 class Repo_Canonical_Partner(_repo):
     __doc__ = _('Partners of Canonical')
-    def __init__(self):
-        self.detail = _('This repository provides many packages from partners of Canonical.')
-        self.apt_content = 'acroread uex symphony accountz-baz'
-        self.web_page = 'http://archive.canonical.com/ubuntu/dists/'
-        self.apt_file = '/etc/apt/sources.list.d/partners-of-canonical.list'
-        self.apt_conf = [ 'deb http://archive.canonical.com/ubuntu $version partner ' ]
-        self.key_url = ''
-        self.key_id = ''
-        _repo.__init__(self)
+    detail = _('This repository provides many packages from partners of Canonical.')
+    apt_content = 'acroread uex symphony accountz-baz'
+    web_page = 'http://archive.canonical.com/ubuntu/dists/'
+    apt_file = '/etc/apt/sources.list.d/partners-of-canonical.list'
+    apt_conf = [ 'deb http://archive.canonical.com/ubuntu $version partner ' ]
+    key_url = ''
+    key_id = ''
 
 class Repo_RSSOwl(_repo):
     __doc__ = _('RSSOwl (stable)')
     license = EPL
-    def __init__(self):
-        self.detail = _('RSSOwl is an RSS reader.')
-        self.apt_content = 'rssowl'
-        self.web_page = 'http://packages.rssowl.org/README'
-        self.apt_file = '/etc/apt/sources.list.d/rssowl.list'
-        self.apt_conf = [ 'deb http://packages.rssowl.org/ubuntu $version main' ]
-        self.key_url = 'http://packages.rssowl.org/project/rene.moser.pubkey'
-        self.key_id = 'E53168C7'
-        _repo.__init__(self)
+    detail = _('RSSOwl is an RSS reader.')
+    apt_content = 'rssowl'
+    web_page = 'http://packages.rssowl.org/README'
+    apt_file = '/etc/apt/sources.list.d/rssowl.list'
+    apt_conf = [ 'deb http://packages.rssowl.org/ubuntu $version main' ]
+    key_url = 'http://packages.rssowl.org/project/rene.moser.pubkey'
+    key_id = 'E53168C7'
 
 class Repo_Gmchess(_launchpad):
     __doc__ = _('Gmchess (stable)')
@@ -364,15 +356,13 @@ class Repo_Audacious(_launchpad):
 class Repo_RedNoteBook(_repo):
     __doc__ = _('RedNoteBook (stable)')
     license = GPL
-    def __init__(self):
-        self.detail = _('This is a desktop diary application.')
-        self.apt_content = 'rednotebook'
-        self.web_page = 'http://robin.powdarrmonkey.net/ubuntu/'
-        self.apt_file = '/etc/apt/sources.list.d/rednotebook.list'
-        self.apt_conf = [ 'deb http://robin.powdarrmonkey.net/ubuntu $version/' ]
-        self.key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
-        self.key_id = 'FF95D333'
-        _repo.__init__(self)
+    detail = _('This is a desktop diary application.')
+    apt_content = 'rednotebook'
+    web_page = 'http://robin.powdarrmonkey.net/ubuntu/'
+    apt_file = '/etc/apt/sources.list.d/rednotebook.list'
+    apt_conf = [ 'deb http://robin.powdarrmonkey.net/ubuntu $version/' ]
+    key_url = 'http://robin.powdarrmonkey.net/ubuntu/repository.key'
+    key_id = 'FF95D333'
 
 class Repo_Pidgin_Develop(_launchpad):
     __doc__ = _('Pidgin (beta version)')
@@ -387,15 +377,6 @@ class Repo_OSD_Lyrics(_launchpad):
     detail = _('It displays lyrics. It supports many media players.')
     content = 'osdlyrics'
     ppa = 'osd-lyrics'
-
-class Repo_Mplayer_VOD(_launchpad):
-    __doc__ = _('Mplayer-VOD (stable)')
-    license = GPL
-    detail = _('A movie player for Linux. Supports reading from network, dvd, vcd, file, pipes, and v4l.')
-    content = 'mplayer'
-    ppa = 'homer-xing/mplayer-vod'
-    def visible(self):
-        return False
 
 class Repo_Acire(_launchpad):
     __doc__ = _('Acire (stable)')
