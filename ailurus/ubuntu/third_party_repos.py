@@ -24,6 +24,9 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
+def get_non_launchpad_keyfile_path(class_name):
+    return A + '/publickey/ubuntu_' + class_name
+
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
@@ -56,12 +59,8 @@ class _repo(I):
     def install(self):
         APTSource2.add_lines_to_file(self.apt_conf, self.apt_file)
         if hasattr(self, 'key_url') and self.key_url:
-            try: # do not interrupt installation process if download() failed
-                download(self.key_url, '/tmp/key.gpg')
-            except CommandFailError:
-                print_traceback()
-            else:
-                run_as_root('apt-key add /tmp/key.gpg')
+            path = get_non_launchpad_keyfile_path(self.__class__.__name__)
+            run_as_root('apt-key add "%s"' % path)
     def remove(self):
         APTSource2.remove_snips_from_all_files(self.apt_conf)
         if self.key_id:
@@ -107,7 +106,7 @@ def del_signing_key(signing_key_fingerprint):
 
 def get_signing_key_path(signing_key_fingerprint):
     assert isinstance(signing_key_fingerprint, str) and signing_key_fingerprint
-    return A + 'publickey/launchpad_' + signing_key_fingerprint
+    return A + '/publickey/launchpad_' + signing_key_fingerprint
 
 class _launchpad(I):
     this_is_a_repository = True
