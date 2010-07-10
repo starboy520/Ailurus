@@ -203,6 +203,45 @@ def show_contribution_to_ailurus():
     dialog.run()
     dialog.destroy()
 
+def refresh_static_store(store):
+    store.clear()
+    keys = TimeStat.result.keys()[:]
+    keys.sort()
+    for key in keys:
+        value = TimeStat.result[key]
+        store.append([key, '%.3f s' % value])
+
+def show_statistics():
+    store = gtk.ListStore(str, str)
+    refresh_static_store(store)
+    render_1 = gtk.CellRendererText()
+    render_2 = gtk.CellRendererText()
+    column = gtk.TreeViewColumn()
+    column.pack_start(render_1, False)
+    column.pack_start(render_2, False)
+    column.add_attribute(render_1, 'text', 0)
+    column.add_attribute(render_2, 'text', 1)
+    view = gtk.TreeView(store)
+    view.append_column(column)
+    view.set_rules_hint(True)
+    view.set_headers_visible(False)
+    button_refresh = gtk.Button(stock=gtk.STOCK_REFRESH)
+    button_close = gtk.Button(stock=gtk.STOCK_CLOSE)
+    button_box = gtk.HBox(False)
+    button_box.pack_end(button_refresh, False)
+    button_box.pack_end(button_close, False)
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(view)
+    vbox.pack_start(button_box, False)
+    vbox.set_border_width(3)
+    window = gtk.Window()
+    window.set_title( _('Statistical data') )
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.add(vbox)
+    window.show_all()
+    button_refresh.connect('clicked', lambda w: refresh_static_store(store))
+    button_close.connect('clicked', lambda w: window.destroy())
+
 def __others():
     help_contribute = gtk.MenuItem(_('Contributing to Ailurus'))
     help_contribute.connect('activate', lambda w: show_contribution_to_ailurus())
@@ -235,7 +274,11 @@ def __others():
     changelog = gtk.MenuItem( _('Read changelog') )
     changelog.connect('activate', lambda *w: show_changelog())
     
-    return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
+    statistics = gtk.MenuItem( _('Statistical data') )
+    statistics.connect('activate', lambda *w: show_statistics())
+    
+    return [ changelog, help_contribute, help_blog, help_update, 
+             help_report_bug, help_translate, special_thank, about, statistics, ] 
    
 def get_study_linux_menu():
     return __study_linux()

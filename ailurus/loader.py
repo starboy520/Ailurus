@@ -291,16 +291,26 @@ elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
 def load_app_objs():
+    TimeStat.begin('load_app_objs')
     AppObjs.set_basic_modules(common, desktop, distribution)
 
+    TimeStat.begin('load_from_text_file')
     AppObjs.load_from_text_file()
+    TimeStat.end('load_from_text_file')
+    
+    TimeStat.begin('load_from_basic_modules')
     AppObjs.load_from_basic_modules()
+    TimeStat.end('load_from_basic_modules')
+    
+    TimeStat.begin('load_from_extensions')
     AppObjs.load_from_extensions()
+    TimeStat.end('load_from_extensions')
 
     AppObjs.strip_invisible()
     AppObjs.strip_wrong_locale()
 
     AppObjs.all_objs_reload_icon()
     AppObjs.all_objs_reset_status()
+    TimeStat.end('load_app_objs')
     
     return AppObjs.appobjs
