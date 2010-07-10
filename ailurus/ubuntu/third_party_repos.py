@@ -99,10 +99,15 @@ def get_signing_key(ppa_owner, ppa_name):
         return None
 
 def add_signing_key(signing_key_fingerprint):
-    run_as_root_in_terminal("apt-key adv --keyserver keyserver.ubuntu.com --recv " + signing_key_fingerprint)
+    path = get_signing_key_path(signing_key_fingerprint)
+    run_as_root("apt-key add '%s'" % path)
 
 def del_signing_key(signing_key_fingerprint):
-    run_as_root_in_terminal("apt-key del " + signing_key_fingerprint)
+    run_as_root("apt-key del " + signing_key_fingerprint)
+
+def get_signing_key_path(signing_key_fingerprint):
+    assert isinstance(signing_key_fingerprint, str) and signing_key_fingerprint
+    return A + 'publickey/launchpad_' + signing_key_fingerprint
 
 class _launchpad(I):
     this_is_a_repository = True
