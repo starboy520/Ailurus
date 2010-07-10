@@ -160,17 +160,13 @@ class Repo_Firefox_3_6(_launchpad):
 #        self.key_id = '' #no key
 #        _repo.__init__(self)
 
-class Repo_WINE(_repo):
+class Repo_WINE(_launchpad):
     __doc__ = _('WINE (beta version)')
     license = LGPL + ' http://wiki.winehq.org/Licensing'
     detail = _('This repository contains the latest version of Wine. '
             'Wine is for running Windows applications on Linux.')
-    apt_content = 'wine wine-gecko'
-    web_page = 'https://launchpad.net/~ubuntu-wine/+archive/ppa'
-    apt_file = '/etc/apt/sources.list.d/winehq.list'
-    apt_conf = [ 'deb http://ppa.launchpad.net/ubuntu-wine/ppa/ubuntu $version main' ]
-    key_url = 'http://keyserver.ubuntu.com:11371/pks/lookup?op=get&search=0x5A9A06AEF9CB8DB0'
-    key_id = 'F9CB8DB0'
+    ppa = 'ubuntu-wine'
+    content = ''
 
 class Repo_Ailurus(_launchpad):
     __doc__ = _('Ailurus (stable)')
