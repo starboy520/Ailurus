@@ -1748,6 +1748,29 @@ class FedoraReposFile:
             ret.append(obj)
         return ret
 
+class TimeStat:
+    __current_stat_name = None
+    __begin_time = None
+    result = {}
+    @classmethod
+    def begin(cls, name):
+        assert isinstance(name, str) and name
+        assert cls.__current_stat_name is None
+        cls.__current_stat_name = name
+        import time
+        cls.__begin_time = time.time()
+    @classmethod
+    def end(cls):
+        assert cls.__current_stat_name is not None
+        import time
+        length = time.time() - cls.__begin_time
+        cls.result[cls.__current_stat_name] = length
+        cls.__current_stat_name = None
+    @classmethod
+    def clear(cls):
+        cls.__current_stat_name = cls.__begin_time = None
+        cls.result.clear()
+
 def get_ailurus_version():
     import os
     path = A+'/version'
