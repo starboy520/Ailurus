@@ -169,6 +169,10 @@ class InstallRemovePane(gtk.VBox):
             cell.set_property('text', text)
 
     def __left_pane(self):
+        toolbar = gtk.HBox(False, 3)
+        for text, class_name, icon_path in Category.all_left_class():
+            toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
+        
         column_expander = gtk.TreeViewColumn()
         column_expander.set_visible(False)
         pixbuf_render = gtk.CellRendererPixbuf()
@@ -192,10 +196,15 @@ class InstallRemovePane(gtk.VBox):
         treeview.set_expander_column(column_expander)
 
         scrollwindow = gtk.ScrolledWindow ()
-        scrollwindow.add ( treeview )
-        scrollwindow.set_policy ( gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC )
-        scrollwindow.set_shadow_type ( gtk.SHADOW_IN )
-        return scrollwindow
+        scrollwindow.add(treeview)
+        scrollwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scrollwindow.set_shadow_type(gtk.SHADOW_IN)
+
+        vbox = gtk.VBox(False, 5)
+        vbox.pack_start(toolbar, False)
+        vbox.pack_start(scrollwindow)
+
+        return vbox
 
     def __clean_and_show_vte_window(self):
         gtk.gdk.threads_enter()
@@ -690,17 +699,6 @@ class InstallRemovePane(gtk.VBox):
         self.app_objs = app_objs
         for obj in app_objs:
             self.right_store.append([obj])
-
-        toolbar = gtk.HBox(False, 3)
-        for text, class_name, icon_path in Category.all_left_class():
-            toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
-        toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_sync, False)
-        toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(searchbox, False)
-        toolbar.pack_start(self.quick_setup_area, False)
-        toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_apply, False)
 
         self.status_label = gtk.Label()
         self.status_label.set_alignment(0.5, 0.5)
