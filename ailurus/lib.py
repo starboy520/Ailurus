@@ -1749,26 +1749,28 @@ class FedoraReposFile:
         return ret
 
 class TimeStat:
-    __current_stat_name = None
-    __begin_time = None
+    __open_stat_names = set()
+    __begin_time = {}
     result = {}
     @classmethod
     def begin(cls, name):
         assert isinstance(name, str) and name
-        assert cls.__current_stat_name is None
-        cls.__current_stat_name = name
+        assert name not in cls.__open_stat_names
+        cls.__open_stat_names.add(name)
         import time
-        cls.__begin_time = time.time()
+        cls.__begin_time[name] = time.time()
     @classmethod
-    def end(cls):
-        assert cls.__current_stat_name is not None
+    def end(cls, name):
+        assert isinstance(name, str) and name
+        assert name in cls.__open_stat_names
         import time
-        length = time.time() - cls.__begin_time
-        cls.result[cls.__current_stat_name] = length
-        cls.__current_stat_name = None
+        length = time.time() - cls.__begin_time[name]
+        cls.result[name] = length
+        cls.__open_stat_names.remove(name)
     @classmethod
     def clear(cls):
-        cls.__current_stat_name = cls.__begin_time = None
+        cls.__open_stat_names.clear()
+        cls.__begin_time.clear()
         cls.result.clear()
 
 def get_ailurus_version():
