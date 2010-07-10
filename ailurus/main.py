@@ -283,7 +283,9 @@ class PaneLoader:
         if self.pane_object is None:
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
+            TimeStat.begin(self.pane_class.__name__)
             self.pane_object = self.pane_class(self.main_view, *arg)
+            TimeStat.end(self.pane_class.__name__)
         return self.pane_object
     def need_to_load(self):
         return self.pane_object is None
@@ -517,7 +519,7 @@ class MainView:
             import thread
             thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
-TimeStat.begin('start up')
+TimeStat.begin(_('start up'))
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
 set_default_window_icon()
@@ -526,7 +528,7 @@ check_dbus_daemon_status()
 
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
-TimeStat.end('start up')
+TimeStat.end(_('start up'))
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
