@@ -306,11 +306,19 @@ def load_app_objs():
     AppObjs.load_from_extensions()
     TimeStat.end('load_from_extensions')
 
+    TimeStat.begin('strip')
     AppObjs.strip_invisible()
     AppObjs.strip_wrong_locale()
+    TimeStat.end('strip')
 
+    TimeStat.begin('reload_icon')
     AppObjs.all_objs_reload_icon()
+    TimeStat.end('reload_icon')
+    
+    TimeStat.begin('reset_status')
     AppObjs.all_objs_reset_status()
+    TimeStat.end('reset_status')
+    
     TimeStat.end('load_app_objs')
     
     return AppObjs.appobjs
