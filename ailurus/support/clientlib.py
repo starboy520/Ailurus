@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -146,4 +146,3 @@ if __name__ == '__main__':
     skill_send('bb', 'test skill')
     print 'OK'
     print urllib2.urlopen('http://%s:%d/' % (HOST, PORT)).read()
-    

@@ -3,8 +3,8 @@
 #
 # Ailurus - make Linux easier to use
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,7 +29,7 @@ from lib import *
 from libu import *
 
 class ReposConfigPane(gtk.VBox):
-    icon = D+'sora_icons/m_hardware.png'
+    icon = D+'sora_icons/m_repository_configure.png'
     text = _('Repository\nConfigure')
     
     def __init__(self, main_view):
