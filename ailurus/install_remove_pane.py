@@ -675,12 +675,7 @@ class InstallRemovePane(gtk.VBox):
         self.sync_button = button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
         button_sync.set_tooltip_text(_('Synchronize'))
         button_sync.connect('clicked', lambda w: self.synchronize())
-        self.sync_area = Area()
-        self.sync_area.pack_start(gtk.VSeparator(), False)
-        self.sync_area.pack_start(button_sync)
-        self.sync_area.content_visible( #Config.get_show_sync_area()
-                                        True # always show sync
-                                      )
+
         from support.searchbox import SearchBoxForApp
         searchbox = SearchBoxForApp()
         searchbox.connect('changed', self.__search_content_changed)
@@ -690,10 +685,7 @@ class InstallRemovePane(gtk.VBox):
         self.quick_setup_area = Area()
         self.quick_setup_area.pack_start(gtk.VSeparator(), False)
         self.quick_setup_area.pack_start(quick_setup_button, False)
-        self.quick_setup_area.content_visible(
-#            (UBUNTU or UBUNTU_DERIV) and Config.get_show_quick_setup_area()
-             (UBUNTU or UBUNTU_DERIV) # always show quick_setup on Ubuntu
-            )
+        self.quick_setup_area.content_visible(UBUNTU or UBUNTU_DERIV)
 
         self.app_objs = app_objs
         for obj in app_objs:
@@ -702,7 +694,8 @@ class InstallRemovePane(gtk.VBox):
         toolbar = gtk.HBox(False, 3)
         for text, class_name, icon_path in Category.all_left_class():
             toolbar.pack_start(self.left_class_choose_button(text, class_name, icon_path), False)
-        toolbar.pack_start(self.sync_area, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(button_sync, False)
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(searchbox, False)
         toolbar.pack_start(self.quick_setup_area, False)
