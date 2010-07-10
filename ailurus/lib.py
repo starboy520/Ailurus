@@ -737,7 +737,7 @@ class RPM:
         cls.__set2 = set()
         import subprocess, os
 
-        TimeStat.begin(_('dump installed rpm'))
+        TimeStat.begin(_('scan installed packages'))
         path = A+'/support/dump_rpm_installed.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
@@ -745,9 +745,9 @@ class RPM:
         for line in task.stdout:
             cls.__set1.add(line.strip())
         task.wait()
-        TimeStat.end(_('dump installed rpm'))
+        TimeStat.end(_('scan installed packages'))
         
-        TimeStat.begin(_('dump available rpm'))
+        TimeStat.begin(_('scan available packages'))
         path = A+'/support/dump_rpm_existing_new.py'
         task = subprocess.Popen(['python', path],
             stdout=subprocess.PIPE,
@@ -755,7 +755,7 @@ class RPM:
         for line in task.stdout:
             cls.__set2.add(line.strip())
         task.wait()
-        TimeStat.end(_('dump available rpm'))
+        TimeStat.end(_('scan available packages'))
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -804,10 +804,10 @@ class APT:
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
-        TimeStat.begin(_('refresh apt cache'))
+        TimeStat.begin(_('scan packages'))
         import apt
         cls.apt_cache = apt.cache.Cache()
-        TimeStat.end(_('refresh apt cache'))
+        TimeStat.end(_('scan packages'))
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
