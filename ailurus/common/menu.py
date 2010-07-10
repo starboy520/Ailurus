@@ -208,6 +208,19 @@ def refresh_static_store(store):
     for key, value in TimeStat.result.items():
         store.append([key, '%.3f s' % value])
 
+def copy_text_to_clipboard(store):
+    assert isinstance(store, gtk.ListStore)
+
+    import StringIO
+    text = StringIO.StringIO()
+    for row in store:
+        key = row[0]
+        value = row[1]
+        print >>text, key
+        print >>text, '\t', value
+    clipboard = gtk.clipboard_get()
+    clipboard.set_text(text.getvalue())
+
 def show_statistics():
     store = gtk.ListStore(str, str)
     refresh_static_store(store)
@@ -228,12 +241,13 @@ def show_statistics():
     view.append_column(column)
     view.append_column(column2)
     view.set_rules_hint(True)
-#    view.set_headers_visible(False)
     button_refresh = gtk.Button(stock=gtk.STOCK_REFRESH)
     button_close = gtk.Button(stock=gtk.STOCK_CLOSE)
+    button_copy = gtk.Button(_('Copy text to clipboard'))
     button_box = gtk.HBox(False)
-    button_box.pack_end(button_refresh, False)
     button_box.pack_end(button_close, False)
+    button_box.pack_end(button_refresh, False)
+    button_box.pack_end(button_copy, False)
     vbox = gtk.VBox(False, 5)
     vbox.pack_start(view)
     vbox.pack_start(button_box, False)
@@ -243,6 +257,7 @@ def show_statistics():
     window.set_position(gtk.WIN_POS_CENTER)
     window.add(vbox)
     window.show_all()
+    button_copy.connect('clicked', lambda w: copy_text_to_clipboard(store))
     button_refresh.connect('clicked', lambda w: refresh_static_store(store))
     button_close.connect('clicked', lambda w: window.destroy())
 
