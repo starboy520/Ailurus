@@ -29,7 +29,7 @@ from lib import *
 from libu import *
 
 class ReposConfigPane(gtk.VBox):
-    icon = D+'sora_icons/m_hardware.png'
+    icon = D+'sora_icons/m_repository_configure.png'
     text = _('Repository\nConfigure')
     
     def __init__(self, main_view):
