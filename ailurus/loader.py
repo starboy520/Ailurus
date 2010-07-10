@@ -65,6 +65,21 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                 appobjs.append(obj)
         return appobjs
     
+    def save(self):
+        try:
+            fd = open(self.filepath,'w')
+            self.write(fd)
+            close(fd)
+        except:
+            print_traceback()
+     
+    def removeAppObj(self,appname):
+        if not self.custom:
+            return
+        if appname in self.sections():
+            self.remove_section(appname)
+        self.save()
+        
     def addAppObj(self,dict):
         if not self.custom:
             return
@@ -74,12 +89,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         self.add_section(appname)
         for key in dict.keys():
             self.set(appname, str(key), str(dict[key]))
-        try:
-            fd = open(self.filepath,'w')
-            self.write(fd)
-            close(fd)
-        except:
-            print_traceback()
+        self.save()
 
     def __init__(self,filepath):
         ConfigParser.RawConfigParser.__init__(self)
@@ -87,18 +97,22 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         if not isinstance(filepath,str):
             raise Exception('filepath must be a string')
         self.filepath = filepath
-        if os.path.exists(filepath):
-            self.read(filepath)
-        else:
-            raise Exception('File %s does not exist' % filepath)
         if filepath.startswith(os.path.expanduser('~')):
             self.custom = True
         else:
             self.custom = False
+        
+        if os.path.exists(filepath):
+            self.read(filepath)
+        else:
+            if self.custom:
+                return
+            else:
+                raise Exception('File %s does not exist' % filepath)
+
     
-        
-        
-        
+NATIVE_APPS = AppConfigParser(A+'/native_apps')
+CUSTOM_APPS = AppConfigParser(Config.config_dir + 'custom_apps')
 
 class AppObjs:
     appobjs = []
@@ -172,8 +186,9 @@ class AppObjs:
     @classmethod
     def all_installer_names_in_text_file(cls):
         ret = set()
-        c = AppConfigParser(A+'/native_apps')
-        for section_name in c.sections():
+        for section_name in NATIVE_APPS.sections():
+            ret.add(section_name)
+        for section_name in CUSTOM_APPS.sections():
             ret.add(section_name)
         return list(ret)
     @classmethod
@@ -198,8 +213,8 @@ class AppObjs:
         sys.path.pop(0)
     @classmethod
     def load_from_text_file(cls):
-        c = AppConfigParser(A+'/native_apps')
-        cls.appobjs += c.getAppObjs()
+        cls.appobjs += NATIVE_APPS.getAppObjs()
+        cls.appobjs += CUSTOM_APPS.getAppObjs()
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]

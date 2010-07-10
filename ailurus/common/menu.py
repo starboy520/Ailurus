@@ -308,7 +308,7 @@ def __others():
     statistics = gtk.MenuItem( _('Statistical data') )
     statistics.connect('activate', lambda *w: show_statistics())
     
-    return [ changelog, help_contribute, help_blog, help_update, 
+    return [ changelog, help_contribute, help_blog, help_update, help_propose_suggestion,
              help_report_bug, help_translate, special_thank, about, statistics, ] 
 
    
