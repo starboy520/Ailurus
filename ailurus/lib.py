@@ -798,8 +798,10 @@ class APT:
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
+        TimeStat.begin(_('refresh apt cache'))
         import apt
         cls.apt_cache = apt.cache.Cache()
+        TimeStat.end(_('refresh apt cache'))
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
