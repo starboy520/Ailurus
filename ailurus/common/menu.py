@@ -56,7 +56,7 @@ def __study_linux():
         TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
-    study_submit = image_file_menuitem(_('Submit skills'), D+'sora_icons/m_tip_of_the_day.png', 16)
+    study_submit = image_file_menuitem(_('Submit skill'), D+'sora_icons/m_tip_of_the_day.png', 16)
     def show_submit_dialog(*w):
         from support.clientlib import SkillsSubmit
         SkillsSubmit()
