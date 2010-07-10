@@ -31,10 +31,12 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         for section_name in self.sections():
             try:
                 dict = {}
-                assert hasattr(strings, section_name+'_0'), section_name
-                assert hasattr(strings, section_name+'_1'), section_name
-                dict['__doc__'] = getattr(strings, section_name + '_0')
-                dict['detail'] = getattr(strings, section_name + '_1')
+                if not self.custom:
+                    assert hasattr(strings, section_name+'_0'), section_name
+                    assert hasattr(strings, section_name+'_1'), section_name
+                    dict['__doc__'] = getattr(strings, section_name + '_0')
+                    dict['detail'] = getattr(strings, section_name + '_1')
+
                 for option_name in self.options(section_name):
                     value = self.get(section_name, option_name)
                     if option_name == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
@@ -69,7 +71,6 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         try:
             fd = open(self.filepath,'w')
             self.write(fd)
-            close(fd)
         except:
             print_traceback()
      
@@ -81,14 +82,15 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         self.save()
         
     def addAppObj(self,dict):
+        objdict = dict.copy()
         if not self.custom:
             return
-        appname = dict.pop(dict['appname'])
+        appname = objdict.pop('appname')
         if appname in self.sections():
             raise Exception('Duplicate section name')
         self.add_section(appname)
-        for key in dict.keys():
-            self.set(appname, str(key), str(dict[key]))
+        for key in objdict.keys():
+            self.set(appname, str(key), str(objdict[key]))
         self.save()
 
     def __init__(self,filepath):
@@ -97,10 +99,10 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         if not isinstance(filepath,str):
             raise Exception('filepath must be a string')
         self.filepath = filepath
-        if filepath.startswith(os.path.expanduser('~')):
-            self.custom = True
-        else:
+        if filepath.endswith('native_apps'):
             self.custom = False
+        else:
+            self.custom = True
         
         if os.path.exists(filepath):
             self.read(filepath)
@@ -122,7 +124,17 @@ class AppObjs:
     failed_extensions = []
     appstore = gtk.ListStore(gobject.TYPE_PYOBJECT)
     @classmethod
-    def add_new_appobj(cls,obj):
+    def add_new_appobj(cls,dict):
+        objdict = dict.copy()
+        section_name = objdict.pop('appname')
+        obj = new.classobj(section_name, (N,), {})()
+        for key in objdict.keys():
+            setattr(obj,key,objdict[key])
+        obj.self_check()
+        obj.fill()
+        icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
+        obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
+        obj.showed_in_toggle = obj.cache_installed = obj.installed()
         cls.appobjs.append(obj)
         cls.appstore.append([obj])
     @classmethod
@@ -376,5 +388,12 @@ def load_app_objs():
     TimeStat.end('reset_status')
     
     TimeStat.end('load_app_objs')
-    
+#    dict = {
+#            'appname':'gedit',
+#            '__doc__':'gedit doc',
+#            'detail':'gedit detail',
+#            'pkgs':'gedit'
+#            }
+#    AppObjs.add_new_appobj(dict)
+#    CUSTOM_APPS.addAppObj(dict)
     return AppObjs.appobjs
