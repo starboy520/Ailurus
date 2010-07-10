@@ -56,6 +56,12 @@ def __study_linux():
         TipOfTheDay()
     study_show_tip.connect('activate', show_day_tip)
     ret.insert(0, study_show_tip)
+    study_submit = image_file_menuitem(_('Submit skills'), D+'sora_icons/m_tip_of_the_day.png', 16)
+    def show_submit_dialog(*w):
+        from support.clientlib import SkillsSubmit
+        SkillsSubmit()
+    study_submit.connect('activate', show_submit_dialog)
+    ret.insert(1, study_submit)
     return ret
 
 def set_proxy_server():
@@ -217,8 +223,14 @@ def __others():
         import thread
         thread.start_new_thread(check_update, ())
     help_update.connect('activate', callback)
+    
+    help_propose_suggestion = image_file_menuitem(_('Propose suggestion'), D+'umut_icons/m_propose_suggestion.png', 16)
+    def propose_suggestion(*w):
+        from support.clientlib import SuggestionsSubmit
+        SuggestionsSubmit()
+    help_propose_suggestion.connect('activate', propose_suggestion)
 
-    help_report_bug = image_file_menuitem(_('Propose suggestion and report bugs'), D+'umut_icons/m_propose_suggestion.png', 16) 
+    help_report_bug = image_file_menuitem(_('Report bugs'), D+'umut_icons/m_propose_suggestion.png', 16)
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
@@ -235,7 +247,7 @@ def __others():
     changelog = gtk.MenuItem( _('Read changelog') )
     changelog.connect('activate', lambda *w: show_changelog())
     
-    return [ changelog, help_contribute, help_blog, help_update, help_report_bug, help_translate, special_thank, about ] 
+    return [ changelog, help_contribute, help_blog, help_update, help_propose_suggestion, help_report_bug, help_translate, special_thank, about ] 
    
 def get_study_linux_menu():
     return __study_linux()
