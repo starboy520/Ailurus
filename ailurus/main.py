@@ -517,6 +517,7 @@ class MainView:
             import thread
             thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
+TimeStat.begin('start up')
 sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
 change_task_name()
 set_default_window_icon()
@@ -525,7 +526,7 @@ check_dbus_daemon_status()
 
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
-#splash.destroy()
+TimeStat.end('start up')
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()
