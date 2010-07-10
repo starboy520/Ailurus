@@ -547,6 +547,35 @@ class InstallRemovePane(gtk.VBox):
         thread.start_new_thread(launch, ())
 
     def __right_pane(self):
+        self.sync_button = button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
+        button_sync.set_tooltip_text(_('Synchronize'))
+        button_sync.connect('clicked', lambda w: self.synchronize())
+
+        from support.searchbox import SearchBoxForApp
+        searchbox = SearchBoxForApp()
+        searchbox.connect('changed', self.__search_content_changed)
+
+        quick_setup_button = image_file_only_button(D+'umut_icons/quick_setup.png', 24)
+        quick_setup_button.set_tooltip_text(_('Quickly install popular software'))
+        quick_setup_button.connect('clicked', self.__launch_quick_setup)
+
+        self.quick_setup_area = Area()
+        self.quick_setup_area.pack_start(gtk.VSeparator(), False)
+        self.quick_setup_area.pack_start(quick_setup_button, False)
+        self.quick_setup_area.content_visible(UBUNTU or UBUNTU_DERIV)
+
+        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
+        button_apply.connect('clicked', self.__apply_button_clicked)
+
+        toolbar = gtk.HBox(False, 3)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(button_sync, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(searchbox, False)
+        toolbar.pack_start(self.quick_setup_area, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(button_apply, False)
+        
         import gobject, pango
         self.right_store = treestore = gtk.ListStore(gobject.TYPE_PYOBJECT)
         
@@ -589,7 +618,11 @@ class InstallRemovePane(gtk.VBox):
         scroll.add(treeview)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
-        return scroll
+        
+        vbox = gtk.VBox(False, 5)
+        vbox.pack_start(toolbar, False)
+        vbox.pack_start(scroll)
+        return vbox
 
     def __search_content_changed(self, widget, text, option):
         self.filter_text = text
@@ -679,23 +712,6 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
-        button_apply = image_stock_button(gtk.STOCK_APPLY, _('_Apply') )
-        button_apply.connect('clicked', self.__apply_button_clicked)
-        self.sync_button = button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
-        button_sync.set_tooltip_text(_('Synchronize'))
-        button_sync.connect('clicked', lambda w: self.synchronize())
-
-        from support.searchbox import SearchBoxForApp
-        searchbox = SearchBoxForApp()
-        searchbox.connect('changed', self.__search_content_changed)
-        quick_setup_button = image_file_only_button(D+'umut_icons/quick_setup.png', 24)
-        quick_setup_button.set_tooltip_text(_('Quickly install popular software'))
-        quick_setup_button.connect('clicked', self.__launch_quick_setup)
-        self.quick_setup_area = Area()
-        self.quick_setup_area.pack_start(gtk.VSeparator(), False)
-        self.quick_setup_area.pack_start(quick_setup_button, False)
-        self.quick_setup_area.content_visible(UBUNTU or UBUNTU_DERIV)
-
         self.app_objs = app_objs
         for obj in app_objs:
             self.right_store.append([obj])
@@ -706,7 +722,6 @@ class InstallRemovePane(gtk.VBox):
 
         self.fill_left_treestore()
         self.__left_tree_view_default_select()
-        self.pack_start(toolbar, False)
         self.pack_start(hpaned)
         self.pack_start(self.status_label, False)
         self.show_all()
