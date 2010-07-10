@@ -205,10 +205,7 @@ def show_contribution_to_ailurus():
 
 def refresh_static_store(store):
     store.clear()
-    keys = TimeStat.result.keys()[:]
-    keys.sort()
-    for key in keys:
-        value = TimeStat.result[key]
+    for key, value in TimeStat.result.items():
         store.append([key, '%.3f s' % value])
 
 def show_statistics():
@@ -217,12 +214,17 @@ def show_statistics():
     render_1 = gtk.CellRendererText()
     render_2 = gtk.CellRendererText()
     column = gtk.TreeViewColumn()
+    column.set_title(_('name'))
     column.pack_start(render_1, False)
     column.add_attribute(render_1, 'text', 0)
+    column.set_sort_column_id(0)
+    column.set_sort_order(gtk.SORT_ASCENDING)
     column2 = gtk.TreeViewColumn()
+    column2.set_title(_('value'))
     column2.pack_start(render_2)
     column2.add_attribute(render_2, 'text', 1)
-    view = gtk.TreeView(store)
+    column2.set_sort_column_id(1)
+    view = gtk.TreeView(gtk.TreeModelSort(store))
     view.append_column(column)
     view.append_column(column2)
     view.set_rules_hint(True)
