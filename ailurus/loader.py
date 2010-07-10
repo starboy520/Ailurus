@@ -23,8 +23,82 @@
 from __future__ import with_statement
 from lib import *
 from libapp import N
-import os, sys, glob, new, ConfigParser, types, gtk
+import os, sys, glob, new, ConfigParser, types, gtk, gobject
 import strings
+class AppConfigParser(ConfigParser.RawConfigParser):
+    def getAppObjs(self):
+        appobjs = []
+        for section_name in self.sections():
+            try:
+                dict = {}
+                assert hasattr(strings, section_name+'_0'), section_name
+                assert hasattr(strings, section_name+'_1'), section_name
+                dict['__doc__'] = getattr(strings, section_name + '_0')
+                dict['detail'] = getattr(strings, section_name + '_1')
+                for option_name in self.options(section_name):
+                    value = self.get(section_name, option_name)
+                    if option_name == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
+                        dict['pkgs'] = value
+                    elif option_name == 'fedora' and FEDORA:
+                        dict['pkgs'] = value
+                    elif option_name == 'archlinux' and ARCHLINUX:
+                        dict['pkgs'] = value
+                    elif option_name == 'Chinese' or option_name == 'Poland':
+                        dict[option_name] = True
+                    elif option_name == 'license':
+                        list = [globals()[e] for e in value.split()]
+                        if len(list)==1: dict[option_name] = list[0]
+                        elif len(list)==2: dict[option_name] = DUAL_LICENSE(list[0],list[1])
+                        elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
+                    else:
+                        dict[option_name] = value
+                if 'pkgs' not in dict: continue
+                obj = new.classobj(section_name, (N,), {})()
+                for key in dict.keys():
+                    setattr(obj,key,dict[key])
+                obj.self_check()
+                obj.fill()
+            except:
+                print 'Cannot load obj %s from native_apps' % section_name
+                print_traceback()
+            else:
+                appobjs.append(obj)
+        return appobjs
+    
+    def addAppObj(self,dict):
+        if not self.custom:
+            return
+        appname = dict.pop(dict['appname'])
+        if appname in self.sections():
+            raise Exception('Duplicate section name')
+        self.add_section(appname)
+        for key in dict.keys():
+            self.set(appname, str(key), str(dict[key]))
+        try:
+            fd = open(self.filepath,'w')
+            self.write(fd)
+            close(fd)
+        except:
+            print_traceback()
+
+    def __init__(self,filepath):
+        ConfigParser.RawConfigParser.__init__(self)
+        self.optionxform = str # case sensitive in option_name
+        if not isinstance(filepath,str):
+            raise Exception('filepath must be a string')
+        self.filepath = filepath
+        if os.path.exists(filepath):
+            self.read(filepath)
+        else:
+            raise Exception('File %s does not exist' % filepath)
+        if filepath.startswith(os.path.expanduser('~')):
+            self.custom = True
+        else:
+            self.custom = False
+    
+        
+        
+        
 
 class AppObjs:
     appobjs = []
@@ -32,6 +106,11 @@ class AppObjs:
     basic_modules = [] # used in load_from_basic_modules()
     extensions = []
     failed_extensions = []
+    appstore = gtk.ListStore(gobject.TYPE_PYOBJECT)
+    @classmethod
+    def add_new_appobj(cls,obj):
+        cls.appobjs.append(obj)
+        cls.appstore.append([obj])
     @classmethod
     def get_icon_path(cls, name):
         'return (icon path, whether it is default icon)'
@@ -93,9 +172,7 @@ class AppObjs:
     @classmethod
     def all_installer_names_in_text_file(cls):
         ret = set()
-        c = ConfigParser.RawConfigParser()
-        c.optionxform = str # case sensitive in option_name
-        c.read(A+'/native_apps')
+        c = AppConfigParser(A+'/native_apps')
         for section_name in c.sections():
             ret.add(section_name)
         return list(ret)
@@ -121,44 +198,8 @@ class AppObjs:
         sys.path.pop(0)
     @classmethod
     def load_from_text_file(cls):
-        c = ConfigParser.RawConfigParser()
-        c.optionxform = str # case sensitive in option_name
-        c.read(A+'/native_apps')
-        for section_name in c.sections():
-            try:
-                dict = {}
-                assert hasattr(strings, section_name+'_0'), section_name
-                assert hasattr(strings, section_name+'_1'), section_name
-                dict['__doc__'] = getattr(strings, section_name + '_0')
-                dict['detail'] = getattr(strings, section_name + '_1')
-                for option_name in c.options(section_name):
-                    value = c.get(section_name, option_name)
-                    if option_name == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
-                        dict['pkgs'] = value
-                    elif option_name == 'fedora' and FEDORA:
-                        dict['pkgs'] = value
-                    elif option_name == 'archlinux' and ARCHLINUX:
-                        dict['pkgs'] = value
-                    elif option_name == 'Chinese' or option_name == 'Poland':
-                        dict[option_name] = True
-                    elif option_name == 'license':
-                        list = [globals()[e] for e in value.split()]
-                        if len(list)==1: dict[option_name] = list[0]
-                        elif len(list)==2: dict[option_name] = DUAL_LICENSE(list[0],list[1])
-                        elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
-                    else:
-                        dict[option_name] = value
-                if 'pkgs' not in dict: continue
-                obj = new.classobj(section_name, (N,), {})()
-                for key in dict.keys():
-                    setattr(obj,key,dict[key])
-                obj.self_check()
-                obj.fill()
-            except:
-                print 'Cannot load obj %s from native_apps' % section_name
-                print_traceback()
-            else:
-                cls.appobjs.append(obj)
+        c = AppConfigParser(A+'/native_apps')
+        cls.appobjs += c.getAppObjs()
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]

@@ -542,7 +542,8 @@ class InstallRemovePane(gtk.VBox):
 
     def __right_pane(self):
         import gobject, pango
-        self.right_store = treestore = gtk.ListStore(gobject.TYPE_PYOBJECT)
+        from loader import AppObjs
+        self.right_store = treestore = AppObjs.appstore
         
         self.right_store_filter = treestorefilter = treestore.filter_new()
         treestorefilter.set_visible_func(self.__right_visible_func)
