@@ -1,5 +1,9 @@
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 
+    * Add a feature to delay sending while the server can not be connected
+
+2010-07-10 CHEN Yangyang <skabyy@gmail.com>
+
     * Finish a simple version of AilurusServer and upload it to google appengine
     * Add support/clientlib.py to communicate with AilurusServer
     * Add interfaces to upload skills and suggestions.
