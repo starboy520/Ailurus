@@ -106,7 +106,7 @@ class SubmitWindow(gtk.Window):
         gtk.Window.__init__(self)
         self.set_position(gtk.WIN_POS_CENTER)
         self.set_title(title)
-        self.set_border_width(10)
+        self.set_border_width(5)
         self.set_size_request(300, 400)
         
         self.nameentry = nameentry = gtk.Entry()
@@ -125,7 +125,7 @@ class SubmitWindow(gtk.Window):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         contentbox.pack_start(scroll, True)
         
-        buttonbox = gtk.HBox()
+        buttonbox = gtk.HBox(False, 10)
         submitbtn = image_stock_button(gtk.STOCK_APPLY, _('Submit'))
         submitbtn.connect('clicked', self.__submit, 
                           nameentry, 
