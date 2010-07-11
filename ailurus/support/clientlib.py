@@ -26,6 +26,7 @@ import urllib2
 import gtk
 import pango
 
+from lib import *
 from libu import *
 
 LOCAL_DEBUG = 0
@@ -112,8 +113,7 @@ class SubmitWindow(gtk.Window):
         namebox.pack_start(gtk.Label(_('Name: ')), 
                              False)
         self.nameentry = nameentry = gtk.Entry()
-        default_name = self.__get_default_name()
-        nameentry.set_text(default_name)
+        nameentry.set_text(Config.get_username_of_suggestion_window())
         namebox.pack_end(nameentry, True)
         
         contentbox = gtk.HBox()
@@ -179,10 +179,6 @@ class SubmitWindow(gtk.Window):
     
     def __cancel(self, btn):
         self.__quit()
-    
-    def __get_default_name(self):
-        from lib import Config
-        return Config.get_default_name()
 
 class SkillsSubmit(SubmitWindow):
     def __init__(self):

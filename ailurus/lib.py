@@ -157,11 +157,11 @@ class Config:
     def get_login_window_background(cls):
         return cls.get_string('login_window_background') # please do not catch exception
     @classmethod
-    def set_default_name(cls, value):
-        cls.set_string('default_name', value)
+    def set_username_of_suggestion_window(cls, value):
+        cls.set_string('username_of_suggestion_window', value)
     @classmethod
-    def get_default_name(cls):
-        try: return cls.get_string('default_name')
+    def get_username_of_suggestion_window(cls):
+        try: return cls.get_string('username_of_suggestion_window')
         except:
             import os
             return os.environ['USER']
