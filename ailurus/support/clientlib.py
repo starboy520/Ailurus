@@ -182,14 +182,13 @@ class SubmitWindow(gtk.Window):
 
 class SkillsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Skill submit'), skill_send)
+        SubmitWindow.__init__(self, _('Submit a Linux skill'), skill_send)
 
 class SuggestionsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Suggestion submit'), suggestion_send)
+        SubmitWindow.__init__(self, _('Propose suggestion'), suggestion_send)
 
 if __name__ == '__main__':
-
     skill_send('bb', 'test skill')
     print 'OK'
     print urllib2.urlopen('http://%s:%d/' % (HOST, PORT)).read()
