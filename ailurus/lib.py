@@ -162,7 +162,9 @@ class Config:
     @classmethod
     def get_default_name(cls):
         try: return cls.get_string('default_name')
-        except: return os.getenv('USER')
+        except:
+            import os
+            return os.environ['USER']
     @classmethod
     def set_last_check_update_time_to_now(cls):
         import time
