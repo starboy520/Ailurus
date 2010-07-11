@@ -109,12 +109,12 @@ class SubmitWindow(gtk.Window):
         self.set_border_width(10)
         self.set_size_request(300, 400)
         
-        namebox = gtk.HBox()
-        namebox.pack_start(gtk.Label(_('Name: ')), 
-                             False)
         self.nameentry = nameentry = gtk.Entry()
         nameentry.set_text(Config.get_username_of_suggestion_window())
-        namebox.pack_end(nameentry, True)
+
+        namebox = gtk.HBox(False, 5)
+        namebox.pack_start(gtk.Label(_('Your name:')), False)
+        namebox.pack_start(nameentry)
         
         contentbox = gtk.HBox()
         self.textview = textview = gtk.TextView()
