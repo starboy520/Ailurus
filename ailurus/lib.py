@@ -1288,9 +1288,7 @@ class firefox:
     @classmethod
     def install_extension_archive(cls, file_path):
         cls.is_extension_archive(file_path)
-        print '\x1b[1;33m', _('Run command:'), 'cp %s %s' % (file_path, cls.extensions_dir), '\x1b[m'
-        import shutil
-        shutil.copy(file_path, cls.extensions_dir)
+        run('cp "%s" "%s"' % (file_path, cls.extensions_dir))
     @classmethod
     def extension_archive_exists(cls, file_path):
         cls.is_extension_archive(file_path)
