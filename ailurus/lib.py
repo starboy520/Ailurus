@@ -539,11 +539,6 @@ def run_as_root(cmd, ignore_error=False):
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
     
-    import os
-    if os.getuid()==0:
-        run(cmd, ignore_error)
-        return
-    
     print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
     authenticate()
     try:
