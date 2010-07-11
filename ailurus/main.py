@@ -527,6 +527,8 @@ change_task_name()
 set_default_window_icon()
 check_required_packages()
 check_dbus_daemon_status()
+from support.clientlib import try_send_delayed_data
+try_send_delayed_data()
 
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()

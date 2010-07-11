@@ -157,6 +157,13 @@ class Config:
     def get_login_window_background(cls):
         return cls.get_string('login_window_background') # please do not catch exception
     @classmethod
+    def set_default_name(cls, value):
+        cls.set_string('default_name', value)
+    @classmethod
+    def get_default_name(cls):
+        try: return cls.get_string('default_name')
+        except: return os.getenv('USER')
+    @classmethod
     def set_last_check_update_time_to_now(cls):
         import time
         value = long(time.time()) # the time as a floating point number expressed in seconds since the epoch, in UTC
