@@ -6,7 +6,7 @@
 Name: ailurus
 Version: 10.06.93
 Release: 0%{?dist}
-Summary: makes Linux easier to use
+Summary: A simple software center and GNOME tweaker
 Group: Applications/System
 License: GPLv2+
 URL: http://ailurus.googlecode.com/
