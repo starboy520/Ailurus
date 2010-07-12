@@ -37,11 +37,12 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install -O1 --root=$RPM_BUILD_ROOT
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
 %{python_sitelib}/ailurus/
 %{_bindir}/ailurus
@@ -53,7 +54,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
 %{_datadir}/PolicyKit/policy/cn.ailurus.policy
 %{_datadir}/polkit-1/actions/cn.ailurus.policy
-%{_datadir}/locale/*/LC_MESSAGES/ailurus.mo
 %{_datadir}/omf/ailurus
 %{python_sitelib}/ailurus*.egg-info
 
