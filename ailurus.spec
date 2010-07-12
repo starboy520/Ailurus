@@ -58,5 +58,5 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Mon Jul 12 2010 Homer Xing <homer.xing@gmail.com> 10.06.93-1
+* Mon Jul 12 2010 Homer Xing <homer.xing@gmail.com> 10.06.93-0
 - Initial package
