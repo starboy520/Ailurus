@@ -18,7 +18,7 @@ BuildArch: noarch
 Requires: polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
 
 %description
-Ailurus is an application which makes Linux easier to use.
+Ailurus is a simple software center and GNOME tweaker.
 
 Features:
 * Help users learn some Linux skills
