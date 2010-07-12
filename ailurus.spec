@@ -49,7 +49,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc %{_mandir}/man1/ailurus.1*
 %{_datadir}/applications/ailurus.desktop
 %{_datadir}/ailurus/
-%{_datadir}/icons/
+%{_datadir}/icons/hicolor/*/apps/ailurus.png
 %{_datadir}/dbus-1/system-services/cn.ailurus.service
 %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
 %{_datadir}/PolicyKit/policy/cn.ailurus.policy
