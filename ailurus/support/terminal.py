@@ -78,7 +78,9 @@ class Terminal:
         if pid==-1: raise CommandFailError(string)
         try:
             ret = os.waitpid(pid, 0)[1]
-            if ret: raise CommandFailError(string, ret)
+            if ret!=0:
+                if ret!=1: # ignore SIGHUP. not a good solution.
+                    raise CommandFailError(string, ret)
         except OSError: pass #no such process
     
     def __init__(self):
