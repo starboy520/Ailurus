@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 #
 # Ailurus - make Linux easier to use
@@ -26,6 +25,7 @@ import urllib2
 import gtk
 import pango
 
+from lib import *
 from libu import *
 
 LOCAL_DEBUG = 0
@@ -35,10 +35,51 @@ if LOCAL_DEBUG:
 else:
     HOST = 'we-like-ailurus.appspot.com'
     PORT = 80
+    
+delayed = []
+
+def load_delayed_data():
+    import os
+    import pickle
+    fn = os.path.expanduser('~/.config/ailurus/delayed_sending')
+    try:
+        with open(fn, 'r') as f:
+            global delayed
+            delayed = pickle.load(f)
+    except:
+        pass
+
+def save_delayed_data():
+    import os
+    import pickle
+    fn = os.path.expanduser('~/.config/ailurus/delayed_sending')
+    try:
+        with open(fn, 'w') as f:
+            pickle.dump(delayed, f)
+    except:
+        import traceback, sys
+        traceback.print_exc(file=sys.stderr)
+
+def __do_try_send_delayed_data():
+    load_delayed_data()
+    i = 0
+    while i < len(delayed):
+        try:
+            req = delayed[i]
+            req[0](*req[1:])
+            delayed.remove(req)
+        except urllib2.URLError:
+            i += 1
+            pass
+#            import traceback, sys
+#            traceback.print_exc(file=sys.stderr)
+    save_delayed_data()
+
+def try_send_delayed_data():
+    __do_try_send_delayed_data()
 
 def send(d, host, port):
     assert type(d) == dict
-    
     url = 'http://%s:%d/sign' % (host, port)
     data = urllib.urlencode(d)
     req = urllib2.Request(url, data)
@@ -64,14 +105,15 @@ class SubmitWindow(gtk.Window):
         gtk.Window.__init__(self)
         self.set_position(gtk.WIN_POS_CENTER)
         self.set_title(title)
-        self.set_border_width(10)
+        self.set_border_width(5)
         self.set_size_request(300, 400)
         
-        authorbox = gtk.HBox()
-        authorbox.pack_start(gtk.Label(_('Author: ')), 
-                             False)
-        self.authorentry = authorentry = gtk.Entry()
-        authorbox.pack_end(authorentry, True)
+        self.nameentry = nameentry = gtk.Entry()
+        nameentry.set_text(Config.get_username_of_suggestion_window())
+
+        namebox = gtk.HBox(False, 5)
+        namebox.pack_start(gtk.Label(_('Your name:')), False)
+        namebox.pack_start(nameentry)
         
         contentbox = gtk.HBox()
         self.textview = textview = gtk.TextView()
@@ -82,10 +124,10 @@ class SubmitWindow(gtk.Window):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         contentbox.pack_start(scroll, True)
         
-        buttonbox = gtk.HBox()
+        buttonbox = gtk.HBox(False, 10)
         submitbtn = image_stock_button(gtk.STOCK_APPLY, _('Submit'))
         submitbtn.connect('clicked', self.__submit, 
-                          authorentry, 
+                          nameentry, 
                           textview)
         cancelbtn = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
         cancelbtn.connect('clicked', self.__cancel)
@@ -93,7 +135,7 @@ class SubmitWindow(gtk.Window):
         buttonbox.pack_end(cancelbtn, False)
         
         vbox = gtk.VBox(False, 10)
-        vbox.pack_start(authorbox, False)
+        vbox.pack_start(namebox, False)
         vbox.pack_start(contentbox, True)
         vbox.pack_end(buttonbox, False)
         self.add(vbox)
@@ -102,13 +144,13 @@ class SubmitWindow(gtk.Window):
     def __quit(self):
         self.destroy()
     
-    def __submit(self, btn, authorentry, textview):
-        author = authorentry.get_text()
+    def __submit(self, btn, nameentry, textview):
+        name = nameentry.get_text()
         buffer = textview.get_buffer()
         text = buffer.get_text(buffer.get_start_iter(), 
                                buffer.get_end_iter())
         try:
-            self.submit(author, text)
+            self.submit(name, text)
         except urllib2.HTTPError:
             import traceback
             import sys
@@ -122,11 +164,15 @@ class SubmitWindow(gtk.Window):
             dlg.destroy()
         except urllib2.URLError:
             dlg = gtk.MessageDialog(self, 0,
-                                  gtk.MESSAGE_ERROR,
-                                  gtk.BUTTONS_CLOSE,
-                                  _('Can not connect to server.'),
+                                  gtk.MESSAGE_QUESTION,
+                                  gtk.BUTTONS_YES_NO,
+                                  _('Can not connect to server.\n'
+                                    'Would you like to save the request and resend when next time ailurus starts?'),
                                   )
-            dlg.run()
+            to_be_saved = dlg.run()
+            if to_be_saved:
+                delayed.append((self.submit, name, text))
+                save_delayed_data()
             dlg.destroy()
         self.__quit()
     
@@ -135,14 +181,13 @@ class SubmitWindow(gtk.Window):
 
 class SkillsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Skill submit'), skill_send)
+        SubmitWindow.__init__(self, _('Submit a Linux skill'), skill_send)
 
 class SuggestionsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Suggestion submit'), suggestion_send)
+        SubmitWindow.__init__(self, _('Propose suggestion'), suggestion_send)
 
 if __name__ == '__main__':
-
     skill_send('bb', 'test skill')
     print 'OK'
     print urllib2.urlopen('http://%s:%d/' % (HOST, PORT)).read()

@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 
 import sys, os, urllib, gtk, thread, time
 from lib import *

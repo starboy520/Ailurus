@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 #
 # Ailurus - make Linux easier to use
@@ -100,7 +99,7 @@ class Electric(_path_lists):
         run_as_root('cp %s %s'%(f, self.file) )
         create_file(self.shortcut, '''[Desktop Entry]
 Name=Electric
-Exec=java -jar %s -Xms512M -Xmx1024M -Dsun.java2d.opengl=true
+Exec=java -jar %s
 Encoding=UTF-8
 StartupNotify=true
 Terminal=false

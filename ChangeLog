@@ -3,6 +3,7 @@
     * Finish a simple version of AilurusServer and upload it to google appengine.
     * Add support/clientlib.py to communicate with AilurusServer.
     * Add interfaces to upload skills and suggestions.
+    * Delay sending message if the server can not be connected
 
 2010-07-10 Homer Xing <homer.xing@gmail.com>
 

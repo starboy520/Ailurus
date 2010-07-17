@@ -1,4 +1,3 @@
-#!/usr/bin/env python
 #-*- coding: utf-8 -*-
 #
 # Ailurus - make Linux easier to use
@@ -156,6 +155,15 @@ class Config:
     @classmethod
     def get_login_window_background(cls):
         return cls.get_string('login_window_background') # please do not catch exception
+    @classmethod
+    def set_username_of_suggestion_window(cls, value):
+        cls.set_string('username_of_suggestion_window', value)
+    @classmethod
+    def get_username_of_suggestion_window(cls):
+        try: return cls.get_string('username_of_suggestion_window')
+        except:
+            import os
+            return os.environ['USER']
     @classmethod
     def set_last_check_update_time_to_now(cls):
         import time
@@ -532,11 +540,6 @@ def run_as_root(cmd, ignore_error=False):
     import dbus
     is_string_not_empty(cmd)
     assert isinstance(ignore_error, bool)
-    
-    import os
-    if os.getuid()==0:
-        run(cmd, ignore_error)
-        return
     
     print '\x1b[1;33m', _('Run command:'), cmd, '\x1b[m'
     authenticate()
@@ -1303,9 +1306,7 @@ class firefox:
     @classmethod
     def install_extension_archive(cls, file_path):
         cls.is_extension_archive(file_path)
-        print '\x1b[1;33m', _('Run command:'), 'cp %s %s' % (file_path, cls.extensions_dir), '\x1b[m'
-        import shutil
-        shutil.copy(file_path, cls.extensions_dir)
+        run('cp "%s" "%s"' % (file_path, cls.extensions_dir))
     @classmethod
     def extension_archive_exists(cls, file_path):
         cls.is_extension_archive(file_path)
