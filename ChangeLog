@@ -1,3 +1,8 @@
+2010-07-19 Homer Xing <homer.xing@gmail.com>
+
+    * Also install qcad-data when install qcad.
+    * Update url of sweethome
+
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 
     * Finish a simple version of AilurusServer and upload it to google appengine.
