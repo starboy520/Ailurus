@@ -6,6 +6,7 @@
     * Re-write the introduction of texlive
     * Can refresh installing state of software items
     * Config.get_login_window_background() return None rather than raise exception
+    * Ignore FetchFailedException in apt_update()
 
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 

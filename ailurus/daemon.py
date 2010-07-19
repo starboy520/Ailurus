@@ -35,7 +35,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 10 # must be integer
+version = 11 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -54,6 +54,9 @@ class LocalDebPackageResolutionError(dbus.DBusException):
 
 class CannotUpdateAptCacheError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.CannotUpdateAptCacheError'
+
+class SomeURLCannotFetchError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.SomeURLCannotFetchError'
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
@@ -326,6 +329,9 @@ class AilurusFulgens(dbus.service.Object):
         try:
             self.apt_cache.update(self.apt_progress.fetch)
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
+        except apt.cache.FetchFailedException, e: pass # not a perfect solution
+        # FetchFailedException raised if some URL of ppa failed.
+        # Sometimes it can be ignored. Sometimes it cannot be ignored.
 
     def create_apt_window(self):
         import gtk
