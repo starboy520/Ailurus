@@ -1,5 +1,5 @@
 
-import sys, os, urllib, gtk, thread, time
+import sys, os, urllib2, gtk, thread, time, re
 from lib import *
 from libu import *
 
@@ -42,12 +42,30 @@ class DownloadIconsWindow(gtk.Window):
         if self.can_exit == False: return True
         else: sys.exit()
     
-    def reporthook(self, blocks_transferred, block_size, total_size):
-        self.percentage = min(1, float(blocks_transferred * block_size) / total_size)
+    def get_length_from_header(self, header_string):
+        list = re.findall(r'Content-Length: ([0-9]+)', header_string)
+        value = int(list[0])
+        return value
 
     def download_thread(self):
         try:
-            urllib.urlretrieve(self.url, self.filename, self.reporthook)
+            if Config.get_use_proxy():
+                enable_urllib2_proxy()
+            else:
+                disable_urllib2_proxy()
+            in_file = urllib2.urlopen(self.url)
+            header_string = str(in_file.info())
+            total_size = self.get_length_from_header(header_string)
+            blocks_transferred = 0
+            block_size = 1024
+            out_file = open(self.filename, 'w')
+            while True:
+                block = in_file.read(block_size)
+                if len(block) == 0: break # EOF
+                else:
+                    blocks_transferred += 1
+                    out_file.write(block)
+                    self.percentage = min(1, float(blocks_transferred * block_size) / total_size)
         except:
             self.exception = sys.exc_info()
         finally:
