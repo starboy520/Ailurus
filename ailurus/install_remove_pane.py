@@ -684,6 +684,10 @@ class InstallRemovePane(gtk.VBox):
         AppObjs.all_objs_reload_icon()
         self.right_treeview.queue_draw()
 
+    def do_refresh_installing_state(self):
+        AppObjs.all_objs_reset_status()
+        self.right_treeview.queue_draw()
+
     def get_preference_menuitems(self):
         set_wget_param = gtk.MenuItem(_("Set download parameters"))
         set_wget_param.connect('activate', lambda w: self.set_wget_parameters())
@@ -691,7 +695,10 @@ class InstallRemovePane(gtk.VBox):
         refresh_icon = gtk.MenuItem(_('Refresh icons of all software items'))
         refresh_icon.connect('activate', lambda w: self.do_refresh_icon())
         
-        return [set_wget_param, refresh_icon]
+        refresh_state = gtk.MenuItem(_('Refresh installing state of all software items'))
+        refresh_state.connect('activate', lambda w: self.do_refresh_installing_state())
+        
+        return [set_wget_param, refresh_icon, refresh_state]
     
     def __init__(self, parentwindow, app_objs):
         gtk.VBox.__init__(self, False, 5)
