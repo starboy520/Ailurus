@@ -894,7 +894,7 @@ class PACMAN:
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
         cls.__pkgs = set()
         cls.__allpkgs = set()
