@@ -790,6 +790,9 @@ class RPM:
         assert isinstance(path, str)
         run_as_root_in_terminal('rpm --import %s' % path)
 
+class APTSourceSyntaxError(Exception):
+    pass
+
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
@@ -803,7 +806,10 @@ class APT:
         cls.fresh_cache = True
         TimeStat.begin(_('scan packages'))
         import apt
-        cls.apt_cache = apt.cache.Cache()
+        try:
+            cls.apt_cache = apt.cache.Cache()
+        except SystemError, e: # syntax error in source config
+            raise APTSourceSyntaxError(*e.args)
         TimeStat.end(_('scan packages'))
     @classmethod
     def get_installed_pkgs_set(cls):

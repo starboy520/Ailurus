@@ -8,6 +8,7 @@
     * Config.get_login_window_background() return None rather than raise exception
     * Ignore FetchFailedException in apt_update()
     * Download icon pack using proxy server
+    * Prompt syntax error in source configuration
 
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 
