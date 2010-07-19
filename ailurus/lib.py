@@ -161,7 +161,8 @@ class Config:
         cls.set_string('login_window_background', value)
     @classmethod
     def get_login_window_background(cls):
-        return cls.get_string('login_window_background') # please do not catch exception
+        try: return cls.get_string('login_window_background')
+        except: return None # please do not return ''. 
     @classmethod
     def set_username_of_suggestion_window(cls, value):
         cls.set_string('username_of_suggestion_window', value)

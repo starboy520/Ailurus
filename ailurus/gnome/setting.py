@@ -455,16 +455,14 @@ def __login_window_background():
         try:
             run_as_root('sudo -u gdm gconftool-2 --set --type string /desktop/gnome/background/picture_filename "%s"' % image)
         except:
-            try:    w.display_image(Config.get_login_window_background())
-            except: w.display_image(None) # show blank
+            w.display_image(Config.get_login_window_background())
             raise
         else:
             Config.set_login_window_background(image)
 
     i = ImageChooser('/usr/share/backgrounds/', 160, 120,
                      _('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'))
-    try:    i.display_image(Config.get_login_window_background())
-    except: i.display_image(None) # show blank
+    i.display_image(Config.get_login_window_background())
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))    
