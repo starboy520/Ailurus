@@ -68,7 +68,10 @@ class AilurusFulgens(dbus.service.Object):
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
         env = self.__get_dict(env_string)
-        os.chdir(env['PWD'])
+        try: 
+            os.chdir(env['PWD'])
+        except KeyError:
+            raise KeyError(env, env_string) # help to fix issue 850
         task = subprocess.Popen(command, shell=True, env=env)
         task.wait()
         if task.returncode:
