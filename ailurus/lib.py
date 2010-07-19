@@ -149,6 +149,13 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_do_query_before_install(cls, value):
+        cls.set_bool('do_query_before_install', value)
+    @classmethod
+    def get_do_query_before_install(cls):
+        try: return cls.get_bool('do_query_before_install')
+        except: return True
+    @classmethod
     def set_login_window_background(cls, value):
         'just a cache. value may be wrong. cache the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'
         cls.set_string('login_window_background', value)

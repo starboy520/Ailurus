@@ -230,11 +230,17 @@ class InstallRemovePane(gtk.VBox):
                 msg += '<span color="red">%s</span>\n'%obj.__doc__
             msg += '\n' 
         
+        checkbutton = gtk.CheckButton(_('Do not ask me any more'))
+        checkbutton.set_active(not Config.get_do_query_before_install())
+        checkbutton.connect('toggled', lambda w: Config.set_do_query_before_install(not w.get_active()))
+        
         dialog = gtk.MessageDialog( None,
             gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION,
             gtk.BUTTONS_YES_NO, _('Are you sure to change your system as follows?') )
         dialog.set_title( _('Confirmation') )
         dialog.format_secondary_markup(msg)
+        dialog.vbox.pack_start(left_align(checkbutton), False)
+        dialog.vbox.show_all()
         ret = dialog.run()
         dialog.destroy()
         return ret == gtk.RESPONSE_YES
@@ -438,7 +444,10 @@ class InstallRemovePane(gtk.VBox):
                      and obj.showed_in_toggle==False ]
         has_work = len(to_install) or len(to_remove)
         if not has_work: return
-        if not self.__query_work(to_install, to_remove): return
+        
+        if Config.get_do_query_before_install():
+            if not self.__query_work(to_install, to_remove):
+                return
 
         run_as_root('true') # require authentication first. do not require authentication any more.
         self.parentwindow.lock()
