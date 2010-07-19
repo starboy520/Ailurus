@@ -110,27 +110,28 @@ class Fix_error_in_fontconfig_properties(C):
             with open(self.file, 'w') as f:
                 f.write(content)
 
-class Fix_error_in_netbeans_shortcut(C):
-    __doc__ = _('Fix errors in Netbeans shortcut. Otherwise, some unicode characters cannot be displayed.')
-    detail = _("""Add "export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'" """)
-    type = C.MUST_FIX
-    file = '/usr/share/applications/netbeans.desktop'
-    def exists(self):
-        try:
-            with open(self.file) as f:
-                content = f.read()
-            return '\nExec=/usr/bin/netbeans\n' in content
-        except IOError:
-            return False
-    def cure(self):
-        with TempOwn(self.file):
-            with open(self.file) as f:
-                lines = f.readlines()
-            for i, line in enumerate(lines):
-                if line.startswith('Exec='):
-                    lines[i] = """Exec=sh -c "_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' /usr/bin/netbeans" \n"""
-            with open(self.file, 'w') as f:
-                f.writelines(lines)
+# Not need. Because Java font bug has been fixed in Ubuntu Lucid.
+#class Fix_error_in_netbeans_shortcut(C):
+#    __doc__ = _('Fix errors in Netbeans shortcut. Otherwise, some unicode characters cannot be displayed.')
+#    detail = _("""Add "export _JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on'" """)
+#    type = C.MUST_FIX
+#    file = '/usr/share/applications/netbeans.desktop'
+#    def exists(self):
+#        try:
+#            with open(self.file) as f:
+#                content = f.read()
+#            return '\nExec=/usr/bin/netbeans\n' in content
+#        except IOError:
+#            return False
+#    def cure(self):
+#        with TempOwn(self.file):
+#            with open(self.file) as f:
+#                lines = f.readlines()
+#            for i, line in enumerate(lines):
+#                if line.startswith('Exec='):
+#                    lines[i] = """Exec=sh -c "_JAVA_OPTIONS='-Dawt.useSystemAAFontSettings=on' /usr/bin/netbeans" \n"""
+#            with open(self.file, 'w') as f:
+#                f.writelines(lines)
 
 class Google_chrome_is_upgradable(C):
     __doc__ = _('Google Chrome can be upgraded.')
