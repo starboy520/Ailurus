@@ -45,9 +45,9 @@ class Window:
     def child_exited(self):
         exit_status = self.terminal.get_child_exit_status()
         if exit_status:
-            sys.exit(1)
+            os._exit(1)
         else:
-            sys.exit(0)
+            os._exit(0)
     def run(self, argv): # please do not launch me as a thread
         assert isinstance(argv, list)
 
@@ -71,7 +71,7 @@ class Window:
                                          directory=os.getcwd(),
                                          envv=['%s=%s' % x for x in env.items()],)
         if pid == -1:
-            sys.exit(1)
+            os._exit(1)
 
 if __name__ == '__main__':
     window = Window()
