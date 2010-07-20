@@ -733,7 +733,7 @@ def run_as_root_in_terminal(command, ignore_error=False):
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
-            if not ignore_error: raise CommandFailError(cmd)
+            if not ignore_error: raise CommandFailError(command)
         else: raise
 
 class RPM:
