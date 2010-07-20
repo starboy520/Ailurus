@@ -89,10 +89,6 @@ def check_required_packages():
         ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
-    if not os.path.exists('/usr/bin/xterm'):
-        ubuntu_missing.append('xterm')
-        fedora_missing.append('xterm')
-        archlinux_missing.append('xterm')
 
     try: # detect policykit version 0.9.x
         import dbus
