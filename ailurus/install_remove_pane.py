@@ -371,12 +371,12 @@ class InstallRemovePane(gtk.VBox):
             to_install = [ o for o in AppObjs.appobjs if not o.cache_installed and o.showed_in_toggle ]
             to_remove = [ o for o in AppObjs.appobjs if o.cache_installed and not o.showed_in_toggle ]
             
-            for o in AppObjs.appobjs:
-                o.clean_installing_error()
+            for obj in AppObjs.appobjs:
+                obj.clean_installing_error()
             
             for obj in to_install:
                 try:    obj.add_temp_repository()
-                except: o.add_installing_error(sys.exc_info())
+                except: obj.add_installing_error(sys.exc_info())
                 
             for obj in to_install:
                 print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
@@ -384,11 +384,11 @@ class InstallRemovePane(gtk.VBox):
                     reset_dir()
                     obj.install()
                 except:
-                    o.add_installing_error(sys.exc_info())
+                    obj.add_installing_error(sys.exc_info())
             
             for obj in to_install:
                 try:    obj.clean_temp_repository()
-                except: o.add_installing_error(sys.exc_info())
+                except: obj.add_installing_error(sys.exc_info())
 
             for obj in to_remove:
                 print '\x1b[1;35m', _('Removing:'), obj.__doc__, '\x1b[m'
@@ -396,7 +396,7 @@ class InstallRemovePane(gtk.VBox):
                     reset_dir()
                     obj.remove()
                 except:
-                    o.add_installing_error(sys.exc_info())
+                    obj.add_installing_error(sys.exc_info())
             
             AppObjs.all_objs_reset_status()
             
