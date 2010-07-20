@@ -35,7 +35,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 11 # must be integer
+version = 12 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -55,8 +55,8 @@ class LocalDebPackageResolutionError(dbus.DBusException):
 class CannotUpdateAptCacheError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.CannotUpdateAptCacheError'
 
-class SomeURLCannotFetchError(dbus.DBusException):
-    _dbus_error_name = 'cn.ailurus.SomeURLCannotFetchError'
+class CannotDownloadError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.CannotDownloadError'
 
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
@@ -300,8 +300,12 @@ class AilurusFulgens(dbus.service.Object):
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_install()
         self.unlock_apt_pkg_global_lock()
-        self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
-        apt_pkg.PkgSystemLock()
+        try:
+            self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
+        except apt.cache.FetchFailedException, e:
+            raise CannotDownloadError(*e.args)
+        finally:
+            apt_pkg.PkgSystemLock()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''

@@ -5,6 +5,7 @@
     * Let class I be able to detect CannotDownloadError.
     * Remove InstallRemovePane.app_objs. Use AppObjs.appobjs directly.
     * Rewrite InstallRemovePane.show_error. Do not treat CannotDownloadError as bug.
+    * Do not treat CannotDownloadError as bug in APT.install().
 
 2010-07-19 Homer Xing <homer.xing@gmail.com>
 

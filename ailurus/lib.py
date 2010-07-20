@@ -871,11 +871,16 @@ class APT:
         return package_name in cls.apt_cache
     @classmethod
     def install(cls, *packages):
+        import dbus
         is_pkg_list(packages)
         cls.apt_get_update()
         print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        daemon().apt_command('install', ','.join(packages),
-                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        try:
+            daemon().apt_command('install', ','.join(packages),
+                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        except dbus.exceptions.DBusException, e:
+            if e.get_dbus_name() == 'cn.ailurus.CannotDownloadError':
+                raise CannotDownloadError(*packages)
         cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
