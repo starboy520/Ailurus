@@ -68,9 +68,14 @@ class I:
         assert isinstance(error, tuple) and len(error) == 3
         import types
         assert isinstance(error[0], types.TypeType)
-        assert isinstance(value[1], types.ObjectType)
-        assert isinstance(value[2], types.ObjectType)
+        assert isinstance(error[1], types.ObjectType)
+        assert isinstance(error[2], types.ObjectType)
         self.installing_error.append(error)
+    def print_installing_error(self, stream):
+        import traceback
+        print >>stream, self.__doc__
+        for exc in self.installing_error:
+            traceback.print_exception(exc[0], exc[1], exc[2], file=stream)
     def fail_by_download_error(self):
         for error in self.installing_error:
             if error[0] == CannotDownloadError:

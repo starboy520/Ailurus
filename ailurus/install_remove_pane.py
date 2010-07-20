@@ -279,31 +279,61 @@ class InstallRemovePane(gtk.VBox):
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
         self.right_treeview.queue_draw()
 
-    def show_error(self, content):
-        title_box = gtk.HBox(False, 5)
-        import os
-        if os.path.exists(D+'umut_icons/bug.png'):
-            image = gtk.Image()
-            image.set_from_file(D+'umut_icons/bug.png')
-            title_box.pack_start(image, False)
-        title = gtk.Label( _('Operations failed.\n'
-                             'Would you please copy and paste following text into bug report web-page?') )
-        title.set_alignment(0, 0.5)
-        title_box.pack_start(title, False)
+    def print_failed_objs(self, to_install, to_remove):
+        import StringIO, platform, os, traceback
+        
+        failed_install = [obj for obj in to_install if obj.sane and not obj.cache_installed]
+        failed_remove = [obj for obj in to_remove if obj.sane and obj.cache_installed]
+
+        if failed_install==[] and failed_remove==[]: return
+        
+        message = StringIO.StringIO()
+        if failed_install:
+            print >>message, '<span color="red">%s</span>' % _('Failed to install:')
+            for obj in failed_install:
+                print >>message, obj.__doc__,
+                if obj.fail_by_download_error():
+                    print >>message, '(%s)' % _('network fault. not bug')
+                else:
+                    print >>message
+        if failed_remove:
+            print >>message, '<span color="red">%s</span>' % _('Failed to remove:')
+            for obj in failed_remove:
+                print >>message, obj.__doc__
+
+        error_traceback = StringIO.StringIO()
+        print >>error_traceback, platform.dist()
+        print >>error_traceback, os.uname()
+        print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
+        if len(failed_install):
+            for obj in failed_install:
+                obj.print_installing_error(error_traceback)
+        if len(failed_remove):
+            for obj in failed_remove:
+                obj.print_installing_error(error_traceback)
+
+        gtk.gdk.threads_enter()
+        text_label = gtk.Label()
+        text_label.set_markup(message.getvalue())
+        text_label.set_alignment(0, 0)
+
+        middle_label = gtk.Label(_('If you think that these errors are caused by a software bug, please tell the developers.') + '\n' +
+                                 _('Remember to paste the following debugging information in bug report.'))
+        middle_label.set_alignment(0, 0)
         
         textview = gtk.TextView()
         gray_bg(textview)
         textview.set_wrap_mode(gtk.WRAP_WORD)
-        textview.get_buffer().set_text(content)
+        textview.get_buffer().set_text(error_traceback.getvalue())
         textview.set_cursor_visible(False)
         scroll = gtk.ScrolledWindow()
-        scroll.set_shadow_type(gtk.SHADOW_IN)
+        scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.add(textview)
-        scroll.set_size_request(-1, 500)
-        button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
+        
+        button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Report bug') )
         button_report_bug.connect('clicked', lambda w: report_bug() )
-        button_copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
+        button_copy = image_stock_button(gtk.STOCK_COPY, _('Copy debugging information to clipboard'))
         def clicked():
             clipboard = gtk.clipboard_get()
             buffer = textview.get_buffer()
@@ -311,15 +341,16 @@ class InstallRemovePane(gtk.VBox):
             end = buffer.get_end_iter()
             clipboard.set_text(buffer.get_text(start, end))
         button_copy.connect('clicked', lambda w: clicked())
-        button_close = gtk.Button(_('Close'))
+        button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
         button_close.connect('clicked', lambda w: window.destroy())
         bottom_box = gtk.HBox(False, 10)
-        bottom_box.pack_start(button_report_bug, False)
         bottom_box.pack_start(button_copy, False)
+        bottom_box.pack_start(button_report_bug, False)
         bottom_box.pack_start(button_close, False)
         
         vbox = gtk.VBox(False, 5)
-        vbox.pack_start(title_box, False)
+        vbox.pack_start(center_align(text_label), False)
+        vbox.pack_start(middle_label, False)
         vbox.pack_start(scroll)
         vbox.pack_start(bottom_box, False)
         window = gtk.Window()
@@ -328,76 +359,49 @@ class InstallRemovePane(gtk.VBox):
         window.set_border_width(10)
         window.add(vbox)
         window.show_all()
+        gtk.gdk.threads_leave()
     
     def __apply_change_thread(self):
         import os, sys, traceback, StringIO, thread, platform
         try:
-            error_traceback = StringIO.StringIO()
-            print >>error_traceback, platform.dist()
-            print >>error_traceback, os.uname()
-            print >>error_traceback, 'Ailurus version: ', AILURUS_VERSION
             self.__clean_and_show_vte_window()
             run.terminal = self.terminal
             self.terminal.redirect_stdout()
-            f_i = [] # failed to install
-            f_r = [] # failed to remove
             
             to_install = [ o for o in AppObjs.appobjs if not o.cache_installed and o.showed_in_toggle ]
             to_remove = [ o for o in AppObjs.appobjs if o.cache_installed and not o.showed_in_toggle ]
             
+            for o in AppObjs.appobjs:
+                o.clean_installing_error()
+            
             for obj in to_install:
                 try:    obj.add_temp_repository()
-                except: f_i += [(obj, sys.exc_info())]
+                except: o.add_installing_error(sys.exc_info())
                 
             for obj in to_install:
                 print '\x1b[1;32m', _('Installing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
                     obj.install()
-                except: f_i += [(obj, sys.exc_info())]
+                except:
+                    o.add_installing_error(sys.exc_info())
             
             for obj in to_install:
                 try:    obj.clean_temp_repository()
-                except: f_i += [(obj, sys.exc_info())]
+                except: o.add_installing_error(sys.exc_info())
 
             for obj in to_remove:
                 print '\x1b[1;35m', _('Removing:'), obj.__doc__, '\x1b[m'
                 try: 
                     reset_dir()
                     obj.remove()
-                except: f_r += [(obj, sys.exc_info())]
+                except:
+                    o.add_installing_error(sys.exc_info())
             
             AppObjs.all_objs_reset_status()
             
-            for obj in to_install:
-                try:
-                    if obj.sane: assert obj.cache_installed
-                except: f_i += [(obj, sys.exc_info())]
+            self.print_failed_objs(to_install, to_remove)
             
-            for obj in to_remove:
-                try:
-                    if obj.sane: assert not obj.cache_installed
-                except: f_r += [(obj, sys.exc_info())]
-            
-            if len(f_i):
-                for tup in f_i:
-                    print '\x1b[1;31m', _('Failed to install:'), tup[0].__doc__, '\x1b[m'
-                    exc = tup[1]
-                    print >>error_traceback, tup[0].__doc__
-                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
-            if len(f_r):
-                for tup in f_r: 
-                    print '\x1b[1;31m', _('Failed to remove:'), tup[0].__doc__, '\x1b[m'
-                    exc = tup[1]
-                    print >>error_traceback, tup[0].__doc__
-                    traceback.print_exception( exc[0], exc[1], exc[2], file=error_traceback)
-            print 
-
-            gtk.gdk.threads_enter()
-            if len(f_i) or len(f_r): #If any operation failed, we display "Report problems" dialog
-                self.show_error(error_traceback.getvalue())
-            gtk.gdk.threads_leave()
-
             delay_notify_firefox_restart(True)
         except:
             print_traceback()

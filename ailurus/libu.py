@@ -132,6 +132,12 @@ def left_align(widget):
     align.add(widget)
     return align
 
+def center_align(widget):
+    import gtk
+    align = gtk.Alignment(0.5, 0.5)
+    align.add(widget)
+    return align
+
 def right_align(widget):
     import gtk
     align = gtk.Alignment(1, 0.5)
