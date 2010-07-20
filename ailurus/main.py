@@ -505,7 +505,7 @@ class MainView:
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
             self.register(FedoraFastestMirrorPane)
-        self.register(InstallRemovePane, load_app_objs)
+        self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
         

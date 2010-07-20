@@ -24,7 +24,7 @@ import gtk
 from lib import *
 from libu import *
 from libapp import *
-from loader import AppObjs
+from loader import AppObjs, load_app_objs
 
 class Category:
     def __init__(self, text, icon_path, category, class_name):
@@ -275,7 +275,7 @@ class InstallRemovePane(gtk.VBox):
         gtk.gdk.threads_leave()
 
     def app_class_installed_state_changed_by_external(self):
-        for obj in self.app_objs:
+        for obj in AppObjs.appobjs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
         self.right_treeview.queue_draw()
 
@@ -342,8 +342,8 @@ class InstallRemovePane(gtk.VBox):
             f_i = [] # failed to install
             f_r = [] # failed to remove
             
-            to_install = [ o for o in self.app_objs if not o.cache_installed and o.showed_in_toggle ]
-            to_remove = [ o for o in self.app_objs if o.cache_installed and not o.showed_in_toggle ]
+            to_install = [ o for o in AppObjs.appobjs if not o.cache_installed and o.showed_in_toggle ]
+            to_remove = [ o for o in AppObjs.appobjs if o.cache_installed and not o.showed_in_toggle ]
             
             for obj in to_install:
                 try:    obj.add_temp_repository()
@@ -436,10 +436,10 @@ class InstallRemovePane(gtk.VBox):
                 dialog.destroy()
                 return
 
-        to_install = [ obj for obj in self.app_objs
+        to_install = [ obj for obj in AppObjs.appobjs
                       if obj.cache_installed==False
                       and obj.showed_in_toggle ]
-        to_remove = [ obj for obj in self.app_objs
+        to_remove = [ obj for obj in AppObjs.appobjs
                      if obj.cache_installed 
                      and obj.showed_in_toggle==False ]
         has_work = len(to_install) or len(to_remove)
@@ -700,7 +700,8 @@ class InstallRemovePane(gtk.VBox):
         
         return [set_wget_param, refresh_icon, refresh_state]
     
-    def __init__(self, parentwindow, app_objs):
+    def __init__(self, parentwindow):
+        load_app_objs()
         gtk.VBox.__init__(self, False, 5)
         self.right_treeview = None # A gtk.TreeView in right pane.
         self.right_store = None # A gtk.TreeStore behind self.treeview
@@ -709,7 +710,6 @@ class InstallRemovePane(gtk.VBox):
         self.filter_option = ''
         self.right_pane_visible_category = 'all' # string, selected category in the left pane
         self.left_pane_visible_class = 'all' # string, visible class name in the left pane
-        self.app_objs = None # objs in self.treestore
         self.left_treeview = None # A gtk.TreeView in left pane.
         self.hpaned = hpaned = gtk.HPaned()
         assert hasattr(parentwindow, 'lock')
@@ -727,8 +727,7 @@ class InstallRemovePane(gtk.VBox):
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
 
-        self.app_objs = app_objs
-        for obj in app_objs:
+        for obj in AppObjs.appobjs:
             self.right_store.append([obj])
 
         self.status_label = gtk.Label()
@@ -745,7 +744,7 @@ class InstallRemovePane(gtk.VBox):
         thread.start_new_thread(self.notify_sync, ())
     
     def show_status(self):
-        num = len(self.app_objs)
+        num = len(AppObjs.appobjs)
         text = _('%s available items') % num
         self.status_label.set_text(text)
     
@@ -784,7 +783,7 @@ class InstallRemovePane(gtk.VBox):
         return button
 
     def fill_left_treestore(self):
-        all_categories = [obj.category for obj in self.app_objs]
+        all_categories = [obj.category for obj in AppObjs.appobjs]
         items = Category.all()
         assert items[0].category == 'all'
         items[0].visible = True
@@ -795,6 +794,6 @@ class InstallRemovePane(gtk.VBox):
                 self.left_store.append(item.to_list())
         
         right_categories = [item.category for item in items]
-        for obj in self.app_objs:
+        for obj in AppObjs.appobjs:
             if obj.category not in right_categories:
                 print obj.__class__.__name__, 'category is wrong'

@@ -319,5 +319,3 @@ def load_app_objs():
     TimeStat.end('reset_status')
     
     TimeStat.end('load_app_objs')
-    
-    return AppObjs.appobjs
