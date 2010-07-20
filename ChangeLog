@@ -1,3 +1,11 @@
+2010-07-20 Homer Xing <homer.xing@gmail.com>
+
+    * Raise CannotDownloadError from download(), rather than raise CommandFailError.
+    * Raise CannotDownloadError from R.download().
+    * Let class I be able to detect CannotDownloadError.
+    * Remove InstallRemovePane.app_objs. Use AppObjs.appobjs directly.
+    * Rewrite InstallRemovePane.show_error. Do not treat CannotDownloadError as bug.
+
 2010-07-19 Homer Xing <homer.xing@gmail.com>
 
     * Also install qcad-data when install qcad.

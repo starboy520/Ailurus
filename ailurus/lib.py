@@ -76,6 +76,7 @@ class I:
         print >>stream, self.__doc__
         for exc in self.installing_error:
             traceback.print_exception(exc[0], exc[1], exc[2], file=stream)
+        print >>stream
     def fail_by_download_error(self):
         for error in self.installing_error:
             if error[0] == CannotDownloadError:
