@@ -1023,7 +1023,11 @@ class KillWhenExit:
                 print_traceback()
         cls.task_list = []
 
+class CannotDownloadError(Exception):
+    pass
+
 def download(url, filename):
+    import os
     is_string_not_empty(url)
     assert url[0]!='-'
     is_string_not_empty(filename)
@@ -1034,9 +1038,8 @@ def download(url, filename):
         run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s'"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
-        import os
         if os.path.exists(filename): os.unlink(filename)
-        raise
+        raise CannotDownloadError(url)
     
 def reset_dir():
     import os, sys
