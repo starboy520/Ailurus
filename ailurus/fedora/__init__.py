@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
 # Ailurus - make Linux easier to use
 #
