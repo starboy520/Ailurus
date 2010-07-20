@@ -1564,7 +1564,7 @@ class R:
             except:
                 print_traceback()
         
-        raise CommandFailError(self.url)
+        raise CannotDownloadError(self.url)
 
 class ETCEnvironment:
     def __init__(self):
