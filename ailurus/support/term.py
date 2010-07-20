@@ -77,7 +77,4 @@ if __name__ == '__main__':
     window = Window()
     argv = sys.argv[1:]
     window.run(argv)
-    gtk.gdk.threads_init()
-    gtk.gdk.threads_enter()
     gtk.main()
-    gtk.gdk.threads_leave()
