@@ -8,6 +8,7 @@
     * Do not treat CannotDownloadError as bug in APT.install().
     * Do not use xterm. Detect return value of run_as_root_in_terminal().
     * Completely remove app_obj.sane attribute.
+    * Do not treat UserCancelInstallation as bug.
 
 2010-07-19 Homer Xing <homer.xing@gmail.com>
 

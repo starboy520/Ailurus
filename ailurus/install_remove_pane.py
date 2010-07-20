@@ -245,35 +245,6 @@ class InstallRemovePane(gtk.VBox):
         dialog.destroy()
         return ret == gtk.RESPONSE_YES
 
-    def __show_summary(self, s_i, s_r, f_i, f_r):
-        msg = _('Summary: \n\n')
-        if len(s_i):
-            msg += _('Successfully installed:\n')
-            for obj in s_i: msg += '<span color="blue">%s</span>\n'%obj.__doc__
-            msg += '\n'
-        if len(s_r):
-            msg += _('Successfully removed:\n')
-            for obj in s_r: msg += '<span color="red">%s</span>\n'%obj.__doc__
-            msg += '\n'
-        if len(f_i):
-            msg += _('Failed to install:\n')
-            for tup in f_i:
-                msg += '<span color="red">%s</span>\n'%tup[0].__doc__
-            msg += _('The tracebacks are in the terminal window.\n\n')
-        if len(f_r):
-            msg += _('Failed to remove:\n')
-            for tup in f_r: 
-                msg += '<span color="red">%s</span>\n'%tup[0].__doc__
-            msg += _('The tracebacks are in the terminal window.\n\n')
-        gtk.gdk.threads_enter()
-        dialog = gtk.MessageDialog( None,
-            0, gtk.MESSAGE_QUESTION,
-            gtk.BUTTONS_OK, _('All works finished.') )
-        dialog.format_secondary_markup(msg)
-        dialog.run()
-        dialog.destroy()
-        gtk.gdk.threads_leave()
-
     def app_class_installed_state_changed_by_external(self):
         for obj in AppObjs.appobjs:
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
@@ -293,7 +264,9 @@ class InstallRemovePane(gtk.VBox):
             for obj in failed_install:
                 print >>message, obj.__doc__,
                 if obj.fail_by_download_error():
-                    print >>message, '(%s)' % _('network fault. not bug')
+                    print >>message, _('(network fault. not bug)')
+                elif obj.fail_by_user_cancel():
+                    print >>message, _('(cancelled by you. not bug)')
                 else:
                     print >>message
         if failed_remove:

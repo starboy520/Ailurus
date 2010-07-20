@@ -70,7 +70,11 @@ class Terminal:
         try:
             ret = os.waitpid(pid, 0)[1]
             if ret!=0:
-                if ret!=1: # ignore SIGHUP. not a good solution.
+                if ret==1: # SIGHUP
+                    os.system(string) # run command again. do not detect whether success.
+                if ret==2: # SIGINT
+                    raise UserCancelInstallation
+                else:
                     raise CommandFailError(string, ret)
         except OSError: pass #no such process
     

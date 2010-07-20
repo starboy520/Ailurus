@@ -83,6 +83,11 @@ class I:
             if error[0] == CannotDownloadError:
                 return True
         return False
+    def fail_by_user_cancel(self):
+        for error in self.installing_error:
+            if error[0] == UserCancelInstallation:
+                return True
+        return False
     def visible(self):
         return True
 
@@ -1047,6 +1052,9 @@ class KillWhenExit:
         cls.task_list = []
 
 class CannotDownloadError(Exception):
+    pass
+
+class UserCancelInstallation(Exception):
     pass
 
 def download(url, filename):

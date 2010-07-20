@@ -35,3 +35,12 @@ class Download_fail(I):
         pass
     def installed(self):
         return False
+
+class Long_sleep(I):
+    category = 'browser'
+    def install(self):
+        run('sleep 100')
+    def remove(self):
+        pass
+    def installed(self):
+        return False
