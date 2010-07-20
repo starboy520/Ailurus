@@ -38,7 +38,7 @@ def __study_linux():
          'http://www.ubuntupocketguide.com/', False),
         (_('Find more third-party repositories on http://repogen.simplylinux.ch/'), 
          'http://repogen.simplylinux.ch/', False),
-        #(_(u'How to install themes of Fedora® or OpenSolaris® on Ubuntu ?'), 
+        #(_(u'How to install themes of Fedora or OpenSolaris on Ubuntu ?'), 
         # 'http://tdt.sjtu.edu.cn/S/how_to/fedora_theme.html', False),
         #(_(u'How to install Warcraft III and DotA on Ubuntu ?'), 
         # 'http://ailurus.cn/?p=292', False),

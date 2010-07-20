@@ -135,8 +135,8 @@ def show_about_dialog():
           'M. Umut Pulat    http://12m3.deviantart.com/', 
           'Andrea Soragna   http://sora-meliae.deviantart.com/',
           'Paul Davey       http://mattahan.deviantart.com/',] )
-    about.set_copyright(_(u"Copyright ©") + ' 2009-2010, ' + _('Ailurus developers and Ailurus contributors') + '\n' + 
-                        _(u"Copyright ©") + ' 2007-2010, ' + 
+    about.set_copyright(_(u"Copyright (C)") + ' 2009-2010, ' + _('Ailurus developers and Ailurus contributors') + '\n' + 
+                        _(u"Copyright (C)") + ' 2007-2010, ' + 
                         _('Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.'))
     about.set_wrap_license(False)
     about.set_license('''
