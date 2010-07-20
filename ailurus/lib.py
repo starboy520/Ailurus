@@ -47,6 +47,7 @@ class I:
     cache_installed = showed_in_toggle = None # boolean
     logo_pixbuf = None # gtk.gdk.Pixbuf
     use_default_icon = None # boolean
+    installing_error = [] # list
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -61,6 +62,20 @@ class I:
         'Add repository before installing me'
     def clean_temp_repository(self):
         'Remove repository after installing me'
+    def clean_installing_error(self):
+        self.installing_error = []
+    def add_installing_error(self, error):
+        assert isinstance(error, tuple) and len(error) == 3
+        import types
+        assert isinstance(error[0], types.TypeType)
+        assert isinstance(value[1], types.ObjectType)
+        assert isinstance(value[2], types.ObjectType)
+        self.installing_error.append(error)
+    def fail_by_download_error(self):
+        for error in self.installing_error:
+            if error[0] == CannotDownloadError:
+                return True
+        return False
     def visible(self):
         return True
 
