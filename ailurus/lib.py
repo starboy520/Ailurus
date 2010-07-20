@@ -64,6 +64,8 @@ class I:
         'Remove repository after installing me'
     def clean_installing_error(self):
         self.installing_error = []
+    def has_installing_error(self):
+        return bool(self.installing_error)
     def add_installing_error(self, error):
         assert isinstance(error, tuple) and len(error) == 3
         import types

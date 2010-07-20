@@ -282,8 +282,8 @@ class InstallRemovePane(gtk.VBox):
     def print_failed_objs(self, to_install, to_remove):
         import StringIO, platform, os, traceback
         
-        failed_install = [obj for obj in to_install if obj.sane and not obj.cache_installed]
-        failed_remove = [obj for obj in to_remove if obj.sane and obj.cache_installed]
+        failed_install = [obj for obj in to_install if obj.has_installing_error()]
+        failed_remove = [obj for obj in to_remove if obj.has_installing_error()]
 
         if failed_install==[] and failed_remove==[]: return
         
