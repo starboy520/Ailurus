@@ -720,7 +720,7 @@ def is_pkg_list(packages):
         if package[0]=='-': raise ValueError
         if ' ' in package: raise ValueError
 
-def run_as_root_in_terminal(command):
+def run_as_root_in_terminal(command, ignore_error=False):
     import dbus
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'

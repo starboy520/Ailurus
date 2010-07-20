@@ -41,6 +41,7 @@ class Window:
         window.connect('delete-event', lambda *w: True)
         window.iconify()
         window.show_all()
+        window.realize()
     def child_exited(self):
         exit_status = self.terminal.get_child_exit_status()
         if exit_status:
@@ -77,4 +78,7 @@ if __name__ == '__main__':
     window = Window()
     argv = sys.argv[1:]
     window.run(argv)
+    gtk.gdk.threads_init()
+    gtk.gdk.threads_enter()
     gtk.main()
+    gtk.gdk.threads_leave()
