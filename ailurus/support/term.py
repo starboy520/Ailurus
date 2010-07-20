@@ -19,7 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-import os, sys, vte, gtk, StringIO, thread
+# substitude xterm :)
+
+import sys, os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))+'/../') # Without this line, error happens. I don't know the reason. *Sigh*
+import vte, gtk, StringIO, thread
 from lib import *
 
 class Window:
@@ -35,8 +39,8 @@ class Window:
         window.set_position(gtk.WIN_POS_CENTER)
         window.add(scroll)
         window.connect('delete-event', lambda *w: True)
+        window.iconify()
         window.show_all()
-        window.realize()
     def child_exited(self):
         exit_status = self.terminal.get_child_exit_status()
         if exit_status:
