@@ -268,45 +268,6 @@ class Google_Chrome(I):
     		APT.remove('google-chrome-beta')
         APT.remove('google-chrome-stable')
 
-class EIOffice(I):
-    __doc__ = _('Evermore Integrated Office 2009 free version')
-    detail = _('It is able to edit text, spreadsheets, and slides.')
-    download_url = 'http://www.evermoresw.com.cn/webch/download/downEIOPersonal.jsp'
-    category='business'
-    Chinese = True
-    def visible(self): # EIOffice website is offline :(
-        return False
-    def install(self):
-        with Chdir('/tmp'):
-            f = R(urls.eioffice).download()
-            run('tar xf %s' % f)
-            run('chmod a+x EIOffice_Personal_Lin/setup')
-            run_as_root("EIOffice_Personal_Lin/setup")
-            
-            msgs = ( 
-                     _('Install clipboard arts'),
-                     _('Install help files'),
-                     _('Install formulae editor'),
-                     _('Install templates')
-                        )
-            for file, msg in zip(
-               [urls.eioffice_clipart,
-                urls.eioffice_help,
-                urls.eioffice_scienceeditor,
-                urls.eioffice_templates,
-                ], msgs):
-                    download(file, '/tmp/eio.tar.gz') 
-                    run("tar zxf /tmp/eio.tar.gz")
-                    notify( _('Installing EIOffice'), msg )
-                    run_as_root("./setup")
-    def installed(self):
-        import os
-        return os.path.exists('/usr/bin/eio')
-    def remove(self):
-        import os
-        if os.path.exists('/usr/bin/rmeio'):
-            run_as_root('/usr/bin/rmeio')
-
 class ESETNOD32(I):
     __doc__ = _('ESET NOD32')
     detail = _('Anti virus and anti spyware')

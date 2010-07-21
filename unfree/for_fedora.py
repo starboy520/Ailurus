@@ -273,13 +273,13 @@ class GStreamer_Codecs (_rpm_install) :
             'gstreamer-plugins-good gstreamer-plugins-ugly')
 
 class Adobe_Flash_Player(_rpm_install):
-    __doc__ = _(u'Adobe® Flash plugin for web browser')
+    __doc__ = _('Adobe Flash plugin for web browser')
     category = 'flash'
     depends = Repo_Adobe
     pkgs = 'flash-plugin'
 
 class AdobeReader(_rpm_install):
-    __doc__ = _(u'Adobe® PDF Reader')
+    __doc__ = _('Adobe PDF Reader')
     download_url = 'http://get.adobe.com/reader/'
     category = 'business'
     depends = Repo_Adobe
@@ -306,7 +306,7 @@ class AdobeReader(_rpm_install):
 
 # Do not install Realplayer. It cannot be removed by yum :(
 #class Realplayer32(I):
-#    'RealPlayer® 11'
+#    'RealPlayer 11'
 #    detail = _('If you cannot play RMVB video, try this application! '
 #       'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
 #    download_url = 'http://www.real.com/linux'
@@ -355,7 +355,7 @@ class GoogleEarth(I):
         run_as_root_in_terminal('/opt/google-earth/uninstall')
            
 class VirtualBox(_rpm_install):
-    'SUN® VirtualBox 3'
+    'SUN VirtualBox 3'
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
