@@ -69,7 +69,7 @@ def __start_here_icon_setting():
                     local_path = usr_path.replace('/usr/share/icons', local_icons_dir)
                     local_dir = os.path.dirname(local_path)
                     if not os.path.exists(local_dir): run('mkdir -p "%s"' % local_dir)
-                    run('cp /tmp/start-here.png %s' % local_path)
+                    run('cp /tmp/start-here.png "%s"' % local_path)
 
     def get_start_here_icon_path():
         import os , gconf
