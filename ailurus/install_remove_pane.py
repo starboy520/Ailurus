@@ -246,8 +246,7 @@ class InstallRemovePane(gtk.VBox):
         return ret == gtk.RESPONSE_YES
 
     def app_class_installed_state_changed_by_external(self):
-        for obj in AppObjs.appobjs:
-            obj.showed_in_toggle = obj.cache_installed = obj.installed()
+        AppObjs.all_objs_reset_status()
         self.right_treeview.queue_draw()
 
     def print_failed_objs(self, to_install, to_remove):
@@ -562,7 +561,7 @@ class InstallRemovePane(gtk.VBox):
         toolbar.pack_start(button_apply, False)
         
         import gobject, pango
-        self.right_store = treestore = gtk.ListStore(gobject.TYPE_PYOBJECT)
+        self.right_store = treestore = AppObjs.list_store
         
         self.right_store_filter = treestorefilter = treestore.filter_new()
         treestorefilter.set_visible_func(self.__right_visible_func)
@@ -703,9 +702,6 @@ class InstallRemovePane(gtk.VBox):
 
         hpaned.pack1 ( self.__left_pane(), False, False )
         hpaned.pack2 ( self.__right_pane(), True, False )
-
-        for obj in AppObjs.appobjs:
-            self.right_store.append([obj])
 
         self.status_label = gtk.Label()
         self.status_label.set_alignment(0.5, 0.5)

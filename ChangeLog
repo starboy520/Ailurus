@@ -1,6 +1,7 @@
 2010-07-21 Homer Xing <homer.xing@gmail.com>
 
     * Add a new tip: view the IP address outside the local network
+    * Do not raise error if any software item raise error from installed()
 
 2010-07-20 Homer Xing <homer.xing@gmail.com>
 

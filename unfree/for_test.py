@@ -44,3 +44,15 @@ class Long_sleep(I):
         pass
     def installed(self):
         return False
+
+class Installed_raise_exception(I):
+    category = 'browser'
+    x = 0
+    def install(self):
+        pass
+    def remove(self):
+        pass
+    def installed(self):
+        self.x += 1
+        if self.x > 1: raise Exception
+        else: return False
