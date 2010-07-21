@@ -382,7 +382,7 @@ def __advance_setting():
 
     def clicked(button, path):
         if button.get_active():
-            os.system('mkdir ~/.local/share/applications/')
+            os.system('mkdir -p ~/.local/share/applications/')
             with open(path, 'w') as f:
                 f.write('[Desktop Entry]\n'
                         'Name=Gnome Control Center\n'

@@ -1800,7 +1800,7 @@ class TimeStat:
     @classmethod
     def begin(cls, name):
         assert isinstance(name, str) and name
-        assert name not in cls.__open_stat_names
+        assert name not in cls.__open_stat_names, name
         cls.__open_stat_names.add(name)
         import time
         cls.__begin_time[name] = time.time()
