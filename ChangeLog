@@ -5,6 +5,7 @@
     * Do not raise error if tty conf file does not exist.
     * Fix bug about space in path
     * Show agreement at start up. Issue 900.
+    * Re-write InfoPane to get rid of "rows[index]" bug. Issue 689.
 
 2010-07-20 Homer Xing <homer.xing@gmail.com>
 
