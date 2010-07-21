@@ -395,7 +395,7 @@ def __advance_setting():
             os.unlink(path)
 
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
-    button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu'))
+    button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu') + ' ' + _('(take effect at the next time GNOME starts up)'))
     button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
     button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
