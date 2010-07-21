@@ -217,9 +217,8 @@ def __pci():
         print_traceback()
     return ret
 
-def __battery():
-    __battery.please_refresh_me = True
-    ret = []
+def __battery_state():
+    __battery_state.please_refresh_me = True
     try:
         with open('/proc/acpi/battery/BAT0/state') as f:
             for line in f:
@@ -230,20 +229,33 @@ def __battery():
                     elif v=='charging': v=_('charging')
                     elif v=='discharging': v=_('discharging')
                     else: raise RuntimeError(v)
-                    ret.append( row(_('Battery charging state:'), v, D+'umut_icons/i_battery.png') )
-                elif v[0] == 'remaining capacity':
-                    ret.append( row(_('Battery remaining capacity:'), v[1].strip(), D+'umut_icons/i_battery.png') )
-        
+                    return [row(_('Battery charging state:'), v, D+'umut_icons/i_battery.png')]
+    except:
+        return []
+
+def __battery_remaining_capacity():
+    __battery_remaining_capacity.please_refresh_me = True
+    try:
+        with open('/proc/acpi/battery/BAT0/state') as f:
+            for line in f:
+                v = line.split(':')
+                if v[0] == 'remaining capacity':
+                    return [row(_('Battery remaining capacity:'), v[1].strip(), D+'umut_icons/i_battery.png')]
+    except:
+        return []
+
+def __battery_capacity():
+    __battery_capacity.please_refresh_me = True
+    try:
         with open('/proc/acpi/battery/BAT0/info') as f:
             for line in f:
                 v = line.split(':')
                 if v[0] == 'last full capacity':
-                    ret.append( row(_('Battery full capacity:'), v[1].strip(), D+'umut_icons/i_battery.png') )
-    except IOError: pass
+                    return[row(_('Battery full capacity:'), v[1].strip(), D+'umut_icons/i_battery.png')]
     except:
-        print_traceback()
-    return ret
+        return []
 
 def get():
     return [ __motherboard, __bios, __cpu, __cpu_temp,
-             __mem, __swap, __pci, __battery ]
+             __mem, __swap, __pci, __battery_state, 
+             __battery_remaining_capacity, __battery_capacity ]
