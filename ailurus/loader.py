@@ -177,12 +177,22 @@ class AppObjs:
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
+        cls.list_store.clear()
+        for obj in cls.appobjs:
+            cls.list_store.append([obj])
     @classmethod
     def strip_wrong_locale(cls):
+        changed = False
         if not Config.is_Chinese_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Chinese')]
+            changed = True
         if not Config.is_Poland_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Poland')]
+            changed = True
+        if changed:
+            cls.list_store.clear()
+            for obj in cls.appobjs:
+                cls.list_store.append([obj])
 
 def load_R_objs():
     paths = []
