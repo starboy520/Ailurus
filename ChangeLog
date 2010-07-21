@@ -4,6 +4,7 @@
     * Do not raise error if any software item raise error from installed()
     * Do not raise error if tty conf file does not exist.
     * Fix bug about space in path
+    * Show agreement at start up. Issue 900.
 
 2010-07-20 Homer Xing <homer.xing@gmail.com>
 
