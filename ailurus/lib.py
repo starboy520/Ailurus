@@ -109,8 +109,7 @@ class Config:
         import os
         dir = os.path.expanduser('~/.config/ailurus/')
         if not os.path.exists(dir): # make directory
-            try:    os.makedirs(dir)
-            except: pass # directory exists
+            os.makedirs(dir)
     @classmethod
     def get_config_dir(cls):
         return cls.config_dir
