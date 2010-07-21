@@ -497,7 +497,7 @@ class MainView:
         if UBUNTU or UBUNTU_DERIV:
             self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
-            self.register(ReposConfigPane)
+#            self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
             self.register(FedoraFastestMirrorPane)
@@ -522,8 +522,8 @@ change_task_name()
 set_default_window_icon()
 check_required_packages()
 check_dbus_daemon_status()
-from support.clientlib import try_send_delayed_data
-try_send_delayed_data()
+#from support.clientlib import try_send_delayed_data
+#try_send_delayed_data()
 
 while gtk.events_pending(): gtk.main_iteration()
 main_view = MainView()
