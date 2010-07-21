@@ -1,3 +1,7 @@
+2010-07-21 Homer Xing <homer.xing@gmail.com>
+
+    * Add a new tip: view the IP address outside the local network
+
 2010-07-20 Homer Xing <homer.xing@gmail.com>
 
     * Raise CannotDownloadError from download(), rather than raise CommandFailError.
