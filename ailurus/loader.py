@@ -128,8 +128,11 @@ class AppObjs:
             try:
                 module = __import__(basename)
                 cls.extensions.append(module)
+                print 'Extension', basename, 'sucessfully loaded.'
             except:
                 cls.failed_extensions.append(os.path.abspath(py))
+                print 'Failed to load extension', basename, '.'
+                print_traceback()
             else:
                 cls.load_from(module)
         sys.path.pop(0)
