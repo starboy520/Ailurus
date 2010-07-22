@@ -71,7 +71,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         def __clean_up(button, label):
             notify(_('Run command:'), 'apt-get clean')
-            run_as_root_in_terminal('apt-get clean')
+            run_as_root_in_terminal('apt-get clean', ignore_error=True)
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
             button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
         button.connect('clicked', __clean_up, label)

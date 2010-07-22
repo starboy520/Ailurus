@@ -81,7 +81,7 @@ class Terminal:
             if ret!=0:
                 if ret==1: # SIGHUP
                     os.system(string) # run command again. do not detect whether success.
-                if ret==2: # SIGINT
+                elif ret==2: # SIGINT
                     raise UserCancelInstallation
                 else:
                     raise CommandFailError(string, ret)
