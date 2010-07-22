@@ -1,6 +1,8 @@
 2010-07-22 Homer Xing <homer.xing@gmail.com>
 
     * Fix issue 986. for row in func.result: 'NoneType' object is not iterable
+    * Add wxmaxima, a Computer Algebra System.
+    * Add scilab, one of several open source alternatives to MATLAB.
 
 2010-07-21 Homer Xing <homer.xing@gmail.com>
 

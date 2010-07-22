@@ -97,6 +97,17 @@ license = GPL
 ubuntu = qtoctave
 archlinux = qtoctave
 
+[Maxima]
+category = math
+ubuntu = wxmaxima
+fedora = wxMaxima
+archlinux = wxmaxima
+
+[Scilab]
+category = math
+ubuntu = scilab
+archlinux = scilab
+
 [Avidemux]
 category = media_editor
 fedora = avidemux
