@@ -3,6 +3,7 @@
     * Fix issue 986. for row in func.result: 'NoneType' object is not iterable
     * Add wxmaxima, a Computer Algebra System.
     * Add scilab, one of several open source alternatives to MATLAB.
+    * Add rkward, A graphic user interface to the R programming language.
 
 2010-07-21 Homer Xing <homer.xing@gmail.com>
 

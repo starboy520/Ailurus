@@ -696,6 +696,11 @@ category = statistics
 license = GPL
 ubuntu = r-base-core
 
+[RKWard]
+category = statistics
+ubuntu = rkward
+fedora = rkward
+
 [Kadu]
 category = chat
 fedora = kadu
