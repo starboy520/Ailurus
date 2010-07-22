@@ -36,3 +36,5 @@ gnomeartng_hardy = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy
 gnomeartng_intrepid = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'
 gnomeartng_jaunty = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'
 remastersys = 'http://prdownloads.sourceforge.net/remastersys/remastersys_2.0.17-1_all.deb'
+worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
+worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'

@@ -26,8 +26,6 @@ from libapp import *
 assert FEDORA
 
 class urls:
-    worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
-    worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
     realplayer = 'http://software-dl.real.com/079f1e1c74ca25924402/unix/RealPlayer11GOLD.rpm'
     eset_antivirus_32 = 'http://download.eset.com/special/eav_linux/ueav.i386.linux'
     eset_antivirus_64 = 'http://download.eset.com/special/eav_linux/ueav.x86_64.linux'

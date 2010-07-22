@@ -27,8 +27,6 @@ assert UBUNTU or UBUNTU_DERIV
 from ubuntu.third_party_repos import _repo
 
 class urls:
-    worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
-    worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
     eset_antivirus_32 = 'http://download.eset.com/special/eav_linux/ueav.i386.linux'
     eset_antivirus_64 = 'http://download.eset.com/special/eav_linux/ueav.x86_64.linux'
     google_earch = 'http://dl.google.com/earth/client/current/GoogleEarthLinux.bin'
