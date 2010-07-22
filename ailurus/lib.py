@@ -801,19 +801,19 @@ class RPM:
         return package_name in cls.__set1
     @classmethod
     def install(cls, *package):
-        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
+        run_as_root_in_terminal('yum install %s' % ' '.join(package))
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
-        run_as_root_in_terminal('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
+        run_as_root_in_terminal('yum localinstall "%s"' % path)
     @classmethod
     def remove(cls, *package):
-        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
+        run_as_root_in_terminal('yum remove %s' % ' '.join(package))
     @classmethod
     def import_key(cls, path):
         assert isinstance(path, str)
@@ -882,6 +882,7 @@ class APT:
         import dbus
         is_pkg_list(packages)
         cls.apt_get_update()
+        cls.cache_changed()
         run_as_root_in_terminal('apt-get install %s' % ' '.join(packages))
 #        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
 #        try:
@@ -890,15 +891,14 @@ class APT:
 #        except dbus.exceptions.DBusException, e:
 #            if e.get_dbus_name() == 'cn.ailurus.CannotDownloadError':
 #                raise CannotDownloadError(*packages)
-        cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
+        cls.cache_changed()
         run_as_root_in_terminal('apt-get remove %s' % ' '.join(packages))
 #        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
 #        daemon().apt_command('remove', ','.join(packages),
 #                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
-        cls.cache_changed()
     @classmethod
     def neet_to_run_apt_get_update(cls):
         cls.apt_get_update_is_called = False
@@ -911,11 +911,11 @@ class APT:
             cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
+        cls.cache_changed()
         for package in packages:
             run_as_root_in_terminal('dpkg -i "%s"' % package)
 #            daemon().apt_command('install_local', package,
 #                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
-        cls.cache_changed()
     @classmethod
     def is_cache_lockable(cls):
         import dbus
@@ -966,7 +966,6 @@ class PACMAN:
         return cls.__allpkgs
     @classmethod
     def installed(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
         return package_name in cls.__pkgs
     @classmethod
@@ -978,23 +977,21 @@ class PACMAN:
         is_pkg_list(packages)
         if not cls.pacman_sync_called:
             cls.pacman_sync()
-        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -S %s' % ' '.join(packages))
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
-        run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -U "%s"' % path)
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
-        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
         packages = [p for p in packages if PACMAN.installed(p)]
-        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -R %s' % ' '.join(packages))
     @classmethod
     def pacman_sync(cls):
         print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
