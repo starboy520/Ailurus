@@ -160,15 +160,13 @@ class OSD_Lyrics(_apt_install):
     ppa = 'osd-lyrics'
     pkgs = 'osdlyrics'
 
-# Cannot install playonlinux because there is no public gpg key.
-# Its repository content cannot be verified.
-#  
-#class PlayOnLinux(_apt_install):
-#    __doc__ = _('PlayOnLinux: A graphical front-end for wine')
-#    license = LGPL
-#    category = 'simulator'
-#    deb = 'deb http://deb.playonlinux.com/ %s main' % VERSION
-#    pkgs = 'playonlinux'
+# Yeah, we can install playonlinux now!
+class PlayOnLinux(_apt_install):
+    __doc__ = _('PlayOnLinux: A graphical front-end for wine')
+    license = LGPL
+    category = 'simulator'
+    deb = 'deb http://deb.playonlinux.com/ %s main' % VERSION
+    pkgs = 'playonlinux'
 
 class RSSOwl(_apt_install):
     __doc__ = _('RSSOwl: RSS feed reader')

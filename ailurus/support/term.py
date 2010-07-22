@@ -49,6 +49,7 @@ class Window:
         else:
             os._exit(0)
     def run(self, argv): # please do not launch me as a thread
+        self.window.set_title(_('Ailurus terminal') + ': ' + ' '.join(argv))
         assert isinstance(argv, list)
 
         # This idea comes from jhbuild/frontends/gtkui.py
