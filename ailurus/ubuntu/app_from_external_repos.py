@@ -226,3 +226,10 @@ class DeaDBeeF(_apt_install):
     category = 'player'
     ppa = 'alexey-smirnov/deadbeef'
     pkgs = 'deadbeef'
+
+class Mobloquer(_apt_install):
+    'Mobloquer'
+    detail = _('Protect your privacy. Block internet traffic based on IP address ranges.')
+    category = 'internet'
+    ppa = 'jre-phoenix'
+    pkgs = 'moblock mobloquer'

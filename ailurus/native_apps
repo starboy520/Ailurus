@@ -878,3 +878,7 @@ category = file_sharing
 ubuntu = qbittorrent
 fedora = qbittorrent
 archlinux = qbittorrent
+
+[Fatrat]
+category = fatrat
+ubuntu = fatrat
