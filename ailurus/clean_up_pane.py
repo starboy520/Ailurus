@@ -275,7 +275,10 @@ class UbuntuCleanKernelBox(gtk.HBox):
         files = glob.glob('/boot/*%s*' % version) + glob.glob('/lib/modules/%s' % version)
         ret = 0
         for file in files:
-            ret += os.stat(file).st_size
+            try:
+                ret += os.stat(file).st_size
+            except: # Broken soft link
+                pass
         return ret
     
     def text_data_func(self, column, cell, model, iter):
