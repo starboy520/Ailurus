@@ -308,19 +308,6 @@ class AdobeReader(_rpm_install):
         return is32()
 
 # Do not install Realplayer. It cannot be removed by yum :(
-#class Realplayer32(I):
-#    'RealPlayer 11'
-#    detail = _('If you cannot play RMVB video, try this application! '
-#       'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
-#    download_url = 'http://www.real.com/linux'
-#    category = 'player'
-#    def install(self):
-#        f = R(urls.realplayer).download()
-#        RPM.install_local(f)
-#    def installed(self):
-#        return RPM.installed('RealPlayer')
-#    def remove(self):
-#        RPM.remove('RealPlayer')
 
 class GoogleChrome(I):
     __doc__ = _('Google Chrome browser')

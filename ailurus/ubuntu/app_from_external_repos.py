@@ -219,3 +219,10 @@ class CairoDock(_apt_install):
 #    category = 'player'
 #    ppa = 'songbird-daily'
 #    pkgs = 'songbird'
+
+class DeaDBeeF(_apt_install):
+    'DeaDBeef'
+    detail = _('Till now the only music player that can correctly play files from .cue sheets')
+    category = 'player'
+    ppa = 'alexey-smirnov/deadbeef'
+    pkgs = 'deadbeef'

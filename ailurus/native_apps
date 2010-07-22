@@ -872,3 +872,9 @@ ubuntu = unetbootin
 [Pino]
 category = blog
 fedora = pino
+
+[QBittorrent]
+category = file_sharing
+ubuntu = qbittorrent
+fedora = qbittorrent
+archlinux = qbittorrent
