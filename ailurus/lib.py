@@ -825,10 +825,17 @@ class APTSourceSyntaxError(Exception):
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    apt_cache = None
+    apt_cache = None # instance of apt.cache.Cache
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
+    @classmethod
+    def has_broken_dependency(cls):
+        cls.refresh_cache()
+        try:
+            return bool(cls.apt_cache.broken_count)
+        except AttributeError: # ubuntu hardy
+            return False # not a good solution
     @classmethod
     def refresh_cache(cls):
         if cls.fresh_cache: return
