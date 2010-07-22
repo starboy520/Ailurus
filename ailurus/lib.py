@@ -882,20 +882,22 @@ class APT:
         import dbus
         is_pkg_list(packages)
         cls.apt_get_update()
-        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        try:
-            daemon().apt_command('install', ','.join(packages),
-                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
-        except dbus.exceptions.DBusException, e:
-            if e.get_dbus_name() == 'cn.ailurus.CannotDownloadError':
-                raise CannotDownloadError(*packages)
+        run_as_root_in_terminal('apt-get install %s' % ' '.join(packages))
+#        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+#        try:
+#            daemon().apt_command('install', ','.join(packages),
+#                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+#        except dbus.exceptions.DBusException, e:
+#            if e.get_dbus_name() == 'cn.ailurus.CannotDownloadError':
+#                raise CannotDownloadError(*packages)
         cls.cache_changed()
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
-        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        daemon().apt_command('remove', ','.join(packages),
-                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+        run_as_root_in_terminal('apt-get remove %s' % ' '.join(packages))
+#        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+#        daemon().apt_command('remove', ','.join(packages),
+#                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
     @classmethod
     def neet_to_run_apt_get_update(cls):
@@ -903,14 +905,16 @@ class APT:
     @classmethod
     def apt_get_update(cls):
         if cls.apt_get_update_is_called == False:
-            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            run_as_root_in_terminal('apt-get update', ignore_error = True)
+#            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
             cls.apt_get_update_is_called = True
             cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
         for package in packages:
-            daemon().apt_command('install_local', package,
-                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            run_as_root_in_terminal('dpkg -i "%s"' % package)
+#            daemon().apt_command('install_local', package,
+#                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
     @classmethod
     def is_cache_lockable(cls):

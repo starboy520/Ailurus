@@ -39,7 +39,7 @@ class Window:
         window.set_position(gtk.WIN_POS_CENTER)
         window.add(scroll)
         window.connect('delete-event', lambda *w: True)
-        window.iconify()
+#        window.iconify()
         window.show_all()
         window.realize()
     def child_exited(self):
