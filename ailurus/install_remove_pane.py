@@ -334,6 +334,23 @@ class InstallRemovePane(gtk.VBox):
         window.show_all()
         gtk.gdk.threads_leave()
     
+    def fix_ubuntu_broken_dependency(self):
+        if APT.has_broken_dependency():
+            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
+                                       message_format=_('There are broken packages.\nCommand "apt-get install -f" will be launched to fix error.'))
+            dialog.run()
+            dialog.destroy()
+            run_as_root_in_terminal('apt-get install -f', ignore_error=True)
+            APT.cache_changed()
+            if APT.has_broken_dependency(): # still cannot fix broken dependency
+                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
+                                           message_format=_('Cannot fix broken packages. Installation is cancelled.'))
+                dialog.run()
+                dialog.destroy()
+                return False # exit installing
+            while gtk.events_pending(): gtk.main_iteration() # completely destroy dialogs
+        return True
+    
     def __apply_change_thread(self):
         import os, sys, traceback, StringIO, thread, platform
         try:
@@ -427,6 +444,11 @@ class InstallRemovePane(gtk.VBox):
                 return
 
         run_as_root('true') # require authentication first. do not require authentication any more.
+        
+        if UBUNTU or UBUNTU_DERIV:
+            if self.fix_ubuntu_broken_dependency() == False:
+                return
+
         self.parentwindow.lock()
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )

@@ -9,6 +9,7 @@
     * Add Fatrat, a feature rich download manager.
     * Add Mobloquer, protect internet privacy.
     * Add JabRef, bibliography reference manager.
+    * Fix depencency error (if any) before installing.
 
 2010-07-21 Homer Xing <homer.xing@gmail.com>
 
