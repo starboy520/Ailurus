@@ -880,5 +880,10 @@ fedora = qbittorrent
 archlinux = qbittorrent
 
 [Fatrat]
-category = fatrat
+category = file_sharing
 ubuntu = fatrat
+
+[JabRef]
+category = latex
+ubuntu = jabref
+archlinux = jabref
