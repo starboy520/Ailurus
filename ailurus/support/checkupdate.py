@@ -174,32 +174,35 @@ def show_special_thank_dialog():
     import StringIO
     text = StringIO.StringIO()
     print >>text, _('We wish to express thankfulness to these projects:')
-    print >>text, '<b><big>Lazybuntu, UbuntuAssistant'
-    print >>text, 'GTweakUI, Easy Life, Ubuntu-tweak, CPU-G</big></b>'
+    print >>text, '<b>Lazybuntu, UbuntuAssistant'
+    print >>text, 'GTweakUI, Easy Life, Ubuntu-tweak, CPU-G</b>'
     print >>text
     print >>text, _('We sincerely thank these people:')
     print >>text
     print >>text, _('The people who provide inspiration:')
     print >>text, '<b>PCMan, Careone, novia, '
     print >>text, 'BAI Qingjie, Aron Xu, Federico Vera, '
-    print >>text, 'ZHU Jiandy, Maksim Lagoshin, '
+    print >>text, 'ZHU Jiandi, Maksim Lagoshin, '
     print >>text, 'Romeo-Adrian Cioaba, David Morre, '
-    print >>text, 'Liang Suilong, Lovenemesis, Chen Lei, '
+    print >>text, 'LIANG Suilong, Lovenemesis, CHEN Lei, '
     print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
     print >>text, 'Michael McBride, CHEN Zhixue, hicks1gb, '
     print >>text, 'Silber Cobra </b>'
     print >>text
     print >>text, _('The people who designs the logo:')
-    print >>text, '<b><big>SU Yun</big></b>'
+    print >>text, '<b>SU Yun</b>'
     print >>text
     print >>text, _('The people who maintain PPA repository:')
-    print >>text, '<b><big>Aron Xu</big></b>'
+    print >>text, '<b>Aron Xu</b>'
+    print >>text
+    print >>text, _('The people who maintain Fedora package:')
+    print >>text, '<b>LIANG Suilong</b>'
     print >>text
     print >>text, _('The people who maintain ArchLinux package:')
-    print >>text, '<b><big>kiefer</big></b>'
+    print >>text, '<b>kiefer</b>'
     print >>text
     print >>text, _('The people who provide a lot of Linux skills:')
-    print >>text, '<b><big>Oneleaf</big></b>'
+    print >>text, '<b>Oneleaf</b>'
     print >>text
     print >>text, _('The people who help translate Ailurus')
     print >>text 
