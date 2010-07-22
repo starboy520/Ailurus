@@ -187,7 +187,7 @@ def show_special_thank_dialog():
     print >>text, 'LIANG Suilong, Lovenemesis, CHEN Lei, '
     print >>text, 'DaringSoule, Ramesh Mandaleeka, JCOM, '
     print >>text, 'Michael McBride, CHEN Zhixue, hicks1gb, '
-    print >>text, 'Silber Cobra </b>'
+    print >>text, 'Silber Cobra, lopeztobal</b>'
     print >>text
     print >>text, _('The people who designs the logo:')
     print >>text, '<b>SU Yun</b>'
