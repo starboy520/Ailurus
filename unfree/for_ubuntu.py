@@ -342,12 +342,8 @@ class Mendeley(_apt_install):
     pkgs = 'mendeleydesktop'
     category = 'latex'
     deb = None
-    @classmethod
-    def build_deb_line(cls):
-        i = ord(VERSION[0]) - ord('h') # 8.04=0, 8.10=1
-        a = 8 + i / 2
-        if i%2 == 0: b = '04'
-        else: b = '10'
-        return 'deb http://www.mendeley.com/repositories/xUbuntu_%s.%s /' % (a, b)
-    def __init__(self):
-        self.deb = self.build_deb_line()
+    i = ord(VERSION[0]) - ord('h') # 8.04=0, 8.10=1
+    a = 8 + i / 2
+    if i%2 == 0: b = '04'
+    else: b = '10'
+    deb = 'deb http://www.mendeley.com/repositories/xUbuntu_%s.%s /' % (a, b)
