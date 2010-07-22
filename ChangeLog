@@ -1,3 +1,7 @@
+2010-07-22 Homer Xing <homer.xing@gmail.com>
+
+    * Fix issue 986. for row in func.result: 'NoneType' object is not iterable
+
 2010-07-21 Homer Xing <homer.xing@gmail.com>
 
     * Add a new tip: view the IP address outside the local network

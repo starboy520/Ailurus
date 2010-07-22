@@ -231,6 +231,7 @@ def __battery_state():
                     else: raise RuntimeError(v)
                     return [row(_('Battery charging state:'), v, D+'umut_icons/i_battery.png')]
     except:
+        print_traceback()
         return []
 
 def __battery_remaining_capacity():
@@ -242,6 +243,7 @@ def __battery_remaining_capacity():
                 if v[0] == 'remaining capacity':
                     return [row(_('Battery remaining capacity:'), v[1].strip(), D+'umut_icons/i_battery.png')]
     except:
+        print_traceback()
         return []
 
 def __battery_capacity():
@@ -253,6 +255,7 @@ def __battery_capacity():
                 if v[0] == 'last full capacity':
                     return[row(_('Battery full capacity:'), v[1].strip(), D+'umut_icons/i_battery.png')]
     except:
+        print_traceback()
         return []
 
 def get():

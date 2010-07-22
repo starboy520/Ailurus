@@ -111,10 +111,14 @@ class InfoPane(gtk.VBox):
         for func in self.hardware_functions:
             if hasattr(func, 'please_refresh_me'):
                 func.result = func()
+                if func.result is None:
+                    func.result = []
 
         for func in self.os_functions:
             if hasattr(func, 'please_refresh_me'):
                 func.result = func()
+                if func.result is None:
+                    func.result = []
 
         self.treestore.clear()
         

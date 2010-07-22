@@ -43,8 +43,9 @@ def __xorg():
         for line in get_output('Xorg -version').split('\n'):
             if line.startswith('X.Org X Server'):
                 return [row(_('X server version:'), line.strip(), D+'umut_icons/i_X.png')]
-    except: print_traceback()
-    return []
+    except:
+        print_traceback()
+        return []
 
 def __gcc():
     try:
@@ -62,20 +63,27 @@ def __java():
     return []
 
 def __python():
-     try: return [row(_('Python version:'), sys.version.split()[0], D+'appicons/python.png' )]
-     except: print_traceback()
-     return []
+     try: 
+         return [row(_('Python version:'), sys.version.split()[0], D+'appicons/python.png' )]
+     except: 
+         print_traceback()
+         return []
  
 def __gtk():
-     import gtk
-     try: return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'appicons/gtk.png')]
-     except: print_traceback()
-     return []
+     try:
+         import gtk
+         return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'appicons/gtk.png')]
+     except:
+         print_traceback()
+         return []
  
 def __pygtk():
-     import gtk
-     try: return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'appicons/gtk.png' )]
-     except: print_traceback()
+     try: 
+         import gtk
+         return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'appicons/gtk.png' )]
+     except: 
+         print_traceback()
+         return []
     
 def __uptime():
     __uptime.please_refresh_me = True
@@ -97,16 +105,18 @@ def __uptime():
         if minutes:
             print >>text, minutes, ngettext('minute', 'minutes', minutes),
         return [row(_('Uptime:'), text.getvalue(), D+'umut_icons/i_uptime.png' )]
-    except: print_traceback()
-    return []
+    except:
+        print_traceback()
+        return []
 
 def __user():
     try: 
         import os
         string = '%s (UID: %s, GID: %s)'%(os.environ['USER'], os.getuid(), os.getgid() )
         return [row(_('Current user:'), string, D+'umut_icons/i_userinfo.png')]
-    except: print_traceback()
-    return []
+    except: 
+        print_traceback()
+        return []
 
 def __opengl():
     ret = []
@@ -149,7 +159,9 @@ def __os_version():
         import platform
         name, version = platform.dist()[0:2]
         return [row(_('%s version:') % name, version, D+'umut_icons/tux.png' )]
-    except: print_traceback()    
+    except:
+        print_traceback()
+        return [] 
 
 def get():
     return [ __host_name, __user, __uptime, __kernel, __xorg,
