@@ -47,6 +47,8 @@ class urls:
     rpmfusion_repos_nonfree = 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'
     nvidia_32 = 'ftp://download.nvidia.com/XFree86/Linux-x86/195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run'
     nvidia_64 = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run'
+    picasa_32 = 'http://dl.google.com/linux/rpm/testing/i386/picasa-3.0-current.i386.rpm'
+    adobeair_32 = 'http://airdownload.adobe.com/air/lin/download/latest/adobeair.i386.rpm'
 
 class _repo(I):
     this_is_a_repository = True
@@ -396,7 +398,7 @@ class Repo_Chromium(I):
             _repo.disable(self.path)
 
 class ESETNOD32(I):
-    __doc__ = _('ESET NOD32')
+    __doc__ = 'ESET NOD32'
     detail = _('Anti virus and anti spyware')
     download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
@@ -422,13 +424,31 @@ class ESETNOD32(I):
         run_as_root('/opt/eset/esets/bin/esets_gil')
 
 class AdobeAIR(I):
-    __doc__ = ('Adobe AIR: use HTML, JavaScript and Flash to build desktop applications')
+    __doc__ = 'Adobe AIR'
+    detail = _('Use HTML, JavaScript and Flash to build desktop applications')
     download_url = 'http://get.adobe.com/air/'
     category = 'ide'
     def install(self):
-        f = R('http://airdownload.adobe.com/air/lin/download/latest/adobeair.i386.rpm').download()
+        f = R(urls.adobeair_32).download()
         RPM.install_local(f)
     def installed(self):
         return RPM.installed('adobeair')
     def remove(self):
         RPM.remove('adobeair')
+    def visible(self):
+        return is32()
+
+class Picasa(I):
+    __doc__ = 'Picasa'
+    detail = _('An image organizer and image viewer, plus photo-sharing function')
+    download_url = urls.picasa_32
+    category = 'photo'
+    def install(self):
+        f = R(urls.picasa_32).download()
+        RPM.install_local(f)
+    def installed(self):
+        return RPM.installed('picasa')
+    def remove(self):
+        RPM.remove('picasa')
+    def visible(self):
+        return is32()

@@ -48,6 +48,9 @@ class urls:
     rpmfusion_repos_nonfree = 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'
     nvidia_32 = 'ftp://download.nvidia.com/XFree86/Linux-x86/195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run'
     nvidia_64 = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run'
+    adobeair = 'http://airdownload.adobe.com/air/lin/download/latest/adobeair.deb'
+    picasa_32 = 'http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_i386.deb'
+    picasa_64 = 'http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_amd64.deb'
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
@@ -309,13 +312,30 @@ class Repo_Oracle(_repo):
         _repo.__init__(self)
 
 class AdobeAIR(I):
-    __doc__ = ('Adobe AIR: use HTML, JavaScript and Flash to build desktop applications')
+    __doc__ = 'Adobe AIR'
+    detail = _('Use HTML, JavaScript and Flash to build desktop applications')
     download_url = 'http://get.adobe.com/air/'
     category = 'ide'
     def install(self):
-        f = R('http://airdownload.adobe.com/air/lin/download/latest/adobeair.deb').download()
+        f = R(urls.adobeair).download()
         APT.install_local(f)
     def installed(self):
         return APT.installed('adobeair')
     def remove(self):
         APT.remove('adobeair')
+
+class Picasa(I):
+    __doc__ = 'Picasa'
+    detail = _('An image organizer and image viewer, plus photo-sharing function')
+    if is32():
+        download_url = urls.picasa_32
+    else:
+        download_url = urls.picasa_64
+    category = 'photo'
+    def install(self):
+        f = R(self.download_url).download()
+        APT.install_local(f)
+    def installed(self):
+        return APT.installed('picasa')
+    def remove(self):
+        APT.remove('picasa')
