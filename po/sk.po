@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-07-21 09:42+0800\n"
-"PO-Revision-Date: 2010-07-21 12:38+0000\n"
+"POT-Creation-Date: 2010-07-23 10:04+0800\n"
+"PO-Revision-Date: 2010-07-22 05:04+0000\n"
 "Last-Translator: Marcel <marceliqq@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2010-07-22 04:06+0000\n"
+"X-Launchpad-Export-Date: 2010-07-23 04:16+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
-msgid "makes Linux easier to use"
-msgstr "robí Linux jednoduchším na použitie"
+msgid "a simple application installer and GNOME tweaker"
+msgstr ""
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -48,11 +48,11 @@ msgstr "APT vyrovnávacia pamäť"
 #: ../ailurus/clean_up_pane.py:73 ../ailurus/clean_up_pane.py:87
 #: ../ailurus/clean_up_pane.py:104 ../ailurus/clean_up_pane.py:118
 #: ../ailurus/clean_up_pane.py:133 ../ailurus/clean_up_pane.py:149
-#: ../ailurus/lib.py:498 ../ailurus/lib.py:575 ../ailurus/lib.py:731
-#: ../ailurus/lib.py:1040 ../ailurus/lib.py:1345
+#: ../ailurus/lib.py:505 ../ailurus/lib.py:582 ../ailurus/lib.py:738
+#: ../ailurus/lib.py:1055 ../ailurus/lib.py:1360
 #: ../ailurus/support/terminal.py:70
 #: ../ailurus/support/terminal_single_thread.py:52
-#: ../ailurus/support/term.py:68
+#: ../ailurus/support/term.py:69
 msgid "Run command:"
 msgstr "Spustiť príkaz:"
 
@@ -124,15 +124,15 @@ msgstr ""
 msgid "%s KB memory was reclaimed."
 msgstr "%s KB pamäte bolo regenerovaných."
 
-#: ../ailurus/clean_up_pane.py:228 ../ailurus/clean_up_pane.py:441
+#: ../ailurus/clean_up_pane.py:228 ../ailurus/clean_up_pane.py:444
 msgid "Auto-removable packages"
 msgstr "Automaticky odstrániteľné balíčky."
 
-#: ../ailurus/clean_up_pane.py:231 ../ailurus/clean_up_pane.py:551
+#: ../ailurus/clean_up_pane.py:231 ../ailurus/clean_up_pane.py:554
 msgid "Unused software configuration"
 msgstr "Nevyužitá softvérová konfigurácia"
 
-#: ../ailurus/clean_up_pane.py:234 ../ailurus/clean_up_pane.py:329
+#: ../ailurus/clean_up_pane.py:234 ../ailurus/clean_up_pane.py:332
 msgid "Unused Linux kernels"
 msgstr "Nevyužité Linuxé jadrá."
 
@@ -140,45 +140,45 @@ msgstr "Nevyužité Linuxé jadrá."
 msgid "There is no unused Linux Kernel."
 msgstr "Nie je žiadne nevyužité Linuxé jadro."
 
-#: ../ailurus/clean_up_pane.py:292 ../ailurus/clean_up_pane.py:362
-#: ../ailurus/clean_up_pane.py:482 ../ailurus/fedora/rpm_recovery_pane.py:230
+#: ../ailurus/clean_up_pane.py:295 ../ailurus/clean_up_pane.py:365
+#: ../ailurus/clean_up_pane.py:485 ../ailurus/fedora/rpm_recovery_pane.py:230
 #: ../ailurus/ubuntu/apt_recovery_pane.py:233
 msgid "will be removed"
 msgstr "budú odstránené"
 
-#: ../ailurus/clean_up_pane.py:341 ../ailurus/clean_up_pane.py:457
-#: ../ailurus/clean_up_pane.py:567
+#: ../ailurus/clean_up_pane.py:344 ../ailurus/clean_up_pane.py:460
+#: ../ailurus/clean_up_pane.py:570
 msgid "Delete"
 msgstr "Odstrániť"
 
-#: ../ailurus/clean_up_pane.py:384 ../ailurus/ubuntu/quick_setup.py:209
+#: ../ailurus/clean_up_pane.py:387 ../ailurus/ubuntu/quick_setup.py:209
 msgid "Scanning installed packages."
 msgstr "Skenovanie nainštalovaných balíčkov."
 
-#: ../ailurus/clean_up_pane.py:384 ../ailurus/ubuntu/quick_setup.py:209
+#: ../ailurus/clean_up_pane.py:387 ../ailurus/ubuntu/quick_setup.py:209
 msgid "Please wait a few seconds."
 msgstr "Prosím, počkajte niekoľko sekúnd"
 
-#: ../ailurus/clean_up_pane.py:407
+#: ../ailurus/clean_up_pane.py:410
 msgid "There is no auto-removable package."
 msgstr "Neexistuje žiadny automaticky odstrániteľný balíček."
 
-#: ../ailurus/clean_up_pane.py:453 ../ailurus/clean_up_pane.py:563
+#: ../ailurus/clean_up_pane.py:456 ../ailurus/clean_up_pane.py:566
 #: ../ailurus/computer_doctor_pane.py:134
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:110
 msgid "Refresh"
 msgstr "Aktualizovať"
 
-#: ../ailurus/clean_up_pane.py:455 ../ailurus/clean_up_pane.py:565
+#: ../ailurus/clean_up_pane.py:458 ../ailurus/clean_up_pane.py:568
 #: ../ailurus/fedora/fastest_mirror_pane.py:168
 msgid "Select all"
 msgstr "Vybrať všetko"
 
-#: ../ailurus/clean_up_pane.py:471 ../ailurus/clean_up_pane.py:581
+#: ../ailurus/clean_up_pane.py:474 ../ailurus/clean_up_pane.py:584
 msgid "Please press the \"Refresh\" button."
 msgstr "Prosím stlačte tlačítko \"Obnoviť\""
 
-#: ../ailurus/clean_up_pane.py:521
+#: ../ailurus/clean_up_pane.py:524
 msgid "There is no unused software configuration."
 msgstr "Nie je žiadna nevyužitá softvérová konfigurácia"
 
@@ -627,27 +627,27 @@ msgstr "Sieťová karta:"
 msgid "Audio card:"
 msgstr "Zvuková karta:"
 
-#: ../ailurus/common/hardwareinfo.py:229
+#: ../ailurus/common/hardwareinfo.py:228
 msgid "charged"
 msgstr "nabitý"
 
-#: ../ailurus/common/hardwareinfo.py:230
+#: ../ailurus/common/hardwareinfo.py:229
 msgid "charging"
 msgstr "nabíjanie"
 
-#: ../ailurus/common/hardwareinfo.py:231
+#: ../ailurus/common/hardwareinfo.py:230
 msgid "discharging"
 msgstr "vybíjanie"
 
-#: ../ailurus/common/hardwareinfo.py:233
+#: ../ailurus/common/hardwareinfo.py:232
 msgid "Battery charging state:"
 msgstr "Stav nabitia batérie:"
 
-#: ../ailurus/common/hardwareinfo.py:235
+#: ../ailurus/common/hardwareinfo.py:244
 msgid "Battery remaining capacity:"
 msgstr "Zostávajúca kapacita batérie:"
 
-#: ../ailurus/common/hardwareinfo.py:241
+#: ../ailurus/common/hardwareinfo.py:256
 msgid "Battery full capacity:"
 msgstr "Plná kapacita batérie:"
 
@@ -811,76 +811,76 @@ msgstr "Architektúra Jadra:"
 msgid "X server version:"
 msgstr "Verzia x servera:"
 
-#: ../ailurus/common/osinfo.py:51
+#: ../ailurus/common/osinfo.py:52
 msgid "GCC version:"
 msgstr "GCC verzia:"
 
-#: ../ailurus/common/osinfo.py:59
+#: ../ailurus/common/osinfo.py:60
 msgid "Java version:"
 msgstr "Java verzia:"
 
-#: ../ailurus/common/osinfo.py:65
+#: ../ailurus/common/osinfo.py:67
 msgid "Python version:"
 msgstr "Python verzia:"
 
-#: ../ailurus/common/osinfo.py:71
+#: ../ailurus/common/osinfo.py:75
 msgid "GTK version:"
 msgstr "Verzia GTK"
 
-#: ../ailurus/common/osinfo.py:77
+#: ../ailurus/common/osinfo.py:83
 msgid "PyGTK version:"
 msgstr "Verzia PyGTK:"
 
-#: ../ailurus/common/osinfo.py:94
+#: ../ailurus/common/osinfo.py:102
 msgid "day"
 msgid_plural "days"
 msgstr[0] "deň"
 msgstr[1] "dni"
 msgstr[2] "dní"
 
-#: ../ailurus/common/osinfo.py:96
+#: ../ailurus/common/osinfo.py:104
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "hodina"
 msgstr[1] "hodiny"
 msgstr[2] "hodín"
 
-#: ../ailurus/common/osinfo.py:98
+#: ../ailurus/common/osinfo.py:106
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "minúta"
 msgstr[1] "minúty"
 msgstr[2] "minút"
 
-#: ../ailurus/common/osinfo.py:99
+#: ../ailurus/common/osinfo.py:107
 msgid "Uptime:"
 msgstr "Doba prevádzky:"
 
-#: ../ailurus/common/osinfo.py:107
+#: ../ailurus/common/osinfo.py:116
 msgid "Current user:"
 msgstr "Aktuálny používateľ:"
 
-#: ../ailurus/common/osinfo.py:123
+#: ../ailurus/common/osinfo.py:133
 msgid "OpenGL direct rendering:"
 msgstr "OpenGL direct vykresľovanie:"
 
-#: ../ailurus/common/osinfo.py:126
+#: ../ailurus/common/osinfo.py:136
 msgid "OpenGL vendor:"
 msgstr "OpenGL poskytovateľ:"
 
-#: ../ailurus/common/osinfo.py:129
+#: ../ailurus/common/osinfo.py:139
 msgid "OpenGL renderer:"
 msgstr "OpenGL vykresľovanie:"
 
-#: ../ailurus/common/osinfo.py:132
+#: ../ailurus/common/osinfo.py:142
 msgid "OpenGL version:"
 msgstr "Verzia OpenGL:"
 
-#: ../ailurus/common/osinfo.py:142
+#: ../ailurus/common/osinfo.py:152
 msgid "Firefox version:"
 msgstr "Verzia Firefoxu:"
 
-#: ../ailurus/common/osinfo.py:151
+#: ../ailurus/common/osinfo.py:161
 #, python-format
 msgid "%s version:"
 msgstr "%s verzia:"
@@ -1842,6 +1842,13 @@ msgid ""
 "NEW_PRIORITY = -19, -18, -17 [...] 18, 19, 20\n"
 msgstr ""
 
+#: ../ailurus/common/tips.py:374
+msgid ""
+"View the IP address outside the local network\n"
+"w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
+"}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}'\n"
+msgstr ""
+
 #: ../ailurus/computer_doctor_pane.py:30
 msgid ""
 "Computer\n"
@@ -2385,6 +2392,7 @@ msgstr "Zobraziť obsah plochy"
 
 #: ../ailurus/gnome/setting.py:30 ../ailurus/gnome/setting.py:95
 #: ../ailurus/gnome/setting.py:107 ../ailurus/gnome/setting.py:378
+#: ../ailurus/gnome/setting.py:398
 msgid "(take effect at the next time GNOME starts up)"
 msgstr "(nadobudne efekt pri ďalšom spustení GNOME)"
 
@@ -3043,15 +3051,15 @@ msgstr ""
 "Spustiť GConf editor:\n"
 "Stlačte Alt+F2 a napíšte 'gconf-editor'."
 
-#: ../ailurus/info_pane.py:61
+#: ../ailurus/info_pane.py:70
 msgid "Hardware Information"
 msgstr "Informácie o hardvéri"
 
-#: ../ailurus/info_pane.py:63
+#: ../ailurus/info_pane.py:72
 msgid "Linux Information"
 msgstr "Informácie o Linuxe"
 
-#: ../ailurus/info_pane.py:68
+#: ../ailurus/info_pane.py:77
 msgid "Print all information"
 msgstr "Vytlač všetky informácie."
 
@@ -3112,158 +3120,162 @@ msgstr "RSS"
 msgid "Internet"
 msgstr "Internet"
 
+#: ../ailurus/install_remove_pane.py:69
+msgid "Photo"
+msgstr ""
+
 #. multimedia
-#: ../ailurus/install_remove_pane.py:70
+#: ../ailurus/install_remove_pane.py:71
 msgid "Player"
 msgstr "Prehrávač"
 
-#: ../ailurus/install_remove_pane.py:71
+#: ../ailurus/install_remove_pane.py:72
 msgid "CD burner"
 msgstr "Vypaľovací nástroj CD"
 
-#: ../ailurus/install_remove_pane.py:72
+#: ../ailurus/install_remove_pane.py:73
 msgid "Media editor"
 msgstr "Editor médií"
 
 #. appearance
-#: ../ailurus/install_remove_pane.py:74
+#: ../ailurus/install_remove_pane.py:75
 msgid "Panel"
 msgstr "Panel"
 
-#: ../ailurus/install_remove_pane.py:75
+#: ../ailurus/install_remove_pane.py:76
 msgid "Theme"
 msgstr "Motív vzhľadu"
 
-#: ../ailurus/install_remove_pane.py:76
+#: ../ailurus/install_remove_pane.py:77
 msgid "Screen widget"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:77
+#: ../ailurus/install_remove_pane.py:78
 msgid "Compiz setting"
 msgstr "Nastavenia Compiz"
 
 #. science
-#: ../ailurus/install_remove_pane.py:79
+#: ../ailurus/install_remove_pane.py:80
 msgid "Math"
 msgstr "Matematika"
 
-#: ../ailurus/install_remove_pane.py:80
+#: ../ailurus/install_remove_pane.py:81
 msgid "Statistics"
 msgstr "Štatistiky"
 
-#: ../ailurus/install_remove_pane.py:81
+#: ../ailurus/install_remove_pane.py:82
 msgid "Electronics"
 msgstr "Elektronika"
 
-#: ../ailurus/install_remove_pane.py:82
+#: ../ailurus/install_remove_pane.py:83
 msgid "Mechanics"
 msgstr "Mechanika"
 
-#: ../ailurus/install_remove_pane.py:83
+#: ../ailurus/install_remove_pane.py:84
 msgid "Geography"
 msgstr "Geografia"
 
-#: ../ailurus/install_remove_pane.py:84
+#: ../ailurus/install_remove_pane.py:85
 msgid "Biology"
 msgstr "Biológia"
 
-#: ../ailurus/install_remove_pane.py:85
+#: ../ailurus/install_remove_pane.py:86
 msgid "LaTeX"
 msgstr "LaTeX"
 
 #. programming
-#: ../ailurus/install_remove_pane.py:87
+#: ../ailurus/install_remove_pane.py:88
 msgid "IDE"
 msgstr "IDE"
 
-#: ../ailurus/install_remove_pane.py:88
+#: ../ailurus/install_remove_pane.py:89
 msgid "Version control"
 msgstr "Kontrola verzie"
 
-#: ../ailurus/install_remove_pane.py:89
+#: ../ailurus/install_remove_pane.py:90
 msgid "Library"
 msgstr "Knižnica"
 
-#: ../ailurus/install_remove_pane.py:90
+#: ../ailurus/install_remove_pane.py:91
 msgid "Embedded system"
 msgstr "Vstavaný systém"
 
-#: ../ailurus/install_remove_pane.py:91
+#: ../ailurus/install_remove_pane.py:92
 msgid "Text editor"
 msgstr "Textový editor"
 
-#: ../ailurus/install_remove_pane.py:92
+#: ../ailurus/install_remove_pane.py:93
 msgid "Eclipse extension"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:93
+#: ../ailurus/install_remove_pane.py:94
 msgid "Programming tool"
 msgstr "Programovacie nástroje"
 
 #. business
-#: ../ailurus/install_remove_pane.py:95
+#: ../ailurus/install_remove_pane.py:96
 msgid "Business"
 msgstr "Podnikanie"
 
 #. design
-#: ../ailurus/install_remove_pane.py:97
+#: ../ailurus/install_remove_pane.py:98
 msgid "Design"
 msgstr "Dizajn"
 
-#: ../ailurus/install_remove_pane.py:98
+#: ../ailurus/install_remove_pane.py:99
 msgid "Drawing"
 msgstr "Kreslenie"
 
-#: ../ailurus/install_remove_pane.py:99
+#: ../ailurus/install_remove_pane.py:100
 msgid "Typesetting"
 msgstr ""
 
 #. gnome_dedicated
-#: ../ailurus/install_remove_pane.py:101
+#: ../ailurus/install_remove_pane.py:102
 msgid "GNOME dedicated"
 msgstr ""
 
 #. nautilus
-#: ../ailurus/install_remove_pane.py:103
+#: ../ailurus/install_remove_pane.py:104
 msgid "Nautilus extension"
 msgstr "Nautilus doplnky"
 
 #. simulator
-#: ../ailurus/install_remove_pane.py:105
+#: ../ailurus/install_remove_pane.py:106
 msgid "Simulator"
 msgstr "Simulátor"
 
 #. education
-#: ../ailurus/install_remove_pane.py:107
+#: ../ailurus/install_remove_pane.py:108
 msgid "Education"
 msgstr "Vzdelávanie"
 
 #. game
-#: ../ailurus/install_remove_pane.py:109
+#: ../ailurus/install_remove_pane.py:110
 msgid "Game"
 msgstr "Hra"
 
 #. antivirus
-#: ../ailurus/install_remove_pane.py:111
+#: ../ailurus/install_remove_pane.py:112
 msgid "Anti-virus"
 msgstr "Anti-vírus"
 
 #. others
-#: ../ailurus/install_remove_pane.py:113 ../ailurus/main.py:338
+#: ../ailurus/install_remove_pane.py:114 ../ailurus/main.py:338
 msgid "Others"
 msgstr "Ostatné"
 
 #. tasksel
-#: ../ailurus/install_remove_pane.py:115
+#: ../ailurus/install_remove_pane.py:116
 msgid "Establish a server"
 msgstr "Zriadiť server"
 
 #. repository
-#: ../ailurus/install_remove_pane.py:117
+#: ../ailurus/install_remove_pane.py:118
 msgid "Repository"
 msgstr "Repozitár"
 
-#: ../ailurus/install_remove_pane.py:139
+#: ../ailurus/install_remove_pane.py:140
 msgid ""
 "Install\n"
 "Software"
@@ -3271,23 +3283,23 @@ msgstr ""
 "Inštalovať\n"
 "softvér"
 
-#: ../ailurus/install_remove_pane.py:223
+#: ../ailurus/install_remove_pane.py:224
 msgid "To be installed:\n"
 msgstr "Ak chcete nainštalovať:\n"
 
-#: ../ailurus/install_remove_pane.py:228
+#: ../ailurus/install_remove_pane.py:229
 msgid "To be removed:\n"
 msgstr "Ak chcete odstrániť:\n"
 
-#: ../ailurus/install_remove_pane.py:233
+#: ../ailurus/install_remove_pane.py:234
 msgid "Do not ask me any more"
 msgstr "Viac sa ma nepýtaj"
 
-#: ../ailurus/install_remove_pane.py:239
+#: ../ailurus/install_remove_pane.py:240
 msgid "Are you sure to change your system as follows?"
 msgstr "Ste si istý, že chcete urobiť nasledovné zmeny v systéme?"
 
-#: ../ailurus/install_remove_pane.py:240
+#: ../ailurus/install_remove_pane.py:241
 msgid "Confirmation"
 msgstr "Potvrdiť"
 
@@ -3327,7 +3339,7 @@ msgstr ""
 
 #: ../ailurus/install_remove_pane.py:317 ../ailurus/libu.py:195
 #: ../ailurus/libu.py:220 ../ailurus/libu.py:242 ../ailurus/libu.py:301
-#: ../ailurus/support/checkupdate.py:269
+#: ../ailurus/support/checkupdate.py:272
 msgid "Close"
 msgstr "Zatvoriť"
 
@@ -3335,78 +3347,88 @@ msgstr "Zatvoriť"
 msgid "Operations failed"
 msgstr "Operácia zlyhala"
 
-#: ../ailurus/install_remove_pane.py:355
+#: ../ailurus/install_remove_pane.py:340
+msgid ""
+"There are broken packages.\n"
+"Command \"apt-get install -f\" will be launched to fix error."
+msgstr ""
+
+#: ../ailurus/install_remove_pane.py:347
+msgid "Cannot fix broken packages. Installation is cancelled."
+msgstr ""
+
+#: ../ailurus/install_remove_pane.py:372
 msgid "Installing:"
 msgstr "Inštalácia:"
 
-#: ../ailurus/install_remove_pane.py:367
+#: ../ailurus/install_remove_pane.py:384
 msgid "Removing:"
 msgstr "Odstránenie:"
 
-#: ../ailurus/install_remove_pane.py:404
+#: ../ailurus/install_remove_pane.py:421
 msgid ""
 "Check if you are currently running another software management program, e.g. "
 "Synaptic or apt-get. Only one program is allowed to make changes at the same "
 "time."
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:411
+#: ../ailurus/install_remove_pane.py:428
 msgid "Cannot lock apt cache"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:462
+#: ../ailurus/install_remove_pane.py:484
 msgid "will install"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:464
+#: ../ailurus/install_remove_pane.py:486
 msgid "will remove"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:536
+#: ../ailurus/install_remove_pane.py:558
 msgid "Synchronize"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:544 ../ailurus/ubuntu/quick_setup.py:95
+#: ../ailurus/install_remove_pane.py:566 ../ailurus/ubuntu/quick_setup.py:95
 #: ../ailurus/ubuntu/quick_setup.py:442
 msgid "Quickly install popular software"
 msgstr "Rýchla inštalácia populárneho softvéru"
 
-#: ../ailurus/install_remove_pane.py:552
+#: ../ailurus/install_remove_pane.py:574
 msgid "_Apply"
 msgstr "_Použiť"
 
-#: ../ailurus/install_remove_pane.py:635
+#: ../ailurus/install_remove_pane.py:657
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
 "Ako dlho potom, čo server neodpovedá, vzdať sťahovanie? (v sekundách)"
 
-#: ../ailurus/install_remove_pane.py:641
+#: ../ailurus/install_remove_pane.py:663
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr "Koľkokrát sa má Ailurus pokúsiť o stiahnutie z rovnakého zdroja?"
 
-#: ../ailurus/install_remove_pane.py:644
+#: ../ailurus/install_remove_pane.py:666
 msgid "Set Ailurus download parameter"
 msgstr "Nastaviť parametre sťahovania pre Ailurus"
 
-#: ../ailurus/install_remove_pane.py:669
+#: ../ailurus/install_remove_pane.py:691
 msgid "Set download parameters"
 msgstr "Nastaviť parametre sťahovania"
 
-#: ../ailurus/install_remove_pane.py:672
+#: ../ailurus/install_remove_pane.py:694
 msgid "Refresh icons of all software items"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:675
+#: ../ailurus/install_remove_pane.py:697
 msgid "Refresh installing state of all software items"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:725
+#: ../ailurus/install_remove_pane.py:744
 #, python-format
 msgid "%s available items"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:733
+#: ../ailurus/install_remove_pane.py:753
 msgid "Would you like to download latest application data from web?"
 msgstr ""
 
@@ -3473,150 +3495,142 @@ msgstr ""
 msgid "Click the \"Installation Details\" button. Then remove %s."
 msgstr ""
 
-#: ../ailurus/lib.py:439
+#: ../ailurus/lib.py:446
 #, python-format
 msgid "Dual-licensed under %(A)s and %(B)s"
 msgstr "Dvoj-licencia pod %(A)s a %(B)s"
 
-#: ../ailurus/lib.py:443
+#: ../ailurus/lib.py:450
 #, python-format
 msgid "Tri-licensed under %(A)s, %(B)s and %(C)s"
 msgstr "Troj-licencia pod %(A)s, %(B)s a %(C)s"
 
-#: ../ailurus/lib.py:759 ../ailurus/lib.py:767 ../ailurus/lib.py:934
-#: ../ailurus/lib.py:942
+#: ../ailurus/lib.py:766 ../ailurus/lib.py:774 ../ailurus/lib.py:952
+#: ../ailurus/lib.py:960
 msgid "scan installed packages"
 msgstr ""
 
-#: ../ailurus/lib.py:769 ../ailurus/lib.py:777 ../ailurus/lib.py:944
-#: ../ailurus/lib.py:951
+#: ../ailurus/lib.py:776 ../ailurus/lib.py:784 ../ailurus/lib.py:962
+#: ../ailurus/lib.py:969
 msgid "scan available packages"
 msgstr ""
 
-#: ../ailurus/lib.py:829 ../ailurus/lib.py:835
+#: ../ailurus/lib.py:843 ../ailurus/lib.py:849
 msgid "scan packages"
 msgstr ""
 
-#: ../ailurus/lib.py:878 ../ailurus/lib.py:970
-msgid "Installing packages:"
-msgstr "Inštalujú sa balíčky:"
-
-#: ../ailurus/lib.py:889 ../ailurus/lib.py:983
-msgid "Removing packages:"
-msgstr "Odstraňujú sa balíčky:"
-
-#: ../ailurus/lib.py:989
+#: ../ailurus/lib.py:1004
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
 msgstr ""
 
-#: ../ailurus/lib.py:1014
+#: ../ailurus/lib.py:1029
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f GB"
 
-#: ../ailurus/lib.py:1016
+#: ../ailurus/lib.py:1031
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f MB"
 
-#: ../ailurus/lib.py:1018
+#: ../ailurus/lib.py:1033
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: ../ailurus/lib.py:1019
+#: ../ailurus/lib.py:1034
 #, python-format
 msgid "%s bytes"
 msgstr "%s bytov"
 
-#: ../ailurus/lib.py:1027
+#: ../ailurus/lib.py:1042
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f hodín"
 
-#: ../ailurus/lib.py:1029
+#: ../ailurus/lib.py:1044
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f minút"
 
-#: ../ailurus/lib.py:1030
+#: ../ailurus/lib.py:1045
 #, python-format
 msgid "%d seconds"
 msgstr "%d sekúnd"
 
-#: ../ailurus/lib.py:1277 ../ailurus/lib.py:1282
+#: ../ailurus/lib.py:1292 ../ailurus/lib.py:1297
 msgid "Opening web page"
 msgstr "Otvorenie webovej stránky"
 
-#: ../ailurus/lib.py:1453
+#: ../ailurus/lib.py:1468
 msgid "Please restart Firefox"
 msgstr ""
 
-#: ../ailurus/lib.py:1453
+#: ../ailurus/lib.py:1468
 msgid "Please restart Firefox to complete installation."
 msgstr ""
 
-#: ../ailurus/lib.py:1487
+#: ../ailurus/lib.py:1502
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "Čas odozvy serveru %(name)s je %(time).1f ms."
 
-#: ../ailurus/lib.py:1489
+#: ../ailurus/lib.py:1504
 #, python-format
 msgid "Server %s does not respond."
 msgstr "Server %s neodpovedá."
 
-#: ../ailurus/lib.py:1576
+#: ../ailurus/lib.py:1591
 msgid "Checking file integrity ..."
 msgstr "Kontrola integrity súborov..."
 
-#: ../ailurus/lib.py:1580
+#: ../ailurus/lib.py:1595
 msgid "Good."
 msgstr "Dobre."
 
-#: ../ailurus/lib.py:1587
+#: ../ailurus/lib.py:1602
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr ""
 "Používá sa zrkadlo %(i)s. K dispozícii je celkovo %(total)s zrkadiel."
 
-#: ../ailurus/lib.py:1843
+#: ../ailurus/lib.py:1858
 msgid "GNU General Public License"
 msgstr "GNU General Public License"
 
-#: ../ailurus/lib.py:1844
+#: ../ailurus/lib.py:1859
 msgid "GNU Lesser General Public License"
 msgstr "GNU Lesser General Public License"
 
-#: ../ailurus/lib.py:1845
+#: ../ailurus/lib.py:1860
 msgid "Eclipse Public License"
 msgstr "Eclipse Public License"
 
-#: ../ailurus/lib.py:1846
+#: ../ailurus/lib.py:1861
 msgid "Mozilla Public License"
 msgstr "Mozilla Public License"
 
-#: ../ailurus/lib.py:1847
+#: ../ailurus/lib.py:1862
 msgid "Berkeley Software Distribution License"
 msgstr "Berkeley Software Distribution License"
 
-#: ../ailurus/lib.py:1848
+#: ../ailurus/lib.py:1863
 msgid "MIT License"
 msgstr "MIT License"
 
-#: ../ailurus/lib.py:1849
+#: ../ailurus/lib.py:1864
 msgid "Common Development and Distribution License"
 msgstr "Spoločná Vývojárska a distribučná licencia"
 
-#: ../ailurus/lib.py:1850
+#: ../ailurus/lib.py:1865
 msgid "Aptana Public License"
 msgstr "Verejná licencia Aptana"
 
-#: ../ailurus/lib.py:1851
+#: ../ailurus/lib.py:1866
 msgid "Artistic License"
 msgstr "Licencia Artistic"
 
-#: ../ailurus/lib.py:1892
+#: ../ailurus/lib.py:1907
 msgid "Your Linux distribution is not supported. :("
 msgstr "Vaša Linuxová dsitribúcia nie je podorovaná."
 
@@ -3797,8 +3811,19 @@ msgstr "Chcete ukončiť?"
 msgid "Do not query me any more."
 msgstr "Nepýtať sa znova."
 
-#. "True" means "silent"
-#: ../ailurus/main.py:519 ../ailurus/main.py:530
+#: ../ailurus/main.py:528
+msgid "Do you agree?"
+msgstr ""
+
+#: ../ailurus/main.py:529
+msgid "I agree. Do not ask me again."
+msgstr ""
+
+#: ../ailurus/main.py:534
+msgid "Warning"
+msgstr ""
+
+#: ../ailurus/main.py:546 ../ailurus/main.py:557
 msgid "start up"
 msgstr ""
 
@@ -3965,7 +3990,7 @@ msgstr ""
 msgid "Popular source code parsers"
 msgstr ""
 
-#: ../ailurus/strings.py:79 ../ailurus/strings.py:273
+#: ../ailurus/strings.py:79 ../ailurus/strings.py:285
 msgid "Lightweight bittorrent client"
 msgstr ""
 
@@ -4023,352 +4048,371 @@ msgid "Multifunctional graphic calculator"
 msgstr ""
 
 #: ../ailurus/strings.py:103
-msgid "Popular Chinese input method"
+msgid ""
+"A download manager supporting RapidShare.com, YouTube and remote control"
 msgstr ""
 
 #: ../ailurus/strings.py:105
-msgid "Popular FTP client"
+msgid "Popular Chinese input method"
 msgstr ""
 
 #: ../ailurus/strings.py:107
+msgid "Popular FTP client"
+msgstr ""
+
+#: ../ailurus/strings.py:109
 msgid ""
 "Configure software for \"iptables\" firewall. \"iptables\" is the filewall "
 "which Linux system comes up with."
 msgstr ""
 
-#: ../ailurus/strings.py:109
+#: ../ailurus/strings.py:111
 msgid "Open source clone of DOOM"
 msgstr ""
 
-#: ../ailurus/strings.py:110
+#: ../ailurus/strings.py:112
 msgid "OpenGL library"
 msgstr "OpenGL knižnica"
 
-#: ../ailurus/strings.py:111
+#: ../ailurus/strings.py:113
 msgid "This is a library for writing OpenGL programs."
 msgstr "Toto je knižnica pre písanie OpenGL aplikácií."
 
-#: ../ailurus/strings.py:112
+#: ../ailurus/strings.py:114
 msgid "Frozen Bubble"
 msgstr ""
 
-#: ../ailurus/strings.py:113
+#: ../ailurus/strings.py:115
 msgid "Open source clone of the popular \"Puzzle Bobble\" game"
 msgstr ""
 
-#: ../ailurus/strings.py:115
+#: ../ailurus/strings.py:117
 msgid "Educational games for children aged 2 to 10"
 msgstr ""
 
-#: ../ailurus/strings.py:117
+#: ../ailurus/strings.py:119
 msgid "Manage your collections such as movies, books, music"
 msgstr ""
 
-#: ../ailurus/strings.py:119
+#: ../ailurus/strings.py:121
 msgid "Open source substitution for Photoshop"
 msgstr ""
 
-#: ../ailurus/strings.py:121
+#: ../ailurus/strings.py:123
 msgid "Visually graphical user interface designer"
 msgstr ""
 
-#: ../ailurus/strings.py:123
+#: ../ailurus/strings.py:125
 msgid "GNU high precision arithmetic library"
 msgstr ""
 
-#: ../ailurus/strings.py:124
+#: ../ailurus/strings.py:126
 msgid "GNOME Colors"
 msgstr ""
 
-#: ../ailurus/strings.py:125
+#: ../ailurus/strings.py:127
 msgid "A set of icons with 7 color variations"
 msgstr ""
 
-#: ../ailurus/strings.py:126
+#: ../ailurus/strings.py:128
 msgid "GNOME Do"
 msgstr ""
 
-#: ../ailurus/strings.py:127
+#: ../ailurus/strings.py:129
 msgid "Desktop launcher which helps you quickly perform actions"
 msgstr ""
 
-#: ../ailurus/strings.py:128
+#: ../ailurus/strings.py:130
 msgid "GNOME shell"
 msgstr ""
 
-#: ../ailurus/strings.py:129
+#: ../ailurus/strings.py:131
 msgid "Experience GNOME 3 desktop"
 msgstr ""
 
-#: ../ailurus/strings.py:130
+#: ../ailurus/strings.py:132
 msgid "GNOME MPlayer"
 msgstr ""
 
-#: ../ailurus/strings.py:131
+#: ../ailurus/strings.py:133
 msgid "GTK frontend for MPlayer"
 msgstr ""
 
-#: ../ailurus/strings.py:133
+#: ../ailurus/strings.py:135
 msgid "Lightweight text editor"
 msgstr ""
 
-#: ../ailurus/strings.py:135
+#: ../ailurus/strings.py:137
 msgid "Hex editor"
 msgstr ""
 
-#: ../ailurus/strings.py:137
+#: ../ailurus/strings.py:139
 msgid ""
 "Automatically discover other people running Giver on the network, then send "
 "files to other people"
 msgstr ""
 
-#: ../ailurus/strings.py:139
+#: ../ailurus/strings.py:141
 msgid "Real time strategy game, just like Warcraft"
 msgstr ""
 
-#: ../ailurus/strings.py:140
+#: ../ailurus/strings.py:142
 msgid "Globulation 2"
 msgstr ""
 
-#: ../ailurus/strings.py:141
+#: ../ailurus/strings.py:143
 msgid ""
 "Real time strategy game which focuses on strategy rather than on micro-"
 "management"
 msgstr ""
 
-#: ../ailurus/strings.py:143
+#: ../ailurus/strings.py:145
 msgid "SWF movie player for web browser"
 msgstr ""
 
-#: ../ailurus/strings.py:145
+#: ../ailurus/strings.py:147
 msgid "Mono-free alternative to Tomboy Notes"
 msgstr ""
 
-#: ../ailurus/strings.py:146
+#: ../ailurus/strings.py:148
 msgid "Google gadgets (GTK version)"
 msgstr ""
 
-#: ../ailurus/strings.py:147 ../ailurus/strings.py:149
+#: ../ailurus/strings.py:149 ../ailurus/strings.py:151
 msgid "Eye candy widgets most of which are developed by Google's users"
 msgstr ""
 
-#: ../ailurus/strings.py:148
+#: ../ailurus/strings.py:150
 msgid "Google gadgets (QT version)"
 msgstr ""
 
-#: ../ailurus/strings.py:151
+#: ../ailurus/strings.py:153
 msgid "Microblogging client which supports Twitter and Facebook"
 msgstr ""
 
-#: ../ailurus/strings.py:153
+#: ../ailurus/strings.py:155
 msgid "A small application which displays detailed hardware information"
 msgstr ""
 
-#: ../ailurus/strings.py:155
+#: ../ailurus/strings.py:157
 msgid "Hedgehogs fight enemies with fantastic weapons"
 msgstr ""
 
-#: ../ailurus/strings.py:157
+#: ../ailurus/strings.py:159
 msgid "Help you edit images. You can launch it by /usr/bin/display"
 msgstr ""
 
-#: ../ailurus/strings.py:159
+#: ../ailurus/strings.py:161
 msgid ""
 "Vector image designer. It is the open source substitution of CorelDraw."
 msgstr ""
 
-#: ../ailurus/strings.py:161
-msgid "Burn DVD/VCD"
-msgstr ""
-
 #: ../ailurus/strings.py:163
-msgid "Popular instant messenger in Poland"
+msgid ""
+"Bibliography reference manager. File format is BibTeX, the standard LaTeX "
+"bibliography format."
 msgstr ""
 
 #: ../ailurus/strings.py:165
+msgid "Burn DVD/VCD"
+msgstr ""
+
+#: ../ailurus/strings.py:167
+msgid "Popular instant messenger in Poland"
+msgstr ""
+
+#: ../ailurus/strings.py:169
 msgid ""
 "Password manager which saves many different information e.g. user names and "
 "passwords in one single database."
 msgstr ""
 
-#: ../ailurus/strings.py:167
+#: ../ailurus/strings.py:171
 msgid "Upload photos to Flickr"
 msgstr ""
 
-#: ../ailurus/strings.py:169
+#: ../ailurus/strings.py:173
 msgid "Lightweight desktop launcher"
 msgstr ""
 
-#: ../ailurus/strings.py:171
+#: ../ailurus/strings.py:175
 msgid "Simple text editor"
 msgstr ""
 
-#: ../ailurus/strings.py:173
+#: ../ailurus/strings.py:177
 msgid "Simple RSS feed reader"
 msgstr ""
 
-#: ../ailurus/strings.py:175
+#: ../ailurus/strings.py:179
 msgid "Connect to a central hub then share files and chat with other people."
 msgstr ""
 
-#: ../ailurus/strings.py:177
+#: ../ailurus/strings.py:181
 msgid "Change the MAC address of network interfaces"
 msgstr ""
 
-#: ../ailurus/strings.py:179
+#: ../ailurus/strings.py:183
+msgid ""
+"Maxima is a system for the manipulation of symbolic and numerical "
+"expressions, including differentiation, integration, Taylor series, Laplace "
+"transforms, ordinary differential equations, systems of linear equations, "
+"polynomials, and sets, lists, vectors, matrices, and tensors."
+msgstr ""
+
+#: ../ailurus/strings.py:185
 msgid "Lightweight web browser"
 msgstr ""
 
-#: ../ailurus/strings.py:180
+#: ../ailurus/strings.py:186
 msgid "Minicom and Kermit"
 msgstr ""
 
-#: ../ailurus/strings.py:181
+#: ../ailurus/strings.py:187
 msgid "Communication software for embedded MCU boards"
 msgstr ""
 
-#: ../ailurus/strings.py:183
+#: ../ailurus/strings.py:189
 msgid ""
 "This is a simple YouTube client. You enter a keyword, then the software will "
 "retrieve all relative URLs from YouTube and play them one after the other."
 msgstr ""
 
-#: ../ailurus/strings.py:185
+#: ../ailurus/strings.py:191
 msgid "Internet TV video player"
 msgstr ""
 
-#: ../ailurus/strings.py:187
+#: ../ailurus/strings.py:193
 msgid ""
 "Open source implementation of Microsoft Silverlight. It provides Windows "
 "media codecs. You can enjoy Windows video in webpages."
 msgstr ""
 
-#: ../ailurus/strings.py:188
+#: ../ailurus/strings.py:194
 msgid "gstreamer multi-media codec"
 msgstr ""
 
-#: ../ailurus/strings.py:189
+#: ../ailurus/strings.py:195
 msgid ""
 "Libraries supporting video playback, audio mixing and non-linear video "
 "editing"
 msgstr ""
 
-#: ../ailurus/strings.py:190
+#: ../ailurus/strings.py:196
 msgid "\"Actions configuration\" entry"
 msgstr "Položka \"nastavenie akcií\""
 
-#: ../ailurus/strings.py:191
+#: ../ailurus/strings.py:197
 msgid ""
 "Configure which software to be launched on selected files. This entry is in "
 "\"System\"->\"Preferences\" menu."
 msgstr ""
 
-#: ../ailurus/strings.py:192
+#: ../ailurus/strings.py:198
 msgid "\"Convert audio files\" entry"
 msgstr "vstup \"Konvertovať zvukové súbory\""
 
-#: ../ailurus/strings.py:193
+#: ../ailurus/strings.py:199
 msgid "Converts between WAV, OGG, MP3, MPC, FLAC, APE and AAC files."
 msgstr ""
 
-#: ../ailurus/strings.py:194
+#: ../ailurus/strings.py:200
 msgid "\"Repair filename\" entry"
 msgstr "vstup \"Opraviť názov súboru\""
 
-#: ../ailurus/strings.py:195
+#: ../ailurus/strings.py:201
 msgid ""
 "When any file with wrong encoding filename is right clicked, show a \"Repair "
 "filename\" menu item."
 msgstr ""
 
-#: ../ailurus/strings.py:196
+#: ../ailurus/strings.py:202
 msgid "\"Open as administrator\" entry"
 msgstr "vstup \"Otvoriť ako administrátor\""
 
-#: ../ailurus/strings.py:197
+#: ../ailurus/strings.py:203
 msgid ""
 "Launch selected files or open selected folder with administration privileges."
 msgstr ""
 
-#: ../ailurus/strings.py:198
+#: ../ailurus/strings.py:204
 msgid "\"Resize/Rotate images\" entries"
 msgstr "vstup \"Zmeniť veľkosť/Otočiť obrázok\""
 
-#: ../ailurus/strings.py:199
+#: ../ailurus/strings.py:205
 msgid "Resize or rotate selected images."
 msgstr "Zmeniť veľkosť alebo otočiť vybraný obrázok."
 
-#: ../ailurus/strings.py:200
+#: ../ailurus/strings.py:206
 msgid "\"Open in terminal\" entry"
 msgstr "vstup \"Otvoriť v termináli \""
 
-#: ../ailurus/strings.py:201
+#: ../ailurus/strings.py:207
 msgid "Open a terminal in current folder."
 msgstr "Otvoriť terminál v aktuálnom priečinku."
 
-#: ../ailurus/strings.py:202
+#: ../ailurus/strings.py:208
 msgid "\"Subversion commands\" entries"
 msgstr "položky \"príkazy Subverzie\""
 
-#: ../ailurus/strings.py:203
+#: ../ailurus/strings.py:209
 msgid "A lot of subversion management command"
 msgstr ""
 
-#: ../ailurus/strings.py:204
+#: ../ailurus/strings.py:210
 msgid "\"Share folders\" entry"
 msgstr "vstup \"zdieľané priečinky\""
 
-#: ../ailurus/strings.py:205
+#: ../ailurus/strings.py:211
 msgid "Share folders using Samba"
 msgstr ""
 
-#: ../ailurus/strings.py:206
+#: ../ailurus/strings.py:212
 msgid "\"Set as wallpaper\" entry"
 msgstr "vstup \"Nastaviť ako pozadie plochy\""
 
-#: ../ailurus/strings.py:207
+#: ../ailurus/strings.py:213
 msgid "Set an image as wallpaper using context menu"
 msgstr ""
 
-#: ../ailurus/strings.py:208
+#: ../ailurus/strings.py:214
 msgid "Ncurses5 and QT3"
 msgstr "Ncurses5 a QT3"
 
-#: ../ailurus/strings.py:209
+#: ../ailurus/strings.py:215
 msgid "Necessary libraries for compiling Linux kernel"
 msgstr ""
 
-#: ../ailurus/strings.py:211
+#: ../ailurus/strings.py:217
 msgid ""
 "An open source IDE which supports several languages (C, C++, Java, Ruby, "
 "etc.) and frameworks (J2SE, J2ME, etc.)"
 msgstr ""
 
-#: ../ailurus/strings.py:213
+#: ../ailurus/strings.py:219
 msgid "3D first-person shooter game"
 msgstr ""
 
-#: ../ailurus/strings.py:215
+#: ../ailurus/strings.py:221
 msgid "Matlab compatible numerical computation appliation"
 msgstr ""
 
-#: ../ailurus/strings.py:216
+#: ../ailurus/strings.py:222
 msgid "OpenJDK 6"
 msgstr ""
 
-#: ../ailurus/strings.py:217
+#: ../ailurus/strings.py:223
 msgid "Open source implementation of Java"
 msgstr ""
 
-#: ../ailurus/strings.py:219
+#: ../ailurus/strings.py:225
 msgid "Popular non-linear video editor"
 msgstr ""
 
-#: ../ailurus/strings.py:220
+#: ../ailurus/strings.py:226
 msgid "POSIX library manual pages"
 msgstr "manuálové stránky POSIX knižnice"
 
-#: ../ailurus/strings.py:221
+#: ../ailurus/strings.py:227
 msgid ""
 "Install manual pages about Linux system calls, library calls, and POSIX "
 "libraries."
@@ -4376,80 +4420,88 @@ msgstr ""
 "Nainštalujte manuálové stránky o systémových volaniach Linuxu, knižnice "
 "volaní, a POSIX knižniciach."
 
-#: ../ailurus/strings.py:223
+#: ../ailurus/strings.py:229
 msgid ""
 "This is a powerful clipboard manager. It can preserve 25 strings "
 "concurrently."
 msgstr "To je silný manažér schránky. Umožňuje zachovať 25 reťazcov súčasne."
 
-#: ../ailurus/strings.py:225
+#: ../ailurus/strings.py:231
 msgid ""
 "Movie editor designed for both the newcomer and the professional users"
 msgstr ""
 
-#: ../ailurus/strings.py:227
+#: ../ailurus/strings.py:233
 msgid ""
 "A chat program which lets you log in multiple chat networks simultaneously. "
 "It supports many chat networks."
 msgstr ""
 
-#: ../ailurus/strings.py:229
+#: ../ailurus/strings.py:235
 msgid "Twitter and Identi.ca client"
 msgstr ""
 
-#: ../ailurus/strings.py:231
+#: ../ailurus/strings.py:237
 msgid "Help you save power for your laptop."
 msgstr ""
 
-#: ../ailurus/strings.py:233
+#: ../ailurus/strings.py:239
+msgid "Lightweight, featureful open source equivalent to utorrent"
+msgstr ""
+
+#: ../ailurus/strings.py:241
 msgid "Open source substitution of AutoCAD"
 msgstr ""
 
-#: ../ailurus/strings.py:234
+#: ../ailurus/strings.py:242
 msgid "Qt Creator"
 msgstr ""
 
-#: ../ailurus/strings.py:235
+#: ../ailurus/strings.py:243
 msgid "Lightweight Qt IDE"
 msgstr ""
 
-#: ../ailurus/strings.py:237
+#: ../ailurus/strings.py:245
 msgid "Help you find and download Poland subtitles for given video file"
 msgstr ""
 
-#: ../ailurus/strings.py:239
+#: ../ailurus/strings.py:247
 msgid ""
 "Open source substitution of Origin. It is the indispensable plotting "
 "application for writing Physics experiments reports."
 msgstr ""
 
-#: ../ailurus/strings.py:241
+#: ../ailurus/strings.py:249
 msgid "Lightweight messaging program"
 msgstr ""
 
-#: ../ailurus/strings.py:242
+#: ../ailurus/strings.py:250
 msgid "R language"
 msgstr ""
 
-#: ../ailurus/strings.py:243
+#: ../ailurus/strings.py:251
 msgid "A powerful statistical computation language and a graphics system."
 msgstr ""
 
-#: ../ailurus/strings.py:244
+#: ../ailurus/strings.py:253
+msgid "A graphic user interface to the R programming language"
+msgstr ""
+
+#: ../ailurus/strings.py:254
 msgid "SDL library"
 msgstr "SDL knižnica"
 
-#: ../ailurus/strings.py:245
+#: ../ailurus/strings.py:255
 msgid ""
 "A cross-platform multimedia library designed to provide low level access to "
 "hardware."
 msgstr ""
 
-#: ../ailurus/strings.py:247
+#: ../ailurus/strings.py:257
 msgid "Qt frontend for MPlayer"
 msgstr ""
 
-#: ../ailurus/strings.py:249
+#: ../ailurus/strings.py:259
 msgid ""
 "A lot of software for molecular biology, structural biology and "
 "bioinformatics."
@@ -4457,152 +4509,158 @@ msgstr ""
 "Množstvo softvéru pre molekulárnu biológiu, štrukturálnu biológiu a "
 "bioinformatiku."
 
-#: ../ailurus/strings.py:251
+#: ../ailurus/strings.py:261
+msgid ""
+"An open source alternatives to MATLAB. MATLAB code can be converted to "
+"Scilab."
+msgstr ""
+
+#: ../ailurus/strings.py:263
 msgid ""
 "Add eye candy gadgets on desktop, such as sticky notes, clocks, weather "
 "forecasts and so on."
 msgstr ""
 
-#: ../ailurus/strings.py:253
+#: ../ailurus/strings.py:265
 msgid "Professional typesetting software"
 msgstr ""
 
-#: ../ailurus/strings.py:254
+#: ../ailurus/strings.py:266
 msgid "Shiki Colors"
 msgstr ""
 
-#: ../ailurus/strings.py:255
+#: ../ailurus/strings.py:267
 msgid "Hybrid theme which is designed to be fast and stable"
 msgstr ""
 
-#: ../ailurus/strings.py:257
+#: ../ailurus/strings.py:269
 msgid ""
 "A screenshot program. You can take a screenshot of a specific area, window, "
 "whole screen, then apply different effects to it."
 msgstr ""
 
-#: ../ailurus/strings.py:259
+#: ../ailurus/strings.py:271
 msgid "Lightweight music player"
 msgstr ""
 
-#: ../ailurus/strings.py:261
+#: ../ailurus/strings.py:273
 msgid "Popular dictionary software"
 msgstr ""
 
-#: ../ailurus/strings.py:262
+#: ../ailurus/strings.py:274
 msgid "Startup Manager"
 msgstr "Manžér programov po spustení"
 
-#: ../ailurus/strings.py:263
+#: ../ailurus/strings.py:275
 msgid "Change GRUB settings and themes"
 msgstr ""
 
-#: ../ailurus/strings.py:264
+#: ../ailurus/strings.py:276
 msgid "Subversion, Git and Bzr"
 msgstr ""
 
-#: ../ailurus/strings.py:265
+#: ../ailurus/strings.py:277
 msgid "Popular version control systems"
 msgstr ""
 
-#: ../ailurus/strings.py:267
+#: ../ailurus/strings.py:279
 msgid ""
 "A popular digital typographical system which can typeset complex "
 "mathematical formulae"
 msgstr ""
 
-#: ../ailurus/strings.py:268
+#: ../ailurus/strings.py:280
 msgid "The Mana World"
 msgstr ""
 
-#: ../ailurus/strings.py:269
+#: ../ailurus/strings.py:281
 msgid "2D MMORPG"
 msgstr ""
 
-#: ../ailurus/strings.py:271
+#: ../ailurus/strings.py:283
 msgid "Email client and RSS reader"
 msgstr ""
 
-#: ../ailurus/strings.py:274
+#: ../ailurus/strings.py:286
 msgid "Tux Paint"
 msgstr "Kreslenie s Tuxom"
 
-#: ../ailurus/strings.py:275
+#: ../ailurus/strings.py:287
 msgid "Drawing software for young children three years and up"
 msgstr ""
 
-#: ../ailurus/strings.py:277
+#: ../ailurus/strings.py:289
 msgid "Type words which are flying from left to right as fast as you can"
 msgstr ""
 
-#: ../ailurus/strings.py:278
+#: ../ailurus/strings.py:290
 msgid "Ubuntu Studio Theme"
 msgstr "Téma vzhľadu Ubuntu Studio"
 
-#: ../ailurus/strings.py:279
+#: ../ailurus/strings.py:291
 msgid ""
 "A theme of Ubuntu which is aimed at audio, video and graphic enthusiast"
 msgstr ""
 
-#: ../ailurus/strings.py:281
+#: ../ailurus/strings.py:293
 msgid ""
 "Creates bootable USB flash disk, install Linux on USB flash disk, and create "
 "your custom Linux edition."
 msgstr ""
 
-#: ../ailurus/strings.py:283
+#: ../ailurus/strings.py:295
 msgid "UML modelling software"
 msgstr ""
 
-#: ../ailurus/strings.py:285
+#: ../ailurus/strings.py:297
 msgid "Enhanced text editor"
 msgstr ""
 
-#: ../ailurus/strings.py:287
+#: ../ailurus/strings.py:299
 msgid "Media player and media format converter"
 msgstr ""
 
-#: ../ailurus/strings.py:288
+#: ../ailurus/strings.py:300
 msgid "VirtualBox open source edition"
 msgstr "VirtualBox edícia s otvoreným zdrojom"
 
-#: ../ailurus/strings.py:289
+#: ../ailurus/strings.py:301
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL."
 msgstr ""
 
-#: ../ailurus/strings.py:291
+#: ../ailurus/strings.py:303
 msgid "Help you download files via bittorrent network and search videos"
 msgstr ""
 
-#: ../ailurus/strings.py:293
+#: ../ailurus/strings.py:305
 msgid ""
 "This is an indispensable application for running Windows applications on "
 "Linux."
 msgstr "To je aplikácia potrebná pre spustenie Windows aplikácií na Linuxe."
 
-#: ../ailurus/strings.py:295
+#: ../ailurus/strings.py:307
 msgid "3D first-person shooter game, just like DOOM"
 msgstr ""
 
-#: ../ailurus/strings.py:296
+#: ../ailurus/strings.py:308
 msgid "Warzone 2100"
 msgstr ""
 
-#: ../ailurus/strings.py:297
+#: ../ailurus/strings.py:309
 msgid "Real time strategy game"
 msgstr ""
 
-#: ../ailurus/strings.py:298
+#: ../ailurus/strings.py:310
 msgid "Battle for Wesnoth"
 msgstr ""
 
-#: ../ailurus/strings.py:299
+#: ../ailurus/strings.py:311
 msgid "A popular turn-based game"
 msgstr ""
 
-#: ../ailurus/strings.py:301
+#: ../ailurus/strings.py:313
 msgid ""
 "The program frequently alerts you to leave computers, take micro-pauses, "
 "rest breaks and restricts you to your daily limit of using computers."
@@ -4610,33 +4668,33 @@ msgstr ""
 "Program vyzývajúci k opusteniu počítača, malej prestávke, odpočinku a "
 "obmedzuje váš denný limit práce s počítačom."
 
-#: ../ailurus/strings.py:302 ../ailurus/ubuntu/apps.py:32
+#: ../ailurus/strings.py:314 ../ailurus/ubuntu/apps.py:32
 msgid "World of Padman: Funny shooter game"
 msgstr "World of Padman: zábavná strieľačka"
 
-#: ../ailurus/strings.py:303
+#: ../ailurus/strings.py:315
 msgid "Funny shooter game"
 msgstr ""
 
-#: ../ailurus/strings.py:305
+#: ../ailurus/strings.py:317
 msgid "Funny fight game on 2D maps"
 msgstr ""
 
-#: ../ailurus/strings.py:306
+#: ../ailurus/strings.py:318
 msgid "Youtube-dl: Download videos from Youtube"
 msgstr ""
 
-#: ../ailurus/strings.py:307
+#: ../ailurus/strings.py:319
 msgid "Run command in terminal:"
 msgstr ""
 
-#: ../ailurus/strings.py:309
+#: ../ailurus/strings.py:321
 msgid ""
 "Help you display Chinese characters in TTY terminal. You can launch it by "
 "\"zhcon --utf8\"."
 msgstr ""
 
-#: ../ailurus/strings.py:311
+#: ../ailurus/strings.py:323
 msgid "Notebook software which helps you create a wiki to your desktop"
 msgstr ""
 
@@ -4674,7 +4732,7 @@ msgstr ""
 msgid "Developers:"
 msgstr "Vývojári:"
 
-#: ../ailurus/support/checkupdate.py:125
+#: ../ailurus/support/checkupdate.py:124
 msgid "Contributors:"
 msgstr "Prispievatelia:"
 
@@ -4729,30 +4787,34 @@ msgid "The people who maintain PPA repository:"
 msgstr "Ľudia, ktorí udržujú PPA zdroje:"
 
 #: ../ailurus/support/checkupdate.py:198
-msgid "The people who maintain ArchLinux package:"
+msgid "The people who maintain Fedora package:"
 msgstr ""
 
 #: ../ailurus/support/checkupdate.py:201
+msgid "The people who maintain ArchLinux package:"
+msgstr ""
+
+#: ../ailurus/support/checkupdate.py:204
 msgid "The people who provide a lot of Linux skills:"
 msgstr "Ľudia, ktorí poskytujú veľa Linuxových zručností:"
 
-#: ../ailurus/support/checkupdate.py:204
+#: ../ailurus/support/checkupdate.py:207
 msgid "The people who help translate Ailurus"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:206
+#: ../ailurus/support/checkupdate.py:209
 msgid "The people who report bugs"
 msgstr ""
 
-#: ../ailurus/support/checkupdate.py:208
+#: ../ailurus/support/checkupdate.py:211
 msgid "and the people not mensioned here."
 msgstr "a ľudia tu neuvedený."
 
-#: ../ailurus/support/checkupdate.py:219
+#: ../ailurus/support/checkupdate.py:222
 msgid "Thanks"
 msgstr "Ďakujeme"
 
-#: ../ailurus/support/checkupdate.py:278
+#: ../ailurus/support/checkupdate.py:281
 msgid "Ailurus changelog"
 msgstr "Ailurus zápis o zmenách"
 
@@ -4828,7 +4890,8 @@ msgstr "Hľadanie"
 msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr "Stlačením \"Ctrl+C\" ukončíte inštalačný proces Ailurus."
 
-#: ../ailurus/support/term.py:38
+#. please do not launch me as a thread
+#: ../ailurus/support/term.py:38 ../ailurus/support/term.py:52
 msgid "Ailurus terminal"
 msgstr ""
 
@@ -4996,28 +5059,42 @@ msgstr "Moovida: Prehrávač médií"
 msgid "OSD-Lyrics: Display lyrics"
 msgstr "OSD-Lyrics: zobrazenie textu piesní"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:174
+#: ../ailurus/ubuntu/app_from_external_repos.py:165
+msgid "PlayOnLinux: A graphical front-end for wine"
+msgstr "PlayOnLinux: A grafická nadstavba pre wine"
+
+#: ../ailurus/ubuntu/app_from_external_repos.py:172
 msgid "RSSOwl: RSS feed reader"
 msgstr "RSSOwl: RSS čítačka"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:181
+#: ../ailurus/ubuntu/app_from_external_repos.py:179
 msgid "RedNoteBook: A desktop diary application"
 msgstr "RedNoteBook: Desktopová aplikácia denníka"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:190
+#: ../ailurus/ubuntu/app_from_external_repos.py:188
 msgid "XBMC: Home entertainment system"
 msgstr "XBMC: Systém domácej zábavy"
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:197
+#: ../ailurus/ubuntu/app_from_external_repos.py:195
 msgid "Elementary: Beautiful theme which looks like Mac OS X"
 msgstr ""
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:204
+#: ../ailurus/ubuntu/app_from_external_repos.py:202
 msgid "Simple GNOME dock"
 msgstr ""
 
-#: ../ailurus/ubuntu/app_from_external_repos.py:211
+#: ../ailurus/ubuntu/app_from_external_repos.py:209
 msgid "A dock, a taskbar, and many applets"
+msgstr ""
+
+#: ../ailurus/ubuntu/app_from_external_repos.py:225
+msgid ""
+"Till now the only music player that can correctly play files from .cue sheets"
+msgstr ""
+
+#: ../ailurus/ubuntu/app_from_external_repos.py:232
+msgid ""
+"Protect your privacy. Block internet traffic based on IP address ranges."
 msgstr ""
 
 #: ../ailurus/ubuntu/apps_eclipse.py:118
@@ -5061,22 +5138,22 @@ msgstr ""
 "stiahnutiu z http://art.gnome.org. Oficiálna stránka GNOMEArtNG je "
 "http://developer.berlios.de/projects/gnomeartng/"
 
-#: ../ailurus/ubuntu/apps.py:106 ../ailurus/ubuntu/apps.py:144
+#: ../ailurus/ubuntu/apps.py:106 ../ailurus/ubuntu/apps.py:147
 msgid ""
 "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr ""
 "Deaktivovať Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 je stále aktívny"
 
-#: ../ailurus/ubuntu/apps.py:107 ../ailurus/ubuntu/apps.py:145
+#: ../ailurus/ubuntu/apps.py:107 ../ailurus/ubuntu/apps.py:148
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr "Urýchliť proces spustenia Linuxu. Uvoľní 2,5 MB pamäte. "
 
 #. OpenJUMP is not in Fedora :(
-#: ../ailurus/ubuntu/apps.py:182
+#: ../ailurus/ubuntu/apps.py:186
 msgid "OpenJUMP: A geographic information system"
 msgstr "OpenJUMP: Geografický informačný systém"
 
-#: ../ailurus/ubuntu/apps.py:188
+#: ../ailurus/ubuntu/apps.py:192
 msgid "Remastersys: Backup your system to a live CD"
 msgstr ""
 
@@ -5266,7 +5343,7 @@ msgstr "Vyhľadať najrýchlejší zdroj softvéru"
 msgid "Full language support and input method"
 msgstr "Plná podpora jazyka a vstupná metóda"
 
-#: ../ailurus/ubuntu/quick_setup.py:79 ../unfree/for_fedora.py:269
+#: ../ailurus/ubuntu/quick_setup.py:79 ../unfree/for_fedora.py:270
 msgid "Multi-media codec"
 msgstr "Multimediálne kodeky"
 
@@ -5408,11 +5485,23 @@ msgstr "Nastavenie manažéra Ubuntu aktualizácií"
 msgid "Firefox 3.6 (stable)"
 msgstr "Firefox 3.6 (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:162
+#: ../ailurus/ubuntu/third_party_repos.py:145
+msgid "PlayOnLinux (stable)"
+msgstr "PlayOnLinux (stabilná verzia)"
+
+#: ../ailurus/ubuntu/third_party_repos.py:148
+msgid ""
+"PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
+"softwares on Linux."
+msgstr ""
+"PlayOnLinux je začiatkom pre wine. Pomáha inštalovať hry a softvér pre "
+"Windows v Linuxe."
+
+#: ../ailurus/ubuntu/third_party_repos.py:159
 msgid "WINE (beta version)"
 msgstr "WINE (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:164
+#: ../ailurus/ubuntu/third_party_repos.py:161
 msgid ""
 "This repository contains the latest version of Wine. Wine is for running "
 "Windows applications on Linux."
@@ -5420,15 +5509,15 @@ msgstr ""
 "Tento zdroj softvéru obsahuje poslednú verziu Wine. Wine slúži ku spusteniu "
 "windows aplikácií v Linuxe."
 
-#: ../ailurus/ubuntu/third_party_repos.py:170
+#: ../ailurus/ubuntu/third_party_repos.py:167
 msgid "Ailurus (stable)"
 msgstr "Ailurus (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:176
+#: ../ailurus/ubuntu/third_party_repos.py:173
 msgid "AWN (beta version)"
 msgstr "AWN (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:178
+#: ../ailurus/ubuntu/third_party_repos.py:175
 msgid ""
 "AWN is a MacOS X like panel for GNOME. This repository provides the latest "
 "version of AWN."
@@ -5436,35 +5525,35 @@ msgstr ""
 "AWN je panel ako ho poznáte z MacOS X pre GNOME. Zdroj poskytuje najnovšiu "
 "verziu AWN."
 
-#: ../ailurus/ubuntu/third_party_repos.py:184
+#: ../ailurus/ubuntu/third_party_repos.py:181
 msgid "Blueman (stable)"
 msgstr "Blueman (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:186
+#: ../ailurus/ubuntu/third_party_repos.py:183
 msgid "Blueman is a graphical blue-tooth manager."
 msgstr "Blueman je grafický správca pre blue-tooth."
 
-#: ../ailurus/ubuntu/third_party_repos.py:191
+#: ../ailurus/ubuntu/third_party_repos.py:188
 msgid "Christine (stable)"
 msgstr "Christine (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:193
+#: ../ailurus/ubuntu/third_party_repos.py:190
 msgid "Christine is a small media player."
 msgstr "Christine je malý prehrávač médií."
 
-#: ../ailurus/ubuntu/third_party_repos.py:198
+#: ../ailurus/ubuntu/third_party_repos.py:195
 msgid "Chromium (beta version)"
 msgstr "Chromium (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:200
+#: ../ailurus/ubuntu/third_party_repos.py:197
 msgid "Chromium is the open source version of Google Chrome."
 msgstr "Chromium je verzia Google Chrome s otvoreným kódom."
 
-#: ../ailurus/ubuntu/third_party_repos.py:205
+#: ../ailurus/ubuntu/third_party_repos.py:202
 msgid "Getting things GNOME (stable)"
 msgstr "Getting things GNOME(stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:207
+#: ../ailurus/ubuntu/third_party_repos.py:204
 msgid ""
 "\"Getting things GNOME\" is a simple, powerful and flexible organization "
 "tool."
@@ -5472,28 +5561,28 @@ msgstr ""
 "\"Získanie vecí GNOME\" je jednoduchý, výkonný a flexibilný nástroj pre "
 "usporiadanie."
 
-#: ../ailurus/ubuntu/third_party_repos.py:212
+#: ../ailurus/ubuntu/third_party_repos.py:209
 msgid "GNOME colors (stable)"
 msgstr "GNOME colors (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:214
+#: ../ailurus/ubuntu/third_party_repos.py:211
 msgid "This repository contains some themes."
 msgstr "Zdroj softvéru obsahuje nejaké témy pre vzhľad."
 
-#: ../ailurus/ubuntu/third_party_repos.py:220
+#: ../ailurus/ubuntu/third_party_repos.py:217
 msgid "GNOME Global Menu (stable)"
 msgstr "GNOME Global Menu (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:222
+#: ../ailurus/ubuntu/third_party_repos.py:219
 msgid ""
 "GNOME Global Menu is the globally-shared menu bar of all applications."
 msgstr "GNOME Global Menu je globálne-zdieľané menu všetkých aplikácií."
 
-#: ../ailurus/ubuntu/third_party_repos.py:228
+#: ../ailurus/ubuntu/third_party_repos.py:225
 msgid "Medibuntu (stable)"
 msgstr "Medibuntu (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:230
+#: ../ailurus/ubuntu/third_party_repos.py:227
 msgid ""
 "This is a repository providing packages which cannot be included into the "
 "Ubuntu distribution for legal reasons. There are many packages in this "
@@ -5503,35 +5592,35 @@ msgstr ""
 "distribúcie Ubuntu z právnych dôvodov. Tento zdroj obsahuje množstvo "
 "balíčkov. Zoznam balíčkov je v http://packages.medibuntu.org/"
 
-#: ../ailurus/ubuntu/third_party_repos.py:240
+#: ../ailurus/ubuntu/third_party_repos.py:237
 msgid "Moovida (stable)"
 msgstr "Moovida (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:242
+#: ../ailurus/ubuntu/third_party_repos.py:239
 msgid "Moovida is a cross platform media player."
 msgstr "Moovida je multiplatformový prehrávač multimédií."
 
-#: ../ailurus/ubuntu/third_party_repos.py:247
+#: ../ailurus/ubuntu/third_party_repos.py:244
 msgid "X server updates (stable)"
 msgstr "X server updates (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:249
+#: ../ailurus/ubuntu/third_party_repos.py:246
 msgid "This repository provides latest versions of X.org drivers, libraries."
 msgstr "Tento zdroj poskytuje najnovšie verzie X. org ovládačov a knižníc."
 
-#: ../ailurus/ubuntu/third_party_repos.py:255
+#: ../ailurus/ubuntu/third_party_repos.py:252
 msgid "WebkitGTK (stable)"
 msgstr "WebkitGTK (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:257
+#: ../ailurus/ubuntu/third_party_repos.py:254
 msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
 msgstr "WebkitGTK je port Webkit pre GTK+ platformu."
 
-#: ../ailurus/ubuntu/third_party_repos.py:262
+#: ../ailurus/ubuntu/third_party_repos.py:259
 msgid "XBMC (stable)"
 msgstr "XBMC (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:264
+#: ../ailurus/ubuntu/third_party_repos.py:261
 msgid ""
 "XBMC is an open source software media player and entertainment hub for "
 "digital media."
@@ -5539,50 +5628,50 @@ msgstr ""
 "XBMC je softvér s otvoreným zdrojom prehrávača médií a zábavné centrum pre "
 "digitálne médiá."
 
-#: ../ailurus/ubuntu/third_party_repos.py:269
-#: ../ailurus/ubuntu/third_party_repos.py:277
-#: ../ailurus/ubuntu/third_party_repos.py:285
+#: ../ailurus/ubuntu/third_party_repos.py:266
+#: ../ailurus/ubuntu/third_party_repos.py:274
+#: ../ailurus/ubuntu/third_party_repos.py:282
 msgid "IBus (stable)"
 msgstr "IBus (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:293
+#: ../ailurus/ubuntu/third_party_repos.py:290
 msgid "Partners of Canonical"
 msgstr "Partneri Canonicalu"
 
-#: ../ailurus/ubuntu/third_party_repos.py:294
+#: ../ailurus/ubuntu/third_party_repos.py:291
 msgid "This repository provides many packages from partners of Canonical."
 msgstr ""
 "Tento zdroj softvéru obsahuje množstvo balíčkov od partnerov Canonicalu."
 
-#: ../ailurus/ubuntu/third_party_repos.py:303
+#: ../ailurus/ubuntu/third_party_repos.py:300
 msgid "RSSOwl (stable)"
 msgstr "RSSOwl (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:305
+#: ../ailurus/ubuntu/third_party_repos.py:302
 msgid "RSSOwl is an RSS reader."
 msgstr "RSSOwl je čítačka RSS."
 
-#: ../ailurus/ubuntu/third_party_repos.py:314
+#: ../ailurus/ubuntu/third_party_repos.py:311
 msgid "Gmchess (stable)"
 msgstr "Gmchess (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:317
+#: ../ailurus/ubuntu/third_party_repos.py:314
 msgid "This is a Chinese chess game."
 msgstr "Toto je čínska šachová hra."
 
-#: ../ailurus/ubuntu/third_party_repos.py:322
+#: ../ailurus/ubuntu/third_party_repos.py:319
 msgid "Exaile (beta version)"
 msgstr "Exaile (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:324
+#: ../ailurus/ubuntu/third_party_repos.py:321
 msgid "A music manager and player for GTK+ written in Python."
 msgstr "Manažér hodby a prehrávač pre GTK+ písaný v Python."
 
-#: ../ailurus/ubuntu/third_party_repos.py:329
+#: ../ailurus/ubuntu/third_party_repos.py:326
 msgid "Audacious (beta version)"
 msgstr "Audacious (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:331
+#: ../ailurus/ubuntu/third_party_repos.py:328
 msgid ""
 "An advanced audio player.It focused on audio quality and supporting a wide "
 "range of audio codecs."
@@ -5590,19 +5679,19 @@ msgstr ""
 "Pokročilý Audio prehrávač.Je zameraný na kvalitu zvuku a podporuje širokú "
 "škálu zvukových kodekov."
 
-#: ../ailurus/ubuntu/third_party_repos.py:351
+#: ../ailurus/ubuntu/third_party_repos.py:348
 msgid "RedNoteBook (stable)"
 msgstr "RedNoteBook (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:353
+#: ../ailurus/ubuntu/third_party_repos.py:350
 msgid "This is a desktop diary application."
 msgstr "Jedná sa o aplikáciu kancelársky diár."
 
-#: ../ailurus/ubuntu/third_party_repos.py:362
+#: ../ailurus/ubuntu/third_party_repos.py:359
 msgid "Pidgin (beta version)"
 msgstr "Pidgin (beta verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:364
+#: ../ailurus/ubuntu/third_party_repos.py:361
 msgid ""
 "A free chat client used by millions. Connect easily to MSN, Google Talk, "
 "Yahoo, AIM and other chat networks all at once."
@@ -5610,19 +5699,19 @@ msgstr ""
 "Voľný \"chat\" klient používaný miliónmi. Pripojte sa ľahko k MSN, Google "
 "Talk, Yahoo, AIM a ďalších \"chat\" sieťam naraz."
 
-#: ../ailurus/ubuntu/third_party_repos.py:369
+#: ../ailurus/ubuntu/third_party_repos.py:366
 msgid "OSD-Lyrics (stable)"
 msgstr "OSD-Lyrics (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:371
+#: ../ailurus/ubuntu/third_party_repos.py:368
 msgid "It displays lyrics. It supports many media players."
 msgstr "Zobrazuje texty piesní. Podporuje množstvo prehrávačov."
 
-#: ../ailurus/ubuntu/third_party_repos.py:376
+#: ../ailurus/ubuntu/third_party_repos.py:373
 msgid "Acire (stable)"
 msgstr "Acire (stabilná verzia)"
 
-#: ../ailurus/ubuntu/third_party_repos.py:382
+#: ../ailurus/ubuntu/third_party_repos.py:379
 msgid "Elementary Theme"
 msgstr ""
 
@@ -5798,49 +5887,49 @@ msgstr ""
 "apt-cache show PACKAGE_NAME\n"
 "\n"
 
-#: ../unfree/for_fedora.py:86
+#: ../unfree/for_fedora.py:87
 msgid "This repository provides flash-plugin and Adobe Reader."
 msgstr "Tento zdroj softvéru poskytuje flash-plugin a Adobe Reader."
 
-#: ../unfree/for_fedora.py:130
+#: ../unfree/for_fedora.py:131
 msgid "RPM Fusion (Free)"
 msgstr "RPM fúzia (slobodné)"
 
-#: ../unfree/for_fedora.py:132 ../unfree/for_fedora.py:160
+#: ../unfree/for_fedora.py:133 ../unfree/for_fedora.py:161
 msgid "RPM Fusion provides software that not in the standard repositories."
 msgstr ""
 "RPM fúzia umožňuje prístup ku softvéru, ktorý nie je v štandartných "
 "repozitároch."
 
-#: ../unfree/for_fedora.py:158
+#: ../unfree/for_fedora.py:159
 msgid "RPM Fusion (Non-Free)"
 msgstr "RPM fúzia (neslobodné)"
 
-#: ../unfree/for_fedora.py:188
+#: ../unfree/for_fedora.py:189
 msgid "This repository provides Picasa and Google Desktop."
 msgstr "Tento zdroj softvéru poskytuje Picasa a Google Desktop."
 
-#: ../unfree/for_fedora.py:217
+#: ../unfree/for_fedora.py:218
 msgid "This repository provides Google Chrome."
 msgstr "Tento zdroj softvéru poskytuje  Google Chrome."
 
-#: ../unfree/for_fedora.py:245
+#: ../unfree/for_fedora.py:246
 msgid "This repository provides VirtualBox."
 msgstr ""
 
-#: ../unfree/for_fedora.py:276
+#: ../unfree/for_fedora.py:277
 msgid "Adobe Flash plugin for web browser"
 msgstr ""
 
-#: ../unfree/for_fedora.py:282
+#: ../unfree/for_fedora.py:283
 msgid "Adobe PDF Reader"
 msgstr ""
 
-#: ../unfree/for_fedora.py:323
+#: ../unfree/for_fedora.py:311
 msgid "Google Chrome browser"
 msgstr "Prehliadač Google Chrome"
 
-#: ../unfree/for_fedora.py:325
+#: ../unfree/for_fedora.py:313
 msgid ""
 "This is the web browser from Google. \n"
 "You can change themes by opening web-page "
@@ -5850,24 +5939,24 @@ msgstr ""
 "Môžete zmeniť témy otvorením web-stránky "
 "https://tools.google.com/chrome/intl/pt/themes/index.html v Google Chrome"
 
-#: ../unfree/for_fedora.py:340
+#: ../unfree/for_fedora.py:328
 msgid "You have installed \"google-chrome-unstable\"."
 msgstr ""
 
-#: ../unfree/for_fedora.py:342
+#: ../unfree/for_fedora.py:330
 msgid "You have installed \"google-chrome-beta\"."
 msgstr ""
 
-#: ../unfree/for_fedora.py:345 ../unfree/for_ubuntu.py:219
+#: ../unfree/for_fedora.py:333 ../unfree/for_ubuntu.py:217
 msgid "Google Earth"
 msgstr ""
 
-#: ../unfree/for_fedora.py:346 ../unfree/for_ubuntu.py:220
+#: ../unfree/for_fedora.py:334 ../unfree/for_ubuntu.py:218
 msgid ""
 "Please install it in /opt/google-earth. Otherwise it cannot be detected."
 msgstr ""
 
-#: ../unfree/for_fedora.py:359
+#: ../unfree/for_fedora.py:347
 msgid ""
 "It is the only professional virtual machine which is freely available under "
 "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
@@ -5875,50 +5964,54 @@ msgstr ""
 "Ide o jediný profesionálny virtuálny stroj, ktorý je voľne dostupný za "
 "podmienok GPL. Oficiálna stránka: http://www.virtualbox.org/wiki/Downloads"
 
-#: ../unfree/for_fedora.py:368
+#: ../unfree/for_fedora.py:356
 msgid ""
 "With Skype you can make free calls over the Internet to other people. "
 msgstr ""
 "S programom Skype môžete volať zdarma cez internet k ostatným ľuďom. "
 
-#: ../unfree/for_fedora.py:377
+#: ../unfree/for_fedora.py:365
 msgid "Open source web browser"
 msgstr "Webový prehliadač s otvoreným kódom"
 
-#: ../unfree/for_fedora.py:398 ../unfree/for_ubuntu.py:272
-msgid "ESET NOD32"
-msgstr ""
-
-#: ../unfree/for_fedora.py:399 ../unfree/for_ubuntu.py:273
+#: ../unfree/for_fedora.py:387 ../unfree/for_ubuntu.py:271
 msgid "Anti virus and anti spyware"
 msgstr ""
 
-#: ../unfree/for_ubuntu.py:52
+#: ../unfree/for_fedora.py:413 ../unfree/for_ubuntu.py:310
+msgid "Use HTML, JavaScript and Flash to build desktop applications"
+msgstr ""
+
+#: ../unfree/for_fedora.py:428 ../unfree/for_ubuntu.py:323
+msgid "An image organizer and image viewer, plus photo-sharing function"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:50
 msgid "Alice: A new way to learn programming"
 msgstr "Alice: Nová cesta ako sa naučiť programovať"
 
-#: ../unfree/for_ubuntu.py:53
+#: ../unfree/for_ubuntu.py:51
 msgid ""
 "A storytelling application, especially appropriate for middle school "
 "students."
 msgstr "Aplikácia hovoriaca príbehy, obzvlášť vhodná pre stredné školy."
 
-#: ../unfree/for_ubuntu.py:88
+#: ../unfree/for_ubuntu.py:86
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
 msgstr "Alipay ( Zhi Fu Bao ) bezpečnostné rozšírenie pre Firefox"
 
-#: ../unfree/for_ubuntu.py:125
+#: ../unfree/for_ubuntu.py:123
 msgid ""
 "Drive a spaceship and battle against invaders! Collect money during the "
 "combat. Upgrade armaments and weapons."
 msgstr ""
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:152
+#: ../unfree/for_ubuntu.py:150
 msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
 msgstr "LaTeX šablóny prác Čínskej akadémie vied"
 
-#: ../unfree/for_ubuntu.py:154
+#: ../unfree/for_ubuntu.py:152
 #, python-format
 msgid ""
 "After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
@@ -5926,11 +6019,11 @@ msgstr ""
 "Po inštalácii je súbor \"CASthesis.zip\" umiestnený v priečinku \"%s\"."
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:166
+#: ../unfree/for_ubuntu.py:164
 msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
 msgstr "LaTeX šablóny prác Xi'an Jiaotong University, Čina"
 
-#: ../unfree/for_ubuntu.py:168
+#: ../unfree/for_ubuntu.py:166
 #, python-format
 msgid ""
 "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
@@ -5938,11 +6031,11 @@ msgstr ""
 "Po inštalácii, je súbor  \"XJTUthesis.rar\" umiestnený v priečinku \"%s\"."
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:180
+#: ../unfree/for_ubuntu.py:178
 msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
 msgstr "LaTeX šablóny prác Harbin Institute of Technology, Čína"
 
-#: ../unfree/for_ubuntu.py:182
+#: ../unfree/for_ubuntu.py:180
 #, python-format
 msgid ""
 "After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
@@ -5950,44 +6043,54 @@ msgstr ""
 "Po inštalácii, je súbor  \"HITthesis.rar\" umiestnený v priečinku \"%s\"."
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:191
+#: ../unfree/for_ubuntu.py:189
 msgid "JavaScript Debugger: a powerful JavaScript debugger"
 msgstr "JavaScript Debugger: silný JavaScript pre ladenie chýb"
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:198
+#: ../unfree/for_ubuntu.py:196
 msgid "Mac OS X Theme"
 msgstr "Téma Mac OS X"
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:205
+#: ../unfree/for_ubuntu.py:203
 msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
 msgstr ""
 "NetVideoHunter: Stiahnite si videoklipy z webových stránok umožňujúcich "
 "video-zdieľanie"
 
 #. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:212
+#: ../unfree/for_ubuntu.py:210
 msgid "Personas: One-click changing Firefox skin"
 msgstr "Personas: Zmena vzhľadu Firefoxu jediným kliknutím"
 
-#: ../unfree/for_ubuntu.py:213
+#: ../unfree/for_ubuntu.py:211
 msgid "Theme your browser according to your mood, hobby or season."
 msgstr "Téma pre váš prehliadač podľa nálady, záľub alebo ročného obdobia."
 
-#: ../unfree/for_ubuntu.py:232 ../unfree/for_ubuntu.py:246
+#: ../unfree/for_ubuntu.py:230 ../unfree/for_ubuntu.py:244
 msgid "video card driver"
 msgstr ""
 
-#: ../unfree/for_ubuntu.py:298
+#: ../unfree/for_ubuntu.py:270
+msgid "ESET NOD32"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:296
 msgid "Oracle"
 msgstr ""
 
-#: ../unfree/for_ubuntu.py:300
+#: ../unfree/for_ubuntu.py:298
 msgid ""
 "This repository provides Oracle Database Express Edition.\n"
 "After installing Oracle Database, please add yourself to the \"dba\" group, "
 "then run \"sudo /etc/init.d/oracle-xe configure\"."
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:339
+msgid ""
+"Organizes research paper collection and citations. It automatically "
+"generates bibliographies."
 msgstr ""
 
 #~ msgid ""
@@ -7167,6 +7270,9 @@ msgstr ""
 #~ msgid "Ailurus - Recovery"
 #~ msgstr "Ailurus - Obnova"
 
+#~ msgid "makes Linux easier to use"
+#~ msgstr "robí Linux jednoduchším na použitie"
+
 #~ msgid "Command: sudo apt-get clean"
 #~ msgstr "Príkaz: sudo apt-get clean"
 
@@ -8153,6 +8259,12 @@ msgstr ""
 #~ msgid "The packages \"%s\" are not installed."
 #~ msgstr "Balíček \"%s\" nie je nainštalovaný."
 
+#~ msgid "Installing packages:"
+#~ msgstr "Inštalujú sa balíčky:"
+
+#~ msgid "Removing packages:"
+#~ msgstr "Odstraňujú sa balíčky:"
+
 #~ msgid "Inspecting safely deletable packages. Please wait for a few minutes."
 #~ msgstr ""
 #~ "Kontrola bezpečne vymazateľných balíčkov. Prosím, počkajte na niekoľko minút."
@@ -8548,9 +8660,6 @@ msgstr ""
 #~ msgid "APT recovery"
 #~ msgstr "APT obnova"
 
-#~ msgid "PlayOnLinux (stable)"
-#~ msgstr "PlayOnLinux (stabilná verzia)"
-
 #~ msgid ""
 #~ "This is a suite of educational games for young children.\n"
 #~ "Command: sudo apt-get install childsplay"
@@ -8579,13 +8688,6 @@ msgstr ""
 
 #~ msgid "Eucalyptus cloud computing node"
 #~ msgstr "Eucalyptus cloud computing node"
-
-#~ msgid ""
-#~ "PlayOnLinux is a front-end for wine. It helps to install Windows Games and "
-#~ "softwares on Linux."
-#~ msgstr ""
-#~ "PlayOnLinux je začiatkom pre wine. Pomáha inštalovať hry a softvér pre "
-#~ "Windows v Linuxe."
 
 #~ msgid ""
 #~ "Ubuntustudio-audio-plugins: LADSPA and DSSI audio creation and editing"
@@ -8791,9 +8893,6 @@ msgstr ""
 
 #~ msgid "Vuze: Download via bittorrent; Search videos"
 #~ msgstr "Vuze: Sťahovanie cez bittorrent; Vyhľadať videá"
-
-#~ msgid "PlayOnLinux: A graphical front-end for wine"
-#~ msgstr "PlayOnLinux: A grafická nadstavba pre wine"
 
 #~ msgid "Shutter: A screen-shot application"
 #~ msgstr "Shutter: Aplikácia pre zachytenie snímkov obrazovky"
