@@ -1,6 +1,7 @@
 2010-07-23 Homer Xing <homer.xing@gmail.com>
 
     * Prompt to do synchronization if new icon pack is available.
+    * Add Gajim and PSI, two GTalk clients. Issue 979.
 
 2010-07-23 MA Yue <velly.empire@gmail.com>
 

@@ -887,3 +887,14 @@ ubuntu = fatrat
 category = latex
 ubuntu = jabref
 archlinux = jabref
+
+[Gajim]
+category = chat
+ubuntu = gajim
+fedora = gajim
+archlinux = gajim
+
+[PSI]
+category = chat
+ubuntu = psi
+archlinux = psi
