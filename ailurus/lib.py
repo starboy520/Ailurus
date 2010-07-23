@@ -215,12 +215,12 @@ class Config:
         one_day = 3600 * 24
         return now - last_check_time > one_day * 14
     @classmethod
-    def set_synced(cls): # has synchronized latest application data?
-        cls.set_bool('synced', True)
+    def set_last_synced_data_version(cls, value):
+        cls.set_int('last_synced_data_version', value)
     @classmethod
-    def get_synced(cls):
-        try: return cls.get_bool('synced')
-        except: return False
+    def get_last_synced_data_version(cls):
+        try: return cls.get_int('last_synced_data_version')
+        except: return 0
     @classmethod
     def set_use_proxy(cls, value):
         cls.set_bool('use_proxy', value)

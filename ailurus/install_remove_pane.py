@@ -745,22 +745,23 @@ class InstallRemovePane(gtk.VBox):
         self.status_label.set_text(text)
     
     def notify_sync(self):
-        if not Config.get_synced():
+        from download_icons import icons_pack_version
+        if icons_pack_version > Config.get_last_synced_data_version():
             gtk.gdk.threads_enter()
             dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                        message_format=
                                        _('Would you like to download latest application data from web?'))
             ret = dialog.run()
             dialog.destroy()
-            Config.set_synced()
             if ret == gtk.RESPONSE_YES:
                 self.synchronize()
             gtk.gdk.threads_leave()
 
     def synchronize(self):
+        from download_icons import icons_pack_version
         import subprocess
         task = subprocess.Popen(['python', A+'/download_icons.py'])
-        Config.set_synced()
+        Config.set_last_synced_data_version(icons_pack_version)
         task.wait()
         self.do_refresh_icon()
 
