@@ -78,8 +78,10 @@ class Disable_Sudo(I):
             for i,line in enumerate(contents):
                 if line == string: contents[i] = ''
         
+            run('chmod +w /etc/sudoers')
             with open('/etc/sudoers', 'w') as f:
                 f.writelines(contents)
+            run('chmod -w /etc/sudoers')
     def remove(self):
         pass
 
@@ -102,7 +104,9 @@ class Enable_Sudo(I):
                 content += '\n'
             content += string
             
+            run('chmod +w /etc/sudoers')
             with open('/etc/sudoers', 'w') as f:
                 f.write(content)
+            run('chmod -w /etc/sudoers')
     def remove(self):
         pass
