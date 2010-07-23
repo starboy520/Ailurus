@@ -70,7 +70,16 @@ class Disable_Sudo(I):
     def installed(self):
         return False
     def install(self):
-        run_as_root_in_terminal(D+'../support/disable_sudo.py')
+        with TempOwn('/etc/sudoers'):
+            with open('/etc/sudoers') as f:
+                contents = f.readlines()
+
+            string = '%s ALL=(ALL) ALL\n' % os.environ['USER']
+            for i,line in enumerate(contents):
+                if line == string: contents[i] = ''
+        
+            with open('/etc/sudoers', 'w') as f:
+                f.writelines(contents)
     def remove(self):
         pass
 
@@ -83,6 +92,17 @@ class Enable_Sudo(I):
     def installed(self):
         return False
     def install(self):
-        run_as_root_in_terminal(D+'../support/enable_sudo.py')
+        with TempOwn('/etc/sudoers'):
+            with open('/etc/sudoers') as f:
+                content = f.read()
+
+            string = '%s ALL=(ALL) ALL\n' % os.environ['USER']
+            if string in content: return
+            if not content.endswith('\n'):
+                content += '\n'
+            content += string
+            
+            with open('/etc/sudoers', 'w') as f:
+                f.write(content)
     def remove(self):
         pass

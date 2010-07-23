@@ -73,7 +73,7 @@
     * Stat source code loading time. Display stat data by "others->stat data".
       Therefore developers can do more optimization.
 
-2010-07-9 Homer Xing <homer.xing@gmail.com>
+2010-07-09 Homer Xing <homer.xing@gmail.com>
 
     * Remove excessive icons.
     * Delete unused variables in "with" statements.
