@@ -9,8 +9,9 @@
     * Change sort order of software items. Installed items are at bottom.
     * Support for saving and loading installed software items.
     * Display less indent in "print computer information" dialog.
-    * Change the introduction text of /apps/update-notifier/auto_launch
+    * Improve the introduction text of /apps/update-notifier/auto_launch
     * Support for disabling GNOME login sound
+    * Improve the introduction text of /apps/gdm/simple-greeter/disable_user_list
 
 2010-07-23 Homer Xing <homer.xing@gmail.com>
 

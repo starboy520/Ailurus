@@ -436,7 +436,9 @@ def __gnome_panel_setting():
 
 def __login_window_setting():
     box = gtk.VBox(False, 5)
-    o = GConfCheckButton(_('Do not list username'), '/apps/gdm/simple-greeter/disable_user_list')
+    o = GConfCheckButton(_('Do not list username. You must enter username manually.\n'
+                           'To display a username list might be not secure.'),
+                         '/apps/gdm/simple-greeter/disable_user_list')
     box.pack_start(o, False)
     o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
     box.pack_start(o, False)
