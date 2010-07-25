@@ -52,8 +52,8 @@ class InfoPane(gtk.VBox):
             while child:
                 value1 = self.treestore.get_value(child, 1)
                 value2 = self.treestore.get_value(child, 2)
-                print >>f, '\t', value1
-                print >>f, '\t\t', value2
+                print >>f, '  ', value1
+                print >>f, '    ', value2
                 child = self.treestore.iter_next(child)
                 
             root = self.treestore.iter_next(root)
