@@ -547,7 +547,7 @@ archlinux = wesnoth
 category = mechanics
 fedora = qcad
 license = GPL
-ubuntu = qcad qcad-data
+ubuntu = qcad qcad-data qcad-doc
 archlinux = qcad
 
 [EasyTAG]
