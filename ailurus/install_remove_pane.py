@@ -758,11 +758,9 @@ class InstallRemovePane(gtk.VBox):
             gtk.gdk.threads_leave()
 
     def synchronize(self):
-        from download_icons import icons_pack_version
-        import subprocess
-        task = subprocess.Popen(['python', A+'/download_icons.py'])
-        Config.set_last_synced_data_version(icons_pack_version)
-        task.wait()
+        import download_icons
+        Config.set_last_synced_data_version(download_icons.icons_pack_version)
+        download_icons.main()
         self.do_refresh_icon()
 
     def left_class_choose_button_clicked(self, button):
