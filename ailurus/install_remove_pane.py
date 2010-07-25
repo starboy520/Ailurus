@@ -453,14 +453,14 @@ class InstallRemovePane(gtk.VBox):
         import thread
         thread.start_new_thread(self.__apply_change_thread, () )
     
-    def __right_sort ( self, model, iter1, iter2 ):
-        obj1 = model.get_value ( iter1, 0 )
-        obj2 = model.get_value ( iter2, 0 )
-        import types
-        assert isinstance ( obj1 , types.InstanceType )
-        assert isinstance ( obj2 , types.InstanceType )        
-        str1, str2 = obj1.__doc__, obj2.__doc__
-        return cmp(str1, str2)
+    def __right_sort(self, model, iter1, iter2):
+        obj1 = model.get_value(iter1, 0)
+        obj2 = model.get_value(iter2, 0)
+        cmp_state = cmp(obj1.cache_installed, obj2.cache_installed)
+        if cmp_state:
+            return cmp_state
+        else:
+            return cmp(obj1.__doc__, obj2.__doc__)
 
     def __right_toggled(self, render_toggle,path,treestore,treemodelsort,treestorefilter):
         path1 = treemodelsort.convert_path_to_child_path(path)
