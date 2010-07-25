@@ -527,16 +527,24 @@ class InstallRemovePane(gtk.VBox):
         appobj = model.get_value(iter, 0)
         cell.set_property('pixbuf', appobj.logo_pixbuf)
         
-    def __right_DE_pixbuf_data_func(self, column, cell, model, iter):
-        class0 = model.get_value ( iter, 0 )
-        if hasattr(class0, 'DE'):
-            if class0.DE == 'gnome':
-                cell.set_property('pixbuf', self.DE_GNOME)
-            elif class0.DE == 'kde':
-                cell.set_property('pixbuf', self.DE_KDE)
+#    def __right_DE_pixbuf_data_func(self, column, cell, model, iter):
+#        class0 = model.get_value ( iter, 0 )
+#        if hasattr(class0, 'DE'):
+#            if class0.DE == 'gnome':
+#                cell.set_property('pixbuf', self.DE_GNOME)
+#            elif class0.DE == 'kde':
+#                cell.set_property('pixbuf', self.DE_KDE)
+#        else:
+#            cell.set_property('pixbuf', self.DE_DEFAULT)
+
+    def software_state_pixbuf_data_func(self, column, cell, model, iter):
+        class0 = model.get_value(iter, 0)
+        if class0.cache_installed:
+            pixbuf = self.STATE_INSTALLED
         else:
-            cell.set_property('pixbuf', self.DE_DEFAULT)
-            
+            pixbuf = self.STATE_NOTINSTALLED
+        cell.set_property('pixbuf', pixbuf)
+
     def __launch_quick_setup(self, *w):
         self.parentwindow.lock()
         self.set_sensitive(False)
@@ -596,8 +604,9 @@ class InstallRemovePane(gtk.VBox):
         render_toggle = gtk.CellRendererToggle()
         render_toggle.connect('toggled',self.__right_toggled, treestore, treemodelsort, treestorefilter)
         render_pixbuf = gtk.CellRendererPixbuf()
-        render_DE_pixbuf = gtk.CellRendererPixbuf()
-        render_DE_pixbuf.set_property('yalign', 0)
+        render_software_state_pixbuf = gtk.CellRendererPixbuf()
+#        render_DE_pixbuf = gtk.CellRendererPixbuf()
+#        render_DE_pixbuf.set_property('yalign', 0)
         render_text = gtk.CellRendererText()
         render_text.set_property('ellipsize', pango.ELLIPSIZE_END)
 
@@ -608,10 +617,12 @@ class InstallRemovePane(gtk.VBox):
         col_text = gtk.TreeViewColumn()
         col_text.pack_start(render_pixbuf, False)
         col_text.set_cell_data_func(render_pixbuf, self.__right_pixbuf_data_func)
-        col_text.pack_start (render_text, True)
+        col_text.pack_start(render_text, True)
         col_text.set_cell_data_func(render_text, self.__right_text_data_func)
-        col_text.pack_end(render_DE_pixbuf, False)
-        col_text.set_cell_data_func(render_DE_pixbuf, self.__right_DE_pixbuf_data_func)
+        col_text.pack_start(render_software_state_pixbuf, False)
+        col_text.set_cell_data_func(render_software_state_pixbuf, self.software_state_pixbuf_data_func)
+#        col_text.pack_end(render_DE_pixbuf, False)
+#        col_text.set_cell_data_func(render_DE_pixbuf, self.__right_DE_pixbuf_data_func)
         col_text.set_sort_column_id(1000)
 
         self.right_treeview = treeview = gtk.TreeView(treemodelsort)
@@ -716,9 +727,11 @@ class InstallRemovePane(gtk.VBox):
         self.parentwindow = parentwindow
         from support.terminal import Terminal
         self.terminal = Terminal()
-        self.DE_KDE = get_pixbuf(D + 'umut_icons/kde.png', 16, 16)
-        self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 16, 16)
-        self.DE_DEFAULT = blank_pixbuf(16, 16)
+#        self.DE_KDE = get_pixbuf(D + 'umut_icons/kde.png', 16, 16)
+#        self.DE_GNOME = get_pixbuf(D + 'umut_icons/gnome.png', 16, 16)
+#        self.DE_DEFAULT = blank_pixbuf(16, 16)
+        self.STATE_INSTALLED = get_pixbuf(D + 'sora_icons/software_installed.png', 24, 24)
+        self.STATE_NOTINSTALLED = get_pixbuf(D + 'sora_icons/software_not_installed.png', 24, 24)
 
         import os, sys
         self.backup_stdout = os.dup(sys.stdout.fileno())
