@@ -264,7 +264,7 @@ class InstallRemovePane(gtk.VBox):
             for obj in failed_install:
                 print >>message, obj.__doc__,
                 if obj.fail_by_download_error():
-                    print >>message, _('(network fault. not bug)')
+                    print >>message, _('(network failure. not bug)')
                 elif obj.fail_by_user_cancel():
                     print >>message, _('(cancelled by you. not bug)')
                 else:
