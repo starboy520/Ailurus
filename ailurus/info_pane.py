@@ -24,9 +24,14 @@ import gtk, sys, os
 from lib import *
 from libu import *
 
+missing_files = [] # used only in get_information_pixbuf. do not continuously display error messages.
+
 def get_information_pixbuf(path, width, height):
     if not os.path.exists(path):
-        print path, 'is missing'
+        global missing_files
+        if path not in missing_files:
+            print path, 'is missing'
+            missing_files.append(path)
         path = D+'sora_icons/default_information_icon.png'
     return get_pixbuf(path, width, height)
 
