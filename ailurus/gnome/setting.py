@@ -445,9 +445,8 @@ def __login_window_setting():
 def __login_window_background():
     # the method is on http://blog.roodo.com/rocksaying/archives/12316205.html
     
-    if (UBUNTU or UBUNTU_DERIV) and VERSION >= 'karmic': pass
-    elif ARCHLINUX: pass
-    else: return None # do not support on Fedora because there is no sudo.
+    if (UBUNTU or UBUNTU_DERIV) and VERSION < 'karmic': return None
+    elif FEDORA: return None # do not support on Fedora because there is no sudo.
 
     box = gtk.VBox(False, 5)
 
@@ -467,6 +466,24 @@ def __login_window_background():
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))    
     return Setting(box, _('Change login window background'), ['login_window'])
+
+def __login_sound():
+    if (UBUNTU or UBUNTU_DERIV) and VERSION < 'karmic': return None
+    elif FEDORA: return None # do not support on Fedora because there is no sudo.
+
+    enable_sound = gtk.Button(_('Enable GNOME login sound'))
+    enable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true')
+    enable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true'))
+
+    disable_sound = gtk.Button(_('Disable GNOME login sound'))
+    disable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false')
+    disable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false'))
+    
+    box = gtk.HBox(False, 10)
+    box.pack_start(enable_sound, False)
+    box.pack_start(disable_sound, False)
+
+    return Setting(box, _('Change GNOME login sound'), ['login_window', 'sound'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))
@@ -596,6 +613,7 @@ def get():
             __button_icon_setting,
             __start_here_icon_setting,
             __login_icon_setting,
+            __login_sound,
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
