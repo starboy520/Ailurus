@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk
+import gtk, os, sys
 from lib import *
 from libu import *
 from libapp import *
@@ -561,10 +561,55 @@ class InstallRemovePane(gtk.VBox):
         import thread
         thread.start_new_thread(launch, ())
 
+    def save_softwarelist(self):
+        dialog = gtk.FileChooserDialog(title=_('Record the software items you have installed'),
+                                       action=gtk.FILE_CHOOSER_ACTION_SAVE,
+                                       buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK,))
+        dialog.set_current_folder(os.environ['HOME'])
+        dialog.set_select_multiple(False)
+        ret = dialog.run()
+        if ret == gtk.RESPONSE_OK:
+            path = dialog.get_filename()
+            AppObjs.save_installed_items_to_file(path)
+            dialog.destroy()
+            dialog2 = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
+                                        message_format=_('Successfully record the software items to file %s') % path)
+            dialog2.run()
+            dialog2.destroy()
+        else:
+            dialog.destroy()
+    
+    def load_softwarelist(self):
+        dialog = gtk.FileChooserDialog(_('Select a software items list'),
+                                       action=gtk.FILE_CHOOSER_ACTION_OPEN,
+                                       buttons=(gtk.STOCK_CANCEL, gtk.RESPONSE_CANCEL, gtk.STOCK_OK, gtk.RESPONSE_OK,))
+        dialog.set_current_folder(os.environ['HOME'])
+        dialog.set_select_multiple(False)
+        ret = dialog.run()
+        if ret == gtk.RESPONSE_OK:
+            path = dialog.get_filename()
+            AppObjs.load_selection_state_from_file(path)
+            self.right_treeview.queue_draw()
+            dialog.destroy()
+            dialog2 = gtk.MessageDialog(buttons=gtk.BUTTONS_OK,
+                                        message_format=_('Successfully load file %s') % path)
+            dialog2.run()
+            dialog2.destroy()
+        else:
+            dialog.destroy()
+
     def __right_pane(self):
         self.sync_button = button_sync = image_file_only_button(D+'sora_icons/synchronize.png', 24)
         button_sync.set_tooltip_text(_('Synchronize'))
         button_sync.connect('clicked', lambda w: self.synchronize())
+
+        button_save = image_file_only_button(D+'sora_icons/softwarelist_save.png', 24)
+        button_save.set_tooltip_text(_('Record the software items you have installed'))
+        button_save.connect('clicked', lambda w: self.save_softwarelist())
+
+        button_load = image_file_only_button(D+'sora_icons/softwarelist_load.png', 24)
+        button_load.set_tooltip_text(_('Select the software items according to a saved list'))
+        button_load.connect('clicked', lambda w: self.load_softwarelist())
 
         from support.searchbox import SearchBoxForApp
         searchbox = SearchBoxForApp()
@@ -585,6 +630,9 @@ class InstallRemovePane(gtk.VBox):
         toolbar = gtk.HBox(False, 3)
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(button_sync, False)
+        toolbar.pack_start(gtk.VSeparator(), False)
+        toolbar.pack_start(button_save, False)
+        toolbar.pack_start(button_load, False)
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(searchbox, False)
         toolbar.pack_start(self.quick_setup_area, False)

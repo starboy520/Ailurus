@@ -36,9 +36,9 @@ class AppObjs:
     def save_installed_items_to_file(cls, save_to_this_path):
         with open(save_to_this_path, 'w') as f:
             for obj in cls.appobjs:
-                class_name = obj.__class__.__name__
-                f.write(class_name)
-                f.write('\n')
+                if obj.cache_installed:
+                    class_name = obj.__class__.__name__
+                    f.write(class_name + '\n')
     @classmethod
     def load_selection_state_from_file(cls, load_from_this_path):
         with open(load_from_this_path) as f:
