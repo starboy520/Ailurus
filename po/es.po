@@ -8,19 +8,19 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-07-23 10:04+0800\n"
-"PO-Revision-Date: 2010-07-22 05:26+0000\n"
-"Last-Translator: Jonay <jonay.santana@gmail.com>\n"
+"PO-Revision-Date: 2010-07-24 04:48+0000\n"
+"Last-Translator: Ailurus Developers <Unknown>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Launchpad-Export-Date: 2010-07-23 04:17+0000\n"
+"X-Launchpad-Export-Date: 2010-07-25 04:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid "a simple application installer and GNOME tweaker"
-msgstr ""
+msgstr "un aplicación sencillo para installar y modificar GNOME"
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -65,7 +65,7 @@ msgstr "Ejecutar orden:"
 #: ../ailurus/ubuntu/cure.py:79 ../ailurus/ubuntu/cure.py:176
 #: ../ailurus/ubuntu/cure.py:188
 msgid "Command:"
-msgstr "Comando:"
+msgstr "Orden"
 
 #: ../ailurus/clean_up_pane.py:82 ../ailurus/clean_up_pane.py:89
 msgid "RPM cache"
@@ -1065,6 +1065,8 @@ msgid ""
 "display content in &lt;blink&gt; elements and styled with text-"
 "decoration:blink as blinking text"
 msgstr ""
+"mostrar el contenido en elementos &lt;blink&gt; y con estilo text-"
+"decoration: blink como texto parpadeante"
 
 #: ../ailurus/common/setting.py:227
 msgid "how many closed tabs are kept track"
@@ -1080,11 +1082,17 @@ msgid ""
 "This preference determines the narrowest a tab can become before the tab "
 "strip becomes scrollable."
 msgstr ""
+"Para colocar más fichas en la tira de pestaña, Firefox se encoge cada "
+"ficha.\n"
+"Esta preferencia determina el más estrecho en una ficha puede llegar a ser "
+"antes de la ficha se convierte en la tira de desplazamiento."
 
 #: ../ailurus/common/setting.py:233
 msgid ""
 "how many pixels to scroll at a time when scrolling the tab strip's scrollbox"
 msgstr ""
+"el número de píxeles para desplazarse en un momento en la franja de "
+"desplazamiento scrollbox pestaña"
 
 #: ../ailurus/common/setting.py:235
 msgid ""
@@ -1092,12 +1100,17 @@ msgid ""
 "horizontally to see all available tabs.\n"
 "This preference specifies how quickly the strip scrolls."
 msgstr ""
+"Cuando hay un gran número de pestañas, puede desplazarse por la franja "
+"horizontal ficha para ver todas las fichas disponibles.\n"
+"Esta preferencia determina qué tan rápido los rollos tira."
 
 #: ../ailurus/common/setting.py:239
 msgid ""
 "auto complete url-bar, display entries you have previously typed that "
 "closely match the text your typed"
 msgstr ""
+"el auto complete url-bar,muestra las entradas que ha escrito usted tiene que "
+"relacionadas con el texto de su escrito"
 
 #: ../ailurus/common/setting.py:243
 msgid "how many days in which history entries are expired"
@@ -1884,6 +1897,9 @@ msgid ""
 "w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
 "}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}'\n"
 msgstr ""
+"Ver la dirección IP fuera de la red local\n"
+"w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
+"}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}'\n"
 
 #: ../ailurus/computer_doctor_pane.py:30
 msgid ""
@@ -1943,7 +1959,7 @@ msgstr ""
 
 #: ../ailurus/download_icons.py:98
 msgid "Icons are successfully installed."
-msgstr ""
+msgstr "Los iconos están instalados con éxito."
 
 #: ../ailurus/fedora/apps_eclipse.py:28 ../ailurus/ubuntu/apps_eclipse.py:28
 msgid "Eclipse (basic development environment)"
@@ -2955,6 +2971,8 @@ msgid ""
 "The login window background is the gconf value "
 "\"/desktop/gnome/background/picture_filename\" of user \"gdm\"."
 msgstr ""
+"El fondo de la ventana entrada es el valor gconf "
+"\"/desktop/gnome/background/picture_filename\" del usuario \"gdm\"."
 
 #: ../ailurus/gnome/setting.py:469
 msgid "Change login window background"
@@ -3190,7 +3208,7 @@ msgstr "Internet"
 
 #: ../ailurus/install_remove_pane.py:69
 msgid "Photo"
-msgstr ""
+msgstr "Foto"
 
 #. multimedia
 #: ../ailurus/install_remove_pane.py:71
@@ -3361,7 +3379,7 @@ msgstr "Serán quitados:\n"
 
 #: ../ailurus/install_remove_pane.py:234
 msgid "Do not ask me any more"
-msgstr ""
+msgstr "No me pregunte más"
 
 #: ../ailurus/install_remove_pane.py:240
 msgid "Are you sure to change your system as follows?"
@@ -3377,11 +3395,11 @@ msgstr "Fallo al instalar:"
 
 #: ../ailurus/install_remove_pane.py:267
 msgid "(network fault. not bug)"
-msgstr ""
+msgstr "(Fallos de la red. No error)"
 
 #: ../ailurus/install_remove_pane.py:269
 msgid "(cancelled by you. not bug)"
-msgstr ""
+msgstr "(Cancelada por usted. No error)"
 
 #: ../ailurus/install_remove_pane.py:273
 msgid "Failed to remove:"
@@ -3392,18 +3410,22 @@ msgid ""
 "If you think that these errors are caused by a software bug, please tell the "
 "developers."
 msgstr ""
+"Si usted piensa que estos errores son causados por un error de software, "
+"informe a los desarrolladores."
 
 #: ../ailurus/install_remove_pane.py:294
 msgid "Remember to paste the following debugging information in bug report."
 msgstr ""
+"Recuerde que para pegar la información de depuración siguiente informe de "
+"error."
 
 #: ../ailurus/install_remove_pane.py:307
 msgid "Report bug"
-msgstr ""
+msgstr "informar de un error"
 
 #: ../ailurus/install_remove_pane.py:309
 msgid "Copy debugging information to clipboard"
-msgstr ""
+msgstr "Copiar la información de depuración al clipboard"
 
 #: ../ailurus/install_remove_pane.py:317 ../ailurus/libu.py:195
 #: ../ailurus/libu.py:220 ../ailurus/libu.py:242 ../ailurus/libu.py:301
@@ -3420,10 +3442,12 @@ msgid ""
 "There are broken packages.\n"
 "Command \"apt-get install -f\" will be launched to fix error."
 msgstr ""
+"Hay paquetes que no funcionan.\n"
+"El comando \"apt-get install-f\" se pondrá en marcha para corregir el error."
 
 #: ../ailurus/install_remove_pane.py:347
 msgid "Cannot fix broken packages. Installation is cancelled."
-msgstr ""
+msgstr "No se puede arreglar paquetes rotos. La instalación se cancela."
 
 #: ../ailurus/install_remove_pane.py:372
 msgid "Installing:"
@@ -3494,11 +3518,12 @@ msgstr "Refrescar los iconos de todos los elementos software"
 #: ../ailurus/install_remove_pane.py:697
 msgid "Refresh installing state of all software items"
 msgstr ""
+"Actualizar la instalación de estado de todos los elementos de software"
 
 #: ../ailurus/install_remove_pane.py:744
 #, python-format
 msgid "%s available items"
-msgstr ""
+msgstr "%s artículos disponibles"
 
 #: ../ailurus/install_remove_pane.py:753
 msgid "Would you like to download latest application data from web?"
@@ -3581,16 +3606,16 @@ msgstr "Triple licencia:  %(A)s, %(B)s y %(C)s"
 #: ../ailurus/lib.py:766 ../ailurus/lib.py:774 ../ailurus/lib.py:952
 #: ../ailurus/lib.py:960
 msgid "scan installed packages"
-msgstr ""
+msgstr "escanear los paquetes instalados"
 
 #: ../ailurus/lib.py:776 ../ailurus/lib.py:784 ../ailurus/lib.py:962
 #: ../ailurus/lib.py:969
 msgid "scan available packages"
-msgstr ""
+msgstr "escanear los paquetes disponible"
 
 #: ../ailurus/lib.py:843 ../ailurus/lib.py:849
 msgid "scan packages"
-msgstr ""
+msgstr "escanear los paquetes"
 
 #: ../ailurus/lib.py:1004
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
@@ -3738,6 +3763,8 @@ msgstr "Sí"
 #: ../ailurus/libsetting.py:429
 msgid "whether interrupt parsing a page to respond to UI events?"
 msgstr ""
+"si interrumpir analizar una página para responder a eventos de la interfaz "
+"de usuario?"
 
 #: ../ailurus/libsetting.py:431
 msgid "maximum number of microseconds between two page rendering"
@@ -3769,7 +3796,7 @@ msgstr ""
 
 #: ../ailurus/libu.py:249
 msgid "Fatal error"
-msgstr ""
+msgstr "Error grave"
 
 #: ../ailurus/libu.py:277
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
@@ -3893,19 +3920,19 @@ msgstr "No volver a preguntar."
 
 #: ../ailurus/main.py:528
 msgid "Do you agree?"
-msgstr ""
+msgstr "¿Está de acuerdo?"
 
 #: ../ailurus/main.py:529
 msgid "I agree. Do not ask me again."
-msgstr ""
+msgstr "Estoy de acuerdo. No me pregunte de nuevo."
 
 #: ../ailurus/main.py:534
 msgid "Warning"
-msgstr ""
+msgstr "Aviso"
 
 #: ../ailurus/main.py:546 ../ailurus/main.py:557
 msgid "start up"
-msgstr ""
+msgstr "comenzar"
 
 #: ../ailurus/strings.py:27
 msgid ""
@@ -4007,6 +4034,8 @@ msgid ""
 "Peer-reviewed portable C++ libraries, which will be in the new C++ 0x "
 "standard."
 msgstr ""
+"Revisado por pares portátiles librerías C + +, que será en el nuevo estándar "
+"de C + + 0x."
 
 #: ../ailurus/strings.py:52
 msgid "Bos Wars"
@@ -4157,6 +4186,7 @@ msgstr "Calculadora gráfica multifuncional"
 msgid ""
 "A download manager supporting RapidShare.com, YouTube and remote control"
 msgstr ""
+"Un gestor de descargas secundario RapidShare.com, YouTube y control remoto"
 
 #: ../ailurus/strings.py:105
 msgid "Popular Chinese input method"
@@ -4581,7 +4611,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:235
 msgid "Twitter and Identi.ca client"
-msgstr ""
+msgstr "cliente de Twitter y Identi.ca"
 
 #: ../ailurus/strings.py:237
 msgid "Help you save power for your laptop."
@@ -4589,7 +4619,7 @@ msgstr "Le ayuda a mantener la energía en su portátil."
 
 #: ../ailurus/strings.py:239
 msgid "Lightweight, featureful open source equivalent to utorrent"
-msgstr ""
+msgstr "Ligero, fuente abierta featureful equivalente a utorrent"
 
 #: ../ailurus/strings.py:241
 msgid "Open source substitution of AutoCAD"
@@ -4614,6 +4644,8 @@ msgid ""
 "Open source substitution of Origin. It is the indispensable plotting "
 "application for writing Physics experiments reports."
 msgstr ""
+"Abrir la sustitución de fuente de origen. Es la aplicación indispensable "
+"para planear experiencias de escritura Física informes."
 
 #: ../ailurus/strings.py:249
 msgid "Lightweight messaging program"
@@ -4661,6 +4693,8 @@ msgid ""
 "An open source alternatives to MATLAB. MATLAB code can be converted to "
 "Scilab."
 msgstr ""
+"Una fuente abierta alternativas a MATLAB. código de MATLAB se pueden "
+"convertir a Scilab."
 
 #: ../ailurus/strings.py:263
 msgid ""
@@ -4720,6 +4754,8 @@ msgid ""
 "A popular digital typographical system which can typeset complex "
 "mathematical formulae"
 msgstr ""
+"Un popular sistema digital tipográficos que pueden componer complejas "
+"fórmulas matemáticas"
 
 #: ../ailurus/strings.py:280
 msgid "The Mana World"
@@ -4866,10 +4902,13 @@ msgstr ""
 #: ../ailurus/support/AptAuth.py:33
 msgid "Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>"
 msgstr ""
+"Clave de firma automática del archivo de Ubuntu <ftpmaster@ubuntu.com>"
 
 #: ../ailurus/support/AptAuth.py:34
 msgid "Ubuntu CD Image Automatic Signing Key <cdimage@ubuntu.com>"
 msgstr ""
+"Clave de firma automática de las imágenes de CD de Ubuntu "
+"<cdimage@ubuntu.com>"
 
 #: ../ailurus/support/checkupdate.py:87
 msgid "New version available"
@@ -4921,16 +4960,18 @@ msgstr ""
 
 #: ../ailurus/support/checkupdate.py:138 ../ailurus/support/checkupdate.py:139
 msgid "Copyright (C)"
-msgstr ""
+msgstr "Copyright (C)"
 
 #: ../ailurus/support/checkupdate.py:138
 msgid "Ailurus developers and Ailurus contributors"
-msgstr ""
+msgstr "Ailurus desarrolladores y colaboradores Ailurus"
 
 #: ../ailurus/support/checkupdate.py:140
 msgid ""
 "Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China."
 msgstr ""
+"Laboratorio de confianza tecnología digital, la Universidad de Shanghai Jiao "
+"Tong, China."
 
 #: ../ailurus/support/checkupdate.py:168
 #, python-format
@@ -4963,11 +5004,11 @@ msgstr "Las personas que mantienen el repositorio PPA:"
 
 #: ../ailurus/support/checkupdate.py:198
 msgid "The people who maintain Fedora package:"
-msgstr ""
+msgstr "Las personas que mantienen paquete de Fedora:"
 
 #: ../ailurus/support/checkupdate.py:201
 msgid "The people who maintain ArchLinux package:"
-msgstr ""
+msgstr "Las personas que mantienen paquete ArchLinux:"
 
 #: ../ailurus/support/checkupdate.py:204
 msgid "The people who provide a lot of Linux skills:"
@@ -4975,11 +5016,11 @@ msgstr "Las personas que proveen muchos trucos de Linux:"
 
 #: ../ailurus/support/checkupdate.py:207
 msgid "The people who help translate Ailurus"
-msgstr ""
+msgstr "La gente que ayuda a traducir Ailurus"
 
 #: ../ailurus/support/checkupdate.py:209
 msgid "The people who report bugs"
-msgstr ""
+msgstr "La gente que informar de los errores"
 
 #: ../ailurus/support/checkupdate.py:211
 msgid "and the people not mensioned here."
@@ -4995,29 +5036,32 @@ msgstr "Notas de la versión Ailurus"
 
 #: ../ailurus/support/clientlib.py:115
 msgid "Your name:"
-msgstr ""
+msgstr "Su nombre:"
 
 #: ../ailurus/support/clientlib.py:128
 msgid "Submit"
-msgstr ""
+msgstr "Someter"
 
 #: ../ailurus/support/clientlib.py:132
 msgid "Cancel"
-msgstr ""
+msgstr "cancelar"
 
 #: ../ailurus/support/clientlib.py:161
 msgid "HTTP error"
-msgstr ""
+msgstr "Error HTTP"
 
 #: ../ailurus/support/clientlib.py:169
 msgid ""
 "Can not connect to server.\n"
 "Would you like to save the request and resend when next time ailurus starts?"
 msgstr ""
+"No se puede conectar al servidor.\n"
+"¿Desea guardar la solicitud y volver a enviar cuando se inicia la próxima "
+"vez Ailurus?"
 
 #: ../ailurus/support/clientlib.py:184
 msgid "Submit a Linux skill"
-msgstr ""
+msgstr "Presentar una habilidad Linux"
 
 #: ../ailurus/support/clientlib.py:188
 msgid "Propose suggestion"
@@ -5069,7 +5113,7 @@ msgstr ""
 #. please do not launch me as a thread
 #: ../ailurus/support/term.py:38 ../ailurus/support/term.py:52
 msgid "Ailurus terminal"
-msgstr ""
+msgstr "Ailurus terminal"
 
 #: ../ailurus/support/tipoftheday.py:54
 msgid "All Linux skills"
@@ -5272,6 +5316,8 @@ msgstr ""
 msgid ""
 "Protect your privacy. Block internet traffic based on IP address ranges."
 msgstr ""
+"Proteja su privacidad. Bloquear el tráfico de Internet basado en rangos de "
+"direcciones IP."
 
 #: ../ailurus/ubuntu/apps_eclipse.py:118
 msgid "Dynamic languages toolkit"
@@ -5297,6 +5343,8 @@ msgstr "Biblioteca PBC (Criptografía Basada-En-Pares)"
 msgid ""
 "Install Pairing-Based Cryptography library, powered by Stanford University."
 msgstr ""
+"Instalar una biblioteca de criptografía basada en pares, impulsada por la "
+"Stanford University."
 
 #: ../ailurus/ubuntu/apps.py:69
 msgid "GNOMEArtNG: Choose 100+ GNOME themes"
@@ -5556,6 +5604,7 @@ msgstr "Stardict"
 #: ../ailurus/ubuntu/quick_setup.py:82
 msgid "Moonlight: an open source implementation of Microsoft Silverlight"
 msgstr ""
+"Moonlight: una implementación de código abierto de Microsoft Silverlight"
 
 #: ../ailurus/ubuntu/quick_setup.py:83 ../ailurus/ubuntu/quick_setup.py:84
 msgid "Flash plugin for web browser"
@@ -5664,10 +5713,12 @@ msgid ""
 "Repository\n"
 "Configure"
 msgstr ""
+"Repositorio\n"
+"Configurar"
 
 #: ../ailurus/ubuntu/repos_config_pane.py:62
 msgid "Add"
-msgstr ""
+msgstr "Añadir"
 
 #: ../ailurus/ubuntu/setting.py:30
 msgid "Automatically check for update"
@@ -6121,11 +6172,11 @@ msgstr "Este repositorop proporciona VirtualBox."
 
 #: ../unfree/for_fedora.py:277
 msgid "Adobe Flash plugin for web browser"
-msgstr ""
+msgstr "Adobe Flash plugin para el navegador web"
 
 #: ../unfree/for_fedora.py:283
 msgid "Adobe PDF Reader"
-msgstr ""
+msgstr "Adobe PDF Reader"
 
 #: ../unfree/for_fedora.py:311
 msgid "Google Chrome browser"
@@ -6184,10 +6235,13 @@ msgstr "Antivirus y antiespias"
 #: ../unfree/for_fedora.py:413 ../unfree/for_ubuntu.py:310
 msgid "Use HTML, JavaScript and Flash to build desktop applications"
 msgstr ""
+"Utilice HTML, JavaScript y Flash para crear aplicaciones de escritorio"
 
 #: ../unfree/for_fedora.py:428 ../unfree/for_ubuntu.py:323
 msgid "An image organizer and image viewer, plus photo-sharing function"
 msgstr ""
+"Un organizador de imágenes y visor de imágenes, además de la función para "
+"compartir fotos"
 
 #: ../unfree/for_ubuntu.py:50
 msgid "Alice: A new way to learn programming"
@@ -6308,6 +6362,8 @@ msgid ""
 "Organizes research paper collection and citations. It automatically "
 "generates bibliographies."
 msgstr ""
+"Organiza la investigación el papel de recogida y citas. Genera "
+"automáticamente bibliografías."
 
 #~ msgid "Candidate mirrors:\n"
 #~ msgstr "Servidores secundarios:\n"

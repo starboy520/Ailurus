@@ -8,24 +8,24 @@ msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
 "POT-Creation-Date: 2010-07-23 10:04+0800\n"
-"PO-Revision-Date: 2010-07-22 05:04+0000\n"
+"PO-Revision-Date: 2010-07-24 04:46+0000\n"
 "Last-Translator: Marcel <marceliqq@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 1 : (n>=2 && n<=4) ? 2 : 0;\n"
-"X-Launchpad-Export-Date: 2010-07-23 04:16+0000\n"
+"X-Launchpad-Export-Date: 2010-07-25 04:17+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid "a simple application installer and GNOME tweaker"
-msgstr ""
+msgstr "jednoduchý inštalátor aplikácií a GNOME tweaker"
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
 msgid "System policy prevents Ailurus from launching program as \"root\""
-msgstr "Politika systému zabraňuje spustiť program Ailurus ako \"root\""
+msgstr "Systémová politika bráni Ailurusu spustiť program ako \"root\""
 
 #: ../ailurus/clean_up_pane.py:31
 msgid "Clean up"
@@ -983,7 +983,7 @@ msgstr ""
 
 #: ../ailurus/common/setting.py:203
 msgid "the maximum number of HTTP connections"
-msgstr ""
+msgstr "maximálny počet HTTP pripojení"
 
 #: ../ailurus/common/setting.py:204
 msgid ""
@@ -998,7 +998,7 @@ msgstr "maximálny počet pripojení k jednému serveru"
 
 #: ../ailurus/common/setting.py:209
 msgid "the total number of alive connections per proxy server"
-msgstr ""
+msgstr "celkový počet aktívnych pripojení pre proxy server"
 
 #: ../ailurus/common/setting.py:213
 msgid "the number of milliseconds to wait before first displaying the page"
@@ -1089,6 +1089,7 @@ msgstr "maximálny počet webstránok uchovávaný v histórii"
 #: ../ailurus/common/setting.py:248
 msgid "the amount of disk space the offline cache may use (in kilobytes)"
 msgstr ""
+"množstvo diskového priestoru, ktorý môže využiť offline cache (v kilobajtoch)"
 
 #: ../ailurus/common/setting.py:250
 msgid ""
@@ -1886,7 +1887,7 @@ msgstr "Prosím kliknite na tlačidlo \"obnoviť\""
 
 #: ../ailurus/download_icons.py:14
 msgid "Downloading icons of other open-source projects.\n"
-msgstr ""
+msgstr "Sťahovanie ikon iných open-source projektov\n"
 
 #: ../ailurus/download_icons.py:15
 msgid ""
