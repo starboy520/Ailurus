@@ -213,3 +213,11 @@ class Sources_list_is_using_wrong_code_name(C):
                     content = content.replace(c, VERSION)
                 with open(file, 'w') as f:
                     f.write(content)
+
+class Remove_ubuntu_docs_package(C):
+    __doc__ = _('Remove ubuntu-docs package. Free 270M disk space.')
+    detail = _('Command:') + ' apt-get remove ubuntu-docs'
+    def exists(self):
+        return APT.installed('ubuntu-docs')
+    def cure(self):
+        APT.remove('ubuntu-docs')
