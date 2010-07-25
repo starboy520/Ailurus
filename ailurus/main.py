@@ -528,7 +528,6 @@ def show_agreement():
     label = gtk.Label(_('Do you agree?'))
     checkbox = gtk.CheckButton(_('I agree. Do not ask me again.'))
     checkbox.set_active(not Config.get_show_agreement())
-    checkbox.connect('toggled', lambda w: Config.set_show_agreement(not w.get_active()))
     dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO, type=gtk.MESSAGE_WARNING)
     dialog.set_markup(message)
     dialog.set_title(_('Warning'))
@@ -537,6 +536,9 @@ def show_agreement():
     dialog.vbox.show_all()
     ret = dialog.run()
     dialog.destroy()
+    if ret == gtk.RESPONSE_YES:
+        active = checkbox.get_active()
+        Config.set_show_agreement(not active)
     if ret != gtk.RESPONSE_YES:
         sys.exit()
 
