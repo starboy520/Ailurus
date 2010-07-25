@@ -13,6 +13,7 @@
     * Support for disabling GNOME login sound
     * Improve the introduction text of /apps/gdm/simple-greeter/disable_user_list
     * Suggest to remove ubuntu-docs package to free 270M disk space.
+    * Improve code. Do not use string replacement for $version. Use VERSION inline.
 
 2010-07-23 Homer Xing <homer.xing@gmail.com>
 
