@@ -1,3 +1,15 @@
+2010-07-25 Homer Xing <homer.xing@gmail.com>
+
+    * Improve behaviour of agreement dialog.
+      When the user select "I agree." and press "No", then still show dialog next time.
+    * Add qcad-doc in qcad item
+    * Do not repeatly display error messages on same file from get_information_pixbuf()
+    * Synchronize online data in main process.
+    * Show software status as tick or cross.
+    * Change sort order of software items. Installed items are at bottom.
+    * Support for saving and loading installed software items.
+    * Display less indent in "print computer information" dialog.
+
 2010-07-23 Homer Xing <homer.xing@gmail.com>
 
     * Prompt to do synchronization if new icon pack is available.
