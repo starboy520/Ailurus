@@ -3,19 +3,19 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-Name: ailurus
-Version: 10.06.93
-Release: 0%{?dist}
-Summary: A simple application installer and GNOME tweaker
-Group: Applications/System
-License: GPLv2+
-URL: http://ailurus.googlecode.com/
-Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: python-devel python2-devel python-distutils-extra intltool
-BuildArch: noarch
+Name:			ailurus
+Version: 		10.07.4
+Release:		1%{?dist}
+Summary:		A simple application installer and GNOME tweaker
+Group:			Applications/System
+License:		GPLv2+
+URL:			http://ailurus.googlecode.com/
+Source:		http://ailurus.googlecode.com/files/%{name}-%{version}.tar.gz
+BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	python-devel python2-devel python-distutils-extra intltool
+BuildArch:		noarch
 # The automatic dependency consists of python and rpmlib only. It is insufficient.
-Requires: polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip gnome-python2-gnomekeyring
+Requires:		polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip gnome-python2-gnomekeyring
 
 %description
 Ailurus is a simple application installer and GNOME tweaker.
@@ -58,5 +58,9 @@ rm -rf $RPM_BUILD_ROOT
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
+* Fri Jul 23 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.4-1
+- Upstream to 10.07.4
+
 * Mon Jul 12 2010 Homer Xing <homer.xing@gmail.com> 10.06.93-0
 - Initial package
+
