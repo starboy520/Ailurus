@@ -1534,7 +1534,7 @@ class R:
                 ret.append(url)
                 servers.add(server)
         return ret
-    def __init__(self, url_list, filename=None):
+    def __init__(self, url_list, size=None, hash=None, filename=None):
         #check url
         assert url_list
         assert isinstance(url_list, (str,list))
@@ -1544,6 +1544,17 @@ class R:
             assert isinstance(e, str), e
             assert e.startswith('http://') or e.startswith('https://') or e.startswith('ftp://')
         self.url = self.delete_duplicate(url_list)
+
+        #check size
+        if size!=None:
+            assert size>0
+            assert isinstance(size, int) or isinstance(size, long), size
+        self.size = size
+        #check hash
+        if hash:
+            assert isinstance(hash, str), hash
+            assert len(hash)==40, hash
+        self.hash = hash
 
         if filename:
             self.filename = filename
@@ -1571,6 +1582,18 @@ class R:
         if not os.path.exists(dir):
             run_as_root('mkdir %s -p'%dir)
         own_by_user(dir)
+    def check(self, path):
+        if self.size:
+            import os
+            filesize=os.path.getsize(path)
+            if filesize!=self.size: 
+                raise CommandFailError('File is broken. Expected file length is %s, but real length is %s.'%(self.size, filesize) )
+        if self.hash:
+            print _('Checking file integrity ...'),
+            filehash = sha1(path)
+            if filehash!=self.hash: 
+                raise CommandFailError('File is broken. Expected hash is %s, but real hash is %s.'%(self.hash, filehash) )
+            print _('Good.')
     def download(self):
         self.sort()
         dest = '/var/cache/ailurus/'+self.filename
@@ -1582,6 +1605,7 @@ class R:
             try:
                 R.create_tmp_dir()
                 download(url, dest)
+                self.check(dest)
                 return dest
             except:
                 print_traceback()
