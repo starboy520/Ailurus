@@ -336,32 +336,24 @@ elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
 def load_app_objs():
-    TimeStat.begin('load_app_objs')
-    AppObjs.set_basic_modules(common, desktop, distribution)
-
-    TimeStat.begin('load_from_text_file')
-    AppObjs.load_from_text_file()
-    TimeStat.end('load_from_text_file')
+    with TimeStat('load_app_objs'):
+        AppObjs.set_basic_modules(common, desktop, distribution)
     
-    TimeStat.begin('load_from_basic_modules')
-    AppObjs.load_from_basic_modules()
-    TimeStat.end('load_from_basic_modules')
+        with TimeStat('load_from_text_file'):
+            AppObjs.load_from_text_file()
+        
+        with TimeStat('load_from_basic_modules'):
+            AppObjs.load_from_basic_modules()
+        
+        with TimeStat('load_from_extensions'):
+            AppObjs.load_from_extensions()
     
-    TimeStat.begin('load_from_extensions')
-    AppObjs.load_from_extensions()
-    TimeStat.end('load_from_extensions')
-
-    TimeStat.begin('strip')
-    AppObjs.strip_invisible()
-    AppObjs.strip_wrong_locale()
-    TimeStat.end('strip')
-
-    TimeStat.begin('reload_icon')
-    AppObjs.all_objs_reload_icon()
-    TimeStat.end('reload_icon')
+        with TimeStat('strip'):
+            AppObjs.strip_invisible()
+            AppObjs.strip_wrong_locale()
     
-    TimeStat.begin('reset_status')
-    AppObjs.all_objs_reset_status()
-    TimeStat.end('reset_status')
-    
-    TimeStat.end('load_app_objs')
+        with TimeStat('reload_icon'):
+            AppObjs.all_objs_reload_icon()
+        
+        with TimeStat('reset_status'):
+            AppObjs.all_objs_reset_status()
