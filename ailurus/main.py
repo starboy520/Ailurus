@@ -25,6 +25,29 @@ from lib import *
 from libu import *
 from loader import *
 
+def detect_proxy_env():
+    if 'http_proxy' in os.environ and Config.get_use_proxy() == False:
+        proxy_string = os.environ['http_proxy']
+        message = _('You have set an environment variable <i>http_proxy=%s</i>.\n'
+                    'Would you like to let Ailurus use a proxy server?') % proxy_string
+        dialog = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION,
+                                   buttons=gtk.BUTTONS_YES_NO)
+        dialog.set_markup(message)
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_YES:
+            try:
+                set_proxy_string(proxy_string)
+                Config.set_use_proxy(True)
+            except:
+                print_traceback()
+            else:
+                dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                           buttons=gtk.BUTTONS_OK,
+                                           message_format=_('Successfully adopted a proxy server'))
+                dialog.run()
+                dialog.destroy()
+
 def detect_running_instances():
     string = get_output('pgrep -u $USER ailurus', True)
     if string!='':
@@ -548,6 +571,7 @@ with TimeStat(_('start up')):
     sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
     change_task_name()
     set_default_window_icon()
+    detect_proxy_env()
     check_required_packages()
     check_dbus_daemon_status()
     #from support.clientlib import try_send_delayed_data
