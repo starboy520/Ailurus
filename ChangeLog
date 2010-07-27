@@ -11,6 +11,7 @@
     * Add MyTourbook, excellent route planner, and GPS log analyser software.
     * Do not store downloaded files in /var/cache/ailurus/ any more.
     * Add RouteConverter, converts between different GPS track formats.
+    * Add Backintime, incremental backup tool supporting schedule.
 
 2010-07-26 Homer Xing <homer.xing@gmail.com>
 

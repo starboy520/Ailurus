@@ -938,3 +938,7 @@ archlinux = goldendict
 category = business
 ubuntu = artha
 fedora = artha
+
+[Backintime]
+category = security
+fedora = backintime-gnome
