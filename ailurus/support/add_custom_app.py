@@ -39,10 +39,11 @@ class AddCustomAppDialog(gtk.Dialog):
         self.entry_pkgs.set_text('')
 
     def __prompt(self, title, content):
-        dialog = gtk.Dialog(title = title,
-                            buttons = (gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
-        dialog.vbox.pack_start(gtk.Label(content))
-        dialog.vbox.show_all()
+        dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR,
+                                   flags = gtk.DIALOG_NO_SEPARATOR,
+                                   buttons = gtk.BUTTONS_OK)
+        dialog.set_title(title)
+        dialog.set_markup(content)
         dialog.run()
         dialog.destroy()
 
