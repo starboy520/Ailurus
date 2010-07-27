@@ -1,6 +1,7 @@
 2010-07-27 CHEN Yangyang <skabyy@gmail.com>
 
     * Optimize the repository configure pane
+    * Add "add third party repository area" to repository configure pane
     * Fix some bugs
 
 2010-07-27 Homer Xing <homer.xing@gmail.com>

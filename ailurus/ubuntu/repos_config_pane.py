@@ -44,12 +44,14 @@ class ReposConfigPane(gtk.VBox):
         toggle_render.set_property('activatable', True)
         toggle_render.connect('toggled',self.__toggled, treefilter)
         toggle_column = gtk.TreeViewColumn()
+        toggle_column.set_title(_('Using?'))
         toggle_column.pack_start(toggle_render, False)
         toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_func)
         
         text_render = gtk.CellRendererText()
         text_render.connect('edited', self.__edited)
         text_column = gtk.TreeViewColumn()
+        text_column.set_title(_('Repository'))
         text_column.pack_start(text_render, False)
         text_column.set_cell_data_func(text_render, self.__text_cell_func)
         
@@ -65,10 +67,12 @@ class ReposConfigPane(gtk.VBox):
         self.addArea = addArea = AddReposArea()
         self.add_btn = add_btn = image_stock_button(gtk.STOCK_ADD, _('Add'))
         add_btn.connect('clicked', self.__add_repos)
-        buttom_box = gtk.HBox(False, 0)
+        buttom_box = gtk.HBox(False, 10)
         buttom_box.set_border_width(2)
         buttom_box.pack_start(addArea, True)
-        buttom_box.pack_end(add_btn, False)
+        add_btn_box = gtk.VBox()
+        add_btn_box.pack_end(add_btn, False)
+        buttom_box.pack_end(add_btn_box, False)
         
         self.treeview.expand_all()
         fiter_first = self.treefilter.get_iter_first()
@@ -143,6 +147,8 @@ class ReposConfigPane(gtk.VBox):
         return ' '.join(words)
     
     def __is_repos_enable(self, line):
+        if len(line) <= 2:
+            return None
         if line[0] == '#' and line[1:].strip().startswith('deb'):
             return False
         elif line.startswith('deb'):
@@ -151,6 +157,7 @@ class ReposConfigPane(gtk.VBox):
     
     def __refresh_tree(self):
         import glob
+        self.treestore.clear()
         for path in ['/etc/apt/sources.list'] + glob.glob('/etc/apt/sources.list.d/*'):
             if not path.endswith('.list'):
                 continue
@@ -217,17 +224,29 @@ class ReposConfigPane(gtk.VBox):
                 run_as_root('true')
                 fiter = self.treefilter.get_iter_from_string(path)
                 iter = self.treefilter.convert_iter_to_child_iter(fiter)
+                b = self.__is_repos_enable(new_text)
+                if b == False:
+                    new_text = new_text[1:]
+                self.treestore.set_value(iter, 0, b)
                 self.treestore.set_value(iter, 1, new_text)
                 self.__apply()
+                self.treefilter.refilter()
             except AccessDeniedError:
                 pass
     
     def __add_repos(self, widget):
         text = self.addArea.getRepos().strip()
+        if not text:
+            return
         b = self.__is_repos_enable(text)
         if b == None:
+            msg = _(
+                    'This is not a repository.\n' +
+                    'Do you want to add it anymore ?'
+                    )
             dlg = gtk.MessageDialog(parent=self.main_view.window,
-                                    buttons=gtk.BUTTONS_YES_NO)
+                                    buttons=gtk.BUTTONS_YES_NO,
+                                    message_format=msg)
             re = dlg.run()
             dlg.destroy()
             if re == gtk.RESPONSE_NO:
@@ -262,7 +281,7 @@ class ReposConfigPane(gtk.VBox):
             elif b == True:
                 ret = True
             child = self.treestore.iter_next(child)
-        self.__enable_repos(b, parent)
+        self.__enable_repos(ret, parent)
     
     def __set_children_toggle(self, parent, b):
         child = self.treestore.iter_children(parent)
@@ -278,18 +297,80 @@ class AddReposArea(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False)
         
-        self.officialBox = gtk.HBox(False)
-        self.thirdPartyBox = gtk.HBox(False)
-        self.currentBox = self.officialBox
+        self.currentBox = None
+        self.officialBox = gtk.HBox(False, 10)
+        self.thirdPartyBox = gtk.HBox(False, 10)
         
         self.officialBox.entry = entry = gtk.Entry()
         self.officialBox.pack_start(entry)
         
-        self.pack_start(self.currentBox)
+        userlabel = gtk.Label(_('user:'))
+        self.thirdPartyBox.userentry = userentry = gtk.Entry()
+        ppalabel = gtk.Label(_('ppa:'))
+        self.thirdPartyBox.ppaentry = ppaentry = gtk.Entry()
+        ppaentry.set_text('ppa')
+        self.thirdPartyBox.pack_start(userlabel, False)
+        self.thirdPartyBox.pack_start(userentry)
+        self.thirdPartyBox.pack_start(ppalabel, False)
+        self.thirdPartyBox.pack_start(ppaentry)
+        
+        self.textBox = gtk.VBox(False, 10)
+        self.textBox.pack_start(self.officialBox)
+        self.textBox.pack_start(self.thirdPartyBox)
+        
+        self.rbBox = gtk.VBox(False, 10)
+        def toggled(widget, index):
+            self.__changed(index)
+        official_btn = gtk.RadioButton(None, _('Official'))
+        official_btn.connect('toggled', toggled, 0)
+        thirdparty_btn = gtk.RadioButton(official_btn, _('Third Party'))
+        thirdparty_btn.connect('toggled', toggled, 1)
+        official_btn.set_active(True)
+        self.rbBox.pack_start(official_btn)
+        self.rbBox.pack_start(thirdparty_btn)
+        
+        self.pack_start(self.textBox, True)
+        self.pack_end(self.rbBox, False)
+        
+        self.__changed(0)
     
     def getRepos(self):
         if self.currentBox == self.officialBox:
             return self.officialBox.entry.get_text()
+        elif self.currentBox == self.thirdPartyBox:
+            user = self.thirdPartyBox.userentry.get_text()
+            if not user:
+                return ''
+            ppa = self.thirdPartyBox.ppaentry.get_text()
+            if not ppa:
+                return ''
+            text = 'deb http://ppa.launchpad.net/%s/%s/ubuntu %s main' % (user, ppa, self.__get_ubuntu_version())
+            return text
         
     def clearContent(self):
+        if self.currentBox == self.officialBox:
+            self.__clear_offciial()
+        elif self.currentBox == self.thirdPartyBox:
+            self.__clear_thirdparty()
+    
+    def __changed(self, index):
+        if index == 0:
+            self.__set_current_box(self.officialBox)
+            self.officialBox.set_sensitive(True)
+            self.thirdPartyBox.set_sensitive(False)
+        elif index == 1:
+            self.__set_current_box(self.thirdPartyBox)
+            self.thirdPartyBox.set_sensitive(True)
+            self.officialBox.set_sensitive(False)
+    
+    def __set_current_box(self, box):
+        self.currentBox = box
+    
+    def __clear_offciial(self):
         self.officialBox.entry.set_text('')
+    
+    def __clear_thirdparty(self):
+        self.thirdPartyBox.userentry.set_text('')
+    
+    def __get_ubuntu_version(self):
+        return Config.get_Ubuntu_version()
