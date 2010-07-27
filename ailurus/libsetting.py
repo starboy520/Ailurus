@@ -185,12 +185,22 @@ class ImageChooser(gtk.Button):
         if child: self.remove(child)
         
         if image_path:
-            pixbuf = gtk.gdk.pixbuf_new_from_file(image_path).scale_simple(self.width, self.height, gtk.gdk.INTERP_HYPER)
+            self.pixbuf = gtk.gdk.pixbuf_new_from_file(image_path).scale_simple(self.width, self.height, gtk.gdk.INTERP_HYPER)
         else:
-            pixbuf = blank_pixbuf(self.width, self.height)
-        self.add(gtk.image_new_from_pixbuf(pixbuf))
+            self.pixbuf = blank_pixbuf(self.width, self.height)
+        self.add(gtk.image_new_from_pixbuf(self.pixbuf))
         self.show_all()
-
+    def display_pixbuf(self, pixbuf):
+        'If image_path is none, then show blank.'
+        child = self.get_child()
+        if child: self.remove(child)
+        
+        if pixbuf:
+            self.pixbuf = pixbuf.scale_simple(self.width, self.height, gtk.gdk.INTERP_HYPER)
+        else:
+            self.pixbuf = blank_pixbuf(self.width, self.height)
+        self.add(gtk.image_new_from_pixbuf(self.pixbuf))
+        self.show_all()
     def __init__(self, default_dir, width, height, tooltip=None):
         assert isinstance(default_dir, str) and default_dir
         assert isinstance(width, int)

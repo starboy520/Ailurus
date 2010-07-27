@@ -78,6 +78,21 @@ class Config:
     import os
     config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
+    def get_custom_app_count(cls):
+        if cls.parser.has_option('DEFAULT','custom_app_count'):
+            value = cls.parser.get('DEFAULT', 'custom_app_count')
+            return int(value)
+        else:
+            cls.parser.set('DEFAULT', 'custom_app_count', '0')
+            cls.save()
+            return 0
+    @classmethod
+    def increase_custom_app_count(cls):
+        if cls.parser.has_option('DEFAULT','custom_app_count'):
+            value = cls.parser.get('DEFAULT', 'custom_app_count')
+            cls.parser.set('DEFAULT', 'custom_app_count', '%d' % (int(value) + 1))
+            cls.save()
+    @classmethod
     def make_config_dir(cls):
         import os
         dir = os.path.expanduser('~/.config/ailurus/')
@@ -348,6 +363,13 @@ class Config:
             return True
         except: 
             return False
+def get_desktop_environment():
+    if UBUNTU or MINT:
+        return 'ubuntu'
+    elif FEDORA:
+        return 'fedora'
+    elif ARCHLINUX:
+        return 'archlinux'
 
 def add_custom_app_inRepo(name):
     summary = BACKEND.get_pkg_summary(name)

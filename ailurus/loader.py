@@ -25,7 +25,8 @@ from libapp import N
 import os, sys, glob, new, ConfigParser, types, gtk, gobject
 import strings
 class AppConfigParser(ConfigParser.RawConfigParser):
-    def getAppObjs(self):
+    def getAppDict(self):
+        ret = {}
         appobjs = []
         for section_name in self.sections():
             try:
@@ -53,18 +54,21 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                         elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
                     else:
                         dict[option_name] = value
-                if 'pkgs' not in dict: continue
-                obj = new.classobj(section_name, (N,), {})()
-                for key in dict.keys():
-                    setattr(obj,key,dict[key])
-                obj.self_check()
-                obj.fill()
+                if not self.custom:
+                    if 'pkgs' not in dict.keys(): continue
+                ret[section_name] = dict
+#                obj = new.classobj(section_name, (N,), {})()
+#                for key in dict.keys():
+#                    setattr(obj,key,dict[key])
+#                obj.self_check()
+#                obj.fill()
             except:
                 print 'Cannot load obj %s from native_apps' % section_name
                 print_traceback()
-            else:
-                appobjs.append(obj)
-        return appobjs
+#            else:
+#                
+#                appobjs.append(obj)
+        return ret
     
     def save(self):
         try:
@@ -73,21 +77,20 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         except:
             print_traceback()
      
-    def removeAppObj(self,appname):
+    def removeAppObjByName(self,appname):
         if not self.custom:
             return
         if appname in self.sections():
             self.remove_section(appname)
         self.save()
         
-    def addAppObj(self,dict):
+    def addAppObjFromDict(self,dict):
         objdict = dict.copy()
         if not self.custom:
             return
         appname = objdict.pop('appname')
-        if appname in self.sections():
-            raise Exception('Duplicate section name')
-        self.add_section(appname)
+        if not appname in self.sections():
+            self.add_section(appname)
         for key in objdict.keys():
             self.set(appname, str(key), str(objdict[key]))
         self.save()
@@ -113,7 +116,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
 
     
 NATIVE_APPS = AppConfigParser(A+'/native_apps')
-CUSTOM_APPS = AppConfigParser(Config.config_dir + 'custom_apps')
+CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps')
 
 class AppObjs:
     appobjs = []
@@ -128,7 +131,14 @@ class AppObjs:
         section_name = objdict.pop('appname')
         obj = new.classobj(section_name, (N,), {})()
         for key in objdict.keys():
-            setattr(obj,key,objdict[key])
+            if key == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
+                setattr(obj,'pkgs',objdict[key])
+            elif key == 'fedora' and FEDORA:
+                setattr(obj,'pkgs',objdict[key])
+            elif key == 'archlinux' and ARCHLINUX:
+                setattr(obj,'pkgs',objdict[key])
+            else:
+                setattr(obj,key,objdict[key])
         obj.self_check()
         obj.fill()
         icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
@@ -140,6 +150,8 @@ class AppObjs:
     def get_icon_path(cls, name):
         'return (icon path, whether it is default icon)'
         path = D + 'appicons/' + name + '.png'
+        path_custom = Config.get_config_dir() + name + '.png'
+        if os.path.exists(path_custom): return (path_custom, False)
         if os.path.exists(path): return (path, False)
         return (D + 'sora_icons/default_application_icon.png', True)
     @classmethod
@@ -224,8 +236,22 @@ class AppObjs:
         sys.path.pop(0)
     @classmethod
     def load_from_text_file(cls):
-        cls.appobjs += NATIVE_APPS.getAppObjs()
-        cls.appobjs += CUSTOM_APPS.getAppObjs()
+        dict = NATIVE_APPS.getAppDict()
+        dict2 = CUSTOM_APPS.getAppDict()
+        for key in dict2.keys():
+            if key in dict.keys():
+                dict[key].update(dict2[key])
+            else:
+                dict[key] = dict2[key]
+        for key in dict.keys():
+            obj = new.classobj(key, (N,), {})()
+            if 'hide' in dict[key].keys():
+                continue
+            for k in dict[key].keys():
+                setattr(obj,k,dict[key][k])
+            obj.self_check()
+            obj.fill()
+            cls.appobjs.append(obj)
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
@@ -387,12 +413,5 @@ def load_app_objs():
     TimeStat.end('reset_status')
     
     TimeStat.end('load_app_objs')
-#    dict = {
-#            'appname':'gedit',
-#            '__doc__':'gedit doc',
-#            'detail':'gedit detail',
-#            'pkgs':'gedit'
-#            }
-#    AppObjs.add_new_appobj(dict)
-#    CUSTOM_APPS.addAppObj(dict)
+
     return AppObjs.appobjs
