@@ -38,7 +38,7 @@ class AddCustomAppDialog(gtk.Dialog):
         self.entry_pkg.set_text('')
         self.entry_pkgs.set_text('')
 
-    def __prompt(self, title, content):
+    def show_message_box(self, title, content):
         dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR,
                                    flags = gtk.DIALOG_NO_SEPARATOR,
                                    buttons = gtk.BUTTONS_OK)
@@ -76,10 +76,10 @@ class AddCustomAppDialog(gtk.Dialog):
         desktop_env = DISTRIBUTION
         dict[desktop_env] = self.entry_pkgs.get_text()
         if dict[desktop_env] == '':
-            self.__prompt(_('Oops'), _('Package name should not be empty!'))
+            self.show_message_box(_('Error'), _('Package name should not be empty!'))
             return
         if dict['__doc__'] == '':
-            self.__prompt(_('Oops'), _('Application name should not be empty!'))
+            self.show_message_box(_('Error'), _('Application name should not be empty!'))
             return
         try:
             
@@ -108,11 +108,11 @@ class AddCustomAppDialog(gtk.Dialog):
                     entry_pkgs_to_install.set_text(entry_pkgs_to_install.get_text()+entry.get_text()+' ')
                     entry.set_text('')
                 else:
-                    self.__prompt(_('Oops'), _('Package is not contained by repository!'))
+                    self.show_message_box(_('Error'), _('Package is not contained by repository!'))
                     entry.set_text('')
                     return
             else:
-                self.__prompt(_('Oops'), _('Package name already in list!'))
+                self.show_message_box(_('Error'), _('Package name already in list!'))
                 entry.set_text('')
                 return
         
