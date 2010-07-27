@@ -13,6 +13,8 @@
     * Add RouteConverter, converts between different GPS track formats.
     * Add Backintime, incremental backup tool supporting schedule.
     * Add Geogebra, learning algebra and geometry.
+    * Add Celestia, 3D astronomy simulator.
+    * Add Kstars, planetarium software.
 
 2010-07-26 Homer Xing <homer.xing@gmail.com>
 

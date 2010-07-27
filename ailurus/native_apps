@@ -942,3 +942,15 @@ fedora = artha
 [Backintime]
 category = security
 fedora = backintime-gnome
+
+[Celestia]
+category = education
+ubuntu = celestia
+fedora = celestia
+archlinux = celestia
+
+[Kstars]
+category = education
+ubuntu = kstars
+fedora = kdeedu-kstars
+archlinux = kdeedu-kstars
