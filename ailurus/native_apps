@@ -916,3 +916,9 @@ category = latex
 ubuntu = lyx
 fedora = lyx
 archlinux = lyx
+
+[Pdftk]
+category = business
+ubuntu = pdftk
+fedora = pdftk
+
