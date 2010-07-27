@@ -202,8 +202,10 @@ class AddCustomAppDialog(gtk.Dialog):
                             title=_('Edit custom application'),
                             flags=gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
         self.set_position(gtk.WIN_POS_CENTER)
+        self.set_border_width(10)
+        self.vbox.set_spacing(10)
         self.vbox.pack_start(top_box, False)
-        self.vbox.pack_start(self.__build_bottom_box(), False)
+        self.action_area.pack_start(self.__build_bottom_box(), False)
         self.show_all()
         
         self.origin_category = self.__get_category()
