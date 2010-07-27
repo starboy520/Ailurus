@@ -404,6 +404,7 @@ class Config:
             return True
         except: 
             return False
+
 def get_desktop_environment():
     if UBUNTU or MINT:
         return 'ubuntu'

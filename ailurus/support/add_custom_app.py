@@ -118,17 +118,17 @@ class AddCustomAppDialog(gtk.Dialog):
     def __choose_icon(self, widget, new_path):
         self.new_icon_path = new_path
         
-    def __init__(self,dict={}):
+    def __init__(self, dict={}):
         gtk.Dialog.__init__(self,
                             title=_('Edit custom application'),
                             flags=gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
         self.dict = dict
         self.set_position(gtk.WIN_POS_CENTER)
-        label_name = gtk.Label(_('Name') + ': ')
-        label_name.set_alignment(0,0.5)
-        label_pkgs_to_install = gtk.Label(_('Packages to install') + ': ')
-        label_pkgs_to_install.set_alignment(0,0.5)
-        label_add_pkg_to_list = gtk.Label(_('Add package to list') + ': ')
+        label_name = gtk.Label(_('Name:'))
+        label_name.set_alignment(0, 0.5)
+        label_pkgs_to_install = gtk.Label(_('Packages to install:'))
+        label_pkgs_to_install.set_alignment(0, 0.5)
+        label_add_pkg_to_list = gtk.Label(_('Add package to list:'))
         label_add_pkg_to_list.set_alignment(0,0.5)
         self.entry_pkgs = entry_pkgs = gtk.Entry()
         if dict.has_key(get_desktop_environment()):
