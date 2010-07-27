@@ -26,6 +26,8 @@ import pango
 from lib import *
 from libu import *
 from loader import *
+from libapp import *
+from libsetting import *
     
 class AddCustomAppDialog(gtk.Dialog):
     liststore_all_pkg = gtk.ListStore(str)
@@ -49,7 +51,6 @@ class AddCustomAppDialog(gtk.Dialog):
 
     def __get_category(self):
         s = self.combo_category.get_active_text()
-        from install_remove_pane import Category
         for c in Category.all():
             if c.text == s:
                 return c.category
@@ -180,7 +181,6 @@ class AddCustomAppDialog(gtk.Dialog):
         hbox_bottom.pack_end(button_submit, False)
         
         self.combo_category = combo_category = gtk.combo_box_entry_new_text()
-        from install_remove_pane import Category
         index = 0
         target = ''
         if dict.has_key('category'):
@@ -212,7 +212,6 @@ class AddCustomAppDialog(gtk.Dialog):
         table.attach(hbox_add_pkg, 1, 2, 3, 4, xoptions = gtk.FILL, yoptions = 0)
         table.set_homogeneous(False)
         
-        from libsetting import ImageChooser
         self.icon_chooser = icon_chooser = ImageChooser('/usr/share/pixmaps/', 48, 48)
         icon_chooser.connect('changed',self.__choose_icon)
         if self.dict.has_key('appname'):       
