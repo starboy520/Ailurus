@@ -1,3 +1,10 @@
+2010-07-27 HAN Haofu <gtxx3600@gmail.com>
+
+	* Allow user to add new package-entry
+	* Allow user to modify package-detail
+	* Allow user to change package-icon
+	* Allow user to add/remove package to/from Favourite
+
 2010-07-27 Homer Xing <homer.xing@gmail.com>
 
     * Terminal window grabs focus.
