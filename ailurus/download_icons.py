@@ -23,7 +23,7 @@ import sys, os, urllib2, gtk, thread, time, re
 from lib import *
 from libu import *
 
-icons_pack_version = 5
+icons_pack_version = 6
 
 class DownloadIconsWindow(gtk.Window):
     url = 'http://ailurus.googlecode.com/files/appicons_v%s.tar.gz' % icons_pack_version
@@ -60,8 +60,7 @@ class DownloadIconsWindow(gtk.Window):
 
     def before_delete_event(self, *w):
         if self.can_exit == False: return True
-        else:
-            return False
+        else: sys.exit()
     
     def get_length_from_header(self, header_string):
         list = re.findall(r'Content-Length: ([0-9]+)', header_string)
@@ -123,7 +122,7 @@ class DownloadIconsWindow(gtk.Window):
                 dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed.'))
                 dialog.run()
                 dialog.destroy()
-                self.destroy()
+                sys.exit()
     
     def install_icons(self):
         appicons_path = D+'/appicons/'
@@ -132,7 +131,16 @@ class DownloadIconsWindow(gtk.Window):
         os.chdir(appicons_path)
         run_as_root('tar xf ' + self.filename)
 
-def main():
+if __name__ == '__main__':
+    import ctypes # change_task_name
+    libc = ctypes.CDLL('libc.so.6')
+    libc.prctl(15, 'ailurus_icon_downloader', 0, 0, 0)
+    if get_output('pgrep -u $USER ailurus_icon_downloader', True): # detect_running_instances
+        sys.exit(1) # another instance is running, therefore I exit
+
     window = DownloadIconsWindow()
     thread.start_new_thread(window.download_thread, ())
+    gtk.gdk.threads_enter()
     window.main_thread()
+    gtk.gdk.threads_leave()
+

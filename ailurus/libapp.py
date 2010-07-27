@@ -60,6 +60,7 @@ class Category:
         cls.m_all = [
             Category(_('All'), D+'sora_icons/p_all.png', 'all', 'all'),
             # internet
+            Category(_('Favourite'), D+'suyun_icons/logo.png', 'favourite', 'home'),
             Category(_('Browser'), D+'sora_icons/p_browser.png', 'browser', 'home'),
             Category(_('Email'), D+'sora_icons/p_email.png', 'email', 'home'),
             Category(_('File sharing'), D+'sora_icons/p_file_sharing.png', 'file_sharing', 'home'),

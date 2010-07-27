@@ -20,11 +20,13 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
+
 import gtk, os, sys
 from lib import *
 from libu import *
 from libapp import *
 from loader import AppObjs, load_app_objs
+
 
 class Area(gtk.HBox):
     def __init__(self):
@@ -45,11 +47,118 @@ class Area(gtk.HBox):
 class InstallRemovePane(gtk.VBox):
     icon = D+'sora_icons/m_install_remove.png'
     text = _('Install\nSoftware')
-    
+    def right_click_select(self, widget, event):
+        select = widget.get_selection()
+        x, y = event.get_coords()
+        path_tuple = widget.get_path_at_pos(int(x), int(y))
+        if path_tuple:
+            path, obj, cell_x, cell_y = path_tuple
+            select.select_path(path) 
+        
+    def show_add_custom_app(self, widget):
+        dict = {}
+        from support.add_custom_app import AddCustomAppDialog
+        tree_store,iter = self.left_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        dict['category'] = tree_store.get_value(iter,2)
+        dialog = AddCustomAppDialog(dict)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
+    def show_add_custom_app_for_rightpane(self, widget):
+        dict = {}
+        from support.add_custom_app import AddCustomAppDialog
+        tree_store,iter = self.left_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        dict['category'] = tree_store.get_value(iter,2)
+        dialog = AddCustomAppDialog(dict)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
+    def show_edit_custom_app_for_rightpane(self, widget):
+        dict = {}
+        from support.add_custom_app import AddCustomAppDialog
+        tree_store,iter = self.right_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        dict['appobj'] = tree_store.get_value(iter,0)
+        if not issubclass(dict['appobj'].__class__, N):
+            return
+        dict['appname'] = dict['appobj'].__class__.__name__
+        dict['category'] = dict['appobj'].category
+        dict['__doc__'] = dict['appobj'].__doc__
+        dict['detail'] = dict['appobj'].detail
+        dict[get_desktop_environment()] = dict['appobj'].pkgs
+        dialog = AddCustomAppDialog(dict)
+        dialog.vbox.show_all()
+        dialog.run()
+        dialog.destroy()
+    def remove_custom_app_for_rightpane(self, widget):
+        dict = {}
+        tree_store,iter = self.right_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        obj = tree_store.get_value(iter,0)
+        if not issubclass(obj.__class__, N):
+            return
+        dict['appname'] = obj.__class__.__name__
+        dict['hide'] = True
+        appstore = AppObjs.list_store
+        iter2 = appstore.get_iter_root()
+        while iter2:
+            if appstore.get_value(iter2,0) == obj:
+                appstore.remove(iter2)
+                break
+            iter2 = appstore.iter_next(iter2)
+      
+        from loader import CUSTOM_APPS
+        CUSTOM_APPS.addAppObjFromDict(dict)
+        
+    def add_app_to_favour(self, widget):
+        dict = {}
+        tree_store,iter = self.right_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        obj = tree_store.get_value(iter,0)
+        if not issubclass(obj.__class__, N):
+            return
+        category = getattr(obj, 'category', '')
+        cate_list = category.split()
+        if 'favourite' in cate_list:
+            return
+        
+        dict['appname'] = obj.__class__.__name__
+        cate_list.append('favourite')
+        obj.category = dict['category'] = ' '.join(cate_list)
+        
+        from loader import CUSTOM_APPS
+        CUSTOM_APPS.addAppObjFromDict(dict)
+    def remove_from_favour(self, widget):
+        dict = {}
+        tree_store,iter = self.right_treeview.get_selection().get_selected()
+        if not iter or not tree_store:
+            return 
+        obj = tree_store.get_value(iter,0)
+        if not issubclass(obj.__class__, N):
+            return
+        category = getattr(obj, 'category', '')
+        cate_list = category.split()
+        if len(cate_list) <= 1 or not 'favourite' in cate_list:
+            return
+
+        dict['appname'] = obj.__class__.__name__
+        cate_list.remove('favourite')
+        obj.category = dict['category'] = ' '.join(cate_list)
+        
+        from loader import CUSTOM_APPS
+        CUSTOM_APPS.addAppObjFromDict(dict)
+                
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
         self.left_treeview.expand_all()
-        self.left_treeview.get_selection().select_path('1')
+        self.left_treeview.get_selection().select_path('2')
 
     def __left_pane_changed ( self, treeselection, treeview ):
         model, parent = treeselection.get_selected()
@@ -107,6 +216,19 @@ class InstallRemovePane(gtk.VBox):
         scrollwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type(gtk.SHADOW_IN)
 
+        add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add New Entry') )
+        add_entry.connect("activate", self.show_add_custom_app )
+        popupmenu = gtk.Menu()
+        popupmenu.append(add_entry)
+        popupmenu.show_all()
+        def left_treeview_button_press_event(treeview, event):
+            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                popupmenu.popup(None, None, None, event.button, event.time)
+                return True
+            return False
+        treeview.connect('button_press_event', self.right_click_select)
+        treeview.connect('button_press_event', left_treeview_button_press_event)
+        
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(toolbar, False)
         vbox.pack_start(scrollwindow)
@@ -413,7 +535,7 @@ class InstallRemovePane(gtk.VBox):
         if 'all' == self.right_pane_visible_category:
             visible1 = not obj.this_is_a_repository
         else:
-            visible1 = obj.category == self.right_pane_visible_category
+            visible1 = self.right_pane_visible_category in obj.category.split()
 
         if self.filter_text == '':
             visible2 = True
@@ -547,7 +669,9 @@ class InstallRemovePane(gtk.VBox):
         toolbar.pack_start(button_apply, False)
         
         import gobject, pango
+
         self.right_store = treestore = AppObjs.list_store
+
         
         self.right_store_filter = treestorefilter = treestore.filter_new()
         treestorefilter.set_visible_func(self.__right_visible_func)
@@ -592,6 +716,30 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
+        add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add Entry') )
+        add_entry.connect("activate", self.show_add_custom_app )
+        edit_entry = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit Entry') )
+        edit_entry.connect("activate", self.show_edit_custom_app_for_rightpane )
+        remove_entry = image_stock_menuitem(gtk.STOCK_REMOVE, _('Remove Entry') )
+        remove_entry.connect("activate", self.remove_custom_app_for_rightpane )
+        add_to_favour = image_stock_menuitem(gtk.STOCK_ABOUT, _('Add To Favourite') )
+        add_to_favour.connect("activate", self.add_app_to_favour )
+        remove_from_favour = image_stock_menuitem(gtk.STOCK_ABOUT, _('Remove From Favourite') )
+        remove_from_favour.connect("activate", self.remove_from_favour )        
+        popupmenu = gtk.Menu()
+        popupmenu.append(add_entry)
+        popupmenu.append(edit_entry)
+        popupmenu.append(remove_entry)
+        popupmenu.append(add_to_favour)
+        popupmenu.append(remove_from_favour)
+        popupmenu.show_all()
+        def left_treeview_button_press_event(treeview, event):
+            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                popupmenu.popup(None, None, None, event.button, event.time)
+                return True
+            return False
+        treeview.connect('button_press_event', self.right_click_select)
+        treeview.connect('button_press_event', left_treeview_button_press_event)
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(toolbar, False)
         vbox.pack_start(scroll)
@@ -713,9 +861,9 @@ class InstallRemovePane(gtk.VBox):
         self.status_label.set_text(text)
     
     def notify_sync(self):
+        gtk.gdk.threads_enter()
         from download_icons import icons_pack_version
         if icons_pack_version > Config.get_last_synced_data_version():
-            gtk.gdk.threads_enter()
             dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                        message_format=
                                        _('Would you like to download latest application data from web?'))
@@ -723,12 +871,16 @@ class InstallRemovePane(gtk.VBox):
             dialog.destroy()
             if ret == gtk.RESPONSE_YES:
                 self.synchronize()
-            gtk.gdk.threads_leave()
-
+        gtk.gdk.threads_leave()
+        
     def synchronize(self):
         import download_icons
         Config.set_last_synced_data_version(download_icons.icons_pack_version)
-        download_icons.main()
+
+        import subprocess
+        task = subprocess.Popen(['python', A+'/download_icons.py'])
+        task.wait()
+
         self.do_refresh_icon()
 
     def left_class_choose_button_clicked(self, button):
@@ -746,7 +898,10 @@ class InstallRemovePane(gtk.VBox):
         return button
 
     def fill_left_treestore(self):
-        all_categories = [obj.category for obj in AppObjs.appobjs]
+        all_categories = set()
+        for obj in AppObjs.appobjs:
+            for c in obj.category.split():
+                all_categories.add(c)
         items = Category.all()
         assert items[0].category == 'all'
         items[0].visible = True
@@ -758,5 +913,6 @@ class InstallRemovePane(gtk.VBox):
         
         right_categories = [item.category for item in items]
         for obj in AppObjs.appobjs:
-            if obj.category not in right_categories:
-                print obj.__class__.__name__, 'category is wrong'
+            for c in obj.category.split():
+                if c not in right_categories:
+                    print obj.__class__.__name__, 'category is wrong'

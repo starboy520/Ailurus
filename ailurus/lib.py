@@ -105,6 +105,21 @@ class Config:
     import os
     config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
+    def get_custom_app_count(cls):
+        if cls.parser.has_option('DEFAULT','custom_app_count'):
+            value = cls.parser.get('DEFAULT', 'custom_app_count')
+            return int(value)
+        else:
+            cls.parser.set('DEFAULT', 'custom_app_count', '0')
+            cls.save()
+            return 0
+    @classmethod
+    def increase_custom_app_count(cls):
+        if cls.parser.has_option('DEFAULT','custom_app_count'):
+            value = cls.parser.get('DEFAULT', 'custom_app_count')
+            cls.parser.set('DEFAULT', 'custom_app_count', '%d' % (int(value) + 1))
+            cls.save()
+    @classmethod
     def make_config_dir(cls):
         import os
         dir = os.path.expanduser('~/.config/ailurus/')
@@ -389,7 +404,17 @@ class Config:
             return True
         except: 
             return False
+def get_desktop_environment():
+    if UBUNTU or MINT:
+        return 'ubuntu'
+    elif FEDORA:
+        return 'fedora'
+    elif ARCHLINUX:
+        return 'archlinux'
 
+def add_custom_app_inRepo(name):
+    summary = BACKEND.get_pkg_summary(name)
+    
 def set_proxy_string(proxy_string):
     import gnomekeyring
     keyring = gnomekeyring.get_default_keyring_sync()
@@ -828,6 +853,20 @@ class APT:
     def cache_changed(cls):
         cls.fresh_cache = False
     @classmethod
+    def get_pkg_summary(cls, name):
+        if not isinstance(name,str) or not name in cls.__set2:
+            return ''
+        import subprocess, os
+        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_pkg_summary.py %s' % name
+        task = subprocess.Popen(['python', path],
+            stdout=subprocess.PIPE,
+            )
+        for line in task.stdout:
+            summary = line[:-1]
+            task.wait()
+            return summary
+        return ''
+    @classmethod
     def has_broken_dependency(cls):
         cls.refresh_cache()
         try:
@@ -931,6 +970,8 @@ class APT:
 
 class CannotLockAptCacheError(Exception):
     'Cannot lock apt cache'
+
+        
 
 class PACMAN:
     fresh_cache = False
@@ -1877,6 +1918,7 @@ YLMF = Config.is_YLMF()
 DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
+BACKEND = APT
 if UBUNTU:
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
@@ -1891,8 +1933,10 @@ elif DEEPIN:
     VERSION = Config.get_Deepin_version()
 elif FEDORA:
     VERSION = Config.get_Fedora_version()
+    BACKEND = RPM
 elif ARCHLINUX:
     VERSION = '' # ArchLinux has no version -_-b
+    BACKEND = PACKMAN
 else:
     print _('Your Linux distribution is not supported. :(')
     VERSION = ''
