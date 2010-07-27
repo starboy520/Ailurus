@@ -175,15 +175,15 @@ class AddCustomAppDialog(gtk.Dialog):
         table.set_col_spacings(10)
         table.set_row_spacings(5)
         table.attach(label_name, 0, 1, 0, 1, gtk.FILL, 0)
-        table.attach(label_detail, 0, 1, 1, 2, gtk.FILL, 0)
         table.attach(entry_name, 1, 2, 0, 1, gtk.FILL, 0)
+        table.attach(label_detail, 0, 1, 1, 2, gtk.FILL, 0)
         table.attach(entry_detail, 1, 2, 1, 2, gtk.FILL, 0)
         table.attach(label_pkgs_to_install, 0, 1, 2, 3, gtk.FILL, 0)
         table.attach(entry_pkgs, 1, 2, 2, 3, gtk.FILL, 0)
-        table.attach(label_category, 0, 1, 4, 5, gtk.FILL, 0)
-        table.attach(combo_category, 1, 2, 4, 5, gtk.FILL, 0)
         table.attach(label_add_pkg_to_list, 0, 1, 3, 4, gtk.FILL, 0)
         table.attach(hbox_add_pkg, 1, 2, 3, 4, gtk.FILL, 0)
+        table.attach(label_category, 0, 1, 4, 5, gtk.FILL, 0)
+        table.attach(combo_category, 1, 2, 4, 5, gtk.FILL, 0)
         
         # left_box
         self.icon_chooser = icon_chooser = ImageChooser('/usr/share/pixmaps/', 48, 48)
