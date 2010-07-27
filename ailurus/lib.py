@@ -800,18 +800,18 @@ class RPM:
     @classmethod
     def install(cls, *package):
         cls.cache_changed()
-        run_as_root_in_terminal('yum install %s' % ' '.join(package))
+        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
         cls.cache_changed()
-        run_as_root_in_terminal('yum localinstall "%s"' % path)
+        run_as_root_in_terminal('yum localinstall "%s" --nogpgcheck -y' % path)
     @classmethod
     def remove(cls, *package):
         cls.cache_changed()
-        run_as_root_in_terminal('yum remove %s' % ' '.join(package))
+        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
     @classmethod
     def import_key(cls, path):
         assert isinstance(path, str)
