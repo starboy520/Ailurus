@@ -150,7 +150,6 @@ class AddCustomAppDialog(gtk.Dialog):
         pkg_completion.set_text_column(0)
         pkg_completion.set_minimum_key_length(3)
 
-        
         entry_pkg.connect("activate",self.__pkgname_callback)
        
         button_add_pkg = stock_image_only_button(gtk.STOCK_ADD)
@@ -165,7 +164,9 @@ class AddCustomAppDialog(gtk.Dialog):
         button_cancel = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
         button_cancel.connect('clicked', self.__cancel)
 
-        table = gtk.Table(5,2,False)
+        table = gtk.Table(False)
+        table.set_col_spacings(10)
+        table.set_row_spacings(5)
         table.attach(label_name, 0, 1, 0, 1, xoptions = gtk.FILL, yoptions = 0)
         table.attach(label_detail, 0, 1, 1, 2, xoptions = gtk.FILL, yoptions = 0)
         table.attach(entry_name, 1, 2, 0, 1, xoptions = gtk.FILL, yoptions = 0)
