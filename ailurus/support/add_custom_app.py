@@ -120,9 +120,9 @@ class AddCustomAppDialog(gtk.Dialog):
         self.new_icon_path = new_path
     
     def __build_bottom_box(self):
-        button_submit = image_stock_button(gtk.STOCK_APPLY, _('OK'))
+        button_submit = gtk.Button(stock = gtk.STOCK_OK)
         button_submit.connect('clicked', self.__submit)
-        button_cancel = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
+        button_cancel = gtk.Button(stock = gtk.STOCK_CANCEL)
         button_cancel.connect('clicked', self.__cancel)
 
         bottom_box = gtk.HBox(False, 10)
