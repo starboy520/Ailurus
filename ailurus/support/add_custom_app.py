@@ -176,9 +176,9 @@ class AddCustomAppDialog(gtk.Dialog):
         table.attach(label_detail, 0, 1, 1, 2, gtk.FILL, 0)
         table.attach(entry_name, 1, 2, 0, 1, gtk.FILL, 0)
         table.attach(entry_detail, 1, 2, 1, 2, gtk.FILL, 0)
-        hbox_bottom = gtk.HBox(False, 10)
-        hbox_bottom.pack_end(button_cancel, False)
-        hbox_bottom.pack_end(button_submit, False)
+        bottom_box = gtk.HBox(False, 10)
+        bottom_box.pack_end(button_cancel, False)
+        bottom_box.pack_end(button_submit, False)
         
         self.combo_category = combo_category = gtk.combo_box_entry_new_text()
         index = 0
@@ -225,12 +225,12 @@ class AddCustomAppDialog(gtk.Dialog):
         left_vbox.pack_start(icon_chooser, False)
         left_vbox.pack_start(gtk.Label(), True)
         
-        hbox_icon_and_table = gtk.HBox(False, 10)
-        hbox_icon_and_table.pack_start(left_vbox, False)
-        hbox_icon_and_table.pack_start(table, False)
+        top_box = gtk.HBox(False, 10)
+        top_box.pack_start(left_vbox, False)
+        top_box.pack_start(table, False)
 
-        self.vbox.pack_start(hbox_icon_and_table, False)
-        self.vbox.pack_end(hbox_bottom, False)
+        self.vbox.pack_start(top_box, False)
+        self.vbox.pack_end(bottom_box, False)
         
         self.origin_category = self.__get_category()
 
