@@ -119,9 +119,9 @@ class AddCustomAppDialog(gtk.Dialog):
         self.new_icon_path = new_path
         
     def __init__(self,dict={}):
-        gtk.Dialog.__init__(self,title = _('Your Custom Application'),
-                     flags = gtk.DIALOG_MODAL | gtk.DIALOG_DESTROY_WITH_PARENT,
-                     )
+        gtk.Dialog.__init__(self,
+                            title=_('Edit custom application'),
+                            flags=gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
         self.dict = dict
         self.set_position(gtk.WIN_POS_CENTER)
         label_name = gtk.Label(_('Name') + ': ')
