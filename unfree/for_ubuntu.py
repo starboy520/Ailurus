@@ -35,16 +35,13 @@ class urls:
     alipay = 'http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz'
     amenace = 'http://www.viewizard.com/download/amenace12.tar.bz2'
     hittex = 'http://plutothesis.googlecode.com/files/PlutoThesis_UTF8_1.9.2.20090424.zip'
-    eioffice = 'http://evermoresw.com.cn/EverMore/EIOPersonal/EIOffice_Personal_Lin.tar.gz'
-    eioffice_clipart = 'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Clipart.tar.gz'
-    eioffice_help = 'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_HelpFiles.tar.gz'
-    eioffice_scienceeditor = 'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_ScienceEditorImages.tar.gz'
-    eioffice_templates = 'http://evermoresw.com.cn/EverMore/EIOPersonal/Resource/EIOffice_Templates.tar.gz'
     nvidia_32 = 'ftp://download.nvidia.com/XFree86/Linux-x86/195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run'
     nvidia_64 = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run'
     adobeair = 'http://airdownload.adobe.com/air/lin/download/latest/adobeair.deb'
     picasa_32 = 'http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_i386.deb'
     picasa_64 = 'http://dl.google.com/linux/deb/pool/non-free/p/picasa/picasa_3.0-current_amd64.deb'
+    truecrypt32 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x86.tar.gz'
+    truecrypt64 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x64.tar.gz'
 
 class Alice(_path_lists):
     __doc__ = _('Alice: A new way to learn programming')
@@ -267,7 +264,7 @@ class Google_Chrome(I):
         APT.remove('google-chrome-stable')
 
 class ESETNOD32(I):
-    __doc__ = _('ESET NOD32')
+    'ESET NOD32'
     detail = _('Anti virus and anti spyware')
     download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
@@ -306,7 +303,7 @@ class Repo_Oracle(_repo):
         _repo.__init__(self)
 
 class AdobeAIR(I):
-    __doc__ = 'Adobe AIR'
+    'Adobe AIR'
     detail = _('Use HTML, JavaScript and Flash to build desktop applications')
     download_url = 'http://get.adobe.com/air/'
     category = 'ide'
@@ -319,7 +316,7 @@ class AdobeAIR(I):
         APT.remove('adobeair')
 
 class Picasa(I):
-    __doc__ = 'Picasa'
+    'Picasa'
     detail = _('An image organizer and image viewer, plus photo-sharing function')
     if is32():
         download_url = urls.picasa_32
@@ -335,7 +332,7 @@ class Picasa(I):
         APT.remove('picasa')
 
 class Mendeley(_apt_install):
-    __doc__ = 'Mendeley'
+    'Mendeley'
     detail = _('Organizes research paper collection and citations. It automatically generates bibliographies.')
     pkgs = 'mendeleydesktop'
     category = 'latex'
@@ -345,3 +342,26 @@ class Mendeley(_apt_install):
     if i%2 == 0: b = '04'
     else: b = '10'
     deb = 'deb http://www.mendeley.com/repositories/xUbuntu_%s.%s /' % (a, b)
+
+class TrueCrypt(I):
+    __doc__ = _('TrueCrypt: Open-Source disk encryption software')
+    detail = _('Create a virtual encrypted disk or encrypt an entire partition')
+    category = 'security'
+    def installed(self):
+        return os.path.exists('/usr/bin/truecrypt')
+    def remove(self):
+        run_as_root('/usr/bin/truecrypt-uninstall.sh')
+    def install(self):
+        if is32():
+            url = urls.truecrypt32
+            pattern = 'truecrypt-*-setup-x86'
+        else:
+            url = urls.truecrypt64
+            pattern = 'truecrypt-*-setup-x64'
+        f = R(url).download()
+        with Chdir('/tmp'):
+            run('tar xf "%s"' % f)
+            import glob
+            path = glob.glob(pattern)[0]
+            path = os.path.abspath(path)
+            run_as_root(path)
