@@ -41,3 +41,5 @@ worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wo
 mytourbook32 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86.zip'
 mytourbook64 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86_64.zip'
 routeconverter = 'http://www.routeconverter.de/download/RouteConverterLinux.jar'
+geogebra32 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-Portable-3-2-42-0.tar.gz'
+geogebra64 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-64bit-Portable-3-2-42-0.tar.gz'

@@ -12,6 +12,7 @@
     * Do not store downloaded files in /var/cache/ailurus/ any more.
     * Add RouteConverter, converts between different GPS track formats.
     * Add Backintime, incremental backup tool supporting schedule.
+    * Add Geogebra, learning algebra and geometry.
 
 2010-07-26 Homer Xing <homer.xing@gmail.com>
 

@@ -153,6 +153,31 @@ Terminal=false
 Type=Application
 Icon=/opt/mytourbook/icon.xpm''')
 
+class GeoGebra(_path_lists):
+    'GeoGebra'
+    detail = _('Learning algebra and geometry')
+    category = 'math'
+    download_url = 'http://www.geogebra.org/cms/'
+    shortcut = '/usr/share/applications/GeoGebra.desktop'
+    file = '/opt/geogebra'
+    paths = [shortcut, file]
+    def install(self):
+        if is32(): url = urls.geogebra32
+        else: url = urls.geogebra64
+        f = R(url).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        with Chdir('/opt'):
+            run_as_root('tar xf "%s"' % f)
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=GeoGebra
+Exec=/opt/geogebra/geogebra.sh
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/opt/geogebra/icon.png''')
+
 class SweetHome3D(_path_lists):
     __doc__ = _('SweetHome3D: open source interior design application')
     download_url = 'http://www.sweethome3d.com/'
