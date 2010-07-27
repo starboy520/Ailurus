@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -27,6 +26,7 @@ import urllib2
 import gtk
 import pango
 
+from lib import *
 from libu import *
 
 LOCAL_DEBUG = 0
@@ -124,17 +124,15 @@ class SubmitWindow(gtk.Window):
         gtk.Window.__init__(self)
         self.set_position(gtk.WIN_POS_CENTER)
         self.set_title(title)
-        self.set_border_width(10)
+        self.set_border_width(5)
         self.set_size_request(300, 400)
         
-        namebox = gtk.HBox()
-        namebox.pack_start(gtk.Label(_('Name: ')), 
-                             False)
         self.nameentry = nameentry = gtk.Entry()
-        default_name = self.__get_default_name()
-        nameentry.set_text(default_name)
-        nameentry.modify_font(pango.FontDescription('Georgia 10'))
-        namebox.pack_end(nameentry, True)
+        nameentry.set_text(Config.get_username_of_suggestion_window())
+
+        namebox = gtk.HBox(False, 5)
+        namebox.pack_start(gtk.Label(_('Your name:')), False)
+        namebox.pack_start(nameentry)
         
         subjectbox = gtk.HBox()
         subjectbox.pack_start(gtk.Label(_('Subject: ')), False)
@@ -151,7 +149,7 @@ class SubmitWindow(gtk.Window):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         contentbox.pack_start(scroll, True)
         
-        buttonbox = gtk.HBox()
+        buttonbox = gtk.HBox(False, 10)
         submitbtn = image_stock_button(gtk.STOCK_APPLY, _('Submit'))
         submitbtn.connect('clicked', self.__submit, 
                           nameentry, 
@@ -217,22 +215,16 @@ class SubmitWindow(gtk.Window):
     
     def __cancel(self, btn):
         self.__quit()
-    
-    def __get_default_name(self):
-        from lib import Config
-        return Config.get_default_name()
 
 class SkillsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Skill submit'), skill_send)
+        SubmitWindow.__init__(self, _('Submit a Linux skill'), skill_send)
 
 class SuggestionsSubmit(SubmitWindow):
     def __init__(self):
-        SubmitWindow.__init__(self, _('Suggestion submit'), suggestion_send)
+        SubmitWindow.__init__(self, _('Propose suggestion'), suggestion_send)
 
 if __name__ == '__main__':
-
     skill_send('bb', 'test skill')
     print 'OK'
     print urllib2.urlopen('http://%s:%d/' % (HOST, PORT)).read()
-    

@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,7 +24,7 @@ import sys, os
 from lib import *
 
 def get():
-    return [
+    List1 = [
 _('''motto of Ailurus
 Give a man a fish and he can eat for a day; but if you teach him how to fish, he'll eat for a lifetime.'''),
 
@@ -371,3 +370,8 @@ NEW_PRIORITY = -19, -18, -17 [...] 18, 19, 20
 '''),
 
 ]
+    if Config.is_Chinese_locale():
+        List1.append(_(r'''View the IP address outside the local network
+w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}'
+'''))
+    return List1

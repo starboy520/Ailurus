@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -39,7 +38,7 @@ def __study_linux():
          'http://www.ubuntupocketguide.com/', False),
         (_('Find more third-party repositories on http://repogen.simplylinux.ch/'), 
          'http://repogen.simplylinux.ch/', False),
-        #(_(u'How to install themes of Fedora® or OpenSolaris® on Ubuntu ?'), 
+        #(_(u'How to install themes of Fedora or OpenSolaris on Ubuntu ?'), 
         # 'http://tdt.sjtu.edu.cn/S/how_to/fedora_theme.html', False),
         #(_(u'How to install Warcraft III and DotA on Ubuntu ?'), 
         # 'http://ailurus.cn/?p=292', False),

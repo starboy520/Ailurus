@@ -1,8 +1,8 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
 #
 # Ailurus is free software; you can redistribute it and/or modify
@@ -25,6 +25,25 @@ from lib import *
 from libapp import *
 assert FEDORA
 
+class urls:
+    eset_antivirus_32 = 'http://download.eset.com/special/eav_linux/ueav.i386.linux'
+    eset_antivirus_64 = 'http://download.eset.com/special/eav_linux/ueav.x86_64.linux'
+    google_earch = 'http://dl.google.com/earth/client/current/GoogleEarthLinux.bin'
+    google_chrome_32 = 'http://dl.google.com/linux/direct/google-chrome-stable_current_i386.rpm'
+    google_chrome_64 = 'http://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm'
+    alipay = 'http://blog.alipay.com/wp-content/2008/10/aliedit.tar.gz'
+    amenace = 'http://www.viewizard.com/download/amenace12.tar.bz2'
+    hittex = 'http://plutothesis.googlecode.com/files/PlutoThesis_UTF8_1.9.2.20090424.zip'
+    adobe_repos_rpm = 'http://linuxdownload.adobe.com/linux/i386/adobe-release-i386-1.0-1.noarch.rpm'
+    rpmfusion_repos_free = 'http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm'
+    rpmfusion_repos_nonfree = 'http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-stable.noarch.rpm'
+    nvidia_32 = 'ftp://download.nvidia.com/XFree86/Linux-x86/195.36.24/NVIDIA-Linux-x86-195.36.24-pkg1.run'
+    nvidia_64 = 'ftp://download.nvidia.com/XFree86/Linux-x86_64/195.36.24/NVIDIA-Linux-x86_64-195.36.24-pkg2.run'
+    picasa_32 = 'http://dl.google.com/linux/rpm/testing/i386/picasa-3.0-current.i386.rpm'
+    adobeair_32 = 'http://airdownload.adobe.com/air/lin/download/latest/adobeair.i386.rpm'
+    truecrypt32 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x86.tar.gz'
+    truecrypt64 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x64.tar.gz'
+
 class _repo(I):
     this_is_a_repository = True
     category = 'repository'
@@ -45,7 +64,7 @@ class _repo(I):
             if lines[i].startswith('enabled='):
                 lines[i] = 'enabled=1\n'
                 if only_enable_first_appearance: break
-        with TempOwn(path) as o:
+        with TempOwn(path):
             with open(path, 'w') as f:
                 f.writelines(lines)
     @classmethod
@@ -55,7 +74,7 @@ class _repo(I):
         for i, line in enumerate(lines):
             if lines[i].startswith('enabled='):
                 lines[i] = 'enabled=0\n'
-        with TempOwn(path) as o:
+        with TempOwn(path):
             with open(path, 'w') as f:
                 f.writelines(lines)
 
@@ -91,7 +110,7 @@ class Repo_Skype(I):
         if _repo.exist(self.path):
             _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[skype]\n'
                         'name=Skype Repository\n'
@@ -171,7 +190,7 @@ class Repo_Google(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path, False)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[Google]\n'
                         'name=Google - i386\n'
@@ -200,7 +219,7 @@ class Repo_Google_Chrome(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 if is32(): arch = 'i386'
                 else: arch = 'x86_64'
                 
@@ -229,7 +248,7 @@ class Repo_VirtualBox(I):
     def install(self):
         if _repo.exist(self.path): _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[virtualbox]\n'
                         'name=Fedora $releasever - $basearch - VirtualBox\n'
@@ -251,13 +270,13 @@ class GStreamer_Codecs (_rpm_install) :
             'gstreamer-plugins-good gstreamer-plugins-ugly')
 
 class Adobe_Flash_Player(_rpm_install):
-    __doc__ = _(u'Adobe® Flash plugin for web browser')
+    __doc__ = _('Adobe Flash plugin for web browser')
     category = 'flash'
     depends = Repo_Adobe
     pkgs = 'flash-plugin'
 
 class AdobeReader(_rpm_install):
-    __doc__ = _(u'Adobe® PDF Reader')
+    __doc__ = _('Adobe PDF Reader')
     download_url = 'http://get.adobe.com/reader/'
     category = 'business'
     depends = Repo_Adobe
@@ -281,21 +300,6 @@ class AdobeReader(_rpm_install):
             self.pkgs = package_dict['en']
     def visible(self):
         return is32()
-
-# Do not install Realplayer. It cannot be removed by yum :(
-#class Realplayer32(I):
-#    'RealPlayer® 11'
-#    detail = _('If you cannot play RMVB video, try this application! '
-#       'You can launch RealPlayer by "/opt/real/RealPlayer/realplay".')
-#    download_url = 'http://www.real.com/linux'
-#    category = 'player'
-#    def install(self):
-#        f = R(urls.realplayer).download()
-#        RPM.install_local(f)
-#    def installed(self):
-#        return RPM.installed('RealPlayer')
-#    def remove(self):
-#        RPM.remove('RealPlayer')
 
 class GoogleChrome(I):
     __doc__ = _('Google Chrome browser')
@@ -333,7 +337,7 @@ class GoogleEarth(I):
         run_as_root_in_terminal('/opt/google-earth/uninstall')
            
 class VirtualBox(_rpm_install):
-    'SUN® VirtualBox 3'
+    'SUN VirtualBox 3'
     detail = _('It is the only professional virtual machine which is freely available '
        'under the terms of GPL. '
        'Official site: http://www.virtualbox.org/wiki/Downloads')
@@ -361,7 +365,7 @@ class Repo_Chromium(I):
         if _repo.exist(self.path):
             _repo.enable(self.path)
         else:
-            with TempOwn(self.path) as o:
+            with TempOwn(self.path):
                 with open(self.path, 'w') as f:
                     f.write('[chromium]\n'
                             'name=Chromium Test Packages\n'
@@ -373,7 +377,7 @@ class Repo_Chromium(I):
             _repo.disable(self.path)
 
 class ESETNOD32(I):
-    __doc__ = _('ESET NOD32')
+    'ESET NOD32'
     detail = _('Anti virus and anti spyware')
     download_url = 'http://beta.eset.com/linux'
     category = 'antivirus'
@@ -386,7 +390,7 @@ class ESETNOD32(I):
         run_as_root(f)
         if not is32():
             # Fix bug because /usr/lib/libesets_pac.so cannot run on x86_64
-            with TempOwn('/etc/ld.so.preload') as o:
+            with TempOwn('/etc/ld.so.preload'):
                 with open('/etc/ld.so.preload') as f:
                     content = f.read()
                 with open('/etc/ld.so.preload', 'w') as f:
@@ -399,13 +403,54 @@ class ESETNOD32(I):
         run_as_root('/opt/eset/esets/bin/esets_gil')
 
 class AdobeAIR(I):
-    __doc__ = ('Adobe AIR: use HTML, JavaScript and Flash to build desktop applications')
+    'Adobe AIR'
+    detail = _('Use HTML, JavaScript and Flash to build desktop applications')
     download_url = 'http://get.adobe.com/air/'
     category = 'ide'
     def install(self):
-        f = R('http://airdownload.adobe.com/air/lin/download/latest/adobeair.i386.rpm').download()
+        f = R(urls.adobeair_32).download()
         RPM.install_local(f)
     def installed(self):
         return RPM.installed('adobeair')
     def remove(self):
         RPM.remove('adobeair')
+    def visible(self):
+        return is32()
+
+class Picasa(I):
+    'Picasa'
+    detail = _('An image organizer and image viewer, plus photo-sharing function')
+    download_url = urls.picasa_32
+    category = 'image'
+    def install(self):
+        f = R(urls.picasa_32).download()
+        RPM.install_local(f)
+    def installed(self):
+        return RPM.installed('picasa')
+    def remove(self):
+        RPM.remove('picasa')
+    def visible(self):
+        return is32()
+
+class TrueCrypt(I):
+    __doc__ = _('TrueCrypt: Open-Source disk encryption software')
+    detail = _('Create a virtual encrypted disk or encrypt an entire partition')
+    category = 'security'
+    def installed(self):
+        return os.path.exists('/usr/bin/truecrypt')
+    def remove(self):
+        run_as_root('/usr/bin/truecrypt-uninstall.sh')
+    def install(self):
+        if is32():
+            url = urls.truecrypt32
+            pattern = 'truecrypt-*-setup-x86'
+        else:
+            url = urls.truecrypt64
+            pattern = 'truecrypt-*-setup-x64'
+        f = R(url).download()
+        with Chdir('/tmp'):
+            run('tar xf "%s"' % f)
+            import glob
+            path = glob.glob(pattern)[0]
+            path = os.path.abspath(path)
+            run_as_root(path)

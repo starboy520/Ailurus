@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -25,6 +24,29 @@ import gtk, os, sys
 from lib import *
 from libu import *
 from loader import *
+
+def detect_proxy_env():
+    if 'http_proxy' in os.environ and Config.get_use_proxy() == False:
+        proxy_string = os.environ['http_proxy']
+        message = _('You have set an environment variable <i>http_proxy=%s</i>.\n'
+                    'Would you like to let Ailurus use a proxy server?') % proxy_string
+        dialog = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION,
+                                   buttons=gtk.BUTTONS_YES_NO)
+        dialog.set_markup(message)
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_YES:
+            try:
+                set_proxy_string(proxy_string)
+                Config.set_use_proxy(True)
+            except:
+                print_traceback()
+            else:
+                dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                           buttons=gtk.BUTTONS_OK,
+                                           message_format=_('Successfully adopted a proxy server'))
+                dialog.run()
+                dialog.destroy()
 
 def detect_running_instances():
     string = get_output('pgrep -u $USER ailurus', True)
@@ -90,10 +112,6 @@ def check_required_packages():
         ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
-    if not os.path.exists('/usr/bin/xterm'):
-        ubuntu_missing.append('xterm')
-        fedora_missing.append('xterm')
-        archlinux_missing.append('xterm')
 
     try: # detect policykit version 0.9.x
         import dbus
@@ -283,7 +301,8 @@ class PaneLoader:
         if self.pane_object is None:
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
-            self.pane_object = self.pane_class(self.main_view, *arg)
+            with TimeStat(self.pane_class.__name__):
+                self.pane_object = self.pane_class(self.main_view, *arg)
         return self.pane_object
     def need_to_load(self):
         return self.pane_object is None
@@ -504,7 +523,7 @@ class MainView:
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
             self.register(FedoraFastestMirrorPane)
-        self.register(InstallRemovePane, load_app_objs)
+        self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
         
@@ -519,17 +538,47 @@ class MainView:
             import thread
             thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
-sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
-change_task_name()
-set_default_window_icon()
-check_required_packages()
-check_dbus_daemon_status()
-from support.clientlib import try_send_delayed_data
-try_send_delayed_data()
+def show_agreement():
+    message = ('Ailurus CANNOT install w32codecs/w64codecs, libdvdcss2 or close source software.\n'
+        '\n'
+        '<span color="red">Please NOTE that <b>downloading and installing w32codecs/w64codecs '
+        'and libdvdcss2 violates the Digital Millennium Copyright Act(DMCA) and other laws regarding '
+        'anti-piracy/copyright violation in the United States of America</b>.</span>\n'
+        '\n'
+        'Under NO circumstances, will the Ailurus developers be responsible for your actions which includes, '
+        'but not limited to, downloading and installing these codecs or close source software.')
+    label = gtk.Label(_('Do you agree?'))
+    checkbox = gtk.CheckButton(_('I agree. Do not ask me again.'))
+    checkbox.set_active(not Config.get_show_agreement())
+    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO, type=gtk.MESSAGE_WARNING)
+    dialog.set_markup(message)
+    dialog.set_title(_('Warning'))
+    dialog.vbox.pack_start(label, False)
+    dialog.vbox.pack_start(left_align(checkbox), False)
+    dialog.vbox.show_all()
+    ret = dialog.run()
+    dialog.destroy()
+    if ret == gtk.RESPONSE_YES:
+        active = checkbox.get_active()
+        Config.set_show_agreement(not active)
+    if ret != gtk.RESPONSE_YES:
+        sys.exit()
 
-while gtk.events_pending(): gtk.main_iteration()
-main_view = MainView()
-#splash.destroy()
+if Config.get_show_agreement():
+    show_agreement()
+
+with TimeStat(_('start up')):
+    sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+    change_task_name()
+    set_default_window_icon()
+    detect_proxy_env()
+    check_required_packages()
+    check_dbus_daemon_status()
+    #from support.clientlib import try_send_delayed_data
+    #try_send_delayed_data()
+    
+    while gtk.events_pending(): gtk.main_iteration()
+    main_view = MainView()
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()

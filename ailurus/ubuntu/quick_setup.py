@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -45,7 +44,7 @@ if VERSION < 'lucid':
                 pass
             return True
         def install(self):
-            with TempOwn('/etc/fonts/conf.d/49-sansserif.conf') as o:
+            with TempOwn('/etc/fonts/conf.d/49-sansserif.conf'):
                 with open('/etc/fonts/conf.d/49-sansserif.conf') as f:
                     content = f.read()
                 content = content.replace('>sans-serif<', '>sans serif<')
@@ -80,7 +79,7 @@ WORKS = [
             [_('Multi-media codec'), 'Multimedia_Codecs', True],
             [_('Decompression software'), 'Enhance_Decompression_Capability', True],
             [_('Stardict'), 'Stardict', True],
-            [_(u'Moonlight: an open source implementation of Microsoft® Silverlight'), 'Moonlight', True],
+            [_('Moonlight: an open source implementation of Microsoft Silverlight'), 'Moonlight', True],
             [_('Flash plugin for web browser') + ' (GNU Gnash)', 'Gnash', False],
             [_('Flash plugin for web browser') + ' (Adobe)', 'Adobe_Flash_plugin', True],
 # Some people say that this operation has side effect.

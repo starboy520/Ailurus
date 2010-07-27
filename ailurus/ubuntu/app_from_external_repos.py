@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -62,41 +61,41 @@ class Chromium(_apt_install):
     ppa = 'chromium-daily'
     pkgs = 'chromium-browser'
     
-class ComicVODPlayer_new(I):
-    __doc__ = _('Mplayer with "vod" protocol support')
-    detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
-    category = 'player'
-    Chinese = True
-    license = GPL
-    ppa = 'homer-xing/mplayer-vod'
-    def __init__(self):
-        self.comicview = ComicView()
-    def install(self):
-        if not self.comicview.installed():
-            self.comicview.install()
-        # Remove current mplayer. Then install a newer version.
-        to_remove = [ p for p in APT.get_installed_pkgs_set() if p.startswith('mplayer') ]
-        APT.remove(*to_remove)
-        APT.install('mplayer', 'mplayer-gui')
-        # Remove repository
-        Repo_Mplayer_VOD().remove()
-    def installed(self):
-        return self.comicview.installed() and APT.installed('mplayer')
-    def remove(self):
-        APT.remove('mplayer')
-    def visible(self):
-        return APT.installed('firefox')
+#class ComicVODPlayer_new(I):
+#    __doc__ = _('Mplayer with "vod" protocol support')
+#    detail = _('Install mplayer and comicview. Mplayer supports "vod" protocol. "vod" protocol is used in some online video sites such as SJTU comic.')
+#    category = 'player'
+#    Chinese = True
+#    license = GPL
+#    ppa = 'homer-xing/mplayer-vod'
+#    def __init__(self):
+#        self.comicview = ComicView()
+#    def install(self):
+#        if not self.comicview.installed():
+#            self.comicview.install()
+#        # Remove current mplayer. Then install a newer version.
+#        to_remove = [ p for p in APT.get_installed_pkgs_set() if p.startswith('mplayer') ]
+#        APT.remove(*to_remove)
+#        APT.install('mplayer', 'mplayer-gui')
+#        # Remove repository
+#        Repo_Mplayer_VOD().remove()
+#    def installed(self):
+#        return self.comicview.installed() and APT.installed('mplayer')
+#    def remove(self):
+#        APT.remove('mplayer')
+#    def visible(self):
+#        return APT.installed('firefox')
 
-class ComicView(_ff_extension):
-    __doc__ = 'ComicView: Enjoy video on comic.sjtu.edu.cn'
-    license = GPL
-    Chinese = True
-    desc = ''
-    download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
-    name = u'Comic Viewer'
-    R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
-    def visible(self):
-        return False
+#class ComicView(_ff_extension):
+#    __doc__ = 'ComicView: Enjoy video on comic.sjtu.edu.cn'
+#    license = GPL
+#    Chinese = True
+#    desc = ''
+#    download_url = 'http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'
+#    name = u'Comic Viewer'
+#    R = R(['http://ailurus.googlecode.com/files/comicview-0.2.8.xpi'])
+#    def visible(self):
+#        return False
 
 class Exaile(_apt_install):
     __doc__ = _('Exaile: Audio player')
@@ -161,6 +160,7 @@ class OSD_Lyrics(_apt_install):
     ppa = 'osd-lyrics'
     pkgs = 'osdlyrics'
 
+# Yeah, we can install playonlinux now!
 class PlayOnLinux(_apt_install):
     __doc__ = _('PlayOnLinux: A graphical front-end for wine')
     license = LGPL
@@ -219,3 +219,31 @@ class CairoDock(_apt_install):
 #    category = 'player'
 #    ppa = 'songbird-daily'
 #    pkgs = 'songbird'
+
+class DeaDBeeF(_apt_install):
+    'DeaDBeef'
+    detail = _('Till now the only music player that can correctly play files from .cue sheets')
+    category = 'player'
+    ppa = 'alexey-smirnov/deadbeef'
+    pkgs = 'deadbeef'
+
+class Mobloquer(_apt_install):
+    'Mobloquer'
+    detail = _('Protect your privacy. Block internet traffic based on IP address ranges.')
+    category = 'internet'
+    ppa = 'jre-phoenix'
+    pkgs = 'moblock mobloquer'
+
+class Backintime(_apt_install):
+    __doc__ = 'Back In Time'
+    detail = _('Incremental backup tool supporting schedule')
+    category = 'security'
+    ppa = 'bit-team/testing'
+    pkgs = 'backintime-gnome'
+
+class Handbrake(_apt_install):
+    'Handbrake'
+    detail = _('Convert video into other forms so they can be viewed on portable devices')
+    category = 'media_editor'
+    ppa = 'stebbins/handbrake-snapshots'
+    pkgs = 'handbrake-gtk'

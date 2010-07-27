@@ -36,10 +36,12 @@ ailurus/libsetting.py
 ailurus/libu.py
 ailurus/loader.py
 ailurus/main.py
+ailurus/publickey/__init__.py
 ailurus/show_a_linux_skill_bubble.py
 ailurus/strings.py
 ailurus/support/AptAuth.py
 ailurus/support/checkupdate.py
+ailurus/support/clientlib.py
 ailurus/support/dump_rpm_existing_new.py
 ailurus/support/dump_rpm_existing.py
 ailurus/support/dump_rpm_installed.py
@@ -51,6 +53,7 @@ ailurus/support/releasenotesviewer.py
 ailurus/support/searchbox.py
 ailurus/support/terminal.py
 ailurus/support/terminal_single_thread.py
+ailurus/support/term.py
 ailurus/support/tipoftheday.py
 ailurus/support/windowpos.py
 ailurus/system_setting_pane.py
@@ -64,6 +67,7 @@ ailurus/ubuntu/__init__.py
 ailurus/ubuntu/libserver.py
 ailurus/ubuntu/menu.py
 ailurus/ubuntu/quick_setup.py
+ailurus/ubuntu/repos_config_pane.py
 ailurus/ubuntu/setting.py
 ailurus/ubuntu/third_party_repos.py
 ailurus/ubuntu/tips.py

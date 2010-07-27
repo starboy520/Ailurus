@@ -1,10 +1,9 @@
-#!/usr/bin/env python
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
+# Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
-# Copyright (C) 2009-2010, Ailurus Developers Team
 #
 # Ailurus is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -23,7 +22,7 @@
 from __future__ import with_statement
 from lib import *
 from libapp import N
-import os, sys, glob, new, ConfigParser, types, gtk
+import os, sys, glob, new, ConfigParser, types, gtk, gobject
 import strings
 
 class AppObjs:
@@ -32,21 +31,53 @@ class AppObjs:
     basic_modules = [] # used in load_from_basic_modules()
     extensions = []
     failed_extensions = []
+    list_store = gtk.ListStore(gobject.TYPE_PYOBJECT)
+    @classmethod
+    def save_installed_items_to_file(cls, save_to_this_path):
+        with open(save_to_this_path, 'w') as f:
+            for obj in cls.appobjs:
+                if obj.cache_installed:
+                    class_name = obj.__class__.__name__
+                    f.write(class_name + '\n')
+    @classmethod
+    def load_selection_state_from_file(cls, load_from_this_path):
+        with open(load_from_this_path) as f:
+            lines = f.readlines()
+        names = [line.strip() for line in lines]
+        names = set(names)
+        for obj in cls.appobjs:
+            class_name = obj.__class__.__name__
+            if class_name in names:
+                obj.showed_in_toggle = True
     @classmethod
     def get_icon_path(cls, name):
-        for dir in [D+'appicons/', D+'umut_icons/', D+'sora_icons/',]:
-            path = dir + name + '.png'
-            if os.path.exists(path): return path
-        return D + 'sora_icons/default_application_icon.png'
+        'return (icon path, whether it is default icon)'
+        path = D + 'appicons/' + name + '.png'
+        if os.path.exists(path): return (path, False)
+        return (D + 'sora_icons/default_application_icon.png', True)
     @classmethod
     def all_objs_reload_icon(cls):
         for obj in cls.appobjs:
             name = obj.__class__.__name__
-            obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(cls.get_icon_path(name), 32, 32)
+            icon_path, obj.use_default_icon = cls.get_icon_path(name)
+            obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
     @classmethod
     def all_objs_reset_status(cls):
+        failed = []
         for obj in cls.appobjs:
-            obj.showed_in_toggle = obj.cache_installed = obj.installed()
+            try:
+                obj.showed_in_toggle = obj.cache_installed = obj.installed()
+            except:
+                print_traceback()
+                failed.append(obj)
+        for o in failed:
+            cls.appobjs.remove(o)
+            iter = cls.list_store.get_iter_first()
+            while iter:
+                if cls.list_store.get_value(iter, 0) == o:
+                    cls.list_store.remove(iter)
+                    break
+                iter = cls.list_store.iter_next(iter)
     @classmethod
     def set_basic_modules(cls, common, desktop, distribution):
         cls.basic_modules = []
@@ -78,7 +109,27 @@ class AppObjs:
                 print_traceback()
             else:
                 cls.appobjs.append(obj)
+                cls.list_store.append([obj])
                 cls.appobjs_names.append(name)
+    @classmethod
+    def all_installer_names_in_module(cls, module):
+        ret = set()
+        for name in dir(module):
+            if name.startswith('_') or name=='I' or name=='N': continue
+            app_class = getattr(module,name)
+            if not isinstance(app_class, types.ClassType): continue
+            if getattr(app_class, 'this_is_an_installer', False) == False: continue
+            ret.add(name)
+        return list(ret)
+    @classmethod
+    def all_installer_names_in_text_file(cls):
+        ret = set()
+        c = ConfigParser.RawConfigParser()
+        c.optionxform = str # case sensitive in option_name
+        c.read(A+'/native_apps')
+        for section_name in c.sections():
+            ret.add(section_name)
+        return list(ret)
     @classmethod
     def get_extension_path(cls):
         for path in [A+'/../unfree/', Config.get_config_dir()]:
@@ -94,8 +145,11 @@ class AppObjs:
             try:
                 module = __import__(basename)
                 cls.extensions.append(module)
+                print 'Extension', basename, 'sucessfully loaded.'
             except:
                 cls.failed_extensions.append(os.path.abspath(py))
+                print 'Failed to load extension', basename, '.'
+                print_traceback()
             else:
                 cls.load_from(module)
         sys.path.pop(0)
@@ -139,15 +193,26 @@ class AppObjs:
                 print_traceback()
             else:
                 cls.appobjs.append(obj)
+                cls.list_store.append([obj])
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
+        cls.list_store.clear()
+        for obj in cls.appobjs:
+            cls.list_store.append([obj])
     @classmethod
     def strip_wrong_locale(cls):
+        changed = False
         if not Config.is_Chinese_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Chinese')]
+            changed = True
         if not Config.is_Poland_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Poland')]
+            changed = True
+        if changed:
+            cls.list_store.clear()
+            for obj in cls.appobjs:
+                cls.list_store.append([obj])
 
 def load_R_objs():
     paths = []
@@ -271,16 +336,24 @@ elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
 def load_app_objs():
-    AppObjs.set_basic_modules(common, desktop, distribution)
-
-    AppObjs.load_from_text_file()
-    AppObjs.load_from_basic_modules()
-    AppObjs.load_from_extensions()
-
-    AppObjs.strip_invisible()
-    AppObjs.strip_wrong_locale()
-
-    AppObjs.all_objs_reload_icon()
-    AppObjs.all_objs_reset_status()
+    with TimeStat('load_app_objs'):
+        AppObjs.set_basic_modules(common, desktop, distribution)
     
-    return AppObjs.appobjs
+        with TimeStat('load_from_text_file'):
+            AppObjs.load_from_text_file()
+        
+        with TimeStat('load_from_basic_modules'):
+            AppObjs.load_from_basic_modules()
+        
+        with TimeStat('load_from_extensions'):
+            AppObjs.load_from_extensions()
+    
+        with TimeStat('strip'):
+            AppObjs.strip_invisible()
+            AppObjs.strip_wrong_locale()
+    
+        with TimeStat('reload_icon'):
+            AppObjs.all_objs_reload_icon()
+        
+        with TimeStat('reset_status'):
+            AppObjs.all_objs_reset_status()

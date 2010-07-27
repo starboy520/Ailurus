@@ -97,6 +97,17 @@ license = GPL
 ubuntu = qtoctave
 archlinux = qtoctave
 
+[Maxima]
+category = math
+ubuntu = wxmaxima
+fedora = wxMaxima
+archlinux = wxmaxima
+
+[Scilab]
+category = math
+ubuntu = scilab
+archlinux = scilab
+
 [Avidemux]
 category = media_editor
 fedora = avidemux
@@ -247,7 +258,7 @@ ubuntu = ghex
 archlinux = ghex
 
 [Keepassx]
-category = business
+category = security
 fedora = keepassx
 ubuntu = keepassx
 archlinux = keepassx
@@ -392,7 +403,7 @@ fedora = texlive-xetex texlive-latex texlive
 ubuntu = texlive-xetex texlive lmodern
 
 [Comix]
-category = others
+category = image
 fedora = comix
 ubuntu = comix
 archlinux = comix
@@ -536,7 +547,7 @@ archlinux = wesnoth
 category = mechanics
 fedora = qcad
 license = GPL
-ubuntu = qcad
+ubuntu = qcad qcad-data qcad-doc
 archlinux = qcad
 
 [EasyTAG]
@@ -569,7 +580,7 @@ ubuntu = scribus
 archlinux = scribus
 
 [Shutter]
-category = others
+category = image
 fedora = shutter
 ubuntu = shutter
 
@@ -592,7 +603,7 @@ license = GPL
 ubuntu = auto-apt
 
 [Kflickr]
-category = others
+category = image
 fedora = kflickr
 ubuntu = kflickr
 
@@ -617,7 +628,7 @@ ubuntu = libgmp3-dev
 archlinux = gmp
 
 [Cheese]
-category = others
+category = image
 fedora = cheese
 ubuntu = cheese
 archlinux = cheese
@@ -684,6 +695,11 @@ archlinux = nautilus-actions
 category = statistics
 license = GPL
 ubuntu = r-base-core
+
+[RKWard]
+category = statistics
+ubuntu = rkward
+fedora = rkward
 
 [Kadu]
 category = chat
@@ -856,3 +872,86 @@ ubuntu = unetbootin
 [Pino]
 category = blog
 fedora = pino
+
+[QBittorrent]
+category = file_sharing
+ubuntu = qbittorrent
+fedora = qbittorrent
+archlinux = qbittorrent
+
+[Fatrat]
+category = file_sharing
+ubuntu = fatrat
+
+[JabRef]
+category = latex
+ubuntu = jabref
+archlinux = jabref
+
+[Gajim]
+category = chat
+ubuntu = gajim
+fedora = gajim
+archlinux = gajim
+
+[PSI]
+category = chat
+ubuntu = psi
+archlinux = psi
+
+[KDevelop]
+category = ide
+ubuntu = kdevelop
+fedora = kdevelop
+archlinux = kdevelop
+
+[Kile]
+category = latex
+ubuntu = kile
+fedora = kile
+archlinux = kile
+
+[LyX]
+category = latex
+ubuntu = lyx
+fedora = lyx
+archlinux = lyx
+
+[Pdftk]
+category = business
+ubuntu = pdftk
+fedora = pdftk
+
+[Pdfedit]
+category = business
+ubuntu = pdfedit
+fedora = pdfedit
+archlinux = pdfedit
+
+[GoldenDict]
+category = business
+ubuntu = goldendict
+fedora = goldendict
+archlinux = goldendict
+
+[Artha]
+category = business
+ubuntu = artha
+fedora = artha
+
+[Backintime]
+category = security
+fedora = backintime-gnome
+
+[Celestia]
+category = education
+ubuntu = celestia
+fedora = celestia
+archlinux = celestia
+
+[Kstars]
+category = education
+ubuntu = kstars
+fedora = kdeedu-kstars
+archlinux = kdeedu-kstars
+

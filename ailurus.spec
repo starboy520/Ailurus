@@ -3,22 +3,22 @@
 %{!?python_sitearch: %global python_sitearch %(%{__python} -c "from distutils.sysconfig import get_python_lib; print(get_python_lib(1))")}
 %endif
 
-Name: ailurus
-Version: 10.06.8
-Release: 0%{?dist}
-Summary: makes Linux easier to use
-Group: Applications/System
-License: GPLv2+
-URL: http://ailurus.googlecode.com/
-Source: http://homerxing.fedorapeople.org/%{name}-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires: python-devel python2-devel python-distutils-extra intltool
-BuildArch: noarch
+Name:			ailurus
+Version: 		10.07.4
+Release:		1%{?dist}
+Summary:		A simple application installer and GNOME tweaker
+Group:			Applications/System
+License:		GPLv2+
+URL:			http://ailurus.googlecode.com/
+Source:		http://ailurus.googlecode.com/files/%{name}-%{version}.tar.gz
+BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRequires:	python-devel python2-devel python-distutils-extra intltool
+BuildArch:		noarch
 # The automatic dependency consists of python and rpmlib only. It is insufficient.
-Requires: polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip xterm gnome-python2-gnomekeyring
+Requires:		polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip gnome-python2-gnomekeyring
 
 %description
-Ailurus is an application which makes Linux easier to use.
+Ailurus is a simple application installer and GNOME tweaker.
 
 Features:
 * Help users learn some Linux skills
@@ -37,26 +37,29 @@ CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install -O1 --root=$RPM_BUILD_ROOT
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(-,root,root)
 %{python_sitelib}/ailurus/
 %{_bindir}/ailurus
 %doc %{_mandir}/man1/ailurus.1*
 %{_datadir}/applications/ailurus.desktop
 %{_datadir}/ailurus/
-%{_datadir}/icons/
+%{_datadir}/icons/hicolor/*/apps/ailurus.png
 %{_datadir}/dbus-1/system-services/cn.ailurus.service
-%{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
-%{_datadir}/PolicyKit/policy/cn.ailurus.policy
+%config(noreplace) %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
 %{_datadir}/polkit-1/actions/cn.ailurus.policy
-%{_datadir}/locale/*/LC_MESSAGES/ailurus.mo
 %{_datadir}/omf/ailurus
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
-* Thu Jun 24 2010 Homer Xing <homer.xing@gmail.com> 10.06.8-1
+* Fri Jul 23 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.4-1
+- Upstream to 10.07.4
+
+* Mon Jul 12 2010 Homer Xing <homer.xing@gmail.com> 10.06.93-0
 - Initial package
+

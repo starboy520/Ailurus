@@ -1,5 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: UTF-8 -*-
+#coding: utf8
 
 # This program and all files included in this package are free software;
 # you can redistribute it and/or modify it under the terms
