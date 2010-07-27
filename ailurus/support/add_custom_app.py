@@ -204,12 +204,12 @@ class AddCustomAppDialog(gtk.Dialog):
 
         hbox_add_pkg.pack_start(entry_pkg, False, False, 0)
         hbox_add_pkg.pack_start(button_add_pkg, False, False, 0)
-        table.attach(label_pkgs_to_install, 0, 1, 2, 3, xoptions = gtk.FILL, yoptions = 0)
-        table.attach(entry_pkgs, 1, 2, 2, 3, xoptions = gtk.FILL, yoptions = 0)
-        table.attach(label_category, 0, 1, 4, 5, xoptions = gtk.FILL, yoptions = 0)
-        table.attach(combo_category, 1, 2, 4, 5, xoptions = gtk.FILL, yoptions = 0)
-        table.attach(label_add_pkg_to_list, 0, 1, 3, 4, xoptions = gtk.FILL, yoptions = 0)
-        table.attach(hbox_add_pkg, 1, 2, 3, 4, xoptions = gtk.FILL, yoptions = 0)
+        table.attach(label_pkgs_to_install, 0, 1, 2, 3, gtk.FILL, 0)
+        table.attach(entry_pkgs, 1, 2, 2, 3, gtk.FILL, 0)
+        table.attach(label_category, 0, 1, 4, 5, gtk.FILL, 0)
+        table.attach(combo_category, 1, 2, 4, 5, gtk.FILL, 0)
+        table.attach(label_add_pkg_to_list, 0, 1, 3, 4, gtk.FILL, 0)
+        table.attach(hbox_add_pkg, 1, 2, 3, 4, gtk.FILL, 0)
         table.set_homogeneous(False)
         
         self.icon_chooser = icon_chooser = ImageChooser('/usr/share/pixmaps/', 48, 48)
