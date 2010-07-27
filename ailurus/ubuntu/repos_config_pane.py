@@ -34,12 +34,16 @@ class ReposConfigPane(gtk.VBox):
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False)
-        self.treestore = treestore = gtk.TreeStore(gobject.TYPE_BOOLEAN, gobject.TYPE_STRING, gobject.TYPE_STRING, gobject.TYPE_INT)
-        self.treeview = treeview = gtk.TreeView(self.treestore)
+        self.main_view = main_view
+        
+        self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
+        self.treefilter = treefilter = treestore.filter_new()
+        treefilter.set_visible_func(self.__visible_func)
+        self.treeview = treeview = gtk.TreeView(treefilter)
         
         toggle_render = gtk.CellRendererToggle()
         toggle_render.set_property('activatable', True)
-        toggle_render.connect('toggled',self.__toggled, treestore)
+        toggle_render.connect('toggled',self.__toggled, treefilter)
         toggle_column = gtk.TreeViewColumn()
         toggle_column.pack_start(toggle_render, False)
         toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_func)
@@ -68,30 +72,49 @@ class ReposConfigPane(gtk.VBox):
         buttom_box.pack_end(add_btn, False)
         
         self.treeview.expand_all()
+        fiter_first = self.treefilter.get_iter_first()
+        self.treeview.get_selection().select_iter(fiter_first)
         
+        def button_press_event(w, event):
+            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                path = w.get_path_at_pos(int(event.x),int(event.y))
+                selection = w.get_selection()
+                if path:
+                    selection.select_path(path[0])
+                    #TODO
+                    return True
+            return False
+        
+        self.treeview.connect('button_press_event', button_press_event)
+
         self.pack_start(scrollwindow)
         self.pack_start(buttom_box, False)
     
+    def __visible_func(self, treestore, iter):
+        b = treestore.get_value(iter, 0)
+        return b != None
+    
     def __toggle_cell_func(self, column, cell, model, iter):
         b = model.get_value(iter, 0)
-        cell.set_property('active', b)
-#        cell.set_property('inconsistent', True)
+        if b != None:
+            cell.set_property('active', b)
     
     def __text_cell_func(self, column, cell, model, iter):
-        text = model.get_value(iter, 1)
+        parent = model.iter_parent(iter)
         b = model.get_value(iter, 0)
-        is_path = model.get_value(iter, 3)
-        if is_path == -1:
+        text = model.get_value(iter, 1)
+        if parent == None:
             cell.set_property('markup', '<b><big>%s</big></b>' % text)
-        elif not b:
-            cell.set_property('markup', '<span color="gray">%s</span>' % text)
-        else:
-            cell.set_property('markup', self.__color_text(text))
-        cell.set_property('editable', True)
+            cell.set_property('editable', False)
+        elif b != None:
+            cell.set_property('markup', self.__color_text(text, b))
+            cell.set_property('editable', True)
     
-    def __color_text(self, text):
-        words = text.split()
+    def __color_text(self, text, b):
+        if not b:
+            return '<span color="gray">%s</span>' % text
         
+        words = text.split()
         if len(words) < 4:
             return text
         
@@ -120,105 +143,138 @@ class ReposConfigPane(gtk.VBox):
             words[i] = '<span color="blue">%s</span>' % words[i]
         return ' '.join(words)
     
-    def __get_repos_lines(self):
-        import glob
-        
-        lines = {}
-        with open('/etc/apt/sources.list', 'r') as f:
-            lines['/etc/apt/sources.list'] = f.readlines()
-        for path in glob.glob('/etc/apt/sources.list.d/*'):
-            with open(path, 'r') as f:
-                lines[path] = f.readlines()
-        return lines
+    def __is_repos_enable(self, line):
+        if line[0] == '#' and line[1:].strip().startswith('deb'):
+            return False
+        elif line.startswith('deb'):
+            return True
+        return None
     
     def __refresh_tree(self):
-        self.__souces_list = lines = self.__get_repos_lines()
-        self.treestore.clear()
-        for path in lines.keys():
-            i = 0
-            parent = self.treestore.append(None, [True, path, path, -1])
-            for line in lines[path]:
+        import glob
+        for path in ['/etc/apt/sources.list'] + glob.glob('/etc/apt/sources.list.d/*'):
+            if not path.endswith('.list'):
+                continue
+            parent = self.treestore.append(None, [True, path])
+            with open(path, 'r') as f:
+                lines = f.readlines()
+            for line in lines:
                 line = line.strip()
-                if len(line) >= 2:
-                    if line[0] == '#' and line[1:].strip().startswith('deb'):
-                        self.treestore.append(parent, [False, line[1:], path, i])
-                    elif line.startswith('deb'):
-                        self.treestore.append(parent, [True, line, path, i])
-                i += 1
+                b = self.__is_repos_enable(line)
+                if b == False:
+                    line = line[1:].strip()
+                self.treestore.append(parent, [b, line])
             self.__set_parent_toggle(parent)
-        
-    def __apply(self):
-        for path in self.__souces_list.keys():
-            with TempOwn(path) as o:
-                with open(path, 'w') as f:
-                    for line in self.__souces_list[path]:
-                        if line:
-                            f.write(line)
+        self.treefilter.refilter()
     
-    def __toggled(self, cellrenderertoggle, path, treestore):
+    def __apply(self):
+        parent = self.treestore.get_iter_first()
+        while parent:
+            self.__apply_children(parent)
+            parent = self.treestore.iter_next(parent)
+    
+    def __apply_children(self, parent):
+        fn = self.treestore.get_value(parent, 1)
+        lines = []
+        child = self.treestore.iter_children(parent)
+        while child:
+            b = self.treestore.get_value(child, 0)
+            text = self.treestore.get_value(child, 1)
+            if b == False:
+                line = '#' + text
+            else:
+                line = text
+            lines.append(line)
+            child = self.treestore.iter_next(child)
+        with TempOwn(fn) as o:
+            with open(fn, 'w') as f:
+                f.write('\n'.join(lines))
+    
+    def __toggled(self, cellrenderertoggle, path, treefilter):
         try:
             run_as_root('true')
-            b = treestore[path][0] = not treestore[path][0]
-            file = treestore[path][2]
-            i = treestore[path][3]
-            if i == -1:
-                parent = treestore.get_iter_from_string(path)
-                self.__set_children_toggle(parent, b)
-            else:
-                child = treestore.get_iter_from_string(path)
-                parent = treestore.iter_parent(child)
-                self.__enable_repos(b, file, i)
+            fiter = treefilter.get_iter_from_string(path)
+            iter = treefilter.convert_iter_to_child_iter(fiter)
+            parent = self.treestore.iter_parent(iter)
+            
+            b = self.treestore.get_value(iter, 0)
+            if b == None:
+                print >>sys.stderr, 'warning: b == None'
+            b = not b
+            
+            if parent:
+                self.__enable_repos(b, iter)
                 self.__set_parent_toggle(parent)
+            else:
+                self.__enable_repos(b, iter)
+                self.__set_children_toggle(iter, b)
             self.__apply()
         except AccessDeniedError:
             pass
     
     def __edited(self, cellrenderertext, path, new_text):
-        if self.treestore[path][1] != new_text:
-            tmp = self.treestore[path][1]
-            self.treestore[path][1] = new_text
-            b = self.treestore[path][0]
-            file = self.treestore[path][2]
-            i = self.treestore[path][3]
-            self.__souces_list[file][i] = new_text + '\n'
-            self.__enable_repos(b, file, i)
+        if self.treefilter[path][1] != new_text:
             try:
+                run_as_root('true')
+                fiter = self.treefilter.get_iter_from_string(path)
+                iter = self.treefilter.convert_iter_to_child_iter(fiter)
+                self.treestore.set_value(iter, 1, new_text)
                 self.__apply()
             except AccessDeniedError:
-                self.treestore[path][1] = tmp
-                self.__souces_list[file][i] = tmp + '\n'
+                pass
     
     def __add_repos(self, widget):
-        print self.addArea.getRepos()
-        self.addArea.clearContent()
+        text = self.addArea.getRepos().strip()
+        b = self.__is_repos_enable(text)
+        if b == None:
+            dlg = gtk.MessageDialog(parent=self.main_view.window,
+                                    buttons=gtk.BUTTONS_YES_NO)
+            re = dlg.run()
+            dlg.destroy()
+            if re == gtk.RESPONSE_NO:
+                return
+        try:
+            run_as_root('true')
+            selection = self.treeview.get_selection()
+            model, fiter = selection.get_selected()
+            iter = self.treefilter.convert_iter_to_child_iter(fiter)
+            parent = self.treestore.iter_parent(iter)
+            if b == False:
+                text = text[1:].strip()
+            if parent:
+                self.treestore.insert_after(parent, iter, [b, text])
+            else:
+                self.treestore.append(iter, [b, text])
+            self.addArea.clearContent()
+            self.__apply()
+            self.treefilter.refilter()
+        except AccessDeniedError:
+            pass
     
     def __set_parent_toggle(self, parent):
+        fn = self.treestore.get_value(parent, 1)
         child = self.treestore.iter_children(parent)
+        ret = None
         while child:
-            if not self.treestore.get_value(child, 0):
-                self.treestore.set_value(parent, 0, False)
-                return
+            b = self.treestore.get_value(child, 0)
+            if b == False:
+                ret = False
+                break
+            elif b == True:
+                ret = True
             child = self.treestore.iter_next(child)
-        self.treestore.set_value(parent, 0, True)
-        return
+        self.__enable_repos(b, parent)
     
     def __set_children_toggle(self, parent, b):
         child = self.treestore.iter_children(parent)
         while child:
-            self.treestore.set_value(child, 0, b)
-            file = self.treestore.get_value(child, 2)
-            i = self.treestore.get_value(child, 3)
-            self.__enable_repos(b, file, i)
+            if self.treestore.get_value(child, 0) != None:
+                self.__enable_repos(b, child)
             child = self.treestore.iter_next(child)
     
-    def __enable_repos(self, b, file, i):
-        if b:
-            if self.__souces_list[file][i].startswith('#'):
-                self.__souces_list[file][i] = self.__souces_list[file][i][1:]
-        else:
-            if not self.__souces_list[file][i].startswith('#'):
-                self.__souces_list[file][i] = '#' + self.__souces_list[file][i]
-                
+    def __enable_repos(self, b, iter):
+        self.treestore.set_value(iter, 0, b)
+
 class AddReposArea(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False)

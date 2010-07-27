@@ -1,3 +1,8 @@
+2010-07-27 CHEN Yangyang <skabyy@gmail.com>
+
+    * Optimize the repository configure pane
+    * Fix some bugs
+
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 
     * Add a feature to delay sending while the server can not be connected
