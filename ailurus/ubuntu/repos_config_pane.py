@@ -114,7 +114,7 @@ class ReposConfigPane(gtk.VBox):
             return '<span color="gray">%s</span>' % text
         
         words = text.split()
-        if len(words) < 4:
+        if len(words) < 3:
             return text
         
         def check_deb(word):
