@@ -90,7 +90,7 @@ class InstallRemovePane(gtk.VBox):
         dict['category'] = dict['appobj'].category
         dict['__doc__'] = dict['appobj'].__doc__
         dict['detail'] = dict['appobj'].detail
-        dict[get_desktop_environment()] = dict['appobj'].pkgs
+        dict[DISTRIBUTION] = dict['appobj'].pkgs
         dialog = AddCustomAppDialog(dict)
         dialog.vbox.show_all()
         dialog.run()

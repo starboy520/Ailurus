@@ -69,7 +69,7 @@ class AddCustomAppDialog(gtk.Dialog):
         dict['__doc__'] = self.entry_name.get_text()
         dict['detail'] = self.entry_detail.get_text()
         
-        desktop_env = get_desktop_environment()
+        desktop_env = DISTRIBUTION
         dict[desktop_env] = self.entry_pkgs.get_text()
         if dict[desktop_env] == '':
             self.__prompt(_('Oops'), _('Package name should not be empty!'))
@@ -88,7 +88,7 @@ class AddCustomAppDialog(gtk.Dialog):
                 obj.__doc__ = dict['__doc__']
                 obj.detail = dict['detail']
                 obj.category = dict['category']
-                obj.pkgs = dict[get_desktop_environment()]
+                obj.pkgs = dict[DISTRIBUTION]
                 obj.self_check()
                 obj.fill()
             CUSTOM_APPS.addAppObjFromDict(dict)
@@ -131,8 +131,8 @@ class AddCustomAppDialog(gtk.Dialog):
         label_add_pkg_to_list = gtk.Label(_('Add package to list:'))
         label_add_pkg_to_list.set_alignment(0,0.5)
         self.entry_pkgs = entry_pkgs = gtk.Entry()
-        if dict.has_key(get_desktop_environment()):
-            entry_pkgs.set_text(dict[get_desktop_environment()] + ' ')
+        if dict.has_key(DISTRIBUTION):
+            entry_pkgs.set_text(dict[DISTRIBUTION] + ' ')
         label_detail = gtk.Label(_('Detail') + ': ')
         label_detail.set_alignment(0,0.5)
         label_category = gtk.Label(_('Category') + ': ')

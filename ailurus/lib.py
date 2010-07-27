@@ -405,14 +405,6 @@ class Config:
         except: 
             return False
 
-def get_desktop_environment():
-    if UBUNTU or MINT:
-        return 'ubuntu'
-    elif FEDORA:
-        return 'fedora'
-    elif ARCHLINUX:
-        return 'archlinux'
-
 def add_custom_app_inRepo(name):
     summary = BACKEND.get_pkg_summary(name)
     
@@ -1921,25 +1913,32 @@ FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
 BACKEND = APT
 if UBUNTU:
+    DISTRIBUTION = 'ubuntu'
     VERSION = Config.get_Ubuntu_version()
 elif MINT:
+    DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Mint_version() # VERSION is in ['5', '6', '7', '8', '9', '10']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick'][int(VERSION)-5]
 elif YLMF:
+    DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
 elif DEEPIN:
+    DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Deepin_version()
 elif FEDORA:
+    DISTRIBUTION = 'fedora'
     VERSION = Config.get_Fedora_version()
     BACKEND = RPM
 elif ARCHLINUX:
+    DISTRIBUTION = 'archlinux'
     VERSION = '' # ArchLinux has no version -_-b
     BACKEND = PACKMAN
 else:
     print _('Your Linux distribution is not supported. :(')
+    DISTRIBUTION = ''
     VERSION = ''
 
 GNOME = False
