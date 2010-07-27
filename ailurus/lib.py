@@ -1570,13 +1570,6 @@ class R:
             except:
                 pass
         return False
-    @classmethod
-    def create_tmp_dir(cls):
-        dir = '/var/cache/ailurus/'
-        import os
-        if not os.path.exists(dir):
-            run_as_root('mkdir %s -p'%dir)
-        own_by_user(dir)
     def check(self, path):
         if self.size:
             import os
@@ -1591,14 +1584,13 @@ class R:
             print _('Good.')
     def download(self):
         self.sort()
-        dest = '/var/cache/ailurus/'+self.filename
+        dest = '/tmp/'+self.filename
         import os, sys
         assert isinstance(self.sorted_url, list)
         for i, url in enumerate(self.sorted_url):
             print '\x1b[1;36m', _('Using mirror %(i)s. There are a total of %(total)s mirrors.') % {'i' : i+1, 'total' : len(self.sorted_url)}, '\x1b[m'
             assert isinstance(url, str)
             try:
-                R.create_tmp_dir()
                 download(url, dest)
                 self.check(dest)
                 return dest

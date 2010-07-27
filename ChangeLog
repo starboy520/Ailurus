@@ -9,7 +9,7 @@
     * Add GoldenDict, one of the best dictionary applications.
     * Add Artha, looking up synonyms and antonyms.
     * Add MyTourbook, excellent route planner, and GPS log analyser software.
-    
+    * Do not store downloaded files in /var/cache/ailurus/ any more.
 
 2010-07-26 Homer Xing <homer.xing@gmail.com>
 

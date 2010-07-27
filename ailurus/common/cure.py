@@ -206,3 +206,11 @@ class Own_config_dir_by_user(C):
             return True
     def cure(self):
         run_as_root('chown -R $USER:$USER "%s"' % Config.get_config_dir())
+
+class Completely_remove_var_cache_ailurus(C):
+    __doc__ = _('Remove directory /var/cache/ailurus/')
+    detail = _('This directory is obsolete. Remove this directory to free disk space.')
+    def exists(self):
+        return os.path.exists('/var/cache/ailurus')
+    def cure(self):
+        run_as_root('rm -rf /var/cache/ailurus')

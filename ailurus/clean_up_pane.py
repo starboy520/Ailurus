@@ -34,7 +34,6 @@ class CleanUpPane(gtk.VBox):
         gtk.VBox.__init__(self, False, 10)
         self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_recently_used_document_button(),False)
-        self.pack_start(self.clean_ailurus_cache_button(), False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
         if UBUNTU or UBUNTU_DERIV:
             self.pack_start(self.clean_apt_cache_button(), False)
@@ -93,20 +92,6 @@ class CleanUpPane(gtk.VBox):
             button.set_sensitive(False)
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_("Command:") + " yum clean all")
-        return button
-    
-    def clean_ailurus_cache_button(self):
-        label = gtk.Label(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
-        button = gtk.Button()
-        button.add(label)
-        button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
-        def __clean_up(button, label):
-            notify(_('Run command:'), 'rm /var/cache/ailurus/* -rf')
-            run_as_root('rm /var/cache/ailurus/* -rf')
-            label.set_text(self.get_button_text(_('Ailurus cache'), '/var/cache/ailurus'))
-            button.set_sensitive(bool(self.get_folder_size('/var/cache/ailurus',please_return_integer=True)))
-        button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command:') + ' sudo rm /var/cache/ailurus/* -rf')
         return button
     
     def clean_pacman_cache_button(self):
