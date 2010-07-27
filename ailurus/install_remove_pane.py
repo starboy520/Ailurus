@@ -704,8 +704,8 @@ class InstallRemovePane(gtk.VBox):
         self.pack_start(self.status_label, False)
         self.show_all()
     
-        import thread
-        thread.start_new_thread(self.notify_sync, ())
+        import gobject
+        gobject.timeout_add(1000, self.notify_sync)
     
     def show_status(self):
         num = len(AppObjs.appobjs)
@@ -715,7 +715,6 @@ class InstallRemovePane(gtk.VBox):
     def notify_sync(self):
         from download_icons import icons_pack_version
         if icons_pack_version > Config.get_last_synced_data_version():
-            gtk.gdk.threads_enter()
             dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                        message_format=
                                        _('Would you like to download latest application data from web?'))
@@ -723,7 +722,6 @@ class InstallRemovePane(gtk.VBox):
             dialog.destroy()
             if ret == gtk.RESPONSE_YES:
                 self.synchronize()
-            gtk.gdk.threads_leave()
 
     def synchronize(self):
         import download_icons
