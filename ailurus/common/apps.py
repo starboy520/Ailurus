@@ -105,6 +105,32 @@ Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
 
+class MyTourbook(_path_lists):
+    'MyTourbook'
+    detail = _('visualize and analyze tours which are recorded by a GPS device')
+    license = GPL
+    download_url = 'http://mytourbook.sourceforge.net'
+    category = 'geography'
+    shortcut = '/usr/share/applications/MyTourbook.desktop'
+    file = '/opt/mytourbook'
+    paths = [shortcut, file]
+    def install(self):
+        if is32(): url = urls.mytourbook32
+        else: url = urls.mytourbook64
+        f = R(url).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        with Chdir('/opt'):
+            run_as_root('unzip -qo "%s"' % f)
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=MyTourbook
+Exec=/opt/mytourbook/mytourbook
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/opt/mytourbook/icon.xpm''')
+
 class SweetHome3D(_path_lists):
     __doc__ = _('SweetHome3D: open source interior design application')
     download_url = 'http://www.sweethome3d.com/'

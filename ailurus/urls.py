@@ -38,3 +38,5 @@ gnomeartng_jaunty = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaun
 remastersys = 'http://prdownloads.sourceforge.net/remastersys/remastersys_2.0.17-1_all.deb'
 worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
 worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
+mytourbook32 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86.zip'
+mytourbook64 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86_64.zip'
