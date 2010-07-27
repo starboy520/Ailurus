@@ -134,49 +134,43 @@ class AddCustomAppDialog(gtk.Dialog):
         return bottom_box
         
     def __init__(self, dict={}):
-        gtk.Dialog.__init__(self,
-                            title=_('Edit custom application'),
-                            flags=gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
-        self.dict = dict
-        self.set_position(gtk.WIN_POS_CENTER)
+        # labels
         label_name = gtk.Label(_('Name:'))
         label_name.set_alignment(0, 0.5)
         label_pkgs_to_install = gtk.Label(_('Packages to install:'))
         label_pkgs_to_install.set_alignment(0, 0.5)
         label_add_pkg_to_list = gtk.Label(_('Add package to list:'))
         label_add_pkg_to_list.set_alignment(0,0.5)
-        self.entry_pkgs = entry_pkgs = gtk.Entry()
-        if dict.has_key(DISTRIBUTION):
-            entry_pkgs.set_text(dict[DISTRIBUTION] + ' ')
         label_detail = gtk.Label(_('Detail:'))
         label_detail.set_alignment(0,0.5)
         label_category = gtk.Label(_('Category:'))
         label_category.set_alignment(0,0.5)
+
+        # entries
+        self.entry_pkgs = entry_pkgs = gtk.Entry()
         self.entry_name = entry_name = gtk.Entry()
-        if dict.has_key('__doc__'):
-            entry_name.set_text(dict['__doc__'])
         entry_name.set_max_length(50)
         self.entry_pkg = entry_pkg = gtk.Entry()
+        entry_pkg.connect("activate",self.__pkgname_callback)
         pkg_completion = gtk.EntryCompletion()
         entry_pkg.set_completion(pkg_completion)
-        if len(self.liststore_all_pkg) == 0:
-            for pkg in BACKEND.get_existing_pkgs_set():
-                self.liststore_all_pkg.append([pkg])
-        liststore_pkgs = self.liststore_all_pkg
-        pkg_completion.set_model(liststore_pkgs)
         pkg_completion.set_text_column(0)
         pkg_completion.set_minimum_key_length(3)
-
-        entry_pkg.connect("activate",self.__pkgname_callback)
-       
+        pkg_completion.set_model(self.liststore_all_pkg)
         button_add_pkg = stock_image_only_button(gtk.STOCK_ADD)
-        button_add_pkg.connect("clicked",self.__add_pkg,self.entry_pkgs,entry_pkg)
+        button_add_pkg.connect("clicked", self.__add_pkg, self.entry_pkgs, entry_pkg)
         self.entry_detail = entry_detail = gtk.Entry()
         entry_detail.set_max_length(50)
-        if dict.has_key('detail'):
-            entry_detail.set_text(dict['detail'])
-        
 
+        # hbox_add_pkg
+        hbox_add_pkg = gtk.HBox(False, 3)
+        hbox_add_pkg.pack_start(entry_pkg)
+        hbox_add_pkg.pack_start(button_add_pkg, False)
+
+        # combo
+        self.combo_category = combo_category = gtk.combo_box_entry_new_text()
+
+        # table
         table = gtk.Table()
         table.set_col_spacings(10)
         table.set_row_spacings(5)
@@ -184,36 +178,14 @@ class AddCustomAppDialog(gtk.Dialog):
         table.attach(label_detail, 0, 1, 1, 2, gtk.FILL, 0)
         table.attach(entry_name, 1, 2, 0, 1, gtk.FILL, 0)
         table.attach(entry_detail, 1, 2, 1, 2, gtk.FILL, 0)
-
-        self.combo_category = combo_category = gtk.combo_box_entry_new_text()
-        index = 0
-        target = ''
-        if dict.has_key('category'):
-            target = dict['category']
-        
-        for i in range(0,len(Category.all())):
-            c = Category.all()[i]
-            if len(target.split()) == 1:
-                if c.category == target:
-                    index = i
-            else:
-                if c.category in target.split() and not c.category in ['favourite','dustbin']:
-                    index = i
-            combo_category.append_text(c.text)
-        combo_category.set_active(index)
-        
-        hbox_add_pkg = gtk.HBox(False, 3)
-        hbox_add_pkg.pack_start(entry_pkg)
-        hbox_add_pkg.pack_start(button_add_pkg, False)
-        
         table.attach(label_pkgs_to_install, 0, 1, 2, 3, gtk.FILL, 0)
         table.attach(entry_pkgs, 1, 2, 2, 3, gtk.FILL, 0)
         table.attach(label_category, 0, 1, 4, 5, gtk.FILL, 0)
         table.attach(combo_category, 1, 2, 4, 5, gtk.FILL, 0)
         table.attach(label_add_pkg_to_list, 0, 1, 3, 4, gtk.FILL, 0)
         table.attach(hbox_add_pkg, 1, 2, 3, 4, gtk.FILL, 0)
-        table.set_homogeneous(False)
         
+        # left_box
         self.icon_chooser = icon_chooser = ImageChooser('/usr/share/pixmaps/', 48, 48)
         icon_chooser.connect('changed',self.__choose_icon)
         left_vbox = gtk.VBox(False)
@@ -221,15 +193,47 @@ class AddCustomAppDialog(gtk.Dialog):
         left_vbox.pack_start(icon_chooser, False)
         left_vbox.pack_start(gtk.Label(), True)
         
+        # top_box
         top_box = gtk.HBox(False, 10)
         top_box.pack_start(left_vbox, False)
         top_box.pack_start(table, False)
 
+        gtk.Dialog.__init__(self,
+                            title=_('Edit custom application'),
+                            flags=gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR)
+        self.set_position(gtk.WIN_POS_CENTER)
         self.vbox.pack_start(top_box, False)
         self.vbox.pack_start(self.__build_bottom_box(), False)
         self.show_all()
         
         self.origin_category = self.__get_category()
+
+        self.dict = dict
+        if dict.has_key(DISTRIBUTION):
+            self.entry_pkgs.set_text(dict[DISTRIBUTION] + ' ')
+        if dict.has_key('__doc__'):
+            self.entry_name.set_text(dict['__doc__'])
+        if len(self.liststore_all_pkg) == 0:
+            for pkg in BACKEND.get_existing_pkgs_set():
+                self.liststore_all_pkg.append([pkg])
+        if dict.has_key('detail'):
+            self.entry_detail.set_text(dict['detail'])
+        index = 0
+        if dict.has_key('category'):
+            target = dict['category']
+        else:
+            target = ''
+        
+        category_all = Category.all()
+        for i, c in enumerate(category_all):
+            if len(target.split()) == 1:
+                if c.category == target:
+                    index = i
+            else:
+                if c.category in target.split() and not c.category in ['favourite','dustbin']:
+                    index = i
+            self.combo_category.append_text(c.text)
+        self.combo_category.set_active(index)
 
         if self.dict.has_key('appname'):       
             pixbuf = self.dict['appobj'].logo_pixbuf
