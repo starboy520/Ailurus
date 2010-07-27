@@ -905,3 +905,8 @@ ubuntu = kdevelop
 fedora = kdevelop
 archlinux = kdevelop
 
+[Kile]
+category = latex
+ubuntu = kile
+fedora = kile
+archlinux = kile
