@@ -69,7 +69,9 @@ class Category:
             Category(_('Blog'), D+'sora_icons/p_blog.png', 'blog', 'home'),
             Category(_('RSS'), D+'sora_icons/p_rss.png', 'rss', 'home'),
             Category(_('Internet'), D+'sora_icons/p_internet.png', 'internet', 'home'),
-            Category(_('Photo'), D+'sora_icons/p_photo.png', 'photo', 'home'),
+            Category(_('Image'), D+'sora_icons/p_image.png', 'image', 'home'),
+            # security
+            Category(_('Security'), D+'sora_icons/p_security.png', 'security', 'home'),
             # multimedia
             Category(_('Player'), D+'sora_icons/p_player.png', 'player', 'home'),
             Category(_('CD burner'), D+'sora_icons/p_cd_burner.png', 'cd_burner', 'home'),

@@ -427,7 +427,7 @@ class Picasa(I):
     __doc__ = 'Picasa'
     detail = _('An image organizer and image viewer, plus photo-sharing function')
     download_url = urls.picasa_32
-    category = 'photo'
+    category = 'image'
     def install(self):
         f = R(urls.picasa_32).download()
         RPM.install_local(f)

@@ -258,7 +258,7 @@ ubuntu = ghex
 archlinux = ghex
 
 [Keepassx]
-category = business
+category = security
 fedora = keepassx
 ubuntu = keepassx
 archlinux = keepassx
@@ -403,7 +403,7 @@ fedora = texlive-xetex texlive-latex texlive
 ubuntu = texlive-xetex texlive lmodern
 
 [Comix]
-category = others
+category = image
 fedora = comix
 ubuntu = comix
 archlinux = comix
@@ -580,7 +580,7 @@ ubuntu = scribus
 archlinux = scribus
 
 [Shutter]
-category = others
+category = image
 fedora = shutter
 ubuntu = shutter
 
@@ -603,7 +603,7 @@ license = GPL
 ubuntu = auto-apt
 
 [Kflickr]
-category = others
+category = image
 fedora = kflickr
 ubuntu = kflickr
 
@@ -628,7 +628,7 @@ ubuntu = libgmp3-dev
 archlinux = gmp
 
 [Cheese]
-category = others
+category = image
 fedora = cheese
 ubuntu = cheese
 archlinux = cheese

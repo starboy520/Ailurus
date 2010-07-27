@@ -325,7 +325,7 @@ class Picasa(I):
         download_url = urls.picasa_32
     else:
         download_url = urls.picasa_64
-    category = 'photo'
+    category = 'image'
     def install(self):
         f = R(self.download_url).download()
         APT.install_local(f)
