@@ -898,3 +898,10 @@ archlinux = gajim
 category = chat
 ubuntu = psi
 archlinux = psi
+
+[KDevelop]
+category = ide
+ubuntu = kdevelop
+fedora = kdevelop
+archlinux = kdevelop
+
