@@ -101,20 +101,17 @@ class AddCustomAppDialog(gtk.Dialog):
         self.response(gtk.RESPONSE_ACCEPT)
         
     def __add_pkg(self, button, entry_pkgs_to_install, entry):
-        new_pkg = entry.get_text()
-        if new_pkg:
-            if not new_pkg in entry_pkgs_to_install.get_text().split():
-                if new_pkg in BACKEND.get_existing_pkgs_set():
-                    entry_pkgs_to_install.set_text(entry_pkgs_to_install.get_text()+entry.get_text()+' ')
-                    entry.set_text('')
+        to_add = entry.get_text()
+        if to_add:
+            exists = entry_pkgs_to_install.get_text().split()
+            if not to_add in exists:
+                if to_add in BACKEND.get_existing_pkgs_set():
+                    new_text = entry_pkgs_to_install.get_text() + ' ' + entry.get_text()
+                    new_text = new_text.strip()
+                    entry_pkgs_to_install.set_text(new_text)
                 else:
-                    self.show_message_box(_('Error'), _('Package is not contained by repository!'))
-                    entry.set_text('')
-                    return
-            else:
-                self.show_message_box(_('Error'), _('Package name already in list!'))
-                entry.set_text('')
-                return
+                    self.show_message_box(_('Error'), _('Package is not in repository!'))
+        entry.set_text('')
         
     def __pkgname_callback(self, entry):
         self.__add_pkg(None, self.entry_pkgs, self.entry_pkg)
