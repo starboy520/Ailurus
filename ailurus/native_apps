@@ -922,3 +922,8 @@ category = business
 ubuntu = pdftk
 fedora = pdftk
 
+[Pdfedit]
+category = business
+ubuntu = pdfedit
+fedora = pdfedit
+archlinux = pdfedit

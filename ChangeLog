@@ -5,6 +5,7 @@
     * Add Kile, a LaTeX editor.
     * Add LyX, "what you see is what you mean" LaTeX editor.
     * Add Pdftk, a command line tool which can split, merge, encrypt and uncompress PDF files.
+    * Add PDFedit, add marks and annotations on PDF files.
 
 2010-07-26 Homer Xing <homer.xing@gmail.com>
 
