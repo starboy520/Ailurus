@@ -43,41 +43,41 @@ class urls:
     truecrypt32 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x86.tar.gz'
     truecrypt64 = 'http://www.truecrypt.org/download/truecrypt-7.0-linux-x64.tar.gz'
 
-class Alice(_path_lists):
-    __doc__ = _('Alice: A new way to learn programming')
-    detail = _('A storytelling application, especially appropriate for middle school students.')
-    download_url = 'http://www.alice.org/' 
-    category = 'education'
-    def __init__(self):
-        self.dir = '/opt/Alice 2.2'
-        self.shortcut = '/usr/share/applications/alice.desktop'
-        self.paths = [ self.dir, self.shortcut ]
-    def install(self):
-        if is32():
-            f = R(
-['http://tdt.sjtu.edu.cn/S/Alice2.2b_i386.tar.bz2',],
-296544228, '0c6340a5b52d72abc12c394561d61c3ccba21ca7').download()
-        else:
-            f = R(
-['http://tdt.sjtu.edu.cn/S/Alice2.2b_x86_64.tar.bz2',],
-296519582, '7558fa7f22d13f8d18671b3efc44374541c5a506').download()
-
-        import os
-        if not os.path.exists('/opt'):
-            run_as_root('mkdir /opt')
-        own_by_user('/opt')
-        with Chdir('/opt'):
-            run('tar jxf '+f)
-            assert os.path.exists(self.dir)
-            create_file(self.shortcut, '''[Desktop Entry]
-Name=Alice
-Exec=bash "/opt/Alice 2.2/Required/alice.sh"
-Path=/opt/Alice 2.2/Required/
-Encoding=UTF-8
-StartupNotify=true
-Terminal=false
-Type=Application
-Categories=Education;Science; ''')
+#class Alice(_path_lists):
+#    __doc__ = _('Alice: A new way to learn programming')
+#    detail = _('A storytelling application, especially appropriate for middle school students.')
+#    download_url = 'http://www.alice.org/' 
+#    category = 'education'
+#    def __init__(self):
+#        self.dir = '/opt/Alice 2.2'
+#        self.shortcut = '/usr/share/applications/alice.desktop'
+#        self.paths = [ self.dir, self.shortcut ]
+#    def install(self):
+#        if is32():
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/Alice2.2b_i386.tar.bz2',],
+#296544228, '0c6340a5b52d72abc12c394561d61c3ccba21ca7').download()
+#        else:
+#            f = R(
+#['http://tdt.sjtu.edu.cn/S/Alice2.2b_x86_64.tar.bz2',],
+#296519582, '7558fa7f22d13f8d18671b3efc44374541c5a506').download()
+#
+#        import os
+#        if not os.path.exists('/opt'):
+#            run_as_root('mkdir /opt')
+#        own_by_user('/opt')
+#        with Chdir('/opt'):
+#            run('tar jxf '+f)
+#            assert os.path.exists(self.dir)
+#            create_file(self.shortcut, '''[Desktop Entry]
+#Name=Alice
+#Exec=bash "/opt/Alice 2.2/Required/alice.sh"
+#Path=/opt/Alice 2.2/Required/
+#Encoding=UTF-8
+#StartupNotify=true
+#Terminal=false
+#Type=Application
+#Categories=Education;Science; ''')
 
 class AliPayFirefoxPlugin(I):
     __doc__ = _('Alipay ( Zhi Fu Bao ) security plugin for Firefox')
