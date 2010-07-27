@@ -25,6 +25,29 @@ from lib import *
 from libu import *
 from loader import *
 
+def detect_proxy_env():
+    if 'http_proxy' in os.environ and Config.get_use_proxy() == False:
+        proxy_string = os.environ['http_proxy']
+        message = _('You have set an environment variable <i>http_proxy=%s</i>.\n'
+                    'Would you like to let Ailurus use a proxy server?') % proxy_string
+        dialog = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION,
+                                   buttons=gtk.BUTTONS_YES_NO)
+        dialog.set_markup(message)
+        ret = dialog.run()
+        dialog.destroy()
+        if ret == gtk.RESPONSE_YES:
+            try:
+                set_proxy_string(proxy_string)
+                Config.set_use_proxy(True)
+            except:
+                print_traceback()
+            else:
+                dialog = gtk.MessageDialog(type=gtk.MESSAGE_INFO,
+                                           buttons=gtk.BUTTONS_OK,
+                                           message_format=_('Successfully adopted a proxy server'))
+                dialog.run()
+                dialog.destroy()
+
 def detect_running_instances():
     string = get_output('pgrep -u $USER ailurus', True)
     if string!='':
@@ -278,9 +301,8 @@ class PaneLoader:
         if self.pane_object is None:
             if self.content_function: arg = [self.content_function()] # has argument
             else: arg = [] # no argument
-            TimeStat.begin(self.pane_class.__name__)
-            self.pane_object = self.pane_class(self.main_view, *arg)
-            TimeStat.end(self.pane_class.__name__)
+            with TimeStat(self.pane_class.__name__):
+                self.pane_object = self.pane_class(self.main_view, *arg)
         return self.pane_object
     def need_to_load(self):
         return self.pane_object is None
@@ -545,18 +567,18 @@ def show_agreement():
 if Config.get_show_agreement():
     show_agreement()
 
-TimeStat.begin(_('start up'))
-sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
-change_task_name()
-set_default_window_icon()
-check_required_packages()
-check_dbus_daemon_status()
-#from support.clientlib import try_send_delayed_data
-#try_send_delayed_data()
-
-while gtk.events_pending(): gtk.main_iteration()
-main_view = MainView()
-TimeStat.end(_('start up'))
+with TimeStat(_('start up')):
+    sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
+    change_task_name()
+    set_default_window_icon()
+    detect_proxy_env()
+    check_required_packages()
+    check_dbus_daemon_status()
+    #from support.clientlib import try_send_delayed_data
+    #try_send_delayed_data()
+    
+    while gtk.events_pending(): gtk.main_iteration()
+    main_view = MainView()
 
 gtk.gdk.threads_init()
 gtk.gdk.threads_enter()

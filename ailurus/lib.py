@@ -763,25 +763,23 @@ class RPM:
         cls.__set2 = set()
         import subprocess, os
 
-        TimeStat.begin(_('scan installed packages'))
-        path = A+'/support/dump_rpm_installed.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__set1.add(line.strip())
-        task.wait()
-        TimeStat.end(_('scan installed packages'))
+        with TimeStat(_('scan installed packages')):
+            path = A+'/support/dump_rpm_installed.py'
+            task = subprocess.Popen(['python', path],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__set1.add(line.strip())
+            task.wait()
         
-        TimeStat.begin(_('scan available packages'))
-        path = A+'/support/dump_rpm_existing_new.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__set2.add(line.strip())
-        task.wait()
-        TimeStat.end(_('scan available packages'))
+        with TimeStat(_('scan available packages')):
+            path = A+'/support/dump_rpm_existing_new.py'
+            task = subprocess.Popen(['python', path],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__set2.add(line.strip())
+            task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -840,13 +838,12 @@ class APT:
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
-        TimeStat.begin(_('scan packages'))
-        import apt
-        try:
-            cls.apt_cache = apt.cache.Cache()
-        except SystemError, e: # syntax error in source config
-            raise APTSourceSyntaxError(*e.args)
-        TimeStat.end(_('scan packages'))
+        with TimeStat(_('scan packages')):
+            import apt
+            try:
+                cls.apt_cache = apt.cache.Cache()
+            except SystemError, e: # syntax error in source config
+                raise APTSourceSyntaxError(*e.args)
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -949,24 +946,22 @@ class PACMAN:
         cls.fresh_cache = True
         cls.__pkgs = set()
         cls.__allpkgs = set()
-        TimeStat.begin(_('scan installed packages'))
-        import subprocess, os
-        task = subprocess.Popen(['pacman', '-Q'],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__pkgs.add(line.split()[0])
-        task.wait()
-        TimeStat.end(_('scan installed packages'))
+        with TimeStat(_('scan installed packages')):
+            import subprocess, os
+            task = subprocess.Popen(['pacman', '-Q'],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__pkgs.add(line.split()[0])
+            task.wait()
         
-        TimeStat.begin(_('scan available packages'))
-        task = subprocess.Popen(['pacman', '-Sl'],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__allpkgs.add(line.split()[1])
-        task.wait()
-        TimeStat.end(_('scan available packages'))
+        with TimeStat(_('scan available packages')):
+            task = subprocess.Popen(['pacman', '-Sl'],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__allpkgs.add(line.split()[1])
+            task.wait()
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
@@ -1813,21 +1808,23 @@ class TimeStat:
     __open_stat_names = set()
     __begin_time = {}
     result = {}
-    @classmethod
-    def begin(cls, name):
+    def __init__(self, name):
         assert isinstance(name, str) and name
-        assert name not in cls.__open_stat_names, name
-        cls.__open_stat_names.add(name)
+        assert name not in TimeStat.__open_stat_names, name
+        TimeStat.__open_stat_names.add(name)
         import time
-        cls.__begin_time[name] = time.time()
-    @classmethod
-    def end(cls, name):
+        TimeStat.__begin_time[name] = time.time()
+        self.name = name
+    def __enter__(self):
+        return None
+    def __exit__(self, type, value, traceback):
+        name = self.name
         assert isinstance(name, str) and name
-        assert name in cls.__open_stat_names
+        assert name in TimeStat.__open_stat_names
         import time
-        length = time.time() - cls.__begin_time[name]
-        cls.result[name] = length
-        cls.__open_stat_names.remove(name)
+        length = time.time() - TimeStat.__begin_time[name]
+        TimeStat.result[name] = length
+        TimeStat.__open_stat_names.remove(name)
     @classmethod
     def clear(cls):
         cls.__open_stat_names.clear()

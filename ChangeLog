@@ -2,6 +2,10 @@
 
     * Terminal window grabs focus.
 
+2010-07-26 Homer Xing <homer.xing@gmail.com>
+
+    * Use a proxy server if http_proxy environment variable is set
+
 2010-07-25 Homer Xing <homer.xing@gmail.com>
 
     * Improve behaviour of agreement dialog.

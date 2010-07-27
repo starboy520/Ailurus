@@ -52,7 +52,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/icons/hicolor/*/apps/ailurus.png
 %{_datadir}/dbus-1/system-services/cn.ailurus.service
 %config(noreplace) %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
-%{_datadir}/PolicyKit/policy/cn.ailurus.policy
 %{_datadir}/polkit-1/actions/cn.ailurus.policy
 %{_datadir}/omf/ailurus
 %{python_sitelib}/ailurus*.egg-info
