@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -45,7 +45,7 @@ def __change_kernel_swappiness():
 
     def apply(w, adjustment):
         new_value = int( adjustment.get_value() )
-        new_line = 'vm.swappiness = %s' % new_value
+        new_line = 'vm.swappiness = %s\n' % new_value
         with TempOwn('/etc/sysctl.conf'):
             with open('/etc/sysctl.conf') as f:
                 contents = f.readlines()
@@ -60,7 +60,7 @@ def __change_kernel_swappiness():
                 f.writelines(contents)
         run_as_root('/sbin/sysctl -p', ignore_error = True)
         current_value = int( get_output('/sbin/sysctl -n vm.swappiness').strip() )
-        if current_value != new_value: raise CommandFailError
+        if current_value != new_value: raise CommandFailError(current_value, new_value)
     
     apply_button = image_stock_button(gtk.STOCK_APPLY, _('Apply') )
     apply_button.connect('clicked', apply, adjustment)

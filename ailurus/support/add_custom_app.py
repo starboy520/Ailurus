@@ -92,8 +92,8 @@ class AddCustomAppDialog(gtk.Dialog):
                 obj.self_check()
                 obj.fill()
             CUSTOM_APPS.addAppObjFromDict(dict)
-        except e:
-            print e
+        except:
+            print_traceback()
         self.response(gtk.RESPONSE_ACCEPT)
         
     def __add_pkg(self, button, entry_pkgs_to_install, entry):

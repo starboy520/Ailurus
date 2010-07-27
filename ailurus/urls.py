@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -22,8 +22,8 @@
 bioclipse32 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86.zip'
 bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip'
 electric = 'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'
-sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.4-linux-x86.tgz'
-sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.4-linux-x64.tgz'
+sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x86.tgz'
+sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x64.tgz'
 tsinghuatex = 'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'
 nscript = 'http://www.nanolx.org/free/NScripts-3.6.tar.bz2'
 cdt = 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'
@@ -36,3 +36,10 @@ gnomeartng_hardy = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-hardy
 gnomeartng_intrepid = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-intrepid.deb'
 gnomeartng_jaunty = 'http://download.berlios.de/gnomeartng/gnomeartng-0.7.0-jaunty.deb'
 remastersys = 'http://prdownloads.sourceforge.net/remastersys/remastersys_2.0.17-1_all.deb'
+worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofpadman.run'
+worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
+mytourbook32 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86.zip'
+mytourbook64 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86_64.zip'
+routeconverter = 'http://www.routeconverter.de/download/RouteConverterLinux.jar'
+geogebra32 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-Portable-3-2-42-0.tar.gz'
+geogebra64 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-64bit-Portable-3-2-42-0.tar.gz'

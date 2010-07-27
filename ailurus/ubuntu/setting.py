@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -27,14 +27,21 @@ from libu import *
 from libsetting import *
 
 def __update_manager_setting():
-    o = GConfCheckButton(_('Automatically check for update'), '/apps/update-notifier/auto_launch' )
+    label = gtk.Label(_('the behavior of update manager:'))
+    label.set_alignment(0, 0)
+    o = GConfCheckButton(_('selected = pop up update manager window.\n'
+                           'unselected = show updates in the notification area'), '/apps/update-notifier/auto_launch' )
+    
     hbox = gtk.HBox(False, 10)
-    hbox.pack_start( gtk.Label( _('Interval (in days) when to check for update:') ), False)
+    hbox.pack_start(gtk.Label( _('Interval (in days) when to check for update:') ), False)
     e = GConfNumericEntry('/apps/update-notifier/regular_auto_launch_interval', 1, 30)
     hbox.pack_start(e, False)
+    
     vbox = gtk.VBox(False, 0)
+    vbox.pack_start(label, False)
     vbox.pack_start(o, False)
     vbox.pack_start(hbox, False)
+    
     return Setting(vbox, _('Ubuntu update manager setting'), ['update'])
 
 def get():

@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -32,7 +32,6 @@ class Generic_Genome_Browser(I):
                '"Generic Genome Browser" cannot be detected or removed by Ailurus.</span>')
     license = AL
     category='biology'
-    sane = False # FIXME: don't know how to remove
     def install(self):
         if FEDORA:
             for package in ['perl-libwww-perl', 'perl-CPAN']:
@@ -89,14 +88,14 @@ class Electric(_path_lists):
     category = 'electronics'
     license = GPL
     download_url = 'http://www.staticfreesoft.com/'
-    def __init__(self):
-        self.shortcut = '/usr/share/applications/electric.desktop'
-        self.file = '/opt/electricBinary.jar'
-        self.paths = [self.shortcut, self.file]
+    shortcut = '/usr/share/applications/electric.desktop'
+    file = '/opt/electricBinary.jar'
+    paths = [shortcut, file]
     def install(self):
         f = R(urls.electric).download()
-        run_as_root('mkdir /opt', ignore_error=True)
-        run_as_root('cp %s %s'%(f, self.file) )
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        run_as_root('cp %s %s' % (f, self.file))
         create_file(self.shortcut, '''[Desktop Entry]
 Name=Electric
 Exec=java -jar %s
@@ -105,6 +104,79 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
+
+class RouteConverter(_path_lists):
+    'RouteConverter'
+    detail = _('Convert GPS log between different formats')
+    license = GPL
+    download_url = 'http://www.routeconverter.de/en'
+    category = 'geography'
+    shortcut = '/usr/share/applications/RouteConverter.desktop'
+    file = '/opt/RouteConverterLinux.jar'
+    paths = [shortcut, file]
+    def install(self):
+        f = R(urls.routeconverter).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        run_as_root('cp %s %s' % (f, self.file))
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=RouteConverter
+Exec=java -jar %s
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application'''%self.file)
+
+class MyTourbook(_path_lists):
+    'MyTourbook'
+    detail = _('visualize and analyze tours which are recorded by a GPS device')
+    license = GPL
+    download_url = 'http://mytourbook.sourceforge.net'
+    category = 'geography'
+    shortcut = '/usr/share/applications/MyTourbook.desktop'
+    file = '/opt/mytourbook'
+    paths = [shortcut, file]
+    def install(self):
+        if is32(): url = urls.mytourbook32
+        else: url = urls.mytourbook64
+        f = R(url).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        with Chdir('/opt'):
+            run_as_root('unzip -qo "%s"' % f)
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=MyTourbook
+Exec=/opt/mytourbook/mytourbook
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/opt/mytourbook/icon.xpm''')
+
+class GeoGebra(_path_lists):
+    'GeoGebra'
+    detail = _('Learning algebra and geometry')
+    category = 'math'
+    download_url = 'http://www.geogebra.org/cms/'
+    shortcut = '/usr/share/applications/GeoGebra.desktop'
+    file = '/opt/geogebra'
+    paths = [shortcut, file]
+    def install(self):
+        if is32(): url = urls.geogebra32
+        else: url = urls.geogebra64
+        f = R(url).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        with Chdir('/opt'):
+            run_as_root('tar xf "%s"' % f)
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=GeoGebra
+Exec=/opt/geogebra/geogebra.sh
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=/opt/geogebra/icon.png''')
 
 class SweetHome3D(_path_lists):
     __doc__ = _('SweetHome3D: open source interior design application')

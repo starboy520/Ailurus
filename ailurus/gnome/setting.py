@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -69,7 +69,7 @@ def __start_here_icon_setting():
                     local_path = usr_path.replace('/usr/share/icons', local_icons_dir)
                     local_dir = os.path.dirname(local_path)
                     if not os.path.exists(local_dir): run('mkdir -p "%s"' % local_dir)
-                    run('cp /tmp/start-here.png %s' % local_path)
+                    run('cp /tmp/start-here.png "%s"' % local_path)
 
     def get_start_here_icon_path():
         import os , gconf
@@ -382,7 +382,7 @@ def __advance_setting():
 
     def clicked(button, path):
         if button.get_active():
-            os.system('mkdir ~/.local/share/applications/')
+            os.system('mkdir -p ~/.local/share/applications/')
             with open(path, 'w') as f:
                 f.write('[Desktop Entry]\n'
                         'Name=Gnome Control Center\n'
@@ -395,7 +395,7 @@ def __advance_setting():
             os.unlink(path)
 
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
-    button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu'))
+    button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu') + ' ' + _('(take effect at the next time GNOME starts up)'))
     button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
     button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
@@ -436,7 +436,9 @@ def __gnome_panel_setting():
 
 def __login_window_setting():
     box = gtk.VBox(False, 5)
-    o = GConfCheckButton(_('Do not list username'), '/apps/gdm/simple-greeter/disable_user_list')
+    o = GConfCheckButton(_('Do not list username. You must enter username manually.\n'
+                           'To display a username list might be not secure.'),
+                         '/apps/gdm/simple-greeter/disable_user_list')
     box.pack_start(o, False)
     o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
     box.pack_start(o, False)
@@ -445,9 +447,8 @@ def __login_window_setting():
 def __login_window_background():
     # the method is on http://blog.roodo.com/rocksaying/archives/12316205.html
     
-    if (UBUNTU or UBUNTU_DERIV) and VERSION >= 'karmic': pass
-    elif ARCHLINUX: pass
-    else: return None # do not support on Fedora because there is no sudo.
+    if (UBUNTU or UBUNTU_DERIV) and VERSION < 'karmic': return None
+    elif FEDORA: return None # do not support on Fedora because there is no sudo.
 
     box = gtk.VBox(False, 5)
 
@@ -455,20 +456,36 @@ def __login_window_background():
         try:
             run_as_root('sudo -u gdm gconftool-2 --set --type string /desktop/gnome/background/picture_filename "%s"' % image)
         except:
-            try:    w.display_image(Config.get_login_window_background())
-            except: w.display_image(None) # show blank
+            w.display_image(Config.get_login_window_background())
             raise
         else:
             Config.set_login_window_background(image)
 
     i = ImageChooser('/usr/share/backgrounds/', 160, 120,
                      _('The login window background is the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'))
-    try:    i.display_image(Config.get_login_window_background())
-    except: i.display_image(None) # show blank
+    i.display_image(Config.get_login_window_background())
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
     box.pack_start(left_align(i))    
     return Setting(box, _('Change login window background'), ['login_window'])
+
+def __login_sound():
+    if (UBUNTU or UBUNTU_DERIV) and VERSION < 'karmic': return None
+    elif FEDORA: return None # do not support on Fedora because there is no sudo.
+
+    enable_sound = gtk.Button(_('Enable GNOME login sound'))
+    enable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true')
+    enable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true'))
+
+    disable_sound = gtk.Button(_('Disable GNOME login sound'))
+    disable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false')
+    disable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false'))
+    
+    box = gtk.HBox(False, 10)
+    box.pack_start(enable_sound, False)
+    box.pack_start(disable_sound, False)
+
+    return Setting(box, _('Change GNOME login sound'), ['login_window', 'sound'])
 
 def __shortcut_setting():
     l1 = gtk.Label(_('Command line'))
@@ -598,6 +615,7 @@ def get():
             __button_icon_setting,
             __start_here_icon_setting,
             __login_icon_setting,
+            __login_sound,
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,

@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -39,7 +39,6 @@ def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and o
 class I:
     this_is_an_installer = True
     this_is_a_repository = False
-    sane = True # False means installed() == False after calling install()
     category = 'others'
     detail = ''
     how_to_install = ''
@@ -47,6 +46,7 @@ class I:
     cache_installed = showed_in_toggle = None # boolean
     logo_pixbuf = None # gtk.gdk.Pixbuf
     use_default_icon = None # boolean
+    installing_error = [] # list
     def self_check(self):
         'check errors in source code'
     def fill(self):
@@ -61,6 +61,33 @@ class I:
         'Add repository before installing me'
     def clean_temp_repository(self):
         'Remove repository after installing me'
+    def clean_installing_error(self):
+        self.installing_error = []
+    def has_installing_error(self):
+        return bool(self.installing_error)
+    def add_installing_error(self, error):
+        assert isinstance(error, tuple) and len(error) == 3
+        import types
+        assert isinstance(error[0], types.TypeType)
+        assert isinstance(error[1], types.ObjectType)
+        assert isinstance(error[2], types.ObjectType)
+        self.installing_error.append(error)
+    def print_installing_error(self, stream):
+        import traceback
+        print >>stream, self.__doc__
+        for exc in self.installing_error:
+            traceback.print_exception(exc[0], exc[1], exc[2], file=stream)
+        print >>stream
+    def fail_by_download_error(self):
+        for error in self.installing_error:
+            if error[0] == CannotDownloadError:
+                return True
+        return False
+    def fail_by_user_cancel(self):
+        for error in self.installing_error:
+            if error[0] == UserCancelInstallation:
+                return True
+        return False
     def visible(self):
         return True
 
@@ -97,8 +124,7 @@ class Config:
         import os
         dir = os.path.expanduser('~/.config/ailurus/')
         if not os.path.exists(dir): # make directory
-            try:    os.makedirs(dir)
-            except: pass # directory exists
+            os.makedirs(dir)
     @classmethod
     def get_config_dir(cls):
         return cls.config_dir
@@ -164,12 +190,20 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
+    def set_do_query_before_install(cls, value):
+        cls.set_bool('do_query_before_install', value)
+    @classmethod
+    def get_do_query_before_install(cls):
+        try: return cls.get_bool('do_query_before_install')
+        except: return True
+    @classmethod
     def set_login_window_background(cls, value):
         'just a cache. value may be wrong. cache the gconf value "/desktop/gnome/background/picture_filename" of user "gdm".'
         cls.set_string('login_window_background', value)
     @classmethod
     def get_login_window_background(cls):
-        return cls.get_string('login_window_background') # please do not catch exception
+        try: return cls.get_string('login_window_background')
+        except: return None # please do not return ''. 
     @classmethod
     def set_username_of_suggestion_window(cls, value):
         cls.set_string('username_of_suggestion_window', value)
@@ -196,12 +230,12 @@ class Config:
         one_day = 3600 * 24
         return now - last_check_time > one_day * 14
     @classmethod
-    def set_synced(cls): # has synchronized latest application data?
-        cls.set_bool('synced', True)
+    def set_last_synced_data_version(cls, value):
+        cls.set_int('last_synced_data_version', value)
     @classmethod
-    def get_synced(cls):
-        try: return cls.get_bool('synced')
-        except: return False
+    def get_last_synced_data_version(cls):
+        try: return cls.get_int('last_synced_data_version')
+        except: return 0
     @classmethod
     def set_use_proxy(cls, value):
         cls.set_bool('use_proxy', value)
@@ -222,6 +256,13 @@ class Config:
     @classmethod
     def get_query_before_exit(cls):
         try:       return cls.get_bool('query_before_exit')
+        except:    return True
+    @classmethod
+    def set_show_agreement(cls, value):
+        cls.set_bool('show_agreement', value)
+    @classmethod
+    def get_show_agreement(cls):
+        try:       return cls.get_bool('show_agreement')
         except:    return True
     @classmethod
     def wget_set_timeout(cls, timeout):
@@ -716,16 +757,12 @@ def is_pkg_list(packages):
         if package[0]=='-': raise ValueError
         if ' ' in package: raise ValueError
 
-def run_as_root_in_terminal(command):
+def run_as_root_in_terminal(command, ignore_error=False):
     import dbus
     is_string_not_empty(command)
     print '\x1b[1;33m', _('Run command:'), command, '\x1b[m'
 
-    import tempfile
-    t = tempfile.NamedTemporaryFile('w')
-    t.write(command)
-    t.flush()
-    string = 'LANG=C xterm -T "Ailurus Terminal" -e bash %s' % t.name
+    string = 'python "%s/support/term.py" %s' % (A, command)
 
     authenticate()
     try:
@@ -733,7 +770,7 @@ def run_as_root_in_terminal(command):
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
-            if not ignore_error: raise CommandFailError(cmd)
+            if not ignore_error: raise CommandFailError(command)
         else: raise
 
 class RPM:
@@ -751,25 +788,23 @@ class RPM:
         cls.__set2 = set()
         import subprocess, os
 
-        TimeStat.begin(_('scan installed packages'))
-        path = A+'/support/dump_rpm_installed.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__set1.add(line.strip())
-        task.wait()
-        TimeStat.end(_('scan installed packages'))
+        with TimeStat(_('scan installed packages')):
+            path = A+'/support/dump_rpm_installed.py'
+            task = subprocess.Popen(['python', path],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__set1.add(line.strip())
+            task.wait()
         
-        TimeStat.begin(_('scan available packages'))
-        path = A+'/support/dump_rpm_existing_new.py'
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__set2.add(line.strip())
-        task.wait()
-        TimeStat.end(_('scan available packages'))
+        with TimeStat(_('scan available packages')):
+            path = A+'/support/dump_rpm_existing_new.py'
+            task = subprocess.Popen(['python', path],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__set2.add(line.strip())
+            task.wait()
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -789,28 +824,31 @@ class RPM:
         return package_name in cls.__set1
     @classmethod
     def install(cls, *package):
-        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
         cls.cache_changed()
+        run_as_root_in_terminal('yum install %s -y' % ' '.join(package))
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
-        run_as_root_in_terminal('yum localinstall --nogpgcheck -y %s' % path)
         cls.cache_changed()
+        run_as_root_in_terminal('yum localinstall "%s" --nogpgcheck -y' % path)
     @classmethod
     def remove(cls, *package):
-        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
         cls.cache_changed()
+        run_as_root_in_terminal('yum remove %s -y' % ' '.join(package))
     @classmethod
     def import_key(cls, path):
         assert isinstance(path, str)
         run_as_root_in_terminal('rpm --import %s' % path)
 
+class APTSourceSyntaxError(Exception):
+    pass
+
 class APT:
     fresh_cache = False
     apt_get_update_is_called = False
-    apt_cache = None
+    apt_cache = None # instance of apt.cache.Cache
     @classmethod
     def cache_changed(cls):
         cls.fresh_cache = False
@@ -829,13 +867,22 @@ class APT:
             return summary
         return ''
     @classmethod
+    def has_broken_dependency(cls):
+        cls.refresh_cache()
+        try:
+            return bool(cls.apt_cache.broken_count)
+        except AttributeError: # ubuntu hardy
+            return False # not a good solution
+    @classmethod
     def refresh_cache(cls):
         if cls.fresh_cache: return
         cls.fresh_cache = True
-        TimeStat.begin(_('scan packages'))
-        import apt
-        cls.apt_cache = apt.cache.Cache()
-        TimeStat.end(_('scan packages'))
+        with TimeStat(_('scan packages')):
+            import apt
+            try:
+                cls.apt_cache = apt.cache.Cache()
+            except SystemError, e: # syntax error in source config
+                raise APTSourceSyntaxError(*e.args)
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -875,34 +922,43 @@ class APT:
         return package_name in cls.apt_cache
     @classmethod
     def install(cls, *packages):
+        import dbus
         is_pkg_list(packages)
         cls.apt_get_update()
-        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        daemon().apt_command('install', ','.join(packages),
-                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
+        run_as_root_in_terminal('apt-get install %s' % ' '.join(packages))
+#        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
+#        try:
+#            daemon().apt_command('install', ','.join(packages),
+#                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+#        except dbus.exceptions.DBusException, e:
+#            if e.get_dbus_name() == 'cn.ailurus.CannotDownloadError':
+#                raise CannotDownloadError(*packages)
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
-        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
-        daemon().apt_command('remove', ','.join(packages),
-                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
+        run_as_root_in_terminal('apt-get remove %s' % ' '.join(packages))
+#        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
+#        daemon().apt_command('remove', ','.join(packages),
+#                             packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
     @classmethod
     def neet_to_run_apt_get_update(cls):
         cls.apt_get_update_is_called = False
     @classmethod
     def apt_get_update(cls):
         if cls.apt_get_update_is_called == False:
-            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
+            run_as_root_in_terminal('apt-get update', ignore_error = True)
+#            daemon().apt_command('update', '', packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
             cls.apt_get_update_is_called = True
             cls.cache_changed()
     @classmethod
     def install_local(cls, *packages):
-        for package in packages:
-            daemon().apt_command('install_local', package,
-                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
         cls.cache_changed()
+        for package in packages:
+            run_as_root_in_terminal('dpkg -i "%s"' % package)
+#            daemon().apt_command('install_local', package,
+#                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
     @classmethod
     def is_cache_lockable(cls):
         import dbus
@@ -927,35 +983,32 @@ class PACMAN:
         cls.fresh_cache = False
     @classmethod
     def refresh_cache(cls):
-        if getattr(cls, 'fresh_cache', False): return
+        if cls.fresh_cache: return
         cls.fresh_cache = True
         cls.__pkgs = set()
         cls.__allpkgs = set()
-        TimeStat.begin(_('scan installed packages'))
-        import subprocess, os
-        task = subprocess.Popen(['pacman', '-Q'],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__pkgs.add(line.split()[0])
-        task.wait()
-        TimeStat.end(_('scan installed packages'))
+        with TimeStat(_('scan installed packages')):
+            import subprocess, os
+            task = subprocess.Popen(['pacman', '-Q'],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__pkgs.add(line.split()[0])
+            task.wait()
         
-        TimeStat.begin(_('scan available packages'))
-        task = subprocess.Popen(['pacman', '-Sl'],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            cls.__allpkgs.add(line.split()[1])
-        task.wait()
-        TimeStat.end(_('scan available packages'))
+        with TimeStat(_('scan available packages')):
+            task = subprocess.Popen(['pacman', '-Sl'],
+                stdout=subprocess.PIPE,
+                )
+            for line in task.stdout:
+                cls.__allpkgs.add(line.split()[1])
+            task.wait()
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
         return cls.__allpkgs
     @classmethod
     def installed(cls, package_name):
-        is_pkg_list([package_name])
         cls.refresh_cache()
         return package_name in cls.__pkgs
     @classmethod
@@ -967,23 +1020,21 @@ class PACMAN:
         is_pkg_list(packages)
         if not cls.pacman_sync_called:
             cls.pacman_sync()
-        print '\x1b[1;32m', _('Installing packages:'), ' '.join(packages), '\x1b[m'
-        run_as_root_in_terminal('pacman -S --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -S %s' % ' '.join(packages))
     @classmethod
     def install_local(cls, path):
         assert isinstance(path, str)
         import os
         assert os.path.exists(path)
-        run_as_root_in_terminal('pacman -U --noconfirm %s' % path)
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -U "%s"' % path)
     @classmethod
     def remove(cls, *packages):
         is_pkg_list(packages)
-        print '\x1b[1;31m', _('Removing packages:'), ' '.join(packages), '\x1b[m'
         packages = [p for p in packages if PACMAN.installed(p)]
-        run_as_root_in_terminal('pacman -R --noconfirm %s' % ' '.join(packages))
         cls.cache_changed()
+        run_as_root_in_terminal('pacman -R %s' % ' '.join(packages))
     @classmethod
     def pacman_sync(cls):
         print '\x1b[1;36m', _('Run "pacman -Sy". Please wait for a few minutes.'), '\x1b[m'
@@ -1050,7 +1101,14 @@ class KillWhenExit:
                 print_traceback()
         cls.task_list = []
 
+class CannotDownloadError(Exception):
+    pass
+
+class UserCancelInstallation(Exception):
+    pass
+
 def download(url, filename):
+    import os
     is_string_not_empty(url)
     assert url[0]!='-'
     is_string_not_empty(filename)
@@ -1061,9 +1119,8 @@ def download(url, filename):
         run("wget --timeout=%(timeout)s --tries=%(tries)s '%(url)s' -O '%(filename)s'"
             %{'timeout':timeout, 'tries':tries, 'url':url, 'filename':filename} )
     except:
-        import os
         if os.path.exists(filename): os.unlink(filename)
-        raise
+        raise CannotDownloadError(url)
     
 def reset_dir():
     import os, sys
@@ -1522,18 +1579,19 @@ class R:
         for e in url_list:
             assert isinstance(e, str), e
             assert e.startswith('http://') or e.startswith('https://') or e.startswith('ftp://')
+        self.url = self.delete_duplicate(url_list)
+
         #check size
         if size!=None:
             assert size>0
             assert isinstance(size, int) or isinstance(size, long), size
+        self.size = size
         #check hash
         if hash:
             assert isinstance(hash, str), hash
             assert len(hash)==40, hash
-
-        self.url = self.delete_duplicate(url_list)
-        self.size = size
         self.hash = hash
+
         if filename:
             self.filename = filename
         else:
@@ -1553,13 +1611,6 @@ class R:
             except:
                 pass
         return False
-    @classmethod
-    def create_tmp_dir(cls):
-        dir = '/var/cache/ailurus/'
-        import os
-        if not os.path.exists(dir):
-            run_as_root('mkdir %s -p'%dir)
-        own_by_user(dir)
     def check(self, path):
         if self.size:
             import os
@@ -1574,21 +1625,20 @@ class R:
             print _('Good.')
     def download(self):
         self.sort()
-        dest = '/var/cache/ailurus/'+self.filename
+        dest = '/tmp/'+self.filename
         import os, sys
         assert isinstance(self.sorted_url, list)
         for i, url in enumerate(self.sorted_url):
             print '\x1b[1;36m', _('Using mirror %(i)s. There are a total of %(total)s mirrors.') % {'i' : i+1, 'total' : len(self.sorted_url)}, '\x1b[m'
             assert isinstance(url, str)
             try:
-                R.create_tmp_dir()
                 download(url, dest)
                 self.check(dest)
                 return dest
             except:
                 print_traceback()
         
-        raise CommandFailError(self.url)
+        raise CannotDownloadError(self.url)
 
 class ETCEnvironment:
     def __init__(self):
@@ -1791,21 +1841,23 @@ class TimeStat:
     __open_stat_names = set()
     __begin_time = {}
     result = {}
-    @classmethod
-    def begin(cls, name):
+    def __init__(self, name):
         assert isinstance(name, str) and name
-        assert name not in cls.__open_stat_names
-        cls.__open_stat_names.add(name)
+        assert name not in TimeStat.__open_stat_names, name
+        TimeStat.__open_stat_names.add(name)
         import time
-        cls.__begin_time[name] = time.time()
-    @classmethod
-    def end(cls, name):
+        TimeStat.__begin_time[name] = time.time()
+        self.name = name
+    def __enter__(self):
+        return None
+    def __exit__(self, type, value, traceback):
+        name = self.name
         assert isinstance(name, str) and name
-        assert name in cls.__open_stat_names
+        assert name in TimeStat.__open_stat_names
         import time
-        length = time.time() - cls.__begin_time[name]
-        cls.result[name] = length
-        cls.__open_stat_names.remove(name)
+        length = time.time() - TimeStat.__begin_time[name]
+        TimeStat.result[name] = length
+        TimeStat.__open_stat_names.remove(name)
     @classmethod
     def clear(cls):
         cls.__open_stat_names.clear()

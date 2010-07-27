@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -132,6 +132,12 @@ def left_align(widget):
     align.add(widget)
     return align
 
+def center_align(widget):
+    import gtk
+    align = gtk.Alignment(0.5, 0.5)
+    align.add(widget)
+    return align
+
 def right_align(widget):
     import gtk
     align = gtk.Alignment(1, 0.5)
@@ -222,13 +228,37 @@ def do_access_denied_error():
     window.set_position(gtk.WIN_POS_CENTER)
     window.add(vbox)
     window.show_all()
+
+def do_apt_source_syntax_error(value):
+    import gtk
+    message = _('There is syntax error in source configuration.\n'
+                'Please fix the error, then restart Ailurus.')
+    label = gtk.Label(message)
+    label.set_alignment(0, 0.5)
     
+    label2 = gtk.Label(value)
+    label2.set_alignment(0, 0.5)
+
+    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    button_close.connect('clicked', lambda w: window.destroy())
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(label, False)
+    vbox.pack_start(label2, False)
+    vbox.pack_start(right_align(button_close), False)
+    window = gtk.Window()
+    window.set_title(_('Fatal error'))
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.add(vbox)
+    window.show_all()
+
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk
-    from lib import AILURUS_VERSION, D, AccessDeniedError, report_bug
+    from lib import AILURUS_VERSION, D, AccessDeniedError, APTSourceSyntaxError, report_bug
 
     if etype == KeyboardInterrupt: return
     if etype == AccessDeniedError: return do_access_denied_error()
+    if etype == APTSourceSyntaxError: return do_apt_source_syntax_error(value)
     
     traceback.print_tb(tb, file=sys.stderr)
     sys.stderr.flush()

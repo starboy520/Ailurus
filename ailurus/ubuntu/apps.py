@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -111,34 +111,37 @@ class DisableGetty(I):
         with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s' % i
-                with open(file_name) as f:
-                    for line in f:
-                        if line.startswith('exec'): return False
+                if os.path.exists(file_name):
+                    with open(file_name) as f:
+                        for line in f:
+                            if line.startswith('exec'): return False
         return True
     def install(self):
         with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s'%i
-                with TempOwn(file_name):
-                    with open(file_name) as f:
-                        contents = f.readlines()
-                    for j, line in enumerate(contents):
-                        if line.startswith('exec'):
-                            contents[j]='#' + line
-                    with open(file_name, 'w') as f:
-                        f.writelines(contents)
+                if os.path.exists(file_name):
+                    with TempOwn(file_name):
+                        with open(file_name) as f:
+                            contents = f.readlines()
+                        for j, line in enumerate(contents):
+                            if line.startswith('exec'):
+                                contents[j]='#' + line
+                        with open(file_name, 'w') as f:
+                            f.writelines(contents)
     def remove(self):
         with Chdir('/etc/event.d/'):
             for i in range(2,7):
                 file_name = 'tty%s'%i
-                with TempOwn(file_name):
-                    with open(file_name) as f:
-                        contents = f.readlines()
-                    for j, line in enumerate(contents):
-                        if line.startswith('#exec'):
-                            contents[j]='exec /sbin/getty 38400 tty%s\n' % i
-                    with open(file_name, 'w') as f:
-                        f.writelines(contents)
+                if os.path.exists(file_name):
+                    with TempOwn(file_name):
+                        with open(file_name) as f:
+                            contents = f.readlines()
+                        for j, line in enumerate(contents):
+                            if line.startswith('#exec'):
+                                contents[j]='exec /sbin/getty 38400 tty%s\n' % i
+                        with open(file_name, 'w') as f:
+                            f.writelines(contents)
 
 class DisableGettyKarmic(I):
     __doc__ = _('Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated')
@@ -149,9 +152,10 @@ class DisableGettyKarmic(I):
         with Chdir('/etc/init/'):
             for i in range(2,7):
                 file_name = 'tty%s.conf' % i
-                with open(file_name) as f:
-                    for line in f:
-                        if line.startswith('exec'): return False
+                if os.path.exists(file_name):
+                    with open(file_name) as f:
+                        for line in f:
+                            if line.startswith('exec'): return False
         return True
     def install(self):
         with Chdir('/etc/init/'):

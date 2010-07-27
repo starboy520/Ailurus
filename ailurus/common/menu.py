@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -275,11 +275,11 @@ def __others():
         thread.start_new_thread(check_update, ())
     help_update.connect('activate', callback)
 
-    help_propose_suggestion = image_file_menuitem(_('Propose suggestion'), D+'umut_icons/m_propose_suggestion.png', 16)
-    def propose_suggestion(*w):
-        from support.clientlib import SuggestionsSubmit
-        SuggestionsSubmit()
-    help_propose_suggestion.connect('activate', propose_suggestion)
+#    help_propose_suggestion = image_file_menuitem(_('Propose suggestion'), D+'umut_icons/m_propose_suggestion.png', 16)
+#    def propose_suggestion(*w):
+#        from support.clientlib import SuggestionsSubmit
+#        SuggestionsSubmit()
+#    help_propose_suggestion.connect('activate', propose_suggestion)
 
     help_report_bug = image_file_menuitem(_('Report bugs'), D+'umut_icons/m_propose_suggestion.png', 16)
     help_report_bug.connect('activate', 
@@ -302,7 +302,8 @@ def __others():
     statistics.connect('activate', lambda *w: show_statistics())
     
     return [ changelog, help_contribute, help_blog, help_update, 
-             help_propose_suggestion, help_report_bug, help_translate, special_thank, about, statistics, ]
+#             help_propose_suggestion, 
+             help_report_bug, help_translate, special_thank, about, statistics, ]
    
 def get_study_linux_menu():
     return __study_linux()

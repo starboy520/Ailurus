@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -124,7 +124,7 @@ class AppObjs:
     basic_modules = [] # used in load_from_basic_modules()
     extensions = []
     failed_extensions = []
-    appstore = gtk.ListStore(gobject.TYPE_PYOBJECT)
+    list_store = gtk.ListStore(gobject.TYPE_PYOBJECT)
     @classmethod
     def add_new_appobj(cls,dict):
         objdict = dict.copy()
@@ -145,7 +145,24 @@ class AppObjs:
         obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
         obj.showed_in_toggle = obj.cache_installed = obj.installed()
         cls.appobjs.append(obj)
-        cls.appstore.append([obj])
+        cls.list_store.append([obj])
+    @classmethod
+    def save_installed_items_to_file(cls, save_to_this_path):
+        with open(save_to_this_path, 'w') as f:
+            for obj in cls.appobjs:
+                if obj.cache_installed and not obj.__class__.__name__.startswith('C_'): #custom package's class name startswith C_  such as C_12
+                    class_name = obj.__class__.__name__
+                    f.write(class_name + '\n')
+    @classmethod
+    def load_selection_state_from_file(cls, load_from_this_path):
+        with open(load_from_this_path) as f:
+            lines = f.readlines()
+        names = [line.strip() for line in lines]
+        names = set(names)
+        for obj in cls.appobjs:
+            class_name = obj.__class__.__name__
+            if class_name in names:
+                obj.showed_in_toggle = True
     @classmethod
     def get_icon_path(cls, name):
         'return (icon path, whether it is default icon)'
@@ -162,8 +179,21 @@ class AppObjs:
             obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
     @classmethod
     def all_objs_reset_status(cls):
+        failed = []
         for obj in cls.appobjs:
-            obj.showed_in_toggle = obj.cache_installed = obj.installed()
+            try:
+                obj.showed_in_toggle = obj.cache_installed = obj.installed()
+            except:
+                print_traceback()
+                failed.append(obj)
+        for o in failed:
+            cls.appobjs.remove(o)
+            iter = cls.list_store.get_iter_first()
+            while iter:
+                if cls.list_store.get_value(iter, 0) == o:
+                    cls.list_store.remove(iter)
+                    break
+                iter = cls.list_store.iter_next(iter)
     @classmethod
     def set_basic_modules(cls, common, desktop, distribution):
         cls.basic_modules = []
@@ -195,6 +225,7 @@ class AppObjs:
                 print_traceback()
             else:
                 cls.appobjs.append(obj)
+                cls.list_store.append([obj])
                 cls.appobjs_names.append(name)
     @classmethod
     def all_installer_names_in_module(cls, module):
@@ -229,8 +260,11 @@ class AppObjs:
             try:
                 module = __import__(basename)
                 cls.extensions.append(module)
+                print 'Extension', basename, 'sucessfully loaded.'
             except:
                 cls.failed_extensions.append(os.path.abspath(py))
+                print 'Failed to load extension', basename, '.'
+                print_traceback()
             else:
                 cls.load_from(module)
         sys.path.pop(0)
@@ -252,15 +286,26 @@ class AppObjs:
             obj.self_check()
             obj.fill()
             cls.appobjs.append(obj)
+            cls.list_store.append([obj])
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
+        cls.list_store.clear()
+        for obj in cls.appobjs:
+            cls.list_store.append([obj])
     @classmethod
     def strip_wrong_locale(cls):
+        changed = False
         if not Config.is_Chinese_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Chinese')]
+            changed = True
         if not Config.is_Poland_locale():
             cls.appobjs = [obj for obj in cls.appobjs if not hasattr(obj, 'Poland')]
+            changed = True
+        if changed:
+            cls.list_store.clear()
+            for obj in cls.appobjs:
+                cls.list_store.append([obj])
 
 def load_R_objs():
     paths = []
@@ -384,34 +429,24 @@ elif ARCHLINUX: import archlinux as distribution
 else: distribution = None
 
 def load_app_objs():
-    TimeStat.begin('load_app_objs')
-    AppObjs.set_basic_modules(common, desktop, distribution)
-
-    TimeStat.begin('load_from_text_file')
-    AppObjs.load_from_text_file()
-    TimeStat.end('load_from_text_file')
+    with TimeStat('load_app_objs'):
+        AppObjs.set_basic_modules(common, desktop, distribution)
     
-    TimeStat.begin('load_from_basic_modules')
-    AppObjs.load_from_basic_modules()
-    TimeStat.end('load_from_basic_modules')
+        with TimeStat('load_from_text_file'):
+            AppObjs.load_from_text_file()
+        
+        with TimeStat('load_from_basic_modules'):
+            AppObjs.load_from_basic_modules()
+        
+        with TimeStat('load_from_extensions'):
+            AppObjs.load_from_extensions()
     
-    TimeStat.begin('load_from_extensions')
-    AppObjs.load_from_extensions()
-    TimeStat.end('load_from_extensions')
-
-    TimeStat.begin('strip')
-    AppObjs.strip_invisible()
-    AppObjs.strip_wrong_locale()
-    TimeStat.end('strip')
-
-    TimeStat.begin('reload_icon')
-    AppObjs.all_objs_reload_icon()
-    TimeStat.end('reload_icon')
+        with TimeStat('strip'):
+            AppObjs.strip_invisible()
+            AppObjs.strip_wrong_locale()
     
-    TimeStat.begin('reset_status')
-    AppObjs.all_objs_reset_status()
-    TimeStat.end('reset_status')
-    
-    TimeStat.end('load_app_objs')
-
-    return AppObjs.appobjs
+        with TimeStat('reload_icon'):
+            AppObjs.all_objs_reload_icon()
+        
+        with TimeStat('reset_status'):
+            AppObjs.all_objs_reset_status()

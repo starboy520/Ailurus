@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -159,7 +159,8 @@ class Query_before_remove_a_lot_of_files(C) :
 class Show_a_Linux_skill_bubble(C):
     __doc__ = _('Show a random Linux skill after you log in to GNOME')
     detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
-    file = os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
+    autostart_path = os.path.expanduser('~/.config/autostart/')
+    file = autostart_path + 'show-a-linux-skill-bubble.desktop'
     content = ('[Desktop Entry]\n'
                'Name=Show a random Linux skill after logging in.\n'
                'Comment=Show a random Linux skill after you log in to GNOME. Help you learn Linux.\n'
@@ -175,6 +176,8 @@ class Show_a_Linux_skill_bubble(C):
             if f.read() != self.content: return True
         return False
     def cure(self):
+        if not os.path.exists(self.autostart_path):
+            run('mkdir -p "%s"' % self.autostart_path)
         with open(self.file, 'w') as f:
             f.write(self.content)
 
@@ -203,3 +206,11 @@ class Own_config_dir_by_user(C):
             return True
     def cure(self):
         run_as_root('chown -R $USER:$USER "%s"' % Config.get_config_dir())
+
+class Completely_remove_var_cache_ailurus(C):
+    __doc__ = _('Remove directory /var/cache/ailurus/')
+    detail = _('This directory is obsolete. Remove this directory to free disk space.')
+    def exists(self):
+        return os.path.exists('/var/cache/ailurus')
+    def cure(self):
+        run_as_root('rm -rf /var/cache/ailurus')

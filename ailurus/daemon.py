@@ -1,6 +1,6 @@
-#-*- coding: utf-8 -*-
+#coding: utf8
 #
-# Ailurus - make Linux easier to use
+# Ailurus - a simple application installer and GNOME tweaker
 #
 # Copyright (C) 2009-2010, Ailurus developers and Ailurus contributors
 # Copyright (C) 2007-2010, Trusted Digital Technology Laboratory, Shanghai Jiao Tong University, China.
@@ -35,7 +35,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 10 # must be integer
+version = 12 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -55,6 +55,9 @@ class LocalDebPackageResolutionError(dbus.DBusException):
 class CannotUpdateAptCacheError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.CannotUpdateAptCacheError'
 
+class CannotDownloadError(dbus.DBusException):
+    _dbus_error_name = 'cn.ailurus.CannotDownloadError'
+
 class AilurusFulgens(dbus.service.Object):
     @dbus.service.method('cn.ailurus.Interface', 
                                           in_signature='ss', 
@@ -65,7 +68,10 @@ class AilurusFulgens(dbus.service.Object):
         command = command.encode('utf8')
         env_string = env_string.encode('utf8')
         env = self.__get_dict(env_string)
-        os.chdir(env['PWD'])
+        try: 
+            os.chdir(env['PWD'])
+        except KeyError:
+            raise KeyError(env, env_string) # help to fix issue 850
         task = subprocess.Popen(command, shell=True, env=env)
         task.wait()
         if task.returncode:
@@ -294,8 +300,12 @@ class AilurusFulgens(dbus.service.Object):
                 raise AptPackageNotExistError(pkg_name)
             pkg.mark_install()
         self.unlock_apt_pkg_global_lock()
-        self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
-        apt_pkg.PkgSystemLock()
+        try:
+            self.apt_cache.commit(self.apt_progress.fetch, self.apt_progress.install)
+        except apt.cache.FetchFailedException, e:
+            raise CannotDownloadError(*e.args)
+        finally:
+            apt_pkg.PkgSystemLock()
 
     def apt_remove(self, package_names):
         '''package_names -- package names concatenated by comma (,)'''
@@ -326,6 +336,9 @@ class AilurusFulgens(dbus.service.Object):
         try:
             self.apt_cache.update(self.apt_progress.fetch)
         except SystemError, e: raise CannotUpdateAptCacheError(e.message)
+        except apt.cache.FetchFailedException, e: pass # not a perfect solution
+        # FetchFailedException raised if some URL of ppa failed.
+        # Sometimes it can be ignored. Sometimes it cannot be ignored.
 
     def create_apt_window(self):
         import gtk
