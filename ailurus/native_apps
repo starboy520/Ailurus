@@ -910,3 +910,9 @@ category = latex
 ubuntu = kile
 fedora = kile
 archlinux = kile
+
+[LyX]
+category = latex
+ubuntu = lyx
+fedora = lyx
+archlinux = lyx
