@@ -25,9 +25,7 @@ import pango
 
 from lib import *
 from libu import *
-
 from loader import *
-
     
 class AddCustomAppDialog(gtk.Dialog):
     liststore_all_pkg = gtk.ListStore(str)
@@ -133,9 +131,9 @@ class AddCustomAppDialog(gtk.Dialog):
         self.entry_pkgs = entry_pkgs = gtk.Entry()
         if dict.has_key(DISTRIBUTION):
             entry_pkgs.set_text(dict[DISTRIBUTION] + ' ')
-        label_detail = gtk.Label(_('Detail') + ': ')
+        label_detail = gtk.Label(_('Detail:'))
         label_detail.set_alignment(0,0.5)
-        label_category = gtk.Label(_('Category') + ': ')
+        label_category = gtk.Label(_('Category:'))
         label_category.set_alignment(0,0.5)
         self.entry_name = entry_name = gtk.Entry()
         if dict.has_key('__doc__'):
