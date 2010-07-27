@@ -196,19 +196,16 @@ class AddCustomAppDialog(gtk.Dialog):
             if len(target.split()) == 1:
                 if c.category == target:
                     index = i
-                
             else:
                 if c.category in target.split() and not c.category in ['favourite','dustbin']:
                     index = i
             combo_category.append_text(c.text)
-        
         combo_category.set_active(index)
         
-        hbox_add_pkg = gtk.HBox()
-        hbox_add_pkg.set_homogeneous(False)
-
-        hbox_add_pkg.pack_start(entry_pkg, False, False, 0)
-        hbox_add_pkg.pack_start(button_add_pkg, False, False, 0)
+        hbox_add_pkg = gtk.HBox(False, 3)
+        hbox_add_pkg.pack_start(entry_pkg)
+        hbox_add_pkg.pack_start(button_add_pkg, False)
+        
         table.attach(label_pkgs_to_install, 0, 1, 2, 3, gtk.FILL, 0)
         table.attach(entry_pkgs, 1, 2, 2, 3, gtk.FILL, 0)
         table.attach(label_category, 0, 1, 4, 5, gtk.FILL, 0)
@@ -219,12 +216,6 @@ class AddCustomAppDialog(gtk.Dialog):
         
         self.icon_chooser = icon_chooser = ImageChooser('/usr/share/pixmaps/', 48, 48)
         icon_chooser.connect('changed',self.__choose_icon)
-        if self.dict.has_key('appname'):       
-            pixbuf = self.dict['appobj'].logo_pixbuf
-        else:
-            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(D + 'sora_icons/default_application_icon.png', 48, 48)
-        icon_chooser.display_pixbuf(pixbuf)
-        
         left_vbox = gtk.VBox(False)
         left_vbox.pack_start(gtk.Label(), True)
         left_vbox.pack_start(icon_chooser, False)
@@ -235,11 +226,16 @@ class AddCustomAppDialog(gtk.Dialog):
         top_box.pack_start(table, False)
 
         self.vbox.pack_start(top_box, False)
-        self.vbox.pack_end(self.__build_bottom_box(), False)
+        self.vbox.pack_start(self.__build_bottom_box(), False)
+        self.show_all()
         
         self.origin_category = self.__get_category()
 
-        self.show_all()
+        if self.dict.has_key('appname'):       
+            pixbuf = self.dict['appobj'].logo_pixbuf
+        else:
+            pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(D + 'sora_icons/default_application_icon.png', 48, 48)
+        icon_chooser.display_pixbuf(pixbuf)
 
 if __name__ == '__main__': # debug
     dialog = AddCustomAppDialog()
