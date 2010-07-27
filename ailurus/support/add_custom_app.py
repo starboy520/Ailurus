@@ -169,7 +169,7 @@ class AddCustomAppDialog(gtk.Dialog):
         button_cancel = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
         button_cancel.connect('clicked', self.__cancel)
 
-        table = gtk.Table(False)
+        table = gtk.Table()
         table.set_col_spacings(10)
         table.set_row_spacings(5)
         table.attach(label_name, 0, 1, 0, 1, gtk.FILL, 0)
@@ -219,13 +219,24 @@ class AddCustomAppDialog(gtk.Dialog):
         else:
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(D + 'sora_icons/default_application_icon.png', 48, 48)
         icon_chooser.display_pixbuf(pixbuf)
-        hbox_icon_and_table = gtk.HBox()
-        tmp_vbox = gtk.VBox()
-        tmp_vbox.pack_start(icon_chooser, False, False, 0)
-        hbox_icon_and_table.set_homogeneous(False)
-        hbox_icon_and_table.pack_start(tmp_vbox, False, False, 0)
-        hbox_icon_and_table.pack_start(table, False, False, 0)
-        self.vbox.pack_start(hbox_icon_and_table, False, False, 0)
-        self.vbox.pack_end(hbox_bottom, False, False, 0)
+        
+        left_vbox = gtk.VBox(False)
+        left_vbox.pack_start(gtk.Label(), True)
+        left_vbox.pack_start(icon_chooser, False)
+        left_vbox.pack_start(gtk.Label(), True)
+        
+        hbox_icon_and_table = gtk.HBox(False, 10)
+        hbox_icon_and_table.pack_start(left_vbox, False)
+        hbox_icon_and_table.pack_start(table, False)
+
+        self.vbox.pack_start(hbox_icon_and_table, False)
+        self.vbox.pack_end(hbox_bottom, False)
         
         self.origin_category = self.__get_category()
+
+        self.show_all()
+
+if __name__ == '__main__': # debug
+    dialog = AddCustomAppDialog()
+    dialog.run()
+    dialog.destroy()
