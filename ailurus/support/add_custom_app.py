@@ -29,6 +29,7 @@ from loader import *
     
 class AddCustomAppDialog(gtk.Dialog):
     liststore_all_pkg = gtk.ListStore(str)
+
     def clear(self):
         self.entry_detail.set_text('')
         self.entry_name.set_text('')
@@ -37,13 +38,15 @@ class AddCustomAppDialog(gtk.Dialog):
 
     def __prompt(self, title, content):
         dialog = gtk.Dialog(title = title,
-        buttons = (gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
+                            buttons = (gtk.STOCK_OK, gtk.RESPONSE_ACCEPT))
         dialog.vbox.pack_start(gtk.Label(content))
         dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
+
     def __cancel(self, widget):
         self.response(gtk.RESPONSE_REJECT)
+
     def __get_category(self):
         s = self.combo_category.get_active_text()
         from install_remove_pane import Category
@@ -51,6 +54,7 @@ class AddCustomAppDialog(gtk.Dialog):
             if c.text == s:
                 return c.category
         return 'Other'   
+
     def __submit(self, button):
         dict={}
         if self.dict.has_key('appname'):
@@ -226,5 +230,3 @@ class AddCustomAppDialog(gtk.Dialog):
         self.vbox.pack_end(hbox_bottom, False, False, 0)
         
         self.origin_category = self.__get_category()
-        #self.set_default_size(400, 200)
-    pass
