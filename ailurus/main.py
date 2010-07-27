@@ -47,6 +47,8 @@ def detect_proxy_env():
                                            message_format=_('Successfully adopted a proxy server'))
                 dialog.run()
                 dialog.destroy()
+        else:
+            os.unsetenv('http_proxy')
 
 def detect_running_instances():
     string = get_output('pgrep -u $USER ailurus', True)
