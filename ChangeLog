@@ -1,3 +1,9 @@
+2010-07-27 CHEN Yangyang <skabyy@gmail.com>
+
+    * Optimize the repository configure pane
+    * Add "add third party repository area" to repository configure pane
+    * Fix some bugs
+
 2010-07-27 HAN Haofu <gtxx3600@gmail.com>
 
 	* Allow user to add new package-entry
@@ -101,6 +107,10 @@
     * Ignore FetchFailedException in apt_update()
     * Download icon pack using proxy server
     * Prompt syntax error in source configuration
+
+2010-07-10 CHEN Yangyang <skabyy@gmail.com>
+
+    * Add a feature to delay sending while the server can not be connected
 
 2010-07-10 CHEN Yangyang <skabyy@gmail.com>
 

@@ -19,6 +19,7 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
+import threading
 import urllib
 import urllib2
 
@@ -35,19 +36,22 @@ if LOCAL_DEBUG:
 else:
     HOST = 'we-like-ailurus.appspot.com'
     PORT = 80
-    
+
+lock = threading.Lock()
 delayed = []
 
 def load_delayed_data():
     import os
     import pickle
     fn = os.path.expanduser('~/.config/ailurus/delayed_sending')
+    lock.acquire()
     try:
         with open(fn, 'r') as f:
             global delayed
             delayed = pickle.load(f)
     except:
         pass
+    lock.release()
 
 def save_delayed_data():
     import os
@@ -60,9 +64,16 @@ def save_delayed_data():
         import traceback, sys
         traceback.print_exc(file=sys.stderr)
 
-def __do_try_send_delayed_data():
+def __add_delayed_data(data):
+    lock.acquire()
+    delayed.append(data)
+    save_delayed_data()
+    lock.release()
+
+def do_try_send_delayed_data():
     load_delayed_data()
     i = 0
+    lock.acquire()
     while i < len(delayed):
         try:
             req = delayed[i]
@@ -74,9 +85,17 @@ def __do_try_send_delayed_data():
 #            import traceback, sys
 #            traceback.print_exc(file=sys.stderr)
     save_delayed_data()
+    lock.release()
+
+class __delayed_sending_thread(threading.Thread):
+    def __init__(self):
+        threading.Thread.__init__(self)
+        self.start()
+    def run(self):
+        do_try_send_delayed_data()
 
 def try_send_delayed_data():
-    __do_try_send_delayed_data()
+    __delayed_sending_thread()
 
 def send(d, host, port):
     assert type(d) == dict
@@ -115,9 +134,15 @@ class SubmitWindow(gtk.Window):
         namebox.pack_start(gtk.Label(_('Your name:')), False)
         namebox.pack_start(nameentry)
         
+        subjectbox = gtk.HBox()
+        subjectbox.pack_start(gtk.Label(_('Subject: ')), False)
+        self.subjectentry = subjectentry = gtk.Entry()
+        subjectentry.modify_font(pango.FontDescription('Georgia 10'))
+        subjectbox.pack_end(subjectentry, True)
+        
         contentbox = gtk.HBox()
         self.textview = textview = gtk.TextView()
-        textview.modify_font(pango.FontDescription('Monospace 10'))
+        textview.modify_font(pango.FontDescription('Georgia 10'))
         scroll = gtk.ScrolledWindow()
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_ALWAYS)
         scroll.add(textview)
@@ -128,6 +153,7 @@ class SubmitWindow(gtk.Window):
         submitbtn = image_stock_button(gtk.STOCK_APPLY, _('Submit'))
         submitbtn.connect('clicked', self.__submit, 
                           nameentry, 
+                          subjectentry, 
                           textview)
         cancelbtn = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
         cancelbtn.connect('clicked', self.__cancel)
@@ -136,21 +162,33 @@ class SubmitWindow(gtk.Window):
         
         vbox = gtk.VBox(False, 10)
         vbox.pack_start(namebox, False)
+        vbox.pack_start(subjectbox, False)
         vbox.pack_start(contentbox, True)
         vbox.pack_end(buttonbox, False)
         self.add(vbox)
+        self.set_focus(subjectentry)
         self.show_all()
     
     def __quit(self):
         self.destroy()
     
-    def __submit(self, btn, nameentry, textview):
+    def __submit(self, btn, nameentry, subjectentry, textview):
         name = nameentry.get_text()
+        subject = subjectentry.get_text()
         buffer = textview.get_buffer()
-        text = buffer.get_text(buffer.get_start_iter(), 
+        content = buffer.get_text(buffer.get_start_iter(), 
                                buffer.get_end_iter())
+        text = 'Subject: %s\n%s' % (subject, content)
         try:
             self.submit(name, text)
+            dlg = gtk.MessageDialog(self, 0,
+                                  gtk.MESSAGE_OTHER,
+                                  gtk.BUTTONS_CLOSE,
+                                  _('Thank you for submit:)'),
+                                  )
+            dlg.set_title(_('Thank you'))
+            dlg.run()
+            dlg.destroy()
         except urllib2.HTTPError:
             import traceback
             import sys
@@ -171,8 +209,7 @@ class SubmitWindow(gtk.Window):
                                   )
             to_be_saved = dlg.run()
             if to_be_saved:
-                delayed.append((self.submit, name, text))
-                save_delayed_data()
+                __add_delayed_data((self.submit, name, text))
             dlg.destroy()
         self.__quit()
     

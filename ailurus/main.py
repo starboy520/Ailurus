@@ -521,7 +521,7 @@ class MainView:
         if UBUNTU or UBUNTU_DERIV:
             self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
-#            self.register(ReposConfigPane)
+            self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
             self.register(FedoraFastestMirrorPane)

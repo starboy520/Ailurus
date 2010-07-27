@@ -92,8 +92,11 @@ class TipOfTheDay(gtk.Window):
         previous_tip = stock_image_only_button(gtk.STOCK_GO_BACK)
         previous_tip.connect ( 'clicked', self.__previous_tip, content )
         
+        def show_submit_dialog(*w):
+            from support.clientlib import SkillsSubmit
+            SkillsSubmit()
         submit_skills = image_stock_button(gtk.STOCK_GO_UP, _('Submit Linux Skills'))
-        submit_skills.connect('clicked', report_bug)
+        submit_skills.connect('clicked', show_submit_dialog)
         
         show_all_tips = image_stock_button(gtk.STOCK_INDEX, _('Show all tips'))
         show_all_tips.connect('clicked', self.__show_all_tips)
