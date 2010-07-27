@@ -120,6 +120,18 @@ class AddCustomAppDialog(gtk.Dialog):
     
     def __choose_icon(self, widget, new_path):
         self.new_icon_path = new_path
+    
+    def __build_bottom_box(self):
+        button_submit = image_stock_button(gtk.STOCK_APPLY, _('OK'))
+        button_submit.connect('clicked', self.__submit)
+        button_cancel = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
+        button_cancel.connect('clicked', self.__cancel)
+
+        bottom_box = gtk.HBox(False, 10)
+        bottom_box.pack_end(button_cancel, False)
+        bottom_box.pack_end(button_submit, False)
+
+        return bottom_box
         
     def __init__(self, dict={}):
         gtk.Dialog.__init__(self,
@@ -164,10 +176,6 @@ class AddCustomAppDialog(gtk.Dialog):
         if dict.has_key('detail'):
             entry_detail.set_text(dict['detail'])
         
-        button_submit = image_stock_button(gtk.STOCK_APPLY, _('Submit'))
-        button_submit.connect('clicked', self.__submit)
-        button_cancel = image_stock_button(gtk.STOCK_CANCEL, _('Cancel'))
-        button_cancel.connect('clicked', self.__cancel)
 
         table = gtk.Table()
         table.set_col_spacings(10)
@@ -176,10 +184,7 @@ class AddCustomAppDialog(gtk.Dialog):
         table.attach(label_detail, 0, 1, 1, 2, gtk.FILL, 0)
         table.attach(entry_name, 1, 2, 0, 1, gtk.FILL, 0)
         table.attach(entry_detail, 1, 2, 1, 2, gtk.FILL, 0)
-        bottom_box = gtk.HBox(False, 10)
-        bottom_box.pack_end(button_cancel, False)
-        bottom_box.pack_end(button_submit, False)
-        
+
         self.combo_category = combo_category = gtk.combo_box_entry_new_text()
         index = 0
         target = ''
@@ -230,7 +235,7 @@ class AddCustomAppDialog(gtk.Dialog):
         top_box.pack_start(table, False)
 
         self.vbox.pack_start(top_box, False)
-        self.vbox.pack_end(bottom_box, False)
+        self.vbox.pack_end(self.__build_bottom_box(), False)
         
         self.origin_category = self.__get_category()
 
