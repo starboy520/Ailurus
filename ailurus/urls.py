@@ -40,3 +40,4 @@ worldofpadman = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/worldofp
 worldofpadman_patch = 'ftp://ftp.snt.utwente.nl/pub/games/worldofpadman/linux/wop_patch_1_2.run'
 mytourbook32 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86.zip'
 mytourbook64 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.linux.gtk.x86_64.zip'
+routeconverter = 'http://www.routeconverter.de/download/RouteConverterLinux.jar'

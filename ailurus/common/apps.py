@@ -88,14 +88,14 @@ class Electric(_path_lists):
     category = 'electronics'
     license = GPL
     download_url = 'http://www.staticfreesoft.com/'
-    def __init__(self):
-        self.shortcut = '/usr/share/applications/electric.desktop'
-        self.file = '/opt/electricBinary.jar'
-        self.paths = [self.shortcut, self.file]
+    shortcut = '/usr/share/applications/electric.desktop'
+    file = '/opt/electricBinary.jar'
+    paths = [shortcut, file]
     def install(self):
         f = R(urls.electric).download()
-        run_as_root('mkdir /opt', ignore_error=True)
-        run_as_root('cp %s %s'%(f, self.file) )
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        run_as_root('cp %s %s' % (f, self.file))
         create_file(self.shortcut, '''[Desktop Entry]
 Name=Electric
 Exec=java -jar %s
@@ -104,6 +104,28 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Categories=Science;Engineering;'''%self.file)
+
+class RouteConverter(_path_lists):
+    'RouteConverter'
+    detail = _('Convert GPS log between different formats')
+    license = GPL
+    download_url = 'http://www.routeconverter.de/en'
+    category = 'geography'
+    shortcut = '/usr/share/applications/RouteConverter.desktop'
+    file = '/opt/RouteConverterLinux.jar'
+    paths = [shortcut, file]
+    def install(self):
+        f = R(urls.routeconverter).download()
+        if not os.path.exists('/opt'):
+            run_as_root('mkdir /opt')
+        run_as_root('cp %s %s' % (f, self.file))
+        create_file(self.shortcut, '''[Desktop Entry]
+Name=RouteConverter
+Exec=java -jar %s
+Encoding=UTF-8
+StartupNotify=true
+Terminal=false
+Type=Application'''%self.file)
 
 class MyTourbook(_path_lists):
     'MyTourbook'
