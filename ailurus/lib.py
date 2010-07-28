@@ -949,7 +949,8 @@ class APT:
     def install_local(cls, *packages):
         cls.cache_changed()
         for package in packages:
-            run_as_root_in_terminal('dpkg -i "%s"' % package)
+            run_as_root('gdebi-gtk "%s"' % package)
+#            run_as_root_in_terminal('dpkg -i "%s"' % package)
 #            daemon().apt_command('install_local', package,
 #                                 packed_env_string(), timeout=3600, dbus_interface='cn.ailurus.Interface')
     @classmethod

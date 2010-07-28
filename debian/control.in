@@ -9,12 +9,12 @@ Homepage: http://ailurus.googlecode.com/
 
 Package: ailurus
 Architecture: all
-_Depends: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | policykit-gnome | policykit-kde, python-gnomekeyring | python-gnome2-desktop
-_hardy: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-gnome, python-gnome2-desktop
-_jaunty: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-gnome | policykit-kde, python-gnome2-desktop
-_karmic: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome, python-gnomekeyring
-_lucid: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | polkit-kde-1, python-gnomekeyring
-_maverick: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | polkit-kde-1, python-gnomekeyring
+_Depends: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | policykit-gnome | policykit-kde, python-gnomekeyring | python-gnome2-desktop, gdebi
+_hardy: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-gnome, python-gnome2-desktop, gdebi
+_jaunty: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-gnome | policykit-kde, python-gnome2-desktop, gdebi
+_karmic: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome, python-gnomekeyring, gdebi
+_lucid: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | polkit-kde-1, python-gnomekeyring, gdebi
+_maverick: ${shlibs:Depends}, ${misc:Depends}, python, python-gtk2, python-notify, python-vte, python-apt, python-gobject, python-dbus, procps, unzip, policykit-1-gnome | polkit-kde-1, python-gnomekeyring, gdebi
 Description: a simple application installer and GNOME tweaker
  Ailurus is simple application installer and GNOME tweaker, which aims at making Linux easier to use.
  .
