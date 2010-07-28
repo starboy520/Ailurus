@@ -1,3 +1,7 @@
+2010-07-28 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug about SweetHome3D installing path, issue 1020.
+
 2010-07-27 CHEN Yangyang <skabyy@gmail.com>
 
     * Optimize the repository configure pane

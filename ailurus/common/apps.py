@@ -178,12 +178,19 @@ Terminal=false
 Type=Application
 Icon=/opt/geogebra/icon.png''')
 
+def get_sweethome_version():
+    if is32(): url = urls.sweethome32
+    else:       url = urls.sweethome64
+    import re
+    match = re.search('SweetHome3D-([0-9.]+)-linux', url)
+    return match.group(1)
+
 class SweetHome3D(_path_lists):
     __doc__ = _('SweetHome3D: open source interior design application')
     download_url = 'http://www.sweethome3d.com/'
     category = 'design'
     shortcut = '/usr/share/applications/SweetHome3D.desktop'
-    path = '/opt/SweetHome3D-2.3'
+    path = '/opt/SweetHome3D-%s' % get_sweethome_version()
     paths = [shortcut, path]
     def install(self):
         if is32(): url = urls.sweethome32
