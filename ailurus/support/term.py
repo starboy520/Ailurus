@@ -27,7 +27,13 @@ import vte, gtk, StringIO, thread
 from lib import *
 
 class Window:
+    def delete_event(self, *w):
+        if self.can_exit: # set True in self.child_exited(). Means command failed.
+            os._exit(1)
+        else:
+            return True
     def __init__(self):
+        self.can_exit = False # set True in self.child_exited()
         self.terminal = terminal = vte.Terminal()
         terminal.connect('child-exited', lambda *w: self.child_exited()) 
         self.scrollwindow = scroll = gtk.ScrolledWindow()
@@ -38,13 +44,17 @@ class Window:
         window.set_title(_('Ailurus terminal'))
         window.set_position(gtk.WIN_POS_CENTER)
         window.add(scroll)
-        window.connect('delete-event', lambda *w: True)
+        window.connect('delete-event', self.delete_event)
         window.show_all()
         window.realize()
     def child_exited(self):
         exit_status = self.terminal.get_child_exit_status()
         if exit_status:
-            os._exit(1)
+            self.can_exit = True
+            self.terminal.feed('\n\r'
+                               '\x1b[1;31m%s\x1b[m' % _('Command failed. Please close this window.'))
+            pass # do not close window if child process exit abnormally
+            #os._exit(1)
         else:
             os._exit(0)
     def run(self, argv): # please do not launch me as a thread
