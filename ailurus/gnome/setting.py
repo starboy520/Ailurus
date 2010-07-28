@@ -474,11 +474,11 @@ def __login_sound():
     elif FEDORA: return None # do not support on Fedora because there is no sudo.
 
     enable_sound = gtk.Button(_('Enable GNOME login sound'))
-    enable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true')
+    enable_sound.set_tooltip_text(_('Command:') + ' sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true')
     enable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool true'))
 
     disable_sound = gtk.Button(_('Disable GNOME login sound'))
-    disable_sound.set_tooltip_text('command: sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false')
+    disable_sound.set_tooltip_text(_('Command:') + ' sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false')
     disable_sound.connect('clicked', lambda *w: run_as_root('sudo -u gdm gconftool-2 --set /desktop/gnome/sound/event_sounds --type bool false'))
     
     box = gtk.HBox(False, 10)
