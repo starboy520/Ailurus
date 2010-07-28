@@ -71,8 +71,6 @@ class Create_Imagemagick_shortcut(C):
         if FEDORA:
             return RPM.installed('ImageMagick') and not os.path.exists(self.file)
     def cure(self):
-        path = D + 'umut_icons/imagemagick.png'
-        run_as_root('cp %s /usr/share/icons/ ' % path)
         create_file(self.file, '[Desktop Entry]\n'
                                'Name=ImageMagick\n'
                                'Exec=display %f\n'    
@@ -80,8 +78,7 @@ class Create_Imagemagick_shortcut(C):
                                'StartupNotify=true\n'
                                'Terminal=false\n'
                                'Type=Application\n'
-                               'Categories=GNOME;GTK;Graphics;\n'
-                               'Icon=/usr/share/icons/imagemagick.png\n')
+                               'Categories=GNOME;GTK;Graphics;\n')
 
 class Create_softlink_to_desktop_folder(C):
     __doc__ = _('Create a directory "Desktop" linked to the desktop in your home folder')

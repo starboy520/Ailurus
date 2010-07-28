@@ -649,7 +649,6 @@ class InstallRemovePane(gtk.VBox):
         quick_setup_button.connect('clicked', self.__launch_quick_setup)
 
         self.quick_setup_area = Area()
-        self.quick_setup_area.pack_start(gtk.VSeparator(), False)
         self.quick_setup_area.pack_start(quick_setup_button, False)
         self.quick_setup_area.content_visible(UBUNTU or UBUNTU_DERIV)
 
@@ -658,15 +657,14 @@ class InstallRemovePane(gtk.VBox):
 
         toolbar = gtk.HBox(False, 3)
         toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_sync, False)
-        toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_save, False)
-        toolbar.pack_start(button_load, False)
+        toolbar.pack_start(button_apply, False)
         toolbar.pack_start(gtk.VSeparator(), False)
         toolbar.pack_start(searchbox, False)
-        toolbar.pack_start(self.quick_setup_area, False)
         toolbar.pack_start(gtk.VSeparator(), False)
-        toolbar.pack_start(button_apply, False)
+        toolbar.pack_start(button_sync, False)
+        toolbar.pack_start(button_save, False)
+        toolbar.pack_start(button_load, False)
+        toolbar.pack_start(self.quick_setup_area, False)
         
         import gobject, pango
 

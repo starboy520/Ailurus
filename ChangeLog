@@ -4,6 +4,7 @@
     * Fix bug about RemasterSys installing, issue 1023.
     * Fix bug about a lot of third party repositories, issue 1022.
     * Fix issue about gnomekeyring.cancellederror, issue 999.
+    * Fix bug about creating imagemagick icon, issue 1025.
 
 2010-07-27 CHEN Yangyang <skabyy@gmail.com>
 
