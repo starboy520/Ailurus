@@ -133,7 +133,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         label_state.set_alignment(0, 0)
         label_state.set_ellipsize(pango.ELLIPSIZE_END)
         scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_NEVER)
+        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_border_width(5)
         scroll.add_with_viewport(label_state)
         scroll.get_child().set_shadow_type(gtk.SHADOW_ETCHED_IN)
