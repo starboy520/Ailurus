@@ -3,6 +3,7 @@
     * Fix bug about SweetHome3D installing path, issue 1020.
     * Fix bug about RemasterSys installing, issue 1023.
     * Fix bug about a lot of third party repositories, issue 1022.
+    * Fix issue about gnomekeyring.cancellederror, issue 999.
 
 2010-07-27 CHEN Yangyang <skabyy@gmail.com>
 

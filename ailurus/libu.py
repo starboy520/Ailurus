@@ -201,7 +201,7 @@ def show_text_window(title, content, show_textbox_border = True, show_a_big_wind
     vbox.pack_start(scroll)
     vbox.pack_start(buttonbox, False)
 
-    window = gtk.Window()
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     window.set_title(title)
     window.add(vbox)
     if show_a_big_window:
@@ -222,7 +222,26 @@ def do_access_denied_error():
     vbox = gtk.VBox(False, 5)
     vbox.pack_start(label, False)
     vbox.pack_start(right_align(button_close), False)
-    window = gtk.Window()
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
+    window.set_title(_('Operation is canceled'))
+    window.set_border_width(10)
+    window.set_position(gtk.WIN_POS_CENTER)
+    window.add(vbox)
+    window.show_all()
+
+def do_gnomekeyring_cancelled_error():
+    import gtk
+    message = _('Operation is canceled because you refused authentication.\n'
+                'Proxy string is saved in system GNOME keyring service.\n'
+                'Ailurus does not know your secret at all.')
+    label = gtk.Label(message)
+    label.set_alignment(0, 0.5)
+    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
+    button_close.connect('clicked', lambda w: window.destroy())
+    vbox = gtk.VBox(False, 5)
+    vbox.pack_start(label, False)
+    vbox.pack_start(right_align(button_close), False)
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     window.set_title(_('Operation is canceled'))
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
@@ -245,7 +264,7 @@ def do_apt_source_syntax_error(value):
     vbox.pack_start(label, False)
     vbox.pack_start(label2, False)
     vbox.pack_start(right_align(button_close), False)
-    window = gtk.Window()
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     window.set_title(_('Fatal error'))
     window.set_border_width(10)
     window.set_position(gtk.WIN_POS_CENTER)
@@ -253,12 +272,13 @@ def do_apt_source_syntax_error(value):
     window.show_all()
 
 def exception_happened(etype, value, tb):
-    import traceback, StringIO, os, sys, platform, gtk
+    import traceback, StringIO, os, sys, platform, gtk, gnomekeyring
     from lib import AILURUS_VERSION, D, AccessDeniedError, APTSourceSyntaxError, report_bug
 
     if etype == KeyboardInterrupt: return
     if etype == AccessDeniedError: return do_access_denied_error()
     if etype == APTSourceSyntaxError: return do_apt_source_syntax_error(value)
+    if etype == gnomekeyring.CancelledError: return do_gnomekeyring_cancelled_error()
     
     traceback.print_tb(tb, file=sys.stderr)
     sys.stderr.flush()
@@ -309,7 +329,7 @@ def exception_happened(etype, value, tb):
     vbox.pack_start(title_box, False)
     vbox.pack_start(scroll_traceback)
     vbox.pack_start(bottom_box, False)
-    window = gtk.Window()
+    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     window.set_title(_('Bug appears!'))
     window.set_border_width(10)
     window.add(vbox)
