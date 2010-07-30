@@ -55,13 +55,12 @@ class InstallRemovePane(gtk.VBox):
             selection.select_path(path_tuple[0]) 
         
     def __left_treeview_add_software(self, widget):
-        dict = {}
         tree_store,iter = self.left_treeview.get_selection().get_selected()
-        if not iter or not tree_store:
-            return 
-        dict['category'] = tree_store.get_value(iter,2)
+        if not iter or not tree_store: return
+
+        category = tree_store.get_value(iter,2)
+        dict = {'category':category}
         dialog = AddCustomAppDialog(dict)
-        dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
 

@@ -40,7 +40,6 @@ class AddCustomAppDialog(gtk.Dialog):
 
     def show_message_box(self, title, content):
         dialog = gtk.MessageDialog(type = gtk.MESSAGE_ERROR,
-                                   flags = gtk.DIALOG_NO_SEPARATOR,
                                    buttons = gtk.BUTTONS_OK)
         dialog.set_title(title)
         dialog.set_markup(content)
