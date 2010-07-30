@@ -105,10 +105,15 @@ class ReposConfigPane(gtk.VBox):
         parent = model.iter_parent(iter)
         object = model.get_value(iter, 0)
         text = model.get_value(iter, 1)
-        if parent == None: # this is file name
-            cell.set_property('markup', _('File:') + ' <b>%s</b>' % text)
+        if parent == None:
+            # this is file name
+            file_path = text
+            file_name = os.path.split(file_path)[1]
+            cell.set_property('markup', '<b>%s</b> (%s: %s)' %
+                                        (file_name, _('File'), file_path))
             cell.set_property('editable', False)
-        elif object != None: # this is a line in file
+        elif object != None:
+            # this is a line in file
             cell.set_property('markup', self.__color_text(text, object))
             cell.set_property('editable', True)
     
