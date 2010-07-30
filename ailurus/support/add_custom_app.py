@@ -58,7 +58,7 @@ class AddCustomAppDialog(gtk.Dialog):
 
     def __submit(self, button):
         dict={}
-        if self.dict.has_key('classname'):
+        if 'classname' in self.dict:
             dict['classname'] = self.dict['classname']
         else:
             dict['classname'] = 'C_%d' % Config.get_custom_appobj_counter_value()
@@ -66,7 +66,7 @@ class AddCustomAppDialog(gtk.Dialog):
         if getattr(self, 'new_icon_path', ''):
             pixbuf = gtk.gdk.pixbuf_new_from_file(self.new_icon_path)
             pixbuf.save(Config.get_config_dir() + '%s.png' % dict['classname'], 'png')
-            if self.dict.has_key('classname'):
+            if 'classname' in self.dict:
                 obj = self.dict['appobj']
                 obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(self.new_icon_path, 32, 32)
         dict['__doc__'] = self.entry_name.get_text()
@@ -82,7 +82,7 @@ class AddCustomAppDialog(gtk.Dialog):
             return
         try:
             
-            if not self.dict.has_key('classname'):
+            if 'classname' not in self.dict:
                 dict['category'] = self.__get_category()
                 AppObjs.add_new_appobj(dict)
             else:                    
@@ -208,17 +208,17 @@ class AddCustomAppDialog(gtk.Dialog):
         self.origin_category = self.__get_category()
 
         self.dict = dict
-        if dict.has_key(DISTRIBUTION):
+        if DISTRIBUTION in dict:
             self.entry_pkgs.set_text(dict[DISTRIBUTION] + ' ')
-        if dict.has_key('__doc__'):
+        if '__doc__' in dict:
             self.entry_name.set_text(dict['__doc__'])
         if len(self.liststore_all_pkg) == 0:
             for pkg in BACKEND.get_existing_pkgs_set():
                 self.liststore_all_pkg.append([pkg])
-        if dict.has_key('detail'):
+        if 'detail' in dict:
             self.entry_detail.set_text(dict['detail'])
         index = 0
-        if dict.has_key('category'):
+        if 'category' in dict:
             target = dict['category']
         else:
             target = ''
@@ -234,7 +234,7 @@ class AddCustomAppDialog(gtk.Dialog):
             self.combo_category.append_text(c.text)
         self.combo_category.set_active(index)
 
-        if self.dict.has_key('classname'):
+        if 'classname' in self.dict:
             pixbuf = self.dict['appobj'].logo_pixbuf
         else:
             pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(D + 'sora_icons/default_application_icon.png', 48, 48)
