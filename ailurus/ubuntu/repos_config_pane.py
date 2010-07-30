@@ -32,6 +32,12 @@ class ReposConfigPane(gtk.VBox):
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False)
         
+        # the first gobject.TYPE_PYOBJECT is in [True, False, None]
+        # True: this is a deb line.
+        # False: this is a deb line, commented by "#" mark
+        # None: this is not a deb line. For example, a normal comment
+        #
+        # the second gobject.TYPE_STRING is a line
         self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
         self.treestore_filter = treestore_filter = treestore.filter_new()
         treestore_filter.set_visible_func(self.__treestore_item_visible_function)
