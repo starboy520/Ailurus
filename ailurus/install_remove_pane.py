@@ -114,43 +114,36 @@ class InstallRemovePane(gtk.VBox):
                 iter = appstore.iter_next(iter)
         
     def __add_software_to_favourite(self, widget):
-        dict = {}
         treestore, iter = self.right_treeview.get_selection().get_selected()
         appobj = treestore.get_value(iter, 0)
         if not isinstance(appobj, N):
-            dialog = gtk.MessageDialog(message_format = 'This item will be able to added in favourite soon. Sorry. :(',
+            dialog = gtk.MessageDialog(message_format = 'This item will be able to be added in favourite soon. Sorry. :(',
+                                       buttons = gtk.BUTTONS_OK)
+            dialog.run()
+            dialog.destroy()
+            return
+        category_list = appobj.category.split()
+        if 'favourite' not in category_list:
+            category_list.append('favourite')
+            dict = {'appname': appobj.__class__.__name__,
+                    'category': ' '.join(category_list)}
+            CUSTOM_APPS.addAppObjFromDict(dict)
+
+    def __remove_software_from_favourite(self, widget):
+        treestore, iter = self.right_treeview.get_selection().get_selected()
+        appobj = treestore.get_value(iter, 0)
+        if not isinstance(appobj, N):
+            dialog = gtk.MessageDialog(message_format = 'This item will be able to be removed from favourite soon. Sorry. :(',
                                        buttons = gtk.BUTTONS_OK)
             dialog.run()
             dialog.destroy()
             return
         category_list = appobj.category.split()
         if 'favourite' in category_list:
-            return # shall we display messagedialog here?
-        else:
-            category_list.append('favourite')
-        dict = {'appname': appobj.__class__.__name__,
-                'category': ' '.join(category_list)}
-        CUSTOM_APPS.addAppObjFromDict(dict)
-
-    def remove_from_favour(self, widget):
-        dict = {}
-        tree_store,iter = self.right_treeview.get_selection().get_selected()
-        if not iter or not tree_store:
-            return 
-        obj = tree_store.get_value(iter,0)
-        if not issubclass(obj.__class__, N):
-            return
-        category = getattr(obj, 'category', '')
-        cate_list = category.split()
-        if len(cate_list) <= 1 or not 'favourite' in cate_list:
-            return
-
-        dict['appname'] = obj.__class__.__name__
-        cate_list.remove('favourite')
-        obj.category = dict['category'] = ' '.join(cate_list)
-        
-        from loader import CUSTOM_APPS
-        CUSTOM_APPS.addAppObjFromDict(dict)
+            category_list.remove('favourite')
+            dict = {'appname': appobj.__class__.__name__,
+                    'category': ' '.join(category_list)}
+            CUSTOM_APPS.addAppObjFromDict(dict)
                 
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()
@@ -744,7 +737,7 @@ class InstallRemovePane(gtk.VBox):
                 add_to_favourite = image_file_menuitem(_('Add To Favourite'), D+'sora_icons/favourite.png', 16)
                 add_to_favourite.connect("activate", self.__add_software_to_favourite)
                 remove_from_favourite = gtk.MenuItem(_('Remove From Favourite'))
-                remove_from_favourite.connect("activate", self.remove_from_favour)
+                remove_from_favourite.connect("activate", self.__remove_software_from_favourite)
 
                 popupmenu = gtk.Menu()
                 popupmenu.append(add_software)
