@@ -152,9 +152,9 @@ class AppObjs:
     @classmethod
     def get_icon_path(cls, name):
         'return (icon path, whether it is default icon)'
+        path = Config.get_config_dir() + name + '.png'
+        if os.path.exists(path): return (path, False)
         path = D + 'appicons/' + name + '.png'
-        path_custom = Config.get_config_dir() + name + '.png'
-        if os.path.exists(path_custom): return (path_custom, False)
         if os.path.exists(path): return (path, False)
         return (D + 'sora_icons/default_application_icon.png', True)
     @classmethod
