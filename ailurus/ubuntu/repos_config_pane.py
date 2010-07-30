@@ -74,18 +74,19 @@ class ReposConfigPane(gtk.VBox):
         
         self.treeview.expand_all()
         self.treeview.get_selection().select_path('0')
-        
-        def button_press_event(w, event):
-            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-                path = w.get_path_at_pos(int(event.x),int(event.y))
-                selection = w.get_selection()
-                if path:
-                    selection.select_path(path[0])
-                    #TODO
-                    return True
-            return False
-        
-        self.treeview.connect('button_press_event', button_press_event)
+
+#       Uncomment the following lines when menu is done.        
+#        def button_press_event(w, event):
+#            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+#                path = w.get_path_at_pos(int(event.x),int(event.y))
+#                selection = w.get_selection()
+#                if path:
+#                    selection.select_path(path[0])
+#                    #TODO: display menu
+#                    return True
+#            return False
+#        
+#        self.treeview.connect('button_press_event', button_press_event)
 
         self.pack_start(scrollwindow)
         self.pack_start(bottom_box, False)
