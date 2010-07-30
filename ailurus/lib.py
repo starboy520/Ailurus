@@ -947,8 +947,6 @@ class APT:
 class CannotLockAptCacheError(Exception):
     'Cannot lock apt cache'
 
-        
-
 class PACMAN:
     fresh_cache = False
     pacman_sync_called = False
