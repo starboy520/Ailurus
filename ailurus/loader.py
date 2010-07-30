@@ -28,7 +28,6 @@ import strings
 class AppConfigParser(ConfigParser.RawConfigParser):
     def get_appobjs_dict(self):
         ret = {}
-        appobjs = []
         for section_name in self.sections():
             try:
                 dict = {}
@@ -44,27 +43,23 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                         dict['pkgs'] = value
                     elif option_name == 'Chinese' or option_name == 'Poland':
                         dict[option_name] = True
+                    elif option_name == 'hide':
+                        dict[option_name] = True
                     elif option_name == 'license':
                         list = [globals()[e] for e in value.split()]
                         if len(list)==1: dict[option_name] = list[0]
-                        elif len(list)==2: dict[option_name] = DUAL_LICENSE(list[0],list[1])
-                        elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
+                        elif len(list)==2: dict[option_name] = DUAL_LICENSE(list[0], list[1])
+                        elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0], list[1], list[2])
                     else:
                         dict[option_name] = value
+    
                 if not self.is_user_custom:
-                    if 'pkgs' not in dict.keys(): continue
+                    if 'pkgs' not in dict.keys():
+                        continue
                 ret[section_name] = dict
-#                obj = new.classobj(section_name, (N,), {})()
-#                for key in dict.keys():
-#                    setattr(obj,key,dict[key])
-#                obj.self_check()
-#                obj.fill()
             except:
-                print 'Cannot load obj %s from native_apps' % section_name
+                print '[x] Cannot load: %s (%s)' % (section_name, os.path.split(self.file_path)[1])
                 print_traceback()
-#            else:
-#                
-#                appobjs.append(obj)
         return ret
     
     def save(self):
