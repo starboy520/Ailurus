@@ -105,21 +105,6 @@ class Config:
     import os
     config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
-    def get_custom_app_count(cls):
-        if cls.parser.has_option('DEFAULT','custom_app_count'):
-            value = cls.parser.get('DEFAULT', 'custom_app_count')
-            return int(value)
-        else:
-            cls.parser.set('DEFAULT', 'custom_app_count', '0')
-            cls.save()
-            return 0
-    @classmethod
-    def increase_custom_app_count(cls):
-        if cls.parser.has_option('DEFAULT','custom_app_count'):
-            value = cls.parser.get('DEFAULT', 'custom_app_count')
-            cls.parser.set('DEFAULT', 'custom_app_count', '%d' % (int(value) + 1))
-            cls.save()
-    @classmethod
     def make_config_dir(cls):
         import os
         dir = os.path.expanduser('~/.config/ailurus/')
@@ -189,6 +174,15 @@ class Config:
         value = cls.parser.get('DEFAULT', key)
         value = str(value)
         return value=='True' or value=='true'
+    @classmethod
+    def get_custom_app_count(cls):
+        try: return cls.get_int('custom_app_count')
+        except: return 0
+    @classmethod
+    def increase_custom_app_count(cls):
+        value = cls.get_custom_app_count()
+        value += 1
+        cls.set_int('custom_app_count', value)
     @classmethod
     def set_do_query_before_install(cls, value):
         cls.set_bool('do_query_before_install', value)
