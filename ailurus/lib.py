@@ -405,9 +405,6 @@ class Config:
         except: 
             return False
 
-def add_custom_app_inRepo(name):
-    summary = BACKEND.get_pkg_summary(name)
-    
 def set_proxy_string(proxy_string):
     import gnomekeyring
     keyring = gnomekeyring.get_default_keyring_sync()
@@ -847,18 +844,9 @@ class APT:
         cls.fresh_cache = False
     @classmethod
     def get_pkg_summary(cls, name):
-        if not isinstance(name,str) or not name in cls.__set2:
-            return ''
-        import subprocess, os
-        path = os.path.dirname(os.path.abspath(__file__))+'/support/dump_apt_pkg_summary.py %s' % name
-        task = subprocess.Popen(['python', path],
-            stdout=subprocess.PIPE,
-            )
-        for line in task.stdout:
-            summary = line[:-1]
-            task.wait()
-            return summary
-        return ''
+        assert isinstance(name, str) and name
+        cls.refresh_cache()
+        return cls.apt_cache[name].summary
     @classmethod
     def has_broken_dependency(cls):
         cls.refresh_cache()

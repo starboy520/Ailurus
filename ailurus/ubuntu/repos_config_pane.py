@@ -32,7 +32,7 @@ class ReposConfigPane(gtk.VBox):
     text = _('Edit\nRepository')
     
     def __init__(self, main_view):
-        gtk.VBox.__init__(self, False)
+        gtk.VBox.__init__(self, False, 5)
         
         # the first gobject.TYPE_PYOBJECT is in [True, False, None]
         # True: this is a deb line.
@@ -74,7 +74,7 @@ class ReposConfigPane(gtk.VBox):
         self.add_repos_area = add_repos_area = AddReposArea()
         self.add_debline_button = add_debline_button = image_stock_button(gtk.STOCK_ADD, _('Add'))
         add_debline_button.connect('clicked', self.__add_debline_button_clicked)
-        add_debline_button_align = gtk.Alignment(0.5, 1)
+        add_debline_button_align = gtk.Alignment(0.5, 0.5)
         add_debline_button_align.add(add_debline_button) # put add_debline_button at right-bottom corner
         bottom_box = gtk.HBox(False, 10)
         bottom_box.set_border_width(5)
