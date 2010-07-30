@@ -69,7 +69,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
     
     def save(self):
         try:
-            with open(self.filepath, 'w') as f:
+            with open(self.file_path, 'w') as f:
                 self.write(f)
         except:
             print_traceback()
@@ -92,28 +92,19 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.set(classname, str(key), str(objdict[key]))
         self.save()
 
-    def __init__(self, filepath, is_user_custom):
-        assert isinstance(filepath,str)
+    def __init__(self, file_path, is_user_custom):
+        assert isinstance(file_path,str)
         assert isinstance(is_user_custom, bool)
 
         self.is_user_custom = is_user_custom
-
+        if self.is_user_custom == False:
+            assert os.path.exists(file_path)
         ConfigParser.RawConfigParser.__init__(self)
         self.optionxform = str # case sensitive in option_name
-        self.filepath = filepath
-        if filepath.endswith('native_apps'):
-            self.is_user_custom = False
-        else:
-            self.is_user_custom = True
+        self.file_path = file_path
         
-        if os.path.exists(filepath):
-            self.read(filepath)
-        else:
-            if self.is_user_custom:
-                return
-            else:
-                raise Exception('File %s does not exist' % filepath)
-
+        if os.path.exists(file_path):
+            self.read(file_path)
     
 NATIVE_APPS = AppConfigParser(A+'/native_apps', is_user_custom=False)
 CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
