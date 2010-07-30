@@ -114,41 +114,35 @@ class ReposConfigPane(gtk.VBox):
             cell.set_property('editable', False)
         elif object != None:
             # this is a line in file
-            cell.set_property('markup', self.__color_text(text, object))
+            cell.set_property('markup', self.__colorful_debline(text))
             cell.set_property('editable', True)
     
-    def __color_text(self, text, b):
-        if not b:
-            return '<span color="gray">%s</span>' % text
-        
+    def __colorful_debline(self, text):
         words = text.split()
         if len(words) < 3:
             return text
         
-        def check_deb(word):
-            deb_heads = ['deb', 'deb-src']
-            for deb_head in deb_heads:
-                if word.startswith(deb_head):
-                    return True
-            return False
+        def right_start(word):
+            return word.startswith('deb') or word.startswith('deb-src')
         
-        def check_url(word):
-            url_heads = ['http://', 'ftp://', 'https://', 'rstp://']
-            for url_head in url_heads:
-                if word.startswith(url_head):
-                    return True
-            return False
+        def right_protocol(word):
+            return word.startswith('http://') or word.startswith('https://') or word.startswith('ftp://') or word.startswith('rstp://')
         
-        if not check_deb(words[0]):
+        if not right_start(words[0]):
             return text
-        if not check_url(words[1]):
+        
+        if not right_protocol(words[1]):
             return text
-        words[0] = '<span color="#6900B2">%s</span>' % words[0]
-        words[1] = '<b><span color="red">%s</span></b>' % words[1]
-        words[2] = '<span color="#007243">%s</span>' % words[2]
+        
+        import StringIO
+        string = StringIO.StringIO()
+        print >>string, '<span color="#6900B2">%s</span>' % words[0],
+        print >>string, '<b><span color="red">%s</span></b>' % words[1],
+        print >>string, '<span color="#007243">%s</span>' % words[2],
+        
         for i in range(3, len(words)):
-            words[i] = '<span color="blue">%s</span>' % words[i]
-        return ' '.join(words)
+            print >>string, '<span color="blue">%s</span>' % words[i],
+        return string.getvalue()
     
     def __is_repos_enable(self, line):
         if len(line) <= 2:
