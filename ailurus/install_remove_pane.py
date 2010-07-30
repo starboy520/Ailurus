@@ -102,7 +102,7 @@ class InstallRemovePane(gtk.VBox):
         else:
             dict = {'classname': appobj.__class__.__name__,
                     'hide': True}
-            CUSTOM_APPS.addAppObjFromDict(dict)
+            CUSTOM_APPS.add_appobj_from_dict(dict)
 
             # shall we realize the following code as a method of AppObjs? :)
             AppObjs.appobjs.remove(appobj) # shall we use this line?
@@ -127,7 +127,7 @@ class InstallRemovePane(gtk.VBox):
             category_list.append('favourite')
             dict = {'classname': appobj.__class__.__name__,
                     'category': ' '.join(category_list)}
-            CUSTOM_APPS.addAppObjFromDict(dict)
+            CUSTOM_APPS.add_appobj_from_dict(dict)
 
     def __remove_software_from_favourite(self, widget):
         treestore, iter = self.right_treeview.get_selection().get_selected()
@@ -143,7 +143,7 @@ class InstallRemovePane(gtk.VBox):
             category_list.remove('favourite')
             dict = {'classname': appobj.__class__.__name__,
                     'category': ' '.join(category_list)}
-            CUSTOM_APPS.addAppObjFromDict(dict)
+            CUSTOM_APPS.add_appobj_from_dict(dict)
                 
     def __left_tree_view_default_select(self):
         self.left_treeview.get_selection().unselect_all()

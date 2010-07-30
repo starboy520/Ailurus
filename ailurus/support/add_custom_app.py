@@ -94,7 +94,7 @@ class AddCustomAppDialog(gtk.Dialog):
                 obj.pkgs = dict[DISTRIBUTION]
                 obj.self_check()
                 obj.fill()
-            CUSTOM_APPS.addAppObjFromDict(dict)
+            CUSTOM_APPS.add_appobj_from_dict(dict)
         except:
             print_traceback()
         self.response(gtk.RESPONSE_ACCEPT)

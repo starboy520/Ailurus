@@ -81,7 +81,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.remove_section(classname)
         self.save()
         
-    def addAppObjFromDict(self, dict):
+    def add_appobj_from_dict(self, dict):
         objdict = dict.copy()
         if not self.is_user_custom:
             return
