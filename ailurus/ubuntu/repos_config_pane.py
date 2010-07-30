@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 from __future__ import with_statement
-import gtk, gobject
+import gtk, gobject, pango
 import sys, os
 from lib import *
 from libu import *
@@ -47,8 +47,9 @@ class ReposConfigPane(gtk.VBox):
         
         text_render = gtk.CellRendererText()
         text_render.connect('edited', self.__repo_text_edited)
+        text_render.set_property('ellipsize', pango.ELLIPSIZE_END)
         text_column = gtk.TreeViewColumn()
-        text_column.pack_start(text_render, False)
+        text_column.pack_start(text_render)
         text_column.set_cell_data_func(text_render, self.__repo_text_cell_function)
         
         treeview.append_column(toggle_column)
@@ -102,13 +103,13 @@ class ReposConfigPane(gtk.VBox):
     
     def __repo_text_cell_function(self, column, cell, model, iter):
         parent = model.iter_parent(iter)
-        b = model.get_value(iter, 0)
+        object = model.get_value(iter, 0)
         text = model.get_value(iter, 1)
-        if parent == None:
-            cell.set_property('markup', '<b><big>%s</big></b>' % text)
+        if parent == None: # this is file name
+            cell.set_property('markup', _('File:') + ' <b>%s</b>' % text)
             cell.set_property('editable', False)
-        elif b != None:
-            cell.set_property('markup', self.__color_text(text, b))
+        elif object != None: # this is a line in file
+            cell.set_property('markup', self.__color_text(text, object))
             cell.set_property('editable', True)
     
     def __color_text(self, text, b):
