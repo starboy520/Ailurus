@@ -4,15 +4,15 @@
 %endif
 
 Name:			ailurus
-Version: 		10.07.4
+Version:		10.07.7
 Release:		1%{?dist}
 Summary:		A simple application installer and GNOME tweaker
 Group:			Applications/System
 License:		GPLv2+
 URL:			http://ailurus.googlecode.com/
 Source:		http://ailurus.googlecode.com/files/%{name}-%{version}.tar.gz
-BuildRoot:		%{_tmppath}/%{name}-%{version}-%{release}-buildroot
-BuildRequires:	python-devel python2-devel python-distutils-extra intltool
+BuildRequires:	python2-devel python-distutils-extra intltool
+BuildRequires:	desktop-file-utils
 BuildArch:		noarch
 # The automatic dependency consists of python and rpmlib only. It is insufficient.
 Requires:		polkit pygtk2 notify-python vte rpm-python pygobject2 dbus-python wget unzip gnome-python2-gnomekeyring
@@ -29,34 +29,59 @@ Features:
 * Change GNOME settings 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}.orig
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
 
 %install
-rm -rf $RPM_BUILD_ROOT
 %{__python} setup.py install -O1 --root=$RPM_BUILD_ROOT
-%find_lang %{name}
+desktop-file-install \
+	--delete-original \
+	--dir ${RPM_BUILD_ROOT}%{_datadir}/applications \
+	${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
+%find_lang %{name} --with-gnome
+rm -f $RPM_BUILD_ROOT%{_datadir}/PolicyKit/policy/cn.ailurus.policy
+
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+touch --no-create %{_datadir}/icons/hicolor &>/dev/null || :
+
+%postun
+if [ $1 -eq 0 ] ; then
+    touch --no-create %{_datadir}/icons/hicolor &>/dev/null
+    gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+fi
+
+%posttrans
+gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
+
 %files -f %{name}.lang
 %defattr(-,root,root)
-%{python_sitelib}/ailurus/
 %{_bindir}/ailurus
-%doc %{_mandir}/man1/ailurus.1*
 %{_datadir}/applications/ailurus.desktop
 %{_datadir}/ailurus/
 %{_datadir}/icons/hicolor/*/apps/ailurus.png
 %{_datadir}/dbus-1/system-services/cn.ailurus.service
-%config(noreplace) %{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
 %{_datadir}/polkit-1/actions/cn.ailurus.policy
-%{_datadir}/omf/ailurus
+%{_mandir}/man1/ailurus.1*
+%{_sysconfdir}/dbus-1/system.d/cn.ailurus.conf
+%{python_sitelib}/ailurus/
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
+* Wed Jul 28 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.7-1
+- Upstream to 10.07.7
+
+* Wed Jul 28 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.6-2
+- Fix the bug of spec
+
+* Tue Jul 27 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.6-1
+- Upstream to 10.07.6
+
 * Fri Jul 23 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.4-1
 - Upstream to 10.07.4
 
