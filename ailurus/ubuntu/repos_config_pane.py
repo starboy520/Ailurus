@@ -44,7 +44,7 @@ class ReposConfigPane(gtk.VBox):
         toggle_render.set_property('activatable', True)
         toggle_render.connect('toggled',self.__toggled, treefilter)
         toggle_column = gtk.TreeViewColumn()
-        toggle_column.set_title(_('Using?'))
+        toggle_column.set_title(_('Enabled'))
         toggle_column.pack_start(toggle_render, False)
         toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_func)
         
