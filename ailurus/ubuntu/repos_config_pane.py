@@ -150,12 +150,16 @@ class ReposConfigPane(gtk.VBox):
             print >>string, '<span color="blue">%s</span>' % words[i],
         return string.getvalue()
     
-    def __is_repos_enable(self, line):
-        if len(line) <= 2:
-            return None
-        if line[0] == '#' and line[1:].strip().startswith('deb'):
-            return False
-        elif line.startswith('deb'):
+    def __is_debline_not_commented(self, line):
+        # return None, means this is a normal comment
+        # return True, means this is a deb line
+        # return False, means this is a commented deb line
+        # TODO: more accurate
+        if line.startswith('#'):
+            a = line[1:].lstrip()
+            if a.startswith('deb ') or a.startswith('deb-src '):
+                return False
+        if line.startswith('deb ') or line.startswith('deb-src '):
             return True
         return None
     
@@ -170,7 +174,7 @@ class ReposConfigPane(gtk.VBox):
                 lines = f.readlines()
             for line in lines:
                 line = line.strip()
-                b = self.__is_repos_enable(line)
+                b = self.__is_debline_not_commented(line)
                 if b == False:
                     line = line[1:].strip()
                 self.treestore.append(parent, [b, line])
@@ -228,7 +232,7 @@ class ReposConfigPane(gtk.VBox):
                 run_as_root('true')
                 fiter = self.treestore_filter.get_iter_from_string(path)
                 iter = self.treestore_filter.convert_iter_to_child_iter(fiter)
-                b = self.__is_repos_enable(new_text)
+                b = self.__is_debline_not_commented(new_text)
                 if b == False:
                     new_text = new_text[1:]
                 self.treestore.set_value(iter, 0, b)
@@ -242,7 +246,7 @@ class ReposConfigPane(gtk.VBox):
         text = self.add_repos_area.construct_debline_from_entries().strip()
         if not text:
             return
-        b = self.__is_repos_enable(text)
+        b = self.__is_debline_not_commented(text)
         if b == None:
             msg = _(
                     'This is not a repository.\n' +
