@@ -106,7 +106,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         if os.path.exists(file_path):
             self.read(file_path)
     
-NATIVE_APPS = AppConfigParser(A+'/native_apps', is_user_custom=False)
+NativeApps = AppConfigParser(A+'/native_apps', is_user_custom=False)
 CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
 
 class AppObjs:
@@ -227,7 +227,7 @@ class AppObjs:
     @classmethod
     def all_installer_names_in_text_file(cls):
         ret = set()
-        for section_name in NATIVE_APPS.sections():
+        for section_name in NativeApps.sections():
             ret.add(section_name)
         for section_name in CUSTOM_APPS.sections():
             ret.add(section_name)
@@ -257,7 +257,7 @@ class AppObjs:
         sys.path.pop(0)
     @classmethod
     def load_from_text_file(cls):
-        dict = NATIVE_APPS.getAppDict()
+        dict = NativeApps.getAppDict()
         dict2 = CUSTOM_APPS.getAppDict()
         for key in dict2.keys():
             if key in dict.keys():
