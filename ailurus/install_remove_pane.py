@@ -53,7 +53,7 @@ class InstallRemovePane(gtk.VBox):
         if path_tuple:
             selection.select_path(path_tuple[0]) 
         
-    def show_add_custom_app(self, widget):
+    def __left_treeview_add_software(self, widget):
         dict = {}
         from support.add_custom_app import AddCustomAppDialog
         tree_store,iter = self.left_treeview.get_selection().get_selected()
@@ -64,6 +64,7 @@ class InstallRemovePane(gtk.VBox):
         dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
+
     def show_add_custom_app_for_rightpane(self, widget):
         dict = {}
         from support.add_custom_app import AddCustomAppDialog
@@ -75,6 +76,7 @@ class InstallRemovePane(gtk.VBox):
         dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
+
     def show_edit_custom_app_for_rightpane(self, widget):
         dict = {}
         from support.add_custom_app import AddCustomAppDialog
@@ -93,6 +95,7 @@ class InstallRemovePane(gtk.VBox):
         dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
+
     def remove_custom_app_for_rightpane(self, widget):
         dict = {}
         tree_store,iter = self.right_treeview.get_selection().get_selected()
@@ -214,12 +217,12 @@ class InstallRemovePane(gtk.VBox):
         scrollwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type(gtk.SHADOW_IN)
 
-        add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add New Entry') )
-        add_entry.connect("activate", self.show_add_custom_app )
-        popupmenu = gtk.Menu()
-        popupmenu.append(add_entry)
-        popupmenu.show_all()
         def left_treeview_button_press_event(treeview, event):
+            add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add software into this category'))
+            add_software.connect("activate", self.__left_treeview_add_software)
+            popupmenu = gtk.Menu()
+            popupmenu.append(add_software)
+            popupmenu.show_all()
             if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
                 popupmenu.popup(None, None, None, event.button, event.time)
                 return True
@@ -713,7 +716,7 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
         add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add Entry') )
-        add_entry.connect("activate", self.show_add_custom_app )
+        add_entry.connect("activate", self.__left_treeview_add_software )
         edit_entry = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit Entry') )
         edit_entry.connect("activate", self.show_edit_custom_app_for_rightpane )
         remove_entry = image_stock_menuitem(gtk.STOCK_REMOVE, _('Remove Entry') )
