@@ -204,7 +204,7 @@ class ReposConfigPane(gtk.VBox):
                 f.write('\n'.join(lines))
     
     def __repo_toggled(self, cellrenderertoggle, path, treefilter):
-        run_as_root('true')
+        run_as_root('true') # do not catch AccessDenied in this function
         fiter = treefilter.get_iter_from_string(path)
         iter = treefilter.convert_iter_to_child_iter(fiter)
         parent = self.treestore.iter_parent(iter)
