@@ -19,15 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-import threading
-import urllib
-import urllib2
-
-import gtk
-import pango
-
 from lib import *
 from libu import *
+import threading
+import urllib, urllib2
+import gtk, pango
 
 LOCAL_DEBUG = 0
 if LOCAL_DEBUG:
