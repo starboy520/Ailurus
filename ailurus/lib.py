@@ -175,12 +175,12 @@ class Config:
         value = str(value)
         return value=='True' or value=='true'
     @classmethod
-    def get_custom_app_count(cls):
+    def get_custom_appobj_counter_value(cls):
         try: return cls.get_int('custom_app_count')
         except: return 0
     @classmethod
-    def increase_custom_app_count(cls):
-        value = cls.get_custom_app_count()
+    def increase_customapp_counter_value(cls):
+        value = cls.get_custom_appobj_counter_value()
         value += 1
         cls.set_int('custom_app_count', value)
     @classmethod

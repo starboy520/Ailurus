@@ -61,8 +61,8 @@ class AddCustomAppDialog(gtk.Dialog):
         if self.dict.has_key('appname'):
             dict['appname'] = self.dict['appname']
         else:
-            dict['appname'] = 'C_%d' % Config.get_custom_app_count()
-            Config.increase_custom_app_count()
+            dict['appname'] = 'C_%d' % Config.get_custom_appobj_counter_value()
+            Config.increase_customapp_counter_value()
         if getattr(self, 'new_icon_path', ''):
             pixbuf = gtk.gdk.pixbuf_new_from_file(self.new_icon_path)
             pixbuf.save(Config.get_config_dir() + '%s.png' % dict['appname'], 'png')
