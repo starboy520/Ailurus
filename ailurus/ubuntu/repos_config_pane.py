@@ -34,7 +34,7 @@ class ReposConfigPane(gtk.VBox):
         
         self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
         self.treefilter = treefilter = treestore.filter_new()
-        treefilter.set_visible_func(self.__visible_func)
+        treefilter.set_visible_func(self.__visible_function)
         self.treeview = treeview = gtk.TreeView(treefilter)
         
         toggle_render = gtk.CellRendererToggle()
@@ -43,13 +43,13 @@ class ReposConfigPane(gtk.VBox):
         toggle_column = gtk.TreeViewColumn()
         toggle_column.set_title(_('Enabled'))
         toggle_column.pack_start(toggle_render, False)
-        toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_func)
+        toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_function)
         
         text_render = gtk.CellRendererText()
         text_render.connect('edited', self.__edited)
         text_column = gtk.TreeViewColumn()
         text_column.pack_start(text_render, False)
-        text_column.set_cell_data_func(text_render, self.__text_cell_func)
+        text_column.set_cell_data_func(text_render, self.__text_cell_function)
         
         treeview.append_column(toggle_column)
         treeview.append_column(text_column)
@@ -89,16 +89,16 @@ class ReposConfigPane(gtk.VBox):
         self.pack_start(scrollwindow)
         self.pack_start(buttom_box, False)
     
-    def __visible_func(self, treestore, iter):
+    def __visible_function(self, treestore, iter):
         b = treestore.get_value(iter, 0)
         return b != None
     
-    def __toggle_cell_func(self, column, cell, model, iter):
+    def __toggle_cell_function(self, column, cell, model, iter):
         b = model.get_value(iter, 0)
         if b != None:
             cell.set_property('active', b)
     
-    def __text_cell_func(self, column, cell, model, iter):
+    def __text_cell_function(self, column, cell, model, iter):
         parent = model.iter_parent(iter)
         b = model.get_value(iter, 0)
         text = model.get_value(iter, 1)
