@@ -1912,23 +1912,26 @@ YLMF = Config.is_YLMF()
 DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
-BACKEND = APT
 if UBUNTU:
     DISTRIBUTION = 'ubuntu'
     VERSION = Config.get_Ubuntu_version()
+    BACKEND = APT
 elif MINT:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Mint_version() # VERSION is in ['5', '6', '7', '8', '9', '10']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick'][int(VERSION)-5]
+    BACKEND = APT
 elif YLMF:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
+    BACKEND = APT
 elif DEEPIN:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Deepin_version()
+    BACKEND = APT
 elif FEDORA:
     DISTRIBUTION = 'fedora'
     VERSION = Config.get_Fedora_version()
@@ -1938,9 +1941,10 @@ elif ARCHLINUX:
     VERSION = '' # ArchLinux has no version -_-b
     BACKEND = PACKMAN
 else:
-    print _('Your Linux distribution is not supported. :(')
+    # This Linux distribution is not supported. :(
     DISTRIBUTION = ''
     VERSION = ''
+    BACKEND = None
 
 GNOME = False
 KDE = False
