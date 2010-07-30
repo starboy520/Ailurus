@@ -172,10 +172,11 @@ class ReposConfigPane(gtk.VBox):
                 lines = f.readlines()
             for line in lines:
                 line = line.strip()
-                b = self.__is_debline_not_commented(line)
-                if b == False:
+            for line in lines:
+                value = self.__is_debline_not_commented(line)
+                if value == False:
                     line = line[1:].strip()
-                self.treestore.append(root_node, [b, line])
+                self.treestore.append(root_node, [value, line])
             self.__set_parent_toggle(root_node)
         self.treestore_filter.refilter()
     
@@ -198,31 +199,28 @@ class ReposConfigPane(gtk.VBox):
                 line = text
             lines.append(line)
             child = self.treestore.iter_next(child)
-        with TempOwn(fn) as o:
+        with TempOwn(fn):
             with open(fn, 'w') as f:
                 f.write('\n'.join(lines))
     
     def __repo_toggled(self, cellrenderertoggle, path, treefilter):
-        try:
-            run_as_root('true')
-            fiter = treefilter.get_iter_from_string(path)
-            iter = treefilter.convert_iter_to_child_iter(fiter)
-            parent = self.treestore.iter_parent(iter)
-            
-            b = self.treestore.get_value(iter, 0)
-            if b == None:
-                print >>sys.stderr, 'warning: b == None'
-            b = not b
-            
-            if parent:
-                self.__enable_repos(b, iter)
-                self.__set_parent_toggle(parent)
-            else:
-                self.__enable_repos(b, iter)
-                self.__set_children_toggle(iter, b)
-            self.__apply()
-        except AccessDeniedError:
-            pass
+        run_as_root('true')
+        fiter = treefilter.get_iter_from_string(path)
+        iter = treefilter.convert_iter_to_child_iter(fiter)
+        parent = self.treestore.iter_parent(iter)
+        
+        b = self.treestore.get_value(iter, 0)
+        if b == None:
+            print >>sys.stderr, 'warning: b == None'
+        b = not b
+        
+        if parent:
+            self.__enable_repos(b, iter)
+            self.__set_parent_toggle(parent)
+        else:
+            self.__enable_repos(b, iter)
+            self.__set_children_toggle(iter, b)
+        self.__apply()
     
     def __repo_text_edited(self, cellrenderertext, path, new_text):
         if self.treestore_filter[path][1] != new_text:
