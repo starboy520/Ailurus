@@ -114,11 +114,9 @@ class AppObjs:
         dict = dict.copy()
         section_name = dict.pop('classname')
         obj = new.classobj(section_name, (N,), {})()
-        for key in dict.keys():
-            if key == DISTRIBUTION:
-                obj.pkgs = dict[key]
-            else:
-                setattr(obj,key,dict[key])
+        for key, value in dict.items():
+            if key == DISTRIBUTION: obj.pkgs = value
+            else: setattr(obj, key, value)
         obj.self_check()
         obj.fill()
         icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
