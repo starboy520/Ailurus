@@ -234,7 +234,7 @@ class ReposConfigPane(gtk.VBox):
                 pass
     
     def __add_repos(self, widget):
-        text = self.addArea.getRepos().strip()
+        text = self.addArea.construct_debline_from_entries().strip()
         if not text:
             return
         b = self.__is_repos_enable(text)
@@ -262,7 +262,7 @@ class ReposConfigPane(gtk.VBox):
                 self.treestore.insert_after(parent, iter, [b, text])
             else:
                 self.treestore.append(iter, [b, text])
-            self.addArea.clearContent()
+            self.addArea.clear_entries()
             self.__apply()
             self.treefilter.refilter()
         except AccessDeniedError:
@@ -333,7 +333,7 @@ class AddReposArea(gtk.HBox):
         
         self.__changed(0)
     
-    def getRepos(self):
+    def construct_debline_from_entries(self):
         if self.selected_box == self.add_deb_line_box:
             return self.add_deb_line_box.entry.get_text()
         elif self.selected_box == self.add_PPA_repo_box:
@@ -346,30 +346,22 @@ class AddReposArea(gtk.HBox):
             text = 'deb http://ppa.launchpad.net/%s/%s/ubuntu %s main' % (user, ppa, self.__get_ubuntu_version())
             return text
         
-    def clearContent(self):
+    def clear_entries(self):
         if self.selected_box == self.add_deb_line_box:
-            self.__clear_offciial()
+            self.add_deb_line_box.entry.set_text('')
         elif self.selected_box == self.add_PPA_repo_box:
-            self.__clear_thirdparty()
+            self.add_PPA_repo_box.ppa_owner_entry.set_text('')
+            self.add_PPA_repo_box.ppa_name_entry.set_text('')
     
     def __changed(self, index):
         if index == 0:
-            self.__set_current_box(self.add_deb_line_box)
+            self.selected_box = self.add_deb_line_box
             self.add_deb_line_box.set_sensitive(True)
             self.add_PPA_repo_box.set_sensitive(False)
         elif index == 1:
-            self.__set_current_box(self.add_PPA_repo_box)
-            self.add_PPA_repo_box.set_sensitive(True)
+            self.selected_box = self.add_PPA_repo_box
             self.add_deb_line_box.set_sensitive(False)
-    
-    def __set_current_box(self, box):
-        self.selected_box = box
-    
-    def __clear_offciial(self):
-        self.add_deb_line_box.entry.set_text('')
-    
-    def __clear_thirdparty(self):
-        self.add_PPA_repo_box.ppa_owner_entry.set_text('')
+            self.add_PPA_repo_box.set_sensitive(True)
     
     def __get_ubuntu_version(self):
         return Config.get_Ubuntu_version()
