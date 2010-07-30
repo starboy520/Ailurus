@@ -54,7 +54,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                         dict[option_name] = value
     
                 if not self.is_user_custom:
-                    if 'pkgs' not in dict.keys():
+                    if 'pkgs' not in dict:
                         continue
                 ret[section_name] = dict
             except:
@@ -81,8 +81,8 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         classname = dict.pop('classname')
         if not classname in self.sections():
             self.add_section(classname)
-        for key in dict.keys():
-            self.set(classname, key, str(dict[key]))
+        for key, value in dict.items():
+            self.set(classname, key, str(value))
         self.save()
 
     def __init__(self, file_path, is_user_custom):
@@ -251,11 +251,11 @@ class AppObjs:
         dict = NativeApps.get_appobjs_dict()
         dict2 = CustomApps.get_appobjs_dict()
         for key in dict2.keys():
-            if key in dict.keys():
+            if key in dict:
                 dict[key].update(dict2[key])
             else:
                 dict[key] = dict2[key]
-        for key in dict.keys():
+        for key in dict:
             obj = new.classobj(key, (N,), {})()
             if 'hide' in dict[key].keys():
                 continue
