@@ -204,22 +204,22 @@ class ReposConfigPane(gtk.VBox):
                 f.write('\n'.join(lines))
     
     def __repo_toggled(self, renderer, path, treefilter):
+        # toggle: uncommented repo line <-> commented repo line
         run_as_root('true') # do not catch AccessDenied in this function
-        fiter = treefilter.get_iter_from_string(path)
-        iter = treefilter.convert_iter_to_child_iter(fiter)
-        parent = self.treestore.iter_parent(iter)
+        fiter_iter = treefilter.get_iter_from_string(path)
+        treestore_childiter = treefilter.convert_iter_to_child_iter(fiter_iter)
+        treestore_parent_iter = self.treestore.iter_parent(treestore_childiter)
         
-        b = self.treestore.get_value(iter, 0)
-        if b == None:
-            print >>sys.stderr, 'warning: b == None'
-        b = not b
+        type = self.treestore.get_value(treestore_childiter, 0)
+        assert type != None # because such kind of lines do not appear in treeview
+        type = not type
         
-        if parent:
-            self.__enable_repos(b, iter)
-            self.__set_parent_toggle(parent)
-        else:
-            self.__enable_repos(b, iter)
-            self.__set_children_toggle(iter, b)
+        if treestore_parent_iter: # toggle one line in some file
+            self.__enable_repos(type, treestore_childiter)
+            self.__set_parent_toggle(treestore_parent_iter)
+        else: # toggle whole repo file
+            self.__enable_repos(type, treestore_childiter)
+            self.__set_children_toggle(treestore_childiter, type)
         self.__write_changes_to_all_repo_files()
     
     def __repo_text_edited(self, cellrenderertext, path, new_text):
