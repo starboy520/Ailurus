@@ -107,7 +107,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.read(file_path)
     
 NativeApps = AppConfigParser(A+'/native_apps', is_user_custom=False)
-CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
+CustomApps = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
 
 class AppObjs:
     appobjs = []
@@ -229,7 +229,7 @@ class AppObjs:
         ret = set()
         for section_name in NativeApps.sections():
             ret.add(section_name)
-        for section_name in CUSTOM_APPS.sections():
+        for section_name in CustomApps.sections():
             ret.add(section_name)
         return list(ret)
     @classmethod
@@ -258,7 +258,7 @@ class AppObjs:
     @classmethod
     def load_from_text_file(cls):
         dict = NativeApps.getAppDict()
-        dict2 = CUSTOM_APPS.getAppDict()
+        dict2 = CustomApps.getAppDict()
         for key in dict2.keys():
             if key in dict.keys():
                 dict[key].update(dict2[key])
