@@ -74,22 +74,22 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         except:
             print_traceback()
      
-    def removeAppObjByName(self,appname):
+    def removeAppObjByName(self,classname):
         if not self.custom:
             return
-        if appname in self.sections():
-            self.remove_section(appname)
+        if classname in self.sections():
+            self.remove_section(classname)
         self.save()
         
     def addAppObjFromDict(self,dict):
         objdict = dict.copy()
         if not self.custom:
             return
-        appname = objdict.pop('appname')
-        if not appname in self.sections():
-            self.add_section(appname)
+        classname = objdict.pop('classname')
+        if not classname in self.sections():
+            self.add_section(classname)
         for key in objdict.keys():
-            self.set(appname, str(key), str(objdict[key]))
+            self.set(classname, str(key), str(objdict[key]))
         self.save()
 
     def __init__(self, filepath):
@@ -123,9 +123,9 @@ class AppObjs:
     failed_extensions = []
     list_store = gtk.ListStore(gobject.TYPE_PYOBJECT)
     @classmethod
-    def add_new_appobj(cls,dict):
+    def add_new_appobj(cls, dict):
         objdict = dict.copy()
-        section_name = objdict.pop('appname')
+        section_name = objdict.pop('classname')
         obj = new.classobj(section_name, (N,), {})()
         for key in objdict.keys():
             if key == DISTRIBUTION:

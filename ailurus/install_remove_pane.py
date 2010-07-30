@@ -79,7 +79,7 @@ class InstallRemovePane(gtk.VBox):
             dialog.destroy()
         else:
             dict = {'appobj': appobj,
-                    'appname': appobj.__class__.__name__,
+                    'classname': appobj.__class__.__name__,
                     'category': appobj.category,
                     '__doc__': appobj.__doc__,
                     'detail': appobj.detail,
@@ -100,7 +100,7 @@ class InstallRemovePane(gtk.VBox):
             dialog.destroy()            
             return
         else:
-            dict = {'appname': appobj.__class__.__name__,
+            dict = {'classname': appobj.__class__.__name__,
                     'hide': True}
             CUSTOM_APPS.addAppObjFromDict(dict)
 
@@ -125,7 +125,7 @@ class InstallRemovePane(gtk.VBox):
         category_list = appobj.category.split()
         if 'favourite' not in category_list:
             category_list.append('favourite')
-            dict = {'appname': appobj.__class__.__name__,
+            dict = {'classname': appobj.__class__.__name__,
                     'category': ' '.join(category_list)}
             CUSTOM_APPS.addAppObjFromDict(dict)
 
@@ -141,7 +141,7 @@ class InstallRemovePane(gtk.VBox):
         category_list = appobj.category.split()
         if 'favourite' in category_list:
             category_list.remove('favourite')
-            dict = {'appname': appobj.__class__.__name__,
+            dict = {'classname': appobj.__class__.__name__,
                     'category': ' '.join(category_list)}
             CUSTOM_APPS.addAppObjFromDict(dict)
                 
