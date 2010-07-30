@@ -71,7 +71,6 @@ class InstallRemovePane(gtk.VBox):
             return 
         dict['category'] = tree_store.get_value(iter,2)
         dialog = AddCustomAppDialog(dict)
-        dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
 
@@ -89,7 +88,6 @@ class InstallRemovePane(gtk.VBox):
         dict['detail'] = dict['appobj'].detail
         dict[DISTRIBUTION] = dict['appobj'].pkgs
         dialog = AddCustomAppDialog(dict)
-        dialog.vbox.show_all()
         dialog.run()
         dialog.destroy()
 
