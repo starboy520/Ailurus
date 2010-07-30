@@ -416,10 +416,11 @@ def load_cure_objs():
 import common
 if GNOME: import gnome as desktop
 else: desktop = None
-if UBUNTU_DERIV or UBUNTU: import ubuntu as distribution
-elif FEDORA: import fedora as distribution
-elif ARCHLINUX: import archlinux as distribution
-else: distribution = None
+try:
+    distribution = __import__(DISTRIBUTION)
+except ImportError:
+    print_traceback()
+    distribution = None
 
 def load_app_objs():
     with TimeStat('load_app_objs'):
