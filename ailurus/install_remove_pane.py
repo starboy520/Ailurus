@@ -914,6 +914,7 @@ class InstallRemovePane(gtk.VBox):
         for obj in AppObjs.appobjs:
             for c in obj.category.split():
                 all_categories.add(c)
+        all_categories.add('favourite') # always visible favourite category
         items = Category.all()
         assert items[0].category == 'all'
         items[0].visible = True
