@@ -26,6 +26,7 @@ from lib import *
 from libu import *
 from libapp import *
 from loader import AppObjs, load_app_objs
+from support.add_custom_app import AddCustomAppDialog
 
 class Area(gtk.HBox):
     def __init__(self):
@@ -55,7 +56,6 @@ class InstallRemovePane(gtk.VBox):
         
     def __left_treeview_add_software(self, widget):
         dict = {}
-        from support.add_custom_app import AddCustomAppDialog
         tree_store,iter = self.left_treeview.get_selection().get_selected()
         if not iter or not tree_store:
             return 
@@ -67,7 +67,6 @@ class InstallRemovePane(gtk.VBox):
 
     def show_add_custom_app_for_rightpane(self, widget):
         dict = {}
-        from support.add_custom_app import AddCustomAppDialog
         tree_store,iter = self.left_treeview.get_selection().get_selected()
         if not iter or not tree_store:
             return 
@@ -79,7 +78,6 @@ class InstallRemovePane(gtk.VBox):
 
     def show_edit_custom_app_for_rightpane(self, widget):
         dict = {}
-        from support.add_custom_app import AddCustomAppDialog
         tree_store,iter = self.right_treeview.get_selection().get_selected()
         if not iter or not tree_store:
             return 
