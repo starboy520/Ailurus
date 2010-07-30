@@ -258,21 +258,29 @@ class AppObjs:
     def load_from_text_file(cls):
         dict = NativeApps.get_appobjs_dict()
         dict2 = CustomApps.get_appobjs_dict()
-        for key in dict2.keys():
-            if key in dict:
-                dict[key].update(dict2[key])
+        # merge dict2 into dict
+        for class_name in dict2:
+            if class_name in dict:
+                dict[class_name].update(dict2[class_name])
             else:
-                dict[key] = dict2[key]
-        for key in dict:
-            obj = new.classobj(key, (N,), {})()
-            if 'hide' in dict[key].keys():
+                dict[class_name] = dict2[class_name]
+        del dict2
+        
+        for class_name in dict:
+            if 'hide' in dict[class_name].keys():
                 continue
-            for k in dict[key].keys():
-                setattr(obj,k,dict[key][k])
-            obj.self_check()
-            obj.fill()
-            cls.appobjs.append(obj)
-            cls.list_store.append([obj])
+            obj = new.classobj(class_name, (N,), {})()
+            for key, value in dict[class_name].items():
+                setattr(obj, key, value)
+            try:
+                obj.self_check()
+                obj.fill()
+            except:
+                print '[x] Cannot Load %s (native_apps + custom_apps)' % class_name
+                print_traceback()
+            else:
+                cls.appobjs.append(obj)
+                cls.list_store.append([obj])
     @classmethod
     def strip_invisible(cls):
         cls.appobjs = [obj for obj in cls.appobjs if obj.visible()]
