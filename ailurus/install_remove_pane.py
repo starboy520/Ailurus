@@ -734,7 +734,7 @@ class InstallRemovePane(gtk.VBox):
                 edit_software.connect("activate", self.show_edit_custom_app_for_rightpane)
                 remove_software = image_stock_menuitem(gtk.STOCK_REMOVE, _('Delete'))
                 remove_software.connect("activate", self.remove_custom_app_for_rightpane)
-                add_to_favourite = gtk.MenuItem(_('Add To Favourite'))
+                add_to_favourite = image_file_menuitem(_('Add To Favourite'), D+'sora_icons/favourite.png', 16)
                 add_to_favourite.connect("activate", self.add_app_to_favour)
                 remove_from_favourite = gtk.MenuItem(_('Remove From Favourite'))
                 remove_from_favourite.connect("activate", self.remove_from_favour)
