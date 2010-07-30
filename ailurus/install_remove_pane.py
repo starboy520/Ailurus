@@ -78,35 +78,40 @@ class InstallRemovePane(gtk.VBox):
             dialog.run()
             dialog.destroy()
         else:
-            dict = {'appobj':appobj,
-                    'appname':appobj.__class__.__name__,
-                    'category':appobj.category,
-                    '__doc__':appobj.__doc__,
-                    'detail':appobj.detail,
-                    DISTRIBUTION:appobj.pkgs,}
+            dict = {'appobj': appobj,
+                    'appname': appobj.__class__.__name__,
+                    'category': appobj.category,
+                    '__doc__': appobj.__doc__,
+                    'detail': appobj.detail,
+                    DISTRIBUTION: appobj.pkgs,}
             dialog = AddCustomAppDialog(dict)
             dialog.run()
             dialog.destroy()
 
     def __right_treeview_delete_software(self, widget):
         dict = {}
-        tree_store,iter = self.right_treeview.get_selection().get_selected()
-        if not iter or not tree_store:
-            return 
-        obj = tree_store.get_value(iter,0)
-        if not issubclass(obj.__class__, N):
+        treestore, iter = self.right_treeview.get_selection().get_selected()
+        appobj = treestore.get_value(iter,0)
+        if not isinstance(appobj, N):
+            # TODO: remove it?
+            dialog = gtk.MessageDialog(message_format = 'This item will be removable soon. Sorry. :(',
+                                       buttons = gtk.BUTTONS_OK)
+            dialog.run()
+            dialog.destroy()            
             return
-        dict['appname'] = obj.__class__.__name__
-        dict['hide'] = True
-        appstore = AppObjs.list_store
-        iter2 = appstore.get_iter_root()
-        while iter2:
-            if appstore.get_value(iter2,0) == obj:
-                appstore.remove(iter2)
-                break
-            iter2 = appstore.iter_next(iter2)
-      
-        CUSTOM_APPS.addAppObjFromDict(dict)
+        else:
+            dict = {'appname': appobj.__class__.__name__,
+                    'hide': True}
+            CUSTOM_APPS.addAppObjFromDict(dict)
+
+            # shall we realize the following code as a method of AppObjs? :)
+            AppObjs.appobjs.remove(appobj) # shall we use this line?
+            appstore = AppObjs.list_store
+            iter = appstore.get_iter_root()
+            while iter:
+                if appstore.get_value(iter, 0) == appobj:
+                    appstore.remove(iter)
+                iter = appstore.iter_next(iter)
         
     def add_app_to_favour(self, widget):
         dict = {}
