@@ -179,7 +179,7 @@ class ReposConfigPane(gtk.VBox):
                 if value == False:
                     line = line[1:].strip()
                 self.treestore.append(root_node, [value, line])
-            self.__set_parent_toggle(root_node)
+            self.__set_parent_node_toggle(root_node)
         self.treestore_filter.refilter()
     
     def __write_changes_to_all_repo_files(self):
@@ -216,10 +216,10 @@ class ReposConfigPane(gtk.VBox):
         
         if treestore_parent_iter: # toggle one line in some file
             self.__enable_repos(type, treestore_childiter)
-            self.__set_parent_toggle(treestore_parent_iter)
+            self.__set_parent_node_toggle(treestore_parent_iter)
         else: # toggle whole repo file
             self.__enable_repos(type, treestore_childiter)
-            self.__set_children_toggle(treestore_childiter, type)
+            self.__set_children_node_toggle(treestore_childiter, type)
         self.__write_changes_to_all_repo_files()
     
     def __repo_text_edited(self, cellrenderertext, path, new_text):
@@ -236,62 +236,55 @@ class ReposConfigPane(gtk.VBox):
             self.treestore_filter.refilter()
     
     def __add_debline_button_clicked(self, widget):
-        text = self.add_repos_area.construct_debline_from_entries().strip()
-        if not text:
-            return
-        b = self.__is_debline_not_commented(text)
-        if b == None:
-            msg = _(
-                    'This is not a repository.\n' +
-                    'Do you want to add it anymore ?'
-                    )
-            dlg = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
-                                    message_format=msg)
-            re = dlg.run()
-            dlg.destroy()
-            if re == gtk.RESPONSE_NO:
-                return
-        try:
-            run_as_root('true')
-            selection = self.treeview.get_selection()
-            model, fiter = selection.get_selected()
-            iter = self.treestore_filter.convert_iter_to_child_iter(fiter)
-            parent = self.treestore.iter_parent(iter)
-            if b == False:
-                text = text[1:].strip()
-            if parent:
-                self.treestore.insert_after(parent, iter, [b, text])
-            else:
-                self.treestore.append(iter, [b, text])
-            self.add_repos_area.clear_entries()
-            self.__write_changes_to_all_repo_files()
-            self.treestore_filter.refilter()
-        except AccessDeniedError:
-            pass
+        text = self.add_repos_area.construct_debline_from_entries()
+        text = text.strip()
+        if not text: return
+        type = self.__is_debline_not_commented(text)
+        if type == None:
+            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
+                                    message_format=_('This is not a repository. Add it anyway?'))
+            ret = dialog.run()
+            dialog.destroy()
+            if ret == gtk.RESPONSE_NO: return
+
+        run_as_root('true')
+        selection = self.treeview.get_selection()
+        model, fiter_iter = selection.get_selected()
+        treestore_iter = self.treestore_filter.convert_iter_to_child_iter(fiter_iter)
+        treestore_parentiter = self.treestore.iter_parent(treestore_iter)
+        if type == False:
+            text = text[1:].strip()
+        if treestore_parentiter:
+            self.treestore.insert_after(treestore_parentiter, treestore_iter, [type, text])
+        else:
+            self.treestore.append(treestore_iter, [type, text])
+        self.add_repos_area.clear_entries()
+        self.__write_changes_to_all_repo_files()
+        self.treestore_filter.refilter()
     
-    def __set_parent_toggle(self, parent):
-        fn = self.treestore.get_value(parent, 1)
-        child = self.treestore.iter_children(parent)
-        ret = None
-        while child:
-            b = self.treestore.get_value(child, 0)
-            if b == False:
-                ret = False
+    def __set_parent_node_toggle(self, parent):
+        file_name = self.treestore.get_value(parent, 1)
+        child_iter = self.treestore.iter_children(parent)
+        parent_node_type = None
+        while child_iter:
+            type = self.treestore.get_value(child_iter, 0)
+            if type == False:
+                parent_node_type = False
                 break
-            elif b == True:
-                ret = True
-            child = self.treestore.iter_next(child)
-        self.__enable_repos(ret, parent)
+            elif type == True:
+                parent_node_type = True
+            child_iter = self.treestore.iter_next(child_iter)
+        self.__enable_repos(parent_node_type, parent)
     
-    def __set_children_toggle(self, parent, b):
+    def __set_children_node_toggle(self, parent, type):
         child = self.treestore.iter_children(parent)
         while child:
             if self.treestore.get_value(child, 0) != None:
-                self.__enable_repos(b, child)
+                self.__enable_repos(type, child)
             child = self.treestore.iter_next(child)
     
-    def __enable_repos(self, b, iter):
-        self.treestore.set_value(iter, 0, b)
+    def __enable_repos(self, type, iter):
+        self.treestore.set_value(iter, 0, type)
 
 class AddReposArea(gtk.HBox):
     def __init__(self):
