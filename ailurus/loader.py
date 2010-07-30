@@ -74,14 +74,14 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         except:
             print_traceback()
      
-    def removeAppObjByName(self,classname):
+    def removeAppObjByName(self, classname):
         if not self.is_user_custom:
             return
         if classname in self.sections():
             self.remove_section(classname)
         self.save()
         
-    def addAppObjFromDict(self,dict):
+    def addAppObjFromDict(self, dict):
         objdict = dict.copy()
         if not self.is_user_custom:
             return
