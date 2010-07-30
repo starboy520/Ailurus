@@ -72,8 +72,7 @@ class ReposConfigPane(gtk.VBox):
         bottom_box.pack_start(add_debline_button_align, False)
         
         self.treeview.expand_all()
-        fiter_first = self.treestore_filter.get_iter_first()
-        self.treeview.get_selection().select_iter(fiter_first)
+        self.treeview.get_selection().select_path('0')
         
         def button_press_event(w, event):
             if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
