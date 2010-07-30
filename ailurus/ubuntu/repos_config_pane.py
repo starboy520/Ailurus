@@ -33,23 +33,23 @@ class ReposConfigPane(gtk.VBox):
         gtk.VBox.__init__(self, False)
         
         self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
-        self.treefilter = treefilter = treestore.filter_new()
-        treefilter.set_visible_func(self.__visible_function)
-        self.treeview = treeview = gtk.TreeView(treefilter)
+        self.treestore_filter = treestore_filter = treestore.filter_new()
+        treestore_filter.set_visible_func(self.__treestore_item_visible_function)
+        self.treeview = treeview = gtk.TreeView(treestore_filter)
         
         toggle_render = gtk.CellRendererToggle()
         toggle_render.set_property('activatable', True)
-        toggle_render.connect('toggled',self.__toggled, treefilter)
+        toggle_render.connect('toggled',self.__repo_toggled, treestore_filter)
         toggle_column = gtk.TreeViewColumn()
         toggle_column.set_title(_('Enabled'))
         toggle_column.pack_start(toggle_render, False)
-        toggle_column.set_cell_data_func(toggle_render, self.__toggle_cell_function)
+        toggle_column.set_cell_data_func(toggle_render, self.__repo_toggle_cell_function)
         
         text_render = gtk.CellRendererText()
-        text_render.connect('edited', self.__edited)
+        text_render.connect('edited', self.__repo_text_edited)
         text_column = gtk.TreeViewColumn()
         text_column.pack_start(text_render, False)
-        text_column.set_cell_data_func(text_render, self.__text_cell_function)
+        text_column.set_cell_data_func(text_render, self.__repo_text_cell_function)
         
         treeview.append_column(toggle_column)
         treeview.append_column(text_column)
@@ -71,7 +71,7 @@ class ReposConfigPane(gtk.VBox):
         buttom_box.pack_end(add_btn_box, False)
         
         self.treeview.expand_all()
-        fiter_first = self.treefilter.get_iter_first()
+        fiter_first = self.treestore_filter.get_iter_first()
         self.treeview.get_selection().select_iter(fiter_first)
         
         def button_press_event(w, event):
@@ -89,16 +89,16 @@ class ReposConfigPane(gtk.VBox):
         self.pack_start(scrollwindow)
         self.pack_start(buttom_box, False)
     
-    def __visible_function(self, treestore, iter):
+    def __treestore_item_visible_function(self, treestore, iter):
         b = treestore.get_value(iter, 0)
         return b != None
     
-    def __toggle_cell_function(self, column, cell, model, iter):
+    def __repo_toggle_cell_function(self, column, cell, model, iter):
         b = model.get_value(iter, 0)
         if b != None:
             cell.set_property('active', b)
     
-    def __text_cell_function(self, column, cell, model, iter):
+    def __repo_text_cell_function(self, column, cell, model, iter):
         parent = model.iter_parent(iter)
         b = model.get_value(iter, 0)
         text = model.get_value(iter, 1)
@@ -167,7 +167,7 @@ class ReposConfigPane(gtk.VBox):
                     line = line[1:].strip()
                 self.treestore.append(parent, [b, line])
             self.__set_parent_toggle(parent)
-        self.treefilter.refilter()
+        self.treestore_filter.refilter()
     
     def __apply(self):
         parent = self.treestore.get_iter_first()
@@ -192,7 +192,7 @@ class ReposConfigPane(gtk.VBox):
             with open(fn, 'w') as f:
                 f.write('\n'.join(lines))
     
-    def __toggled(self, cellrenderertoggle, path, treefilter):
+    def __repo_toggled(self, cellrenderertoggle, path, treefilter):
         try:
             run_as_root('true')
             fiter = treefilter.get_iter_from_string(path)
@@ -214,19 +214,19 @@ class ReposConfigPane(gtk.VBox):
         except AccessDeniedError:
             pass
     
-    def __edited(self, cellrenderertext, path, new_text):
-        if self.treefilter[path][1] != new_text:
+    def __repo_text_edited(self, cellrenderertext, path, new_text):
+        if self.treestore_filter[path][1] != new_text:
             try:
                 run_as_root('true')
-                fiter = self.treefilter.get_iter_from_string(path)
-                iter = self.treefilter.convert_iter_to_child_iter(fiter)
+                fiter = self.treestore_filter.get_iter_from_string(path)
+                iter = self.treestore_filter.convert_iter_to_child_iter(fiter)
                 b = self.__is_repos_enable(new_text)
                 if b == False:
                     new_text = new_text[1:]
                 self.treestore.set_value(iter, 0, b)
                 self.treestore.set_value(iter, 1, new_text)
                 self.__apply()
-                self.treefilter.refilter()
+                self.treestore_filter.refilter()
             except AccessDeniedError:
                 pass
     
@@ -250,7 +250,7 @@ class ReposConfigPane(gtk.VBox):
             run_as_root('true')
             selection = self.treeview.get_selection()
             model, fiter = selection.get_selected()
-            iter = self.treefilter.convert_iter_to_child_iter(fiter)
+            iter = self.treestore_filter.convert_iter_to_child_iter(fiter)
             parent = self.treestore.iter_parent(iter)
             if b == False:
                 text = text[1:].strip()
@@ -260,7 +260,7 @@ class ReposConfigPane(gtk.VBox):
                 self.treestore.append(iter, [b, text])
             self.addArea.clear_entries()
             self.__apply()
-            self.treefilter.refilter()
+            self.treestore_filter.refilter()
         except AccessDeniedError:
             pass
     
