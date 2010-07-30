@@ -128,12 +128,8 @@ class AppObjs:
         section_name = objdict.pop('appname')
         obj = new.classobj(section_name, (N,), {})()
         for key in objdict.keys():
-            if key == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
-                setattr(obj,'pkgs',objdict[key])
-            elif key == 'fedora' and FEDORA:
-                setattr(obj,'pkgs',objdict[key])
-            elif key == 'archlinux' and ARCHLINUX:
-                setattr(obj,'pkgs',objdict[key])
+            if key == DISTRIBUTION:
+                obj.pkgs = objdict[key]
             else:
                 setattr(obj,key,objdict[key])
         obj.self_check()
