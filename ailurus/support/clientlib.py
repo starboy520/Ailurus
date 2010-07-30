@@ -21,7 +21,7 @@
 
 from lib import *
 from libu import *
-import threading
+import thread
 import urllib, urllib2
 import gtk, pango
 
@@ -33,7 +33,7 @@ else:
     HOST = 'we-like-ailurus.appspot.com'
     PORT = 80
 
-lock = threading.Lock()
+lock = thread.allocate_lock()
 delayed = []
 
 def load_delayed_data():
@@ -81,15 +81,8 @@ def do_try_send_delayed_data():
     save_delayed_data()
     lock.release()
 
-class __delayed_sending_thread(threading.Thread):
-    def __init__(self):
-        threading.Thread.__init__(self)
-        self.start()
-    def run(self):
-        do_try_send_delayed_data()
-
 def try_send_delayed_data():
-    __delayed_sending_thread()
+    thread.start_new_thread(do_try_send_delayed_data, ())
 
 def send(d, host, port):
     assert type(d) == dict
