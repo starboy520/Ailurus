@@ -25,7 +25,7 @@ import gtk, os, sys
 from lib import *
 from libu import *
 from libapp import *
-from loader import AppObjs, load_app_objs
+from loader import AppObjs, load_app_objs, CUSTOM_APPS
 from support.add_custom_app import AddCustomAppDialog
 
 class Area(gtk.HBox):
@@ -106,7 +106,6 @@ class InstallRemovePane(gtk.VBox):
                 break
             iter2 = appstore.iter_next(iter2)
       
-        from loader import CUSTOM_APPS
         CUSTOM_APPS.addAppObjFromDict(dict)
         
     def add_app_to_favour(self, widget):
