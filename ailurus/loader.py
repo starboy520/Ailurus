@@ -124,6 +124,7 @@ class AppObjs:
             obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
             obj.showed_in_toggle = obj.cache_installed = obj.installed()
         except:
+            # shall we display an errordialog in add_custom_app.py ?
             print_traceback()
         else:
             cls.appobjs.append(obj)
