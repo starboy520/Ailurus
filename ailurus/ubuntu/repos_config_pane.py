@@ -65,7 +65,7 @@ class ReposConfigPane(gtk.VBox):
         self.add_debline_button = add_debline_button = image_stock_button(gtk.STOCK_ADD, _('Add'))
         add_debline_button.connect('clicked', self.__add_debline_button_clicked)
         add_debline_button_align = gtk.Alignment(0.5, 1)
-        add_debline_button_align.add(add_debline_button)
+        add_debline_button_align.add(add_debline_button) # put add_debline_button at right-bottom corner
         bottom_box = gtk.HBox(False, 10)
         bottom_box.set_border_width(5)
         bottom_box.pack_start(add_repos_area, True)
