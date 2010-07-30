@@ -303,9 +303,9 @@ class AddReposArea(gtk.HBox):
         self.officialBox.entry = entry = gtk.Entry()
         self.officialBox.pack_start(entry)
         
-        userlabel = gtk.Label(_('user:'))
+        userlabel = gtk.Label(_('PPA owner:'))
         self.thirdPartyBox.userentry = userentry = gtk.Entry()
-        ppalabel = gtk.Label(_('ppa:'))
+        ppalabel = gtk.Label(_('PPA name:'))
         self.thirdPartyBox.ppaentry = ppaentry = gtk.Entry()
         ppaentry.set_text('ppa')
         self.thirdPartyBox.pack_start(userlabel, False)
