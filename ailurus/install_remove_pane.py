@@ -46,13 +46,12 @@ class Area(gtk.HBox):
 class InstallRemovePane(gtk.VBox):
     icon = D+'sora_icons/m_install_remove.png'
     text = _('Install\nSoftware')
-    def select_item_on_mouse_right_click(self, widget, event):
-        select = widget.get_selection()
-        x, y = event.get_coords()
-        path_tuple = widget.get_path_at_pos(int(x), int(y))
+
+    def __select_item_on_mouse_right_click(self, widget, event):
+        selection = widget.get_selection()
+        path_tuple = widget.get_path_at_pos(int(event.x), int(event.y))
         if path_tuple:
-            path, obj, cell_x, cell_y = path_tuple
-            select.select_path(path) 
+            selection.select_path(path_tuple[0]) 
         
     def show_add_custom_app(self, widget):
         dict = {}
@@ -225,7 +224,7 @@ class InstallRemovePane(gtk.VBox):
                 popupmenu.popup(None, None, None, event.button, event.time)
                 return True
             return False
-        treeview.connect('button_press_event', self.select_item_on_mouse_right_click)
+        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
         treeview.connect('button_press_event', left_treeview_button_press_event)
         
         vbox = gtk.VBox(False, 5)
@@ -735,7 +734,7 @@ class InstallRemovePane(gtk.VBox):
                 popupmenu.popup(None, None, None, event.button, event.time)
                 return True
             return False
-        treeview.connect('button_press_event', self.select_item_on_mouse_right_click)
+        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
         treeview.connect('button_press_event', left_treeview_button_press_event)
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(toolbar, False)

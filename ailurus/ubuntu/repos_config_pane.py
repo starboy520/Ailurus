@@ -87,7 +87,7 @@ class ReposConfigPane(gtk.VBox):
 #       Uncomment the following lines when menu is done.        
 #        def button_press_event(w, event):
 #            if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-#                path = w.get_path_at_pos(int(event.x),int(event.y))
+#                path = w.get_path_at_pos(int(event.x), int(event.y))
 #                selection = w.get_selection()
 #                if path:
 #                    selection.select_path(path[0])
