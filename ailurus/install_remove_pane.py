@@ -59,7 +59,7 @@ class InstallRemovePane(gtk.VBox):
         dialog.destroy()
 
     def __right_treeview_add_software(self, widget):
-        treestore,iter = self.left_treeview.get_selection().get_selected()
+        treestore, iter = self.left_treeview.get_selection().get_selected()
         if not iter or not treestore: return
 
         category = treestore.get_value(iter,2)
@@ -68,24 +68,27 @@ class InstallRemovePane(gtk.VBox):
         dialog.run()
         dialog.destroy()
 
-    def show_edit_custom_app_for_rightpane(self, widget):
-        dict = {}
-        tree_store,iter = self.right_treeview.get_selection().get_selected()
-        if not iter or not tree_store:
-            return 
-        dict['appobj'] = tree_store.get_value(iter,0)
-        if not issubclass(dict['appobj'].__class__, N):
-            return
-        dict['appname'] = dict['appobj'].__class__.__name__
-        dict['category'] = dict['appobj'].category
-        dict['__doc__'] = dict['appobj'].__doc__
-        dict['detail'] = dict['appobj'].detail
-        dict[DISTRIBUTION] = dict['appobj'].pkgs
-        dialog = AddCustomAppDialog(dict)
-        dialog.run()
-        dialog.destroy()
+    def __right_treeview_edit_software(self, widget):
+        treestore, iter = self.right_treeview.get_selection().get_selected()
+        appobj = treestore.get_value(iter, 0)
+        if not isinstance(appobj, N):
+            # TODO: just edit __doc__, detail, category.
+            dialog = gtk.MessageDialog(message_format = 'This item will be editable soon. Sorry. :(',
+                                       buttons = gtk.BUTTONS_OK)
+            dialog.run()
+            dialog.destroy()
+        else:
+            dict = {'appobj':appobj,
+                    'appname':appobj.__class__.__name__,
+                    'category':appobj.category,
+                    '__doc__':appobj.__doc__,
+                    'detail':appobj.detail,
+                    DISTRIBUTION:appobj.pkgs,}
+            dialog = AddCustomAppDialog(dict)
+            dialog.run()
+            dialog.destroy()
 
-    def remove_custom_app_for_rightpane(self, widget):
+    def __right_treeview_delete_software(self, widget):
         dict = {}
         tree_store,iter = self.right_treeview.get_selection().get_selected()
         if not iter or not tree_store:
@@ -731,9 +734,9 @@ class InstallRemovePane(gtk.VBox):
                 add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add a software item'))
                 add_software.connect("activate", self.__right_treeview_add_software)
                 edit_software = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit'))
-                edit_software.connect("activate", self.show_edit_custom_app_for_rightpane)
+                edit_software.connect("activate", self.__right_treeview_edit_software)
                 remove_software = image_stock_menuitem(gtk.STOCK_REMOVE, _('Delete'))
-                remove_software.connect("activate", self.remove_custom_app_for_rightpane)
+                remove_software.connect("activate", self.__right_treeview_delete_software)
                 add_to_favourite = image_file_menuitem(_('Add To Favourite'), D+'sora_icons/favourite.png', 16)
                 add_to_favourite.connect("activate", self.add_app_to_favour)
                 remove_from_favourite = gtk.MenuItem(_('Remove From Favourite'))
