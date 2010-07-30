@@ -74,7 +74,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         except:
             print_traceback()
      
-    def removeAppObjByName(self, classname):
+    def remove_appobj_by_classname(self, classname):
         if not self.is_user_custom:
             return
         if classname in self.sections():
