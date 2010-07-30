@@ -27,7 +27,6 @@ from libu import *
 from libapp import *
 from loader import AppObjs, load_app_objs
 
-
 class Area(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False, 3)
