@@ -51,7 +51,6 @@ class ReposConfigPane(gtk.VBox):
         text_render = gtk.CellRendererText()
         text_render.connect('edited', self.__edited)
         text_column = gtk.TreeViewColumn()
-        text_column.set_title(_('Repository'))
         text_column.pack_start(text_render, False)
         text_column.set_cell_data_func(text_render, self.__text_cell_func)
         
@@ -321,9 +320,9 @@ class AddReposArea(gtk.HBox):
         self.rbBox = gtk.VBox(False, 10)
         def toggled(widget, index):
             self.__changed(index)
-        official_btn = gtk.RadioButton(None, _('Official'))
+        official_btn = gtk.RadioButton(None, _('Add a line'))
         official_btn.connect('toggled', toggled, 0)
-        thirdparty_btn = gtk.RadioButton(official_btn, _('Third Party'))
+        thirdparty_btn = gtk.RadioButton(official_btn, _('Add a PPA line'))
         thirdparty_btn.connect('toggled', toggled, 1)
         official_btn.set_active(True)
         self.rbBox.pack_start(official_btn)
