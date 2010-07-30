@@ -31,7 +31,6 @@ class ReposConfigPane(gtk.VBox):
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False)
-        self.main_view = main_view
         
         self.treestore = treestore = gtk.TreeStore(gobject.TYPE_PYOBJECT, gobject.TYPE_STRING)
         self.treefilter = treefilter = treestore.filter_new()
@@ -241,8 +240,7 @@ class ReposConfigPane(gtk.VBox):
                     'This is not a repository.\n' +
                     'Do you want to add it anymore ?'
                     )
-            dlg = gtk.MessageDialog(parent=self.main_view.window,
-                                    buttons=gtk.BUTTONS_YES_NO,
+            dlg = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                     message_format=msg)
             re = dlg.run()
             dlg.destroy()
