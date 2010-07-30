@@ -102,6 +102,9 @@ class AppConfigParser(ConfigParser.RawConfigParser):
 NativeApps = AppConfigParser(A+'/native_apps', is_user_custom=False)
 CustomApps = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
 
+def is_user_custom_appobj(appobj): # user custom package's class name starts with "C_"
+    return obj.__class__.__name__.startswith('C_')
+
 class AppObjs:
     appobjs = []
     appobjs_names = []
@@ -133,7 +136,7 @@ class AppObjs:
     def save_installed_items_to_file(cls, save_to_this_path):
         with open(save_to_this_path, 'w') as f:
             for obj in cls.appobjs:
-                if obj.cache_installed and not obj.__class__.__name__.startswith('C_'): #is_user_custom package's class name startswith C_  such as C_12
+                if obj.cache_installed and not is_user_custom_appobj(obj):
                     class_name = obj.__class__.__name__
                     f.write(class_name + '\n')
     @classmethod
