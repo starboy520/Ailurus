@@ -77,9 +77,7 @@ def do_try_send_delayed_data():
             delayed.remove(req)
         except urllib2.URLError:
             i += 1
-            pass
-#            import traceback, sys
-#            traceback.print_exc(file=sys.stderr)
+            print_traceback()
     save_delayed_data()
     lock.release()
 
