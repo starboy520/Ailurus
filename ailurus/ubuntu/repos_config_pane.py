@@ -91,13 +91,13 @@ class ReposConfigPane(gtk.VBox):
         self.pack_start(bottom_box, False)
     
     def __treestore_item_visible_function(self, treestore, iter):
-        b = treestore.get_value(iter, 0)
-        return b != None
+        object = treestore.get_value(iter, 0) # instance of gobject.TYPE_PYOBJECT
+        return object != None
     
     def __repo_toggle_cell_function(self, column, cell, model, iter):
-        b = model.get_value(iter, 0)
-        if b != None:
-            cell.set_property('active', b)
+        object = model.get_value(iter, 0)
+        if object != None:
+            cell.set_property('active', object)
     
     def __repo_text_cell_function(self, column, cell, model, iter):
         parent = model.iter_parent(iter)
