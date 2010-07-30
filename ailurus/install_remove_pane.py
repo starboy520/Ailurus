@@ -48,12 +48,6 @@ class InstallRemovePane(gtk.VBox):
     icon = D+'sora_icons/m_install_remove.png'
     text = _('Install\nSoftware')
 
-    def __select_item_on_mouse_right_click(self, widget, event):
-        selection = widget.get_selection()
-        path_tuple = widget.get_path_at_pos(int(event.x), int(event.y))
-        if path_tuple:
-            selection.select_path(path_tuple[0]) 
-        
     def __left_treeview_add_software(self, widget):
         treestore,iter = self.left_treeview.get_selection().get_selected()
         if not iter or not treestore: return
@@ -213,16 +207,29 @@ class InstallRemovePane(gtk.VBox):
         scrollwindow.set_shadow_type(gtk.SHADOW_IN)
 
         def left_treeview_button_press_event(treeview, event):
-            add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add software into this category'))
-            add_software.connect("activate", self.__left_treeview_add_software)
-            popupmenu = gtk.Menu()
-            popupmenu.append(add_software)
-            popupmenu.show_all()
+            # first try to select the item at mouse position
             if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
-                popupmenu.popup(None, None, None, event.button, event.time)
-                return True
+                selection = treeview.get_selection()
+                path_tuple = treeview.get_path_at_pos(int(event.x), int(event.y))
+                
+                if path_tuple:
+                    selection.select_path(path_tuple[0])
+                    item_selected = True
+                else:
+                    item_selected = False
+                
+                # if any item is selected, then pop up menu
+                if item_selected:
+                    add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add software into this category'))
+                    add_software.connect("activate", self.__left_treeview_add_software)
+                    popupmenu = gtk.Menu()
+                    popupmenu.append(add_software)
+                    popupmenu.show_all()
+                    if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                        popupmenu.popup(None, None, None, event.button, event.time)
+                        return True
             return False
-        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
+        
         treeview.connect('button_press_event', left_treeview_button_press_event)
         
         vbox = gtk.VBox(False, 5)
@@ -730,7 +737,8 @@ class InstallRemovePane(gtk.VBox):
                 popupmenu.popup(None, None, None, event.button, event.time)
                 return True
             return False
-        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
+        
+#        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
         treeview.connect('button_press_event', left_treeview_button_press_event)
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(toolbar, False)
