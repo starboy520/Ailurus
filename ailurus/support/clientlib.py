@@ -39,10 +39,10 @@ delayed = []
 def load_delayed_data():
     import os
     import pickle
-    fn = os.path.expanduser('~/.config/ailurus/delayed_sending')
+    file_path = Config.config_dir + 'delayed_sending'
     lock.acquire()
     try:
-        with open(fn, 'r') as f:
+        with open(file_path) as f:
             global delayed
             delayed = pickle.load(f)
     except:
