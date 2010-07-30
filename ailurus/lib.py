@@ -110,10 +110,6 @@ class Config:
         dir = os.path.expanduser('~/.config/ailurus/')
         if not os.path.exists(dir): # make directory
             os.makedirs(dir)
-    # please use Config.config_dir
-#    @classmethod
-#    def get_config_dir(cls):
-#        return cls.config_dir
     @classmethod
     def init(cls):
         assert not hasattr(cls, 'inited')
@@ -123,7 +119,7 @@ class Config:
         cls.parser = ConfigParser.RawConfigParser()
         # read configuration file if it exists
         cls.make_config_dir()
-        path = cls.get_config_dir() + 'conf'
+        path = cls.config_dir + 'conf'
         if os.path.exists(path):
             cls.parser.read(path)
     @classmethod

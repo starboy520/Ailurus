@@ -229,7 +229,7 @@ class AddCustomAppDialog(gtk.Dialog):
                 if c.category == target:
                     index = i
             else:
-                if c.category in target.split() and not c.category in ['favourite','dustbin']:
+                if c.category in target.split() and not c.category in ['favourite', 'dustbin']:
                     index = i
             self.combo_category.append_text(c.text)
         self.combo_category.set_active(index)
