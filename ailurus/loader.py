@@ -117,13 +117,17 @@ class AppObjs:
         for key, value in dict.items():
             if key == DISTRIBUTION: obj.pkgs = value
             else: setattr(obj, key, value)
-        obj.self_check()
-        obj.fill()
-        icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
-        obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
-        obj.showed_in_toggle = obj.cache_installed = obj.installed()
-        cls.appobjs.append(obj)
-        cls.list_store.append([obj])
+        try:
+            obj.self_check()
+            obj.fill()
+            icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
+            obj.logo_pixbuf = gtk.gdk.pixbuf_new_from_file_at_size(icon_path, 32, 32)
+            obj.showed_in_toggle = obj.cache_installed = obj.installed()
+        except:
+            print_traceback()
+        else:
+            cls.appobjs.append(obj)
+            cls.list_store.append([obj])
     @classmethod
     def save_installed_items_to_file(cls, save_to_this_path):
         with open(save_to_this_path, 'w') as f:
