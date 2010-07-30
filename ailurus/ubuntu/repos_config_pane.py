@@ -343,7 +343,7 @@ class AddReposArea(gtk.HBox):
             ppa = self.add_PPA_repo_box.ppa_name_entry.get_text()
             if not ppa:
                 return ''
-            text = 'deb http://ppa.launchpad.net/%s/%s/ubuntu %s main' % (user, ppa, self.__get_ubuntu_version())
+            text = 'deb http://ppa.launchpad.net/%s/%s/ubuntu %s main' % (user, ppa, VERSION)
             return text
         
     def clear_entries(self):
@@ -362,6 +362,3 @@ class AddReposArea(gtk.HBox):
             self.selected_box = self.add_PPA_repo_box
             self.add_deb_line_box.set_sensitive(False)
             self.add_PPA_repo_box.set_sensitive(True)
-    
-    def __get_ubuntu_version(self):
-        return Config.get_Ubuntu_version()
