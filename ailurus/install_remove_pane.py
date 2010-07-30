@@ -55,21 +55,21 @@ class InstallRemovePane(gtk.VBox):
             selection.select_path(path_tuple[0]) 
         
     def __left_treeview_add_software(self, widget):
-        tree_store,iter = self.left_treeview.get_selection().get_selected()
-        if not iter or not tree_store: return
+        treestore,iter = self.left_treeview.get_selection().get_selected()
+        if not iter or not treestore: return
 
-        category = tree_store.get_value(iter,2)
+        category = treestore.get_value(iter,2)
         dict = {'category':category}
         dialog = AddCustomAppDialog(dict)
         dialog.run()
         dialog.destroy()
 
-    def show_add_custom_app_for_rightpane(self, widget):
-        dict = {}
-        tree_store,iter = self.left_treeview.get_selection().get_selected()
-        if not iter or not tree_store:
-            return 
-        dict['category'] = tree_store.get_value(iter,2)
+    def __right_treeview_add_software(self, widget):
+        treestore,iter = self.left_treeview.get_selection().get_selected()
+        if not iter or not treestore: return
+
+        category = treestore.get_value(iter,2)
+        dict = {'category':category}
         dialog = AddCustomAppDialog(dict)
         dialog.run()
         dialog.destroy()
@@ -665,8 +665,6 @@ class InstallRemovePane(gtk.VBox):
         import gobject, pango
 
         self.right_store = treestore = AppObjs.list_store
-
-        
         self.right_store_filter = treestorefilter = treestore.filter_new()
         treestorefilter.set_visible_func(self.__right_visible_func)
         
@@ -710,16 +708,16 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
-        add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add Entry') )
-        add_entry.connect("activate", self.__left_treeview_add_software )
-        edit_entry = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit Entry') )
-        edit_entry.connect("activate", self.show_edit_custom_app_for_rightpane )
-        remove_entry = image_stock_menuitem(gtk.STOCK_REMOVE, _('Remove Entry') )
-        remove_entry.connect("activate", self.remove_custom_app_for_rightpane )
-        add_to_favour = image_stock_menuitem(gtk.STOCK_ABOUT, _('Add To Favourite') )
-        add_to_favour.connect("activate", self.add_app_to_favour )
-        remove_from_favour = image_stock_menuitem(gtk.STOCK_ABOUT, _('Remove From Favourite') )
-        remove_from_favour.connect("activate", self.remove_from_favour )        
+        add_entry = image_stock_menuitem(gtk.STOCK_ADD, _('Add a software item'))
+        add_entry.connect("activate", self.__right_treeview_add_software)
+        edit_entry = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit'))
+        edit_entry.connect("activate", self.show_edit_custom_app_for_rightpane)
+        remove_entry = image_stock_menuitem(gtk.STOCK_REMOVE, _('Delete'))
+        remove_entry.connect("activate", self.remove_custom_app_for_rightpane)
+        add_to_favour = gtk.MenuItem(_('Add To Favourite'))
+        add_to_favour.connect("activate", self.add_app_to_favour)
+        remove_from_favour = gtk.MenuItem(_('Remove From Favourite'))
+        remove_from_favour.connect("activate", self.remove_from_favour)
         popupmenu = gtk.Menu()
         popupmenu.append(add_entry)
         popupmenu.append(edit_entry)
