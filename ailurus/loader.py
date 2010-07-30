@@ -75,21 +75,19 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             print_traceback()
      
     def remove_appobj_by_classname(self, classname):
-        if not self.is_user_custom:
-            return
+        assert self.is_user_custom
         if classname in self.sections():
             self.remove_section(classname)
         self.save()
         
     def add_appobj_from_dict(self, dict):
-        objdict = dict.copy()
-        if not self.is_user_custom:
-            return
-        classname = objdict.pop('classname')
+        assert self.is_user_custom
+        dict = dict.copy()
+        classname = dict.pop('classname')
         if not classname in self.sections():
             self.add_section(classname)
-        for key in objdict.keys():
-            self.set(classname, str(key), str(objdict[key]))
+        for key in dict.keys():
+            self.set(classname, key, str(dict[key]))
         self.save()
 
     def __init__(self, file_path, is_user_custom):
