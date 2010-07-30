@@ -225,10 +225,10 @@ class AppObjs:
         return list(ret)
     @classmethod
     def all_installer_names_in_text_file(cls):
+        # this function is used to display software missing icons. do not return items from customapps
+        # :)
         ret = set()
         for section_name in NativeApps.sections():
-            ret.add(section_name)
-        for section_name in CustomApps.sections():
             ret.add(section_name)
         return list(ret)
     @classmethod
