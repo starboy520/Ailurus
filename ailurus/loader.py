@@ -26,7 +26,7 @@ import os, sys, glob, new, ConfigParser, types, gtk, gobject
 import strings
 
 class AppConfigParser(ConfigParser.RawConfigParser):
-    def getAppDict(self):
+    def get_appobjs_dict(self):
         ret = {}
         appobjs = []
         for section_name in self.sections():
@@ -255,8 +255,8 @@ class AppObjs:
         sys.path.pop(0)
     @classmethod
     def load_from_text_file(cls):
-        dict = NativeApps.getAppDict()
-        dict2 = CustomApps.getAppDict()
+        dict = NativeApps.get_appobjs_dict()
+        dict2 = CustomApps.get_appobjs_dict()
         for key in dict2.keys():
             if key in dict.keys():
                 dict[key].update(dict2[key])
