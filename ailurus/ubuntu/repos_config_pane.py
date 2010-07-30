@@ -60,15 +60,16 @@ class ReposConfigPane(gtk.VBox):
         scrollwindow.add(treeview)
         scrollwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type(gtk.SHADOW_IN)
-        self.addArea = addArea = AddReposArea()
-        self.add_btn = add_btn = image_stock_button(gtk.STOCK_ADD, _('Add'))
-        add_btn.connect('clicked', self.__add_repos)
-        buttom_box = gtk.HBox(False, 10)
-        buttom_box.set_border_width(2)
-        buttom_box.pack_start(addArea, True)
-        add_btn_box = gtk.VBox()
-        add_btn_box.pack_end(add_btn, False)
-        buttom_box.pack_end(add_btn_box, False)
+        
+        self.add_repos_area = add_repos_area = AddReposArea()
+        self.add_debline_button = add_debline_button = image_stock_button(gtk.STOCK_ADD, _('Add'))
+        add_debline_button.connect('clicked', self.__add_debline_button_clicked)
+        add_debline_button_align = gtk.Alignment(0.5, 1)
+        add_debline_button_align.add(add_debline_button)
+        bottom_box = gtk.HBox(False, 10)
+        bottom_box.set_border_width(5)
+        bottom_box.pack_start(add_repos_area, True)
+        bottom_box.pack_start(add_debline_button_align, False)
         
         self.treeview.expand_all()
         fiter_first = self.treestore_filter.get_iter_first()
@@ -87,7 +88,7 @@ class ReposConfigPane(gtk.VBox):
         self.treeview.connect('button_press_event', button_press_event)
 
         self.pack_start(scrollwindow)
-        self.pack_start(buttom_box, False)
+        self.pack_start(bottom_box, False)
     
     def __treestore_item_visible_function(self, treestore, iter):
         b = treestore.get_value(iter, 0)
@@ -230,8 +231,8 @@ class ReposConfigPane(gtk.VBox):
             except AccessDeniedError:
                 pass
     
-    def __add_repos(self, widget):
-        text = self.addArea.construct_debline_from_entries().strip()
+    def __add_debline_button_clicked(self, widget):
+        text = self.add_repos_area.construct_debline_from_entries().strip()
         if not text:
             return
         b = self.__is_repos_enable(text)
@@ -258,7 +259,7 @@ class ReposConfigPane(gtk.VBox):
                 self.treestore.insert_after(parent, iter, [b, text])
             else:
                 self.treestore.append(iter, [b, text])
-            self.addArea.clear_entries()
+            self.add_repos_area.clear_entries()
             self.__apply()
             self.treestore_filter.refilter()
         except AccessDeniedError:
