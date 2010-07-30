@@ -32,8 +32,8 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             try:
                 dict = {}
                 if not self.is_user_custom:
-                    assert hasattr(strings, section_name+'_0'), section_name
-                    assert hasattr(strings, section_name+'_1'), section_name
+                    assert hasattr(strings, section_name + '_0'), section_name
+                    assert hasattr(strings, section_name + '_1'), section_name
                     dict['__doc__'] = getattr(strings, section_name + '_0')
                     dict['detail'] = getattr(strings, section_name + '_1')
 
@@ -111,14 +111,14 @@ class AppObjs:
     list_store = gtk.ListStore(gobject.TYPE_PYOBJECT)
     @classmethod
     def add_new_appobj(cls, dict):
-        objdict = dict.copy()
-        section_name = objdict.pop('classname')
+        dict = dict.copy()
+        section_name = dict.pop('classname')
         obj = new.classobj(section_name, (N,), {})()
-        for key in objdict.keys():
+        for key in dict.keys():
             if key == DISTRIBUTION:
-                obj.pkgs = objdict[key]
+                obj.pkgs = dict[key]
             else:
-                setattr(obj,key,objdict[key])
+                setattr(obj,key,dict[key])
         obj.self_check()
         obj.fill()
         icon_path, obj.use_default_icon = cls.get_icon_path(section_name)
