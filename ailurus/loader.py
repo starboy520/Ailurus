@@ -100,7 +100,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.read(file_path)
     
 NativeApps = AppConfigParser(A+'/native_apps', is_user_custom=False)
-CustomApps = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
+CustomApps = AppConfigParser(Config.config_dir + 'custom_apps', is_user_custom=True)
 
 def is_user_custom_appobj(appobj): # user custom package's class name starts with "C_"
     return obj.__class__.__name__.startswith('C_')
@@ -152,7 +152,7 @@ class AppObjs:
     @classmethod
     def get_icon_path(cls, name):
         'return (icon path, whether it is default icon)'
-        path = Config.get_config_dir() + name + '.png'
+        path = Config.config_dir + name + '.png'
         if os.path.exists(path): return (path, False)
         path = D + 'appicons/' + name + '.png'
         if os.path.exists(path): return (path, False)
@@ -233,7 +233,7 @@ class AppObjs:
         return list(ret)
     @classmethod
     def get_extension_path(cls):
-        for path in [A+'/../unfree/', Config.get_config_dir()]:
+        for path in [A+'/../unfree/', Config.config_dir]:
             if os.path.exists(path): return path
         raise Exception
     @classmethod

@@ -110,9 +110,10 @@ class Config:
         dir = os.path.expanduser('~/.config/ailurus/')
         if not os.path.exists(dir): # make directory
             os.makedirs(dir)
-    @classmethod
-    def get_config_dir(cls):
-        return cls.config_dir
+    # please use Config.config_dir
+#    @classmethod
+#    def get_config_dir(cls):
+#        return cls.config_dir
     @classmethod
     def init(cls):
         assert not hasattr(cls, 'inited')
@@ -465,7 +466,7 @@ class ResponseTime:
     def load(cls):
         import os
         try:
-            path = Config.get_config_dir() + 'response_time_3'
+            path = Config.config_dir + 'response_time_3'
             if not os.path.exists(path): return
             with open(path) as f:
                 lines = f.readlines()
@@ -479,7 +480,7 @@ class ResponseTime:
     def save(cls):
         if not cls.changed: return
         try:
-            path = Config.get_config_dir() + 'response_time_3'
+            path = Config.config_dir + 'response_time_3'
             with open(path, 'w') as f:
                 for key, value in cls.map.items():
                     print >>f, key

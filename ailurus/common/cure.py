@@ -198,11 +198,11 @@ class Own_config_dir_by_user(C):
     detail = _('Command:') + ' chown -R $USER:$USER ~/.config/ailurus'
     type = C.MUST_FIX
     def exists(self):
-        dir = Config.get_config_dir()
+        dir = Config.config_dir
         if os.stat(dir).st_uid != os.getuid():
             return True
     def cure(self):
-        run_as_root('chown -R $USER:$USER "%s"' % Config.get_config_dir())
+        run_as_root('chown -R $USER:$USER "%s"' % Config.config_dir)
 
 class Completely_remove_var_cache_ailurus(C):
     __doc__ = _('Remove directory /var/cache/ailurus/')

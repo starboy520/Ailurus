@@ -34,7 +34,7 @@ class UbuntuAPTRecoveryPane(gtk.VBox):
 
     def __make_dir(self):
         Config.make_config_dir()
-        return Config.get_config_dir()
+        return Config.config_dir
 
     def __make_snapshot(self, *w):
         #get comment
