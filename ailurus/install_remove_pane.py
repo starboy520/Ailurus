@@ -716,29 +716,41 @@ class InstallRemovePane(gtk.VBox):
         scroll.set_shadow_type(gtk.SHADOW_IN)
         
         def left_treeview_button_press_event(treeview, event):
-            add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add a software item'))
-            add_software.connect("activate", self.__right_treeview_add_software)
-            edit_software = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit'))
-            edit_software.connect("activate", self.show_edit_custom_app_for_rightpane)
-            remove_software = image_stock_menuitem(gtk.STOCK_REMOVE, _('Delete'))
-            remove_software.connect("activate", self.remove_custom_app_for_rightpane)
-            add_to_favourite = gtk.MenuItem(_('Add To Favourite'))
-            add_to_favourite.connect("activate", self.add_app_to_favour)
-            remove_from_favourite = gtk.MenuItem(_('Remove From Favourite'))
-            remove_from_favourite.connect("activate", self.remove_from_favour)
-            popupmenu = gtk.Menu()
-            popupmenu.append(add_software)
-            popupmenu.append(edit_software)
-            popupmenu.append(remove_software)
-            popupmenu.append(add_to_favourite)
-            popupmenu.append(remove_from_favourite)
-            popupmenu.show_all()
             if event.type == gtk.gdk.BUTTON_PRESS and event.button == 3:
+                # first select the item at mouse position
+                selection = treeview.get_selection()
+                path_tuple = treeview.get_path_at_pos(int(event.x), int(event.y))
+            
+                if path_tuple:
+                    selection.select_path(path_tuple[0])
+                    item_selected = True
+                else:
+                    item_selected = False
+
+                # then pop up menu
+                add_software = image_stock_menuitem(gtk.STOCK_ADD, _('Add a software item'))
+                add_software.connect("activate", self.__right_treeview_add_software)
+                edit_software = image_stock_menuitem(gtk.STOCK_EDIT, _('Edit'))
+                edit_software.connect("activate", self.show_edit_custom_app_for_rightpane)
+                remove_software = image_stock_menuitem(gtk.STOCK_REMOVE, _('Delete'))
+                remove_software.connect("activate", self.remove_custom_app_for_rightpane)
+                add_to_favourite = gtk.MenuItem(_('Add To Favourite'))
+                add_to_favourite.connect("activate", self.add_app_to_favour)
+                remove_from_favourite = gtk.MenuItem(_('Remove From Favourite'))
+                remove_from_favourite.connect("activate", self.remove_from_favour)
+
+                popupmenu = gtk.Menu()
+                popupmenu.append(add_software)
+                if item_selected:
+                    popupmenu.append(edit_software)
+                    popupmenu.append(remove_software)
+                    popupmenu.append(add_to_favourite)
+                    popupmenu.append(remove_from_favourite)
+                popupmenu.show_all()
                 popupmenu.popup(None, None, None, event.button, event.time)
                 return True
             return False
         
-#        treeview.connect('button_press_event', self.__select_item_on_mouse_right_click)
         treeview.connect('button_press_event', left_treeview_button_press_event)
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(toolbar, False)
