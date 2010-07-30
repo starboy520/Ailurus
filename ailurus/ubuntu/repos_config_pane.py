@@ -61,6 +61,7 @@ class ReposConfigPane(gtk.VBox):
         scrollwindow.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scrollwindow.set_shadow_type(gtk.SHADOW_IN)
         
+        # TODO: Put add_debline_button in AddReposArea. Add signal "clicked" to AddReposArea.
         self.add_repos_area = add_repos_area = AddReposArea()
         self.add_debline_button = add_debline_button = image_stock_button(gtk.STOCK_ADD, _('Add'))
         add_debline_button.connect('clicked', self.__add_debline_button_clicked)
