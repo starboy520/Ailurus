@@ -61,7 +61,7 @@ class ReposConfigPane(gtk.VBox):
         treeview.append_column(toggle_column)
         treeview.append_column(text_column)
         treeview.set_rules_hint(True)
-        self.__refresh_tree()
+        self.__refresh_treestore()
         
         scrollwindow = gtk.ScrolledWindow()
         scrollwindow.add(treeview)
@@ -163,22 +163,20 @@ class ReposConfigPane(gtk.VBox):
             return True
         return None
     
-    def __refresh_tree(self):
+    def __refresh_treestore(self):
         import glob
         self.treestore.clear()
-        for path in ['/etc/apt/sources.list'] + glob.glob('/etc/apt/sources.list.d/*'):
-            if not path.endswith('.list'):
-                continue
-            parent = self.treestore.append(None, [True, path])
-            with open(path, 'r') as f:
+        for path in ['/etc/apt/sources.list'] + glob.glob('/etc/apt/sources.list.d/*.list'):
+            root_node = self.treestore.append(None, [True, path])
+            with open(path) as f:
                 lines = f.readlines()
             for line in lines:
                 line = line.strip()
                 b = self.__is_debline_not_commented(line)
                 if b == False:
                     line = line[1:].strip()
-                self.treestore.append(parent, [b, line])
-            self.__set_parent_toggle(parent)
+                self.treestore.append(root_node, [b, line])
+            self.__set_parent_toggle(root_node)
         self.treestore_filter.refilter()
     
     def __apply(self):
