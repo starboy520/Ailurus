@@ -24,6 +24,7 @@ from lib import *
 from libapp import N
 import os, sys, glob, new, ConfigParser, types, gtk, gobject
 import strings
+
 class AppConfigParser(ConfigParser.RawConfigParser):
     def getAppDict(self):
         ret = {}
@@ -39,11 +40,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
 
                 for option_name in self.options(section_name):
                     value = self.get(section_name, option_name)
-                    if option_name == 'ubuntu' and (UBUNTU or UBUNTU_DERIV):
-                        dict['pkgs'] = value
-                    elif option_name == 'fedora' and FEDORA:
-                        dict['pkgs'] = value
-                    elif option_name == 'archlinux' and ARCHLINUX:
+                    if option_name == DISTRIBUTION:
                         dict['pkgs'] = value
                     elif option_name == 'Chinese' or option_name == 'Poland':
                         dict[option_name] = True
@@ -72,8 +69,8 @@ class AppConfigParser(ConfigParser.RawConfigParser):
     
     def save(self):
         try:
-            fd = open(self.filepath,'w')
-            self.write(fd)
+            with open(self.filepath, 'w') as f:
+                self.write(f)
         except:
             print_traceback()
      
@@ -95,11 +92,11 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.set(appname, str(key), str(objdict[key]))
         self.save()
 
-    def __init__(self,filepath):
+    def __init__(self, filepath):
+        assert isinstance(filepath,str)
+
         ConfigParser.RawConfigParser.__init__(self)
         self.optionxform = str # case sensitive in option_name
-        if not isinstance(filepath,str):
-            raise Exception('filepath must be a string')
         self.filepath = filepath
         if filepath.endswith('native_apps'):
             self.custom = False
