@@ -84,7 +84,7 @@ class AddCustomAppDialog(gtk.Dialog):
             
             if 'classname' not in self.dict:
                 dict['category'] = self.__get_category()
-                AppObjs.add_new_appobj(dict)
+                AppObjs.add_new_appobj_from_dict(dict)
             else:                    
                 dict['category'] = self.dict['category'].replace(self.origin_category, self.__get_category())
                 obj = self.dict['appobj']

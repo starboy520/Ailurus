@@ -110,7 +110,7 @@ class AppObjs:
     failed_extensions = []
     list_store = gtk.ListStore(gobject.TYPE_PYOBJECT)
     @classmethod
-    def add_new_appobj(cls, dict):
+    def add_new_appobj_from_dict(cls, dict):
         dict = dict.copy()
         section_name = dict.pop('classname')
         obj = new.classobj(section_name, (N,), {})()
