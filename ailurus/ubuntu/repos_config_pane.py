@@ -182,30 +182,28 @@ class ReposConfigPane(gtk.VBox):
             self.__set_parent_toggle(root_node)
         self.treestore_filter.refilter()
     
-    def __apply(self):
+    def __write_changes_to_all_repo_files(self):
         parent = self.treestore.get_iter_first()
         while parent:
-            self.__apply_children(parent)
+            self.__write_changes_to_one_repo_file(parent)
             parent = self.treestore.iter_next(parent)
     
-    def __apply_children(self, parent):
-        fn = self.treestore.get_value(parent, 1)
+    def __write_changes_to_one_repo_file(self, parent):
+        file_name = self.treestore.get_value(parent, 1)
         lines = []
-        child = self.treestore.iter_children(parent)
-        while child:
-            b = self.treestore.get_value(child, 0)
-            text = self.treestore.get_value(child, 1)
-            if b == False:
-                line = '#' + text
-            else:
-                line = text
+        child_iter = self.treestore.iter_children(parent)
+        while child_iter:
+            type = self.treestore.get_value(child_iter, 0)
+            text = self.treestore.get_value(child_iter, 1)
+            if type == False: line = '#' + text
+            else: line = text
             lines.append(line)
-            child = self.treestore.iter_next(child)
-        with TempOwn(fn):
-            with open(fn, 'w') as f:
+            child_iter = self.treestore.iter_next(child_iter)
+        with TempOwn(file_name):
+            with open(file_name, 'w') as f:
                 f.write('\n'.join(lines))
     
-    def __repo_toggled(self, cellrenderertoggle, path, treefilter):
+    def __repo_toggled(self, renderer, path, treefilter):
         run_as_root('true') # do not catch AccessDenied in this function
         fiter = treefilter.get_iter_from_string(path)
         iter = treefilter.convert_iter_to_child_iter(fiter)
@@ -222,7 +220,7 @@ class ReposConfigPane(gtk.VBox):
         else:
             self.__enable_repos(b, iter)
             self.__set_children_toggle(iter, b)
-        self.__apply()
+        self.__write_changes_to_all_repo_files()
     
     def __repo_text_edited(self, cellrenderertext, path, new_text):
         if self.treestore_filter[path][1] != new_text:
@@ -235,7 +233,7 @@ class ReposConfigPane(gtk.VBox):
                     new_text = new_text[1:]
                 self.treestore.set_value(iter, 0, b)
                 self.treestore.set_value(iter, 1, new_text)
-                self.__apply()
+                self.__write_changes_to_all_repo_files()
                 self.treestore_filter.refilter()
             except AccessDeniedError:
                 pass
@@ -269,7 +267,7 @@ class ReposConfigPane(gtk.VBox):
             else:
                 self.treestore.append(iter, [b, text])
             self.add_repos_area.clear_entries()
-            self.__apply()
+            self.__write_changes_to_all_repo_files()
             self.treestore_filter.refilter()
         except AccessDeniedError:
             pass
