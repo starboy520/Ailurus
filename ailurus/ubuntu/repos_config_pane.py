@@ -296,80 +296,80 @@ class AddReposArea(gtk.HBox):
     def __init__(self):
         gtk.HBox.__init__(self, False)
         
-        self.currentBox = None
-        self.officialBox = gtk.HBox(False, 10)
-        self.thirdPartyBox = gtk.HBox(False, 10)
+        self.selected_box = None # self.selected_box is in [self.add_deb_line_box, self.add_PPA_repo_box]
+        self.add_deb_line_box = gtk.HBox(False, 10)
+        self.add_PPA_repo_box = gtk.HBox(False, 10)
         
-        self.officialBox.entry = entry = gtk.Entry()
-        self.officialBox.pack_start(entry)
+        self.add_deb_line_box.entry = entry = gtk.Entry()
+        self.add_deb_line_box.pack_start(entry)
         
-        userlabel = gtk.Label(_('PPA owner:'))
-        self.thirdPartyBox.userentry = userentry = gtk.Entry()
-        ppalabel = gtk.Label(_('PPA name:'))
-        self.thirdPartyBox.ppaentry = ppaentry = gtk.Entry()
-        ppaentry.set_text('ppa')
-        self.thirdPartyBox.pack_start(userlabel, False)
-        self.thirdPartyBox.pack_start(userentry)
-        self.thirdPartyBox.pack_start(ppalabel, False)
-        self.thirdPartyBox.pack_start(ppaentry)
+        ppa_owner_label = gtk.Label(_('PPA owner:'))
+        self.add_PPA_repo_box.ppa_owner_entry = ppa_owner_entry = gtk.Entry()
+        ppa_name_label = gtk.Label(_('PPA name:'))
+        self.add_PPA_repo_box.ppa_name_entry = ppa_name_entry = gtk.Entry()
+        ppa_name_entry.set_text('ppa')
+        self.add_PPA_repo_box.pack_start(ppa_owner_label, False)
+        self.add_PPA_repo_box.pack_start(ppa_owner_entry)
+        self.add_PPA_repo_box.pack_start(ppa_name_label, False)
+        self.add_PPA_repo_box.pack_start(ppa_name_entry)
         
-        self.textBox = gtk.VBox(False, 10)
-        self.textBox.pack_start(self.officialBox)
-        self.textBox.pack_start(self.thirdPartyBox)
+        self.box1 = gtk.VBox(False, 10)
+        self.box1.pack_start(self.add_deb_line_box)
+        self.box1.pack_start(self.add_PPA_repo_box)
         
-        self.rbBox = gtk.VBox(False, 10)
+        self.box2 = gtk.VBox(False, 10)
         def toggled(widget, index):
             self.__changed(index)
-        official_btn = gtk.RadioButton(None, _('Add a line'))
-        official_btn.connect('toggled', toggled, 0)
-        thirdparty_btn = gtk.RadioButton(official_btn, _('Add a PPA line'))
-        thirdparty_btn.connect('toggled', toggled, 1)
-        official_btn.set_active(True)
-        self.rbBox.pack_start(official_btn)
-        self.rbBox.pack_start(thirdparty_btn)
+        radiobutton_deb = gtk.RadioButton(None, _('Add a line'))
+        radiobutton_deb.connect('toggled', toggled, 0)
+        radiobutton_ppa = gtk.RadioButton(radiobutton_deb, _('Add a PPA line'))
+        radiobutton_ppa.connect('toggled', toggled, 1)
+        radiobutton_deb.set_active(True)
+        self.box2.pack_start(radiobutton_deb)
+        self.box2.pack_start(radiobutton_ppa)
         
-        self.pack_start(self.textBox, True)
-        self.pack_end(self.rbBox, False)
+        self.pack_start(self.box1, True)
+        self.pack_start(self.box2, False)
         
         self.__changed(0)
     
     def getRepos(self):
-        if self.currentBox == self.officialBox:
-            return self.officialBox.entry.get_text()
-        elif self.currentBox == self.thirdPartyBox:
-            user = self.thirdPartyBox.userentry.get_text()
+        if self.selected_box == self.add_deb_line_box:
+            return self.add_deb_line_box.entry.get_text()
+        elif self.selected_box == self.add_PPA_repo_box:
+            user = self.add_PPA_repo_box.ppa_owner_entry.get_text()
             if not user:
                 return ''
-            ppa = self.thirdPartyBox.ppaentry.get_text()
+            ppa = self.add_PPA_repo_box.ppa_name_entry.get_text()
             if not ppa:
                 return ''
             text = 'deb http://ppa.launchpad.net/%s/%s/ubuntu %s main' % (user, ppa, self.__get_ubuntu_version())
             return text
         
     def clearContent(self):
-        if self.currentBox == self.officialBox:
+        if self.selected_box == self.add_deb_line_box:
             self.__clear_offciial()
-        elif self.currentBox == self.thirdPartyBox:
+        elif self.selected_box == self.add_PPA_repo_box:
             self.__clear_thirdparty()
     
     def __changed(self, index):
         if index == 0:
-            self.__set_current_box(self.officialBox)
-            self.officialBox.set_sensitive(True)
-            self.thirdPartyBox.set_sensitive(False)
+            self.__set_current_box(self.add_deb_line_box)
+            self.add_deb_line_box.set_sensitive(True)
+            self.add_PPA_repo_box.set_sensitive(False)
         elif index == 1:
-            self.__set_current_box(self.thirdPartyBox)
-            self.thirdPartyBox.set_sensitive(True)
-            self.officialBox.set_sensitive(False)
+            self.__set_current_box(self.add_PPA_repo_box)
+            self.add_PPA_repo_box.set_sensitive(True)
+            self.add_deb_line_box.set_sensitive(False)
     
     def __set_current_box(self, box):
-        self.currentBox = box
+        self.selected_box = box
     
     def __clear_offciial(self):
-        self.officialBox.entry.set_text('')
+        self.add_deb_line_box.entry.set_text('')
     
     def __clear_thirdparty(self):
-        self.thirdPartyBox.userentry.set_text('')
+        self.add_PPA_repo_box.ppa_owner_entry.set_text('')
     
     def __get_ubuntu_version(self):
         return Config.get_Ubuntu_version()
