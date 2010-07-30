@@ -32,7 +32,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         for section_name in self.sections():
             try:
                 dict = {}
-                if not self.custom:
+                if not self.is_user_custom:
                     assert hasattr(strings, section_name+'_0'), section_name
                     assert hasattr(strings, section_name+'_1'), section_name
                     dict['__doc__'] = getattr(strings, section_name + '_0')
@@ -51,7 +51,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                         elif len(list)==3: dict[option_name] = TRI_LICENSE(list[0],list[1],list[2])
                     else:
                         dict[option_name] = value
-                if not self.custom:
+                if not self.is_user_custom:
                     if 'pkgs' not in dict.keys(): continue
                 ret[section_name] = dict
 #                obj = new.classobj(section_name, (N,), {})()
@@ -75,7 +75,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             print_traceback()
      
     def removeAppObjByName(self,classname):
-        if not self.custom:
+        if not self.is_user_custom:
             return
         if classname in self.sections():
             self.remove_section(classname)
@@ -83,7 +83,7 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         
     def addAppObjFromDict(self,dict):
         objdict = dict.copy()
-        if not self.custom:
+        if not self.is_user_custom:
             return
         classname = objdict.pop('classname')
         if not classname in self.sections():
@@ -96,20 +96,20 @@ class AppConfigParser(ConfigParser.RawConfigParser):
         assert isinstance(filepath,str)
         assert isinstance(is_user_custom, bool)
 
-        self.custom = is_user_custom
+        self.is_user_custom = is_user_custom
 
         ConfigParser.RawConfigParser.__init__(self)
         self.optionxform = str # case sensitive in option_name
         self.filepath = filepath
         if filepath.endswith('native_apps'):
-            self.custom = False
+            self.is_user_custom = False
         else:
-            self.custom = True
+            self.is_user_custom = True
         
         if os.path.exists(filepath):
             self.read(filepath)
         else:
-            if self.custom:
+            if self.is_user_custom:
                 return
             else:
                 raise Exception('File %s does not exist' % filepath)
@@ -146,7 +146,7 @@ class AppObjs:
     def save_installed_items_to_file(cls, save_to_this_path):
         with open(save_to_this_path, 'w') as f:
             for obj in cls.appobjs:
-                if obj.cache_installed and not obj.__class__.__name__.startswith('C_'): #custom package's class name startswith C_  such as C_12
+                if obj.cache_installed and not obj.__class__.__name__.startswith('C_'): #is_user_custom package's class name startswith C_  such as C_12
                     class_name = obj.__class__.__name__
                     f.write(class_name + '\n')
     @classmethod
