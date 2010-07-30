@@ -92,8 +92,11 @@ class AppConfigParser(ConfigParser.RawConfigParser):
             self.set(classname, str(key), str(objdict[key]))
         self.save()
 
-    def __init__(self, filepath):
+    def __init__(self, filepath, is_user_custom):
         assert isinstance(filepath,str)
+        assert isinstance(is_user_custom, bool)
+
+        self.custom = is_user_custom
 
         ConfigParser.RawConfigParser.__init__(self)
         self.optionxform = str # case sensitive in option_name
@@ -112,8 +115,8 @@ class AppConfigParser(ConfigParser.RawConfigParser):
                 raise Exception('File %s does not exist' % filepath)
 
     
-NATIVE_APPS = AppConfigParser(A+'/native_apps')
-CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps')
+NATIVE_APPS = AppConfigParser(A+'/native_apps', is_user_custom=False)
+CUSTOM_APPS = AppConfigParser(Config.get_config_dir() + 'custom_apps', is_user_custom=True)
 
 class AppObjs:
     appobjs = []
