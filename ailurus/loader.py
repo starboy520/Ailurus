@@ -414,11 +414,14 @@ def load_cure_objs():
     return objs
 
 import common
-if GNOME: import gnome as desktop
-else: desktop = None
+try:
+    desktop = __import__(DESKTOP)
+except (ImportError, ValueError):
+    print_traceback()
+    desktop = None
 try:
     distribution = __import__(DISTRIBUTION)
-except ImportError:
+except (ImportError, ValueError):
     print_traceback()
     distribution = None
 

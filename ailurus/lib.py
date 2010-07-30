@@ -1945,3 +1945,11 @@ else:
     GNOME = Config.is_GNOME()
     KDE = Config.is_KDE()
     XFCE = Config.is_XFCE()
+if GNOME:
+    DESKTOP = 'gnome'
+elif KDE:
+    DESKTOP = 'kde'
+elif XFCE:
+    DESKTOP = 'xfce'
+else:
+    DESKTOP = ''
