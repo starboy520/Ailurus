@@ -39,12 +39,13 @@ ailurus/main.py
 ailurus/publickey/__init__.py
 ailurus/show_a_linux_skill_bubble.py
 ailurus/strings.py
+ailurus/support/add_custom_app.py
 ailurus/support/AptAuth.py
 ailurus/support/checkupdate.py
-ailurus/support/clientlib.py
 ailurus/support/dump_rpm_existing_new.py
 ailurus/support/dump_rpm_existing.py
 ailurus/support/dump_rpm_installed.py
+ailurus/support/gae.py
 ailurus/support/__init__.py
 ailurus/support/keygrabber.py
 ailurus/support/multidragview.py
