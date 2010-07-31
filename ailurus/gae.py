@@ -1,9 +1,24 @@
+from __future__ import with_statement
 from lib import *
 from libu import *
-import urllib, urllib2
+import urllib
 import gtk, pango
 
 class ProposeLinuxSkillWindow(gtk.Window):
+    def save(self, linuxskill):
+        with open(Config.config_dir + 'proposed_linuxskill', 'a') as f:
+            f.write(linuxskill.strip())
+            f.write('\n'
+                    '#################'
+                    '\n')
+    
+    def read(self):
+        try:
+            with open(Config.config_dir + 'proposed_linuxskill') as f:
+                return f.read()
+        except:
+            return ''
+    
     def show_contact(self):
         contact = Config.get_contact()
         self.contact_entry.set_text(contact)
@@ -23,7 +38,6 @@ class ProposeLinuxSkillWindow(gtk.Window):
                         'Would you please email Linux skill to Ailurus developers? Thank you!')
             dialog = gtk.MessageDialog(buttons = gtk.BUTTONS_OK,
                                        message_format = message)
-            import urllib
             dict = {'subject': 'Linux_skill', 'body': linux_skill}
             url = 'mailto:homer.xing@gmail.com?' + urllib.urlencode(dict)
             email_button = url_button(url, _('Click here'))
@@ -39,6 +53,7 @@ class ProposeLinuxSkillWindow(gtk.Window):
                                                           'Thank you very much!'))
             dialog.run()
             dialog.destroy()
+            self.save(linux_skill)
             self.destroy()
 
         if not contact: contact = _('Anonymous')
@@ -61,9 +76,10 @@ class ProposeLinuxSkillWindow(gtk.Window):
         label2.set_alignment(0, 0.5)
         
         self.content = content = gtk.TextView()
+        content.set_wrap_mode(gtk.WRAP_WORD)
         content.modify_font(pango.FontDescription('Georgia'))
         content_scroll = gtk.ScrolledWindow()
-        content_scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        content_scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         content_scroll.set_shadow_type(gtk.SHADOW_IN)
         content_scroll.add(content)
 
@@ -75,12 +91,28 @@ class ProposeLinuxSkillWindow(gtk.Window):
         button_box.pack_end(cancel_button, False)
         button_box.pack_end(submit_button, False)
 
+        proposed = self.read()
+        if not proposed:
+            proposed = _('(Empty)')
+        textview_proposed = gtk.TextView()
+        textview_proposed.set_wrap_mode(gtk.WRAP_WORD)
+        textview_proposed.modify_font(pango.FontDescription('Georgia'))
+        textview_proposed.get_buffer().set_text(proposed)
+        scroll_proposed = gtk.ScrolledWindow()
+        scroll_proposed.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll_proposed.set_shadow_type(gtk.SHADOW_IN)
+        scroll_proposed.add(textview_proposed)
+        expander = gtk.Expander(_('Your proposed Linux skills'))
+        expander.set_expanded(False)
+        expander.add(scroll_proposed)
+
         vbox = gtk.VBox(False, 5)
         vbox.pack_start(label1, False)
         vbox.pack_start(contact_box, False)
         vbox.pack_start(label2, False)
         vbox.pack_start(content_scroll)
         vbox.pack_start(button_box, False)
+        vbox.pack_start(expander, False)
         
         gtk.Window.__init__(self, gtk.WINDOW_TOPLEVEL)
         self.set_position(gtk.WIN_POS_CENTER)
