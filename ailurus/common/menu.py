@@ -281,7 +281,7 @@ def __others():
         ProposeSuggestionWindow()
     help_propose_suggestion.connect('activate', propose_suggestion)
 
-    help_report_bug = image_file_menuitem(_('Report bugs'), D+'umut_icons/m_propose_suggestion.png', 16)
+    help_report_bug = image_file_menuitem(_('Report bugs'), D+'umut_icons/bug.png', 16)
     help_report_bug.connect('activate', 
         lambda w: report_bug() )
     
