@@ -4,7 +4,7 @@
 %endif
 
 Name:			ailurus
-Version:		10.07.7
+Version:		10.07.8
 Release:		1%{?dist}
 Summary:		A simple application installer and GNOME tweaker
 Group:			Applications/System
@@ -29,7 +29,7 @@ Features:
 * Change GNOME settings 
 
 %prep
-%setup -q -n %{name}-%{version}.orig
+%setup -q -n %{name}-%{version}
 
 %build
 CFLAGS="$RPM_OPT_FLAGS" %{__python} setup.py build
