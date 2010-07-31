@@ -1835,6 +1835,39 @@ class TimeStat:
         cls.__begin_time.clear()
         cls.result.clear()
 
+def add_linuxskill(linux_skill, how_to_contact_the_submitter=None):
+    assert isinstance(linux_skill, (str, unicode)) and linux_skill
+    assert how_to_contact_the_submitter is None or isinstance(how_to_contact_the_submitter, (str, unicode))
+
+    import httplib, urllib
+    params = {'linux_skill': linux_skill}
+    if how_to_contact_the_submitter:
+        params['how_to_contact_the_submitter'] = how_to_contact_the_submitter
+    params = urllib.urlencode(params)
+    headers = {'Content-type': 'application/x-www-form-urlencoded',
+               'Accept': 'text/plain'}
+    connection = httplib.HTTPConnection('we-like-ailurus.appspot.com')
+    connection.request('POST', '/add_linuxskill', params)
+    response = connection.getresponse()
+    assert response.status == 200, response.status
+    connection.close()
+
+def add_suggestion(suggestion, how_to_contact_the_submitter=None):
+    assert isinstance(suggestion, (str, unicode)) and suggestion
+    assert how_to_contact_the_submitter is None or isinstance(how_to_contact_the_submitter, (str, unicode))
+    
+    import httplib, urllib
+    params = {'suggestion': suggestion}
+    if how_to_contact_the_submitter:
+        params['how_to_contact_the_submitter'] = how_to_contact_the_submitter
+    headers = {'Content-type': 'application/x-www-form-urlencoded',
+               'Accept': 'text/plain'}
+    connection = httplib.HTTPConnection('we-like-ailurus.appspot.com')
+    connection.request('POST', '/add_suggestion', params)
+    response = connection.getresponse()
+    assert response.status == 200, response.status
+    connection.close()
+
 def get_ailurus_version():
     import os
     path = A+'/version'
