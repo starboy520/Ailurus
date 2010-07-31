@@ -115,7 +115,7 @@ class SubmitWindow(gtk.Window):
         self.set_size_request(300, 400)
         
         self.nameentry = nameentry = gtk.Entry()
-        nameentry.set_text(Config.get_username_of_suggestion_window())
+        nameentry.set_text(Config.get_user_name_in_suggestion_window())
 
         namebox = gtk.HBox(False, 5)
         namebox.pack_start(gtk.Label(_('Your name:')), False)

@@ -125,8 +125,11 @@ class Config:
     @classmethod
     def save(cls):
         cls.make_config_dir()
-        with open(cls.get_config_dir() + 'conf' , 'w') as f:
-            cls.parser.write(f)
+        try:
+            with open(cls.config_dir + 'conf' , 'w') as f:
+                cls.parser.write(f)
+        except:
+            print_traceback()
     @classmethod
     def set_string(cls, key, value):
         assert isinstance(key, str) and key
@@ -196,11 +199,12 @@ class Config:
         try: return cls.get_string('login_window_background')
         except: return None # please do not return ''. 
     @classmethod
-    def set_username_of_suggestion_window(cls, value):
-        cls.set_string('username_of_suggestion_window', value)
+    def set_contact(cls, value):
+        cls.set_string('contact', value)
     @classmethod
-    def get_username_of_suggestion_window(cls):
-        try: return cls.get_string('username_of_suggestion_window')
+    def get_contact(cls):
+        try:
+            return cls.get_string('contact')
         except:
             import os
             return os.environ['USER']

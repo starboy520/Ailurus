@@ -578,8 +578,6 @@ with TimeStat(_('start up')):
     detect_proxy_env()
     check_required_packages()
     check_dbus_daemon_status()
-    #from support.clientlib import try_send_delayed_data
-    #try_send_delayed_data()
     
     while gtk.events_pending(): gtk.main_iteration()
     main_view = MainView()
