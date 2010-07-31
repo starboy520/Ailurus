@@ -129,7 +129,7 @@ def left_label(text):
     return box
 
 def url_button(url):
-    import gtk
+    import gtk, pango
     def func(w, url): open_web_page(url)
     def enter(w, e): 
         try: w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))

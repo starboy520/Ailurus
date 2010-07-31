@@ -1301,7 +1301,31 @@ class PingThread(threading.Thread):
 def open_web_page(page):
     is_string_not_empty(page)
     notify( _('Opening web page'), page)
-    KillWhenExit.add('xdg-open %s'%page)
+    KillWhenExit.add('xdg-open "%s"'%page)
+
+def url_button(url, text=None): # put here because of open_web_page :(
+    if text == None: text = url
+    import gtk, pango
+    def func(w, url): open_web_page(url)
+    def enter(w, e): 
+        try: w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.HAND2))
+        except AttributeError: pass
+    def leave(w, e): 
+        try: w.get_window().set_cursor(gtk.gdk.Cursor(gtk.gdk.LEFT_PTR))
+        except AttributeError: pass
+    label = gtk.Label()
+    label.set_markup("<span color='blue'><u>%s</u></span>" % text)
+    font = pango.FontDescription('Georgia')
+    label.modify_font(font)
+    button = gtk.Button()
+    button.connect('clicked', func, url)
+    button.connect('enter-notify-event', enter)
+    button.connect('leave-notify-event', leave)
+    button.set_relief(gtk.RELIEF_NONE)
+    button.add(label)
+    align = gtk.Alignment(0, 0.5)
+    align.add(button)
+    return align
 
 def report_bug(*w):
     page = 'http://code.google.com/p/ailurus/issues/entry'

@@ -19,14 +19,27 @@ class ProposeLinuxSkillWindow(gtk.Window):
         try:
             add_linuxskill(linux_skill, contact)
         except:
-            pass # TODO: display error dialog
-        else:
-            # thank submitter
+            message = _('Cannot upload Linux skill.\n'
+                        'Would you please email Linux skill to Ailurus developers? Thank you!')
             dialog = gtk.MessageDialog(buttons = gtk.BUTTONS_OK,
-                                       message_format = _('Thank you very much!'))
+                                       message_format = message)
+            import urllib
+            dict = {'subject': 'Linux_skill', 'body': linux_skill}
+            url = 'mailto:homer.xing@gmail.com?' + urllib.urlencode(dict)
+            email_button = url_button(url, _('Click here'))
+            align = gtk.Alignment(0.5, 0.5)
+            align.add(email_button)
+            dialog.vbox.pack_start(align, False)
+            dialog.show_all()
             dialog.run()
             dialog.destroy()
-        self.destroy()
+        else:
+            dialog = gtk.MessageDialog(buttons = gtk.BUTTONS_OK,
+                                       message_format = _('Successfully uploaded Linux skill.\n'
+                                                          'Thank you very much!'))
+            dialog.run()
+            dialog.destroy()
+            self.destroy()
 
         if not contact: contact = _('Anonymous')
         Config.set_contact(contact)
