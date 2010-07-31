@@ -93,8 +93,8 @@ class TipOfTheDay(gtk.Window):
         previous_tip.connect ( 'clicked', self.__previous_tip, content )
         
         def show_submit_dialog(*w):
-            from support.clientlib import SkillsSubmit
-            SkillsSubmit()
+            from gae import ProposeLinuxSkillWindow
+            ProposeLinuxSkillWindow()
         submit_skills = image_stock_button(gtk.STOCK_GO_UP, _('Submit Linux Skills'))
         submit_skills.connect('clicked', show_submit_dialog)
         
