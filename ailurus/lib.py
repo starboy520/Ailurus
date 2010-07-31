@@ -1888,6 +1888,7 @@ def add_suggestion(suggestion, how_to_contact_the_submitter=None):
     params = {'suggestion': suggestion}
     if how_to_contact_the_submitter:
         params['how_to_contact_the_submitter'] = how_to_contact_the_submitter
+    params = urllib.urlencode(params)
     headers = {'Content-type': 'application/x-www-form-urlencoded',
                'Accept': 'text/plain'}
     connection = httplib.HTTPConnection('we-like-ailurus.appspot.com')
