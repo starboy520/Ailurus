@@ -302,7 +302,7 @@ def __others():
     statistics.connect('activate', lambda *w: show_statistics())
     
     return [ changelog, help_contribute, help_blog, help_update, 
-#             help_propose_suggestion, 
+             help_propose_suggestion, 
              help_report_bug, help_translate, special_thank, about, statistics, ]
    
 def get_study_linux_menu():
