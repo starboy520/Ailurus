@@ -5,7 +5,7 @@
 
 Name:			ailurus
 Version:		10.07.8
-Release:		1%{?dist}
+Release:		2%{?dist}
 Summary:		A simple application installer and GNOME tweaker
 Group:			Applications/System
 License:		GPLv2+
@@ -42,6 +42,7 @@ desktop-file-install \
 	${RPM_BUILD_ROOT}%{_datadir}/applications/%{name}.desktop
 %find_lang %{name} --with-gnome
 rm -f $RPM_BUILD_ROOT%{_datadir}/PolicyKit/policy/cn.ailurus.policy
+rm -f $RPM_BUILD_ROOT%{_datadir}/%{name}/ChangeLog
 
 
 %clean
@@ -60,7 +61,8 @@ fi
 gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 
 %files -f %{name}.lang
-%defattr(-,root,root)
+%defattr(-,root,root,-)
+%doc AUTHORS COPYING ChangeLog README 
 %{_bindir}/ailurus
 %{_datadir}/applications/ailurus.desktop
 %{_datadir}/ailurus/
@@ -73,6 +75,13 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
+* Sun Aug 1 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.8-2
+- Remove changelong in /usr/share/ailurus
+- Add some documents
+
+* Sat Jul 31 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.8-1
+- Upstream to 10.07.8
+
 * Wed Jul 28 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.7-1
 - Upstream to 10.07.7
 
