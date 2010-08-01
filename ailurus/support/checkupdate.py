@@ -230,6 +230,8 @@ def show_special_thank_dialog():
     dialog.destroy()
 
 def show_changelog():
+    # Not used, since ChangeLog should not be put in '/usr/share/ailurus/'
+    # Shall we download ChangeLog from github?
     with open('/usr/share/ailurus/ChangeLog') as f:
         lines = f.readlines()
     import gtk, pango, re

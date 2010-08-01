@@ -45,7 +45,7 @@ Features:
         ('share/man/man1/', ['ailurus.1']),
         ('share/applications/', ['ailurus.desktop']),
         
-        ('share/ailurus/', ['ChangeLog']),
+#        ('share/ailurus/', ['ChangeLog']),
         ('share/dbus-1/system-services/', ['support/dbus/cn.ailurus.service']),
         ('/etc/dbus-1/system.d/', ['support/dbus/cn.ailurus.conf']),
         ('share/PolicyKit/policy/', ['support/policykit0/cn.ailurus.policy']),
