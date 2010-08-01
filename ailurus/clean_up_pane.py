@@ -305,6 +305,10 @@ class UbuntuCleanKernelBox(gtk.HBox):
             except:
                 print_traceback()
         self.refresh()
+
+    def toggle_data_func(self, column, cell, model, iter):
+        keep = model.get_value(iter, 0)
+        cell.set_property('active', not keep)
     
     def __init__(self):
         self.liststore = gtk.ListStore(bool, str, long) #keep?, version, disk space cost
@@ -312,7 +316,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         render_keep.connect('toggled', self.toggled)
         column_keep = gtk.TreeViewColumn()
         column_keep.pack_start(render_keep, False)
-        column_keep.add_attribute(render_keep, 'active', 0)
+        column_keep.set_cell_data_func(render_keep, self.toggle_data_func)
         render_text = gtk.CellRendererText()
         column_text = gtk.TreeViewColumn(_('Unused Linux kernels'))
         column_text.pack_start(render_text, True)
