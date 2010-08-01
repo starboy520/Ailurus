@@ -1909,6 +1909,15 @@ def add_suggestion(suggestion, how_to_contact_the_submitter=None):
     assert response.status == 200, response.status
     connection.close()
 
+def debian_installation_command(package_names):
+    return 'apt-get install ' + package_names
+
+def fedora_installation_command(package_names):
+    return 'yum install ' + package_names
+
+def archlinux_installation_command(package_names):
+    return 'pacman -S ' + package_names
+
 def get_ailurus_version():
     import os
     path = A+'/version'
@@ -1970,39 +1979,47 @@ if UBUNTU:
     DISTRIBUTION = 'ubuntu'
     VERSION = Config.get_Ubuntu_version()
     BACKEND = APT
+    installation_command_backend = debian_installation_command
 elif MINT:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Mint_version() # VERSION is in ['5', '6', '7', '8', '9', '10']
     VERSION = ['hardy', 'intrepid', 'jaunty', 'karmic', 'lucid', 'maverick'][int(VERSION)-5]
     BACKEND = APT
+    installation_command_backend = debian_installation_command
 elif YLMF:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_YLMF_version()
     BACKEND = APT
+    installation_command_backend = debian_installation_command
 elif DEEPIN:
     DISTRIBUTION = 'ubuntu'
     UBUNTU_DERIV = True
     VERSION = Config.get_Deepin_version()
     BACKEND = APT
+    installation_command_backend = debian_installation_command
 elif FEDORA:
     DISTRIBUTION = 'fedora'
     VERSION = Config.get_Fedora_version()
     BACKEND = RPM
+    installation_command_backend = fedora_installation_command
 elif ARCHLINUX:
     DISTRIBUTION = 'archlinux'
     VERSION = '' # ArchLinux has no version -_-b
     BACKEND = PACKMAN
+    installation_command_backend = archlinux_installation_command
 elif DEBIAN:
     DISTRIBUTION = 'debian'
     VERSION = Config.get_Debian_version()
     BACKEND = APT
+    installation_command_backend = debian_installation_command
 else:
     # This Linux distribution is not supported. :(
     DISTRIBUTION = ''
     VERSION = ''
     BACKEND = None
+    installation_command_backend = None
 
 GNOME = False
 KDE = False

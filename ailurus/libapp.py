@@ -247,15 +247,6 @@ def is_package_names_string(string):
         if pkg[0]=='-':
             raise ValueError, pkg
 
-def debian_installation_command(package_names):
-    return 'apt-get install ' + package_names
-
-def fedora_installation_command(package_names):
-    return 'yum install ' + package_names
-
-def archlinux_installation_command(package_names):
-    return 'pacman -S ' + package_names
-
 def ppa_to_deb_conf(ppa_string):
     'return deb conf string from ppa string'
     ppa_owner = ppa_string.split("/")[0]
@@ -357,41 +348,31 @@ class N(I):
         if hasattr(self, 'pkgs'):
             is_package_names_string(self.pkgs)
     def install(self):
-        self.backend.install(*self.pkgs.split())
+        BACKEND.install(*self.pkgs.split())
     def installed(self):
         for p in self.pkgs.split():
-            if not self.backend.installed(p): return False
+            if not BACKEND.installed(p): return False
         return True
     def remove(self):
-        self.backend.remove(*self.pkgs.split())
+        BACKEND.remove(*self.pkgs.split())
     def get_reason(self, f):
         all_pkgs = self.pkgs.split()
         if len(all_pkgs) > 1:
-            not_installed = [p for p in all_pkgs if not self.backend.installed(p)]
+            not_installed = [p for p in all_pkgs if not BACKEND.installed(p)]
             if len(not_installed) != len(all_pkgs):
                 print >>f, _('Because the packages "%s" are not installed.')%' '.join(not_installed),
     def fill(self):
-        self.how_to_install = self.installation_command_backend(self.pkgs)
+        self.how_to_install = installation_command_backend(self.pkgs)
     def visible(self):
         if not hasattr(self, 'pkgs'): 
             #print self.__doc__, ' is hidden because no package name.'
             return False # It is not supported for this Linux distribution.
         # package names change from time to time. we hide an item if package_name does not exists. 
         for pkg in self.pkgs.split():
-            if not self.backend.exist(pkg):
+            if not BACKEND.exist(pkg):
                 print self.__doc__, ' is hidden because package name changed.'
                 return False
         return True
-
-    if FEDORA:
-        backend = RPM
-        installation_command_backend = staticmethod(fedora_installation_command)
-    elif UBUNTU or UBUNTU_DERIV:
-        backend = APT
-        installation_command_backend = staticmethod(debian_installation_command)
-    elif ARCHLINUX:
-        backend = PACMAN
-        installation_command_backend = staticmethod(archlinux_installation_command)
 
 class _path_lists(I):
     def self_check(self):
