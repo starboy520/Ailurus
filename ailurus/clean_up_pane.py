@@ -35,7 +35,7 @@ class CleanUpPane(gtk.VBox):
         self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
-        if UBUNTU or UBUNTU_DERIV:
+        if DEBIAN or UBUNTU or UBUNTU_DERIV:
             self.pack_start(self.clean_apt_cache_button(), False)
             self.pack_start(Ubuntu_dedicated_clean_up_box())
         elif FEDORA:

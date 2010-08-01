@@ -888,9 +888,10 @@ class APT:
         cls.refresh_cache()
         ret = []
         for pkg in cls.apt_cache:
-            if hasattr(pkg, 'isAutoRemovable'): auto_removable = pkg.isAutoRemovable
+            if hasattr(pkg, 'is_auto_removable'): auto_removable = pkg.is_auto_removable
+            elif hasattr(pkg, 'isAutoRemovable'): auto_removable = pkg.isAutoRemovable # deprecated
             elif pkg.isInstalled and pkg._depcache.IsGarbage(pkg._pkg): auto_removable = True
-            else: auto_removable = True
+            else: auto_removable = False
             
             if auto_removable:
                 ret.append([pkg.name, long(pkg.installedSize), pkg.summary.replace('\n', ' ')])
