@@ -246,27 +246,28 @@ def __textbox_context_menu_setting():
     table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Text-boxes context menu'), ['menu'])
 
-def __gnome_splash_setting():
-    def changed(w, new_path):
-        g.set_string('/apps/gnome-session/options/splash_image', new_path)
-
-    e = GConfCheckButton(_('Show login splash image: '),
-     '/apps/gnome-session/options/show_splash_screen',
-     _('If its value is true, a splash image is displayed after you log in to GNOME.'))
-    
-    import gconf
-    g = gconf.client_get_default()
-    image_path = g.get_string('/apps/gnome-session/options/splash_image')
-    o = ImageChooser('/usr/share/pixmaps/', 96, 96,
-                     _('GConf key: ') + '/apps/gnome-session/options/splash_image')
-    try: o.display_image(image_path)
-    except: o.display_image(None) # show blank
-    o.connect('changed', changed)
-
-    hbox = gtk.HBox(False)
-    hbox.pack_start(e, False)
-    hbox.pack_start(o, False)
-    return Setting(hbox, _('GNOME splash image'), ['session'])
+#def __gnome_splash_setting():
+#    # not used
+#    def changed(w, new_path):
+#        g.set_string('/apps/gnome-session/options/splash_image', new_path)
+#
+#    e = GConfCheckButton(_('Show login splash image: '),
+#     '/apps/gnome-session/options/show_splash_screen',
+#     _('If its value is true, a splash image is displayed after you log in to GNOME.'))
+#    
+#    import gconf
+#    g = gconf.client_get_default()
+#    image_path = g.get_string('/apps/gnome-session/options/splash_image')
+#    o = ImageChooser('/usr/share/pixmaps/', 96, 96,
+#                     _('GConf key: ') + '/apps/gnome-session/options/splash_image')
+#    try: o.display_image(image_path)
+#    except: o.display_image(None) # show blank
+#    o.connect('changed', changed)
+#
+#    hbox = gtk.HBox(False)
+#    hbox.pack_start(e, False)
+#    hbox.pack_start(o, False)
+#    return Setting(hbox, _('GNOME splash image'), ['session'])
 
 def __restriction_on_current_user():
     table = gtk.Table()
@@ -620,7 +621,7 @@ def get():
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
             __gnome_panel_setting,
-            __gnome_splash_setting,
+#            __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
             __disable_terminal_beep,
