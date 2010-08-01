@@ -900,7 +900,11 @@ class APT:
         cls.refresh_cache()
         if not package_name in cls.apt_cache:
             return False
-        return cls.apt_cache[package_name].isInstalled
+        p = cls.apt_cache[package_name]
+        if hasattr(p, 'is_installed'):
+            return p.is_installed # recommended attribute 
+        else:
+            return p.isInstalled # deprecated attribute
     @classmethod
     def exist(cls, package_name):
         cls.refresh_cache()
