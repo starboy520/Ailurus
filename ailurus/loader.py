@@ -246,7 +246,7 @@ class AppObjs:
             try:
                 module = __import__(basename)
                 cls.extensions.append(module)
-                print '[+] Extension OK:', basename
+                print '[v] Extension OK:', basename
             except:
                 cls.failed_extensions.append(os.path.abspath(py))
                 print '[x] Extension FAIL:', basename
