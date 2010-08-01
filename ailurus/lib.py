@@ -374,6 +374,15 @@ class Config:
         import os
         return os.path.exists('/etc/arch-release')
     @classmethod
+    def is_Debian(cls):
+        import platform
+        return platform.dist()[0] == 'debian'
+    @classmethod
+    def get_Debian_version(cls):
+        'return "5.*"'
+        import platform
+        return platform.dist()[1]
+    @classmethod
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
         try:
@@ -1951,6 +1960,7 @@ YLMF = Config.is_YLMF()
 DEEPIN = Config.is_Deepin()
 FEDORA = Config.is_Fedora()
 ARCHLINUX = Config.is_ArchLinux()
+DEBIAN = Config.is_Debian()
 if UBUNTU:
     DISTRIBUTION = 'ubuntu'
     VERSION = Config.get_Ubuntu_version()
@@ -1979,6 +1989,10 @@ elif ARCHLINUX:
     DISTRIBUTION = 'archlinux'
     VERSION = '' # ArchLinux has no version -_-b
     BACKEND = PACKMAN
+elif DEBIAN:
+    DISTRIBUTION = 'debian'
+    VERSION = Config.get_Debian_version()
+    BACKEND = APT
 else:
     # This Linux distribution is not supported. :(
     DISTRIBUTION = ''
