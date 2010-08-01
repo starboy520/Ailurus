@@ -1947,8 +1947,10 @@ atexit.register(KillWhenExit.kill_all)
 atexit.register(drop_priviledge)
 try:
     firefox.init()
-    atexit.register(firefox.save_user_prefs)
-except: print_traceback()
+    if firefox.support:
+        atexit.register(firefox.save_user_prefs)
+except:
+    print_traceback()
 
 try:
     import pynotify
