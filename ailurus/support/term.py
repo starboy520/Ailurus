@@ -57,6 +57,14 @@ class Window:
             #os._exit(1)
         else:
             os._exit(0)
+    def populate_path(self, env):
+        try: path = env['PATH'].split(':')
+        except KeyError: path = []
+        for item in ['/usr/local/sbin', '/usr/local/bin', '/usr/sbin', '/usr/bin', '/sbin', '/bin']:
+            if item not in path:
+                path.append(item)
+        path = ':'.join(path)
+        env['PATH'] = path
     def run(self, argv): # please do not launch me as a thread
         self.window.set_title(_('Ailurus terminal') + ': ' + ' '.join(argv))
         assert isinstance(argv, list)
@@ -64,6 +72,7 @@ class Window:
         # This idea comes from jhbuild/frontends/gtkui.py
         # I wish to thank Project jhbuild!
         env = os.environ.copy()
+        self.populate_path(env) # because PATH of normal user does not contain 'sbin' on Debian
         if Config.get_use_proxy():
             try: 
                 proxy_string = get_proxy_string()
