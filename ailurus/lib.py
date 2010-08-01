@@ -1356,6 +1356,9 @@ class firefox:
     def init(cls):
         'may raise exception'
         ini_file = os.path.expanduser('~/.mozilla/firefox/profiles.ini')
+        if not os.path.exists(ini_file):
+            print '[x] Firefox profiles.ini missing'
+            return
         with open(ini_file) as f:
             lines = f.readlines()
         for i, line in enumerate(lines):
