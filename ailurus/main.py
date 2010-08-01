@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 #coding: utf8
 #
 # Ailurus - a simple application installer and GNOME tweaker
