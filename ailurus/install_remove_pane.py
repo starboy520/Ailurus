@@ -874,6 +874,7 @@ class InstallRemovePane(gtk.VBox):
     def notify_sync(self):
         from download_icons import icons_pack_version
         if icons_pack_version > Config.get_last_synced_data_version():
+            Config.set_last_synced_data_version(icons_pack_version) # do not ask again and again.
             # TODO: display main_view window before dialog
             dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                        message_format=
