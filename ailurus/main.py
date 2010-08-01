@@ -77,45 +77,54 @@ def with_same_content(file1, file2):
     return content1 == content2
 
 def check_required_packages():
+    debian_missing = []
     ubuntu_missing = []
     fedora_missing = []
     archlinux_missing = []
 
     try: import pynotify
     except: 
+        debian_missing.append('python-notify')
         ubuntu_missing.append('python-notify')
         fedora_missing.append('notify-python')
         archlinux_missing.append('python-notify')
     try: import vte
     except: 
+        debian_missing.append('python-vte')
         ubuntu_missing.append('python-vte')
         fedora_missing.append('vte')
         archlinux_missing.append('vte')
     try: import apt
     except: 
+        debian_missing.append('python-apt')
         ubuntu_missing.append('python-apt')
     try: import rpm
     except: 
         fedora_missing.append('rpm-python')
     try: import dbus
     except: 
+        debian_missing.append('python-dbus')
         ubuntu_missing.append('python-dbus')
         fedora_missing.append('dbus-python')
         archlinux_missing.append('dbus-python')
     try: import gnomekeyring
     except:
+        debian_missing.append('python-gnomekeyring')
         ubuntu_missing.append('python-gnomekeyring')
         fedora_missing.append('gnome-python2-gnomekeyring')
         archlinux_missing.append('python-gnomekeyring') # I am not sure. python-gnomekeyring is on AUR. get nothing from pacman -Ss python*keyring 
     if not os.path.exists('/usr/bin/unzip'):
+        debian_missing.append('unzip')
         ubuntu_missing.append('unzip')
         fedora_missing.append('unzip')
         archlinux_missing.append('unzip')
     if not os.path.exists('/usr/bin/wget'):
+        debian_missing.append('wget')
         ubuntu_missing.append('wget')
         fedora_missing.append('wget')
         archlinux_missing.append('wget')
     if not os.path.exists('/usr/bin/gdebi-gtk'):
+        debian_missing.append('gdebi')
         ubuntu_missing.append('gdebi')
         
     try: # detect policykit version 0.9.x
@@ -137,12 +146,18 @@ def check_required_packages():
     except:
         has_policykit_1 = False
     if not has_policykit_0 and not has_policykit_1:
+        debian_missing.append('policykit-1-gnome (or polkit-kde-1)')
         ubuntu_missing.append('policykit-gnome (or policykit-kde or policykit-1-gnome)') # FIXME: It is not good to list all these packages. Should be more precise.
         # FIXME: policykit-1-kde does not exist in Ubuntu.
         fedora_missing.append('polkit-gnome (or polkit-kde)')
         archlinux_missing.append('polkit-gnome (or polkit-kde)')
 
-    error = ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing) or (FEDORA and fedora_missing) or (ARCHLINUX and archlinux_missing)
+    error = (
+             (DEBIAN and debian_missing)
+             or ((UBUNTU or UBUNTU_DERIV) and ubuntu_missing)
+             or (FEDORA and fedora_missing)
+             or (ARCHLINUX and archlinux_missing)
+            )
     if error:
         import StringIO
         message = StringIO.StringIO()
@@ -150,11 +165,13 @@ def check_required_packages():
         print >>message, ''
         print >>message, _('Please install these packages:')
         print >>message, ''
-        if UBUNTU or UBUNTU_DERIV:
+        if DEBIAN:
+            print >>message, '<span color="blue">', ', '.join(debian_missing), '</span>'
+        elif UBUNTU or UBUNTU_DERIV:
             print >>message, '<span color="blue">', ', '.join(ubuntu_missing), '</span>'
-        if FEDORA:
+        elif FEDORA:
             print >>message, '<span color="blue">', ', '.join(fedora_missing), '</span>'
-        if ARCHLINUX:
+        elif ARCHLINUX:
             print >>message, '<span color="blue">', ', '.join(archlinux_missing), '</span>'
         dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
         dialog.set_title('Ailurus ' + AILURUS_VERSION)
