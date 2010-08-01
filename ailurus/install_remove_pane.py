@@ -873,10 +873,8 @@ class InstallRemovePane(gtk.VBox):
     
     def notify_sync(self):
         from download_icons import icons_pack_version
-        if icons_pack_version > Config.get_last_synced_data_version() or True:
-            print "Remove 'or True' after debug!"
-            self.parentwindow.show_all()
-            while gtk.events_pending(): gtk.main_iteration()
+        if icons_pack_version > Config.get_last_synced_data_version():
+            # TODO: display main_view window before dialog
             dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO,
                                        message_format=
                                        _('Would you like to download latest application data from web?'))
