@@ -894,7 +894,14 @@ class APT:
             else: auto_removable = False
             
             if auto_removable:
-                ret.append([pkg.name, long(pkg.installedSize), pkg.summary.replace('\n', ' ')])
+                if hasattr(pkg, 'versions'): # recommended
+                    version = pkg.versions[0]
+                    installed_size = version.installed_size
+                    summary = version.summary
+                else: # deprecated
+                    installed_size = pkg.installedSize
+                    summary = pkg.summary
+                ret.append([pkg.name, long(installed_size), summary.replace('\n', ' ')])
         return ret
     @classmethod
     def installed(cls, package_name):
