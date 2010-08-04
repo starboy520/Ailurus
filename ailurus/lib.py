@@ -866,6 +866,7 @@ class APT:
             import apt
             try:
                 cls.apt_cache = apt.cache.Cache()
+                assert cls.apt_cache != None # TODO: how to cope with this error?
             except SystemError, e: # syntax error in source config
                 raise APTSourceSyntaxError(*e.args)
     @classmethod
