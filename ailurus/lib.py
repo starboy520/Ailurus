@@ -861,7 +861,6 @@ class APT:
     @classmethod
     def refresh_cache(cls):
         if cls.fresh_cache: return
-        cls.fresh_cache = True
         with TimeStat(_('scan packages')):
             import apt
             try:
@@ -869,6 +868,8 @@ class APT:
                 assert cls.apt_cache != None # TODO: how to cope with this error?
             except SystemError, e: # syntax error in source config
                 raise APTSourceSyntaxError(*e.args)
+            else:
+                cls.fresh_cache = True
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
