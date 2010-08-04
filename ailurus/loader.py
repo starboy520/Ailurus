@@ -103,7 +103,7 @@ NativeApps = AppConfigParser(A+'/native_apps', is_user_custom=False)
 CustomApps = AppConfigParser(Config.config_dir + 'custom_apps', is_user_custom=True)
 
 def is_user_custom_appobj(appobj): # user custom package's class name starts with "C_"
-    return obj.__class__.__name__.startswith('C_')
+    return appobj.__class__.__name__.startswith('C_')
 
 class AppObjs:
     appobjs = []
