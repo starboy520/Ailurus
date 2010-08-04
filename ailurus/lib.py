@@ -105,6 +105,11 @@ class Config:
     import os
     config_dir = os.path.expanduser('~/.config/ailurus/')
     @classmethod
+    def check_permission(cls):
+        cls.make_config_dir()
+        f = open(cls.config_dir + 'this_file_can_be_safely_removed', 'w')
+        f.close()
+    @classmethod
     def make_config_dir(cls):
         import os
         dir = os.path.expanduser('~/.config/ailurus/')

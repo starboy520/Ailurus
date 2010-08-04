@@ -179,6 +179,26 @@ def check_required_packages():
         dialog.run()
         dialog.destroy()
 
+def check_home_dir_permission():
+    try: Config.check_permission()
+    except: pass
+    else: return
+
+    import StringIO
+    msg = StringIO.StringIO()
+    print >>msg, _('Your home folder is not owned by yourself.\n'
+                   'Please run the following command to fix the error.')
+    user = os.environ['USER']
+    home = os.environ['HOME']
+    command = 'sudo chown -R %s:%s %s' % (user, user, home)
+    print >>msg, '<span color="blue">%s</span>' % command,
+    
+    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    dialog.set_title(_('Fatal error'))
+    dialog.set_markup(msg.getvalue())
+    dialog.run()
+    dialog.destroy()
+
 def check_dbus_daemon_status():
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
         correct_conf_files = False
@@ -594,6 +614,7 @@ with TimeStat(_('start up')):
     change_task_name()
     set_default_window_icon()
     detect_proxy_env()
+    check_home_dir_permission()
     check_required_packages()
     check_dbus_daemon_status()
     
