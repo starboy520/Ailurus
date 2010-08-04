@@ -251,14 +251,13 @@ def do_gnomekeyring_cancelled_error():
 def do_apt_source_syntax_error(value):
     import gtk, StringIO
     msg = StringIO.StringIO()
-    print >>msg,  _('There is syntax error in source configuration.\n'
-                    'Please fix the error, then restart Ailurus.')
-    print >>msg
-    print >>msg, _('Please run this command:')
+    print >>msg,  _('Source configuration has syntax error. Please run the following command to fix error.')
     print >>msg, '<span color="blue">%s</span>' % 'sudo gedit /etc/apt/sources.list /etc/apt/sources.list.d/*.list'
     print >>msg
     print >>msg, _('Error reason:')
-    print >>msg, '<span color="blue">%s</span>' % value,
+    print >>msg, '<span color="blue">%s</span>' % value
+    print >>msg
+    print >>msg, _('After fixing the error, Ailurus will work fine.')
     
     label = gtk.Label()
     label.set_selectable(True)
