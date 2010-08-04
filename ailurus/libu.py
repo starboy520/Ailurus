@@ -249,20 +249,26 @@ def do_gnomekeyring_cancelled_error():
     window.show_all()
 
 def do_apt_source_syntax_error(value):
-    import gtk
-    message = _('There is syntax error in source configuration.\n'
-                'Please fix the error, then restart Ailurus.')
-    label = gtk.Label(message)
+    import gtk, StringIO
+    msg = StringIO.StringIO()
+    print >>msg,  _('There is syntax error in source configuration.\n'
+                    'Please fix the error, then restart Ailurus.')
+    print >>msg
+    print >>msg, _('Please run this command:')
+    print >>msg, '<span color="blue">%s</span>' % 'sudo gedit /etc/apt/sources.list /etc/apt/sources.list.d/*.list'
+    print >>msg
+    print >>msg, _('Error reason:')
+    print >>msg, '<span color="blue">%s</span>' % value,
+    
+    label = gtk.Label()
+    label.set_selectable(True)
+    label.set_markup(msg.getvalue())
     label.set_alignment(0, 0.5)
     
-    label2 = gtk.Label(value)
-    label2.set_alignment(0, 0.5)
-
     button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
     button_close.connect('clicked', lambda w: window.destroy())
     vbox = gtk.VBox(False, 5)
     vbox.pack_start(label, False)
-    vbox.pack_start(label2, False)
     vbox.pack_start(right_align(button_close), False)
     window = gtk.Window(gtk.WINDOW_TOPLEVEL)
     window.set_title(_('Fatal error'))
