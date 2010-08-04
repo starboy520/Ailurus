@@ -259,15 +259,10 @@ def do_apt_source_syntax_error(value):
     print >>msg
     print >>msg, _('After fixing the error, Ailurus will work fine.')
     
-    label = gtk.Label()
-    label.set_selectable(True)
-    label.set_markup(msg.getvalue())
-    label.set_alignment(0, 0.5)
-    
     dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_CLOSE)
     dialog.set_title(_('Fatal error'))
     dialog.set_position(gtk.WIN_POS_CENTER)
-    dialog.vbox.pack_start(label, False)
+    dialog.set_markup(msg.getvalue())
     dialog.show_all()
     dialog.run()
     dialog.destroy()
