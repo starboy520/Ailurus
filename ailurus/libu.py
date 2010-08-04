@@ -264,17 +264,13 @@ def do_apt_source_syntax_error(value):
     label.set_markup(msg.getvalue())
     label.set_alignment(0, 0.5)
     
-    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
-    button_close.connect('clicked', lambda w: window.destroy())
-    vbox = gtk.VBox(False, 5)
-    vbox.pack_start(label, False)
-    vbox.pack_start(right_align(button_close), False)
-    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    window.set_title(_('Fatal error'))
-    window.set_border_width(10)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.add(vbox)
-    window.show_all()
+    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_CLOSE)
+    dialog.set_title(_('Fatal error'))
+    dialog.set_position(gtk.WIN_POS_CENTER)
+    dialog.vbox.pack_start(label, False)
+    dialog.show_all()
+    dialog.run()
+    dialog.destroy()
 
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk, gnomekeyring
