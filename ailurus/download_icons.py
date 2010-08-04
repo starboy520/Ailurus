@@ -72,10 +72,11 @@ class DownloadIconsWindow(gtk.Window):
 
     def download_thread(self):
         try:
-            if Config.get_use_proxy():
-                enable_urllib2_proxy()
-            else:
-                disable_urllib2_proxy()
+            try:
+                if Config.get_use_proxy(): enable_urllib2_proxy()
+                else: disable_urllib2_proxy()
+            except:
+                print_traceback()
             in_file = urllib2.urlopen(self.url)
             header_string = str(in_file.info())
             total_size = self.get_length_from_header(header_string)
