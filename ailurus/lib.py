@@ -1937,6 +1937,10 @@ def fedora_installation_command(package_names):
 def archlinux_installation_command(package_names):
     return 'pacman -S ' + package_names
 
+def useBASH():
+    import os
+    return os.environ['SHELL'] == '/bin/bash'
+
 def get_ailurus_version():
     import os
     path = A+'/version'
