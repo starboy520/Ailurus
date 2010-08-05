@@ -76,11 +76,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         label.set_markup(
           _('<b>Backup the configuration of repositories:</b>\n'
             'cd /etc/apt/\n'
-            'tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n'
+            'tar czf $HOME/sources.backup.tar.gz sources.list sources.list.d/\n'
             '\n'
             '<b>Restore the configuration of repositories:</b>\n'
             'cd /etc/apt/\n'
-            'sudo tar xzf ~/sources.backup.tar.gz') )
+            'sudo tar xzf $HOME/sources.backup.tar.gz') )
         def unselect(*w):
             if not label.unselected:
                 label.unselected = True

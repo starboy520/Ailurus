@@ -115,12 +115,12 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         def __clean_up(button, label):
-            notify(_('Run command:'), 'rm -rf ~/.thumbnails/*')
-            os.system('rm -rf ~/.thumbnails/*')
+            notify(_('Run command:'), 'rm -rf $HOME/.thumbnails/*')
+            os.system('rm -rf $HOME/.thumbnails/*')
             label.set_text(self.get_button_text(_('Nautilus thumbnail image cache'), path))
             button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
-        button.set_tooltip_text(_('Command:') + ' rm -rf ~/.thumbnails/*') #sudo pacman -Sc
+        button.set_tooltip_text(_('Command:') + ' rm -rf $HOME/.thumbnails/*')
         return button
 
     def clean_recently_used_document_button(self):
@@ -128,13 +128,13 @@ class CleanUpPane(gtk.VBox):
             import os
             path = os.path.expanduser('~/.recently-used.xbel')
             if os.path.isfile(path):
-                os.system("echo '' > ~/.recently-used.xbel")
+                os.system("echo '' > $HOME/.recently-used.xbel")
             else: # is dir
-                os.system("rm ~/.recently-used.xbel/* -rf")
-            notify(_('Run command:'), _('echo "" > ~/.recently-used.xbel'))
+                os.system("rm $HOME/.recently-used.xbel/* -rf")
+            notify(_('Run command:'), _('echo "" > $HOME/.recently-used.xbel'))
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
-        button.set_tooltip_text(_('Command:') + ' echo "" > ~/.recently-used.xbel')
+        button.set_tooltip_text(_('Command:') + ' echo "" > $HOME/.recently-used.xbel')
         return button
 
 #class ReclaimMemoryBox(gtk.VBox):

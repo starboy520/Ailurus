@@ -30,7 +30,7 @@ try:
 except: # raise exception in python console because __file__ is not defined
     import os
     A = os.path.expanduser('~/workspace/Ailurus/ailurus/')
-    assert os.path.exists(A), 'Please put ailurus code in ~/workspace/Ailurus/'
+    assert os.path.exists(A), 'Please put ailurus code in $HOME/workspace/Ailurus/'
 D = A + '/icons/'
 
 def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
@@ -1363,7 +1363,7 @@ def report_bug(*w):
 import os
 class firefox:
     support = False # do not use this class if support is False
-    preference_dir = None # form: ~/.mozilla/firefox/5y7bqw54.default/
+    preference_dir = None # form: $HOME/.mozilla/firefox/5y7bqw54.default/
     extensions_dir = None # form: preference_dir + 'extensions/'
     prefs_js_path = None # form: preference_dir + 'prefs.js'
     pattern1 = None # regexp

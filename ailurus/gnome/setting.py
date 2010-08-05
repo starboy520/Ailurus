@@ -96,9 +96,9 @@ def __start_here_icon_setting():
 
 def __login_icon_setting():
     def apply(w, image):
-        os.system('cp %s ~/.face' % image)
+        run('cp %s $HOME/.face' % image)
 
-    i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is ~/.face'))
+    i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is $HOME/.face'))
     try:    i.display_image(os.path.expanduser('~/.face'))
     except: i.display_image(None) # show blank
     i.connect('changed',apply)
@@ -383,7 +383,7 @@ def __advance_setting():
 
     def clicked(button, path):
         if button.get_active():
-            os.system('mkdir -p ~/.local/share/applications/')
+            os.system('mkdir -p $HOME/.local/share/applications/')
             with open(path, 'w') as f:
                 f.write('[Desktop Entry]\n'
                         'Name=Gnome Control Center\n'
@@ -397,7 +397,7 @@ def __advance_setting():
 
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
     button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu') + ' ' + _('(take effect at the next time GNOME starts up)'))
-    button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
+    button.set_tooltip_text(_('Create a file $HOME/.local/share/applications/gnome-control-center.desktop'))
     button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
     box.pack_start(button, False)

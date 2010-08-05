@@ -98,7 +98,7 @@ class GNOMEArtNextGen(I):
         return APT.installed('gnomeartng')
     def remove(self):
         APT.remove('gnomeartng')
-        run('rm -rf ~/.gnome2/gnome-art-ng/')
+        run('rm -rf $HOME/.gnome2/gnome-art-ng/')
     def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 

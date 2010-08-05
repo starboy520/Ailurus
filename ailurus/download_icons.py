@@ -126,7 +126,7 @@ class DownloadIconsWindow(gtk.Window):
                 sys.exit()
     
     def install_icons(self):
-        # install app icons in ~/.config, therefore authentication is not required
+        # install app icons in $HOME/.config, therefore authentication is not required
         Config.make_config_dir()
         appicons_path = Config.config_dir
         os.chdir(appicons_path)

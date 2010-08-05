@@ -31,7 +31,7 @@ Give a man a fish and he can eat for a day; but if you teach him how to fish, he
 _('''Clear Bash history
 history -c'''),
 
-_('''If you want to use colorful "ls", that is, use colors to distinguish types of files, you can add these lines in ~/.bashrc:
+_('''If you want to use colorful "ls", that is, use colors to distinguish types of files, you can add these lines in $HOME/.bashrc:
 
 if [ "$TERM" != "dumb" ]; then
     eval "`dircolors -b`"
@@ -324,10 +324,10 @@ sudo reboot
 sudo shutdown -r now
 """),
 
-_("""If you want some program to start up automatically, please put '.desktop' files into '~/.config/autostart'
+_("""If you want some program to start up automatically, please put '.desktop' files into '$HOME/.config/autostart'
 """),
 
-_("""You can configure "preferred applications" by this file "~/.local/share/applications/mimeapps.list"
+_("""You can configure "preferred applications" by this file "$HOME/.local/share/applications/mimeapps.list"
 """),
 
 _("""Continuously monitor the memory usage
