@@ -23,6 +23,9 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
+def __default_shell():
+    return [row(_('Default shell:'), os.environ['SHELL'], D+'sora_icons/default_information_icon.png')]
+
 def __host_name():
     __host_name.please_refresh_me = True
     try: return [row(_('Host name:'), get_output('hostname'), D+'umut_icons/i_host.png' )]
@@ -164,7 +167,7 @@ def __os_version():
         return [] 
 
 def get():
-    return [ __host_name, __user, __uptime, __kernel, __xorg,
+    return [ __host_name, __user, __uptime, __kernel, __default_shell, __xorg,
              __opengl, __gcc, __java, __python, __gtk, __pygtk,  __firefox, __os_version ]
 
 if __name__ == '__main__':
