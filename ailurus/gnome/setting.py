@@ -539,52 +539,52 @@ def __gedit_setting():
 
     return Setting(table, _('GEdit settings'), ['gedit'])
 
-class ResetGNOME(gtk.VBox):
-    def do_reset(self, w, user):
-        run_as_root('rm -rf /home/%s/.gnome*' % user)
-        run_as_root('rm -rf /home/%s/.gconf*' % user)
-        run_as_root('rm -rf /home/%s/.metacity' % user)
-        run_as_root('rm -rf /home/%s/.nautilus' % user)
-        run_as_root('rm -rf /tmp/gconfd-%s' % user)
-        run_as_root('rm -rf /tmp/orbit-%s' % user)
-        notify(' ', _('GNOME settings of user %s have been reset.') % user)
-    
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 5)
-        
-        import StringIO
-        msg = StringIO.StringIO()
-        print >>msg, _('Reset GNOME by removing these directories:')
-        print >>msg, ('<small>'
-                      '$HOME/.gnome*, '
-                      '$HOME/.gconf*, '
-                      '$HOME/.metacity\n'
-                      '$HOME/.nautilus, '
-                      '/tmp/gconfd-$USER, '
-                      '/tmp/orbit-$USER'
-                      '</small>')
-        print >>msg, _('In order to reset GNOME, please logout first, then login GNOME as another user.')
-        print >>msg, _('Cannot reset GNOME for current user because above files are being used.')
-        print >>msg, _('Please be careful.'),
-        label = gtk.Label()
-        label.set_markup(msg.getvalue())
-        label.set_alignment(0, 0.5)
-        self.pack_start(label, False)
-        
-        current_user = os.environ['USER']
-        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
-        if users_list == []:
-            button = gtk.Button(_('There is no other user'))
-            button.set_sensitive(False)
-            self.pack_start(button)
-        else:
-            for user in users_list:
-                button = gtk.Button(_('Reset user %s') % user)
-                button.connect('clicked', self.do_reset, user)
-                self.pack_start(button)
+#class ResetGNOME(gtk.VBox):
+#    def do_reset(self, w, user):
+#        run_as_root('rm -rf /home/%s/.gnome*' % user)
+#        run_as_root('rm -rf /home/%s/.gconf*' % user)
+#        run_as_root('rm -rf /home/%s/.metacity' % user)
+#        run_as_root('rm -rf /home/%s/.nautilus' % user)
+#        run_as_root('rm -rf /tmp/gconfd-%s' % user)
+#        run_as_root('rm -rf /tmp/orbit-%s' % user)
+#        notify(' ', _('GNOME settings of user %s have been reset.') % user)
+#    
+#    def __init__(self):
+#        gtk.VBox.__init__(self, False, 5)
+#        
+#        import StringIO
+#        msg = StringIO.StringIO()
+#        print >>msg, _('Reset GNOME by removing these directories:')
+#        print >>msg, ('<small>'
+#                      '$HOME/.gnome*, '
+#                      '$HOME/.gconf*, '
+#                      '$HOME/.metacity\n'
+#                      '$HOME/.nautilus, '
+#                      '/tmp/gconfd-$USER, '
+#                      '/tmp/orbit-$USER'
+#                      '</small>')
+#        print >>msg, _('In order to reset GNOME, please logout first, then login GNOME as another user.')
+#        print >>msg, _('Cannot reset GNOME for current user because above files are being used.')
+#        print >>msg, _('Please be careful.'),
+#        label = gtk.Label()
+#        label.set_markup(msg.getvalue())
+#        label.set_alignment(0, 0.5)
+#        self.pack_start(label, False)
+#        
+#        current_user = os.environ['USER']
+#        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
+#        if users_list == []:
+#            button = gtk.Button(_('There is no other user'))
+#            button.set_sensitive(False)
+#            self.pack_start(button)
+#        else:
+#            for user in users_list:
+#                button = gtk.Button(_('Reset user %s') % user)
+#                button.connect('clicked', self.do_reset, user)
+#                self.pack_start(button)
 
-def __reset_gnome():
-    return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
+#def __reset_gnome():
+#    return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
 
 def __screen_saver():
     
@@ -635,7 +635,7 @@ def get():
             __login_window_background,
             __compression_strategy,
             __gedit_setting,
-            __reset_gnome,
+#            __reset_gnome,
             __screen_saver,
             ]:
         try:
