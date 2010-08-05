@@ -126,11 +126,16 @@ class DownloadIconsWindow(gtk.Window):
                 sys.exit()
     
     def install_icons(self):
-        appicons_path = D+'/appicons/'
-        if not os.path.exists(appicons_path):
-            run_as_root('mkdir ' + appicons_path)
+        # install app icons in ~/.config, therefore authentication is not required
+        Config.make_config_dir()
+        appicons_path = Config.config_dir
         os.chdir(appicons_path)
-        run_as_root('tar xf ' + self.filename)
+        run('tar xf ' + self.filename)
+#        appicons_path = D+'/appicons/'
+#        if not os.path.exists(appicons_path):
+#            run_as_root('mkdir ' + appicons_path)
+#        os.chdir(appicons_path)
+#        run_as_root('tar xf ' + self.filename)
 
 if __name__ == '__main__':
     import ctypes # change_task_name
