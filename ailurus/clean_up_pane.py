@@ -32,7 +32,7 @@ class CleanUpPane(gtk.VBox):
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False, 10)
-        self.pack_start(ReclaimMemoryBox(),False)
+#        self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
         if DEBIAN or UBUNTU or UBUNTU_DERIV:
@@ -137,69 +137,69 @@ class CleanUpPane(gtk.VBox):
         button.set_tooltip_text(_('Command:') + ' echo "" > ~/.recently-used.xbel')
         return button
 
-class ReclaimMemoryBox(gtk.VBox):
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 5)
-        button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
-        button_free_memory.set_tooltip_text(
-                                            _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
-        button_free_memory.connect('clicked', self.free_memory)
-    
-        label_info = gtk.Label( _('No more than %s KB of memory can be reclaimed.') % 0 )
-        import gobject
-        gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
-    
-        hbox = gtk.HBox(False, 10)
-        hbox.pack_start(button_free_memory)
-        hbox.pack_start(label_info, False)
-        
-        text_buffer = gtk.TextBuffer()
-        text_buffer.set_text(_('Linux uses up extra physical memory to work as a disk buffer cache. '
-                               'Press the button above to free cache. '
-                               'This is not a destructive operation because dirty data will not be freed.\n'
-                               'Command: echo 3 >/proc/sys/vm/drop_caches'))
-        text_view = gtk.TextView(text_buffer)
-        text_view.set_editable(False)
-        text_view.set_cursor_visible(False)
-        text_view.set_wrap_mode(gtk.WRAP_WORD)
-        gray_bg(text_view)
-        
-        self.pack_start(hbox)
-        self.pack_start(text_view, False)
-        
-    def show_cached_memory_amount(self,label):
-        try:
-            with open('/proc/meminfo') as f:
-                for line in f:
-                    if line.startswith('Cached:'): 
-                        List = line.split()
-                        value = int(List[1])
-                        break
-            label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
-        except:
-            print_traceback()
-    
-        return True
-        
-    def get_free_memory(self):
-        with open('/proc/meminfo') as f:
-            for line in f:
-                if not line.startswith('MemFree:'): continue
-                return int(line.split()[1])
-        
-    def free_memory(self,*w):
-        dest = '/proc/sys/vm/drop_caches'
-        import os, tempfile
-        if os.path.exists(dest):
-            before = self.get_free_memory()
-        
-            src = tempfile.NamedTemporaryFile('w')
-            src.write('3\n')
-            src.flush()
-            run_as_root('cp %s %s'%(src.name, dest) )
-            after = self.get_free_memory()
-            amount = max(0, after - before)
-            notify(' ', _('%s KB memory was reclaimed.') % amount)
+#class ReclaimMemoryBox(gtk.VBox):
+#    def __init__(self):
+#        gtk.VBox.__init__(self, False, 5)
+#        button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
+#        button_free_memory.set_tooltip_text(
+#                                            _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
+#        button_free_memory.connect('clicked', self.free_memory)
+#    
+#        label_info = gtk.Label( _('No more than %s KB of memory can be reclaimed.') % 0 )
+#        import gobject
+#        gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
+#    
+#        hbox = gtk.HBox(False, 10)
+#        hbox.pack_start(button_free_memory)
+#        hbox.pack_start(label_info, False)
+#        
+#        text_buffer = gtk.TextBuffer()
+#        text_buffer.set_text(_('Linux uses up extra physical memory to work as a disk buffer cache. '
+#                               'Press the button above to free cache. '
+#                               'This is not a destructive operation because dirty data will not be freed.\n'
+#                               'Command: echo 3 >/proc/sys/vm/drop_caches'))
+#        text_view = gtk.TextView(text_buffer)
+#        text_view.set_editable(False)
+#        text_view.set_cursor_visible(False)
+#        text_view.set_wrap_mode(gtk.WRAP_WORD)
+#        gray_bg(text_view)
+#        
+#        self.pack_start(hbox)
+#        self.pack_start(text_view, False)
+#        
+#    def show_cached_memory_amount(self,label):
+#        try:
+#            with open('/proc/meminfo') as f:
+#                for line in f:
+#                    if line.startswith('Cached:'): 
+#                        List = line.split()
+#                        value = int(List[1])
+#                        break
+#            label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
+#        except:
+#            print_traceback()
+#    
+#        return True
+#        
+#    def get_free_memory(self):
+#        with open('/proc/meminfo') as f:
+#            for line in f:
+#                if not line.startswith('MemFree:'): continue
+#                return int(line.split()[1])
+#        
+#    def free_memory(self,*w):
+#        dest = '/proc/sys/vm/drop_caches'
+#        import os, tempfile
+#        if os.path.exists(dest):
+#            before = self.get_free_memory()
+#        
+#            src = tempfile.NamedTemporaryFile('w')
+#            src.write('3\n')
+#            src.flush()
+#            run_as_root('cp %s %s'%(src.name, dest) )
+#            after = self.get_free_memory()
+#            amount = max(0, after - before)
+#            notify(' ', _('%s KB memory was reclaimed.') % amount)
 
 class Ubuntu_dedicated_clean_up_box(gtk.HBox):
     def change_content(self, button):
