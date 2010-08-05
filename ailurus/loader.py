@@ -154,8 +154,6 @@ class AppObjs:
         'return (icon path, whether it is default icon)'
         path = Config.config_dir + name + '.png'
         if os.path.exists(path): return (path, False)
-        path = D + 'appicons/' + name + '.png'
-        if os.path.exists(path): return (path, False)
         return (D + 'sora_icons/default_application_icon.png', True)
     @classmethod
     def all_objs_reload_icon(cls):

@@ -64,7 +64,7 @@ def __java():
 
 def __python():
      try: 
-         return [row(_('Python version:'), sys.version.split()[0], D+'appicons/python.png' )]
+         return [row(_('Python version:'), sys.version.split()[0], D+'sora_icons/default_information_icon.png' )]
      except: 
          print_traceback()
          return []
@@ -72,7 +72,7 @@ def __python():
 def __gtk():
      try:
          import gtk
-         return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'appicons/gtk.png')]
+         return [row(_('GTK version:'), '.'.join(map(str, gtk.gtk_version)), D+'sora_icons/default_information_icon.png')]
      except:
          print_traceback()
          return []
@@ -80,7 +80,7 @@ def __gtk():
 def __pygtk():
      try: 
          import gtk
-         return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'appicons/gtk.png' )]
+         return [row(_('PyGTK version:'), '.'.join(map(str, gtk.pygtk_version)), D+'sora_icons/default_information_icon.png' )]
      except: 
          print_traceback()
          return []

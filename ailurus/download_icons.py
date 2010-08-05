@@ -131,11 +131,6 @@ class DownloadIconsWindow(gtk.Window):
         appicons_path = Config.config_dir
         os.chdir(appicons_path)
         run('tar xf ' + self.filename)
-#        appicons_path = D+'/appicons/'
-#        if not os.path.exists(appicons_path):
-#            run_as_root('mkdir ' + appicons_path)
-#        os.chdir(appicons_path)
-#        run_as_root('tar xf ' + self.filename)
 
 if __name__ == '__main__':
     import ctypes # change_task_name
