@@ -19,11 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-bioclipse32 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86.zip'
-bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip'
+bioclipse32 = 'http://downloads.sourceforge.net/project/bioclipse/bioclipse2/bioclipse2.4.0/Bioclipse.2.4.0.20100709.linux.gtk.x86.tar.gz'
+bioclipse64 = 'http://downloads.sourceforge.net/project/bioclipse/bioclipse2/bioclipse2.4.0/Bioclipse.2.4.0.20100709.linux.gtk.x86_64.tar.gz'
 electric = 'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'
-sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x86.tgz'
-sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x64.tgz'
+sweethome32 = 'http://downloads.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.6/SweetHome3D-2.6-linux-x32.tgz'
+sweethome64 = 'http://downloads.sourceforge.net/project/sweethome3d/SweetHome3D/SweetHome3D-2.6/SweetHome3D-2.6-linux-x64.tgz'
 tsinghuatex = 'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'
 nscript = 'http://www.nanolx.org/free/NScripts-3.6.tar.bz2'
 cdt = 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'
@@ -43,3 +43,5 @@ mytourbook64 = 'http://prdownloads.sourceforge.net/mytourbook/mytourbook_10.7.0.
 routeconverter = 'http://www.routeconverter.de/download/RouteConverterLinux.jar'
 geogebra32 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-Portable-3-2-42-0.tar.gz'
 geogebra64 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-64bit-Portable-3-2-42-0.tar.gz'
+radioget32 = 'http://radioget.googlecode.com/files/radioget-0.2.3-r17-i386.deb'
+radioget64 = 'http://radioget.googlecode.com/files/radioget-0.2.3-r17-amd64.deb'

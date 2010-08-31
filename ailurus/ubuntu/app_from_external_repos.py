@@ -247,3 +247,18 @@ class Handbrake(_apt_install):
     category = 'media_editor'
     ppa = 'stebbins/handbrake-snapshots'
     pkgs = 'handbrake-gtk'
+    
+class OpenFetion(_apt_install):
+    __doc__ = _('Openfetion: Send and receive SMS free of charge between PCs and mobile phones.')
+    licese = GPL
+    category = 'chat'
+    ppa = 'happyaron/ppa'
+    pkgs = 'openfetion'
+    Chinese = True
+    
+class Pion(_apt_install):
+    __doc__ = _('Pion: A simple and fast X11 client for Twitter and Identi.ca')
+    licese = GPL
+    category = 'blog'
+    ppa = 'troorl/pino'
+    pkgs = 'pino'

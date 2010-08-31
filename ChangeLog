@@ -1,3 +1,10 @@
+2010-08-28 MA Yue <velly.empire@gmail.com>
+
+    * Add Openfetion, Pino for Ubuntu, Brasero
+    * Delete Firefox Addon version, add Radioget Desktop version instead.
+    * Update the path of SweetHome3D, for new version.
+    * Fix the bug about bioclipse path.
+    
 2010-07-28 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug about SweetHome3D installing path, issue 1020.
