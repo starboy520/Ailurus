@@ -391,8 +391,8 @@ class Repo_OpenFetion(_launchpad):
     ppa = 'happyaron/ppa'
     Chinese = True
     
-class Repo_Pino(_launchpad):
-    'pino'
-    detail = _('A simple and fast X11 client for Twitter and Identi.ca')
-    content = 'pino'
-    ppa = 'troorl/pino'
+class Repo_Turpial(_launchpad):
+    'Turpial'
+    detail = _('A simple and fast client for Twitter. It supports OAuth.')
+    content = 'turpial'
+    ppa = 'effie-jayx/turpial'

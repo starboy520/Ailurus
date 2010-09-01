@@ -256,9 +256,9 @@ class OpenFetion(_apt_install):
     pkgs = 'openfetion'
     Chinese = True
     
-class Pion(_apt_install):
-    __doc__ = _('Pion: A simple and fast X11 client for Twitter and Identi.ca')
+class Turpial(_apt_install):
+    __doc__ = _('Turpial: A simple and fast client for Twitter. It supports OAuth.')
     licese = GPL
     category = 'blog'
-    ppa = 'troorl/pino'
-    pkgs = 'pino'
+    ppa = 'effie-jayx/turpial'
+    pkgs = 'turpial'

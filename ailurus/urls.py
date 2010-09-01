@@ -45,3 +45,4 @@ geogebra32 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-Portable-3-2-4
 geogebra64 = 'http://geogebra.googlecode.com/files/GeoGebra-Linux-64bit-Portable-3-2-42-0.tar.gz'
 radioget32 = 'http://radioget.googlecode.com/files/radioget-0.2.3-r17-i386.deb'
 radioget64 = 'http://radioget.googlecode.com/files/radioget-0.2.3-r17-amd64.deb'
+turpial = 'http://forja.softwarelibre.gob.ve/frs/download.php/186/turpial-1.3.4-1.fc13.noarch.rpm'
