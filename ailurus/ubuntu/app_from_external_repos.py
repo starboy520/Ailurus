@@ -150,7 +150,7 @@ class Moovida(_apt_install):
     __doc__ = _('Moovida: Media player')
     license = GPL
     category = 'player'
-    ppa = 'moovida-packagers'
+    ppa = 'moovida-packagers/ppa'
     pkgs = 'moovida'
 
 class OSD_Lyrics(_apt_install):
@@ -189,7 +189,7 @@ class XBMC(_apt_install):
     category = 'player'
     license = GPL
     ppa = 'team-xbmc'
-    pkgs = 'xbmc'
+    pkgs = 'xbmc xbmc-standalone'
 
 class ElementaryTheme(_apt_install):
     __doc__ = _('Elementary: Beautiful theme which looks like Mac OS X')

@@ -235,7 +235,7 @@ class Repo_Moovida(_launchpad):
     license = GPL
     detail = _('Moovida is a cross platform media player.')
     content = 'moovida'
-    ppa = 'moovida-packagers'
+    ppa = 'moovida-packagers/ppa'
     
 class Repo_X_Server_Updates(_launchpad):
     __doc__ = _('X server updates (stable)')

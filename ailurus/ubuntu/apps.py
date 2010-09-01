@@ -48,14 +48,14 @@ class WorldofPadman_Ubuntu(I):
 
 class PBC(I):
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
-    detail = _('Install Pairing-Based Cryptography library, powered by Stanford University.')
+    detail = _('Install Pairing-Based Cryptography library, powered by Stanford University. It only has amd64 version.')
     download_url = 'http://crypto.stanford.edu/pbc/'
     category = 'library'
     license = GPL
     def install(self):
-        if is32(): fdev = R(urls.pbcdev32).download()
+        if is32(): pass
         else:      fdev = R(urls.pbcdev64).download()
-        if is32(): f = R(urls.pbc32).download()
+        if is32(): pass
         else:      f = R(urls.pbc64).download()
         APT.install_local(f, fdev)
         
@@ -63,7 +63,8 @@ class PBC(I):
         return APT.installed('libpbc0') and APT.installed('libpbc-dev')
     
     def remove(self):
-        APT.remove('libpbc0', 'libpbc-dev')
+        if is32():pass
+        else: APT.remove('libpbc0', 'libpbc-dev')
     
 class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
