@@ -2,6 +2,8 @@
 
     * Fix bug 635716 - window_manager_name: AttributeError: 'str' object has no attribute 'property_get'
     * Fix bug 632969 - AssertionError: line.endswith('\n') @ FedoraReposSection
+	* Fix broken url for:
+		Bioclipse, PBC 
 
 2010-07-28 Homer Xing <homer.xing@gmail.com>
 

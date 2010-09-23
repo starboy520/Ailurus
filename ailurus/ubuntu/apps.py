@@ -46,24 +46,22 @@ class WorldofPadman_Ubuntu(I):
         run_as_root('rm /usr/local/games/WoP -rf')
         run_as_root('rm /usr/local/bin/wop')
 
-class PBC(I):
+class PBC(I): # support x86_64 only.
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
     detail = _('Install Pairing-Based Cryptography library, powered by Stanford University.')
     download_url = 'http://crypto.stanford.edu/pbc/'
     category = 'library'
     license = GPL
     def install(self):
-        if is32(): fdev = R(urls.pbcdev32).download()
-        else:      fdev = R(urls.pbcdev64).download()
-        if is32(): f = R(urls.pbc32).download()
-        else:      f = R(urls.pbc64).download()
+        fdev = R(urls.pbcdev64).download()
+        f = R(urls.pbc64).download()
         APT.install_local(f, fdev)
-        
     def installed(self):
         return APT.installed('libpbc0') and APT.installed('libpbc-dev')
-    
     def remove(self):
         APT.remove('libpbc0', 'libpbc-dev')
+    def visible(self):
+        return not is32()
     
 class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
