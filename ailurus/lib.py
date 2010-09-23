@@ -1772,6 +1772,8 @@ def window_manager_name():
             name = win.property_get("_NET_WM_NAME")[2]
         except TypeError, exc:
             pass
+        except AttributeError: #'str' object has no attribute 'property_get'
+            pass
     return name
 
 class FedoraReposSection:

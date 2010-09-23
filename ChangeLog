@@ -1,3 +1,7 @@
+2010-09-23 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug 635716 - window_manager_name: AttributeError: 'str' object has no attribute 'property_get'
+
 2010-07-28 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug about SweetHome3D installing path, issue 1020.
