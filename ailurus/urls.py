@@ -20,7 +20,7 @@
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 bioclipse32 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86.zip'
-bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse2.0/bioclipse2.0.linux.gtk.x86_64.zip'
+bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86_64.zip'
 electric = 'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.09.jar'
 sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x86.tgz'
 sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x64.tgz'
