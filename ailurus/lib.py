@@ -1835,6 +1835,7 @@ class FedoraReposFile:
             del contents[0]
         lines = []
         for line in contents:
+            if not line.endswith('\n'): line += '\n' # FedoraReposSection requires that every line ends with '\n'
             if line.startswith('[') and lines:
                 section = FedoraReposSection(lines)
                 self.sections.append(section)
