@@ -4,6 +4,8 @@
     * Fix bug 632969 - AssertionError: line.endswith('\n') @ FedoraReposSection
 	* Fix broken url for:
 		Bioclipse, PBC, RouteConverter
+	* Use new version:
+		Electric, Nscript, Pydev, Geogebra
 
 2010-07-28 Homer Xing <homer.xing@gmail.com>
 
