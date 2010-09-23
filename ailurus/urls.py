@@ -19,11 +19,11 @@
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
-bioclipse32 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86.zip'
-bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse/bioclipse2.0.linux.gtk.x86_64.zip'
+bioclipse32 = 'http://prdownloads.sourceforge.net/bioclipse/Bioclipse.2.4.0.20100709.linux.gtk.x86.tar.gz'
+bioclipse64 = 'http://prdownloads.sourceforge.net/bioclipse/Bioclipse.2.4.0.20100709.linux.gtk.x86_64.tar.gz'
 electric = 'http://ftp.gnu.org/pub/gnu/electric/electricBinary-8.11.jar'
-sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x86.tgz'
-sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.5-linux-x64.tgz'
+sweethome32 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.6-linux-x86.tgz'
+sweethome64 = 'http://prdownloads.sourceforge.net/sweethome3d/SweetHome3D-2.6-linux-x64.tgz'
 tsinghuatex = 'http://thuthesis.googlecode.com/files/thuthesis-4.5.1.tgz'
 nscript = 'http://www.nanolx.org/downloads/NScripts-3.7.1.tar.bz2'
 cdt = 'http://download.eclipse.org/tools/cdt/releases/galileo/dist/cdt-master-6.0.0.zip'
