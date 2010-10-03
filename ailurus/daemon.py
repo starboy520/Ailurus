@@ -35,7 +35,7 @@ except ImportError: # This is not Debian or Ubuntu
 else:
     apt_pkg.init()
 
-version = 12 # must be integer
+version = 13 # must be integer
 
 class AccessDeniedError(dbus.DBusException):
     _dbus_error_name = 'cn.ailurus.AccessDeniedError'
@@ -164,14 +164,7 @@ class AilurusFulgens(dbus.service.Object):
             raise AccessDeniedError('Session is not authorized. Authorization method = 1')
 
     def __get_dict(self, string):
-        assert string.endswith('\n')
-        List = string.split('\n')
-        Dict = {}
-        for i in range(0, len(List)-1, 2):
-            k = List[i]
-            v = List[i+1]
-            Dict[k] = v
-        return Dict
+        return eval(string)
     
     @dbus.service.method('cn.ailurus.Interface',
                                     in_signature='',

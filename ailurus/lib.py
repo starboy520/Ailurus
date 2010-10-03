@@ -545,20 +545,11 @@ def run(command, ignore_error=False):
         if task.returncode and ignore_error == False:
             raise CommandFailError(command, task.returncode)
 
-def pack(D):
-    assert isinstance(D, dict)
-    import StringIO
-    buf = StringIO.StringIO()
-    for k,v in D.items():
-        print >>buf, k
-        print >>buf, v
-    return buf.getvalue()
-
 def packed_env_string():
     import os
     env = dict( os.environ )
     env['PWD'] = os.getcwd()
-    return pack(env)
+    return repr(env)
 
 def daemon():
     import dbus

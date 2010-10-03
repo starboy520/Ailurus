@@ -2,6 +2,7 @@
 
     * Fix issue 1026. If source config is wrong, then exit program. Otherwise, "if not package_name in cls.apt_cache" raises exception.
     * Fix issue 1027. No message dialog after icons pack completely downloaded.
+    * Fix issue 1089. Dict <-> String have wrong conversation.
 
 2010-09-23 Homer Xing <homer.xing@gmail.com>
 
