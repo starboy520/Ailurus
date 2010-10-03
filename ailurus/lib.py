@@ -760,7 +760,14 @@ def run_as_root_in_terminal(command, ignore_error=False):
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
-            if not ignore_error: raise CommandFailError(command)
+            if not ignore_error:
+                if os.path.exists('/tmp/ailurus_subprocess_dump'): 
+                    dump = open('/tmp/ailurus_subprocess_dump').read()
+                    open('/tmp/ailurus_subprocess_dump', 'w').write('')
+                else: dump = None
+                
+                if dump: raise CommandFailError(command, dump)
+                else: raise CommandFailError(command)
         else: raise
 
 class RPM:

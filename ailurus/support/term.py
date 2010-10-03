@@ -21,6 +21,7 @@
 
 # substitude xterm :)
 
+from __future__ import with_statement
 import sys, os
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__))+'/../') # Without this line, error happens. I don't know the reason. *Sigh*
 import vte, gtk, StringIO, thread
@@ -50,11 +51,14 @@ class Window:
     def child_exited(self):
         exit_status = self.terminal.get_child_exit_status()
         if exit_status:
+            text = self.terminal.get_text(lambda *w: True)
+            with open('/tmp/ailurus_subprocess_dump', 'w') as f:
+                print >>f, text
+            os.chmod('/tmp/ailurus_subprocess_dump', 0666)
             self.can_exit = True
             self.terminal.feed('\n\r'
                                '\x1b[1;31m%s\x1b[m' % _('Command failed. Please close this window.'))
-            pass # do not close window if child process exit abnormally
-            #os._exit(1)
+            # do not close window if child process exit abnormally
         else:
             os._exit(0)
     def populate_path(self, env):
