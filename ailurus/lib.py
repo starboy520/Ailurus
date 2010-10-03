@@ -614,7 +614,7 @@ def get_output(cmd, ignore_error=False):
     
     import commands
     status, output=commands.getstatusoutput(cmd)
-    if status and not ignore_error: raise CommandFailError(cmd)
+    if status and not ignore_error: raise CommandFailError(cmd, output) # help to fix issue 1092
     return output
     
 class TempOwn:
