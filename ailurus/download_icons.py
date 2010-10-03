@@ -110,19 +110,13 @@ class DownloadIconsWindow(gtk.Window):
             exception_happened(*self.exception)
             gtk.main() # show exception dialog
         else:
-            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Please press "OK" button to install icons. Authentication is required.'))
-            dialog.set_position(gtk.WIN_POS_CENTER)
-            dialog.run()
-            dialog.destroy()
             try:
                 self.install_icons()
             except:
                 exception_happened(*sys.exc_info())
                 gtk.main()
             else:
-                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed.'))
-                dialog.run()
-                dialog.destroy()
+                notify(' ', _('Icons are successfully installed.'))
                 sys.exit()
     
     def install_icons(self):

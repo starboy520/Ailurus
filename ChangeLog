@@ -1,6 +1,7 @@
 2010-10-03 Homer Xing <homer.xing@gmail.com>
 
     * Fix issue 1026. If source config is wrong, then exit program. Otherwise, "if not package_name in cls.apt_cache" raises exception.
+    * Fix issue 1027. No message dialog after icons pack completely downloaded.
 
 2010-09-23 Homer Xing <homer.xing@gmail.com>
 
