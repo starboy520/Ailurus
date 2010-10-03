@@ -266,6 +266,9 @@ def do_apt_source_syntax_error(value):
     dialog.show_all()
     dialog.run()
     dialog.destroy()
+    
+    import sys
+    sys.exit()
 
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk, gnomekeyring
