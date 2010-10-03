@@ -21,6 +21,17 @@
 
 from __future__ import with_statement
 
+def copy_to_clipboard(text):
+    assert isinstance(text, str)
+    import gtk
+    clipboard = gtk.clipboard_get()
+    clipboard.set_text(text)
+
+def get_clipboard_text():
+    import gtk
+    clipboard = gtk.clipboard_get()
+    return clipboard.wait_for_text()
+
 def scale_image(old_path, new_path, new_width, new_height):
     import gtk
     pixbuf = gtk.gdk.pixbuf_new_from_file(old_path)
@@ -187,10 +198,9 @@ def show_text_window(title, content, show_textbox_border = True, show_a_big_wind
         scroll.set_shadow_type(gtk.SHADOW_IN)
     copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
     def clicked():
-        clipboard = gtk.clipboard_get()
         start = buffer.get_start_iter()
         end = buffer.get_end_iter()
-        clipboard.set_text(buffer.get_text(start, end))
+        copy_to_clipboard(buffer.get_text(start, end))
     copy.connect('clicked', lambda w: clicked())
     close_button = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
     close_button.connect('clicked', lambda *w: window.destroy())
@@ -312,8 +322,7 @@ def exception_happened(etype, value, tb):
         buffer = textview_traceback.get_buffer()
         start = buffer.get_start_iter()
         end = buffer.get_end_iter()
-        clipboard = gtk.clipboard_get()
-        clipboard.set_text(buffer.get_text(start, end))
+        copy_to_clipboard(buffer.get_text(start, end))
     button_copy.connect('clicked', lambda w: clicked())
     button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
     button_report_bug.connect('clicked', lambda w: report_bug() )

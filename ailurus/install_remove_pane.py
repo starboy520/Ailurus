@@ -340,11 +340,10 @@ class InstallRemovePane(gtk.VBox):
         button_report_bug.connect('clicked', lambda w: report_bug() )
         button_copy = image_stock_button(gtk.STOCK_COPY, _('Copy debugging information to clipboard'))
         def clicked():
-            clipboard = gtk.clipboard_get()
             buffer = textview.get_buffer()
             start = buffer.get_start_iter()
             end = buffer.get_end_iter()
-            clipboard.set_text(buffer.get_text(start, end))
+            copy_to_clipboard(buffer.get_text(start, end))
         button_copy.connect('clicked', lambda w: clicked())
         button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
         button_close.connect('clicked', lambda w: window.destroy())

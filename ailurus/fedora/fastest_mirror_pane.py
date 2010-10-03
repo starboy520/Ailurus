@@ -204,8 +204,7 @@ class FedoraFastestMirrorPane(gtk.VBox):
             iter = model.get_iter(path)
             print >>msg, model.get_value(iter, self.URL)
         content = msg.getvalue()
-        clipboard = gtk.clipboard_get()
-        clipboard.set_text(content)
+        copy_to_clipboard(content)
                
     def __callback__detect_selected_repos_speed(self, w, treeview):
         selection = treeview.get_selection()
