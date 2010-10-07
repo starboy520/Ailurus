@@ -4,8 +4,8 @@
 %endif
 
 Name:			ailurus
-Version:		10.07.8
-Release:		2%{?dist}
+Version:		10.10.1
+Release:		1%{?dist}
 Summary:		A simple application installer and GNOME tweaker
 Group:			Applications/System
 License:		GPLv2+
@@ -75,6 +75,9 @@ gtk-update-icon-cache %{_datadir}/icons/hicolor &>/dev/null || :
 %{python_sitelib}/ailurus*.egg-info
 
 %changelog
+* Thu Oct 7 2010 Liang Suilong <liangsuilong@gmail.com> 10.10.1-1
+- Upstream to 10.10.1
+
 * Sun Aug 1 2010 Liang Suilong <liangsuilong@gmail.com> 10.07.8-2
 - Remove changelong in /usr/share/ailurus
 - Add some documents
