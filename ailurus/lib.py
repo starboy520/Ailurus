@@ -1776,97 +1776,64 @@ def window_manager_name():
 
 class FedoraReposSection:
     def __init__(self, lines):
-        for line in lines: assert isinstance(line, str) and line.endswith('\n')
-        assert lines[0].startswith('['), lines
+        assert isinstance(lines, list) and lines[0].startswith('[')
+        for l in lines: assert not l.endswith('\n')
         
-        self.name = lines[0].strip()[1:-1]
-        self.lines = lines
+        self.name = lines[0][1:-1]
 
-    def is_fedora_repos(self):
-        for line in self.lines:
-            if line.startswith('gpgkey=') and 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch' in line:
-                return True
+        self.dict = {}
+        for l in lines[1:]:
+            k, v = l.split('=', 1)
+            self.dict[k] = v
+        
+    def write(self, stream):
+        print >>stream, '[%s]' % self.name
+        for k, v in self.dict.items():
+            print >>stream, '%s=%s' % (k, v)
+
+    def is_main_repos(self):
+        if 'gpgkey' in self.dict:
+            v = self.dict['gpgkey']
+            return v == 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch'
         return False
 
-    def part2_of(self, line):
-        for word in ['/releases/', '/development/', '/updates/']:
-            pos = line.find(word)
-            if pos != -1:
-                return line[pos:]
-        else:
-            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
-
-    def comment_line(self, i):
-        if not self.lines[i].startswith('#'):
-            self.lines[i] = '#' + self.lines[i] 
-
-    def uncomment_line(self, i):
-        if self.lines[i].startswith('#'):
-            self.lines[i] = self.lines[i][1:] 
-
-    def change_baseurl(self, new_url):
-        for i, line in enumerate(self.lines):
-            if 'mirrorlist=' in line:
-                self.comment_line(i)
-            elif 'baseurl=' in line:
-                self.uncomment_line(i)
-        for i, line in enumerate(self.lines):
-            if line.startswith('baseurl='):
-                self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
-
-    def write_to_stream(self, stream):
-        stream.writelines(self.lines)
-    
     def enabled(self):
-        return 'enabled=1\n' in self.lines
+        assert 'enabled' in self.dict
+        return bool(eval(self.dict['enabled']))
 
 class FedoraReposFile:
     def __init__(self, path):
-        assert isinstance(path, str) and path.endswith('.repo')
-
+        assert isinstance(path, str)
         self.path = path
-
-        self.sections = []
+        self.sections = {}
         with open(path) as f:
             contents = f.readlines()
-        while contents[0].startswith('#') or contents[0].strip() == '': # skip comments and blank lines at the beginning
-            del contents[0]
+        contents = [l for l in contents if not l.startswith('#') and l.strip()!=''] # skip comments and blank lines at the beginning
+        contents = [l.strip() for l in contents] # strip \n
         lines = []
         for line in contents:
-            if not line.endswith('\n'): line += '\n' # FedoraReposSection requires that every line ends with '\n'
-            if line.startswith('[') and lines:
+            if line.startswith('[') and lines: # a new section starts
                 section = FedoraReposSection(lines)
-                self.sections.append(section)
+                self.sections[section.name] = section
                 lines = []
             lines.append(line)
         section = FedoraReposSection(lines)
-        self.sections.append(section)
+        self.sections[section.name] = section
 
-    def change_baseurl(self, new_url):
-        changed = False
-        for section in self.sections:
-            if section.is_fedora_repos():
-                section.change_baseurl(new_url)
-                changed = True
+    def all_section_objs(self):
+        return self.sections.values()
 
-        if not changed: return
+    @classmethod
+    def all_repo_objs(cls):
+        import glob
+        paths = glob.glob('/etc/yum.repos.d/*.repo')
+        return [FedoraReposFile(p) for p in paths]
+        
+    def write(self):
         with TempOwn(self.path):
             with open(self.path, 'w') as f:
-                for section in self.sections:
-                    section.write_to_stream(f)
-
-    @classmethod
-    def all_repo_paths(cls):
-        import glob
-        return glob.glob('/etc/yum.repos.d/*.repo')
-
-    @classmethod
-    def all_repo_objects(cls):
-        ret = []
-        for path in cls.all_repo_paths():
-            obj = FedoraReposFile(path)
-            ret.append(obj)
-        return ret
+                for s in self.sections.values():
+                    s.write(f)
 
 class TimeStat:
     __open_stat_names = set()
