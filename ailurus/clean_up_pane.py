@@ -115,8 +115,8 @@ class CleanUpPane(gtk.VBox):
         button.add(label)
         button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         def __clean_up(button, label):
-            notify(_('Run command:'), 'rm -rf $HOME/.thumbnails/*')
             os.system('rm -rf $HOME/.thumbnails/*')
+            notify(_('Nautilus thumbnail image cache is clean'))
             label.set_text(self.get_button_text(_('Nautilus thumbnail image cache'), path))
             button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         button.connect('clicked', __clean_up, label)

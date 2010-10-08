@@ -334,6 +334,13 @@ def __nautilus_thumbnail_setting():
     o = GConfNumericEntry(key, 0, 30)
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
+    o = gtk.Button(_('Clean thumbnail image cache') + ' (%s)' % _('command: rm -rf $HOME/.thumbnails/*'))
+    def clean(*w):
+        os.system('rm -rf $HOME/.thumbnails/*')
+        notify(_('Nautilus thumbnail image cache is clean'))
+    o.connect('clicked', clean)
+    table.attach(o, 0, 2, 4, 5, gtk.FILL, gtk.FILL)
+    
     return Setting(table, _('Nautilus thumbnail settings'), ['nautilus'])
 
 def __gnome_session_setting():
