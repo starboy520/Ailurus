@@ -554,7 +554,6 @@ class MainView:
             from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
             from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
-            from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
             from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
 
         self.register(ComputerDoctorPane, load_cure_objs)
@@ -565,7 +564,6 @@ class MainView:
             self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
-            self.register(FedoraFastestMirrorPane)
         self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
