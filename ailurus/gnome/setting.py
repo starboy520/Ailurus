@@ -246,6 +246,7 @@ def __textbox_context_menu_setting():
     table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Text-boxes context menu'), ['menu'])
 
+# not work in GNOME >= 2.30
 #def __gnome_splash_setting():
 #    # not used
 #    def changed(w, new_path):
@@ -424,16 +425,17 @@ def __advance_setting():
 
     return Setting(box, _('Advance settings'), ['desktop'])
 
-def __gnome_panel_setting():
-    box = gtk.VBox(False, 5)
-    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
-    box.pack_start(o, False)
-    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
-    box.pack_start(o, False)
-    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
-    box.pack_start(o, False)
-    
-    return Setting(box, _('GNOME panels settings'), ['panel'])
+# not work in GNOME >=2.30
+#def __gnome_panel_setting():
+#    box = gtk.VBox(False, 5)
+#    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
+#    box.pack_start(o, False)
+#    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
+#    box.pack_start(o, False)
+#    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
+#    box.pack_start(o, False)
+#    
+#    return Setting(box, _('GNOME panels settings'), ['panel'])
 
 def __login_window_setting():
     box = gtk.VBox(False, 5)
@@ -539,6 +541,7 @@ def __gedit_setting():
 
     return Setting(table, _('GEdit settings'), ['gedit'])
 
+# some user reported system failure
 #class ResetGNOME(gtk.VBox):
 #    def do_reset(self, w, user):
 #        run_as_root('rm -rf /home/%s/.gnome*' % user)
@@ -620,8 +623,6 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
-            __gnome_panel_setting,
-#            __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
             __disable_terminal_beep,
@@ -635,7 +636,6 @@ def get():
             __login_window_background,
             __compression_strategy,
             __gedit_setting,
-#            __reset_gnome,
             __screen_saver,
             ]:
         try:
