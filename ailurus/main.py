@@ -478,21 +478,22 @@ class MainView:
 
     def query_whether_exit(self):
         dialog = gtk.MessageDialog(self.window, 
-                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_OK_CANCEL, 
+                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
                 _('Are you sure to exit?'))
         check_button = gtk.CheckButton(_('Do not query me any more.'))
+        check_button.set_active(not Config.get_query_before_exit())
         dialog.vbox.pack_start(check_button)
         dialog.vbox.show_all()
         ret = dialog.run()
         dialog.destroy()
-        if ret == gtk.RESPONSE_OK:
-            Config.set_query_before_exit(not check_button.get_active())
+        Config.set_query_before_exit(not check_button.get_active())
+        if ret == gtk.RESPONSE_NO:
             return True
         else:
             return False
 
     def terminate_program(self, *w):
-        if Config.get_query_before_exit() and not self.query_whether_exit():
+        if Config.get_query_before_exit() and self.query_whether_exit():
             return True
         
         if self.stop_delete_event:
