@@ -43,11 +43,13 @@ class GConfCheckButton(gtk.CheckButton):
         self.connect('toggled', self.__toggled)
 
 class GConfComboBox(gtk.HBox):
-    def __init__(self, key, values_shown, values_gconf, tooltip = None):
+    def __init__(self, key, values_shown, values_gconf, tooltip = None, callback = None):
         gtk.HBox.__init__(self, False, 10)
         
         self.key = key
         self.values_gconf = values_gconf
+        self.callback = callback
+        if self.callback: assert callable(self.callback)
         
         combo = gtk.combo_box_new_text()
         if not tooltip: tooltip = _('GConf key: ')+key
@@ -70,6 +72,7 @@ class GConfComboBox(gtk.HBox):
         import gconf
         g = gconf.client_get_default()
         g.set_string(self.key, value)
+        if self.callback: self.callback(value)
 
 class GConfTextEntry(gtk.HBox):
     def __value_changed(self, *w): 

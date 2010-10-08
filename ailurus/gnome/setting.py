@@ -186,16 +186,58 @@ def __font_size_setting():
     return Setting(hbox, _('One-click changing font size'), ['font'])
 
 def __layout_of_window_titlebar_buttons():
-    label = gtk.Label(_('The layout of window title-bar buttons'))
-    label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
-                           + _("It can be used in Metacity only.") )
-    o = GConfComboBox('/apps/metacity/general/button_layout', 
+    def gconf_client():
+        import gconf
+        return gconf.client_get_default()
+    
+    def radio_button_clicked(radio_button, widget_on_right, widget_on_right2=None):
+        widget_on_right.set_sensitive(radio_button.get_active())
+        if widget_on_right2: widget_on_right2.set_sensitive(radio_button.get_active())
+
+    pre_defined = ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:']
+    
+    c = gconf_client()
+    layout = c.get_string('/app/metacity/general/button_layout')
+    if layout is None: layout = 'menu:minimize,maximize,close' # default value
+    
+    label = gtk.Label(_('GConf key: ') + '/app/metacity/general/button_layout\n'
+                           + _("It can be used in Metacity only."))
+    label.set_alignment(0, 0)
+    r1 = gtk.RadioButton(label=_('Pre-defined:'))
+    r2 = gtk.RadioButton(group=r1, label=_('Custom:'))
+    o1 = GConfComboBox('/apps/metacity/general/button_layout', 
                       [_('GNOME classic'), _('Ubuntu Lucid beta'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:'],)
-    hbox = gtk.HBox(False, 10)
-    hbox.pack_start(label, False)
-    hbox.pack_start(o, False)
-    return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
+                      pre_defined,)
+    o2 = gtk.Entry()
+    o2.set_text(layout)
+    label2 = gtk.Label('Arrangement of buttons on the titlebar.\n'
+                       'The value should be a string, such as "menu:minimize,maximize,close";\n'
+                       'the colon separates the left corner of the window from the right corner,\n'
+                       'and the button names are comma-separated.\n'
+                       'Duplicate buttons are not allowed.\n'
+                       'Unknown button names are silently ignored.')
+    label2.set_selectable(True)
+    label2.set_alignment(0, 0)
+    def o1_changed(new_value):
+        o2.set_text(new_value)
+    o1.callback = o1_changed
+    r1.connect('clicked', radio_button_clicked, o1)
+    r2.connect('clicked', radio_button_clicked, o2, label2)
+
+    table = gtk.Table()
+    table.attach(label, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(r1, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o1, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
+    table.attach(r2, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(o2, 1, 2, 2, 3, gtk.FILL|gtk.EXPAND, gtk.FILL)
+    table.attach(label2, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    
+    if layout in pre_defined:
+        r1.set_active(True); o2.set_sensitive(False); label2.set_sensitive(False)
+    else:
+        r2.set_active(True); o1.set_sensitive(False)
+    
+    return Setting(table, _('The layout of window title-bar buttons'), ['window'])
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
