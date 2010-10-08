@@ -5,6 +5,7 @@
 	* Hide motherboard vendor if it is empty
 	* Clean Nautilus thumbnail image cache in setting pane
 	* Use custom window titlebar layout in setting pane
+	* Directly display login icon path & "start-here" icon path
 
 2010-10-03 Homer Xing <homer.xing@gmail.com>
 

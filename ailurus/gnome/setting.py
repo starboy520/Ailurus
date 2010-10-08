@@ -86,24 +86,30 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = ImageChooser('/usr/share/pixmaps/', 24, 24, _('The "start-here" icon is %s') % path)
+    label = gtk.Label(_('The "start-here" icon is %s') % path)
+    label.set_alignment(0, 0)
+    i = ImageChooser('/usr/share/pixmaps/', 24, 24)
     try:    i.display_image(path)
     except: i.display_image(None) # show blank
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(left_align(i))
+    box.pack_start(label, False)
+    box.pack_start(left_align(i), False)
     return Setting(box, _('Change "start-here" icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
 
 def __login_icon_setting():
     def apply(w, image):
         run('cp %s $HOME/.face' % image)
 
-    i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is $HOME/.face'))
+    label = gtk.Label(_('The login icon is %s') % os.path.expanduser('~/.face'))
+    label.set_alignment(0, 0)
+    i = ImageChooser('/usr/share/pixmaps/', 96, 96, )
     try:    i.display_image(os.path.expanduser('~/.face'))
     except: i.display_image(None) # show blank
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(left_align(i))
+    box.pack_start(label, False)
+    box.pack_start(left_align(i), False)
     return Setting(box, _('Change login icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
     
 def __menu_icon_setting():
