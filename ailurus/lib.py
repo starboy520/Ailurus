@@ -2031,7 +2031,7 @@ elif FEDORA:
 elif ARCHLINUX:
     DISTRIBUTION = 'archlinux'
     VERSION = '' # ArchLinux has no version -_-b
-    BACKEND = PACKMAN
+    BACKEND = PACMAN
     installation_command_backend = archlinux_installation_command
 elif DEBIAN:
     DISTRIBUTION = 'debian'
