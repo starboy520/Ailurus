@@ -75,36 +75,37 @@ def __change_kernel_swappiness():
     align_vbox.add(vbox)
     return Setting(align_vbox, _('Change the tendency of swapping memory to disk'), ['memory'])
 
-def __restart_network():
-     def restart_network(w):
-         try:
-             import dbus
-             bus = dbus.SystemBus()
-             obj = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
-             obj.sleep(dbus_interface='org.freedesktop.NetworkManager')
-             obj.wake(dbus_interface='org.freedesktop.NetworkManager')
-             if UBUNTU or UBUNTU_DERIV:
-                 notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
-                 run_as_root('/etc/init.d/networking restart')
-             notify(_('Information'), _('Network restarted successfully.'))
-         except: pass
-     button_restart_network = gtk.Button(_('Restart network').center(30))
-     button_restart_network.connect('clicked', restart_network)
-     button_restart_network.set_tooltip_text(_('These commands will be executed:\n'
-               'dbus-send --system --dest=org.freedesktop.NetworkManager '
-               '--type=method_call /org/freedesktop/NetworkManager '
-               'org.freedesktop.NetworkManager.sleep\n'
-               'dbus-send --system --dest=org.freedesktop.NetworkManager '
-               '--type=method_call /org/freedesktop/NetworkManager '
-               'org.freedesktop.NetworkManager.wake\n'
-               'sudo /etc/init.d/networking restart'))
-     align_bfm = gtk.Alignment(0, 0.5)
-     align_bfm.add(button_restart_network)
-     vbox = gtk.VBox()
-     vbox.set_border_width(10)
-     vbox.pack_start(align_bfm, False)
-     return Setting(vbox, _('Restart network'), ['network'])
- 
+# No need
+#def __restart_network():
+#     def restart_network(w):
+#         try:
+#             import dbus
+#             bus = dbus.SystemBus()
+#             obj = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
+#             obj.sleep(dbus_interface='org.freedesktop.NetworkManager')
+#             obj.wake(dbus_interface='org.freedesktop.NetworkManager')
+#             if UBUNTU or UBUNTU_DERIV:
+#                 notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
+#                 run_as_root('/etc/init.d/networking restart')
+#             notify(_('Information'), _('Network restarted successfully.'))
+#         except: pass
+#     button_restart_network = gtk.Button(_('Restart network').center(30))
+#     button_restart_network.connect('clicked', restart_network)
+#     button_restart_network.set_tooltip_text(_('These commands will be executed:\n'
+#               'dbus-send --system --dest=org.freedesktop.NetworkManager '
+#               '--type=method_call /org/freedesktop/NetworkManager '
+#               'org.freedesktop.NetworkManager.sleep\n'
+#               'dbus-send --system --dest=org.freedesktop.NetworkManager '
+#               '--type=method_call /org/freedesktop/NetworkManager '
+#               'org.freedesktop.NetworkManager.wake\n'
+#               'sudo /etc/init.d/networking restart'))
+#     align_bfm = gtk.Alignment(0, 0.5)
+#     align_bfm.add(button_restart_network)
+#     vbox = gtk.VBox()
+#     vbox.set_border_width(10)
+#     vbox.pack_start(align_bfm, False)
+#     return Setting(vbox, _('Restart network'), ['network'])
+
 def __change_hostname(): 
 #   I have to use the class, to resolve problem of these codes:
 #        def __value_changed(button):
@@ -317,8 +318,7 @@ def get():
     for f in [
             __change_kernel_swappiness,
             __change_hostname,
-            __configure_firefox,
-            __restart_network ]:
+            __configure_firefox ]:
         try:
             a = f()
             if a: ret.append(a) # if such function is not supported, f() returns None.
