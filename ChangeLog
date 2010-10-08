@@ -1,6 +1,8 @@
 2010-10-08 Homer Xing <homer.xing@gmail.com>
 
 	* If user reply "yes" to "no warranty" dialog, do not display that dialog any more.
+	* No error message from info pane
+	* Hide motherboard vendor if it is empty
 
 2010-10-03 Homer Xing <homer.xing@gmail.com>
 

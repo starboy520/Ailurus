@@ -23,6 +23,9 @@ from __future__ import with_statement
 import sys, os
 from lib import *
 
+def print_traceback(): # do not display error message
+    pass
+
 def __read(path):
     with open(path) as f:
         ret = f.read().rstrip()
@@ -32,21 +35,21 @@ def __bios():
     #The idea of this function is borrowd from cpu-g. Thanks!
     ret = []
     try:
-        string = __read('/sys/devices/virtual/dmi/id/bios_vendor')
+        string = __read('/sys/devices/virtual/dmi/id/bios_vendor').strip()
         assert string
         ret.append( row(_('BIOS vendor:'), string, D+'umut_icons/i_bios.png') )
     except:
         print_traceback()
 
     try:
-        string = __read('/sys/devices/virtual/dmi/id/bios_version')
+        string = __read('/sys/devices/virtual/dmi/id/bios_version').strip()
         assert string
         ret.append( row(_('BIOS version:'), string, D+'umut_icons/i_bios.png') )
     except:
         print_traceback()
         
     try:
-        string = __read('/sys/devices/virtual/dmi/id/bios_date')
+        string = __read('/sys/devices/virtual/dmi/id/bios_date').strip()
         assert string
         ret.append( row(_('BIOS release date:'), string, D+'umut_icons/i_bios.png') )
     except:
@@ -57,7 +60,7 @@ def __bios():
 def __motherboard():
     ret = []
     try:
-        string = __read('/sys/devices/virtual/dmi/id/board_name')
+        string = __read('/sys/devices/virtual/dmi/id/board_name').strip()
         assert string
         ret.append( row(_('Motherboard name:'), string, D+'umut_icons/i_motherboard.png') )
     except IOError: pass
@@ -65,7 +68,8 @@ def __motherboard():
         print_traceback()
         
     try:
-        string = __read('/sys/devices/virtual/dmi/id/board_vendor')
+        string = __read('/sys/devices/virtual/dmi/id/board_vendor').strip()
+        assert string
         ret.append( row(_('Motherboard vendor:'), string, D+'umut_icons/i_motherboard.png') )
     except IOError: pass
     except:
