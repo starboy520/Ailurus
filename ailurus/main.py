@@ -590,19 +590,15 @@ def show_agreement():
         'Under NO circumstances, will the Ailurus developers be responsible for your actions which includes, '
         'but not limited to, downloading and installing these codecs or close source software.')
     label = gtk.Label(_('Do you agree?'))
-    checkbox = gtk.CheckButton(_('I agree. Do not ask me again.'))
-    checkbox.set_active(not Config.get_show_agreement())
     dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO, type=gtk.MESSAGE_WARNING)
     dialog.set_markup(message)
     dialog.set_title(_('Warning'))
     dialog.vbox.pack_start(label, False)
-    dialog.vbox.pack_start(left_align(checkbox), False)
     dialog.vbox.show_all()
     ret = dialog.run()
     dialog.destroy()
     if ret == gtk.RESPONSE_YES:
-        active = checkbox.get_active()
-        Config.set_show_agreement(not active)
+        Config.set_show_agreement(False)
     if ret != gtk.RESPONSE_YES:
         sys.exit()
 

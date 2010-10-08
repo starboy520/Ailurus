@@ -1,3 +1,7 @@
+2010-10-08 Homer Xing <homer.xing@gmail.com>
+
+	* If user reply "yes" to "no warranty" dialog, do not display that dialog any more.
+
 2010-10-03 Homer Xing <homer.xing@gmail.com>
 
     * Fix issue 1026. If source config is wrong, then exit program. Otherwise, "if not package_name in cls.apt_cache" raises exception.
