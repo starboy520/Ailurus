@@ -1775,16 +1775,24 @@ def window_manager_name():
     return name
 
 class FedoraReposSection:
-    def __init__(self, lines):
-        assert isinstance(lines, list) and lines[0].startswith('[')
-        for l in lines: assert not l.endswith('\n')
-        
+    def _set(self, lines):
         self.name = lines[0][1:-1]
 
         self.dict = {}
         for l in lines[1:]:
             k, v = l.split('=', 1)
             self.dict[k] = v
+        
+    def __init__(self, lines):
+        assert isinstance(lines, list) and lines[0].startswith('[')
+        for l in lines: assert not l.endswith('\n')
+        self._set(lines)
+    
+    def set_new_content_as(self, new_content):
+        assert isinstance(new_content, str)
+        lines = new_content.split('\n')
+        lines = [l for l in lines if l]
+        self._set(lines)
     
     def to_string(self):
         import StringIO

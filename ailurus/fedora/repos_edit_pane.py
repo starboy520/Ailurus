@@ -32,42 +32,57 @@ class _sections_store(gtk.ListStore):
         self.reload()
         
     def reload(self):
+        self.clear()
         self.repo_objs = FedoraReposFile.all_repo_objs()
         for o in self.repo_objs:
             for s in o.all_section_objs():
                 self.append([s])
 
 class _sections_list_box(gtk.VBox):
+    __gsignals__ = {
+                    'section_changed' : (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
+                    'section_selected': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
+                    }
+    
     def r_enabled_cell_function(self, column, cell, model, iter):
-        object = model.get_value(iter, 0)
-        if object != None:
-            assert isinstance(object, FedoraReposSection)
-            cell.set_property('active', object.enabled())
+        section = model.get_value(iter, 0)
+        if section != None:
+            assert isinstance(section, FedoraReposSection)
+            cell.set_property('active', section.enabled())
 
     def r_enabled_toggled(self, render, path):
         path = self.sorted_store.convert_path_to_child_path(path)
-        object = self.sections_store[path][0]
-        enabled = object.enabled()
-        object.set_enabled(not enabled)
+        section = self.sections_store[path][0]
+        enabled = section.enabled()
+        section.set_enabled(not enabled)
+        self.emit('section_changed', section)
     
     def r_name_cell_function(self, column, cell, model, iter):
-        object = model.get_value(iter, 0)
-        if object != None:
-            assert isinstance(object, FedoraReposSection)
-            cell.set_property('text', object.name)
+        section = model.get_value(iter, 0)
+        if section != None:
+            assert isinstance(section, FedoraReposSection)
+            cell.set_property('text', section.name)
     
     def sort_by_enabled(self, model, iter1, iter2):
-        obj1 = model.get_value(iter1, 0)
-        obj2 = model.get_value(iter2, 0)
-        if obj1 and obj2: 
-            return -cmp(obj1.enabled(), obj2.enabled()) or cmp(obj1.name, obj2.name)
+        section1 = model.get_value(iter1, 0)
+        section2 = model.get_value(iter2, 0)
+        if section1 and section2: 
+            return -cmp(section1.enabled(), section2.enabled()) or cmp(section1.name, section2.name)
         else: return 0
     
     def sort_by_name(self, model, iter1, iter2):
-        obj1 = model.get_value(iter1, 0)
-        obj2 = model.get_value(iter2, 0)
-        if obj1 and obj2: return cmp(obj1.name, obj2.name)
+        section1 = model.get_value(iter1, 0)
+        section2 = model.get_value(iter2, 0)
+        if section1 and section2: return cmp(section1.name, section2.name)
         else: return 0
+    
+    def section_selected(self, selection, treeview):
+        store, iter = selection.get_selected()
+        if iter == None:
+            self.emit('section_selected', None)
+        else:
+            section = store.get_value(iter, 0)
+            self.emit('section_selected', section)
     
     def __init__(self, store):
         self.sections_store = store
@@ -93,24 +108,91 @@ class _sections_list_box(gtk.VBox):
         c_name.set_cell_data_func(r_name, self.r_name_cell_function)
         c_name.set_sort_column_id(1001)
         
-        view = gtk.TreeView(self.sorted_store)
+        view = self.view = gtk.TreeView(self.sorted_store)
         view.append_column(c_enabled)
         view.append_column(c_name)
+        view.get_selection().set_mode(gtk.SELECTION_SINGLE)
+        view.get_selection().connect('changed', self.section_selected, view)
         
         scroll = gtk.ScrolledWindow()
         scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.add(view)
         
-        gtk.VBox.__init__(self, False, 0)
+        def reload():
+            self.sections_store.reload()
+        button_reload = image_stock_button(gtk.STOCK_REFRESH, _('Reload'))
+        button_reload.connect('clicked', lambda *w: reload())
+        
+        gtk.VBox.__init__(self, False, 5)
         self.pack_start(scroll)
+        self.pack_start(left_align(button_reload), False)
+
+    def redraw_view(self):
+        self.view.queue_draw()
+
+class _section_content_box(gtk.VBox):
+    __gsignals__ = {
+                    'section_changed' : (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
+                    }
+    
+    def __init__(self):
+        gtk.VBox.__init__(self, False, 5)
+
+        buffer = self.buffer = gtk.TextBuffer()
+        self.buffer.connect('changed', self.content_changed)
+        view = self.view = gtk.TextView(buffer)
+        scroll = gtk.ScrolledWindow()
+        scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
+        scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroll.add(view)
+        
+        self.pack_start(scroll)
+        
+        self.current_section = None
+        self.show_section(None)
+    
+    def show_section(self, section):
+        self.current_section = None
+        if section:
+            assert isinstance(section, FedoraReposSection)
+            self.buffer.set_text(section.to_string())
+            self.view.set_sensitive(True)
+        else:
+            self.buffer.set_text(_('(please select a repository)'))
+            self.view.set_sensitive(False)
+        self.current_section = section
+        
+    def buffer_content(self):
+        start = self.buffer.get_start_iter()
+        end = self.buffer.get_end_iter()
+        return self.buffer.get_text(start, end)
+
+    def content_changed(self, buffer):
+        if self.current_section is not None:
+            self.current_section.set_new_content_as(self.buffer_content())
+            self.emit('section_changed', self.current_section)
 
 class FedoraReposEditPane(gtk.VBox):
     icon = D+'sora_icons/m_repository_configure.png'
     text = _('Repositories')
 
     def __init__(self, main_view):
+        self.sections_store = _sections_store()
+        self.sections_list_box = _sections_list_box(self.sections_store)
+        self.section_content_box = _section_content_box()
+        self.section_content_box.conntect('section_changed',
+                                          lambda w: self.sections_list_box.redraw_view())
+        self.sections_list_box.connect('section_selected',
+                                       lambda w, section:
+                                           self.section_content_box.show_section(section))
+        self.sections_list_box.connect('section_changed',
+                                       lambda w, section:
+                                           self.section_content_box.show_section(section))
+
+        paned = gtk.HPaned()
+        paned.pack1(self.sections_list_box)
+        paned.pack2(self.section_content_box)
+        
         gtk.VBox.__init__(self, False, 5)
-        sections_store = _sections_store()
-        sections_list_box = _sections_list_box(sections_store)
-        self.pack_start(sections_list_box)
+        self.pack_start(paned)
