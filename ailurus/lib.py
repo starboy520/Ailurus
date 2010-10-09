@@ -1780,8 +1780,12 @@ class FedoraReposSection:
 
         self.dict = {}
         for l in lines[1:]:
-            k, v = l.split('=', 1)
-            self.dict[k] = v
+            try:
+                k, v = l.split('=', 1)
+            except ValueError: # no '='
+                self.dict[l] = ''
+            else:
+                self.dict[k] = v
         
     def __init__(self, lines):
         assert isinstance(lines, list) and lines[0].startswith('[')
@@ -1812,8 +1816,11 @@ class FedoraReposSection:
         return False
 
     def enabled(self):
-        assert 'enabled' in self.dict
-        return bool(eval(self.dict['enabled']))
+        if 'enabled' in self.dict and self.dict['enabled']:
+            v = self.dict['enabled']
+            return v == '1' or v == 'True' or v == 'true'
+        else:
+            return False
 
     def set_enabled(self, value):
         if value: self.dict['enabled'] = '1'

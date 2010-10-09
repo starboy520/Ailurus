@@ -181,18 +181,18 @@ class FedoraReposEditPane(gtk.VBox):
         self.sections_store = _sections_store()
         self.sections_list_box = _sections_list_box(self.sections_store)
         self.section_content_box = _section_content_box()
-        self.section_content_box.conntect('section_changed',
-                                          lambda w: self.sections_list_box.redraw_view())
         self.sections_list_box.connect('section_selected',
                                        lambda w, section:
                                            self.section_content_box.show_section(section))
         self.sections_list_box.connect('section_changed',
                                        lambda w, section:
                                            self.section_content_box.show_section(section))
+        self.section_content_box.connect('section_changed',
+                                          lambda *w: self.sections_list_box.redraw_view())
 
         paned = gtk.HPaned()
-        paned.pack1(self.sections_list_box)
-        paned.pack2(self.section_content_box)
+        paned.pack1(self.sections_list_box, True, False)
+        paned.pack2(self.section_content_box, True, True)
         
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(paned)
