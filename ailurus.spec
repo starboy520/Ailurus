@@ -4,7 +4,7 @@
 %endif
 
 Name:			ailurus
-Version:		10.10.1
+Version: 10.10.3
 Release:		1%{?dist}
 Summary:		A simple application installer and GNOME tweaker
 Group:			Applications/System

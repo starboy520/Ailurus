@@ -17,10 +17,10 @@ ailurus/download_icons.py
 ailurus/fedora/apps_eclipse.py
 ailurus/fedora/apps.py
 ailurus/fedora/cure.py
-ailurus/fedora/fastest_mirror_pane.py
 ailurus/fedora/__init__.py
 ailurus/fedora/libserver.py
 ailurus/fedora/menu.py
+ailurus/fedora/repos_edit_pane.py
 ailurus/fedora/rpm_recovery_pane.py
 ailurus/gnome/apps.py
 ailurus/gnome/__init__.py
