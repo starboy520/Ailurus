@@ -38,6 +38,10 @@ class _sections_store(gtk.ListStore):
             for s in o.all_section_objs():
                 self.append([s])
 
+    def write(self):
+        for o in self.repo_objs:
+            o.write()
+
 class _sections_list_box(gtk.VBox):
     __gsignals__ = {
                     'section_changed' : (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
@@ -118,15 +122,10 @@ class _sections_list_box(gtk.VBox):
         scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
         scroll.add(view)
-        
-        def reload():
-            self.sections_store.reload()
-        button_reload = image_stock_button(gtk.STOCK_REFRESH, _('Reload'))
-        button_reload.connect('clicked', lambda *w: reload())
+        scroll.set_size_request(300, -1)
         
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(scroll)
-        self.pack_start(left_align(button_reload), False)
 
     def redraw_view(self):
         self.view.queue_draw()
@@ -191,8 +190,24 @@ class FedoraReposEditPane(gtk.VBox):
                                           lambda *w: self.sections_list_box.redraw_view())
 
         paned = gtk.HPaned()
-        paned.pack1(self.sections_list_box, True, False)
-        paned.pack2(self.section_content_box, True, True)
+        paned.pack1(self.sections_list_box)
+        paned.pack2(self.section_content_box)
         
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(paned)
+        
+        button_reload = image_stock_button(gtk.STOCK_REVERT_TO_SAVED, _('Reset'))
+        button_reload.connect('clicked', lambda *w: self.sections_store.reload())
+        button_save = image_stock_button(gtk.STOCK_SAVE, _('Save'))
+        button_save.connect('clicked', lambda *w: self.sections_store.write())
+        button_save.set_sensitive(False)
+        self.sections_list_box.connect('section_changed',
+                                       lambda *w: button_save.set_sensitive(True))
+        self.section_content_box.connect('section_changed',
+                                          lambda *w: button_save.set_sensitive(True))
+        
+        button_box = gtk.HButtonBox()
+        button_box.pack_start(button_reload, False)
+        button_box.pack_start(button_save, False)
+
+        self.pack_start(button_box, False)
