@@ -233,13 +233,25 @@ class FedoraReposEditPane(gtk.VBox):
         button_save = image_stock_button(gtk.STOCK_SAVE, _('Save'))
         button_save.connect('clicked', lambda *w: self.sections_store.write())
         button_save.set_sensitive(False)
-        self.sections_list_box.connect('section_changed',
-                                       lambda *w: button_save.set_sensitive(True))
-        self.section_content_box.connect('section_changed',
-                                          lambda *w: button_save.set_sensitive(True))
         
         button_box = gtk.HButtonBox()
         button_box.pack_start(button_reload, False)
         button_box.pack_start(button_save, False)
 
         self.pack_start(button_box, False)
+
+        self.should_save = False
+        def section_changed(*w):
+            self.should_save = True
+            button_save.set_sensitive(True)
+        self.sections_list_box.connect('section_changed', section_changed)
+        self.section_content_box.connect('section_changed', section_changed)
+
+        def delete_event(*w):
+            if self.should_save:
+                d = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION, buttons=gtk.BUTTONS_YES_NO,
+                                      message_format=_('Repositories have been changed. Would you like to save them?'))
+                if d.run() == gtk.RESPONSE_YES:
+                    self.sections_store.write()
+        import atexit
+        atexit.register(delete_event)
