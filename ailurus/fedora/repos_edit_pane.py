@@ -139,6 +139,9 @@ class _section_content_box(gtk.VBox):
         gtk.VBox.__init__(self, False, 5)
 
         buffer = self.buffer = gtk.TextBuffer()
+        buffer.create_tag('section_name', font='DejaVu Serif', scale=pango.SCALE_LARGE)
+        buffer.create_tag('key', foreground='purple')
+        buffer.create_tag('value', foreground='blue')
         self.buffer.connect('changed', self.content_changed)
         view = self.view = gtk.TextView(buffer)
         scroll = gtk.ScrolledWindow()
@@ -150,12 +153,41 @@ class _section_content_box(gtk.VBox):
         
         self.current_section = None
         self.show_section(None)
-    
+
+        import re
+        self.name_pattern = re.compile(r'\[(\S+)\]')
+        self.kv_pattern = re.compile(r'([^=]+)=(.+)')
+            
+    def show_text_in_buffer(self, text):
+        buffer = self.buffer
+        buffer.set_text(''); end = buffer.get_end_iter()
+        lines = text.split('\n'); lines = [l for l in lines if l]
+        match = self.name_pattern.match(lines[0])
+        if match:
+            name = match.group(1)
+            buffer.insert(end, '[')
+            buffer.insert_with_tags_by_name(end, name, 'section_name')
+            buffer.insert(end, ']')
+        else:
+            buffer.insert(end, lines[0])
+        buffer.insert(end, '\n')
+
+        for line in lines[1:]:
+            match = self.kv_pattern.match(line)
+            if match:
+                k, v = match.group(1), match.group(2)
+                buffer.insert_with_tags_by_name(end, k, 'key')
+                buffer.insert(end, '=')
+                buffer.insert_with_tags_by_name(end, v, 'value')
+            else:
+                buffer.insert(end, line)
+            buffer.insert(end, '\n')
+                
     def show_section(self, section):
         self.current_section = None
         if section:
             assert isinstance(section, FedoraReposSection)
-            self.buffer.set_text(section.to_string())
+            self.show_text_in_buffer(section.to_string())
             self.view.set_sensitive(True)
         else:
             self.buffer.set_text(_('(please select a repository)'))
