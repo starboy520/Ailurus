@@ -1785,11 +1785,17 @@ class FedoraReposSection:
         for l in lines[1:]:
             k, v = l.split('=', 1)
             self.dict[k] = v
-        
-    def write(self, stream):
+    
+    def to_string(self):
+        import StringIO
+        stream = StringIO.StringIO()
         print >>stream, '[%s]' % self.name
         for k, v in self.dict.items():
             print >>stream, '%s=%s' % (k, v)
+        return stream.getvalue()
+        
+    def write(self, stream):
+        stream.write(self.to_string())
 
     def is_main_repos(self):
         if 'gpgkey' in self.dict:
@@ -1800,6 +1806,10 @@ class FedoraReposSection:
     def enabled(self):
         assert 'enabled' in self.dict
         return bool(eval(self.dict['enabled']))
+
+    def set_enabled(self, value):
+        if value: self.dict['enabled'] = '1'
+        else: self.dict['enabled'] = '0'
 
 class FedoraReposFile:
     def __init__(self, path):

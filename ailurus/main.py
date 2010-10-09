@@ -555,6 +555,7 @@ class MainView:
             from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
             from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
+            from fedora.repos_edit_pane import FedoraReposEditPane
 
         self.register(ComputerDoctorPane, load_cure_objs)
         self.register(CleanUpPane)
@@ -564,6 +565,7 @@ class MainView:
             self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraRPMRecoveryPane)
+            self.register(FedoraReposEditPane)
         self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
