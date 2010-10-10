@@ -1966,6 +1966,9 @@ class Snapshot:
                'pkgs' in _dict
         self.dict = _dict
     
+    def remove(self):
+        os.unlink(self.path())
+    
     @classmethod
     def new_snapshot(cls):
         dict = {}

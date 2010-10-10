@@ -47,6 +47,18 @@ class _snapshot_store(gtk.ListStore):
         s = Snapshot.new_snapshot()
         self.append([s])
 
+    def remove(self, snapshot):
+        assert isinstance(snapshot, Snapshot)
+        iter = self.get_iter_first()
+        while iter:
+            if self.get_value(iter, 0) == snapshot:
+                gtk.ListStore.remove(self, iter)
+                snapshot.remove()
+                return
+            else:
+                iter = self.iter_next(iter)
+        raise Exception # program bug!
+
 class _snapshot_list(gtk.VBox):
     __gsignals__ = {
                 'snapshot_selected': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
@@ -113,6 +125,23 @@ class _snapshot_list(gtk.VBox):
         if sn != None:
             assert isinstance(sn, Snapshot)
             cell.set_property('text', sn.comment())
+
+    def agree_delete(self):
+        d = gtk.MessageDialog(type=gtk.MESSAGE_QUESTION,
+                              buttons=gtk.BUTTONS_YES_NO,
+                              message_format=_('Are you sure to delete the snapshot?'))
+        d.set_default_response(gtk.RESPONSE_YES)
+        response = d.run()
+        d.destroy()
+        return response == gtk.RESPONSE_YES
+    
+    def remove_selected(self):
+        selection = self.view.get_selection()
+        model, iter = selection.get_selected()
+        if iter and self.agree_delete():
+            snapshot = model.get_value(iter, 0)
+            assert isinstance(snapshot, Snapshot)
+            self.store.remove(snapshot)
 
 class _diff_list(gtk.VBox):
     def r_status1_cell_func(self, column, cell, model, iter):
@@ -212,13 +241,14 @@ class _diff_list(gtk.VBox):
         self.set_tooltip_text(_('Drag items from the left box into the right box, then click "apply" button.'))
 
     def show_difference(self, snapshot):
-        assert isinstance(snapshot, Snapshot)
-        new_installed, new_removed = snapshot.difference()
         self.store1.clear()
-        for p in new_installed:
-            self.store1.append([p, True])
-        for p in new_removed:
-            self.store1.append([p, False])
+        if snapshot:
+            assert isinstance(snapshot, Snapshot)
+            new_installed, new_removed = snapshot.difference()
+            for p in new_installed:
+                self.store1.append([p, True])
+            for p in new_removed:
+                self.store1.append([p, False])
         
     def drag_data_get_data(self, treeview, context, selection, target_id, etime):
         treeselection = treeview.get_selection()
@@ -285,12 +315,16 @@ class SnapshotPane(gtk.VBox):
         paned.pack1(self.snapshot_list)
         paned.pack2(self.diff_list)
         
-        b_add = image_stock_button(gtk.STOCK_ADD, _('Create a snapshot of the current'))
+        b_add = image_stock_button(gtk.STOCK_ADD, _('Create a snapshot'))
         b_add.connect('clicked', lambda *w: self.store.create_snapshot_now())
+        b_delete = stock_image_only_button(gtk.STOCK_DELETE)
+        b_delete.set_tooltip_text(_('Delete selected snapshot'))
+        b_delete.connect('clicked', lambda *w: self.snapshot_list.remove_selected())
         b_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply'))
         b_apply.connect('clicked', lambda *w: self.apply_change())
-        b_box = gtk.HBox(False, 20)
+        b_box = gtk.HBox(False, 10)
         b_box.pack_start(b_add, False)
+        b_box.pack_start(b_delete, False)
         b_box.pack_start(b_apply, False)
         
         self.pack_start(paned)
