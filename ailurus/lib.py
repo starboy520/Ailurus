@@ -1954,6 +1954,10 @@ def now(): # return current time in seconds
     import time
     return long(time.time())
 
+def time_string(time):
+    import datetime
+    return datetime.datetime.fromtimestamp(time).strftime('%Y-%m-%d %H:%M')
+
 class Snapshot:
     def __init__(self, _dict):
         assert isinstance(_dict, dict) and \
@@ -2033,6 +2037,15 @@ class Snapshot:
         path = Config.config_dir + 'snapshot_%s' % time
         return cls.read(path)
     
+    @classmethod
+    def all_snapshots(cls):
+        ret = []
+        import glob
+        paths = glob.glob(Config.config_dir + 'snapshot_*')
+        for p in paths:
+            ret.append(cls.read(p))
+        return ret
+
 try:
     AILURUS_VERSION = get_ailurus_version()
     AILURUS_RELEASE_DATE = get_ailurus_release_date()

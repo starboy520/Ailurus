@@ -551,20 +551,19 @@ class MainView:
         from computer_doctor_pane import ComputerDoctorPane
         if UBUNTU or UBUNTU_DERIV:
             from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-            from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
             from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
-            from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
             from fedora.repos_edit_pane import FedoraReposEditPane
 
         self.register(ComputerDoctorPane, load_cure_objs)
         self.register(CleanUpPane)
+        if BACKEND:
+            from snapshot_pane import SnapshotPane
+            self.register(SnapshotPane)
         if UBUNTU or UBUNTU_DERIV:
-            self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
             self.register(ReposConfigPane)
         if FEDORA:
-            self.register(FedoraRPMRecoveryPane)
             self.register(FedoraReposEditPane)
         self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)

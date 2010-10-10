@@ -64,6 +64,15 @@ def gray_bg(widget):
     widget.connect('expose-event', event)
     widget.connect('map-event', event)
 
+def long_text_label(text):
+    textview = gtk.TextView()
+    gray_bg(textview)
+    textview.set_wrap_mode(gtk.WRAP_WORD)
+    textview.set_cursor_visible(False)
+    textview.set_editable(False)
+    textview.get_buffer().set_text(text)
+    return textview
+    
 def image_stock_button(stock, text):
     import gtk
     box = gtk.HBox(False, 3)
