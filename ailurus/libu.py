@@ -65,6 +65,7 @@ def gray_bg(widget):
     widget.connect('map-event', event)
 
 def long_text_label(text):
+    import gtk
     textview = gtk.TextView()
     gray_bg(textview)
     textview.set_wrap_mode(gtk.WRAP_WORD)

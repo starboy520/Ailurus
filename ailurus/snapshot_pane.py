@@ -81,6 +81,7 @@ class _snapshot_list(gtk.VBox):
         scroll.set_size_request(300, -1)
         
         gtk.VBox.__init__(self, False, 5)
+        self.pack_start(gtk.Label(_('snapshots')), False)
         self.pack_start(scroll)
 
     def r_comment_edited(self, render, path, new_text):
@@ -135,7 +136,6 @@ class _diff_list(gtk.VBox):
                 
         r_name1 = gtk.CellRendererText()
         c_name1 = gtk.TreeViewColumn(_('package'))
-        c_name1.set_expand(True)
         c_name1.pack_start(r_name1)
         c_name1.add_attribute(r_name1, 'text', 0)
         c_name1.set_sort_column_id(0)
@@ -158,7 +158,6 @@ class _diff_list(gtk.VBox):
 
         r_name2 = gtk.CellRendererText()
         c_name2 = gtk.TreeViewColumn()
-        c_name2.set_expand(True)
         c_name2.pack_start(r_name2)
         c_name2.add_attribute(r_name2, 'text', 0)
         c_name2.set_sort_column_id(0)
@@ -194,11 +193,12 @@ class _diff_list(gtk.VBox):
         table.set_row_spacings(5)
         table.attach(gtk.Label(_('changes')), 0, 1, 0, 1, gtk.FILL, gtk.FILL)
         table.attach(gtk.Label(_('to do')), 1, 2, 0, 1, gtk.FILL, gtk.FILL)
-        table.attach(scroll1, 0, 1, 1, 2)
-        table.attach(scroll2, 1, 2, 1, 2)
+        table.attach(scroll1, 0, 1, 1, 2, gtk.FILL)
+        table.attach(scroll2, 1, 2, 1, 2, gtk.FILL)
         
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(table)
+        self.set_tooltip_text(_('Drag items from the left box into the right box, then click "apply" button.'))
 
     def show_difference(self, snapshot):
         assert isinstance(snapshot, Snapshot)
@@ -245,12 +245,17 @@ class SnapshotPane(gtk.VBox):
     text = _('Snapshots')
     
     def __init__(self, main_view):
+        gtk.VBox.__init__(self, False, 5)
+        self.pack_start(long_text_label(
+            _('Ailurus helps you keep track of what software you have installed/removed. '
+              'If you often try to use new software, you do not have to worry about messing up your system now.')), False )
+
         self.snapshot_list = _snapshot_list()
         self.diff_list = _diff_list()
         self.snapshot_list.connect('snapshot_selected', lambda w, sn: self.diff_list.show_difference(sn))
         paned = gtk.HPaned()
         paned.pack1(self.snapshot_list)
         paned.pack2(self.diff_list)
-        gtk.VBox.__init__(self, False, 5)
+        
         self.pack_start(paned)
         
