@@ -76,6 +76,7 @@ class _snapshot_list(gtk.VBox):
         view.set_tooltip_text(_('Double click to edit comment'))
         scroll = gtk.ScrolledWindow()
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
+        scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.add(view)
         scroll.set_size_request(300, -1)
         
@@ -108,7 +109,7 @@ class _snapshot_list(gtk.VBox):
             cell.set_property('text', sn.comment())
 
 class _diff_list(gtk.VBox):
-    def r_status_cell_func(column, cell, model, iter):
+    def r_status1_cell_func(self, column, cell, model, iter):
         installed = model.get_value(iter, 1)
         if installed:
             cell.set_property('text', _('was installed'))
@@ -117,101 +118,127 @@ class _diff_list(gtk.VBox):
             cell.set_property('text', _('was removed'))
             cell.set_property('foreground', 'red')
 
-    def __init__(self):
-        self.store = store = gtk.ListStore(str, bool) #package name, currently installed?
-        self.sort_store = gtk.TreeModelSort(self.store)
-        
-        r_name = gtk.CellRendererText()
-        c_name = gtk.TreeViewColumn()
-        c_name.set_expand(True)
-        c_name.pack_start(r_name)
-        c_name.add_attribute(r_name, 'text', 0)
-        c_name.set_sort_column_id(0)
-        
-        r_status = gtk.CellRendererText()
-        c_status = gtk.TreeViewColumn()
-        c_status.pack_start(r_status)
-        c_status.set_sort_column_id(1)
-        c_status.set_cell_data_func(r_status, self.r_status_cell_func)
-        
-        self.view = view = MultiDragTreeView(store)
-        view.append_column(c_name)
-        view.append_column(c_status)
-        view.set_headers_visible(False)
-        view.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
-        
-        scroll = gtk.ScrolledWindow()
-        scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        scroll.set_shadow_type(gtk.SHADOW_IN)
-        scroll.add(view)
+    def r_action_cell_func(self, column, cell, model, iter):
+        action = model.get_value(iter, 1)
+        if action:
+            cell.set_property('text', _('will be removed'))
+            cell.set_property('foreground', 'red')
+        else:
+            cell.set_property('text', _('will be installed'))
+            cell.set_property('foreground', 'blue')
 
-        self.change_liststore = change_liststore = gtk.ListStore(str, bool) #package name, action
+    def __init__(self):
+        from support.multidragview import MultiDragTreeView
+        
+        self.store1 = gtk.ListStore(str, bool) #package name, currently installed?
+        self.store2 = gtk.ListStore(str, bool) #package name, action
+                
+        r_name1 = gtk.CellRendererText()
+        c_name1 = gtk.TreeViewColumn(_('package'))
+        c_name1.set_expand(True)
+        c_name1.pack_start(r_name1)
+        c_name1.add_attribute(r_name1, 'text', 0)
+        c_name1.set_sort_column_id(0)
+        
+        r_status1 = gtk.CellRendererText()
+        c_status1 = gtk.TreeViewColumn()
+        c_status1.pack_start(r_status1)
+        c_status1.set_cell_data_func(r_status1, self.r_status1_cell_func)
+        c_status1.set_sort_column_id(1)
+        
+        self.view1 = view1 = MultiDragTreeView(self.store1)
+        view1.append_column(c_name1)
+        view1.append_column(c_status1)
+        view1.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+        
+        scroll1 = gtk.ScrolledWindow()
+        scroll1.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll1.set_shadow_type(gtk.SHADOW_IN)
+        scroll1.add(view1)
+
         r_name2 = gtk.CellRendererText()
-        r_action2 = gtk.CellRendererText()
         c_name2 = gtk.TreeViewColumn()
         c_name2.set_expand(True)
         c_name2.pack_start(r_name2)
         c_name2.add_attribute(r_name2, 'text', 0)
         c_name2.set_sort_column_id(0)
+
+        r_action2 = gtk.CellRendererText()
         c_action2 = gtk.TreeViewColumn()
         c_action2.pack_start(r_action2)
+        c_action2.set_cell_data_func(r_action2, self.r_action_cell_func)
         c_action2.set_sort_column_id(1)
-        def change_render_action_func(column, cell, model, iter):
-            installed = model.get_value(iter, 1)
-            if installed: text = _('will be removed')
-            else: text = _('will be installed')
-            cell.set_property('text', text)
-            if installed: cell.set_property('foreground', 'red')
-            else: cell.set_property('foreground', 'blue')
-        c_action2.set_cell_data_func(r_action2, 
-                                                change_render_action_func)
-        self.change_view = change_view = MultiDragTreeView(change_liststore)
-        change_view.append_column(c_name2)
-        change_view.append_column(c_action2)
-        change_view.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
 
-        change_view_scroll = gtk.ScrolledWindow()
-        change_view_scroll.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
-        change_view_scroll.set_shadow_type(gtk.SHADOW_IN)
-        change_view_scroll.add(change_view)
+        self.view2 = view2 = MultiDragTreeView(self.store2)
+        view2.append_column(c_name2)
+        view2.append_column(c_action2)
+        view2.get_selection().set_mode(gtk.SELECTION_MULTIPLE)
+
+        scroll2 = gtk.ScrolledWindow()
+        scroll2.set_policy(gtk.POLICY_NEVER, gtk.POLICY_AUTOMATIC)
+        scroll2.set_shadow_type(gtk.SHADOW_IN)
+        scroll2.add(view2)
         
         TARGETS = [('treeview_row', gtk.TARGET_SAME_APP, 0)]
-        view.enable_model_drag_source(gtk.gdk.BUTTON1_MASK,
-                                           TARGETS,
-                                           gtk.gdk.ACTION_COPY)
-        view.enable_model_drag_dest(TARGETS,
-                                         gtk.gdk.ACTION_DEFAULT)
-        view.connect('drag_data_get', self.drag_data_get_data)
-        view.connect('drag_data_received', self.drag_data_received_data_dummy)
-        change_view.enable_model_drag_source(gtk.gdk.BUTTON1_MASK,
-                                             TARGETS,
-                                             gtk.gdk.ACTION_MOVE)
-        change_view.enable_model_drag_dest(TARGETS,
-                                           gtk.gdk.ACTION_DEFAULT)
-        change_view.connect('drag_data_get', self.drag_data_get_data)
-        change_view.connect('drag_data_received', 
-                            self.drag_data_received_data)
+        view1.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, TARGETS, gtk.gdk.ACTION_COPY)
+        view1.enable_model_drag_dest(TARGETS, gtk.gdk.ACTION_DEFAULT)
+        view1.connect('drag_data_get', self.drag_data_get_data)
+        view1.connect('drag_data_received', self.drag_data_received_data_dummy)
+        view2.enable_model_drag_source(gtk.gdk.BUTTON1_MASK, TARGETS, gtk.gdk.ACTION_MOVE)
+        view2.enable_model_drag_dest(TARGETS, gtk.gdk.ACTION_DEFAULT)
+        view2.connect('drag_data_get', self.drag_data_get_data)
+        view2.connect('drag_data_received', self.drag_data_received_data)
 
         table = gtk.Table()
         table.set_col_spacings(5)
         table.set_row_spacings(5)
-        table.attach( scroll,                            0, 1, 1, 2 )
-        table.attach( label_left_align( _('To do:') ),         1, 2, 0, 1, gtk.FILL, gtk.FILL )
-        table.attach( change_view_scroll,                      1, 2, 1, 2 )
-        bottom_box = gtk.HBox(False, 10)
-        bottom_box.pack_start( self.__long_text_label(
-         _('In order to revoke packages, '
-            'you can drag items from the left box to the right box, '
-            'then click the button. ') ) )
-        button_apply = image_stock_button( gtk.STOCK_APPLY, _('Apply') )
-        button_apply.connect('clicked', self.__revoke)
-        bottom_box.pack_start(button_apply, False)
-        table.attach( bottom_box,                                  0, 2, 2, 3, gtk.FILL, gtk.FILL)
-
+        table.attach(gtk.Label(_('changes')), 0, 1, 0, 1, gtk.FILL, gtk.FILL)
+        table.attach(gtk.Label(_('to do')), 1, 2, 0, 1, gtk.FILL, gtk.FILL)
+        table.attach(scroll1, 0, 1, 1, 2)
+        table.attach(scroll2, 1, 2, 1, 2)
+        
+        gtk.VBox.__init__(self, False, 5)
+        self.pack_start(table)
 
     def show_difference(self, snapshot):
         assert isinstance(snapshot, Snapshot)
+        new_installed, new_removed = snapshot.difference()
+        self.store1.clear()
+        for p in new_installed:
+            self.store1.append([p, True])
+        for p in new_removed:
+            self.store1.append([p, False])
         
+    def drag_data_get_data(self, treeview, context, selection, target_id, etime):
+        treeselection = treeview.get_selection()
+        model, pathlist = treeselection.get_selected_rows()
+        import StringIO
+        stream = StringIO.StringIO()
+        for path in pathlist:
+            pkg = model[path][0]
+            print >>stream, pkg
+        selection.set(selection.target, 8, stream.getvalue())
+
+    def drag_data_received_data_dummy(self, treeview, context, x, y, selection, info, etime):
+        treeselection = self.view2.get_selection()
+        model, pathlist = treeselection.get_selected_rows()
+        pathlist.sort()
+        for path in reversed(pathlist):
+            iter = model.get_iter(path)
+            model.remove(iter)
+
+    def drag_data_received_data(self, treeview, context, x, y, selection, info, etime):
+        model = treeview.get_model()
+        packed_value = selection.data
+        data = packed_value.split('\n')[:-1]
+        for name in data:
+            for r in model:
+                if r[0] == name: break
+            else:
+                for r in self.store1:
+                    if name == r[0]:
+                        value = r[1]; break
+                model.append([name, value])
 
 class SnapshotPane(gtk.VBox):
     icon = D+'sora_icons/m_snapshot.png'
@@ -219,8 +246,11 @@ class SnapshotPane(gtk.VBox):
     
     def __init__(self, main_view):
         self.snapshot_list = _snapshot_list()
+        self.diff_list = _diff_list()
+        self.snapshot_list.connect('snapshot_selected', lambda w, sn: self.diff_list.show_difference(sn))
         paned = gtk.HPaned()
         paned.pack1(self.snapshot_list)
+        paned.pack2(self.diff_list)
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(paned)
         
