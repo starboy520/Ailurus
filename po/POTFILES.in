@@ -21,7 +21,6 @@ ailurus/fedora/__init__.py
 ailurus/fedora/libserver.py
 ailurus/fedora/menu.py
 ailurus/fedora/repos_edit_pane.py
-ailurus/fedora/rpm_recovery_pane.py
 ailurus/gnome/apps.py
 ailurus/gnome/__init__.py
 ailurus/gnome/osinfo.py
@@ -38,6 +37,7 @@ ailurus/loader.py
 ailurus/main.py
 ailurus/publickey/__init__.py
 ailurus/show_a_linux_skill_bubble.py
+ailurus/snapshot_pane.py
 ailurus/strings.py
 ailurus/support/add_custom_app.py
 ailurus/support/AptAuth.py
@@ -61,7 +61,6 @@ ailurus/system_setting_pane.py
 ailurus/ubuntu/app_from_external_repos.py
 ailurus/ubuntu/apps_eclipse.py
 ailurus/ubuntu/apps.py
-ailurus/ubuntu/apt_recovery_pane.py
 ailurus/ubuntu/cure.py
 ailurus/ubuntu/fastest_mirror_pane.py
 ailurus/ubuntu/__init__.py
