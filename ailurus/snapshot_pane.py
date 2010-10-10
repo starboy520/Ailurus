@@ -43,13 +43,18 @@ class _snapshot_store(gtk.ListStore):
         if s1 and s2: return cmp(s1.time(), s2.time())
         else: return 0
 
+    def create_snapshot_now(self):
+        s = Snapshot.new_snapshot()
+        self.append([s])
+
 class _snapshot_list(gtk.VBox):
     __gsignals__ = {
                 'snapshot_selected': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
                 }
     
-    def __init__(self):
-        self.store = _snapshot_store()
+    def __init__(self, store):
+        assert isinstance(store, _snapshot_store)
+        self.store = store
         self.sorted_store = gtk.TreeModelSort(self.store)
         self.sorted_store.set_sort_func(1000, self.store.sort_by_time)
         self.sorted_store.set_sort_column_id(1000, gtk.SORT_DESCENDING)
@@ -127,6 +132,12 @@ class _diff_list(gtk.VBox):
         else:
             cell.set_property('text', _('will be installed'))
             cell.set_property('foreground', 'blue')
+
+    def get_todo(self):
+        return self.store2
+
+    def clear_todo(self):
+        self.store2.clear()
 
     def __init__(self):
         from support.multidragview import MultiDragTreeView
@@ -244,18 +255,43 @@ class SnapshotPane(gtk.VBox):
     icon = D+'sora_icons/m_snapshot.png'
     text = _('Snapshots')
     
+    def apply_change(self):
+        to_remove = []
+        to_install = []
+        for r in self.diff_list.get_todo():
+            if r[1]: to_remove.append(r[0])
+            else: to_install.append(r[0])
+        try:
+            if to_install: BACKEND.install(*to_install)
+        except: print_traceback()
+        try:
+            if to_remove: BACKEND.remove(*to_remove)
+        except: print_traceback()
+        self.diff_list.clear_todo()
+    
     def __init__(self, main_view):
+        BACKEND.refresh_cache()
+        
         gtk.VBox.__init__(self, False, 5)
         self.pack_start(long_text_label(
             _('Ailurus helps you keep track of what software you have installed/removed. '
               'If you often try to use new software, you do not have to worry about messing up your system now.')), False )
 
-        self.snapshot_list = _snapshot_list()
+        self.store = _snapshot_store()
+        self.snapshot_list = _snapshot_list(self.store)
         self.diff_list = _diff_list()
         self.snapshot_list.connect('snapshot_selected', lambda w, sn: self.diff_list.show_difference(sn))
         paned = gtk.HPaned()
         paned.pack1(self.snapshot_list)
         paned.pack2(self.diff_list)
         
-        self.pack_start(paned)
+        b_add = image_stock_button(gtk.STOCK_ADD, _('Create a snapshot of the current'))
+        b_add.connect('clicked', lambda *w: self.store.create_snapshot_now())
+        b_apply = image_stock_button(gtk.STOCK_APPLY, _('Apply'))
+        b_apply.connect('clicked', lambda *w: self.apply_change())
+        b_box = gtk.HBox(False, 20)
+        b_box.pack_start(b_add, False)
+        b_box.pack_start(b_apply, False)
         
+        self.pack_start(paned)
+        self.pack_start(b_box, False)

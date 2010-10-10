@@ -1971,6 +1971,7 @@ class Snapshot:
         dict = {}
         dict['time'] = now()
         dict['comment'] = ''
+        BACKEND.cache_changed() # if the system is changed outside ...
         dict['pkgs'] = BACKEND.get_installed_pkgs_set() # set
         s = Snapshot(dict)
         s.write()
