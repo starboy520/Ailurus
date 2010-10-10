@@ -805,11 +805,11 @@ class RPM:
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set1
+        return set(cls.__set1)
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set2
+        return set(cls.__set2)
     @classmethod
     def exist(cls, package_name):
         cls.refresh_cache()
@@ -1005,9 +1005,13 @@ class PACMAN:
                 cls.__allpkgs.add(line.split()[1])
             task.wait()
     @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return set(cls.__pkgs)
+    @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__allpkgs
+        return set(cls.__allpkgs)
     @classmethod
     def installed(cls, package_name):
         cls.refresh_cache()
@@ -1946,6 +1950,89 @@ def get_ailurus_release_date():
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
 
+def now(): # return current time in seconds
+    import time
+    return long(time.time())
+
+class Snapshot:
+    def __init__(self, _dict):
+        assert isinstance(_dict, dict) and \
+               'time' in _dict and \
+               'comment' in _dict and \
+               'pkgs' in _dict
+        self.dict = _dict
+    
+    @classmethod
+    def new_snapshot(cls):
+        dict = {}
+        dict['time'] = now()
+        dict['comment'] = ''
+        dict['pkgs'] = BACKEND.get_installed_pkgs_set() # set
+        s = Snapshot(dict)
+        s.write()
+        return s
+    
+    def path(self):
+        return Config.config_dir + 'snapshot_%d' % self.time()
+    
+    def time(self):
+        return self.dict['time']
+
+    def comment(self):
+        return self.dict['comment']
+
+    def set_comment(self, new_comment):
+        assert isinstance(new_comment, str)
+        self.dict['comment'] = new_comment.replace('\n', ' ').strip()
+        self.write()
+    
+    def write(self):
+        with open(self.path(), 'w') as f:
+            for k,v in self.dict.items():
+                if k == 'pkgs':
+                    v = ','.join(list(v))
+                print >>f, '%s=%s' % (k,v)
+    
+    @classmethod
+    def read(cls, path):
+        with open(path) as f:
+            lines = f.readlines()
+        lines = [l.strip() for l in lines]
+        lines = [l for l in lines if l]
+        dict = {}
+        for line in lines:
+            k, v = line.split('=', 1)
+            if k == 'pkgs':
+                if v: v = set(v.split(','))
+                else: v = set()
+            elif k == 'time': v = long(v)
+            dict[k] = v
+        return Snapshot(dict)
+
+    def difference(self):
+        current = BACKEND.get_installed_pkgs_set()
+        self_pkgs = self.dict['pkgs']
+        new_installed = current.difference(self_pkgs)
+        new_removed = self_pkgs.difference(current)
+        return new_installed, new_removed
+    
+    @classmethod
+    def list_snapshots(cls):
+        ret = []
+        import glob
+        paths = glob.glob(Config.config_dir + 'snapshot_*')
+        for p in paths:
+            filename = os.path.basename(p)
+            assert filename.startswith('snapshot_')
+            time = long(filename[9:])
+            ret.append(time)
+        return ret
+    
+    @classmethod
+    def get_snapshot_at(cls, time):
+        path = Config.config_dir + 'snapshot_%s' % time
+        return cls.read(path)
+    
 try:
     AILURUS_VERSION = get_ailurus_version()
     AILURUS_RELEASE_DATE = get_ailurus_release_date()
