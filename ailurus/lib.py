@@ -1855,10 +1855,13 @@ class FedoraReposFile:
             section = FedoraReposSection(lines, parent=self)
             self.sections.append(section)
 
+    def filename(self):
+        return os.path.basename(self.path)
+
     @classmethod
     def full_path(cls, filename):
         assert isinstance(filename, str) and filename and not ' ' in filename
-        return '/etc/yum.repos.d/%s.repo' % filename
+        return '/etc/yum.repos.d/%s' % filename
 
     @classmethod
     def all_repo_objs(cls):
@@ -1892,6 +1895,11 @@ class FedoraReposFile:
         for s in self.sections:
             if s.name == name: return True
         return False
+
+    def append_section(self, section):
+        assert isinstance(section, FedoraReposSection)
+        assert not section in self.sections
+        self.sections.append(section)
 
 class TimeStat:
     __open_stat_names = set()

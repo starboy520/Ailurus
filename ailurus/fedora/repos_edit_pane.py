@@ -50,6 +50,25 @@ class _sections_store(gtk.ListStore):
                 break
             iter = self.iter_next(iter)
         section.delete()
+    
+    def get_custom_repo(self):
+        for o in self.repo_objs:
+            if o.filename() == 'custom.repo':
+                return o
+        new = FedoraReposFile(FedoraReposFile.full_path('custom.repo'))
+        self.repo_objs.append(new)
+        return new
+    
+    def add_custom_section(self):
+        custom = self.get_custom_repo()
+        i = 1
+        while custom.has_section('custom%s' % i):
+            i += 1
+        section_name = 'custom%s' % i
+        section = FedoraReposSection(['['+section_name+']', 'enabled=1'], custom)
+        self.append([section])
+        custom.append_section(section)
+        return section_name
 
 class _sections_list_box(gtk.VBox):
     __gsignals__ = {
@@ -113,6 +132,7 @@ class _sections_list_box(gtk.VBox):
         self.sorted_store = gtk.TreeModelSort(self.sections_store)
         self.sorted_store.set_sort_func(1000, self.sort_by_enabled)
         self.sorted_store.set_sort_func(1001, self.sort_by_name)
+        self.sorted_store.set_sort_column_id(1000, gtk.SORT_ASCENDING)
         
         r_enabled = gtk.CellRendererToggle()
         r_enabled.connect('toggled', self.r_enabled_toggled)
@@ -148,6 +168,19 @@ class _sections_list_box(gtk.VBox):
 
     def redraw_view(self):
         self.view.queue_draw()
+
+    def select_section(self, section_name):
+        store = self.sorted_store
+        iter = store.get_iter_first()
+        while iter:
+            section = store.get_value(iter, 0)
+            if section.name == section_name:
+                selection = self.view.get_selection()
+                selection.select_iter(iter)
+                path = store.get_path(iter)
+                self.view.scroll_to_cell(path)
+                return
+            iter = store.iter_next(iter)
 
 class _section_content_box(gtk.VBox):
     __gsignals__ = {
@@ -227,6 +260,10 @@ class FedoraReposEditPane(gtk.VBox):
     icon = D+'sora_icons/m_repository_configure.png'
     text = _('Repositories')
 
+    def add_custom_section(self):
+        section_name = self.sections_store.add_custom_section()
+        self.sections_list_box.select_section(section_name)
+
     def __init__(self, main_view):
         self.sections_store = _sections_store()
         self.sections_list_box = _sections_list_box(self.sections_store)
@@ -251,6 +288,8 @@ class FedoraReposEditPane(gtk.VBox):
         button_reload.connect('clicked', lambda *w: self.sections_store.reload())
         button_delete = image_stock_button(gtk.STOCK_DELETE, _('Delete'))
         button_delete.connect('clicked', lambda *w: self.sections_list_box.delete_selected())
+        button_add = image_stock_button(gtk.STOCK_ADD, _('Append'))
+        button_add.connect('clicked', lambda *w: self.add_custom_section())
         button_save = image_stock_button(gtk.STOCK_SAVE, _('Save'))
         button_save.connect('clicked', lambda *w: self.sections_store.write())
         button_save.set_sensitive(False)
@@ -258,6 +297,7 @@ class FedoraReposEditPane(gtk.VBox):
         button_box = gtk.HBox(False, 10)
         button_box.pack_start(button_reload, False)
         button_box.pack_start(button_delete, False)
+        button_box.pack_start(button_add, False)
         button_box.pack_end(button_save, False)
 
         self.pack_start(button_box, False)

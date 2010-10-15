@@ -1,3 +1,7 @@
+2010-10-15 Homer Xing <homer.xing@gmail.com>
+
+    * Append custom repository. Remove chosen repository.
+
 2010-10-10 Homer Xing <homer.xing@gmail.com>
 
     * Support multiple snapshots in one day
