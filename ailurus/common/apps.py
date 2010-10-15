@@ -115,7 +115,9 @@ class RouteConverter(_path_lists):
     file = '/opt/RouteConverterLinux.jar'
     paths = [shortcut, file]
     def install(self):
-        f = R(urls.routeconverter).download()
+        if is32(): url = urls.routeconverter32
+        else: url = urls.routeconverter64
+        f = R(url).download()
         if not os.path.exists('/opt'):
             run_as_root('mkdir /opt')
         run_as_root('cp %s %s' % (f, self.file))

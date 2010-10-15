@@ -25,7 +25,7 @@ from lib import *
 
 class Autostart_Workrave(C):
     __doc__ = _('Automatically start up Workrave')
-    detail = _('Create file:') + '~/.config/autostart/workrave.desktop'
+    detail = _('Create file:') + ' ' + os.path.expanduser('~/.config/autostart/workrave.desktop')
     path = os.path.expanduser('~/.config/autostart/')
     file = path + 'workrave.desktop'
     def exists(self):
@@ -82,7 +82,7 @@ class Create_Imagemagick_shortcut(C):
 
 class Create_softlink_to_desktop_folder(C):
     __doc__ = _('Create a directory "Desktop" linked to the desktop in your home folder')
-    detail = _('After that, you can easily chdir to desktop folder by command "cd ~/Desktop".')
+    detail = _('After that, you can easily chdir to desktop folder by command "cd $HOME/Desktop".')
     desktop = os.path.expanduser('~/Desktop')
     def exists(self):
         return not os.path.exists(self.desktop)
@@ -102,7 +102,7 @@ class Create_softlink_to_desktop_folder(C):
 class Query_before_remove_a_lot_of_files(C) :
     __doc__ = _('Query you before delete more than three files in BASH')
     detail = _('Prevent destruction when you mistype "rm subdir/*" as "rm subdir/ *".\n'
-               'Add this line into ~/.bashrc: alias rm="rm -I"')
+               'Add this line into $HOME/.bashrc: alias rm="rm -I"')
     bashrc = os.path.expanduser('~/.bashrc')
     line = "alias rm='rm -I'"
     def exists(self):
@@ -155,7 +155,7 @@ class Query_before_remove_a_lot_of_files(C) :
 
 class Show_a_Linux_skill_bubble(C):
     __doc__ = _('Show a random Linux skill after you log in to GNOME')
-    detail = _('Create file:') + ' ~/.config/autostart/show-a-linux-skill-bubble.desktop'
+    detail = _('Create file:') + ' ' + os.path.expanduser('~/.config/autostart/show-a-linux-skill-bubble.desktop')
     autostart_path = os.path.expanduser('~/.config/autostart/')
     file = autostart_path + 'show-a-linux-skill-bubble.desktop'
     content = ('[Desktop Entry]\n'
@@ -194,8 +194,8 @@ class Own_usr_lib_eclipse_by_root(C):
         run_as_root('chown -R root:root /usr/share/eclipse', ignore_error=True)
 
 class Own_config_dir_by_user(C):
-    __doc__ = _('Let you be the owner of directory ~/.config/ailurus')
-    detail = _('Command:') + ' chown -R $USER:$USER ~/.config/ailurus'
+    __doc__ = _('Let you be the owner of directory $HOME/.config/ailurus')
+    detail = _('Command:') + ' chown -R $USER:$USER $HOME/.config/ailurus'
     type = C.MUST_FIX
     def exists(self):
         dir = Config.config_dir

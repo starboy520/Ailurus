@@ -25,7 +25,7 @@ from lib import *
 
 class Colorful_BASH_prompt_symbols(C):
     __doc__ = _('Use colorful Bash prompt symbols')
-    detail = (_('Add this line into ~/.bashrc:') + '\n' +
+    detail = (_('Add this line into $HOME/.bashrc:') + '\n' +
               r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '")
     bashrc = os.path.expanduser('~/.bashrc')
     line = r"PS1='\[\033[01;32m\]\u@\h\[\033[00m\] \[\033[01;34m\]\W\[\033[00m\]\\$ '"

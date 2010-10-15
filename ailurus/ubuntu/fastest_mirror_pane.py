@@ -76,11 +76,11 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         label.set_markup(
           _('<b>Backup the configuration of repositories:</b>\n'
             'cd /etc/apt/\n'
-            'tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n'
+            'tar czf $HOME/sources.backup.tar.gz sources.list sources.list.d/\n'
             '\n'
             '<b>Restore the configuration of repositories:</b>\n'
             'cd /etc/apt/\n'
-            'sudo tar xzf ~/sources.backup.tar.gz') )
+            'sudo tar xzf $HOME/sources.backup.tar.gz') )
         def unselect(*w):
             if not label.unselected:
                 label.unselected = True
@@ -309,9 +309,7 @@ class UbuntuFastestMirrorPane(gtk.VBox):
         for path in pathlist:
             iter = model.get_iter(path)
             print >>msg, model.get_value(iter, self.FULL_URL)
-        content = msg.getvalue()
-        clipboard = gtk.clipboard_get()
-        clipboard.set_text(content)
+        copy_to_clipboard(msg.getvalue())
 
     def __callback__detect_selected_repos_speed(self, w, treeview):
         selection = treeview.get_selection()

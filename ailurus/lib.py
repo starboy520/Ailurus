@@ -30,7 +30,7 @@ try:
 except: # raise exception in python console because __file__ is not defined
     import os
     A = os.path.expanduser('~/workspace/Ailurus/ailurus/')
-    assert os.path.exists(A), 'Please put ailurus code in ~/workspace/Ailurus/'
+    assert os.path.exists(A), 'Please put ailurus code in $HOME/workspace/Ailurus/'
 D = A + '/icons/'
 
 def row(text, value, icon, tooltip = None): # only used in hardwareinfo.py and osinfo.py
@@ -104,6 +104,11 @@ class C:
 class Config:
     import os
     config_dir = os.path.expanduser('~/.config/ailurus/')
+    @classmethod
+    def check_permission(cls):
+        cls.make_config_dir()
+        f = open(cls.config_dir + 'this_file_can_be_safely_removed', 'w')
+        f.close()
     @classmethod
     def make_config_dir(cls):
         import os
@@ -540,20 +545,11 @@ def run(command, ignore_error=False):
         if task.returncode and ignore_error == False:
             raise CommandFailError(command, task.returncode)
 
-def pack(D):
-    assert isinstance(D, dict)
-    import StringIO
-    buf = StringIO.StringIO()
-    for k,v in D.items():
-        print >>buf, k
-        print >>buf, v
-    return buf.getvalue()
-
 def packed_env_string():
     import os
     env = dict( os.environ )
     env['PWD'] = os.getcwd()
-    return pack(env)
+    return repr(env)
 
 def daemon():
     import dbus
@@ -618,7 +614,7 @@ def get_output(cmd, ignore_error=False):
     
     import commands
     status, output=commands.getstatusoutput(cmd)
-    if status and not ignore_error: raise CommandFailError(cmd)
+    if status and not ignore_error: raise CommandFailError(cmd, output) # help to fix issue 1092
     return output
     
 class TempOwn:
@@ -764,7 +760,14 @@ def run_as_root_in_terminal(command, ignore_error=False):
     except dbus.exceptions.DBusException, e:
         if e.get_dbus_name() == 'cn.ailurus.AccessDeniedError': raise AccessDeniedError(*e.args)
         elif e.get_dbus_name() == 'cn.ailurus.CommandFailError':
-            if not ignore_error: raise CommandFailError(command)
+            if not ignore_error:
+                if os.path.exists('/tmp/ailurus_subprocess_dump'): 
+                    dump = open('/tmp/ailurus_subprocess_dump').read()
+                    open('/tmp/ailurus_subprocess_dump', 'w').write('')
+                else: dump = None
+                
+                if dump: raise CommandFailError(command, dump)
+                else: raise CommandFailError(command)
         else: raise
 
 class RPM:
@@ -802,11 +805,11 @@ class RPM:
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set1
+        return set(cls.__set1)
     @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__set2
+        return set(cls.__set2)
     @classmethod
     def exist(cls, package_name):
         cls.refresh_cache()
@@ -861,13 +864,15 @@ class APT:
     @classmethod
     def refresh_cache(cls):
         if cls.fresh_cache: return
-        cls.fresh_cache = True
         with TimeStat(_('scan packages')):
             import apt
             try:
                 cls.apt_cache = apt.cache.Cache()
+                assert cls.apt_cache != None # TODO: how to cope with this error?
             except SystemError, e: # syntax error in source config
                 raise APTSourceSyntaxError(*e.args)
+            else:
+                cls.fresh_cache = True
     @classmethod
     def get_installed_pkgs_set(cls):
         cls.refresh_cache()
@@ -1000,9 +1005,13 @@ class PACMAN:
                 cls.__allpkgs.add(line.split()[1])
             task.wait()
     @classmethod
+    def get_installed_pkgs_set(cls):
+        cls.refresh_cache()
+        return set(cls.__pkgs)
+    @classmethod
     def get_existing_pkgs_set(cls):
         cls.refresh_cache()
-        return cls.__allpkgs
+        return set(cls.__allpkgs)
     @classmethod
     def installed(cls, package_name):
         cls.refresh_cache()
@@ -1356,7 +1365,7 @@ def report_bug(*w):
 import os
 class firefox:
     support = False # do not use this class if support is False
-    preference_dir = None # form: ~/.mozilla/firefox/5y7bqw54.default/
+    preference_dir = None # form: $HOME/.mozilla/firefox/5y7bqw54.default/
     extensions_dir = None # form: preference_dir + 'extensions/'
     prefs_js_path = None # form: preference_dir + 'prefs.js'
     pattern1 = None # regexp
@@ -1765,100 +1774,132 @@ def window_manager_name():
             name = win.property_get("_NET_WM_NAME")[2]
         except TypeError, exc:
             pass
+        except AttributeError: #'str' object has no attribute 'property_get'
+            pass
     return name
 
 class FedoraReposSection:
-    def __init__(self, lines):
-        for line in lines: assert isinstance(line, str) and line.endswith('\n')
-        assert lines[0].startswith('['), lines
-        
-        self.name = lines[0].strip()[1:-1]
-        self.lines = lines
+    def _set(self, lines):
+        self.name = lines[0][1:-1]
 
-    def is_fedora_repos(self):
-        for line in self.lines:
-            if line.startswith('gpgkey=') and 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch' in line:
-                return True
+        self.dict = {}
+        for l in lines[1:]:
+            try:
+                k, v = l.split('=', 1)
+            except ValueError: # no '='
+                self.dict[l] = ''
+            else:
+                self.dict[k] = v
+        
+    def __init__(self, lines, parent):
+        assert isinstance(parent, FedoraReposFile)
+        self.parent = parent # for delete section
+        assert isinstance(lines, list) and lines[0].startswith('[')
+        for l in lines: assert not l.endswith('\n')
+        self._set(lines)
+    
+    def set_new_content_as(self, new_content):
+        assert isinstance(new_content, str)
+        lines = new_content.split('\n')
+        lines = [l for l in lines if l]
+        self._set(lines)
+    
+    def to_string(self):
+        import StringIO
+        stream = StringIO.StringIO()
+        print >>stream, '[%s]' % self.name
+        for k, v in self.dict.items():
+            print >>stream, '%s=%s' % (k, v)
+        return stream.getvalue()
+        
+    def write(self, stream):
+        stream.write(self.to_string())
+
+    def is_main_repos(self):
+        if 'gpgkey' in self.dict:
+            v = self.dict['gpgkey']
+            return v == 'file:///etc/pki/rpm-gpg/RPM-GPG-KEY-fedora-$basearch'
         return False
 
-    def part2_of(self, line):
-        for word in ['/releases/', '/development/', '/updates/']:
-            pos = line.find(word)
-            if pos != -1:
-                return line[pos:]
-        else:
-            raise CommandFailError('No /releases/, /development/ or /updates/ found.', self.lines)
-
-    def comment_line(self, i):
-        if not self.lines[i].startswith('#'):
-            self.lines[i] = '#' + self.lines[i] 
-
-    def uncomment_line(self, i):
-        if self.lines[i].startswith('#'):
-            self.lines[i] = self.lines[i][1:] 
-
-    def change_baseurl(self, new_url):
-        for i, line in enumerate(self.lines):
-            if 'mirrorlist=' in line:
-                self.comment_line(i)
-            elif 'baseurl=' in line:
-                self.uncomment_line(i)
-        for i, line in enumerate(self.lines):
-            if line.startswith('baseurl='):
-                self.lines[i] = 'baseurl=' + new_url + self.part2_of(line)
-
-    def write_to_stream(self, stream):
-        stream.writelines(self.lines)
-    
     def enabled(self):
-        return 'enabled=1\n' in self.lines
+        if 'enabled' in self.dict and self.dict['enabled']:
+            v = self.dict['enabled']
+            return v == '1' or v == 'True' or v == 'true'
+        else:
+            return False
+
+    def set_enabled(self, value):
+        if value: self.dict['enabled'] = '1'
+        else: self.dict['enabled'] = '0'
+        
+    def delete(self):
+        self.parent.delete_section(self)
 
 class FedoraReposFile:
     def __init__(self, path):
-        assert isinstance(path, str) and path.endswith('.repo')
-
+        assert isinstance(path, str)
         self.path = path
-
         self.sections = []
-        with open(path) as f:
-            contents = f.readlines()
-        while contents[0].startswith('#') or contents[0].strip() == '': # skip comments and blank lines at the beginning
-            del contents[0]
-        lines = []
-        for line in contents:
-            if line.startswith('[') and lines:
-                section = FedoraReposSection(lines)
-                self.sections.append(section)
-                lines = []
-            lines.append(line)
-        section = FedoraReposSection(lines)
-        self.sections.append(section)
+        if os.path.exists(path):
+            with open(path) as f:
+                contents = f.readlines()
+            contents = [l for l in contents if not l.startswith('#') and l.strip()!=''] # skip comments and blank lines at the beginning
+            contents = [l.strip() for l in contents] # strip \n
+            lines = []
+            for line in contents:
+                if line.startswith('[') and lines: # a new section starts
+                    section = FedoraReposSection(lines, parent=self)
+                    self.sections.append(section)
+                    lines = []
+                lines.append(line)
+            section = FedoraReposSection(lines, parent=self)
+            self.sections.append(section)
 
-    def change_baseurl(self, new_url):
-        changed = False
-        for section in self.sections:
-            if section.is_fedora_repos():
-                section.change_baseurl(new_url)
-                changed = True
-
-        if not changed: return
-        with TempOwn(self.path):
-            with open(self.path, 'w') as f:
-                for section in self.sections:
-                    section.write_to_stream(f)
+    def filename(self):
+        return os.path.basename(self.path)
 
     @classmethod
-    def all_repo_paths(cls):
+    def full_path(cls, filename):
+        assert isinstance(filename, str) and filename and not ' ' in filename
+        return '/etc/yum.repos.d/%s' % filename
+
+    @classmethod
+    def all_repo_objs(cls):
         import glob
-        return glob.glob('/etc/yum.repos.d/*.repo')
+        paths = glob.glob('/etc/yum.repos.d/*.repo')
+        return [FedoraReposFile(p) for p in paths]
+        
+    def write(self):
+        if self.sections:
+            with TempOwn(self.path):
+                with open(self.path, 'w') as f:
+                    for s in self.sections:
+                        s.write(f)
+        else: # no section. remove file
+            if os.path.exists(self.path):
+                run_as_root('rm -f "%s"' % self.path)
 
-    @classmethod
-    def all_repo_objects(cls):
-        ret = []
-        for path in cls.all_repo_paths():
-            obj = FedoraReposFile(path)
-            ret.append(obj)
-        return ret
+    def delete_section(self, section):
+        assert section.parent == self
+        assert section in self.sections
+        self.sections.remove(section)
+
+    def get_section(self, name):
+        assert isinstance(name, str)
+        for s in self.sections:
+            if s.name == name: return s
+        return None
+    
+    def has_section(self, name):
+        assert isinstance(name, str)
+        for s in self.sections:
+            if s.name == name: return True
+        return False
+
+    def append_section(self, section):
+        assert isinstance(section, FedoraReposSection)
+        assert not section in self.sections
+        self.sections.append(section)
 
 class TimeStat:
     __open_stat_names = set()
@@ -1930,6 +1971,10 @@ def fedora_installation_command(package_names):
 def archlinux_installation_command(package_names):
     return 'pacman -S ' + package_names
 
+def useBASH():
+    import os
+    return os.environ['SHELL'] == '/bin/bash'
+
 def get_ailurus_version():
     import os
     path = A+'/version'
@@ -1941,6 +1986,106 @@ def get_ailurus_release_date():
     path = A+'/version'
     info = os.stat(path)
     return time.strftime('%Y-%m-%d', time.gmtime(info.st_mtime))
+
+def now(): # return current time in seconds
+    import time
+    return long(time.time())
+
+def time_string(time):
+    import datetime
+    return datetime.datetime.fromtimestamp(time).strftime('%Y-%m-%d %H:%M')
+
+class Snapshot:
+    def __init__(self, _dict):
+        assert isinstance(_dict, dict) and \
+               'time' in _dict and \
+               'comment' in _dict and \
+               'pkgs' in _dict
+        self.dict = _dict
+    
+    def remove(self):
+        os.unlink(self.path())
+    
+    @classmethod
+    def new_snapshot(cls):
+        dict = {}
+        dict['time'] = now()
+        dict['comment'] = ''
+        BACKEND.cache_changed() # if the system is changed outside ...
+        dict['pkgs'] = BACKEND.get_installed_pkgs_set() # set
+        s = Snapshot(dict)
+        s.write()
+        return s
+    
+    def path(self):
+        return Config.config_dir + 'snapshot_%d' % self.time()
+    
+    def time(self):
+        return self.dict['time']
+
+    def comment(self):
+        return self.dict['comment']
+
+    def set_comment(self, new_comment):
+        assert isinstance(new_comment, str)
+        self.dict['comment'] = new_comment.replace('\n', ' ').strip()
+        self.write()
+    
+    def write(self):
+        with open(self.path(), 'w') as f:
+            for k,v in self.dict.items():
+                if k == 'pkgs':
+                    v = ','.join(list(v))
+                print >>f, '%s=%s' % (k,v)
+    
+    @classmethod
+    def read(cls, path):
+        with open(path) as f:
+            lines = f.readlines()
+        lines = [l.strip() for l in lines]
+        lines = [l for l in lines if l]
+        dict = {}
+        for line in lines:
+            k, v = line.split('=', 1)
+            if k == 'pkgs':
+                if v: v = set(v.split(','))
+                else: v = set()
+            elif k == 'time': v = long(v)
+            dict[k] = v
+        return Snapshot(dict)
+
+    def difference(self):
+        current = BACKEND.get_installed_pkgs_set()
+        self_pkgs = self.dict['pkgs']
+        new_installed = current.difference(self_pkgs)
+        new_removed = self_pkgs.difference(current)
+        return new_installed, new_removed
+    
+    @classmethod
+    def list_snapshots(cls):
+        ret = []
+        import glob
+        paths = glob.glob(Config.config_dir + 'snapshot_*')
+        for p in paths:
+            filename = os.path.basename(p)
+            assert filename.startswith('snapshot_')
+            time = long(filename[9:])
+            ret.append(time)
+        return ret
+    
+    @classmethod
+    def get_snapshot_at(cls, time):
+        path = Config.config_dir + 'snapshot_%s' % time
+        return cls.read(path)
+    
+    @classmethod
+    def all_snapshots(cls):
+        ret = []
+        import glob
+        paths = glob.glob(Config.config_dir + 'snapshot_*')
+        for p in paths:
+            ret.append(cls.read(p))
+        return ret
 
 try:
     AILURUS_VERSION = get_ailurus_version()
@@ -2019,7 +2164,7 @@ elif FEDORA:
 elif ARCHLINUX:
     DISTRIBUTION = 'archlinux'
     VERSION = '' # ArchLinux has no version -_-b
-    BACKEND = PACKMAN
+    BACKEND = PACMAN
     installation_command_backend = archlinux_installation_command
 elif DEBIAN:
     DISTRIBUTION = 'debian'

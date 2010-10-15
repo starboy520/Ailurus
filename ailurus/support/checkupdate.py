@@ -199,7 +199,7 @@ def show_special_thank_dialog():
     print >>text, '<b>LIANG Suilong</b>'
     print >>text
     print >>text, _('The people who maintain ArchLinux package:')
-    print >>text, '<b>kiefer</b>'
+    print >>text, '<b>Jorge Madrid (kiefer)</b>'
     print >>text
     print >>text, _('The people who provide a lot of Linux skills:')
     print >>text, '<b>Oneleaf</b>'

@@ -72,10 +72,11 @@ class DownloadIconsWindow(gtk.Window):
 
     def download_thread(self):
         try:
-            if Config.get_use_proxy():
-                enable_urllib2_proxy()
-            else:
-                disable_urllib2_proxy()
+            try:
+                if Config.get_use_proxy(): enable_urllib2_proxy()
+                else: disable_urllib2_proxy()
+            except:
+                print_traceback()
             in_file = urllib2.urlopen(self.url)
             header_string = str(in_file.info())
             total_size = self.get_length_from_header(header_string)
@@ -109,27 +110,21 @@ class DownloadIconsWindow(gtk.Window):
             exception_happened(*self.exception)
             gtk.main() # show exception dialog
         else:
-            dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Please press "OK" button to install icons. Authentication is required.'))
-            dialog.set_position(gtk.WIN_POS_CENTER)
-            dialog.run()
-            dialog.destroy()
             try:
                 self.install_icons()
             except:
                 exception_happened(*sys.exc_info())
                 gtk.main()
             else:
-                dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_OK, message_format=_('Icons are successfully installed.'))
-                dialog.run()
-                dialog.destroy()
+                notify(' ', _('Icons are successfully installed.'))
                 sys.exit()
     
     def install_icons(self):
-        appicons_path = D+'/appicons/'
-        if not os.path.exists(appicons_path):
-            run_as_root('mkdir ' + appicons_path)
+        # install app icons in $HOME/.config, therefore authentication is not required
+        Config.make_config_dir()
+        appicons_path = Config.config_dir
         os.chdir(appicons_path)
-        run_as_root('tar xf ' + self.filename)
+        run('tar xf ' + self.filename)
 
 if __name__ == '__main__':
     import ctypes # change_task_name

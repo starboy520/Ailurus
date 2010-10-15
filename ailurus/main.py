@@ -179,6 +179,26 @@ def check_required_packages():
         dialog.run()
         dialog.destroy()
 
+def check_home_dir_permission():
+    try: Config.check_permission()
+    except: pass
+    else: return
+
+    import StringIO
+    msg = StringIO.StringIO()
+    print >>msg, _('Your home folder is not owned by yourself.\n'
+                   'Please run the following command to fix the error.')
+    user = os.environ['USER']
+    home = os.environ['HOME']
+    command = 'sudo chown -R %s:%s %s' % (user, user, home)
+    print >>msg, '<span color="blue">%s</span>' % command,
+    
+    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_OK)
+    dialog.set_title(_('Fatal error'))
+    dialog.set_markup(msg.getvalue())
+    dialog.run()
+    dialog.destroy()
+
 def check_dbus_daemon_status():
     if not with_same_content('/etc/dbus-1/system.d/cn.ailurus.conf', '/usr/share/ailurus/support/cn.ailurus.conf'):
         correct_conf_files = False
@@ -458,21 +478,22 @@ class MainView:
 
     def query_whether_exit(self):
         dialog = gtk.MessageDialog(self.window, 
-                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_OK_CANCEL, 
+                gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
                 _('Are you sure to exit?'))
         check_button = gtk.CheckButton(_('Do not query me any more.'))
+        check_button.set_active(not Config.get_query_before_exit())
         dialog.vbox.pack_start(check_button)
         dialog.vbox.show_all()
         ret = dialog.run()
         dialog.destroy()
-        if ret == gtk.RESPONSE_OK:
-            Config.set_query_before_exit(not check_button.get_active())
+        Config.set_query_before_exit(not check_button.get_active())
+        if ret == gtk.RESPONSE_NO:
             return True
         else:
             return False
 
     def terminate_program(self, *w):
-        if Config.get_query_before_exit() and not self.query_whether_exit():
+        if Config.get_query_before_exit() and self.query_whether_exit():
             return True
         
         if self.stop_delete_event:
@@ -530,21 +551,20 @@ class MainView:
         from computer_doctor_pane import ComputerDoctorPane
         if UBUNTU or UBUNTU_DERIV:
             from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
-            from ubuntu.apt_recovery_pane import UbuntuAPTRecoveryPane
             from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
-            from fedora.fastest_mirror_pane import FedoraFastestMirrorPane
-            from fedora.rpm_recovery_pane import FedoraRPMRecoveryPane
+            from fedora.repos_edit_pane import FedoraReposEditPane
 
         self.register(ComputerDoctorPane, load_cure_objs)
         self.register(CleanUpPane)
+        if BACKEND:
+            from snapshot_pane import SnapshotPane
+            self.register(SnapshotPane)
         if UBUNTU or UBUNTU_DERIV:
-            self.register(UbuntuAPTRecoveryPane)
             self.register(UbuntuFastestMirrorPane)
             self.register(ReposConfigPane)
         if FEDORA:
-            self.register(FedoraRPMRecoveryPane)
-            self.register(FedoraFastestMirrorPane)
+            self.register(FedoraReposEditPane)
         self.register(InstallRemovePane)
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
@@ -570,19 +590,15 @@ def show_agreement():
         'Under NO circumstances, will the Ailurus developers be responsible for your actions which includes, '
         'but not limited to, downloading and installing these codecs or close source software.')
     label = gtk.Label(_('Do you agree?'))
-    checkbox = gtk.CheckButton(_('I agree. Do not ask me again.'))
-    checkbox.set_active(not Config.get_show_agreement())
     dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO, type=gtk.MESSAGE_WARNING)
     dialog.set_markup(message)
     dialog.set_title(_('Warning'))
     dialog.vbox.pack_start(label, False)
-    dialog.vbox.pack_start(left_align(checkbox), False)
     dialog.vbox.show_all()
     ret = dialog.run()
     dialog.destroy()
     if ret == gtk.RESPONSE_YES:
-        active = checkbox.get_active()
-        Config.set_show_agreement(not active)
+        Config.set_show_agreement(False)
     if ret != gtk.RESPONSE_YES:
         sys.exit()
 
@@ -594,6 +610,7 @@ with TimeStat(_('start up')):
     change_task_name()
     set_default_window_icon()
     detect_proxy_env()
+    check_home_dir_permission()
     check_required_packages()
     check_dbus_daemon_status()
     

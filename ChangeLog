@@ -1,14 +1,39 @@
-2010-09-01 MA Yue <velly.empire@gmail.com>
+2010-10-15 Homer Xing <homer.xing@gmail.com>
 
-    * Fix some bug about moovida, pbc and xbmc
+    * Append custom repository. Remove chosen repository.
 
-2010-08-28 MA Yue <velly.empire@gmail.com>
+2010-10-10 Homer Xing <homer.xing@gmail.com>
 
-    * Add Openfetion, Turpial for Ubuntu, Brasero
-    * Delete Firefox Addon version, add Radioget Desktop version instead.
-    * Update the path of SweetHome3D, for new version.
-    * Fix the bug about bioclipse path.
-    
+    * Support multiple snapshots in one day
+
+2010-10-09 Homer Xing <homer.xing@gmail.com>
+
+    * Support Fedora repositories editing
+
+2010-10-08 Homer Xing <homer.xing@gmail.com>
+
+	* If user reply "yes" to "no warranty" dialog, do not display that dialog any more.
+	* No error message from info pane
+	* Hide motherboard vendor if it is empty
+	* Clean Nautilus thumbnail image cache in setting pane
+	* Use custom window titlebar layout in setting pane
+	* Directly display login icon path & "start-here" icon path
+
+2010-10-03 Homer Xing <homer.xing@gmail.com>
+
+    * Fix issue 1026. If source config is wrong, then exit program. Otherwise, "if not package_name in cls.apt_cache" raises exception.
+    * Fix issue 1027. No message dialog after icons pack completely downloaded.
+    * Fix issue 1089. Dict <-> String have wrong conversation.
+
+2010-09-23 Homer Xing <homer.xing@gmail.com>
+
+    * Fix bug 635716 - window_manager_name: AttributeError: 'str' object has no attribute 'property_get'
+    * Fix bug 632969 - AssertionError: line.endswith('\n') @ FedoraReposSection
+	* Fix broken url for:
+		Bioclipse, PBC, RouteConverter
+	* Use new version:
+		Electric, Nscript, Pydev, Geogebra, SweetHome
+
 2010-07-28 Homer Xing <homer.xing@gmail.com>
 
     * Fix bug about SweetHome3D installing path, issue 1020.

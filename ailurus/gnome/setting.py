@@ -86,24 +86,30 @@ def __start_here_icon_setting():
         return ''
 
     path = get_start_here_icon_path()
-    i = ImageChooser('/usr/share/pixmaps/', 24, 24, _('The "start-here" icon is %s') % path)
+    label = gtk.Label(_('The "start-here" icon is %s') % path)
+    label.set_alignment(0, 0)
+    i = ImageChooser('/usr/share/pixmaps/', 24, 24)
     try:    i.display_image(path)
     except: i.display_image(None) # show blank
     i.connect('changed', apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(left_align(i))
+    box.pack_start(label, False)
+    box.pack_start(left_align(i), False)
     return Setting(box, _('Change "start-here" icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
 
 def __login_icon_setting():
     def apply(w, image):
-        os.system('cp %s ~/.face' % image)
+        run('cp %s $HOME/.face' % image)
 
-    i = ImageChooser('/usr/share/pixmaps/', 96, 96, _('The login icon is ~/.face'))
+    label = gtk.Label(_('The login icon is %s') % os.path.expanduser('~/.face'))
+    label.set_alignment(0, 0)
+    i = ImageChooser('/usr/share/pixmaps/', 96, 96, )
     try:    i.display_image(os.path.expanduser('~/.face'))
     except: i.display_image(None) # show blank
     i.connect('changed',apply)
     box = gtk.VBox(False, 0)
-    box.pack_start(left_align(i))
+    box.pack_start(label, False)
+    box.pack_start(left_align(i), False)
     return Setting(box, _('Change login icon') + ' ' + _('(take effect at the next time GNOME starts up)'), ['icon'])
     
 def __menu_icon_setting():
@@ -186,16 +192,58 @@ def __font_size_setting():
     return Setting(hbox, _('One-click changing font size'), ['font'])
 
 def __layout_of_window_titlebar_buttons():
-    label = gtk.Label(_('The layout of window title-bar buttons'))
-    label.set_tooltip_text(_('GConf key: ') + '/app/metacity/general/button_layout\n'
-                           + _("It can be used in Metacity only.") )
-    o = GConfComboBox('/apps/metacity/general/button_layout', 
+    def gconf_client():
+        import gconf
+        return gconf.client_get_default()
+    
+    def radio_button_clicked(radio_button, widget_on_right, widget_on_right2=None):
+        widget_on_right.set_sensitive(radio_button.get_active())
+        if widget_on_right2: widget_on_right2.set_sensitive(radio_button.get_active())
+
+    pre_defined = ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:']
+    
+    c = gconf_client()
+    layout = c.get_string('/app/metacity/general/button_layout')
+    if layout is None: layout = 'menu:minimize,maximize,close' # default value
+    
+    label = gtk.Label(_('GConf key: ') + '/app/metacity/general/button_layout\n'
+                           + _("It can be used in Metacity only."))
+    label.set_alignment(0, 0)
+    r1 = gtk.RadioButton(label=_('Pre-defined:'))
+    r2 = gtk.RadioButton(group=r1, label=_('Custom:'))
+    o1 = GConfComboBox('/apps/metacity/general/button_layout', 
                       [_('GNOME classic'), _('Ubuntu Lucid beta'), _('MAC OS X')],
-                      ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:'],)
-    hbox = gtk.HBox(False, 10)
-    hbox.pack_start(label, False)
-    hbox.pack_start(o, False)
-    return Setting(hbox, _('The layout of window title-bar buttons'), ['window'])
+                      pre_defined,)
+    o2 = gtk.Entry()
+    o2.set_text(layout)
+    label2 = gtk.Label('Arrangement of buttons on the titlebar.\n'
+                       'The value should be a string, such as "menu:minimize,maximize,close";\n'
+                       'the colon separates the left corner of the window from the right corner,\n'
+                       'and the button names are comma-separated.\n'
+                       'Duplicate buttons are not allowed.\n'
+                       'Unknown button names are silently ignored.')
+    label2.set_selectable(True)
+    label2.set_alignment(0, 0)
+    def o1_changed(new_value):
+        o2.set_text(new_value)
+    o1.callback = o1_changed
+    r1.connect('clicked', radio_button_clicked, o1)
+    r2.connect('clicked', radio_button_clicked, o2, label2)
+
+    table = gtk.Table()
+    table.attach(label, 0, 2, 0, 1, gtk.FILL, gtk.FILL)
+    table.attach(r1, 0, 1, 1, 2, gtk.FILL, gtk.FILL)
+    table.attach(o1, 1, 2, 1, 2, gtk.FILL|gtk.EXPAND, gtk.FILL)
+    table.attach(r2, 0, 1, 2, 3, gtk.FILL, gtk.FILL)
+    table.attach(o2, 1, 2, 2, 3, gtk.FILL|gtk.EXPAND, gtk.FILL)
+    table.attach(label2, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
+    
+    if layout in pre_defined:
+        r1.set_active(True); o2.set_sensitive(False); label2.set_sensitive(False)
+    else:
+        r2.set_active(True); o1.set_sensitive(False)
+    
+    return Setting(table, _('The layout of window title-bar buttons'), ['window'])
 
 def __window_behaviour_setting():
     label_double = gtk.Label(_('double-clicked by mouse left button:'))
@@ -246,6 +294,7 @@ def __textbox_context_menu_setting():
     table.attach(o, 1, 2, 0, 1, gtk.FILL, gtk.FILL)
     return Setting(table, _('Text-boxes context menu'), ['menu'])
 
+# not work in GNOME >= 2.30
 #def __gnome_splash_setting():
 #    # not used
 #    def changed(w, new_path):
@@ -333,6 +382,13 @@ def __nautilus_thumbnail_setting():
     o = GConfNumericEntry(key, 0, 30)
     table.attach(o, 1, 2, 3, 4, gtk.FILL, gtk.FILL)
     
+    o = gtk.Button(_('Clean thumbnail image cache') + ' (%s)' % _('command: rm -rf $HOME/.thumbnails/*'))
+    def clean(*w):
+        os.system('rm -rf $HOME/.thumbnails/*')
+        notify(_('Nautilus thumbnail image cache is clean'))
+    o.connect('clicked', clean)
+    table.attach(o, 0, 2, 4, 5, gtk.FILL, gtk.FILL)
+    
     return Setting(table, _('Nautilus thumbnail settings'), ['nautilus'])
 
 def __gnome_session_setting():
@@ -383,7 +439,7 @@ def __advance_setting():
 
     def clicked(button, path):
         if button.get_active():
-            os.system('mkdir -p ~/.local/share/applications/')
+            os.system('mkdir -p $HOME/.local/share/applications/')
             with open(path, 'w') as f:
                 f.write('[Desktop Entry]\n'
                         'Name=Gnome Control Center\n'
@@ -397,7 +453,7 @@ def __advance_setting():
 
     path = os.path.expanduser('~/.local/share/applications/gnome-control-center.desktop')
     button = gtk.CheckButton(_('Display "GNOME control center" entry in "System" menu') + ' ' + _('(take effect at the next time GNOME starts up)'))
-    button.set_tooltip_text(_('Create a file ~/.local/share/applications/gnome-control-center.desktop'))
+    button.set_tooltip_text(_('Create a file $HOME/.local/share/applications/gnome-control-center.desktop'))
     button.set_active(os.path.exists(path))
     button.connect('clicked', clicked, path)
     box.pack_start(button, False)
@@ -424,16 +480,17 @@ def __advance_setting():
 
     return Setting(box, _('Advance settings'), ['desktop'])
 
-def __gnome_panel_setting():
-    box = gtk.VBox(False, 5)
-    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
-    box.pack_start(o, False)
-    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
-    box.pack_start(o, False)
-    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
-    box.pack_start(o, False)
-    
-    return Setting(box, _('GNOME panels settings'), ['panel'])
+# not work in GNOME >=2.30
+#def __gnome_panel_setting():
+#    box = gtk.VBox(False, 5)
+#    o = GConfCheckButton(_('Enable GNOME panel animations'), '/apps/panel/global/enable_animations')
+#    box.pack_start(o, False)
+#    o = GConfCheckButton(_('Lock down all GNOME panels') + ' ' + _('(take effect at the next time when GNOME starts up)'), '/apps/panel/global/locked_down')
+#    box.pack_start(o, False)
+#    o = GConfCheckButton(_('Confirm before removing a panel'), '/apps/panel/global/confirm_panel_remove')
+#    box.pack_start(o, False)
+#    
+#    return Setting(box, _('GNOME panels settings'), ['panel'])
 
 def __login_window_setting():
     box = gtk.VBox(False, 5)
@@ -539,52 +596,53 @@ def __gedit_setting():
 
     return Setting(table, _('GEdit settings'), ['gedit'])
 
-class ResetGNOME(gtk.VBox):
-    def do_reset(self, w, user):
-        run_as_root('rm -rf /home/%s/.gnome*' % user)
-        run_as_root('rm -rf /home/%s/.gconf*' % user)
-        run_as_root('rm -rf /home/%s/.metacity' % user)
-        run_as_root('rm -rf /home/%s/.nautilus' % user)
-        run_as_root('rm -rf /tmp/gconfd-%s' % user)
-        run_as_root('rm -rf /tmp/orbit-%s' % user)
-        notify(' ', _('GNOME settings of user %s have been reset.') % user)
-    
-    def __init__(self):
-        gtk.VBox.__init__(self, False, 5)
-        
-        import StringIO
-        msg = StringIO.StringIO()
-        print >>msg, _('Reset GNOME by removing these directories:')
-        print >>msg, ('<small>'
-                      '$HOME/.gnome*, '
-                      '$HOME/.gconf*, '
-                      '$HOME/.metacity\n'
-                      '$HOME/.nautilus, '
-                      '/tmp/gconfd-$USER, '
-                      '/tmp/orbit-$USER'
-                      '</small>')
-        print >>msg, _('In order to reset GNOME, please logout first, then login GNOME as another user.')
-        print >>msg, _('Cannot reset GNOME for current user because above files are being used.')
-        print >>msg, _('Please be careful.'),
-        label = gtk.Label()
-        label.set_markup(msg.getvalue())
-        label.set_alignment(0, 0.5)
-        self.pack_start(label, False)
-        
-        current_user = os.environ['USER']
-        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
-        if users_list == []:
-            button = gtk.Button(_('There is no other user'))
-            button.set_sensitive(False)
-            self.pack_start(button)
-        else:
-            for user in users_list:
-                button = gtk.Button(_('Reset user %s') % user)
-                button.connect('clicked', self.do_reset, user)
-                self.pack_start(button)
+# some user reported system failure
+#class ResetGNOME(gtk.VBox):
+#    def do_reset(self, w, user):
+#        run_as_root('rm -rf /home/%s/.gnome*' % user)
+#        run_as_root('rm -rf /home/%s/.gconf*' % user)
+#        run_as_root('rm -rf /home/%s/.metacity' % user)
+#        run_as_root('rm -rf /home/%s/.nautilus' % user)
+#        run_as_root('rm -rf /tmp/gconfd-%s' % user)
+#        run_as_root('rm -rf /tmp/orbit-%s' % user)
+#        notify(' ', _('GNOME settings of user %s have been reset.') % user)
+#    
+#    def __init__(self):
+#        gtk.VBox.__init__(self, False, 5)
+#        
+#        import StringIO
+#        msg = StringIO.StringIO()
+#        print >>msg, _('Reset GNOME by removing these directories:')
+#        print >>msg, ('<small>'
+#                      '$HOME/.gnome*, '
+#                      '$HOME/.gconf*, '
+#                      '$HOME/.metacity\n'
+#                      '$HOME/.nautilus, '
+#                      '/tmp/gconfd-$USER, '
+#                      '/tmp/orbit-$USER'
+#                      '</small>')
+#        print >>msg, _('In order to reset GNOME, please logout first, then login GNOME as another user.')
+#        print >>msg, _('Cannot reset GNOME for current user because above files are being used.')
+#        print >>msg, _('Please be careful.'),
+#        label = gtk.Label()
+#        label.set_markup(msg.getvalue())
+#        label.set_alignment(0, 0.5)
+#        self.pack_start(label, False)
+#        
+#        current_user = os.environ['USER']
+#        users_list = [ dir for dir in os.listdir('/home/') if (dir != current_user and dir != 'lost+found') ]
+#        if users_list == []:
+#            button = gtk.Button(_('There is no other user'))
+#            button.set_sensitive(False)
+#            self.pack_start(button)
+#        else:
+#            for user in users_list:
+#                button = gtk.Button(_('Reset user %s') % user)
+#                button.connect('clicked', self.do_reset, user)
+#                self.pack_start(button)
 
-def __reset_gnome():
-    return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
+#def __reset_gnome():
+#    return Setting(ResetGNOME(), _('Reset GNOME'), ['reset_gnome'])
 
 def __screen_saver():
     
@@ -620,8 +678,6 @@ def get():
             __font_size_setting,
             __window_behaviour_setting,
             __nautilus_thumbnail_setting,
-            __gnome_panel_setting,
-#            __gnome_splash_setting,
             __gnome_session_setting,
             __textbox_context_menu_setting,
             __disable_terminal_beep,
@@ -635,7 +691,6 @@ def get():
             __login_window_background,
             __compression_strategy,
             __gedit_setting,
-            __reset_gnome,
             __screen_saver,
             ]:
         try:

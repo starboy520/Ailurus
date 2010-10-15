@@ -217,8 +217,7 @@ def copy_text_to_clipboard(store):
         value = row[1]
         print >>text, key
         print >>text, '\t', value
-    clipboard = gtk.clipboard_get()
-    clipboard.set_text(text.getvalue())
+    copy_to_clipboard(text.getvalue())
 
 def show_statistics():
     store = gtk.ListStore(str, str)

@@ -7,20 +7,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-07-27 16:07+0800\n"
-"PO-Revision-Date: 2010-07-30 21:34+0000\n"
-"Last-Translator: Bruno Barros <bkether@gmail.com>\n"
+"POT-Creation-Date: 2010-07-31 13:53+0800\n"
+"PO-Revision-Date: 2010-08-16 09:12+0000\n"
+"Last-Translator: Sam Samuels <gemini_sam_samuels@hotmail.co.uk>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Launchpad-Export-Date: 2010-07-31 03:51+0000\n"
+"X-Launchpad-Export-Date: 2010-08-17 07:12+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
 msgid "a simple application installer and GNOME tweaker"
-msgstr "um instalador simples de aplicação e GNOME tweaker"
+msgstr "um instalador e personalizador simples de aplicação  GNOME"
 
 #: ../support/policykit0/cn.ailurus.policy.in.h:1
 #: ../support/policykit1/cn.ailurus.policy.in.h:1
@@ -47,18 +47,19 @@ msgstr "APT cache"
 
 #: ../ailurus/clean_up_pane.py:72 ../ailurus/clean_up_pane.py:86
 #: ../ailurus/clean_up_pane.py:103 ../ailurus/clean_up_pane.py:118
-#: ../ailurus/clean_up_pane.py:134 ../ailurus/lib.py:505 ../ailurus/lib.py:582
-#: ../ailurus/lib.py:738 ../ailurus/lib.py:1050 ../ailurus/lib.py:1355
+#: ../ailurus/clean_up_pane.py:134 ../ailurus/lib.py:515 ../ailurus/lib.py:592
+#: ../ailurus/lib.py:748 ../ailurus/lib.py:1066 ../ailurus/lib.py:1395
 #: ../ailurus/support/terminal.py:70
 #: ../ailurus/support/terminal_single_thread.py:52
-#: ../ailurus/support/term.py:68
+#: ../ailurus/support/term.py:78
 msgid "Run command:"
 msgstr "Executar comando:"
 
 #: ../ailurus/clean_up_pane.py:77 ../ailurus/clean_up_pane.py:94
 #: ../ailurus/clean_up_pane.py:108 ../ailurus/clean_up_pane.py:123
-#: ../ailurus/clean_up_pane.py:137 ../ailurus/common/cure.py:201
-#: ../ailurus/fedora/cure.py:51 ../ailurus/ubuntu/cure.py:79
+#: ../ailurus/clean_up_pane.py:137 ../ailurus/common/cure.py:198
+#: ../ailurus/fedora/cure.py:51 ../ailurus/gnome/setting.py:477
+#: ../ailurus/gnome/setting.py:481 ../ailurus/ubuntu/cure.py:79
 #: ../ailurus/ubuntu/cure.py:176 ../ailurus/ubuntu/cure.py:188
 #: ../ailurus/ubuntu/cure.py:219
 msgid "Command:"
@@ -71,7 +72,7 @@ msgstr "Cache RPM"
 #. "pacman -Sc" does not work
 #: ../ailurus/clean_up_pane.py:98 ../ailurus/clean_up_pane.py:105
 msgid "Pacman cache"
-msgstr "Esconderijo do PacMan"
+msgstr "Pacman cache"
 
 #: ../ailurus/clean_up_pane.py:113 ../ailurus/clean_up_pane.py:120
 msgid "Nautilus thumbnail image cache"
@@ -141,7 +142,7 @@ msgid "will be removed"
 msgstr "serão removidos"
 
 #: ../ailurus/clean_up_pane.py:329 ../ailurus/clean_up_pane.py:445
-#: ../ailurus/clean_up_pane.py:555
+#: ../ailurus/clean_up_pane.py:555 ../ailurus/install_remove_pane.py:735
 msgid "Delete"
 msgstr "Excluir"
 
@@ -218,15 +219,15 @@ msgstr "visualizar e analisar circuitos que são captados por um aparelho GPS"
 msgid "Learning algebra and geometry"
 msgstr "Aprender álgebra e geometria"
 
-#: ../ailurus/common/apps.py:182
+#: ../ailurus/common/apps.py:189
 msgid "SweetHome3D: open source interior design application"
 msgstr "SweetHome3D: aplicação em código aberto para design de interiores"
 
-#: ../ailurus/common/apps.py:222
+#: ../ailurus/common/apps.py:229
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr "Modelos de teses para LaTeX da Universidade Tsing Hua, na China"
 
-#: ../ailurus/common/apps.py:224
+#: ../ailurus/common/apps.py:231
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -240,31 +241,31 @@ msgstr ""
 "http://thuthesis.sourceforge.net/\n"
 "Após a instalação, um arquivo \"thuthesis.tgz\" é colocado na pasta \"%s\"."
 
-#: ../ailurus/common/apps.py:236
+#: ../ailurus/common/apps.py:243
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+: bloqueia 99% das propagandas"
 
-#: ../ailurus/common/apps.py:238
+#: ../ailurus/common/apps.py:245
 msgid "It is able to block 99% ads and banners."
 msgstr "É capaz de bloquear 99% de propagandas e anúncios."
 
-#: ../ailurus/common/apps.py:244
+#: ../ailurus/common/apps.py:251
 msgid "AutoProxy: Proxy management via a third party list"
 msgstr "AutoProxy: gerenciamento de Proxy através de uma lista terceirizada"
 
-#: ../ailurus/common/apps.py:253
+#: ../ailurus/common/apps.py:260
 msgid "Chromifox: Chrome theme"
 msgstr "Chromifox: tema para Chrome"
 
-#: ../ailurus/common/apps.py:255
+#: ../ailurus/common/apps.py:262
 msgid "A coat of Chrome for Firefox"
 msgstr "Uma cobertura do Chrome para o Firefox"
 
-#: ../ailurus/common/apps.py:261
+#: ../ailurus/common/apps.py:268
 msgid "CleanHide: Delete hidden text in web page"
 msgstr "CleanHide: remova textos ocultos em uma página da web"
 
-#: ../ailurus/common/apps.py:263
+#: ../ailurus/common/apps.py:270
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
@@ -272,56 +273,56 @@ msgstr ""
 "Se você descobrir que uma página da web usa textos ocultos que você não pode "
 "copiar facilmente, experimente isso!"
 
-#: ../ailurus/common/apps.py:269
+#: ../ailurus/common/apps.py:276
 msgid "DownloadStatusBar: Keep track of downloads in a tiny statusbar."
 msgstr ""
 "DownloadStatusBar: Acompanhe seus downloads em uma pequena barra de status."
 
-#: ../ailurus/common/apps.py:277
+#: ../ailurus/common/apps.py:284
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr "DownThemAll: um baixador de arquivos confiável"
 
-#: ../ailurus/common/apps.py:279
+#: ../ailurus/common/apps.py:286
 msgid "It is able to download all images on web-pages."
 msgstr "Ele é capaz de baixar todas as imagens de uma página da web"
 
-#: ../ailurus/common/apps.py:285
+#: ../ailurus/common/apps.py:292
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr "EasyDragToGo: abra novas abas arrastando texto, links e figuras"
 
-#: ../ailurus/common/apps.py:293
+#: ../ailurus/common/apps.py:300
 msgid "Ease Link: Decode Thunder, QQ, Flashget, Rayfile, Namipan links"
 msgstr "Link Fácil:Decode Thunder, QQ, Flashget, Rayfile, Namipan links"
 
-#: ../ailurus/common/apps.py:294
+#: ../ailurus/common/apps.py:301
 msgid ""
 "Get normal HTML hyperlink from hyperlink dedicated to special software"
 msgstr ""
 "Obter hyperlink HTML normal de hiperlink dedicado ao software especial"
 
-#: ../ailurus/common/apps.py:302
+#: ../ailurus/common/apps.py:309
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr ""
 "Firebug: edita e procura erros de CSS/HTML/JavaScript em uma página da Web"
 
-#: ../ailurus/common/apps.py:304
+#: ../ailurus/common/apps.py:311
 msgid "This is a powerful web development tool."
 msgstr "Esta é uma poderosa ferramenta de desenvolvimento para Web."
 
-#: ../ailurus/common/apps.py:310
+#: ../ailurus/common/apps.py:317
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr ""
 "FireGesture: execute comandos e scripts de usuário gesticulando o mouse"
 
-#: ../ailurus/common/apps.py:312
+#: ../ailurus/common/apps.py:319
 msgid "It supports five kinds of mouse gestures."
 msgstr "Suporta cinco tipos de gestos com o mouse."
 
-#: ../ailurus/common/apps.py:318
+#: ../ailurus/common/apps.py:325
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr "Flashgot: Um gerenciador de downloads leve e confiável"
 
-#: ../ailurus/common/apps.py:320
+#: ../ailurus/common/apps.py:327
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
@@ -329,19 +330,19 @@ msgstr ""
 "Ele é capaz de baixar todos os links, vídeos e clipes de áudio de uma página "
 "com um único clique."
 
-#: ../ailurus/common/apps.py:326
+#: ../ailurus/common/apps.py:333
 msgid "FoxyProxy: One-click switching proxy"
 msgstr "FoxyProxy: ligue e desligue um proxy com um clique"
 
-#: ../ailurus/common/apps.py:334
+#: ../ailurus/common/apps.py:341
 msgid "GMarks: Synchronize bookmarks with Google Bookmarks service"
 msgstr "GMarks: Sincronize seus favoritos com o serviço Google Bookmarks"
 
-#: ../ailurus/common/apps.py:341
+#: ../ailurus/common/apps.py:348
 msgid "GreaseMonkey: Make change to web pages"
 msgstr "GreaseMonkey: modifique páginas da web"
 
-#: ../ailurus/common/apps.py:343
+#: ../ailurus/common/apps.py:350
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image "
@@ -359,25 +360,25 @@ msgstr ""
 "Greasemonkey\". Ele pode ser baixado gratuitamente de "
 "http://diveintogreasemonkey.org/ ."
 
-#: ../ailurus/common/apps.py:352
+#: ../ailurus/common/apps.py:359
 msgid "Flashblock: blocks Flash animation"
 msgstr "Flashblock: bloqueie animações em Flash"
 
-#: ../ailurus/common/apps.py:354
+#: ../ailurus/common/apps.py:361
 msgid "Never annoyed by Flash animations"
 msgstr "Nunca mais se incomode com animações em Flash"
 
-#: ../ailurus/common/apps.py:360
+#: ../ailurus/common/apps.py:367
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr "Live HTTP Headers: Exibir cabeçalhos HTTP em tempo real"
 
-#: ../ailurus/common/apps.py:368
+#: ../ailurus/common/apps.py:375
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr ""
 "NoScript: Permita a execução de conteúdo ativo apenas de sites em que você "
 "confie."
 
-#: ../ailurus/common/apps.py:370
+#: ../ailurus/common/apps.py:377
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
@@ -385,51 +386,51 @@ msgstr ""
 "Permita a execução de conteúdo ativo apenas de sites em que você confie, e "
 "proteja-se contra ataques de XSS e Clickjacking."
 
-#: ../ailurus/common/apps.py:376
+#: ../ailurus/common/apps.py:383
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr ""
 "Rádio de rede SHA-DA: ouça e assista a programas de rádio e TV na China"
 
-#: ../ailurus/common/apps.py:386
+#: ../ailurus/common/apps.py:393
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr "SeoQuake: te ajuda a visualizar os parâmetros de busca do seu site."
 
-#: ../ailurus/common/apps.py:388
+#: ../ailurus/common/apps.py:395
 msgid "It helps you promote your web sites."
 msgstr "Te ajuda a promover seus sites na Web."
 
-#: ../ailurus/common/apps.py:394
+#: ../ailurus/common/apps.py:401
 msgid "Stylish: Install themes and skins for websites."
 msgstr "Stylish: Instala temas e skins para websites."
 
-#: ../ailurus/common/apps.py:402
+#: ../ailurus/common/apps.py:409
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr ""
 "Tamper Data: Exibir e modificar HTTP / HTTPS e parâmetros de cabeçalhos de "
 "solicitação post."
 
-#: ../ailurus/common/apps.py:410
+#: ../ailurus/common/apps.py:417
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr ""
 "User Agent Switcher: Camousflag Firefox como outros tipos de navegadores."
 
-#: ../ailurus/common/apps.py:412
+#: ../ailurus/common/apps.py:419
 msgid "It tells the remote websites that you are an IE user."
 msgstr "Simula para os websites que você é um usuário do IE."
 
-#: ../ailurus/common/apps.py:418
+#: ../ailurus/common/apps.py:425
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr "View Source Chart: veja o código fonte HTML em cores."
 
-#: ../ailurus/common/apps.py:420
+#: ../ailurus/common/apps.py:427
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr ""
 "Esta extensão permite analisar e reconhecer tags em um documento rapidamente."
 
-#: ../ailurus/common/apps.py:426
+#: ../ailurus/common/apps.py:433
 msgid ""
 "Firefox Sync: synchronize bookmarks, browsing history and tabs wherever you "
 "go."
@@ -437,35 +438,35 @@ msgstr ""
 "Firefox Sync: sincroniza favoritos, histórico de navegação e abas onde quer "
 "que você esteja."
 
-#: ../ailurus/common/apps.py:434
+#: ../ailurus/common/apps.py:441
 msgid "Web Developer: Web page analysis tools"
 msgstr "Web Developer: ferramentas de análise da página Web"
 
-#: ../ailurus/common/apps.py:436
+#: ../ailurus/common/apps.py:443
 msgid "Many developers installed it."
 msgstr "Muitos desenvolvedores instalados."
 
-#: ../ailurus/common/apps.py:442
+#: ../ailurus/common/apps.py:449
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr "Mais um Rolador Suave: personalize o comportamento da rolagem"
 
-#: ../ailurus/common/apps.py:450
+#: ../ailurus/common/apps.py:457
 msgid "YSlow: web page performance tuning"
 msgstr "YSlow: ajuste do desempenho da página web"
 
-#: ../ailurus/common/apps.py:452
+#: ../ailurus/common/apps.py:459
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr ""
 "Ele ojuda a melhorar o desempenho página web. Lhe diz porque a página web é "
 "lenta."
 
-#: ../ailurus/common/apps.py:458
+#: ../ailurus/common/apps.py:465
 msgid "WebMail Notifier: check your email accounts and notify unread emails"
 msgstr ""
 "WebMail Notifier: Verifique suas contas de e-mail e avise-mails não lidos"
 
-#: ../ailurus/common/apps.py:460
+#: ../ailurus/common/apps.py:467
 msgid "Supports many email server"
 msgstr "Suporta muitos servidores de e-mail"
 
@@ -474,7 +475,7 @@ msgid "Automatically start up Workrave"
 msgstr "Iniciar automaticamente o Workrave"
 
 #: ../ailurus/common/cure.py:28 ../ailurus/common/cure.py:67
-#: ../ailurus/common/cure.py:161
+#: ../ailurus/common/cure.py:158
 msgid "Create file:"
 msgstr "Criar um arquivo:"
 
@@ -490,13 +491,13 @@ msgstr "Conteúdo do arquivo:"
 msgid "Create ImageMagick shortcut in \"Application->Graphics\" menu"
 msgstr "Criar um atalho ImageMagick em \"Application-> Graphics menu\""
 
-#: ../ailurus/common/cure.py:87
+#: ../ailurus/common/cure.py:84
 msgid ""
 "Create a directory \"Desktop\" linked to the desktop in your home folder"
 msgstr ""
 "Criar uma pasta \"Desktop\" ligado à área de trabalho na sua pasta pessoal"
 
-#: ../ailurus/common/cure.py:88
+#: ../ailurus/common/cure.py:85
 msgid ""
 "After that, you can easily chdir to desktop folder by command \"cd "
 "~/Desktop\"."
@@ -504,11 +505,11 @@ msgstr ""
 "Depois disso, você pode facilmente chdir para a pasta desktop pelo comando "
 "\"cd ~/Desktop\"."
 
-#: ../ailurus/common/cure.py:106
+#: ../ailurus/common/cure.py:103
 msgid "Query you before delete more than three files in BASH"
 msgstr "Consultar se antes você deseja apagar mais de três arquivos no BASH"
 
-#: ../ailurus/common/cure.py:107
+#: ../ailurus/common/cure.py:104
 msgid ""
 "Prevent destruction when you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
 "Add this line into ~/.bashrc: alias rm=\"rm -I\""
@@ -517,28 +518,28 @@ msgstr ""
 "*\".\n"
 "Adicione esta linha em ~/.bashrc: alias rm=\"rm -I\""
 
-#: ../ailurus/common/cure.py:160
+#: ../ailurus/common/cure.py:157
 msgid "Show a random Linux skill after you log in to GNOME"
 msgstr ""
 "Mostrar uma habilidade aleatória Linux depois que você efetuar login no GNOME"
 
-#: ../ailurus/common/cure.py:185
+#: ../ailurus/common/cure.py:182
 msgid "Let root own /usr/lib/eclipse and /usr/share/eclipse"
 msgstr "Deixe própria raiz /usr/lib/eclipse e /usr/share/eclipse"
 
-#: ../ailurus/common/cure.py:186
+#: ../ailurus/common/cure.py:183
 msgid "Otherwise, Pydev and CDT do not work."
 msgstr "Caso contrário, PyDev CDT não funcionam."
 
-#: ../ailurus/common/cure.py:200
+#: ../ailurus/common/cure.py:197
 msgid "Let you be the owner of directory ~/.config/ailurus"
 msgstr "Tornar-se proprietário do diretório"
 
-#: ../ailurus/common/cure.py:211
+#: ../ailurus/common/cure.py:208
 msgid "Remove directory /var/cache/ailurus/"
 msgstr "Remover diretório /var/cache/ailurus/"
 
-#: ../ailurus/common/cure.py:212
+#: ../ailurus/common/cure.py:209
 msgid "This directory is obsolete. Remove this directory to free disk space."
 msgstr ""
 "Este diretório é obsoleto. Remova este diretório para liberar espaço em "
@@ -608,7 +609,7 @@ msgstr ""
 "É uma medida de velocidade computacional.  \"Mips\" significa Milhões de "
 "Instruções por Segundo."
 
-#: ../ailurus/common/hardwareinfo.py:133 ../ailurus/libsetting.py:311
+#: ../ailurus/common/hardwareinfo.py:133 ../ailurus/libsetting.py:321
 msgid "No"
 msgstr "Não"
 
@@ -777,7 +778,7 @@ msgstr "nome"
 msgid "value"
 msgstr "valor"
 
-#: ../ailurus/common/menu.py:245 ../ailurus/libu.py:188 ../ailurus/libu.py:291
+#: ../ailurus/common/menu.py:245 ../ailurus/libu.py:188 ../ailurus/libu.py:311
 msgid "Copy text to clipboard"
 msgstr "Copiar texto para a área de transferência"
 
@@ -793,11 +794,10 @@ msgstr "Blog do Ailurus"
 msgid "Check for updates"
 msgstr "Verificar por atualizações"
 
-#. help_propose_suggestion = image_file_menuitem(_('Propose suggestion'), D+'umut_icons/m_propose_suggestion.png', 16)
-#. def propose_suggestion(*w):
-#. from support.clientlib import SuggestionsSubmit
-#. SuggestionsSubmit()
-#. help_propose_suggestion.connect('activate', propose_suggestion)
+#: ../ailurus/common/menu.py:278 ../ailurus/support/gae.py:265
+msgid "Propose suggestion"
+msgstr "Propor Sugestão"
+
 #: ../ailurus/common/menu.py:284
 msgid "Report bugs"
 msgstr "Reportar erros"
@@ -915,7 +915,7 @@ msgstr "100 = permutar muita memória com o disco"
 
 #: ../ailurus/common/setting.py:65 ../ailurus/common/setting.py:152
 #: ../ailurus/computer_doctor_pane.py:136
-#: ../ailurus/fedora/rpm_recovery_pane.py:275 ../ailurus/libsetting.py:238
+#: ../ailurus/fedora/rpm_recovery_pane.py:275 ../ailurus/libsetting.py:248
 #: ../ailurus/ubuntu/apt_recovery_pane.py:278
 msgid "Apply"
 msgstr "Aplicar"
@@ -996,7 +996,7 @@ msgstr "o número de segundos antes do tempo limite da conexão FTP"
 
 #: ../ailurus/common/setting.py:200
 msgid "amount of time in seconds to keep alive connections"
-msgstr "quantidade de tempo em segundos para manter ativas as conexões"
+msgstr "quantidade de tempo em segundos para manter as conexões ativas"
 
 #: ../ailurus/common/setting.py:201
 msgid ""
@@ -1101,6 +1101,7 @@ msgstr ""
 msgid ""
 "how many pixels to scroll at a time when scrolling the tab strip's scrollbox"
 msgstr ""
+"quantos pixels para rolar numa altura em que a faixa de rolagem scrollbox"
 
 #: ../ailurus/common/setting.py:235
 msgid ""
@@ -1518,6 +1519,11 @@ msgid ""
 "Display user information\n"
 "finger USER_NAME\n"
 msgstr ""
+"Alterações de nome completo de usuário, número do escritório, ampliação do "
+"escritório,  e informações sobre o número de telefone da casa.\n"
+"sudo chfn NOME DO_USUÁRIO\n"
+"Exibir informações do usuário\n"
+"finger NOME DO_USUÁRIO\n"
 
 #: ../ailurus/common/tips.py:191
 msgid ""
@@ -1584,6 +1590,8 @@ msgid ""
 "Convert tags in '*.mp3' from GBK to UTF8\n"
 "find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
 msgstr ""
+"Converter tags em '*. mp3' de GBK para UTF8\n"
+"encontrar . -nome '*.mp3' -exeder mid3iconv -e GBK {} \\;\n"
 
 #: ../ailurus/common/tips.py:225
 msgid ""
@@ -1615,6 +1623,8 @@ msgid ""
 "Display all '.txt' file\n"
 "find . -name '*.txt'\n"
 msgstr ""
+"Mostrar todos os arquivos '. Txt'\n"
+"encontrar. -Name '*. txt'\n"
 
 #: ../ailurus/common/tips.py:241
 msgid ""
@@ -1629,6 +1639,8 @@ msgid ""
 "Create directory. Create parent directories as needed.\n"
 "mkdir -p /tmp/a/b/c/d/e\n"
 msgstr ""
+"Criar diretório. Criar diretórios pais, conforme necessário.\n"
+"mkdir -p /tmp/a/b/c/d/e\n"
 
 #: ../ailurus/common/tips.py:249
 msgid ""
@@ -1637,6 +1649,10 @@ msgid ""
 "Change working directory to the previous working directory\n"
 "cd -\n"
 msgstr ""
+"Altere o diretório de trabalho para a pasta home\n"
+"CD\n"
+"Altere o diretório de trabalho para o diretório de trabalho anterior\n"
+"cd -\n"
 
 #: ../ailurus/common/tips.py:255
 msgid ""
@@ -1651,48 +1667,65 @@ msgid ""
 "Copy directory. Preserve links, file mode, ownership, timestamps. \n"
 "cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
 msgstr ""
+"Copiar diretório. Preservar Links, o modo do arquivo, a propriedade, "
+"timestamps. \n"
+"cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
 
 #: ../ailurus/common/tips.py:263
 msgid ""
 "Determine file type\n"
 "file FILE_NAME\n"
 msgstr ""
+"Determinar o tipo de arquivo\n"
+"file NOME DO_ARQUIVO\n"
 
 #: ../ailurus/common/tips.py:267
 msgid ""
 "Output the last 6 lines\n"
 "tail -n 6 FILE_NAME\n"
 msgstr ""
+"Saída das últimas seis linhas\n"
+"tail -n 6 NOME DO_ARQUIVO\n"
 
 #: ../ailurus/common/tips.py:271
 msgid ""
 "Copy files via SSH\n"
 "scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
 msgstr ""
+"Copie os arquivos via SSH\n"
+"scp -rp NOME DO_ARQUIVO NOMEDEUSUÁRIO@HOST:DEST_PATH\n"
 
 #: ../ailurus/common/tips.py:275
 msgid ""
 "Rename '*.rm' files to '*.rmvb' files\n"
 "rename 's/.rm$/.rmvb/' *\n"
 msgstr ""
+"Renomear arquivos '*.rm' para aquivos  '*.rmvb' \n"
+"renomear 's/.rm$/.rmvb/' *\n"
 
 #: ../ailurus/common/tips.py:279
 msgid ""
 "Change the file name to lowercase\n"
 "rename 'tr/A-Z/a-z/' *\n"
 msgstr ""
+"Mudar o nome do arquivo para minúsculas\n"
+"rename 'tr/A-Z/a-z/' *\n"
 
 #: ../ailurus/common/tips.py:283
 msgid ""
 "Display subdirectories in current directory\n"
 "ls -d */.\n"
 msgstr ""
+"Display subdiretórios no diretório atual\n"
+"ls -d */\n"
 
 #: ../ailurus/common/tips.py:287
 msgid ""
 "Display file number in current directory\n"
 "ls . | wc -w\n"
 msgstr ""
+"Mostrar o número de arquivos no diretório atual\n"
+"ls . | wc -w\n"
 
 #: ../ailurus/common/tips.py:291
 msgid ""
@@ -1703,6 +1736,12 @@ msgid ""
 "Extract \"*.tar.bz2\" file\n"
 "tar jxf FILE_NAME.tar.bz2\n"
 msgstr ""
+"Extrair arquivo \"*.gz\"\n"
+"NOME_DO_ARQUIVO.gz gunzip\n"
+"Extrair arquivo \"*.tar.gz\"\n"
+"NOME_DO_ARQUIVO.tar.gz tar zxf\n"
+"Extrair arquivo \"*.tar.bz2\"\n"
+"NOME_DO_ARQUIVO.tar.bz2 tar\n"
 
 #: ../ailurus/common/tips.py:299
 msgid ""
@@ -1710,6 +1749,9 @@ msgid ""
 "tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
 "tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
 msgstr ""
+"Faz compressão\n"
+"tar czf NOME DO_ARQUIVO.tar.gz arquivo1 arquivo2 arquivo3\n"
+"tar cjf NOME DO_ARQUIVO.tar.bz2 arquivo1 arquivo2 arquivo3\n"
 
 #: ../ailurus/common/tips.py:304
 msgid ""
@@ -1717,6 +1759,9 @@ msgid ""
 "cal\n"
 "cal MONTH YEAR\n"
 msgstr ""
+"Exibe um calendário\n"
+"cal\n"
+"cal mês ano\n"
 
 #: ../ailurus/common/tips.py:309
 msgid ""
@@ -1736,6 +1781,13 @@ msgid ""
 "Poweroff your computer after 60 minutes\n"
 "sudo shutdown -h +60\n"
 msgstr ""
+"Desligar seu computador\n"
+"sudo halt\n"
+"sudo shutdown -h now\n"
+"Desligar seu computador às 23:00\n"
+"sudo shutdown -h 23:00\n"
+"Desligar seu computador daqui a 60 minutos\n"
+"sudo shutdown -h +60\n"
 
 #: ../ailurus/common/tips.py:322
 msgid ""
@@ -1743,48 +1795,65 @@ msgid ""
 "sudo reboot\n"
 "sudo shutdown -r now\n"
 msgstr ""
+"Reinicia o computador\n"
+"sudo reboot\n"
+"sudo shutdown -r now\n"
 
 #: ../ailurus/common/tips.py:327
 msgid ""
 "If you want some program to start up automatically, please put '.desktop' "
 "files into '~/.config/autostart'\n"
 msgstr ""
+"Se você quiser algum programa para iniciar automaticamente, por favor, ponha "
+"'.desktop' arquivos em \"~ / .config / autostart '\n"
 
 #: ../ailurus/common/tips.py:330
 msgid ""
 "You can configure \"preferred applications\" by this file "
 "\"~/.local/share/applications/mimeapps.list\"\n"
 msgstr ""
+"Você pode configurar \"aplicações preferenciais\" por este arquivo "
+"\"~/.local/share/applications/mimeapps.list\"\n"
 
 #: ../ailurus/common/tips.py:333
 msgid ""
 "Continuously monitor the memory usage\n"
 "watch -d free\n"
 msgstr ""
+"Monitora continuamente o uso de memória\n"
+"watch -d free\n"
 
 #: ../ailurus/common/tips.py:337
 msgid ""
 "Display HTTP HEAD response\n"
 "w3m -dump_head http://example.com\n"
 msgstr ""
+"Exibir resposta de HTTP HEAD\n"
+"w3m -dump_head http://examplo.com\n"
 
 #: ../ailurus/common/tips.py:341
 msgid ""
 "Display file content with line number\n"
 "nl FILE_NAME\n"
 msgstr ""
+"Mostrar o conteúdo do arquivo com o número da linha\n"
+"nl NOME DO_ARQUIVO\n"
 
 #: ../ailurus/common/tips.py:345
 msgid ""
 "Eliminate Rootkit\n"
 "sudo rkhunter --checkall\n"
 msgstr ""
+"Eliminar Rootkit\n"
+"sudo rkhunter --checkall\n"
 
 #: ../ailurus/common/tips.py:349
 msgid ""
 "Change hostname\n"
 "sudo hostname new_name\n"
 msgstr ""
+"Alterar nome do host\n"
+"sudo hostname novo_nome\n"
 
 #: ../ailurus/common/tips.py:353
 msgid ""
@@ -1800,6 +1869,17 @@ msgid ""
 "Install/remove a task\n"
 "gksudo tasksel\n"
 msgstr ""
+"O \"Tasksel\" agrupa os pacotes em \"Tarefas\". Você pode seleccionar uma "
+"\"tarefa\" e, em seguida,instalar todos os pacotes de software necessários. "
+"Ideal para configurar servidores LAMP ou servidores de computação em nuvem\n"
+"Mostrar todas as tarefas\n"
+"tasksel --list\n"
+"Mostrar a descrição estendida de uma tarefa\n"
+"tasksel --task-desc lamp-server\n"
+"Listar os pacotes que pertencem à tarefa\n"
+"tasksel --task-packages lamp-server\n"
+"Instalar/remover uma tarefa\n"
+"gksudo tasksel\n"
 
 #: ../ailurus/common/tips.py:364
 msgid ""
@@ -1810,6 +1890,12 @@ msgid ""
 "               high <------------------> low\n"
 "NEW_PRIORITY = -19, -18, -17 [...] 18, 19, 20\n"
 msgstr ""
+"Alterar Prioridade dos Processos\n"
+"renice NOVA_PRIORIDADE `pgrep NOME_DO_PROCESSO`\n"
+"exemplo: renice 5 `pgrep firefox`     \n"
+"         renice -5 `pgrep wine-server`       \n"
+"               high <------------------> low\n"
+"NOVA_PRIORIDADE = -19, -18, -17 [...] 18, 19, 20\n"
 
 #: ../ailurus/common/tips.py:374
 msgid ""
@@ -1817,61 +1903,70 @@ msgid ""
 "w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
 "}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}'\n"
 msgstr ""
+"Exibir o endereço IP fora da rede local\n"
+"w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
+"}\\.[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\}'\n"
 
 #: ../ailurus/computer_doctor_pane.py:30
 msgid ""
 "Computer\n"
 "Doctor"
 msgstr ""
+"Médico do\n"
+"Computador"
 
 #: ../ailurus/computer_doctor_pane.py:78
 #, python-format
 msgid "Found %s errors in your system."
-msgstr ""
+msgstr "Erros encontrados %s  em seu sistema."
 
 #: ../ailurus/computer_doctor_pane.py:80
 #, python-format
 msgid "There is a total of %s suggestions."
-msgstr ""
+msgstr "Há um total de %s sugestões ."
 
 #: ../ailurus/computer_doctor_pane.py:82
 msgid "Found no error :)"
-msgstr ""
+msgstr "Nenhum erro encontrado :)"
 
 #: ../ailurus/computer_doctor_pane.py:96
 msgid "Computer doctor"
-msgstr ""
+msgstr "Médico do computador"
 
 #: ../ailurus/computer_doctor_pane.py:96
 #, python-format
 msgid "Successfully applied %s suggestions."
-msgstr ""
+msgstr "sugestões aplicada %s com sucesso  ."
 
 #: ../ailurus/computer_doctor_pane.py:146
 msgid "Please click \"refresh\" button."
-msgstr ""
+msgstr "Por favor, clique no botão \"atualizar\"."
 
 #: ../ailurus/download_icons.py:34
 msgid "Downloading icons of other open-source projects.\n"
-msgstr ""
+msgstr "Baixar ícones de outros projetos de código livre\n"
 
 #: ../ailurus/download_icons.py:35
 msgid ""
 "Do not download any icon of close-source projects or proprietary software.\n"
 msgstr ""
+"Não baixe nenhum ícone de projetos de fonte fechadas ou de software "
+"proprietário.\n"
 
 #: ../ailurus/download_icons.py:56
 msgid "Downloading extra icons"
-msgstr ""
+msgstr "Baixando ícones extra"
 
-#: ../ailurus/download_icons.py:113
+#: ../ailurus/download_icons.py:112
 msgid ""
 "Please press \"OK\" button to install icons. Authentication is required."
 msgstr ""
+"Por favor, pressione o botão \"OK\" para instalar ícones. A autenticação é "
+"requerida."
 
-#: ../ailurus/download_icons.py:123
+#: ../ailurus/download_icons.py:122
 msgid "Icons are successfully installed."
-msgstr ""
+msgstr "Ícones instalados com sucesso."
 
 #: ../ailurus/fedora/apps_eclipse.py:28 ../ailurus/ubuntu/apps_eclipse.py:28
 msgid "Eclipse (basic development environment)"
@@ -1882,6 +1977,8 @@ msgid ""
 "You can install Language pack according to the instructions on the page "
 "http://www.eclipse.org/babel/downloads.php"
 msgstr ""
+"Você pode instalar o pacote de idioma de acordo com as instruções na página "
+"http://www.eclipse.org/babel/downloads.php"
 
 #: ../ailurus/fedora/apps_eclipse.py:38 ../ailurus/ubuntu/apps_eclipse.py:38
 msgid "CDT: C/C++ development"
@@ -1902,6 +1999,10 @@ msgid ""
 "In order to remove Aptana, please launch Eclipse, and go to \"Help\" -> "
 "\"About Eclipse SDK\" -> \"Installation Details\""
 msgstr ""
+"Devido a uma limitação da capacidade dos autores de programação, Aptana não "
+"pode ser removido pelo Ailurus.\n"
+"A fim de eliminar o Aptana, inicie o Eclipse, e vá em \"Ajuda\" -> \"sobre "
+"Eclipse SDK\" -> \"Detalhes da Instalação\""
 
 #: ../ailurus/fedora/apps_eclipse.py:65 ../ailurus/fedora/apps_eclipse.py:88
 #: ../ailurus/fedora/apps_eclipse.py:111 ../ailurus/fedora/apps_eclipse.py:138
@@ -1911,6 +2012,8 @@ msgstr ""
 msgid ""
 "Please launch Eclipse, and go to \"Help\" -> \"Install New Software\"."
 msgstr ""
+"Por favor, inicie o Eclipse, e vá em \"Ajuda\" -> \"Instalar um novo "
+"Programa\"."
 
 #: ../ailurus/fedora/apps_eclipse.py:67 ../ailurus/fedora/apps_eclipse.py:90
 #: ../ailurus/fedora/apps_eclipse.py:113 ../ailurus/fedora/apps_eclipse.py:140
@@ -1919,8 +2022,7 @@ msgstr ""
 #: ../ailurus/ubuntu/apps_eclipse.py:181 ../ailurus/ubuntu/apps_eclipse.py:203
 #, python-format
 msgid "Click the \"Add\" button. Then type <b>%s</b> in \"Location\"."
-msgstr ""
-"Clique no botão \"Adicionar\". então digite <b>%s</b> in \"Location\"."
+msgstr "Clique no botão \"Adicionar\". então digite <b>%s</b> in \"Local\"."
 
 #: ../ailurus/fedora/apps_eclipse.py:69 ../ailurus/fedora/apps_eclipse.py:92
 #: ../ailurus/fedora/apps_eclipse.py:115 ../ailurus/fedora/apps_eclipse.py:142
@@ -1940,7 +2042,7 @@ msgstr "RadRails: Desenvolvimento Ruby"
 
 #: ../ailurus/fedora/apps_eclipse.py:76 ../ailurus/ubuntu/apps_eclipse.py:96
 msgid "Over the past RadRails was called \"RDT\"."
-msgstr ""
+msgstr "No passado o RadRails era chamado de \"RDT\"."
 
 #: ../ailurus/fedora/apps_eclipse.py:93 ../ailurus/ubuntu/apps_eclipse.py:113
 msgid "Installing RadRails\n"
@@ -1956,7 +2058,7 @@ msgstr "Instalando PDT\n"
 
 #: ../ailurus/fedora/apps_eclipse.py:121
 msgid "PHPEclipse: PHP development"
-msgstr ""
+msgstr "PHPEclipse: desenvolvimento PHP"
 
 #: ../ailurus/fedora/apps_eclipse.py:126 ../ailurus/ubuntu/apps_eclipse.py:167
 msgid "Subversive: Use SVN in Eclipse"
@@ -1964,43 +2066,43 @@ msgstr "Subversive: Use SVN no Eclipse"
 
 #: ../ailurus/fedora/apps_eclipse.py:143 ../ailurus/ubuntu/apps_eclipse.py:184
 msgid "Installing Subversive\n"
-msgstr ""
+msgstr "Instalando o Subversive\n"
 
 #: ../ailurus/fedora/apps_eclipse.py:148
 msgid "Subclipse: Use SVN in Eclipse"
-msgstr ""
+msgstr "Subclipse: Use o SVN no Eclipse"
 
 #: ../ailurus/fedora/apps_eclipse.py:153 ../ailurus/ubuntu/apps_eclipse.py:189
 msgid "VEditor: Verilog and VHDL editor"
-msgstr ""
+msgstr "VEditor: Verilog e VHDL editor"
 
 #: ../ailurus/fedora/apps_eclipse.py:158
 msgid "Mylyn: Task-focused UI for Eclipse"
-msgstr ""
+msgstr "Mylyn: UI focada em tarefa para Eclipse"
 
 #: ../ailurus/fedora/apps_eclipse.py:163
 msgid "Photran: Fortran development"
-msgstr ""
+msgstr "Photran: desenvolvimento Fortran"
 
 #: ../ailurus/fedora/apps_eclipse.py:168
 msgid "Texlipse: Edit LaTeX in Eclipse"
-msgstr ""
+msgstr "Texlipse:  Editar LaTeX no Eclipse"
 
 #: ../ailurus/fedora/apps_eclipse.py:173 ../ailurus/ubuntu/apps_eclipse.py:211
 msgid "MTJ: J2ME development"
-msgstr ""
+msgstr "MTJ: desenvolvimento J2ME"
 
 #: ../ailurus/fedora/apps.py:29
 msgid "Put Selinux in permissive mode, instead of enforcing mode."
-msgstr ""
+msgstr "Coloque o SELinux em modo permissivo, ao invés do modo de execução."
 
 #: ../ailurus/fedora/apps.py:69
 msgid "Disable \"sudo\". Prevent yourself from using \"sudo\"."
-msgstr ""
+msgstr "Desativar o \"sudo\". Prevenir-se de usar o \"sudo\"."
 
 #: ../ailurus/fedora/apps.py:89
 msgid "Enable \"sudo\""
-msgstr ""
+msgstr "Habilitar \"sudo\""
 
 #: ../ailurus/fedora/apps.py:90
 msgid ""
@@ -2009,6 +2111,11 @@ msgid ""
 "'COMMAND'\". <span color=\"red\">Due to restriction on filesystem "
 "permission, Ailurus cannot detect whether \"sudo\" is enabled.</span> "
 msgstr ""
+"Se você ativou o \"sudo\" e você deseja executar comandos como root, você "
+"pode digitar o comando \"sudo comando\" em vez do comando complicado \"su-"
+"c\" comando '. <span color=\"red\"> Devido à restrição de permissão de "
+"arquivos, Ailurus não consegue detectar se o \"sudo\" está habilitado. </ "
+"span> "
 
 #: ../ailurus/fedora/cure.py:27 ../ailurus/ubuntu/cure.py:27
 msgid "Use colorful Bash prompt symbols"
@@ -2016,7 +2123,7 @@ msgstr "Utilizar símbolos coloridos no prompt do Bash"
 
 #: ../ailurus/fedora/cure.py:28 ../ailurus/ubuntu/cure.py:28
 msgid "Add this line into ~/.bashrc:"
-msgstr ""
+msgstr "Adicione esta linha ao ~/.bashrc:"
 
 #: ../ailurus/fedora/cure.py:36 ../ailurus/ubuntu/cure.py:38
 msgid "The color of bash prompt symbols is changed."
@@ -2024,11 +2131,11 @@ msgstr "A cor dos símbolos do prompt do Bash mudou."
 
 #: ../ailurus/fedora/cure.py:36 ../ailurus/ubuntu/cure.py:38
 msgid "It will take effect at the next time you log in."
-msgstr "Isso terá efeito na próxima vez que você fizer log in."
+msgstr "Isso terá efeito na próxima vez que você iniciar sessão."
 
 #: ../ailurus/fedora/cure.py:39
 msgid "Install Stardict dictionaries"
-msgstr ""
+msgstr "Instale dicionários Stardict"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:31
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:39
@@ -2036,11 +2143,13 @@ msgid ""
 "Fastest\n"
 "Repository"
 msgstr ""
+"Repositório \n"
+"Mais rápido"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:56
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:482
 msgid "All repositories:"
-msgstr ""
+msgstr "Todos os repositórios:"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:87
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:155
@@ -2050,7 +2159,7 @@ msgstr "Sem resposta"
 #: ../ailurus/fedora/fastest_mirror_pane.py:89
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:157
 msgid "Not detected"
-msgstr ""
+msgstr "Não detectado"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:96
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:394
@@ -2065,32 +2174,32 @@ msgstr "Organização"
 #: ../ailurus/fedora/fastest_mirror_pane.py:121
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:419
 msgid "Response time"
-msgstr ""
+msgstr "Tempo de resposta"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:133
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:140
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:432
 msgid "Click mouse right button to display the context menu."
-msgstr ""
+msgstr "Clique com o botão direito do mouse para exibir o menu de contexto."
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:157
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:347
 msgid "Detect response time of selected repositories"
-msgstr ""
+msgstr "Detectar o tempo de resposta dos repositórios selecionados"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:161
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:351
 msgid "Detect response time of all repositories"
-msgstr ""
+msgstr "Detectar o tempo de resposta de todos os repositórios"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:165
 msgid "Use selected repositories"
-msgstr ""
+msgstr "Use repositórios selecionados"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:171
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:355
 msgid "Select all repositories in these countries"
-msgstr ""
+msgstr "Selecione todos os repositórios nestes países"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:174
 msgid "Unselect all"
@@ -2102,10 +2211,12 @@ msgid ""
 "If some repositories are not listed above, please click here to tell Ailurus "
 "developers."
 msgstr ""
+"Se alguns repositórios não estão listados acima, por favor clique aqui para "
+"contar aos desenvolvedores do Ailurus."
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:236
 msgid "Please select one repository only"
-msgstr ""
+msgstr "Por favor, selecione um único repositório"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:292
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:211
@@ -2113,68 +2224,72 @@ msgstr ""
 msgid ""
 "<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
 msgstr ""
+"<span color='black'>O tempo de resposta de %(server)s é %(value).2f "
+"ms.</span>"
 
 #: ../ailurus/fedora/fastest_mirror_pane.py:294
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:213
 #: ../ailurus/ubuntu/quick_setup.py:268
 #, python-format
 msgid "<span color='black'>Server %s is unreachable.</span>"
-msgstr ""
+msgstr "<span color='black'>O servidor %s está inacessível.</span>"
 
 #. text, web page url, Chinese only?
 #: ../ailurus/fedora/menu.py:31
 msgid "Upgrade Fedora using an application called \"PreUpgrade\""
-msgstr ""
+msgstr "Atualizar o Fedora usando um aplicativo chamado \"PreUpgrade\""
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:30
 msgid ""
 "Recover\n"
 "RPM"
 msgstr ""
+"Recuperar\n"
+"RPM"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:39
 #: ../ailurus/ubuntu/apt_recovery_pane.py:42
 msgid "Write comments"
-msgstr ""
+msgstr "Escrever comentários"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:49
 #: ../ailurus/ubuntu/apt_recovery_pane.py:52
 msgid "Would you like to write some comments for this snapshot?"
-msgstr ""
+msgstr "Você gostaria de escrever alguns comentários para esta foto?"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:110
 #: ../ailurus/ubuntu/apt_recovery_pane.py:113
 #, python-format
 msgid "Snapshots made in %(year)04d-%(month)02d:"
-msgstr ""
+msgstr "Capturas de tela criadas em %(year)04d-%(month)02d:"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:124
 #: ../ailurus/ubuntu/apt_recovery_pane.py:127
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d."
-msgstr ""
+msgstr "Não existe captura de tela em %(year)04d-%(month)02d."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:135
 #: ../ailurus/ubuntu/apt_recovery_pane.py:138
 #, python-format
 msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
-msgstr ""
+msgstr "Não há nenhuma foto em %(year)04d-%(month)02d-%(day)02d."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:145
 #: ../ailurus/ubuntu/apt_recovery_pane.py:148
 #, python-format
 msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
-msgstr ""
+msgstr "Desde %(year)04d-%(month)02d-%(day)02d que não existem alterações."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:169
 #: ../ailurus/ubuntu/apt_recovery_pane.py:172
 msgid "Create today's snapshot"
-msgstr ""
+msgstr "Criar um snapshot de hoje"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:183
 #: ../ailurus/ubuntu/apt_recovery_pane.py:186
 msgid "Show changes since selected day"
-msgstr ""
+msgstr "Mostrar alterações desde o dia selecionado"
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:188
 #: ../ailurus/ubuntu/apt_recovery_pane.py:191
@@ -2189,12 +2304,12 @@ msgstr "mudanças"
 #: ../ailurus/fedora/rpm_recovery_pane.py:200
 #: ../ailurus/ubuntu/apt_recovery_pane.py:203
 msgid "It was installed."
-msgstr ""
+msgstr "Foi instalado."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:201
 #: ../ailurus/ubuntu/apt_recovery_pane.py:204
 msgid "It was removed."
-msgstr ""
+msgstr "Foi removido."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:220
 #: ../ailurus/ubuntu/apt_recovery_pane.py:223
@@ -2222,6 +2337,8 @@ msgid ""
 "In order to revoke packages, you can drag items from the left box to the "
 "right box, then click the button. "
 msgstr ""
+"A fim de revogar os pacotes, você pode arrastar os itens da caixa da "
+"esquerda para a caixa da direita, depois clique no botão. "
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:280
 #: ../ailurus/ubuntu/apt_recovery_pane.py:283
@@ -2235,15 +2352,18 @@ msgid ""
 "you often try to use new software, you do not have to worry about messing up "
 "your system now."
 msgstr ""
+"Ailurus ajuda você a controlar os softwares que você tem instalados / "
+"removidos. Se você costuma tentar usar novos softwares, você não precisa se "
+"preocupar com bagunçar em seu sistema agora."
 
 #: ../ailurus/fedora/rpm_recovery_pane.py:288
 #: ../ailurus/ubuntu/apt_recovery_pane.py:291
 msgid "Existing snapshots are displayed in bold font."
-msgstr ""
+msgstr "Snapshots existentes são exibidas em negrito."
 
 #: ../ailurus/gnome/apps.py:28
 msgid "Change background color of GNOME terminal to black."
-msgstr ""
+msgstr "Alterar a cor de fundo do terminal do GNOME para o preto."
 
 #: ../ailurus/gnome/apps.py:29
 msgid ""
@@ -2261,7 +2381,7 @@ msgstr ""
 
 #: ../ailurus/gnome/apps.py:44
 msgid "NScripts: a set of useful Nautilus scripts"
-msgstr ""
+msgstr "NScripts: um conjunto de scripts úteis para o Nautilus"
 
 #: ../ailurus/gnome/apps.py:45
 msgid ""
@@ -2269,6 +2389,9 @@ msgid ""
 "a diff, create shortcuts via Nautilus.\n"
 "NScripts is installed in ~/.gnome2/nautilus-scripts."
 msgstr ""
+"NScripts ajuda-o(a) a alterar o fundo, criar/verificar chaves MD5, criar "
+"diff e atalhos através do Nautilus. \n"
+"O NScripts será instalado em ~/.gnome2/nautilus-scripts."
 
 #: ../ailurus/gnome/apps.py:75
 msgid "Add GB2312 detection ability to GEdit"
@@ -2301,6 +2424,14 @@ msgid ""
 "/apps/nautilus/icon_view/default_use_tighter_layout = true\n"
 "delete \"size\" from /apps/nautilus/list_view/default_visible_columns"
 msgstr ""
+"Alterar as definições do Nautilus: Não contar itens de directório. Não "
+"antever som. Não mostrar texto nos ícones. Utilizar disposição apertado. \n"
+"O truque consiste em alterar definições GConf como segue:\n"
+"/apps/nautilus/preferences/show_directory_item_counts = never\n"
+"/apps/nautilus/preferences/preview_sound = never\n"
+"/apps/nautilus/preferences/show_icon_text = never\n"
+"/apps/nautilus/icon_view/default_use_tighter_layout = true\n"
+"delete \"size\" from /apps/nautilus/list_view/default_visible_columns"
 
 #: ../ailurus/gnome/apps.py:145
 msgid "Make GEdit more suitable for programmers"
@@ -2313,6 +2444,10 @@ msgid ""
 "of current file. Automatically save files once in each minute. Show line "
 "numbers."
 msgstr ""
+"Altere as definições do GEdit como segue:\n"
+"Avançar linha atual automaticamente. Não criar cópia do arquivo atual oculto "
+"automaticamente. Savar automaticamente os arquivos a cada minuto. Mostrar "
+"número das linhas."
 
 #: ../ailurus/gnome/osinfo.py:41
 msgid "GNOME version:"
@@ -2330,11 +2465,11 @@ msgstr "Mostrar conteúdo da área de trabalho"
 #: ../ailurus/gnome/setting.py:107 ../ailurus/gnome/setting.py:378
 #: ../ailurus/gnome/setting.py:398
 msgid "(take effect at the next time GNOME starts up)"
-msgstr ""
+msgstr "(Em vigor na próxima vez que o GNOME iniciar)"
 
 #: ../ailurus/gnome/setting.py:34
 msgid "Display \"Mounted volume\" icon"
-msgstr ""
+msgstr "Mostra o ícone \"Volume montado\""
 
 #: ../ailurus/gnome/setting.py:35
 msgid "Put icons linking to mounted volumes on the desktop."
@@ -2379,6 +2514,9 @@ msgid ""
 "server\" or \"Trash\" icon,\n"
 "please select the icon, then press F2."
 msgstr ""
+"A fim de mudar o nome do ícone do \"Computador\", \"pasta Home\", \"do "
+"servidor de rede\" ou \"Lixeira\" ,\n"
+"Por favor, selecione o ícone, em seguida, pressione F2."
 
 #: ../ailurus/gnome/setting.py:57
 msgid "Desktop icons"
@@ -2387,19 +2525,19 @@ msgstr "Ícones da área de trabalho"
 #: ../ailurus/gnome/setting.py:89
 #, python-format
 msgid "The \"start-here\" icon is %s"
-msgstr ""
+msgstr "O ícone \"começar-aqui\" é %s"
 
 #: ../ailurus/gnome/setting.py:95
 msgid "Change \"start-here\" icon"
-msgstr ""
+msgstr "Mudar o ícone \"iniciar-aqui\""
 
 #: ../ailurus/gnome/setting.py:101
 msgid "The login icon is ~/.face"
-msgstr ""
+msgstr "O ícone de login é ~/.face"
 
 #: ../ailurus/gnome/setting.py:107
 msgid "Change login icon"
-msgstr ""
+msgstr "Alterar o ícone do login"
 
 #: ../ailurus/gnome/setting.py:111
 msgid "Show icons of menu entries"
@@ -2415,15 +2553,15 @@ msgstr "Configuração dos ícones da entrada de menu"
 
 #: ../ailurus/gnome/setting.py:119
 msgid "Show icon in buttons"
-msgstr ""
+msgstr "Mostrar ícone nos botões"
 
 #: ../ailurus/gnome/setting.py:121
 msgid "Whether buttons may display an icon next to text."
-msgstr ""
+msgstr "Se botões podem mostrar um ícone ao lado do texto."
 
 #: ../ailurus/gnome/setting.py:123
 msgid "Button icons setting"
-msgstr "Button ícones definição"
+msgstr "Definição dos ícones dos botões"
 
 #: ../ailurus/gnome/setting.py:127
 msgid "Disable terminal bell"
@@ -2442,21 +2580,24 @@ msgstr "Configuração do sinal sonoro do terminal"
 
 #: ../ailurus/gnome/setting.py:135
 msgid "Automatically mount CD and flash disks"
-msgstr ""
+msgstr "Montar automaticamente CD e discos flash"
 
 #: ../ailurus/gnome/setting.py:137
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr ""
+"Se definido como verdadeiro, o Nautilus vai montar automaticamente mídias "
+"como CD e discos flash."
 
 #: ../ailurus/gnome/setting.py:139
 msgid "Show more permissions setting in file property dialog"
 msgstr ""
+"Mostrar mais permissões de configuração no diálogo de propriedades do arquivo"
 
 #: ../ailurus/gnome/setting.py:142
 msgid "More Nautilus settings"
-msgstr ""
+msgstr "Mais configurações do Nautilus"
 
 #: ../ailurus/gnome/setting.py:164
 msgid "Larger font"
@@ -2464,7 +2605,7 @@ msgstr "Fonte maior"
 
 #: ../ailurus/gnome/setting.py:167 ../ailurus/gnome/setting.py:176
 msgid "Change these GConf keys:\n"
-msgstr ""
+msgstr "Alterar estas chaves Gconf:\n"
 
 #: ../ailurus/gnome/setting.py:173
 msgid "Smaller font"
@@ -2476,19 +2617,19 @@ msgstr "Mudar a fonte com um clique"
 
 #: ../ailurus/gnome/setting.py:189 ../ailurus/gnome/setting.py:198
 msgid "The layout of window title-bar buttons"
-msgstr ""
+msgstr "O layout da janela de botões da barra de título"
 
 #: ../ailurus/gnome/setting.py:190 ../ailurus/gnome/setting.py:261
 #: ../ailurus/gnome/setting.py:509 ../ailurus/gnome/setting.py:525
 #: ../ailurus/gnome/setting.py:533 ../ailurus/libsetting.py:37
 #: ../ailurus/libsetting.py:53 ../ailurus/libsetting.py:98
-#: ../ailurus/libsetting.py:219 ../ailurus/libsetting.py:251
+#: ../ailurus/libsetting.py:229 ../ailurus/libsetting.py:261
 msgid "GConf key: "
 msgstr "chave GConf: "
 
 #: ../ailurus/gnome/setting.py:191
 msgid "It can be used in Metacity only."
-msgstr ""
+msgstr "Pode ser usado apenas no Metacity."
 
 #: ../ailurus/gnome/setting.py:193
 msgid "GNOME classic"
@@ -2496,7 +2637,7 @@ msgstr "GNOME clássico"
 
 #: ../ailurus/gnome/setting.py:193
 msgid "Ubuntu Lucid beta"
-msgstr ""
+msgstr "Ubuntu  Lucid beta"
 
 #: ../ailurus/gnome/setting.py:193
 msgid "MAC OS X"
@@ -2519,7 +2660,7 @@ msgid ""
 "GConf key: "
 msgstr ""
 "\n"
-"chave GConf: "
+"Chave GConf: "
 
 #: ../ailurus/gnome/setting.py:203
 msgid "clicked by mouse right button:"
@@ -2704,7 +2845,7 @@ msgstr "Configurar aplicativos inicializados automaticamente"
 
 #: ../ailurus/gnome/setting.py:339
 msgid "(Command: gnome-session-properties)"
-msgstr ""
+msgstr "(Command: gnome-session-properties)"
 
 #: ../ailurus/gnome/setting.py:342
 msgid "Remember running applications when you log out."
@@ -2721,17 +2862,19 @@ msgstr ""
 
 #: ../ailurus/gnome/setting.py:347
 msgid "Prompt you before you log out from GNOME."
-msgstr ""
+msgstr "Alertá-lo antes de sair para o GNOME."
 
 #: ../ailurus/gnome/setting.py:349
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr ""
+"Se o valor for falso, a sessão GNOME será encerrada imediatamente  se você "
+"clicar no menu \"Sistema\" -> \"Encerrar sessão\"."
 
 #: ../ailurus/gnome/setting.py:351
 msgid "Allow connection from remote hosts."
-msgstr ""
+msgstr "Permitir a conexão de hosts remotos."
 
 #: ../ailurus/gnome/setting.py:355
 msgid "GNOME session"
@@ -2739,7 +2882,7 @@ msgstr "Sessão do GNOME"
 
 #: ../ailurus/gnome/setting.py:361
 msgid "LCD brightness when on AC power:"
-msgstr ""
+msgstr "Brilho do LCD quando a energia AC:"
 
 #: ../ailurus/gnome/setting.py:363 ../ailurus/gnome/setting.py:369
 msgid "GConf Key: "
@@ -2747,40 +2890,42 @@ msgstr "GConf chave: "
 
 #: ../ailurus/gnome/setting.py:367
 msgid "LCD dimming amount when on battery:"
-msgstr ""
+msgstr "Quantidade de escurecimento do LCD se na bateria:"
 
 #: ../ailurus/gnome/setting.py:373
 msgid "Backlight"
-msgstr ""
+msgstr "Luz de fundo"
 
 #: ../ailurus/gnome/setting.py:373
 msgid "(valid only for laptops)"
-msgstr ""
+msgstr "(valido apenas para laptops)"
 
 #: ../ailurus/gnome/setting.py:378
 msgid "Display content of your home folder on desktop"
-msgstr ""
+msgstr "Mostrar o conteúdo da sua pasta home no desktop"
 
 #: ../ailurus/gnome/setting.py:398
 msgid "Display \"GNOME control center\" entry in \"System\" menu"
 msgstr ""
+"Mostrar \"centro de controle do GNOME\" na entrada do menu \"sistema\""
 
 #: ../ailurus/gnome/setting.py:399
 msgid ""
 "Create a file ~/.local/share/applications/gnome-control-center.desktop"
 msgstr ""
+"Crie um arquivo ~/.local/share/applications/gnome-control-center.desktop"
 
 #: ../ailurus/gnome/setting.py:407
 msgid "Change default file manager to:"
-msgstr ""
+msgstr "Alterar gerenciador de arquivos padrão para:"
 
 #: ../ailurus/gnome/setting.py:412
 msgid "Change default panel program to:"
-msgstr ""
+msgstr "Alterar o programa padrão de painel para:"
 
 #: ../ailurus/gnome/setting.py:417
 msgid "Change default window manager to:"
-msgstr ""
+msgstr "Alterar o gerenciador de janelas padrão para:"
 
 #: ../ailurus/gnome/setting.py:424
 msgid "Advance settings"
@@ -2788,60 +2933,65 @@ msgstr "Configurações Avançadas"
 
 #: ../ailurus/gnome/setting.py:428
 msgid "Enable GNOME panel animations"
-msgstr ""
+msgstr "Activar animações do painel GNOME"
 
 #: ../ailurus/gnome/setting.py:430
 msgid "Lock down all GNOME panels"
-msgstr ""
+msgstr "Bloquear todos os painéis do GNOME"
 
 #: ../ailurus/gnome/setting.py:430
 msgid "(take effect at the next time when GNOME starts up)"
-msgstr ""
+msgstr "(Em vigor no momento seguinte, quando o GNOME inicia)"
 
 #: ../ailurus/gnome/setting.py:432
 msgid "Confirm before removing a panel"
-msgstr ""
+msgstr "Confirmar antes de remover um painel"
 
 #: ../ailurus/gnome/setting.py:435
 msgid "GNOME panels settings"
-msgstr ""
+msgstr "Configurações de painéis do GNOME"
 
 #: ../ailurus/gnome/setting.py:439
 msgid ""
 "Do not list username. You must enter username manually.\n"
 "To display a username list might be not secure."
 msgstr ""
+"Não listar nome de usuários . Você deve digitar o nome do usuário "
+"manualmente.\n"
+"Exibir uma lista de usuário pode não ser seguro."
 
 #: ../ailurus/gnome/setting.py:443
 msgid "Do not display \"restart\" button"
-msgstr ""
+msgstr "Não mostrar o botão \"reiniciar\""
 
 #: ../ailurus/gnome/setting.py:445
 msgid "Login window settings"
-msgstr ""
+msgstr "Configurações da janela de Login"
 
 #: ../ailurus/gnome/setting.py:465
 msgid ""
 "The login window background is the gconf value "
 "\"/desktop/gnome/background/picture_filename\" of user \"gdm\"."
 msgstr ""
+"A imagem da janela de início de sessão é o valor gconf "
+"\"/desktop/gnome/background/picture_filename\" do usuário \"gdm\"."
 
 #: ../ailurus/gnome/setting.py:470
 msgid "Change login window background"
-msgstr ""
+msgstr "Mudar fundo da janela de login"
 
 #. do not support on Fedora because there is no sudo.
 #: ../ailurus/gnome/setting.py:476
 msgid "Enable GNOME login sound"
-msgstr ""
+msgstr "Ativar som de login do GNOME"
 
 #: ../ailurus/gnome/setting.py:480
 msgid "Disable GNOME login sound"
-msgstr ""
+msgstr "Desativar o som de login do GNOME"
 
 #: ../ailurus/gnome/setting.py:488
 msgid "Change GNOME login sound"
-msgstr ""
+msgstr "Alterar o som de login do GNOME"
 
 #: ../ailurus/gnome/setting.py:491
 msgid "Command line"
@@ -2859,92 +3009,97 @@ msgstr "%2d:"
 
 #: ../ailurus/gnome/setting.py:508
 msgid "Compression strategy of file-roller:"
-msgstr ""
+msgstr "estratégia de compressão de arquivos de rolo :"
 
 #: ../ailurus/gnome/setting.py:512
 msgid "Very high speed"
-msgstr ""
+msgstr "Velocidade muito alta"
 
 #: ../ailurus/gnome/setting.py:512
 msgid "High speed"
-msgstr ""
+msgstr "Velocidade alta"
 
 #: ../ailurus/gnome/setting.py:512
 msgid "Balanced"
-msgstr ""
+msgstr "Equilibrado"
 
 #: ../ailurus/gnome/setting.py:512
 msgid "High compression rate"
-msgstr ""
+msgstr "Alta taxa de compressão"
 
 #: ../ailurus/gnome/setting.py:517
 msgid "Compression strategy"
-msgstr ""
+msgstr "Estratégia de compressão"
 
 #: ../ailurus/gnome/setting.py:524
 msgid "Maximum number of undos:"
-msgstr ""
+msgstr "O número máximo de desfazer:"
 
 #: ../ailurus/gnome/setting.py:532
 msgid "Maximum number of recent files:"
-msgstr ""
+msgstr "Número máximo de arquivos recentes:"
 
 #: ../ailurus/gnome/setting.py:539
 msgid "GEdit settings"
-msgstr ""
+msgstr "Configurações GEdit"
 
 #: ../ailurus/gnome/setting.py:549
 #, python-format
 msgid "GNOME settings of user %s have been reset."
-msgstr ""
+msgstr "Configurações do usuário %s GNOME foram redefinidas."
 
 #: ../ailurus/gnome/setting.py:556
 msgid "Reset GNOME by removing these directories:"
-msgstr ""
+msgstr "Restabelecer  GNOME removendo estes diretórios:"
 
 #: ../ailurus/gnome/setting.py:565
 msgid ""
 "In order to reset GNOME, please logout first, then login GNOME as another "
 "user."
 msgstr ""
+"A fim de restabelecer o GNOME, por favor,em primeiro lugar saia,em seguida "
+"faça login no GNOME como outro usuário."
 
 #: ../ailurus/gnome/setting.py:566
 msgid ""
 "Cannot reset GNOME for current user because above files are being used."
 msgstr ""
+"Não é possível reiniciar o GNOME para o usuário atual porque os arquivos "
+"acima estão sendo usados."
 
 #: ../ailurus/gnome/setting.py:567
 msgid "Please be careful."
-msgstr ""
+msgstr "Por favor, tenha cuidado."
 
 #: ../ailurus/gnome/setting.py:576
 msgid "There is no other user"
-msgstr ""
+msgstr "Não há nenhum outro usuário"
 
 #: ../ailurus/gnome/setting.py:581
 #, python-format
 msgid "Reset user %s"
-msgstr ""
+msgstr "Redefinir o usuário %s"
 
 #: ../ailurus/gnome/setting.py:586 ../ailurus/system_setting_pane.py:66
 msgid "Reset GNOME"
-msgstr ""
+msgstr "Redefinir GNOME"
 
 #: ../ailurus/gnome/setting.py:591
 msgid "Activate screen saver when computer is idle for long time"
 msgstr ""
+"Ativar proteção de tela quando o computador estiver ocioso por muito tempo"
 
 #: ../ailurus/gnome/setting.py:594
 msgid "Lock screen when screen saver is activated"
-msgstr ""
+msgstr "Bloquear tela quando o protetor de tela estiver ativado"
 
 #: ../ailurus/gnome/setting.py:597
 msgid "Lock screen after hibernating"
-msgstr ""
+msgstr "Bloquear tela após a hibernação"
 
 #: ../ailurus/gnome/setting.py:599
 msgid "Lock screen after suspending"
-msgstr ""
+msgstr "Bloquear tela após suspensão"
 
 #: ../ailurus/gnome/setting.py:602 ../ailurus/system_setting_pane.py:67
 msgid "Screensaver"
@@ -2982,6 +3137,10 @@ msgid ""
 "Capture current window after 10 seconds\n"
 "gnome-screenshot -wd 10\n"
 msgstr ""
+"Captura de tela após 10 segundos\n"
+"gnome-screenshot -d 10\n"
+"Captura da janela atual, após 10 segundos\n"
+"gnome-screenshot -wd 10\n"
 
 #: ../ailurus/gnome/tips.py:44
 msgid ""
@@ -3001,9 +3160,9 @@ msgstr "Informações sobre o Linux"
 
 #: ../ailurus/info_pane.py:82
 msgid "Print all information"
-msgstr ""
+msgstr "Imprima todas as informações"
 
-#: ../ailurus/install_remove_pane.py:47
+#: ../ailurus/install_remove_pane.py:49
 msgid ""
 "Install\n"
 "Software"
@@ -3011,176 +3170,208 @@ msgstr ""
 "Instalar\n"
 "Software"
 
-#: ../ailurus/install_remove_pane.py:131
+#: ../ailurus/install_remove_pane.py:223
+msgid "Add software into this category"
+msgstr "Adicionar aplicações para esta categoria"
+
+#: ../ailurus/install_remove_pane.py:256
 msgid "To be installed:\n"
 msgstr "A ser instalado:\n"
 
-#: ../ailurus/install_remove_pane.py:136
+#: ../ailurus/install_remove_pane.py:261
 msgid "To be removed:\n"
 msgstr "A ser removido:\n"
 
-#: ../ailurus/install_remove_pane.py:141
+#: ../ailurus/install_remove_pane.py:266
 msgid "Do not ask me any more"
-msgstr ""
+msgstr "Não me pergunte mais"
 
-#: ../ailurus/install_remove_pane.py:147
+#: ../ailurus/install_remove_pane.py:272
 msgid "Are you sure to change your system as follows?"
 msgstr ""
 "Você tem certeza que deseja alterar as configurações a seguir do sistema?"
 
-#: ../ailurus/install_remove_pane.py:148
+#: ../ailurus/install_remove_pane.py:273
 msgid "Confirmation"
 msgstr "Confirmação"
 
-#: ../ailurus/install_remove_pane.py:170
+#: ../ailurus/install_remove_pane.py:295
 msgid "Failed to install:"
 msgstr "Falha na instalação:"
 
-#: ../ailurus/install_remove_pane.py:174
+#: ../ailurus/install_remove_pane.py:299
 msgid "(network failure. not bug)"
-msgstr ""
+msgstr "(falha de rede. não é erro do progama)"
 
-#: ../ailurus/install_remove_pane.py:176
+#: ../ailurus/install_remove_pane.py:301
 msgid "(cancelled by you. not bug)"
-msgstr ""
+msgstr "(por você. não é erro do progama)"
 
-#: ../ailurus/install_remove_pane.py:180
+#: ../ailurus/install_remove_pane.py:305
 msgid "Failed to remove:"
 msgstr "Falha na remoção:"
 
-#: ../ailurus/install_remove_pane.py:200
+#: ../ailurus/install_remove_pane.py:325
 msgid ""
 "If you think that these errors are caused by a software bug, please tell the "
 "developers."
 msgstr ""
+"Se você acha que esses erros são causados por um erro de software, por favor "
+"informe os desenvolvedores."
 
-#: ../ailurus/install_remove_pane.py:201
+#: ../ailurus/install_remove_pane.py:326
 msgid "Remember to paste the following debugging information in bug report."
 msgstr ""
+"Lembre-se de colar as seguinte informações de depuração no relatório de erro."
 
-#: ../ailurus/install_remove_pane.py:214
+#: ../ailurus/install_remove_pane.py:339
 msgid "Report bug"
-msgstr ""
+msgstr "Relatar Erro"
 
-#: ../ailurus/install_remove_pane.py:216
+#: ../ailurus/install_remove_pane.py:341
 msgid "Copy debugging information to clipboard"
-msgstr ""
+msgstr "Copie as informações de depuração para prancheta"
 
-#: ../ailurus/install_remove_pane.py:224 ../ailurus/libu.py:195
-#: ../ailurus/libu.py:220 ../ailurus/libu.py:242 ../ailurus/libu.py:301
-#: ../ailurus/support/checkupdate.py:272
+#: ../ailurus/install_remove_pane.py:349 ../ailurus/libu.py:195
+#: ../ailurus/libu.py:220 ../ailurus/libu.py:239 ../ailurus/libu.py:261
+#: ../ailurus/libu.py:321 ../ailurus/support/checkupdate.py:272
 msgid "Close"
 msgstr "Fechar"
 
-#: ../ailurus/install_remove_pane.py:238
+#: ../ailurus/install_remove_pane.py:363
 msgid "Operations failed"
-msgstr ""
+msgstr "Operações falharam"
 
-#: ../ailurus/install_remove_pane.py:247
+#: ../ailurus/install_remove_pane.py:372
 msgid ""
 "There are broken packages.\n"
 "Command \"apt-get install -f\" will be launched to fix error."
 msgstr ""
+"Há pacotes quebrados.\n"
+"O comando \"apt-get install -f\" será lançado para corrigir os erros."
 
-#: ../ailurus/install_remove_pane.py:254
+#: ../ailurus/install_remove_pane.py:379
 msgid "Cannot fix broken packages. Installation is cancelled."
 msgstr ""
+"Não é possível consertar pacotes quebrados. A instalação foi cancelada."
 
-#: ../ailurus/install_remove_pane.py:279
+#: ../ailurus/install_remove_pane.py:404
 msgid "Installing:"
 msgstr "instalando"
 
-#: ../ailurus/install_remove_pane.py:291
+#: ../ailurus/install_remove_pane.py:416
 msgid "Removing:"
 msgstr "Removendo:"
 
-#: ../ailurus/install_remove_pane.py:328
+#: ../ailurus/install_remove_pane.py:453
 msgid ""
 "Check if you are currently running another software management program, e.g. "
 "Synaptic or apt-get. Only one program is allowed to make changes at the same "
 "time."
 msgstr ""
+"Verifique se você está executando outro programa de gerenciamento de "
+"software, por exemplo, Synaptic ou apt-get. Somente um programa está "
+"autorizado a fazer alterações ao mesmo tempo."
 
-#: ../ailurus/install_remove_pane.py:335
+#: ../ailurus/install_remove_pane.py:460
 msgid "Cannot lock apt cache"
-msgstr ""
+msgstr "Não é possível bloquear cache apt"
 
-#: ../ailurus/install_remove_pane.py:391
+#: ../ailurus/install_remove_pane.py:516
 msgid "will install"
 msgstr "Será instalado"
 
-#: ../ailurus/install_remove_pane.py:393
+#: ../ailurus/install_remove_pane.py:518
 msgid "will remove"
-msgstr ""
+msgstr "Será removido"
 
-#: ../ailurus/install_remove_pane.py:472 ../ailurus/install_remove_pane.py:514
+#: ../ailurus/install_remove_pane.py:597 ../ailurus/install_remove_pane.py:639
 msgid "Record the software items you have installed"
-msgstr ""
+msgstr "Cadastro dos itens de software que você instalou"
 
-#: ../ailurus/install_remove_pane.py:483
+#: ../ailurus/install_remove_pane.py:608
 #, python-format
 msgid "Successfully record the software items to file %s"
-msgstr ""
+msgstr "Registro com sucesso dos itens de software para o arquivo% s"
 
-#: ../ailurus/install_remove_pane.py:490
+#: ../ailurus/install_remove_pane.py:615
 msgid "Select a software items list"
-msgstr ""
+msgstr "Selecionar uma lista de itens de software"
 
-#: ../ailurus/install_remove_pane.py:502
+#: ../ailurus/install_remove_pane.py:627
 #, python-format
 msgid "Successfully load file %s"
-msgstr ""
+msgstr "O arquivo %s foi carregado com sucesso"
 
-#: ../ailurus/install_remove_pane.py:510
+#: ../ailurus/install_remove_pane.py:635
 msgid "Synchronize"
 msgstr "Sincronizar"
 
-#: ../ailurus/install_remove_pane.py:518
+#: ../ailurus/install_remove_pane.py:643
 msgid "Select the software items according to a saved list"
-msgstr ""
+msgstr "Selecionar os itens de software de acordo com uma lista salva"
 
-#: ../ailurus/install_remove_pane.py:526 ../ailurus/ubuntu/quick_setup.py:95
+#: ../ailurus/install_remove_pane.py:651 ../ailurus/ubuntu/quick_setup.py:95
 #: ../ailurus/ubuntu/quick_setup.py:442
 msgid "Quickly install popular software"
-msgstr ""
+msgstr "Instalar rapidamente um software popular"
 
-#: ../ailurus/install_remove_pane.py:534
+#: ../ailurus/install_remove_pane.py:658
 msgid "_Apply"
 msgstr "_Aplicar"
 
-#: ../ailurus/install_remove_pane.py:623
+#. then pop up menu
+#: ../ailurus/install_remove_pane.py:731
+msgid "Add a software item"
+msgstr "Aicionar um item de progama"
+
+#: ../ailurus/install_remove_pane.py:733
+msgid "Edit"
+msgstr "Editar"
+
+#: ../ailurus/install_remove_pane.py:737
+msgid "Add To Favourite"
+msgstr "Adicionar aos favoritos"
+
+#: ../ailurus/install_remove_pane.py:739
+msgid "Remove From Favourite"
+msgstr "Remover dos favoritos"
+
+#: ../ailurus/install_remove_pane.py:783
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr ""
+"Quanto tempo depois que o servidor não responde, desistir de baixar? (Em "
+"segundos)"
 
-#: ../ailurus/install_remove_pane.py:629
+#: ../ailurus/install_remove_pane.py:789
 msgid "How many times does Ailurus try to download the same resource?"
-msgstr ""
+msgstr "Quantas vezes  Ailurus tente baixar o mesmo recurso?"
 
-#: ../ailurus/install_remove_pane.py:632
+#: ../ailurus/install_remove_pane.py:792
 msgid "Set Ailurus download parameter"
-msgstr ""
+msgstr "Definir parâmetro de download do Ailurus"
 
-#: ../ailurus/install_remove_pane.py:657
+#: ../ailurus/install_remove_pane.py:817
 msgid "Set download parameters"
-msgstr ""
+msgstr "Definir parâmetros de download"
 
-#: ../ailurus/install_remove_pane.py:660
+#: ../ailurus/install_remove_pane.py:820
 msgid "Refresh icons of all software items"
-msgstr ""
+msgstr "Atualizar ícones de todos os itens de software"
 
-#: ../ailurus/install_remove_pane.py:663
+#: ../ailurus/install_remove_pane.py:823
 msgid "Refresh installing state of all software items"
-msgstr ""
+msgstr "atualizar estado das instalações de todos os itens de progamas"
 
-#: ../ailurus/install_remove_pane.py:712
+#: ../ailurus/install_remove_pane.py:872
 #, python-format
 msgid "%s available items"
 msgstr ""
 
-#: ../ailurus/install_remove_pane.py:721
+#: ../ailurus/install_remove_pane.py:881
 msgid "Would you like to download latest application data from web?"
-msgstr ""
+msgstr "Gostaria de baixar as aplicações de dados mais recentes da web?"
 
 #: ../ailurus/libapp.py:50
 msgid "Science"
@@ -3188,421 +3379,424 @@ msgstr "Ciência"
 
 #: ../ailurus/libapp.py:51
 msgid "Develop"
-msgstr ""
+msgstr "Desenvolver"
 
 #: ../ailurus/libapp.py:52
 msgid "Home"
-msgstr ""
+msgstr "Pasta Pessoal"
 
 #: ../ailurus/libapp.py:53
 msgid "Other"
-msgstr ""
+msgstr "Outro"
 
 #: ../ailurus/libapp.py:54 ../ailurus/libapp.py:61
 msgid "All"
-msgstr ""
+msgstr "Todos"
 
 #. internet
 #: ../ailurus/libapp.py:63
+msgid "Favourite"
+msgstr "Favorito"
+
+#: ../ailurus/libapp.py:64
 msgid "Browser"
 msgstr "Navegador"
 
-#: ../ailurus/libapp.py:64
-msgid "Email"
-msgstr ""
-
 #: ../ailurus/libapp.py:65
+msgid "Email"
+msgstr "E-mail"
+
+#: ../ailurus/libapp.py:66
 msgid "File sharing"
 msgstr "Compartilhamento de arquivos"
 
-#: ../ailurus/libapp.py:66
+#: ../ailurus/libapp.py:67
 msgid "Chat"
 msgstr "Bate-papo"
 
-#: ../ailurus/libapp.py:67
-msgid "Firefox extension"
-msgstr ""
-
 #: ../ailurus/libapp.py:68
+msgid "Firefox extension"
+msgstr "Extensão do firefox"
+
+#: ../ailurus/libapp.py:69
 msgid "Flash"
 msgstr "Flash"
 
-#: ../ailurus/libapp.py:69
+#: ../ailurus/libapp.py:70
 msgid "Blog"
 msgstr "Blog"
 
-#: ../ailurus/libapp.py:70
+#: ../ailurus/libapp.py:71
 msgid "RSS"
 msgstr "RSS"
 
-#: ../ailurus/libapp.py:71
+#: ../ailurus/libapp.py:72
 msgid "Internet"
 msgstr "Internet"
 
-#: ../ailurus/libapp.py:72
+#: ../ailurus/libapp.py:73
 msgid "Image"
 msgstr "Imagem"
 
 #. security
-#: ../ailurus/libapp.py:74
+#: ../ailurus/libapp.py:75
 msgid "Security"
-msgstr ""
+msgstr "Segurança"
 
 #. multimedia
-#: ../ailurus/libapp.py:76
+#: ../ailurus/libapp.py:77
 msgid "Player"
 msgstr "Reprodutor"
 
-#: ../ailurus/libapp.py:77
+#: ../ailurus/libapp.py:78
 msgid "CD burner"
 msgstr "Gravador de CD"
 
-#: ../ailurus/libapp.py:78
+#: ../ailurus/libapp.py:79
 msgid "Media editor"
 msgstr "Editor de mídia"
 
 #. appearance
-#: ../ailurus/libapp.py:80
+#: ../ailurus/libapp.py:81
 msgid "Panel"
 msgstr "Painel"
 
-#: ../ailurus/libapp.py:81
+#: ../ailurus/libapp.py:82
 msgid "Theme"
 msgstr "Tema"
 
-#: ../ailurus/libapp.py:82
-msgid "Screen widget"
-msgstr ""
-
 #: ../ailurus/libapp.py:83
+msgid "Screen widget"
+msgstr "Tela de widget"
+
+#: ../ailurus/libapp.py:84
 msgid "Compiz setting"
-msgstr ""
+msgstr "Definição do compiz"
 
 #. science
-#: ../ailurus/libapp.py:85
+#: ../ailurus/libapp.py:86
 msgid "Math"
 msgstr "Matemática"
 
-#: ../ailurus/libapp.py:86
+#: ../ailurus/libapp.py:87
 msgid "Statistics"
 msgstr "Estatísticas"
 
-#: ../ailurus/libapp.py:87
+#: ../ailurus/libapp.py:88
 msgid "Electronics"
 msgstr "Eletrônica"
 
-#: ../ailurus/libapp.py:88
-msgid "Mechanics"
-msgstr ""
-
 #: ../ailurus/libapp.py:89
+msgid "Mechanics"
+msgstr "Mecânica"
+
+#: ../ailurus/libapp.py:90
 msgid "Geography"
 msgstr "Geografia"
 
-#: ../ailurus/libapp.py:90
+#: ../ailurus/libapp.py:91
 msgid "Biology"
 msgstr "Biologia"
 
-#: ../ailurus/libapp.py:91
+#: ../ailurus/libapp.py:92
 msgid "LaTeX"
 msgstr "LaTeX"
 
 #. programming
-#: ../ailurus/libapp.py:93
+#: ../ailurus/libapp.py:94
 msgid "IDE"
 msgstr "IDE"
 
-#: ../ailurus/libapp.py:94
-msgid "Version control"
-msgstr ""
-
 #: ../ailurus/libapp.py:95
+msgid "Version control"
+msgstr "Controle de versão"
+
+#: ../ailurus/libapp.py:96
 msgid "Library"
 msgstr "Biblioteca"
 
-#: ../ailurus/libapp.py:96
-msgid "Embedded system"
-msgstr ""
-
 #: ../ailurus/libapp.py:97
+msgid "Embedded system"
+msgstr "Sistema incorporado"
+
+#: ../ailurus/libapp.py:98
 msgid "Text editor"
 msgstr "Editor de texto"
 
-#: ../ailurus/libapp.py:98
-msgid "Eclipse extension"
-msgstr ""
-
 #: ../ailurus/libapp.py:99
+msgid "Eclipse extension"
+msgstr "Extensão do Eclipse"
+
+#: ../ailurus/libapp.py:100
 msgid "Programming tool"
-msgstr ""
+msgstr "Ferramenta de programação"
 
 #. business
-#: ../ailurus/libapp.py:101
+#: ../ailurus/libapp.py:102
 msgid "Business"
-msgstr ""
+msgstr "Negócios"
 
 #. design
-#: ../ailurus/libapp.py:103
-msgid "Design"
-msgstr ""
-
 #: ../ailurus/libapp.py:104
+msgid "Design"
+msgstr "Design"
+
+#: ../ailurus/libapp.py:105
 msgid "Drawing"
 msgstr "Desenho"
 
-#: ../ailurus/libapp.py:105
+#: ../ailurus/libapp.py:106
 msgid "Typesetting"
-msgstr ""
+msgstr "Composição"
 
 #. gnome_dedicated
-#: ../ailurus/libapp.py:107
+#: ../ailurus/libapp.py:108
 msgid "GNOME dedicated"
-msgstr ""
+msgstr "GNOME dedicado"
 
 #. nautilus
-#: ../ailurus/libapp.py:109
+#: ../ailurus/libapp.py:110
 msgid "Nautilus extension"
-msgstr ""
+msgstr "Extensão do Nautilus"
 
 #. simulator
-#: ../ailurus/libapp.py:111
+#: ../ailurus/libapp.py:112
 msgid "Simulator"
-msgstr ""
+msgstr "Simulador"
 
 #. education
-#: ../ailurus/libapp.py:113
+#: ../ailurus/libapp.py:114
 msgid "Education"
 msgstr "Educacional"
 
 #. game
-#: ../ailurus/libapp.py:115
+#: ../ailurus/libapp.py:116
 msgid "Game"
 msgstr "Jogo"
 
 #. antivirus
-#: ../ailurus/libapp.py:117
+#: ../ailurus/libapp.py:118
 msgid "Anti-virus"
-msgstr ""
+msgstr "Antivírus"
 
 #. others
-#: ../ailurus/libapp.py:119 ../ailurus/main.py:360
+#: ../ailurus/libapp.py:120 ../ailurus/main.py:364
 msgid "Others"
 msgstr "Outros"
 
 #. tasksel
-#: ../ailurus/libapp.py:121
+#: ../ailurus/libapp.py:122
 msgid "Establish a server"
-msgstr ""
+msgstr "Estabelecer um servidor"
 
 #. repository
-#: ../ailurus/libapp.py:123
+#: ../ailurus/libapp.py:124
 msgid "Repository"
 msgstr "Repositório"
 
-#: ../ailurus/libapp.py:178 ../ailurus/libapp.py:216
+#: ../ailurus/libapp.py:179 ../ailurus/libapp.py:217
 msgid "Change GConf values:"
 msgstr "Mudar os valores do GConf:"
 
-#: ../ailurus/libapp.py:181 ../ailurus/libapp.py:192 ../ailurus/libapp.py:219
-#: ../ailurus/libapp.py:229
+#: ../ailurus/libapp.py:182 ../ailurus/libapp.py:193 ../ailurus/libapp.py:220
+#: ../ailurus/libapp.py:230
 msgid "Key:"
 msgstr "Chave:"
 
-#: ../ailurus/libapp.py:182 ../ailurus/libapp.py:220
+#: ../ailurus/libapp.py:183 ../ailurus/libapp.py:221
 msgid "New value:"
 msgstr "Novo valor:"
 
-#: ../ailurus/libapp.py:193
+#: ../ailurus/libapp.py:194
 msgid "Appended items:"
 msgstr "Apêndices:"
 
-#: ../ailurus/libapp.py:230
+#: ../ailurus/libapp.py:231
 msgid "Removed items:"
 msgstr "Itens removidos:"
 
-#: ../ailurus/libapp.py:284 ../ailurus/libapp.py:321 ../ailurus/libapp.py:348
-#: ../ailurus/libapp.py:371
+#: ../ailurus/libapp.py:285 ../ailurus/libapp.py:322 ../ailurus/libapp.py:349
+#: ../ailurus/libapp.py:372
 #, python-format
 msgid "Because the packages \"%s\" are not installed."
-msgstr ""
+msgstr "Porque os pacotes \"%s\"  não estão instalados."
 
-#: ../ailurus/libapp.py:292
+#: ../ailurus/libapp.py:293
 #, python-format
 msgid "Add source \"<b>%s</b>\"; %s"
-msgstr ""
+msgstr "Adicionar fonte \"<b>%s</b>\"; %s"
 
-#: ../ailurus/libapp.py:421 ../ailurus/libapp.py:463
+#: ../ailurus/libapp.py:422 ../ailurus/libapp.py:464
 #, python-format
 msgid "Because \"%s\" does not exist."
-msgstr ""
+msgstr "Porque \"%s\" não existe."
 
-#: ../ailurus/libapp.py:446
+#: ../ailurus/libapp.py:447
 msgid ""
 "This extension cannot be removed by Ailurus. It can be removed in 'Tools'-"
 ">'Add-ons' menu of firefox."
 msgstr ""
+"Esta extensão não pode ser removido pelo Ailurus. Ela pode ser removida no "
+"'menu Feramentas'> \"Complementos\" do firefox."
 
-#: ../ailurus/libapp.py:496
+#: ../ailurus/libapp.py:497
 msgid "Installing Eclipse extension"
 msgstr "Instalando extensão do Eclipse"
 
-#: ../ailurus/libapp.py:506
+#: ../ailurus/libapp.py:507
 #, python-format
 msgid "Removing %s"
-msgstr ""
+msgstr "Removendo %s"
 
-#: ../ailurus/libapp.py:509
+#: ../ailurus/libapp.py:510
 msgid "Please launch Eclipse, and go to \"Help\" -> \"About Eclipse SDK\"."
 msgstr ""
+"Por favor, inicie o Eclipse e vá até \"Ajuda\"-> \"Sobre Eclipse SDK\"."
 
-#: ../ailurus/libapp.py:511
+#: ../ailurus/libapp.py:512
 #, python-format
 msgid "Click the \"Installation Details\" button. Then remove %s."
-msgstr ""
+msgstr "Clique no botão \"Detalhes de Instalação\". Depois, remova %s."
 
-#: ../ailurus/lib.py:446
+#: ../ailurus/lib.py:456
 #, python-format
 msgid "Dual-licensed under %(A)s and %(B)s"
-msgstr ""
+msgstr "Licença Dupla %(A)s e %(B)s"
 
-#: ../ailurus/lib.py:450
+#: ../ailurus/lib.py:460
 #, python-format
 msgid "Tri-licensed under %(A)s, %(B)s and %(C)s"
-msgstr ""
+msgstr "Licença Tripla %(A)s, %(B)s e %(C)s"
 
-#: ../ailurus/lib.py:766 ../ailurus/lib.py:949
+#: ../ailurus/lib.py:776 ../ailurus/lib.py:965
 msgid "scan installed packages"
 msgstr "digitalizar os pacotes instalados"
 
-#: ../ailurus/lib.py:775 ../ailurus/lib.py:958
+#: ../ailurus/lib.py:785 ../ailurus/lib.py:974
 msgid "scan available packages"
-msgstr ""
+msgstr "verificação de pacotes disponíveis"
 
-#: ../ailurus/lib.py:841
+#: ../ailurus/lib.py:856
 msgid "scan packages"
-msgstr ""
+msgstr "varredura de pacotes"
 
-#: ../ailurus/lib.py:999
+#: ../ailurus/lib.py:1015
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
-msgstr ""
+msgstr "Executando \"pacman -Sy\". Por favor guarde alguns minutos."
 
-#: ../ailurus/lib.py:1024
+#: ../ailurus/lib.py:1040
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f GB"
 
-#: ../ailurus/lib.py:1026
+#: ../ailurus/lib.py:1042
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f MB"
 
-#: ../ailurus/lib.py:1028
+#: ../ailurus/lib.py:1044
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: ../ailurus/lib.py:1029
+#: ../ailurus/lib.py:1045
 #, python-format
 msgid "%s bytes"
 msgstr "%s bytes"
 
-#: ../ailurus/lib.py:1037
+#: ../ailurus/lib.py:1053
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f horas"
 
-#: ../ailurus/lib.py:1039
+#: ../ailurus/lib.py:1055
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f minutos"
 
-#: ../ailurus/lib.py:1040
+#: ../ailurus/lib.py:1056
 #, python-format
 msgid "%d seconds"
 msgstr "%d segundos"
 
-#: ../ailurus/lib.py:1287 ../ailurus/lib.py:1292
+#: ../ailurus/lib.py:1303 ../ailurus/lib.py:1332
 msgid "Opening web page"
 msgstr "Abrindo página da web"
 
-#: ../ailurus/lib.py:1463
+#: ../ailurus/lib.py:1503
 msgid "Please restart Firefox"
 msgstr "Por favor, reinicie o Firefox"
 
-#: ../ailurus/lib.py:1463
+#: ../ailurus/lib.py:1503
 msgid "Please restart Firefox to complete installation."
 msgstr "Por favor, reinicie o Firefox para concluir a instalação."
 
-#: ../ailurus/lib.py:1497
+#: ../ailurus/lib.py:1537
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
-msgstr ""
+msgstr "O tempo de resposta do servidor %(name)s é %(time).1f ms."
 
-#: ../ailurus/lib.py:1499
+#: ../ailurus/lib.py:1539
 #, python-format
 msgid "Server %s does not respond."
-msgstr ""
+msgstr "Servidor %s não respondem."
 
-#: ../ailurus/lib.py:1580
+#: ../ailurus/lib.py:1620
 msgid "Checking file integrity ..."
 msgstr "Verificando integridade do arquivo ..."
 
-#: ../ailurus/lib.py:1584
+#: ../ailurus/lib.py:1624
 msgid "Good."
 msgstr "Bom."
 
-#: ../ailurus/lib.py:1591
+#: ../ailurus/lib.py:1631
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
-msgstr ""
+msgstr "Usando espelho %(i)s. Há um total de %(total)s espelhos."
 
-#: ../ailurus/lib.py:1848
+#: ../ailurus/lib.py:1922
 msgid "GNU General Public License"
-msgstr ""
+msgstr "GNU Licença Publica Geral"
 
-#: ../ailurus/lib.py:1849
+#: ../ailurus/lib.py:1923
 msgid "GNU Lesser General Public License"
-msgstr ""
+msgstr "GNU Menor Licença Publica Geral"
 
-#: ../ailurus/lib.py:1850
+#: ../ailurus/lib.py:1924
 msgid "Eclipse Public License"
-msgstr ""
+msgstr "Licença Publica do Eclipse"
 
-#: ../ailurus/lib.py:1851
+#: ../ailurus/lib.py:1925
 msgid "Mozilla Public License"
-msgstr ""
+msgstr "Licença Publica do Mozilla"
 
-#: ../ailurus/lib.py:1852
+#: ../ailurus/lib.py:1926
 msgid "Berkeley Software Distribution License"
-msgstr ""
+msgstr "Licença de Distribuição de Software Berkeley"
 
-#: ../ailurus/lib.py:1853
+#: ../ailurus/lib.py:1927
 msgid "MIT License"
-msgstr ""
+msgstr "Licença MIT"
 
-#: ../ailurus/lib.py:1854
+#: ../ailurus/lib.py:1928
 msgid "Common Development and Distribution License"
-msgstr ""
+msgstr "Desenvolvimento comum e Licença de Distribuição"
 
-#: ../ailurus/lib.py:1855
+#: ../ailurus/lib.py:1929
 msgid "Aptana Public License"
-msgstr ""
+msgstr "Aptana Licença Pública"
 
-#: ../ailurus/lib.py:1856
+#: ../ailurus/lib.py:1930
 msgid "Artistic License"
-msgstr ""
-
-#: ../ailurus/lib.py:1897
-msgid "Your Linux distribution is not supported. :("
-msgstr ""
+msgstr "Licença artística"
 
 #: ../ailurus/libsetting.py:133
 msgid "The command which will be run."
-msgstr ""
+msgstr "O comando que será executado."
 
 #: ../ailurus/libsetting.py:140
 msgid "The shortcut key."
-msgstr ""
+msgstr "A tecla de atalho."
 
 #: ../ailurus/libsetting.py:159
 msgid "Images"
@@ -3612,7 +3806,7 @@ msgstr "Imagens"
 msgid "Choose an image"
 msgstr "Escolha uma imagem"
 
-#: ../ailurus/libsetting.py:220
+#: ../ailurus/libsetting.py:230
 #, python-format
 msgid ""
 "\n"
@@ -3621,21 +3815,21 @@ msgstr ""
 "\n"
 "Valor mínimos: %(min)s. Valor máximo: %(max)s."
 
-#: ../ailurus/libsetting.py:310
+#: ../ailurus/libsetting.py:320
 msgid "Yes"
 msgstr "Sim"
 
-#: ../ailurus/libsetting.py:429
+#: ../ailurus/libsetting.py:439
 msgid "whether interrupt parsing a page to respond to UI events?"
 msgstr ""
 
-#: ../ailurus/libsetting.py:431
+#: ../ailurus/libsetting.py:441
 msgid "maximum number of microseconds between two page rendering"
-msgstr ""
+msgstr "número máximo de microssegundos entre duas páginas de renderização"
 
-#: ../ailurus/libsetting.py:433
+#: ../ailurus/libsetting.py:443
 msgid "maximum number of bytes to split a long text node"
-msgstr ""
+msgstr "número máximo de bytes para dividir um nó de texto longo"
 
 #: ../ailurus/libu.py:215
 msgid ""
@@ -3644,33 +3838,45 @@ msgid ""
 "Ailurus does not know your password at all."
 msgstr ""
 
-#: ../ailurus/libu.py:226
+#: ../ailurus/libu.py:226 ../ailurus/libu.py:245
 msgid "Operation is canceled"
 msgstr "A operação cancelada"
 
 #: ../ailurus/libu.py:234
 msgid ""
+"Operation is canceled because you refused authentication.\n"
+"Proxy string is saved in system GNOME keyring service.\n"
+"Ailurus does not know your secret at all."
+msgstr ""
+
+#: ../ailurus/libu.py:253
+msgid ""
 "There is syntax error in source configuration.\n"
 "Please fix the error, then restart Ailurus."
 msgstr ""
+"Existe erro de sintaxe na configuração de origem.\n"
+"Por favor, corrija o erro,e reinicie Ailurus."
 
-#: ../ailurus/libu.py:249
+#: ../ailurus/libu.py:268
 msgid "Fatal error"
-msgstr ""
+msgstr "Erro fatal"
 
-#: ../ailurus/libu.py:277
+#: ../ailurus/libu.py:297
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr ""
+"Um erro apareceu. Poderia dizer-lo aos desenvolvedores do Ailurus? Obrigado!"
 
-#: ../ailurus/libu.py:278
+#: ../ailurus/libu.py:298
 msgid "Please copy and paste following text into bug report web-page."
 msgstr ""
+"Por favor, copie e cole o seguinte texto na página de relatório de erro na "
+"web."
 
-#: ../ailurus/libu.py:299
+#: ../ailurus/libu.py:319
 msgid "Click here to report bug via web-page"
-msgstr ""
+msgstr "Clique aqui para reportar bugs via web-page"
 
-#: ../ailurus/libu.py:313
+#: ../ailurus/libu.py:333
 msgid "Bug appears!"
 msgstr ""
 
@@ -3685,11 +3891,11 @@ msgstr ""
 msgid "Successfully adopted a proxy server"
 msgstr ""
 
-#: ../ailurus/main.py:54
+#: ../ailurus/main.py:56
 msgid "Warning!"
 msgstr "Aviso!"
 
-#: ../ailurus/main.py:55
+#: ../ailurus/main.py:57
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
@@ -3697,73 +3903,77 @@ msgstr ""
 "Outra instância do Ailurus está em execução. Não é recomendado executar "
 "várias instâncias ao mesmo tempo."
 
-#: ../ailurus/main.py:144
+#: ../ailurus/main.py:148
 msgid "Necessary packages are not installed. Ailurus cannot work."
 msgstr ""
+"pacotes necessários não estão instalados. Ailurus não pode trabalhar."
 
-#: ../ailurus/main.py:146
+#: ../ailurus/main.py:150
 msgid "Please install these packages:"
-msgstr ""
-
-#: ../ailurus/main.py:195
-msgid "Error happened. You cannot install any software by Ailurus. :("
-msgstr ""
-
-#: ../ailurus/main.py:198
-msgid "System configuration file should be updated."
-msgstr ""
+msgstr "Por favor, instale estes pacotes:"
 
 #: ../ailurus/main.py:199
+msgid "Error happened. You cannot install any software by Ailurus. :("
+msgstr ""
+"Um erro aconteceu. Você não pode instalar qualquer software pelo Ailurus. :("
+
+#: ../ailurus/main.py:202
+msgid "System configuration file should be updated."
+msgstr "Sistema de arquivo de configuração deve ser atualizado."
+
+#: ../ailurus/main.py:203
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
 msgstr ""
 
-#: ../ailurus/main.py:206
+#: ../ailurus/main.py:210
 msgid "Please re-install Ailurus."
-msgstr ""
+msgstr "Por favor, re-instalar Ailurus."
 
-#: ../ailurus/main.py:207
+#: ../ailurus/main.py:211
 msgid "Because file contents are different:"
 msgstr ""
 
-#: ../ailurus/main.py:212
+#: ../ailurus/main.py:216
 msgid "We need to restart Ailurus daemon."
-msgstr ""
+msgstr "Temos de reiniciar o daemon do Ailurus."
 
-#: ../ailurus/main.py:213
+#: ../ailurus/main.py:217
 #, python-format
 msgid "Old version is %s."
 msgstr ""
 
-#: ../ailurus/main.py:213
+#: ../ailurus/main.py:217
 #, python-format
 msgid "New version is %s"
-msgstr ""
-
-#: ../ailurus/main.py:215
-msgid "Press this button to restart daemon. Require authentication."
-msgstr ""
+msgstr "Nova versão é %s"
 
 #: ../ailurus/main.py:219
+msgid "Press this button to restart daemon. Require authentication."
+msgstr "Pressione este botão para reiniciar o daemon. Exigi autenticação."
+
+#: ../ailurus/main.py:223
 msgid "Ailurus daemon successfully restarted. Ailurus will work fine."
 msgstr ""
 
-#: ../ailurus/main.py:221
+#: ../ailurus/main.py:225
 msgid "Cannot restart Ailurus daemon. Please restart your computer."
 msgstr ""
+"Não é possível reiniciar o daemon do Ailurus. Por favor, reinicie o "
+"computador."
 
-#: ../ailurus/main.py:356
+#: ../ailurus/main.py:360
 msgid "Quit"
 msgstr "Sair"
 
-#: ../ailurus/main.py:364
+#: ../ailurus/main.py:368
 msgid "Default pane"
 msgstr ""
 
-#: ../ailurus/main.py:368
+#: ../ailurus/main.py:372
 msgid "Preferences"
 msgstr "Preferências"
 
-#: ../ailurus/main.py:371
+#: ../ailurus/main.py:375
 msgid ""
 "Study\n"
 "Linux"
@@ -3771,33 +3981,33 @@ msgstr ""
 "Estudar\n"
 "Linux"
 
-#: ../ailurus/main.py:414
+#: ../ailurus/main.py:418
 msgid "Please wait a few seconds"
-msgstr ""
+msgstr "Por favor aguarde alguns segundos"
 
-#: ../ailurus/main.py:440
+#: ../ailurus/main.py:444
 msgid "Are you sure to exit?"
-msgstr ""
+msgstr "Você tem certeza que deseja sair?"
 
-#: ../ailurus/main.py:441
+#: ../ailurus/main.py:445
 msgid "Do not query me any more."
-msgstr ""
+msgstr "Não me pergunte mais."
 
-#: ../ailurus/main.py:550
+#: ../ailurus/main.py:554
 msgid "Do you agree?"
-msgstr ""
+msgstr "Você concorda?"
 
-#: ../ailurus/main.py:551
+#: ../ailurus/main.py:555
 msgid "I agree. Do not ask me again."
 msgstr ""
 
-#: ../ailurus/main.py:555
+#: ../ailurus/main.py:559
 msgid "Warning"
-msgstr ""
+msgstr "Atenção"
 
-#: ../ailurus/main.py:570
+#: ../ailurus/main.py:574
 msgid "start up"
-msgstr ""
+msgstr "iniciar"
 
 #: ../ailurus/strings.py:27
 msgid ""
@@ -3814,6 +4024,8 @@ msgid ""
 "A dock sits at the bottom of the screen which lists open windows. It also "
 "supports third party applets."
 msgstr ""
+"A estação fica na parte inferior da tela que lista as janelas abertas. Ele "
+"também suporta applets de terceiros."
 
 #: ../ailurus/strings.py:31
 msgid ""
@@ -3838,7 +4050,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:39
 msgid "Record and edit sounds"
-msgstr ""
+msgstr "Gravar e editar sons"
 
 #: ../ailurus/strings.py:41
 msgid ""
@@ -4068,27 +4280,27 @@ msgstr ""
 
 #: ../ailurus/strings.py:121
 msgid "Open source clone of the popular \"Puzzle Bobble\" game"
-msgstr ""
+msgstr "Clone do jogo \"Puzzle Bobble\" de código livre"
 
 #: ../ailurus/strings.py:123
 msgid "an light-weight XMPP client, supporting GTalk. GTK version"
-msgstr ""
+msgstr "um cliente XMPP com suporte a GTalk. Versão GTK"
 
 #: ../ailurus/strings.py:125
 msgid "Educational games for children aged 2 to 10"
-msgstr ""
+msgstr "Jogos educacionais para crianças de 2 a 10 anos"
 
 #: ../ailurus/strings.py:127
 msgid "Manage your collections such as movies, books, music"
-msgstr ""
+msgstr "Gerencie suas coleções, como filmes, livros, música"
 
 #: ../ailurus/strings.py:129
 msgid "Open source substitution for Photoshop"
-msgstr ""
+msgstr "Substituto do Photoshop de código livre"
 
 #: ../ailurus/strings.py:131
 msgid "Visually graphical user interface designer"
-msgstr ""
+msgstr "Desenhador para Interface de Utilizador Gráfica"
 
 #: ../ailurus/strings.py:133
 msgid "GNU high precision arithmetic library"
@@ -4104,23 +4316,23 @@ msgstr ""
 
 #: ../ailurus/strings.py:136
 msgid "GNOME Do"
-msgstr ""
+msgstr "GNOME Do"
 
 #: ../ailurus/strings.py:137
 msgid "Desktop launcher which helps you quickly perform actions"
-msgstr ""
+msgstr "Iniciador de aplicações que o ajuda a executar acções rapidamente"
 
 #: ../ailurus/strings.py:138
 msgid "GNOME shell"
-msgstr ""
+msgstr "GNOME shell"
 
 #: ../ailurus/strings.py:139
 msgid "Experience GNOME 3 desktop"
-msgstr ""
+msgstr "Experimente o ambiente de trabalho GNOME 3"
 
 #: ../ailurus/strings.py:140
 msgid "GNOME MPlayer"
-msgstr ""
+msgstr "GNOME MPlayer"
 
 #: ../ailurus/strings.py:141
 msgid "GTK frontend for MPlayer"
@@ -4146,7 +4358,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:150
 msgid "Globulation 2"
-msgstr ""
+msgstr "Globulation 2"
 
 #: ../ailurus/strings.py:151
 msgid ""
@@ -4170,7 +4382,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:158
 msgid "Google gadgets (GTK version)"
-msgstr ""
+msgstr "Google gadgets ( Versão GTK)"
 
 #: ../ailurus/strings.py:159 ../ailurus/strings.py:161
 msgid "Eye candy widgets most of which are developed by Google's users"
@@ -4200,6 +4412,7 @@ msgstr ""
 msgid ""
 "Vector image designer. It is the open source substitution of CorelDraw."
 msgstr ""
+"Desenho de imagens vectoriais. O substituto do CorelDraw em código livre."
 
 #: ../ailurus/strings.py:173
 msgid ""
@@ -4229,7 +4442,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:183
 msgid "Upload photos to Flickr"
-msgstr ""
+msgstr "Faz envio de fotos para o Flickr"
 
 #: ../ailurus/strings.py:185
 msgid "Probably the best LaTeX editor"
@@ -4245,7 +4458,7 @@ msgstr ""
 
 #: ../ailurus/strings.py:191
 msgid "Simple text editor"
-msgstr ""
+msgstr "Editor de texto simples"
 
 #: ../ailurus/strings.py:193
 msgid "Simple RSS feed reader"
@@ -4721,6 +4934,49 @@ msgstr ""
 msgid "Notebook software which helps you create a wiki to your desktop"
 msgstr ""
 
+#: ../ailurus/support/add_custom_app.py:78
+#: ../ailurus/support/add_custom_app.py:81
+#: ../ailurus/support/add_custom_app.py:112
+msgid "Error"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:78
+msgid "Package name should not be empty!"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:81
+msgid "Application name should not be empty!"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:112
+msgid "Package is not in repository!"
+msgstr ""
+
+#. labels
+#: ../ailurus/support/add_custom_app.py:135
+msgid "Name:"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:137
+msgid "Packages to install:"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:139
+msgid "Add package to list:"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:141
+msgid "Detail:"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:143
+msgid "Category:"
+msgstr ""
+
+#: ../ailurus/support/add_custom_app.py:199
+msgid "Edit custom application"
+msgstr ""
+
 #. some known keys
 #: ../ailurus/support/AptAuth.py:33
 msgid "Ubuntu Archive Automatic Signing Key <ftpmaster@ubuntu.com>"
@@ -4766,9 +5022,12 @@ msgstr ""
 "  Ailurus Developers https://launchpad.net/~ailurus\n"
 "  André Gondim https://launchpad.net/~andregondim\n"
 "  Bruno Barros https://launchpad.net/~bkether\n"
-"  Bruno Vinicius https://launchpad.net/~bruno.vms\n"
+"  Bruno Santos https://launchpad.net/~brunosantos\n"
+"  Cristiano Louro Motta https://launchpad.net/~cristiano-louro\n"
 "  Douglas Santos https://launchpad.net/~douglasrpg\n"
+"  Gustavo Guidorizzi https://launchpad.net/~gguido\n"
 "  Macarena https://launchpad.net/~marcoaasilva\n"
+"  Marcelo Pires https://launchpad.net/~marcelo-pires-silva\n"
 "  Marlus Lopes https://launchpad.net/~reiescalibur\n"
 "  Nikozc https://launchpad.net/~nikozc\n"
 "  R.Guimaraens https://launchpad.net/~rafaelgcsantos\n"
@@ -4849,34 +5108,70 @@ msgstr "Agradecimentos"
 msgid "Ailurus changelog"
 msgstr ""
 
-#: ../ailurus/support/clientlib.py:115
-msgid "Your name:"
-msgstr ""
-
-#: ../ailurus/support/clientlib.py:128
-msgid "Submit"
-msgstr ""
-
-#: ../ailurus/support/clientlib.py:132
-msgid "Cancel"
-msgstr ""
-
-#: ../ailurus/support/clientlib.py:161
-msgid "HTTP error"
-msgstr ""
-
-#: ../ailurus/support/clientlib.py:169
+#: ../ailurus/support/gae.py:60
 msgid ""
-"Can not connect to server.\n"
-"Would you like to save the request and resend when next time ailurus starts?"
+"Cannot upload Linux skill.\n"
+"Would you please email Linux skill to Ailurus developers? Thank you!"
 msgstr ""
 
-#: ../ailurus/support/clientlib.py:184
-msgid "Submit a Linux skill"
+#: ../ailurus/support/gae.py:66 ../ailurus/support/gae.py:189
+msgid "Click here"
 msgstr ""
 
-#: ../ailurus/support/clientlib.py:188
-msgid "Propose suggestion"
+#: ../ailurus/support/gae.py:75
+msgid ""
+"Successfully uploaded Linux skill.\n"
+"Thank you very much!"
+msgstr ""
+
+#: ../ailurus/support/gae.py:82 ../ailurus/support/gae.py:91
+#: ../ailurus/support/gae.py:92 ../ailurus/support/gae.py:205
+#: ../ailurus/support/gae.py:214 ../ailurus/support/gae.py:215
+msgid "Anonymous"
+msgstr ""
+
+#: ../ailurus/support/gae.py:86 ../ailurus/support/gae.py:209
+msgid "Thank you very much!"
+msgstr ""
+
+#: ../ailurus/support/gae.py:94 ../ailurus/support/gae.py:217
+msgid "Name or Email:"
+msgstr ""
+
+#: ../ailurus/support/gae.py:98
+msgid "Linux skill:"
+msgstr ""
+
+#: ../ailurus/support/gae.py:119 ../ailurus/support/gae.py:242
+msgid "(Empty)"
+msgstr ""
+
+#: ../ailurus/support/gae.py:128
+msgid "Your proposed Linux skills"
+msgstr ""
+
+#: ../ailurus/support/gae.py:142
+msgid "Propose a Linux skill"
+msgstr ""
+
+#: ../ailurus/support/gae.py:183
+msgid ""
+"Cannot upload suggestion.\n"
+"Would you please email suggestion to Ailurus developers? Thank you!"
+msgstr ""
+
+#: ../ailurus/support/gae.py:198
+msgid ""
+"Successfully uploaded suggestion.\n"
+"Thank you very much!"
+msgstr ""
+
+#: ../ailurus/support/gae.py:221
+msgid "Suggestion:"
+msgstr ""
+
+#: ../ailurus/support/gae.py:251
+msgid "Your proposed Suggestions"
 msgstr ""
 
 #: ../ailurus/support/keygrabber.py:47
@@ -4922,8 +5217,12 @@ msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr ""
 
 #. please do not launch me as a thread
-#: ../ailurus/support/term.py:38 ../ailurus/support/term.py:51
+#: ../ailurus/support/term.py:44 ../ailurus/support/term.py:61
 msgid "Ailurus terminal"
+msgstr ""
+
+#: ../ailurus/support/term.py:55
+msgid "Command failed. Please close this window."
 msgstr ""
 
 #: ../ailurus/support/tipoftheday.py:54
@@ -4938,11 +5237,11 @@ msgstr "Dica do dia"
 msgid "<span size=\"x-large\"><b>Did you know ?</b></span>"
 msgstr "<span size=\"x-large\"><b>Você sabia?</b></span>"
 
-#: ../ailurus/support/tipoftheday.py:95
+#: ../ailurus/support/tipoftheday.py:98
 msgid "Submit Linux Skills"
 msgstr ""
 
-#: ../ailurus/support/tipoftheday.py:98
+#: ../ailurus/support/tipoftheday.py:101
 msgid "Show all tips"
 msgstr ""
 
@@ -5484,12 +5783,40 @@ msgstr ""
 
 #: ../ailurus/ubuntu/repos_config_pane.py:32
 msgid ""
-"Repository\n"
-"Configure"
+"Edit\n"
+"Repository"
 msgstr ""
 
-#: ../ailurus/ubuntu/repos_config_pane.py:62
+#: ../ailurus/ubuntu/repos_config_pane.py:52
+msgid "Enabled"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:75
 msgid "Add"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:121
+msgid "File"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:245
+msgid "This is not a repository. Add it anyway?"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:300
+msgid "PPA owner:"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:302
+msgid "PPA name:"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:317
+msgid "Add a line"
+msgstr ""
+
+#: ../ailurus/ubuntu/repos_config_pane.py:319
+msgid "Add a PPA line"
 msgstr ""
 
 #: ../ailurus/ubuntu/setting.py:30
@@ -5574,34 +5901,38 @@ msgstr ""
 
 #: ../ailurus/ubuntu/third_party_repos.py:198
 msgid "Getting things GNOME (stable)"
-msgstr ""
+msgstr "Obtendo acessórios GNOME (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:200
 msgid ""
 "\"Getting things GNOME\" is a simple, powerful and flexible organization "
 "tool."
 msgstr ""
+"\"Getting things GNOME\" é um instrumento de organização simples, poderosa e "
+"flexível."
 
 #: ../ailurus/ubuntu/third_party_repos.py:205
 msgid "GNOME colors (stable)"
-msgstr ""
+msgstr "GNOME colors (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:207
 msgid "This repository contains some themes."
-msgstr ""
+msgstr "Este repositório contém alguns temas."
 
 #: ../ailurus/ubuntu/third_party_repos.py:213
 msgid "GNOME Global Menu (stable)"
-msgstr ""
+msgstr "GNOME Global Menu (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:215
 msgid ""
 "GNOME Global Menu is the globally-shared menu bar of all applications."
 msgstr ""
+"GNOME Global Menu é a barra de menu global de partilha de todas as "
+"aplicações."
 
 #: ../ailurus/ubuntu/third_party_repos.py:221
 msgid "Medibuntu (stable)"
-msgstr ""
+msgstr "Medibuntu (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:223
 msgid ""
@@ -5609,10 +5940,13 @@ msgid ""
 "Ubuntu distribution for legal reasons. There are many packages in this "
 "repository. The list of packages is in http://packages.medibuntu.org/"
 msgstr ""
+"Este é um repositório fornece pacotes que não podem ser incluídos na "
+"distribuição Ubuntu por razões legais. Há muitos pacotes neste repositório. "
+"A lista de pacotes está em http://packages.medibuntu.org/"
 
 #: ../ailurus/ubuntu/third_party_repos.py:233
 msgid "Moovida (stable)"
-msgstr ""
+msgstr "MooVida (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:235
 msgid "Moovida is a cross platform media player."
@@ -5625,76 +5959,82 @@ msgstr ""
 #: ../ailurus/ubuntu/third_party_repos.py:242
 msgid "This repository provides latest versions of X.org drivers, libraries."
 msgstr ""
+"Este repositório fornece as últimas versões do X.org drivers, bibliotecas."
 
 #: ../ailurus/ubuntu/third_party_repos.py:248
 msgid "WebkitGTK (stable)"
-msgstr ""
+msgstr "WebkitGTK (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:250
 msgid "WebkitGTK is the port of Webkit to the GTK+ platform."
-msgstr ""
+msgstr "WebkitGTK é a porta do Webkit para a plataforma GTK +."
 
 #: ../ailurus/ubuntu/third_party_repos.py:255
 msgid "XBMC (stable)"
-msgstr ""
+msgstr "XBMC (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:257
 msgid ""
 "XBMC is an open source software media player and entertainment hub for "
 "digital media."
 msgstr ""
+"XBMC é um software de fonte aberta tocador de mídia e de entretenimento de "
+"mídia digital."
 
 #: ../ailurus/ubuntu/third_party_repos.py:262
 #: ../ailurus/ubuntu/third_party_repos.py:270
 #: ../ailurus/ubuntu/third_party_repos.py:278
 msgid "IBus (stable)"
-msgstr ""
+msgstr "IBus (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:286
 msgid "Partners of Canonical"
-msgstr ""
+msgstr "Parceiros da Canonical"
 
 #: ../ailurus/ubuntu/third_party_repos.py:287
 msgid "This repository provides many packages from partners of Canonical."
 msgstr ""
+"Este repositório fornece muitos pacotes a partir de parceiros da Canonical."
 
 #: ../ailurus/ubuntu/third_party_repos.py:296
 msgid "RSSOwl (stable)"
-msgstr ""
+msgstr "RSSOwl (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:298
 msgid "RSSOwl is an RSS reader."
-msgstr ""
+msgstr "RSSOwl é um leitor de RSS."
 
 #: ../ailurus/ubuntu/third_party_repos.py:307
 msgid "Gmchess (stable)"
-msgstr ""
+msgstr "Gmchess (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:310
 msgid "This is a Chinese chess game."
-msgstr ""
+msgstr "Este é um jogo de xadrez chinês."
 
 #: ../ailurus/ubuntu/third_party_repos.py:315
 msgid "Exaile (beta version)"
-msgstr ""
+msgstr "Exaile (versão beta)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:317
 msgid "A music manager and player for GTK+ written in Python."
-msgstr ""
+msgstr "Um gerenciador e reprodutor de música para GTK + escrito em Python."
 
 #: ../ailurus/ubuntu/third_party_repos.py:322
 msgid "Audacious (beta version)"
-msgstr ""
+msgstr "Audacious (versão beta)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:324
 msgid ""
 "An advanced audio player.It focused on audio quality and supporting a wide "
 "range of audio codecs."
 msgstr ""
+"Um reprodutor de áudio avançado focado em qualidade de áudio e suporte para "
+"uma vasta gama de codecs de áudio."
 
 #: ../ailurus/ubuntu/third_party_repos.py:344
 msgid "RedNoteBook (stable)"
-msgstr ""
+msgstr "RedNoteBook (estável)"
 
 #: ../ailurus/ubuntu/third_party_repos.py:346
 msgid "This is a desktop diary application."
@@ -5818,6 +6158,9 @@ msgid ""
 "install'\n"
 "sudo auto-apt run ./configure\n"
 msgstr ""
+"Instalar automaticamente os arquivos necessários para './configure ; make ; "
+"make install'\n"
+"sudo auto-apt run ./configure\n"
 
 #: ../ailurus/ubuntu/tips.py:80
 msgid ""
@@ -5859,113 +6202,13 @@ msgid ""
 "apt-cache show PACKAGE_NAME\n"
 "\n"
 msgstr ""
-
-#: ../unfree/for_fedora.py:83
-msgid "This repository provides flash-plugin and Adobe Reader."
-msgstr ""
-
-#: ../unfree/for_fedora.py:127
-msgid "RPM Fusion (Free)"
-msgstr ""
-
-#: ../unfree/for_fedora.py:129 ../unfree/for_fedora.py:157
-msgid "RPM Fusion provides software that not in the standard repositories."
-msgstr "RPM Fusion prove software que não está nos repositórios padrões."
-
-#: ../unfree/for_fedora.py:155
-msgid "RPM Fusion (Non-Free)"
-msgstr ""
-
-#: ../unfree/for_fedora.py:185
-msgid "This repository provides Picasa and Google Desktop."
-msgstr ""
-
-#: ../unfree/for_fedora.py:214
-msgid "This repository provides Google Chrome."
-msgstr ""
-
-#: ../unfree/for_fedora.py:242
-msgid "This repository provides VirtualBox."
-msgstr ""
-
-#: ../unfree/for_fedora.py:273
-msgid "Adobe Flash plugin for web browser"
-msgstr ""
-
-#: ../unfree/for_fedora.py:279
-msgid "Adobe PDF Reader"
-msgstr ""
-
-#: ../unfree/for_fedora.py:305
-msgid "Google Chrome browser"
-msgstr "Navegador Chrome Google"
-
-#: ../unfree/for_fedora.py:307
-msgid ""
-"This is the web browser from Google. \n"
-"You can change themes by opening web-page "
-"https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
-msgstr ""
-
-#: ../unfree/for_fedora.py:322
-msgid "You have installed \"google-chrome-unstable\"."
-msgstr ""
-
-#: ../unfree/for_fedora.py:324
-msgid "You have installed \"google-chrome-beta\"."
-msgstr ""
-
-#: ../unfree/for_fedora.py:327 ../unfree/for_ubuntu.py:214
-msgid "Google Earth"
-msgstr ""
-
-#: ../unfree/for_fedora.py:328 ../unfree/for_ubuntu.py:215
-msgid ""
-"Please install it in /opt/google-earth. Otherwise it cannot be detected."
-msgstr ""
-"Por favor, instale-o em /opt/google-earth. Caso contrário, não pode ser "
-"detectado."
-
-#: ../unfree/for_fedora.py:341
-msgid ""
-"It is the only professional virtual machine which is freely available under "
-"the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
-msgstr ""
-"É a única máquina virtual profissional disponível gratuitamente sob os "
-"termos GPL.  Sítio oficial: http://www.virtualbox.org/wiki/Downloads"
-
-#: ../unfree/for_fedora.py:350
-msgid ""
-"With Skype you can make free calls over the Internet to other people. "
-msgstr ""
-
-#: ../unfree/for_fedora.py:359
-msgid "Open source web browser"
-msgstr ""
-
-#: ../unfree/for_fedora.py:381 ../unfree/for_ubuntu.py:268
-msgid "Anti virus and anti spyware"
-msgstr ""
-
-#: ../unfree/for_fedora.py:407 ../unfree/for_ubuntu.py:307
-msgid "Use HTML, JavaScript and Flash to build desktop applications"
-msgstr ""
-
-#: ../unfree/for_fedora.py:422 ../unfree/for_ubuntu.py:320
-msgid "An image organizer and image viewer, plus photo-sharing function"
-msgstr ""
-
-#: ../unfree/for_fedora.py:436 ../unfree/for_ubuntu.py:347
-msgid "TrueCrypt: Open-Source disk encryption software"
-msgstr ""
-
-#: ../unfree/for_fedora.py:437 ../unfree/for_ubuntu.py:348
-msgid "Create a virtual encrypted disk or encrypt an entire partition"
-msgstr ""
+"Mostra algumas informações de um determinado pacote\n"
+"apt-cache show PACKAGE_NAME\n"
+"\n"
 
 #: ../unfree/for_ubuntu.py:83
 msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-msgstr ""
+msgstr "Alipay (Fu Zhi Bao) plugin de segurança para o Firefox"
 
 #: ../unfree/for_ubuntu.py:120
 msgid ""
@@ -6014,7 +6257,7 @@ msgstr ""
 #. cannot find out which license it is released under
 #: ../unfree/for_ubuntu.py:186
 msgid "JavaScript Debugger: a powerful JavaScript debugger"
-msgstr ""
+msgstr "JavaScript Debugger: um depurador de JavaScript poderoso"
 
 #. cannot find out which license it is released under
 #: ../unfree/for_ubuntu.py:193
@@ -6036,9 +6279,24 @@ msgstr "Personas: mude a pele do Firefox com um clique"
 msgid "Theme your browser according to your mood, hobby or season."
 msgstr "Combine o tema do seu navegador com o seu humor, hobby ou temporada."
 
+#: ../unfree/for_ubuntu.py:214 ../unfree/for_fedora.py:327
+msgid "Google Earth"
+msgstr "Google Earth"
+
+#: ../unfree/for_ubuntu.py:215 ../unfree/for_fedora.py:328
+msgid ""
+"Please install it in /opt/google-earth. Otherwise it cannot be detected."
+msgstr ""
+"Por favor, instale-o em /opt/google-earth. Caso contrário, não pode ser "
+"detectado."
+
 #: ../unfree/for_ubuntu.py:227 ../unfree/for_ubuntu.py:241
 msgid "video card driver"
-msgstr ""
+msgstr "driver da placa de vídeo"
+
+#: ../unfree/for_ubuntu.py:268 ../unfree/for_fedora.py:381
+msgid "Anti virus and anti spyware"
+msgstr "Anti-vírus e anti spyware"
 
 #: ../unfree/for_ubuntu.py:293
 msgid "Oracle"
@@ -6050,11 +6308,112 @@ msgid ""
 "After installing Oracle Database, please add yourself to the \"dba\" group, "
 "then run \"sudo /etc/init.d/oracle-xe configure\"."
 msgstr ""
+"Este repositório fornece Oracle Database Express Edition.\n"
+"Depois de instalar o Oracle Database, por favor, adicione-se ao \"dba\" do "
+"grupo, em seguida, execute \"sudo /etc/init.d/oracle-xe configure\""
+
+#: ../unfree/for_ubuntu.py:307 ../unfree/for_fedora.py:407
+msgid "Use HTML, JavaScript and Flash to build desktop applications"
+msgstr "Use HTML, JavaScript e Flash para construir aplicações do desktop"
+
+#: ../unfree/for_ubuntu.py:320 ../unfree/for_fedora.py:422
+msgid "An image organizer and image viewer, plus photo-sharing function"
+msgstr ""
+"Um organizador e visualizador de imagens, além da função de compartilhamento "
+"de fotos"
 
 #: ../unfree/for_ubuntu.py:336
 msgid ""
 "Organizes research paper collection and citations. It automatically "
 "generates bibliographies."
+msgstr ""
+"Organiza o trabalho de pesquisa e recolha de citações. Ele gera "
+"automaticamente bibliografias."
+
+#: ../unfree/for_ubuntu.py:347 ../unfree/for_fedora.py:436
+msgid "TrueCrypt: Open-Source disk encryption software"
+msgstr ""
+
+#: ../unfree/for_ubuntu.py:348 ../unfree/for_fedora.py:437
+msgid "Create a virtual encrypted disk or encrypt an entire partition"
+msgstr ""
+"Crie um disco virtual criptografado ou criptografar uma partição inteira"
+
+#: ../unfree/for_fedora.py:83
+msgid "This repository provides flash-plugin and Adobe Reader."
+msgstr "Este repositório fornece plugin Flash e o Adobe Reader."
+
+#: ../unfree/for_fedora.py:127
+msgid "RPM Fusion (Free)"
+msgstr ""
+
+#: ../unfree/for_fedora.py:129 ../unfree/for_fedora.py:157
+msgid "RPM Fusion provides software that not in the standard repositories."
+msgstr "RPM Fusion prove software que não está nos repositórios padrões."
+
+#: ../unfree/for_fedora.py:155
+msgid "RPM Fusion (Non-Free)"
+msgstr ""
+
+#: ../unfree/for_fedora.py:185
+msgid "This repository provides Picasa and Google Desktop."
+msgstr "Este repositório fornece o Picasa e o Google Desktop."
+
+#: ../unfree/for_fedora.py:214
+msgid "This repository provides Google Chrome."
+msgstr "Este repositório fornece Google Chrome."
+
+#: ../unfree/for_fedora.py:242
+msgid "This repository provides VirtualBox."
+msgstr "Este repositório fornece VirtualBox."
+
+#: ../unfree/for_fedora.py:273
+msgid "Adobe Flash plugin for web browser"
+msgstr "Plugin Adobe Flash para  web navegador"
+
+#: ../unfree/for_fedora.py:279
+msgid "Adobe PDF Reader"
+msgstr "Adobe Reader PDF"
+
+#: ../unfree/for_fedora.py:305
+msgid "Google Chrome browser"
+msgstr "Navegador Chrome Google"
+
+#: ../unfree/for_fedora.py:307
+msgid ""
+"This is the web browser from Google. \n"
+"You can change themes by opening web-page "
+"https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
+msgstr ""
+"Este é o navegador do Google. \n"
+"Você pode alterar os temas de abertura de página web "
+"https://tools.google.com/chrome/intl/pt/themes/index.html em Google Chrome."
+
+#: ../unfree/for_fedora.py:322
+msgid "You have installed \"google-chrome-unstable\"."
+msgstr "Você instalou o \"google-chrome instável\"."
+
+#: ../unfree/for_fedora.py:324
+msgid "You have installed \"google-chrome-beta\"."
+msgstr "Você instalou o \"google-chrome-beta."
+
+#: ../unfree/for_fedora.py:341
+msgid ""
+"It is the only professional virtual machine which is freely available under "
+"the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
+msgstr ""
+"É a única máquina virtual profissional disponível gratuitamente sob os "
+"termos GPL.  Sítio oficial: http://www.virtualbox.org/wiki/Downloads"
+
+#: ../unfree/for_fedora.py:350
+msgid ""
+"With Skype you can make free calls over the Internet to other people. "
+msgstr ""
+"Com o Skype você pode fazer chamadas gratuitas pela Internet para outras "
+"pessoas. "
+
+#: ../unfree/for_fedora.py:359
+msgid "Open source web browser"
 msgstr ""
 
 #~ msgid ""

@@ -21,6 +21,17 @@
 
 from __future__ import with_statement
 
+def copy_to_clipboard(text):
+    assert isinstance(text, str)
+    import gtk
+    clipboard = gtk.clipboard_get()
+    clipboard.set_text(text)
+
+def get_clipboard_text():
+    import gtk
+    clipboard = gtk.clipboard_get()
+    return clipboard.wait_for_text()
+
 def scale_image(old_path, new_path, new_width, new_height):
     import gtk
     pixbuf = gtk.gdk.pixbuf_new_from_file(old_path)
@@ -53,6 +64,16 @@ def gray_bg(widget):
     widget.connect('expose-event', event)
     widget.connect('map-event', event)
 
+def long_text_label(text):
+    import gtk
+    textview = gtk.TextView()
+    gray_bg(textview)
+    textview.set_wrap_mode(gtk.WRAP_WORD)
+    textview.set_cursor_visible(False)
+    textview.set_editable(False)
+    textview.get_buffer().set_text(text)
+    return textview
+    
 def image_stock_button(stock, text):
     import gtk
     box = gtk.HBox(False, 3)
@@ -187,10 +208,9 @@ def show_text_window(title, content, show_textbox_border = True, show_a_big_wind
         scroll.set_shadow_type(gtk.SHADOW_IN)
     copy = image_stock_button(gtk.STOCK_COPY, _('Copy text to clipboard'))
     def clicked():
-        clipboard = gtk.clipboard_get()
         start = buffer.get_start_iter()
         end = buffer.get_end_iter()
-        clipboard.set_text(buffer.get_text(start, end))
+        copy_to_clipboard(buffer.get_text(start, end))
     copy.connect('clicked', lambda w: clicked())
     close_button = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
     close_button.connect('clicked', lambda *w: window.destroy())
@@ -249,27 +269,26 @@ def do_gnomekeyring_cancelled_error():
     window.show_all()
 
 def do_apt_source_syntax_error(value):
-    import gtk
-    message = _('There is syntax error in source configuration.\n'
-                'Please fix the error, then restart Ailurus.')
-    label = gtk.Label(message)
-    label.set_alignment(0, 0.5)
+    import gtk, StringIO
+    msg = StringIO.StringIO()
+    print >>msg,  _('Source configuration has syntax error. Please run the following command to fix error.')
+    print >>msg, '<span color="blue">%s</span>' % 'sudo gedit /etc/apt/sources.list /etc/apt/sources.list.d/*.list'
+    print >>msg
+    print >>msg, _('Error reason:')
+    print >>msg, '<span color="blue">%s</span>' % value
+    print >>msg
+    print >>msg, _('After fixing the error, Ailurus will work fine.')
     
-    label2 = gtk.Label(value)
-    label2.set_alignment(0, 0.5)
-
-    button_close = image_stock_button(gtk.STOCK_CLOSE, _('Close'))
-    button_close.connect('clicked', lambda w: window.destroy())
-    vbox = gtk.VBox(False, 5)
-    vbox.pack_start(label, False)
-    vbox.pack_start(label2, False)
-    vbox.pack_start(right_align(button_close), False)
-    window = gtk.Window(gtk.WINDOW_TOPLEVEL)
-    window.set_title(_('Fatal error'))
-    window.set_border_width(10)
-    window.set_position(gtk.WIN_POS_CENTER)
-    window.add(vbox)
-    window.show_all()
+    dialog = gtk.MessageDialog(type=gtk.MESSAGE_ERROR, buttons=gtk.BUTTONS_CLOSE)
+    dialog.set_title(_('Fatal error'))
+    dialog.set_position(gtk.WIN_POS_CENTER)
+    dialog.set_markup(msg.getvalue())
+    dialog.show_all()
+    dialog.run()
+    dialog.destroy()
+    
+    import sys
+    sys.exit()
 
 def exception_happened(etype, value, tb):
     import traceback, StringIO, os, sys, platform, gtk, gnomekeyring
@@ -313,8 +332,7 @@ def exception_happened(etype, value, tb):
         buffer = textview_traceback.get_buffer()
         start = buffer.get_start_iter()
         end = buffer.get_end_iter()
-        clipboard = gtk.clipboard_get()
-        clipboard.set_text(buffer.get_text(start, end))
+        copy_to_clipboard(buffer.get_text(start, end))
     button_copy.connect('clicked', lambda w: clicked())
     button_report_bug = image_stock_button(gtk.STOCK_DIALOG_WARNING, _('Click here to report bug via web-page') )
     button_report_bug.connect('clicked', lambda w: report_bug() )

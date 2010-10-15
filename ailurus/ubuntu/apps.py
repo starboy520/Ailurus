@@ -46,25 +46,22 @@ class WorldofPadman_Ubuntu(I):
         run_as_root('rm /usr/local/games/WoP -rf')
         run_as_root('rm /usr/local/bin/wop')
 
-class PBC(I):
+class PBC(I): # support x86_64 only.
     __doc__ = _('PBC (Pairing-Based Cryptography) library')
-    detail = _('Install Pairing-Based Cryptography library, powered by Stanford University. It only has amd64 version.')
+    detail = _('Install Pairing-Based Cryptography library, powered by Stanford University.')
     download_url = 'http://crypto.stanford.edu/pbc/'
     category = 'library'
     license = GPL
     def install(self):
-        if is32(): pass
-        else:      fdev = R(urls.pbcdev64).download()
-        if is32(): pass
-        else:      f = R(urls.pbc64).download()
+        fdev = R(urls.pbcdev64).download()
+        f = R(urls.pbc64).download()
         APT.install_local(f, fdev)
-        
     def installed(self):
         return APT.installed('libpbc0') and APT.installed('libpbc-dev')
-    
     def remove(self):
-        if is32():pass
-        else: APT.remove('libpbc0', 'libpbc-dev')
+        APT.remove('libpbc0', 'libpbc-dev')
+    def visible(self):
+        return not is32()
     
 class GNOMEArtNextGen(I):
     __doc__ = _('GNOMEArtNG: Choose 100+ GNOME themes')
@@ -99,7 +96,7 @@ class GNOMEArtNextGen(I):
         return APT.installed('gnomeartng')
     def remove(self):
         APT.remove('gnomeartng')
-        run('rm -rf ~/.gnome2/gnome-art-ng/')
+        run('rm -rf $HOME/.gnome2/gnome-art-ng/')
     def visible(self):
         return VERSION in ['hardy', 'intrepid', 'jaunty', 'karmic']
 
@@ -199,4 +196,3 @@ class Remastersys(_apt_install):
     def install(self):
         f = R(urls.remastersys).download()
         APT.install_local(f)
-        
