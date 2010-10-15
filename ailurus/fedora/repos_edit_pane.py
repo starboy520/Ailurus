@@ -41,11 +41,21 @@ class _sections_store(gtk.ListStore):
     def write(self):
         for o in self.repo_objs:
             o.write()
+    
+    def delete(self, section):
+        iter = self.get_iter_first()
+        while iter:
+            if section == self.get_value(iter, 0):
+                self.remove(iter)
+                break
+            iter = self.iter_next(iter)
+        section.delete()
 
 class _sections_list_box(gtk.VBox):
     __gsignals__ = {
                     'section_changed' : (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
                     'section_selected': (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, [gobject.TYPE_PYOBJECT]),
+                    'repos_changed'   : (gobject.SIGNAL_RUN_FIRST, gobject.TYPE_NONE, []),
                     }
     
     def r_enabled_cell_function(self, column, cell, model, iter):
@@ -87,6 +97,15 @@ class _sections_list_box(gtk.VBox):
         else:
             section = store.get_value(iter, 0)
             self.emit('section_selected', section)
+    
+    def delete_selected(self):
+        selection = self.view.get_selection()
+        store, iter = selection.get_selected()
+        if iter:
+            section = store.get_value(iter, 0)
+            self.sections_store.delete(section)
+            self.emit('section_selected', None)
+            self.emit('repos_changed')
     
     def __init__(self, store):
         self.sections_store = store
@@ -230,13 +249,16 @@ class FedoraReposEditPane(gtk.VBox):
         
         button_reload = image_stock_button(gtk.STOCK_REVERT_TO_SAVED, _('Reset'))
         button_reload.connect('clicked', lambda *w: self.sections_store.reload())
+        button_delete = image_stock_button(gtk.STOCK_DELETE, _('Delete'))
+        button_delete.connect('clicked', lambda *w: self.sections_list_box.delete_selected())
         button_save = image_stock_button(gtk.STOCK_SAVE, _('Save'))
         button_save.connect('clicked', lambda *w: self.sections_store.write())
         button_save.set_sensitive(False)
         
-        button_box = gtk.HButtonBox()
+        button_box = gtk.HBox(False, 10)
         button_box.pack_start(button_reload, False)
-        button_box.pack_start(button_save, False)
+        button_box.pack_start(button_delete, False)
+        button_box.pack_end(button_save, False)
 
         self.pack_start(button_box, False)
 
@@ -245,6 +267,7 @@ class FedoraReposEditPane(gtk.VBox):
             self.should_save = True
             button_save.set_sensitive(True)
         self.sections_list_box.connect('section_changed', section_changed)
+        self.sections_list_box.connect('repos_changed', section_changed)
         self.section_content_box.connect('section_changed', section_changed)
 
         def delete_event(*w):

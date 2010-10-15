@@ -1831,6 +1831,9 @@ class FedoraReposSection:
     def set_enabled(self, value):
         if value: self.dict['enabled'] = '1'
         else: self.dict['enabled'] = '0'
+        
+    def delete(self):
+        self.parent.delete_section(self)
 
 class FedoraReposFile:
     def __init__(self, path):
