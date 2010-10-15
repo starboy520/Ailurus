@@ -35,7 +35,7 @@ class _sections_store(gtk.ListStore):
         self.clear()
         self.repo_objs = FedoraReposFile.all_repo_objs()
         for o in self.repo_objs:
-            for s in o.all_section_objs():
+            for s in o.sections:
                 self.append([s])
 
     def write(self):

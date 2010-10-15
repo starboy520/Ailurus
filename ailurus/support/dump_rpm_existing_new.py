@@ -34,7 +34,7 @@ else: fedora_arch = 'x86_64'
 all_enabled_sections = []
 repo_objs = FedoraReposFile.all_repo_objs()
 for repo in repo_objs:
-    for section in repo.all_section_objs():
+    for section in repo.sections:
         assert isinstance(section, FedoraReposSection)
         if section.enabled():
             all_enabled_sections.append(section.name)

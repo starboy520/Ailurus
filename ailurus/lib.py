@@ -1791,7 +1791,9 @@ class FedoraReposSection:
             else:
                 self.dict[k] = v
         
-    def __init__(self, lines):
+    def __init__(self, lines, parent):
+        assert isinstance(parent, FedoraReposFile)
+        self.parent = parent # for delete section
         assert isinstance(lines, list) and lines[0].startswith('[')
         for l in lines: assert not l.endswith('\n')
         self._set(lines)
@@ -1834,23 +1836,26 @@ class FedoraReposFile:
     def __init__(self, path):
         assert isinstance(path, str)
         self.path = path
-        self.sections = {}
-        with open(path) as f:
-            contents = f.readlines()
-        contents = [l for l in contents if not l.startswith('#') and l.strip()!=''] # skip comments and blank lines at the beginning
-        contents = [l.strip() for l in contents] # strip \n
-        lines = []
-        for line in contents:
-            if line.startswith('[') and lines: # a new section starts
-                section = FedoraReposSection(lines)
-                self.sections[section.name] = section
-                lines = []
-            lines.append(line)
-        section = FedoraReposSection(lines)
-        self.sections[section.name] = section
+        self.sections = []
+        if os.path.exists(path):
+            with open(path) as f:
+                contents = f.readlines()
+            contents = [l for l in contents if not l.startswith('#') and l.strip()!=''] # skip comments and blank lines at the beginning
+            contents = [l.strip() for l in contents] # strip \n
+            lines = []
+            for line in contents:
+                if line.startswith('[') and lines: # a new section starts
+                    section = FedoraReposSection(lines, parent=self)
+                    self.sections.append(section)
+                    lines = []
+                lines.append(line)
+            section = FedoraReposSection(lines, parent=self)
+            self.sections.append(section)
 
-    def all_section_objs(self):
-        return self.sections.values()
+    @classmethod
+    def full_path(cls, filename):
+        assert isinstance(filename, str) and filename and not ' ' in filename
+        return '/etc/yum.repos.d/%s.repo' % filename
 
     @classmethod
     def all_repo_objs(cls):
@@ -1859,10 +1864,31 @@ class FedoraReposFile:
         return [FedoraReposFile(p) for p in paths]
         
     def write(self):
-        with TempOwn(self.path):
-            with open(self.path, 'w') as f:
-                for s in self.sections.values():
-                    s.write(f)
+        if self.sections:
+            with TempOwn(self.path):
+                with open(self.path, 'w') as f:
+                    for s in self.sections:
+                        s.write(f)
+        else: # no section. remove file
+            if os.path.exists(self.path):
+                run_as_root('rm -f "%s"' % self.path)
+
+    def delete_section(self, section):
+        assert section.parent == self
+        assert section in self.sections
+        self.sections.remove(section)
+
+    def get_section(self, name):
+        assert isinstance(name, str)
+        for s in self.sections:
+            if s.name == name: return s
+        return None
+    
+    def has_section(self, name):
+        assert isinstance(name, str)
+        for s in self.sections:
+            if s.name == name: return True
+        return False
 
 class TimeStat:
     __open_stat_names = set()
