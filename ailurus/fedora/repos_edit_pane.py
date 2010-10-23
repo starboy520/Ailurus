@@ -206,6 +206,7 @@ class _section_content_box(gtk.VBox):
         buffer.create_tag('value', foreground='blue')
         self.buffer.connect('changed', self.content_changed)
         view = self.view = gtk.TextView(buffer)
+        view.set_wrap_mode(gtk.WRAP_CHAR)
         scroll = gtk.ScrolledWindow()
         scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
