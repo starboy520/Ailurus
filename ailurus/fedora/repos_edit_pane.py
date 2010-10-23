@@ -60,12 +60,19 @@ class _sections_store(gtk.ListStore):
         return new
     
     def add_custom_section(self):
+        template = ['baseurl=http://',
+                    'gpgcheck=1',
+                    'gpgkey=file://',
+                    'enabled=1',]
         custom = self.get_custom_repo()
         i = 1
         while custom.has_section('custom%s' % i):
             i += 1
         section_name = 'custom%s' % i
-        section = FedoraReposSection(['['+section_name+']', 'enabled=1'], custom)
+        section = FedoraReposSection(['['+section_name+']',
+                                      'name=%s'%section_name]
+                                     +template, 
+                                      custom)
         self.append([section])
         custom.append_section(section)
         return section_name
