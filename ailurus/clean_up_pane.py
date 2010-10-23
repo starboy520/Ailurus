@@ -32,7 +32,6 @@ class CleanUpPane(gtk.VBox):
     
     def __init__(self, main_view):
         gtk.VBox.__init__(self, False, 10)
-#        self.pack_start(ReclaimMemoryBox(),False)
         self.pack_start(self.clean_recently_used_document_button(),False)
         self.pack_start(self.clean_nautilus_cache_button(), False)
         if DEBIAN or UBUNTU or UBUNTU_DERIV:
@@ -40,6 +39,7 @@ class CleanUpPane(gtk.VBox):
             self.pack_start(Ubuntu_dedicated_clean_up_box())
         elif FEDORA:
             self.pack_start(self.clean_rpm_cache_button(), False)
+            self.pack_start(Fedora_dedicated_clean_up_box())
         elif ARCHLINUX:
             self.pack_start(self.clean_pacman_cache_button(), False)
 
@@ -137,69 +137,25 @@ class CleanUpPane(gtk.VBox):
         button.set_tooltip_text(_('Command:') + ' echo "" > $HOME/.recently-used.xbel')
         return button
 
-#class ReclaimMemoryBox(gtk.VBox):
-#    def __init__(self):
-#        gtk.VBox.__init__(self, False, 5)
-#        button_free_memory = gtk.Button( _('Reclaim memory').center(30) )
-#        button_free_memory.set_tooltip_text(
-#                                            _('Reclaim memory which stores pagecache, dentries and inodes.\nThis operation is done by "echo 3 >/proc/sys/vm/drop_caches"') )
-#        button_free_memory.connect('clicked', self.free_memory)
-#    
-#        label_info = gtk.Label( _('No more than %s KB of memory can be reclaimed.') % 0 )
-#        import gobject
-#        gobject.timeout_add(5000, self.show_cached_memory_amount, label_info)
-#    
-#        hbox = gtk.HBox(False, 10)
-#        hbox.pack_start(button_free_memory)
-#        hbox.pack_start(label_info, False)
-#        
-#        text_buffer = gtk.TextBuffer()
-#        text_buffer.set_text(_('Linux uses up extra physical memory to work as a disk buffer cache. '
-#                               'Press the button above to free cache. '
-#                               'This is not a destructive operation because dirty data will not be freed.\n'
-#                               'Command: echo 3 >/proc/sys/vm/drop_caches'))
-#        text_view = gtk.TextView(text_buffer)
-#        text_view.set_editable(False)
-#        text_view.set_cursor_visible(False)
-#        text_view.set_wrap_mode(gtk.WRAP_WORD)
-#        gray_bg(text_view)
-#        
-#        self.pack_start(hbox)
-#        self.pack_start(text_view, False)
-#        
-#    def show_cached_memory_amount(self,label):
-#        try:
-#            with open('/proc/meminfo') as f:
-#                for line in f:
-#                    if line.startswith('Cached:'): 
-#                        List = line.split()
-#                        value = int(List[1])
-#                        break
-#            label.set_text( _('No more than %s KB of memory can be reclaimed.') % value )
-#        except:
-#            print_traceback()
-#    
-#        return True
-#        
-#    def get_free_memory(self):
-#        with open('/proc/meminfo') as f:
-#            for line in f:
-#                if not line.startswith('MemFree:'): continue
-#                return int(line.split()[1])
-#        
-#    def free_memory(self,*w):
-#        dest = '/proc/sys/vm/drop_caches'
-#        import os, tempfile
-#        if os.path.exists(dest):
-#            before = self.get_free_memory()
-#        
-#            src = tempfile.NamedTemporaryFile('w')
-#            src.write('3\n')
-#            src.flush()
-#            run_as_root('cp %s %s'%(src.name, dest) )
-#            after = self.get_free_memory()
-#            amount = max(0, after - before)
-#            notify(' ', _('%s KB memory was reclaimed.') % amount)
+class Fedora_dedicated_clean_up_box(gtk.HBox):
+    def change_content(self, button):
+        if self.content_pane.get_children():
+            for child in self.content_pane.get_children():
+                self.content_pane.remove(child)
+        self.content_pane.pack_start(button.content)
+        self.content_pane.show_all()
+        
+    def __init__(self):
+        button_1 = gtk.Button(_('Unused Linux kernels'))
+        button_1.content = RemoveUnusedKernelBox()
+        button_1.connect('clicked', self.change_content)
+        self.buttons_pane = gtk.VBox(False, 5)
+        self.buttons_pane.pack_start(button_1, False)
+        self.content_pane = gtk.VBox(False, 0)
+        gtk.HBox.__init__(self, False, 5)
+        self.pack_start(self.buttons_pane, False)
+        self.pack_start(self.content_pane)
+        button_1.emit('clicked')
 
 class Ubuntu_dedicated_clean_up_box(gtk.HBox):
     def change_content(self, button):
@@ -217,7 +173,7 @@ class Ubuntu_dedicated_clean_up_box(gtk.HBox):
         button_2.content = UbuntuDeleteUnusedConfigBox()
         button_2.connect('clicked', self.change_content)
         button_3 = gtk.Button(_('Unused Linux kernels'))
-        button_3.content = UbuntuCleanKernelBox()
+        button_3.content = RemoveUnusedKernelBox()
         button_3.connect('clicked', self.change_content)
         self.buttons_pane = gtk.VBox(False, 5)
         self.buttons_pane.pack_start(button_1, False)
@@ -229,7 +185,7 @@ class Ubuntu_dedicated_clean_up_box(gtk.HBox):
         self.pack_start(self.content_pane)
         button_1.emit('clicked')
 
-class UbuntuCleanKernelBox(gtk.HBox):
+class RemoveUnusedKernelBox(gtk.HBox):
     def version_of_current_kernel(self):
         return os.uname()[2]
     
@@ -237,7 +193,7 @@ class UbuntuCleanKernelBox(gtk.HBox):
         self.unused_kernels = []
         import glob, re
         for file_name in glob.glob('/boot/vmlinuz-*'):
-            match = re.search(r'vmlinuz-(.+(-[a-z]+)?)', file_name)
+            match = re.search(r'vmlinuz-(.+)', file_name)
             if not match: continue
             version = match.group(1)
             if version == self.version_of_current_kernel(): continue
@@ -289,19 +245,21 @@ class UbuntuCleanKernelBox(gtk.HBox):
         self.button_delete.set_sensitive(sensitive)
     
     def delete_kernel(self):
+        import re
         for row in self.liststore:
-            keep = row[0]
+            keep, version = row[0], row[1]
             if keep: continue
-            version = row[1]
-            import re
-            pure_version = re.match('[0-9.-]+', version).group(0)
-            if pure_version.endswith('-'): pure_version = pure_version[:-1]
-            to_remove = [p for p in APT.get_installed_pkgs_set() if pure_version in p]
             try:
-                if to_remove:
-                    APT.remove(*to_remove)
-                run_as_root('rm -rf /boot/*%s*' % version)
-                run_as_root('rm -rf /lib/modules/%s' % version)
+                if DEBIAN or UBUNTU or UBUNTU_DERIV:
+                    pure_version = re.match('[0-9.-]+', version).group(0)
+                    if pure_version.endswith('-'): pure_version = pure_version[:-1]
+                    to_remove = [p for p in APT.get_installed_pkgs_set() if pure_version in p]
+                    if to_remove:
+                        APT.remove(*to_remove)
+#                    run_as_root('rm -rf /boot/*%s*' % version)
+#                    run_as_root('rm -rf /lib/modules/%s' % version)
+                elif FEDORA:
+                    run_as_root_in_terminal('rpm -e kernel-%s' % version)
             except:
                 print_traceback()
         self.refresh()
