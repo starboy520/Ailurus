@@ -393,14 +393,14 @@ def __nautilus_thumbnail_setting():
 
 def __gnome_session_setting():
     box = gtk.VBox(False, 5)
-    button = gtk.Button(_('Configure autostart applications') + ' ' + _('(Command: gnome-session-properties)'))
-    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
-    box.pack_start(left_align(button), False)
-    o = GConfCheckButton(_('Remember running applications when you log out.'),
-             '/apps/gnome-session/options/auto_save_session',
-             _('If its value is true, GNOME will remember the running applications when you log out, '
-               'and re-launch these applications at the next time you log in to GNOME.') )
-    box.pack_start(o, False)
+#    button = gtk.Button(_('Configure autostart applications') + ' ' + _('(Command: gnome-session-properties)'))
+#    button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
+#    box.pack_start(left_align(button), False)
+#    o = GConfCheckButton(_('Remember running applications when you log out.'),
+#             '/apps/gnome-session/options/auto_save_session',
+#             _('If its value is true, GNOME will remember the running applications when you log out, '
+#               'and re-launch these applications at the next time you log in to GNOME.') )
+#    box.pack_start(o, False)
     o = GConfCheckButton(_('Prompt you before you log out from GNOME.'),
             '/apps/gnome-session/options/logout_prompt',
             _('If its value is false, GNOME session will terminate immediately if you click the menu "System"->"Log out".') )

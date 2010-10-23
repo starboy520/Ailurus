@@ -60,12 +60,19 @@ class _sections_store(gtk.ListStore):
         return new
     
     def add_custom_section(self):
+        template = ['baseurl=http://',
+                    'gpgcheck=1',
+                    'gpgkey=file://',
+                    'enabled=1',]
         custom = self.get_custom_repo()
         i = 1
         while custom.has_section('custom%s' % i):
             i += 1
         section_name = 'custom%s' % i
-        section = FedoraReposSection(['['+section_name+']', 'enabled=1'], custom)
+        section = FedoraReposSection(['['+section_name+']',
+                                      'name=%s'%section_name]
+                                     +template, 
+                                      custom)
         self.append([section])
         custom.append_section(section)
         return section_name
@@ -190,17 +197,22 @@ class _section_content_box(gtk.VBox):
     def __init__(self):
         gtk.VBox.__init__(self, False, 5)
 
+        name_entry = self.name_entry = gtk.Entry()
+        name_entry.connect('changed', self.content_changed)
+
         buffer = self.buffer = gtk.TextBuffer()
         buffer.create_tag('section_name', font='DejaVu Serif', scale=pango.SCALE_LARGE)
         buffer.create_tag('key', foreground='purple')
         buffer.create_tag('value', foreground='blue')
         self.buffer.connect('changed', self.content_changed)
         view = self.view = gtk.TextView(buffer)
+        view.set_wrap_mode(gtk.WRAP_CHAR)
         scroll = gtk.ScrolledWindow()
         scroll.set_shadow_type(gtk.SHADOW_ETCHED_IN)
         scroll.set_policy(gtk.POLICY_AUTOMATIC, gtk.POLICY_AUTOMATIC)
         scroll.add(view)
         
+        self.pack_start(name_entry, False)
         self.pack_start(scroll)
         
         self.current_section = None
@@ -209,20 +221,14 @@ class _section_content_box(gtk.VBox):
         import re
         self.name_pattern = re.compile(r'\[(\S+)\]')
         self.kv_pattern = re.compile(r'([^=]+)=(.+)')
-            
+    
     def show_text_in_buffer(self, text):
         buffer = self.buffer
         buffer.set_text(''); end = buffer.get_end_iter()
         lines = text.split('\n'); lines = [l for l in lines if l]
-        match = self.name_pattern.match(lines[0])
-        if match:
-            name = match.group(1)
-            buffer.insert(end, '[')
-            buffer.insert_with_tags_by_name(end, name, 'section_name')
-            buffer.insert(end, ']')
-        else:
-            buffer.insert(end, lines[0])
-        buffer.insert(end, '\n')
+        if self.name_pattern.match(lines[0]): # lines[0] is section name
+            section_name = lines[0][1:-1]
+            self.name_entry.set_text(section_name) # display section name
 
         for line in lines[1:]:
             match = self.kv_pattern.match(line)
@@ -237,12 +243,15 @@ class _section_content_box(gtk.VBox):
                 
     def show_section(self, section):
         self.current_section = None
-        if section:
+        if section: # show section
             assert isinstance(section, FedoraReposSection)
             self.show_text_in_buffer(section.to_string())
+            self.name_entry.set_sensitive(True)
             self.view.set_sensitive(True)
-        else:
+        else: # no selected section
             self.buffer.set_text(_('(please select a repository)'))
+            self.name_entry.set_text('')
+            self.name_entry.set_sensitive(False)
             self.view.set_sensitive(False)
         self.current_section = section
         
@@ -251,9 +260,9 @@ class _section_content_box(gtk.VBox):
         end = self.buffer.get_end_iter()
         return self.buffer.get_text(start, end)
 
-    def content_changed(self, buffer):
+    def content_changed(self, widget):
         if self.current_section is not None:
-            self.current_section.set_new_content_as(self.buffer_content())
+            self.current_section.set_new_content_as('[%s]\n' % self.name_entry.get_text().strip() + self.buffer_content())
             self.emit('section_changed', self.current_section)
 
 class FedoraReposEditPane(gtk.VBox):
