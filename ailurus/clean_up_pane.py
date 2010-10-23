@@ -116,7 +116,7 @@ class CleanUpPane(gtk.VBox):
         button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         def __clean_up(button, label):
             os.system('rm -rf $HOME/.thumbnails/*')
-            notify(_('Nautilus thumbnail image cache is clean'))
+            notify(_('Nautilus thumbnail image cache is clean'), _('Command:') + ' rm -rf $HOME/.thumbnails/*')
             label.set_text(self.get_button_text(_('Nautilus thumbnail image cache'), path))
             button.set_sensitive(bool(self.get_folder_size(path, please_return_integer=True)))
         button.connect('clicked', __clean_up, label)
@@ -131,7 +131,7 @@ class CleanUpPane(gtk.VBox):
                 os.system("echo '' > $HOME/.recently-used.xbel")
             else: # is dir
                 os.system("rm $HOME/.recently-used.xbel/* -rf")
-            notify(_('Run command:'), _('echo "" > $HOME/.recently-used.xbel'))
+            notify('"Recent documents" list is clean', _('Run command:') + ' echo "" > $HOME/.recently-used.xbel')
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
         button.set_tooltip_text(_('Command:') + ' echo "" > $HOME/.recently-used.xbel')
