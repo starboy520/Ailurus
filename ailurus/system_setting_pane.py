@@ -80,6 +80,7 @@ class SystemSettingPane(gtk.VBox):
         column.pack_start(render_text, False)
         column.add_attribute(render_text, 'text', 1)
         treeview = gtk.TreeView(left_store_sort)
+        treeview.set_rules_hint(True)
         treeview.append_column(column)
         treeview.set_headers_visible(False)
         treeview.get_selection().set_mode(gtk.SELECTION_SINGLE)
