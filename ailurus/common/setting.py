@@ -75,96 +75,6 @@ def __change_kernel_swappiness():
     align_vbox.add(vbox)
     return Setting(align_vbox, _('Change the tendency of swapping memory to disk'), ['memory'])
 
-# No need
-#def __restart_network():
-#     def restart_network(w):
-#         try:
-#             import dbus
-#             bus = dbus.SystemBus()
-#             obj = bus.get_object('org.freedesktop.NetworkManager', '/org/freedesktop/NetworkManager')
-#             obj.sleep(dbus_interface='org.freedesktop.NetworkManager')
-#             obj.wake(dbus_interface='org.freedesktop.NetworkManager')
-#             if UBUNTU or UBUNTU_DERIV:
-#                 notify(' ', _('Run command: ')+'/etc/init.d/networking restart')
-#                 run_as_root('/etc/init.d/networking restart')
-#             notify(_('Information'), _('Network restarted successfully.'))
-#         except: pass
-#     button_restart_network = gtk.Button(_('Restart network').center(30))
-#     button_restart_network.connect('clicked', restart_network)
-#     button_restart_network.set_tooltip_text(_('These commands will be executed:\n'
-#               'dbus-send --system --dest=org.freedesktop.NetworkManager '
-#               '--type=method_call /org/freedesktop/NetworkManager '
-#               'org.freedesktop.NetworkManager.sleep\n'
-#               'dbus-send --system --dest=org.freedesktop.NetworkManager '
-#               '--type=method_call /org/freedesktop/NetworkManager '
-#               'org.freedesktop.NetworkManager.wake\n'
-#               'sudo /etc/init.d/networking restart'))
-#     align_bfm = gtk.Alignment(0, 0.5)
-#     align_bfm.add(button_restart_network)
-#     vbox = gtk.VBox()
-#     vbox.set_border_width(10)
-#     vbox.pack_start(align_bfm, False)
-#     return Setting(vbox, _('Restart network'), ['network'])
-
-def __change_hostname(): 
-#   I have to use the class, to resolve problem of these codes:
-#        def __value_changed(button):
-#            button.set_sensitive(True)
-#
-#        def __button_clicked(entry):
-#            new_host_name = entry.get_text()
-#            button.set_sensitive(False)
-#   error message is 'free variable referenced before assignment'. I don't know the reason.
-    class change_host_name(gtk.HBox):
-        def __value_changed(self, *w):
-            self.button.set_sensitive(True)
-
-        def __button_clicked(self, *w):
-            new_host_name = self.entry.get_text()
-            with TempOwn('/etc/hosts'):
-                with open('/etc/hosts') as f:
-                    content = f.read()
-                    content = content.replace(self.old_host_name, new_host_name)
-                with open('/etc/hosts', 'w') as f:
-                    f.write(content)
-            if UBUNTU or UBUNTU_DERIV:
-                with TempOwn('/etc/hostname'):
-                    with open('/etc/hostname', 'w') as f:
-                        f.write(new_host_name)
-            elif FEDORA:
-                with TempOwn('/etc/sysconfig/network'):
-                    with open('/etc/sysconfig/network') as f:
-                        content = f.read()
-                        content = content.replace(self.old_host_name, new_host_name)
-                    with open('/etc/sysconfig/network', 'w') as f:
-                        f.write(content)       
-            else:
-                dialog = gtk.Dialog('Feature is not implemented', None, gtk.DIALOG_MODAL|gtk.DIALOG_NO_SEPARATOR,
-                                     buttons=(gtk.STOCK_CLOSE, gtk.RESPONSE_CLOSE))
-                dialog.vbox.pack_start(gtk.Label('This feature has not been implement for your Linux distribution'))
-                dialog.vbox.show_all()
-                dialog.run()
-                dialog.destroy()      
-                            
-            self.button.set_sensitive(False)
-        
-        def __init__(self):
-            self.entry = gtk.Entry()
-            self.button = gtk.Button(_('Apply'))
-            self.label = gtk.Label(_('New host name:'))
-            self.old_host_name = get_output('hostname')
-            self.entry.set_text(self.old_host_name)
-            self.entry.connect('changed', self.__value_changed)
-            self.button.connect('clicked', self. __button_clicked)
-                
-            gtk.HBox.__init__(self, False, 5)
-            self.pack_start(self.label, False)
-            self.pack_start(self.entry, False)
-            self.pack_start(self.button, False)
-            
-    hbox = change_host_name()
-    return Setting(hbox, _('Change host name'), ['host_name'])
-
 def __configure_firefox():
     if not firefox.support: return None
     
@@ -317,7 +227,6 @@ def get():
     ret = []
     for f in [
             __change_kernel_swappiness,
-            __change_hostname,
             __configure_firefox ]:
         try:
             a = f()
