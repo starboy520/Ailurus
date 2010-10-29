@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Ailurus 9.12\n"
 "Report-Msgid-Bugs-To: Homer Xing <homer.xing@gmail.com>\n"
-"POT-Creation-Date: 2010-07-31 13:53+0800\n"
-"PO-Revision-Date: 2010-08-16 09:00+0000\n"
-"Last-Translator: Ailurus Developers <Unknown>\n"
+"POT-Creation-Date: 2010-10-29 11:41+0800\n"
+"PO-Revision-Date: 2010-10-25 12:20+0000\n"
+"Last-Translator: Pin-hsien Li <pspeter9931@gmail.com>\n"
 "Language-Team: none\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Launchpad-Export-Date: 2010-08-17 07:13+0000\n"
+"X-Launchpad-Export-Date: 2010-10-29 04:25+0000\n"
 "X-Generator: Launchpad (build Unknown)\n"
 
 #: ../ailurus.desktop.in.h:1
@@ -48,22 +48,22 @@ msgid "APT cache"
 msgstr "APT 快取"
 
 #: ../ailurus/clean_up_pane.py:72 ../ailurus/clean_up_pane.py:86
-#: ../ailurus/clean_up_pane.py:103 ../ailurus/clean_up_pane.py:118
-#: ../ailurus/clean_up_pane.py:134 ../ailurus/lib.py:515 ../ailurus/lib.py:592
-#: ../ailurus/lib.py:748 ../ailurus/lib.py:1066 ../ailurus/lib.py:1395
+#: ../ailurus/clean_up_pane.py:103 ../ailurus/clean_up_pane.py:134
+#: ../ailurus/lib.py:529 ../ailurus/lib.py:597 ../ailurus/lib.py:753
+#: ../ailurus/lib.py:1096 ../ailurus/lib.py:1428
 #: ../ailurus/support/terminal.py:70
 #: ../ailurus/support/terminal_single_thread.py:52
-#: ../ailurus/support/term.py:78
+#: ../ailurus/support/term.py:91
 msgid "Run command:"
 msgstr "執行指令："
 
 #: ../ailurus/clean_up_pane.py:77 ../ailurus/clean_up_pane.py:94
-#: ../ailurus/clean_up_pane.py:108 ../ailurus/clean_up_pane.py:123
-#: ../ailurus/clean_up_pane.py:137 ../ailurus/common/cure.py:198
-#: ../ailurus/fedora/cure.py:51 ../ailurus/gnome/setting.py:477
-#: ../ailurus/gnome/setting.py:481 ../ailurus/ubuntu/cure.py:79
-#: ../ailurus/ubuntu/cure.py:176 ../ailurus/ubuntu/cure.py:188
-#: ../ailurus/ubuntu/cure.py:219
+#: ../ailurus/clean_up_pane.py:108 ../ailurus/clean_up_pane.py:119
+#: ../ailurus/clean_up_pane.py:123 ../ailurus/clean_up_pane.py:137
+#: ../ailurus/common/cure.py:198 ../ailurus/fedora/cure.py:51
+#: ../ailurus/gnome/setting.py:535 ../ailurus/gnome/setting.py:539
+#: ../ailurus/ubuntu/cure.py:79 ../ailurus/ubuntu/cure.py:176
+#: ../ailurus/ubuntu/cure.py:188 ../ailurus/ubuntu/cure.py:219
 msgid "Command:"
 msgstr "指令："
 
@@ -80,101 +80,69 @@ msgstr "Pacman 快取"
 msgid "Nautilus thumbnail image cache"
 msgstr "Nautilus 縮圖快取"
 
-#: ../ailurus/clean_up_pane.py:134
-msgid "echo \"\" > ~/.recently-used.xbel"
-msgstr "echo \"\" > ~/.recently-used.xbel"
+#: ../ailurus/clean_up_pane.py:119 ../ailurus/gnome/setting.py:388
+msgid "Nautilus thumbnail image cache is clean"
+msgstr ""
 
 #: ../ailurus/clean_up_pane.py:135
 msgid "Clear \"recent documents\" list"
 msgstr "清除「最近存取」清單"
 
-#: ../ailurus/clean_up_pane.py:143
-msgid "Reclaim memory"
-msgstr "回收記憶體"
-
-#: ../ailurus/clean_up_pane.py:145
-msgid ""
-"Reclaim memory which stores pagecache, dentries and inodes.\n"
-"This operation is done by \"echo 3 >/proc/sys/vm/drop_caches\""
-msgstr ""
-"回收記憶體中的分頁快取、目錄快取與 inode 快取。\n"
-"這個操作使用此指令完成：「echo 3 >/proc/sys/vm/drop_caches」"
-
-#: ../ailurus/clean_up_pane.py:148 ../ailurus/clean_up_pane.py:178
-#, python-format
-msgid "No more than %s KB of memory can be reclaimed."
-msgstr "最多能回收 %s KB 的記憶體。"
-
-#: ../ailurus/clean_up_pane.py:157
-msgid ""
-"Linux uses up extra physical memory to work as a disk buffer cache. Press "
-"the button above to free cache. This is not a destructive operation because "
-"dirty data will not be freed.\n"
-"Command: echo 3 >/proc/sys/vm/drop_caches"
-msgstr ""
-"Linux 使用大量實體記憶體做為磁碟緩衝快取；按上方的按鈕可以清除快取。這不是破壞性的操作，實際資料不會被清除。\n"
-"指令： echo 3 >/proc/sys/vm/drop_caches"
-
-#: ../ailurus/clean_up_pane.py:202
-#, python-format
-msgid "%s KB memory was reclaimed."
-msgstr "回收了 %s KB 的記憶體。"
-
-#: ../ailurus/clean_up_pane.py:213 ../ailurus/clean_up_pane.py:429
-msgid "Auto-removable packages"
-msgstr "可自動移除的套件"
-
-#: ../ailurus/clean_up_pane.py:216 ../ailurus/clean_up_pane.py:539
-msgid "Unused software configuration"
-msgstr "未使用的軟體設定"
-
-#: ../ailurus/clean_up_pane.py:219 ../ailurus/clean_up_pane.py:317
+#: ../ailurus/clean_up_pane.py:149 ../ailurus/clean_up_pane.py:175
+#: ../ailurus/clean_up_pane.py:280
 msgid "Unused Linux kernels"
 msgstr "未使用的 Linux 核心"
 
-#: ../ailurus/clean_up_pane.py:255
+#: ../ailurus/clean_up_pane.py:169 ../ailurus/clean_up_pane.py:392
+msgid "Auto-removable packages"
+msgstr "可自動移除的套件"
+
+#: ../ailurus/clean_up_pane.py:172 ../ailurus/clean_up_pane.py:502
+msgid "Unused software configuration"
+msgstr "未使用的軟體設定"
+
+#: ../ailurus/clean_up_pane.py:212
 msgid "There is no unused Linux Kernel."
 msgstr "沒有未使用的 Linux 核心。"
 
-#: ../ailurus/clean_up_pane.py:280 ../ailurus/clean_up_pane.py:350
-#: ../ailurus/clean_up_pane.py:470 ../ailurus/fedora/rpm_recovery_pane.py:230
-#: ../ailurus/ubuntu/apt_recovery_pane.py:233
+#: ../ailurus/clean_up_pane.py:237 ../ailurus/clean_up_pane.py:313
+#: ../ailurus/clean_up_pane.py:433 ../ailurus/snapshot_pane.py:159
 msgid "will be removed"
 msgstr "將被移除"
 
-#: ../ailurus/clean_up_pane.py:329 ../ailurus/clean_up_pane.py:445
-#: ../ailurus/clean_up_pane.py:555 ../ailurus/install_remove_pane.py:735
+#: ../ailurus/clean_up_pane.py:292 ../ailurus/clean_up_pane.py:408
+#: ../ailurus/clean_up_pane.py:518 ../ailurus/fedora/repos_edit_pane.py:298
+#: ../ailurus/install_remove_pane.py:734
 msgid "Delete"
 msgstr "刪除"
 
-#: ../ailurus/clean_up_pane.py:372 ../ailurus/ubuntu/quick_setup.py:209
+#: ../ailurus/clean_up_pane.py:335 ../ailurus/ubuntu/quick_setup.py:209
 msgid "Scanning installed packages."
 msgstr "掃描已安裝的套件。"
 
-#: ../ailurus/clean_up_pane.py:372 ../ailurus/ubuntu/quick_setup.py:209
+#: ../ailurus/clean_up_pane.py:335 ../ailurus/ubuntu/quick_setup.py:209
 msgid "Please wait a few seconds."
 msgstr "請您等待幾秒鐘。"
 
-#: ../ailurus/clean_up_pane.py:395
+#: ../ailurus/clean_up_pane.py:358
 msgid "There is no auto-removable package."
 msgstr "沒有可以自動移除的套件。"
 
-#: ../ailurus/clean_up_pane.py:441 ../ailurus/clean_up_pane.py:551
-#: ../ailurus/computer_doctor_pane.py:134
+#: ../ailurus/clean_up_pane.py:404 ../ailurus/clean_up_pane.py:514
+#: ../ailurus/computer_doctor_pane.py:133
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:110
 msgid "Refresh"
 msgstr "更新"
 
-#: ../ailurus/clean_up_pane.py:443 ../ailurus/clean_up_pane.py:553
-#: ../ailurus/fedora/fastest_mirror_pane.py:168
+#: ../ailurus/clean_up_pane.py:406 ../ailurus/clean_up_pane.py:516
 msgid "Select all"
 msgstr "全部選取"
 
-#: ../ailurus/clean_up_pane.py:459 ../ailurus/clean_up_pane.py:569
+#: ../ailurus/clean_up_pane.py:422 ../ailurus/clean_up_pane.py:532
 msgid "Please press the \"Refresh\" button."
 msgstr "請按「更新」按鈕。"
 
-#: ../ailurus/clean_up_pane.py:509
+#: ../ailurus/clean_up_pane.py:472
 msgid "There is no unused software configuration."
 msgstr "沒有未使用的軟體設定。"
 
@@ -205,23 +173,23 @@ msgstr "Electric：支援 VHDL 與 Verilog 的 IC 設計軟體"
 msgid "Convert GPS log between different formats"
 msgstr "將 GPS 軌跡檔轉換成不同格式"
 
-#: ../ailurus/common/apps.py:132
+#: ../ailurus/common/apps.py:134
 msgid "visualize and analyze tours which are recorded by a GPS device"
 msgstr "顯示並分析 GPS 裝置記錄的旅程"
 
-#: ../ailurus/common/apps.py:158
+#: ../ailurus/common/apps.py:160
 msgid "Learning algebra and geometry"
 msgstr "學習代數與幾何"
 
-#: ../ailurus/common/apps.py:189
+#: ../ailurus/common/apps.py:191
 msgid "SweetHome3D: open source interior design application"
 msgstr "SweetHome3D：開放原始碼的室內設計應用程式"
 
-#: ../ailurus/common/apps.py:229
+#: ../ailurus/common/apps.py:231
 msgid "LaTeX Thesis Templates by Tsing Hua University, China"
 msgstr "LaTeX 論文模板 (由中國清華大學開發)"
 
-#: ../ailurus/common/apps.py:231
+#: ../ailurus/common/apps.py:233
 #, python-format
 msgid ""
 "These templates include undergraduate dissertation template, master thesis "
@@ -232,100 +200,100 @@ msgstr ""
 "這些模板包括大學畢業論文、碩士論文、博士論文模板。由中國清華大學開發，官方網站是 http://thuthesis.sourceforge.net/\n"
 "安裝後，%s 目錄中會出現 thuthesis.tgz 檔案。"
 
-#: ../ailurus/common/apps.py:243
+#: ../ailurus/common/apps.py:245
 msgid "Adblock+: Block 99% advertisement"
 msgstr "Adblock+：攔阻 99% 的廣告"
 
-#: ../ailurus/common/apps.py:245
+#: ../ailurus/common/apps.py:247
 msgid "It is able to block 99% ads and banners."
 msgstr "它能攔阻 99% 的廣告視窗、廣告圖片與廣告橫條。"
 
-#: ../ailurus/common/apps.py:251
+#: ../ailurus/common/apps.py:253
 msgid "AutoProxy: Proxy management via a third party list"
 msgstr "AutoProxy：以第三方清單做代理伺服器管理"
 
-#: ../ailurus/common/apps.py:260
+#: ../ailurus/common/apps.py:262
 msgid "Chromifox: Chrome theme"
 msgstr "Chromifox：仿 Chrome 的佈景主題"
 
-#: ../ailurus/common/apps.py:262
+#: ../ailurus/common/apps.py:264
 msgid "A coat of Chrome for Firefox"
 msgstr "幫 Firefox 換上 Chrome 的外觀"
 
-#: ../ailurus/common/apps.py:268
+#: ../ailurus/common/apps.py:270
 msgid "CleanHide: Delete hidden text in web page"
 msgstr "CleanHide：刪除網頁內的隱藏文字"
 
-#: ../ailurus/common/apps.py:270
+#: ../ailurus/common/apps.py:272
 msgid ""
 "If you find that some web page use hidden text and you cannot copy text "
 "easily, try this!"
 msgstr "如果您發現某些網頁有隱藏文字而無法輕鬆複製時，試試這個！"
 
-#: ../ailurus/common/apps.py:276
+#: ../ailurus/common/apps.py:278
 msgid "DownloadStatusBar: Keep track of downloads in a tiny statusbar."
 msgstr "DownloadStatusBar：可在細小的狀態列追蹤下載進度。"
 
-#: ../ailurus/common/apps.py:284
+#: ../ailurus/common/apps.py:286
 msgid "DownThemAll: A reliable multithread downloader"
 msgstr "DownThemAll：可靠的多線下載程式"
 
-#: ../ailurus/common/apps.py:286
+#: ../ailurus/common/apps.py:288
 msgid "It is able to download all images on web-pages."
 msgstr "它能下載網頁內的所有圖片。"
 
-#: ../ailurus/common/apps.py:292
+#: ../ailurus/common/apps.py:294
 msgid "EasyDragToGo: Open new tabs by dragging text, links and pictures"
 msgstr "EasyDragToGo：拖曳文字、連結與圖片即可開啟新分頁"
 
-#: ../ailurus/common/apps.py:300
+#: ../ailurus/common/apps.py:302
 msgid "Ease Link: Decode Thunder, QQ, Flashget, Rayfile, Namipan links"
 msgstr "Ease Link：解析迅雷、QQ、快車、Rayfile 與 Namipan 的連結"
 
-#: ../ailurus/common/apps.py:301
+#: ../ailurus/common/apps.py:303
 msgid ""
 "Get normal HTML hyperlink from hyperlink dedicated to special software"
 msgstr "將這些軟體專用的連結轉換成正常的 HTML 連結"
 
-#: ../ailurus/common/apps.py:309
+#: ../ailurus/common/apps.py:311
 msgid "FireBug: Real-time edit and debug CSS/HTML/JavaScript in webpage"
 msgstr "FireBug：即時編輯與調試網頁的 CSS/HTML/JavaScript"
 
-#: ../ailurus/common/apps.py:311
+#: ../ailurus/common/apps.py:313
 msgid "This is a powerful web development tool."
 msgstr "強大的網頁開發工具。"
 
-#: ../ailurus/common/apps.py:317
+#: ../ailurus/common/apps.py:319
 msgid "FireGesture: Execute commands and user scripts by mouse gestures"
 msgstr "FireGesture：用滑鼠手勢執行命令與腳本"
 
-#: ../ailurus/common/apps.py:319
+#: ../ailurus/common/apps.py:321
 msgid "It supports five kinds of mouse gestures."
 msgstr "支援五種滑鼠手勢。"
 
-#: ../ailurus/common/apps.py:325
+#: ../ailurus/common/apps.py:327
 msgid "Flashgot: A lightweight and reliable download managers"
 msgstr "Flashgot：一個輕量、可靠的下載管理程式"
 
-#: ../ailurus/common/apps.py:327
+#: ../ailurus/common/apps.py:329
 msgid ""
 "It is able to download all the links, movies and audio clips of a page with "
 "a single click."
 msgstr "可以一鍵下載網頁上的所有連結、影片、音效檔。"
 
-#: ../ailurus/common/apps.py:333
+#: ../ailurus/common/apps.py:335
 msgid "FoxyProxy: One-click switching proxy"
 msgstr "FoxyProxy：單鍵切換代理伺服器"
 
-#: ../ailurus/common/apps.py:341
+#: ../ailurus/common/apps.py:343
 msgid "GMarks: Synchronize bookmarks with Google Bookmarks service"
 msgstr "GMarks：藉由 Google 的書籤服務來同步書籤"
 
-#: ../ailurus/common/apps.py:348
+#: ../ailurus/common/apps.py:350
 msgid "GreaseMonkey: Make change to web pages"
 msgstr "GreaseMonkey：變更網頁內容"
 
-#: ../ailurus/common/apps.py:350
+#: ../ailurus/common/apps.py:352
 msgid ""
 "This is an extension that allow you to install scripts to make changes to "
 "web page, such as adding an HTML signature and bypassing image "
@@ -339,99 +307,99 @@ msgstr ""
 "下載上百個腳本，也可以按照 http://wiki.greasespot.net/ 的指示撰寫自己的腳本。「Dive into "
 "Greasemonkey」這本書值得一讀，可以從 http://diveintogreasemonkey.org/ 免費下載。"
 
-#: ../ailurus/common/apps.py:359
+#: ../ailurus/common/apps.py:361
 msgid "Flashblock: blocks Flash animation"
 msgstr "Flashblock：阻擋 Flash 動畫"
 
-#: ../ailurus/common/apps.py:361
+#: ../ailurus/common/apps.py:363
 msgid "Never annoyed by Flash animations"
 msgstr "再也不會受到 Flash 動畫的干擾"
 
-#: ../ailurus/common/apps.py:367
+#: ../ailurus/common/apps.py:369
 msgid "Live HTTP Headers: View HTTP headers in real-time"
 msgstr "Live HTTP Headers：即時觀察 HTTP 伺服器的回應"
 
-#: ../ailurus/common/apps.py:375
+#: ../ailurus/common/apps.py:377
 msgid "NoScript: Allow active content to run only from sites you trust"
 msgstr "NoScript：只執行信任的網站上的內容"
 
-#: ../ailurus/common/apps.py:377
+#: ../ailurus/common/apps.py:379
 msgid ""
 "Allow active content to run only from sites you trust, and protect yourself "
 "against XSS and Clickjacking attacks."
 msgstr "只有信任的網站上的腳本才執行。使您免受跨站腳本攻擊。"
 
-#: ../ailurus/common/apps.py:383
+#: ../ailurus/common/apps.py:385
 msgid ""
 "SHA-DA network radio: Listen to and watch radio and TV programs in China"
 msgstr "沙大網路收音機：收聽收看全中國的廣播與電視節目"
 
-#: ../ailurus/common/apps.py:393
+#: ../ailurus/common/apps.py:395
 msgid "SeoQuake: Help you view search engine parameters of your web site"
 msgstr "SeoQuake：協助您查看網站搜索引擎的參數"
 
-#: ../ailurus/common/apps.py:395
+#: ../ailurus/common/apps.py:397
 msgid "It helps you promote your web sites."
 msgstr "協助您提升網站的人氣。"
 
-#: ../ailurus/common/apps.py:401
+#: ../ailurus/common/apps.py:403
 msgid "Stylish: Install themes and skins for websites."
 msgstr "Stylish：安裝網頁佈景與外觀主題"
 
-#: ../ailurus/common/apps.py:409
+#: ../ailurus/common/apps.py:411
 msgid ""
 "Tamper Data: View and modify HTTP/HTTPS headers and post request parameters."
 msgstr "Tamper Data：觀看、修改 HTTP/HTTPS 的 header，與發送需要的參數"
 
-#: ../ailurus/common/apps.py:417
+#: ../ailurus/common/apps.py:419
 msgid "User Agent Switcher: Camousflag Firefox as other kinds of browsers."
 msgstr "User Agent Switcher：將 Firefox 僞裝成其它瀏覽器。"
 
-#: ../ailurus/common/apps.py:419
+#: ../ailurus/common/apps.py:421
 msgid "It tells the remote websites that you are an IE user."
 msgstr "向連線網站虛報使用的是 IE 瀏覽器。"
 
-#: ../ailurus/common/apps.py:425
+#: ../ailurus/common/apps.py:427
 msgid "View Source Chart: Show pretty color-coded HTML source code"
 msgstr "View Source Char：顯示漂亮的彩色 HTML 原始碼"
 
-#: ../ailurus/common/apps.py:427
+#: ../ailurus/common/apps.py:429
 msgid ""
 "This extension helps you quickly scan and recognize a document's tags."
 msgstr "這個擴充套件可協助您快速檢視並辨認出文件中的標籤。"
 
-#: ../ailurus/common/apps.py:433
+#: ../ailurus/common/apps.py:435
 msgid ""
 "Firefox Sync: synchronize bookmarks, browsing history and tabs wherever you "
 "go."
 msgstr "Firefox Sync：無論何時何地都能同步書籤、瀏覽記錄和分頁。"
 
-#: ../ailurus/common/apps.py:441
+#: ../ailurus/common/apps.py:443
 msgid "Web Developer: Web page analysis tools"
 msgstr "Web Developer：網頁分析工具"
 
-#: ../ailurus/common/apps.py:443
+#: ../ailurus/common/apps.py:445
 msgid "Many developers installed it."
 msgstr "很多開發者都有安裝這個。"
 
-#: ../ailurus/common/apps.py:449
+#: ../ailurus/common/apps.py:451
 msgid "Yet Another Smooth Scrolling: Customize scrolling behavior"
 msgstr "Yet Another Smooth Scrolling：自訂頁面捲動效果"
 
-#: ../ailurus/common/apps.py:457
+#: ../ailurus/common/apps.py:459
 msgid "YSlow: web page performance tuning"
 msgstr "YSlow：網頁效能微調"
 
-#: ../ailurus/common/apps.py:459
+#: ../ailurus/common/apps.py:461
 msgid ""
 "It helps you improve web page performance. It tells you why web page is slow."
 msgstr "告訴您為何網頁速度很慢，用以協助您提高網頁效能。"
 
-#: ../ailurus/common/apps.py:465
+#: ../ailurus/common/apps.py:467
 msgid "WebMail Notifier: check your email accounts and notify unread emails"
 msgstr "WebMail Notifier：檢查您的 Email 帳號，提醒您有無未閱讀的郵件"
 
-#: ../ailurus/common/apps.py:467
+#: ../ailurus/common/apps.py:469
 msgid "Supports many email server"
 msgstr "支援多種類型的郵件伺服器"
 
@@ -464,8 +432,8 @@ msgstr "在您的個人資料夾建立「Desktop」目錄，，並連結到桌�
 #: ../ailurus/common/cure.py:85
 msgid ""
 "After that, you can easily chdir to desktop folder by command \"cd "
-"~/Desktop\"."
-msgstr "之後您就可以輕易地以「cd ~/Desktop」變換到桌面資料夾。"
+"$HOME/Desktop\"."
+msgstr ""
 
 #: ../ailurus/common/cure.py:103
 msgid "Query you before delete more than three files in BASH"
@@ -474,10 +442,8 @@ msgstr "在 BASH 下一次刪除超過三個檔案前先詢問"
 #: ../ailurus/common/cure.py:104
 msgid ""
 "Prevent destruction when you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
-"Add this line into ~/.bashrc: alias rm=\"rm -I\""
+"Add this line into $HOME/.bashrc: alias rm=\"rm -I\""
 msgstr ""
-"可避免您因為把「rm subdir/*」誤輸入成「rm subdir/ *」而造成損害\n"
-"在 ~/.bashrc 加入這行：「alias rm=\"rm -I\"」"
 
 #: ../ailurus/common/cure.py:157
 msgid "Show a random Linux skill after you log in to GNOME"
@@ -492,8 +458,8 @@ msgid "Otherwise, Pydev and CDT do not work."
 msgstr "否則將無法使用 Pydev 與 CDT 。"
 
 #: ../ailurus/common/cure.py:197
-msgid "Let you be the owner of directory ~/.config/ailurus"
-msgstr "使您成為 ~/.config/ailurus 目錄的擁有者"
+msgid "Let you be the owner of directory $HOME/.config/ailurus"
+msgstr ""
 
 #: ../ailurus/common/cure.py:208
 msgid "Remove directory /var/cache/ailurus/"
@@ -503,130 +469,130 @@ msgstr "移除目錄 /var/cache/ailurus/"
 msgid "This directory is obsolete. Remove this directory to free disk space."
 msgstr "這個目錄已被廢棄。移除這個目錄以釋放磁碟空間。"
 
-#: ../ailurus/common/hardwareinfo.py:37
+#: ../ailurus/common/hardwareinfo.py:40
 msgid "BIOS vendor:"
 msgstr "BIOS 製造者："
 
-#: ../ailurus/common/hardwareinfo.py:44
+#: ../ailurus/common/hardwareinfo.py:47
 msgid "BIOS version:"
 msgstr "BIOS 版本："
 
-#: ../ailurus/common/hardwareinfo.py:51
+#: ../ailurus/common/hardwareinfo.py:54
 msgid "BIOS release date:"
 msgstr "BIOS 釋出日期："
 
-#: ../ailurus/common/hardwareinfo.py:62
+#: ../ailurus/common/hardwareinfo.py:65
 msgid "Motherboard name:"
 msgstr "主機板名稱："
 
-#: ../ailurus/common/hardwareinfo.py:69
+#: ../ailurus/common/hardwareinfo.py:73
 msgid "Motherboard vendor:"
 msgstr "主機板製造者："
 
-#: ../ailurus/common/hardwareinfo.py:112
+#: ../ailurus/common/hardwareinfo.py:116
 #, python-format
 msgid "CPU %s name:"
 msgstr "CPU %s 名稱："
 
-#: ../ailurus/common/hardwareinfo.py:113
+#: ../ailurus/common/hardwareinfo.py:117
 msgid "CPU name:"
 msgstr "CPU 名稱："
 
-#: ../ailurus/common/hardwareinfo.py:118
+#: ../ailurus/common/hardwareinfo.py:122
 #, python-format
 msgid "CPU %s Mips:"
 msgstr "CPU %s MIPS："
 
-#: ../ailurus/common/hardwareinfo.py:120
+#: ../ailurus/common/hardwareinfo.py:124
 #, python-format
 msgid "CPU %s level 1 cache size:"
 msgstr "CPU %s L1 快取大小："
 
-#: ../ailurus/common/hardwareinfo.py:121
+#: ../ailurus/common/hardwareinfo.py:125
 #, python-format
 msgid "CPU %s level 2 cache size:"
 msgstr "CPU %s L2 快取大小："
 
-#: ../ailurus/common/hardwareinfo.py:123
+#: ../ailurus/common/hardwareinfo.py:127
 msgid "CPU Mips:"
 msgstr "CPU MIPS："
 
-#: ../ailurus/common/hardwareinfo.py:125
+#: ../ailurus/common/hardwareinfo.py:129
 msgid "Level 1 cache:"
 msgstr "L1 快取："
 
-#: ../ailurus/common/hardwareinfo.py:126
+#: ../ailurus/common/hardwareinfo.py:130
 msgid "Level 2 cache:"
 msgstr "L2 快取："
 
-#: ../ailurus/common/hardwareinfo.py:131
+#: ../ailurus/common/hardwareinfo.py:135
 msgid ""
 "It is a measure for the computation speed. \"Mips\" is short for Millions of "
 "Instructions Per Second."
 msgstr "MIPS 是計算電腦速度的單位，為「每秒鐘百萬條指令」的縮寫。"
 
-#: ../ailurus/common/hardwareinfo.py:133 ../ailurus/libsetting.py:321
+#: ../ailurus/common/hardwareinfo.py:137 ../ailurus/libsetting.py:324
 msgid "No"
 msgstr "否"
 
-#: ../ailurus/common/hardwareinfo.py:140
+#: ../ailurus/common/hardwareinfo.py:144
 msgid "Yes!"
 msgstr "是！"
 
-#: ../ailurus/common/hardwareinfo.py:141
+#: ../ailurus/common/hardwareinfo.py:145
 msgid "64 bit CPU?"
 msgstr "64 位元 CPU 嗎？"
 
-#: ../ailurus/common/hardwareinfo.py:163
+#: ../ailurus/common/hardwareinfo.py:167
 msgid "CPU temperature"
 msgstr "CPU 溫度"
 
-#: ../ailurus/common/hardwareinfo.py:182
+#: ../ailurus/common/hardwareinfo.py:186
 msgid "Total memory:"
 msgstr "總記憶體："
 
-#: ../ailurus/common/hardwareinfo.py:196
+#: ../ailurus/common/hardwareinfo.py:200
 msgid "Total swap:"
 msgstr "總置換空間："
 
-#: ../ailurus/common/hardwareinfo.py:196
+#: ../ailurus/common/hardwareinfo.py:200
 #, python-format
 msgid "%s MBytes"
 msgstr "%s MB"
 
-#: ../ailurus/common/hardwareinfo.py:211
+#: ../ailurus/common/hardwareinfo.py:215
 msgid "Display card:"
 msgstr "顯示卡："
 
-#: ../ailurus/common/hardwareinfo.py:213
+#: ../ailurus/common/hardwareinfo.py:217
 msgid "Ethernet card:"
 msgstr "網路卡："
 
-#: ../ailurus/common/hardwareinfo.py:215
+#: ../ailurus/common/hardwareinfo.py:219
 msgid "Audio card:"
 msgstr "音效卡："
 
-#: ../ailurus/common/hardwareinfo.py:228
+#: ../ailurus/common/hardwareinfo.py:232
 msgid "charged"
 msgstr "充電完畢"
 
-#: ../ailurus/common/hardwareinfo.py:229
+#: ../ailurus/common/hardwareinfo.py:233
 msgid "charging"
 msgstr "正在充電"
 
-#: ../ailurus/common/hardwareinfo.py:230
+#: ../ailurus/common/hardwareinfo.py:234
 msgid "discharging"
 msgstr "未接電源"
 
-#: ../ailurus/common/hardwareinfo.py:232
+#: ../ailurus/common/hardwareinfo.py:236
 msgid "Battery charging state:"
 msgstr "電池充電狀態："
 
-#: ../ailurus/common/hardwareinfo.py:244
+#: ../ailurus/common/hardwareinfo.py:248
 msgid "Battery remaining capacity:"
 msgstr "電池剩餘電量："
 
-#: ../ailurus/common/hardwareinfo.py:256
+#: ../ailurus/common/hardwareinfo.py:260
 msgid "Battery full capacity:"
 msgstr "電池最大容量："
 
@@ -720,138 +686,140 @@ msgstr ""
 msgid "Last modified:"
 msgstr "最後變更："
 
-#: ../ailurus/common/menu.py:197 ../ailurus/common/menu.py:264
+#: ../ailurus/common/menu.py:197 ../ailurus/common/menu.py:263
 msgid "Contributing to Ailurus"
 msgstr "對 Ailurus 提供貢獻"
 
-#: ../ailurus/common/menu.py:229
+#: ../ailurus/common/menu.py:228
 msgid "name"
 msgstr "名稱"
 
-#: ../ailurus/common/menu.py:235
+#: ../ailurus/common/menu.py:234
 msgid "value"
 msgstr "值"
 
-#: ../ailurus/common/menu.py:245 ../ailurus/libu.py:188 ../ailurus/libu.py:311
+#: ../ailurus/common/menu.py:244 ../ailurus/libu.py:209 ../ailurus/libu.py:330
 msgid "Copy text to clipboard"
 msgstr "複製文字到剪貼簿"
 
-#: ../ailurus/common/menu.py:255 ../ailurus/common/menu.py:301
+#. changelog = gtk.MenuItem( _('Read changelog') )
+#. changelog.connect('activate', lambda *w: show_changelog())
+#: ../ailurus/common/menu.py:254 ../ailurus/common/menu.py:300
 msgid "Statistical data"
 msgstr "統計資料"
 
-#: ../ailurus/common/menu.py:267
+#: ../ailurus/common/menu.py:266
 msgid "Ailurus blog"
 msgstr "Ailurus 部落格"
 
-#: ../ailurus/common/menu.py:271
+#: ../ailurus/common/menu.py:270
 msgid "Check for updates"
 msgstr "檢查更新"
 
-#: ../ailurus/common/menu.py:278 ../ailurus/support/gae.py:265
+#: ../ailurus/common/menu.py:277 ../ailurus/support/gae.py:265
 msgid "Propose suggestion"
 msgstr "提供建議"
 
-#: ../ailurus/common/menu.py:284
+#: ../ailurus/common/menu.py:283
 msgid "Report bugs"
 msgstr "回報 bug"
 
-#: ../ailurus/common/menu.py:288
+#: ../ailurus/common/menu.py:287
 msgid "Translate this application"
 msgstr "翻譯此應用程式"
 
-#: ../ailurus/common/menu.py:292
+#: ../ailurus/common/menu.py:291
 msgid "Special thanks"
 msgstr "衷心感謝"
 
-#: ../ailurus/common/menu.py:295
+#: ../ailurus/common/menu.py:294
 msgid "About"
 msgstr "關於"
 
-#: ../ailurus/common/menu.py:298
-msgid "Read changelog"
-msgstr "讀取更版紀錄"
+#: ../ailurus/common/osinfo.py:27
+msgid "Default shell:"
+msgstr ""
 
-#: ../ailurus/common/osinfo.py:28
+#: ../ailurus/common/osinfo.py:31
 msgid "Host name:"
 msgstr "主機名稱："
 
-#: ../ailurus/common/osinfo.py:34
+#: ../ailurus/common/osinfo.py:37
 msgid "Kernel version:"
 msgstr "核心版本："
 
-#: ../ailurus/common/osinfo.py:37
+#: ../ailurus/common/osinfo.py:40
 msgid "Kernel arch:"
 msgstr "核心架構："
 
-#: ../ailurus/common/osinfo.py:45
+#: ../ailurus/common/osinfo.py:48
 msgid "X server version:"
 msgstr "X 伺服器版本："
 
-#: ../ailurus/common/osinfo.py:52
+#: ../ailurus/common/osinfo.py:55
 msgid "GCC version:"
 msgstr "GCC 版本："
 
-#: ../ailurus/common/osinfo.py:60
+#: ../ailurus/common/osinfo.py:63
 msgid "Java version:"
 msgstr "Java 版本："
 
-#: ../ailurus/common/osinfo.py:67
+#: ../ailurus/common/osinfo.py:70
 msgid "Python version:"
 msgstr "Python 版本："
 
-#: ../ailurus/common/osinfo.py:75
+#: ../ailurus/common/osinfo.py:78
 msgid "GTK version:"
 msgstr "GTK 版本："
 
-#: ../ailurus/common/osinfo.py:83
+#: ../ailurus/common/osinfo.py:86
 msgid "PyGTK version:"
 msgstr "PyGTK 版本："
 
-#: ../ailurus/common/osinfo.py:102
+#: ../ailurus/common/osinfo.py:105
 msgid "day"
 msgid_plural "days"
 msgstr[0] "天"
 
-#: ../ailurus/common/osinfo.py:104
+#: ../ailurus/common/osinfo.py:107
 msgid "hour"
 msgid_plural "hours"
 msgstr[0] "小時"
 
-#: ../ailurus/common/osinfo.py:106
+#: ../ailurus/common/osinfo.py:109
 msgid "minute"
 msgid_plural "minutes"
 msgstr[0] "分鐘"
 
-#: ../ailurus/common/osinfo.py:107
+#: ../ailurus/common/osinfo.py:110
 msgid "Uptime:"
 msgstr "持續執行時間："
 
-#: ../ailurus/common/osinfo.py:116
+#: ../ailurus/common/osinfo.py:119
 msgid "Current user:"
 msgstr "目前使用者："
 
-#: ../ailurus/common/osinfo.py:133
+#: ../ailurus/common/osinfo.py:136
 msgid "OpenGL direct rendering:"
 msgstr "OpenGL 直接重現器："
 
-#: ../ailurus/common/osinfo.py:136
+#: ../ailurus/common/osinfo.py:139
 msgid "OpenGL vendor:"
 msgstr "OpenGL 製造者："
 
-#: ../ailurus/common/osinfo.py:139
+#: ../ailurus/common/osinfo.py:142
 msgid "OpenGL renderer:"
 msgstr "OpenGL 重現器："
 
-#: ../ailurus/common/osinfo.py:142
+#: ../ailurus/common/osinfo.py:145
 msgid "OpenGL version:"
 msgstr "OpenGL 版本："
 
-#: ../ailurus/common/osinfo.py:152
+#: ../ailurus/common/osinfo.py:155
 msgid "Firefox version:"
 msgstr "Firefox 版本："
 
-#: ../ailurus/common/osinfo.py:161
+#: ../ailurus/common/osinfo.py:164
 #, python-format
 msgid "%s version:"
 msgstr "%s 版本："
@@ -864,10 +832,9 @@ msgstr "0 = 置換少量記憶體到磁碟"
 msgid "100 = Swap a lot of mem to disk"
 msgstr "100 = 置換大量記憶體到磁碟"
 
-#: ../ailurus/common/setting.py:65 ../ailurus/common/setting.py:152
-#: ../ailurus/computer_doctor_pane.py:136
-#: ../ailurus/fedora/rpm_recovery_pane.py:275 ../ailurus/libsetting.py:248
-#: ../ailurus/ubuntu/apt_recovery_pane.py:278
+#: ../ailurus/common/setting.py:65 ../ailurus/common/setting.py:153
+#: ../ailurus/computer_doctor_pane.py:135 ../ailurus/libsetting.py:251
+#: ../ailurus/snapshot_pane.py:323
 msgid "Apply"
 msgstr "套用"
 
@@ -875,48 +842,15 @@ msgstr "套用"
 msgid "Change the tendency of swapping memory to disk"
 msgstr "變更置換記憶體到磁碟的傾向"
 
-#: ../ailurus/common/setting.py:87
-msgid "Run command: "
-msgstr "執行指令： "
-
-#: ../ailurus/common/setting.py:89 ../ailurus/info_pane.py:40
-#: ../ailurus/info_pane.py:61
-msgid "Information"
-msgstr "資訊"
-
-#: ../ailurus/common/setting.py:89
-msgid "Network restarted successfully."
-msgstr "重新啓動網路連線成功。"
-
-#: ../ailurus/common/setting.py:91 ../ailurus/common/setting.py:106
-msgid "Restart network"
-msgstr "重新啓動網路連線"
-
-#: ../ailurus/common/setting.py:93
-msgid ""
-"These commands will be executed:\n"
-"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
-"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
-"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
-"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
-"sudo /etc/init.d/networking restart"
-msgstr ""
-"將執行以下指令：\n"
-"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
-"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
-"dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
-"/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
-"sudo /etc/init.d/networking restart"
-
-#: ../ailurus/common/setting.py:153
+#: ../ailurus/common/setting.py:154
 msgid "New host name:"
 msgstr "新的主機名稱："
 
-#: ../ailurus/common/setting.py:165
+#: ../ailurus/common/setting.py:166
 msgid "Change host name"
 msgstr "變更主機名稱"
 
-#: ../ailurus/common/setting.py:175
+#: ../ailurus/common/setting.py:176
 #, python-format
 msgid ""
 "Tweak Firefox by changing file %s.\n"
@@ -925,40 +859,40 @@ msgstr ""
 "藉由改變檔案 %s 來調整 Firefox。\n"
 "請關閉所有 Firefox 視窗。"
 
-#: ../ailurus/common/setting.py:182
+#: ../ailurus/common/setting.py:183
 msgid "Auto tweak Firefox"
 msgstr "自動調整 Firefox"
 
-#: ../ailurus/common/setting.py:183
+#: ../ailurus/common/setting.py:184 ../ailurus/fedora/repos_edit_pane.py:302
 msgid "Save"
 msgstr "儲存"
 
-#: ../ailurus/common/setting.py:193
+#: ../ailurus/common/setting.py:194
 msgid "the number of DNS results to cache"
 msgstr "保存 DNS 快取的數量"
 
-#: ../ailurus/common/setting.py:195
+#: ../ailurus/common/setting.py:196
 msgid "the number of seconds to cache DNS results"
 msgstr "DNS 快取要保存多少時間（秒）"
 
-#: ../ailurus/common/setting.py:198
+#: ../ailurus/common/setting.py:199
 msgid "the number of seconds before the FTP connection times out"
 msgstr "FTP 連線的逾時時間（秒）"
 
-#: ../ailurus/common/setting.py:200
+#: ../ailurus/common/setting.py:201
 msgid "amount of time in seconds to keep alive connections"
 msgstr "持久性連線的有效時間（秒）"
 
-#: ../ailurus/common/setting.py:201
+#: ../ailurus/common/setting.py:202
 msgid ""
 "alive connections can be re-used for multiple requests to improve performance"
 msgstr "持久性連線可被重複利用，發送多次請求以增進效能"
 
-#: ../ailurus/common/setting.py:203
+#: ../ailurus/common/setting.py:204
 msgid "the maximum number of HTTP connections"
 msgstr "HTTP 最大連線數"
 
-#: ../ailurus/common/setting.py:204
+#: ../ailurus/common/setting.py:205
 msgid ""
 "Users on slower connections may want to reduce this number to prevent HTTP "
 "connection timeouts.\n"
@@ -967,19 +901,19 @@ msgstr ""
 "如果您使用較慢的網路連線，建議減小此數值，避免 HTTP 連線逾時的情況發生。\n"
 "如果您使用較快的網路連線，建議增大此數值。"
 
-#: ../ailurus/common/setting.py:207
+#: ../ailurus/common/setting.py:208
 msgid "the maximum number of connections to a single server"
 msgstr "對單一伺服器的最大連線數"
 
-#: ../ailurus/common/setting.py:209
+#: ../ailurus/common/setting.py:210
 msgid "the total number of alive connections per proxy server"
 msgstr "對單一代理伺服器的持久性連線最大值"
 
-#: ../ailurus/common/setting.py:213
+#: ../ailurus/common/setting.py:214
 msgid "the number of milliseconds to wait before first displaying the page"
 msgstr "第一次顯示頁面之前等待多少時間（毫秒）"
 
-#: ../ailurus/common/setting.py:214
+#: ../ailurus/common/setting.py:215
 msgid ""
 "Since the start of a web page normally doesn't have much useful information "
 "to display,\n"
@@ -988,47 +922,47 @@ msgstr ""
 "正常情況下，網頁的起始部份並無太多可供顯示的資訊，\n"
 "Firefox 在繪製網頁前會先等待一小段時間。"
 
-#: ../ailurus/common/setting.py:217
+#: ../ailurus/common/setting.py:218
 msgid "the maximum number of microseconds between two page rendering"
 msgstr "兩次頁面繪製之間最多間隔多少時間（微秒）"
 
-#: ../ailurus/common/setting.py:219
+#: ../ailurus/common/setting.py:220
 msgid ""
 "re-render pages until this number has been reached (-1 means unlimited)"
 msgstr "超過這個次數將不再進行頁面繪製 (-1 代表無限制)"
 
 #. page content
-#: ../ailurus/common/setting.py:221
+#: ../ailurus/common/setting.py:222
 msgid "loop"
 msgstr "循環播放"
 
-#: ../ailurus/common/setting.py:221
+#: ../ailurus/common/setting.py:222
 msgid "only once"
 msgstr "只播放一次"
 
-#: ../ailurus/common/setting.py:221
+#: ../ailurus/common/setting.py:222
 msgid "never"
 msgstr "永不"
 
-#: ../ailurus/common/setting.py:222
+#: ../ailurus/common/setting.py:223
 msgid "how to animate GIF images"
 msgstr "如何播放 GIF 動畫"
 
-#: ../ailurus/common/setting.py:224
+#: ../ailurus/common/setting.py:225
 msgid ""
 "display content in &lt;blink&gt; elements and styled with text-"
 "decoration:blink as blinking text"
 msgstr "將 &lt;blink&gt; 與 text-decoration:blink 樣式內的元素顯示為閃爍文字"
 
-#: ../ailurus/common/setting.py:227
+#: ../ailurus/common/setting.py:228
 msgid "how many closed tabs are kept track"
 msgstr "記錄多少個已關閉的分頁"
 
-#: ../ailurus/common/setting.py:229
+#: ../ailurus/common/setting.py:230
 msgid "the width of narrowest tab"
 msgstr "分頁的最小寬度"
 
-#: ../ailurus/common/setting.py:230
+#: ../ailurus/common/setting.py:231
 msgid ""
 "To fit more tabs on the tab strip, Firefox shrinks every tab.\n"
 "This preference determines the narrowest a tab can become before the tab "
@@ -1037,12 +971,12 @@ msgstr ""
 "為了讓分頁欄可容納更多分頁，Firefox 上每一個分頁都會被收縮。\n"
 "這個選項決定了分頁可允許的最小寬度。"
 
-#: ../ailurus/common/setting.py:233
+#: ../ailurus/common/setting.py:234
 msgid ""
 "how many pixels to scroll at a time when scrolling the tab strip's scrollbox"
 msgstr "當滾動分頁欄時，一次滾動多少個像素"
 
-#: ../ailurus/common/setting.py:235
+#: ../ailurus/common/setting.py:236
 msgid ""
 "When there is a large number of tabs, you can scroll the tab strip "
 "horizontally to see all available tabs.\n"
@@ -1051,70 +985,70 @@ msgstr ""
 "當開啟大量的分頁時，您可以水平滾動分頁欄以查看所有分頁。\n"
 "這個選項決定了分頁欄滾動的速度。"
 
-#: ../ailurus/common/setting.py:239
+#: ../ailurus/common/setting.py:240
 msgid ""
 "auto complete url-bar, display entries you have previously typed that "
 "closely match the text your typed"
 msgstr "啟用網址列自動補全，輸入文字時，從曾經輸入的網址中找出與其相符合者並顯示"
 
-#: ../ailurus/common/setting.py:243
+#: ../ailurus/common/setting.py:244
 msgid "how many days in which history entries are expired"
 msgstr "歷史記錄最多保留多少天"
 
-#: ../ailurus/common/setting.py:245
+#: ../ailurus/common/setting.py:246
 msgid "the maximum number of websites to keep in history"
 msgstr "歷史記錄最多記錄多少個網站"
 
-#: ../ailurus/common/setting.py:248
+#: ../ailurus/common/setting.py:249
 msgid "the amount of disk space the offline cache may use (in kilobytes)"
 msgstr "可供離線快取使用的磁碟容量 (以 KB 為單位)"
 
-#: ../ailurus/common/setting.py:250
+#: ../ailurus/common/setting.py:251
 msgid ""
 "the maximum number of results to display in the \"Get Add-ons\" dialog"
 msgstr "在「取得元件」視窗中最多顯示多少項結果"
 
-#: ../ailurus/common/setting.py:252
+#: ../ailurus/common/setting.py:253
 msgid "go back"
 msgstr "回上一頁"
 
-#: ../ailurus/common/setting.py:252
+#: ../ailurus/common/setting.py:253
 msgid "scroll up"
 msgstr "向上翻頁"
 
-#: ../ailurus/common/setting.py:252
+#: ../ailurus/common/setting.py:253
 msgid "do nothing"
 msgstr "不做任何事"
 
-#: ../ailurus/common/setting.py:255
+#: ../ailurus/common/setting.py:256
 msgid "when press the Backspace button"
 msgstr "當按下 Backspace(後退) 鍵時"
 
-#: ../ailurus/common/setting.py:272
+#: ../ailurus/common/setting.py:273
 msgid "DNS"
 msgstr "DNS"
 
-#: ../ailurus/common/setting.py:275
+#: ../ailurus/common/setting.py:276
 msgid "connections number and timeout"
 msgstr "連線次數與逾時"
 
-#: ../ailurus/common/setting.py:281
+#: ../ailurus/common/setting.py:282
 msgid "page rendering"
 msgstr "頁面繪製"
 
-#: ../ailurus/common/setting.py:285
+#: ../ailurus/common/setting.py:286
 msgid "page content"
 msgstr "頁面內容"
 
-#: ../ailurus/common/setting.py:288
+#: ../ailurus/common/setting.py:289
 msgid "tab"
 msgstr "分頁"
 
-#: ../ailurus/common/setting.py:292
+#: ../ailurus/common/setting.py:293
 msgid "miscellaneous"
 msgstr "雜項"
 
-#: ../ailurus/common/setting.py:313 ../ailurus/system_setting_pane.py:61
+#: ../ailurus/common/setting.py:314 ../ailurus/system_setting_pane.py:61
 msgid "Configure Firefox"
 msgstr "設定 Firefox"
 
@@ -1128,31 +1062,6 @@ msgstr ""
 "授人以魚，不如授人以漁。"
 
 #: ../ailurus/common/tips.py:31
-msgid ""
-"Clear Bash history\n"
-"history -c"
-msgstr ""
-"清除 bash 歷史\n"
-"history -c"
-
-#: ../ailurus/common/tips.py:34
-msgid ""
-"If you want to use colorful \"ls\", that is, use colors to distinguish types "
-"of files, you can add these lines in ~/.bashrc:\n"
-"\n"
-"if [ \"$TERM\" != \"dumb\" ]; then\n"
-"    eval \"`dircolors -b`\"\n"
-"    alias ls='ls --color=auto'\n"
-"fi"
-msgstr ""
-"如果您想要使用彩色的 ls 指令，用不同的顏色來區分檔案類型，請在 ~/.bashrc 加入以下幾行：\n"
-"\n"
-"if [ \"$TERM\" != \"dumb\" ]; then\n"
-"    eval \"`dircolors -b`\"\n"
-"    alias ls='ls --color=auto'\n"
-"fi"
-
-#: ../ailurus/common/tips.py:41
 msgid ""
 "Display Linux distributor's ID\n"
 "lsb_release -is\n"
@@ -1172,7 +1081,7 @@ msgstr ""
 "顯示 Linux 的產品代號\n"
 "lsb_release -cs"
 
-#: ../ailurus/common/tips.py:51
+#: ../ailurus/common/tips.py:41
 msgid ""
 "Display machine hardware name\n"
 "uname -m"
@@ -1180,7 +1089,7 @@ msgstr ""
 "顯示電腦硬體名稱\n"
 "uname -m"
 
-#: ../ailurus/common/tips.py:54
+#: ../ailurus/common/tips.py:44
 msgid ""
 "List all PCI devices, such as display card and ethernet card.\n"
 "lspci\n"
@@ -1188,7 +1097,7 @@ msgstr ""
 "列出所有 PCI 裝置, 像是顯示卡與網路卡。\n"
 "lspci\n"
 
-#: ../ailurus/common/tips.py:58
+#: ../ailurus/common/tips.py:48
 msgid ""
 "Reclaim memory which stores pagecache, dentries and inodes\n"
 "echo 3 > /proc/sys/vm/drop_caches\n"
@@ -1196,7 +1105,7 @@ msgstr ""
 "回收記憶體中儲存的的分頁快取、目錄快取與 inode 快取\n"
 "echo 3 > /proc/sys/vm/drop_caches\n"
 
-#: ../ailurus/common/tips.py:62
+#: ../ailurus/common/tips.py:52
 msgid ""
 "Display a list of modules in the Linux Kernel\n"
 "lsmod\n"
@@ -1204,7 +1113,7 @@ msgstr ""
 "列出 Linux 核心載入的模組\n"
 "lsmod\n"
 
-#: ../ailurus/common/tips.py:66
+#: ../ailurus/common/tips.py:56
 msgid ""
 "List USB devices\n"
 "lsusb -v\n"
@@ -1212,7 +1121,7 @@ msgstr ""
 "列出 USB 裝置\n"
 "lsusb -v\n"
 
-#: ../ailurus/common/tips.py:70
+#: ../ailurus/common/tips.py:60
 msgid ""
 "Display the status of ethernet card\n"
 "sudo ethtool eth0\n"
@@ -1220,7 +1129,7 @@ msgstr ""
 "顯示網路卡的狀態\n"
 "sudo ethtool eth0\n"
 
-#: ../ailurus/common/tips.py:74
+#: ../ailurus/common/tips.py:64
 msgid ""
 "List hardware\n"
 "sudo lshw\n"
@@ -1228,7 +1137,7 @@ msgstr ""
 "列出硬體資訊\n"
 "sudo lshw\n"
 
-#: ../ailurus/common/tips.py:78
+#: ../ailurus/common/tips.py:68
 msgid ""
 "List harddisk partitions\n"
 "sudo fdisk -l\n"
@@ -1236,7 +1145,7 @@ msgstr ""
 "列出硬碟分割區\n"
 "sudo fdisk -l\n"
 
-#: ../ailurus/common/tips.py:82
+#: ../ailurus/common/tips.py:72
 msgid ""
 "Display SATA harddisk parameters\n"
 "sudo hdparm -I /dev/sda\n"
@@ -1244,7 +1153,7 @@ msgstr ""
 "顯示 SATA 硬碟的參數\n"
 "sudo hdparm -I /dev/sda\n"
 
-#: ../ailurus/common/tips.py:86
+#: ../ailurus/common/tips.py:76
 msgid ""
 "Display disk space usage\n"
 "df -h\n"
@@ -1252,7 +1161,7 @@ msgstr ""
 "顯示硬碟空間的使用情況\n"
 "df -h\n"
 
-#: ../ailurus/common/tips.py:90
+#: ../ailurus/common/tips.py:80
 msgid ""
 "Display file/folder space usage\n"
 "du -bsh FOLDER_NAME\n"
@@ -1260,7 +1169,7 @@ msgstr ""
 "顯示檔案/資料夾所占的磁碟空間\n"
 "du -bsh FOLDER_NAME\n"
 
-#: ../ailurus/common/tips.py:94
+#: ../ailurus/common/tips.py:84
 msgid ""
 "Display amount of free and used memory\n"
 "free\n"
@@ -1268,7 +1177,7 @@ msgstr ""
 "顯示記憶體可用量、已使用量\n"
 "free\n"
 
-#: ../ailurus/common/tips.py:98
+#: ../ailurus/common/tips.py:88
 msgid ""
 "Display processes\n"
 "ps -e\n"
@@ -1284,7 +1193,7 @@ msgstr ""
 "動態顯示執行中程序\n"
 "top\n"
 
-#: ../ailurus/common/tips.py:106
+#: ../ailurus/common/tips.py:96
 msgid ""
 "Terminate a process with a given process id\n"
 "sudo kill -9 PROCESS_ID\n"
@@ -1292,7 +1201,7 @@ msgstr ""
 "終止指定的 ID 的程序\n"
 "sudo kill -9 PROCESS_ID\n"
 
-#: ../ailurus/common/tips.py:110
+#: ../ailurus/common/tips.py:100
 msgid ""
 "Terminate all processes with a given name\n"
 "sudo killall PROCESS_NAME\n"
@@ -1300,7 +1209,7 @@ msgstr ""
 "終止指定名稱的所有程序\n"
 "sudo killall PROCESS_NAME\n"
 
-#: ../ailurus/common/tips.py:114
+#: ../ailurus/common/tips.py:104
 msgid ""
 "List files which are opened by a given process\n"
 "lsof -p PROCESS_ID\n"
@@ -1310,7 +1219,7 @@ msgstr ""
 "lsof -p PROCESS_ID\n"
 "lsof -c PROCESS_NAME\n"
 
-#: ../ailurus/common/tips.py:119
+#: ../ailurus/common/tips.py:109
 msgid ""
 "List processes which opened a given file\n"
 "lsof FILE_NAME\n"
@@ -1318,7 +1227,7 @@ msgstr ""
 "列出指定的檔案是由哪些程序開啟\n"
 "lsof FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:123
+#: ../ailurus/common/tips.py:113
 msgid ""
 "List processes which are using port 80\n"
 "lsof -i :80\n"
@@ -1326,7 +1235,7 @@ msgstr ""
 "列出正在使用 80 埠的程序\n"
 "lsof -i :80\n"
 
-#: ../ailurus/common/tips.py:127
+#: ../ailurus/common/tips.py:117
 msgid ""
 "Configure an ADSL connection\n"
 "sudo pppoeconf\n"
@@ -1334,7 +1243,7 @@ msgstr ""
 "設定 ADSL 連線\n"
 "sudo pppoeconf\n"
 
-#: ../ailurus/common/tips.py:131
+#: ../ailurus/common/tips.py:121
 msgid ""
 "Starts up ADSL connections\n"
 "sudo pon\n"
@@ -1346,7 +1255,7 @@ msgstr ""
 "關閉 ADSL 連線\n"
 "sudo poff\n"
 
-#: ../ailurus/common/tips.py:137
+#: ../ailurus/common/tips.py:127
 msgid ""
 "Display MAC of a given IP address\n"
 "arping IP_ADDRESS\n"
@@ -1354,7 +1263,7 @@ msgstr ""
 "從指定的 IP 位址查詢 MAC 位址\n"
 "arping IP_ADDRESS\n"
 
-#: ../ailurus/common/tips.py:141
+#: ../ailurus/common/tips.py:131
 msgid ""
 "Display NetBIOS name of a given IP address\n"
 "nmblookup -A IP_ADDRESS\n"
@@ -1362,7 +1271,7 @@ msgstr ""
 "從指定的 IP 位址查詢 NetBIOS 名稱\n"
 "nmblookup -A IP_ADDRESS\n"
 
-#: ../ailurus/common/tips.py:145
+#: ../ailurus/common/tips.py:135
 msgid ""
 "Display IP address and MAC\n"
 "ifconfig -a\n"
@@ -1370,7 +1279,7 @@ msgstr ""
 "顯示 IP 位址與 MAC 位址\n"
 "ifconfig -a\n"
 
-#: ../ailurus/common/tips.py:149
+#: ../ailurus/common/tips.py:139
 msgid ""
 "Display route\n"
 "netstat -rn\n"
@@ -1378,7 +1287,7 @@ msgstr ""
 "顯示路由\n"
 "netstat -rn\n"
 
-#: ../ailurus/common/tips.py:153
+#: ../ailurus/common/tips.py:143
 msgid ""
 "Set MAC of ethernet interface\n"
 "sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
@@ -1386,7 +1295,7 @@ msgstr ""
 "設定網路卡的 MAC 位址\n"
 "sudo ifconfig eth0 hw ether 00:11:22:33:44:55\n"
 
-#: ../ailurus/common/tips.py:157
+#: ../ailurus/common/tips.py:147
 msgid ""
 "Display information of a domain name\n"
 "whois example.com\n"
@@ -1394,7 +1303,7 @@ msgstr ""
 "顯示網域名稱的註冊資訊\n"
 "whois example.com\n"
 
-#: ../ailurus/common/tips.py:161
+#: ../ailurus/common/tips.py:151
 msgid ""
 "Display the network path to a given host\n"
 "tracepath example.com\n"
@@ -1402,7 +1311,7 @@ msgstr ""
 "顯示連線到指定的主機的網路路徑\n"
 "tracepath example.com\n"
 
-#: ../ailurus/common/tips.py:165
+#: ../ailurus/common/tips.py:155
 msgid ""
 "Request an IP address from DHCP server\n"
 "sudo dhclient\n"
@@ -1410,7 +1319,7 @@ msgstr ""
 "從 DHCP 伺服器取得 IP 位址\n"
 "sudo dhclient\n"
 
-#: ../ailurus/common/tips.py:169
+#: ../ailurus/common/tips.py:159
 msgid ""
 "Temporarily restart an init script\n"
 "sudo /etc/init.d/SCRIPT_NAME restart\n"
@@ -1422,7 +1331,7 @@ msgstr ""
 "臨時停止一個起始腳本\n"
 "sudo /etc/init.d/SCRIPT_NAME stop\n"
 
-#: ../ailurus/common/tips.py:175
+#: ../ailurus/common/tips.py:165
 msgid ""
 "Add a user\n"
 "sudo adduser USER_NANE\n"
@@ -1434,7 +1343,7 @@ msgstr ""
 "刪除一個使用者\n"
 "sudo deluser USER_NAME\n"
 
-#: ../ailurus/common/tips.py:181
+#: ../ailurus/common/tips.py:171
 msgid ""
 "Change user password\n"
 "sudo passwd USER_NAME\n"
@@ -1442,7 +1351,7 @@ msgstr ""
 "變更使用者的密碼\n"
 "sudo passwd USER_NAME\n"
 
-#: ../ailurus/common/tips.py:185
+#: ../ailurus/common/tips.py:175
 msgid ""
 "Changes user fullname, office number, office extension, and home phone "
 "number information.\n"
@@ -1455,7 +1364,7 @@ msgstr ""
 "顯示使用者資訊\n"
 "finger USER_NAME\n"
 
-#: ../ailurus/common/tips.py:191
+#: ../ailurus/common/tips.py:181
 msgid ""
 "Temporarily prevent a user from logging in\n"
 "sudo usermod -L USER_NAME\n"
@@ -1467,7 +1376,7 @@ msgstr ""
 "取消上面的操作\n"
 "sudo usermod -U USER_NAME\n"
 
-#: ../ailurus/common/tips.py:197
+#: ../ailurus/common/tips.py:187
 msgid ""
 "Add a user to admin group\n"
 "sudo usermod -G admin -a USER_NAME\n"
@@ -1475,7 +1384,7 @@ msgstr ""
 "將使用者加入管理員群組\n"
 "sudo usermod -G admin -a USER_NAME\n"
 
-#: ../ailurus/common/tips.py:201
+#: ../ailurus/common/tips.py:191
 msgid ""
 "Set the HTTP proxy\n"
 "export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
@@ -1483,7 +1392,7 @@ msgstr ""
 "設定 HTTP 代理伺服器\n"
 "export http_proxy=http://PROXY.DOMAIN.NAME:PORT\n"
 
-#: ../ailurus/common/tips.py:205
+#: ../ailurus/common/tips.py:195
 msgid ""
 "Modify the information displayed after logging in\n"
 "sudo vim /etc/motd.tail\n"
@@ -1491,7 +1400,7 @@ msgstr ""
 "修改使用者登入系統後顯示的資訊\n"
 "sudo vim /etc/motd.tail\n"
 
-#: ../ailurus/common/tips.py:209
+#: ../ailurus/common/tips.py:199
 msgid ""
 "Choose the input method for X Window\n"
 "im-switch -c\n"
@@ -1499,7 +1408,7 @@ msgstr ""
 "選擇 X Window 的輸入法\n"
 "im-switch -c\n"
 
-#: ../ailurus/common/tips.py:213
+#: ../ailurus/common/tips.py:203
 msgid ""
 "Convert the file name from GBK to UTF8\n"
 "convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
@@ -1507,7 +1416,7 @@ msgstr ""
 "將檔案名稱從 GBK 編碼轉換為 UTF8 編碼\n"
 "convmv -r -f gbk -t utf8 --notest FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:217
+#: ../ailurus/common/tips.py:207
 msgid ""
 "Convert the file content from GBK to UTF8\n"
 "iconv -f gbk -t utf8 FILE_NAME\n"
@@ -1515,7 +1424,7 @@ msgstr ""
 "將檔案內容從 GBK 編碼轉換為 UTF8 編碼\n"
 "iconv -f gbk -t utf8 FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:221
+#: ../ailurus/common/tips.py:211
 msgid ""
 "Convert tags in '*.mp3' from GBK to UTF8\n"
 "find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
@@ -1523,7 +1432,7 @@ msgstr ""
 "將 '*.mp3' 檔案中的標籤內容從 GBK 編碼轉換為 UTF8 編碼\n"
 "find . -name '*.mp3' -execdir mid3iconv -e GBK {} \\;\n"
 
-#: ../ailurus/common/tips.py:225
+#: ../ailurus/common/tips.py:215
 msgid ""
 "Read a long file\n"
 "less FILE_NAME\n"
@@ -1531,7 +1440,7 @@ msgstr ""
 "讀一個長檔案\n"
 "less FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:229
+#: ../ailurus/common/tips.py:219
 msgid ""
 "Print lines matching a pattern\n"
 "grep REG_EXP FILE_NAME\n"
@@ -1539,7 +1448,7 @@ msgstr ""
 "以行為單位列出檔案中符合指定條件的部份\n"
 "grep REG_EXP FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:233
+#: ../ailurus/common/tips.py:223
 msgid ""
 "Display a list of file name. The files contain a given string.\n"
 "grep -lr REG_EXP PATHNAME\n"
@@ -1547,7 +1456,7 @@ msgstr ""
 "列出名稱符合指定字串的檔案。\n"
 "grep -lr REG_EXP PATHNAME\n"
 
-#: ../ailurus/common/tips.py:237
+#: ../ailurus/common/tips.py:227
 msgid ""
 "Display all '.txt' file\n"
 "find . -name '*.txt'\n"
@@ -1555,7 +1464,7 @@ msgstr ""
 "列出所有 .txt 檔案\n"
 "find . -name '*.txt'\n"
 
-#: ../ailurus/common/tips.py:241
+#: ../ailurus/common/tips.py:231
 msgid ""
 "Create two empty files\n"
 "touch file_name_1 file_name_2\n"
@@ -1563,7 +1472,7 @@ msgstr ""
 "建立兩個空白檔案\n"
 "touch file_name_1 file_name_2\n"
 
-#: ../ailurus/common/tips.py:245
+#: ../ailurus/common/tips.py:235
 msgid ""
 "Create directory. Create parent directories as needed.\n"
 "mkdir -p /tmp/a/b/c/d/e\n"
@@ -1571,7 +1480,7 @@ msgstr ""
 "建立新目錄。如果不存在上層目錄，則會一起建立。\n"
 "mkdir -p /tmp/a/b/c/d/e\n"
 
-#: ../ailurus/common/tips.py:249
+#: ../ailurus/common/tips.py:239
 msgid ""
 "Change working directory to the home folder\n"
 "cd\n"
@@ -1583,7 +1492,7 @@ msgstr ""
 "將目前工作目錄變更為上一個工作目錄\n"
 "cd -\n"
 
-#: ../ailurus/common/tips.py:255
+#: ../ailurus/common/tips.py:245
 msgid ""
 "Display hidden files\n"
 "ls -a\n"
@@ -1591,7 +1500,7 @@ msgstr ""
 "列出隱藏檔案\n"
 "ls -a\n"
 
-#: ../ailurus/common/tips.py:259
+#: ../ailurus/common/tips.py:249
 msgid ""
 "Copy directory. Preserve links, file mode, ownership, timestamps. \n"
 "cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
@@ -1599,7 +1508,7 @@ msgstr ""
 "複製目錄：保留連結、檔案權限、所有者、變更時間。\n"
 "cp -a SOURCE_DIRECTORY DEST_DIRECTORY\n"
 
-#: ../ailurus/common/tips.py:263
+#: ../ailurus/common/tips.py:253
 msgid ""
 "Determine file type\n"
 "file FILE_NAME\n"
@@ -1607,7 +1516,7 @@ msgstr ""
 "確認檔案類型\n"
 "file FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:267
+#: ../ailurus/common/tips.py:257
 msgid ""
 "Output the last 6 lines\n"
 "tail -n 6 FILE_NAME\n"
@@ -1615,7 +1524,7 @@ msgstr ""
 "顯示檔案的最後 6 行\n"
 "tail -n 6 FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:271
+#: ../ailurus/common/tips.py:261
 msgid ""
 "Copy files via SSH\n"
 "scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
@@ -1623,7 +1532,7 @@ msgstr ""
 "用 SSH 協定複製檔案\n"
 "scp -rp FILE_NAME USERNAME@HOST:DEST_PATH\n"
 
-#: ../ailurus/common/tips.py:275
+#: ../ailurus/common/tips.py:265
 msgid ""
 "Rename '*.rm' files to '*.rmvb' files\n"
 "rename 's/.rm$/.rmvb/' *\n"
@@ -1631,7 +1540,7 @@ msgstr ""
 "將 '*.rm' 檔案重新命名為 '*.rmvb'\n"
 "rename 's/.rm$/.rmvb/' *\n"
 
-#: ../ailurus/common/tips.py:279
+#: ../ailurus/common/tips.py:269
 msgid ""
 "Change the file name to lowercase\n"
 "rename 'tr/A-Z/a-z/' *\n"
@@ -1639,7 +1548,7 @@ msgstr ""
 "將檔案名稱改為小寫\n"
 "rename 'tr/A-Z/a-z/' *\n"
 
-#: ../ailurus/common/tips.py:283
+#: ../ailurus/common/tips.py:273
 msgid ""
 "Display subdirectories in current directory\n"
 "ls -d */.\n"
@@ -1647,7 +1556,7 @@ msgstr ""
 "列出目前目錄下的子目錄\n"
 "ls -d */.\n"
 
-#: ../ailurus/common/tips.py:287
+#: ../ailurus/common/tips.py:277
 msgid ""
 "Display file number in current directory\n"
 "ls . | wc -w\n"
@@ -1655,7 +1564,7 @@ msgstr ""
 "顯示目前目錄下的檔案數量\n"
 "ls . | wc -w\n"
 
-#: ../ailurus/common/tips.py:291
+#: ../ailurus/common/tips.py:281
 msgid ""
 "Extract \"*.gz\" file\n"
 "gunzip FILE_NAME.gz\n"
@@ -1671,7 +1580,7 @@ msgstr ""
 "解壓縮 *.tar.bz2 檔案\n"
 "tar jxf FILE_NAME.tar.bz2\n"
 
-#: ../ailurus/common/tips.py:299
+#: ../ailurus/common/tips.py:289
 msgid ""
 "Do compression\n"
 "tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
@@ -1681,7 +1590,7 @@ msgstr ""
 "tar czf FILE_NAME.tar.gz FILE1 FILE2 FILE3\n"
 "tar cjf FILE_NAME.tar.bz2 FILE1 FILE2 FILE3\n"
 
-#: ../ailurus/common/tips.py:304
+#: ../ailurus/common/tips.py:294
 msgid ""
 "Displays a calendar\n"
 "cal\n"
@@ -1691,7 +1600,7 @@ msgstr ""
 "cal\n"
 "cal MONTH YEAR\n"
 
-#: ../ailurus/common/tips.py:309
+#: ../ailurus/common/tips.py:299
 msgid ""
 "Set the date and time via NTP\n"
 "sudo ntpdate ntp.ubuntu.com\n"
@@ -1699,7 +1608,7 @@ msgstr ""
 "用 NTP 服務設定系統日期與時間\n"
 "sudo ntpdate ntp.ubuntu.com\n"
 
-#: ../ailurus/common/tips.py:313
+#: ../ailurus/common/tips.py:303
 msgid ""
 "Poweroff your computer\n"
 "sudo halt\n"
@@ -1717,7 +1626,7 @@ msgstr ""
 "在 60 分鐘以後關機\n"
 "sudo shutdown -h +60\n"
 
-#: ../ailurus/common/tips.py:322
+#: ../ailurus/common/tips.py:312
 msgid ""
 "Reboot your computer\n"
 "sudo reboot\n"
@@ -1727,20 +1636,19 @@ msgstr ""
 "sudo reboot\n"
 "sudo shutdown -r now\n"
 
-#: ../ailurus/common/tips.py:327
+#: ../ailurus/common/tips.py:317
 msgid ""
 "If you want some program to start up automatically, please put '.desktop' "
-"files into '~/.config/autostart'\n"
-msgstr "如果您想讓某些程式自動執行，請將 '.desktop' 檔案放入 '~/.config/autostart' 目錄\n"
+"files into '$HOME/.config/autostart'\n"
+msgstr ""
 
-#: ../ailurus/common/tips.py:330
+#: ../ailurus/common/tips.py:320
 msgid ""
 "You can configure \"preferred applications\" by this file "
-"\"~/.local/share/applications/mimeapps.list\"\n"
+"\"$HOME/.local/share/applications/mimeapps.list\"\n"
 msgstr ""
-"您可以在「~/.local/share/applications/mimeapps.list」設定用來開啟某些類型檔案的「首選應用程式」。\n"
 
-#: ../ailurus/common/tips.py:333
+#: ../ailurus/common/tips.py:323
 msgid ""
 "Continuously monitor the memory usage\n"
 "watch -d free\n"
@@ -1748,7 +1656,7 @@ msgstr ""
 "連續監視記憶體使用情況\n"
 "watch -d free\n"
 
-#: ../ailurus/common/tips.py:337
+#: ../ailurus/common/tips.py:327
 msgid ""
 "Display HTTP HEAD response\n"
 "w3m -dump_head http://example.com\n"
@@ -1756,7 +1664,7 @@ msgstr ""
 "顯示 HTTP 伺服器的 HEAD 回應\n"
 "w3m -dump_head http://example.com\n"
 
-#: ../ailurus/common/tips.py:341
+#: ../ailurus/common/tips.py:331
 msgid ""
 "Display file content with line number\n"
 "nl FILE_NAME\n"
@@ -1764,7 +1672,7 @@ msgstr ""
 "附行號顯示檔案內容\n"
 "nl FILE_NAME\n"
 
-#: ../ailurus/common/tips.py:345
+#: ../ailurus/common/tips.py:335
 msgid ""
 "Eliminate Rootkit\n"
 "sudo rkhunter --checkall\n"
@@ -1772,7 +1680,7 @@ msgstr ""
 "消滅木馬程式\n"
 "sudo rkhunter --checkall\n"
 
-#: ../ailurus/common/tips.py:349
+#: ../ailurus/common/tips.py:339
 msgid ""
 "Change hostname\n"
 "sudo hostname new_name\n"
@@ -1780,7 +1688,7 @@ msgstr ""
 "變更主機名稱\n"
 "sudo hostname new_name\n"
 
-#: ../ailurus/common/tips.py:353
+#: ../ailurus/common/tips.py:343
 msgid ""
 "\"Tasksel\" group software packages into \"task\"s. You can select a "
 "\"task\" and then install all necessary software packages. It is easy to set "
@@ -1805,7 +1713,7 @@ msgstr ""
 "安裝/移除任務\n"
 "gksudo tasksel\n"
 
-#: ../ailurus/common/tips.py:364
+#: ../ailurus/common/tips.py:354
 msgid ""
 "Change Process priority\n"
 "renice NEW_PRIORITY `pgrep NAME_OF_PROCESS`\n"
@@ -1822,7 +1730,26 @@ msgstr ""
 "      high <------------------> low\n"
 "新優先程度 = -19, -18, -17 [...] 18, 19, 20\n"
 
-#: ../ailurus/common/tips.py:374
+#: ../ailurus/common/tips.py:366
+msgid ""
+"Clear Bash history\n"
+"history -c"
+msgstr ""
+"清除 bash 歷史\n"
+"history -c"
+
+#: ../ailurus/common/tips.py:369
+msgid ""
+"If you want to use colorful \"ls\", that is, use colors to distinguish types "
+"of files, you can add these lines in $HOME/.bashrc:\n"
+"\n"
+"if [ \"$TERM\" != \"dumb\" ]; then\n"
+"    eval \"`dircolors -b`\"\n"
+"    alias ls='ls --color=auto'\n"
+"fi"
+msgstr ""
+
+#: ../ailurus/common/tips.py:378
 msgid ""
 "View the IP address outside the local network\n"
 "w3m -no-cookie -dump www.123cha.com | grep -o '[0-9]\\{1,3\\}\\.[0-9]\\{1,3\\"
@@ -1863,7 +1790,7 @@ msgstr "電腦醫師"
 msgid "Successfully applied %s suggestions."
 msgstr "已成功套用 %s 個建議。"
 
-#: ../ailurus/computer_doctor_pane.py:146
+#: ../ailurus/computer_doctor_pane.py:145
 msgid "Please click \"refresh\" button."
 msgstr "請點「更新」按鈕"
 
@@ -1880,12 +1807,7 @@ msgstr "並不會下載任何閉源專案或是專有軟體的圖示。\n"
 msgid "Downloading extra icons"
 msgstr "正在下載額外的圖示"
 
-#: ../ailurus/download_icons.py:112
-msgid ""
-"Please press \"OK\" button to install icons. Authentication is required."
-msgstr "請按「確定」鍵安裝圖示。這個動作需要認證。"
-
-#: ../ailurus/download_icons.py:122
+#: ../ailurus/download_icons.py:119
 msgid "Icons are successfully installed."
 msgstr "圖示已順利安裝。"
 
@@ -2042,8 +1964,8 @@ msgid "Use colorful Bash prompt symbols"
 msgstr "將 Bash 提示符號改為彩色"
 
 #: ../ailurus/fedora/cure.py:28 ../ailurus/ubuntu/cure.py:28
-msgid "Add this line into ~/.bashrc:"
-msgstr "將這行加到 ~/.bashrc"
+msgid "Add this line into $HOME/.bashrc:"
+msgstr ""
 
 #: ../ailurus/fedora/cure.py:36 ../ailurus/ubuntu/cure.py:38
 msgid "The color of bash prompt symbols is changed."
@@ -2057,220 +1979,40 @@ msgstr "在您下次登入時會生效。"
 msgid "Install Stardict dictionaries"
 msgstr "安裝 Stardict 字典"
 
-#: ../ailurus/fedora/fastest_mirror_pane.py:31
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:39
-msgid ""
-"Fastest\n"
-"Repository"
-msgstr ""
-"最快速的\n"
-"套件庫"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:56
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:482
-msgid "All repositories:"
-msgstr "所有套件庫："
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:87
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:155
-msgid "No response"
-msgstr "沒有回應"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:89
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:157
-msgid "Not detected"
-msgstr "未被偵測"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:96
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:394
-msgid "Country"
-msgstr "國家"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:103
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:401
-msgid "Organization"
-msgstr "組織"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:121
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:419
-msgid "Response time"
-msgstr "反應時間"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:133
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:140
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:432
-msgid "Click mouse right button to display the context menu."
-msgstr "點擊滑鼠右鍵以顯示右鍵選單。"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:157
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:347
-msgid "Detect response time of selected repositories"
-msgstr "偵測選取的套件庫反應時間"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:161
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:351
-msgid "Detect response time of all repositories"
-msgstr "偵測所有套件庫的反應時間"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:165
-msgid "Use selected repositories"
-msgstr "使用選取的套件庫"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:171
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:355
-msgid "Select all repositories in these countries"
-msgstr "選擇這些國家的所有套件庫"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:174
-msgid "Unselect all"
-msgstr "全部不選"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:178
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:359
-msgid ""
-"If some repositories are not listed above, please click here to tell Ailurus "
-"developers."
-msgstr "如果有套件庫未被列出，請點擊這裏通知 Ailurus 開發者。"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:236
-msgid "Please select one repository only"
-msgstr "請只選一個套件庫"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:292
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:211
-#, python-format
-msgid ""
-"<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
-msgstr "<span color='black'>%(server)s 的反應時間是 %(value).2f 毫秒。</span>"
-
-#: ../ailurus/fedora/fastest_mirror_pane.py:294
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:213
-#: ../ailurus/ubuntu/quick_setup.py:268
-#, python-format
-msgid "<span color='black'>Server %s is unreachable.</span>"
-msgstr "<span color='black'>伺服器 %s 無回應。</span>"
-
 #. text, web page url, Chinese only?
 #: ../ailurus/fedora/menu.py:31
 msgid "Upgrade Fedora using an application called \"PreUpgrade\""
 msgstr "使用「PreUpgrade」應用程式來升級 Fedora"
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:30
-msgid ""
-"Recover\n"
-"RPM"
+#: ../ailurus/fedora/repos_edit_pane.py:148
+#: ../ailurus/ubuntu/repos_config_pane.py:52
+msgid "Enabled"
+msgstr "已啟用"
+
+#: ../ailurus/fedora/repos_edit_pane.py:156
+msgid "Name"
 msgstr ""
-"恢復\n"
-"RPM"
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:39
-#: ../ailurus/ubuntu/apt_recovery_pane.py:42
-msgid "Write comments"
-msgstr "寫註解"
+#. no selected section
+#: ../ailurus/fedora/repos_edit_pane.py:252
+msgid "(please select a repository)"
+msgstr ""
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:49
-#: ../ailurus/ubuntu/apt_recovery_pane.py:52
-msgid "Would you like to write some comments for this snapshot?"
-msgstr "您想要為這個快照寫些註解嗎？"
+#: ../ailurus/fedora/repos_edit_pane.py:270
+msgid "Repositories"
+msgstr "套件庫"
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:110
-#: ../ailurus/ubuntu/apt_recovery_pane.py:113
-#, python-format
-msgid "Snapshots made in %(year)04d-%(month)02d:"
-msgstr "在 %(year)04d-%(month)02d 的快照："
+#: ../ailurus/fedora/repos_edit_pane.py:296
+msgid "Reset"
+msgstr ""
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:124
-#: ../ailurus/ubuntu/apt_recovery_pane.py:127
-#, python-format
-msgid "There is no snapshot in %(year)04d-%(month)02d."
-msgstr "沒有 %(year)04d-%(month)02d 的快照。"
+#: ../ailurus/fedora/repos_edit_pane.py:300
+msgid "Append"
+msgstr ""
 
-#: ../ailurus/fedora/rpm_recovery_pane.py:135
-#: ../ailurus/ubuntu/apt_recovery_pane.py:138
-#, python-format
-msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
-msgstr "沒有 %(year)04d-%(month)02d-%(day)02d 的快照。"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:145
-#: ../ailurus/ubuntu/apt_recovery_pane.py:148
-#, python-format
-msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
-msgstr "從 %(year)04d-%(month)02d-%(day)02d 以後，沒有任何變更。"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:169
-#: ../ailurus/ubuntu/apt_recovery_pane.py:172
-msgid "Create today's snapshot"
-msgstr "建立今天的快照"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:183
-#: ../ailurus/ubuntu/apt_recovery_pane.py:186
-msgid "Show changes since selected day"
-msgstr "顯示選取的日期之後，的套件變更"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:188
-#: ../ailurus/ubuntu/apt_recovery_pane.py:191
-msgid "packages"
-msgstr "套件"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:194
-#: ../ailurus/ubuntu/apt_recovery_pane.py:197
-msgid "changes"
-msgstr "變更"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:200
-#: ../ailurus/ubuntu/apt_recovery_pane.py:203
-msgid "It was installed."
-msgstr "已安裝。"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:201
-#: ../ailurus/ubuntu/apt_recovery_pane.py:204
-msgid "It was removed."
-msgstr "已移除。"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:220
-#: ../ailurus/ubuntu/apt_recovery_pane.py:223
-msgid "package"
-msgstr "套件"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:225
-#: ../ailurus/ubuntu/apt_recovery_pane.py:228
-msgid "action"
-msgstr "動作"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:231
-#: ../ailurus/ubuntu/apt_recovery_pane.py:234
-msgid "will be installed"
-msgstr "將被安裝"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:268
-#: ../ailurus/ubuntu/apt_recovery_pane.py:271
-msgid "To do:"
-msgstr "要做的工作："
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:272
-#: ../ailurus/ubuntu/apt_recovery_pane.py:275
-msgid ""
-"In order to revoke packages, you can drag items from the left box to the "
-"right box, then click the button. "
-msgstr "請從左邊欄位將要撤銷的套件拉到右邊欄位，然後點擊按鈕。 "
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:280
-#: ../ailurus/ubuntu/apt_recovery_pane.py:283
-msgid "Changes:"
-msgstr "變更："
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:285
-#: ../ailurus/ubuntu/apt_recovery_pane.py:288
-msgid ""
-"Ailurus helps you keep track of what software you have installed/removed. If "
-"you often try to use new software, you do not have to worry about messing up "
-"your system now."
-msgstr "Ailurus 可協助您追蹤安裝/移除過那些軟體。就算經常試用新軟體，也不用擔心弄亂您的系統。"
-
-#: ../ailurus/fedora/rpm_recovery_pane.py:288
-#: ../ailurus/ubuntu/apt_recovery_pane.py:291
-msgid "Existing snapshots are displayed in bold font."
-msgstr "現有快照用粗體字顯示。"
+#: ../ailurus/fedora/repos_edit_pane.py:325
+msgid "Repositories have been changed. Would you like to save them?"
+msgstr ""
 
 #: ../ailurus/gnome/apps.py:28
 msgid "Change background color of GNOME terminal to black."
@@ -2298,10 +2040,8 @@ msgstr "NScripts：好用的 Nautilus 腳本集"
 msgid ""
 "NScripts help you change the background, create/check MD5 checksums, create "
 "a diff, create shortcuts via Nautilus.\n"
-"NScripts is installed in ~/.gnome2/nautilus-scripts."
+"NScripts is installed in $HOME/.gnome2/nautilus-scripts."
 msgstr ""
-"NScripts 幫助您在 Nautilus 中變更桌面、建立/比對 MD5 雜湊值、比較文件與建立捷徑。\n"
-"NScripts 預設安裝於 ~/.gnome2/nautilus-scripts 。"
 
 #: ../ailurus/gnome/apps.py:75
 msgid "Add GB2312 detection ability to GEdit"
@@ -2368,9 +2108,9 @@ msgstr "GNOME 語言："
 msgid "Show desktop content"
 msgstr "顯示桌面內容"
 
-#: ../ailurus/gnome/setting.py:30 ../ailurus/gnome/setting.py:95
-#: ../ailurus/gnome/setting.py:107 ../ailurus/gnome/setting.py:378
-#: ../ailurus/gnome/setting.py:398
+#: ../ailurus/gnome/setting.py:30 ../ailurus/gnome/setting.py:98
+#: ../ailurus/gnome/setting.py:113 ../ailurus/gnome/setting.py:435
+#: ../ailurus/gnome/setting.py:455
 msgid "(take effect at the next time GNOME starts up)"
 msgstr "(在下次 GNOME 啟動時生效)"
 
@@ -2432,130 +2172,140 @@ msgstr "桌面圖示"
 msgid "The \"start-here\" icon is %s"
 msgstr "「按這裏開始」圖示是 %s"
 
-#: ../ailurus/gnome/setting.py:95
+#: ../ailurus/gnome/setting.py:98
 msgid "Change \"start-here\" icon"
 msgstr "變更「按這裏開始」圖示"
 
-#: ../ailurus/gnome/setting.py:101
-msgid "The login icon is ~/.face"
-msgstr "登入圖示是 ~/.face"
+#: ../ailurus/gnome/setting.py:104
+#, python-format
+msgid "The login icon is %s"
+msgstr ""
 
-#: ../ailurus/gnome/setting.py:107
+#: ../ailurus/gnome/setting.py:113
 msgid "Change login icon"
 msgstr "變更登入圖示"
 
-#: ../ailurus/gnome/setting.py:111
+#: ../ailurus/gnome/setting.py:117
 msgid "Show icons of menu entries"
 msgstr "顯示選單項目的圖示"
 
-#: ../ailurus/gnome/setting.py:113
+#: ../ailurus/gnome/setting.py:119
 msgid "Whether menus may display an icon next to a menu entry."
 msgstr "是否在選單項目旁邊顯示圖示。"
 
-#: ../ailurus/gnome/setting.py:115
+#: ../ailurus/gnome/setting.py:121
 msgid "Menu entry icons setting"
 msgstr "選單項目圖示設定"
 
-#: ../ailurus/gnome/setting.py:119
+#: ../ailurus/gnome/setting.py:125
 msgid "Show icon in buttons"
 msgstr "在按鈕中顯示圖示"
 
-#: ../ailurus/gnome/setting.py:121
+#: ../ailurus/gnome/setting.py:127
 msgid "Whether buttons may display an icon next to text."
 msgstr "是否在按鈕文字旁顯示圖示。"
 
-#: ../ailurus/gnome/setting.py:123
+#: ../ailurus/gnome/setting.py:129
 msgid "Button icons setting"
 msgstr "按鈕圖示設定"
 
-#: ../ailurus/gnome/setting.py:127
+#: ../ailurus/gnome/setting.py:133
 msgid "Disable terminal bell"
 msgstr "停用終端機聲響"
 
-#: ../ailurus/gnome/setting.py:129
+#: ../ailurus/gnome/setting.py:135
 msgid ""
 "If it is set to true, gnome terminal will not generate beep sound when error "
 "happens."
 msgstr "如果設定為 true，則 GNOME 終端機在出錯時不會發出聲響。"
 
-#: ../ailurus/gnome/setting.py:131
+#: ../ailurus/gnome/setting.py:137
 msgid "Terminal beep sound setting"
 msgstr "設定終端機聲響"
 
-#: ../ailurus/gnome/setting.py:135
+#: ../ailurus/gnome/setting.py:141
 msgid "Automatically mount CD and flash disks"
 msgstr "自動掛載 CD 與隨身碟"
 
-#: ../ailurus/gnome/setting.py:137
+#: ../ailurus/gnome/setting.py:143
 msgid ""
 "If set to true, then Nautilus will automatically mount media such as CD and "
 "flash disks."
 msgstr "如果設定為 true，則 Nautilus 會自動掛載 CD 與隨身碟等儲存裝置。"
 
-#: ../ailurus/gnome/setting.py:139
+#: ../ailurus/gnome/setting.py:145
 msgid "Show more permissions setting in file property dialog"
 msgstr "在屬性對話框內顯示更多權限設定"
 
-#: ../ailurus/gnome/setting.py:142
+#: ../ailurus/gnome/setting.py:148
 msgid "More Nautilus settings"
 msgstr "更多 Nautilus 的設定"
 
-#: ../ailurus/gnome/setting.py:164
+#: ../ailurus/gnome/setting.py:170
 msgid "Larger font"
 msgstr "放大字體"
 
-#: ../ailurus/gnome/setting.py:167 ../ailurus/gnome/setting.py:176
+#: ../ailurus/gnome/setting.py:173 ../ailurus/gnome/setting.py:182
 msgid "Change these GConf keys:\n"
 msgstr "變更這些 GConf 鍵：\n"
 
-#: ../ailurus/gnome/setting.py:173
+#: ../ailurus/gnome/setting.py:179
 msgid "Smaller font"
 msgstr "縮小字體"
 
-#: ../ailurus/gnome/setting.py:186
+#: ../ailurus/gnome/setting.py:192
 msgid "One-click changing font size"
 msgstr "單鍵變更字體大小"
 
-#: ../ailurus/gnome/setting.py:189 ../ailurus/gnome/setting.py:198
-msgid "The layout of window title-bar buttons"
-msgstr "視窗標題列的按鈕排列順序"
-
-#: ../ailurus/gnome/setting.py:190 ../ailurus/gnome/setting.py:261
-#: ../ailurus/gnome/setting.py:509 ../ailurus/gnome/setting.py:525
-#: ../ailurus/gnome/setting.py:533 ../ailurus/libsetting.py:37
-#: ../ailurus/libsetting.py:53 ../ailurus/libsetting.py:98
-#: ../ailurus/libsetting.py:229 ../ailurus/libsetting.py:261
+#. default value
+#: ../ailurus/gnome/setting.py:209 ../ailurus/gnome/setting.py:567
+#: ../ailurus/gnome/setting.py:583 ../ailurus/gnome/setting.py:591
+#: ../ailurus/libsetting.py:37 ../ailurus/libsetting.py:55
+#: ../ailurus/libsetting.py:101 ../ailurus/libsetting.py:232
+#: ../ailurus/libsetting.py:264
 msgid "GConf key: "
 msgstr "GConf 鍵： "
 
-#: ../ailurus/gnome/setting.py:191
+#: ../ailurus/gnome/setting.py:210
 msgid "It can be used in Metacity only."
 msgstr "只能用在 Metacity。"
 
-#: ../ailurus/gnome/setting.py:193
+#: ../ailurus/gnome/setting.py:212
+msgid "Pre-defined:"
+msgstr ""
+
+#: ../ailurus/gnome/setting.py:213
+msgid "Custom:"
+msgstr ""
+
+#: ../ailurus/gnome/setting.py:215
 msgid "GNOME classic"
 msgstr "GNOME classic"
 
-#: ../ailurus/gnome/setting.py:193
+#: ../ailurus/gnome/setting.py:215
 msgid "Ubuntu Lucid beta"
 msgstr "Ubuntu Lucid beta"
 
-#: ../ailurus/gnome/setting.py:193
+#: ../ailurus/gnome/setting.py:215
 msgid "MAC OS X"
 msgstr "MAC OS X"
 
-#: ../ailurus/gnome/setting.py:201
+#: ../ailurus/gnome/setting.py:246
+msgid "The layout of window title-bar buttons"
+msgstr "視窗標題列的按鈕排列順序"
+
+#: ../ailurus/gnome/setting.py:249
 msgid "double-clicked by mouse left button:"
 msgstr "滑鼠左鍵雙擊："
 
-#: ../ailurus/gnome/setting.py:202 ../ailurus/gnome/setting.py:215
+#: ../ailurus/gnome/setting.py:250 ../ailurus/gnome/setting.py:263
 msgid "The effects of double-clicking on the title bar."
 msgstr "雙擊視窗標題列時的效果。"
 
-#: ../ailurus/gnome/setting.py:202 ../ailurus/gnome/setting.py:204
-#: ../ailurus/gnome/setting.py:206 ../ailurus/libsetting.py:38
-#: ../ailurus/libsetting.py:54 ../ailurus/libsetting.py:133
-#: ../ailurus/libsetting.py:140
+#: ../ailurus/gnome/setting.py:250 ../ailurus/gnome/setting.py:252
+#: ../ailurus/gnome/setting.py:254 ../ailurus/libsetting.py:38
+#: ../ailurus/libsetting.py:56 ../ailurus/libsetting.py:136
+#: ../ailurus/libsetting.py:143
 msgid ""
 "\n"
 "GConf key: "
@@ -2563,282 +2313,246 @@ msgstr ""
 "\n"
 "GConf 鍵： "
 
-#: ../ailurus/gnome/setting.py:203
+#: ../ailurus/gnome/setting.py:251
 msgid "clicked by mouse right button:"
 msgstr "滑鼠右鍵單擊："
 
-#: ../ailurus/gnome/setting.py:204 ../ailurus/gnome/setting.py:224
+#: ../ailurus/gnome/setting.py:252 ../ailurus/gnome/setting.py:272
 msgid "The effects of right-clicking on the title bar."
 msgstr "右鍵單擊視窗標題列時的效果。"
 
-#: ../ailurus/gnome/setting.py:205
+#: ../ailurus/gnome/setting.py:253
 msgid "clicked by mouse wheel:"
 msgstr "滑鼠滾輪單擊："
 
-#: ../ailurus/gnome/setting.py:206 ../ailurus/gnome/setting.py:233
+#: ../ailurus/gnome/setting.py:254 ../ailurus/gnome/setting.py:281
 msgid "The effects of clicking on the title bar by mouse wheel."
 msgstr "滑鼠滾輪單擊標題列時的效果。"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "maximize"
 msgstr "最大化"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "minimize"
 msgstr "最小化"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "roll up"
 msgstr "捲起視窗"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "put behind others"
 msgstr "放到其它視窗後面"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "maximize horizontally"
 msgstr "水平方向最大化"
 
-#: ../ailurus/gnome/setting.py:213 ../ailurus/gnome/setting.py:222
-#: ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:261 ../ailurus/gnome/setting.py:270
+#: ../ailurus/gnome/setting.py:279
 msgid "maximize vertically"
 msgstr "垂直方向最大化"
 
-#: ../ailurus/gnome/setting.py:222 ../ailurus/gnome/setting.py:231
+#: ../ailurus/gnome/setting.py:270 ../ailurus/gnome/setting.py:279
 msgid "show menu"
 msgstr "顯示選單"
 
-#: ../ailurus/gnome/setting.py:236
+#: ../ailurus/gnome/setting.py:284
 msgid "Window effect after that window title bar is ..."
 msgstr "點擊視窗標題列的效果 ..."
 
-#: ../ailurus/gnome/setting.py:241
+#: ../ailurus/gnome/setting.py:289
 msgid "Show \"Input method\" entry"
 msgstr "顯示「輸入法」項目"
 
-#: ../ailurus/gnome/setting.py:242 ../ailurus/gnome/setting.py:245
+#: ../ailurus/gnome/setting.py:290 ../ailurus/gnome/setting.py:293
 msgid "This option affects GEdit and all GTK text-boxes."
 msgstr "這個選項會影響 GEdit 以及所有 GTK 文字方塊。"
 
-#: ../ailurus/gnome/setting.py:244
+#: ../ailurus/gnome/setting.py:292
 msgid "Show \"Insert Unicode control character\" entry"
 msgstr "顯示「插入 Unicode 控制碼」項目"
 
-#: ../ailurus/gnome/setting.py:247
+#: ../ailurus/gnome/setting.py:295
 msgid "Text-boxes context menu"
 msgstr "文字方塊的右鍵選單"
 
-#: ../ailurus/gnome/setting.py:253
-msgid "Show login splash image: "
-msgstr "登入後顯示彈出圖片： "
-
-#: ../ailurus/gnome/setting.py:255
-msgid ""
-"If its value is true, a splash image is displayed after you log in to GNOME."
-msgstr "如果設定值為 true，則在您登入 GNOME 後會顯示彈出圖片。"
-
-#: ../ailurus/gnome/setting.py:269
-msgid "GNOME splash image"
-msgstr "GNOME 彈出圖片"
-
-#: ../ailurus/gnome/setting.py:275
+#: ../ailurus/gnome/setting.py:325
 msgid ""
 "These settings restrict current user only. They do not affect other users."
 msgstr "這些設定只限制目前使用者，不影響其他使用者。"
 
-#: ../ailurus/gnome/setting.py:277
+#: ../ailurus/gnome/setting.py:327
 msgid "Disable Alt+F2 (Launch application)"
 msgstr "停用 Alt-F2 (啓動應用程式)"
 
-#: ../ailurus/gnome/setting.py:279
+#: ../ailurus/gnome/setting.py:329
 msgid "Prevent current user from pressing Alt+F2 to launch applications."
 msgstr "禁止目前使用者按 Alt-F2 來啓動應用程式。"
 
-#: ../ailurus/gnome/setting.py:281
+#: ../ailurus/gnome/setting.py:331
 msgid "Disable Ctrl+Alt+L (Lock screen)"
 msgstr "停用 Ctrl-Alt-L (鎖定螢幕)"
 
-#: ../ailurus/gnome/setting.py:283
+#: ../ailurus/gnome/setting.py:333
 msgid "Prevent current user from pressing Ctrl+Alt+L to lock screen."
 msgstr "禁止目前使用者按 Ctrl-Alt-L 鎖定螢幕。"
 
-#: ../ailurus/gnome/setting.py:285
+#: ../ailurus/gnome/setting.py:335
 msgid "Disable \"print\" entry in all menus."
 msgstr "在所有選單中停用「列印」項目。"
 
-#: ../ailurus/gnome/setting.py:287
+#: ../ailurus/gnome/setting.py:337
 msgid "Prevent current user from printing any documents."
 msgstr "禁止目前使用者列印任何文件。"
 
-#: ../ailurus/gnome/setting.py:289
+#: ../ailurus/gnome/setting.py:339
 msgid "Disable \"print setup\" entry in all menus."
 msgstr "在所有選單中停用「列印設定」項目。"
 
-#: ../ailurus/gnome/setting.py:291
+#: ../ailurus/gnome/setting.py:341
 msgid "Prevent current user from modifying print settings."
 msgstr "禁止目前使用者修改列印設定。"
 
-#: ../ailurus/gnome/setting.py:293
+#: ../ailurus/gnome/setting.py:343
 msgid "Disable \"save as\" entry in all menus."
 msgstr "在所有選單中停用「另存為...」項目。"
 
-#: ../ailurus/gnome/setting.py:295
+#: ../ailurus/gnome/setting.py:345
 msgid "Prevent current user from saving files by \"Save as ...\" dialog"
 msgstr "禁止目前使用者以「另存為 ...」對話方塊儲存檔案。"
 
-#: ../ailurus/gnome/setting.py:297
+#: ../ailurus/gnome/setting.py:347
 msgid "Forbid running multiple GNOME session."
 msgstr "禁止同時執行多個 GNOME 作業階段。"
 
-#: ../ailurus/gnome/setting.py:299
+#: ../ailurus/gnome/setting.py:349
 msgid ""
 "Prevent current user from switching to another account, unless she has "
 "logged out from GNOME before switching."
 msgstr "禁止目前使用者切換到另一個帳號，除非先登出 GNOME 後再切換帳號。"
 
-#: ../ailurus/gnome/setting.py:301
+#: ../ailurus/gnome/setting.py:351
 msgid "Restriction on current user"
 msgstr "限制目前使用者"
 
-#: ../ailurus/gnome/setting.py:308
+#: ../ailurus/gnome/setting.py:358
 #, python-format
 msgid "The thumbnail cache directory is \"%s/.thumbnails\"."
 msgstr "縮圖快取的目錄是 %s/.thumbnails 。"
 
-#: ../ailurus/gnome/setting.py:311
+#: ../ailurus/gnome/setting.py:361
 msgid "Size of each thumbnail (in pixels):"
 msgstr "每個略圖的大小 (單位是像素)："
 
-#: ../ailurus/gnome/setting.py:313 ../ailurus/gnome/setting.py:321
-#: ../ailurus/gnome/setting.py:329
+#: ../ailurus/gnome/setting.py:363 ../ailurus/gnome/setting.py:371
+#: ../ailurus/gnome/setting.py:379
 #, python-format
 msgid "GConf key: %s"
 msgstr "GConf 鍵： %s"
 
-#: ../ailurus/gnome/setting.py:319
+#: ../ailurus/gnome/setting.py:369
 msgid "Maximum size of thumbnail cache (in MBytes):"
 msgstr "縮圖快取的最大容量 (單位是 MB)："
 
-#: ../ailurus/gnome/setting.py:327
+#: ../ailurus/gnome/setting.py:377
 msgid "Maximum time each thumbnail remains in cache (in days):"
 msgstr "縮圖快取保存多久 (單位是天):"
 
-#: ../ailurus/gnome/setting.py:335
+#: ../ailurus/gnome/setting.py:385
+msgid "Clean thumbnail image cache"
+msgstr ""
+
+#: ../ailurus/gnome/setting.py:385
+msgid "command: rm -rf $HOME/.thumbnails/*"
+msgstr ""
+
+#: ../ailurus/gnome/setting.py:392
 msgid "Nautilus thumbnail settings"
 msgstr "Nautilus 縮圖設定"
 
-#: ../ailurus/gnome/setting.py:339
-msgid "Configure autostart applications"
-msgstr "設定自動啓動程式"
-
-#: ../ailurus/gnome/setting.py:339
-msgid "(Command: gnome-session-properties)"
-msgstr "(指令： gnome-session-properties)"
-
-#: ../ailurus/gnome/setting.py:342
-msgid "Remember running applications when you log out."
-msgstr "登出時記住正在執行的應用程式。"
-
-#: ../ailurus/gnome/setting.py:344
-msgid ""
-"If its value is true, GNOME will remember the running applications when you "
-"log out, and re-launch these applications at the next time you log in to "
-"GNOME."
-msgstr "如果設定值為 true，則 GNOME 將記住您登出時正在執行的程式，當您下次登入時重新啓動這些程式。"
-
-#: ../ailurus/gnome/setting.py:347
+#. button = gtk.Button(_('Configure autostart applications') + ' ' + _('(Command: gnome-session-properties)'))
+#. button.connect('clicked', lambda w: KillWhenExit.add('gnome-session-properties'))
+#. box.pack_start(left_align(button), False)
+#. o = GConfCheckButton(_('Remember running applications when you log out.'),
+#. '/apps/gnome-session/options/auto_save_session',
+#. _('If its value is true, GNOME will remember the running applications when you log out, '
+#. 'and re-launch these applications at the next time you log in to GNOME.') )
+#. box.pack_start(o, False)
+#: ../ailurus/gnome/setting.py:404
 msgid "Prompt you before you log out from GNOME."
 msgstr "在登出 GNOME 之前先詢問。"
 
-#: ../ailurus/gnome/setting.py:349
+#: ../ailurus/gnome/setting.py:406
 msgid ""
 "If its value is false, GNOME session will terminate immediately if you click "
 "the menu \"System\"->\"Log out\"."
 msgstr "如果設定值為 false，則當您點擊選單「系統 > 登出」後，GNOME 將立即結束。"
 
-#: ../ailurus/gnome/setting.py:351
+#: ../ailurus/gnome/setting.py:408
 msgid "Allow connection from remote hosts."
 msgstr "允許遠端主機連線。"
 
-#: ../ailurus/gnome/setting.py:355
+#: ../ailurus/gnome/setting.py:412
 msgid "GNOME session"
 msgstr "GNOME 作業階段"
 
-#: ../ailurus/gnome/setting.py:361
+#: ../ailurus/gnome/setting.py:418
 msgid "LCD brightness when on AC power:"
 msgstr "使用 AC 電源時的 LCD 螢幕亮度："
 
-#: ../ailurus/gnome/setting.py:363 ../ailurus/gnome/setting.py:369
+#: ../ailurus/gnome/setting.py:420 ../ailurus/gnome/setting.py:426
 msgid "GConf Key: "
 msgstr "GConf 鍵： "
 
-#: ../ailurus/gnome/setting.py:367
+#: ../ailurus/gnome/setting.py:424
 msgid "LCD dimming amount when on battery:"
 msgstr "電池供電時，降低顯示器亮度的程度："
 
-#: ../ailurus/gnome/setting.py:373
+#: ../ailurus/gnome/setting.py:430
 msgid "Backlight"
 msgstr "背光"
 
-#: ../ailurus/gnome/setting.py:373
+#: ../ailurus/gnome/setting.py:430
 msgid "(valid only for laptops)"
 msgstr "(只對筆記型電腦有效)"
 
-#: ../ailurus/gnome/setting.py:378
+#: ../ailurus/gnome/setting.py:435
 msgid "Display content of your home folder on desktop"
 msgstr "在桌面顯示個人資料夾的內容"
 
-#: ../ailurus/gnome/setting.py:398
+#: ../ailurus/gnome/setting.py:455
 msgid "Display \"GNOME control center\" entry in \"System\" menu"
 msgstr "在「系統」選單顯示「GNOME 控制中心」項目"
 
-#: ../ailurus/gnome/setting.py:399
+#: ../ailurus/gnome/setting.py:456
 msgid ""
-"Create a file ~/.local/share/applications/gnome-control-center.desktop"
-msgstr "建立 ~/.local/share/applications/gnome-control-center.desktop 檔案"
+"Create a file $HOME/.local/share/applications/gnome-control-center.desktop"
+msgstr ""
 
-#: ../ailurus/gnome/setting.py:407
+#: ../ailurus/gnome/setting.py:464
 msgid "Change default file manager to:"
 msgstr "變更預設檔案管理程式為："
 
-#: ../ailurus/gnome/setting.py:412
+#: ../ailurus/gnome/setting.py:469
 msgid "Change default panel program to:"
 msgstr "變更預設面板程式為："
 
-#: ../ailurus/gnome/setting.py:417
+#: ../ailurus/gnome/setting.py:474
 msgid "Change default window manager to:"
 msgstr "變更預設視窗管理程式為："
 
-#: ../ailurus/gnome/setting.py:424
+#: ../ailurus/gnome/setting.py:481
 msgid "Advance settings"
 msgstr "進階設定"
 
-#: ../ailurus/gnome/setting.py:428
-msgid "Enable GNOME panel animations"
-msgstr "啟用 GNOME 面板動畫)"
-
-#: ../ailurus/gnome/setting.py:430
-msgid "Lock down all GNOME panels"
-msgstr "鎖定所有 GNOME 面板"
-
-#: ../ailurus/gnome/setting.py:430
-msgid "(take effect at the next time when GNOME starts up)"
-msgstr "(會在下次 GNOME 開始時生效)"
-
-#: ../ailurus/gnome/setting.py:432
-msgid "Confirm before removing a panel"
-msgstr "移除面板時先確認"
-
-#: ../ailurus/gnome/setting.py:435
-msgid "GNOME panels settings"
-msgstr "GNOME 面板設定"
-
-#: ../ailurus/gnome/setting.py:439
+#: ../ailurus/gnome/setting.py:497
 msgid ""
 "Do not list username. You must enter username manually.\n"
 "To display a username list might be not secure."
@@ -2846,167 +2560,122 @@ msgstr ""
 "不要列出使用者名稱。您必須手動輸入它們。\n"
 "顯示使用者名稱可能不安全。"
 
-#: ../ailurus/gnome/setting.py:443
+#: ../ailurus/gnome/setting.py:501
 msgid "Do not display \"restart\" button"
 msgstr "不顯示「重新啟動」按鈕"
 
-#: ../ailurus/gnome/setting.py:445
+#: ../ailurus/gnome/setting.py:503
 msgid "Login window settings"
 msgstr "登入視窗設定"
 
-#: ../ailurus/gnome/setting.py:465
+#: ../ailurus/gnome/setting.py:523
 msgid ""
 "The login window background is the gconf value "
 "\"/desktop/gnome/background/picture_filename\" of user \"gdm\"."
 msgstr ""
 "登入畫面的背景圖片，是使用者「gdm」的 Gconf 鍵「/desktop/gnome/background/picture_filename」的鍵值。"
 
-#: ../ailurus/gnome/setting.py:470
+#: ../ailurus/gnome/setting.py:528
 msgid "Change login window background"
 msgstr "變更登入畫面的背景"
 
 #. do not support on Fedora because there is no sudo.
-#: ../ailurus/gnome/setting.py:476
+#: ../ailurus/gnome/setting.py:534
 msgid "Enable GNOME login sound"
 msgstr "啓用 GNOME 登入音效"
 
-#: ../ailurus/gnome/setting.py:480
+#: ../ailurus/gnome/setting.py:538
 msgid "Disable GNOME login sound"
 msgstr "停用 GNOME 登入音效"
 
-#: ../ailurus/gnome/setting.py:488
+#: ../ailurus/gnome/setting.py:546
 msgid "Change GNOME login sound"
 msgstr "變更 GNOME 登入音效"
 
-#: ../ailurus/gnome/setting.py:491
+#: ../ailurus/gnome/setting.py:549
 msgid "Command line"
 msgstr "命令列"
 
-#: ../ailurus/gnome/setting.py:492 ../ailurus/gnome/setting.py:505
+#: ../ailurus/gnome/setting.py:550 ../ailurus/gnome/setting.py:563
 #: ../ailurus/system_setting_pane.py:60
 msgid "Shortcut key"
 msgstr "快捷鍵"
 
-#: ../ailurus/gnome/setting.py:501
+#: ../ailurus/gnome/setting.py:559
 #, python-format
 msgid "%2d:"
 msgstr "%2d："
 
-#: ../ailurus/gnome/setting.py:508
+#: ../ailurus/gnome/setting.py:566
 msgid "Compression strategy of file-roller:"
 msgstr "File Roller 的壓縮策略："
 
-#: ../ailurus/gnome/setting.py:512
+#: ../ailurus/gnome/setting.py:570
 msgid "Very high speed"
 msgstr "極快"
 
-#: ../ailurus/gnome/setting.py:512
+#: ../ailurus/gnome/setting.py:570
 msgid "High speed"
 msgstr "快速"
 
-#: ../ailurus/gnome/setting.py:512
+#: ../ailurus/gnome/setting.py:570
 msgid "Balanced"
 msgstr "平衡"
 
-#: ../ailurus/gnome/setting.py:512
+#: ../ailurus/gnome/setting.py:570
 msgid "High compression rate"
 msgstr "高壓縮率"
 
-#: ../ailurus/gnome/setting.py:517
+#: ../ailurus/gnome/setting.py:575
 msgid "Compression strategy"
 msgstr "壓縮策略"
 
-#: ../ailurus/gnome/setting.py:524
+#: ../ailurus/gnome/setting.py:582
 msgid "Maximum number of undos:"
 msgstr "可復原的最大次數："
 
-#: ../ailurus/gnome/setting.py:532
+#: ../ailurus/gnome/setting.py:590
 msgid "Maximum number of recent files:"
 msgstr "最多顯示多少個「最近文件」："
 
-#: ../ailurus/gnome/setting.py:539
+#: ../ailurus/gnome/setting.py:597
 msgid "GEdit settings"
 msgstr "GEdit 設定"
 
-#: ../ailurus/gnome/setting.py:549
-#, python-format
-msgid "GNOME settings of user %s have been reset."
-msgstr "使用者 %s 的 GNOME 設定已被重設。"
-
-#: ../ailurus/gnome/setting.py:556
-msgid "Reset GNOME by removing these directories:"
-msgstr "藉由移除下列目錄來重設 GNOME："
-
-#: ../ailurus/gnome/setting.py:565
-msgid ""
-"In order to reset GNOME, please logout first, then login GNOME as another "
-"user."
-msgstr "為了重設 GNOME，請先登出，再以另一個使用者的身份登入 GNOME。"
-
-#: ../ailurus/gnome/setting.py:566
-msgid ""
-"Cannot reset GNOME for current user because above files are being used."
-msgstr "無法以目前使用者的身份重設 GNOME，因為上述檔案正在被使用當中。"
-
-#: ../ailurus/gnome/setting.py:567
-msgid "Please be careful."
-msgstr "請小心。"
-
-#: ../ailurus/gnome/setting.py:576
-msgid "There is no other user"
-msgstr "沒有其他的使用者"
-
-#: ../ailurus/gnome/setting.py:581
-#, python-format
-msgid "Reset user %s"
-msgstr "重設使用者 %s"
-
-#: ../ailurus/gnome/setting.py:586 ../ailurus/system_setting_pane.py:66
-msgid "Reset GNOME"
-msgstr "重設 GNOME"
-
-#: ../ailurus/gnome/setting.py:591
+#: ../ailurus/gnome/setting.py:650
 msgid "Activate screen saver when computer is idle for long time"
 msgstr "在電腦長時間閒置時啟動螢幕保護程式"
 
-#: ../ailurus/gnome/setting.py:594
+#: ../ailurus/gnome/setting.py:653
 msgid "Lock screen when screen saver is activated"
 msgstr "當螢幕保護程式啟動時鎖定螢幕"
 
-#: ../ailurus/gnome/setting.py:597
+#: ../ailurus/gnome/setting.py:656
 msgid "Lock screen after hibernating"
 msgstr "在系統休眠後鎖定螢幕"
 
-#: ../ailurus/gnome/setting.py:599
+#: ../ailurus/gnome/setting.py:658
 msgid "Lock screen after suspending"
 msgstr "在系統暫停後鎖定螢幕"
 
-#: ../ailurus/gnome/setting.py:602 ../ailurus/system_setting_pane.py:67
+#: ../ailurus/gnome/setting.py:661 ../ailurus/system_setting_pane.py:67
 msgid "Screensaver"
 msgstr "螢幕保護程式"
 
 #: ../ailurus/gnome/tips.py:28
 msgid ""
-"~/.thumbnails/ directory is a cache dir GNOME makes when you browse through "
-"your folders in nautilus. \n"
+"$HOME/.thumbnails/ directory is a cache dir GNOME makes when you browse "
+"through your folders in nautilus. \n"
 "It contains thumbnail pictures of picture files you've previously looked "
 "at.\n"
 "\n"
 "You can get its total size by \n"
-"du -bs ~/.thumbnails/\n"
+"du -bs $HOME/.thumbnails/\n"
 "\n"
 "You can delete the files in the .thumbnails directory that haven't been "
 "accessed for seven days, to free disk space.\n"
-"find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
+"find $HOME/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
 msgstr ""
-"~/.thumbnails/ 是在您用 Nautilus® 瀏覽檔案目錄時，由 GNOME 自動建立的快取目錄。\n"
-"裏面有您之前瀏覽過的圖片的縮圖檔案。\n"
-"\n"
-"可以用這個指令得知該目錄用總容量 \n"
-"du -bs ~/.thumbnails/\n"
-"\n"
-"您可以刪除該目錄下超過 7 天未被存取的檔案以釋放磁碟空間。\n"
-"find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
 
 #: ../ailurus/gnome/tips.py:38
 msgid ""
@@ -3027,6 +2696,10 @@ msgid ""
 msgstr ""
 "啓動 GConf 編輯程式：\n"
 "按 Alt-F2 鍵，並輸入「gconf-editor」。"
+
+#: ../ailurus/info_pane.py:40 ../ailurus/info_pane.py:61
+msgid "Information"
+msgstr "資訊"
 
 #: ../ailurus/info_pane.py:75
 msgid "Hardware Information"
@@ -3106,17 +2779,17 @@ msgstr "回報 bug"
 msgid "Copy debugging information to clipboard"
 msgstr "將除錯資訊複製到剪貼簿"
 
-#: ../ailurus/install_remove_pane.py:349 ../ailurus/libu.py:195
-#: ../ailurus/libu.py:220 ../ailurus/libu.py:239 ../ailurus/libu.py:261
-#: ../ailurus/libu.py:321 ../ailurus/support/checkupdate.py:272
+#: ../ailurus/install_remove_pane.py:348 ../ailurus/libu.py:215
+#: ../ailurus/libu.py:240 ../ailurus/libu.py:259 ../ailurus/libu.py:339
+#: ../ailurus/support/checkupdate.py:274
 msgid "Close"
 msgstr "關閉"
 
-#: ../ailurus/install_remove_pane.py:363
+#: ../ailurus/install_remove_pane.py:362
 msgid "Operations failed"
 msgstr "操作失敗"
 
-#: ../ailurus/install_remove_pane.py:372
+#: ../ailurus/install_remove_pane.py:371
 msgid ""
 "There are broken packages.\n"
 "Command \"apt-get install -f\" will be launched to fix error."
@@ -3124,120 +2797,120 @@ msgstr ""
 "有套件受損。\n"
 "將執行「apt-get install -f」以修正錯誤。"
 
-#: ../ailurus/install_remove_pane.py:379
+#: ../ailurus/install_remove_pane.py:378
 msgid "Cannot fix broken packages. Installation is cancelled."
 msgstr "無法修復受損的套件。安裝動作已取消。"
 
-#: ../ailurus/install_remove_pane.py:404
+#: ../ailurus/install_remove_pane.py:403
 msgid "Installing:"
 msgstr "正在安裝："
 
-#: ../ailurus/install_remove_pane.py:416
+#: ../ailurus/install_remove_pane.py:415
 msgid "Removing:"
 msgstr "正在移除："
 
-#: ../ailurus/install_remove_pane.py:453
+#: ../ailurus/install_remove_pane.py:452
 msgid ""
 "Check if you are currently running another software management program, e.g. "
 "Synaptic or apt-get. Only one program is allowed to make changes at the same "
 "time."
 msgstr "檢查是否有任何套件管理程式正在執行，像是 Synaptic 或 apt-get。同一時間內只能有一個程式作變更。"
 
-#: ../ailurus/install_remove_pane.py:460
+#: ../ailurus/install_remove_pane.py:459
 msgid "Cannot lock apt cache"
 msgstr "無法鎖定 apt 快取"
 
-#: ../ailurus/install_remove_pane.py:516
+#: ../ailurus/install_remove_pane.py:515
 msgid "will install"
 msgstr "將被安裝"
 
-#: ../ailurus/install_remove_pane.py:518
+#: ../ailurus/install_remove_pane.py:517
 msgid "will remove"
 msgstr "將被移除"
 
-#: ../ailurus/install_remove_pane.py:597 ../ailurus/install_remove_pane.py:639
+#: ../ailurus/install_remove_pane.py:596 ../ailurus/install_remove_pane.py:638
 msgid "Record the software items you have installed"
 msgstr "記錄已經安裝的軟體項目"
 
-#: ../ailurus/install_remove_pane.py:608
+#: ../ailurus/install_remove_pane.py:607
 #, python-format
 msgid "Successfully record the software items to file %s"
 msgstr "成功從檔案 %s 中恢復了軟體項目"
 
-#: ../ailurus/install_remove_pane.py:615
+#: ../ailurus/install_remove_pane.py:614
 msgid "Select a software items list"
 msgstr "選擇一個軟體項目清單"
 
-#: ../ailurus/install_remove_pane.py:627
+#: ../ailurus/install_remove_pane.py:626
 #, python-format
 msgid "Successfully load file %s"
 msgstr "成功載入檔案 %s"
 
-#: ../ailurus/install_remove_pane.py:635
+#: ../ailurus/install_remove_pane.py:634
 msgid "Synchronize"
 msgstr "同步"
 
-#: ../ailurus/install_remove_pane.py:643
+#: ../ailurus/install_remove_pane.py:642
 msgid "Select the software items according to a saved list"
 msgstr "根據已儲存清單來選擇軟體項目"
 
-#: ../ailurus/install_remove_pane.py:651 ../ailurus/ubuntu/quick_setup.py:95
+#: ../ailurus/install_remove_pane.py:650 ../ailurus/ubuntu/quick_setup.py:95
 #: ../ailurus/ubuntu/quick_setup.py:442
 msgid "Quickly install popular software"
 msgstr "快速安裝熱門軟體"
 
-#: ../ailurus/install_remove_pane.py:658
+#: ../ailurus/install_remove_pane.py:657
 msgid "_Apply"
 msgstr "套用(_A)"
 
 #. then pop up menu
-#: ../ailurus/install_remove_pane.py:731
+#: ../ailurus/install_remove_pane.py:730
 msgid "Add a software item"
 msgstr "加入軟體項目"
 
-#: ../ailurus/install_remove_pane.py:733
+#: ../ailurus/install_remove_pane.py:732
 msgid "Edit"
 msgstr "編輯"
 
-#: ../ailurus/install_remove_pane.py:737
+#: ../ailurus/install_remove_pane.py:736
 msgid "Add To Favourite"
 msgstr "加為喜好類別"
 
-#: ../ailurus/install_remove_pane.py:739
+#: ../ailurus/install_remove_pane.py:738
 msgid "Remove From Favourite"
 msgstr "自喜好類別中移除"
 
-#: ../ailurus/install_remove_pane.py:783
+#: ../ailurus/install_remove_pane.py:782
 msgid ""
 "How long after the server does not respond, give up downloading? (in seconds)"
 msgstr "要在伺服器停止回應多久後，讓 Ailurus 放棄下載？ (單位是秒)"
 
-#: ../ailurus/install_remove_pane.py:789
+#: ../ailurus/install_remove_pane.py:788
 msgid "How many times does Ailurus try to download the same resource?"
 msgstr "對於同一個資源，讓 Ailurus 最多重試下載多少次？"
 
-#: ../ailurus/install_remove_pane.py:792
+#: ../ailurus/install_remove_pane.py:791
 msgid "Set Ailurus download parameter"
 msgstr "設定 Ailurus 下載選項"
 
-#: ../ailurus/install_remove_pane.py:817
+#: ../ailurus/install_remove_pane.py:816
 msgid "Set download parameters"
 msgstr "設定下載選項"
 
-#: ../ailurus/install_remove_pane.py:820
+#: ../ailurus/install_remove_pane.py:819
 msgid "Refresh icons of all software items"
 msgstr "重整所有軟體項目的圖示"
 
-#: ../ailurus/install_remove_pane.py:823
+#: ../ailurus/install_remove_pane.py:822
 msgid "Refresh installing state of all software items"
 msgstr "更新所有軟體項目的安裝狀態"
 
-#: ../ailurus/install_remove_pane.py:872
+#: ../ailurus/install_remove_pane.py:870
 #, python-format
 msgid "%s available items"
 msgstr "%s 個有效的項目"
 
-#: ../ailurus/install_remove_pane.py:881
+#: ../ailurus/install_remove_pane.py:880
 msgid "Would you like to download latest application data from web?"
 msgstr "您要從網路下載最新的程式資料嗎？"
 
@@ -3402,7 +3075,7 @@ msgstr "軟體開發工具"
 #. business
 #: ../ailurus/libapp.py:102
 msgid "Business"
-msgstr "商業"
+msgstr "辦公"
 
 #. design
 #: ../ailurus/libapp.py:104
@@ -3411,7 +3084,7 @@ msgstr "設計"
 
 #: ../ailurus/libapp.py:105
 msgid "Drawing"
-msgstr "換圖"
+msgstr "繪圖"
 
 #: ../ailurus/libapp.py:106
 msgid "Typesetting"
@@ -3448,7 +3121,7 @@ msgid "Anti-virus"
 msgstr "防毒"
 
 #. others
-#: ../ailurus/libapp.py:120 ../ailurus/main.py:364
+#: ../ailurus/libapp.py:120 ../ailurus/main.py:402
 msgid "Others"
 msgstr "其他"
 
@@ -3483,196 +3156,196 @@ msgstr "已附加項目："
 msgid "Removed items:"
 msgstr "已移除項目："
 
-#: ../ailurus/libapp.py:285 ../ailurus/libapp.py:322 ../ailurus/libapp.py:349
-#: ../ailurus/libapp.py:372
+#: ../ailurus/libapp.py:276 ../ailurus/libapp.py:313 ../ailurus/libapp.py:340
+#: ../ailurus/libapp.py:363
 #, python-format
 msgid "Because the packages \"%s\" are not installed."
 msgstr "因為未安裝「%s」套件。"
 
-#: ../ailurus/libapp.py:293
+#: ../ailurus/libapp.py:284
 #, python-format
 msgid "Add source \"<b>%s</b>\"; %s"
 msgstr "加入來源「<b>%s</b>」; %s"
 
-#: ../ailurus/libapp.py:422 ../ailurus/libapp.py:464
+#: ../ailurus/libapp.py:403 ../ailurus/libapp.py:445
 #, python-format
 msgid "Because \"%s\" does not exist."
 msgstr "因為「%s」不存在。"
 
-#: ../ailurus/libapp.py:447
+#: ../ailurus/libapp.py:428
 msgid ""
 "This extension cannot be removed by Ailurus. It can be removed in 'Tools'-"
 ">'Add-ons' menu of firefox."
 msgstr "這個延伸套件無法由 Ailurus 移除。請使用 Firefox 的「工具」>「附加元件」選單來移除。"
 
-#: ../ailurus/libapp.py:497
+#: ../ailurus/libapp.py:478
 msgid "Installing Eclipse extension"
 msgstr "正在安裝 Eclipse 擴充套件"
 
-#: ../ailurus/libapp.py:507
+#: ../ailurus/libapp.py:488
 #, python-format
 msgid "Removing %s"
 msgstr "正在移除 %s"
 
-#: ../ailurus/libapp.py:510
+#: ../ailurus/libapp.py:491
 msgid "Please launch Eclipse, and go to \"Help\" -> \"About Eclipse SDK\"."
 msgstr "請啓動 Eclipse，點擊「Help > About Eclipse SDK」。"
 
-#: ../ailurus/libapp.py:512
+#: ../ailurus/libapp.py:493
 #, python-format
 msgid "Click the \"Installation Details\" button. Then remove %s."
 msgstr "點擊「Installation Details」按鈕。然後移除 %s 。"
 
-#: ../ailurus/lib.py:456
+#: ../ailurus/lib.py:470
 #, python-format
 msgid "Dual-licensed under %(A)s and %(B)s"
 msgstr "%(A)s 與 %(B)s 下的雙重許可"
 
-#: ../ailurus/lib.py:460
+#: ../ailurus/lib.py:474
 #, python-format
 msgid "Tri-licensed under %(A)s, %(B)s and %(C)s"
 msgstr "%(A)s 、%(B)s 與 %(C)s 下的三重許可"
 
-#: ../ailurus/lib.py:776 ../ailurus/lib.py:965
+#: ../ailurus/lib.py:788 ../ailurus/lib.py:991
 msgid "scan installed packages"
 msgstr "掃描已經安裝的套件"
 
-#: ../ailurus/lib.py:785 ../ailurus/lib.py:974
+#: ../ailurus/lib.py:797 ../ailurus/lib.py:1000
 msgid "scan available packages"
 msgstr "掃描有無可用的套件"
 
-#: ../ailurus/lib.py:856
+#: ../ailurus/lib.py:867
 msgid "scan packages"
 msgstr "掃描套件"
 
-#: ../ailurus/lib.py:1015
+#: ../ailurus/lib.py:1045
 msgid "Run \"pacman -Sy\". Please wait for a few minutes."
 msgstr "執行「pacman -Sy」，請稍待幾分鐘。"
 
-#: ../ailurus/lib.py:1040
+#: ../ailurus/lib.py:1070
 #, python-format
 msgid "%.1f GB"
 msgstr "%.1f GB"
 
-#: ../ailurus/lib.py:1042
+#: ../ailurus/lib.py:1072
 #, python-format
 msgid "%.1f MB"
 msgstr "%.1f MB"
 
-#: ../ailurus/lib.py:1044
+#: ../ailurus/lib.py:1074
 #, python-format
 msgid "%.1f KB"
 msgstr "%.1f KB"
 
-#: ../ailurus/lib.py:1045
+#: ../ailurus/lib.py:1075
 #, python-format
 msgid "%s bytes"
 msgstr "%s B"
 
-#: ../ailurus/lib.py:1053
+#: ../ailurus/lib.py:1083
 #, python-format
 msgid "%.1f hours"
 msgstr "%.1f 小時"
 
-#: ../ailurus/lib.py:1055
+#: ../ailurus/lib.py:1085
 #, python-format
 msgid "%.1f minutes"
 msgstr "%.1f 分鐘"
 
-#: ../ailurus/lib.py:1056
+#: ../ailurus/lib.py:1086
 #, python-format
 msgid "%d seconds"
 msgstr "%d 秒"
 
-#: ../ailurus/lib.py:1303 ../ailurus/lib.py:1332
+#: ../ailurus/lib.py:1333 ../ailurus/lib.py:1362
 msgid "Opening web page"
 msgstr "正在開啟網頁"
 
-#: ../ailurus/lib.py:1503
+#: ../ailurus/lib.py:1536
 msgid "Please restart Firefox"
 msgstr "請重新啟動 Firefox"
 
-#: ../ailurus/lib.py:1503
+#: ../ailurus/lib.py:1536
 msgid "Please restart Firefox to complete installation."
 msgstr "請重新啟動 Firefox 以完成安裝程序。"
 
-#: ../ailurus/lib.py:1537
+#: ../ailurus/lib.py:1570
 #, python-format
 msgid "Response time of server %(name)s is %(time).1f ms."
 msgstr "伺服器 %(name)s 的反應時間是 %(time).1f 毫秒。"
 
-#: ../ailurus/lib.py:1539
+#: ../ailurus/lib.py:1572
 #, python-format
 #| msgid "The file \"%s\" does not exist."
 msgid "Server %s does not respond."
 msgstr "伺服器 %s 無回應。"
 
-#: ../ailurus/lib.py:1620
+#: ../ailurus/lib.py:1653
 msgid "Checking file integrity ..."
 msgstr "正在檢查檔案完整性 ..."
 
-#: ../ailurus/lib.py:1624
+#: ../ailurus/lib.py:1657
 msgid "Good."
 msgstr "很好。"
 
-#: ../ailurus/lib.py:1631
+#: ../ailurus/lib.py:1664
 #, python-format
 msgid "Using mirror %(i)s. There are a total of %(total)s mirrors."
 msgstr "使用第 %(i)s 個鏡像，共有 %(total)s 個鏡像。"
 
-#: ../ailurus/lib.py:1922
+#: ../ailurus/lib.py:2100
 msgid "GNU General Public License"
 msgstr "GNU 通用公共許可 (GPL)"
 
-#: ../ailurus/lib.py:1923
+#: ../ailurus/lib.py:2101
 msgid "GNU Lesser General Public License"
 msgstr "GNU 較寬鬆公共許可 (LGPL)"
 
-#: ../ailurus/lib.py:1924
+#: ../ailurus/lib.py:2102
 msgid "Eclipse Public License"
 msgstr "Eclipse 公共許可"
 
-#: ../ailurus/lib.py:1925
+#: ../ailurus/lib.py:2103
 msgid "Mozilla Public License"
 msgstr "Mozilla 公共許可"
 
-#: ../ailurus/lib.py:1926
+#: ../ailurus/lib.py:2104
 msgid "Berkeley Software Distribution License"
 msgstr "柏克萊軟體發行許可 (BSDL)"
 
-#: ../ailurus/lib.py:1927
+#: ../ailurus/lib.py:2105
 msgid "MIT License"
 msgstr "麻省理工學院 (MIT) 許可"
 
-#: ../ailurus/lib.py:1928
+#: ../ailurus/lib.py:2106
 msgid "Common Development and Distribution License"
 msgstr "一般開發與發行許可"
 
-#: ../ailurus/lib.py:1929
+#: ../ailurus/lib.py:2107
 msgid "Aptana Public License"
 msgstr "Aptana 公共許可"
 
-#: ../ailurus/lib.py:1930
+#: ../ailurus/lib.py:2108
 msgid "Artistic License"
 msgstr "藝術性許可"
 
-#: ../ailurus/libsetting.py:133
+#: ../ailurus/libsetting.py:136
 msgid "The command which will be run."
 msgstr "將會執行這個指令。"
 
-#: ../ailurus/libsetting.py:140
+#: ../ailurus/libsetting.py:143
 msgid "The shortcut key."
 msgstr "快速鍵。"
 
-#: ../ailurus/libsetting.py:159
+#: ../ailurus/libsetting.py:162
 msgid "Images"
 msgstr "圖片"
 
-#: ../ailurus/libsetting.py:170
+#: ../ailurus/libsetting.py:173
 msgid "Choose an image"
 msgstr "選擇圖片"
 
-#: ../ailurus/libsetting.py:230
+#: ../ailurus/libsetting.py:233
 #, python-format
 msgid ""
 "\n"
@@ -3681,23 +3354,23 @@ msgstr ""
 "\n"
 "最小值： %(min)s，最大值： %(max)s。"
 
-#: ../ailurus/libsetting.py:320
+#: ../ailurus/libsetting.py:323
 msgid "Yes"
 msgstr "是"
 
-#: ../ailurus/libsetting.py:439
+#: ../ailurus/libsetting.py:442
 msgid "whether interrupt parsing a page to respond to UI events?"
-msgstr ""
+msgstr "是否中斷頁面的解析，以便向使用者介面回應？"
 
-#: ../ailurus/libsetting.py:441
+#: ../ailurus/libsetting.py:444
 msgid "maximum number of microseconds between two page rendering"
 msgstr "兩次頁面繪製的最大間隔時間 (微秒)"
 
-#: ../ailurus/libsetting.py:443
+#: ../ailurus/libsetting.py:446
 msgid "maximum number of bytes to split a long text node"
-msgstr ""
+msgstr "分割長段文字時，每一分割的最大位元組數"
 
-#: ../ailurus/libu.py:215
+#: ../ailurus/libu.py:235
 msgid ""
 "Operation is canceled because you refused authentication.\n"
 "Authentication is provided by system PolicyKit service.\n"
@@ -3707,11 +3380,11 @@ msgstr ""
 "密碼驗證是由系統的 PolicyKit 服務所進行。\n"
 "Ailurus 無法得知您的密碼。"
 
-#: ../ailurus/libu.py:226 ../ailurus/libu.py:245
+#: ../ailurus/libu.py:246 ../ailurus/libu.py:265
 msgid "Operation is canceled"
 msgstr "操作已被取消"
 
-#: ../ailurus/libu.py:234
+#: ../ailurus/libu.py:254
 msgid ""
 "Operation is canceled because you refused authentication.\n"
 "Proxy string is saved in system GNOME keyring service.\n"
@@ -3721,35 +3394,41 @@ msgstr ""
 "代理伺服器字串由 GNOME keyring 服務所保存。\n"
 "Ailurus 無法得知您的秘密。"
 
-#: ../ailurus/libu.py:253
+#: ../ailurus/libu.py:274
 msgid ""
-"There is syntax error in source configuration.\n"
-"Please fix the error, then restart Ailurus."
+"Source configuration has syntax error. Please run the following command to "
+"fix error."
 msgstr ""
-"來源設置文件中有錯誤的語法。\n"
-"請修正錯誤，再重新啟動 Ailurus。"
 
-#: ../ailurus/libu.py:268
+#: ../ailurus/libu.py:277
+msgid "Error reason:"
+msgstr ""
+
+#: ../ailurus/libu.py:280
+msgid "After fixing the error, Ailurus will work fine."
+msgstr ""
+
+#: ../ailurus/libu.py:283 ../ailurus/main.py:197
 msgid "Fatal error"
 msgstr "嚴重錯誤"
 
-#: ../ailurus/libu.py:297
+#: ../ailurus/libu.py:316
 msgid "A bug appears. Would you please tell Ailurus developers? Thank you!"
 msgstr "出現 bug 了，請您回報給 Ailurus 開發者，謝謝您！"
 
-#: ../ailurus/libu.py:298
+#: ../ailurus/libu.py:317
 msgid "Please copy and paste following text into bug report web-page."
 msgstr "請複製這些文字貼到問題回報網頁。"
 
-#: ../ailurus/libu.py:319
+#: ../ailurus/libu.py:337
 msgid "Click here to report bug via web-page"
 msgstr "點擊這裏用網頁回報 bug"
 
-#: ../ailurus/libu.py:333
+#: ../ailurus/libu.py:351
 msgid "Bug appears!"
 msgstr "出現 bug！"
 
-#: ../ailurus/main.py:31
+#: ../ailurus/main.py:32
 #, python-format
 msgid ""
 "You have set an environment variable <i>http_proxy=%s</i>.\n"
@@ -3758,89 +3437,95 @@ msgstr ""
 "您已經設定了一個環境變數 <i>http_proxy=%s</i>。\n"
 "您想要讓 Ailurus 使用代理伺服器嗎？"
 
-#: ../ailurus/main.py:47
+#: ../ailurus/main.py:48
 msgid "Successfully adopted a proxy server"
 msgstr "成功採用一個代理伺服器"
 
-#: ../ailurus/main.py:56
+#: ../ailurus/main.py:57
 msgid "Warning!"
 msgstr "警告！"
 
-#: ../ailurus/main.py:57
+#: ../ailurus/main.py:58
 msgid ""
 "Another instance of Ailurus is running. It is not recommended to run "
 "multiple instance concurrently."
 msgstr "有另一個 Ailurus 正在執行中，不建議同時執行多個 Ailurus。"
 
-#: ../ailurus/main.py:148
+#: ../ailurus/main.py:164
 msgid "Necessary packages are not installed. Ailurus cannot work."
 msgstr "未安裝需要的套件，Ailurus 無法作業。"
 
-#: ../ailurus/main.py:150
+#: ../ailurus/main.py:166
 msgid "Please install these packages:"
 msgstr "請安裝以下套件："
 
-#: ../ailurus/main.py:199
+#: ../ailurus/main.py:189
+msgid ""
+"Your home folder is not owned by yourself.\n"
+"Please run the following command to fix the error."
+msgstr ""
+
+#: ../ailurus/main.py:237
 msgid "Error happened. You cannot install any software by Ailurus. :("
 msgstr ""
 "Error happened. You cannot install any software by Ailurus. :(\r\n"
 "發生錯誤！您無法用 Ailurus 安裝任何軟體。:("
 
-#: ../ailurus/main.py:202
+#: ../ailurus/main.py:240
 msgid "System configuration file should be updated."
 msgstr "系統設定檔應該要更新。"
 
-#: ../ailurus/main.py:203
+#: ../ailurus/main.py:241
 msgid "Please run these commands using <b>su</b> or <b>sudo</b>:"
 msgstr "請使用 <b>su</b> 或 <b>sudo</b> 執行以下指令："
 
-#: ../ailurus/main.py:210
+#: ../ailurus/main.py:248
 msgid "Please re-install Ailurus."
 msgstr "請重新安裝 Ailurus。"
 
-#: ../ailurus/main.py:211
+#: ../ailurus/main.py:249
 msgid "Because file contents are different:"
 msgstr "因為文件內容並不相同："
 
-#: ../ailurus/main.py:216
+#: ../ailurus/main.py:254
 msgid "We need to restart Ailurus daemon."
 msgstr "需要重新啟動 Ailurus 的背景常駐。"
 
-#: ../ailurus/main.py:217
+#: ../ailurus/main.py:255
 #, python-format
 msgid "Old version is %s."
 msgstr "舊版本是 %s。"
 
-#: ../ailurus/main.py:217
+#: ../ailurus/main.py:255
 #, python-format
 msgid "New version is %s"
 msgstr "新版本是 %s。"
 
-#: ../ailurus/main.py:219
+#: ../ailurus/main.py:257
 msgid "Press this button to restart daemon. Require authentication."
 msgstr "請點擊這個按鈕，重新啟動背景常駐。這個動作需要驗證。"
 
-#: ../ailurus/main.py:223
+#: ../ailurus/main.py:261
 msgid "Ailurus daemon successfully restarted. Ailurus will work fine."
 msgstr "Ailurus 背景常駐已成功重啟。Ailurus 將正常運作。"
 
-#: ../ailurus/main.py:225
+#: ../ailurus/main.py:263
 msgid "Cannot restart Ailurus daemon. Please restart your computer."
 msgstr "無法重啟 Ailurus 的背景常駐。請重新啟動您的電腦。"
 
-#: ../ailurus/main.py:360
+#: ../ailurus/main.py:398
 msgid "Quit"
 msgstr "結束"
 
-#: ../ailurus/main.py:368
+#: ../ailurus/main.py:406
 msgid "Default pane"
 msgstr "預設所在頁面"
 
-#: ../ailurus/main.py:372
+#: ../ailurus/main.py:410
 msgid "Preferences"
 msgstr "偏好設定"
 
-#: ../ailurus/main.py:375
+#: ../ailurus/main.py:413
 msgid ""
 "Study\n"
 "Linux"
@@ -3848,33 +3533,97 @@ msgstr ""
 "學習\n"
 "Linux"
 
-#: ../ailurus/main.py:418
+#: ../ailurus/main.py:456
 msgid "Please wait a few seconds"
 msgstr "請稍待一下"
 
-#: ../ailurus/main.py:444
+#: ../ailurus/main.py:482
 msgid "Are you sure to exit?"
 msgstr "您確定要離開？"
 
-#: ../ailurus/main.py:445
-msgid "Do not query me any more."
-msgstr "下次不要再詢問。"
+#: ../ailurus/main.py:483
+msgid "Do not ask me again."
+msgstr ""
 
-#: ../ailurus/main.py:554
+#: ../ailurus/main.py:592
 msgid "Do you agree?"
 msgstr "您同意嗎？"
 
-#: ../ailurus/main.py:555
-msgid "I agree. Do not ask me again."
-msgstr "我同意。不要再問我。"
-
-#: ../ailurus/main.py:559
+#: ../ailurus/main.py:595
 msgid "Warning"
 msgstr "警告"
 
-#: ../ailurus/main.py:574
+#: ../ailurus/main.py:608
 msgid "start up"
 msgstr "程式啟動"
+
+#: ../ailurus/snapshot_pane.py:79
+msgid "Date"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:84
+msgid "Comment"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:93
+msgid "Double click to edit comment"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:101
+msgid "snapshots"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:132
+msgid "Are you sure to delete the snapshot?"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:150
+msgid "was installed"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:153
+msgid "was removed"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:162
+msgid "will be installed"
+msgstr "將被安裝"
+
+#: ../ailurus/snapshot_pane.py:178
+msgid "package"
+msgstr "套件"
+
+#: ../ailurus/snapshot_pane.py:234
+msgid "changes"
+msgstr "變更"
+
+#: ../ailurus/snapshot_pane.py:235
+msgid "to do"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:241
+msgid ""
+"Drag items from the left box into the right box, then click \"apply\" button."
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:286
+msgid "Snapshots"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:307
+msgid ""
+"Ailurus helps you keep track of what software you have installed/removed. If "
+"you often try to use new software, you do not have to worry about messing up "
+"your system now."
+msgstr "Ailurus 可協助您追蹤安裝/移除過那些軟體。就算經常試用新軟體，也不用擔心弄亂您的系統。"
+
+#: ../ailurus/snapshot_pane.py:318
+msgid "Create a snapshot"
+msgstr ""
+
+#: ../ailurus/snapshot_pane.py:321
+msgid "Delete selected snapshot"
+msgstr ""
 
 #: ../ailurus/strings.py:27
 msgid ""
@@ -4748,7 +4497,7 @@ msgstr "要在 Linux 下執行 Windows 應用程式的必備應用程式。"
 
 #: ../ailurus/strings.py:331
 msgid "3D first-person shooter game, just like DOOM"
-msgstr "3D 第一人稱涉及遊戲，像是毀滅戰士"
+msgstr "3D 第一人稱射擊遊戲，像是毀滅戰士"
 
 #: ../ailurus/strings.py:332
 msgid "Warzone 2100"
@@ -4889,7 +4638,7 @@ msgstr ""
 "Launchpad Contributions:\n"
 "  Ailurus Developers https://launchpad.net/~ailurus\n"
 "  Homer Xing https://launchpad.net/~homer-xing\n"
-"  Plesry Li https://launchpad.net/~pspeter9931\n"
+"  Pin-hsien Li https://launchpad.net/~plesry\n"
 "  Wayne Su https://launchpad.net/~mstarmstar"
 
 #: ../ailurus/support/checkupdate.py:138 ../ailurus/support/checkupdate.py:139
@@ -4962,7 +4711,7 @@ msgstr "以及我們沒有在此提到的人。"
 msgid "Thanks"
 msgstr "鳴謝"
 
-#: ../ailurus/support/checkupdate.py:281
+#: ../ailurus/support/checkupdate.py:283
 msgid "Ailurus changelog"
 msgstr "Ailurus 更版記錄"
 
@@ -5084,11 +4833,11 @@ msgid "You can press \"Ctrl+C\" to terminate Ailurus installation process."
 msgstr "您可以按 Ctrl-C 終止 Ailurus 安裝程序。"
 
 #. please do not launch me as a thread
-#: ../ailurus/support/term.py:44 ../ailurus/support/term.py:61
+#: ../ailurus/support/term.py:45 ../ailurus/support/term.py:73
 msgid "Ailurus terminal"
 msgstr "Ailurus 終端機"
 
-#: ../ailurus/support/term.py:55
+#: ../ailurus/support/term.py:60
 msgid "Command failed. Please close this window."
 msgstr "指令失敗。請關閉這個視窗。"
 
@@ -5195,6 +4944,10 @@ msgstr "壓縮"
 #: ../ailurus/system_setting_pane.py:65
 msgid "GEdit"
 msgstr "GEdit"
+
+#: ../ailurus/system_setting_pane.py:66
+msgid "Reset GNOME"
+msgstr "重設 GNOME"
 
 #: ../ailurus/system_setting_pane.py:108
 msgid ""
@@ -5313,6 +5066,7 @@ msgstr "正在安裝 VEditor\n"
 msgid "Ailurus will install the game, and apply the latest patch."
 msgstr "Ailurus 將安裝遊戲，以及最新的修補檔。"
 
+#. support x86_64 only.
 #: ../ailurus/ubuntu/apps.py:50
 msgid "PBC (Pairing-Based Cryptography) library"
 msgstr "PBC (橢圓曲線編碼) 程式庫"
@@ -5322,11 +5076,11 @@ msgid ""
 "Install Pairing-Based Cryptography library, powered by Stanford University."
 msgstr "安裝 PBC (橢圓曲線編碼) 程式庫，由史丹佛大學研發。"
 
-#: ../ailurus/ubuntu/apps.py:69
+#: ../ailurus/ubuntu/apps.py:67
 msgid "GNOMEArtNG: Choose 100+ GNOME themes"
 msgstr "GNOMEArtNG：超過一百種 GNOME 佈景主題"
 
-#: ../ailurus/ubuntu/apps.py:70
+#: ../ailurus/ubuntu/apps.py:68
 msgid ""
 "It is able to customize the backgrounds, application look, window borders, "
 "icons, GNOME splash and GDM window. More than 100 themes can be installed, "
@@ -5337,31 +5091,23 @@ msgstr ""
 "http://art.gnome.org 下載。GNOMEArtNG 的官方網站是 "
 "http://developer.berlios.de/projects/gnomeartng/"
 
-#: ../ailurus/ubuntu/apps.py:106 ../ailurus/ubuntu/apps.py:147
+#: ../ailurus/ubuntu/apps.py:104 ../ailurus/ubuntu/apps.py:145
 msgid ""
 "Deactivate Getty ( Ctrl+Alt+F2 ... F6 ), Ctrl+Alt+F1 is still activated"
 msgstr "停用 Getty ( Ctrl-Alt-F2 ... F6 )，Ctrl-Alt-F1 仍然可以使用"
 
-#: ../ailurus/ubuntu/apps.py:107 ../ailurus/ubuntu/apps.py:148
+#: ../ailurus/ubuntu/apps.py:105 ../ailurus/ubuntu/apps.py:146
 msgid "Speed up Linux start up process. Free 2.5 MBytes memory. "
 msgstr "加速 Linux 啓動過程，釋放 2.5 MB 的記憶體 "
 
 #. OpenJUMP is not in Fedora :(
-#: ../ailurus/ubuntu/apps.py:186
+#: ../ailurus/ubuntu/apps.py:184
 msgid "OpenJUMP: A geographic information system"
 msgstr "OpenJUMP：一個地理資訊系統軟體"
 
-#: ../ailurus/ubuntu/apps.py:192
+#: ../ailurus/ubuntu/apps.py:190
 msgid "Remastersys: Backup your system to a live CD"
 msgstr "Remastersys：將您的系統備份成一個 Live CD"
-
-#: ../ailurus/ubuntu/apt_recovery_pane.py:30
-msgid ""
-"Recover\n"
-"APT"
-msgstr ""
-"恢復\n"
-"APT"
 
 #: ../ailurus/ubuntu/cure.py:41
 msgid ""
@@ -5440,6 +5186,14 @@ msgstr "移除 ubuntu-docs 套件。可釋放 270M 的磁碟空間。"
 msgid "change %(old)s to %(new)s"
 msgstr "變更 %(old)s 為 %(new)s"
 
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:39
+msgid ""
+"Fastest\n"
+"Repository"
+msgstr ""
+"最快速的\n"
+"套件庫"
+
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "The fastest repository is %s"
@@ -5448,7 +5202,7 @@ msgstr "最快速的套件庫是 %s"
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:65
 #, python-format
 msgid "(%s millisecond)"
-msgstr "(%s ms)"
+msgstr "(%s 毫秒)"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:67
 msgid "Currently you are using these third-party repositories:"
@@ -5458,19 +5212,12 @@ msgstr "您目前使用這些第三方套件庫："
 msgid ""
 "<b>Backup the configuration of repositories:</b>\n"
 "cd /etc/apt/\n"
-"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+"tar czf $HOME/sources.backup.tar.gz sources.list sources.list.d/\n"
 "\n"
 "<b>Restore the configuration of repositories:</b>\n"
 "cd /etc/apt/\n"
-"sudo tar xzf ~/sources.backup.tar.gz"
+"sudo tar xzf $HOME/sources.backup.tar.gz"
 msgstr ""
-"<b>備份套件庫設定：</b>\n"
-"cd /etc/apt/\n"
-"tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
-"\n"
-"<b>還原套件庫設定：</b>\n"
-"cd /etc/apt/\n"
-"sudo tar xzf ~/sources.backup.tar.gz"
 
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:98
 msgid "Backup and restore the configuration of repositories"
@@ -5493,6 +5240,31 @@ msgstr "將 /etc/apt/sources.list.d/ 下的所有檔案合併到 /etc/apt/source
 msgid "How to backup and restore the configuration of repositories?"
 msgstr "如何備份與還原套件庫設定？"
 
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:140
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:430
+msgid "Click mouse right button to display the context menu."
+msgstr "點擊滑鼠右鍵以顯示右鍵選單。"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:155
+msgid "No response"
+msgstr "沒有回應"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:157
+msgid "Not detected"
+msgstr "未被偵測"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:211
+#, python-format
+msgid ""
+"<span color='black'>Response time of %(server)s is %(value).2f ms.</span>"
+msgstr "<span color='black'>%(server)s 的反應時間是 %(value).2f 毫秒。</span>"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:213
+#: ../ailurus/ubuntu/quick_setup.py:268
+#, python-format
+msgid "<span color='black'>Server %s is unreachable.</span>"
+msgstr "<span color='black'>伺服器 %s 無回應。</span>"
+
 #: ../ailurus/ubuntu/fastest_mirror_pane.py:225
 #, python-format
 msgid "Currently you are using %s."
@@ -5507,7 +5279,41 @@ msgstr "變更套件庫"
 msgid "Run \"apt-get update\". Please wait for few minutes."
 msgstr "執行「apt-get update」，請稍待幾分鐘。"
 
-#: ../ailurus/ubuntu/fastest_mirror_pane.py:538
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:345
+msgid "Detect response time of selected repositories"
+msgstr "偵測選取的套件庫反應時間"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:349
+msgid "Detect response time of all repositories"
+msgstr "偵測所有套件庫的反應時間"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:353
+msgid "Select all repositories in these countries"
+msgstr "選擇這些國家的所有套件庫"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:357
+msgid ""
+"If some repositories are not listed above, please click here to tell Ailurus "
+"developers."
+msgstr "如果有套件庫未被列出，請點擊這裏通知 Ailurus 開發者。"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:392
+msgid "Country"
+msgstr "國家"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:399
+msgid "Organization"
+msgstr "組織"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:417
+msgid "Response time"
+msgstr "反應時間"
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:480
+msgid "All repositories:"
+msgstr "所有套件庫："
+
+#: ../ailurus/ubuntu/fastest_mirror_pane.py:536
 msgid ""
 "# Do not edit this file. This is just an example.\n"
 "# The following content can be copy-pasted into /etc/apt/sources.list\n"
@@ -5548,7 +5354,7 @@ msgstr "搜尋最快速的套件庫"
 msgid "Full language support and input method"
 msgstr "完整的語言支援與輸入法"
 
-#: ../ailurus/ubuntu/quick_setup.py:79 ../unfree/for_fedora.py:266
+#: ../ailurus/ubuntu/quick_setup.py:79
 msgid "Multi-media codec"
 msgstr "多媒體解碼器"
 
@@ -5681,10 +5487,6 @@ msgid ""
 msgstr ""
 "編輯\n"
 "套件庫"
-
-#: ../ailurus/ubuntu/repos_config_pane.py:52
-msgid "Enabled"
-msgstr "已啟用"
 
 #: ../ailurus/ubuntu/repos_config_pane.py:75
 msgid "Add"
@@ -6119,200 +5921,6 @@ msgstr ""
 "apt-cache show PACKAGE_NAME\n"
 "\n"
 
-#: ../unfree/for_ubuntu.py:83
-msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
-msgstr "Alipay (支付寶) 的 Firefox 插件"
-
-#: ../unfree/for_ubuntu.py:120
-msgid ""
-"Drive a spaceship and battle against invaders! Collect money during the "
-"combat. Upgrade armaments and weapons."
-msgstr "駕駛太空船與入侵者作戰！在戰鬥中收集金錢。升級軍備與武器。"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:147
-msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
-msgstr "LaTeX 論文模板 (由中國科學院開發)"
-
-#: ../unfree/for_ubuntu.py:149
-#, python-format
-msgid ""
-"After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
-msgstr "安裝後，%s 資料夾內會出現 CASthesis.zip 檔案。"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:161
-msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
-msgstr "LaTeX 論文模板 (由中國西安交通大學開發)"
-
-#: ../unfree/for_ubuntu.py:163
-#, python-format
-msgid ""
-"After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
-msgstr "安裝後，%s 資料夾內會出現 XJTUthesis.rar 檔案。"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:175
-msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
-msgstr "LaTeX 論文模板 (由中國哈爾濱工業大學開發)"
-
-#: ../unfree/for_ubuntu.py:177
-#, python-format
-msgid ""
-"After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
-msgstr "安裝後，%s 資料夾內會出現 HITthesis.rar 檔案。"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:186
-msgid "JavaScript Debugger: a powerful JavaScript debugger"
-msgstr "JavaScript Debugger：強大的 JavaScript 除錯工具"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:193
-msgid "Mac OS X Theme"
-msgstr "Mac OS X 佈景主題"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:200
-msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
-msgstr "NetVideoHunter：從影片共享網站下載影片"
-
-#. cannot find out which license it is released under
-#: ../unfree/for_ubuntu.py:207
-msgid "Personas: One-click changing Firefox skin"
-msgstr "Personas：單鍵變更 Firefox 外觀"
-
-#: ../unfree/for_ubuntu.py:208
-msgid "Theme your browser according to your mood, hobby or season."
-msgstr "根據您的心情、喜好、天氣來變更瀏覽器的佈景主題。"
-
-#: ../unfree/for_ubuntu.py:214 ../unfree/for_fedora.py:327
-msgid "Google Earth"
-msgstr "Google Earth"
-
-#: ../unfree/for_ubuntu.py:215 ../unfree/for_fedora.py:328
-msgid ""
-"Please install it in /opt/google-earth. Otherwise it cannot be detected."
-msgstr "請安裝在 /opt/google-earth，否則會無法偵測到。"
-
-#: ../unfree/for_ubuntu.py:227 ../unfree/for_ubuntu.py:241
-msgid "video card driver"
-msgstr "影像卡驅動程式"
-
-#: ../unfree/for_ubuntu.py:268 ../unfree/for_fedora.py:381
-msgid "Anti virus and anti spyware"
-msgstr "防毒與防間諜軟體"
-
-#: ../unfree/for_ubuntu.py:293
-msgid "Oracle"
-msgstr "甲骨文"
-
-#: ../unfree/for_ubuntu.py:295
-msgid ""
-"This repository provides Oracle Database Express Edition.\n"
-"After installing Oracle Database, please add yourself to the \"dba\" group, "
-"then run \"sudo /etc/init.d/oracle-xe configure\"."
-msgstr ""
-"這個套件庫提供了 Oracle Database Express Edition。\n"
-"當安裝 Oracle Database 之後，請將自己加入「dba」群組，並執行「sudo /etc/init.d/oracle-xe "
-"configure」指令。"
-
-#: ../unfree/for_ubuntu.py:307 ../unfree/for_fedora.py:407
-msgid "Use HTML, JavaScript and Flash to build desktop applications"
-msgstr "使用 HTML、JavaScript 與 Flash 來建構桌面應用程式"
-
-#: ../unfree/for_ubuntu.py:320 ../unfree/for_fedora.py:422
-msgid "An image organizer and image viewer, plus photo-sharing function"
-msgstr "一個圖片管理器與檢視器，也有分享照片的功能"
-
-#: ../unfree/for_ubuntu.py:336
-msgid ""
-"Organizes research paper collection and citations. It automatically "
-"generates bibliographies."
-msgstr "組織已收集和引用的研究論文，自動產生參考文獻表。"
-
-#: ../unfree/for_ubuntu.py:347 ../unfree/for_fedora.py:436
-msgid "TrueCrypt: Open-Source disk encryption software"
-msgstr "TrueCrypt：開放原始碼的磁碟加密軟體"
-
-#: ../unfree/for_ubuntu.py:348 ../unfree/for_fedora.py:437
-msgid "Create a virtual encrypted disk or encrypt an entire partition"
-msgstr "建立一個加密的虛擬磁碟，或是加密一整塊分割區"
-
-#: ../unfree/for_fedora.py:83
-msgid "This repository provides flash-plugin and Adobe Reader."
-msgstr "這個套件庫提供 Flash 插件與 Adobe Reader。"
-
-#: ../unfree/for_fedora.py:127
-msgid "RPM Fusion (Free)"
-msgstr "RPM Fusion (自由軟體)"
-
-#: ../unfree/for_fedora.py:129 ../unfree/for_fedora.py:157
-msgid "RPM Fusion provides software that not in the standard repositories."
-msgstr "RPM Fusion 提供了不在官方源內的軟件包。"
-
-#: ../unfree/for_fedora.py:155
-msgid "RPM Fusion (Non-Free)"
-msgstr "RPM Fusion (非自由軟體)"
-
-#: ../unfree/for_fedora.py:185
-msgid "This repository provides Picasa and Google Desktop."
-msgstr "這個套件庫提供 Picasa 與 Google 桌面。"
-
-#: ../unfree/for_fedora.py:214
-msgid "This repository provides Google Chrome."
-msgstr "這個套件庫提供 Google Chrome。"
-
-#: ../unfree/for_fedora.py:242
-msgid "This repository provides VirtualBox."
-msgstr "這個套件庫提供 VirtualBox。"
-
-#: ../unfree/for_fedora.py:273
-msgid "Adobe Flash plugin for web browser"
-msgstr "供網頁瀏覽器使用的 Adobe Flash 附加元件"
-
-#: ../unfree/for_fedora.py:279
-msgid "Adobe PDF Reader"
-msgstr "Adobe PDF 閱讀器"
-
-#: ../unfree/for_fedora.py:305
-msgid "Google Chrome browser"
-msgstr "Google Chrome 瀏覽器"
-
-#: ../unfree/for_fedora.py:307
-msgid ""
-"This is the web browser from Google. \n"
-"You can change themes by opening web-page "
-"https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
-msgstr ""
-"Google 提供的網路瀏覽器。\n"
-"您可以用 Google Chrome 開啟 "
-"https://tools.google.com/chrome/intl/pt/themes/index.html 網頁來變更佈景主題。"
-
-#: ../unfree/for_fedora.py:322
-msgid "You have installed \"google-chrome-unstable\"."
-msgstr "已經安裝「google-chrome-unstable」。"
-
-#: ../unfree/for_fedora.py:324
-msgid "You have installed \"google-chrome-beta\"."
-msgstr "已經安裝「google-chrome-beta」。"
-
-#: ../unfree/for_fedora.py:341
-msgid ""
-"It is the only professional virtual machine which is freely available under "
-"the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
-msgstr ""
-"這是唯一一個以 GPL 發布的專業虛擬機器軟體，官方網站： http://www.virtualbox.org/wiki/Downloads"
-
-#: ../unfree/for_fedora.py:350
-msgid ""
-"With Skype you can make free calls over the Internet to other people. "
-msgstr "使用 Skype，您可以利用網際網路免費講電話。 "
-
-#: ../unfree/for_fedora.py:359
-msgid "Open source web browser"
-msgstr "開放原始碼的網頁瀏覽器"
-
 #~ msgid "English"
 #~ msgstr "English"
 
@@ -6469,6 +6077,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Enhancements"
 #~ msgstr "增強"
 
+#~ msgid "action"
+#~ msgstr "動作"
+
 #~ msgid "<span color=\"yellow\">Checking desktop environment ... </span>\n"
 #~ msgstr "<span color=\"yellow\">檢查桌面環境 ... </span>\n"
 
@@ -6526,6 +6137,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Developed by Örebro university, Sweden."
 #~ msgstr "由瑞典 Örebro 大學開發。"
 
+#~ msgid "Google Chrome browser"
+#~ msgstr "Google Chrome 瀏覽器"
+
 #~ msgid "How to install Warcraft III and DotA on Ubuntu ?"
 #~ msgstr "如何在 Ubuntu 上安裝 Warcraft III 和 DotA？"
 
@@ -6534,6 +6148,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "Recovery"
 #~ msgstr "恢複"
+
+#~ msgid "Oracle"
+#~ msgstr "甲骨文"
 
 #~ msgid "unknown"
 #~ msgstr "未知"
@@ -6724,6 +6341,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "Adobe® PDF Reader"
 #~ msgstr "Adobe® PDF Reader"
+
+#~ msgid "RPM Fusion provides software that not in the standard repositories."
+#~ msgstr "RPM Fusion 提供了不在官方源內的軟件包。"
 
 #~ msgid "Next generation input method"
 #~ msgstr "下一代輸入法"
@@ -6997,6 +6617,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ "Official site: <span color=\"blue\"><u>http://www.alice.org/</u></span> ."
 #~ msgstr "官方網站： <span color=\"blue\"><u>http://www.alice.org/</u></span> 。"
 
+#~ msgid "Alipay ( Zhi Fu Bao ) security plugin for Firefox"
+#~ msgstr "Alipay (支付寶) 的 Firefox 插件"
+
 #~ msgid ""
 #~ "Official site: <span "
 #~ "color='blue'><u>http://blog.alipay.com/301.html</u></span>"
@@ -7083,6 +6706,30 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "TeXLive will not work until you restart the computer."
 #~ msgstr "在您重新啓動電腦後才能使用 TeXLive。"
 
+#~ msgid "LaTeX Thesis Templates by Chinese Academy of Sciences"
+#~ msgstr "LaTeX 論文模板 (由中國科學院開發)"
+
+#, python-format
+#~ msgid ""
+#~ "After installation, a file \"CASthesis.zip\" is placed in the folder \"%s\"."
+#~ msgstr "安裝後，%s 資料夾內會出現 CASthesis.zip 檔案。"
+
+#~ msgid "LaTeX Thesis Templates by Xi'an Jiaotong University, China"
+#~ msgstr "LaTeX 論文模板 (由中國西安交通大學開發)"
+
+#, python-format
+#~ msgid ""
+#~ "After installation, a file \"XJTUthesis.rar\" is placed in the folder \"%s\"."
+#~ msgstr "安裝後，%s 資料夾內會出現 XJTUthesis.rar 檔案。"
+
+#~ msgid "LaTeX Thesis Templates by Harbin Institute of Technology, China"
+#~ msgstr "LaTeX 論文模板 (由中國哈爾濱工業大學開發)"
+
+#, python-format
+#~ msgid ""
+#~ "After installation, a file \"HITthesis.rar\" is placed in the folder \"%s\"."
+#~ msgstr "安裝後，%s 資料夾內會出現 HITthesis.rar 檔案。"
+
 #~ msgid "Download via bittorrent + Search videos + Play videos"
 #~ msgstr "用 bittorrent 下載 + 搜尋影片 + 播放影片"
 
@@ -7100,6 +6747,21 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "A coat of Chrome for Firefox 3.5.*"
 #~ msgstr "Firefox 3.5.* 的 Chrome 外觀"
+
+#~ msgid "JavaScript Debugger: a powerful JavaScript debugger"
+#~ msgstr "JavaScript Debugger：強大的 JavaScript 除錯工具"
+
+#~ msgid "Mac OS X Theme"
+#~ msgstr "Mac OS X 佈景主題"
+
+#~ msgid "NetVideoHunter: Download videoclips from video-sharing web sites"
+#~ msgstr "NetVideoHunter：從影片共享網站下載影片"
+
+#~ msgid "Personas: One-click changing Firefox skin"
+#~ msgstr "Personas：單鍵變更 Firefox 外觀"
+
+#~ msgid "Theme your browser according to your mood, hobby or season."
+#~ msgstr "根據您的心情、喜好、天氣來變更瀏覽器的佈景主題。"
 
 #~ msgid "Tab Mix Lite CE: Re-open closed tabs"
 #~ msgstr "Tab Mix Lite CE：重新開啟已關閉的分頁"
@@ -7153,6 +6815,52 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "OpenGL vendor"
 #~ msgstr "OpenGL 製造者"
+
+#~ msgid "Run command: "
+#~ msgstr "執行指令： "
+
+#~ msgid "Network restarted successfully."
+#~ msgstr "重新啓動網路連線成功。"
+
+#~ msgid "Restart network"
+#~ msgstr "重新啓動網路連線"
+
+#~ msgid ""
+#~ "These commands will be executed:\n"
+#~ "dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+#~ "/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+#~ "dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+#~ "/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+#~ "sudo /etc/init.d/networking restart"
+#~ msgstr ""
+#~ "將執行以下指令：\n"
+#~ "dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+#~ "/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.sleep\n"
+#~ "dbus-send --system --dest=org.freedesktop.NetworkManager --type=method_call "
+#~ "/org/freedesktop/NetworkManager org.freedesktop.NetworkManager.wake\n"
+#~ "sudo /etc/init.d/networking restart"
+
+#, python-format
+#~ msgid "No more than %s KB of memory can be reclaimed."
+#~ msgstr "最多能回收 %s KB 的記憶體。"
+
+#, python-format
+#~ msgid "%s KB memory was reclaimed."
+#~ msgstr "回收了 %s KB 的記憶體。"
+
+#~ msgid "Reclaim memory"
+#~ msgstr "回收記憶體"
+
+#~ msgid ""
+#~ "If you want some program to start up automatically, please put '.desktop' "
+#~ "files into '~/.config/autostart'\n"
+#~ msgstr "如果您想讓某些程式自動執行，請將 '.desktop' 檔案放入 '~/.config/autostart' 目錄\n"
+
+#~ msgid ""
+#~ "You can configure \"preferred applications\" by this file "
+#~ "\"~/.local/share/applications/mimeapps.list\"\n"
+#~ msgstr ""
+#~ "您可以在「~/.local/share/applications/mimeapps.list」設定用來開啟某些類型檔案的「首選應用程式」。\n"
 
 #~ msgid ""
 #~ "This is an indispensable application for running Windows applications on "
@@ -7339,6 +7047,16 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Parcellite: clipboard manager"
 #~ msgstr "Parcellite：剪貼簿管理程式"
 
+#~ msgid ""
+#~ "It is the only professional virtual machine which is freely available under "
+#~ "the terms of GPL. Official site: http://www.virtualbox.org/wiki/Downloads"
+#~ msgstr ""
+#~ "這是唯一一個以 GPL 發布的專業虛擬機器軟體，官方網站： http://www.virtualbox.org/wiki/Downloads"
+
+#~ msgid ""
+#~ "With Skype you can make free calls over the Internet to other people. "
+#~ msgstr "使用 Skype，您可以利用網際網路免費講電話。 "
+
 #~ msgid "Adobe native 64bit Flash plugin for Firefox"
 #~ msgstr "Firefox 使用的 Adobe 原生 64 位 Flash 插件"
 
@@ -7356,6 +7074,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Fedora version:"
 #~ msgstr "Fedora 版本："
 
+#~ msgid "RPM Fusion (Free)"
+#~ msgstr "RPM Fusion (自由軟體)"
+
 #~ msgid ""
 #~ "RPM Fusion provides software that not in the standard repositories.\n"
 #~ "It is possible that \"ATrpms\" repository conflicts with \"RPM Fusion\" "
@@ -7363,6 +7084,12 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr ""
 #~ "RPM Fusion 提供了不在官方套件庫內的軟體。\n"
 #~ "「ATrpms」套件庫可能會與「RPM Fusion」套件庫相衝突。"
+
+#~ msgid "RPM Fusion (Non-Free)"
+#~ msgstr "RPM Fusion (非自由軟體)"
+
+#~ msgid "This repository provides Google Chrome."
+#~ msgstr "這個套件庫提供 Google Chrome。"
 
 #~ msgid ""
 #~ "This repository provides VirtualBox.\n"
@@ -7419,14 +7146,58 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Display \"Mounted volumn\" icon"
 #~ msgstr "顯示「已掛載儲存裝置」圖示"
 
+#~ msgid "Show login splash image: "
+#~ msgstr "登入後顯示彈出圖片： "
+
+#~ msgid ""
+#~ "If its value is true, a splash image is displayed after you log in to GNOME."
+#~ msgstr "如果設定值為 true，則在您登入 GNOME 後會顯示彈出圖片。"
+
 #~ msgid "Splash image:"
 #~ msgstr "彈出圖片："
 
 #~ msgid "The file which is used as the GNOME splash image."
 #~ msgstr "作為 GNOME 彈出圖片的檔案。"
 
+#~ msgid "GNOME splash image"
+#~ msgstr "GNOME 彈出圖片"
+
+#~ msgid "Remember running applications when you log out."
+#~ msgstr "登出時記住正在執行的應用程式。"
+
+#~ msgid ""
+#~ "If its value is true, GNOME will remember the running applications when you "
+#~ "log out, and re-launch these applications at the next time you log in to "
+#~ "GNOME."
+#~ msgstr "如果設定值為 true，則 GNOME 將記住您登出時正在執行的程式，當您下次登入時重新啓動這些程式。"
+
+#~ msgid "Configure autostart applications"
+#~ msgstr "設定自動啓動程式"
+
 #~ msgid "Run command: gnome-session-properties"
 #~ msgstr "執行指令: gnome-session-properties"
+
+#~ msgid ""
+#~ "~/.thumbnails/ directory is a cache dir GNOME makes when you browse through "
+#~ "your folders in nautilus. \n"
+#~ "It contains thumbnail pictures of picture files you've previously looked "
+#~ "at.\n"
+#~ "\n"
+#~ "You can get its total size by \n"
+#~ "du -bs ~/.thumbnails/\n"
+#~ "\n"
+#~ "You can delete the files in the .thumbnails directory that haven't been "
+#~ "accessed for seven days, to free disk space.\n"
+#~ "find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
+#~ msgstr ""
+#~ "~/.thumbnails/ 是在您用 Nautilus® 瀏覽檔案目錄時，由 GNOME 自動建立的快取目錄。\n"
+#~ "裏面有您之前瀏覽過的圖片的縮圖檔案。\n"
+#~ "\n"
+#~ "可以用這個指令得知該目錄用總容量 \n"
+#~ "du -bs ~/.thumbnails/\n"
+#~ "\n"
+#~ "您可以刪除該目錄下超過 7 天未被存取的檔案以釋放磁碟空間。\n"
+#~ "find ~/.thumbnails/ -type f -atime +7 -exec rm {} \\;\n"
 
 #~ msgid ""
 #~ "GConf key:\n"
@@ -8307,6 +8078,57 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ "一些小訣竅，例如「如何變更開始選單中的 Ubuntu logo」\n"
 #~ "https://help.ubuntu.com/community/QuickTips"
 
+#~ msgid "Write comments"
+#~ msgstr "寫註解"
+
+#~ msgid "Would you like to write some comments for this snapshot?"
+#~ msgstr "您想要為這個快照寫些註解嗎？"
+
+#, python-format
+#~ msgid "Snapshots made in %(year)04d-%(month)02d:"
+#~ msgstr "在 %(year)04d-%(month)02d 的快照："
+
+#, python-format
+#~ msgid "There is no snapshot in %(year)04d-%(month)02d."
+#~ msgstr "沒有 %(year)04d-%(month)02d 的快照。"
+
+#, python-format
+#~ msgid "There is no snapshot in %(year)04d-%(month)02d-%(day)02d."
+#~ msgstr "沒有 %(year)04d-%(month)02d-%(day)02d 的快照。"
+
+#, python-format
+#~ msgid "Since %(year)04d-%(month)02d-%(day)02d, there is no change."
+#~ msgstr "從 %(year)04d-%(month)02d-%(day)02d 以後，沒有任何變更。"
+
+#~ msgid "Create today's snapshot"
+#~ msgstr "建立今天的快照"
+
+#~ msgid "Show changes since selected day"
+#~ msgstr "顯示選取的日期之後，的套件變更"
+
+#~ msgid "packages"
+#~ msgstr "套件"
+
+#~ msgid "It was installed."
+#~ msgstr "已安裝。"
+
+#~ msgid "It was removed."
+#~ msgstr "已移除。"
+
+#~ msgid "To do:"
+#~ msgstr "要做的工作："
+
+#~ msgid ""
+#~ "In order to revoke packages, you can drag items from the left box to the "
+#~ "right box, then click the button. "
+#~ msgstr "請從左邊欄位將要撤銷的套件拉到右邊欄位，然後點擊按鈕。 "
+
+#~ msgid "Changes:"
+#~ msgstr "變更："
+
+#~ msgid "Existing snapshots are displayed in bold font."
+#~ msgstr "現有快照用粗體字顯示。"
+
 #~ msgid "Find fastest repository mirror"
 #~ msgstr "尋找最快速的套件庫"
 
@@ -8421,8 +8243,34 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ "<small>(Click mouse right button to display the context menu.)</small>"
 #~ msgstr "<small>(點擊滑鼠右鍵以顯示右鍵選單。)</small>"
 
+#~ msgid ""
+#~ "<b>Backup the configuration of repositories:</b>\n"
+#~ "cd /etc/apt/\n"
+#~ "tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+#~ "\n"
+#~ "<b>Restore the configuration of repositories:</b>\n"
+#~ "cd /etc/apt/\n"
+#~ "sudo tar xzf ~/sources.backup.tar.gz"
+#~ msgstr ""
+#~ "<b>備份套件庫設定：</b>\n"
+#~ "cd /etc/apt/\n"
+#~ "tar czf ~/sources.backup.tar.gz sources.list sources.list.d/\n"
+#~ "\n"
+#~ "<b>還原套件庫設定：</b>\n"
+#~ "cd /etc/apt/\n"
+#~ "sudo tar xzf ~/sources.backup.tar.gz"
+
 #~ msgid "Use the fastest repository"
 #~ msgstr "使用最快速的套件庫"
+
+#~ msgid "Please select one repository only"
+#~ msgstr "請只選一個套件庫"
+
+#~ msgid "Use selected repositories"
+#~ msgstr "使用選取的套件庫"
+
+#~ msgid "Unselect all"
+#~ msgstr "全部不選"
 
 #~ msgid " \"Install software\" + \"Configure Linux\" + \"Study Linux skills\""
 #~ msgstr " 「安裝軟體」+「設定 Linux」+「學習 Linux 訣竅」"
@@ -8443,6 +8291,15 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr ""
 #~ "Linux 核心 2.6.31 版。它含有 GEM (圖形執行管理)，是 Intel® 新的顯示驅動程式架構。這是從 "
 #~ "http://kernel.ubuntu.com/~kernel-ppa/mainline/ 下載。"
+
+#~ msgid ""
+#~ "This is the web browser from Google. \n"
+#~ "You can change themes by opening web-page "
+#~ "https://tools.google.com/chrome/intl/pt/themes/index.html in Google Chrome."
+#~ msgstr ""
+#~ "Google 提供的網路瀏覽器。\n"
+#~ "您可以用 Google Chrome 開啟 "
+#~ "https://tools.google.com/chrome/intl/pt/themes/index.html 網頁來變更佈景主題。"
 
 #~ msgid "Merge complete"
 #~ msgstr "合併"
@@ -8492,6 +8349,13 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr ""
 #~ "Linux\n"
 #~ "資訊"
+
+#~ msgid ""
+#~ "Recover\n"
+#~ "APT"
+#~ msgstr ""
+#~ "恢復\n"
+#~ "APT"
 
 #~ msgid "<span color=\"grey\">Checking desktop environment ... </span>\n"
 #~ msgstr "<span color=\"grey\">正在檢查桌面環境... </span>\n"
@@ -8554,6 +8418,22 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr "使用您的家目錄當作桌面"
 
 #~ msgid ""
+#~ "If you want to use colorful \"ls\", that is, use colors to distinguish types "
+#~ "of files, you can add these lines in ~/.bashrc:\n"
+#~ "\n"
+#~ "if [ \"$TERM\" != \"dumb\" ]; then\n"
+#~ "    eval \"`dircolors -b`\"\n"
+#~ "    alias ls='ls --color=auto'\n"
+#~ "fi"
+#~ msgstr ""
+#~ "如果您想要使用彩色的 ls 指令，用不同的顏色來區分檔案類型，請在 ~/.bashrc 加入以下幾行：\n"
+#~ "\n"
+#~ "if [ \"$TERM\" != \"dumb\" ]; then\n"
+#~ "    eval \"`dircolors -b`\"\n"
+#~ "    alias ls='ls --color=auto'\n"
+#~ "fi"
+
+#~ msgid ""
 #~ "Change GEdit settings as follows. Automatically indent current line. "
 #~ "Comment/uncomment codes by Ctrl+M and Shift+Ctrl+M. Indent/unindent codes by "
 #~ "Ctrl+T and Shift+Ctrl+T. Add spell check function in \"Tools\" menu. Do not "
@@ -8613,6 +8493,12 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr ""
 #~ "一個與 Matlab® 相容的數值計算程式。\n"
 #~ "指令： yum install qtoctave"
+
+#~ msgid "This repository provides flash-plugin and Adobe Reader."
+#~ msgstr "這個套件庫提供 Flash 插件與 Adobe Reader。"
+
+#~ msgid "This repository provides Picasa and Google Desktop."
+#~ msgstr "這個套件庫提供 Picasa 與 Google 桌面。"
 
 #~ msgid "Google Chrome, Picasa 2 and Google Desktop"
 #~ msgstr "Google Chrome、Picasa 2 與 Google 桌面"
@@ -9003,11 +8889,21 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "and many other people."
 #~ msgstr "與許多其他人。"
 
+#~ msgid ""
+#~ "Reclaim memory which stores pagecache, dentries and inodes.\n"
+#~ "This operation is done by \"echo 3 >/proc/sys/vm/drop_caches\""
+#~ msgstr ""
+#~ "回收記憶體中的分頁快取、目錄快取與 inode 快取。\n"
+#~ "這個操作使用此指令完成：「echo 3 >/proc/sys/vm/drop_caches」"
+
 #~ msgid "Electronics & Mechanics"
 #~ msgstr "電子學與機械學"
 
 #~ msgid "Choose a file"
 #~ msgstr "請選擇檔案"
+
+#~ msgid "Open source web browser"
+#~ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "Screen vertical size coefficient"
 #~ msgstr "螢幕垂直大小係數"
@@ -9059,6 +8955,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "A new version is available"
 #~ msgstr "有更新的版本"
+
+#~ msgid "The login icon is ~/.face"
+#~ msgstr "登入圖示是 ~/.face"
 
 #~ msgid "Ailurus' D-Bus daemon exited with error."
 #~ msgstr "Ailurus 的 D-Bus 服務已因錯誤而結束。"
@@ -9151,6 +9050,13 @@ msgstr "開放原始碼的網頁瀏覽器"
 
 #~ msgid "Language support"
 #~ msgstr "語言支援"
+
+#~ msgid ""
+#~ "Recover\n"
+#~ "RPM"
+#~ msgstr ""
+#~ "恢復\n"
+#~ "RPM"
 
 #~ msgid "usage: ailurus [options]"
 #~ msgstr "語法： ailurus [選項]"
@@ -9335,6 +9241,9 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Hide"
 #~ msgstr "隱藏"
 
+#~ msgid "Do not query me any more."
+#~ msgstr "下次不要再詢問。"
+
 #~ msgid "Firestarter: Configure Linux firewall"
 #~ msgstr "Firestarter：設定 Linux 防火牆"
 
@@ -9494,8 +9403,32 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "\"Recent documents\" list is empty now."
 #~ msgstr "「最近存取」清單已經清空了。"
 
+#~ msgid "echo \"\" > ~/.recently-used.xbel"
+#~ msgstr "echo \"\" > ~/.recently-used.xbel"
+
+#~ msgid ""
+#~ "Linux uses up extra physical memory to work as a disk buffer cache. Press "
+#~ "the button above to free cache. This is not a destructive operation because "
+#~ "dirty data will not be freed.\n"
+#~ "Command: echo 3 >/proc/sys/vm/drop_caches"
+#~ msgstr ""
+#~ "Linux 使用大量實體記憶體做為磁碟緩衝快取；按上方的按鈕可以清除快取。這不是破壞性的操作，實際資料不會被清除。\n"
+#~ "指令： echo 3 >/proc/sys/vm/drop_caches"
+
 #~ msgid "Official site:"
 #~ msgstr "官方網站："
+
+#~ msgid ""
+#~ "After that, you can easily chdir to desktop folder by command \"cd "
+#~ "~/Desktop\"."
+#~ msgstr "之後您就可以輕易地以「cd ~/Desktop」變換到桌面資料夾。"
+
+#~ msgid ""
+#~ "Prevent destruction when you mistype \"rm subdir/*\" as \"rm subdir/ *\".\n"
+#~ "Add this line into ~/.bashrc: alias rm=\"rm -I\""
+#~ msgstr ""
+#~ "可避免您因為把「rm subdir/*」誤輸入成「rm subdir/ *」而造成損害\n"
+#~ "在 ~/.bashrc 加入這行：「alias rm=\"rm -I\"」"
 
 #~ msgid "An eMule-like client for eD2k and Kademlia networks"
 #~ msgstr "類似 eMule 的程式，用於 eD2k 與 Kademlia 協定"
@@ -9587,6 +9520,31 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Before configuring Firefox, please close all Firefox windows."
 #~ msgstr "在設定 Firefox 之前，請先關閉所有的 Firefox 視窗。"
 
+#~ msgid "Add this line into ~/.bashrc:"
+#~ msgstr "將這行加到 ~/.bashrc"
+
+#~ msgid "(Command: gnome-session-properties)"
+#~ msgstr "(指令： gnome-session-properties)"
+
+#~ msgid ""
+#~ "Create a file ~/.local/share/applications/gnome-control-center.desktop"
+#~ msgstr "建立 ~/.local/share/applications/gnome-control-center.desktop 檔案"
+
+#~ msgid "Enable GNOME panel animations"
+#~ msgstr "啟用 GNOME 面板動畫)"
+
+#~ msgid "Lock down all GNOME panels"
+#~ msgstr "鎖定所有 GNOME 面板"
+
+#~ msgid "(take effect at the next time when GNOME starts up)"
+#~ msgstr "(會在下次 GNOME 開始時生效)"
+
+#~ msgid "Confirm before removing a panel"
+#~ msgstr "移除面板時先確認"
+
+#~ msgid "GNOME panels settings"
+#~ msgstr "GNOME 面板設定"
+
 #~ msgid "Do not list username"
 #~ msgstr "不列出使用者名稱"
 
@@ -9631,6 +9589,16 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Source setting:"
 #~ msgstr "來源設定："
 
+#~ msgid "Google Earth"
+#~ msgstr "Google Earth"
+
+#~ msgid ""
+#~ "Please install it in /opt/google-earth. Otherwise it cannot be detected."
+#~ msgstr "請安裝在 /opt/google-earth，否則會無法偵測到。"
+
+#~ msgid "video card driver"
+#~ msgstr "影像卡驅動程式"
+
 #~ msgid "Please click this link:"
 #~ msgstr "請點連結："
 
@@ -9649,8 +9617,47 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Install templates"
 #~ msgstr "安裝範本"
 
+#~ msgid "Let you be the owner of directory ~/.config/ailurus"
+#~ msgstr "使您成為 ~/.config/ailurus 目錄的擁有者"
+
+#~ msgid "There is no other user"
+#~ msgstr "沒有其他的使用者"
+
+#~ msgid "Reset GNOME by removing these directories:"
+#~ msgstr "藉由移除下列目錄來重設 GNOME："
+
+#, python-format
+#~ msgid "Reset user %s"
+#~ msgstr "重設使用者 %s"
+
+#~ msgid "Please be careful."
+#~ msgstr "請小心。"
+
+#~ msgid ""
+#~ "In order to reset GNOME, please logout first, then login GNOME as another "
+#~ "user."
+#~ msgstr "為了重設 GNOME，請先登出，再以另一個使用者的身份登入 GNOME。"
+
+#~ msgid ""
+#~ "Cannot reset GNOME for current user because above files are being used."
+#~ msgstr "無法以目前使用者的身份重設 GNOME，因為上述檔案正在被使用當中。"
+
+#~ msgid "Anti virus and anti spyware"
+#~ msgstr "防毒與防間諜軟體"
+
+#~ msgid ""
+#~ "Drive a spaceship and battle against invaders! Collect money during the "
+#~ "combat. Upgrade armaments and weapons."
+#~ msgstr "駕駛太空船與入侵者作戰！在戰鬥中收集金錢。升級軍備與武器。"
+
 #~ msgid "ESET NOD32"
 #~ msgstr "ESET NOD32"
+
+#~ msgid "Adobe Flash plugin for web browser"
+#~ msgstr "供網頁瀏覽器使用的 Adobe Flash 附加元件"
+
+#~ msgid "Adobe PDF Reader"
+#~ msgstr "Adobe PDF 閱讀器"
 
 #~ msgid "HTTP error"
 #~ msgstr "HTTP 錯誤"
@@ -9671,14 +9678,61 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgid "Your name:"
 #~ msgstr "您的名稱："
 
+#~ msgid "I agree. Do not ask me again."
+#~ msgstr "我同意。不要再問我。"
+
+#, python-format
+#~ msgid "GNOME settings of user %s have been reset."
+#~ msgstr "使用者 %s 的 GNOME 設定已被重設。"
+
 #~ msgid "(network fault. not bug)"
 #~ msgstr "(網路錯誤。這並非 bug)"
 
 #~ msgid "Photo"
 #~ msgstr "照片"
 
+#~ msgid ""
+#~ "Please press \"OK\" button to install icons. Authentication is required."
+#~ msgstr "請按「確定」鍵安裝圖示。這個動作需要認證。"
+
+#~ msgid "You have installed \"google-chrome-unstable\"."
+#~ msgstr "已經安裝「google-chrome-unstable」。"
+
+#~ msgid "You have installed \"google-chrome-beta\"."
+#~ msgstr "已經安裝「google-chrome-beta」。"
+
+#~ msgid "This repository provides VirtualBox."
+#~ msgstr "這個套件庫提供 VirtualBox。"
+
 #~ msgid "Submit a Linux skill"
 #~ msgstr "貢獻一個 Linux 使用訣竅"
+
+#~ msgid "An image organizer and image viewer, plus photo-sharing function"
+#~ msgstr "一個圖片管理器與檢視器，也有分享照片的功能"
+
+#~ msgid ""
+#~ "Organizes research paper collection and citations. It automatically "
+#~ "generates bibliographies."
+#~ msgstr "組織已收集和引用的研究論文，自動產生參考文獻表。"
+
+#~ msgid ""
+#~ "There is syntax error in source configuration.\n"
+#~ "Please fix the error, then restart Ailurus."
+#~ msgstr ""
+#~ "來源設置文件中有錯誤的語法。\n"
+#~ "請修正錯誤，再重新啟動 Ailurus。"
+
+#~ msgid "Use HTML, JavaScript and Flash to build desktop applications"
+#~ msgstr "使用 HTML、JavaScript 與 Flash 來建構桌面應用程式"
+
+#~ msgid ""
+#~ "This repository provides Oracle Database Express Edition.\n"
+#~ "After installing Oracle Database, please add yourself to the \"dba\" group, "
+#~ "then run \"sudo /etc/init.d/oracle-xe configure\"."
+#~ msgstr ""
+#~ "這個套件庫提供了 Oracle Database Express Edition。\n"
+#~ "當安裝 Oracle Database 之後，請將自己加入「dba」群組，並執行「sudo /etc/init.d/oracle-xe "
+#~ "configure」指令。"
 
 #~ msgid ""
 #~ "Repository\n"
@@ -9686,3 +9740,17 @@ msgstr "開放原始碼的網頁瀏覽器"
 #~ msgstr ""
 #~ "套件庫\n"
 #~ "設定"
+
+#~ msgid ""
+#~ "NScripts help you change the background, create/check MD5 checksums, create "
+#~ "a diff, create shortcuts via Nautilus.\n"
+#~ "NScripts is installed in ~/.gnome2/nautilus-scripts."
+#~ msgstr ""
+#~ "NScripts 幫助您在 Nautilus 中變更桌面、建立/比對 MD5 雜湊值、比較文件與建立捷徑。\n"
+#~ "NScripts 預設安裝於 ~/.gnome2/nautilus-scripts 。"
+
+#~ msgid "TrueCrypt: Open-Source disk encryption software"
+#~ msgstr "TrueCrypt：開放原始碼的磁碟加密軟體"
+
+#~ msgid "Create a virtual encrypted disk or encrypt an entire partition"
+#~ msgstr "建立一個加密的虛擬磁碟，或是加密一整塊分割區"
