@@ -480,7 +480,7 @@ class MainView:
         dialog = gtk.MessageDialog(self.window, 
                 gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
                 _('Are you sure to exit?'))
-        check_button = gtk.CheckButton(_('Do not query me any more.'))
+        check_button = gtk.CheckButton(_('Do not ask me again.'))
         check_button.set_active(not Config.get_query_before_exit())
         dialog.vbox.pack_start(check_button)
         dialog.vbox.show_all()
