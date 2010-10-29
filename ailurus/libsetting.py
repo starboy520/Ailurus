@@ -121,7 +121,7 @@ class GConfShortcutKeyEntry(gtk.HBox):
 
     def __clear_entry_content(self, *w):        
         self.command_entry.set_text('')
-        self.shortcut_entry.set_text('')
+        self.shortcut_entry.set_text('disabled')
         
     def __init__(self, number):
         is_string_not_empty(number)
@@ -132,15 +132,13 @@ class GConfShortcutKeyEntry(gtk.HBox):
 
         self.number = number
         self.command_entry = gtk.Entry()
-        self.command_entry.set_tooltip_text(
-            _('The command which will be run.') + _('\nGConf key: ') + '/apps/metacity/keybinding_commands/' + self.number)
+        self.command_entry.set_tooltip_text(_('GConf key: ') + '/apps/metacity/keybinding_commands/' + self.number)
         value = g.get_string('/apps/metacity/keybinding_commands/'+number)
         if value: self.command_entry.set_text(value)
         self.command_entry.connect('changed', self.__entry_value_changed)
 
         self.shortcut_entry = gtk.Entry()
-        self.shortcut_entry.set_tooltip_text(
-            _('The shortcut key.') + _('\nGConf key: ') + '/apps/metacity/global_keybindings/run_' + self.number)
+        self.shortcut_entry.set_tooltip_text(_('GConf key: ') + '/apps/metacity/global_keybindings/run_' + self.number)
         self.shortcut_entry.connect('grab-focus', self.grab_key)
         value = g.get_string('/apps/metacity/global_keybindings/run_'+number)
         if value: self.shortcut_entry.set_text(value)
@@ -279,7 +277,70 @@ class GConfHScale(gtk.HScale):
         import gconf
         g = gconf.client_get_default()
         g.set_int(self.gconf_key, new_value)
-        
+
+class Set:
+    array = (
+              (D+'sora_icons/s_nautilus.png', _('Nautilus'), 'nautilus', ), 
+              (D+'sora_icons/s_desktop.png', _('Desktop'), 'desktop', ), 
+              (D+'umut_icons/s_window.png', _('Window effect'), 'window', ), 
+              (D+'umut_icons/s_menu.png', _('Menu'), 'menu', ), 
+              (D+'umut_icons/s_icon.png', _('Icon'), 'icon', ), 
+              (D+'umut_icons/s_font.png', _('Font'), 'font', ), 
+              (D+'umut_icons/s_session.png', _('GNOME Session'), 'session', ), 
+              (D+'umut_icons/s_panel.png', _('GNOME Panel'), 'panel', ),
+              (D+'umut_icons/s_memory.png', _('Memory'), 'memory', ), 
+              (D+'umut_icons/s_terminal.png', _('Terminal'), 'terminal', ),
+              (D+'umut_icons/s_sound.png', _('Sound'), 'sound', ), 
+              (D+'umut_icons/s_power.png', _('Power management'), 'power', ),
+              (D+'umut_icons/s_update.png', _('Update'), 'update', ),
+              (D+'umut_icons/s_restriction.png', _('Restriction'), 'restriction', ),
+              (D+'umut_icons/s_shortcutkey.png', _('Shortcut key'), 'shortcut', ),
+              (D+'sora_icons/s_firefox.png', _('Configure Firefox'), 'firefox', ),
+              (D+'umut_icons/s_login_window.png', _('Login window'), 'login_window', ),
+              (D+'umut_icons/s_compression.png', _('Compression'), 'compression', ),
+              (D+'umut_icons/s_gedit.png', _('GEdit'), 'gedit', ),
+              (D+'umut_icons/s_screensaver.png', _('Screensaver'), 'screensaver', ),
+    )
+    valid_categories = [item[2] for item in array]
+    category = None # string or list_of_string
+    title = None # string
+    content = None # gtk.Container
+    @classmethod
+    def category_list(cls):
+        if isinstance(cls.category, str):
+            return [cls.category]
+        else:
+            return cls.category
+    @classmethod
+    def f(cls): # must override, return gtk.Container
+        raise NotImplementedError
+    @classmethod
+    def get_content(cls):
+        if cls.content is None:
+            cls.content = gtk.VBox(False, 5)
+            cls.content.set_border_width(5)
+            cls.content.pack_start(title_label(cls.title), False)
+            cls.content.pack_start(cls.f(), False)
+        return cls.content
+    @classmethod
+    def check(cls):
+        assert cls.category
+        if isinstance(cls.category, str):
+            assert cls.category in cls.valid_categories
+        elif isinstance(cls.category, list):
+            for c in cls.category:
+                assert c in cls.valid_categories
+        else:
+            raise TypeError
+    @classmethod
+    def contain(cls, another_category):
+        if isinstance(cls.category, str):
+            return cls.category == another_category
+        return another_category in cls.category
+    @classmethod
+    def visible(cls):
+        return True
+    
 class Setting(gtk.VBox):
     def __title(self, text):
         label = gtk.Label()

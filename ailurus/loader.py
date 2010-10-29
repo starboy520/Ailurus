@@ -339,13 +339,21 @@ def load_info():
     return hardware_info, os_info
     
 def load_setting():
+    from libsetting import Set
     import types
     ret = []
     for module in [distribution, desktop, common]:
         if module:
             assert isinstance(module, types.ModuleType)
-            if hasattr(module, 'setting') and hasattr(module.setting, 'get'):
-                ret.extend(module.setting.get())
+            if hasattr(module, 'setting'):
+                m = module.setting
+                for name in dir(m):
+                    o = getattr(m, name)
+                    if isinstance(o, types.ClassType) and issubclass(o, Set) and o != Set:
+                        try: o.check()
+                        except: print_traceback
+                        else:
+                            if o.visible(): ret.append(o)
     return ret
 
 def load_study_linux_menuitems():

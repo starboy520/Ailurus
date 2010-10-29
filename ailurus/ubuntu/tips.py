@@ -105,4 +105,11 @@ apt-cache show PACKAGE_NAME
 
 """),
 
+_('Backup source list:') + '\n' +
+'cd /etc/apt/\n'
+'tar czf $HOME/sources.backup.tar.gz sources.list sources.list.d/\n'
+'\n' +
+_('Restore source list:') + '\n' +
+'cd /etc/apt/\n'
+'sudo tar xzf $HOME/sources.backup.tar.gz',
 ]
