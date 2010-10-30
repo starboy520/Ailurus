@@ -74,7 +74,7 @@ class CleanUpPane(gtk.VBox):
             notify(_('Run command:'), 'apt-get clean')
             run_as_root('apt-get clean', ignore_error=True)
             label.set_text(self.get_button_text(_('APT cache'), '/var/cache/apt/archives'))
-            button.set_sensitive(bool(self.get_folder_size('/var/cache/apt/archives',please_return_integer=True)))
+            button.set_sensitive(False)
         button.connect('clicked', __clean_up, label)
         button.set_tooltip_text(_('Command:') + ' sudo apt-get clean')
         return button
@@ -126,7 +126,7 @@ class CleanUpPane(gtk.VBox):
         return button
 
     def clean_recently_used_document_button(self):
-        def clear(w):
+        def clear(button):
             import os
             path = os.path.expanduser('~/.recently-used.xbel')
             if os.path.isfile(path):
@@ -134,6 +134,7 @@ class CleanUpPane(gtk.VBox):
             else: # is dir
                 os.system("rm $HOME/.recently-used.xbel/* -rf")
             notify('"Recent documents" list is clean', _('Run command:') + ' echo "" > $HOME/.recently-used.xbel')
+            button.set_sensitive(False)
         button = gtk.Button(_('Clear "recent documents" list'))
         button.connect('clicked', clear)
         button.set_tooltip_text(_('Command:') + ' echo "" > $HOME/.recently-used.xbel')
@@ -168,13 +169,13 @@ class Ubuntu_dedicated_clean_up_box(gtk.HBox):
         self.content_pane.show_all()
         
     def __init__(self):
-        button_1 = gtk.Button(_('Auto-removable packages'))
+        button_1 = gtk.RadioButton(label = _('Auto-removable packages'))
         button_1.content = UbuntuAutoRemovableBox()
         button_1.connect('clicked', self.change_content)
-        button_2 = gtk.Button(_('Unused software configuration'))
+        button_2 = gtk.RadioButton(label = _('Unused software configuration'), group = button_1)
         button_2.content = UbuntuDeleteUnusedConfigBox()
         button_2.connect('clicked', self.change_content)
-        button_3 = gtk.Button(_('Unused Linux kernels'))
+        button_3 = gtk.RadioButton(label = _('Unused Linux kernels'), group = button_1)
         button_3.content = RemoveUnusedKernelBox()
         button_3.connect('clicked', self.change_content)
         self.buttons_pane = gtk.VBox(False, 5)
@@ -185,6 +186,7 @@ class Ubuntu_dedicated_clean_up_box(gtk.HBox):
         gtk.HBox.__init__(self, False, 5)
         self.pack_start(self.buttons_pane, False)
         self.pack_start(self.content_pane)
+        button_1.set_active(True)
         button_1.emit('clicked')
 
 class RemoveUnusedKernelBox(gtk.HBox):

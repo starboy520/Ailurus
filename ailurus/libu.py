@@ -21,6 +21,13 @@
 
 from __future__ import with_statement
 
+def title_label(text):
+    import gtk
+    label = gtk.Label()
+    label.set_markup('<b>%s</b>'%text)
+    label.set_alignment(0, 0)
+    return label
+
 def copy_to_clipboard(text):
     assert isinstance(text, str)
     import gtk

@@ -480,7 +480,7 @@ class MainView:
         dialog = gtk.MessageDialog(self.window, 
                 gtk.DIALOG_MODAL, gtk.MESSAGE_QUESTION, gtk.BUTTONS_YES_NO,
                 _('Are you sure to exit?'))
-        check_button = gtk.CheckButton(_('Do not query me any more.'))
+        check_button = gtk.CheckButton(_('Do not ask me again.'))
         check_button.set_active(not Config.get_query_before_exit())
         dialog.vbox.pack_start(check_button)
         dialog.vbox.show_all()
@@ -550,7 +550,6 @@ class MainView:
         from install_remove_pane import InstallRemovePane
         from computer_doctor_pane import ComputerDoctorPane
         if UBUNTU or UBUNTU_DERIV:
-            from ubuntu.fastest_mirror_pane import UbuntuFastestMirrorPane
             from ubuntu.repos_config_pane import ReposConfigPane
         if FEDORA:
             from fedora.repos_edit_pane import FedoraReposEditPane
@@ -561,7 +560,6 @@ class MainView:
             from snapshot_pane import SnapshotPane
             self.register(SnapshotPane)
         if UBUNTU or UBUNTU_DERIV:
-            self.register(UbuntuFastestMirrorPane)
             self.register(ReposConfigPane)
         if FEDORA:
             self.register(FedoraReposEditPane)
