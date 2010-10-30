@@ -1,4 +1,4 @@
-#coding: utf8
+#coding: utf-8
 #
 # Ailurus - a simple application installer and GNOME tweaker
 #

@@ -62,7 +62,6 @@ ailurus/ubuntu/app_from_external_repos.py
 ailurus/ubuntu/apps_eclipse.py
 ailurus/ubuntu/apps.py
 ailurus/ubuntu/cure.py
-ailurus/ubuntu/fastest_mirror_pane.py
 ailurus/ubuntu/__init__.py
 ailurus/ubuntu/libserver.py
 ailurus/ubuntu/menu.py
