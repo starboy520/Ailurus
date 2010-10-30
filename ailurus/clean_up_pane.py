@@ -1,4 +1,4 @@
-#coding: utf8
+#coding: utf-8
 #
 # Ailurus - a simple application installer and GNOME tweaker
 #
@@ -18,6 +18,8 @@
 # You should have received a copy of the GNU General Public License
 # along with Ailurus; if not, write to the Free Software Foundation, Inc.,
 # 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
+
+# To remove unused Linux kernel on Fedora, read http://forums.fedoraforum.org/showthread.php?t=181602
 
 from __future__ import with_statement
 import gtk, pango
