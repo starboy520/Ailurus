@@ -184,8 +184,7 @@ class ImageChooser(gtk.Button):
         'If image_path is none, then show blank.'
         child = self.get_child()
         if child: self.remove(child)
-        
-        if image_path:
+        if image_path==True & os.path.exists(image_path):
             self.pixbuf = gtk.gdk.pixbuf_new_from_file(image_path).scale_simple(self.width, self.height, gtk.gdk.INTERP_HYPER)
         else:
             self.pixbuf = blank_pixbuf(self.width, self.height)

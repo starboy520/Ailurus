@@ -1,3 +1,7 @@
+2010-10-31 Ma Yue <velly.empire@gmail.com>
+
+    * Fix a little bug of ImageChooser
+
 2010-10-29 Homer Xing <homer.xing@gmail.com>
 
 	* Dynamic loading setting function. Faster now 
