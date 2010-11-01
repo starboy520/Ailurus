@@ -1111,3 +1111,9 @@ debian = kstars
 fedora = kdeedu-kstars
 archlinux = kdeedu-kstars
 
+[Brasero]
+category = cd_burner
+license = GPL
+ubuntu = brasero
+fedora = brasero
+archlinux = brasero
