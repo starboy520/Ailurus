@@ -56,18 +56,17 @@ class Bioclipse(_path_lists):
         self.paths = [ self.shortcut, self.path ]
     def install(self):
         if is32():
-            f = R(urls.bioclipse32, filename = 'bioclipse.zip').download()
+            f = R(urls.bioclipse32).download()
         else:
-            f = R(urls.bioclipse64, filename = 'bioclipse.zip').download()
+            f = R(urls.bioclipse64).download()
         with Chdir('/tmp'):
-            run('unzip -qo %s' %f)
+            run('tar xf "%s"' %f)
             import os
             if not os.path.exists('/opt'): run_as_root('mkdir /opt')
             run_as_root('rm /opt/bioclipse -rf')
-            if is32():
-                run_as_root('mv bioclipse*/bioclipse /opt/')
-            else:
-                run_as_root('mv bioclipse*/bioclipse /opt/')
+            import glob
+            path = [path for path in glob.glob('Bioclipse.*') if os.path.isdir(path)]
+            run_as_root('cp %s /opt/bioclipse -r' % path[0])
             run_as_root('chown $USER:$USER /opt/bioclipse -R')
             
             create_file(self.shortcut,'''[Desktop Entry]
