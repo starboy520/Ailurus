@@ -247,3 +247,12 @@ class Handbrake(_apt_install):
     category = 'media_editor'
     ppa = 'stebbins/handbrake-snapshots'
     pkgs = 'handbrake-gtk'
+
+class OpenFetion(_apt_install):
+    'Openfetion'
+    detail = _('''An client for China Mobile's "Fetion" service''')
+    licese = GPL
+    category = 'chat'
+    ppa = 'happyaron/ppa'
+    pkgs = 'openfetion'
+    Chinese = True
