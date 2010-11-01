@@ -189,7 +189,7 @@ class XBMC(_apt_install):
     category = 'player'
     license = GPL
     ppa = 'team-xbmc'
-    pkgs = 'xbmc'
+    pkgs = 'xbmc xbmc-standalone'
 
 class ElementaryTheme(_apt_install):
     __doc__ = _('Elementary: Beautiful theme which looks like Mac OS X')
