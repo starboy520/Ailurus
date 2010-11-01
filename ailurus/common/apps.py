@@ -380,16 +380,6 @@ class FFNoscript(_ff_extension):
     name = u'NoScript'
     R = R(latest(722), filename='noscript.xpi')
 
-class FFRadioGet(_ff_extension):
-    __doc__  = _('SHA-DA network radio: Listen to and watch radio and TV programs in China')
-    Chinese = True
-    license = GPL
-    detail = ''
-    download_url = 'http://ipget.cn/RadioGet/'
-    name = u'RadioGet'
-    R = R(['http://ipget.cn/RadioGet/RadioGet-0.9.xpi', 'http://ailurus.googlecode.com/files/RadioGet-0.9.xpi'],
-    15870, '132b45fd31dff76676d6d66bbe2b0f556f2f34fd') # We add a second url because ipget.cn is in expiration date now :(
-
 class FFSeoQuake(_ff_extension):
     __doc__ = _('SeoQuake: Help you view search engine parameters of your web site')
     license = MPL
