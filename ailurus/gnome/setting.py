@@ -245,10 +245,10 @@ class layout_of_window_titlebar_buttons(Set):
         pre_defined = ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:']
         
         c = gconf_client()
-        layout = c.get_string('/app/metacity/general/button_layout')
+        layout = c.get_string('/apps/metacity/general/button_layout')
         if layout is None: layout = 'menu:minimize,maximize,close' # default value
         
-        label = gtk.Label(_('GConf key: ') + '/app/metacity/general/button_layout\n'
+        label = gtk.Label(_('GConf key: ') + '/apps/metacity/general/button_layout\n'
                                + _("It can be used in Metacity only."))
         label.set_alignment(0, 0)
         r1 = gtk.RadioButton(label=_('Pre-defined:'))
