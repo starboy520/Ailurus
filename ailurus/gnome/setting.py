@@ -245,10 +245,10 @@ class layout_of_window_titlebar_buttons(Set):
         pre_defined = ['menu:minimize,maximize,close', 'maximize,minimize,close:', 'close,minimize,maximize:']
         
         c = gconf_client()
-        layout = c.get_string('/app/metacity/general/button_layout')
+        layout = c.get_string('/apps/metacity/general/button_layout')
         if layout is None: layout = 'menu:minimize,maximize,close' # default value
         
-        label = gtk.Label(_('GConf key: ') + '/app/metacity/general/button_layout\n'
+        label = gtk.Label(_('GConf key: ') + '/apps/metacity/general/button_layout\n'
                                + _("It can be used in Metacity only."))
         label.set_alignment(0, 0)
         r1 = gtk.RadioButton(label=_('Pre-defined:'))
@@ -256,8 +256,7 @@ class layout_of_window_titlebar_buttons(Set):
         o1 = GConfComboBox('/apps/metacity/general/button_layout', 
                           [_('GNOME classic'), _('Ubuntu Lucid beta'), _('MAC OS X')],
                           pre_defined,)
-        o2 = gtk.Entry()
-        o2.set_text(layout)
+        o2 = GConfTextEntry('/apps/metacity/general/button_layout')
         label2 = gtk.Label('Arrangement of buttons on the titlebar.\n'
                            'The value should be a string, such as "menu:minimize,maximize,close";\n'
                            'the colon separates the left corner of the window from the right corner,\n'
@@ -266,9 +265,7 @@ class layout_of_window_titlebar_buttons(Set):
                            'Unknown button names are silently ignored.')
         label2.set_selectable(True)
         label2.set_alignment(0, 0)
-        def o1_changed(new_value):
-            o2.set_text(new_value)
-        o1.callback = o1_changed
+        
         r1.connect('clicked', radio_button_clicked, o1)
         r2.connect('clicked', radio_button_clicked, o2, label2)
     
@@ -283,7 +280,7 @@ class layout_of_window_titlebar_buttons(Set):
         if layout in pre_defined:
             r1.set_active(True); o2.set_sensitive(False); label2.set_sensitive(False)
         else:
-            r2.set_active(True); o1.set_sensitive(False)
+            r2.set_active(True); o1.set_sensitive(False); 
         
         return table
     
