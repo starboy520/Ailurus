@@ -578,31 +578,6 @@ class MainView:
             import thread
             thread.start_new_thread(check_update, (True, )) # "True" means "silent"
 
-def show_agreement():
-    message = ('Ailurus CANNOT install w32codecs/w64codecs, libdvdcss2 or close source software.\n'
-        '\n'
-        '<span color="red">Please NOTE that <b>downloading and installing w32codecs/w64codecs '
-        'and libdvdcss2 violates the Digital Millennium Copyright Act(DMCA) and other laws regarding '
-        'anti-piracy/copyright violation in the United States of America</b>.</span>\n'
-        '\n'
-        'Under NO circumstances, will the Ailurus developers be responsible for your actions which includes, '
-        'but not limited to, downloading and installing these codecs or close source software.')
-    label = gtk.Label(_('Do you agree?'))
-    dialog = gtk.MessageDialog(buttons=gtk.BUTTONS_YES_NO, type=gtk.MESSAGE_WARNING)
-    dialog.set_markup(message)
-    dialog.set_title(_('Warning'))
-    dialog.vbox.pack_start(label, False)
-    dialog.vbox.show_all()
-    ret = dialog.run()
-    dialog.destroy()
-    if ret == gtk.RESPONSE_YES:
-        Config.set_show_agreement(False)
-    if ret != gtk.RESPONSE_YES:
-        sys.exit()
-
-if Config.get_show_agreement():
-    show_agreement()
-
 with TimeStat(_('start up')):
     sys.stdout = os.fdopen(sys.stdout.fileno(), 'w', 0)
     change_task_name()
