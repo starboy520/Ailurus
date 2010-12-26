@@ -394,10 +394,6 @@ class MainView:
             menuitems.append(item)
         return create_menu_from(menuitems)
     
-    def add_quit_button(self):
-        item_quit = toolitem(D+'sora_icons/m_quit.png', _('Quit'), 'clicked', self.terminate_program)
-        self.toolbar.insert(item_quit, 0)
-
     def add_study_button_preference_button_other_button(self):
         item = toolitem(D+'sora_icons/m_others.png', _('Others'), 'button_release_event', 
                         self.__show_popupmenu_on_toolbaritem, create_menu_from(load_others_menuitems()))
@@ -567,7 +563,6 @@ class MainView:
         self.register(SystemSettingPane, load_setting)
         self.register(InfoPane, load_info)
         
-        self.add_quit_button()
         self.add_study_button_preference_button_other_button()
         self.add_pane_buttons_in_toolbar()
         self.window.show_all()
