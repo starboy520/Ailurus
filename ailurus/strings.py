@@ -347,6 +347,6 @@ Zhcon_0 = 'Zhcon'
 Zhcon_1 = _('Help you display Chinese characters in TTY terminal. You can launch it by "zhcon --utf8".')
 Zim_0 = 'Zim'
 Zim_1 = _('Notebook software which helps you create a wiki to your desktop')
-ProofGeneral_0 = 'proofgeneral'
-ProofGeneral_1 = 'A software for general proofs'
+ProofGeneral_0 = 'Proof General'
+ProofGeneral_1 = 'A generic front-end for proof assistants, based on the customizable text editor Emacs.'
 

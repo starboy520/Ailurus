@@ -1122,3 +1122,4 @@ archlinux = brasero
 category = education
 license = GPL
 ubuntu = proofgeneral
+fedora = emacs-proofgeneral 
