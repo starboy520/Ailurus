@@ -538,8 +538,65 @@ class login_window_setting(Set):
         o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
         box.pack_start(o, False)
         
-      
-    
+        import os
+        if os.path.exists('/etc/gdm/gdm.conf'):
+            file = '/etc/gdm/gdm.conf'
+        elif os.path.exists("/etc/gdm/custom.conf"):
+            file = '/etc/gdm/custom.conf'
+        else:
+            file = None
+        if file != None:#backup the original file
+            if not os.path.exists(file + '.back'):
+                run_as_root('cp %s %s' %(file, file + '.back'))
+                
+        def toggled(widget, file):
+            value = widget.get_active()
+            autolog = 'false'
+            if value:
+                autolog = 'true'
+            with TempOwn(file):
+                import ConfigParser
+                config = ConfigParser.ConfigParser()
+                config.optionxform= str #case senstive
+                with open(file, 'rw') as f:
+                    config.readfp(f)
+                    item = config.items('daemon')
+                    attributes = [i[0].lower() for i in item]
+                    config.set('daemon', 'AutomaticLoginEnable', '%s' % autolog)
+                    import getpass
+                    user =  getpass.getuser()
+                    #because in Feodra the initial section of 'daemon' in custom.conf is empty, 
+                    #if we need automatic login, we need to add some attributes and values
+                    #our purpose is not change the original attributes
+                    if not 'AutomaticLogin'.lower() in attributes:
+                        config.set('daemon', 'AutomaticLogin', user)
+                    if not 'TimedLoginEnable'.lower() in attributes:
+                        config.set('daemon', 'TimedLoginEnable', 'false')
+                    if not 'TimedLoginDelay'.lower() in attributes:
+                        config.set('daemon', 'TimedLoginDelay', 30)
+                    if not 'TimedLogin'.lower() in attributes:
+                        config.set('daemon', 'TimedLogin', user)
+                    config.write(open(file,'w'))
+        
+        with open(file) as f:
+            import ConfigParser
+            config = ConfigParser.ConfigParser()
+            config.readfp(f)
+            try:
+                autologin = config.get('daemon', 'AutomaticLoginEnable')
+            except:
+                autologin = 'false'   
+        o = gtk.CheckButton('Automatic login')
+        o.set_tooltip_markup(_('Congifigure File: %s' %file))
+        if autologin.lower() == 'false':
+            o.set_active(False)
+        else:
+            o.set_active(True)
+        o.connect('toggled', toggled, file)
+        if file != None:
+            box.pack_start(o, False)
+            
+        return box    
     title = _('Login window settings')
     category = 'login_window'
 

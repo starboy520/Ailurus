@@ -384,7 +384,7 @@ class Config:
     def is_GNOME(cls):
         if cls.is_XFCE(): return False
         try:
-            get_output('pgrep -u $USER gnome-panel')
+            get_output('pgrep -u $USER gnome')#in fedora 15, there is no process gnome_panel
             return True
         except:
             return False
