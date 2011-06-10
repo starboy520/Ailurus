@@ -545,11 +545,11 @@ class login_window_setting(Set):
             file = '/etc/gdm/custom.conf'
         else:
             file = None
-        if file != None:#backup the original file
-            if not os.path.exists(file + '.back'):
-                run_as_root('cp %s %s' %(file, file + '.back'))
                 
         def toggled(widget, file):
+            if file != None: #backup the original file
+                if not os.path.exists(file + '.back'):
+                    run_as_root('cp %s %s' %(file, file + '.back'))
             value = widget.get_active()
             autolog = 'false'
             if value:
@@ -567,7 +567,7 @@ class login_window_setting(Set):
                     user =  getpass.getuser()
                     #because in Feodra the initial section of 'daemon' in custom.conf is empty, 
                     #if we need automatic login, we need to add some attributes and values
-                    #our purpose is not change the original attributes
+                    #our purpose is not to change the original attributes except for the aditional attributes
                     if not 'AutomaticLogin'.lower() in attributes:
                         config.set('daemon', 'AutomaticLogin', user)
                     if not 'TimedLoginEnable'.lower() in attributes:
