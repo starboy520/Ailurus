@@ -211,5 +211,5 @@ class Radioget(I):
     def installed(self):
         return APT.installed('radioget')
     def remove(self):
-        APT.remove('radioget')  
+        APT.remove('radioget')
     

@@ -125,7 +125,7 @@ def __opengl():
     ret = []
     try:
         direct_render = vendor = vendor_version = renderer = None
-        f = get_output('glxinfo')
+        f = get_output('glxinfo')  #command not found error: sudo apt-get install mesa-utils
         for line in f.split('\n'):
             v = line.split(':')
             if v[0]=='direct rendering':  direct_render = v[1].strip()

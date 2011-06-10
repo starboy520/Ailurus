@@ -537,7 +537,8 @@ class login_window_setting(Set):
         box.pack_start(o, False)
         o = GConfCheckButton(_('Do not display "restart" button'), '/apps/gdm/simple-greeter/disable_restart_buttons')
         box.pack_start(o, False)
-        return box
+        
+      
     
     title = _('Login window settings')
     category = 'login_window'

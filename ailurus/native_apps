@@ -1117,3 +1117,8 @@ license = GPL
 ubuntu = brasero
 fedora = brasero
 archlinux = brasero
+
+[ProofGeneral]
+category = education
+license = GPL
+ubuntu = proofgeneral
